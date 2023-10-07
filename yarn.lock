@@ -2431,6 +2431,21 @@
   dependencies:
     debug "4.3.3"
 
+"@plebbit/plebbit-react-hooks@https://github.com/plebbit/plebbit-react-hooks.git#15c14357459f2370ad080e89b77d7b01869aae09":
+  version "0.0.1"
+  resolved "https://github.com/plebbit/plebbit-react-hooks.git#15c14357459f2370ad080e89b77d7b01869aae09"
+  dependencies:
+    "@plebbit/plebbit-js" "https://github.com/plebbit/plebbit-js.git#6985b2a4194328752c6d76e80470c8079c562869"
+    "@plebbit/plebbit-logger" "https://github.com/plebbit/plebbit-logger.git"
+    assert "2.0.0"
+    ethers "5.6.9"
+    localforage "1.10.0"
+    lodash.isequal "4.5.0"
+    memoizee "0.4.15"
+    quick-lru "5.1.1"
+    uuid "8.3.2"
+    zustand "4.0.0"
+
 "@plebbit/plebbit-react-hooks@https://github.com/plebbit/plebbit-react-hooks.git#b6477148191a501aa0b0c11acfc4761aca0dcc1e":
   version "0.0.1"
   resolved "https://github.com/plebbit/plebbit-react-hooks.git#b6477148191a501aa0b0c11acfc4761aca0dcc1e"
