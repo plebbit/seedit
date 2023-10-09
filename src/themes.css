@@ -1,0 +1,23 @@
+:root .light {
+  --background1: white;
+  --background2: #cee3f8;
+  --background3: #eff7ff;
+  --background4: #f0f0f0;
+  --text1: #369;
+  --text2: forestgreen;
+  --text3: #888;
+  --border1: #5f99cf;
+  --border2: gray;
+}
+
+:root .dark {
+  --background1: #0f0f0f;
+  --background2: #1f1f1f;
+  --background3: #3e3e3e;
+  --background4: #0f0f0f;
+  --text1: #cacaca;
+  --text2: lawngreen;
+  --text3: #999;
+  --border1: #1f1f1f;
+  --border2: #3e3e3e;
+}
