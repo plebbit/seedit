@@ -1,5 +1,8 @@
 import { useEffect } from 'react';
+import { Route, Routes } from 'react-router-dom';
 import useTheme from './hooks/use-theme';
+import styles from './app.module.css';
+import Home from './components/home/home';
 
 function App() {
   const [theme] = useTheme();
@@ -10,8 +13,10 @@ function App() {
   }, [theme])
 
   return (
-    <div className='App'>
-      test
+    <div className={[styles.app, theme].join(' ')}>
+      <Routes>
+        <Route path="/:sortType?" element={<Home />} />
+      </Routes>
     </div>
   );
 }

@@ -1,0 +1,12 @@
+.app {
+  background-color: var(--background1);
+  font: normal x-small verdana, arial, helvetica, sans-serif;
+  z-index: 1;
+  min-height: 100%;
+  color: var(--text3);
+
+  padding: 0 2px;
+  overflow-y: hidden;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
