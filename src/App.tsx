@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import useTheme from './hooks/use-theme';
 import styles from './app.module.css';
-import Home from './components/home/home';
+import Home from './components/home';
 
 function App() {
   const [theme] = useTheme();

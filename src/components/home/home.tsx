@@ -4,6 +4,7 @@ import { Virtuoso, VirtuosoHandle, StateSnapshot } from "react-virtuoso";
 import { useFeed } from "@plebbit/plebbit-react-hooks";
 import useDefaultSubplebbits from "../../hooks/use-default-subplebbits";
 import useTheme from "../../hooks/use-theme";
+import Header from "../header";
 
 type SnapshotType = StateSnapshot;
 
@@ -55,6 +56,7 @@ const Home = () => {
 
   return (
     <div>
+      <Header />
       <Theme />
       <Virtuoso
         increaseViewportBy={{ bottom: 600, top: 600 }}

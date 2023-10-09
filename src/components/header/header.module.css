@@ -1,0 +1,59 @@
+.header {
+  border-bottom: 1px solid var(--border1);
+  position: relative;
+  background-color: var(--background2);
+}
+
+.headerBottomLeft {
+  font-size: larger;
+}
+
+.container {
+  height: 30px;
+  width: 120px;
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  padding: 15px 0 0 3px;
+  max-height: 40px;
+  object-fit: contain;
+}
+
+.logoText {
+  padding: 28px 0 0 0;
+  max-height: 26px;
+  object-fit: contain;
+}
+
+.tabMenu {
+  list-style: none;
+  white-space: nowrap;
+  display: inline-block;
+  padding: 45px 0 0 15px;
+
+  li {
+    display: inline;
+    font-weight: bold;
+    margin: 0px 3px;
+
+    .selected {
+      color: var(--text2);
+      background-color: var(--background1);
+      border: 1px solid var(--border1);
+      border-bottom: 1px solid var(--background1);
+    }
+
+    .choice {
+      color: var(--text1);
+      background-color: var(--background3);
+      border-bottom: 1px solid var(--border1);
+    }
+
+    a {
+      padding: 2px 6px 0 6px;
+      text-decoration: none;
+    }
+  }
+}
