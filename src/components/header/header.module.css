@@ -10,7 +10,6 @@
 
 .container {
   height: 30px;
-  width: 120px;
   display: flex;
   align-items: center;
 }
@@ -55,5 +54,26 @@
       padding: 2px 6px 0 6px;
       text-decoration: none;
     }
+  }
+}
+
+@media (max-width: 530px) {
+  .container {
+    align-items: flex-start;
+    height: 57px;
+  }
+
+  .logo {
+    position: absolute;
+    padding: 8px 0 0 5px;
+  }
+
+  .logoText {
+    position: absolute;
+    padding: 22px 0 0 37px;
+  }
+
+  .tabMenu {
+    padding: 45px 0 0 0;
   }
 }
