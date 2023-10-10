@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@plebbit/plebbit-react-hooks": "https://github.com/plebbit/plebbit-react-hooks.git#15c14357459f2370ad080e89b77d7b01869aae09",
+    "@plebbit/plebbit-react-hooks": "https://github.com/plebbit/plebbit-react-hooks.git#30095e763d80e29168dc6ee1fe7515fd91065489",
     "@testing-library/jest-dom": "5.14.1",
     "@testing-library/react": "13.0.0",
     "@testing-library/user-event": "13.2.1",
