@@ -9,19 +9,20 @@
 }
 
 .container {
-  height: 30px;
+  height: 29.5px;
   display: flex;
   align-items: center;
 }
 
 .logo {
-  margin-bottom: -15px;
+  margin-bottom: -18px;
+  margin-left: 2px;
   max-height: 40px;
   object-fit: contain;
 }
 
 .logoText {
-  margin-bottom: -28px;
+  margin-bottom: -17.5px;
   max-height: 26px;
   object-fit: contain;
 }

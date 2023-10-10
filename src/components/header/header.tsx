@@ -26,10 +26,11 @@ const Header = () => {
   return (
     <div className={styles.header}>
       <div className={styles.headerBottomLeft}>
-        <Link to="/" style={{ all: 'unset', cursor: 'pointer' }}>
           <span className={styles.container}>
-            <img className={styles.logo} src="/assets/logo/seedit.png" alt="logo" />
-            <img className={styles.logoText} src={logoSrc} alt="logo" />
+            <Link to="/" style={{ all: 'unset', cursor: 'pointer' }}>
+              <img className={styles.logo} src="/assets/logo/seedit.png" alt="logo" />
+              <img className={styles.logoText} src={logoSrc} alt="logo" />
+            </Link>
             <ul className={styles.tabMenu}>
               {choices.map((choice, index) => (
                 <li key={choice}>
@@ -42,10 +43,14 @@ const Header = () => {
                   </Link>
                 </li>
               ))}
+              <li>
+                <Link to="/wiki" className={styles.choice} onClick={(event) => event.preventDefault()}>
+                  wiki
+                </Link>
+              </li>
             </ul>
           </span>
           &nbsp;
-        </Link>
       </div>
     </div>
   );
