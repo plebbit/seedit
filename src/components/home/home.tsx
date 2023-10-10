@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { FC, useEffect, useRef } from 'react';
 import { useParams } from 'react-router-dom';
 import { Virtuoso, VirtuosoHandle, StateSnapshot } from 'react-virtuoso';
 import { useFeed } from '@plebbit/plebbit-react-hooks';
@@ -13,7 +13,7 @@ const lastVirtuosoStates: { [key: string]: SnapshotType } = {};
 
 const NoPosts = () => 'no posts';
 
-const Theme = () => {
+const Theme: FC = () => {
   const [theme, setTheme] = useTheme();
   return (
     <div style={{ padding: '5px' }}>
@@ -25,7 +25,7 @@ const Theme = () => {
   );
 };
 
-const Home = () => {
+const Home: FC = () => {
   const subplebbitAddresses = useDefaultSubplebbits();
   const sortType = useParams<{ sortType: string }>().sortType || 'hot';
   const { feed, hasMore, loadMore } = useFeed({ subplebbitAddresses, sortType, postsPerPage: 10 });

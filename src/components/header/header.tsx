@@ -1,10 +1,10 @@
-import { useState, useEffect } from 'react';
+import { FC, useState, useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import styles from './header.module.css';
 import useTheme from '../../hooks/use-theme';
 import AccountBar from './account-bar';
 
-const Header = () => {
+const Header: FC = () => {
   const { sortType } = useParams<{ sortType: string }>();
   const [theme] = useTheme();
   const logoSrc = theme === 'dark' ? '/assets/logo/logo-dark.png' : '/assets/logo/logo-light.png';
