@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import styles from './header.module.css';
 import useTheme from '../../hooks/use-theme';
+import AccountBar from './account-bar';
 
 const Header = () => {
   const { sortType } = useParams<{ sortType: string }>();
@@ -48,6 +49,7 @@ const Header = () => {
         </span>
         &nbsp;
       </div>
+      <AccountBar />
     </div>
   );
 };
