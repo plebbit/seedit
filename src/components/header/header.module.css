@@ -15,13 +15,13 @@
 }
 
 .logo {
-  padding: 15px 0 0 3px;
+  margin-bottom: -15px;
   max-height: 40px;
   object-fit: contain;
 }
 
 .logoText {
-  padding: 28px 0 0 0;
+  margin-bottom: -28px;
   max-height: 26px;
   object-fit: contain;
 }
@@ -30,7 +30,8 @@
   list-style: none;
   white-space: nowrap;
   display: inline-block;
-  padding: 45px 0 0 15px;
+  margin-bottom: -33px;
+  padding-left: 15px;
 
   li {
     display: inline;

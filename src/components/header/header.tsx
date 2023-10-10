@@ -26,7 +26,7 @@ const Header = () => {
   return (
     <div className={styles.header}>
       <div className={styles.headerBottomLeft}>
-        <Link to="/" style={{ all: 'unset' }}>
+        <Link to="/" style={{ all: 'unset', cursor: 'pointer' }}>
           <span className={styles.container}>
             <img className={styles.logo} src="/assets/logo/seedit.png" alt="logo" />
             <img className={styles.logoText} src={logoSrc} alt="logo" />
