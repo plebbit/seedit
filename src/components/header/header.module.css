@@ -9,9 +9,10 @@
 }
 
 .container {
-  height: 29.5px;
+  height: 30px;
   display: flex;
   align-items: center;
+  transform: translateY(0.5px);
 }
 
 .logo {
@@ -19,20 +20,23 @@
   margin-left: 2px;
   max-height: 40px;
   object-fit: contain;
+  transform: translateY(0.5px);
 }
 
 .logoText {
-  margin-bottom: -17.5px;
+  margin-bottom: -17px;
   max-height: 26px;
   object-fit: contain;
+  transform: translateY(0.5px);
 }
 
 .tabMenu {
   list-style: none;
   white-space: nowrap;
   display: inline-block;
-  margin-bottom: -33px;
+  margin-bottom: -31px;
   padding-left: 15px;
+  transform: translateY(0.5px);
 
   li {
     display: inline;
@@ -67,17 +71,20 @@
 
   .logo {
     position: absolute;
-    margin-top: 2.5px;
+    margin-top: 3px;
     margin-left: 2px;
+    transform: translateY(0.5px);
   }
 
   .logoText {
     position: absolute;
-    margin-top: 16px;
+    margin-top: 15px;
     margin-left: 33px;
+    transform: translateY(0.5px);
   }
 
   .tabMenu {
-    padding: 38px 0 0 0;
+    padding: 37px 0 0 0;
+    transform: translateY(0.5px);
   }
 }
