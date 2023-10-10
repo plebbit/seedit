@@ -6,9 +6,7 @@ import './lib/init-translations';
 import './index.css';
 import './themes.css';
 
-const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement
-);
+const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 root.render(
   <React.StrictMode>
     <Router>

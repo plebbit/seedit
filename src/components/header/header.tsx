@@ -8,10 +8,10 @@ const Header = () => {
   const [theme] = useTheme();
   const logoSrc = theme === 'dark' ? '/assets/logo/logo-dark.png' : '/assets/logo/logo-light.png';
 
-  const choices = ["/topMonth", "/hot", "/new", "/active", "/controversialAll", "/topAll"];
-  const labels = ["best", "hot", "new", "rising", "controversial", "top"];
+  const choices = ['/topMonth', '/hot', '/new', '/active', '/controversialAll', '/topAll'];
+  const labels = ['best', 'hot', 'new', 'rising', 'controversial', 'top'];
 
-  const [selected, setSelected] = useState(sortType || "/topMonth");
+  const [selected, setSelected] = useState(sortType || '/topMonth');
 
   useEffect(() => {
     if (sortType) {
@@ -26,31 +26,27 @@ const Header = () => {
   return (
     <div className={styles.header}>
       <div className={styles.headerBottomLeft}>
-          <span className={styles.container}>
-            <Link to="/" style={{ all: 'unset', cursor: 'pointer' }}>
-              <img className={styles.logo} src="/assets/logo/seedit.png" alt="logo" />
-              <img className={styles.logoText} src={logoSrc} alt="logo" />
-            </Link>
-            <ul className={styles.tabMenu}>
-              {choices.map((choice, index) => (
-                <li key={choice}>
-                  <Link 
-                    to={choice}
-                    className={selected === choice ? styles.selected : styles.choice}
-                    onClick={() => handleSelect(choice)}
-                  >
-                    {labels[index]}
-                  </Link>
-                </li>
-              ))}
-              <li>
-                <Link to="/wiki" className={styles.choice} onClick={(event) => event.preventDefault()}>
-                  wiki
+        <span className={styles.container}>
+          <Link to='/' style={{ all: 'unset', cursor: 'pointer' }}>
+            <img className={styles.logo} src='/assets/logo/seedit.png' alt='logo' />
+            <img className={styles.logoText} src={logoSrc} alt='logo' />
+          </Link>
+          <ul className={styles.tabMenu}>
+            {choices.map((choice, index) => (
+              <li key={choice}>
+                <Link to={choice} className={selected === choice ? styles.selected : styles.choice} onClick={() => handleSelect(choice)}>
+                  {labels[index]}
                 </Link>
               </li>
-            </ul>
-          </span>
-          &nbsp;
+            ))}
+            <li>
+              <Link to='/wiki' className={styles.choice} onClick={(event) => event.preventDefault()}>
+                wiki
+              </Link>
+            </li>
+          </ul>
+        </span>
+        &nbsp;
       </div>
     </div>
   );

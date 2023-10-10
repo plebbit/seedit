@@ -8,14 +8,14 @@ function App() {
   const [theme] = useTheme();
 
   useEffect(() => {
-    document.body.classList.forEach((className) => document.body.classList.remove(className))
-    document.body.classList.add(theme)
-  }, [theme])
+    document.body.classList.forEach((className) => document.body.classList.remove(className));
+    document.body.classList.add(theme);
+  }, [theme]);
 
   return (
     <div className={[styles.app, theme].join(' ')}>
       <Routes>
-        <Route path="/:sortType?" element={<Home />} />
+        <Route path='/:sortType?' element={<Home />} />
       </Routes>
     </div>
   );

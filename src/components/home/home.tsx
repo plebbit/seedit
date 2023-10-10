@@ -1,11 +1,11 @@
-import { useEffect, useRef } from "react";
-import { useParams } from "react-router-dom";
-import { Virtuoso, VirtuosoHandle, StateSnapshot } from "react-virtuoso";
-import { useFeed } from "@plebbit/plebbit-react-hooks";
-import useDefaultSubplebbits from "../../hooks/use-default-subplebbits";
-import useTheme from "../../hooks/use-theme";
-import Header from "../header";
-import TopBar from "../topbar";
+import { useEffect, useRef } from 'react';
+import { useParams } from 'react-router-dom';
+import { Virtuoso, VirtuosoHandle, StateSnapshot } from 'react-virtuoso';
+import { useFeed } from '@plebbit/plebbit-react-hooks';
+import useDefaultSubplebbits from '../../hooks/use-default-subplebbits';
+import useTheme from '../../hooks/use-theme';
+import Header from '../header';
+import TopBar from '../topbar';
 
 type SnapshotType = StateSnapshot;
 
@@ -16,10 +16,10 @@ const NoPosts = () => 'no posts';
 const Theme = () => {
   const [theme, setTheme] = useTheme();
   return (
-    <div style={{padding: '5px'}}>
+    <div style={{ padding: '5px' }}>
       <select value={theme} onChange={(e) => setTheme(e.target.value)}>
-        <option value="light">light</option>
-        <option value="dark">dark</option>
+        <option value='light'>light</option>
+        <option value='dark'>dark</option>
       </select>
     </div>
   );
@@ -27,7 +27,7 @@ const Theme = () => {
 
 const Home = () => {
   const subplebbitAddresses = useDefaultSubplebbits();
-  const sortType = useParams<{ sortType: string }>().sortType || "hot";
+  const sortType = useParams<{ sortType: string }>().sortType || 'hot';
   const { feed, hasMore, loadMore } = useFeed({ subplebbitAddresses, sortType, postsPerPage: 10 });
   const loadingStateString = 'loading...';
 
