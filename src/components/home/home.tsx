@@ -5,6 +5,7 @@ import { useFeed } from "@plebbit/plebbit-react-hooks";
 import useDefaultSubplebbits from "../../hooks/use-default-subplebbits";
 import useTheme from "../../hooks/use-theme";
 import Header from "../header";
+import TopBar from "../topbar";
 
 type SnapshotType = StateSnapshot;
 
@@ -15,7 +16,7 @@ const NoPosts = () => 'no posts';
 const Theme = () => {
   const [theme, setTheme] = useTheme();
   return (
-    <div>
+    <div style={{padding: '5px'}}>
       <select value={theme} onChange={(e) => setTheme(e.target.value)}>
         <option value="light">light</option>
         <option value="dark">dark</option>
@@ -56,6 +57,7 @@ const Home = () => {
 
   return (
     <div>
+      <TopBar />
       <Header />
       <Theme />
       <Virtuoso

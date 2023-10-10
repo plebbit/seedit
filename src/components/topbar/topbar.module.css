@@ -1,0 +1,120 @@
+.headerArea {
+  background-color: var(--background4);
+  white-space: nowrap;
+  text-transform: uppercase;
+  border-bottom: 1px solid var(--border2);
+  font-size: 90%;
+  height: 18px;
+  line-height: 18px;
+}
+
+.widthClip {
+  position: absolute;
+  left: 0;
+  right: 0;
+}
+
+.dropdown {
+  float: left;
+  padding-left: 5px;
+  cursor: pointer;
+  display: inline;
+  position: relative;
+}
+
+.dropChoices {
+  top: 18px;
+  left: 0px;
+  margin-top: 0;
+  margin-left: 5px;
+  position: absolute;
+  left: 0px;
+  border: 1px solid var(--border2);
+  z-index: 100;
+  background-color: var(--background1);
+  white-space: nowrap;
+  line-height: normal;
+
+  :hover {
+    background-color: var(--background2);
+  }
+
+
+  .choice {
+    cursor: pinter;
+    padding: 2px 3px 1px 3px;
+    display: block;
+  }
+
+  a {
+    text-decoration: none;
+    color: var(--text1);
+  }
+}
+
+.selectedTitle {
+  background: none no-repeat scroll center right;
+  background-image: none;
+  background-image: url("/public/assets/droparrowgray.gif");
+  display: inline-block;
+  vertical-align: bottom;
+  padding-right: 21px;
+  padding-left: 5px;
+  color: var(--text4);
+  font-weight: normal;
+  margin-left: -5px;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.srList {
+  overflow: hidden;
+
+  .srBar {
+    list-style-type: none;
+    display: inline;
+    margin: 0;
+    padding: 0;
+
+    ul {
+      list-style: none;
+    }
+
+    li {
+      display: inline;
+      white-space: nowrap;
+
+      a {
+        text-decoration: none;
+        color: var(--text4);
+      }
+  
+      .selected {
+        color: var(--text2) !important;
+        font-weight: bold;
+      }
+
+      :hover {
+        text-decoration: underline;
+        cursor: pointer;
+      }
+    }
+
+    .separator {
+      color: var(--border2);
+      margin: 0px .7ex 0px .7ex;
+    }
+  }
+}
+
+.moreLink {
+  color: var(--text4);
+  text-decoration: none;
+  background-color: var(--background4);
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding: 0 5px 0 15px;
+  font-weight: bold;
+  margin: 0;
+}

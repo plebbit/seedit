@@ -6,6 +6,7 @@
   --text1: #369;
   --text2: forestgreen;
   --text3: #888;
+  --text4: black;
   --border1: #5f99cf;
   --border2: gray;
 }
@@ -18,6 +19,7 @@
   --text1: #cacaca;
   --text2: lawngreen;
   --text3: #999;
+  --text4: #cacaca;
   --border1: #1f1f1f;
   --border2: #3e3e3e;
 }
