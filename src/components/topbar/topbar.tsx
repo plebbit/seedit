@@ -1,5 +1,6 @@
 import { FC, useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import style from './topbar.module.css';
 import { useAccount } from '@plebbit/plebbit-react-hooks';
 import useDefaultSubplebbits from '../../hooks/use-default-subplebbits';
@@ -8,8 +9,10 @@ const TopBar: FC = () => {
   const [isClicked, setIsClicked] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
   const account = useAccount();
-  const subscriptions = account?.subscriptions;
   const subplebbitAddresses = useDefaultSubplebbits();
+  const { t } = useTranslation();
+
+  const subscriptions = account?.subscriptions;
   const ethFilteredAddresses = subplebbitAddresses.filter((address: string) => address.endsWith('.eth'));
 
   const toggleClick = () => {
@@ -34,7 +37,7 @@ const TopBar: FC = () => {
       <div className={style.widthClip}>
         <div className={style.dropdown} ref={dropdownRef}>
           <span className={style.selectedTitle} onClick={toggleClick}>
-            my subseedits
+            {t('topbar_my_subs')}
           </span>
         </div>
         <div className={style.dropChoices} style={{ display: isClicked ? 'block' : 'none' }}>
@@ -48,13 +51,13 @@ const TopBar: FC = () => {
           <ul className={style.srBar}>
             <li>
               <Link to='/' className={style.selected}>
-                home
+                {t('topbar_home')}
               </Link>
             </li>
             <li>
               <span className={style.separator}>-</span>
               <Link to='/p/all' className={style.choice} onClick={(event) => event.preventDefault()}>
-                all
+                {t('topbar_all')}
               </Link>
             </li>
           </ul>
@@ -73,7 +76,7 @@ const TopBar: FC = () => {
           </ul>
         </div>
         <Link to='#' className={style.moreLink}>
-          edit »
+          {t('topbar_edit')} »
         </Link>
       </div>
     </div>

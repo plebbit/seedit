@@ -1,18 +1,19 @@
 import { FC, useState, useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import styles from './header.module.css';
 import useTheme from '../../hooks/use-theme';
 import AccountBar from './account-bar';
 
 const Header: FC = () => {
   const { sortType } = useParams<{ sortType: string }>();
+  const { t } = useTranslation();
   const [theme] = useTheme();
-  const logoSrc = theme === 'dark' ? '/assets/logo/logo-dark.png' : '/assets/logo/logo-light.png';
-
-  const choices = ['/topMonth', '/hot', '/new', '/active', '/controversialAll', '/topAll'];
-  const labels = ['best', 'hot', 'new', 'rising', 'controversial', 'top'];
-
   const [selected, setSelected] = useState(sortType || '/topMonth');
+
+  const logoSrc = theme === 'dark' ? '/assets/logo/logo-dark.png' : '/assets/logo/logo-light.png';
+  const choices = ['/topMonth', '/hot', '/new', '/active', '/controversialAll', '/topAll'];
+  const labels = [t('header_best'), t('header_hot'), t('header_new'), t('header_rising'), t('header_controversial'), t('header_top')];
 
   useEffect(() => {
     if (sortType) {

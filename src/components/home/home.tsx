@@ -6,12 +6,36 @@ import useDefaultSubplebbits from '../../hooks/use-default-subplebbits';
 import useTheme from '../../hooks/use-theme';
 import Header from '../header';
 import TopBar from '../topbar';
+import { useTranslation } from 'react-i18next';
 
 type SnapshotType = StateSnapshot;
 
 const lastVirtuosoStates: { [key: string]: SnapshotType } = {};
 
 const NoPosts = () => 'no posts';
+
+const Language: FC = () => {
+  const { i18n } = useTranslation();
+  const { changeLanguage, language } = i18n;
+
+  const availableLanguages = ['en', 'it'];
+
+  const onSelectLanguage = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    changeLanguage(e.target.value);
+  };
+
+  return (
+    <div style={{ padding: '5px' }}>
+      <select value={language} onChange={onSelectLanguage}>
+        {availableLanguages.map((lang) => (
+          <option key={lang} value={lang}>
+            {lang}
+          </option>
+        ))}
+      </select>
+    </div>
+  );
+};
 
 const Theme: FC = () => {
   const [theme, setTheme] = useTheme();
@@ -60,6 +84,7 @@ const Home: FC = () => {
       <TopBar />
       <Header />
       <Theme />
+      <Language />
       <Virtuoso
         increaseViewportBy={{ bottom: 600, top: 600 }}
         totalCount={feed?.length || 0}

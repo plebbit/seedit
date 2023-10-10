@@ -101,7 +101,6 @@
     }
 
     .separator {
-      color: var(--border2);
       margin: 0px .7ex 0px .7ex;
     }
   }

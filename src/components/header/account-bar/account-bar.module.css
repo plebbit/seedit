@@ -20,7 +20,7 @@
 }
 
 .separator {
- color: var(--border2);
+ color: var(--text1);
  margin: 0px .7ex 0px .7ex;
  cursor: default; 
 }
