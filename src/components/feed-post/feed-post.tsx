@@ -2,10 +2,11 @@ import { FC } from 'react';
 import styles from './feed-post.module.css';
 import { Link } from 'react-router-dom';
 import utils from '../../lib/utils';
+import { Comment } from '@plebbit/plebbit-react-hooks';
 
 interface FeedPostProps {
   index: number;
-  post: any;
+  post: Comment;
 }
 
 const FeedPost: FC<FeedPostProps> = ({ post, index }) => {
@@ -22,7 +23,7 @@ const FeedPost: FC<FeedPostProps> = ({ post, index }) => {
         <div className={styles.topMatter}>
           <p className={styles.title}>
             <Link className={styles.link} to={`p/${subplebbitAddress}/c/${post?.cid}`} onClick={(e) => e.preventDefault()}>
-              {post?.title || post?.content.slice(0, 80) + '...'}
+              {post?.title || post?.content?.slice(0, 80) + '...'}
             </Link>
             &nbsp;
             {post?.link && (
