@@ -1,5 +1,5 @@
-import { FC } from "react";
-import useTheme from "../../hooks/use-theme";
+import { FC } from 'react';
+import useTheme from '../../hooks/use-theme';
 
 const Theme: FC = () => {
   const [theme, setTheme] = useTheme();

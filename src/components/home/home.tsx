@@ -5,6 +5,8 @@ import { useFeed } from '@plebbit/plebbit-react-hooks';
 import useDefaultSubplebbits from '../../hooks/use-default-subplebbits';
 import Header from '../header';
 import TopBar from '../topbar';
+import styles from './home.module.css';
+import FeedPost from '../feed-post';
 
 type SnapshotType = StateSnapshot;
 
@@ -15,7 +17,7 @@ const NoPosts = () => 'no posts';
 const Home: FC = () => {
   const subplebbitAddresses = useDefaultSubplebbits();
   const sortType = useParams<{ sortType: string }>().sortType || 'hot';
-  const { feed, hasMore, loadMore } = useFeed({ subplebbitAddresses, sortType, postsPerPage: 10 });
+  const { feed, hasMore, loadMore } = useFeed({ subplebbitAddresses, sortType });
   const loadingStateString = 'loading...';
 
   let Footer;
@@ -46,18 +48,20 @@ const Home: FC = () => {
     <div>
       <TopBar />
       <Header />
-      <Virtuoso
-        increaseViewportBy={{ bottom: 600, top: 600 }}
-        totalCount={feed?.length || 0}
-        data={feed}
-        itemContent={(index, post) => <div key={`${post.cid}-${index}`}>{post.content}</div>}
-        useWindowScroll={true}
-        components={{ Footer }}
-        endReached={loadMore}
-        ref={virtuosoRef}
-        restoreStateFrom={lastVirtuosoState}
-        initialScrollTop={lastVirtuosoState?.scrollTop}
-      />
+      <div className={styles.content}>
+        <Virtuoso
+          increaseViewportBy={{ bottom: 600, top: 600 }}
+          totalCount={feed?.length || 0}
+          data={feed}
+          itemContent={(index, post) => <FeedPost index={index} post={post} />}
+          useWindowScroll={true}
+          components={{ Footer }}
+          endReached={loadMore}
+          ref={virtuosoRef}
+          restoreStateFrom={lastVirtuosoState}
+          initialScrollTop={lastVirtuosoState?.scrollTop}
+        />
+      </div>
     </div>
   );
 };

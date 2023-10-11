@@ -9,6 +9,9 @@
   --text4: black;
   --border1: #5f99cf;
   --border2: gray;
+  --link1: #0000ff;
+  --link2: #551a8b;
+  --icon: #c6c6c6;
 }
 
 :root .dark {
@@ -22,4 +25,7 @@
   --text4: #cacaca;
   --border1: #1f1f1f;
   --border2: #3e3e3e;
+  --link1: rgb(51, 125, 255);
+  --link2: rgb(174, 115, 229);
+  --icon: #c6c6c6;
 }
