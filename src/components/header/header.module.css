@@ -88,3 +88,9 @@
     transform: translateY(0.5px);
   }
 }
+
+.temporary {
+  position: absolute;
+  right: 0;
+  z-index: 999;
+}

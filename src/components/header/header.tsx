@@ -4,6 +4,8 @@ import { useTranslation } from 'react-i18next';
 import styles from './header.module.css';
 import useTheme from '../../hooks/use-theme';
 import AccountBar from './account-bar';
+import Theme from '../theme';
+import Language from '../language';
 
 const Header: FC = () => {
   const { sortType } = useParams<{ sortType: string }>();
@@ -51,6 +53,10 @@ const Header: FC = () => {
         &nbsp;
       </div>
       <AccountBar />
+      <div className={styles.temporary}>
+        <Language />
+        <Theme />
+      </div>
     </div>
   );
 };
