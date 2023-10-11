@@ -30,7 +30,7 @@ const FeedPost: FC<FeedPostProps> = ({ post, index }) => {
               <span className={styles.domain}>
                 (
                 <Link to={`p/${subplebbitAddress}`} onClick={(e) => e.preventDefault()}>
-                  test
+                  {post?.link}
                 </Link>
                 )
               </span>
@@ -39,17 +39,17 @@ const FeedPost: FC<FeedPostProps> = ({ post, index }) => {
           <p className={styles.tagline}>
             submitted {utils.getFormattedTime(post?.timestamp)} by&nbsp;
             <Link className={styles.author} to={`u/${post?.author.shortAddress}`} onClick={(e) => e.preventDefault()}>
-              test
+              u/{post?.author.shortAddress}
             </Link>
              to
             <Link className={styles.subplebbit} to={`p/${subplebbitAddress}`} onClick={(e) => e.preventDefault()}>
-              test
+              &nbsp;p/{subplebbitAddress.length > 30 ? subplebbitAddress.slice(0, 30) + '...' : subplebbitAddress}
             </Link>
           </p>
           <ul className={styles.buttons}>
             <li className={styles.first}>
               <Link to={`p/${subplebbitAddress}/c/${post?.cid}`} onClick={(e) => e.preventDefault()}>
-                test
+                {post?.replyCount === 0 ? 'comment' : `${post?.replyCount} comments`}
               </Link>
             </li>
             <li className={styles.share}>
