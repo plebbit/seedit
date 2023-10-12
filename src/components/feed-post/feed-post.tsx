@@ -41,7 +41,7 @@ const FeedPost: FC<FeedPostProps> = ({ post, index }) => {
             )}
           </p>
           <p className={styles.tagline}>
-            {t('feed_post_submitted')} {utils.getFormattedTime(post?.timestamp)} {t('feed_post_by')}&nbsp;
+            {t('feed_post_submitted')} {utils.getFormattedTime(post?.timestamp, t)} {t('feed_post_by')}&nbsp;
             <Link className={styles.author} to={`u/${post?.author.shortAddress}`} onClick={(e) => e.preventDefault()}>
               u/{post?.author.shortAddress}
             </Link>

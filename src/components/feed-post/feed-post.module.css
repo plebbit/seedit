@@ -119,6 +119,9 @@
     font-weight: bold;
     text-decoration: none;
     padding: 0 4px 0 4px;
-    cursor: pointer;
+
+    span {
+      cursor: pointer;
+    }
   }
 }
