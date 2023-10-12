@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, useState } from 'react';
 import styles from './feed-post.module.css';
 import { Link } from 'react-router-dom';
 import utils from '../../lib/utils';
@@ -13,6 +13,14 @@ interface FeedPostProps {
 const FeedPost: FC<FeedPostProps> = ({ post, index }) => {
   const subplebbitAddress = post?.subplebbitAddress;
   const { t } = useTranslation();
+  const [expandoVisible, setExpandoVisible] = useState(false);
+  const initialButtonType = post?.link ? 'playButton' : 'textButton';
+  const [buttonType, setButtonType] = useState<'textButton' | 'playButton' | 'closeButton'>(initialButtonType);
+
+  const toggleExpando = () => {
+    setExpandoVisible(!expandoVisible);
+    setButtonType(buttonType === 'closeButton' ? 'textButton' : 'closeButton');
+  };
 
   return (
     <div className={styles.wrapper} key={index}>
@@ -25,7 +33,8 @@ const FeedPost: FC<FeedPostProps> = ({ post, index }) => {
         <div className={styles.topMatter}>
           <p className={styles.title}>
             <Link className={styles.link} to={`p/${subplebbitAddress}/c/${post?.cid}`} onClick={(e) => e.preventDefault()}>
-              {post?.title || post?.content?.slice(0, 80) + '...'}
+              {(post?.title?.length > 90 ? post?.title?.slice(0, 90) + '...' : post?.title) ||
+                (post?.content?.length > 90 ? post?.content?.slice(0, 90) + '...' : post?.content)}
             </Link>
             &nbsp;
             {post?.link && (
@@ -38,6 +47,8 @@ const FeedPost: FC<FeedPostProps> = ({ post, index }) => {
               </span>
             )}
           </p>
+          {post?.content && !post?.link && <div className={styles[buttonType]} onClick={toggleExpando} />}
+          {post?.link && <div className={styles[buttonType]} onClick={toggleExpando} />}
           <p className={styles.tagline}>
             {t('feed_post_submitted')} {utils.getFormattedTime(post?.timestamp, t)} {t('feed_post_by')}&nbsp;
             <Link className={styles.author} to={`u/${post?.author.shortAddress}`} onClick={(e) => e.preventDefault()}>
@@ -70,6 +81,11 @@ const FeedPost: FC<FeedPostProps> = ({ post, index }) => {
               <span>{t('feed_post_crosspost')}</span>
             </li>
           </ul>
+        </div>
+        <div className={expandoVisible ? styles.expando : styles.expandoHidden}>
+          <div className={styles.usertext}>
+            <div className={styles.markdown}>{post?.content}</div>
+          </div>
         </div>
       </div>
     </div>
