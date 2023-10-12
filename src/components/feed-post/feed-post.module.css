@@ -114,10 +114,11 @@
     }
   }
 
-  .share {
+  .button {
     color: var(--text3);
     font-weight: bold;
     text-decoration: none;
-    padding: 0 1px;
+    padding: 0 4px 0 4px;
+    cursor: pointer;
   }
 }

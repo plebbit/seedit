@@ -52,8 +52,20 @@ const FeedPost: FC<FeedPostProps> = ({ post, index }) => {
                 {post?.replyCount === 0 ? 'comment' : `${post?.replyCount} comments`}
               </Link>
             </li>
-            <li className={styles.share}>
+            <li className={styles.button}>
               <span>share</span>
+            </li>
+            <li className={styles.button}>
+              <span>save</span>
+            </li>
+            <li className={styles.button}>
+              <span>hide</span>
+            </li>
+            <li className={styles.button}>
+              <span>report</span>
+            </li>
+            <li className={styles.button}>
+              <span>crosspost</span>
             </li>
           </ul>
         </div>
