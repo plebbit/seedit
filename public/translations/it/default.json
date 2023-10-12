@@ -1,6 +1,6 @@
 {
-  "header_best": "popolari",
-  "header_hot": "hot",
+  "header_best": "migliori",
+  "header_hot": "di tendenza",
   "header_new": "nuovi",
   "header_rising": "in crescita",
   "header_controversial": "discussi",
@@ -9,7 +9,7 @@
   "account_bar_language": "Italiano",
   "dark": "scuro",
   "light": "chiaro",
-  "topbar_my_subs": "i miei subseedits",
+  "topbar_my_subs": "le mie comunità",
   "topbar_edit": "altri",
   "topbar_home": "home",
   "topbar_all": "tutti"
