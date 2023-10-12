@@ -3,6 +3,7 @@ import styles from './feed-post.module.css';
 import { Link } from 'react-router-dom';
 import utils from '../../lib/utils';
 import { Comment } from '@plebbit/plebbit-react-hooks';
+import { useTranslation } from 'react-i18next';
 
 interface FeedPostProps {
   index: number;
@@ -11,12 +12,15 @@ interface FeedPostProps {
 
 const FeedPost: FC<FeedPostProps> = ({ post, index }) => {
   const subplebbitAddress = post?.subplebbitAddress;
+  const { t } = useTranslation();
 
   return (
     <div className={styles.wrapper} key={index}>
       <div className={styles.midcol}>
         <div className={styles.arrowUp}></div>
-        <div className={styles.score}>{post?.upvoteCount === 0 && post?.downvoteCount === 0 ? '•' : post?.upvoteCount - post?.downvoteCount}</div>
+        <div className={styles.score}>
+          {post?.upvoteCount === 0 && post?.downvoteCount === 0 ? '•' : post?.upvoteCount - post?.downvoteCount}
+        </div>
         <div className={styles.arrowDown}></div>
       </div>
       <div className={styles.entry}>
@@ -37,11 +41,11 @@ const FeedPost: FC<FeedPostProps> = ({ post, index }) => {
             )}
           </p>
           <p className={styles.tagline}>
-            submitted {utils.getFormattedTime(post?.timestamp)} by&nbsp;
+            {t('feed_post_submitted')} {utils.getFormattedTime(post?.timestamp)} {t('feed_post_by')}&nbsp;
             <Link className={styles.author} to={`u/${post?.author.shortAddress}`} onClick={(e) => e.preventDefault()}>
               u/{post?.author.shortAddress}
             </Link>
-             to
+              {t('feed_post_to')}
             <Link className={styles.subplebbit} to={`p/${subplebbitAddress}`} onClick={(e) => e.preventDefault()}>
               &nbsp;p/{subplebbitAddress.length > 30 ? subplebbitAddress.slice(0, 30) + '...' : subplebbitAddress}
             </Link>
@@ -49,23 +53,23 @@ const FeedPost: FC<FeedPostProps> = ({ post, index }) => {
           <ul className={styles.buttons}>
             <li className={styles.first}>
               <Link to={`p/${subplebbitAddress}/c/${post?.cid}`} onClick={(e) => e.preventDefault()}>
-                {post?.replyCount === 0 ? 'comment' : `${post?.replyCount} comments`}
+                {post?.replyCount === 0 ? t('feed_post_no_comments') : `${post?.replyCount} ${t('feed_post_comments')}`}
               </Link>
             </li>
             <li className={styles.button}>
-              <span>share</span>
+              <span>{t('feed_post_share')}</span>
             </li>
             <li className={styles.button}>
-              <span>save</span>
+              <span>{t('feed_post_save')}</span>
             </li>
             <li className={styles.button}>
-              <span>hide</span>
+              <span>{t('feed_post_hide')}</span>
             </li>
             <li className={styles.button}>
-              <span>report</span>
+              <span>{t('feed_post_report')}</span>
             </li>
             <li className={styles.button}>
-              <span>crosspost</span>
+              <span>{t('feed_post_crosspost')}</span>
             </li>
           </ul>
         </div>

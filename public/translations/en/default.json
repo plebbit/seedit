@@ -12,5 +12,17 @@
   "topbar_my_subs": "my communities",
   "topbar_edit": "edit",
   "topbar_home": "home",
-  "topbar_all": "all"
+  "topbar_all": "all",
+  "feed_post_submitted": "submitted",
+  "feed_post_by": "by",
+  "feed_post_to": "to",
+  "feed_post_no_comments": "comment",
+  "feed_post_comment": "comment",
+  "feed_post_comments": "comments",
+  "feed_post_share": "share",
+  "feed_post_save": "save",
+  "feed_post_unsave": "unsave",
+  "feed_post_hide": "hide",
+  "feed_post_report": "report",
+  "feed_post_crosspost": "crosspost"
 }
