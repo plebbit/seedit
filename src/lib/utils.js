@@ -1,35 +1,35 @@
-export const getFormattedTime = (unixTimestamp) => {
+export const getFormattedTime = (unixTimestamp, t) => {
   const currentTime = Date.now() / 1000;
   const timeDifference = currentTime - unixTimestamp;
 
   if (timeDifference < 60) {
-    return '1 minute ago';
+    return t('time_1_minute_ago');
   }
   if (timeDifference < 3600) {
-    return `${Math.floor(timeDifference / 60)} minutes ago`;
+    return t('time_x_minutes_ago', { count: Math.floor(timeDifference / 60) });
   }
   if (timeDifference < 7200) {
-    return 'an hour ago';
+    return t('time_1_hour_ago');
   }
   if (timeDifference < 86400) {
-    return `${Math.floor(timeDifference / 3600)} hours ago`;
+    return t('time_x_hours_ago', { count: Math.floor(timeDifference / 3600) });
   }
   if (timeDifference < 172800) {
-    return '1 day ago';
+    return t('time_1_day_ago');
   }
   if (timeDifference < 2592000) {
-    return `${Math.floor(timeDifference / 86400)} days ago`;
+    return t('time_x_days_ago', { count: Math.floor(timeDifference / 86400) });
   }
   if (timeDifference < 5184000) {
-    return '1 month ago';
+    return t('time_1_month_ago');
   }
   if (timeDifference < 31104000) {
-    return `${Math.floor(timeDifference / 2592000)} months ago`;
+    return t('time_x_months_ago', { count: Math.floor(timeDifference / 2592000) });
   }
   if (timeDifference < 62208000) {
-    return 'a year ago';
+    return t('time_1_year_ago');
   }
-  return `${Math.floor(timeDifference / 31104000)} years ago`;
+  return t('time_x_years_ago', { count: Math.floor(timeDifference / 31104000) });
 };
 
 const utils = {
