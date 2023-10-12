@@ -18,9 +18,7 @@ const FeedPost: FC<FeedPostProps> = ({ post, index }) => {
     <div className={styles.wrapper} key={index}>
       <div className={styles.midcol}>
         <div className={styles.arrowUp}></div>
-        <div className={styles.score}>
-          {post?.upvoteCount === 0 && post?.downvoteCount === 0 ? '•' : post?.upvoteCount - post?.downvoteCount}
-        </div>
+        <div className={styles.score}>{post?.upvoteCount === 0 && post?.downvoteCount === 0 ? '•' : post?.upvoteCount - post?.downvoteCount}</div>
         <div className={styles.arrowDown}></div>
       </div>
       <div className={styles.entry}>
@@ -45,7 +43,7 @@ const FeedPost: FC<FeedPostProps> = ({ post, index }) => {
             <Link className={styles.author} to={`u/${post?.author.shortAddress}`} onClick={(e) => e.preventDefault()}>
               u/{post?.author.shortAddress}
             </Link>
-              {t('feed_post_to')}
+             {t('feed_post_to')}
             <Link className={styles.subplebbit} to={`p/${subplebbitAddress}`} onClick={(e) => e.preventDefault()}>
               &nbsp;p/{subplebbitAddress.length > 30 ? subplebbitAddress.slice(0, 30) + '...' : subplebbitAddress}
             </Link>

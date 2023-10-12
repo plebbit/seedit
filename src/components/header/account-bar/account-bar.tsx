@@ -25,7 +25,14 @@ const AccountBar: FC = () => {
         {t('account_bar_preferences')}
       </Link>
       <span className={styles.separator}>|</span>
-      <Link to='/settings' className={styles.preferences} onClick={(e) => { e.preventDefault(); toggleLanguage(); }}>
+      <Link
+        to='/settings'
+        className={styles.preferences}
+        onClick={(e) => {
+          e.preventDefault();
+          toggleLanguage();
+        }}
+      >
         {t('account_bar_language')}
       </Link>
     </div>
