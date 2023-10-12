@@ -2434,21 +2434,6 @@
   dependencies:
     debug "4.3.3"
 
-"@plebbit/plebbit-react-hooks@https://github.com/plebbit/plebbit-react-hooks.git#15c14357459f2370ad080e89b77d7b01869aae09":
-  version "0.0.1"
-  resolved "https://github.com/plebbit/plebbit-react-hooks.git#15c14357459f2370ad080e89b77d7b01869aae09"
-  dependencies:
-    "@plebbit/plebbit-js" "https://github.com/plebbit/plebbit-js.git#6985b2a4194328752c6d76e80470c8079c562869"
-    "@plebbit/plebbit-logger" "https://github.com/plebbit/plebbit-logger.git"
-    assert "2.0.0"
-    ethers "5.6.9"
-    localforage "1.10.0"
-    lodash.isequal "4.5.0"
-    memoizee "0.4.15"
-    quick-lru "5.1.1"
-    uuid "8.3.2"
-    zustand "4.0.0"
-
 "@plebbit/plebbit-react-hooks@https://github.com/plebbit/plebbit-react-hooks.git#30095e763d80e29168dc6ee1fe7515fd91065489":
   version "0.0.1"
   resolved "https://github.com/plebbit/plebbit-react-hooks.git#30095e763d80e29168dc6ee1fe7515fd91065489"
@@ -4760,6 +4745,13 @@ cosmiconfig@^7.0.0:
     path-type "^4.0.0"
     yaml "^1.10.0"
 
+cross-env@^7.0.3:
+  version "7.0.3"
+  resolved "https://registry.yarnpkg.com/cross-env/-/cross-env-7.0.3.tgz#865264b29677dc015ba8418918965dd232fc54cf"
+  integrity sha512-+/HKd6EgcQCJGh2PSjZuUitQBQynKor4wrFbRg4DtAgS1aWO+gU52xpH7M9ScGgXSYmAVS9bIJ8EzuaGw0oNAw==
+  dependencies:
+    cross-spawn "^7.0.1"
+
 cross-fetch@3.1.6:
   version "3.1.6"
   resolved "https://registry.yarnpkg.com/cross-fetch/-/cross-fetch-3.1.6.tgz#bae05aa31a4da760969756318feeee6e70f15d6c"
@@ -4767,7 +4759,7 @@ cross-fetch@3.1.6:
   dependencies:
     node-fetch "^2.6.11"
 
-cross-spawn@^7.0.2, cross-spawn@^7.0.3:
+cross-spawn@^7.0.1, cross-spawn@^7.0.2, cross-spawn@^7.0.3:
   version "7.0.3"
   resolved "https://registry.yarnpkg.com/cross-spawn/-/cross-spawn-7.0.3.tgz#f73a85b9d5d41d045551c177e2882d4ac85728a6"
   integrity sha512-iRDPJKUPVEND7dHPO8rkbOnPpyDygcDFtWjpeWNCgy8WP2rXcxXL8TskReQl6OrB2G7+UJrags1q15Fudc7G6w==
