@@ -94,6 +94,14 @@
   text-decoration: none;
 }
 
+.tagline .author:hover {
+  text-decoration: underline;
+}
+
+.tagline .subplebbit:hover {
+  text-decoration: underline;
+}
+
 .buttons {
   list-style: none;
   margin: 0;
@@ -122,7 +130,13 @@
   font-weight: bold;
   text-decoration: none;
   padding: 0 4px 0 4px;
+}
 
+.buttons .button:hover {
+  text-decoration: underline;
+}
+.buttons .first:hover {
+  text-decoration: underline;
 }
 
 .buttons .button span {
