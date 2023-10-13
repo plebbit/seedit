@@ -5,22 +5,22 @@
   bottom: unset;
   border-bottom-left-radius: 7px;
   border-top-left-radius: 0;
-  background-color: var(--background3);
+  background-color: var(--background-secondary);
   padding: 4px;
   line-height: 12px;
 }
 
 .user {
-  color: var(--border2);
+  color: var(--border-text);
 }
 
 .user a {
   text-decoration: none;
-  color: var(--text1);
+  color: var(--text-primary);
 }
 
 .separator {
- color: var(--text1);
+ color: var(--text-primary);
  margin: 0px .7ex 0px .7ex;
  cursor: default; 
 }
@@ -28,7 +28,7 @@
 .preferences {
   text-decoration: none;
   font-weight: bold;
-  color: var(--text1);
+  color: var(--text-primary);
 }
 
 .preferences:hover {

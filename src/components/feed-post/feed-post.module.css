@@ -54,22 +54,22 @@
 
 .link {
   text-decoration: none;
-  color: var(--link1);
+  color: var(--link);
 }
 
 .link:visited {
-  color: var(--link2);
+  color: var(--link-visited);
 }
 
 .domain {
-  color: var(--text3);
+  color: var(--text-info);
   font-size: x-small;
   white-space: nowrap;
 
 }
 
 .domain a {
-  color: var(--text3);
+  color: var(--text-info);
   display: inline-block;
   overflow: hidden;
   white-space: nowrap;
@@ -90,7 +90,7 @@
 }
 
 .tagline a {
-  color: var(--text1);
+  color: var(--text-primary);
   text-decoration: none;
 }
 
@@ -119,14 +119,14 @@
 }
 
 .buttons li a {
-  color: var(--text3);
+  color: var(--text-info);
   font-weight: bold;
   text-decoration: none;
   padding: 0 1px;
 }
 
 .buttons .button {
-  color: var(--text3);
+  color: var(--text-info);
   font-weight: bold;
   text-decoration: none;
   padding: 0 4px 0 4px;
@@ -206,7 +206,7 @@
 
 .markdown {
   background-color: #fafafa;
-  border: 1px solid var(--text1);
+  border: 1px solid var(--text-primary);
   border-radius: 7px;
   padding: 5px 10px;
   font-weight: 400;
