@@ -1,7 +1,10 @@
-export const getFormattedTime = (unixTimestamp, t) => {
+import i18next from "i18next";
+
+export const getFormattedTime = (unixTimestamp) => {
   const currentTime = Date.now() / 1000;
   const timeDifference = currentTime - unixTimestamp;
-
+  const t = i18next.t;
+  
   if (timeDifference < 60) {
     return t('time_1_minute_ago');
   }

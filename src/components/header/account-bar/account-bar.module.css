@@ -12,11 +12,11 @@
 
 .user {
   color: var(--border2);
+}
 
-  a {
-    text-decoration: none;
-    color: var(--text1);
-  }
+.user a {
+  text-decoration: none;
+  color: var(--text1);
 }
 
 .separator {

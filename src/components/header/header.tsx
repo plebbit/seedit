@@ -6,6 +6,8 @@ import useTheme from '../../hooks/use-theme';
 import AccountBar from './account-bar';
 import Theme from '../theme';
 
+const choices = ['/hot', '/new', '/active', '/controversialAll', '/topAll'];
+
 const Header: FC = () => {
   const { sortType } = useParams<{ sortType: string }>();
   const { t } = useTranslation();
@@ -13,12 +15,13 @@ const Header: FC = () => {
   const [selected, setSelected] = useState(sortType || '/topMonth');
 
   const logoSrc = theme === 'dark' ? '/assets/logo/logo-dark.png' : '/assets/logo/logo-light.png';
-  const choices = ['/topMonth', '/hot', '/new', '/active', '/controversialAll', '/topAll'];
-  const labels = [t('header_best'), t('header_hot'), t('header_new'), t('header_rising'), t('header_controversial'), t('header_top')];
+  const labels = [t('header_hot'), t('header_new'), t('header_rising'), t('header_controversial'), t('header_top')];
 
   useEffect(() => {
     if (sortType) {
       setSelected('/' + sortType);
+    } else {
+      setSelected('/hot');
     }
   }, [sortType]);
 

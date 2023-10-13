@@ -35,27 +35,28 @@
   white-space: nowrap;
   line-height: normal;
 
-  :hover {
-    background-color: var(--background2);
-  }
+}
+
+.dropChoices:hover {
+  background-color: var(--background2);
+}
 
 
-  .choice {
-    cursor: pinter;
-    padding: 2px 3px 1px 3px;
-    display: block;
-  }
+.dropChoices .choice {
+  cursor: pinter;
+  padding: 2px 3px 1px 3px;
+  display: block;
+}
 
-  a {
-    text-decoration: none;
-    color: var(--text1);
-  }
+.dropChoices a {
+  text-decoration: none;
+  color: var(--text1);
 }
 
 .selectedTitle {
   background: none no-repeat scroll center right;
   background-image: none;
-  background-image: url("/public/assets/droparrowgray.gif");
+  background-image: url("/public/assets/buttons/droparrowgray.gif");
   display: inline-block;
   vertical-align: bottom;
   padding-right: 21px;
@@ -69,41 +70,45 @@
 
 .srList {
   overflow: hidden;
+}
 
-  .srBar {
-    list-style-type: none;
-    display: inline;
-    margin: 0;
-    padding: 0;
+.srList .srBar {
+  list-style-type: none;
+  display: inline;
+  margin: 0;
+  padding: 0;
+}
 
-    ul {
-      list-style: none;
-    }
+.srList .srBar ul {
+  list-style: none;
+}
 
-    li {
-      display: inline;
-      white-space: nowrap;
+.srList .srBar li {
+  display: inline;
+  white-space: nowrap;
+}
 
-      a {
-        text-decoration: none;
-        color: var(--text4);
-      }
-  
-      .selected {
-        color: var(--text2) !important;
-        font-weight: bold;
-      }
+.srList .srBar li a {
+  text-decoration: none;
+  color: var(--text4);
+}
 
-      :hover {
-        text-decoration: underline;
-        cursor: pointer;
-      }
-    }
+.srList .srBar li .selected {
+  color: var(--text2) !important;
+  font-weight: bold;
+}
 
-    .separator {
-      margin: 0px .7ex 0px .7ex;
-    }
-  }
+.srList .srBar li .selected:hover {
+  text-decoration: underline;
+}
+
+.srList .srBar .choice:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.srList .srBar .separator {
+  margin: 0px .7ex 0px .7ex;
 }
 
 .moreLink {
@@ -116,4 +121,8 @@
   padding: 0 5px 0 15px;
   font-weight: bold;
   margin: 0;
+}
+
+.moreLink:hover {
+  text-decoration: underline;
 }
