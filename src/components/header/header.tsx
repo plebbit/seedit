@@ -20,6 +20,8 @@ const Header: FC = () => {
   useEffect(() => {
     if (sortType) {
       setSelected('/' + sortType);
+    } else {
+      setSelected('/hot');
     }
   }, [sortType]);
 
