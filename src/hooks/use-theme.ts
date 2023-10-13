@@ -6,7 +6,7 @@ interface ThemeState {
 }
 
 const useThemeStore = create<ThemeState>((set: StoreApi<ThemeState>['setState']) => ({
-  theme: localStorage.getItem('theme') || 'dark',
+  theme: localStorage.getItem('theme') || 'light',
   setTheme: (theme: string) => {
     localStorage.setItem('theme', theme);
     set({ theme });
