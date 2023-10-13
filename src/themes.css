@@ -19,13 +19,13 @@
   --background-primary: #1f1f1f;
   --background-secondary: #3e3e3e;
   --background-text: #0f0f0f;
-  --text: #cacaca;
-  --text-primary: #cacaca;
+  --text: #bfbfbf;
+  --text-primary: #c7c7c7;
   --text-secondary: forestgreen;
-  --text-info: #999;
+  --text-info: #757575;
   --border-primary: #1f1f1f;
   --border-text: #3e3e3e;
-  --link: rgb(51, 125, 255);
-  --link-visited: rgb(174, 115, 229);
+  --link: #f0f0f0;
+  --link-visited: #757575;
   --icon: #c6c6c6;
 }
