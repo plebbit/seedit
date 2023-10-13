@@ -8,9 +8,7 @@ import TopBar from '../topbar';
 import styles from './home.module.scss';
 import FeedPost from '../feed-post';
 
-type SnapshotType = StateSnapshot;
-
-const lastVirtuosoStates: { [key: string]: SnapshotType } = {};
+const lastVirtuosoStates: { [key: string]: StateSnapshot } = {};
 
 const NoPosts = () => 'no posts';
 
@@ -32,7 +30,7 @@ const Home: FC = () => {
 
   useEffect(() => {
     const setLastVirtuosoState = () => {
-      virtuosoRef.current?.getState((snapshot: SnapshotType) => {
+      virtuosoRef.current?.getState((snapshot: StateSnapshot) => {
         if (snapshot?.ranges?.length) {
           lastVirtuosoStates[sortType] = snapshot;
         }
