@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import useTheme from './hooks/use-theme';
-import styles from './app.module.css';
+import styles from './app.module.scss';
 import Home from './components/home';
 
 function App() {

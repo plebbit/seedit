@@ -1,0 +1,36 @@
+.header {
+  position: absolute;
+  right: 0;
+  top: 0px;
+  bottom: unset;
+  border-bottom-left-radius: 7px;
+  border-top-left-radius: 0;
+  background-color: var(--background3);
+  padding: 4px;
+  line-height: 12px;
+
+  .user {
+    color: var(--border2);
+
+    a {
+      text-decoration: none;
+      color: var(--text1);
+    }
+  }
+
+  .separator {
+    color: var(--text1);
+    margin: 0px .7ex 0px .7ex;
+    cursor: default;
+  }
+
+  .preferences {
+    text-decoration: none;
+    font-weight: bold;
+    color: var(--text1);
+
+    &:hover {
+      text-decoration: underline !important;
+    }
+  }
+}
