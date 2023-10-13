@@ -50,7 +50,7 @@ const FeedPost: FC<FeedPostProps> = ({ post, index }) => {
           {post?.content && !post?.link && <div className={styles[buttonType]} onClick={toggleExpando} />}
           {post?.link && <div className={styles[buttonType]} onClick={toggleExpando} />}
           <p className={styles.tagline}>
-            {t('feed_post_submitted')} {utils.getFormattedTime(post?.timestamp, t)} {t('feed_post_by')}&nbsp;
+            {t('feed_post_submitted')} {utils.getFormattedTime(post?.timestamp)} {t('feed_post_by')}&nbsp;
             <Link className={styles.author} to={`u/${post?.author.shortAddress}`} onClick={(e) => e.preventDefault()}>
               u/{post?.author.shortAddress}
             </Link>
