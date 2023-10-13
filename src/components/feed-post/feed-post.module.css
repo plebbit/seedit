@@ -1,0 +1,200 @@
+.wrapper {
+  margin-top: -15px;
+}
+
+.midcol {
+  font-weight: bold;
+  font-size: small;
+  float: left;
+  padding-right: 7px;
+  padding-left: 7px;
+  background: transparent;
+  overflow: hidden;
+}
+
+.arrowUp {
+  background-image: url("/public/assets/buttons/upvote.png");
+  margin: 2px 0px 0px 0px;
+  width: 15px;
+  height: 14px;
+  display: block;
+  cursor: pointer;
+}
+
+.arrowDown {
+  background-image: url("/public/assets/buttons/downvote.png");
+  margin: 2px 0px 0px 0px;
+  width: 15px;
+  height: 14px;
+  display: block;
+  cursor: pointer;
+}
+
+.score {
+  text-align: center;
+  color: var(--icon);
+}
+
+.entry {
+  overflow: visible;
+  margin-left: 3px;
+  padding: 0;
+}
+
+.title {
+  font-size: medium;
+  font-weight: normal;
+  margin-bottom: 1px;
+  outline: none;
+  margin-right: .4em;
+  padding: 0px;
+  overflow: hidden;
+  unicode-bidi: isolate;
+}
+
+.link {
+  text-decoration: none;
+  color: var(--link1);
+}
+
+.link:visited {
+  color: var(--link2);
+}
+
+.domain {
+  color: var(--text3);
+  font-size: x-small;
+  white-space: nowrap;
+
+  a {
+    color: var(--text3);
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    vertical-align: middle;
+    max-width: 19em;
+    text-decoration: none;
+  }
+}
+
+.domain:hover {
+  text-decoration: underline;
+  max-width: none;
+}
+
+.tagline {
+  margin: 0;
+  padding: 0;
+
+  a {
+    color: var(--text1);
+    text-decoration: none;
+  }
+}
+
+.buttons {
+  list-style: none;
+  margin: 0;
+  padding: 1px 0;
+  display: block;
+
+  li {
+    display: inline-block;
+    border: none;
+    padding-right: 4px;
+    line-height: 1.6em;
+    white-space: nowrap;
+
+    a {
+      color: var(--text3);
+      font-weight: bold;
+      text-decoration: none;
+      padding: 0 1px;
+    }
+  }
+
+  .button {
+    color: var(--text3);
+    font-weight: bold;
+    text-decoration: none;
+    padding: 0 4px 0 4px;
+
+    span {
+      cursor: pointer;
+    }
+  }
+}
+
+.textButton {
+  background-image: url("/public/assets/buttons/text-button.png");
+  background-size: cover;
+  float: left;
+  height: 23px;
+  width: 23px;
+  display: block;
+  margin: 2px 5px 2px 0;
+  cursor: pointer;
+}
+
+.textButton:hover {
+  background-image: url("/public/assets/buttons/text-button-hover.png");
+}
+
+.playButton {
+  background-image: url("/public/assets/buttons/play-button.png");
+  background-size: cover;
+  float: left;
+  height: 23px;
+  width: 23px;
+  display: block;
+  margin: 2px 5px 2px 0;
+  cursor: pointer;
+}
+
+.playButton:hover {
+  background-image: url("/public/assets/buttons/play-button-hover.png");
+}
+
+.closeButton {
+  background-image: url("/public/assets/buttons/close-button.png");
+  background-size: cover;
+  float: left;
+  height: 23px;
+  width: 23px;
+  display: block;
+  margin: 2px 5px 2px 0;
+  cursor: pointer;
+}
+
+.closeButton:hover {
+  background-image: url("/public/assets/buttons/close-button-hover.png");
+}
+
+.expandoHidden {
+  display: none;
+}
+
+.expando {
+  display: block;
+  margin: 5px 0 5px 0;
+  clear: left;
+  position: relative;
+}
+
+.usertext {
+  unicode-bidi: isolate;
+  font-size: small;
+}
+
+.markdown {
+  background-color: #fafafa;
+  border: 1px solid var(--text1);
+  border-radius: 7px;
+  padding: 5px 10px;
+  font-weight: 400;
+  color: #222222;
+  max-width: 60em;
+  word-wrap: break-word;
+  font-size: 1em;
+}

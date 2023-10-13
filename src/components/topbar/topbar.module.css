@@ -35,12 +35,13 @@
   white-space: nowrap;
   line-height: normal;
 
-  &:hover {
+  :hover {
     background-color: var(--background2);
   }
 
+
   .choice {
-    cursor: pointer;
+    cursor: pinter;
     padding: 2px 3px 1px 3px;
     display: block;
   }
@@ -54,7 +55,7 @@
 .selectedTitle {
   background: none no-repeat scroll center right;
   background-image: none;
-  background-image: url("../../../public/assets/buttons/droparrowgray.gif");
+  background-image: url("/public/assets/buttons/droparrowgray.gif");
   display: inline-block;
   vertical-align: bottom;
   padding-right: 21px;
@@ -87,13 +88,13 @@
         text-decoration: none;
         color: var(--text4);
       }
-
+  
       .selected {
         color: var(--text2) !important;
         font-weight: bold;
       }
 
-      &:hover {
+      :hover {
         text-decoration: underline;
         cursor: pointer;
       }

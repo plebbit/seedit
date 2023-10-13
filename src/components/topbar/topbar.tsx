@@ -1,7 +1,7 @@
 import { FC, useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import styles from './topbar.module.scss';
+import styles from './topbar.module.css';
 import { useAccount } from '@plebbit/plebbit-react-hooks';
 import useDefaultSubplebbits from '../../hooks/use-default-subplebbits';
 

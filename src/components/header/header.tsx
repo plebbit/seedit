@@ -1,7 +1,7 @@
 import { FC, useState, useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import styles from './header.module.scss';
+import styles from './header.module.css';
 import useTheme from '../../hooks/use-theme';
 import AccountBar from './account-bar';
 import Theme from '../theme';

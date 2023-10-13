@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
-import styles from './account-bar.module.scss';
+import styles from './account-bar.module.css';
 import { useAccount } from '@plebbit/plebbit-react-hooks';
 
 const AccountBar: FC = () => {

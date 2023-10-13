@@ -5,7 +5,7 @@ import { useFeed } from '@plebbit/plebbit-react-hooks';
 import useDefaultSubplebbits from '../../hooks/use-default-subplebbits';
 import Header from '../header';
 import TopBar from '../topbar';
-import styles from './home.module.scss';
+import styles from './home.module.css';
 import FeedPost from '../feed-post';
 
 const lastVirtuosoStates: { [key: string]: StateSnapshot } = {};

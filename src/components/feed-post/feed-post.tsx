@@ -1,5 +1,5 @@
 import { FC, useState } from 'react';
-import styles from './feed-post.module.scss';
+import styles from './feed-post.module.css';
 import { Link } from 'react-router-dom';
 import utils from '../../lib/utils';
 import { Comment } from '@plebbit/plebbit-react-hooks';

@@ -4,6 +4,7 @@
   z-index: 1;
   min-height: 100%;
   color: var(--text3);
+
   overflow-y: hidden;
   overflow-x: hidden;
   min-height: 100vh;
