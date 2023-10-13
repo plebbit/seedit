@@ -98,7 +98,11 @@
   font-weight: bold;
 }
 
-.srList .srBar li:hover {
+.srList .srBar li .selected:hover {
+  text-decoration: underline;
+}
+
+.srList .srBar .choice:hover {
   text-decoration: underline;
   cursor: pointer;
 }
@@ -117,4 +121,8 @@
   padding: 0 5px 0 15px;
   font-weight: bold;
   margin: 0;
+}
+
+.moreLink:hover {
+  text-decoration: underline;
 }
