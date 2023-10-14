@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import utils from '../../lib/utils';
 import { Comment } from '@plebbit/plebbit-react-hooks';
 import { useTranslation } from 'react-i18next';
+import Embed from '../embed';
 
 interface FeedPostProps {
   index: number;
@@ -15,13 +16,16 @@ const FeedPost: FC<FeedPostProps> = ({ post, index }) => {
   const { t } = useTranslation();
   const [expandoVisible, setExpandoVisible] = useState(false);
   const commentMediaInfo = utils.getCommentMediaInfo(post);
-  const hasMedia =
+  const hasThumbnail =
     post.link &&
     commentMediaInfo &&
-    (commentMediaInfo.type === 'image' || commentMediaInfo.type === 'video' || (commentMediaInfo.type === 'webpage' && commentMediaInfo.thumbnail))
+    (commentMediaInfo.type === 'image' ||
+      commentMediaInfo.type === 'video' ||
+      (commentMediaInfo.type === 'webpage' && commentMediaInfo.thumbnail) ||
+      (commentMediaInfo.type === 'iframe' && (commentMediaInfo.scrapedThumbnailUrl || commentMediaInfo.thumbnail)))
       ? true
       : false;
-  const initialButtonType = hasMedia || commentMediaInfo?.type === 'audio' ? 'playButton' : 'textButton';
+  const initialButtonType = hasThumbnail || commentMediaInfo?.type === 'audio' || commentMediaInfo?.type === 'iframe' ? 'playButton' : 'textButton';
   const [buttonType, setButtonType] = useState<'textButton' | 'playButton' | 'closeButton'>(initialButtonType);
   const toggleExpando = () => {
     setExpandoVisible(!expandoVisible);
@@ -46,13 +50,14 @@ const FeedPost: FC<FeedPostProps> = ({ post, index }) => {
         <div className={styles.score}>{post?.upvoteCount === 0 && post?.downvoteCount === 0 ? '•' : post?.upvoteCount - post?.downvoteCount}</div>
         <div className={styles.arrowDown}></div>
       </div>
-      {hasMedia && (
+      {hasThumbnail && (
         <span style={{ width: displayWidth, height: displayHeight }} className={styles.thumbnail}>
           <Link to={`p/${subplebbitAddress}/c/${post?.cid}`} onClick={(e) => e.preventDefault()}>
             {commentMediaInfo?.type === 'image' && <img src={commentMediaInfo.url} alt='thumbnail' />}
             {commentMediaInfo?.type === 'video' &&
               (commentMediaInfo.thumbnail ? <img src={commentMediaInfo.thumbnail} alt='thumbnail' /> : <video src={commentMediaInfo.url} />)}
             {commentMediaInfo?.type === 'webpage' && commentMediaInfo.thumbnail && <img src={commentMediaInfo.thumbnail} alt='thumbnail' />}
+            {commentMediaInfo?.type === 'iframe' && <img src={commentMediaInfo.scrapedThumbnailUrl || commentMediaInfo.thumbnail} alt='thumbnail' />}
           </Link>
         </span>
       )}
@@ -110,7 +115,7 @@ const FeedPost: FC<FeedPostProps> = ({ post, index }) => {
           </ul>
         </div>
         <div className={expandoVisible ? styles.expando : styles.expandoHidden}>
-          {(hasMedia || commentMediaInfo?.type === 'audio') && (
+          {post?.link && (
             <div className={styles.mediaPreview}>
               <Link to={`p/${subplebbitAddress}/c/${post?.cid}`} onClick={(e) => e.preventDefault()}>
                 {commentMediaInfo?.type === 'image' && <img src={commentMediaInfo.url} alt='thumbnail' />}
@@ -118,6 +123,7 @@ const FeedPost: FC<FeedPostProps> = ({ post, index }) => {
                   (commentMediaInfo.thumbnail ? <img src={commentMediaInfo.thumbnail} alt='thumbnail' /> : <video src={commentMediaInfo.url} controls />)}
                 {commentMediaInfo?.type === 'webpage' && commentMediaInfo.thumbnail && <img src={commentMediaInfo.thumbnail} alt='thumbnail' />}
                 {commentMediaInfo?.type === 'audio' && <audio src={commentMediaInfo.url} controls />}
+                {commentMediaInfo?.type === 'iframe' && <Embed url={commentMediaInfo.url} />}
               </Link>
             </div>
           )}
