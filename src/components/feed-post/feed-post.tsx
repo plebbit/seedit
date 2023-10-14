@@ -15,13 +15,13 @@ const FeedPost: FC<FeedPostProps> = ({ post, index }) => {
   const { t } = useTranslation();
   const [expandoVisible, setExpandoVisible] = useState(false);
   const commentMediaInfo = utils.getCommentMediaInfo(post);
-  const hasMedia = post.link && commentMediaInfo &&
-    (commentMediaInfo.type === 'image' ||
-      commentMediaInfo.type === 'video' ||
-      (commentMediaInfo.type === 'webpage' && commentMediaInfo.thumbnail))
+  const hasMedia =
+    post.link &&
+    commentMediaInfo &&
+    (commentMediaInfo.type === 'image' || commentMediaInfo.type === 'video' || (commentMediaInfo.type === 'webpage' && commentMediaInfo.thumbnail))
       ? true
       : false;
-  const initialButtonType = hasMedia ? 'playButton' : 'textButton';
+  const initialButtonType = hasMedia || commentMediaInfo?.type === 'audio' ? 'playButton' : 'textButton';
   const [buttonType, setButtonType] = useState<'textButton' | 'playButton' | 'closeButton'>(initialButtonType);
   const toggleExpando = () => {
     setExpandoVisible(!expandoVisible);
@@ -30,14 +30,14 @@ const FeedPost: FC<FeedPostProps> = ({ post, index }) => {
 
   let displayWidth, displayHeight;
 
-    if (post.linkWidth && post.linkHeight) {
-      let scale = Math.min(1, 70 / Math.max(post.linkWidth, post.linkHeight));
-      displayWidth = `${post.linkWidth * scale}px`;
-      displayHeight = `${post.linkHeight * scale}px`;
-    } else {
-      displayWidth = '70px';
-      displayHeight = '70px';
-    }
+  if (post.linkWidth && post.linkHeight) {
+    let scale = Math.min(1, 70 / Math.max(post.linkWidth, post.linkHeight));
+    displayWidth = `${post.linkWidth * scale}px`;
+    displayHeight = `${post.linkHeight * scale}px`;
+  } else {
+    displayWidth = '70px';
+    displayHeight = '70px';
+  }
 
   return (
     <div className={styles.wrapper} key={index}>
@@ -47,15 +47,12 @@ const FeedPost: FC<FeedPostProps> = ({ post, index }) => {
         <div className={styles.arrowDown}></div>
       </div>
       {hasMedia && (
-        <span style={{width: displayWidth, height: displayHeight}} className={styles.thumbnail}>
+        <span style={{ width: displayWidth, height: displayHeight }} className={styles.thumbnail}>
           <Link to={`p/${subplebbitAddress}/c/${post?.cid}`} onClick={(e) => e.preventDefault()}>
-            {commentMediaInfo?.type === 'image' && 
-            <img src={commentMediaInfo.url} alt="thumbnail" />}
-            {commentMediaInfo?.type === 'video' && (commentMediaInfo.thumbnail ? 
-              <img src={commentMediaInfo.thumbnail} alt="thumbnail" /> : 
-              <video src={commentMediaInfo.url} />
-            )}
-            {commentMediaInfo?.type === 'webpage' && commentMediaInfo.thumbnail && <img src={commentMediaInfo.thumbnail} alt="thumbnail" />}
+            {commentMediaInfo?.type === 'image' && <img src={commentMediaInfo.url} alt='thumbnail' />}
+            {commentMediaInfo?.type === 'video' &&
+              (commentMediaInfo.thumbnail ? <img src={commentMediaInfo.thumbnail} alt='thumbnail' /> : <video src={commentMediaInfo.url} />)}
+            {commentMediaInfo?.type === 'webpage' && commentMediaInfo.thumbnail && <img src={commentMediaInfo.thumbnail} alt='thumbnail' />}
           </Link>
         </span>
       )}
@@ -113,16 +110,14 @@ const FeedPost: FC<FeedPostProps> = ({ post, index }) => {
           </ul>
         </div>
         <div className={expandoVisible ? styles.expando : styles.expandoHidden}>
-          {hasMedia && (
+          {(hasMedia || commentMediaInfo?.type === 'audio') && (
             <div className={styles.mediaPreview}>
               <Link to={`p/${subplebbitAddress}/c/${post?.cid}`} onClick={(e) => e.preventDefault()}>
-                {commentMediaInfo?.type === 'image' && 
-                <img src={commentMediaInfo.url} alt="thumbnail" />}
-                {commentMediaInfo?.type === 'video' && (commentMediaInfo.thumbnail ? 
-                  <img src={commentMediaInfo.thumbnail} alt="thumbnail" /> : 
-                  <video src={commentMediaInfo.url} controls />
-                )}
-                {commentMediaInfo?.type === 'webpage' && commentMediaInfo.thumbnail && <img src={commentMediaInfo.thumbnail} alt="thumbnail" />}
+                {commentMediaInfo?.type === 'image' && <img src={commentMediaInfo.url} alt='thumbnail' />}
+                {commentMediaInfo?.type === 'video' &&
+                  (commentMediaInfo.thumbnail ? <img src={commentMediaInfo.thumbnail} alt='thumbnail' /> : <video src={commentMediaInfo.url} controls />)}
+                {commentMediaInfo?.type === 'webpage' && commentMediaInfo.thumbnail && <img src={commentMediaInfo.thumbnail} alt='thumbnail' />}
+                {commentMediaInfo?.type === 'audio' && <audio src={commentMediaInfo.url} controls />}
               </Link>
             </div>
           )}
