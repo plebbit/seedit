@@ -3,6 +3,7 @@
   --background-primary: #cee3f8;
   --background-secondary: #eff7ff;
   --background-text: #f0f0f0;
+  --background-thumbnail: rgba(0, 0, 0, 0.05);
   --text: black;
   --text-primary: #369;
   --text-secondary: #3e7d2e;
@@ -19,6 +20,7 @@
   --background-primary: #1f1f1f;
   --background-secondary: #3e3e3e;
   --background-text: #0f0f0f;
+  --background-thumbnail: rgba(255, 255, 255, 0.01);
   --text: #bfbfbf;
   --text-primary: #c7c7c7;
   --text-secondary: forestgreen;
