@@ -4,7 +4,9 @@
   --background-secondary: #eff7ff;
   --background-text: #f0f0f0;
   --background-thumbnail: rgba(0, 0, 0, 0.05);
+  --background-markdown: #fafafa;
   --text: black;
+  --text-markdown: #222222;
   --text-primary: #369;
   --text-secondary: #3e7d2e;
   --text-info: #888;
@@ -21,7 +23,9 @@
   --background-secondary: #3e3e3e;
   --background-text: #0f0f0f;
   --background-thumbnail: rgba(255, 255, 255, 0.01);
+  --background-markdown: #1f1f1f;
   --text: #bfbfbf;
+  --text-markdown: #f0f0f0;
   --text-primary: #c7c7c7;
   --text-secondary: forestgreen;
   --text-info: #757575;

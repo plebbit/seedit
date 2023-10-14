@@ -214,12 +214,12 @@
 }
 
 .markdown {
-  background-color: #fafafa;
+  background-color: var(--background-markdown);
   border: 1px solid var(--text-primary);
   border-radius: 7px;
   padding: 5px 10px;
   font-weight: 400;
-  color: #222222;
+  color: var(--text-markdown);
   max-width: 60em;
   word-wrap: break-word;
   font-size: 1em;
