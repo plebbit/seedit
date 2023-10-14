@@ -3005,6 +3005,11 @@
   resolved "https://registry.yarnpkg.com/@types/long/-/long-4.0.2.tgz#b74129719fc8d11c01868010082d483b7545591a"
   integrity sha512-MqTGEo5bj5t157U6fA/BiDynNkn0YknVdh48CMPkTSpFTVmvao5UQmm7uEF6xBEo7qIMAlY/JSleYaE6VOdpaA==
 
+"@types/memoizee@^0.4.9":
+  version "0.4.9"
+  resolved "https://registry.yarnpkg.com/@types/memoizee/-/memoizee-0.4.9.tgz#03671fa7919811d076685d61ee77861f478476e7"
+  integrity sha512-438FHDRBM/16XqW3WpPRLbu93e0/EfinGJS55MfliP7P4iQlTsPCmhA1R4iwSojZX+9I+gk5XeBS39VcrTrCMg==
+
 "@types/mime@*":
   version "3.0.2"
   resolved "https://registry.yarnpkg.com/@types/mime/-/mime-3.0.2.tgz#c1ae807f13d308ee7511a5b81c74f327028e66e8"
@@ -4745,7 +4750,7 @@ cosmiconfig@^7.0.0:
     path-type "^4.0.0"
     yaml "^1.10.0"
 
-cross-env@^7.0.3:
+cross-env@7.0.3:
   version "7.0.3"
   resolved "https://registry.yarnpkg.com/cross-env/-/cross-env-7.0.3.tgz#865264b29677dc015ba8418918965dd232fc54cf"
   integrity sha512-+/HKd6EgcQCJGh2PSjZuUitQBQynKor4wrFbRg4DtAgS1aWO+gU52xpH7M9ScGgXSYmAVS9bIJ8EzuaGw0oNAw==
@@ -6140,7 +6145,7 @@ ext-list@^2.0.0:
   dependencies:
     mime-db "^1.28.0"
 
-ext-name@^5.0.0:
+ext-name@5.0.0:
   version "5.0.0"
   resolved "https://registry.yarnpkg.com/ext-name/-/ext-name-5.0.0.tgz#70781981d183ee15d13993c8822045c506c8f0a6"
   integrity sha512-yblEwXAbGv1VQDmow7s38W77hzAgJAO50ztBLMcUyUBfxv1HC+LGwtiEN+Co6LtlqT/5uwVOxsD4TNIilWhwdQ==
@@ -8789,7 +8794,7 @@ memfs@^3.1.2, memfs@^3.4.3:
   dependencies:
     fs-monkey "^1.0.4"
 
-memoizee@0.4.15, memoizee@^0.4.15:
+memoizee@0.4.15:
   version "0.4.15"
   resolved "https://registry.yarnpkg.com/memoizee/-/memoizee-0.4.15.tgz#e6f3d2da863f318d02225391829a6c5956555b72"
   integrity sha512-UBWmJpLZd5STPm7PMUlOw/TSy972M+z8gcyQ5veOnSDRREz/0bmpyTfKt3/51DhEBqCZQn1udM/5flcSPYhkdQ==
@@ -13007,7 +13012,7 @@ zustand@4.0.0:
   dependencies:
     use-sync-external-store "1.2.0"
 
-zustand@^4.4.3:
+zustand@4.4.3:
   version "4.4.3"
   resolved "https://registry.yarnpkg.com/zustand/-/zustand-4.4.3.tgz#1d54cf7fa4507ad8bf58e2f13e08ddc8a6730128"
   integrity sha512-oRy+X3ZazZvLfmv6viIaQmtLOMeij1noakIsK/Y47PWYhT8glfXzQ4j0YcP5i0P0qI1A4rIB//SGROGyZhx91A==
