@@ -5,5 +5,5 @@ html, body {
 
 body {
   margin: 0;
-  background-color: var(--light1);
+  background-color: var(--background);
 }
