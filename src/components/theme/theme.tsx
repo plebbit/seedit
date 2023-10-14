@@ -10,7 +10,7 @@ const Theme: FC = () => {
     <div style={{ padding: '5px' }}>
       <select value={theme} onChange={(e) => setTheme(e.target.value)}>
         <option value='light'>{t('light')}</option>
-        <option value='dark'>{t('dark')}</option>
+        <option value='black'>{t('black')}</option>
       </select>
     </div>
   );

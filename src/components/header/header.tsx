@@ -14,7 +14,7 @@ const Header: FC = () => {
   const [theme] = useTheme();
   const [selected, setSelected] = useState(sortType || '/topMonth');
 
-  const logoSrc = theme === 'dark' ? '/assets/logo/logo-dark.png' : '/assets/logo/logo-light.png';
+  const logoSrc = theme === 'black' ? '/assets/logo/logo-dark.png' : '/assets/logo/logo-light.png';
   const labels = [t('header_hot'), t('header_new'), t('header_rising'), t('header_controversial'), t('header_top')];
 
   useEffect(() => {

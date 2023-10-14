@@ -1,7 +1,7 @@
 .header {
-  border-bottom: 1px solid var(--border1);
+  border-bottom: 1px solid var(--border-primary);
   position: relative;
-  background-color: var(--background2);
+  background-color: var(--background-primary);
 }
 
 .headerBottomLeft {
@@ -47,16 +47,16 @@
 }
 
 .tabMenu li .selected {
-  color: var(--text2);
-  background-color: var(--background1);
-  border: 1px solid var(--border1);
-  border-bottom: 1px solid var(--background1);
+  color: var(--text-secondary);
+  background-color: var(--background);
+  border: 1px solid var(--border-primary);
+  border-bottom: 1px solid var(--background);
 }
 
 .tabMenu li .choice {
-  color: var(--text1);
-  background-color: var(--background3);
-  border-bottom: 1px solid var(--border1);
+  color: var(--text-primary);
+  background-color: var(--background-secondary);
+  border-bottom: 1px solid var(--border-primary);
 }
 
 .tabMenu li a {

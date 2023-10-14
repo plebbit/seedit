@@ -1,8 +1,8 @@
 .headerArea {
-  background-color: var(--background4);
+  background-color: var(--background-text);
   white-space: nowrap;
   text-transform: uppercase;
-  border-bottom: 1px solid var(--border2);
+  border-bottom: 1px solid var(--border-text);
   font-size: 90%;
   height: 18px;
   line-height: 18px;
@@ -29,16 +29,16 @@
   margin-left: 5px;
   position: absolute;
   left: 0px;
-  border: 1px solid var(--border2);
+  border: 1px solid var(--border-text);
   z-index: 100;
-  background-color: var(--background1);
+  background-color: var(--background);
   white-space: nowrap;
   line-height: normal;
 
 }
 
 .dropChoices:hover {
-  background-color: var(--background2);
+  background-color: var(--background-primary);
 }
 
 
@@ -50,7 +50,7 @@
 
 .dropChoices a {
   text-decoration: none;
-  color: var(--text1);
+  color: var(--text-primary);
 }
 
 .selectedTitle {
@@ -61,7 +61,7 @@
   vertical-align: bottom;
   padding-right: 21px;
   padding-left: 5px;
-  color: var(--text4);
+  color: var(--text);
   font-weight: normal;
   margin-left: -5px;
   margin-right: 10px;
@@ -90,11 +90,11 @@
 
 .srList .srBar li a {
   text-decoration: none;
-  color: var(--text4);
+  color: var(--text);
 }
 
 .srList .srBar li .selected {
-  color: var(--text2) !important;
+  color: var(--text-secondary) !important;
   font-weight: bold;
 }
 
@@ -112,9 +112,9 @@
 }
 
 .moreLink {
-  color: var(--text4);
+  color: var(--text);
   text-decoration: none;
-  background-color: var(--background4);
+  background-color: var(--background-text);
   position: absolute;
   right: 0;
   top: 0;
