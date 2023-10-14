@@ -67,9 +67,9 @@ const FeedPost: FC<FeedPostProps> = ({ post, index }) => {
             {post?.link && (
               <span className={styles.domain}>
                 (
-                <Link to={`p/${subplebbitAddress}`} onClick={(e) => e.preventDefault()}>
+                <a href={post?.link} target='_blank' rel='noreferrer'>
                   {post?.link}
-                </Link>
+                </a>
                 )
               </span>
             )}
