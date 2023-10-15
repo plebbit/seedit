@@ -1,4 +1,4 @@
-.wrapper {
+.container {
   clear: both;
   padding-bottom: 8px;
 }
@@ -13,23 +13,25 @@
   overflow: hidden;
 }
 
-.arrowUp {
-  background-image: url("/public/assets/buttons/upvote.png");
-  margin-top: 2px;
+.arrowWrapper {
+  padding-top: 2px;
+}
+
+.arrowCommon {
   width: 15px;
   height: 14px;
   display: block;
   cursor: pointer;
 }
 
+.arrowUp {
+  background-image: url("/public/assets/buttons/upvote.png");
+}
+
 .arrowDown {
   background-image: url("/public/assets/buttons/downvote.png");
-  margin-top: 2px;
-  width: 15px;
-  height: 14px;
-  display: block;
-  cursor: pointer;
 }
+
 
 .score {
   text-align: center;
@@ -39,8 +41,11 @@
 .thumbnail {
   position: relative;
   float: left;
-  margin-right: 5px;
-  margin-bottom: 10px;
+  padding-right: 5px;
+  padding-bottom: 10px;
+}
+
+.wrapper {
   background-color: var(--background-thumbnail);
 }
 
@@ -58,7 +63,6 @@
 .title {
   font-size: medium;
   font-weight: normal;
-  margin: 0;
   overflow: hidden;
 }
 
@@ -93,11 +97,6 @@
   max-width: none;
 }
 
-.tagline {
-  margin: 0;
-  padding: 0;
-}
-
 .tagline a {
   color: var(--text-primary);
   text-decoration: none;
@@ -113,7 +112,6 @@
 
 .buttons {
   list-style: none;
-  margin: 0;
   padding: 1px 0;
   display: block;
 }
@@ -152,15 +150,21 @@
   cursor: pointer;
 }
 
-.textButton {
-  background-image: url("/public/assets/buttons/text-button.png");
-  background-size: cover;
+.buttonWrapper {
+  padding: 2px 5px 2px 0;
   float: left;
+  cursor: pointer;
+}
+
+.buttonCommon {
+  background-size: cover;
   height: 23px;
   width: 23px;
   display: block;
-  margin: 2px 5px 2px 0;
-  cursor: pointer;
+}
+
+.textButton {
+  background-image: url("/public/assets/buttons/text-button.png");
 }
 
 .textButton:hover {
@@ -169,13 +173,6 @@
 
 .playButton {
   background-image: url("/public/assets/buttons/play-button.png");
-  background-size: cover;
-  float: left;
-  height: 23px;
-  width: 23px;
-  display: block;
-  margin: 2px 5px 2px 0;
-  cursor: pointer;
 }
 
 .playButton:hover {
@@ -184,18 +181,12 @@
 
 .closeButton {
   background-image: url("/public/assets/buttons/close-button.png");
-  background-size: cover;
-  float: left;
-  height: 23px;
-  width: 23px;
-  display: block;
-  margin: 2px 5px 2px 0;
-  cursor: pointer;
 }
 
 .closeButton:hover {
   background-image: url("/public/assets/buttons/close-button-hover.png");
 }
+
 
 .expandoHidden {
   display: none;
@@ -203,7 +194,7 @@
 
 .expando {
   display: block;
-  margin: 5px 0 5px 0;
+  padding: 5px 0 5px 0;
   clear: left;
   position: relative;
 }
@@ -214,12 +205,12 @@
 }
 
 .markdown {
-  background-color: #fafafa;
+  background-color: var(--background-markdown);
   border: 1px solid var(--text-primary);
   border-radius: 7px;
   padding: 5px 10px;
   font-weight: 400;
-  color: #222222;
+  color: var(--text-markdown);
   max-width: 60em;
   word-wrap: break-word;
   font-size: 1em;
@@ -234,4 +225,10 @@
 .mediaPreview img, .mediaPreview video {
   width: 100%;
   height: auto;
+}
+
+.mediaPreview iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
 }
