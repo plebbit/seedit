@@ -94,7 +94,7 @@ const FeedPost: FC<FeedPostProps> = ({ post, index }) => {
           <ul className={styles.buttons}>
             <li className={styles.first}>
               <Link to={`p/${subplebbitAddress}/c/${post?.cid}`} onClick={(e) => e.preventDefault()}>
-                {post?.replyCount === 0 ? t('feed_post_no_comments') : `${post?.replyCount} ${t('feed_post_comments')}`}
+                {post?.replyCount === 0 ? t('feed_post_no_comments') : `${post?.replyCount} ${post?.replyCount === 1 ? t('feed_post_comment') : t('feed_post_comments')}`}
               </Link>
             </li>
             <li className={styles.button}>
