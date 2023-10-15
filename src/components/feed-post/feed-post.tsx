@@ -22,7 +22,7 @@ const FeedPost: FC<FeedPostProps> = ({ post, index }) => {
     (commentMediaInfo.type === 'image' ||
       commentMediaInfo.type === 'video' ||
       (commentMediaInfo.type === 'webpage' && commentMediaInfo.thumbnail) ||
-      (commentMediaInfo.type === 'iframe' && (commentMediaInfo.scrapedThumbnailUrl || commentMediaInfo.thumbnail)))
+      (commentMediaInfo.type === 'iframe' && commentMediaInfo.thumbnail))
       ? true
       : false;
   const initialButtonType = hasThumbnail || commentMediaInfo?.type === 'audio' || commentMediaInfo?.type === 'iframe' ? 'playButton' : 'textButton';
@@ -64,7 +64,6 @@ const FeedPost: FC<FeedPostProps> = ({ post, index }) => {
               (commentMediaInfo.thumbnail ? <img src={commentMediaInfo.thumbnail} alt='thumbnail' /> : <video src={commentMediaInfo.url} />)}
             {commentMediaInfo?.type === 'webpage' && commentMediaInfo.thumbnail && <img src={commentMediaInfo.thumbnail} alt='thumbnail' />}
             {commentMediaInfo?.type === 'iframe' && commentMediaInfo.thumbnail && <img src={commentMediaInfo.thumbnail} alt='thumbnail' />}
-            {commentMediaInfo?.type === 'iframe' && commentMediaInfo.scrapedThumbnailUrl && <img src={commentMediaInfo.scrapedThumbnailUrl} alt='thumbnail' />}
           </Link>
         </span>
       )}
