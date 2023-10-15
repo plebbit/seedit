@@ -34,7 +34,7 @@
   list-style: none;
   white-space: nowrap;
   display: inline-block;
-  margin-bottom: -31px;
+  margin-bottom: -43px;
   padding-left: 15px;
   transform: translateY(0.5px);
 }
@@ -42,8 +42,7 @@
 .tabMenu li {
   display: inline;
   font-weight: bold;
-  margin: 0px 3px;
-
+  padding: 0px 3px;
 }
 
 .tabMenu li .selected {
@@ -85,7 +84,7 @@
   }
 
   .tabMenu {
-    padding: 37px 0 0 0;
+    padding: 49px 0 0 0;
     transform: translateY(0.5px);
   }
 }
