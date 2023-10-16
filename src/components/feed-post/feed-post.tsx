@@ -89,7 +89,7 @@ const FeedPost: FC<FeedPostProps> = ({ post, index }) => {
               <span className={styles.domain}>
                 (
                 <a href={link} target='_blank' rel='noreferrer'>
-                  {link}
+                  {new URL(link).hostname}
                 </a>
                 )
               </span>
