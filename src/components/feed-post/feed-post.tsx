@@ -12,12 +12,6 @@ interface FeedPostProps {
   post: Comment;
 }
 
-const testFlair = {
-  text: 'test',
-  backgroundColor: '#ff0000',
-  textColor: '#ffffff',
-};
-
 const FeedPost: FC<FeedPostProps> = ({ post, index }) => {
   const { author, cid, content, downvoteCount, flair, link, linkHeight, linkWidth, replyCount, subplebbitAddress, timestamp, title, upvoteCount } = post || {};
   const { t } = useTranslation();
@@ -68,11 +62,45 @@ const FeedPost: FC<FeedPostProps> = ({ post, index }) => {
         <span style={{ width: displayWidth, height: displayHeight }} className={styles.thumbnail}>
           <span className={hasLinkDimensions ? styles.transparentThumbnailWrapper : styles.thumbnailWrapper}>
             <Link to={`p/${subplebbitAddress}/c/${cid}`} onClick={(e) => e.preventDefault()}>
-              {commentMediaInfo?.type === 'image' && <img src={commentMediaInfo.url} alt='thumbnail' />}
+              {commentMediaInfo?.type === 'image' && (
+                <img
+                  src={commentMediaInfo.url}
+                  alt='thumbnail'
+                  onError={(e) => {
+                    e.currentTarget.alt = '';
+                  }}
+                />
+              )}
               {commentMediaInfo?.type === 'video' &&
-                (commentMediaInfo.thumbnail ? <img src={commentMediaInfo.thumbnail} alt='thumbnail' /> : <video src={commentMediaInfo.url} />)}
-              {commentMediaInfo?.type === 'webpage' && commentMediaInfo.thumbnail && <img src={commentMediaInfo.thumbnail} alt='thumbnail' />}
-              {commentMediaInfo?.type === 'iframe' && iframeThumbnail && <img src={iframeThumbnail} alt='thumbnail' />}
+                (commentMediaInfo.thumbnail ? (
+                  <img
+                    src={commentMediaInfo.thumbnail}
+                    alt='thumbnail'
+                    onError={(e) => {
+                      e.currentTarget.alt = '';
+                    }}
+                  />
+                ) : (
+                  <video src={commentMediaInfo.url} />
+                ))}
+              {commentMediaInfo?.type === 'webpage' && commentMediaInfo.thumbnail && (
+                <img
+                  src={commentMediaInfo.thumbnail}
+                  alt='thumbnail'
+                  onError={(e) => {
+                    e.currentTarget.alt = '';
+                  }}
+                />
+              )}
+              {commentMediaInfo?.type === 'iframe' && iframeThumbnail && (
+                <img
+                  src={iframeThumbnail}
+                  alt='thumbnail'
+                  onError={(e) => {
+                    e.currentTarget.alt = '';
+                  }}
+                />
+              )}
             </Link>
           </span>
         </span>
@@ -83,7 +111,12 @@ const FeedPost: FC<FeedPostProps> = ({ post, index }) => {
             <Link className={styles.link} to={`p/${subplebbitAddress}/c/${cid}`} onClick={(e) => e.preventDefault()}>
               {(title?.length > 90 ? title?.slice(0, 90) + '...' : title) || (content?.length > 90 ? content?.slice(0, 90) + '...' : content)}
             </Link>
-            {flair && <>&nbsp;<Flair flair={flair} /></>}
+            {flair && (
+              <>
+                &nbsp;
+                <Flair flair={flair} />
+              </>
+            )}
             &nbsp;
             {link && (
               <span className={styles.domain}>
@@ -148,10 +181,36 @@ const FeedPost: FC<FeedPostProps> = ({ post, index }) => {
           {link && (
             <div className={styles.mediaPreview}>
               <Link to={`p/${subplebbitAddress}/c/${cid}`} onClick={(e) => e.preventDefault()}>
-                {commentMediaInfo?.type === 'image' && <img src={commentMediaInfo.url} alt='thumbnail' />}
+                {commentMediaInfo?.type === 'image' && (
+                  <img
+                    src={commentMediaInfo.url}
+                    alt='thumbnail'
+                    onError={(e) => {
+                      e.currentTarget.alt = '';
+                    }}
+                  />
+                )}
                 {commentMediaInfo?.type === 'video' &&
-                  (commentMediaInfo.thumbnail ? <img src={commentMediaInfo.thumbnail} alt='thumbnail' /> : <video src={commentMediaInfo.url} controls />)}
-                {commentMediaInfo?.type === 'webpage' && commentMediaInfo.thumbnail && <img src={commentMediaInfo.thumbnail} alt='thumbnail' />}
+                  (commentMediaInfo.thumbnail ? (
+                    <img
+                      src={commentMediaInfo.thumbnail}
+                      alt='thumbnail'
+                      onError={(e) => {
+                        e.currentTarget.alt = '';
+                      }}
+                    />
+                  ) : (
+                    <video src={commentMediaInfo.url} controls />
+                  ))}
+                {commentMediaInfo?.type === 'webpage' && commentMediaInfo.thumbnail && (
+                  <img
+                    src={commentMediaInfo.thumbnail}
+                    alt='thumbnail'
+                    onError={(e) => {
+                      e.currentTarget.alt = '';
+                    }}
+                  />
+                )}
                 {commentMediaInfo?.type === 'audio' && <audio src={commentMediaInfo.url} controls />}
                 {commentMediaInfo?.type === 'iframe' && expandoVisible && <Embed url={commentMediaInfo.url} />}
               </Link>

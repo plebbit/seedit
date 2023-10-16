@@ -24,7 +24,9 @@ const Flair: FC<FlairProps> = ({ flair }) => {
 
   return (
     <span className={styles.wrapper}>
-      <span className={styles.flair} style={flairStyle}>{flair.text}</span>
+      <span className={styles.flair} style={flairStyle}>
+        {flair.text}
+      </span>
     </span>
   );
 };
