@@ -40,7 +40,7 @@ const TopBar: FC = () => {
             {t('topbar_my_subs')}
           </span>
         </div>
-        <div className={styles.dropChoices} style={{ display: isClicked ? 'block' : 'none' }}>
+        <div className={styles.dropChoices} style={{ display: isClicked && subscriptions?.length ? 'block' : 'none' }}>
           {subscriptions?.map((subscription: string, index: number) => (
             <Link key={index} to={`p/${subscription}`} className={styles.choice} onClick={(event) => event.preventDefault()}>
               {subscription}
