@@ -1,0 +1,10 @@
+.stamp {
+  color: var(--text);
+  border-color: currentColor;
+  border-radius: 3px;
+  border: 1px solid;
+  display: inline-block;
+  font-size: 10px;
+  line-height: 14px;
+  padding: 0 4px;
+}

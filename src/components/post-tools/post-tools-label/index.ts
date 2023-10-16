@@ -1,0 +1,1 @@
+export {default} from './post-tools-label';

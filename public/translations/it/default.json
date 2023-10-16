@@ -33,5 +33,6 @@
   "time_1_month_ago": "1 mese fa",
   "time_x_months_ago": "{{count}} mesi fa",
   "time_1_year_ago": "1 anno fa",
-  "time_x_years_ago": "{{count}} anni fa"
+  "time_x_years_ago": "{{count}} anni fa",
+  "post_label_spoiler": "spoiler"
 }

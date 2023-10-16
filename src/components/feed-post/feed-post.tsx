@@ -2,9 +2,12 @@ import { FC, useState } from 'react';
 import styles from './feed-post.module.css';
 import { Link } from 'react-router-dom';
 import utils from '../../lib/utils';
-import { Comment } from '@plebbit/plebbit-react-hooks';
+import { Comment, useSubplebbit } from '@plebbit/plebbit-react-hooks';
 import { useTranslation } from 'react-i18next';
 import Embed from '../embed';
+import Flair from '../flair';
+import PostTools from '../post-tools';
+import Thumbnail from '../thumbnail';
 
 interface FeedPostProps {
   index: number;
@@ -12,9 +15,10 @@ interface FeedPostProps {
 }
 
 const FeedPost: FC<FeedPostProps> = ({ post, index }) => {
-  const { author, cid, content, downvoteCount, link, linkHeight, linkWidth, replyCount, subplebbitAddress, timestamp, title, upvoteCount } = post || {};
+  const { author, cid, content, downvoteCount, flair, link, subplebbitAddress, timestamp, title, upvoteCount } = post || {};
   const { t } = useTranslation();
   const [expandoVisible, setExpandoVisible] = useState(false);
+  const subplebbit = useSubplebbit({ subplebbitAddress });
   const commentMediaInfo = utils.getCommentMediaInfo(post);
   const iframeThumbnail = commentMediaInfo?.patternThumbnailUrl || commentMediaInfo?.thumbnail;
   const hasThumbnail =
@@ -33,19 +37,6 @@ const FeedPost: FC<FeedPostProps> = ({ post, index }) => {
     setButtonType(buttonType === 'closeButton' ? 'textButton' : 'closeButton');
   };
 
-  let displayWidth, displayHeight, hasLinkDimensions;
-
-  if (linkWidth && linkHeight) {
-    let scale = Math.min(1, 70 / Math.max(linkWidth, linkHeight));
-    displayWidth = `${linkWidth * scale}px`;
-    displayHeight = `${linkHeight * scale}px`;
-    hasLinkDimensions = true;
-  } else {
-    displayWidth = '70px';
-    displayHeight = '70px';
-    hasLinkDimensions = false;
-  }
-
   return (
     <div className={styles.container} key={index}>
       <div className={styles.midcol}>
@@ -57,31 +48,31 @@ const FeedPost: FC<FeedPostProps> = ({ post, index }) => {
           <div className={`${styles.arrowCommon} ${styles.arrowDown}`}></div>
         </div>
       </div>
-      {hasThumbnail && (
-        <span style={{ width: displayWidth, height: displayHeight }} className={styles.thumbnail}>
-          <span className={hasLinkDimensions ? styles.transparentThumbnailWrapper : styles.thumbnailWrapper}>
-            <Link to={`p/${subplebbitAddress}/c/${cid}`} onClick={(e) => e.preventDefault()}>
-              {commentMediaInfo?.type === 'image' && <img src={commentMediaInfo.url} alt='thumbnail' />}
-              {commentMediaInfo?.type === 'video' &&
-                (commentMediaInfo.thumbnail ? <img src={commentMediaInfo.thumbnail} alt='thumbnail' /> : <video src={commentMediaInfo.url} />)}
-              {commentMediaInfo?.type === 'webpage' && commentMediaInfo.thumbnail && <img src={commentMediaInfo.thumbnail} alt='thumbnail' />}
-              {commentMediaInfo?.type === 'iframe' && iframeThumbnail && <img src={iframeThumbnail} alt='thumbnail' />}
-            </Link>
-          </span>
-        </span>
-      )}
+      {hasThumbnail && <Thumbnail commentCid={cid} />}
       <div className={styles.entry}>
         <div className={styles.topMatter}>
           <p className={styles.title}>
             <Link className={styles.link} to={`p/${subplebbitAddress}/c/${cid}`} onClick={(e) => e.preventDefault()}>
               {(title?.length > 90 ? title?.slice(0, 90) + '...' : title) || (content?.length > 90 ? content?.slice(0, 90) + '...' : content)}
             </Link>
+            {flair && (
+              <>
+                &nbsp;
+                <Flair flair={flair} />
+              </>
+            )}
             &nbsp;
             {link && (
               <span className={styles.domain}>
                 (
                 <a href={link} target='_blank' rel='noreferrer'>
-                  {link}
+                  {(() => {
+                    try {
+                      return new URL(link).hostname.replace(/^www\./, '');
+                    } catch (e) {
+                      return 'Invalid URL';
+                    }
+                  })()}
                 </a>
                 )
               </span>
@@ -104,40 +95,45 @@ const FeedPost: FC<FeedPostProps> = ({ post, index }) => {
             </Link>
              {t('feed_post_to')}
             <Link className={styles.subplebbit} to={`p/${subplebbitAddress}`} onClick={(e) => e.preventDefault()}>
-              &nbsp;p/{subplebbitAddress.length > 30 ? subplebbitAddress.slice(0, 30) + '...' : subplebbitAddress}
+              &nbsp;p/{subplebbit.shortAddress}
             </Link>
           </p>
-          <ul className={styles.buttons}>
-            <li className={styles.first}>
-              <Link to={`p/${subplebbitAddress}/c/${cid}`} onClick={(e) => e.preventDefault()}>
-                {replyCount === 0 ? t('feed_post_no_comments') : `${replyCount} ${replyCount === 1 ? t('feed_post_comment') : t('feed_post_comments')}`}
-              </Link>
-            </li>
-            <li className={styles.button}>
-              <span>{t('feed_post_share')}</span>
-            </li>
-            <li className={styles.button}>
-              <span>{t('feed_post_save')}</span>
-            </li>
-            <li className={styles.button}>
-              <span>{t('feed_post_hide')}</span>
-            </li>
-            <li className={styles.button}>
-              <span>{t('feed_post_report')}</span>
-            </li>
-            <li className={styles.button}>
-              <span>{t('feed_post_crosspost')}</span>
-            </li>
-          </ul>
+          <PostTools commentCid={cid} />
         </div>
         <div className={expandoVisible ? styles.expando : styles.expandoHidden}>
           {link && (
             <div className={styles.mediaPreview}>
               <Link to={`p/${subplebbitAddress}/c/${cid}`} onClick={(e) => e.preventDefault()}>
-                {commentMediaInfo?.type === 'image' && <img src={commentMediaInfo.url} alt='thumbnail' />}
+                {commentMediaInfo?.type === 'image' && (
+                  <img
+                    src={commentMediaInfo.url}
+                    alt='thumbnail'
+                    onError={(e) => {
+                      e.currentTarget.alt = '';
+                    }}
+                  />
+                )}
                 {commentMediaInfo?.type === 'video' &&
-                  (commentMediaInfo.thumbnail ? <img src={commentMediaInfo.thumbnail} alt='thumbnail' /> : <video src={commentMediaInfo.url} controls />)}
-                {commentMediaInfo?.type === 'webpage' && commentMediaInfo.thumbnail && <img src={commentMediaInfo.thumbnail} alt='thumbnail' />}
+                  (commentMediaInfo.thumbnail ? (
+                    <img
+                      src={commentMediaInfo.thumbnail}
+                      alt='thumbnail'
+                      onError={(e) => {
+                        e.currentTarget.alt = '';
+                      }}
+                    />
+                  ) : (
+                    <video src={commentMediaInfo.url} controls />
+                  ))}
+                {commentMediaInfo?.type === 'webpage' && commentMediaInfo.thumbnail && (
+                  <img
+                    src={commentMediaInfo.thumbnail}
+                    alt='thumbnail'
+                    onError={(e) => {
+                      e.currentTarget.alt = '';
+                    }}
+                  />
+                )}
                 {commentMediaInfo?.type === 'audio' && <audio src={commentMediaInfo.url} controls />}
                 {commentMediaInfo?.type === 'iframe' && expandoVisible && <Embed url={commentMediaInfo.url} />}
               </Link>
