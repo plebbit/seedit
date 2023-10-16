@@ -45,8 +45,16 @@
   padding-bottom: 10px;
 }
 
-.wrapper {
+.thumbnailWrapper {
   background-color: var(--background-thumbnail);
+  height: 70px;
+  width: 70px;
+  display: inline-block;
+}
+
+.transparentThumbnailWrapper {
+  background-color: transparent;
+  opacity: 1;
 }
 
 .thumbnail img, .thumbnail video {
