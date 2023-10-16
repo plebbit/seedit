@@ -78,7 +78,7 @@ const TwitterEmbed: FC<EmbedComponentProps> = ({ parsedUrl }) => {
       allow='accelerometer; encrypted-media; gyroscope; picture-in-picture; web-share'
       title={parsedUrl.href}
       srcDoc={`
-      <blockquote className="twitter-tweet" data-theme="dark">
+      <blockquote class="twitter-tweet" data-theme="dark">
         <a href="${parsedUrl.href.replace('x.com', 'twitter.com')}"></a>
       </blockquote>
       <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
@@ -105,7 +105,7 @@ const RedditEmbed: FC<EmbedComponentProps> = ({ parsedUrl }) => {
           margin: 0!important;
         }
       </style>
-      <blockquote className="reddit-embed-bq" style="height:240px" data-embed-theme="dark">
+      <blockquote class="reddit-embed-bq" style="height:240px" data-embed-theme="dark">
         <a href="${parsedUrl.href}"></a>    
       </blockquote>
       <script async src="https://embed.reddit.com/widgets.js" charset="UTF-8"></script>
@@ -152,7 +152,7 @@ const TiktokEmbed: FC<EmbedComponentProps> = ({ parsedUrl }) => {
       allow='accelerometer; encrypted-media; gyroscope; picture-in-picture; web-share'
       title={parsedUrl.href}
       srcDoc={`
-      <blockquote className="tiktok-embed" data-video-id="${videoId}">
+      <blockquote class="tiktok-embed" data-video-id="${videoId}">
         <a></a>
       </blockquote> 
       <script async src="https://www.tiktok.com/embed.js"></script>
@@ -175,7 +175,7 @@ const InstagramEmbed: FC<EmbedComponentProps> = ({ parsedUrl }) => {
       allow='accelerometer; encrypted-media; gyroscope; picture-in-picture; web-share'
       title={parsedUrl.href}
       srcDoc={`
-      <blockquote className="instagram-media">
+      <blockquote class="instagram-media">
         <a href="https://www.instagram.com/p/${id}/"></a>
       </blockquote>
       <script async src="//www.instagram.com/embed.js"></script>

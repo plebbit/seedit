@@ -16,13 +16,14 @@ const FeedPost: FC<FeedPostProps> = ({ post, index }) => {
   const { t } = useTranslation();
   const [expandoVisible, setExpandoVisible] = useState(false);
   const commentMediaInfo = utils.getCommentMediaInfo(post);
+  const iframeThumbnail = commentMediaInfo?.patternThumbnailUrl || commentMediaInfo?.thumbnail;
   const hasThumbnail =
     link &&
     commentMediaInfo &&
     (commentMediaInfo.type === 'image' ||
       commentMediaInfo.type === 'video' ||
       (commentMediaInfo.type === 'webpage' && commentMediaInfo.thumbnail) ||
-      (commentMediaInfo.type === 'iframe' && (commentMediaInfo.scrapedThumbnailUrl || commentMediaInfo.thumbnail)))
+      (commentMediaInfo.type === 'iframe' && iframeThumbnail))
       ? true
       : false;
   const initialButtonType = hasThumbnail || commentMediaInfo?.type === 'audio' || commentMediaInfo?.type === 'iframe' ? 'playButton' : 'textButton';
@@ -57,14 +58,16 @@ const FeedPost: FC<FeedPostProps> = ({ post, index }) => {
         </div>
       </div>
       {hasThumbnail && (
-        <span style={{ width: displayWidth, height: displayHeight }} className={hasLinkDimensions ? styles.thumbnail : `${styles.thumbnail} ${styles.wrapper}`}>
-          <Link to={`p/${subplebbitAddress}/c/${cid}`} onClick={(e) => e.preventDefault()}>
-            {commentMediaInfo?.type === 'image' && <img src={commentMediaInfo.url} alt='thumbnail' />}
-            {commentMediaInfo?.type === 'video' &&
-              (commentMediaInfo.thumbnail ? <img src={commentMediaInfo.thumbnail} alt='thumbnail' /> : <video src={commentMediaInfo.url} />)}
-            {commentMediaInfo?.type === 'webpage' && commentMediaInfo.thumbnail && <img src={commentMediaInfo.thumbnail} alt='thumbnail' />}
-            {commentMediaInfo?.type === 'iframe' && <img src={commentMediaInfo.scrapedThumbnailUrl || commentMediaInfo.thumbnail} alt='thumbnail' />}
-          </Link>
+        <span style={{ width: displayWidth, height: displayHeight }} className={styles.thumbnail}>
+          <span className={hasLinkDimensions ? styles.transparentThumbnailWrapper : styles.thumbnailWrapper}>
+            <Link to={`p/${subplebbitAddress}/c/${cid}`} onClick={(e) => e.preventDefault()}>
+              {commentMediaInfo?.type === 'image' && <img src={commentMediaInfo.url} alt='thumbnail' />}
+              {commentMediaInfo?.type === 'video' &&
+                (commentMediaInfo.thumbnail ? <img src={commentMediaInfo.thumbnail} alt='thumbnail' /> : <video src={commentMediaInfo.url} />)}
+              {commentMediaInfo?.type === 'webpage' && commentMediaInfo.thumbnail && <img src={commentMediaInfo.thumbnail} alt='thumbnail' />}
+              {commentMediaInfo?.type === 'iframe' && iframeThumbnail && <img src={iframeThumbnail} alt='thumbnail' />}
+            </Link>
+          </span>
         </span>
       )}
       <div className={styles.entry}>
