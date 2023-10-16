@@ -89,7 +89,13 @@ const FeedPost: FC<FeedPostProps> = ({ post, index }) => {
               <span className={styles.domain}>
                 (
                 <a href={link} target='_blank' rel='noreferrer'>
-                  {new URL(link).hostname}
+                  {(() => {
+                    try {
+                      return new URL(link).hostname;
+                    } catch (e) {
+                      return 'Invalid URL';
+                    }
+                  })()}
                 </a>
                 )
               </span>
