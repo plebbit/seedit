@@ -7,6 +7,7 @@ import { useTranslation } from 'react-i18next';
 import Embed from '../embed';
 import Flair from '../flair';
 import PostTools from '../post-tools';
+import Thumbnail from '../thumbnail';
 
 interface FeedPostProps {
   index: number;
@@ -14,7 +15,7 @@ interface FeedPostProps {
 }
 
 const FeedPost: FC<FeedPostProps> = ({ post, index }) => {
-  const { author, cid, content, downvoteCount, flair, link, linkHeight, linkWidth, subplebbitAddress, timestamp, title, upvoteCount } = post || {};
+  const { author, cid, content, downvoteCount, flair, link, subplebbitAddress, timestamp, title, upvoteCount } = post || {};
   const { t } = useTranslation();
   const [expandoVisible, setExpandoVisible] = useState(false);
   const subplebbit = useSubplebbit({ subplebbitAddress });
@@ -36,19 +37,6 @@ const FeedPost: FC<FeedPostProps> = ({ post, index }) => {
     setButtonType(buttonType === 'closeButton' ? 'textButton' : 'closeButton');
   };
 
-  let displayWidth, displayHeight, hasLinkDimensions;
-
-  if (linkWidth && linkHeight) {
-    let scale = Math.min(1, 70 / Math.max(linkWidth, linkHeight));
-    displayWidth = `${linkWidth * scale}px`;
-    displayHeight = `${linkHeight * scale}px`;
-    hasLinkDimensions = true;
-  } else {
-    displayWidth = '70px';
-    displayHeight = '70px';
-    hasLinkDimensions = false;
-  }
-
   return (
     <div className={styles.container} key={index}>
       <div className={styles.midcol}>
@@ -60,53 +48,7 @@ const FeedPost: FC<FeedPostProps> = ({ post, index }) => {
           <div className={`${styles.arrowCommon} ${styles.arrowDown}`}></div>
         </div>
       </div>
-      {hasThumbnail && (
-        <span style={{ width: displayWidth, height: displayHeight }} className={styles.thumbnail}>
-          <span className={hasLinkDimensions ? styles.transparentThumbnailWrapper : styles.thumbnailWrapper}>
-            <Link to={`p/${subplebbitAddress}/c/${cid}`} onClick={(e) => e.preventDefault()}>
-              {commentMediaInfo?.type === 'image' && (
-                <img
-                  src={commentMediaInfo.url}
-                  alt='thumbnail'
-                  onError={(e) => {
-                    e.currentTarget.alt = '';
-                  }}
-                />
-              )}
-              {commentMediaInfo?.type === 'video' &&
-                (commentMediaInfo.thumbnail ? (
-                  <img
-                    src={commentMediaInfo.thumbnail}
-                    alt='thumbnail'
-                    onError={(e) => {
-                      e.currentTarget.alt = '';
-                    }}
-                  />
-                ) : (
-                  <video src={commentMediaInfo.url} />
-                ))}
-              {commentMediaInfo?.type === 'webpage' && commentMediaInfo.thumbnail && (
-                <img
-                  src={commentMediaInfo.thumbnail}
-                  alt='thumbnail'
-                  onError={(e) => {
-                    e.currentTarget.alt = '';
-                  }}
-                />
-              )}
-              {commentMediaInfo?.type === 'iframe' && iframeThumbnail && (
-                <img
-                  src={iframeThumbnail}
-                  alt='thumbnail'
-                  onError={(e) => {
-                    e.currentTarget.alt = '';
-                  }}
-                />
-              )}
-            </Link>
-          </span>
-        </span>
-      )}
+      {hasThumbnail && <Thumbnail commentCid={cid} />}
       <div className={styles.entry}>
         <div className={styles.topMatter}>
           <p className={styles.title}>

@@ -1,0 +1,24 @@
+.thumbnail {
+  position: relative;
+  float: left;
+  padding-right: 5px;
+  padding-bottom: 10px;
+}
+
+.thumbnailWrapper {
+  background-color: var(--background-thumbnail);
+  height: 70px;
+  width: 70px;
+  display: inline-block;
+}
+
+.transparentThumbnailWrapper {
+  background-color: transparent;
+  opacity: 1;
+}
+
+.thumbnail img, .thumbnail video {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
