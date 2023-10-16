@@ -33,5 +33,6 @@
   "time_1_month_ago": "1 month ago",
   "time_x_months_ago": "{{count}} months ago",
   "time_1_year_ago": "1 year ago",
-  "time_x_years_ago": "{{count}} years ago"
+  "time_x_years_ago": "{{count}} years ago",
+  "post_label_spoiler": "spoiler"
 }
