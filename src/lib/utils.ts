@@ -18,26 +18,23 @@ const getCommentMediaInfo = (comment: Comment) => {
     }
 
     const url = new URL(comment.link);
-    // const host = url.hostname;
-    // let scrapedThumbnailUrl;
+    const host = url.hostname;
+    let patternThumbnailUrl;
 
-    //   if (['youtube.com', 'www.youtube.com', 'youtu.be'].includes(host)) {
-    //     const videoId = host === 'youtu.be' ? url.pathname.slice(1) : url.searchParams.get('v');
-    //     scrapedThumbnailUrl = `https://img.youtube.com/vi/${videoId}/sddefault.jpg`;
-    //   } else if (host.includes('bitchute.com')) {
-    //     const videoId = url.pathname.split('/')[2];
-    //     scrapedThumbnailUrl = `https://static-3.bitchute.com/live/cover_images/F61vWF4shy8s/${videoId}_640x360.jpg`;
-    //   } else if (host.includes('streamable.com')) {
-    //     const videoId = url.pathname.split('/')[1];
-    //     scrapedThumbnailUrl = `https://cdn-cf-east.streamable.com/image/${videoId}.jpg`;
-    //   }
+      if (['youtube.com', 'www.youtube.com', 'youtu.be'].includes(host)) {
+        const videoId = host === 'youtu.be' ? url.pathname.slice(1) : url.searchParams.get('v');
+        patternThumbnailUrl = `https://img.youtube.com/vi/${videoId}/sddefault.jpg`;
+      } else if (host.includes('streamable.com')) {
+        const videoId = url.pathname.split('/')[1];
+        patternThumbnailUrl = `https://cdn-cf-east.streamable.com/image/${videoId}.jpg`;
+      }
 
       if (canEmbed(url)) {
         return {
           url: comment.link,
           type: 'iframe',
           thumbnail: comment.thumbnailUrl,
-          // scrapedThumbnailUrl,
+          patternThumbnailUrl,
         };
       }
 

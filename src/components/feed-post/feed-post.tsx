@@ -16,13 +16,14 @@ const FeedPost: FC<FeedPostProps> = ({ post, index }) => {
   const { t } = useTranslation();
   const [expandoVisible, setExpandoVisible] = useState(false);
   const commentMediaInfo = utils.getCommentMediaInfo(post);
+  const iframeThumbnail = commentMediaInfo?.patternThumbnailUrl || commentMediaInfo?.thumbnail;
   const hasThumbnail =
     link &&
     commentMediaInfo &&
     (commentMediaInfo.type === 'image' ||
       commentMediaInfo.type === 'video' ||
       (commentMediaInfo.type === 'webpage' && commentMediaInfo.thumbnail) ||
-      (commentMediaInfo.type === 'iframe' && commentMediaInfo.thumbnail))
+      (commentMediaInfo.type === 'iframe' && iframeThumbnail))
       ? true
       : false;
   const initialButtonType = hasThumbnail || commentMediaInfo?.type === 'audio' || commentMediaInfo?.type === 'iframe' ? 'playButton' : 'textButton';
@@ -64,7 +65,7 @@ const FeedPost: FC<FeedPostProps> = ({ post, index }) => {
               {commentMediaInfo?.type === 'video' &&
                 (commentMediaInfo.thumbnail ? <img src={commentMediaInfo.thumbnail} alt='thumbnail' /> : <video src={commentMediaInfo.url} />)}
               {commentMediaInfo?.type === 'webpage' && commentMediaInfo.thumbnail && <img src={commentMediaInfo.thumbnail} alt='thumbnail' />}
-              {commentMediaInfo?.type === 'iframe' && commentMediaInfo.thumbnail && <img src={commentMediaInfo.thumbnail} alt='thumbnail' />}
+              {commentMediaInfo?.type === 'iframe' && iframeThumbnail && <img src={iframeThumbnail} alt='thumbnail' />}
             </Link>
           </span>
         </span>
