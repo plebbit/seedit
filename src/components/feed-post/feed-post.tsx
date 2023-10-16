@@ -2,7 +2,7 @@ import { FC, useState } from 'react';
 import styles from './feed-post.module.css';
 import { Link } from 'react-router-dom';
 import utils from '../../lib/utils';
-import { Comment } from '@plebbit/plebbit-react-hooks';
+import { Comment, useSubplebbit } from '@plebbit/plebbit-react-hooks';
 import { useTranslation } from 'react-i18next';
 import Embed from '../embed';
 import Flair from '../flair';
@@ -16,6 +16,7 @@ const FeedPost: FC<FeedPostProps> = ({ post, index }) => {
   const { author, cid, content, downvoteCount, flair, link, linkHeight, linkWidth, replyCount, subplebbitAddress, timestamp, title, upvoteCount } = post || {};
   const { t } = useTranslation();
   const [expandoVisible, setExpandoVisible] = useState(false);
+  const subplebbit = useSubplebbit({subplebbitAddress});
   const commentMediaInfo = utils.getCommentMediaInfo(post);
   const iframeThumbnail = commentMediaInfo?.patternThumbnailUrl || commentMediaInfo?.thumbnail;
   const hasThumbnail =
@@ -151,7 +152,7 @@ const FeedPost: FC<FeedPostProps> = ({ post, index }) => {
             </Link>
              {t('feed_post_to')}
             <Link className={styles.subplebbit} to={`p/${subplebbitAddress}`} onClick={(e) => e.preventDefault()}>
-              &nbsp;p/{subplebbitAddress.length > 30 ? subplebbitAddress.slice(0, 30) + '...' : subplebbitAddress}
+              &nbsp;p/{subplebbit.shortAddress}
             </Link>
           </p>
           <ul className={styles.buttons}>
