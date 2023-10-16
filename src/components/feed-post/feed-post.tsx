@@ -6,6 +6,7 @@ import { Comment, useSubplebbit } from '@plebbit/plebbit-react-hooks';
 import { useTranslation } from 'react-i18next';
 import Embed from '../embed';
 import Flair from '../flair';
+import PostTools from '../post-tools';
 
 interface FeedPostProps {
   index: number;
@@ -13,10 +14,10 @@ interface FeedPostProps {
 }
 
 const FeedPost: FC<FeedPostProps> = ({ post, index }) => {
-  const { author, cid, content, downvoteCount, flair, link, linkHeight, linkWidth, replyCount, subplebbitAddress, timestamp, title, upvoteCount } = post || {};
+  const { author, cid, content, downvoteCount, flair, link, linkHeight, linkWidth, subplebbitAddress, timestamp, title, upvoteCount } = post || {};
   const { t } = useTranslation();
   const [expandoVisible, setExpandoVisible] = useState(false);
-  const subplebbit = useSubplebbit({subplebbitAddress});
+  const subplebbit = useSubplebbit({ subplebbitAddress });
   const commentMediaInfo = utils.getCommentMediaInfo(post);
   const iframeThumbnail = commentMediaInfo?.patternThumbnailUrl || commentMediaInfo?.thumbnail;
   const hasThumbnail =
@@ -125,7 +126,7 @@ const FeedPost: FC<FeedPostProps> = ({ post, index }) => {
                 <a href={link} target='_blank' rel='noreferrer'>
                   {(() => {
                     try {
-                      return new URL(link).hostname.replace(/^www\./, '')                      ;
+                      return new URL(link).hostname.replace(/^www\./, '');
                     } catch (e) {
                       return 'Invalid URL';
                     }
@@ -155,28 +156,7 @@ const FeedPost: FC<FeedPostProps> = ({ post, index }) => {
               &nbsp;p/{subplebbit.shortAddress}
             </Link>
           </p>
-          <ul className={styles.buttons}>
-            <li className={styles.first}>
-              <Link to={`p/${subplebbitAddress}/c/${cid}`} onClick={(e) => e.preventDefault()}>
-                {replyCount === 0 ? t('feed_post_no_comments') : `${replyCount} ${replyCount === 1 ? t('feed_post_comment') : t('feed_post_comments')}`}
-              </Link>
-            </li>
-            <li className={styles.button}>
-              <span>{t('feed_post_share')}</span>
-            </li>
-            <li className={styles.button}>
-              <span>{t('feed_post_save')}</span>
-            </li>
-            <li className={styles.button}>
-              <span>{t('feed_post_hide')}</span>
-            </li>
-            <li className={styles.button}>
-              <span>{t('feed_post_report')}</span>
-            </li>
-            <li className={styles.button}>
-              <span>{t('feed_post_crosspost')}</span>
-            </li>
-          </ul>
+          <PostTools commentCid={cid} />
         </div>
         <div className={expandoVisible ? styles.expando : styles.expandoHidden}>
           {link && (

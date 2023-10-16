@@ -118,46 +118,6 @@
   text-decoration: underline;
 }
 
-.buttons {
-  list-style: none;
-  padding: 1px 0;
-  display: block;
-}
-
-.buttons li {
-  display: inline-block;
-  border: none;
-  padding-right: 4px;
-  line-height: 1.6em;
-  white-space: nowrap;
-
-}
-
-.buttons li a {
-  color: var(--text-info);
-  font-weight: bold;
-  text-decoration: none;
-  padding: 0 1px;
-}
-
-.buttons .button {
-  color: var(--text-info);
-  font-weight: bold;
-  text-decoration: none;
-  padding: 0 4px 0 4px;
-}
-
-.buttons .button:hover {
-  text-decoration: underline;
-}
-.buttons .first:hover {
-  text-decoration: underline;
-}
-
-.buttons .button span {
-  cursor: pointer;
-}
-
 .buttonWrapper {
   padding: 2px 5px 2px 0;
   float: left;
