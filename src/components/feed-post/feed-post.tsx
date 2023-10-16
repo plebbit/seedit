@@ -125,7 +125,7 @@ const FeedPost: FC<FeedPostProps> = ({ post, index }) => {
                 <a href={link} target='_blank' rel='noreferrer'>
                   {(() => {
                     try {
-                      return new URL(link).hostname;
+                      return new URL(link).hostname.replace(/^www\./, '')                      ;
                     } catch (e) {
                       return 'Invalid URL';
                     }
