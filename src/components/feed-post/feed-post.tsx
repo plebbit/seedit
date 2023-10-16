@@ -5,14 +5,21 @@ import utils from '../../lib/utils';
 import { Comment } from '@plebbit/plebbit-react-hooks';
 import { useTranslation } from 'react-i18next';
 import Embed from '../embed';
+import Flair from '../flair';
 
 interface FeedPostProps {
   index: number;
   post: Comment;
 }
 
+const testFlair = {
+  text: 'test',
+  backgroundColor: '#ff0000',
+  textColor: '#ffffff',
+};
+
 const FeedPost: FC<FeedPostProps> = ({ post, index }) => {
-  const { author, cid, content, downvoteCount, link, linkHeight, linkWidth, replyCount, subplebbitAddress, timestamp, title, upvoteCount } = post || {};
+  const { author, cid, content, downvoteCount, flair, link, linkHeight, linkWidth, replyCount, subplebbitAddress, timestamp, title, upvoteCount } = post || {};
   const { t } = useTranslation();
   const [expandoVisible, setExpandoVisible] = useState(false);
   const commentMediaInfo = utils.getCommentMediaInfo(post);
@@ -76,6 +83,7 @@ const FeedPost: FC<FeedPostProps> = ({ post, index }) => {
             <Link className={styles.link} to={`p/${subplebbitAddress}/c/${cid}`} onClick={(e) => e.preventDefault()}>
               {(title?.length > 90 ? title?.slice(0, 90) + '...' : title) || (content?.length > 90 ? content?.slice(0, 90) + '...' : content)}
             </Link>
+            {flair && <>&nbsp;<Flair flair={flair} /></>}
             &nbsp;
             {link && (
               <span className={styles.domain}>
