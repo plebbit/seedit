@@ -107,27 +107,27 @@
 }
 
 .textButton {
-  background-image: url("/public/assets/buttons/text-button.png");
+  background-image: var(--text-button);
 }
 
 .textButton:hover {
-  background-image: url("/public/assets/buttons/text-button-hover.png");
+  background-image: var(--text-button-hover);
 }
 
 .playButton {
-  background-image: url("/public/assets/buttons/play-button.png");
+  background-image: var(--play-button);
 }
 
 .playButton:hover {
-  background-image: url("/public/assets/buttons/play-button-hover.png");
+  background-image: var(--play-button-hover);
 }
 
 .closeButton {
-  background-image: url("/public/assets/buttons/close-button.png");
+  background-image: var(--close-button);
 }
 
 .closeButton:hover {
-  background-image: url("/public/assets/buttons/close-button-hover.png");
+  background-image: var(--close-button-hover);
 }
 
 

@@ -15,6 +15,12 @@
   --link: #0000ff;
   --link-visited: #551a8b;
   --icon: #c6c6c6;
+  --text-button: url("/public/assets/buttons/text-button.png");
+  --text-button-hover: url("/public/assets/buttons/text-button-hover.png");
+  --play-button: url("/public/assets/buttons/play-button.png");
+  --play-button-hover: url("/public/assets/buttons/play-button-hover.png");
+  --close-button: url("/public/assets/buttons/close-button.png");
+  --close-button-hover: url("/public/assets/buttons/close-button-hover.png");
 }
 
 :root .black {
@@ -34,4 +40,10 @@
   --link: #f0f0f0;
   --link-visited: #757575;
   --icon: #c6c6c6;
+  --text-button: url("/public/assets/buttons/text-button-dark.png");
+  --text-button-hover: url("/public/assets/buttons/text-button-hover.png");
+  --play-button: url("/public/assets/buttons/play-button-dark.png");
+  --play-button-hover: url("/public/assets/buttons/play-button-hover.png");
+  --close-button: url("/public/assets/buttons/close-button-dark.png");
+  --close-button-hover: url("/public/assets/buttons/close-button-hover.png");
 }
