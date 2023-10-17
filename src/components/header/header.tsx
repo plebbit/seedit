@@ -14,7 +14,6 @@ const Header: FC = () => {
   const [theme] = useTheme();
   const [selected, setSelected] = useState(sortType || '/topMonth');
 
-  const logoSrc = theme === 'black' ? '/assets/logo/logo-dark.png' : '/assets/logo/logo-light.png';
   const labels = [t('header_hot'), t('header_new'), t('header_rising'), t('header_controversial'), t('header_top')];
 
   useEffect(() => {
@@ -35,7 +34,7 @@ const Header: FC = () => {
         <span className={styles.container}>
           <Link to='/' style={{ all: 'unset', cursor: 'pointer' }}>
             <img className={styles.logo} src='/assets/logo/seedit.png' alt='logo' />
-            <img className={styles.logoText} src={logoSrc} alt='logo' />
+            <img src={`${process.env.PUBLIC_URL}/assets/logo/seedit-text-${theme === 'black' ? 'dark' : 'light'}.svg`} className={styles.logoText} alt='logo' />
           </Link>
           <ul className={styles.tabMenu}>
             {choices.map((choice, index) => (
