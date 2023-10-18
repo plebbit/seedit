@@ -24,6 +24,7 @@
 }
 
 .logoText {
+  width: 84px;
   margin-bottom: -17px;
   max-height: 26px;
   object-fit: contain;

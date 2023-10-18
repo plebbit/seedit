@@ -1,0 +1,36 @@
+.buttonWrapper {
+  padding: 2px 5px 2px 0;
+  float: left;
+  cursor: pointer;
+}
+
+.buttonCommon {
+  background-size: cover;
+  height: 23px;
+  width: 23px;
+  display: block;
+}
+
+.textButton {
+  background-image: var(--text-button);
+}
+
+.textButton:hover {
+  background-image: var(--text-button-hover);
+}
+
+.playButton {
+  background-image: var(--play-button);
+}
+
+.playButton:hover {
+  background-image: var(--play-button-hover);
+}
+
+.closeButton {
+  background-image: var(--close-button);
+}
+
+.closeButton:hover {
+  background-image: var(--close-button-hover);
+}

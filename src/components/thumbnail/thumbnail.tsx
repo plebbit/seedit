@@ -3,6 +3,7 @@ import styles from './thumbnail.module.css';
 import { useComment } from '@plebbit/plebbit-react-hooks';
 import { Link } from 'react-router-dom';
 import utils from '../../lib/utils';
+import { CommentMediaInfo } from '../../lib/utils';
 
 interface ThumbnailProps {
   commentCid: string;
@@ -12,7 +13,7 @@ const Thumbnail: FC<ThumbnailProps> = ({ commentCid }) => {
   const comment = useComment({ commentCid });
   const subplebbitAddress = comment.subplebbitAddress;
   const { cid, linkHeight, linkWidth } = comment;
-  const commentMediaInfo = utils.getCommentMediaInfo(comment);
+  const commentMediaInfo = utils.getCommentMediaInfoMemoized(comment);
   const iframeThumbnail = commentMediaInfo?.patternThumbnailUrl || commentMediaInfo?.thumbnail;
 
   let displayWidth, displayHeight, hasLinkDimensions;
@@ -28,49 +29,21 @@ const Thumbnail: FC<ThumbnailProps> = ({ commentCid }) => {
     hasLinkDimensions = false;
   }
 
+  // prettier-ignore
+  const mediaComponents: { [key in CommentMediaInfo['type']]?: JSX.Element | null } = {
+    'image': <img src={commentMediaInfo?.url} alt='thumbnail' onError={(e) => { e.currentTarget.alt = ''; }} />,
+    'video': commentMediaInfo?.thumbnail ? 
+      <img src={commentMediaInfo.thumbnail} alt='thumbnail' onError={(e) => { e.currentTarget.alt = ''; }} /> : 
+      <video src={commentMediaInfo?.url} />,
+    'webpage': <img src={commentMediaInfo?.thumbnail} alt='thumbnail' onError={(e) => { e.currentTarget.alt = ''; }} />,
+    'iframe': iframeThumbnail ? <img src={iframeThumbnail} alt='thumbnail' onError={(e) => { e.currentTarget.alt = ''; }} /> : null,
+  };
+
   return (
     <span style={{ width: displayWidth, height: displayHeight }} className={styles.thumbnail}>
       <span className={hasLinkDimensions ? styles.transparentThumbnailWrapper : styles.thumbnailWrapper}>
         <Link to={`p/${subplebbitAddress}/c/${cid}`} onClick={(e) => e.preventDefault()}>
-          {commentMediaInfo?.type === 'image' && (
-            <img
-              src={commentMediaInfo.url}
-              alt='thumbnail'
-              onError={(e) => {
-                e.currentTarget.alt = '';
-              }}
-            />
-          )}
-          {commentMediaInfo?.type === 'video' &&
-            (commentMediaInfo.thumbnail ? (
-              <img
-                src={commentMediaInfo.thumbnail}
-                alt='thumbnail'
-                onError={(e) => {
-                  e.currentTarget.alt = '';
-                }}
-              />
-            ) : (
-              <video src={commentMediaInfo.url} />
-            ))}
-          {commentMediaInfo?.type === 'webpage' && commentMediaInfo.thumbnail && (
-            <img
-              src={commentMediaInfo.thumbnail}
-              alt='thumbnail'
-              onError={(e) => {
-                e.currentTarget.alt = '';
-              }}
-            />
-          )}
-          {commentMediaInfo?.type === 'iframe' && iframeThumbnail && (
-            <img
-              src={iframeThumbnail}
-              alt='thumbnail'
-              onError={(e) => {
-                e.currentTarget.alt = '';
-              }}
-            />
-          )}
+          {commentMediaInfo?.type ? mediaComponents[commentMediaInfo.type] : null}
         </Link>
       </span>
     </span>

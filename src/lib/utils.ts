@@ -4,6 +4,13 @@ import extName from 'ext-name';
 import { Comment } from '@plebbit/plebbit-react-hooks';
 import { canEmbed } from '../components/embed/embed';
 
+export interface CommentMediaInfo {
+  url: string;
+  type: string;
+  thumbnail?: string;
+  patternThumbnailUrl?: string;
+}
+
 const getCommentMediaInfo = (comment: Comment) => {
   if (!comment?.thumbnailUrl && !comment?.link) {
     return;
@@ -21,22 +28,22 @@ const getCommentMediaInfo = (comment: Comment) => {
     const host = url.hostname;
     let patternThumbnailUrl;
 
-      if (['youtube.com', 'www.youtube.com', 'youtu.be'].includes(host)) {
-        const videoId = host === 'youtu.be' ? url.pathname.slice(1) : url.searchParams.get('v');
-        patternThumbnailUrl = `https://img.youtube.com/vi/${videoId}/sddefault.jpg`;
-      } else if (host.includes('streamable.com')) {
-        const videoId = url.pathname.split('/')[1];
-        patternThumbnailUrl = `https://cdn-cf-east.streamable.com/image/${videoId}.jpg`;
-      }
+    if (['youtube.com', 'www.youtube.com', 'youtu.be'].includes(host)) {
+      const videoId = host === 'youtu.be' ? url.pathname.slice(1) : url.searchParams.get('v');
+      patternThumbnailUrl = `https://img.youtube.com/vi/${videoId}/sddefault.jpg`;
+    } else if (host.includes('streamable.com')) {
+      const videoId = url.pathname.split('/')[1];
+      patternThumbnailUrl = `https://cdn-cf-east.streamable.com/image/${videoId}.jpg`;
+    }
 
-      if (canEmbed(url)) {
-        return {
-          url: comment.link,
-          type: 'iframe',
-          thumbnail: comment.thumbnailUrl,
-          patternThumbnailUrl,
-        };
-      }
+    if (canEmbed(url)) {
+      return {
+        url: comment.link,
+        type: 'iframe',
+        thumbnail: comment.thumbnailUrl,
+        patternThumbnailUrl,
+      };
+    }
 
     if (mime?.startsWith('image')) {
       return { url: comment.link, type: 'image' };
@@ -58,9 +65,9 @@ const getCommentMediaInfo = (comment: Comment) => {
   }
 };
 
-export const getCommentLinkMediaType = memoize(getCommentMediaInfo, { max: 1000 });
+const getCommentMediaInfoMemoized = memoize(getCommentMediaInfo, { max: 1000 });
 
-export const getFormattedTime = (unixTimestamp: number): string => {
+const getFormattedTime = (unixTimestamp: number): string => {
   const currentTime = Date.now() / 1000;
   const timeDifference = currentTime - unixTimestamp;
   const t = i18next.t;
@@ -95,9 +102,32 @@ export const getFormattedTime = (unixTimestamp: number): string => {
   return t('time_x_years_ago', { count: Math.floor(timeDifference / 31104000) });
 };
 
+const getHostname = (url: string) => {
+  try {
+    return new URL(url).hostname.replace(/^www\./, '');
+  } catch (e) {
+    console.log(e);
+    return '';
+  }
+};
+
+const hasThumbnail = (commentMediaInfo: CommentMediaInfo | undefined, link: string | undefined): boolean => {
+  const iframeThumbnail = commentMediaInfo?.patternThumbnailUrl || commentMediaInfo?.thumbnail;
+  return link &&
+    commentMediaInfo &&
+    (commentMediaInfo.type === 'image' ||
+      commentMediaInfo.type === 'video' ||
+      (commentMediaInfo.type === 'webpage' && commentMediaInfo.thumbnail) ||
+      (commentMediaInfo.type === 'iframe' && iframeThumbnail))
+    ? true
+    : false;
+};
+
 const utils = {
+  getCommentMediaInfoMemoized,
   getFormattedTime,
-  getCommentMediaInfo,
+  getHostname,
+  hasThumbnail,
 };
 
 export default utils;

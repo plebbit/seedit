@@ -4,7 +4,8 @@ import { Link } from 'react-router-dom';
 import utils from '../../lib/utils';
 import { Comment, useSubplebbit } from '@plebbit/plebbit-react-hooks';
 import { useTranslation } from 'react-i18next';
-import Embed from '../embed';
+import ExpandButton from '../expand-button';
+import Expando from '../expando';
 import Flair from '../flair';
 import PostTools from '../post-tools';
 import Thumbnail from '../thumbnail';
@@ -16,26 +17,15 @@ interface FeedPostProps {
 
 const FeedPost: FC<FeedPostProps> = ({ post, index }) => {
   const { author, cid, content, downvoteCount, flair, link, subplebbitAddress, timestamp, title, upvoteCount } = post || {};
-  const { t } = useTranslation();
-  const [expandoVisible, setExpandoVisible] = useState(false);
   const subplebbit = useSubplebbit({ subplebbitAddress });
-  const commentMediaInfo = utils.getCommentMediaInfo(post);
-  const iframeThumbnail = commentMediaInfo?.patternThumbnailUrl || commentMediaInfo?.thumbnail;
-  const hasThumbnail =
-    link &&
-    commentMediaInfo &&
-    (commentMediaInfo.type === 'image' ||
-      commentMediaInfo.type === 'video' ||
-      (commentMediaInfo.type === 'webpage' && commentMediaInfo.thumbnail) ||
-      (commentMediaInfo.type === 'iframe' && iframeThumbnail))
-      ? true
-      : false;
-  const initialButtonType = hasThumbnail || commentMediaInfo?.type === 'audio' || commentMediaInfo?.type === 'iframe' ? 'playButton' : 'textButton';
-  const [buttonType, setButtonType] = useState<'textButton' | 'playButton' | 'closeButton'>(initialButtonType);
-  const toggleExpando = () => {
-    setExpandoVisible(!expandoVisible);
-    setButtonType(buttonType === 'closeButton' ? 'textButton' : 'closeButton');
-  };
+  const { t } = useTranslation();
+  const [expanded, setExpanded] = useState(false);
+  const toggleExpanded = () => setExpanded(!expanded);
+  const postTitleOrContent = (title?.length > 90 ? title?.slice(0, 90) + '...' : title) || (content?.length > 90 ? content?.slice(0, 90) + '...' : content);
+  const commentMediaInfo = utils.getCommentMediaInfoMemoized(post);
+  const hasThumbnail = utils.hasThumbnail(commentMediaInfo, link);
+
+  // TEMPORARY: e.preventDefault() in Link elements because routes aren't implemented yet
 
   return (
     <div className={styles.container} key={index}>
@@ -53,7 +43,7 @@ const FeedPost: FC<FeedPostProps> = ({ post, index }) => {
         <div className={styles.topMatter}>
           <p className={styles.title}>
             <Link className={styles.link} to={`p/${subplebbitAddress}/c/${cid}`} onClick={(e) => e.preventDefault()}>
-              {(title?.length > 90 ? title?.slice(0, 90) + '...' : title) || (content?.length > 90 ? content?.slice(0, 90) + '...' : content)}
+              {postTitleOrContent}
             </Link>
             {flair && (
               <>
@@ -66,28 +56,13 @@ const FeedPost: FC<FeedPostProps> = ({ post, index }) => {
               <span className={styles.domain}>
                 (
                 <a href={link} target='_blank' rel='noreferrer'>
-                  {(() => {
-                    try {
-                      return new URL(link).hostname.replace(/^www\./, '');
-                    } catch (e) {
-                      return 'Invalid URL';
-                    }
-                  })()}
+                  {utils.getHostname(link)}
                 </a>
                 )
               </span>
             )}
           </p>
-          {content && !link && (
-            <div className={styles.buttonWrapper} onClick={toggleExpando}>
-              <div className={`${styles.buttonCommon} ${styles[buttonType]}`}></div>
-            </div>
-          )}
-          {link && (
-            <div className={styles.buttonWrapper} onClick={toggleExpando}>
-              <div className={`${styles.buttonCommon} ${styles[buttonType]}`}></div>
-            </div>
-          )}
+          <ExpandButton commentCid={cid} expanded={expanded} hasThumbnail={hasThumbnail} toggleExpanded={toggleExpanded} />
           <p className={styles.tagline}>
             {t('feed_post_submitted')} {utils.getFormattedTime(timestamp)} {t('feed_post_by')}&nbsp;
             <Link className={styles.author} to={`u/${author.shortAddress}`} onClick={(e) => e.preventDefault()}>
@@ -100,51 +75,7 @@ const FeedPost: FC<FeedPostProps> = ({ post, index }) => {
           </p>
           <PostTools commentCid={cid} />
         </div>
-        <div className={expandoVisible ? styles.expando : styles.expandoHidden}>
-          {link && (
-            <div className={styles.mediaPreview}>
-              <Link to={`p/${subplebbitAddress}/c/${cid}`} onClick={(e) => e.preventDefault()}>
-                {commentMediaInfo?.type === 'image' && (
-                  <img
-                    src={commentMediaInfo.url}
-                    alt='thumbnail'
-                    onError={(e) => {
-                      e.currentTarget.alt = '';
-                    }}
-                  />
-                )}
-                {commentMediaInfo?.type === 'video' &&
-                  (commentMediaInfo.thumbnail ? (
-                    <img
-                      src={commentMediaInfo.thumbnail}
-                      alt='thumbnail'
-                      onError={(e) => {
-                        e.currentTarget.alt = '';
-                      }}
-                    />
-                  ) : (
-                    <video src={commentMediaInfo.url} controls />
-                  ))}
-                {commentMediaInfo?.type === 'webpage' && commentMediaInfo.thumbnail && (
-                  <img
-                    src={commentMediaInfo.thumbnail}
-                    alt='thumbnail'
-                    onError={(e) => {
-                      e.currentTarget.alt = '';
-                    }}
-                  />
-                )}
-                {commentMediaInfo?.type === 'audio' && <audio src={commentMediaInfo.url} controls />}
-                {commentMediaInfo?.type === 'iframe' && expandoVisible && <Embed url={commentMediaInfo.url} />}
-              </Link>
-            </div>
-          )}
-          {content && (
-            <div className={styles.usertext}>
-              <div className={styles.markdown}>{content}</div>
-            </div>
-          )}
-        </div>
+        <Expando commentCid={cid} expanded={expanded} />
       </div>
     </div>
   );
