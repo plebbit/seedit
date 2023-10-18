@@ -4,7 +4,6 @@ import utils from '../../lib/utils';
 import { Link } from 'react-router-dom';
 import styles from './expando.module.css';
 import Embed from '../embed';
-import { CommentMediaInfo } from '../../lib/utils';
 
 interface ExpandoProps {
   commentCid: string;
@@ -16,21 +15,26 @@ const Expando: FC<ExpandoProps> = ({ commentCid, expanded }) => {
   const { cid, content, link, subplebbitAddress } = comment || {};
   const commentMediaInfo = utils.getCommentMediaInfoMemoized(comment);
 
-  // prettier-ignore
-  const mediaComponents: { [key in CommentMediaInfo['type']]?: JSX.Element | null } = {
-    'image': <img src={commentMediaInfo?.url} alt='' />,
-    'video': expanded ? <video src={commentMediaInfo?.url} controls /> : null,
-    'webpage': <img src={commentMediaInfo?.thumbnail} alt='' />,
-    'audio': expanded ? <audio src={commentMediaInfo?.url} controls /> : null,
-    'iframe': expanded ? <Embed url={commentMediaInfo?.url} /> : null,
-  };
+  let mediaComponent = null;
+
+  if (commentMediaInfo?.type === 'image') {
+    mediaComponent = <img src={commentMediaInfo.url} alt='' />;
+  } else if (commentMediaInfo?.type === 'video' && expanded) {
+    mediaComponent = <video src={commentMediaInfo.url} controls />;
+  } else if (commentMediaInfo?.type === 'webpage') {
+    mediaComponent = <img src={commentMediaInfo.thumbnail} alt='' />;
+  } else if (commentMediaInfo?.type === 'audio' && expanded) {
+    mediaComponent = <audio src={commentMediaInfo.url} controls />;
+  } else if (commentMediaInfo?.type === 'iframe' && expanded) {
+    mediaComponent = <Embed url={commentMediaInfo.url} />;
+  }
 
   return (
     <div className={expanded ? styles.expando : styles.expandoHidden}>
       {link && (
         <div className={styles.mediaPreview}>
           <Link to={`p/${subplebbitAddress}/c/${cid}`} onClick={(e) => e.preventDefault()}>
-            {commentMediaInfo?.type ? mediaComponents[commentMediaInfo.type] : null}
+            {mediaComponent}
           </Link>
         </div>
       )}
