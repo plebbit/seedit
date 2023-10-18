@@ -18,9 +18,9 @@ const Expando: FC<ExpandoProps> = ({ commentCid, expanded }) => {
 
   // prettier-ignore
   const mediaComponents: { [key in CommentMediaInfo['type']]?: JSX.Element | null } = {
-    'image': <img src={commentMediaInfo?.url} alt='thumbnail' onError={(e) => { e.currentTarget.alt = ''; }} />,
+    'image': <img src={commentMediaInfo?.url} alt='' />,
     'video': expanded ? <video src={commentMediaInfo?.url} controls /> : null,
-    'webpage': <img src={commentMediaInfo?.thumbnail} alt='thumbnail' onError={(e) => { e.currentTarget.alt = ''; }} />,
+    'webpage': <img src={commentMediaInfo?.thumbnail} alt='' />,
     'audio': expanded ? <audio src={commentMediaInfo?.url} controls /> : null,
     'iframe': expanded ? <Embed url={commentMediaInfo?.url} /> : null,
   };
