@@ -1,13 +1,11 @@
 .container {
   clear: both;
-  padding-bottom: 8px;
   display: flex;
   align-items: flex-start;
+  padding-bottom: 8px;
 }
 
 .leftcol {
-  float: left;
-  height: 100%;
   flex-shrink: 0;
 }
 
@@ -15,8 +13,7 @@
   font-weight: bold;
   font-size: small;
   float: left;
-  padding-right: 7px;
-  padding-left: 7px;
+  padding: 0 7px 0px 7px;
   background: transparent;
   overflow: hidden;
 }
