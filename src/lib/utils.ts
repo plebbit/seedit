@@ -4,6 +4,13 @@ import extName from 'ext-name';
 import { Comment } from '@plebbit/plebbit-react-hooks';
 import { canEmbed } from '../components/embed/embed';
 
+interface CommentMediaInfo {
+  url: string;
+  type: string;
+  thumbnail?: string;
+  patternThumbnailUrl?: string;
+}
+
 const getCommentMediaInfo = (comment: Comment) => {
   if (!comment?.thumbnailUrl && !comment?.link) {
     return;
@@ -58,7 +65,7 @@ const getCommentMediaInfo = (comment: Comment) => {
   }
 };
 
-const getCommentMediaInfoMemo = memoize(getCommentMediaInfo, { max: 1000 });
+const getCommentMediaInfoMemoized = memoize(getCommentMediaInfo, { max: 1000 });
 
 const getFormattedTime = (unixTimestamp: number): string => {
   const currentTime = Date.now() / 1000;
@@ -104,10 +111,23 @@ const getHostname = (url: string) => {
   }
 };
 
+const hasThumbnail = (commentMediaInfo: CommentMediaInfo | undefined, link: string | undefined): boolean => {
+  const iframeThumbnail = commentMediaInfo?.patternThumbnailUrl || commentMediaInfo?.thumbnail;
+  return link &&
+    commentMediaInfo &&
+    (commentMediaInfo.type === 'image' ||
+      commentMediaInfo.type === 'video' ||
+      (commentMediaInfo.type === 'webpage' && commentMediaInfo.thumbnail) ||
+      (commentMediaInfo.type === 'iframe' && iframeThumbnail))
+    ? true
+    : false;
+};
+
 const utils = {
-  getCommentMediaInfoMemo,
+  getCommentMediaInfoMemoized,
   getFormattedTime,
   getHostname,
+  hasThumbnail,
 };
 
 export default utils;
