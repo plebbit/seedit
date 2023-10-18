@@ -22,6 +22,7 @@
   font-weight: 400;
   color: var(--text-markdown);
   max-width: 60em;
+  white-space: pre-wrap;
   word-wrap: break-word;
   font-size: 1em;
 }
