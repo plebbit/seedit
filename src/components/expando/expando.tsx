@@ -16,6 +16,7 @@ const Expando: FC<ExpandoProps> = ({ commentCid, expanded }) => {
   const { cid, content, link, subplebbitAddress } = comment || {};
   const commentMediaInfo = utils.getCommentMediaInfoMemoized(comment);
 
+  // prettier-ignore
   const mediaComponents: { [key in CommentMediaInfo['type']]?: JSX.Element | null } = {
     'image': <img src={commentMediaInfo?.url} alt='thumbnail' onError={(e) => { e.currentTarget.alt = ''; }} />,
     'video': expanded ? <video src={commentMediaInfo?.url} controls /> : null,
@@ -29,7 +30,7 @@ const Expando: FC<ExpandoProps> = ({ commentCid, expanded }) => {
       {link && (
         <div className={styles.mediaPreview}>
           <Link to={`p/${subplebbitAddress}/c/${cid}`} onClick={(e) => e.preventDefault()}>
-           {commentMediaInfo?.type ? mediaComponents[commentMediaInfo.type] : null}
+            {commentMediaInfo?.type ? mediaComponents[commentMediaInfo.type] : null}
           </Link>
         </div>
       )}
