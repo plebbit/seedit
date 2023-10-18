@@ -1,6 +1,14 @@
 .container {
   clear: both;
   padding-bottom: 8px;
+  display: flex;
+  align-items: flex-start;
+}
+
+.leftcol {
+  float: left;
+  height: 100%;
+  flex-shrink: 0;
 }
 
 .midcol {
@@ -39,6 +47,7 @@
 }
 
 .entry {
+  flex-grow: 1;
   overflow: visible;
   padding: 0;
 }
