@@ -24,6 +24,7 @@ const FeedPost: FC<FeedPostProps> = ({ post, index }) => {
   const postTitleOrContent = (title?.length > 90 ? title?.slice(0, 90) + '...' : title) || (content?.length > 90 ? content?.slice(0, 90) + '...' : content);
   const commentMediaInfo = utils.getCommentMediaInfoMemoized(post);
   const hasThumbnail = utils.hasThumbnail(commentMediaInfo, link);
+  const linkUrl = utils.getHostname(link);
 
   // TEMPORARY: e.preventDefault() in Link elements because routes aren't implemented yet
 
@@ -54,11 +55,11 @@ const FeedPost: FC<FeedPostProps> = ({ post, index }) => {
               </>
             )}
             &nbsp;
-            {link && (
+            {linkUrl && (
               <span className={styles.domain}>
                 (
                 <a href={link} target='_blank' rel='noreferrer'>
-                  {utils.getHostname(link)}
+                  {linkUrl}
                 </a>
                 )
               </span>
