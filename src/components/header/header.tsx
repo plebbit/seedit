@@ -28,6 +28,14 @@ const Header: FC = () => {
     setSelected(choice);
   };
 
+  const menuItems = choices.map((choice, index) => (
+    <li key={choice}>
+      <Link to={choice} className={selected === choice ? styles.selected : styles.choice} onClick={() => handleSelect(choice)}>
+        {labels[index]}
+      </Link>
+    </li>
+  ));
+
   return (
     <div className={styles.header}>
       <div className={styles.headerBottomLeft}>
@@ -37,13 +45,7 @@ const Header: FC = () => {
             <img src={`${process.env.PUBLIC_URL}/assets/logo/seedit-text-${theme === 'black' ? 'dark' : 'light'}.svg`} className={styles.logoText} alt='logo' />
           </Link>
           <ul className={styles.tabMenu}>
-            {choices.map((choice, index) => (
-              <li key={choice}>
-                <Link to={choice} className={selected === choice ? styles.selected : styles.choice} onClick={() => handleSelect(choice)}>
-                  {labels[index]}
-                </Link>
-              </li>
-            ))}
+            {menuItems}
             <li>
               <Link to='/wiki' className={styles.choice} onClick={(event) => event.preventDefault()}>
                 wiki
