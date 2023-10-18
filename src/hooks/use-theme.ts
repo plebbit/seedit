@@ -1,4 +1,4 @@
-import { create, StoreApi } from "zustand";
+import { create, StoreApi } from 'zustand';
 
 interface ThemeState {
   theme: string;

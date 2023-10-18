@@ -21,22 +21,22 @@ const getCommentMediaInfo = (comment: Comment) => {
     const host = url.hostname;
     let patternThumbnailUrl;
 
-      if (['youtube.com', 'www.youtube.com', 'youtu.be'].includes(host)) {
-        const videoId = host === 'youtu.be' ? url.pathname.slice(1) : url.searchParams.get('v');
-        patternThumbnailUrl = `https://img.youtube.com/vi/${videoId}/sddefault.jpg`;
-      } else if (host.includes('streamable.com')) {
-        const videoId = url.pathname.split('/')[1];
-        patternThumbnailUrl = `https://cdn-cf-east.streamable.com/image/${videoId}.jpg`;
-      }
+    if (['youtube.com', 'www.youtube.com', 'youtu.be'].includes(host)) {
+      const videoId = host === 'youtu.be' ? url.pathname.slice(1) : url.searchParams.get('v');
+      patternThumbnailUrl = `https://img.youtube.com/vi/${videoId}/sddefault.jpg`;
+    } else if (host.includes('streamable.com')) {
+      const videoId = url.pathname.split('/')[1];
+      patternThumbnailUrl = `https://cdn-cf-east.streamable.com/image/${videoId}.jpg`;
+    }
 
-      if (canEmbed(url)) {
-        return {
-          url: comment.link,
-          type: 'iframe',
-          thumbnail: comment.thumbnailUrl,
-          patternThumbnailUrl,
-        };
-      }
+    if (canEmbed(url)) {
+      return {
+        url: comment.link,
+        type: 'iframe',
+        thumbnail: comment.thumbnailUrl,
+        patternThumbnailUrl,
+      };
+    }
 
     if (mime?.startsWith('image')) {
       return { url: comment.link, type: 'image' };
@@ -97,12 +97,12 @@ const getFormattedTime = (unixTimestamp: number): string => {
 
 const getHostname = (url: string) => {
   try {
-    return new URL(url).hostname.replace(/^www\./, '')
+    return new URL(url).hostname.replace(/^www\./, '');
   } catch (e) {
     console.log(e);
     return '';
   }
-}
+};
 
 const utils = {
   getCommentMediaInfoMemo,
