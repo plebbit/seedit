@@ -58,9 +58,9 @@ const getCommentMediaInfo = (comment: Comment) => {
   }
 };
 
-export const getCommentLinkMediaType = memoize(getCommentMediaInfo, { max: 1000 });
+const getCommentMediaInfoMemo = memoize(getCommentMediaInfo, { max: 1000 });
 
-export const getFormattedTime = (unixTimestamp: number): string => {
+const getFormattedTime = (unixTimestamp: number): string => {
   const currentTime = Date.now() / 1000;
   const timeDifference = currentTime - unixTimestamp;
   const t = i18next.t;
@@ -95,9 +95,19 @@ export const getFormattedTime = (unixTimestamp: number): string => {
   return t('time_x_years_ago', { count: Math.floor(timeDifference / 31104000) });
 };
 
+const getHostname = (url: string) => {
+  try {
+    return new URL(url).hostname.replace(/^www\./, '')
+  } catch (e) {
+    console.log(e);
+    return '';
+  }
+}
+
 const utils = {
+  getCommentMediaInfoMemo,
   getFormattedTime,
-  getCommentMediaInfo,
+  getHostname,
 };
 
 export default utils;

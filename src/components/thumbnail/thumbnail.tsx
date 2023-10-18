@@ -12,7 +12,7 @@ const Thumbnail: FC<ThumbnailProps> = ({ commentCid }) => {
   const comment = useComment({ commentCid });
   const subplebbitAddress = comment.subplebbitAddress;
   const { cid, linkHeight, linkWidth } = comment;
-  const commentMediaInfo = utils.getCommentMediaInfo(comment);
+  const commentMediaInfo = utils.getCommentMediaInfoMemo(comment);
   const iframeThumbnail = commentMediaInfo?.patternThumbnailUrl || commentMediaInfo?.thumbnail;
 
   let displayWidth, displayHeight, hasLinkDimensions;

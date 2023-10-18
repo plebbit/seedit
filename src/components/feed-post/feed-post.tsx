@@ -19,7 +19,7 @@ const FeedPost: FC<FeedPostProps> = ({ post, index }) => {
   const { t } = useTranslation();
   const [expandoVisible, setExpandoVisible] = useState(false);
   const subplebbit = useSubplebbit({ subplebbitAddress });
-  const commentMediaInfo = utils.getCommentMediaInfo(post);
+  const commentMediaInfo = utils.getCommentMediaInfoMemo(post);
   const iframeThumbnail = commentMediaInfo?.patternThumbnailUrl || commentMediaInfo?.thumbnail;
   const hasThumbnail =
     link &&
@@ -66,13 +66,7 @@ const FeedPost: FC<FeedPostProps> = ({ post, index }) => {
               <span className={styles.domain}>
                 (
                 <a href={link} target='_blank' rel='noreferrer'>
-                  {(() => {
-                    try {
-                      return new URL(link).hostname.replace(/^www\./, '');
-                    } catch (e) {
-                      return 'Invalid URL';
-                    }
-                  })()}
+                  {utils.getHostname(link)}
                 </a>
                 )
               </span>
