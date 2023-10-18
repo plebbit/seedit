@@ -22,7 +22,7 @@ const FeedPost: FC<FeedPostProps> = ({ post, index }) => {
   const [expanded, setExpanded] = useState(false);
   const toggleExpanded = () => setExpanded(!expanded);
   const postTitleOrContent = (title?.length > 90 ? title?.slice(0, 90) + '...' : title) || (content?.length > 90 ? content?.slice(0, 90) + '...' : content);
-  const commentMediaInfo = utils.getCommentMediaInfoMemoized(content);
+  const commentMediaInfo = utils.getCommentMediaInfoMemoized(post);
   const hasThumbnail = utils.hasThumbnail(commentMediaInfo, link);
 
   // TEMPORARY: e.preventDefault() in Link elements because routes aren't implemented yet
