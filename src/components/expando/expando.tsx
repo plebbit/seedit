@@ -4,6 +4,7 @@ import utils from '../../lib/utils';
 import { Link } from 'react-router-dom';
 import styles from './expando.module.css';
 import Embed from '../embed';
+import { CommentMediaInfo } from '../../lib/utils';
 
 interface ExpandoProps {
   commentCid: string;
@@ -15,43 +16,20 @@ const Expando: FC<ExpandoProps> = ({ commentCid, expanded }) => {
   const { cid, content, link, subplebbitAddress } = comment || {};
   const commentMediaInfo = utils.getCommentMediaInfoMemoized(comment);
 
+  const mediaComponents: { [key in CommentMediaInfo['type']]?: JSX.Element | null } = {
+    'image': <img src={commentMediaInfo?.url} alt='thumbnail' onError={(e) => { e.currentTarget.alt = ''; }} />,
+    'video': expanded ? <video src={commentMediaInfo?.url} controls /> : null,
+    'webpage': <img src={commentMediaInfo?.thumbnail} alt='thumbnail' onError={(e) => { e.currentTarget.alt = ''; }} />,
+    'audio': expanded ? <audio src={commentMediaInfo?.url} controls /> : null,
+    'iframe': expanded ? <Embed url={commentMediaInfo?.url} /> : null,
+  };
+
   return (
     <div className={expanded ? styles.expando : styles.expandoHidden}>
       {link && (
         <div className={styles.mediaPreview}>
           <Link to={`p/${subplebbitAddress}/c/${cid}`} onClick={(e) => e.preventDefault()}>
-            {commentMediaInfo?.type === 'image' && (
-              <img
-                src={commentMediaInfo.url}
-                alt='thumbnail'
-                onError={(e) => {
-                  e.currentTarget.alt = '';
-                }}
-              />
-            )}
-            {commentMediaInfo?.type === 'video' &&
-              (commentMediaInfo.thumbnail ? (
-                <img
-                  src={commentMediaInfo.thumbnail}
-                  alt='thumbnail'
-                  onError={(e) => {
-                    e.currentTarget.alt = '';
-                  }}
-                />
-              ) : (
-                <video src={commentMediaInfo.url} controls />
-              ))}
-            {commentMediaInfo?.type === 'webpage' && commentMediaInfo.thumbnail && (
-              <img
-                src={commentMediaInfo.thumbnail}
-                alt='thumbnail'
-                onError={(e) => {
-                  e.currentTarget.alt = '';
-                }}
-              />
-            )}
-            {commentMediaInfo?.type === 'audio' && <audio src={commentMediaInfo.url} controls />}
-            {commentMediaInfo?.type === 'iframe' && expanded && <Embed url={commentMediaInfo.url} />}
+           {commentMediaInfo?.type ? mediaComponents[commentMediaInfo.type] : null}
           </Link>
         </div>
       )}

@@ -4,7 +4,7 @@ import extName from 'ext-name';
 import { Comment } from '@plebbit/plebbit-react-hooks';
 import { canEmbed } from '../components/embed/embed';
 
-interface CommentMediaInfo {
+export interface CommentMediaInfo {
   url: string;
   type: string;
   thumbnail?: string;
