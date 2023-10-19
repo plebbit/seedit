@@ -1,8 +1,12 @@
 .container {
-  clear: both;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 8px;
+}
+
+.row {
   display: flex;
   align-items: flex-start;
-  padding-bottom: 8px;
 }
 
 .leftcol {
