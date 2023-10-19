@@ -48,7 +48,7 @@ const Home: FC = () => {
       <Header />
       <div className={styles.content}>
         <Virtuoso
-          increaseViewportBy={{ bottom: 600, top: 600 }}
+          increaseViewportBy={{ bottom: 1200, top: 1200 }}
           overscan={600}
           totalCount={feed?.length || 0}
           data={feed}
