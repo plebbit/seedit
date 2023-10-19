@@ -1,14 +1,19 @@
 .container {
   clear: both;
+  display: flex;
+  align-items: flex-start;
   padding-bottom: 8px;
+}
+
+.leftcol {
+  flex-shrink: 0;
 }
 
 .midcol {
   font-weight: bold;
   font-size: small;
   float: left;
-  padding-right: 7px;
-  padding-left: 7px;
+  padding: 0 7px 0px 7px;
   background: transparent;
   overflow: hidden;
 }
@@ -39,6 +44,7 @@
 }
 
 .entry {
+  flex-grow: 1;
   overflow: visible;
   padding: 0;
 }

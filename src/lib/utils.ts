@@ -4,7 +4,7 @@ import extName from 'ext-name';
 import { Comment } from '@plebbit/plebbit-react-hooks';
 import { canEmbed } from '../components/embed/embed';
 
-export interface CommentMediaInfo {
+interface CommentMediaInfo {
   url: string;
   type: string;
   thumbnail?: string;
@@ -106,7 +106,6 @@ const getHostname = (url: string) => {
   try {
     return new URL(url).hostname.replace(/^www\./, '');
   } catch (e) {
-    console.log(e);
     return '';
   }
 };
