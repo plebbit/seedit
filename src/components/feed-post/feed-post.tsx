@@ -30,56 +30,58 @@ const FeedPost: FC<FeedPostProps> = ({ post, index }) => {
 
   return (
     <div className={styles.container} key={index}>
-      <div className={styles.leftcol}>
-        <div className={styles.midcol}>
-          <div className={styles.arrowWrapper}>
-            <div className={`${styles.arrowCommon} ${styles.arrowUp}`}></div>
+      <div className={styles.row}>
+        <div className={styles.leftcol}>
+          <div className={styles.midcol}>
+            <div className={styles.arrowWrapper}>
+              <div className={`${styles.arrowCommon} ${styles.arrowUp}`}></div>
+            </div>
+            <div className={styles.score}>{upvoteCount === 0 && downvoteCount === 0 ? '•' : upvoteCount - downvoteCount}</div>
+            <div className={styles.arrowWrapper}>
+              <div className={`${styles.arrowCommon} ${styles.arrowDown}`}></div>
+            </div>
           </div>
-          <div className={styles.score}>{upvoteCount === 0 && downvoteCount === 0 ? '•' : upvoteCount - downvoteCount}</div>
-          <div className={styles.arrowWrapper}>
-            <div className={`${styles.arrowCommon} ${styles.arrowDown}`}></div>
+          {hasThumbnail && <Thumbnail commentCid={cid} />}
+        </div>
+        <div className={styles.entry}>
+          <div className={styles.topMatter}>
+            <p className={styles.title}>
+              <Link className={styles.link} to={`p/${subplebbitAddress}/c/${cid}`} onClick={(e) => e.preventDefault()}>
+                {postTitleOrContent}
+              </Link>
+              {flair && (
+                <>
+                  &nbsp;
+                  <Flair flair={flair} />
+                </>
+              )}
+              &nbsp;
+              {linkUrl && (
+                <span className={styles.domain}>
+                  (
+                  <a href={link} target='_blank' rel='noreferrer'>
+                    {linkUrl}
+                  </a>
+                  )
+                </span>
+              )}
+            </p>
+            <ExpandButton commentCid={cid} expanded={expanded} hasThumbnail={hasThumbnail} toggleExpanded={toggleExpanded} />
+            <p className={styles.tagline}>
+              {t('feed_post_submitted')} {utils.getFormattedTime(timestamp)} {t('feed_post_by')}&nbsp;
+              <Link className={styles.author} to={`u/${author.shortAddress}`} onClick={(e) => e.preventDefault()}>
+                u/{author.shortAddress}
+              </Link>
+               {t('feed_post_to')}
+              <Link className={styles.subplebbit} to={`p/${subplebbitAddress}`} onClick={(e) => e.preventDefault()}>
+                &nbsp;p/{subplebbit.shortAddress}
+              </Link>
+            </p>
+            <PostTools commentCid={cid} />
           </div>
         </div>
-        {hasThumbnail && <Thumbnail commentCid={cid} />}
       </div>
-      <div className={styles.entry}>
-        <div className={styles.topMatter}>
-          <p className={styles.title}>
-            <Link className={styles.link} to={`p/${subplebbitAddress}/c/${cid}`} onClick={(e) => e.preventDefault()}>
-              {postTitleOrContent}
-            </Link>
-            {flair && (
-              <>
-                &nbsp;
-                <Flair flair={flair} />
-              </>
-            )}
-            &nbsp;
-            {linkUrl && (
-              <span className={styles.domain}>
-                (
-                <a href={link} target='_blank' rel='noreferrer'>
-                  {linkUrl}
-                </a>
-                )
-              </span>
-            )}
-          </p>
-          <ExpandButton commentCid={cid} expanded={expanded} hasThumbnail={hasThumbnail} toggleExpanded={toggleExpanded} />
-          <p className={styles.tagline}>
-            {t('feed_post_submitted')} {utils.getFormattedTime(timestamp)} {t('feed_post_by')}&nbsp;
-            <Link className={styles.author} to={`u/${author.shortAddress}`} onClick={(e) => e.preventDefault()}>
-              u/{author.shortAddress}
-            </Link>
-             {t('feed_post_to')}
-            <Link className={styles.subplebbit} to={`p/${subplebbitAddress}`} onClick={(e) => e.preventDefault()}>
-              &nbsp;p/{subplebbit.shortAddress}
-            </Link>
-          </p>
-          <PostTools commentCid={cid} />
-        </div>
-        <Expando commentCid={cid} expanded={expanded} />
-      </div>
+      <Expando commentCid={cid} expanded={expanded} />
     </div>
   );
 };
