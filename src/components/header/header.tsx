@@ -14,7 +14,7 @@ const Header: FC = () => {
   const [theme] = useTheme();
   const [selected, setSelected] = useState(sortType || '/topMonth');
 
-  const labels = [t('header_hot'), t('header_new'), t('header_rising'), t('header_controversial'), t('header_top')];
+  const labels = [t('header_hot'), t('header_new'), t('header_active'), t('header_controversial'), t('header_top')];
 
   useEffect(() => {
     if (sortType) {
