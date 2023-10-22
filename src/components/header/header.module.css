@@ -91,8 +91,13 @@
 }
 
 .temporary {
+  display: flex;
   position: absolute;
   right: -5px;
-  top: 20px;
+  top: 18px;
   z-index: 999;
+}
+
+.temporary select {
+  margin-left: -5px;
 }

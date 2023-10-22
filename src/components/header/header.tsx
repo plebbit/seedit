@@ -8,6 +8,29 @@ import Theme from '../theme';
 
 const choices = ['/hot', '/new', '/active', '/controversialAll', '/topAll'];
 
+const Language: FC = () => {
+  const { i18n } = useTranslation();
+  const { changeLanguage, language } = i18n;
+
+  const availableLanguages = ['de', 'en', 'fr', 'it'];
+
+  const onSelectLanguage = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    changeLanguage(e.target.value);
+  };
+
+  return (
+    <div style={{ padding: '5px' }}>
+      <select value={language} onChange={onSelectLanguage}>
+        {availableLanguages.map((lang) => (
+          <option key={lang} value={lang}>
+            {lang}
+          </option>
+        ))}
+      </select>
+    </div>
+  );
+};
+
 const Header: FC = () => {
   const { sortType } = useParams<{ sortType: string }>();
   const { t } = useTranslation();
@@ -57,6 +80,7 @@ const Header: FC = () => {
       </div>
       <AccountBar />
       <div className={styles.temporary}>
+        <Language />
         <Theme />
       </div>
     </div>
