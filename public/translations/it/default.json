@@ -6,6 +6,7 @@
   "header_top": "più votati",
   "account_bar_preferences": "preferenze",
   "account_bar_language": "Italiano",
+  "account_bar_submit": "invia",
   "black": "nero",
   "light": "chiaro",
   "topbar_my_subs": "le mie comunità",
@@ -34,5 +35,6 @@
   "time_x_months_ago": "{{count}} mesi fa",
   "time_1_year_ago": "1 anno fa",
   "time_x_years_ago": "{{count}} anni fa",
-  "post_label_spoiler": "spoiler"
+  "post_label_spoiler": "spoiler",
+  "post_label_unspoiler": "rimuovi spoiler"
 }

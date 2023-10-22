@@ -7,6 +7,28 @@ import AccountBar from './account-bar';
 import Theme from '../theme';
 
 const choices = ['/hot', '/new', '/active', '/controversialAll', '/topAll'];
+const availableLanguages = ['ar', 'bn', 'cs', 'da', 'de', 'el', 'en', 'es', 'fa', 'fi', 'fil', 'fr', 'he', 'hi', 'hu', 'id', 'it', 'ja', 'ko', 'mr', 'nl', 'no', 'pl', 'pt', 'ro', 'ru', 'sq', 'sv', 'te', 'th', 'tr', 'uk', 'ur', 'vi', 'zh'];
+
+const Language: FC = () => {
+  const { i18n } = useTranslation();
+  const { changeLanguage, language } = i18n;
+
+  const onSelectLanguage = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    changeLanguage(e.target.value);
+  };
+
+  return (
+    <div style={{ padding: '5px' }}>
+      <select value={language} onChange={onSelectLanguage}>
+        {availableLanguages.map((lang) => (
+          <option key={lang} value={lang}>
+            {lang}
+          </option>
+        ))}
+      </select>
+    </div>
+  );
+};
 
 const Header: FC = () => {
   const { sortType } = useParams<{ sortType: string }>();
@@ -57,6 +79,7 @@ const Header: FC = () => {
       </div>
       <AccountBar />
       <div className={styles.temporary}>
+        <Language />
         <Theme />
       </div>
     </div>

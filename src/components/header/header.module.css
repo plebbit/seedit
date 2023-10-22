@@ -62,6 +62,7 @@
 .tabMenu li a {
   padding: 2px 6px 0 6px;
   text-decoration: none;
+  line-height: 20px;;
 }
 
 @media (max-width: 530px) {
@@ -91,8 +92,14 @@
 }
 
 .temporary {
+  display: flex;
   position: absolute;
   right: -5px;
-  top: 20px;
+  top: 18px;
   z-index: 999;
+}
+
+.temporary select {
+  margin-left: -5px;
+  height: 22px;
 }

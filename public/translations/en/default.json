@@ -6,6 +6,7 @@
   "header_top": "top",
   "account_bar_preferences": "preferences",
   "account_bar_language": "English",
+  "account_bar_submit": "submit",
   "black": "black",
   "light": "light",
   "topbar_my_subs": "my communities",
@@ -34,5 +35,6 @@
   "time_x_months_ago": "{{count}} months ago",
   "time_1_year_ago": "1 year ago",
   "time_x_years_ago": "{{count}} years ago",
-  "post_label_spoiler": "spoiler"
+  "post_label_spoiler": "spoiler",
+  "post_label_unspoiler": "unspoiler"
 }
