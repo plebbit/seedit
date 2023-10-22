@@ -7,12 +7,11 @@ import AccountBar from './account-bar';
 import Theme from '../theme';
 
 const choices = ['/hot', '/new', '/active', '/controversialAll', '/topAll'];
+const availableLanguages = ['ar', 'bn', 'cs', 'da', 'de', 'el', 'en', 'es', 'fa', 'fi', 'fil', 'fr', 'he', 'hi', 'hu', 'id', 'it', 'ja', 'ko', 'mr', 'nl', 'no', 'pl', 'pt', 'ro', 'ru', 'sq', 'sv', 'te', 'th', 'tr', 'uk', 'ur', 'vi', 'zh'];
 
 const Language: FC = () => {
   const { i18n } = useTranslation();
   const { changeLanguage, language } = i18n;
-
-  const availableLanguages = ['ar', 'de', 'en', 'es', 'fr', 'it', 'ja', 'pt', 'zh'];
 
   const onSelectLanguage = (e: React.ChangeEvent<HTMLSelectElement>) => {
     changeLanguage(e.target.value);
