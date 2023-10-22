@@ -19,7 +19,9 @@ const AccountBar: FC = () => {
       <Link
         to='/settings'
         className={styles.preferences}
-        onClick={(e) => {e.preventDefault();}}
+        onClick={(e) => {
+          e.preventDefault();
+        }}
       >
         {t('account_bar_submit')}
       </Link>
