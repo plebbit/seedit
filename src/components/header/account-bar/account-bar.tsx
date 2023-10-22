@@ -6,12 +6,7 @@ import { useAccount } from '@plebbit/plebbit-react-hooks';
 
 const AccountBar: FC = () => {
   const account = useAccount();
-  const { t, i18n } = useTranslation();
-
-  const toggleLanguage = () => {
-    const nextLang = i18n.language === 'en' ? 'it' : 'en';
-    i18n.changeLanguage(nextLang);
-  };
+  const { t } = useTranslation();
 
   return (
     <div className={styles.header}>
@@ -21,19 +16,16 @@ const AccountBar: FC = () => {
         </Link>
       </span>
       <span className={styles.separator}>|</span>
-      <Link to='/settings' className={styles.preferences} onClick={(e) => e.preventDefault()}>
-        {t('account_bar_preferences')}
-      </Link>
-      <span className={styles.separator}>|</span>
       <Link
         to='/settings'
         className={styles.preferences}
-        onClick={(e) => {
-          e.preventDefault();
-          toggleLanguage();
-        }}
+        onClick={(e) => {e.preventDefault();}}
       >
-        {t('account_bar_language')}
+        {t('account_bar_submit')}
+      </Link>
+      <span className={styles.separator}>|</span>
+      <Link to='/settings' className={styles.preferences} onClick={(e) => e.preventDefault()}>
+        {t('account_bar_preferences')}
       </Link>
     </div>
   );

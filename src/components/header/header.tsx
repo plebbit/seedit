@@ -12,7 +12,7 @@ const Language: FC = () => {
   const { i18n } = useTranslation();
   const { changeLanguage, language } = i18n;
 
-  const availableLanguages = ['de', 'en', 'fr', 'it'];
+  const availableLanguages = ['ar', 'de', 'en', 'es', 'fr', 'it', 'ja', 'pt', 'zh'];
 
   const onSelectLanguage = (e: React.ChangeEvent<HTMLSelectElement>) => {
     changeLanguage(e.target.value);
