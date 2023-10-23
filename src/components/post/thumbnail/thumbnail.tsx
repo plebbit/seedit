@@ -2,7 +2,7 @@ import { FC } from 'react';
 import styles from './thumbnail.module.css';
 import { useComment } from '@plebbit/plebbit-react-hooks';
 import { Link } from 'react-router-dom';
-import utils from '../../lib/utils';
+import utils from '../../../lib/utils';
 
 interface ThumbnailProps {
   commentCid: string;

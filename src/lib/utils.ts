@@ -2,7 +2,7 @@ import i18next from 'i18next';
 import memoize from 'memoizee';
 import extName from 'ext-name';
 import { Comment } from '@plebbit/plebbit-react-hooks';
-import { canEmbed } from '../components/embed/embed';
+import { canEmbed } from '../components/post/embed';
 
 interface CommentMediaInfo {
   url: string;
