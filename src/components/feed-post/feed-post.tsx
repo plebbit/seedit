@@ -26,8 +26,6 @@ const FeedPost: FC<FeedPostProps> = ({ post, index }) => {
   const hasThumbnail = utils.hasThumbnail(commentMediaInfo, link);
   const linkUrl = utils.getHostname(link);
 
-  // TEMPORARY: e.preventDefault() in Link elements because routes aren't implemented yet
-
   return (
     <div className={styles.container} key={index}>
       <div className={styles.row}>
