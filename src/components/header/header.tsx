@@ -68,14 +68,7 @@ const Header: FC = () => {
             <img className={styles.logo} src='/assets/logo/seedit.png' alt='logo' />
             <img src={`${process.env.PUBLIC_URL}/assets/logo/seedit-text-${theme === 'black' ? 'dark' : 'light'}.svg`} className={styles.logoText} alt='logo' />
           </Link>
-          <ul className={styles.tabMenu}>
-            {menuItems}
-            <li>
-              <Link to='/wiki' className={styles.choice} onClick={(event) => event.preventDefault()}>
-                wiki
-              </Link>
-            </li>
-          </ul>
+          <ul className={styles.tabMenu}>{menuItems}</ul>
         </span>
         &nbsp;
       </div>
