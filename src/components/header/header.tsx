@@ -4,10 +4,25 @@ import { useTranslation } from 'react-i18next';
 import styles from './header.module.css';
 import useTheme from '../../hooks/use-theme';
 import AccountBar from './account-bar';
-import Theme from '../theme';
 
 const choices = ['/hot', '/new', '/active', '/controversialAll', '/topAll'];
+
+// prettier-ignore
 const availableLanguages = ['ar', 'bn', 'cs', 'da', 'de', 'el', 'en', 'es', 'fa', 'fi', 'fil', 'fr', 'he', 'hi', 'hu', 'id', 'it', 'ja', 'ko', 'mr', 'nl', 'no', 'pl', 'pt', 'ro', 'ru', 'sq', 'sv', 'te', 'th', 'tr', 'uk', 'ur', 'vi', 'zh'];
+
+const Theme: FC = () => {
+  const [theme, setTheme] = useTheme();
+  const { t } = useTranslation();
+
+  return (
+    <div style={{ padding: '5px' }}>
+      <select value={theme} onChange={(e) => setTheme(e.target.value)}>
+        <option value='light'>{t('light')}</option>
+        <option value='black'>{t('black')}</option>
+      </select>
+    </div>
+  );
+};
 
 const Language: FC = () => {
   const { i18n } = useTranslation();
@@ -66,14 +81,7 @@ const Header: FC = () => {
             <img className={styles.logo} src='/assets/logo/seedit.png' alt='logo' />
             <img src={`${process.env.PUBLIC_URL}/assets/logo/seedit-text-${theme === 'black' ? 'dark' : 'light'}.svg`} className={styles.logoText} alt='logo' />
           </Link>
-          <ul className={styles.tabMenu}>
-            {menuItems}
-            <li>
-              <Link to='/wiki' className={styles.choice} onClick={(event) => event.preventDefault()}>
-                wiki
-              </Link>
-            </li>
-          </ul>
+          <ul className={styles.tabMenu}>{menuItems}</ul>
         </span>
         &nbsp;
       </div>

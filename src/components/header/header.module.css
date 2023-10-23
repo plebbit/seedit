@@ -62,7 +62,7 @@
 .tabMenu li a {
   padding: 2px 6px 0 6px;
   text-decoration: none;
-  line-height: 20px;;
+  line-height: 20px;
 }
 
 @media (max-width: 530px) {
@@ -75,19 +75,22 @@
     position: absolute;
     margin-top: 3px;
     margin-left: 2px;
-    transform: translateY(0.5px);
+    transform: translateY(0.2px);
   }
 
   .logoText {
     position: absolute;
-    margin-top: 15px;
+    margin-top: 16px;
     margin-left: 33px;
-    transform: translateY(0.5px);
+    transform: translateX(0.5px)
   }
 
   .tabMenu {
     padding: 49px 0 0 0;
-    transform: translateY(0.5px);
+  }
+
+  .tabMenu li a {
+    line-height: 0px;
   }
 }
 

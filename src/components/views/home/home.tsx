@@ -2,11 +2,11 @@ import { FC, useEffect, useRef } from 'react';
 import { useParams } from 'react-router-dom';
 import { Virtuoso, VirtuosoHandle, StateSnapshot } from 'react-virtuoso';
 import { useFeed } from '@plebbit/plebbit-react-hooks';
-import useDefaultSubplebbits from '../../hooks/use-default-subplebbits';
-import Header from '../header';
-import TopBar from '../topbar';
+import useDefaultSubplebbits from '../../../hooks/use-default-subplebbits';
+import Header from '../../header';
+import TopBar from '../../topbar';
 import styles from './home.module.css';
-import FeedPost from '../feed-post';
+import FeedPost from '../../post';
 
 const lastVirtuosoStates: { [key: string]: StateSnapshot } = {};
 

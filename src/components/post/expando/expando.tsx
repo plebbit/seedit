@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import { useComment } from '@plebbit/plebbit-react-hooks';
-import utils from '../../lib/utils';
+import utils from '../../../lib/utils';
 import { Link } from 'react-router-dom';
 import styles from './expando.module.css';
 import Embed from '../embed';

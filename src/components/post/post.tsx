@@ -1,14 +1,14 @@
 import { FC, useState } from 'react';
-import styles from './feed-post.module.css';
+import styles from './post.module.css';
 import { Link } from 'react-router-dom';
 import utils from '../../lib/utils';
 import { Comment, useSubplebbit } from '@plebbit/plebbit-react-hooks';
 import { useTranslation } from 'react-i18next';
-import ExpandButton from '../expand-button';
-import Expando from '../expando';
-import Flair from '../flair';
-import PostTools from '../post-tools';
-import Thumbnail from '../thumbnail';
+import ExpandButton from './expando/expand-button';
+import Expando from './expando';
+import Flair from './flair';
+import PostTools from './post-tools';
+import Thumbnail from './thumbnail';
 
 interface FeedPostProps {
   index: number;
@@ -25,8 +25,6 @@ const FeedPost: FC<FeedPostProps> = ({ post, index }) => {
   const commentMediaInfo = utils.getCommentMediaInfoMemoized(post);
   const hasThumbnail = utils.hasThumbnail(commentMediaInfo, link);
   const linkUrl = utils.getHostname(link);
-
-  // TEMPORARY: e.preventDefault() in Link elements because routes aren't implemented yet
 
   return (
     <div className={styles.container} key={index}>

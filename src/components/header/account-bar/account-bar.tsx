@@ -3,10 +3,12 @@ import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import styles from './account-bar.module.css';
 import { useAccount } from '@plebbit/plebbit-react-hooks';
+import useIsMobile from '../../../hooks/use-is-mobile';
 
 const AccountBar: FC = () => {
   const account = useAccount();
   const { t } = useTranslation();
+  const isMobile = useIsMobile();
 
   return (
     <div className={styles.header}>
@@ -16,12 +18,26 @@ const AccountBar: FC = () => {
         </Link>
       </span>
       <span className={styles.separator}>|</span>
-      <Link
-        to='/settings'
-        className={styles.preferences}
-        onClick={(e) => {e.preventDefault();}}
-      >
-        {t('account_bar_submit')}
+      {isMobile && (
+        <>
+          <Link
+            to='/settings'
+            className={styles.preferences}
+            onClick={(e) => {
+              e.preventDefault();
+            }}
+          >
+            {t('account_bar_submit')}
+          </Link>
+          <span className={styles.separator}>|</span>
+        </>
+      )}
+      <Link to='/settings' className={styles.preferences} onClick={(e) => e.preventDefault()}>
+        ✉️
+      </Link>
+      <span className={styles.separator}>|</span>
+      <Link to='/settings' className={styles.preferences} onClick={(e) => e.preventDefault()}>
+        🔎
       </Link>
       <span className={styles.separator}>|</span>
       <Link to='/settings' className={styles.preferences} onClick={(e) => e.preventDefault()}>
