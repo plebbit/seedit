@@ -34,3 +34,20 @@
   border: 1px solid var(--border-primary);
   border-bottom: 1px solid var(--background);
 }
+
+@media (max-width: 768px) {
+  .tabMenu {
+    padding-top: 49px;
+    position: absolute;
+  }
+
+  .tabMenu li a {
+    line-height: 0px;
+  }
+
+  .pageName {
+    padding-top: 47px;
+    position: absolute;
+    margin-left: 80px;
+  }
+}
