@@ -31,41 +31,20 @@
   transform: translateY(0.5px);
 }
 
-.tabMenu {
-  list-style: none;
-  white-space: nowrap;
-  display: inline-block;
-  margin-bottom: -43px;
-  padding-left: 15px;
-  transform: translateY(0.5px);
+.temporary {
+  display: flex;
+  position: absolute;
+  right: -5px;
+  top: 18px;
+  z-index: 999;
 }
 
-.tabMenu li {
-  display: inline;
-  font-weight: bold;
-  padding: 0px 3px;
+.temporary select {
+  margin-left: -5px;
+  height: 22px;
 }
 
-.tabMenu li .selected {
-  color: var(--text-secondary);
-  background-color: var(--background);
-  border: 1px solid var(--border-primary);
-  border-bottom: 1px solid var(--background);
-}
-
-.tabMenu li .choice {
-  color: var(--text-primary);
-  background-color: var(--background-secondary);
-  border-bottom: 1px solid var(--border-primary);
-}
-
-.tabMenu li a {
-  padding: 2px 6px 0 6px;
-  text-decoration: none;
-  line-height: 20px;
-}
-
-@media (max-width: 530px) {
+@media (max-width: 768px) {
   .container {
     align-items: flex-start;
     height: 50px;
@@ -94,15 +73,9 @@
   }
 }
 
-.temporary {
-  display: flex;
-  position: absolute;
-  right: -5px;
-  top: 18px;
-  z-index: 999;
-}
-
-.temporary select {
-  margin-left: -5px;
-  height: 22px;
+@media (min-width: 768px) {
+  .temporary {
+    top: 0px;
+    margin-top: -3px;
+  }
 }

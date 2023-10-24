@@ -6,7 +6,7 @@ const useIsMobile = () => {
   useEffect(() => {
     const handleResize = () => {
       const currentIsMobile = window.innerWidth < 768;
-      setIsMobile(prevIsMobile => {
+      setIsMobile((prevIsMobile) => {
         if (currentIsMobile !== prevIsMobile) {
           return currentIsMobile;
         }

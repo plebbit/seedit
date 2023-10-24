@@ -3,10 +3,9 @@ import { useParams } from 'react-router-dom';
 import { Virtuoso, VirtuosoHandle, StateSnapshot } from 'react-virtuoso';
 import { useFeed } from '@plebbit/plebbit-react-hooks';
 import useDefaultSubplebbits from '../../../hooks/use-default-subplebbits';
-import Header from '../../header';
-import TopBar from '../../topbar';
 import styles from './home.module.css';
-import FeedPost from '../../post';
+import Header from '../../header';
+import Post from '../../post';
 
 const lastVirtuosoStates: { [key: string]: StateSnapshot } = {};
 
@@ -44,7 +43,6 @@ const Home: FC = () => {
 
   return (
     <div>
-      <TopBar />
       <Header />
       <div className={styles.content}>
         <Virtuoso
@@ -52,7 +50,7 @@ const Home: FC = () => {
           overscan={600}
           totalCount={feed?.length || 0}
           data={feed}
-          itemContent={(index, post) => <FeedPost index={index} post={post} />}
+          itemContent={(index, post) => <Post index={index} post={post} />}
           useWindowScroll={true}
           components={{ Footer }}
           endReached={loadMore}
