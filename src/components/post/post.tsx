@@ -66,11 +66,11 @@ const Post: FC<PostProps> = ({ post, index }) => {
             </p>
             <ExpandButton commentCid={cid} expanded={expanded} hasThumbnail={hasThumbnail} toggleExpanded={toggleExpanded} />
             <p className={styles.tagline}>
-              {t('feed_post_submitted')} {utils.getFormattedTime(timestamp)} {t('feed_post_by')}&nbsp;
+              {t('post_submitted')} {utils.getFormattedTime(timestamp)} {t('post_by')}&nbsp;
               <Link className={styles.author} to={`u/${author.shortAddress}`} onClick={(e) => e.preventDefault()}>
                 u/{author.shortAddress}
               </Link>
-               {t('feed_post_to')}
+               {t('post_to')}
               <Link className={styles.subplebbit} to={`p/${subplebbitAddress}`} onClick={(e) => e.preventDefault()}>
                 &nbsp;p/{subplebbit.shortAddress}
               </Link>
