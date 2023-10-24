@@ -65,7 +65,20 @@
   line-height: 20px;
 }
 
-@media (max-width: 530px) {
+.temporary {
+  display: flex;
+  position: absolute;
+  right: -5px;
+  top: 18px;
+  z-index: 999;
+}
+
+.temporary select {
+  margin-left: -5px;
+  height: 22px;
+}
+
+@media (max-width: 768px) {
   .container {
     align-items: flex-start;
     height: 50px;
@@ -94,15 +107,9 @@
   }
 }
 
-.temporary {
-  display: flex;
-  position: absolute;
-  right: -5px;
-  top: 18px;
-  z-index: 999;
-}
-
-.temporary select {
-  margin-left: -5px;
-  height: 22px;
+@media (min-width: 768px) {
+  .temporary {
+    top: 0px;
+    margin-top: -3px;
+  }
 }
