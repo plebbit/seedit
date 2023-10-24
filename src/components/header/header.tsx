@@ -85,7 +85,7 @@ const Header: FC = () => {
             {menuItems}
             <li>
               <Link to='/wiki' className={styles.choice} onClick={(event) => event.preventDefault()}>
-                wiki
+                {t('header_wiki')}
               </Link>
             </li>
           </ul>
