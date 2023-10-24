@@ -10,12 +10,12 @@ import Flair from './flair';
 import PostTools from './post-tools';
 import Thumbnail from './thumbnail';
 
-interface FeedPostProps {
+interface PostProps {
   index: number;
   post: Comment;
 }
 
-const FeedPost: FC<FeedPostProps> = ({ post, index }) => {
+const Post: FC<PostProps> = ({ post, index }) => {
   const { author, cid, content, downvoteCount, flair, link, subplebbitAddress, timestamp, title, upvoteCount } = post || {};
   const subplebbit = useSubplebbit({ subplebbitAddress });
   const { t } = useTranslation();
@@ -84,4 +84,4 @@ const FeedPost: FC<FeedPostProps> = ({ post, index }) => {
   );
 };
 
-export default FeedPost;
+export default Post;
