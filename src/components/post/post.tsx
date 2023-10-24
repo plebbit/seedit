@@ -11,7 +11,7 @@ import PostTools from './post-tools';
 import Thumbnail from './thumbnail';
 
 interface PostProps {
-  index: number;
+  index?: number;
   post: Comment;
 }
 

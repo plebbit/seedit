@@ -1,8 +1,10 @@
 import { useEffect } from 'react';
-import { Route, Routes } from 'react-router-dom';
+import { Outlet, Route, Routes } from 'react-router-dom';
 import useTheme from './hooks/use-theme';
 import styles from './app.module.css';
 import Home from './components/views/home';
+import Comments from './components/views/comments';
+import TopBar from './components/topbar';
 
 function App() {
   const [theme] = useTheme();
@@ -12,10 +14,20 @@ function App() {
     document.body.classList.add(theme);
   }, [theme]);
 
+  const defaultLayout = (
+    <>
+      <TopBar />
+      <Outlet />
+    </>
+  );
+
   return (
     <div className={[styles.app, theme].join(' ')}>
       <Routes>
-        <Route path='/:sortType?' element={<Home />} />
+        <Route element={defaultLayout}>
+          <Route path='/:sortType?' element={<Home />} />
+          <Route path='/p/:subplebbitAddress/c/:commentCid' element={<Comments />} />
+        </Route>
       </Routes>
     </div>
   );

@@ -19,7 +19,7 @@ const PostTools: FC<PostToolsProps> = ({ commentCid }) => {
     <ul className={styles.buttons}>
       {spoiler && <PostToolsLabel commentCid={cid} />}
       <li className={styles.first}>
-        <Link to={`p/${subplebbitAddress}/c/${cid}`}>
+        <Link to={`/p/${subplebbitAddress}/c/${cid}`}>
           {replyCount === 0 ? t('post_no_comments') : `${replyCount} ${replyCount === 1 ? t('post_comment') : t('post_comments')}`}
         </Link>
       </li>
