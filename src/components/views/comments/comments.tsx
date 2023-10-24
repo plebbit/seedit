@@ -3,6 +3,7 @@ import Header from '../../header';
 import Post from '../../post';
 import { useComment } from '@plebbit/plebbit-react-hooks';
 import { useParams } from 'react-router-dom';
+import styles from './comments.module.css';
 
 const Comments: FC = () => {
   const { commentCid } = useParams();
@@ -11,7 +12,9 @@ const Comments: FC = () => {
   return (
     <>
       <Header />
-      <Post post={comment} />
+      <div className={styles.content}>
+        <Post post={comment} shouldExpand={false} />
+      </div>
     </>
   );
 };

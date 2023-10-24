@@ -1,4 +1,4 @@
-import { FC, useState } from 'react';
+import { FC, useEffect, useState } from 'react';
 import styles from './post.module.css';
 import { Link } from 'react-router-dom';
 import utils from '../../lib/utils';
@@ -13,9 +13,10 @@ import Thumbnail from './thumbnail';
 interface PostProps {
   index?: number;
   post: Comment;
+  shouldExpand?: boolean;
 }
 
-const Post: FC<PostProps> = ({ post, index }) => {
+const Post: FC<PostProps> = ({ post, index, shouldExpand = true }) => {
   const { author, cid, content, downvoteCount, flair, link, subplebbitAddress, timestamp, title, upvoteCount } = post || {};
   const subplebbit = useSubplebbit({ subplebbitAddress });
   const { t } = useTranslation();
@@ -25,6 +26,12 @@ const Post: FC<PostProps> = ({ post, index }) => {
   const commentMediaInfo = utils.getCommentMediaInfoMemoized(post);
   const hasThumbnail = utils.hasThumbnail(commentMediaInfo, link);
   const linkUrl = utils.getHostname(link);
+
+  useEffect(() => {
+    if (!shouldExpand) {
+      setExpanded(true);
+    }
+  }, [shouldExpand]);
 
   return (
     <div className={styles.container} key={index}>
@@ -39,7 +46,7 @@ const Post: FC<PostProps> = ({ post, index }) => {
               <div className={`${styles.arrowCommon} ${styles.arrowDown}`}></div>
             </div>
           </div>
-          {hasThumbnail && <Thumbnail commentCid={cid} />}
+          {hasThumbnail && shouldExpand && <Thumbnail commentCid={cid} />}
         </div>
         <div className={styles.entry}>
           <div className={styles.topMatter}>
@@ -64,7 +71,7 @@ const Post: FC<PostProps> = ({ post, index }) => {
                 </span>
               )}
             </p>
-            <ExpandButton commentCid={cid} expanded={expanded} hasThumbnail={hasThumbnail} toggleExpanded={toggleExpanded} />
+            {shouldExpand && <ExpandButton commentCid={cid} expanded={expanded} hasThumbnail={hasThumbnail} toggleExpanded={toggleExpanded} />}
             <p className={styles.tagline}>
               {t('post_submitted')} {utils.getFormattedTime(timestamp)} {t('post_by')}&nbsp;
               <Link className={styles.author} to={`u/${author?.shortAddress}`} onClick={(e) => e.preventDefault()}>
