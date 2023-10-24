@@ -31,3 +31,13 @@
   text-decoration: none;
   line-height: 20px;
 }
+
+@media (max-width: 768px) {
+  .tabMenu {
+    padding: 49px 0 0 0;
+  }
+
+  .tabMenu li a {
+    line-height: 0px;
+  }
+}
