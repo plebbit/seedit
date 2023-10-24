@@ -1,0 +1,36 @@
+.pageName {
+  font-weight: bold;
+  margin-right: 1ex;
+  font-variant: small-caps;
+  font-size: 1.2em;
+  padding: 43px 0 0 15px;
+}
+
+.pageName a {
+  color: var(--text);
+  text-decoration: none;
+}
+
+.tabMenu {
+  list-style: none;
+  white-space: nowrap;
+  display: inline-block;
+  margin-bottom: -43px;
+  padding-left: 5px;
+  transform: translateY(0.5px);
+}
+
+.tabMenu li {
+  display: inline;
+  font-weight: bold;
+}
+
+.tabMenu li a {
+  padding: 2px 6px 0 6px;
+  text-decoration: none;
+  line-height: 20px;
+  color: var(--text-secondary);
+  background-color: var(--background);
+  border: 1px solid var(--border-primary);
+  border-bottom: 1px solid var(--background);
+}

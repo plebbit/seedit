@@ -12,7 +12,7 @@ interface PostToolsProps {
 const PostTools: FC<PostToolsProps> = ({ commentCid }) => {
   const comment = useComment({ commentCid });
   const subplebbitAddress = comment.subplebbitAddress;
-  const { cid, replyCount, spoiler } = comment;
+  const { cid, replyCount, spoiler } = comment || {};
   const { t } = useTranslation();
 
   return (

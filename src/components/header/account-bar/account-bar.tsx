@@ -14,7 +14,7 @@ const AccountBar: FC = () => {
     <div className={styles.header}>
       <span className={styles.user}>
         <Link to='/user' onClick={(e) => e.preventDefault()}>
-          {account?.author.shortAddress}
+          {account?.author?.shortAddress}
         </Link>
       </span>
       <span className={styles.separator}>|</span>

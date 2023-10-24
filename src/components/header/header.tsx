@@ -1,15 +1,15 @@
-import { FC, useState, useEffect } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { FC } from 'react';
+import { Link, useLocation, useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import styles from './header.module.css';
 import useTheme from '../../hooks/use-theme';
 import AccountBar from './account-bar';
-
-const choices = ['/hot', '/new', '/active', '/controversialAll', '/topAll'];
+import { SortButtons, CommentsButtons } from '../header';
 
 // prettier-ignore
 const availableLanguages = ['ar', 'bn', 'cs', 'da', 'de', 'el', 'en', 'es', 'fa', 'fi', 'fil', 'fr', 'he', 'hi', 'hu', 'id', 'it', 'ja', 'ko', 'mr', 'nl', 'no', 'pl', 'pt', 'ro', 'ru', 'sq', 'sv', 'te', 'th', 'tr', 'uk', 'ur', 'vi', 'zh'];
 
+// TODO: move to settings page
 const Theme: FC = () => {
   const [theme, setTheme] = useTheme();
   const { t } = useTranslation();
@@ -24,6 +24,7 @@ const Theme: FC = () => {
   );
 };
 
+// TODO: move to settings page
 const Language: FC = () => {
   const { i18n } = useTranslation();
   const { changeLanguage, language } = i18n;
@@ -46,32 +47,17 @@ const Language: FC = () => {
 };
 
 const Header: FC = () => {
-  const { sortType } = useParams<{ sortType: string }>();
-  const { t } = useTranslation();
   const [theme] = useTheme();
-  const [selected, setSelected] = useState(sortType || '/topMonth');
+  const { sortType, subplebbitAddress, commentCid } = useParams();
+  const location = useLocation();
 
-  const labels = [t('header_hot'), t('header_new'), t('header_active'), t('header_controversial'), t('header_top')];
+  let buttons = null;
 
-  useEffect(() => {
-    if (sortType) {
-      setSelected('/' + sortType);
-    } else {
-      setSelected('/hot');
-    }
-  }, [sortType]);
-
-  const handleSelect = (choice: string) => {
-    setSelected(choice);
-  };
-
-  const menuItems = choices.map((choice, index) => (
-    <li key={choice}>
-      <Link to={choice} className={selected === choice ? styles.selected : styles.choice} onClick={() => handleSelect(choice)}>
-        {labels[index]}
-      </Link>
-    </li>
-  ));
+  if (location.pathname === `/p/${subplebbitAddress}/c/${commentCid}`) {
+    buttons = <CommentsButtons />;
+  } else if ((location.pathname === `/`) || (sortType && ['hot', 'new', 'active', 'controversialAll', 'topAll'].includes(sortType))) {
+    buttons = <SortButtons />;
+  }
 
   return (
     <div className={styles.header}>
@@ -81,14 +67,7 @@ const Header: FC = () => {
             <img className={styles.logo} src='/assets/logo/seedit.png' alt='logo' />
             <img src={`${process.env.PUBLIC_URL}/assets/logo/seedit-text-${theme === 'black' ? 'dark' : 'light'}.svg`} className={styles.logoText} alt='logo' />
           </Link>
-          <ul className={styles.tabMenu}>
-            {menuItems}
-            <li>
-              <Link to='/wiki' className={styles.choice} onClick={(event) => event.preventDefault()}>
-                {t('header_wiki')}
-              </Link>
-            </li>
-          </ul>
+          {buttons}
         </span>
         &nbsp;
       </div>
