@@ -36,8 +36,8 @@ const SortButtons: FC = () => {
     <ul className={styles.tabMenu}>
       {menuItems}
       <li>
-        <Link to='/wiki' className={styles.choice} onClick={(event) => event.preventDefault()}>
-          {t('header_wiki')}
+        <Link to='/about' className={styles.choice} onClick={(event) => event.preventDefault()}>
+          {t('header_about')}
         </Link>
       </li>
     </ul>

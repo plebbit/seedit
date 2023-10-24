@@ -55,7 +55,7 @@ const Header: FC = () => {
 
   if (location.pathname === `/p/${subplebbitAddress}/c/${commentCid}`) {
     buttons = <CommentsButtons />;
-  } else if ((location.pathname === `/`) || (sortType && ['hot', 'new', 'active', 'controversialAll', 'topAll'].includes(sortType))) {
+  } else if (location.pathname === `/` || (sortType && ['hot', 'new', 'active', 'controversialAll', 'topAll'].includes(sortType))) {
     buttons = <SortButtons />;
   }
 
