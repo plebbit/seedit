@@ -16,9 +16,7 @@ const Comments: FC = () => {
         <TopBar />
         <Header />
         <div className={styles.comments}>
-        {Array.from({ length: 10 }).map((_, i) => (
-          <Post key={i} post={comment} shouldExpand={false} />
-        ))}
+          <Post post={comment} shouldExpand={false} />
         </div>
       </div>
     </>

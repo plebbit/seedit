@@ -1,4 +1,4 @@
-import { FC, useEffect, useRef } from 'react';
+import { FC, useEffect, useMemo, useRef } from 'react';
 import { Outlet, useLocation, useParams } from 'react-router-dom';
 import { Virtuoso, VirtuosoHandle, StateSnapshot } from 'react-virtuoso';
 import { useFeed } from '@plebbit/plebbit-react-hooks';
@@ -20,8 +20,11 @@ const Home: FC = () => {
   const { feed, hasMore, loadMore } = useFeed({ subplebbitAddresses, sortType });
   const loadingStateString = 'loading...';
   const location = useLocation();
-  const isCommentsModalOpen = location.pathname === `/p/${subplebbitAddress}/c/${commentCid}`;
 
+  const isCommentsModalOpen = useMemo(() => {
+    return location.pathname === `/p/${subplebbitAddress}/c/${commentCid}`;
+  }, [location, subplebbitAddress, commentCid]);
+  
   let Footer;
   if (feed?.length === 0) {
     Footer = NoPosts;
