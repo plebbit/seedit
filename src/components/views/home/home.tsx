@@ -1,11 +1,13 @@
 import { FC, useEffect, useRef } from 'react';
-import { useParams } from 'react-router-dom';
+import { Outlet, useLocation, useParams } from 'react-router-dom';
 import { Virtuoso, VirtuosoHandle, StateSnapshot } from 'react-virtuoso';
 import { useFeed } from '@plebbit/plebbit-react-hooks';
 import useDefaultSubplebbits from '../../../hooks/use-default-subplebbits';
 import styles from './home.module.css';
+import TopBar from '../../topbar/topbar';
 import Header from '../../header';
 import Post from '../../post';
+import Comments from '../comments/comments';
 
 const lastVirtuosoStates: { [key: string]: StateSnapshot } = {};
 
@@ -14,8 +16,11 @@ const NoPosts = () => 'no posts';
 const Home: FC = () => {
   const subplebbitAddresses = useDefaultSubplebbits();
   const sortType = useParams<{ sortType: string }>().sortType || 'hot';
+  const { subplebbitAddress, commentCid } = useParams();
   const { feed, hasMore, loadMore } = useFeed({ subplebbitAddresses, sortType });
   const loadingStateString = 'loading...';
+  const location = useLocation();
+  const isCommentsModalOpen = location.pathname === `/p/${subplebbitAddress}/c/${commentCid}`;
 
   let Footer;
   if (feed?.length === 0) {
@@ -43,6 +48,7 @@ const Home: FC = () => {
 
   return (
     <div>
+      <TopBar />
       <Header />
       <div className={styles.content}>
         <Virtuoso
@@ -51,7 +57,7 @@ const Home: FC = () => {
           totalCount={feed?.length || 0}
           data={feed}
           itemContent={(index, post) => <Post index={index} post={post} />}
-          useWindowScroll={true}
+          useWindowScroll={!isCommentsModalOpen}
           components={{ Footer }}
           endReached={loadMore}
           ref={virtuosoRef}
@@ -59,6 +65,7 @@ const Home: FC = () => {
           initialScrollTop={lastVirtuosoState?.scrollTop}
         />
       </div>
+      {isCommentsModalOpen ? <Comments /> : <Outlet />}
     </div>
   );
 };
