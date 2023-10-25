@@ -1,5 +1,5 @@
-import { FC, useEffect, useMemo, useRef } from 'react';
-import { Outlet, useLocation, useParams } from 'react-router-dom';
+import { FC, useEffect, useRef } from 'react';
+import { useLocation, useParams } from 'react-router-dom';
 import { Virtuoso, VirtuosoHandle, StateSnapshot } from 'react-virtuoso';
 import { useFeed } from '@plebbit/plebbit-react-hooks';
 import useDefaultSubplebbits from '../../../hooks/use-default-subplebbits';
@@ -19,12 +19,9 @@ const Home: FC = () => {
   const { subplebbitAddress, commentCid } = useParams();
   const { feed, hasMore, loadMore } = useFeed({ subplebbitAddresses, sortType });
   const loadingStateString = 'loading...';
-  const location = useLocation();
+  const { pathname } = useLocation();
+  const isCommentsModalOpen = pathname === `/p/${subplebbitAddress}/c/${commentCid}`;
 
-  const isCommentsModalOpen = useMemo(() => {
-    return location.pathname === `/p/${subplebbitAddress}/c/${commentCid}`;
-  }, [location, subplebbitAddress, commentCid]);
-  
   let Footer;
   if (feed?.length === 0) {
     Footer = NoPosts;
@@ -54,21 +51,25 @@ const Home: FC = () => {
       <TopBar />
       <Header />
       <div className={styles.content}>
-        <Virtuoso
-          increaseViewportBy={{ bottom: 1200, top: 1200 }}
-          overscan={600}
-          totalCount={feed?.length || 0}
-          data={feed}
-          itemContent={(index, post) => <Post index={index} post={post} />}
-          useWindowScroll={!isCommentsModalOpen}
-          components={{ Footer }}
-          endReached={loadMore}
-          ref={virtuosoRef}
-          restoreStateFrom={lastVirtuosoState}
-          initialScrollTop={lastVirtuosoState?.scrollTop}
-        />
+        {!isCommentsModalOpen && (
+          <Virtuoso
+            increaseViewportBy={{ bottom: 1200, top: 1200 }}
+            overscan={600}
+            totalCount={feed?.length || 0}
+            data={feed}
+            itemContent={(index, post) => <Post index={index} post={post} />}
+            useWindowScroll={!isCommentsModalOpen}
+            components={{ Footer }}
+            endReached={loadMore}
+            ref={virtuosoRef}
+            restoreStateFrom={lastVirtuosoState}
+            initialScrollTop={lastVirtuosoState?.scrollTop}
+          />
+        )}
       </div>
-      {isCommentsModalOpen ? <Comments /> : <Outlet />}
+      <div style={{ display: isCommentsModalOpen ? 'block' : 'none' }}>
+        <Comments />
+      </div>
     </div>
   );
 };
