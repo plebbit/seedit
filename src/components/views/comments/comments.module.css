@@ -11,3 +11,82 @@
 .comments {
   padding: 7px 5px 0px 5px;
 }
+
+.commentArea {
+  margin: 0;
+  padding: 0;
+}
+
+.commentsTitle {
+  border-bottom-color: rgb(84, 91, 94);
+  padding-bottom: 3px;
+  border-bottom: 1px dotted gray;
+  margin: 10px 310px 0px 10px;
+}
+
+.title {
+  font-size: 16px;
+  font-weight: normal;
+  margin: 10px 0;
+  color: var(--text)
+}
+
+.menuArea {
+  border-color: currentcolor;
+  color: rgb(152, 143, 129);
+  border: none;
+  margin: 0 310px 10px 10px;
+  padding: 0;
+  overflow: hidden;
+  font-size: larger;
+}
+
+.spacer {
+  display: inline;
+  margin-right: 15px;
+  margin-bottom: 5px;
+}
+
+.dropdown {
+  cursor: default;
+  display: inline;
+  position: relative;
+}
+
+.selected {
+  background-color: rgba(0, 0, 0, 0);
+  background: none no-repeat scroll center right;
+  background-image: url("/public/assets/buttons/droparrowgray.gif");
+  text-decoration-color: currentcolor;
+  color: rgb(152, 143, 129);
+  position: relative;
+  padding-right: 21px;
+  text-decoration: underline;
+  color: gray;
+  font-weight: bold;
+}
+
+.mdContainer {
+  margin: 5px 0 10px 10px;
+  font-size: small;
+  padding: 0 1px;
+  width: 500px;
+  unicode-bidi: isolate;
+  font-size: small;
+}
+
+.md {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  font-weight: 400;
+  max-width: 60em;
+}
+
+.textarea {
+  width: 500px;
+  height: 100px;
+  font-size: 1em;
+  background-color: var(--background);
+  color: var(--text);
+  font: normal small verdana,arial,helvetica,sans-serif;
+}
