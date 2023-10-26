@@ -23,7 +23,7 @@
   --close-button-hover: url("/public/assets/buttons/close-button-hover.png");
 }
 
-:root .black {
+:root .dark {
   --background: #0f0f0f;
   --background-primary: #1f1f1f;
   --background-secondary: #3e3e3e;
