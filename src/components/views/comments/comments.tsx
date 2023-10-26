@@ -1,6 +1,6 @@
 import { FC, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { useComment } from '@plebbit/plebbit-react-hooks';
+import { useComment, useSubplebbit } from '@plebbit/plebbit-react-hooks';
 import styles from './comments.module.css';
 import TopBar from '../../topbar';
 import Header from '../../header';
@@ -9,11 +9,19 @@ import Post from '../../post';
 const Comments: FC = () => {
   const { commentCid } = useParams();
   const comment = useComment({ commentCid });
-  const { replyCount } = comment || {};
+  const { content, replyCount, subplebbitAddress, title } = comment || {};
+  const subplebbit = useSubplebbit({subplebbitAddress});
+  const threadTitle = title?.slice(0, 40) || content?.slice(0, 40);
+  const subplebbitTitle = subplebbit?.title || subplebbit?.shortAddress;
 
   useEffect(() => {
+    if (threadTitle || subplebbitTitle) {
+      document.title = `${threadTitle} - ${subplebbitTitle} - seedit`;
+    } else {
+      document.title = 'seedit';
+    }
     window.scrollTo(0, 0);
-  }, []);
+  }, [threadTitle, subplebbitTitle]);
 
   return (
     <>

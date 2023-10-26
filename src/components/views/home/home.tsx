@@ -22,6 +22,10 @@ const Home: FC = () => {
   const { pathname } = useLocation();
   const isCommentsModalOpen = pathname === `/p/${subplebbitAddress}/c/${commentCid}`;
 
+  useEffect(() => {
+    document.title = `seedit`;
+  }, []);
+
   let Footer;
   if (feed?.length === 0) {
     Footer = NoPosts;
