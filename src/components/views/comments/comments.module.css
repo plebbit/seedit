@@ -98,6 +98,11 @@
   .textarea {
     width: calc(100vw - 40px);
   }
+
+  _::-webkit-full-page-media, _:future, :root .textarea {
+    width: calc(100vw - 47px);
+  }
+
 }
 
 .save {
@@ -106,4 +111,8 @@
   appearance: button;
   cursor: pointer;
   padding: 2px 6px 3px;
+}
+
+.replies {
+  max-width: 80em;
 }
