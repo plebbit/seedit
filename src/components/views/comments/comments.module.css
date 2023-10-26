@@ -86,10 +86,12 @@
 .textarea {
   width: 500px;
   height: 100px;
-  font-size: 1em;
   background-color: var(--background);
   color: var(--text);
   font: normal small verdana,arial,helvetica,sans-serif;
+  line-height: 1.42em;
+  font-size: 1.08em;
+  word-wrap: break-word;
 }
 
 @media (max-width: 540px) {
