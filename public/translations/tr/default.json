@@ -38,5 +38,8 @@
   "time_1_year_ago": "1 yıl önce",
   "time_x_years_ago": "{{count}} yıl önce",
   "post_label_spoiler": "Spoiler",
-  "post_label_unspoiler": "Spoiler Olmayan"
+  "post_label_unspoiler": "Spoiler Olmayan",
+  "reply_permalink": "Kalıcı bağlantı",
+  "reply_embed": "Embed",
+  "reply_reply": "Cevap"
 }

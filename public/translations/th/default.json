@@ -38,5 +38,8 @@
   "time_1_year_ago": "1 ปีที่ผ่านมา",
   "time_x_years_ago": "{{count}} ปีที่ผ่านมา",
   "post_label_spoiler": "สปอยล์",
-  "post_label_unspoiler": "ไม่สปอยล์"
+  "post_label_unspoiler": "ไม่สปอยล์",
+  "reply_permalink": "ลิงก์ถาวร",
+  "reply_embed": "embed",
+  "reply_reply": "ตอบ"
 }

@@ -38,5 +38,8 @@
   "time_1_year_ago": "1 سال پیش",
   "time_x_years_ago": "{{count}} سال پیش",
   "post_label_spoiler": "اسپویلر",
-  "post_label_unspoiler": "حذف اسپویلر"
+  "post_label_unspoiler": "حذف اسپویلر",
+  "reply_permalink": "پیوند ثابت",
+  "reply_embed": "توکار",
+  "reply_reply": "پاسخ"
 }

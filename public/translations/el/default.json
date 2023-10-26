@@ -38,5 +38,8 @@
   "time_1_year_ago": "Πριν από 1 έτος",
   "time_x_years_ago": "Πριν από {{count}} έτη",
   "post_label_spoiler": "Διαρροή",
-  "post_label_unspoiler": "Χωρίς Διαρροή"
+  "post_label_unspoiler": "Χωρίς Διαρροή",
+  "reply_permalink": "Μόνιμος σύνδεσμος",
+  "reply_embed": "Embed",
+  "reply_reply": "Απάντηση"
 }

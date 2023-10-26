@@ -38,5 +38,8 @@
   "time_1_year_ago": "1 vuosi sitten",
   "time_x_years_ago": "{{count}} vuotta sitten",
   "post_label_spoiler": "Juonipaljastus",
-  "post_label_unspoiler": "Poista juonipaljastus"
+  "post_label_unspoiler": "Poista juonipaljastus",
+  "reply_permalink": "Pysyvä linkki",
+  "reply_embed": "Upottaa",
+  "reply_reply": "Vastaus"
 }

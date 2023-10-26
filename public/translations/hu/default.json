@@ -38,5 +38,8 @@
   "time_1_year_ago": "1 éve",
   "time_x_years_ago": "{{count}} éve",
   "post_label_spoiler": "Spoiler",
-  "post_label_unspoiler": "Spoiler eltávolítása"
+  "post_label_unspoiler": "Spoiler eltávolítása",
+  "reply_permalink": "Állandó hivatkozás",
+  "reply_embed": "Embed",
+  "reply_reply": "Válasz"
 }

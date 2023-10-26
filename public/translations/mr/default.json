@@ -38,5 +38,8 @@
   "time_1_year_ago": "१ वर्षांपूर्वी",
   "time_x_years_ago": "{{count}} वर्षांपूर्वी",
   "post_label_spoiler": "स्पॉयलर",
-  "post_label_unspoiler": "अनस्पॉयलर"
+  "post_label_unspoiler": "अनस्पॉयलर",
+  "reply_permalink": "कायम संकेतस्थळ",
+  "reply_embed": "embed",
+  "reply_reply": "उत्तर"
 }

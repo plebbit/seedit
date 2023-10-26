@@ -38,5 +38,8 @@
   "time_1_year_ago": "il y a 1 an",
   "time_x_years_ago": "il y a {{count}} ans",
   "post_label_spoiler": "spoiler",
-  "post_label_unspoiler": "unspoiler"
+  "post_label_unspoiler": "unspoiler",
+  "reply_permalink": "lien permanent",
+  "reply_embed": "embed",
+  "reply_reply": "répondre"
 }

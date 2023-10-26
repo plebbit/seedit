@@ -38,5 +38,8 @@
   "time_1_year_ago": "1年前",
   "time_x_years_ago": "{{count}}年前",
   "post_label_spoiler": "剧透",
-  "post_label_unspoiler": "取消剧透"
+  "post_label_unspoiler": "取消剧透",
+  "reply_permalink": "永久链接",
+  "reply_embed": "嵌入",
+  "reply_reply": "回复"
 }

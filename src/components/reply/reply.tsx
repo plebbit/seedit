@@ -1,6 +1,7 @@
 import { FC, useState } from 'react';
 import { Comment } from '@plebbit/plebbit-react-hooks';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import styles from './reply.module.css';
 import useReplies from '../../hooks/use-replies';
 import utils from '../../lib/utils';
@@ -25,6 +26,7 @@ const Reply: FC<ReplyProps> = ({ reply }) => {
   const toggleExpanded = () => setExpanded(!expanded);
   const commentMediaInfo = utils.getCommentMediaInfoMemoized(reply);
   const hasThumbnail = utils.hasThumbnail(commentMediaInfo, link);
+  const { t } = useTranslation();
 
   return (
     <div className={styles.reply}>
@@ -58,19 +60,19 @@ const Reply: FC<ReplyProps> = ({ reply }) => {
         </div>
         <ul className={styles.buttons}>
           <li className={styles.button}>
-            <span>permalink</span>
+            <span>{t('reply_permalink')}</span>
           </li>
           <li className={styles.button}>
-            <span>embed</span>
+            <span>{t('reply_embed')}</span>
           </li>
           <li className={styles.button}>
-            <span>save</span>
+            <span>{t('post_save')}</span>
           </li>
           <li className={styles.button}>
-            <span>report</span>
+            <span>{t('post_report')}</span>
           </li>
           <li className={styles.button}>
-            <span>reply</span>
+            <span>{t('reply_reply')}</span>
           </li>
         </ul>
         {replies.map((reply, index) => (

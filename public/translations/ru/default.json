@@ -38,5 +38,8 @@
   "time_1_year_ago": "1 год назад",
   "time_x_years_ago": "{{count}} лет назад",
   "post_label_spoiler": "Спойлер",
-  "post_label_unspoiler": "Убрать спойлер"
+  "post_label_unspoiler": "Убрать спойлер",
+  "reply_permalink": "Постоянная ссылка",
+  "reply_embed": "Встроить",
+  "reply_reply": "Ответ"
 }
