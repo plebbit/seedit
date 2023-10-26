@@ -5,12 +5,15 @@ import styles from './comments.module.css';
 import TopBar from '../../topbar';
 import Header from '../../header';
 import Post from '../../post';
+import useReplies from '../../../hooks/use-replies';
+import Reply from '../../reply/reply';
 
 const Comments: FC = () => {
   const { commentCid } = useParams();
   const comment = useComment({ commentCid });
   const { content, replyCount, subplebbitAddress, title } = comment || {};
   const subplebbit = useSubplebbit({subplebbitAddress});
+  const replies = useReplies(comment).map((reply, index) => <Reply key={index} reply={reply} />) || '';
   const threadTitle = title?.slice(0, 40) || content?.slice(0, 40);
   const subplebbitTitle = subplebbit?.title || subplebbit?.shortAddress;
 
@@ -50,7 +53,7 @@ const Comments: FC = () => {
                 </div>
               </div>
             </div>
-            <div className={styles.replies}></div>
+            <div className={styles.replies}>{replies}</div>
           </div>
         </div>
       </div>

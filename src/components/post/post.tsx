@@ -86,7 +86,7 @@ const Post: FC<PostProps> = ({ post, index, shouldExpand = true }) => {
           </div>
         </div>
       </div>
-      <Expando commentCid={cid} expanded={expanded} />
+      <Expando commentCid={cid} expanded={expanded} showContent={true} />
     </div>
   );
 };
