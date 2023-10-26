@@ -41,7 +41,6 @@
   background-color: var(--background-primary);
 }
 
-
 .dropChoices .choice {
   cursor: pinter;
   padding: 2px 3px 1px 3px;
@@ -55,7 +54,6 @@
 
 .selectedTitle {
   background: none no-repeat scroll center right;
-  background-image: none;
   background-image: url("/public/assets/buttons/droparrowgray.gif");
   display: inline-block;
   vertical-align: bottom;
