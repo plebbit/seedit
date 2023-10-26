@@ -25,11 +25,10 @@ const Reply: FC<ReplyProps> = ({ reply }) => {
   const toggleExpanded = () => setExpanded(!expanded);
   const commentMediaInfo = utils.getCommentMediaInfoMemoized(reply);
   const hasThumbnail = utils.hasThumbnail(commentMediaInfo, link);
-  const calculatedMargin = 10 + (depth - 1) * 25;
 
   return (
     <div className={styles.reply}>
-      <div className={`${styles.replyWrapper} ${depth > 1 && styles.nested}`} style={{marginLeft: `${calculatedMargin}px`}}>
+      <div className={`${styles.replyWrapper} ${depth > 1 && styles.nested}`}>
         <div className={styles.midcol}>
           <div className={`${styles.arrow} ${styles.arrowUp}`} />
           <div className={`${styles.arrow} ${styles.arrowDown}`} />
@@ -51,10 +50,10 @@ const Reply: FC<ReplyProps> = ({ reply }) => {
             <span className={styles.time}>{utils.getFormattedTime(timestamp)}</span>
           </p>
           <div className={styles.usertext}>
-            {hasThumbnail && (<Thumbnail commentCid={cid} />)}
-            {hasThumbnail && (<ExpandButton commentCid={cid} expanded={expanded} hasThumbnail={hasThumbnail} toggleExpanded={toggleExpanded} />)}
+            {hasThumbnail && <Thumbnail commentCid={cid} />}
+            {hasThumbnail && <ExpandButton commentCid={cid} expanded={expanded} hasThumbnail={hasThumbnail} toggleExpanded={toggleExpanded} />}
             <div className={styles.md}>{content}</div>
-            {hasThumbnail && (<Expando commentCid={cid} expanded={expanded} showContent={false} />)}
+            {hasThumbnail && <Expando commentCid={cid} expanded={expanded} showContent={false} />}
           </div>
         </div>
         <ul className={styles.buttons}>
@@ -74,10 +73,10 @@ const Reply: FC<ReplyProps> = ({ reply }) => {
             <span>reply</span>
           </li>
         </ul>
+        {replies.map((reply, index) => (
+          <Reply key={index} reply={reply} />
+        ))}
       </div>
-      {replies.map((reply, index) => (
-        <Reply key={index} reply={reply} />
-      ))}
     </div>
   );
 };

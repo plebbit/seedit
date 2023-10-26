@@ -1,15 +1,15 @@
 .nested {
   margin-top: 10px;
+  margin-left: 25px;
   border-left: 1px dotted #DDF;
 }
 
 .replyWrapper {
- margin-top: 10px; 
+ margin-top: 10px;
 }
 
 .midcol {
   visibility: visible;
-  margin-left: 0px;
   width: 15px;
   float: left;
   margin-right: 7px;
