@@ -11,7 +11,9 @@ const Comments: FC = () => {
   const comment = useComment({ commentCid });
   const { replyCount } = comment || {};
 
-  useEffect(() => {window.scrollTo(0, 0);}, []);
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <>
@@ -40,9 +42,7 @@ const Comments: FC = () => {
                 </div>
               </div>
             </div>
-            <div className={styles.replies}>
-
-            </div>
+            <div className={styles.replies}></div>
           </div>
         </div>
       </div>
