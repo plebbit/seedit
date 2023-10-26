@@ -41,5 +41,9 @@
   "post_label_unspoiler": "إلغاء حرق",
   "reply_permalink": "رابط ثابت",
   "reply_embed": "تضمين",
-  "reply_reply": "الرد"
+  "reply_reply": "الرد",
+  "reply_best": "أفضل",
+  "reply_sorted_by": "مرتبة حسب",
+  "all_comments": "جميع {{count}} التعليقات",
+  "no_comments": "لا تعليقات (بعد)"
 }

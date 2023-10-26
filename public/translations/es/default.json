@@ -41,5 +41,9 @@
   "post_label_unspoiler": "despoiler",
   "reply_permalink": "enlace permanente",
   "reply_embed": "embed",
-  "reply_reply": "responder"
+  "reply_reply": "responder",
+  "reply_best": "mejores",
+  "reply_sorted_by": "ordenado por",
+  "all_comments": "todos los {{count}} comentarios",
+  "no_comments": "sin comentarios (aún)"
 }

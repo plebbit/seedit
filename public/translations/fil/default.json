@@ -41,5 +41,9 @@
   "post_label_unspoiler": "Walang Spoiler",
   "reply_permalink": "Permalink",
   "reply_embed": "Embed",
-  "reply_reply": "Tumugon"
+  "reply_reply": "Tumugon",
+  "reply_best": "Pinakamahusay",
+  "reply_sorted_by": "Naayos ayon sa",
+  "all_comments": "Lahat ng {{count}} mga komento",
+  "no_comments": "Walang komento (pa)"
 }

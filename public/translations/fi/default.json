@@ -41,5 +41,9 @@
   "post_label_unspoiler": "Poista juonipaljastus",
   "reply_permalink": "Pysyvä linkki",
   "reply_embed": "Upottaa",
-  "reply_reply": "Vastaus"
+  "reply_reply": "Vastaus",
+  "reply_best": "Parhaat",
+  "reply_sorted_by": "Lajiteltu",
+  "all_comments": "Kaikki {{count}} kommentit",
+  "no_comments": "Ei kommentteja (vielä)"
 }

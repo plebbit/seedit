@@ -41,5 +41,9 @@
   "post_label_unspoiler": "Fjern spoiler",
   "reply_permalink": "Permalink",
   "reply_embed": "Embed",
-  "reply_reply": "Svar"
+  "reply_reply": "Svar",
+  "reply_best": "Bedste",
+  "reply_sorted_by": "Sorteret efter",
+  "all_comments": "Alle {{count}} kommentarer",
+  "no_comments": "Ingen kommentarer (endnu)"
 }

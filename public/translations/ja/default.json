@@ -41,5 +41,9 @@
   "post_label_unspoiler": "ネタバレ解除",
   "reply_permalink": "パーマリンク",
   "reply_embed": "埋め込む",
-  "reply_reply": "返信"
+  "reply_reply": "返信",
+  "reply_best": "最良",
+  "reply_sorted_by": "ソート条件",
+  "all_comments": "すべての{{count}}コメント",
+  "no_comments": "コメントはありません（まだ）"
 }

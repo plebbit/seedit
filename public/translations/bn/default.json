@@ -41,5 +41,9 @@
   "post_label_unspoiler": "আনস্পয়লার",
   "reply_permalink": "স্থায়ী লিঙ্ক",
   "reply_embed": "embed",
-  "reply_reply": "উত্তর"
+  "reply_reply": "উত্তর",
+  "reply_best": "সেরা",
+  "reply_sorted_by": "অনুসারে বাছাই",
+  "all_comments": "সব {{count}} মন্তব্য",
+  "no_comments": "কোনো মন্তব্য নেই (এখনো)"
 }

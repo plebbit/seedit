@@ -41,5 +41,9 @@
   "post_label_unspoiler": "Spoiler eltávolítása",
   "reply_permalink": "Állandó hivatkozás",
   "reply_embed": "Embed",
-  "reply_reply": "Válasz"
+  "reply_reply": "Válasz",
+  "reply_best": "Legjobb",
+  "reply_sorted_by": "Sorrend",
+  "all_comments": "Mind a {{count}} hozzászólások",
+  "no_comments": "Nincsenek hozzászólások (még)"
 }

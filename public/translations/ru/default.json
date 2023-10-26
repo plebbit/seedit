@@ -41,5 +41,9 @@
   "post_label_unspoiler": "Убрать спойлер",
   "reply_permalink": "Постоянная ссылка",
   "reply_embed": "Встроить",
-  "reply_reply": "Ответ"
+  "reply_reply": "Ответ",
+  "reply_best": "Лучшие",
+  "reply_sorted_by": "Сортировать по",
+  "all_comments": "Все {{count}} комментарии",
+  "no_comments": "Нет комментариев (пока)"
 }

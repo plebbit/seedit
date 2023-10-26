@@ -41,5 +41,9 @@
   "post_label_unspoiler": "Odstranit spoiler",
   "reply_permalink": "Trvalý odkaz",
   "reply_embed": "Embed",
-  "reply_reply": "Odpověď"
+  "reply_reply": "Odpověď",
+  "reply_best": "Nejlepší",
+  "reply_sorted_by": "Řazeno podle",
+  "all_comments": "Všechny {{count}} komentáře",
+  "no_comments": "Žádné komentáře (zatím)"
 }

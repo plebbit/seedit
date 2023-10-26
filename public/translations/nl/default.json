@@ -41,5 +41,9 @@
   "post_label_unspoiler": "Geen spoiler",
   "reply_permalink": "Permalink",
   "reply_embed": "Embed",
-  "reply_reply": "Antwoord"
+  "reply_reply": "Antwoord",
+  "reply_best": "Beste",
+  "reply_sorted_by": "Gesorteerd op",
+  "all_comments": "Alle {{count}} reacties",
+  "no_comments": "Geen reacties (nog)"
 }

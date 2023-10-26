@@ -41,5 +41,9 @@
   "post_label_unspoiler": "اناسپوائلر",
   "reply_permalink": "مستقل ربط",
   "reply_embed": "embed",
-  "reply_reply": "جواب"
+  "reply_reply": "جواب",
+  "reply_best": "بہترین",
+  "reply_sorted_by": "کے مطابق ترتیب",
+  "all_comments": "تمام {{count}} تبصرے",
+  "no_comments": "کوئی تبصرہ نہیں (ابھی)"
 }

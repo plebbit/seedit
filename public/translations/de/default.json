@@ -41,5 +41,9 @@
   "post_label_unspoiler": "einklappen",
   "reply_permalink": "Dauerlink",
   "reply_embed": "Embed",
-  "reply_reply": "Antwort"
+  "reply_reply": "Antwort",
+  "reply_best": "Besten",
+  "reply_sorted_by": "Sortiert nach",
+  "all_comments": "Alle {{count}} kommentare",
+  "no_comments": "Keine kommentare (noch)"
 }

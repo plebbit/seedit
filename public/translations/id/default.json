@@ -41,5 +41,9 @@
   "post_label_unspoiler": "Tanpa Spoiler",
   "reply_permalink": "Tautan tetap",
   "reply_embed": "Embed",
-  "reply_reply": "Balasan"
+  "reply_reply": "Balasan",
+  "reply_best": "Terbaik",
+  "reply_sorted_by": "Diurutkan berdasarkan",
+  "all_comments": "Semua {{count}} komentar",
+  "no_comments": "Tidak ada komentar (belum)"
 }

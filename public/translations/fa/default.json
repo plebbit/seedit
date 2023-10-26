@@ -41,5 +41,9 @@
   "post_label_unspoiler": "حذف اسپویلر",
   "reply_permalink": "پیوند ثابت",
   "reply_embed": "توکار",
-  "reply_reply": "پاسخ"
+  "reply_reply": "پاسخ",
+  "reply_best": "بهترین",
+  "reply_sorted_by": "مرتب‌شده بر اساس",
+  "all_comments": "همه {{count}} نظرات",
+  "no_comments": "بدون نظر (هنوز)"
 }

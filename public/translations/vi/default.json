@@ -41,5 +41,9 @@
   "post_label_unspoiler": "Bỏ Spoiler",
   "reply_permalink": "Liên kết cố định",
   "reply_embed": "Embed",
-  "reply_reply": "Trả lời"
+  "reply_reply": "Trả lời",
+  "reply_best": "Tốt nhất",
+  "reply_sorted_by": "Sắp xếp theo",
+  "all_comments": "Tất cả {{count}} bình luận",
+  "no_comments": "Không có bình luận (chưa)"
 }

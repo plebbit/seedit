@@ -41,5 +41,9 @@
   "post_label_unspoiler": "取消剧透",
   "reply_permalink": "永久链接",
   "reply_embed": "嵌入",
-  "reply_reply": "回复"
+  "reply_reply": "回复",
+  "reply_best": "最好的",
+  "reply_sorted_by": "排序方式",
+  "all_comments": "全部 {{count}} 个评论",
+  "no_comments": "暂无评论（还）"
 }
