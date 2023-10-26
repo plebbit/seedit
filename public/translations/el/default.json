@@ -9,7 +9,7 @@
   "account_bar_preferences": "Προτιμήσεις",
   "account_bar_language": "Αγγλικά",
   "account_bar_submit": "Υποβολή",
-  "black": "Μαύρο",
+  "dark": "Σκοτεινός",
   "light": "Φωτεινό",
   "topbar_my_subs": "Οι κοινότητές μου",
   "topbar_edit": "Επεξεργασία",
@@ -38,5 +38,12 @@
   "time_1_year_ago": "Πριν από 1 έτος",
   "time_x_years_ago": "Πριν από {{count}} έτη",
   "post_label_spoiler": "Διαρροή",
-  "post_label_unspoiler": "Χωρίς Διαρροή"
+  "post_label_unspoiler": "Χωρίς Διαρροή",
+  "reply_permalink": "Μόνιμος σύνδεσμος",
+  "reply_embed": "Embed",
+  "reply_reply": "Απάντηση",
+  "reply_best": "Καλύτερα",
+  "reply_sorted_by": "Ταξινομημένα κατά",
+  "all_comments": "Όλα τα {{count}} σχόλια",
+  "no_comments": "Κανένα σχόλιο (ακόμη)"
 }

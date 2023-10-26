@@ -9,7 +9,7 @@
   "account_bar_preferences": "העדפות",
   "account_bar_language": "אנגלית",
   "account_bar_submit": "שלח",
-  "black": "שחור",
+  "dark": "כהה",
   "light": "בהיר",
   "topbar_my_subs": "הקהילות שלי",
   "topbar_edit": "ערוך",
@@ -38,5 +38,12 @@
   "time_1_year_ago": "לפני שנה",
   "time_x_years_ago": "לפני {{count}} שנים",
   "post_label_spoiler": "ספוילר",
-  "post_label_unspoiler": "הסר ספוילר"
+  "post_label_unspoiler": "הסר ספוילר",
+  "reply_permalink": "קישור קבוע",
+  "reply_embed": "הטמע",
+  "reply_reply": "תגובה",
+  "reply_best": "הכי טובים",
+  "reply_sorted_by": "ממוין לפי",
+  "all_comments": "כל {{count}} התגובות",
+  "no_comments": "אין תגובות (עדיין)"
 }

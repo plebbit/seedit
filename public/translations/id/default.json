@@ -9,7 +9,7 @@
   "account_bar_preferences": "Preferensi",
   "account_bar_language": "Inggris",
   "account_bar_submit": "Kirim",
-  "black": "Hitam",
+  "dark": "Gelap",
   "light": "Terang",
   "topbar_my_subs": "Komunitas Saya",
   "topbar_edit": "Edit",
@@ -38,5 +38,12 @@
   "time_1_year_ago": "1 tahun yang lalu",
   "time_x_years_ago": "{{count}} tahun yang lalu",
   "post_label_spoiler": "Spoiler",
-  "post_label_unspoiler": "Tanpa Spoiler"
+  "post_label_unspoiler": "Tanpa Spoiler",
+  "reply_permalink": "Tautan tetap",
+  "reply_embed": "Embed",
+  "reply_reply": "Balasan",
+  "reply_best": "Terbaik",
+  "reply_sorted_by": "Diurutkan berdasarkan",
+  "all_comments": "Semua {{count}} komentar",
+  "no_comments": "Tidak ada komentar (belum)"
 }

@@ -9,7 +9,7 @@
   "account_bar_preferences": "Voorkeuren",
   "account_bar_language": "Engels",
   "account_bar_submit": "Indienen",
-  "black": "Zwart",
+  "dark": "Donker",
   "light": "Licht",
   "topbar_my_subs": "Mijn gemeenschappen",
   "topbar_edit": "Bewerken",
@@ -38,5 +38,12 @@
   "time_1_year_ago": "1 jaar geleden",
   "time_x_years_ago": "{{count}} jaar geleden",
   "post_label_spoiler": "Spoiler",
-  "post_label_unspoiler": "Geen spoiler"
+  "post_label_unspoiler": "Geen spoiler",
+  "reply_permalink": "Permalink",
+  "reply_embed": "Embed",
+  "reply_reply": "Antwoord",
+  "reply_best": "Beste",
+  "reply_sorted_by": "Gesorteerd op",
+  "all_comments": "Alle {{count}} reacties",
+  "no_comments": "Geen reacties (nog)"
 }

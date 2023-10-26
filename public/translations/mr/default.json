@@ -9,7 +9,7 @@
   "account_bar_preferences": "प्राथमिकता",
   "account_bar_language": "इंग्रजी",
   "account_bar_submit": "सबमिट करा",
-  "black": "काळा",
+  "dark": "गडद",
   "light": "पांढरा",
   "topbar_my_subs": "माझ्या समुदायांतील",
   "topbar_edit": "संपादित करा",
@@ -38,5 +38,12 @@
   "time_1_year_ago": "१ वर्षांपूर्वी",
   "time_x_years_ago": "{{count}} वर्षांपूर्वी",
   "post_label_spoiler": "स्पॉयलर",
-  "post_label_unspoiler": "अनस्पॉयलर"
+  "post_label_unspoiler": "अनस्पॉयलर",
+  "reply_permalink": "कायम संकेतस्थळ",
+  "reply_embed": "embed",
+  "reply_reply": "उत्तर",
+  "reply_best": "सर्वोत्कृष्ट",
+  "reply_sorted_by": "याप्रमाणे क्रमवारीत",
+  "all_comments": "सर्व {{count}} टिप्पण्या",
+  "no_comments": "कोणत्याही टिप्पण्या नाहीत (अजून)"
 }

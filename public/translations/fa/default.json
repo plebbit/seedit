@@ -9,7 +9,7 @@
   "account_bar_preferences": "تنظیمات",
   "account_bar_language": "انگلیسی",
   "account_bar_submit": "ارسال",
-  "black": "سیاه",
+  "dark": "تاریک",
   "light": "روشن",
   "topbar_my_subs": "جوامع من",
   "topbar_edit": "ویرایش",
@@ -38,5 +38,12 @@
   "time_1_year_ago": "1 سال پیش",
   "time_x_years_ago": "{{count}} سال پیش",
   "post_label_spoiler": "اسپویلر",
-  "post_label_unspoiler": "حذف اسپویلر"
+  "post_label_unspoiler": "حذف اسپویلر",
+  "reply_permalink": "پیوند ثابت",
+  "reply_embed": "توکار",
+  "reply_reply": "پاسخ",
+  "reply_best": "بهترین",
+  "reply_sorted_by": "مرتب‌شده بر اساس",
+  "all_comments": "همه {{count}} نظرات",
+  "no_comments": "بدون نظر (هنوز)"
 }

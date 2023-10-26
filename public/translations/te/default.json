@@ -9,7 +9,7 @@
   "account_bar_preferences": "ప్రాధాన్యతలు",
   "account_bar_language": "ఇంగ్లీష్",
   "account_bar_submit": "సబ్మిట్",
-  "black": "నలుపు",
+  "dark": "ముదురు",
   "light": "తెలుపు",
   "topbar_my_subs": "నా సముదాయాలు",
   "topbar_edit": "సవరించు",
@@ -38,5 +38,12 @@
   "time_1_year_ago": "1 సంవత్సరం క్రితం",
   "time_x_years_ago": "{{count}} సంవత్సరాల క్రితం",
   "post_label_spoiler": "స్పోయిలర్",
-  "post_label_unspoiler": "ఉన్‌స్పోయిలర్"
+  "post_label_unspoiler": "ఉన్‌స్పోయిలర్",
+  "reply_permalink": "శాశ్వత లింకు",
+  "reply_embed": "అంతర్గతం చేయు",
+  "reply_reply": "స్పందన",
+  "reply_best": "ఉత్తమ",
+  "reply_sorted_by": "దీని ప్రకారం క్రమపడబడింది",
+  "all_comments": "అన్ని {{count}} వ్యాఖ్యలు",
+  "no_comments": "వ్యాఖ్యలు లేవు (ఇంకా)"
 }

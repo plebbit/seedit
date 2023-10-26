@@ -9,7 +9,7 @@
   "account_bar_preferences": "Preferencat",
   "account_bar_language": "Anglisht",
   "account_bar_submit": "Dërgo",
-  "black": "I zi",
+  "dark": "Errët",
   "light": "I ndritur",
   "topbar_my_subs": "Komunitetet e mia",
   "topbar_edit": "Redakto",
@@ -38,5 +38,12 @@
   "time_1_year_ago": "1 vit më parë",
   "time_x_years_ago": "{{count}} vite më parë",
   "post_label_spoiler": "Spoiler",
-  "post_label_unspoiler": "Hiq spoiler"
+  "post_label_unspoiler": "Hiq spoiler",
+  "reply_permalink": "Lidhje e përhershme",
+  "reply_embed": "Embed",
+  "reply_reply": "Përgjigje",
+  "reply_best": "Më të mirët",
+  "reply_sorted_by": "Renditur sipas",
+  "all_comments": "Të gjitha {{count}} komentet",
+  "no_comments": "Asnjë koment (ende)"
 }

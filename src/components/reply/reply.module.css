@@ -1,0 +1,108 @@
+.nested {
+  margin-top: 10px;
+  margin-left: 25px;
+  border-left: 1px dotted #DDF;
+}
+
+.replyWrapper {
+ margin-top: 10px;
+}
+
+.midcol {
+  visibility: visible;
+  width: 15px;
+  float: left;
+  margin-right: 7px;
+  margin-left: 7px;
+  background: transparent;
+  overflow: hidden;
+}
+
+.arrow {
+  width: 15px;
+  height: 14px;
+  display: block;
+  cursor: pointer;
+  margin: 2px 0px 0px 0px;
+  display: block;
+  cursor: pointer;
+  margin-left: auto;
+  margin-right: auto;
+  outline: none;
+}
+
+.arrowUp {
+  background-image: url("/public/assets/buttons/arrow-up.png");
+}
+
+.arrowDown {
+  background-image: url("/public/assets/buttons/arrow-down.png");
+}
+
+.entry {
+  overflow: hidden;
+  margin-left: 3px;
+  opacity: 1;
+}
+
+.tagline {
+  color: var(--text);
+  font-size: x-small;
+}
+
+.expand {
+  margin-right: 3px;
+  padding: 1px;
+  color: var(--text-primary);
+  cursor: pointer;
+}
+
+.author {
+  font-weight: bold;
+  margin-right: 0.5em;
+  color: var(--text-primary);
+  text-decoration: none;
+}
+
+.score {
+  color: var(--text-info);
+  font-size: x-small;  
+}
+
+.time {
+  color: var(--text-info);
+  font-size: x-small;
+}
+
+.usertext {
+  font-size: small;
+  unicode-bidi: isolate;
+}
+
+.md {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  font-size: 1.0769230769230769em;
+  font-weight: 400;
+  color: var(--text-markdown);
+  max-width: 60em;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+.buttons {
+  list-style-type: none;
+  margin-left: 29px;
+}
+
+.button {
+  display: inline-block;
+  border: none;
+  line-height: 1.6em;
+  white-space: nowrap;
+  color: var(--text-info);
+  font-weight: bold;
+  padding: 0 1px;
+  margin-right: 8px;
+  cursor: pointer;
+}

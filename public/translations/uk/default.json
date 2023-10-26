@@ -9,7 +9,7 @@
   "account_bar_preferences": "Налаштування",
   "account_bar_language": "Англійська",
   "account_bar_submit": "Надіслати",
-  "black": "Чорний",
+  "dark": "Темний",
   "light": "Світлий",
   "topbar_my_subs": "Мої спільноти",
   "topbar_edit": "Редагувати",
@@ -38,5 +38,12 @@
   "time_1_year_ago": "1 рік тому",
   "time_x_years_ago": "{{count}} років тому",
   "post_label_spoiler": "Спойлер",
-  "post_label_unspoiler": "Зняти спойлер"
+  "post_label_unspoiler": "Зняти спойлер",
+  "reply_permalink": "Постійне посилання",
+  "reply_embed": "Embed",
+  "reply_reply": "Відповідь",
+  "reply_best": "Найкращі",
+  "reply_sorted_by": "Сортувати за",
+  "all_comments": "Всі {{count}} коментарі",
+  "no_comments": "Немає коментарів (ще)"
 }

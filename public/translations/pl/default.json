@@ -9,7 +9,7 @@
   "account_bar_preferences": "Preferencje",
   "account_bar_language": "Angielski",
   "account_bar_submit": "Zatwierdź",
-  "black": "Czarne",
+  "dark": "Ciemny",
   "light": "Jasne",
   "topbar_my_subs": "Moje społeczności",
   "topbar_edit": "Edytuj",
@@ -38,5 +38,12 @@
   "time_1_year_ago": "1 rok temu",
   "time_x_years_ago": "{{count}} lat temu",
   "post_label_spoiler": "Spoiler",
-  "post_label_unspoiler": "Usuń spoiler"
+  "post_label_unspoiler": "Usuń spoiler",
+  "reply_permalink": "Stały link",
+  "reply_embed": "Embed",
+  "reply_reply": "Odpowiedź",
+  "reply_best": "Najlepsze",
+  "reply_sorted_by": "Sortowane według",
+  "all_comments": "Wszystkie {{count}} komentarze",
+  "no_comments": "Brak komentarzy (jeszcze)"
 }

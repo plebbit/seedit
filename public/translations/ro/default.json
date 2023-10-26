@@ -9,7 +9,7 @@
   "account_bar_preferences": "Preferințe",
   "account_bar_language": "Engleză",
   "account_bar_submit": "Trimite",
-  "black": "Negru",
+  "dark": "Întunecat",
   "light": "Luminos",
   "topbar_my_subs": "Comunitățile mele",
   "topbar_edit": "Editează",
@@ -38,5 +38,12 @@
   "time_1_year_ago": "Acum 1 an",
   "time_x_years_ago": "Acum {{count}} ani",
   "post_label_spoiler": "Spoiler",
-  "post_label_unspoiler": "Fără spoiler"
+  "post_label_unspoiler": "Fără spoiler",
+  "reply_permalink": "Permalink",
+  "reply_embed": "Embed",
+  "reply_reply": "Răspuns",
+  "reply_best": "Cele mai bune",
+  "reply_sorted_by": "Sortat după",
+  "all_comments": "Toate {{count}} comentariile",
+  "no_comments": "Fără comentarii (încă)"
 }

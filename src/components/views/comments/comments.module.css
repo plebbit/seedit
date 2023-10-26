@@ -10,6 +10,7 @@
 
 .comments {
   padding: 7px 5px 0px 5px;
+  margin-bottom: 200px;
 }
 
 .commentArea {
@@ -49,7 +50,7 @@
 }
 
 .dropdown {
-  cursor: default;
+  cursor: pointer;
   display: inline;
   position: relative;
 }
@@ -106,7 +107,7 @@
 }
 
 .save {
-  margin: 5px 5px 10px 0;
+  margin: 5px 5px 0 0;
   -webkit-appearance: button;
   appearance: button;
   cursor: pointer;
@@ -115,4 +116,5 @@
 
 .replies {
   max-width: 80em;
+  margin-left: 3px;
 }

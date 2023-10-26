@@ -9,7 +9,7 @@
   "account_bar_preferences": "설정",
   "account_bar_language": "영어",
   "account_bar_submit": "제출",
-  "black": "검은색",
+  "dark": "어두운",
   "light": "밝은",
   "topbar_my_subs": "내 커뮤니티",
   "topbar_edit": "편집",
@@ -38,5 +38,12 @@
   "time_1_year_ago": "1년 전",
   "time_x_years_ago": "{{count}}년 전",
   "post_label_spoiler": "스포일러",
-  "post_label_unspoiler": "스포일러 해제"
+  "post_label_unspoiler": "스포일러 해제",
+  "reply_permalink": "고정 링크",
+  "reply_embed": "임베드",
+  "reply_reply": "답장",
+  "reply_best": "최고의",
+  "reply_sorted_by": "정렬 기준",
+  "all_comments": "모든 {{count}} 댓글",
+  "no_comments": "댓글 없음 (아직)"
 }

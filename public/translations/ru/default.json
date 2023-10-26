@@ -9,7 +9,7 @@
   "account_bar_preferences": "Настройки",
   "account_bar_language": "Английский",
   "account_bar_submit": "Отправить",
-  "black": "Черный",
+  "dark": "Темный",
   "light": "Светлый",
   "topbar_my_subs": "Мои сообщества",
   "topbar_edit": "Редактировать",
@@ -38,5 +38,12 @@
   "time_1_year_ago": "1 год назад",
   "time_x_years_ago": "{{count}} лет назад",
   "post_label_spoiler": "Спойлер",
-  "post_label_unspoiler": "Убрать спойлер"
+  "post_label_unspoiler": "Убрать спойлер",
+  "reply_permalink": "Постоянная ссылка",
+  "reply_embed": "Встроить",
+  "reply_reply": "Ответ",
+  "reply_best": "Лучшие",
+  "reply_sorted_by": "Сортировать по",
+  "all_comments": "Все {{count}} комментарии",
+  "no_comments": "Нет комментариев (пока)"
 }

@@ -9,7 +9,7 @@
   "account_bar_preferences": "préférences",
   "account_bar_language": "Français",
   "account_bar_submit": "soumettre",
-  "black": "noir",
+  "dark": "sombre",
   "light": "clair",
   "topbar_my_subs": "mes communautés",
   "topbar_edit": "modifier",
@@ -38,5 +38,12 @@
   "time_1_year_ago": "il y a 1 an",
   "time_x_years_ago": "il y a {{count}} ans",
   "post_label_spoiler": "spoiler",
-  "post_label_unspoiler": "unspoiler"
+  "post_label_unspoiler": "unspoiler",
+  "reply_permalink": "lien permanent",
+  "reply_embed": "embed",
+  "reply_reply": "répondre",
+  "reply_best": "meilleurs",
+  "reply_sorted_by": "trié par",
+  "all_comments": "tous les {{count}} commentaires",
+  "no_comments": "aucun commentaire (encore)"
 }

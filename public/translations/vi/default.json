@@ -9,7 +9,7 @@
   "account_bar_preferences": "Tùy chỉnh",
   "account_bar_language": "Tiếng Anh",
   "account_bar_submit": "Gửi",
-  "black": "Đen",
+  "dark": "Tối",
   "light": "Sáng",
   "topbar_my_subs": "Cộng đồng của tôi",
   "topbar_edit": "Chỉnh sửa",
@@ -38,5 +38,12 @@
   "time_1_year_ago": "1 năm trước",
   "time_x_years_ago": "{{count}} năm trước",
   "post_label_spoiler": "Spoiler",
-  "post_label_unspoiler": "Bỏ Spoiler"
+  "post_label_unspoiler": "Bỏ Spoiler",
+  "reply_permalink": "Liên kết cố định",
+  "reply_embed": "Embed",
+  "reply_reply": "Trả lời",
+  "reply_best": "Tốt nhất",
+  "reply_sorted_by": "Sắp xếp theo",
+  "all_comments": "Tất cả {{count}} bình luận",
+  "no_comments": "Không có bình luận (chưa)"
 }

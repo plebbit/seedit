@@ -8,9 +8,10 @@ import Embed from '../embed';
 interface ExpandoProps {
   commentCid: string;
   expanded: boolean;
+  showContent: boolean;
 }
 
-const Expando: FC<ExpandoProps> = ({ commentCid, expanded }) => {
+const Expando: FC<ExpandoProps> = ({ commentCid, expanded, showContent }) => {
   const comment = useComment({ commentCid });
   const { cid, content, link, subplebbitAddress } = comment || {};
   const commentMediaInfo = utils.getCommentMediaInfoMemoized(comment);
@@ -38,7 +39,7 @@ const Expando: FC<ExpandoProps> = ({ commentCid, expanded }) => {
           </Link>
         </div>
       )}
-      {content && (
+      {content && showContent && (
         <div className={styles.usertext}>
           <div className={styles.markdown}>{content}</div>
         </div>

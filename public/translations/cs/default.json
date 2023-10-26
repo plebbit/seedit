@@ -9,7 +9,7 @@
   "account_bar_preferences": "Předvolby",
   "account_bar_language": "Angličtina",
   "account_bar_submit": "Odeslat",
-  "black": "Černá",
+  "dark": "Tmavý",
   "light": "Světlá",
   "topbar_my_subs": "Mé komunity",
   "topbar_edit": "Upravit",
@@ -38,5 +38,12 @@
   "time_1_year_ago": "Před 1 rokem",
   "time_x_years_ago": "Před {{count}} roky",
   "post_label_spoiler": "Spoiler",
-  "post_label_unspoiler": "Odstranit spoiler"
+  "post_label_unspoiler": "Odstranit spoiler",
+  "reply_permalink": "Trvalý odkaz",
+  "reply_embed": "Embed",
+  "reply_reply": "Odpověď",
+  "reply_best": "Nejlepší",
+  "reply_sorted_by": "Řazeno podle",
+  "all_comments": "Všechny {{count}} komentáře",
+  "no_comments": "Žádné komentáře (zatím)"
 }

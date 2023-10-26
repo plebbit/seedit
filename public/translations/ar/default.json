@@ -9,7 +9,7 @@
   "account_bar_preferences": "التفضيلات",
   "account_bar_language": "العربية",
   "account_bar_submit": "إرسال",
-  "black": "أسود",
+  "dark": "داكن",
   "light": "فاتح",
   "topbar_my_subs": "مجتمعاتي",
   "topbar_edit": "تعديل",
@@ -38,5 +38,12 @@
   "time_1_year_ago": "منذ عام واحد",
   "time_x_years_ago": "منذ {{count}} سنوات",
   "post_label_spoiler": "حرق",
-  "post_label_unspoiler": "إلغاء حرق"
+  "post_label_unspoiler": "إلغاء حرق",
+  "reply_permalink": "رابط ثابت",
+  "reply_embed": "تضمين",
+  "reply_reply": "الرد",
+  "reply_best": "أفضل",
+  "reply_sorted_by": "مرتبة حسب",
+  "all_comments": "جميع {{count}} التعليقات",
+  "no_comments": "لا تعليقات (بعد)"
 }

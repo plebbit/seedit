@@ -9,7 +9,7 @@
   "account_bar_preferences": "preferenze",
   "account_bar_language": "Italiano",
   "account_bar_submit": "invia",
-  "black": "nero",
+  "dark": "scuro",
   "light": "chiaro",
   "topbar_my_subs": "le mie comunità",
   "topbar_edit": "modifica",
@@ -38,5 +38,12 @@
   "time_1_year_ago": "1 anno fa",
   "time_x_years_ago": "{{count}} anni fa",
   "post_label_spoiler": "spoiler",
-  "post_label_unspoiler": "rimuovi spoiler"
+  "post_label_unspoiler": "rimuovi spoiler",
+  "reply_permalink": "permalink",
+  "reply_embed": "embed",
+  "reply_reply": "rispondi",
+  "reply_best": "migliori",
+  "reply_sorted_by": "ordinato per",
+  "all_comments": "tutti i {{count}} commenti",
+  "no_comments": "nessun commento (ancora)"
 }

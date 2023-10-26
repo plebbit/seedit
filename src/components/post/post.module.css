@@ -34,11 +34,11 @@
 }
 
 .arrowUp {
-  background-image: url("/public/assets/buttons/upvote.png");
+  background-image: url("/public/assets/buttons/arrow-up.png");
 }
 
 .arrowDown {
-  background-image: url("/public/assets/buttons/downvote.png");
+  background-image: url("/public/assets/buttons/arrow-down.png");
 }
 
 

@@ -9,7 +9,7 @@
   "account_bar_preferences": "Einstellungen",
   "account_bar_language": "Deutsch",
   "account_bar_submit": "Einreichen",
-  "black": "schwarz",
+  "dark": "Dunkel",
   "light": "hell",
   "topbar_my_subs": "meine Communities",
   "topbar_edit": "ändern",
@@ -38,5 +38,12 @@
   "time_1_year_ago": "vor 1 Jahr",
   "time_x_years_ago": "vor {{count}} Jahren",
   "post_label_spoiler": "ausklappen",
-  "post_label_unspoiler": "einklappen"
+  "post_label_unspoiler": "einklappen",
+  "reply_permalink": "Dauerlink",
+  "reply_embed": "Embed",
+  "reply_reply": "Antwort",
+  "reply_best": "Besten",
+  "reply_sorted_by": "Sortiert nach",
+  "all_comments": "Alle {{count}} kommentare",
+  "no_comments": "Keine kommentare (noch)"
 }

@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import { useComment } from '@plebbit/plebbit-react-hooks';
 import styles from './expand-button.module.css';
-import utils from '../../../../lib/utils';
+import utils from '../../../lib/utils';
 
 interface ExpandButtonProps {
   commentCid: string;

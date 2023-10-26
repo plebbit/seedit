@@ -18,7 +18,7 @@ const Theme: FC = () => {
     <div style={{ padding: '5px' }}>
       <select value={theme} onChange={(e) => setTheme(e.target.value)}>
         <option value='light'>{t('light')}</option>
-        <option value='black'>{t('black')}</option>
+        <option value='dark'>{t('dark')}</option>
       </select>
     </div>
   );
@@ -65,7 +65,7 @@ const Header: FC = () => {
         <span className={styles.container}>
           <Link to='/' style={{ all: 'unset', cursor: 'pointer' }}>
             <img className={styles.logo} src='/assets/logo/seedit.png' alt='logo' />
-            <img src={`${process.env.PUBLIC_URL}/assets/logo/seedit-text-${theme === 'black' ? 'dark' : 'light'}.svg`} className={styles.logoText} alt='logo' />
+            <img src={`${process.env.PUBLIC_URL}/assets/logo/seedit-text-${theme === 'dark' ? 'dark' : 'light'}.svg`} className={styles.logoText} alt='logo' />
           </Link>
           {buttons}
         </span>
