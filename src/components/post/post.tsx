@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import utils from '../../lib/utils';
 import { Comment, useSubplebbit } from '@plebbit/plebbit-react-hooks';
 import { useTranslation } from 'react-i18next';
-import ExpandButton from './expando/expand-button';
+import ExpandButton from './expand-button';
 import Expando from './expando';
 import Flair from './flair';
 import PostTools from './post-tools';
