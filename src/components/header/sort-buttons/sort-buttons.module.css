@@ -7,6 +7,10 @@
   transform: translateY(0.5px);
 }
 
+_::-webkit-full-page-media, _:future, :root .tabMenu {
+  margin-bottom: -44px;
+}
+
 .tabMenu li {
   display: inline;
   font-weight: bold;
