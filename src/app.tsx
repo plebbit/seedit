@@ -14,11 +14,10 @@ function App() {
   }, [theme]);
 
   return (
-    <div className={[styles.app, theme].join(' ')}>
+    <div className={`${styles.app} ${theme}`}>
       <Routes>
-        <Route path='/:sortType?' element={<Home />}>
-          <Route path='p/:subplebbitAddress/c/:commentCid' element={<Comments />} />
-        </Route>
+        <Route path='/:sortType?' element={<Home />} />
+        <Route path='p/:subplebbitAddress/c/:commentCid' element={<Comments />} />
       </Routes>
     </div>
   );
