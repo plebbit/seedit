@@ -23,8 +23,11 @@ const Comments: FC = () => {
     } else {
       document.title = 'seedit';
     }
-    window.scrollTo(0, 0);
   }, [threadTitle, subplebbitTitle]);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <div className={styles.comments}>
