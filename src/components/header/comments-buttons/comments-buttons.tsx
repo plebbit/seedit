@@ -11,7 +11,7 @@ const CommentsButtons: FC = () => {
   const { title, shortAddress } = subplebbit || {};
 
   return (
-    <>
+    <div className={styles.wrapper}>
       <span className={styles.pageName}>
         <Link
           to={`/p/${subplebbitAddress}`}
@@ -27,7 +27,8 @@ const CommentsButtons: FC = () => {
           <Link to={`/p/${subplebbitAddress}/c/${commentCid}`}>{t('header_comments')}</Link>
         </li>
       </ul>
-    </>
+
+    </div>
   );
 };
 

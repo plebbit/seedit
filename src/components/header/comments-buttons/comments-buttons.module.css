@@ -1,9 +1,12 @@
+.wrapper {
+  display: flex;
+}
+
 .pageName {
   font-weight: bold;
   margin-right: 1ex;
   font-variant: small-caps;
   font-size: 1.2em;
-  padding: 43px 0 0 15px;
 }
 
 .pageName a {
@@ -15,13 +18,11 @@
   list-style: none;
   white-space: nowrap;
   display: inline-block;
-  margin-bottom: -43px;
   padding-left: 5px;
-  transform: translateY(0.5px);
 }
 
 _::-webkit-full-page-media, _:future, :root .tabMenu {
-  margin-bottom: -44px;
+  transform: translateY(0.5px);
 }
 
 .tabMenu li {
@@ -39,19 +40,33 @@ _::-webkit-full-page-media, _:future, :root .tabMenu {
   border-bottom: 1px solid var(--background);
 }
 
-@media (max-width: 768px) {
-  .tabMenu {
-    padding-top: 49px;
-    position: absolute;
+
+@media (min-width: 768px) {
+  .wrapper {
+    margin-top: 44px;
+    margin-left: 15px;
   }
 
-  .tabMenu li a {
-    line-height: 0px;
+  .tabMenu {
+    order: 2;
   }
 
   .pageName {
-    padding-top: 47px;
-    position: absolute;
-    margin-left: 80px;
+    order: 1;
+  }
+}
+
+@media (max-width: 768px) {
+  .wrapper {
+    margin-top: 47px;
+  }
+
+  .tabMenu {
+    order: 1;
+    margin-right: 5px;
+  }
+
+  .pageName {
+    order: 2;
   }
 }
