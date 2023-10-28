@@ -37,9 +37,7 @@ const Comments: FC = () => {
           <Post post={comment} shouldExpand={false} />
           <div className={styles.commentArea}>
             <div className={styles.commentsTitle}>
-            <span className={styles.title}>
-              {replyCount === 0 ? t('no_comments') : t('all_comments', { count: replyCount })}
-            </span>
+              <span className={styles.title}>{replyCount === 0 ? t('no_comments') : t('all_comments', { count: replyCount })}</span>
             </div>
             <div className={styles.menuArea}>
               <div className={styles.spacer}>

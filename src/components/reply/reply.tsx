@@ -54,8 +54,17 @@ const Reply: FC<ReplyProps> = ({ reply }) => {
           <div className={styles.usertext}>
             {hasThumbnail && <Thumbnail commentCid={cid} />}
             {hasThumbnail && <ExpandButton commentCid={cid} expanded={expanded} hasThumbnail={hasThumbnail} toggleExpanded={toggleExpanded} />}
-            <div className={styles.md}>{content}</div>
+            {link && (
+              <>
+                <a href={link} target='_blank' rel='noopener noreferrer'>
+                  ({link})
+                </a>
+                <br />
+                <br />
+              </>
+            )}
             {hasThumbnail && <Expando commentCid={cid} expanded={expanded} showContent={false} />}
+            <div className={styles.md}>{content}</div>
           </div>
         </div>
         <ul className={styles.buttons}>

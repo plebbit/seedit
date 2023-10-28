@@ -27,7 +27,6 @@ const CommentsButtons: FC = () => {
           <Link to={`/p/${subplebbitAddress}/c/${commentCid}`}>{t('header_comments')}</Link>
         </li>
       </ul>
-
     </div>
   );
 };
