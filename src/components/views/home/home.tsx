@@ -4,8 +4,6 @@ import { Virtuoso, VirtuosoHandle, StateSnapshot } from 'react-virtuoso';
 import { useFeed } from '@plebbit/plebbit-react-hooks';
 import useDefaultSubplebbits from '../../../hooks/use-default-subplebbits';
 import styles from './home.module.css';
-import TopBar from '../../topbar/topbar';
-import Header from '../../header';
 import Post from '../../post';
 
 const lastVirtuosoStates: { [key: string]: StateSnapshot } = {};
@@ -48,8 +46,6 @@ const Home: FC = () => {
 
   return (
     <div>
-      <TopBar />
-      <Header />
       <div className={styles.content}>
         <Virtuoso
           increaseViewportBy={{ bottom: 1200, top: 600 }}
