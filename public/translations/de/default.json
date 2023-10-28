@@ -45,5 +45,7 @@
   "reply_best": "Besten",
   "reply_sorted_by": "Sortiert nach",
   "all_comments": "Alle {{count}} kommentare",
-  "no_comments": "Keine kommentare (noch)"
+  "no_comments": "Keine kommentare (noch)",
+  "reply_score_singular": "1 Punkt",
+  "reply_score_plural": "{{count}} Punkte"
 }

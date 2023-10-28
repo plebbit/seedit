@@ -45,5 +45,7 @@
   "reply_best": "सर्वश्रेष्ठ",
   "reply_sorted_by": "इसके अनुसार क्रमबद्ध",
   "all_comments": "सभी {{count}} टिप्पणियां",
-  "no_comments": "कोई टिप्पणी नहीं (अब तक)"
+  "no_comments": "कोई टिप्पणी नहीं (अब तक)",
+  "reply_score_singular": "1 अंक",
+  "reply_score_plural": "{{count}} अंक"
 }

@@ -45,5 +45,7 @@
   "reply_best": "Bästa",
   "reply_sorted_by": "Sorterat efter",
   "all_comments": "Alla {{count}} kommentarer",
-  "no_comments": "Inga kommentarer (ännu)"
+  "no_comments": "Inga kommentarer (ännu)",
+  "reply_score_singular": "1 poäng",
+  "reply_score_plural": "{{count}} poäng"
 }

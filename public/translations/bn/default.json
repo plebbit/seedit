@@ -45,5 +45,7 @@
   "reply_best": "সেরা",
   "reply_sorted_by": "অনুসারে বাছাই",
   "all_comments": "সব {{count}} মন্তব্য",
-  "no_comments": "কোনো মন্তব্য নেই (এখনো)"
+  "no_comments": "কোনো মন্তব্য নেই (এখনো)",
+  "reply_score_singular": "1 পয়েন্ট",
+  "reply_score_plural": "{{count}} পয়েন্ট"
 }

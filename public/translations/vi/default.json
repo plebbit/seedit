@@ -45,5 +45,7 @@
   "reply_best": "Tốt nhất",
   "reply_sorted_by": "Sắp xếp theo",
   "all_comments": "Tất cả {{count}} bình luận",
-  "no_comments": "Không có bình luận (chưa)"
+  "no_comments": "Không có bình luận (chưa)",
+  "reply_score_singular": "1 điểm",
+  "reply_score_plural": "{{count}} điểm"
 }

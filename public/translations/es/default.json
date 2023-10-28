@@ -45,5 +45,7 @@
   "reply_best": "mejores",
   "reply_sorted_by": "ordenado por",
   "all_comments": "todos los {{count}} comentarios",
-  "no_comments": "sin comentarios (aún)"
+  "no_comments": "sin comentarios (aún)",
+  "reply_score_singular": "1 punto",
+  "reply_score_plural": "{{count}} puntos"
 }

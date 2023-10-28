@@ -45,5 +45,7 @@
   "reply_best": "最好的",
   "reply_sorted_by": "排序方式",
   "all_comments": "全部 {{count}} 个评论",
-  "no_comments": "暂无评论（还）"
+  "no_comments": "暂无评论（还）",
+  "reply_score_singular": "1 分",
+  "reply_score_plural": "{{count}} 分"
 }

@@ -45,5 +45,7 @@
   "reply_best": "सर्वोत्कृष्ट",
   "reply_sorted_by": "याप्रमाणे क्रमवारीत",
   "all_comments": "सर्व {{count}} टिप्पण्या",
-  "no_comments": "कोणत्याही टिप्पण्या नाहीत (अजून)"
+  "no_comments": "कोणत्याही टिप्पण्या नाहीत (अजून)",
+  "reply_score_singular": "1 गुण",
+  "reply_score_plural": "{{count}} गुण"
 }

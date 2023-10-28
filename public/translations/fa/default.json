@@ -45,5 +45,7 @@
   "reply_best": "بهترین",
   "reply_sorted_by": "مرتب‌شده بر اساس",
   "all_comments": "همه {{count}} نظرات",
-  "no_comments": "بدون نظر (هنوز)"
+  "no_comments": "بدون نظر (هنوز)",
+  "reply_score_singular": "1 امتیاز",
+  "reply_score_plural": "{{count}} امتیاز"
 }

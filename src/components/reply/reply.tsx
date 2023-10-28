@@ -18,8 +18,10 @@ const Reply: FC<ReplyProps> = ({ reply }) => {
     cid,
     content,
     depth,
+    downvoteCount,
     link,
     timestamp,
+    upvoteCount,
   } = reply || {};
   const replies = useReplies(reply);
   const [expanded, setExpanded] = useState(false);
@@ -27,6 +29,11 @@ const Reply: FC<ReplyProps> = ({ reply }) => {
   const commentMediaInfo = utils.getCommentMediaInfoMemoized(reply);
   const hasThumbnail = utils.hasThumbnail(commentMediaInfo, link);
   const { t } = useTranslation();
+  let score = upvoteCount - downvoteCount;
+  if ((upvoteCount === 0 && downvoteCount === 0) || (upvoteCount === 1 && downvoteCount === 0)) {
+    score = 1;
+  }
+  const scoreTranslation = score === 1 ? t('reply_score_singular') : t('reply_score_plural', { count: score });
 
   return (
     <div className={styles.reply}>
@@ -47,7 +54,7 @@ const Reply: FC<ReplyProps> = ({ reply }) => {
             >
               {shortAddress}
             </Link>
-            <span className={styles.score}>1 point</span>
+            <span className={styles.score}>{scoreTranslation}</span>
             &nbsp;
             <span className={styles.time}>{utils.getFormattedTime(timestamp)}</span>
           </p>

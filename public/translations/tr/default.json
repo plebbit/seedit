@@ -45,5 +45,7 @@
   "reply_best": "En iyiler",
   "reply_sorted_by": "Şuna göre sırala",
   "all_comments": "Tüm {{count}} yorumlar",
-  "no_comments": "Yorum yok (henüz)"
+  "no_comments": "Yorum yok (henüz)",
+  "reply_score_singular": "1 puan",
+  "reply_score_plural": "{{count}} puan"
 }

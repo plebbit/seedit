@@ -45,5 +45,7 @@
   "reply_best": "Më të mirët",
   "reply_sorted_by": "Renditur sipas",
   "all_comments": "Të gjitha {{count}} komentet",
-  "no_comments": "Asnjë koment (ende)"
+  "no_comments": "Asnjë koment (ende)",
+  "reply_score_singular": "1 pikë",
+  "reply_score_plural": "{{count}} pikë"
 }
