@@ -77,6 +77,7 @@
 .usertext {
   font-size: small;
   unicode-bidi: isolate;
+  margin-top: 5px;
 }
 
 .md {
@@ -88,6 +89,11 @@
   max-width: 60em;
   white-space: pre-wrap;
   word-wrap: break-word;
+}
+
+.usertext a {
+  color: var(--text);
+  text-decoration: none;
 }
 
 .buttons {

@@ -45,5 +45,7 @@
   "reply_best": "Pinakamahusay",
   "reply_sorted_by": "Naayos ayon sa",
   "all_comments": "Lahat ng {{count}} mga komento",
-  "no_comments": "Walang komento (pa)"
+  "no_comments": "Walang komento (pa)",
+  "reply_score_singular": "1 punto",
+  "reply_score_plural": "{{count}} punto"
 }

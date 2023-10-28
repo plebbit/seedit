@@ -45,5 +45,7 @@
   "reply_best": "Beste",
   "reply_sorted_by": "Gesorteerd op",
   "all_comments": "Alle {{count}} reacties",
-  "no_comments": "Geen reacties (nog)"
+  "no_comments": "Geen reacties (nog)",
+  "reply_score_singular": "1 punt",
+  "reply_score_plural": "{{count}} punten"
 }

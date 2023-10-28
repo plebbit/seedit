@@ -45,5 +45,7 @@
   "reply_best": "הכי טובים",
   "reply_sorted_by": "ממוין לפי",
   "all_comments": "כל {{count}} התגובות",
-  "no_comments": "אין תגובות (עדיין)"
+  "no_comments": "אין תגובות (עדיין)",
+  "reply_score_singular": "1 נקודה",
+  "reply_score_plural": "{{count}} נקודות"
 }

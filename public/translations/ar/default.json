@@ -45,5 +45,7 @@
   "reply_best": "أفضل",
   "reply_sorted_by": "مرتبة حسب",
   "all_comments": "جميع {{count}} التعليقات",
-  "no_comments": "لا تعليقات (بعد)"
+  "no_comments": "لا تعليقات (بعد)",
+  "reply_score_singular": "1 نقطة",
+  "reply_score_plural": "{{count}} نقاط"
 }

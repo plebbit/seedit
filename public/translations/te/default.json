@@ -45,5 +45,7 @@
   "reply_best": "ఉత్తమ",
   "reply_sorted_by": "దీని ప్రకారం క్రమపడబడింది",
   "all_comments": "అన్ని {{count}} వ్యాఖ్యలు",
-  "no_comments": "వ్యాఖ్యలు లేవు (ఇంకా)"
+  "no_comments": "వ్యాఖ్యలు లేవు (ఇంకా)",
+  "reply_score_singular": "1 పాయింట్",
+  "reply_score_plural": "{{count}} పాయింట్లు"
 }

@@ -45,5 +45,7 @@
   "reply_best": "Cele mai bune",
   "reply_sorted_by": "Sortat după",
   "all_comments": "Toate {{count}} comentariile",
-  "no_comments": "Fără comentarii (încă)"
+  "no_comments": "Fără comentarii (încă)",
+  "reply_score_singular": "1 punct",
+  "reply_score_plural": "{{count}} puncte"
 }

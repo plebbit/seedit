@@ -45,5 +45,7 @@
   "reply_best": "meilleurs",
   "reply_sorted_by": "trié par",
   "all_comments": "tous les {{count}} commentaires",
-  "no_comments": "aucun commentaire (encore)"
+  "no_comments": "aucun commentaire (encore)",
+  "reply_score_singular": "1 point",
+  "reply_score_plural": "{{count}} points"
 }

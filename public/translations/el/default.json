@@ -45,5 +45,7 @@
   "reply_best": "Καλύτερα",
   "reply_sorted_by": "Ταξινομημένα κατά",
   "all_comments": "Όλα τα {{count}} σχόλια",
-  "no_comments": "Κανένα σχόλιο (ακόμη)"
+  "no_comments": "Κανένα σχόλιο (ακόμη)",
+  "reply_score_singular": "1 βαθμός",
+  "reply_score_plural": "{{count}} βαθμοί"
 }

@@ -45,5 +45,7 @@
   "reply_best": "Legjobb",
   "reply_sorted_by": "Sorrend",
   "all_comments": "Mind a {{count}} hozzászólások",
-  "no_comments": "Nincsenek hozzászólások (még)"
+  "no_comments": "Nincsenek hozzászólások (még)",
+  "reply_score_singular": "1 pont",
+  "reply_score_plural": "{{count}} pont"
 }

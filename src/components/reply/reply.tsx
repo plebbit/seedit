@@ -5,7 +5,9 @@ import { useTranslation } from 'react-i18next';
 import styles from './reply.module.css';
 import useReplies from '../../hooks/use-replies';
 import utils from '../../lib/utils';
-import { Thumbnail, Expando, ExpandButton } from '../post';
+import Expando from '../post/expando/';
+import ExpandButton from '../post/expand-button/';
+import Thumbnail from '../post/thumbnail/';
 
 interface ReplyProps {
   key: number;
@@ -18,8 +20,10 @@ const Reply: FC<ReplyProps> = ({ reply }) => {
     cid,
     content,
     depth,
+    downvoteCount,
     link,
     timestamp,
+    upvoteCount,
   } = reply || {};
   const replies = useReplies(reply);
   const [expanded, setExpanded] = useState(false);
@@ -27,6 +31,11 @@ const Reply: FC<ReplyProps> = ({ reply }) => {
   const commentMediaInfo = utils.getCommentMediaInfoMemoized(reply);
   const hasThumbnail = utils.hasThumbnail(commentMediaInfo, link);
   const { t } = useTranslation();
+  let score = upvoteCount - downvoteCount;
+  if ((upvoteCount === 0 && downvoteCount === 0) || (upvoteCount === 1 && downvoteCount === 0)) {
+    score = 1;
+  }
+  const scoreTranslation = score === 1 ? t('reply_score_singular') : t('reply_score_plural', { count: score });
 
   return (
     <div className={styles.reply}>
@@ -47,15 +56,24 @@ const Reply: FC<ReplyProps> = ({ reply }) => {
             >
               {shortAddress}
             </Link>
-            <span className={styles.score}>1 point</span>
+            <span className={styles.score}>{scoreTranslation}</span>
             &nbsp;
             <span className={styles.time}>{utils.getFormattedTime(timestamp)}</span>
           </p>
           <div className={styles.usertext}>
             {hasThumbnail && <Thumbnail commentCid={cid} />}
             {hasThumbnail && <ExpandButton commentCid={cid} expanded={expanded} hasThumbnail={hasThumbnail} toggleExpanded={toggleExpanded} />}
-            <div className={styles.md}>{content}</div>
+            {link && (
+              <>
+                <a href={link} target='_blank' rel='noopener noreferrer'>
+                  ({link})
+                </a>
+                <br />
+                <br />
+              </>
+            )}
             {hasThumbnail && <Expando commentCid={cid} expanded={expanded} showContent={false} />}
+            <div className={styles.md}>{content}</div>
           </div>
         </div>
         <ul className={styles.buttons}>

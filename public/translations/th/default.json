@@ -45,5 +45,7 @@
   "reply_best": "ที่สุด",
   "reply_sorted_by": "เรียงลำดับตาม",
   "all_comments": "ความคิดเห็น {{count}} รายการทั้งหมด",
-  "no_comments": "ไม่มีความคิดเห็น (ยัง)"
+  "no_comments": "ไม่มีความคิดเห็น (ยัง)",
+  "reply_score_singular": "1 แต้ม",
+  "reply_score_plural": "{{count}} แต้ม"
 }

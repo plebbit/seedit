@@ -45,5 +45,7 @@
   "reply_best": "بہترین",
   "reply_sorted_by": "کے مطابق ترتیب",
   "all_comments": "تمام {{count}} تبصرے",
-  "no_comments": "کوئی تبصرہ نہیں (ابھی)"
+  "no_comments": "کوئی تبصرہ نہیں (ابھی)",
+  "reply_score_singular": "1 پوائنٹ",
+  "reply_score_plural": "{{count}} پوائنٹس"
 }
