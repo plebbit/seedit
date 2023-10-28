@@ -5,7 +5,9 @@ import { useTranslation } from 'react-i18next';
 import styles from './reply.module.css';
 import useReplies from '../../hooks/use-replies';
 import utils from '../../lib/utils';
-import { Thumbnail, Expando, ExpandButton } from '../post';
+import Expando from '../post/expando/';
+import ExpandButton from '../post/expand-button/';
+import Thumbnail from '../post/thumbnail/';
 
 interface ReplyProps {
   key: number;
