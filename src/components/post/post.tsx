@@ -22,7 +22,7 @@ const Post: FC<PostProps> = ({ post, index, shouldExpand = true }) => {
   const { t } = useTranslation();
   const [expanded, setExpanded] = useState(false);
   const toggleExpanded = () => setExpanded(!expanded);
-  const postTitleOrContent = (title?.length > 90 ? title?.slice(0, 90) + '...' : title) || (content?.length > 90 ? content?.slice(0, 90) + '...' : content);
+  const postTitleOrContent = (title?.length > 300 ? title?.slice(0, 300) + '...' : title) || (content?.length > 300 ? content?.slice(0, 300) + '...' : content);
   const commentMediaInfo = utils.getCommentMediaInfoMemoized(post);
   const hasThumbnail = utils.hasThumbnail(commentMediaInfo, link);
   const linkUrl = utils.getHostname(link);
