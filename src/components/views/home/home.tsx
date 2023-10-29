@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useRef } from 'react';
+import { FC, useEffect, useRef } from 'react';
 import { useParams } from 'react-router-dom';
 import { Virtuoso, VirtuosoHandle, StateSnapshot } from 'react-virtuoso';
 import { useFeed } from '@plebbit/plebbit-react-hooks';
@@ -8,13 +8,13 @@ import Post from '../../post';
 
 const lastVirtuosoStates: { [key: string]: StateSnapshot } = {};
 
-const NoPosts = React.memo(() => 'no posts');
-const LoadingFooter = React.memo(() => 'loading...');
+const NoPosts = () => 'no posts';
 
 const Home: FC = () => {
   const subplebbitAddresses = useDefaultSubplebbits();
   const sortType = useParams<{ sortType: string }>().sortType || 'hot';
   const { feed, hasMore, loadMore } = useFeed({ subplebbitAddresses, sortType });
+  const loadingStateString = 'loading...';
 
   useEffect(() => {
     document.title = `seedit`;
@@ -25,7 +25,7 @@ const Home: FC = () => {
     Footer = NoPosts;
   }
   if (hasMore || subplebbitAddresses.length === 0) {
-    Footer = LoadingFooter;
+    Footer = () => loadingStateString;
   }
 
   const virtuosoRef = useRef<VirtuosoHandle | null>(null);
