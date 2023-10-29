@@ -14,9 +14,10 @@ interface PostProps {
   index?: number;
   post: Comment;
   shouldExpand?: boolean;
+  isComments?: boolean;
 }
 
-const Post: FC<PostProps> = ({ post, index, shouldExpand = true }) => {
+const Post: FC<PostProps> = ({ post, index, shouldExpand = true, isComments = false }) => {
   const { author, cid, content, downvoteCount, flair, link, subplebbitAddress, timestamp, title, upvoteCount } = post || {};
   const subplebbit = useSubplebbit({ subplebbitAddress });
   const { t } = useTranslation();
@@ -51,9 +52,15 @@ const Post: FC<PostProps> = ({ post, index, shouldExpand = true }) => {
         <div className={styles.entry}>
           <div className={styles.topMatter}>
             <p className={styles.title}>
-              <Link className={styles.link} to={`/p/${subplebbitAddress}/c/${cid}`}>
-                {postTitleOrContent}
-              </Link>
+              {isComments && link ? (
+                <a href={link} target="_blank" rel="noopener noreferrer">
+                  {postTitleOrContent}
+                </a>
+                ) : (
+                <Link className={styles.link} to={`/p/${subplebbitAddress}/c/${cid}`}>
+                  {postTitleOrContent}
+                </Link>
+              )}
               {flair && (
                 <>
                   &nbsp;

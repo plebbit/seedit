@@ -31,7 +31,7 @@ const Comments: FC = () => {
 
   return (
     <div className={styles.comments}>
-      <Post post={comment} shouldExpand={false} />
+      <Post post={comment} shouldExpand={false} isComments={true} />
       <div className={styles.commentArea}>
         <div className={styles.commentsTitle}>
           <span className={styles.title}>{replyCount === 0 ? t('no_comments') : t('all_comments', { count: replyCount })}</span>

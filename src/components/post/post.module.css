@@ -59,6 +59,15 @@
   overflow: hidden;
 }
 
+.title a {
+  color: var(--link);
+  text-decoration: none;
+}
+
+.title a:visited {
+  color: var(--link-visited);
+}
+
 .link {
   text-decoration: none;
   color: var(--link);
