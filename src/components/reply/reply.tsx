@@ -64,7 +64,7 @@ const Reply: FC<ReplyProps> = ({ reply }) => {
             <span className={styles.time}>{utils.getFormattedTime(timestamp)}</span>
           </p>
           <div className={styles.usertext}>
-            {hasThumbnail && <Thumbnail cid={cid} linkHeight={linkHeight} linkWidth={linkWidth} subplebbitAddress={subplebbitAddress}/>}
+            {hasThumbnail && <Thumbnail cid={cid} commentMediaInfo={commentMediaInfo} linkHeight={linkHeight} linkWidth={linkWidth} subplebbitAddress={subplebbitAddress}/>}
             {hasThumbnail && <ExpandButton commentMediaInfo={commentMediaInfo} content={content} expanded={expanded} hasThumbnail={hasThumbnail} link={link} toggleExpanded={toggleExpanded} />}
             {link && (
               <>
