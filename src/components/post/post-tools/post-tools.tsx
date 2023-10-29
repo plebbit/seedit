@@ -1,18 +1,17 @@
 import { FC } from 'react';
 import styles from './post-tools.module.css';
-import { useComment } from '@plebbit/plebbit-react-hooks';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import PostToolsLabel from './post-tools-label';
 
 interface PostToolsProps {
-  commentCid: string;
+  cid: string,
+  replyCount: number,
+  spoiler?: boolean,
+  subplebbitAddress: string,
 }
 
-const PostTools: FC<PostToolsProps> = ({ commentCid }) => {
-  const comment = useComment({ commentCid });
-  const subplebbitAddress = comment.subplebbitAddress;
-  const { cid, replyCount, spoiler } = comment || {};
+const PostTools: FC<PostToolsProps> = ({ cid, replyCount, spoiler, subplebbitAddress }) => {
   const { t } = useTranslation();
 
   return (

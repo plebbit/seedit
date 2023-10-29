@@ -22,6 +22,9 @@ const Reply: FC<ReplyProps> = ({ reply }) => {
     depth,
     downvoteCount,
     link,
+    linkHeight, 
+    linkWidth,
+    subplebbitAddress,
     timestamp,
     upvoteCount,
   } = reply || {};
@@ -61,8 +64,8 @@ const Reply: FC<ReplyProps> = ({ reply }) => {
             <span className={styles.time}>{utils.getFormattedTime(timestamp)}</span>
           </p>
           <div className={styles.usertext}>
-            {hasThumbnail && <Thumbnail commentCid={cid} />}
-            {hasThumbnail && <ExpandButton commentCid={cid} expanded={expanded} hasThumbnail={hasThumbnail} toggleExpanded={toggleExpanded} />}
+            {hasThumbnail && <Thumbnail cid={cid} linkHeight={linkHeight} linkWidth={linkWidth} subplebbitAddress={subplebbitAddress}/>}
+            {hasThumbnail && <ExpandButton commentMediaInfo={commentMediaInfo} content={content} expanded={expanded} hasThumbnail={hasThumbnail} link={link} toggleExpanded={toggleExpanded} />}
             {link && (
               <>
                 <a href={link} target='_blank' rel='noopener noreferrer'>
@@ -72,7 +75,7 @@ const Reply: FC<ReplyProps> = ({ reply }) => {
                 <br />
               </>
             )}
-            {hasThumbnail && <Expando commentCid={cid} expanded={expanded} showContent={false} />}
+            {hasThumbnail && <Expando cid={cid} commentMediaInfo={commentMediaInfo} content={content} expanded={expanded} link={link} showContent={false} subplebbitAddress={subplebbitAddress} />}
             <div className={styles.md}>{content}</div>
           </div>
         </div>

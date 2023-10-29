@@ -1,20 +1,18 @@
 import { FC } from 'react';
 import styles from './thumbnail.module.css';
-import { useComment } from '@plebbit/plebbit-react-hooks';
 import { Link } from 'react-router-dom';
-import utils from '../../../lib/utils';
+import { CommentMediaInfo } from '../../../lib/utils';
 
 interface ThumbnailProps {
-  commentCid: string;
+  cid: string;
+  commentMediaInfo?: CommentMediaInfo;
+  linkHeight?: number;
+  linkWidth?: number;
+  subplebbitAddress: string;
 }
 
-const Thumbnail: FC<ThumbnailProps> = ({ commentCid }) => {
-  const comment = useComment({ commentCid });
-  const subplebbitAddress = comment.subplebbitAddress;
-  const { cid, linkHeight, linkWidth } = comment;
-  const commentMediaInfo = utils.getCommentMediaInfoMemoized(comment);
+const Thumbnail: FC<ThumbnailProps> = ({ cid, linkHeight, linkWidth, subplebbitAddress, commentMediaInfo }) => {
   const iframeThumbnail = commentMediaInfo?.patternThumbnailUrl || commentMediaInfo?.thumbnail;
-
   let displayWidth, displayHeight, hasLinkDimensions;
 
   if (linkWidth && linkHeight) {

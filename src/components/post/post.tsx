@@ -18,7 +18,7 @@ interface PostProps {
 }
 
 const Post: FC<PostProps> = ({ post, index, shouldExpand = true, isComments = false }) => {
-  const { author, cid, content, downvoteCount, flair, link, subplebbitAddress, timestamp, title, upvoteCount } = post || {};
+  const { author, cid, content, downvoteCount, flair, link, linkHeight, linkWidth, replyCount, spoiler, subplebbitAddress, timestamp, title, upvoteCount } = post || {};
   const subplebbit = useSubplebbit({ subplebbitAddress });
   const { t } = useTranslation();
   const [expanded, setExpanded] = useState(false);
@@ -47,7 +47,7 @@ const Post: FC<PostProps> = ({ post, index, shouldExpand = true, isComments = fa
               <div className={`${styles.arrowCommon} ${styles.arrowDown}`}></div>
             </div>
           </div>
-          {hasThumbnail && shouldExpand && <Thumbnail commentCid={cid} />}
+          {hasThumbnail && shouldExpand && <Thumbnail cid={cid} commentMediaInfo={commentMediaInfo} linkHeight={linkHeight} linkWidth={linkWidth} subplebbitAddress={subplebbitAddress} />}
         </div>
         <div className={styles.entry}>
           <div className={styles.topMatter}>
@@ -78,7 +78,7 @@ const Post: FC<PostProps> = ({ post, index, shouldExpand = true, isComments = fa
                 </span>
               )}
             </p>
-            {shouldExpand && <ExpandButton commentCid={cid} expanded={expanded} hasThumbnail={hasThumbnail} toggleExpanded={toggleExpanded} />}
+            {shouldExpand && <ExpandButton commentMediaInfo={commentMediaInfo} content={content} expanded={expanded} hasThumbnail={hasThumbnail} link={link} toggleExpanded={toggleExpanded} />}
             <p className={styles.tagline}>
               {t('post_submitted')} {utils.getFormattedTime(timestamp)} {t('post_by')}&nbsp;
               <Link className={styles.author} to={`u/${author?.shortAddress}`} onClick={(e) => e.preventDefault()}>
@@ -89,11 +89,11 @@ const Post: FC<PostProps> = ({ post, index, shouldExpand = true, isComments = fa
                 &nbsp;p/{subplebbit?.shortAddress}
               </Link>
             </p>
-            <PostTools commentCid={cid} />
+            <PostTools cid={cid} replyCount={replyCount} spoiler={spoiler} subplebbitAddress={subplebbitAddress} />
           </div>
         </div>
       </div>
-      <Expando commentCid={cid} expanded={expanded} showContent={true} />
+      <Expando cid={cid} commentMediaInfo={commentMediaInfo} content={content} expanded={expanded} link={link} showContent={true} subplebbitAddress={subplebbitAddress} />
     </div>
   );
 };

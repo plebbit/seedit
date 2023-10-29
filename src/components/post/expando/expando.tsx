@@ -1,21 +1,20 @@
 import { FC } from 'react';
-import { useComment } from '@plebbit/plebbit-react-hooks';
-import utils from '../../../lib/utils';
 import { Link } from 'react-router-dom';
 import styles from './expando.module.css';
 import Embed from '../embed';
+import { CommentMediaInfo } from '../../../lib/utils';
 
 interface ExpandoProps {
-  commentCid: string;
+  cid: string;
+  commentMediaInfo?: CommentMediaInfo;
+  content?: string;
   expanded: boolean;
+  link?: boolean;
   showContent: boolean;
+  subplebbitAddress: string;
 }
 
-const Expando: FC<ExpandoProps> = ({ commentCid, expanded, showContent }) => {
-  const comment = useComment({ commentCid });
-  const { cid, content, link, subplebbitAddress } = comment || {};
-  const commentMediaInfo = utils.getCommentMediaInfoMemoized(comment);
-
+const Expando: FC<ExpandoProps> = ({ cid, commentMediaInfo, content, expanded, link, showContent, subplebbitAddress }) => {
   let mediaComponent = null;
 
   if (commentMediaInfo?.type === 'image') {
