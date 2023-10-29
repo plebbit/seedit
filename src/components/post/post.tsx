@@ -13,11 +13,10 @@ import Thumbnail from './thumbnail';
 interface PostProps {
   index?: number;
   post: Comment;
-  shouldExpand?: boolean;
   isComments?: boolean;
 }
 
-const Post: FC<PostProps> = ({ post, index, shouldExpand = true, isComments = false }) => {
+const Post: FC<PostProps> = ({ post, index, isComments = false }) => {
   const { author, cid, content, downvoteCount, flair, link, linkHeight, linkWidth, replyCount, spoiler, subplebbitAddress, timestamp, title, upvoteCount } = post || {};
   const subplebbit = useSubplebbit({ subplebbitAddress });
   const { t } = useTranslation();
@@ -29,10 +28,10 @@ const Post: FC<PostProps> = ({ post, index, shouldExpand = true, isComments = fa
   const linkUrl = utils.getHostname(link);
 
   useEffect(() => {
-    if (!shouldExpand) {
+    if (isComments) {
       setExpanded(true);
     }
-  }, [shouldExpand]);
+  }, [isComments]);
 
   return (
     <div className={styles.container} key={index}>
@@ -47,7 +46,7 @@ const Post: FC<PostProps> = ({ post, index, shouldExpand = true, isComments = fa
               <div className={`${styles.arrowCommon} ${styles.arrowDown}`}></div>
             </div>
           </div>
-          {hasThumbnail && shouldExpand && <Thumbnail cid={cid} commentMediaInfo={commentMediaInfo} linkHeight={linkHeight} linkWidth={linkWidth} subplebbitAddress={subplebbitAddress} />}
+          {hasThumbnail && !isComments && <Thumbnail cid={cid} commentMediaInfo={commentMediaInfo} linkHeight={linkHeight} linkWidth={linkWidth} subplebbitAddress={subplebbitAddress} />}
         </div>
         <div className={styles.entry}>
           <div className={styles.topMatter}>
@@ -78,7 +77,7 @@ const Post: FC<PostProps> = ({ post, index, shouldExpand = true, isComments = fa
                 </span>
               )}
             </p>
-            {shouldExpand && <ExpandButton commentMediaInfo={commentMediaInfo} content={content} expanded={expanded} hasThumbnail={hasThumbnail} link={link} toggleExpanded={toggleExpanded} />}
+            {!isComments && <ExpandButton commentMediaInfo={commentMediaInfo} content={content} expanded={expanded} hasThumbnail={hasThumbnail} link={link} toggleExpanded={toggleExpanded} />}
             <p className={styles.tagline}>
               {t('post_submitted')} {utils.getFormattedTime(timestamp)} {t('post_by')}&nbsp;
               <Link className={styles.author} to={`u/${author?.shortAddress}`} onClick={(e) => e.preventDefault()}>
