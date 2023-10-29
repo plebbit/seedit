@@ -51,9 +51,15 @@ const Post: FC<PostProps> = ({ post, index, shouldExpand = true }) => {
         <div className={styles.entry}>
           <div className={styles.topMatter}>
             <p className={styles.title}>
-              <Link className={styles.link} to={`p/${subplebbitAddress}/c/${cid}`} onClick={(e) => e.preventDefault()}>
+            {link ? (
+              <a className={styles.link} href={link} target='_blank' rel='noopener noreferrer'>
+                {postTitleOrContent}
+              </a>
+            ) : (
+              <Link className={styles.link} to={`/p/${subplebbitAddress}/c/${cid}`}>
                 {postTitleOrContent}
               </Link>
+            )}
               {flair && (
                 <>
                   &nbsp;
@@ -64,7 +70,7 @@ const Post: FC<PostProps> = ({ post, index, shouldExpand = true }) => {
               {linkUrl && (
                 <span className={styles.domain}>
                   (
-                  <a href={link} target='_blank' rel='noreferrer'>
+                  <a href={link} target='_blank' rel='noopener noreferrer'>
                     {linkUrl}
                   </a>
                   )
