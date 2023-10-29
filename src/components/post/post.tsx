@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useState } from 'react';
+import { FC, useEffect, useState } from 'react';
 import styles from './post.module.css';
 import { Link } from 'react-router-dom';
 import utils from '../../lib/utils';
@@ -91,4 +91,4 @@ const Post: FC<PostProps> = ({ post, index, shouldExpand = true }) => {
   );
 };
 
-export default React.memo(Post);
+export default Post;
