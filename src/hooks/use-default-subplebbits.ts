@@ -17,12 +17,9 @@ const useDefaultSubplebbits = () => {
 
     (async () => {
       try {
-        const fetchedSubplebbits: Subplebbit[] = await fetch(
-          'https://raw.githubusercontent.com/plebbit/temporary-default-subplebbits/master/subplebbits.json',
-          {
-            cache: 'no-cache',
-          }
-        ).then((res) => res.json());
+        const fetchedSubplebbits: Subplebbit[] = await fetch('https://raw.githubusercontent.com/plebbit/temporary-default-subplebbits/master/subplebbits.json', {
+          cache: 'no-cache',
+        }).then((res) => res.json());
 
         cache = fetchedSubplebbits;
 
