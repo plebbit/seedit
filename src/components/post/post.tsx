@@ -51,15 +51,9 @@ const Post: FC<PostProps> = ({ post, index, shouldExpand = true }) => {
         <div className={styles.entry}>
           <div className={styles.topMatter}>
             <p className={styles.title}>
-            {link ? (
-              <a className={styles.link} href={link} target='_blank' rel='noopener noreferrer'>
-                {postTitleOrContent}
-              </a>
-            ) : (
               <Link className={styles.link} to={`/p/${subplebbitAddress}/c/${cid}`}>
                 {postTitleOrContent}
               </Link>
-            )}
               {flair && (
                 <>
                   &nbsp;
