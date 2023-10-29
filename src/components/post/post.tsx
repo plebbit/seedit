@@ -1,4 +1,4 @@
-import { FC, useEffect, useState } from 'react';
+import { FC, useState } from 'react';
 import styles from './post.module.css';
 import { Link } from 'react-router-dom';
 import utils from '../../lib/utils';
@@ -13,25 +13,19 @@ import Thumbnail from './thumbnail';
 interface PostProps {
   index?: number;
   post: Comment;
-  isComments?: boolean;
+  isReplies?: boolean;
 }
 
-const Post: FC<PostProps> = ({ post, index, isComments = false }) => {
+const Post: FC<PostProps> = ({ post, index, isReplies = false }) => {
   const { author, cid, content, downvoteCount, flair, link, linkHeight, linkWidth, replyCount, spoiler, subplebbitAddress, timestamp, title, upvoteCount } = post || {};
   const subplebbit = useSubplebbit({ subplebbitAddress });
   const { t } = useTranslation();
-  const [expanded, setExpanded] = useState(false);
-  const toggleExpanded = () => setExpanded(!expanded);
+  const [isRepliesView, setIsRepliesView] = useState(isReplies);
+  const toggleExpanded = () => setIsRepliesView(!isRepliesView);
   const postTitleOrContent = (title?.length > 300 ? title?.slice(0, 300) + '...' : title) || (content?.length > 300 ? content?.slice(0, 300) + '...' : content);
   const commentMediaInfo = utils.getCommentMediaInfoMemoized(post);
   const hasThumbnail = utils.hasThumbnail(commentMediaInfo, link);
   const linkUrl = utils.getHostname(link);
-
-  useEffect(() => {
-    if (isComments) {
-      setExpanded(true);
-    }
-  }, [isComments]);
 
   return (
     <div className={styles.container} key={index}>
@@ -46,12 +40,12 @@ const Post: FC<PostProps> = ({ post, index, isComments = false }) => {
               <div className={`${styles.arrowCommon} ${styles.arrowDown}`}></div>
             </div>
           </div>
-          {hasThumbnail && !isComments && <Thumbnail cid={cid} commentMediaInfo={commentMediaInfo} linkHeight={linkHeight} linkWidth={linkWidth} subplebbitAddress={subplebbitAddress} />}
+          {hasThumbnail && !isRepliesView && <Thumbnail cid={cid} commentMediaInfo={commentMediaInfo} linkHeight={linkHeight} linkWidth={linkWidth} subplebbitAddress={subplebbitAddress} />}
         </div>
         <div className={styles.entry}>
           <div className={styles.topMatter}>
             <p className={styles.title}>
-              {isComments && link ? (
+              {isRepliesView && link ? (
                 <a href={link} target="_blank" rel="noopener noreferrer">
                   {postTitleOrContent}
                 </a>
@@ -77,7 +71,7 @@ const Post: FC<PostProps> = ({ post, index, isComments = false }) => {
                 </span>
               )}
             </p>
-            {!isComments && <ExpandButton commentMediaInfo={commentMediaInfo} content={content} expanded={expanded} hasThumbnail={hasThumbnail} link={link} toggleExpanded={toggleExpanded} />}
+            {!isRepliesView && <ExpandButton commentMediaInfo={commentMediaInfo} content={content} expanded={isRepliesView} hasThumbnail={hasThumbnail} link={link} toggleExpanded={toggleExpanded} />}
             <p className={styles.tagline}>
               {t('post_submitted')} {utils.getFormattedTime(timestamp)} {t('post_by')}&nbsp;
               <Link className={styles.author} to={`u/${author?.shortAddress}`} onClick={(e) => e.preventDefault()}>
@@ -92,7 +86,7 @@ const Post: FC<PostProps> = ({ post, index, isComments = false }) => {
           </div>
         </div>
       </div>
-      <Expando cid={cid} commentMediaInfo={commentMediaInfo} content={content} expanded={expanded} link={link} showContent={true} subplebbitAddress={subplebbitAddress} />
+      <Expando cid={cid} commentMediaInfo={commentMediaInfo} content={content} expanded={isRepliesView} link={link} showContent={true} subplebbitAddress={subplebbitAddress} />
     </div>
   );
 };
