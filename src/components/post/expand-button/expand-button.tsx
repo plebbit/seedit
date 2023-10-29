@@ -1,4 +1,4 @@
-import React, { FC, useMemo } from 'react';
+import { FC } from 'react';
 import { useComment } from '@plebbit/plebbit-react-hooks';
 import styles from './expand-button.module.css';
 import utils from '../../../lib/utils';
@@ -15,13 +15,9 @@ const ExpandButton: FC<ExpandButtonProps> = ({ commentCid, expanded, hasThumbnai
   const { content, link } = comment || {};
   const commentMediaInfo = utils.getCommentMediaInfoMemoized(comment);
 
-  const initialButtonType = useMemo(() => {
-    return hasThumbnail || commentMediaInfo?.type === 'audio' || commentMediaInfo?.type === 'iframe' ? 'playButton' : 'textButton';
-  }, [hasThumbnail, commentMediaInfo]);
+  const initialButtonType = hasThumbnail || commentMediaInfo?.type === 'audio' || commentMediaInfo?.type === 'iframe' ? 'playButton' : 'textButton';
 
-  const buttonType = useMemo(() => {
-    return expanded ? 'closeButton' : initialButtonType;
-  }, [expanded, initialButtonType]);
+  const buttonType = expanded ? 'closeButton' : initialButtonType;
 
   return (
     ((content && !link) || link) && (
@@ -32,4 +28,4 @@ const ExpandButton: FC<ExpandButtonProps> = ({ commentCid, expanded, hasThumbnai
   );
 };
 
-export default React.memo(ExpandButton);
+export default ExpandButton;

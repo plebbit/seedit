@@ -1,4 +1,4 @@
-import React, { FC, useMemo } from 'react';
+import { FC } from 'react';
 import styles from './thumbnail.module.css';
 import { useComment } from '@plebbit/plebbit-react-hooks';
 import { Link } from 'react-router-dom';
@@ -15,32 +15,30 @@ const Thumbnail: FC<ThumbnailProps> = ({ commentCid }) => {
   const commentMediaInfo = utils.getCommentMediaInfoMemoized(comment);
   const iframeThumbnail = commentMediaInfo?.patternThumbnailUrl || commentMediaInfo?.thumbnail;
 
-  const [displayWidth, displayHeight, hasLinkDimensions] = useMemo(() => {
-    let dw, dh, hld;
-    if (linkWidth && linkHeight) {
-      let scale = Math.min(1, 70 / Math.max(linkWidth, linkHeight));
-      dw = `${linkWidth * scale}px`;
-      dh = `${linkHeight * scale}px`;
-      hld = true;
-    } else {
-      dw = '70px';
-      dh = '70px';
-      hld = false;
-    }
-    return [dw, dh, hld];
-  }, [linkWidth, linkHeight]);
+  let displayWidth, displayHeight, hasLinkDimensions;
 
-  const mediaComponent = useMemo(() => {
-    if (commentMediaInfo?.type === 'image') {
-      return <img src={commentMediaInfo.url} alt='' />;
-    } else if (commentMediaInfo?.type === 'video') {
-      return commentMediaInfo.thumbnail ? <img src={commentMediaInfo.thumbnail} alt='' /> : <video src={commentMediaInfo.url} />;
-    } else if (commentMediaInfo?.type === 'webpage') {
-      return <img src={commentMediaInfo.thumbnail} alt='' />;
-    } else if (commentMediaInfo?.type === 'iframe') {
-      return iframeThumbnail ? <img src={iframeThumbnail} alt='' /> : null;
-    }
-  }, [commentMediaInfo, iframeThumbnail]);
+  if (linkWidth && linkHeight) {
+    let scale = Math.min(1, 70 / Math.max(linkWidth, linkHeight));
+    displayWidth = `${linkWidth * scale}px`;
+    displayHeight = `${linkHeight * scale}px`;
+    hasLinkDimensions = true;
+  } else {
+    displayWidth = '70px';
+    displayHeight = '70px';
+    hasLinkDimensions = false;
+  }
+
+  let mediaComponent = null;
+
+  if (commentMediaInfo?.type === 'image') {
+    mediaComponent = <img src={commentMediaInfo.url} alt='' />;
+  } else if (commentMediaInfo?.type === 'video') {
+    mediaComponent = commentMediaInfo.thumbnail ? <img src={commentMediaInfo.thumbnail} alt='' /> : <video src={commentMediaInfo.url} />;
+  } else if (commentMediaInfo?.type === 'webpage') {
+    mediaComponent = <img src={commentMediaInfo.thumbnail} alt='' />;
+  } else if (commentMediaInfo?.type === 'iframe') {
+    mediaComponent = iframeThumbnail ? <img src={iframeThumbnail} alt='' /> : null;
+  }
 
   return (
     <span style={{ width: displayWidth, height: displayHeight }} className={styles.thumbnail}>
@@ -53,4 +51,4 @@ const Thumbnail: FC<ThumbnailProps> = ({ commentCid }) => {
   );
 };
 
-export default React.memo(Thumbnail);
+export default Thumbnail;

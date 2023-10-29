@@ -1,4 +1,4 @@
-import React, { FC, useMemo } from 'react';
+import { FC } from 'react';
 import { useComment } from '@plebbit/plebbit-react-hooks';
 import utils from '../../../lib/utils';
 import { Link } from 'react-router-dom';
@@ -16,19 +16,19 @@ const Expando: FC<ExpandoProps> = ({ commentCid, expanded, showContent }) => {
   const { cid, content, link, subplebbitAddress } = comment || {};
   const commentMediaInfo = utils.getCommentMediaInfoMemoized(comment);
 
-  const mediaComponent = useMemo(() => {
-    if (commentMediaInfo?.type === 'image') {
-      return <img src={commentMediaInfo.url} alt='' />;
-    } else if (commentMediaInfo?.type === 'video' && expanded) {
-      return <video src={commentMediaInfo.url} controls />;
-    } else if (commentMediaInfo?.type === 'webpage') {
-      return <img src={commentMediaInfo.thumbnail} alt='' />;
-    } else if (commentMediaInfo?.type === 'audio' && expanded) {
-      return <audio src={commentMediaInfo.url} controls />;
-    } else if (commentMediaInfo?.type === 'iframe' && expanded) {
-      return <Embed url={commentMediaInfo.url} />;
-    }
-  }, [commentMediaInfo, expanded]);
+  let mediaComponent = null;
+
+  if (commentMediaInfo?.type === 'image') {
+    mediaComponent = <img src={commentMediaInfo.url} alt='' />;
+  } else if (commentMediaInfo?.type === 'video' && expanded) {
+    mediaComponent = <video src={commentMediaInfo.url} controls />;
+  } else if (commentMediaInfo?.type === 'webpage') {
+    mediaComponent = <img src={commentMediaInfo.thumbnail} alt='' />;
+  } else if (commentMediaInfo?.type === 'audio' && expanded) {
+    mediaComponent = <audio src={commentMediaInfo.url} controls />;
+  } else if (commentMediaInfo?.type === 'iframe' && expanded) {
+    mediaComponent = <Embed url={commentMediaInfo.url} />;
+  }
 
   return (
     <div className={expanded ? styles.expando : styles.expandoHidden}>
@@ -48,4 +48,4 @@ const Expando: FC<ExpandoProps> = ({ commentCid, expanded, showContent }) => {
   );
 };
 
-export default React.memo(Expando);
+export default Expando;

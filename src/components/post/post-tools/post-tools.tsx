@@ -1,4 +1,4 @@
-import React, { FC, useMemo } from 'react';
+import { FC } from 'react';
 import styles from './post-tools.module.css';
 import { useComment } from '@plebbit/plebbit-react-hooks';
 import { Link } from 'react-router-dom';
@@ -15,15 +15,13 @@ const PostTools: FC<PostToolsProps> = ({ commentCid }) => {
   const { cid, replyCount, spoiler } = comment || {};
   const { t } = useTranslation();
 
-  const replyText = useMemo(() => {
-    return replyCount === 0 ? t('post_no_comments') : `${replyCount} ${replyCount === 1 ? t('post_comment') : t('post_comments')}`;
-  }, [replyCount, t]);
-
   return (
     <ul className={styles.buttons}>
       {spoiler && <PostToolsLabel commentCid={cid} />}
       <li className={styles.first}>
-        <Link to={`/p/${subplebbitAddress}/c/${cid}`}>{replyText}</Link>
+        <Link to={`/p/${subplebbitAddress}/c/${cid}`}>
+          {replyCount === 0 ? t('post_no_comments') : `${replyCount} ${replyCount === 1 ? t('post_comment') : t('post_comments')}`}
+        </Link>
       </li>
       <li className={styles.button}>
         <span>{t('post_share')}</span>
@@ -44,4 +42,4 @@ const PostTools: FC<PostToolsProps> = ({ commentCid }) => {
   );
 };
 
-export default React.memo(PostTools);
+export default PostTools;
