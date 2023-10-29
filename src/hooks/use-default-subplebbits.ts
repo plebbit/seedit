@@ -1,17 +1,14 @@
-import { useState, useEffect, useMemo } from 'react';
-
-let cache: Subplebbit[] | null = null;
+import { useState, useEffect } from 'react';
 
 interface Subplebbit {
   address: string;
 }
 
 const useDefaultSubplebbits = () => {
-  const [subplebbits, setSubplebbits] = useState<Subplebbit[]>([]);
-
+  const [subplebbitAddresses, setSubplebbitAddresses] = useState<string[]>([]);
+  
   useEffect(() => {
-    if (cache) {
-      setSubplebbits(cache);
+    if (subplebbitAddresses.length > 0) {
       return;
     }
 
@@ -21,18 +18,15 @@ const useDefaultSubplebbits = () => {
           cache: 'no-cache',
         }).then((res) => res.json());
 
-        cache = fetchedSubplebbits;
-
-        setSubplebbits(fetchedSubplebbits);
+        const addresses = fetchedSubplebbits.map((subplebbit) => subplebbit.address);
+        setSubplebbitAddresses(addresses);
       } catch (e) {
         console.error(e);
       }
     })();
-  }, []);
+  }, [subplebbitAddresses]);
 
-  const addresses = useMemo(() => subplebbits.map((subplebbit) => subplebbit.address), [subplebbits]);
-
-  return addresses;
+  return subplebbitAddresses;
 };
 
 export default useDefaultSubplebbits;
