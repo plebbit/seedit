@@ -13,15 +13,15 @@ import Thumbnail from './thumbnail';
 interface PostProps {
   index?: number;
   post: Comment;
-  isReplies?: boolean;
+  isThread?: boolean;
 }
 
-const Post: FC<PostProps> = ({ post, index, isReplies = false }) => {
+const Post: FC<PostProps> = ({ post, index, isThread = false }) => {
   const { author, cid, content, downvoteCount, flair, link, linkHeight, linkWidth, replyCount, spoiler, subplebbitAddress, timestamp, title, upvoteCount } = post || {};
   const subplebbit = useSubplebbit({ subplebbitAddress });
   const { t } = useTranslation();
-  const [isRepliesView, setIsRepliesView] = useState(isReplies);
-  const toggleExpanded = () => setIsRepliesView(!isRepliesView);
+  const [isThreadView, setIsThreadView] = useState(isThread);
+  const toggleExpanded = () => setIsThreadView(!isThreadView);
   const postTitleOrContent = (title?.length > 300 ? title?.slice(0, 300) + '...' : title) || (content?.length > 300 ? content?.slice(0, 300) + '...' : content);
   const commentMediaInfo = utils.getCommentMediaInfoMemoized(post);
   const hasThumbnail = utils.hasThumbnail(commentMediaInfo, link);
@@ -40,16 +40,18 @@ const Post: FC<PostProps> = ({ post, index, isReplies = false }) => {
               <div className={`${styles.arrowCommon} ${styles.arrowDown}`}></div>
             </div>
           </div>
-          {hasThumbnail && !isRepliesView && <Thumbnail cid={cid} commentMediaInfo={commentMediaInfo} linkHeight={linkHeight} linkWidth={linkWidth} subplebbitAddress={subplebbitAddress} />}
+          {hasThumbnail && !isThreadView && (
+            <Thumbnail cid={cid} commentMediaInfo={commentMediaInfo} linkHeight={linkHeight} linkWidth={linkWidth} subplebbitAddress={subplebbitAddress} />
+          )}
         </div>
         <div className={styles.entry}>
           <div className={styles.topMatter}>
             <p className={styles.title}>
-              {isRepliesView && link ? (
-                <a href={link} target="_blank" rel="noopener noreferrer">
+              {isThreadView && link ? (
+                <a href={link} target='_blank' rel='noopener noreferrer'>
                   {postTitleOrContent}
                 </a>
-                ) : (
+              ) : (
                 <Link className={styles.link} to={`/p/${subplebbitAddress}/c/${cid}`}>
                   {postTitleOrContent}
                 </Link>
@@ -71,7 +73,16 @@ const Post: FC<PostProps> = ({ post, index, isReplies = false }) => {
                 </span>
               )}
             </p>
-            {!isRepliesView && <ExpandButton commentMediaInfo={commentMediaInfo} content={content} expanded={isRepliesView} hasThumbnail={hasThumbnail} link={link} toggleExpanded={toggleExpanded} />}
+            {!isThreadView && (
+              <ExpandButton
+                commentMediaInfo={commentMediaInfo}
+                content={content}
+                expanded={isThreadView}
+                hasThumbnail={hasThumbnail}
+                link={link}
+                toggleExpanded={toggleExpanded}
+              />
+            )}
             <p className={styles.tagline}>
               {t('post_submitted')} {utils.getFormattedTime(timestamp)} {t('post_by')}&nbsp;
               <Link className={styles.author} to={`u/${author?.shortAddress}`} onClick={(e) => e.preventDefault()}>
@@ -86,7 +97,15 @@ const Post: FC<PostProps> = ({ post, index, isReplies = false }) => {
           </div>
         </div>
       </div>
-      <Expando cid={cid} commentMediaInfo={commentMediaInfo} content={content} expanded={isRepliesView} link={link} showContent={true} subplebbitAddress={subplebbitAddress} />
+      <Expando
+        cid={cid}
+        commentMediaInfo={commentMediaInfo}
+        content={content}
+        expanded={isThreadView}
+        link={link}
+        showContent={true}
+        subplebbitAddress={subplebbitAddress}
+      />
     </div>
   );
 };

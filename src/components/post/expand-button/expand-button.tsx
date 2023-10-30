@@ -4,15 +4,14 @@ import { CommentMediaInfo } from '../../../lib/utils';
 
 interface ExpandButtonProps {
   commentMediaInfo?: CommentMediaInfo;
-  content?: string,
+  content?: string;
   expanded: boolean;
   hasThumbnail: boolean;
-  link?: string,
+  link?: string;
   toggleExpanded: () => void;
 }
 
 const ExpandButton: FC<ExpandButtonProps> = ({ commentMediaInfo, content, expanded, hasThumbnail, link, toggleExpanded }) => {
-
   const initialButtonType = hasThumbnail || commentMediaInfo?.type === 'audio' || commentMediaInfo?.type === 'iframe' ? 'playButton' : 'textButton';
 
   const buttonType = expanded ? 'closeButton' : initialButtonType;

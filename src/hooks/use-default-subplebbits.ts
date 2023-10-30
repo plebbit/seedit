@@ -6,7 +6,7 @@ interface Subplebbit {
 
 const useDefaultSubplebbits = () => {
   const [subplebbitAddresses, setSubplebbitAddresses] = useState<string[]>([]);
-  
+
   useEffect(() => {
     if (subplebbitAddresses.length > 0) {
       return;

@@ -5,10 +5,10 @@ import { useTranslation } from 'react-i18next';
 import PostToolsLabel from './post-tools-label';
 
 interface PostToolsProps {
-  cid: string,
-  replyCount: number,
-  spoiler?: boolean,
-  subplebbitAddress: string,
+  cid: string;
+  replyCount: number;
+  spoiler?: boolean;
+  subplebbitAddress: string;
 }
 
 const PostTools: FC<PostToolsProps> = ({ cid, replyCount, spoiler, subplebbitAddress }) => {

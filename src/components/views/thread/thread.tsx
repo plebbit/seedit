@@ -2,12 +2,12 @@ import { FC, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useComment, useSubplebbit } from '@plebbit/plebbit-react-hooks';
 import { useTranslation } from 'react-i18next';
-import styles from './replies.module.css';
+import styles from './thread.module.css';
 import Post from '../../post';
 import useReplies from '../../../hooks/use-replies';
 import Reply from '../../reply/reply';
 
-const Replies: FC = () => {
+const Thread: FC = () => {
   const { commentCid } = useParams();
   const comment = useComment({ commentCid });
   const { content, replyCount, subplebbitAddress, title } = comment || {};
@@ -30,8 +30,8 @@ const Replies: FC = () => {
   }, []);
 
   return (
-    <div className={styles.replies}>
-      <Post post={comment} isReplies={true} />
+    <div className={styles.thread}>
+      <Post post={comment} isThread={true} />
       <div className={styles.replyArea}>
         <div className={styles.repliesTitle}>
           <span className={styles.title}>{replyCount === 0 ? t('no_comments') : t('all_comments', { count: replyCount })}</span>
@@ -58,4 +58,4 @@ const Replies: FC = () => {
   );
 };
 
-export default Replies;
+export default Thread;

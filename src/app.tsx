@@ -3,7 +3,7 @@ import { Outlet, Route, Routes } from 'react-router-dom';
 import useTheme from './hooks/use-theme';
 import styles from './app.module.css';
 import Home from './components/views/home';
-import Replies from './components/views/replies';
+import Thread from './components/views/thread';
 import TopBar from './components/topbar/topbar';
 import Header from './components/header/header';
 
@@ -28,7 +28,7 @@ function App() {
       <Routes>
         <Route element={homeLayout}>
           <Route path='/:sortType?' element={<Home />} />
-          <Route path='p/:subplebbitAddress/c/:commentCid' element={<Replies />} />
+          <Route path='p/:subplebbitAddress/c/:commentCid' element={<Thread />} />
         </Route>
       </Routes>
     </div>
