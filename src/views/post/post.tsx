@@ -2,38 +2,38 @@ import { FC, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useComment, useSubplebbit } from '@plebbit/plebbit-react-hooks';
 import { useTranslation } from 'react-i18next';
-import styles from './thread.module.css';
-import Post from '../../post';
-import useReplies from '../../../hooks/use-replies';
-import Reply from '../../reply/';
-import useStateString from '../../../hooks/use-state-string';
+import styles from './post.module.css';
+import PostComponent from '../../components/post';
+import useReplies from '../../hooks/use-replies';
+import Reply from '../../components/reply';
+import useStateString from '../../hooks/use-state-string';
 
-const Thread: FC = () => {
+const Post: FC = () => {
   const { commentCid } = useParams();
   const comment = useComment({ commentCid });
   const { content, replyCount, subplebbitAddress, title } = comment || {};
   const subplebbit = useSubplebbit({ subplebbitAddress });
   const replies = useReplies(comment).map((reply, index) => <Reply key={index} reply={reply} />) || '';
-  const threadTitle = title?.slice(0, 40) || content?.slice(0, 40);
+  const postTitle = title?.slice(0, 40) || content?.slice(0, 40);
   const subplebbitTitle = subplebbit?.title || subplebbit?.shortAddress;
   const { t } = useTranslation();
   const stateString = useStateString(comment);
 
   useEffect(() => {
-    if (threadTitle || subplebbitTitle) {
-      document.title = `${threadTitle} - ${subplebbitTitle} - seedit`;
+    if (postTitle || subplebbitTitle) {
+      document.title = `${postTitle} - ${subplebbitTitle} - seedit`;
     } else {
       document.title = 'seedit';
     }
-  }, [threadTitle, subplebbitTitle]);
+  }, [postTitle, subplebbitTitle]);
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
   return (
-    <div className={styles.thread}>
-      <Post post={comment} isThread={true} />
+    <div className={styles.post}>
+      <PostComponent post={comment} isPostView={true} />
       <div className={styles.replyArea}>
         <div className={styles.repliesTitle}>
           <span className={styles.title}>{replyCount === 0 ? t('no_comments') : t('all_comments', { count: replyCount })}</span>
@@ -61,4 +61,4 @@ const Thread: FC = () => {
   );
 };
 
-export default Thread;
+export default Post;
