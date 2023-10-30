@@ -108,3 +108,11 @@
   max-width: 80em;
   margin-left: 3px;
 }
+
+.stateString {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: calc(100vw - 28px);
+  width: 100vw;
+}

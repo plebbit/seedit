@@ -5,7 +5,8 @@ import { useTranslation } from 'react-i18next';
 import styles from './thread.module.css';
 import Post from '../../post';
 import useReplies from '../../../hooks/use-replies';
-import Reply from '../../reply/reply';
+import Reply from '../../reply/';
+import useStateString from '../../../hooks/use-state-string';
 
 const Thread: FC = () => {
   const { commentCid } = useParams();
@@ -16,6 +17,7 @@ const Thread: FC = () => {
   const threadTitle = title?.slice(0, 40) || content?.slice(0, 40);
   const subplebbitTitle = subplebbit?.title || subplebbit?.shortAddress;
   const { t } = useTranslation();
+  const stateString = useStateString(comment);
 
   useEffect(() => {
     if (threadTitle || subplebbitTitle) {
@@ -52,6 +54,7 @@ const Thread: FC = () => {
             </div>
           </div>
         </div>
+        {stateString && <div className={styles.stateString}>{stateString}</div>}
         <div className={styles.replies}>{replies}</div>
       </div>
     </div>
