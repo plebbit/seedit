@@ -1,14 +1,14 @@
-.comments {
+.thread {
   padding: 7px 5px 0px 5px;
   margin-bottom: 200px;
 }
 
-.commentArea {
+.replyArea {
   margin: 0;
   padding: 0;
 }
 
-.commentsTitle {
+.repliesTitle {
   border-bottom-color: rgb(84, 91, 94);
   padding-bottom: 3px;
   border-bottom: 1px dotted gray;
@@ -107,4 +107,12 @@
 .replies {
   max-width: 80em;
   margin-left: 3px;
+}
+
+.stateString {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: calc(100vw - 28px);
+  width: 100vw;
 }

@@ -5,6 +5,7 @@ import { useFeed } from '@plebbit/plebbit-react-hooks';
 import useDefaultSubplebbits from '../../../hooks/use-default-subplebbits';
 import styles from './home.module.css';
 import Post from '../../post';
+import useFeedStateString from '../../../hooks/use-feed-state-string';
 
 const lastVirtuosoStates: { [key: string]: StateSnapshot } = {};
 
@@ -14,7 +15,7 @@ const Home: FC = () => {
   const subplebbitAddresses = useDefaultSubplebbits();
   const sortType = useParams<{ sortType: string }>().sortType || 'hot';
   const { feed, hasMore, loadMore } = useFeed({ subplebbitAddresses, sortType });
-  const loadingStateString = 'loading...';
+  const loadingStateString = useFeedStateString(subplebbitAddresses) || 'loading...'
 
   useEffect(() => {
     document.title = `seedit`;

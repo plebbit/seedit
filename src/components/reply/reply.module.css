@@ -85,7 +85,7 @@
   margin-bottom: 5px;
   font-size: 1.0769230769230769em;
   font-weight: 400;
-  color: var(--text-markdown);
+  color: var(--text);
   max-width: 60em;
   white-space: pre-wrap;
   word-wrap: break-word;

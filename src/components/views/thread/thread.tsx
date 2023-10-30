@@ -2,12 +2,13 @@ import { FC, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useComment, useSubplebbit } from '@plebbit/plebbit-react-hooks';
 import { useTranslation } from 'react-i18next';
-import styles from './comments.module.css';
+import styles from './thread.module.css';
 import Post from '../../post';
 import useReplies from '../../../hooks/use-replies';
-import Reply from '../../reply/reply';
+import Reply from '../../reply/';
+import useStateString from '../../../hooks/use-state-string';
 
-const Comments: FC = () => {
+const Thread: FC = () => {
   const { commentCid } = useParams();
   const comment = useComment({ commentCid });
   const { content, replyCount, subplebbitAddress, title } = comment || {};
@@ -16,6 +17,7 @@ const Comments: FC = () => {
   const threadTitle = title?.slice(0, 40) || content?.slice(0, 40);
   const subplebbitTitle = subplebbit?.title || subplebbit?.shortAddress;
   const { t } = useTranslation();
+  const stateString = useStateString(comment);
 
   useEffect(() => {
     if (threadTitle || subplebbitTitle) {
@@ -30,10 +32,10 @@ const Comments: FC = () => {
   }, []);
 
   return (
-    <div className={styles.comments}>
-      <Post post={comment} shouldExpand={false} />
-      <div className={styles.commentArea}>
-        <div className={styles.commentsTitle}>
+    <div className={styles.thread}>
+      <Post post={comment} isThread={true} />
+      <div className={styles.replyArea}>
+        <div className={styles.repliesTitle}>
           <span className={styles.title}>{replyCount === 0 ? t('no_comments') : t('all_comments', { count: replyCount })}</span>
         </div>
         <div className={styles.menuArea}>
@@ -52,10 +54,11 @@ const Comments: FC = () => {
             </div>
           </div>
         </div>
+        {stateString && <div className={styles.stateString}>{stateString}</div>}
         <div className={styles.replies}>{replies}</div>
       </div>
     </div>
   );
 };
 
-export default Comments;
+export default Thread;

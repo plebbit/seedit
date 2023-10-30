@@ -1,4 +1,4 @@
-import { FC, useEffect, useState } from 'react';
+import { FC, useState } from 'react';
 import styles from './post.module.css';
 import { Link } from 'react-router-dom';
 import utils from '../../lib/utils';
@@ -13,25 +13,19 @@ import Thumbnail from './thumbnail';
 interface PostProps {
   index?: number;
   post: Comment;
-  shouldExpand?: boolean;
+  isThread?: boolean;
 }
 
-const Post: FC<PostProps> = ({ post, index, shouldExpand = true }) => {
-  const { author, cid, content, downvoteCount, flair, link, subplebbitAddress, timestamp, title, upvoteCount } = post || {};
+const Post: FC<PostProps> = ({ post, index, isThread = false }) => {
+  const { author, cid, content, downvoteCount, flair, link, linkHeight, linkWidth, replyCount, spoiler, subplebbitAddress, timestamp, title, upvoteCount } = post || {};
   const subplebbit = useSubplebbit({ subplebbitAddress });
   const { t } = useTranslation();
-  const [expanded, setExpanded] = useState(false);
-  const toggleExpanded = () => setExpanded(!expanded);
+  const [isThreadView, setIsThreadView] = useState(isThread);
+  const toggleExpanded = () => setIsThreadView(!isThreadView);
   const postTitleOrContent = (title?.length > 300 ? title?.slice(0, 300) + '...' : title) || (content?.length > 300 ? content?.slice(0, 300) + '...' : content);
   const commentMediaInfo = utils.getCommentMediaInfoMemoized(post);
   const hasThumbnail = utils.hasThumbnail(commentMediaInfo, link);
   const linkUrl = utils.getHostname(link);
-
-  useEffect(() => {
-    if (!shouldExpand) {
-      setExpanded(true);
-    }
-  }, [shouldExpand]);
 
   return (
     <div className={styles.container} key={index}>
@@ -46,14 +40,22 @@ const Post: FC<PostProps> = ({ post, index, shouldExpand = true }) => {
               <div className={`${styles.arrowCommon} ${styles.arrowDown}`}></div>
             </div>
           </div>
-          {hasThumbnail && shouldExpand && <Thumbnail commentCid={cid} />}
+          {hasThumbnail && !isThreadView && (
+            <Thumbnail cid={cid} commentMediaInfo={commentMediaInfo} linkHeight={linkHeight} linkWidth={linkWidth} subplebbitAddress={subplebbitAddress} />
+          )}
         </div>
         <div className={styles.entry}>
           <div className={styles.topMatter}>
             <p className={styles.title}>
-              <Link className={styles.link} to={`/p/${subplebbitAddress}/c/${cid}`}>
-                {postTitleOrContent}
-              </Link>
+              {isThreadView && link ? (
+                <a href={link} target='_blank' rel='noopener noreferrer'>
+                  {postTitleOrContent}
+                </a>
+              ) : (
+                <Link className={styles.link} to={`/p/${subplebbitAddress}/c/${cid}`} style={isThread ? { color: 'var(--link)' } : {}}>
+                  {postTitleOrContent}
+                </Link>
+              )}
               {flair && (
                 <>
                   &nbsp;
@@ -71,7 +73,16 @@ const Post: FC<PostProps> = ({ post, index, shouldExpand = true }) => {
                 </span>
               )}
             </p>
-            {shouldExpand && <ExpandButton commentCid={cid} expanded={expanded} hasThumbnail={hasThumbnail} toggleExpanded={toggleExpanded} />}
+            {!isThreadView && (
+              <ExpandButton
+                commentMediaInfo={commentMediaInfo}
+                content={content}
+                expanded={isThreadView}
+                hasThumbnail={hasThumbnail}
+                link={link}
+                toggleExpanded={toggleExpanded}
+              />
+            )}
             <p className={styles.tagline}>
               {t('post_submitted')} {utils.getFormattedTime(timestamp)} {t('post_by')}&nbsp;
               <Link className={styles.author} to={`u/${author?.shortAddress}`} onClick={(e) => e.preventDefault()}>
@@ -82,11 +93,19 @@ const Post: FC<PostProps> = ({ post, index, shouldExpand = true }) => {
                 &nbsp;p/{subplebbit?.shortAddress}
               </Link>
             </p>
-            <PostTools commentCid={cid} />
+            <PostTools cid={cid} replyCount={replyCount} spoiler={spoiler} subplebbitAddress={subplebbitAddress} />
           </div>
         </div>
       </div>
-      <Expando commentCid={cid} expanded={expanded} showContent={true} />
+      <Expando
+        cid={cid}
+        commentMediaInfo={commentMediaInfo}
+        content={content}
+        expanded={isThreadView}
+        link={link}
+        showContent={true}
+        subplebbitAddress={subplebbitAddress}
+      />
     </div>
   );
 };
