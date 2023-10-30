@@ -52,7 +52,7 @@ const Post: FC<PostProps> = ({ post, index, isThread = false }) => {
                   {postTitleOrContent}
                 </a>
               ) : (
-                <Link className={styles.link} to={`/p/${subplebbitAddress}/c/${cid}`}>
+                <Link className={styles.link} to={`/p/${subplebbitAddress}/c/${cid}`} style={isThread ? { color: 'var(--link)' } : {}}>
                   {postTitleOrContent}
                 </Link>
               )}
