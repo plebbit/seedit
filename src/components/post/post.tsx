@@ -40,7 +40,7 @@ const Post: FC<PostProps> = ({ post, index, isPostView = false }) => {
               <div className={`${styles.arrowCommon} ${styles.arrowDown}`}></div>
             </div>
           </div>
-          {hasThumbnail && !isInPostView && (
+          {hasThumbnail && !isPostView && (
             <Thumbnail cid={cid} commentMediaInfo={commentMediaInfo} linkHeight={linkHeight} linkWidth={linkWidth} subplebbitAddress={subplebbitAddress} />
           )}
         </div>
@@ -73,7 +73,7 @@ const Post: FC<PostProps> = ({ post, index, isPostView = false }) => {
                 </span>
               )}
             </p>
-            {!isInPostView && (
+            {!isPostView && (
               <ExpandButton
                 commentMediaInfo={commentMediaInfo}
                 content={content}
