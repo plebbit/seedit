@@ -47,5 +47,6 @@
   "all_comments": "全部 {{count}} 个评论",
   "no_comments": "暂无评论（还）",
   "reply_score_singular": "1 分",
-  "reply_score_plural": "{{count}} 分"
+  "reply_score_plural": "{{count}} 分",
+  "removed": "已删除"
 }

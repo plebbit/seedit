@@ -47,5 +47,6 @@
   "all_comments": "Toate {{count}} comentariile",
   "no_comments": "Fără comentarii (încă)",
   "reply_score_singular": "1 punct",
-  "reply_score_plural": "{{count}} puncte"
+  "reply_score_plural": "{{count}} puncte",
+  "removed": "Eliminat"
 }

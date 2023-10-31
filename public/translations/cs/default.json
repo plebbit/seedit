@@ -47,5 +47,6 @@
   "all_comments": "Všechny {{count}} komentáře",
   "no_comments": "Žádné komentáře (zatím)",
   "reply_score_singular": "1 bod",
-  "reply_score_plural": "{{count}} body"
+  "reply_score_plural": "{{count}} body",
+  "removed": "Odstraněno"
 }

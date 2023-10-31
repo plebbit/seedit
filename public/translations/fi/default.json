@@ -47,5 +47,6 @@
   "all_comments": "Kaikki {{count}} kommentit",
   "no_comments": "Ei kommentteja (vielä)",
   "reply_score_singular": "1 piste",
-  "reply_score_plural": "{{count}} pistettä"
+  "reply_score_plural": "{{count}} pistettä",
+  "removed": "Poistettu"
 }

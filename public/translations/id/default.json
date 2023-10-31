@@ -47,5 +47,6 @@
   "all_comments": "Semua {{count}} komentar",
   "no_comments": "Tidak ada komentar (belum)",
   "reply_score_singular": "1 poin",
-  "reply_score_plural": "{{count}} poin"
+  "reply_score_plural": "{{count}} poin",
+  "removed": "Dihapus"
 }

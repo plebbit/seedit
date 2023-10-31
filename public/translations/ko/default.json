@@ -47,5 +47,6 @@
   "all_comments": "모든 {{count}} 댓글",
   "no_comments": "댓글 없음 (아직)",
   "reply_score_singular": "1 점",
-  "reply_score_plural": "{{count}} 점"
+  "reply_score_plural": "{{count}} 점",
+  "removed": "제거됨"
 }

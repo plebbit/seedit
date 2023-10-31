@@ -47,5 +47,6 @@
   "all_comments": "Mind a {{count}} hozzászólások",
   "no_comments": "Nincsenek hozzászólások (még)",
   "reply_score_singular": "1 pont",
-  "reply_score_plural": "{{count}} pont"
+  "reply_score_plural": "{{count}} pont",
+  "removed": "Eltávolítva"
 }

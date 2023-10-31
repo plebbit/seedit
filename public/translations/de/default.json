@@ -47,5 +47,6 @@
   "all_comments": "Alle {{count}} kommentare",
   "no_comments": "Keine kommentare (noch)",
   "reply_score_singular": "1 Punkt",
-  "reply_score_plural": "{{count}} Punkte"
+  "reply_score_plural": "{{count}} Punkte",
+  "removed": "Entfernt"
 }

@@ -47,5 +47,6 @@
   "all_comments": "Alle {{count}} reacties",
   "no_comments": "Geen reacties (nog)",
   "reply_score_singular": "1 punt",
-  "reply_score_plural": "{{count}} punten"
+  "reply_score_plural": "{{count}} punten",
+  "removed": "Verwijderd"
 }

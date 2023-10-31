@@ -47,5 +47,6 @@
   "all_comments": "כל {{count}} התגובות",
   "no_comments": "אין תגובות (עדיין)",
   "reply_score_singular": "1 נקודה",
-  "reply_score_plural": "{{count}} נקודות"
+  "reply_score_plural": "{{count}} נקודות",
+  "removed": "הוסר"
 }

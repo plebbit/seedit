@@ -47,5 +47,6 @@
   "all_comments": "Alla {{count}} kommentarer",
   "no_comments": "Inga kommentarer (ännu)",
   "reply_score_singular": "1 poäng",
-  "reply_score_plural": "{{count}} poäng"
+  "reply_score_plural": "{{count}} poäng",
+  "removed": "Borttagen"
 }

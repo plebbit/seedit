@@ -47,5 +47,6 @@
   "all_comments": "Tüm {{count}} yorumlar",
   "no_comments": "Yorum yok (henüz)",
   "reply_score_singular": "1 puan",
-  "reply_score_plural": "{{count}} puan"
+  "reply_score_plural": "{{count}} puan",
+  "removed": "Kaldırıldı"
 }
