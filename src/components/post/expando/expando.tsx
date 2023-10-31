@@ -5,24 +5,26 @@ import Embed from '../embed';
 import { CommentMediaInfo } from '../../../lib/utils';
 
 interface ExpandoProps {
-  cid: string;
   commentMediaInfo?: CommentMediaInfo;
   content?: string;
   expanded: boolean;
-  link?: boolean;
+  link: string;
   showContent: boolean;
-  subplebbitAddress: string;
+  toggleExpanded?: () => void;
 }
 
-const Expando: FC<ExpandoProps> = ({ cid, commentMediaInfo, content, expanded, link, showContent, subplebbitAddress }) => {
+const Expando: FC<ExpandoProps> = ({ commentMediaInfo, content, expanded, link, showContent, toggleExpanded }) => {
   let mediaComponent = null;
+  let noExpandButton = false;
 
   if (commentMediaInfo?.type === 'image') {
     mediaComponent = <img src={commentMediaInfo.url} alt='' />;
+    noExpandButton = true;
   } else if (commentMediaInfo?.type === 'video' && expanded) {
     mediaComponent = <video src={commentMediaInfo.url} controls />;
-  } else if (commentMediaInfo?.type === 'webpage') {
+  } else if (commentMediaInfo?.type === 'webpage' && commentMediaInfo?.thumbnail) {
     mediaComponent = <img src={commentMediaInfo.thumbnail} alt='' />;
+    noExpandButton = true;
   } else if (commentMediaInfo?.type === 'audio' && expanded) {
     mediaComponent = <audio src={commentMediaInfo.url} controls />;
   } else if (commentMediaInfo?.type === 'iframe' && expanded) {
@@ -33,7 +35,15 @@ const Expando: FC<ExpandoProps> = ({ cid, commentMediaInfo, content, expanded, l
     <div className={expanded ? styles.expando : styles.expandoHidden}>
       {link && (
         <div className={styles.mediaPreview}>
-          <Link to={`p/${subplebbitAddress}/c/${cid}`} onClick={(e) => e.preventDefault()}>
+          <Link
+            to={link}
+            onClick={(e) => {
+              if (e.button === 0 && noExpandButton) {
+                e.preventDefault();
+                toggleExpanded && toggleExpanded();
+              }
+            }}
+          >
             {mediaComponent}
           </Link>
         </div>

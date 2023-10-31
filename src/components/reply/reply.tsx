@@ -17,14 +17,12 @@ interface ReplyProps {
 const Reply: FC<ReplyProps> = ({ reply }) => {
   const {
     author: { shortAddress },
-    cid,
     content,
     depth,
     downvoteCount,
     link,
     linkHeight,
     linkWidth,
-    subplebbitAddress,
     timestamp,
     upvoteCount,
   } = reply || {};
@@ -65,9 +63,17 @@ const Reply: FC<ReplyProps> = ({ reply }) => {
           </p>
           <div className={styles.usertext}>
             {hasThumbnail && (
-              <Thumbnail cid={cid} commentMediaInfo={commentMediaInfo} linkHeight={linkHeight} linkWidth={linkWidth} subplebbitAddress={subplebbitAddress} />
+              <Thumbnail
+                commentMediaInfo={commentMediaInfo}
+                expanded={expanded}
+                isReply={true}
+                link={link}
+                linkHeight={linkHeight}
+                linkWidth={linkWidth}
+                toggleExpanded={toggleExpanded}
+              />
             )}
-            {hasThumbnail && (
+            {commentMediaInfo?.type === 'iframe' && (
               <ExpandButton
                 commentMediaInfo={commentMediaInfo}
                 content={content}
@@ -77,7 +83,7 @@ const Reply: FC<ReplyProps> = ({ reply }) => {
                 toggleExpanded={toggleExpanded}
               />
             )}
-            {link && (
+            {link && (commentMediaInfo?.type === 'iframe' || commentMediaInfo?.type === 'webpage') && (
               <>
                 <a href={link} target='_blank' rel='noopener noreferrer'>
                   ({link})
@@ -86,16 +92,8 @@ const Reply: FC<ReplyProps> = ({ reply }) => {
                 <br />
               </>
             )}
-            {hasThumbnail && (
-              <Expando
-                cid={cid}
-                commentMediaInfo={commentMediaInfo}
-                content={content}
-                expanded={expanded}
-                link={link}
-                showContent={false}
-                subplebbitAddress={subplebbitAddress}
-              />
+            {expanded && link && (
+              <Expando commentMediaInfo={commentMediaInfo} content={content} expanded={expanded} link={link} showContent={false} toggleExpanded={toggleExpanded} />
             )}
             <div className={styles.md}>{content}</div>
           </div>

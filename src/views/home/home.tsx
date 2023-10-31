@@ -15,7 +15,7 @@ const Home: FC = () => {
   const subplebbitAddresses = useDefaultSubplebbits();
   const sortType = useParams<{ sortType: string }>().sortType || 'hot';
   const { feed, hasMore, loadMore } = useFeed({ subplebbitAddresses, sortType });
-  const loadingStateString = useFeedStateString(subplebbitAddresses) || 'loading...'
+  const loadingStateString = useFeedStateString(subplebbitAddresses) || 'loading...';
 
   useEffect(() => {
     document.title = `seedit`;

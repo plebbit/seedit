@@ -41,7 +41,15 @@ const Post: FC<PostProps> = ({ post, index, isPostView = false }) => {
             </div>
           </div>
           {hasThumbnail && !isPostView && (
-            <Thumbnail cid={cid} commentMediaInfo={commentMediaInfo} linkHeight={linkHeight} linkWidth={linkWidth} subplebbitAddress={subplebbitAddress} />
+            <Thumbnail
+              cid={cid}
+              commentMediaInfo={commentMediaInfo}
+              isReply={false}
+              link={link}
+              linkHeight={linkHeight}
+              linkWidth={linkWidth}
+              subplebbitAddress={subplebbitAddress}
+            />
           )}
         </div>
         <div className={styles.entry}>
@@ -97,15 +105,7 @@ const Post: FC<PostProps> = ({ post, index, isPostView = false }) => {
           </div>
         </div>
       </div>
-      <Expando
-        cid={cid}
-        commentMediaInfo={commentMediaInfo}
-        content={content}
-        expanded={isInPostView}
-        link={link}
-        showContent={true}
-        subplebbitAddress={subplebbitAddress}
-      />
+      <Expando commentMediaInfo={commentMediaInfo} content={content} expanded={isInPostView} link={link} showContent={true} />
     </div>
   );
 };

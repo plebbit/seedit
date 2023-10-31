@@ -4,16 +4,21 @@ import { Link } from 'react-router-dom';
 import { CommentMediaInfo } from '../../../lib/utils';
 
 interface ThumbnailProps {
-  cid: string;
+  cid?: string;
   commentMediaInfo?: CommentMediaInfo;
+  expanded?: boolean;
+  isReply: boolean;
+  link: string;
   linkHeight?: number;
   linkWidth?: number;
-  subplebbitAddress: string;
+  subplebbitAddress?: string;
+  toggleExpanded?: () => void;
 }
 
-const Thumbnail: FC<ThumbnailProps> = ({ cid, linkHeight, linkWidth, subplebbitAddress, commentMediaInfo }) => {
+const Thumbnail: FC<ThumbnailProps> = ({ cid, commentMediaInfo, expanded = false, isReply = false, link, linkHeight, linkWidth, subplebbitAddress, toggleExpanded }) => {
   const iframeThumbnail = commentMediaInfo?.patternThumbnailUrl || commentMediaInfo?.thumbnail;
   let displayWidth, displayHeight, hasLinkDimensions;
+  const routeOrLink = isReply ? link : `/p/${subplebbitAddress}/c/${cid}`;
 
   if (linkWidth && linkHeight) {
     let scale = Math.min(1, 70 / Math.max(linkWidth, linkHeight));
@@ -39,9 +44,17 @@ const Thumbnail: FC<ThumbnailProps> = ({ cid, linkHeight, linkWidth, subplebbitA
   }
 
   return (
-    <span style={{ width: displayWidth, height: displayHeight }} className={styles.thumbnail}>
+    <span style={{ width: displayWidth, height: displayHeight, display: expanded ? 'none' : 'block' }} className={styles.thumbnail}>
       <span className={hasLinkDimensions ? styles.transparentThumbnailWrapper : styles.thumbnailWrapper}>
-        <Link to={`p/${subplebbitAddress}/c/${cid}`} onClick={(e) => e.preventDefault()}>
+        <Link
+          to={routeOrLink}
+          onClick={(e) => {
+            if (e.button === 0 && isReply) {
+              e.preventDefault();
+              toggleExpanded && toggleExpanded();
+            }
+          }}
+        >
           {mediaComponent}
         </Link>
       </span>
