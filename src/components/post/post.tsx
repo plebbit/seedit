@@ -13,15 +13,15 @@ import Thumbnail from './thumbnail';
 interface PostProps {
   index?: number;
   post: Comment;
-  isThread?: boolean;
+  isPostView?: boolean;
 }
 
-const Post: FC<PostProps> = ({ post, index, isThread = false }) => {
+const Post: FC<PostProps> = ({ post, index, isPostView = false }) => {
   const { author, cid, content, downvoteCount, flair, link, linkHeight, linkWidth, replyCount, spoiler, subplebbitAddress, timestamp, title, upvoteCount } = post || {};
   const subplebbit = useSubplebbit({ subplebbitAddress });
   const { t } = useTranslation();
-  const [isThreadView, setIsThreadView] = useState(isThread);
-  const toggleExpanded = () => setIsThreadView(!isThreadView);
+  const [isInPostView, setIsInPostView] = useState(isPostView);
+  const toggleExpanded = () => setIsInPostView(!isInPostView);
   const postTitleOrContent = (title?.length > 300 ? title?.slice(0, 300) + '...' : title) || (content?.length > 300 ? content?.slice(0, 300) + '...' : content);
   const commentMediaInfo = utils.getCommentMediaInfoMemoized(post);
   const hasThumbnail = utils.hasThumbnail(commentMediaInfo, link);
@@ -40,19 +40,27 @@ const Post: FC<PostProps> = ({ post, index, isThread = false }) => {
               <div className={`${styles.arrowCommon} ${styles.arrowDown}`}></div>
             </div>
           </div>
-          {hasThumbnail && !isThreadView && (
-            <Thumbnail cid={cid} commentMediaInfo={commentMediaInfo} linkHeight={linkHeight} linkWidth={linkWidth} subplebbitAddress={subplebbitAddress} />
+          {hasThumbnail && !isPostView && (
+            <Thumbnail
+              cid={cid}
+              commentMediaInfo={commentMediaInfo}
+              isReply={false}
+              link={link}
+              linkHeight={linkHeight}
+              linkWidth={linkWidth}
+              subplebbitAddress={subplebbitAddress}
+            />
           )}
         </div>
         <div className={styles.entry}>
           <div className={styles.topMatter}>
             <p className={styles.title}>
-              {isThreadView && link ? (
+              {isInPostView && link ? (
                 <a href={link} target='_blank' rel='noopener noreferrer'>
                   {postTitleOrContent}
                 </a>
               ) : (
-                <Link className={styles.link} to={`/p/${subplebbitAddress}/c/${cid}`} style={isThread ? { color: 'var(--link)' } : {}}>
+                <Link className={styles.link} to={`/p/${subplebbitAddress}/c/${cid}`} style={isInPostView ? { color: 'var(--link)' } : {}}>
                   {postTitleOrContent}
                 </Link>
               )}
@@ -73,11 +81,11 @@ const Post: FC<PostProps> = ({ post, index, isThread = false }) => {
                 </span>
               )}
             </p>
-            {!isThreadView && (
+            {!isPostView && (
               <ExpandButton
                 commentMediaInfo={commentMediaInfo}
                 content={content}
-                expanded={isThreadView}
+                expanded={isInPostView}
                 hasThumbnail={hasThumbnail}
                 link={link}
                 toggleExpanded={toggleExpanded}
@@ -97,15 +105,7 @@ const Post: FC<PostProps> = ({ post, index, isThread = false }) => {
           </div>
         </div>
       </div>
-      <Expando
-        cid={cid}
-        commentMediaInfo={commentMediaInfo}
-        content={content}
-        expanded={isThreadView}
-        link={link}
-        showContent={true}
-        subplebbitAddress={subplebbitAddress}
-      />
+      <Expando commentMediaInfo={commentMediaInfo} content={content} expanded={isInPostView} link={link} showContent={true} />
     </div>
   );
 };

@@ -8,6 +8,7 @@ import utils from '../../lib/utils';
 import Expando from '../post/expando/';
 import ExpandButton from '../post/expand-button/';
 import Thumbnail from '../post/thumbnail/';
+import Flair from '../post/flair/';
 
 interface ReplyProps {
   key: number;
@@ -17,14 +18,15 @@ interface ReplyProps {
 const Reply: FC<ReplyProps> = ({ reply }) => {
   const {
     author: { shortAddress },
-    cid,
     content,
     depth,
     downvoteCount,
+    flair,
     link,
     linkHeight,
     linkWidth,
-    subplebbitAddress,
+    removed,
+    shortCid,
     timestamp,
     upvoteCount,
   } = reply || {};
@@ -39,6 +41,7 @@ const Reply: FC<ReplyProps> = ({ reply }) => {
     score = 1;
   }
   const scoreTranslation = score === 1 ? t('reply_score_singular') : t('reply_score_plural', { count: score });
+  const contentOrRemoved = removed ? '[removed]' : content;
 
   return (
     <div className={styles.reply}>
@@ -57,17 +60,32 @@ const Reply: FC<ReplyProps> = ({ reply }) => {
               }}
               className={styles.author}
             >
-              {shortAddress}
+              u/{shortAddress}
             </Link>
+            <span className={styles.time}>c/{shortCid}</span>&nbsp;
             <span className={styles.score}>{scoreTranslation}</span>
             &nbsp;
             <span className={styles.time}>{utils.getFormattedTime(timestamp)}</span>
+            {flair && (
+              <>
+                &nbsp;
+                <Flair flair={flair} />
+              </>
+            )}
           </p>
           <div className={styles.usertext}>
             {hasThumbnail && (
-              <Thumbnail cid={cid} commentMediaInfo={commentMediaInfo} linkHeight={linkHeight} linkWidth={linkWidth} subplebbitAddress={subplebbitAddress} />
+              <Thumbnail
+                commentMediaInfo={commentMediaInfo}
+                expanded={expanded}
+                isReply={true}
+                link={link}
+                linkHeight={linkHeight}
+                linkWidth={linkWidth}
+                toggleExpanded={toggleExpanded}
+              />
             )}
-            {hasThumbnail && (
+            {commentMediaInfo?.type === 'iframe' && (
               <ExpandButton
                 commentMediaInfo={commentMediaInfo}
                 content={content}
@@ -77,7 +95,7 @@ const Reply: FC<ReplyProps> = ({ reply }) => {
                 toggleExpanded={toggleExpanded}
               />
             )}
-            {link && (
+            {link && (commentMediaInfo?.type === 'iframe' || commentMediaInfo?.type === 'webpage') && (
               <>
                 <a href={link} target='_blank' rel='noopener noreferrer'>
                   ({link})
@@ -86,18 +104,10 @@ const Reply: FC<ReplyProps> = ({ reply }) => {
                 <br />
               </>
             )}
-            {hasThumbnail && (
-              <Expando
-                cid={cid}
-                commentMediaInfo={commentMediaInfo}
-                content={content}
-                expanded={expanded}
-                link={link}
-                showContent={false}
-                subplebbitAddress={subplebbitAddress}
-              />
+            {expanded && link && (
+              <Expando commentMediaInfo={commentMediaInfo} content={content} expanded={expanded} link={link} showContent={false} toggleExpanded={toggleExpanded} />
             )}
-            <div className={styles.md}>{content}</div>
+            <div className={styles.md}>{contentOrRemoved}</div>
           </div>
         </div>
         <ul className={styles.buttons}>
