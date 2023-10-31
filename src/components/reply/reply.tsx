@@ -8,6 +8,7 @@ import utils from '../../lib/utils';
 import Expando from '../post/expando/';
 import ExpandButton from '../post/expand-button/';
 import Thumbnail from '../post/thumbnail/';
+import Flair from '../post/flair/';
 
 interface ReplyProps {
   key: number;
@@ -20,6 +21,7 @@ const Reply: FC<ReplyProps> = ({ reply }) => {
     content,
     depth,
     downvoteCount,
+    flair,
     link,
     linkHeight,
     linkWidth,
@@ -62,6 +64,12 @@ const Reply: FC<ReplyProps> = ({ reply }) => {
             <span className={styles.score}>{scoreTranslation}</span>
             &nbsp;
             <span className={styles.time}>{utils.getFormattedTime(timestamp)}</span>
+            {flair && (
+              <>
+                &nbsp;
+                <Flair flair={flair} />
+              </>
+            )}
           </p>
           <div className={styles.usertext}>
             {hasThumbnail && (
