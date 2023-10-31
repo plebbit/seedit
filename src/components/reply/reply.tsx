@@ -25,6 +25,7 @@ const Reply: FC<ReplyProps> = ({ reply }) => {
     link,
     linkHeight,
     linkWidth,
+    removed,
     shortCid,
     timestamp,
     upvoteCount,
@@ -40,6 +41,7 @@ const Reply: FC<ReplyProps> = ({ reply }) => {
     score = 1;
   }
   const scoreTranslation = score === 1 ? t('reply_score_singular') : t('reply_score_plural', { count: score });
+  const contentOrRemoved = removed ? '[removed]' : content;
 
   return (
     <div className={styles.reply}>
@@ -105,7 +107,7 @@ const Reply: FC<ReplyProps> = ({ reply }) => {
             {expanded && link && (
               <Expando commentMediaInfo={commentMediaInfo} content={content} expanded={expanded} link={link} showContent={false} toggleExpanded={toggleExpanded} />
             )}
-            <div className={styles.md}>{content}</div>
+            <div className={styles.md}>{contentOrRemoved}</div>
           </div>
         </div>
         <ul className={styles.buttons}>
