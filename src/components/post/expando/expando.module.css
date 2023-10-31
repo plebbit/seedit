@@ -32,9 +32,14 @@
   position: relative;
 }
 
-.mediaPreview img, .mediaPreview video {
+.mediaPreview img {
   width: 100%;
   height: auto;
+}
+
+.mediaPreview video {
+  width: auto;
+  max-height: 80vh;
 }
 
 .mediaPreview iframe {
