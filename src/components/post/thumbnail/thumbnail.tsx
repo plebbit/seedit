@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, useMemo } from 'react';
 import styles from './thumbnail.module.css';
 import { Link } from 'react-router-dom';
 import { CommentMediaInfo } from '../../../lib/utils';
@@ -16,32 +16,39 @@ interface ThumbnailProps {
 }
 
 const Thumbnail: FC<ThumbnailProps> = ({ cid, commentMediaInfo, expanded = false, isReply = false, link, linkHeight, linkWidth, subplebbitAddress, toggleExpanded }) => {
+
   const iframeThumbnail = commentMediaInfo?.patternThumbnailUrl || commentMediaInfo?.thumbnail;
-  let displayWidth, displayHeight, hasLinkDimensions;
+  
+  const { displayWidth, displayHeight, hasLinkDimensions } = useMemo(() => {
+    let dw, dh, hld;
+    if (linkWidth && linkHeight) {
+      let scale = Math.min(1, 70 / Math.max(linkWidth, linkHeight));
+      dw = `${linkWidth * scale}px`;
+      dh = `${linkHeight * scale}px`;
+      hld = true;
+    } else {
+      dw = '70px';
+      dh = '70px';
+      hld = false;
+    }
+    return { displayWidth: dw, displayHeight: dh, hasLinkDimensions: hld };
+  }, [linkWidth, linkHeight]);
+
+  const mediaComponent = useMemo(() => {
+    let component = null;
+    if (commentMediaInfo?.type === 'image') {
+      component = <img src={commentMediaInfo.url} alt='' />;
+    } else if (commentMediaInfo?.type === 'video') {
+      component = commentMediaInfo.thumbnail ? <img src={commentMediaInfo.thumbnail} alt='' /> : <video src={commentMediaInfo.url} />;
+    } else if (commentMediaInfo?.type === 'webpage') {
+      component = <img src={commentMediaInfo.thumbnail} alt='' />;
+    } else if (commentMediaInfo?.type === 'iframe') {
+      component = iframeThumbnail ? <img src={iframeThumbnail} alt='' /> : null;
+    }
+    return component;
+  }, [commentMediaInfo, iframeThumbnail]);
+
   const routeOrLink = isReply ? link : `/p/${subplebbitAddress}/c/${cid}`;
-
-  if (linkWidth && linkHeight) {
-    let scale = Math.min(1, 70 / Math.max(linkWidth, linkHeight));
-    displayWidth = `${linkWidth * scale}px`;
-    displayHeight = `${linkHeight * scale}px`;
-    hasLinkDimensions = true;
-  } else {
-    displayWidth = '70px';
-    displayHeight = '70px';
-    hasLinkDimensions = false;
-  }
-
-  let mediaComponent = null;
-
-  if (commentMediaInfo?.type === 'image') {
-    mediaComponent = <img src={commentMediaInfo.url} alt='' />;
-  } else if (commentMediaInfo?.type === 'video') {
-    mediaComponent = commentMediaInfo.thumbnail ? <img src={commentMediaInfo.thumbnail} alt='' /> : <video src={commentMediaInfo.url} />;
-  } else if (commentMediaInfo?.type === 'webpage') {
-    mediaComponent = <img src={commentMediaInfo.thumbnail} alt='' />;
-  } else if (commentMediaInfo?.type === 'iframe') {
-    mediaComponent = iframeThumbnail ? <img src={iframeThumbnail} alt='' /> : null;
-  }
 
   return (
     <span style={{ width: displayWidth, height: displayHeight, display: expanded ? 'none' : 'block' }} className={styles.thumbnail}>
