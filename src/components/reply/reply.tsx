@@ -26,7 +26,6 @@ const Reply: FC<ReplyProps> = ({ reply }) => {
     linkHeight,
     linkWidth,
     removed,
-    shortCid,
     timestamp,
     upvoteCount,
   } = reply || {};
@@ -60,9 +59,8 @@ const Reply: FC<ReplyProps> = ({ reply }) => {
               }}
               className={styles.author}
             >
-              u/{shortAddress}
+              {shortAddress}
             </Link>
-            <span className={styles.time}>c/{shortCid}</span>&nbsp;
             <span className={styles.score}>{scoreTranslation}</span>
             &nbsp;
             <span className={styles.time}>{utils.getFormattedTime(timestamp)}</span>
