@@ -28,7 +28,6 @@
 }
 
 .mediaPreview {
-  max-width: 354px;
   overflow: auto;
   position: relative;
 }
