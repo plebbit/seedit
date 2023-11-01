@@ -26,6 +26,7 @@ const Post: FC<PostProps> = ({ post, index, isPostView = false }) => {
   const commentMediaInfo = utils.getCommentMediaInfoMemoized(post);
   const hasThumbnail = utils.hasThumbnail(commentMediaInfo, link);
   const linkUrl = utils.getHostname(link);
+  const score = upvoteCount === 0 && downvoteCount === 0 ? '•' : upvoteCount - downvoteCount || '•';
 
   return (
     <div className={styles.container} key={index}>
@@ -35,7 +36,7 @@ const Post: FC<PostProps> = ({ post, index, isPostView = false }) => {
             <div className={styles.arrowWrapper}>
               <div className={`${styles.arrowCommon} ${styles.arrowUp}`}></div>
             </div>
-            <div className={styles.score}>{upvoteCount === 0 && downvoteCount === 0 ? '•' : upvoteCount - downvoteCount}</div>
+            <div className={styles.score}>{score}</div>
             <div className={styles.arrowWrapper}>
               <div className={`${styles.arrowCommon} ${styles.arrowDown}`}></div>
             </div>

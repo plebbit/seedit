@@ -13,13 +13,14 @@ interface PostToolsProps {
 
 const PostTools: FC<PostToolsProps> = ({ cid, replyCount, spoiler, subplebbitAddress }) => {
   const { t } = useTranslation();
+  const commentCount = replyCount === 0 ? t('post_no_comments') : `${replyCount ?? ''} ${replyCount === 1 ? t('post_comment') : t('post_comments')}`;
 
   return (
     <ul className={styles.buttons}>
       {spoiler && <PostToolsLabel commentCid={cid} />}
       <li className={styles.first}>
         <Link to={`/p/${subplebbitAddress}/c/${cid}`}>
-          {replyCount === 0 ? t('post_no_comments') : `${replyCount} ${replyCount === 1 ? t('post_comment') : t('post_comments')}`}
+          {commentCount}
         </Link>
       </li>
       <li className={styles.button}>
