@@ -85,7 +85,7 @@
   word-wrap: break-word;
 }
 
-@media (max-width: 540px) {
+@media (max-width: 768px) {
   .textarea {
     width: calc(100vw - 40px);
   }
