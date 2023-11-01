@@ -19,9 +19,7 @@ const PostTools: FC<PostToolsProps> = ({ cid, replyCount, spoiler, subplebbitAdd
     <ul className={styles.buttons}>
       {spoiler && <PostToolsLabel commentCid={cid} />}
       <li className={styles.first}>
-        <Link to={`/p/${subplebbitAddress}/c/${cid}`}>
-          {commentCount}
-        </Link>
+        <Link to={`/p/${subplebbitAddress}/c/${cid}`}>{commentCount}</Link>
       </li>
       <li className={styles.button}>
         <span>{t('post_share')}</span>

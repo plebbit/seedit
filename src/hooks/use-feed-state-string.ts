@@ -16,10 +16,12 @@ const getClientHost = (clientUrl: string): string => {
 };
 
 const useFeedStateString = (subplebbitAddresses?: string[]): string | undefined => {
+  // single subplebbit feed state string
   const subplebbitAddress = subplebbitAddresses?.length === 1 ? subplebbitAddresses[0] : undefined;
   const subplebbit = useSubplebbit({ subplebbitAddress });
   const singleSubplebbitFeedStateString = useStateString(subplebbit);
 
+  // multiple subplebbit feed state string
   const { states } = useSubplebbitsStates({ subplebbitAddresses });
 
   const multipleSubplebbitsFeedStateString = useMemo(() => {
@@ -27,13 +29,15 @@ const useFeedStateString = (subplebbitAddresses?: string[]): string | undefined 
       return;
     }
 
-    // e.g. infura.io: 2 resolving-address, cloudflare-ipfs.com/ipfs.io: 2 fetching-ipns 1 fetching-ipfs
+    // e.g. Resolving 2 addresses from infura.io, fetching 2 IPNS, 1 IPFS from cloudflare-ipfs.com, ipfs.io
     let stateString = '';
 
     if (states['resolving-address']) {
       const { subplebbitAddresses, clientUrls } = states['resolving-address'];
       if (subplebbitAddresses.length && clientUrls.length) {
-        stateString += `${clientUrls.map(getClientHost).join('/')}: ${subplebbitAddresses.length} resolving-address`;
+        stateString += `resolving ${subplebbitAddresses.length} ${subplebbitAddresses.length === 1 ? 'address' : 'addresses'} from ${clientUrls
+          .map(getClientHost)
+          .join(', ')}`;
       }
     }
 
@@ -48,9 +52,9 @@ const useFeedStateString = (subplebbitAddresses?: string[]): string | undefined 
     }
 
     if (states['fetching-ipns'] || states['fetching-ipfs'] || pagesStatesSubplebbitAddresses.size) {
-      // separate 2 different states using ' '
+      // separate 2 different states using ', '
       if (stateString) {
-        stateString += ' ';
+        stateString += ', ';
       }
 
       // find all client urls
@@ -59,28 +63,28 @@ const useFeedStateString = (subplebbitAddresses?: string[]): string | undefined 
       states['fetching-ipfs']?.clientUrls.forEach((clientUrl) => clientHosts.add(getClientHost(clientUrl)));
 
       if (clientHosts.size) {
-        stateString += `${[...clientHosts].join('/')}: `;
+        stateString += 'fetching ';
         if (states['fetching-ipns']) {
-          stateString += `${states['fetching-ipns'].subplebbitAddresses.length} fetching-ipns`;
+          stateString += `${states['fetching-ipns'].subplebbitAddresses.length} IPNS`;
         }
         if (states['fetching-ipfs']) {
           if (states['fetching-ipns']) {
-            stateString += ' ';
+            stateString += ', ';
           }
-          stateString += `${states['fetching-ipfs'].subplebbitAddresses.length} fetching-ipfs`;
+          stateString += `${states['fetching-ipfs'].subplebbitAddresses.length} IPFS`;
         }
         if (pagesStatesSubplebbitAddresses.size) {
           if (states['fetching-ipns'] || states['fetching-ipfs']) {
-            stateString += ' ';
+            stateString += ', ';
           }
-          stateString += `${pagesStatesSubplebbitAddresses.size} fetching-page`;
+          stateString += `${pagesStatesSubplebbitAddresses.size} ${pagesStatesSubplebbitAddresses.size === 1 ? 'page' : 'pages'}`;
         }
+        stateString += ` from ${[...clientHosts].join(', ')}`;
       }
     }
 
-    if (stateString) {
-      stateString += '...';
-    }
+    // capitalize first letter
+    stateString = stateString.charAt(0).toUpperCase() + stateString.slice(1);
 
     // if string is empty, return undefined instead
     return stateString === '' ? undefined : stateString;

@@ -70,8 +70,7 @@ const Post: FC<PostProps> = ({ post, index, isPostView = false }) => {
                   {' '}
                   <Flair flair={flair} />
                 </>
-              )}
-              {' '}
+              )}{' '}
               {linkUrl && (
                 <span className={styles.domain}>
                   (
@@ -99,7 +98,8 @@ const Post: FC<PostProps> = ({ post, index, isPostView = false }) => {
               </Link>
                {t('post_to')}
               <Link className={styles.subplebbit} to={`p/${subplebbitAddress}`} onClick={(e) => e.preventDefault()}>
-                {' '}p/{subplebbit?.shortAddress}
+                {' '}
+                p/{subplebbit?.shortAddress}
               </Link>
             </p>
             <PostTools cid={cid} replyCount={replyCount} spoiler={spoiler} subplebbitAddress={subplebbitAddress} />

@@ -61,9 +61,7 @@ const Reply: FC<ReplyProps> = ({ reply }) => {
             >
               {shortAddress}
             </Link>
-            <span className={styles.score}>{scoreTranslation}</span>
-            {' '}
-            <span className={styles.time}>{utils.getFormattedTime(timestamp)}</span>
+            <span className={styles.score}>{scoreTranslation}</span> <span className={styles.time}>{utils.getFormattedTime(timestamp)}</span>
             {flair && (
               <>
                 {' '}
@@ -126,7 +124,7 @@ const Reply: FC<ReplyProps> = ({ reply }) => {
           </li>
         </ul>
         {replies.map((reply, index) => (
-          <Reply key={index} reply={reply} />
+          <Reply key={`${index}${reply.cid}`} reply={reply} />
         ))}
       </div>
     </div>

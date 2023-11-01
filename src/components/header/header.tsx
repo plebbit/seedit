@@ -70,7 +70,7 @@ const Header: FC = () => {
           </Link>
           {buttons}
         </span>
-        {' '}
+        <br />
       </div>
       <AccountBar />
       <div className={styles.temporary}>

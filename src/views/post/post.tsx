@@ -20,7 +20,7 @@ const Post: FC = () => {
   const stateString = useStateString(comment);
 
   useEffect(() => {
-    document.title = `${postTitle || ''}${postTitle && subplebbitTitle ? ' - ' : ''}${subplebbitTitle || ''}${(postTitle || subplebbitTitle) ? ' - seedit' : 'seedit'}`;
+    document.title = `${postTitle || ''}${postTitle && subplebbitTitle ? ' - ' : ''}${subplebbitTitle || ''}${postTitle || subplebbitTitle ? ' - seedit' : 'seedit'}`;
   }, [postTitle, subplebbitTitle]);
 
   useEffect(() => {
