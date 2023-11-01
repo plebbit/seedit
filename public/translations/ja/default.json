@@ -47,5 +47,6 @@
   "all_comments": "すべての{{count}}コメント",
   "no_comments": "コメントはありません（まだ）",
   "reply_score_singular": "1 ポイント",
-  "reply_score_plural": "{{count}} ポイント"
+  "reply_score_plural": "{{count}} ポイント",
+  "removed": "削除されました"
 }

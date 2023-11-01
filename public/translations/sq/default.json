@@ -47,5 +47,6 @@
   "all_comments": "Të gjitha {{count}} komentet",
   "no_comments": "Asnjë koment (ende)",
   "reply_score_singular": "1 pikë",
-  "reply_score_plural": "{{count}} pikë"
+  "reply_score_plural": "{{count}} pikë",
+  "removed": "U hoq"
 }

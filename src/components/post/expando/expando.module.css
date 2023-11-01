@@ -32,9 +32,23 @@
   position: relative;
 }
 
-.mediaPreview img, .mediaPreview video {
-  width: 100%;
+.mediaPreview img {
+  max-width: 524px;
   height: auto;
+}
+
+.mediaPreview video {
+  max-width: 524px;
+  max-height: 50vh;
+}
+
+@media (max-width: 768px) {
+  .mediaPreview img {
+    max-width: 100%;
+  }
+  .mediaPreview video {
+    max-width: 100%;
+  }
 }
 
 .mediaPreview iframe {

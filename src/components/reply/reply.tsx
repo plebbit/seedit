@@ -26,7 +26,6 @@ const Reply: FC<ReplyProps> = ({ reply }) => {
     linkHeight,
     linkWidth,
     removed,
-    shortCid,
     timestamp,
     upvoteCount,
   } = reply || {};
@@ -41,7 +40,7 @@ const Reply: FC<ReplyProps> = ({ reply }) => {
     score = 1;
   }
   const scoreTranslation = score === 1 ? t('reply_score_singular') : t('reply_score_plural', { count: score });
-  const contentOrRemoved = removed ? '[removed]' : content;
+  const contentOrRemoved = removed ? `[${t('removed')}]` : content;
 
   return (
     <div className={styles.reply}>
@@ -60,9 +59,8 @@ const Reply: FC<ReplyProps> = ({ reply }) => {
               }}
               className={styles.author}
             >
-              u/{shortAddress}
+              {shortAddress}
             </Link>
-            <span className={styles.time}>c/{shortCid}</span>&nbsp;
             <span className={styles.score}>{scoreTranslation}</span>
             &nbsp;
             <span className={styles.time}>{utils.getFormattedTime(timestamp)}</span>

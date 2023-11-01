@@ -47,5 +47,6 @@
   "all_comments": "Все {{count}} комментарии",
   "no_comments": "Нет комментариев (пока)",
   "reply_score_singular": "1 очко",
-  "reply_score_plural": "{{count}} очков"
+  "reply_score_plural": "{{count}} очков",
+  "removed": "Удалено"
 }

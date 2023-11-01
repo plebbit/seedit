@@ -47,5 +47,6 @@
   "all_comments": "Alle {{count}} kommentarer",
   "no_comments": "Ingen kommentarer (endnu)",
   "reply_score_singular": "1 point",
-  "reply_score_plural": "{{count}} point"
+  "reply_score_plural": "{{count}} point",
+  "removed": "Fjernet"
 }

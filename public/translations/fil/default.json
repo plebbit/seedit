@@ -47,5 +47,6 @@
   "all_comments": "Lahat ng {{count}} mga komento",
   "no_comments": "Walang komento (pa)",
   "reply_score_singular": "1 punto",
-  "reply_score_plural": "{{count}} punto"
+  "reply_score_plural": "{{count}} punto",
+  "removed": "Tinanggal"
 }
