@@ -62,11 +62,11 @@ const Reply: FC<ReplyProps> = ({ reply }) => {
               {shortAddress}
             </Link>
             <span className={styles.score}>{scoreTranslation}</span>
-            &nbsp;
+            {' '}
             <span className={styles.time}>{utils.getFormattedTime(timestamp)}</span>
             {flair && (
               <>
-                &nbsp;
+                {' '}
                 <Flair flair={flair} />
               </>
             )}
