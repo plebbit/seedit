@@ -2,3 +2,10 @@
   width: 400px !important;
   height: 780px !important;
 }
+
+@media (max-width: 768px) {
+  .tiktokEmbed {
+    width: 100% !important;
+    height: 70vh !important;
+  }
+}

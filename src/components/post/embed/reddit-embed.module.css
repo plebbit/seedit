@@ -2,3 +2,10 @@
   width: 500px !important;
   height: 520px !important;
 }
+
+@media (max-width: 768px) {
+  .redditEmbed {
+    width: 100% !important;
+    height: 520px !important;
+  }
+}

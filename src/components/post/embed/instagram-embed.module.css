@@ -2,3 +2,10 @@
   height: 420px !important;
   width: 360px !important;
 }
+
+@media (max-width: 768px) {
+  .instagramEmbed {
+    max-height: 250px !important;
+    width: 100% !important;
+  }
+}

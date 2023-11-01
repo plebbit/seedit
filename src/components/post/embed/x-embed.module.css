@@ -2,3 +2,10 @@
   width: 400px !important;
   height: 580px !important;
 }
+
+@media (max-width: 768px) {
+  .xEmbed {
+    width: 100% !important;
+    height: 50vh !important;
+  }
+}
