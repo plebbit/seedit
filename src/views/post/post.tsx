@@ -13,7 +13,7 @@ const Post: FC = () => {
   const comment = useComment({ commentCid });
   const { content, replyCount, subplebbitAddress, title } = comment || {};
   const subplebbit = useSubplebbit({ subplebbitAddress });
-  const replies = useReplies(comment).map((reply, index) => <Reply key={index} reply={reply} />) || '';
+  const replies = useReplies(comment).map((reply, index) => <Reply key={`${index}${reply.cid}`} reply={reply} />) || '';
   const postTitle = title?.slice(0, 40) || content?.slice(0, 40);
   const subplebbitTitle = subplebbit?.title || subplebbit?.shortAddress;
   const { t } = useTranslation();

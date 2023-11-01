@@ -11,7 +11,7 @@ import Thumbnail from '../post/thumbnail/';
 import Flair from '../post/flair/';
 
 interface ReplyProps {
-  key: number;
+  key: string;
   reply: Comment;
 }
 
