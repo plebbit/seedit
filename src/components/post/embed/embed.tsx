@@ -1,10 +1,10 @@
 import { FC } from 'react';
-import videoStyles from './video-embed.module.css';
-import audioStyles from './audio-embed.module.css';
-import instagramStyles from './instagram-embed.module.css';
-import tiktokStyles from './tiktok-embed.module.css';
-import redditStyles from './reddit-embed.module.css';
-import xStyles from './x-embed.module.css';
+import videoStyles from './video-embed.module.css'
+import audioStyles from './audio-embed.module.css'
+import instagramStyles from './instagram-embed.module.css'
+import tiktokStyles from './tiktok-embed.module.css'
+import redditStyles from './reddit-embed.module.css'
+import xStyles from './x-embed.module.css'
 
 interface EmbedProps {
   url: string;

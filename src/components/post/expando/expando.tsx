@@ -1,4 +1,4 @@
-import { FC, useMemo } from 'react';
+import { FC } from 'react';
 import { Link } from 'react-router-dom';
 import styles from './expando.module.css';
 import Embed from '../embed';
@@ -14,26 +14,22 @@ interface ExpandoProps {
 }
 
 const Expando: FC<ExpandoProps> = ({ commentMediaInfo, content, expanded, link, showContent, toggleExpanded }) => {
-  const { mediaComponent, noExpandButton } = useMemo(() => {
-    let component = null;
-    let noExpandBtn = false;
+  let mediaComponent = null;
+  let noExpandButton = false;
 
-    if (commentMediaInfo?.type === 'image') {
-      component = <img src={commentMediaInfo.url} alt='' />;
-      noExpandBtn = true;
-    } else if (commentMediaInfo?.type === 'video' && expanded) {
-      component = <video src={commentMediaInfo.url} controls />;
-    } else if (commentMediaInfo?.type === 'webpage' && commentMediaInfo?.thumbnail) {
-      component = <img src={commentMediaInfo.thumbnail} alt='' />;
-      noExpandBtn = true;
-    } else if (commentMediaInfo?.type === 'audio' && expanded) {
-      component = <audio src={commentMediaInfo.url} controls />;
-    } else if (commentMediaInfo?.type === 'iframe' && expanded) {
-      component = <Embed url={commentMediaInfo.url} />;
-    }
-
-    return { mediaComponent: component, noExpandButton: noExpandBtn };
-  }, [commentMediaInfo, expanded]);
+  if (commentMediaInfo?.type === 'image') {
+    mediaComponent = <img src={commentMediaInfo.url} alt='' />;
+    noExpandButton = true;
+  } else if (commentMediaInfo?.type === 'video' && expanded) {
+    mediaComponent = <video src={commentMediaInfo.url} controls />;
+  } else if (commentMediaInfo?.type === 'webpage' && commentMediaInfo?.thumbnail) {
+    mediaComponent = <img src={commentMediaInfo.thumbnail} alt='' />;
+    noExpandButton = true;
+  } else if (commentMediaInfo?.type === 'audio' && expanded) {
+    mediaComponent = <audio src={commentMediaInfo.url} controls />;
+  } else if (commentMediaInfo?.type === 'iframe' && expanded) {
+    mediaComponent = <Embed url={commentMediaInfo.url} />;
+  }
 
   return (
     <div className={expanded ? styles.expando : styles.expandoHidden}>
