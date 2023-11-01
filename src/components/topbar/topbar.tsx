@@ -3,13 +3,13 @@ import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import styles from './topbar.module.css';
 import { useAccount } from '@plebbit/plebbit-react-hooks';
-import useDefaultSubplebbits from '../../hooks/use-default-subplebbits';
+import useDefaultSubplebbitAddresses from '../../hooks/use-default-subplebbit-addresses';
 
 const TopBar: FC = () => {
   const [isClicked, setIsClicked] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
   const account = useAccount();
-  const subplebbitAddresses = useDefaultSubplebbits();
+  const subplebbitAddresses = useDefaultSubplebbitAddresses();
   const { t } = useTranslation();
 
   const subscriptions = account?.subscriptions;

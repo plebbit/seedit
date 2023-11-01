@@ -16,9 +16,8 @@ interface ThumbnailProps {
 }
 
 const Thumbnail: FC<ThumbnailProps> = ({ cid, commentMediaInfo, expanded = false, isReply = false, link, linkHeight, linkWidth, subplebbitAddress, toggleExpanded }) => {
-
   const iframeThumbnail = commentMediaInfo?.patternThumbnailUrl || commentMediaInfo?.thumbnail;
-  
+
   const { displayWidth, displayHeight, hasLinkDimensions } = useMemo(() => {
     let dw, dh, hld;
     if (linkWidth && linkHeight) {
