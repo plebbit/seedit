@@ -48,5 +48,6 @@
   "no_comments": "sin comentarios (aún)",
   "reply_score_singular": "1 punto",
   "reply_score_plural": "{{count}} puntos",
-  "removed": "Eliminado"
+  "removed": "Eliminado",
+  "one_comment": "1 comentario"
 }

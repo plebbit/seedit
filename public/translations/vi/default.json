@@ -48,5 +48,6 @@
   "no_comments": "Không có bình luận (chưa)",
   "reply_score_singular": "1 điểm",
   "reply_score_plural": "{{count}} điểm",
-  "removed": "Đã xóa"
+  "removed": "Đã xóa",
+  "one_comment": "1 bình luận"
 }

@@ -48,5 +48,6 @@
   "no_comments": "بدون نظر (هنوز)",
   "reply_score_singular": "1 امتیاز",
   "reply_score_plural": "{{count}} امتیاز",
-  "removed": "حذف شد"
+  "removed": "حذف شد",
+  "one_comment": "1 نظر"
 }

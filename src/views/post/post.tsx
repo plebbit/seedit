@@ -18,6 +18,7 @@ const Post: FC = () => {
   const subplebbitTitle = subplebbit?.title || subplebbit?.shortAddress;
   const { t } = useTranslation();
   const stateString = useStateString(comment);
+  const commentCount = replyCount === 0 ? t('no_comments') : replyCount === 1 ? t('one_comment') : t('all_comments', { count: replyCount });
 
   useEffect(() => {
     document.title = `${postTitle || ''}${postTitle && subplebbitTitle ? ' - ' : ''}${subplebbitTitle || ''}${postTitle || subplebbitTitle ? ' - seedit' : 'seedit'}`;
@@ -32,7 +33,7 @@ const Post: FC = () => {
       <PostComponent post={comment} isPostView={true} />
       <div className={styles.replyArea}>
         <div className={styles.repliesTitle}>
-          <span className={styles.title}>{replyCount === 0 ? t('no_comments') : t('all_comments', { count: replyCount })}</span>
+          <span className={styles.title}>{commentCount}</span>
         </div>
         <div className={styles.menuArea}>
           <div className={styles.spacer}>

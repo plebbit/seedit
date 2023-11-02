@@ -48,5 +48,6 @@
   "no_comments": "Κανένα σχόλιο (ακόμη)",
   "reply_score_singular": "1 βαθμός",
   "reply_score_plural": "{{count}} βαθμοί",
-  "removed": "Αφαιρέθηκε"
+  "removed": "Αφαιρέθηκε",
+  "one_comment": "1 σχόλιο"
 }
