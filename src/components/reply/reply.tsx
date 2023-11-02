@@ -11,7 +11,7 @@ import Thumbnail from '../post/thumbnail/';
 import Flair from '../post/flair/';
 
 interface ReplyProps {
-  key: number;
+  key: string;
   reply: Comment;
 }
 
@@ -61,12 +61,10 @@ const Reply: FC<ReplyProps> = ({ reply }) => {
             >
               {shortAddress}
             </Link>
-            <span className={styles.score}>{scoreTranslation}</span>
-            &nbsp;
-            <span className={styles.time}>{utils.getFormattedTime(timestamp)}</span>
+            <span className={styles.score}>{scoreTranslation}</span> <span className={styles.time}>{utils.getFormattedTime(timestamp)}</span>
             {flair && (
               <>
-                &nbsp;
+                {' '}
                 <Flair flair={flair} />
               </>
             )}
@@ -126,7 +124,7 @@ const Reply: FC<ReplyProps> = ({ reply }) => {
           </li>
         </ul>
         {replies.map((reply, index) => (
-          <Reply key={index} reply={reply} />
+          <Reply key={`${index}${reply.cid}`} reply={reply} />
         ))}
       </div>
     </div>

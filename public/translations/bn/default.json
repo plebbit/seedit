@@ -48,5 +48,6 @@
   "no_comments": "কোনো মন্তব্য নেই (এখনো)",
   "reply_score_singular": "1 পয়েন্ট",
   "reply_score_plural": "{{count}} পয়েন্ট",
-  "removed": "অপসারণ করা হয়েছে"
+  "removed": "অপসারণ করা হয়েছে",
+  "one_comment": "1 মন্তব্য"
 }

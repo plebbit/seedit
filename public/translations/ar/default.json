@@ -48,5 +48,6 @@
   "no_comments": "لا تعليقات (بعد)",
   "reply_score_singular": "1 نقطة",
   "reply_score_plural": "{{count}} نقاط",
-  "removed": "تمت الإزالة"
+  "removed": "تمت الإزالة",
+  "one_comment": "1 تعليق"
 }

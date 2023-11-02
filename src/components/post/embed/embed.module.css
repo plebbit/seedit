@@ -1,0 +1,71 @@
+.audioEmbed {
+  height: 240px !important;
+  width: 700px !important;
+}
+
+@media (max-width: 768px) {
+  .audioEmbed {
+    max-height: 250px !important;
+    width: 100% !important;
+  }
+}
+
+.instagramEmbed {
+  height: 420px !important;
+  width: 360px !important;
+}
+
+@media (max-width: 768px) {
+  .instagramEmbed {
+    max-height: 420px !important;
+    width: 100% !important;
+  }
+}
+
+.redditEmbed {
+  width: 500px !important;
+  height: 520px !important;
+}
+
+@media (max-width: 768px) {
+  .redditEmbed {
+    width: 100% !important;
+    height: 520px !important;
+  }
+}
+
+.tiktokEmbed {
+  width: 400px !important;
+  height: 780px !important;
+}
+
+@media (max-width: 768px) {
+  .tiktokEmbed {
+    width: 100% !important;
+    height: 70vh !important;
+  }
+}
+
+.videoEmbed {
+  height: 450px !important;
+  width: 800px !important;
+}
+
+@media (max-width: 768px) {
+  .videoEmbed {
+    max-height: 250px !important;
+    width: 100% !important;
+  }
+}
+
+.xEmbed {
+  width: 400px !important;
+  height: 580px !important;
+}
+
+@media (max-width: 768px) {
+  .xEmbed {
+    width: 100% !important;
+    height: 50vh !important;
+  }
+}

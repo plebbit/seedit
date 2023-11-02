@@ -26,6 +26,7 @@ const Post: FC<PostProps> = ({ post, index, isPostView = false }) => {
   const commentMediaInfo = utils.getCommentMediaInfoMemoized(post);
   const hasThumbnail = utils.hasThumbnail(commentMediaInfo, link);
   const linkUrl = utils.getHostname(link);
+  const score = upvoteCount === 0 && downvoteCount === 0 ? '•' : upvoteCount - downvoteCount || '•';
 
   return (
     <div className={styles.container} key={index}>
@@ -35,7 +36,7 @@ const Post: FC<PostProps> = ({ post, index, isPostView = false }) => {
             <div className={styles.arrowWrapper}>
               <div className={`${styles.arrowCommon} ${styles.arrowUp}`}></div>
             </div>
-            <div className={styles.score}>{upvoteCount === 0 && downvoteCount === 0 ? '•' : upvoteCount - downvoteCount}</div>
+            <div className={styles.score}>{score}</div>
             <div className={styles.arrowWrapper}>
               <div className={`${styles.arrowCommon} ${styles.arrowDown}`}></div>
             </div>
@@ -66,11 +67,10 @@ const Post: FC<PostProps> = ({ post, index, isPostView = false }) => {
               )}
               {flair && (
                 <>
-                  &nbsp;
+                  {' '}
                   <Flair flair={flair} />
                 </>
-              )}
-              &nbsp;
+              )}{' '}
               {linkUrl && (
                 <span className={styles.domain}>
                   (
@@ -92,13 +92,14 @@ const Post: FC<PostProps> = ({ post, index, isPostView = false }) => {
               />
             )}
             <p className={styles.tagline}>
-              {t('post_submitted')} {utils.getFormattedTime(timestamp)} {t('post_by')}&nbsp;
+              {t('post_submitted')} {utils.getFormattedTime(timestamp)} {t('post_by')}{' '}
               <Link className={styles.author} to={`u/${author?.shortAddress}`} onClick={(e) => e.preventDefault()}>
                 u/{author?.shortAddress}
               </Link>
                {t('post_to')}
               <Link className={styles.subplebbit} to={`p/${subplebbitAddress}`} onClick={(e) => e.preventDefault()}>
-                &nbsp;p/{subplebbit?.shortAddress}
+                {' '}
+                p/{subplebbit?.shortAddress}
               </Link>
             </p>
             <PostTools cid={cid} replyCount={replyCount} spoiler={spoiler} subplebbitAddress={subplebbitAddress} />

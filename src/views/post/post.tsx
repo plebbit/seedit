@@ -13,18 +13,15 @@ const Post: FC = () => {
   const comment = useComment({ commentCid });
   const { content, replyCount, subplebbitAddress, title } = comment || {};
   const subplebbit = useSubplebbit({ subplebbitAddress });
-  const replies = useReplies(comment).map((reply, index) => <Reply key={index} reply={reply} />) || '';
+  const replies = useReplies(comment).map((reply, index) => <Reply key={`${index}${reply.cid}`} reply={reply} />) || '';
   const postTitle = title?.slice(0, 40) || content?.slice(0, 40);
   const subplebbitTitle = subplebbit?.title || subplebbit?.shortAddress;
   const { t } = useTranslation();
   const stateString = useStateString(comment);
+  const commentCount = replyCount === 0 ? t('no_comments') : replyCount === 1 ? t('one_comment') : t('all_comments', { count: replyCount });
 
   useEffect(() => {
-    if (postTitle || subplebbitTitle) {
-      document.title = `${postTitle} - ${subplebbitTitle} - seedit`;
-    } else {
-      document.title = 'seedit';
-    }
+    document.title = `${postTitle || ''}${postTitle && subplebbitTitle ? ' - ' : ''}${subplebbitTitle || ''}${postTitle || subplebbitTitle ? ' - seedit' : 'seedit'}`;
   }, [postTitle, subplebbitTitle]);
 
   useEffect(() => {
@@ -36,11 +33,11 @@ const Post: FC = () => {
       <PostComponent post={comment} isPostView={true} />
       <div className={styles.replyArea}>
         <div className={styles.repliesTitle}>
-          <span className={styles.title}>{replyCount === 0 ? t('no_comments') : t('all_comments', { count: replyCount })}</span>
+          <span className={styles.title}>{commentCount}</span>
         </div>
         <div className={styles.menuArea}>
           <div className={styles.spacer}>
-            <span className={styles.dropdownTitle}>{t('reply_sorted_by')}: </span>
+            <span className={styles.dropdownTitle}>{t('reply_sorted_by')}:{' '}</span>
             <div className={styles.dropdown}>
               <span className={styles.selected}>{t('reply_best')}</span>
             </div>

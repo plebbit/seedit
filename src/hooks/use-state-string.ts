@@ -7,6 +7,10 @@ interface CommentOrSubplebbit {
   updatingState?: string;
 }
 
+interface States {
+  [key: string]: string[];
+}
+
 const clientHosts: { [key: string]: string } = {};
 
 const getClientHost = (clientUrl: string): string => {
@@ -20,39 +24,40 @@ const getClientHost = (clientUrl: string): string => {
   return clientHosts[clientUrl];
 };
 
-const useStateString = (commentOrSubplebbit?: CommentOrSubplebbit): string | undefined => {
-  const { states } = useClientsStates({ comment: commentOrSubplebbit });
-
+const useStateString = (commentOrSubplebbit: CommentOrSubplebbit): string | undefined => {
+  const { states } = useClientsStates({ comment: commentOrSubplebbit }) as { states: States };
   return useMemo(() => {
-    let stateString = '';
+    let stateString: string | undefined = '';
+
     for (const state in states) {
       const clientUrls = states[state];
       const clientHosts = clientUrls.map((clientUrl) => getClientHost(clientUrl));
 
-      // if there are no valid hosts, skip this state
       if (clientHosts.length === 0) {
         continue;
       }
 
-      // separate 2 different states using ' '
       if (stateString) {
-        stateString += ' ';
+        stateString += ', ';
       }
 
-      // e.g. 'cloudflare-ipfs.com/ipfs.io: fetching-ipfs'
-      stateString += `${clientHosts.join('/')}: ${state}`;
+      const formattedState = state.replaceAll('-', ' ').replace('ipfs', 'IPFS').replace('ipns', 'IPNS');
+      stateString += `${formattedState} from ${clientHosts.join(', ')}`;
     }
 
     if (!stateString && commentOrSubplebbit?.state !== 'succeeded') {
       if (commentOrSubplebbit?.publishingState && commentOrSubplebbit?.publishingState !== 'stopped' && commentOrSubplebbit?.publishingState !== 'succeeded') {
         stateString = commentOrSubplebbit.publishingState;
-      } else if (commentOrSubplebbit?.updatingState && commentOrSubplebbit?.updatingState !== 'stopped' && commentOrSubplebbit?.updatingState !== 'succeeded') {
+      } else if (commentOrSubplebbit?.updatingState !== 'stopped' && commentOrSubplebbit?.updatingState !== 'succeeded') {
         stateString = commentOrSubplebbit.updatingState;
+      }
+      if (stateString) {
+        stateString = stateString.replaceAll('-', ' ').replace('ipfs', 'IPFS').replace('ipns', 'IPNS');
       }
     }
 
     if (stateString) {
-      stateString += '...';
+      stateString = stateString.charAt(0).toUpperCase() + stateString.slice(1);
     }
 
     return stateString === '' ? undefined : stateString;

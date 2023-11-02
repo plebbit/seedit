@@ -48,5 +48,6 @@
   "no_comments": "Немає коментарів (ще)",
   "reply_score_singular": "1 бал",
   "reply_score_plural": "{{count}} бали",
-  "removed": "Видалено"
+  "removed": "Видалено",
+  "one_comment": "1 коментар"
 }

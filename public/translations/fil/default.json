@@ -48,5 +48,6 @@
   "no_comments": "Walang komento (pa)",
   "reply_score_singular": "1 punto",
   "reply_score_plural": "{{count}} punto",
-  "removed": "Tinanggal"
+  "removed": "Tinanggal",
+  "one_comment": "1 komento"
 }
