@@ -1,4 +1,4 @@
-import { FC } from 'react';
+
 import { Link, useLocation, useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import styles from './header.module.css';
@@ -11,7 +11,7 @@ import SortButtons from '../header/sort-buttons';
 const availableLanguages = ['ar', 'bn', 'cs', 'da', 'de', 'el', 'en', 'es', 'fa', 'fi', 'fil', 'fr', 'he', 'hi', 'hu', 'id', 'it', 'ja', 'ko', 'mr', 'nl', 'no', 'pl', 'pt', 'ro', 'ru', 'sq', 'sv', 'te', 'th', 'tr', 'uk', 'ur', 'vi', 'zh'];
 
 // TODO: move to settings page
-const Theme: FC = () => {
+const Theme = () => {
   const [theme, setTheme] = useTheme();
   const { t } = useTranslation();
 
@@ -26,7 +26,7 @@ const Theme: FC = () => {
 };
 
 // TODO: move to settings page
-const Language: FC = () => {
+const Language = () => {
   const { i18n } = useTranslation();
   const { changeLanguage, language } = i18n;
 
@@ -47,7 +47,7 @@ const Language: FC = () => {
   );
 };
 
-const Header: FC = () => {
+const Header = () => {
   const [theme] = useTheme();
   const { sortType, subplebbitAddress, commentCid } = useParams();
   const location = useLocation();

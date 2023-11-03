@@ -1,10 +1,10 @@
-import { FC } from 'react';
+
 import { Link, useParams } from 'react-router-dom';
 import styles from './post-buttons.module.css';
 import { useTranslation } from 'react-i18next';
 import { useSubplebbit } from '@plebbit/plebbit-react-hooks';
 
-const PostButtons: FC = () => {
+const PostButtons = () => {
   const { t } = useTranslation();
   const { subplebbitAddress, commentCid } = useParams();
   const subplebbit = useSubplebbit({ subplebbitAddress });

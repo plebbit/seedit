@@ -1,4 +1,3 @@
-import { FC } from 'react';
 import styles from './thumbnail.module.css';
 import { Link } from 'react-router-dom';
 import { CommentMediaInfo } from '../../../lib/utils';
@@ -15,7 +14,7 @@ interface ThumbnailProps {
   toggleExpanded?: () => void;
 }
 
-const Thumbnail: FC<ThumbnailProps> = ({ cid, commentMediaInfo, expanded = false, isReply = false, link, linkHeight, linkWidth, subplebbitAddress, toggleExpanded }) => {
+const Thumbnail = ({ cid, commentMediaInfo, expanded = false, isReply = false, link, linkHeight, linkWidth, subplebbitAddress, toggleExpanded }: ThumbnailProps) => {
   const iframeThumbnail = commentMediaInfo?.patternThumbnailUrl || commentMediaInfo?.thumbnail;
   let displayWidth, displayHeight, hasLinkDimensions;
   const routeOrLink = isReply ? link : `/p/${subplebbitAddress}/c/${cid}`;

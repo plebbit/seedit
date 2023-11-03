@@ -1,11 +1,11 @@
-import { FC, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import styles from './sort-buttons.module.css';
 
 const choices = ['/hot', '/new', '/active', '/controversialAll', '/topAll'];
 
-const SortButtons: FC = () => {
+const SortButtons = () => {
   const { sortType } = useParams<{ sortType: string }>();
   const { t } = useTranslation();
   const [selected, setSelected] = useState(sortType || '/topMonth');
