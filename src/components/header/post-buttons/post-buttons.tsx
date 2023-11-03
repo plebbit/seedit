@@ -1,4 +1,3 @@
-
 import { Link, useParams } from 'react-router-dom';
 import styles from './post-buttons.module.css';
 import { useTranslation } from 'react-i18next';
