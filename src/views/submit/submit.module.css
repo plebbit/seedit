@@ -1,0 +1,10 @@
+.content {
+  margin: 7px 5px 0px 5px;
+  color: var(--text);
+}
+
+h1 {
+  font-size: 18px;
+  font-weight: normal;
+  margin: 10px 0;
+}
