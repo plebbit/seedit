@@ -1,11 +1,20 @@
 import { useTranslation } from 'react-i18next';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useParams } from 'react-router-dom';
 import styles from './account-bar.module.css';
 import { useAccount } from '@plebbit/plebbit-react-hooks';
 
 const AccountBar = () => {
   const account = useAccount();
   const { t } = useTranslation();
+  const location = useLocation();
+  const { subplebbitAddress } = useParams();
+  let submitLink;
+
+  if (location.pathname.startsWith(`/p/${subplebbitAddress}/`)) {
+    submitLink = `/p/${subplebbitAddress}/submit`;
+  } else {
+    submitLink = '/submit';
+  }
 
   return (
     <div className={styles.header}>
@@ -15,7 +24,7 @@ const AccountBar = () => {
         </Link>
       </span>
       <span className={styles.separator}>|</span>
-      <Link to='/submit' className={styles.preferences}>
+      <Link to={submitLink} className={styles.preferences}>
         {t('account_bar_submit')}
       </Link>
       <span className={styles.separator}>|</span>
