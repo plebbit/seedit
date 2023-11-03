@@ -2,19 +2,14 @@
   list-style: none;
   white-space: nowrap;
   display: inline-block;
-  margin-bottom: -43px;
   padding-left: 15px;
-  transform: translateY(0.5px);
-}
-
-_::-webkit-full-page-media, _:future, :root .tabMenu {
-  margin-bottom: -44px;
 }
 
 .tabMenu li {
   display: inline;
   font-weight: bold;
   padding: 0px 3px;
+  font-size: 12px;
 }
 
 .tabMenu li .selected {
@@ -33,15 +28,11 @@ _::-webkit-full-page-media, _:future, :root .tabMenu {
 .tabMenu li a {
   padding: 2px 6px 0 6px;
   text-decoration: none;
-  line-height: 20px;
 }
 
 @media (max-width: 768px) {
   .tabMenu {
-    padding: 49px 0 0 0;
-  }
-
-  .tabMenu li a {
-    line-height: 0px;
+    margin-left: -133px;
+    margin-bottom: -20px;
   }
 }

@@ -4,31 +4,23 @@
   background-color: var(--background-primary);
 }
 
-.headerBottomLeft {
-  font-size: larger;
-}
-
 .container {
-  height: 30px;
   display: flex;
-  align-items: center;
-  transform: translateY(0.5px);
+  align-items: flex-end;
+  justify-content: flex-start;
 }
 
 .logo {
-  margin-bottom: -18px;
   margin-left: 2px;
   max-height: 40px;
-  object-fit: contain;
-  transform: translateY(0.5px);
+  margin-top: 3px;
+  margin-left: 2px;
 }
 
 .logoText {
   width: 84px;
-  margin-bottom: -17px;
   max-height: 26px;
-  object-fit: contain;
-  transform: translateY(0.5px);
+  margin-top: 16px;
 }
 
 .temporary {
@@ -46,30 +38,7 @@
 
 @media (max-width: 768px) {
   .container {
-    align-items: flex-start;
-    height: 50px;
-  }
-
-  .logo {
-    position: absolute;
-    margin-top: 3px;
-    margin-left: 2px;
-    transform: translateY(0.2px);
-  }
-
-  .logoText {
-    position: absolute;
-    margin-top: 16px;
-    margin-left: 33px;
-    transform: translateX(0.5px)
-  }
-
-  .tabMenu {
-    padding: 49px 0 0 0;
-  }
-
-  .tabMenu li a {
-    line-height: 0px;
+    padding-bottom: 20px;
   }
 }
 
