@@ -18,22 +18,18 @@
   list-style: none;
   white-space: nowrap;
   display: inline-block;
-  padding-left: 5px;
-}
-
-_::-webkit-full-page-media, _:future, :root .tabMenu {
-  transform: translateY(0.5px);
 }
 
 .tabMenu li {
   display: inline;
   font-weight: bold;
+  padding: 0px 3px;
+  font-size: 12px;
 }
 
 .tabMenu li a {
   padding: 2px 6px 0 6px;
   text-decoration: none;
-  line-height: 20px;
   color: var(--text-secondary);
   background-color: var(--background);
   border: 1px solid var(--border-primary);
@@ -43,7 +39,6 @@ _::-webkit-full-page-media, _:future, :root .tabMenu {
 
 @media (min-width: 768px) {
   .wrapper {
-    margin-top: 44px;
     margin-left: 15px;
   }
 
@@ -58,7 +53,8 @@ _::-webkit-full-page-media, _:future, :root .tabMenu {
 
 @media (max-width: 768px) {
   .wrapper {
-    margin-top: 47px;
+    margin-bottom: -20px;
+    margin-left: -116px
   }
 
   .tabMenu {

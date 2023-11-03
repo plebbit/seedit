@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 import styles from './header.module.css';
 import useTheme from '../../hooks/use-theme';
 import AccountBar from './account-bar';
-import CommentsButtons from '../header/comments-buttons';
+import PostButtons from './post-buttons';
 import SortButtons from '../header/sort-buttons';
 
 // prettier-ignore
@@ -55,7 +55,7 @@ const Header: FC = () => {
   let buttons = null;
 
   if (location.pathname === `/p/${subplebbitAddress}/c/${commentCid}`) {
-    buttons = <CommentsButtons />;
+    buttons = <PostButtons />;
   } else if (location.pathname === `/` || (sortType && ['hot', 'new', 'active', 'controversialAll', 'topAll'].includes(sortType))) {
     buttons = <SortButtons />;
   }
