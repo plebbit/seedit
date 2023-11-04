@@ -1,10 +1,57 @@
-import { usePublishComment } from '@plebbit/plebbit-react-hooks';
+import { Link, useParams } from 'react-router-dom';
+import { useSubplebbit } from '@plebbit/plebbit-react-hooks';
 import styles from './submit.module.css';
+import useCurrentView from '../../hooks/use-current-view';
 
 const Submit = () => {
+  const { isSubplebbitSubmitView } = useCurrentView();
+  const { subplebbitAddress } = useParams();
+  const subplebbit = useSubplebbit({ subplebbitAddress });
+  const { title, shortAddress } = subplebbit || {};
+  const subLocation = (
+    <Link to={`/p/${subplebbitAddress}`} className={styles.location} onClick={(e) => e.preventDefault()}>
+      {title || shortAddress}
+    </Link>
+  );
+
   return (
     <div className={styles.content}>
-      <h1>submit to seedit</h1>
+      <h1>submit to {isSubplebbitSubmitView ? subLocation : 'seedit'}</h1>
+      <div className={styles.form}>
+        <div className={styles.formContent}>
+          <div className={styles.field}>
+            <span className={styles.fieldTitleOptional}>url</span>
+            <div className={styles.fieldContent}>
+              <input className={`${styles.input} ${styles.inputUrl}`} type='text' />
+              <div className={styles.description}>embed media by posting its direct link (ending in .jpg, .gif, .mp4, etc)</div>
+            </div>
+          </div>
+          <div className={styles.field}>
+            <span className={styles.fieldTitleRequired}>title</span>
+            <div className={styles.fieldContent}>
+              <textarea className={`${styles.input} ${styles.inputTitle}`} />
+            </div>
+          </div>
+          <div className={styles.field}>
+            <span className={styles.fieldTitleOptional}>text</span>
+            <div className={styles.fieldContent}>
+              <textarea className={`${styles.input} ${styles.inputText}`} />
+            </div>
+          </div>
+          <div className={styles.field}>
+            <span className={styles.fieldTitleRequired}>choose where to post</span>
+            <div className={styles.fieldContent}>
+              <span className={styles.fieldSubtitle}>Community address:</span>
+              <input className={`${styles.input} ${styles.inputCommunity}`} type='text' defaultValue={subplebbitAddress} />
+            </div>
+          </div>
+          <div className={`${styles.field} ${styles.notice}`}>please be mindful of the community's rules, seedit does not have global admins.</div>
+          <div>*required</div>
+          <div className={styles.submit}>
+            <button className={styles.submitButton}>submit</button>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
