@@ -26,7 +26,7 @@ h1 {
   display: block;
   position: relative;
   width: 500px;
-  background-color: #cee3f8;
+  background-color: var(--background-primary);
   border-radius: 4px;
   padding: 5px 10px 10px 10px;
   font-size: large;
@@ -59,7 +59,9 @@ h1 {
   width: 492px;
   padding: 3px;
   margin: 0;
-  border: 1px solid gray;
+  border: 1px solid var(--border-text);
+  background-color: var(--background);
+  color: var(--text);
 }
 
 .inputTitle {
@@ -77,9 +79,9 @@ h1 {
 }
 
 .notice {
-  background-color: #E4F2FB;
+  background-color: var(--background-contrast);
   padding: 10px;
-  border: 1px solid #5F99CF;
+  border: 1px solid var(--border-primary);
   font-size: 12px;
 }
 
