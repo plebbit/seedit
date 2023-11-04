@@ -51,5 +51,6 @@
   "removed": "Supprimé",
   "one_comment": "1 commentaire",
   "submit_to_before": "soumettre à ",
-  "submit_to_after": ""
+  "submit_to_after": "",
+  "submit_url_description": "Intégrez des médias en postant son lien direct (se terminant par .jpg, .gif, .mp4, etc.)"
 }

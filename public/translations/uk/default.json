@@ -51,5 +51,6 @@
   "removed": "Видалено",
   "one_comment": "1 коментар",
   "submit_to_before": "надіслати до ",
-  "submit_to_after": ""
+  "submit_to_after": "",
+  "submit_url_description": "Вставте медіа, розмістивши його пряме посилання (закінчується на .jpg, .gif, .mp4 тощо)"
 }

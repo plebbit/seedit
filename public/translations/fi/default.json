@@ -51,5 +51,6 @@
   "removed": "Poistettu",
   "one_comment": "1 kommentti",
   "submit_to_before": "lähetä kohteeseen ",
-  "submit_to_after": ""
+  "submit_to_after": "",
+  "submit_url_description": "Upota mediaa lähettämällä sen suora linkki (päättyy .jpg, .gif, .mp4, jne.)"
 }

@@ -51,5 +51,6 @@
   "removed": "Borttagen",
   "one_comment": "1 kommentar",
   "submit_to_before": "skicka till ",
-  "submit_to_after": ""
+  "submit_to_after": "",
+  "submit_url_description": "Bädda in media genom att posta dess direkta länk (slutar i .jpg, .gif, .mp4, etc)"
 }

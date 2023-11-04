@@ -29,7 +29,7 @@ const Submit = () => {
             <span className={styles.fieldTitleOptional}>url</span>
             <div className={styles.fieldContent}>
               <input className={`${styles.input} ${styles.inputUrl}`} type='text' />
-              <div className={styles.description}>embed media by posting its direct link (ending in .jpg, .gif, .mp4, etc)</div>
+              <div className={styles.description}>{t('submit_url_description')}</div>
             </div>
           </div>
           <div className={styles.field}>

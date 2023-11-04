@@ -51,5 +51,6 @@
   "removed": "Entfernt",
   "one_comment": "1 Kommentar",
   "submit_to_before": "senden an ",
-  "submit_to_after": ""
+  "submit_to_after": "",
+  "submit_url_description": "Medien einbetten, indem Sie den direkten Link posten (endet auf .jpg, .gif, .mp4 usw.)"
 }

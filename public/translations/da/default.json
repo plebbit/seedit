@@ -51,5 +51,6 @@
   "removed": "Fjernet",
   "one_comment": "1 kommentar",
   "submit_to_before": "send til ",
-  "submit_to_after": ""
+  "submit_to_after": "",
+  "submit_url_description": "Integrer medier ved at poste dens direkte link (slutter med .jpg, .gif, .mp4 osv.)"
 }

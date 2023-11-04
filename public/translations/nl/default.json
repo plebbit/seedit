@@ -51,5 +51,6 @@
   "removed": "Verwijderd",
   "one_comment": "1 opmerking",
   "submit_to_before": "inzenden naar ",
-  "submit_to_after": ""
+  "submit_to_after": "",
+  "submit_url_description": "Media insluiten door de directe link te posten (eindigend op .jpg, .gif, .mp4, etc.)"
 }

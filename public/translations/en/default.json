@@ -51,5 +51,6 @@
   "removed": "Removed",
   "one_comment": "1 comment",
   "submit_to_before": "submit to ",
-  "submit_to_after": ""
+  "submit_to_after": "",
+  "submit_url_description": "Embed media by posting its direct link (ending in .jpg, .gif, .mp4, etc)"
 }

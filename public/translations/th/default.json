@@ -51,5 +51,6 @@
   "removed": "ถูกนำออก",
   "one_comment": "1 ความคิดเห็น",
   "submit_to_before": "ส่งไปยัง ",
-  "submit_to_after": ""
+  "submit_to_after": "",
+  "submit_url_description": "ฝังสื่อโดยการโพสต์ลิงก์ตรง (ลงท้ายด้วย .jpg, .gif, .mp4 ฯลฯ)"
 }

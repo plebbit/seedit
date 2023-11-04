@@ -51,5 +51,6 @@
   "removed": "削除されました",
   "one_comment": "1つのコメント",
   "submit_to_before": "",
-  "submit_to_after": " に提出"
+  "submit_to_after": " に提出",
+  "submit_url_description": "直接のリンク（.jpg、.gif、.mp4などで終わる）を投稿してメディアを埋め込む"
 }

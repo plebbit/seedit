@@ -51,5 +51,6 @@
   "removed": "Odstraněno",
   "one_comment": "1 komentář",
   "submit_to_before": "odeslat do ",
-  "submit_to_after": ""
+  "submit_to_after": "",
+  "submit_url_description": "Vložte média zveřejněním přímého odkazu (končícího na .jpg, .gif, .mp4 atd.)"
 }

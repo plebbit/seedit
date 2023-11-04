@@ -51,5 +51,6 @@
   "removed": "Eliminado",
   "one_comment": "1 comentario",
   "submit_to_before": "enviar a ",
-  "submit_to_after": ""
+  "submit_to_after": "",
+  "submit_url_description": "Inserta medios publicando su enlace directo (terminando en .jpg, .gif, .mp4, etc.)"
 }

@@ -51,5 +51,6 @@
   "removed": "অপসারণ করা হয়েছে",
   "one_comment": "1 মন্তব্য",
   "submit_to_before": "",
-  "submit_to_after": " প্রেরণ করুন"
+  "submit_to_after": " প্রেরণ করুন",
+  "submit_url_description": ".jpg, .gif, .mp4 ইত্যাদি দ্বারা সরাসরি লিঙ্ক পোস্ট করে মিডিয়া এম্বেড করুন"
 }

@@ -51,5 +51,6 @@
   "removed": "Usunięto",
   "one_comment": "1 komentarz",
   "submit_to_before": "prześlij do ",
-  "submit_to_after": ""
+  "submit_to_after": "",
+  "submit_url_description": "Osadź media, publikując jego bezpośredni link (kończący się na .jpg, .gif, .mp4 itp.)"
 }

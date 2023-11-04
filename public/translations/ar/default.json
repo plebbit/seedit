@@ -51,5 +51,6 @@
   "removed": "تمت الإزالة",
   "one_comment": "1 تعليق",
   "submit_to_before": "أرسل إلى ",
-  "submit_to_after": ""
+  "submit_to_after": "",
+  "submit_url_description": "قم بتضمين الوسائط عن طريق نشر الرابط المباشر (الذي ينتهي بـ .jpg، .gif، .mp4، إلخ)"
 }
