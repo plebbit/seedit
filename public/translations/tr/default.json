@@ -6,6 +6,7 @@
   "header_top": "En İyi",
   "header_about": "Hakkında",
   "header_comments": "yorumlar",
+  "account_bar_preferences": "Tercihler",
   "account_bar_language": "İngilizce",
   "account_bar_submit": "Gönder",
   "dark": "Karanlık",
@@ -48,6 +49,5 @@
   "reply_score_singular": "1 puan",
   "reply_score_plural": "{{count}} puan",
   "removed": "Kaldırıldı",
-  "one_comment": "1 yorum",
-  "account_bar_settings": "ayarlar"
+  "one_comment": "1 yorum"
 }

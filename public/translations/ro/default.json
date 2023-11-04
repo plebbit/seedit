@@ -6,6 +6,7 @@
   "header_top": "Top",
   "header_about": "Despre",
   "header_comments": "comentarii",
+  "account_bar_preferences": "Preferințe",
   "account_bar_language": "Engleză",
   "account_bar_submit": "Trimite",
   "dark": "Întunecat",
@@ -48,6 +49,5 @@
   "reply_score_singular": "1 punct",
   "reply_score_plural": "{{count}} puncte",
   "removed": "Eliminat",
-  "one_comment": "1 comentariu",
-  "account_bar_settings": "setări"
+  "one_comment": "1 comentariu"
 }

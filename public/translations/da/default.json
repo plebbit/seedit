@@ -6,6 +6,7 @@
   "header_top": "Top",
   "header_about": "Om",
   "header_comments": "kommentarer",
+  "account_bar_preferences": "Indstillinger",
   "account_bar_language": "Engelsk",
   "account_bar_submit": "Indsend",
   "dark": "Mørk",
@@ -48,6 +49,5 @@
   "reply_score_singular": "1 point",
   "reply_score_plural": "{{count}} point",
   "removed": "Fjernet",
-  "one_comment": "1 kommentar",
-  "account_bar_settings": "indstillinger"
+  "one_comment": "1 kommentar"
 }

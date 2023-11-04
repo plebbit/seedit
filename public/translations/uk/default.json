@@ -6,6 +6,7 @@
   "header_top": "Топ",
   "header_about": "Про",
   "header_comments": "коментарі",
+  "account_bar_preferences": "Налаштування",
   "account_bar_language": "Англійська",
   "account_bar_submit": "Надіслати",
   "dark": "Темний",
@@ -48,6 +49,5 @@
   "reply_score_singular": "1 бал",
   "reply_score_plural": "{{count}} бали",
   "removed": "Видалено",
-  "one_comment": "1 коментар",
-  "account_bar_settings": "налаштування"
+  "one_comment": "1 коментар"
 }

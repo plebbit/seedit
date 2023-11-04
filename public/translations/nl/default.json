@@ -6,6 +6,7 @@
   "header_top": "Top",
   "header_about": "Over",
   "header_comments": "reacties",
+  "account_bar_preferences": "Voorkeuren",
   "account_bar_language": "Engels",
   "account_bar_submit": "Indienen",
   "dark": "Donker",
@@ -48,6 +49,5 @@
   "reply_score_singular": "1 punt",
   "reply_score_plural": "{{count}} punten",
   "removed": "Verwijderd",
-  "one_comment": "1 opmerking",
-  "account_bar_settings": "instellingen"
+  "one_comment": "1 opmerking"
 }

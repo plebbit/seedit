@@ -6,6 +6,7 @@
   "header_top": "top",
   "header_about": "about",
   "header_comments": "comments",
+  "account_bar_preferences": "preferences",
   "account_bar_language": "English",
   "account_bar_submit": "submit",
   "dark": "dark",
@@ -48,6 +49,5 @@
   "reply_score_singular": "1 point",
   "reply_score_plural": "{{count}} points",
   "removed": "Removed",
-  "one_comment": "1 comment",
-  "account_bar_settings": "settings"
+  "one_comment": "1 comment"
 }

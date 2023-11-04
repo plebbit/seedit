@@ -6,6 +6,7 @@
   "header_top": "הכי מדורג",
   "header_about": "אודות",
   "header_comments": "תגובות",
+  "account_bar_preferences": "העדפות",
   "account_bar_language": "אנגלית",
   "account_bar_submit": "שלח",
   "dark": "כהה",
@@ -48,6 +49,5 @@
   "reply_score_singular": "1 נקודה",
   "reply_score_plural": "{{count}} נקודות",
   "removed": "הוסר",
-  "one_comment": "1 הערה",
-  "account_bar_settings": "הגדרות"
+  "one_comment": "1 הערה"
 }

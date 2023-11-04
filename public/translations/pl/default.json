@@ -6,6 +6,7 @@
   "header_top": "Najlepsze",
   "header_about": "O",
   "header_comments": "komentarze",
+  "account_bar_preferences": "Preferencje",
   "account_bar_language": "Angielski",
   "account_bar_submit": "Zatwierdź",
   "dark": "Ciemny",
@@ -48,6 +49,5 @@
   "reply_score_singular": "1 punkt",
   "reply_score_plural": "{{count}} punkty",
   "removed": "Usunięto",
-  "one_comment": "1 komentarz",
-  "account_bar_settings": "ustawienia"
+  "one_comment": "1 komentarz"
 }

@@ -6,6 +6,7 @@
   "header_top": "Më të votuarit",
   "header_about": "Rreth",
   "header_comments": "komentarë",
+  "account_bar_preferences": "Preferencat",
   "account_bar_language": "Anglisht",
   "account_bar_submit": "Dërgo",
   "dark": "Errët",
@@ -48,6 +49,5 @@
   "reply_score_singular": "1 pikë",
   "reply_score_plural": "{{count}} pikë",
   "removed": "U hoq",
-  "one_comment": "1 koment",
-  "account_bar_settings": "cilësimet"
+  "one_comment": "1 koment"
 }

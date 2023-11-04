@@ -6,6 +6,7 @@
   "header_top": "Κορυφαία",
   "header_about": "Σχετικά",
   "header_comments": "σχόλια",
+  "account_bar_preferences": "Προτιμήσεις",
   "account_bar_language": "Αγγλικά",
   "account_bar_submit": "Υποβολή",
   "dark": "Σκοτεινός",
@@ -48,6 +49,5 @@
   "reply_score_singular": "1 βαθμός",
   "reply_score_plural": "{{count}} βαθμοί",
   "removed": "Αφαιρέθηκε",
-  "one_comment": "1 σχόλιο",
-  "account_bar_settings": "ρυθμίσεις"
+  "one_comment": "1 σχόλιο"
 }

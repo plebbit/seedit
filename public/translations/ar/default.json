@@ -6,6 +6,7 @@
   "header_top": "الأعلى تصويتًا",
   "header_about": "حول",
   "header_comments": "تعليقات",
+  "account_bar_preferences": "التفضيلات",
   "account_bar_language": "العربية",
   "account_bar_submit": "إرسال",
   "dark": "داكن",
@@ -48,6 +49,5 @@
   "reply_score_singular": "1 نقطة",
   "reply_score_plural": "{{count}} نقاط",
   "removed": "تمت الإزالة",
-  "one_comment": "1 تعليق",
-  "account_bar_settings": "الإعدادات"
+  "one_comment": "1 تعليق"
 }

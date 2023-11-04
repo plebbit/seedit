@@ -6,6 +6,7 @@
   "header_top": "Hàng đầu",
   "header_about": "Về",
   "header_comments": "bình luận",
+  "account_bar_preferences": "Tùy chỉnh",
   "account_bar_language": "Tiếng Anh",
   "account_bar_submit": "Gửi",
   "dark": "Tối",
@@ -48,6 +49,5 @@
   "reply_score_singular": "1 điểm",
   "reply_score_plural": "{{count}} điểm",
   "removed": "Đã xóa",
-  "one_comment": "1 bình luận",
-  "account_bar_settings": "cài đặt"
+  "one_comment": "1 bình luận"
 }

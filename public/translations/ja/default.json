@@ -6,6 +6,7 @@
   "header_top": "トップ評価",
   "header_about": "について",
   "header_comments": "コメント",
+  "account_bar_preferences": "設定",
   "account_bar_language": "日本語",
   "account_bar_submit": "送信",
   "dark": "暗い",
@@ -48,6 +49,5 @@
   "reply_score_singular": "1 ポイント",
   "reply_score_plural": "{{count}} ポイント",
   "removed": "削除されました",
-  "one_comment": "1つのコメント",
-  "account_bar_settings": "設定"
+  "one_comment": "1つのコメント"
 }

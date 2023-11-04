@@ -6,6 +6,7 @@
   "header_top": "शीर्ष",
   "header_about": "बद्दल",
   "header_comments": "टिप्पण्या",
+  "account_bar_preferences": "प्राथमिकता",
   "account_bar_language": "इंग्रजी",
   "account_bar_submit": "सबमिट करा",
   "dark": "गडद",
@@ -48,6 +49,5 @@
   "reply_score_singular": "1 गुण",
   "reply_score_plural": "{{count}} गुण",
   "removed": "काढून टाकला",
-  "one_comment": "1 टिप्पणी",
-  "account_bar_settings": "सेटिंग्ज"
+  "one_comment": "1 टिप्पणी"
 }

@@ -6,6 +6,7 @@
   "header_top": "Pinakamataas",
   "header_about": "Tungkol sa",
   "header_comments": "mga komento",
+  "account_bar_preferences": "Mga Kagustuhan",
   "account_bar_language": "Ingles",
   "account_bar_submit": "Ipadala",
   "dark": "Madilim",
@@ -48,6 +49,5 @@
   "reply_score_singular": "1 punto",
   "reply_score_plural": "{{count}} punto",
   "removed": "Tinanggal",
-  "one_comment": "1 komento",
-  "account_bar_settings": "mga setting"
+  "one_comment": "1 komento"
 }
