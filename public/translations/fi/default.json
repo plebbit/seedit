@@ -57,5 +57,5 @@
   "text": "teksti",
   "required": "vaadittu",
   "optional": "valinnainen",
-  "community address": "yhteisön osoite"
+  "community_address": "yhteisön osoite"
 }

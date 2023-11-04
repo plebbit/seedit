@@ -57,5 +57,5 @@
   "text": "tekst",
   "required": "wymagane",
   "optional": "opcjonalnie",
-  "community address": "adres społeczności"
+  "community_address": "adres społeczności"
 }

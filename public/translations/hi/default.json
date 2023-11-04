@@ -57,5 +57,5 @@
   "text": "पाठ",
   "required": "आवश्यक",
   "optional": "वैकल्पिक",
-  "community address": "समुदाय का पता"
+  "community_address": "समुदाय का पता"
 }

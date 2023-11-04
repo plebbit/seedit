@@ -57,5 +57,5 @@
   "text": "teks",
   "required": "wajib",
   "optional": "opsional",
-  "community address": "alamat komunitas"
+  "community_address": "alamat komunitas"
 }

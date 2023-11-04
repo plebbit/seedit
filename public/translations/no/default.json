@@ -57,5 +57,5 @@
   "text": "tekst",
   "required": "påkrevd",
   "optional": "valgfritt",
-  "community address": "samfunnsadresse"
+  "community_address": "samfunnsadresse"
 }

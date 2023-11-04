@@ -57,5 +57,5 @@
   "text": "テキスト",
   "required": "必須",
   "optional": "オプショナル",
-  "community address": "コミュニティのアドレス"
+  "community_address": "コミュニティのアドレス"
 }

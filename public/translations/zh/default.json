@@ -57,5 +57,5 @@
   "text": "文本",
   "required": "必须的",
   "optional": "可选的",
-  "community address": "社区地址"
+  "community_address": "社区地址"
 }

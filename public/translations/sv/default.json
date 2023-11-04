@@ -57,5 +57,5 @@
   "text": "text",
   "required": "krävs",
   "optional": "valfritt",
-  "community address": "gemenskapsadress"
+  "community_address": "gemenskapsadress"
 }

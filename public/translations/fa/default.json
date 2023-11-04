@@ -57,5 +57,5 @@
   "text": "متن",
   "required": "الزامی",
   "optional": "اختیاری",
-  "community address": "آدرس جامعه"
+  "community_address": "آدرس جامعه"
 }

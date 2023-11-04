@@ -47,13 +47,13 @@ const Submit = () => {
             </div>
           </div>
           <div className={styles.field}>
-            <span className={styles.fieldTitleRequired}>choose where to post</span>
+            <span className={styles.fieldTitleRequired}>{t('submit_choose')}</span>
             <div className={styles.fieldContent}>
-              <span className={styles.fieldSubtitle}>{t('community address')}:</span>
+              <span className={styles.fieldSubtitle}>{t('community_address')}:</span>
               <input className={`${styles.input} ${styles.inputCommunity}`} type='text' defaultValue={subplebbitAddress} />
             </div>
           </div>
-          <div className={`${styles.field} ${styles.notice}`}>please be mindful of the community's rules, seedit does not have global admins.</div>
+          <div className={`${styles.field} ${styles.notice}`}>{t('submit_notice')}</div>
           <div>*{t('required')}</div>
           <div className={styles.submit}>
             <button className={styles.submitButton}>{t('submit')}</button>

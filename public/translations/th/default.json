@@ -57,5 +57,5 @@
   "text": "ข้อความ",
   "required": "จำเป็น",
   "optional": "ไม่จำเป็น",
-  "community address": "ที่อยู่ของชุมชน"
+  "community_address": "ที่อยู่ของชุมชน"
 }

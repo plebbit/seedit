@@ -57,5 +57,5 @@
   "text": "نص",
   "required": "مطلوب",
   "optional": "اختياري",
-  "community address": "عنوان المجتمع"
+  "community_address": "عنوان المجتمع"
 }

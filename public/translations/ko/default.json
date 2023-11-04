@@ -57,5 +57,5 @@
   "text": "텍스트",
   "required": "필수",
   "optional": "선택",
-  "community address": "커뮤니티 주소"
+  "community_address": "커뮤니티 주소"
 }

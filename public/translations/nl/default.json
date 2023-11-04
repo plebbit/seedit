@@ -57,5 +57,5 @@
   "text": "tekst",
   "required": "vereist",
   "optional": "optioneel",
-  "community address": "gemeenschapsadres"
+  "community_address": "gemeenschapsadres"
 }

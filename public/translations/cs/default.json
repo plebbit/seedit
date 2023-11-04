@@ -57,5 +57,5 @@
   "text": "text",
   "required": "vyžadováno",
   "optional": "volitelný",
-  "community address": "adresa komunity"
+  "community_address": "adresa komunity"
 }

@@ -57,5 +57,5 @@
   "text": "Text",
   "required": "erforderlich",
   "optional": "optional",
-  "community address": "Gemeinschaftsadresse"
+  "community_address": "Gemeinschaftsadresse"
 }

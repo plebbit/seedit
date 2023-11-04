@@ -57,5 +57,5 @@
   "text": "szöveg",
   "required": "kötelező",
   "optional": "opcionális",
-  "community address": "közösség címe"
+  "community_address": "közösség címe"
 }

@@ -57,5 +57,5 @@
   "text": "text",
   "required": "required",
   "optional": "optional",
-  "community address": "community address"
+  "community_address": "community address"
 }

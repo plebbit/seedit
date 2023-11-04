@@ -57,5 +57,5 @@
   "text": "текст",
   "required": "требуется",
   "optional": "необязательный",
-  "community address": "адрес сообщества"
+  "community_address": "адрес сообщества"
 }

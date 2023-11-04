@@ -57,5 +57,5 @@
   "text": "metin",
   "required": "gerekli",
   "optional": "isteğe bağlı",
-  "community address": "topluluk adresi"
+  "community_address": "topluluk adresi"
 }

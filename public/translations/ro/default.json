@@ -57,5 +57,5 @@
   "text": "text",
   "required": "necesar",
   "optional": "opțional",
-  "community address": "adresa comunității"
+  "community_address": "adresa comunității"
 }

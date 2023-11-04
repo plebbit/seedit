@@ -57,5 +57,5 @@
   "text": "κείμενο",
   "required": "απαραίτητο",
   "optional": "προαιρετικό",
-  "community address": "διεύθυνση κοινότητας"
+  "community_address": "διεύθυνση κοινότητας"
 }

@@ -57,5 +57,5 @@
   "text": "tekst",
   "required": "krævet",
   "optional": "valgfri",
-  "community address": "fællesskabsadresse"
+  "community_address": "fællesskabsadresse"
 }

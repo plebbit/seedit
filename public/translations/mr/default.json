@@ -57,5 +57,5 @@
   "text": "मजकूर",
   "required": "आवश्यक",
   "optional": "वैकल्पिक",
-  "community address": "समुदाय पत्ता"
+  "community_address": "समुदाय पत्ता"
 }
