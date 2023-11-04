@@ -1,81 +1,96 @@
-import { FC } from 'react';
-import { Link, useLocation, useParams } from 'react-router-dom';
-import { useTranslation } from 'react-i18next';
+import { useEffect, useState } from 'react';
+import { Link, useParams } from 'react-router-dom';
 import styles from './header.module.css';
 import useTheme from '../../hooks/use-theme';
 import AccountBar from './account-bar';
-import CommentsButtons from '../header/comments-buttons';
-import SortButtons from '../header/sort-buttons';
+import { useSubplebbit } from '@plebbit/plebbit-react-hooks';
+import { useTranslation } from 'react-i18next';
+import useCurrentView from '../../hooks/use-current-view';
 
-// prettier-ignore
-const availableLanguages = ['ar', 'bn', 'cs', 'da', 'de', 'el', 'en', 'es', 'fa', 'fi', 'fil', 'fr', 'he', 'hi', 'hu', 'id', 'it', 'ja', 'ko', 'mr', 'nl', 'no', 'pl', 'pt', 'ro', 'ru', 'sq', 'sv', 'te', 'th', 'tr', 'uk', 'ur', 'vi', 'zh'];
+const sortTypes = ['/hot', '/new', '/active', '/controversialAll', '/topAll'];
 
-// TODO: move to settings page
-const Theme: FC = () => {
-  const [theme, setTheme] = useTheme();
+const Header = () => {
+  const [theme] = useTheme();
   const { t } = useTranslation();
+  const { sortType, subplebbitAddress, commentCid } = useParams();
+  const [selectedSortType, setSelectedSortType] = useState(sortType || '/hot');
+  const sortLabels = [t('header_hot'), t('header_new'), t('header_active'), t('header_controversial'), t('header_top')];
+  const subplebbit = useSubplebbit({ subplebbitAddress });
+  const { title, shortAddress } = subplebbit || {};
+  const { isHomeView, isSubplebbitView, isPostView, isSubmitView, isSubplebbitSubmitView } = useCurrentView();
 
-  return (
-    <div style={{ padding: '5px' }}>
-      <select value={theme} onChange={(e) => setTheme(e.target.value)}>
-        <option value='light'>{t('light')}</option>
-        <option value='dark'>{t('dark')}</option>
-      </select>
-    </div>
-  );
-};
-
-// TODO: move to settings page
-const Language: FC = () => {
-  const { i18n } = useTranslation();
-  const { changeLanguage, language } = i18n;
-
-  const onSelectLanguage = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    changeLanguage(e.target.value);
+  const handleSelect = (choice: string) => {
+    setSelectedSortType(choice);
   };
 
-  return (
-    <div style={{ padding: '5px' }}>
-      <select value={language} onChange={onSelectLanguage}>
-        {availableLanguages.map((lang) => (
-          <option key={lang} value={lang}>
-            {lang}
-          </option>
-        ))}
-      </select>
-    </div>
+  useEffect(() => {
+    if (sortType) {
+      setSelectedSortType('/' + sortType);
+    } else {
+      setSelectedSortType('/hot');
+    }
+  }, [sortType]);
+
+  const sortItems = sortTypes.map((choice, index) => (
+    <li key={choice}>
+      <Link to={choice} className={selectedSortType === choice ? styles.selected : styles.choice} onClick={() => handleSelect(choice)}>
+        {sortLabels[index]}
+      </Link>
+    </li>
+  ));
+
+  const commentsButton = (
+    <li>
+      <Link to={`/p/${subplebbitAddress}/c/${commentCid}`}>{t('header_comments')}</Link>
+    </li>
   );
-};
+  let headerTabs;
 
-const Header: FC = () => {
-  const [theme] = useTheme();
-  const { sortType, subplebbitAddress, commentCid } = useParams();
-  const location = useLocation();
+  if (isPostView) {
+    headerTabs = commentsButton;
+  } else if (isHomeView) {
+    headerTabs = sortItems;
+  }
 
-  let buttons = null;
+  const subplebbitTitle = (
+    <Link
+      to={`/p/${subplebbitAddress}`}
+      onClick={(e) => {
+        e.preventDefault();
+      }}
+    >
+      {title || shortAddress}
+    </Link>
+  );
+  let headerTitle;
 
-  if (location.pathname === `/p/${subplebbitAddress}/c/${commentCid}`) {
-    buttons = <CommentsButtons />;
-  } else if (location.pathname === `/` || (sortType && ['hot', 'new', 'active', 'controversialAll', 'topAll'].includes(sortType))) {
-    buttons = <SortButtons />;
+  if (isSubplebbitSubmitView) {
+    headerTitle = <>{subplebbitTitle}: SUBMIT</>;
+  } else if (isPostView || isSubplebbitView) {
+    headerTitle = subplebbitTitle;
+  } else if (isSubmitView) {
+    headerTitle = 'SUBMIT';
   }
 
   return (
     <div className={styles.header}>
-      <div className={styles.headerBottomLeft}>
-        <span className={styles.container}>
-          <Link to='/' style={{ all: 'unset', cursor: 'pointer' }}>
-            <img className={styles.logo} src='/assets/logo/seedit.png' alt='logo' />
-            <img src={`${process.env.PUBLIC_URL}/assets/logo/seedit-text-${theme === 'dark' ? 'dark' : 'light'}.svg`} className={styles.logoText} alt='logo' />
-          </Link>
-          {buttons}
-        </span>
-        <br />
-      </div>
       <AccountBar />
-      <div className={styles.temporary}>
-        <Language />
-        <Theme />
+      <div className={styles.container}>
+        <Link to='/' style={{ all: 'unset', cursor: 'pointer' }}>
+          <img className={styles.logo} src='/assets/logo/seedit.png' alt='logo' />
+          <img src={`${process.env.PUBLIC_URL}/assets/logo/seedit-text-${theme === 'dark' ? 'dark' : 'light'}.svg`} className={styles.logoText} alt='logo' />
+        </Link>
+        <div className={styles.tabs}>
+          <span className={styles.pageName}>{headerTitle}</span>
+          <ul className={styles.tabMenu}>
+            {headerTabs}
+            <li className={styles.about}>
+              <Link to='/about' className={styles.choice} onClick={(event) => event.preventDefault()}>
+                {t('header_about')}
+              </Link>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
   );

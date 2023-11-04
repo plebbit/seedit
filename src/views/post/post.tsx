@@ -1,4 +1,4 @@
-import { FC, useEffect } from 'react';
+import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useComment, useSubplebbit } from '@plebbit/plebbit-react-hooks';
 import { useTranslation } from 'react-i18next';
@@ -8,7 +8,7 @@ import useReplies from '../../hooks/use-replies';
 import Reply from '../../components/reply';
 import useStateString from '../../hooks/use-state-string';
 
-const Post: FC = () => {
+const Post = () => {
   const { commentCid } = useParams();
   const comment = useComment({ commentCid });
   const { content, replyCount, subplebbitAddress, title } = comment || {};
@@ -37,7 +37,7 @@ const Post: FC = () => {
         </div>
         <div className={styles.menuArea}>
           <div className={styles.spacer}>
-            <span className={styles.dropdownTitle}>{t('reply_sorted_by')}:{' '}</span>
+            <span className={styles.dropdownTitle}>{t('reply_sorted_by')}: </span>
             <div className={styles.dropdown}>
               <span className={styles.selected}>{t('reply_best')}</span>
             </div>

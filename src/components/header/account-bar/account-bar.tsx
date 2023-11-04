@@ -1,14 +1,20 @@
-import { FC } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useParams } from 'react-router-dom';
 import styles from './account-bar.module.css';
 import { useAccount } from '@plebbit/plebbit-react-hooks';
-import useIsMobile from '../../../hooks/use-is-mobile';
 
-const AccountBar: FC = () => {
+const AccountBar = () => {
   const account = useAccount();
   const { t } = useTranslation();
-  const isMobile = useIsMobile();
+  const location = useLocation();
+  const { subplebbitAddress } = useParams();
+  let submitLink;
+
+  if (location.pathname.startsWith(`/p/${subplebbitAddress}/`)) {
+    submitLink = `/p/${subplebbitAddress}/submit`;
+  } else {
+    submitLink = '/submit';
+  }
 
   return (
     <div className={styles.header}>
@@ -18,20 +24,10 @@ const AccountBar: FC = () => {
         </Link>
       </span>
       <span className={styles.separator}>|</span>
-      {isMobile && (
-        <>
-          <Link
-            to='/settings'
-            className={styles.preferences}
-            onClick={(e) => {
-              e.preventDefault();
-            }}
-          >
-            {t('account_bar_submit')}
-          </Link>
-          <span className={styles.separator}>|</span>
-        </>
-      )}
+      <Link to={submitLink} className={styles.preferences}>
+        {t('account_bar_submit')}
+      </Link>
+      <span className={styles.separator}>|</span>
       <Link to='/settings' className={styles.preferences} onClick={(e) => e.preventDefault()}>
         ✉️
       </Link>
@@ -40,8 +36,8 @@ const AccountBar: FC = () => {
         🔎
       </Link>
       <span className={styles.separator}>|</span>
-      <Link to='/settings' className={styles.preferences} onClick={(e) => e.preventDefault()}>
-        {t('account_bar_preferences')}
+      <Link to='/settings' className={styles.preferences}>
+        {t('account_bar_settings')}
       </Link>
     </div>
   );

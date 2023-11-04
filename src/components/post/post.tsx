@@ -1,4 +1,4 @@
-import { FC, useState } from 'react';
+import { useState } from 'react';
 import styles from './post.module.css';
 import { Link } from 'react-router-dom';
 import utils from '../../lib/utils';
@@ -16,7 +16,7 @@ interface PostProps {
   isPostView?: boolean;
 }
 
-const Post: FC<PostProps> = ({ post, index, isPostView = false }) => {
+const Post = ({ post, index, isPostView = false }: PostProps) => {
   const { author, cid, content, downvoteCount, flair, link, linkHeight, linkWidth, replyCount, spoiler, subplebbitAddress, timestamp, title, upvoteCount } = post || {};
   const subplebbit = useSubplebbit({ subplebbitAddress });
   const { t } = useTranslation();

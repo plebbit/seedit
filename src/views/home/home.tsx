@@ -1,8 +1,8 @@
-import { FC, useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import { useParams } from 'react-router-dom';
 import { Virtuoso, VirtuosoHandle, StateSnapshot } from 'react-virtuoso';
 import { useFeed } from '@plebbit/plebbit-react-hooks';
-import useDefaultSubplebbitAddresses from '../../hooks/use-default-subplebbit-addresses';
+// import useDefaultSubplebbitAddresses from '../../hooks/use-default-subplebbit-addresses';
 import styles from './home.module.css';
 import Post from '../../components/post';
 import useFeedStateString from '../../hooks/use-feed-state-string';
@@ -11,8 +11,9 @@ const lastVirtuosoStates: { [key: string]: StateSnapshot } = {};
 
 const NoPosts = () => 'no posts';
 
-const Home: FC = () => {
-  const subplebbitAddresses = useDefaultSubplebbitAddresses();
+const Home = () => {
+  // const subplebbitAddresses = useDefaultSubplebbitAddresses();
+  const subplebbitAddresses = ['12D3KooWCBUsAU4xuXK7GjrRLy39XSj3RQB8fVecKyEC42e1RtUi'];
   const sortType = useParams<{ sortType: string }>().sortType || 'hot';
   const { feed, hasMore, loadMore } = useFeed({ subplebbitAddresses, sortType });
   const loadingStateString = useFeedStateString(subplebbitAddresses) || 'loading...';

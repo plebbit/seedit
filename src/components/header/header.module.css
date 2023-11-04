@@ -4,72 +4,28 @@
   background-color: var(--background-primary);
 }
 
-.headerBottomLeft {
-  font-size: larger;
-}
-
 .container {
-  height: 30px;
   display: flex;
-  align-items: center;
-  transform: translateY(0.5px);
+  align-items: flex-end;
+  justify-content: flex-start;
 }
 
 .logo {
-  margin-bottom: -18px;
-  margin-left: 2px;
   max-height: 40px;
-  object-fit: contain;
-  transform: translateY(0.5px);
+  margin-top: 3px;
+  margin-left: 2px;
 }
 
 .logoText {
   width: 84px;
-  margin-bottom: -17px;
   max-height: 26px;
-  object-fit: contain;
-  transform: translateY(0.5px);
-}
-
-.temporary {
-  display: flex;
-  position: absolute;
-  right: -5px;
-  top: 18px;
-  z-index: 999;
-}
-
-.temporary select {
-  margin-left: -5px;
-  height: 22px;
+  margin-top: 16px;
+  margin-right: 15px;
 }
 
 @media (max-width: 768px) {
   .container {
-    align-items: flex-start;
-    height: 50px;
-  }
-
-  .logo {
-    position: absolute;
-    margin-top: 3px;
-    margin-left: 2px;
-    transform: translateY(0.2px);
-  }
-
-  .logoText {
-    position: absolute;
-    margin-top: 16px;
-    margin-left: 33px;
-    transform: translateX(0.5px)
-  }
-
-  .tabMenu {
-    padding: 49px 0 0 0;
-  }
-
-  .tabMenu li a {
-    line-height: 0px;
+    padding-bottom: 20px;
   }
 }
 
@@ -77,5 +33,106 @@
   .temporary {
     top: 0px;
     margin-top: -3px;
+  }
+}
+
+.tabs {
+  display: flex;
+}
+
+.pageName {
+  font-weight: bold;
+  margin-right: 1ex;
+  font-variant: small-caps;
+  font-size: 1.2em;
+  color: var(--text);
+}
+
+.pageName a {
+  color: var(--text);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.pageName a:hover {
+  text-decoration: underline;
+  text-decoration-color: currentcolor;
+}
+
+.submitTitle {
+  font-weight: bold;
+  margin-right: 1ex;
+  font-variant: small-caps;
+  font-size: 1.2em;
+  color: var(--text);
+  padding-left: 15px;
+}
+
+.tabMenu {
+  list-style: none;
+  white-space: nowrap;
+  display: inline-block;
+}
+
+.tabMenu li {
+  display: inline;
+  font-weight: bold;
+  padding: 0px 3px;
+  font-size: 12px;
+}
+
+.tabMenu li a {
+  padding: 2px 6px 0 6px;
+  text-decoration: none;
+  color: var(--text-secondary);
+  background-color: var(--background);
+  border: 1px solid var(--border-primary);
+  border-bottom: 1px solid var(--background);
+}
+
+.tabMenu li .selected {
+  color: var(--text-secondary);
+  background-color: var(--background);
+  border: 1px solid var(--border-primary);
+  border-bottom: 1px solid var(--background);
+}
+
+.tabMenu li .choice {
+  color: var(--text-primary);
+  background-color: var(--background-secondary);
+  border-bottom: 1px solid var(--border-primary);
+}
+
+
+@media (min-width: 768px) {
+  .tabMenu {
+    order: 2;
+  }
+
+  .pageName {
+    order: 1;
+  }
+}
+
+@media (max-width: 768px) {
+  .tabs {
+    margin-bottom: -20px;
+  }
+
+  .tabMenu {
+    order: 1;
+    margin-right: 5px;
+  }
+
+  .pageName {
+    order: 2;
+  }
+}
+
+
+
+@media (max-width: 768px) {
+  .tabMenu {
+    margin-left: -133px;
   }
 }

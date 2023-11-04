@@ -6,7 +6,6 @@
   "header_top": "सर्वाधिक मत",
   "header_about": "के बारे में",
   "header_comments": "टिप्पणियां",
-  "account_bar_preferences": "प्राथमिकताएँ",
   "account_bar_language": "हिंदी",
   "account_bar_submit": "भेजें",
   "dark": "अंधेरा",
@@ -49,5 +48,6 @@
   "reply_score_singular": "1 अंक",
   "reply_score_plural": "{{count}} अंक",
   "removed": "हटा दिया गया",
-  "one_comment": "1 टिप्पणी"
+  "one_comment": "1 टिप्पणी",
+  "account_bar_settings": "सेटिंग्स"
 }

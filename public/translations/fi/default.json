@@ -6,7 +6,6 @@
   "header_top": "Parhaat",
   "header_about": "Tietoja",
   "header_comments": "kommentit",
-  "account_bar_preferences": "Asetukset",
   "account_bar_language": "Englanti",
   "account_bar_submit": "Lähetä",
   "dark": "Tumma",
@@ -49,5 +48,6 @@
   "reply_score_singular": "1 piste",
   "reply_score_plural": "{{count}} pistettä",
   "removed": "Poistettu",
-  "one_comment": "1 kommentti"
+  "one_comment": "1 kommentti",
+  "account_bar_settings": "asetukset"
 }

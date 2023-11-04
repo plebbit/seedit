@@ -6,7 +6,6 @@
   "header_top": "Nejlepší",
   "header_about": "O",
   "header_comments": "komentáře",
-  "account_bar_preferences": "Předvolby",
   "account_bar_language": "Angličtina",
   "account_bar_submit": "Odeslat",
   "dark": "Tmavý",
@@ -49,5 +48,6 @@
   "reply_score_singular": "1 bod",
   "reply_score_plural": "{{count}} body",
   "removed": "Odstraněno",
-  "one_comment": "1 komentář"
+  "one_comment": "1 komentář",
+  "account_bar_settings": "nastavení"
 }

@@ -1,4 +1,3 @@
-import { FC } from 'react';
 import styles from './expand-button.module.css';
 import { CommentMediaInfo } from '../../../lib/utils';
 
@@ -11,7 +10,7 @@ interface ExpandButtonProps {
   toggleExpanded: () => void;
 }
 
-const ExpandButton: FC<ExpandButtonProps> = ({ commentMediaInfo, content, expanded, hasThumbnail, link, toggleExpanded }) => {
+const ExpandButton = ({ commentMediaInfo, content, expanded, hasThumbnail, link, toggleExpanded }: ExpandButtonProps) => {
   const initialButtonType = hasThumbnail || commentMediaInfo?.type === 'audio' || commentMediaInfo?.type === 'iframe' ? 'playButton' : 'textButton';
 
   const buttonType = expanded ? 'closeButton' : initialButtonType;

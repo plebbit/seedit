@@ -6,7 +6,6 @@
   "header_top": "ఉత్తమ",
   "header_about": "గురించి",
   "header_comments": "వ్యాఖ్యలు",
-  "account_bar_preferences": "ప్రాధాన్యతలు",
   "account_bar_language": "ఇంగ్లీష్",
   "account_bar_submit": "సబ్మిట్",
   "dark": "ముదురు",
@@ -49,5 +48,6 @@
   "reply_score_singular": "1 పాయింట్",
   "reply_score_plural": "{{count}} పాయింట్లు",
   "removed": "తొలగించబడింది",
-  "one_comment": "1 వ్యాఖ్య"
+  "one_comment": "1 వ్యాఖ్య",
+  "account_bar_settings": "సెట్టింగులు"
 }

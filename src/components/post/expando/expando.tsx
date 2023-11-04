@@ -1,4 +1,3 @@
-import { FC } from 'react';
 import { Link } from 'react-router-dom';
 import styles from './expando.module.css';
 import Embed from '../embed';
@@ -13,7 +12,7 @@ interface ExpandoProps {
   toggleExpanded?: () => void;
 }
 
-const Expando: FC<ExpandoProps> = ({ commentMediaInfo, content, expanded, link, showContent, toggleExpanded }) => {
+const Expando = ({ commentMediaInfo, content, expanded, link, showContent, toggleExpanded }: ExpandoProps) => {
   let mediaComponent = null;
   let noExpandButton = false;
 

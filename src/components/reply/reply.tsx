@@ -1,4 +1,4 @@
-import { FC, useState } from 'react';
+import { useState } from 'react';
 import { Comment } from '@plebbit/plebbit-react-hooks';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
@@ -15,7 +15,7 @@ interface ReplyProps {
   reply: Comment;
 }
 
-const Reply: FC<ReplyProps> = ({ reply }) => {
+const Reply = ({ reply }: ReplyProps) => {
   const {
     author: { shortAddress },
     content,

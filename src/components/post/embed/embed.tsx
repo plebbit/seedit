@@ -1,11 +1,10 @@
-import { FC } from 'react';
 import styles from './embed.module.css';
 
 interface EmbedProps {
   url: string;
 }
 
-const Embed: FC<EmbedProps> = ({ url }) => {
+const Embed = ({ url }: EmbedProps) => {
   const parsedUrl = new URL(url);
 
   if (youtubeHosts.has(parsedUrl.host)) {
@@ -46,7 +45,7 @@ interface EmbedComponentProps {
 
 const youtubeHosts = new Set<string>(['youtube.com', 'www.youtube.com', 'youtu.be', 'www.youtu.be']);
 
-const YoutubeEmbed: FC<EmbedComponentProps> = ({ parsedUrl }) => {
+const YoutubeEmbed = ({ parsedUrl }: EmbedComponentProps) => {
   let youtubeId;
   if (parsedUrl.host.endsWith('youtu.be')) {
     youtubeId = parsedUrl.pathname.replaceAll('/', '');
@@ -69,7 +68,7 @@ const YoutubeEmbed: FC<EmbedComponentProps> = ({ parsedUrl }) => {
 
 const xHosts = new Set<string>(['twitter.com', 'www.twitter.com', 'x.com', 'www.x.com']);
 
-const XEmbed: FC<EmbedComponentProps> = ({ parsedUrl }) => {
+const XEmbed = ({ parsedUrl }: EmbedComponentProps) => {
   return (
     <iframe
       className={styles.xEmbed}
@@ -90,7 +89,7 @@ const XEmbed: FC<EmbedComponentProps> = ({ parsedUrl }) => {
 
 const redditHosts = new Set<string>(['reddit.com', 'www.reddit.com', 'old.reddit.com']);
 
-const RedditEmbed: FC<EmbedComponentProps> = ({ parsedUrl }) => {
+const RedditEmbed = ({ parsedUrl }: EmbedComponentProps) => {
   return (
     <iframe
       className={styles.redditEmbed}
@@ -117,7 +116,7 @@ const RedditEmbed: FC<EmbedComponentProps> = ({ parsedUrl }) => {
 
 const twitchHosts = new Set<string>(['twitch.tv', 'www.twitch.tv']);
 
-const TwitchEmbed: FC<EmbedComponentProps> = ({ parsedUrl }) => {
+const TwitchEmbed = ({ parsedUrl }: EmbedComponentProps) => {
   let iframeUrl;
   if (parsedUrl.pathname.startsWith('/videos/')) {
     const videoId = parsedUrl.pathname.replace('/videos/', '');
@@ -142,7 +141,7 @@ const TwitchEmbed: FC<EmbedComponentProps> = ({ parsedUrl }) => {
 
 const tiktokHosts = new Set<string>(['tiktok.com', 'www.tiktok.com']);
 
-const TiktokEmbed: FC<EmbedComponentProps> = ({ parsedUrl }) => {
+const TiktokEmbed = ({ parsedUrl }: EmbedComponentProps) => {
   const videoId = parsedUrl.pathname.replace(/.+\/video\//, '').replaceAll('/', '');
   return (
     <iframe
@@ -164,7 +163,7 @@ const TiktokEmbed: FC<EmbedComponentProps> = ({ parsedUrl }) => {
 
 const instagramHosts = new Set<string>(['instagram.com', 'www.instagram.com']);
 
-const InstagramEmbed: FC<EmbedComponentProps> = ({ parsedUrl }) => {
+const InstagramEmbed = ({ parsedUrl }: EmbedComponentProps) => {
   const pathNames = parsedUrl.pathname.replace(/\/+$/, '').split('/');
   const id = pathNames[pathNames.length - 1];
   return (
@@ -187,7 +186,7 @@ const InstagramEmbed: FC<EmbedComponentProps> = ({ parsedUrl }) => {
 
 const odyseeHosts = new Set<string>(['odysee.com', 'www.odysee.com']);
 
-const OdyseeEmbed: FC<EmbedComponentProps> = ({ parsedUrl }) => {
+const OdyseeEmbed = ({ parsedUrl }: EmbedComponentProps) => {
   const iframeUrl = `https://odysee.com/$/embed${parsedUrl.pathname}`;
   return (
     <iframe
@@ -205,7 +204,7 @@ const OdyseeEmbed: FC<EmbedComponentProps> = ({ parsedUrl }) => {
 
 const bitchuteHosts = new Set<string>(['bitchute.com', 'www.bitchute.com']);
 
-const BitchuteEmbed: FC<EmbedComponentProps> = ({ parsedUrl }) => {
+const BitchuteEmbed = ({ parsedUrl }: EmbedComponentProps) => {
   const videoId = parsedUrl.pathname.replace(/\/video\//, '').replaceAll('/', '');
   return (
     <iframe
@@ -223,7 +222,7 @@ const BitchuteEmbed: FC<EmbedComponentProps> = ({ parsedUrl }) => {
 
 const streamableHosts = new Set<string>(['streamable.com', 'www.streamable.com']);
 
-const StreamableEmbed: FC<EmbedComponentProps> = ({ parsedUrl }) => {
+const StreamableEmbed = ({ parsedUrl }: EmbedComponentProps) => {
   const videoId = parsedUrl.pathname.replaceAll('/', '');
   return (
     <iframe
@@ -241,7 +240,7 @@ const StreamableEmbed: FC<EmbedComponentProps> = ({ parsedUrl }) => {
 
 const spotifyHosts = new Set<string>(['spotify.com', 'www.spotify.com', 'open.spotify.com']);
 
-const SpotifyEmbed: FC<EmbedComponentProps> = ({ parsedUrl }) => {
+const SpotifyEmbed = ({ parsedUrl }: EmbedComponentProps) => {
   const iframeUrl = `https://open.spotify.com/embed${parsedUrl.pathname}?theme=0`;
   return (
     <iframe

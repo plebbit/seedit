@@ -1,11 +1,11 @@
-import { FC, useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import styles from './topbar.module.css';
 import { useAccount } from '@plebbit/plebbit-react-hooks';
 import useDefaultSubplebbitAddresses from '../../hooks/use-default-subplebbit-addresses';
 
-const TopBar: FC = () => {
+const TopBar = () => {
   const [isClicked, setIsClicked] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
   const account = useAccount();

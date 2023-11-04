@@ -1,4 +1,3 @@
-import { FC } from 'react';
 import styles from './post-tools.module.css';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
@@ -11,7 +10,7 @@ interface PostToolsProps {
   subplebbitAddress: string;
 }
 
-const PostTools: FC<PostToolsProps> = ({ cid, replyCount, spoiler, subplebbitAddress }) => {
+const PostTools = ({ cid, replyCount, spoiler, subplebbitAddress }: PostToolsProps) => {
   const { t } = useTranslation();
   const commentCount = replyCount === 0 ? t('post_no_comments') : `${replyCount ?? ''} ${replyCount === 1 ? t('post_comment') : t('post_comments')}`;
 

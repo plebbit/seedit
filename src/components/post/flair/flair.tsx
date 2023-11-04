@@ -1,4 +1,3 @@
-import { FC } from 'react';
 import styles from './flair.module.css';
 
 interface FlairProps {
@@ -10,7 +9,7 @@ interface FlairProps {
   };
 }
 
-const Flair: FC<FlairProps> = ({ flair }) => {
+const Flair = ({ flair }: FlairProps) => {
   const isExpired = flair.expiresAt ? Date.now() / 1000 > flair.expiresAt : false;
 
   if (isExpired) {

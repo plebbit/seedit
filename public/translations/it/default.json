@@ -6,7 +6,6 @@
   "header_top": "più votati",
   "header_about": "info",
   "header_comments": "commenti",
-  "account_bar_preferences": "preferenze",
   "account_bar_language": "Italiano",
   "account_bar_submit": "invia",
   "dark": "scuro",
@@ -49,5 +48,6 @@
   "reply_score_singular": "1 punto",
   "reply_score_plural": "{{count}} punti",
   "removed": "Rimosso",
-  "one_comment": "1 commento"
+  "one_comment": "1 commento",
+  "account_bar_settings": "impostazioni"
 }
