@@ -57,5 +57,7 @@
   "text": "text",
   "required": "necesar",
   "optional": "opțional",
-  "community_address": "adresa comunității"
+  "community_address": "adresa comunității",
+  "submit_choose": "alege unde să postezi",
+  "submit_notice": "vă rugăm să respectați regulile comunității, seedit nu are administratori globali."
 }

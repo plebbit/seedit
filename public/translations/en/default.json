@@ -57,5 +57,7 @@
   "text": "text",
   "required": "required",
   "optional": "optional",
-  "community_address": "community address"
+  "community_address": "community address",
+  "submit_choose": "choose where to post",
+  "submit_notice": "please be mindful of the community's rules, seedit does not have global admins."
 }

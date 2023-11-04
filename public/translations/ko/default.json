@@ -57,5 +57,7 @@
   "text": "텍스트",
   "required": "필수",
   "optional": "선택",
-  "community_address": "커뮤니티 주소"
+  "community_address": "커뮤니티 주소",
+  "submit_choose": "게시할 위치 선택",
+  "submit_notice": "커뮤니티의 규칙을 준수해 주세요, seedit에는 전역 관리자가 없습니다."
 }

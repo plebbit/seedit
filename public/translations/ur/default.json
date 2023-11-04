@@ -57,5 +57,7 @@
   "text": "مواد",
   "required": "ضروری",
   "optional": "اختیاری",
-  "community_address": "کمیونٹی کا پتہ"
+  "community_address": "کمیونٹی کا پتہ",
+  "submit_choose": "پوسٹ کرنے کا مقام منتخب کریں",
+  "submit_notice": "براہ کرم کمیونٹی کے اصولوں کا خیال رکھیں، seedit میں عالمی ایڈمنز نہیں ہیں۔"
 }

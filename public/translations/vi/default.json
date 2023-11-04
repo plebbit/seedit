@@ -57,5 +57,7 @@
   "text": "văn bản",
   "required": "bắt buộc",
   "optional": "tùy chọn",
-  "community_address": "địa chỉ cộng đồng"
+  "community_address": "địa chỉ cộng đồng",
+  "submit_choose": "chọn nơi để đăng",
+  "submit_notice": "xin hãy tuân thủ các quy định của cộng đồng, seedit không có quản trị viên toàn cầu."
 }

@@ -57,5 +57,7 @@
   "text": "पाठ",
   "required": "आवश्यक",
   "optional": "वैकल्पिक",
-  "community_address": "समुदाय का पता"
+  "community_address": "समुदाय का पता",
+  "submit_choose": "पोस्ट करने का स्थान चुनें",
+  "submit_notice": "कृपया समुदाय के नियमों का पालन करें, seedit में वैश्विक प्रशासक नहीं हैं।"
 }

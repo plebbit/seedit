@@ -57,5 +57,7 @@
   "text": "text",
   "required": "vyžadováno",
   "optional": "volitelný",
-  "community_address": "adresa komunity"
+  "community_address": "adresa komunity",
+  "submit_choose": "Vyberte, kam chcete příspěvek odeslat",
+  "submit_notice": "Buďte ohleduplní k pravidlům komunity, seedit nemá globální administrátory."
 }

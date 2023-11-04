@@ -57,5 +57,7 @@
   "text": "文本",
   "required": "必须的",
   "optional": "可选的",
-  "community_address": "社区地址"
+  "community_address": "社区地址",
+  "submit_choose": "选择发布位置",
+  "submit_notice": "请注意社区的规则，seedit没有全球管理员。"
 }

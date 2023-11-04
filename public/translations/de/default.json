@@ -57,5 +57,7 @@
   "text": "Text",
   "required": "erforderlich",
   "optional": "optional",
-  "community_address": "Gemeinschaftsadresse"
+  "community_address": "Gemeinschaftsadresse",
+  "submit_choose": "Wählen Sie aus, wo Sie posten möchten",
+  "submit_notice": "Bitte beachten Sie die Regeln der Gemeinschaft, seedit hat keine globalen Administratoren."
 }

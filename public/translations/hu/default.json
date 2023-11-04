@@ -57,5 +57,7 @@
   "text": "szöveg",
   "required": "kötelező",
   "optional": "opcionális",
-  "community_address": "közösség címe"
+  "community_address": "közösség címe",
+  "submit_choose": "válaszd ki, hova szeretnél posztolni",
+  "submit_notice": "Kérjük, legyen tekintettel a közösség szabályaira, a seeditnek nincsenek globális adminisztrátorai."
 }

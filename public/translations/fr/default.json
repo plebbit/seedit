@@ -57,5 +57,7 @@
   "text": "texte",
   "required": "requis",
   "optional": "facultatif",
-  "community_address": "adresse de la communauté"
+  "community_address": "adresse de la communauté",
+  "submit_choose": "choisissez où poster",
+  "submit_notice": "veuillez respecter les règles de la communauté, seedit n’a pas d’administrateurs globaux."
 }

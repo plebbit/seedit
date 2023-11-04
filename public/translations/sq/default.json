@@ -57,5 +57,7 @@
   "text": "tekst",
   "required": "i nevojshëm",
   "optional": "opsionale",
-  "community_address": "adresa e komunitetit"
+  "community_address": "adresa e komunitetit",
+  "submit_choose": "zgjidh ku të postosh",
+  "submit_notice": "ju lutemi jeni të kujdesshëm me rregullat e komunitetit, seedit nuk ka administratorë globalë."
 }

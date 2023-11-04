@@ -57,5 +57,7 @@
   "text": "tekst",
   "required": "krævet",
   "optional": "valgfri",
-  "community_address": "fællesskabsadresse"
+  "community_address": "fællesskabsadresse",
+  "submit_choose": "Vælg, hvor du vil poste",
+  "submit_notice": "Vær opmærksom på fællesskabets regler, seedit har ikke globale administratorer."
 }

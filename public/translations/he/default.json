@@ -57,5 +57,7 @@
   "text": "טקסט",
   "required": "נדרש",
   "optional": "אופציונלי",
-  "community_address": "כתובת הקהילה"
+  "community_address": "כתובת הקהילה",
+  "submit_choose": "בחר היכן לפרסם",
+  "submit_notice": "אנא היה מודע לכללי הקהילה, ל-seedit אין מנהלים גלובליים."
 }

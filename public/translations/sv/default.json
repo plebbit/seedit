@@ -57,5 +57,7 @@
   "text": "text",
   "required": "krävs",
   "optional": "valfritt",
-  "community_address": "gemenskapsadress"
+  "community_address": "gemenskapsadress",
+  "submit_choose": "välj var du vill posta",
+  "submit_notice": "var vänlig och tänk på gemenskapens regler, seedit har inga globala administratörer."
 }

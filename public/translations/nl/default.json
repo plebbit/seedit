@@ -57,5 +57,7 @@
   "text": "tekst",
   "required": "vereist",
   "optional": "optioneel",
-  "community_address": "gemeenschapsadres"
+  "community_address": "gemeenschapsadres",
+  "submit_choose": "kies waar te posten",
+  "submit_notice": "wees alsjeblieft bewust van de regels van de gemeenschap, seedit heeft geen wereldwijde beheerders."
 }

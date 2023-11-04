@@ -57,5 +57,7 @@
   "text": "मजकूर",
   "required": "आवश्यक",
   "optional": "वैकल्पिक",
-  "community_address": "समुदाय पत्ता"
+  "community_address": "समुदाय पत्ता",
+  "submit_choose": "पोस्ट कुठे करावे हे निवडा",
+  "submit_notice": "कृपया समुदायाच्या नियमांची पालना करा, seedit मध्ये जागतिक प्रशासक नाहीत."
 }

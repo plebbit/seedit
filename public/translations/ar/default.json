@@ -57,5 +57,7 @@
   "text": "نص",
   "required": "مطلوب",
   "optional": "اختياري",
-  "community_address": "عنوان المجتمع"
+  "community_address": "عنوان المجتمع",
+  "submit_choose": "اختر أين ترغب في النشر",
+  "submit_notice": "يرجى الحذر من قوانين المجتمع ، لا توجد إدارة عامة في seedit."
 }

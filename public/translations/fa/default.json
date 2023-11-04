@@ -57,5 +57,7 @@
   "text": "متن",
   "required": "الزامی",
   "optional": "اختیاری",
-  "community_address": "آدرس جامعه"
+  "community_address": "آدرس جامعه",
+  "submit_choose": "انتخاب محل ارسال",
+  "submit_notice": "لطفاً از قوانین جامعه رعایت کنید ، seedit مدیران جهانی ندارد."
 }

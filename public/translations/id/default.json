@@ -57,5 +57,7 @@
   "text": "teks",
   "required": "wajib",
   "optional": "opsional",
-  "community_address": "alamat komunitas"
+  "community_address": "alamat komunitas",
+  "submit_choose": "pilih di mana untuk memposting",
+  "submit_notice": "harap berhati-hati dengan aturan komunitas, seedit tidak memiliki admin global."
 }
