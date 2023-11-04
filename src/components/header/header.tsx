@@ -1,28 +1,24 @@
 import { useEffect, useState } from 'react';
-import { Link, useLocation, useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import styles from './header.module.css';
 import useTheme from '../../hooks/use-theme';
 import AccountBar from './account-bar';
 import { useSubplebbit } from '@plebbit/plebbit-react-hooks';
 import { useTranslation } from 'react-i18next';
+import useCurrentView from '../../hooks/use-current-view';
 
 const sortTypes = ['/hot', '/new', '/active', '/controversialAll', '/topAll'];
+
 
 const Header = () => {
   const [theme] = useTheme();
   const { t } = useTranslation();
-  const location = useLocation();
-  const { sortType } = useParams<{ sortType: string }>();
-  const { subplebbitAddress, commentCid } = useParams();
-  const [selectedSortType, setSelectedSortType] = useState(sortType || '/topMonth');
+  const { sortType, subplebbitAddress, commentCid } = useParams();
+  const [selectedSortType, setSelectedSortType] = useState(sortType || '/hot');
   const sortLabels = [t('header_hot'), t('header_new'), t('header_active'), t('header_controversial'), t('header_top')];
   const subplebbit = useSubplebbit({ subplebbitAddress });
   const { title, shortAddress } = subplebbit || {};
-  const isSubplebbitView = location.pathname.startsWith(`/p/${subplebbitAddress}`);
-  const isPostView = location.pathname.startsWith(`/p/${subplebbitAddress}/c/${commentCid}`);
-  const isHomeView = location.pathname === `/` || sortTypes.includes(location.pathname);
-  const isSubmitView = location.pathname === `/submit`;
-  const isSubplebbitSubmitView = location.pathname === `/p/${subplebbitAddress}/submit`;
+  const { isHomeView, isSubplebbitView, isPostView, isSubmitView, isSubplebbitSubmitView } = useCurrentView();
 
   const handleSelect = (choice: string) => {
     setSelectedSortType(choice);
@@ -45,12 +41,12 @@ const Header = () => {
   ));
 
   const commentsButton = <li><Link to={`/p/${subplebbitAddress}/c/${commentCid}`}>{t('header_comments')}</Link></li>
-  let tabs;
+  let headerTabs;
 
   if (isPostView) {
-    tabs = commentsButton;
+    headerTabs = commentsButton;
   } else if (isHomeView) {
-    tabs = sortItems;
+    headerTabs = sortItems;
   }
 
   const subplebbitTitle = <Link to={`/p/${subplebbitAddress}`} onClick={(e) => {e.preventDefault();}}>{title || shortAddress}</Link>;
@@ -77,7 +73,7 @@ const Header = () => {
             {headerTitle}
           </span>
           <ul className={styles.tabMenu}>
-            {tabs}
+            {headerTabs}
             <li className={styles.about} >
               <Link to='/about' className={styles.choice} onClick={(event) => event.preventDefault()}>
                 {t('header_about')}
