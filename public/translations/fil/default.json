@@ -6,8 +6,9 @@
   "header_top": "Pinakamataas",
   "header_about": "Tungkol sa",
   "header_comments": "mga komento",
+  "account_bar_preferences": "Mga Kagustuhan",
   "account_bar_language": "Ingles",
-  "account_bar_submit": "Ipadala",
+  "submit": "Ipadala",
   "dark": "Madilim",
   "light": "Maliwanag",
   "topbar_my_subs": "Aking mga Komunidad",
@@ -49,5 +50,14 @@
   "reply_score_plural": "{{count}} punto",
   "removed": "Tinanggal",
   "one_comment": "1 komento",
-  "account_bar_settings": "mga setting"
+  "submit_to_before": "ipasa sa ",
+  "submit_to_after": "",
+  "submit_url_description": "I-embed ang media sa pamamagitan ng pag-post ng direktang link nito (nagtatapos sa .jpg, .gif, .mp4, atbp.)",
+  "title": "pamagat",
+  "text": "teksto",
+  "required": "kailangan",
+  "optional": "opsyonal",
+  "community_address": "address ng komunidad",
+  "submit_choose": "pumili kung saan mag-post",
+  "submit_notice": "mangyaring maging maingat sa mga patakaran ng komunidad, walang pangkalahatang mga admin ang seedit."
 }

@@ -6,8 +6,9 @@
   "header_top": "Topp",
   "header_about": "Om",
   "header_comments": "kommentarer",
+  "account_bar_preferences": "Inställningar",
   "account_bar_language": "Engelska",
-  "account_bar_submit": "Skicka",
+  "submit": "Skicka",
   "dark": "Mörk",
   "light": "Ljus",
   "topbar_my_subs": "Mina gemenskaper",
@@ -49,5 +50,14 @@
   "reply_score_plural": "{{count}} poäng",
   "removed": "Borttagen",
   "one_comment": "1 kommentar",
-  "account_bar_settings": "inställningar"
+  "submit_to_before": "skicka till ",
+  "submit_to_after": "",
+  "submit_url_description": "Bädda in media genom att posta dess direkta länk (slutar i .jpg, .gif, .mp4, etc)",
+  "title": "titel",
+  "text": "text",
+  "required": "krävs",
+  "optional": "valfritt",
+  "community_address": "gemenskapsadress",
+  "submit_choose": "välj var du vill posta",
+  "submit_notice": "var vänlig och tänk på gemenskapens regler, seedit har inga globala administratörer."
 }

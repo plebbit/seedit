@@ -6,8 +6,9 @@
   "header_top": "الأعلى تصويتًا",
   "header_about": "حول",
   "header_comments": "تعليقات",
+  "account_bar_preferences": "التفضيلات",
   "account_bar_language": "العربية",
-  "account_bar_submit": "إرسال",
+  "submit": "إرسال",
   "dark": "داكن",
   "light": "فاتح",
   "topbar_my_subs": "مجتمعاتي",
@@ -49,5 +50,14 @@
   "reply_score_plural": "{{count}} نقاط",
   "removed": "تمت الإزالة",
   "one_comment": "1 تعليق",
-  "account_bar_settings": "الإعدادات"
+  "submit_to_before": "أرسل إلى ",
+  "submit_to_after": "",
+  "submit_url_description": "قم بتضمين الوسائط عن طريق نشر الرابط المباشر (الذي ينتهي بـ .jpg، .gif، .mp4، إلخ)",
+  "title": "عنوان",
+  "text": "نص",
+  "required": "مطلوب",
+  "optional": "اختياري",
+  "community_address": "عنوان المجتمع",
+  "submit_choose": "اختر أين ترغب في النشر",
+  "submit_notice": "يرجى الحذر من قوانين المجتمع ، لا توجد إدارة عامة في seedit."
 }

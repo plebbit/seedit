@@ -6,8 +6,9 @@
   "header_top": "top",
   "header_about": "about",
   "header_comments": "comments",
+  "account_bar_preferences": "preferences",
   "account_bar_language": "English",
-  "account_bar_submit": "submit",
+  "submit": "submit",
   "dark": "dark",
   "light": "light",
   "topbar_my_subs": "my communities",
@@ -49,5 +50,14 @@
   "reply_score_plural": "{{count}} points",
   "removed": "Removed",
   "one_comment": "1 comment",
-  "account_bar_settings": "settings"
+  "submit_to_before": "submit to ",
+  "submit_to_after": "",
+  "submit_url_description": "Embed media by posting its direct link (ending in .jpg, .gif, .mp4, etc)",
+  "title": "title",
+  "text": "text",
+  "required": "required",
+  "optional": "optional",
+  "community_address": "community address",
+  "submit_choose": "choose where to post",
+  "submit_notice": "please be mindful of the community's rules, seedit does not have global admins."
 }

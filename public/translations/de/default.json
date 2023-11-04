@@ -6,8 +6,9 @@
   "header_top": "Top",
   "header_about": "Über",
   "header_comments": "Kommentare",
+  "account_bar_preferences": "Einstellungen",
   "account_bar_language": "Deutsch",
-  "account_bar_submit": "Einreichen",
+  "submit": "Einreichen",
   "dark": "Dunkel",
   "light": "hell",
   "topbar_my_subs": "meine Communities",
@@ -49,5 +50,14 @@
   "reply_score_plural": "{{count}} Punkte",
   "removed": "Entfernt",
   "one_comment": "1 Kommentar",
-  "account_bar_settings": "Einstellungen"
+  "submit_to_before": "senden an ",
+  "submit_to_after": "",
+  "submit_url_description": "Medien einbetten, indem Sie den direkten Link posten (endet auf .jpg, .gif, .mp4 usw.)",
+  "title": "Titel",
+  "text": "Text",
+  "required": "erforderlich",
+  "optional": "optional",
+  "community_address": "Gemeinschaftsadresse",
+  "submit_choose": "Wählen Sie aus, wo Sie posten möchten",
+  "submit_notice": "Bitte beachten Sie die Regeln der Gemeinschaft, seedit hat keine globalen Administratoren."
 }

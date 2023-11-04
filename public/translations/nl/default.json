@@ -6,8 +6,9 @@
   "header_top": "Top",
   "header_about": "Over",
   "header_comments": "reacties",
+  "account_bar_preferences": "Voorkeuren",
   "account_bar_language": "Engels",
-  "account_bar_submit": "Indienen",
+  "submit": "Indienen",
   "dark": "Donker",
   "light": "Licht",
   "topbar_my_subs": "Mijn gemeenschappen",
@@ -49,5 +50,14 @@
   "reply_score_plural": "{{count}} punten",
   "removed": "Verwijderd",
   "one_comment": "1 opmerking",
-  "account_bar_settings": "instellingen"
+  "submit_to_before": "inzenden naar ",
+  "submit_to_after": "",
+  "submit_url_description": "Media insluiten door de directe link te posten (eindigend op .jpg, .gif, .mp4, etc.)",
+  "title": "titel",
+  "text": "tekst",
+  "required": "vereist",
+  "optional": "optioneel",
+  "community_address": "gemeenschapsadres",
+  "submit_choose": "kies waar te posten",
+  "submit_notice": "wees alsjeblieft bewust van de regels van de gemeenschap, seedit heeft geen wereldwijde beheerders."
 }

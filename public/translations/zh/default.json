@@ -6,8 +6,9 @@
   "header_top": "最高票",
   "header_about": "关于",
   "header_comments": "评论",
+  "account_bar_preferences": "偏好设置",
   "account_bar_language": "简体中文",
-  "account_bar_submit": "提交",
+  "submit": "提交",
   "dark": "暗",
   "light": "浅色",
   "topbar_my_subs": "我的社群",
@@ -49,5 +50,14 @@
   "reply_score_plural": "{{count}} 分",
   "removed": "已删除",
   "one_comment": "1 条评论",
-  "account_bar_settings": "设置"
+  "submit_to_before": "提交至",
+  "submit_to_after": "",
+  "submit_url_description": "通过发布其直接链接（以.jpg、.gif、.mp4等结尾）嵌入媒体",
+  "title": "标题",
+  "text": "文本",
+  "required": "必须的",
+  "optional": "可选的",
+  "community_address": "社区地址",
+  "submit_choose": "选择发布位置",
+  "submit_notice": "请注意社区的规则，seedit没有全球管理员。"
 }

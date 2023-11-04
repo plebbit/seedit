@@ -6,8 +6,9 @@
   "header_top": "En İyi",
   "header_about": "Hakkında",
   "header_comments": "yorumlar",
+  "account_bar_preferences": "Tercihler",
   "account_bar_language": "İngilizce",
-  "account_bar_submit": "Gönder",
+  "submit": "Gönder",
   "dark": "Karanlık",
   "light": "Açık",
   "topbar_my_subs": "Topluluklarım",
@@ -49,5 +50,14 @@
   "reply_score_plural": "{{count}} puan",
   "removed": "Kaldırıldı",
   "one_comment": "1 yorum",
-  "account_bar_settings": "ayarlar"
+  "submit_to_before": "",
+  "submit_to_after": " gönder",
+  "submit_url_description": "Medya ekleyin doğrudan bağlantısını göndererek (.jpg, .gif, .mp4 vb. ile biten)",
+  "title": "başlık",
+  "text": "metin",
+  "required": "gerekli",
+  "optional": "isteğe bağlı",
+  "community_address": "topluluk adresi",
+  "submit_choose": "nerede gönderileceğini seçin",
+  "submit_notice": "topluluğun kurallarına dikkat edin, seedit in küresel yöneticileri yoktur."
 }

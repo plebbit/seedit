@@ -6,8 +6,9 @@
   "header_top": "ఉత్తమ",
   "header_about": "గురించి",
   "header_comments": "వ్యాఖ్యలు",
+  "account_bar_preferences": "ప్రాధాన్యతలు",
   "account_bar_language": "ఇంగ్లీష్",
-  "account_bar_submit": "సబ్మిట్",
+  "submit": "సబ్మిట్",
   "dark": "ముదురు",
   "light": "తెలుపు",
   "topbar_my_subs": "నా సముదాయాలు",
@@ -49,5 +50,14 @@
   "reply_score_plural": "{{count}} పాయింట్లు",
   "removed": "తొలగించబడింది",
   "one_comment": "1 వ్యాఖ్య",
-  "account_bar_settings": "సెట్టింగులు"
+  "submit_to_before": "",
+  "submit_to_after": "కి సమర్పించు",
+  "submit_url_description": ".jpg, .gif, .mp4 వంటివిలో ముగిసే ప్రత్యక్ష లింకును పోస్ట్ చేసి మీడియాను ఎంబెడ్ చేయండి",
+  "title": "శీర్షిక",
+  "text": "టెక్స్ట్",
+  "required": "అవసరం",
+  "optional": "ఐచ్ఛికం",
+  "community_address": "సముదాయ చిరునామా",
+  "submit_choose": "పోస్ట్ చేయాలనుండి ఎక్కడని ఎంచుకోండి",
+  "submit_notice": "కమ్యూనిటీ యొక్క నియమాలను గమనించండి, seeditలో గ్లోబల్ అడ్మిన్స్ లేవు."
 }

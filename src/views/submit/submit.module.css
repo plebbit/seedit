@@ -6,5 +6,113 @@
 h1 {
   font-size: 18px;
   font-weight: normal;
-  margin: 10px 0;
+  margin: 10px 0 !important;
+}
+
+.location {
+  text-decoration: none;
+  color: var(--text-primary);
+}
+
+.form {
+  margin: 7px 5px 0px 5px;
+}
+
+.formContent {
+  width: 520px
+}
+
+.field {
+  display: block;
+  position: relative;
+  width: 500px;
+  background-color: var(--background-primary);
+  border-radius: 4px;
+  padding: 5px 10px 10px 10px;
+  font-size: large;
+  margin-bottom: 15px;
+}
+
+.optional {
+  content: " (optional)";
+  color: var(--text-info);
+  font-size: smaller;
+}
+
+.fieldTitleRequired::before {
+  content: "*";
+  color: red;
+}
+
+.fieldContent {
+  margin-top: 5px;
+  border: none;
+  position: relative;
+}
+
+.fieldSubtitle {
+  font-size: smaller;
+}
+
+.input {
+  font-size: 100%;
+  width: 492px;
+  padding: 3px;
+  margin: 0;
+  border: 1px solid var(--border-text);
+  background-color: var(--background);
+  color: var(--text);
+}
+
+.inputTitle {
+  height: 60px;
+}
+
+.inputText {
+  height: 100px;
+}
+
+.description {
+  margin-top: 5px;
+  width: 500px;
+  font-size: small;
+}
+
+.notice {
+  background-color: var(--background-contrast);
+  padding: 10px;
+  border: 1px solid var(--border-primary);
+  font-size: 12px;
+}
+
+.submit {
+  cursor: pointer;
+  padding-top: 10px;
+}
+
+.submit button {
+  -webkit-appearance: button;
+  appearance: button;
+  padding: 2px 6px 3px;
+}
+
+@media (max-width: 768px) {
+  .formContent {
+    width: 100%;
+  }
+
+  .field {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .input, 
+  .description {
+    width: calc(100% - 6px);
+    box-sizing: border-box;
+  }
+
+  h1 {
+    font-size: 16px;
+  }
 }

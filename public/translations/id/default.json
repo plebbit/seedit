@@ -6,8 +6,9 @@
   "header_top": "Teratas",
   "header_about": "Tentang",
   "header_comments": "komentar",
+  "account_bar_preferences": "Preferensi",
   "account_bar_language": "Inggris",
-  "account_bar_submit": "Kirim",
+  "submit": "Kirim",
   "dark": "Gelap",
   "light": "Terang",
   "topbar_my_subs": "Komunitas Saya",
@@ -49,5 +50,14 @@
   "reply_score_plural": "{{count}} poin",
   "removed": "Dihapus",
   "one_comment": "1 komentar",
-  "account_bar_settings": "pengaturan"
+  "submit_to_before": "kirim ke ",
+  "submit_to_after": "",
+  "submit_url_description": "Tanamkan media dengan memposting tautan langsungnya (berakhir dengan .jpg, .gif, .mp4, dll.)",
+  "title": "judul",
+  "text": "teks",
+  "required": "wajib",
+  "optional": "opsional",
+  "community_address": "alamat komunitas",
+  "submit_choose": "pilih di mana untuk memposting",
+  "submit_notice": "harap berhati-hati dengan aturan komunitas, seedit tidak memiliki admin global."
 }

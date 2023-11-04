@@ -6,8 +6,9 @@
   "header_top": "Parhaat",
   "header_about": "Tietoja",
   "header_comments": "kommentit",
+  "account_bar_preferences": "Asetukset",
   "account_bar_language": "Englanti",
-  "account_bar_submit": "Lähetä",
+  "submit": "Lähetä",
   "dark": "Tumma",
   "light": "Vaalea",
   "topbar_my_subs": "Omat yhteisöt",
@@ -49,5 +50,14 @@
   "reply_score_plural": "{{count}} pistettä",
   "removed": "Poistettu",
   "one_comment": "1 kommentti",
-  "account_bar_settings": "asetukset"
+  "submit_to_before": "lähetä kohteeseen ",
+  "submit_to_after": "",
+  "submit_url_description": "Upota mediaa lähettämällä sen suora linkki (päättyy .jpg, .gif, .mp4, jne.)",
+  "title": "otsikko",
+  "text": "teksti",
+  "required": "vaadittu",
+  "optional": "valinnainen",
+  "community_address": "yhteisön osoite",
+  "submit_choose": "valitse, minne haluat lähettää",
+  "submit_notice": "Ole tietoinen yhteisön säännöistä, seeditillä ei ole maailmanlaajuisia ylläpitäjiä."
 }

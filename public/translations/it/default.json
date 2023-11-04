@@ -6,8 +6,9 @@
   "header_top": "più votati",
   "header_about": "info",
   "header_comments": "commenti",
+  "account_bar_preferences": "preferenze",
   "account_bar_language": "Italiano",
-  "account_bar_submit": "invia",
+  "submit": "invia",
   "dark": "scuro",
   "light": "chiaro",
   "topbar_my_subs": "le mie comunità",
@@ -49,5 +50,14 @@
   "reply_score_plural": "{{count}} punti",
   "removed": "Rimosso",
   "one_comment": "1 commento",
-  "account_bar_settings": "impostazioni"
+  "submit_to_before": "invia a ",
+  "submit_to_after": "",
+  "submit_url_description": "Incorpora i media postando il suo link diretto (che termina in .jpg, .gif, .mp4, ecc.)",
+  "title": "titolo",
+  "text": "testo",
+  "required": "richiesto",
+  "optional": "opzionale",
+  "community_address": "indirizzo della comunità",
+  "submit_choose": "scegli dove postare",
+  "submit_notice": "per favore, rispetta le regole della comunità, seedit non ha amministratori globali."
 }

@@ -6,8 +6,9 @@
   "header_top": "सर्वाधिक मत",
   "header_about": "के बारे में",
   "header_comments": "टिप्पणियां",
+  "account_bar_preferences": "प्राथमिकताएँ",
   "account_bar_language": "हिंदी",
-  "account_bar_submit": "भेजें",
+  "submit": "भेजें",
   "dark": "अंधेरा",
   "light": "हल्का",
   "topbar_my_subs": "मेरे समुदाय",
@@ -49,5 +50,14 @@
   "reply_score_plural": "{{count}} अंक",
   "removed": "हटा दिया गया",
   "one_comment": "1 टिप्पणी",
-  "account_bar_settings": "सेटिंग्स"
+  "submit_to_before": "",
+  "submit_to_after": " को जमा करें",
+  "submit_url_description": ".jpg, .gif, .mp4 आदि में समाप्त होने वाले सीधे लिंक को पोस्ट करके मीडिया एम्बेड करें",
+  "title": "शीर्षक",
+  "text": "पाठ",
+  "required": "आवश्यक",
+  "optional": "वैकल्पिक",
+  "community_address": "समुदाय का पता",
+  "submit_choose": "पोस्ट करने का स्थान चुनें",
+  "submit_notice": "कृपया समुदाय के नियमों का पालन करें, seedit में वैश्विक प्रशासक नहीं हैं।"
 }

@@ -6,8 +6,9 @@
   "header_top": "Лучшее",
   "header_about": "О",
   "header_comments": "комментарии",
+  "account_bar_preferences": "Настройки",
   "account_bar_language": "Английский",
-  "account_bar_submit": "Отправить",
+  "submit": "Отправить",
   "dark": "Темный",
   "light": "Светлый",
   "topbar_my_subs": "Мои сообщества",
@@ -49,5 +50,14 @@
   "reply_score_plural": "{{count}} очков",
   "removed": "Удалено",
   "one_comment": "1 комментарий",
-  "account_bar_settings": "настройки"
+  "submit_to_before": "отправить в ",
+  "submit_to_after": "",
+  "submit_url_description": "Вставьте медиа, разместив его прямую ссылку (заканчивается на .jpg, .gif, .mp4 и т. д.)",
+  "title": "заголовок",
+  "text": "текст",
+  "required": "требуется",
+  "optional": "необязательный",
+  "community_address": "адрес сообщества",
+  "submit_choose": "выберите, куда отправить",
+  "submit_notice": "пожалуйста, соблюдайте правила сообщества, в seedit нет глобальных администраторов."
 }

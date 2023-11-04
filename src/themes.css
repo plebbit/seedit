@@ -5,6 +5,7 @@
   --background-text: #f0f0f0;
   --background-thumbnail: rgba(0, 0, 0, 0.05);
   --background-markdown: #fafafa;
+  --background-contrast: #E4F2FB;
   --text: black;
   --text-markdown: #222222;
   --text-primary: #369;
@@ -30,6 +31,7 @@
   --background-text: #0f0f0f;
   --background-thumbnail: rgba(255, 255, 255, 0.01);
   --background-markdown: #1f1f1f;
+  --background-contrast: #141414;
   --text: #bfbfbf;
   --text-markdown: #f0f0f0;
   --text-primary: #c7c7c7;

@@ -6,8 +6,9 @@
   "header_top": "Topp",
   "header_about": "Om",
   "header_comments": "kommentarer",
+  "account_bar_preferences": "Innstillinger",
   "account_bar_language": "Engelsk",
-  "account_bar_submit": "Send inn",
+  "submit": "Send inn",
   "dark": "Mørk",
   "light": "Lys",
   "topbar_my_subs": "Mine samfunn",
@@ -49,5 +50,14 @@
   "reply_score_plural": "{{count}} poeng",
   "removed": "Fjernet",
   "one_comment": "1 kommentar",
-  "account_bar_settings": "innstillinger"
+  "submit_to_before": "send inn til ",
+  "submit_to_after": "",
+  "submit_url_description": "Bygg inn medier ved å poste dens direkte lenke (slutter med .jpg, .gif, .mp4 osv.)",
+  "title": "tittel",
+  "text": "tekst",
+  "required": "påkrevd",
+  "optional": "valgfritt",
+  "community_address": "samfunnsadresse",
+  "submit_choose": "velg hvor du vil poste",
+  "submit_notice": "vær oppmerksom på fellesskapets regler, seedit har ikke globale administratorer."
 }

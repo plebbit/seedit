@@ -6,8 +6,9 @@
   "header_top": "Top",
   "header_about": "Om",
   "header_comments": "kommentarer",
+  "account_bar_preferences": "Indstillinger",
   "account_bar_language": "Engelsk",
-  "account_bar_submit": "Indsend",
+  "submit": "Indsend",
   "dark": "Mørk",
   "light": "Lys",
   "topbar_my_subs": "Mine samfund",
@@ -49,5 +50,14 @@
   "reply_score_plural": "{{count}} point",
   "removed": "Fjernet",
   "one_comment": "1 kommentar",
-  "account_bar_settings": "indstillinger"
+  "submit_to_before": "send til ",
+  "submit_to_after": "",
+  "submit_url_description": "Integrer medier ved at poste dens direkte link (slutter med .jpg, .gif, .mp4 osv.)",
+  "title": "titel",
+  "text": "tekst",
+  "required": "krævet",
+  "optional": "valgfri",
+  "community_address": "fællesskabsadresse",
+  "submit_choose": "Vælg, hvor du vil poste",
+  "submit_notice": "Vær opmærksom på fællesskabets regler, seedit har ikke globale administratorer."
 }

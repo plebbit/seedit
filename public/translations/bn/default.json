@@ -6,8 +6,9 @@
   "header_top": "শীর্ষ",
   "header_about": "সম্পর্কে",
   "header_comments": "মন্তব্য",
+  "account_bar_preferences": "পছন্দ",
   "account_bar_language": "ইংরেজি",
-  "account_bar_submit": "জমা দিন",
+  "submit": "জমা দিন",
   "dark": "অন্ধকার",
   "light": "আলো",
   "topbar_my_subs": "আমার সম্প্রদায়",
@@ -49,5 +50,14 @@
   "reply_score_plural": "{{count}} পয়েন্ট",
   "removed": "অপসারণ করা হয়েছে",
   "one_comment": "1 মন্তব্য",
-  "account_bar_settings": "সেটিংস"
+  "submit_to_before": "",
+  "submit_to_after": " প্রেরণ করুন",
+  "submit_url_description": ".jpg, .gif, .mp4 ইত্যাদি দ্বারা সরাসরি লিঙ্ক পোস্ট করে মিডিয়া এম্বেড করুন",
+  "title": "শিরোনাম",
+  "text": "পাঠ",
+  "required": "প্রয়োজনীয়",
+  "optional": "ঐচ্ছিক",
+  "community_address": "সম্প্রদায়ের ঠিকানা",
+  "submit_choose": "পোস্ট করার জায়গা চয়ন করুন",
+  "submit_notice": "সম্প্রদায়ের নিয়মগুলি মনে রাখুন, seedit এ বৈশ্বিক প্রশাসক নেই।"
 }

@@ -6,8 +6,9 @@
   "header_top": "Legjobbak",
   "header_about": "Ról",
   "header_comments": "hozzászólások",
+  "account_bar_preferences": "Beállítások",
   "account_bar_language": "Angol",
-  "account_bar_submit": "Küldés",
+  "submit": "Küldés",
   "dark": "Sötét",
   "light": "Világos",
   "topbar_my_subs": "Saját közösségeim",
@@ -49,5 +50,14 @@
   "reply_score_plural": "{{count}} pont",
   "removed": "Eltávolítva",
   "one_comment": "1 megjegyzés",
-  "account_bar_settings": "beállítások"
+  "submit_to_before": "küldés ide: ",
+  "submit_to_after": "",
+  "submit_url_description": "Ágyazza be a médiát a közvetlen linkjének közzétételével (vége .jpg, .gif, .mp4 stb.)",
+  "title": "cím",
+  "text": "szöveg",
+  "required": "kötelező",
+  "optional": "opcionális",
+  "community_address": "közösség címe",
+  "submit_choose": "válaszd ki, hova szeretnél posztolni",
+  "submit_notice": "Kérjük, legyen tekintettel a közösség szabályaira, a seeditnek nincsenek globális adminisztrátorai."
 }

@@ -6,8 +6,9 @@
   "header_top": "برتر",
   "header_about": "درباره",
   "header_comments": "نظرات",
+  "account_bar_preferences": "تنظیمات",
   "account_bar_language": "انگلیسی",
-  "account_bar_submit": "ارسال",
+  "submit": "ارسال",
   "dark": "تاریک",
   "light": "روشن",
   "topbar_my_subs": "جوامع من",
@@ -49,5 +50,14 @@
   "reply_score_plural": "{{count}} امتیاز",
   "removed": "حذف شد",
   "one_comment": "1 نظر",
-  "account_bar_settings": "تنظیمات"
+  "submit_to_before": "ارسال به ",
+  "submit_to_after": "",
+  "submit_url_description": "رسانه را با ارسال پیوند مستقیم آن جاسازی کنید (پایان یافته در .jpg، .gif، .mp4، و غیره)",
+  "title": "عنوان",
+  "text": "متن",
+  "required": "الزامی",
+  "optional": "اختیاری",
+  "community_address": "آدرس جامعه",
+  "submit_choose": "انتخاب محل ارسال",
+  "submit_notice": "لطفاً از قوانین جامعه رعایت کنید ، seedit مدیران جهانی ندارد."
 }

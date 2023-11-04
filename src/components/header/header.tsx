@@ -63,13 +63,14 @@ const Header = () => {
     </Link>
   );
   let headerTitle;
+  const submitTitle = <span style={{textTransform: 'uppercase'}}>{t('submit')}</span>;
 
   if (isSubplebbitSubmitView) {
-    headerTitle = <>{subplebbitTitle}: SUBMIT</>;
+    headerTitle = <>{subplebbitTitle}: {submitTitle}</>;
   } else if (isPostView || isSubplebbitView) {
     headerTitle = subplebbitTitle;
   } else if (isSubmitView) {
-    headerTitle = 'SUBMIT';
+    headerTitle = submitTitle;
   }
 
   return (

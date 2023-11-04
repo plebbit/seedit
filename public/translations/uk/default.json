@@ -6,8 +6,9 @@
   "header_top": "Топ",
   "header_about": "Про",
   "header_comments": "коментарі",
+  "account_bar_preferences": "Налаштування",
   "account_bar_language": "Англійська",
-  "account_bar_submit": "Надіслати",
+  "submit": "Надіслати",
   "dark": "Темний",
   "light": "Світлий",
   "topbar_my_subs": "Мої спільноти",
@@ -49,5 +50,14 @@
   "reply_score_plural": "{{count}} бали",
   "removed": "Видалено",
   "one_comment": "1 коментар",
-  "account_bar_settings": "налаштування"
+  "submit_to_before": "надіслати до ",
+  "submit_to_after": "",
+  "submit_url_description": "Вставте медіа, розмістивши його пряме посилання (закінчується на .jpg, .gif, .mp4 тощо)",
+  "title": "заголовок",
+  "text": "текст",
+  "required": "потрібно",
+  "optional": "необов’язково",
+  "community_address": "адреса спільноти",
+  "submit_choose": "виберіть, куди відправити",
+  "submit_notice": "будь ласка, дотримуйтесь правил спільноти, в seedit немає глобальних адміністраторів."
 }

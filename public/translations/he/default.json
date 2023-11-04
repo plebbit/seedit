@@ -6,8 +6,9 @@
   "header_top": "הכי מדורג",
   "header_about": "אודות",
   "header_comments": "תגובות",
+  "account_bar_preferences": "העדפות",
   "account_bar_language": "אנגלית",
-  "account_bar_submit": "שלח",
+  "submit": "שלח",
   "dark": "כהה",
   "light": "בהיר",
   "topbar_my_subs": "הקהילות שלי",
@@ -49,5 +50,14 @@
   "reply_score_plural": "{{count}} נקודות",
   "removed": "הוסר",
   "one_comment": "1 הערה",
-  "account_bar_settings": "הגדרות"
+  "submit_to_before": "שלח אל ",
+  "submit_to_after": "",
+  "submit_url_description": "הטמע מדיה על ידי פרסום הקישור הישיר שלה (מסתיים ב-.jpg, .gif, .mp4, וכו')",
+  "title": "כותרת",
+  "text": "טקסט",
+  "required": "נדרש",
+  "optional": "אופציונלי",
+  "community_address": "כתובת הקהילה",
+  "submit_choose": "בחר היכן לפרסם",
+  "submit_notice": "אנא היה מודע לכללי הקהילה, ל-seedit אין מנהלים גלובליים."
 }
