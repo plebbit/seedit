@@ -6,7 +6,6 @@
   "header_top": "سب سے اوپر",
   "header_about": "کے بارے میں",
   "header_comments": "تبصرے",
-  "account_bar_preferences": "ترجیحات",
   "account_bar_language": "انگلش",
   "account_bar_submit": "جمع کرائیں",
   "dark": "تاریک",
@@ -49,5 +48,6 @@
   "reply_score_singular": "1 پوائنٹ",
   "reply_score_plural": "{{count}} پوائنٹس",
   "removed": "ہٹا دیا گیا",
-  "one_comment": "1 تبصرہ"
+  "one_comment": "1 تبصرہ",
+  "account_bar_settings": "ترتیبات"
 }

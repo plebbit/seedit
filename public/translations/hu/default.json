@@ -6,7 +6,6 @@
   "header_top": "Legjobbak",
   "header_about": "Ról",
   "header_comments": "hozzászólások",
-  "account_bar_preferences": "Beállítások",
   "account_bar_language": "Angol",
   "account_bar_submit": "Küldés",
   "dark": "Sötét",
@@ -49,5 +48,6 @@
   "reply_score_singular": "1 pont",
   "reply_score_plural": "{{count}} pont",
   "removed": "Eltávolítva",
-  "one_comment": "1 megjegyzés"
+  "one_comment": "1 megjegyzés",
+  "account_bar_settings": "beállítások"
 }

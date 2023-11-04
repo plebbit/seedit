@@ -6,7 +6,6 @@
   "header_top": "最高票",
   "header_about": "关于",
   "header_comments": "评论",
-  "account_bar_preferences": "偏好设置",
   "account_bar_language": "简体中文",
   "account_bar_submit": "提交",
   "dark": "暗",
@@ -49,5 +48,6 @@
   "reply_score_singular": "1 分",
   "reply_score_plural": "{{count}} 分",
   "removed": "已删除",
-  "one_comment": "1 条评论"
+  "one_comment": "1 条评论",
+  "account_bar_settings": "设置"
 }
