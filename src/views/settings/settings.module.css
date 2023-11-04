@@ -1,0 +1,8 @@
+.temporary {
+  display: flex;
+  position: relative;
+}
+
+.temporary select {
+  margin: 5px;
+}
