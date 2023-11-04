@@ -8,7 +8,7 @@
   "header_comments": "commentaires",
   "account_bar_preferences": "préférences",
   "account_bar_language": "Français",
-  "account_bar_submit": "soumettre",
+  "submit": "soumettre",
   "dark": "sombre",
   "light": "clair",
   "topbar_my_subs": "mes communautés",
@@ -49,5 +49,7 @@
   "reply_score_singular": "1 point",
   "reply_score_plural": "{{count}} points",
   "removed": "Supprimé",
-  "one_comment": "1 commentaire"
+  "one_comment": "1 commentaire",
+  "submit_to_before": "soumettre à ",
+  "submit_to_after": ""
 }

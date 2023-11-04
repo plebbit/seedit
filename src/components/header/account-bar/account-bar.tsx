@@ -25,7 +25,7 @@ const AccountBar = () => {
       </span>
       <span className={styles.separator}>|</span>
       <Link to={submitLink} className={styles.preferences}>
-        {t('account_bar_submit')}
+        {t('submit')}
       </Link>
       <span className={styles.separator}>|</span>
       <Link to='/settings' className={styles.preferences} onClick={(e) => e.preventDefault()}>

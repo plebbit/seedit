@@ -8,7 +8,7 @@
   "header_comments": "comentários",
   "account_bar_preferences": "preferências",
   "account_bar_language": "Português",
-  "account_bar_submit": "enviar",
+  "submit": "enviar",
   "dark": "escuro",
   "light": "claro",
   "topbar_my_subs": "minhas comunidades",
@@ -49,5 +49,7 @@
   "reply_score_singular": "1 ponto",
   "reply_score_plural": "{{count}} pontos",
   "removed": "Removido",
-  "one_comment": "1 comentário"
+  "one_comment": "1 comentário",
+  "submit_to_before": "enviar para ",
+  "submit_to_after": ""
 }

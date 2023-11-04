@@ -8,7 +8,7 @@
   "header_comments": "تعليقات",
   "account_bar_preferences": "التفضيلات",
   "account_bar_language": "العربية",
-  "account_bar_submit": "إرسال",
+  "submit": "إرسال",
   "dark": "داكن",
   "light": "فاتح",
   "topbar_my_subs": "مجتمعاتي",
@@ -49,5 +49,7 @@
   "reply_score_singular": "1 نقطة",
   "reply_score_plural": "{{count}} نقاط",
   "removed": "تمت الإزالة",
-  "one_comment": "1 تعليق"
+  "one_comment": "1 تعليق",
+  "submit_to_before": "أرسل إلى ",
+  "submit_to_after": ""
 }

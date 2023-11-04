@@ -8,7 +8,7 @@
   "header_comments": "kommentarer",
   "account_bar_preferences": "Indstillinger",
   "account_bar_language": "Engelsk",
-  "account_bar_submit": "Indsend",
+  "submit": "Indsend",
   "dark": "Mørk",
   "light": "Lys",
   "topbar_my_subs": "Mine samfund",
@@ -49,5 +49,7 @@
   "reply_score_singular": "1 point",
   "reply_score_plural": "{{count}} point",
   "removed": "Fjernet",
-  "one_comment": "1 kommentar"
+  "one_comment": "1 kommentar",
+  "submit_to_before": "send til ",
+  "submit_to_after": ""
 }

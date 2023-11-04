@@ -8,7 +8,7 @@
   "header_comments": "kommentarer",
   "account_bar_preferences": "Inställningar",
   "account_bar_language": "Engelska",
-  "account_bar_submit": "Skicka",
+  "submit": "Skicka",
   "dark": "Mörk",
   "light": "Ljus",
   "topbar_my_subs": "Mina gemenskaper",
@@ -49,5 +49,7 @@
   "reply_score_singular": "1 poäng",
   "reply_score_plural": "{{count}} poäng",
   "removed": "Borttagen",
-  "one_comment": "1 kommentar"
+  "one_comment": "1 kommentar",
+  "submit_to_before": "skicka till ",
+  "submit_to_after": ""
 }

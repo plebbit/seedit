@@ -8,7 +8,7 @@
   "header_comments": "komentáře",
   "account_bar_preferences": "Předvolby",
   "account_bar_language": "Angličtina",
-  "account_bar_submit": "Odeslat",
+  "submit": "Odeslat",
   "dark": "Tmavý",
   "light": "Světlá",
   "topbar_my_subs": "Mé komunity",
@@ -49,5 +49,7 @@
   "reply_score_singular": "1 bod",
   "reply_score_plural": "{{count}} body",
   "removed": "Odstraněno",
-  "one_comment": "1 komentář"
+  "one_comment": "1 komentář",
+  "submit_to_before": "odeslat do ",
+  "submit_to_after": ""
 }

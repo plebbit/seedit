@@ -8,7 +8,7 @@
   "header_comments": "ความคิดเห็น",
   "account_bar_preferences": "การตั้งค่า",
   "account_bar_language": "อังกฤษ",
-  "account_bar_submit": "ส่ง",
+  "submit": "ส่ง",
   "dark": "มืด",
   "light": "สีขาว",
   "topbar_my_subs": "ชุมชนของฉัน",
@@ -49,5 +49,7 @@
   "reply_score_singular": "1 แต้ม",
   "reply_score_plural": "{{count}} แต้ม",
   "removed": "ถูกนำออก",
-  "one_comment": "1 ความคิดเห็น"
+  "one_comment": "1 ความคิดเห็น",
+  "submit_to_before": "ส่งไปยัง ",
+  "submit_to_after": ""
 }

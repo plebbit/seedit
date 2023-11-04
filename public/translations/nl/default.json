@@ -8,7 +8,7 @@
   "header_comments": "reacties",
   "account_bar_preferences": "Voorkeuren",
   "account_bar_language": "Engels",
-  "account_bar_submit": "Indienen",
+  "submit": "Indienen",
   "dark": "Donker",
   "light": "Licht",
   "topbar_my_subs": "Mijn gemeenschappen",
@@ -49,5 +49,7 @@
   "reply_score_singular": "1 punt",
   "reply_score_plural": "{{count}} punten",
   "removed": "Verwijderd",
-  "one_comment": "1 opmerking"
+  "one_comment": "1 opmerking",
+  "submit_to_before": "inzenden naar ",
+  "submit_to_after": ""
 }

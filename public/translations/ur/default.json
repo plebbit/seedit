@@ -8,7 +8,7 @@
   "header_comments": "تبصرے",
   "account_bar_preferences": "ترجیحات",
   "account_bar_language": "انگلش",
-  "account_bar_submit": "جمع کرائیں",
+  "submit": "جمع کرائیں",
   "dark": "تاریک",
   "light": "ہلکا",
   "topbar_my_subs": "میری کمیونٹیاں",
@@ -49,5 +49,7 @@
   "reply_score_singular": "1 پوائنٹ",
   "reply_score_plural": "{{count}} پوائنٹس",
   "removed": "ہٹا دیا گیا",
-  "one_comment": "1 تبصرہ"
+  "one_comment": "1 تبصرہ",
+  "submit_to_before": "",
+  "submit_to_after": " کو جمع کروائیں"
 }

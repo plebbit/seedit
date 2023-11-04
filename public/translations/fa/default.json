@@ -8,7 +8,7 @@
   "header_comments": "نظرات",
   "account_bar_preferences": "تنظیمات",
   "account_bar_language": "انگلیسی",
-  "account_bar_submit": "ارسال",
+  "submit": "ارسال",
   "dark": "تاریک",
   "light": "روشن",
   "topbar_my_subs": "جوامع من",
@@ -49,5 +49,7 @@
   "reply_score_singular": "1 امتیاز",
   "reply_score_plural": "{{count}} امتیاز",
   "removed": "حذف شد",
-  "one_comment": "1 نظر"
+  "one_comment": "1 نظر",
+  "submit_to_before": "ارسال به ",
+  "submit_to_after": ""
 }

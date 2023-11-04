@@ -2,8 +2,10 @@ import { Link, useParams } from 'react-router-dom';
 import { useSubplebbit } from '@plebbit/plebbit-react-hooks';
 import styles from './submit.module.css';
 import useCurrentView from '../../hooks/use-current-view';
+import { useTranslation } from 'react-i18next';
 
 const Submit = () => {
+  const { t } = useTranslation();
   const { isSubplebbitSubmitView } = useCurrentView();
   const { subplebbitAddress } = useParams();
   const subplebbit = useSubplebbit({ subplebbitAddress });
@@ -16,7 +18,11 @@ const Submit = () => {
 
   return (
     <div className={styles.content}>
-      <h1>submit to {isSubplebbitSubmitView ? subLocation : 'seedit'}</h1>
+      <h1>
+        {t('submit_to_before')}
+        {isSubplebbitSubmitView ? subLocation : 'seedit'}
+        {t('submit_to_after')}
+      </h1>
       <div className={styles.form}>
         <div className={styles.formContent}>
           <div className={styles.field}>

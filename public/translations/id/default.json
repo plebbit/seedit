@@ -8,7 +8,7 @@
   "header_comments": "komentar",
   "account_bar_preferences": "Preferensi",
   "account_bar_language": "Inggris",
-  "account_bar_submit": "Kirim",
+  "submit": "Kirim",
   "dark": "Gelap",
   "light": "Terang",
   "topbar_my_subs": "Komunitas Saya",
@@ -49,5 +49,7 @@
   "reply_score_singular": "1 poin",
   "reply_score_plural": "{{count}} poin",
   "removed": "Dihapus",
-  "one_comment": "1 komentar"
+  "one_comment": "1 komentar",
+  "submit_to_before": "kirim ke ",
+  "submit_to_after": ""
 }

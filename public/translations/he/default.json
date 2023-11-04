@@ -8,7 +8,7 @@
   "header_comments": "תגובות",
   "account_bar_preferences": "העדפות",
   "account_bar_language": "אנגלית",
-  "account_bar_submit": "שלח",
+  "submit": "שלח",
   "dark": "כהה",
   "light": "בהיר",
   "topbar_my_subs": "הקהילות שלי",
@@ -49,5 +49,7 @@
   "reply_score_singular": "1 נקודה",
   "reply_score_plural": "{{count}} נקודות",
   "removed": "הוסר",
-  "one_comment": "1 הערה"
+  "one_comment": "1 הערה",
+  "submit_to_before": "שלח אל ",
+  "submit_to_after": ""
 }

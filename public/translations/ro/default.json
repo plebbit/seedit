@@ -8,7 +8,7 @@
   "header_comments": "comentarii",
   "account_bar_preferences": "Preferințe",
   "account_bar_language": "Engleză",
-  "account_bar_submit": "Trimite",
+  "submit": "Trimite",
   "dark": "Întunecat",
   "light": "Luminos",
   "topbar_my_subs": "Comunitățile mele",
@@ -49,5 +49,7 @@
   "reply_score_singular": "1 punct",
   "reply_score_plural": "{{count}} puncte",
   "removed": "Eliminat",
-  "one_comment": "1 comentariu"
+  "one_comment": "1 comentariu",
+  "submit_to_before": "trimite la ",
+  "submit_to_after": ""
 }

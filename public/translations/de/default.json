@@ -8,7 +8,7 @@
   "header_comments": "Kommentare",
   "account_bar_preferences": "Einstellungen",
   "account_bar_language": "Deutsch",
-  "account_bar_submit": "Einreichen",
+  "submit": "Einreichen",
   "dark": "Dunkel",
   "light": "hell",
   "topbar_my_subs": "meine Communities",
@@ -49,5 +49,7 @@
   "reply_score_singular": "1 Punkt",
   "reply_score_plural": "{{count}} Punkte",
   "removed": "Entfernt",
-  "one_comment": "1 Kommentar"
+  "one_comment": "1 Kommentar",
+  "submit_to_before": "senden an ",
+  "submit_to_after": ""
 }

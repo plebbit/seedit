@@ -8,7 +8,7 @@
   "header_comments": "মন্তব্য",
   "account_bar_preferences": "পছন্দ",
   "account_bar_language": "ইংরেজি",
-  "account_bar_submit": "জমা দিন",
+  "submit": "জমা দিন",
   "dark": "অন্ধকার",
   "light": "আলো",
   "topbar_my_subs": "আমার সম্প্রদায়",
@@ -49,5 +49,7 @@
   "reply_score_singular": "1 পয়েন্ট",
   "reply_score_plural": "{{count}} পয়েন্ট",
   "removed": "অপসারণ করা হয়েছে",
-  "one_comment": "1 মন্তব্য"
+  "one_comment": "1 মন্তব্য",
+  "submit_to_before": "",
+  "submit_to_after": " প্রেরণ করুন"
 }

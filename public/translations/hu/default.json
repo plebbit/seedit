@@ -8,7 +8,7 @@
   "header_comments": "hozzászólások",
   "account_bar_preferences": "Beállítások",
   "account_bar_language": "Angol",
-  "account_bar_submit": "Küldés",
+  "submit": "Küldés",
   "dark": "Sötét",
   "light": "Világos",
   "topbar_my_subs": "Saját közösségeim",
@@ -49,5 +49,7 @@
   "reply_score_singular": "1 pont",
   "reply_score_plural": "{{count}} pont",
   "removed": "Eltávolítva",
-  "one_comment": "1 megjegyzés"
+  "one_comment": "1 megjegyzés",
+  "submit_to_before": "küldés ide: ",
+  "submit_to_after": ""
 }

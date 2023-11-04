@@ -8,7 +8,7 @@
   "header_comments": "टिप्पणियां",
   "account_bar_preferences": "प्राथमिकताएँ",
   "account_bar_language": "हिंदी",
-  "account_bar_submit": "भेजें",
+  "submit": "भेजें",
   "dark": "अंधेरा",
   "light": "हल्का",
   "topbar_my_subs": "मेरे समुदाय",
@@ -49,5 +49,7 @@
   "reply_score_singular": "1 अंक",
   "reply_score_plural": "{{count}} अंक",
   "removed": "हटा दिया गया",
-  "one_comment": "1 टिप्पणी"
+  "one_comment": "1 टिप्पणी",
+  "submit_to_before": "",
+  "submit_to_after": " को जमा करें"
 }

@@ -8,7 +8,7 @@
   "header_comments": "댓글",
   "account_bar_preferences": "설정",
   "account_bar_language": "영어",
-  "account_bar_submit": "제출",
+  "submit": "제출",
   "dark": "어두운",
   "light": "밝은",
   "topbar_my_subs": "내 커뮤니티",
@@ -49,5 +49,7 @@
   "reply_score_singular": "1 점",
   "reply_score_plural": "{{count}} 점",
   "removed": "제거됨",
-  "one_comment": "1 댓글"
+  "one_comment": "1 댓글",
+  "submit_to_before": "",
+  "submit_to_after": "에 제출"
 }

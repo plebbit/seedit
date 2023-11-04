@@ -8,7 +8,7 @@
   "header_comments": "mga komento",
   "account_bar_preferences": "Mga Kagustuhan",
   "account_bar_language": "Ingles",
-  "account_bar_submit": "Ipadala",
+  "submit": "Ipadala",
   "dark": "Madilim",
   "light": "Maliwanag",
   "topbar_my_subs": "Aking mga Komunidad",
@@ -49,5 +49,7 @@
   "reply_score_singular": "1 punto",
   "reply_score_plural": "{{count}} punto",
   "removed": "Tinanggal",
-  "one_comment": "1 komento"
+  "one_comment": "1 komento",
+  "submit_to_before": "ipasa sa ",
+  "submit_to_after": ""
 }

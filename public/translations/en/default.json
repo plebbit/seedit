@@ -8,7 +8,7 @@
   "header_comments": "comments",
   "account_bar_preferences": "preferences",
   "account_bar_language": "English",
-  "account_bar_submit": "submit",
+  "submit": "submit",
   "dark": "dark",
   "light": "light",
   "topbar_my_subs": "my communities",
@@ -49,5 +49,7 @@
   "reply_score_singular": "1 point",
   "reply_score_plural": "{{count}} points",
   "removed": "Removed",
-  "one_comment": "1 comment"
+  "one_comment": "1 comment",
+  "submit_to_before": "submit to ",
+  "submit_to_after": ""
 }

@@ -8,7 +8,7 @@
   "header_comments": "yorumlar",
   "account_bar_preferences": "Tercihler",
   "account_bar_language": "İngilizce",
-  "account_bar_submit": "Gönder",
+  "submit": "Gönder",
   "dark": "Karanlık",
   "light": "Açık",
   "topbar_my_subs": "Topluluklarım",
@@ -49,5 +49,7 @@
   "reply_score_singular": "1 puan",
   "reply_score_plural": "{{count}} puan",
   "removed": "Kaldırıldı",
-  "one_comment": "1 yorum"
+  "one_comment": "1 yorum",
+  "submit_to_before": "",
+  "submit_to_after": " gönder"
 }
