@@ -1,6 +1,6 @@
-import { useTranslation } from "react-i18next";
-import useTheme from "../../hooks/use-theme";
-import styles from "./settings.module.css";
+import { useTranslation } from 'react-i18next';
+import useTheme from '../../hooks/use-theme';
+import styles from './settings.module.css';
 
 // prettier-ignore
 const availableLanguages = ['ar', 'bn', 'cs', 'da', 'de', 'el', 'en', 'es', 'fa', 'fi', 'fil', 'fr', 'he', 'hi', 'hu', 'id', 'it', 'ja', 'ko', 'mr', 'nl', 'no', 'pl', 'pt', 'ro', 'ru', 'sq', 'sv', 'te', 'th', 'tr', 'uk', 'ur', 'vi', 'zh'];
@@ -41,7 +41,6 @@ const Language = () => {
 };
 
 const Settings = () => {
-
   return (
     <div className={styles.temporary}>
       <Theme />

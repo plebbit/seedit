@@ -6,7 +6,7 @@ const Submit = () => {
     <div className={styles.content}>
       <h1>submit to seedit</h1>
     </div>
-  )
+  );
 };
 
 export default Submit;

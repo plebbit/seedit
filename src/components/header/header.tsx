@@ -9,7 +9,6 @@ import useCurrentView from '../../hooks/use-current-view';
 
 const sortTypes = ['/hot', '/new', '/active', '/controversialAll', '/topAll'];
 
-
 const Header = () => {
   const [theme] = useTheme();
   const { t } = useTranslation();
@@ -40,7 +39,11 @@ const Header = () => {
     </li>
   ));
 
-  const commentsButton = <li><Link to={`/p/${subplebbitAddress}/c/${commentCid}`}>{t('header_comments')}</Link></li>
+  const commentsButton = (
+    <li>
+      <Link to={`/p/${subplebbitAddress}/c/${commentCid}`}>{t('header_comments')}</Link>
+    </li>
+  );
   let headerTabs;
 
   if (isPostView) {
@@ -49,7 +52,16 @@ const Header = () => {
     headerTabs = sortItems;
   }
 
-  const subplebbitTitle = <Link to={`/p/${subplebbitAddress}`} onClick={(e) => {e.preventDefault();}}>{title || shortAddress}</Link>;
+  const subplebbitTitle = (
+    <Link
+      to={`/p/${subplebbitAddress}`}
+      onClick={(e) => {
+        e.preventDefault();
+      }}
+    >
+      {title || shortAddress}
+    </Link>
+  );
   let headerTitle;
 
   if (isSubplebbitSubmitView) {
@@ -57,7 +69,7 @@ const Header = () => {
   } else if (isPostView || isSubplebbitView) {
     headerTitle = subplebbitTitle;
   } else if (isSubmitView) {
-    headerTitle = "SUBMIT";
+    headerTitle = 'SUBMIT';
   }
 
   return (
@@ -69,12 +81,10 @@ const Header = () => {
           <img src={`${process.env.PUBLIC_URL}/assets/logo/seedit-text-${theme === 'dark' ? 'dark' : 'light'}.svg`} className={styles.logoText} alt='logo' />
         </Link>
         <div className={styles.tabs}>
-          <span className={styles.pageName}>
-            {headerTitle}
-          </span>
+          <span className={styles.pageName}>{headerTitle}</span>
           <ul className={styles.tabMenu}>
             {headerTabs}
-            <li className={styles.about} >
+            <li className={styles.about}>
               <Link to='/about' className={styles.choice} onClick={(event) => event.preventDefault()}>
                 {t('header_about')}
               </Link>
