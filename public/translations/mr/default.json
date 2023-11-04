@@ -52,5 +52,10 @@
   "one_comment": "1 टिप्पणी",
   "submit_to_before": "",
   "submit_to_after": " किंवा प्रेषित करा",
-  "submit_url_description": ".jpg, .gif, .mp4 इत्यादीत समाप्त होणार्या थेट लिंकच्या माध्यमातून माध्यमाची एम्बेड करा"
+  "submit_url_description": ".jpg, .gif, .mp4 इत्यादीत समाप्त होणार्या थेट लिंकच्या माध्यमातून माध्यमाची एम्बेड करा",
+  "title": "शीर्षक",
+  "text": "मजकूर",
+  "required": "आवश्यक",
+  "optional": "वैकल्पिक",
+  "community address": "समुदाय पत्ता"
 }

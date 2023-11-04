@@ -52,5 +52,10 @@
   "one_comment": "1 条评论",
   "submit_to_before": "提交至",
   "submit_to_after": "",
-  "submit_url_description": "通过发布其直接链接（以.jpg、.gif、.mp4等结尾）嵌入媒体"
+  "submit_url_description": "通过发布其直接链接（以.jpg、.gif、.mp4等结尾）嵌入媒体",
+  "title": "标题",
+  "text": "文本",
+  "required": "必须的",
+  "optional": "可选的",
+  "community address": "社区地址"
 }

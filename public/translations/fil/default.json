@@ -52,5 +52,10 @@
   "one_comment": "1 komento",
   "submit_to_before": "ipasa sa ",
   "submit_to_after": "",
-  "submit_url_description": "I-embed ang media sa pamamagitan ng pag-post ng direktang link nito (nagtatapos sa .jpg, .gif, .mp4, atbp.)"
+  "submit_url_description": "I-embed ang media sa pamamagitan ng pag-post ng direktang link nito (nagtatapos sa .jpg, .gif, .mp4, atbp.)",
+  "title": "pamagat",
+  "text": "teksto",
+  "required": "kailangan",
+  "optional": "opsyonal",
+  "community address": "address ng komunidad"
 }

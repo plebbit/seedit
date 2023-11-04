@@ -52,5 +52,10 @@
   "one_comment": "1 टिप्पणी",
   "submit_to_before": "",
   "submit_to_after": " को जमा करें",
-  "submit_url_description": ".jpg, .gif, .mp4 आदि में समाप्त होने वाले सीधे लिंक को पोस्ट करके मीडिया एम्बेड करें"
+  "submit_url_description": ".jpg, .gif, .mp4 आदि में समाप्त होने वाले सीधे लिंक को पोस्ट करके मीडिया एम्बेड करें",
+  "title": "शीर्षक",
+  "text": "पाठ",
+  "required": "आवश्यक",
+  "optional": "वैकल्पिक",
+  "community address": "समुदाय का पता"
 }

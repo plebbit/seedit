@@ -52,5 +52,10 @@
   "one_comment": "1 commentaire",
   "submit_to_before": "soumettre à ",
   "submit_to_after": "",
-  "submit_url_description": "Intégrez des médias en postant son lien direct (se terminant par .jpg, .gif, .mp4, etc.)"
+  "submit_url_description": "Intégrez des médias en postant son lien direct (se terminant par .jpg, .gif, .mp4, etc.)",
+  "title": "titre",
+  "text": "texte",
+  "required": "requis",
+  "optional": "facultatif",
+  "community address": "adresse de la communauté"
 }

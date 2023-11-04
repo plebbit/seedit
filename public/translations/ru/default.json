@@ -52,5 +52,10 @@
   "one_comment": "1 комментарий",
   "submit_to_before": "отправить в ",
   "submit_to_after": "",
-  "submit_url_description": "Вставьте медиа, разместив его прямую ссылку (заканчивается на .jpg, .gif, .mp4 и т. д.)"
+  "submit_url_description": "Вставьте медиа, разместив его прямую ссылку (заканчивается на .jpg, .gif, .mp4 и т. д.)",
+  "title": "заголовок",
+  "text": "текст",
+  "required": "требуется",
+  "optional": "необязательный",
+  "community address": "адрес сообщества"
 }

@@ -52,5 +52,10 @@
   "one_comment": "1 মন্তব্য",
   "submit_to_before": "",
   "submit_to_after": " প্রেরণ করুন",
-  "submit_url_description": ".jpg, .gif, .mp4 ইত্যাদি দ্বারা সরাসরি লিঙ্ক পোস্ট করে মিডিয়া এম্বেড করুন"
+  "submit_url_description": ".jpg, .gif, .mp4 ইত্যাদি দ্বারা সরাসরি লিঙ্ক পোস্ট করে মিডিয়া এম্বেড করুন",
+  "title": "শিরোনাম",
+  "text": "পাঠ",
+  "required": "প্রয়োজনীয়",
+  "optional": "ঐচ্ছিক",
+  "community address": "সম্প্রদায়ের ঠিকানা"
 }

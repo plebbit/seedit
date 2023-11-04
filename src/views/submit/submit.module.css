@@ -33,7 +33,7 @@ h1 {
   margin-bottom: 15px;
 }
 
-.fieldTitleOptional::after {
+.optional {
   content: " (optional)";
   color: var(--text-info);
   font-size: smaller;

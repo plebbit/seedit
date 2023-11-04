@@ -52,5 +52,10 @@
   "one_comment": "1 הערה",
   "submit_to_before": "שלח אל ",
   "submit_to_after": "",
-  "submit_url_description": "הטמע מדיה על ידי פרסום הקישור הישיר שלה (מסתיים ב-.jpg, .gif, .mp4, וכו')"
+  "submit_url_description": "הטמע מדיה על ידי פרסום הקישור הישיר שלה (מסתיים ב-.jpg, .gif, .mp4, וכו')",
+  "title": "כותרת",
+  "text": "טקסט",
+  "required": "נדרש",
+  "optional": "אופציונלי",
+  "community address": "כתובת הקהילה"
 }

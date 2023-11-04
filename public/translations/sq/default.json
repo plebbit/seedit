@@ -52,5 +52,10 @@
   "one_comment": "1 koment",
   "submit_to_before": "dërgo te ",
   "submit_to_after": "",
-  "submit_url_description": "Ngulit media duke postuar lidhjen e saj të drejtpërdrejtë (që përfundon në .jpg, .gif, .mp4, etj.)"
+  "submit_url_description": "Ngulit media duke postuar lidhjen e saj të drejtpërdrejtë (që përfundon në .jpg, .gif, .mp4, etj.)",
+  "title": "titull",
+  "text": "tekst",
+  "required": "i nevojshëm",
+  "optional": "opsionale",
+  "community address": "adresa e komunitetit"
 }

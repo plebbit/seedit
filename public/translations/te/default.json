@@ -52,5 +52,10 @@
   "one_comment": "1 వ్యాఖ్య",
   "submit_to_before": "",
   "submit_to_after": "కి సమర్పించు",
-  "submit_url_description": ".jpg, .gif, .mp4 వంటివిలో ముగిసే ప్రత్యక్ష లింకును పోస్ట్ చేసి మీడియాను ఎంబెడ్ చేయండి"
+  "submit_url_description": ".jpg, .gif, .mp4 వంటివిలో ముగిసే ప్రత్యక్ష లింకును పోస్ట్ చేసి మీడియాను ఎంబెడ్ చేయండి",
+  "title": "శీర్షిక",
+  "text": "టెక్స్ట్",
+  "required": "అవసరం",
+  "optional": "ఐచ్ఛికం",
+  "community address": "సముదాయ చిరునామా"
 }

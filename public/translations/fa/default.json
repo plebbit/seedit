@@ -52,5 +52,10 @@
   "one_comment": "1 نظر",
   "submit_to_before": "ارسال به ",
   "submit_to_after": "",
-  "submit_url_description": "رسانه را با ارسال پیوند مستقیم آن جاسازی کنید (پایان یافته در .jpg، .gif، .mp4، و غیره)"
+  "submit_url_description": "رسانه را با ارسال پیوند مستقیم آن جاسازی کنید (پایان یافته در .jpg، .gif، .mp4، و غیره)",
+  "title": "عنوان",
+  "text": "متن",
+  "required": "الزامی",
+  "optional": "اختیاری",
+  "community address": "آدرس جامعه"
 }

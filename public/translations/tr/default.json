@@ -52,5 +52,10 @@
   "one_comment": "1 yorum",
   "submit_to_before": "",
   "submit_to_after": " gönder",
-  "submit_url_description": "Medya ekleyin doğrudan bağlantısını göndererek (.jpg, .gif, .mp4 vb. ile biten)"
+  "submit_url_description": "Medya ekleyin doğrudan bağlantısını göndererek (.jpg, .gif, .mp4 vb. ile biten)",
+  "title": "başlık",
+  "text": "metin",
+  "required": "gerekli",
+  "optional": "isteğe bağlı",
+  "community address": "topluluk adresi"
 }
