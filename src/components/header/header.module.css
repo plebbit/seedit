@@ -8,6 +8,13 @@
   display: flex;
   align-items: flex-end;
   justify-content: flex-start;
+  position: relative;
+}
+
+.logoContainer {
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
 .logo {
@@ -26,10 +33,15 @@
 @media (max-width: 768px) {
   .container {
     padding-bottom: 20px;
+    height: 45.5px;
   }
 }
 
 @media (min-width: 768px) {
+  .container {
+    height: 45.5px;
+  }
+
   .temporary {
     top: 0px;
     margin-top: -3px;
@@ -86,7 +98,6 @@
   text-decoration: none;
   color: var(--text-secondary);
   background-color: var(--background);
-  border: 1px solid var(--border-primary);
   border-bottom: 1px solid var(--background);
 }
 
@@ -105,6 +116,9 @@
 
 
 @media (min-width: 768px) {
+  .tabs {
+    margin-left: 125px;
+  }
   .tabMenu {
     order: 2;
   }
@@ -126,13 +140,5 @@
 
   .pageName {
     order: 2;
-  }
-}
-
-
-
-@media (max-width: 768px) {
-  .tabMenu {
-    margin-left: -133px;
   }
 }

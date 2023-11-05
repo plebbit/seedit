@@ -41,7 +41,7 @@ const Header = () => {
 
   const commentsButton = (
     <li>
-      <Link to={`/p/${subplebbitAddress}/c/${commentCid}`}>{t('header_comments')}</Link>
+      <Link to={`/p/${subplebbitAddress}/c/${commentCid}`} className={styles.selected}>{t('header_comments')}</Link>
     </li>
   );
   let headerTabs;
@@ -77,10 +77,12 @@ const Header = () => {
     <div className={styles.header}>
       <AccountBar />
       <div className={styles.container}>
-        <Link to='/' style={{ all: 'unset', cursor: 'pointer' }}>
-          <img className={styles.logo} src='/assets/logo/seedit.png' alt='logo' />
-          <img src={`${process.env.PUBLIC_URL}/assets/logo/seedit-text-${theme === 'dark' ? 'dark' : 'light'}.svg`} className={styles.logoText} alt='logo' />
-        </Link>
+        <div className={styles.logoContainer}>
+          <Link to='/' style={{ all: 'unset', cursor: 'pointer' }}>
+            <img className={styles.logo} src='/assets/logo/seedit.png' alt='logo' />
+            <img src={`${process.env.PUBLIC_URL}/assets/logo/seedit-text-${theme === 'dark' ? 'dark' : 'light'}.svg`} className={styles.logoText} alt='logo' />
+          </Link>
+        </div>
         <div className={styles.tabs}>
           <span className={styles.pageName}>{headerTitle}</span>
           <ul className={styles.tabMenu}>
