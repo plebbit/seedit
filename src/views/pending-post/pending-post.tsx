@@ -15,7 +15,7 @@ const PendingPost = () => {
     if (post?.cid && post?.subplebbitAddress) {
       navigate(`/p/${post?.subplebbitAddress}/c/${post?.cid}`, { replace: true });
     }
-  }, [post]);
+  }, [post, navigate]);
 
   return (
     <>
