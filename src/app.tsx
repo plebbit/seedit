@@ -8,6 +8,7 @@ import TopBar from './components/topbar/topbar';
 import Header from './components/header/header';
 import Submit from './views/submit/submit';
 import Settings from './views/settings';
+import PendingPost from './views/pending-post';
 
 function App() {
   const [theme] = useTheme();
@@ -34,6 +35,7 @@ function App() {
           <Route path='p/:subplebbitAddress/c/:commentCid' element={<Post />} />
           <Route path='p/:subplebbitAddress/submit' element={<Submit />} />
           <Route path='/settings' element={<Settings />} />
+          <Route path='/profile/:accountCommentIndex' element={<PendingPost />} />
         </Route>
       </Routes>
     </div>

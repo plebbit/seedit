@@ -41,7 +41,9 @@ const Header = () => {
 
   const commentsButton = (
     <li>
-      <Link to={`/p/${subplebbitAddress}/c/${commentCid}`} className={styles.selected}>{t('header_comments')}</Link>
+      <Link to={`/p/${subplebbitAddress}/c/${commentCid}`} className={styles.selected}>
+        {t('header_comments')}
+      </Link>
     </li>
   );
   let headerTabs;
@@ -63,10 +65,14 @@ const Header = () => {
     </Link>
   );
   let headerTitle;
-  const submitTitle = <span style={{textTransform: 'uppercase'}}>{t('submit')}</span>;
+  const submitTitle = <span style={{ textTransform: 'uppercase' }}>{t('submit')}</span>;
 
   if (isSubplebbitSubmitView) {
-    headerTitle = <>{subplebbitTitle}: {submitTitle}</>;
+    headerTitle = (
+      <>
+        {subplebbitTitle}: {submitTitle}
+      </>
+    );
   } else if (isPostView || isSubplebbitView) {
     headerTitle = subplebbitTitle;
   } else if (isSubmitView) {
