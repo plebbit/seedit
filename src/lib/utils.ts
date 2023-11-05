@@ -1,7 +1,7 @@
 import i18next from 'i18next';
 import memoize from 'memoizee';
 import extName from 'ext-name';
-import { Comment } from '@plebbit/plebbit-react-hooks';
+import { ChallengeVerification, Comment } from '@plebbit/plebbit-react-hooks';
 import { canEmbed } from '../components/post/embed';
 
 export interface CommentMediaInfo {
@@ -10,6 +10,15 @@ export interface CommentMediaInfo {
   thumbnail?: string;
   patternThumbnailUrl?: string;
 }
+
+export const alertChallengeVerificationFailed = (challengeVerification: ChallengeVerification) => {
+  if (challengeVerification?.challengeSuccess === false) {
+    console.warn(challengeVerification);
+    alert(`challenge error: ${[...(challengeVerification?.challengeErrors || []), challengeVerification?.reason].join(' ')}`);
+  } else {
+    console.log(challengeVerification);
+  }
+};
 
 const getCommentMediaInfo = (comment: Comment) => {
   if (!comment?.thumbnailUrl && !comment?.link) {
@@ -123,6 +132,7 @@ const hasThumbnail = (commentMediaInfo: CommentMediaInfo | undefined, link: stri
 };
 
 const utils = {
+  alertChallengeVerificationFailed,
   getCommentMediaInfoMemoized,
   getFormattedTime,
   getHostname,
