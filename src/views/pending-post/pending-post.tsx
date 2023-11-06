@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useAccountComment } from '@plebbit/plebbit-react-hooks';
+import styles from './pending-post.module.css';
 import Post from '../../components/post';
 
 const PendingPost = () => {
@@ -18,9 +19,9 @@ const PendingPost = () => {
   }, [post, navigate]);
 
   return (
-    <>
-      <Post post={post} isPostView={true} />
-    </>
+    <div className={styles.container}>
+      <Post post={post} />
+    </div>
   );
 };
 

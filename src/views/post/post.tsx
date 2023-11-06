@@ -30,7 +30,7 @@ const Post = () => {
 
   return (
     <div className={styles.post}>
-      <PostComponent post={comment} isPostView={true} />
+      <PostComponent post={comment} />
       <div className={styles.replyArea}>
         <div className={styles.repliesTitle}>
           <span className={styles.title}>{commentCount}</span>
