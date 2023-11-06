@@ -2,31 +2,52 @@ import { useState } from 'react';
 import styles from './post.module.css';
 import { Link } from 'react-router-dom';
 import utils from '../../lib/utils';
-import { Comment, useSubplebbit } from '@plebbit/plebbit-react-hooks';
+import { useAccount, Comment, useSubplebbit } from '@plebbit/plebbit-react-hooks';
 import { useTranslation } from 'react-i18next';
 import ExpandButton from './expand-button';
 import Expando from './expando';
 import Flair from './flair';
 import PostTools from './post-tools';
 import Thumbnail from './thumbnail';
+import useCurrentView from '../../hooks/use-current-view';
 
 interface PostProps {
   index?: number;
   post: Comment;
-  isPostView?: boolean;
 }
 
-const Post = ({ post, index, isPostView = false }: PostProps) => {
-  const { author, cid, content, downvoteCount, flair, link, linkHeight, linkWidth, replyCount, spoiler, subplebbitAddress, timestamp, title, upvoteCount } = post || {};
+const Post = ({ post, index }: PostProps) => {
+  const {
+    author: { shortAddress },
+    cid,
+    content,
+    downvoteCount,
+    flair,
+    link,
+    linkHeight,
+    linkWidth,
+    replyCount,
+    spoiler,
+    subplebbitAddress,
+    timestamp,
+    title,
+    upvoteCount,
+  } = post || {};
+  const account = useAccount();
   const subplebbit = useSubplebbit({ subplebbitAddress });
   const { t } = useTranslation();
-  const [isInPostView, setIsInPostView] = useState(isPostView);
+
+  const { isPendingView, isPostView } = useCurrentView();
+  const [isInPostView, setIsInPostView] = useState(isPostView || isPendingView);
   const toggleExpanded = () => setIsInPostView(!isInPostView);
-  const postTitleOrContent = (title?.length > 300 ? title?.slice(0, 300) + '...' : title) || (content?.length > 300 ? content?.slice(0, 300) + '...' : content);
+
   const commentMediaInfo = utils.getCommentMediaInfoMemoized(post);
   const hasThumbnail = utils.hasThumbnail(commentMediaInfo, link);
   const linkUrl = utils.getHostname(link);
-  const score = upvoteCount === 0 && downvoteCount === 0 ? '•' : upvoteCount - downvoteCount || '•';
+
+  const postAuthor = isPendingView ? account?.author?.shortAddress : shortAddress;
+  const postScore = upvoteCount === 0 && downvoteCount === 0 ? '•' : upvoteCount - downvoteCount || '•';
+  const postTitleOrContent = (title?.length > 300 ? title?.slice(0, 300) + '...' : title) || (content?.length > 300 ? content?.slice(0, 300) + '...' : content);
 
   return (
     <div className={styles.container} key={index}>
@@ -36,12 +57,12 @@ const Post = ({ post, index, isPostView = false }: PostProps) => {
             <div className={styles.arrowWrapper}>
               <div className={`${styles.arrowCommon} ${styles.arrowUp}`}></div>
             </div>
-            <div className={styles.score}>{score}</div>
+            <div className={styles.score}>{postScore}</div>
             <div className={styles.arrowWrapper}>
               <div className={`${styles.arrowCommon} ${styles.arrowDown}`}></div>
             </div>
           </div>
-          {hasThumbnail && !isPostView && (
+          {hasThumbnail && !isInPostView && (
             <Thumbnail
               cid={cid}
               commentMediaInfo={commentMediaInfo}
@@ -81,7 +102,7 @@ const Post = ({ post, index, isPostView = false }: PostProps) => {
                 </span>
               )}
             </p>
-            {!isPostView && (
+            {!isInPostView && (
               <ExpandButton
                 commentMediaInfo={commentMediaInfo}
                 content={content}
@@ -93,8 +114,8 @@ const Post = ({ post, index, isPostView = false }: PostProps) => {
             )}
             <p className={styles.tagline}>
               {t('post_submitted')} {utils.getFormattedTime(timestamp)} {t('post_by')}{' '}
-              <Link className={styles.author} to={`u/${author?.shortAddress}`} onClick={(e) => e.preventDefault()}>
-                u/{author?.shortAddress}
+              <Link className={styles.author} to={`u/${shortAddress}`} onClick={(e) => e.preventDefault()}>
+                u/{postAuthor}
               </Link>
                {t('post_to')}
               <Link className={styles.subplebbit} to={`p/${subplebbitAddress}`} onClick={(e) => e.preventDefault()}>
