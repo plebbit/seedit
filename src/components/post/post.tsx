@@ -17,21 +17,7 @@ interface PostProps {
 }
 
 const Post = ({ post, index }: PostProps) => {
-  const {
-    author,
-    cid,
-    content,
-    downvoteCount,
-    flair,
-    link,
-    linkHeight,
-    linkWidth,
-    replyCount,
-    subplebbitAddress,
-    timestamp,
-    title,
-    upvoteCount,
-  } = post || {};
+  const { author, cid, content, downvoteCount, flair, link, linkHeight, linkWidth, replyCount, subplebbitAddress, timestamp, title, upvoteCount } = post || {};
   const account = useAccount();
   const subplebbit = useSubplebbit({ subplebbitAddress });
   const { t } = useTranslation();

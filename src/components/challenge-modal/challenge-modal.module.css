@@ -1,0 +1,77 @@
+.modal {
+  z-index: 1;
+  outline: unset;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.container {
+  width: 400px;
+  color: var(--text-primary);
+  font-weight: bold;
+  background-color: var(--background-primary);
+  border-radius: 5px;
+  padding: 20px;
+  position: fixed;
+  transform: translate(-50%, -50%);
+  font-size: large;
+  text-align: center;
+}
+
+.challengeMediaWrapper {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.challengeMedia {
+  width: 100%;
+  max-height: 50%;
+  border-radius: 5px;
+}
+
+.challengeInput {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid var(--border-text);
+  border-radius: 5px;
+  font-size: 16px;
+  box-sizing: border-box;
+  background-color: var(--background);
+  color: var(--text);
+}
+
+.challengeFooter {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.counter {
+  margin-right: auto;
+}
+
+.buttons {
+  position: absolute;
+}
+
+.challengeFooter button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  border: 1px solid var(--border-text);
+  background-color: var(--background-text);
+  color: var(--text);
+}
+
+@media (max-width: 768px) {
+  .container {
+    max-width: 400px;
+    width: 85vw;
+  }
+}

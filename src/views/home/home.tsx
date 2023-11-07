@@ -13,7 +13,7 @@ const NoPosts = () => 'no posts';
 
 const Home = () => {
   // const subplebbitAddresses = useDefaultSubplebbitAddresses();
-  const subplebbitAddresses = ["news.eth"]; // temporary mock content from API via env variable
+  const subplebbitAddresses = ['news.eth']; // temporary mock content from API via env variable
   // TODO: replace mock content with useDefaultSubplebbitAddresses after spam issue is resolved with challenge API
   const sortType = useParams<{ sortType: string }>().sortType || 'hot';
   const { feed, hasMore, loadMore } = useFeed({ subplebbitAddresses, sortType });

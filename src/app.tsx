@@ -9,6 +9,7 @@ import Header from './components/header/header';
 import Submit from './views/submit/submit';
 import Settings from './views/settings';
 import PendingPost from './views/pending-post';
+import ChallengeModal from './components/challenge-modal';
 
 function App() {
   const [theme] = useTheme();
@@ -20,6 +21,7 @@ function App() {
 
   const homeLayout = (
     <>
+      <ChallengeModal />
       <TopBar />
       <Header />
       <Outlet />
