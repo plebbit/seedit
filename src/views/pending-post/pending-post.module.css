@@ -1,3 +1,11 @@
 .container {
   padding: 7px 5px 0px 5px;
 }
+
+.stateString {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: calc(100vw - 28px);
+  width: 100vw;
+}
