@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { Challenge, usePublishComment, useSubplebbit } from '@plebbit/plebbit-react-hooks';
 import { useTranslation } from 'react-i18next';
@@ -29,18 +29,11 @@ const useSubmitStore = create<SubmitStoreState>((set) => ({
   setSubmitStore: ({ subplebbitAddress, title, content, link }) =>
     set((state) => {
       const nextState = { ...state };
-      if (subplebbitAddress !== undefined) {
-        nextState.subplebbitAddress = subplebbitAddress;
-      }
-      if (title !== undefined) {
-        nextState.title = title;
-      }
-      if (content !== undefined) {
-        nextState.content = content;
-      }
-      if (link !== undefined) {
-        nextState.link = link;
-      }
+      if (subplebbitAddress !== undefined) nextState.subplebbitAddress = subplebbitAddress;
+      if (title !== undefined) nextState.title = title;
+      if (content !== undefined) nextState.content = content;
+      if (link !== undefined) nextState.link = link;
+
       nextState.publishCommentOptions = {
         ...nextState,
         onChallenge: (challenge: Challenge) => addChallenge(challenge),
@@ -58,60 +51,40 @@ const useSubmitStore = create<SubmitStoreState>((set) => ({
 const Submit = () => {
   const { t } = useTranslation();
   const { isSubplebbitSubmitView } = useCurrentView();
-  const { subplebbitAddress } = useParams();
-  const subplebbit = useSubplebbit({ subplebbitAddress });
-  const { title, shortAddress } = subplebbit || {};
+  const params = useParams();
+  const paramsSubplebbitAddress = params.subplebbitAddress;
+  const subplebbit = useSubplebbit({ subplebbitAddress: paramsSubplebbitAddress });
   const navigate = useNavigate();
 
-  const titleRef = useRef<HTMLTextAreaElement | null>(null);
-  const textRef = useRef<HTMLTextAreaElement | null>(null);
-  const urlRef = useRef<HTMLInputElement | null>(null);
-  const subplebbitAddressRef = useRef<HTMLInputElement | null>(null);
-
-  const { publishCommentOptions, setSubmitStore, resetSubmitStore } = useSubmitStore();
+  const { subplebbitAddress, title, link, publishCommentOptions, setSubmitStore, resetSubmitStore } = useSubmitStore();
 
   const { index, publishComment } = usePublishComment(publishCommentOptions);
 
   const onPublish = () => {
-    const titleValue = titleRef.current?.value;
-    const textValue = textRef.current?.value;
-    const urlValue = urlRef.current?.value;
-    const subplebbitAddressValue = subplebbitAddressRef.current?.value;
-
-    setSubmitStore({
-      subplebbitAddress: subplebbitAddressValue,
-      title: titleValue,
-      content: textValue,
-      link: urlValue,
-    });
-
-    if (!titleValue) {
+    if (!title) {
       alert(`Missing title`);
       return;
     }
-    if (!textValue && !urlValue) {
-      alert(`Provide either a link or text`);
-      return;
-    }
-    if (urlValue && !isValidURL(urlValue)) {
+    if (link && !isValidURL(link)) {
       alert(`Invalid URL`);
       return;
     }
-    if (!subplebbitAddressValue) {
+    if (!subplebbitAddress) {
       alert(`Missing community address`);
       return;
     }
-    if (!isValidENS(subplebbitAddressValue) && !isValidIPFS(subplebbitAddressValue)) {
+    if (!isValidENS(subplebbitAddress) && !isValidIPFS(subplebbitAddress)) {
       alert(`Invalid community address`);
       return;
     }
+
     publishComment();
-    resetSubmitStore();
   };
+  
 
   const subLocation = (
     <Link to={`/p/${subplebbitAddress}`} className={styles.location} onClick={(e) => e.preventDefault()}>
-      {title || shortAddress}
+      {subplebbit?.title || subplebbit?.shortAddress}
     </Link>
   );
 
@@ -135,21 +108,21 @@ const Submit = () => {
             <span className={styles.fieldTitleOptional}>url</span>
             <span className={styles.optional}> ({t('optional')})</span>
             <div className={styles.fieldContent}>
-              <input className={`${styles.input} ${styles.inputUrl}`} type='text' ref={urlRef} />
+              <input className={`${styles.input} ${styles.inputUrl}`} type='text' onChange={(e) => setSubmitStore({link: e.target.value, subplebbitAddress: !subplebbitAddress ? params.subplebbitAddress : undefined})} />
               <div className={styles.description}>{t('submit_url_description')}</div>
             </div>
           </div>
           <div className={styles.field}>
             <span className={styles.fieldTitleRequired}>{t('title')}</span>
             <div className={styles.fieldContent}>
-              <textarea className={`${styles.input} ${styles.inputTitle}`} ref={titleRef} />
+              <textarea className={`${styles.input} ${styles.inputTitle}`} onChange={(e) => setSubmitStore({title: e.target.value, subplebbitAddress: !subplebbitAddress ? params.subplebbitAddress : undefined})} />
             </div>
           </div>
           <div className={styles.field}>
             <span className={styles.fieldTitleOptional}>{t('text')}</span>
             <span className={styles.optional}> ({t('optional')})</span>
             <div className={styles.fieldContent}>
-              <textarea className={`${styles.input} ${styles.inputText}`} ref={textRef} />
+              <textarea className={`${styles.input} ${styles.inputText}`} onChange={(e) => setSubmitStore({content: e.target.value, subplebbitAddress: !subplebbitAddress ? params.subplebbitAddress : undefined})} />
             </div>
           </div>
           <div className={styles.field}>
@@ -160,7 +133,8 @@ const Submit = () => {
                 className={`${styles.input} ${styles.inputCommunity}`}
                 type='text'
                 placeholder='"community.eth" or "12D3KooW..."'
-                ref={subplebbitAddressRef}
+                defaultValue={isSubplebbitSubmitView ? subplebbitAddress : undefined}
+                onChange={(e) => setSubmitStore({subplebbitAddress: e.target.value})}
               />
             </div>
           </div>
