@@ -2,7 +2,7 @@ import { useEffect, useRef } from 'react';
 import { useParams } from 'react-router-dom';
 import { Virtuoso, VirtuosoHandle, StateSnapshot } from 'react-virtuoso';
 import { useFeed } from '@plebbit/plebbit-react-hooks';
-import useDefaultSubplebbitAddresses from '../../hooks/use-default-subplebbit-addresses';
+// import useDefaultSubplebbitAddresses from '../../hooks/use-default-subplebbit-addresses';
 import styles from './home.module.css';
 import Post from '../../components/post';
 import useFeedStateString from '../../hooks/use-feed-state-string';
@@ -12,7 +12,9 @@ const lastVirtuosoStates: { [key: string]: StateSnapshot } = {};
 const NoPosts = () => 'no posts';
 
 const Home = () => {
-  const subplebbitAddresses = useDefaultSubplebbitAddresses();
+  // const subplebbitAddresses = useDefaultSubplebbitAddresses();
+  const subplebbitAddresses = ['news.eth']; // temporary mock content from API via env variable
+  // TODO: replace mock content with useDefaultSubplebbitAddresses after spam issue is resolved with challenge API
   const sortType = useParams<{ sortType: string }>().sortType || 'hot';
   const { feed, hasMore, loadMore } = useFeed({ subplebbitAddresses, sortType });
   const loadingStateString = useFeedStateString(subplebbitAddresses) || 'loading...';

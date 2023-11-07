@@ -17,35 +17,21 @@ interface PostProps {
 }
 
 const Post = ({ post, index }: PostProps) => {
-  const {
-    author: { shortAddress },
-    cid,
-    content,
-    downvoteCount,
-    flair,
-    link,
-    linkHeight,
-    linkWidth,
-    replyCount,
-    spoiler,
-    subplebbitAddress,
-    timestamp,
-    title,
-    upvoteCount,
-  } = post || {};
+  const { author, cid, content, downvoteCount, flair, link, linkHeight, linkWidth, replyCount, subplebbitAddress, timestamp, title, upvoteCount } = post || {};
   const account = useAccount();
   const subplebbit = useSubplebbit({ subplebbitAddress });
   const { t } = useTranslation();
 
   const { isPendingView, isPostView } = useCurrentView();
-  const [isInPostView, setIsInPostView] = useState(isPostView || isPendingView);
-  const toggleExpanded = () => setIsInPostView(!isInPostView);
+  const isInPostView = isPostView || isPendingView;
+  const [isExpanded, setIsExpanded] = useState(isInPostView);
+  const toggleExpanded = () => setIsExpanded(!isExpanded);
 
   const commentMediaInfo = utils.getCommentMediaInfoMemoized(post);
   const hasThumbnail = utils.hasThumbnail(commentMediaInfo, link);
   const linkUrl = utils.getHostname(link);
 
-  const postAuthor = isPendingView ? account?.author?.shortAddress : shortAddress;
+  const postAuthor = isPendingView ? account?.author?.shortAddress : author?.shortAddress;
   const postScore = upvoteCount === 0 && downvoteCount === 0 ? '•' : upvoteCount - downvoteCount || '•';
   const postTitleOrContent = (title?.length > 300 ? title?.slice(0, 300) + '...' : title) || (content?.length > 300 ? content?.slice(0, 300) + '...' : content);
 
@@ -106,7 +92,7 @@ const Post = ({ post, index }: PostProps) => {
               <ExpandButton
                 commentMediaInfo={commentMediaInfo}
                 content={content}
-                expanded={isInPostView}
+                expanded={isExpanded}
                 hasThumbnail={hasThumbnail}
                 link={link}
                 toggleExpanded={toggleExpanded}
@@ -114,7 +100,7 @@ const Post = ({ post, index }: PostProps) => {
             )}
             <p className={styles.tagline}>
               {t('post_submitted')} {utils.getFormattedTime(timestamp)} {t('post_by')}{' '}
-              <Link className={styles.author} to={`u/${shortAddress}`} onClick={(e) => e.preventDefault()}>
+              <Link className={styles.author} to={`u/${postAuthor}`} onClick={(e) => e.preventDefault()}>
                 u/{postAuthor}
               </Link>
                {t('post_to')}
@@ -123,11 +109,11 @@ const Post = ({ post, index }: PostProps) => {
                 p/{subplebbit?.shortAddress}
               </Link>
             </p>
-            <PostTools cid={cid} replyCount={replyCount} spoiler={spoiler} subplebbitAddress={subplebbitAddress} />
+            <PostTools cid={cid} replyCount={replyCount} subplebbitAddress={subplebbitAddress} />
           </div>
         </div>
       </div>
-      <Expando commentMediaInfo={commentMediaInfo} content={content} expanded={isInPostView} link={link} showContent={true} />
+      <Expando commentMediaInfo={commentMediaInfo} content={content} expanded={isExpanded} link={link} showContent={true} />
     </div>
   );
 };

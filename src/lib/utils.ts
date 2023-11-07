@@ -11,12 +11,12 @@ export interface CommentMediaInfo {
   patternThumbnailUrl?: string;
 }
 
-export const alertChallengeVerificationFailed = (challengeVerification: ChallengeVerification) => {
+export const alertChallengeVerificationFailed = (challengeVerification: ChallengeVerification, publication: any) => {
   if (challengeVerification?.challengeSuccess === false) {
-    console.warn(challengeVerification);
-    alert(`challenge error: ${[...(challengeVerification?.challengeErrors || []), challengeVerification?.reason].join(' ')}`);
+    console.warn(challengeVerification, publication);
+    alert(`p/${publication?.subplebbitAddress} challenge error: ${[...(challengeVerification?.challengeErrors || []), challengeVerification?.reason].join(' ')}`);
   } else {
-    console.log(challengeVerification);
+    console.log(challengeVerification, publication);
   }
 };
 
