@@ -162,7 +162,7 @@ const Submit = () => {
                 className={`${styles.input} ${styles.inputCommunity}`}
                 type='text'
                 placeholder='"community.eth" or "12D3KooW..."'
-                defaultValue={isSubplebbitSubmitView ? subplebbitAddress : undefined}
+                defaultValue={isSubplebbitSubmitView ? paramsSubplebbitAddress : undefined}
                 ref={subplebbitAddressRef}
               />
             </div>
