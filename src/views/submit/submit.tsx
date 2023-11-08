@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { usePublishComment, useSubplebbit } from '@plebbit/plebbit-react-hooks';
 import { useTranslation } from 'react-i18next';
@@ -55,31 +55,51 @@ const Submit = () => {
   const paramsSubplebbitAddress = params.subplebbitAddress;
   const subplebbit = useSubplebbit({ subplebbitAddress: paramsSubplebbitAddress });
   const navigate = useNavigate();
+  const [readyToPublish, setReadyToPublish] = useState(false);
 
-  const { subplebbitAddress, title, link, publishCommentOptions, setSubmitStore, resetSubmitStore } = useSubmitStore();
+  const titleRef = useRef<HTMLTextAreaElement>(null);
+  const linkRef = useRef<HTMLInputElement>(null);
+  const contentRef = useRef<HTMLTextAreaElement>(null);
+  const subplebbitAddressRef = useRef<HTMLInputElement>(null);
+
+  const { subplebbitAddress, publishCommentOptions, setSubmitStore, resetSubmitStore } = useSubmitStore();
 
   const { index, publishComment } = usePublishComment(publishCommentOptions);
-
+  
   const onPublish = () => {
-    if (!title) {
+    if (!titleRef.current?.value) {
       alert(`Missing title`);
       return;
     }
-    if (link && !isValidURL(link)) {
+    if (linkRef.current?.value && !isValidURL(linkRef.current?.value)) {
       alert(`Invalid URL`);
       return;
     }
-    if (!subplebbitAddress) {
+    if (!subplebbitAddressRef.current?.value) {
       alert(`Missing community address`);
       return;
     }
-    if (!isValidENS(subplebbitAddress) && !isValidIPFS(subplebbitAddress)) {
+    if (!isValidENS(subplebbitAddressRef.current?.value) && !isValidIPFS(subplebbitAddressRef.current?.value)) {
       alert(`Invalid community address`);
       return;
     }
 
-    publishComment();
+    setSubmitStore({
+      subplebbitAddress: subplebbitAddressRef.current?.value,
+      title: titleRef.current?.value,
+      content: contentRef.current?.value || undefined,
+      link: linkRef.current?.value || undefined,
+    });
+
+    setReadyToPublish(true);
   };
+
+  useEffect(() => {
+    if (readyToPublish) {
+      publishComment();
+      setReadyToPublish(false);
+    }
+  }, [readyToPublish, publishComment]);
 
   const subLocation = (
     <Link to={`/p/${subplebbitAddress}`} className={styles.location} onClick={(e) => e.preventDefault()}>
@@ -110,7 +130,7 @@ const Submit = () => {
               <input
                 className={`${styles.input} ${styles.inputUrl}`}
                 type='text'
-                onChange={(e) => setSubmitStore({ link: e.target.value || undefined, subplebbitAddress: !subplebbitAddress ? params.subplebbitAddress : undefined })}
+                ref={linkRef}
               />
               <div className={styles.description}>{t('submit_url_description')}</div>
             </div>
@@ -120,7 +140,7 @@ const Submit = () => {
             <div className={styles.fieldContent}>
               <textarea
                 className={`${styles.input} ${styles.inputTitle}`}
-                onChange={(e) => setSubmitStore({ title: e.target.value || undefined, subplebbitAddress: !subplebbitAddress ? params.subplebbitAddress : undefined })}
+                ref={titleRef}
               />
             </div>
           </div>
@@ -130,7 +150,7 @@ const Submit = () => {
             <div className={styles.fieldContent}>
               <textarea
                 className={`${styles.input} ${styles.inputText}`}
-                onChange={(e) => setSubmitStore({ content: e.target.value || undefined, subplebbitAddress: !subplebbitAddress ? params.subplebbitAddress : undefined })}
+                ref={contentRef}
               />
             </div>
           </div>
@@ -143,7 +163,7 @@ const Submit = () => {
                 type='text'
                 placeholder='"community.eth" or "12D3KooW..."'
                 defaultValue={isSubplebbitSubmitView ? subplebbitAddress : undefined}
-                onChange={(e) => setSubmitStore({ subplebbitAddress: e.target.value || undefined })}
+                ref={subplebbitAddressRef}
               />
             </div>
           </div>
