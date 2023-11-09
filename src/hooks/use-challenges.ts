@@ -3,14 +3,11 @@ import { Challenge } from '@plebbit/plebbit-react-hooks';
 
 interface State {
   challenges: Challenge[];
-}
-
-interface Actions extends State {
   addChallenge: (challenge: Challenge) => void;
   removeChallenge: () => void;
 }
 
-const useChallengesStore = create<Actions>((set) => ({
+const useChallengesStore = create<State>((set) => ({
   challenges: [],
   addChallenge: (challenge: Challenge) => {
     set((state) => ({ challenges: [...state.challenges, challenge] }));
