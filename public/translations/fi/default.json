@@ -60,5 +60,7 @@
   "community_address": "yhteisön osoite",
   "submit_choose": "valitse, minne haluat lähettää",
   "submit_notice": "Ole tietoinen yhteisön säännöistä, seeditillä ei ole maailmanlaajuisia ylläpitäjiä.",
-  "challenge_from": "Haaste käyttäjältä p/{{subplebbit}}"
+  "challenge_from": "Haaste käyttäjältä p/{{subplebbit}}",
+  "challenge_for_post": "julkaisulle: \"{{publicationContent}}\"",
+  "challenge_for_reply": "vastauksena u/{{parentAddress}}: \"{{publicationContent}}\""
 }

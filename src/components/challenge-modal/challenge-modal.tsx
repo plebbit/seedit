@@ -48,7 +48,12 @@ const Challenge = ({ challenge, closeModal }: ChallengeProps) => {
   return (
     <div className={styles.container}>
       <div className={styles.title}>{t('challenge_from', { subplebbit: shortSubplebbitAddress })}</div>
-      <div className={styles.subTitle}>for {parentCid ? `reply to u/${parentAddress}` : 'post'}{`: "${publicationContent}"`}</div>
+      <div className={styles.subTitle}>
+      {parentCid 
+        ? t('challenge_for_reply', { parentAddress, publicationContent }) 
+        : t('challenge_for_post', { publicationContent })
+      }
+      </div>
       <div className={styles.challengeMediaWrapper}>
         <img alt='challenge' className={styles.challengeMedia} src={`data:image/png;base64,${challenges[currentChallengeIndex]?.challenge}`} />
       </div>

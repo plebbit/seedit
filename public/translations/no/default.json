@@ -60,5 +60,7 @@
   "community_address": "samfunnsadresse",
   "submit_choose": "velg hvor du vil poste",
   "submit_notice": "vær oppmerksom på fellesskapets regler, seedit har ikke globale administratorer.",
-  "challenge_from": "Utfordring fra p/{{subplebbit}}"
+  "challenge_from": "Utfordring fra p/{{subplebbit}}",
+  "challenge_for_post": "for innlegg: \"{{publicationContent}}\"",
+  "challenge_for_reply": "for svar til u/{{parentAddress}}: \"{{publicationContent}}\""
 }

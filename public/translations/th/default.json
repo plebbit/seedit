@@ -60,5 +60,7 @@
   "community_address": "ที่อยู่ของชุมชน",
   "submit_choose": "เลือกที่จะโพสต์",
   "submit_notice": "โปรดระมัดระวังกฎของชุมชน seedit ไม่มีแอดมินระดับโลก",
-  "challenge_from": "ความท้าทายจาก p/{{subplebbit}}"
+  "challenge_from": "ความท้าทายจาก p/{{subplebbit}}",
+  "challenge_for_post": "สำหรับโพสต์: \"{{publicationContent}}\"",
+  "challenge_for_reply": "สำหรับการตอบกลับ u/{{parentAddress}}: \"{{publicationContent}}\""
 }

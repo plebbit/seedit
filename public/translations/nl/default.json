@@ -60,5 +60,7 @@
   "community_address": "gemeenschapsadres",
   "submit_choose": "kies waar te posten",
   "submit_notice": "wees alsjeblieft bewust van de regels van de gemeenschap, seedit heeft geen wereldwijde beheerders.",
-  "challenge_from": "Uitdaging van p/{{subplebbit}}"
+  "challenge_from": "Uitdaging van p/{{subplebbit}}",
+  "challenge_for_post": "voor post: \"{{publicationContent}}\"",
+  "challenge_for_reply": "voor antwoord aan u/{{parentAddress}}: \"{{publicationContent}}\""
 }

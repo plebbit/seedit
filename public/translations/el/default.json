@@ -60,5 +60,7 @@
   "community_address": "διεύθυνση κοινότητας",
   "submit_choose": "Επιλέξτε πού θέλετε να δημοσιεύσετε",
   "submit_notice": "Παρακαλούμε να είστε προσεκτικοί με τους κανόνες της κοινότητας, το seedit δεν έχει παγκόσμιους διαχειριστές.",
-  "challenge_from": "Πρόκληση από τον p/{{subplebbit}}"
+  "challenge_from": "Πρόκληση από τον p/{{subplebbit}}",
+  "challenge_for_post": "για δημοσίευση: \"{{publicationContent}}\"",
+  "challenge_for_reply": "για απάντηση σε u/{{parentAddress}}: \"{{publicationContent}}\""
 }
