@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { FloatingFocusManager, useClick, useDismiss, useFloating, useId, useInteractions, useRole } from '@floating-ui/react';
-import { Challenge as ChallengeType } from '@plebbit/plebbit-react-hooks';
+import { Challenge as ChallengeType, useComment } from '@plebbit/plebbit-react-hooks';
 import useChallenges from '../../hooks/use-challenges';
 import styles from './challenge-modal.module.css';
 
@@ -12,6 +12,10 @@ interface ChallengeProps {
 const Challenge = ({ challenge, closeModal }: ChallengeProps) => {
   const challenges = challenge?.[0]?.challenges;
   const publication = challenge?.[1];
+  const { content, parentCid, shortSubplebbitAddress, title } = publication || {};
+  const publicationContent = content || title; // titles are mandatory on seedit
+  const parentComment = useComment({commentCid: parentCid});
+  const parentAddress = parentComment?.author?.shortAddress;
 
   const [currentChallengeIndex, setCurrentChallengeIndex] = useState(0);
   const [answers, setAnswers] = useState<string[]>([]);
@@ -41,12 +45,13 @@ const Challenge = ({ challenge, closeModal }: ChallengeProps) => {
 
   return (
     <div className={styles.container}>
-      <div>Challenge</div>
+      <div className={styles.title}>Challenge from p/{shortSubplebbitAddress}</div>
+      <div className={styles.subTitle}>for {parentCid ? `reply to u/${parentAddress}` : 'post'}{`: "${publicationContent}"`}</div>
       <div className={styles.challengeMediaWrapper}>
         <img alt='challenge' className={styles.challengeMedia} src={`data:image/png;base64,${challenges[currentChallengeIndex]?.challenge}`} />
       </div>
       <div>
-        <input onKeyPress={onEnterKey} onChange={onAnswersChange} value={answers[currentChallengeIndex] || ''} className={styles.challengeInput} />
+        <input onKeyDown={onEnterKey} onChange={onAnswersChange} value={answers[currentChallengeIndex] || ''} className={styles.challengeInput} />
       </div>
       <div className={styles.challengeFooter}>
         <div className={styles.counter}>

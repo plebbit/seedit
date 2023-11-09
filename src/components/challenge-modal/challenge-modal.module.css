@@ -20,6 +20,17 @@
   text-align: center;
 }
 
+.subTitle {
+  font-size: smaller;
+  padding-top: 10px;
+}
+
+.title, .subTitle {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 .challengeMediaWrapper {
   display: flex;
   justify-content: center;
