@@ -1,15 +1,17 @@
 import { useState } from 'react';
 import styles from './post.module.css';
-import { Link } from 'react-router-dom';
-import utils from '../../lib/utils';
+import { Link, useLocation, useParams } from 'react-router-dom';
 import { useAccount, Comment, useSubplebbit } from '@plebbit/plebbit-react-hooks';
 import { useTranslation } from 'react-i18next';
+import { checkCurrentView } from '../../lib/utils/view-utils';
+import { getCommentMediaInfoMemoized, getHasThumbnail } from '../../lib/utils/media-utils';
+import { getHostname } from '../../lib/utils/url-utils';
+import { getFormattedTime } from '../../lib/utils/time-utils';
 import ExpandButton from './expand-button';
 import Expando from './expando';
 import Flair from './flair';
 import PostTools from './post-tools';
 import Thumbnail from './thumbnail';
-import useCurrentView from '../../hooks/use-current-view';
 
 interface PostProps {
   index?: number;
@@ -21,15 +23,18 @@ const Post = ({ post, index }: PostProps) => {
   const account = useAccount();
   const subplebbit = useSubplebbit({ subplebbitAddress });
   const { t } = useTranslation();
+  const params = useParams();
+  const location = useLocation();
 
-  const { isPendingView, isPostView } = useCurrentView();
+  const isPostView = checkCurrentView('post', location.pathname, params);
+  const isPendingView = checkCurrentView('pending', location.pathname, params);
   const isInPostView = isPostView || isPendingView;
   const [isExpanded, setIsExpanded] = useState(isInPostView);
   const toggleExpanded = () => setIsExpanded(!isExpanded);
 
-  const commentMediaInfo = utils.getCommentMediaInfoMemoized(post);
-  const hasThumbnail = utils.hasThumbnail(commentMediaInfo, link);
-  const linkUrl = utils.getHostname(link);
+  const commentMediaInfo = getCommentMediaInfoMemoized(post);
+  const hasThumbnail = getHasThumbnail(commentMediaInfo, link);
+  const linkUrl = getHostname(link);
 
   const postAuthor = isPendingView ? account?.author?.shortAddress : author?.shortAddress;
   const postScore = upvoteCount === 0 && downvoteCount === 0 ? '•' : upvoteCount - downvoteCount || '•';
@@ -99,7 +104,7 @@ const Post = ({ post, index }: PostProps) => {
               />
             )}
             <p className={styles.tagline}>
-              {t('post_submitted')} {utils.getFormattedTime(timestamp)} {t('post_by')}{' '}
+              {t('post_submitted')} {getFormattedTime(timestamp)} {t('post_by')}{' '}
               <Link className={styles.author} to={`u/${postAuthor}`} onClick={(e) => e.preventDefault()}>
                 u/{postAuthor}
               </Link>

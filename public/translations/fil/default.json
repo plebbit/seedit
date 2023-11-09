@@ -59,5 +59,12 @@
   "optional": "opsyonal",
   "community_address": "address ng komunidad",
   "submit_choose": "pumili kung saan mag-post",
-  "submit_notice": "mangyaring maging maingat sa mga patakaran ng komunidad, walang pangkalahatang mga admin ang seedit."
+  "submit_notice": "mangyaring maging maingat sa mga patakaran ng komunidad, walang pangkalahatang mga admin ang seedit.",
+  "challenge_from": "Hamon mula sa p/{{subplebbit}}",
+  "challenge_for_post": "para sa post: \"{{publicationContent}}\"",
+  "challenge_for_reply": "para sa tugon kay u/{{parentAddress}}: \"{{publicationContent}}\"",
+  "challenge_counter": "{{index}} ng {{total}}",
+  "cancel": "Kanselahin",
+  "previous": "Nakaraan",
+  "next": "Susunod"
 }

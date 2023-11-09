@@ -59,5 +59,12 @@
   "optional": "optional",
   "community_address": "community address",
   "submit_choose": "choose where to post",
-  "submit_notice": "please be mindful of the community's rules, seedit does not have global admins."
+  "submit_notice": "please be mindful of the community's rules, seedit does not have global admins.",
+  "challenge_from": "Challenge from p/{{subplebbit}}",
+  "challenge_for_post": "for post: \"{{publicationContent}}\"",
+  "challenge_for_reply": "for reply to u/{{parentAddress}}: \"{{publicationContent}}\"",
+  "challenge_counter": "{{index}} of {{total}}",
+  "cancel": "Cancel",
+  "previous": "Previous",
+  "next": "Next"
 }

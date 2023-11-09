@@ -59,5 +59,12 @@
   "optional": "isteğe bağlı",
   "community_address": "topluluk adresi",
   "submit_choose": "nerede gönderileceğini seçin",
-  "submit_notice": "topluluğun kurallarına dikkat edin, seedit in küresel yöneticileri yoktur."
+  "submit_notice": "topluluğun kurallarına dikkat edin, seedit in küresel yöneticileri yoktur.",
+  "challenge_from": "p/{{subplebbit}} tarafından meydan okuma",
+  "challenge_for_post": "gönderi için: \"{{publicationContent}}\"",
+  "challenge_for_reply": "u/{{parentAddress}} için yanıt: \"{{publicationContent}}\"",
+  "challenge_counter": "{{index}} / {{total}}",
+  "cancel": "İptal",
+  "previous": "Önceki",
+  "next": "Sonraki"
 }

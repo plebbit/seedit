@@ -59,5 +59,12 @@
   "optional": "אופציונלי",
   "community_address": "כתובת הקהילה",
   "submit_choose": "בחר היכן לפרסם",
-  "submit_notice": "אנא היה מודע לכללי הקהילה, ל-seedit אין מנהלים גלובליים."
+  "submit_notice": "אנא היה מודע לכללי הקהילה, ל-seedit אין מנהלים גלובליים.",
+  "challenge_from": "אתגר מp/{{subplebbit}}",
+  "challenge_for_post": "לפוסט: \"{{publicationContent}}\"",
+  "challenge_for_reply": "לתגובה ל-u/{{parentAddress}}: \"{{publicationContent}}\"",
+  "challenge_counter": "{{index}} מתוך {{total}}",
+  "cancel": "ביטול",
+  "previous": "קודם",
+  "next": "הבא"
 }

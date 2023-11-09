@@ -59,5 +59,12 @@
   "optional": "необов’язково",
   "community_address": "адреса спільноти",
   "submit_choose": "виберіть, куди відправити",
-  "submit_notice": "будь ласка, дотримуйтесь правил спільноти, в seedit немає глобальних адміністраторів."
+  "submit_notice": "будь ласка, дотримуйтесь правил спільноти, в seedit немає глобальних адміністраторів.",
+  "challenge_from": "Випробування від p/{{subplebbit}}",
+  "challenge_for_post": "для посту: \"{{publicationContent}}\"",
+  "challenge_for_reply": "для відповіді u/{{parentAddress}}: \"{{publicationContent}}\"",
+  "challenge_counter": "{{index}} з {{total}}",
+  "cancel": "Скасувати",
+  "previous": "Попередній",
+  "next": "Наступний"
 }

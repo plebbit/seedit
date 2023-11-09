@@ -1,35 +1,40 @@
 import { useEffect, useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useLocation, useParams } from 'react-router-dom';
 import styles from './header.module.css';
 import useTheme from '../../hooks/use-theme';
 import AccountBar from './account-bar';
 import { useSubplebbit } from '@plebbit/plebbit-react-hooks';
 import { useTranslation } from 'react-i18next';
-import useCurrentView from '../../hooks/use-current-view';
+import { checkCurrentView } from '../../lib/utils/view-utils';
 
 const sortTypes = ['/hot', '/new', '/active', '/controversialAll', '/topAll'];
 
 const Header = () => {
   const [theme] = useTheme();
   const { t } = useTranslation();
-  const { sortType, subplebbitAddress, commentCid } = useParams();
-  const [selectedSortType, setSelectedSortType] = useState(sortType || '/hot');
+  const location = useLocation();
+  const params = useParams();
+  const [selectedSortType, setSelectedSortType] = useState(params.sortType || '/hot');
   const sortLabels = [t('header_hot'), t('header_new'), t('header_active'), t('header_controversial'), t('header_top')];
-  const subplebbit = useSubplebbit({ subplebbitAddress });
+  const subplebbit = useSubplebbit({ subplebbitAddress: params.subplebbitAddress });
   const { title, shortAddress } = subplebbit || {};
-  const { isHomeView, isSubplebbitView, isPostView, isSubmitView, isSubplebbitSubmitView } = useCurrentView();
+  const isHomeView = checkCurrentView('home', location.pathname, params);
+  const isPostView = checkCurrentView('post', location.pathname, params);
+  const isSubplebbitView = checkCurrentView('subplebbit', location.pathname, params);
+  const isSubmitView = checkCurrentView('submit', location.pathname, params);
+  const isSubplebbitSubmitView = checkCurrentView('subplebbit/submit', location.pathname, params);
 
   const handleSelect = (choice: string) => {
     setSelectedSortType(choice);
   };
 
   useEffect(() => {
-    if (sortType) {
-      setSelectedSortType('/' + sortType);
+    if (params.sortType) {
+      setSelectedSortType('/' + params.sortType);
     } else {
       setSelectedSortType('/hot');
     }
-  }, [sortType]);
+  }, [params.sortType]);
 
   const sortItems = sortTypes.map((choice, index) => (
     <li key={choice}>
@@ -41,7 +46,7 @@ const Header = () => {
 
   const commentsButton = (
     <li>
-      <Link to={`/p/${subplebbitAddress}/c/${commentCid}`} className={styles.selected}>
+      <Link to={`/p/${params.subplebbitAddress}/c/${params.commentCid}`} className={styles.selected}>
         {t('header_comments')}
       </Link>
     </li>
@@ -56,7 +61,7 @@ const Header = () => {
 
   const subplebbitTitle = (
     <Link
-      to={`/p/${subplebbitAddress}`}
+      to={`/p/${params.subplebbitAddress}`}
       onClick={(e) => {
         e.preventDefault();
       }}

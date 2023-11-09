@@ -1,6 +1,6 @@
 import styles from './thumbnail.module.css';
 import { Link } from 'react-router-dom';
-import { CommentMediaInfo } from '../../../lib/utils';
+import { CommentMediaInfo } from '../../../lib/utils/media-utils';
 
 interface ThumbnailProps {
   cid?: string;

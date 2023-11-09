@@ -4,7 +4,8 @@ import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import styles from './reply.module.css';
 import useReplies from '../../hooks/use-replies';
-import utils from '../../lib/utils';
+import { getCommentMediaInfoMemoized, getHasThumbnail } from '../../lib/utils/media-utils';
+import { getFormattedTime } from '../../lib/utils/time-utils';
 import Expando from '../post/expando/';
 import ExpandButton from '../post/expand-button/';
 import Thumbnail from '../post/thumbnail/';
@@ -32,8 +33,8 @@ const Reply = ({ reply }: ReplyProps) => {
   const replies = useReplies(reply);
   const [expanded, setExpanded] = useState(false);
   const toggleExpanded = () => setExpanded(!expanded);
-  const commentMediaInfo = utils.getCommentMediaInfoMemoized(reply);
-  const hasThumbnail = utils.hasThumbnail(commentMediaInfo, link);
+  const commentMediaInfo = getCommentMediaInfoMemoized(reply);
+  const hasThumbnail = getHasThumbnail(commentMediaInfo, link);
   const { t } = useTranslation();
   let score = upvoteCount - downvoteCount;
   if ((upvoteCount === 0 && downvoteCount === 0) || (upvoteCount === 1 && downvoteCount === 0)) {
@@ -61,7 +62,7 @@ const Reply = ({ reply }: ReplyProps) => {
             >
               {shortAddress}
             </Link>
-            <span className={styles.score}>{scoreTranslation}</span> <span className={styles.time}>{utils.getFormattedTime(timestamp)}</span>
+            <span className={styles.score}>{scoreTranslation}</span> <span className={styles.time}>{getFormattedTime(timestamp)}</span>
             {flair && (
               <>
                 {' '}

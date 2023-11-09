@@ -59,5 +59,12 @@
   "optional": "ঐচ্ছিক",
   "community_address": "সম্প্রদায়ের ঠিকানা",
   "submit_choose": "পোস্ট করার জায়গা চয়ন করুন",
-  "submit_notice": "সম্প্রদায়ের নিয়মগুলি মনে রাখুন, seedit এ বৈশ্বিক প্রশাসক নেই।"
+  "submit_notice": "সম্প্রদায়ের নিয়মগুলি মনে রাখুন, seedit এ বৈশ্বিক প্রশাসক নেই।",
+  "challenge_from": "p/{{subplebbit}} থেকে পরীক্ষা",
+  "challenge_for_post": "পোস্টের জন্য: \"{{publicationContent}}\"",
+  "challenge_for_reply": "u/{{parentAddress}} এর উত্তরে: \"{{publicationContent}}\"",
+  "challenge_counter": "{{index}} থেকে {{total}}",
+  "cancel": "বাতিল",
+  "previous": "পূর্ববর্তী",
+  "next": "পরবর্তী"
 }

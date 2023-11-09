@@ -75,6 +75,10 @@ h1 {
   font-size: 14px;
 }
 
+.inputCommunity::placeholder {
+  color: var(--text-placeholder);
+}
+
 .description {
   margin-top: 5px;
   width: 500px;

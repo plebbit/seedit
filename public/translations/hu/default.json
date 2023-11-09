@@ -59,5 +59,12 @@
   "optional": "opcionális",
   "community_address": "közösség címe",
   "submit_choose": "válaszd ki, hova szeretnél posztolni",
-  "submit_notice": "Kérjük, legyen tekintettel a közösség szabályaira, a seeditnek nincsenek globális adminisztrátorai."
+  "submit_notice": "Kérjük, legyen tekintettel a közösség szabályaira, a seeditnek nincsenek globális adminisztrátorai.",
+  "challenge_from": "Kihívás tőle: p/{{subplebbit}}",
+  "challenge_for_post": "a bejegyzéshez: \"{{publicationContent}}\"",
+  "challenge_for_reply": "a válasz u/{{parentAddress}}: \"{{publicationContent}}\"",
+  "challenge_counter": "{{index}} a(z) {{total}}-ból/ből",
+  "cancel": "Mégse",
+  "previous": "Előző",
+  "next": "Következő"
 }

@@ -20,6 +20,17 @@
   text-align: center;
 }
 
+.subTitle {
+  font-size: smaller;
+  padding-top: 10px;
+}
+
+.title, .subTitle {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 .challengeMediaWrapper {
   display: flex;
   justify-content: center;
@@ -58,6 +69,10 @@
   position: absolute;
 }
 
+.buttons button::first-letter {
+  text-transform: capitalize;
+}
+
 .challengeFooter button {
   padding: 10px 20px;
   border: none;
@@ -67,6 +82,23 @@
   border: 1px solid var(--border-text);
   background-color: var(--background-text);
   color: var(--text);
+  max-width: 120px;
+  min-width: 80px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.buttons button {
+  display: inline-block;
+  line-height: 1.2;
+  white-space: nowrap; 
+}
+
+@media (max-width: 480px) {
+  .challengeFooter button {
+    font-size: 12px;
+  }
 }
 
 @media (max-width: 768px) {

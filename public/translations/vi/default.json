@@ -59,5 +59,12 @@
   "optional": "tùy chọn",
   "community_address": "địa chỉ cộng đồng",
   "submit_choose": "chọn nơi để đăng",
-  "submit_notice": "xin hãy tuân thủ các quy định của cộng đồng, seedit không có quản trị viên toàn cầu."
+  "submit_notice": "xin hãy tuân thủ các quy định của cộng đồng, seedit không có quản trị viên toàn cầu.",
+  "challenge_from": "Thách thức từ p/{{subplebbit}}",
+  "challenge_for_post": "cho bài viết: \"{{publicationContent}}\"",
+  "challenge_for_reply": "cho câu trả lời u/{{parentAddress}}: \"{{publicationContent}}\"",
+  "challenge_counter": "{{index}} trong số {{total}}",
+  "cancel": "Hủy bỏ",
+  "previous": "Trước",
+  "next": "Tiếp theo"
 }

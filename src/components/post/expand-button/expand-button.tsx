@@ -1,5 +1,5 @@
 import styles from './expand-button.module.css';
-import { CommentMediaInfo } from '../../../lib/utils';
+import { CommentMediaInfo } from '../../../lib/utils/media-utils';
 
 interface ExpandButtonProps {
   commentMediaInfo?: CommentMediaInfo;

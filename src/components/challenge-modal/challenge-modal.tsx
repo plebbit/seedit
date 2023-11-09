@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { FloatingFocusManager, useClick, useDismiss, useFloating, useId, useInteractions, useRole } from '@floating-ui/react';
-import { Challenge as ChallengeType } from '@plebbit/plebbit-react-hooks';
+import { Challenge as ChallengeType, useComment } from '@plebbit/plebbit-react-hooks';
+import { useTranslation } from 'react-i18next';
 import useChallenges from '../../hooks/use-challenges';
 import styles from './challenge-modal.module.css';
 
@@ -10,8 +11,13 @@ interface ChallengeProps {
 }
 
 const Challenge = ({ challenge, closeModal }: ChallengeProps) => {
+  const { t } = useTranslation();
   const challenges = challenge?.[0]?.challenges;
   const publication = challenge?.[1];
+  const { content, parentCid, shortSubplebbitAddress, title } = publication || {};
+  const publicationContent = content || title; // titles are mandatory on seedit
+  const parentComment = useComment({commentCid: parentCid});
+  const parentAddress = parentComment?.author?.shortAddress;
 
   const [currentChallengeIndex, setCurrentChallengeIndex] = useState(0);
   const [answers, setAnswers] = useState<string[]>([]);
@@ -41,26 +47,32 @@ const Challenge = ({ challenge, closeModal }: ChallengeProps) => {
 
   return (
     <div className={styles.container}>
-      <div>Challenge</div>
+      <div className={styles.title}>{t('challenge_from', { subplebbit: shortSubplebbitAddress })}</div>
+      <div className={styles.subTitle}>
+      {parentCid 
+        ? t('challenge_for_reply', { parentAddress, publicationContent }) 
+        : t('challenge_for_post', { publicationContent })
+      }
+      </div>
       <div className={styles.challengeMediaWrapper}>
         <img alt='challenge' className={styles.challengeMedia} src={`data:image/png;base64,${challenges[currentChallengeIndex]?.challenge}`} />
       </div>
       <div>
-        <input onKeyPress={onEnterKey} onChange={onAnswersChange} value={answers[currentChallengeIndex] || ''} className={styles.challengeInput} />
+        <input onKeyDown={onEnterKey} onChange={onAnswersChange} value={answers[currentChallengeIndex] || ''} className={styles.challengeInput} />
       </div>
       <div className={styles.challengeFooter}>
         <div className={styles.counter}>
-          {currentChallengeIndex + 1} of {challenges?.length}
+          {t('challenge_counter', { index: currentChallengeIndex + 1, total: challenges?.length })}
         </div>
         <span className={styles.buttons}>
-          <button onClick={closeModal}>Cancel</button>
+          <button onClick={closeModal}>{t('cancel')}</button>
           {challenges.length > 1 && (
             <button disabled={!challenges[currentChallengeIndex - 1]} onClick={() => setCurrentChallengeIndex((prev) => prev - 1)}>
-              Previous
+              {t('previous')}
             </button>
           )}
-          {challenges[currentChallengeIndex + 1] && <button onClick={() => setCurrentChallengeIndex((prev) => prev + 1)}>Next</button>}
-          {!challenges[currentChallengeIndex + 1] && <button onClick={onSubmit}>Submit</button>}
+          {challenges[currentChallengeIndex + 1] && <button onClick={() => setCurrentChallengeIndex((prev) => prev + 1)}>{t('next')}</button>}
+          {!challenges[currentChallengeIndex + 1] && <button onClick={onSubmit}>{t('submit')}</button>}
         </span>
       </div>
     </div>
