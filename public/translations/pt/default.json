@@ -59,5 +59,6 @@
   "optional": "opcional",
   "community_address": "endereço da comunidade",
   "submit_choose": "escolha onde postar",
-  "submit_notice": "por favor, respeite as regras da comunidade, o seedit não possui administradores globais."
+  "submit_notice": "por favor, respeite as regras da comunidade, o seedit não possui administradores globais.",
+  "challenge_from": "Desafio de p/{{subplebbit}}"
 }

@@ -59,5 +59,6 @@
   "optional": "valinnainen",
   "community_address": "yhteisön osoite",
   "submit_choose": "valitse, minne haluat lähettää",
-  "submit_notice": "Ole tietoinen yhteisön säännöistä, seeditillä ei ole maailmanlaajuisia ylläpitäjiä."
+  "submit_notice": "Ole tietoinen yhteisön säännöistä, seeditillä ei ole maailmanlaajuisia ylläpitäjiä.",
+  "challenge_from": "Haaste käyttäjältä p/{{subplebbit}}"
 }

@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { FloatingFocusManager, useClick, useDismiss, useFloating, useId, useInteractions, useRole } from '@floating-ui/react';
 import { Challenge as ChallengeType, useComment } from '@plebbit/plebbit-react-hooks';
+import { useTranslation } from 'react-i18next';
 import useChallenges from '../../hooks/use-challenges';
 import styles from './challenge-modal.module.css';
 
@@ -10,6 +11,7 @@ interface ChallengeProps {
 }
 
 const Challenge = ({ challenge, closeModal }: ChallengeProps) => {
+  const { t } = useTranslation();
   const challenges = challenge?.[0]?.challenges;
   const publication = challenge?.[1];
   const { content, parentCid, shortSubplebbitAddress, title } = publication || {};
@@ -45,7 +47,7 @@ const Challenge = ({ challenge, closeModal }: ChallengeProps) => {
 
   return (
     <div className={styles.container}>
-      <div className={styles.title}>Challenge from p/{shortSubplebbitAddress}</div>
+      <div className={styles.title}>{t('challenge_from', { subplebbit: shortSubplebbitAddress })}</div>
       <div className={styles.subTitle}>for {parentCid ? `reply to u/${parentAddress}` : 'post'}{`: "${publicationContent}"`}</div>
       <div className={styles.challengeMediaWrapper}>
         <img alt='challenge' className={styles.challengeMedia} src={`data:image/png;base64,${challenges[currentChallengeIndex]?.challenge}`} />
@@ -65,7 +67,7 @@ const Challenge = ({ challenge, closeModal }: ChallengeProps) => {
             </button>
           )}
           {challenges[currentChallengeIndex + 1] && <button onClick={() => setCurrentChallengeIndex((prev) => prev + 1)}>Next</button>}
-          {!challenges[currentChallengeIndex + 1] && <button onClick={onSubmit}>Submit</button>}
+          {!challenges[currentChallengeIndex + 1] && <button onClick={onSubmit}>{t('submit')}</button>}
         </span>
       </div>
     </div>

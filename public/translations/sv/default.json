@@ -59,5 +59,6 @@
   "optional": "valfritt",
   "community_address": "gemenskapsadress",
   "submit_choose": "välj var du vill posta",
-  "submit_notice": "var vänlig och tänk på gemenskapens regler, seedit har inga globala administratörer."
+  "submit_notice": "var vänlig och tänk på gemenskapens regler, seedit har inga globala administratörer.",
+  "challenge_from": "Utmaning från p/{{subplebbit}}"
 }

@@ -59,5 +59,6 @@
   "optional": "اختياري",
   "community_address": "عنوان المجتمع",
   "submit_choose": "اختر أين ترغب في النشر",
-  "submit_notice": "يرجى الحذر من قوانين المجتمع ، لا توجد إدارة عامة في seedit."
+  "submit_notice": "يرجى الحذر من قوانين المجتمع ، لا توجد إدارة عامة في seedit.",
+  "challenge_from": "اختبار من p/{{subplebbit}}"
 }

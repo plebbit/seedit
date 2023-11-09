@@ -59,5 +59,6 @@
   "optional": "valgfri",
   "community_address": "fællesskabsadresse",
   "submit_choose": "Vælg, hvor du vil poste",
-  "submit_notice": "Vær opmærksom på fællesskabets regler, seedit har ikke globale administratorer."
+  "submit_notice": "Vær opmærksom på fællesskabets regler, seedit har ikke globale administratorer.",
+  "challenge_from": "Udfordring fra p/{{subplebbit}}"
 }

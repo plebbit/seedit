@@ -59,5 +59,6 @@
   "optional": "opsyonal",
   "community_address": "address ng komunidad",
   "submit_choose": "pumili kung saan mag-post",
-  "submit_notice": "mangyaring maging maingat sa mga patakaran ng komunidad, walang pangkalahatang mga admin ang seedit."
+  "submit_notice": "mangyaring maging maingat sa mga patakaran ng komunidad, walang pangkalahatang mga admin ang seedit.",
+  "challenge_from": "Hamon mula sa p/{{subplebbit}}"
 }

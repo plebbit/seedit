@@ -69,6 +69,10 @@
   position: absolute;
 }
 
+.buttons button::first-letter {
+  text-transform: capitalize;
+}
+
 .challengeFooter button {
   padding: 10px 20px;
   border: none;

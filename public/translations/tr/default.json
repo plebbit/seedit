@@ -59,5 +59,6 @@
   "optional": "isteğe bağlı",
   "community_address": "topluluk adresi",
   "submit_choose": "nerede gönderileceğini seçin",
-  "submit_notice": "topluluğun kurallarına dikkat edin, seedit in küresel yöneticileri yoktur."
+  "submit_notice": "topluluğun kurallarına dikkat edin, seedit in küresel yöneticileri yoktur.",
+  "challenge_from": "p/{{subplebbit}} tarafından meydan okuma"
 }

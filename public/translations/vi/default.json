@@ -59,5 +59,6 @@
   "optional": "tùy chọn",
   "community_address": "địa chỉ cộng đồng",
   "submit_choose": "chọn nơi để đăng",
-  "submit_notice": "xin hãy tuân thủ các quy định của cộng đồng, seedit không có quản trị viên toàn cầu."
+  "submit_notice": "xin hãy tuân thủ các quy định của cộng đồng, seedit không có quản trị viên toàn cầu.",
+  "challenge_from": "Thách thức từ p/{{subplebbit}}"
 }

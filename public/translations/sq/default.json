@@ -59,5 +59,6 @@
   "optional": "opsionale",
   "community_address": "adresa e komunitetit",
   "submit_choose": "zgjidh ku të postosh",
-  "submit_notice": "ju lutemi jeni të kujdesshëm me rregullat e komunitetit, seedit nuk ka administratorë globalë."
+  "submit_notice": "ju lutemi jeni të kujdesshëm me rregullat e komunitetit, seedit nuk ka administratorë globalë.",
+  "challenge_from": "Sfidë nga p/{{subplebbit}}"
 }

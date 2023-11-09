@@ -59,5 +59,6 @@
   "optional": "opcjonalnie",
   "community_address": "adres społeczności",
   "submit_choose": "wybierz, gdzie chcesz opublikować",
-  "submit_notice": "proszę przestrzegać zasad społeczności, seedit nie ma globalnych administratorów."
+  "submit_notice": "proszę przestrzegać zasad społeczności, seedit nie ma globalnych administratorów.",
+  "challenge_from": "Wyzwanie od p/{{subplebbit}}"
 }

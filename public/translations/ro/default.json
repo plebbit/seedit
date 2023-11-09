@@ -59,5 +59,6 @@
   "optional": "opțional",
   "community_address": "adresa comunității",
   "submit_choose": "alege unde să postezi",
-  "submit_notice": "vă rugăm să respectați regulile comunității, seedit nu are administratori globali."
+  "submit_notice": "vă rugăm să respectați regulile comunității, seedit nu are administratori globali.",
+  "challenge_from": "Provocare de la p/{{subplebbit}}"
 }

@@ -59,5 +59,6 @@
   "optional": "اختیاری",
   "community_address": "آدرس جامعه",
   "submit_choose": "انتخاب محل ارسال",
-  "submit_notice": "لطفاً از قوانین جامعه رعایت کنید ، seedit مدیران جهانی ندارد."
+  "submit_notice": "لطفاً از قوانین جامعه رعایت کنید ، seedit مدیران جهانی ندارد.",
+  "challenge_from": "چالش از p/{{subplebbit}}"
 }
