@@ -82,6 +82,23 @@
   border: 1px solid var(--border-text);
   background-color: var(--background-text);
   color: var(--text);
+  max-width: 120px;
+  min-width: 80px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.buttons button {
+  display: inline-block;
+  line-height: 1.2;
+  white-space: nowrap; 
+}
+
+@media (max-width: 480px) {
+  .challengeFooter button {
+    font-size: 12px;
+  }
 }
 
 @media (max-width: 768px) {
