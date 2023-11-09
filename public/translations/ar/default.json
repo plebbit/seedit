@@ -62,5 +62,9 @@
   "submit_notice": "يرجى الحذر من قوانين المجتمع ، لا توجد إدارة عامة في seedit.",
   "challenge_from": "اختبار من p/{{subplebbit}}",
   "challenge_for_post": "للمنشور: \"{{publicationContent}}\"",
-  "challenge_for_reply": "للرد على u/{{parentAddress}}: \"{{publicationContent}}\""
+  "challenge_for_reply": "للرد على u/{{parentAddress}}: \"{{publicationContent}}\"",
+  "challenge_counter": "{{index}} من {{total}}",
+  "cancel": "إلغاء",
+  "previous": "السابق",
+  "next": "التالي"
 }

@@ -62,16 +62,16 @@ const Challenge = ({ challenge, closeModal }: ChallengeProps) => {
       </div>
       <div className={styles.challengeFooter}>
         <div className={styles.counter}>
-          {currentChallengeIndex + 1} of {challenges?.length}
+          {t('challenge_counter', { index: currentChallengeIndex + 1, total: challenges?.length })}
         </div>
         <span className={styles.buttons}>
-          <button onClick={closeModal}>Cancel</button>
+          <button onClick={closeModal}>{t('cancel')}</button>
           {challenges.length > 1 && (
             <button disabled={!challenges[currentChallengeIndex - 1]} onClick={() => setCurrentChallengeIndex((prev) => prev - 1)}>
-              Previous
+              {t('previous')}
             </button>
           )}
-          {challenges[currentChallengeIndex + 1] && <button onClick={() => setCurrentChallengeIndex((prev) => prev + 1)}>Next</button>}
+          {challenges[currentChallengeIndex + 1] && <button onClick={() => setCurrentChallengeIndex((prev) => prev + 1)}>{t('next')}</button>}
           {!challenges[currentChallengeIndex + 1] && <button onClick={onSubmit}>{t('submit')}</button>}
         </span>
       </div>

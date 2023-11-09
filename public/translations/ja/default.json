@@ -62,5 +62,9 @@
   "submit_notice": "コミュニティのルールを尊重してください、seeditにはグローバルな管理者はいません。",
   "challenge_from": "p/{{subplebbit}} からのチャレンジ",
   "challenge_for_post": "投稿に対して: \"{{publicationContent}}\"",
-  "challenge_for_reply": "u/{{parentAddress}}への返信に対して: \"{{publicationContent}}\""
+  "challenge_for_reply": "u/{{parentAddress}}への返信に対して: \"{{publicationContent}}\"",
+  "challenge_counter": "{{index}} / {{total}}",
+  "cancel": "キャンセル",
+  "previous": "前",
+  "next": "次"
 }

@@ -62,5 +62,9 @@
   "submit_notice": "harap berhati-hati dengan aturan komunitas, seedit tidak memiliki admin global.",
   "challenge_from": "Tantangan dari p/{{subplebbit}}",
   "challenge_for_post": "untuk pos: \"{{publicationContent}}\"",
-  "challenge_for_reply": "untuk balasan u/{{parentAddress}}: \"{{publicationContent}}\""
+  "challenge_for_reply": "untuk balasan u/{{parentAddress}}: \"{{publicationContent}}\"",
+  "challenge_counter": "{{index}} dari {{total}}",
+  "cancel": "Batal",
+  "previous": "Sebelumnya",
+  "next": "Berikutnya"
 }

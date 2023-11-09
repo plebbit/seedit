@@ -62,5 +62,9 @@
   "submit_notice": "veuillez respecter les règles de la communauté, seedit n’a pas d’administrateurs globaux.",
   "challenge_from": "Défi de p/{{subplebbit}}",
   "challenge_for_post": "pour la publication : \"{{publicationContent}}\"",
-  "challenge_for_reply": "pour la réponse à u/{{parentAddress}} : \"{{publicationContent}}\""
+  "challenge_for_reply": "pour la réponse à u/{{parentAddress}} : \"{{publicationContent}}\"",
+  "challenge_counter": "{{index}} sur {{total}}",
+  "cancel": "Annuler",
+  "previous": "Précédent",
+  "next": "Suivant"
 }

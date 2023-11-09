@@ -62,5 +62,9 @@
   "submit_notice": "Ole tietoinen yhteisön säännöistä, seeditillä ei ole maailmanlaajuisia ylläpitäjiä.",
   "challenge_from": "Haaste käyttäjältä p/{{subplebbit}}",
   "challenge_for_post": "julkaisulle: \"{{publicationContent}}\"",
-  "challenge_for_reply": "vastauksena u/{{parentAddress}}: \"{{publicationContent}}\""
+  "challenge_for_reply": "vastauksena u/{{parentAddress}}: \"{{publicationContent}}\"",
+  "challenge_counter": "{{index}}/{{total}}",
+  "cancel": "Peruuta",
+  "previous": "Edellinen",
+  "next": "Seuraava"
 }

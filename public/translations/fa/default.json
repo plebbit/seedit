@@ -62,5 +62,9 @@
   "submit_notice": "لطفاً از قوانین جامعه رعایت کنید ، seedit مدیران جهانی ندارد.",
   "challenge_from": "چالش از p/{{subplebbit}}",
   "challenge_for_post": "برای پست: \"{{publicationContent}}\"",
-  "challenge_for_reply": "برای پاسخ به u/{{parentAddress}}: \"{{publicationContent}}\""
+  "challenge_for_reply": "برای پاسخ به u/{{parentAddress}}: \"{{publicationContent}}\"",
+  "challenge_counter": "{{index}} از {{total}}",
+  "cancel": "لغو",
+  "previous": "قبلی",
+  "next": "بعدی"
 }

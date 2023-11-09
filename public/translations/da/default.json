@@ -62,5 +62,9 @@
   "submit_notice": "Vær opmærksom på fællesskabets regler, seedit har ikke globale administratorer.",
   "challenge_from": "Udfordring fra p/{{subplebbit}}",
   "challenge_for_post": "for opslag: \"{{publicationContent}}\"",
-  "challenge_for_reply": "for svar til u/{{parentAddress}}: \"{{publicationContent}}\""
+  "challenge_for_reply": "for svar til u/{{parentAddress}}: \"{{publicationContent}}\"",
+  "challenge_counter": "{{index}} af {{total}}",
+  "cancel": "Annuller",
+  "previous": "Forrige",
+  "next": "Næste"
 }

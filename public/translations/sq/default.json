@@ -62,5 +62,9 @@
   "submit_notice": "ju lutemi jeni të kujdesshëm me rregullat e komunitetit, seedit nuk ka administratorë globalë.",
   "challenge_from": "Sfidë nga p/{{subplebbit}}",
   "challenge_for_post": "për postimin: \"{{publicationContent}}\"",
-  "challenge_for_reply": "për përgjigjen ndaj u/{{parentAddress}}: \"{{publicationContent}}\""
+  "challenge_for_reply": "për përgjigjen ndaj u/{{parentAddress}}: \"{{publicationContent}}\"",
+  "challenge_counter": "{{index}} nga {{total}}",
+  "cancel": "Anulo",
+  "previous": "I mëparshëm",
+  "next": "Tjetri"
 }

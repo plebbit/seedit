@@ -62,5 +62,9 @@
   "submit_notice": "var vänlig och tänk på gemenskapens regler, seedit har inga globala administratörer.",
   "challenge_from": "Utmaning från p/{{subplebbit}}",
   "challenge_for_post": "för inlägg: \"{{publicationContent}}\"",
-  "challenge_for_reply": "för svar till u/{{parentAddress}}: \"{{publicationContent}}\""
+  "challenge_for_reply": "för svar till u/{{parentAddress}}: \"{{publicationContent}}\"",
+  "challenge_counter": "{{index}} av {{total}}",
+  "cancel": "Avbryt",
+  "previous": "Föregående",
+  "next": "Nästa"
 }

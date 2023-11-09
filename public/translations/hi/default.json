@@ -62,5 +62,9 @@
   "submit_notice": "कृपया समुदाय के नियमों का पालन करें, seedit में वैश्विक प्रशासक नहीं हैं।",
   "challenge_from": "p/{{subplebbit}} से चुनौती",
   "challenge_for_post": "पोस्ट के लिए: \"{{publicationContent}}\"",
-  "challenge_for_reply": "u/{{parentAddress}} के जवाब के लिए: \"{{publicationContent}}\""
+  "challenge_for_reply": "u/{{parentAddress}} के जवाब के लिए: \"{{publicationContent}}\"",
+  "challenge_counter": "{{index}} में से {{total}}",
+  "cancel": "रद्द करें",
+  "previous": "पिछला",
+  "next": "अगला"
 }

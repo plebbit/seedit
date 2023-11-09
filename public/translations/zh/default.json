@@ -62,5 +62,9 @@
   "submit_notice": "请注意社区的规则，seedit没有全球管理员。",
   "challenge_from": "来自p/{{subplebbit}}的挑战",
   "challenge_for_post": "对于帖子: \"{{publicationContent}}\"",
-  "challenge_for_reply": "对于回复 u/{{parentAddress}}: \"{{publicationContent}}\""
+  "challenge_for_reply": "对于回复 u/{{parentAddress}}: \"{{publicationContent}}\"",
+  "challenge_counter": "{{index}} 共 {{total}}",
+  "cancel": "取消",
+  "previous": "上一个",
+  "next": "下一个"
 }

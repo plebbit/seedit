@@ -62,5 +62,9 @@
   "submit_notice": "커뮤니티의 규칙을 준수해 주세요, seedit에는 전역 관리자가 없습니다.",
   "challenge_from": "p/{{subplebbit}}로부터의 도전",
   "challenge_for_post": "게시물에 대하여: \"{{publicationContent}}\"",
-  "challenge_for_reply": "u/{{parentAddress}}에 대한 답변: \"{{publicationContent}}\""
+  "challenge_for_reply": "u/{{parentAddress}}에 대한 답변: \"{{publicationContent}}\"",
+  "challenge_counter": "{{index}} 중 {{total}}",
+  "cancel": "취소",
+  "previous": "이전",
+  "next": "다음"
 }

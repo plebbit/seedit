@@ -62,5 +62,9 @@
   "submit_notice": "โปรดระมัดระวังกฎของชุมชน seedit ไม่มีแอดมินระดับโลก",
   "challenge_from": "ความท้าทายจาก p/{{subplebbit}}",
   "challenge_for_post": "สำหรับโพสต์: \"{{publicationContent}}\"",
-  "challenge_for_reply": "สำหรับการตอบกลับ u/{{parentAddress}}: \"{{publicationContent}}\""
+  "challenge_for_reply": "สำหรับการตอบกลับ u/{{parentAddress}}: \"{{publicationContent}}\"",
+  "challenge_counter": "{{index}} จาก {{total}}",
+  "cancel": "ยกเลิก",
+  "previous": "ก่อนหน้า",
+  "next": "ถัดไป"
 }

@@ -62,5 +62,9 @@
   "submit_notice": "vă rugăm să respectați regulile comunității, seedit nu are administratori globali.",
   "challenge_from": "Provocare de la p/{{subplebbit}}",
   "challenge_for_post": "pentru postare: \"{{publicationContent}}\"",
-  "challenge_for_reply": "pentru răspunsul la u/{{parentAddress}}: \"{{publicationContent}}\""
+  "challenge_for_reply": "pentru răspunsul la u/{{parentAddress}}: \"{{publicationContent}}\"",
+  "challenge_counter": "{{index}} din {{total}}",
+  "cancel": "Anulează",
+  "previous": "Anterior",
+  "next": "Următor"
 }

@@ -62,5 +62,9 @@
   "submit_notice": "براہ کرم کمیونٹی کے اصولوں کا خیال رکھیں، seedit میں عالمی ایڈمنز نہیں ہیں۔",
   "challenge_from": "p/{{subplebbit}} سے چیلنج",
   "challenge_for_post": "پوسٹ کے لیے: \"{{publicationContent}}\"",
-  "challenge_for_reply": "u/{{parentAddress}} کے جواب کے لیے: \"{{publicationContent}}\""
+  "challenge_for_reply": "u/{{parentAddress}} کے جواب کے لیے: \"{{publicationContent}}\"",
+  "challenge_counter": "{{index}} میں سے {{total}}",
+  "cancel": "منسوخ کریں",
+  "previous": "پچھلا",
+  "next": "اگلا"
 }

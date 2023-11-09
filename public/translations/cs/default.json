@@ -62,5 +62,9 @@
   "submit_notice": "Buďte ohleduplní k pravidlům komunity, seedit nemá globální administrátory.",
   "challenge_from": "Výzva od p/{{subplebbit}}",
   "challenge_for_post": "pro příspěvek: \"{{publicationContent}}\"",
-  "challenge_for_reply": "pro odpověď u/{{parentAddress}}: \"{{publicationContent}}\""
+  "challenge_for_reply": "pro odpověď u/{{parentAddress}}: \"{{publicationContent}}\"",
+  "challenge_counter": "{{index}} z {{total}}",
+  "cancel": "Zrušit",
+  "previous": "Předchozí",
+  "next": "Další"
 }
