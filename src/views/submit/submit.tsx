@@ -9,19 +9,19 @@ import { isValidENS, isValidIPFS, isValidURL } from '../../lib/utils/validation-
 import styles from './submit.module.css';
 import challengesStore from '../../hooks/use-challenges';
 
-type SubmitStoreState = {
+type SubmitState = {
   subplebbitAddress: string | undefined;
   title: string | undefined;
   content: string | undefined;
   link: string | undefined;
   publishCommentOptions: any;
-  setSubmitStore: (data: Partial<SubmitStoreState>) => void;
+  setSubmitStore: (data: Partial<SubmitState>) => void;
   resetSubmitStore: () => void;
 };
 
 const { addChallenge } = challengesStore.getState();
 
-const useSubmitStore = create<SubmitStoreState>((set) => ({
+const useSubmitStore = create<SubmitState>((set) => ({
   subplebbitAddress: undefined,
   title: undefined,
   content: undefined,
@@ -67,7 +67,7 @@ const Submit = () => {
   const { subplebbitAddress, publishCommentOptions, setSubmitStore, resetSubmitStore } = useSubmitStore();
 
   const { index, publishComment } = usePublishComment(publishCommentOptions);
-  
+
   const onPublish = () => {
     if (!titleRef.current?.value) {
       alert(`Missing title`);
@@ -103,7 +103,7 @@ const Submit = () => {
     }
   }, [readyToPublish, publishComment]);
 
-  const subLocation = (
+  const subplebbitHeaderLink = (
     <Link to={`/p/${subplebbitAddress}`} className={styles.location} onClick={(e) => e.preventDefault()}>
       {subplebbit?.title || subplebbit?.shortAddress}
     </Link>
@@ -120,7 +120,7 @@ const Submit = () => {
     <div className={styles.content}>
       <h1>
         {t('submit_to_before')}
-        {isSubplebbitSubmitView ? subLocation : 'seedit'}
+        {isSubplebbitSubmitView ? subplebbitHeaderLink : 'seedit'}
         {t('submit_to_after')}
       </h1>
       <div className={styles.form}>
@@ -129,31 +129,21 @@ const Submit = () => {
             <span className={styles.fieldTitleOptional}>url</span>
             <span className={styles.optional}> ({t('optional')})</span>
             <div className={styles.fieldContent}>
-              <input
-                className={`${styles.input} ${styles.inputUrl}`}
-                type='text'
-                ref={linkRef}
-              />
+              <input className={`${styles.input} ${styles.inputUrl}`} type='text' ref={linkRef} />
               <div className={styles.description}>{t('submit_url_description')}</div>
             </div>
           </div>
           <div className={styles.field}>
             <span className={styles.fieldTitleRequired}>{t('title')}</span>
             <div className={styles.fieldContent}>
-              <textarea
-                className={`${styles.input} ${styles.inputTitle}`}
-                ref={titleRef}
-              />
+              <textarea className={`${styles.input} ${styles.inputTitle}`} ref={titleRef} />
             </div>
           </div>
           <div className={styles.field}>
             <span className={styles.fieldTitleOptional}>{t('text')}</span>
             <span className={styles.optional}> ({t('optional')})</span>
             <div className={styles.fieldContent}>
-              <textarea
-                className={`${styles.input} ${styles.inputText}`}
-                ref={contentRef}
-              />
+              <textarea className={`${styles.input} ${styles.inputText}`} ref={contentRef} />
             </div>
           </div>
           <div className={styles.field}>

@@ -18,11 +18,11 @@ const Header = () => {
   const sortLabels = [t('header_hot'), t('header_new'), t('header_active'), t('header_controversial'), t('header_top')];
   const subplebbit = useSubplebbit({ subplebbitAddress: params.subplebbitAddress });
   const { title, shortAddress } = subplebbit || {};
-  const isHomeView = checkCurrentView('home', location.pathname, params)
-  const isPostView = checkCurrentView('post', location.pathname, params)
-  const isSubplebbitView = checkCurrentView('subplebbit', location.pathname, params)
-  const isSubmitView = checkCurrentView('submit', location.pathname, params)
-  const isSubplebbitSubmitView = checkCurrentView('subplebbit/submit', location.pathname, params)
+  const isHomeView = checkCurrentView('home', location.pathname, params);
+  const isPostView = checkCurrentView('post', location.pathname, params);
+  const isSubplebbitView = checkCurrentView('subplebbit', location.pathname, params);
+  const isSubmitView = checkCurrentView('submit', location.pathname, params);
+  const isSubplebbitSubmitView = checkCurrentView('subplebbit/submit', location.pathname, params);
 
   const handleSelect = (choice: string) => {
     setSelectedSortType(choice);
