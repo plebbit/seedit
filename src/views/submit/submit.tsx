@@ -1,12 +1,13 @@
 import { useEffect, useRef, useState } from 'react';
-import { Link, useNavigate, useParams } from 'react-router-dom';
+import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
 import { usePublishComment, useSubplebbit } from '@plebbit/plebbit-react-hooks';
 import { useTranslation } from 'react-i18next';
 import { create } from 'zustand';
+import { checkCurrentView } from '../../lib/utils/view-utils';
+import { alertChallengeVerificationFailed } from '../../lib/utils/challenge-utils';
+import { isValidENS, isValidIPFS, isValidURL } from '../../lib/utils/validation-utils';
 import styles from './submit.module.css';
-import useCurrentView from '../../hooks/use-current-view';
 import challengesStore from '../../hooks/use-challenges';
-import { alertChallengeVerificationFailed, isValidENS, isValidIPFS, isValidURL } from '../../lib/utils';
 
 type SubmitStoreState = {
   subplebbitAddress: string | undefined;
@@ -50,8 +51,9 @@ const useSubmitStore = create<SubmitStoreState>((set) => ({
 
 const Submit = () => {
   const { t } = useTranslation();
-  const { isSubplebbitSubmitView } = useCurrentView();
+  const location = useLocation();
   const params = useParams();
+  const isSubplebbitSubmitView = checkCurrentView('subplebbit/submit', location.pathname, params);
   const paramsSubplebbitAddress = params.subplebbitAddress;
   const subplebbit = useSubplebbit({ subplebbitAddress: paramsSubplebbitAddress });
   const navigate = useNavigate();

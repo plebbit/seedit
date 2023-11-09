@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import styles from './expando.module.css';
 import Embed from '../embed';
-import { CommentMediaInfo } from '../../../lib/utils';
+import { CommentMediaInfo } from '../../../lib/utils/media-utils';
 
 interface ExpandoProps {
   commentMediaInfo?: CommentMediaInfo;
