@@ -14,7 +14,7 @@ const PostToolsLabel = ({ commentCid }: PostToolsLabelProps) => {
   return (
     <li>
       <span className={styles.stamp}>
-        <span className={styles.content}>{spoiler && t('post_label_spoiler').toUpperCase()}</span>
+        <span className={styles.content}>{spoiler && t('spoiler').toUpperCase()}</span>
       </span>
     </li>
   );

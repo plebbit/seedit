@@ -45,6 +45,9 @@ const Post = () => {
           <div className={styles.mdContainer}>
             <div className={styles.md}>
               <input className={styles.url} placeholder={`url (${t('optional')})`} />
+              <span className={styles.spoiler}>
+              {t('spoiler')}: <input type='checkbox' className={styles.checkbox} />
+              </span>
               <textarea className={styles.textarea} placeholder={t('text')} />
             </div>
             <div className={styles.bottomArea}>

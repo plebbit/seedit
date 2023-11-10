@@ -77,7 +77,10 @@
 .url {
   background-color: var(--background);
   color: var(--text);
-  font-size: 1.08em
+}
+
+.spoiler {
+  padding-left: 5px;
 }
 
 .textarea {
@@ -87,7 +90,7 @@
   color: var(--text);
   font: normal small verdana,arial,helvetica,sans-serif;
   line-height: 1.42em;
-  font-size: 1.08em;
+  font-size: 14px;
   word-wrap: break-word;
 }
 
