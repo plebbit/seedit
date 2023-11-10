@@ -66,5 +66,6 @@
   "challenge_counter": "{{index}}/{{total}}",
   "cancel": "Peruuta",
   "previous": "Edellinen",
-  "next": "Seuraava"
+  "next": "Seuraava",
+  "loading": "Ladataan"
 }

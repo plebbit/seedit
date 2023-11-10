@@ -52,7 +52,7 @@ const Challenge = ({ challenge, closeModal }: ChallengeProps) => {
         {parentCid ? t('challenge_for_reply', { parentAddress, publicationContent }) : t('challenge_for_post', { publicationContent })}
       </div>
       <div className={styles.challengeMediaWrapper}>
-        <img alt='challenge' className={styles.challengeMedia} src={`data:image/png;base64,${challenges[currentChallengeIndex]?.challenge}`} />
+        <img alt={t('loading')} className={styles.challengeMedia} src={`data:image/png;base64,${challenges[currentChallengeIndex]?.challenge}`} />
       </div>
       <div>
         <input onKeyDown={onEnterKey} onChange={onAnswersChange} value={answers[currentChallengeIndex] || ''} className={styles.challengeInput} />

@@ -66,5 +66,6 @@
   "challenge_counter": "{{index}} sur {{total}}",
   "cancel": "Annuler",
   "previous": "Précédent",
-  "next": "Suivant"
+  "next": "Suivant",
+  "loading": "Chargement"
 }

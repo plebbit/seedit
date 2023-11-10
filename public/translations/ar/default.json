@@ -66,5 +66,6 @@
   "challenge_counter": "{{index}} من {{total}}",
   "cancel": "إلغاء",
   "previous": "السابق",
-  "next": "التالي"
+  "next": "التالي",
+  "loading": "تحميل"
 }

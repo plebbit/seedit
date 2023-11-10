@@ -66,5 +66,6 @@
   "challenge_counter": "{{index}} z {{total}}",
   "cancel": "Zrušit",
   "previous": "Předchozí",
-  "next": "Další"
+  "next": "Další",
+  "loading": "Načítání"
 }

@@ -66,5 +66,6 @@
   "challenge_counter": "{{index}} з {{total}}",
   "cancel": "Скасувати",
   "previous": "Попередній",
-  "next": "Наступний"
+  "next": "Наступний",
+  "loading": "Завантаження"
 }

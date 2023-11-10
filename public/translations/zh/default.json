@@ -66,5 +66,6 @@
   "challenge_counter": "{{index}} 共 {{total}}",
   "cancel": "取消",
   "previous": "上一个",
-  "next": "下一个"
+  "next": "下一个",
+  "loading": "加载中"
 }

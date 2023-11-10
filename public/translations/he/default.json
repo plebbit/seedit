@@ -66,5 +66,6 @@
   "challenge_counter": "{{index}} מתוך {{total}}",
   "cancel": "ביטול",
   "previous": "קודם",
-  "next": "הבא"
+  "next": "הבא",
+  "loading": "טוען"
 }

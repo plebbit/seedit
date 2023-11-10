@@ -66,5 +66,6 @@
   "challenge_counter": "{{index}} nga {{total}}",
   "cancel": "Anulo",
   "previous": "I mëparshëm",
-  "next": "Tjetri"
+  "next": "Tjetri",
+  "loading": "Po ngarkohet"
 }

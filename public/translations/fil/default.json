@@ -66,5 +66,6 @@
   "challenge_counter": "{{index}} ng {{total}}",
   "cancel": "Kanselahin",
   "previous": "Nakaraan",
-  "next": "Susunod"
+  "next": "Susunod",
+  "loading": "Naglo-load"
 }

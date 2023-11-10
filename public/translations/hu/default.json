@@ -66,5 +66,6 @@
   "challenge_counter": "{{index}} a(z) {{total}}-ból/ből",
   "cancel": "Mégse",
   "previous": "Előző",
-  "next": "Következő"
+  "next": "Következő",
+  "loading": "Betöltés"
 }

@@ -66,5 +66,6 @@
   "challenge_counter": "{{index}} / {{total}}",
   "cancel": "İptal",
   "previous": "Önceki",
-  "next": "Sonraki"
+  "next": "Sonraki",
+  "loading": "Yükleniyor"
 }

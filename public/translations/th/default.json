@@ -66,5 +66,6 @@
   "challenge_counter": "{{index}} จาก {{total}}",
   "cancel": "ยกเลิก",
   "previous": "ก่อนหน้า",
-  "next": "ถัดไป"
+  "next": "ถัดไป",
+  "loading": "กำลังโหลด"
 }

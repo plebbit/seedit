@@ -66,5 +66,6 @@
   "challenge_counter": "{{index}} av {{total}}",
   "cancel": "Avbryt",
   "previous": "Forrige",
-  "next": "Neste"
+  "next": "Neste",
+  "loading": "Laster"
 }

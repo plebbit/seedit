@@ -66,5 +66,6 @@
   "challenge_counter": "{{index}} trong số {{total}}",
   "cancel": "Hủy bỏ",
   "previous": "Trước",
-  "next": "Tiếp theo"
+  "next": "Tiếp theo",
+  "loading": "Đang tải"
 }

@@ -66,5 +66,6 @@
   "challenge_counter": "{{index}} από {{total}}",
   "cancel": "Ακύρωση",
   "previous": "Προηγούμενο",
-  "next": "Επόμενο"
+  "next": "Επόμενο",
+  "loading": "Φόρτωση"
 }

@@ -66,5 +66,6 @@
   "challenge_counter": "{{index}} లో {{total}}",
   "cancel": "రద్దు చేయి",
   "previous": "మునుపటి",
-  "next": "తదుపరి"
+  "next": "తదుపరి",
+  "loading": "లోడ్ అవుతోంది"
 }

@@ -66,5 +66,6 @@
   "challenge_counter": "{{index}} din {{total}}",
   "cancel": "Anulează",
   "previous": "Anterior",
-  "next": "Următor"
+  "next": "Următor",
+  "loading": "Se încarcă"
 }

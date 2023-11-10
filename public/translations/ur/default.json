@@ -66,5 +66,6 @@
   "challenge_counter": "{{index}} میں سے {{total}}",
   "cancel": "منسوخ کریں",
   "previous": "پچھلا",
-  "next": "اگلا"
+  "next": "اگلا",
+  "loading": "لوڈ ہو رہا ہے"
 }

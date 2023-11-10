@@ -66,5 +66,6 @@
   "challenge_counter": "{{index}} dari {{total}}",
   "cancel": "Batal",
   "previous": "Sebelumnya",
-  "next": "Berikutnya"
+  "next": "Berikutnya",
+  "loading": "Memuat"
 }

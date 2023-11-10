@@ -66,5 +66,6 @@
   "challenge_counter": "{{index}} থেকে {{total}}",
   "cancel": "বাতিল",
   "previous": "পূর্ববর্তী",
-  "next": "পরবর্তী"
+  "next": "পরবর্তী",
+  "loading": "লোড হচ্ছে"
 }

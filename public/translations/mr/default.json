@@ -66,5 +66,6 @@
   "challenge_counter": "{{index}} पैकी {{total}}",
   "cancel": "रद्द करा",
   "previous": "मागील",
-  "next": "पुढील"
+  "next": "पुढील",
+  "loading": "लोड करीत आहे"
 }

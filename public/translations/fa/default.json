@@ -66,5 +66,6 @@
   "challenge_counter": "{{index}} از {{total}}",
   "cancel": "لغو",
   "previous": "قبلی",
-  "next": "بعدی"
+  "next": "بعدی",
+  "loading": "بارگذاری"
 }

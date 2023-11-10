@@ -66,5 +66,6 @@
   "challenge_counter": "{{index}} of {{total}}",
   "cancel": "Cancel",
   "previous": "Previous",
-  "next": "Next"
+  "next": "Next",
+  "loading": "Loading"
 }
