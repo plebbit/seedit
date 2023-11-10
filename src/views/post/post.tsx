@@ -44,7 +44,8 @@ const Post = () => {
           </div>
           <div className={styles.mdContainer}>
             <div className={styles.md}>
-              <textarea className={styles.textarea} />
+              <input className={styles.url} placeholder={`url (${t('optional')})`} />
+              <textarea className={styles.textarea} placeholder={t('text')} />
             </div>
             <div className={styles.bottomArea}>
               <button className={styles.save}>{t('post_save')}</button>

@@ -74,6 +74,12 @@
   max-width: 60em;
 }
 
+.url {
+  background-color: var(--background);
+  color: var(--text);
+  font-size: 1.08em
+}
+
 .textarea {
   width: 500px;
   height: 100px;
@@ -93,7 +99,6 @@
   _::-webkit-full-page-media, _:future, :root .textarea {
     width: calc(100vw - 47px);
   }
-
 }
 
 .save {
