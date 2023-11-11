@@ -13,6 +13,8 @@ import Flair from './flair';
 import PostTools from './post-tools';
 import Thumbnail from './thumbnail';
 import { usePendingReplyCount } from '../../hooks/use-pending-replycount';
+import useUpvote from '../../hooks/use-upvote';
+import useDownvote from '../../hooks/use-downvote';
 
 interface PostProps {
   index?: number;
@@ -32,6 +34,8 @@ const Post = ({ post, index }: PostProps) => {
   const isInPostView = isPost || isPending;
   const [isExpanded, setIsExpanded] = useState(isInPostView);
   const toggleExpanded = () => setIsExpanded(!isExpanded);
+  const [upvoted, upvote] = useUpvote(post);
+  const [downvoted, downvote] = useDownvote(post);
 
   const commentMediaInfo = getCommentMediaInfoMemoized(post);
   const hasThumbnail = getHasThumbnail(commentMediaInfo, link);
@@ -50,11 +54,11 @@ const Post = ({ post, index }: PostProps) => {
         <div className={styles.leftcol}>
           <div className={styles.midcol}>
             <div className={styles.arrowWrapper}>
-              <div className={`${styles.arrowCommon} ${styles.arrowUp}`}></div>
+              <div className={`${styles.arrowCommon} ${upvoted ? styles.upvoted : styles.arrowUp}`} onClick={upvote} />
             </div>
             <div className={styles.score}>{postScore}</div>
             <div className={styles.arrowWrapper}>
-              <div className={`${styles.arrowCommon} ${styles.arrowDown}`}></div>
+              <div className={`${styles.arrowCommon} ${downvoted ? styles.downvoted : styles.arrowDown}`} onClick={downvote} />
             </div>
           </div>
           {hasThumbnail && !isInPostView && (
