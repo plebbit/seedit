@@ -61,7 +61,7 @@ const PostTools = ({ cid, isReply, replyCount, spoiler, subplebbitAddress, showR
         <span>{t('post_report')}</span>
       </li>
       <li className={styles.button}>
-        <span onClick={showReplyForm}>{t('reply_reply')}</span>
+        <span onClick={() => cid && showReplyForm?.()}>{t('reply_reply')}</span>
       </li>
     </>
   );
