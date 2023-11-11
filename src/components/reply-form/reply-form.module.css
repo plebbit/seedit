@@ -36,6 +36,7 @@
 
 @media (max-width: 768px) {
   .textarea {
+    max-width: 500px;
     width: calc(100vw - 40px);
   }
 
