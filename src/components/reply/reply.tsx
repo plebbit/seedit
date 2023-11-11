@@ -10,6 +10,7 @@ import Expando from '../post/expando/';
 import ExpandButton from '../post/expand-button/';
 import Thumbnail from '../post/thumbnail/';
 import Flair from '../post/flair/';
+import PostTools from '../post/post-tools';
 
 interface ReplyProps {
   key: string;
@@ -27,6 +28,7 @@ const Reply = ({ reply }: ReplyProps) => {
     linkHeight,
     linkWidth,
     removed,
+    spoiler,
     timestamp,
     upvoteCount,
   } = reply || {};
@@ -36,7 +38,7 @@ const Reply = ({ reply }: ReplyProps) => {
   const commentMediaInfo = getCommentMediaInfoMemoized(reply);
   const hasThumbnail = getHasThumbnail(commentMediaInfo, link);
   const { t } = useTranslation();
-  let score = upvoteCount - downvoteCount;
+  let score = upvoteCount - downvoteCount || 1;
   if ((upvoteCount === 0 && downvoteCount === 0) || (upvoteCount === 1 && downvoteCount === 0)) {
     score = 1;
   }
@@ -107,23 +109,7 @@ const Reply = ({ reply }: ReplyProps) => {
             <div className={styles.md}>{contentOrRemoved}</div>
           </div>
         </div>
-        <ul className={styles.buttons}>
-          <li className={styles.button}>
-            <span>{t('reply_permalink')}</span>
-          </li>
-          <li className={styles.button}>
-            <span>{t('reply_embed')}</span>
-          </li>
-          <li className={styles.button}>
-            <span>{t('post_save')}</span>
-          </li>
-          <li className={styles.button}>
-            <span>{t('post_report')}</span>
-          </li>
-          <li className={styles.button}>
-            <span>{t('reply_reply')}</span>
-          </li>
-        </ul>
+        <PostTools cid={reply.cid}isReply={true} replyCount={replies.length} spoiler={spoiler} subplebbitAddress={reply.subplebbitAddress} />
         {replies.map((reply, index) => (
           <Reply key={`${index}${reply.cid}`} reply={reply} />
         ))}

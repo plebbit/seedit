@@ -95,20 +95,3 @@
   color: var(--text);
   text-decoration: none;
 }
-
-.buttons {
-  list-style-type: none;
-  margin-left: 29px;
-}
-
-.button {
-  display: inline-block;
-  border: none;
-  line-height: 1.6em;
-  white-space: nowrap;
-  color: var(--text-info);
-  font-weight: bold;
-  padding: 0 1px;
-  margin-right: 8px;
-  cursor: pointer;
-}
