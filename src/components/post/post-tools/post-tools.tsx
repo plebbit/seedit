@@ -8,9 +8,10 @@ interface PostToolsProps {
   replyCount: number;
   spoiler?: boolean;
   subplebbitAddress: string;
+  showReplyForm?: () => void;
 }
 
-const PostTools = ({ cid, isReply, replyCount, spoiler, subplebbitAddress }: PostToolsProps) => {
+const PostTools = ({ cid, isReply, replyCount, spoiler, subplebbitAddress, showReplyForm }: PostToolsProps) => {
   const { t } = useTranslation();
   const commentCount = replyCount === 0 ? t('post_no_comments') : `${replyCount ?? ''} ${replyCount === 1 ? t('post_comment') : t('post_comments')}`;
 
@@ -60,7 +61,7 @@ const PostTools = ({ cid, isReply, replyCount, spoiler, subplebbitAddress }: Pos
         <span>{t('post_report')}</span>
       </li>
       <li className={styles.button}>
-        <span>{t('reply_reply')}</span>
+        <span onClick={showReplyForm}>{t('reply_reply')}</span>
       </li>
     </>
   );

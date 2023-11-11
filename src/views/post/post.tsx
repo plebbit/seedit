@@ -3,12 +3,13 @@ import { useParams } from 'react-router-dom';
 import { useComment, useSubplebbit } from '@plebbit/plebbit-react-hooks';
 import { useTranslation } from 'react-i18next';
 import styles from './post.module.css';
-import PostComponent from '../../components/post';
-import useReplies from '../../hooks/use-replies';
 import Reply from '../../components/reply';
-import useStateString from '../../hooks/use-state-string';
-import useReply from '../../hooks/use-reply';
+import ReplyForm from '../../components/reply-form';
+import PostComponent from '../../components/post';
 import { usePendingReplyCount } from '../../hooks/use-pending-replycount';
+import useReplies from '../../hooks/use-replies';
+import useReply from '../../hooks/use-reply';
+import useStateString from '../../hooks/use-state-string';
 
 const Post = () => {
   const { t } = useTranslation();
@@ -79,20 +80,7 @@ const Post = () => {
               <span className={styles.selected}>{t('reply_best')}</span>
             </div>
           </div>
-          <div className={styles.mdContainer}>
-            <div className={styles.md}>
-              <input className={styles.url} ref={urlRef} placeholder={`url (${t('optional')})`} />
-              <span className={styles.spoiler}>
-                {t('spoiler')}: <input type='checkbox' className={styles.checkbox} ref={spoilerRef} />
-              </span>
-              <textarea className={styles.textarea} ref={textRef} placeholder={t('text')} />
-            </div>
-            <div className={styles.bottomArea}>
-              <button className={styles.save} onClick={onPublish}>
-                {t('post_save')}
-              </button>
-            </div>
-          </div>
+          <ReplyForm onPublish={onPublish} spoilerRef={spoilerRef} textRef={textRef} urlRef={urlRef} />
         </div>
         {stateString && <div className={styles.stateString}>{stateString}</div>}
         <div className={styles.replies}>{replies}</div>

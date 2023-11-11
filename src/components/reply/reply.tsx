@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Comment } from '@plebbit/plebbit-react-hooks';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
@@ -11,6 +11,8 @@ import ExpandButton from '../post/expand-button/';
 import Thumbnail from '../post/thumbnail/';
 import Flair from '../post/flair/';
 import PostTools from '../post/post-tools';
+import ReplyForm from '../reply-form';
+import useReply from '../../hooks/use-reply';
 
 interface ReplyProps {
   key: string;
@@ -32,9 +34,13 @@ const Reply = ({ reply }: ReplyProps) => {
     timestamp,
     upvoteCount,
   } = reply || {};
-  const replies = useReplies(reply);
+
+  const replies = useReplies(reply).map((reply, index) => <Reply key={`${index}${reply.cid}`} reply={reply} />) || '';
   const [expanded, setExpanded] = useState(false);
+  const [isReplying, setIsReplying] = useState(false);
   const toggleExpanded = () => setExpanded(!expanded);
+  const showReplyForm = () => setIsReplying(true);
+  const hideReplyForm = () => setIsReplying(false);
   const commentMediaInfo = getCommentMediaInfoMemoized(reply);
   const hasThumbnail = getHasThumbnail(commentMediaInfo, link);
   const { t } = useTranslation();
@@ -44,6 +50,37 @@ const Reply = ({ reply }: ReplyProps) => {
   }
   const scoreTranslation = score === 1 ? t('reply_score_singular') : t('reply_score_plural', { count: score });
   const contentOrRemoved = removed ? `[${t('removed')}]` : content;
+  const { setContent, resetContent, replyIndex, publishReply } = useReply(reply);
+
+  const textRef = useRef<HTMLTextAreaElement>(null);
+  const urlRef = useRef<HTMLInputElement>(null);
+  const spoilerRef = useRef<HTMLInputElement>(null);
+
+  const [readyToPublish, setReadyToPublish] = useState(false);
+
+  const onPublish = () => {
+    const currentContent = textRef.current?.value || '';
+    if (!currentContent.trim()) {
+      alert(`missing content`);
+      return;
+    }
+    setContent(textRef.current?.value || undefined, urlRef.current?.value || undefined, spoilerRef.current?.checked || false);
+    setReadyToPublish(true);
+  };
+
+  useEffect(() => {
+    if (readyToPublish) {
+      publishReply();
+      hideReplyForm();
+      setReadyToPublish(false);
+    }
+  }, [readyToPublish, publishReply]);
+
+  useEffect(() => {
+    if (typeof replyIndex === 'number') {
+      resetContent();
+    }
+  }, [replyIndex, resetContent]);
 
   return (
     <div className={styles.reply}>
@@ -109,10 +146,18 @@ const Reply = ({ reply }: ReplyProps) => {
             <div className={styles.md}>{contentOrRemoved}</div>
           </div>
         </div>
-        <PostTools cid={reply.cid} isReply={true} replyCount={replies.length} spoiler={spoiler} subplebbitAddress={reply.subplebbitAddress} />
-        {replies.map((reply, index) => (
-          <Reply key={`${index}${reply.cid}`} reply={reply} />
-        ))}
+        <PostTools
+          cid={reply.cid}
+          isReply={true}
+          replyCount={replies.length}
+          spoiler={spoiler}
+          subplebbitAddress={reply.subplebbitAddress}
+          showReplyForm={showReplyForm}
+        />
+        {isReplying && (
+          <ReplyForm isReplyingToReply={true} onPublish={onPublish} hideReplyForm={hideReplyForm} spoilerRef={spoilerRef} textRef={textRef} urlRef={urlRef} />
+        )}
+        {replies}
       </div>
     </div>
   );
