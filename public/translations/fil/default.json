@@ -37,8 +37,8 @@
   "time_x_months_ago": "{{count}} buwan ang nakalipas",
   "time_1_year_ago": "1 taon ang nakalipas",
   "time_x_years_ago": "{{count}} taon ang nakalipas",
-  "post_label_spoiler": "Spoiler",
-  "post_label_unspoiler": "Walang Spoiler",
+  "spoiler": "Spoiler",
+  "unspoiler": "Walang Spoiler",
   "reply_permalink": "Permalink",
   "reply_embed": "Embed",
   "reply_reply": "Tumugon",
@@ -66,5 +66,6 @@
   "challenge_counter": "{{index}} ng {{total}}",
   "cancel": "Kanselahin",
   "previous": "Nakaraan",
-  "next": "Susunod"
+  "next": "Susunod",
+  "loading": "Naglo-load"
 }

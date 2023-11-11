@@ -37,8 +37,8 @@
   "time_x_months_ago": "hace {{count}} meses",
   "time_1_year_ago": "hace 1 año",
   "time_x_years_ago": "hace {{count}} años",
-  "post_label_spoiler": "spoiler",
-  "post_label_unspoiler": "despoiler",
+  "spoiler": "spoiler",
+  "unspoiler": "despoiler",
   "reply_permalink": "enlace permanente",
   "reply_embed": "embed",
   "reply_reply": "responder",
@@ -66,5 +66,6 @@
   "challenge_counter": "{{index}} de {{total}}",
   "cancel": "Cancelar",
   "previous": "Anterior",
-  "next": "Siguiente"
+  "next": "Siguiente",
+  "loading": "Cargando"
 }

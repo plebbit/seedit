@@ -1,9 +1,9 @@
 import { useEffect, useRef, useState } from 'react';
 import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
-import { usePublishComment, useSubplebbit } from '@plebbit/plebbit-react-hooks';
+import { PublishCommentOptions, usePublishComment, useSubplebbit } from '@plebbit/plebbit-react-hooks';
 import { useTranslation } from 'react-i18next';
 import { create } from 'zustand';
-import { checkCurrentView } from '../../lib/utils/view-utils';
+import { isSubplebbitSubmitView } from '../../lib/utils/view-utils';
 import { alertChallengeVerificationFailed } from '../../lib/utils/challenge-utils';
 import { isValidENS, isValidIPFS, isValidURL } from '../../lib/utils/validation-utils';
 import styles from './submit.module.css';
@@ -14,7 +14,7 @@ type SubmitState = {
   title: string | undefined;
   content: string | undefined;
   link: string | undefined;
-  publishCommentOptions: any;
+  publishCommentOptions: PublishCommentOptions;
   setSubmitStore: (data: Partial<SubmitState>) => void;
   resetSubmitStore: () => void;
 };
@@ -26,7 +26,7 @@ const useSubmitStore = create<SubmitState>((set) => ({
   title: undefined,
   content: undefined,
   link: undefined,
-  publishCommentOptions: undefined,
+  publishCommentOptions: {},
   setSubmitStore: ({ subplebbitAddress, title, content, link }) =>
     set((state) => {
       const nextState = { ...state };
@@ -53,7 +53,7 @@ const Submit = () => {
   const { t } = useTranslation();
   const location = useLocation();
   const params = useParams();
-  const isSubplebbitSubmitView = checkCurrentView('subplebbit/submit', location.pathname, params);
+  const isSubplebbitSubmit = isSubplebbitSubmitView(location.pathname, params);
   const paramsSubplebbitAddress = params.subplebbitAddress;
   const subplebbit = useSubplebbit({ subplebbitAddress: paramsSubplebbitAddress });
   const navigate = useNavigate();
@@ -120,7 +120,7 @@ const Submit = () => {
     <div className={styles.content}>
       <h1>
         {t('submit_to_before')}
-        {isSubplebbitSubmitView ? subplebbitHeaderLink : 'seedit'}
+        {isSubplebbitSubmit ? subplebbitHeaderLink : 'seedit'}
         {t('submit_to_after')}
       </h1>
       <div className={styles.form}>
@@ -154,7 +154,7 @@ const Submit = () => {
                 className={`${styles.input} ${styles.inputCommunity}`}
                 type='text'
                 placeholder='"community.eth" or "12D3KooW..."'
-                defaultValue={isSubplebbitSubmitView ? paramsSubplebbitAddress : undefined}
+                defaultValue={isSubplebbitSubmit ? paramsSubplebbitAddress : undefined}
                 ref={subplebbitAddressRef}
               />
             </div>

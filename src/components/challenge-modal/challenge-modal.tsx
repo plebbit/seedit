@@ -16,7 +16,7 @@ const Challenge = ({ challenge, closeModal }: ChallengeProps) => {
   const publication = challenge?.[1];
   const { content, parentCid, shortSubplebbitAddress, title } = publication || {};
   const publicationContent = content || title; // titles are mandatory on seedit
-  const parentComment = useComment({commentCid: parentCid});
+  const parentComment = useComment({ commentCid: parentCid });
   const parentAddress = parentComment?.author?.shortAddress;
 
   const [currentChallengeIndex, setCurrentChallengeIndex] = useState(0);
@@ -49,21 +49,16 @@ const Challenge = ({ challenge, closeModal }: ChallengeProps) => {
     <div className={styles.container}>
       <div className={styles.title}>{t('challenge_from', { subplebbit: shortSubplebbitAddress })}</div>
       <div className={styles.subTitle}>
-      {parentCid 
-        ? t('challenge_for_reply', { parentAddress, publicationContent }) 
-        : t('challenge_for_post', { publicationContent })
-      }
+        {parentCid ? t('challenge_for_reply', { parentAddress, publicationContent }) : t('challenge_for_post', { publicationContent })}
       </div>
       <div className={styles.challengeMediaWrapper}>
-        <img alt='challenge' className={styles.challengeMedia} src={`data:image/png;base64,${challenges[currentChallengeIndex]?.challenge}`} />
+        <img alt={t('loading')} className={styles.challengeMedia} src={`data:image/png;base64,${challenges[currentChallengeIndex]?.challenge}`} />
       </div>
       <div>
         <input onKeyDown={onEnterKey} onChange={onAnswersChange} value={answers[currentChallengeIndex] || ''} className={styles.challengeInput} />
       </div>
       <div className={styles.challengeFooter}>
-        <div className={styles.counter}>
-          {t('challenge_counter', { index: currentChallengeIndex + 1, total: challenges?.length })}
-        </div>
+        <div className={styles.counter}>{t('challenge_counter', { index: currentChallengeIndex + 1, total: challenges?.length })}</div>
         <span className={styles.buttons}>
           <button onClick={closeModal}>{t('cancel')}</button>
           {challenges.length > 1 && (

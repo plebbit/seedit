@@ -10,7 +10,6 @@
   padding-right: 4px;
   line-height: 1.6em;
   white-space: nowrap;
-
 }
 
 .buttons li a {
@@ -27,13 +26,29 @@
   padding: 0 4px 0 4px;
 }
 
-.buttons .button:hover {
-  text-decoration: underline;
-}
-.buttons .first:hover {
+.buttons li:hover {
   text-decoration: underline;
 }
 
 .buttons .button span {
   cursor: pointer;
+}
+
+.stamp {
+  color: var(--text);
+  border-color: currentColor;
+  border-radius: 3px;
+  border: 1px solid;
+  display: inline-block;
+  font-size: 10px;
+  line-height: 14px;
+  padding: 0 4px;
+}
+
+.buttonsReply {
+  margin-left: 29px;
+}
+
+.firstButton {
+  padding-left: 0 !important;
 }

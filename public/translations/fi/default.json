@@ -37,8 +37,8 @@
   "time_x_months_ago": "{{count}} kuukautta sitten",
   "time_1_year_ago": "1 vuosi sitten",
   "time_x_years_ago": "{{count}} vuotta sitten",
-  "post_label_spoiler": "Juonipaljastus",
-  "post_label_unspoiler": "Poista juonipaljastus",
+  "spoiler": "Juonipaljastus",
+  "unspoiler": "Poista juonipaljastus",
   "reply_permalink": "Pysyvä linkki",
   "reply_embed": "Upottaa",
   "reply_reply": "Vastaus",
@@ -66,5 +66,6 @@
   "challenge_counter": "{{index}}/{{total}}",
   "cancel": "Peruuta",
   "previous": "Edellinen",
-  "next": "Seuraava"
+  "next": "Seuraava",
+  "loading": "Ladataan"
 }

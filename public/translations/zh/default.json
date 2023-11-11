@@ -37,8 +37,8 @@
   "time_x_months_ago": "{{count}}个月前",
   "time_1_year_ago": "1年前",
   "time_x_years_ago": "{{count}}年前",
-  "post_label_spoiler": "剧透",
-  "post_label_unspoiler": "取消剧透",
+  "spoiler": "剧透",
+  "unspoiler": "取消剧透",
   "reply_permalink": "永久链接",
   "reply_embed": "嵌入",
   "reply_reply": "回复",
@@ -66,5 +66,6 @@
   "challenge_counter": "{{index}} 共 {{total}}",
   "cancel": "取消",
   "previous": "上一个",
-  "next": "下一个"
+  "next": "下一个",
+  "loading": "加载中"
 }

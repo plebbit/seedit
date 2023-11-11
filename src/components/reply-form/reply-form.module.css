@@ -1,0 +1,55 @@
+.mdContainer {
+  margin: 5px 0 10px 0px;
+  font-size: small;
+  padding: 0 1px;
+  width: 500px;
+  unicode-bidi: isolate;
+  font-size: small;
+}
+
+.md {
+  margin-top: 15px;
+  margin-bottom: 5px;
+  font-weight: 400;
+  max-width: 60em;
+}
+
+.url {
+  background-color: var(--background);
+  color: var(--text);
+}
+
+.spoiler {
+  padding-left: 5px;
+}
+
+.textarea {
+  width: 500px;
+  height: 100px;
+  background-color: var(--background);
+  color: var(--text);
+  font: normal small verdana,arial,helvetica,sans-serif;
+  line-height: 1.42em;
+  font-size: 14px;
+  word-wrap: break-word;
+}
+
+@media (max-width: 768px) {
+  .textarea {
+    max-width: 500px;
+    width: calc(100vw - 40px);
+  }
+
+  _::-webkit-full-page-media, _:future, :root .textarea {
+    width: calc(100vw - 47px);
+  }
+}
+
+.save, .cancel {
+  margin: 5px 5px 0 0;
+  -webkit-appearance: button;
+  appearance: button;
+  cursor: pointer;
+  padding: 2px 6px 3px;
+  text-transform: lowercase;
+}

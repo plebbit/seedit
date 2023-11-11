@@ -6,6 +6,7 @@ import { useFeed } from '@plebbit/plebbit-react-hooks';
 import styles from './home.module.css';
 import Post from '../../components/post';
 import useFeedStateString from '../../hooks/use-feed-state-string';
+import { useTranslation } from 'react-i18next';
 
 const lastVirtuosoStates: { [key: string]: StateSnapshot } = {};
 
@@ -17,7 +18,8 @@ const Home = () => {
   // TODO: replace mock content with useDefaultSubplebbitAddresses after spam issue is resolved with challenge API
   const sortType = useParams<{ sortType: string }>().sortType || 'hot';
   const { feed, hasMore, loadMore } = useFeed({ subplebbitAddresses, sortType });
-  const loadingStateString = useFeedStateString(subplebbitAddresses) || 'loading...';
+  const { t } = useTranslation();
+  const loadingStateString = useFeedStateString(subplebbitAddresses) || t('loading');
 
   useEffect(() => {
     document.title = `seedit`;

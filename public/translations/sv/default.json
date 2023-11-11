@@ -37,8 +37,8 @@
   "time_x_months_ago": "För {{count}} månader sedan",
   "time_1_year_ago": "För 1 år sedan",
   "time_x_years_ago": "För {{count}} år sedan",
-  "post_label_spoiler": "Spoiler",
-  "post_label_unspoiler": "Ingen spoiler",
+  "spoiler": "Spoiler",
+  "unspoiler": "Ingen spoiler",
   "reply_permalink": "Permalänk",
   "reply_embed": "Embed",
   "reply_reply": "Svar",
@@ -66,5 +66,6 @@
   "challenge_counter": "{{index}} av {{total}}",
   "cancel": "Avbryt",
   "previous": "Föregående",
-  "next": "Nästa"
+  "next": "Nästa",
+  "loading": "Laddar"
 }

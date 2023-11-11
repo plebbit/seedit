@@ -37,8 +37,8 @@
   "time_x_months_ago": "{{count}}ヶ月前",
   "time_1_year_ago": "1年前",
   "time_x_years_ago": "{{count}}年前",
-  "post_label_spoiler": "ネタバレ",
-  "post_label_unspoiler": "ネタバレ解除",
+  "spoiler": "ネタバレ",
+  "unspoiler": "ネタバレ解除",
   "reply_permalink": "パーマリンク",
   "reply_embed": "埋め込む",
   "reply_reply": "返信",
@@ -66,5 +66,6 @@
   "challenge_counter": "{{index}} / {{total}}",
   "cancel": "キャンセル",
   "previous": "前",
-  "next": "次"
+  "next": "次",
+  "loading": "読み込み中"
 }

@@ -3,7 +3,7 @@ import styles from './post.module.css';
 import { Link, useLocation, useParams } from 'react-router-dom';
 import { useAccount, Comment, useSubplebbit } from '@plebbit/plebbit-react-hooks';
 import { useTranslation } from 'react-i18next';
-import { checkCurrentView } from '../../lib/utils/view-utils';
+import { isPendingView, isPostView } from '../../lib/utils/view-utils';
 import { getCommentMediaInfoMemoized, getHasThumbnail } from '../../lib/utils/media-utils';
 import { getHostname } from '../../lib/utils/url-utils';
 import { getFormattedTime } from '../../lib/utils/time-utils';
@@ -12,6 +12,7 @@ import Expando from './expando';
 import Flair from './flair';
 import PostTools from './post-tools';
 import Thumbnail from './thumbnail';
+import { usePendingReplyCount } from '../../hooks/use-pending-replycount';
 
 interface PostProps {
   index?: number;
@@ -26,9 +27,9 @@ const Post = ({ post, index }: PostProps) => {
   const params = useParams();
   const location = useLocation();
 
-  const isPostView = checkCurrentView('post', location.pathname, params);
-  const isPendingView = checkCurrentView('pending', location.pathname, params);
-  const isInPostView = isPostView || isPendingView;
+  const isPost = isPostView(location.pathname, params);
+  const isPending = isPendingView(location.pathname, params);
+  const isInPostView = isPost || isPending;
   const [isExpanded, setIsExpanded] = useState(isInPostView);
   const toggleExpanded = () => setIsExpanded(!isExpanded);
 
@@ -36,9 +37,12 @@ const Post = ({ post, index }: PostProps) => {
   const hasThumbnail = getHasThumbnail(commentMediaInfo, link);
   const linkUrl = getHostname(link);
 
-  const postAuthor = isPendingView ? account?.author?.shortAddress : author?.shortAddress;
+  const postAuthor = isPending ? account?.author?.shortAddress : author?.shortAddress;
   const postScore = upvoteCount === 0 && downvoteCount === 0 ? '•' : upvoteCount - downvoteCount || '•';
   const postTitleOrContent = (title?.length > 300 ? title?.slice(0, 300) + '...' : title) || (content?.length > 300 ? content?.slice(0, 300) + '...' : content);
+
+  const pendingReplyCount = usePendingReplyCount({ parentCommentCid: cid });
+  const totalReplyCount = replyCount + pendingReplyCount;
 
   return (
     <div className={styles.container} key={index}>
@@ -114,7 +118,7 @@ const Post = ({ post, index }: PostProps) => {
                 p/{subplebbit?.shortAddress}
               </Link>
             </p>
-            <PostTools cid={cid} replyCount={replyCount} subplebbitAddress={subplebbitAddress} />
+            <PostTools cid={cid} replyCount={totalReplyCount} subplebbitAddress={subplebbitAddress} />
           </div>
         </div>
       </div>

@@ -37,8 +37,8 @@
   "time_x_months_ago": "{{count}} মাস আগে",
   "time_1_year_ago": "১ বছর আগে",
   "time_x_years_ago": "{{count}} বছর আগে",
-  "post_label_spoiler": "স্পয়লার",
-  "post_label_unspoiler": "আনস্পয়লার",
+  "spoiler": "স্পয়লার",
+  "unspoiler": "আনস্পয়লার",
   "reply_permalink": "স্থায়ী লিঙ্ক",
   "reply_embed": "embed",
   "reply_reply": "উত্তর",
@@ -66,5 +66,6 @@
   "challenge_counter": "{{index}} থেকে {{total}}",
   "cancel": "বাতিল",
   "previous": "পূর্ববর্তী",
-  "next": "পরবর্তী"
+  "next": "পরবর্তী",
+  "loading": "লোড হচ্ছে"
 }

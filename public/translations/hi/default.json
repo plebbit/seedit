@@ -37,8 +37,8 @@
   "time_x_months_ago": "{{count}} महीने पहले",
   "time_1_year_ago": "1 साल पहले",
   "time_x_years_ago": "{{count}} साल पहले",
-  "post_label_spoiler": "स्पॉयलर",
-  "post_label_unspoiler": "अनस्पॉयलर",
+  "spoiler": "स्पॉयलर",
+  "unspoiler": "अनस्पॉयलर",
   "reply_permalink": "स्थायी लिंक",
   "reply_embed": "एम्बेड",
   "reply_reply": "उत्तर",
@@ -66,5 +66,6 @@
   "challenge_counter": "{{index}} में से {{total}}",
   "cancel": "रद्द करें",
   "previous": "पिछला",
-  "next": "अगला"
+  "next": "अगला",
+  "loading": "लोड हो रहा है"
 }

@@ -37,8 +37,8 @@
   "time_x_months_ago": "{{count}} måneder siden",
   "time_1_year_ago": "1 år siden",
   "time_x_years_ago": "{{count}} år siden",
-  "post_label_spoiler": "Spoiler",
-  "post_label_unspoiler": "Fjern spoiler",
+  "spoiler": "Spoiler",
+  "unspoiler": "Fjern spoiler",
   "reply_permalink": "Permalink",
   "reply_embed": "Embed",
   "reply_reply": "Svar",
@@ -66,5 +66,6 @@
   "challenge_counter": "{{index}} af {{total}}",
   "cancel": "Annuller",
   "previous": "Forrige",
-  "next": "Næste"
+  "next": "Næste",
+  "loading": "Indlæser"
 }

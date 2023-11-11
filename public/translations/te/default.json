@@ -37,8 +37,8 @@
   "time_x_months_ago": "{{count}} నెలల క్రితం",
   "time_1_year_ago": "1 సంవత్సరం క్రితం",
   "time_x_years_ago": "{{count}} సంవత్సరాల క్రితం",
-  "post_label_spoiler": "స్పోయిలర్",
-  "post_label_unspoiler": "ఉన్‌స్పోయిలర్",
+  "spoiler": "స్పోయిలర్",
+  "unspoiler": "ఉన్‌స్పోయిలర్",
   "reply_permalink": "శాశ్వత లింకు",
   "reply_embed": "అంతర్గతం చేయు",
   "reply_reply": "స్పందన",
@@ -66,5 +66,6 @@
   "challenge_counter": "{{index}} లో {{total}}",
   "cancel": "రద్దు చేయి",
   "previous": "మునుపటి",
-  "next": "తదుపరి"
+  "next": "తదుపరి",
+  "loading": "లోడ్ అవుతోంది"
 }

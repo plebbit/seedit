@@ -37,8 +37,8 @@
   "time_x_months_ago": "Před {{count}} měsíci",
   "time_1_year_ago": "Před 1 rokem",
   "time_x_years_ago": "Před {{count}} roky",
-  "post_label_spoiler": "Spoiler",
-  "post_label_unspoiler": "Odstranit spoiler",
+  "spoiler": "Spoiler",
+  "unspoiler": "Odstranit spoiler",
   "reply_permalink": "Trvalý odkaz",
   "reply_embed": "Embed",
   "reply_reply": "Odpověď",
@@ -66,5 +66,6 @@
   "challenge_counter": "{{index}} z {{total}}",
   "cancel": "Zrušit",
   "previous": "Předchozí",
-  "next": "Další"
+  "next": "Další",
+  "loading": "Načítání"
 }

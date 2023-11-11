@@ -5,7 +5,7 @@ import useTheme from '../../hooks/use-theme';
 import AccountBar from './account-bar';
 import { useSubplebbit } from '@plebbit/plebbit-react-hooks';
 import { useTranslation } from 'react-i18next';
-import { checkCurrentView } from '../../lib/utils/view-utils';
+import { isHomeView, isPostView, isSubplebbitView, isSubmitView, isSubplebbitSubmitView } from '../../lib/utils/view-utils';
 
 const sortTypes = ['/hot', '/new', '/active', '/controversialAll', '/topAll'];
 
@@ -18,11 +18,11 @@ const Header = () => {
   const sortLabels = [t('header_hot'), t('header_new'), t('header_active'), t('header_controversial'), t('header_top')];
   const subplebbit = useSubplebbit({ subplebbitAddress: params.subplebbitAddress });
   const { title, shortAddress } = subplebbit || {};
-  const isHomeView = checkCurrentView('home', location.pathname, params);
-  const isPostView = checkCurrentView('post', location.pathname, params);
-  const isSubplebbitView = checkCurrentView('subplebbit', location.pathname, params);
-  const isSubmitView = checkCurrentView('submit', location.pathname, params);
-  const isSubplebbitSubmitView = checkCurrentView('subplebbit/submit', location.pathname, params);
+  const isHome = isHomeView(location.pathname);
+  const isPost = isPostView(location.pathname, params);
+  const isSubplebbit = isSubplebbitView(location.pathname, params);
+  const isSubmit = isSubmitView(location.pathname);
+  const isSubplebbitSubmit = isSubplebbitSubmitView(location.pathname, params);
 
   const handleSelect = (choice: string) => {
     setSelectedSortType(choice);
@@ -53,9 +53,9 @@ const Header = () => {
   );
   let headerTabs;
 
-  if (isPostView) {
+  if (isPost) {
     headerTabs = commentsButton;
-  } else if (isHomeView) {
+  } else if (isHome) {
     headerTabs = sortItems;
   }
 
@@ -72,15 +72,15 @@ const Header = () => {
   let headerTitle;
   const submitTitle = <span style={{ textTransform: 'uppercase' }}>{t('submit')}</span>;
 
-  if (isSubplebbitSubmitView) {
+  if (isSubplebbitSubmit) {
     headerTitle = (
       <>
         {subplebbitTitle}: {submitTitle}
       </>
     );
-  } else if (isPostView || isSubplebbitView) {
+  } else if (isPost || isSubplebbit) {
     headerTitle = subplebbitTitle;
-  } else if (isSubmitView) {
+  } else if (isSubmit) {
     headerTitle = submitTitle;
   }
 
