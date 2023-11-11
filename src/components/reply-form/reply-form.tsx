@@ -1,5 +1,6 @@
-import styles from './reply-form.module.css';
+import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
+import styles from './reply-form.module.css';
 
 type ReplyFormProps = {
   isReplyingToReply?: boolean;
@@ -12,6 +13,12 @@ type ReplyFormProps = {
 
 const ReplyForm = ({ isReplyingToReply, onPublish, hideReplyForm, spoilerRef, textRef, urlRef }: ReplyFormProps) => {
   const { t } = useTranslation();
+
+  useEffect(() => {
+    if (isReplyingToReply && textRef.current) {
+      textRef.current.focus();
+    }
+  }, [isReplyingToReply, textRef]);
 
   return (
     <div className={styles.mdContainer} style={{marginLeft: isReplyingToReply ? '25px' : ''}}>
