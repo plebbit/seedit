@@ -72,7 +72,7 @@ const useReply = (comment: Comment) => {
 
   const setContent = useMemo(
     () => (content: string | undefined, link: string | undefined, spoiler: boolean) => setReplyStore({ subplebbitAddress, parentCid, content, link, spoiler }),
-    [subplebbitAddress, parentCid, setReplyStore, comment],
+    [subplebbitAddress, parentCid, setReplyStore],
   );
 
   const resetContent = useMemo(() => () => resetReplyStore(parentCid), [parentCid, resetReplyStore]);

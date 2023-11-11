@@ -17,13 +17,13 @@ const Post = () => {
   const { replyCount, subplebbitAddress, title } = comment || {};
   const subplebbit = useSubplebbit({ subplebbitAddress });
   const stateString = useStateString(comment);
-  
+
   const replies = useReplies(comment).map((reply, index) => <Reply key={`${index}${reply.cid}`} reply={reply} />) || '';
   const { setContent, resetContent, replyIndex, publishReply } = useReply(comment);
 
   const postTitle = title?.slice(0, 40) || comment?.content?.slice(0, 40);
   const subplebbitTitle = subplebbit?.title || subplebbit?.shortAddress;
-  
+
   const textRef = useRef<HTMLTextAreaElement>(null);
   const urlRef = useRef<HTMLInputElement>(null);
   const spoilerRef = useRef<HTMLInputElement>(null);
