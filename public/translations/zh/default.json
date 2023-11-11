@@ -67,5 +67,6 @@
   "cancel": "取消",
   "previous": "上一个",
   "next": "下一个",
-  "loading": "加载中"
+  "loading": "加载中",
+  "pending": "待审批"
 }

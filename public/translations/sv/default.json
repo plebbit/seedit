@@ -67,5 +67,6 @@
   "cancel": "Avbryt",
   "previous": "Föregående",
   "next": "Nästa",
-  "loading": "Laddar"
+  "loading": "Laddar",
+  "pending": "Avvaktar"
 }

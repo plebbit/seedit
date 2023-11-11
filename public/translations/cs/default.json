@@ -67,5 +67,6 @@
   "cancel": "Zrušit",
   "previous": "Předchozí",
   "next": "Další",
-  "loading": "Načítání"
+  "loading": "Načítání",
+  "pending": "Čeká na schválení"
 }

@@ -67,5 +67,6 @@
   "cancel": "Annuler",
   "previous": "Précédent",
   "next": "Suivant",
-  "loading": "Chargement"
+  "loading": "Chargement",
+  "pending": "En attente"
 }

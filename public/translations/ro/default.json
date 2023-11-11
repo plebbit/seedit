@@ -67,5 +67,6 @@
   "cancel": "Anulează",
   "previous": "Anterior",
   "next": "Următor",
-  "loading": "Se încarcă"
+  "loading": "Se încarcă",
+  "pending": "În așteptare"
 }

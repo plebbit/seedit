@@ -67,5 +67,6 @@
   "cancel": "Peruuta",
   "previous": "Edellinen",
   "next": "Seuraava",
-  "loading": "Ladataan"
+  "loading": "Ladataan",
+  "pending": "Odottaa hyväksyntää"
 }

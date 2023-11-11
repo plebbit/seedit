@@ -67,5 +67,6 @@
   "cancel": "ביטול",
   "previous": "קודם",
   "next": "הבא",
-  "loading": "טוען"
+  "loading": "טוען",
+  "pending": "ממתין לאישור"
 }

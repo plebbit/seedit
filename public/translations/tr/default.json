@@ -67,5 +67,6 @@
   "cancel": "İptal",
   "previous": "Önceki",
   "next": "Sonraki",
-  "loading": "Yükleniyor"
+  "loading": "Yükleniyor",
+  "pending": "Beklemede"
 }

@@ -67,5 +67,6 @@
   "cancel": "Avbryt",
   "previous": "Forrige",
   "next": "Neste",
-  "loading": "Laster"
+  "loading": "Laster",
+  "pending": "Venter på godkjenning"
 }

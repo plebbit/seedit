@@ -67,5 +67,6 @@
   "cancel": "Annuller",
   "previous": "Forrige",
   "next": "Næste",
-  "loading": "Indlæser"
+  "loading": "Indlæser",
+  "pending": "Afventer"
 }
