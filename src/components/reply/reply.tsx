@@ -109,7 +109,7 @@ const Reply = ({ reply }: ReplyProps) => {
             <div className={styles.md}>{contentOrRemoved}</div>
           </div>
         </div>
-        <PostTools cid={reply.cid}isReply={true} replyCount={replies.length} spoiler={spoiler} subplebbitAddress={reply.subplebbitAddress} />
+        <PostTools cid={reply.cid} isReply={true} replyCount={replies.length} spoiler={spoiler} subplebbitAddress={reply.subplebbitAddress} />
         {replies.map((reply, index) => (
           <Reply key={`${index}${reply.cid}`} reply={reply} />
         ))}

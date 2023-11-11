@@ -47,7 +47,7 @@ const PostTools = ({ cid, isReply, replyCount, spoiler, subplebbitAddress }: Pos
 
   const replyLabels = (
     <>
-      <li className={`${styles.button} ${ !spoiler ? styles.firstButton : ''}`}>
+      <li className={`${styles.button} ${!spoiler ? styles.firstButton : ''}`}>
         <span>{t('reply_permalink')}</span>
       </li>
       <li className={styles.button}>
@@ -63,7 +63,7 @@ const PostTools = ({ cid, isReply, replyCount, spoiler, subplebbitAddress }: Pos
         <span>{t('reply_reply')}</span>
       </li>
     </>
-  )
+  );
 
   return (
     <ul className={`${styles.buttons} ${isReply ? styles.buttonsReply : ''}`}>

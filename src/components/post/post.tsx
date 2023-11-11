@@ -12,6 +12,7 @@ import Expando from './expando';
 import Flair from './flair';
 import PostTools from './post-tools';
 import Thumbnail from './thumbnail';
+import { usePendingReplyCount } from '../../hooks/use-pending-replycount';
 
 interface PostProps {
   index?: number;
@@ -39,6 +40,9 @@ const Post = ({ post, index }: PostProps) => {
   const postAuthor = isPending ? account?.author?.shortAddress : author?.shortAddress;
   const postScore = upvoteCount === 0 && downvoteCount === 0 ? '•' : upvoteCount - downvoteCount || '•';
   const postTitleOrContent = (title?.length > 300 ? title?.slice(0, 300) + '...' : title) || (content?.length > 300 ? content?.slice(0, 300) + '...' : content);
+
+  const pendingReplyCount = usePendingReplyCount({ parentCommentCid: cid });
+  const totalReplyCount = replyCount + pendingReplyCount;
 
   return (
     <div className={styles.container} key={index}>
@@ -114,7 +118,7 @@ const Post = ({ post, index }: PostProps) => {
                 p/{subplebbit?.shortAddress}
               </Link>
             </p>
-            <PostTools cid={cid} replyCount={replyCount} subplebbitAddress={subplebbitAddress} />
+            <PostTools cid={cid} replyCount={totalReplyCount} subplebbitAddress={subplebbitAddress} />
           </div>
         </div>
       </div>

@@ -7,6 +7,7 @@ import PostComponent from '../../components/post';
 import useReplies from '../../hooks/use-replies';
 import Reply from '../../components/reply';
 import useStateString from '../../hooks/use-state-string';
+import { usePendingReplyCount } from '../../hooks/use-pending-replycount';
 
 const Post = () => {
   const { commentCid } = useParams();
