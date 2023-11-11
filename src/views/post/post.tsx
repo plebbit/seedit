@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useComment, useSubplebbit } from '@plebbit/plebbit-react-hooks';
 import { useTranslation } from 'react-i18next';
@@ -7,19 +7,55 @@ import PostComponent from '../../components/post';
 import useReplies from '../../hooks/use-replies';
 import Reply from '../../components/reply';
 import useStateString from '../../hooks/use-state-string';
+import useReply from '../../hooks/use-reply';
 import { usePendingReplyCount } from '../../hooks/use-pending-replycount';
 
 const Post = () => {
+  const { t } = useTranslation();
   const { commentCid } = useParams();
   const comment = useComment({ commentCid });
-  const { content, replyCount, subplebbitAddress, title } = comment || {};
+  const { replyCount, subplebbitAddress, title } = comment || {};
   const subplebbit = useSubplebbit({ subplebbitAddress });
-  const replies = useReplies(comment).map((reply, index) => <Reply key={`${index}${reply.cid}`} reply={reply} />) || '';
-  const postTitle = title?.slice(0, 40) || content?.slice(0, 40);
-  const subplebbitTitle = subplebbit?.title || subplebbit?.shortAddress;
-  const { t } = useTranslation();
   const stateString = useStateString(comment);
-  const commentCount = replyCount === 0 ? t('no_comments') : replyCount === 1 ? t('one_comment') : t('all_comments', { count: replyCount });
+  
+  const replies = useReplies(comment).map((reply, index) => <Reply key={`${index}${reply.cid}`} reply={reply} />) || '';
+  const { setContent, resetContent, replyIndex, publishReply } = useReply(comment);
+
+  const postTitle = title?.slice(0, 40) || comment?.content?.slice(0, 40);
+  const subplebbitTitle = subplebbit?.title || subplebbit?.shortAddress;
+  
+  const textRef = useRef<HTMLTextAreaElement>(null);
+  const urlRef = useRef<HTMLInputElement>(null);
+  const spoilerRef = useRef<HTMLInputElement>(null);
+
+  const pendingReplyCount = usePendingReplyCount({ parentCommentCid: commentCid });
+  const totalReplyCount = replyCount + pendingReplyCount;
+  const commentCount = totalReplyCount === 0 ? t('no_comments') : totalReplyCount === 1 ? t('one_comment') : t('all_comments', { count: totalReplyCount });
+
+  const [readyToPublish, setReadyToPublish] = useState(false);
+
+  const onPublish = () => {
+    const currentContent = textRef.current?.value || '';
+    if (!currentContent.trim()) {
+      alert(`missing content`);
+      return;
+    }
+    setContent(textRef.current?.value || undefined, urlRef.current?.value || undefined, spoilerRef.current?.checked || false);
+    setReadyToPublish(true);
+  };
+
+  useEffect(() => {
+    if (readyToPublish) {
+      publishReply();
+      setReadyToPublish(false);
+    }
+  }, [readyToPublish, publishReply]);
+
+  useEffect(() => {
+    if (typeof replyIndex === 'number') {
+      resetContent();
+    }
+  }, [replyIndex, resetContent]);
 
   useEffect(() => {
     document.title = `${postTitle || ''}${postTitle && subplebbitTitle ? ' - ' : ''}${subplebbitTitle || ''}${postTitle || subplebbitTitle ? ' - seedit' : 'seedit'}`;
@@ -45,14 +81,16 @@ const Post = () => {
           </div>
           <div className={styles.mdContainer}>
             <div className={styles.md}>
-              <input className={styles.url} placeholder={`url (${t('optional')})`} />
+              <input className={styles.url} ref={urlRef} placeholder={`url (${t('optional')})`} />
               <span className={styles.spoiler}>
-              {t('spoiler')}: <input type='checkbox' className={styles.checkbox} />
+                {t('spoiler')}: <input type='checkbox' className={styles.checkbox} ref={spoilerRef} />
               </span>
-              <textarea className={styles.textarea} placeholder={t('text')} />
+              <textarea className={styles.textarea} ref={textRef} placeholder={t('text')} />
             </div>
             <div className={styles.bottomArea}>
-              <button className={styles.save}>{t('post_save')}</button>
+              <button className={styles.save} onClick={onPublish}>
+                {t('post_save')}
+              </button>
             </div>
           </div>
         </div>

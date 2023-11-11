@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
-import { usePublishComment, useSubplebbit } from '@plebbit/plebbit-react-hooks';
+import { PublishCommentOptions, usePublishComment, useSubplebbit } from '@plebbit/plebbit-react-hooks';
 import { useTranslation } from 'react-i18next';
 import { create } from 'zustand';
 import { isSubplebbitSubmitView } from '../../lib/utils/view-utils';
@@ -14,7 +14,7 @@ type SubmitState = {
   title: string | undefined;
   content: string | undefined;
   link: string | undefined;
-  publishCommentOptions: any;
+  publishCommentOptions: PublishCommentOptions;
   setSubmitStore: (data: Partial<SubmitState>) => void;
   resetSubmitStore: () => void;
 };
@@ -26,7 +26,7 @@ const useSubmitStore = create<SubmitState>((set) => ({
   title: undefined,
   content: undefined,
   link: undefined,
-  publishCommentOptions: undefined,
+  publishCommentOptions: {},
   setSubmitStore: ({ subplebbitAddress, title, content, link }) =>
     set((state) => {
       const nextState = { ...state };
