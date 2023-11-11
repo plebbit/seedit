@@ -12,7 +12,9 @@ import Thumbnail from '../post/thumbnail/';
 import Flair from '../post/flair/';
 import PostTools from '../post/post-tools';
 import ReplyForm from '../reply-form';
+import useDownvote from '../../hooks/use-downvote';
 import useReply from '../../hooks/use-reply';
+import useUpvote from '../../hooks/use-upvote';
 
 interface ReplyProps {
   depth: number;
@@ -23,6 +25,7 @@ interface ReplyProps {
 const Reply = ({ reply, depth }: ReplyProps) => {
   const {
     author: { shortAddress },
+    cid,
     content,
     downvoteCount,
     flair,
@@ -57,6 +60,8 @@ const Reply = ({ reply, depth }: ReplyProps) => {
   const spoilerRef = useRef<HTMLInputElement>(null);
 
   const [readyToPublish, setReadyToPublish] = useState(false);
+  const [upvoted, upvote] = useUpvote(reply);
+  const [downvoted, downvote] = useDownvote(reply);
 
   const onPublish = () => {
     const currentContent = textRef.current?.value || '';
@@ -86,8 +91,8 @@ const Reply = ({ reply, depth }: ReplyProps) => {
     <div className={styles.reply}>
       <div className={`${styles.replyWrapper} ${depth > 1 && styles.nested}`}>
         <div className={styles.midcol}>
-          <div className={`${styles.arrow} ${styles.arrowUp}`} />
-          <div className={`${styles.arrow} ${styles.arrowDown}`} />
+          <div className={`${styles.arrow} ${upvoted ? styles.upvoted : styles.arrowUp}`} onClick={() => cid && upvote()} />
+          <div className={`${styles.arrow} ${downvoted ? styles.downvoted : styles.arrowDown}`} onClick={() => cid && downvote()} />
         </div>
         <div className={styles.entry}>
           <p className={styles.tagline}>

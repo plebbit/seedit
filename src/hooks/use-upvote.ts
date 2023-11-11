@@ -1,5 +1,5 @@
 import {useMemo} from 'react'
-import {ChallengeVerification, Comment, usePublishVote, useAccountVote, Challenge} from '@plebbit/plebbit-react-hooks'
+import {ChallengeVerification, Comment, usePublishVote, useAccountVote} from '@plebbit/plebbit-react-hooks'
 import useChallengesStore from './use-challenges'
 import { alertChallengeVerificationFailed } from '../lib/utils/challenge-utils'
 

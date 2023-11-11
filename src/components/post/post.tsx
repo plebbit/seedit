@@ -12,9 +12,9 @@ import Expando from './expando';
 import Flair from './flair';
 import PostTools from './post-tools';
 import Thumbnail from './thumbnail';
+import useDownvote from '../../hooks/use-downvote';
 import { usePendingReplyCount } from '../../hooks/use-pending-replycount';
 import useUpvote from '../../hooks/use-upvote';
-import useDownvote from '../../hooks/use-downvote';
 
 interface PostProps {
   index?: number;
@@ -54,11 +54,11 @@ const Post = ({ post, index }: PostProps) => {
         <div className={styles.leftcol}>
           <div className={styles.midcol}>
             <div className={styles.arrowWrapper}>
-              <div className={`${styles.arrowCommon} ${upvoted ? styles.upvoted : styles.arrowUp}`} onClick={upvote} />
+              <div className={`${styles.arrowCommon} ${upvoted ? styles.upvoted : styles.arrowUp}`} onClick={() => cid && upvote()} />
             </div>
             <div className={styles.score}>{postScore}</div>
             <div className={styles.arrowWrapper}>
-              <div className={`${styles.arrowCommon} ${downvoted ? styles.downvoted : styles.arrowDown}`} onClick={downvote} />
+              <div className={`${styles.arrowCommon} ${downvoted ? styles.downvoted : styles.arrowDown}`} onClick={() => cid && downvote()} />
             </div>
           </div>
           {hasThumbnail && !isInPostView && (
