@@ -15,15 +15,15 @@ import ReplyForm from '../reply-form';
 import useReply from '../../hooks/use-reply';
 
 interface ReplyProps {
+  depth: number;
   key: string;
   reply: Comment;
 }
 
-const Reply = ({ reply }: ReplyProps) => {
+const Reply = ({ reply, depth }: ReplyProps) => {
   const {
     author: { shortAddress },
     content,
-    depth,
     downvoteCount,
     flair,
     link,
@@ -35,7 +35,7 @@ const Reply = ({ reply }: ReplyProps) => {
     upvoteCount,
   } = reply || {};
 
-  const replies = useReplies(reply).map((reply, index) => <Reply key={`${index}${reply.cid}`} reply={reply} />) || '';
+  const replies = useReplies(reply);
   const [expanded, setExpanded] = useState(false);
   const [isReplying, setIsReplying] = useState(false);
   const toggleExpanded = () => setExpanded(!expanded);
@@ -157,7 +157,9 @@ const Reply = ({ reply }: ReplyProps) => {
         {isReplying && (
           <ReplyForm isReplyingToReply={true} onPublish={onPublish} hideReplyForm={hideReplyForm} spoilerRef={spoilerRef} textRef={textRef} urlRef={urlRef} />
         )}
-        {replies}
+        {replies.map((reply, index) => (
+          <Reply key={`${index}${reply.cid}`} reply={reply} depth={(reply.depth || 1) + 1} />
+        ))}
       </div>
     </div>
   );

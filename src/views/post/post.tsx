@@ -19,7 +19,7 @@ const Post = () => {
   const subplebbit = useSubplebbit({ subplebbitAddress });
   const stateString = useStateString(comment);
 
-  const replies = useReplies(comment).map((reply, index) => <Reply key={`${index}${reply.cid}`} reply={reply} />) || '';
+  const replies = useReplies(comment);
   const { setContent, resetContent, replyIndex, publishReply } = useReply(comment);
 
   const postTitle = title?.slice(0, 40) || comment?.content?.slice(0, 40);
@@ -83,7 +83,11 @@ const Post = () => {
           <ReplyForm onPublish={onPublish} spoilerRef={spoilerRef} textRef={textRef} urlRef={urlRef} />
         </div>
         {stateString && <div className={styles.stateString}>{stateString}</div>}
-        <div className={styles.replies}>{replies}</div>
+        <div className={styles.replies}>
+          {replies.map((reply, index) => (
+            <Reply key={`${index}${reply.cid}`} reply={reply} depth={comment.depth} />
+          ))}
+        </div>
       </div>
     </div>
   );
