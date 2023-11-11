@@ -17,11 +17,19 @@ const PostTools = ({ cid, isReply, replyCount, spoiler, subplebbitAddress, showR
 
   const spoilerLabel = (
     <li>
-      <span className={styles.stamp}>
-        <span className={styles.content}>{spoiler && t('spoiler').toUpperCase()}</span>
+      <span className={`${styles.stamp} ${styles.stampSpoiler}`}>
+        <span className={`${styles.content} ${styles.contentSpoiler}`}>{spoiler && t('spoiler').toUpperCase()}</span>
       </span>
     </li>
   );
+
+  const pendingLabel = (
+    <li>
+      <span className={`${styles.stamp} ${styles.stampPending}`}>
+        <span className={`${styles.content} ${styles.contentPending}`}>{t('pending').toUpperCase()}</span>
+      </span>
+    </li>
+  )
 
   const postLabels = (
     <>
@@ -69,6 +77,7 @@ const PostTools = ({ cid, isReply, replyCount, spoiler, subplebbitAddress, showR
   return (
     <ul className={`${styles.buttons} ${isReply ? styles.buttonsReply : ''}`}>
       {spoiler && spoilerLabel}
+      {cid ?? pendingLabel}
       {isReply ? replyLabels : postLabels}
     </ul>
   );
