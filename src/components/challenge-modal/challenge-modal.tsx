@@ -4,6 +4,7 @@ import { Challenge as ChallengeType, useComment } from '@plebbit/plebbit-react-h
 import { useTranslation } from 'react-i18next';
 import useChallenges from '../../hooks/use-challenges';
 import styles from './challenge-modal.module.css';
+import { getPublicationPreview, getPublicationType, getVotePreview } from '../../lib/utils/challenge-utils';
 
 interface ChallengeProps {
   challenge: ChallengeType;
@@ -11,11 +12,15 @@ interface ChallengeProps {
 }
 
 const Challenge = ({ challenge, closeModal }: ChallengeProps) => {
-  const { t } = useTranslation();
   const challenges = challenge?.[0]?.challenges;
   const publication = challenge?.[1];
-  const { content, parentCid, shortSubplebbitAddress, title } = publication || {};
-  const publicationContent = content || title; // titles are mandatory on seedit
+  const publicationTarget = challenge?.[2] // the comment being voted on, replied to or edited
+  const publicationType = getPublicationType(publication);
+  const publicationContent = publicationType === 'vote' ? getPublicationPreview(publicationTarget) : getPublicationPreview(publication)
+  const votePreview = getVotePreview(publication)
+
+  const { parentCid, shortSubplebbitAddress, subplebbitAddress } = publication || {};
+  const { t } = useTranslation();
   const parentComment = useComment({ commentCid: parentCid });
   const parentAddress = parentComment?.author?.shortAddress;
 
@@ -47,8 +52,9 @@ const Challenge = ({ challenge, closeModal }: ChallengeProps) => {
 
   return (
     <div className={styles.container}>
-      <div className={styles.title}>{t('challenge_from', { subplebbit: shortSubplebbitAddress })}</div>
+      <div className={styles.title}>{t('challenge_from', { subplebbit: shortSubplebbitAddress || subplebbitAddress })}</div>
       <div className={styles.subTitle}>
+        {publicationType === 'vote' && votePreview + ' '}
         {parentCid ? t('challenge_for_reply', { parentAddress, publicationContent }) : t('challenge_for_post', { publicationContent })}
       </div>
       <div className={styles.challengeMediaWrapper}>
