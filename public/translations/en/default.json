@@ -6,7 +6,7 @@
   "header_top": "top",
   "header_about": "about",
   "header_comments": "comments",
-  "account_bar_preferences": "preferences",
+  "preferences": "preferences",
   "account_bar_language": "English",
   "submit": "submit",
   "dark": "dark",
@@ -67,5 +67,6 @@
   "cancel": "Cancel",
   "previous": "Previous",
   "next": "Next",
-  "loading": "Loading"
+  "loading": "Loading",
+  "pending": "Pending"
 }

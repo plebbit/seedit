@@ -6,7 +6,7 @@
   "header_top": "Topp",
   "header_about": "Om",
   "header_comments": "kommentarer",
-  "account_bar_preferences": "Innstillinger",
+  "preferences": "Innstillinger",
   "account_bar_language": "Engelsk",
   "submit": "Send inn",
   "dark": "Mørk",
@@ -67,5 +67,6 @@
   "cancel": "Avbryt",
   "previous": "Forrige",
   "next": "Neste",
-  "loading": "Laster"
+  "loading": "Laster",
+  "pending": "Venter på godkjenning"
 }

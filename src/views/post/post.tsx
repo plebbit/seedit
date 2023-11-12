@@ -43,6 +43,10 @@ const Post = () => {
     }
     setContent(textRef.current?.value || undefined, urlRef.current?.value || undefined, spoilerRef.current?.checked || false);
     setReadyToPublish(true);
+
+    if (textRef.current) {
+      textRef.current.value = '';
+    }
   };
 
   useEffect(() => {

@@ -6,7 +6,7 @@
   "header_top": "Hàng đầu",
   "header_about": "Về",
   "header_comments": "bình luận",
-  "account_bar_preferences": "Tùy chỉnh",
+  "preferences": "Tùy chỉnh",
   "account_bar_language": "Tiếng Anh",
   "submit": "Gửi",
   "dark": "Tối",
@@ -67,5 +67,6 @@
   "cancel": "Hủy bỏ",
   "previous": "Trước",
   "next": "Tiếp theo",
-  "loading": "Đang tải"
+  "loading": "Đang tải",
+  "pending": "Đang chờ duyệt"
 }

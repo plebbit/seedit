@@ -6,7 +6,7 @@
   "header_top": "برتر",
   "header_about": "درباره",
   "header_comments": "نظرات",
-  "account_bar_preferences": "تنظیمات",
+  "preferences": "تنظیمات",
   "account_bar_language": "انگلیسی",
   "submit": "ارسال",
   "dark": "تاریک",
@@ -67,5 +67,6 @@
   "cancel": "لغو",
   "previous": "قبلی",
   "next": "بعدی",
-  "loading": "بارگذاری"
+  "loading": "بارگذاری",
+  "pending": "در انتظار تایید"
 }

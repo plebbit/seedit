@@ -37,10 +37,17 @@
   background-image: url("/public/assets/buttons/arrow-up.png");
 }
 
+.upvoted {
+  background-image: url("/public/assets/buttons/arrow-upvoted.png") !important;
+}
+
 .arrowDown {
   background-image: url("/public/assets/buttons/arrow-down.png");
 }
 
+.downvoted {
+  background-image: url("/public/assets/buttons/arrow-downvoted.png") !important;
+}
 
 .score {
   text-align: center;

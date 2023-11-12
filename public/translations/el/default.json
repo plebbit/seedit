@@ -6,7 +6,7 @@
   "header_top": "Κορυφαία",
   "header_about": "Σχετικά",
   "header_comments": "σχόλια",
-  "account_bar_preferences": "Προτιμήσεις",
+  "preferences": "Προτιμήσεις",
   "account_bar_language": "Αγγλικά",
   "submit": "Υποβολή",
   "dark": "Σκοτεινός",
@@ -67,5 +67,6 @@
   "cancel": "Ακύρωση",
   "previous": "Προηγούμενο",
   "next": "Επόμενο",
-  "loading": "Φόρτωση"
+  "loading": "Φόρτωση",
+  "pending": "Εκκρεμεί"
 }

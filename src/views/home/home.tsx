@@ -22,8 +22,8 @@ const Home = () => {
   const loadingStateString = useFeedStateString(subplebbitAddresses) || t('loading');
 
   useEffect(() => {
-    document.title = `seedit`;
-  }, []);
+    document.title = `${t('home')} - seedit`;
+  }, [t]);
 
   let Footer;
   if (feed?.length === 0) {

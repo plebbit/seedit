@@ -6,7 +6,7 @@
   "header_top": "Legjobbak",
   "header_about": "Ról",
   "header_comments": "hozzászólások",
-  "account_bar_preferences": "Beállítások",
+  "preferences": "Beállítások",
   "account_bar_language": "Angol",
   "submit": "Küldés",
   "dark": "Sötét",
@@ -67,5 +67,6 @@
   "cancel": "Mégse",
   "previous": "Előző",
   "next": "Következő",
-  "loading": "Betöltés"
+  "loading": "Betöltés",
+  "pending": "Függőben"
 }

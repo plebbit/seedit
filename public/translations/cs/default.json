@@ -6,7 +6,7 @@
   "header_top": "Nejlepší",
   "header_about": "O",
   "header_comments": "komentáře",
-  "account_bar_preferences": "Předvolby",
+  "preferences": "Předvolby",
   "account_bar_language": "Angličtina",
   "submit": "Odeslat",
   "dark": "Tmavý",
@@ -67,5 +67,6 @@
   "cancel": "Zrušit",
   "previous": "Předchozí",
   "next": "Další",
-  "loading": "Načítání"
+  "loading": "Načítání",
+  "pending": "Čeká na schválení"
 }

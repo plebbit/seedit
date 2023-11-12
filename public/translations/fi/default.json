@@ -6,7 +6,7 @@
   "header_top": "Parhaat",
   "header_about": "Tietoja",
   "header_comments": "kommentit",
-  "account_bar_preferences": "Asetukset",
+  "preferences": "Asetukset",
   "account_bar_language": "Englanti",
   "submit": "Lähetä",
   "dark": "Tumma",
@@ -67,5 +67,6 @@
   "cancel": "Peruuta",
   "previous": "Edellinen",
   "next": "Seuraava",
-  "loading": "Ladataan"
+  "loading": "Ladataan",
+  "pending": "Odottaa hyväksyntää"
 }

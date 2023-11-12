@@ -6,7 +6,7 @@
   "header_top": "ยอดนิยมที่สุด",
   "header_about": "เกี่ยวกับ",
   "header_comments": "ความคิดเห็น",
-  "account_bar_preferences": "การตั้งค่า",
+  "preferences": "การตั้งค่า",
   "account_bar_language": "อังกฤษ",
   "submit": "ส่ง",
   "dark": "มืด",
@@ -67,5 +67,6 @@
   "cancel": "ยกเลิก",
   "previous": "ก่อนหน้า",
   "next": "ถัดไป",
-  "loading": "กำลังโหลด"
+  "loading": "กำลังโหลด",
+  "pending": "รอดำเนินการ"
 }

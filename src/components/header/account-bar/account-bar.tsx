@@ -37,7 +37,7 @@ const AccountBar = () => {
       </Link>
       <span className={styles.separator}>|</span>
       <Link to='/settings' className={styles.preferences}>
-        {t('account_bar_preferences')}
+        {t('preferences')}
       </Link>
     </div>
   );

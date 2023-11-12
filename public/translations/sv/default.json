@@ -6,7 +6,7 @@
   "header_top": "Topp",
   "header_about": "Om",
   "header_comments": "kommentarer",
-  "account_bar_preferences": "Inställningar",
+  "preferences": "Inställningar",
   "account_bar_language": "Engelska",
   "submit": "Skicka",
   "dark": "Mörk",
@@ -67,5 +67,6 @@
   "cancel": "Avbryt",
   "previous": "Föregående",
   "next": "Nästa",
-  "loading": "Laddar"
+  "loading": "Laddar",
+  "pending": "Avvaktar"
 }

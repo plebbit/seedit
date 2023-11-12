@@ -6,7 +6,7 @@
   "header_top": "Teratas",
   "header_about": "Tentang",
   "header_comments": "komentar",
-  "account_bar_preferences": "Preferensi",
+  "preferences": "Preferensi",
   "account_bar_language": "Inggris",
   "submit": "Kirim",
   "dark": "Gelap",
@@ -67,5 +67,6 @@
   "cancel": "Batal",
   "previous": "Sebelumnya",
   "next": "Berikutnya",
-  "loading": "Memuat"
+  "loading": "Memuat",
+  "pending": "Tertunda"
 }

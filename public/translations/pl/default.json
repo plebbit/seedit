@@ -6,7 +6,7 @@
   "header_top": "Najlepsze",
   "header_about": "O",
   "header_comments": "komentarze",
-  "account_bar_preferences": "Preferencje",
+  "preferences": "Preferencje",
   "account_bar_language": "Angielski",
   "submit": "Zatwierdź",
   "dark": "Ciemny",
@@ -67,5 +67,6 @@
   "cancel": "Anuluj",
   "previous": "Poprzedni",
   "next": "Następny",
-  "loading": "Ładowanie"
+  "loading": "Ładowanie",
+  "pending": "Oczekujące"
 }

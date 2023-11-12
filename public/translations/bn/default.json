@@ -6,7 +6,7 @@
   "header_top": "শীর্ষ",
   "header_about": "সম্পর্কে",
   "header_comments": "মন্তব্য",
-  "account_bar_preferences": "পছন্দ",
+  "preferences": "পছন্দ",
   "account_bar_language": "ইংরেজি",
   "submit": "জমা দিন",
   "dark": "অন্ধকার",
@@ -67,5 +67,6 @@
   "cancel": "বাতিল",
   "previous": "পূর্ববর্তী",
   "next": "পরবর্তী",
-  "loading": "লোড হচ্ছে"
+  "loading": "লোড হচ্ছে",
+  "pending": "মুলতুবি"
 }

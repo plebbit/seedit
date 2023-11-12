@@ -6,7 +6,7 @@
   "header_top": "Лучшее",
   "header_about": "О",
   "header_comments": "комментарии",
-  "account_bar_preferences": "Настройки",
+  "preferences": "Настройки",
   "account_bar_language": "Английский",
   "submit": "Отправить",
   "dark": "Темный",
@@ -67,5 +67,6 @@
   "cancel": "Отмена",
   "previous": "Предыдущий",
   "next": "Следующий",
-  "loading": "Загрузка"
+  "loading": "Загрузка",
+  "pending": "В ожидании"
 }

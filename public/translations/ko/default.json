@@ -6,7 +6,7 @@
   "header_top": "최고",
   "header_about": "대하여",
   "header_comments": "댓글",
-  "account_bar_preferences": "설정",
+  "preferences": "설정",
   "account_bar_language": "영어",
   "submit": "제출",
   "dark": "어두운",
@@ -67,5 +67,6 @@
   "cancel": "취소",
   "previous": "이전",
   "next": "다음",
-  "loading": "로딩 중"
+  "loading": "로딩 중",
+  "pending": "승인 대기 중"
 }

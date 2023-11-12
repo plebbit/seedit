@@ -6,7 +6,7 @@
   "header_top": "Pinakamataas",
   "header_about": "Tungkol sa",
   "header_comments": "mga komento",
-  "account_bar_preferences": "Mga Kagustuhan",
+  "preferences": "Mga Kagustuhan",
   "account_bar_language": "Ingles",
   "submit": "Ipadala",
   "dark": "Madilim",
@@ -67,5 +67,6 @@
   "cancel": "Kanselahin",
   "previous": "Nakaraan",
   "next": "Susunod",
-  "loading": "Naglo-load"
+  "loading": "Naglo-load",
+  "pending": "Nakabinbin"
 }

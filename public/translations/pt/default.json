@@ -6,7 +6,7 @@
   "header_top": "mais votado",
   "header_about": "sobre",
   "header_comments": "comentários",
-  "account_bar_preferences": "preferências",
+  "preferences": "preferências",
   "account_bar_language": "Português",
   "submit": "enviar",
   "dark": "escuro",
@@ -67,5 +67,6 @@
   "cancel": "Cancelar",
   "previous": "Anterior",
   "next": "Próximo",
-  "loading": "Carregando"
+  "loading": "Carregando",
+  "pending": "Pendente"
 }
