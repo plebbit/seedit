@@ -69,8 +69,7 @@ const Submit = () => {
 
   useEffect(() => {
     document.title = t('submit_to_before') + (isSubplebbitSubmit ? subplebbit?.title || subplebbit?.shortAddress : 'seedit') + t('submit_to_after');
-  }
-  , [isSubplebbitSubmit, subplebbit, t]);
+  }, [isSubplebbitSubmit, subplebbit, t]);
 
   const onPublish = () => {
     if (!titleRef.current?.value) {

@@ -14,10 +14,10 @@ interface ChallengeProps {
 const Challenge = ({ challenge, closeModal }: ChallengeProps) => {
   const challenges = challenge?.[0]?.challenges;
   const publication = challenge?.[1];
-  const publicationTarget = challenge?.[2] // the comment being voted on, replied to or edited
+  const publicationTarget = challenge?.[2];
   const publicationType = getPublicationType(publication);
-  const publicationContent = publicationType === 'vote' ? getPublicationPreview(publicationTarget) : getPublicationPreview(publication)
-  const votePreview = getVotePreview(publication)
+  const publicationContent = publicationType === 'vote' ? getPublicationPreview(publicationTarget) : getPublicationPreview(publication);
+  const votePreview = getVotePreview(publication);
 
   const { parentCid, shortSubplebbitAddress, subplebbitAddress } = publication || {};
   const { t } = useTranslation();
