@@ -65,8 +65,12 @@ const Submit = () => {
   const subplebbitAddressRef = useRef<HTMLInputElement>(null);
 
   const { subplebbitAddress, publishCommentOptions, setSubmitStore, resetSubmitStore } = useSubmitStore();
-
   const { index, publishComment } = usePublishComment(publishCommentOptions);
+
+  useEffect(() => {
+    document.title = t('submit_to_before') + (isSubplebbitSubmit ? subplebbit?.title || subplebbit?.shortAddress : 'seedit') + t('submit_to_after');
+  }
+  , [isSubplebbitSubmit, subplebbit, t]);
 
   const onPublish = () => {
     if (!titleRef.current?.value) {

@@ -1,11 +1,11 @@
-import {useMemo} from 'react'
-import {ChallengeVerification, Comment, usePublishVote, useAccountVote} from '@plebbit/plebbit-react-hooks'
-import useChallengesStore from './use-challenges'
-import { alertChallengeVerificationFailed } from '../lib/utils/challenge-utils'
+import { useMemo } from 'react';
+import { ChallengeVerification, Comment, usePublishVote, useAccountVote } from '@plebbit/plebbit-react-hooks';
+import useChallengesStore from './use-challenges';
+import { alertChallengeVerificationFailed } from '../lib/utils/challenge-utils';
 
 const useUpvote = (comment: Comment): [boolean, () => void] => {
-  const {addChallenge} = useChallengesStore();
-  const {vote} = useAccountVote({commentCid: comment?.cid})
+  const { addChallenge } = useChallengesStore();
+  const { vote } = useAccountVote({ commentCid: comment?.cid });
 
   const publishVoteOptions = useMemo(
     () => ({
@@ -18,20 +18,21 @@ const useUpvote = (comment: Comment): [boolean, () => void] => {
           resolve();
         });
       },
-      onChallengeVerification: (challengeVerification: ChallengeVerification, publication: any) => new Promise<void>((resolve) => {
-        alertChallengeVerificationFailed(challengeVerification, publication);
-        resolve();
-      }),
+      onChallengeVerification: (challengeVerification: ChallengeVerification, publication: any) =>
+        new Promise<void>((resolve) => {
+          alertChallengeVerificationFailed(challengeVerification, publication);
+          resolve();
+        }),
       onError: (error: Error) => {
         console.error(error);
         alert(error.message);
       },
     }),
-    [comment, vote, addChallenge]
-  )
-  const {publishVote} = usePublishVote(publishVoteOptions)
+    [comment, vote, addChallenge],
+  );
+  const { publishVote } = usePublishVote(publishVoteOptions);
 
-  return [vote === 1, publishVote]
-}
+  return [vote === 1, publishVote];
+};
 
-export default useUpvote
+export default useUpvote;

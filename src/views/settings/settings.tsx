@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import useTheme from '../../hooks/use-theme';
 import styles from './settings.module.css';
@@ -5,11 +6,20 @@ import styles from './settings.module.css';
 // prettier-ignore
 const availableLanguages = ['ar', 'bn', 'cs', 'da', 'de', 'el', 'en', 'es', 'fa', 'fi', 'fil', 'fr', 'he', 'hi', 'hu', 'id', 'it', 'ja', 'ko', 'mr', 'nl', 'no', 'pl', 'pt', 'ro', 'ru', 'sq', 'sv', 'te', 'th', 'tr', 'uk', 'ur', 'vi', 'zh'];
 
-const Theme = () => {
+const Settings = () => {
   const [theme, setTheme] = useTheme();
-  const { t } = useTranslation();
+  const { i18n, t } = useTranslation();
+  const { changeLanguage, language } = i18n;
 
-  return (
+  useEffect(() => {
+    document.title = `${t('preferences')} - seedit`;
+  }, [t]);
+
+  const onSelectLanguage = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    changeLanguage(e.target.value);
+  };
+
+  const themeSelect = (
     <div style={{ padding: '5px' }}>
       <select value={theme} onChange={(e) => setTheme(e.target.value)}>
         <option value='light'>{t('light')}</option>
@@ -17,17 +27,8 @@ const Theme = () => {
       </select>
     </div>
   );
-};
 
-const Language = () => {
-  const { i18n } = useTranslation();
-  const { changeLanguage, language } = i18n;
-
-  const onSelectLanguage = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    changeLanguage(e.target.value);
-  };
-
-  return (
+  const languageSelect = (
     <div style={{ padding: '5px' }}>
       <select value={language} onChange={onSelectLanguage}>
         {availableLanguages.map((lang) => (
@@ -38,13 +39,11 @@ const Language = () => {
       </select>
     </div>
   );
-};
 
-const Settings = () => {
   return (
     <div className={styles.temporary}>
-      <Theme />
-      <Language />
+      {themeSelect}
+      {languageSelect}
     </div>
   );
 };

@@ -21,7 +21,7 @@ const ReplyForm = ({ isReplyingToReply, onPublish, hideReplyForm, spoilerRef, te
   }, [isReplyingToReply, textRef]);
 
   return (
-    <div className={styles.mdContainer} style={{marginLeft: isReplyingToReply ? '25px' : ''}}>
+    <div className={styles.mdContainer} style={{ marginLeft: isReplyingToReply ? '25px' : '' }}>
       <div className={styles.md}>
         <input className={styles.url} ref={urlRef} placeholder={`url (${t('optional')})`} />
         <span className={styles.spoiler}>

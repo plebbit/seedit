@@ -29,7 +29,7 @@ const PostTools = ({ cid, isReply, replyCount, spoiler, subplebbitAddress, showR
         <span className={`${styles.content} ${styles.contentPending}`}>{t('pending').toUpperCase()}</span>
       </span>
     </li>
-  )
+  );
 
   const postLabels = (
     <>
