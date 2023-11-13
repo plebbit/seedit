@@ -1,16 +1,18 @@
 import { useEffect, useRef, useState } from 'react';
-import { Link, useLocation, useParams } from 'react-router-dom';
+import { Link, useLocation,  useNavigate, useParams } from 'react-router-dom';
 import { useAccount } from '@plebbit/plebbit-react-hooks';
 import { useTranslation } from 'react-i18next';
 import styles from './account-bar.module.css';
+import { isValidENS, isValidIPFS } from '../../../lib/utils/validation-utils';
 
 const AccountBar = () => {
   const account = useAccount();
   const { t } = useTranslation();
   const location = useLocation();
+  const navigate = useNavigate();
   const { subplebbitAddress } = useParams();
   const [searchHidden, setSearchHidden] = useState(true);
-  const searchBarRef = useRef<HTMLDivElement>(null);
+  const searchBarRef = useRef<HTMLFormElement>(null);
   const searchInputRef = useRef<HTMLInputElement>(null);
   let submitLink;
 
@@ -39,6 +41,20 @@ const AccountBar = () => {
     }
   }, [searchHidden]);
 
+  const handleSearchSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const searchInput = searchInputRef.current?.value;
+    if (searchInput) {
+      if (isValidENS(searchInput) || isValidIPFS(searchInput)) {
+        setSearchHidden(true);
+        searchInputRef.current.value = '';
+        navigate(`/p/${searchInput}`);
+      } else {
+        alert('Invalid community address');
+      }
+    }
+  }
+
   return (
     <>
       <div className={styles.header}>
@@ -64,10 +80,10 @@ const AccountBar = () => {
           {t('preferences')}
         </Link>
       </div>
-      <div className={styles.searchBar} style={{visibility: searchHidden ? 'hidden' : 'visible'}} ref={searchBarRef}>
+      <form className={styles.searchBar} style={{visibility: searchHidden ? 'hidden' : 'visible'}} ref={searchBarRef} onSubmit={handleSearchSubmit}>
         <input type='text' placeholder={`"community.eth" ${t('or')} "12D3KooW..."`} ref={searchInputRef} />
         <input type='submit' value='' />
-      </div>
+      </form>
     </>
   );
 };
