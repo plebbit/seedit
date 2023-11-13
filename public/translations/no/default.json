@@ -68,5 +68,6 @@
   "previous": "Forrige",
   "next": "Neste",
   "loading": "Laster",
-  "pending": "Venter på godkjenning"
+  "pending": "Venter på godkjenning",
+  "or": "eller"
 }
