@@ -3,13 +3,14 @@ import { Outlet, Route, Routes } from 'react-router-dom';
 import useTheme from './hooks/use-theme';
 import styles from './app.module.css';
 import Home from './views/home';
-import Post from './views/post';
-import TopBar from './components/topbar/topbar';
-import Header from './components/header/header';
-import Submit from './views/submit/submit';
-import Settings from './views/settings';
 import PendingPost from './views/pending-post';
+import Post from './views/post';
+import Settings from './views/settings';
+import Submit from './views/submit/submit';
+import Subplebbit from './views/subplebbit';
 import ChallengeModal from './components/challenge-modal';
+import Header from './components/header/header';
+import TopBar from './components/topbar/topbar';
 
 function App() {
   const [theme] = useTheme();
@@ -35,6 +36,7 @@ function App() {
           <Route path='/:sortType?' element={<Home />} />
           <Route path='/submit' element={<Submit />} />
           <Route path='p/:subplebbitAddress/c/:commentCid' element={<Post />} />
+          <Route path='p/:subplebbitAddress/' element={<Subplebbit />} />
           <Route path='p/:subplebbitAddress/submit' element={<Submit />} />
           <Route path='/settings' element={<Settings />} />
           <Route path='/profile/:accountCommentIndex' element={<PendingPost />} />
