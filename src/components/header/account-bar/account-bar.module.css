@@ -26,14 +26,19 @@
  cursor: default; 
 }
 
-.preferences {
+.textButton {
   text-decoration: none;
   font-weight: bold;
   color: var(--text-primary);
 }
 
-.preferences:hover {
+.textButton:hover {
   text-decoration: underline !important;
+}
+
+.iconButton {
+  text-decoration: none;
+  font-size: larger;
 }
 
 @media (min-width: 768px) {

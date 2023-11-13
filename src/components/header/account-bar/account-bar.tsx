@@ -24,19 +24,19 @@ const AccountBar = () => {
         </Link>
       </span>
       <span className={styles.separator}>|</span>
-      <Link to={submitLink} className={styles.preferences}>
+      <Link to={submitLink} className={styles.textButton}>
         {t('submit')}
       </Link>
       <span className={styles.separator}>|</span>
-      <Link to='/settings' className={styles.preferences} onClick={(e) => e.preventDefault()}>
+      <Link to='/settings' className={styles.iconButton} onClick={(e) => e.preventDefault()}>
         ✉️
       </Link>
       <span className={styles.separator}>|</span>
-      <Link to='/settings' className={styles.preferences} onClick={(e) => e.preventDefault()}>
+      <Link to='/settings' className={styles.iconButton} onClick={(e) => e.preventDefault()}>
         🔎
       </Link>
       <span className={styles.separator}>|</span>
-      <Link to='/settings' className={styles.preferences}>
+      <Link to='/settings' className={styles.textButton}>
         {t('preferences')}
       </Link>
     </div>
