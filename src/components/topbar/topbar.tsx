@@ -42,7 +42,7 @@ const TopBar = () => {
         </div>
         <div className={styles.dropChoices} style={{ display: isClicked && subscriptions?.length ? 'block' : 'none' }}>
           {subscriptions?.map((subscription: string, index: number) => (
-            <Link key={index} to={`p/${subscription}`} className={styles.choice} onClick={(event) => event.preventDefault()}>
+            <Link key={index} to={`/p/${subscription}`} className={styles.choice}>
               {subscription}
             </Link>
           ))}
@@ -68,7 +68,7 @@ const TopBar = () => {
             {ethFilteredAddresses?.map((address: string, index: number) => (
               <li key={index}>
                 {index !== 0 && <span className={styles.separator}>-</span>}
-                <Link to={`p/${address}`} className={styles.choice} onClick={(event) => event.preventDefault()}>
+                <Link to={`/p/${address}`} className={styles.choice}>
                   {address.slice(0, -4)}
                 </Link>
               </li>

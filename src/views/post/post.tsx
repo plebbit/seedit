@@ -71,7 +71,7 @@ const Post = () => {
   }, []);
 
   return (
-    <div className={styles.post}>
+    <div className={styles.content}>
       <PostComponent post={comment} />
       <div className={styles.replyArea}>
         <div className={styles.repliesTitle}>

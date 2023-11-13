@@ -117,7 +117,7 @@ const Post = ({ post, index }: PostProps) => {
                 u/{postAuthor}
               </Link>
                {t('post_to')}
-              <Link className={styles.subplebbit} to={`p/${subplebbitAddress}`} onClick={(e) => e.preventDefault()}>
+              <Link className={styles.subplebbit} to={`/p/${subplebbitAddress}`}>
                 {' '}
                 p/{subplebbit?.shortAddress}
               </Link>

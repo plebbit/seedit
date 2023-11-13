@@ -2,11 +2,11 @@ import { useEffect, useRef } from 'react';
 import { useParams } from 'react-router-dom';
 import { Virtuoso, VirtuosoHandle, StateSnapshot } from 'react-virtuoso';
 import { useFeed } from '@plebbit/plebbit-react-hooks';
-import useDefaultSubplebbitAddresses from '../../hooks/use-default-subplebbit-addresses';
+import { useTranslation } from 'react-i18next';
 import styles from './home.module.css';
 import Post from '../../components/post';
+import useDefaultSubplebbitAddresses from '../../hooks/use-default-subplebbit-addresses';
 import useFeedStateString from '../../hooks/use-feed-state-string';
-import { useTranslation } from 'react-i18next';
 
 const lastVirtuosoStates: { [key: string]: StateSnapshot } = {};
 
