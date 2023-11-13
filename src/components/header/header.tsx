@@ -60,12 +60,7 @@ const Header = () => {
   }
 
   const subplebbitTitle = (
-    <Link
-      to={`/p/${params.subplebbitAddress}`}
-      onClick={(e) => {
-        e.preventDefault();
-      }}
-    >
+    <Link to={`/p/${params.subplebbitAddress}`}>
       {title || shortAddress}
     </Link>
   );

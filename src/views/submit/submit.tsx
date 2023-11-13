@@ -41,7 +41,12 @@ const useSubmitStore = create<SubmitState>((set) => ({
         onChallengeVerification: alertChallengeVerificationFailed,
         onError: (error: Error) => {
           console.error(error);
-          alert(error.message);
+        // TODO: remove this explanation when pubsub providers uptime is fixed:
+        let errorMessage = error.message;
+        if (errorMessage === "The challenge request has been published over the pubsub topic but no response was received") {
+          errorMessage += ". This means seedit web is currently offline, download seedit desktop which is fully peer-to-peer: https://github.com/plebbit/seedit/releases/latest";
+        }
+        alert(errorMessage);
         },
       };
       return nextState;
@@ -69,8 +74,7 @@ const Submit = () => {
 
   useEffect(() => {
     document.title = t('submit_to_before') + (isSubplebbitSubmit ? subplebbit?.title || subplebbit?.shortAddress : 'seedit') + t('submit_to_after');
-  }
-  , [isSubplebbitSubmit, subplebbit, t]);
+  }, [isSubplebbitSubmit, subplebbit, t]);
 
   const onPublish = () => {
     if (!titleRef.current?.value) {
@@ -157,7 +161,7 @@ const Submit = () => {
               <input
                 className={`${styles.input} ${styles.inputCommunity}`}
                 type='text'
-                placeholder='"community.eth" or "12D3KooW..."'
+                placeholder={`"community.eth" ${t('or')} "12D3KooW..."`}
                 defaultValue={isSubplebbitSubmit ? paramsSubplebbitAddress : undefined}
                 ref={subplebbitAddressRef}
               />

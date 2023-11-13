@@ -68,5 +68,6 @@
   "previous": "Edellinen",
   "next": "Seuraava",
   "loading": "Ladataan",
-  "pending": "Odottaa hyväksyntää"
+  "pending": "Odottaa hyväksyntää",
+  "or": "tai"
 }
