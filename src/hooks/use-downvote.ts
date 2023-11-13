@@ -25,7 +25,12 @@ const useDownvote = (comment: Comment): [boolean, () => void] => {
         }),
       onError: (error: Error) => {
         console.error(error);
-        alert(error.message);
+        // TODO: remove this explanation when pubsub providers uptime is fixed:
+        let errorMessage = error.message;
+        if (errorMessage === "The challenge request has been published over the pubsub topic but no response was received") {
+          errorMessage += ". This means seedit web is currently offline, download seedit desktop which is fully peer-to-peer: https://github.com/plebbit/seedit/releases/latest";
+        }
+        alert(errorMessage);
       },
     }),
     [comment, vote, addChallenge],
