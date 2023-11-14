@@ -49,8 +49,8 @@
 }
 
 .stampPending {
-  color: gold;
-  border-color: gold;
+  color: var(--label-pending);
+  border-color: var(--label-pending);
 }
 
 .buttonsReply {
