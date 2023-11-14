@@ -207,7 +207,7 @@ const Submit = () => {
           {subplebbit?.rules && (
             <div className={styles.box}>
               <span className={`${styles.boxTitle} ${styles.rulesTitle}`}>
-                rules for p/{subplebbit?.shortAddress}
+                {t('rules_for')} p/{subplebbit?.shortAddress}
               </span>
               <div className={styles.boxContent}>
                 <div className={styles.description}>
