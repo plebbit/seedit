@@ -36,7 +36,7 @@ const Post = () => {
 
   const [readyToPublish, setReadyToPublish] = useState(false);
 
-  const loadingString = stateString && <div className={styles.stateString}>{stateString === 'failed' ? <LoadingEllipsis string={stateString} /> : stateString}</div>;
+  const loadingString = stateString && <div className={styles.stateString}>{stateString !== 'failed' ? <LoadingEllipsis string={stateString} /> : stateString}</div>;
 
   const onPublish = () => {
     const currentContent = textRef.current?.value || '';
