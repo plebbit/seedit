@@ -3,7 +3,6 @@ import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
 import { useAccount } from '@plebbit/plebbit-react-hooks';
 import { useTranslation } from 'react-i18next';
 import styles from './account-bar.module.css';
-import { isValidENS, isValidIPFS } from '../../../lib/utils/validation-utils';
 
 const AccountBar = () => {
   const account = useAccount();
@@ -45,13 +44,9 @@ const AccountBar = () => {
     event.preventDefault();
     const searchInput = searchInputRef.current?.value;
     if (searchInput) {
-      if (isValidENS(searchInput) || isValidIPFS(searchInput)) {
-        setSearchHidden(true);
-        searchInputRef.current.value = '';
-        navigate(`/p/${searchInput}`);
-      } else {
-        alert('Invalid community address');
-      }
+      setSearchHidden(true);
+      searchInputRef.current.value = '';
+      navigate(`/p/${searchInput}`);
     }
   };
 
