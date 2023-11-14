@@ -69,5 +69,7 @@
   "next": "Næste",
   "loading": "Indlæser",
   "pending": "Afventer",
-  "or": "eller"
+  "or": "eller",
+  "submit_subscriptions_notice": "Abonner på et fællesskab for hurtigt at få adgang",
+  "submit_subscriptions": "dine abonnerede fællesskaber"
 }

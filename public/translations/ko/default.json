@@ -69,5 +69,7 @@
   "next": "다음",
   "loading": "로딩 중",
   "pending": "승인 대기 중",
-  "or": "또는"
+  "or": "또는",
+  "submit_subscriptions_notice": "빠르게 접근하기 위해 커뮤니티에 구독하세요",
+  "submit_subscriptions": "구독한 커뮤니티"
 }

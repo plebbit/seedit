@@ -69,5 +69,7 @@
   "next": "بعدی",
   "loading": "بارگذاری",
   "pending": "در انتظار تایید",
-  "or": "یا"
+  "or": "یا",
+  "submit_subscriptions_notice": "برای دسترسی سریع به یک جامعه مشترک شوید",
+  "submit_subscriptions": "جوامع مشترک شده شما"
 }

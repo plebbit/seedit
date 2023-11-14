@@ -69,5 +69,7 @@
   "next": "Další",
   "loading": "Načítání",
   "pending": "Čeká na schválení",
-  "or": "nebo"
+  "or": "nebo",
+  "submit_subscriptions_notice": "Přihlaste se k odběru komunity pro rychlý přístup",
+  "submit_subscriptions": "vaše odběratelské komunity"
 }

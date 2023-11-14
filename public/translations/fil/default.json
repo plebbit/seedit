@@ -69,5 +69,7 @@
   "next": "Susunod",
   "loading": "Naglo-load",
   "pending": "Nakabinbin",
-  "or": "o"
+  "or": "o",
+  "submit_subscriptions_notice": "Mag-subscribe sa isang komunidad para mabilis na ma-access ito",
+  "submit_subscriptions": "iyong mga sinubskribang komunidad"
 }

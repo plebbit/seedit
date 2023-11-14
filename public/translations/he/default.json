@@ -69,5 +69,7 @@
   "next": "הבא",
   "loading": "טוען",
   "pending": "ממתין לאישור",
-  "or": "או"
+  "or": "או",
+  "submit_subscriptions_notice": "הירשם לקהילה כדי לגשת אליה במהירות",
+  "submit_subscriptions": "הקהילות שאתה מנוי עליהן"
 }

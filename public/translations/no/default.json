@@ -69,5 +69,7 @@
   "next": "Neste",
   "loading": "Laster",
   "pending": "Venter på godkjenning",
-  "or": "eller"
+  "or": "eller",
+  "submit_subscriptions_notice": "Abonner på et samfunn for rask tilgang",
+  "submit_subscriptions": "dine abonnerte samfunn"
 }

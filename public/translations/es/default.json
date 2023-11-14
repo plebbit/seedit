@@ -69,5 +69,7 @@
   "next": "Siguiente",
   "loading": "Cargando",
   "pending": "Pendiente",
-  "or": "o"
+  "or": "o",
+  "submit_subscriptions_notice": "Suscríbete a una comunidad para acceder rápidamente",
+  "submit_subscriptions": "tus comunidades suscritas"
 }

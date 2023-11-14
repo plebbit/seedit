@@ -128,7 +128,7 @@ const Submit = () => {
 
   const subsDescription = (
     <div className={styles.subsDescription}>
-      {subscriptions.length > 0 ? 'your subscribed communities' : 'subscribe to a community to quickly access it'}
+      {subscriptions.length > 0 ? t('submit_subscriptions') : t('submit_subscriptions_notice')}
     </div>
   )
 

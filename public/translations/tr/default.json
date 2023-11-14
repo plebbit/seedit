@@ -69,5 +69,7 @@
   "next": "Sonraki",
   "loading": "Yükleniyor",
   "pending": "Beklemede",
-  "or": "veya"
+  "or": "veya",
+  "submit_subscriptions_notice": "Hızlı erişim için bir topluluğa abone olun",
+  "submit_subscriptions": "abone olduğunuz topluluklar"
 }

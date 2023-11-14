@@ -69,5 +69,7 @@
   "next": "Tjetri",
   "loading": "Po ngarkohet",
   "pending": "Në pritje",
-  "or": "ose"
+  "or": "ose",
+  "submit_subscriptions_notice": "Abonohuni në një komunitet për të hyrë shpejt",
+  "submit_subscriptions": "komunitetet tuaja të abonuara"
 }
