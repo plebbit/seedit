@@ -1,0 +1,20 @@
+.ellipsis:after {
+  content: '...';
+  position: absolute;
+  -webkit-animation: ellipsis steps(4, end) 1200ms infinite;
+  animation: ellipsis steps(4, end) 1500ms infinite;
+  width: 0px;
+  overflow: hidden;
+}
+
+@keyframes ellipsis {
+  to {
+    width: 1.3em;
+  }
+}
+
+@-webkit-keyframes ellipsis {
+  to {
+    width: 1.3em;
+  }
+}

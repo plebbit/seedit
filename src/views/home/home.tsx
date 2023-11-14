@@ -4,6 +4,7 @@ import { Virtuoso, VirtuosoHandle, StateSnapshot } from 'react-virtuoso';
 import { useFeed } from '@plebbit/plebbit-react-hooks';
 import { useTranslation } from 'react-i18next';
 import styles from './home.module.css';
+import LoadingEllipsis from '../../components/loading-ellipsis';
 import Post from '../../components/post';
 import useDefaultSubplebbitAddresses from '../../hooks/use-default-subplebbit-addresses';
 import useFeedStateString from '../../hooks/use-feed-state-string';
@@ -18,6 +19,11 @@ const Home = () => {
   const { feed, hasMore, loadMore } = useFeed({ subplebbitAddresses, sortType });
   const { t } = useTranslation();
   const loadingStateString = useFeedStateString(subplebbitAddresses) || t('loading');
+  const loadingString = (
+    <div className={styles.stateString}>
+      <LoadingEllipsis string={loadingStateString} />
+    </div>
+  );
 
   useEffect(() => {
     document.title = `${t('home')} - seedit`;
@@ -28,7 +34,7 @@ const Home = () => {
     Footer = NoPosts;
   }
   if (hasMore || subplebbitAddresses.length === 0) {
-    Footer = () => loadingStateString;
+    Footer = () => loadingString;
   }
 
   const virtuosoRef = useRef<VirtuosoHandle | null>(null);
