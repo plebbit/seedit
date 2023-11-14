@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
-import { PublishCommentOptions, usePublishComment, useSubplebbit } from '@plebbit/plebbit-react-hooks';
+import { PublishCommentOptions, useAccount, usePublishComment, useSubplebbit } from '@plebbit/plebbit-react-hooks';
 import { useTranslation } from 'react-i18next';
 import { create } from 'zustand';
 import { isSubplebbitSubmitView } from '../../lib/utils/view-utils';
@@ -55,6 +55,7 @@ const useSubmitStore = create<SubmitState>((set) => ({
 }));
 
 const Submit = () => {
+  const account = useAccount();
   const { t } = useTranslation();
   const location = useLocation();
   const params = useParams();
@@ -71,6 +72,7 @@ const Submit = () => {
 
   const { subplebbitAddress, publishCommentOptions, setSubmitStore, resetSubmitStore } = useSubmitStore();
   const { index, publishComment } = usePublishComment(publishCommentOptions);
+  const { subscriptions } = account || {};
 
   useEffect(() => {
     document.title = t('submit_to_before') + (isSubplebbitSubmit ? subplebbit?.title || subplebbit?.shortAddress : 'seedit') + t('submit_to_after');
@@ -124,6 +126,27 @@ const Submit = () => {
     }
   }, [index, resetSubmitStore, navigate]);
 
+  const subsDescription = (
+    <div className={styles.subsDescription}>
+      {subscriptions.length > 0 ? 'your subscribed communities' : 'subscribe to a community to quickly access it'}
+    </div>
+  )
+
+  const subs = (
+    <div className={styles.subs}>
+      {subscriptions.map((sub: string) => (
+        <span key={sub} className={styles.sub} 
+        onClick={() => {
+          if (subplebbitAddressRef.current) {
+              subplebbitAddressRef.current.value = sub;
+          }
+        }}>
+          {sub}
+        </span>
+      ))}
+    </div>
+  )
+
   return (
     <div className={styles.content}>
       <h1>
@@ -165,6 +188,8 @@ const Submit = () => {
                 defaultValue={isSubplebbitSubmit ? paramsSubplebbitAddress : undefined}
                 ref={subplebbitAddressRef}
               />
+              {subsDescription}
+              {subs}
             </div>
           </div>
           <div className={`${styles.field} ${styles.notice}`}>{t('submit_notice')}</div>

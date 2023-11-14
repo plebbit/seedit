@@ -119,3 +119,18 @@ h1 {
     font-size: 16px;
   }
 }
+
+.subsDescription {
+  font-size: 13px;
+  font-weight: normal;
+  margin-top: .5em;
+}
+
+.sub {
+  display: inline-block;
+  padding-right: 5px;
+  text-decoration: none;
+  color: #369;
+  font-size: 13px;
+  cursor: pointer;
+}
