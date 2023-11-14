@@ -36,15 +36,7 @@ const Post = () => {
 
   const [readyToPublish, setReadyToPublish] = useState(false);
 
-  const loadingString = stateString && (
-    <div className={styles.stateString}>
-      {stateString === 'failed' ? (
-        <LoadingEllipsis string={stateString} />
-      ) : (
-        stateString
-      )}
-    </div>
-  );
+  const loadingString = stateString && <div className={styles.stateString}>{stateString === 'failed' ? <LoadingEllipsis string={stateString} /> : stateString}</div>;
 
   const onPublish = () => {
     const currentContent = textRef.current?.value || '';
@@ -95,6 +87,7 @@ const Post = () => {
               <span className={styles.selected}>{t('reply_best')}</span>
             </div>
           </div>
+          <div className={styles.spacer} />
           <ReplyForm onPublish={onPublish} spoilerRef={spoilerRef} textRef={textRef} urlRef={urlRef} />
         </div>
         {loadingString && loadingString}

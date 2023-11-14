@@ -21,15 +21,7 @@ const PendingPost = () => {
     }
   }, [post, navigate]);
 
-  const loadingString = stateString && (
-    <div className={styles.stateString}>
-      {stateString === 'failed' ? (
-        <LoadingEllipsis string={stateString} />
-      ) : (
-        stateString
-      )}
-    </div>
-  );
+  const loadingString = stateString && <div className={styles.stateString}>{stateString === 'failed' ? <LoadingEllipsis string={stateString} /> : stateString}</div>;
 
   return (
     <div className={styles.container}>

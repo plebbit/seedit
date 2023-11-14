@@ -1,12 +1,12 @@
-import { useEffect, useMemo, useRef } from "react";
-import { useParams } from "react-router-dom";
-import { useFeed, useSubplebbit } from "@plebbit/plebbit-react-hooks";
-import { Virtuoso, VirtuosoHandle, StateSnapshot } from "react-virtuoso";
-import { useTranslation } from "react-i18next";
-import styles from "./subplebbit.module.css";
-import Post from "../../components/post/post";
-import useFeedStateString from "../../hooks/use-feed-state-string";
-import LoadingEllipsis from "../../components/loading-ellipsis";
+import { useEffect, useMemo, useRef } from 'react';
+import { useParams } from 'react-router-dom';
+import { useFeed, useSubplebbit } from '@plebbit/plebbit-react-hooks';
+import { Virtuoso, VirtuosoHandle, StateSnapshot } from 'react-virtuoso';
+import { useTranslation } from 'react-i18next';
+import styles from './subplebbit.module.css';
+import Post from '../../components/post/post';
+import useFeedStateString from '../../hooks/use-feed-state-string';
+import LoadingEllipsis from '../../components/loading-ellipsis';
 
 const lastVirtuosoStates: { [key: string]: StateSnapshot } = {};
 
@@ -17,7 +17,7 @@ const Subplebbit = () => {
   const params = useParams();
   const subplebbitAddress = params.subplebbitAddress;
   const subplebbitAddresses = useMemo(() => [subplebbitAddress], [subplebbitAddress]) as string[];
-  const subplebbit = useSubplebbit({subplebbitAddress});
+  const subplebbit = useSubplebbit({ subplebbitAddress });
   const { title, shortAddress } = subplebbit || {};
   const { feed, hasMore, loadMore } = useFeed({ subplebbitAddresses, sortType: 'hot' });
   const loadingStateString = useFeedStateString(subplebbitAddresses) || t('loading');
@@ -28,7 +28,7 @@ const Subplebbit = () => {
   );
 
   useEffect(() => {
-    document.title = (title ? title : shortAddress) + " - seedit";
+    document.title = (title ? title : shortAddress) + ' - seedit';
   }, [title, shortAddress]);
 
   let Footer;
@@ -71,6 +71,6 @@ const Subplebbit = () => {
       />
     </div>
   );
-}
+};
 
 export default Subplebbit;

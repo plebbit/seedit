@@ -59,11 +59,7 @@ const Header = () => {
     headerTabs = sortItems;
   }
 
-  const subplebbitTitle = (
-    <Link to={`/p/${params.subplebbitAddress}`}>
-      {title || shortAddress}
-    </Link>
-  );
+  const subplebbitTitle = <Link to={`/p/${params.subplebbitAddress}`}>{title || shortAddress}</Link>;
   let headerTitle;
   const submitTitle = <span style={{ textTransform: 'uppercase' }}>{t('submit')}</span>;
 

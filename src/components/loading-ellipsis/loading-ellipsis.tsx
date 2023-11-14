@@ -5,11 +5,7 @@ interface LoadingEllipsisProps {
 }
 
 const LoadingEllipsis = ({ string }: LoadingEllipsisProps) => {
-  return (
-    <span className={styles.ellipsis}>
-      {string}
-    </span>
-  );
-}
+  return <span className={styles.ellipsis}>{string}</span>;
+};
 
 export default LoadingEllipsis;

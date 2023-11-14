@@ -40,12 +40,13 @@ const useSubmitStore = create<SubmitState>((set) => ({
         onChallengeVerification: alertChallengeVerificationFailed,
         onError: (error: Error) => {
           console.error(error);
-        // TODO: remove this explanation when pubsub providers uptime is fixed:
-        let errorMessage = error.message;
-        if (errorMessage === "The challenge request has been published over the pubsub topic but no response was received") {
-          errorMessage += ". This means seedit web is currently offline, download seedit desktop which is fully peer-to-peer: https://github.com/plebbit/seedit/releases/latest";
-        }
-        alert(errorMessage);
+          // TODO: remove this explanation when pubsub providers uptime is fixed:
+          let errorMessage = error.message;
+          if (errorMessage === 'The challenge request has been published over the pubsub topic but no response was received') {
+            errorMessage +=
+              '. This means seedit web is currently offline, download seedit desktop which is fully peer-to-peer: https://github.com/plebbit/seedit/releases/latest';
+          }
+          alert(errorMessage);
         },
       };
       return nextState;
@@ -125,30 +126,29 @@ const Submit = () => {
     }
   }, [index, resetSubmitStore, navigate]);
 
-  const subsDescription = (
-    <div className={styles.subsDescription}>
-      {subscriptions.length > 0 ? t('submit_subscriptions') : t('submit_subscriptions_notice')}
-    </div>
-  )
+  const subsDescription = <div className={styles.subsDescription}>{subscriptions.length > 0 ? t('submit_subscriptions') : t('submit_subscriptions_notice')}</div>;
 
   const subs = (
     <div className={styles.subs}>
       {subscriptions.map((sub: string) => (
-        <span key={sub} className={styles.sub} 
-        onClick={() => {
-          if (subplebbitAddressRef.current) {
+        <span
+          key={sub}
+          className={styles.sub}
+          onClick={() => {
+            if (subplebbitAddressRef.current) {
               subplebbitAddressRef.current.value = sub;
-          }
-        }}>
+            }
+          }}
+        >
           {sub}
         </span>
       ))}
     </div>
-  )
+  );
 
   const handleAddressChange = (e: ChangeEvent<HTMLInputElement>) => {
     setInputAddress(e.target.value);
-  }
+  };
 
   useEffect(() => {
     if (inputAddress) {
@@ -211,11 +211,7 @@ const Submit = () => {
               </span>
               <div className={styles.boxContent}>
                 <div className={styles.description}>
-                  <ol className={styles.rules}>
-                    {subplebbit?.rules.map((rule: string, index: number) => (
-                      <li key={index}>{rule}</li>
-                    ))}
-                  </ol>
+                  <ol className={styles.rules}>{subplebbit?.rules.map((rule: string, index: number) => <li key={index}>{rule}</li>)}</ol>
                 </div>
               </div>
             </div>

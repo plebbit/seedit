@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { Link, useLocation,  useNavigate, useParams } from 'react-router-dom';
+import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
 import { useAccount } from '@plebbit/plebbit-react-hooks';
 import { useTranslation } from 'react-i18next';
 import styles from './account-bar.module.css';
@@ -27,7 +27,7 @@ const AccountBar = () => {
       setSearchHidden(true);
     }
   };
-  
+
   useEffect(() => {
     document.addEventListener('mousedown', handleClickOutside);
     return () => {
@@ -53,7 +53,7 @@ const AccountBar = () => {
         alert('Invalid community address');
       }
     }
-  }
+  };
 
   return (
     <>
@@ -80,7 +80,7 @@ const AccountBar = () => {
           {t('preferences')}
         </Link>
       </div>
-      <form className={styles.searchBar} style={{visibility: searchHidden ? 'hidden' : 'visible'}} ref={searchBarRef} onSubmit={handleSearchSubmit}>
+      <form className={styles.searchBar} style={{ visibility: searchHidden ? 'hidden' : 'visible' }} ref={searchBarRef} onSubmit={handleSearchSubmit}>
         <input type='text' placeholder={`"community.eth" ${t('or')} "12D3KooW..."`} ref={searchInputRef} />
         <input type='submit' value='' />
       </form>
