@@ -23,13 +23,14 @@ const ReplyForm = ({ isReplyingToReply, onPublish, hideReplyForm, spoilerRef, te
   return (
     <div className={styles.mdContainer} style={{ marginLeft: isReplyingToReply ? '25px' : '' }}>
       <div className={styles.md}>
-        <input className={styles.url} ref={urlRef} placeholder={`url (${t('optional')})`} />
-        <span className={styles.spoiler}>
+        {/* TODO: move url and spoiler to some options dropdown, they shouldn't be visible right away*/}
+        <input style={{display: 'none'}} className={styles.url} ref={urlRef} placeholder={`url (${t('optional')})`} />
+        <span style={{display: 'none'}} className={styles.spoiler}>
           <label>
             {t('spoiler')}: <input type='checkbox' className={styles.checkbox} ref={spoilerRef} />
           </label>
         </span>
-        <textarea className={styles.textarea} ref={textRef} placeholder={t('text')} />
+        <textarea className={styles.textarea} ref={textRef} />
       </div>
       <div className={styles.bottomArea}>
         <button className={styles.save} onClick={onPublish}>
