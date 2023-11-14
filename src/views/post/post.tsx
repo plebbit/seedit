@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import { useComment, useSubplebbit } from '@plebbit/plebbit-react-hooks';
 import { useTranslation } from 'react-i18next';
 import styles from './post.module.css';
+import LoadingEllipsis from '../../components/loading-ellipsis';
 import Reply from '../../components/reply';
 import ReplyForm from '../../components/reply-form';
 import PostComponent from '../../components/post';
@@ -34,6 +35,8 @@ const Post = () => {
   const commentCount = totalReplyCount === 0 ? t('no_comments') : totalReplyCount === 1 ? t('one_comment') : t('all_comments', { count: totalReplyCount });
 
   const [readyToPublish, setReadyToPublish] = useState(false);
+
+  const loadingString = stateString && <div className={styles.stateString}>{stateString !== 'failed' ? <LoadingEllipsis string={stateString} /> : stateString}</div>;
 
   const onPublish = () => {
     const currentContent = textRef.current?.value || '';
@@ -84,9 +87,10 @@ const Post = () => {
               <span className={styles.selected}>{t('reply_best')}</span>
             </div>
           </div>
+          <div className={styles.spacer} />
           <ReplyForm onPublish={onPublish} spoilerRef={spoilerRef} textRef={textRef} urlRef={urlRef} />
         </div>
-        {stateString && <div className={styles.stateString}>{stateString}</div>}
+        {loadingString && loadingString}
         <div className={styles.replies}>
           {replies.map((reply, index) => (
             <Reply key={`${index}${reply.cid}`} reply={reply} depth={comment.depth} />

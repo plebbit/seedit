@@ -13,7 +13,9 @@ interface PostToolsProps {
 
 const PostTools = ({ cid, isReply, replyCount, spoiler, subplebbitAddress, showReplyForm }: PostToolsProps) => {
   const { t } = useTranslation();
-  const commentCount = replyCount === 0 ? t('post_no_comments') : `${replyCount ?? ''} ${replyCount === 1 ? t('post_comment') : t('post_comments')}`;
+  const validReplyCount = isNaN(replyCount) ? 0 : replyCount;
+  const commentCount = validReplyCount === 0 ? t('post_no_comments') : `${validReplyCount} ${validReplyCount === 1 ? t('post_comment') : t('post_comments')}`;
+  const hasLabel = spoiler || cid === undefined;
 
   const spoilerLabel = (
     <li>
@@ -33,7 +35,7 @@ const PostTools = ({ cid, isReply, replyCount, spoiler, subplebbitAddress, showR
 
   const postLabels = (
     <>
-      <li className={`${styles.button} ${!spoiler ? styles.firstButton : ''}`}>
+      <li className={`${styles.button} ${!hasLabel ? styles.firstButton : ''}`}>
         <Link to={`/p/${subplebbitAddress}/c/${cid}`}>{commentCount}</Link>
       </li>
       <li className={styles.button}>

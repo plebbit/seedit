@@ -69,5 +69,8 @@
   "next": "التالي",
   "loading": "تحميل",
   "pending": "قيد الانتظار",
-  "or": "أو"
+  "or": "أو",
+  "submit_subscriptions_notice": "اشترك في مجتمع للوصول إليه بسرعة",
+  "submit_subscriptions": "مجتمعاتك المشتركة",
+  "rules_for": "قواعد لـ"
 }

@@ -1,9 +1,8 @@
-import { useEffect, useRef, useState } from 'react';
-import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
-import { PublishCommentOptions, usePublishComment, useSubplebbit } from '@plebbit/plebbit-react-hooks';
+import { ChangeEvent, useEffect, useRef, useState } from 'react';
+import { Link, useNavigate, useParams } from 'react-router-dom';
+import { PublishCommentOptions, useAccount, usePublishComment, useSubplebbit } from '@plebbit/plebbit-react-hooks';
 import { useTranslation } from 'react-i18next';
 import { create } from 'zustand';
-import { isSubplebbitSubmitView } from '../../lib/utils/view-utils';
 import { alertChallengeVerificationFailed } from '../../lib/utils/challenge-utils';
 import { isValidENS, isValidIPFS, isValidURL } from '../../lib/utils/validation-utils';
 import styles from './submit.module.css';
@@ -41,12 +40,13 @@ const useSubmitStore = create<SubmitState>((set) => ({
         onChallengeVerification: alertChallengeVerificationFailed,
         onError: (error: Error) => {
           console.error(error);
-        // TODO: remove this explanation when pubsub providers uptime is fixed:
-        let errorMessage = error.message;
-        if (errorMessage === "The challenge request has been published over the pubsub topic but no response was received") {
-          errorMessage += ". This means seedit web is currently offline, download seedit desktop which is fully peer-to-peer: https://github.com/plebbit/seedit/releases/latest";
-        }
-        alert(errorMessage);
+          // TODO: remove this explanation when pubsub providers uptime is fixed:
+          let errorMessage = error.message;
+          if (errorMessage === 'The challenge request has been published over the pubsub topic but no response was received') {
+            errorMessage +=
+              '. This means seedit web is currently offline, download seedit desktop which is fully peer-to-peer: https://github.com/plebbit/seedit/releases/latest';
+          }
+          alert(errorMessage);
         },
       };
       return nextState;
@@ -55,12 +55,13 @@ const useSubmitStore = create<SubmitState>((set) => ({
 }));
 
 const Submit = () => {
+  const account = useAccount();
   const { t } = useTranslation();
-  const location = useLocation();
   const params = useParams();
-  const isSubplebbitSubmit = isSubplebbitSubmitView(location.pathname, params);
   const paramsSubplebbitAddress = params.subplebbitAddress;
-  const subplebbit = useSubplebbit({ subplebbitAddress: paramsSubplebbitAddress });
+  const [inputAddress, setInputAddress] = useState('');
+  const [selectedSubplebbit, setSelectedSubplebbit] = useState(paramsSubplebbitAddress);
+  const subplebbit = useSubplebbit({ subplebbitAddress: selectedSubplebbit });
   const navigate = useNavigate();
   const [readyToPublish, setReadyToPublish] = useState(false);
 
@@ -71,10 +72,11 @@ const Submit = () => {
 
   const { subplebbitAddress, publishCommentOptions, setSubmitStore, resetSubmitStore } = useSubmitStore();
   const { index, publishComment } = usePublishComment(publishCommentOptions);
+  const { subscriptions } = account || {};
 
   useEffect(() => {
-    document.title = t('submit_to_before') + (isSubplebbitSubmit ? subplebbit?.title || subplebbit?.shortAddress : 'seedit') + t('submit_to_after');
-  }, [isSubplebbitSubmit, subplebbit, t]);
+    document.title = t('submit_to_before') + (selectedSubplebbit ? subplebbit?.title || subplebbit?.shortAddress : 'seedit') + t('submit_to_after');
+  }, [selectedSubplebbit, subplebbit, t]);
 
   const onPublish = () => {
     if (!titleRef.current?.value) {
@@ -124,50 +126,97 @@ const Submit = () => {
     }
   }, [index, resetSubmitStore, navigate]);
 
+  const subsDescription = <div className={styles.subsDescription}>{subscriptions.length > 0 ? t('submit_subscriptions') : t('submit_subscriptions_notice')}</div>;
+
+  const subs = (
+    <div className={styles.subs}>
+      {subscriptions.map((sub: string) => (
+        <span
+          key={sub}
+          className={styles.sub}
+          onClick={() => {
+            if (subplebbitAddressRef.current) {
+              subplebbitAddressRef.current.value = sub;
+            }
+          }}
+        >
+          {sub}
+        </span>
+      ))}
+    </div>
+  );
+
+  const handleAddressChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setInputAddress(e.target.value);
+  };
+
+  useEffect(() => {
+    if (inputAddress) {
+      if (isValidENS(inputAddress) || isValidIPFS(inputAddress)) {
+        setSelectedSubplebbit(inputAddress);
+      }
+    }
+  }, [inputAddress]);
+
   return (
     <div className={styles.content}>
       <h1>
         {t('submit_to_before')}
-        {isSubplebbitSubmit ? subplebbitHeaderLink : 'seedit'}
+        {selectedSubplebbit ? subplebbitHeaderLink : 'seedit'}
         {t('submit_to_after')}
       </h1>
       <div className={styles.form}>
         <div className={styles.formContent}>
-          <div className={styles.field}>
-            <span className={styles.fieldTitleOptional}>url</span>
+          <div className={styles.box}>
+            <span className={styles.boxTitleOptional}>url</span>
             <span className={styles.optional}> ({t('optional')})</span>
-            <div className={styles.fieldContent}>
+            <div className={styles.boxContent}>
               <input className={`${styles.input} ${styles.inputUrl}`} type='text' ref={linkRef} />
               <div className={styles.description}>{t('submit_url_description')}</div>
             </div>
           </div>
-          <div className={styles.field}>
-            <span className={styles.fieldTitleRequired}>{t('title')}</span>
-            <div className={styles.fieldContent}>
+          <div className={styles.box}>
+            <span className={styles.boxTitleRequired}>{t('title')}</span>
+            <div className={styles.boxContent}>
               <textarea className={`${styles.input} ${styles.inputTitle}`} ref={titleRef} />
             </div>
           </div>
-          <div className={styles.field}>
-            <span className={styles.fieldTitleOptional}>{t('text')}</span>
+          <div className={styles.box}>
+            <span className={styles.boxTitleOptional}>{t('text')}</span>
             <span className={styles.optional}> ({t('optional')})</span>
-            <div className={styles.fieldContent}>
+            <div className={styles.boxContent}>
               <textarea className={`${styles.input} ${styles.inputText}`} ref={contentRef} />
             </div>
           </div>
-          <div className={styles.field}>
-            <span className={styles.fieldTitleRequired}>{t('submit_choose')}</span>
-            <div className={styles.fieldContent}>
-              <span className={styles.fieldSubtitle}>{t('community_address')}:</span>
+          <div className={styles.box}>
+            <span className={styles.boxTitleRequired}>{t('submit_choose')}</span>
+            <div className={styles.boxContent}>
+              <span className={styles.boxSubtitle}>{t('community_address')}:</span>
               <input
                 className={`${styles.input} ${styles.inputCommunity}`}
                 type='text'
                 placeholder={`"community.eth" ${t('or')} "12D3KooW..."`}
-                defaultValue={isSubplebbitSubmit ? paramsSubplebbitAddress : undefined}
+                defaultValue={selectedSubplebbit ? paramsSubplebbitAddress : undefined}
                 ref={subplebbitAddressRef}
+                onChange={handleAddressChange}
               />
+              {subsDescription}
+              {subs}
             </div>
           </div>
-          <div className={`${styles.field} ${styles.notice}`}>{t('submit_notice')}</div>
+          {subplebbit?.rules && (
+            <div className={styles.box}>
+              <span className={`${styles.boxTitle} ${styles.rulesTitle}`}>
+                {t('rules_for')} p/{subplebbit?.shortAddress}
+              </span>
+              <div className={styles.boxContent}>
+                <div className={styles.description}>
+                  <ol className={styles.rules}>{subplebbit?.rules.map((rule: string, index: number) => <li key={index}>{rule}</li>)}</ol>
+                </div>
+              </div>
+            </div>
+          )}
+          <div className={`${styles.box} ${styles.notice}`}>{t('submit_notice')}</div>
           <div>*{t('required')}</div>
           <div className={styles.submit}>
             <button className={styles.submitButton} onClick={onPublish}>

@@ -69,5 +69,8 @@
   "next": "Nästa",
   "loading": "Laddar",
   "pending": "Avvaktar",
-  "or": "eller"
+  "or": "eller",
+  "submit_subscriptions_notice": "Prenumerera på ett samhälle för att snabbt få tillgång",
+  "submit_subscriptions": "dina prenumererade samhällen",
+  "rules_for": "regler för"
 }

@@ -69,5 +69,8 @@
   "next": "Seuraava",
   "loading": "Ladataan",
   "pending": "Odottaa hyväksyntää",
-  "or": "tai"
+  "or": "tai",
+  "submit_subscriptions_notice": "Tilaa yhteisö nopeaan pääsyyn",
+  "submit_subscriptions": "tilaamasi yhteisöt",
+  "rules_for": "säännöt"
 }

@@ -69,5 +69,8 @@
   "next": "Nächste",
   "loading": "Laden",
   "pending": "Ausstehend",
-  "or": "oder"
+  "or": "oder",
+  "submit_subscriptions_notice": "Abonnieren Sie eine Gemeinschaft, um schnell darauf zuzugreifen",
+  "submit_subscriptions": "Ihre abonnierten Gemeinschaften",
+  "rules_for": "Regeln für"
 }

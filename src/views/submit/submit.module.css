@@ -22,7 +22,7 @@ h1 {
   width: 520px
 }
 
-.field {
+.box {
   display: block;
   position: relative;
   width: 500px;
@@ -39,18 +39,18 @@ h1 {
   font-size: smaller;
 }
 
-.fieldTitleRequired::before {
+.boxTitleRequired::before {
   content: "*";
   color: red;
 }
 
-.fieldContent {
+.boxContent {
   margin-top: 5px;
   border: none;
   position: relative;
 }
 
-.fieldSubtitle {
+.boxSubtitle {
   font-size: smaller;
 }
 
@@ -104,7 +104,7 @@ h1 {
     width: 100%;
   }
 
-  .field {
+  .box {
     width: 100%;
     box-sizing: border-box;
   }
@@ -118,4 +118,31 @@ h1 {
   h1 {
     font-size: 16px;
   }
+}
+
+.subsDescription {
+  font-size: 13px;
+  font-weight: normal;
+  margin-top: .5em;
+  text-transform: lowercase;
+}
+
+.sub {
+  display: inline-block;
+  padding-right: 5px;
+  text-decoration: none;
+  color: #369;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.rulesTitle {
+  color: var(--text-primary);;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.rules {
+  font-size: 13px;
+  margin-left: 20px;
 }

@@ -69,5 +69,8 @@
   "next": "Następny",
   "loading": "Ładowanie",
   "pending": "Oczekujące",
-  "or": "lub"
+  "or": "lub",
+  "submit_subscriptions_notice": "Zasubskrybuj społeczność, aby szybko uzyskać dostęp",
+  "submit_subscriptions": "twoje subskrybowane społeczności",
+  "rules_for": "zasady dla"
 }

@@ -69,5 +69,8 @@
   "next": "Volgende",
   "loading": "Laden",
   "pending": "In afwachting",
-  "or": "of"
+  "or": "of",
+  "submit_subscriptions_notice": "Abonneer op een gemeenschap voor snelle toegang",
+  "submit_subscriptions": "uw geabonneerde gemeenschappen",
+  "rules_for": "regels voor"
 }

@@ -4,6 +4,7 @@ import { useAccountComment } from '@plebbit/plebbit-react-hooks';
 import styles from './pending-post.module.css';
 import Post from '../../components/post';
 import useStateString from '../../hooks/use-state-string';
+import LoadingEllipsis from '../../components/loading-ellipsis';
 
 const PendingPost = () => {
   const { accountCommentIndex } = useParams<{ accountCommentIndex?: string }>();
@@ -20,10 +21,13 @@ const PendingPost = () => {
     }
   }, [post, navigate]);
 
+  const loadingString = stateString && <div className={`${styles.stateString} ${styles.ellipsis}`}>{stateString !== 'Failed' ? <LoadingEllipsis string={stateString} /> : stateString}</div>;
+
+  console.log(stateString);
   return (
     <div className={styles.container}>
       <Post post={post} />
-      {stateString && <div className={styles.stateString}>{stateString}</div>}
+      {loadingString}
     </div>
   );
 };

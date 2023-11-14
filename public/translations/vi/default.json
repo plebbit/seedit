@@ -69,5 +69,8 @@
   "next": "Tiếp theo",
   "loading": "Đang tải",
   "pending": "Đang chờ duyệt",
-  "or": "hoặc"
+  "or": "hoặc",
+  "submit_subscriptions_notice": "Đăng ký vào một cộng đồng để nhanh chóng truy cập",
+  "submit_subscriptions": "các cộng đồng bạn đã đăng ký",
+  "rules_for": "quy tắc cho"
 }

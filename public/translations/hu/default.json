@@ -69,5 +69,8 @@
   "next": "Következő",
   "loading": "Betöltés",
   "pending": "Függőben",
-  "or": "vagy"
+  "or": "vagy",
+  "submit_subscriptions_notice": "Iratkozzon fel egy közösségre a gyors hozzáférés érdekében",
+  "submit_subscriptions": "az Ön által feliratkozott közösségek",
+  "rules_for": "szabályok a"
 }
