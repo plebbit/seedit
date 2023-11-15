@@ -145,4 +145,5 @@ h1 {
 .rules {
   font-size: 13px;
   margin-left: 20px;
+  word-wrap: break-word;
 }
