@@ -42,7 +42,9 @@ const ReplyForm = ({ isReplyingToReply, onPublish, hideReplyForm, spoilerRef, te
             {t('cancel')}
           </button>
         )}
-        <span className={styles.options} onClick={() => setShowOptions(!showOptions)}>options</span>
+        <span className={styles.options} onClick={() => setShowOptions(!showOptions)}>
+          {showOptions ? t('hide_options') : t('options')}
+        </span>
       </div>
     </div>
   );
