@@ -72,5 +72,7 @@
   "or": "or",
   "submit_subscriptions_notice": "Subscribe to a community to quickly access it",
   "submit_subscriptions": "your subscribed communities",
-  "rules_for": "rules for"
+  "rules_for": "rules for",
+  "no_communities_found": "No communities found on <1>https://github.com/plebbit/temporary-default-subplebbits</1>",
+  "connect_community_notice": "To connect to a community, use 🔎 in the top right"
 }

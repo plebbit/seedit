@@ -72,5 +72,7 @@
   "or": "أو",
   "submit_subscriptions_notice": "اشترك في مجتمع للوصول إليه بسرعة",
   "submit_subscriptions": "مجتمعاتك المشتركة",
-  "rules_for": "قواعد لـ"
+  "rules_for": "قواعد لـ",
+  "no_communities_found": "لا توجد مجتمعات على <1>https://github.com/plebbit/temporary-default-subplebbits</1>",
+  "connect_community_notice": "للاتصال بمجتمع، استخدم 🔎 في أعلى اليمين"
 }

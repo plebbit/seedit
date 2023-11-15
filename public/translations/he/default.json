@@ -72,5 +72,7 @@
   "or": "או",
   "submit_subscriptions_notice": "הירשם לקהילה כדי לגשת אליה במהירות",
   "submit_subscriptions": "הקהילות שאתה מנוי עליהן",
-  "rules_for": "כללים עבור"
+  "rules_for": "כללים עבור",
+  "no_communities_found": "לא נמצאו קהילות ב-<1>https://github.com/plebbit/temporary-default-subplebbits</1>",
+  "connect_community_notice": "לקישור לקהילה, השתמש ב-🔎 בפינה הימנית העליונה"
 }

@@ -72,5 +72,7 @@
   "or": "nebo",
   "submit_subscriptions_notice": "Přihlaste se k odběru komunity pro rychlý přístup",
   "submit_subscriptions": "vaše odběratelské komunity",
-  "rules_for": "pravidla pro"
+  "rules_for": "pravidla pro",
+  "no_communities_found": "Na <1>https://github.com/plebbit/temporary-default-subplebbits</1> nebyly nalezeny žádné komunity",
+  "connect_community_notice": "Chcete-li se připojit ke komunitě, použijte 🔎 vpravo nahoře"
 }

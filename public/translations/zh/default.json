@@ -72,5 +72,7 @@
   "or": "或",
   "submit_subscriptions_notice": "订阅社区以快速访问",
   "submit_subscriptions": "您订阅的社区",
-  "rules_for": "规则适用于"
+  "rules_for": "规则适用于",
+  "no_communities_found": "在<1>https://github.com/plebbit/temporary-default-subplebbits</1>上未找到任何社区",
+  "connect_community_notice": "要连接到社区，请在右上角使用 🔎"
 }

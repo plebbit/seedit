@@ -72,5 +72,7 @@
   "or": "sau",
   "submit_subscriptions_notice": "Abonează-te la o comunitate pentru acces rapid",
   "submit_subscriptions": "comunitățile dvs. abonate",
-  "rules_for": "reguli pentru"
+  "rules_for": "reguli pentru",
+  "no_communities_found": "Nicio comunitate găsită pe <1>https://github.com/plebbit/temporary-default-subplebbits</1>",
+  "connect_community_notice": "Pentru a vă conecta la o comunitate, folosiți 🔎 în partea dreaptă sus"
 }

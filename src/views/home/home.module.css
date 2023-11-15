@@ -1,3 +1,7 @@
 .content {
   padding: 7px 5px 0px 5px;
 }
+
+.stateString {
+  text-transform: lowercase;
+}

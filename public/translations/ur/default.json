@@ -72,5 +72,7 @@
   "or": "یا",
   "submit_subscriptions_notice": "اسے جلدی سے ایکسس کرنے کے لیے کسی کمیونٹی کو سبسکرائب کریں",
   "submit_subscriptions": "آپ کی سبسکرائب شدہ کمیونٹیز",
-  "rules_for": "کے قواعد"
+  "rules_for": "کے قواعد",
+  "no_communities_found": "<1>https://github.com/plebbit/temporary-default-subplebbits</1> پر کوئی کمیونٹیز نہیں ملی",
+  "connect_community_notice": "کمیونٹی سے جڑنے کے لئے، دائیں اوپر 🔎 استعمال کریں"
 }
