@@ -75,7 +75,7 @@ const Submit = () => {
   const { subscriptions } = account || {};
 
   useEffect(() => {
-    document.title = t('submit_to_before') + (selectedSubplebbit ? subplebbit?.title || subplebbit?.shortAddress : 'seedit') + t('submit_to_after');
+    document.title = t('submit_to_before') + (selectedSubplebbit ? subplebbit?.title || subplebbit?.shortAddress || 'seedit' : 'seedit') + t('submit_to_after');
   }, [selectedSubplebbit, subplebbit, t]);
 
   const onPublish = () => {
@@ -111,7 +111,7 @@ const Submit = () => {
 
   const subplebbitHeaderLink = (
     <Link to={`/p/${subplebbitAddress}`} className={styles.location} onClick={(e) => e.preventDefault()}>
-      {subplebbit?.title || subplebbit?.shortAddress}
+      {subplebbit?.title || subplebbit?.shortAddress || 'seedit'}
     </Link>
   );
 
