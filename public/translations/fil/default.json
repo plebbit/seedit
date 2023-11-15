@@ -72,5 +72,7 @@
   "or": "o",
   "submit_subscriptions_notice": "Mag-subscribe sa isang komunidad para mabilis na ma-access ito",
   "submit_subscriptions": "iyong mga sinubskribang komunidad",
-  "rules_for": "mga patakaran para sa"
+  "rules_for": "mga patakaran para sa",
+  "no_communities_found": "Walang natagpuang mga komunidad sa <1>https://github.com/plebbit/temporary-default-subplebbits</1>",
+  "connect_community_notice": "Upang kumonekta sa isang komunidad, gamitin ang 🔎 sa itaas na kanan"
 }

@@ -72,5 +72,7 @@
   "or": "ose",
   "submit_subscriptions_notice": "Abonohuni në një komunitet për të hyrë shpejt",
   "submit_subscriptions": "komunitetet tuaja të abonuara",
-  "rules_for": "rregullat për"
+  "rules_for": "rregullat për",
+  "no_communities_found": "Nuk u gjetën komunitete në <1>https://github.com/plebbit/temporary-default-subplebbits</1>",
+  "connect_community_notice": "Për të lidhur me një komunitet, përdorni 🔎 në këndin e djathtë lart"
 }

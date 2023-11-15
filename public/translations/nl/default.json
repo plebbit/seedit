@@ -72,5 +72,7 @@
   "or": "of",
   "submit_subscriptions_notice": "Abonneer op een gemeenschap voor snelle toegang",
   "submit_subscriptions": "uw geabonneerde gemeenschappen",
-  "rules_for": "regels voor"
+  "rules_for": "regels voor",
+  "no_communities_found": "Geen gemeenschappen gevonden op <1>https://github.com/plebbit/temporary-default-subplebbits</1>",
+  "connect_community_notice": "Gebruik 🔎 rechtsboven om verbinding te maken met een gemeenschap"
 }

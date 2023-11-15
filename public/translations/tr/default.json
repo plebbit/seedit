@@ -72,5 +72,7 @@
   "or": "veya",
   "submit_subscriptions_notice": "Hızlı erişim için bir topluluğa abone olun",
   "submit_subscriptions": "abone olduğunuz topluluklar",
-  "rules_for": "için kurallar"
+  "rules_for": "için kurallar",
+  "no_communities_found": "<1>https://github.com/plebbit/temporary-default-subplebbits</1> üzerinde hiçbir topluluk bulunamadı",
+  "connect_community_notice": "Bir topluluğa bağlanmak için, sağ üst köşede 🔎 kullanın"
 }

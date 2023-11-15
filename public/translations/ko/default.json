@@ -72,5 +72,7 @@
   "or": "또는",
   "submit_subscriptions_notice": "빠르게 접근하기 위해 커뮤니티에 구독하세요",
   "submit_subscriptions": "구독한 커뮤니티",
-  "rules_for": "규칙"
+  "rules_for": "규칙",
+  "no_communities_found": "<1>https://github.com/plebbit/temporary-default-subplebbits</1>에 커뮤니티를 찾을 수 없습니다",
+  "connect_community_notice": "커뮤니티에 연결하려면 오른쪽 상단의 🔎를 사용하세요"
 }

@@ -72,5 +72,7 @@
   "or": "atau",
   "submit_subscriptions_notice": "Berlangganan komunitas untuk mengaksesnya dengan cepat",
   "submit_subscriptions": "komunitas yang Anda langgani",
-  "rules_for": "aturan untuk"
+  "rules_for": "aturan untuk",
+  "no_communities_found": "Tidak ada komunitas yang ditemukan di <1>https://github.com/plebbit/temporary-default-subplebbits</1>",
+  "connect_community_notice": "Untuk terhubung ke komunitas, gunakan 🔎 di kanan atas"
 }

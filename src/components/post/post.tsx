@@ -43,7 +43,7 @@ const Post = ({ post, index }: PostProps) => {
 
   const postAuthor = isPending ? account?.author?.shortAddress : author?.shortAddress;
   const postScore = upvoteCount === 0 && downvoteCount === 0 ? '•' : upvoteCount - downvoteCount || '•';
-  const postTitleOrContent = (title?.length > 300 ? title?.slice(0, 300) + '...' : title) || (content?.length > 300 ? content?.slice(0, 300) + '...' : content);
+  const postTitle = (title?.length > 300 ? title?.slice(0, 300) + '...' : title) || (content?.length > 300 ? content?.slice(0, 300) + '...' : content);
 
   const pendingReplyCount = usePendingReplyCount({ parentCommentCid: cid });
   const totalReplyCount = replyCount + pendingReplyCount;
@@ -78,11 +78,11 @@ const Post = ({ post, index }: PostProps) => {
             <p className={styles.title}>
               {isInPostView && link ? (
                 <a href={link} target='_blank' rel='noopener noreferrer'>
-                  {postTitleOrContent}
+                  {postTitle}
                 </a>
               ) : (
                 <Link className={styles.link} to={`/p/${subplebbitAddress}/c/${cid}`} style={isInPostView ? { color: 'var(--link)' } : {}}>
-                  {postTitleOrContent}
+                  {postTitle}
                 </Link>
               )}
               {flair && (

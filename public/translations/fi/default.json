@@ -72,5 +72,7 @@
   "or": "tai",
   "submit_subscriptions_notice": "Tilaa yhteisö nopeaan pääsyyn",
   "submit_subscriptions": "tilaamasi yhteisöt",
-  "rules_for": "säännöt"
+  "rules_for": "säännöt",
+  "no_communities_found": "Yhteisöjä ei löytynyt osoitteesta <1>https://github.com/plebbit/temporary-default-subplebbits</1>",
+  "connect_community_notice": "Yhteisöön liittymiseksi käytä 🔎 oikeassa yläkulmassa"
 }

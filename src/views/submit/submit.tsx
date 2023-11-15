@@ -4,7 +4,7 @@ import { PublishCommentOptions, useAccount, usePublishComment, useSubplebbit } f
 import { useTranslation } from 'react-i18next';
 import { create } from 'zustand';
 import { alertChallengeVerificationFailed } from '../../lib/utils/challenge-utils';
-import { isValidENS, isValidIPFS, isValidURL } from '../../lib/utils/validation-utils';
+import { isValidURL } from '../../lib/utils/url-utils';
 import styles from './submit.module.css';
 import challengesStore from '../../hooks/use-challenges';
 
@@ -91,10 +91,6 @@ const Submit = () => {
       alert(`Missing community address`);
       return;
     }
-    if (!isValidENS(subplebbitAddressRef.current?.value) && !isValidIPFS(subplebbitAddressRef.current?.value)) {
-      alert(`Invalid community address`);
-      return;
-    }
 
     setSubmitStore({
       subplebbitAddress: subplebbitAddressRef.current?.value,
@@ -119,6 +115,7 @@ const Submit = () => {
     </Link>
   );
 
+// redirect to pending page when pending comment is created
   useEffect(() => {
     if (typeof index === 'number') {
       resetSubmitStore();
@@ -152,9 +149,7 @@ const Submit = () => {
 
   useEffect(() => {
     if (inputAddress) {
-      if (isValidENS(inputAddress) || isValidIPFS(inputAddress)) {
-        setSelectedSubplebbit(inputAddress);
-      }
+      setSelectedSubplebbit(inputAddress);
     }
   }, [inputAddress]);
 

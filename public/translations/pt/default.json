@@ -72,5 +72,7 @@
   "or": "ou",
   "submit_subscriptions_notice": "Inscreva-se em uma comunidade para acessá-la rapidamente",
   "submit_subscriptions": "suas comunidades inscritas",
-  "rules_for": "regras para"
+  "rules_for": "regras para",
+  "no_communities_found": "Nenhuma comunidade encontrada em <1>https://github.com/plebbit/temporary-default-subplebbits</1>",
+  "connect_community_notice": "Para se conectar a uma comunidade, use 🔎 no canto superior direito"
 }

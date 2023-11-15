@@ -72,5 +72,7 @@
   "or": "eller",
   "submit_subscriptions_notice": "Abonner på et fællesskab for hurtigt at få adgang",
   "submit_subscriptions": "dine abonnerede fællesskaber",
-  "rules_for": "regler for"
+  "rules_for": "regler for",
+  "no_communities_found": "Ingen samfund fundet på <1>https://github.com/plebbit/temporary-default-subplebbits</1>",
+  "connect_community_notice": "For at oprette forbindelse til et fællesskab, brug 🔎 øverst til højre"
 }

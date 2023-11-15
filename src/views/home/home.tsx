@@ -2,7 +2,7 @@ import { useEffect, useRef } from 'react';
 import { useParams } from 'react-router-dom';
 import { Virtuoso, VirtuosoHandle, StateSnapshot } from 'react-virtuoso';
 import { useFeed } from '@plebbit/plebbit-react-hooks';
-import { useTranslation } from 'react-i18next';
+import { Trans, useTranslation } from 'react-i18next';
 import styles from './home.module.css';
 import LoadingEllipsis from '../../components/loading-ellipsis';
 import Post from '../../components/post';
@@ -18,10 +18,22 @@ const Home = () => {
   const sortType = useParams<{ sortType: string }>().sortType || 'hot';
   const { feed, hasMore, loadMore } = useFeed({ subplebbitAddresses, sortType });
   const { t } = useTranslation();
-  const loadingStateString = useFeedStateString(subplebbitAddresses) || t('loading');
+  let loadingStateString = useFeedStateString(subplebbitAddresses) || t('loading');
+
   const loadingString = (
     <div className={styles.stateString}>
-      <LoadingEllipsis string={loadingStateString} />
+      {subplebbitAddresses.length === 0 ? (
+        <div>
+          <Trans
+            i18nKey='no_communities_found'
+            components={[<a href='https://github.com/plebbit/temporary-default-subplebbits'>https://github.com/plebbit/temporary-default-subplebbits</a>]}
+          />
+          <br />
+          {t('connect_community_notice')}
+        </div>
+      ) : (
+        <LoadingEllipsis string={loadingStateString} />
+      )}
     </div>
   );
 

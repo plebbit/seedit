@@ -72,5 +72,7 @@
   "or": "hoặc",
   "submit_subscriptions_notice": "Đăng ký vào một cộng đồng để nhanh chóng truy cập",
   "submit_subscriptions": "các cộng đồng bạn đã đăng ký",
-  "rules_for": "quy tắc cho"
+  "rules_for": "quy tắc cho",
+  "no_communities_found": "Không tìm thấy cộng đồng nào trên <1>https://github.com/plebbit/temporary-default-subplebbits</1>",
+  "connect_community_notice": "Để kết nối với cộng đồng, sử dụng 🔎 ở góc trên bên phải"
 }
