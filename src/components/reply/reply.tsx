@@ -51,8 +51,8 @@ const Reply = ({ reply, depth }: ReplyProps) => {
   if ((upvoteCount === 0 && downvoteCount === 0) || (upvoteCount === 1 && downvoteCount === 0)) {
     score = 1;
   }
-  const scoreTranslation = score === 1 ? t('reply_score_singular') : t('reply_score_plural', { count: score });
-  const contentOrRemoved = removed ? `[${t('removed')}]` : content;
+  const scoreString = score === 1 ? t('reply_score_singular') : t('reply_score_plural', { count: score });
+  const contentString = removed ? `[${t('removed')}]` : content;
   const { setContent, resetContent, replyIndex, publishReply } = useReply(reply);
 
   const textRef = useRef<HTMLTextAreaElement>(null);
@@ -106,7 +106,7 @@ const Reply = ({ reply, depth }: ReplyProps) => {
             >
               {shortAddress}
             </Link>
-            <span className={styles.score}>{scoreTranslation}</span> <span className={styles.time}>{getFormattedTime(timestamp)}</span>
+            <span className={styles.score}>{scoreString}</span> <span className={styles.time}>{getFormattedTime(timestamp)}</span>
             {flair && (
               <>
                 {' '}
@@ -148,7 +148,7 @@ const Reply = ({ reply, depth }: ReplyProps) => {
             {expanded && link && (
               <Expando commentMediaInfo={commentMediaInfo} content={content} expanded={expanded} link={link} showContent={false} toggleExpanded={toggleExpanded} />
             )}
-            <div className={styles.md}>{contentOrRemoved}</div>
+            <div className={styles.md}>{contentString}</div>
           </div>
         </div>
         <PostTools
