@@ -16,11 +16,12 @@
   position: fixed;
   transform: translate(-50%, -50%);
   font-size: large;
+  border-radius: 4px;
 }
 
 .subTitle {
-  font-size: small;
-  padding-top: 10px;
+  font-size: 13px;
+  padding-top: 5px;
 }
 
 .title, .subTitle {
