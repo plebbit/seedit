@@ -74,5 +74,7 @@
   "submit_subscriptions": "vos communautés abonnées",
   "rules_for": "règles pour",
   "no_communities_found": "Aucune communauté trouvée sur <1>https://github.com/plebbit/temporary-default-subplebbits</1>",
-  "connect_community_notice": "Pour vous connecter à une communauté, utilisez 🔎 en haut à droite"
+  "connect_community_notice": "Pour vous connecter à une communauté, utilisez 🔎 en haut à droite",
+  "options": "options",
+  "hide_options": "cacher les options"
 }

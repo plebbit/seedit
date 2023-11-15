@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import styles from './reply-form.module.css';
 
@@ -13,6 +14,7 @@ type ReplyFormProps = {
 
 const ReplyForm = ({ isReplyingToReply, onPublish, hideReplyForm, spoilerRef, textRef, urlRef }: ReplyFormProps) => {
   const { t } = useTranslation();
+  const [showOptions, setShowOptions] = useState(false);
 
   useEffect(() => {
     if (isReplyingToReply && textRef.current) {
@@ -23,9 +25,8 @@ const ReplyForm = ({ isReplyingToReply, onPublish, hideReplyForm, spoilerRef, te
   return (
     <div className={styles.mdContainer} style={{ marginLeft: isReplyingToReply ? '25px' : '' }}>
       <div className={styles.md}>
-        {/* TODO: move url and spoiler to some options dropdown, they shouldn't be visible right away*/}
-        <input style={{ display: 'none' }} className={styles.url} ref={urlRef} placeholder={`url (${t('optional')})`} />
-        <span style={{ display: 'none' }} className={styles.spoiler}>
+        <input style={{ display: showOptions ? 'inline-block' : 'none' }} className={styles.url} ref={urlRef} placeholder={`url (${t('optional')})`} />
+        <span style={{ display: showOptions ? 'inline-block' : 'none' }} className={styles.spoiler}>
           <label>
             {t('spoiler')}: <input type='checkbox' className={styles.checkbox} ref={spoilerRef} />
           </label>
@@ -41,6 +42,7 @@ const ReplyForm = ({ isReplyingToReply, onPublish, hideReplyForm, spoilerRef, te
             {t('cancel')}
           </button>
         )}
+        <span className={styles.options} onClick={() => setShowOptions(!showOptions)}>options</span>
       </div>
     </div>
   );
