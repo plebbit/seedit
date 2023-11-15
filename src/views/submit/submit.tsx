@@ -115,6 +115,7 @@ const Submit = () => {
     </Link>
   );
 
+// redirect to pending page when pending comment is created
   useEffect(() => {
     if (typeof index === 'number') {
       resetSubmitStore();
