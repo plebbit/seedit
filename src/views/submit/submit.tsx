@@ -7,6 +7,7 @@ import { alertChallengeVerificationFailed } from '../../lib/utils/challenge-util
 import { isValidURL } from '../../lib/utils/url-utils';
 import styles from './submit.module.css';
 import challengesStore from '../../hooks/use-challenges';
+import useDefaultSubplebbitAddresses from '../../hooks/use-default-subplebbit-addresses';
 
 type SubmitState = {
   subplebbitAddress: string | undefined;
@@ -73,6 +74,7 @@ const Submit = () => {
   const { subplebbitAddress, publishCommentOptions, setSubmitStore, resetSubmitStore } = useSubmitStore();
   const { index, publishComment } = usePublishComment(publishCommentOptions);
   const { subscriptions } = account || {};
+  const defaultSubplebbitAddresses = useDefaultSubplebbitAddresses();
 
   useEffect(() => {
     document.title = t('submit_to_before') + (selectedSubplebbit ? subplebbit?.title || subplebbit?.shortAddress || 'seedit' : 'seedit') + t('submit_to_after');
@@ -115,7 +117,7 @@ const Submit = () => {
     </Link>
   );
 
-// redirect to pending page when pending comment is created
+  // redirect to pending page when pending comment is created
   useEffect(() => {
     if (typeof index === 'number') {
       resetSubmitStore();
@@ -125,7 +127,7 @@ const Submit = () => {
 
   const subsDescription = <div className={styles.subsDescription}>{subscriptions.length > 0 ? t('submit_subscriptions') : t('submit_subscriptions_notice')}</div>;
 
-  const subs = (
+  const subscriptionsList = (
     <div className={styles.subs}>
       {subscriptions.map((sub: string) => (
         <span
@@ -141,6 +143,29 @@ const Submit = () => {
         </span>
       ))}
     </div>
+  );
+
+  const defaultSubplebbits = (
+    <ul className={styles.dropdown}>
+      {defaultSubplebbitAddresses
+        .filter((address) => address.toLowerCase().includes(inputAddress.toLowerCase()))
+        .slice(0, 10)
+        .map((subplebbitAddress) => (
+          <li key={subplebbitAddress} className={styles.dropdownItem}>
+            <Link
+              to={`/p/${subplebbitAddress}`}
+              className={styles.dropdownLink}
+              onClick={() => {
+                if (subplebbitAddressRef.current) {
+                  subplebbitAddressRef.current.value = subplebbitAddress;
+                }
+              }}
+            >
+              {subplebbitAddress}
+            </Link>
+          </li>
+        ))}
+    </ul>
   );
 
   const handleAddressChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -195,8 +220,9 @@ const Submit = () => {
                 ref={subplebbitAddressRef}
                 onChange={handleAddressChange}
               />
+              {inputAddress && defaultSubplebbits}
               {subsDescription}
-              {subs}
+              {subscriptionsList}
             </div>
           </div>
           {subplebbit?.rules && (

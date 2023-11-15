@@ -147,3 +147,33 @@ h1 {
   margin-left: 20px;
   word-wrap: break-word;
 }
+
+.dropdown {
+  display: block;
+  top: 52px;
+  position: absolute;
+  width: calc(100% - 8px);
+  margin: 0;
+  border: 1px solid var(--border-text);
+  background: var(--background);
+  left: 0;
+  z-index: 10;
+  list-style: none;
+}
+
+.dropdownItem a {
+  text-decoration: none;
+  display: block;
+  padding: 5px;
+  cursor: pointer;
+  color: var(--text);
+}
+
+.dropdownItem:hover {
+  background-color: var(--text-primary);
+  color: var(--background);
+}
+
+.dropdownItem a:hover {
+  color: var(--background);
+}
