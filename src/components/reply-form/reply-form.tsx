@@ -25,7 +25,7 @@ const ReplyForm = ({ isReplyingToReply, onPublish, hideReplyForm, spoilerRef, te
   return (
     <div className={styles.mdContainer} style={{ marginLeft: isReplyingToReply ? '25px' : '' }}>
       <div className={styles.md}>
-        <input style={{ display: showOptions ? 'inline-block' : 'none' }} className={styles.url} ref={urlRef} placeholder={`url (${t('optional')})`} />
+        <input style={{ display: showOptions ? 'inline-block' : 'none' }} className={styles.url} ref={urlRef} placeholder='url' />
         <span style={{ display: showOptions ? 'inline-block' : 'none' }} className={styles.spoiler}>
           <label>
             {t('spoiler')}: <input type='checkbox' className={styles.checkbox} ref={spoilerRef} />
