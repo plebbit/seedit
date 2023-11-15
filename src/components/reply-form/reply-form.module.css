@@ -43,3 +43,13 @@
   padding: 2px 6px 3px;
   text-transform: lowercase;
 }
+
+.options {
+  font-size: smaller;
+  float: right;
+  margin-top: 5px;
+  margin-left: 10px;
+  margin-right: 5px;
+  color: var(--text-primary);
+  cursor: pointer;
+}
