@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import styles from './post.module.css';
 import { Link, useLocation, useParams } from 'react-router-dom';
-import { useAccount, Comment, useSubplebbit } from '@plebbit/plebbit-react-hooks';
+import { useAuthorAddress, Comment, useSubplebbit } from '@plebbit/plebbit-react-hooks';
 import { useTranslation } from 'react-i18next';
 import { isPendingView, isPostView } from '../../lib/utils/view-utils';
 import { getCommentMediaInfoMemoized, getHasThumbnail } from '../../lib/utils/media-utils';
@@ -22,8 +22,8 @@ interface PostProps {
 }
 
 const Post = ({ post, index }: PostProps) => {
-  const { author, cid, content, downvoteCount, flair, link, linkHeight, linkWidth, replyCount, subplebbitAddress, timestamp, title, upvoteCount } = post || {};
-  const account = useAccount();
+  const { cid, content, downvoteCount, flair, link, linkHeight, linkWidth, replyCount, subplebbitAddress, timestamp, title, upvoteCount } = post || {};
+  const { shortAuthorAddress, authorAddressChanged } = useAuthorAddress({comment: post});
   const subplebbit = useSubplebbit({ subplebbitAddress });
   const { t } = useTranslation();
   const params = useParams();
@@ -41,7 +41,6 @@ const Post = ({ post, index }: PostProps) => {
   const hasThumbnail = getHasThumbnail(commentMediaInfo, link);
   const linkUrl = getHostname(link);
 
-  const postAuthor = isPending ? account?.author?.shortAddress : author?.shortAddress;
   const postScore = upvoteCount === 0 && downvoteCount === 0 ? '•' : upvoteCount - downvoteCount || '•';
   const postTitle = (title?.length > 300 ? title?.slice(0, 300) + '...' : title) || (content?.length > 300 ? content?.slice(0, 300) + '...' : content);
 
@@ -115,8 +114,11 @@ const Post = ({ post, index }: PostProps) => {
             )}
             <p className={styles.tagline}>
               {t('post_submitted')} {getFormattedTime(timestamp)} {t('post_by')}{' '}
-              <Link className={styles.author} to={`u/${postAuthor}`} onClick={(e) => e.preventDefault()}>
-                u/{postAuthor}
+              <Link className={styles.authorAddressWrapper} to={`u/${shortAuthorAddress}`} onClick={(e) => e.preventDefault()}>
+                <span className={styles.authorAddressHidden}>u/{post?.author?.shortAddress}</span>
+                <span className={`${styles.authorAddressVisible} ${authorAddressChanged && styles.authorAddressChanged}`}>
+                  u/{shortAuthorAddress}
+                </span>
               </Link>
                {t('post_to')}
               <Link className={styles.subplebbit} to={`/p/${subplebbitAddress}`}>
