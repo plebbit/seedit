@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import styles from './reply.module.css';
 import useReplies from '../../hooks/use-replies';
-import { getCommentMediaInfoMemoized, getHasThumbnail } from '../../lib/utils/media-utils';
+import { CommentMediaInfo, getCommentMediaInfoMemoized, getHasThumbnail } from '../../lib/utils/media-utils';
 import { getFormattedTime } from '../../lib/utils/time-utils';
 import Expando from '../post/expando/';
 import ExpandButton from '../post/expand-button/';
@@ -21,6 +21,50 @@ interface ReplyProps {
   key: string;
   reply: Comment;
 }
+
+interface ReplyMediaProps {
+  commentMediaInfo: CommentMediaInfo;
+  content: string;
+  expanded: boolean;
+  hasThumbnail: boolean;
+  link: string;
+  linkHeight: number;
+  linkWidth: number;
+  toggleExpanded: () => void;
+}
+
+const ReplyMedia = ({ commentMediaInfo, content, expanded, hasThumbnail, link, linkHeight, linkWidth, toggleExpanded }: ReplyMediaProps) => {
+  return (
+    <>
+      {hasThumbnail && (
+        <Thumbnail
+          commentMediaInfo={commentMediaInfo}
+          expanded={expanded}
+          isReply={true}
+          link={link}
+          linkHeight={linkHeight}
+          linkWidth={linkWidth}
+          toggleExpanded={toggleExpanded}
+        />
+      )}
+      {commentMediaInfo?.type === 'iframe' && (
+        <ExpandButton commentMediaInfo={commentMediaInfo} content={content} expanded={expanded} hasThumbnail={hasThumbnail} link={link} toggleExpanded={toggleExpanded} />
+      )}
+      {link && (commentMediaInfo?.type === 'iframe' || commentMediaInfo?.type === 'webpage') && (
+        <>
+          <a href={link} target='_blank' rel='noopener noreferrer'>
+            ({link})
+          </a>
+          <br />
+          <br />
+        </>
+      )}
+      {expanded && link && (
+        <Expando commentMediaInfo={commentMediaInfo} content={content} expanded={expanded} link={link} showContent={false} toggleExpanded={toggleExpanded} />
+      )}
+    </>
+  );
+};
 
 const Reply = ({ reply, depth }: ReplyProps) => {
   const {
@@ -115,38 +159,17 @@ const Reply = ({ reply, depth }: ReplyProps) => {
             )}
           </p>
           <div className={styles.usertext}>
-            {hasThumbnail && (
-              <Thumbnail
-                commentMediaInfo={commentMediaInfo}
-                expanded={expanded}
-                isReply={true}
-                link={link}
-                linkHeight={linkHeight}
-                linkWidth={linkWidth}
-                toggleExpanded={toggleExpanded}
-              />
-            )}
-            {commentMediaInfo?.type === 'iframe' && (
-              <ExpandButton
+            {commentMediaInfo && (
+              <ReplyMedia
                 commentMediaInfo={commentMediaInfo}
                 content={content}
                 expanded={expanded}
                 hasThumbnail={hasThumbnail}
                 link={link}
+                linkHeight={linkHeight}
+                linkWidth={linkWidth}
                 toggleExpanded={toggleExpanded}
               />
-            )}
-            {link && (commentMediaInfo?.type === 'iframe' || commentMediaInfo?.type === 'webpage') && (
-              <>
-                <a href={link} target='_blank' rel='noopener noreferrer'>
-                  ({link})
-                </a>
-                <br />
-                <br />
-              </>
-            )}
-            {expanded && link && (
-              <Expando commentMediaInfo={commentMediaInfo} content={content} expanded={expanded} link={link} showContent={false} toggleExpanded={toggleExpanded} />
             )}
             <div className={styles.md}>{contentString}</div>
           </div>

@@ -62,9 +62,7 @@ const TopBar = () => {
               </Link>
             </li>
           </ul>
-          <span className={styles.separator}>
-              |  
-          </span>
+          <span className={styles.separator}>  |  </span>
           <ul className={styles.srBar}>
             {ethFilteredAddresses?.map((address: string, index: number) => (
               <li key={index}>

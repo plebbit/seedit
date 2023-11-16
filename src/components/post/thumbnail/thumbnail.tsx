@@ -31,9 +31,7 @@ const Thumbnail = ({ cid, commentMediaInfo, expanded = false, isReply = false, l
     hasLinkDimensions = false;
   }
 
-  const style = hasLinkDimensions
-    ? { '--width': displayWidth, '--height': displayHeight } as React.CSSProperties
-    : {};
+  const style = hasLinkDimensions ? ({ '--width': displayWidth, '--height': displayHeight } as React.CSSProperties) : {};
 
   let mediaComponent = null;
 
