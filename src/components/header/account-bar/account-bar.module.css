@@ -88,6 +88,14 @@
   outline: none;
 }
 
+.searchBarVisible {
+  visibility: visible;
+}
+
+.searchBarHidden {
+  visibility: hidden;
+}
+
 @media (min-width: 768px) {
   .header {
     bottom: 0px;
