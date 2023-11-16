@@ -1,6 +1,7 @@
 import styles from './post-tools.module.css';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import { PendingLabel, SpoilerLabel } from '../label';
 
 interface PostToolsProps {
   cid: string;
@@ -11,35 +12,11 @@ interface PostToolsProps {
   showReplyForm?: () => void;
 }
 
-const SpoilerLabel = () => {
-  const { t } = useTranslation();
-
-  return (
-    <li>
-      <span className={`${styles.stamp} ${styles.stampSpoiler}`}>
-        <span className={`${styles.content} ${styles.contentSpoiler}`}>{t('spoiler').toUpperCase()}</span>
-      </span>
-    </li>
-  );
-};
-
-const PendingLabel = () => {
-  const { t } = useTranslation();
-
-  return (
-    <li>
-      <span className={`${styles.stamp} ${styles.stampPending}`}>
-        <span className={`${styles.content} ${styles.contentPending}`}>{t('pending').toUpperCase()}</span>
-      </span>
-    </li>
-  );
-};
-
 const PostTools = ({ cid, isReply, replyCount, spoiler, subplebbitAddress, showReplyForm }: PostToolsProps) => {
   const { t } = useTranslation();
   const validReplyCount = isNaN(replyCount) ? 0 : replyCount;
   const commentCount = validReplyCount === 0 ? t('post_no_comments') : `${validReplyCount} ${validReplyCount === 1 ? t('post_comment') : t('post_comments')}`;
-  const hasLabel = spoiler || cid === undefined;
+  const hasLabel = spoiler || (cid === undefined && !isReply);
 
   const postLabels = (
     <>
@@ -87,7 +64,7 @@ const PostTools = ({ cid, isReply, replyCount, spoiler, subplebbitAddress, showR
   return (
     <ul className={`${styles.buttons} ${isReply ? styles.buttonsReply : ''}`}>
       {spoiler && <SpoilerLabel />}
-      {cid === undefined && <PendingLabel />}
+      {(cid === undefined && !isReply) && <PendingLabel />}
       {isReply ? replyLabels : postLabels}
     </ul>
   );

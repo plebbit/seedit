@@ -1,0 +1,1 @@
+export {PendingLabel, SpoilerLabel} from './label';
