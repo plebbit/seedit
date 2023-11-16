@@ -64,7 +64,7 @@ const PostTools = ({ cid, isReply, replyCount, spoiler, subplebbitAddress, showR
   return (
     <ul className={`${styles.buttons} ${isReply ? styles.buttonsReply : ''}`}>
       {spoiler && <SpoilerLabel />}
-      {(cid === undefined && !isReply) && <PendingLabel />}
+      {cid === undefined && !isReply && <PendingLabel />}
       {isReply ? replyLabels : postLabels}
     </ul>
   );

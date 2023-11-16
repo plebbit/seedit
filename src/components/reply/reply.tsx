@@ -17,6 +17,7 @@ import useDownvote from '../../hooks/use-downvote';
 import useReply from '../../hooks/use-reply';
 import useStateString from '../../hooks/use-state-string';
 import useUpvote from '../../hooks/use-upvote';
+import { PendingLabel, FailedLabel } from '../post/label';
 
 interface ReplyProps {
   depth: number;
@@ -101,7 +102,7 @@ const Reply = ({ reply, depth }: ReplyProps) => {
   const contentString = removed ? `[${t('removed')}]` : content;
   const { setContent, resetContent, replyIndex, publishReply } = useReply(reply);
   const stateString = useStateString(reply);
-  const loadingString = stateString && <span className={styles.stateString}> {stateString !== 'Failed' ? <LoadingEllipsis string={stateString} /> : stateString}</span>;
+  const loadingString = stateString && <span className={styles.stateString}> {stateString !== 'Failed' ? <LoadingEllipsis string={stateString} /> : <FailedLabel />}</span>;
 
   const textRef = useRef<HTMLTextAreaElement>(null);
   const urlRef = useRef<HTMLInputElement>(null);
@@ -155,6 +156,7 @@ const Reply = ({ reply, depth }: ReplyProps) => {
               {shortAddress}
             </Link>
             <span className={styles.score}>{scoreString}</span> <span className={styles.time}>{getFormattedTime(timestamp)}</span>
+            {(cid === undefined && stateString !== 'Failed') && <PendingLabel />}
             {flair && (
               <>
                 {' '}

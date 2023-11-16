@@ -1,1 +1,1 @@
-export {PendingLabel, SpoilerLabel} from './label';
+export {FailedLabel, PendingLabel, SpoilerLabel} from './label';
