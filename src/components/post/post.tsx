@@ -48,6 +48,8 @@ const Post = ({ post, index }: PostProps) => {
   const pendingReplyCount = usePendingReplyCount({ parentCommentCid: cid });
   const totalReplyCount = replyCount + pendingReplyCount;
 
+  const linkClass = isInPostView ? (link ? styles.externalLink : styles.internalLink) : styles.link;
+
   return (
     <div className={styles.container} key={index}>
       <div className={styles.row}>
@@ -77,11 +79,11 @@ const Post = ({ post, index }: PostProps) => {
           <div className={styles.topMatter}>
             <p className={styles.title}>
               {isInPostView && link ? (
-                <a href={link} target='_blank' rel='noopener noreferrer'>
+                <a href={link} className={linkClass} target='_blank' rel='noopener noreferrer'>
                   {postTitle}
                 </a>
               ) : (
-                <Link className={styles.link} to={`/p/${subplebbitAddress}/c/${cid}`} style={isInPostView ? { color: 'var(--link)' } : {}}>
+                <Link className={linkClass} to={`/p/${subplebbitAddress}/c/${cid}`}>
                   {postTitle}
                 </Link>
               )}

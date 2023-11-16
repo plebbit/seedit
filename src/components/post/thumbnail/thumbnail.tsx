@@ -18,6 +18,7 @@ const Thumbnail = ({ cid, commentMediaInfo, expanded = false, isReply = false, l
   const iframeThumbnail = commentMediaInfo?.patternThumbnailUrl || commentMediaInfo?.thumbnail;
   let displayWidth, displayHeight, hasLinkDimensions;
   const routeOrLink = isReply ? link : `/p/${subplebbitAddress}/c/${cid}`;
+  const thumbnailClass = expanded ? styles.thumbnailHidden : styles.thumbnailVisible;
 
   if (linkWidth && linkHeight) {
     let scale = Math.min(1, 70 / Math.max(linkWidth, linkHeight));
@@ -29,6 +30,8 @@ const Thumbnail = ({ cid, commentMediaInfo, expanded = false, isReply = false, l
     displayHeight = '70px';
     hasLinkDimensions = false;
   }
+
+  const style = hasLinkDimensions ? ({ '--width': displayWidth, '--height': displayHeight } as React.CSSProperties) : {};
 
   let mediaComponent = null;
 
@@ -43,7 +46,7 @@ const Thumbnail = ({ cid, commentMediaInfo, expanded = false, isReply = false, l
   }
 
   return (
-    <span style={{ width: displayWidth, height: displayHeight, display: expanded ? 'none' : 'block' }} className={styles.thumbnail}>
+    <span className={`${styles.thumbnail} ${thumbnailClass}`} style={style}>
       <span className={hasLinkDimensions ? styles.transparentThumbnailWrapper : styles.thumbnailWrapper}>
         <Link
           to={routeOrLink}

@@ -11,6 +11,11 @@
   position: relative;
 }
 
+.logoLink {
+  all: unset;
+  cursor: pointer;
+}
+
 .logoContainer {
   position: absolute;
   top: 0;
@@ -72,12 +77,7 @@
 }
 
 .submitTitle {
-  font-weight: bold;
-  margin-right: 1ex;
-  font-variant: small-caps;
-  font-size: 1.2em;
-  color: var(--text);
-  padding-left: 15px;
+  text-transform: uppercase;
 }
 
 .tabMenu {

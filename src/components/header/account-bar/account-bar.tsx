@@ -10,7 +10,7 @@ const AccountBar = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const { subplebbitAddress } = useParams();
-  const [searchHidden, setSearchHidden] = useState(true);
+  const [searchVisible, setSearchVisible] = useState(false);
   const searchBarRef = useRef<HTMLFormElement>(null);
   const searchInputRef = useRef<HTMLInputElement>(null);
   let submitLink;
@@ -23,7 +23,7 @@ const AccountBar = () => {
 
   const handleClickOutside = (event: MouseEvent) => {
     if (searchBarRef.current && event.target instanceof Node && !searchBarRef.current.contains(event.target)) {
-      setSearchHidden(true);
+      setSearchVisible(false);
     }
   };
 
@@ -35,16 +35,16 @@ const AccountBar = () => {
   }, []);
 
   useEffect(() => {
-    if (!searchHidden && searchInputRef.current) {
+    if (searchVisible && searchInputRef.current) {
       searchInputRef.current.focus();
     }
-  }, [searchHidden]);
+  }, [searchVisible]);
 
   const handleSearchSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const searchInput = searchInputRef.current?.value;
     if (searchInput) {
-      setSearchHidden(true);
+      setSearchVisible(false);
       searchInputRef.current.value = '';
       navigate(`/p/${searchInput}`);
     }
@@ -67,7 +67,7 @@ const AccountBar = () => {
           ✉️
         </Link>
         <span className={styles.separator}>|</span>
-        <span className={styles.iconButton} onClick={() => setSearchHidden(false)}>
+        <span className={styles.iconButton} onClick={() => setSearchVisible(true)}>
           🔎
         </span>
         <span className={styles.separator}>|</span>
@@ -75,7 +75,7 @@ const AccountBar = () => {
           {t('preferences')}
         </Link>
       </div>
-      <form className={styles.searchBar} style={{ visibility: searchHidden ? 'hidden' : 'visible' }} ref={searchBarRef} onSubmit={handleSearchSubmit}>
+      <form className={`${styles.searchBar} ${!searchVisible ? styles.searchBarHidden : styles.searchBarVisible}`} ref={searchBarRef} onSubmit={handleSearchSubmit}>
         <input type='text' placeholder={`"community.eth" ${t('or')} "12D3KooW..."`} ref={searchInputRef} />
         <input type='submit' value='' />
       </form>

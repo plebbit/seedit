@@ -53,6 +53,18 @@
   color: var(--text-primary);
 }
 
+.dropChoicesHidden {
+  display: none;
+}
+
+.dropChoicesVisible {
+  display: block;
+}
+
+.separator {
+  cursor: default;
+}
+
 .selectedTitle {
   background: none no-repeat scroll center right;
   background-image: url("/public/assets/buttons/droparrowgray.gif");

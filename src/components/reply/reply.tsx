@@ -4,8 +4,9 @@ import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import styles from './reply.module.css';
 import useReplies from '../../hooks/use-replies';
-import { getCommentMediaInfoMemoized, getHasThumbnail } from '../../lib/utils/media-utils';
+import { CommentMediaInfo, getCommentMediaInfoMemoized, getHasThumbnail } from '../../lib/utils/media-utils';
 import { getFormattedTime } from '../../lib/utils/time-utils';
+import LoadingEllipsis from '../loading-ellipsis/';
 import Expando from '../post/expando/';
 import ExpandButton from '../post/expand-button/';
 import Thumbnail from '../post/thumbnail/';
@@ -14,13 +15,59 @@ import PostTools from '../post/post-tools';
 import ReplyForm from '../reply-form';
 import useDownvote from '../../hooks/use-downvote';
 import useReply from '../../hooks/use-reply';
+import useStateString from '../../hooks/use-state-string';
 import useUpvote from '../../hooks/use-upvote';
+import { PendingLabel, FailedLabel } from '../post/label';
 
 interface ReplyProps {
   depth: number;
   key: string;
   reply: Comment;
 }
+
+interface ReplyMediaProps {
+  commentMediaInfo: CommentMediaInfo;
+  content: string;
+  expanded: boolean;
+  hasThumbnail: boolean;
+  link: string;
+  linkHeight: number;
+  linkWidth: number;
+  toggleExpanded: () => void;
+}
+
+const ReplyMedia = ({ commentMediaInfo, content, expanded, hasThumbnail, link, linkHeight, linkWidth, toggleExpanded }: ReplyMediaProps) => {
+  return (
+    <>
+      {hasThumbnail && (
+        <Thumbnail
+          commentMediaInfo={commentMediaInfo}
+          expanded={expanded}
+          isReply={true}
+          link={link}
+          linkHeight={linkHeight}
+          linkWidth={linkWidth}
+          toggleExpanded={toggleExpanded}
+        />
+      )}
+      {commentMediaInfo?.type === 'iframe' && (
+        <ExpandButton commentMediaInfo={commentMediaInfo} content={content} expanded={expanded} hasThumbnail={hasThumbnail} link={link} toggleExpanded={toggleExpanded} />
+      )}
+      {link && (commentMediaInfo?.type === 'iframe' || commentMediaInfo?.type === 'webpage') && (
+        <>
+          <a href={link} target='_blank' rel='noopener noreferrer'>
+            ({link})
+          </a>
+          <br />
+          <br />
+        </>
+      )}
+      {expanded && link && (
+        <Expando commentMediaInfo={commentMediaInfo} content={content} expanded={expanded} link={link} showContent={false} toggleExpanded={toggleExpanded} />
+      )}
+    </>
+  );
+};
 
 const Reply = ({ reply, depth }: ReplyProps) => {
   const {
@@ -54,6 +101,8 @@ const Reply = ({ reply, depth }: ReplyProps) => {
   const scoreString = score === 1 ? t('reply_score_singular') : t('reply_score_plural', { count: score });
   const contentString = removed ? `[${t('removed')}]` : content;
   const { setContent, resetContent, replyIndex, publishReply } = useReply(reply);
+  const stateString = useStateString(reply);
+  const loadingString = stateString && <span className={styles.stateString}> {stateString !== 'Failed' ? <LoadingEllipsis string={stateString} /> : <FailedLabel />}</span>;
 
   const textRef = useRef<HTMLTextAreaElement>(null);
   const urlRef = useRef<HTMLInputElement>(null);
@@ -107,46 +156,27 @@ const Reply = ({ reply, depth }: ReplyProps) => {
               {shortAddress}
             </Link>
             <span className={styles.score}>{scoreString}</span> <span className={styles.time}>{getFormattedTime(timestamp)}</span>
+            {(cid === undefined && stateString !== 'Failed') && <PendingLabel />}
             {flair && (
               <>
                 {' '}
                 <Flair flair={flair} />
               </>
             )}
+            {loadingString}
           </p>
           <div className={styles.usertext}>
-            {hasThumbnail && (
-              <Thumbnail
-                commentMediaInfo={commentMediaInfo}
-                expanded={expanded}
-                isReply={true}
-                link={link}
-                linkHeight={linkHeight}
-                linkWidth={linkWidth}
-                toggleExpanded={toggleExpanded}
-              />
-            )}
-            {commentMediaInfo?.type === 'iframe' && (
-              <ExpandButton
+            {commentMediaInfo && (
+              <ReplyMedia
                 commentMediaInfo={commentMediaInfo}
                 content={content}
                 expanded={expanded}
                 hasThumbnail={hasThumbnail}
                 link={link}
+                linkHeight={linkHeight}
+                linkWidth={linkWidth}
                 toggleExpanded={toggleExpanded}
               />
-            )}
-            {link && (commentMediaInfo?.type === 'iframe' || commentMediaInfo?.type === 'webpage') && (
-              <>
-                <a href={link} target='_blank' rel='noopener noreferrer'>
-                  ({link})
-                </a>
-                <br />
-                <br />
-              </>
-            )}
-            {expanded && link && (
-              <Expando commentMediaInfo={commentMediaInfo} content={content} expanded={expanded} link={link} showContent={false} toggleExpanded={toggleExpanded} />
             )}
             <div className={styles.md}>{contentString}</div>
           </div>

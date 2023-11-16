@@ -1,0 +1,25 @@
+.stamp {
+  border-radius: 3px;
+  border: 1px solid;
+  display: inline-block;
+  font-size: 10px;
+  line-height: 14px;
+  padding: 0 4px;
+}
+
+.stampSpoiler {
+  color: var(--text);
+  border-color: currentColor;
+}
+
+.stampPending {
+  color: var(--label-pending);
+  border-color: var(--label-pending);
+  margin: 0 2px 0 5px;
+}
+
+.stampFailed {
+  color: var(--label-failed);
+  border-color: var(--label-failed);
+  margin-left: 2px;
+}

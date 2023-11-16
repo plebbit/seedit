@@ -2,6 +2,16 @@
   position: relative;
   float: left;
   padding-right: 5px;
+  width: var(--width, 70px); /* Fallback to 70px if variable not set */
+  height: var(--height, 70px); /* Fallback to 70px if variable not set */
+}
+
+.thumbnailHidden {
+  display: none;
+}
+
+.thumbnailVisible {
+  display: block;
 }
 
 .thumbnailWrapper {

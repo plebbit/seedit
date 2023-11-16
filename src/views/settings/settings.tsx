@@ -20,7 +20,7 @@ const Settings = () => {
   };
 
   const themeSelect = (
-    <div style={{ padding: '5px' }}>
+    <div>
       <select value={theme} onChange={(e) => setTheme(e.target.value)}>
         <option value='light'>{t('light')}</option>
         <option value='dark'>{t('dark')}</option>
@@ -29,7 +29,7 @@ const Settings = () => {
   );
 
   const languageSelect = (
-    <div style={{ padding: '5px' }}>
+    <div>
       <select value={language} onChange={onSelectLanguage}>
         {availableLanguages.map((lang) => (
           <option key={lang} value={lang}>

@@ -14,6 +14,7 @@ const TopBar = () => {
 
   const subscriptions = account?.subscriptions;
   const ethFilteredAddresses = subplebbitAddresses.filter((address: string) => address.endsWith('.eth'));
+  const dropChoicesClass = isClicked && subscriptions?.length ? styles.dropChoicesVisible : styles.dropChoicesHidden;
 
   const toggleClick = () => {
     setIsClicked(!isClicked);
@@ -40,7 +41,7 @@ const TopBar = () => {
             {t('topbar_my_subs')}
           </span>
         </div>
-        <div className={styles.dropChoices} style={{ display: isClicked && subscriptions?.length ? 'block' : 'none' }}>
+        <div className={`${styles.dropChoices} ${dropChoicesClass}`}>
           {subscriptions?.map((subscription: string, index: number) => (
             <Link key={index} to={`/p/${subscription}`} className={styles.choice}>
               {subscription}
@@ -61,9 +62,7 @@ const TopBar = () => {
               </Link>
             </li>
           </ul>
-          <span style={{ cursor: 'default' }} className={styles.separator}>
-              |  
-          </span>
+          <span className={styles.separator}>  |  </span>
           <ul className={styles.srBar}>
             {ethFilteredAddresses?.map((address: string, index: number) => (
               <li key={index}>

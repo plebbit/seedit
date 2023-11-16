@@ -1,6 +1,7 @@
 .temporary {
   display: flex;
   position: relative;
+  padding: 5px;
 }
 
 .temporary select {

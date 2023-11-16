@@ -61,7 +61,7 @@ const Header = () => {
 
   const subplebbitTitle = <Link to={`/p/${params.subplebbitAddress}`}>{title || shortAddress}</Link>;
   let headerTitle;
-  const submitTitle = <span style={{ textTransform: 'uppercase' }}>{t('submit')}</span>;
+  const submitTitle = <span className={styles.submitTitle}>{t('submit')}</span>;
 
   if (isSubplebbitSubmit) {
     headerTitle = (
@@ -80,7 +80,7 @@ const Header = () => {
       <AccountBar />
       <div className={styles.container}>
         <div className={styles.logoContainer}>
-          <Link to='/' style={{ all: 'unset', cursor: 'pointer' }}>
+          <Link to='/' className={styles.logoLink}>
             <img className={styles.logo} src='/assets/logo/seedit.png' alt='logo' />
             <img src={`/assets/logo/seedit-text-${theme === 'dark' ? 'dark' : 'light'}.svg`} className={styles.logoText} alt='logo' />
           </Link>

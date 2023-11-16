@@ -23,6 +23,7 @@
   --close-button: url("/public/assets/buttons/close-button.png");
   --close-button-hover: url("/public/assets/buttons/close-button-hover.png");
   --label-pending: goldenrod;
+  --label-failed: red;
 }
 
 :root .dark {
@@ -50,4 +51,5 @@
   --close-button: url("/public/assets/buttons/close-button-dark.png");
   --close-button-hover: url("/public/assets/buttons/close-button-hover.png");
   --label-pending: gold;
+  --label-failed: red;
 }
