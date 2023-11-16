@@ -6,6 +6,7 @@ import styles from './reply.module.css';
 import useReplies from '../../hooks/use-replies';
 import { CommentMediaInfo, getCommentMediaInfoMemoized, getHasThumbnail } from '../../lib/utils/media-utils';
 import { getFormattedTime } from '../../lib/utils/time-utils';
+import LoadingEllipsis from '../loading-ellipsis/';
 import Expando from '../post/expando/';
 import ExpandButton from '../post/expand-button/';
 import Thumbnail from '../post/thumbnail/';
@@ -14,6 +15,7 @@ import PostTools from '../post/post-tools';
 import ReplyForm from '../reply-form';
 import useDownvote from '../../hooks/use-downvote';
 import useReply from '../../hooks/use-reply';
+import useStateString from '../../hooks/use-state-string';
 import useUpvote from '../../hooks/use-upvote';
 
 interface ReplyProps {
@@ -98,6 +100,8 @@ const Reply = ({ reply, depth }: ReplyProps) => {
   const scoreString = score === 1 ? t('reply_score_singular') : t('reply_score_plural', { count: score });
   const contentString = removed ? `[${t('removed')}]` : content;
   const { setContent, resetContent, replyIndex, publishReply } = useReply(reply);
+  const stateString = useStateString(reply);
+  const loadingString = stateString && <span className={styles.stateString}> {stateString !== 'Failed' ? <LoadingEllipsis string={stateString} /> : stateString}</span>;
 
   const textRef = useRef<HTMLTextAreaElement>(null);
   const urlRef = useRef<HTMLInputElement>(null);
@@ -157,6 +161,7 @@ const Reply = ({ reply, depth }: ReplyProps) => {
                 <Flair flair={flair} />
               </>
             )}
+            {loadingString}
           </p>
           <div className={styles.usertext}>
             {commentMediaInfo && (

@@ -66,7 +66,7 @@ const PostTools = ({ cid, isReply, replyCount, spoiler, subplebbitAddress, showR
 
   const replyLabels = (
     <>
-      <li className={`${styles.button} ${!spoiler ? styles.firstButton : ''}`}>
+      <li className={`${styles.button} ${!hasLabel ? styles.firstButton : ''}`}>
         <span>{t('reply_permalink')}</span>
       </li>
       <li className={styles.button}>

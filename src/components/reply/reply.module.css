@@ -82,6 +82,11 @@
   font-size: x-small;
 }
 
+.stateString {
+  font-size: x-small;
+  color: var(--text-info);
+}
+
 .usertext {
   font-size: small;
   unicode-bidi: isolate;
