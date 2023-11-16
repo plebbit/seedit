@@ -66,21 +66,30 @@
   overflow: hidden;
 }
 
-.title a {
-  color: var(--link);
-  text-decoration: none;
-}
-
-.title a:visited {
-  color: var(--link-visited);
-}
-
 .link {
   text-decoration: none;
   color: var(--link);
 }
 
 .link:visited {
+  color: var(--link-visited);
+}
+
+.internalLink {
+  color: var(--link);
+  text-decoration: none;
+}
+
+.internalLink:visited {
+  color: var(--link);
+}
+
+.externalLink {
+  color: var(--link);
+  text-decoration: none;
+}
+
+.externalLink:visited {
   color: var(--link-visited);
 }
 
