@@ -15,6 +15,9 @@ type ReplyFormProps = {
 const ReplyForm = ({ isReplyingToReply, onPublish, hideReplyForm, spoilerRef, textRef, urlRef }: ReplyFormProps) => {
   const { t } = useTranslation();
   const [showOptions, setShowOptions] = useState(false);
+  const mdContainerClass = isReplyingToReply ? `${styles.mdContainer} ${styles.mdContainerReplying}` : styles.mdContainer;
+  const urlClass = showOptions ? styles.urlVisible : styles.urlHidden;
+  const spoilerClass = showOptions ? styles.spoilerVisible : styles.spoilerHidden;
 
   useEffect(() => {
     if (isReplyingToReply && textRef.current) {
@@ -23,10 +26,10 @@ const ReplyForm = ({ isReplyingToReply, onPublish, hideReplyForm, spoilerRef, te
   }, [isReplyingToReply, textRef]);
 
   return (
-    <div className={styles.mdContainer} style={{ marginLeft: isReplyingToReply ? '25px' : '' }}>
+    <div className={mdContainerClass}>
       <div className={styles.md}>
-        <input style={{ display: showOptions ? 'inline-block' : 'none' }} className={styles.url} ref={urlRef} placeholder='url' />
-        <span style={{ display: showOptions ? 'inline-block' : 'none' }} className={styles.spoiler}>
+        <input className={`${styles.url} ${urlClass}`} ref={urlRef} placeholder='url' />
+        <span className={`${styles.spoiler} ${spoilerClass}`}>
           <label>
             {t('spoiler')}: <input type='checkbox' className={styles.checkbox} ref={spoilerRef} />
           </label>
