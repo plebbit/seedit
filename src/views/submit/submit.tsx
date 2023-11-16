@@ -64,7 +64,6 @@ const Submit = () => {
   const [selectedSubplebbit, setSelectedSubplebbit] = useState(paramsSubplebbitAddress);
   const subplebbit = useSubplebbit({ subplebbitAddress: selectedSubplebbit });
   const navigate = useNavigate();
-  const [readyToPublish, setReadyToPublish] = useState(false);
 
   const titleRef = useRef<HTMLTextAreaElement>(null);
   const linkRef = useRef<HTMLInputElement>(null);
@@ -94,22 +93,8 @@ const Submit = () => {
       return;
     }
 
-    setSubmitStore({
-      subplebbitAddress: subplebbitAddressRef.current?.value,
-      title: titleRef.current?.value,
-      content: contentRef.current?.value || undefined,
-      link: linkRef.current?.value || undefined,
-    });
-
-    setReadyToPublish(true);
+    publishComment();
   };
-
-  useEffect(() => {
-    if (readyToPublish) {
-      publishComment();
-      setReadyToPublish(false);
-    }
-  }, [readyToPublish, publishComment]);
 
   const subplebbitHeaderLink = (
     <Link to={`/p/${subplebbitAddress}`} className={styles.location} onClick={(e) => e.preventDefault()}>
@@ -125,11 +110,11 @@ const Submit = () => {
     }
   }, [index, resetSubmitStore, navigate]);
 
-  const subsDescription = <div className={styles.subsDescription}>{subscriptions.length > 0 ? t('submit_subscriptions') : t('submit_subscriptions_notice')}</div>;
+  const subsDescription = <div className={styles.subsDescription}>{subscriptions?.length > 0 ? t('submit_subscriptions') : t('submit_subscriptions_notice')}</div>;
 
   const subscriptionsList = (
     <div className={styles.subs}>
-      {subscriptions.map((sub: string) => (
+      {subscriptions?.map((sub: string) => (
         <span
           key={sub}
           className={styles.sub}
@@ -145,7 +130,7 @@ const Submit = () => {
     </div>
   );
 
-  const defaultSubplebbits = (
+  const defaultSubplebbits = inputAddress && defaultSubplebbitAddresses.filter((address) => address.toLowerCase().includes(inputAddress.toLowerCase())).length > 0 && (
     <ul className={styles.dropdown}>
       {defaultSubplebbitAddresses
         .filter((address) => address.toLowerCase().includes(inputAddress.toLowerCase()))
@@ -191,21 +176,40 @@ const Submit = () => {
             <span className={styles.boxTitleOptional}>url</span>
             <span className={styles.optional}> ({t('optional')})</span>
             <div className={styles.boxContent}>
-              <input className={`${styles.input} ${styles.inputUrl}`} type='text' ref={linkRef} />
+              <input
+                className={`${styles.input} ${styles.inputUrl}`}
+                type='text'
+                ref={linkRef}
+                onChange={(e) => {
+                  setSubmitStore({ link: e.target.value });
+                }}
+              />
               <div className={styles.description}>{t('submit_url_description')}</div>
             </div>
           </div>
           <div className={styles.box}>
             <span className={styles.boxTitleRequired}>{t('title')}</span>
             <div className={styles.boxContent}>
-              <textarea className={`${styles.input} ${styles.inputTitle}`} ref={titleRef} />
+              <textarea
+                className={`${styles.input} ${styles.inputTitle}`}
+                ref={titleRef}
+                onChange={(e) => {
+                  setSubmitStore({ title: e.target.value });
+                }}
+              />
             </div>
           </div>
           <div className={styles.box}>
             <span className={styles.boxTitleOptional}>{t('text')}</span>
             <span className={styles.optional}> ({t('optional')})</span>
             <div className={styles.boxContent}>
-              <textarea className={`${styles.input} ${styles.inputText}`} ref={contentRef} />
+              <textarea
+                className={`${styles.input} ${styles.inputText}`}
+                ref={contentRef}
+                onChange={(e) => {
+                  setSubmitStore({ content: e.target.value });
+                }}
+              />
             </div>
           </div>
           <div className={styles.box}>
@@ -218,7 +222,10 @@ const Submit = () => {
                 placeholder={`"community.eth" ${t('or')} "12D3KooW..."`}
                 defaultValue={selectedSubplebbit ? paramsSubplebbitAddress : undefined}
                 ref={subplebbitAddressRef}
-                onChange={handleAddressChange}
+                onChange={(e) => {
+                  handleAddressChange(e);
+                  setSubmitStore({ subplebbitAddress: e.target.value });
+                }}
               />
               {inputAddress && defaultSubplebbits}
               {subsDescription}
