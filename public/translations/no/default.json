@@ -76,5 +76,6 @@
   "no_communities_found": "Ingen samfunn funnet på <1>https://github.com/plebbit/temporary-default-subplebbits</1>",
   "connect_community_notice": "For å koble til et samfunn, bruk 🔎 øverst til høyre",
   "options": "alternativer",
-  "hide_options": "skjul alternativer"
+  "hide_options": "skjul alternativer",
+  "failed": "mislyktes"
 }

@@ -76,5 +76,6 @@
   "no_communities_found": "Nicio comunitate găsită pe <1>https://github.com/plebbit/temporary-default-subplebbits</1>",
   "connect_community_notice": "Pentru a vă conecta la o comunitate, folosiți 🔎 în partea dreaptă sus",
   "options": "opțiuni",
-  "hide_options": "ascunde opțiuni"
+  "hide_options": "ascunde opțiuni",
+  "failed": "eșuat"
 }

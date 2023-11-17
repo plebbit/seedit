@@ -76,5 +76,6 @@
   "no_communities_found": "Inga samhällen hittades på <1>https://github.com/plebbit/temporary-default-subplebbits</1>",
   "connect_community_notice": "För att ansluta till en gemenskap, använd 🔎 i övre högra hörnet",
   "options": "alternativ",
-  "hide_options": "dölj alternativ"
+  "hide_options": "dölj alternativ",
+  "failed": "misslyckades"
 }

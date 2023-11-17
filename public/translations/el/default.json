@@ -76,5 +76,6 @@
   "no_communities_found": "Δεν βρέθηκαν κοινότητες στο <1>https://github.com/plebbit/temporary-default-subplebbits</1>",
   "connect_community_notice": "Για να συνδεθείτε με μια κοινότητα, χρησιμοποιήστε το 🔎 στην επάνω δεξιά γωνία",
   "options": "επιλογές",
-  "hide_options": "απόκρυψη επιλογών"
+  "hide_options": "απόκρυψη επιλογών",
+  "failed": "απέτυχε"
 }

@@ -76,5 +76,6 @@
   "no_communities_found": "Tidak ada komunitas yang ditemukan di <1>https://github.com/plebbit/temporary-default-subplebbits</1>",
   "connect_community_notice": "Untuk terhubung ke komunitas, gunakan 🔎 di kanan atas",
   "options": "opsi",
-  "hide_options": "sembunyikan opsi"
+  "hide_options": "sembunyikan opsi",
+  "failed": "gagal"
 }

@@ -76,5 +76,6 @@
   "no_communities_found": "Yhteisöjä ei löytynyt osoitteesta <1>https://github.com/plebbit/temporary-default-subplebbits</1>",
   "connect_community_notice": "Yhteisöön liittymiseksi käytä 🔎 oikeassa yläkulmassa",
   "options": "vaihtoehdot",
-  "hide_options": "piilota vaihtoehdot"
+  "hide_options": "piilota vaihtoehdot",
+  "failed": "epäonnistui"
 }
