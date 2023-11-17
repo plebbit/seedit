@@ -18,12 +18,13 @@ const Subplebbit = () => {
   const subplebbitAddress = params.subplebbitAddress;
   const subplebbitAddresses = useMemo(() => [subplebbitAddress], [subplebbitAddress]) as string[];
   const subplebbit = useSubplebbit({ subplebbitAddress });
-  const { title, shortAddress } = subplebbit || {};
+  const { title, shortAddress, state } = subplebbit || {};
   const { feed, hasMore, loadMore } = useFeed({ subplebbitAddresses, sortType: 'hot' });
   const loadingStateString = useFeedStateString(subplebbitAddresses) || t('loading');
+  
   const loadingString = (
     <div className={styles.stateString}>
-      <LoadingEllipsis string={loadingStateString} />
+      {state === 'failed' ? state : <LoadingEllipsis string={loadingStateString} />}
     </div>
   );
 
