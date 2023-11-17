@@ -22,7 +22,7 @@ interface PostProps {
 }
 
 const Post = ({ post, index }: PostProps) => {
-  const { cid, content, downvoteCount, flair, link, linkHeight, linkWidth, replyCount, subplebbitAddress, timestamp, title, upvoteCount } = post || {};
+  const { cid, content, downvoteCount, flair, link, linkHeight, linkWidth, replyCount, state, subplebbitAddress, timestamp, title, upvoteCount } = post || {};
   const { shortAuthorAddress, authorAddressChanged } = useAuthorAddress({comment: post});
   const subplebbit = useSubplebbit({ subplebbitAddress });
   const { t } = useTranslation();
@@ -115,7 +115,7 @@ const Post = ({ post, index }: PostProps) => {
             <p className={styles.tagline}>
               {t('post_submitted')} {getFormattedTime(timestamp)} {t('post_by')}{' '}
               <Link className={styles.authorAddressWrapper} to={`u/${shortAuthorAddress}`} onClick={(e) => e.preventDefault()}>
-                <span className={styles.authorAddressHidden}>u/{post?.author?.shortAddress}</span>
+                <span className={styles.authorAddressHidden}>u/{post?.author?.shortAddress || shortAuthorAddress}</span>
                 <span className={`${styles.authorAddressVisible} ${authorAddressChanged && styles.authorAddressChanged}`}>
                   u/{shortAuthorAddress}
                 </span>
@@ -123,10 +123,10 @@ const Post = ({ post, index }: PostProps) => {
                {t('post_to')}
               <Link className={styles.subplebbit} to={`/p/${subplebbitAddress}`}>
                 {' '}
-                p/{subplebbit?.shortAddress}
+                p/{subplebbit?.shortAddress || subplebbitAddress}
               </Link>
             </p>
-            <PostTools cid={cid} replyCount={totalReplyCount} subplebbitAddress={subplebbitAddress} />
+            <PostTools cid={cid} failed={state === 'failed'} replyCount={totalReplyCount} subplebbitAddress={subplebbitAddress} />
           </div>
         </div>
       </div>

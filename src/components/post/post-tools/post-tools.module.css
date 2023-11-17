@@ -4,6 +4,10 @@
   display: block;
 }
 
+.buttonsLabel {
+  padding-top: 5px;
+}
+
 .buttons li {
   display: inline-block;
   border: none;
@@ -40,4 +44,8 @@
 
 .firstButton {
   padding-left: 0 !important;
+}
+
+.label {
+  padding-right: 2px;
 }

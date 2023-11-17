@@ -102,7 +102,7 @@ const Reply = ({ reply, depth }: ReplyProps) => {
   const contentString = removed ? `[${t('removed')}]` : content;
   const { setContent, resetContent, replyIndex, publishReply } = useReply(reply);
   const stateString = useStateString(reply);
-  const loadingString = stateString && <span className={styles.stateString}> {stateString !== 'Failed' ? <LoadingEllipsis string={stateString} /> : <FailedLabel />}</span>;
+  const loadingString = stateString && <span className={styles.stateString}>{stateString !== 'Failed' ? <LoadingEllipsis string={stateString} /> : ''}</span>;
 
   const textRef = useRef<HTMLTextAreaElement>(null);
   const urlRef = useRef<HTMLInputElement>(null);
@@ -136,6 +136,13 @@ const Reply = ({ reply, depth }: ReplyProps) => {
     }
   }, [replyIndex, resetContent]);
 
+  const stateLabel = (
+    <span className={styles.stateLabel}>
+      {stateString === 'Failed' && <FailedLabel />}
+      {(cid === undefined && stateString !== 'Failed') && <PendingLabel />}
+    </span>
+  );
+
   return (
     <div className={styles.reply}>
       <div className={`${styles.replyWrapper} ${depth > 1 && styles.nested}`}>
@@ -156,7 +163,7 @@ const Reply = ({ reply, depth }: ReplyProps) => {
               {shortAuthorAddress}
             </Link>
             <span className={styles.score}>{scoreString}</span> <span className={styles.time}>{getFormattedTime(timestamp)}</span>
-            {(cid === undefined && stateString !== 'Failed') && <PendingLabel />}
+            {stateLabel}
             {flair && (
               <>
                 {' '}

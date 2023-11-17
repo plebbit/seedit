@@ -15,11 +15,9 @@
 .stampPending {
   color: var(--label-pending);
   border-color: var(--label-pending);
-  margin: 0 2px 0 5px;
 }
 
 .stampFailed {
   color: var(--label-failed);
   border-color: var(--label-failed);
-  margin-left: 2px;
 }
