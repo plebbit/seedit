@@ -36,7 +36,7 @@ function App() {
           <Route path='/:sortType?' element={<Home />} />
           <Route path='/submit' element={<Submit />} />
           <Route path='p/:subplebbitAddress/c/:commentCid' element={<Post />} />
-          <Route path='p/:subplebbitAddress/' element={<Subplebbit />} />
+          <Route path='p/:subplebbitAddress/:sortType?' element={<Subplebbit />} />
           <Route path='p/:subplebbitAddress/submit' element={<Submit />} />
           <Route path='/settings' element={<Settings />} />
           <Route path='/profile/:accountCommentIndex' element={<PendingPost />} />

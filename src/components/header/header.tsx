@@ -7,7 +7,7 @@ import { useSubplebbit } from '@plebbit/plebbit-react-hooks';
 import { useTranslation } from 'react-i18next';
 import { isHomeView, isPostView, isSubplebbitView, isSubmitView, isSubplebbitSubmitView } from '../../lib/utils/view-utils';
 
-const sortTypes = ['/hot', '/new', '/active', '/controversialAll', '/topAll'];
+const sortTypes = ['hot', 'new', 'active', 'controversialAll', 'topAll'];
 
 const Header = () => {
   const [theme] = useTheme();
@@ -30,15 +30,15 @@ const Header = () => {
 
   useEffect(() => {
     if (params.sortType) {
-      setSelectedSortType('/' + params.sortType);
+      setSelectedSortType(params.sortType);
     } else {
-      setSelectedSortType('/hot');
+      setSelectedSortType('hot');
     }
   }, [params.sortType]);
 
   const sortItems = sortTypes.map((choice, index) => (
     <li key={choice}>
-      <Link to={choice} className={selectedSortType === choice ? styles.selected : styles.choice} onClick={() => handleSelect(choice)}>
+      <Link to={isSubplebbit ? `/p/${params.subplebbitAddress}/${choice}` : choice} className={selectedSortType === choice ? styles.selected : styles.choice} onClick={() => handleSelect(choice)}>
         {sortLabels[index]}
       </Link>
     </li>
@@ -55,7 +55,7 @@ const Header = () => {
 
   if (isPost) {
     headerTabs = commentsButton;
-  } else if (isHome) {
+  } else if (isHome || isSubplebbit) {
     headerTabs = sortItems;
   }
 
