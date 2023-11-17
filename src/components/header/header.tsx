@@ -55,7 +55,7 @@ const Header = () => {
 
   if (isPost) {
     headerTabs = commentsButton;
-  } else if (isHome || isSubplebbit) {
+  } else if (isHome || (isSubplebbit && !isSubplebbitSubmit)) {
     headerTabs = sortItems;
   }
 
