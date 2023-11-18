@@ -23,6 +23,7 @@ const Header = () => {
   const isSubplebbit = isSubplebbitView(location.pathname, params);
   const isSubmit = isSubmitView(location.pathname);
   const isSubplebbitSubmit = isSubplebbitSubmitView(location.pathname, params);
+  const fewTabs = isPost || isSubmit || isSubplebbitSubmit;
 
   const handleSelect = (choice: string) => {
     setSelectedSortType(choice);
@@ -75,25 +76,29 @@ const Header = () => {
     headerTitle = submitTitle;
   }
 
+  const aboutButton = (
+    <li className={styles.about}>
+      <Link to='/about' className={styles.choice} onClick={(event) => event.preventDefault()}>
+        {t('header_about')}
+      </Link>
+    </li>
+  );
+
   return (
     <div className={styles.header}>
       <AccountBar />
-      <div className={styles.container}>
+      <div className={`${styles.container} ${fewTabs ? styles.reducedHeight : ''}`}>
         <div className={styles.logoContainer}>
           <Link to='/' className={styles.logoLink}>
             <img className={styles.logo} src='/assets/logo/seedit.png' alt='logo' />
             <img src={`/assets/logo/seedit-text-${theme === 'dark' ? 'dark' : 'light'}.svg`} className={styles.logoText} alt='logo' />
           </Link>
+          <span className={`${isHome ? '' : styles.pageName}`}>{headerTitle}</span>
         </div>
-        <div className={styles.tabs}>
-          <span className={styles.pageName}>{headerTitle}</span>
+        <div className={`${styles.tabs} ${fewTabs ? styles.fewTabs : ''}`}>
           <ul className={styles.tabMenu}>
             {headerTabs}
-            <li className={styles.about}>
-              <Link to='/about' className={styles.choice} onClick={(event) => event.preventDefault()}>
-                {t('header_about')}
-              </Link>
-            </li>
+            {isSubmit ? null : aboutButton}
           </ul>
         </div>
       </div>
