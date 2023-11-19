@@ -4,9 +4,10 @@ import { useFeed, useSubplebbit } from '@plebbit/plebbit-react-hooks';
 import { Virtuoso, VirtuosoHandle, StateSnapshot } from 'react-virtuoso';
 import { useTranslation } from 'react-i18next';
 import styles from './subplebbit.module.css';
-import Post from '../../components/post/post';
-import useFeedStateString from '../../hooks/use-feed-state-string';
 import LoadingEllipsis from '../../components/loading-ellipsis';
+import Post from '../../components/post';
+import Sidebar from '../../components/sidebar';
+import useFeedStateString from '../../hooks/use-feed-state-string';
 
 const lastVirtuosoStates: { [key: string]: StateSnapshot } = {};
 
@@ -18,12 +19,14 @@ const Subplebbit = () => {
   const subplebbitAddress = params.subplebbitAddress;
   const subplebbitAddresses = useMemo(() => [subplebbitAddress], [subplebbitAddress]) as string[];
   const subplebbit = useSubplebbit({ subplebbitAddress });
-  const { title, shortAddress } = subplebbit || {};
-  const { feed, hasMore, loadMore } = useFeed({ subplebbitAddresses, sortType: 'hot' });
+  const { createdAt, description, roles, shortAddress, state, title, updatedAt } = subplebbit || {};
+  const sortType = useParams<{ sortType: string }>().sortType || 'hot';
+  const { feed, hasMore, loadMore } = useFeed({ subplebbitAddresses, sortType });
   const loadingStateString = useFeedStateString(subplebbitAddresses) || t('loading');
+  
   const loadingString = (
     <div className={styles.stateString}>
-      <LoadingEllipsis string={loadingStateString} />
+      {state === 'failed' ? state : <LoadingEllipsis string={loadingStateString} />}
     </div>
   );
 
@@ -57,6 +60,9 @@ const Subplebbit = () => {
 
   return (
     <div className={styles.content}>
+      <div className={`${styles.sidebar}`}>
+        <Sidebar address={subplebbitAddress} createdAt={createdAt} description={description} roles={roles} shortAddress={shortAddress} title={title} updatedAt={updatedAt} />
+      </div>
       <Virtuoso
         increaseViewportBy={{ bottom: 1200, top: 600 }}
         totalCount={feed?.length || 0}

@@ -50,6 +50,6 @@
   --play-button-hover: url("/public/assets/buttons/play-button-hover.png");
   --close-button: url("/public/assets/buttons/close-button-dark.png");
   --close-button-hover: url("/public/assets/buttons/close-button-hover.png");
-  --label-pending: gold;
-  --label-failed: red;
+  --label-pending: rgb(200, 171, 0);
+  --label-failed: rgb(200, 0, 0);
 }

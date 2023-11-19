@@ -3,19 +3,22 @@ import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
 import { useAccount } from '@plebbit/plebbit-react-hooks';
 import { useTranslation } from 'react-i18next';
 import styles from './account-bar.module.css';
+import { isSubplebbitView } from '../../../lib/utils/view-utils';
 
 const AccountBar = () => {
   const account = useAccount();
   const { t } = useTranslation();
   const location = useLocation();
   const navigate = useNavigate();
-  const { subplebbitAddress } = useParams();
+  const params = useParams();
+  const subplebbitAddress = params.subplebbitAddress;
   const [searchVisible, setSearchVisible] = useState(false);
   const searchBarRef = useRef<HTMLFormElement>(null);
   const searchInputRef = useRef<HTMLInputElement>(null);
   let submitLink;
+  const isSubplebbit = isSubplebbitView(location.pathname, params);
 
-  if (location.pathname.startsWith(`/p/${subplebbitAddress}/`)) {
+  if (isSubplebbit) {
     submitLink = `/p/${subplebbitAddress}/submit`;
   } else {
     submitLink = '/submit';

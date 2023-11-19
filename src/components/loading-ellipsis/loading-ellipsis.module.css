@@ -1,3 +1,7 @@
+.ellipsis {
+  display: inline-block;
+}
+
 .ellipsis:after {
   content: '...';
   position: absolute;

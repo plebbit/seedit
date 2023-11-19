@@ -76,5 +76,6 @@
   "no_communities_found": "nessuna comunità trovata su <1>https://github.com/plebbit/temporary-default-subplebbits</1>",
   "connect_community_notice": "Per connetterti a una comunità, utilizza 🔎 in alto a destra",
   "options": "opzioni",
-  "hide_options": "nascondi opzioni"
+  "hide_options": "nascondi opzioni",
+  "failed": "fallito"
 }

@@ -8,6 +8,10 @@ export type ViewType = 'home' | 'pending' | 'post' | 'submit' | 'subplebbit' | '
 
 const sortTypes = ['/hot', '/new', '/active', '/controversialAll', '/topAll'];
 
+export const isAboutView = (pathname: string): boolean => {
+  return pathname.endsWith('/about');
+}
+
 export const isHomeView = (pathname: string): boolean => {
   return pathname === '/' || sortTypes.includes(pathname);
 };

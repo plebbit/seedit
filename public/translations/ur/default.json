@@ -76,5 +76,6 @@
   "no_communities_found": "<1>https://github.com/plebbit/temporary-default-subplebbits</1> پر کوئی کمیونٹیز نہیں ملی",
   "connect_community_notice": "کمیونٹی سے جڑنے کے لئے، دائیں اوپر 🔎 استعمال کریں",
   "options": "اختیارات",
-  "hide_options": "اختیارات چھپائیں"
+  "hide_options": "اختیارات چھپائیں",
+  "failed": "ناکام"
 }

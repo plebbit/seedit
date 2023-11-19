@@ -1,3 +1,13 @@
 .content {
   padding: 7px 5px 0px 5px;
 }
+
+div[data-viewport-type="window"] {
+  position: relative !important;
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    display: none;
+  }
+}

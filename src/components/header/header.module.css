@@ -17,7 +17,7 @@
 }
 
 .logoContainer {
-  position: absolute;
+  position: relative;
   top: 0;
   left: 0;
 }
@@ -32,13 +32,17 @@
   width: 84px;
   max-height: 26px;
   margin-top: 16px;
-  margin-right: 15px;
+  margin-right: 5px;
 }
 
 @media (max-width: 768px) {
   .container {
     padding-bottom: 20px;
     height: 45.5px;
+  }
+
+  .reducedHeight {
+    padding-bottom: 0;
   }
 }
 
@@ -51,18 +55,21 @@
     top: 0px;
     margin-top: -3px;
   }
+
 }
 
 .tabs {
   display: flex;
+  align-items: baseline !important;
 }
 
 .pageName {
   font-weight: bold;
-  margin-right: 1ex;
+  padding-right: 1ex;
   font-variant: small-caps;
-  font-size: 1.2em;
+  font-size: 14.4px;
   color: var(--text);
+  padding-left: 1ex;
 }
 
 .pageName a {
@@ -78,6 +85,7 @@
 
 .submitTitle {
   text-transform: uppercase;
+  font-size: 11px
 }
 
 .tabMenu {
@@ -105,20 +113,17 @@
   color: var(--text-secondary);
   background-color: var(--background);
   border: 1px solid var(--border-primary);
-  border-bottom: 1px solid var(--background);
+  border-bottom: 2px solid var(--background);
 }
 
 .tabMenu li .choice {
   color: var(--text-primary);
   background-color: var(--background-secondary);
-  border-bottom: 1px solid var(--border-primary);
+  border-bottom: 0px solid var(--border-primary);
 }
 
 
 @media (min-width: 768px) {
-  .tabs {
-    margin-left: 125px;
-  }
   .tabMenu {
     order: 2;
   }
@@ -126,11 +131,21 @@
   .pageName {
     order: 1;
   }
+
+  .about {
+    display: none !important;
+  }
 }
 
 @media (max-width: 768px) {
   .tabs {
+    position: absolute;
     margin-bottom: -20px;
+  }
+
+  .fewTabs {
+    position: relative;
+    margin-bottom: 0;
   }
 
   .tabMenu {

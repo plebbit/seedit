@@ -76,5 +76,6 @@
   "no_communities_found": "在<1>https://github.com/plebbit/temporary-default-subplebbits</1>上未找到任何社区",
   "connect_community_notice": "要连接到社区，请在右上角使用 🔎",
   "options": "选项",
-  "hide_options": "隐藏选项"
+  "hide_options": "隐藏选项",
+  "failed": "失败"
 }

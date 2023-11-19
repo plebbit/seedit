@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { Comment } from '@plebbit/plebbit-react-hooks';
+import { Comment, useAuthorAddress } from '@plebbit/plebbit-react-hooks';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import styles from './reply.module.css';
@@ -11,13 +11,13 @@ import Expando from '../post/expando/';
 import ExpandButton from '../post/expand-button/';
 import Thumbnail from '../post/thumbnail/';
 import Flair from '../post/flair/';
+import { PendingLabel, FailedLabel } from '../post/label';
 import PostTools from '../post/post-tools';
 import ReplyForm from '../reply-form';
 import useDownvote from '../../hooks/use-downvote';
 import useReply from '../../hooks/use-reply';
 import useStateString from '../../hooks/use-state-string';
 import useUpvote from '../../hooks/use-upvote';
-import { PendingLabel, FailedLabel } from '../post/label';
 
 interface ReplyProps {
   depth: number;
@@ -71,7 +71,6 @@ const ReplyMedia = ({ commentMediaInfo, content, expanded, hasThumbnail, link, l
 
 const Reply = ({ reply, depth }: ReplyProps) => {
   const {
-    author: { shortAddress },
     cid,
     content,
     downvoteCount,
@@ -85,6 +84,7 @@ const Reply = ({ reply, depth }: ReplyProps) => {
     upvoteCount,
   } = reply || {};
 
+  const { shortAuthorAddress } = useAuthorAddress({comment: reply});
   const replies = useReplies(reply);
   const [expanded, setExpanded] = useState(false);
   const [isReplying, setIsReplying] = useState(false);
@@ -102,7 +102,7 @@ const Reply = ({ reply, depth }: ReplyProps) => {
   const contentString = removed ? `[${t('removed')}]` : content;
   const { setContent, resetContent, replyIndex, publishReply } = useReply(reply);
   const stateString = useStateString(reply);
-  const loadingString = stateString && <span className={styles.stateString}> {stateString !== 'Failed' ? <LoadingEllipsis string={stateString} /> : <FailedLabel />}</span>;
+  const loadingString = stateString && <span className={styles.stateString}>{stateString !== 'Failed' ? <LoadingEllipsis string={stateString} /> : ''}</span>;
 
   const textRef = useRef<HTMLTextAreaElement>(null);
   const urlRef = useRef<HTMLInputElement>(null);
@@ -136,6 +136,13 @@ const Reply = ({ reply, depth }: ReplyProps) => {
     }
   }, [replyIndex, resetContent]);
 
+  const stateLabel = (
+    <span className={styles.stateLabel}>
+      {stateString === 'Failed' && <FailedLabel />}
+      {(cid === undefined && stateString !== 'Failed') && <PendingLabel />}
+    </span>
+  );
+
   return (
     <div className={styles.reply}>
       <div className={`${styles.replyWrapper} ${depth > 1 && styles.nested}`}>
@@ -147,16 +154,16 @@ const Reply = ({ reply, depth }: ReplyProps) => {
           <p className={styles.tagline}>
             <span className={styles.expand}>[–]</span>
             <Link
-              to='/u/address.eth'
+              to={`/u/${shortAuthorAddress}`}
               onClick={(e) => {
                 e.preventDefault();
               }}
               className={styles.author}
             >
-              {shortAddress}
+              {shortAuthorAddress}
             </Link>
             <span className={styles.score}>{scoreString}</span> <span className={styles.time}>{getFormattedTime(timestamp)}</span>
-            {(cid === undefined && stateString !== 'Failed') && <PendingLabel />}
+            {stateLabel}
             {flair && (
               <>
                 {' '}

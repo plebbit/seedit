@@ -76,5 +76,6 @@
   "no_communities_found": "Na <1>https://github.com/plebbit/temporary-default-subplebbits</1> nebyly nalezeny žádné komunity",
   "connect_community_notice": "Chcete-li se připojit ke komunitě, použijte 🔎 vpravo nahoře",
   "options": "možnosti",
-  "hide_options": "skrýt možnosti"
+  "hide_options": "skrýt možnosti",
+  "failed": "selhal"
 }
