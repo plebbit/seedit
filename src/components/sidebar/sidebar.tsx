@@ -1,8 +1,8 @@
-import { useSubplebbitStats } from "@plebbit/plebbit-react-hooks";
-import styles from "./sidebar.module.css";
-import { Link, useLocation } from "react-router-dom";
-import { getFormattedTime } from "../../lib/utils/time-utils";
-import { isAboutView } from "../../lib/utils/view-utils";
+import { useSubplebbitStats } from '@plebbit/plebbit-react-hooks';
+import styles from './sidebar.module.css';
+import { Link, useLocation } from 'react-router-dom';
+import { getFormattedTime } from '../../lib/utils/time-utils';
+import { isAboutView } from '../../lib/utils/view-utils';
 
 interface sidebarProps {
   address: string | undefined;
@@ -26,7 +26,9 @@ const Sidebar = ({ address, createdAt, description, roles, shortAddress, title, 
   return (
     <div className={`${isAbout ? styles.about : styles.sidebar}`}>
       <div className={styles.titleBox}>
-        <Link className={styles.title} to={`/p/${address}`}>{title || shortAddress}</Link>
+        <Link className={styles.title} to={`/p/${address}`}>
+          {title || shortAddress}
+        </Link>
         {title && <div className={styles.address}>p/{address}</div>}
         <span className={`${styles.subscribeButton} ${styles.joinButton}`}>join</span>
         <span className={styles.subscribers}>{allActiveUserCount} readers</span>
@@ -37,12 +39,14 @@ const Sidebar = ({ address, createdAt, description, roles, shortAddress, title, 
         <div className={styles.description}>{description}</div>
         <div className={styles.bottom}>
           created by{' '}
-          <Link to={`/u/user.eth}`} onClick={(e) => e.preventDefault()}>u/user.eth</Link>
+          <Link to={`/u/user.eth}`} onClick={(e) => e.preventDefault()}>
+            u/user.eth
+          </Link>
           <span className={styles.age}> a community for {getFormattedTime(createdAt)}</span>
         </div>
       </div>
     </div>
   );
-}
+};
 
 export default Sidebar;

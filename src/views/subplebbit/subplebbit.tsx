@@ -23,12 +23,8 @@ const Subplebbit = () => {
   const sortType = useParams<{ sortType: string }>().sortType || 'hot';
   const { feed, hasMore, loadMore } = useFeed({ subplebbitAddresses, sortType });
   const loadingStateString = useFeedStateString(subplebbitAddresses) || t('loading');
-  
-  const loadingString = (
-    <div className={styles.stateString}>
-      {state === 'failed' ? state : <LoadingEllipsis string={loadingStateString} />}
-    </div>
-  );
+
+  const loadingString = <div className={styles.stateString}>{state === 'failed' ? state : <LoadingEllipsis string={loadingStateString} />}</div>;
 
   useEffect(() => {
     document.title = (title ? title : shortAddress) + ' - seedit';
@@ -61,7 +57,15 @@ const Subplebbit = () => {
   return (
     <div className={styles.content}>
       <div className={`${styles.sidebar}`}>
-        <Sidebar address={subplebbitAddress} createdAt={createdAt} description={description} roles={roles} shortAddress={shortAddress} title={title} updatedAt={updatedAt} />
+        <Sidebar
+          address={subplebbitAddress}
+          createdAt={createdAt}
+          description={description}
+          roles={roles}
+          shortAddress={shortAddress}
+          title={title}
+          updatedAt={updatedAt}
+        />
       </div>
       <Virtuoso
         increaseViewportBy={{ bottom: 1200, top: 600 }}

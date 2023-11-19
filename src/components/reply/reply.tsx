@@ -70,21 +70,9 @@ const ReplyMedia = ({ commentMediaInfo, content, expanded, hasThumbnail, link, l
 };
 
 const Reply = ({ reply, depth }: ReplyProps) => {
-  const {
-    cid,
-    content,
-    downvoteCount,
-    flair,
-    link,
-    linkHeight,
-    linkWidth,
-    removed,
-    spoiler,
-    timestamp,
-    upvoteCount,
-  } = reply || {};
+  const { cid, content, downvoteCount, flair, link, linkHeight, linkWidth, removed, spoiler, timestamp, upvoteCount } = reply || {};
 
-  const { shortAuthorAddress } = useAuthorAddress({comment: reply});
+  const { shortAuthorAddress } = useAuthorAddress({ comment: reply });
   const replies = useReplies(reply);
   const [expanded, setExpanded] = useState(false);
   const [isReplying, setIsReplying] = useState(false);
@@ -139,7 +127,7 @@ const Reply = ({ reply, depth }: ReplyProps) => {
   const stateLabel = (
     <span className={styles.stateLabel}>
       {stateString === 'Failed' && <FailedLabel />}
-      {(cid === undefined && stateString !== 'Failed') && <PendingLabel />}
+      {cid === undefined && stateString !== 'Failed' && <PendingLabel />}
     </span>
   );
 

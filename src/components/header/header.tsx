@@ -38,11 +38,15 @@ const Header = () => {
     } else {
       setSelectedSortType('hot');
     }
-  }, [params.sortType]);
+  }, [params.sortType, location.pathname]);
 
   const sortItems = sortTypes.map((choice, index) => (
     <li key={choice}>
-      <Link to={isSubplebbit ? `/p/${params.subplebbitAddress}/${choice}` : choice} className={selectedSortType === choice ? styles.selected : styles.choice} onClick={() => handleSelect(choice)}>
+      <Link
+        to={isSubplebbit ? `/p/${params.subplebbitAddress}/${choice}` : choice}
+        className={selectedSortType === choice ? styles.selected : styles.choice}
+        onClick={() => handleSelect(choice)}
+      >
         {sortLabels[index]}
       </Link>
     </li>
@@ -89,7 +93,13 @@ const Header = () => {
 
   const aboutButton = (
     <li className={styles.about}>
-      <Link to={aboutLink} className={`${isAbout ? styles.selected : styles.choice}`} onClick={(event) => {isHome && event.preventDefault()}}>
+      <Link
+        to={aboutLink}
+        className={`${isAbout ? styles.selected : styles.choice}`}
+        onClick={(event) => {
+          isHome && event.preventDefault();
+        }}
+      >
         {t('header_about')}
       </Link>
     </li>

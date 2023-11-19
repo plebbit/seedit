@@ -65,7 +65,7 @@ const PostTools = ({ cid, failed, isReply, replyCount, spoiler, subplebbitAddres
   const label = (
     <span className={styles.label}>
       {spoiler && <SpoilerLabel />}
-      {(cid === undefined && !isReply && !failed) && <PendingLabel />}
+      {cid === undefined && !isReply && !failed && <PendingLabel />}
       {failed && <FailedLabel />}
     </span>
   );
