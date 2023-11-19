@@ -1,7 +1,8 @@
 import { useSubplebbitStats } from "@plebbit/plebbit-react-hooks";
 import styles from "./sidebar.module.css";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { getFormattedTime } from "../../lib/utils/time-utils";
+import { isAboutView } from "../../lib/utils/view-utils";
 
 interface sidebarProps {
   address: string | undefined;
@@ -19,9 +20,11 @@ const Sidebar = ({ address, createdAt, description, roles, shortAddress, title, 
   const onlineNotice = hourActiveUserCount + ' users here now';
   const offlineNotice = 'community owner last seen ' + getFormattedTime(updatedAt);
   const onlineStatus = isOnline ? onlineNotice : offlineNotice;
+  const location = useLocation();
+  const isAbout = isAboutView(location.pathname);
 
   return (
-    <div className={styles.sidebar}>
+    <div className={`${isAbout ? styles.about : styles.sidebar}`}>
       <div className={styles.titleBox}>
         <Link className={styles.title} to={`/p/${address}`}>{title || shortAddress}</Link>
         {title && <div className={styles.address}>p/{address}</div>}

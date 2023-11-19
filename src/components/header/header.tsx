@@ -5,7 +5,7 @@ import useTheme from '../../hooks/use-theme';
 import AccountBar from './account-bar';
 import { useSubplebbit } from '@plebbit/plebbit-react-hooks';
 import { useTranslation } from 'react-i18next';
-import { isHomeView, isPostView, isSubplebbitView, isSubmitView, isSubplebbitSubmitView } from '../../lib/utils/view-utils';
+import { isAboutView, isHomeView, isPostView, isSubplebbitView, isSubmitView, isSubplebbitSubmitView } from '../../lib/utils/view-utils';
 
 const sortTypes = ['hot', 'new', 'active', 'controversialAll', 'topAll'];
 
@@ -18,6 +18,7 @@ const Header = () => {
   const sortLabels = [t('header_hot'), t('header_new'), t('header_active'), t('header_controversial'), t('header_top')];
   const subplebbit = useSubplebbit({ subplebbitAddress: params.subplebbitAddress });
   const { title, shortAddress } = subplebbit || {};
+  const isAbout = isAboutView(location.pathname);
   const isHome = isHomeView(location.pathname);
   const isPost = isPostView(location.pathname, params);
   const isSubplebbit = isSubplebbitView(location.pathname, params);
@@ -32,6 +33,8 @@ const Header = () => {
   useEffect(() => {
     if (params.sortType) {
       setSelectedSortType(params.sortType);
+    } else if (location.pathname.endsWith('/about')) {
+      setSelectedSortType('');
     } else {
       setSelectedSortType('hot');
     }
@@ -76,9 +79,17 @@ const Header = () => {
     headerTitle = submitTitle;
   }
 
+  let aboutLink;
+
+  if (isSubplebbit || isSubplebbitSubmit) {
+    aboutLink = `/p/${params.subplebbitAddress}/about`;
+  } else {
+    aboutLink = '/about';
+  }
+
   const aboutButton = (
     <li className={styles.about}>
-      <Link to='/about' className={styles.choice} onClick={(event) => event.preventDefault()}>
+      <Link to={aboutLink} className={`${isAbout ? styles.selected : styles.choice}`} onClick={(event) => {isHome && event.preventDefault()}}>
         {t('header_about')}
       </Link>
     </li>
@@ -98,7 +109,7 @@ const Header = () => {
         <div className={`${styles.tabs} ${fewTabs ? styles.fewTabs : ''}`}>
           <ul className={styles.tabMenu}>
             {headerTabs}
-            {isSubmit ? null : aboutButton}
+            {(isSubplebbit || isSubplebbitSubmit) && aboutButton}
           </ul>
         </div>
       </div>

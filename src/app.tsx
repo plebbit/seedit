@@ -5,6 +5,7 @@ import styles from './app.module.css';
 import Home from './views/home';
 import PendingPost from './views/pending-post';
 import Post from './views/post';
+import About from './views/about/about';
 import Settings from './views/settings';
 import Submit from './views/settings/submit/submit';
 import Subplebbit from './views/subplebbit';
@@ -38,6 +39,7 @@ function App() {
           <Route path='p/:subplebbitAddress/c/:commentCid' element={<Post />} />
           <Route path='p/:subplebbitAddress/:sortType?' element={<Subplebbit />} />
           <Route path='p/:subplebbitAddress/submit' element={<Submit />} />
+          <Route path='p/:subplebbitAddress/about' element={<About />} />
           <Route path='/settings' element={<Settings />} />
           <Route path='/profile/:accountCommentIndex' element={<PendingPost />} />
         </Route>
