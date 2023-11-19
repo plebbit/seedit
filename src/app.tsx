@@ -6,7 +6,7 @@ import Home from './views/home';
 import PendingPost from './views/pending-post';
 import Post from './views/post';
 import Settings from './views/settings';
-import Submit from './views/submit/submit';
+import Submit from './views/settings/submit/submit';
 import Subplebbit from './views/subplebbit';
 import ChallengeModal from './components/challenge-modal';
 import Header from './components/header/header';

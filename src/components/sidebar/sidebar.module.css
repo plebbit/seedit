@@ -1,0 +1,91 @@
+.sidebar {
+  float: right;
+  width: 300px;
+  position: relative;
+  z-index: 999;
+}
+
+.titleBox {
+  font-size: larger;
+  color: var(--text)
+}
+
+a {
+  text-decoration: none;
+  color: var(--text);
+}
+
+.title {
+  margin-bottom: 5px;
+  font-weight: bold;
+  font-size: 19px;
+}
+
+.title:hover {
+  text-decoration: underline !important;
+}
+
+.address {
+  font-size: 11px;
+  color: var(--text-info);
+  margin-bottom: 5px;
+}
+
+.subscribeButton {
+  display: inline-block;
+  margin: 0 5px 5px 0;
+  background-repeat: repeat;
+  border: 1px solid #444;
+  padding: 1px 6px;
+  color: white;
+  font-size: 10px;
+  font-weight: bold;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.joinButton {
+  background-image: url('/public/assets/buttons/button-background-green.png');
+}
+
+.leaveButton {
+  background-image: url('/public/assets/buttons/button-background-red.png');
+}
+
+.onlineIndicator {
+  background-repeat: no-repeat;
+  display: inline-block;
+  height: 13px;
+  width: 13px;
+  margin: 0 7px -2px 2px;
+}
+
+.online {
+  background-image: url('/public/assets/indicator-online.png');
+}
+
+.offline {
+  background-image: url('/public/assets/indicator-offline.png');
+
+}
+
+.onlineLine {
+  padding-bottom: 5px;
+}
+
+.description {
+  padding-bottom: 5px;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+.bottom {
+  border-top: 1px solid gray;
+  color: var(--text-info);
+  padding-top: 2px;
+  font-size: 80%;
+}
+
+.age {
+  float: right;
+}

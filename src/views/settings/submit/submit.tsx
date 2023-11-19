@@ -3,11 +3,11 @@ import { Link, useNavigate, useParams } from 'react-router-dom';
 import { PublishCommentOptions, useAccount, usePublishComment, useSubplebbit } from '@plebbit/plebbit-react-hooks';
 import { useTranslation } from 'react-i18next';
 import { create } from 'zustand';
-import { alertChallengeVerificationFailed } from '../../lib/utils/challenge-utils';
-import { isValidURL } from '../../lib/utils/url-utils';
+import { alertChallengeVerificationFailed } from '../../../lib/utils/challenge-utils';
+import { isValidURL } from '../../../lib/utils/url-utils';
 import styles from './submit.module.css';
-import challengesStore from '../../hooks/use-challenges';
-import useDefaultSubplebbitAddresses from '../../hooks/use-default-subplebbit-addresses';
+import challengesStore from '../../../hooks/use-challenges';
+import useDefaultSubplebbitAddresses from '../../../hooks/use-default-subplebbit-addresses';
 
 type SubmitState = {
   subplebbitAddress: string | undefined;
