@@ -31,10 +31,10 @@ const Header = () => {
   };
 
   useEffect(() => {
-    if (params.sortType) {
-      setSelectedSortType(params.sortType);
-    } else if (location.pathname.endsWith('/about')) {
+    if (location.pathname.endsWith('/about')) {
       setSelectedSortType('');
+    } else if (params.sortType) {
+      setSelectedSortType(params.sortType);
     } else {
       setSelectedSortType('hot');
     }
