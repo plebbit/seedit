@@ -34,8 +34,10 @@ const Sidebar = ({ address, createdAt, description, roles, shortAddress, title, 
           {title || shortAddress}
         </Link>
         {title && <div className={styles.address}>p/{address}</div>}
-        <SubscribeButton address={address} />
-        <span className={styles.subscribers}>{allActiveUserCount} readers</span>
+        <div className={!title ? styles.subscribeContainer : ''}>
+          <SubscribeButton address={address} />
+          <span className={styles.subscribers}>{allActiveUserCount} readers</span>
+        </div>
         <div className={styles.onlineLine}>
           <span className={`${styles.onlineIndicator} ${isOnline ? styles.online : styles.offline}`} />
           <span>{onlineStatus}</span>

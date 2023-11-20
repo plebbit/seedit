@@ -35,6 +35,10 @@ a {
   margin-bottom: 5px;
 }
 
+.subscribeContainer {
+  margin-top: 5px;
+}
+
 .onlineIndicator {
   background-repeat: no-repeat;
   display: inline-block;
@@ -49,7 +53,6 @@ a {
 
 .offline {
   background-image: url('/public/assets/indicator-offline.png');
-
 }
 
 .onlineLine {
