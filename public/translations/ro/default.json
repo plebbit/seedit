@@ -77,5 +77,15 @@
   "connect_community_notice": "Pentru a vă conecta la o comunitate, folosiți 🔎 în partea dreaptă sus",
   "options": "opțiuni",
   "hide_options": "ascunde opțiuni",
-  "failed": "eșuat"
+  "failed": "eșuat",
+  "time_1_minute": "1 minut",
+  "time_x_minutes": "{{count}} minute",
+  "time_1_hour": "1 oră",
+  "time_x_hours": "{{count}} ore",
+  "time_1_day": "1 zi",
+  "time_x_days": "{{count}} zile",
+  "time_1_month": "1 lună",
+  "time_x_months": "{{count}} luni",
+  "time_1_year": "1 an",
+  "time_x_years": "{{count}} ani"
 }

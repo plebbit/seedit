@@ -77,5 +77,15 @@
   "connect_community_notice": "要连接到社区，请在右上角使用 🔎",
   "options": "选项",
   "hide_options": "隐藏选项",
-  "failed": "失败"
+  "failed": "失败",
+  "time_1_minute": "1 分钟",
+  "time_x_minutes": "{{count}} 分钟",
+  "time_1_hour": "1 小时",
+  "time_x_hours": "{{count}} 小时",
+  "time_1_day": "1 天",
+  "time_x_days": "{{count}} 天",
+  "time_1_month": "1 个月",
+  "time_x_months": "{{count}} 个月",
+  "time_1_year": "1 年",
+  "time_x_years": "{{count}} 年"
 }

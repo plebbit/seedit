@@ -77,5 +77,15 @@
   "connect_community_notice": "Közösséghez való csatlakozáshoz használja a 🔎 gombot a jobb felső sarokban",
   "options": "opciók",
   "hide_options": "opciók elrejtése",
-  "failed": "meghiúsult"
+  "failed": "meghiúsult",
+  "time_1_minute": "1 perc",
+  "time_x_minutes": "{{count}} perc",
+  "time_1_hour": "1 óra",
+  "time_x_hours": "{{count}} óra",
+  "time_1_day": "1 nap",
+  "time_x_days": "{{count}} nap",
+  "time_1_month": "1 hónap",
+  "time_x_months": "{{count}} hónap",
+  "time_1_year": "1 év",
+  "time_x_years": "{{count}} év"
 }

@@ -77,5 +77,15 @@
   "connect_community_notice": "Bir topluluğa bağlanmak için, sağ üst köşede 🔎 kullanın",
   "options": "seçenekler",
   "hide_options": "seçenekleri gizle",
-  "failed": "başarısız oldu"
+  "failed": "başarısız oldu",
+  "time_1_minute": "1 dakika",
+  "time_x_minutes": "{{count}} dakika",
+  "time_1_hour": "1 saat",
+  "time_x_hours": "{{count}} saat",
+  "time_1_day": "1 gün",
+  "time_x_days": "{{count}} gün",
+  "time_1_month": "1 ay",
+  "time_x_months": "{{count}} ay",
+  "time_1_year": "1 yıl",
+  "time_x_years": "{{count}} yıl"
 }

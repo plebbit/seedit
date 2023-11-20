@@ -77,5 +77,15 @@
   "connect_community_notice": "För att ansluta till en gemenskap, använd 🔎 i övre högra hörnet",
   "options": "alternativ",
   "hide_options": "dölj alternativ",
-  "failed": "misslyckades"
+  "failed": "misslyckades",
+  "time_1_minute": "1 minut",
+  "time_x_minutes": "{{count}} minuter",
+  "time_1_hour": "1 timme",
+  "time_x_hours": "{{count}} timmar",
+  "time_1_day": "1 dag",
+  "time_x_days": "{{count}} dagar",
+  "time_1_month": "1 månad",
+  "time_x_months": "{{count}} månader",
+  "time_1_year": "1 år",
+  "time_x_years": "{{count}} år"
 }

@@ -77,5 +77,15 @@
   "connect_community_notice": "Gebruik 🔎 rechtsboven om verbinding te maken met een gemeenschap",
   "options": "opties",
   "hide_options": "opties verbergen",
-  "failed": "mislukt"
+  "failed": "mislukt",
+  "time_1_minute": "1 minuut",
+  "time_x_minutes": "{{count}} minuten",
+  "time_1_hour": "1 uur",
+  "time_x_hours": "{{count}} uur",
+  "time_1_day": "1 dag",
+  "time_x_days": "{{count}} dagen",
+  "time_1_month": "1 maand",
+  "time_x_months": "{{count}} maanden",
+  "time_1_year": "1 jaar",
+  "time_x_years": "{{count}} jaar"
 }

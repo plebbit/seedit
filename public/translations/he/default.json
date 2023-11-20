@@ -77,5 +77,15 @@
   "connect_community_notice": "לקישור לקהילה, השתמש ב-🔎 בפינה הימנית העליונה",
   "options": "אפשרויות",
   "hide_options": "הסתר אפשרויות",
-  "failed": "נכשל"
+  "failed": "נכשל",
+  "time_1_minute": "דקה אחת",
+  "time_x_minutes": "{{count}} דקות",
+  "time_1_hour": "שעה אחת",
+  "time_x_hours": "{{count}} שעות",
+  "time_1_day": "יום אחד",
+  "time_x_days": "{{count}} ימים",
+  "time_1_month": "חודש אחד",
+  "time_x_months": "{{count}} חודשים",
+  "time_1_year": "שנה אחת",
+  "time_x_years": "{{count}} שנים"
 }

@@ -77,5 +77,15 @@
   "connect_community_notice": "Për të lidhur me një komunitet, përdorni 🔎 në këndin e djathtë lart",
   "options": "opsione",
   "hide_options": "fsheh opsionet",
-  "failed": "dështoi"
+  "failed": "dështoi",
+  "time_1_minute": "1 minutë",
+  "time_x_minutes": "{{count}} minuta",
+  "time_1_hour": "1 orë",
+  "time_x_hours": "{{count}} orë",
+  "time_1_day": "1 ditë",
+  "time_x_days": "{{count}} ditë",
+  "time_1_month": "1 muaj",
+  "time_x_months": "{{count}} muaj",
+  "time_1_year": "1 vit",
+  "time_x_years": "{{count}} vite"
 }

@@ -77,5 +77,15 @@
   "connect_community_notice": "Để kết nối với cộng đồng, sử dụng 🔎 ở góc trên bên phải",
   "options": "tùy chọn",
   "hide_options": "ẩn tùy chọn",
-  "failed": "thất bại"
+  "failed": "thất bại",
+  "time_1_minute": "1 phút",
+  "time_x_minutes": "{{count}} phút",
+  "time_1_hour": "1 giờ",
+  "time_x_hours": "{{count}} giờ",
+  "time_1_day": "1 ngày",
+  "time_x_days": "{{count}} ngày",
+  "time_1_month": "1 tháng",
+  "time_x_months": "{{count}} tháng",
+  "time_1_year": "1 năm",
+  "time_x_years": "{{count}} năm"
 }

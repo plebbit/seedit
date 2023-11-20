@@ -77,5 +77,15 @@
   "connect_community_notice": "コミュニティに接続するには、右上の🔎を使用してください",
   "options": "オプション",
   "hide_options": "オプションを隠す",
-  "failed": "失敗した"
+  "failed": "失敗した",
+  "time_1_minute": "1分",
+  "time_x_minutes": "{{count}}分",
+  "time_1_hour": "1時間",
+  "time_x_hours": "{{count}}時間",
+  "time_1_day": "1日",
+  "time_x_days": "{{count}}日",
+  "time_1_month": "1ヶ月",
+  "time_x_months": "{{count}}ヶ月",
+  "time_1_year": "1年",
+  "time_x_years": "{{count}}年"
 }
