@@ -4,6 +4,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { getFormattedDuration, getFormattedTimeAgo } from '../../lib/utils/time-utils';
 import { findSubplebbitCreator } from '../../lib/utils/user-utils';
 import { isAboutView } from '../../lib/utils/view-utils';
+import SubscribeButton from '../subscribe-button/subscribe-button';
 
 interface sidebarProps {
   address: string | undefined;
@@ -33,7 +34,7 @@ const Sidebar = ({ address, createdAt, description, roles, shortAddress, title, 
           {title || shortAddress}
         </Link>
         {title && <div className={styles.address}>p/{address}</div>}
-        <span className={`${styles.subscribeButton} ${styles.joinButton}`}>join</span>
+        <SubscribeButton address={address} />
         <span className={styles.subscribers}>{allActiveUserCount} readers</span>
         <div className={styles.onlineLine}>
           <span className={`${styles.onlineIndicator} ${isOnline ? styles.online : styles.offline}`} />

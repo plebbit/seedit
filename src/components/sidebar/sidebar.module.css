@@ -35,27 +35,6 @@ a {
   margin-bottom: 5px;
 }
 
-.subscribeButton {
-  display: inline-block;
-  margin: 0 5px 5px 0;
-  background-repeat: repeat;
-  border: 1px solid #444;
-  padding: 1px 6px;
-  color: white;
-  font-size: 10px;
-  font-weight: bold;
-  border-radius: 3px;
-  cursor: pointer;
-}
-
-.joinButton {
-  background-image: url('/public/assets/buttons/button-background-green.png');
-}
-
-.leaveButton {
-  background-image: url('/public/assets/buttons/button-background-red.png');
-}
-
 .onlineIndicator {
   background-repeat: no-repeat;
   display: inline-block;
