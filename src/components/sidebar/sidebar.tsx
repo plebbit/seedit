@@ -30,10 +30,11 @@ const Sidebar = ({ address, createdAt, description, roles, shortAddress, title, 
   const rolesList = roles ? Object.entries(roles).map(([address, { role }]) => ({ address, role })) : [];
 
   const moderatorsList = (
-    <ul>
+    <ul className={styles.modListContent}>
       {rolesList.map(({ address }, index) => (
-        <li key={index}>u/{address}</li>
+        <li key={index}>u/{getShortAddress(address)}</li>
       ))}
+      <li className={styles.modListMore}>about moderation team »</li>
     </ul>
   )
 
