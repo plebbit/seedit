@@ -5,6 +5,7 @@ import { getFormattedDuration, getFormattedTimeAgo } from '../../lib/utils/time-
 import { findSubplebbitCreator } from '../../lib/utils/user-utils';
 import { isAboutView } from '../../lib/utils/view-utils';
 import SubscribeButton from '../subscribe-button/subscribe-button';
+import {getShortAddress} from '@plebbit/plebbit-js';
 
 interface sidebarProps {
   address: string | undefined;
@@ -25,7 +26,7 @@ const Sidebar = ({ address, createdAt, description, roles, shortAddress, title, 
   const location = useLocation();
   const isAbout = isAboutView(location.pathname);
   const subplebbitCreator = findSubplebbitCreator(roles);
-  const creatorAddress = subplebbitCreator === 'anonymous' ? 'anonymous' : `u/${subplebbitCreator}`;
+  const creatorAddress = subplebbitCreator === 'anonymous' ? 'anonymous' : `u/${getShortAddress(subplebbitCreator)}`;
 
   return (
     <div className={`${isAbout ? styles.about : styles.sidebar}`}>
