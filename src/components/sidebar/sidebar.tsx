@@ -1,7 +1,7 @@
 import { useSubplebbitStats } from '@plebbit/plebbit-react-hooks';
 import styles from './sidebar.module.css';
 import { Link, useLocation } from 'react-router-dom';
-import { getFormattedTime } from '../../lib/utils/time-utils';
+import { getFormattedDuration, getFormattedTimeAgo } from '../../lib/utils/time-utils';
 import { findSubplebbitCreator } from '../../lib/utils/user-utils';
 import { isAboutView } from '../../lib/utils/view-utils';
 
@@ -19,12 +19,12 @@ const Sidebar = ({ address, createdAt, description, roles, shortAddress, title, 
   const { allActiveUserCount, hourActiveUserCount } = useSubplebbitStats({ subplebbitAddress: address });
   const isOnline = updatedAt > Date.now() / 1000 - 60 * 30;
   const onlineNotice = hourActiveUserCount + ' users here now';
-  const offlineNotice = 'community node last seen ' + getFormattedTime(updatedAt);
+  const offlineNotice = 'community node last seen ' + getFormattedTimeAgo(updatedAt);
   const onlineStatus = isOnline ? onlineNotice : offlineNotice;
   const location = useLocation();
   const isAbout = isAboutView(location.pathname);
   const subplebbitCreator = findSubplebbitCreator(roles);
-  const creatorAddress = subplebbitCreator === 'anonymous' ? 'anonymous' : `u/${subplebbitCreator}`
+  const creatorAddress = subplebbitCreator === 'anonymous' ? 'anonymous' : `u/${subplebbitCreator}`;
 
   return (
     <div className={`${isAbout ? styles.about : styles.sidebar}`}>
@@ -45,7 +45,7 @@ const Sidebar = ({ address, createdAt, description, roles, shortAddress, title, 
           <Link to={`/u/user.eth`} onClick={(e) => e.preventDefault()}>
             {creatorAddress}
           </Link>
-          <span className={styles.age}> a community for {getFormattedTime(createdAt)}</span>
+          <span className={styles.age}> a community for {getFormattedDuration(createdAt)}</span>
         </div>
       </div>
     </div>

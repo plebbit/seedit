@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next';
 import styles from './reply.module.css';
 import useReplies from '../../hooks/use-replies';
 import { CommentMediaInfo, getCommentMediaInfoMemoized, getHasThumbnail } from '../../lib/utils/media-utils';
-import { getFormattedTime } from '../../lib/utils/time-utils';
+import { getFormattedTimeAgo } from '../../lib/utils/time-utils';
 import LoadingEllipsis from '../loading-ellipsis/';
 import Expando from '../post/expando/';
 import ExpandButton from '../post/expand-button/';
@@ -150,7 +150,7 @@ const Reply = ({ reply, depth }: ReplyProps) => {
             >
               {shortAuthorAddress}
             </Link>
-            <span className={styles.score}>{scoreString}</span> <span className={styles.time}>{getFormattedTime(timestamp)}</span>
+            <span className={styles.score}>{scoreString}</span> <span className={styles.time}>{getFormattedTimeAgo(timestamp)}</span>
             {stateLabel}
             {flair && (
               <>

@@ -6,7 +6,7 @@ import { useTranslation } from 'react-i18next';
 import { isPendingView, isPostView } from '../../lib/utils/view-utils';
 import { getCommentMediaInfoMemoized, getHasThumbnail } from '../../lib/utils/media-utils';
 import { getHostname } from '../../lib/utils/url-utils';
-import { getFormattedTime } from '../../lib/utils/time-utils';
+import { getFormattedTimeAgo } from '../../lib/utils/time-utils';
 import ExpandButton from './expand-button';
 import Expando from './expando';
 import Flair from './flair';
@@ -113,7 +113,7 @@ const Post = ({ post, index }: PostProps) => {
               />
             )}
             <p className={styles.tagline}>
-              {t('post_submitted')} {getFormattedTime(timestamp)} {t('post_by')}{' '}
+              {t('post_submitted')} {getFormattedTimeAgo(timestamp)} {t('post_by')}{' '}
               <Link className={styles.authorAddressWrapper} to={`u/${shortAuthorAddress}`} onClick={(e) => e.preventDefault()}>
                 <span className={styles.authorAddressHidden}>u/{post?.author?.shortAddress || shortAuthorAddress}</span>
                 <span className={`${styles.authorAddressVisible} ${authorAddressChanged && styles.authorAddressChanged}`}>u/{shortAuthorAddress}</span>
