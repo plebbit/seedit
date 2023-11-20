@@ -11,7 +11,8 @@
 
 .titleBox {
   font-size: larger;
-  color: var(--text)
+  color: var(--text);
+  margin-bottom: 12px;
 }
 
 a {
@@ -74,4 +75,53 @@ a {
 
 .age {
   float: right;
+}
+
+.createSub {
+  text-align: center;
+  position: relative;
+  border: 1px solid var(--button-border-primary);
+  background: var(--background) none repeat-x scroll center left;
+  background-image: var(--button-large);
+  background-repeat: repeat;
+  font-size: 150%;
+  font-weight: bold;
+  letter-spacing: -1px;
+  line-height: 29px;
+  height: 29px;
+  cursor: pointer;
+  margin: 7px 0 12px 0;
+}
+
+.createSub a {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: var(--text-primary);
+  text-decoration: none;
+}
+
+.nub {
+  position: absolute;
+  top: -1px;
+  right: -1px;
+  height: 31px;
+  width: 24px;
+  background: var(--background) none no-repeat scroll center left;
+  background-image: var(--button-large-nub);
+  background-repeat: no-repeat;
+}
+
+.createSub:hover {
+  background-image: var(--button-large-hover);
+  border-color: var(--button-border-primary-hover);
+}
+
+.createSub:hover a {
+  color: var(--background);
+}
+
+.createSub:hover .nub {
+  background-image: var(--button-large-hover-nub);
 }

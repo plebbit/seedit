@@ -9,6 +9,8 @@
   --text: black;
   --text-markdown: #222222;
   --text-primary: #369;
+  --button-border-primary: #c4dbf1;
+  --button-border-primary-hover: #879eb4;
   --text-secondary: #228822;
   --text-info: #888;
   --border-primary: #5f99cf;
@@ -24,6 +26,10 @@
   --close-button-hover: url("/public/assets/buttons/close-button-hover.png");
   --label-pending: goldenrod;
   --label-failed: red;
+  --button-large: url('/public/assets/buttons/button-large.png');
+  --button-large-hover: url('/public/assets/buttons/button-large-hover.png');
+  --button-large-nub: url('/public/assets/buttons/button-large-nub.png');
+  --button-large-hover-nub: url('/public/assets/buttons/button-large-nub-hover.png');
 }
 
 :root .dark {
@@ -37,6 +43,8 @@
   --text: #bfbfbf;
   --text-markdown: #f0f0f0;
   --text-primary: #c7c7c7;
+  --button-border-primary: #1f1f1f;
+  --button-border-primary-hover: #3e3e3e;
   --text-secondary: #228822;
   --text-info: #757575;
   --border-primary: #1f1f1f;
@@ -52,4 +60,8 @@
   --close-button-hover: url("/public/assets/buttons/close-button-hover.png");
   --label-pending: rgb(200, 171, 0);
   --label-failed: rgb(200, 0, 0);
+  --button-large: url('/public/assets/buttons/button-large-dark.png');
+  --button-large-hover: url('/public/assets/buttons/button-large-hover-dark.png');
+  --button-large-nub: url('/public/assets/buttons/button-large-nub-dark.png');
+  --button-large-hover-nub: url('/public/assets/buttons/button-large-nub-hover-dark.png');
 }

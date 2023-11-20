@@ -1,17 +1,17 @@
-import { useSubplebbitStats } from '@plebbit/plebbit-react-hooks';
+import { getShortAddress } from '@plebbit/plebbit-js';
+import { Role, useSubplebbitStats } from '@plebbit/plebbit-react-hooks';
 import styles from './sidebar.module.css';
 import { Link, useLocation } from 'react-router-dom';
 import { getFormattedDuration, getFormattedTimeAgo } from '../../lib/utils/time-utils';
 import { findSubplebbitCreator } from '../../lib/utils/user-utils';
 import { isAboutView } from '../../lib/utils/view-utils';
 import SubscribeButton from '../subscribe-button/subscribe-button';
-import {getShortAddress} from '@plebbit/plebbit-js';
 
 interface sidebarProps {
   address: string | undefined;
   createdAt: number;
   description?: string;
-  roles?: {};
+  roles?: Record<string, Role>;
   shortAddress: string | undefined;
   title?: string;
   updatedAt: number;
@@ -27,6 +27,15 @@ const Sidebar = ({ address, createdAt, description, roles, shortAddress, title, 
   const isAbout = isAboutView(location.pathname);
   const subplebbitCreator = findSubplebbitCreator(roles);
   const creatorAddress = subplebbitCreator === 'anonymous' ? 'anonymous' : `u/${getShortAddress(subplebbitCreator)}`;
+  const rolesList = roles ? Object.entries(roles).map(([address, { role }]) => ({ address, role })) : [];
+
+  const moderatorsList = (
+    <ul>
+      {rolesList.map(({ address }, index) => (
+        <li key={index}>u/{address}</li>
+      ))}
+    </ul>
+  )
 
   return (
     <div className={`${isAbout ? styles.about : styles.sidebar}`}>
@@ -51,6 +60,14 @@ const Sidebar = ({ address, createdAt, description, roles, shortAddress, title, 
           </Link>
           <span className={styles.age}> a community for {getFormattedDuration(createdAt)}</span>
         </div>
+      </div>
+      <div className={styles.createSub}>
+        <Link to='/communities/create' onClick={(e) => e.preventDefault()}>Create your own community</Link>
+        <div className={styles.nub} />
+      </div>
+      <div className={styles.modList}>
+        <div className={styles.modListTitle}>MODERATORS</div>
+        {moderatorsList}
       </div>
     </div>
   );
