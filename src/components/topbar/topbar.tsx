@@ -43,7 +43,7 @@ const TopBar = () => {
         </div>
         <div className={`${styles.dropChoices} ${dropChoicesClass}`}>
           {subscriptions?.map((subscription: string, index: number) => (
-            <Link key={index} to={`/p/${subscription}`} className={styles.choice}>
+            <Link key={index} to={`/p/${subscription}`} className={styles.subscription}>
               {subscription}
             </Link>
           ))}
