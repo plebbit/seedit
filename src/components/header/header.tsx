@@ -114,8 +114,8 @@ const Header = () => {
             <img className={styles.logo} src='/assets/logo/seedit.png' alt='logo' />
             <img src={`/assets/logo/seedit-text-${theme === 'dark' ? 'dark' : 'light'}.svg`} className={styles.logoText} alt='logo' />
           </Link>
-          <span className={`${isHome ? '' : styles.pageName}`}>{headerTitle}</span>
         </div>
+        <span className={`${isHome ? '' : styles.pageName}`}>{headerTitle}</span>
         <div className={`${styles.tabs} ${fewTabs ? styles.fewTabs : ''}`}>
           <ul className={styles.tabMenu}>
             {headerTabs}

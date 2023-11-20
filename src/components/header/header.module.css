@@ -33,6 +33,7 @@
   max-height: 26px;
   margin-top: 16px;
   margin-right: 5px;
+  padding-right: 1ex;
 }
 
 @media (max-width: 768px) {
@@ -55,7 +56,6 @@
     top: 0px;
     margin-top: -3px;
   }
-
 }
 
 .tabs {
@@ -69,7 +69,6 @@
   font-variant: small-caps;
   font-size: 14.4px;
   color: var(--text);
-  padding-left: 1ex;
 }
 
 .pageName a {
@@ -124,14 +123,6 @@
 
 
 @media (min-width: 768px) {
-  .tabMenu {
-    order: 2;
-  }
-
-  .pageName {
-    order: 1;
-  }
-
   .about {
     display: none !important;
   }
