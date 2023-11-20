@@ -36,14 +36,14 @@ const TopBar = () => {
   return (
     <div className={styles.headerArea}>
       <div className={styles.widthClip}>
-        <div className={styles.dropdown} ref={dropdownRef}>
+        <div className={styles.dropdown}>
           <span className={styles.selectedTitle} onClick={toggleClick}>
             {t('topbar_my_subs')}
           </span>
         </div>
-        <div className={`${styles.dropChoices} ${dropChoicesClass}`}>
+        <div className={`${styles.dropChoices} ${dropChoicesClass}`} ref={dropdownRef}>
           {subscriptions?.map((subscription: string, index: number) => (
-            <Link key={index} to={`/p/${subscription}`} className={styles.subscription}>
+            <Link key={index} to={`/p/${subscription}`} className={styles.subscription} onClick={() => setIsClicked(false)}>
               {subscription}
             </Link>
           ))}
