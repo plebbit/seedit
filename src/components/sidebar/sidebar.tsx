@@ -12,12 +12,13 @@ interface sidebarProps {
   createdAt: number;
   description?: string;
   roles?: Record<string, Role>;
+  rules?: string[];
   shortAddress: string | undefined;
   title?: string;
   updatedAt: number;
 }
 
-const Sidebar = ({ address, createdAt, description, roles, shortAddress, title, updatedAt }: sidebarProps) => {
+const Sidebar = ({ address, createdAt, description, roles, rules, shortAddress, title, updatedAt }: sidebarProps) => {
   const { allActiveUserCount, hourActiveUserCount } = useSubplebbitStats({ subplebbitAddress: address });
   const isOnline = updatedAt > Date.now() / 1000 - 60 * 30;
   const onlineNotice = hourActiveUserCount + ' users here now';
@@ -30,13 +31,31 @@ const Sidebar = ({ address, createdAt, description, roles, shortAddress, title, 
   const rolesList = roles ? Object.entries(roles).map(([address, { role }]) => ({ address, role })) : [];
 
   const moderatorsList = (
-    <ul className={styles.modListContent}>
-      {rolesList.map(({ address }, index) => (
-        <li key={index}>u/{getShortAddress(address)}</li>
-      ))}
-      <li className={styles.modListMore}>about moderation team »</li>
-    </ul>
+    <div className={styles.list}>
+      <div className={styles.listTitle}>MODERATORS</div>
+      <ul className={`${styles.listContent} ${styles.modsList}`}>
+        {rolesList.map(({ address }, index) => (
+          <li key={index}>u/{getShortAddress(address)}</li>
+        ))}
+        <li className={styles.listMore}>about moderation team »</li>
+      </ul>
+    </div>
   )
+
+  const rulesList = (
+    <div className={styles.list}>
+      <div className={styles.listTitle}>RULES</div>
+      <ul className={`${styles.listContent} ${styles.rulesList}`}>
+        {rules?.map((rule, index) => (
+          <>
+            <li key={index}>{index + 1}. {rule}</li>
+            {index !== rules.length - 1 && <br/>}
+          </>
+        ))}
+        <li className={styles.listMore}>about community rules »</li>
+      </ul>
+    </div>
+  );
 
   return (
     <div className={`${isAbout ? styles.about : styles.sidebar}`}>
@@ -66,10 +85,8 @@ const Sidebar = ({ address, createdAt, description, roles, shortAddress, title, 
         <Link to='/communities/create' onClick={(e) => e.preventDefault()}>Create your own community</Link>
         <div className={styles.nub} />
       </div>
-      <div className={styles.modList}>
-        <div className={styles.modListTitle}>MODERATORS</div>
-        {moderatorsList}
-      </div>
+      {rules && rulesList}
+      {roles && moderatorsList}
     </div>
   );
 };

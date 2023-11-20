@@ -19,7 +19,7 @@ const Subplebbit = () => {
   const subplebbitAddress = params.subplebbitAddress;
   const subplebbitAddresses = useMemo(() => [subplebbitAddress], [subplebbitAddress]) as string[];
   const subplebbit = useSubplebbit({ subplebbitAddress });
-  const { createdAt, description, roles, shortAddress, state, title, updatedAt } = subplebbit || {};
+  const { createdAt, description, roles, rules, shortAddress, state, title, updatedAt } = subplebbit || {};
   const sortType = useParams<{ sortType: string }>().sortType || 'hot';
   const { feed, hasMore, loadMore } = useFeed({ subplebbitAddresses, sortType });
   const loadingStateString = useFeedStateString(subplebbitAddresses) || t('loading');
@@ -62,6 +62,7 @@ const Subplebbit = () => {
           createdAt={createdAt}
           description={description}
           roles={roles}
+          rules={rules}
           shortAddress={shortAddress}
           title={title}
           updatedAt={updatedAt}

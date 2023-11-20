@@ -126,7 +126,11 @@ a {
   background-image: var(--button-large-hover-nub);
 }
 
-.modListTitle {
+.list {
+  margin-bottom: 12px;
+}
+
+.listTitle {
   display: inline;
   text-transform: uppercase;
   margin: 0;
@@ -135,7 +139,7 @@ a {
   font-weight: normal;
 }
 
-.modListContent {
+.listContent {
   margin: 0;
   padding: 5px;
   border: 1px solid gray;
@@ -143,15 +147,22 @@ a {
   list-style: none;
 }
 
-.modListContent li {
+.listContent li {
   font-size: 12px;
   list-style: none;
-  text-decoration: none;
-  color: var(--text-primary);
-
 }
 
-.modListMore {
+.modsList li {
+  text-decoration: none;
+  color: var(--text-primary);
+  cursor: pointer;
+}
+
+.rulesList li {
+  color: var(--text);
+}
+
+.listMore {
   color: var(--text-info) !important;
   text-align: right;
   font-size: 10px !important;
