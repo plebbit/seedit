@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next';
 import styles from './reply.module.css';
 import useReplies from '../../hooks/use-replies';
 import { CommentMediaInfo, getCommentMediaInfoMemoized, getHasThumbnail } from '../../lib/utils/media-utils';
-import { getFormattedTime } from '../../lib/utils/time-utils';
+import { getFormattedTimeAgo } from '../../lib/utils/time-utils';
 import LoadingEllipsis from '../loading-ellipsis/';
 import Expando from '../post/expando/';
 import ExpandButton from '../post/expand-button/';
@@ -70,21 +70,9 @@ const ReplyMedia = ({ commentMediaInfo, content, expanded, hasThumbnail, link, l
 };
 
 const Reply = ({ reply, depth }: ReplyProps) => {
-  const {
-    cid,
-    content,
-    downvoteCount,
-    flair,
-    link,
-    linkHeight,
-    linkWidth,
-    removed,
-    spoiler,
-    timestamp,
-    upvoteCount,
-  } = reply || {};
+  const { cid, content, downvoteCount, flair, link, linkHeight, linkWidth, removed, spoiler, timestamp, upvoteCount } = reply || {};
 
-  const { shortAuthorAddress } = useAuthorAddress({comment: reply});
+  const { shortAuthorAddress } = useAuthorAddress({ comment: reply });
   const replies = useReplies(reply);
   const [expanded, setExpanded] = useState(false);
   const [isReplying, setIsReplying] = useState(false);
@@ -139,7 +127,7 @@ const Reply = ({ reply, depth }: ReplyProps) => {
   const stateLabel = (
     <span className={styles.stateLabel}>
       {stateString === 'Failed' && <FailedLabel />}
-      {(cid === undefined && stateString !== 'Failed') && <PendingLabel />}
+      {cid === undefined && stateString !== 'Failed' && <PendingLabel />}
     </span>
   );
 
@@ -162,7 +150,7 @@ const Reply = ({ reply, depth }: ReplyProps) => {
             >
               {shortAuthorAddress}
             </Link>
-            <span className={styles.score}>{scoreString}</span> <span className={styles.time}>{getFormattedTime(timestamp)}</span>
+            <span className={styles.score}>{scoreString}</span> <span className={styles.time}>{getFormattedTimeAgo(timestamp)}</span>
             {stateLabel}
             {flair && (
               <>

@@ -77,5 +77,15 @@
   "connect_community_notice": "کمیونٹی سے جڑنے کے لئے، دائیں اوپر 🔎 استعمال کریں",
   "options": "اختیارات",
   "hide_options": "اختیارات چھپائیں",
-  "failed": "ناکام"
+  "failed": "ناکام",
+  "time_1_minute": "1 منٹ",
+  "time_x_minutes": "{{count}} منٹ",
+  "time_1_hour": "1 گھنٹہ",
+  "time_x_hours": "{{count}} گھنٹے",
+  "time_1_day": "1 دن",
+  "time_x_days": "{{count}} دن",
+  "time_1_month": "1 ماہ",
+  "time_x_months": "{{count}} ماہ",
+  "time_1_year": "1 سال",
+  "time_x_years": "{{count}} سال"
 }

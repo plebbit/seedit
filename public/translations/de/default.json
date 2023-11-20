@@ -77,5 +77,15 @@
   "connect_community_notice": "Um eine Verbindung zu einer Gemeinschaft herzustellen, verwenden Sie 🔎 oben rechts",
   "options": "Optionen",
   "hide_options": "Optionen ausblenden",
-  "failed": "gescheitert"
+  "failed": "gescheitert",
+  "time_1_minute": "1 Minute",
+  "time_x_minutes": "{{count}} Minuten",
+  "time_1_hour": "1 Stunde",
+  "time_x_hours": "{{count}} Stunden",
+  "time_1_day": "1 Tag",
+  "time_x_days": "{{count}} Tage",
+  "time_1_month": "1 Monat",
+  "time_x_months": "{{count}} Monate",
+  "time_1_year": "1 Jahr",
+  "time_x_years": "{{count}} Jahre"
 }

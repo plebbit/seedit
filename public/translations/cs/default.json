@@ -77,5 +77,15 @@
   "connect_community_notice": "Chcete-li se připojit ke komunitě, použijte 🔎 vpravo nahoře",
   "options": "možnosti",
   "hide_options": "skrýt možnosti",
-  "failed": "selhal"
+  "failed": "selhal",
+  "time_1_minute": "1 minuta",
+  "time_x_minutes": "{{count}} minut",
+  "time_1_hour": "1 hodina",
+  "time_x_hours": "{{count}} hodin",
+  "time_1_day": "1 den",
+  "time_x_days": "{{count}} dní",
+  "time_1_month": "1 měsíc",
+  "time_x_months": "{{count}} měsíců",
+  "time_1_year": "1 rok",
+  "time_x_years": "{{count}} let"
 }

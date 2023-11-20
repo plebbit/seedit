@@ -77,5 +77,15 @@
   "connect_community_notice": "Yhteisöön liittymiseksi käytä 🔎 oikeassa yläkulmassa",
   "options": "vaihtoehdot",
   "hide_options": "piilota vaihtoehdot",
-  "failed": "epäonnistui"
+  "failed": "epäonnistui",
+  "time_1_minute": "1 minuutti",
+  "time_x_minutes": "{{count}} minuuttia",
+  "time_1_hour": "1 tunti",
+  "time_x_hours": "{{count}} tuntia",
+  "time_1_day": "1 päivä",
+  "time_x_days": "{{count}} päivää",
+  "time_1_month": "1 kuukausi",
+  "time_x_months": "{{count}} kuukautta",
+  "time_1_year": "1 vuosi",
+  "time_x_years": "{{count}} vuotta"
 }

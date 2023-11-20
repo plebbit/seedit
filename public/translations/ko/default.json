@@ -77,5 +77,15 @@
   "connect_community_notice": "커뮤니티에 연결하려면 오른쪽 상단의 🔎를 사용하세요",
   "options": "옵션",
   "hide_options": "옵션 숨기기",
-  "failed": "실패한"
+  "failed": "실패한",
+  "time_1_minute": "1분",
+  "time_x_minutes": "{{count}}분",
+  "time_1_hour": "1시간",
+  "time_x_hours": "{{count}}시간",
+  "time_1_day": "1일",
+  "time_x_days": "{{count}}일",
+  "time_1_month": "1개월",
+  "time_x_months": "{{count}}개월",
+  "time_1_year": "1년",
+  "time_x_years": "{{count}}년"
 }

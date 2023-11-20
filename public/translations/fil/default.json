@@ -77,5 +77,15 @@
   "connect_community_notice": "Upang kumonekta sa isang komunidad, gamitin ang 🔎 sa itaas na kanan",
   "options": "mga opsyon",
   "hide_options": "itago ang mga opsyon",
-  "failed": "nabigo"
+  "failed": "nabigo",
+  "time_1_minute": "1 minuto",
+  "time_x_minutes": "{{count}} minuto",
+  "time_1_hour": "1 oras",
+  "time_x_hours": "{{count}} oras",
+  "time_1_day": "1 araw",
+  "time_x_days": "{{count}} araw",
+  "time_1_month": "1 buwan",
+  "time_x_months": "{{count}} buwan",
+  "time_1_year": "1 taon",
+  "time_x_years": "{{count}} taon"
 }

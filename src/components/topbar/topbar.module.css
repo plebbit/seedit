@@ -35,17 +35,17 @@
   background-color: var(--background);
   white-space: nowrap;
   line-height: normal;
-
+  z-index: 9999;
 }
 
-.dropChoices:hover {
-  background-color: var(--background-primary);
-}
-
-.dropChoices .choice {
+.subscription {
   cursor: pinter;
   padding: 2px 3px 1px 3px;
   display: block;
+}
+
+.subscription:hover {
+  background-color: var(--background-primary);
 }
 
 .dropChoices a {

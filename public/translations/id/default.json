@@ -77,5 +77,15 @@
   "connect_community_notice": "Untuk terhubung ke komunitas, gunakan 🔎 di kanan atas",
   "options": "opsi",
   "hide_options": "sembunyikan opsi",
-  "failed": "gagal"
+  "failed": "gagal",
+  "time_1_minute": "1 menit",
+  "time_x_minutes": "{{count}} menit",
+  "time_1_hour": "1 jam",
+  "time_x_hours": "{{count}} jam",
+  "time_1_day": "1 hari",
+  "time_x_days": "{{count}} hari",
+  "time_1_month": "1 bulan",
+  "time_x_months": "{{count}} bulan",
+  "time_1_year": "1 tahun",
+  "time_x_years": "{{count}} tahun"
 }

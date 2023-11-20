@@ -6,7 +6,7 @@ import { useTranslation } from 'react-i18next';
 import { isPendingView, isPostView } from '../../lib/utils/view-utils';
 import { getCommentMediaInfoMemoized, getHasThumbnail } from '../../lib/utils/media-utils';
 import { getHostname } from '../../lib/utils/url-utils';
-import { getFormattedTime } from '../../lib/utils/time-utils';
+import { getFormattedTimeAgo } from '../../lib/utils/time-utils';
 import ExpandButton from './expand-button';
 import Expando from './expando';
 import Flair from './flair';
@@ -23,7 +23,7 @@ interface PostProps {
 
 const Post = ({ post, index }: PostProps) => {
   const { cid, content, downvoteCount, flair, link, linkHeight, linkWidth, replyCount, state, subplebbitAddress, timestamp, title, upvoteCount } = post || {};
-  const { shortAuthorAddress, authorAddressChanged } = useAuthorAddress({comment: post});
+  const { shortAuthorAddress, authorAddressChanged } = useAuthorAddress({ comment: post });
   const subplebbit = useSubplebbit({ subplebbitAddress });
   const { t } = useTranslation();
   const params = useParams();
@@ -113,12 +113,10 @@ const Post = ({ post, index }: PostProps) => {
               />
             )}
             <p className={styles.tagline}>
-              {t('post_submitted')} {getFormattedTime(timestamp)} {t('post_by')}{' '}
+              {t('post_submitted')} {getFormattedTimeAgo(timestamp)} {t('post_by')}{' '}
               <Link className={styles.authorAddressWrapper} to={`u/${shortAuthorAddress}`} onClick={(e) => e.preventDefault()}>
                 <span className={styles.authorAddressHidden}>u/{post?.author?.shortAddress || shortAuthorAddress}</span>
-                <span className={`${styles.authorAddressVisible} ${authorAddressChanged && styles.authorAddressChanged}`}>
-                  u/{shortAuthorAddress}
-                </span>
+                <span className={`${styles.authorAddressVisible} ${authorAddressChanged && styles.authorAddressChanged}`}>u/{shortAuthorAddress}</span>
               </Link>
                {t('post_to')}
               <Link className={styles.subplebbit} to={`/p/${subplebbitAddress}`}>

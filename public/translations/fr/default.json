@@ -77,5 +77,15 @@
   "connect_community_notice": "Pour vous connecter à une communauté, utilisez 🔎 en haut à droite",
   "options": "options",
   "hide_options": "cacher les options",
-  "failed": "échoué"
+  "failed": "échoué",
+  "time_1_minute": "1 minute",
+  "time_x_minutes": "{{count}} minutes",
+  "time_1_hour": "1 heure",
+  "time_x_hours": "{{count}} heures",
+  "time_1_day": "1 jour",
+  "time_x_days": "{{count}} jours",
+  "time_1_month": "1 mois",
+  "time_x_months": "{{count}} mois",
+  "time_1_year": "1 an",
+  "time_x_years": "{{count}} ans"
 }

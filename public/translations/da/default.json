@@ -77,5 +77,15 @@
   "connect_community_notice": "For at oprette forbindelse til et fællesskab, brug 🔎 øverst til højre",
   "options": "muligheder",
   "hide_options": "skjul muligheder",
-  "failed": "fejlede"
+  "failed": "fejlede",
+  "time_1_minute": "1 minut",
+  "time_x_minutes": "{{count}} minutter",
+  "time_1_hour": "1 time",
+  "time_x_hours": "{{count}} timer",
+  "time_1_day": "1 dag",
+  "time_x_days": "{{count}} dage",
+  "time_1_month": "1 måned",
+  "time_x_months": "{{count}} måneder",
+  "time_1_year": "1 år",
+  "time_x_years": "{{count}} år"
 }

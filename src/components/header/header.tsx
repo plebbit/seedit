@@ -38,11 +38,15 @@ const Header = () => {
     } else {
       setSelectedSortType('hot');
     }
-  }, [params.sortType]);
+  }, [params.sortType, location.pathname]);
 
   const sortItems = sortTypes.map((choice, index) => (
     <li key={choice}>
-      <Link to={isSubplebbit ? `/p/${params.subplebbitAddress}/${choice}` : choice} className={selectedSortType === choice ? styles.selected : styles.choice} onClick={() => handleSelect(choice)}>
+      <Link
+        to={isSubplebbit ? `/p/${params.subplebbitAddress}/${choice}` : choice}
+        className={selectedSortType === choice ? styles.selected : styles.choice}
+        onClick={() => handleSelect(choice)}
+      >
         {sortLabels[index]}
       </Link>
     </li>
@@ -89,7 +93,13 @@ const Header = () => {
 
   const aboutButton = (
     <li className={styles.about}>
-      <Link to={aboutLink} className={`${isAbout ? styles.selected : styles.choice}`} onClick={(event) => {isHome && event.preventDefault()}}>
+      <Link
+        to={aboutLink}
+        className={`${isAbout ? styles.selected : styles.choice}`}
+        onClick={(event) => {
+          isHome && event.preventDefault();
+        }}
+      >
         {t('header_about')}
       </Link>
     </li>
@@ -104,8 +114,8 @@ const Header = () => {
             <img className={styles.logo} src='/assets/logo/seedit.png' alt='logo' />
             <img src={`/assets/logo/seedit-text-${theme === 'dark' ? 'dark' : 'light'}.svg`} className={styles.logoText} alt='logo' />
           </Link>
-          <span className={`${isHome ? '' : styles.pageName}`}>{headerTitle}</span>
         </div>
+        <span className={`${isHome ? '' : styles.pageName}`}>{headerTitle}</span>
         <div className={`${styles.tabs} ${fewTabs ? styles.fewTabs : ''}`}>
           <ul className={styles.tabMenu}>
             {headerTabs}
