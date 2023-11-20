@@ -1,11 +1,12 @@
 import { useEffect, useState } from 'react';
 import { Link, useLocation, useParams } from 'react-router-dom';
-import styles from './header.module.css';
-import useTheme from '../../hooks/use-theme';
-import AccountBar from './account-bar';
-import { useSubplebbit } from '@plebbit/plebbit-react-hooks';
 import { useTranslation } from 'react-i18next';
+import { useSubplebbit } from '@plebbit/plebbit-react-hooks';
 import { isAboutView, isHomeView, isPostView, isSubplebbitView, isSubmitView, isSubplebbitSubmitView } from '../../lib/utils/view-utils';
+import useTheme from '../../hooks/use-theme';
+import styles from './header.module.css';
+import AccountBar from './account-bar';
+import SubscribeButton from '../subscribe-button';
 
 const sortTypes = ['hot', 'new', 'active', 'controversialAll', 'topAll'];
 
@@ -116,6 +117,7 @@ const Header = () => {
           </Link>
         </div>
         <span className={`${isHome ? '' : styles.pageName}`}>{headerTitle}</span>
+        {isSubplebbit && !isAbout && <span className={styles.joinButton}><SubscribeButton address={params.subplebbitAddress} /></span>}
         <div className={`${styles.tabs} ${fewTabs ? styles.fewTabs : ''}`}>
           <ul className={styles.tabMenu}>
             {headerTabs}
