@@ -72,7 +72,7 @@ const Home = () => {
     <div>
       <div className={styles.content}>
         <div className={`${styles.sidebar}`}>
-          <Sidebar/>
+          <Sidebar />
         </div>
         <Virtuoso
           increaseViewportBy={{ bottom: 1200, top: 600 }}

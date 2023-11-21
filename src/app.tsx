@@ -37,7 +37,7 @@ function App() {
           <Route path='/:sortType?' element={<Home />} />
           <Route path='/submit' element={<Submit />} />
           <Route path='p/:subplebbitAddress/c/:commentCid' element={<Post />} />
-          <Route path='p/:subplebbitAddress/c/:commentCid/about' element={<About/>} />
+          <Route path='p/:subplebbitAddress/c/:commentCid/about' element={<About />} />
           <Route path='p/:subplebbitAddress/:sortType?' element={<Subplebbit />} />
           <Route path='p/:subplebbitAddress/submit' element={<Submit />} />
           <Route path='p/:subplebbitAddress/about' element={<About />} />

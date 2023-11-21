@@ -117,7 +117,9 @@ const Header = () => {
         <div className={styles.logoContainer}>
           <Link to='/' className={styles.logoLink}>
             {(logoIsAvatar || !isSubplebbit) && <img className={`${logoIsAvatar ? styles.avatar : styles.logo}`} src={logoSrc} alt='logo' />}
-            {!isSubplebbit && !suggested?.avatarUrl && <img src={`/assets/logo/seedit-text-${theme === 'dark' ? 'dark' : 'light'}.svg`} className={styles.logoText} alt='logo' /> }
+            {!isSubplebbit && !suggested?.avatarUrl && (
+              <img src={`/assets/logo/seedit-text-${theme === 'dark' ? 'dark' : 'light'}.svg`} className={styles.logoText} alt='logo' />
+            )}
           </Link>
         </div>
         {!isHome && <span className={`${styles.pageName} ${!logoIsAvatar && styles.soloPageName}`}>{headerTitle}</span>}

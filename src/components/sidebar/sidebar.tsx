@@ -23,7 +23,20 @@ interface sidebarProps {
   upvoteCount?: number;
 }
 
-const Sidebar = ({ address, cid, createdAt, description, downvoteCount = 0, roles, rules, shortAddress, timestamp = 0, title, updatedAt, upvoteCount = 0 }: sidebarProps) => {
+const Sidebar = ({
+  address,
+  cid,
+  createdAt,
+  description,
+  downvoteCount = 0,
+  roles,
+  rules,
+  shortAddress,
+  timestamp = 0,
+  title,
+  updatedAt,
+  upvoteCount = 0,
+}: sidebarProps) => {
   const { i18n } = useTranslation();
   const { language } = i18n;
   const { allActiveUserCount, hourActiveUserCount } = useSubplebbitStats({ subplebbitAddress: address });
@@ -79,20 +92,18 @@ const Sidebar = ({ address, cid, createdAt, description, downvoteCount = 0, role
       </div>
       <div className={styles.postScore}>
         <span className={styles.postScoreNumber}>{postScore} </span>
-        <span className={styles.postScoreWord}>point{postScore !== 1 ? 's' : ''}</span>
-        {' '}({upvotePercentage}% upvoted)
+        <span className={styles.postScoreWord}>point{postScore !== 1 ? 's' : ''}</span> ({upvotePercentage}% upvoted)
       </div>
       <div className={styles.shareLink}>
-        share link:{' '}
-        <input type='text' value={`https://seedit.eth.limo/#/p/${address}/c/${cid}`} readOnly={true} />
+        share link: <input type='text' value={`https://seedit.eth.limo/#/p/${address}/c/${cid}`} readOnly={true} />
       </div>
     </div>
-  )
+  );
 
   return (
     <div className={`${isAbout ? styles.about : styles.sidebar}`}>
       <form className={styles.searchBar}>
-        <input type='text' placeholder='search' onSubmit={(e) => e.preventDefault()}/>
+        <input type='text' placeholder='search' onSubmit={(e) => e.preventDefault()} />
         <input type='submit' value='' />
       </form>
       {isPost && postInfo}
@@ -108,29 +119,31 @@ const Sidebar = ({ address, cid, createdAt, description, downvoteCount = 0, role
           <div className={styles.nub} />
         </div>
       </Link>
-      {!isHome && <div className={styles.titleBox}>
-        <Link className={styles.title} to={`/p/${address}`}>
-          {title || shortAddress}
-        </Link>
-        {title && <div className={styles.address}>p/{address}</div>}
-        <div className={!title ? styles.subscribeContainer : ''}>
-          <SubscribeButton address={address} />
-          <span className={styles.subscribers}>{allActiveUserCount} readers</span>
-        </div>
-        <div className={styles.onlineLine}>
-          <span className={`${styles.onlineIndicator} ${isOnline ? styles.online : styles.offline}`} />
-          <span>{onlineStatus}</span>
-        </div>
-        <div className={styles.description}>{description}</div>
-        {rules && rulesList}
-        <div className={styles.bottom}>
-          created by{' '}
-          <Link to={`/u/user.eth`} onClick={(e) => e.preventDefault()}>
-            {creatorAddress}
+      {!isHome && (
+        <div className={styles.titleBox}>
+          <Link className={styles.title} to={`/p/${address}`}>
+            {title || shortAddress}
           </Link>
-          {createdAt && <span className={styles.age}> a community for {getFormattedDuration(createdAt)}</span>}
+          {title && <div className={styles.address}>p/{address}</div>}
+          <div className={!title ? styles.subscribeContainer : ''}>
+            <SubscribeButton address={address} />
+            <span className={styles.subscribers}>{allActiveUserCount} readers</span>
+          </div>
+          <div className={styles.onlineLine}>
+            <span className={`${styles.onlineIndicator} ${isOnline ? styles.online : styles.offline}`} />
+            <span>{onlineStatus}</span>
+          </div>
+          <div className={styles.description}>{description}</div>
+          {rules && rulesList}
+          <div className={styles.bottom}>
+            created by{' '}
+            <Link to={`/u/user.eth`} onClick={(e) => e.preventDefault()}>
+              {creatorAddress}
+            </Link>
+            {createdAt && <span className={styles.age}> a community for {getFormattedDuration(createdAt)}</span>}
+          </div>
         </div>
-      </div>}
+      )}
       {roles && moderatorsList}
     </div>
   );
