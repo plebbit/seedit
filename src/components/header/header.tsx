@@ -114,7 +114,7 @@ const Header = () => {
       <div className={`${styles.container} ${fewTabs ? styles.reducedHeight : ''}`}>
         <div className={styles.logoContainer}>
           <Link to='/' className={styles.logoLink}>
-            {(logoIsAvatar || isHome) && <img className={`${logoIsAvatar ? styles.avatar : styles.logo}`} src={logoSrc} alt='logo' />}
+            {(logoIsAvatar || !isSubplebbit) && <img className={`${logoIsAvatar ? styles.avatar : styles.logo}`} src={logoSrc} alt='logo' />}
             {!isSubplebbit && !suggested?.avatarUrl && <img src={`/assets/logo/seedit-text-${theme === 'dark' ? 'dark' : 'light'}.svg`} className={styles.logoText} alt='logo' /> }
           </Link>
         </div>
