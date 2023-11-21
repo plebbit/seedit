@@ -7,6 +7,7 @@ import LoadingEllipsis from '../../components/loading-ellipsis';
 import Reply from '../../components/reply';
 import ReplyForm from '../../components/reply-form';
 import PostComponent from '../../components/post';
+import Sidebar from '../../components/sidebar/';
 import { usePendingReplyCount } from '../../hooks/use-pending-replycount';
 import useReplies from '../../hooks/use-replies';
 import useReply from '../../hooks/use-reply';
@@ -18,6 +19,7 @@ const Post = () => {
   const comment = useComment({ commentCid });
   const { replyCount, subplebbitAddress, title } = comment || {};
   const subplebbit = useSubplebbit({ subplebbitAddress });
+  const { createdAt, description, roles, rules, shortAddress, updatedAt } = subplebbit || {};
   const stateString = useStateString(comment);
 
   const replies = useReplies(comment);
@@ -75,6 +77,18 @@ const Post = () => {
 
   return (
     <div className={styles.content}>
+      <div className={styles.sidebar}>
+        <Sidebar
+          address={subplebbitAddress}
+          createdAt={createdAt}
+          description={description}
+          roles={roles}
+          rules={rules}
+          shortAddress={shortAddress}
+          title={subplebbit?.title}
+          updatedAt={updatedAt}
+        />
+      </div>
       <PostComponent post={comment} />
       <div className={styles.replyArea}>
         <div className={styles.repliesTitle}>

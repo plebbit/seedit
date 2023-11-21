@@ -56,7 +56,7 @@ const Subplebbit = () => {
 
   return (
     <div className={styles.content}>
-      <div className={`${styles.sidebar}`}>
+      <div className={styles.sidebar}>
         <Sidebar
           address={subplebbitAddress}
           createdAt={createdAt}

@@ -4,14 +4,13 @@ import styles from './sidebar.module.css';
 import { Link, useLocation } from 'react-router-dom';
 import { getFormattedDuration, getFormattedTimeAgo } from '../../lib/utils/time-utils';
 import { findSubplebbitCreator } from '../../lib/utils/user-utils';
-import { isAboutView } from '../../lib/utils/view-utils';
+import { isAboutView, isHomeView } from '../../lib/utils/view-utils';
 import SubscribeButton from '../subscribe-button/subscribe-button';
 
 interface sidebarProps {
   address?: string | undefined;
   createdAt?: number;
   description?: string;
-  isHome?: boolean;
   roles?: Record<string, Role>;
   rules?: string[];
   shortAddress?: string | undefined;
@@ -19,7 +18,7 @@ interface sidebarProps {
   updatedAt?: number;
 }
 
-const Sidebar = ({ address, createdAt, description, isHome, roles, rules, shortAddress, title, updatedAt }: sidebarProps) => {
+const Sidebar = ({ address, createdAt, description, roles, rules, shortAddress, title, updatedAt }: sidebarProps) => {
   const { allActiveUserCount, hourActiveUserCount } = useSubplebbitStats({ subplebbitAddress: address });
   const isOnline = updatedAt && updatedAt > Date.now() / 1000 - 60 * 30;
   const onlineNotice = hourActiveUserCount + ' users here now';
@@ -27,6 +26,7 @@ const Sidebar = ({ address, createdAt, description, isHome, roles, rules, shortA
   const onlineStatus = isOnline ? onlineNotice : offlineNotice;
   const location = useLocation();
   const isAbout = isAboutView(location.pathname);
+  const isHome = isHomeView(location.pathname);
   const subplebbitCreator = findSubplebbitCreator(roles);
   const creatorAddress = subplebbitCreator === 'anonymous' ? 'anonymous' : `u/${getShortAddress(subplebbitCreator)}`;
   const rolesList = roles ? Object.entries(roles).map(([address, { role }]) => ({ address, role })) : [];
