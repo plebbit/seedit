@@ -45,18 +45,16 @@ const Sidebar = ({ address, createdAt, description, isHome, roles, rules, shortA
   );
 
   const rulesList = (
-    <div className={styles.list}>
-      <div className={styles.listTitle}>RULES</div>
-      <ul className={`${styles.listContent} ${styles.rulesList}`}>
+    <div className={styles.rules}>
+      <strong>Rules</strong>
+      <ul className={styles.rulesList}>
         {rules?.map((rule, index) => (
           <>
             <li key={index}>
               {index + 1}. {rule}
             </li>
-            {index !== rules.length - 1 && <br />}
           </>
         ))}
-        <li className={styles.listMore}>about community rules »</li>
       </ul>
     </div>
   );
@@ -89,6 +87,7 @@ const Sidebar = ({ address, createdAt, description, isHome, roles, rules, shortA
           <span>{onlineStatus}</span>
         </div>
         <div className={styles.description}>{description}</div>
+        {rules && rulesList}
         <div className={styles.bottom}>
           created by{' '}
           <Link to={`/u/user.eth`} onClick={(e) => e.preventDefault()}>
@@ -97,7 +96,6 @@ const Sidebar = ({ address, createdAt, description, isHome, roles, rules, shortA
           {createdAt && <span className={styles.age}> a community for {getFormattedDuration(createdAt)}</span>}
         </div>
       </div>}
-      {rules && rulesList}
       {roles && moderatorsList}
     </div>
   );

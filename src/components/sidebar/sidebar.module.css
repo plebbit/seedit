@@ -143,13 +143,17 @@ a {
   cursor: pointer;
 }
 
-.rulesList li {
-  color: var(--text);
-}
-
 .listMore {
   color: var(--text-info) !important;
   text-align: right;
   font-size: 10px !important;
   cursor: pointer;
+}
+
+.rules {
+  margin: 10px 0;
+}
+
+.rulesList {
+  list-style: none;
 }
