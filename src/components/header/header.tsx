@@ -114,11 +114,11 @@ const Header = () => {
       <div className={`${styles.container} ${fewTabs ? styles.reducedHeight : ''}`}>
         <div className={styles.logoContainer}>
           <Link to='/' className={styles.logoLink}>
-            <img className={`${logoIsAvatar ? styles.avatar : styles.logo}`} src={logoSrc} alt='logo' />
+            {(logoIsAvatar || isHome) && <img className={`${logoIsAvatar ? styles.avatar : styles.logo}`} src={logoSrc} alt='logo' />}
             {!isSubplebbit && !suggested?.avatarUrl && <img src={`/assets/logo/seedit-text-${theme === 'dark' ? 'dark' : 'light'}.svg`} className={styles.logoText} alt='logo' /> }
           </Link>
         </div>
-        <span className={`${isHome ? '' : styles.pageName}`}>{headerTitle}</span>
+        {!isHome && <span className={`${styles.pageName} ${!logoIsAvatar && styles.soloPageName}`}>{headerTitle}</span>}
         {isSubplebbit && !isAbout && (
           <span className={styles.joinButton}>
             <SubscribeButton address={params.subplebbitAddress} />
