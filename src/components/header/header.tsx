@@ -57,7 +57,7 @@ const Header = () => {
 
   const commentsButton = (
     <li>
-      <Link to={`/p/${params.subplebbitAddress}/c/${params.commentCid}`} className={styles.selected}>
+      <Link to={`/p/${params.subplebbitAddress}/c/${params.commentCid}`} className={isPost && !isAbout ? styles.selected : styles.choice}>
         {t('header_comments')}
       </Link>
     </li>
@@ -88,7 +88,9 @@ const Header = () => {
 
   let aboutLink;
 
-  if (isSubplebbit || isSubplebbitSubmit) {
+  if (isPost) {
+    aboutLink = `/p/${params.subplebbitAddress}/c/${params.commentCid}/about`;
+  } else if (isSubplebbit || isSubplebbitSubmit) {
     aboutLink = `/p/${params.subplebbitAddress}/about`;
   } else {
     aboutLink = '/about';
