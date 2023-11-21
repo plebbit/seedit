@@ -121,6 +121,7 @@ const Submit = () => {
           onClick={() => {
             if (subplebbitAddressRef.current) {
               subplebbitAddressRef.current.value = sub;
+              setSelectedSubplebbit(sub);
             }
           }}
         >
