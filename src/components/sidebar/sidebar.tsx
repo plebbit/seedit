@@ -61,15 +61,15 @@ const Sidebar = ({
   const rulesList = (
     <div className={styles.rules}>
       <strong>Rules</strong>
-      <ul className={styles.rulesList}>
+      <ol className={styles.rulesList}>
         {rules?.map((rule, index) => (
           <>
             <li key={index}>
-              {index + 1}. {rule}
+              {rule}
             </li>
           </>
         ))}
-      </ul>
+      </ol>
     </div>
   );
 

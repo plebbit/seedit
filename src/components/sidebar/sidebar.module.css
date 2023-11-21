@@ -159,7 +159,8 @@ a {
 }
 
 .rulesList {
-  list-style: none;
+  padding-top: 5px;
+  padding-left: 25px;
 }
 
 .searchBar {
