@@ -8,27 +8,29 @@ import { isAboutView } from '../../lib/utils/view-utils';
 import SubscribeButton from '../subscribe-button/subscribe-button';
 
 interface sidebarProps {
-  address: string | undefined;
-  createdAt: number;
+  address?: string | undefined;
+  createdAt?: number;
   description?: string;
+  isHome?: boolean;
   roles?: Record<string, Role>;
   rules?: string[];
-  shortAddress: string | undefined;
+  shortAddress?: string | undefined;
   title?: string;
-  updatedAt: number;
+  updatedAt?: number;
 }
 
-const Sidebar = ({ address, createdAt, description, roles, rules, shortAddress, title, updatedAt }: sidebarProps) => {
+const Sidebar = ({ address, createdAt, description, isHome, roles, rules, shortAddress, title, updatedAt }: sidebarProps) => {
   const { allActiveUserCount, hourActiveUserCount } = useSubplebbitStats({ subplebbitAddress: address });
-  const isOnline = updatedAt > Date.now() / 1000 - 60 * 30;
+  const isOnline = updatedAt && updatedAt > Date.now() / 1000 - 60 * 30;
   const onlineNotice = hourActiveUserCount + ' users here now';
-  const offlineNotice = 'community node last seen ' + getFormattedTimeAgo(updatedAt);
+  const offlineNotice = updatedAt && 'community node last seen ' + getFormattedTimeAgo(updatedAt);
   const onlineStatus = isOnline ? onlineNotice : offlineNotice;
   const location = useLocation();
   const isAbout = isAboutView(location.pathname);
   const subplebbitCreator = findSubplebbitCreator(roles);
   const creatorAddress = subplebbitCreator === 'anonymous' ? 'anonymous' : `u/${getShortAddress(subplebbitCreator)}`;
   const rolesList = roles ? Object.entries(roles).map(([address, { role }]) => ({ address, role })) : [];
+  const submitRoute = isHome ? '/submit' : `/p/${address}/submit`;
 
   const moderatorsList = (
     <div className={styles.list}>
@@ -61,7 +63,7 @@ const Sidebar = ({ address, createdAt, description, roles, rules, shortAddress, 
 
   return (
     <div className={`${isAbout ? styles.about : styles.sidebar}`}>
-      <Link to={`/p/${address}/submit`}>
+      <Link to={submitRoute}>
         <div className={styles.largeButton}>
           Submit a new post
           <div className={styles.nub} />
@@ -73,7 +75,7 @@ const Sidebar = ({ address, createdAt, description, roles, rules, shortAddress, 
           <div className={styles.nub} />
         </div>
       </Link>
-      <div className={styles.titleBox}>
+      {!isHome && <div className={styles.titleBox}>
         <Link className={styles.title} to={`/p/${address}`}>
           {title || shortAddress}
         </Link>
@@ -92,9 +94,9 @@ const Sidebar = ({ address, createdAt, description, roles, rules, shortAddress, 
           <Link to={`/u/user.eth`} onClick={(e) => e.preventDefault()}>
             {creatorAddress}
           </Link>
-          <span className={styles.age}> a community for {getFormattedDuration(createdAt)}</span>
+          {createdAt && <span className={styles.age}> a community for {getFormattedDuration(createdAt)}</span>}
         </div>
-      </div>
+      </div>}
       {rules && rulesList}
       {roles && moderatorsList}
     </div>

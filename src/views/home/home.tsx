@@ -6,6 +6,7 @@ import { Trans, useTranslation } from 'react-i18next';
 import styles from './home.module.css';
 import LoadingEllipsis from '../../components/loading-ellipsis';
 import Post from '../../components/post';
+import Sidebar from '../../components/sidebar';
 import useDefaultSubplebbitAddresses from '../../hooks/use-default-subplebbit-addresses';
 import useFeedStateString from '../../hooks/use-feed-state-string';
 
@@ -68,6 +69,11 @@ const Home = () => {
   return (
     <div>
       <div className={styles.content}>
+        <div className={`${styles.sidebar}`}>
+          <Sidebar
+            isHome={true}
+          />
+        </div>
         <Virtuoso
           increaseViewportBy={{ bottom: 1200, top: 600 }}
           totalCount={feed?.length || 0}
