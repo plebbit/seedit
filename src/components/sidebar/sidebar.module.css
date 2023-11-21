@@ -137,7 +137,7 @@ a {
   list-style: none;
 }
 
-.modsList li {
+.modsList li, .bottom a {
   text-decoration: none;
   color: var(--text-primary);
   cursor: pointer;
