@@ -40,7 +40,7 @@ const Sidebar = ({ address, createdAt, description, roles, rules, shortAddress, 
         <li className={styles.listMore}>about moderation team »</li>
       </ul>
     </div>
-  )
+  );
 
   const rulesList = (
     <div className={styles.list}>
@@ -48,8 +48,10 @@ const Sidebar = ({ address, createdAt, description, roles, rules, shortAddress, 
       <ul className={`${styles.listContent} ${styles.rulesList}`}>
         {rules?.map((rule, index) => (
           <>
-            <li key={index}>{index + 1}. {rule}</li>
-            {index !== rules.length - 1 && <br/>}
+            <li key={index}>
+              {index + 1}. {rule}
+            </li>
+            {index !== rules.length - 1 && <br />}
           </>
         ))}
         <li className={styles.listMore}>about community rules »</li>
@@ -59,6 +61,18 @@ const Sidebar = ({ address, createdAt, description, roles, rules, shortAddress, 
 
   return (
     <div className={`${isAbout ? styles.about : styles.sidebar}`}>
+      <Link to={`/p/${address}/submit`}>
+        <div className={styles.largeButton}>
+          Submit a new post
+          <div className={styles.nub} />
+        </div>
+      </Link>
+      <Link to='/communities/create' onClick={(e) => e.preventDefault()}>
+        <div className={styles.largeButton}>
+          Create your own community
+          <div className={styles.nub} />
+        </div>
+      </Link>
       <div className={styles.titleBox}>
         <Link className={styles.title} to={`/p/${address}`}>
           {title || shortAddress}
@@ -80,10 +94,6 @@ const Sidebar = ({ address, createdAt, description, roles, rules, shortAddress, 
           </Link>
           <span className={styles.age}> a community for {getFormattedDuration(createdAt)}</span>
         </div>
-      </div>
-      <div className={styles.createSub}>
-        <Link to='/communities/create' onClick={(e) => e.preventDefault()}>Create your own community</Link>
-        <div className={styles.nub} />
       </div>
       {rules && rulesList}
       {roles && moderatorsList}

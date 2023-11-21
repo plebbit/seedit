@@ -73,7 +73,7 @@ a {
   float: right;
 }
 
-.createSub {
+.largeButton {
   text-align: center;
   position: relative;
   border: 1px solid var(--button-border-primary);
@@ -87,15 +87,7 @@ a {
   height: 29px;
   cursor: pointer;
   margin: 7px 0 12px 0;
-}
-
-.createSub a {
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  text-overflow: ellipsis;
   color: var(--text-primary);
-  text-decoration: none;
 }
 
 .nub {
@@ -109,16 +101,13 @@ a {
   background-repeat: no-repeat;
 }
 
-.createSub:hover {
+.largeButton:hover {
   background-image: var(--button-large-hover);
   border-color: var(--button-border-primary-hover);
-}
-
-.createSub:hover a {
   color: var(--background);
 }
 
-.createSub:hover .nub {
+.largeButton:hover .nub {
   background-image: var(--button-large-hover-nub);
 }
 
