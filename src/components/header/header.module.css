@@ -9,6 +9,7 @@
   align-items: flex-end;
   justify-content: flex-start;
   position: relative;
+  white-space: nowrap;
 }
 
 .logoLink {
