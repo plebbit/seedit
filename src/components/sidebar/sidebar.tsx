@@ -61,6 +61,10 @@ const Sidebar = ({ address, createdAt, description, isHome, roles, rules, shortA
 
   return (
     <div className={`${isAbout ? styles.about : styles.sidebar}`}>
+      <form className={styles.searchBar}>
+        <input type='text' placeholder='search' onSubmit={(e) => e.preventDefault()}/>
+        <input type='submit' value='' />
+      </form>
       <Link to={submitRoute}>
         <div className={styles.largeButton}>
           Submit a new post
