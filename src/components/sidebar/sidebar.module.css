@@ -61,6 +61,7 @@ a {
   white-space: pre-wrap;
   word-wrap: break-word;
   color: var(--text-markdown);
+  line-height: 15px;
 }
 
 .bottom {
