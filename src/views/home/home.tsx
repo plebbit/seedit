@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react';
 import { useParams } from 'react-router-dom';
 import { Virtuoso, VirtuosoHandle, StateSnapshot } from 'react-virtuoso';
-import { useFeed } from '@plebbit/plebbit-react-hooks';
+import { useAccount, useFeed } from '@plebbit/plebbit-react-hooks';
 import { Trans, useTranslation } from 'react-i18next';
 import styles from './home.module.css';
 import LoadingEllipsis from '../../components/loading-ellipsis';
@@ -15,7 +15,9 @@ const lastVirtuosoStates: { [key: string]: StateSnapshot } = {};
 const NoPosts = () => 'no posts';
 
 const Home = () => {
-  const subplebbitAddresses = useDefaultSubplebbitAddresses();
+  const defaultSubplebbitAddresses = useDefaultSubplebbitAddresses();
+  const account = useAccount();
+  const subplebbitAddresses = defaultSubplebbitAddresses.concat(account?.subscriptions || []);
   const sortType = useParams<{ sortType: string }>().sortType || 'hot';
   const { feed, hasMore, loadMore } = useFeed({ subplebbitAddresses, sortType });
   const { t } = useTranslation();
