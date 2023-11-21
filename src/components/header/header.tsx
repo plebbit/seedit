@@ -57,7 +57,7 @@ const Header = () => {
 
   const commentsButton = (
     <li>
-      <Link to={`/p/${params.subplebbitAddress}/c/${params.commentCid}`} className={styles.selected}>
+      <Link to={`/p/${params.subplebbitAddress}/c/${params.commentCid}`} className={isPost && !isAbout ? styles.selected : styles.choice}>
         {t('header_comments')}
       </Link>
     </li>
@@ -88,7 +88,9 @@ const Header = () => {
 
   let aboutLink;
 
-  if (isSubplebbit || isSubplebbitSubmit) {
+  if (isPost) {
+    aboutLink = `/p/${params.subplebbitAddress}/c/${params.commentCid}/about`;
+  } else if (isSubplebbit || isSubplebbitSubmit) {
     aboutLink = `/p/${params.subplebbitAddress}/about`;
   } else {
     aboutLink = '/about';
@@ -114,11 +116,13 @@ const Header = () => {
       <div className={`${styles.container} ${fewTabs ? styles.reducedHeight : ''}`}>
         <div className={styles.logoContainer}>
           <Link to='/' className={styles.logoLink}>
-            <img className={`${logoIsAvatar ? styles.avatar : styles.logo}`} src={logoSrc} alt='logo' />
-            {!isSubplebbit && !suggested?.avatarUrl && <img src={`/assets/logo/seedit-text-${theme === 'dark' ? 'dark' : 'light'}.svg`} className={styles.logoText} alt='logo' /> }
+            {(logoIsAvatar || !isSubplebbit) && <img className={`${logoIsAvatar ? styles.avatar : styles.logo}`} src={logoSrc} alt='logo' />}
+            {!isSubplebbit && !suggested?.avatarUrl && (
+              <img src={`/assets/logo/seedit-text-${theme === 'dark' ? 'dark' : 'light'}.svg`} className={styles.logoText} alt='logo' />
+            )}
           </Link>
         </div>
-        <span className={`${isHome ? '' : styles.pageName}`}>{headerTitle}</span>
+        {!isHome && <span className={`${styles.pageName} ${!logoIsAvatar && styles.soloPageName}`}>{headerTitle}</span>}
         {isSubplebbit && !isAbout && (
           <span className={styles.joinButton}>
             <SubscribeButton address={params.subplebbitAddress} />
@@ -127,7 +131,7 @@ const Header = () => {
         <div className={`${styles.tabs} ${fewTabs ? styles.fewTabs : ''}`}>
           <ul className={styles.tabMenu}>
             {headerTabs}
-            {(isSubplebbit || isSubplebbitSubmit) && aboutButton}
+            {(isSubplebbit || isSubplebbitSubmit || isPost) && aboutButton}
           </ul>
         </div>
       </div>

@@ -69,3 +69,8 @@ export const getFormattedDuration = (unixTimestamp: number): string => {
   }
   return t('time_x_years', { count: Math.floor(timeDifference / 31104000) });
 };
+
+export const getFormattedDate = (unixTimestamp: number, locale: string): string => {
+  const date = new Date(unixTimestamp * 1000);
+  return new Intl.DateTimeFormat(locale, { day: 'numeric', month: 'short', year: 'numeric' }).format(date);
+}

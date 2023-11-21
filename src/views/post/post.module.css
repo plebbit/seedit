@@ -69,3 +69,9 @@
   width: calc(100vw - 28px);
   width: 100vw;
 }
+
+@media (max-width: 768px) {
+  .sidebar {
+    display: none;
+  }
+}
