@@ -18,7 +18,7 @@ const Header = () => {
   const [selectedSortType, setSelectedSortType] = useState(params.sortType || '/hot');
   const sortLabels = [t('header_hot'), t('header_new'), t('header_active'), t('header_controversial'), t('header_top')];
   const subplebbit = useSubplebbit({ subplebbitAddress: params.subplebbitAddress });
-  const { title, shortAddress } = subplebbit || {};
+  const { suggested, title, shortAddress } = subplebbit || {};
   const isAbout = isAboutView(location.pathname);
   const isHome = isHomeView(location.pathname);
   const isPost = isPostView(location.pathname, params);
@@ -26,6 +26,8 @@ const Header = () => {
   const isSubmit = isSubmitView(location.pathname);
   const isSubplebbitSubmit = isSubplebbitSubmitView(location.pathname, params);
   const fewTabs = isPost || isSubmit || isSubplebbitSubmit;
+  const logoSrc = isSubplebbit ? suggested?.avatarUrl : '/assets/logo/seedit.png';
+  const logoIsAvatar = isSubplebbit && suggested?.avatarUrl;
 
   const handleSelect = (choice: string) => {
     setSelectedSortType(choice);
@@ -112,12 +114,16 @@ const Header = () => {
       <div className={`${styles.container} ${fewTabs ? styles.reducedHeight : ''}`}>
         <div className={styles.logoContainer}>
           <Link to='/' className={styles.logoLink}>
-            <img className={styles.logo} src='/assets/logo/seedit.png' alt='logo' />
-            <img src={`/assets/logo/seedit-text-${theme === 'dark' ? 'dark' : 'light'}.svg`} className={styles.logoText} alt='logo' />
+            <img className={`${logoIsAvatar ? styles.avatar : styles.logo}`} src={logoSrc} alt='logo' />
+            {!isSubplebbit && !suggested?.avatarUrl && <img src={`/assets/logo/seedit-text-${theme === 'dark' ? 'dark' : 'light'}.svg`} className={styles.logoText} alt='logo' /> }
           </Link>
         </div>
         <span className={`${isHome ? '' : styles.pageName}`}>{headerTitle}</span>
-        {isSubplebbit && !isAbout && <span className={styles.joinButton}><SubscribeButton address={params.subplebbitAddress} /></span>}
+        {isSubplebbit && !isAbout && (
+          <span className={styles.joinButton}>
+            <SubscribeButton address={params.subplebbitAddress} />
+          </span>
+        )}
         <div className={`${styles.tabs} ${fewTabs ? styles.fewTabs : ''}`}>
           <ul className={styles.tabMenu}>
             {headerTabs}

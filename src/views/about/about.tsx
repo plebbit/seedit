@@ -10,7 +10,16 @@ const About = () => {
 
   return (
     <div className={styles.content}>
-      <Sidebar address={address} createdAt={createdAt} description={description} roles={roles} rules={rules} shortAddress={shortAddress} title={title} updatedAt={updatedAt} />
+      <Sidebar
+        address={address}
+        createdAt={createdAt}
+        description={description}
+        roles={roles}
+        rules={rules}
+        shortAddress={shortAddress}
+        title={title}
+        updatedAt={updatedAt}
+      />
     </div>
   );
 };
