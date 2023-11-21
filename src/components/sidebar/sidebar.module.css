@@ -1,7 +1,3 @@
-.about {
-  padding: 7px 15px 0px 15px;
-}
-
 .sidebar {
   float: right;
   width: 300px;
@@ -11,7 +7,8 @@
 
 .titleBox {
   font-size: larger;
-  color: var(--text)
+  color: var(--text);
+  margin-bottom: 12px;
 }
 
 a {
@@ -74,4 +71,85 @@ a {
 
 .age {
   float: right;
+}
+
+.largeButton {
+  text-align: center;
+  position: relative;
+  border: 1px solid var(--button-border-primary);
+  background: var(--background) none repeat-x scroll center left;
+  background-image: var(--button-large);
+  background-repeat: repeat;
+  font-size: 150%;
+  font-weight: bold;
+  letter-spacing: -1px;
+  line-height: 29px;
+  height: 29px;
+  cursor: pointer;
+  margin: 7px 0 12px 0;
+  color: var(--text-primary);
+}
+
+.nub {
+  position: absolute;
+  top: -1px;
+  right: -1px;
+  height: 31px;
+  width: 24px;
+  background: var(--background) none no-repeat scroll center left;
+  background-image: var(--button-large-nub);
+  background-repeat: no-repeat;
+}
+
+.largeButton:hover {
+  background-image: var(--button-large-hover);
+  border-color: var(--button-border-primary-hover);
+  color: var(--background);
+}
+
+.largeButton:hover .nub {
+  background-image: var(--button-large-hover-nub);
+}
+
+.list {
+  margin-bottom: 12px;
+}
+
+.listTitle {
+  display: inline;
+  text-transform: uppercase;
+  margin: 0;
+  color: gray;
+  font-size: 13px;
+  font-weight: normal;
+}
+
+.listContent {
+  margin: 0;
+  padding: 5px;
+  border: 1px solid gray;
+  font-size: larger;
+  list-style: none;
+}
+
+.listContent li {
+  font-size: 12px;
+  list-style: none;
+}
+
+.modsList li {
+  text-decoration: none;
+  color: var(--text-primary);
+  cursor: pointer;
+}
+
+.rulesList li {
+  color: var(--text);
+}
+
+.listMore {
+  color: var(--text-info) !important;
+  text-align: right;
+  font-size: 10px !important;
+  cursor: pointer;
 }

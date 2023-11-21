@@ -12,10 +12,5 @@ export const findSubplebbitCreator = (roles: RolesCollection | undefined): strin
     return owner;
   }
 
-  const admin = Object.keys(roles).find(key => roles[key].role === 'admin');
-  if (admin) {
-    return admin;
-  }
-
   return 'anonymous';
 };

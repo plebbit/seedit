@@ -6,11 +6,20 @@ import { useSubplebbit } from '@plebbit/plebbit-react-hooks';
 const About = () => {
   const { subplebbitAddress } = useParams();
   const subplebbit = useSubplebbit({ subplebbitAddress });
-  const { address, createdAt, description, roles, shortAddress, title, updatedAt } = subplebbit || {};
+  const { address, createdAt, description, roles, rules, shortAddress, title, updatedAt } = subplebbit || {};
 
   return (
     <div className={styles.content}>
-      <Sidebar address={address} createdAt={createdAt} description={description} roles={roles} shortAddress={shortAddress} title={title} updatedAt={updatedAt} />
+      <Sidebar
+        address={address}
+        createdAt={createdAt}
+        description={description}
+        roles={roles}
+        rules={rules}
+        shortAddress={shortAddress}
+        title={title}
+        updatedAt={updatedAt}
+      />
     </div>
   );
 };

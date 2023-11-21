@@ -61,10 +61,12 @@ const AccountBar = () => {
             {account?.author?.shortAddress}
           </Link>
         </span>
-        <span className={styles.separator}>|</span>
-        <Link to={submitLink} className={styles.textButton}>
-          {t('submit')}
-        </Link>
+        <span className={styles.submitButton}>
+          <span className={styles.separator}>|</span>
+          <Link to={submitLink} className={styles.textButton}>
+            {t('submit')}
+          </Link>
+        </span>
         <span className={styles.separator}>|</span>
         <Link to='/settings' className={styles.iconButton} onClick={(e) => e.preventDefault()}>
           ✉️

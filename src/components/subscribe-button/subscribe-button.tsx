@@ -1,4 +1,4 @@
-import { useSubscribe } from "@plebbit/plebbit-react-hooks";
+import { useSubscribe } from '@plebbit/plebbit-react-hooks';
 import styles from './subscribe-button.module.css';
 
 interface subscribeButtonProps {
@@ -20,7 +20,7 @@ const SubscribeButton = ({ address }: subscribeButtonProps) => {
         alert(error.message);
         console.log(error);
       } else {
-        console.error("An unknown error occurred:", error);
+        console.error('An unknown error occurred:', error);
       }
     }
   };
