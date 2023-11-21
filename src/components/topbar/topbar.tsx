@@ -1,9 +1,10 @@
 import { useState, useEffect, useRef } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import styles from './topbar.module.css';
 import { useAccount } from '@plebbit/plebbit-react-hooks';
+import styles from './topbar.module.css';
 import useDefaultSubplebbitAddresses from '../../hooks/use-default-subplebbit-addresses';
+import { isHomeView } from '../../lib/utils/view-utils';
 
 const TopBar = () => {
   const [isClicked, setIsClicked] = useState(false);
@@ -11,10 +12,13 @@ const TopBar = () => {
   const account = useAccount();
   const subplebbitAddresses = useDefaultSubplebbitAddresses();
   const { t } = useTranslation();
+  const location = useLocation();
 
   const subscriptions = account?.subscriptions;
   const ethFilteredAddresses = subplebbitAddresses.filter((address: string) => address.endsWith('.eth'));
   const dropChoicesClass = isClicked && subscriptions?.length ? styles.dropChoicesVisible : styles.dropChoicesHidden;
+  const isHome = isHomeView(location.pathname);
+  const homeButtonClass = isHome ? styles.selected : styles.choice;
 
   const toggleClick = () => {
     setIsClicked(!isClicked);
@@ -51,7 +55,7 @@ const TopBar = () => {
         <div className={styles.srList}>
           <ul className={styles.srBar}>
             <li>
-              <Link to='/' className={styles.selected}>
+              <Link to='/' className={homeButtonClass}>
                 {t('topbar_home')}
               </Link>
             </li>
