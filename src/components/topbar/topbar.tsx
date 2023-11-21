@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useAccount } from '@plebbit/plebbit-react-hooks';
+import { getShortAddress } from '@plebbit/plebbit-js';
 import styles from './topbar.module.css';
 import useDefaultSubplebbitAddresses from '../../hooks/use-default-subplebbit-addresses';
 import { isHomeView } from '../../lib/utils/view-utils';
@@ -48,7 +49,7 @@ const TopBar = () => {
         <div className={`${styles.dropChoices} ${dropChoicesClass}`} ref={dropdownRef}>
           {subscriptions?.map((subscription: string, index: number) => (
             <Link key={index} to={`/p/${subscription}`} className={styles.subscription} onClick={() => setIsClicked(false)}>
-              {subscription}
+              {getShortAddress(subscription)}
             </Link>
           ))}
         </div>
