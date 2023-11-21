@@ -17,7 +17,7 @@ const Post = () => {
   const { t } = useTranslation();
   const { commentCid } = useParams();
   const comment = useComment({ commentCid });
-  const { replyCount, subplebbitAddress, title } = comment || {};
+  const { cid, downvoteCount, replyCount, subplebbitAddress, timestamp, title, upvoteCount } = comment || {};
   const subplebbit = useSubplebbit({ subplebbitAddress });
   const { createdAt, description, roles, rules, shortAddress, updatedAt } = subplebbit || {};
   const stateString = useStateString(comment);
@@ -80,13 +80,17 @@ const Post = () => {
       <div className={styles.sidebar}>
         <Sidebar
           address={subplebbitAddress}
+          cid={cid}
           createdAt={createdAt}
           description={description}
+          downvoteCount={downvoteCount}
           roles={roles}
           rules={rules}
           shortAddress={shortAddress}
+          timestamp={timestamp}
           title={subplebbit?.title}
           updatedAt={updatedAt}
+          upvoteCount={upvoteCount}
         />
       </div>
       <PostComponent post={comment} />

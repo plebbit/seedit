@@ -127,7 +127,7 @@ const Header = () => {
         <div className={`${styles.tabs} ${fewTabs ? styles.fewTabs : ''}`}>
           <ul className={styles.tabMenu}>
             {headerTabs}
-            {(isSubplebbit || isSubplebbitSubmit) && aboutButton}
+            {(isSubplebbit || isSubplebbitSubmit || isPost) && aboutButton}
           </ul>
         </div>
       </div>
