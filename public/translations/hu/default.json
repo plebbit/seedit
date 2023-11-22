@@ -95,5 +95,8 @@
   "about_moderation": "a moderációs csapatról",
   "join": "csatlakozás",
   "leave": "elhagy",
-  "created_by": "készítette {{creatorAddress}}"
+  "created_by": "készítette {{creatorAddress}}",
+  "community_for": "egy közösség {{date}}",
+  "post_submitted_on": "ez a bejegyzés {{postDate}} n lett benyújtva",
+  "community_last_seen": "közösségi csomópont utoljára látható {{dateAgo}}"
 }

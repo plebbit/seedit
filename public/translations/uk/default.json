@@ -95,5 +95,8 @@
   "about_moderation": "про модерацію",
   "join": "приєднатися",
   "leave": "покинути",
-  "created_by": "створено {{creatorAddress}}"
+  "created_by": "створено {{creatorAddress}}",
+  "community_for": "спільнота на {{date}}",
+  "post_submitted_on": "цей пост був поданий {{postDate}}",
+  "community_last_seen": "останній раз було помічено вузол спільноти {{dateAgo}}"
 }

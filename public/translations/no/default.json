@@ -95,5 +95,8 @@
   "about_moderation": "om moderasjonsteamet",
   "join": "bli med",
   "leave": "forlat",
-  "created_by": "opprettet av {{creatorAddress}}"
+  "created_by": "opprettet av {{creatorAddress}}",
+  "community_for": "et fellesskap for {{date}}",
+  "post_submitted_on": "dette innlegget ble sendt inn på {{postDate}}",
+  "community_last_seen": "samfunnsnode sist sett {{dateAgo}}"
 }

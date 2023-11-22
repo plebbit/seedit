@@ -95,5 +95,8 @@
   "about_moderation": "về đội ngũ quản lý",
   "join": "tham gia",
   "leave": "rời",
-  "created_by": "tạo bởi {{creatorAddress}}"
+  "created_by": "tạo bởi {{creatorAddress}}",
+  "community_for": "một cộng đồng cho {{date}}",
+  "post_submitted_on": "bài viết này đã được đăng vào ngày {{postDate}}",
+  "community_last_seen": "nút cộng đồng cuối cùng được thấy vào {{dateAgo}}"
 }

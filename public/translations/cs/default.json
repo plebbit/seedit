@@ -95,5 +95,8 @@
   "about_moderation": "o moderaci týmu",
   "join": "připojit se",
   "leave": "odejít",
-  "created_by": "vytvořeno uživatelem {{creatorAddress}}"
+  "created_by": "vytvořeno uživatelem {{creatorAddress}}",
+  "community_for": "komunita po dobu {{date}}",
+  "post_submitted_on": "tento příspěvek byl odeslán dne {{postDate}}",
+  "community_last_seen": "poslední viděná komunitní node {{dateAgo}}"
 }

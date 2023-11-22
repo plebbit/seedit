@@ -95,5 +95,8 @@
   "about_moderation": "om moderationsholdet",
   "join": "bliv medlem",
   "leave": "forlad",
-  "created_by": "oprettet af {{creatorAddress}}"
+  "created_by": "oprettet af {{creatorAddress}}",
+  "community_for": "fællesskab i {{date}}",
+  "post_submitted_on": "denne indsendt dette indlæg på {{postDate}}",
+  "community_last_seen": "fællesskabsnode sidst set {{dateAgo}}"
 }

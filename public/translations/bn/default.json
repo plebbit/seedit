@@ -95,5 +95,8 @@
   "about_moderation": "মডারেশন টিম সম্পর্কে",
   "join": "যোগদান",
   "leave": "ছাড়া",
-  "created_by": "দ্বারা তৈরি {{creatorAddress}}"
+  "created_by": "দ্বারা তৈরি {{creatorAddress}}",
+  "community_for": "মেয়াদ শেষে একটি সম্প্রদায়",
+  "post_submitted_on": "এই পোস্টটি {{postDate}} তে সাবমিট করা হয়েছে",
+  "community_last_seen": "সম্প্রদায় নোডটি শেষ দেখা গেছে {{dateAgo}}"
 }

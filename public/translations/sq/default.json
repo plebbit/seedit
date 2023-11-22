@@ -95,5 +95,8 @@
   "about_moderation": "rreth ekipit të moderimit",
   "join": "bashkohu",
   "leave": "ndale",
-  "created_by": "krijuar nga {{creatorAddress}}"
+  "created_by": "krijuar nga {{creatorAddress}}",
+  "community_for": "një komunitet për {{date}}",
+  "post_submitted_on": "ky post u dorëzua më {{postDate}}",
+  "community_last_seen": "nod komuniteti i fundit i parë në {{dateAgo}}"
 }

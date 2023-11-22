@@ -42,7 +42,7 @@ const Sidebar = ({
   const { allActiveUserCount, hourActiveUserCount } = useSubplebbitStats({ subplebbitAddress: address });
   const isOnline = updatedAt && updatedAt > Date.now() / 1000 - 60 * 30;
   const onlineNotice = hourActiveUserCount + ' users here now';
-  const offlineNotice = updatedAt && 'community node last seen ' + getFormattedTimeAgo(updatedAt);
+  const offlineNotice = updatedAt && t('community_last_seen', { dateAgo: getFormattedTimeAgo(updatedAt) });
   const onlineStatus = isOnline ? onlineNotice : offlineNotice;
   const location = useLocation();
   const params = useParams();
@@ -64,9 +64,7 @@ const Sidebar = ({
       <ol className={styles.rulesList}>
         {rules?.map((rule, index) => (
           <>
-            <li key={index}>
-              {rule}
-            </li>
+            <li key={index}>{rule}</li>
           </>
         ))}
       </ol>
@@ -88,7 +86,7 @@ const Sidebar = ({
   const postInfo = (
     <div className={styles.postInfo}>
       <div className={styles.postDate}>
-        <span>this post was submitted on {postDate}</span>
+        <span>{t('post_submitted_on', { postDate: postDate })}</span>
       </div>
       <div className={styles.postScore}>
         <span className={styles.postScoreNumber}>{postScore} </span>
@@ -104,7 +102,7 @@ const Sidebar = ({
     <div className={`${isAbout ? styles.about : styles.sidebar}`}>
       <form className={styles.searchBar} onSubmit={(e) => e.preventDefault()}>
         <input type='text' placeholder={`${t('search')}`} />
-        <input type='submit' value=''  />
+        <input type='submit' value='' />
       </form>
       {isPost && postInfo}
       <Link to={submitRoute}>
@@ -132,15 +130,21 @@ const Sidebar = ({
             <span className={`${styles.onlineIndicator} ${isOnline ? styles.online : styles.offline}`} />
             <span>{onlineStatus}</span>
           </div>
-          {description && <div>
-            {title && <div className={styles.descriptionTitle}><strong>{title}</strong></div>}
-            <div className={styles.description}>{description}</div>
-          </div>}
+          {description && (
+            <div>
+              {title && (
+                <div className={styles.descriptionTitle}>
+                  <strong>{title}</strong>
+                </div>
+              )}
+              <div className={styles.description}>{description}</div>
+            </div>
+          )}
           {rules && rulesList}
           <div className={styles.bottom}>
             {t('created_by', { creatorAddress: '' })}
             <Link to={`/u/${creatorAddress}`}>{`u/${creatorAddress}`}</Link>
-            {createdAt && <span className={styles.age}> a community for {getFormattedDuration(createdAt)}</span>}
+            {createdAt && <span className={styles.age}> {t('community_for', { date: getFormattedDuration(createdAt) })}</span>}
           </div>
         </div>
       )}

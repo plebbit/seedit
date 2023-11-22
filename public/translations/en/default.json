@@ -95,5 +95,8 @@
   "about_moderation": "about moderation team",
   "join": "join",
   "leave": "leave",
-  "created_by": "created by {{creatorAddress}}"
+  "created_by": "created by {{creatorAddress}}",
+  "community_for": "a community for {{date}}",
+  "post_submitted_on": "this post was submitted on {{postDate}}",
+  "community_last_seen": "community node last seen {{dateAgo}}"
 }

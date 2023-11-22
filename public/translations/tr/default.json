@@ -95,5 +95,8 @@
   "about_moderation": "moderasyon ekibi hakkında",
   "join": "katıl",
   "leave": "ayrıl",
-  "created_by": "tarafından oluşturuldu {{creatorAddress}}"
+  "created_by": "tarafından oluşturuldu {{creatorAddress}}",
+  "community_for": "{{date}} için bir topluluk",
+  "post_submitted_on": "bu gönderi {{postDate}} tarihinde gönderildi",
+  "community_last_seen": "topluluk düğümü son görülen {{dateAgo}}"
 }

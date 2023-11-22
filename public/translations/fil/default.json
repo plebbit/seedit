@@ -95,5 +95,8 @@
   "about_moderation": "tungkol sa koponan ng moderation",
   "join": "sumali",
   "leave": "iwanan",
-  "created_by": "likha ni {{creatorAddress}}"
+  "created_by": "likha ni {{creatorAddress}}",
+  "community_for": "isang komunidad para sa {{date}}",
+  "post_submitted_on": "ang post na ito ay isinumite noong {{postDate}}",
+  "community_last_seen": "komunidad node huli nakita sa {{dateAgo}}"
 }

@@ -95,5 +95,8 @@
   "about_moderation": "over het moderatieteam",
   "join": "meedoen",
   "leave": "vertrekken",
-  "created_by": "gemaakt door {{creatorAddress}}"
+  "created_by": "gemaakt door {{creatorAddress}}",
+  "community_for": "een gemeenschap voor {{date}}",
+  "post_submitted_on": "deze post is ingediend op {{postDate}}",
+  "community_last_seen": "laatst gezien gemeenschapsknoop {{dateAgo}}"
 }

@@ -95,5 +95,8 @@
   "about_moderation": "tentang tim moderasi",
   "join": "bergabung",
   "leave": "tinggalkan",
-  "created_by": "dibuat oleh {{creatorAddress}}"
+  "created_by": "dibuat oleh {{creatorAddress}}",
+  "community_for": "sebuah komunitas selama {{date}}",
+  "post_submitted_on": "posting ini diajukan pada {{postDate}}",
+  "community_last_seen": "node komunitas terakhir terlihat {{dateAgo}}"
 }

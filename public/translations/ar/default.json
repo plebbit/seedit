@@ -95,5 +95,8 @@
   "about_moderation": "عن الإشراف",
   "join": "انضمام",
   "leave": "غادر",
-  "created_by": "تم إنشاؤها بواسطة {{creatorAddress}}"
+  "created_by": "تم إنشاؤها بواسطة {{creatorAddress}}",
+  "community_for": "مجتمع لمدة {{date}}",
+  "post_submitted_on": "تم تقديم هذا المنشور في {{postDate}}",
+  "community_last_seen": "آخر زيارة لعقدة المجتمع في {{dateAgo}}"
 }

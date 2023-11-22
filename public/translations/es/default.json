@@ -95,5 +95,8 @@
   "about_moderation": "sobre el equipo de moderación",
   "join": "unirse",
   "leave": "salir",
-  "created_by": "creado por {{creatorAddress}}"
+  "created_by": "creado por {{creatorAddress}}",
+  "community_for": "una comunidad por {{date}}",
+  "post_submitted_on": "esta publicación se presentó el {{postDate}}",
+  "community_last_seen": "nodo de comunidad visto por última vez {{dateAgo}}"
 }

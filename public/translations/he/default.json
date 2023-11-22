@@ -95,5 +95,8 @@
   "about_moderation": "אודות צוות ההנהלה",
   "join": "הצטרפות",
   "leave": "לצאת",
-  "created_by": "נוצר על ידי {{creatorAddress}}"
+  "created_by": "נוצר על ידי {{creatorAddress}}",
+  "community_for": "קהילה למשך {{date}}",
+  "post_submitted_on": "הפוסט הזה הוגש בתאריך {{postDate}}",
+  "community_last_seen": "צומת קהילה נראה לאחרונה ב {{dateAgo}}"
 }

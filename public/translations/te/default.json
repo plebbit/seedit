@@ -95,5 +95,8 @@
   "about_moderation": "మాడరేషన్ టీమ్ గురించి",
   "join": "చేరండి",
   "leave": "వదలు",
-  "created_by": "ద్వారా రూపొందించబడినది {{creatorAddress}}"
+  "created_by": "ద్వారా రూపొందించబడినది {{creatorAddress}}",
+  "community_for": "{{date}} కోసం ఒక కమ్యూనిటీ",
+  "post_submitted_on": "ఈ పోస్టు {{postDate}} న సమర్పించబడింది",
+  "community_last_seen": "సముదాయ నోడు చివరి సారి చూడబడింది {{dateAgo}}"
 }

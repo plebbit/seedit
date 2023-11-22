@@ -95,5 +95,8 @@
   "about_moderation": "om modereringsteamet",
   "join": "gå med",
   "leave": "lämna",
-  "created_by": "skapat av {{creatorAddress}}"
+  "created_by": "skapat av {{creatorAddress}}",
+  "community_for": "en gemenskap för {{date}}",
+  "post_submitted_on": "detta inlägg skickades in den {{postDate}}",
+  "community_last_seen": "gemenskapsnoden senast sedd {{dateAgo}}"
 }

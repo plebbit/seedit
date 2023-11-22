@@ -95,5 +95,8 @@
   "about_moderation": "tietoa moderaatiotiimistä",
   "join": "liity",
   "leave": "poistu",
-  "created_by": "luonut {{creatorAddress}}"
+  "created_by": "luonut {{creatorAddress}}",
+  "community_for": "yhteisössä {{date}}",
+  "post_submitted_on": "tämä viesti on toimitettu {{postDate}}",
+  "community_last_seen": "yhteisö solmu viimeksi nähty {{dateAgo}}"
 }

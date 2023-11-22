@@ -95,5 +95,8 @@
   "about_moderation": "о модераторах",
   "join": "присоединиться",
   "leave": "покинуть",
-  "created_by": "создано {{creatorAddress}}"
+  "created_by": "создано {{creatorAddress}}",
+  "community_for": "сообщество на {{date}}",
+  "post_submitted_on": "этот пост был отправлен {{postDate}}",
+  "community_last_seen": "последний раз увиден узел сообщества {{dateAgo}}"
 }
