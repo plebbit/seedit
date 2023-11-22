@@ -52,6 +52,7 @@ a {
 
 .descriptionTitle {
   padding-top: 5px;
+  color: var(--text-markdown);
 }
 
 .description {
@@ -60,7 +61,6 @@ a {
   word-wrap: break-word;
   color: var(--text-markdown);
   line-height: 15px;
-  padding-left: 10px;
 }
 
 .bottom {
@@ -152,13 +152,15 @@ a {
 }
 
 .rules {
-  margin: 10px 0;
+  margin-bottom: 10px;
+  margin-top: 3px;
   color: var(--text-markdown);
+  line-height: 15px;
 }
 
 .rulesList {
-  padding-top: 5px;
-  padding-left: 25px;
+  padding-top: 3px;
+  padding-left: 40px;
 }
 
 .searchBar {
