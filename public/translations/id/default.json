@@ -87,5 +87,18 @@
   "time_1_month": "1 bulan",
   "time_x_months": "{{count}} bulan",
   "time_1_year": "1 tahun",
-  "time_x_years": "{{count}} tahun"
+  "time_x_years": "{{count}} tahun",
+  "search": "cari",
+  "submit_post": "Kirim postingan baru",
+  "create_community": "Buat komunitas sendiri",
+  "moderators": "moderator",
+  "about_moderation": "tentang tim moderasi",
+  "join": "bergabung",
+  "leave": "tinggalkan",
+  "created_by": "dibuat oleh {{creatorAddress}}",
+  "community_for": "sebuah komunitas selama {{date}}",
+  "post_submitted_on": "posting ini diajukan pada {{postDate}}",
+  "community_last_seen": "node komunitas terakhir terlihat {{dateAgo}}",
+  "readers_count": "{{count}} pembaca",
+  "users_online": "{{count}} pengguna di sini sekarang"
 }

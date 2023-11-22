@@ -87,5 +87,18 @@
   "time_1_month": "1 month",
   "time_x_months": "{{count}} months",
   "time_1_year": "1 year",
-  "time_x_years": "{{count}} years"
+  "time_x_years": "{{count}} years",
+  "search": "search",
+  "submit_post": "Submit a new post",
+  "create_community": "Create your own community",
+  "moderators": "moderators",
+  "about_moderation": "about moderation team",
+  "join": "join",
+  "leave": "leave",
+  "created_by": "created by {{creatorAddress}}",
+  "community_for": "a community for {{date}}",
+  "post_submitted_on": "this post was submitted on {{postDate}}",
+  "community_last_seen": "community node last seen {{dateAgo}}",
+  "readers_count": "{{count}} readers",
+  "users_online": "{{count}} users here now"
 }

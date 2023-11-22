@@ -87,5 +87,18 @@
   "time_1_month": "1 महीना",
   "time_x_months": "{{count}} महीने",
   "time_1_year": "1 वर्ष",
-  "time_x_years": "{{count}} वर्ष"
+  "time_x_years": "{{count}} वर्ष",
+  "search": "खोज",
+  "submit_post": "नई पोस्ट सबमिट करें",
+  "create_community": "अपनी खुद की समुदाय बनाएं",
+  "moderators": "मॉडरेटर्स",
+  "about_moderation": "मॉडरेशन टीम के बारे में",
+  "join": "शामिल हों",
+  "leave": "छोड़ो",
+  "created_by": "द्वारा बनाई गई {{creatorAddress}}",
+  "community_for": "{{date}} के लिए एक समुदाय",
+  "post_submitted_on": "इस पोस्ट को {{postDate}} को जमा किया गया था",
+  "community_last_seen": "समुदाय नोड आखिरी बार देखा गया {{dateAgo}}",
+  "readers_count": "{{count}} पाठक",
+  "users_online": "{{count}} यहां अभी {{count}} उपयोगकर्ता हैं"
 }

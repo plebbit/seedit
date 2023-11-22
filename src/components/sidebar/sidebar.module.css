@@ -18,19 +18,12 @@ a {
 }
 
 .title {
-  margin-bottom: 5px;
   font-weight: bold;
   font-size: 19px;
 }
 
 .title:hover {
   text-decoration: underline !important;
-}
-
-.address {
-  font-size: 11px;
-  color: var(--text-info);
-  margin-bottom: 5px;
 }
 
 .subscribeContainer {
@@ -57,8 +50,13 @@ a {
   padding-bottom: 5px;
 }
 
+.descriptionTitle {
+  padding-top: 5px;
+  color: var(--text-markdown);
+}
+
 .description {
-  padding-bottom: 5px;
+  padding: 5px 0;
   white-space: pre-wrap;
   word-wrap: break-word;
   color: var(--text-markdown);
@@ -154,12 +152,15 @@ a {
 }
 
 .rules {
-  margin: 10px 0;
+  margin-bottom: 10px;
+  margin-top: 3px;
   color: var(--text-markdown);
+  line-height: 15px;
 }
 
 .rulesList {
-  list-style: none;
+  padding-top: 3px;
+  padding-left: 40px;
 }
 
 .searchBar {

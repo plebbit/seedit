@@ -87,5 +87,18 @@
   "time_1_month": "1 lună",
   "time_x_months": "{{count}} luni",
   "time_1_year": "1 an",
-  "time_x_years": "{{count}} ani"
+  "time_x_years": "{{count}} ani",
+  "search": "căutare",
+  "submit_post": "Trimite o postare nouă",
+  "create_community": "Creează-ți propria comunitate",
+  "moderators": "moderatori",
+  "about_moderation": "despre echipa de moderare",
+  "join": "alătură-te",
+  "leave": "plecați",
+  "created_by": "creat de {{creatorAddress}}",
+  "community_for": "o comunitate pentru {{date}}",
+  "post_submitted_on": "această postare a fost trimisă la {{postDate}}",
+  "community_last_seen": "nodul comunității văzut ultima dată în {{dateAgo}}",
+  "readers_count": "{{count}} cititori",
+  "users_online": "{{count}} utilizatori aici acum"
 }

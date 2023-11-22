@@ -87,5 +87,18 @@
   "time_1_month": "1 నెల",
   "time_x_months": "{{count}} నెలలు",
   "time_1_year": "1 సంవత్సరం",
-  "time_x_years": "{{count}} సంవత్సరాలు"
+  "time_x_years": "{{count}} సంవత్సరాలు",
+  "search": "వెతకట్టడానికి",
+  "submit_post": "కొత్త పోస్ట్ సబ్మిట్ చేయండి",
+  "create_community": "మీ స్వంత సముదాయం సృజించండి",
+  "moderators": "మాడరేటర్లు",
+  "about_moderation": "మాడరేషన్ టీమ్ గురించి",
+  "join": "చేరండి",
+  "leave": "వదలు",
+  "created_by": "ద్వారా రూపొందించబడినది {{creatorAddress}}",
+  "community_for": "{{date}} కోసం ఒక కమ్యూనిటీ",
+  "post_submitted_on": "ఈ పోస్టు {{postDate}} న సమర్పించబడింది",
+  "community_last_seen": "సముదాయ నోడు చివరి సారి చూడబడింది {{dateAgo}}",
+  "readers_count": "{{count}} రీడర్స్",
+  "users_online": "ప్రస్తుతం ఇక్కడ {{count}} వినియోగదారులు"
 }

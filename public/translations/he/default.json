@@ -87,5 +87,18 @@
   "time_1_month": "חודש אחד",
   "time_x_months": "{{count}} חודשים",
   "time_1_year": "שנה אחת",
-  "time_x_years": "{{count}} שנים"
+  "time_x_years": "{{count}} שנים",
+  "search": "חיפוש",
+  "submit_post": "שלח פוסט חדש",
+  "create_community": "צור את הקהילה שלך",
+  "moderators": "מנהלים",
+  "about_moderation": "אודות צוות ההנהלה",
+  "join": "הצטרפות",
+  "leave": "לצאת",
+  "created_by": "נוצר על ידי {{creatorAddress}}",
+  "community_for": "קהילה למשך {{date}}",
+  "post_submitted_on": "הפוסט הזה הוגש בתאריך {{postDate}}",
+  "community_last_seen": "צומת קהילה נראה לאחרונה ב {{dateAgo}}",
+  "readers_count": "{{count}} קוראים",
+  "users_online": "{{count}} משתמשים כאן עכשיו"
 }

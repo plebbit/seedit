@@ -87,5 +87,18 @@
   "time_1_month": "شهر واحد",
   "time_x_months": "{{count}} أشهر",
   "time_1_year": "عام واحد",
-  "time_x_years": "{{count}} سنوات"
+  "time_x_years": "{{count}} سنوات",
+  "search": "بحث",
+  "submit_post": "قدم مشاركة جديدة",
+  "create_community": "أنشئ مجتمعك الخاص",
+  "moderators": "المشرفون",
+  "about_moderation": "عن الإشراف",
+  "join": "انضمام",
+  "leave": "غادر",
+  "created_by": "تم إنشاؤها بواسطة {{creatorAddress}}",
+  "community_for": "مجتمع لمدة {{date}}",
+  "post_submitted_on": "تم تقديم هذا المنشور في {{postDate}}",
+  "community_last_seen": "آخر زيارة لعقدة المجتمع في {{dateAgo}}",
+  "readers_count": "قرّاء {{count}}",
+  "users_online": "مستخدمين {{count}} هنا الآن"
 }

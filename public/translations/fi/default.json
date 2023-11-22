@@ -87,5 +87,18 @@
   "time_1_month": "1 kuukausi",
   "time_x_months": "{{count}} kuukautta",
   "time_1_year": "1 vuosi",
-  "time_x_years": "{{count}} vuotta"
+  "time_x_years": "{{count}} vuotta",
+  "search": "etsi",
+  "submit_post": "Lähetä uusi viesti",
+  "create_community": "Luo oma yhteisösi",
+  "moderators": "moderaattorit",
+  "about_moderation": "tietoa moderaatiotiimistä",
+  "join": "liity",
+  "leave": "poistu",
+  "created_by": "luonut {{creatorAddress}}",
+  "community_for": "yhteisössä {{date}}",
+  "post_submitted_on": "tämä viesti on toimitettu {{postDate}}",
+  "community_last_seen": "yhteisö solmu viimeksi nähty {{dateAgo}}",
+  "readers_count": "{{count}} lukijat",
+  "users_online": "{{count}} käyttäjää täällä nyt"
 }

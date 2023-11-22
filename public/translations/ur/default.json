@@ -87,5 +87,18 @@
   "time_1_month": "1 ماہ",
   "time_x_months": "{{count}} ماہ",
   "time_1_year": "1 سال",
-  "time_x_years": "{{count}} سال"
+  "time_x_years": "{{count}} سال",
+  "search": "تلاش",
+  "submit_post": "نیا پوسٹ جمع کروائیں",
+  "create_community": "اپنا خود کا کمیونٹی بنائیں",
+  "moderators": "ماڈریٹرز",
+  "about_moderation": "ماڈریشن ٹیم کے بارے میں",
+  "join": "شامل ہوں",
+  "leave": "چھوڑ دو",
+  "created_by": "کا سروری کیا گیا {{creatorAddress}}",
+  "community_for": "ایک کمیونٹی کے لئے {{date}}",
+  "post_submitted_on": "یہ پوسٹ {{postDate}} کو جمع کی گئی تھی",
+  "community_last_seen": "آخری بار دیکھا گیا سماجی نوڈ {{dateAgo}}",
+  "readers_count": "{{count}} پڑھنے والے",
+  "users_online": "اب {{count}} صارفین یہاں ہیں"
 }

@@ -87,5 +87,18 @@
   "time_1_month": "1 tháng",
   "time_x_months": "{{count}} tháng",
   "time_1_year": "1 năm",
-  "time_x_years": "{{count}} năm"
+  "time_x_years": "{{count}} năm",
+  "search": "tìm kiếm",
+  "submit_post": "Gửi bài viết mới",
+  "create_community": "Tạo cộng đồng riêng của bạn",
+  "moderators": "quản trị viên",
+  "about_moderation": "về đội ngũ quản lý",
+  "join": "tham gia",
+  "leave": "rời",
+  "created_by": "tạo bởi {{creatorAddress}}",
+  "community_for": "một cộng đồng cho {{date}}",
+  "post_submitted_on": "bài viết này đã được đăng vào ngày {{postDate}}",
+  "community_last_seen": "nút cộng đồng cuối cùng được thấy vào {{dateAgo}}",
+  "readers_count": "{{count}} người đọc",
+  "users_online": "{{count}} người dùng ở đây bây giờ"
 }

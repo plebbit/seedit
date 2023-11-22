@@ -37,12 +37,12 @@ const Sidebar = ({
   updatedAt,
   upvoteCount = 0,
 }: sidebarProps) => {
-  const { i18n } = useTranslation();
+  const { t, i18n } = useTranslation();
   const { language } = i18n;
   const { allActiveUserCount, hourActiveUserCount } = useSubplebbitStats({ subplebbitAddress: address });
   const isOnline = updatedAt && updatedAt > Date.now() / 1000 - 60 * 30;
-  const onlineNotice = hourActiveUserCount + ' users here now';
-  const offlineNotice = updatedAt && 'community node last seen ' + getFormattedTimeAgo(updatedAt);
+  const onlineNotice = t('users_online', {count: hourActiveUserCount});
+  const offlineNotice = updatedAt && t('community_last_seen', { dateAgo: getFormattedTimeAgo(updatedAt) });
   const onlineStatus = isOnline ? onlineNotice : offlineNotice;
   const location = useLocation();
   const params = useParams();
@@ -50,7 +50,7 @@ const Sidebar = ({
   const isHome = isHomeView(location.pathname);
   const isPost = isPostView(location.pathname, params);
   const subplebbitCreator = findSubplebbitCreator(roles);
-  const creatorAddress = subplebbitCreator === 'anonymous' ? 'anonymous' : `u/${getShortAddress(subplebbitCreator)}`;
+  const creatorAddress = subplebbitCreator === 'anonymous' ? 'anonymous' : `${getShortAddress(subplebbitCreator)}`;
   const rolesList = roles ? Object.entries(roles).map(([address, { role }]) => ({ address, role })) : [];
   const submitRoute = isHome ? '/submit' : `/p/${address}/submit`;
   const postScore = upvoteCount - downvoteCount;
@@ -61,26 +61,24 @@ const Sidebar = ({
   const rulesList = (
     <div className={styles.rules}>
       <strong>Rules</strong>
-      <ul className={styles.rulesList}>
+      <ol className={styles.rulesList}>
         {rules?.map((rule, index) => (
           <>
-            <li key={index}>
-              {index + 1}. {rule}
-            </li>
+            <li key={index}>{rule}</li>
           </>
         ))}
-      </ul>
+      </ol>
     </div>
   );
 
   const moderatorsList = (
     <div className={styles.list}>
-      <div className={styles.listTitle}>MODERATORS</div>
+      <div className={styles.listTitle}>{t('moderators')}</div>
       <ul className={`${styles.listContent} ${styles.modsList}`}>
         {rolesList.map(({ address }, index) => (
           <li key={index}>u/{getShortAddress(address)}</li>
         ))}
-        <li className={styles.listMore}>about moderation team »</li>
+        <li className={styles.listMore}>{t('about_moderation')} »</li>
       </ul>
     </div>
   );
@@ -88,7 +86,7 @@ const Sidebar = ({
   const postInfo = (
     <div className={styles.postInfo}>
       <div className={styles.postDate}>
-        <span>this post was submitted on {postDate}</span>
+        <span>{t('post_submitted_on', { postDate: postDate })}</span>
       </div>
       <div className={styles.postScore}>
         <span className={styles.postScoreNumber}>{postScore} </span>
@@ -102,45 +100,51 @@ const Sidebar = ({
 
   return (
     <div className={`${isAbout ? styles.about : styles.sidebar}`}>
-      <form className={styles.searchBar}>
-        <input type='text' placeholder='search' onSubmit={(e) => e.preventDefault()} />
+      <form className={styles.searchBar} onSubmit={(e) => e.preventDefault()}>
+        <input type='text' placeholder={`${t('search')}`} />
         <input type='submit' value='' />
       </form>
       {isPost && postInfo}
       <Link to={submitRoute}>
         <div className={styles.largeButton}>
-          Submit a new post
+          {t('submit_post')}
           <div className={styles.nub} />
         </div>
       </Link>
       <Link to='/communities/create' onClick={(e) => e.preventDefault()}>
         <div className={styles.largeButton}>
-          Create your own community
+          {t('create_community')}
           <div className={styles.nub} />
         </div>
       </Link>
       {!isHome && (
         <div className={styles.titleBox}>
           <Link className={styles.title} to={`/p/${address}`}>
-            {title || shortAddress}
+            {shortAddress}
           </Link>
-          {title && <div className={styles.address}>p/{address}</div>}
-          <div className={!title ? styles.subscribeContainer : ''}>
+          <div className={styles.subscribeContainer}>
             <SubscribeButton address={address} />
-            <span className={styles.subscribers}>{allActiveUserCount} readers</span>
+            <span className={styles.subscribers}>{t('readers_count', {count: allActiveUserCount})}</span>
           </div>
           <div className={styles.onlineLine}>
             <span className={`${styles.onlineIndicator} ${isOnline ? styles.online : styles.offline}`} />
             <span>{onlineStatus}</span>
           </div>
-          <div className={styles.description}>{description}</div>
+          {description && (
+            <div>
+              {title && (
+                <div className={styles.descriptionTitle}>
+                  <strong>{title}</strong>
+                </div>
+              )}
+              <div className={styles.description}>{description}</div>
+            </div>
+          )}
           {rules && rulesList}
           <div className={styles.bottom}>
-            created by{' '}
-            <Link to={`/u/user.eth`} onClick={(e) => e.preventDefault()}>
-              {creatorAddress}
-            </Link>
-            {createdAt && <span className={styles.age}> a community for {getFormattedDuration(createdAt)}</span>}
+            {t('created_by', { creatorAddress: '' })}
+            <Link to={`/u/${creatorAddress}`}>{`u/${creatorAddress}`}</Link>
+            {createdAt && <span className={styles.age}> {t('community_for', { date: getFormattedDuration(createdAt) })}</span>}
           </div>
         </div>
       )}

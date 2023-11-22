@@ -87,5 +87,18 @@
   "time_1_month": "1 måned",
   "time_x_months": "{{count}} måneder",
   "time_1_year": "1 år",
-  "time_x_years": "{{count}} år"
+  "time_x_years": "{{count}} år",
+  "search": "søk",
+  "submit_post": "Send inn en ny post",
+  "create_community": "Opprett din egen fellesskap",
+  "moderators": "moderatorer",
+  "about_moderation": "om moderasjonsteamet",
+  "join": "bli med",
+  "leave": "forlat",
+  "created_by": "opprettet av {{creatorAddress}}",
+  "community_for": "et fellesskap for {{date}}",
+  "post_submitted_on": "dette innlegget ble sendt inn på {{postDate}}",
+  "community_last_seen": "samfunnsnode sist sett {{dateAgo}}",
+  "readers_count": "{{count}} lesere",
+  "users_online": "{{count}} brukere her nå"
 }

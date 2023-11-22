@@ -87,5 +87,18 @@
   "time_1_month": "1 hónap",
   "time_x_months": "{{count}} hónap",
   "time_1_year": "1 év",
-  "time_x_years": "{{count}} év"
+  "time_x_years": "{{count}} év",
+  "search": "keres",
+  "submit_post": "Új bejegyzés beküldése",
+  "create_community": "Hozd létre saját közösséged",
+  "moderators": "moderátorok",
+  "about_moderation": "a moderációs csapatról",
+  "join": "csatlakozás",
+  "leave": "elhagy",
+  "created_by": "készítette {{creatorAddress}}",
+  "community_for": "egy közösség {{date}}",
+  "post_submitted_on": "ez a bejegyzés {{postDate}} n lett benyújtva",
+  "community_last_seen": "közösségi csomópont utoljára látható {{dateAgo}}",
+  "readers_count": "{{count}} olvasók",
+  "users_online": "{{count}} felhasználó itt most"
 }

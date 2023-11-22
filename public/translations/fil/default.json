@@ -87,5 +87,18 @@
   "time_1_month": "1 buwan",
   "time_x_months": "{{count}} buwan",
   "time_1_year": "1 taon",
-  "time_x_years": "{{count}} taon"
+  "time_x_years": "{{count}} taon",
+  "search": "hanapin",
+  "submit_post": "Magsumite ng bagong post",
+  "create_community": "Lumikha ng sariling komunidad",
+  "moderators": "moderators",
+  "about_moderation": "tungkol sa koponan ng moderation",
+  "join": "sumali",
+  "leave": "iwanan",
+  "created_by": "likha ni {{creatorAddress}}",
+  "community_for": "isang komunidad para sa {{date}}",
+  "post_submitted_on": "ang post na ito ay isinumite noong {{postDate}}",
+  "community_last_seen": "komunidad node huli nakita sa {{dateAgo}}",
+  "readers_count": "{{count}} mga mambabasa",
+  "users_online": "{{count}} mga gumagamit dito ngayon"
 }

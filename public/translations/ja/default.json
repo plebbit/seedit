@@ -87,5 +87,18 @@
   "time_1_month": "1ヶ月",
   "time_x_months": "{{count}}ヶ月",
   "time_1_year": "1年",
-  "time_x_years": "{{count}}年"
+  "time_x_years": "{{count}}年",
+  "search": "検索",
+  "submit_post": "新しい投稿を送信",
+  "create_community": "独自のコミュニティを作成",
+  "moderators": "モデレーター",
+  "about_moderation": "モデレーションチームについて",
+  "join": "参加する",
+  "leave": "退出",
+  "created_by": "作成者：{{creatorAddress}}",
+  "community_for": "{{date}} のコミュニティ",
+  "post_submitted_on": "この投稿は{{postDate}}に投稿されました",
+  "community_last_seen": "コミュニティノードは最後に{{dateAgo}}に見られました",
+  "readers_count": "{{count}} 読者",
+  "users_online": "現在{{count}}人のユーザーがここにいます"
 }
