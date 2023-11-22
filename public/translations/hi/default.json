@@ -94,5 +94,6 @@
   "moderators": "मॉडरेटर्स",
   "about_moderation": "मॉडरेशन टीम के बारे में",
   "join": "शामिल हों",
-  "leave": "छोड़ो"
+  "leave": "छोड़ो",
+  "created_by": "द्वारा बनाई गई {{creatorAddress}}"
 }

@@ -94,5 +94,6 @@
   "moderators": "ผู้ดูแลระบบ",
   "about_moderation": "เกี่ยวกับทีมการตรวจสอบ",
   "join": "เข้าร่วม",
-  "leave": "ออก"
+  "leave": "ออก",
+  "created_by": "สร้างโดย {{creatorAddress}}"
 }

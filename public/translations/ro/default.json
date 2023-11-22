@@ -94,5 +94,6 @@
   "moderators": "moderatori",
   "about_moderation": "despre echipa de moderare",
   "join": "alătură-te",
-  "leave": "plecați"
+  "leave": "plecați",
+  "created_by": "creat de {{creatorAddress}}"
 }

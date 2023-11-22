@@ -94,5 +94,6 @@
   "moderators": "モデレーター",
   "about_moderation": "モデレーションチームについて",
   "join": "参加する",
-  "leave": "退出"
+  "leave": "退出",
+  "created_by": "作成者：{{creatorAddress}}"
 }

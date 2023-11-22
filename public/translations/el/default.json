@@ -94,5 +94,6 @@
   "moderators": "διαχειριστές",
   "about_moderation": "σχετικά με τη διαμεσολάβηση ομάδα",
   "join": "συμμετοχή",
-  "leave": "φύγετε"
+  "leave": "φύγετε",
+  "created_by": "δημιουργήθηκε από {{creatorAddress}}"
 }

@@ -94,5 +94,6 @@
   "moderators": "모더레이터",
   "about_moderation": "모더레이션 팀 정보",
   "join": "가입하기",
-  "leave": "나가기"
+  "leave": "나가기",
+  "created_by": "만든 사람: {{creatorAddress}}"
 }

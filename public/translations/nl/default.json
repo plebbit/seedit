@@ -94,5 +94,6 @@
   "moderators": "moderators",
   "about_moderation": "over het moderatieteam",
   "join": "meedoen",
-  "leave": "vertrekken"
+  "leave": "vertrekken",
+  "created_by": "gemaakt door {{creatorAddress}}"
 }

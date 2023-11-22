@@ -94,5 +94,6 @@
   "moderators": "moderatorët",
   "about_moderation": "rreth ekipit të moderimit",
   "join": "bashkohu",
-  "leave": "ndale"
+  "leave": "ndale",
+  "created_by": "krijuar nga {{creatorAddress}}"
 }

@@ -94,5 +94,6 @@
   "moderators": "moderator",
   "about_moderation": "tentang tim moderasi",
   "join": "bergabung",
-  "leave": "tinggalkan"
+  "leave": "tinggalkan",
+  "created_by": "dibuat oleh {{creatorAddress}}"
 }

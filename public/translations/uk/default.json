@@ -94,5 +94,6 @@
   "moderators": "модератори",
   "about_moderation": "про модерацію",
   "join": "приєднатися",
-  "leave": "покинути"
+  "leave": "покинути",
+  "created_by": "створено {{creatorAddress}}"
 }

@@ -94,5 +94,6 @@
   "moderators": "moderatorer",
   "about_moderation": "om moderationsholdet",
   "join": "bliv medlem",
-  "leave": "forlad"
+  "leave": "forlad",
+  "created_by": "oprettet af {{creatorAddress}}"
 }

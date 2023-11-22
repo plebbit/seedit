@@ -50,7 +50,7 @@ const Sidebar = ({
   const isHome = isHomeView(location.pathname);
   const isPost = isPostView(location.pathname, params);
   const subplebbitCreator = findSubplebbitCreator(roles);
-  const creatorAddress = subplebbitCreator === 'anonymous' ? 'anonymous' : `u/${getShortAddress(subplebbitCreator)}`;
+  const creatorAddress = subplebbitCreator === 'anonymous' ? 'anonymous' : `${getShortAddress(subplebbitCreator)}`;
   const rolesList = roles ? Object.entries(roles).map(([address, { role }]) => ({ address, role })) : [];
   const submitRoute = isHome ? '/submit' : `/p/${address}/submit`;
   const postScore = upvoteCount - downvoteCount;
@@ -138,10 +138,8 @@ const Sidebar = ({
           </div>}
           {rules && rulesList}
           <div className={styles.bottom}>
-            created by{' '}
-            <Link to={`/u/user.eth`} onClick={(e) => e.preventDefault()}>
-              {creatorAddress}
-            </Link>
+            {t('created_by', { creatorAddress: '' })}
+            <Link to={`/u/${creatorAddress}`}>{`u/${creatorAddress}`}</Link>
             {createdAt && <span className={styles.age}> a community for {getFormattedDuration(createdAt)}</span>}
           </div>
         </div>

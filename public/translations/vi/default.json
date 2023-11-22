@@ -94,5 +94,6 @@
   "moderators": "quản trị viên",
   "about_moderation": "về đội ngũ quản lý",
   "join": "tham gia",
-  "leave": "rời"
+  "leave": "rời",
+  "created_by": "tạo bởi {{creatorAddress}}"
 }

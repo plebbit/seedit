@@ -94,5 +94,6 @@
   "moderators": "المشرفون",
   "about_moderation": "عن الإشراف",
   "join": "انضمام",
-  "leave": "غادر"
+  "leave": "غادر",
+  "created_by": "تم إنشاؤها بواسطة {{creatorAddress}}"
 }

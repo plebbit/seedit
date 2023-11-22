@@ -94,5 +94,6 @@
   "moderators": "মডারেটর",
   "about_moderation": "মডারেশন টিম সম্পর্কে",
   "join": "যোগদান",
-  "leave": "ছাড়া"
+  "leave": "ছাড়া",
+  "created_by": "দ্বারা তৈরি {{creatorAddress}}"
 }

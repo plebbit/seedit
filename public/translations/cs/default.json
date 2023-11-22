@@ -94,5 +94,6 @@
   "moderators": "moderátoři",
   "about_moderation": "o moderaci týmu",
   "join": "připojit se",
-  "leave": "odejít"
+  "leave": "odejít",
+  "created_by": "vytvořeno uživatelem {{creatorAddress}}"
 }

@@ -94,5 +94,6 @@
   "moderators": "moderators",
   "about_moderation": "tungkol sa koponan ng moderation",
   "join": "sumali",
-  "leave": "iwanan"
+  "leave": "iwanan",
+  "created_by": "likha ni {{creatorAddress}}"
 }

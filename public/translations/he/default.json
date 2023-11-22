@@ -94,5 +94,6 @@
   "moderators": "מנהלים",
   "about_moderation": "אודות צוות ההנהלה",
   "join": "הצטרפות",
-  "leave": "לצאת"
+  "leave": "לצאת",
+  "created_by": "נוצר על ידי {{creatorAddress}}"
 }

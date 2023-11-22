@@ -94,5 +94,6 @@
   "moderators": "moderatorler",
   "about_moderation": "moderasyon ekibi hakkında",
   "join": "katıl",
-  "leave": "ayrıl"
+  "leave": "ayrıl",
+  "created_by": "tarafından oluşturuldu {{creatorAddress}}"
 }

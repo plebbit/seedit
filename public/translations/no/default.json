@@ -94,5 +94,6 @@
   "moderators": "moderatorer",
   "about_moderation": "om moderasjonsteamet",
   "join": "bli med",
-  "leave": "forlat"
+  "leave": "forlat",
+  "created_by": "opprettet av {{creatorAddress}}"
 }

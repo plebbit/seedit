@@ -94,5 +94,6 @@
   "moderators": "ماڈریٹرز",
   "about_moderation": "ماڈریشن ٹیم کے بارے میں",
   "join": "شامل ہوں",
-  "leave": "چھوڑ دو"
+  "leave": "چھوڑ دو",
+  "created_by": "کا سروری کیا گیا {{creatorAddress}}"
 }

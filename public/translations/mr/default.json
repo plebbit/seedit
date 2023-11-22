@@ -94,5 +94,6 @@
   "moderators": "मॉडरेटर्स",
   "about_moderation": "मॉडरेशन टीमविषयी",
   "join": "सामील व्हा",
-  "leave": "सोडा"
+  "leave": "सोडा",
+  "created_by": "द्वारे तयार केले {{creatorAddress}}"
 }

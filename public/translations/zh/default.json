@@ -94,5 +94,6 @@
   "moderators": "版主",
   "about_moderation": "关于管理团队",
   "join": "加入",
-  "leave": "离开"
+  "leave": "离开",
+  "created_by": "创建者：{{creatorAddress}}"
 }

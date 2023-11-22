@@ -94,5 +94,6 @@
   "moderators": "moderaattorit",
   "about_moderation": "tietoa moderaatiotiimistä",
   "join": "liity",
-  "leave": "poistu"
+  "leave": "poistu",
+  "created_by": "luonut {{creatorAddress}}"
 }

@@ -94,5 +94,6 @@
   "moderators": "మాడరేటర్లు",
   "about_moderation": "మాడరేషన్ టీమ్ గురించి",
   "join": "చేరండి",
-  "leave": "వదలు"
+  "leave": "వదలు",
+  "created_by": "ద్వారా రూపొందించబడినది {{creatorAddress}}"
 }

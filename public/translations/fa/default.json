@@ -94,5 +94,6 @@
   "moderators": "مدیران",
   "about_moderation": "درباره تیم نظارت",
   "join": "پیوستن",
-  "leave": "ترک"
+  "leave": "ترک",
+  "created_by": "ساخته شده توسط {{creatorAddress}}"
 }

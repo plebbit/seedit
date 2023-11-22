@@ -94,5 +94,6 @@
   "moderators": "moderators",
   "about_moderation": "about moderation team",
   "join": "join",
-  "leave": "leave"
+  "leave": "leave",
+  "created_by": "created by {{creatorAddress}}"
 }

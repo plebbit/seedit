@@ -94,5 +94,6 @@
   "moderators": "moderadores",
   "about_moderation": "sobre a equipe de moderação",
   "join": "aderir",
-  "leave": "sair"
+  "leave": "sair",
+  "created_by": "criado por {{creatorAddress}}"
 }
