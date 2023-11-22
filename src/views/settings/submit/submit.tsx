@@ -1,6 +1,7 @@
 import { ChangeEvent, useEffect, useRef, useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { PublishCommentOptions, useAccount, usePublishComment, useSubplebbit } from '@plebbit/plebbit-react-hooks';
+import { getShortAddress } from '@plebbit/plebbit-js';
 import { useTranslation } from 'react-i18next';
 import { create } from 'zustand';
 import { alertChallengeVerificationFailed } from '../../../lib/utils/challenge-utils';
@@ -125,7 +126,7 @@ const Submit = () => {
             }
           }}
         >
-          {sub}
+          {getShortAddress(sub)}
         </span>
       ))}
     </div>
