@@ -49,3 +49,7 @@
 .label {
   padding-right: 2px;
 }
+
+.hideReply {
+  display: none !important;
+}

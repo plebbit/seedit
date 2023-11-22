@@ -56,7 +56,7 @@ const PostTools = ({ cid, failed, isReply, replyCount, spoiler, subplebbitAddres
       <li className={styles.button}>
         <span>{t('post_report')}</span>
       </li>
-      <li className={styles.button}>
+      <li className={!cid ? styles.hideReply : styles.button}>
         <span onClick={() => cid && showReplyForm?.()}>{t('reply_reply')}</span>
       </li>
     </>
