@@ -98,5 +98,7 @@
   "created_by": "creat de {{creatorAddress}}",
   "community_for": "o comunitate pentru {{date}}",
   "post_submitted_on": "această postare a fost trimisă la {{postDate}}",
-  "community_last_seen": "nodul comunității văzut ultima dată în {{dateAgo}}"
+  "community_last_seen": "nodul comunității văzut ultima dată în {{dateAgo}}",
+  "readers_count": "{{count}} cititori",
+  "users_online": "{{count}} utilizatori aici acum"
 }

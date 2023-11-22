@@ -98,5 +98,7 @@
   "created_by": "skapat av {{creatorAddress}}",
   "community_for": "en gemenskap för {{date}}",
   "post_submitted_on": "detta inlägg skickades in den {{postDate}}",
-  "community_last_seen": "gemenskapsnoden senast sedd {{dateAgo}}"
+  "community_last_seen": "gemenskapsnoden senast sedd {{dateAgo}}",
+  "readers_count": "{{count}} läsare",
+  "users_online": "{{count}} användare här nu"
 }

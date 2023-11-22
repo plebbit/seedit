@@ -98,5 +98,7 @@
   "created_by": "creata da {{creatorAddress}}",
   "community_for": "una comunità da {{date}}",
   "post_submitted_on": "questo post è stato inviato il {{postDate}}",
-  "community_last_seen": "nodo della comunità visto l'ultima volta {{dateAgo}}"
+  "community_last_seen": "nodo della comunità visto l'ultima volta {{dateAgo}}",
+  "readers_count": "{{count}} lettori",
+  "users_online": "{{count}} utenti qui ora"
 }

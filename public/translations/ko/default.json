@@ -98,5 +98,7 @@
   "created_by": "만든 사람: {{creatorAddress}}",
   "community_for": "{{date}}에 대한 커뮤니티",
   "post_submitted_on": "이 게시물은 {{postDate}}에 게시되었습니다",
-  "community_last_seen": "커뮤니티 노드가 마지막으로 {{dateAgo}}에 본 날"
+  "community_last_seen": "커뮤니티 노드가 마지막으로 {{dateAgo}}에 본 날",
+  "readers_count": "{{count}} 독자",
+  "users_online": "지금 여기 {{count}} 명의 사용자"
 }

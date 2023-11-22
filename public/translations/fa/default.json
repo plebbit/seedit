@@ -98,5 +98,7 @@
   "created_by": "ساخته شده توسط {{creatorAddress}}",
   "community_for": "یک جامعه برای {{date}}",
   "post_submitted_on": "این پست در {{postDate}} ارسال شده است",
-  "community_last_seen": "آخرین باری که گره جامعه دیده شده است {{dateAgo}}"
+  "community_last_seen": "آخرین باری که گره جامعه دیده شده است {{dateAgo}}",
+  "readers_count": "{{count}} خوانندگان",
+  "users_online": "کاربران {{count}} در حال حاضر اینجا هستند"
 }

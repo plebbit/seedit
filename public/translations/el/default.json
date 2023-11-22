@@ -98,5 +98,7 @@
   "created_by": "δημιουργήθηκε από {{creatorAddress}}",
   "community_for": "κοινότητα για {{date}}",
   "post_submitted_on": "αυτή η ανάρτηση κατατέθηκε στις {{postDate}}",
-  "community_last_seen": "κοινοτικό κόμβο τελευταία φορά που είδαμε {{dateAgo}}"
+  "community_last_seen": "κοινοτικό κόμβο τελευταία φορά που είδαμε {{dateAgo}}",
+  "readers_count": "{{count}} αναγνώστες",
+  "users_online": "{{count}} χρήστες εδώ τώρα"
 }

@@ -98,5 +98,7 @@
   "created_by": "द्वारे तयार केले {{creatorAddress}}",
   "community_for": "{{date}}साठी एक समुदाय",
   "post_submitted_on": "हा पोस्ट {{postDate}} रोजी सबमिट केला गेला होता",
-  "community_last_seen": "समुदाय नोड आखाच दिला गेला {{dateAgo}}"
+  "community_last_seen": "समुदाय नोड आखाच दिला गेला {{dateAgo}}",
+  "readers_count": "{{count}} वाचक",
+  "users_online": "{{count}} युजर्स इथे आत्ता"
 }

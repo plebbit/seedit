@@ -98,5 +98,7 @@
   "created_by": "tarafından oluşturuldu {{creatorAddress}}",
   "community_for": "{{date}} için bir topluluk",
   "post_submitted_on": "bu gönderi {{postDate}} tarihinde gönderildi",
-  "community_last_seen": "topluluk düğümü son görülen {{dateAgo}}"
+  "community_last_seen": "topluluk düğümü son görülen {{dateAgo}}",
+  "readers_count": "{{count}} okuyucu",
+  "users_online": "şu anda {{count}} kullanıcı burada"
 }

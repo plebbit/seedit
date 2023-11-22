@@ -98,5 +98,7 @@
   "created_by": "创建者：{{creatorAddress}}",
   "community_for": "一个社区{{date}}",
   "post_submitted_on": "此帖子提交于{{postDate}}",
-  "community_last_seen": "社区节点最后一次在{{dateAgo}}看到"
+  "community_last_seen": "社区节点最后一次在{{dateAgo}}看到",
+  "readers_count": "{{count}} 读者",
+  "users_online": "现在有{{count}}用户在这里"
 }

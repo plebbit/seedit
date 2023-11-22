@@ -98,5 +98,7 @@
   "created_by": "створено {{creatorAddress}}",
   "community_for": "спільнота на {{date}}",
   "post_submitted_on": "цей пост був поданий {{postDate}}",
-  "community_last_seen": "останній раз було помічено вузол спільноти {{dateAgo}}"
+  "community_last_seen": "останній раз було помічено вузол спільноти {{dateAgo}}",
+  "readers_count": "{{count}} читачів",
+  "users_online": "{{count}} користувачів тут зараз"
 }

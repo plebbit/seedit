@@ -98,5 +98,7 @@
   "created_by": "gemaakt door {{creatorAddress}}",
   "community_for": "een gemeenschap voor {{date}}",
   "post_submitted_on": "deze post is ingediend op {{postDate}}",
-  "community_last_seen": "laatst gezien gemeenschapsknoop {{dateAgo}}"
+  "community_last_seen": "laatst gezien gemeenschapsknoop {{dateAgo}}",
+  "readers_count": "{{count}} lezers",
+  "users_online": "{{count}} gebruikers hier nu"
 }

@@ -98,5 +98,7 @@
   "created_by": "krijuar nga {{creatorAddress}}",
   "community_for": "një komunitet për {{date}}",
   "post_submitted_on": "ky post u dorëzua më {{postDate}}",
-  "community_last_seen": "nod komuniteti i fundit i parë në {{dateAgo}}"
+  "community_last_seen": "nod komuniteti i fundit i parë në {{dateAgo}}",
+  "readers_count": "{{count}} lexues",
+  "users_online": "{{count}} përdorues këtu tani"
 }

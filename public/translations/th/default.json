@@ -98,5 +98,7 @@
   "created_by": "สร้างโดย {{creatorAddress}}",
   "community_for": "ชุมชนสำหรับ {{date}}",
   "post_submitted_on": "โพสต์นี้ถูกส่งในวันที่ {{postDate}}",
-  "community_last_seen": "ชุดความสามารถของคอมมูนิตี้เครือข่ายครั้งสุดท้าย {{dateAgo}}"
+  "community_last_seen": "ชุดความสามารถของคอมมูนิตี้เครือข่ายครั้งสุดท้าย {{dateAgo}}",
+  "readers_count": "{{count}} ผู้อ่าน",
+  "users_online": "{{count}} ผู้ใช้ที่นี่ตอนนี้"
 }

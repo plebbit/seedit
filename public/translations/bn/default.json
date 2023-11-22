@@ -98,5 +98,7 @@
   "created_by": "দ্বারা তৈরি {{creatorAddress}}",
   "community_for": "মেয়াদ শেষে একটি সম্প্রদায়",
   "post_submitted_on": "এই পোস্টটি {{postDate}} তে সাবমিট করা হয়েছে",
-  "community_last_seen": "সম্প্রদায় নোডটি শেষ দেখা গেছে {{dateAgo}}"
+  "community_last_seen": "সম্প্রদায় নোডটি শেষ দেখা গেছে {{dateAgo}}",
+  "readers_count": "{{count}} পাঠক",
+  "users_online": "{{count}} ব্যবহারকারী এখানে এখন"
 }

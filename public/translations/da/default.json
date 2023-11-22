@@ -98,5 +98,7 @@
   "created_by": "oprettet af {{creatorAddress}}",
   "community_for": "fællesskab i {{date}}",
   "post_submitted_on": "denne indsendt dette indlæg på {{postDate}}",
-  "community_last_seen": "fællesskabsnode sidst set {{dateAgo}}"
+  "community_last_seen": "fællesskabsnode sidst set {{dateAgo}}",
+  "readers_count": "{{count}} læsere",
+  "users_online": "{{count}} brugere her nu"
 }

@@ -41,7 +41,7 @@ const Sidebar = ({
   const { language } = i18n;
   const { allActiveUserCount, hourActiveUserCount } = useSubplebbitStats({ subplebbitAddress: address });
   const isOnline = updatedAt && updatedAt > Date.now() / 1000 - 60 * 30;
-  const onlineNotice = hourActiveUserCount + ' users here now';
+  const onlineNotice = t('users_online', {count: hourActiveUserCount});
   const offlineNotice = updatedAt && t('community_last_seen', { dateAgo: getFormattedTimeAgo(updatedAt) });
   const onlineStatus = isOnline ? onlineNotice : offlineNotice;
   const location = useLocation();
@@ -124,7 +124,7 @@ const Sidebar = ({
           </Link>
           <div className={styles.subscribeContainer}>
             <SubscribeButton address={address} />
-            <span className={styles.subscribers}>{allActiveUserCount} readers</span>
+            <span className={styles.subscribers}>{t('readers_count', {count: allActiveUserCount})}</span>
           </div>
           <div className={styles.onlineLine}>
             <span className={`${styles.onlineIndicator} ${isOnline ? styles.online : styles.offline}`} />

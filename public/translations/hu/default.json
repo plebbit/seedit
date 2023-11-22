@@ -98,5 +98,7 @@
   "created_by": "készítette {{creatorAddress}}",
   "community_for": "egy közösség {{date}}",
   "post_submitted_on": "ez a bejegyzés {{postDate}} n lett benyújtva",
-  "community_last_seen": "közösségi csomópont utoljára látható {{dateAgo}}"
+  "community_last_seen": "közösségi csomópont utoljára látható {{dateAgo}}",
+  "readers_count": "{{count}} olvasók",
+  "users_online": "{{count}} felhasználó itt most"
 }

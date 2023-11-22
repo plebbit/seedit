@@ -98,5 +98,7 @@
   "created_by": "کا سروری کیا گیا {{creatorAddress}}",
   "community_for": "ایک کمیونٹی کے لئے {{date}}",
   "post_submitted_on": "یہ پوسٹ {{postDate}} کو جمع کی گئی تھی",
-  "community_last_seen": "آخری بار دیکھا گیا سماجی نوڈ {{dateAgo}}"
+  "community_last_seen": "آخری بار دیکھا گیا سماجی نوڈ {{dateAgo}}",
+  "readers_count": "{{count}} پڑھنے والے",
+  "users_online": "اب {{count}} صارفین یہاں ہیں"
 }
