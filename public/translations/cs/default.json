@@ -92,5 +92,7 @@
   "submit_post": "Odeslat nový příspěvek",
   "create_community": "Vytvořte si vlastní komunitu",
   "moderators": "moderátoři",
-  "about_moderation": "o moderaci týmu"
+  "about_moderation": "o moderaci týmu",
+  "join": "připojit se",
+  "leave": "odejít"
 }

@@ -92,5 +92,7 @@
   "submit_post": "Indsend en ny post",
   "create_community": "Opret din egen fællesskab",
   "moderators": "moderatorer",
-  "about_moderation": "om moderationsholdet"
+  "about_moderation": "om moderationsholdet",
+  "join": "bliv medlem",
+  "leave": "forlad"
 }

@@ -92,5 +92,7 @@
   "submit_post": "Skicka in en ny post",
   "create_community": "Skapa din egen community",
   "moderators": "moderatorer",
-  "about_moderation": "om modereringsteamet"
+  "about_moderation": "om modereringsteamet",
+  "join": "gå med",
+  "leave": "lämna"
 }

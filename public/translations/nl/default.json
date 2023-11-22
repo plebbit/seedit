@@ -92,5 +92,7 @@
   "submit_post": "Een nieuwe post indienen",
   "create_community": "Maak je eigen gemeenschap",
   "moderators": "moderators",
-  "about_moderation": "over het moderatieteam"
+  "about_moderation": "over het moderatieteam",
+  "join": "meedoen",
+  "leave": "vertrekken"
 }

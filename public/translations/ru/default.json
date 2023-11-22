@@ -92,5 +92,7 @@
   "submit_post": "Отправить новый пост",
   "create_community": "Создайте своё сообщество",
   "moderators": "модераторы",
-  "about_moderation": "о модераторах"
+  "about_moderation": "о модераторах",
+  "join": "присоединиться",
+  "leave": "покинуть"
 }

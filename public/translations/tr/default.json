@@ -92,5 +92,7 @@
   "submit_post": "Yeni bir gönderi gönder",
   "create_community": "Kendi topluluğunu oluştur",
   "moderators": "moderatorler",
-  "about_moderation": "moderasyon ekibi hakkında"
+  "about_moderation": "moderasyon ekibi hakkında",
+  "join": "katıl",
+  "leave": "ayrıl"
 }

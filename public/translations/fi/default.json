@@ -92,5 +92,7 @@
   "submit_post": "Lähetä uusi viesti",
   "create_community": "Luo oma yhteisösi",
   "moderators": "moderaattorit",
-  "about_moderation": "tietoa moderaatiotiimistä"
+  "about_moderation": "tietoa moderaatiotiimistä",
+  "join": "liity",
+  "leave": "poistu"
 }

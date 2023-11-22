@@ -92,5 +92,7 @@
   "submit_post": "Submit a new post",
   "create_community": "Create your own community",
   "moderators": "moderators",
-  "about_moderation": "about moderation team"
+  "about_moderation": "about moderation team",
+  "join": "join",
+  "leave": "leave"
 }

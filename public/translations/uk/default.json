@@ -92,5 +92,7 @@
   "submit_post": "Надіслати новий пост",
   "create_community": "Створіть своє співтовариство",
   "moderators": "модератори",
-  "about_moderation": "про модерацію"
+  "about_moderation": "про модерацію",
+  "join": "приєднатися",
+  "leave": "покинути"
 }

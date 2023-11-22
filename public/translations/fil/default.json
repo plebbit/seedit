@@ -92,5 +92,7 @@
   "submit_post": "Magsumite ng bagong post",
   "create_community": "Lumikha ng sariling komunidad",
   "moderators": "moderators",
-  "about_moderation": "tungkol sa koponan ng moderation"
+  "about_moderation": "tungkol sa koponan ng moderation",
+  "join": "sumali",
+  "leave": "iwanan"
 }

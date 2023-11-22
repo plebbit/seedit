@@ -92,5 +92,7 @@
   "submit_post": "Enviar uma nova publicação",
   "create_community": "Crie sua própria comunidade",
   "moderators": "moderadores",
-  "about_moderation": "sobre a equipe de moderação"
+  "about_moderation": "sobre a equipe de moderação",
+  "join": "aderir",
+  "leave": "sair"
 }

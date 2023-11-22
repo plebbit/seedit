@@ -92,5 +92,7 @@
   "submit_post": "新しい投稿を送信",
   "create_community": "独自のコミュニティを作成",
   "moderators": "モデレーター",
-  "about_moderation": "モデレーションチームについて"
+  "about_moderation": "モデレーションチームについて",
+  "join": "参加する",
+  "leave": "退出"
 }

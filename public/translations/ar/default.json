@@ -92,5 +92,7 @@
   "submit_post": "قدم مشاركة جديدة",
   "create_community": "أنشئ مجتمعك الخاص",
   "moderators": "المشرفون",
-  "about_moderation": "عن الإشراف"
+  "about_moderation": "عن الإشراف",
+  "join": "انضمام",
+  "leave": "غادر"
 }

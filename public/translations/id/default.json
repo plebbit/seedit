@@ -92,5 +92,7 @@
   "submit_post": "Kirim postingan baru",
   "create_community": "Buat komunitas sendiri",
   "moderators": "moderator",
-  "about_moderation": "tentang tim moderasi"
+  "about_moderation": "tentang tim moderasi",
+  "join": "bergabung",
+  "leave": "tinggalkan"
 }

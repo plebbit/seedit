@@ -92,5 +92,7 @@
   "submit_post": "Einen neuen Beitrag veröffentlichen",
   "create_community": "Erstelle deine eigene Community",
   "moderators": "Moderatoren",
-  "about_moderation": "über das Moderationsteam"
+  "about_moderation": "über das Moderationsteam",
+  "join": "beitreten",
+  "leave": "verlassen"
 }

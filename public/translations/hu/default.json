@@ -92,5 +92,7 @@
   "submit_post": "Új bejegyzés beküldése",
   "create_community": "Hozd létre saját közösséged",
   "moderators": "moderátorok",
-  "about_moderation": "a moderációs csapatról"
+  "about_moderation": "a moderációs csapatról",
+  "join": "csatlakozás",
+  "leave": "elhagy"
 }
