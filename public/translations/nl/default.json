@@ -87,5 +87,8 @@
   "time_1_month": "1 maand",
   "time_x_months": "{{count}} maanden",
   "time_1_year": "1 jaar",
-  "time_x_years": "{{count}} jaar"
+  "time_x_years": "{{count}} jaar",
+  "search": "zoeken",
+  "submit_post": "Een nieuwe post indienen",
+  "create_community": "Maak je eigen gemeenschap"
 }

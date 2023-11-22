@@ -87,5 +87,8 @@
   "time_1_month": "شهر واحد",
   "time_x_months": "{{count}} أشهر",
   "time_1_year": "عام واحد",
-  "time_x_years": "{{count}} سنوات"
+  "time_x_years": "{{count}} سنوات",
+  "search": "بحث",
+  "submit_post": "قدم مشاركة جديدة",
+  "create_community": "أنشئ مجتمعك الخاص"
 }

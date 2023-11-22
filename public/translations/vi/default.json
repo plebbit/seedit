@@ -87,5 +87,8 @@
   "time_1_month": "1 tháng",
   "time_x_months": "{{count}} tháng",
   "time_1_year": "1 năm",
-  "time_x_years": "{{count}} năm"
+  "time_x_years": "{{count}} năm",
+  "search": "tìm kiếm",
+  "submit_post": "Gửi bài viết mới",
+  "create_community": "Tạo cộng đồng riêng của bạn"
 }

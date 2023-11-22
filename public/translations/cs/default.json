@@ -87,5 +87,8 @@
   "time_1_month": "1 měsíc",
   "time_x_months": "{{count}} měsíců",
   "time_1_year": "1 rok",
-  "time_x_years": "{{count}} let"
+  "time_x_years": "{{count}} let",
+  "search": "hledat",
+  "submit_post": "Odeslat nový příspěvek",
+  "create_community": "Vytvořte si vlastní komunitu"
 }

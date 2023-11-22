@@ -87,5 +87,8 @@
   "time_1_month": "חודש אחד",
   "time_x_months": "{{count}} חודשים",
   "time_1_year": "שנה אחת",
-  "time_x_years": "{{count}} שנים"
+  "time_x_years": "{{count}} שנים",
+  "search": "חיפוש",
+  "submit_post": "שלח פוסט חדש",
+  "create_community": "צור את הקהילה שלך"
 }

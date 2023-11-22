@@ -37,7 +37,7 @@ const Sidebar = ({
   updatedAt,
   upvoteCount = 0,
 }: sidebarProps) => {
-  const { i18n } = useTranslation();
+  const { t, i18n } = useTranslation();
   const { language } = i18n;
   const { allActiveUserCount, hourActiveUserCount } = useSubplebbitStats({ subplebbitAddress: address });
   const isOnline = updatedAt && updatedAt > Date.now() / 1000 - 60 * 30;
@@ -102,20 +102,20 @@ const Sidebar = ({
 
   return (
     <div className={`${isAbout ? styles.about : styles.sidebar}`}>
-      <form className={styles.searchBar}>
-        <input type='text' placeholder='search' onSubmit={(e) => e.preventDefault()} />
-        <input type='submit' value='' />
+      <form className={styles.searchBar} onSubmit={(e) => e.preventDefault()}>
+        <input type='text' placeholder={`${t('search')}`} />
+        <input type='submit' value=''  />
       </form>
       {isPost && postInfo}
       <Link to={submitRoute}>
         <div className={styles.largeButton}>
-          Submit a new post
+          {t('submit_post')}
           <div className={styles.nub} />
         </div>
       </Link>
       <Link to='/communities/create' onClick={(e) => e.preventDefault()}>
         <div className={styles.largeButton}>
-          Create your own community
+          {t('create_community')}
           <div className={styles.nub} />
         </div>
       </Link>

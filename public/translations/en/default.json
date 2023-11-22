@@ -87,5 +87,8 @@
   "time_1_month": "1 month",
   "time_x_months": "{{count}} months",
   "time_1_year": "1 year",
-  "time_x_years": "{{count}} years"
+  "time_x_years": "{{count}} years",
+  "search": "search",
+  "submit_post": "Submit a new post",
+  "create_community": "Create your own community"
 }

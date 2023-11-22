@@ -87,5 +87,8 @@
   "time_1_month": "1개월",
   "time_x_months": "{{count}}개월",
   "time_1_year": "1년",
-  "time_x_years": "{{count}}년"
+  "time_x_years": "{{count}}년",
+  "search": "검색",
+  "submit_post": "새로운 게시물 제출",
+  "create_community": "나만의 커뮤니티 만들기"
 }

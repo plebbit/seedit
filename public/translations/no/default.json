@@ -87,5 +87,8 @@
   "time_1_month": "1 måned",
   "time_x_months": "{{count}} måneder",
   "time_1_year": "1 år",
-  "time_x_years": "{{count}} år"
+  "time_x_years": "{{count}} år",
+  "search": "søk",
+  "submit_post": "Send inn en ny post",
+  "create_community": "Opprett din egen fellesskap"
 }

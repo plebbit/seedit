@@ -87,5 +87,8 @@
   "time_1_month": "1 เดือน",
   "time_x_months": "{{count}} เดือน",
   "time_1_year": "1 ปี",
-  "time_x_years": "{{count}} ปี"
+  "time_x_years": "{{count}} ปี",
+  "search": "ค้นหา",
+  "submit_post": "ส่งโพสต์ใหม่",
+  "create_community": "สร้างชุมชนของคุณเอง"
 }

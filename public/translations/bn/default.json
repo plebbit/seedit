@@ -87,5 +87,8 @@
   "time_1_month": "১ মাস",
   "time_x_months": "{{count}} মাস",
   "time_1_year": "১ বছর",
-  "time_x_years": "{{count}} বছর"
+  "time_x_years": "{{count}} বছর",
+  "search": "অনুসন্ধান",
+  "submit_post": "নতুন পোস্ট দিন",
+  "create_community": "আপনার নিজস্ব সম্প্রদায় তৈরি করুন"
 }

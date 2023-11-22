@@ -87,5 +87,8 @@
   "time_1_month": "1 个月",
   "time_x_months": "{{count}} 个月",
   "time_1_year": "1 年",
-  "time_x_years": "{{count}} 年"
+  "time_x_years": "{{count}} 年",
+  "search": "搜索",
+  "submit_post": "提交新帖",
+  "create_community": "创建您自己的社区"
 }
