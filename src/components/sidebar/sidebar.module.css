@@ -4,6 +4,7 @@
   position: relative;
   z-index: 999;
   background-color: var(--background);
+  padding-left: 10px;
 }
 
 .titleBox {
