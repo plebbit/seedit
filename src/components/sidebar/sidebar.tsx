@@ -75,12 +75,12 @@ const Sidebar = ({
 
   const moderatorsList = (
     <div className={styles.list}>
-      <div className={styles.listTitle}>MODERATORS</div>
+      <div className={styles.listTitle}>{t('moderators')}</div>
       <ul className={`${styles.listContent} ${styles.modsList}`}>
         {rolesList.map(({ address }, index) => (
           <li key={index}>u/{getShortAddress(address)}</li>
         ))}
-        <li className={styles.listMore}>about moderation team »</li>
+        <li className={styles.listMore}>{t('about_moderation')} »</li>
       </ul>
     </div>
   );

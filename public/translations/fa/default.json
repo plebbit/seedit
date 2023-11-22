@@ -90,5 +90,7 @@
   "time_x_years": "{{count}} سال",
   "search": "جستجو",
   "submit_post": "ثبت یک پست جدید",
-  "create_community": "ایجاد جامعه خودتان"
+  "create_community": "ایجاد جامعه خودتان",
+  "moderators": "مدیران",
+  "about_moderation": "درباره تیم نظارت"
 }

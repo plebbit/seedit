@@ -90,5 +90,7 @@
   "time_x_years": "{{count}} anos",
   "search": "pesquisar",
   "submit_post": "Enviar uma nova publicação",
-  "create_community": "Crie sua própria comunidade"
+  "create_community": "Crie sua própria comunidade",
+  "moderators": "moderadores",
+  "about_moderation": "sobre a equipe de moderação"
 }

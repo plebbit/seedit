@@ -90,5 +90,7 @@
   "time_x_years": "{{count}} 年",
   "search": "搜索",
   "submit_post": "提交新帖",
-  "create_community": "创建您自己的社区"
+  "create_community": "创建您自己的社区",
+  "moderators": "版主",
+  "about_moderation": "关于管理团队"
 }

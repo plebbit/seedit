@@ -90,5 +90,7 @@
   "time_x_years": "{{count}}年",
   "search": "検索",
   "submit_post": "新しい投稿を送信",
-  "create_community": "独自のコミュニティを作成"
+  "create_community": "独自のコミュニティを作成",
+  "moderators": "モデレーター",
+  "about_moderation": "モデレーションチームについて"
 }

@@ -90,5 +90,7 @@
   "time_x_years": "{{count}} vuotta",
   "search": "etsi",
   "submit_post": "Lähetä uusi viesti",
-  "create_community": "Luo oma yhteisösi"
+  "create_community": "Luo oma yhteisösi",
+  "moderators": "moderaattorit",
+  "about_moderation": "tietoa moderaatiotiimistä"
 }

@@ -90,5 +90,7 @@
   "time_x_years": "{{count}} år",
   "search": "søge",
   "submit_post": "Indsend en ny post",
-  "create_community": "Opret din egen fællesskab"
+  "create_community": "Opret din egen fællesskab",
+  "moderators": "moderatorer",
+  "about_moderation": "om moderationsholdet"
 }

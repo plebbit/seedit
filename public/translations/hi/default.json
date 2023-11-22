@@ -90,5 +90,7 @@
   "time_x_years": "{{count}} वर्ष",
   "search": "खोज",
   "submit_post": "नई पोस्ट सबमिट करें",
-  "create_community": "अपनी खुद की समुदाय बनाएं"
+  "create_community": "अपनी खुद की समुदाय बनाएं",
+  "moderators": "मॉडरेटर्स",
+  "about_moderation": "मॉडरेशन टीम के बारे में"
 }

@@ -90,5 +90,7 @@
   "time_x_years": "{{count}} yıl",
   "search": "arama",
   "submit_post": "Yeni bir gönderi gönder",
-  "create_community": "Kendi topluluğunu oluştur"
+  "create_community": "Kendi topluluğunu oluştur",
+  "moderators": "moderatorler",
+  "about_moderation": "moderasyon ekibi hakkında"
 }

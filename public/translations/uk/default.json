@@ -90,5 +90,7 @@
   "time_x_years": "{{count}} років",
   "search": "пошук",
   "submit_post": "Надіслати новий пост",
-  "create_community": "Створіть своє співтовариство"
+  "create_community": "Створіть своє співтовариство",
+  "moderators": "модератори",
+  "about_moderation": "про модерацію"
 }

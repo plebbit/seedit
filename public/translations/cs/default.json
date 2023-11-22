@@ -90,5 +90,7 @@
   "time_x_years": "{{count}} let",
   "search": "hledat",
   "submit_post": "Odeslat nový příspěvek",
-  "create_community": "Vytvořte si vlastní komunitu"
+  "create_community": "Vytvořte si vlastní komunitu",
+  "moderators": "moderátoři",
+  "about_moderation": "o moderaci týmu"
 }

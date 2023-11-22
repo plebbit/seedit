@@ -90,5 +90,7 @@
   "time_x_years": "{{count}} سنوات",
   "search": "بحث",
   "submit_post": "قدم مشاركة جديدة",
-  "create_community": "أنشئ مجتمعك الخاص"
+  "create_community": "أنشئ مجتمعك الخاص",
+  "moderators": "المشرفون",
+  "about_moderation": "عن الإشراف"
 }

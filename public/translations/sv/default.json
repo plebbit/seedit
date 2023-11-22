@@ -90,5 +90,7 @@
   "time_x_years": "{{count}} år",
   "search": "sök",
   "submit_post": "Skicka in en ny post",
-  "create_community": "Skapa din egen community"
+  "create_community": "Skapa din egen community",
+  "moderators": "moderatorer",
+  "about_moderation": "om modereringsteamet"
 }

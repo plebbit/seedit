@@ -90,5 +90,7 @@
   "time_x_years": "{{count}} tahun",
   "search": "cari",
   "submit_post": "Kirim postingan baru",
-  "create_community": "Buat komunitas sendiri"
+  "create_community": "Buat komunitas sendiri",
+  "moderators": "moderator",
+  "about_moderation": "tentang tim moderasi"
 }

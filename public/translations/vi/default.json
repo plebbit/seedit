@@ -90,5 +90,7 @@
   "time_x_years": "{{count}} năm",
   "search": "tìm kiếm",
   "submit_post": "Gửi bài viết mới",
-  "create_community": "Tạo cộng đồng riêng của bạn"
+  "create_community": "Tạo cộng đồng riêng của bạn",
+  "moderators": "quản trị viên",
+  "about_moderation": "về đội ngũ quản lý"
 }

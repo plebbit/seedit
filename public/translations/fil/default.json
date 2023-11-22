@@ -90,5 +90,7 @@
   "time_x_years": "{{count}} taon",
   "search": "hanapin",
   "submit_post": "Magsumite ng bagong post",
-  "create_community": "Lumikha ng sariling komunidad"
+  "create_community": "Lumikha ng sariling komunidad",
+  "moderators": "moderators",
+  "about_moderation": "tungkol sa koponan ng moderation"
 }

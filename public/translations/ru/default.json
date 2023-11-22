@@ -90,5 +90,7 @@
   "time_x_years": "{{count}} лет",
   "search": "поиск",
   "submit_post": "Отправить новый пост",
-  "create_community": "Создайте своё сообщество"
+  "create_community": "Создайте своё сообщество",
+  "moderators": "модераторы",
+  "about_moderation": "о модераторах"
 }
