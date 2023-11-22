@@ -122,10 +122,9 @@ const Sidebar = ({
       {!isHome && (
         <div className={styles.titleBox}>
           <Link className={styles.title} to={`/p/${address}`}>
-            {title || shortAddress}
+            {shortAddress}
           </Link>
-          {title && <div className={styles.address}>p/{address}</div>}
-          <div className={!title ? styles.subscribeContainer : ''}>
+          <div className={styles.subscribeContainer}>
             <SubscribeButton address={address} />
             <span className={styles.subscribers}>{allActiveUserCount} readers</span>
           </div>
@@ -133,7 +132,10 @@ const Sidebar = ({
             <span className={`${styles.onlineIndicator} ${isOnline ? styles.online : styles.offline}`} />
             <span>{onlineStatus}</span>
           </div>
-          <div className={styles.description}>{description}</div>
+          {description && <div>
+            {title && <div className={styles.descriptionTitle}><strong>{title}</strong></div>}
+            <div className={styles.description}>{description}</div>
+          </div>}
           {rules && rulesList}
           <div className={styles.bottom}>
             created by{' '}
