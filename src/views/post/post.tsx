@@ -86,7 +86,6 @@ const Post = () => {
           downvoteCount={downvoteCount}
           roles={roles}
           rules={rules}
-          shortAddress={shortAddress}
           timestamp={timestamp}
           title={subplebbit?.title}
           updatedAt={updatedAt}

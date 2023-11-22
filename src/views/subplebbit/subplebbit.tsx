@@ -63,7 +63,6 @@ const Subplebbit = () => {
           description={description}
           roles={roles}
           rules={rules}
-          shortAddress={shortAddress}
           title={title}
           updatedAt={updatedAt}
         />

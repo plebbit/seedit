@@ -21,6 +21,7 @@ a {
 .title {
   font-weight: bold;
   font-size: 19px;
+  word-wrap: break-word;
 }
 
 .title:hover {

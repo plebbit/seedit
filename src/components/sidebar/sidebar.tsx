@@ -16,7 +16,6 @@ interface sidebarProps {
   downvoteCount?: number;
   roles?: Record<string, Role>;
   rules?: string[];
-  shortAddress?: string | undefined;
   timestamp?: number;
   title?: string;
   updatedAt?: number;
@@ -31,7 +30,6 @@ const Sidebar = ({
   downvoteCount = 0,
   roles,
   rules,
-  shortAddress,
   timestamp = 0,
   title,
   updatedAt,
@@ -120,7 +118,7 @@ const Sidebar = ({
       {!isHome && (
         <div className={styles.titleBox}>
           <Link className={styles.title} to={`/p/${address}`}>
-            {shortAddress}
+            {address}
           </Link>
           <div className={styles.subscribeContainer}>
             <SubscribeButton address={address} />

@@ -20,7 +20,6 @@ const About = () => {
         downvoteCount={downvoteCount}
         roles={roles}
         rules={rules}
-        shortAddress={shortAddress}
         timestamp={timestamp}
         title={title}
         updatedAt={updatedAt}
