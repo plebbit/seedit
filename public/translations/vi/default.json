@@ -100,5 +100,9 @@
   "post_submitted_on": "bài viết này đã được đăng vào ngày {{postDate}}",
   "community_last_seen": "nút cộng đồng cuối cùng được thấy vào {{dateAgo}}",
   "readers_count": "{{count}} người đọc",
-  "users_online": "{{count}} người dùng ở đây bây giờ"
+  "users_online": "{{count}} người dùng ở đây bây giờ",
+  "point": "điểm",
+  "points": "điểm",
+  "share_link": "chia sẻ liên kết",
+  "upvoted": "đã cho điểm tích cực"
 }

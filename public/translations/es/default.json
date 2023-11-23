@@ -100,5 +100,9 @@
   "post_submitted_on": "esta publicación se presentó el {{postDate}}",
   "community_last_seen": "nodo de comunidad visto por última vez {{dateAgo}}",
   "readers_count": "{{count}} lectores",
-  "users_online": "{{count}} usuarios aquí ahora"
+  "users_online": "{{count}} usuarios aquí ahora",
+  "point": "punto",
+  "points": "puntos",
+  "share_link": "compartir enlace",
+  "upvoted": "ha dado un voto positivo"
 }

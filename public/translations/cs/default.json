@@ -100,5 +100,9 @@
   "post_submitted_on": "tento příspěvek byl odeslán dne {{postDate}}",
   "community_last_seen": "poslední viděná komunitní node {{dateAgo}}",
   "readers_count": "{{count}} čtenáři",
-  "users_online": "{{count}} uživatelé zde nyní"
+  "users_online": "{{count}} uživatelé zde nyní",
+  "point": "bod",
+  "points": "body",
+  "share_link": "sdílet odkaz",
+  "upvoted": "hlasovalo"
 }

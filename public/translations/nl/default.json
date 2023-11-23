@@ -100,5 +100,9 @@
   "post_submitted_on": "deze post is ingediend op {{postDate}}",
   "community_last_seen": "laatst gezien gemeenschapsknoop {{dateAgo}}",
   "readers_count": "{{count}} lezers",
-  "users_online": "{{count}} gebruikers hier nu"
+  "users_online": "{{count}} gebruikers hier nu",
+  "point": "punt",
+  "points": "punten",
+  "share_link": "deel link",
+  "upvoted": "heeft een upvote gegeven"
 }

@@ -100,5 +100,9 @@
   "post_submitted_on": "此帖子提交于{{postDate}}",
   "community_last_seen": "社区节点最后一次在{{dateAgo}}看到",
   "readers_count": "{{count}} 读者",
-  "users_online": "现在有{{count}}用户在这里"
+  "users_online": "现在有{{count}}用户在这里",
+  "point": "点",
+  "points": "点数",
+  "share_link": "分享链接",
+  "upvoted": "点赞了"
 }

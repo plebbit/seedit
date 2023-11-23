@@ -100,5 +100,9 @@
   "post_submitted_on": "этот пост был отправлен {{postDate}}",
   "community_last_seen": "последний раз увиден узел сообщества {{dateAgo}}",
   "readers_count": "{{count}} читатели",
-  "users_online": "{{count}} пользователей сейчас здесь"
+  "users_online": "{{count}} пользователей сейчас здесь",
+  "point": "точка",
+  "points": "очки",
+  "share_link": "поделиться ссылкой",
+  "upvoted": "поставил плюс"
 }

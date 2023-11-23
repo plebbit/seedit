@@ -100,5 +100,9 @@
   "post_submitted_on": "یہ پوسٹ {{postDate}} کو جمع کی گئی تھی",
   "community_last_seen": "آخری بار دیکھا گیا سماجی نوڈ {{dateAgo}}",
   "readers_count": "{{count}} پڑھنے والے",
-  "users_online": "اب {{count}} صارفین یہاں ہیں"
+  "users_online": "اب {{count}} صارفین یہاں ہیں",
+  "point": "نقطہ",
+  "points": "نقاط",
+  "share_link": "لنک شیئر کریں",
+  "upvoted": "نے اوپر ووٹ دیا"
 }

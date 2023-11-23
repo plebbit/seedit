@@ -100,5 +100,9 @@
   "post_submitted_on": "bu gönderi {{postDate}} tarihinde gönderildi",
   "community_last_seen": "topluluk düğümü son görülen {{dateAgo}}",
   "readers_count": "{{count}} okuyucu",
-  "users_online": "şu anda {{count}} kullanıcı burada"
+  "users_online": "şu anda {{count}} kullanıcı burada",
+  "point": "nokta",
+  "points": "puanlar",
+  "share_link": "bağlantıyı paylaş",
+  "upvoted": "oy verdi"
 }

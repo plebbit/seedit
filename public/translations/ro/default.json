@@ -100,5 +100,9 @@
   "post_submitted_on": "această postare a fost trimisă la {{postDate}}",
   "community_last_seen": "nodul comunității văzut ultima dată în {{dateAgo}}",
   "readers_count": "{{count}} cititori",
-  "users_online": "{{count}} utilizatori aici acum"
+  "users_online": "{{count}} utilizatori aici acum",
+  "point": "punct",
+  "points": "puncte",
+  "share_link": "partajează linkul",
+  "upvoted": "a dat un upvote"
 }

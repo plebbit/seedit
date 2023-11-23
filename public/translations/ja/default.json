@@ -100,5 +100,9 @@
   "post_submitted_on": "この投稿は{{postDate}}に投稿されました",
   "community_last_seen": "コミュニティノードは最後に{{dateAgo}}に見られました",
   "readers_count": "{{count}} 読者",
-  "users_online": "現在{{count}}人のユーザーがここにいます"
+  "users_online": "現在{{count}}人のユーザーがここにいます",
+  "point": "ポイント",
+  "points": "ポイント",
+  "share_link": "リンクを共有",
+  "upvoted": "がUpvoteしました"
 }

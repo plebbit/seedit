@@ -100,5 +100,9 @@
   "post_submitted_on": "цей пост був поданий {{postDate}}",
   "community_last_seen": "останній раз було помічено вузол спільноти {{dateAgo}}",
   "readers_count": "{{count}} читачів",
-  "users_online": "{{count}} користувачів тут зараз"
+  "users_online": "{{count}} користувачів тут зараз",
+  "point": "точка",
+  "points": "бали",
+  "share_link": "поділитися посиланням",
+  "upvoted": "поставив плюс"
 }

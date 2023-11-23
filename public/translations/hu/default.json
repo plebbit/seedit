@@ -100,5 +100,9 @@
   "post_submitted_on": "ez a bejegyzés {{postDate}} n lett benyújtva",
   "community_last_seen": "közösségi csomópont utoljára látható {{dateAgo}}",
   "readers_count": "{{count}} olvasók",
-  "users_online": "{{count}} felhasználó itt most"
+  "users_online": "{{count}} felhasználó itt most",
+  "point": "pont",
+  "points": "pontok",
+  "share_link": "link megosztása",
+  "upvoted": "szavazott felfelé"
 }

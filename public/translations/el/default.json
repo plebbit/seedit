@@ -100,5 +100,9 @@
   "post_submitted_on": "αυτή η ανάρτηση κατατέθηκε στις {{postDate}}",
   "community_last_seen": "κοινοτικό κόμβο τελευταία φορά που είδαμε {{dateAgo}}",
   "readers_count": "{{count}} αναγνώστες",
-  "users_online": "{{count}} χρήστες εδώ τώρα"
+  "users_online": "{{count}} χρήστες εδώ τώρα",
+  "point": "σημείο",
+  "points": "σημεία",
+  "share_link": "κοινοποίηση συνδέσμου",
+  "upvoted": "ψήφισε"
 }

@@ -100,5 +100,9 @@
   "post_submitted_on": "এই পোস্টটি {{postDate}} তে সাবমিট করা হয়েছে",
   "community_last_seen": "সম্প্রদায় নোডটি শেষ দেখা গেছে {{dateAgo}}",
   "readers_count": "{{count}} পাঠক",
-  "users_online": "{{count}} ব্যবহারকারী এখানে এখন"
+  "users_online": "{{count}} ব্যবহারকারী এখানে এখন",
+  "point": "পয়েন্ট",
+  "points": "পয়েন্টস",
+  "share_link": "শেয়ার লিঙ্ক",
+  "upvoted": "আপভোট দেওয়া হয়েছে"
 }
