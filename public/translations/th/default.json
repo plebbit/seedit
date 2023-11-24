@@ -100,5 +100,9 @@
   "post_submitted_on": "โพสต์นี้ถูกส่งในวันที่ {{postDate}}",
   "community_last_seen": "ชุดความสามารถของคอมมูนิตี้เครือข่ายครั้งสุดท้าย {{dateAgo}}",
   "readers_count": "{{count}} ผู้อ่าน",
-  "users_online": "{{count}} ผู้ใช้ที่นี่ตอนนี้"
+  "users_online": "{{count}} ผู้ใช้ที่นี่ตอนนี้",
+  "point": "จุด",
+  "points": "คะแนน",
+  "share_link": "แชร์ลิงก์",
+  "upvoted": "เสนอชื่นชม"
 }

@@ -100,5 +100,9 @@
   "post_submitted_on": "تم تقديم هذا المنشور في {{postDate}}",
   "community_last_seen": "آخر زيارة لعقدة المجتمع في {{dateAgo}}",
   "readers_count": "قرّاء {{count}}",
-  "users_online": "مستخدمين {{count}} هنا الآن"
+  "users_online": "مستخدمين {{count}} هنا الآن",
+  "point": "نقطة",
+  "points": "نقاط",
+  "share_link": "رابط المشاركة",
+  "upvoted": "قام بالتصويت بإعجاب"
 }

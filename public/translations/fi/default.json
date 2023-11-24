@@ -100,5 +100,9 @@
   "post_submitted_on": "tämä viesti on toimitettu {{postDate}}",
   "community_last_seen": "yhteisö solmu viimeksi nähty {{dateAgo}}",
   "readers_count": "{{count}} lukijat",
-  "users_online": "{{count}} käyttäjää täällä nyt"
+  "users_online": "{{count}} käyttäjää täällä nyt",
+  "point": "piste",
+  "points": "pisteet",
+  "share_link": "jaa linkki",
+  "upvoted": "on antanut äänen"
 }

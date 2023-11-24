@@ -100,5 +100,9 @@
   "post_submitted_on": "ten post został przesłany w dniu {{postDate}}",
   "community_last_seen": "ostatnio widziany węzeł społeczności {{dateAgo}}",
   "readers_count": "{{count}} czytelników",
-  "users_online": "{{count}} użytkowników tutaj teraz"
+  "users_online": "{{count}} użytkowników tutaj teraz",
+  "point": "punkt",
+  "points": "punkty",
+  "share_link": "udostępnij link",
+  "upvoted": "oddany głos za"
 }

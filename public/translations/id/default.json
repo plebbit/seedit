@@ -100,5 +100,9 @@
   "post_submitted_on": "posting ini diajukan pada {{postDate}}",
   "community_last_seen": "node komunitas terakhir terlihat {{dateAgo}}",
   "readers_count": "{{count}} pembaca",
-  "users_online": "{{count}} pengguna di sini sekarang"
+  "users_online": "{{count}} pengguna di sini sekarang",
+  "point": "titik",
+  "points": "poin",
+  "share_link": "bagikan tautan",
+  "upvoted": "memberikan suara positif"
 }

@@ -100,5 +100,9 @@
   "post_submitted_on": "ఈ పోస్టు {{postDate}} న సమర్పించబడింది",
   "community_last_seen": "సముదాయ నోడు చివరి సారి చూడబడింది {{dateAgo}}",
   "readers_count": "{{count}} రీడర్స్",
-  "users_online": "ప్రస్తుతం ఇక్కడ {{count}} వినియోగదారులు"
+  "users_online": "ప్రస్తుతం ఇక్కడ {{count}} వినియోగదారులు",
+  "point": "పాయింట్",
+  "points": "పాయింట్స్",
+  "share_link": "లింక్ షేర్ చేయండి",
+  "upvoted": "అప్వోట్ ఇచ్చాడు"
 }

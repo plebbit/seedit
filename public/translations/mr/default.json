@@ -100,5 +100,9 @@
   "post_submitted_on": "हा पोस्ट {{postDate}} रोजी सबमिट केला गेला होता",
   "community_last_seen": "समुदाय नोड आखाच दिला गेला {{dateAgo}}",
   "readers_count": "{{count}} वाचक",
-  "users_online": "{{count}} युजर्स इथे आत्ता"
+  "users_online": "{{count}} युजर्स इथे आत्ता",
+  "point": "बिंदू",
+  "points": "बिंदू",
+  "share_link": "लिंक सामायिक करा",
+  "upvoted": "अपवोट दिला"
 }

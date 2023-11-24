@@ -100,5 +100,9 @@
   "post_submitted_on": "denne indsendt dette indlæg på {{postDate}}",
   "community_last_seen": "fællesskabsnode sidst set {{dateAgo}}",
   "readers_count": "{{count}} læsere",
-  "users_online": "{{count}} brugere her nu"
+  "users_online": "{{count}} brugere her nu",
+  "point": "punkt",
+  "points": "point",
+  "share_link": "del link",
+  "upvoted": "stemt op"
 }

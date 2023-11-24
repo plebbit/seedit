@@ -1,0 +1,48 @@
+
+.searchBar {
+  position: relative;
+  padding-bottom: 5px;
+}
+
+.searchBar input[type="text"] {
+  border: 1px solid gray;
+  background-color: var(--background);
+  color: var(--text);
+  font-size: 13px;
+  font-family: verdana;
+  width: 300px;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  padding: 6px;
+}
+
+.searchBar input[type="submit"] {
+  background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAAaCAMAAACelLz8AAAAb1BMVEUAAACJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYm4Po3NAAAAJXRSTlMAAQIEDBAREhMUJS0uQ09QV19hZG1udHmbnJ64xMXGx8jOz9DUayO31AAAANNJREFUeAGF0fFugjAUhfGDg3W1blMEC2IV8Lz/My4nEnK7jOz3380nN7XFy0fdJzL1tUeujBMXUyxh7Acaw96UBzPj2sqBmtuDc6Edqe+0U6Km/v01VJ2muJxtUnnDYqc2e0itbRVWlXbWkJ5kC6MleYUkkgcYgWSCkKSD4Uiy+CdpYfi98Pb3MRqS3fbhzxA/61e77C8/vbmorrIXdcmvtwnOhWaknNZH0Zw7mqfcbGWcuXheTqaJr6+JvHVnDxzzJkUBUZNvZGy7Y7PZZH097p8/V4YmEaKXKKIAAAAASUVORK5CYII=');
+  background-size: 13px 13px;
+  background-color: transparent;
+  height: 13px;
+  width: 13px;
+  border: none;
+  position: absolute;
+  top: 9px;
+  right: 9px;
+  cursor: pointer;
+  font-size: 0px;
+}
+
+.searchBar input[type="submit"]:hover {
+  background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAAaCAMAAACelLz8AAAAeFBMVEUAAACJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYl3r/6iAAAAJ3RSTlMAAQMFDhMUFhcYLC02N1FfYGlydXiDhIuRuru8vt3s7e7v8PH4+fpBQVyrAAAA1ElEQVR4AYXQcW+CMBBA8cPBuk7cpgiCiFUE3/f/hksuDbmakf3+uuSl5DhR8lH1AUJfeUnl7UQ0tbktnwPGsDXlTuKxtFzfjM3OubIZ9V0eUwvQv4sqOoA27jYB/ZtEmw6Yvc4VMBayKEag0rEHGjEa4KJTAHY2lUDQCcDZ5ACyf1IAytcPXv9eowbO68sfdfQz0G2SX356c6iusIc6peetS+fKegTgINH2wav90ob1lrcz0fN0SJv46hLgej56kb1pUZaJiu1HUqbdZLXZZH3fb1+/i3YpBcVhtqwAAAAASUVORK5CYII=');
+}
+
+.searchBar input:focus {
+  outline: none;
+}
+
+.searchBarVisible {
+  visibility: visible;
+}
+
+.searchBarHidden {
+  visibility: hidden;
+}

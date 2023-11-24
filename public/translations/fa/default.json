@@ -100,5 +100,9 @@
   "post_submitted_on": "این پست در {{postDate}} ارسال شده است",
   "community_last_seen": "آخرین باری که گره جامعه دیده شده است {{dateAgo}}",
   "readers_count": "{{count}} خوانندگان",
-  "users_online": "کاربران {{count}} در حال حاضر اینجا هستند"
+  "users_online": "کاربران {{count}} در حال حاضر اینجا هستند",
+  "point": "نقطه",
+  "points": "امتیازها",
+  "share_link": "پیوند به اشتراک گذاری",
+  "upvoted": "رای مثبت داده شده"
 }

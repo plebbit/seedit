@@ -6,6 +6,7 @@ import styles from './sidebar.module.css';
 import { getFormattedDate, getFormattedDuration, getFormattedTimeAgo } from '../../lib/utils/time-utils';
 import { findSubplebbitCreator } from '../../lib/utils/user-utils';
 import { isAboutView, isHomeView, isPostView } from '../../lib/utils/view-utils';
+import SearchBar from '../search-bar';
 import SubscribeButton from '../subscribe-button';
 
 interface sidebarProps {
@@ -16,32 +17,18 @@ interface sidebarProps {
   downvoteCount?: number;
   roles?: Record<string, Role>;
   rules?: string[];
-  shortAddress?: string | undefined;
   timestamp?: number;
   title?: string;
   updatedAt?: number;
   upvoteCount?: number;
 }
 
-const Sidebar = ({
-  address,
-  cid,
-  createdAt,
-  description,
-  downvoteCount = 0,
-  roles,
-  rules,
-  shortAddress,
-  timestamp = 0,
-  title,
-  updatedAt,
-  upvoteCount = 0,
-}: sidebarProps) => {
+const Sidebar = ({ address, cid, createdAt, description, downvoteCount = 0, roles, rules, timestamp = 0, title, updatedAt, upvoteCount = 0 }: sidebarProps) => {
   const { t, i18n } = useTranslation();
   const { language } = i18n;
   const { allActiveUserCount, hourActiveUserCount } = useSubplebbitStats({ subplebbitAddress: address });
   const isOnline = updatedAt && updatedAt > Date.now() / 1000 - 60 * 30;
-  const onlineNotice = t('users_online', {count: hourActiveUserCount});
+  const onlineNotice = t('users_online', { count: hourActiveUserCount });
   const offlineNotice = updatedAt && t('community_last_seen', { dateAgo: getFormattedTimeAgo(updatedAt) });
   const onlineStatus = isOnline ? onlineNotice : offlineNotice;
   const location = useLocation();
@@ -90,20 +77,17 @@ const Sidebar = ({
       </div>
       <div className={styles.postScore}>
         <span className={styles.postScoreNumber}>{postScore} </span>
-        <span className={styles.postScoreWord}>point{postScore !== 1 ? 's' : ''}</span> ({upvotePercentage}% upvoted)
+        <span className={styles.postScoreWord}>{postScore === 1 ? t('point') : t('points')}</span> ({upvotePercentage}% {t('upvoted')})
       </div>
       <div className={styles.shareLink}>
-        share link: <input type='text' value={`https://seedit.eth.limo/#/p/${address}/c/${cid}`} readOnly={true} />
+        {t('share_link')}: <input type='text' value={`https://seedit.eth.limo/#/p/${address}/c/${cid}`} readOnly={true} />
       </div>
     </div>
   );
 
   return (
     <div className={`${isAbout ? styles.about : styles.sidebar}`}>
-      <form className={styles.searchBar} onSubmit={(e) => e.preventDefault()}>
-        <input type='text' placeholder={`${t('search')}`} />
-        <input type='submit' value='' />
-      </form>
+      <SearchBar />
       {isPost && postInfo}
       <Link to={submitRoute}>
         <div className={styles.largeButton}>
@@ -120,11 +104,11 @@ const Sidebar = ({
       {!isHome && (
         <div className={styles.titleBox}>
           <Link className={styles.title} to={`/p/${address}`}>
-            {shortAddress}
+            {address}
           </Link>
           <div className={styles.subscribeContainer}>
             <SubscribeButton address={address} />
-            <span className={styles.subscribers}>{t('readers_count', {count: allActiveUserCount})}</span>
+            <span className={styles.subscribers}>{t('readers_count', { count: allActiveUserCount })}</span>
           </div>
           <div className={styles.onlineLine}>
             <span className={`${styles.onlineIndicator} ${isOnline ? styles.online : styles.offline}`} />

@@ -5,6 +5,7 @@
 .expando {
   display: block;
   padding: 5px;
+  padding-right: 0;
   clear: left;
   position: relative;
 }
@@ -46,8 +47,13 @@
   .mediaPreview img {
     max-width: 100%;
   }
+
   .mediaPreview video {
     max-width: 100%;
+  }
+
+  .expando {
+    padding-right: 5px;
   }
 }
 

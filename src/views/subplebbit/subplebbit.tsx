@@ -57,16 +57,7 @@ const Subplebbit = () => {
   return (
     <div className={styles.content}>
       <div className={styles.sidebar}>
-        <Sidebar
-          address={subplebbitAddress}
-          createdAt={createdAt}
-          description={description}
-          roles={roles}
-          rules={rules}
-          shortAddress={shortAddress}
-          title={title}
-          updatedAt={updatedAt}
-        />
+        <Sidebar address={subplebbitAddress} createdAt={createdAt} description={description} roles={roles} rules={rules} title={title} updatedAt={updatedAt} />
       </div>
       <Virtuoso
         increaseViewportBy={{ bottom: 1200, top: 600 }}

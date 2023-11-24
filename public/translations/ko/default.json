@@ -100,5 +100,9 @@
   "post_submitted_on": "이 게시물은 {{postDate}}에 게시되었습니다",
   "community_last_seen": "커뮤니티 노드가 마지막으로 {{dateAgo}}에 본 날",
   "readers_count": "{{count}} 독자",
-  "users_online": "지금 여기 {{count}} 명의 사용자"
+  "users_online": "지금 여기 {{count}} 명의 사용자",
+  "point": "포인트",
+  "points": "포인트",
+  "share_link": "링크 공유",
+  "upvoted": "추천했습니다"
 }

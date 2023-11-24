@@ -5,6 +5,7 @@
   max-width: 500px;
   unicode-bidi: isolate;
   font-size: small;
+  overflow: hidden;
 }
 
 .md {

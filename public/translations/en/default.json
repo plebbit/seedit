@@ -100,5 +100,9 @@
   "post_submitted_on": "this post was submitted on {{postDate}}",
   "community_last_seen": "community node last seen {{dateAgo}}",
   "readers_count": "{{count}} readers",
-  "users_online": "{{count}} users here now"
+  "users_online": "{{count}} users here now",
+  "point": "point",
+  "points": "points",
+  "share_link": "share link",
+  "upvoted": "upvoted"
 }

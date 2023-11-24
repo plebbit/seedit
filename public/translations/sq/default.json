@@ -100,5 +100,9 @@
   "post_submitted_on": "ky post u dorëzua më {{postDate}}",
   "community_last_seen": "nod komuniteti i fundit i parë në {{dateAgo}}",
   "readers_count": "{{count}} lexues",
-  "users_online": "{{count}} përdorues këtu tani"
+  "users_online": "{{count}} përdorues këtu tani",
+  "point": "pikë",
+  "points": "pikë",
+  "share_link": "ndaj linkun",
+  "upvoted": "ka votuar pozitivisht"
 }

@@ -100,5 +100,9 @@
   "post_submitted_on": "esta postagem foi enviada em {{postDate}}",
   "community_last_seen": "nó da comunidade visto pela última vez {{dateAgo}}",
   "readers_count": "{{count}} leitores",
-  "users_online": "{{count}} usuários aqui agora"
+  "users_online": "{{count}} usuários aqui agora",
+  "point": "ponto",
+  "points": "pontos",
+  "share_link": "compartilhar link",
+  "upvoted": "deu um upvote"
 }
