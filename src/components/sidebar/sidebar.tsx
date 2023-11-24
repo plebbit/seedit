@@ -6,6 +6,7 @@ import styles from './sidebar.module.css';
 import { getFormattedDate, getFormattedDuration, getFormattedTimeAgo } from '../../lib/utils/time-utils';
 import { findSubplebbitCreator } from '../../lib/utils/user-utils';
 import { isAboutView, isHomeView, isPostView } from '../../lib/utils/view-utils';
+import SearchBar from '../search-bar';
 import SubscribeButton from '../subscribe-button';
 
 interface sidebarProps {
@@ -98,10 +99,7 @@ const Sidebar = ({
 
   return (
     <div className={`${isAbout ? styles.about : styles.sidebar}`}>
-      <form className={styles.searchBar} onSubmit={(e) => e.preventDefault()}>
-        <input type='text' placeholder={`${t('search')}`} />
-        <input type='submit' value='' />
-      </form>
+      <SearchBar isVisible={true} />
       {isPost && postInfo}
       <Link to={submitRoute}>
         <div className={styles.largeButton}>

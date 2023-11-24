@@ -7,7 +7,7 @@ const About = () => {
   const { commentCid, subplebbitAddress } = useParams();
   const subplebbit = useSubplebbit({ subplebbitAddress });
   const comment = useComment({ commentCid });
-  const { address, createdAt, description, roles, rules, shortAddress, title, updatedAt } = subplebbit || {};
+  const { address, createdAt, description, roles, rules, title, updatedAt } = subplebbit || {};
   const { cid, downvoteCount, timestamp, upvoteCount } = comment || {};
 
   return (

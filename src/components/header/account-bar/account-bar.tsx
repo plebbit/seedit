@@ -1,20 +1,19 @@
-import { useEffect, useRef, useState } from 'react';
-import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
+// import { useState } from 'react';
+import { Link, useLocation, useParams } from 'react-router-dom';
 import { useAccount } from '@plebbit/plebbit-react-hooks';
 import { useTranslation } from 'react-i18next';
 import styles from './account-bar.module.css';
 import { isSubplebbitView } from '../../../lib/utils/view-utils';
+// import SearchBar from '../../search-bar';
 
 const AccountBar = () => {
   const account = useAccount();
   const { t } = useTranslation();
   const location = useLocation();
-  const navigate = useNavigate();
   const params = useParams();
   const subplebbitAddress = params.subplebbitAddress;
-  const [searchVisible, setSearchVisible] = useState(false);
-  const searchBarRef = useRef<HTMLFormElement>(null);
-  const searchInputRef = useRef<HTMLInputElement>(null);
+  // const [searchVisible, setSearchVisible] = useState(false);
+  // const toggleVisible = () => setSearchVisible(!searchVisible);
   let submitLink;
   const isSubplebbit = isSubplebbitView(location.pathname, params);
 
@@ -23,35 +22,6 @@ const AccountBar = () => {
   } else {
     submitLink = '/submit';
   }
-
-  const handleClickOutside = (event: MouseEvent) => {
-    if (searchBarRef.current && event.target instanceof Node && !searchBarRef.current.contains(event.target)) {
-      setSearchVisible(false);
-    }
-  };
-
-  useEffect(() => {
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-    };
-  }, []);
-
-  useEffect(() => {
-    if (searchVisible && searchInputRef.current) {
-      searchInputRef.current.focus();
-    }
-  }, [searchVisible]);
-
-  const handleSearchSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    const searchInput = searchInputRef.current?.value;
-    if (searchInput) {
-      setSearchVisible(false);
-      searchInputRef.current.value = '';
-      navigate(`/p/${searchInput}`);
-    }
-  };
 
   return (
     <>
@@ -71,19 +41,20 @@ const AccountBar = () => {
         <Link to='/settings' className={styles.iconButton} onClick={(e) => e.preventDefault()}>
           ✉️
         </Link>
-        <span className={styles.separator}>|</span>
-        <span className={styles.iconButton} onClick={() => setSearchVisible(true)}>
-          🔎
+        <span className={styles.searchButton}>
+          <span className={styles.separator}>|</span>
+          <span className={styles.iconButton} 
+          // onClick={() => setSearchVisible(true)}
+          >
+            🔎
+          </span>
         </span>
         <span className={styles.separator}>|</span>
         <Link to='/settings' className={styles.textButton}>
           {t('preferences')}
         </Link>
+        {/* <SearchBar isVisible={searchVisible} toggleVisible={toggleVisible} /> */}
       </div>
-      <form className={`${styles.searchBar} ${!searchVisible ? styles.searchBarHidden : styles.searchBarVisible}`} ref={searchBarRef} onSubmit={handleSearchSubmit}>
-        <input type='text' placeholder={`"community.eth" ${t('or')} "12D3KooW..."`} ref={searchInputRef} />
-        <input type='submit' value='' />
-      </form>
     </>
   );
 };
