@@ -23,24 +23,12 @@ interface sidebarProps {
   upvoteCount?: number;
 }
 
-const Sidebar = ({
-  address,
-  cid,
-  createdAt,
-  description,
-  downvoteCount = 0,
-  roles,
-  rules,
-  timestamp = 0,
-  title,
-  updatedAt,
-  upvoteCount = 0,
-}: sidebarProps) => {
+const Sidebar = ({ address, cid, createdAt, description, downvoteCount = 0, roles, rules, timestamp = 0, title, updatedAt, upvoteCount = 0 }: sidebarProps) => {
   const { t, i18n } = useTranslation();
   const { language } = i18n;
   const { allActiveUserCount, hourActiveUserCount } = useSubplebbitStats({ subplebbitAddress: address });
   const isOnline = updatedAt && updatedAt > Date.now() / 1000 - 60 * 30;
-  const onlineNotice = t('users_online', {count: hourActiveUserCount});
+  const onlineNotice = t('users_online', { count: hourActiveUserCount });
   const offlineNotice = updatedAt && t('community_last_seen', { dateAgo: getFormattedTimeAgo(updatedAt) });
   const onlineStatus = isOnline ? onlineNotice : offlineNotice;
   const location = useLocation();
@@ -99,7 +87,7 @@ const Sidebar = ({
 
   return (
     <div className={`${isAbout ? styles.about : styles.sidebar}`}>
-      <SearchBar isVisible={true} />
+      <SearchBar />
       {isPost && postInfo}
       <Link to={submitRoute}>
         <div className={styles.largeButton}>
@@ -120,7 +108,7 @@ const Sidebar = ({
           </Link>
           <div className={styles.subscribeContainer}>
             <SubscribeButton address={address} />
-            <span className={styles.subscribers}>{t('readers_count', {count: allActiveUserCount})}</span>
+            <span className={styles.subscribers}>{t('readers_count', { count: allActiveUserCount })}</span>
           </div>
           <div className={styles.onlineLine}>
             <span className={`${styles.onlineIndicator} ${isOnline ? styles.online : styles.offline}`} />

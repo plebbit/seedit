@@ -58,3 +58,14 @@
     display: none;
   }
 }
+
+.searchBar {
+  position: absolute;
+  padding: 5px 3px 2px 5px;
+  border-bottom-left-radius: 7px;
+  border-top-left-radius: 7px;
+  background-color: var(--background-secondary);
+  right: 0;
+  top: 18px;
+  z-index: 9;
+}
