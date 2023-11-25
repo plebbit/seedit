@@ -33,7 +33,7 @@
   left: 90px;
   border: 1px solid gray;
   z-index: 100;
-  background-color: white;
+  background-color: var(--background);
   white-space: nowrap;
   line-height: normal;
   margin-top: 3px;
@@ -43,11 +43,11 @@
   cursor: pointer;
   padding: 2px 3px 1px 3px;
   display: block;
-  color: #369;
+  color: var(--text-primary);
 }
 
 .filter:hover {
-  background-color: #c7def7;
+  background-color: var(--background-primary);
 }
 
 .dropChoicesHidden {
