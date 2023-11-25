@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useAccount } from '@plebbit/plebbit-react-hooks';
@@ -20,33 +20,29 @@ const TopBar = () => {
   const dropChoicesClass = isDropdownOpen && subscriptions?.length ? styles.dropChoicesVisible : styles.dropChoicesHidden;
   const isHome = isHomeView(location.pathname);
   const homeButtonClass = isHome ? styles.selected : styles.choice;
-
-  const toggleClick = () => {
-    setIsDropdownOpen(!isDropdownOpen);
-  };
-
-  const handleClickOutside = (event: MouseEvent) => {
+  
+  const handleClickOutside = useCallback((event: MouseEvent) => {
     if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
       setIsDropdownOpen(false);
     }
-  };
+  }, []);  
 
   useEffect(() => {
     document.addEventListener('mousedown', handleClickOutside);
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
-  }, []);
+  }, [handleClickOutside]);
 
   return (
     <div className={styles.headerArea}>
       <div className={styles.widthClip}>
-        <div className={styles.dropdown}>
-          <span className={styles.selectedTitle} onClick={toggleClick}>
+        <div className={styles.dropdown} ref={dropdownRef}>
+          <span className={styles.selectedTitle} onClick={() => {setIsDropdownOpen(!isDropdownOpen)}}>
             {t('topbar_my_subs')}
           </span>
         </div>
-        <div className={`${styles.dropChoices} ${dropChoicesClass}`} ref={dropdownRef}>
+        <div className={`${styles.dropChoices} ${dropChoicesClass}`}>
           {subscriptions?.map((subscription: string, index: number) => (
             <Link key={index} to={`/p/${subscription}`} className={styles.subscription} onClick={() => setIsDropdownOpen(false)}>
               {getShortAddress(subscription)}
