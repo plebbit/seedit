@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import styles from './time-filter.module.css';
 
 const filters = [
@@ -15,32 +15,28 @@ const TimeFilter = () => {
   const dropdownRef = useRef<HTMLDivElement>(null);
   const dropChoicesClass = isDropdownOpen ? styles.dropChoicesVisible : styles.dropChoicesHidden;
 
-  const toggleClick = () => {
-    setIsDropdownOpen(!isDropdownOpen);
-  };
-
-  const handleClickOutside = (event: MouseEvent) => {
+  const handleClickOutside = useCallback((event: MouseEvent) => {
     if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
       setIsDropdownOpen(false);
     }
-  };
+  }, []);  
 
   useEffect(() => {
     document.addEventListener('mousedown', handleClickOutside);
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
-  }, []);
+  }, [handleClickOutside]);
 
   return (
     <div className={styles.content}>
       <span className={styles.dropdownTitle}>
         links from:{' '}
       </span>
-      <div className={styles.dropdown} onClick={toggleClick}>
+      <div className={styles.dropdown} onClick={() => {setIsDropdownOpen(!isDropdownOpen)}} ref={dropdownRef}>
         <span className={styles.selected}>past month</span>
       </div>
-      <div className={`${styles.dropChoices} ${dropChoicesClass}`} ref={dropdownRef}>
+      <div className={`${styles.dropChoices} ${dropChoicesClass}`}>
         {filters.map((filter: string, index: number) => (
           <div key={index} className={styles.filter} onClick={() => setIsDropdownOpen(false)}>
             {filter}
