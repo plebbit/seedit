@@ -31,7 +31,7 @@ const TimeFilter = () => {
   return (
     <div className={styles.content}>
       <span className={styles.dropdownTitle}>
-        links from:{' '}
+        posts from:{' '}
       </span>
       <div className={styles.dropdown} onClick={() => {setIsDropdownOpen(!isDropdownOpen)}} ref={dropdownRef}>
         <span className={styles.selected}>past month</span>
