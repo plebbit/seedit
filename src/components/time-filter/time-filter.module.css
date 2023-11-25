@@ -1,0 +1,59 @@
+.content {
+  border-bottom: 1px dotted gray;
+  padding: 5px 10px;
+  margin: 5px;
+  margin-top: 0;
+  overflow: hidden;
+  font-size: larger;
+}
+
+.dropdownTitle {
+  color: var(--text) !important;
+}
+
+.dropdown {
+  display: inline;
+  position: relative;
+  cursor: pointer;
+}
+
+.selected {
+  position: relative;
+  background: none no-repeat scroll center right;
+  background-image: url("/public/assets/buttons/droparrowgray.gif");
+  padding-right: 21px;
+  text-decoration: underline;
+  color: gray;
+  font-weight: bold;
+}
+
+.dropChoices {
+  margin-top: 2px;
+  position: absolute;
+  left: 90px;
+  border: 1px solid gray;
+  z-index: 100;
+  background-color: white;
+  white-space: nowrap;
+  line-height: normal;
+  margin-top: 3px;
+}
+
+.filter {
+  cursor: pointer;
+  padding: 2px 3px 1px 3px;
+  display: block;
+  color: #369;
+}
+
+.filter:hover {
+  background-color: #c7def7;
+}
+
+.dropChoicesHidden {
+  display: none;
+}
+
+.dropChoicesVisible {
+  display: block;
+}

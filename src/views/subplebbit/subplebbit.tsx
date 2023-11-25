@@ -7,6 +7,7 @@ import styles from './subplebbit.module.css';
 import LoadingEllipsis from '../../components/loading-ellipsis';
 import Post from '../../components/post';
 import Sidebar from '../../components/sidebar';
+import TimeFilter from '../../components/time-filter';
 import useFeedStateString from '../../hooks/use-feed-state-string';
 
 const lastVirtuosoStates: { [key: string]: StateSnapshot } = {};
@@ -59,6 +60,7 @@ const Subplebbit = () => {
       <div className={styles.sidebar}>
         <Sidebar address={subplebbitAddress} createdAt={createdAt} description={description} roles={roles} rules={rules} title={title} updatedAt={updatedAt} />
       </div>
+      <TimeFilter />
       <Virtuoso
         increaseViewportBy={{ bottom: 1200, top: 600 }}
         totalCount={feed?.length || 0}

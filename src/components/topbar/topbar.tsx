@@ -8,7 +8,7 @@ import useDefaultSubplebbitAddresses from '../../hooks/use-default-subplebbit-ad
 import { isHomeView } from '../../lib/utils/view-utils';
 
 const TopBar = () => {
-  const [isClicked, setIsClicked] = useState(false);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
   const account = useAccount();
   const subplebbitAddresses = useDefaultSubplebbitAddresses();
@@ -17,17 +17,17 @@ const TopBar = () => {
 
   const subscriptions = account?.subscriptions;
   const ethFilteredAddresses = subplebbitAddresses.filter((address: string) => address.endsWith('.eth'));
-  const dropChoicesClass = isClicked && subscriptions?.length ? styles.dropChoicesVisible : styles.dropChoicesHidden;
+  const dropChoicesClass = isDropdownOpen && subscriptions?.length ? styles.dropChoicesVisible : styles.dropChoicesHidden;
   const isHome = isHomeView(location.pathname);
   const homeButtonClass = isHome ? styles.selected : styles.choice;
 
   const toggleClick = () => {
-    setIsClicked(!isClicked);
+    setIsDropdownOpen(!isDropdownOpen);
   };
 
   const handleClickOutside = (event: MouseEvent) => {
     if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
-      setIsClicked(false);
+      setIsDropdownOpen(false);
     }
   };
 
@@ -48,7 +48,7 @@ const TopBar = () => {
         </div>
         <div className={`${styles.dropChoices} ${dropChoicesClass}`} ref={dropdownRef}>
           {subscriptions?.map((subscription: string, index: number) => (
-            <Link key={index} to={`/p/${subscription}`} className={styles.subscription} onClick={() => setIsClicked(false)}>
+            <Link key={index} to={`/p/${subscription}`} className={styles.subscription} onClick={() => setIsDropdownOpen(false)}>
               {getShortAddress(subscription)}
             </Link>
           ))}
