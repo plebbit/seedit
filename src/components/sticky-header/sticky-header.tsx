@@ -1,6 +1,16 @@
+import { useEffect } from 'react';
 import styles from './sticky-header.module.css';
 
+
 const StickyHeader = () => {
+
+  useEffect(() => {
+    const menuElement = document.getElementById('sticky-menu');
+    if (menuElement) {
+      menuElement.classList.add(styles.hidden); // Initially hide the menu
+    }
+  }, []);
+
   return (
     <div className={styles.content} id='sticky-menu'>
       <span className={styles.button}>[p/all]</span>
@@ -34,6 +44,10 @@ if (!window.STICKY_MENU_SCROLL_LISTENER) {
     const menuElement = document.getElementById('sticky-menu');
     if (!menuElement) {
       return;
+    }
+
+    if (currentScroll >= 100) {
+      menuElement.classList.remove(styles.hidden); // Show menu
     }
 
     // Automatically hide menu if the user is within 500px of the top
