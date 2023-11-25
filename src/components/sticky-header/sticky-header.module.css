@@ -31,3 +31,15 @@
   font-weight: 700;
   cursor: pointer;
 }
+
+@media (min-width: 768px) {
+  .content {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .content {
+    display: block;
+  }
+}
