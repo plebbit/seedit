@@ -19,7 +19,7 @@ const Post = () => {
   const comment = useComment({ commentCid });
   const { cid, downvoteCount, replyCount, subplebbitAddress, timestamp, title, upvoteCount } = comment || {};
   const subplebbit = useSubplebbit({ subplebbitAddress });
-  const { createdAt, description, roles, rules, shortAddress, updatedAt } = subplebbit || {};
+  const { createdAt, description, roles, rules, updatedAt } = subplebbit || {};
   const stateString = useStateString(comment);
 
   const replies = useReplies(comment);

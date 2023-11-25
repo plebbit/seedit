@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useAccount } from '@plebbit/plebbit-react-hooks';
@@ -8,8 +8,9 @@ import useDefaultSubplebbitAddresses from '../../hooks/use-default-subplebbit-ad
 import { isHomeView } from '../../lib/utils/view-utils';
 
 const TopBar = () => {
-  const [isClicked, setIsClicked] = useState(false);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
+  const dropdownChoicesRef = useRef<HTMLDivElement>(null);
   const account = useAccount();
   const subplebbitAddresses = useDefaultSubplebbitAddresses();
   const { t } = useTranslation();
@@ -17,38 +18,40 @@ const TopBar = () => {
 
   const subscriptions = account?.subscriptions;
   const ethFilteredAddresses = subplebbitAddresses.filter((address: string) => address.endsWith('.eth'));
-  const dropChoicesClass = isClicked && subscriptions?.length ? styles.dropChoicesVisible : styles.dropChoicesHidden;
+  const dropChoicesClass = isDropdownOpen && subscriptions?.length ? styles.dropChoicesVisible : styles.dropChoicesHidden;
   const isHome = isHomeView(location.pathname);
   const homeButtonClass = isHome ? styles.selected : styles.choice;
 
-  const toggleClick = () => {
-    setIsClicked(!isClicked);
-  };
-
-  const handleClickOutside = (event: MouseEvent) => {
-    if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
-      setIsClicked(false);
+  const handleClickOutside = useCallback((event: MouseEvent) => {
+    if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node) &&
+        dropdownChoicesRef.current && !dropdownChoicesRef.current.contains(event.target as Node)) {
+      setIsDropdownOpen(false);
     }
-  };
+  }, []);
 
   useEffect(() => {
     document.addEventListener('mousedown', handleClickOutside);
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
-  }, []);
+  }, [handleClickOutside]);
 
   return (
     <div className={styles.headerArea}>
       <div className={styles.widthClip}>
-        <div className={styles.dropdown}>
-          <span className={styles.selectedTitle} onClick={toggleClick}>
+        <div className={styles.dropdown} ref={dropdownRef}>
+          <span
+            className={styles.selectedTitle}
+            onClick={() => {
+              setIsDropdownOpen(!isDropdownOpen);
+            }}
+          >
             {t('topbar_my_subs')}
           </span>
         </div>
-        <div className={`${styles.dropChoices} ${dropChoicesClass}`} ref={dropdownRef}>
+        <div className={`${styles.dropChoices} ${dropChoicesClass}`} ref={dropdownChoicesRef} onClick={() => setIsDropdownOpen(false)}>
           {subscriptions?.map((subscription: string, index: number) => (
-            <Link key={index} to={`/p/${subscription}`} className={styles.subscription} onClick={() => setIsClicked(false)}>
+            <Link key={index} to={`/p/${subscription}`} className={styles.subscription}>
               {getShortAddress(subscription)}
             </Link>
           ))}
