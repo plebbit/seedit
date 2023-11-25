@@ -36,6 +36,12 @@ if (!window.STICKY_MENU_SCROLL_LISTENER) {
       return;
     }
 
+    // Automatically hide menu if the user is within 500px of the top
+    if (currentScroll < 100) {
+      menuElement.style.animationDelay = '-1s';
+      return;
+    }
+
     const scrollDifference = currentScroll - previousScroll;
     previousScroll = currentScroll;
 
