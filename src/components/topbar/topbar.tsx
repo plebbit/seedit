@@ -20,12 +20,12 @@ const TopBar = () => {
   const dropChoicesClass = isDropdownOpen && subscriptions?.length ? styles.dropChoicesVisible : styles.dropChoicesHidden;
   const isHome = isHomeView(location.pathname);
   const homeButtonClass = isHome ? styles.selected : styles.choice;
-  
+
   const handleClickOutside = useCallback((event: MouseEvent) => {
     if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
       setIsDropdownOpen(false);
     }
-  }, []);  
+  }, []);
 
   useEffect(() => {
     document.addEventListener('mousedown', handleClickOutside);
@@ -38,7 +38,12 @@ const TopBar = () => {
     <div className={styles.headerArea}>
       <div className={styles.widthClip}>
         <div className={styles.dropdown} ref={dropdownRef}>
-          <span className={styles.selectedTitle} onClick={() => {setIsDropdownOpen(!isDropdownOpen)}}>
+          <span
+            className={styles.selectedTitle}
+            onClick={() => {
+              setIsDropdownOpen(!isDropdownOpen);
+            }}
+          >
             {t('topbar_my_subs')}
           </span>
         </div>

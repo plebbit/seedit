@@ -1,14 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import styles from './time-filter.module.css';
 
-const filters = [
-  'past hour',
-  'past 24 hours',
-  'past week',
-  'past month',
-  'past year',
-  'all time'
-];
+const filters = ['past hour', 'past 24 hours', 'past week', 'past month', 'past year', 'all time'];
 
 const TimeFilter = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -19,7 +12,7 @@ const TimeFilter = () => {
     if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
       setIsDropdownOpen(false);
     }
-  }, []);  
+  }, []);
 
   useEffect(() => {
     document.addEventListener('mousedown', handleClickOutside);
@@ -30,10 +23,14 @@ const TimeFilter = () => {
 
   return (
     <div className={styles.content}>
-      <span className={styles.dropdownTitle}>
-        posts from:{' '}
-      </span>
-      <div className={styles.dropdown} onClick={() => {setIsDropdownOpen(!isDropdownOpen)}} ref={dropdownRef}>
+      <span className={styles.dropdownTitle}>posts from: </span>
+      <div
+        className={styles.dropdown}
+        onClick={() => {
+          setIsDropdownOpen(!isDropdownOpen);
+        }}
+        ref={dropdownRef}
+      >
         <span className={styles.selected}>past month</span>
       </div>
       <div className={`${styles.dropChoices} ${dropChoicesClass}`}>
@@ -45,6 +42,6 @@ const TimeFilter = () => {
       </div>
     </div>
   );
-}
+};
 
 export default TimeFilter;
