@@ -10,6 +10,7 @@ import { isHomeView } from '../../lib/utils/view-utils';
 const TopBar = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
+  const dropdownChoicesRef = useRef<HTMLDivElement>(null);
   const account = useAccount();
   const subplebbitAddresses = useDefaultSubplebbitAddresses();
   const { t } = useTranslation();
@@ -22,7 +23,8 @@ const TopBar = () => {
   const homeButtonClass = isHome ? styles.selected : styles.choice;
 
   const handleClickOutside = useCallback((event: MouseEvent) => {
-    if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+    if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node) &&
+        dropdownChoicesRef.current && !dropdownChoicesRef.current.contains(event.target as Node)) {
       setIsDropdownOpen(false);
     }
   }, []);
@@ -47,9 +49,9 @@ const TopBar = () => {
             {t('topbar_my_subs')}
           </span>
         </div>
-        <div className={`${styles.dropChoices} ${dropChoicesClass}`}>
+        <div className={`${styles.dropChoices} ${dropChoicesClass}`} ref={dropdownChoicesRef} onClick={() => setIsDropdownOpen(false)}>
           {subscriptions?.map((subscription: string, index: number) => (
-            <Link key={index} to={`/p/${subscription}`} className={styles.subscription} onClick={() => setIsDropdownOpen(false)}>
+            <Link key={index} to={`/p/${subscription}`} className={styles.subscription}>
               {getShortAddress(subscription)}
             </Link>
           ))}
