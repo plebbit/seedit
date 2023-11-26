@@ -3,11 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import styles from './search-bar.module.css';
 
-interface SearchBarProps {
-  toggleVisible?: () => void;
-}
-
-const SearchBar = ({ toggleVisible }: SearchBarProps) => {
+const SearchBar = () => {
   const searchBarRef = useRef<HTMLFormElement>(null);
   const searchInputRef = useRef<HTMLInputElement>(null);
   const wrapperRef = useRef<HTMLDivElement>(null);
@@ -44,7 +40,6 @@ const SearchBar = ({ toggleVisible }: SearchBarProps) => {
     }
     const searchInput = searchInputRef.current?.value;
     if (searchInput) {
-      toggleVisible && toggleVisible();
       searchInputRef.current.value = '';
       navigate(`/p/${searchInput}`);
     }
