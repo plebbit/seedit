@@ -2,11 +2,9 @@
   color: var(--text);
   background-color: var(--background-text);
   position: fixed;
-  width: 100vw;
-  height: 15px;
-  border: 1px solid var(--border-text);
+  width: calc(100vw - 10px);
   padding: 5px;
-  top: 0;
+  border: 1px solid var(--border-text);
   z-index: 9999;
   animation-name: stickyMenuAnimation;
   animation-duration: 1s;
@@ -14,6 +12,13 @@
   animation-iteration-count: 1;
   animation-fill-mode: both;
   animation-play-state: paused;
+  display: flex !important;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.hidden {
+  display: none !important;
 }
 
 @keyframes stickyMenuAnimation {
@@ -25,11 +30,10 @@
   }
 }
 
-.button {
-  margin-right: 10px;
-  font-size: 11px;
-  font-weight: 700;
+.button { 
+  line-height: 18px;
   cursor: pointer;
+  text-transform: uppercase;
 }
 
 @media (min-width: 768px) {
@@ -42,4 +46,21 @@
   .content {
     display: block;
   }
+}
+
+.button select {
+  padding: 1px;
+  font-size: 11px;
+}
+
+.icon {
+  font-size: 15px;
+  padding-bottom: 2px;
+}
+
+.searchBar {
+  position: fixed;
+  top: 31px;
+  left: 0px;
+  z-index: 9999;
 }

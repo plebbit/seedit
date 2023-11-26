@@ -1,26 +1,29 @@
-import { useCallback, useEffect, useRef } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import styles from './search-bar.module.css';
 
-interface SearchBarProps {
-  isActive?: boolean;
-  toggleVisible?: () => void;
-}
-
-const SearchBar = ({ isActive, toggleVisible }: SearchBarProps) => {
+const SearchBar = () => {
   const searchBarRef = useRef<HTMLFormElement>(null);
   const searchInputRef = useRef<HTMLInputElement>(null);
+  const wrapperRef = useRef<HTMLDivElement>(null);
   const navigate = useNavigate();
   const { t } = useTranslation();
+  const [isInCommunitySearch, setIsInCommunitySearch] = useState(false);
+  const placeholder = isInCommunitySearch ? t('search') : `"community.eth" ${t('or')} "12D3KooW..."`;
+  const [showExpando, setShowExpando] = useState(false);
+
+  const handleInputFocus = () => {
+    setShowExpando(true);
+  };
 
   const handleClickOutside = useCallback(
     (event: MouseEvent) => {
-      if (searchBarRef.current && event.target instanceof Node && !searchBarRef.current.contains(event.target)) {
-        toggleVisible && toggleVisible();
+      if (wrapperRef.current && !wrapperRef.current.contains(event.target as Node)) {
+        setShowExpando(false);
       }
     },
-    [toggleVisible, searchBarRef],
+    [wrapperRef],
   );
 
   useEffect(() => {
@@ -30,27 +33,35 @@ const SearchBar = ({ isActive, toggleVisible }: SearchBarProps) => {
     };
   }, [handleClickOutside]);
 
-  useEffect(() => {
-    if (isActive && searchInputRef.current) {
-      searchInputRef.current.focus();
-    }
-  }, [isActive]);
-
   const handleSearchSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    if (isInCommunitySearch) {
+      return;
+    }
     const searchInput = searchInputRef.current?.value;
     if (searchInput) {
-      toggleVisible && toggleVisible();
       searchInputRef.current.value = '';
       navigate(`/p/${searchInput}`);
     }
   };
 
   return (
-    <form className={styles.searchBar} ref={searchBarRef} onSubmit={handleSearchSubmit}>
-      <input type='text' placeholder={`"community.eth" ${t('or')} "12D3KooW..."`} ref={searchInputRef} />
-      <input type='submit' value='' />
-    </form>
+    <div ref={wrapperRef}>
+      <form className={styles.searchBar} ref={searchBarRef} onSubmit={handleSearchSubmit}>
+        <input type='text' placeholder={placeholder} ref={searchInputRef} onFocus={handleInputFocus} />
+        <input type='submit' value='' />
+      </form>
+      <div className={`${styles.infobar} ${showExpando ? styles.slideDown : styles.slideUp}`}>
+        <label>
+          <input type='checkbox' checked={!isInCommunitySearch} onChange={() => setIsInCommunitySearch(false)} />
+          search a community address
+        </label>
+        <label>
+          <input type='checkbox' checked={isInCommunitySearch} onChange={() => setIsInCommunitySearch(true)} />
+          search a post in this feed
+        </label>
+      </div>
+    </div>
   );
 };
 

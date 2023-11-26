@@ -39,7 +39,7 @@
 }
 
 .subscription {
-  cursor: pinter;
+  cursor: pointer;
   padding: 2px 3px 1px 3px;
   display: block;
 }

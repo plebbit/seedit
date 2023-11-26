@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { Link, useLocation, useParams } from 'react-router-dom';
 import { useAccount } from '@plebbit/plebbit-react-hooks';
 import { useTranslation } from 'react-i18next';
@@ -13,15 +13,31 @@ const AccountBar = () => {
   const params = useParams();
   const subplebbitAddress = params.subplebbitAddress;
   const [searchVisible, setSearchVisible] = useState(false);
-  const toggleVisible = () => setSearchVisible(!searchVisible);
   let submitLink;
   const isSubplebbit = isSubplebbitView(location.pathname, params);
+  const searchBarRef = useRef<HTMLDivElement>(null);
 
   if (isSubplebbit) {
     submitLink = `/p/${subplebbitAddress}/submit`;
   } else {
     submitLink = '/submit';
   }
+
+  const handleClickOutside = useCallback(
+    (event: MouseEvent) => {
+      if (searchBarRef.current && !searchBarRef.current.contains(event.target as Node)) {
+        setSearchVisible(false);
+      }
+    },
+    [searchBarRef],
+  );
+
+  useEffect(() => {
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [handleClickOutside]);
 
   return (
     <>
@@ -53,8 +69,8 @@ const AccountBar = () => {
         </Link>
       </div>
       {searchVisible && (
-        <div className={styles.searchBar}>
-          <SearchBar isActive={searchVisible} toggleVisible={toggleVisible} />
+        <div className={styles.searchBar} ref={searchBarRef}>
+          <SearchBar />
         </div>
       )}
     </>
