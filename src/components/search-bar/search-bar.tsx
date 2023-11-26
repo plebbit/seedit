@@ -53,11 +53,11 @@ const SearchBar = () => {
       </form>
       <div className={`${styles.infobar} ${showExpando ? styles.slideDown : styles.slideUp}`}>
         <label>
-          <input type='checkbox' checked={!isInCommunitySearch} onClick={() => setIsInCommunitySearch(false)} />
+          <input type='checkbox' checked={!isInCommunitySearch} onChange={() => setIsInCommunitySearch(false)} />
           search a community address
         </label>
         <label>
-          <input type='checkbox' checked={isInCommunitySearch} onClick={() => setIsInCommunitySearch(true)} />
+          <input type='checkbox' checked={isInCommunitySearch} onChange={() => setIsInCommunitySearch(true)} />
           search a post in this feed
         </label>
       </div>
