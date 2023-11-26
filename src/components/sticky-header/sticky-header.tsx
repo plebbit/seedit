@@ -1,7 +1,23 @@
-import { useEffect } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
+import { useAccount } from '@plebbit/plebbit-react-hooks';
 import styles from './sticky-header.module.css';
+import { useTranslation } from 'react-i18next';
+import { Link } from 'react-router-dom';
+import SearchBar from '../search-bar/search-bar';
+
+// const sortTypes = ['hot', 'new', 'active', 'controversialAll', 'topAll'];
+const sortTypeStrings = ['hot', 'new', 'active', 'cont', 'top'];
+// const filters = ['past hour', 'past 24 hours', 'past week', 'past month', 'past year', 'all time'];
+const timeFilters = ['1h', '24h', '1w', '1m', '1y', 'all'];
 
 const StickyHeader = () => {
+  const { t } = useTranslation();
+  const [isSearchBarOpen, setIsSearchBarOpen] = useState(false);
+  const toggleSearchBar = () => setIsSearchBarOpen(!isSearchBarOpen);
+  const wrapperRef = useRef<HTMLDivElement>(null);
+  const account = useAccount();
+  const accountAddress = account?.author.shortAddress.slice(0, 12);
+
   useEffect(() => {
     const menuElement = document.getElementById('sticky-menu');
     if (menuElement) {
@@ -9,17 +25,67 @@ const StickyHeader = () => {
     }
   }, []);
 
+  const handleClickOutside = useCallback(
+    (event: MouseEvent) => {
+      if (wrapperRef.current && !wrapperRef.current.contains(event.target as Node)) {
+        setIsSearchBarOpen(false);
+      }
+    },
+    [wrapperRef],
+  );
+
+  useEffect(() => {
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [handleClickOutside]);
+
   return (
-    <div className={styles.content} id='sticky-menu'>
-      <span className={styles.button}>[p/all]</span>
-      <span className={styles.button}>[hot]</span>
-      <span className={styles.button}>[24h]</span>
-      <span className={styles.button}>name.eth</span>
-      <span className={styles.button}>✉️</span>
-      <span className={styles.button}>🔎</span>
-      <span className={styles.button}>[en]</span>
-      <span className={styles.button}>[light]</span>
-      <span className={styles.button}>preferences</span>
+    <div ref={wrapperRef}>
+      <div className={styles.content} id='sticky-menu'>
+        <span className={styles.button}>
+          <Link to='/'>{t('topbar_home')}</Link>
+        </span>
+        <span className={styles.separator}>|</span>
+        <span className={styles.button}>
+          <Link to='/' onClick={(e) => e.preventDefault()}>{t('topbar_all')}</Link>
+        </span>
+        <span className={styles.separator}>|</span>
+        <span className={`${styles.button} ${styles.icon}`} onClick={toggleSearchBar}>🔎</span>
+        <span className={styles.separator}>|</span>
+        <span className={styles.button}>
+          <select className={styles.select}>
+            {sortTypeStrings.map((choice, index) => (
+              <option key={`${choice}-${index}`} value={choice}>{choice}</option>
+            ))}
+          </select>
+        </span>
+        <span className={styles.separator}>|</span>
+        <span className={styles.button}>
+          <select className={styles.select}>
+            {timeFilters.map((choice, index) => (
+              <option key={`${choice}-${index}`} value={choice}>{choice}</option>
+            ))}
+          </select>
+        </span>
+        <span className={styles.separator}>|</span>
+        <span className={`${styles.button} ${styles.icon}`}>✉️</span>
+        <span className={styles.separator}>|</span>
+        <span className={styles.button}>
+          <select className={styles.select}>
+            <option value=''>{accountAddress}</option>
+            <option value=''>+create</option>
+          </select>
+        </span>
+        <span className={styles.separator}>|</span>
+        <span className={`${styles.button} ${styles.icon}`}>
+          <Link to='/settings'>⚙️</Link>
+        </span>
+      </div>
+      {isSearchBarOpen && <div className={styles.searchBar}>
+        <SearchBar />
+      </div>}
     </div>
   );
 };
