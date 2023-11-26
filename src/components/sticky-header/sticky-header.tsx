@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
-import { useAccount } from '@plebbit/plebbit-react-hooks';
+import { createAccount, setActiveAccount, useAccount, useAccounts } from '@plebbit/plebbit-react-hooks';
 import { useTranslation } from 'react-i18next';
 import styles from './sticky-header.module.css';
 import SearchBar from '../search-bar';
@@ -10,13 +10,12 @@ const sortTypes = ['hot', 'new', 'active', 'controversialAll', 'topAll'];
 const timeFilters = ['1h', '24h', '1w', '1m', '1y', 'all'];
 
 const StickyHeader = () => {
+  const account = useAccount();
+  const { accounts } = useAccounts();
   const { t } = useTranslation();
   const [isSearchBarOpen, setIsSearchBarOpen] = useState(false);
   const toggleSearchBar = () => setIsSearchBarOpen(!isSearchBarOpen);
   const wrapperRef = useRef<HTMLDivElement>(null);
-  const account = useAccount();
-  const { shortAddress } = account?.author || {};
-  const accountAddress = shortAddress?.length > 12 ? shortAddress?.slice(0, 12) + '...' : shortAddress;
   const location = useLocation();
   const navigate = useNavigate();
   const params = useParams();
@@ -68,6 +67,26 @@ const StickyHeader = () => {
     };
   }, [handleClickOutside]);
 
+  const accountsOptions = accounts.map((account) => (
+    <option key={account?.id} value={account?.name}>
+      u/{account?.author?.shortAddress?.toLowerCase?.().substring(0, 8) || ''}
+    </option>
+  ));
+
+  accountsOptions[accountsOptions.length] = (
+    <option key='create' value='createAccount'>
+      +create
+    </option>
+  );
+
+  const onAccountSelectChange = async (e: React.ChangeEvent<HTMLSelectElement>) => {
+    if (e.target.value === 'createAccount') {
+      createAccount();
+    } else {
+      setActiveAccount(e.target.value);
+    }
+  };
+
   return (
     <div ref={wrapperRef}>
       <div className={styles.content} id='sticky-menu'>
@@ -108,9 +127,8 @@ const StickyHeader = () => {
         <span className={`${styles.button} ${styles.icon}`}>✉️</span>
         <span className={styles.separator}>|</span>
         <span className={styles.button}>
-          <select className={styles.select}>
-            <option value=''>u/{accountAddress}</option>
-            <option value=''>+create</option>
+          <select className={styles.select} onChange={onAccountSelectChange} value={account?.name}>
+            {accountsOptions}
           </select>
         </span>
         <span className={styles.separator}>|</span>
