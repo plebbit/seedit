@@ -6,6 +6,7 @@
   --background-thumbnail: rgba(0, 0, 0, 0.05);
   --background-markdown: #fafafa;
   --background-contrast: #E4F2FB;
+  --background-orange: #f6e69f;
   --text: black;
   --text-markdown: #222222;
   --text-primary: #369;
@@ -15,6 +16,7 @@
   --text-info: #888;
   --border-primary: #5f99cf;
   --border-text: gray;
+  --border-orange: #ffa500;
   --link: #0000ff;
   --link-visited: #551a8b;
   --icon: #c6c6c6;
@@ -40,6 +42,7 @@
   --background-thumbnail: rgba(255, 255, 255, 0.01);
   --background-markdown: #1f1f1f;
   --background-contrast: #141414;
+  --background-orange: #4a3700;
   --text: #bfbfbf;
   --text-markdown: #f0f0f0;
   --text-primary: #c7c7c7;
@@ -49,6 +52,7 @@
   --text-info: #757575;
   --border-primary: #1f1f1f;
   --border-text: #3e3e3e;
+  --border-orange: #a76d00;
   --link: #f0f0f0;
   --link-visited: #757575;
   --icon: #c6c6c6;

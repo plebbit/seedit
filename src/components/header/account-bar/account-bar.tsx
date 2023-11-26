@@ -54,7 +54,7 @@ const AccountBar = () => {
       </div>
       {searchVisible && (
         <div className={styles.searchBar}>
-          <SearchBar isActive={searchVisible} toggleVisible={toggleVisible} />
+          <SearchBar toggleVisible={toggleVisible} />
         </div>
       )}
     </>

@@ -10,8 +10,12 @@ const TimeFilter = () => {
   const dropChoicesClass = isDropdownOpen ? styles.dropChoicesVisible : styles.dropChoicesHidden;
 
   const handleClickOutside = useCallback((event: MouseEvent) => {
-    if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node) &&
-        dropdownChoicesRef.current && !dropdownChoicesRef.current.contains(event.target as Node)) {
+    if (
+      dropdownRef.current &&
+      !dropdownRef.current.contains(event.target as Node) &&
+      dropdownChoicesRef.current &&
+      !dropdownChoicesRef.current.contains(event.target as Node)
+    ) {
       setIsDropdownOpen(false);
     }
   }, []);

@@ -1,9 +1,7 @@
 import { useEffect } from 'react';
 import styles from './sticky-header.module.css';
 
-
 const StickyHeader = () => {
-
   useEffect(() => {
     const menuElement = document.getElementById('sticky-menu');
     if (menuElement) {
