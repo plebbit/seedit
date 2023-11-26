@@ -61,7 +61,7 @@
 
 .searchBar {
   position: absolute;
-  padding: 5px 3px 2px 5px;
+  padding: 10px 5px 0 10px;
   border-bottom-left-radius: 7px;
   border-top-left-radius: 7px;
   background-color: var(--background-secondary);
