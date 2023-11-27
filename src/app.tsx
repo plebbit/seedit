@@ -9,6 +9,7 @@ import About from './views/about/about';
 import Settings from './views/settings';
 import Submit from './views/settings/submit/submit';
 import Subplebbit from './views/subplebbit';
+import AccountBar from './components/account-bar/';
 import ChallengeModal from './components/challenge-modal';
 import Header from './components/header';
 import StickyHeader from './components/sticky-header';
@@ -26,6 +27,7 @@ function App() {
     <>
       <ChallengeModal />
       <TopBar />
+      <AccountBar />
       <Header />
       <Outlet />
     </>

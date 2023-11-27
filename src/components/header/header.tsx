@@ -5,7 +5,6 @@ import { useSubplebbit } from '@plebbit/plebbit-react-hooks';
 import { isAboutView, isHomeView, isPostView, isSettingsView, isSubplebbitView, isSubmitView, isSubplebbitSubmitView } from '../../lib/utils/view-utils';
 import useTheme from '../../hooks/use-theme';
 import styles from './header.module.css';
-import AccountBar from './account-bar';
 import SubscribeButton from '../subscribe-button';
 
 const sortTypes = ['hot', 'new', 'active', 'controversialAll', 'topAll'];
@@ -118,7 +117,6 @@ const Header = () => {
 
   return (
     <div className={styles.header}>
-      <AccountBar />
       <div className={`${styles.container} ${fewTabs ? styles.reducedHeight : ''}`}>
         <div className={styles.logoContainer}>
           <Link to={logoIsAvatar ? `/p/${params.subplebbitAddress}` : '/'} className={styles.logoLink}>

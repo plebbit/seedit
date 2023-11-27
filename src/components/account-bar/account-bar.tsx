@@ -3,8 +3,8 @@ import { Link, useLocation, useParams } from 'react-router-dom';
 import { useAccount } from '@plebbit/plebbit-react-hooks';
 import { useTranslation } from 'react-i18next';
 import styles from './account-bar.module.css';
-import { isSubplebbitView } from '../../../lib/utils/view-utils';
-import SearchBar from '../../search-bar';
+import { isSubplebbitView } from '../../lib/utils/view-utils';
+import SearchBar from '../search-bar';
 
 const AccountBar = () => {
   const account = useAccount();
