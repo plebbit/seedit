@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { Link, useLocation, useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useSubplebbit } from '@plebbit/plebbit-react-hooks';
-import { isAboutView, isHomeView, isPostView, isSubplebbitView, isSubmitView, isSubplebbitSubmitView } from '../../lib/utils/view-utils';
+import { isAboutView, isHomeView, isPostView, isSettingsView, isSubplebbitView, isSubmitView, isSubplebbitSubmitView } from '../../lib/utils/view-utils';
 import useTheme from '../../hooks/use-theme';
 import styles from './header.module.css';
 import AccountBar from './account-bar';
@@ -19,13 +19,16 @@ const Header = () => {
   const sortLabels = [t('header_hot'), t('header_new'), t('header_active'), t('header_controversial'), t('header_top')];
   const subplebbit = useSubplebbit({ subplebbitAddress: params.subplebbitAddress });
   const { suggested, title, shortAddress } = subplebbit || {};
+
   const isAbout = isAboutView(location.pathname);
   const isHome = isHomeView(location.pathname);
   const isPost = isPostView(location.pathname, params);
+  const isSettings = isSettingsView(location.pathname);
   const isSubplebbit = isSubplebbitView(location.pathname, params);
   const isSubmit = isSubmitView(location.pathname);
   const isSubplebbitSubmit = isSubplebbitSubmitView(location.pathname, params);
-  const fewTabs = isPost || isSubmit || isSubplebbitSubmit;
+
+  const fewTabs = isPost || isSubmit || isSubplebbitSubmit || isSettings;
   const logoSrc = isSubplebbit ? suggested?.avatarUrl : '/assets/logo/seedit.png';
   const logoIsAvatar = isSubplebbit && suggested?.avatarUrl;
 
@@ -62,6 +65,7 @@ const Header = () => {
       </Link>
     </li>
   );
+
   let headerTabs;
 
   if (isPost) {
@@ -84,6 +88,8 @@ const Header = () => {
     headerTitle = subplebbitTitle;
   } else if (isSubmit) {
     headerTitle = submitTitle;
+  } else if (isSettings) {
+    headerTitle = t('preferences');
   }
 
   let aboutLink;

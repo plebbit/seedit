@@ -24,6 +24,10 @@ export const isPostView = (pathname: string, params: ParamsType): boolean => {
   return params.subplebbitAddress && params.commentCid ? pathname.startsWith(`/p/${params.subplebbitAddress}/c/${params.commentCid}`) : false;
 };
 
+export const isSettingsView = (pathname: string): boolean => {
+  return pathname === '/settings';
+}
+
 export const isSubmitView = (pathname: string): boolean => {
   return pathname === '/submit';
 };
