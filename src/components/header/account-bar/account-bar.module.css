@@ -43,13 +43,6 @@
 }
 
 @media (min-width: 768px) {
-  .header {
-    bottom: 0px;
-    top: unset;
-    border-bottom-left-radius: 0px;
-    border-top-left-radius: 7px;
-  }
-
   .submitButton {
     display: none;
   }
