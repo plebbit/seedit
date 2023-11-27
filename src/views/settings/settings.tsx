@@ -40,10 +40,28 @@ const Settings = () => {
     </div>
   );
 
+
+
   return (
-    <div className={styles.temporary}>
-      {themeSelect}
-      {languageSelect}
+    <div className={styles.content}>
+      <div className={styles.category}>
+        <span className={styles.categoryTitle}>interface language</span>
+        <span className={styles.setting}>
+          {languageSelect}
+        </span>
+      </div>
+      <div className={styles.category}>
+        <span className={styles.categoryTitle}>theme</span>
+        <span className={styles.setting}>
+          {themeSelect}
+        </span>
+      </div>
+      {/* <div className={styles.category}>
+        <span className={styles.categoryTitle}>account</span>
+        <span className={styles.setting}>
+          <textarea className={styles.textarea} />
+        </span>
+      </div> */}
     </div>
   );
 };
