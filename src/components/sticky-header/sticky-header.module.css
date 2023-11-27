@@ -12,7 +12,6 @@
   animation-iteration-count: 1;
   animation-fill-mode: both;
   animation-play-state: paused;
-  display: flex !important;
   align-items: center;
   justify-content: space-around;
 }
@@ -44,7 +43,7 @@
 
 @media (max-width: 768px) {
   .content {
-    display: block;
+    display: flex;
   }
 }
 
