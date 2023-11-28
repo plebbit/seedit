@@ -39,6 +39,11 @@ if (!window.STICKY_MENU_SCROLL_LISTENER) {
     const scrollDifference = currentScroll - previousScroll;
     previousScroll = currentScroll;
 
+    // no changes on mobile overscroll behavior
+    if (currentScroll <= 0) {
+      return;
+    }
+
     // find new current scroll in range
     const previousScrollInRange = currentScrollInRange;
     currentScrollInRange += scrollDifference;
