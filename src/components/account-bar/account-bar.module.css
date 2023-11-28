@@ -12,12 +12,8 @@
 }
 
 .user {
-  color: var(--border-text);
-}
-
-.user a {
-  text-decoration: none;
   color: var(--text-primary);
+  cursor: pointer;
 }
 
 .separator {
@@ -42,7 +38,7 @@
   cursor: pointer;
 }
 
-@media (min-width: 768px) {
+/* @media (min-width: 768px) {
   .submitButton {
     display: none;
   }
@@ -50,15 +46,28 @@
   .searchButton {
     display: none;
   }
-}
+} */
 
 .searchBar {
   position: absolute;
-  padding: 10px 5px 0 10px;
+  padding: 4px;
   border-bottom-left-radius: 7px;
   border-top-left-radius: 7px;
   background-color: var(--background-secondary);
   right: 0;
-  top: 18px;
+  top: 38px;
   z-index: 9;
+}
+
+.accountSelect {
+  position: absolute;
+  right: 0;
+  top: 38px;
+  bottom: unset;
+  border-bottom-left-radius: 7px;
+  border-top-left-radius: 0;
+  background-color: var(--background-secondary);
+  padding: 4px;
+  line-height: 12px;
+  z-index: 999;
 }

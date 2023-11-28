@@ -1,7 +1,6 @@
 
 .searchBar {
   position: relative;
-  padding-bottom: 5px;
   z-index: 2;
 }
 
@@ -36,10 +35,6 @@
   background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAAaCAMAAACelLz8AAAAeFBMVEUAAACJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYl3r/6iAAAAJ3RSTlMAAQMFDhMUFhcYLC02N1FfYGlydXiDhIuRuru8vt3s7e7v8PH4+fpBQVyrAAAA1ElEQVR4AYXQcW+CMBBA8cPBuk7cpgiCiFUE3/f/hksuDbmakf3+uuSl5DhR8lH1AUJfeUnl7UQ0tbktnwPGsDXlTuKxtFzfjM3OubIZ9V0eUwvQv4sqOoA27jYB/ZtEmw6Yvc4VMBayKEag0rEHGjEa4KJTAHY2lUDQCcDZ5ACyf1IAytcPXv9eowbO68sfdfQz0G2SX356c6iusIc6peetS+fKegTgINH2wav90ob1lrcz0fN0SJv46hLgej56kb1pUZaJiu1HUqbdZLXZZH3fb1+/i3YpBcVhtqwAAAAASUVORK5CYII=');
 }
 
-/* .searchBar input:focus {
-  outline: none;
-} */
-
 .searchBarVisible {
   visibility: visible;
 }
@@ -63,12 +58,12 @@
   overflow: hidden;
   transition: max-height 0.5s ease, padding-top 0.5s ease, padding-bottom 0.5s ease, margin-top 0.5s ease;
   z-index: 1;
-  margin-bottom: 13px;
 }
 
 .slideDown {
   max-height: 200px;
   padding-top: 10px;
+  margin-top: 5px;
 }
 
 .slideUp {

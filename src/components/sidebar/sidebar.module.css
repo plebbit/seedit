@@ -104,6 +104,10 @@ a {
   background-repeat: no-repeat;
 }
 
+.searchBarSpacer {
+  height: 11px;
+}
+
 .largeButton:hover {
   background-image: var(--button-large-hover);
   border-color: var(--button-border-primary-hover);
@@ -174,7 +178,6 @@ a {
   border-radius: 3px;
   color: var(--text);
   margin-bottom: 12px;
-  margin-top: 7px;
 }
 
 .postScoreNumber {

@@ -27,7 +27,8 @@ const Header = () => {
   const isSubmit = isSubmitView(location.pathname);
   const isSubplebbitSubmit = isSubplebbitSubmitView(location.pathname, params);
 
-  const fewTabs = isPost || isSubmit || isSubplebbitSubmit || isSettings;
+  const hasFewTabs = isPost || isSubmit || isSubplebbitSubmit || isSettings;
+  const hasStickyHeader = isHome || (isSubplebbit && !isSubplebbitSubmit && !isPost && !isAbout);
   const logoSrc = isSubplebbit ? suggested?.avatarUrl : '/assets/logo/seedit.png';
   const logoIsAvatar = isSubplebbit && suggested?.avatarUrl;
 
@@ -117,7 +118,7 @@ const Header = () => {
 
   return (
     <div className={styles.header}>
-      <div className={`${styles.container} ${fewTabs ? styles.reducedHeight : ''}`}>
+      <div className={`${styles.container} ${hasFewTabs && styles.reducedHeight} ${hasStickyHeader && styles.increasedHeight}`}>
         <div className={styles.logoContainer}>
           <Link to={logoIsAvatar ? `/p/${params.subplebbitAddress}` : '/'} className={styles.logoLink}>
             {(logoIsAvatar || !isSubplebbit) && <img className={`${logoIsAvatar ? styles.avatar : styles.logo}`} src={logoSrc} alt='logo' />}
@@ -132,7 +133,7 @@ const Header = () => {
             <SubscribeButton address={params.subplebbitAddress} />
           </span>
         )}
-        <div className={`${styles.tabs} ${fewTabs ? styles.fewTabs : ''}`}>
+        <div className={`${styles.tabs} ${hasFewTabs ? styles.fewTabs : ''}`}>
           <ul className={styles.tabMenu}>
             {headerTabs}
             {(isSubplebbit || isSubplebbitSubmit || isPost) && aboutButton}
