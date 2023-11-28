@@ -25,7 +25,6 @@
 
 .dropChoices {
   top: 18px;
-  left: 0px;
   margin-top: 0;
   margin-left: 5px;
   position: absolute;
@@ -38,13 +37,13 @@
   z-index: 9999;
 }
 
-.subscription {
+.dropdownChoice {
   cursor: pointer;
   padding: 2px 3px 1px 3px;
   display: block;
 }
 
-.subscription:hover {
+.dropdownChoice:hover {
   background-color: var(--background-primary);
 }
 
@@ -53,11 +52,11 @@
   color: var(--text-primary);
 }
 
-.dropChoicesHidden {
+.hidden {
   display: none;
 }
 
-.dropChoicesVisible {
+.visible {
   display: block;
 }
 
@@ -75,7 +74,6 @@
   color: var(--text);
   font-weight: normal;
   margin-left: -5px;
-  margin-right: 10px;
   cursor: pointer;
 }
 
@@ -120,6 +118,10 @@
 
 .srList .srBar .separator {
   margin: 0px .7ex 0px .7ex;
+}
+
+.homeButton {
+  padding-left: 5px;
 }
 
 .moreLink {

@@ -9,6 +9,7 @@ import About from './views/about/about';
 import Settings from './views/settings';
 import Submit from './views/settings/submit/submit';
 import Subplebbit from './views/subplebbit';
+import AccountBar from './components/account-bar/';
 import ChallengeModal from './components/challenge-modal';
 import Header from './components/header';
 import StickyHeader from './components/sticky-header';
@@ -22,10 +23,17 @@ function App() {
     document.body.classList.add(theme);
   }, [theme]);
 
-  const homeLayout = (
+  const globalLayout = (
     <>
       <ChallengeModal />
+      <Outlet />
+    </>
+  );
+
+  const pagesLayout = (
+    <>
       <TopBar />
+      <AccountBar />
       <Header />
       <Outlet />
     </>
@@ -34,6 +42,7 @@ function App() {
   const feedLayout = (
     <>
       <StickyHeader />
+      <Header />
       <Outlet />
     </>
   );
@@ -41,18 +50,20 @@ function App() {
   return (
     <div className={`${styles.app} ${theme}`}>
       <Routes>
-        <Route element={homeLayout}>
+        <Route element={globalLayout}>
           <Route element={feedLayout}>
             <Route path='/:sortType?' element={<Home />} />
             <Route path='p/:subplebbitAddress/:sortType?' element={<Subplebbit />} />
           </Route>
-          <Route path='/submit' element={<Submit />} />
-          <Route path='p/:subplebbitAddress/c/:commentCid' element={<Post />} />
-          <Route path='p/:subplebbitAddress/c/:commentCid/about' element={<About />} />
-          <Route path='p/:subplebbitAddress/submit' element={<Submit />} />
-          <Route path='p/:subplebbitAddress/about' element={<About />} />
-          <Route path='/settings' element={<Settings />} />
-          <Route path='/profile/:accountCommentIndex' element={<PendingPost />} />
+          <Route element={pagesLayout}>
+            <Route path='/submit' element={<Submit />} />
+            <Route path='p/:subplebbitAddress/c/:commentCid' element={<Post />} />
+            <Route path='p/:subplebbitAddress/c/:commentCid/about' element={<About />} />
+            <Route path='p/:subplebbitAddress/submit' element={<Submit />} />
+            <Route path='p/:subplebbitAddress/about' element={<About />} />
+            <Route path='/settings' element={<Settings />} />
+            <Route path='/profile/:accountCommentIndex' element={<PendingPost />} />
+          </Route>
         </Route>
       </Routes>
     </div>

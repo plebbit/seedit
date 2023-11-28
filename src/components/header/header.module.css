@@ -54,6 +54,10 @@
   }
 }
 
+.increasedHeight {
+  padding-top: 20px;
+}
+
 @media (min-width: 768px) {
   .container {
     height: 45.5px;

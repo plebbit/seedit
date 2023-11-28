@@ -2,9 +2,7 @@
   color: var(--text);
   background-color: var(--background-text);
   position: fixed;
-  width: calc(100vw - 10px);
-  padding: 5px;
-  border: 1px solid var(--border-text);
+  width: 100%;
   z-index: 9999;
   animation-name: stickyMenuAnimation;
   animation-duration: 1s;
@@ -12,7 +10,6 @@
   animation-iteration-count: 1;
   animation-fill-mode: both;
   animation-play-state: paused;
-  display: flex !important;
   align-items: center;
   justify-content: space-around;
 }
@@ -28,39 +25,4 @@
   100% {
     top: -50px;
   }
-}
-
-.button { 
-  line-height: 18px;
-  cursor: pointer;
-  text-transform: uppercase;
-}
-
-@media (min-width: 768px) {
-  .content {
-    display: none;
-  }
-}
-
-@media (max-width: 768px) {
-  .content {
-    display: block;
-  }
-}
-
-.button select {
-  padding: 1px;
-  font-size: 11px;
-}
-
-.icon {
-  font-size: 15px;
-  padding-bottom: 2px;
-}
-
-.searchBar {
-  position: fixed;
-  top: 31px;
-  left: 0px;
-  z-index: 9999;
 }

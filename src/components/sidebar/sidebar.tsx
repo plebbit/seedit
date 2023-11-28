@@ -88,6 +88,7 @@ const Sidebar = ({ address, cid, createdAt, description, downvoteCount = 0, role
   return (
     <div className={`${isAbout ? styles.about : styles.sidebar}`}>
       <SearchBar />
+      <div className={styles.searchBarSpacer} />
       {isPost && postInfo}
       <Link to={submitRoute}>
         <div className={styles.largeButton}>
