@@ -80,47 +80,45 @@ const AccountBar = () => {
   };
 
   return (
-    <>
-      <div className={styles.header}>
-        <span className={styles.user} ref={accountSelectRef}>
-          <span onClick={toggleAccountSelectVisible} ref={accountSelectButtonRef}>
-            {account?.author?.shortAddress}
-          </span>
+    <div className={styles.content}>
+      <span className={styles.user} ref={accountSelectRef}>
+        <span onClick={toggleAccountSelectVisible} ref={accountSelectButtonRef}>
+          {account?.author?.shortAddress}
         </span>
-        <span className={styles.submitButton}>
-          <span className={styles.separator}>|</span>
-          <Link to={submitLink} className={styles.textButton}>
-            {t('submit')}
-          </Link>
-        </span>
-        <span className={styles.separator}>|</span>
-        <Link to='/settings' className={styles.iconButton} onClick={(e) => e.preventDefault()}>
-          ✉️
-        </Link>
-        <span className={styles.searchButton}>
-          <span className={styles.separator}>|</span>
-          <span className={styles.iconButton} onClick={toggleSearchVisible} ref={searchBarButtonRef}>
-            🔎
-          </span>
-        </span>
-        <span className={styles.separator}>|</span>
-        <Link to='/settings' className={styles.textButton}>
-          {t('preferences')}
-        </Link>
-      </div>
-      {searchVisible && (
-        <div className={styles.searchBar} ref={searchBarRef}>
-          <SearchBar />
-        </div>
-      )}
-      {accountSelectVisible && (
+          {accountSelectVisible && (
         <span className={styles.accountSelect} ref={accountSelectRef}>
           <select className={styles.select} onChange={onAccountSelectChange} value={account?.name}>
             {accountsOptions}
           </select>
         </span>
       )}
-    </>
+      </span>
+      <span className={styles.submitButton}>
+        <span className={styles.separator}>|</span>
+        <Link to={submitLink} className={styles.textButton}>
+          {t('submit')}
+        </Link>
+      </span>
+      <span className={styles.separator}>|</span>
+      <Link to='/settings' className={styles.iconButton} onClick={(e) => e.preventDefault()}>
+        ✉️
+      </Link>
+      <span className={styles.searchButton}>
+        <span className={styles.separator}>|</span>
+        <span className={styles.iconButton} onClick={toggleSearchVisible} ref={searchBarButtonRef}>
+          🔎
+        </span>
+        {searchVisible && (
+          <div className={styles.searchBar} ref={searchBarRef}>
+            <SearchBar />
+          </div>
+        )}
+      </span>
+      <span className={styles.separator}>|</span>
+      <Link to='/settings' className={styles.textButton}>
+        {t('preferences')}
+      </Link>
+    </div>
   );
 };
 

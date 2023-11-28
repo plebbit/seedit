@@ -1,4 +1,4 @@
-.header {
+.content {
   position: absolute;
   right: 0;
   top: 19px;
@@ -50,24 +50,18 @@
 
 .searchBar {
   position: absolute;
-  padding: 4px;
-  border-bottom-left-radius: 7px;
-  border-top-left-radius: 7px;
+  border-radius: 7px;
   background-color: var(--background-secondary);
-  right: 0;
-  top: 38px;
+  right: 2px;
+  top: 25px;
   z-index: 9;
 }
 
 .accountSelect {
   position: absolute;
-  right: 0;
-  top: 38px;
-  bottom: unset;
-  border-bottom-left-radius: 7px;
-  border-top-left-radius: 0;
+  top: 25px;
+  left: 0;
   background-color: var(--background-secondary);
-  padding: 4px;
   line-height: 12px;
   z-index: 999;
 }
