@@ -24,6 +24,7 @@
 }
 
 .dropChoices {
+  top: 18px;
   margin-top: 0;
   margin-left: 5px;
   position: absolute;
@@ -34,21 +35,6 @@
   white-space: nowrap;
   line-height: normal;
   z-index: 9999;
-}
-
-.subsDropdown {
-  top: 18px;
-  left: 0px;
-}
-
-.sortsDropdown {
-  top: 18px;
-  left: 110px;
-}
-
-.filterDropdown {
-  top: 18px;
-  left: 155px;
 }
 
 .dropdownChoice {

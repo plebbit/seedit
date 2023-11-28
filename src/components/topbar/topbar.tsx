@@ -89,42 +89,36 @@ const TopBar = () => {
   return (
     <div className={styles.headerArea}>
       <div className={styles.widthClip}>
-        <span className={styles.subsDropdownWrapper} onClick={toggleSubsDropdown}>
-          <div className={styles.dropdown} ref={subsDropdownRef}>
-            <span className={styles.selectedTitle}>{t('topbar_my_subs')}</span>
-          </div>
-          <div className={`${styles.dropChoices} ${styles.subsDropdown} ${subsDropdownClass}`} ref={subsDropdownChoicesRef}>
+        <div className={styles.dropdown} ref={subsDropdownRef} onClick={toggleSubsDropdown}>
+          <span className={styles.selectedTitle}>{t('topbar_my_subs')}</span>
+          <div className={`${styles.dropChoices} ${subsDropdownClass}`} ref={subsDropdownChoicesRef}>
             {subscriptions?.map((subscription: string, index: number) => (
               <Link key={index} to={`/p/${subscription}`} className={styles.dropdownChoice}>
                 {getShortAddress(subscription)}
               </Link>
             ))}
           </div>
-        </span>
-        <span className={styles.sortsDropdownWrapper} onClick={toggleSortsDropdown}>
-          <div className={styles.dropdown} ref={sortsDropdownRef}>
-            <span className={styles.selectedTitle}>{selectedSortType}</span>
-          </div>
-          <div className={`${styles.dropChoices} ${styles.sortsDropdown} ${sortsDropdownClass}`} ref={sortsDropdownChoicesRef}>
+        </div>
+        <div className={styles.dropdown} ref={sortsDropdownRef} onClick={toggleSortsDropdown}>
+          <span className={styles.selectedTitle}>{selectedSortType}</span>
+          <div className={`${styles.dropChoices} ${sortsDropdownClass}`} ref={sortsDropdownChoicesRef}>
             {sortTypes.map((choice, index) => (
               <Link to={isSubplebbit ? `/p/${params.subplebbitAddress}/${choice}` : choice} key={index} className={styles.dropdownChoice}>
                 {sortLabels[index]}
               </Link>
             ))}
           </div>
-        </span>
-        <span className={styles.filterDropdownWrapper} onClick={toggleFilterDropdown}>
-          <div className={styles.dropdown} ref={filterDropdownRef}>
-            <span className={styles.selectedTitle}>24H</span>
-          </div>
-          <div className={`${styles.dropChoices} ${styles.filterDropdown} ${filterDropdownClass}`} ref={filterDropdownChoicesRef}>
+        </div>
+        <div className={styles.dropdown} ref={filterDropdownRef} onClick={toggleFilterDropdown}>
+          <span className={styles.selectedTitle}>24H</span>
+          <div className={`${styles.dropChoices} ${filterDropdownClass}`} ref={filterDropdownChoicesRef}>
             {timeFilters.map((choice, index) => (
               <Link to={choice} key={index} className={styles.dropdownChoice}>
                 {timeFilters[index]}
               </Link>
             ))}
           </div>
-        </span>
+        </div>
         <div className={styles.srList}>
           <ul className={styles.srBar}>
             <li>
