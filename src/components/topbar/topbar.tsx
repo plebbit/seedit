@@ -42,6 +42,11 @@ const TopBar = () => {
   const sortLabels = [t('header_hot'), t('header_new'), t('header_active'), t('header_controversial'), t('header_top')];
   const [selectedSortType, setSelectedSortType] = useState(params.sortType || '/hot');
 
+  const getSelectedSortLabel = () => {
+    const index = sortTypes.indexOf(selectedSortType);
+    return index >= 0 ? sortLabels[index] : '';
+  };
+
   useEffect(() => {
     if (params.sortType) {
       setSelectedSortType(params.sortType);
@@ -100,7 +105,7 @@ const TopBar = () => {
           </div>
         </div>
         <div className={styles.dropdown} ref={sortsDropdownRef} onClick={toggleSortsDropdown}>
-          <span className={styles.selectedTitle}>{selectedSortType}</span>
+          <span className={styles.selectedTitle}>{getSelectedSortLabel()}</span>
           <div className={`${styles.dropChoices} ${sortsDropdownClass}`} ref={sortsDropdownChoicesRef}>
             {sortTypes.map((choice, index) => (
               <Link to={isSubplebbit ? `/p/${params.subplebbitAddress}/${choice}` : choice} key={index} className={styles.dropdownChoice}>
