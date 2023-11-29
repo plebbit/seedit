@@ -50,9 +50,7 @@ const Sidebar = ({ address, cid, createdAt, description, downvoteCount = 0, role
       <strong>Rules</strong>
       <ol className={styles.rulesList}>
         {rules?.map((rule, index) => (
-          <>
-            <li key={index}>{rule}</li>
-          </>
+          <li key={index}>{rule}</li>
         ))}
       </ol>
     </div>

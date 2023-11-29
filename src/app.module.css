@@ -8,3 +8,13 @@
   overflow-x: hidden;
   min-height: 100vh;
 }
+
+textarea, input {
+  background-color: var(--background);
+  color: var(--text);
+  border: 1px solid var(--border-text);
+}
+
+select, button {
+  filter: var(--filter);
+}

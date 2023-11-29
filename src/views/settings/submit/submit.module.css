@@ -59,8 +59,6 @@ h1 {
   width: 492px;
   padding: 3px;
   margin: 0;
-  border: 1px solid var(--border-text);
-  background-color: var(--background);
   color: var(--text);
   font-family: verdana, arial, helvetica, sans-serif
 }
