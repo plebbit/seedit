@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@floating-ui/react": "^0.26.1",
+    "@floating-ui/react": "0.26.1",
     "@plebbit/plebbit-react-hooks": "https://github.com/plebbit/plebbit-react-hooks.git#30095e763d80e29168dc6ee1fe7515fd91065489",
     "@testing-library/jest-dom": "5.14.1",
     "@testing-library/react": "13.0.0",
@@ -17,6 +17,7 @@
     "i18next": "23.5.1",
     "i18next-browser-languagedetector": "7.1.0",
     "i18next-http-backend": "2.2.2",
+    "json-stringify-pretty-compact": "4.0.0",
     "memoizee": "0.4.15",
     "prettier": "3.0.3",
     "react": "18.2.0",
@@ -57,6 +58,6 @@
     ]
   },
   "devDependencies": {
-    "@types/memoizee": "^0.4.9"
+    "@types/memoizee": "0.4.9"
   }
 }
