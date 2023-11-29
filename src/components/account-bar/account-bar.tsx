@@ -85,13 +85,13 @@ const AccountBar = () => {
         <span onClick={toggleAccountSelectVisible} ref={accountSelectButtonRef}>
           {account?.author?.shortAddress}
         </span>
-          {accountSelectVisible && (
-        <span className={styles.accountSelect} ref={accountSelectRef}>
-          <select className={styles.select} onChange={onAccountSelectChange} value={account?.name}>
-            {accountsOptions}
-          </select>
-        </span>
-      )}
+        {accountSelectVisible && (
+          <span className={styles.accountSelect} ref={accountSelectRef}>
+            <select className={styles.select} onChange={onAccountSelectChange} value={account?.name}>
+              {accountsOptions}
+            </select>
+          </span>
+        )}
       </span>
       <span className={styles.submitButton}>
         <span className={styles.separator}>|</span>

@@ -77,6 +77,10 @@ const Submit = () => {
   const defaultSubplebbitAddresses = useDefaultSubplebbitAddresses();
 
   useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  useEffect(() => {
     document.title = t('submit_to_before') + (selectedSubplebbit ? subplebbit?.title || subplebbit?.shortAddress || 'seedit' : 'seedit') + t('submit_to_after');
   }, [selectedSubplebbit, subplebbit, t]);
 
