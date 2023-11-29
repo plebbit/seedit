@@ -67,7 +67,7 @@ const AccountSettings = () => {
       setActiveAccount(lastAccount.name);
       setSwitchToLastAccount(false);
     }
-  }, [accounts, setSwitchToLastAccount]);
+  }, [accounts, switchToLastAccount]);
 
   const _deleteAccount = (accountName: string) => {
     if (!accountName) {
