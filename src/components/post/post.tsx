@@ -3,7 +3,7 @@ import styles from './post.module.css';
 import { Link, useLocation, useParams } from 'react-router-dom';
 import { useAuthorAddress, Comment, useSubplebbit } from '@plebbit/plebbit-react-hooks';
 import { useTranslation } from 'react-i18next';
-import { isPendingView, isPostView } from '../../lib/utils/view-utils';
+import { isPendingView, isPostView, isSubplebbitView } from '../../lib/utils/view-utils';
 import { getCommentMediaInfoMemoized, getHasThumbnail } from '../../lib/utils/media-utils';
 import { getHostname } from '../../lib/utils/url-utils';
 import { getFormattedTimeAgo } from '../../lib/utils/time-utils';
@@ -31,6 +31,7 @@ const Post = ({ post, index }: PostProps) => {
 
   const isPost = isPostView(location.pathname, params);
   const isPending = isPendingView(location.pathname, params);
+  const isSubplebbit = isSubplebbitView(location.pathname, params);
   const isInPostView = isPost || isPending;
   const [isExpanded, setIsExpanded] = useState(isInPostView);
   const toggleExpanded = () => setIsExpanded(!isExpanded);
@@ -118,11 +119,15 @@ const Post = ({ post, index }: PostProps) => {
                 <span className={styles.authorAddressHidden}>u/{post?.author?.shortAddress || shortAuthorAddress}</span>
                 <span className={`${styles.authorAddressVisible} ${authorAddressChanged && styles.authorAddressChanged}`}>u/{shortAuthorAddress}</span>
               </Link>
-               {t('post_to')}
-              <Link className={styles.subplebbit} to={`/p/${subplebbitAddress}`}>
-                {' '}
-                p/{subplebbit?.shortAddress || subplebbitAddress}
-              </Link>
+              {!isSubplebbit && (
+                <>
+                   {t('post_to')}
+                  <Link className={styles.subplebbit} to={`/p/${subplebbitAddress}`}>
+                    {' '}
+                    p/{subplebbit?.shortAddress || subplebbitAddress}
+                  </Link>
+                </>  
+              )}
             </p>
             <PostTools cid={cid} failed={state === 'failed'} replyCount={totalReplyCount} subplebbitAddress={subplebbitAddress} />
           </div>
