@@ -3,7 +3,7 @@ import { Link, useLocation, useParams } from 'react-router-dom';
 import { createAccount, setActiveAccount, useAccount, useAccounts } from '@plebbit/plebbit-react-hooks';
 import { useTranslation } from 'react-i18next';
 import styles from './account-bar.module.css';
-import { isSubplebbitView } from '../../lib/utils/view-utils';
+import { isSettingsView, isSubmitView, isSubplebbitView } from '../../lib/utils/view-utils';
 import SearchBar from '../search-bar';
 
 const AccountBar = () => {
@@ -14,6 +14,8 @@ const AccountBar = () => {
   const params = useParams();
   const subplebbitAddress = params.subplebbitAddress;
   const isSubplebbit = isSubplebbitView(location.pathname, params);
+  const isSubmit = isSubmitView(location.pathname);
+  const isSettings = isSettingsView(location.pathname);
 
   const [searchVisible, setSearchVisible] = useState(false);
   const toggleSearchVisible = () => setSearchVisible(!searchVisible);
@@ -95,7 +97,7 @@ const AccountBar = () => {
       </span>
       <span className={styles.submitButton}>
         <span className={styles.separator}>|</span>
-        <Link to={submitLink} className={styles.textButton}>
+        <Link to={submitLink} className={`${styles.textButton} ${isSubmit && styles.selectedTextButton}`}>
           {t('submit')}
         </Link>
       </span>
@@ -115,7 +117,7 @@ const AccountBar = () => {
         )}
       </span>
       <span className={styles.separator}>|</span>
-      <Link to='/settings' className={styles.textButton}>
+      <Link to='/settings' className={`${styles.textButton} ${isSettings && styles.selectedTextButton}`}>
         {t('preferences')}
       </Link>
     </div>
