@@ -69,6 +69,20 @@ const AccountSettings = () => {
     }
   }, [accounts, switchToLastAccount]);
 
+  const _createAccount = async () => {
+    try {
+      await createAccount();
+    } catch (error) {
+      if (error instanceof Error) {
+        alert(error.message);
+        console.log(error);
+      } else {
+        console.error('An unknown error occurred:', error);
+      }
+    }
+    setSwitchToLastAccount(true);
+  }
+
   const _deleteAccount = (accountName: string) => {
     if (!accountName) {
       return
@@ -128,7 +142,7 @@ const AccountSettings = () => {
             <button onClick={_importAccount}>Import</button> another account
           </div>
           <div>
-            <button onClick={() => {createAccount(); setSwitchToLastAccount(true)}}>Create</button> a new account
+            <button onClick={_createAccount}>Create</button> a new account
           </div>
         </div>
       </div>
