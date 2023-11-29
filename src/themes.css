@@ -1,4 +1,5 @@
 :root .light {
+  --filter: brightness(100%);
   --background: white;
   --background-primary: #cee3f8;
   --background-secondary: #eff7ff;
@@ -35,6 +36,7 @@
 }
 
 :root .dark {
+  --filter: brightness(80%);
   --background: #0f0f0f;
   --background-primary: #1f1f1f;
   --background-secondary: #3e3e3e;
