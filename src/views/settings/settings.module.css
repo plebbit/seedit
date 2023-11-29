@@ -6,16 +6,15 @@
 }
 
 .categoryTitle {
-  width: 170px;
+  width: 169px;
   padding: 10px;
   font-weight: bold;
   vertical-align: top;
   text-align: right;
   display: inline-block;
-  white-space: nowrap;
 }
 
-.setting {
+.categorySettings {
   display: inline-block;
   padding: 10px 0;
 }
@@ -26,6 +25,42 @@
 
 @media (max-width: 768px) {
   .categoryTitle {
-    width: 120px;
+    width: 70px;
   }
+}
+
+.settingTitle {
+  font-style: italic;
+  text-transform: capitalize;
+}
+
+@media (min-width: 768px) {
+  .accountData textarea {
+    width: 600px;
+    height: 300px;
+    max-width: 60vw;
+    min-width: 300px;
+    max-height: 60vh;
+    min-height: 100px;
+  }
+}
+
+@media (max-width: 768px) {
+  .accountData textarea {
+    width: 60vw;
+    height: 200px;
+    max-width: 70vw;
+    min-height: 200px;
+    min-width: 70vw;
+    max-height: 60vh;
+  }
+}
+
+.accountButtons {
+  display: block;
+  margin-top: 2px;
+}
+
+.accountButtons button {
+  margin-top: 5px;
 }
