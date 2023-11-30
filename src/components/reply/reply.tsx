@@ -157,7 +157,7 @@ const Reply = ({ reply, depth }: ReplyProps) => {
               {shortAuthorAddress}
             </Link>
             {(isAuthorOwner || isAuthorAdmin || isAuthorModerator) && (
-              <span>
+              <span className={styles.moderatorBrackets}>
                 [
                   <span className={moderatorClass} title={subplebbit?.roles?.[reply.author.address]?.role}>
                     {(isAuthorOwner && 'O') || (isAuthorAdmin && 'A') || (isAuthorModerator && 'M')}

@@ -121,6 +121,10 @@
   }
 }
 
+.moderatorBrackets {
+  color: var(--text-info);
+}
+
 .moderator {
   color: var(--text-secondary) !important;
 }
