@@ -171,3 +171,11 @@
   animation-delay: 0s;
   animation-iteration-count: 1;
 }
+
+.moderator {
+  color: var(--text-secondary) !important;
+}
+
+.admin, .owner {
+  color: var(--red) !important;
+}

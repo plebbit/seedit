@@ -44,8 +44,6 @@ const ThemeSettings = () => {
 };
 
 const ProfileSettings = () => {
-  const { t } = useTranslation();
-
   const cryptoAddressInfo = () => {
     alert('A crypto address is more readable than a long string of characters. It can be used to send you crypto directly.\n\nChange your account address to an ENS name you own: in your ENS name page on ens.domains, click on "Records", "Edit Records", "Add record", add "plebbit-author-address" as record name, add your full address as value (you can copy it from your account data) and save.');
   };

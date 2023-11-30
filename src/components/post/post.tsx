@@ -29,6 +29,11 @@ const Post = ({ post, index }: PostProps) => {
   const params = useParams();
   const location = useLocation();
 
+  const isAuthorOwner = subplebbit?.roles?.[post.author.address]?.role === 'owner';
+  const isAuthorAdmin = subplebbit?.roles?.[post.author.address]?.role === 'admin';
+  const isAuthorModerator = subplebbit?.roles?.[post.author.address]?.role === 'moderator';
+  const moderatorClass = `${isAuthorOwner ? styles.owner : isAuthorAdmin ? styles.admin : isAuthorModerator ? styles.moderator : ''}`;
+
   const isPost = isPostView(location.pathname, params);
   const isPending = isPendingView(location.pathname, params);
   const isSubplebbit = isSubplebbitView(location.pathname, params);
@@ -115,7 +120,7 @@ const Post = ({ post, index }: PostProps) => {
             )}
             <p className={styles.tagline}>
               {t('post_submitted')} {getFormattedTimeAgo(timestamp)} {t('post_by')}{' '}
-              <Link className={styles.authorAddressWrapper} to={`u/${shortAuthorAddress}`} onClick={(e) => e.preventDefault()}>
+              <Link className={`${styles.authorAddressWrapper} ${moderatorClass}`} to={`u/${shortAuthorAddress}`} onClick={(e) => e.preventDefault()}>
                 <span className={styles.authorAddressHidden}>u/{post?.author?.shortAddress || shortAuthorAddress}</span>
                 <span className={`${styles.authorAddressVisible} ${authorAddressChanged && styles.authorAddressChanged}`}>u/{shortAuthorAddress}</span>
               </Link>
@@ -127,6 +132,15 @@ const Post = ({ post, index }: PostProps) => {
                     p/{subplebbit?.shortAddress || subplebbitAddress}
                   </Link>
                 </>  
+              )}
+              {(isAuthorOwner || isAuthorAdmin || isAuthorModerator) && (
+                <span>
+                  {' '}[
+                    <span className={moderatorClass} title={subplebbit?.roles?.[post.author.address]?.role}>
+                      {(isAuthorOwner && 'O') || (isAuthorAdmin && 'A') || (isAuthorModerator && 'M')}
+                    </span>
+                  ]
+                </span>
               )}
               {pinned && (
                 <span className={styles.announcement}> - {t('announcement')}</span>
