@@ -70,7 +70,7 @@ const AccountBar = () => {
 
   const accountDropdownOptions = accounts.map((account, index) => (
     <span key={index} className={styles.dropdownChoice} onClick={() => setActiveAccount(account?.name)}>
-      {`u/${account?.author?.shortAddress?.toLowerCase()?.substring(0, 8) || ''}`}
+      {`u/${account?.author?.shortAddress}`}
     </span>
   ));
 

@@ -177,7 +177,7 @@ const AccountSettings = () => {
 
   const accountsOptions = accounts.map((account) => (
     <option key={account?.id} value={account?.name}>
-      u/{account?.author?.shortAddress?.toLowerCase?.().substring(0, 8) || ''}
+      u/{account?.author?.shortAddress}
     </option>
   ));
 
