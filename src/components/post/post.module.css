@@ -93,6 +93,15 @@
   color: var(--link-visited);
 }
 
+.pinnedLink {
+  color: var(--text-secondary) !important;
+  font-weight: bold !important;
+}
+
+.announcement {
+  color: var(--text-secondary) !important;
+}
+
 .domain {
   color: var(--text-info);
   font-size: x-small;

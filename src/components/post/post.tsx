@@ -22,7 +22,7 @@ interface PostProps {
 }
 
 const Post = ({ post, index }: PostProps) => {
-  const { cid, content, downvoteCount, flair, link, linkHeight, linkWidth, replyCount, state, subplebbitAddress, timestamp, title, upvoteCount } = post || {};
+  const { cid, content, downvoteCount, flair, link, linkHeight, linkWidth, pinned, replyCount, state, subplebbitAddress, timestamp, title, upvoteCount } = post || {};
   const { shortAuthorAddress, authorAddressChanged } = useAuthorAddress({ comment: post });
   const subplebbit = useSubplebbit({ subplebbitAddress });
   const { t } = useTranslation();
@@ -48,7 +48,7 @@ const Post = ({ post, index }: PostProps) => {
   const pendingReplyCount = usePendingReplyCount({ parentCommentCid: cid });
   const totalReplyCount = replyCount + pendingReplyCount;
 
-  const linkClass = isInPostView ? (link ? styles.externalLink : styles.internalLink) : styles.link;
+  const linkClass = `${isInPostView ? (link ? styles.externalLink : styles.internalLink) : styles.link} ${pinned ? styles.pinnedLink : ''}`;
 
   return (
     <div className={styles.container} key={index}>
@@ -127,6 +127,9 @@ const Post = ({ post, index }: PostProps) => {
                     p/{subplebbit?.shortAddress || subplebbitAddress}
                   </Link>
                 </>  
+              )}
+              {pinned && (
+                <span className={styles.announcement}> - {t('announcement')}</span>
               )}
             </p>
             <PostTools cid={cid} failed={state === 'failed'} replyCount={totalReplyCount} subplebbitAddress={subplebbitAddress} />
