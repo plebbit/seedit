@@ -93,6 +93,15 @@
   color: var(--link-visited);
 }
 
+.pinnedLink {
+  color: var(--text-secondary) !important;
+  font-weight: bold !important;
+}
+
+.announcement {
+  color: var(--text-secondary) !important;
+}
+
 .domain {
   color: var(--text-info);
   font-size: x-small;
@@ -130,7 +139,6 @@
 
 .authorAddressWrapper {
   display: inline-block;
-  overflow: clip;
 }
 
 /* use the crypto name as the width of the html element, but hide it and display the verified author address instead */
@@ -161,4 +169,12 @@
   animation-timing-function: ease-out;
   animation-delay: 0s;
   animation-iteration-count: 1;
+}
+
+.moderator {
+  color: var(--text-secondary) !important;
+}
+
+.admin, .owner {
+  color: var(--red) !important;
 }

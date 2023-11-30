@@ -8,20 +8,6 @@ import styles from './settings.module.css';
 // prettier-ignore
 const availableLanguages = ['ar', 'bn', 'cs', 'da', 'de', 'el', 'en', 'es', 'fa', 'fi', 'fil', 'fr', 'he', 'hi', 'hu', 'id', 'it', 'ja', 'ko', 'mr', 'nl', 'no', 'pl', 'pt', 'ro', 'ru', 'sq', 'sv', 'te', 'th', 'tr', 'uk', 'ur', 'vi', 'zh'];
 
-const ThemeSettings = () => {
-  const [theme, setTheme] = useTheme();
-  const { t } = useTranslation();
-
-  return (
-    <span className={styles.categorySettings}>
-      <select value={theme} onChange={(e) => setTheme(e.target.value)}>
-        <option value='light'>{t('light')}</option>
-        <option value='dark'>{t('dark')}</option>
-      </select>
-    </span>
-  );
-};
-
 const LanguageSettings = () => {
   const { i18n } = useTranslation();
   const { changeLanguage, language } = i18n;
@@ -42,6 +28,47 @@ const LanguageSettings = () => {
     </span>
   );
 };
+
+const ThemeSettings = () => {
+  const [theme, setTheme] = useTheme();
+  const { t } = useTranslation();
+
+  return (
+    <span className={styles.categorySettings}>
+      <select value={theme} onChange={(e) => setTheme(e.target.value)}>
+        <option value='light'>{t('light')}</option>
+        <option value='dark'>{t('dark')}</option>
+      </select>
+    </span>
+  );
+};
+
+const ProfileSettings = () => {
+  const cryptoAddressInfo = () => {
+    alert('A crypto address is more readable than a long string of characters. It can be used to send you crypto directly.\n\nChange your account address to an ENS name you own: in your ENS name page on ens.domains, click on "Records", "Edit Records", "Add record", add "plebbit-author-address" as record name, add your full address as value (you can copy it from your account data) and save.');
+  };
+
+  return (
+    <span className={styles.categorySettings}>
+      <span className={styles.settingTitle}>username</span>
+      <div className={styles.usernameInput}>
+        <input type='text' placeholder='My Name' />
+        <button className={styles.button}>save</button>
+        <span className={styles.saved}>Saved.</span>
+      </div>
+      <div className={styles.cryptoAddressSetting}>
+        <span className={styles.settingTitle}>crypto address</span>
+        <button className={styles.infoButton} onClick={cryptoAddressInfo}>?</button>
+        <div className={styles.usernameInput}>
+          <input type='text' placeholder='address.eth' />
+          <button className={styles.button}>save</button>
+          <button className={styles.button}>check</button>
+          <span className={styles.saved}>Saved.</span>
+        </div>
+      </div>
+    </span>
+  );
+}
 
 const AccountSettings = () => {
   const account = useAccount();
@@ -128,6 +155,9 @@ const AccountSettings = () => {
 
   return (
     <span className={styles.categorySettings}>
+      <div className={styles.accountAddress}>
+        <select value={account?.name} onChange={(e) => setActiveAccount(e.target.value)}>{accountsOptions}</select> is the current account
+      </div>
       <span className={styles.settingTitle}>account data</span>
       <div className={styles.accountData}>
         <textarea className={styles.textarea} value={text} onChange={(e) => setText(e.target.value)} autoCorrect="off" autoComplete='off' spellCheck='false' />
@@ -139,17 +169,12 @@ const AccountSettings = () => {
             <button onClick={() => _deleteAccount(account?.name)}>Delete</button> this account
           </div>
           <div>
-            <button onClick={_importAccount}>Import</button> another account
+            <button onClick={_importAccount}>Import</button> another account by pasting its data above
           </div>
           <div>
             <button onClick={_createAccount}>Create</button> a new account
           </div>
         </div>
-      </div>
-      <br />
-      <span className={styles.settingTitle}>account address</span>
-      <div className={styles.accountAddress}>
-        <select value={account?.name} onChange={(e) => setActiveAccount(e.target.value)}>{accountsOptions}</select> is the current account
       </div>
     </span>
   );
@@ -175,6 +200,10 @@ const Settings = () => {
       <div className={styles.category}>
         <span className={styles.categoryTitle}>theme</span>
         <ThemeSettings />
+      </div>
+      <div className={styles.category}>
+        <span className={styles.categoryTitle}>profile</span>
+        <ProfileSettings />
       </div>
       <div className={styles.category}>
         <span className={styles.categoryTitle}>account</span>

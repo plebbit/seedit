@@ -18,6 +18,6 @@
 }
 
 .stampFailed {
-  color: var(--label-failed);
-  border-color: var(--label-failed);
+  color: var(--red);
+  border-color: var(--red);
 }

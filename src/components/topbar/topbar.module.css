@@ -26,7 +26,6 @@
 .dropChoices {
   top: 18px;
   margin-top: 0;
-  margin-left: 5px;
   position: absolute;
   left: 0px;
   border: 1px solid var(--border-text);
@@ -35,6 +34,10 @@
   white-space: nowrap;
   line-height: normal;
   z-index: 9999;
+}
+
+.subsDropChoices {
+  margin-left: 5px;
 }
 
 .dropdownChoice {

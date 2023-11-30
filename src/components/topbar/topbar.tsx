@@ -96,7 +96,7 @@ const TopBar = () => {
       <div className={styles.widthClip}>
         <div className={styles.dropdown} ref={subsDropdownRef} onClick={toggleSubsDropdown}>
           <span className={styles.selectedTitle}>{t('topbar_my_subs')}</span>
-          <div className={`${styles.dropChoices} ${subsDropdownClass}`} ref={subsDropdownChoicesRef}>
+          <div className={`${styles.dropChoices} ${styles.subsDropChoices} ${subsDropdownClass}`} ref={subsDropdownChoicesRef}>
             {subscriptions?.map((subscription: string, index: number) => (
               <Link key={index} to={`/p/${subscription}`} className={styles.dropdownChoice}>
                 {getShortAddress(subscription)}
@@ -106,7 +106,7 @@ const TopBar = () => {
         </div>
         <div className={styles.dropdown} ref={sortsDropdownRef} onClick={toggleSortsDropdown}>
           <span className={styles.selectedTitle}>{getSelectedSortLabel()}</span>
-          <div className={`${styles.dropChoices} ${sortsDropdownClass}`} ref={sortsDropdownChoicesRef}>
+          <div className={`${styles.dropChoices} ${styles.sortsDropChoices} ${sortsDropdownClass}`} ref={sortsDropdownChoicesRef}>
             {sortTypes.map((choice, index) => (
               <Link to={isSubplebbit ? `/p/${params.subplebbitAddress}/${choice}` : choice} key={index} className={styles.dropdownChoice}>
                 {sortLabels[index]}
@@ -116,7 +116,7 @@ const TopBar = () => {
         </div>
         <div className={styles.dropdown} ref={filterDropdownRef} onClick={toggleFilterDropdown}>
           <span className={styles.selectedTitle}>24H</span>
-          <div className={`${styles.dropChoices} ${filterDropdownClass}`} ref={filterDropdownChoicesRef}>
+          <div className={`${styles.dropChoices} ${styles.filterDropChoices} ${filterDropdownClass}`} ref={filterDropdownChoicesRef}>
             {timeFilters.map((choice, index) => (
               <Link to={choice} key={index} className={styles.dropdownChoice}>
                 {timeFilters[index]}

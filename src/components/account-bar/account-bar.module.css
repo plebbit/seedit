@@ -11,8 +11,16 @@
   z-index: 999;
 }
 
-.user {
+.user a {
   color: var(--text-primary);
+  cursor: pointer;
+}
+
+.userDropdownButton {
+  background: none no-repeat scroll center right;
+  background-image: url("/public/assets/buttons/droparrowgray.gif");
+  padding-right: 21px;
+  margin-right: -5px;
   cursor: pointer;
 }
 

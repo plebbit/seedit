@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { Comment, useAuthorAddress } from '@plebbit/plebbit-react-hooks';
+import { Comment, useAuthorAddress, useSubplebbit } from '@plebbit/plebbit-react-hooks';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import styles from './reply.module.css';
@@ -70,7 +70,13 @@ const ReplyMedia = ({ commentMediaInfo, content, expanded, hasThumbnail, link, l
 };
 
 const Reply = ({ reply, depth }: ReplyProps) => {
-  const { cid, content, downvoteCount, flair, link, linkHeight, linkWidth, removed, spoiler, timestamp, upvoteCount } = reply || {};
+  const { cid, content, downvoteCount, flair, link, linkHeight, linkWidth, removed, spoiler, subplebbitAddress, timestamp, upvoteCount } = reply || {};
+  const subplebbit = useSubplebbit({subplebbitAddress});
+
+  const isAuthorOwner = subplebbit?.roles?.[reply.author.address]?.role === 'owner';
+  const isAuthorAdmin = subplebbit?.roles?.[reply.author.address]?.role === 'admin';
+  const isAuthorModerator = subplebbit?.roles?.[reply.author.address]?.role === 'moderator';
+  const moderatorClass = `${isAuthorOwner ? styles.owner : isAuthorAdmin ? styles.admin : isAuthorModerator ? styles.moderator : ''}`;
 
   const { shortAuthorAddress } = useAuthorAddress({ comment: reply });
   const replies = useReplies(reply);
@@ -146,10 +152,19 @@ const Reply = ({ reply, depth }: ReplyProps) => {
               onClick={(e) => {
                 e.preventDefault();
               }}
-              className={styles.author}
+              className={`${styles.author} ${moderatorClass}`}
             >
               {shortAuthorAddress}
             </Link>
+            {(isAuthorOwner || isAuthorAdmin || isAuthorModerator) && (
+              <span className={styles.moderatorBrackets}>
+                [
+                  <span className={moderatorClass} title={subplebbit?.roles?.[reply.author.address]?.role}>
+                    {(isAuthorOwner && 'O') || (isAuthorAdmin && 'A') || (isAuthorModerator && 'M')}
+                  </span>
+                ]{' '}
+              </span>
+            )}
             <span className={styles.score}>{scoreString}</span> <span className={styles.time}>{getFormattedTimeAgo(timestamp)}</span>
             {stateLabel}
             {flair && (

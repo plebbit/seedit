@@ -22,12 +22,17 @@ interface PostProps {
 }
 
 const Post = ({ post, index }: PostProps) => {
-  const { cid, content, downvoteCount, flair, link, linkHeight, linkWidth, replyCount, state, subplebbitAddress, timestamp, title, upvoteCount } = post || {};
+  const { cid, content, downvoteCount, flair, link, linkHeight, linkWidth, pinned, replyCount, state, subplebbitAddress, timestamp, title, upvoteCount } = post || {};
   const { shortAuthorAddress, authorAddressChanged } = useAuthorAddress({ comment: post });
   const subplebbit = useSubplebbit({ subplebbitAddress });
   const { t } = useTranslation();
   const params = useParams();
   const location = useLocation();
+
+  const isAuthorOwner = subplebbit?.roles?.[post.author.address]?.role === 'owner';
+  const isAuthorAdmin = subplebbit?.roles?.[post.author.address]?.role === 'admin';
+  const isAuthorModerator = subplebbit?.roles?.[post.author.address]?.role === 'moderator';
+  const moderatorClass = `${isAuthorOwner ? styles.owner : isAuthorAdmin ? styles.admin : isAuthorModerator ? styles.moderator : ''}`;
 
   const isPost = isPostView(location.pathname, params);
   const isPending = isPendingView(location.pathname, params);
@@ -48,7 +53,7 @@ const Post = ({ post, index }: PostProps) => {
   const pendingReplyCount = usePendingReplyCount({ parentCommentCid: cid });
   const totalReplyCount = replyCount + pendingReplyCount;
 
-  const linkClass = isInPostView ? (link ? styles.externalLink : styles.internalLink) : styles.link;
+  const linkClass = `${isInPostView ? (link ? styles.externalLink : styles.internalLink) : styles.link} ${pinned ? styles.pinnedLink : ''}`;
 
   return (
     <div className={styles.container} key={index}>
@@ -115,10 +120,19 @@ const Post = ({ post, index }: PostProps) => {
             )}
             <p className={styles.tagline}>
               {t('post_submitted')} {getFormattedTimeAgo(timestamp)} {t('post_by')}{' '}
-              <Link className={styles.authorAddressWrapper} to={`u/${shortAuthorAddress}`} onClick={(e) => e.preventDefault()}>
+              <Link className={`${styles.authorAddressWrapper} ${moderatorClass}`} to={`u/${shortAuthorAddress}`} onClick={(e) => e.preventDefault()}>
                 <span className={styles.authorAddressHidden}>u/{post?.author?.shortAddress || shortAuthorAddress}</span>
                 <span className={`${styles.authorAddressVisible} ${authorAddressChanged && styles.authorAddressChanged}`}>u/{shortAuthorAddress}</span>
               </Link>
+              {(isAuthorOwner || isAuthorAdmin || isAuthorModerator) && (
+                <span>
+                  {' '}[
+                    <span className={moderatorClass} title={subplebbit?.roles?.[post.author.address]?.role}>
+                      {(isAuthorOwner && 'O') || (isAuthorAdmin && 'A') || (isAuthorModerator && 'M')}
+                    </span>
+                  ]
+                </span>
+              )}
               {!isSubplebbit && (
                 <>
                    {t('post_to')}
@@ -127,6 +141,9 @@ const Post = ({ post, index }: PostProps) => {
                     p/{subplebbit?.shortAddress || subplebbitAddress}
                   </Link>
                 </>  
+              )}
+              {pinned && (
+                <span className={styles.announcement}> - {t('announcement')}</span>
               )}
             </p>
             <PostTools cid={cid} failed={state === 'failed'} replyCount={totalReplyCount} subplebbitAddress={subplebbitAddress} />
