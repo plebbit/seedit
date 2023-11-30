@@ -17,10 +17,13 @@
 
 .dropdown {
   float: left;
-  padding-left: 5px;
   cursor: pointer;
   display: inline;
   position: relative;
+}
+
+.subsDropdown {
+  padding-left: 5px;
 }
 
 .dropChoices {
