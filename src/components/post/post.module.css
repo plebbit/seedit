@@ -171,12 +171,8 @@
   animation-iteration-count: 1;
 }
 
-.moderator {
+.moderator, .admin, .owner {
   color: var(--green) !important;
-}
-
-.admin, .owner {
-  color: var(--red) !important;
 }
 
 .displayName {
