@@ -75,7 +75,7 @@
 }
 
 .selectedTextButton {
-  color: var(--text-secondary);
+  color: var(--green);
 }
 
 .dropdown {

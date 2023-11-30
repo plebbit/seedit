@@ -60,12 +60,22 @@
   padding-left: 5px;
   font-style: italic;
   text-transform: capitalize;
-  color: var(--text-secondary);
+  color: var(--green);
 }
 
-button {
+.checkCryptoAddress {
+  margin-top: 5px;
+  margin-left: -5px;
+}
+
+.categorySettings button {
   text-transform: capitalize;
   margin-left: 5px;
+  cursor: pointer;
+}
+
+.categorySettings select {
+  cursor: pointer;
 }
 
 .accountButtons button {
@@ -113,4 +123,16 @@ button {
   position: relative;
   bottom: 2px;
   margin-bottom: -2px;
+}
+
+.resolvedMessageSuccess {
+  color: var(--green);
+}
+
+.resolvedMessageFailed {
+  color: var(--red);
+}
+
+.resolvedMessageResolving {
+  color: var(--yellow);
 }

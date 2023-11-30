@@ -94,12 +94,12 @@
 }
 
 .pinnedLink {
-  color: var(--text-secondary) !important;
+  color: var(--green) !important;
   font-weight: bold !important;
 }
 
 .announcement {
-  color: var(--text-secondary) !important;
+  color: var(--green) !important;
 }
 
 .domain {
@@ -172,7 +172,7 @@
 }
 
 .moderator {
-  color: var(--text-secondary) !important;
+  color: var(--green) !important;
 }
 
 .admin, .owner {

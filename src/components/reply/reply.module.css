@@ -126,7 +126,7 @@
 }
 
 .moderator {
-  color: var(--text-secondary) !important;
+  color: var(--green) !important;
 }
 
 .admin, .owner {

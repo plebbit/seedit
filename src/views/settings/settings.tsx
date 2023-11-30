@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { createAccount, deleteAccount, importAccount, setAccount, setActiveAccount, useAccount, useAccounts } from '@plebbit/plebbit-react-hooks';
+import { createAccount, deleteAccount, importAccount, setAccount, setActiveAccount, useAccount, useAccounts, useResolvedAuthorAddress } from '@plebbit/plebbit-react-hooks';
 import stringify from 'json-stringify-pretty-compact';
 import useTheme from '../../hooks/use-theme';
 import styles from './settings.module.css';
@@ -45,22 +45,17 @@ const ThemeSettings = () => {
 
 const ProfileSettings = () => {
   const account = useAccount();
-  const [username, setUsername] = useState('');
-  const [saved, setSaved] = useState(false);
 
-  const cryptoAddressInfo = () => {
-    alert(
-      'A crypto address is more readable than a long string of characters. It can be used to send you crypto directly.\n\nChange your account address to an ENS name you own: in your ENS name page on ens.domains, click on "Records", "Edit Records", "Add record", add "plebbit-author-address" as record name, add your full address as value (you can copy it from your account data) and save.',
-    );
-  };
+  const [username, setUsername] = useState(account?.author.displayName || '');
+  const [savedUsername, setSavedUsername] = useState(false);
 
   useEffect(() => {
-    if (saved) {
+    if (savedUsername) {
       setTimeout(() => {
-        setSaved(false);
+        setSavedUsername(false);
       }, 2000);
     }
-  }, [saved]);
+  }, [savedUsername]);
 
   const saveUsername = async () => {
     try {
@@ -73,8 +68,72 @@ const ProfileSettings = () => {
         console.error('An unknown error occurred:', error);
       }
     }
-    setSaved(true);
+    setSavedUsername(true);
   };
+
+  const [cryptoAddress, setCryptoAddress] = useState(account?.author.displayName || '');
+  const [savedCryptoAddress, setSavedCryptoAddress] = useState(false);
+  const [checkCryptoAddress, setCheckCryptoAddress] = useState(false);
+  const author = { ...account?.author, address: cryptoAddress };
+  const { state, error, chainProvider } = useResolvedAuthorAddress({ author, cache: false });
+  const resolvedAddressInfoMessageClass = `${state === 'succeeded' ? styles.resolvedMessageSuccess : state === 'failed' ? styles.resolvedMessageFailed : state === 'resolving' ? styles.resolvedMessageResolving : ''}`
+
+  const resolvedAddressInfoMessage = useMemo(() => {
+    if (state === 'succeeded') {
+      return 'crypto address resolved successfully';
+    } else if (state === 'failed') {
+      if (error instanceof Error) {
+        return `failed to resolve crypto address, ${error.message}`;
+      } else {
+        return 'cannot resolve crypto address';
+      }
+    } else if (state === 'resolving') {
+      return `resolving from ${chainProvider?.urls}`;
+    } else {
+      return '';
+    }
+  }, [state, error, chainProvider]);
+
+  const cryptoAddressInfo = () => {
+    alert(
+      'Change your account address to an ENS name you own: in your ENS name page on ens.domains, click on "Records", "Edit Records", "Add record", add "plebbit-author-address" as record name, add your full address as value (you can copy it from your account data) and save.',
+    );
+  };
+
+  const saveCryptoAddress = async () => {
+    if (state !== 'succeeded') {
+      alert('Cannot save crypto address, it is not resolved');
+      return;
+    }
+
+    try {
+      await setAccount({ ...account, author: { ...account?.author, address: cryptoAddress } });
+    } catch (error) {
+      if (error instanceof Error) {
+        alert(error.message);
+        console.log(error);
+      } else {
+        console.error('An unknown error occurred:', error);
+      }
+    }
+    setSavedCryptoAddress(true);
+  }
+
+  useEffect(() => {
+    if (checkCryptoAddress) {
+      setTimeout(() => {
+        setCheckCryptoAddress(false);
+      }, 3000);
+    }
+  }, [checkCryptoAddress]);
+
+  useEffect(() => {
+    if (savedCryptoAddress) {
+      setTimeout(() => {
+        setSavedCryptoAddress(false);
+      }, 2000);
+    }
+  }, [savedCryptoAddress]);
 
   return (
     <span className={styles.categorySettings}>
@@ -84,7 +143,7 @@ const ProfileSettings = () => {
         <button className={styles.button} onClick={saveUsername}>
           save
         </button>
-        {saved && <span className={styles.saved}>Saved.</span>}
+        {savedUsername && <span className={styles.saved}>Saved.</span>}
       </div>
       <div className={styles.cryptoAddressSetting}>
         <span className={styles.settingTitle}>crypto address</span>
@@ -92,11 +151,17 @@ const ProfileSettings = () => {
           ?
         </button>
         <div className={styles.usernameInput}>
-          <input type='text' placeholder='address.eth' />
-          <button className={styles.button}>save</button>
-          <button className={styles.button}>check</button>
-          <span className={styles.saved}>Saved.</span>
+          <input type='text' placeholder='address.eth' onChange={(e) => setCryptoAddress(e.target.value)} />
+          <button className={styles.button} onClick={saveCryptoAddress}>save</button>
+          {savedCryptoAddress && <span className={styles.saved}>Saved.</span>}
         </div>
+        <div className={styles.checkCryptoAddress}>
+        <button className={styles.button} onClick={() => setCheckCryptoAddress(true)}>check</button>{' '}
+          {checkCryptoAddress ? (
+            <span className={resolvedAddressInfoMessageClass}>{resolvedAddressInfoMessage}</span>
+          ) : 'if the crypto address is resolved p2p'}
+        </div>
+        <div></div>
       </div>
     </span>
   );
@@ -204,7 +269,7 @@ const AccountSettings = () => {
             <button onClick={() => _deleteAccount(account?.name)}>Delete</button> this account
           </div>
           <div>
-            <button onClick={_importAccount}>Import</button> another account by pasting its data above
+            <button onClick={_importAccount}>Import</button> other account data
           </div>
           <div>
             <button onClick={_createAccount}>Create</button> a new account
