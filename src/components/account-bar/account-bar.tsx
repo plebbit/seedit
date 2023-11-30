@@ -22,9 +22,11 @@ const AccountBar = () => {
   const searchBarRef = useRef<HTMLDivElement>(null);
   const searchBarButtonRef = useRef<HTMLDivElement>(null);
 
-  const [accountSelectVisible, setAccountSelectVisible] = useState(false);
-  const toggleAccountSelectVisible = () => setAccountSelectVisible(!accountSelectVisible);
-  const accountSelectRef = useRef<HTMLDivElement>(null);
+  const [isAccountDropdownOpen, setIsAccountDropdownOpen] = useState(false);
+  const toggleAccountDropdown = () => setIsAccountDropdownOpen(!isAccountDropdownOpen);
+  const accountDropdownRef = useRef<HTMLDivElement>(null);
+  const accountDropdownChoicesRef = useRef<HTMLDivElement>(null);
+  const accountDropdownClass = isAccountDropdownOpen ? styles.visible : styles.hidden;
   const accountSelectButtonRef = useRef<HTMLDivElement>(null);
 
   let submitLink;
@@ -41,17 +43,21 @@ const AccountBar = () => {
 
       const isOutsideSearchBar =
         searchBarRef.current && !searchBarRef.current.contains(target) && searchBarButtonRef.current && !searchBarButtonRef.current.contains(target);
-      const isOutsideAccountSelect =
-        accountSelectRef.current && !accountSelectRef.current.contains(target) && accountSelectButtonRef.current && !accountSelectButtonRef.current.contains(target);
+      const isOutsideAccountDropdown =
+        accountDropdownRef.current && !accountDropdownRef.current.contains(target) &&
+        accountDropdownChoicesRef.current && !accountDropdownChoicesRef.current.contains(target);
+      const isOutsideAccountSelectButton =
+        accountSelectButtonRef.current && !accountSelectButtonRef.current.contains(target);
+      
+      if (isOutsideAccountSelectButton && isOutsideAccountDropdown) {
+        setIsAccountDropdownOpen(false);
+      }
 
       if (isOutsideSearchBar) {
         setSearchVisible(false);
       }
-      if (isOutsideAccountSelect) {
-        setAccountSelectVisible(false);
-      }
     },
-    [searchBarRef, accountSelectRef],
+    [searchBarRef, accountSelectButtonRef, accountDropdownRef, accountDropdownChoicesRef],
   );
 
   useEffect(() => {
@@ -61,25 +67,26 @@ const AccountBar = () => {
     };
   }, [handleClickOutside]);
 
-  const accountsOptions = accounts.map((account) => (
-    <option key={account?.id} value={account?.name}>
-      u/{account?.author?.shortAddress?.toLowerCase?.().substring(0, 8) || ''}
-    </option>
+  const accountDropdownOptions = accounts.map((account, index) => (
+    <span
+      key={index}
+      className={styles.dropdownChoice}
+      onClick={() => setActiveAccount(account?.name)}
+    >
+      {`u/${account?.author?.shortAddress?.toLowerCase()?.substring(0, 8) || ''}`}
+    </span>
   ));
 
-  accountsOptions[accountsOptions.length] = (
-    <option key='create' value='createAccount'>
+  accountDropdownOptions.push(
+    <Link 
+      key='create' 
+      to='#' 
+      className={styles.dropdownChoice} 
+      onClick={() => createAccount()}
+    >
       +create
-    </option>
+    </Link>
   );
-
-  const onAccountSelectChange = async (e: React.ChangeEvent<HTMLSelectElement>) => {
-    if (e.target.value === 'createAccount') {
-      createAccount();
-    } else {
-      setActiveAccount(e.target.value);
-    }
-  };
 
   return (
     <div className={styles.content}>
@@ -87,13 +94,13 @@ const AccountBar = () => {
         <Link to='/user.eth' onClick={(e) => e.preventDefault()}>
           {account?.author?.shortAddress}
         </Link>
-        <span className={styles.userDropdownButton} ref={accountSelectButtonRef}  onClick={toggleAccountSelectVisible} />
-        {accountSelectVisible && (
-          <span className={styles.accountSelect} ref={accountSelectRef}>
-            <select className={styles.select} onChange={onAccountSelectChange} value={account?.name}>
-              {accountsOptions}
-            </select>
-          </span>
+        <span className={styles.userDropdownButton} ref={accountSelectButtonRef} onClick={toggleAccountDropdown} />
+        {isAccountDropdownOpen && (
+          <div className={`${styles.dropdown} ${accountDropdownClass}`} ref={accountDropdownRef}>
+            <div className={`${styles.dropChoices} ${styles.accountDropChoices}`} ref={accountDropdownChoicesRef}>
+              {accountDropdownOptions}
+            </div>
+          </div>
         )}
       </span>
       <span className={styles.submitButton}>
