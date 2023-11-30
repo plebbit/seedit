@@ -124,15 +124,6 @@ const Post = ({ post, index }: PostProps) => {
                 <span className={styles.authorAddressHidden}>u/{post?.author?.shortAddress || shortAuthorAddress}</span>
                 <span className={`${styles.authorAddressVisible} ${authorAddressChanged && styles.authorAddressChanged}`}>u/{shortAuthorAddress}</span>
               </Link>
-              {!isSubplebbit && (
-                <>
-                   {t('post_to')}
-                  <Link className={styles.subplebbit} to={`/p/${subplebbitAddress}`}>
-                    {' '}
-                    p/{subplebbit?.shortAddress || subplebbitAddress}
-                  </Link>
-                </>  
-              )}
               {(isAuthorOwner || isAuthorAdmin || isAuthorModerator) && (
                 <span>
                   {' '}[
@@ -141,6 +132,15 @@ const Post = ({ post, index }: PostProps) => {
                     </span>
                   ]
                 </span>
+              )}
+              {!isSubplebbit && (
+                <>
+                   {t('post_to')}
+                  <Link className={styles.subplebbit} to={`/p/${subplebbitAddress}`}>
+                    {' '}
+                    p/{subplebbit?.shortAddress || subplebbitAddress}
+                  </Link>
+                </>  
               )}
               {pinned && (
                 <span className={styles.announcement}> - {t('announcement')}</span>
