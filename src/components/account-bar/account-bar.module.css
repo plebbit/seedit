@@ -18,7 +18,7 @@
 
 .userDropdownButton {
   background: none no-repeat scroll center right;
-  background-image: url("/public/assets/buttons/droparrowgray.gif");
+  background-image: var(--blue-dropdown-arrow);
   padding-right: 21px;
   margin-right: -5px;
   cursor: pointer;
