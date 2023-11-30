@@ -137,7 +137,7 @@ const ProfileSettings = () => {
 
   return (
     <span className={styles.categorySettings}>
-      <span className={styles.settingTitle}>username</span>
+      <span className={styles.settingTitle}>display name</span>
       <div className={styles.usernameInput}>
         <input type='text' placeholder='My Name' value={username} onChange={(e) => setUsername(e.target.value)} />
         <button className={styles.button} onClick={saveUsername}>
