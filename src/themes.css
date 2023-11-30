@@ -33,6 +33,7 @@
   --button-large-hover: url('/public/assets/buttons/button-large-hover.png');
   --button-large-nub: url('/public/assets/buttons/button-large-nub.png');
   --button-large-hover-nub: url('/public/assets/buttons/button-large-nub-hover.png');
+  --box-shadow: inset 0px 1px 1px rgba(0,0,0,0.3),0px 1px 0px rgba(255,255,255,0.6);
 }
 
 :root .dark {
@@ -70,4 +71,5 @@
   --button-large-hover: url('/public/assets/buttons/button-large-hover-dark.png');
   --button-large-nub: url('/public/assets/buttons/button-large-nub-dark.png');
   --button-large-hover-nub: url('/public/assets/buttons/button-large-nub-hover-dark.png');
+  --box-shadow: none;
 }

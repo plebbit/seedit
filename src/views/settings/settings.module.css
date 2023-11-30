@@ -5,17 +5,24 @@
   width: 100%;
 }
 
+.category {
+  display: flex;
+  align-items: flex-start;
+}
+
 .categoryTitle {
-  width: 169px;
+  flex: 0 0 169px; /* Fixed width, no grow, no shrink */
+  height: 100%;
   padding: 10px;
   font-weight: bold;
-  vertical-align: top;
+  /* vertical-align: top; */
   text-align: right;
-  display: inline-block;
+  /* display: inline-block; */
 }
 
 .categorySettings {
-  display: inline-block;
+  flex-grow: 1;
+  /* display: inline-block; */
   padding: 10px 0;
 }
 
@@ -23,15 +30,51 @@
   margin: 0 .5em 0 .5em;
 }
 
-@media (max-width: 768px) {
-  .categoryTitle {
-    width: 70px;
-  }
-}
 
 .settingTitle {
   font-style: italic;
   text-transform: capitalize;
+}
+
+.accountData textarea {
+  box-shadow: var(--box-shadow);
+}
+
+.accountButtons {
+  display: block;
+  margin-top: 2px;
+}
+
+
+.accountAddress {
+  padding-bottom: 10px;
+}
+
+.usernameInput input {
+  width: 200px;
+  padding: 2px;
+  box-shadow: var(--box-shadow);
+}
+
+.saved {
+  padding-left: 5px;
+  font-style: italic;
+  text-transform: capitalize;
+  color: var(--text-secondary);
+}
+
+button {
+  text-transform: capitalize;
+  margin-left: 5px;
+}
+
+.accountButtons button {
+  margin-top: 5px;
+  margin-left: 0px !important;
+}
+
+.cryptoAddressSetting {
+  padding-top: 15px;
 }
 
 @media (min-width: 768px) {
@@ -46,6 +89,10 @@
 }
 
 @media (max-width: 768px) {
+  .categoryTitle {
+    flex: 0 0 65px;
+  }
+
   .accountData textarea {
     width: 60vw;
     height: 200px;
@@ -54,13 +101,16 @@
     min-width: 70vw;
     max-height: 60vh;
   }
+
+  input {
+    width: 35vw !important;
+  }
 }
 
-.accountButtons {
-  display: block;
-  margin-top: 2px;
-}
-
-.accountButtons button {
-  margin-top: 5px;
+.infoButton {
+  padding: 0px 4px 0px 4px;
+  font-size: 11px;
+  position: relative;
+  bottom: 2px;
+  margin-bottom: -2px;
 }
