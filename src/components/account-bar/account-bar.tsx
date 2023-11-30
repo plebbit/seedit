@@ -44,11 +44,12 @@ const AccountBar = () => {
       const isOutsideSearchBar =
         searchBarRef.current && !searchBarRef.current.contains(target) && searchBarButtonRef.current && !searchBarButtonRef.current.contains(target);
       const isOutsideAccountDropdown =
-        accountDropdownRef.current && !accountDropdownRef.current.contains(target) &&
-        accountDropdownChoicesRef.current && !accountDropdownChoicesRef.current.contains(target);
-      const isOutsideAccountSelectButton =
-        accountSelectButtonRef.current && !accountSelectButtonRef.current.contains(target);
-      
+        accountDropdownRef.current &&
+        !accountDropdownRef.current.contains(target) &&
+        accountDropdownChoicesRef.current &&
+        !accountDropdownChoicesRef.current.contains(target);
+      const isOutsideAccountSelectButton = accountSelectButtonRef.current && !accountSelectButtonRef.current.contains(target);
+
       if (isOutsideAccountSelectButton && isOutsideAccountDropdown) {
         setIsAccountDropdownOpen(false);
       }
@@ -68,24 +69,15 @@ const AccountBar = () => {
   }, [handleClickOutside]);
 
   const accountDropdownOptions = accounts.map((account, index) => (
-    <span
-      key={index}
-      className={styles.dropdownChoice}
-      onClick={() => setActiveAccount(account?.name)}
-    >
+    <span key={index} className={styles.dropdownChoice} onClick={() => setActiveAccount(account?.name)}>
       {`u/${account?.author?.shortAddress?.toLowerCase()?.substring(0, 8) || ''}`}
     </span>
   ));
 
   accountDropdownOptions.push(
-    <Link 
-      key='create' 
-      to='#' 
-      className={styles.dropdownChoice} 
-      onClick={() => createAccount()}
-    >
+    <Link key='create' to='#' className={styles.dropdownChoice} onClick={() => createAccount()}>
       +create
-    </Link>
+    </Link>,
   );
 
   return (

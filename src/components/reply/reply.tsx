@@ -71,7 +71,7 @@ const ReplyMedia = ({ commentMediaInfo, content, expanded, hasThumbnail, link, l
 
 const Reply = ({ reply, depth }: ReplyProps) => {
   const { cid, content, downvoteCount, flair, link, linkHeight, linkWidth, removed, spoiler, subplebbitAddress, timestamp, upvoteCount } = reply || {};
-  const subplebbit = useSubplebbit({subplebbitAddress});
+  const subplebbit = useSubplebbit({ subplebbitAddress });
 
   const isAuthorOwner = subplebbit?.roles?.[reply.author.address]?.role === 'owner';
   const isAuthorAdmin = subplebbit?.roles?.[reply.author.address]?.role === 'admin';
@@ -159,9 +159,9 @@ const Reply = ({ reply, depth }: ReplyProps) => {
             {(isAuthorOwner || isAuthorAdmin || isAuthorModerator) && (
               <span className={styles.moderatorBrackets}>
                 [
-                  <span className={moderatorClass} title={subplebbit?.roles?.[reply.author.address]?.role}>
-                    {(isAuthorOwner && 'O') || (isAuthorAdmin && 'A') || (isAuthorModerator && 'M')}
-                  </span>
+                <span className={moderatorClass} title={subplebbit?.roles?.[reply.author.address]?.role}>
+                  {(isAuthorOwner && 'O') || (isAuthorAdmin && 'A') || (isAuthorModerator && 'M')}
+                </span>
                 ]{' '}
               </span>
             )}

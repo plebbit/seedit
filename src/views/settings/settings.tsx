@@ -44,21 +44,53 @@ const ThemeSettings = () => {
 };
 
 const ProfileSettings = () => {
+  const account = useAccount();
+  const [username, setUsername] = useState('');
+  const [saved, setSaved] = useState(false);
+
   const cryptoAddressInfo = () => {
-    alert('A crypto address is more readable than a long string of characters. It can be used to send you crypto directly.\n\nChange your account address to an ENS name you own: in your ENS name page on ens.domains, click on "Records", "Edit Records", "Add record", add "plebbit-author-address" as record name, add your full address as value (you can copy it from your account data) and save.');
+    alert(
+      'A crypto address is more readable than a long string of characters. It can be used to send you crypto directly.\n\nChange your account address to an ENS name you own: in your ENS name page on ens.domains, click on "Records", "Edit Records", "Add record", add "plebbit-author-address" as record name, add your full address as value (you can copy it from your account data) and save.',
+    );
+  };
+
+  useEffect(() => {
+    if (saved) {
+      setTimeout(() => {
+        setSaved(false);
+      }, 2000);
+    }
+  }, [saved]);
+
+  const saveUsername = async () => {
+    try {
+      await setAccount({ ...account, author: { ...account?.author, displayName: username } });
+    } catch (error) {
+      if (error instanceof Error) {
+        alert(error.message);
+        console.log(error);
+      } else {
+        console.error('An unknown error occurred:', error);
+      }
+    }
+    setSaved(true);
   };
 
   return (
     <span className={styles.categorySettings}>
       <span className={styles.settingTitle}>username</span>
       <div className={styles.usernameInput}>
-        <input type='text' placeholder='My Name' />
-        <button className={styles.button}>save</button>
-        <span className={styles.saved}>Saved.</span>
+        <input type='text' placeholder='My Name' value={username} onChange={(e) => setUsername(e.target.value)} />
+        <button className={styles.button} onClick={saveUsername}>
+          save
+        </button>
+        {saved && <span className={styles.saved}>Saved.</span>}
       </div>
       <div className={styles.cryptoAddressSetting}>
         <span className={styles.settingTitle}>crypto address</span>
-        <button className={styles.infoButton} onClick={cryptoAddressInfo}>?</button>
+        <button className={styles.infoButton} onClick={cryptoAddressInfo}>
+          ?
+        </button>
         <div className={styles.usernameInput}>
           <input type='text' placeholder='address.eth' />
           <button className={styles.button}>save</button>
@@ -68,7 +100,7 @@ const ProfileSettings = () => {
       </div>
     </span>
   );
-}
+};
 
 const AccountSettings = () => {
   const account = useAccount();
@@ -76,7 +108,7 @@ const AccountSettings = () => {
   const [text, setText] = useState('');
   const [switchToLastAccount, setSwitchToLastAccount] = useState(false);
 
-  const accountJson = useMemo(() => stringify({account: {...account, plebbit: undefined, karma: undefined, unreadNotificationCount: undefined}}), [account])
+  const accountJson = useMemo(() => stringify({ account: { ...account, plebbit: undefined, karma: undefined, unreadNotificationCount: undefined } }), [account]);
 
   const accountsOptions = accounts.map((account) => (
     <option key={account?.id} value={account?.name}>
@@ -85,8 +117,8 @@ const AccountSettings = () => {
   ));
 
   useEffect(() => {
-    setText(accountJson)
-  }, [accountJson])
+    setText(accountJson);
+  }, [accountJson]);
 
   useEffect(() => {
     if (switchToLastAccount && accounts.length > 0) {
@@ -108,25 +140,25 @@ const AccountSettings = () => {
       }
     }
     setSwitchToLastAccount(true);
-  }
+  };
 
   const _deleteAccount = (accountName: string) => {
     if (!accountName) {
-      return
+      return;
     } else if (window.confirm(`Are you sure you want to delete ${accountName}?`)) {
       deleteAccount(accountName);
       setSwitchToLastAccount(true);
     } else {
-      return
+      return;
     }
-  }
+  };
 
   const saveAccount = async () => {
     try {
-      const newAccount = JSON.parse(text).account
+      const newAccount = JSON.parse(text).account;
       // force keeping the same id, makes it easier to copy paste
-      await setAccount({...newAccount, id: account?.id})
-      alert(`Saved ${newAccount.name}`)
+      await setAccount({ ...newAccount, id: account?.id });
+      alert(`Saved ${newAccount.name}`);
     } catch (error) {
       if (error instanceof Error) {
         alert(error.message);
@@ -135,14 +167,14 @@ const AccountSettings = () => {
         console.error('An unknown error occurred:', error);
       }
     }
-  }
+  };
 
   const _importAccount = async () => {
     try {
-      const newAccount = JSON.parse(text)
-      await importAccount(text)
+      const newAccount = JSON.parse(text);
+      await importAccount(text);
       setSwitchToLastAccount(true);
-      alert(`Imported ${newAccount.account?.name}`)
+      alert(`Imported ${newAccount.account?.name}`);
     } catch (error) {
       if (error instanceof Error) {
         alert(error.message);
@@ -151,16 +183,19 @@ const AccountSettings = () => {
         console.error('An unknown error occurred:', error);
       }
     }
-  }
+  };
 
   return (
     <span className={styles.categorySettings}>
       <div className={styles.accountAddress}>
-        <select value={account?.name} onChange={(e) => setActiveAccount(e.target.value)}>{accountsOptions}</select> is the current account
+        <select value={account?.name} onChange={(e) => setActiveAccount(e.target.value)}>
+          {accountsOptions}
+        </select>{' '}
+        is the current account
       </div>
       <span className={styles.settingTitle}>account data</span>
       <div className={styles.accountData}>
-        <textarea className={styles.textarea} value={text} onChange={(e) => setText(e.target.value)} autoCorrect="off" autoComplete='off' spellCheck='false' />
+        <textarea className={styles.textarea} value={text} onChange={(e) => setText(e.target.value)} autoCorrect='off' autoComplete='off' spellCheck='false' />
         <div className={styles.accountButtons}>
           <div>
             <button onClick={saveAccount}>Save</button> or <button onClick={() => setText(accountJson)}>Reset</button> changes

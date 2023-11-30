@@ -126,10 +126,11 @@ const Post = ({ post, index }: PostProps) => {
               </Link>
               {(isAuthorOwner || isAuthorAdmin || isAuthorModerator) && (
                 <span>
-                  {' '}[
-                    <span className={moderatorClass} title={subplebbit?.roles?.[post.author.address]?.role}>
-                      {(isAuthorOwner && 'O') || (isAuthorAdmin && 'A') || (isAuthorModerator && 'M')}
-                    </span>
+                  {' '}
+                  [
+                  <span className={moderatorClass} title={subplebbit?.roles?.[post.author.address]?.role}>
+                    {(isAuthorOwner && 'O') || (isAuthorAdmin && 'A') || (isAuthorModerator && 'M')}
+                  </span>
                   ]
                 </span>
               )}
@@ -140,11 +141,9 @@ const Post = ({ post, index }: PostProps) => {
                     {' '}
                     p/{subplebbit?.shortAddress || subplebbitAddress}
                   </Link>
-                </>  
+                </>
               )}
-              {pinned && (
-                <span className={styles.announcement}> - {t('announcement')}</span>
-              )}
+              {pinned && <span className={styles.announcement}> - {t('announcement')}</span>}
             </p>
             <PostTools cid={cid} failed={state === 'failed'} replyCount={totalReplyCount} subplebbitAddress={subplebbitAddress} />
           </div>
