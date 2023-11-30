@@ -120,6 +120,9 @@ const Post = ({ post, index }: PostProps) => {
             )}
             <p className={styles.tagline}>
               {t('post_submitted')} {getFormattedTimeAgo(timestamp)} {t('post_by')}{' '}
+              {post?.author?.displayName && (
+                <span className={`${styles.displayName} ${moderatorClass}`}>{post?.author?.displayName} </span>
+              )}
               <Link className={`${styles.authorAddressWrapper} ${moderatorClass}`} to={`u/${shortAuthorAddress}`} onClick={(e) => e.preventDefault()}>
                 <span className={styles.authorAddressHidden}>u/{post?.author?.shortAddress || shortAuthorAddress}</span>
                 <span className={`${styles.authorAddressVisible} ${authorAddressChanged && styles.authorAddressChanged}`}>u/{shortAuthorAddress}</span>

@@ -147,6 +147,9 @@ const Reply = ({ reply, depth }: ReplyProps) => {
         <div className={styles.entry}>
           <p className={styles.tagline}>
             <span className={styles.expand}>[–]</span>
+            {reply?.author?.displayName && (
+              <span className={`${styles.author} ${moderatorClass}`}>{reply?.author?.displayName} </span>
+            )}
             <Link
               to={`/u/${shortAuthorAddress}`}
               onClick={(e) => {
@@ -154,7 +157,7 @@ const Reply = ({ reply, depth }: ReplyProps) => {
               }}
               className={`${styles.author} ${moderatorClass}`}
             >
-              {shortAuthorAddress}
+              {reply?.author?.displayName ? `u/${shortAuthorAddress}` : shortAuthorAddress}
             </Link>
             {(isAuthorOwner || isAuthorAdmin || isAuthorModerator) && (
               <span className={styles.moderatorBrackets}>

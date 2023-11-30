@@ -178,3 +178,7 @@
 .admin, .owner {
   color: var(--red) !important;
 }
+
+.displayName {
+  color: var(--text-primary);
+}
