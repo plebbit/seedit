@@ -83,10 +83,11 @@ const AccountBar = () => {
 
   return (
     <div className={styles.content}>
-      <span className={styles.user} ref={accountSelectRef}>
-        <span onClick={toggleAccountSelectVisible} ref={accountSelectButtonRef}>
+      <span className={styles.user}>
+        <Link to='/user.eth' onClick={(e) => e.preventDefault()}>
           {account?.author?.shortAddress}
-        </span>
+        </Link>
+        <span className={styles.userDropdownButton} ref={accountSelectButtonRef}  onClick={toggleAccountSelectVisible} />
         {accountSelectVisible && (
           <span className={styles.accountSelect} ref={accountSelectRef}>
             <select className={styles.select} onChange={onAccountSelectChange} value={account?.name}>
