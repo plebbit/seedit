@@ -102,8 +102,8 @@ button {
     max-height: 60vh;
   }
 
-  input {
-    width: 35vw !important;
+  .categorySettings input {
+    width: 35vw;
   }
 }
 
