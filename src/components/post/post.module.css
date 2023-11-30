@@ -139,7 +139,6 @@
 
 .authorAddressWrapper {
   display: inline-block;
-  overflow: clip;
 }
 
 /* use the crypto name as the width of the html element, but hide it and display the verified author address instead */
