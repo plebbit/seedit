@@ -13,8 +13,8 @@
 }
 
 .stampPending {
-  color: var(--label-pending);
-  border-color: var(--label-pending);
+  color: var(--yellow);
+  border-color: var(--yellow);
 }
 
 .stampFailed {

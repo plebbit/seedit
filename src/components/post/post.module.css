@@ -94,12 +94,12 @@
 }
 
 .pinnedLink {
-  color: var(--text-secondary) !important;
+  color: var(--green) !important;
   font-weight: bold !important;
 }
 
 .announcement {
-  color: var(--text-secondary) !important;
+  color: var(--green) !important;
 }
 
 .domain {
@@ -171,10 +171,10 @@
   animation-iteration-count: 1;
 }
 
-.moderator {
-  color: var(--text-secondary) !important;
+.moderator, .admin, .owner {
+  color: var(--green) !important;
 }
 
-.admin, .owner {
-  color: var(--red) !important;
+.displayName {
+  color: var(--text-primary);
 }

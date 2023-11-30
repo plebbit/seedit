@@ -17,10 +17,13 @@
 
 .dropdown {
   float: left;
-  padding-left: 5px;
   cursor: pointer;
   display: inline;
   position: relative;
+}
+
+.subsDropdown {
+  padding-left: 5px;
 }
 
 .dropChoices {
@@ -106,7 +109,7 @@
 }
 
 .srList .srBar li .selected {
-  color: var(--text-secondary) !important;
+  color: var(--green) !important;
   font-weight: bold;
 }
 

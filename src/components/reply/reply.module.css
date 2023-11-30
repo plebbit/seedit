@@ -125,10 +125,6 @@
   color: var(--text-info);
 }
 
-.moderator {
-  color: var(--text-secondary) !important;
-}
-
-.admin, .owner {
-  color: var(--red) !important;
+.moderator, .admin, .owner {
+  color: var(--green) !important;
 }

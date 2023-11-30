@@ -118,13 +118,13 @@
 .tabMenu li a {
   padding: 2px 6px 0 6px;
   text-decoration: none;
-  color: var(--text-secondary);
+  color: var(--green);
   background-color: var(--background);
   border-bottom: 1px solid var(--background);
 }
 
 .tabMenu li .selected {
-  color: var(--text-secondary);
+  color: var(--green);
   background-color: var(--background);
   border: 1px solid var(--border-primary);
   border-bottom: 2px solid var(--background);

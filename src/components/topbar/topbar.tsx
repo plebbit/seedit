@@ -94,7 +94,7 @@ const TopBar = () => {
   return (
     <div className={styles.headerArea}>
       <div className={styles.widthClip}>
-        <div className={styles.dropdown} ref={subsDropdownRef} onClick={toggleSubsDropdown}>
+        <div className={`${styles.dropdown} ${styles.subsDropdown}`} ref={subsDropdownRef} onClick={toggleSubsDropdown}>
           <span className={styles.selectedTitle}>{t('topbar_my_subs')}</span>
           <div className={`${styles.dropChoices} ${styles.subsDropChoices} ${subsDropdownClass}`} ref={subsDropdownChoicesRef}>
             {subscriptions?.map((subscription: string, index: number) => (
