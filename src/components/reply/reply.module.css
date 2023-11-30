@@ -120,3 +120,11 @@
     padding-right: 5px;
   }
 }
+
+.moderator {
+  color: var(--text-secondary) !important;
+}
+
+.admin, .owner {
+  color: var(--red) !important;
+}
