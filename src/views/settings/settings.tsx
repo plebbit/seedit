@@ -120,14 +120,6 @@ const ProfileSettings = () => {
   }
 
   useEffect(() => {
-    if (checkCryptoAddress) {
-      setTimeout(() => {
-        setCheckCryptoAddress(false);
-      }, 3000);
-    }
-  }, [checkCryptoAddress]);
-
-  useEffect(() => {
     if (savedCryptoAddress) {
       setTimeout(() => {
         setSavedCryptoAddress(false);
