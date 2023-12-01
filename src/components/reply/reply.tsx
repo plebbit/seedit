@@ -148,7 +148,7 @@ const Reply = ({ reply, depth }: ReplyProps) => {
           <p className={styles.tagline}>
             <span className={styles.expand}>[–]</span>
             {reply?.author?.displayName && (
-              <span className={`${styles.author} ${moderatorClass}`}>{reply?.author?.displayName} </span>
+              <span className={`${styles.author} ${moderatorClass}`}>{reply?.author?.displayName}</span>
             )}
             <Link
               to={`/u/${shortAuthorAddress}`}
