@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useComment, useSubplebbit } from '@plebbit/plebbit-react-hooks';
 import { useTranslation } from 'react-i18next';
@@ -10,7 +10,6 @@ import PostComponent from '../../components/post';
 import Sidebar from '../../components/sidebar/';
 import { usePendingReplyCount } from '../../hooks/use-pending-replycount';
 import useReplies from '../../hooks/use-replies';
-import useReply from '../../hooks/use-reply';
 import useStateString from '../../hooks/use-state-string';
 
 const Post = () => {
@@ -23,49 +22,15 @@ const Post = () => {
   const stateString = useStateString(comment);
 
   const replies = useReplies(comment);
-  const { setContent, resetContent, replyIndex, publishReply } = useReply(comment);
 
   const postTitle = title?.slice(0, 40) || comment?.content?.slice(0, 40);
   const subplebbitTitle = subplebbit?.title || subplebbit?.shortAddress;
-
-  const textRef = useRef<HTMLTextAreaElement>(null);
-  const urlRef = useRef<HTMLInputElement>(null);
-  const spoilerRef = useRef<HTMLInputElement>(null);
 
   const pendingReplyCount = usePendingReplyCount({ parentCommentCid: commentCid });
   const totalReplyCount = replyCount + pendingReplyCount;
   const commentCount = totalReplyCount === 0 ? t('no_comments') : totalReplyCount === 1 ? t('one_comment') : t('all_comments', { count: totalReplyCount });
 
-  const [readyToPublish, setReadyToPublish] = useState(false);
-
   const loadingString = stateString && <div className={styles.stateString}>{stateString !== 'failed' ? <LoadingEllipsis string={stateString} /> : stateString}</div>;
-
-  const onPublish = () => {
-    const currentContent = textRef.current?.value || '';
-    if (!currentContent.trim()) {
-      alert(`missing content`);
-      return;
-    }
-    setContent(textRef.current?.value || undefined, urlRef.current?.value || undefined, spoilerRef.current?.checked || false);
-    setReadyToPublish(true);
-
-    if (textRef.current) {
-      textRef.current.value = '';
-    }
-  };
-
-  useEffect(() => {
-    if (readyToPublish) {
-      publishReply();
-      setReadyToPublish(false);
-    }
-  }, [readyToPublish, publishReply]);
-
-  useEffect(() => {
-    if (typeof replyIndex === 'number') {
-      resetContent();
-    }
-  }, [replyIndex, resetContent]);
 
   useEffect(() => {
     document.title = `${postTitle || ''}${postTitle && subplebbitTitle ? ' - ' : ''}${subplebbitTitle || ''}${postTitle || subplebbitTitle ? ' - seedit' : 'seedit'}`;
@@ -105,7 +70,7 @@ const Post = () => {
             </div>
           </div>
           <div className={styles.spacer} />
-          <ReplyForm onPublish={onPublish} spoilerRef={spoilerRef} textRef={textRef} urlRef={urlRef} />
+          <ReplyForm cid={cid} />
         </div>
         {loadingString && loadingString}
         <div className={styles.replies}>

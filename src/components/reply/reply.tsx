@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useState } from 'react';
 import { Comment, useAuthorAddress, useSubplebbit } from '@plebbit/plebbit-react-hooks';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
@@ -15,15 +15,46 @@ import { PendingLabel, FailedLabel } from '../post/label';
 import PostTools from '../post/post-tools';
 import ReplyForm from '../reply-form';
 import useDownvote from '../../hooks/use-downvote';
-import useReply from '../../hooks/use-reply';
 import useStateString from '../../hooks/use-state-string';
 import useUpvote from '../../hooks/use-upvote';
 
-interface ReplyProps {
-  depth: number;
-  key: string;
-  reply: Comment;
+interface ReplyAuthorProps {
+  authorRole: string;
+  displayName: string;
+  shortAuthorAddress: string | undefined;
 }
+
+const ReplyAuthor = ({ authorRole, displayName, shortAuthorAddress }: ReplyAuthorProps) => {
+  const isAuthorOwner = authorRole === 'owner';
+  const isAuthorAdmin = authorRole === 'admin';
+  const isAuthorModerator = authorRole === 'moderator';
+  const authorRoleInitial = (isAuthorOwner && 'O') || (isAuthorAdmin && 'A') || (isAuthorModerator && 'M') || '';
+  const moderatorClass = `${isAuthorOwner ? styles.owner : isAuthorAdmin ? styles.admin : isAuthorModerator ? styles.moderator : ''}`;
+
+  return (
+    <>
+      {displayName && <span className={`${styles.author} ${moderatorClass}`}>{displayName}</span>}
+      <Link
+        to={`/u/${shortAuthorAddress}`}
+        onClick={(e) => {
+          e.preventDefault();
+        }}
+        className={`${styles.author} ${moderatorClass}`}
+      >
+        {displayName ? `u/${shortAuthorAddress}` : shortAuthorAddress}
+      </Link>
+      {authorRole && (
+        <span className={styles.moderatorBrackets}>
+          [
+          <span className={moderatorClass} title={authorRole}>
+            {authorRoleInitial}
+          </span>
+          ]{' '}
+        </span>
+      )}
+    </>
+  );
+};
 
 interface ReplyMediaProps {
   commentMediaInfo: CommentMediaInfo;
@@ -69,15 +100,31 @@ const ReplyMedia = ({ commentMediaInfo, content, expanded, hasThumbnail, link, l
   );
 };
 
+interface ReplyProps {
+  depth: number;
+  key: string;
+  reply: Comment;
+}
+
 const Reply = ({ reply, depth }: ReplyProps) => {
-  const { cid, content, downvoteCount, flair, link, linkHeight, linkWidth, removed, spoiler, subplebbitAddress, timestamp, upvoteCount } = reply || {};
+  const {
+    author: { displayName },
+    cid,
+    content,
+    downvoteCount,
+    flair,
+    link,
+    linkHeight,
+    linkWidth,
+    removed,
+    spoiler,
+    subplebbitAddress,
+    timestamp,
+    upvoteCount,
+  } = reply || {};
   const subplebbit = useSubplebbit({ subplebbitAddress });
 
-  const isAuthorOwner = subplebbit?.roles?.[reply.author.address]?.role === 'owner';
-  const isAuthorAdmin = subplebbit?.roles?.[reply.author.address]?.role === 'admin';
-  const isAuthorModerator = subplebbit?.roles?.[reply.author.address]?.role === 'moderator';
-  const moderatorClass = `${isAuthorOwner ? styles.owner : isAuthorAdmin ? styles.admin : isAuthorModerator ? styles.moderator : ''}`;
-
+  const authorRole = subplebbit?.roles?.[reply.author.address]?.role;
   const { shortAuthorAddress } = useAuthorAddress({ comment: reply });
   const replies = useReplies(reply);
   const [expanded, setExpanded] = useState(false);
@@ -94,41 +141,11 @@ const Reply = ({ reply, depth }: ReplyProps) => {
   }
   const scoreString = score === 1 ? t('reply_score_singular') : t('reply_score_plural', { count: score });
   const contentString = removed ? `[${t('removed')}]` : content;
-  const { setContent, resetContent, replyIndex, publishReply } = useReply(reply);
   const stateString = useStateString(reply);
   const loadingString = stateString && <span className={styles.stateString}>{stateString !== 'Failed' ? <LoadingEllipsis string={stateString} /> : ''}</span>;
 
-  const textRef = useRef<HTMLTextAreaElement>(null);
-  const urlRef = useRef<HTMLInputElement>(null);
-  const spoilerRef = useRef<HTMLInputElement>(null);
-
-  const [readyToPublish, setReadyToPublish] = useState(false);
   const [upvoted, upvote] = useUpvote(reply);
   const [downvoted, downvote] = useDownvote(reply);
-
-  const onPublish = () => {
-    const currentContent = textRef.current?.value || '';
-    if (!currentContent.trim()) {
-      alert(`missing content`);
-      return;
-    }
-    setContent(textRef.current?.value || undefined, urlRef.current?.value || undefined, spoilerRef.current?.checked || false);
-    setReadyToPublish(true);
-  };
-
-  useEffect(() => {
-    if (readyToPublish) {
-      publishReply();
-      hideReplyForm();
-      setReadyToPublish(false);
-    }
-  }, [readyToPublish, publishReply]);
-
-  useEffect(() => {
-    if (typeof replyIndex === 'number') {
-      resetContent();
-    }
-  }, [replyIndex, resetContent]);
 
   const stateLabel = (
     <span className={styles.stateLabel}>
@@ -147,27 +164,7 @@ const Reply = ({ reply, depth }: ReplyProps) => {
         <div className={styles.entry}>
           <p className={styles.tagline}>
             <span className={styles.expand}>[–]</span>
-            {reply?.author?.displayName && (
-              <span className={`${styles.author} ${moderatorClass}`}>{reply?.author?.displayName} </span>
-            )}
-            <Link
-              to={`/u/${shortAuthorAddress}`}
-              onClick={(e) => {
-                e.preventDefault();
-              }}
-              className={`${styles.author} ${moderatorClass}`}
-            >
-              {reply?.author?.displayName ? `u/${shortAuthorAddress}` : shortAuthorAddress}
-            </Link>
-            {(isAuthorOwner || isAuthorAdmin || isAuthorModerator) && (
-              <span className={styles.moderatorBrackets}>
-                [
-                <span className={moderatorClass} title={subplebbit?.roles?.[reply.author.address]?.role}>
-                  {(isAuthorOwner && 'O') || (isAuthorAdmin && 'A') || (isAuthorModerator && 'M')}
-                </span>
-                ]{' '}
-              </span>
-            )}
+            <ReplyAuthor authorRole={authorRole} displayName={displayName} shortAuthorAddress={shortAuthorAddress} />
             <span className={styles.score}>{scoreString}</span> <span className={styles.time}>{getFormattedTimeAgo(timestamp)}</span>
             {stateLabel}
             {flair && (
@@ -202,9 +199,7 @@ const Reply = ({ reply, depth }: ReplyProps) => {
           subplebbitAddress={reply.subplebbitAddress}
           showReplyForm={showReplyForm}
         />
-        {isReplying && (
-          <ReplyForm isReplyingToReply={true} onPublish={onPublish} hideReplyForm={hideReplyForm} spoilerRef={spoilerRef} textRef={textRef} urlRef={urlRef} />
-        )}
+        {isReplying && <ReplyForm cid={cid} isReplyingToReply={true} hideReplyForm={hideReplyForm} />}
         {replies.map((reply, index) => (
           <Reply key={`${index}${reply.cid}`} reply={reply} depth={(reply.depth || 1) + 1} />
         ))}

@@ -29,12 +29,9 @@ const AccountBar = () => {
   const accountDropdownClass = isAccountDropdownOpen ? styles.visible : styles.hidden;
   const accountSelectButtonRef = useRef<HTMLDivElement>(null);
 
-  let submitLink;
-
+  let submitLink = '/submit';
   if (isSubplebbit) {
     submitLink = `/p/${subplebbitAddress}/submit`;
-  } else {
-    submitLink = '/submit';
   }
 
   const handleClickOutside = useCallback(

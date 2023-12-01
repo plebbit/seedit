@@ -7,7 +7,7 @@ import PendingPost from './views/pending-post';
 import Post from './views/post';
 import About from './views/about/about';
 import Settings from './views/settings';
-import Submit from './views/settings/submit/submit';
+import Submit from './views/submit';
 import Subplebbit from './views/subplebbit';
 import AccountBar from './components/account-bar/';
 import ChallengeModal from './components/challenge-modal';
