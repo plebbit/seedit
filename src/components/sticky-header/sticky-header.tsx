@@ -25,24 +25,8 @@ if (!window.STICKY_MENU_SCROLL_LISTENER) {
   window.addEventListener('scroll', () => {
     // find difference between current and last scroll position
     const currentScroll = window.scrollY;
-
-    // Get the menu element
-    const menuElement = document.getElementById('sticky-menu');
-    if (!menuElement) {
-      return;
-    }
-
-    if (currentScroll >= 100) {
-      menuElement.classList.remove(styles.hidden); // Show menu
-    }
-
     const scrollDifference = currentScroll - previousScroll;
     previousScroll = currentScroll;
-
-    // no changes on mobile overscroll behavior
-    if (currentScroll <= 0) {
-      return;
-    }
 
     // find new current scroll in range
     const previousScrollInRange = currentScrollInRange;
@@ -52,8 +36,36 @@ if (!window.STICKY_MENU_SCROLL_LISTENER) {
     } else if (currentScrollInRange < 0) {
       currentScrollInRange = 0;
     }
+
+    // TODO: reomve after debugging
+    // alert([
+    //   'scrollDifference',
+    //   scrollDifference,
+    //   'currentScroll',
+    //    currentScroll, 
+    //    'previousScroll', 
+    //    currentScroll - scrollDifference, 
+    //    'currentScrollInRange', 
+    //    currentScrollInRange,
+    //    'previousScrollInRange', 
+    //    previousScrollInRange,
+    //   'animationPercent', 
+    //   currentScrollInRange / scrollRange
+    // ].join(' '))
+
+    // fix mobile overflow scroll bug
+    if (currentScroll === 0) {
+      currentScrollInRange = 0;
+    }
+
     // no changes
     if (currentScrollInRange === previousScrollInRange) {
+      return;
+    }
+
+    // Get the menu element
+    const menuElement = document.getElementById('sticky-menu');
+    if (!menuElement) {
       return;
     }
 
