@@ -52,6 +52,21 @@ if (!window.STICKY_MENU_SCROLL_LISTENER) {
     //   'animationPercent',
     //   currentScrollInRange / scrollRange
     // ].join(' '))
+    console.log([
+      'scrollDifference',
+      scrollDifference,
+      'currentScroll',
+      currentScroll,
+      'previousScroll',
+      currentScroll - scrollDifference,
+      'currentScrollInRange',
+      currentScrollInRange,
+      'previousScrollInRange',
+      previousScrollInRange,
+      'animationPercent',
+      currentScrollInRange / scrollRange,
+      ].join(' ')
+    );
 
     // fix mobile overflow scroll bug
     if (currentScroll === 0) {
