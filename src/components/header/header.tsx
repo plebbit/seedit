@@ -29,8 +29,8 @@ const AboutButton = () => {
         {t('header_about')}
       </Link>
     </li>
-  )
-}
+  );
+};
 
 const CommentsButton = () => {
   const { t } = useTranslation();
@@ -46,7 +46,7 @@ const CommentsButton = () => {
       </Link>
     </li>
   );
-}
+};
 
 const SortItems = () => {
   const { t } = useTranslation();
@@ -70,20 +70,18 @@ const SortItems = () => {
     }
   }, [params.sortType, location.pathname]);
 
-  return (
-    sortTypes.map((choice, index) => (
-      <li key={choice}>
-        <Link
-          to={isSubplebbit ? `/p/${params.subplebbitAddress}/${choice}` : choice}
-          className={selectedSortType === choice ? styles.selected : styles.choice}
-          onClick={() => handleSelect(choice)}
-        >
-          {sortLabels[index]}
-        </Link>
-      </li>
-    ))
-  );
-}
+  return sortTypes.map((choice, index) => (
+    <li key={choice}>
+      <Link
+        to={isSubplebbit ? `/p/${params.subplebbitAddress}/${choice}` : choice}
+        className={selectedSortType === choice ? styles.selected : styles.choice}
+        onClick={() => handleSelect(choice)}
+      >
+        {sortLabels[index]}
+      </Link>
+    </li>
+  ));
+};
 
 const HeaderTabs = () => {
   const params = useParams();
@@ -101,7 +99,7 @@ const HeaderTabs = () => {
   return null;
 };
 
-const HeaderTitle = ({title, shortAddress}: {title: string, shortAddress: string}) => {
+const HeaderTitle = ({ title, shortAddress }: { title: string; shortAddress: string }) => {
   const { t } = useTranslation();
   const params = useParams();
   const location = useLocation();
@@ -128,7 +126,7 @@ const HeaderTitle = ({title, shortAddress}: {title: string, shortAddress: string
     return t('preferences');
   }
   return null;
-}
+};
 
 const Header = () => {
   const [theme] = useTheme();
@@ -161,7 +159,11 @@ const Header = () => {
             )}
           </Link>
         </div>
-        {!isHome && <span className={`${styles.pageName} ${!logoIsAvatar && styles.soloPageName}`}><HeaderTitle title={title} shortAddress={shortAddress} /></span>}
+        {!isHome && (
+          <span className={`${styles.pageName} ${!logoIsAvatar && styles.soloPageName}`}>
+            <HeaderTitle title={title} shortAddress={shortAddress} />
+          </span>
+        )}
         {isSubplebbit && !isAbout && (
           <span className={styles.joinButton}>
             <SubscribeButton address={params.subplebbitAddress} />

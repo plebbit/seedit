@@ -10,7 +10,7 @@ const SubscribeButton = ({ address }: subscribeButtonProps) => {
   const { subscribe, subscribed, unsubscribe } = useSubscribe({ subplebbitAddress: address });
   const { t } = useTranslation();
 
-  const handleSubscribe =  () => {
+  const handleSubscribe = () => {
     if (subscribed === false) {
       subscribe();
     } else if (subscribed === true) {

@@ -50,7 +50,7 @@ const PostAuthor = ({ authorRole, displayName, shortAddress, shortAuthorAddress,
       )}
     </>
   );
-}
+};
 
 interface PostProps {
   index?: number;
@@ -169,7 +169,13 @@ const Post = ({ post, index }: PostProps) => {
             )}
             <p className={styles.tagline}>
               {t('post_submitted')} {getFormattedTimeAgo(timestamp)} {t('post_by')}{' '}
-              <PostAuthor authorRole={authorRole} displayName={displayName} shortAddress={shortAddress} shortAuthorAddress={shortAuthorAddress} authorAddressChanged={authorAddressChanged} />
+              <PostAuthor
+                authorRole={authorRole}
+                displayName={displayName}
+                shortAddress={shortAddress}
+                shortAuthorAddress={shortAuthorAddress}
+                authorAddressChanged={authorAddressChanged}
+              />
               {!isSubplebbit && (
                 <>
                    {t('post_to')}
