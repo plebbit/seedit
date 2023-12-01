@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useState } from 'react';
 import { Comment, useAuthorAddress, useSubplebbit } from '@plebbit/plebbit-react-hooks';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
@@ -15,7 +15,6 @@ import { PendingLabel, FailedLabel } from '../post/label';
 import PostTools from '../post/post-tools';
 import ReplyForm from '../reply-form';
 import useDownvote from '../../hooks/use-downvote';
-import useReply from '../../hooks/use-reply';
 import useStateString from '../../hooks/use-state-string';
 import useUpvote from '../../hooks/use-upvote';
 
@@ -94,41 +93,11 @@ const Reply = ({ reply, depth }: ReplyProps) => {
   }
   const scoreString = score === 1 ? t('reply_score_singular') : t('reply_score_plural', { count: score });
   const contentString = removed ? `[${t('removed')}]` : content;
-  const { setContent, resetContent, replyIndex, publishReply } = useReply(reply);
   const stateString = useStateString(reply);
   const loadingString = stateString && <span className={styles.stateString}>{stateString !== 'Failed' ? <LoadingEllipsis string={stateString} /> : ''}</span>;
 
-  const textRef = useRef<HTMLTextAreaElement>(null);
-  const urlRef = useRef<HTMLInputElement>(null);
-  const spoilerRef = useRef<HTMLInputElement>(null);
-
-  const [readyToPublish, setReadyToPublish] = useState(false);
   const [upvoted, upvote] = useUpvote(reply);
   const [downvoted, downvote] = useDownvote(reply);
-
-  const onPublish = () => {
-    const currentContent = textRef.current?.value || '';
-    if (!currentContent.trim()) {
-      alert(`missing content`);
-      return;
-    }
-    setContent(textRef.current?.value || undefined, urlRef.current?.value || undefined, spoilerRef.current?.checked || false);
-    setReadyToPublish(true);
-  };
-
-  useEffect(() => {
-    if (readyToPublish) {
-      publishReply();
-      hideReplyForm();
-      setReadyToPublish(false);
-    }
-  }, [readyToPublish, publishReply]);
-
-  useEffect(() => {
-    if (typeof replyIndex === 'number') {
-      resetContent();
-    }
-  }, [replyIndex, resetContent]);
 
   const stateLabel = (
     <span className={styles.stateLabel}>
@@ -203,7 +172,7 @@ const Reply = ({ reply, depth }: ReplyProps) => {
           showReplyForm={showReplyForm}
         />
         {isReplying && (
-          <ReplyForm isReplyingToReply={true} onPublish={onPublish} hideReplyForm={hideReplyForm} spoilerRef={spoilerRef} textRef={textRef} urlRef={urlRef} />
+          <ReplyForm cid={cid} isReplyingToReply={true} hideReplyForm={hideReplyForm} />
         )}
         {replies.map((reply, index) => (
           <Reply key={`${index}${reply.cid}`} reply={reply} depth={(reply.depth || 1) + 1} />
