@@ -42,14 +42,14 @@ if (!window.STICKY_MENU_SCROLL_LISTENER) {
     //   'scrollDifference',
     //   scrollDifference,
     //   'currentScroll',
-    //    currentScroll, 
-    //    'previousScroll', 
-    //    currentScroll - scrollDifference, 
-    //    'currentScrollInRange', 
+    //    currentScroll,
+    //    'previousScroll',
+    //    currentScroll - scrollDifference,
+    //    'currentScrollInRange',
     //    currentScrollInRange,
-    //    'previousScrollInRange', 
+    //    'previousScrollInRange',
     //    previousScrollInRange,
-    //   'animationPercent', 
+    //   'animationPercent',
     //   currentScrollInRange / scrollRange
     // ].join(' '))
 

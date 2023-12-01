@@ -69,13 +69,29 @@ const ReplyMedia = ({ commentMediaInfo, content, expanded, hasThumbnail, link, l
 };
 
 const Reply = ({ reply, depth }: ReplyProps) => {
-  const { cid, content, downvoteCount, flair, link, linkHeight, linkWidth, removed, spoiler, subplebbitAddress, timestamp, upvoteCount } = reply || {};
+  const {
+    author: { displayName },
+    cid,
+    content,
+    downvoteCount,
+    flair,
+    link,
+    linkHeight,
+    linkWidth,
+    removed,
+    spoiler,
+    subplebbitAddress,
+    timestamp,
+    upvoteCount,
+  } = reply || {};
   const subplebbit = useSubplebbit({ subplebbitAddress });
 
-  const isAuthorOwner = subplebbit?.roles?.[reply.author.address]?.role === 'owner';
-  const isAuthorAdmin = subplebbit?.roles?.[reply.author.address]?.role === 'admin';
-  const isAuthorModerator = subplebbit?.roles?.[reply.author.address]?.role === 'moderator';
+  const authorRole = subplebbit?.roles?.[reply.author.address]?.role;
+  const isAuthorOwner = authorRole === 'owner';
+  const isAuthorAdmin = authorRole === 'admin';
+  const isAuthorModerator = authorRole === 'moderator';
   const moderatorClass = `${isAuthorOwner ? styles.owner : isAuthorAdmin ? styles.admin : isAuthorModerator ? styles.moderator : ''}`;
+  const authorRoleInitial = (isAuthorOwner && 'O') || (isAuthorAdmin && 'A') || (isAuthorModerator && 'M') || '';
 
   const { shortAuthorAddress } = useAuthorAddress({ comment: reply });
   const replies = useReplies(reply);
@@ -116,9 +132,7 @@ const Reply = ({ reply, depth }: ReplyProps) => {
         <div className={styles.entry}>
           <p className={styles.tagline}>
             <span className={styles.expand}>[–]</span>
-            {reply?.author?.displayName && (
-              <span className={`${styles.author} ${moderatorClass}`}>{reply?.author?.displayName}</span>
-            )}
+            {displayName && <span className={`${styles.author} ${moderatorClass}`}>{displayName}</span>}
             <Link
               to={`/u/${shortAuthorAddress}`}
               onClick={(e) => {
@@ -126,13 +140,13 @@ const Reply = ({ reply, depth }: ReplyProps) => {
               }}
               className={`${styles.author} ${moderatorClass}`}
             >
-              {reply?.author?.displayName ? `u/${shortAuthorAddress}` : shortAuthorAddress}
+              {displayName ? `u/${shortAuthorAddress}` : shortAuthorAddress}
             </Link>
-            {(isAuthorOwner || isAuthorAdmin || isAuthorModerator) && (
+            {authorRole && (
               <span className={styles.moderatorBrackets}>
                 [
-                <span className={moderatorClass} title={subplebbit?.roles?.[reply.author.address]?.role}>
-                  {(isAuthorOwner && 'O') || (isAuthorAdmin && 'A') || (isAuthorModerator && 'M')}
+                <span className={moderatorClass} title={authorRole}>
+                  {authorRoleInitial}
                 </span>
                 ]{' '}
               </span>
@@ -171,9 +185,7 @@ const Reply = ({ reply, depth }: ReplyProps) => {
           subplebbitAddress={reply.subplebbitAddress}
           showReplyForm={showReplyForm}
         />
-        {isReplying && (
-          <ReplyForm cid={cid} isReplyingToReply={true} hideReplyForm={hideReplyForm} />
-        )}
+        {isReplying && <ReplyForm cid={cid} isReplyingToReply={true} hideReplyForm={hideReplyForm} />}
         {replies.map((reply, index) => (
           <Reply key={`${index}${reply.cid}`} reply={reply} depth={(reply.depth || 1) + 1} />
         ))}

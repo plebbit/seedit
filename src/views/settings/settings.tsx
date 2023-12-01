@@ -1,6 +1,15 @@
 import { useEffect, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { createAccount, deleteAccount, importAccount, setAccount, setActiveAccount, useAccount, useAccounts, useResolvedAuthorAddress } from '@plebbit/plebbit-react-hooks';
+import {
+  createAccount,
+  deleteAccount,
+  importAccount,
+  setAccount,
+  setActiveAccount,
+  useAccount,
+  useAccounts,
+  useResolvedAuthorAddress,
+} from '@plebbit/plebbit-react-hooks';
 import stringify from 'json-stringify-pretty-compact';
 import useTheme from '../../hooks/use-theme';
 import styles from './settings.module.css';
@@ -76,7 +85,15 @@ const ProfileSettings = () => {
   const [checkCryptoAddress, setCheckCryptoAddress] = useState(false);
   const author = { ...account?.author, address: cryptoAddress };
   const { state, error, chainProvider } = useResolvedAuthorAddress({ author, cache: false });
-  const resolvedAddressInfoMessageClass = `${state === 'succeeded' ? styles.resolvedMessageSuccess : state === 'failed' ? styles.resolvedMessageFailed : state === 'resolving' ? styles.resolvedMessageResolving : ''}`
+  const resolvedAddressInfoMessageClass = `${
+    state === 'succeeded'
+      ? styles.resolvedMessageSuccess
+      : state === 'failed'
+      ? styles.resolvedMessageFailed
+      : state === 'resolving'
+      ? styles.resolvedMessageResolving
+      : ''
+  }`;
 
   const resolvedAddressInfoMessage = useMemo(() => {
     if (state === 'succeeded') {
@@ -117,7 +134,7 @@ const ProfileSettings = () => {
       }
     }
     setSavedCryptoAddress(true);
-  }
+  };
 
   useEffect(() => {
     if (savedCryptoAddress) {
@@ -144,14 +161,16 @@ const ProfileSettings = () => {
         </button>
         <div className={styles.usernameInput}>
           <input type='text' placeholder='address.eth' onChange={(e) => setCryptoAddress(e.target.value)} />
-          <button className={styles.button} onClick={saveCryptoAddress}>save</button>
+          <button className={styles.button} onClick={saveCryptoAddress}>
+            save
+          </button>
           {savedCryptoAddress && <span className={styles.saved}>Saved.</span>}
         </div>
         <div className={styles.checkCryptoAddress}>
-        <button className={styles.button} onClick={() => setCheckCryptoAddress(true)}>check</button>{' '}
-          {checkCryptoAddress ? (
-            <span className={resolvedAddressInfoMessageClass}>{resolvedAddressInfoMessage}</span>
-          ) : 'if the crypto address is resolved p2p'}
+          <button className={styles.button} onClick={() => setCheckCryptoAddress(true)}>
+            check
+          </button>{' '}
+          {checkCryptoAddress ? <span className={resolvedAddressInfoMessageClass}>{resolvedAddressInfoMessage}</span> : 'if the crypto address is resolved p2p'}
         </div>
         <div></div>
       </div>

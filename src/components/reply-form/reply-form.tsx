@@ -41,19 +41,19 @@ const ReplyForm = ({ cid, isReplyingToReply, hideReplyForm }: ReplyFormProps) =>
     if (spoilerRef.current) {
       spoilerRef.current.checked = false;
     }
-  }
+  };
 
   const onPublish = () => {
     const currentContent = textRef.current?.value || '';
     const currentUrl = urlRef.current?.value || '';
-    
+
     if (!currentContent.trim()) {
       alert(`missing content`);
       return;
     }
 
     if (currentUrl && !isValidURL(currentUrl)) {
-      alert("The provided link is not a valid URL.");
+      alert('The provided link is not a valid URL.');
       return;
     }
     publishReply();

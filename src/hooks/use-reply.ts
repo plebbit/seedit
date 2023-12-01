@@ -73,21 +73,24 @@ const useReply = (comment: Comment) => {
   const subplebbitAddress = comment?.subplebbitAddress;
   const parentCid = comment?.cid;
 
-  const { content, link, spoiler, publishCommentOptions } = useReplyStore(state => ({
+  const { content, link, spoiler, publishCommentOptions } = useReplyStore((state) => ({
     content: state.content[parentCid],
     link: state.link[parentCid],
     spoiler: state.spoiler[parentCid],
     publishCommentOptions: state.publishCommentOptions[parentCid],
   }));
-  
+
   const setReplyStore = useReplyStore((state) => state.setReplyStore);
   const resetReplyStore = useReplyStore((state) => state.resetReplyStore);
 
-  const setContent = useMemo(() => ({
-    content: (newContent: string) => setReplyStore({ subplebbitAddress, parentCid, content: newContent, link: link || undefined, spoiler: spoiler || false }),
-    link: (newLink: string) => setReplyStore({ subplebbitAddress, parentCid, content: content, link: newLink || undefined, spoiler: spoiler || false }),
-    spoiler: (newSpoiler: boolean) => setReplyStore({ subplebbitAddress, parentCid, content: content, link: link || undefined, spoiler: newSpoiler }),
-  }), [subplebbitAddress, parentCid, setReplyStore, content, link, spoiler]);
+  const setContent = useMemo(
+    () => ({
+      content: (newContent: string) => setReplyStore({ subplebbitAddress, parentCid, content: newContent, link: link || undefined, spoiler: spoiler || false }),
+      link: (newLink: string) => setReplyStore({ subplebbitAddress, parentCid, content: content, link: newLink || undefined, spoiler: spoiler || false }),
+      spoiler: (newSpoiler: boolean) => setReplyStore({ subplebbitAddress, parentCid, content: content, link: link || undefined, spoiler: newSpoiler }),
+    }),
+    [subplebbitAddress, parentCid, setReplyStore, content, link, spoiler],
+  );
 
   const resetContent = useMemo(() => () => resetReplyStore(parentCid), [parentCid, resetReplyStore]);
 
