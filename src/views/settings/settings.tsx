@@ -95,21 +95,20 @@ const ProfileSettings = () => {
       : ''
   }`;
 
-  const resolvedAddressInfoMessage = useMemo(() => {
-    if (state === 'succeeded') {
-      return 'crypto address resolved successfully';
-    } else if (state === 'failed') {
-      if (error instanceof Error) {
-        return `failed to resolve crypto address, ${error.message}`;
-      } else {
-        return 'cannot resolve crypto address';
-      }
-    } else if (state === 'resolving') {
-      return `resolving from ${chainProvider?.urls}`;
+  let resolvedAddressInfoMessage = '';
+  if (state === 'succeeded') {
+    resolvedAddressInfoMessage = 'crypto address resolved successfully';
+  } else if (state === 'failed') {
+    if (error instanceof Error) {
+      resolvedAddressInfoMessage = `failed to resolve crypto address, ${error.message}`;
     } else {
-      return '';
+      resolvedAddressInfoMessage = 'cannot resolve crypto address';
     }
-  }, [state, error, chainProvider]);
+  } else if (state === 'resolving') {
+    resolvedAddressInfoMessage = `resolving from ${chainProvider?.urls}`;
+  } else {
+    resolvedAddressInfoMessage = '';
+  }
 
   const cryptoAddressInfo = () => {
     alert(
