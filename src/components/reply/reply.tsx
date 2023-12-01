@@ -18,11 +18,43 @@ import useDownvote from '../../hooks/use-downvote';
 import useStateString from '../../hooks/use-state-string';
 import useUpvote from '../../hooks/use-upvote';
 
-interface ReplyProps {
-  depth: number;
-  key: string;
-  reply: Comment;
+interface ReplyAuthorProps {
+  authorRole: string;
+  displayName: string;
+  shortAuthorAddress: string | undefined;
 }
+
+const ReplyAuthor = ({ authorRole, displayName, shortAuthorAddress }: ReplyAuthorProps) => {
+  const isAuthorOwner = authorRole === 'owner';
+  const isAuthorAdmin = authorRole === 'admin';
+  const isAuthorModerator = authorRole === 'moderator';
+  const authorRoleInitial = (isAuthorOwner && 'O') || (isAuthorAdmin && 'A') || (isAuthorModerator && 'M') || '';
+  const moderatorClass = `${isAuthorOwner ? styles.owner : isAuthorAdmin ? styles.admin : isAuthorModerator ? styles.moderator : ''}`;
+
+  return (
+    <>
+      {displayName && <span className={`${styles.author} ${moderatorClass}`}>{displayName}</span>}
+      <Link
+        to={`/u/${shortAuthorAddress}`}
+        onClick={(e) => {
+          e.preventDefault();
+        }}
+        className={`${styles.author} ${moderatorClass}`}
+      >
+        {displayName ? `u/${shortAuthorAddress}` : shortAuthorAddress}
+      </Link>
+      {authorRole && (
+        <span className={styles.moderatorBrackets}>
+          [
+          <span className={moderatorClass} title={authorRole}>
+            {authorRoleInitial}
+          </span>
+          ]{' '}
+        </span>
+      )}
+    </>
+  );
+};
 
 interface ReplyMediaProps {
   commentMediaInfo: CommentMediaInfo;
@@ -68,6 +100,12 @@ const ReplyMedia = ({ commentMediaInfo, content, expanded, hasThumbnail, link, l
   );
 };
 
+interface ReplyProps {
+  depth: number;
+  key: string;
+  reply: Comment;
+}
+
 const Reply = ({ reply, depth }: ReplyProps) => {
   const {
     author: { displayName },
@@ -87,12 +125,6 @@ const Reply = ({ reply, depth }: ReplyProps) => {
   const subplebbit = useSubplebbit({ subplebbitAddress });
 
   const authorRole = subplebbit?.roles?.[reply.author.address]?.role;
-  const isAuthorOwner = authorRole === 'owner';
-  const isAuthorAdmin = authorRole === 'admin';
-  const isAuthorModerator = authorRole === 'moderator';
-  const moderatorClass = `${isAuthorOwner ? styles.owner : isAuthorAdmin ? styles.admin : isAuthorModerator ? styles.moderator : ''}`;
-  const authorRoleInitial = (isAuthorOwner && 'O') || (isAuthorAdmin && 'A') || (isAuthorModerator && 'M') || '';
-
   const { shortAuthorAddress } = useAuthorAddress({ comment: reply });
   const replies = useReplies(reply);
   const [expanded, setExpanded] = useState(false);
@@ -132,25 +164,7 @@ const Reply = ({ reply, depth }: ReplyProps) => {
         <div className={styles.entry}>
           <p className={styles.tagline}>
             <span className={styles.expand}>[–]</span>
-            {displayName && <span className={`${styles.author} ${moderatorClass}`}>{displayName}</span>}
-            <Link
-              to={`/u/${shortAuthorAddress}`}
-              onClick={(e) => {
-                e.preventDefault();
-              }}
-              className={`${styles.author} ${moderatorClass}`}
-            >
-              {displayName ? `u/${shortAuthorAddress}` : shortAuthorAddress}
-            </Link>
-            {authorRole && (
-              <span className={styles.moderatorBrackets}>
-                [
-                <span className={moderatorClass} title={authorRole}>
-                  {authorRoleInitial}
-                </span>
-                ]{' '}
-              </span>
-            )}
+            <ReplyAuthor authorRole={authorRole} displayName={displayName} shortAuthorAddress={shortAuthorAddress} />
             <span className={styles.score}>{scoreString}</span> <span className={styles.time}>{getFormattedTimeAgo(timestamp)}</span>
             {stateLabel}
             {flair && (

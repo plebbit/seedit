@@ -16,13 +16,65 @@ import useDownvote from '../../hooks/use-downvote';
 import { usePendingReplyCount } from '../../hooks/use-pending-replycount';
 import useUpvote from '../../hooks/use-upvote';
 
+interface PostAuthorProps {
+  authorRole: string;
+  displayName: string;
+  shortAddress: string;
+  shortAuthorAddress: string | undefined;
+  authorAddressChanged: boolean;
+}
+
+const PostAuthor = ({ authorRole, displayName, shortAddress, shortAuthorAddress, authorAddressChanged }: PostAuthorProps) => {
+  const isAuthorOwner = authorRole === 'owner';
+  const isAuthorAdmin = authorRole === 'admin';
+  const isAuthorModerator = authorRole === 'moderator';
+  const moderatorClass = `${isAuthorOwner ? styles.owner : isAuthorAdmin ? styles.admin : isAuthorModerator ? styles.moderator : ''}`;
+  const authorRoleInitial = (isAuthorOwner && 'O') || (isAuthorAdmin && 'A') || (isAuthorModerator && 'M') || '';
+
+  return (
+    <>
+      {displayName && <span className={`${styles.displayName} ${moderatorClass}`}>{displayName} </span>}
+      <Link className={`${styles.authorAddressWrapper} ${moderatorClass}`} to={`u/${shortAuthorAddress}`} onClick={(e) => e.preventDefault()}>
+        <span className={styles.authorAddressHidden}>u/{shortAddress || shortAuthorAddress}</span>
+        <span className={`${styles.authorAddressVisible} ${authorAddressChanged && styles.authorAddressChanged}`}>u/{shortAuthorAddress}</span>
+      </Link>
+      {authorRole && (
+        <span>
+          {' '}
+          [
+          <span className={moderatorClass} title={authorRole}>
+            {authorRoleInitial}
+          </span>
+          ]
+        </span>
+      )}
+    </>
+  );
+}
+
 interface PostProps {
   index?: number;
   post: Comment;
 }
 
 const Post = ({ post, index }: PostProps) => {
-  const { author: { displayName }, cid, content, downvoteCount, flair, link, linkHeight, linkWidth, pinned, replyCount, state, subplebbitAddress, timestamp, title, upvoteCount } = post || {};
+  const {
+    author: { displayName, shortAddress },
+    cid,
+    content,
+    downvoteCount,
+    flair,
+    link,
+    linkHeight,
+    linkWidth,
+    pinned,
+    replyCount,
+    state,
+    subplebbitAddress,
+    timestamp,
+    title,
+    upvoteCount,
+  } = post || {};
   const { shortAuthorAddress, authorAddressChanged } = useAuthorAddress({ comment: post });
   const subplebbit = useSubplebbit({ subplebbitAddress });
   const { t } = useTranslation();
@@ -30,11 +82,6 @@ const Post = ({ post, index }: PostProps) => {
   const location = useLocation();
 
   const authorRole = subplebbit?.roles?.[post.author.address]?.role;
-  const isAuthorOwner = authorRole === 'owner';
-  const isAuthorAdmin = authorRole === 'admin';
-  const isAuthorModerator = authorRole === 'moderator';
-  const moderatorClass = `${isAuthorOwner ? styles.owner : isAuthorAdmin ? styles.admin : isAuthorModerator ? styles.moderator : ''}`;
-  const authorRoleInitial = (isAuthorOwner && 'O') || (isAuthorAdmin && 'A') || (isAuthorModerator && 'M') || '';
 
   const isPost = isPostView(location.pathname, params);
   const isPending = isPendingView(location.pathname, params);
@@ -122,21 +169,7 @@ const Post = ({ post, index }: PostProps) => {
             )}
             <p className={styles.tagline}>
               {t('post_submitted')} {getFormattedTimeAgo(timestamp)} {t('post_by')}{' '}
-              {displayName && <span className={`${styles.displayName} ${moderatorClass}`}>{displayName} </span>}
-              <Link className={`${styles.authorAddressWrapper} ${moderatorClass}`} to={`u/${shortAuthorAddress}`} onClick={(e) => e.preventDefault()}>
-                <span className={styles.authorAddressHidden}>u/{post?.author?.shortAddress || shortAuthorAddress}</span>
-                <span className={`${styles.authorAddressVisible} ${authorAddressChanged && styles.authorAddressChanged}`}>u/{shortAuthorAddress}</span>
-              </Link>
-              {authorRole && (
-                <span>
-                  {' '}
-                  [
-                  <span className={moderatorClass} title={authorRole}>
-                    {authorRoleInitial}
-                  </span>
-                  ]
-                </span>
-              )}
+              <PostAuthor authorRole={authorRole} displayName={displayName} shortAddress={shortAddress} shortAuthorAddress={shortAuthorAddress} authorAddressChanged={authorAddressChanged} />
               {!isSubplebbit && (
                 <>
                    {t('post_to')}
