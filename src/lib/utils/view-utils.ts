@@ -8,6 +8,17 @@ export type ViewType = 'home' | 'pending' | 'post' | 'submit' | 'subplebbit' | '
 
 const sortTypes = ['/hot', '/new', '/active', '/controversialAll', '/topAll'];
 
+export const getAboutLink = (pathname: string, params: ParamsType): string => {
+  if (params.subplebbitAddress && params.commentCid) {
+    if (pathname.startsWith(`/p/${params.subplebbitAddress}/c/${params.commentCid}`)) {
+      return `/p/${params.subplebbitAddress}/c/${params.commentCid}/about`;
+    } else if (pathname.startsWith(`/p/${params.subplebbitAddress}`)) {
+      return `/p/${params.subplebbitAddress}/about`;
+    }
+  }
+  return '/about';
+};
+
 export const isAboutView = (pathname: string): boolean => {
   return pathname.endsWith('/about');
 }
