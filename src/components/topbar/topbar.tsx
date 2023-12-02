@@ -118,7 +118,7 @@ const TopBar = () => {
           <span className={styles.selectedTitle}>24H</span>
           <div className={`${styles.dropChoices} ${styles.filterDropChoices} ${filterDropdownClass}`} ref={filterDropdownChoicesRef}>
             {timeFilters.map((choice, index) => (
-              <Link to={choice} key={index} className={styles.dropdownChoice}>
+              <Link to={choice} key={index} className={styles.dropdownChoice} onClick={(e) => e.preventDefault()}>
                 {timeFilters[index]}
               </Link>
             ))}
