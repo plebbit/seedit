@@ -5,10 +5,10 @@ import { useAccount } from '@plebbit/plebbit-react-hooks';
 import { getShortAddress } from '@plebbit/plebbit-js';
 import styles from './topbar.module.css';
 import useDefaultSubplebbitAddresses from '../../hooks/use-default-subplebbit-addresses';
+import useTimeFilter from '../../hooks/use-time-filter';
 import { isHomeView, isSubplebbitView } from '../../lib/utils/view-utils';
 
 const sortTypes = ['hot', 'new', 'active', 'controversialAll', 'topAll'];
-const timeFilters = ['1h', '24h', '1w', '1m', '1y', 'all'];
 
 const TopBar = () => {
   const account = useAccount();
@@ -16,6 +16,8 @@ const TopBar = () => {
   const { t } = useTranslation();
   const location = useLocation();
   const params = useParams();
+  const { timeFilterNames } = useTimeFilter();
+  const selectedTimeFilterName = params.timeFilterName || timeFilterNames[5];
   const subscriptions = account?.subscriptions;
   const isHome = isHomeView(location.pathname);
   const isSubplebbit = isSubplebbitView(location.pathname, params);
@@ -41,6 +43,10 @@ const TopBar = () => {
 
   const sortLabels = [t('header_hot'), t('header_new'), t('header_active'), t('header_controversial'), t('header_top')];
   const [selectedSortType, setSelectedSortType] = useState(params.sortType || '/hot');
+
+  const getTimeFilterLink = (choice: string) => {
+    return isSubplebbit ? `/p/${params.subplebbitAddress}/${selectedSortType}/${choice}` : `/${selectedSortType}/${choice}`;
+  }
 
   const getSelectedSortLabel = () => {
     const index = sortTypes.indexOf(selectedSortType);
@@ -115,11 +121,11 @@ const TopBar = () => {
           </div>
         </div>
         <div className={styles.dropdown} ref={filterDropdownRef} onClick={toggleFilterDropdown}>
-          <span className={styles.selectedTitle}>24H</span>
+          <span className={styles.selectedTitle}>{selectedTimeFilterName}</span>
           <div className={`${styles.dropChoices} ${styles.filterDropChoices} ${filterDropdownClass}`} ref={filterDropdownChoicesRef}>
-            {timeFilters.map((choice, index) => (
-              <Link to={choice} key={index} className={styles.dropdownChoice} onClick={(e) => e.preventDefault()}>
-                {timeFilters[index]}
+            {timeFilterNames.map((choice, index) => (
+              <Link to={getTimeFilterLink(choice)} key={index} className={styles.dropdownChoice}>
+                {timeFilterNames[index]}
               </Link>
             ))}
           </div>
