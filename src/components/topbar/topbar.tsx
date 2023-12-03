@@ -19,7 +19,7 @@ const TopBar = () => {
   const { timeFilterNames } = useTimeFilter();
   const selectedTimeFilterName = params.timeFilterName || timeFilterNames[5];
   const subscriptions = account?.subscriptions;
-  const isHome = isHomeView(location.pathname);
+  const isHome = isHomeView(location.pathname, params);
   const isSubplebbit = isSubplebbitView(location.pathname, params);
   const homeButtonClass = isHome ? styles.selected : styles.choice;
 

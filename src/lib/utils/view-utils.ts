@@ -1,7 +1,10 @@
+import { timeFilterNames, TimeFilterKey } from "../../hooks/use-time-filter";
+
 export type ParamsType = {
   accountCommentIndex?: string;
   commentCid?: string;
   subplebbitAddress?: string;
+  timeFilterName?: string;
 };
 
 export type ViewType = 'home' | 'pending' | 'post' | 'submit' | 'subplebbit' | 'subplebbit/submit';
@@ -23,8 +26,8 @@ export const isAboutView = (pathname: string): boolean => {
   return pathname.endsWith('/about');
 }
 
-export const isHomeView = (pathname: string): boolean => {
-  return pathname === '/' || sortTypes.includes(pathname);
+export const isHomeView = (pathname: string, params: ParamsType): boolean => {
+  return pathname === '/' || sortTypes.includes(pathname) || (timeFilterNames.includes(params.timeFilterName as TimeFilterKey));
 };
 
 export const isPendingView = (pathname: string, params: ParamsType): boolean => {

@@ -34,7 +34,7 @@ const Sidebar = ({ address, cid, createdAt, description, downvoteCount = 0, role
   const location = useLocation();
   const params = useParams();
   const isAbout = isAboutView(location.pathname);
-  const isHome = isHomeView(location.pathname);
+  const isHome = isHomeView(location.pathname, params);
   const isPost = isPostView(location.pathname, params);
   const subplebbitCreator = findSubplebbitCreator(roles);
   const creatorAddress = subplebbitCreator === 'anonymous' ? 'anonymous' : `${getShortAddress(subplebbitCreator)}`;

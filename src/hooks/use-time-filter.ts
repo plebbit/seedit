@@ -29,7 +29,7 @@ if (secondsSinceLastVisit > 30 * day) {
   lastVisitTimeFilterName = '1h';
 }
 
-const timeFilterNames: TimeFilterKey[] = ['1h', '24h', '1w', '1m', '1y', 'all'];
+export const timeFilterNames: TimeFilterKey[] = ['1h', '24h', '1w', '1m', '1y', 'all'];
 
 const useTimeFilter = (sortType: string = 'hot', timeFilterName: TimeFilterKey = lastVisitTimeFilterName) => {
   assert(typeof sortType === 'string', `useTimeFilter sortType argument '${sortType}' not a string`);
