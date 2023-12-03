@@ -25,7 +25,7 @@
 }
 
 .separator {
- color: var(--text-primary);
+ color: var(--gray-contrast);
  margin: 0px .7ex 0px .7ex;
  cursor: default; 
 }
@@ -103,4 +103,32 @@
 
 .dropdownChoice:hover {
   background-color: var(--background-primary);
+}
+
+.mailIcon {
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 15px;
+  height: 10px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.mailIconRead {
+  background-image: url('/public/assets/mail.png');
+}
+
+.mailIconUnread {
+  background-image: url('/public/assets/mail-unread.png');
+}
+
+.mailUnreadCount {
+  background-color: var(--orange);
+  color: #FFF;
+  font-size: 8px;
+  font-weight: bold;
+  padding: 0px 3px;
+  margin-left: 3px;
+  border-radius: 2px;
+  display: inline-block;
 }

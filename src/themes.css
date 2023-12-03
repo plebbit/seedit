@@ -1,4 +1,9 @@
 :root .light {
+  --orange: #FF7500;
+  --green: #228822;
+  --yellow: goldenrod;
+  --red: red;
+  --gray-contrast: #888;
   --filter: brightness(100%);
   --background: white;
   --background-primary: #cee3f8;
@@ -13,7 +18,6 @@
   --text-primary: #369;
   --button-border-primary: #c4dbf1;
   --button-border-primary-hover: #879eb4;
-  --green: #228822;
   --text-info: #888;
   --border-primary: #5f99cf;
   --border-text: gray;
@@ -27,8 +31,6 @@
   --play-button-hover: url("/public/assets/buttons/play-button-hover.png");
   --close-button: url("/public/assets/buttons/close-button.png");
   --close-button-hover: url("/public/assets/buttons/close-button-hover.png");
-  --yellow: goldenrod;
-  --red: red;
   --button-large: url('/public/assets/buttons/button-large.png');
   --button-large-hover: url('/public/assets/buttons/button-large-hover.png');
   --button-large-nub: url('/public/assets/buttons/button-large-nub.png');
@@ -38,6 +40,11 @@
 }
 
 :root .dark {
+  --orange: #FF7500;
+  --green: #228822;
+  --yellow: rgb(200, 171, 0);
+  --red: rgb(200, 0, 0);
+  --gray-contrast: #c7c7c7;
   --filter: brightness(80%);
   --background: #0f0f0f;
   --background-primary: #1f1f1f;
@@ -52,7 +59,6 @@
   --text-primary: #c7c7c7;
   --button-border-primary: #1f1f1f;
   --button-border-primary-hover: #3e3e3e;
-  --green: #228822;
   --text-info: #757575;
   --border-primary: #1f1f1f;
   --border-text: #3e3e3e;
@@ -66,8 +72,6 @@
   --play-button-hover: url("/public/assets/buttons/play-button-hover.png");
   --close-button: url("/public/assets/buttons/close-button-dark.png");
   --close-button-hover: url("/public/assets/buttons/close-button-hover.png");
-  --yellow: rgb(200, 171, 0);
-  --red: rgb(200, 0, 0);
   --button-large: url('/public/assets/buttons/button-large-dark.png');
   --button-large-hover: url('/public/assets/buttons/button-large-hover-dark.png');
   --button-large-nub: url('/public/assets/buttons/button-large-nub-dark.png');
