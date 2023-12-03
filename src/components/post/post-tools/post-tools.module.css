@@ -85,3 +85,12 @@
 .menuItem button {
   text-transform: capitalize;
 }
+
+.text {
+  font-weight: normal !important;
+  color: var(--text) !important;
+}
+
+.text:hover {
+  text-decoration: none !important;
+}

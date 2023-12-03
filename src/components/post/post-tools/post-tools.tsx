@@ -7,6 +7,7 @@ import styles from './post-tools.module.css';
 import { FailedLabel, PendingLabel, SpoilerLabel } from '../label';
 import challengesStore from '../../../hooks/use-challenges';
 import { alertChallengeVerificationFailed } from '../../../lib/utils/challenge-utils';
+import { getShareLink } from '../../../lib/utils/url-utils';
 const { addChallenge } = challengesStore.getState();
 
 interface PostToolsProps {
@@ -16,7 +17,7 @@ interface PostToolsProps {
   isReply?: boolean;
   replyCount?: number;
   spoiler?: boolean;
-  subplebbitAddress?: string;
+  subplebbitAddress: string;
   showReplyForm?: () => void;
 }
 
@@ -119,14 +120,28 @@ const ThreadTools = ({ cid, hasLabel, subplebbitAddress, replyCount = 0 }: PostT
   const { t } = useTranslation();
   const validReplyCount = isNaN(replyCount) ? 0 : replyCount;
   const commentCount = validReplyCount === 0 ? t('post_no_comments') : `${validReplyCount} ${validReplyCount === 1 ? t('post_comment') : t('post_comments')}`;
+  const [hasShared, setHasShared] = useState(false);
+
+  useEffect(() => {
+    if (hasShared) {
+      setTimeout(() => setHasShared(false), 2000);
+    }
+  }, [hasShared]);
 
   return (
     <>
       <li className={`${styles.button} ${!hasLabel ? styles.firstButton : ''}`}>
         <Link to={`/p/${subplebbitAddress}/c/${cid}`}>{commentCount}</Link>
       </li>
-      <li className={styles.button}>
-        <span>{t('post_share')}</span>
+      <li className={`${!hasShared ? styles.button : styles.text}`}>
+        <span
+          onClick={() => {
+            setHasShared(true);
+            getShareLink(subplebbitAddress, cid);
+          }}
+        >
+          {hasShared ? 'link copied' : t('post_share')}
+        </span>
       </li>
       <li className={styles.button}>
         <span>{t('post_save')}</span>
@@ -185,13 +200,13 @@ const PostTools = ({ cid, failed, hasLabel = false, isReply, replyCount, spoiler
 
   return (
     <ul className={`${styles.buttons} ${isReply ? styles.buttonsReply : ''} ${hasLabel ? styles.buttonsLabel : ''}`}>
-      {hasLabel && <PostToolsLabel cid={cid} failed={failed} isReply={isReply} spoiler={spoiler} />}
+      {hasLabel && <PostToolsLabel cid={cid} failed={failed} isReply={isReply} spoiler={spoiler} subplebbitAddress={subplebbitAddress} />}
       {isReply ? (
-        <ReplyTools cid={cid} hasLabel={hasLabel} showReplyForm={showReplyForm} />
+        <ReplyTools cid={cid} hasLabel={hasLabel} showReplyForm={showReplyForm} subplebbitAddress={subplebbitAddress} />
       ) : (
         <ThreadTools cid={cid} hasLabel={hasLabel} subplebbitAddress={subplebbitAddress} replyCount={replyCount} />
       )}
-      {isMod && <ModTools cid={cid} />}
+      {isMod && <ModTools cid={cid} subplebbitAddress={subplebbitAddress} />}
     </ul>
   );
 };

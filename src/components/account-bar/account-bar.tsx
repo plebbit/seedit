@@ -102,7 +102,14 @@ const AccountBar = () => {
         </Link>
       </span>
       <span className={styles.separator}>|</span>
-      <Link to='/settings' className={styles.iconButton} onClick={(e) => {e.preventDefault(); setIsMailUnread(!isMailUnread)}}>
+      <Link
+        to='/settings'
+        className={styles.iconButton}
+        onClick={(e) => {
+          e.preventDefault();
+          setIsMailUnread(!isMailUnread);
+        }}
+      >
         <span className={`${styles.mailIcon} ${mailClass}`} />
         {isMailUnread && <span className={styles.mailUnreadCount}>1</span>}
       </Link>
