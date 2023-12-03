@@ -2,7 +2,7 @@
   float: right;
   width: 300px;
   position: relative;
-  z-index: 999;
+  z-index: 5;
   background-color: var(--background);
   padding-left: 5px;
 }

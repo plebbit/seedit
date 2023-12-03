@@ -34,7 +34,7 @@ const Sidebar = ({ address, cid, createdAt, description, downvoteCount = 0, role
   const location = useLocation();
   const params = useParams();
   const isAbout = isAboutView(location.pathname);
-  const isHome = isHomeView(location.pathname);
+  const isHome = isHomeView(location.pathname, params);
   const isPost = isPostView(location.pathname, params);
   const subplebbitCreator = findSubplebbitCreator(roles);
   const creatorAddress = subplebbitCreator === 'anonymous' ? 'anonymous' : `${getShortAddress(subplebbitCreator)}`;
@@ -122,7 +122,7 @@ const Sidebar = ({ address, cid, createdAt, description, downvoteCount = 0, role
           {rules && rulesList}
           <div className={styles.bottom}>
             {t('created_by', { creatorAddress: '' })}
-            <Link to={`/u/${creatorAddress}`}>{`u/${creatorAddress}`}</Link>
+            <Link to={`/u/${creatorAddress}`} onClick={(e) => e.preventDefault()}>{`u/${creatorAddress}`}</Link>
             {createdAt && <span className={styles.age}> {t('community_for', { date: getFormattedDuration(createdAt) })}</span>}
           </div>
         </div>

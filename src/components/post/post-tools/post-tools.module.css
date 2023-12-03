@@ -53,3 +53,44 @@
 .hideReply {
   display: none !important;
 }
+
+.modal {
+  z-index: 7;
+  background-color: var(--background);
+  padding: 5px;
+  color: var(--text-info);
+  font-weight: bold;
+  border: 1px solid var(--border-text);
+}
+
+.modal input {
+  margin-right: 3px;
+}
+
+.menuItem {
+  padding-bottom: 5px;
+  text-transform: lowercase;
+}
+
+.menuReason {
+  padding-bottom: 2px;
+}
+
+.menuItem input[type="text"] {
+  padding: 2px;
+  box-shadow: var(--box-shadow);
+  margin-top: 2px;
+}
+
+.menuItem button {
+  text-transform: capitalize;
+}
+
+.text {
+  font-weight: normal !important;
+  color: var(--text) !important;
+}
+
+.text:hover {
+  text-decoration: none !important;
+}

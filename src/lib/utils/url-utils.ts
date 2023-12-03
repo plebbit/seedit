@@ -14,3 +14,13 @@ export const isValidURL = (url: string) => {
     return false;
   }
 };
+
+export const getShareLink = (subplebbitAddress: string, cid: string) => {
+  const shareLink = `https://pleb.bz/p/${subplebbitAddress}/c/${cid}?redirect=seedit.eth.limo`;
+
+  if (navigator.clipboard) {
+    navigator.clipboard.writeText(shareLink);
+  } else {
+    alert('Your browser does not support clipboard API');
+  }
+}

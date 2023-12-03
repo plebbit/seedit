@@ -53,7 +53,9 @@ function App() {
         <Route element={globalLayout}>
           <Route element={feedLayout}>
             <Route path='/:sortType?' element={<Home />} />
+            <Route path='/:sortType?/:timeFilterName?' element={<Home />} />
             <Route path='p/:subplebbitAddress/:sortType?' element={<Subplebbit />} />
+            <Route path='p/:subplebbitAddress/:sortType?/:timeFilterName?' element={<Subplebbit />} />
           </Route>
           <Route element={pagesLayout}>
             <Route path='/submit' element={<Submit />} />

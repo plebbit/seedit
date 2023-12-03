@@ -15,6 +15,6 @@ textarea, input {
   border: 1px solid var(--border-text);
 }
 
-select, button {
+select, button, input[type="checkbox"] {
   filter: var(--filter);
 }

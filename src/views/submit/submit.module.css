@@ -155,7 +155,7 @@ h1 {
   border: 1px solid var(--border-text);
   background: var(--background);
   left: 0;
-  z-index: 10;
+  z-index: 4;
   list-style: none;
 }
 

@@ -3,7 +3,7 @@
   background-color: var(--background-text);
   position: fixed;
   width: 100%;
-  z-index: 9999;
+  z-index: 6;
   animation-name: stickyMenuAnimation;
   animation-duration: 1s;
   animation-timing-function: linear;

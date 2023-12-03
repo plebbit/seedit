@@ -14,7 +14,7 @@ const AboutButton = () => {
   const params = useParams();
   const location = useLocation();
   const aboutLink = getAboutLink(location.pathname, params);
-  const isHome = isHomeView(location.pathname);
+  const isHome = isHomeView(location.pathname, params);
   const isAbout = isAboutView(location.pathname);
 
   return (
@@ -86,7 +86,7 @@ const SortItems = () => {
 const HeaderTabs = () => {
   const params = useParams();
   const location = useLocation();
-  const isHome = isHomeView(location.pathname);
+  const isHome = isHomeView(location.pathname, params);
   const isPost = isPostView(location.pathname, params);
   const isSubplebbit = isSubplebbitView(location.pathname, params);
   const isSubplebbitSubmit = isSubplebbitSubmitView(location.pathname, params);
@@ -136,7 +136,7 @@ const Header = () => {
   const { suggested, title, shortAddress } = subplebbit || {};
 
   const isAbout = isAboutView(location.pathname);
-  const isHome = isHomeView(location.pathname);
+  const isHome = isHomeView(location.pathname, params);
   const isPost = isPostView(location.pathname, params);
   const isSettings = isSettingsView(location.pathname);
   const isSubplebbit = isSubplebbitView(location.pathname, params);
