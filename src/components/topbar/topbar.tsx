@@ -46,7 +46,7 @@ const TopBar = () => {
 
   const getTimeFilterLink = (choice: string) => {
     return isSubplebbit ? `/p/${params.subplebbitAddress}/${selectedSortType}/${choice}` : `/${selectedSortType}/${choice}`;
-  }
+  };
 
   const getSelectedSortLabel = () => {
     const index = sortTypes.indexOf(selectedSortType);
@@ -157,7 +157,7 @@ const TopBar = () => {
           </ul>
         </div>
         <Link to='#' className={styles.moreLink}>
-          {t('topbar_edit')} »
+          {t('edit')} »
         </Link>
       </div>
     </div>

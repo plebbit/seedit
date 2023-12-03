@@ -8,7 +8,7 @@ import LoadingEllipsis from '../../components/loading-ellipsis';
 import Post from '../../components/post';
 import Sidebar from '../../components/sidebar';
 import useFeedStateString from '../../hooks/use-feed-state-string';
-import useTimeFilter, {TimeFilterKey} from '../../hooks/use-time-filter';
+import useTimeFilter, { TimeFilterKey } from '../../hooks/use-time-filter';
 
 const lastVirtuosoStates: { [key: string]: StateSnapshot } = {};
 
@@ -18,7 +18,7 @@ const Subplebbit = () => {
   const { t } = useTranslation();
   const params = useParams();
   const sortType = params?.sortType || 'hot';
-  const timeFilterName = params.timeFilterName as TimeFilterKey || 'all';
+  const timeFilterName = (params.timeFilterName as TimeFilterKey) || 'all';
   const { timeFilter } = useTimeFilter(sortType, timeFilterName);
   const subplebbitAddress = params.subplebbitAddress;
   const subplebbitAddresses = useMemo(() => [subplebbitAddress], [subplebbitAddress]) as string[];

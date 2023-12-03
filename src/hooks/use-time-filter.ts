@@ -11,7 +11,7 @@ const timeFilters: TimeFilters = {
   '1w': (comment) => comment.timestamp > Date.now() / 1000 - 60 * 60 * 24 * 7,
   '1m': (comment) => comment.timestamp > Date.now() / 1000 - 60 * 60 * 24 * 30,
   '1y': (comment) => comment.timestamp > Date.now() / 1000 - 60 * 60 * 24 * 365,
-  'all': undefined,
+  all: undefined,
 };
 
 const lastVisitTimestamp = Number(localStorage.getItem('seeditLastVisitTimestamp')) || Date.now();

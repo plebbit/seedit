@@ -9,7 +9,7 @@ import Post from '../../components/post';
 import Sidebar from '../../components/sidebar';
 import useDefaultSubplebbitAddresses from '../../hooks/use-default-subplebbit-addresses';
 import useFeedStateString from '../../hooks/use-feed-state-string';
-import useTimeFilter, {TimeFilterKey} from '../../hooks/use-time-filter';
+import useTimeFilter, { TimeFilterKey } from '../../hooks/use-time-filter';
 
 const lastVirtuosoStates: { [key: string]: StateSnapshot } = {};
 
@@ -21,7 +21,7 @@ const Home = () => {
   const subplebbitAddresses = defaultSubplebbitAddresses.concat(account?.subscriptions || []);
   const params = useParams<{ sortType?: string; timeFilterName?: string }>();
   const sortType = params?.sortType || 'hot';
-  const timeFilterName = params.timeFilterName as TimeFilterKey || 'all';
+  const timeFilterName = (params.timeFilterName as TimeFilterKey) || 'all';
   const { timeFilter } = useTimeFilter(sortType, timeFilterName);
   const { feed, hasMore, loadMore } = useFeed({ subplebbitAddresses, sortType, filter: timeFilter });
   const { t } = useTranslation();
