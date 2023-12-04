@@ -105,5 +105,7 @@
   "points": "คะแนน",
   "share_link": "แชร์ลิงก์",
   "upvoted": "เสนอชื่นชม",
-  "announcement": "ประกาศ"
+  "announcement": "ประกาศ",
+  "child": "{{childrenCount}} เด็ก",
+  "children": "{{childrenCount}} เด็ก"
 }

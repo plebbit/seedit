@@ -105,5 +105,7 @@
   "points": "امتیازها",
   "share_link": "پیوند به اشتراک گذاری",
   "upvoted": "رای مثبت داده شده",
-  "announcement": "اعلان"
+  "announcement": "اعلان",
+  "child": "{{childrenCount}} کودک",
+  "children": "{{childrenCount}} کودکان"
 }

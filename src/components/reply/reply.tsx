@@ -158,7 +158,7 @@ const Reply = ({ reply, depth }: ReplyProps) => {
   const [collapsed, setCollapsed] = useState(false);
   const unnestedReplies = useMemo(() => flattenCommentsPages(reply.replies), [reply.replies]);
   const childrenCount = unnestedReplies.length;
-  const childrenString = childrenCount === 1 ? t('reply_child_singular') : t('reply_child_plural', { childrenCount });
+  const childrenString = childrenCount === 1 ? t('child', { childrenCount }) : t('children', { childrenCount });
 
   return (
     <div className={styles.reply}>

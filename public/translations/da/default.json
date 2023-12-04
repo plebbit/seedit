@@ -105,5 +105,7 @@
   "points": "point",
   "share_link": "del link",
   "upvoted": "stemt op",
-  "announcement": "meddelelse"
+  "announcement": "meddelelse",
+  "child": "{{childrenCount}} barn",
+  "children": "{{childrenCount}} børn"
 }

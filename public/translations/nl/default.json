@@ -105,5 +105,7 @@
   "points": "punten",
   "share_link": "deel link",
   "upvoted": "heeft een upvote gegeven",
-  "announcement": "aankondiging"
+  "announcement": "aankondiging",
+  "child": "{{childrenCount}} kinderen",
+  "children": "{{childrenCount}} kind"
 }

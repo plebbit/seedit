@@ -105,5 +105,7 @@
   "points": "बिंदु",
   "share_link": "लिंक साझा करें",
   "upvoted": "ने ऊपर मत दिया",
-  "announcement": "घोषणा"
+  "announcement": "घोषणा",
+  "child": "{{childrenCount}} बच्चा",
+  "children": "{{childrenCount}} बच्चे"
 }

@@ -105,5 +105,7 @@
   "points": "পয়েন্টস",
   "share_link": "শেয়ার লিঙ্ক",
   "upvoted": "আপভোট দেওয়া হয়েছে",
-  "announcement": "ঘোষণা"
+  "announcement": "ঘোষণা",
+  "child": "{{childrenCount}} শিশু",
+  "children": "{{childrenCount}} শিশুরা"
 }

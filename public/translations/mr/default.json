@@ -105,5 +105,7 @@
   "points": "बिंदू",
   "share_link": "लिंक सामायिक करा",
   "upvoted": "अपवोट दिला",
-  "announcement": "सूचना"
+  "announcement": "सूचना",
+  "child": "{{childrenCount}} मुलगे",
+  "children": "{{childrenCount}} मुलगा/मुलगी"
 }

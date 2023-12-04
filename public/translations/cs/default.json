@@ -105,5 +105,7 @@
   "points": "body",
   "share_link": "sdílet odkaz",
   "upvoted": "hlasovalo",
-  "announcement": "oznámení"
+  "announcement": "oznámení",
+  "child": "{{childrenCount}} dítě",
+  "children": "{{childrenCount}} děti"
 }

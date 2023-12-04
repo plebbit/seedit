@@ -105,5 +105,7 @@
   "points": "poäng",
   "share_link": "dela länk",
   "upvoted": "har röstat uppåt",
-  "announcement": "meddelande"
+  "announcement": "meddelande",
+  "child": "{{childrenCount}} barn",
+  "children": "{{childrenCount}} barn"
 }

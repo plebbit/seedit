@@ -105,5 +105,7 @@
   "points": "puanlar",
   "share_link": "bağlantıyı paylaş",
   "upvoted": "oy verdi",
-  "announcement": "duyuru"
+  "announcement": "duyuru",
+  "child": "{{childrenCount}} çocuklar",
+  "children": "{{childrenCount}} çocuk"
 }

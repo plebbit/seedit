@@ -105,5 +105,7 @@
   "points": "pontos",
   "share_link": "compartilhar link",
   "upvoted": "deu um upvote",
-  "announcement": "anúncio"
+  "announcement": "anúncio",
+  "child": "{{childrenCount}} crianças",
+  "children": "{{childrenCount}} criança"
 }

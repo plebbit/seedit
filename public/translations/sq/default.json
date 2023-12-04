@@ -105,5 +105,7 @@
   "points": "pikë",
   "share_link": "ndaj linkun",
   "upvoted": "ka votuar pozitivisht",
-  "announcement": "njoftim"
+  "announcement": "njoftim",
+  "child": "{{childrenCount}} fëmijët",
+  "children": "{{childrenCount}} fëmijë"
 }

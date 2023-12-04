@@ -105,5 +105,7 @@
   "points": "puncte",
   "share_link": "partajează linkul",
   "upvoted": "a dat un upvote",
-  "announcement": "anunț"
+  "announcement": "anunț",
+  "child": "{{childrenCount}} copii",
+  "children": "{{childrenCount}} copil"
 }

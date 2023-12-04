@@ -105,5 +105,7 @@
   "points": "очки",
   "share_link": "поделиться ссылкой",
   "upvoted": "поставил плюс",
-  "announcement": "объявление"
+  "announcement": "объявление",
+  "child": "{{childrenCount}} дети",
+  "children": "{{childrenCount}} ребенок"
 }
