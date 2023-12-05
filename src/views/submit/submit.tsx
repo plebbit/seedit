@@ -8,7 +8,7 @@ import { alertChallengeVerificationFailed } from '../../lib/utils/challenge-util
 import { isValidURL } from '../../lib/utils/url-utils';
 import styles from './submit.module.css';
 import challengesStore from '../../hooks/use-challenges';
-import useDefaultSubplebbitAddresses from '../../hooks/use-default-subplebbit-addresses';
+import { useDefaultSubplebbitAddresses } from '../../lib/utils/addresses-utils';
 
 type SubmitState = {
   subplebbitAddress: string | undefined;

@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { useAccount } from '@plebbit/plebbit-react-hooks';
 import { getShortAddress } from '@plebbit/plebbit-js';
 import styles from './topbar.module.css';
-import useDefaultSubplebbitAddresses from '../../hooks/use-default-subplebbit-addresses';
+import { SubplebbitWithDisplay, useDefaultAndSubscriptionsSubplebbits } from '../../lib/utils/addresses-utils';
 import useTimeFilter from '../../hooks/use-time-filter';
 import { isHomeView, isSubplebbitView } from '../../lib/utils/view-utils';
 
@@ -12,7 +12,7 @@ const sortTypes = ['hot', 'new', 'active', 'controversialAll', 'topAll'];
 
 const TopBar = () => {
   const account = useAccount();
-  const subplebbitAddresses = useDefaultSubplebbitAddresses();
+  const subplebbitAddresses = useDefaultAndSubscriptionsSubplebbits();
   const { t } = useTranslation();
   const location = useLocation();
   const params = useParams();
@@ -146,11 +146,11 @@ const TopBar = () => {
           </ul>
           <span className={styles.separator}>  |  </span>
           <ul className={styles.srBar}>
-            {subplebbitAddresses?.map((address: string, index: number) => (
+            {subplebbitAddresses?.map((subplebbit: SubplebbitWithDisplay, index) => (
               <li key={index}>
                 {index !== 0 && <span className={styles.separator}>-</span>}
-                <Link to={`/p/${address}`} className={styles.choice}>
-                  {address}
+                <Link to={`/p/${subplebbit.address}`} className={styles.choice}>
+                  {subplebbit.displayAddress}
                 </Link>
               </li>
             ))}

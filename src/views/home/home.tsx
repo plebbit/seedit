@@ -7,7 +7,7 @@ import styles from './home.module.css';
 import LoadingEllipsis from '../../components/loading-ellipsis';
 import Post from '../../components/post';
 import Sidebar from '../../components/sidebar';
-import useDefaultSubplebbitAddresses from '../../hooks/use-default-subplebbit-addresses';
+import { useDefaultSubplebbitAddresses } from '../../lib/utils/addresses-utils';
 import useFeedStateString from '../../hooks/use-feed-state-string';
 import useTimeFilter, { TimeFilterKey } from '../../hooks/use-time-filter';
 
@@ -16,8 +16,8 @@ const lastVirtuosoStates: { [key: string]: StateSnapshot } = {};
 const NoPosts = () => 'no posts';
 
 const Home = () => {
-  const defaultSubplebbitAddresses = useDefaultSubplebbitAddresses();
   const account = useAccount();
+  const defaultSubplebbitAddresses = useDefaultSubplebbitAddresses();
   const subplebbitAddresses = defaultSubplebbitAddresses.concat(account?.subscriptions || []);
   const params = useParams<{ sortType?: string; timeFilterName?: string }>();
   const sortType = params?.sortType || 'hot';
