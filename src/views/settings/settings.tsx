@@ -1,14 +1,6 @@
 import { useEffect, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import {
-  createAccount,
-  deleteAccount,
-  importAccount,
-  setAccount,
-  setActiveAccount,
-  useAccount,
-  useAccounts,
-} from '@plebbit/plebbit-react-hooks';
+import { createAccount, deleteAccount, importAccount, setAccount, setActiveAccount, useAccount, useAccounts } from '@plebbit/plebbit-react-hooks';
 import stringify from 'json-stringify-pretty-compact';
 import styles from './settings.module.css';
 import ThemeSettings from './theme-settings';

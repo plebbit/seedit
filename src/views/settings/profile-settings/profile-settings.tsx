@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
-import { setAccount, useAccount, useResolvedAuthorAddress } from "@plebbit/plebbit-react-hooks";
+import { useEffect, useState } from 'react';
+import { setAccount, useAccount, useResolvedAuthorAddress } from '@plebbit/plebbit-react-hooks';
 import { getShortAddress } from '@plebbit/plebbit-js';
 import styles from './profile-settings.module.css';
 
@@ -36,23 +36,21 @@ const ProfileSettings = () => {
     checkingCryptoAddress: false,
     showResolvingMessage: true,
     resolveString: 'if the crypto address is resolved p2p',
-    resolveClass: ''
+    resolveClass: '',
   });
 
   const [savedCryptoAddress, setSavedCryptoAddress] = useState(false);
 
   const author = { ...account?.author, address: cryptoState.cryptoAddressToResolve };
-  const {resolvedAddress, state, error, chainProvider } = useResolvedAuthorAddress({ author, cache: false });
+  const { resolvedAddress, state, error, chainProvider } = useResolvedAuthorAddress({ author, cache: false });
 
   useEffect(() => {
     if (cryptoState.showResolvingMessage) {
       let resolveString = '';
       let resolveClass = '';
-  
+
       if (state === 'failed') {
-        resolveString = error instanceof Error ? 
-          `failed to resolve crypto address, error: ${error.message}` : 
-          'cannot resolve crypto address, unknown error';
+        resolveString = error instanceof Error ? `failed to resolve crypto address, error: ${error.message}` : 'cannot resolve crypto address, unknown error';
         resolveClass = styles.red;
       } else if (state === 'resolving') {
         resolveString = `resolving from ${chainProvider?.urls}`;
@@ -60,11 +58,11 @@ const ProfileSettings = () => {
       } else {
         return;
       }
-  
-      setCryptoState(prevState => ({
+
+      setCryptoState((prevState) => ({
         ...prevState,
         resolveString: resolveString,
-        resolveClass: resolveClass
+        resolveClass: resolveClass,
       }));
     }
   }, [cryptoState.showResolvingMessage, state, error, chainProvider]);
@@ -83,15 +81,14 @@ const ProfileSettings = () => {
       return;
     }
 
-    setCryptoState(prevState => ({
+    setCryptoState((prevState) => ({
       ...prevState,
       resolveString: resolveString,
       resolveClass: resolveClass,
       cryptoAddressToResolve: '',
-      showResolvingMessage: false
+      showResolvingMessage: false,
     }));
   }, [resolvedAddress, account?.signer.address]);
-  
 
   const cryptoAddressInfo = () => {
     alert(
@@ -100,7 +97,7 @@ const ProfileSettings = () => {
   };
 
   const saveCryptoAddress = async () => {
-    if (!cryptoState.cryptoAddress) {
+    if (!cryptoState.cryptoAddress || !cryptoState.cryptoAddress.includes('.')) {
       alert('Please enter a crypto address.');
       return;
     } else if (resolvedAddress && resolvedAddress !== account?.signer.address) {
@@ -109,12 +106,12 @@ const ProfileSettings = () => {
     } else if (resolvedAddress && resolvedAddress === account?.signer.address) {
       try {
         await setAccount({ ...account, author: { ...account?.author, address: cryptoState.cryptoAddress } });
-        setCryptoState(prevState => ({
+        setCryptoState((prevState) => ({
           ...prevState,
           savedCryptoAddress: true,
           cryptoAddressToResolve: '',
           cryptoAddress: '',
-          checkingCryptoAddress: false
+          checkingCryptoAddress: false,
         }));
       } catch (error) {
         if (error instanceof Error) {
@@ -126,19 +123,19 @@ const ProfileSettings = () => {
       }
     }
   };
-  
+
   const checkCryptoAddress = () => {
     if (!cryptoState.cryptoAddress || !cryptoState.cryptoAddress.includes('.')) {
       alert('Please enter a valid crypto address.');
       return;
     }
-    setCryptoState(prevState => ({
+    setCryptoState((prevState) => ({
       ...prevState,
       cryptoAddressToResolve: cryptoState.cryptoAddress,
       checkingCryptoAddress: true,
-      showResolvingMessage: true
+      showResolvingMessage: true,
     }));
-  }
+  };
 
   useEffect(() => {
     if (savedCryptoAddress) {
@@ -164,7 +161,12 @@ const ProfileSettings = () => {
           ?
         </button>
         <div className={styles.usernameInput}>
-          <input type='text' placeholder='address.eth' value={cryptoState.cryptoAddress}   onChange={(e) => setCryptoState(prevState => ({ ...prevState, cryptoAddress: e.target.value }))} />
+          <input
+            type='text'
+            placeholder='address.eth'
+            value={cryptoState.cryptoAddress}
+            onChange={(e) => setCryptoState((prevState) => ({ ...prevState, cryptoAddress: e.target.value }))}
+          />
           <button className={styles.button} onClick={saveCryptoAddress}>
             save
           </button>

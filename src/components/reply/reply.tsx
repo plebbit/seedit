@@ -1,6 +1,6 @@
 import { useMemo, useState } from 'react';
 import { Comment, useAuthorAddress, useSubplebbit } from '@plebbit/plebbit-react-hooks';
-import {flattenCommentsPages} from '@plebbit/plebbit-react-hooks/dist/lib/utils'
+import { flattenCommentsPages } from '@plebbit/plebbit-react-hooks/dist/lib/utils';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import styles from './reply.module.css';
@@ -171,7 +171,9 @@ const Reply = ({ reply, depth }: ReplyProps) => {
         )}
         <div className={`${styles.entry} ${collapsed && styles.collapsedEntry}`}>
           <p className={styles.tagline}>
-            <span className={styles.expand} onClick={() => setCollapsed(!collapsed)}>[{collapsed ? '+' : '–'}]</span>
+            <span className={styles.expand} onClick={() => setCollapsed(!collapsed)}>
+              [{collapsed ? '+' : '–'}]
+            </span>
             <ReplyAuthor authorRole={authorRole} displayName={displayName} shortAuthorAddress={shortAuthorAddress} />
             <span className={styles.score}>{scoreString}</span> <span className={styles.time}>{getFormattedTimeAgo(timestamp)}</span>
             {collapsed && <span className={styles.children}> ({childrenString})</span>}
