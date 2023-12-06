@@ -10,6 +10,7 @@ import {
   useAccounts,
   useResolvedAuthorAddress,
 } from '@plebbit/plebbit-react-hooks';
+import { getShortAddress } from '@plebbit/plebbit-js';
 import stringify from 'json-stringify-pretty-compact';
 import useTheme from '../../hooks/use-theme';
 import styles from './settings.module.css';
@@ -54,7 +55,6 @@ const ThemeSettings = () => {
 
 const ProfileSettings = () => {
   const account = useAccount();
-
   const [username, setUsername] = useState(account?.author.displayName || '');
   const [savedUsername, setSavedUsername] = useState(false);
 
@@ -80,35 +80,45 @@ const ProfileSettings = () => {
     setSavedUsername(true);
   };
 
-  const [cryptoAddress, setCryptoAddress] = useState(account?.author.displayName || '');
+  const [cryptoAddress, setCryptoAddress] = useState('');
+  const [cryptoAddressToResolve, setCryptoAddressToResolve] = useState('');
+  const [checkingCryptoAddress, setCheckingCryptoAddress] = useState(false);
+  const [showResolvingMessage, setShowResolvingMessage] = useState(true);
   const [savedCryptoAddress, setSavedCryptoAddress] = useState(false);
-  const [checkCryptoAddress, setCheckCryptoAddress] = useState(false);
-  const author = { ...account?.author, address: cryptoAddress };
-  const { state, error, chainProvider } = useResolvedAuthorAddress({ author, cache: false });
-  const resolvedAddressInfoMessageClass = `${
-    state === 'succeeded'
-      ? styles.resolvedMessageSuccess
-      : state === 'failed'
-      ? styles.resolvedMessageFailed
-      : state === 'resolving'
-      ? styles.resolvedMessageResolving
-      : ''
-  }`;
+  const [resolveString, setResolveString] = useState('');
+  const [resolveClass, setResolveClass] = useState('');
 
-  let resolvedAddressInfoMessage = '';
-  if (state === 'succeeded') {
-    resolvedAddressInfoMessage = 'crypto address resolved successfully';
-  } else if (state === 'failed') {
-    if (error instanceof Error) {
-      resolvedAddressInfoMessage = `failed to resolve crypto address, ${error.message}`;
-    } else {
-      resolvedAddressInfoMessage = 'cannot resolve crypto address';
+  const author = { ...account?.author, address: cryptoAddressToResolve };
+  const {resolvedAddress, state, error, chainProvider } = useResolvedAuthorAddress({ author, cache: false });
+
+  useEffect(() => {
+    if (showResolvingMessage) {
+      if (state === 'failed') {
+        if (error instanceof Error) {
+          setResolveString('failed to resolve crypto address, error: ' + error.message)
+        } else {
+          setResolveString('cannot resolve crypto address, unknown error')
+        }
+        setResolveClass(styles.red)
+      } else if (state === 'resolving') {
+        setResolveString(`resolving from ${chainProvider?.urls}`)
+        setResolveClass(styles.yellow)
+      }
     }
-  } else if (state === 'resolving') {
-    resolvedAddressInfoMessage = `resolving from ${chainProvider?.urls}`;
-  } else {
-    resolvedAddressInfoMessage = '';
-  }
+  }, [showResolvingMessage, state, error, chainProvider]);
+
+  useEffect(() => {
+    if (resolvedAddress && resolvedAddress === account?.signer.address) {
+      setResolveString('crypto address belongs to this account, address: ' + getShortAddress(resolvedAddress));
+      setResolveClass(styles.green);
+    } else if (resolvedAddress && resolvedAddress !== account?.signer.address) {
+      setResolveString('crypto address belongs to another account, address: ' + getShortAddress(resolvedAddress));
+      setResolveClass(styles.red);
+    }
+    setCryptoAddressToResolve('');
+    setShowResolvingMessage(false);
+  }, [checkingCryptoAddress, resolvedAddress, account?.signer.address]);
+  
 
   const cryptoAddressInfo = () => {
     alert(
@@ -116,9 +126,15 @@ const ProfileSettings = () => {
     );
   };
 
+  console.log('rerender', resolvedAddress, account?.signer.address, resolvedAddress === account?.signer.address)
+  console.log(cryptoAddressToResolve, cryptoAddress)
+
   const saveCryptoAddress = async () => {
-    if (state !== 'succeeded') {
-      alert('Cannot save crypto address, it is not resolved');
+    if (!cryptoAddress) {
+      alert('Please enter a crypto address.');
+      return;
+    } else if (resolvedAddress && resolvedAddress !== account?.signer.address) {
+      alert('Cannot save resolved crypto address, it belongs to another account, address: ' + resolvedAddress);
       return;
     }
 
@@ -133,7 +149,20 @@ const ProfileSettings = () => {
       }
     }
     setSavedCryptoAddress(true);
+    setCryptoAddressToResolve('');
+    setCryptoAddress('');
+    setCheckingCryptoAddress(false);
   };
+
+  const checkCryptoAddress = () => {;
+    if (!cryptoAddress) {
+      alert('Please enter a crypto address.');
+      return;
+    }
+    setCryptoAddressToResolve(cryptoAddress);
+    setCheckingCryptoAddress(true);
+    setShowResolvingMessage(true);
+  }
 
   useEffect(() => {
     if (savedCryptoAddress) {
@@ -159,17 +188,17 @@ const ProfileSettings = () => {
           ?
         </button>
         <div className={styles.usernameInput}>
-          <input type='text' placeholder='address.eth' onChange={(e) => setCryptoAddress(e.target.value)} />
+          <input type='text' placeholder='address.eth' value={cryptoAddress} onChange={(e) => setCryptoAddress(e.target.value)} />
           <button className={styles.button} onClick={saveCryptoAddress}>
             save
           </button>
           {savedCryptoAddress && <span className={styles.saved}>Saved.</span>}
         </div>
         <div className={styles.checkCryptoAddress}>
-          <button className={styles.button} onClick={() => setCheckCryptoAddress(true)}>
+          <button className={styles.button} onClick={checkCryptoAddress}>
             check
           </button>{' '}
-          {checkCryptoAddress ? <span className={resolvedAddressInfoMessageClass}>{resolvedAddressInfoMessage}</span> : 'if the crypto address is resolved p2p'}
+          {checkingCryptoAddress ? <span className={resolveClass}>{resolveString}</span> : 'if the crypto address is resolved p2p'}
         </div>
         <div></div>
       </div>

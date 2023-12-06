@@ -66,6 +66,9 @@
 .checkCryptoAddress {
   margin-top: 5px;
   margin-left: -5px;
+  white-space: normal;
+  word-wrap: break-word;
+  width: 80vw;
 }
 
 .categorySettings button {
@@ -125,14 +128,14 @@
   margin-bottom: -2px;
 }
 
-.resolvedMessageSuccess {
+.green {
   color: var(--green);
 }
 
-.resolvedMessageFailed {
+.red {
   color: var(--red);
 }
 
-.resolvedMessageResolving {
+.yellow {
   color: var(--yellow);
 }
