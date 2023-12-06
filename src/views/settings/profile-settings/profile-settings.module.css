@@ -1,0 +1,44 @@
+.green {
+  color: var(--green);
+}
+
+.red {
+  color: var(--red);
+}
+
+.yellow {
+  color: var(--yellow);
+}
+
+.usernameInput input {
+  width: 200px;
+  padding: 2px;
+  box-shadow: var(--box-shadow);
+}
+
+.saved {
+  padding-left: 5px;
+  font-style: italic;
+  text-transform: capitalize;
+  color: var(--green);
+}
+
+.checkCryptoAddress {
+  margin-top: 5px;
+  margin-left: -5px;
+  white-space: normal;
+  word-wrap: break-word;
+  width: 80vw;
+}
+
+.cryptoAddressSetting {
+  padding-top: 15px;
+}
+
+.infoButton {
+  padding: 0px 4px 0px 4px;
+  font-size: 11px;
+  position: relative;
+  bottom: 2px;
+  margin-bottom: -2px;
+}
