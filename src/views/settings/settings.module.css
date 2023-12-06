@@ -11,18 +11,15 @@
 }
 
 .categoryTitle {
-  flex: 0 0 169px; /* Fixed width, no grow, no shrink */
+  flex: 0 0 169px;
   height: 100%;
   padding: 10px;
   font-weight: bold;
-  /* vertical-align: top; */
   text-align: right;
-  /* display: inline-block; */
 }
 
 .categorySettings {
   flex-grow: 1;
-  /* display: inline-block; */
   padding: 10px 0;
 }
 
@@ -30,66 +27,13 @@
   margin: 0 .5em 0 .5em;
 }
 
-
 .settingTitle {
   font-style: italic;
   text-transform: capitalize;
-}
-
-.accountData textarea {
-  box-shadow: var(--box-shadow);
-}
-
-.accountButtons {
-  display: block;
-  margin-top: 2px;
-}
-
-.accountAddress {
-  padding-bottom: 10px;
 }
 
 .categorySettings button {
   text-transform: capitalize;
   margin-left: 5px;
   cursor: pointer;
-}
-
-.categorySettings select {
-  cursor: pointer;
-}
-
-.accountButtons button {
-  margin-top: 5px;
-  margin-left: 0px !important;
-}
-
-@media (min-width: 768px) {
-  .accountData textarea {
-    width: 600px;
-    height: 300px;
-    max-width: 60vw;
-    min-width: 300px;
-    max-height: 60vh;
-    min-height: 100px;
-  }
-}
-
-@media (max-width: 768px) {
-  .categoryTitle {
-    flex: 0 0 65px;
-  }
-
-  .accountData textarea {
-    width: 60vw;
-    height: 200px;
-    max-width: 70vw;
-    min-height: 200px;
-    min-width: 70vw;
-    max-height: 60vh;
-  }
-
-  .categorySettings input {
-    width: 35vw;
-  }
 }

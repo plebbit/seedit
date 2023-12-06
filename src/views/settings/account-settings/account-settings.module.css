@@ -1,0 +1,51 @@
+.accountData textarea {
+  box-shadow: var(--box-shadow);
+}
+
+.accountButtons {
+  display: block;
+  margin-top: 2px;
+}
+
+.accountAddress {
+  padding-bottom: 10px;
+}
+
+.categorySettings select {
+  cursor: pointer;
+}
+
+.accountButtons button {
+  margin-top: 5px;
+  margin-left: 0px !important;
+}
+
+@media (min-width: 768px) {
+  .accountData textarea {
+    width: 600px;
+    height: 300px;
+    max-width: 60vw;
+    min-width: 300px;
+    max-height: 60vh;
+    min-height: 100px;
+  }
+}
+
+@media (max-width: 768px) {
+  .categoryTitle {
+    flex: 0 0 65px;
+  }
+
+  .accountData textarea {
+    width: 60vw;
+    height: 200px;
+    max-width: 70vw;
+    min-height: 200px;
+    min-width: 70vw;
+    max-height: 60vh;
+  }
+
+  .categorySettings input {
+    width: 35vw;
+  }
+}
