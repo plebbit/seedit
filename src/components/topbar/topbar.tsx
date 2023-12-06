@@ -149,7 +149,7 @@ const TopBar = () => {
             {subplebbitAddresses?.map((subplebbit: SubplebbitWithDisplay, index) => (
               <li key={index}>
                 {index !== 0 && <span className={styles.separator}>-</span>}
-                <Link to={`/p/${subplebbit.address}`} className={styles.choice}>
+                <Link to={`/p/${subplebbit.address}`} className={params.subplebbitAddress === subplebbit.address ? styles.selected : styles.choice}>
                   {subplebbit.displayAddress}
                 </Link>
               </li>
