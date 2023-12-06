@@ -105,5 +105,7 @@
   "points": "poeng",
   "share_link": "del lenke",
   "upvoted": "har gitt en oppvoting",
-  "announcement": "kunngjøring"
+  "announcement": "kunngjøring",
+  "child": "{{childrenCount}} barna",
+  "children": "{{childrenCount}} barn"
 }

@@ -105,5 +105,7 @@
   "points": "נקודות",
   "share_link": "שתף קישור",
   "upvoted": "הצביע למעלה",
-  "announcement": "הודעה"
+  "announcement": "הודעה",
+  "child": "{{childrenCount}} ילד",
+  "children": "{{childrenCount}} ילדים"
 }

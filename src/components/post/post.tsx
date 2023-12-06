@@ -59,7 +59,7 @@ interface PostProps {
 
 const Post = ({ post, index }: PostProps) => {
   const {
-    author: { displayName, shortAddress },
+    author,
     cid,
     content,
     downvoteCount,
@@ -75,6 +75,7 @@ const Post = ({ post, index }: PostProps) => {
     title,
     upvoteCount,
   } = post || {};
+  const { displayName, shortAddress } = author || {};
   const { shortAuthorAddress, authorAddressChanged } = useAuthorAddress({ comment: post });
   const subplebbit = useSubplebbit({ subplebbitAddress });
   const { t } = useTranslation();

@@ -45,27 +45,8 @@
   margin-top: 2px;
 }
 
-
 .accountAddress {
   padding-bottom: 10px;
-}
-
-.usernameInput input {
-  width: 200px;
-  padding: 2px;
-  box-shadow: var(--box-shadow);
-}
-
-.saved {
-  padding-left: 5px;
-  font-style: italic;
-  text-transform: capitalize;
-  color: var(--green);
-}
-
-.checkCryptoAddress {
-  margin-top: 5px;
-  margin-left: -5px;
 }
 
 .categorySettings button {
@@ -81,10 +62,6 @@
 .accountButtons button {
   margin-top: 5px;
   margin-left: 0px !important;
-}
-
-.cryptoAddressSetting {
-  padding-top: 15px;
 }
 
 @media (min-width: 768px) {
@@ -115,24 +92,4 @@
   .categorySettings input {
     width: 35vw;
   }
-}
-
-.infoButton {
-  padding: 0px 4px 0px 4px;
-  font-size: 11px;
-  position: relative;
-  bottom: 2px;
-  margin-bottom: -2px;
-}
-
-.resolvedMessageSuccess {
-  color: var(--green);
-}
-
-.resolvedMessageFailed {
-  color: var(--red);
-}
-
-.resolvedMessageResolving {
-  color: var(--yellow);
 }

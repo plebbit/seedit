@@ -105,5 +105,7 @@
   "points": "పాయింట్స్",
   "share_link": "లింక్ షేర్ చేయండి",
   "upvoted": "అప్వోట్ ఇచ్చాడు",
-  "announcement": "ప్రకటన"
+  "announcement": "ప్రకటన",
+  "child": "{{childrenCount}} పిల్లలు",
+  "children": "{{childrenCount}} పిల్లాడు/పిల్లి"
 }

@@ -1,5 +1,6 @@
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import { Comment, useAuthorAddress, useSubplebbit } from '@plebbit/plebbit-react-hooks';
+import {flattenCommentsPages} from '@plebbit/plebbit-react-hooks/dist/lib/utils'
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import styles from './reply.module.css';
@@ -154,20 +155,28 @@ const Reply = ({ reply, depth }: ReplyProps) => {
     </span>
   );
 
+  const [collapsed, setCollapsed] = useState(false);
+  const unnestedReplies = useMemo(() => flattenCommentsPages(reply.replies), [reply.replies]);
+  const childrenCount = unnestedReplies.length;
+  const childrenString = childrenCount === 1 ? t('child', { childrenCount }) : t('children', { childrenCount });
+
   return (
     <div className={styles.reply}>
       <div className={`${styles.replyWrapper} ${depth > 1 && styles.nested}`}>
-        <div className={styles.midcol}>
-          <div className={`${styles.arrow} ${upvoted ? styles.upvoted : styles.arrowUp}`} onClick={() => cid && upvote()} />
-          <div className={`${styles.arrow} ${downvoted ? styles.downvoted : styles.arrowDown}`} onClick={() => cid && downvote()} />
-        </div>
-        <div className={styles.entry}>
+        {!collapsed && (
+          <div className={styles.midcol}>
+            <div className={`${styles.arrow} ${upvoted ? styles.upvoted : styles.arrowUp}`} onClick={() => cid && upvote()} />
+            <div className={`${styles.arrow} ${downvoted ? styles.downvoted : styles.arrowDown}`} onClick={() => cid && downvote()} />
+          </div>
+        )}
+        <div className={`${styles.entry} ${collapsed && styles.collapsedEntry}`}>
           <p className={styles.tagline}>
-            <span className={styles.expand}>[–]</span>
+            <span className={styles.expand} onClick={() => setCollapsed(!collapsed)}>[{collapsed ? '+' : '–'}]</span>
             <ReplyAuthor authorRole={authorRole} displayName={displayName} shortAuthorAddress={shortAuthorAddress} />
             <span className={styles.score}>{scoreString}</span> <span className={styles.time}>{getFormattedTimeAgo(timestamp)}</span>
+            {collapsed && <span className={styles.children}> ({childrenString})</span>}
             {stateLabel}
-            {flair && (
+            {!collapsed && flair && (
               <>
                 {' '}
                 <Flair flair={flair} />
@@ -175,34 +184,40 @@ const Reply = ({ reply, depth }: ReplyProps) => {
             )}
             {loadingString}
           </p>
-          <div className={styles.usertext}>
-            {commentMediaInfo && (
-              <ReplyMedia
-                commentMediaInfo={commentMediaInfo}
-                content={content}
-                expanded={expanded}
-                hasThumbnail={hasThumbnail}
-                link={link}
-                linkHeight={linkHeight}
-                linkWidth={linkWidth}
-                toggleExpanded={toggleExpanded}
-              />
-            )}
-            <div className={styles.md}>{contentString}</div>
-          </div>
+          {!collapsed && (
+            <div className={styles.usertext}>
+              {commentMediaInfo && (
+                <ReplyMedia
+                  commentMediaInfo={commentMediaInfo}
+                  content={content}
+                  expanded={expanded}
+                  hasThumbnail={hasThumbnail}
+                  link={link}
+                  linkHeight={linkHeight}
+                  linkWidth={linkWidth}
+                  toggleExpanded={toggleExpanded}
+                />
+              )}
+              <div className={styles.md}>{contentString}</div>
+            </div>
+          )}
         </div>
-        <PostTools
-          cid={reply.cid}
-          isReply={true}
-          replyCount={replies.length}
-          spoiler={spoiler}
-          subplebbitAddress={reply.subplebbitAddress}
-          showReplyForm={showReplyForm}
-        />
-        {isReplying && <ReplyForm cid={cid} isReplyingToReply={true} hideReplyForm={hideReplyForm} />}
-        {replies.map((reply, index) => (
-          <Reply key={`${index}${reply.cid}`} reply={reply} depth={(reply.depth || 1) + 1} />
-        ))}
+        {!collapsed && (
+          <>
+            <PostTools
+              cid={reply.cid}
+              isReply={true}
+              replyCount={replies.length}
+              spoiler={spoiler}
+              subplebbitAddress={reply.subplebbitAddress}
+              showReplyForm={showReplyForm}
+            />
+            {isReplying && <ReplyForm cid={cid} isReplyingToReply={true} hideReplyForm={hideReplyForm} />}
+            {replies.map((reply, index) => (
+              <Reply key={`${index}${reply.cid}`} reply={reply} depth={(reply.depth || 1) + 1} />
+            ))}
+          </>
+        )}
       </div>
     </div>
   );

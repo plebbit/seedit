@@ -105,5 +105,7 @@
   "points": "σημεία",
   "share_link": "κοινοποίηση συνδέσμου",
   "upvoted": "ψήφισε",
-  "announcement": "ανακοίνωση"
+  "announcement": "ανακοίνωση",
+  "child": "{{childrenCount}} παιδί",
+  "children": "{{childrenCount}} παιδιά"
 }

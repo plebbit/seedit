@@ -126,5 +126,20 @@
 }
 
 .moderator, .admin, .owner {
-  color: var(--green) !important;
+  color: var(--green);
+}
+
+.collapsedEntry .author,
+.collapsedEntry .moderator,
+.collapsedEntry .admin,
+.collapsedEntry .owner,
+.collapsedEntry .moderatorBrackets,
+.collapsedEntry .time,
+.collapsedEntry .children {
+  color: var(--text-info) !important;
+  font-style: italic !important;
+}
+
+.collapsedEntry {
+  padding-left: 25px;
 }

@@ -105,5 +105,7 @@
   "points": "pisteet",
   "share_link": "jaa linkki",
   "upvoted": "on antanut äänen",
-  "announcement": "ilmoitus"
+  "announcement": "ilmoitus",
+  "child": "{{childrenCount}} lapsi",
+  "children": "{{childrenCount}} lapset"
 }

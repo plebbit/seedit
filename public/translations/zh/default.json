@@ -105,5 +105,7 @@
   "points": "点数",
   "share_link": "分享链接",
   "upvoted": "点赞了",
-  "announcement": "公告"
+  "announcement": "公告",
+  "child": "{{childrenCount}} 孩子们",
+  "children": "{{childrenCount}} 孩子"
 }

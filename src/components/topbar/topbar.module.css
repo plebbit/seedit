@@ -145,3 +145,9 @@
 .moreLink:hover {
   text-decoration: underline;
 }
+
+@media (min-width: 767px) {
+  .homeButton {
+    padding-left: 10px;
+  }
+}

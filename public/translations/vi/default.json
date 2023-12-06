@@ -105,5 +105,7 @@
   "points": "điểm",
   "share_link": "chia sẻ liên kết",
   "upvoted": "đã cho điểm tích cực",
-  "announcement": "thông báo"
+  "announcement": "thông báo",
+  "child": "{{childrenCount}} con",
+  "children": "{{childrenCount}} con"
 }

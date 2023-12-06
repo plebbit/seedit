@@ -105,5 +105,7 @@
   "points": "포인트",
   "share_link": "링크 공유",
   "upvoted": "추천했습니다",
-  "announcement": "공지"
+  "announcement": "공지",
+  "child": "{{childrenCount}} 아이",
+  "children": "{{childrenCount}} 아이들"
 }

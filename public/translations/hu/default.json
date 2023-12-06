@@ -105,5 +105,7 @@
   "points": "pontok",
   "share_link": "link megosztása",
   "upvoted": "szavazott felfelé",
-  "announcement": "bejelentés"
+  "announcement": "bejelentés",
+  "child": "{{childrenCount}} gyerek",
+  "children": "{{childrenCount}} gyerekek"
 }

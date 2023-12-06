@@ -105,5 +105,7 @@
   "points": "poin",
   "share_link": "bagikan tautan",
   "upvoted": "memberikan suara positif",
-  "announcement": "pengumuman"
+  "announcement": "pengumuman",
+  "child": "{{childrenCount}} anak",
+  "children": "{{childrenCount}} anak-anak"
 }
