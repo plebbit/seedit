@@ -32,16 +32,15 @@ const ProfileSettings = () => {
 
   const [cryptoState, setCryptoState] = useState({
     cryptoAddress: '',
-    cryptoAddressToResolve: '',
     checkingCryptoAddress: false,
-    showResolvingMessage: true,
+    showResolvingMessage: false,
     resolveString: 'if the crypto address is resolved p2p',
     resolveClass: '',
   });
 
   const [savedCryptoAddress, setSavedCryptoAddress] = useState(false);
 
-  const author = { ...account?.author, address: cryptoState.cryptoAddressToResolve };
+  const author = { ...account?.author, address: cryptoState.cryptoAddress };
   const { resolvedAddress, state, error, chainProvider } = useResolvedAuthorAddress({ author, cache: false });
 
   useEffect(() => {
@@ -85,7 +84,6 @@ const ProfileSettings = () => {
       ...prevState,
       resolveString: resolveString,
       resolveClass: resolveClass,
-      cryptoAddressToResolve: '',
       showResolvingMessage: false,
     }));
   }, [resolvedAddress, account?.signer.address]);
@@ -103,13 +101,15 @@ const ProfileSettings = () => {
     } else if (resolvedAddress && resolvedAddress !== account?.signer.address) {
       alert(`Cannot save resolved crypto address, it belongs to another account, address: ${resolvedAddress}`);
       return;
+    } else if (cryptoState.cryptoAddress && !resolvedAddress) {
+      alert('Please wait, crypto address is not resolved yet.');
+      return;
     } else if (resolvedAddress && resolvedAddress === account?.signer.address) {
       try {
         await setAccount({ ...account, author: { ...account?.author, address: cryptoState.cryptoAddress } });
         setCryptoState((prevState) => ({
           ...prevState,
           savedCryptoAddress: true,
-          cryptoAddressToResolve: '',
           cryptoAddress: '',
           checkingCryptoAddress: false,
         }));
@@ -121,6 +121,14 @@ const ProfileSettings = () => {
           console.error('An unknown error occurred:', error);
         }
       }
+      setSavedCryptoAddress(true);
+      setCryptoState((prevState) => ({
+        ...prevState,
+        checkingCryptoAddress: false,
+        showResolvingMessage: false,
+        resolveString: 'if the crypto address is resolved p2p',
+        resolveClass: '',
+      }));
     }
   };
 
@@ -131,7 +139,6 @@ const ProfileSettings = () => {
     }
     setCryptoState((prevState) => ({
       ...prevState,
-      cryptoAddressToResolve: cryptoState.cryptoAddress,
       checkingCryptoAddress: true,
       showResolvingMessage: true,
     }));
