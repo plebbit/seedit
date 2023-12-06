@@ -102,7 +102,7 @@ const ProfileSettings = () => {
   };
 
   const checkCryptoAddress = () => {;
-    if (!cryptoAddress) {
+    if (!cryptoAddress || !cryptoAddress.includes('.')) {
       alert('Please enter a crypto address.');
       return;
     }
