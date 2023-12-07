@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Link, useLocation, useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { useAccount, useAccountComments, useAuthorAvatar, useSubplebbit } from '@plebbit/plebbit-react-hooks';
+import { useAccount, useAuthorAvatar, useSubplebbit } from '@plebbit/plebbit-react-hooks';
 import {
   getAboutLink,
   isAboutView,
