@@ -37,3 +37,13 @@
   margin-left: 5px;
   cursor: pointer;
 }
+
+@media (max-width: 768px) {
+  .categoryTitle {
+    flex: 0 0 65px;
+  }
+
+  .categorySettings input {
+    width: 35vw;
+  }
+}

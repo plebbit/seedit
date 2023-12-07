@@ -32,10 +32,6 @@
 }
 
 @media (max-width: 768px) {
-  .categoryTitle {
-    flex: 0 0 65px;
-  }
-
   .accountData textarea {
     width: 60vw;
     height: 200px;
@@ -43,9 +39,5 @@
     min-height: 200px;
     min-width: 70vw;
     max-height: 60vh;
-  }
-
-  .categorySettings input {
-    width: 35vw;
   }
 }
