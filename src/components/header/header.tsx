@@ -1,8 +1,18 @@
 import { useEffect, useState } from 'react';
 import { Link, useLocation, useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { useAccount, useSubplebbit } from '@plebbit/plebbit-react-hooks';
-import { getAboutLink, isAboutView, isHomeView, isPostView, isSettingsView, isSubplebbitView, isSubmitView, isSubplebbitSubmitView, isProfileView } from '../../lib/utils/view-utils';
+import { useAccount, useAccountComments, useAuthorAvatar, useSubplebbit } from '@plebbit/plebbit-react-hooks';
+import {
+  getAboutLink,
+  isAboutView,
+  isHomeView,
+  isPostView,
+  isSettingsView,
+  isSubplebbitView,
+  isSubmitView,
+  isSubplebbitSubmitView,
+  isProfileView,
+} from '../../lib/utils/view-utils';
 import useTheme from '../../hooks/use-theme';
 import styles from './header.module.css';
 import SubscribeButton from '../subscribe-button';
@@ -84,21 +94,26 @@ const SortItems = () => {
 };
 
 const ProfileHeaderTabs = () => {
-
   return (
     <>
       <li>
-        <Link to='/' className={styles.selected} onClick={(e) => e.preventDefault()}>overview</Link>
+        <Link to='/' className={styles.selected} onClick={(e) => e.preventDefault()}>
+          overview
+        </Link>
       </li>
       <li>
-        <Link to='/' className={styles.choice} onClick={(e) => e.preventDefault()}>comments</Link>
+        <Link to='/' className={styles.choice} onClick={(e) => e.preventDefault()}>
+          comments
+        </Link>
       </li>
       <li>
-        <Link to='/' className={styles.choice} onClick={(e) => e.preventDefault()}>submitted</Link>
+        <Link to='/' className={styles.choice} onClick={(e) => e.preventDefault()}>
+          submitted
+        </Link>
       </li>
     </>
   );
-}
+};
 
 const HeaderTabs = () => {
   const params = useParams();
@@ -153,6 +168,8 @@ const HeaderTitle = ({ title, shortAddress }: { title: string; shortAddress: str
 };
 
 const Header = () => {
+  const account = useAccount();
+  const { imageUrl } = useAuthorAvatar({ author: account?.author });
   const [theme] = useTheme();
   const location = useLocation();
   const params = useParams();
@@ -170,18 +187,17 @@ const Header = () => {
 
   const hasFewTabs = isPost || isSubmit || isSubplebbitSubmit || isSettings;
   const hasStickyHeader = isHome || (isSubplebbit && !isSubplebbitSubmit && !isPost && !isAbout) || isProfile;
-  const logoSrc = isSubplebbit ? suggested?.avatarUrl : '/assets/logo/seedit.png';
-  const logoIsAvatar = isSubplebbit && suggested?.avatarUrl;
+  const logoSrc = isSubplebbit ? suggested?.avatarUrl : isProfile ? imageUrl : '/assets/logo/seedit.png';
+  const logoIsAvatar = (isSubplebbit && suggested?.avatarUrl) || (isProfile && imageUrl);
+  const logoLink = isSubplebbit ? `/p/${params.subplebbitAddress}` : isProfile ? '/profile' : '/';
 
   return (
     <div className={styles.header}>
       <div className={`${styles.container} ${hasFewTabs && styles.reducedHeight} ${hasStickyHeader && styles.increasedHeight}`}>
         <div className={styles.logoContainer}>
-          <Link to={logoIsAvatar ? `/p/${params.subplebbitAddress}` : '/'} className={styles.logoLink}>
-            {(logoIsAvatar || !isSubplebbit) && <img className={`${logoIsAvatar ? styles.avatar : styles.logo}`} src={logoSrc} alt='logo' />}
-            {!isSubplebbit && !suggested?.avatarUrl && (
-              <img src={`/assets/logo/seedit-text-${theme === 'dark' ? 'dark' : 'light'}.svg`} className={styles.logoText} alt='logo' />
-            )}
+          <Link to={logoLink} className={styles.logoLink}>
+            {(logoIsAvatar || (!isSubplebbit && !isProfile)) && <img className={`${logoIsAvatar ? styles.avatar : styles.logo}`} src={logoSrc} alt='logo' />}
+            {!isSubplebbit && !isProfile && <img src={`/assets/logo/seedit-text-${theme === 'dark' ? 'dark' : 'light'}.svg`} className={styles.logoText} alt='logo' />}
           </Link>
         </div>
         {!isHome && (
