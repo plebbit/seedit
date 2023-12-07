@@ -66,7 +66,7 @@ a {
 }
 
 .bottom {
-  border-top: 1px solid gray;
+  border-top: 1px solid var(--border-text);
   color: var(--text-info);
   padding-top: 2px;
   font-size: 80%;
@@ -134,7 +134,7 @@ a {
 .listContent {
   margin: 0;
   padding: 5px;
-  border: 1px solid gray;
+  border: 1px solid var(--border-text);
   font-size: larger;
   list-style: none;
 }

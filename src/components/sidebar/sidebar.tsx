@@ -23,36 +23,20 @@ interface sidebarProps {
   upvoteCount?: number;
 }
 
-const Sidebar = ({ address, cid, createdAt, description, downvoteCount = 0, roles, rules, timestamp = 0, title, updatedAt, upvoteCount = 0 }: sidebarProps) => {
-  const { t, i18n } = useTranslation();
-  const { language } = i18n;
-  const { allActiveUserCount, hourActiveUserCount } = useSubplebbitStats({ subplebbitAddress: address });
-  const isOnline = updatedAt && updatedAt > Date.now() / 1000 - 60 * 30;
-  const onlineNotice = t('users_online', { count: hourActiveUserCount });
-  const offlineNotice = updatedAt && t('community_last_seen', { dateAgo: getFormattedTimeAgo(updatedAt) });
-  const onlineStatus = isOnline ? onlineNotice : offlineNotice;
-  const location = useLocation();
-  const params = useParams();
-  const isAbout = isAboutView(location.pathname);
-  const isHome = isHomeView(location.pathname, params);
-  const isPost = isPostView(location.pathname, params);
-  const subplebbitCreator = findSubplebbitCreator(roles);
-  const creatorAddress = subplebbitCreator === 'anonymous' ? 'anonymous' : `${getShortAddress(subplebbitCreator)}`;
-  const rolesList = roles ? Object.entries(roles).map(([address, { role }]) => ({ address, role })) : [];
-  const submitRoute = isHome ? '/submit' : `/p/${address}/submit`;
-  const postScore = upvoteCount - downvoteCount;
-  const totalVotes = upvoteCount + downvoteCount;
-  const upvotePercentage = totalVotes > 0 ? Math.round((upvoteCount / totalVotes) * 100) : 0;
-  const postDate = getFormattedDate(timestamp, language);
-
-  const rulesList = (
+const RulesList = ({ rules }: { rules: string[] }) => {
+  return (
     <div className={styles.rules}>
       <strong>Rules</strong>
       <ol className={styles.rulesList}>{rules?.map((rule, index) => <li key={index}>{rule}</li>)}</ol>
     </div>
   );
+};
 
-  const moderatorsList = (
+const ModeratorsList = ({ roles }: { roles: Record<string, Role> }) => {
+  const { t } = useTranslation();
+  const rolesList = roles ? Object.entries(roles).map(([address, { role }]) => ({ address, role })) : [];
+
+  return (
     <div className={styles.list}>
       <div className={styles.listTitle}>{t('moderators')}</div>
       <ul className={`${styles.listContent} ${styles.modsList}`}>
@@ -63,8 +47,17 @@ const Sidebar = ({ address, cid, createdAt, description, downvoteCount = 0, role
       </ul>
     </div>
   );
+};
 
-  const postInfo = (
+const PostInfo = ({ address, cid, downvoteCount = 0, timestamp = 0, upvoteCount = 0 }: sidebarProps) => {
+  const { t, i18n } = useTranslation();
+  const { language } = i18n;
+  const postScore = upvoteCount - downvoteCount;
+  const totalVotes = upvoteCount + downvoteCount;
+  const upvotePercentage = totalVotes > 0 ? Math.round((upvoteCount / totalVotes) * 100) : 0;
+  const postDate = getFormattedDate(timestamp, language);
+
+  return (
     <div className={styles.postInfo}>
       <div className={styles.postDate}>
         <span>{t('post_submitted_on', { postDate: postDate })}</span>
@@ -78,12 +71,29 @@ const Sidebar = ({ address, cid, createdAt, description, downvoteCount = 0, role
       </div>
     </div>
   );
+};
+
+const Sidebar = ({ address, cid, createdAt, description, downvoteCount = 0, roles, rules, timestamp = 0, title, updatedAt, upvoteCount = 0 }: sidebarProps) => {
+  const { t } = useTranslation();
+  const { allActiveUserCount, hourActiveUserCount } = useSubplebbitStats({ subplebbitAddress: address });
+  const isOnline = updatedAt && updatedAt > Date.now() / 1000 - 60 * 30;
+  const onlineNotice = t('users_online', { count: hourActiveUserCount });
+  const offlineNotice = updatedAt && t('community_last_seen', { dateAgo: getFormattedTimeAgo(updatedAt) });
+  const onlineStatus = isOnline ? onlineNotice : offlineNotice;
+  const location = useLocation();
+  const params = useParams();
+  const isAbout = isAboutView(location.pathname);
+  const isHome = isHomeView(location.pathname, params);
+  const isPost = isPostView(location.pathname, params);
+  const subplebbitCreator = findSubplebbitCreator(roles);
+  const creatorAddress = subplebbitCreator === 'anonymous' ? 'anonymous' : `${getShortAddress(subplebbitCreator)}`;
+  const submitRoute = isHome ? '/submit' : `/p/${address}/submit`;
 
   return (
     <div className={`${isAbout ? styles.about : styles.sidebar}`}>
       <SearchBar />
       <div className={styles.searchBarSpacer} />
-      {isPost && postInfo}
+      {isPost && <PostInfo address={address} cid={cid} downvoteCount={downvoteCount} timestamp={timestamp} upvoteCount={upvoteCount} />}
       <Link to={submitRoute}>
         <div className={styles.largeButton}>
           {t('submit_post')}
@@ -119,7 +129,7 @@ const Sidebar = ({ address, cid, createdAt, description, downvoteCount = 0, role
               <div className={styles.description}>{description}</div>
             </div>
           )}
-          {rules && rulesList}
+          {rules && <RulesList rules={rules} />}
           <div className={styles.bottom}>
             {t('created_by', { creatorAddress: '' })}
             <Link to={`/u/${creatorAddress}`} onClick={(e) => e.preventDefault()}>{`u/${creatorAddress}`}</Link>
@@ -127,7 +137,7 @@ const Sidebar = ({ address, cid, createdAt, description, downvoteCount = 0, role
           </div>
         </div>
       )}
-      {roles && moderatorsList}
+      {roles && <ModeratorsList roles={roles} />}
     </div>
   );
 };

@@ -12,14 +12,15 @@ export type ViewType = 'home' | 'pending' | 'post' | 'submit' | 'subplebbit' | '
 const sortTypes = ['/hot', '/new', '/active', '/controversialAll', '/topAll'];
 
 export const getAboutLink = (pathname: string, params: ParamsType): string => {
-  if (params.subplebbitAddress && params.commentCid) {
-    if (pathname.startsWith(`/p/${params.subplebbitAddress}/c/${params.commentCid}`)) {
-      return `/p/${params.subplebbitAddress}/c/${params.commentCid}/about`;
-    } else if (pathname.startsWith(`/p/${params.subplebbitAddress}`)) {
-      return `/p/${params.subplebbitAddress}/about`;
-    }
+  if (pathname.startsWith(`/p/${params.subplebbitAddress}/c/${params.commentCid}`)) {
+    return `/p/${params.subplebbitAddress}/c/${params.commentCid}/about`;
+  } else if (pathname.startsWith(`/p/${params.subplebbitAddress}`)) {
+    return `/p/${params.subplebbitAddress}/about`;
+  } else if (pathname.startsWith('/profile')) {
+    return '/profile/about';
+  } else {
+    return '/about';
   }
-  return '/about';
 };
 
 export const isAboutView = (pathname: string): boolean => {
@@ -37,6 +38,10 @@ export const isPendingView = (pathname: string, params: ParamsType): boolean => 
 export const isPostView = (pathname: string, params: ParamsType): boolean => {
   return params.subplebbitAddress && params.commentCid ? pathname.startsWith(`/p/${params.subplebbitAddress}/c/${params.commentCid}`) : false;
 };
+
+export const isProfileView = (pathname: string): boolean => {
+  return pathname.startsWith(`/profile`);
+}
 
 export const isSettingsView = (pathname: string): boolean => {
   return pathname === '/settings';

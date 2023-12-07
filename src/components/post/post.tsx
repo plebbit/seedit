@@ -58,23 +58,8 @@ interface PostProps {
 }
 
 const Post = ({ post, index }: PostProps) => {
-  const {
-    author,
-    cid,
-    content,
-    downvoteCount,
-    flair,
-    link,
-    linkHeight,
-    linkWidth,
-    pinned,
-    replyCount,
-    state,
-    subplebbitAddress,
-    timestamp,
-    title,
-    upvoteCount,
-  } = post || {};
+  const { author, cid, content, downvoteCount, flair, link, linkHeight, linkWidth, pinned, replyCount, state, subplebbitAddress, timestamp, title, upvoteCount } =
+    post || {};
   const { displayName, shortAddress } = author || {};
   const { shortAuthorAddress, authorAddressChanged } = useAuthorAddress({ comment: post });
   const subplebbit = useSubplebbit({ subplebbitAddress });

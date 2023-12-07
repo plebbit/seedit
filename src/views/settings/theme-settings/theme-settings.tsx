@@ -1,5 +1,5 @@
-import useTheme from "../../../hooks/use-theme";
-import { useTranslation } from "react-i18next";
+import useTheme from '../../../hooks/use-theme';
+import { useTranslation } from 'react-i18next';
 
 const ThemeSettings = () => {
   const [theme, setTheme] = useTheme();
