@@ -94,20 +94,24 @@ const SortItems = () => {
 };
 
 const ProfileHeaderTabs = () => {
+  const location = useLocation();
+  const isProfile = isProfileView(location.pathname);
+  const isAbout = isAboutView(location.pathname);
+
   return (
     <>
       <li>
-        <Link to='/' className={styles.selected} onClick={(e) => e.preventDefault()}>
+        <Link to='/profile' className={(isProfile && !isAbout) ? styles.selected : styles.choice}>
           overview
         </Link>
       </li>
       <li>
-        <Link to='/' className={styles.choice} onClick={(e) => e.preventDefault()}>
+        <Link to='/profile' className={styles.choice}>
           comments
         </Link>
       </li>
       <li>
-        <Link to='/' className={styles.choice} onClick={(e) => e.preventDefault()}>
+        <Link to='/profile' className={styles.choice}>
           submitted
         </Link>
       </li>
