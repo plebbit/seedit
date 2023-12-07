@@ -17,7 +17,9 @@ const About = () => {
 
   return (
     <div className={styles.content}>
-      {isProfile ? <ProfileSidebar /> : 
+      {isProfile ? (
+        <ProfileSidebar />
+      ) : (
         <Sidebar
           address={address}
           cid={cid}
@@ -31,7 +33,7 @@ const About = () => {
           updatedAt={updatedAt}
           upvoteCount={upvoteCount}
         />
-      }
+      )}
     </div>
   );
 };

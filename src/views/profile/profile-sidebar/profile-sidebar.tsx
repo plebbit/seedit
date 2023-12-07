@@ -17,9 +17,7 @@ const ModeratorList = ({ accountSubplebbits }: ModeratorListProps) => {
       <ul className={`${styles.modListContent} ${styles.modsList}`}>
         {accountSubplebbitAddresses.map((address, index) => (
           <li key={index}>
-            <Link to={`/p/${address}`}>
-              p/{getShortAddress(address)}
-            </Link>
+            <Link to={`/p/${address}`}>p/{getShortAddress(address)}</Link>
           </li>
         ))}
       </ul>
@@ -38,9 +36,7 @@ const ProfileSidebar = () => {
   return (
     <div className={styles.sidebar}>
       <div className={styles.titleBox}>
-        <div className={styles.title}>
-          {address}
-        </div>
+        <div className={styles.title}>{address}</div>
         <div>
           <span className={styles.karma}>{postScore}</span> post karma
         </div>
@@ -48,14 +44,12 @@ const ProfileSidebar = () => {
           <span className={styles.karma}>{replyScore}</span> comment karma
         </div>
         <div className={styles.bottom}>
-          <span className={styles.age}>
-            plebbitor for {getFormattedDuration(oldestCommentTimestamp)}
-          </span>
+          <span className={styles.age}>plebbitor for {getFormattedDuration(oldestCommentTimestamp)}</span>
         </div>
       </div>
-      {accountSubplebbits.length > 0 && <ModeratorList accountSubplebbits={accountSubplebbits} />}
+      {Object.keys(accountSubplebbits).length > 0 && <ModeratorList accountSubplebbits={accountSubplebbits} />}
     </div>
-  )
-}
+  );
+};
 
 export default ProfileSidebar;

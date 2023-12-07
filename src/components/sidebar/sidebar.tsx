@@ -10,7 +10,7 @@ import SearchBar from '../search-bar';
 import SubscribeButton from '../subscribe-button';
 
 interface sidebarProps {
-  address?: string | undefined; 
+  address?: string | undefined;
   cid?: string;
   createdAt?: number;
   description?: string;
@@ -30,7 +30,7 @@ const RulesList = ({ rules }: { rules: string[] }) => {
       <ol className={styles.rulesList}>{rules?.map((rule, index) => <li key={index}>{rule}</li>)}</ol>
     </div>
   );
-}
+};
 
 const ModeratorsList = ({ roles }: { roles: Record<string, Role> }) => {
   const { t } = useTranslation();
@@ -47,7 +47,7 @@ const ModeratorsList = ({ roles }: { roles: Record<string, Role> }) => {
       </ul>
     </div>
   );
-}
+};
 
 const PostInfo = ({ address, cid, downvoteCount = 0, timestamp = 0, upvoteCount = 0 }: sidebarProps) => {
   const { t, i18n } = useTranslation();
@@ -71,7 +71,7 @@ const PostInfo = ({ address, cid, downvoteCount = 0, timestamp = 0, upvoteCount 
       </div>
     </div>
   );
-}
+};
 
 const Sidebar = ({ address, cid, createdAt, description, downvoteCount = 0, roles, rules, timestamp = 0, title, updatedAt, upvoteCount = 0 }: sidebarProps) => {
   const { t } = useTranslation();

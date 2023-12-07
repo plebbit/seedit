@@ -25,25 +25,25 @@ const Profile = () => {
     return () => window.removeEventListener('scroll', setLastVirtuosoState);
   }, []);
 
-  if (account && !accountComments.length) {
-    return 'no posts';
-  }
-
   return (
     <div className={styles.content}>
       <div className={styles.sidebar}>
         <ProfileSidebar />
       </div>
-      <Virtuoso
-        increaseViewportBy={{ bottom: 1200, top: 600 }}
-        totalCount={accountComments?.length || 0}
-        data={accountComments}
-        itemContent={(index, post) => <Post index={index} post={post} />}
-        useWindowScroll={true}
-        ref={virtuosoRef}
-        restoreStateFrom={lastVirtuosoState}
-        initialScrollTop={lastVirtuosoState?.scrollTop}
-      />
+      {account && !accountComments.length ? (
+        'no posts'
+      ) : (
+        <Virtuoso
+          increaseViewportBy={{ bottom: 1200, top: 600 }}
+          totalCount={accountComments?.length || 0}
+          data={accountComments}
+          itemContent={(index, post) => <Post index={index} post={post} />}
+          useWindowScroll={true}
+          ref={virtuosoRef}
+          restoreStateFrom={lastVirtuosoState}
+          initialScrollTop={lastVirtuosoState?.scrollTop}
+        />
+      )}
     </div>
   );
 };
