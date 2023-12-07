@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 import { Link, useLocation, useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { useSubplebbit } from '@plebbit/plebbit-react-hooks';
-import { getAboutLink, isAboutView, isHomeView, isPostView, isSettingsView, isSubplebbitView, isSubmitView, isSubplebbitSubmitView } from '../../lib/utils/view-utils';
+import { useAccount, useSubplebbit } from '@plebbit/plebbit-react-hooks';
+import { getAboutLink, isAboutView, isHomeView, isPostView, isSettingsView, isSubplebbitView, isSubmitView, isSubplebbitSubmitView, isProfileView } from '../../lib/utils/view-utils';
 import useTheme from '../../hooks/use-theme';
 import styles from './header.module.css';
 import SubscribeButton from '../subscribe-button';
@@ -83,11 +83,29 @@ const SortItems = () => {
   ));
 };
 
+const ProfileHeaderTabs = () => {
+
+  return (
+    <>
+      <li>
+        <Link to='/' className={styles.selected} onClick={(e) => e.preventDefault()}>overview</Link>
+      </li>
+      <li>
+        <Link to='/' className={styles.choice} onClick={(e) => e.preventDefault()}>comments</Link>
+      </li>
+      <li>
+        <Link to='/' className={styles.choice} onClick={(e) => e.preventDefault()}>submitted</Link>
+      </li>
+    </>
+  );
+}
+
 const HeaderTabs = () => {
   const params = useParams();
   const location = useLocation();
   const isHome = isHomeView(location.pathname, params);
   const isPost = isPostView(location.pathname, params);
+  const isProfile = isProfileView(location.pathname);
   const isSubplebbit = isSubplebbitView(location.pathname, params);
   const isSubplebbitSubmit = isSubplebbitSubmitView(location.pathname, params);
 
@@ -95,15 +113,19 @@ const HeaderTabs = () => {
     return <CommentsButton />;
   } else if (isHome || (isSubplebbit && !isSubplebbitSubmit)) {
     return <SortItems />;
+  } else if (isProfile) {
+    return <ProfileHeaderTabs />;
   }
   return null;
 };
 
 const HeaderTitle = ({ title, shortAddress }: { title: string; shortAddress: string }) => {
+  const account = useAccount();
   const { t } = useTranslation();
   const params = useParams();
   const location = useLocation();
   const isPost = isPostView(location.pathname, params);
+  const isProfile = isProfileView(location.pathname);
   const isSubplebbit = isSubplebbitView(location.pathname, params);
   const isSubmit = isSubmitView(location.pathname);
   const isSubplebbitSubmit = isSubplebbitSubmitView(location.pathname, params);
@@ -124,6 +146,8 @@ const HeaderTitle = ({ title, shortAddress }: { title: string; shortAddress: str
     return submitTitle;
   } else if (isSettings) {
     return t('preferences');
+  } else if (isProfile) {
+    return account?.author?.shortAddress;
   }
   return null;
 };
@@ -138,13 +162,14 @@ const Header = () => {
   const isAbout = isAboutView(location.pathname);
   const isHome = isHomeView(location.pathname, params);
   const isPost = isPostView(location.pathname, params);
+  const isProfile = isProfileView(location.pathname);
   const isSettings = isSettingsView(location.pathname);
   const isSubplebbit = isSubplebbitView(location.pathname, params);
   const isSubmit = isSubmitView(location.pathname);
   const isSubplebbitSubmit = isSubplebbitSubmitView(location.pathname, params);
 
   const hasFewTabs = isPost || isSubmit || isSubplebbitSubmit || isSettings;
-  const hasStickyHeader = isHome || (isSubplebbit && !isSubplebbitSubmit && !isPost && !isAbout);
+  const hasStickyHeader = isHome || (isSubplebbit && !isSubplebbitSubmit && !isPost && !isAbout) || isProfile;
   const logoSrc = isSubplebbit ? suggested?.avatarUrl : '/assets/logo/seedit.png';
   const logoIsAvatar = isSubplebbit && suggested?.avatarUrl;
 

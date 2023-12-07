@@ -83,7 +83,7 @@ const AccountBar = () => {
   return (
     <div className={styles.content}>
       <span className={styles.user}>
-        <Link to='/user.eth' onClick={(e) => e.preventDefault()}>
+        <Link to='/profile'>
           {account?.author?.shortAddress}
         </Link>
         <span className={styles.userDropdownButton} ref={accountSelectButtonRef} onClick={toggleAccountDropdown} />

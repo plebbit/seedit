@@ -6,6 +6,7 @@ import Home from './views/home';
 import PendingPost from './views/pending-post';
 import Post from './views/post';
 import About from './views/about/about';
+import Profile from './views/profile';
 import Settings from './views/settings';
 import Submit from './views/submit';
 import Subplebbit from './views/subplebbit';
@@ -56,6 +57,7 @@ function App() {
             <Route path='/:sortType?/:timeFilterName?' element={<Home />} />
             <Route path='p/:subplebbitAddress/:sortType?' element={<Subplebbit />} />
             <Route path='p/:subplebbitAddress/:sortType?/:timeFilterName?' element={<Subplebbit />} />
+            <Route path='/profile' element={<Profile />} />
           </Route>
           <Route element={pagesLayout}>
             <Route path='/submit' element={<Submit />} />
