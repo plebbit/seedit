@@ -10,7 +10,7 @@ import SearchBar from '../search-bar';
 import SubscribeButton from '../subscribe-button';
 
 interface sidebarProps {
-  address?: string | undefined;
+  address?: string | undefined; 
   cid?: string;
   createdAt?: number;
   description?: string;

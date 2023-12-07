@@ -67,6 +67,7 @@ function App() {
             <Route path='p/:subplebbitAddress/about' element={<About />} />
             <Route path='/settings' element={<Settings />} />
             <Route path='/profile/:accountCommentIndex' element={<PendingPost />} />
+            <Route path='/profile/about' element={<About />} />
           </Route>
         </Route>
       </Routes>

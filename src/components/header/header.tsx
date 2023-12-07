@@ -148,6 +148,7 @@ const HeaderTitle = ({ title, shortAddress }: { title: string; shortAddress: str
 
   const subplebbitTitle = <Link to={`/p/${params.subplebbitAddress}`}>{title || shortAddress}</Link>;
   const submitTitle = <span className={styles.submitTitle}>{t('submit')}</span>;
+  const profileTitle = <Link to='/profile'>{account?.author?.shortAddress}</Link>;
 
   if (isSubplebbitSubmit) {
     return (
@@ -162,7 +163,7 @@ const HeaderTitle = ({ title, shortAddress }: { title: string; shortAddress: str
   } else if (isSettings) {
     return t('preferences');
   } else if (isProfile) {
-    return account?.author?.shortAddress;
+    return profileTitle;
   }
   return null;
 };
@@ -186,7 +187,7 @@ const Header = () => {
   const isSubplebbitSubmit = isSubplebbitSubmitView(location.pathname, params);
 
   const hasFewTabs = isPost || isSubmit || isSubplebbitSubmit || isSettings;
-  const hasStickyHeader = isHome || (isSubplebbit && !isSubplebbitSubmit && !isPost && !isAbout) || isProfile;
+  const hasStickyHeader = isHome || (isSubplebbit && !isSubplebbitSubmit && !isPost && !isAbout) || (isProfile && !isAbout);
   const logoSrc = isSubplebbit ? suggested?.avatarUrl : isProfile ? imageUrl : '/assets/logo/seedit.png';
   const logoIsAvatar = (isSubplebbit && suggested?.avatarUrl) || (isProfile && imageUrl);
   const logoLink = isSubplebbit ? `/p/${params.subplebbitAddress}` : isProfile ? '/profile' : '/';
@@ -213,7 +214,7 @@ const Header = () => {
         <div className={`${styles.tabs} ${hasFewTabs ? styles.fewTabs : ''}`}>
           <ul className={styles.tabMenu}>
             <HeaderTabs />
-            {(isSubplebbit || isSubplebbitSubmit || isPost) && <AboutButton />}
+            {(isSubplebbit || isSubplebbitSubmit || isPost || isProfile) && <AboutButton />}
           </ul>
         </div>
       </div>

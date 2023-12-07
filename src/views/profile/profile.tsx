@@ -2,8 +2,8 @@ import { useEffect, useRef } from 'react';
 import { StateSnapshot, Virtuoso, VirtuosoHandle } from 'react-virtuoso';
 import { useAccount, useAccountComments } from '@plebbit/plebbit-react-hooks';
 import styles from './profile.module.css';
-import Sidebar from '../../components/sidebar/sidebar';
 import Post from '../../components/post';
+import ProfileSidebar from './profile-sidebar';
 
 let lastVirtuosoState: StateSnapshot | undefined;
 
@@ -32,7 +32,7 @@ const Profile = () => {
   return (
     <div className={styles.content}>
       <div className={styles.sidebar}>
-        <Sidebar />
+        <ProfileSidebar />
       </div>
       <Virtuoso
         increaseViewportBy={{ bottom: 1200, top: 600 }}
