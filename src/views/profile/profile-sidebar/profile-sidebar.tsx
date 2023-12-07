@@ -31,7 +31,7 @@ const ProfileSidebar = () => {
   const account = useAccount();
   const { accountComments } = useAccountComments();
   const { accountSubplebbits } = useAccountSubplebbits();
-  const oldestCommentTimestamp = accountComments?.[0]?.timestamp || 0;
+  const oldestCommentTimestamp = accountComments?.[0]?.timestamp || Date.now();
   const { address } = account?.author || {};
   const { postScore, replyScore } = account?.karma || {};
 
@@ -53,7 +53,7 @@ const ProfileSidebar = () => {
           </span>
         </div>
       </div>
-      {accountSubplebbits && <ModeratorList accountSubplebbits={accountSubplebbits} />}
+      {accountSubplebbits.length > 0 && <ModeratorList accountSubplebbits={accountSubplebbits} />}
     </div>
   )
 }
