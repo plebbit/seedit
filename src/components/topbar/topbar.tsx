@@ -6,7 +6,7 @@ import { getShortAddress } from '@plebbit/plebbit-js';
 import styles from './topbar.module.css';
 import { SubplebbitWithDisplay, useDefaultAndSubscriptionsSubplebbits } from '../../lib/utils/addresses-utils';
 import useTimeFilter from '../../hooks/use-time-filter';
-import { isHomeView, isSubplebbitView } from '../../lib/utils/view-utils';
+import { isAllView, isHomeView, isSubplebbitView } from '../../lib/utils/view-utils';
 
 const sortTypes = ['hot', 'new', 'active', 'controversialAll', 'topAll'];
 
@@ -19,6 +19,7 @@ const TopBar = () => {
   const { timeFilterNames } = useTimeFilter();
   const selectedTimeFilterName = params.timeFilterName || timeFilterNames[5];
   const subscriptions = account?.subscriptions;
+  const isAll = isAllView(location.pathname);
   const isHome = isHomeView(location.pathname, params);
   const isSubplebbit = isSubplebbitView(location.pathname, params);
   const homeButtonClass = isHome ? styles.selected : styles.choice;
@@ -45,7 +46,7 @@ const TopBar = () => {
   const [selectedSortType, setSelectedSortType] = useState(params.sortType || '/hot');
 
   const getTimeFilterLink = (choice: string) => {
-    return isSubplebbit ? `/p/${params.subplebbitAddress}/${selectedSortType}/${choice}` : `/${selectedSortType}/${choice}`;
+    return isSubplebbit ? `/p/${params.subplebbitAddress}/${selectedSortType}/${choice}` : isAll ? `p/all/${selectedSortType}/${choice}` : `/${selectedSortType}/${choice}`;
   };
 
   const getSelectedSortLabel = () => {
@@ -139,7 +140,7 @@ const TopBar = () => {
             </li>
             <li>
               <span className={styles.separator}>-</span>
-              <Link to='/p/all' className={styles.choice} onClick={(event) => event.preventDefault()}>
+              <Link to='/p/all' className={isAll ? styles.selected : styles.choice}>
                 {t('topbar_all')}
               </Link>
             </li>

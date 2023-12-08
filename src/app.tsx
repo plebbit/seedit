@@ -15,6 +15,7 @@ import ChallengeModal from './components/challenge-modal';
 import Header from './components/header';
 import StickyHeader from './components/sticky-header';
 import TopBar from './components/topbar';
+import All from './views/all';
 
 function App() {
   const [theme] = useTheme();
@@ -55,16 +56,18 @@ function App() {
           <Route element={feedLayout}>
             <Route path='/:sortType?' element={<Home />} />
             <Route path='/:sortType?/:timeFilterName?' element={<Home />} />
-            <Route path='p/:subplebbitAddress/:sortType?' element={<Subplebbit />} />
-            <Route path='p/:subplebbitAddress/:sortType?/:timeFilterName?' element={<Subplebbit />} />
+            <Route path='/p/all/:sortType?' element={<All />} />
+            <Route path='/p/all/:sortType?/:timeFilterName?' element={<All />} />
+            <Route path='/p/:subplebbitAddress/:sortType?' element={<Subplebbit />} />
+            <Route path='/p/:subplebbitAddress/:sortType?/:timeFilterName?' element={<Subplebbit />} />
             <Route path='/profile' element={<Profile />} />
           </Route>
           <Route element={pagesLayout}>
             <Route path='/submit' element={<Submit />} />
-            <Route path='p/:subplebbitAddress/c/:commentCid' element={<Post />} />
-            <Route path='p/:subplebbitAddress/c/:commentCid/about' element={<About />} />
-            <Route path='p/:subplebbitAddress/submit' element={<Submit />} />
-            <Route path='p/:subplebbitAddress/about' element={<About />} />
+            <Route path='/p/:subplebbitAddress/c/:commentCid' element={<Post />} />
+            <Route path='/p/:subplebbitAddress/c/:commentCid/about' element={<About />} />
+            <Route path='/p/:subplebbitAddress/submit' element={<Submit />} />
+            <Route path='/p/:subplebbitAddress/about' element={<About />} />
             <Route path='/settings' element={<Settings />} />
             <Route path='/profile/:accountCommentIndex' element={<PendingPost />} />
             <Route path='/profile/about' element={<About />} />

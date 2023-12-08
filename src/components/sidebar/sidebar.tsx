@@ -5,7 +5,7 @@ import { Role, useSubplebbitStats } from '@plebbit/plebbit-react-hooks';
 import styles from './sidebar.module.css';
 import { getFormattedDate, getFormattedDuration, getFormattedTimeAgo } from '../../lib/utils/time-utils';
 import { findSubplebbitCreator } from '../../lib/utils/user-utils';
-import { isAboutView, isHomeView, isPostView } from '../../lib/utils/view-utils';
+import { isAboutView, isAllView, isHomeView, isPostView } from '../../lib/utils/view-utils';
 import SearchBar from '../search-bar';
 import SubscribeButton from '../subscribe-button';
 
@@ -83,11 +83,12 @@ const Sidebar = ({ address, cid, createdAt, description, downvoteCount = 0, role
   const location = useLocation();
   const params = useParams();
   const isAbout = isAboutView(location.pathname);
+  const isAll = isAllView(location.pathname);
   const isHome = isHomeView(location.pathname, params);
   const isPost = isPostView(location.pathname, params);
   const subplebbitCreator = findSubplebbitCreator(roles);
   const creatorAddress = subplebbitCreator === 'anonymous' ? 'anonymous' : `${getShortAddress(subplebbitCreator)}`;
-  const submitRoute = isHome ? '/submit' : `/p/${address}/submit`;
+  const submitRoute = (isHome || isAll) ? '/submit' : `/p/${address}/submit`;
 
   return (
     <div className={`${isAbout ? styles.about : styles.sidebar}`}>
@@ -106,7 +107,7 @@ const Sidebar = ({ address, cid, createdAt, description, downvoteCount = 0, role
           <div className={styles.nub} />
         </div>
       </Link>
-      {!isHome && (
+      {!isHome && !isAll && (
         <div className={styles.titleBox}>
           <Link className={styles.title} to={`/p/${address}`}>
             {address}

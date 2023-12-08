@@ -27,8 +27,12 @@ export const isAboutView = (pathname: string): boolean => {
   return pathname.endsWith('/about');
 }
 
+export const isAllView = (pathname: string): boolean => {
+  return pathname.startsWith('/p/all');
+}
+
 export const isHomeView = (pathname: string, params: ParamsType): boolean => {
-  return pathname === '/' || sortTypes.includes(pathname) || (timeFilterNames.includes(params.timeFilterName as TimeFilterKey));
+  return pathname === '/' || (sortTypes.includes(pathname) || (timeFilterNames.includes(params.timeFilterName as TimeFilterKey) && !pathname.startsWith('/p/all')));
 };
 
 export const isPendingView = (pathname: string, params: ParamsType): boolean => {
