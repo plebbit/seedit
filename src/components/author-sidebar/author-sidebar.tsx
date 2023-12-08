@@ -1,7 +1,7 @@
 import { useAccount, useAccountComments, useAccountSubplebbits, AccountSubplebbit } from '@plebbit/plebbit-react-hooks';
 import { getShortAddress } from '@plebbit/plebbit-js';
-import styles from './profile-sidebar.module.css';
-import { getFormattedDuration } from '../../../lib/utils/time-utils';
+import styles from './author-sidebar.module.css';
+import { getFormattedDuration } from '../../lib/utils/time-utils';
 import { Link } from 'react-router-dom';
 
 interface ModeratorListProps {
@@ -25,7 +25,7 @@ const ModeratorList = ({ accountSubplebbits }: ModeratorListProps) => {
   );
 };
 
-const ProfileSidebar = () => {
+const AuthorSidebar = () => {
   const account = useAccount();
   const { accountComments } = useAccountComments();
   const { accountSubplebbits } = useAccountSubplebbits();
@@ -52,4 +52,4 @@ const ProfileSidebar = () => {
   );
 };
 
-export default ProfileSidebar;
+export default AuthorSidebar;

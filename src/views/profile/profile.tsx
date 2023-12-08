@@ -3,7 +3,7 @@ import { StateSnapshot, Virtuoso, VirtuosoHandle } from 'react-virtuoso';
 import { useAccount, useAccountComments } from '@plebbit/plebbit-react-hooks';
 import styles from './profile.module.css';
 import Post from '../../components/post';
-import ProfileSidebar from './profile-sidebar';
+import AuthorSidebar from '../../components/author-sidebar';
 
 let lastVirtuosoState: StateSnapshot | undefined;
 
@@ -28,7 +28,7 @@ const Profile = () => {
   return (
     <div className={styles.content}>
       <div className={styles.sidebar}>
-        <ProfileSidebar />
+        <AuthorSidebar />
       </div>
       {account && !accountComments.length ? (
         'no posts'
