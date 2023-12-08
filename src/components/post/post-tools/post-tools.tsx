@@ -116,7 +116,7 @@ const ModTools = ({ cid }: PostToolsProps) => {
   );
 };
 
-const ThreadTools = ({ cid, hasLabel, subplebbitAddress, replyCount = 0 }: PostToolsProps) => {
+const CommentTools = ({ cid, hasLabel, subplebbitAddress, replyCount = 0 }: PostToolsProps) => {
   const { t } = useTranslation();
   const validReplyCount = isNaN(replyCount) ? 0 : replyCount;
   const commentCount = validReplyCount === 0 ? t('post_no_comments') : `${validReplyCount} ${validReplyCount === 1 ? t('post_comment') : t('post_comments')}`;
@@ -204,7 +204,7 @@ const PostTools = ({ cid, failed, hasLabel = false, isReply, replyCount, spoiler
       {isReply ? (
         <ReplyTools cid={cid} hasLabel={hasLabel} showReplyForm={showReplyForm} subplebbitAddress={subplebbitAddress} />
       ) : (
-        <ThreadTools cid={cid} hasLabel={hasLabel} subplebbitAddress={subplebbitAddress} replyCount={replyCount} />
+        <CommentTools cid={cid} hasLabel={hasLabel} subplebbitAddress={subplebbitAddress} replyCount={replyCount} />
       )}
       {isMod && <ModTools cid={cid} subplebbitAddress={subplebbitAddress} />}
     </ul>
