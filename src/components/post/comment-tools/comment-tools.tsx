@@ -3,14 +3,14 @@ import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useAccount, useComment, usePublishCommentEdit, useSubplebbit } from '@plebbit/plebbit-react-hooks';
 import { autoUpdate, flip, FloatingFocusManager, offset, shift, useClick, useDismiss, useFloating, useId, useInteractions, useRole } from '@floating-ui/react';
-import styles from './post-tools.module.css';
+import styles from './comment-tools.module.css';
 import { FailedLabel, PendingLabel, SpoilerLabel } from '../label';
 import challengesStore from '../../../hooks/use-challenges';
 import { alertChallengeVerificationFailed } from '../../../lib/utils/challenge-utils';
 import { getShareLink } from '../../../lib/utils/url-utils';
 const { addChallenge } = challengesStore.getState();
 
-interface PostToolsProps {
+interface CommentToolsProps {
   cid: string;
   failed?: boolean;
   hasLabel?: boolean;
@@ -21,7 +21,7 @@ interface PostToolsProps {
   showReplyForm?: () => void;
 }
 
-const ModTools = ({ cid }: PostToolsProps) => {
+const ModTools = ({ cid }: CommentToolsProps) => {
   const { t } = useTranslation();
   const post = useComment({ commentCid: cid });
   const [isModToolsOpen, setIsModToolsOpen] = useState(false);
@@ -116,7 +116,7 @@ const ModTools = ({ cid }: PostToolsProps) => {
   );
 };
 
-const CommentTools = ({ cid, hasLabel, subplebbitAddress, replyCount = 0 }: PostToolsProps) => {
+const PostTools = ({ cid, hasLabel, subplebbitAddress, replyCount = 0 }: CommentToolsProps) => {
   const { t } = useTranslation();
   const validReplyCount = isNaN(replyCount) ? 0 : replyCount;
   const commentCount = validReplyCount === 0 ? t('post_no_comments') : `${validReplyCount} ${validReplyCount === 1 ? t('post_comment') : t('post_comments')}`;
@@ -159,7 +159,7 @@ const CommentTools = ({ cid, hasLabel, subplebbitAddress, replyCount = 0 }: Post
   );
 };
 
-const ReplyTools = ({ cid, hasLabel, showReplyForm }: PostToolsProps) => {
+const ReplyTools = ({ cid, hasLabel, showReplyForm }: CommentToolsProps) => {
   const { t } = useTranslation();
   return (
     <>
@@ -182,7 +182,7 @@ const ReplyTools = ({ cid, hasLabel, showReplyForm }: PostToolsProps) => {
   );
 };
 
-const PostToolsLabel = ({ cid, failed, isReply, spoiler }: PostToolsProps) => {
+const CommentToolsLabel = ({ cid, failed, isReply, spoiler }: CommentToolsProps) => {
   return (
     <span className={styles.label}>
       {spoiler && <SpoilerLabel />}
@@ -192,7 +192,7 @@ const PostToolsLabel = ({ cid, failed, isReply, spoiler }: PostToolsProps) => {
   );
 };
 
-const PostTools = ({ cid, failed, hasLabel = false, isReply, replyCount, spoiler, subplebbitAddress, showReplyForm }: PostToolsProps) => {
+const CommentTools = ({ cid, failed, hasLabel = false, isReply, replyCount, spoiler, subplebbitAddress, showReplyForm }: CommentToolsProps) => {
   const account = useAccount();
   const authorRole = useSubplebbit({ subplebbitAddress })?.roles?.[account?.author?.address]?.role;
   const isMod = authorRole === 'admin' || authorRole === 'owner' || authorRole === 'moderator';
@@ -200,15 +200,15 @@ const PostTools = ({ cid, failed, hasLabel = false, isReply, replyCount, spoiler
 
   return (
     <ul className={`${styles.buttons} ${isReply ? styles.buttonsReply : ''} ${hasLabel ? styles.buttonsLabel : ''}`}>
-      {hasLabel && <PostToolsLabel cid={cid} failed={failed} isReply={isReply} spoiler={spoiler} subplebbitAddress={subplebbitAddress} />}
+      {hasLabel && <CommentToolsLabel cid={cid} failed={failed} isReply={isReply} spoiler={spoiler} subplebbitAddress={subplebbitAddress} />}
       {isReply ? (
         <ReplyTools cid={cid} hasLabel={hasLabel} showReplyForm={showReplyForm} subplebbitAddress={subplebbitAddress} />
       ) : (
-        <CommentTools cid={cid} hasLabel={hasLabel} subplebbitAddress={subplebbitAddress} replyCount={replyCount} />
+        <PostTools cid={cid} hasLabel={hasLabel} subplebbitAddress={subplebbitAddress} replyCount={replyCount} />
       )}
       {isMod && <ModTools cid={cid} subplebbitAddress={subplebbitAddress} />}
     </ul>
   );
 };
 
-export default PostTools;
+export default CommentTools;

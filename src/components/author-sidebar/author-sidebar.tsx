@@ -28,8 +28,8 @@ const ModeratorList = ({ accountSubplebbits }: ModeratorListProps) => {
 const AuthorSidebar = () => {
   const account = useAccount();
   const { accountComments } = useAccountComments();
-  const { accountSubplebbits } = useAccountSubplebbits();
   const oldestCommentTimestamp = accountComments?.[0]?.timestamp || Date.now();
+  const { accountSubplebbits } = useAccountSubplebbits();
   const { address } = account?.author || {};
   const { postScore, replyScore } = account?.karma || {};
 
