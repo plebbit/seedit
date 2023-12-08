@@ -28,6 +28,7 @@
   margin-left: 1px;
   margin-bottom: -3px;
   margin-right: -1px;
+  filter: var(--filter90);
 }
 
 .avatar {
@@ -42,6 +43,7 @@
   margin-top: 16px;
   margin-right: 5px;
   padding-right: 1ex;
+  filter: var(--filter90);
 }
 
 @media (max-width: 768px) {
