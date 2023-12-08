@@ -101,7 +101,7 @@ const ProfileHeaderTabs = () => {
   return (
     <>
       <li>
-        <Link to='/profile' className={(isProfile && !isAbout) ? styles.selected : styles.choice}>
+        <Link to='/profile' className={isProfile && !isAbout ? styles.selected : styles.choice}>
           overview
         </Link>
       </li>
