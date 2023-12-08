@@ -35,7 +35,8 @@
     "build-netlify": "cross-env PUBLIC_URL=./ GENERATE_SOURCEMAP=true REACT_APP_COMMIT_REF=$COMMIT_REF react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "prettier": "prettier src/**/*.{js,ts,tsx} --write"
+    "prettier": "prettier src/**/*.{js,ts,tsx} --write",
+    "changelog": "conventional-changelog --preset angular --infile CHANGELOG.md --same-file --release-count 0"
   },
   "eslintConfig": {
     "extends": [
@@ -58,6 +59,8 @@
     ]
   },
   "devDependencies": {
-    "@types/memoizee": "0.4.9"
+    "@types/memoizee": "0.4.9",
+    "conventional-changelog-cli": "4.1.0",
+    "cz-conventional-changelog": "3.3.0"
   }
 }
