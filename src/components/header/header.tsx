@@ -8,6 +8,7 @@ import {
   isAboutView,
   isAllView,
   isAuthorView,
+  isDownvotedView,
   isHomeView,
   isInboxView,
   isPostView,
@@ -16,6 +17,7 @@ import {
   isSubmitView,
   isSubplebbitSubmitView,
   isProfileView,
+  isUpvotedView,
 } from '../../lib/utils/view-utils';
 import useTheme from '../../hooks/use-theme';
 import styles from './header.module.css';
@@ -101,11 +103,14 @@ const SortItems = () => {
 const AuthorHeaderTabs = () => {
   const location = useLocation();
   const params = useParams();
-  const isAuthor = isAuthorView(location.pathname);
-  const isProfile = isProfileView(location.pathname);
   const isAbout = isAboutView(location.pathname);
+  const isAuthor = isAuthorView(location.pathname);
+  const isDownvote = isDownvotedView(location.pathname);
+  const isProfile = isProfileView(location.pathname);
+  const isUpvote = isUpvotedView(location.pathname);
+
   const overviewLink = isAuthor ? `/u/${params.authorAddress}/c/${params.commentCid}` : '/profile';
-  const overviewSelectedClass = (isProfile || isAuthor) && !isAbout ? styles.selected : styles.choice;
+  const overviewSelectedClass = (isProfile || isAuthor) && !isAbout && !isUpvote && !isDownvote ? styles.selected : styles.choice;
 
   return (
     <>
@@ -127,12 +132,12 @@ const AuthorHeaderTabs = () => {
       {isProfile && (
         <>
           <li>
-            <Link to={overviewLink} className={styles.choice}>
+            <Link to='/profile/upvoted' className={isUpvote ? styles.selected : styles.choice}>
               upvoted
             </Link>
           </li>
           <li>
-            <Link to={overviewLink} className={styles.choice}>
+            <Link to='/profile/downvoted' className={isDownvote ? styles.selected : styles.choice}>
               downvoted
             </Link>
           </li>
