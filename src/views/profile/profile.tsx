@@ -19,15 +19,9 @@ const Profile = () => {
   const isUpvoted = isUpvotedView(location.pathname);
   const isDownvoted = isDownvotedView(location.pathname);
 
-  const upvotedCommentCids = useMemo(() => 
-    accountVotes?.filter(vote => vote.vote === 1).map(vote => vote.commentCid) || [], 
-    [accountVotes]
-  );
+  const upvotedCommentCids = useMemo(() => accountVotes?.filter((vote) => vote.vote === 1).map((vote) => vote.commentCid) || [], [accountVotes]);
 
-  const downvotedCommentCids = useMemo(() => 
-    accountVotes?.filter(vote => vote.vote === -1).map(vote => vote.commentCid) || [], 
-    [accountVotes]
-  );
+  const downvotedCommentCids = useMemo(() => accountVotes?.filter((vote) => vote.vote === -1).map((vote) => vote.commentCid) || [], [accountVotes]);
 
   const { comments: upvotedComments } = useComments({ commentCids: upvotedCommentCids });
   const { comments: downvotedComments } = useComments({ commentCids: downvotedCommentCids });
@@ -45,7 +39,7 @@ const Profile = () => {
       });
     window.addEventListener('scroll', setLastVirtuosoState);
     return () => window.removeEventListener('scroll', setLastVirtuosoState);
-  }, []);
+  }, [account?.shortAddress, params.sortType]);
 
   const lastVirtuosoState = lastVirtuosoStates?.[account?.shortAddress + params.sortType];
 
@@ -61,7 +55,7 @@ const Profile = () => {
           increaseViewportBy={{ bottom: 1200, top: 600 }}
           totalCount={accountComments?.length || 0}
           data={virtuosoData}
-          itemContent={(index, post) => (post && <Post index={index} post={post} />)}
+          itemContent={(index, post) => post && <Post index={index} post={post} />}
           useWindowScroll={true}
           ref={virtuosoRef}
           restoreStateFrom={lastVirtuosoState}

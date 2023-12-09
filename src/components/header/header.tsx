@@ -263,14 +263,14 @@ const Header = () => {
             <SubscribeButton address={params.subplebbitAddress} />
           </span>
         )}
-      {!isMobile && (
-        <div className={`${styles.tabs} ${hasFewTabs ? styles.fewTabs : ''}`}>
-          <ul className={styles.tabMenu}>
-            <HeaderTabs />
-            {(isSubplebbit || isSubplebbitSubmit || isPost || isProfile || isAuthor) && <AboutButton />}
-          </ul>
-        </div>
-      )}
+        {!isMobile && (
+          <div className={`${styles.tabs} ${hasFewTabs ? styles.fewTabs : ''}`}>
+            <ul className={styles.tabMenu}>
+              <HeaderTabs />
+              {(isSubplebbit || isSubplebbitSubmit || isPost || isProfile || isAuthor) && <AboutButton />}
+            </ul>
+          </div>
+        )}
       </div>
       {isMobile && (
         <div className={`${styles.tabs} ${hasFewTabs ? styles.fewTabs : ''}`}>

@@ -51,7 +51,7 @@ const Author = () => {
         increaseViewportBy={{ bottom: 1200, top: 600 }}
         totalCount={authorComments?.length || 0}
         data={authorComments}
-        itemContent={(index, post) => (post && <Post index={index} post={post} />)}
+        itemContent={(index, post) => post && <Post index={index} post={post} />}
         useWindowScroll={true}
         components={{ Footer }}
         endReached={loadMore}
