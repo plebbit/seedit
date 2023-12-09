@@ -18,13 +18,14 @@ import useUpvote from '../../hooks/use-upvote';
 
 interface PostAuthorProps {
   authorRole: string;
+  cid: string;
   displayName: string;
   shortAddress: string;
   shortAuthorAddress: string | undefined;
   authorAddressChanged: boolean;
 }
 
-const PostAuthor = ({ authorRole, displayName, shortAddress, shortAuthorAddress, authorAddressChanged }: PostAuthorProps) => {
+const PostAuthor = ({ authorRole, cid, displayName, shortAddress, shortAuthorAddress, authorAddressChanged }: PostAuthorProps) => {
   const isAuthorOwner = authorRole === 'owner';
   const isAuthorAdmin = authorRole === 'admin';
   const isAuthorModerator = authorRole === 'moderator';
@@ -34,7 +35,7 @@ const PostAuthor = ({ authorRole, displayName, shortAddress, shortAuthorAddress,
   return (
     <>
       {displayName && <span className={`${styles.displayName} ${moderatorClass}`}>{displayName} </span>}
-      <Link className={`${styles.authorAddressWrapper} ${moderatorClass}`} to={`u/${shortAuthorAddress}`} onClick={(e) => e.preventDefault()}>
+      <Link className={`${styles.authorAddressWrapper} ${moderatorClass}`} to={`/u/${shortAuthorAddress}/c/${cid}`}>
         <span className={styles.authorAddressHidden}>u/{shortAddress || shortAuthorAddress}</span>
         <span className={`${styles.authorAddressVisible} ${authorAddressChanged && styles.authorAddressChanged}`}>u/{shortAuthorAddress}</span>
       </Link>
@@ -157,6 +158,7 @@ const Post = ({ post, index }: PostProps) => {
               {t('post_submitted')} {getFormattedTimeAgo(timestamp)} {t('post_by')}{' '}
               <PostAuthor
                 authorRole={authorRole}
+                cid={cid}
                 displayName={displayName}
                 shortAddress={shortAddress}
                 shortAuthorAddress={shortAuthorAddress}

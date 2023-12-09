@@ -2,10 +2,13 @@ import { useEffect } from 'react';
 import { Outlet, Route, Routes } from 'react-router-dom';
 import useTheme from './hooks/use-theme';
 import styles from './app.module.css';
+import All from './views/all';
+import Inbox from './views/inbox';
 import Home from './views/home';
 import PendingPost from './views/pending-post';
 import Post from './views/post';
 import About from './views/about/about';
+import Author from './views/author';
 import Profile from './views/profile';
 import Settings from './views/settings';
 import Submit from './views/submit';
@@ -15,7 +18,6 @@ import ChallengeModal from './components/challenge-modal';
 import Header from './components/header';
 import StickyHeader from './components/sticky-header';
 import TopBar from './components/topbar';
-import All from './views/all';
 
 function App() {
   const [theme] = useTheme();
@@ -61,6 +63,11 @@ function App() {
             <Route path='/p/:subplebbitAddress/:sortType?' element={<Subplebbit />} />
             <Route path='/p/:subplebbitAddress/:sortType?/:timeFilterName?' element={<Subplebbit />} />
             <Route path='/profile' element={<Profile />} />
+            <Route path='/profile/:sortType?' element={<Profile />} />
+            <Route path='/profile/upvoted/:sortType?' element={<Profile />} />
+            <Route path='/profile/downvoted/:sortType?' element={<Profile />} />
+            <Route path='u/:authorAddress/c/:commentCid?' element={<Author />} />
+            <Route path='u/:authorAddress/c/:commentCid?/:sortType?' element={<Author />} />
           </Route>
           <Route element={pagesLayout}>
             <Route path='/submit' element={<Submit />} />
@@ -71,6 +78,8 @@ function App() {
             <Route path='/settings' element={<Settings />} />
             <Route path='/profile/:accountCommentIndex' element={<PendingPost />} />
             <Route path='/profile/about' element={<About />} />
+            <Route path='/u/:authorAddress/c/:commentCid/about' element={<About />} />
+            <Route path='/inbox' element={<Inbox />} />
           </Route>
         </Route>
       </Routes>

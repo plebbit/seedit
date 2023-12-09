@@ -2,6 +2,7 @@ import { timeFilterNames, TimeFilterKey } from "../../hooks/use-time-filter";
 
 export type ParamsType = {
   accountCommentIndex?: string;
+  authorAddress?: string;
   commentCid?: string;
   subplebbitAddress?: string;
   timeFilterName?: string;
@@ -18,6 +19,8 @@ export const getAboutLink = (pathname: string, params: ParamsType): string => {
     return `/p/${params.subplebbitAddress}/about`;
   } else if (pathname.startsWith('/profile')) {
     return '/profile/about';
+  } else if (pathname.startsWith('/u/')) {
+    return `/u/${params.authorAddress}/c/${params.commentCid}/about`;
   } else {
     return '/about';
   }
@@ -31,9 +34,21 @@ export const isAllView = (pathname: string): boolean => {
   return pathname.startsWith('/p/all');
 }
 
+export const isAuthorView = (pathname: string): boolean => {
+  return pathname.startsWith('/u/');
+}
+
+export const isDownvotedView = (pathname: string): boolean => {
+  return pathname === '/profile/downvoted';
+}
+
 export const isHomeView = (pathname: string, params: ParamsType): boolean => {
   return pathname === '/' || (sortTypes.includes(pathname) || (timeFilterNames.includes(params.timeFilterName as TimeFilterKey) && !pathname.startsWith('/p/all')));
 };
+
+export const isInboxView = (pathname: string): boolean => {
+  return pathname.startsWith('/inbox');
+}
 
 export const isPendingView = (pathname: string, params: ParamsType): boolean => {
   return pathname === `/profile/${params.accountCommentIndex}`;
@@ -62,3 +77,7 @@ export const isSubplebbitView = (pathname: string, params: ParamsType): boolean 
 export const isSubplebbitSubmitView = (pathname: string, params: ParamsType): boolean => {
   return params.subplebbitAddress ? pathname === `/p/${params.subplebbitAddress}/submit` : false;
 };
+
+export const isUpvotedView = (pathname: string): boolean => {
+  return pathname === '/profile/upvoted';
+}

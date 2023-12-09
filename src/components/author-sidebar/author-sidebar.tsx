@@ -44,7 +44,7 @@ const AuthorSidebar = () => {
           <span className={styles.karma}>{replyScore}</span> comment karma
         </div>
         <div className={styles.bottom}>
-          <span className={styles.age}>plebbitor for {getFormattedDuration(oldestCommentTimestamp)}</span>
+          <span className={styles.age}>plebbitor for at least {getFormattedDuration(oldestCommentTimestamp)}</span>
         </div>
       </div>
       {Object.keys(accountSubplebbits).length > 0 && <ModeratorList accountSubplebbits={accountSubplebbits} />}
