@@ -4,11 +4,13 @@ import { useAccount, useAccountComments } from '@plebbit/plebbit-react-hooks';
 import styles from './profile.module.css';
 import Post from '../../components/post';
 import AuthorSidebar from '../../components/author-sidebar';
+import { useParams } from 'react-router-dom';
 
-let lastVirtuosoState: StateSnapshot | undefined;
+const lastVirtuosoStates: { [key: string]: StateSnapshot } = {};
 
 const Profile = () => {
   const account = useAccount();
+  const params = useParams();
   let { accountComments } = useAccountComments();
   accountComments = [...accountComments].reverse();
 
@@ -18,12 +20,14 @@ const Profile = () => {
     const setLastVirtuosoState = () =>
       virtuosoRef.current?.getState((snapshot: StateSnapshot) => {
         if (snapshot?.ranges?.length) {
-          lastVirtuosoState = snapshot;
+          lastVirtuosoStates[account?.shortAddress + params.sortType] = snapshot;
         }
       });
     window.addEventListener('scroll', setLastVirtuosoState);
     return () => window.removeEventListener('scroll', setLastVirtuosoState);
   }, []);
+
+  const lastVirtuosoState = lastVirtuosoStates?.[account?.shortAddress + params.sortType];
 
   return (
     <div className={styles.content}>
