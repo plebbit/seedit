@@ -35,7 +35,7 @@ const PostAuthor = ({ authorRole, cid, displayName, shortAddress, shortAuthorAdd
   return (
     <>
       {displayName && <span className={`${styles.displayName} ${moderatorClass}`}>{displayName} </span>}
-      <Link className={`${styles.authorAddressWrapper} ${moderatorClass}`} to={`u/${shortAuthorAddress}/c/${cid}`}>
+      <Link className={`${styles.authorAddressWrapper} ${moderatorClass}`} to={`/u/${shortAuthorAddress}/c/${cid}`}>
         <span className={styles.authorAddressHidden}>u/{shortAddress || shortAuthorAddress}</span>
         <span className={`${styles.authorAddressVisible} ${authorAddressChanged && styles.authorAddressChanged}`}>u/{shortAuthorAddress}</span>
       </Link>
