@@ -2,6 +2,7 @@ import { timeFilterNames, TimeFilterKey } from "../../hooks/use-time-filter";
 
 export type ParamsType = {
   accountCommentIndex?: string;
+  authorAddress?: string;
   commentCid?: string;
   subplebbitAddress?: string;
   timeFilterName?: string;
@@ -18,6 +19,8 @@ export const getAboutLink = (pathname: string, params: ParamsType): string => {
     return `/p/${params.subplebbitAddress}/about`;
   } else if (pathname.startsWith('/profile')) {
     return '/profile/about';
+  } else if (pathname.startsWith('/u/')) {
+    return `/u/${params.authorAddress}/c/${params.commentCid}/about`;
   } else {
     return '/about';
   }
@@ -29,6 +32,10 @@ export const isAboutView = (pathname: string): boolean => {
 
 export const isAllView = (pathname: string): boolean => {
   return pathname.startsWith('/p/all');
+}
+
+export const isAuthorView = (pathname: string): boolean => {
+  return pathname.startsWith('/u/');
 }
 
 export const isHomeView = (pathname: string, params: ParamsType): boolean => {

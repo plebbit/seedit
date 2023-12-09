@@ -3,7 +3,7 @@ import Sidebar from '../../components/sidebar';
 import AuthorSidebar from '../../components/author-sidebar';
 import styles from './about.module.css';
 import { useComment, useSubplebbit } from '@plebbit/plebbit-react-hooks';
-import { isProfileView } from '../../lib/utils/view-utils';
+import { isAuthorView, isProfileView } from '../../lib/utils/view-utils';
 
 const About = () => {
   const { commentCid, subplebbitAddress } = useParams();
@@ -13,11 +13,12 @@ const About = () => {
   const { cid, downvoteCount, timestamp, upvoteCount } = comment || {};
 
   const location = useLocation();
+  const isAuthor = isAuthorView(location.pathname);
   const isProfile = isProfileView(location.pathname);
 
   return (
     <div className={styles.content}>
-      {isProfile ? (
+      {isProfile || isAuthor ? (
         <AuthorSidebar />
       ) : (
         <Sidebar
