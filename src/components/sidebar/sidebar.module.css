@@ -162,6 +162,7 @@ a {
   margin-top: 3px;
   color: var(--text-markdown);
   line-height: 15px;
+  word-wrap: break-word;
 }
 
 .rulesList {
