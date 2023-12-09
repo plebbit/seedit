@@ -20,19 +20,15 @@ export const useDefaultSubplebbitAddresses = () => {
   return useMemo(() => defaultSubplebbits.map((subplebbit: Subplebbit) => subplebbit.address), [defaultSubplebbits]);
 };
 
-export const useDefaultAndSubscriptionsSubplebbits = () => {
+export const useDefaultAndSubscriptionsSubplebbits = (): SubplebbitWithDisplay[] => {
   const account = useAccount();
   const { subplebbitAddress: subplebbitAddressParam } = useParams();
   const defaultSubplebbits = useDefaultSubplebbits();
 
   return useMemo(() => {
-    let subplebbitsList: SubplebbitWithDisplay[] = [];
+    const subplebbitsObj: { [key: string]: SubplebbitWithDisplay } = {};
 
-    // Add default subplebbits
-    defaultSubplebbits.forEach(subplebbit => {
-      if (!subplebbit.address) {
-        return;
-      }
+    const addSubplebbit = (subplebbit: Subplebbit) => {
       let displayAddress = subplebbit.address.includes('.') ? subplebbit.address : getShortAddress(subplebbit.address);
 
       // Append title in parentheses only if the address doesn't contain '.'
@@ -43,25 +39,29 @@ export const useDefaultAndSubscriptionsSubplebbits = () => {
       if (displayAddress.length > 40) {
         displayAddress = displayAddress.substring(0, 37) + '...';
       }
-      subplebbitsList.push({ address: subplebbit.address, displayAddress });
+
+      subplebbitsObj[subplebbit.address] = { ...subplebbit, displayAddress };
+    };
+
+    // Add default subplebbits
+    defaultSubplebbits.forEach(subplebbit => {
+      if (subplebbit.address) {
+        addSubplebbit(subplebbit);
+      }
     });
 
     // Add subscribed subplebbits
-    if (Array.isArray(account?.subscriptions)) {
-      account.subscriptions.forEach(address => {
-        if (!subplebbitsList.some(s => s.address === address)) {
-          const displayAddress = address.includes('.') ? address : getShortAddress(address);
-          subplebbitsList.push({ address, displayAddress });
-        }
-      });
-    }
+    account?.subscriptions?.forEach((address: string) => {
+      if (!subplebbitsObj[address]) {
+        addSubplebbit({ address });
+      }
+    });
 
     // Add the current subplebbit if not already in the list
-    if (subplebbitAddressParam && !subplebbitsList.some(s => s.address === subplebbitAddressParam)) {
-      const displayAddress = subplebbitAddressParam.includes('.') ? subplebbitAddressParam : getShortAddress(subplebbitAddressParam);
-      subplebbitsList.push({ address: subplebbitAddressParam, displayAddress });
+    if (subplebbitAddressParam && !subplebbitsObj[subplebbitAddressParam]) {
+      addSubplebbit({ address: subplebbitAddressParam });
     }
 
-    return subplebbitsList;
+    return Object.values(subplebbitsObj);
   }, [account?.subscriptions, defaultSubplebbits, subplebbitAddressParam]);
 };

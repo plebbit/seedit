@@ -13,7 +13,7 @@ import ExpandButton from '../post/expand-button/';
 import Thumbnail from '../post/thumbnail/';
 import Flair from '../post/flair/';
 import { PendingLabel, FailedLabel } from '../post/label';
-import PostTools from '../post/post-tools';
+import CommentTools from '../post/comment-tools';
 import ReplyForm from '../reply-form';
 import useDownvote from '../../hooks/use-downvote';
 import useStateString from '../../hooks/use-state-string';
@@ -206,7 +206,7 @@ const Reply = ({ reply, depth }: ReplyProps) => {
         </div>
         {!collapsed && (
           <>
-            <PostTools
+            <CommentTools
               cid={reply.cid}
               isReply={true}
               replyCount={replies.length}

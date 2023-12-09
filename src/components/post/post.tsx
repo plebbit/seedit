@@ -10,7 +10,7 @@ import { getFormattedTimeAgo } from '../../lib/utils/time-utils';
 import ExpandButton from './expand-button';
 import Expando from './expando';
 import Flair from './flair';
-import PostTools from './post-tools';
+import CommentTools from './comment-tools';
 import Thumbnail from './thumbnail';
 import useDownvote from '../../hooks/use-downvote';
 import { usePendingReplyCount } from '../../hooks/use-pending-replycount';
@@ -173,7 +173,7 @@ const Post = ({ post, index }: PostProps) => {
               )}
               {pinned && <span className={styles.announcement}> - {t('announcement')}</span>}
             </p>
-            <PostTools cid={cid} failed={state === 'failed'} replyCount={totalReplyCount} subplebbitAddress={subplebbitAddress} />
+            <CommentTools cid={cid} failed={state === 'failed'} replyCount={totalReplyCount} subplebbitAddress={subplebbitAddress} />
           </div>
         </div>
       </div>

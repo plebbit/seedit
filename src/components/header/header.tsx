@@ -5,6 +5,7 @@ import { useAccount, useAuthorAvatar, useSubplebbit } from '@plebbit/plebbit-rea
 import {
   getAboutLink,
   isAboutView,
+  isAllView,
   isHomeView,
   isPostView,
   isSettingsView,
@@ -62,6 +63,7 @@ const SortItems = () => {
   const { t } = useTranslation();
   const params = useParams();
   const location = useLocation();
+  const isAll = isAllView(location.pathname);
   const isSubplebbit = isSubplebbitView(location.pathname, params);
   const sortLabels = [t('header_hot'), t('header_new'), t('header_active'), t('header_controversial'), t('header_top')];
   const [selectedSortType, setSelectedSortType] = useState(params.sortType || '/hot');
@@ -80,34 +82,41 @@ const SortItems = () => {
     }
   }, [params.sortType, location.pathname]);
 
-  return sortTypes.map((choice, index) => (
+  return sortTypes.map((choice, index) => {
+    const sortLink = isSubplebbit ? `/p/${params.subplebbitAddress}/${choice}` : isAll ? `p/all/${choice}` : choice;
+
+    return (
     <li key={choice}>
       <Link
-        to={isSubplebbit ? `/p/${params.subplebbitAddress}/${choice}` : choice}
+        to={sortLink}
         className={selectedSortType === choice ? styles.selected : styles.choice}
         onClick={() => handleSelect(choice)}
       >
         {sortLabels[index]}
       </Link>
     </li>
-  ));
+  )});
 };
 
 const ProfileHeaderTabs = () => {
+  const location = useLocation();
+  const isProfile = isProfileView(location.pathname);
+  const isAbout = isAboutView(location.pathname);
+
   return (
     <>
       <li>
-        <Link to='/' className={styles.selected} onClick={(e) => e.preventDefault()}>
+        <Link to='/profile' className={isProfile && !isAbout ? styles.selected : styles.choice}>
           overview
         </Link>
       </li>
       <li>
-        <Link to='/' className={styles.choice} onClick={(e) => e.preventDefault()}>
+        <Link to='/profile' className={styles.choice}>
           comments
         </Link>
       </li>
       <li>
-        <Link to='/' className={styles.choice} onClick={(e) => e.preventDefault()}>
+        <Link to='/profile' className={styles.choice}>
           submitted
         </Link>
       </li>
@@ -118,6 +127,7 @@ const ProfileHeaderTabs = () => {
 const HeaderTabs = () => {
   const params = useParams();
   const location = useLocation();
+  const isAll = isAllView(location.pathname);
   const isHome = isHomeView(location.pathname, params);
   const isPost = isPostView(location.pathname, params);
   const isProfile = isProfileView(location.pathname);
@@ -126,7 +136,7 @@ const HeaderTabs = () => {
 
   if (isPost) {
     return <CommentsButton />;
-  } else if (isHome || (isSubplebbit && !isSubplebbitSubmit)) {
+  } else if (isHome || (isSubplebbit && !isSubplebbitSubmit) || isAll) {
     return <SortItems />;
   } else if (isProfile) {
     return <ProfileHeaderTabs />;
@@ -178,6 +188,7 @@ const Header = () => {
   const { suggested, title, shortAddress } = subplebbit || {};
 
   const isAbout = isAboutView(location.pathname);
+  const isAll = isAllView(location.pathname);
   const isHome = isHomeView(location.pathname, params);
   const isPost = isPostView(location.pathname, params);
   const isProfile = isProfileView(location.pathname);
@@ -187,7 +198,7 @@ const Header = () => {
   const isSubplebbitSubmit = isSubplebbitSubmitView(location.pathname, params);
 
   const hasFewTabs = isPost || isSubmit || isSubplebbitSubmit || isSettings;
-  const hasStickyHeader = isHome || (isSubplebbit && !isSubplebbitSubmit && !isPost && !isAbout) || (isProfile && !isAbout);
+  const hasStickyHeader = isHome || (isSubplebbit && !isSubplebbitSubmit && !isPost && !isAbout) || (isProfile && !isAbout) || isAll;
   const logoSrc = isSubplebbit ? suggested?.avatarUrl : isProfile ? imageUrl : '/assets/logo/seedit.png';
   const logoIsAvatar = (isSubplebbit && suggested?.avatarUrl) || (isProfile && imageUrl);
   const logoLink = isSubplebbit ? `/p/${params.subplebbitAddress}` : isProfile ? '/profile' : '/';
@@ -201,7 +212,7 @@ const Header = () => {
             {!isSubplebbit && !isProfile && <img src={`/assets/logo/seedit-text-${theme === 'dark' ? 'dark' : 'light'}.svg`} className={styles.logoText} alt='logo' />}
           </Link>
         </div>
-        {!isHome && (
+        {!isHome && !isAll && (
           <span className={`${styles.pageName} ${!logoIsAvatar && styles.soloPageName}`}>
             <HeaderTitle title={title} shortAddress={shortAddress} />
           </span>

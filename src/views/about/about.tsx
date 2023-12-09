@@ -1,6 +1,6 @@
 import { useLocation, useParams } from 'react-router-dom';
 import Sidebar from '../../components/sidebar';
-import ProfileSidebar from '../profile/profile-sidebar';
+import AuthorSidebar from '../../components/author-sidebar';
 import styles from './about.module.css';
 import { useComment, useSubplebbit } from '@plebbit/plebbit-react-hooks';
 import { isProfileView } from '../../lib/utils/view-utils';
@@ -18,7 +18,7 @@ const About = () => {
   return (
     <div className={styles.content}>
       {isProfile ? (
-        <ProfileSidebar />
+        <AuthorSidebar />
       ) : (
         <Sidebar
           address={address}
