@@ -9,6 +9,7 @@ import {
   isAllView,
   isAuthorView,
   isHomeView,
+  isInboxView,
   isPostView,
   isSettingsView,
   isSubplebbitView,
@@ -88,16 +89,13 @@ const SortItems = () => {
     const sortLink = isSubplebbit ? `/p/${params.subplebbitAddress}/${choice}` : isAll ? `p/all/${choice}` : choice;
 
     return (
-    <li key={choice}>
-      <Link
-        to={sortLink}
-        className={selectedSortType === choice ? styles.selected : styles.choice}
-        onClick={() => handleSelect(choice)}
-      >
-        {sortLabels[index]}
-      </Link>
-    </li>
-  )});
+      <li key={choice}>
+        <Link to={sortLink} className={selectedSortType === choice ? styles.selected : styles.choice} onClick={() => handleSelect(choice)}>
+          {sortLabels[index]}
+        </Link>
+      </li>
+    );
+  });
 };
 
 const AuthorHeaderTabs = () => {
@@ -202,6 +200,7 @@ const Header = () => {
   const isAll = isAllView(location.pathname);
   const isAuthor = isAuthorView(location.pathname);
   const isHome = isHomeView(location.pathname, params);
+  const isInbox = isInboxView(location.pathname);
   const isPost = isPostView(location.pathname, params);
   const isProfile = isProfileView(location.pathname);
   const isSettings = isSettingsView(location.pathname);
@@ -209,7 +208,7 @@ const Header = () => {
   const isSubmit = isSubmitView(location.pathname);
   const isSubplebbitSubmit = isSubplebbitSubmitView(location.pathname, params);
 
-  const hasFewTabs = isPost || isSubmit || isSubplebbitSubmit || isSettings;
+  const hasFewTabs = isPost || isSubmit || isSubplebbitSubmit || isSettings || isInbox;
   const hasStickyHeader = isHome || (isSubplebbit && !isSubplebbitSubmit && !isPost && !isAbout) || (isProfile && !isAbout) || isAll || (isAuthor && !isAbout);
   const logoSrc = isSubplebbit ? suggested?.avatarUrl : isProfile ? imageUrl : '/assets/logo/seedit.png';
   const logoIsAvatar = (isSubplebbit && suggested?.avatarUrl) || (isProfile && imageUrl);

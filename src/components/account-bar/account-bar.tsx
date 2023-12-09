@@ -29,8 +29,8 @@ const AccountBar = () => {
   const accountDropdownClass = isAccountDropdownOpen ? styles.visible : styles.hidden;
   const accountSelectButtonRef = useRef<HTMLDivElement>(null);
 
-  const [isMailUnread, setIsMailUnread] = useState(false);
-  const mailClass = isMailUnread ? styles.mailIconUnread : styles.mailIconRead;
+  const unreadNotificationCount = account?.unreadNotificationCount ? ` (${account.unreadNotificationCount})` : '';
+  const mailClass = unreadNotificationCount ? styles.mailIconUnread : styles.mailIconRead;
 
   let submitLink = '/submit';
   if (isSubplebbit) {
@@ -100,16 +100,9 @@ const AccountBar = () => {
         </Link>
       </span>
       <span className={styles.separator}>|</span>
-      <Link
-        to='/settings'
-        className={styles.iconButton}
-        onClick={(e) => {
-          e.preventDefault();
-          setIsMailUnread(!isMailUnread);
-        }}
-      >
+      <Link to='/inbox' className={styles.iconButton}>
         <span className={`${styles.mailIcon} ${mailClass}`} />
-        {isMailUnread && <span className={styles.mailUnreadCount}>1</span>}
+        {unreadNotificationCount && <span className={styles.mailUnreadCount}>{unreadNotificationCount}</span>}
       </Link>
       <span className={styles.searchButton}>
         <span className={styles.separator}>|</span>

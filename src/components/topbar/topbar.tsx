@@ -46,7 +46,11 @@ const TopBar = () => {
   const [selectedSortType, setSelectedSortType] = useState(params.sortType || '/hot');
 
   const getTimeFilterLink = (choice: string) => {
-    return isSubplebbit ? `/p/${params.subplebbitAddress}/${selectedSortType}/${choice}` : isAll ? `p/all/${selectedSortType}/${choice}` : `/${selectedSortType}/${choice}`;
+    return isSubplebbit
+      ? `/p/${params.subplebbitAddress}/${selectedSortType}/${choice}`
+      : isAll
+      ? `p/all/${selectedSortType}/${choice}`
+      : `/${selectedSortType}/${choice}`;
   };
 
   const getSelectedSortLabel = () => {

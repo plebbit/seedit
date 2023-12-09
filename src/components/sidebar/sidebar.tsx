@@ -88,7 +88,7 @@ const Sidebar = ({ address, cid, createdAt, description, downvoteCount = 0, role
   const isPost = isPostView(location.pathname, params);
   const subplebbitCreator = findSubplebbitCreator(roles);
   const creatorAddress = subplebbitCreator === 'anonymous' ? 'anonymous' : `${getShortAddress(subplebbitCreator)}`;
-  const submitRoute = (isHome || isAll) ? '/submit' : `/p/${address}/submit`;
+  const submitRoute = isHome || isAll ? '/submit' : `/p/${address}/submit`;
 
   return (
     <div className={`${isAbout ? styles.about : styles.sidebar}`}>
