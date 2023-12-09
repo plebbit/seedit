@@ -124,6 +124,30 @@ const AuthorHeaderTabs = () => {
           submitted
         </Link>
       </li>
+      {isProfile && (
+        <>
+          <li>
+            <Link to={overviewLink} className={styles.choice}>
+              upvoted
+            </Link>
+          </li>
+          <li>
+            <Link to={overviewLink} className={styles.choice}>
+              downvoted
+            </Link>
+          </li>
+          <li>
+            <Link to={overviewLink} className={styles.choice}>
+              hidden
+            </Link>
+          </li>
+          <li>
+            <Link to={overviewLink} className={styles.choice}>
+              saved
+            </Link>
+          </li>
+        </>
+      )}
     </>
   );
 };
@@ -196,6 +220,7 @@ const Header = () => {
   const subplebbit = useSubplebbit({ subplebbitAddress: params.subplebbitAddress });
   const { suggested, title, shortAddress } = subplebbit || {};
 
+  const isMobile = window.innerWidth < 768;
   const isAbout = isAboutView(location.pathname);
   const isAll = isAllView(location.pathname);
   const isAuthor = isAuthorView(location.pathname);
@@ -233,13 +258,23 @@ const Header = () => {
             <SubscribeButton address={params.subplebbitAddress} />
           </span>
         )}
+      {!isMobile && (
         <div className={`${styles.tabs} ${hasFewTabs ? styles.fewTabs : ''}`}>
           <ul className={styles.tabMenu}>
             <HeaderTabs />
             {(isSubplebbit || isSubplebbitSubmit || isPost || isProfile || isAuthor) && <AboutButton />}
           </ul>
         </div>
+      )}
       </div>
+      {isMobile && (
+        <div className={`${styles.tabs} ${hasFewTabs ? styles.fewTabs : ''}`}>
+          <ul className={styles.tabMenu}>
+            <HeaderTabs />
+            {(isSubplebbit || isSubplebbitSubmit || isPost || isProfile || isAuthor) && <AboutButton />}
+          </ul>
+        </div>
+      )}
     </div>
   );
 };

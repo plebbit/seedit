@@ -48,8 +48,8 @@
 
 @media (max-width: 768px) {
   .container {
-    padding-bottom: 20px;
-    height: 45.5px;
+    padding-bottom: 2px;
+    height: 45px;
   }
 
   .reducedHeight {
@@ -67,7 +67,7 @@
 
 @media (min-width: 768px) {
   .container {
-    height: 45.5px;
+    height: 45px;
   }
 
   .temporary {
@@ -78,7 +78,7 @@
 
 .tabs {
   display: flex;
-  align-items: baseline !important;
+  margin-bottom: -1px;
 }
 
 .pageName {
@@ -134,13 +134,27 @@
   color: var(--green);
   background-color: var(--background);
   border: 1px solid var(--border-primary);
-  border-bottom: 2px solid var(--background);
+  border-bottom: 1px solid var(--background);
 }
 
 .tabMenu li .choice {
   color: var(--text-primary);
   background-color: var(--background-secondary);
   border-bottom: 0px solid var(--border-primary);
+}
+
+.tabs {
+  overflow-x: auto; /* Enables horizontal scrolling */
+  scrollbar-width: none; /* Hides the scrollbar in Firefox */
+  -ms-overflow-style: none;  /* Hides the scrollbar in IE and Edge */
+}
+
+.tabs::-webkit-scrollbar {
+  display: none; /* Hides the scrollbar in WebKit-based browsers */
+}
+
+.tabMenu li {
+  display: inline-flex;
 }
 
 
@@ -155,11 +169,6 @@
 }
 
 @media (max-width: 768px) {
-  .tabs {
-    position: absolute;
-    margin-bottom: -20px;
-  }
-
   .fewTabs {
     position: relative;
     margin-bottom: 0;
