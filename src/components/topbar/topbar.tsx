@@ -148,9 +148,7 @@ const TopBar = () => {
                 {t('topbar_all')}
               </Link>
             </li>
-          </ul>
-          <span className={styles.separator}>  |  </span>
-          <ul className={styles.srBar}>
+            <span className={styles.separator}>|</span>
             {subplebbitAddresses?.map((subplebbit: SubplebbitWithDisplay, index) => (
               <li key={index}>
                 {index !== 0 && <span className={styles.separator}>-</span>}

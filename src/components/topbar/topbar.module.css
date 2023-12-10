@@ -146,8 +146,22 @@
   text-decoration: underline;
 }
 
-@media (min-width: 767px) {
+@media (min-width: 768px) {
   .homeButton {
     padding-left: 10px;
   }
+}
+
+.srList {
+  overflow-x: auto;
+  scrollbar-width: none; /* Hides the scrollbar in Firefox */
+  -ms-overflow-style: none;  /* Hides the scrollbar in IE and Edge */
+}
+
+.tabs::-webkit-scrollbar {
+  display: none; /* Hides the scrollbar in WebKit-based browsers */
+}
+
+.srBar li {
+  display: inline-flex;
 }
