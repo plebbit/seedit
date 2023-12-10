@@ -57,21 +57,12 @@
 }
 
 .increasedHeight {
-  padding-top: 20px;
-}
-
-.reducedHeight {
-  padding-top: 1px;
+  padding-top: 19px;
 }
 
 @media (min-width: 768px) {
   .container {
     height: 45px;
-  }
-
-  .temporary {
-    top: 0px;
-    margin-top: -3px;
   }
 }
 
