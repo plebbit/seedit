@@ -17,6 +17,8 @@ import {
   isSubmitView,
   isSubplebbitSubmitView,
   isProfileView,
+  isProfileCommentsView,
+  isProfileSubmittedView,
   isUpvotedView,
 } from '../../lib/utils/view-utils';
 import useTheme from '../../hooks/use-theme';
@@ -101,53 +103,56 @@ const SortItems = () => {
 };
 
 const AuthorHeaderTabs = () => {
+  const { t } = useTranslation();
   const location = useLocation();
   const params = useParams();
   const isAbout = isAboutView(location.pathname);
   const isAuthor = isAuthorView(location.pathname);
-  const isDownvote = isDownvotedView(location.pathname);
+  const isDownvotedPage = isDownvotedView(location.pathname);
   const isProfile = isProfileView(location.pathname);
-  const isUpvote = isUpvotedView(location.pathname);
+  const isProfileComments = isProfileCommentsView(location.pathname);
+  const isProfileSubmitted = isProfileSubmittedView(location.pathname);
+  const isUpvotedPage = isUpvotedView(location.pathname);
 
-  const overviewLink = isAuthor ? `/u/${params.authorAddress}/c/${params.commentCid}` : '/profile';
-  const overviewSelectedClass = (isProfile || isAuthor) && !isAbout && !isUpvote && !isDownvote ? styles.selected : styles.choice;
+  const authorRoute = `/u/${params.authorAddress}/c/${params.commentCid}`;
+  const overviewSelectedClass = (isProfile || isAuthor) && !isAbout && !isUpvotedPage && !isDownvotedPage && !isProfileComments && !isProfileSubmitted ? styles.selected : styles.choice;
 
   return (
     <>
       <li>
-        <Link to={overviewLink} className={overviewSelectedClass}>
+        <Link to={isAuthor? authorRoute : '/profile'} className={overviewSelectedClass}>
           overview
         </Link>
       </li>
       <li>
-        <Link to={overviewLink} className={styles.choice} onClick={(e) => e.preventDefault()}>
-          comments
+        <Link to={isAuthor ? authorRoute + '/comments' : '/profile/comments'} className={isProfileComments ? styles.selected : styles.choice}>
+          {t('header_comments')}
         </Link>
       </li>
       <li>
-        <Link to={overviewLink} className={styles.choice} onClick={(e) => e.preventDefault()}>
+        <Link to={isAuthor ? authorRoute + '/submitted' : '/profile/submitted'} className={isProfileSubmitted ? styles.selected : styles.choice}>
           submitted
         </Link>
       </li>
       {isProfile && (
         <>
           <li>
-            <Link to='/profile/upvoted' className={isUpvote ? styles.selected : styles.choice}>
+            <Link to='/profile/upvoted' className={isUpvotedPage ? styles.selected : styles.choice}>
               upvoted
             </Link>
           </li>
           <li>
-            <Link to='/profile/downvoted' className={isDownvote ? styles.selected : styles.choice}>
+            <Link to='/profile/downvoted' className={isDownvotedPage ? styles.selected : styles.choice}>
               downvoted
             </Link>
           </li>
           <li>
-            <Link to={overviewLink} className={styles.choice} onClick={(e) => e.preventDefault()}>
+            <Link to={'/'} className={styles.choice} onClick={(e) => e.preventDefault()}>
               hidden
             </Link>
           </li>
           <li>
-            <Link to={overviewLink} className={styles.choice} onClick={(e) => e.preventDefault()}>
+            <Link to={'/'} className={styles.choice} onClick={(e) => e.preventDefault()}>
               saved
             </Link>
           </li>

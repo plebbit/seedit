@@ -62,6 +62,14 @@ export const isProfileView = (pathname: string): boolean => {
   return pathname.startsWith(`/profile`);
 }
 
+export const isProfileCommentsView = (pathname: string): boolean => {
+  return pathname.startsWith('/profile/comments');
+}
+
+export const isProfileSubmittedView = (pathname: string): boolean => {
+  return pathname.startsWith('/profile/submitted');
+}
+
 export const isSettingsView = (pathname: string): boolean => {
   return pathname === '/settings';
 }

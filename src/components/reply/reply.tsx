@@ -7,7 +7,6 @@ import styles from './reply.module.css';
 import useReplies from '../../hooks/use-replies';
 import { CommentMediaInfo, getCommentMediaInfoMemoized, getHasThumbnail } from '../../lib/utils/media-utils';
 import { getFormattedTimeAgo } from '../../lib/utils/time-utils';
-import { isProfileView } from '../../lib/utils/view-utils';
 import LoadingEllipsis from '../loading-ellipsis/';
 import Expando from '../post/expando/';
 import ExpandButton from '../post/expand-button/';
@@ -110,7 +109,7 @@ interface ReplyProps {
 }
 
 const ParentLink = ({ reply }: { reply: Comment }) => {
-  const parent = useComment({commentCid: reply.parentCid});
+  const parent = useComment({ commentCid: reply.parentCid });
   const { author, cid, content, title, subplebbitAddress } = parent || {};
   const { t } = useTranslation();
   const postTitle = (title?.length > 300 ? title?.slice(0, 300) + '...' : title) || (content?.length > 300 ? content?.slice(0, 300) + '...' : content);
@@ -130,7 +129,7 @@ const ParentLink = ({ reply }: { reply: Comment }) => {
       </Link>
     </div>
   );
-}
+};
 
 const Reply = ({ depth = 0, isSingle, reply = {} }: ReplyProps) => {
   const {
@@ -241,9 +240,7 @@ const Reply = ({ depth = 0, isSingle, reply = {} }: ReplyProps) => {
               showReplyForm={showReplyForm}
             />
             {isReplying && <ReplyForm cid={cid} isReplyingToReply={true} hideReplyForm={hideReplyForm} />}
-            {!isSingle && replies.map((reply, index) => (
-              <Reply key={`${index}${reply.cid}`} reply={reply} depth={(reply.depth || 1) + 1} />
-            ))}
+            {!isSingle && replies.map((reply, index) => <Reply key={`${index}${reply.cid}`} reply={reply} depth={(reply.depth || 1) + 1} />)}
           </>
         )}
       </div>
