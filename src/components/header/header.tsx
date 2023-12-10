@@ -120,12 +120,12 @@ const AuthorHeaderTabs = () => {
         </Link>
       </li>
       <li>
-        <Link to={overviewLink} className={styles.choice}>
+        <Link to={overviewLink} className={styles.choice} onClick={(e) => e.preventDefault()}>
           comments
         </Link>
       </li>
       <li>
-        <Link to={overviewLink} className={styles.choice}>
+        <Link to={overviewLink} className={styles.choice} onClick={(e) => e.preventDefault()}>
           submitted
         </Link>
       </li>
@@ -142,12 +142,12 @@ const AuthorHeaderTabs = () => {
             </Link>
           </li>
           <li>
-            <Link to={overviewLink} className={styles.choice}>
+            <Link to={overviewLink} className={styles.choice} onClick={(e) => e.preventDefault()}>
               hidden
             </Link>
           </li>
           <li>
-            <Link to={overviewLink} className={styles.choice}>
+            <Link to={overviewLink} className={styles.choice} onClick={(e) => e.preventDefault()}>
               saved
             </Link>
           </li>

@@ -4,6 +4,7 @@ import { StateSnapshot, Virtuoso, VirtuosoHandle } from 'react-virtuoso';
 import { useAccount, useAccountComments, useAccountVotes, useComments } from '@plebbit/plebbit-react-hooks';
 import styles from './profile.module.css';
 import Post from '../../components/post';
+import Reply from '../../components/reply';
 import AuthorSidebar from '../../components/author-sidebar';
 import { isDownvotedView, isUpvotedView } from '../../lib/utils/view-utils';
 
@@ -20,9 +21,7 @@ const Profile = () => {
   const isDownvoted = isDownvotedView(location.pathname);
 
   const upvotedCommentCids = useMemo(() => accountVotes?.filter((vote) => vote.vote === 1).map((vote) => vote.commentCid) || [], [accountVotes]);
-
   const downvotedCommentCids = useMemo(() => accountVotes?.filter((vote) => vote.vote === -1).map((vote) => vote.commentCid) || [], [accountVotes]);
-
   const { comments: upvotedComments } = useComments({ commentCids: upvotedCommentCids });
   const { comments: downvotedComments } = useComments({ commentCids: downvotedCommentCids });
 
@@ -55,7 +54,12 @@ const Profile = () => {
           increaseViewportBy={{ bottom: 1200, top: 600 }}
           totalCount={accountComments?.length || 0}
           data={virtuosoData}
-          itemContent={(index, post) => post && <Post index={index} post={post} />}
+          itemContent={(index, post) => {
+            const isReply = post?.parentCid;
+            return (
+              !isReply ? <Post index={index} post={post} /> : <Reply index={index} isSingle={true} reply={post} />
+            );
+          }}
           useWindowScroll={true}
           ref={virtuosoRef}
           restoreStateFrom={lastVirtuosoState}

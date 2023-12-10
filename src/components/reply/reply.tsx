@@ -1,5 +1,5 @@
 import { useMemo, useState } from 'react';
-import { Comment, useAuthorAddress, useSubplebbit } from '@plebbit/plebbit-react-hooks';
+import { Comment, useAuthorAddress, useComment, useSubplebbit } from '@plebbit/plebbit-react-hooks';
 import { flattenCommentsPages } from '@plebbit/plebbit-react-hooks/dist/lib/utils';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
@@ -7,6 +7,7 @@ import styles from './reply.module.css';
 import useReplies from '../../hooks/use-replies';
 import { CommentMediaInfo, getCommentMediaInfoMemoized, getHasThumbnail } from '../../lib/utils/media-utils';
 import { getFormattedTimeAgo } from '../../lib/utils/time-utils';
+import { isProfileView } from '../../lib/utils/view-utils';
 import LoadingEllipsis from '../loading-ellipsis/';
 import Expando from '../post/expando/';
 import ExpandButton from '../post/expand-button/';
@@ -102,12 +103,36 @@ const ReplyMedia = ({ commentMediaInfo, content, expanded, hasThumbnail, link, l
 };
 
 interface ReplyProps {
-  depth: number;
-  key: string;
-  reply: Comment;
+  depth?: number;
+  index?: number;
+  isSingle?: boolean;
+  reply: Comment | undefined;
 }
 
-const Reply = ({ reply, depth }: ReplyProps) => {
+const ParentLink = ({ reply }: { reply: Comment }) => {
+  const parent = useComment({commentCid: reply.parentCid});
+  const { author, cid, content, title, subplebbitAddress } = parent || {};
+  const { t } = useTranslation();
+  const postTitle = (title?.length > 300 ? title?.slice(0, 300) + '...' : title) || (content?.length > 300 ? content?.slice(0, 300) + '...' : content);
+
+  return (
+    <div className={styles.parent}>
+      <Link to={`/p/${subplebbitAddress}/c/${cid}`} className={styles.parentLink}>
+        {postTitle}{' '}
+      </Link>
+      {t('post_by')}{' '}
+      <Link to={`/u/${author?.shortAddress}/c/${cid}`} className={styles.parentAuthor}>
+        u/{author?.shortAddress}{' '}
+      </Link>
+      in{' '}
+      <Link to={`/p/${subplebbitAddress}`} className={styles.parentSubplebbit}>
+        p/{subplebbitAddress}
+      </Link>
+    </div>
+  );
+}
+
+const Reply = ({ depth = 0, isSingle, reply = {} }: ReplyProps) => {
   const {
     author: { displayName },
     cid,
@@ -162,7 +187,8 @@ const Reply = ({ reply, depth }: ReplyProps) => {
 
   return (
     <div className={styles.reply}>
-      <div className={`${styles.replyWrapper} ${depth > 1 && styles.nested}`}>
+      {isSingle && <ParentLink reply={reply} />}
+      <div className={`${!isSingle ? styles.replyWrapper : styles.singleReplyWrapper} ${depth > 1 && styles.nested}`}>
         {!collapsed && (
           <div className={styles.midcol}>
             <div className={`${styles.arrow} ${upvoted ? styles.upvoted : styles.arrowUp}`} onClick={() => cid && upvote()} />
@@ -215,7 +241,7 @@ const Reply = ({ reply, depth }: ReplyProps) => {
               showReplyForm={showReplyForm}
             />
             {isReplying && <ReplyForm cid={cid} isReplyingToReply={true} hideReplyForm={hideReplyForm} />}
-            {replies.map((reply, index) => (
+            {!isSingle && replies.map((reply, index) => (
               <Reply key={`${index}${reply.cid}`} reply={reply} depth={(reply.depth || 1) + 1} />
             ))}
           </>
