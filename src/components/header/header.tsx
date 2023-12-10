@@ -8,6 +8,8 @@ import {
   isAboutView,
   isAllView,
   isAuthorView,
+  isAuthorCommentsView,
+  isAuthorSubmittedView,
   isDownvotedView,
   isHomeView,
   isInboxView,
@@ -108,6 +110,8 @@ const AuthorHeaderTabs = () => {
   const params = useParams();
   const isAboutPage = isAboutView(location.pathname);
   const isAuthorPage = isAuthorView(location.pathname);
+  const isAuthorCommentsPage = isAuthorCommentsView(location.pathname, params);
+  const isAuthorSubmittedPage = isAuthorSubmittedView(location.pathname, params);
   const isDownvotedPage = isDownvotedView(location.pathname);
   const isProfilePage = isProfileView(location.pathname);
   const isProfileCommentsPage = isProfileCommentsView(location.pathname);
@@ -116,7 +120,16 @@ const AuthorHeaderTabs = () => {
 
   const authorRoute = `/u/${params.authorAddress}/c/${params.commentCid}`;
   const overviewSelectedClass =
-    (isProfilePage || isAuthorPage) && !isAboutPage && !isUpvotedPage && !isDownvotedPage && !isProfileCommentsPage && !isProfileSubmittedPage ? styles.selected : styles.choice;
+    (isProfilePage || isAuthorPage) &&
+    !isAboutPage &&
+    !isUpvotedPage &&
+    !isDownvotedPage &&
+    !isProfileCommentsPage &&
+    !isProfileSubmittedPage &&
+    !isAuthorCommentsPage &&
+    !isAuthorSubmittedPage
+      ? styles.selected
+      : styles.choice;
 
   return (
     <>
@@ -126,12 +139,18 @@ const AuthorHeaderTabs = () => {
         </Link>
       </li>
       <li>
-        <Link to={isAuthorPage ? authorRoute + '/comments' : '/profile/comments'} className={isProfileCommentsPage ? styles.selected : styles.choice}>
+        <Link
+          to={isAuthorPage ? authorRoute + '/comments' : '/profile/comments'}
+          className={isProfileCommentsPage || isAuthorCommentsPage ? styles.selected : styles.choice}
+        >
           {t('header_comments')}
         </Link>
       </li>
       <li>
-        <Link to={isAuthorPage ? authorRoute + '/submitted' : '/profile/submitted'} className={isProfileSubmittedPage ? styles.selected : styles.choice}>
+        <Link
+          to={isAuthorPage ? authorRoute + '/submitted' : '/profile/submitted'}
+          className={isProfileSubmittedPage || isAuthorSubmittedPage ? styles.selected : styles.choice}
+        >
           submitted
         </Link>
       </li>
@@ -243,12 +262,17 @@ const Header = () => {
   const isSubplebbitSubmitPage = isSubplebbitSubmitView(location.pathname, params);
 
   const account = useAccount();
-  const authorComment = useComment({commentCid: params?.commentCid});
+  const authorComment = useComment({ commentCid: params?.commentCid });
   const author = isProfilePage ? account?.author : isAuthorPage ? authorComment?.author : null;
   const { imageUrl } = useAuthorAvatar({ author });
 
   const hasFewTabs = isPostPage || isSubmitPage || isSubplebbitSubmitPage || isSettingsPage || isInboxPage;
-  const hasStickyHeader = isHomePage || (isSubplebbitPage && !isSubplebbitSubmitPage && !isPostPage && !isAboutPage) || (isProfilePage && !isAboutPage) || isAllPage || (isAuthorPage && !isAboutPage);
+  const hasStickyHeader =
+    isHomePage ||
+    (isSubplebbitPage && !isSubplebbitSubmitPage && !isPostPage && !isAboutPage) ||
+    (isProfilePage && !isAboutPage) ||
+    isAllPage ||
+    (isAuthorPage && !isAboutPage);
   const logoSrc = isSubplebbitPage ? suggested?.avatarUrl : isProfilePage ? imageUrl : '/assets/logo/seedit.png';
   const logoIsAvatar = (isSubplebbitPage && suggested?.avatarUrl) || (isProfilePage && imageUrl);
   const logoLink = isSubplebbitPage ? `/p/${params.subplebbitAddress}` : isProfilePage ? '/profile' : '/';
@@ -258,8 +282,12 @@ const Header = () => {
       <div className={`${styles.container} ${hasFewTabs && styles.reducedHeight} ${hasStickyHeader && styles.increasedHeight}`}>
         <div className={styles.logoContainer}>
           <Link to={logoLink} className={styles.logoLink}>
-            {(logoIsAvatar || (!isSubplebbitPage && !isProfilePage && !isAuthorPage)) && <img className={`${logoIsAvatar ? styles.avatar : styles.logo}`} src={logoSrc} alt='logo' />}
-            {!isSubplebbitPage && !isProfilePage && !isAuthorPage && <img src={`/assets/logo/seedit-text-${theme === 'dark' ? 'dark' : 'light'}.svg`} className={styles.logoText} alt='logo' />}
+            {(logoIsAvatar || (!isSubplebbitPage && !isProfilePage && !isAuthorPage)) && (
+              <img className={`${logoIsAvatar ? styles.avatar : styles.logo}`} src={logoSrc} alt='logo' />
+            )}
+            {!isSubplebbitPage && !isProfilePage && !isAuthorPage && (
+              <img src={`/assets/logo/seedit-text-${theme === 'dark' ? 'dark' : 'light'}.svg`} className={styles.logoText} alt='logo' />
+            )}
           </Link>
         </div>
         {!isHomePage && !isAllPage && (

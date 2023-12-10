@@ -42,6 +42,7 @@ const Profile = () => {
   } else {
     virtuosoData = accountComments;
   }
+
   const virtuosoRef = useRef<VirtuosoHandle | null>(null);
 
   useEffect(() => {

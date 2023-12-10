@@ -1,23 +1,41 @@
-import { useEffect, useRef } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useEffect, useMemo, useRef } from 'react';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import { useAuthorComments } from '@plebbit/plebbit-react-hooks';
 import { StateSnapshot, Virtuoso, VirtuosoHandle } from 'react-virtuoso';
 import styles from './author.module.css';
 import AuthorSidebar from '../../components/author-sidebar';
 import Post from '../../components/post';
+import { isAuthorCommentsView, isAuthorSubmittedView } from '../../lib/utils/view-utils';
 
 const lastVirtuosoStates: { [key: string]: StateSnapshot } = {};
 
 const Loading = () => 'loading...';
 
 const Author = () => {
-  const { authorAddress, commentCid, sortType } = useParams();
+  const location = useLocation();
   const navigate = useNavigate();
+  const { authorAddress, commentCid, sortType } = useParams();
+  const params = useParams();
+  const isAuthorCommentsPage = isAuthorCommentsView(location.pathname, params);
+  const isAuthorSubmittedPage = isAuthorSubmittedView(location.pathname, params);
+
   const { authorComments, lastCommentCid, hasMore, loadMore } = useAuthorComments({ commentCid, authorAddress });
+
+  const replyComments = useMemo(() => authorComments?.filter((comment) => comment && comment.parentCid) || [], [authorComments]);
+  const postComments = useMemo(() => authorComments?.filter((comment) => comment && !comment.parentCid) || [], [authorComments]);
 
   const Footer = hasMore ? Loading : undefined;
 
   const virtuosoRef = useRef<VirtuosoHandle | null>(null);
+
+  let virtuosoData;
+  if (isAuthorCommentsPage) {
+    virtuosoData = replyComments;
+  } else if (isAuthorSubmittedPage) {
+    virtuosoData = postComments;
+  } else {
+    virtuosoData = authorComments;
+  }
 
   useEffect(() => {
     const setLastVirtuosoState = () =>
@@ -50,8 +68,8 @@ const Author = () => {
       <Virtuoso
         increaseViewportBy={{ bottom: 1200, top: 600 }}
         totalCount={authorComments?.length || 0}
-        data={authorComments}
-        itemContent={(index, post) => <Post index={index} post={post} />}
+        data={virtuosoData}
+        itemContent={(index, post) => post && <Post index={index} post={post} />}
         useWindowScroll={true}
         components={{ Footer }}
         endReached={loadMore}

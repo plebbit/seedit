@@ -38,6 +38,14 @@ export const isAuthorView = (pathname: string): boolean => {
   return pathname.startsWith('/u/');
 }
 
+export const isAuthorCommentsView = (pathname: string, params: ParamsType): boolean => {
+  return pathname === (`/u/${params.authorAddress}/c/${params.commentCid}/comments`);
+}
+
+export const isAuthorSubmittedView = (pathname: string, params: ParamsType): boolean => {
+  return pathname === (`/u/${params.authorAddress}/c/${params.commentCid}/submitted`);
+}
+
 export const isDownvotedView = (pathname: string): boolean => {
   return pathname === '/profile/downvoted';
 }
