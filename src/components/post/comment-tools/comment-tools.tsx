@@ -1,13 +1,14 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { useAccount, useComment, usePublishCommentEdit, useSubplebbit } from '@plebbit/plebbit-react-hooks';
+import { PublishCommentEditOptions, useAccount, useComment, usePublishCommentEdit, useSubplebbit } from '@plebbit/plebbit-react-hooks';
 import { autoUpdate, flip, FloatingFocusManager, offset, shift, useClick, useDismiss, useFloating, useId, useInteractions, useRole } from '@floating-ui/react';
 import styles from './comment-tools.module.css';
 import { FailedLabel, PendingLabel, SpoilerLabel } from '../label';
 import challengesStore from '../../../hooks/use-challenges';
 import { alertChallengeVerificationFailed } from '../../../lib/utils/challenge-utils';
 import { getShareLink } from '../../../lib/utils/url-utils';
+
 const { addChallenge } = challengesStore.getState();
 
 interface CommentToolsProps {
@@ -26,7 +27,7 @@ const ModTools = ({ cid }: CommentToolsProps) => {
   const post = useComment({ commentCid: cid });
   const [isModToolsOpen, setIsModToolsOpen] = useState(false);
 
-  const defaultPublishOptions = {
+  const defaultPublishOptions: PublishCommentEditOptions = {
     removed: post?.removed,
     locked: post?.locked,
     spoiler: post?.spoiler,
@@ -37,11 +38,18 @@ const ModTools = ({ cid }: CommentToolsProps) => {
     onChallengeVerification: alertChallengeVerificationFailed,
     onError: (error: Error) => {
       console.warn(error);
-      alert(error);
+      alert(error.message);
     },
   };
+
   const [publishCommentEditOptions, setPublishCommentEditOptions] = useState(defaultPublishOptions);
-  const { state, publishCommentEdit } = usePublishCommentEdit({ publishCommentEditOptions });
+  const { state, publishCommentEdit } = usePublishCommentEdit(publishCommentEditOptions);
+
+  useEffect(() => {
+    if (state) {
+      console.log(state);
+    }
+  }, [state]);
 
   // close the modal after publishing
   useEffect(() => {
@@ -71,6 +79,11 @@ const ModTools = ({ cid }: CommentToolsProps) => {
 
   const headingId = useId();
 
+  const handlePublish = () => {
+    console.log('publishing', publishCommentEditOptions)
+    publishCommentEdit();
+  }
+
   return (
     <>
       <li className={styles.button} ref={refs.setReference} {...getReferenceProps()}>
@@ -82,31 +95,31 @@ const ModTools = ({ cid }: CommentToolsProps) => {
             <div className={styles.modTools}>
               <div className={styles.menuItem}>
                 <label>
-                  <input onChange={onCheckbox} checked={publishCommentEditOptions.removed} type='checkbox' />
+                  <input onChange={onCheckbox} checked={publishCommentEditOptions.removed} type='checkbox' id='removed' />
                   {t('removed')}
                 </label>
               </div>
               <div className={styles.menuItem}>
                 <label>
-                  <input onChange={onCheckbox} checked={publishCommentEditOptions.locked} type='checkbox' />
+                  <input onChange={onCheckbox} checked={publishCommentEditOptions.locked} type='checkbox' id='locked' />
                   locked
                 </label>
               </div>
               <div className={styles.menuItem}>
                 <label>
-                  <input onChange={onCheckbox} checked={publishCommentEditOptions.spoiler} type='checkbox' />
+                  <input onChange={onCheckbox} checked={publishCommentEditOptions.spoiler} type='checkbox' id='spoiler' />
                   {t('spoiler')}
                 </label>
               </div>
               <div className={styles.menuItem}>
                 <label>
-                  <input onChange={onCheckbox} checked={publishCommentEditOptions.pinned} type='checkbox' />
+                  <input onChange={onCheckbox} checked={publishCommentEditOptions.pinned} type='checkbox' id='pinned' />
                   {t('announcement')}
                 </label>
               </div>
               <div className={`${styles.menuItem} ${styles.menuReason}`}>
                 <input type='text' onChange={onReason} defaultValue={post?.reason} size={14} placeholder='reason' />
-                <button onClick={publishCommentEdit}>{t('edit')}</button>
+                <button onClick={handlePublish}>{t('edit')}</button>
               </div>
             </div>
           </div>
