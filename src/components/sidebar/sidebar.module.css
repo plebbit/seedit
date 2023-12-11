@@ -150,6 +150,12 @@ a {
   cursor: pointer;
 }
 
+.bottom button {
+  padding: 0px 2px 0px 2px;
+  font-size: 9px;
+  margin-left: 5px;
+}
+
 .listMore {
   color: var(--text-info) !important;
   text-align: right;
