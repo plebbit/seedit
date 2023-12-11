@@ -28,7 +28,7 @@ const TopBar = () => {
   const toggleSubsDropdown = () => setIsSubsDropdownOpen(!isSubsDropdownOpen);
   const subsDropdownRef = useRef<HTMLDivElement>(null);
   const subsDropdownChoicesRef = useRef<HTMLDivElement>(null);
-  const subsDropdownClass = isSubsDropdownOpen && subscriptions?.length ? styles.visible : styles.hidden;
+  const subsDropdownClass = isSubsDropdownOpen ? styles.visible : styles.hidden;
 
   const [isSortsDropdownOpen, setIsSortsDropdownOpen] = useState(false);
   const toggleSortsDropdown = () => setIsSortsDropdownOpen(!isSortsDropdownOpen);
@@ -113,6 +113,7 @@ const TopBar = () => {
                 {getShortAddress(subscription)}
               </Link>
             ))}
+            {subscriptions?.length === 0 && <div className={`${styles.dropdownChoice} ${styles.noSubs}`}>you haven't joined any community</div>}
           </div>
         </div>
         <div className={styles.dropdown} ref={sortsDropdownRef} onClick={toggleSortsDropdown}>

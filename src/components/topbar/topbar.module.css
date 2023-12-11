@@ -58,6 +58,15 @@
   color: var(--text-primary);
 }
 
+.noSubs {
+  text-transform: lowercase;
+  font-size: 10px;
+}
+
+.noSubs:hover {
+  background-color: var(--background);
+}
+
 .hidden {
   display: none;
 }
