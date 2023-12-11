@@ -92,7 +92,7 @@ const Sidebar = ({ address, cid, createdAt, description, downvoteCount = 0, role
 
   const alertAnonymousCreator = () => {
     alert('This community has no owner role set.');
-  }
+  };
 
   return (
     <div className={`${isAbout ? styles.about : styles.sidebar}`}>

@@ -26,7 +26,7 @@ const Author = () => {
 
   const Footer = () => {
     return hasMore ? <LoadingEllipsis string={'loading'} /> : null;
-  }
+  };
 
   const virtuosoRef = useRef<VirtuosoHandle | null>(null);
 
