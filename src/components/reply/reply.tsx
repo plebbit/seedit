@@ -20,12 +20,14 @@ import useStateString from '../../hooks/use-state-string';
 import useUpvote from '../../hooks/use-upvote';
 
 interface ReplyAuthorProps {
+  address: string;
   authorRole: string;
+  cid: string;
   displayName: string;
   shortAuthorAddress: string | undefined;
 }
 
-const ReplyAuthor = ({ authorRole, displayName, shortAuthorAddress }: ReplyAuthorProps) => {
+const ReplyAuthor = ({ address, authorRole, cid, displayName, shortAuthorAddress }: ReplyAuthorProps) => {
   const isAuthorOwner = authorRole === 'owner';
   const isAuthorAdmin = authorRole === 'admin';
   const isAuthorModerator = authorRole === 'moderator';
@@ -36,10 +38,7 @@ const ReplyAuthor = ({ authorRole, displayName, shortAuthorAddress }: ReplyAutho
     <>
       {displayName && <span className={`${styles.author} ${moderatorClass}`}>{displayName}</span>}
       <Link
-        to={`/u/${shortAuthorAddress}`}
-        onClick={(e) => {
-          e.preventDefault();
-        }}
+        to={`/u/${address}/c/${cid}`}
         className={`${styles.author} ${moderatorClass}`}
       >
         {displayName ? `u/${shortAuthorAddress}` : shortAuthorAddress}
@@ -133,7 +132,7 @@ const ParentLink = ({ reply }: { reply: Comment }) => {
 
 const Reply = ({ depth = 0, isSingle, reply = {} }: ReplyProps) => {
   const {
-    author: { displayName },
+    author,
     cid,
     content,
     downvoteCount,
@@ -199,7 +198,7 @@ const Reply = ({ depth = 0, isSingle, reply = {} }: ReplyProps) => {
             <span className={styles.expand} onClick={() => setCollapsed(!collapsed)}>
               [{collapsed ? '+' : '–'}]
             </span>
-            <ReplyAuthor authorRole={authorRole} displayName={displayName} shortAuthorAddress={shortAuthorAddress} />
+            <ReplyAuthor address={author.address} authorRole={authorRole} cid={cid} displayName={author.displayName} shortAuthorAddress={shortAuthorAddress} />
             <span className={styles.score}>{scoreString}</span> <span className={styles.time}>{getFormattedTimeAgo(timestamp)}</span>
             {collapsed && <span className={styles.children}> ({childrenString})</span>}
             {stateLabel}
