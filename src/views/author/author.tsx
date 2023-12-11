@@ -5,12 +5,11 @@ import { StateSnapshot, Virtuoso, VirtuosoHandle } from 'react-virtuoso';
 import { isAuthorCommentsView, isAuthorSubmittedView } from '../../lib/utils/view-utils';
 import styles from './author.module.css';
 import AuthorSidebar from '../../components/author-sidebar';
+import LoadingEllipsis from '../../components/loading-ellipsis';
 import Post from '../../components/post';
 import Reply from '../../components/reply/';
 
 const lastVirtuosoStates: { [key: string]: StateSnapshot } = {};
-
-const Loading = () => 'loading...';
 
 const Author = () => {
   const location = useLocation();
@@ -25,7 +24,9 @@ const Author = () => {
   const replyComments = useMemo(() => authorComments?.filter((comment) => comment && comment.parentCid) || [], [authorComments]);
   const postComments = useMemo(() => authorComments?.filter((comment) => comment && !comment.parentCid) || [], [authorComments]);
 
-  const Footer = hasMore ? Loading : undefined;
+  const Footer = () => {
+    return hasMore ? <LoadingEllipsis string={'loading'} /> : null;
+  }
 
   const virtuosoRef = useRef<VirtuosoHandle | null>(null);
 
@@ -65,7 +66,7 @@ const Author = () => {
       <div className={styles.sidebar}>
         <AuthorSidebar />
       </div>
-      {authorComments?.length === 0 && <div className={styles.noPosts}>No posts found</div>}
+      {authorComments?.length === 0 && !hasMore && <div className={styles.noPosts}>No posts found</div>}
       <Virtuoso
         increaseViewportBy={{ bottom: 1200, top: 600 }}
         totalCount={authorComments?.length || 0}
