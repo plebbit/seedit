@@ -73,11 +73,6 @@ const ModTools = ({ cid }: CommentToolsProps) => {
 
   const headingId = useId();
 
-  const handlePublish = () => {
-    console.log('publishing', publishCommentEditOptions)
-    publishCommentEdit();
-  }
-
   return (
     <>
       <li className={styles.button} ref={refs.setReference} {...getReferenceProps()}>
@@ -113,7 +108,7 @@ const ModTools = ({ cid }: CommentToolsProps) => {
               </div>
               <div className={`${styles.menuItem} ${styles.menuReason}`}>
                 <input type='text' onChange={onReason} defaultValue={post?.reason} size={14} placeholder='reason' />
-                <button onClick={handlePublish}>{t('edit')}</button>
+                <button onClick={publishCommentEdit}>{t('edit')}</button>
               </div>
             </div>
           </div>
