@@ -1,5 +1,5 @@
 import { useMemo, useState } from 'react';
-import { Comment, useAuthorAddress, useSubplebbit } from '@plebbit/plebbit-react-hooks';
+import { Comment, useAuthorAddress, useComment, useSubplebbit } from '@plebbit/plebbit-react-hooks';
 import { flattenCommentsPages } from '@plebbit/plebbit-react-hooks/dist/lib/utils';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
@@ -20,12 +20,14 @@ import useStateString from '../../hooks/use-state-string';
 import useUpvote from '../../hooks/use-upvote';
 
 interface ReplyAuthorProps {
+  address: string;
   authorRole: string;
+  cid: string;
   displayName: string;
   shortAuthorAddress: string | undefined;
 }
 
-const ReplyAuthor = ({ authorRole, displayName, shortAuthorAddress }: ReplyAuthorProps) => {
+const ReplyAuthor = ({ address, authorRole, cid, displayName, shortAuthorAddress }: ReplyAuthorProps) => {
   const isAuthorOwner = authorRole === 'owner';
   const isAuthorAdmin = authorRole === 'admin';
   const isAuthorModerator = authorRole === 'moderator';
@@ -36,10 +38,7 @@ const ReplyAuthor = ({ authorRole, displayName, shortAuthorAddress }: ReplyAutho
     <>
       {displayName && <span className={`${styles.author} ${moderatorClass}`}>{displayName}</span>}
       <Link
-        to={`/u/${shortAuthorAddress}`}
-        onClick={(e) => {
-          e.preventDefault();
-        }}
+        to={`/u/${address}/c/${cid}`}
         className={`${styles.author} ${moderatorClass}`}
       >
         {displayName ? `u/${shortAuthorAddress}` : shortAuthorAddress}
@@ -102,14 +101,38 @@ const ReplyMedia = ({ commentMediaInfo, content, expanded, hasThumbnail, link, l
 };
 
 interface ReplyProps {
-  depth: number;
-  key: string;
-  reply: Comment;
+  depth?: number;
+  index?: number;
+  isSingle?: boolean;
+  reply: Comment | undefined;
 }
 
-const Reply = ({ reply, depth }: ReplyProps) => {
+const ParentLink = ({ reply }: { reply: Comment }) => {
+  const parent = useComment({ commentCid: reply.parentCid });
+  const { author, cid, content, title, subplebbitAddress } = parent || {};
+  const { t } = useTranslation();
+  const postTitle = (title?.length > 300 ? title?.slice(0, 300) + '...' : title) || (content?.length > 300 ? content?.slice(0, 300) + '...' : content);
+
+  return (
+    <div className={styles.parent}>
+      <Link to={`/p/${subplebbitAddress}/c/${cid}`} className={styles.parentLink}>
+        {postTitle}{' '}
+      </Link>
+      {t('post_by')}{' '}
+      <Link to={`/u/${author?.shortAddress}/c/${cid}`} className={styles.parentAuthor}>
+        u/{author?.shortAddress}{' '}
+      </Link>
+      in{' '}
+      <Link to={`/p/${subplebbitAddress}`} className={styles.parentSubplebbit}>
+        p/{subplebbitAddress}
+      </Link>
+    </div>
+  );
+};
+
+const Reply = ({ depth = 0, isSingle, reply = {} }: ReplyProps) => {
   const {
-    author: { displayName },
+    author,
     cid,
     content,
     downvoteCount,
@@ -162,7 +185,8 @@ const Reply = ({ reply, depth }: ReplyProps) => {
 
   return (
     <div className={styles.reply}>
-      <div className={`${styles.replyWrapper} ${depth > 1 && styles.nested}`}>
+      {isSingle && <ParentLink reply={reply} />}
+      <div className={`${!isSingle ? styles.replyWrapper : styles.singleReplyWrapper} ${depth > 1 && styles.nested}`}>
         {!collapsed && (
           <div className={styles.midcol}>
             <div className={`${styles.arrow} ${upvoted ? styles.upvoted : styles.arrowUp}`} onClick={() => cid && upvote()} />
@@ -174,7 +198,7 @@ const Reply = ({ reply, depth }: ReplyProps) => {
             <span className={styles.expand} onClick={() => setCollapsed(!collapsed)}>
               [{collapsed ? '+' : '–'}]
             </span>
-            <ReplyAuthor authorRole={authorRole} displayName={displayName} shortAuthorAddress={shortAuthorAddress} />
+            <ReplyAuthor address={author.address} authorRole={authorRole} cid={cid} displayName={author.displayName} shortAuthorAddress={shortAuthorAddress} />
             <span className={styles.score}>{scoreString}</span> <span className={styles.time}>{getFormattedTimeAgo(timestamp)}</span>
             {collapsed && <span className={styles.children}> ({childrenString})</span>}
             {stateLabel}
@@ -215,9 +239,7 @@ const Reply = ({ reply, depth }: ReplyProps) => {
               showReplyForm={showReplyForm}
             />
             {isReplying && <ReplyForm cid={cid} isReplyingToReply={true} hideReplyForm={hideReplyForm} />}
-            {replies.map((reply, index) => (
-              <Reply key={`${index}${reply.cid}`} reply={reply} depth={(reply.depth || 1) + 1} />
-            ))}
+            {!isSingle && replies.map((reply, index) => <Reply key={`${index}${reply.cid}`} reply={reply} depth={(reply.depth || 1) + 1} />)}
           </>
         )}
       </div>

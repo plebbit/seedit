@@ -8,6 +8,10 @@
  margin-top: 10px;
 }
 
+.singleReplyWrapper {
+  padding-bottom: 8px;
+}
+
 .midcol {
   visibility: visible;
   width: 15px;
@@ -142,4 +146,33 @@
 
 .collapsedEntry {
   padding-left: 25px;
+}
+
+.parent {
+  color: var(--text);
+  margin-left: 7px;
+}
+
+.parentLink {
+  font-size: small;
+  margin-top: 10px;
+  color: var(--link);
+  outline: none;
+  margin-right: .4em;
+  padding: 0px;
+  overflow: hidden;
+  unicode-bidi: isolate;
+}
+
+.parentLink:visited {
+  color: var(--link-visited);
+}
+
+.parentAuthor {
+  color: var(--text-primary);
+  font-weight: bold;
+}
+
+.parentSubplebbit {
+  color: var(--text-primary)
 }

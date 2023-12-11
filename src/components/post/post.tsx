@@ -55,10 +55,10 @@ const PostAuthor = ({ authorRole, cid, displayName, shortAddress, shortAuthorAdd
 
 interface PostProps {
   index?: number;
-  post: Comment;
+  post: Comment | undefined;
 }
 
-const Post = ({ post, index }: PostProps) => {
+const Post = ({ post = {}, index }: PostProps) => {
   const { author, cid, content, downvoteCount, flair, link, linkHeight, linkWidth, pinned, replyCount, state, subplebbitAddress, timestamp, title, upvoteCount } =
     post || {};
   const { displayName, shortAddress } = author || {};

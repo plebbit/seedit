@@ -2,7 +2,8 @@ import { useAccount, useAccountComments, useAccountSubplebbits, AccountSubplebbi
 import { getShortAddress } from '@plebbit/plebbit-js';
 import styles from './author-sidebar.module.css';
 import { getFormattedDuration } from '../../lib/utils/time-utils';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useParams } from 'react-router-dom';
+import { isAuthorView, isProfileView } from '../../lib/utils/view-utils';
 
 interface ModeratorListProps {
   accountSubplebbits: AccountSubplebbit[];
@@ -27,11 +28,16 @@ const ModeratorList = ({ accountSubplebbits }: ModeratorListProps) => {
 
 const AuthorSidebar = () => {
   const account = useAccount();
+  const { postScore, replyScore } = account?.karma || {};
   const { accountComments } = useAccountComments();
   const oldestCommentTimestamp = accountComments?.[0]?.timestamp || Date.now();
   const { accountSubplebbits } = useAccountSubplebbits();
-  const { address } = account?.author || {};
-  const { postScore, replyScore } = account?.karma || {};
+
+  const location = useLocation();
+  const params = useParams();
+  const isAuthorPage = isAuthorView(location.pathname);
+  const isProfilePage = isProfileView(location.pathname);
+  const address = isAuthorPage ? params?.authorAddress : isProfilePage ? account?.author?.shortAddress : '';
 
   return (
     <div className={styles.sidebar}>

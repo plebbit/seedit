@@ -2,12 +2,14 @@ import { useEffect, useState } from 'react';
 import { Link, useLocation, useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { getShortAddress } from '@plebbit/plebbit-js';
-import { useAccount, useAuthorAvatar, useSubplebbit } from '@plebbit/plebbit-react-hooks';
+import { useAccount, useAuthorAvatar, useComment, useSubplebbit } from '@plebbit/plebbit-react-hooks';
 import {
   getAboutLink,
   isAboutView,
   isAllView,
   isAuthorView,
+  isAuthorCommentsView,
+  isAuthorSubmittedView,
   isDownvotedView,
   isHomeView,
   isInboxView,
@@ -17,6 +19,8 @@ import {
   isSubmitView,
   isSubplebbitSubmitView,
   isProfileView,
+  isProfileCommentsView,
+  isProfileSubmittedView,
   isUpvotedView,
 } from '../../lib/utils/view-utils';
 import useTheme from '../../hooks/use-theme';
@@ -30,16 +34,16 @@ const AboutButton = () => {
   const params = useParams();
   const location = useLocation();
   const aboutLink = getAboutLink(location.pathname, params);
-  const isHome = isHomeView(location.pathname, params);
-  const isAbout = isAboutView(location.pathname);
+  const isHomePage = isHomeView(location.pathname, params);
+  const isAboutPage = isAboutView(location.pathname);
 
   return (
     <li className={styles.about}>
       <Link
         to={aboutLink}
-        className={`${isAbout ? styles.selected : styles.choice}`}
+        className={`${isAboutPage ? styles.selected : styles.choice}`}
         onClick={(event) => {
-          isHome && event.preventDefault();
+          isHomePage && event.preventDefault();
         }}
       >
         {t('header_about')}
@@ -101,53 +105,74 @@ const SortItems = () => {
 };
 
 const AuthorHeaderTabs = () => {
+  const { t } = useTranslation();
   const location = useLocation();
   const params = useParams();
-  const isAbout = isAboutView(location.pathname);
-  const isAuthor = isAuthorView(location.pathname);
-  const isDownvote = isDownvotedView(location.pathname);
-  const isProfile = isProfileView(location.pathname);
-  const isUpvote = isUpvotedView(location.pathname);
+  const isAboutPage = isAboutView(location.pathname);
+  const isAuthorPage = isAuthorView(location.pathname);
+  const isAuthorCommentsPage = isAuthorCommentsView(location.pathname, params);
+  const isAuthorSubmittedPage = isAuthorSubmittedView(location.pathname, params);
+  const isDownvotedPage = isDownvotedView(location.pathname);
+  const isProfilePage = isProfileView(location.pathname);
+  const isProfileCommentsPage = isProfileCommentsView(location.pathname);
+  const isProfileSubmittedPage = isProfileSubmittedView(location.pathname);
+  const isUpvotedPage = isUpvotedView(location.pathname);
 
-  const overviewLink = isAuthor ? `/u/${params.authorAddress}/c/${params.commentCid}` : '/profile';
-  const overviewSelectedClass = (isProfile || isAuthor) && !isAbout && !isUpvote && !isDownvote ? styles.selected : styles.choice;
+  const authorRoute = `/u/${params.authorAddress}/c/${params.commentCid}`;
+  const overviewSelectedClass =
+    (isProfilePage || isAuthorPage) &&
+    !isAboutPage &&
+    !isUpvotedPage &&
+    !isDownvotedPage &&
+    !isProfileCommentsPage &&
+    !isProfileSubmittedPage &&
+    !isAuthorCommentsPage &&
+    !isAuthorSubmittedPage
+      ? styles.selected
+      : styles.choice;
 
   return (
     <>
       <li>
-        <Link to={overviewLink} className={overviewSelectedClass}>
+        <Link to={isAuthorPage ? authorRoute : '/profile'} className={overviewSelectedClass}>
           overview
         </Link>
       </li>
       <li>
-        <Link to={overviewLink} className={styles.choice}>
-          comments
+        <Link
+          to={isAuthorPage ? authorRoute + '/comments' : '/profile/comments'}
+          className={isProfileCommentsPage || isAuthorCommentsPage ? styles.selected : styles.choice}
+        >
+          {t('header_comments')}
         </Link>
       </li>
       <li>
-        <Link to={overviewLink} className={styles.choice}>
+        <Link
+          to={isAuthorPage ? authorRoute + '/submitted' : '/profile/submitted'}
+          className={isProfileSubmittedPage || isAuthorSubmittedPage ? styles.selected : styles.choice}
+        >
           submitted
         </Link>
       </li>
-      {isProfile && (
+      {isProfilePage && (
         <>
           <li>
-            <Link to='/profile/upvoted' className={isUpvote ? styles.selected : styles.choice}>
+            <Link to='/profile/upvoted' className={isUpvotedPage ? styles.selected : styles.choice}>
               upvoted
             </Link>
           </li>
           <li>
-            <Link to='/profile/downvoted' className={isDownvote ? styles.selected : styles.choice}>
+            <Link to='/profile/downvoted' className={isDownvotedPage ? styles.selected : styles.choice}>
               downvoted
             </Link>
           </li>
           <li>
-            <Link to={overviewLink} className={styles.choice}>
+            <Link to={'/'} className={styles.choice} onClick={(e) => e.preventDefault()}>
               hidden
             </Link>
           </li>
           <li>
-            <Link to={overviewLink} className={styles.choice}>
+            <Link to={'/'} className={styles.choice} onClick={(e) => e.preventDefault()}>
               saved
             </Link>
           </li>
@@ -160,19 +185,19 @@ const AuthorHeaderTabs = () => {
 const HeaderTabs = () => {
   const params = useParams();
   const location = useLocation();
-  const isAll = isAllView(location.pathname);
-  const isAuthor = isAuthorView(location.pathname);
-  const isHome = isHomeView(location.pathname, params);
-  const isPost = isPostView(location.pathname, params);
-  const isProfile = isProfileView(location.pathname);
-  const isSubplebbit = isSubplebbitView(location.pathname, params);
-  const isSubplebbitSubmit = isSubplebbitSubmitView(location.pathname, params);
+  const isAllPage = isAllView(location.pathname);
+  const isAuthorPage = isAuthorView(location.pathname);
+  const isHomePage = isHomeView(location.pathname, params);
+  const isPostPage = isPostView(location.pathname, params);
+  const isProfilePage = isProfileView(location.pathname);
+  const isSubplebbitPage = isSubplebbitView(location.pathname, params);
+  const isSubplebbitSubmitPage = isSubplebbitSubmitView(location.pathname, params);
 
-  if (isPost) {
+  if (isPostPage) {
     return <CommentsButton />;
-  } else if (isHome || (isSubplebbit && !isSubplebbitSubmit) || isAll) {
+  } else if (isHomePage || (isSubplebbitPage && !isSubplebbitSubmitPage) || isAllPage) {
     return <SortItems />;
-  } else if (isProfile || isAuthor) {
+  } else if (isProfilePage || isAuthorPage) {
     return <AuthorHeaderTabs />;
   }
   return null;
@@ -217,8 +242,6 @@ const HeaderTitle = ({ title, shortAddress }: { title: string; shortAddress: str
 };
 
 const Header = () => {
-  const account = useAccount();
-  const { imageUrl } = useAuthorAvatar({ author: account?.author });
   const [theme] = useTheme();
   const location = useLocation();
   const params = useParams();
@@ -226,39 +249,53 @@ const Header = () => {
   const { suggested, title, shortAddress } = subplebbit || {};
 
   const isMobile = window.innerWidth < 768;
-  const isAbout = isAboutView(location.pathname);
-  const isAll = isAllView(location.pathname);
-  const isAuthor = isAuthorView(location.pathname);
-  const isHome = isHomeView(location.pathname, params);
-  const isInbox = isInboxView(location.pathname);
-  const isPost = isPostView(location.pathname, params);
-  const isProfile = isProfileView(location.pathname);
-  const isSettings = isSettingsView(location.pathname);
-  const isSubplebbit = isSubplebbitView(location.pathname, params);
-  const isSubmit = isSubmitView(location.pathname);
-  const isSubplebbitSubmit = isSubplebbitSubmitView(location.pathname, params);
+  const isAboutPage = isAboutView(location.pathname);
+  const isAllPage = isAllView(location.pathname);
+  const isAuthorPage = isAuthorView(location.pathname);
+  const isHomePage = isHomeView(location.pathname, params);
+  const isInboxPage = isInboxView(location.pathname);
+  const isPostPage = isPostView(location.pathname, params);
+  const isProfilePage = isProfileView(location.pathname);
+  const isSettingsPage = isSettingsView(location.pathname);
+  const isSubplebbitPage = isSubplebbitView(location.pathname, params);
+  const isSubmitPage = isSubmitView(location.pathname);
+  const isSubplebbitSubmitPage = isSubplebbitSubmitView(location.pathname, params);
 
-  const hasFewTabs = isPost || isSubmit || isSubplebbitSubmit || isSettings || isInbox;
-  const hasStickyHeader = isHome || (isSubplebbit && !isSubplebbitSubmit && !isPost && !isAbout) || (isProfile && !isAbout) || isAll || (isAuthor && !isAbout);
-  const logoSrc = isSubplebbit ? suggested?.avatarUrl : isProfile ? imageUrl : '/assets/logo/seedit.png';
-  const logoIsAvatar = (isSubplebbit && suggested?.avatarUrl) || (isProfile && imageUrl);
-  const logoLink = isSubplebbit ? `/p/${params.subplebbitAddress}` : isProfile ? '/profile' : '/';
+  const account = useAccount();
+  const authorComment = useComment({ commentCid: params?.commentCid });
+  const author = isProfilePage ? account?.author : isAuthorPage ? authorComment?.author : null;
+  const { imageUrl } = useAuthorAvatar({ author });
+
+  const hasFewTabs = isPostPage || isSubmitPage || isSubplebbitSubmitPage || isSettingsPage || isInboxPage;
+  const hasStickyHeader =
+    isHomePage ||
+    (isSubplebbitPage && !isSubplebbitSubmitPage && !isPostPage && !isAboutPage) ||
+    (isProfilePage && !isAboutPage) ||
+    isAllPage ||
+    (isAuthorPage && !isAboutPage);
+  const logoSrc = isSubplebbitPage ? suggested?.avatarUrl : isProfilePage ? imageUrl : '/assets/logo/seedit.png';
+  const logoIsAvatar = (isSubplebbitPage && suggested?.avatarUrl) || (isProfilePage && imageUrl);
+  const logoLink = isSubplebbitPage ? `/p/${params.subplebbitAddress}` : isProfilePage ? '/profile' : '/';
 
   return (
     <div className={styles.header}>
       <div className={`${styles.container} ${hasFewTabs && styles.reducedHeight} ${hasStickyHeader && styles.increasedHeight}`}>
         <div className={styles.logoContainer}>
           <Link to={logoLink} className={styles.logoLink}>
-            {(logoIsAvatar || (!isSubplebbit && !isProfile)) && <img className={`${logoIsAvatar ? styles.avatar : styles.logo}`} src={logoSrc} alt='logo' />}
-            {!isSubplebbit && !isProfile && <img src={`/assets/logo/seedit-text-${theme === 'dark' ? 'dark' : 'light'}.svg`} className={styles.logoText} alt='logo' />}
+            {(logoIsAvatar || (!isSubplebbitPage && !isProfilePage && !isAuthorPage)) && (
+              <img className={`${logoIsAvatar ? styles.avatar : styles.logo}`} src={logoSrc} alt='logo' />
+            )}
+            {!isSubplebbitPage && !isProfilePage && !isAuthorPage && (
+              <img src={`/assets/logo/seedit-text-${theme === 'dark' ? 'dark' : 'light'}.svg`} className={styles.logoText} alt='logo' />
+            )}
           </Link>
         </div>
-        {!isHome && !isAll && (
+        {!isHomePage && !isAllPage && (
           <span className={`${styles.pageName} ${!logoIsAvatar && styles.soloPageName}`}>
             <HeaderTitle title={title} shortAddress={shortAddress} />
           </span>
         )}
-        {isSubplebbit && !isAbout && (
+        {isSubplebbitPage && !isAboutPage && (
           <span className={styles.joinButton}>
             <SubscribeButton address={params.subplebbitAddress} />
           </span>
@@ -267,7 +304,7 @@ const Header = () => {
           <div className={`${styles.tabs} ${hasFewTabs ? styles.fewTabs : ''}`}>
             <ul className={styles.tabMenu}>
               <HeaderTabs />
-              {(isSubplebbit || isSubplebbitSubmit || isPost || isProfile || isAuthor) && <AboutButton />}
+              {(isSubplebbitPage || isSubplebbitSubmitPage || isPostPage || isProfilePage || isAuthorPage) && <AboutButton />}
             </ul>
           </div>
         )}
@@ -276,7 +313,7 @@ const Header = () => {
         <div className={`${styles.tabs} ${hasFewTabs ? styles.fewTabs : ''}`}>
           <ul className={styles.tabMenu}>
             <HeaderTabs />
-            {(isSubplebbit || isSubplebbitSubmit || isPost || isProfile || isAuthor) && <AboutButton />}
+            {(isSubplebbitPage || isSubplebbitSubmitPage || isPostPage || isProfilePage || isAuthorPage) && <AboutButton />}
           </ul>
         </div>
       )}

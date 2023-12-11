@@ -48,7 +48,6 @@
 
 @media (max-width: 768px) {
   .container {
-    padding-bottom: 2px;
     height: 45px;
   }
 
@@ -58,21 +57,12 @@
 }
 
 .increasedHeight {
-  padding-top: 20px;
-}
-
-.reducedHeight {
-  padding-top: 1px;
+  padding-top: 19px;
 }
 
 @media (min-width: 768px) {
   .container {
     height: 45px;
-  }
-
-  .temporary {
-    top: 0px;
-    margin-top: -3px;
   }
 }
 
@@ -144,7 +134,7 @@
 }
 
 .tabs {
-  overflow-x: auto; /* Enables horizontal scrolling */
+  overflow-x: auto;
   scrollbar-width: none; /* Hides the scrollbar in Firefox */
   -ms-overflow-style: none;  /* Hides the scrollbar in IE and Edge */
 }
@@ -171,7 +161,6 @@
 @media (max-width: 768px) {
   .fewTabs {
     position: relative;
-    margin-bottom: 0;
   }
 
   .tabMenu {

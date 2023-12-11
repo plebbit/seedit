@@ -4,8 +4,9 @@ import { StateSnapshot, Virtuoso, VirtuosoHandle } from 'react-virtuoso';
 import { useAccount, useAccountComments, useAccountVotes, useComments } from '@plebbit/plebbit-react-hooks';
 import styles from './profile.module.css';
 import Post from '../../components/post';
+import Reply from '../../components/reply';
 import AuthorSidebar from '../../components/author-sidebar';
-import { isDownvotedView, isUpvotedView } from '../../lib/utils/view-utils';
+import { isDownvotedView, isUpvotedView, isProfileCommentsView, isProfileSubmittedView } from '../../lib/utils/view-utils';
 
 const lastVirtuosoStates: { [key: string]: StateSnapshot } = {};
 
@@ -16,17 +17,31 @@ const Profile = () => {
   let { accountComments } = useAccountComments();
   accountComments = [...accountComments].reverse();
   const { accountVotes } = useAccountVotes();
-  const isUpvoted = isUpvotedView(location.pathname);
-  const isDownvoted = isDownvotedView(location.pathname);
+  const isUpvotedPage = isUpvotedView(location.pathname);
+  const isDownvotedPage = isDownvotedView(location.pathname);
+  const isCommentsPage = isProfileCommentsView(location.pathname);
+  const isSubmittedPage = isProfileSubmittedView(location.pathname);
 
   const upvotedCommentCids = useMemo(() => accountVotes?.filter((vote) => vote.vote === 1).map((vote) => vote.commentCid) || [], [accountVotes]);
-
   const downvotedCommentCids = useMemo(() => accountVotes?.filter((vote) => vote.vote === -1).map((vote) => vote.commentCid) || [], [accountVotes]);
+  const replyComments = useMemo(() => accountComments?.filter((comment) => comment.parentCid) || [], [accountComments]);
+  const postComments = useMemo(() => accountComments?.filter((comment) => !comment.parentCid) || [], [accountComments]);
 
   const { comments: upvotedComments } = useComments({ commentCids: upvotedCommentCids });
   const { comments: downvotedComments } = useComments({ commentCids: downvotedCommentCids });
 
-  const virtuosoData = isUpvoted ? upvotedComments : isDownvoted ? downvotedComments : accountComments;
+  let virtuosoData;
+  if (isUpvotedPage) {
+    virtuosoData = upvotedComments;
+  } else if (isDownvotedPage) {
+    virtuosoData = downvotedComments;
+  } else if (isCommentsPage) {
+    virtuosoData = replyComments;
+  } else if (isSubmittedPage) {
+    virtuosoData = postComments;
+  } else {
+    virtuosoData = accountComments;
+  }
 
   const virtuosoRef = useRef<VirtuosoHandle | null>(null);
 
@@ -55,7 +70,10 @@ const Profile = () => {
           increaseViewportBy={{ bottom: 1200, top: 600 }}
           totalCount={accountComments?.length || 0}
           data={virtuosoData}
-          itemContent={(index, post) => post && <Post index={index} post={post} />}
+          itemContent={(index, post) => {
+            const isReply = post?.parentCid;
+            return !isReply ? <Post index={index} post={post} /> : <Reply index={index} isSingle={true} reply={post} />;
+          }}
           useWindowScroll={true}
           ref={virtuosoRef}
           restoreStateFrom={lastVirtuosoState}
