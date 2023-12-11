@@ -45,12 +45,6 @@ const ModTools = ({ cid }: CommentToolsProps) => {
   const [publishCommentEditOptions, setPublishCommentEditOptions] = useState(defaultPublishOptions);
   const { state, publishCommentEdit } = usePublishCommentEdit(publishCommentEditOptions);
 
-  useEffect(() => {
-    if (state) {
-      console.log(state);
-    }
-  }, [state]);
-
   // close the modal after publishing
   useEffect(() => {
     if (state && state !== 'failed' && state !== 'initializing' && state !== 'ready') {
