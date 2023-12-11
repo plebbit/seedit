@@ -169,6 +169,12 @@ const Submit = () => {
     }
   }, [inputAddress]);
 
+  useEffect(() => {
+    if (paramsSubplebbitAddress) {
+      setSubmitStore({ subplebbitAddress: paramsSubplebbitAddress });
+    }
+  }, [paramsSubplebbitAddress, setSubmitStore]);
+
   return (
     <div className={styles.content}>
       <h1>

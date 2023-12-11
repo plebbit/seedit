@@ -41,7 +41,7 @@ h1 {
 
 .boxTitleRequired::before {
   content: "*";
-  color: red;
+  color: var(--red);
 }
 
 .boxContent {

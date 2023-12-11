@@ -37,10 +37,7 @@ const ReplyAuthor = ({ address, authorRole, cid, displayName, shortAuthorAddress
   return (
     <>
       {displayName && <span className={`${styles.author} ${moderatorClass}`}>{displayName}</span>}
-      <Link
-        to={`/u/${address}/c/${cid}`}
-        className={`${styles.author} ${moderatorClass}`}
-      >
+      <Link to={`/u/${address}/c/${cid}`} className={`${styles.author} ${moderatorClass}`}>
         {displayName ? `u/${shortAuthorAddress}` : shortAuthorAddress}
       </Link>
       {authorRole && (
@@ -131,21 +128,7 @@ const ParentLink = ({ reply }: { reply: Comment }) => {
 };
 
 const Reply = ({ depth = 0, isSingle, reply = {} }: ReplyProps) => {
-  const {
-    author,
-    cid,
-    content,
-    downvoteCount,
-    flair,
-    link,
-    linkHeight,
-    linkWidth,
-    removed,
-    spoiler,
-    subplebbitAddress,
-    timestamp,
-    upvoteCount,
-  } = reply || {};
+  const { author, cid, content, downvoteCount, flair, link, linkHeight, linkWidth, removed, spoiler, subplebbitAddress, timestamp, upvoteCount } = reply || {};
   const subplebbit = useSubplebbit({ subplebbitAddress });
 
   const authorRole = subplebbit?.roles?.[reply.author.address]?.role;
