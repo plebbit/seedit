@@ -2,7 +2,7 @@ import { useEffect, useRef } from 'react';
 import { StateSnapshot, Virtuoso, VirtuosoHandle } from 'react-virtuoso';
 import { useAccount, useNotifications } from '@plebbit/plebbit-react-hooks';
 import styles from './inbox.module.css';
-import Post from '../../components/post';
+import Reply from '../../components/reply/reply';
 
 const lastVirtuosoStates: { [key: string]: StateSnapshot } = {};
 
@@ -33,17 +33,17 @@ const Inbox = () => {
   }
 
   return (
-    <div>
+    <div className={styles.content}>
       <button onClick={markAsRead} disabled={!unreadNotificationCount} className={styles.markAsReadButton}>
-        mark as read
+        mark all as read
       </button>
       <Virtuoso
         increaseViewportBy={{ bottom: 1200, top: 600 }}
         totalCount={notifications?.length || 0}
         data={notifications}
         itemContent={(index, notification) => (
-          <div className={notification.markedAsRead === false ? styles.unreadNotification : styles.readNotification}>
-            <Post index={index} post={notification} />
+          <div className={styles.notification}>
+            <Reply index={index} isSingle={true} reply={notification} isNotification={true} />
           </div>
         )}
         useWindowScroll={true}

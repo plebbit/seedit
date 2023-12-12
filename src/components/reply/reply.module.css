@@ -12,6 +12,15 @@
   padding-bottom: 8px;
 }
 
+.unreadNotification {
+  background-color: var(--gray-overlay);
+  border: 1px solid var(--gray-border);
+  padding: 6px;
+  padding: 10px 5px;
+  margin-bottom: 10px;
+  margin-top: 2px;
+}
+
 .midcol {
   visibility: visible;
   width: 15px;
