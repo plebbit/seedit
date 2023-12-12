@@ -1,3 +1,7 @@
+# plebbit temp files
+.plebbit
+bin
+
 # Logs
 logs
 *.log

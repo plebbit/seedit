@@ -1,0 +1,98 @@
+# docs https://github.com/marketplace/actions/create-release
+# docs https://github.com/ncipollo/release-action
+
+name: release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  linux:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      # electron build
+      - uses: actions/checkout@v2
+        with:
+          # needed for git commit history changelog
+          fetch-depth: 0
+      - uses: actions/setup-node@v2
+        with:
+          node-version: 16
+      - run: yarn install --frozen-lockfile
+      # make sure the ipfs executable is executable
+      - run: node electron/download-ipfs && sudo chmod +x bin/linux/ipfs
+      - run: CI='' yarn build
+      - run: yarn electron:build:linux
+      - run: ls dist
+
+      # publish version release
+      - run: node scripts/release-body > release-body.txt
+      - uses: ncipollo/release-action@v1
+        with:
+          artifacts: 'dist/seedit*.AppImage,dist/seedit-html*.zip'
+          token: ${{ secrets.GITHUB_TOKEN }}
+          replacesArtifacts: true
+          bodyFile: "release-body.txt"
+          allowUpdates: true
+
+  mac:
+    runs-on: macOS-latest
+    permissions:
+      contents: write
+    steps:
+      # electron build
+      - uses: actions/checkout@v2
+        with:
+          # needed for git commit history changelog
+          fetch-depth: 0
+      - uses: actions/setup-node@v2
+        with:
+          node-version: 16
+      - run: yarn install --frozen-lockfile
+      # make sure the ipfs executable is executable
+      - run: node electron/download-ipfs && sudo chmod +x bin/mac/ipfs
+      - run: CI='' yarn build
+      - run: yarn electron:build:mac
+      - run: ls dist
+
+      # publish version release
+      - run: node scripts/release-body > release-body.txt
+      - uses: ncipollo/release-action@v1
+        with:
+          artifacts: 'dist/seedit*.dmg'
+          token: ${{ secrets.GITHUB_TOKEN }}
+          replacesArtifacts: true
+          bodyFile: "release-body.txt"
+          allowUpdates: true
+
+  windows:
+    runs-on: windows-latest
+    permissions:
+      contents: write
+    steps:
+      # electron build
+      - uses: actions/checkout@v2
+        with:
+          # needed for git commit history changelog
+          fetch-depth: 0
+      - uses: actions/setup-node@v2
+        with:
+          node-version: 16
+      - run: yarn install --frozen-lockfile
+      - run: yarn build
+      - run: yarn electron:build:windows
+      - run: dir dist
+
+      # publish version release
+      - run: node scripts/release-body > release-body.txt
+      - uses: ncipollo/release-action@v1
+        with:
+          artifacts: 'dist/seedit*.exe'
+          token: ${{ secrets.GITHUB_TOKEN }}
+          replacesArtifacts: true
+          bodyFile: "release-body.txt"
+          allowUpdates: true
