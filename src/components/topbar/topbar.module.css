@@ -167,8 +167,8 @@
   -ms-overflow-style: none;  /* Hides the scrollbar in IE and Edge */
 }
 
-.tabs::-webkit-scrollbar {
-  display: none; /* Hides the scrollbar in WebKit-based browsers */
+.srList::-webkit-scrollbar {
+  display: none; /* Hides the scrollbar in Chromium and WebKit-based browsers */
 }
 
 .srBar li {
