@@ -21,6 +21,19 @@
   padding-bottom: 5px;
 }
 
+.title button {
+  padding: 0px 4px 0px 4px;
+  margin-left: 5px;
+  font-size: 12px;
+}
+
+.displayName {
+  font-family: arial, verdana, helvetica, sans-serif;
+  margin-top: -2px;
+  padding-bottom: 5px;
+  font-size: 14px;
+}
+
 .karma {
   font-size: 18px;
   font-weight: bold;
