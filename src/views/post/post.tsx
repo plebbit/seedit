@@ -8,7 +8,6 @@ import Reply from '../../components/reply';
 import ReplyForm from '../../components/reply-form';
 import PostComponent from '../../components/post';
 import Sidebar from '../../components/sidebar/';
-import { usePendingReplyCount } from '../../hooks/use-pending-replycount';
 import useReplies from '../../hooks/use-replies';
 import useStateString from '../../hooks/use-state-string';
 
@@ -26,9 +25,7 @@ const Post = () => {
   const postTitle = title?.slice(0, 40) || comment?.content?.slice(0, 40);
   const subplebbitTitle = subplebbit?.title || subplebbit?.shortAddress;
 
-  const pendingReplyCount = usePendingReplyCount({ parentCommentCid: commentCid });
-  const totalReplyCount = replyCount + pendingReplyCount;
-  const commentCount = totalReplyCount === 0 ? t('no_comments') : totalReplyCount === 1 ? t('one_comment') : t('all_comments', { count: totalReplyCount });
+  const commentCount = replyCount === 0 ? t('no_comments') : replyCount === 1 ? t('one_comment') : t('all_comments', { count: replyCount });
 
   const loadingString = stateString && <div className={styles.stateString}>{stateString !== 'failed' ? <LoadingEllipsis string={stateString} /> : stateString}</div>;
 

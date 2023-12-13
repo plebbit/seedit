@@ -29,7 +29,7 @@ const AccountBar = () => {
   const accountDropdownClass = isAccountDropdownOpen ? styles.visible : styles.hidden;
   const accountSelectButtonRef = useRef<HTMLDivElement>(null);
 
-  const unreadNotificationCount = account?.unreadNotificationCount ? ` (${account.unreadNotificationCount})` : '';
+  const unreadNotificationCount = account?.unreadNotificationCount ? ` ${account.unreadNotificationCount}` : '';
   const mailClass = unreadNotificationCount ? styles.mailIconUnread : styles.mailIconRead;
 
   let submitLink = '/submit';

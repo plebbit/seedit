@@ -4,6 +4,8 @@
   --yellow: goldenrod;
   --red: red;
   --gray-contrast: #888;
+  --gray-overlay: #F7F7F7;
+  --gray-border: #ddd;
   --filter80: brightness(100%);
   --filter90: brightness(100%);
   --background: white;
@@ -15,6 +17,7 @@
   --background-contrast: #E4F2FB;
   --background-orange: #f6e69f;
   --text: black;
+  --text-input: black;
   --text-markdown: #222222;
   --text-primary: #369;
   --button-border-primary: #c4dbf1;
@@ -46,6 +49,8 @@
   --yellow: rgb(200, 171, 0);
   --red: rgb(200, 0, 0);
   --gray-contrast: #c7c7c7;
+  --gray-overlay: #1f1f1f;
+  --gray-border: #3e3e3e;
   --filter80: brightness(80%);
   --filter90: brightness(90%);
   --background: #0f0f0f;
@@ -57,6 +62,7 @@
   --background-contrast: #141414;
   --background-orange: #4a3700;
   --text: #bfbfbf;
+  --text-input: white;
   --text-markdown: #f0f0f0;
   --text-primary: #c7c7c7;
   --button-border-primary: #1f1f1f;

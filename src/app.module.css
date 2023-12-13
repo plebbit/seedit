@@ -11,10 +11,10 @@
 
 textarea, input {
   background-color: var(--background);
-  color: var(--text);
+  color: var(--text-input);
   border: 1px solid var(--border-text);
 }
 
-select, button, input[type="checkbox"] {
+select, button, input, textarea {
   filter: var(--filter80);
 }

@@ -13,7 +13,6 @@ import Flair from './flair';
 import CommentTools from './comment-tools';
 import Thumbnail from './thumbnail';
 import useDownvote from '../../hooks/use-downvote';
-import { usePendingReplyCount } from '../../hooks/use-pending-replycount';
 import useUpvote from '../../hooks/use-upvote';
 
 interface PostAuthorProps {
@@ -85,9 +84,6 @@ const Post = ({ post = {}, index }: PostProps) => {
 
   const postScore = upvoteCount === 0 && downvoteCount === 0 ? '•' : upvoteCount - downvoteCount || '•';
   const postTitle = (title?.length > 300 ? title?.slice(0, 300) + '...' : title) || (content?.length > 300 ? content?.slice(0, 300) + '...' : content);
-
-  const pendingReplyCount = usePendingReplyCount({ parentCommentCid: cid });
-  const totalReplyCount = replyCount + pendingReplyCount;
 
   const linkClass = `${isInPostView ? (link ? styles.externalLink : styles.internalLink) : styles.link} ${pinned ? styles.pinnedLink : ''}`;
 
@@ -175,7 +171,7 @@ const Post = ({ post = {}, index }: PostProps) => {
               )}
               {pinned && <span className={styles.announcement}> - {t('announcement')}</span>}
             </p>
-            <CommentTools cid={cid} failed={state === 'failed'} replyCount={totalReplyCount} subplebbitAddress={subplebbitAddress} />
+            <CommentTools cid={cid} failed={state === 'failed'} replyCount={replyCount} subplebbitAddress={subplebbitAddress} />
           </div>
         </div>
       </div>

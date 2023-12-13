@@ -11,12 +11,12 @@
   width: 400px;
   color: var(--text);
   font-size: large;
-  background-color: var(--background-primary);
+  background-color: var(--background);
+  border: 1px solid var(--border-text);
   padding: 20px;
   position: fixed;
   transform: translate(-50%, -50%);
   font-size: large;
-  border-radius: 4px;
 }
 
 .subTitle {

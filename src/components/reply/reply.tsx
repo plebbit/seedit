@@ -97,13 +97,6 @@ const ReplyMedia = ({ commentMediaInfo, content, expanded, hasThumbnail, link, l
   );
 };
 
-interface ReplyProps {
-  depth?: number;
-  index?: number;
-  isSingle?: boolean;
-  reply: Comment | undefined;
-}
-
 const ParentLink = ({ reply }: { reply: Comment }) => {
   const parent = useComment({ commentCid: reply.parentCid });
   const { author, cid, content, title, subplebbitAddress } = parent || {};
@@ -127,8 +120,16 @@ const ParentLink = ({ reply }: { reply: Comment }) => {
   );
 };
 
-const Reply = ({ depth = 0, isSingle, reply = {} }: ReplyProps) => {
-  const { author, cid, content, downvoteCount, flair, link, linkHeight, linkWidth, removed, spoiler, subplebbitAddress, timestamp, upvoteCount } = reply || {};
+interface ReplyProps {
+  depth?: number;
+  index?: number;
+  isNotification?: boolean;
+  isSingle?: boolean;
+  reply: Comment | undefined;
+}
+
+const Reply = ({ depth = 0, isSingle, isNotification = false, reply = {} }: ReplyProps) => {
+  const { author, cid, content, downvoteCount, flair, link, linkHeight, linkWidth, markedAsRead, removed, spoiler, subplebbitAddress, timestamp, upvoteCount } = reply || {};
   const subplebbit = useSubplebbit({ subplebbitAddress });
 
   const authorRole = subplebbit?.roles?.[reply.author.address]?.role;
@@ -169,7 +170,7 @@ const Reply = ({ depth = 0, isSingle, reply = {} }: ReplyProps) => {
   return (
     <div className={styles.reply}>
       {isSingle && <ParentLink reply={reply} />}
-      <div className={`${!isSingle ? styles.replyWrapper : styles.singleReplyWrapper} ${depth > 1 && styles.nested}`}>
+      <div className={`${!isSingle ? styles.replyWrapper : styles.singleReplyWrapper} ${depth > 1 && styles.nested} ${isNotification && !markedAsRead ? styles.unreadNotification : ''}`}>
         {!collapsed && (
           <div className={styles.midcol}>
             <div className={`${styles.arrow} ${upvoted ? styles.upvoted : styles.arrowUp}`} onClick={() => cid && upvote()} />
