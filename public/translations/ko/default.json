@@ -107,5 +107,6 @@
   "upvoted": "추천했습니다",
   "announcement": "공지",
   "child": "{{childrenCount}} 아이",
-  "children": "{{childrenCount}} 아이들"
+  "children": "{{childrenCount}} 아이들",
+  "moderation": "중재"
 }

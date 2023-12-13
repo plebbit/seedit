@@ -107,5 +107,6 @@
   "upvoted": "ने ऊपर मत दिया",
   "announcement": "घोषणा",
   "child": "{{childrenCount}} बच्चा",
-  "children": "{{childrenCount}} बच्चे"
+  "children": "{{childrenCount}} बच्चे",
+  "moderation": "संयंत्रणा"
 }

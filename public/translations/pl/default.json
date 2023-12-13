@@ -107,5 +107,6 @@
   "upvoted": "oddany głos za",
   "announcement": "ogłoszenie",
   "child": "{{childrenCount}} dzieci",
-  "children": "{{childrenCount}} dziecko"
+  "children": "{{childrenCount}} dziecko",
+  "moderation": "moderacja"
 }

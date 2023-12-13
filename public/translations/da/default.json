@@ -107,5 +107,6 @@
   "upvoted": "stemt op",
   "announcement": "meddelelse",
   "child": "{{childrenCount}} barn",
-  "children": "{{childrenCount}} børn"
+  "children": "{{childrenCount}} børn",
+  "moderation": "moderation"
 }

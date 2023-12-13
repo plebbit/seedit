@@ -107,5 +107,6 @@
   "upvoted": "अपवोट दिला",
   "announcement": "सूचना",
   "child": "{{childrenCount}} मुलगे",
-  "children": "{{childrenCount}} मुलगा/मुलगी"
+  "children": "{{childrenCount}} मुलगा/मुलगी",
+  "moderation": "शांतता"
 }

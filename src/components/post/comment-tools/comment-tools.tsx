@@ -76,7 +76,7 @@ const ModTools = ({ cid }: CommentToolsProps) => {
   return (
     <>
       <li className={styles.button} ref={refs.setReference} {...getReferenceProps()}>
-        <span onClick={() => setIsModToolsOpen(!isModToolsOpen)}>moderate</span>
+        <span onClick={() => setIsModToolsOpen(!isModToolsOpen)}>{t('moderation')}</span>
       </li>
       {isModToolsOpen && (
         <FloatingFocusManager context={context} modal={false}>

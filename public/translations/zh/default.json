@@ -107,5 +107,6 @@
   "upvoted": "点赞了",
   "announcement": "公告",
   "child": "{{childrenCount}} 孩子们",
-  "children": "{{childrenCount}} 孩子"
+  "children": "{{childrenCount}} 孩子",
+  "moderation": "管理"
 }

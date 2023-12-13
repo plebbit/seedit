@@ -107,5 +107,6 @@
   "upvoted": "поставив плюс",
   "announcement": "оголошення",
   "child": "{{childrenCount}} діти",
-  "children": "{{childrenCount}} дитина"
+  "children": "{{childrenCount}} дитина",
+  "moderation": "модерація"
 }

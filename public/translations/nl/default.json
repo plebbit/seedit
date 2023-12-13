@@ -107,5 +107,6 @@
   "upvoted": "heeft een upvote gegeven",
   "announcement": "aankondiging",
   "child": "{{childrenCount}} kinderen",
-  "children": "{{childrenCount}} kind"
+  "children": "{{childrenCount}} kind",
+  "moderation": "moderatie"
 }

@@ -107,5 +107,6 @@
   "upvoted": "ψήφισε",
   "announcement": "ανακοίνωση",
   "child": "{{childrenCount}} παιδί",
-  "children": "{{childrenCount}} παιδιά"
+  "children": "{{childrenCount}} παιδιά",
+  "moderation": "διαμεσολάβηση"
 }
