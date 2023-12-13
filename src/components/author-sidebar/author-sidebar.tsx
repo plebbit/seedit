@@ -70,10 +70,13 @@ const AuthorSidebar = () => {
     }
   };
 
-  return ( 
+  return (
     <div className={styles.sidebar}>
       <div className={styles.titleBox}>
-        <div className={styles.title}>{address}{isProfilePage && !displayName && <button onClick={showUsernameNotice}>?</button>}</div>
+        <div className={styles.title}>
+          {address}
+          {isProfilePage && !displayName && <button onClick={showUsernameNotice}>?</button>}
+        </div>
         {displayName && <div className={styles.displayName}>{displayName}</div>}
         {postScore ? (
           <>
@@ -89,7 +92,9 @@ const AuthorSidebar = () => {
           <span className={styles.age}>plebbitor for at least {getFormattedDuration(oldestCommentTimestamp)}</span>
         </div>
       </div>
-      {Object.keys(accountSubplebbits).length > 0 && <AuthorModeratingList accountSubplebbits={accountSubplebbits} isAuthor={isAuthorPage} authorSubplebbits={authorSubplebbits} />}
+      {Object.keys(accountSubplebbits).length > 0 && (
+        <AuthorModeratingList accountSubplebbits={accountSubplebbits} isAuthor={isAuthorPage} authorSubplebbits={authorSubplebbits} />
+      )}
     </div>
   );
 };
