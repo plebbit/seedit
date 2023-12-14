@@ -75,7 +75,7 @@ const AuthorSidebar = () => {
       <div className={styles.titleBox}>
         <div className={styles.title}>
           {address}
-          {isProfilePage && !displayName && <button onClick={showUsernameNotice}>?</button>}
+          {isProfilePage && !displayName && <button onClick={showUsernameNotice}>edit</button>}
         </div>
         {displayName && <div className={styles.displayName}>{displayName}</div>}
         {postScore ? (

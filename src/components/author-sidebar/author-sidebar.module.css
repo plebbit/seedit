@@ -25,6 +25,9 @@
   padding: 0px 4px 0px 4px;
   margin-left: 5px;
   font-size: 12px;
+  text-transform: capitalize;
+  position: absolute;
+  margin-top: 2px;
 }
 
 .displayName {
