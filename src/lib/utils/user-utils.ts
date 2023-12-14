@@ -1,4 +1,4 @@
-import { Role, Subplebbit } from "@plebbit/plebbit-react-hooks";
+import { Role, Subplebbit, Comment } from "@plebbit/plebbit-react-hooks";
 
 type RolesCollection = Record<string, Role>;
 
@@ -29,4 +29,27 @@ export const findAuthorSubplebbits = (authorAddress: string | undefined, subpleb
   });
 
   return authorSubplebbits;
+};
+
+interface Score {
+  postScore: number;
+  replyScore: number;
+}
+
+export const estimateAuthorKarma = (accountComments: (Comment | undefined)[]): Score => {
+  let postScore = 0;
+  let replyScore = 0;
+
+  accountComments.forEach(comment => {
+    if (comment) {
+      const score = comment.upvoteCount - comment.downvoteCount;
+      if (comment.parentCid) {
+        replyScore += score;
+      } else {
+        postScore += score;
+      }
+    }
+  });
+
+  return { postScore, replyScore };
 };

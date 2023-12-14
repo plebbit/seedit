@@ -4,7 +4,7 @@ import { getShortAddress } from '@plebbit/plebbit-js';
 import styles from './author-sidebar.module.css';
 import { getFormattedDuration } from '../../lib/utils/time-utils';
 import { isAuthorView, isProfileView } from '../../lib/utils/view-utils';
-import { findAuthorSubplebbits } from '../../lib/utils/user-utils';
+import { findAuthorSubplebbits, estimateAuthorKarma } from '../../lib/utils/user-utils';
 import { useDefaultSubplebbitAddresses } from '../../lib/utils/addresses-utils';
 import SubscribeButton from '../subscribe-button';
 
@@ -56,10 +56,13 @@ const AuthorSidebar = () => {
   const { authorComments } = useAuthorComments({ authorAddress, commentCid });
   const authorOldestCommentTimestamp = authorComments?.[0]?.timestamp || Date.now();
   const authorSubplebbits = findAuthorSubplebbits(authorAddress, subplebbits.subplebbits);
+  
+  const estimatedAuthorKarma = estimateAuthorKarma(authorComments);
 
   const address = isAuthorPage ? params?.authorAddress : isProfilePage ? profileAccount?.author?.shortAddress : '';
-  const karma = isAuthorPage ? params?.authorAddress : isProfilePage ? profileAccount?.karma : '';
+  const karma = isAuthorPage ? estimatedAuthorKarma : isProfilePage ? profileAccount?.karma : '';
   const { postScore, replyScore } = karma || {};
+  
   const oldestCommentTimestamp = isAuthorPage ? authorOldestCommentTimestamp : isProfilePage ? profileOldestAccountTimestamp : Date.now();
   const displayName = isAuthorPage ? authorAccount?.author?.displayName : isProfilePage ? profileAccount?.author?.displayName : '';
 
@@ -86,9 +89,11 @@ const AuthorSidebar = () => {
           <>
             <div>
               <span className={styles.karma}>{postScore}</span> post karma
+              {isAuthorPage && postScore && ' (estimated)'}
             </div>
             <div>
               <span className={styles.karma}>{replyScore}</span> comment karma
+              {isAuthorPage && replyScore && ' (estimated)'}
             </div>
           </>
         ) : null}
