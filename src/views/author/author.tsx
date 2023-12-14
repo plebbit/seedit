@@ -20,6 +20,7 @@ const Author = () => {
   const params = useParams();
   const isAuthorCommentsPage = isAuthorCommentsView(location.pathname, params);
   const isAuthorSubmittedPage = isAuthorSubmittedView(location.pathname, params);
+  const isMobile = window.innerWidth < 768;
 
   const { authorComments, lastCommentCid, hasMore, loadMore } = useAuthorComments({ commentCid, authorAddress });
 
@@ -72,7 +73,7 @@ const Author = () => {
 
   return (
     <div className={styles.content}>
-      <div className={styles.sidebar}>
+      <div className={isMobile ? styles.sidebarMobile : styles.sidebarDesktop}>
         <AuthorSidebar />
       </div>
       <SortDropdown />

@@ -7,7 +7,13 @@ div[data-viewport-type="window"] {
 }
 
 @media (max-width: 768px) {
-  .sidebar {
+  .sidebarDesktop {
     display: none;
+  }
+  
+  .sidebarMobile {
+    width: 300px;
+    display: inline-block;
+    padding: 10px 0 0px 5px;
   }
 }

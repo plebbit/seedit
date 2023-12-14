@@ -2,7 +2,7 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import styles from './sort-dropdown.module.css';
 
 const SortDropdown = () => {
-  const sortLabels = ['new', 'old']
+  const sortLabels = ['new', 'old'];
 
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);

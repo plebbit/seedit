@@ -22,6 +22,7 @@ const Profile = () => {
   const isDownvotedPage = isDownvotedView(location.pathname);
   const isCommentsPage = isProfileCommentsView(location.pathname);
   const isSubmittedPage = isProfileSubmittedView(location.pathname);
+  const isMobile = window.innerWidth < 768;
 
   const upvotedCommentCids = useMemo(() => accountVotes?.filter((vote) => vote.vote === 1).map((vote) => vote.commentCid) || [], [accountVotes]);
   const downvotedCommentCids = useMemo(() => accountVotes?.filter((vote) => vote.vote === -1).map((vote) => vote.commentCid) || [], [accountVotes]);
@@ -61,7 +62,7 @@ const Profile = () => {
 
   return (
     <div className={styles.content}>
-      <div className={styles.sidebar}>
+      <div className={isMobile ? styles.sidebarMobile : styles.sidebarDesktop}>
         <AuthorSidebar />
       </div>
       <SortDropdown />
