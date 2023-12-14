@@ -6,6 +6,7 @@ import { getFormattedDuration } from '../../lib/utils/time-utils';
 import { isAuthorView, isProfileView } from '../../lib/utils/view-utils';
 import { findAuthorSubplebbits } from '../../lib/utils/user-utils';
 import { useDefaultSubplebbitAddresses } from '../../lib/utils/addresses-utils';
+import SubscribeButton from '../subscribe-button';
 
 interface AuthorModeratingListProps {
   accountSubplebbits: AccountSubplebbit[];
@@ -78,6 +79,9 @@ const AuthorSidebar = () => {
           {isProfilePage && !displayName && <button onClick={showUsernameNotice}>edit</button>}
         </div>
         {displayName && <div className={styles.displayName}>{displayName}</div>}
+        <div className={styles.friends}>
+          <SubscribeButton address={address} />
+        </div>
         {postScore ? (
           <>
             <div>
