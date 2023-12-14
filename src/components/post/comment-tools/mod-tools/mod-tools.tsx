@@ -12,7 +12,7 @@ type ModToolsProps = {
   cid: string;
 };
 
-const ModTools = ({cid}: ModToolsProps) => {
+const ModTools = ({ cid }: ModToolsProps) => {
   const { t } = useTranslation();
   const post = useComment({ commentCid: cid });
   const [isModToolsOpen, setIsModToolsOpen] = useState(false);

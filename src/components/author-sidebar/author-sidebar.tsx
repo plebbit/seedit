@@ -56,13 +56,13 @@ const AuthorSidebar = () => {
   const { authorComments } = useAuthorComments({ authorAddress, commentCid });
   const authorOldestCommentTimestamp = authorComments?.[0]?.timestamp || Date.now();
   const authorSubplebbits = findAuthorSubplebbits(authorAddress, subplebbits.subplebbits);
-  
+
   const estimatedAuthorKarma = estimateAuthorKarma(authorComments);
 
   const address = isAuthorPage ? params?.authorAddress : isProfilePage ? profileAccount?.author?.shortAddress : '';
   const karma = isAuthorPage ? estimatedAuthorKarma : isProfilePage ? profileAccount?.karma : '';
   const { postScore, replyScore } = karma || {};
-  
+
   const oldestCommentTimestamp = isAuthorPage ? authorOldestCommentTimestamp : isProfilePage ? profileOldestAccountTimestamp : Date.now();
   const displayName = isAuthorPage ? authorAccount?.author?.displayName : isProfilePage ? profileAccount?.author?.displayName : '';
 
