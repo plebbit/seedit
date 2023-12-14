@@ -1,5 +1,14 @@
 import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
-import { useAccount, useAccountComments, useAccountSubplebbits, AccountSubplebbit, useAuthor, useAuthorComments, useSubplebbits } from '@plebbit/plebbit-react-hooks';
+import {
+  useAccount,
+  useAccountComments,
+  useAccountSubplebbits,
+  AccountSubplebbit,
+  useAuthor,
+  useAuthorComments,
+  useBlock,
+  useSubplebbits,
+} from '@plebbit/plebbit-react-hooks';
 import { getShortAddress } from '@plebbit/plebbit-js';
 import styles from './author-sidebar.module.css';
 import { getFormattedDuration } from '../../lib/utils/time-utils';
@@ -38,6 +47,7 @@ const AuthorSidebar = () => {
   const navigate = useNavigate();
   const params = useParams();
   const { authorAddress, commentCid } = useParams() || {};
+  const { blocked, unblock, block } = useBlock({ address: authorAddress });
 
   const isAuthorPage = isAuthorView(location.pathname);
   const isProfilePage = isProfileView(location.pathname);
@@ -74,6 +84,16 @@ const AuthorSidebar = () => {
     }
   };
 
+  const blockConfirm = () => {
+    if (window.confirm(`Are you sure you want to ${blocked ? 'unblock' : 'block'} this user?`)) {
+      if (blocked) {
+        unblock();
+      } else {
+        block();
+      }
+    }
+  };
+
   return (
     <div className={styles.sidebar}>
       <div className={styles.titleBox}>
@@ -98,6 +118,11 @@ const AuthorSidebar = () => {
           </>
         ) : null}
         <div className={styles.bottom}>
+          {isAuthorPage && (
+            <span className={styles.blockUser} onClick={blockConfirm}>
+              {blocked ? 'Unblock user' : 'Block user'}
+            </span>
+          )}
           <span className={styles.age}>plebbitor for at least {getFormattedDuration(oldestCommentTimestamp)}</span>
         </div>
       </div>

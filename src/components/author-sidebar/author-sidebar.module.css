@@ -78,3 +78,8 @@
 .modList {
   padding-top: 7px;
 }
+
+.blockUser {
+  color: var(--text-primary);
+  cursor: pointer;
+}
