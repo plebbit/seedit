@@ -8,6 +8,7 @@ import AuthorSidebar from '../../components/author-sidebar';
 import LoadingEllipsis from '../../components/loading-ellipsis';
 import Post from '../../components/post';
 import Reply from '../../components/reply/';
+import SortDropdown from '../../components/sort-dropdown';
 
 const lastVirtuosoStates: { [key: string]: StateSnapshot } = {};
 
@@ -74,6 +75,7 @@ const Author = () => {
       <div className={styles.sidebar}>
         <AuthorSidebar />
       </div>
+      <SortDropdown />
       {authorComments?.length === 0 && !hasMore && <div className={styles.noPosts}>No posts found</div>}
       <Virtuoso
         increaseViewportBy={{ bottom: 1200, top: 600 }}

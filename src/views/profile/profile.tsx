@@ -2,11 +2,12 @@ import { useEffect, useMemo, useRef } from 'react';
 import { useLocation, useParams } from 'react-router-dom';
 import { StateSnapshot, Virtuoso, VirtuosoHandle } from 'react-virtuoso';
 import { useAccount, useAccountComments, useAccountVotes, useComments } from '@plebbit/plebbit-react-hooks';
+import { isDownvotedView, isUpvotedView, isProfileCommentsView, isProfileSubmittedView } from '../../lib/utils/view-utils';
 import styles from './profile.module.css';
+import AuthorSidebar from '../../components/author-sidebar';
 import Post from '../../components/post';
 import Reply from '../../components/reply';
-import AuthorSidebar from '../../components/author-sidebar';
-import { isDownvotedView, isUpvotedView, isProfileCommentsView, isProfileSubmittedView } from '../../lib/utils/view-utils';
+import SortDropdown from '../../components/sort-dropdown';
 
 const lastVirtuosoStates: { [key: string]: StateSnapshot } = {};
 
@@ -63,6 +64,7 @@ const Profile = () => {
       <div className={styles.sidebar}>
         <AuthorSidebar />
       </div>
+      <SortDropdown />
       {account && !accountComments.length ? (
         'no posts'
       ) : (
