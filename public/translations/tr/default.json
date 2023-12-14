@@ -107,5 +107,6 @@
   "upvoted": "oy verdi",
   "announcement": "duyuru",
   "child": "{{childrenCount}} çocuklar",
-  "children": "{{childrenCount}} çocuk"
+  "children": "{{childrenCount}} çocuk",
+  "moderation": "denetim"
 }

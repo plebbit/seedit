@@ -107,5 +107,6 @@
   "upvoted": "ha dato un upvote",
   "announcement": "annuncio",
   "child": "{{childrenCount}} figli",
-  "children": "{{childrenCount}} figlio"
+  "children": "{{childrenCount}} figlio",
+  "moderation": "moderazione"
 }

@@ -107,5 +107,6 @@
   "upvoted": "on antanut äänen",
   "announcement": "ilmoitus",
   "child": "{{childrenCount}} lapsi",
-  "children": "{{childrenCount}} lapset"
+  "children": "{{childrenCount}} lapset",
+  "moderation": "moderointi"
 }

@@ -107,5 +107,6 @@
   "upvoted": "nagbigay ng upvote",
   "announcement": "pahayag",
   "child": "{{childrenCount}} bata",
-  "children": "{{childrenCount}} mga bata"
+  "children": "{{childrenCount}} mga bata",
+  "moderation": "moderasyon"
 }

@@ -107,5 +107,6 @@
   "upvoted": "نے اوپر ووٹ دیا",
   "announcement": "اعلان",
   "child": "{{childrenCount}} بچے",
-  "children": "{{childrenCount}} بچہ"
+  "children": "{{childrenCount}} بچہ",
+  "moderation": "تسلیم"
 }

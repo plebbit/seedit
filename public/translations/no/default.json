@@ -107,5 +107,6 @@
   "upvoted": "har gitt en oppvoting",
   "announcement": "kunngjøring",
   "child": "{{childrenCount}} barna",
-  "children": "{{childrenCount}} barn"
+  "children": "{{childrenCount}} barn",
+  "moderation": "moderasjon"
 }

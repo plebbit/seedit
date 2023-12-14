@@ -107,5 +107,6 @@
   "upvoted": "ka votuar pozitivisht",
   "announcement": "njoftim",
   "child": "{{childrenCount}} fëmijët",
-  "children": "{{childrenCount}} fëmijë"
+  "children": "{{childrenCount}} fëmijë",
+  "moderation": "moderim"
 }

@@ -107,5 +107,6 @@
   "upvoted": "رای مثبت داده شده",
   "announcement": "اعلان",
   "child": "{{childrenCount}} کودک",
-  "children": "{{childrenCount}} کودکان"
+  "children": "{{childrenCount}} کودکان",
+  "moderation": "مدیریت"
 }

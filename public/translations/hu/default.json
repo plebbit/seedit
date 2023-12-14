@@ -107,5 +107,6 @@
   "upvoted": "szavazott felfelé",
   "announcement": "bejelentés",
   "child": "{{childrenCount}} gyerek",
-  "children": "{{childrenCount}} gyerekek"
+  "children": "{{childrenCount}} gyerekek",
+  "moderation": "mérséklés"
 }

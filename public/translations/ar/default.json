@@ -107,5 +107,6 @@
   "upvoted": "قام بالتصويت بإعجاب",
   "announcement": "إعلان",
   "child": "{{childrenCount}} طفل",
-  "children": "{{childrenCount}} أطفال"
+  "children": "{{childrenCount}} أطفال",
+  "moderation": "مراقبة"
 }

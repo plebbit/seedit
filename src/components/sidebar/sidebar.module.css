@@ -211,3 +211,9 @@ a {
   background-color: var(--background);
   color: var(--text);
 }
+
+.blockSub {
+  padding-top: 10px;
+  color: var(--text-primary);
+  cursor: pointer;
+}

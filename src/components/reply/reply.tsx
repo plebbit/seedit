@@ -129,7 +129,8 @@ interface ReplyProps {
 }
 
 const Reply = ({ depth = 0, isSingle, isNotification = false, reply = {} }: ReplyProps) => {
-  const { author, cid, content, downvoteCount, flair, link, linkHeight, linkWidth, markedAsRead, removed, spoiler, subplebbitAddress, timestamp, upvoteCount } = reply || {};
+  const { author, cid, content, downvoteCount, flair, link, linkHeight, linkWidth, markedAsRead, removed, spoiler, subplebbitAddress, timestamp, upvoteCount } =
+    reply || {};
   const subplebbit = useSubplebbit({ subplebbitAddress });
 
   const authorRole = subplebbit?.roles?.[reply.author.address]?.role;
@@ -170,7 +171,11 @@ const Reply = ({ depth = 0, isSingle, isNotification = false, reply = {} }: Repl
   return (
     <div className={styles.reply}>
       {isSingle && <ParentLink reply={reply} />}
-      <div className={`${!isSingle ? styles.replyWrapper : styles.singleReplyWrapper} ${depth > 1 && styles.nested} ${isNotification && !markedAsRead ? styles.unreadNotification : ''}`}>
+      <div
+        className={`${!isSingle ? styles.replyWrapper : styles.singleReplyWrapper} ${depth > 1 && styles.nested} ${
+          isNotification && !markedAsRead ? styles.unreadNotification : ''
+        }`}
+      >
         {!collapsed && (
           <div className={styles.midcol}>
             <div className={`${styles.arrow} ${upvoted ? styles.upvoted : styles.arrowUp}`} onClick={() => cid && upvote()} />

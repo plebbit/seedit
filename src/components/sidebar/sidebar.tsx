@@ -1,7 +1,7 @@
 import { Link, useLocation, useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { getShortAddress } from '@plebbit/plebbit-js';
-import { Role, useSubplebbitStats } from '@plebbit/plebbit-react-hooks';
+import { useBlock, Role, useSubplebbitStats } from '@plebbit/plebbit-react-hooks';
 import styles from './sidebar.module.css';
 import { getFormattedDate, getFormattedDuration, getFormattedTimeAgo } from '../../lib/utils/time-utils';
 import { findSubplebbitCreator } from '../../lib/utils/user-utils';
@@ -94,6 +94,18 @@ const Sidebar = ({ address, cid, createdAt, description, downvoteCount = 0, role
     alert('This community has no owner role set.');
   };
 
+  const { blocked, unblock, block } = useBlock({ address });
+
+  const blockConfirm = () => {
+    if (window.confirm(`Are you sure you want to ${blocked ? 'unblock' : 'block'} this community?`)) {
+      if (blocked) {
+        unblock();
+      } else {
+        block();
+      }
+    }
+  };
+
   return (
     <div className={`${isAbout ? styles.about : styles.sidebar}`}>
       <SearchBar />
@@ -140,6 +152,9 @@ const Sidebar = ({ address, cid, createdAt, description, downvoteCount = 0, role
             <Link to={`/u/${creatorAddress}`} onClick={(e) => e.preventDefault()}>{`u/${creatorAddress}`}</Link>
             {creatorAddress === 'anonymous' && <button onClick={alertAnonymousCreator}>?</button>}
             {createdAt && <span className={styles.age}> {t('community_for', { date: getFormattedDuration(createdAt) })}</span>}
+            <div className={styles.blockSub} onClick={blockConfirm}>
+              {blocked ? 'Unblock community' : 'Block community'}
+            </div>
           </div>
         </div>
       )}

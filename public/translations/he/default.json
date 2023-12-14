@@ -107,5 +107,6 @@
   "upvoted": "הצביע למעלה",
   "announcement": "הודעה",
   "child": "{{childrenCount}} ילד",
-  "children": "{{childrenCount}} ילדים"
+  "children": "{{childrenCount}} ילדים",
+  "moderation": "הגבלה"
 }

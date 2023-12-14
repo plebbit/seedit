@@ -107,5 +107,6 @@
   "upvoted": "เสนอชื่นชม",
   "announcement": "ประกาศ",
   "child": "{{childrenCount}} เด็ก",
-  "children": "{{childrenCount}} เด็ก"
+  "children": "{{childrenCount}} เด็ก",
+  "moderation": "การควบคุม"
 }

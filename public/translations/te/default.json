@@ -107,5 +107,6 @@
   "upvoted": "అప్వోట్ ఇచ్చాడు",
   "announcement": "ప్రకటన",
   "child": "{{childrenCount}} పిల్లలు",
-  "children": "{{childrenCount}} పిల్లాడు/పిల్లి"
+  "children": "{{childrenCount}} పిల్లాడు/పిల్లి",
+  "moderation": "మితిమీరుపరచుకోవడం"
 }

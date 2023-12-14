@@ -107,5 +107,6 @@
   "upvoted": "hlasovalo",
   "announcement": "oznámení",
   "child": "{{childrenCount}} dítě",
-  "children": "{{childrenCount}} děti"
+  "children": "{{childrenCount}} děti",
+  "moderation": "moderace"
 }

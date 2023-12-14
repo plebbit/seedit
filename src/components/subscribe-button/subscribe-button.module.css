@@ -18,3 +18,7 @@
 .leaveButton {
   background-image: url('/public/assets/buttons/button-background-red.png');
 }
+
+.hidden {
+  display: none;
+}

@@ -107,5 +107,6 @@
   "upvoted": "a dat un upvote",
   "announcement": "anunț",
   "child": "{{childrenCount}} copii",
-  "children": "{{childrenCount}} copil"
+  "children": "{{childrenCount}} copil",
+  "moderation": "moderare"
 }

@@ -107,5 +107,6 @@
   "upvoted": "đã cho điểm tích cực",
   "announcement": "thông báo",
   "child": "{{childrenCount}} con",
-  "children": "{{childrenCount}} con"
+  "children": "{{childrenCount}} con",
+  "moderation": "kiểm duyệt"
 }
