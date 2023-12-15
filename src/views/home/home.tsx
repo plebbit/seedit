@@ -65,7 +65,7 @@ const Home = () => {
   if (feed?.length === 0) {
     Footer = NoPosts;
   }
-  if (hasMore || subplebbitAddresses && subplebbitAddresses.length === 0) {
+  if (hasMore || (subplebbitAddresses && subplebbitAddresses.length === 0)) {
     Footer = () => loadingString;
   }
 
