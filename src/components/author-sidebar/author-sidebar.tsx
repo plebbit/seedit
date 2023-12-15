@@ -109,11 +109,11 @@ const AuthorSidebar = () => {
           <>
             <div>
               <span className={styles.karma}>{postScore}</span> post karma
-              {isAuthorPage && postScore && ' (estimated)'}
+              {isAuthorPage && postScore ? ' (estimated)' : null}
             </div>
             <div>
               <span className={styles.karma}>{replyScore}</span> comment karma
-              {isAuthorPage && replyScore && ' (estimated)'}
+              {isAuthorPage && replyScore ? ' (estimated)' : null}
             </div>
           </>
         ) : null}
