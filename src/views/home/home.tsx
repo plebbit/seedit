@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { Virtuoso, VirtuosoHandle, StateSnapshot } from 'react-virtuoso';
 import { useAccount, useFeed } from '@plebbit/plebbit-react-hooks';
@@ -16,20 +16,33 @@ const lastVirtuosoStates: { [key: string]: StateSnapshot } = {};
 const NoPosts = () => 'no posts';
 
 const Home = () => {
+  const { t } = useTranslation();
   const account = useAccount();
   const defaultSubplebbitAddresses = useDefaultSubplebbitAddresses();
-  const subplebbitAddresses = defaultSubplebbitAddresses.concat(account?.subscriptions || []);
+  const [subplebbitAddresses, setSubplebbitAddresses] = useState<string[] | undefined>(undefined);
+
+  useEffect(() => {
+    if (defaultSubplebbitAddresses && account?.subscriptions) {
+      setSubplebbitAddresses(defaultSubplebbitAddresses.concat(account.subscriptions));
+    }
+  }, [defaultSubplebbitAddresses, account?.subscriptions]);
+  
   const params = useParams<{ sortType?: string; timeFilterName?: string }>();
   const sortType = params?.sortType || 'hot';
   const timeFilterName = (params.timeFilterName as TimeFilterKey) || 'all';
   const { timeFilter } = useTimeFilter(sortType, timeFilterName);
-  const { feed, hasMore, loadMore } = useFeed({ subplebbitAddresses, sortType, filter: timeFilter });
-  const { t } = useTranslation();
+
+  const { feed, hasMore, loadMore } = useFeed({
+    subplebbitAddresses: subplebbitAddresses || [],
+    sortType,
+    filter: timeFilter
+  });
+  
   let loadingStateString = useFeedStateString(subplebbitAddresses) || t('loading');
 
   const loadingString = (
     <div className={styles.stateString}>
-      {subplebbitAddresses.length === 0 ? (
+      {subplebbitAddresses && subplebbitAddresses.length === 0 ? (
         <div>
           <Trans
             i18nKey='no_communities_found'
@@ -52,7 +65,7 @@ const Home = () => {
   if (feed?.length === 0) {
     Footer = NoPosts;
   }
-  if (hasMore || subplebbitAddresses.length === 0) {
+  if (hasMore || subplebbitAddresses && subplebbitAddresses.length === 0) {
     Footer = () => loadingString;
   }
 

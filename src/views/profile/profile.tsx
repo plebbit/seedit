@@ -2,11 +2,12 @@ import { useEffect, useMemo, useRef } from 'react';
 import { useLocation, useParams } from 'react-router-dom';
 import { StateSnapshot, Virtuoso, VirtuosoHandle } from 'react-virtuoso';
 import { useAccount, useAccountComments, useAccountVotes, useComments } from '@plebbit/plebbit-react-hooks';
+import { isDownvotedView, isUpvotedView, isProfileCommentsView, isProfileSubmittedView } from '../../lib/utils/view-utils';
 import styles from './profile.module.css';
+import AuthorSidebar from '../../components/author-sidebar';
 import Post from '../../components/post';
 import Reply from '../../components/reply';
-import AuthorSidebar from '../../components/author-sidebar';
-import { isDownvotedView, isUpvotedView, isProfileCommentsView, isProfileSubmittedView } from '../../lib/utils/view-utils';
+import SortDropdown from '../../components/sort-dropdown';
 
 const lastVirtuosoStates: { [key: string]: StateSnapshot } = {};
 
@@ -21,6 +22,7 @@ const Profile = () => {
   const isDownvotedPage = isDownvotedView(location.pathname);
   const isCommentsPage = isProfileCommentsView(location.pathname);
   const isSubmittedPage = isProfileSubmittedView(location.pathname);
+  const isMobile = window.innerWidth < 768;
 
   const upvotedCommentCids = useMemo(() => accountVotes?.filter((vote) => vote.vote === 1).map((vote) => vote.commentCid) || [], [accountVotes]);
   const downvotedCommentCids = useMemo(() => accountVotes?.filter((vote) => vote.vote === -1).map((vote) => vote.commentCid) || [], [accountVotes]);
@@ -60,9 +62,10 @@ const Profile = () => {
 
   return (
     <div className={styles.content}>
-      <div className={styles.sidebar}>
+      <div className={isMobile ? styles.sidebarMobile : styles.sidebarDesktop}>
         <AuthorSidebar />
       </div>
+      <SortDropdown />
       {account && !accountComments.length ? (
         'no posts'
       ) : (
