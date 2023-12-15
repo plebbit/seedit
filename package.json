@@ -34,7 +34,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "cross-env PUBLIC_URL=./ GENERATE_SOURCEMAP=false react-scripts build",
     "build-netlify": "cross-env PUBLIC_URL=./ GENERATE_SOURCEMAP=true REACT_APP_COMMIT_REF=$COMMIT_REF react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
