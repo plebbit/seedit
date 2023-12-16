@@ -9,7 +9,7 @@ const AccountSettings = () => {
   const [text, setText] = useState('');
   const [switchToLastAccount, setSwitchToLastAccount] = useState(false);
 
-  const accountJson = useMemo(() => stringify({ account: { ...account, plebbit: undefined, karma: undefined, unreadNotificationCount: undefined } }), [account]);
+  const accountJson = useMemo(() => stringify({ account: { ...account, plebbit: undefined, karma: undefined, signer: undefined, plebbitReactOptions: undefined, unreadNotificationCount: undefined } }), [account]);
 
   const accountsOptions = accounts.map((account) => (
     <option key={account?.id} value={account?.name}>
@@ -154,7 +154,7 @@ const AccountSettings = () => {
         </select>{' '}
         is the current account
       </div>
-      <span className={styles.settingTitle}>account data</span>
+      <span className={styles.settingTitle}>account data preview</span>
       <div className={styles.accountData}>
         <textarea className={styles.textarea} value={text} onChange={(e) => setText(e.target.value)} autoCorrect='off' autoComplete='off' spellCheck='false' />
         <div className={styles.accountButtons}>
@@ -165,10 +165,10 @@ const AccountSettings = () => {
             <button onClick={_createAccount}>Create</button> a new account
           </div>
           <div>
-            <button onClick={_importAccount}>Import</button> another account
+            <button onClick={_importAccount}>Import</button> full account data
           </div>
           <div>
-            <button onClick={_exportAccount}>Export</button> this account
+            <button onClick={_exportAccount}>Export</button> full account data
           </div>
           <div className={styles.deleteAccountBox}>
             <button onClick={() => _deleteAccount(account?.name)}>Delete</button> this account
