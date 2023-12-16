@@ -273,7 +273,7 @@ const Header = () => {
     (isProfilePage && !isAboutPage) ||
     isAllPage ||
     (isAuthorPage && !isAboutPage);
-  const logoSrc = isSubplebbitPage ? suggested?.avatarUrl : isProfilePage ? imageUrl : '/assets/logo/seedit.png';
+  const logoSrc = isSubplebbitPage ? suggested?.avatarUrl : isProfilePage ? imageUrl : 'assets/logo/seedit.png';
   const logoIsAvatar = (isSubplebbitPage && suggested?.avatarUrl) || (isProfilePage && imageUrl);
   const logoLink = isSubplebbitPage ? `/p/${params.subplebbitAddress}` : isProfilePage ? '/profile' : '/';
 
@@ -286,7 +286,7 @@ const Header = () => {
               <img className={`${logoIsAvatar ? styles.avatar : styles.logo}`} src={logoSrc} alt='logo' />
             )}
             {!isSubplebbitPage && !isProfilePage && !isAuthorPage && (
-              <img src={`/assets/logo/seedit-text-${theme === 'dark' ? 'dark' : 'light'}.svg`} className={styles.logoText} alt='logo' />
+              <img src={`assets/logo/seedit-text-${theme === 'dark' ? 'dark' : 'light'}.svg`} className={styles.logoText} alt='logo' />
             )}
           </Link>
         </div>
