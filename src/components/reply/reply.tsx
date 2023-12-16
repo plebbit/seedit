@@ -158,8 +158,8 @@ const Reply = ({ depth = 0, isSingle, isNotification = false, reply = {} }: Repl
 
   const stateLabel = (
     <span className={styles.stateLabel}>
-      {stateString === 'Failed' && <FailedLabel />}
-      {cid === undefined && stateString !== 'Failed' && <PendingLabel />}
+      {state === 'failed' && <FailedLabel />}
+      {cid === undefined && state !== 'failed' && <PendingLabel />}
     </span>
   );
 
