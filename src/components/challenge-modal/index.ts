@@ -1,1 +1,1 @@
-export {default} from './challenge-modal';
+export { default } from './challenge-modal';

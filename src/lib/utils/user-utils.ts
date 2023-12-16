@@ -1,4 +1,4 @@
-import { Role, Subplebbit, Comment } from "@plebbit/plebbit-react-hooks";
+import { Role, Subplebbit, Comment } from '@plebbit/plebbit-react-hooks';
 
 type RolesCollection = Record<string, Role>;
 
@@ -7,7 +7,7 @@ export const findSubplebbitCreator = (roles: RolesCollection | undefined): strin
     return 'anonymous';
   }
 
-  const owner = Object.keys(roles).find(key => roles[key].role === 'owner');
+  const owner = Object.keys(roles).find((key) => roles[key].role === 'owner');
   if (owner) {
     return owner;
   }
@@ -22,7 +22,7 @@ export const findAuthorSubplebbits = (authorAddress: string | undefined, subpleb
     return [];
   }
 
-  subplebbits.forEach(subplebbit => {
+  subplebbits.forEach((subplebbit) => {
     if (subplebbit && subplebbit.roles?.[authorAddress]) {
       authorSubplebbits.push(subplebbit.address);
     }
@@ -40,7 +40,7 @@ export const estimateAuthorKarma = (accountComments: (Comment | undefined)[]): S
   let postScore = 0;
   let replyScore = 0;
 
-  accountComments.forEach(comment => {
+  accountComments.forEach((comment) => {
     if (comment) {
       const score = comment.upvoteCount - comment.downvoteCount;
       if (comment.parentCid) {

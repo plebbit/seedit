@@ -1,1 +1,1 @@
-export {default} from './reply';
+export { default } from './reply';

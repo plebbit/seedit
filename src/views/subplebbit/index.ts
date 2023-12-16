@@ -1,1 +1,1 @@
-export {default} from './subplebbit';
+export { default } from './subplebbit';

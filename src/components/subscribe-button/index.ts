@@ -1,1 +1,1 @@
-export {default} from './subscribe-button';
+export { default } from './subscribe-button';

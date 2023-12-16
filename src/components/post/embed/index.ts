@@ -1,1 +1,1 @@
-export {default, canEmbed} from './embed'
+export { default, canEmbed } from './embed';

@@ -26,7 +26,7 @@ const Home = () => {
       setSubplebbitAddresses(defaultSubplebbitAddresses.concat(account.subscriptions));
     }
   }, [defaultSubplebbitAddresses, account?.subscriptions]);
-  
+
   const params = useParams<{ sortType?: string; timeFilterName?: string }>();
   const sortType = params?.sortType || 'hot';
   const timeFilterName = (params.timeFilterName as TimeFilterKey) || 'all';
@@ -35,9 +35,9 @@ const Home = () => {
   const { feed, hasMore, loadMore } = useFeed({
     subplebbitAddresses: subplebbitAddresses || [],
     sortType,
-    filter: timeFilter
+    filter: timeFilter,
   });
-  
+
   let loadingStateString = useFeedStateString(subplebbitAddresses) || t('loading');
 
   const loadingString = (

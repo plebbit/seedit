@@ -1,1 +1,1 @@
-export {default} from './expand-button';
+export { default } from './expand-button';

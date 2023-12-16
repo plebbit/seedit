@@ -1,1 +1,1 @@
-export {default} from './pending-post'
+export { default } from './pending-post';

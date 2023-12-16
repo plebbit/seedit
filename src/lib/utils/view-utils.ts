@@ -1,4 +1,4 @@
-import { timeFilterNames, TimeFilterKey } from "../../hooks/use-time-filter";
+import { timeFilterNames, TimeFilterKey } from '../../hooks/use-time-filter';
 
 export type ParamsType = {
   accountCommentIndex?: string;
@@ -28,35 +28,35 @@ export const getAboutLink = (pathname: string, params: ParamsType): string => {
 
 export const isAboutView = (pathname: string): boolean => {
   return pathname.endsWith('/about');
-}
+};
 
 export const isAllView = (pathname: string): boolean => {
   return pathname.startsWith('/p/all');
-}
+};
 
 export const isAuthorView = (pathname: string): boolean => {
   return pathname.startsWith('/u/');
-}
+};
 
 export const isAuthorCommentsView = (pathname: string, params: ParamsType): boolean => {
-  return pathname === (`/u/${params.authorAddress}/c/${params.commentCid}/comments`);
-}
+  return pathname === `/u/${params.authorAddress}/c/${params.commentCid}/comments`;
+};
 
 export const isAuthorSubmittedView = (pathname: string, params: ParamsType): boolean => {
-  return pathname === (`/u/${params.authorAddress}/c/${params.commentCid}/submitted`);
-}
+  return pathname === `/u/${params.authorAddress}/c/${params.commentCid}/submitted`;
+};
 
 export const isDownvotedView = (pathname: string): boolean => {
   return pathname === '/profile/downvoted';
-}
+};
 
 export const isHomeView = (pathname: string, params: ParamsType): boolean => {
-  return pathname === '/' || (sortTypes.includes(pathname) || (timeFilterNames.includes(params.timeFilterName as TimeFilterKey) && !pathname.startsWith('/p/all')));
+  return pathname === '/' || sortTypes.includes(pathname) || (timeFilterNames.includes(params.timeFilterName as TimeFilterKey) && !pathname.startsWith('/p/all'));
 };
 
 export const isInboxView = (pathname: string): boolean => {
   return pathname.startsWith('/inbox');
-}
+};
 
 export const isPendingView = (pathname: string, params: ParamsType): boolean => {
   return pathname === `/profile/${params.accountCommentIndex}`;
@@ -68,19 +68,19 @@ export const isPostView = (pathname: string, params: ParamsType): boolean => {
 
 export const isProfileView = (pathname: string): boolean => {
   return pathname.startsWith(`/profile`);
-}
+};
 
 export const isProfileCommentsView = (pathname: string): boolean => {
   return pathname.startsWith('/profile/comments');
-}
+};
 
 export const isProfileSubmittedView = (pathname: string): boolean => {
   return pathname.startsWith('/profile/submitted');
-}
+};
 
 export const isSettingsView = (pathname: string): boolean => {
   return pathname === '/settings';
-}
+};
 
 export const isSubmitView = (pathname: string): boolean => {
   return pathname === '/submit';
@@ -96,4 +96,4 @@ export const isSubplebbitSubmitView = (pathname: string, params: ParamsType): bo
 
 export const isUpvotedView = (pathname: string): boolean => {
   return pathname === '/profile/upvoted';
-}
+};

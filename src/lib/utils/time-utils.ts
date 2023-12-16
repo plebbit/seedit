@@ -1,4 +1,4 @@
-import i18next from "i18next";
+import i18next from 'i18next';
 
 export const getFormattedTimeAgo = (unixTimestamp: number): string => {
   const currentTime = Date.now() / 1000;
@@ -73,4 +73,4 @@ export const getFormattedDuration = (unixTimestamp: number): string => {
 export const getFormattedDate = (unixTimestamp: number, locale: string): string => {
   const date = new Date(unixTimestamp * 1000);
   return new Intl.DateTimeFormat(locale, { day: 'numeric', month: 'short', year: 'numeric' }).format(date);
-}
+};
