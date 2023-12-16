@@ -11,9 +11,9 @@ let releaseChangelog =
 releaseChangelog = releaseChangelog.trim().replace(/\n\n+/g, '\n\n')
 
 const releaseBody = `Progressive web app mirrors:
-- https://plebones.eth.limo
-- https://plebones.eth.link
-- https://cloudflare-ipfs.com/ipns/plebones.eth (insecure, no subdomain isolation)
+- https://seedit.eth.limo
+- https://seedit.eth.link
+- https://cloudflare-ipfs.com/ipns/seedit.eth (insecure, no subdomain isolation)
 
 CLI client:
 - https://github.com/plebbit/plebbit-cli/releases/latest

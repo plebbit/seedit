@@ -52,6 +52,10 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: 16
+      # install missing dep for sqlite3
+      - run: python3 -m ensurepip
+      - run: pip install setuptools
+      
       - run: yarn install --frozen-lockfile
       # make sure the ipfs executable is executable
       - run: node electron/download-ipfs && sudo chmod +x bin/mac/ipfs
