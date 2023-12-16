@@ -129,7 +129,7 @@ interface ReplyProps {
 }
 
 const Reply = ({ depth = 0, isSingle, isNotification = false, reply = {} }: ReplyProps) => {
-  const { author, cid, content, downvoteCount, flair, link, linkHeight, linkWidth, markedAsRead, removed, spoiler, subplebbitAddress, timestamp, upvoteCount } =
+  const { author, cid, content, downvoteCount, flair, link, linkHeight, linkWidth, markedAsRead, removed, spoiler, state,  subplebbitAddress, timestamp, upvoteCount } =
     reply || {};
   const subplebbit = useSubplebbit({ subplebbitAddress });
 
@@ -197,7 +197,7 @@ const Reply = ({ depth = 0, isSingle, isNotification = false, reply = {} }: Repl
                 <Flair flair={flair} />
               </>
             )}
-            {loadingString}
+            {state === 'pending' && loadingString}
           </p>
           {!collapsed && (
             <div className={styles.usertext}>
