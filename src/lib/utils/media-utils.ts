@@ -1,6 +1,6 @@
-import { Comment } from "@plebbit/plebbit-react-hooks";
+import { Comment } from '@plebbit/plebbit-react-hooks';
 import extName from 'ext-name';
-import { canEmbed } from "../../components/post/embed";
+import { canEmbed } from '../../components/post/embed';
 import memoize from 'memoizee';
 
 export interface CommentMediaInfo {

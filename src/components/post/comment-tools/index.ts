@@ -1,1 +1,1 @@
-export {default} from './comment-tools';
+export { default } from './comment-tools';

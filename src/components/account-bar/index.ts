@@ -1,1 +1,1 @@
-export {default} from './account-bar';
+export { default } from './account-bar';

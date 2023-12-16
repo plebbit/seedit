@@ -1,1 +1,1 @@
-export {default} from './reply-form';
+export { default } from './reply-form';

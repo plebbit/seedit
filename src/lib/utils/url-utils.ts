@@ -23,4 +23,4 @@ export const getShareLink = (subplebbitAddress: string, cid: string) => {
   } else {
     alert('Your browser does not support clipboard API');
   }
-}
+};

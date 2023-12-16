@@ -1,1 +1,1 @@
-export {default} from './all'
+export { default } from './all';

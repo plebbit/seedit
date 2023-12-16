@@ -1,1 +1,1 @@
-export {default} from './language-settings'
+export { default } from './language-settings';

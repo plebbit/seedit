@@ -50,7 +50,7 @@
     "electron:before": "yarn electron:before:download-ipfs && yarn electron:before:delete-data",
     "electron:before:download-ipfs": "node electron/download-ipfs",
     "electron:before:delete-data": "rimraf .plebbit",
-    "prettier": "prettier src/**/*.{js,ts,tsx} --write",
+    "prettier": "prettier {src,electron}/**/*.{js,ts,tsx} --write",
     "changelog": "conventional-changelog --preset angular --infile CHANGELOG.md --same-file --release-count 0"
   },
   "eslintConfig": {
@@ -82,7 +82,9 @@
     "electron": "19.1.8",
     "electron-builder": "23.0.9",
     "cz-conventional-changelog": "3.3.0",
-    "wait-on": "7.0.1"
+    "wait-on": "7.0.1",
+    "husky": "4.3.8",
+    "lint-staged": "12.3.8"
   },
   "main": "electron/main.js",
   "build": {
@@ -119,6 +121,16 @@
     "linux": {
       "target": "AppImage",
       "category": "Network"
+    }
+  },
+  "lint-staged": {
+    "{src,electron}/**/*.{js,ts,tsx}": [
+      "prettier --write"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
     }
   }
 }

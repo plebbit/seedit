@@ -9,7 +9,11 @@ const AccountSettings = () => {
   const [text, setText] = useState('');
   const [switchToLastAccount, setSwitchToLastAccount] = useState(false);
 
-  const accountJson = useMemo(() => stringify({ account: { ...account, plebbit: undefined, karma: undefined, signer: undefined, plebbitReactOptions: undefined, unreadNotificationCount: undefined } }), [account]);
+  const accountJson = useMemo(
+    () =>
+      stringify({ account: { ...account, plebbit: undefined, karma: undefined, signer: undefined, plebbitReactOptions: undefined, unreadNotificationCount: undefined } }),
+    [account],
+  );
 
   const accountsOptions = accounts.map((account) => (
     <option key={account?.id} value={account?.name}>

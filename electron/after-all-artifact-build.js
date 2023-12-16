@@ -11,10 +11,7 @@ const addPortableToPortableExecutableFileName = () => {
   for (const file of files) {
     if (file.endsWith('.exe') && !file.match('Setup')) {
       const filePath = path.resolve(distFolderPath, file);
-      const renamedFilePath = path.resolve(
-        distFolderPath,
-        file.replace('seedit', 'seedit Portable')
-      );
+      const renamedFilePath = path.resolve(distFolderPath, file.replace('seedit', 'seedit Portable'));
       fs.moveSync(filePath, renamedFilePath);
     }
   }

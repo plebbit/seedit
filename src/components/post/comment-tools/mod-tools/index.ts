@@ -1,1 +1,1 @@
-export {default} from './mod-tools';
+export { default } from './mod-tools';

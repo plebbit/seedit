@@ -1,1 +1,1 @@
-export {default} from './loading-ellipsis'
+export { default } from './loading-ellipsis';

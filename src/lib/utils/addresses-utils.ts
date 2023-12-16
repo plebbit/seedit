@@ -44,7 +44,7 @@ export const useDefaultAndSubscriptionsSubplebbits = (): SubplebbitWithDisplay[]
     };
 
     // Add default subplebbits
-    defaultSubplebbits.forEach(subplebbit => {
+    defaultSubplebbits.forEach((subplebbit) => {
       if (subplebbit.address) {
         addSubplebbit(subplebbit);
       }

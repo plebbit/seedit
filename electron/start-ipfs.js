@@ -13,12 +13,7 @@ const spawnAsync = (...args) =>
     const spawedProcess = spawn(...args);
     spawedProcess.on('exit', (exitCode, signal) => {
       if (exitCode === 0) resolve();
-      else
-        reject(
-          Error(
-            `spawnAsync process '${spawedProcess.pid}' exited with code '${exitCode}' signal '${signal}'`
-          )
-        );
+      else reject(Error(`spawnAsync process '${spawedProcess.pid}' exited with code '${exitCode}' signal '${signal}'`));
     });
     spawedProcess.stderr.on('data', (data) => console.error(data.toString()));
     spawedProcess.stdin.on('data', (data) => console.log(data.toString()));
@@ -59,7 +54,7 @@ const startIpfs = async () => {
   } catch (e) {}
 
   // dont use 8080 port because it's too common
-  await spawnAsync(ipfsPath, ['config', '--json', 'Addresses.Gateway', "null"], {
+  await spawnAsync(ipfsPath, ['config', '--json', 'Addresses.Gateway', 'null'], {
     env,
     hideWindows: true,
   });
@@ -73,11 +68,7 @@ const startIpfs = async () => {
   await spawnAsync(ipfsPath, ['config', 'Addresses.API', apiAddress], { env, hideWindows: true });
 
   await new Promise((resolve, reject) => {
-    const ipfsProcess = spawn(
-      ipfsPath,
-      ['daemon', '--migrate', '--enable-pubsub-experiment', '--enable-namesys-pubsub'],
-      { env, hideWindows: true }
-    );
+    const ipfsProcess = spawn(ipfsPath, ['daemon', '--migrate', '--enable-pubsub-experiment', '--enable-namesys-pubsub'], { env, hideWindows: true });
     console.log(`ipfs daemon process started with pid ${ipfsProcess.pid}`);
     let lastError;
     ipfsProcess.stderr.on('data', (data) => {

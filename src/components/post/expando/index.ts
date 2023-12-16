@@ -1,1 +1,1 @@
-export {default} from './expando';
+export { default } from './expando';
