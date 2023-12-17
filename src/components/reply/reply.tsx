@@ -98,7 +98,7 @@ const ReplyMedia = ({ commentMediaInfo, content, expanded, hasThumbnail, link, l
 };
 
 const ParentLink = ({ reply }: { reply: Comment }) => {
-  const parent = useComment({ commentCid: reply.parentCid });
+  const parent = useComment({ commentCid: reply.postCid });
   const { author, cid, content, title, subplebbitAddress } = parent || {};
   const { t } = useTranslation();
   const postTitle = (title?.length > 300 ? title?.slice(0, 300) + '...' : title) || (content?.length > 300 ? content?.slice(0, 300) + '...' : content);
@@ -222,6 +222,8 @@ const Reply = ({ depth = 0, isSingle, isNotification = false, reply = {} }: Repl
             <CommentTools
               cid={reply.cid}
               isReply={true}
+              isSingleReply={isSingle}
+              parentCid={reply?.postCid}
               replyCount={replies.length}
               spoiler={spoiler}
               subplebbitAddress={reply.subplebbitAddress}
