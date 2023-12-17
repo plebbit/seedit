@@ -11,8 +11,10 @@ import ExpandButton from './expand-button';
 import Expando from './expando';
 import Flair from './flair';
 import CommentTools from './comment-tools';
+import LoadingEllipsis from '../loading-ellipsis';
 import Thumbnail from './thumbnail';
 import useDownvote from '../../hooks/use-downvote';
+import useStateString from '../../hooks/use-state-string';
 import useUpvote from '../../hooks/use-upvote';
 
 interface PostAuthorProps {
@@ -66,6 +68,8 @@ const Post = ({ post = {}, index }: PostProps) => {
   const { t } = useTranslation();
   const params = useParams();
   const location = useLocation();
+  const stateString = useStateString(post);
+  const loadingString = stateString && <span className={styles.stateString}>{stateString !== 'Failed' ? <LoadingEllipsis string={stateString} /> : ''}</span>;
 
   const authorRole = subplebbit?.roles?.[post.author.address]?.role;
 
@@ -171,6 +175,7 @@ const Post = ({ post = {}, index }: PostProps) => {
               )}
               {pinned && <span className={styles.announcement}> - {t('announcement')}</span>}
             </p>
+            {state === 'pending' && <p className={styles.pending}>{loadingString}</p>}
             <CommentTools cid={cid} failed={state === 'failed'} replyCount={replyCount} subplebbitAddress={subplebbitAddress} />
           </div>
         </div>
