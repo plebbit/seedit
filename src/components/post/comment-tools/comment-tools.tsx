@@ -121,7 +121,7 @@ const CommentToolsLabel = ({ cid, failed, isReply, spoiler }: CommentToolsProps)
   );
 };
 
-const CommentTools = ({ cid = '', failed, hasLabel = false, isReply, isSingleReply, parentCid, replyCount, spoiler, subplebbitAddress, showReplyForm }: CommentToolsProps) => {
+const CommentTools = ({ cid, failed, hasLabel = false, isReply, isSingleReply, parentCid, replyCount, spoiler, subplebbitAddress, showReplyForm }: CommentToolsProps) => {
   const account = useAccount();
   const authorRole = useSubplebbit({ subplebbitAddress })?.roles?.[account?.author?.address]?.role;
   const isMod = authorRole === 'admin' || authorRole === 'owner' || authorRole === 'moderator';
