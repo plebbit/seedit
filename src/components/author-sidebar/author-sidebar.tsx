@@ -71,12 +71,13 @@ const AuthorSidebar = () => {
 
   const address = isAuthorPage ? params?.authorAddress : isProfilePage ? profileAccount?.author?.shortAddress : '';
   const karma = isAuthorPage ? estimatedAuthorKarma : isProfilePage ? profileAccount?.karma : '';
-  const { postScore, replyScore } = karma || {};
+  const postScore = isNaN(karma?.postScore) ? 0 : karma?.postScore;
+  const replyScore = isNaN(karma?.replyScore) ? 0 : karma?.replyScore;
 
   const oldestCommentTimestamp = isAuthorPage ? authorOldestCommentTimestamp : isProfilePage ? profileOldestAccountTimestamp : Date.now();
   const displayName = isAuthorPage ? authorAccount?.author?.displayName : isProfilePage ? profileAccount?.author?.displayName : '';
 
-  const showUsernameNotice = () => {
+  const confirmNavigateToSettings = () => {
     if (window.confirm('Go to the settings to set a display name.')) {
       navigate('/settings');
     } else {
@@ -84,7 +85,7 @@ const AuthorSidebar = () => {
     }
   };
 
-  const blockConfirm = () => {
+  const confirmBlock = () => {
     if (window.confirm(`Are you sure you want to ${blocked ? 'unblock' : 'block'} this user?`)) {
       if (blocked) {
         unblock();
@@ -99,7 +100,7 @@ const AuthorSidebar = () => {
       <div className={styles.titleBox}>
         <div className={styles.title}>
           {address}
-          {isProfilePage && !displayName && <button onClick={showUsernameNotice}>edit</button>}
+          {isProfilePage && !displayName && <button onClick={confirmNavigateToSettings}>edit</button>}
         </div>
         {displayName && <div className={styles.displayName}>{displayName}</div>}
         <div className={styles.friends}>
@@ -119,7 +120,7 @@ const AuthorSidebar = () => {
         ) : null}
         <div className={styles.bottom}>
           {isAuthorPage && (
-            <span className={styles.blockUser} onClick={blockConfirm}>
+            <span className={styles.blockUser} onClick={confirmBlock}>
               {blocked ? 'Unblock user' : 'Block user'}
             </span>
           )}

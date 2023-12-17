@@ -98,7 +98,7 @@ const ReplyMedia = ({ commentMediaInfo, content, expanded, hasThumbnail, link, l
 };
 
 const ParentLink = ({ reply }: { reply: Comment }) => {
-  const parent = useComment({ commentCid: reply.parentCid });
+  const parent = useComment({ commentCid: reply.postCid });
   const { author, cid, content, title, subplebbitAddress } = parent || {};
   const { t } = useTranslation();
   const postTitle = (title?.length > 300 ? title?.slice(0, 300) + '...' : title) || (content?.length > 300 ? content?.slice(0, 300) + '...' : content);
@@ -129,7 +129,7 @@ interface ReplyProps {
 }
 
 const Reply = ({ depth = 0, isSingle, isNotification = false, reply = {} }: ReplyProps) => {
-  const { author, cid, content, downvoteCount, flair, link, linkHeight, linkWidth, markedAsRead, removed, spoiler, subplebbitAddress, timestamp, upvoteCount } =
+  const { author, cid, content, downvoteCount, flair, link, linkHeight, linkWidth, markedAsRead, removed, spoiler, state,  subplebbitAddress, timestamp, upvoteCount } =
     reply || {};
   const subplebbit = useSubplebbit({ subplebbitAddress });
 
@@ -158,8 +158,8 @@ const Reply = ({ depth = 0, isSingle, isNotification = false, reply = {} }: Repl
 
   const stateLabel = (
     <span className={styles.stateLabel}>
-      {stateString === 'Failed' && <FailedLabel />}
-      {cid === undefined && stateString !== 'Failed' && <PendingLabel />}
+      {state === 'failed' && <FailedLabel />}
+      {cid === undefined && state !== 'failed' && <PendingLabel />}
     </span>
   );
 
@@ -197,7 +197,7 @@ const Reply = ({ depth = 0, isSingle, isNotification = false, reply = {} }: Repl
                 <Flair flair={flair} />
               </>
             )}
-            {loadingString}
+            {state === 'pending' && loadingString}
           </p>
           {!collapsed && (
             <div className={styles.usertext}>
@@ -222,6 +222,8 @@ const Reply = ({ depth = 0, isSingle, isNotification = false, reply = {} }: Repl
             <CommentTools
               cid={reply.cid}
               isReply={true}
+              isSingleReply={isSingle}
+              parentCid={reply?.postCid}
               replyCount={replies.length}
               spoiler={spoiler}
               subplebbitAddress={reply.subplebbitAddress}

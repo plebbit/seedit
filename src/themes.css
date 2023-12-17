@@ -6,6 +6,7 @@
   --gray-contrast: #888;
   --gray-overlay: #F7F7F7;
   --gray-border: #ddd;
+  --gray-light: #CCCCCA;
   --filter80: brightness(100%);
   --filter90: brightness(100%);
   --background: white;
@@ -51,6 +52,7 @@
   --gray-contrast: #c7c7c7;
   --gray-overlay: #1f1f1f;
   --gray-border: #3e3e3e;
+  --gray-light: #3e3e3e9d;
   --filter80: brightness(80%);
   --filter90: brightness(90%);
   --background: #0f0f0f;

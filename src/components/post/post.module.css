@@ -1,4 +1,4 @@
-.container {
+.content {
   display: flex;
   flex-direction: column;
   padding-bottom: 8px;
@@ -184,4 +184,31 @@
 
 .displayName {
   color: var(--text-primary);
+}
+
+.hidden {
+  display: none;
+}
+
+.visible {
+  display: block;
+}
+
+.hiddenPost {
+  overflow: hidden;
+  border: 1px dashed var(--gray-light);
+  padding: 12px 16px;
+}
+
+.hiddenPostText {
+  font-size: 14px;
+  color: var(--text)
+}
+
+.undoHiddenPost {
+  display: inline-block;
+  color: #888;
+  font-weight: bold;
+  font-size: 10px;
+  cursor: pointer;
 }
