@@ -36,7 +36,7 @@ const ReplyAuthor = ({ address, authorRole, cid, displayName, shortAuthorAddress
 
   return (
     <>
-      {displayName && <span className={`${styles.author} ${moderatorClass}`}>{displayName}</span>}
+      {displayName && <span className={`${styles.author} ${moderatorClass}`}>{displayName} </span>}
       <Link to={`/u/${address}/c/${cid}`} className={`${styles.author} ${moderatorClass}`}>
         {displayName ? `u/${shortAuthorAddress}` : shortAuthorAddress}
       </Link>
@@ -46,9 +46,9 @@ const ReplyAuthor = ({ address, authorRole, cid, displayName, shortAuthorAddress
           <span className={moderatorClass} title={authorRole}>
             {authorRoleInitial}
           </span>
-          ]{' '}
+          ]
         </span>
-      )}
+      )}{' '}
     </>
   );
 };
