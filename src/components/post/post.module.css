@@ -196,7 +196,6 @@
 
 .hiddenPost {
   overflow: hidden;
-  margin-bottom: 8px;
   border: 1px dashed var(--gray-light);
   padding: 12px 16px;
 }
