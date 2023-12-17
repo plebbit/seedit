@@ -1,14 +1,16 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { useAccount, useComment, useSubplebbit } from '@plebbit/plebbit-react-hooks';
-import styles from './comment-tools.module.css';
-import { FailedLabel, PendingLabel, SpoilerLabel } from '../label';
+import { Author, useAccount, useComment, useSubplebbit } from '@plebbit/plebbit-react-hooks';
 import { getShareLink } from '../../../lib/utils/url-utils';
+import styles from './comment-tools.module.css';
+import HideTools from './hide-tools';
+import { FailedLabel, PendingLabel, SpoilerLabel } from '../label';
 import ModTools from './mod-tools';
 
 interface CommentToolsProps {
-  cid?: string;
+  author?: Author;
+  cid: string;
   failed?: boolean;
   hasLabel?: boolean;
   isReply?: boolean;
@@ -20,7 +22,7 @@ interface CommentToolsProps {
   showReplyForm?: () => void;
 }
 
-const PostTools = ({ cid = '', hasLabel, subplebbitAddress, replyCount = 0 }: CommentToolsProps) => {
+const PostTools = ({ author, cid, hasLabel, subplebbitAddress, replyCount = 0 }: CommentToolsProps) => {
   const { t } = useTranslation();
   const validReplyCount = isNaN(replyCount) ? 0 : replyCount;
   const commentCount = validReplyCount === 0 ? t('post_no_comments') : `${validReplyCount} ${validReplyCount === 1 ? t('post_comment') : t('post_comments')}`;
@@ -50,9 +52,7 @@ const PostTools = ({ cid = '', hasLabel, subplebbitAddress, replyCount = 0 }: Co
       <li className={styles.button}>
         <span>{t('post_save')}</span>
       </li>
-      <li className={styles.button}>
-        <span>{t('post_hide')}</span>
-      </li>
+      <HideTools author={author} cid={cid} subplebbitAddress={subplebbitAddress} />
       <li className={styles.button}>
         <span>{t('post_report')}</span>
       </li>
@@ -121,7 +121,7 @@ const CommentToolsLabel = ({ cid, failed, isReply, spoiler }: CommentToolsProps)
   );
 };
 
-const CommentTools = ({ cid, failed, hasLabel = false, isReply, isSingleReply, parentCid, replyCount, spoiler, subplebbitAddress, showReplyForm }: CommentToolsProps) => {
+const CommentTools = ({ author, cid, failed, hasLabel = false, isReply, isSingleReply, parentCid, replyCount, spoiler, subplebbitAddress, showReplyForm }: CommentToolsProps) => {
   const account = useAccount();
   const authorRole = useSubplebbit({ subplebbitAddress })?.roles?.[account?.author?.address]?.role;
   const isMod = authorRole === 'admin' || authorRole === 'owner' || authorRole === 'moderator';
@@ -132,12 +132,12 @@ const CommentTools = ({ cid, failed, hasLabel = false, isReply, isSingleReply, p
       {hasLabel && <CommentToolsLabel cid={cid} failed={failed} isReply={isReply} spoiler={spoiler} subplebbitAddress={subplebbitAddress} />}
       {isReply ? (
         isSingleReply ? (
-          <SingleReplyTools hasLabel={hasLabel} parentCid={parentCid} subplebbitAddress={subplebbitAddress} />
+          <SingleReplyTools cid={cid} hasLabel={hasLabel} parentCid={parentCid} subplebbitAddress={subplebbitAddress} />
         ) : (
           <ReplyTools cid={cid} hasLabel={hasLabel} showReplyForm={showReplyForm} subplebbitAddress={subplebbitAddress} />
         )
       ) : (
-        <PostTools cid={cid} hasLabel={hasLabel} subplebbitAddress={subplebbitAddress} replyCount={replyCount} />
+        <PostTools author={author} cid={cid} hasLabel={hasLabel} subplebbitAddress={subplebbitAddress} replyCount={replyCount} />
       )}
       {isMod && <ModTools cid={cid} />}
     </ul>

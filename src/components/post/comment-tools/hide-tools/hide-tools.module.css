@@ -13,16 +13,15 @@
   color: var(--text-info);
   font-weight: bold;
   border: 1px solid var(--border-text);
+  outline: none;
 }
 
-.modal input[type="checkbox"] {
+.modal input {
   margin-right: 3px;
-  outline: none;
 }
 
 .menuItem {
   padding-bottom: 5px;
-  text-transform: lowercase;
 }
 
 .menuReason {
@@ -37,4 +36,8 @@
 
 .menuItem button {
   text-transform: capitalize;
+}
+
+.menuItem {
+  cursor: pointer;
 }

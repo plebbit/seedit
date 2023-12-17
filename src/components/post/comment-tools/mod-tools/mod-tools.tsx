@@ -9,7 +9,7 @@ import challengesStore from '../../../../hooks/use-challenges';
 const { addChallenge } = challengesStore.getState();
 
 type ModToolsProps = {
-  cid: string | undefined;
+  cid: string;
 };
 
 const ModTools = ({ cid }: ModToolsProps) => {
