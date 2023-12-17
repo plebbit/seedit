@@ -61,20 +61,16 @@ const Home = () => {
 
   const Footer = () => {
     let footerContent;
-  
+
     if (feed.length === 0) {
-      footerContent = "no posts";
+      footerContent = 'no posts';
     }
 
     if (hasMore || (subplebbitAddresses && subplebbitAddresses.length === 0)) {
       footerContent = loadingString;
     }
-  
-    return (
-      <div className={styles.footer}>
-        {footerContent}
-      </div>
-    );
+
+    return <div className={styles.footer}>{footerContent}</div>;
   };
 
   const virtuosoRef = useRef<VirtuosoHandle | null>(null);

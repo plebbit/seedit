@@ -159,12 +159,13 @@ h1 {
   list-style: none;
 }
 
-.dropdownItem a {
+.dropdownLink {
   text-decoration: none;
   display: block;
   padding: 5px;
   cursor: pointer;
   color: var(--text);
+  overflow: hidden;
 }
 
 .dropdownItem:hover {
@@ -172,6 +173,6 @@ h1 {
   color: var(--background);
 }
 
-.dropdownItem a:hover {
+.dropdownLink:hover {
   color: var(--background);
 }

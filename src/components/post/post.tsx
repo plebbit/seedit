@@ -91,13 +91,15 @@ const Post = ({ post = {}, index }: PostProps) => {
 
   const linkClass = `${isInPostView ? (link ? styles.externalLink : styles.internalLink) : styles.link} ${pinned ? styles.pinnedLink : ''}`;
 
-  const { blocked, unblock } = useBlock({ address: cid })
+  const { blocked, unblock } = useBlock({ address: cid });
 
   return (
     <div className={styles.content} key={index}>
       <div className={`${styles.hiddenPost} ${blocked ? styles.visible : styles.hidden}`}>
         <div className={styles.hiddenPostText}>Post hidden</div>
-        <div className={styles.undoHiddenPost} onClick={unblock}>undo</div>
+        <div className={styles.undoHiddenPost} onClick={unblock}>
+          undo
+        </div>
       </div>
       <div className={`${styles.container} ${blocked ? styles.hidden : styles.visible}`}>
         <div className={styles.row}>
