@@ -63,13 +63,6 @@ const Author = () => {
     }
   }, [authorAddress, lastCommentCid, commentCid, navigate]);
 
-  // redirect to profile if author is account
-  useEffect(() => {
-    if (authorAddress && account?.author?.address === authorAddress) {
-      navigate(`/profile`, { replace: true });
-    }
-  }, [authorAddress, account, navigate]);
-
   return (
     <div className={styles.content}>
       <div className={isMobile ? styles.sidebarMobile : styles.sidebarDesktop}>
