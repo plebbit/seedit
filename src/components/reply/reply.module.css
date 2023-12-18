@@ -80,12 +80,12 @@
 
 .author {
   font-weight: bold;
-  margin-right: 0.5em;
   color: var(--text-primary);
   text-decoration: none;
 }
 
 .score {
+  margin-left: 0.5em;
   color: var(--text-info);
   font-size: x-small;  
 }

@@ -143,17 +143,18 @@ const Submit = () => {
         .slice(0, 10)
         .map((subplebbitAddress) => (
           <li key={subplebbitAddress} className={styles.dropdownItem}>
-            <Link
-              to={`/p/${subplebbitAddress}`}
+            <span
               className={styles.dropdownLink}
               onClick={() => {
                 if (subplebbitAddressRef.current) {
                   subplebbitAddressRef.current.value = subplebbitAddress;
+                  setSelectedSubplebbit(subplebbitAddress);
                 }
+                setInputAddress('');
               }}
             >
               {subplebbitAddress}
-            </Link>
+            </span>
           </li>
         ))}
     </ul>

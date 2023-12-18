@@ -36,17 +36,17 @@ const ReplyAuthor = ({ address, authorRole, cid, displayName, shortAuthorAddress
 
   return (
     <>
-      {displayName && <span className={`${styles.author} ${moderatorClass}`}>{displayName}</span>}
+      {displayName && <Link to={`/u/${address}/c/${cid}`} className={`${styles.author} ${moderatorClass}`}>{displayName} </Link>}
       <Link to={`/u/${address}/c/${cid}`} className={`${styles.author} ${moderatorClass}`}>
         {displayName ? `u/${shortAuthorAddress}` : shortAuthorAddress}
       </Link>
       {authorRole && (
         <span className={styles.moderatorBrackets}>
-          [
+          {' '}[
           <span className={moderatorClass} title={authorRole}>
             {authorRoleInitial}
           </span>
-          ]{' '}
+          ]
         </span>
       )}
     </>
@@ -129,7 +129,7 @@ interface ReplyProps {
 }
 
 const Reply = ({ depth = 0, isSingle, isNotification = false, reply = {} }: ReplyProps) => {
-  const { author, cid, content, downvoteCount, flair, link, linkHeight, linkWidth, markedAsRead, removed, spoiler, state,  subplebbitAddress, timestamp, upvoteCount } =
+  const { author, cid, content, downvoteCount, flair, link, linkHeight, linkWidth, markedAsRead, removed, spoiler, state, subplebbitAddress, timestamp, upvoteCount } =
     reply || {};
   const subplebbit = useSubplebbit({ subplebbitAddress });
 

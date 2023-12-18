@@ -18,6 +18,7 @@ import useStateString from '../../hooks/use-state-string';
 import useUpvote from '../../hooks/use-upvote';
 
 interface PostAuthorProps {
+  authorAddress: string;
   authorRole: string;
   cid: string;
   displayName: string;
@@ -26,7 +27,7 @@ interface PostAuthorProps {
   authorAddressChanged: boolean;
 }
 
-const PostAuthor = ({ authorRole, cid, displayName, shortAddress, shortAuthorAddress, authorAddressChanged }: PostAuthorProps) => {
+const PostAuthor = ({ authorAddress, authorRole, cid, displayName, shortAddress, shortAuthorAddress, authorAddressChanged }: PostAuthorProps) => {
   const isAuthorOwner = authorRole === 'owner';
   const isAuthorAdmin = authorRole === 'admin';
   const isAuthorModerator = authorRole === 'moderator';
@@ -35,8 +36,8 @@ const PostAuthor = ({ authorRole, cid, displayName, shortAddress, shortAuthorAdd
 
   return (
     <>
-      {displayName && <span className={`${styles.displayName} ${moderatorClass}`}>{displayName} </span>}
-      <Link className={`${styles.authorAddressWrapper} ${moderatorClass}`} to={`/u/${shortAuthorAddress}/c/${cid}`}>
+      {displayName && <Link to={`/u/${authorAddress}/c/${cid}`} className={`${styles.displayName} ${moderatorClass}`}>{displayName} </Link>}
+      <Link className={`${styles.authorAddressWrapper} ${moderatorClass}`} to={`/u/${authorAddress}/c/${cid}`}>
         <span className={styles.authorAddressHidden}>u/{shortAddress || shortAuthorAddress}</span>
         <span className={`${styles.authorAddressVisible} ${authorAddressChanged && styles.authorAddressChanged}`}>u/{shortAuthorAddress}</span>
       </Link>
@@ -91,13 +92,15 @@ const Post = ({ post = {}, index }: PostProps) => {
 
   const linkClass = `${isInPostView ? (link ? styles.externalLink : styles.internalLink) : styles.link} ${pinned ? styles.pinnedLink : ''}`;
 
-  const { blocked, unblock } = useBlock({ address: cid })
+  const { blocked, unblock } = useBlock({ address: cid });
 
   return (
     <div className={styles.content} key={index}>
       <div className={`${styles.hiddenPost} ${blocked ? styles.visible : styles.hidden}`}>
         <div className={styles.hiddenPostText}>Post hidden</div>
-        <div className={styles.undoHiddenPost} onClick={unblock}>undo</div>
+        <div className={styles.undoHiddenPost} onClick={unblock}>
+          undo
+        </div>
       </div>
       <div className={`${styles.container} ${blocked ? styles.hidden : styles.visible}`}>
         <div className={styles.row}>
@@ -164,6 +167,7 @@ const Post = ({ post = {}, index }: PostProps) => {
               <p className={styles.tagline}>
                 {t('post_submitted')} {getFormattedTimeAgo(timestamp)} {t('post_by')}{' '}
                 <PostAuthor
+                  authorAddress={author.address}
                   authorRole={authorRole}
                   cid={cid}
                   displayName={displayName}

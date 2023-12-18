@@ -90,10 +90,6 @@ const Sidebar = ({ address, cid, createdAt, description, downvoteCount = 0, role
   const creatorAddress = subplebbitCreator === 'anonymous' ? 'anonymous' : `${getShortAddress(subplebbitCreator)}`;
   const submitRoute = isHome || isAll ? '/submit' : `/p/${address}/submit`;
 
-  const alertAnonymousCreator = () => {
-    alert('This community has no owner role set.');
-  };
-
   const { blocked, unblock, block } = useBlock({ address });
 
   const blockConfirm = () => {
@@ -150,7 +146,6 @@ const Sidebar = ({ address, cid, createdAt, description, downvoteCount = 0, role
           <div className={styles.bottom}>
             {t('created_by', { creatorAddress: '' })}
             <Link to={`/u/${creatorAddress}`} onClick={(e) => e.preventDefault()}>{`u/${creatorAddress}`}</Link>
-            {creatorAddress === 'anonymous' && <button onClick={alertAnonymousCreator}>?</button>}
             {createdAt && <span className={styles.age}> {t('community_for', { date: getFormattedDuration(createdAt) })}</span>}
             <div className={styles.blockSub} onClick={blockConfirm}>
               {blocked ? 'Unblock community' : 'Block community'}

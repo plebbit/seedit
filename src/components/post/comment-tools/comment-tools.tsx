@@ -63,12 +63,12 @@ const PostTools = ({ author, cid, hasLabel, subplebbitAddress, replyCount = 0 }:
   );
 };
 
-const ReplyTools = ({ cid, hasLabel, showReplyForm }: CommentToolsProps) => {
+const ReplyTools = ({ cid, hasLabel, showReplyForm, subplebbitAddress }: CommentToolsProps) => {
   const { t } = useTranslation();
   return (
     <>
       <li className={`${styles.button} ${!hasLabel ? styles.firstButton : ''}`}>
-        <span>{t('reply_permalink')}</span>
+        <Link to={`/p/${subplebbitAddress}/c/${cid}`}>{t('reply_permalink')}</Link>
       </li>
       <li className={styles.button}>
         <span>{t('reply_embed')}</span>
@@ -86,20 +86,20 @@ const ReplyTools = ({ cid, hasLabel, showReplyForm }: CommentToolsProps) => {
   );
 };
 
-const SingleReplyTools = ({ hasLabel, parentCid, subplebbitAddress }: CommentToolsProps) => {
+const SingleReplyTools = ({ cid, hasLabel, parentCid, subplebbitAddress }: CommentToolsProps) => {
   const { t } = useTranslation();
   const comment = useComment({ commentCid: parentCid });
 
   return (
     <>
       <li className={`${styles.button} ${!hasLabel ? styles.firstButton : ''}`}>
-        <span>{t('reply_permalink')}</span>
+        <Link to={`/p/${subplebbitAddress}/c/${cid}`}>{t('reply_permalink')}</Link>
       </li>
       <li className={styles.button}>
         <span>{t('post_save')}</span>
       </li>
       <li className={styles.button}>
-        <span>context</span>
+        <Link to={`/p/${subplebbitAddress}/c/${parentCid}`}>context</Link>
       </li>
       <li className={styles.button}>
         <Link to={`/p/${subplebbitAddress}/c/${parentCid}`}>full comments ({comment?.replyCount || 0})</Link>
@@ -109,7 +109,7 @@ const SingleReplyTools = ({ hasLabel, parentCid, subplebbitAddress }: CommentToo
       </li>
     </>
   );
-}
+};
 
 const CommentToolsLabel = ({ cid, failed, isReply, spoiler }: CommentToolsProps) => {
   return (
@@ -121,7 +121,19 @@ const CommentToolsLabel = ({ cid, failed, isReply, spoiler }: CommentToolsProps)
   );
 };
 
-const CommentTools = ({ author, cid, failed, hasLabel = false, isReply, isSingleReply, parentCid, replyCount, spoiler, subplebbitAddress, showReplyForm }: CommentToolsProps) => {
+const CommentTools = ({
+  author,
+  cid,
+  failed,
+  hasLabel = false,
+  isReply,
+  isSingleReply,
+  parentCid,
+  replyCount,
+  spoiler,
+  subplebbitAddress,
+  showReplyForm,
+}: CommentToolsProps) => {
   const account = useAccount();
   const authorRole = useSubplebbit({ subplebbitAddress })?.roles?.[account?.author?.address]?.role;
   const isMod = authorRole === 'admin' || authorRole === 'owner' || authorRole === 'moderator';
@@ -134,7 +146,7 @@ const CommentTools = ({ author, cid, failed, hasLabel = false, isReply, isSingle
         isSingleReply ? (
           <SingleReplyTools cid={cid} hasLabel={hasLabel} parentCid={parentCid} subplebbitAddress={subplebbitAddress} />
         ) : (
-          <ReplyTools cid={cid} hasLabel={hasLabel} showReplyForm={showReplyForm} subplebbitAddress={subplebbitAddress} />
+          <ReplyTools cid={cid} hasLabel={hasLabel} parentCid={parentCid} showReplyForm={showReplyForm} subplebbitAddress={subplebbitAddress} />
         )
       ) : (
         <PostTools author={author} cid={cid} hasLabel={hasLabel} subplebbitAddress={subplebbitAddress} replyCount={replyCount} />

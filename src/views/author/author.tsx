@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useRef } from 'react';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
-import { useAccount, useAuthorComments } from '@plebbit/plebbit-react-hooks';
+import { useAuthorComments } from '@plebbit/plebbit-react-hooks';
 import { StateSnapshot, Virtuoso, VirtuosoHandle } from 'react-virtuoso';
 import { isAuthorCommentsView, isAuthorSubmittedView } from '../../lib/utils/view-utils';
 import styles from './author.module.css';
@@ -8,12 +8,10 @@ import AuthorSidebar from '../../components/author-sidebar';
 import LoadingEllipsis from '../../components/loading-ellipsis';
 import Post from '../../components/post';
 import Reply from '../../components/reply/';
-import SortDropdown from '../../components/sort-dropdown';
 
 const lastVirtuosoStates: { [key: string]: StateSnapshot } = {};
 
 const Author = () => {
-  const account = useAccount();
   const location = useLocation();
   const navigate = useNavigate();
   const { authorAddress, commentCid, sortType } = useParams();
@@ -64,19 +62,11 @@ const Author = () => {
     }
   }, [authorAddress, lastCommentCid, commentCid, navigate]);
 
-  // redirect to profile if author is account
-  useEffect(() => {
-    if (authorAddress && account?.author?.address === authorAddress) {
-      navigate(`/profile`, { replace: true });
-    }
-  }, [authorAddress, account, navigate]);
-
   return (
     <div className={styles.content}>
       <div className={isMobile ? styles.sidebarMobile : styles.sidebarDesktop}>
         <AuthorSidebar />
       </div>
-      <SortDropdown />
       {authorComments?.length === 0 && !hasMore && <div className={styles.noPosts}>No posts found</div>}
       <Virtuoso
         increaseViewportBy={{ bottom: 1200, top: 600 }}

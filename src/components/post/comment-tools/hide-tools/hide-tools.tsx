@@ -9,11 +9,11 @@ type HideToolsProps = {
   author?: Author | undefined;
   cid?: string;
   subplebbitAddress?: string;
-}
+};
 
 const BlockAuthorButton = ({ author }: HideToolsProps) => {
   // const { t } = useTranslation();
-  const {blocked, unblock, block} = useBlock({address: author?.address});
+  const { blocked, unblock, block } = useBlock({ address: author?.address });
 
   return (
     <>
@@ -22,11 +22,11 @@ const BlockAuthorButton = ({ author }: HideToolsProps) => {
       </div>
     </>
   );
-}
+};
 
 const BlockSubplebbitButton = ({ subplebbitAddress }: HideToolsProps) => {
   // const { t } = useTranslation();
-  const {blocked, unblock, block} = useBlock({address: subplebbitAddress});
+  const { blocked, unblock, block } = useBlock({ address: subplebbitAddress });
 
   return (
     <>
@@ -35,11 +35,11 @@ const BlockSubplebbitButton = ({ subplebbitAddress }: HideToolsProps) => {
       </div>
     </>
   );
-}
+};
 
 const BlockCommentButton = ({ cid }: HideToolsProps) => {
   // const { t } = useTranslation();
-  const {blocked, unblock, block} = useBlock({address: cid});
+  const { blocked, unblock, block } = useBlock({ address: cid });
 
   return (
     <>
@@ -48,7 +48,7 @@ const BlockCommentButton = ({ cid }: HideToolsProps) => {
       </div>
     </>
   );
-}
+};
 
 const HideTools = ({ author, cid, subplebbitAddress }: HideToolsProps) => {
   const { t } = useTranslation();
@@ -88,6 +88,6 @@ const HideTools = ({ author, cid, subplebbitAddress }: HideToolsProps) => {
       )}
     </>
   );
-}
+};
 
 export default HideTools;

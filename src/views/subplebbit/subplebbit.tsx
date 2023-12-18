@@ -12,8 +12,6 @@ import useTimeFilter, { TimeFilterKey } from '../../hooks/use-time-filter';
 
 const lastVirtuosoStates: { [key: string]: StateSnapshot } = {};
 
-const NoPosts = () => 'no posts';
-
 const Subplebbit = () => {
   const { t } = useTranslation();
   const params = useParams();
@@ -33,13 +31,19 @@ const Subplebbit = () => {
     document.title = (title ? title : shortAddress) + ' - seedit';
   }, [title, shortAddress]);
 
-  let Footer;
-  if (feed?.length === 0) {
-    Footer = NoPosts;
-  }
-  if (hasMore || subplebbitAddresses.length === 0) {
-    Footer = () => loadingString;
-  }
+  const Footer = () => {
+    let footerContent;
+
+    if (feed.length === 0) {
+      footerContent = 'no posts';
+    }
+
+    if (hasMore || subplebbitAddresses.length === 0) {
+      footerContent = loadingString;
+    }
+
+    return <div className={styles.footer}>{footerContent}</div>;
+  };
 
   const virtuosoRef = useRef<VirtuosoHandle | null>(null);
 
