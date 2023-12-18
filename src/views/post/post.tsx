@@ -68,8 +68,8 @@ const Post = () => {
           </div>
           <div className={styles.spacer} />
           <ReplyForm cid={cid} />
-        </div>
         {loadingString && loadingString}
+        </div>
         <div className={styles.replies}>
           {replies.map((reply, index) => (
             <Reply key={`${index}${reply.cid}`} reply={reply} depth={comment.depth} />
