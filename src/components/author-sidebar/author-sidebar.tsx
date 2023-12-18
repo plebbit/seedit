@@ -128,7 +128,7 @@ const AuthorSidebar = () => {
               {blocked ? 'Unblock user' : 'Block user'}
             </span>
           )}
-          <span className={styles.age}>plebbitor for at least {getFormattedDuration(oldestCommentTimestamp)}</span>
+          <span className={styles.age}>plebbitor for {getFormattedDuration(oldestCommentTimestamp)}</span>
         </div>
       </div>
       {/* {Object.keys(accountSubplebbits).length > 0 && (
