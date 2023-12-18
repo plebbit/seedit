@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useRef } from 'react';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
-import { useAccount, useAuthorComments } from '@plebbit/plebbit-react-hooks';
+import { useAuthorComments } from '@plebbit/plebbit-react-hooks';
 import { StateSnapshot, Virtuoso, VirtuosoHandle } from 'react-virtuoso';
 import { isAuthorCommentsView, isAuthorSubmittedView } from '../../lib/utils/view-utils';
 import styles from './author.module.css';
@@ -12,7 +12,6 @@ import Reply from '../../components/reply/';
 const lastVirtuosoStates: { [key: string]: StateSnapshot } = {};
 
 const Author = () => {
-  const account = useAccount();
   const location = useLocation();
   const navigate = useNavigate();
   const { authorAddress, commentCid, sortType } = useParams();

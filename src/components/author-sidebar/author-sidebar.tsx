@@ -107,9 +107,11 @@ const AuthorSidebar = () => {
           {isProfilePage && !displayName && <button onClick={confirmNavigateToSettings}>edit</button>}
         </div>
         {displayName && <div className={styles.displayName}>{displayName}</div>}
-        <div className={styles.friends}>
-          <SubscribeButton address={address} />
-        </div>
+        {isAuthorPage && authorAddress !== profileAccount?.author?.address && (
+          <div className={styles.friends}>
+            <SubscribeButton address={address} />
+          </div>
+        )}
         {postScore ? (
           <>
             <div>
@@ -123,7 +125,7 @@ const AuthorSidebar = () => {
           </>
         ) : null}
         <div className={styles.bottom}>
-          {isAuthorPage && (
+          {isAuthorPage && authorAddress !== profileAccount?.author?.address && (
             <span className={styles.blockUser} onClick={confirmBlock}>
               {blocked ? 'Unblock user' : 'Block user'}
             </span>
