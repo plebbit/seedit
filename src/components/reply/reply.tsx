@@ -133,7 +133,7 @@ const Reply = ({ depth = 0, isSingle, isNotification = false, reply = {} }: Repl
     reply || {};
   const subplebbit = useSubplebbit({ subplebbitAddress });
 
-  const authorRole = subplebbit?.roles?.[reply.author.address]?.role;
+  const authorRole = subplebbit?.roles?.[reply.author?.address]?.role;
   const { shortAuthorAddress } = useAuthorAddress({ comment: reply });
   const replies = useReplies(reply);
   const [expanded, setExpanded] = useState(false);
@@ -187,7 +187,7 @@ const Reply = ({ depth = 0, isSingle, isNotification = false, reply = {} }: Repl
             <span className={styles.expand} onClick={() => setCollapsed(!collapsed)}>
               [{collapsed ? '+' : '–'}]
             </span>
-            <ReplyAuthor address={author.address} authorRole={authorRole} cid={cid} displayName={author.displayName} shortAuthorAddress={shortAuthorAddress} />
+            <ReplyAuthor address={author?.address} authorRole={authorRole} cid={cid} displayName={author.displayName} shortAuthorAddress={shortAuthorAddress} />
             <span className={styles.score}>{scoreString}</span> <span className={styles.time}>{getFormattedTimeAgo(timestamp)}</span>
             {collapsed && <span className={styles.children}> ({childrenString})</span>}
             {stateLabel}
