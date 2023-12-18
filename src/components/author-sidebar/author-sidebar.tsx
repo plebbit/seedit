@@ -112,18 +112,12 @@ const AuthorSidebar = () => {
             <SubscribeButton address={address} />
           </div>
         )}
-        {postScore ? (
-          <>
-            <div>
-              <span className={styles.karma}>{postScore}</span> post karma
-              {isAuthorPage && postScore ? ' (estimated)' : null}
-            </div>
-            <div>
-              <span className={styles.karma}>{replyScore}</span> comment karma
-              {isAuthorPage && replyScore ? ' (estimated)' : null}
-            </div>
-          </>
-        ) : null}
+        <div>
+          <span className={styles.karma}>{postScore}</span> post karma
+        </div>
+        <div>
+          <span className={styles.karma}>{replyScore}</span> comment karma
+        </div>
         <div className={styles.bottom}>
           {isAuthorPage && authorAddress !== profileAccount?.author?.address && (
             <span className={styles.blockUser} onClick={confirmBlock}>
