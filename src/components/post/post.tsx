@@ -72,7 +72,7 @@ const Post = ({ post = {}, index }: PostProps) => {
   const stateString = useStateString(post);
   const loadingString = stateString && <span className={styles.stateString}>{stateString !== 'Failed' ? <LoadingEllipsis string={stateString} /> : ''}</span>;
 
-  const authorRole = subplebbit?.roles?.[post.author.address]?.role;
+  const authorRole = subplebbit?.roles?.[post.author?.address]?.role;
 
   const isPost = isPostView(location.pathname, params);
   const isPending = isPendingView(location.pathname, params);
@@ -167,7 +167,7 @@ const Post = ({ post = {}, index }: PostProps) => {
               <p className={styles.tagline}>
                 {t('post_submitted')} {getFormattedTimeAgo(timestamp)} {t('post_by')}{' '}
                 <PostAuthor
-                  authorAddress={author.address}
+                  authorAddress={author?.address}
                   authorRole={authorRole}
                   cid={cid}
                   displayName={displayName}
