@@ -18,6 +18,7 @@ import useStateString from '../../hooks/use-state-string';
 import useUpvote from '../../hooks/use-upvote';
 
 interface PostAuthorProps {
+  authorAddress: string;
   authorRole: string;
   cid: string;
   displayName: string;
@@ -26,7 +27,7 @@ interface PostAuthorProps {
   authorAddressChanged: boolean;
 }
 
-const PostAuthor = ({ authorRole, cid, displayName, shortAddress, shortAuthorAddress, authorAddressChanged }: PostAuthorProps) => {
+const PostAuthor = ({ authorAddress, authorRole, cid, displayName, shortAddress, shortAuthorAddress, authorAddressChanged }: PostAuthorProps) => {
   const isAuthorOwner = authorRole === 'owner';
   const isAuthorAdmin = authorRole === 'admin';
   const isAuthorModerator = authorRole === 'moderator';
@@ -35,8 +36,8 @@ const PostAuthor = ({ authorRole, cid, displayName, shortAddress, shortAuthorAdd
 
   return (
     <>
-      {displayName && <span className={`${styles.displayName} ${moderatorClass}`}>{displayName} </span>}
-      <Link className={`${styles.authorAddressWrapper} ${moderatorClass}`} to={`/u/${shortAuthorAddress}/c/${cid}`}>
+      {displayName && <Link to={`/u/${authorAddress}/c/${cid}`} className={`${styles.displayName} ${moderatorClass}`}>{displayName} </Link>}
+      <Link className={`${styles.authorAddressWrapper} ${moderatorClass}`} to={`/u/${authorAddress}/c/${cid}`}>
         <span className={styles.authorAddressHidden}>u/{shortAddress || shortAuthorAddress}</span>
         <span className={`${styles.authorAddressVisible} ${authorAddressChanged && styles.authorAddressChanged}`}>u/{shortAuthorAddress}</span>
       </Link>
@@ -166,6 +167,7 @@ const Post = ({ post = {}, index }: PostProps) => {
               <p className={styles.tagline}>
                 {t('post_submitted')} {getFormattedTimeAgo(timestamp)} {t('post_by')}{' '}
                 <PostAuthor
+                  authorAddress={author.address}
                   authorRole={authorRole}
                   cid={cid}
                   displayName={displayName}
