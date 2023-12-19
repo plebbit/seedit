@@ -103,11 +103,11 @@ const ReplyMedia = ({ commentMediaInfo, content, expanded, hasThumbnail, link, l
 };
 
 type ParentLinkProps = {
-  parentCid: string;
+  postCid: string;
 };
 
-const ParentLink = ({ parentCid }: ParentLinkProps) => {
-  const parent = useComment({ commentCid: parentCid });
+const ParentLink = ({ postCid }: ParentLinkProps) => {
+  const parent = useComment({ commentCid: postCid });
   const { author, cid, content, title, subplebbitAddress } = parent || {};
   const { t } = useTranslation();
   const postTitle = (title?.length > 300 ? title?.slice(0, 300) + '...' : title) || (content?.length > 300 ? content?.slice(0, 300) + '...' : content);
@@ -138,8 +138,24 @@ interface ReplyProps {
 }
 
 const Reply = ({ depth = 0, isSingle, isNotification = false, reply = {} }: ReplyProps) => {
-  const { author, cid, content, downvoteCount, flair, link, linkHeight, linkWidth, markedAsRead, postCid, removed, spoiler, state, subplebbitAddress, timestamp, upvoteCount } =
-    reply || {};
+  const {
+    author,
+    cid,
+    content,
+    downvoteCount,
+    flair,
+    link,
+    linkHeight,
+    linkWidth,
+    markedAsRead,
+    postCid,
+    removed,
+    spoiler,
+    state,
+    subplebbitAddress,
+    timestamp,
+    upvoteCount,
+  } = reply || {};
   const subplebbit = useSubplebbit({ subplebbitAddress });
 
   const authorRole = subplebbit?.roles?.[reply.author?.address]?.role;
@@ -177,12 +193,12 @@ const Reply = ({ depth = 0, isSingle, isNotification = false, reply = {} }: Repl
   const childrenCount = unnestedReplies.length;
   const childrenString = childrenCount === 1 ? t('child', { childrenCount }) : t('children', { childrenCount });
 
-  const pendingReply = useAccountComment({commentIndex: reply?.index});
-  const parentOfPendingReply = useComment({commentCid: pendingReply?.parentCid});
+  const pendingReply = useAccountComment({ commentIndex: reply?.index });
+  const parentOfPendingReply = useComment({ commentCid: pendingReply?.parentCid });
 
   return (
     <div className={styles.reply}>
-      {isSingle && <ParentLink parentCid={cid ? postCid : parentOfPendingReply?.postCid} />}
+      {isSingle && <ParentLink postCid={cid ? postCid : parentOfPendingReply?.postCid} />}
       <div
         className={`${!isSingle ? styles.replyWrapper : styles.singleReplyWrapper} ${depth > 1 && styles.nested} ${
           isNotification && !markedAsRead ? styles.unreadNotification : ''
