@@ -76,7 +76,7 @@
 }
 
 .separator {
-  color: var(--border-text);
+  color: var(--gray-contrast);
   cursor: default;
 }
 
