@@ -1,5 +1,5 @@
 import { useMemo, useState } from 'react';
-import { Comment, useAuthorAddress, useComment, useSubplebbit } from '@plebbit/plebbit-react-hooks';
+import { Comment, useAccountComment, useAuthorAddress, useComment, useSubplebbit } from '@plebbit/plebbit-react-hooks';
 import { flattenCommentsPages } from '@plebbit/plebbit-react-hooks/dist/lib/utils';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
@@ -102,8 +102,12 @@ const ReplyMedia = ({ commentMediaInfo, content, expanded, hasThumbnail, link, l
   );
 };
 
-const ParentLink = ({ reply }: { reply: Comment }) => {
-  const parent = useComment({ commentCid: reply.postCid });
+type ParentLinkProps = {
+  parentCid: string;
+};
+
+const ParentLink = ({ parentCid }: ParentLinkProps) => {
+  const parent = useComment({ commentCid: parentCid });
   const { author, cid, content, title, subplebbitAddress } = parent || {};
   const { t } = useTranslation();
   const postTitle = (title?.length > 300 ? title?.slice(0, 300) + '...' : title) || (content?.length > 300 ? content?.slice(0, 300) + '...' : content);
@@ -134,7 +138,7 @@ interface ReplyProps {
 }
 
 const Reply = ({ depth = 0, isSingle, isNotification = false, reply = {} }: ReplyProps) => {
-  const { author, cid, content, downvoteCount, flair, link, linkHeight, linkWidth, markedAsRead, removed, spoiler, state, subplebbitAddress, timestamp, upvoteCount } =
+  const { author, cid, content, downvoteCount, flair, link, linkHeight, linkWidth, markedAsRead, postCid, removed, spoiler, state, subplebbitAddress, timestamp, upvoteCount } =
     reply || {};
   const subplebbit = useSubplebbit({ subplebbitAddress });
 
@@ -173,9 +177,11 @@ const Reply = ({ depth = 0, isSingle, isNotification = false, reply = {} }: Repl
   const childrenCount = unnestedReplies.length;
   const childrenString = childrenCount === 1 ? t('child', { childrenCount }) : t('children', { childrenCount });
 
+  const pendingReply = useAccountComment({commentIndex: reply?.index});
+
   return (
     <div className={styles.reply}>
-      {isSingle && <ParentLink reply={reply} />}
+      {isSingle && <ParentLink parentCid={cid ? postCid : pendingReply?.parentCid} />}
       <div
         className={`${!isSingle ? styles.replyWrapper : styles.singleReplyWrapper} ${depth > 1 && styles.nested} ${
           isNotification && !markedAsRead ? styles.unreadNotification : ''
