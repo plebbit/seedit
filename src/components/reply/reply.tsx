@@ -178,10 +178,11 @@ const Reply = ({ depth = 0, isSingle, isNotification = false, reply = {} }: Repl
   const childrenString = childrenCount === 1 ? t('child', { childrenCount }) : t('children', { childrenCount });
 
   const pendingReply = useAccountComment({commentIndex: reply?.index});
+  const parentOfPendingReply = useComment({commentCid: pendingReply?.parentCid});
 
   return (
     <div className={styles.reply}>
-      {isSingle && <ParentLink parentCid={cid ? postCid : pendingReply?.parentCid} />}
+      {isSingle && <ParentLink parentCid={cid ? postCid : parentOfPendingReply?.postCid} />}
       <div
         className={`${!isSingle ? styles.replyWrapper : styles.singleReplyWrapper} ${depth > 1 && styles.nested} ${
           isNotification && !markedAsRead ? styles.unreadNotification : ''
