@@ -68,7 +68,7 @@ const Post = () => {
           </div>
           <div className={styles.spacer} />
           <ReplyForm cid={cid} />
-        {loadingString && loadingString}
+          {loadingString && loadingString}
         </div>
         <div className={styles.replies}>
           {replies.map((reply, index) => (

@@ -36,13 +36,18 @@ const ReplyAuthor = ({ address, authorRole, cid, displayName, shortAuthorAddress
 
   return (
     <>
-      {displayName && <Link to={`/u/${address}/c/${cid}`} className={`${styles.author} ${moderatorClass}`}>{displayName} </Link>}
+      {displayName && (
+        <Link to={`/u/${address}/c/${cid}`} className={`${styles.author} ${moderatorClass}`}>
+          {displayName}{' '}
+        </Link>
+      )}
       <Link to={`/u/${address}/c/${cid}`} className={`${styles.author} ${moderatorClass}`}>
         {displayName ? `u/${shortAuthorAddress}` : shortAuthorAddress}
       </Link>
       {authorRole && (
         <span className={styles.moderatorBrackets}>
-          {' '}[
+          {' '}
+          [
           <span className={moderatorClass} title={authorRole}>
             {authorRoleInitial}
           </span>

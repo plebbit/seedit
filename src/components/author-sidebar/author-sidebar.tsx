@@ -1,6 +1,9 @@
-import { 
-  // Link, 
-  useLocation, useNavigate, useParams } from 'react-router-dom';
+import {
+  // Link,
+  useLocation,
+  useNavigate,
+  useParams,
+} from 'react-router-dom';
 import {
   useAccount,
   useAccountComments,
@@ -15,9 +18,10 @@ import {
 import styles from './author-sidebar.module.css';
 import { getFormattedDuration } from '../../lib/utils/time-utils';
 import { isAuthorView, isProfileView } from '../../lib/utils/view-utils';
-import { 
-  // findAuthorSubplebbits, 
-  estimateAuthorKarma } from '../../lib/utils/user-utils';
+import {
+  // findAuthorSubplebbits,
+  estimateAuthorKarma,
+} from '../../lib/utils/user-utils';
 // import { useDefaultSubplebbitAddresses } from '../../lib/utils/addresses-utils';
 import SubscribeButton from '../subscribe-button';
 
@@ -104,7 +108,16 @@ const AuthorSidebar = () => {
       <div className={styles.titleBox}>
         <div className={styles.title}>
           {address}
-          {isProfilePage && !displayName && <button onClick={confirmNavigateToSettings}>edit</button>}
+          {isProfilePage && !displayName && (
+            <span className={styles.editButtonWrapper}>
+              {' '}
+              (
+              <span className={styles.editButton} onClick={confirmNavigateToSettings}>
+                edit
+              </span>
+              )
+            </span>
+          )}
         </div>
         {displayName && <div className={styles.displayName}>{displayName}</div>}
         {isAuthorPage && authorAddress !== profileAccount?.author?.address && (
