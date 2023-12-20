@@ -50,7 +50,7 @@ const PostTools = ({ author, cid, hasLabel, subplebbitAddress, replyCount = 0 }:
         </span>
       </li>
       <li className={styles.button}>
-        <span>{t('post_save')}</span>
+        <span>{t('save')}</span>
       </li>
       <HideTools author={author} cid={cid} subplebbitAddress={subplebbitAddress} />
       <li className={styles.button}>
@@ -74,7 +74,7 @@ const ReplyTools = ({ cid, hasLabel, showReplyForm, subplebbitAddress }: Comment
         <span>{t('reply_embed')}</span>
       </li>
       <li className={styles.button}>
-        <span>{t('post_save')}</span>
+        <span>{t('save')}</span>
       </li>
       <li className={styles.button}>
         <span>{t('post_report')}</span>
@@ -96,7 +96,7 @@ const SingleReplyTools = ({ cid, hasLabel, parentCid, subplebbitAddress }: Comme
         <Link to={`/p/${subplebbitAddress}/c/${cid}`}>{t('reply_permalink')}</Link>
       </li>
       <li className={styles.button}>
-        <span>{t('post_save')}</span>
+        <span>{t('save')}</span>
       </li>
       <li className={styles.button}>
         <Link to={`/p/${subplebbitAddress}/c/${parentCid}`}>context</Link>

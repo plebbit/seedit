@@ -84,7 +84,7 @@ const ReplyForm = ({ cid, isReplyingToReply, hideReplyForm }: ReplyFormProps) =>
       </div>
       <div className={styles.bottomArea}>
         <button className={styles.save} onClick={onPublish}>
-          {t('post_save')}
+          {t('save')}
         </button>
         {isReplyingToReply && (
           <button className={styles.cancel} onClick={hideReplyForm}>
