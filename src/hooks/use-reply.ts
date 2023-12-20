@@ -85,9 +85,30 @@ const useReply = (comment: Comment) => {
 
   const setContent = useMemo(
     () => ({
-      content: (newContent: string) => setReplyStore({ subplebbitAddress, parentCid, content: newContent, link: link || undefined, spoiler: spoiler || false }),
-      link: (newLink: string) => setReplyStore({ subplebbitAddress, parentCid, content: content, link: newLink || undefined, spoiler: spoiler || false }),
-      spoiler: (newSpoiler: boolean) => setReplyStore({ subplebbitAddress, parentCid, content: content, link: link || undefined, spoiler: newSpoiler }),
+      content: (newContent: string) =>
+        setReplyStore({
+          subplebbitAddress,
+          parentCid,
+          content: newContent === '' ? undefined : newContent,
+          link: link || undefined,
+          spoiler: spoiler || false,
+        }),
+      link: (newLink: string) =>
+        setReplyStore({
+          subplebbitAddress,
+          parentCid,
+          content: content,
+          link: newLink || undefined,
+          spoiler: spoiler || false,
+        }),
+      spoiler: (newSpoiler: boolean) =>
+        setReplyStore({
+          subplebbitAddress,
+          parentCid,
+          content: content,
+          link: link || undefined,
+          spoiler: newSpoiler,
+        }),
     }),
     [subplebbitAddress, parentCid, setReplyStore, content, link, spoiler],
   );

@@ -1,6 +1,9 @@
-import { 
-  // Link, 
-  useLocation, useNavigate, useParams } from 'react-router-dom';
+import {
+  // Link,
+  useLocation,
+  useNavigate,
+  useParams,
+} from 'react-router-dom';
 import {
   useAccount,
   useAccountComments,
@@ -15,11 +18,14 @@ import {
 import styles from './author-sidebar.module.css';
 import { getFormattedDuration } from '../../lib/utils/time-utils';
 import { isAuthorView, isProfileView } from '../../lib/utils/view-utils';
-import { 
-  // findAuthorSubplebbits, 
-  estimateAuthorKarma } from '../../lib/utils/user-utils';
+import {
+  // findAuthorSubplebbits,
+  estimateAuthorKarma,
+} from '../../lib/utils/user-utils';
 // import { useDefaultSubplebbitAddresses } from '../../lib/utils/addresses-utils';
 import SubscribeButton from '../subscribe-button';
+
+// TODO: uncomment when useSubplebbits({fetch: false}) is implemented, because fetching all subs for this is too expensive
 
 // interface AuthorModeratingListProps {
 //   accountSubplebbits: AccountSubplebbit[];
@@ -104,7 +110,16 @@ const AuthorSidebar = () => {
       <div className={styles.titleBox}>
         <div className={styles.title}>
           {address}
-          {isProfilePage && !displayName && <button onClick={confirmNavigateToSettings}>edit</button>}
+          {isProfilePage && !displayName && (
+            <span className={styles.editButtonWrapper}>
+              {' '}
+              (
+              <span className={styles.editButton} onClick={confirmNavigateToSettings}>
+                edit
+              </span>
+              )
+            </span>
+          )}
         </div>
         {displayName && <div className={styles.displayName}>{displayName}</div>}
         {isAuthorPage && authorAddress !== profileAccount?.author?.address && (
@@ -112,18 +127,12 @@ const AuthorSidebar = () => {
             <SubscribeButton address={address} />
           </div>
         )}
-        {postScore ? (
-          <>
-            <div>
-              <span className={styles.karma}>{postScore}</span> post karma
-              {isAuthorPage && postScore ? ' (estimated)' : null}
-            </div>
-            <div>
-              <span className={styles.karma}>{replyScore}</span> comment karma
-              {isAuthorPage && replyScore ? ' (estimated)' : null}
-            </div>
-          </>
-        ) : null}
+        <div>
+          <span className={styles.karma}>{postScore}</span> post karma
+        </div>
+        <div>
+          <span className={styles.karma}>{replyScore}</span> comment karma
+        </div>
         <div className={styles.bottom}>
           {isAuthorPage && authorAddress !== profileAccount?.author?.address && (
             <span className={styles.blockUser} onClick={confirmBlock}>

@@ -47,8 +47,8 @@ const ReplyForm = ({ cid, isReplyingToReply, hideReplyForm }: ReplyFormProps) =>
     const currentContent = textRef.current?.value || '';
     const currentUrl = urlRef.current?.value || '';
 
-    if (!currentContent.trim()) {
-      alert(`missing content`);
+    if (!currentContent.trim() && !currentUrl) {
+      alert(`missing content or url`);
       return;
     }
 
@@ -84,7 +84,7 @@ const ReplyForm = ({ cid, isReplyingToReply, hideReplyForm }: ReplyFormProps) =>
       </div>
       <div className={styles.bottomArea}>
         <button className={styles.save} onClick={onPublish}>
-          {t('post_save')}
+          {t('save')}
         </button>
         {isReplyingToReply && (
           <button className={styles.cancel} onClick={hideReplyForm}>
