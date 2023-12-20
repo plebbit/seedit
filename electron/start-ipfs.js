@@ -5,6 +5,7 @@ const fs = require('fs-extra');
 const envPaths = require('env-paths').default('plebbit', { suffix: false });
 const ps = require('node:process');
 const proxyServer = require('./proxy-server');
+const tcpPortUsed = require('tcp-port-used');
 
 // use this custom function instead of spawnSync for better logging
 // also spawnSync might have been causing crash on start on windows
@@ -98,4 +99,31 @@ const startIpfs = async () => {
   });
 };
 
-module.exports = startIpfs;
+let pendingStart = false;
+const start = async () => {
+  if (pendingStart) {
+    return;
+  }
+  pendingStart = true;
+  try {
+    const started = await tcpPortUsed.check(5001, '127.0.0.1');
+    if (started) {
+      return;
+    }
+    await startIpfs();
+  } catch (e) {
+    console.log('failed starting ipfs', e);
+    try {
+      // try to run exported onError callback, can be undefined
+      module.exports.onError(e)?.catch?.(console.log);
+    } catch (e) {}
+  }
+  pendingStart = false;
+};
+
+// retry starting ipfs every 1 second,
+// in case it was started by another client that shut down and shut down ipfs with it
+start();
+setInterval(() => {
+  start();
+}, 1000);
