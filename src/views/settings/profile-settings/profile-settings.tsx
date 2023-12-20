@@ -70,10 +70,10 @@ const ProfileSettings = () => {
     let resolveString = '';
     let resolveClass = '';
 
-    if (resolvedAddress && resolvedAddress === account?.signer?.address) {
+    if (resolvedAddress && resolvedAddress === account?.signer.address) {
       resolveString = `crypto address belongs to this account, address: ${getShortAddress(resolvedAddress)}`;
       resolveClass = styles.green;
-    } else if (resolvedAddress && resolvedAddress !== account?.signer?.address) {
+    } else if (resolvedAddress && resolvedAddress !== account?.signer.address) {
       resolveString = `crypto address belongs to another account, address: ${getShortAddress(resolvedAddress)}`;
       resolveClass = styles.red;
     } else {
@@ -86,7 +86,7 @@ const ProfileSettings = () => {
       resolveClass: resolveClass,
       showResolvingMessage: false,
     }));
-  }, [resolvedAddress, account?.signer?.address]);
+  }, [resolvedAddress, account?.signer.address]);
 
   const cryptoAddressInfo = () => {
     alert(
@@ -98,13 +98,13 @@ const ProfileSettings = () => {
     if (!cryptoState.cryptoAddress || !cryptoState.cryptoAddress.includes('.')) {
       alert('Please enter a crypto address.');
       return;
-    } else if (resolvedAddress && resolvedAddress !== account?.signer?.address) {
+    } else if (resolvedAddress && resolvedAddress !== account?.signer.address) {
       alert(`Cannot save resolved crypto address, it belongs to another account, address: ${resolvedAddress}`);
       return;
     } else if (cryptoState.cryptoAddress && !resolvedAddress) {
       alert('Please wait, crypto address is not resolved yet.');
       return;
-    } else if (resolvedAddress && resolvedAddress === account?.signer?.address) {
+    } else if (resolvedAddress && resolvedAddress === account?.signer.address) {
       try {
         await setAccount({ ...account, author: { ...account?.author, address: cryptoState.cryptoAddress } });
         setCryptoState((prevState) => ({
