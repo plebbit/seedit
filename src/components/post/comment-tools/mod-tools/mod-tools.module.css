@@ -13,16 +13,29 @@
   color: var(--text-info);
   font-weight: bold;
   border: 1px solid var(--border-text);
+  box-shadow: var(--box-shadow-modal);
+  width: 200px;
+}
+
+.modalTitle {
+  background: var(--background-primary);
+  padding-bottom: 2px;
+  margin-bottom: 6px;
+  text-align: center;
+  color: var(--text-primary);
+  font-size: 13px;
 }
 
 .modal input[type="checkbox"] {
   margin-right: 3px;
   outline: none;
+  cursor: pointer;
 }
 
 .menuItem {
   padding-bottom: 5px;
   text-transform: lowercase;
+  cursor: pointer;
 }
 
 .menuReason {
@@ -31,10 +44,23 @@
 
 .menuItem input[type="text"] {
   padding: 2px;
-  box-shadow: var(--box-shadow);
+  box-shadow: var(--box-shadow-input);
   margin-top: 2px;
+  width: calc(100% - 6px);
+  margin-bottom: 2px;
 }
 
-.menuItem button {
-  text-transform: capitalize;
+.bottom {
+  border-top: solid 1px gray;
+  clear: both;
+  display: block;
+  padding-top: 8px;
+  text-align: center;
+  padding-bottom: 3px;
+}
+
+.bottom button {
+  text-transform: lowercase;
+  cursor: pointer;
+  padding: 2px 6px 3px;
 }

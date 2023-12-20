@@ -7,6 +7,8 @@
   --gray-overlay: #F7F7F7;
   --gray-border: #ddd;
   --gray-light: #CCCCCA;
+  --box-shadow-modal: 4px 4px 4px #ccc;
+  --box-shadow-input: inset 0px 1px 1px rgba(0,0,0,0.3),0px 1px 0px rgba(255,255,255,0.6);
   --filter80: brightness(100%);
   --filter90: brightness(100%);
   --background: white;
@@ -40,7 +42,6 @@
   --button-large-hover: url('/public/assets/buttons/button-large-hover.png');
   --button-large-nub: url('/public/assets/buttons/button-large-nub.png');
   --button-large-hover-nub: url('/public/assets/buttons/button-large-nub-hover.png');
-  --box-shadow: inset 0px 1px 1px rgba(0,0,0,0.3),0px 1px 0px rgba(255,255,255,0.6);
   --account-dropdown-arrow: url("/public/assets/buttons/droparrowblue.gif");
 }
 
@@ -53,6 +54,8 @@
   --gray-overlay: #1f1f1f;
   --gray-border: #3e3e3e;
   --gray-light: #3e3e3e9d;
+  --box-shadow-modal: 4px 4px 4px #000;
+  --box-shadow-input: none;
   --filter80: brightness(80%);
   --filter90: brightness(90%);
   --background: #0f0f0f;
@@ -86,6 +89,5 @@
   --button-large-hover: url('/public/assets/buttons/button-large-hover-dark.png');
   --button-large-nub: url('/public/assets/buttons/button-large-nub-dark.png');
   --button-large-hover-nub: url('/public/assets/buttons/button-large-nub-hover-dark.png');
-  --box-shadow: none;
   --account-dropdown-arrow: url("/public/assets/buttons/droparrowgray.gif");
 }

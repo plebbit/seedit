@@ -72,6 +72,7 @@ const ModTools = ({ cid }: ModToolsProps) => {
         <FloatingFocusManager context={context} modal={false}>
           <div className={styles.modal} ref={refs.setFloating} style={floatingStyles} aria-labelledby={headingId} {...getFloatingProps()}>
             <div className={styles.modTools}>
+              <div className={styles.modalTitle}>select mod action</div>
               <div className={styles.menuItem}>
                 <label>
                   <input onChange={onCheckbox} checked={publishCommentEditOptions.removed} type='checkbox' id='removed' />
@@ -98,7 +99,9 @@ const ModTools = ({ cid }: ModToolsProps) => {
               </div>
               <div className={`${styles.menuItem} ${styles.menuReason}`}>
                 <input type='text' onChange={onReason} defaultValue={post?.reason} size={14} placeholder='reason' />
-                <button onClick={publishCommentEdit}>{t('edit')}</button>
+              </div>
+              <div className={styles.bottom}>
+                <button onClick={publishCommentEdit}>{t('save')}</button>
               </div>
             </div>
           </div>

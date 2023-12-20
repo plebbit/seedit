@@ -13,7 +13,7 @@
 .usernameInput input {
   width: 200px;
   padding: 2px;
-  box-shadow: var(--box-shadow);
+  box-shadow: var(--box-shadow-input);
 }
 
 .saved {
