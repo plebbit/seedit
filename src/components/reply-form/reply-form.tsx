@@ -47,8 +47,8 @@ const ReplyForm = ({ cid, isReplyingToReply, hideReplyForm }: ReplyFormProps) =>
     const currentContent = textRef.current?.value || '';
     const currentUrl = urlRef.current?.value || '';
 
-    if (!currentContent.trim()) {
-      alert(`missing content`);
+    if (!currentContent.trim() && !currentUrl) {
+      alert(`missing content or url`);
       return;
     }
 
