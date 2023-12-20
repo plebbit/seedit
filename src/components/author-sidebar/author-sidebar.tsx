@@ -25,6 +25,8 @@ import {
 // import { useDefaultSubplebbitAddresses } from '../../lib/utils/addresses-utils';
 import SubscribeButton from '../subscribe-button';
 
+// TODO: uncomment when useSubplebbits({fetch: false}) is implemented, because fetching all subs for this is too expensive
+
 // interface AuthorModeratingListProps {
 //   accountSubplebbits: AccountSubplebbit[];
 //   authorSubplebbits: string[];
