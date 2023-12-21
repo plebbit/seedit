@@ -65,6 +65,7 @@ function App() {
             <Route path='/p/:subplebbitAddress/:sortType?' element={<Subplebbit />} />
             <Route path='/p/:subplebbitAddress/:sortType?/:timeFilterName?' element={<Subplebbit />} />
 
+            <Route path='/profile/:accountCommentIndex' element={<Post />} />
             <Route path='/profile/:sortType?/:timeFilterName?' element={<Profile />} />
             <Route path='/profile/upvoted/:sortType?/:timeFilterName?' element={<Profile />} />
             <Route path='/profile/downvoted/:sortType?/:timeFilterName?' element={<Profile />} />
