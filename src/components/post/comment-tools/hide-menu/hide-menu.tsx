@@ -78,6 +78,7 @@ const HideTools = ({ author, cid, subplebbitAddress }: HideToolsProps) => {
       {isHideToolsOpen && (
         <FloatingFocusManager context={context} modal={false}>
           <div className={styles.modal} ref={refs.setFloating} style={floatingStyles} aria-labelledby={headingId} {...getFloatingProps()}>
+            <div className={styles.modalTitle}>hide</div>
             <div className={styles.modTools}>
               <BlockCommentButton cid={cid} />
               <BlockSubplebbitButton subplebbitAddress={subplebbitAddress} />
