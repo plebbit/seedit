@@ -10,10 +10,10 @@
   z-index: 7;
   background-color: var(--background);
   padding: 5px;
-  color: var(--text-info);
-  font-weight: bold;
   border: 1px solid var(--border-text);
   outline: none;
+  font-size: 11px;
+  box-shadow: var(--box-shadow-modal);
 }
 
 .modal input {
@@ -21,6 +21,7 @@
 }
 
 .menuItem {
+  color: var(--text-primary);
   padding-bottom: 5px;
 }
 
@@ -40,4 +41,14 @@
 
 .menuItem {
   cursor: pointer;
+}
+
+.modalTitle {
+  background: var(--background-primary);
+  padding-bottom: 2px;
+  margin-bottom: 6px;
+  text-align: center;
+  color: var(--text-primary);
+  font-size: 13px;
+  font-weight: bold;
 }

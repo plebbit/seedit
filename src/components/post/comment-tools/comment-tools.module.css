@@ -53,12 +53,3 @@
 .hideReply {
   display: none !important;
 }
-
-.text {
-  font-weight: normal !important;
-  color: var(--text) !important;
-}
-
-.text:hover {
-  text-decoration: none !important;
-}

@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { autoUpdate, flip, FloatingFocusManager, offset, shift, useClick, useDismiss, useFloating, useId, useInteractions, useRole } from '@floating-ui/react';
 import { useTranslation } from 'react-i18next';
 import { PublishCommentEditOptions, useComment, usePublishCommentEdit } from '@plebbit/plebbit-react-hooks';
-import styles from './mod-tools.module.css';
+import styles from './mod-menu.module.css';
 import { alertChallengeVerificationFailed } from '../../../../lib/utils/challenge-utils';
 import challengesStore from '../../../../hooks/use-challenges';
 
@@ -72,7 +72,7 @@ const ModTools = ({ cid }: ModToolsProps) => {
         <FloatingFocusManager context={context} modal={false}>
           <div className={styles.modal} ref={refs.setFloating} style={floatingStyles} aria-labelledby={headingId} {...getFloatingProps()}>
             <div className={styles.modTools}>
-              <div className={styles.modalTitle}>select mod action</div>
+              <div className={styles.modalTitle}>moderation</div>
               <div className={styles.menuItem}>
                 <label>
                   <input onChange={onCheckbox} checked={publishCommentEditOptions.removed} type='checkbox' id='removed' />
@@ -98,7 +98,8 @@ const ModTools = ({ cid }: ModToolsProps) => {
                 </label>
               </div>
               <div className={`${styles.menuItem} ${styles.menuReason}`}>
-                <input type='text' onChange={onReason} defaultValue={post?.reason} size={14} placeholder='reason' />
+                reason <span className={styles.optional}>(optional)</span>
+                <input type='text' onChange={onReason} defaultValue={post?.reason} size={14} />
               </div>
               <div className={styles.bottom}>
                 <button onClick={publishCommentEdit}>{t('save')}</button>

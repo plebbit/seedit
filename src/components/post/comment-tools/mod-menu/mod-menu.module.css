@@ -10,8 +10,8 @@
   z-index: 7;
   background-color: var(--background);
   padding: 5px;
-  color: var(--text-info);
-  font-weight: bold;
+  color: var(--text);
+  font-size: 11px;
   border: 1px solid var(--border-text);
   box-shadow: var(--box-shadow-modal);
   width: 200px;
@@ -24,6 +24,7 @@
   text-align: center;
   color: var(--text-primary);
   font-size: 13px;
+  font-weight: bold;
 }
 
 .modal input[type="checkbox"] {
@@ -51,11 +52,8 @@
 }
 
 .bottom {
-  border-top: solid 1px gray;
   clear: both;
   display: block;
-  padding-top: 8px;
-  text-align: center;
   padding-bottom: 3px;
 }
 
@@ -63,4 +61,8 @@
   text-transform: lowercase;
   cursor: pointer;
   padding: 2px 6px 3px;
+}
+
+.optional {
+  color: var(--text-info);
 }
