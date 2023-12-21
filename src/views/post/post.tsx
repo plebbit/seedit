@@ -15,7 +15,6 @@ import { isPendingView } from '../../lib/utils/view-utils';
 const Post = () => {
   const { t } = useTranslation();
 
-  // use comment or pending comment depending on the view
   const params = useParams();
   const location = useLocation();
   const isPendingPage = isPendingView(location.pathname, params);
@@ -23,18 +22,15 @@ const Post = () => {
   const pendingPost = useAccountComment({ commentIndex: params?.accountCommentIndex as any });
   const post = isPendingPage ? pendingPost : comment;
 
-  // variables for the sidebar
   const { cid, downvoteCount, replyCount, subplebbitAddress, timestamp, title, upvoteCount } = comment || {};
   const subplebbit = useSubplebbit({ subplebbitAddress });
   const { createdAt, description, roles, rules, updatedAt } = subplebbit || {};
 
-  // replies area
   const replies = useReplies(comment);
   const commentCount = replyCount === 0 ? t('no_comments') : replyCount === 1 ? t('one_comment') : t('all_comments', { count: replyCount });
   const stateString = useStateString(comment);
   const loadingString = stateString && <div className={styles.stateString}>{stateString !== 'failed' ? <LoadingEllipsis string={stateString} /> : stateString}</div>;
 
-  // browser tab title
   const postTitle = title?.slice(0, 40) || comment?.content?.slice(0, 40);
   const subplebbitTitle = subplebbit?.title || subplebbit?.shortAddress;
   useEffect(() => {
