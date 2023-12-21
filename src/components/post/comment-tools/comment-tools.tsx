@@ -54,9 +54,6 @@ const PostTools = ({ author, cid, hasLabel, subplebbitAddress, replyCount = 0 }:
       </li>
       <HideTools author={author} cid={cid} subplebbitAddress={subplebbitAddress} />
       <li className={styles.button}>
-        <span>{t('post_report')}</span>
-      </li>
-      <li className={styles.button}>
         <span>{t('post_crosspost')}</span>
       </li>
     </>
@@ -75,9 +72,6 @@ const ReplyTools = ({ cid, hasLabel, showReplyForm, subplebbitAddress }: Comment
       </li>
       <li className={styles.button}>
         <span>{t('save')}</span>
-      </li>
-      <li className={styles.button}>
-        <span>{t('post_report')}</span>
       </li>
       <li className={!cid ? styles.hideReply : styles.button}>
         <span onClick={() => cid && showReplyForm?.()}>{t('reply_reply')}</span>
@@ -103,9 +97,6 @@ const SingleReplyTools = ({ cid, hasLabel, parentCid, subplebbitAddress }: Comme
       </li>
       <li className={styles.button}>
         <Link to={`/p/${subplebbitAddress}/c/${parentCid}`}>full comments ({comment?.replyCount || 0})</Link>
-      </li>
-      <li className={styles.button}>
-        <span>{t('post_report')}</span>
       </li>
     </>
   );
