@@ -102,6 +102,10 @@ const Sidebar = ({ address, cid, createdAt, description, downvoteCount = 0, role
     }
   };
 
+  const alertCreateCommunity = () => {
+    alert('Not available in this version. You can create a community with the CLI: https://github.com/plebbit/plebbit-cli');
+  };
+
   return (
     <div className={`${isAbout ? styles.about : styles.sidebar}`}>
       <SearchBar />
@@ -114,7 +118,7 @@ const Sidebar = ({ address, cid, createdAt, description, downvoteCount = 0, role
         </div>
       </Link>
       <Link to='/communities/create' onClick={(e) => e.preventDefault()}>
-        <div className={styles.largeButton}>
+        <div className={styles.largeButton} onClick={alertCreateCommunity}>
           {t('create_community')}
           <div className={styles.nub} />
         </div>
