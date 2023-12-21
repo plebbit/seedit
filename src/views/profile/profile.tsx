@@ -91,29 +91,32 @@ const Profile = () => {
   const handleSortChange = (newSortType: string) => {
     setSortType(newSortType);
   };
-  let comments: any[] = [];
-  if (isUpvotedPage) {
-    comments = upvotedComments;
-  } else if (isDownvotedPage) {
-    comments = downvotedComments;
-  } else if (isCommentsPage) {
-    comments = replyComments;
-  } else if (isSubmittedPage) {
-    comments = postComments;
-  } else {
-    comments = accountComments;
-  }
+
+  // Define comments with useMemo to avoid redefinition on every render
+  const comments = useMemo(() => {
+    if (isUpvotedPage) {
+      return upvotedComments;
+    } else if (isDownvotedPage) {
+      return downvotedComments;
+    } else if (isCommentsPage) {
+      return replyComments;
+    } else if (isSubmittedPage) {
+      return postComments;
+    } else {
+      return accountComments;
+    }
+  }, [isUpvotedPage, isDownvotedPage, isCommentsPage, isSubmittedPage, upvotedComments, downvotedComments, replyComments, postComments, accountComments]);
+
+  // sort comments by sortType
   const virtuosoData = useMemo(() => {
     let sortedData = [...comments];
-
     if (sortType === 'new') {
-      sortedData.sort((a, b) => b.timestamp - a.timestamp);
+      sortedData.sort((a, b) => b!.timestamp - a!.timestamp);
     } else {
-      sortedData.sort((a, b) => a.timestamp - b.timestamp);
+      sortedData.sort((a, b) => a!.timestamp - b!.timestamp);
     }
-
     return sortedData;
-  }, [sortType, accountComments]);
+  }, [sortType, comments]);
 
   // save last virtuoso state on each scroll
   const virtuosoRef = useRef<VirtuosoHandle | null>(null);
