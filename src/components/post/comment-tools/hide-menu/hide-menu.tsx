@@ -5,13 +5,13 @@ import styles from './hide-menu.module.css';
 import { useTranslation } from 'react-i18next';
 import { getShortAddress } from '@plebbit/plebbit-js';
 
-type HideToolsProps = {
+type HideMenuProps = {
   author?: Author | undefined;
   cid?: string;
   subplebbitAddress?: string;
 };
 
-const BlockAuthorButton = ({ author }: HideToolsProps) => {
+const BlockAuthorButton = ({ author }: HideMenuProps) => {
   // const { t } = useTranslation();
   const { blocked, unblock, block } = useBlock({ address: author?.address });
 
@@ -24,7 +24,7 @@ const BlockAuthorButton = ({ author }: HideToolsProps) => {
   );
 };
 
-const BlockSubplebbitButton = ({ subplebbitAddress }: HideToolsProps) => {
+const BlockSubplebbitButton = ({ subplebbitAddress }: HideMenuProps) => {
   // const { t } = useTranslation();
   const { blocked, unblock, block } = useBlock({ address: subplebbitAddress });
 
@@ -37,7 +37,7 @@ const BlockSubplebbitButton = ({ subplebbitAddress }: HideToolsProps) => {
   );
 };
 
-const BlockCommentButton = ({ cid }: HideToolsProps) => {
+const BlockCommentButton = ({ cid }: HideMenuProps) => {
   // const { t } = useTranslation();
   const { blocked, unblock, block } = useBlock({ address: cid });
 
@@ -50,14 +50,14 @@ const BlockCommentButton = ({ cid }: HideToolsProps) => {
   );
 };
 
-const HideTools = ({ author, cid, subplebbitAddress }: HideToolsProps) => {
+const HideMenu = ({ author, cid, subplebbitAddress }: HideMenuProps) => {
   const { t } = useTranslation();
-  const [isHideToolsOpen, setIsHideToolsOpen] = useState(false);
+  const [isHideMenuOpen, setIsHideMenuOpen] = useState(false);
 
   const { refs, floatingStyles, context } = useFloating({
     placement: 'bottom-start',
-    open: isHideToolsOpen,
-    onOpenChange: setIsHideToolsOpen,
+    open: isHideMenuOpen,
+    onOpenChange: setIsHideMenuOpen,
     middleware: [offset(2), flip({ fallbackAxisSideDirection: 'end' }), shift()],
     whileElementsMounted: autoUpdate,
   });
@@ -73,13 +73,13 @@ const HideTools = ({ author, cid, subplebbitAddress }: HideToolsProps) => {
   return (
     <>
       <li className={styles.button} ref={refs.setReference} {...getReferenceProps()}>
-        <span onClick={() => setIsHideToolsOpen(!isHideToolsOpen)}>{t('post_hide')}</span>
+        <span onClick={() => setIsHideMenuOpen(!isHideMenuOpen)}>{t('post_hide')}</span>
       </li>
-      {isHideToolsOpen && (
+      {isHideMenuOpen && (
         <FloatingFocusManager context={context} modal={false}>
           <div className={styles.modal} ref={refs.setFloating} style={floatingStyles} aria-labelledby={headingId} {...getFloatingProps()}>
             <div className={styles.modalTitle}>hide</div>
-            <div className={styles.modTools}>
+            <div className={styles.modMenu}>
               <BlockCommentButton cid={cid} />
               <BlockSubplebbitButton subplebbitAddress={subplebbitAddress} />
               <BlockAuthorButton author={author} />
@@ -91,4 +91,4 @@ const HideTools = ({ author, cid, subplebbitAddress }: HideToolsProps) => {
   );
 };
 
-export default HideTools;
+export default HideMenu;

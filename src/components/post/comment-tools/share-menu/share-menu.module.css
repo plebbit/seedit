@@ -1,0 +1,43 @@
+.button {
+  color: var(--text-info);
+  font-weight: bold;
+  text-decoration: none;
+  padding: 0 4px 0 4px;
+  cursor: pointer;
+}
+
+.modal {
+  z-index: 7;
+  background-color: var(--background);
+  padding: 5px;
+  border: 1px solid var(--border-text);
+  outline: none;
+  font-size: 11px;
+  box-shadow: var(--box-shadow-modal);
+}
+
+.menuItem, .menuItem a {
+  color: var(--text-primary);
+  padding-bottom: 5px;
+  cursor: pointer;
+}
+
+.modalTitle {
+  background: var(--background-primary);
+  padding-bottom: 2px;
+  margin-bottom: 6px;
+  text-align: center;
+  color: var(--text-primary);
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.text {
+  font-weight: normal !important;
+  color: var(--text) !important;
+  padding-bottom: 5px;
+}
+
+.text:hover {
+  text-decoration: none !important;
+}
