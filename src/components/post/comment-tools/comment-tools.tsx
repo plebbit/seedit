@@ -4,9 +4,9 @@ import { useTranslation } from 'react-i18next';
 import { Author, useAccount, useComment, useSubplebbit } from '@plebbit/plebbit-react-hooks';
 import { getShareLink } from '../../../lib/utils/url-utils';
 import styles from './comment-tools.module.css';
-import HideTools from './hide-tools';
+import HideTools from './hide-menu';
 import { FailedLabel, PendingLabel, SpoilerLabel } from '../label';
-import ModTools from './mod-tools';
+import ModTools from './mod-menu';
 
 interface CommentToolsProps {
   author?: Author;

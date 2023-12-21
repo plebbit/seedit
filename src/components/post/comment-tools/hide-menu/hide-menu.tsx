@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Author, useBlock } from '@plebbit/plebbit-react-hooks';
 import { autoUpdate, flip, FloatingFocusManager, offset, shift, useClick, useDismiss, useFloating, useId, useInteractions, useRole } from '@floating-ui/react';
-import styles from './hide-tools.module.css';
+import styles from './hide-menu.module.css';
 import { useTranslation } from 'react-i18next';
 import { getShortAddress } from '@plebbit/plebbit-js';
 
