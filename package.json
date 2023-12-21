@@ -6,7 +6,7 @@
   "private": true,
   "dependencies": {
     "@floating-ui/react": "0.26.1",
-    "@plebbit/plebbit-react-hooks": "https://github.com/plebbit/plebbit-react-hooks.git#4d667f7ad7a77cfd416184acffd6f561761ebc9b",
+    "@plebbit/plebbit-react-hooks": "https://github.com/plebbit/plebbit-react-hooks.git#57f8891697134e8aa65f286ffd8bdbda9a6bd512",
     "@testing-library/jest-dom": "5.14.1",
     "@testing-library/react": "13.0.0",
     "@testing-library/user-event": "13.2.1",
@@ -15,6 +15,8 @@
     "@types/react": "18.2.25",
     "@types/react-dom": "18.2.10",
     "cross-env": "7.0.3",
+    "electron-context-menu": "3.3.0",
+    "electron-is-dev": "2.0.0",
     "ext-name": "5.0.0",
     "i18next": "23.5.1",
     "i18next-browser-languagedetector": "7.1.0",
@@ -28,10 +30,8 @@
     "react-router-dom": "6.16.0",
     "react-scripts": "5.0.1",
     "react-virtuoso": "4.6.0",
-    "typescript": "5.2.2",
     "tcp-port-used": "1.0.2",
-    "electron-context-menu": "3.3.0",
-    "electron-is-dev": "2.0.0",
+    "typescript": "5.2.2",
     "zustand": "4.4.3"
   },
   "scripts": {
@@ -75,16 +75,16 @@
   },
   "devDependencies": {
     "@types/memoizee": "0.4.9",
-    "conventional-changelog-cli": "4.1.0",
     "concurrently": "8.0.1",
+    "conventional-changelog-cli": "4.1.0",
     "cross-env": "7.0.3",
+    "cz-conventional-changelog": "3.3.0",
     "decompress": "4.2.1",
     "electron": "19.1.8",
     "electron-builder": "23.0.9",
-    "cz-conventional-changelog": "3.3.0",
-    "wait-on": "7.0.1",
     "husky": "4.3.8",
-    "lint-staged": "12.3.8"
+    "lint-staged": "12.3.8",
+    "wait-on": "7.0.1"
   },
   "main": "electron/main.js",
   "build": {
