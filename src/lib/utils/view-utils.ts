@@ -58,6 +58,18 @@ export const isInboxView = (pathname: string): boolean => {
   return pathname.startsWith('/inbox');
 };
 
+export const isInboxCommentRepliesView = (pathname: string): boolean => {
+  return pathname === `/inbox/commentreplies`;
+};
+
+export const isInboxPostRepliesView = (pathname: string): boolean => {
+  return pathname === `/inbox/postreplies`;
+};
+
+export const isInboxUnreadView = (pathname: string): boolean => {
+  return pathname === `/inbox/unread`;
+};
+
 export const isPendingView = (pathname: string, params: ParamsType): boolean => {
   return pathname === `/profile/${params.accountCommentIndex}`;
 };

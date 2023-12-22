@@ -86,13 +86,11 @@ const Profile = () => {
   const { comments: upvotedComments } = useComments({ commentCids: upvotedCommentCids });
   const { comments: downvotedComments } = useComments({ commentCids: downvotedCommentCids });
 
-  // sort dropdown
   const [sortType, setSortType] = useState('new');
   const handleSortChange = (newSortType: string) => {
     setSortType(newSortType);
   };
 
-  // Define comments with useMemo to avoid redefinition on every render
   const comments = useMemo(() => {
     if (isUpvotedPage) {
       return upvotedComments;
@@ -107,7 +105,6 @@ const Profile = () => {
     }
   }, [isUpvotedPage, isDownvotedPage, isCommentsPage, isSubmittedPage, upvotedComments, downvotedComments, replyComments, postComments, accountComments]);
 
-  // sort comments by sortType
   const virtuosoData = useMemo(() => {
     let sortedData = [...comments];
     if (sortType === 'new') {
