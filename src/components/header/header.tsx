@@ -18,6 +18,7 @@ import {
   isSubplebbitView,
   isSubmitView,
   isSubplebbitSubmitView,
+  isPendingView,
   isProfileView,
   isProfileCommentsView,
   isProfileSubmittedView,
@@ -188,6 +189,7 @@ const HeaderTabs = () => {
   const isAllPage = isAllView(location.pathname);
   const isAuthorPage = isAuthorView(location.pathname);
   const isHomePage = isHomeView(location.pathname, params);
+  const isPendingPage = isPendingView(location.pathname, params);
   const isPostPage = isPostView(location.pathname, params);
   const isProfilePage = isProfileView(location.pathname);
   const isSubplebbitPage = isSubplebbitView(location.pathname, params);
@@ -197,8 +199,10 @@ const HeaderTabs = () => {
     return <CommentsButton />;
   } else if (isHomePage || (isSubplebbitPage && !isSubplebbitSubmitPage) || isAllPage) {
     return <SortItems />;
-  } else if (isProfilePage || isAuthorPage) {
+  } else if ((isProfilePage || isAuthorPage) && !isPendingPage) {
     return <AuthorHeaderTabs />;
+  } else if (isPendingPage) {
+    return <span className={styles.pageName}>pending</span>;
   }
   return null;
 };
