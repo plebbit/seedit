@@ -93,6 +93,9 @@ function App() {
             <Route path='/u/:authorAddress/c/:commentCid/about' element={<About />} />
 
             <Route path='/inbox' element={<Inbox />} />
+            <Route path='inbox/unread' element={<Inbox />} />
+            <Route path='inbox/commentreplies' element={<Inbox />} />
+            <Route path='inbox/postreplies' element={<Inbox />} />
           </Route>
         </Route>
       </Routes>

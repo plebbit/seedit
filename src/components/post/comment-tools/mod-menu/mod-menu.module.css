@@ -9,22 +9,12 @@
 .modal {
   z-index: 7;
   background-color: var(--background);
-  padding: 5px;
+  padding: 1px 0;
+  padding-top: 2px;
   color: var(--text);
-  font-size: 11px;
+  font-size: 12px;
   border: 1px solid var(--border-text);
-  box-shadow: var(--box-shadow-modal);
   width: 200px;
-}
-
-.modalTitle {
-  background: var(--background-primary);
-  padding-bottom: 2px;
-  margin-bottom: 6px;
-  text-align: center;
-  color: var(--text-primary);
-  font-size: 13px;
-  font-weight: bold;
 }
 
 .modal input[type="checkbox"] {
@@ -34,7 +24,7 @@
 }
 
 .menuItem {
-  padding-bottom: 5px;
+  padding: 2px 3px 1px 3px;
   text-transform: lowercase;
   cursor: pointer;
 }
@@ -54,13 +44,14 @@
 .bottom {
   clear: both;
   display: block;
-  padding-bottom: 3px;
 }
 
 .bottom button {
   text-transform: lowercase;
   cursor: pointer;
   padding: 2px 6px 3px;
+  margin-left: 2px;
+  margin-bottom: 2px;
 }
 
 .optional {

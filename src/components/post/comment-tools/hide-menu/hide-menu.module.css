@@ -9,46 +9,23 @@
 .modal {
   z-index: 7;
   background-color: var(--background);
-  padding: 5px;
   border: 1px solid var(--border-text);
   outline: none;
-  font-size: 11px;
-  box-shadow: var(--box-shadow-modal);
-}
-
-.modal input {
-  margin-right: 3px;
+  font-size: 12px;
 }
 
 .menuItem {
   color: var(--text-primary);
-  padding-bottom: 5px;
-}
-
-.menuReason {
-  padding-bottom: 2px;
-}
-
-.menuItem input[type="text"] {
-  padding: 2px;
-  box-shadow: var(--box-shadow-input);
-  margin-top: 2px;
-}
-
-.menuItem button {
-  text-transform: capitalize;
-}
-
-.menuItem {
   cursor: pointer;
+  padding: 2px 3px 1px 3px;
+  display: block;
 }
 
-.modalTitle {
-  background: var(--background-primary);
-  padding-bottom: 2px;
-  margin-bottom: 6px;
-  text-align: center;
+.menuItem a {
   color: var(--text-primary);
-  font-size: 13px;
-  font-weight: bold;
+  text-decoration: none;
+}
+
+.menuItem:hover {
+  background-color: var(--background-primary);
 }

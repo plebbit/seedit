@@ -251,6 +251,7 @@ const Reply = ({ depth = 0, isSingle, isNotification = false, reply = {} }: Repl
               cid={reply.cid}
               isReply={true}
               isSingleReply={isSingle}
+              index={reply?.index}
               parentCid={reply?.postCid}
               replyCount={replies.length}
               spoiler={spoiler}

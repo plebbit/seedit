@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { autoUpdate, flip, FloatingFocusManager, offset, shift, useClick, useDismiss, useFloating, useId, useInteractions, useRole } from '@floating-ui/react';
 import styles from './share-menu.module.css';
@@ -7,29 +7,6 @@ import { copyShareLinkToClipboard } from '../../../../lib/utils/url-utils';
 type ShareMenuProps = {
   cid: string;
   subplebbitAddress: string;
-};
-
-const ShareButton = ({ cid, subplebbitAddress }: ShareMenuProps) => {
-  const [hasShared, setHasShared] = useState(false);
-
-  useEffect(() => {
-    if (hasShared) {
-      setTimeout(() => setHasShared(false), 2000);
-    }
-  }, [hasShared]);
-
-  return (
-    <div className={`${!hasShared ? styles.menuItem : styles.text}`}>
-      <span
-        onClick={() => {
-          setHasShared(true);
-          copyShareLinkToClipboard(subplebbitAddress, cid);
-        }}
-      >
-        {hasShared ? 'link copied' : 'copy link'}
-      </span>
-    </div>
-  );
 };
 
 const ShareMenu = ({ cid, subplebbitAddress }: ShareMenuProps) => {
@@ -57,9 +34,17 @@ const ShareMenu = ({ cid, subplebbitAddress }: ShareMenuProps) => {
       {isShareMenuOpen && (
         <FloatingFocusManager context={context} modal={false}>
           <div className={styles.modal} ref={refs.setFloating} style={floatingStyles} aria-labelledby={headingId} {...getFloatingProps()}>
-            <div className={styles.modalTitle}>share</div>
             <div className={styles.modMenu}>
-              <ShareButton cid={cid} subplebbitAddress={subplebbitAddress} />
+              <div className={styles.menuItem}>
+                <span
+                  onClick={() => {
+                    copyShareLinkToClipboard(subplebbitAddress, cid);
+                    setIsShareMenuOpen(false);
+                  }}
+                >
+                  copy link
+                </span>
+              </div>
               <div className={styles.menuItem}>
                 <a href={`https://plebchan.eth.limo/#/p/${subplebbitAddress}/c/${cid}`} target='_blank' rel='noopener noreferrer'>
                   view on plebchan

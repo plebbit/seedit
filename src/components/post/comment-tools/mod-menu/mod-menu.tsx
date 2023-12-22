@@ -72,7 +72,6 @@ const ModTools = ({ cid }: ModToolsProps) => {
         <FloatingFocusManager context={context} modal={false}>
           <div className={styles.modal} ref={refs.setFloating} style={floatingStyles} aria-labelledby={headingId} {...getFloatingProps()}>
             <div className={styles.modTools}>
-              <div className={styles.modalTitle}>moderation</div>
               <div className={styles.menuItem}>
                 <label>
                   <input onChange={onCheckbox} checked={publishCommentEditOptions.removed} type='checkbox' id='removed' />

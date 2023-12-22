@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { useLocation, useParams } from 'react-router-dom';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import { useAccountComment, useComment, useSubplebbit } from '@plebbit/plebbit-react-hooks';
 import { useTranslation } from 'react-i18next';
 import styles from './post.module.css';
@@ -21,6 +21,14 @@ const Post = () => {
   const comment = useComment({ commentCid: params?.commentCid });
   const pendingPost = useAccountComment({ commentIndex: params?.accountCommentIndex as any });
   const post = isPendingPage ? pendingPost : comment;
+
+  // in pending page, redirect to post view when post.cid is received
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (post?.cid && post?.subplebbitAddress) {
+      navigate(`/p/${post?.subplebbitAddress}/c/${post?.cid}`, { replace: true });
+    }
+  }, [post?.cid, post?.subplebbitAddress, navigate]);
 
   const { cid, downvoteCount, replyCount, subplebbitAddress, timestamp, title, upvoteCount } = comment || {};
   const subplebbit = useSubplebbit({ subplebbitAddress });
@@ -59,27 +67,29 @@ const Post = () => {
         />
       </div>
       <PostComponent post={post} />
-      <div className={styles.replyArea}>
-        <div className={styles.repliesTitle}>
-          <span className={styles.title}>{commentCount}</span>
-        </div>
-        <div className={styles.menuArea}>
-          <div className={styles.spacer}>
-            <span className={styles.dropdownTitle}>{t('reply_sorted_by')}: </span>
-            <div className={styles.dropdown}>
-              <span className={styles.selected}>{t('reply_best')}</span>
-            </div>
+      {!isPendingPage && (
+        <div className={styles.replyArea}>
+          <div className={styles.repliesTitle}>
+            <span className={styles.title}>{commentCount}</span>
           </div>
-          <div className={styles.spacer} />
-          <ReplyForm cid={cid} />
-          {loadingString && loadingString}
+          <div className={styles.menuArea}>
+            <div className={styles.spacer}>
+              <span className={styles.dropdownTitle}>{t('reply_sorted_by')}: </span>
+              <div className={styles.dropdown}>
+                <span className={styles.selected}>{t('reply_best')}</span>
+              </div>
+            </div>
+            <div className={styles.spacer} />
+            <ReplyForm cid={cid} />
+            {loadingString && loadingString}
+          </div>
+          <div className={styles.replies}>
+            {replies.map((reply, index) => (
+              <Reply key={`${index}${reply.cid}`} reply={reply} depth={comment.depth} />
+            ))}
+          </div>
         </div>
-        <div className={styles.replies}>
-          {replies.map((reply, index) => (
-            <Reply key={`${index}${reply.cid}`} reply={reply} depth={comment.depth} />
-          ))}
-        </div>
-      </div>
+      )}
     </div>
   );
 };

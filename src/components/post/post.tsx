@@ -191,7 +191,7 @@ const Post = ({ post = {}, index }: PostProps) => {
                 {pinned && <span className={styles.announcement}> - {t('announcement')}</span>}
               </p>
               {state === 'pending' && <p className={styles.pending}>{loadingString}</p>}
-              <CommentTools author={author} cid={cid} failed={state === 'failed'} replyCount={replyCount} subplebbitAddress={subplebbitAddress} />
+              <CommentTools author={author} cid={cid} failed={state === 'failed'} index={post?.index} replyCount={replyCount} subplebbitAddress={subplebbitAddress} />
             </div>
           </div>
         </div>

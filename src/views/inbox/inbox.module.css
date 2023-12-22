@@ -4,8 +4,44 @@
 
 .markAsReadButton {
   margin-bottom: 5px;
+  margin-left: 5px;
 }
 
 .notification {
   padding: 0 10px;
+}
+
+.markAllAsReadButton {
+  margin-top: 5px;
+}
+
+.inboxTabs {
+  border-bottom: 1px dotted gray;
+  padding: 5px 10px;
+  margin-left: 5px;
+  overflow: hidden;
+  font-size: larger;
+  display: inline-block;
+  margin-right: 15px;
+}
+
+.inboxTabs a span {
+  display: inline;
+  white-space: nowrap;
+}
+
+.inboxTabs a {
+  text-decoration: none;
+  color: var(--text-primary);
+}
+
+.separator {
+  color: var(--gray);
+  margin: 0px .7ex 0px .7ex;
+  cursor: default;
+}
+
+.selected {
+  color: var(--green) !important;
+  font-weight: bold;
 }
