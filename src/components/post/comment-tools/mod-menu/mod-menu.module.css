@@ -11,7 +11,7 @@
   background-color: var(--background);
   padding: 5px;
   color: var(--text);
-  font-size: 11px;
+  font-size: 12px;
   border: 1px solid var(--border-text);
   width: 200px;
 }

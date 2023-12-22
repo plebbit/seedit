@@ -9,25 +9,23 @@
 .modal {
   z-index: 7;
   background-color: var(--background);
-  padding: 5px;
   border: 1px solid var(--border-text);
   outline: none;
-  font-size: 11px;
+  font-size: 12px;
 }
 
-.menuItem, .menuItem a {
+.menuItem {
   color: var(--text-primary);
-  padding-bottom: 5px;
   cursor: pointer;
-  outline: none;
+  padding: 2px 3px 1px 3px;
+  display: block;
 }
 
-.text {
-  font-weight: normal !important;
-  color: var(--text) !important;
-  padding-bottom: 5px;
+.menuItem a {
+  color: var(--text-primary);
+  text-decoration: none;
 }
 
-.text:hover {
-  text-decoration: none !important;
+.menuItem:hover {
+  background-color: var(--background-primary);
 }
