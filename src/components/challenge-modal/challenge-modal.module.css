@@ -57,12 +57,9 @@
   margin-top: 20px;
 }
 
-.counter {
-  margin-right: auto;
-}
-
 .buttons {
   position: absolute;
+  left: 20px;
 }
 
 .challengeFooter button {
