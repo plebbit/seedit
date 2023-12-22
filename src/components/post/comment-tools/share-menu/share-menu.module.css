@@ -29,3 +29,8 @@
 .menuItem:hover {
   background-color: var(--background-primary);
 }
+
+.text {
+  color: var(--text) !important;
+  padding: 2px 3px 1px 3px;
+}
