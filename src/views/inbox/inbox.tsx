@@ -46,7 +46,6 @@ const Inbox = () => {
   const isInboxPostRepliesPage = isInboxPostRepliesView(location.pathname);
   const isInboxUnreadPage = isInboxUnreadView(location.pathname);
 
-  // get comments for unread/commentReplies/postReplies pages
   const repliesToUserReplies = useMemo(() => notifications?.filter((comment) => comment.parentCid !== comment.postCid) || [], [notifications]);
   const repliesToUserPosts = useMemo(() => notifications?.filter((comment) => comment.parentCid === comment.postCid) || [], [notifications]);
   const unreadNotifications = useMemo(() => notifications?.filter((comment) => !comment.markedAsRead) || [], [notifications]);

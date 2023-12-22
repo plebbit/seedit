@@ -75,7 +75,7 @@ const ReplyForm = ({ cid, isReplyingToReply, hideReplyForm }: ReplyFormProps) =>
     <div className={mdContainerClass}>
       <div className={styles.md}>
         <span className={urlClass}>
-          url: <input className={`${styles.url} ${urlClass}`} ref={urlRef} onChange={(e) => setContent.link(e.target.value)} />
+          media url: <input className={`${styles.url} ${urlClass}`} ref={urlRef} onChange={(e) => setContent.link(e.target.value)} />
         </span>
         <span className={`${styles.spoiler} ${spoilerClass}`}>
           <label>
