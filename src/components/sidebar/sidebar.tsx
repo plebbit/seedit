@@ -5,7 +5,7 @@ import { useBlock, Role, useSubplebbitStats } from '@plebbit/plebbit-react-hooks
 import styles from './sidebar.module.css';
 import { getFormattedDate, getFormattedDuration, getFormattedTimeAgo } from '../../lib/utils/time-utils';
 import { findSubplebbitCreator } from '../../lib/utils/user-utils';
-import { isAboutView, isAllView, isHomeView, isPostView } from '../../lib/utils/view-utils';
+import { isAboutView, isAllView, isHomeView, isPendingView, isPostView } from '../../lib/utils/view-utils';
 import SearchBar from '../search-bar';
 import SubscribeButton from '../subscribe-button';
 
@@ -80,15 +80,18 @@ const Sidebar = ({ address, cid, createdAt, description, downvoteCount = 0, role
   const onlineNotice = t('users_online', { count: hourActiveUserCount });
   const offlineNotice = updatedAt && t('community_last_seen', { dateAgo: getFormattedTimeAgo(updatedAt) });
   const onlineStatus = isOnline ? onlineNotice : offlineNotice;
+
   const location = useLocation();
   const params = useParams();
-  const isAbout = isAboutView(location.pathname);
-  const isAll = isAllView(location.pathname);
-  const isHome = isHomeView(location.pathname, params);
-  const isPost = isPostView(location.pathname, params);
+  const isAboutPage = isAboutView(location.pathname);
+  const isAllPage = isAllView(location.pathname);
+  const isHomePage = isHomeView(location.pathname, params);
+  const isPendingPage = isPendingView(location.pathname, params);
+  const isPostPage = isPostView(location.pathname, params);
+
   const subplebbitCreator = findSubplebbitCreator(roles);
   const creatorAddress = subplebbitCreator === 'anonymous' ? 'anonymous' : `${getShortAddress(subplebbitCreator)}`;
-  const submitRoute = isHome || isAll ? '/submit' : `/p/${address}/submit`;
+  const submitRoute = isHomePage || isAllPage ? '/submit' : `/p/${address}/submit`;
 
   const { blocked, unblock, block } = useBlock({ address });
 
@@ -107,10 +110,10 @@ const Sidebar = ({ address, cid, createdAt, description, downvoteCount = 0, role
   };
 
   return (
-    <div className={`${isAbout ? styles.about : styles.sidebar}`}>
+    <div className={`${isAboutPage ? styles.about : styles.sidebar}`}>
       <SearchBar />
       <div className={styles.searchBarSpacer} />
-      {isPost && <PostInfo address={address} cid={cid} downvoteCount={downvoteCount} timestamp={timestamp} upvoteCount={upvoteCount} />}
+      {isPostPage && <PostInfo address={address} cid={cid} downvoteCount={downvoteCount} timestamp={timestamp} upvoteCount={upvoteCount} />}
       <Link to={submitRoute}>
         <div className={styles.largeButton}>
           {t('submit_post')}
@@ -123,7 +126,7 @@ const Sidebar = ({ address, cid, createdAt, description, downvoteCount = 0, role
           <div className={styles.nub} />
         </div>
       </Link>
-      {!isHome && !isAll && (
+      {!isHomePage && !isAllPage && !isPendingPage && (
         <div className={styles.titleBox}>
           <Link className={styles.title} to={`/p/${address}`}>
             {address}
