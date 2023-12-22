@@ -57,7 +57,6 @@ const ShareMenu = ({ cid, subplebbitAddress }: ShareMenuProps) => {
       {isShareMenuOpen && (
         <FloatingFocusManager context={context} modal={false}>
           <div className={styles.modal} ref={refs.setFloating} style={floatingStyles} aria-labelledby={headingId} {...getFloatingProps()}>
-            <div className={styles.modalTitle}>share</div>
             <div className={styles.modMenu}>
               <ShareButton cid={cid} subplebbitAddress={subplebbitAddress} />
               <div className={styles.menuItem}>

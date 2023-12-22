@@ -13,18 +13,7 @@
   color: var(--text);
   font-size: 11px;
   border: 1px solid var(--border-text);
-  box-shadow: var(--box-shadow-modal);
   width: 200px;
-}
-
-.modalTitle {
-  background: var(--background-primary);
-  padding-bottom: 2px;
-  margin-bottom: 6px;
-  text-align: center;
-  color: var(--text-primary);
-  font-size: 13px;
-  font-weight: bold;
 }
 
 .modal input[type="checkbox"] {
