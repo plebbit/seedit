@@ -74,7 +74,9 @@ const ReplyForm = ({ cid, isReplyingToReply, hideReplyForm }: ReplyFormProps) =>
   return (
     <div className={mdContainerClass}>
       <div className={styles.md}>
-        <input className={`${styles.url} ${urlClass}`} ref={urlRef} placeholder='url' onChange={(e) => setContent.link(e.target.value)} />
+        <span className={urlClass}>
+          url: <input className={`${styles.url} ${urlClass}`} ref={urlRef} onChange={(e) => setContent.link(e.target.value)} />
+        </span>
         <span className={`${styles.spoiler} ${spoilerClass}`}>
           <label>
             {t('spoiler')}: <input type='checkbox' className={styles.checkbox} ref={spoilerRef} onChange={(e) => setContent.spoiler(e.target.checked)} />
