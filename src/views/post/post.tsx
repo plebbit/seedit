@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { useLocation, useParams } from 'react-router-dom';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import { useAccountComment, useComment, useSubplebbit } from '@plebbit/plebbit-react-hooks';
 import { useTranslation } from 'react-i18next';
 import styles from './post.module.css';
@@ -21,6 +21,14 @@ const Post = () => {
   const comment = useComment({ commentCid: params?.commentCid });
   const pendingPost = useAccountComment({ commentIndex: params?.accountCommentIndex as any });
   const post = isPendingPage ? pendingPost : comment;
+
+  // in pending page, redirect to post view when post.cid is received
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (post?.cid && post?.subplebbitAddress) {
+      navigate(`/p/${post?.subplebbitAddress}/c/${post?.cid}`, { replace: true });
+    }
+  }, [post?.cid, post?.subplebbitAddress, navigate]);
 
   const { cid, downvoteCount, replyCount, subplebbitAddress, timestamp, title, upvoteCount } = comment || {};
   const subplebbit = useSubplebbit({ subplebbitAddress });
