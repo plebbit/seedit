@@ -17,55 +17,37 @@ const BlockAuthorButton = ({ author, toggleIsMenuOpen }: HideMenuProps) => {
   const { blocked, unblock, block } = useBlock({ address: author?.address });
 
   return (
-    <>
-      <div
-        className={styles.menuItem}
-        onClick={() => {
-          (blocked ? unblock : block)();
-          toggleIsMenuOpen && toggleIsMenuOpen();
-        }}
-      >
-        {blocked ? 'unblock' : 'block'} u/{author?.shortAddress}
-      </div>
-    </>
+    <div
+      className={styles.menuItem}
+      onClick={() => {
+        (blocked ? unblock : block)();
+        toggleIsMenuOpen && toggleIsMenuOpen();
+      }}
+    >
+      {blocked ? 'unblock' : 'block'} u/{author?.shortAddress}
+    </div>
   );
 };
 
-const BlockSubplebbitButton = ({ subplebbitAddress, toggleIsMenuOpen }: HideMenuProps) => {
+const BlockSubplebbitButton = ({ subplebbitAddress }: HideMenuProps) => {
   // const { t } = useTranslation();
   const { blocked, unblock, block } = useBlock({ address: subplebbitAddress });
 
   return (
-    <>
-      <div
-        className={styles.menuItem}
-        onClick={() => {
-          (blocked ? unblock : block)();
-          toggleIsMenuOpen && toggleIsMenuOpen();
-        }}
-      >
-        {blocked ? 'unblock' : 'block'} p/{subplebbitAddress && getShortAddress(subplebbitAddress)}
-      </div>
-    </>
+    <div className={styles.menuItem} onClick={blocked ? unblock : block}>
+      {blocked ? 'unblock' : 'block'} p/{subplebbitAddress && getShortAddress(subplebbitAddress)}
+    </div>
   );
 };
 
-const BlockCommentButton = ({ cid, toggleIsMenuOpen }: HideMenuProps) => {
+const BlockCommentButton = ({ cid }: HideMenuProps) => {
   // const { t } = useTranslation();
   const { blocked, unblock, block } = useBlock({ address: cid });
 
   return (
-    <>
-      <div
-        className={styles.menuItem}
-        onClick={() => {
-          (blocked ? unblock : block)();
-          toggleIsMenuOpen && toggleIsMenuOpen();
-        }}
-      >
-        {blocked ? 'unhide' : 'hide'} post
-      </div>
-    </>
+    <div className={styles.menuItem} onClick={blocked ? unblock : block}>
+      {blocked ? 'unhide' : 'hide'} post
+    </div>
   );
 };
 
@@ -100,8 +82,8 @@ const HideMenu = ({ author, cid, subplebbitAddress }: HideMenuProps) => {
           <div className={styles.modal} ref={refs.setFloating} style={floatingStyles} aria-labelledby={headingId} {...getFloatingProps()}>
             <div className={styles.modMenu}>
               <BlockCommentButton cid={cid} toggleIsMenuOpen={toggleIsMenuOpen} />
-              <BlockSubplebbitButton subplebbitAddress={subplebbitAddress} toggleIsMenuOpen={toggleIsMenuOpen} />
-              <BlockAuthorButton author={author} toggleIsMenuOpen={toggleIsMenuOpen} />
+              <BlockSubplebbitButton subplebbitAddress={subplebbitAddress} />
+              <BlockAuthorButton author={author} />
             </div>
           </div>
         </FloatingFocusManager>
