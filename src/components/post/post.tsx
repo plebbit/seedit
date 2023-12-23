@@ -22,12 +22,13 @@ interface PostAuthorProps {
   authorRole: string;
   cid: string;
   displayName: string;
+  index?: number;
   shortAddress: string;
   shortAuthorAddress: string | undefined;
   authorAddressChanged: boolean;
 }
 
-const PostAuthor = ({ authorAddress, authorRole, cid, displayName, shortAddress, shortAuthorAddress, authorAddressChanged }: PostAuthorProps) => {
+const PostAuthor = ({ authorAddress, authorRole, cid, displayName, index, shortAddress, shortAuthorAddress, authorAddressChanged }: PostAuthorProps) => {
   const isAuthorOwner = authorRole === 'owner';
   const isAuthorAdmin = authorRole === 'admin';
   const isAuthorModerator = authorRole === 'moderator';
@@ -37,11 +38,11 @@ const PostAuthor = ({ authorAddress, authorRole, cid, displayName, shortAddress,
   return (
     <>
       {displayName && (
-        <Link to={`/u/${authorAddress}/c/${cid}`} className={`${styles.displayName} ${moderatorClass}`}>
+        <Link to={cid ? `/u/${authorAddress}/c/${cid}` : `/profile/${index}`} className={`${styles.displayName} ${moderatorClass}`}>
           {displayName}{' '}
         </Link>
       )}
-      <Link className={`${styles.authorAddressWrapper} ${moderatorClass}`} to={`/u/${authorAddress}/c/${cid}`}>
+      <Link className={`${styles.authorAddressWrapper} ${moderatorClass}`} to={cid ? `/u/${authorAddress}/c/${cid}` : `/profile/${index}`}>
         <span className={styles.authorAddressHidden}>u/{shortAddress || shortAuthorAddress}</span>
         <span className={`${styles.authorAddressVisible} ${authorAddressChanged && styles.authorAddressChanged}`}>u/{shortAuthorAddress}</span>
       </Link>
@@ -138,7 +139,7 @@ const Post = ({ post = {}, index }: PostProps) => {
                     {postTitle}
                   </a>
                 ) : (
-                  <Link className={linkClass} to={`/p/${subplebbitAddress}/c/${cid}`}>
+                  <Link className={linkClass} to={cid ? `/p/${subplebbitAddress}/c/${cid}` : `/profile/${post?.index}`}>
                     {postTitle}
                   </Link>
                 )}
@@ -175,6 +176,7 @@ const Post = ({ post = {}, index }: PostProps) => {
                   authorRole={authorRole}
                   cid={cid}
                   displayName={displayName}
+                  index={post?.index}
                   shortAddress={shortAddress}
                   shortAuthorAddress={shortAuthorAddress}
                   authorAddressChanged={authorAddressChanged}
