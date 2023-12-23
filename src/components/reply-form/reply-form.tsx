@@ -74,14 +74,16 @@ const ReplyForm = ({ cid, isReplyingToReply, hideReplyForm }: ReplyFormProps) =>
   return (
     <div className={mdContainerClass}>
       <div className={styles.md}>
-        <span className={urlClass}>
-          media url: <input className={`${styles.url} ${urlClass}`} ref={urlRef} onChange={(e) => setContent.link(e.target.value)} />
-        </span>
-        <span className={`${styles.spoiler} ${spoilerClass}`}>
-          <label>
-            {t('spoiler')}: <input type='checkbox' className={styles.checkbox} ref={spoilerRef} onChange={(e) => setContent.spoiler(e.target.checked)} />
-          </label>
-        </span>
+        <div className={styles.options}>
+          <span className={urlClass}>
+            media url: <input className={`${styles.url} ${urlClass}`} ref={urlRef} onChange={(e) => setContent.link(e.target.value)} />
+          </span>
+          <span className={`${styles.spoiler} ${spoilerClass}`}>
+            <label>
+              {t('spoiler')}: <input type='checkbox' className={styles.checkbox} ref={spoilerRef} onChange={(e) => setContent.spoiler(e.target.checked)} />
+            </label>
+          </span>
+        </div>
         <textarea className={styles.textarea} ref={textRef} onChange={(e) => setContent.content(e.target.value)} />
       </div>
       <div className={styles.bottomArea}>
@@ -93,7 +95,7 @@ const ReplyForm = ({ cid, isReplyingToReply, hideReplyForm }: ReplyFormProps) =>
             {t('cancel')}
           </button>
         )}
-        <span className={styles.options} onClick={() => setShowOptions(!showOptions)}>
+        <span className={styles.optionsButton} onClick={() => setShowOptions(!showOptions)}>
           {showOptions ? t('hide_options') : t('options')}
         </span>
       </div>

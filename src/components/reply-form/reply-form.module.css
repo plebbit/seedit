@@ -57,7 +57,7 @@
   text-transform: lowercase;
 }
 
-.options {
+.optionsButton {
   font-size: smaller;
   float: right;
   margin-top: 5px;
@@ -65,4 +65,10 @@
   margin-right: 5px;
   color: var(--text-primary);
   cursor: pointer;
+}
+
+.options {
+  font-size: 12px;
+  padding-bottom: 2px;
+  padding-top: 2px;
 }
