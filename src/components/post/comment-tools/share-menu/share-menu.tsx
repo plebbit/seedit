@@ -19,15 +19,14 @@ const ShareButton = ({ cid, subplebbitAddress }: ShareMenuProps) => {
   }, [hasShared]);
 
   return (
-    <div className={`${!hasShared ? styles.menuItem : styles.text}`}>
-      <span
-        onClick={() => {
-          setHasShared(true);
-          copyShareLinkToClipboard(subplebbitAddress, cid);
-        }}
-      >
-        {hasShared ? 'link copied' : 'copy link'}
-      </span>
+    <div
+      className={`${!hasShared ? styles.menuItem : styles.text}`}
+      onClick={() => {
+        setHasShared(true);
+        copyShareLinkToClipboard(subplebbitAddress, cid);
+      }}
+    >
+      {hasShared ? 'link copied' : 'copy link'}
     </div>
   );
 };
@@ -46,13 +45,13 @@ const ShareMenu = ({ cid, subplebbitAddress }: ShareMenuProps) => {
   const click = useClick(context);
   const dismiss = useDismiss(context);
   const role = useRole(context);
-  const { getReferenceProps, getFloatingProps } = useInteractions([click, dismiss, role]);
+  const { getFloatingProps } = useInteractions([click, dismiss, role]);
   const headingId = useId();
 
   return (
     <>
-      <li className={styles.button} ref={refs.setReference} {...getReferenceProps()}>
-        <span onClick={() => setIsShareMenuOpen(!isShareMenuOpen)}>{t('share')}</span>
+      <li className={styles.button} ref={refs.setReference}>
+        <span onClick={() => cid && setIsShareMenuOpen(!isShareMenuOpen)}>{t('share')}</span>
       </li>
       {isShareMenuOpen && (
         <FloatingFocusManager context={context} modal={false}>
