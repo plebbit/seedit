@@ -5,6 +5,7 @@
   --red: red;
   --gray-contrast: #888;
   --gray-overlay: #F7F7F7;
+  --gray-overlay-border: #E9E9E9;
   --gray-border: #ddd;
   --gray-light: #CCCCCA;
   --box-shadow-modal: 4px 4px 4px #ccc;
@@ -52,6 +53,7 @@
   --red: rgb(200, 0, 0);
   --gray-contrast: #c7c7c7;
   --gray-overlay: #1f1f1f;
+  --gray-overlay-border: #3e3e3e;
   --gray-border: #3e3e3e;
   --gray-light: #3e3e3e9d;
   --box-shadow-modal: 4px 4px 4px #000;

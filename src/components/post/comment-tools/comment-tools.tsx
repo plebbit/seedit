@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { Author, useAccount, useComment, useSubplebbit } from '@plebbit/plebbit-react-hooks';
 import styles from './comment-tools.module.css';
@@ -6,6 +6,7 @@ import HideMenu from './hide-menu';
 import ModTools from './mod-menu';
 import ShareMenu from './share-menu';
 import { FailedLabel, PendingLabel, SpoilerLabel } from '../label';
+import { isInboxView } from '../../../lib/utils/view-utils';
 
 interface CommentToolsProps {
   author?: Author;
@@ -115,9 +116,10 @@ const CommentTools = ({
   const authorRole = useSubplebbit({ subplebbitAddress })?.roles?.[account?.author?.address]?.role;
   const isMod = authorRole === 'admin' || authorRole === 'owner' || authorRole === 'moderator';
   hasLabel = spoiler || (cid === undefined && !isReply);
+  const isInboxPage = isInboxView(useLocation().pathname);
 
   return (
-    <ul className={`${styles.buttons} ${isReply ? styles.buttonsReply : ''} ${hasLabel ? styles.buttonsLabel : ''}`}>
+    <ul className={`${styles.buttons} ${isReply && !isInboxPage ? styles.buttonsReply : ''} ${hasLabel ? styles.buttonsLabel : ''}`}>
       {hasLabel && <CommentToolsLabel cid={cid} failed={failed} isReply={isReply} spoiler={spoiler} subplebbitAddress={subplebbitAddress} />}
       {isReply ? (
         isSingleReply ? (
