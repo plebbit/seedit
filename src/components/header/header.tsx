@@ -183,12 +183,26 @@ const AuthorHeaderTabs = () => {
   );
 };
 
+const InboxHeaderTabs = () => {
+  return (
+    <>
+      <li>
+        <Link to={'/inbox'} className={styles.selected}>
+          inbox
+        </Link>
+      </li>
+      {/* TODO: add tabs for messaging when available in the API */}
+    </>
+  );
+};
+
 const HeaderTabs = () => {
   const params = useParams();
   const location = useLocation();
   const isAllPage = isAllView(location.pathname);
   const isAuthorPage = isAuthorView(location.pathname);
   const isHomePage = isHomeView(location.pathname, params);
+  const isInboxPage = isInboxView(location.pathname);
   const isPendingPage = isPendingView(location.pathname, params);
   const isPostPage = isPostView(location.pathname, params);
   const isProfilePage = isProfileView(location.pathname);
@@ -203,6 +217,8 @@ const HeaderTabs = () => {
     return <AuthorHeaderTabs />;
   } else if (isPendingPage) {
     return <span className={styles.pageName}>pending</span>;
+  } else if (isInboxPage) {
+    return <InboxHeaderTabs />;
   }
   return null;
 };
@@ -243,7 +259,7 @@ const HeaderTitle = ({ title, shortAddress }: { title: string; shortAddress: str
   } else if (isAuthorPage) {
     return authorTitle;
   } else if (isInboxPage) {
-    return 'inbox';
+    return 'message';
   }
   return null;
 };

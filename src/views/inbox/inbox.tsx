@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef } from 'react';
+import { useCallback, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { StateSnapshot, Virtuoso, VirtuosoHandle } from 'react-virtuoso';
 import { useAccount, useNotifications } from '@plebbit/plebbit-react-hooks';
@@ -46,21 +46,22 @@ const Inbox = () => {
   const isInboxPostRepliesPage = isInboxPostRepliesView(location.pathname);
   const isInboxUnreadPage = isInboxUnreadView(location.pathname);
 
-  const repliesToUserReplies = useMemo(() => notifications?.filter((comment) => comment.parentCid !== comment.postCid) || [], [notifications]);
-  const repliesToUserPosts = useMemo(() => notifications?.filter((comment) => comment.parentCid === comment.postCid) || [], [notifications]);
-  const unreadNotifications = useMemo(() => notifications?.filter((comment) => !comment.markedAsRead) || [], [notifications]);
+  const filterRepliesToUserReplies = useCallback(() => notifications?.filter((comment) => comment.parentCid !== comment.postCid) || [], [notifications]);
 
-  const comments = useMemo(() => {
-    if (isInboxCommentRepliesPage) {
-      return repliesToUserReplies;
-    } else if (isInboxPostRepliesPage) {
-      return repliesToUserPosts;
-    } else if (isInboxUnreadPage) {
-      return unreadNotifications;
-    } else {
-      return notifications;
-    }
-  }, [notifications, repliesToUserReplies, repliesToUserPosts, unreadNotifications, isInboxCommentRepliesPage, isInboxPostRepliesPage, isInboxUnreadPage]);
+  const filterRepliesToUserPosts = useCallback(() => notifications?.filter((comment) => comment.parentCid === comment.postCid) || [], [notifications]);
+
+  const filterUnreadNotifications = useCallback(() => notifications?.filter((comment) => !comment.markedAsRead) || [], [notifications]);
+
+  let comments;
+  if (isInboxCommentRepliesPage) {
+    comments = filterRepliesToUserReplies();
+  } else if (isInboxPostRepliesPage) {
+    comments = filterRepliesToUserPosts();
+  } else if (isInboxUnreadPage) {
+    comments = filterUnreadNotifications();
+  } else {
+    comments = notifications;
+  }
 
   // save last virtuoso state on each scroll
   const virtuosoRef = useRef<VirtuosoHandle | null>(null);
@@ -81,8 +82,6 @@ const Inbox = () => {
   if (account && !notifications.length) {
     return 'empty';
   }
-
-  console.log(comments);
 
   return (
     <div className={styles.content}>

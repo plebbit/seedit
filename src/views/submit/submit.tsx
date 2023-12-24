@@ -150,6 +150,7 @@ const Submit = () => {
                   subplebbitAddressRef.current.value = subplebbitAddress;
                   setSelectedSubplebbit(subplebbitAddress);
                 }
+                setSubmitStore({ subplebbitAddress });
                 setInputAddress('');
               }}
             >
