@@ -14,15 +14,18 @@
 }
 
 .midcol {
+  width: 37px;
   font-weight: bold;
   font-size: small;
   float: left;
-  padding: 0 7px 0px 7px;
+  padding-right: 5px;
+  padding-left: 5px;
   background: transparent;
   overflow: hidden;
 }
 
 .arrowWrapper {
+  padding-left: 11px;
   padding-top: 2px;
 }
 
