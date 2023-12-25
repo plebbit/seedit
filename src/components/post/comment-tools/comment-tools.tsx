@@ -38,14 +38,11 @@ const PostTools = ({ author, cid, hasLabel, index, subplebbitAddress, replyCount
         <span>{t('save')}</span>
       </li>
       <HideMenu author={author} cid={cid} subplebbitAddress={subplebbitAddress} />
-      <li className={styles.button}>
-        <span>{t('post_report')}</span>
-      </li>
     </>
   );
 };
 
-const ReplyTools = ({ cid, hasLabel, index, showReplyForm, subplebbitAddress }: CommentToolsProps) => {
+const ReplyTools = ({ author, cid, hasLabel, index, showReplyForm, subplebbitAddress }: CommentToolsProps) => {
   const { t } = useTranslation();
 
   return (
@@ -54,11 +51,9 @@ const ReplyTools = ({ cid, hasLabel, index, showReplyForm, subplebbitAddress }: 
         <Link to={cid ? `/p/${subplebbitAddress}/c/${cid}` : `/profile/${index}`}>{t('reply_permalink')}</Link>
       </li>
       <li className={styles.button}>
-        <span>{t('reply_embed')}</span>
-      </li>
-      <li className={styles.button}>
         <span>{t('save')}</span>
       </li>
+      <HideMenu author={author} cid={cid} subplebbitAddress={subplebbitAddress} />
       <li className={!cid ? styles.hideReply : styles.button}>
         <span onClick={() => cid && showReplyForm?.()}>{t('reply_reply')}</span>
       </li>
@@ -125,7 +120,15 @@ const CommentTools = ({
         isSingleReply ? (
           <SingleReplyTools cid={cid} hasLabel={hasLabel} index={index} parentCid={parentCid} subplebbitAddress={subplebbitAddress} />
         ) : (
-          <ReplyTools cid={cid} hasLabel={hasLabel} index={index} parentCid={parentCid} showReplyForm={showReplyForm} subplebbitAddress={subplebbitAddress} />
+          <ReplyTools
+            author={author}
+            cid={cid}
+            hasLabel={hasLabel}
+            index={index}
+            parentCid={parentCid}
+            showReplyForm={showReplyForm}
+            subplebbitAddress={subplebbitAddress}
+          />
         )
       ) : (
         <PostTools author={author} cid={cid} hasLabel={hasLabel} index={index} subplebbitAddress={subplebbitAddress} replyCount={replyCount} />

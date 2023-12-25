@@ -1,5 +1,5 @@
-import { useMemo, useState } from 'react';
-import { Comment, useAccountComment, useAuthorAddress, useComment, useSubplebbit } from '@plebbit/plebbit-react-hooks';
+import { useEffect, useMemo, useState } from 'react';
+import { Comment, useAccountComment, useAuthorAddress, useBlock, useComment, useSubplebbit } from '@plebbit/plebbit-react-hooks';
 import { flattenCommentsPages } from '@plebbit/plebbit-react-hooks/dist/lib/utils';
 import { Link, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
@@ -205,6 +205,20 @@ const Reply = ({ depth = 0, isSingle, isNotification = false, reply = {} }: Repl
   } = reply || {};
   const subplebbit = useSubplebbit({ subplebbitAddress });
 
+  const { blocked, unblock } = useBlock({ address: cid });
+  const [collapsed, setCollapsed] = useState(blocked);
+  useEffect(() => {
+    if (blocked) {
+      setCollapsed(true);
+    }
+  }, [blocked]);
+  const handleCollapseButton = () => {
+    if (blocked) {
+      unblock();
+    }
+    setCollapsed(!collapsed);
+  };
+
   const authorRole = subplebbit?.roles?.[reply.author?.address]?.role;
   const { shortAuthorAddress } = useAuthorAddress({ comment: reply });
   const replies = useReplies(reply);
@@ -235,7 +249,6 @@ const Reply = ({ depth = 0, isSingle, isNotification = false, reply = {} }: Repl
     </span>
   );
 
-  const [collapsed, setCollapsed] = useState(false);
   const unnestedReplies = useMemo(() => flattenCommentsPages(reply.replies), [reply.replies]);
   const childrenCount = unnestedReplies.length;
   const childrenString = childrenCount === 1 ? t('child', { childrenCount }) : t('children', { childrenCount });
@@ -261,7 +274,7 @@ const Reply = ({ depth = 0, isSingle, isNotification = false, reply = {} }: Repl
           <div className={`${styles.entry} ${collapsed && styles.collapsedEntry}`}>
             {!isInboxPage && (
               <p className={styles.tagline}>
-                <span className={styles.expand} onClick={() => setCollapsed(!collapsed)}>
+                <span className={styles.expand} onClick={handleCollapseButton}>
                   [{collapsed ? '+' : '–'}]
                 </span>
                 <ReplyAuthor address={author?.address} authorRole={authorRole} cid={cid} displayName={author.displayName} shortAuthorAddress={shortAuthorAddress} />
@@ -299,14 +312,15 @@ const Reply = ({ depth = 0, isSingle, isNotification = false, reply = {} }: Repl
           {!collapsed && (
             <div className={isInboxPage && markedAsRead ? styles.addMargin : ''}>
               <CommentTools
-                cid={reply.cid}
+                author={author}
+                cid={cid}
                 isReply={true}
                 isSingleReply={isSingle}
                 index={reply?.index}
-                parentCid={reply?.postCid}
+                parentCid={postCid}
                 replyCount={replies.length}
                 spoiler={spoiler}
-                subplebbitAddress={reply.subplebbitAddress}
+                subplebbitAddress={subplebbitAddress}
                 showReplyForm={showReplyForm}
               />
               {isReplying && <ReplyForm cid={cid} isReplyingToReply={true} hideReplyForm={hideReplyForm} />}
