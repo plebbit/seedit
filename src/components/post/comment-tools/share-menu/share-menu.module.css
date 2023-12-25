@@ -26,6 +26,10 @@
   text-decoration: none;
 }
 
+.menuItem a:focus {
+  outline: none;
+}
+
 .menuItem:hover {
   background-color: var(--background-primary);
 }

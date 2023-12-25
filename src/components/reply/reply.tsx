@@ -1,5 +1,5 @@
-import { useMemo, useState } from 'react';
-import { Comment, useAccountComment, useAuthorAddress, useComment, useSubplebbit } from '@plebbit/plebbit-react-hooks';
+import { useEffect, useMemo, useState } from 'react';
+import { Comment, useAccountComment, useAuthorAddress, useBlock, useComment, useSubplebbit } from '@plebbit/plebbit-react-hooks';
 import { flattenCommentsPages } from '@plebbit/plebbit-react-hooks/dist/lib/utils';
 import { Link, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
@@ -19,6 +19,7 @@ import useDownvote from '../../hooks/use-downvote';
 import useStateString from '../../hooks/use-state-string';
 import useUpvote from '../../hooks/use-upvote';
 import { isInboxView } from '../../lib/utils/view-utils';
+import { getShortAddress } from '@plebbit/plebbit-js';
 
 interface ReplyAuthorProps {
   address: string;
@@ -134,8 +135,8 @@ const ParentLink = ({ postCid }: ParentLinkProps) => {
 const InboxParentLink = ({ commentCid }: ParentLinkProps) => {
   const inboxComment = useComment({ commentCid });
   const { postCid, parentCid } = inboxComment || {};
-  const parentComment = useComment({ commentCid: inboxComment?.postCid });
-  const { cid, content, title, subplebbitAddress } = parentComment || {};
+  const parent = useComment({ commentCid: inboxComment?.postCid });
+  const { cid, content, title, subplebbitAddress } = parent || {};
   // const { t } = useTranslation();
   const postTitle = (title?.length > 300 ? title?.slice(0, 300) + '...' : title) || (content?.length > 300 ? content?.slice(0, 300) + '...' : content);
 
@@ -155,6 +156,7 @@ const InboxParentLink = ({ commentCid }: ParentLinkProps) => {
 const InboxParentInfo = ({ commentCid }: ParentLinkProps) => {
   const parent = useComment({ commentCid });
   const { author, cid, subplebbitAddress, timestamp } = parent || {};
+  const shortSubplebbitAddress = subplebbitAddress ? (subplebbitAddress.includes('.') ? subplebbitAddress : getShortAddress(subplebbitAddress)) : '';
 
   return (
     <>
@@ -165,7 +167,7 @@ const InboxParentInfo = ({ commentCid }: ParentLinkProps) => {
         </Link>
         via{' '}
         <Link to={`/p/${subplebbitAddress}`} className={styles.inboxParentSubplebbit}>
-          p/{subplebbitAddress}{' '}
+          p/{shortSubplebbitAddress}{' '}
         </Link>
         sent {getFormattedTimeAgo(timestamp)}
       </div>
@@ -203,6 +205,20 @@ const Reply = ({ depth = 0, isSingle, isNotification = false, reply = {} }: Repl
   } = reply || {};
   const subplebbit = useSubplebbit({ subplebbitAddress });
 
+  const { blocked, unblock } = useBlock({ address: cid });
+  const [collapsed, setCollapsed] = useState(blocked);
+  useEffect(() => {
+    if (blocked) {
+      setCollapsed(true);
+    }
+  }, [blocked]);
+  const handleCollapseButton = () => {
+    if (blocked) {
+      unblock();
+    }
+    setCollapsed(!collapsed);
+  };
+
   const authorRole = subplebbit?.roles?.[reply.author?.address]?.role;
   const { shortAuthorAddress } = useAuthorAddress({ comment: reply });
   const replies = useReplies(reply);
@@ -233,7 +249,6 @@ const Reply = ({ depth = 0, isSingle, isNotification = false, reply = {} }: Repl
     </span>
   );
 
-  const [collapsed, setCollapsed] = useState(false);
   const unnestedReplies = useMemo(() => flattenCommentsPages(reply.replies), [reply.replies]);
   const childrenCount = unnestedReplies.length;
   const childrenString = childrenCount === 1 ? t('child', { childrenCount }) : t('children', { childrenCount });
@@ -259,7 +274,7 @@ const Reply = ({ depth = 0, isSingle, isNotification = false, reply = {} }: Repl
           <div className={`${styles.entry} ${collapsed && styles.collapsedEntry}`}>
             {!isInboxPage && (
               <p className={styles.tagline}>
-                <span className={styles.expand} onClick={() => setCollapsed(!collapsed)}>
+                <span className={styles.expand} onClick={handleCollapseButton}>
                   [{collapsed ? '+' : '–'}]
                 </span>
                 <ReplyAuthor address={author?.address} authorRole={authorRole} cid={cid} displayName={author.displayName} shortAuthorAddress={shortAuthorAddress} />
@@ -297,14 +312,15 @@ const Reply = ({ depth = 0, isSingle, isNotification = false, reply = {} }: Repl
           {!collapsed && (
             <div className={isInboxPage && markedAsRead ? styles.addMargin : ''}>
               <CommentTools
-                cid={reply.cid}
+                author={author}
+                cid={cid}
                 isReply={true}
                 isSingleReply={isSingle}
                 index={reply?.index}
-                parentCid={reply?.postCid}
+                parentCid={postCid}
                 replyCount={replies.length}
                 spoiler={spoiler}
-                subplebbitAddress={reply.subplebbitAddress}
+                subplebbitAddress={subplebbitAddress}
                 showReplyForm={showReplyForm}
               />
               {isReplying && <ReplyForm cid={cid} isReplyingToReply={true} hideReplyForm={hideReplyForm} />}

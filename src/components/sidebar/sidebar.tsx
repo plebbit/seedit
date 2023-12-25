@@ -1,7 +1,7 @@
 import { Link, useLocation, useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { getShortAddress } from '@plebbit/plebbit-js';
-import { useBlock, Role, useSubplebbitStats } from '@plebbit/plebbit-react-hooks';
+import { useBlock, Role, useSubplebbitStats, useAccountComment } from '@plebbit/plebbit-react-hooks';
 import styles from './sidebar.module.css';
 import { getFormattedDate, getFormattedDuration, getFormattedTimeAgo } from '../../lib/utils/time-utils';
 import { findSubplebbitCreator } from '../../lib/utils/user-utils';
@@ -89,9 +89,11 @@ const Sidebar = ({ address, cid, createdAt, description, downvoteCount = 0, role
   const isPendingPage = isPendingView(location.pathname, params);
   const isPostPage = isPostView(location.pathname, params);
 
+  const pendingPost = useAccountComment({ commentIndex: params?.accountCommentIndex as any });
+
   const subplebbitCreator = findSubplebbitCreator(roles);
   const creatorAddress = subplebbitCreator === 'anonymous' ? 'anonymous' : `${getShortAddress(subplebbitCreator)}`;
-  const submitRoute = isHomePage || isAllPage ? '/submit' : `/p/${address}/submit`;
+  const submitRoute = isHomePage || isAllPage ? '/submit' : isPendingPage ? `/p/${pendingPost?.subplebbitAddress}/submit` : `/p/${address}/submit`;
 
   const { blocked, unblock, block } = useBlock({ address });
 

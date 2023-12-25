@@ -82,6 +82,7 @@ const HideMenu = ({ author, cid, subplebbitAddress }: HideMenuProps) => {
           <div className={styles.modal} ref={refs.setFloating} style={floatingStyles} aria-labelledby={headingId} {...getFloatingProps()}>
             <div className={styles.modMenu}>
               <BlockCommentButton cid={cid} toggleIsMenuOpen={toggleIsMenuOpen} />
+              <div className={styles.menuItem}>{t('report')}</div>
               <BlockSubplebbitButton subplebbitAddress={subplebbitAddress} />
               <BlockAuthorButton author={author} />
             </div>

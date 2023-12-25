@@ -58,6 +58,8 @@ const ShareMenu = ({ cid, subplebbitAddress }: ShareMenuProps) => {
           <div className={styles.modal} ref={refs.setFloating} style={floatingStyles} aria-labelledby={headingId} {...getFloatingProps()}>
             <div className={styles.modMenu}>
               <ShareButton cid={cid} subplebbitAddress={subplebbitAddress} />
+              <div className={styles.menuItem}>{t('crosspost')}</div>
+              <div className={styles.menuItem}>{t('embed')}</div>
               <div className={styles.menuItem}>
                 <a href={`https://plebchan.eth.limo/#/p/${subplebbitAddress}/c/${cid}`} target='_blank' rel='noopener noreferrer'>
                   view on plebchan
