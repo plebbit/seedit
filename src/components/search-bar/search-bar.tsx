@@ -3,7 +3,11 @@ import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import styles from './search-bar.module.css';
 
-const SearchBar = () => {
+interface SearchBarProps {
+  isFocused?: boolean;
+}
+
+const SearchBar = ({ isFocused = false }: SearchBarProps) => {
   const searchBarRef = useRef<HTMLFormElement>(null);
   const searchInputRef = useRef<HTMLInputElement>(null);
   const wrapperRef = useRef<HTMLDivElement>(null);
@@ -16,6 +20,12 @@ const SearchBar = () => {
   const handleInputFocus = () => {
     setShowExpando(true);
   };
+
+  useEffect(() => {
+    if (isFocused) {
+      searchInputRef.current?.focus();
+    }
+  }, [isFocused]);
 
   const handleClickOutside = useCallback(
     (event: MouseEvent) => {
