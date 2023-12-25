@@ -39,7 +39,7 @@ const PostTools = ({ author, cid, hasLabel, index, subplebbitAddress, replyCount
       </li>
       <HideMenu author={author} cid={cid} subplebbitAddress={subplebbitAddress} />
       <li className={styles.button}>
-        <span>{t('post_crosspost')}</span>
+        <span>{t('post_report')}</span>
       </li>
     </>
   );
