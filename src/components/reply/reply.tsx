@@ -19,6 +19,7 @@ import useDownvote from '../../hooks/use-downvote';
 import useStateString from '../../hooks/use-state-string';
 import useUpvote from '../../hooks/use-upvote';
 import { isInboxView } from '../../lib/utils/view-utils';
+import { getShortAddress } from '@plebbit/plebbit-js';
 
 interface ReplyAuthorProps {
   address: string;
@@ -134,8 +135,8 @@ const ParentLink = ({ postCid }: ParentLinkProps) => {
 const InboxParentLink = ({ commentCid }: ParentLinkProps) => {
   const inboxComment = useComment({ commentCid });
   const { postCid, parentCid } = inboxComment || {};
-  const parentComment = useComment({ commentCid: inboxComment?.postCid });
-  const { cid, content, title, subplebbitAddress } = parentComment || {};
+  const parent = useComment({ commentCid: inboxComment?.postCid });
+  const { cid, content, title, subplebbitAddress } = parent || {};
   // const { t } = useTranslation();
   const postTitle = (title?.length > 300 ? title?.slice(0, 300) + '...' : title) || (content?.length > 300 ? content?.slice(0, 300) + '...' : content);
 
@@ -155,6 +156,7 @@ const InboxParentLink = ({ commentCid }: ParentLinkProps) => {
 const InboxParentInfo = ({ commentCid }: ParentLinkProps) => {
   const parent = useComment({ commentCid });
   const { author, cid, subplebbitAddress, timestamp } = parent || {};
+  const shortSubplebbitAddress = subplebbitAddress ? (subplebbitAddress.includes('.') ? subplebbitAddress : getShortAddress(subplebbitAddress)) : '';
 
   return (
     <>
@@ -165,7 +167,7 @@ const InboxParentInfo = ({ commentCid }: ParentLinkProps) => {
         </Link>
         via{' '}
         <Link to={`/p/${subplebbitAddress}`} className={styles.inboxParentSubplebbit}>
-          p/{subplebbitAddress}{' '}
+          p/{shortSubplebbitAddress}{' '}
         </Link>
         sent {getFormattedTimeAgo(timestamp)}
       </div>
