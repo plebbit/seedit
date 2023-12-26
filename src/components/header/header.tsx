@@ -271,6 +271,7 @@ const Header = () => {
   const subplebbit = useSubplebbit({ subplebbitAddress: params.subplebbitAddress });
   const { suggested, title, shortAddress } = subplebbit || {};
 
+  const isMobile = window.innerWidth < 768;
   const isAboutPage = isAboutView(location.pathname);
   const isAllPage = isAllView(location.pathname);
   const isAuthorPage = isAuthorView(location.pathname);
@@ -322,19 +323,23 @@ const Header = () => {
             <SubscribeButton address={params.subplebbitAddress} />
           </span>
         )}
-        <div className={`${styles.tabsDesktop} ${hasFewTabs ? styles.fewTabs : ''}`}>
+        {!isMobile && (
+          <div className={`${styles.tabs} ${hasFewTabs ? styles.fewTabs : ''}`}>
+            <ul className={styles.tabMenu}>
+              <HeaderTabs />
+              {(isSubplebbitPage || isSubplebbitSubmitPage || isPostPage || isProfilePage || isAuthorPage) && <AboutButton />}
+            </ul>
+          </div>
+        )}
+      </div>
+      {isMobile && (
+        <div className={`${styles.tabs} ${hasFewTabs ? styles.fewTabs : ''}`}>
           <ul className={styles.tabMenu}>
             <HeaderTabs />
-            {(isSubplebbitPage || isSubplebbitSubmitPage || isPostPage || isProfilePage || isAuthorPage) && <AboutButton />}
+            {(isSubplebbitPage || isSubplebbitSubmitPage || isPostPage) && <AboutButton />}
           </ul>
         </div>
-      </div>
-      <div className={`${styles.tabsMobile} ${hasFewTabs ? styles.fewTabs : ''}`}>
-        <ul className={styles.tabMenu}>
-          <HeaderTabs />
-          {(isSubplebbitPage || isSubplebbitSubmitPage || isPostPage) && <AboutButton />}
-        </ul>
-      </div>
+      )}
     </div>
   );
 };
