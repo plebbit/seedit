@@ -108,5 +108,9 @@
   "announcement": "ανακοίνωση",
   "child": "{{childrenCount}} παιδί",
   "children": "{{childrenCount}} παιδιά",
-  "moderation": "διαμεσολάβηση"
+  "moderation": "διαμεσολάβηση",
+  "interface_language": "γλώσσα διεπαφής",
+  "theme": "θέμα",
+  "profile": "προφίλ",
+  "account": "λογαριασμός"
 }

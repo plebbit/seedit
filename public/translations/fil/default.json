@@ -108,5 +108,9 @@
   "announcement": "pahayag",
   "child": "{{childrenCount}} bata",
   "children": "{{childrenCount}} mga bata",
-  "moderation": "moderasyon"
+  "moderation": "moderasyon",
+  "interface_language": "wika ng interface",
+  "theme": "tema",
+  "profile": "profile",
+  "account": "account"
 }

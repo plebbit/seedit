@@ -108,5 +108,9 @@
   "announcement": "thông báo",
   "child": "{{childrenCount}} con",
   "children": "{{childrenCount}} con",
-  "moderation": "kiểm duyệt"
+  "moderation": "kiểm duyệt",
+  "interface_language": "ngôn ngữ giao diện",
+  "theme": "chủ đề",
+  "profile": "hồ sơ",
+  "account": "tài khoản"
 }

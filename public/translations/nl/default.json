@@ -108,5 +108,9 @@
   "announcement": "aankondiging",
   "child": "{{childrenCount}} kinderen",
   "children": "{{childrenCount}} kind",
-  "moderation": "moderatie"
+  "moderation": "moderatie",
+  "interface_language": "interface taal",
+  "theme": "thema",
+  "profile": "profiel",
+  "account": "account"
 }

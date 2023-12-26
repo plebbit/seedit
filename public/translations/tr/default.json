@@ -108,5 +108,9 @@
   "announcement": "duyuru",
   "child": "{{childrenCount}} çocuklar",
   "children": "{{childrenCount}} çocuk",
-  "moderation": "denetim"
+  "moderation": "denetim",
+  "interface_language": "arayüz dil",
+  "theme": "tema",
+  "profile": "profil",
+  "account": "hesap"
 }

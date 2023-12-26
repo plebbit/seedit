@@ -108,5 +108,9 @@
   "announcement": "ogłoszenie",
   "child": "{{childrenCount}} dzieci",
   "children": "{{childrenCount}} dziecko",
-  "moderation": "moderacja"
+  "moderation": "moderacja",
+  "interface_language": "język interfejsu",
+  "theme": "motyw",
+  "profile": "profil",
+  "account": "konto"
 }

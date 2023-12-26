@@ -108,5 +108,9 @@
   "announcement": "הודעה",
   "child": "{{childrenCount}} ילד",
   "children": "{{childrenCount}} ילדים",
-  "moderation": "הגבלה"
+  "moderation": "הגבלה",
+  "interface_language": "שפת ממשק",
+  "theme": "ערכת נושא",
+  "profile": "פרופיל",
+  "account": "חשבון"
 }

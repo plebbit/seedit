@@ -108,5 +108,9 @@
   "announcement": "إعلان",
   "child": "{{childrenCount}} طفل",
   "children": "{{childrenCount}} أطفال",
-  "moderation": "مراقبة"
+  "moderation": "مراقبة",
+  "interface_language": "لغة الواجهة",
+  "theme": "نسق",
+  "profile": "الملف الشخصي",
+  "account": "حساب"
 }

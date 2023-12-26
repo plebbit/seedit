@@ -108,5 +108,9 @@
   "announcement": "ประกาศ",
   "child": "{{childrenCount}} เด็ก",
   "children": "{{childrenCount}} เด็ก",
-  "moderation": "การควบคุม"
+  "moderation": "การควบคุม",
+  "interface_language": "ภาษาอินเตอร์เฟซ",
+  "theme": "ธีม",
+  "profile": "โปรไฟล์",
+  "account": "บัญชี"
 }

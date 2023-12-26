@@ -108,5 +108,9 @@
   "announcement": "اعلان",
   "child": "{{childrenCount}} بچے",
   "children": "{{childrenCount}} بچہ",
-  "moderation": "تسلیم"
+  "moderation": "تسلیم",
+  "interface_language": "انٹرفیس زبان",
+  "theme": "موضوع",
+  "profile": "پروفائل",
+  "account": "اکاؤنٹ"
 }

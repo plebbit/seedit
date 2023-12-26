@@ -108,5 +108,9 @@
   "announcement": "pengumuman",
   "child": "{{childrenCount}} anak",
   "children": "{{childrenCount}} anak-anak",
-  "moderation": "moderasi"
+  "moderation": "moderasi",
+  "interface_language": "bahasa antarmuka",
+  "theme": "tema",
+  "profile": "profil",
+  "account": "akun"
 }

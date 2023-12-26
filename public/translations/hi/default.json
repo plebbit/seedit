@@ -108,5 +108,9 @@
   "announcement": "घोषणा",
   "child": "{{childrenCount}} बच्चा",
   "children": "{{childrenCount}} बच्चे",
-  "moderation": "संयंत्रणा"
+  "moderation": "संयंत्रणा",
+  "interface_language": "इंटरफेस भाषा",
+  "theme": "थीम",
+  "profile": "प्रोफ़ाइल",
+  "account": "खाता"
 }

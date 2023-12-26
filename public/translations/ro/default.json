@@ -108,5 +108,9 @@
   "announcement": "anunț",
   "child": "{{childrenCount}} copii",
   "children": "{{childrenCount}} copil",
-  "moderation": "moderare"
+  "moderation": "moderare",
+  "interface_language": "limbă de interfață",
+  "theme": "temă",
+  "profile": "profil",
+  "account": "cont"
 }

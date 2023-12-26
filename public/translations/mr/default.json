@@ -108,5 +108,9 @@
   "announcement": "सूचना",
   "child": "{{childrenCount}} मुलगे",
   "children": "{{childrenCount}} मुलगा/मुलगी",
-  "moderation": "शांतता"
+  "moderation": "शांतता",
+  "interface_language": "इंटरफेस भाषा",
+  "theme": "थीम",
+  "profile": "प्रोफाइल",
+  "account": "खाता"
 }

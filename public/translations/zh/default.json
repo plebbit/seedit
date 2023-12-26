@@ -108,5 +108,9 @@
   "announcement": "公告",
   "child": "{{childrenCount}} 孩子们",
   "children": "{{childrenCount}} 孩子",
-  "moderation": "管理"
+  "moderation": "管理",
+  "interface_language": "界面语言",
+  "theme": "主题",
+  "profile": "个人资料",
+  "account": "帐户"
 }

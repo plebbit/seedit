@@ -108,5 +108,9 @@
   "announcement": "ilmoitus",
   "child": "{{childrenCount}} lapsi",
   "children": "{{childrenCount}} lapset",
-  "moderation": "moderointi"
+  "moderation": "moderointi",
+  "interface_language": "käyttöliittymäkieli",
+  "theme": "teema",
+  "profile": "profiili",
+  "account": "tili"
 }

@@ -108,5 +108,9 @@
   "announcement": "oznámení",
   "child": "{{childrenCount}} dítě",
   "children": "{{childrenCount}} děti",
-  "moderation": "moderace"
+  "moderation": "moderace",
+  "interface_language": "jazyk rozhraní",
+  "theme": "téma",
+  "profile": "profil",
+  "account": "účet"
 }

@@ -108,5 +108,9 @@
   "announcement": "공지",
   "child": "{{childrenCount}} 아이",
   "children": "{{childrenCount}} 아이들",
-  "moderation": "중재"
+  "moderation": "중재",
+  "interface_language": "인터페이스 언어",
+  "theme": "테마",
+  "profile": "프로필",
+  "account": "계정"
 }

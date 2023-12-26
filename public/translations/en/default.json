@@ -108,5 +108,9 @@
   "announcement": "announcement",
   "child": "{{childrenCount}} child",
   "children": "{{childrenCount}} children",
-  "moderation": "mod"
+  "moderation": "mod",
+  "interface_language": "interface language",
+  "theme": "theme",
+  "profile": "profile",
+  "account": "account"
 }

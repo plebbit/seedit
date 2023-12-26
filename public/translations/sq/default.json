@@ -108,5 +108,9 @@
   "announcement": "njoftim",
   "child": "{{childrenCount}} fëmijët",
   "children": "{{childrenCount}} fëmijë",
-  "moderation": "moderim"
+  "moderation": "moderim",
+  "interface_language": "gjuha e ndërfaqes",
+  "theme": "tema",
+  "profile": "profili",
+  "account": "llogari"
 }

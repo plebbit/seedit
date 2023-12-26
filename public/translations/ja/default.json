@@ -108,5 +108,9 @@
   "announcement": "お知らせ",
   "child": "{{childrenCount}} 子供",
   "children": "{{childrenCount}} 子供たち",
-  "moderation": "モデレーション"
+  "moderation": "モデレーション",
+  "interface_language": "インターフェース言語",
+  "theme": "テーマ",
+  "profile": "プロフィール",
+  "account": "アカウント"
 }

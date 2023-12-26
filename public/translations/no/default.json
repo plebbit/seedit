@@ -108,5 +108,9 @@
   "announcement": "kunngjøring",
   "child": "{{childrenCount}} barna",
   "children": "{{childrenCount}} barn",
-  "moderation": "moderasjon"
+  "moderation": "moderasjon",
+  "interface_language": "grensesnittspråk",
+  "theme": "tema",
+  "profile": "profil",
+  "account": "konto"
 }

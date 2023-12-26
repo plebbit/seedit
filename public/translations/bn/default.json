@@ -108,5 +108,9 @@
   "announcement": "ঘোষণা",
   "child": "{{childrenCount}} শিশু",
   "children": "{{childrenCount}} শিশুরা",
-  "moderation": "মধ্যস্থতা"
+  "moderation": "মধ্যস্থতা",
+  "interface_language": "ইন্টারফেস ভাষা",
+  "theme": "থিম",
+  "profile": "প্রোফাইল",
+  "account": "অ্যাকাউন্ট"
 }

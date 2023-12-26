@@ -108,5 +108,9 @@
   "announcement": "bejelentés",
   "child": "{{childrenCount}} gyerek",
   "children": "{{childrenCount}} gyerekek",
-  "moderation": "mérséklés"
+  "moderation": "mérséklés",
+  "interface_language": "felhasználói felület nyelve",
+  "theme": "téma",
+  "profile": "profil",
+  "account": "fiók"
 }

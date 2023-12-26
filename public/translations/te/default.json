@@ -108,5 +108,9 @@
   "announcement": "ప్రకటన",
   "child": "{{childrenCount}} పిల్లలు",
   "children": "{{childrenCount}} పిల్లాడు/పిల్లి",
-  "moderation": "మితిమీరుపరచుకోవడం"
+  "moderation": "మితిమీరుపరచుకోవడం",
+  "interface_language": "ఇంటర్ఫేస్ భాష",
+  "theme": "థీమ్",
+  "profile": "ప్రొఫైల్",
+  "account": "ఖాతా"
 }

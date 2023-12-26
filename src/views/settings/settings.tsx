@@ -20,25 +20,25 @@ const Settings = () => {
   return (
     <div className={styles.content}>
       <div className={styles.category}>
-        <span className={styles.categoryTitle}>interface language</span>
+        <span className={styles.categoryTitle}>{t('interface_language')}</span>
         <span className={styles.categorySettings}>
           <LanguageSettings />
         </span>
       </div>
       <div className={styles.category}>
-        <span className={styles.categoryTitle}>theme</span>
+        <span className={styles.categoryTitle}>{t('theme')}</span>
         <span className={styles.categorySettings}>
           <ThemeSettings />
         </span>
       </div>
       <div className={styles.category}>
-        <span className={styles.categoryTitle}>profile</span>
+        <span className={styles.categoryTitle}>{t('profile')}</span>
         <span className={styles.categorySettings}>
           <ProfileSettings />
         </span>
       </div>
       <div className={styles.category}>
-        <span className={styles.categoryTitle}>account</span>
+        <span className={styles.categoryTitle}>{t('account')}</span>
         <span className={styles.categorySettings}>
           <AccountSettings />
         </span>

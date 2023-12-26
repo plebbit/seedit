@@ -108,5 +108,9 @@
   "announcement": "اعلان",
   "child": "{{childrenCount}} کودک",
   "children": "{{childrenCount}} کودکان",
-  "moderation": "مدیریت"
+  "moderation": "مدیریت",
+  "interface_language": "زبان رابط",
+  "theme": "تم",
+  "profile": "پروفایل",
+  "account": "حساب"
 }
