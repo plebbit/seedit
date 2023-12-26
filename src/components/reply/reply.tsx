@@ -106,6 +106,7 @@ const ReplyMedia = ({ commentMediaInfo, content, expanded, hasThumbnail, link, l
 
 type ParentLinkProps = {
   commentCid?: string;
+  markedAsRead?: boolean;
   postCid?: string;
 };
 
@@ -153,14 +154,14 @@ const InboxParentLink = ({ commentCid }: ParentLinkProps) => {
   );
 };
 
-const InboxParentInfo = ({ commentCid }: ParentLinkProps) => {
+const InboxParentInfo = ({ commentCid, markedAsRead }: ParentLinkProps) => {
   const parent = useComment({ commentCid });
   const { author, cid, subplebbitAddress, timestamp } = parent || {};
   const shortSubplebbitAddress = subplebbitAddress ? (subplebbitAddress.includes('.') ? subplebbitAddress : getShortAddress(subplebbitAddress)) : '';
 
   return (
     <>
-      <div className={styles.inboxParentInfo}>
+      <div className={`${styles.inboxParentInfo} ${markedAsRead ? styles.inboxParentRead : styles.inboxParentUnread}`}>
         from{' '}
         <Link to={`/u/${author?.address}/c/${cid}`} className={styles.inboxParentAuthor}>
           u/{author?.shortAddress}{' '}
@@ -290,7 +291,7 @@ const Reply = ({ depth = 0, isSingle, isNotification = false, reply = {} }: Repl
                 {state === 'pending' && loadingString}
               </p>
             )}
-            {isInboxPage && <InboxParentInfo commentCid={cid} />}
+            {isInboxPage && <InboxParentInfo commentCid={cid} markedAsRead={markedAsRead} />}
             {!collapsed && (
               <div className={styles.usertext}>
                 {commentMediaInfo && (

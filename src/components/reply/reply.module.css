@@ -203,17 +203,26 @@
   unicode-bidi: isolate;
 }
 
+.inboxParentLink:visited {
+  color: var(--link-visited) !important;
+}
+
 .inboxParentLinkWrapper {
   margin-left: 7px;
 }
 
-.inboxParentInfo {
-  color: var(--green);
+.inboxParentUnread {
+  color: orangered !important;
   font-weight: 700;
+}
+
+.inboxParentRead {
+  color: green;
 }
 
 .inboxParentInfo a {
   color: var(--text-primary);
+  font-weight: 700;
 }
 
 .inboxParentInfoButton {
