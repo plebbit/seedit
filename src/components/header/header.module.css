@@ -149,6 +149,14 @@
 
 
 @media (min-width: 768px) {
+  .tabsMobile {
+    display: none;
+  }
+
+  .tabsDesktop {
+    display: block;
+  }
+  
   .about {
     display: none !important;
   }
@@ -159,6 +167,14 @@
 }
 
 @media (max-width: 768px) {
+  .tabsMobile {
+    display: block;
+  }
+
+  .tabsDesktop {
+    display: none;
+  }
+
   .fewTabs {
     position: relative;
   }
