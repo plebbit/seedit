@@ -1,3 +1,46 @@
+## [0.1.2](https://github.com/plebbit/seedit/compare/v0.1.1...v0.1.2) (2023-12-25)
+
+
+### Bug Fixes
+
+* **comment tools:** close menu when option is clicked, use dropdown styling ([486e0b4](https://github.com/plebbit/seedit/commit/486e0b4e8f90fc46a547b3c97a19ec0c509f6bc6))
+* **hide menu:** only close menu when hiding post ([00072bb](https://github.com/plebbit/seedit/commit/00072bb4cc2cd9541a78a97e6bbc2c356bf577dc))
+* **post:** link to pending page if cid is undefined ([10ddcfe](https://github.com/plebbit/seedit/commit/10ddcfe567f784643695e687614c6817d7e4e5fb))
+* **post:** set width of voting column taking into account high vote counts ([8448206](https://github.com/plebbit/seedit/commit/844820690efed4ef66726dccfad029fc26be1b57))
+* **reply:** don't show long subplebbit addresses, shorten them instead ([f1c8249](https://github.com/plebbit/seedit/commit/f1c82494f18dbf2a77f3cb38d9905dcf61379903))
+* **share menu:** add 'link copied' text with timeout and don't close the menu ([67ac476](https://github.com/plebbit/seedit/commit/67ac476129e24c5f593488b67d35621c3698e550))
+* **share menu:** don't open for pending comments, fix share link div ([c0edbf6](https://github.com/plebbit/seedit/commit/c0edbf6633e3f06a63496520b60e8e17e7dfc5cf))
+* **share menu:** remove browser outline ([ba5eca3](https://github.com/plebbit/seedit/commit/ba5eca3a411b0537ca94f1683452cad3e5b5d6e8))
+* **share menu:** remove focus outline on open ([686c5b1](https://github.com/plebbit/seedit/commit/686c5b165621ab7a2e52046f574481df60d238c1))
+* **sidebar:** fix undefined submit link in pending page ([e9d9fc5](https://github.com/plebbit/seedit/commit/e9d9fc5ec7b7a4d2dd0f43e3d2a2d4730135af7c))
+* **sidebar:** hide title section on pending page ([853d88a](https://github.com/plebbit/seedit/commit/853d88a0b9b0b9d2438e7d4dd01caba1c2731576))
+* **submit:** subplebbit address wasn't selected by autocomplete ([87fee93](https://github.com/plebbit/seedit/commit/87fee93ebf89a6daecf1ecbb7969c3b9b974a9a3))
+* **topbar:** fix z-index, dropdown was behind account bar ([2573be4](https://github.com/plebbit/seedit/commit/2573be40a652e5d04470120044a17af3a6d6400f))
+
+
+### Features
+
+* add pending post view ([f451bbe](https://github.com/plebbit/seedit/commit/f451bbe744003820b1655d16d892a04daaa8f901))
+* **comment tools:** add share menu with share link and links to other clients ([560a90a](https://github.com/plebbit/seedit/commit/560a90aff11024cbbb87a268b1839b34b3bae1b4))
+* **comment tools:** clicking on pending comment tools links to its pending page ([0a0d96c](https://github.com/plebbit/seedit/commit/0a0d96c5acf3fbb61deb0ba42aaa53a444f3c247))
+* **header:** add inbox header tabs ([1bdfe44](https://github.com/plebbit/seedit/commit/1bdfe447b897c20a58bff70f0bd0d5a1490b8663))
+* **header:** add pending page header ([02199c0](https://github.com/plebbit/seedit/commit/02199c0a9046058b06031a12cc83edf9016a98e4))
+* **hide menu:** show on replies and collapse reply if blocked ([f31f2b8](https://github.com/plebbit/seedit/commit/f31f2b8dbea0404a70d13e9257e41702b1eb4b7e))
+* **inbox:** add filters for "comment replies", "post replies", unread ([ffcfe37](https://github.com/plebbit/seedit/commit/ffcfe37ce6ddb90e53dba7499d2007a57cc7e70c))
+* **post:** redirect to post view when cid is received for pending post ([ef1b385](https://github.com/plebbit/seedit/commit/ef1b38570929f69cb8d2bb5627a2039ef4609665))
+* **profile:** add functional sort by new or old ([7314db2](https://github.com/plebbit/seedit/commit/7314db28bc795c458106780ee5f7ac884e33f6f4))
+* **reply:** add inbox reply design for notifications ([e7daa04](https://github.com/plebbit/seedit/commit/e7daa0488662a743cda4e4a3941df85a2829f65e))
+* **search bar:** automatically focus search bar when clicked from account bar ([6ab2ce8](https://github.com/plebbit/seedit/commit/6ab2ce8c99502b70ec5333075c8dd51005c93a38))
+* **sidebar:** tell user to create a community with plebbit-cli ([c484783](https://github.com/plebbit/seedit/commit/c484783a207101f75570aa7ff0203c60a2f52fa6))
+
+
+### Performance Improvements
+
+* **inbox:** filter with useCallback, don't memo result ([9f46922](https://github.com/plebbit/seedit/commit/9f46922c482cff4a6a5762370f2eab9f755d76da))
+* **profile:** memoize sorting of comments ([0374c14](https://github.com/plebbit/seedit/commit/0374c1404c903cf39120a4a256e238be233aaf29))
+
+
+
 ## [0.1.1](https://github.com/plebbit/seedit/compare/v0.1.0...v0.1.1) (2023-12-20)
 
 
