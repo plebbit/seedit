@@ -204,7 +204,7 @@
 }
 
 .inboxParentLink:visited {
-  color: var(--link-visited) !important;
+  color: var(--link-visited);
 }
 
 .inboxParentLinkWrapper {

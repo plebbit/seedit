@@ -8,6 +8,7 @@ import { getShortAddress } from '@plebbit/plebbit-js';
 type HideMenuProps = {
   author?: Author | undefined;
   cid?: string;
+  isMod?: boolean;
   toggleIsMenuOpen?: () => void;
   subplebbitAddress?: string;
 };
@@ -51,7 +52,7 @@ const BlockCommentButton = ({ cid }: HideMenuProps) => {
   );
 };
 
-const HideMenu = ({ author, cid, subplebbitAddress }: HideMenuProps) => {
+const HideMenu = ({ author, cid, isMod, subplebbitAddress }: HideMenuProps) => {
   const { t } = useTranslation();
   const [isHideMenuOpen, setIsHideMenuOpen] = useState(false);
   const toggleIsMenuOpen = () => setIsHideMenuOpen(!isHideMenuOpen);
@@ -82,9 +83,9 @@ const HideMenu = ({ author, cid, subplebbitAddress }: HideMenuProps) => {
           <div className={styles.modal} ref={refs.setFloating} style={floatingStyles} aria-labelledby={headingId} {...getFloatingProps()}>
             <div className={styles.modMenu}>
               <BlockCommentButton cid={cid} toggleIsMenuOpen={toggleIsMenuOpen} />
-              <div className={styles.menuItem}>{t('report')}</div>
               <BlockSubplebbitButton subplebbitAddress={subplebbitAddress} />
               <BlockAuthorButton author={author} />
+              {!isMod && <div className={`${styles.menuItem} ${styles.reportButton}`}>{t('report')}</div>}
             </div>
           </div>
         </FloatingFocusManager>

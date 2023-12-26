@@ -38,3 +38,15 @@
   color: var(--text) !important;
   padding: 2px 3px 1px 3px;
 }
+
+@media (min-width: 768px) {
+  .crosspostButton {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .crosspostButton {
+    display: block;
+  }
+}

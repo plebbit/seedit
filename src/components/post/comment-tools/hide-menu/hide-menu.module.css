@@ -29,3 +29,15 @@
 .menuItem:hover {
   background-color: var(--background-primary);
 }
+
+@media (min-width: 768px) {
+  .reportButton {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .reportButton {
+    display: block;
+  }
+}
