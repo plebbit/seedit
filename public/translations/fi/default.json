@@ -168,5 +168,6 @@
   "inbox": "saapuneet",
   "mark_all_read": "merkitse kaikki luetuiksi",
   "comment_reply": "vastaa kommenttiin",
-  "post_reply": "vastaa viestiin"
+  "post_reply": "vastaa viestiin",
+  "show_parent": "näytä viitattu viesti"
 }

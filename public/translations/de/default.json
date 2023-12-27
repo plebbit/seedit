@@ -168,5 +168,6 @@
   "inbox": "Posteingang",
   "mark_all_read": "alle als gelesen markieren",
   "comment_reply": "Kommentar antworten",
-  "post_reply": "Beitrag antworten"
+  "post_reply": "Beitrag antworten",
+  "show_parent": "zeige den verlinkten Beitrag"
 }

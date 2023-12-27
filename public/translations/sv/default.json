@@ -168,5 +168,6 @@
   "inbox": "inkorg",
   "mark_all_read": "markera alla som läst",
   "comment_reply": "svara på kommentar",
-  "post_reply": "svara på inlägg"
+  "post_reply": "svara på inlägg",
+  "show_parent": "visa den refererade posten"
 }

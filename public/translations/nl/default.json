@@ -168,5 +168,6 @@
   "inbox": "inbox",
   "mark_all_read": "markeer alles als gelezen",
   "comment_reply": "reageren op reactie",
-  "post_reply": "reageren op bericht"
+  "post_reply": "reageren op bericht",
+  "show_parent": "toon de verwezen post"
 }

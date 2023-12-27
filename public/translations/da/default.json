@@ -168,5 +168,6 @@
   "inbox": "indbakke",
   "mark_all_read": "markér alle som læst",
   "comment_reply": "svar på kommentar",
-  "post_reply": "svar på indlæg"
+  "post_reply": "svar på indlæg",
+  "show_parent": "vis den henviste post"
 }

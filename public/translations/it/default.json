@@ -168,5 +168,6 @@
   "inbox": "posta in arrivo",
   "mark_all_read": "segna tutti come letti",
   "comment_reply": "rispondi al commento",
-  "post_reply": "rispondi al post"
+  "post_reply": "rispondi al post",
+  "show_parent": "mostra il post a cui è riferito"
 }

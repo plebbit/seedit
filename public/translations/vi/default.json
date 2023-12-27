@@ -168,5 +168,6 @@
   "inbox": "hộp thư đến",
   "mark_all_read": "đánh dấu tất cả là đã đọc",
   "comment_reply": "trả lời bình luận",
-  "post_reply": "trả lời bài đăng"
+  "post_reply": "trả lời bài đăng",
+  "show_parent": "hiển thị bài viết được tham khảo"
 }

@@ -168,5 +168,6 @@
   "inbox": "תיבת דואר נכנס",
   "mark_all_read": "סמן הכל כנקרא",
   "comment_reply": "הגב לתגובה",
-  "post_reply": "הגב לפוסט"
+  "post_reply": "הגב לפוסט",
+  "show_parent": "הצג את הפוסט המתייחס אליו"
 }

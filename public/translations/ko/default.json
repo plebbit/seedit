@@ -168,5 +168,6 @@
   "inbox": "받은 편지함",
   "mark_all_read": "모두 읽은 상태로 표시",
   "comment_reply": "댓글 답글",
-  "post_reply": "게시물 답글"
+  "post_reply": "게시물 답글",
+  "show_parent": "참조된 게시물 표시"
 }

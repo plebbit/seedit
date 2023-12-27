@@ -174,7 +174,7 @@ const InboxParentInfo = ({ commentCid, markedAsRead }: ParentLinkProps) => {
         </Link>
         {t('sent')} {getFormattedTimeAgo(timestamp)}
       </div>
-      <div className={styles.inboxParentInfoButton}>show parent</div>
+      <div className={styles.inboxParentInfoButton}>{t('show_parent')}</div>
     </>
   );
 };

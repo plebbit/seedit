@@ -168,5 +168,6 @@
   "inbox": "beérkezett üzenetek",
   "mark_all_read": "összes megjelölése olvasottként",
   "comment_reply": "válasz a hozzászólásra",
-  "post_reply": "válasz a posztra"
+  "post_reply": "válasz a posztra",
+  "show_parent": "mutassa a hivatkozott bejegyzést"
 }

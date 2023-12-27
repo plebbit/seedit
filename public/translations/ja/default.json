@@ -168,5 +168,6 @@
   "inbox": "受信トレイ",
   "mark_all_read": "すべてを既読にする",
   "comment_reply": "コメントに返信",
-  "post_reply": "投稿に返信"
+  "post_reply": "投稿に返信",
+  "show_parent": "参照されている投稿を表示"
 }

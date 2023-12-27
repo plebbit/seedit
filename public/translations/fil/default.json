@@ -168,5 +168,6 @@
   "inbox": "inbox",
   "mark_all_read": "tandaan ang lahat bilang nabasa",
   "comment_reply": "sagot sa komento",
-  "post_reply": "sagot sa post"
+  "post_reply": "sagot sa post",
+  "show_parent": "ipakita ang tinutukoy na post"
 }

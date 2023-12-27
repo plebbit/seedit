@@ -168,5 +168,6 @@
   "inbox": "doručená pošta",
   "mark_all_read": "označit vše jako přečtené",
   "comment_reply": "odpovědět na komentář",
-  "post_reply": "odpovědět na příspěvek"
+  "post_reply": "odpovědět na příspěvek",
+  "show_parent": "zobrazit příspěvek, na který se odkazuje"
 }

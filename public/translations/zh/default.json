@@ -168,5 +168,6 @@
   "inbox": "收件箱",
   "mark_all_read": "全部标记为已读",
   "comment_reply": "回复评论",
-  "post_reply": "回复帖子"
+  "post_reply": "回复帖子",
+  "show_parent": "显示被引用的帖子"
 }

@@ -168,5 +168,6 @@
   "inbox": "skrzynka odbiorcza",
   "mark_all_read": "oznacz wszystko jako przeczytane",
   "comment_reply": "odpowiedź na komentarz",
-  "post_reply": "odpowiedź na post"
+  "post_reply": "odpowiedź na post",
+  "show_parent": "pokaż post, do którego jest odwołanie"
 }

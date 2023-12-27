@@ -168,5 +168,6 @@
   "inbox": "boîte de réception",
   "mark_all_read": "marquer tout comme lu",
   "comment_reply": "répondre au commentaire",
-  "post_reply": "répondre au post"
+  "post_reply": "répondre au post",
+  "show_parent": "afficher le post référencé"
 }

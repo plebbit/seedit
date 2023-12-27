@@ -168,5 +168,6 @@
   "inbox": "inbox",
   "mark_all_read": "marcați toate ca citite",
   "comment_reply": "răspunde la comentariu",
-  "post_reply": "răspunde la postare"
+  "post_reply": "răspunde la postare",
+  "show_parent": "afișează postarea referită"
 }

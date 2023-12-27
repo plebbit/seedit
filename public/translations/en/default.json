@@ -168,5 +168,6 @@
   "inbox": "inbox",
   "mark_all_read": "mark all as read",
   "comment_reply": "comment reply",
-  "post_reply": "post reply"
+  "post_reply": "post reply",
+  "show_parent": "show parent"
 }

@@ -168,5 +168,6 @@
   "inbox": "caixa de entrada",
   "mark_all_read": "marcar todos como lidos",
   "comment_reply": "responder ao comentário",
-  "post_reply": "responder ao post"
+  "post_reply": "responder ao post",
+  "show_parent": "mostrar a postagem referenciada"
 }

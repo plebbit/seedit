@@ -168,5 +168,6 @@
   "inbox": "gelen kutusu",
   "mark_all_read": "tümünü okundu olarak işaretle",
   "comment_reply": "yorumu yanıtla",
-  "post_reply": "gönderiye yanıtla"
+  "post_reply": "gönderiye yanıtla",
+  "show_parent": "atıfta bulunulan gönderiyi göster"
 }

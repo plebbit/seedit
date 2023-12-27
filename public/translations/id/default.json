@@ -168,5 +168,6 @@
   "inbox": "kotak masuk",
   "mark_all_read": "tandai semua sebagai telah dibaca",
   "comment_reply": "balas komentar",
-  "post_reply": "balas postingan"
+  "post_reply": "balas postingan",
+  "show_parent": "tampilkan posting yang dirujuk"
 }
