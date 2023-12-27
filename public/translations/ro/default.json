@@ -112,5 +112,7 @@
   "interface_language": "limbă de interfață",
   "theme": "temă",
   "profile": "profil",
-  "account": "cont"
+  "account": "cont",
+  "display_name": "nume de afișare",
+  "crypto_address": "adresa cripto"
 }

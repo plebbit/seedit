@@ -112,5 +112,7 @@
   "interface_language": "язык интерфейса",
   "theme": "тема",
   "profile": "профиль",
-  "account": "аккаунт"
+  "account": "аккаунт",
+  "display_name": "отображаемое имя",
+  "crypto_address": "адрес криптовалюты"
 }

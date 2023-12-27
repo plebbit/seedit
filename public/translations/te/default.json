@@ -112,5 +112,7 @@
   "interface_language": "ఇంటర్ఫేస్ భాష",
   "theme": "థీమ్",
   "profile": "ప్రొఫైల్",
-  "account": "ఖాతా"
+  "account": "ఖాతా",
+  "display_name": "ప్రదర్శన పేరు",
+  "crypto_address": "క్రిప్టో చిరునామా"
 }

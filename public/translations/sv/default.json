@@ -112,5 +112,7 @@
   "interface_language": "gränssnittsspråk",
   "theme": "tema",
   "profile": "profil",
-  "account": "konto"
+  "account": "konto",
+  "display_name": "visningsnamn",
+  "crypto_address": "kryptoadress"
 }

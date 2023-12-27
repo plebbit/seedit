@@ -112,5 +112,7 @@
   "interface_language": "lingua interfaccia",
   "theme": "tema",
   "profile": "profilo",
-  "account": "account"
+  "account": "account",
+  "display_name": "nome visualizzato",
+  "crypto_address": "indirizzo crypto"
 }

@@ -112,5 +112,7 @@
   "interface_language": "Oberflächensprache",
   "theme": "Thema",
   "profile": "Profil",
-  "account": "Konto"
+  "account": "Konto",
+  "display_name": "Anzeigename",
+  "crypto_address": "Krypto-Adresse"
 }

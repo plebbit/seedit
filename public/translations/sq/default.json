@@ -112,5 +112,7 @@
   "interface_language": "gjuha e ndërfaqes",
   "theme": "tema",
   "profile": "profili",
-  "account": "llogari"
+  "account": "llogari",
+  "display_name": "emri i shfaqur",
+  "crypto_address": "adresa e kripto"
 }

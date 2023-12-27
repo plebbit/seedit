@@ -112,5 +112,7 @@
   "interface_language": "لغة الواجهة",
   "theme": "نسق",
   "profile": "الملف الشخصي",
-  "account": "حساب"
+  "account": "حساب",
+  "display_name": "اسم العرض",
+  "crypto_address": "عنوان العملة الرقمية"
 }

@@ -112,5 +112,7 @@
   "interface_language": "wika ng interface",
   "theme": "tema",
   "profile": "profile",
-  "account": "account"
+  "account": "account",
+  "display_name": "display name",
+  "crypto_address": "crypto address"
 }

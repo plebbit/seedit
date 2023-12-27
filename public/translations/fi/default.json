@@ -112,5 +112,7 @@
   "interface_language": "käyttöliittymäkieli",
   "theme": "teema",
   "profile": "profiili",
-  "account": "tili"
+  "account": "tili",
+  "display_name": "näyttönimi",
+  "crypto_address": "krypto-osoite"
 }

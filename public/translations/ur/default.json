@@ -112,5 +112,7 @@
   "interface_language": "انٹرفیس زبان",
   "theme": "موضوع",
   "profile": "پروفائل",
-  "account": "اکاؤنٹ"
+  "account": "اکاؤنٹ",
+  "display_name": "ڈسپلے نام",
+  "crypto_address": "کرپٹو پتہ"
 }

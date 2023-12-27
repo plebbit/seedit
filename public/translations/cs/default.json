@@ -112,5 +112,7 @@
   "interface_language": "jazyk rozhraní",
   "theme": "téma",
   "profile": "profil",
-  "account": "účet"
+  "account": "účet",
+  "display_name": "zobrazované jméno",
+  "crypto_address": "adresa kryptoměny"
 }

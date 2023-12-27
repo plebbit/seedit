@@ -112,5 +112,7 @@
   "interface_language": "ngôn ngữ giao diện",
   "theme": "chủ đề",
   "profile": "hồ sơ",
-  "account": "tài khoản"
+  "account": "tài khoản",
+  "display_name": "tên hiển thị",
+  "crypto_address": "địa chỉ tiền điện tử"
 }

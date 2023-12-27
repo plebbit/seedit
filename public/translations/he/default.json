@@ -112,5 +112,7 @@
   "interface_language": "שפת ממשק",
   "theme": "ערכת נושא",
   "profile": "פרופיל",
-  "account": "חשבון"
+  "account": "חשבון",
+  "display_name": "שם התצוגה",
+  "crypto_address": "כתובת קריפטו"
 }

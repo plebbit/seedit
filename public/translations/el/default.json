@@ -112,5 +112,7 @@
   "interface_language": "γλώσσα διεπαφής",
   "theme": "θέμα",
   "profile": "προφίλ",
-  "account": "λογαριασμός"
+  "account": "λογαριασμός",
+  "display_name": "όνομα εμφάνισης",
+  "crypto_address": "διεύθυνση κρυπτονομίσματος"
 }

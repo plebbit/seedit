@@ -112,5 +112,7 @@
   "interface_language": "język interfejsu",
   "theme": "motyw",
   "profile": "profil",
-  "account": "konto"
+  "account": "konto",
+  "display_name": "nazwa wyświetlana",
+  "crypto_address": "adres kryptowalutowy"
 }

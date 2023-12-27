@@ -112,5 +112,7 @@
   "interface_language": "felhasználói felület nyelve",
   "theme": "téma",
   "profile": "profil",
-  "account": "fiók"
+  "account": "fiók",
+  "display_name": "megjelenítendő név",
+  "crypto_address": "kriptovaluta cím"
 }

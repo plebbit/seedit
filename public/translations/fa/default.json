@@ -112,5 +112,7 @@
   "interface_language": "زبان رابط",
   "theme": "تم",
   "profile": "پروفایل",
-  "account": "حساب"
+  "account": "حساب",
+  "display_name": "نام نمایشی",
+  "crypto_address": "آدرس رمزارز"
 }

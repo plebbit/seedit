@@ -112,5 +112,7 @@
   "interface_language": "인터페이스 언어",
   "theme": "테마",
   "profile": "프로필",
-  "account": "계정"
+  "account": "계정",
+  "display_name": "표시 이름",
+  "crypto_address": "암호 화폐 주소"
 }

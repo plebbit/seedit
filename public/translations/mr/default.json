@@ -112,5 +112,7 @@
   "interface_language": "इंटरफेस भाषा",
   "theme": "थीम",
   "profile": "प्रोफाइल",
-  "account": "खाता"
+  "account": "खाता",
+  "display_name": "प्रदर्शन नाव",
+  "crypto_address": "क्रिप्टो पत्ता"
 }

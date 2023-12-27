@@ -1,9 +1,11 @@
 import { useEffect, useMemo, useState } from 'react';
 import { createAccount, deleteAccount, exportAccount, importAccount, setAccount, setActiveAccount, useAccount, useAccounts } from '@plebbit/plebbit-react-hooks';
 import stringify from 'json-stringify-pretty-compact';
+import { useTranslation } from 'react-i18next';
 import styles from './account-settings.module.css';
 
 const AccountSettings = () => {
+  const { t } = useTranslation();
   const account = useAccount();
   const { accounts } = useAccounts();
   const [text, setText] = useState('');
@@ -162,7 +164,7 @@ const AccountSettings = () => {
         <textarea className={styles.textarea} value={text} onChange={(e) => setText(e.target.value)} autoCorrect='off' autoComplete='off' spellCheck='false' />
         <div className={styles.accountButtons}>
           <div>
-            <button onClick={saveAccount}>Save</button> or <button onClick={() => setText(accountJson)}>Reset</button> changes
+            <button onClick={saveAccount}>{t('save')}</button> {t('or')} <button onClick={() => setText(accountJson)}>Reset</button> changes
           </div>
           <div>
             <button onClick={_createAccount}>Create</button> a new account

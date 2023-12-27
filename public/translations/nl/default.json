@@ -112,5 +112,7 @@
   "interface_language": "interface taal",
   "theme": "thema",
   "profile": "profiel",
-  "account": "account"
+  "account": "account",
+  "display_name": "weergavenaam",
+  "crypto_address": "crypto adres"
 }

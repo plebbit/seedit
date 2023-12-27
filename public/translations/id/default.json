@@ -112,5 +112,7 @@
   "interface_language": "bahasa antarmuka",
   "theme": "tema",
   "profile": "profil",
-  "account": "akun"
+  "account": "akun",
+  "display_name": "nama tampilan",
+  "crypto_address": "alamat kripto"
 }

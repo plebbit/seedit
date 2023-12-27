@@ -112,5 +112,7 @@
   "interface_language": "ইন্টারফেস ভাষা",
   "theme": "থিম",
   "profile": "প্রোফাইল",
-  "account": "অ্যাকাউন্ট"
+  "account": "অ্যাকাউন্ট",
+  "display_name": "প্রদর্শনী নাম",
+  "crypto_address": "ক্রিপ্টো ঠিকানা"
 }
