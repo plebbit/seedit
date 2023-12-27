@@ -135,5 +135,8 @@
   "downvoted": "äänestetty alas",
   "hidden": "piilotettu",
   "saved": "tallennettu",
-  "overview": "yleiskatsaus"
+  "overview": "yleiskatsaus",
+  "plebbitor_for": "Plebbitorille",
+  "post_karma": "viestikarma",
+  "comment_karma": "kommenttikarma"
 }

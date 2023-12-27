@@ -135,5 +135,8 @@
   "downvoted": "проголосувало негативно",
   "hidden": "прихований",
   "saved": "збережено",
-  "overview": "огляд"
+  "overview": "огляд",
+  "plebbitor_for": "плебітор на",
+  "post_karma": "карма постів",
+  "comment_karma": "карма коментарів"
 }

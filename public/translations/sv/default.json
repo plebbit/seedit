@@ -135,5 +135,8 @@
   "downvoted": "negativt röstat",
   "hidden": "dold",
   "saved": "sparad",
-  "overview": "översikt"
+  "overview": "översikt",
+  "plebbitor_for": "plebbitor för",
+  "post_karma": "inläggs-karma",
+  "comment_karma": "kommentars-karma"
 }

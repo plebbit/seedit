@@ -135,5 +135,8 @@
   "downvoted": "καταψήφιση",
   "hidden": "κρυφός",
   "saved": "αποθηκευμένο",
-  "overview": "επισκόπηση"
+  "overview": "επισκόπηση",
+  "plebbitor_for": "Plebbitor για",
+  "post_karma": "καρμα δημοσιεύσεων",
+  "comment_karma": "καρμα σχολίων"
 }

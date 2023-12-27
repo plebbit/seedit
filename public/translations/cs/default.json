@@ -135,5 +135,8 @@
   "downvoted": "hlasováno dolů",
   "hidden": "skrytý",
   "saved": "uloženo",
-  "overview": "přehled"
+  "overview": "přehled",
+  "plebbitor_for": "plebbitor na",
+  "post_karma": "karma příspěvků",
+  "comment_karma": "karma komentářů"
 }

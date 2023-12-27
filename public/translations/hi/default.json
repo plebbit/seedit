@@ -135,5 +135,8 @@
   "downvoted": "नकारात्मक वोट दिया गया",
   "hidden": "छुपा हुआ",
   "saved": "सहेजा गया",
-  "overview": "अवलोकन"
+  "overview": "अवलोकन",
+  "plebbitor_for": "प्लेबिटर के लिए",
+  "post_karma": "पोस्ट कर्मा",
+  "comment_karma": "कमेंट कर्मा"
 }

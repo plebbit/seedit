@@ -135,5 +135,8 @@
   "downvoted": "aşağı oy verildi",
   "hidden": "gizli",
   "saved": "kaydedildi",
-  "overview": "genel bakış"
+  "overview": "genel bakış",
+  "plebbitor_for": "plebbitor için",
+  "post_karma": "gönderi karma",
+  "comment_karma": "yorum karma"
 }

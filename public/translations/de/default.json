@@ -135,5 +135,8 @@
   "downvoted": "negativ bewertet",
   "hidden": "versteckt",
   "saved": "gespeichert",
-  "overview": "Übersicht"
+  "overview": "Übersicht",
+  "plebbitor_for": "Plebbitor für",
+  "post_karma": "Beitragskarma",
+  "comment_karma": "Kommentarkarma"
 }

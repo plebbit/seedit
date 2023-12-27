@@ -135,5 +135,8 @@
   "downvoted": "zagłosowane na nie",
   "hidden": "ukryty",
   "saved": "zapisane",
-  "overview": "przegląd"
+  "overview": "przegląd",
+  "plebbitor_for": "plebbitor przez",
+  "post_karma": "karma postów",
+  "comment_karma": "karma komentarzy"
 }

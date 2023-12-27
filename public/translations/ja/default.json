@@ -135,5 +135,8 @@
   "downvoted": "ダウンボートされました",
   "hidden": "非表示",
   "saved": "保存済み",
-  "overview": "概要"
+  "overview": "概要",
+  "plebbitor_for": "プレビットルで",
+  "post_karma": "ポストカルマ",
+  "comment_karma": "コメントカルマ"
 }

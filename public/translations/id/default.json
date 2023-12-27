@@ -135,5 +135,8 @@
   "downvoted": "disundul",
   "hidden": "tersembunyi",
   "saved": "tersimpan",
-  "overview": "ikhtisar"
+  "overview": "ikhtisar",
+  "plebbitor_for": "plebbitor selama",
+  "post_karma": "karma postingan",
+  "comment_karma": "karma komentar"
 }

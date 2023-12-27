@@ -135,5 +135,8 @@
   "downvoted": "đã downvote",
   "hidden": "ẩn",
   "saved": "đã lưu",
-  "overview": "tổng quan"
+  "overview": "tổng quan",
+  "plebbitor_for": "plebbitor trong",
+  "post_karma": "karma bài viết",
+  "comment_karma": "karma bình luận"
 }

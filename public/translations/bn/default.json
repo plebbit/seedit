@@ -135,5 +135,8 @@
   "downvoted": "নেতিবাচক ভোট দেন",
   "hidden": "লুকানো",
   "saved": "সংরক্ষিত",
-  "overview": "সংক্ষেপ"
+  "overview": "সংক্ষেপ",
+  "plebbitor_for": "প্লেবিটর জন্য",
+  "post_karma": "পোস্ট কর্মা",
+  "comment_karma": "মন্তব্য কর্মা"
 }

@@ -135,5 +135,8 @@
   "downvoted": "negatief gestemd",
   "hidden": "verborgen",
   "saved": "opgeslagen",
-  "overview": "overzicht"
+  "overview": "overzicht",
+  "plebbitor_for": "plebbitor voor",
+  "post_karma": "post karma",
+  "comment_karma": "commentaar-karma"
 }

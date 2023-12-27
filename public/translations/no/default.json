@@ -135,5 +135,8 @@
   "downvoted": "stemt ned",
   "hidden": "skjult",
   "saved": "lagret",
-  "overview": "oversikt"
+  "overview": "oversikt",
+  "plebbitor_for": "plebbitor i",
+  "post_karma": "innleggskarma",
+  "comment_karma": "kommentarkarma"
 }

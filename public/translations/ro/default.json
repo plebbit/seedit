@@ -135,5 +135,8 @@
   "downvoted": "vot negativ",
   "hidden": "ascuns",
   "saved": "salvat",
-  "overview": "prezentare generală"
+  "overview": "prezentare generală",
+  "plebbitor_for": "plebbitor pentru",
+  "post_karma": "karma postărilor",
+  "comment_karma": "karma comentariilor"
 }

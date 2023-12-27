@@ -135,5 +135,8 @@
   "downvoted": "खाली दिलेला मत",
   "hidden": "लपवला",
   "saved": "साचला",
-  "overview": "वर्गीकरण"
+  "overview": "वर्गीकरण",
+  "plebbitor_for": "प्लेबिटरसाठी",
+  "post_karma": "पोस्ट कर्मा",
+  "comment_karma": "कॉमेंट कर्मा"
 }

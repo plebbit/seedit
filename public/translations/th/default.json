@@ -135,5 +135,8 @@
   "downvoted": "โหวตลบ",
   "hidden": "ซ่อน",
   "saved": "บันทึกแล้ว",
-  "overview": "ภาพรวม"
+  "overview": "ภาพรวม",
+  "plebbitor_for": "plebbitor สำหรับ",
+  "post_karma": "คาร์ม่าโพสต์",
+  "comment_karma": "คาร์ม่าความเห็น"
 }

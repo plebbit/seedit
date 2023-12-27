@@ -135,5 +135,8 @@
   "downvoted": "قمت بالتصويت بالسلب",
   "hidden": "مخفي",
   "saved": "تم الحفظ",
-  "overview": "نظرة عامة"
+  "overview": "نظرة عامة",
+  "plebbitor_for": "بليبيتور لـ",
+  "post_karma": "نقاط النشر",
+  "comment_karma": "نقاط التعليقات"
 }

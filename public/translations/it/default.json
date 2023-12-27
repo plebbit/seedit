@@ -135,5 +135,8 @@
   "downvoted": "hai dato un downvote",
   "hidden": "nascosto",
   "saved": "salvato",
-  "overview": "panoramica"
+  "overview": "panoramica",
+  "plebbitor_for": "plebbitor da",
+  "post_karma": "karma post",
+  "comment_karma": "karma commenti"
 }

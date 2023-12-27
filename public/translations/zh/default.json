@@ -135,5 +135,8 @@
   "downvoted": "负投票",
   "hidden": "隐藏",
   "saved": "已保存",
-  "overview": "概观"
+  "overview": "概观",
+  "plebbitor_for": "plebbitor为",
+  "post_karma": "帖子声望",
+  "comment_karma": "评论声望"
 }

@@ -135,5 +135,8 @@
   "downvoted": "leértékelt",
   "hidden": "rejtett",
   "saved": "elmentve",
-  "overview": "áttekintés"
+  "overview": "áttekintés",
+  "plebbitor_for": "plebbitorért",
+  "post_karma": "poszt karma",
+  "comment_karma": "hozzászólás-karma"
 }

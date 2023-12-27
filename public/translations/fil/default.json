@@ -135,5 +135,8 @@
   "downvoted": "binoto ng negatibo",
   "hidden": "nakatagong",
   "saved": "itinago",
-  "overview": "buod"
+  "overview": "buod",
+  "plebbitor_for": "plebbitor para sa",
+  "post_karma": "karma ng post",
+  "comment_karma": "karma ng komento"
 }

@@ -135,5 +135,8 @@
   "downvoted": "downvoted",
   "hidden": "hidden",
   "saved": "saved",
-  "overview": "overview"
+  "overview": "overview",
+  "plebbitor_for": "plebbitor for",
+  "post_karma": "post karma",
+  "comment_karma": "comment karma"
 }

@@ -135,5 +135,8 @@
   "downvoted": "קיבל דירוג שלילי",
   "hidden": "מוסתר",
   "saved": "נשמר",
-  "overview": "סקירה"
+  "overview": "סקירה",
+  "plebbitor_for": "פלביטור למשך",
+  "post_karma": "כרמה של הפוסטים",
+  "comment_karma": "כרמה של התגובות"
 }

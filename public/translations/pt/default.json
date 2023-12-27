@@ -135,5 +135,8 @@
   "downvoted": "voto negativo",
   "hidden": "oculto",
   "saved": "salvo",
-  "overview": "visão geral"
+  "overview": "visão geral",
+  "plebbitor_for": "plebbitor por",
+  "post_karma": "karma de posts",
+  "comment_karma": "karma de comentários"
 }

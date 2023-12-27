@@ -135,5 +135,8 @@
   "downvoted": "votim negativ",
   "hidden": "fshehur",
   "saved": "i ruajtur",
-  "overview": "përgledim"
+  "overview": "përgledim",
+  "plebbitor_for": "plebbitor për",
+  "post_karma": "karma e postimeve",
+  "comment_karma": "karma e komenteve"
 }

@@ -135,5 +135,8 @@
   "downvoted": "проголосовало негативно",
   "hidden": "скрыто",
   "saved": "сохранено",
-  "overview": "обзор"
+  "overview": "обзор",
+  "plebbitor_for": "плеббитор на",
+  "post_karma": "карма постов",
+  "comment_karma": "карма комментариев"
 }
