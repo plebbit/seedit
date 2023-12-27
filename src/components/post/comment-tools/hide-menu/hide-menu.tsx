@@ -8,12 +8,13 @@ import { getShortAddress } from '@plebbit/plebbit-js';
 type HideMenuProps = {
   author?: Author | undefined;
   cid?: string;
+  isMod?: boolean;
   toggleIsMenuOpen?: () => void;
   subplebbitAddress?: string;
 };
 
 const BlockAuthorButton = ({ author, toggleIsMenuOpen }: HideMenuProps) => {
-  // const { t } = useTranslation();
+  const { t } = useTranslation();
   const { blocked, unblock, block } = useBlock({ address: author?.address });
 
   return (
@@ -24,34 +25,34 @@ const BlockAuthorButton = ({ author, toggleIsMenuOpen }: HideMenuProps) => {
         toggleIsMenuOpen && toggleIsMenuOpen();
       }}
     >
-      {blocked ? 'unblock' : 'block'} u/{author?.shortAddress}
+      {blocked ? `${t('unblock')}` : `${t('block')}`} u/{author?.shortAddress}
     </div>
   );
 };
 
 const BlockSubplebbitButton = ({ subplebbitAddress }: HideMenuProps) => {
-  // const { t } = useTranslation();
+  const { t } = useTranslation();
   const { blocked, unblock, block } = useBlock({ address: subplebbitAddress });
 
   return (
     <div className={styles.menuItem} onClick={blocked ? unblock : block}>
-      {blocked ? 'unblock' : 'block'} p/{subplebbitAddress && getShortAddress(subplebbitAddress)}
+      {blocked ? `${t('unblock')}` : `${t('block')}`} p/{subplebbitAddress && getShortAddress(subplebbitAddress)}
     </div>
   );
 };
 
 const BlockCommentButton = ({ cid }: HideMenuProps) => {
-  // const { t } = useTranslation();
+  const { t } = useTranslation();
   const { blocked, unblock, block } = useBlock({ address: cid });
 
   return (
     <div className={styles.menuItem} onClick={blocked ? unblock : block}>
-      {blocked ? 'unhide' : 'hide'} post
+      {blocked ? `${t('unhide')}` : `${t('hide')}`} {t('post')}
     </div>
   );
 };
 
-const HideMenu = ({ author, cid, subplebbitAddress }: HideMenuProps) => {
+const HideMenu = ({ author, cid, isMod, subplebbitAddress }: HideMenuProps) => {
   const { t } = useTranslation();
   const [isHideMenuOpen, setIsHideMenuOpen] = useState(false);
   const toggleIsMenuOpen = () => setIsHideMenuOpen(!isHideMenuOpen);
@@ -75,16 +76,16 @@ const HideMenu = ({ author, cid, subplebbitAddress }: HideMenuProps) => {
   return (
     <>
       <li className={styles.button} ref={refs.setReference} {...getReferenceProps()}>
-        <span onClick={() => setIsHideMenuOpen(!isHideMenuOpen)}>{t('post_hide')}</span>
+        <span onClick={() => setIsHideMenuOpen(!isHideMenuOpen)}>{t('hide')}</span>
       </li>
       {isHideMenuOpen && (
         <FloatingFocusManager context={context} modal={false}>
           <div className={styles.modal} ref={refs.setFloating} style={floatingStyles} aria-labelledby={headingId} {...getFloatingProps()}>
             <div className={styles.modMenu}>
               <BlockCommentButton cid={cid} toggleIsMenuOpen={toggleIsMenuOpen} />
-              <div className={styles.menuItem}>{t('report')}</div>
               <BlockSubplebbitButton subplebbitAddress={subplebbitAddress} />
               <BlockAuthorButton author={author} />
+              {!isMod && <div className={`${styles.menuItem} ${styles.reportButton}`}>{t('report')}</div>}
             </div>
           </div>
         </FloatingFocusManager>

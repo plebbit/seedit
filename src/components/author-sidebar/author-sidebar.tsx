@@ -22,6 +22,7 @@ import {
   // findAuthorSubplebbits,
   estimateAuthorKarma,
 } from '../../lib/utils/user-utils';
+import { useTranslation } from 'react-i18next';
 // import { useDefaultSubplebbitAddresses } from '../../lib/utils/addresses-utils';
 import SubscribeButton from '../subscribe-button';
 
@@ -53,6 +54,7 @@ import SubscribeButton from '../subscribe-button';
 // };
 
 const AuthorSidebar = () => {
+  const { t } = useTranslation();
   const location = useLocation();
   const navigate = useNavigate();
   const params = useParams();
@@ -128,10 +130,10 @@ const AuthorSidebar = () => {
           </div>
         )}
         <div>
-          <span className={styles.karma}>{postScore}</span> post karma
+          <span className={styles.karma}>{postScore}</span> {t('post_karma')}
         </div>
         <div>
-          <span className={styles.karma}>{replyScore}</span> comment karma
+          <span className={styles.karma}>{replyScore}</span> {t('comment_karma')}
         </div>
         <div className={styles.bottom}>
           {isAuthorPage && authorAddress !== profileAccount?.author?.address && (
@@ -139,7 +141,9 @@ const AuthorSidebar = () => {
               {blocked ? 'Unblock user' : 'Block user'}
             </span>
           )}
-          <span className={styles.age}>plebbitor for {getFormattedDuration(oldestCommentTimestamp)}</span>
+          <span className={styles.age}>
+            {t('plebbitor_for')} {getFormattedDuration(oldestCommentTimestamp)}
+          </span>
         </div>
       </div>
       {/* {Object.keys(accountSubplebbits).length > 0 && (

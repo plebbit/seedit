@@ -102,9 +102,9 @@ const Post = ({ post = {}, index }: PostProps) => {
   return (
     <div className={styles.content} key={index}>
       <div className={`${styles.hiddenPost} ${blocked ? styles.visible : styles.hidden}`}>
-        <div className={styles.hiddenPostText}>Post hidden</div>
+        <div className={styles.hiddenPostText}>{t('post_hidden').charAt(0).toUpperCase() + t('post_hidden').slice(1)}</div>
         <div className={styles.undoHiddenPost} onClick={unblock}>
-          undo
+          {t('undo')}
         </div>
       </div>
       <div className={`${styles.container} ${blocked ? styles.hidden : styles.visible}`}>
@@ -170,7 +170,7 @@ const Post = ({ post = {}, index }: PostProps) => {
                 />
               )}
               <p className={styles.tagline}>
-                {t('post_submitted')} {getFormattedTimeAgo(timestamp)} {t('post_by')}{' '}
+                {t('submitted')} {getFormattedTimeAgo(timestamp)} {t('post_by')}{' '}
                 <PostAuthor
                   authorAddress={author?.address}
                   authorRole={authorRole}

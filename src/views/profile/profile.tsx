@@ -3,6 +3,7 @@ import { useLocation, useParams } from 'react-router-dom';
 import { StateSnapshot, Virtuoso, VirtuosoHandle } from 'react-virtuoso';
 import { useAccount, useAccountComments, useAccountVotes, useComments } from '@plebbit/plebbit-react-hooks';
 import { isDownvotedView, isUpvotedView, isProfileCommentsView, isProfileSubmittedView } from '../../lib/utils/view-utils';
+import { useTranslation } from 'react-i18next';
 import styles from './profile.module.css';
 import AuthorSidebar from '../../components/author-sidebar';
 import Post from '../../components/post';
@@ -11,6 +12,7 @@ import Reply from '../../components/reply';
 const lastVirtuosoStates: { [key: string]: StateSnapshot } = {};
 
 const SortDropdown = ({ onSortChange }: { onSortChange: (sortType: string) => void }) => {
+  const { t } = useTranslation();
   const sortLabels = ['new', 'old'];
   const [selectedSort, setSelectedSort] = useState('new');
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -44,7 +46,7 @@ const SortDropdown = ({ onSortChange }: { onSortChange: (sortType: string) => vo
 
   return (
     <div className={styles.sortDropdown}>
-      <span className={styles.dropdownTitle}>sorted by: </span>
+      <span className={styles.dropdownTitle}>{t('sorted_by')}: </span>
       <div
         className={styles.dropdown}
         onClick={() => {

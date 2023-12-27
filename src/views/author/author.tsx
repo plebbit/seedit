@@ -3,6 +3,7 @@ import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import { useAuthorComments } from '@plebbit/plebbit-react-hooks';
 import { StateSnapshot, Virtuoso, VirtuosoHandle } from 'react-virtuoso';
 import { isAuthorCommentsView, isAuthorSubmittedView } from '../../lib/utils/view-utils';
+import { useTranslation } from 'react-i18next';
 import styles from './author.module.css';
 import AuthorSidebar from '../../components/author-sidebar';
 import LoadingEllipsis from '../../components/loading-ellipsis';
@@ -12,6 +13,7 @@ import Reply from '../../components/reply/';
 const lastVirtuosoStates: { [key: string]: StateSnapshot } = {};
 
 const Author = () => {
+  const { t } = useTranslation();
   const location = useLocation();
   const navigate = useNavigate();
   const { authorAddress, commentCid, sortType } = useParams();
@@ -67,7 +69,7 @@ const Author = () => {
       <div className={isMobile ? styles.sidebarMobile : styles.sidebarDesktop}>
         <AuthorSidebar />
       </div>
-      {authorComments?.length === 0 && !hasMore && <div className={styles.noPosts}>No posts found</div>}
+      {authorComments?.length === 0 && !hasMore && <div className={styles.noPosts}>{t('no_posts_found')}</div>}
       <Virtuoso
         increaseViewportBy={{ bottom: 1200, top: 600 }}
         totalCount={authorComments?.length || 0}

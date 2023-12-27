@@ -1,9 +1,11 @@
 import { useEffect, useState } from 'react';
 import { setAccount, useAccount, useResolvedAuthorAddress } from '@plebbit/plebbit-react-hooks';
 import { getShortAddress } from '@plebbit/plebbit-js';
+import { useTranslation } from 'react-i18next';
 import styles from './profile-settings.module.css';
 
 const ProfileSettings = () => {
+  const { t } = useTranslation();
   const account = useAccount();
   const [username, setUsername] = useState(account?.author.displayName || '');
   const [savedUsername, setSavedUsername] = useState(false);
@@ -34,7 +36,7 @@ const ProfileSettings = () => {
     cryptoAddress: '',
     checkingCryptoAddress: false,
     showResolvingMessage: false,
-    resolveString: 'if the crypto address is resolved p2p',
+    resolveString: t('crypto_address_verification'),
     resolveClass: '',
   });
 
@@ -126,7 +128,7 @@ const ProfileSettings = () => {
         ...prevState,
         checkingCryptoAddress: false,
         showResolvingMessage: false,
-        resolveString: 'if the crypto address is resolved p2p',
+        resolveString: t('crypto_address_verification'),
         resolveClass: '',
       }));
     }
@@ -154,16 +156,16 @@ const ProfileSettings = () => {
 
   return (
     <>
-      <span className={styles.settingTitle}>display name</span>
+      <span className={styles.settingTitle}>{t('display_name')}</span>
       <div className={styles.usernameInput}>
         <input type='text' placeholder='My Name' value={username} onChange={(e) => setUsername(e.target.value)} />
         <button className={styles.button} onClick={saveUsername}>
-          save
+          {t('save')}
         </button>
         {savedUsername && <span className={styles.saved}>Saved.</span>}
       </div>
       <div className={styles.cryptoAddressSetting}>
-        <span className={styles.settingTitle}>crypto address</span>
+        <span className={styles.settingTitle}>{t('crypto_address')}</span>
         <button className={styles.infoButton} onClick={cryptoAddressInfo}>
           ?
         </button>
@@ -175,13 +177,13 @@ const ProfileSettings = () => {
             onChange={(e) => setCryptoState((prevState) => ({ ...prevState, cryptoAddress: e.target.value }))}
           />
           <button className={styles.button} onClick={saveCryptoAddress}>
-            save
+            {t('save')}
           </button>
           {savedCryptoAddress && <span className={styles.saved}>Saved.</span>}
         </div>
         <div className={styles.checkCryptoAddress}>
           <button className={styles.button} onClick={checkCryptoAddress}>
-            check
+            {t('check')}
           </button>{' '}
           <span className={cryptoState.resolveClass}>{cryptoState.resolveString}</span>
         </div>

@@ -81,7 +81,7 @@ const ModTools = ({ cid }: ModToolsProps) => {
               <div className={styles.menuItem}>
                 <label>
                   <input onChange={onCheckbox} checked={publishCommentEditOptions.locked} type='checkbox' id='locked' />
-                  locked
+                  {t('locked')}
                 </label>
               </div>
               <div className={styles.menuItem}>
@@ -97,7 +97,7 @@ const ModTools = ({ cid }: ModToolsProps) => {
                 </label>
               </div>
               <div className={`${styles.menuItem} ${styles.menuReason}`}>
-                reason <span className={styles.optional}>(optional)</span>
+                {t('reason')} <span className={styles.optional}>({t('optional')})</span>
                 <input type='text' onChange={onReason} defaultValue={post?.reason} size={14} />
               </div>
               <div className={styles.bottom}>

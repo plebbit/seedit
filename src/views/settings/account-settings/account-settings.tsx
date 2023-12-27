@@ -1,9 +1,11 @@
 import { useEffect, useMemo, useState } from 'react';
 import { createAccount, deleteAccount, exportAccount, importAccount, setAccount, setActiveAccount, useAccount, useAccounts } from '@plebbit/plebbit-react-hooks';
 import stringify from 'json-stringify-pretty-compact';
+import { useTranslation } from 'react-i18next';
 import styles from './account-settings.module.css';
 
 const AccountSettings = () => {
+  const { t } = useTranslation();
   const account = useAccount();
   const { accounts } = useAccounts();
   const [text, setText] = useState('');
@@ -155,26 +157,26 @@ const AccountSettings = () => {
         <select value={account?.name} onChange={(e) => setActiveAccount(e.target.value)}>
           {accountsOptions}
         </select>{' '}
-        is the current account
+        {t('is_current_account')}
       </div>
-      <span className={styles.settingTitle}>account data preview</span>
+      <span className={styles.settingTitle}>{t('account_data_preview')}</span>
       <div className={styles.accountData}>
         <textarea className={styles.textarea} value={text} onChange={(e) => setText(e.target.value)} autoCorrect='off' autoComplete='off' spellCheck='false' />
         <div className={styles.accountButtons}>
           <div>
-            <button onClick={saveAccount}>Save</button> or <button onClick={() => setText(accountJson)}>Reset</button> changes
+            <button onClick={saveAccount}>{t('save')}</button> {t('or')} <button onClick={() => setText(accountJson)}>{t('reset')}</button> {t('changes')}
           </div>
           <div>
-            <button onClick={_createAccount}>Create</button> a new account
+            <button onClick={_createAccount}>{t('create')}</button> {t('a_new_account')}
           </div>
           <div>
-            <button onClick={_importAccount}>Import</button> full account data
+            <button onClick={_importAccount}>{t('import')}</button> {t('full_account_data')}
           </div>
           <div>
-            <button onClick={_exportAccount}>Export</button> full account data
+            <button onClick={_exportAccount}>{t('export')}</button> {t('full_account_data')}
           </div>
           <div className={styles.deleteAccountBox}>
-            <button onClick={() => _deleteAccount(account?.name)}>Delete</button> this account
+            <button onClick={() => _deleteAccount(account?.name)}>{t('delete')}</button> {t('this_account')}
           </div>
         </div>
       </div>

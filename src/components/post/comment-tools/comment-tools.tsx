@@ -14,6 +14,7 @@ interface CommentToolsProps {
   failed?: boolean;
   hasLabel?: boolean;
   index?: number;
+  isMod?: boolean;
   isReply?: boolean;
   isSingleReply?: boolean;
   parentCid?: string;
@@ -23,7 +24,7 @@ interface CommentToolsProps {
   showReplyForm?: () => void;
 }
 
-const PostTools = ({ author, cid, hasLabel, index, subplebbitAddress, replyCount = 0 }: CommentToolsProps) => {
+const PostTools = ({ author, cid, hasLabel, index, isMod, subplebbitAddress, replyCount = 0 }: CommentToolsProps) => {
   const { t } = useTranslation();
   const validReplyCount = isNaN(replyCount) ? 0 : replyCount;
   const commentCount = validReplyCount === 0 ? t('post_no_comments') : `${validReplyCount} ${validReplyCount === 1 ? t('post_comment') : t('post_comments')}`;
@@ -37,12 +38,22 @@ const PostTools = ({ author, cid, hasLabel, index, subplebbitAddress, replyCount
       <li className={styles.button}>
         <span>{t('save')}</span>
       </li>
-      <HideMenu author={author} cid={cid} subplebbitAddress={subplebbitAddress} />
+      <HideMenu author={author} cid={cid} isMod={isMod} subplebbitAddress={subplebbitAddress} />
+      {isMod ? (
+        <ModTools cid={cid} />
+      ) : (
+        <li className={`${styles.button} ${styles.reportButton}`}>
+          <span>{t('report')}</span>
+        </li>
+      )}
+      <li className={`${styles.button} ${styles.crosspostButton}`}>
+        <span>{t('crosspost')}</span>
+      </li>
     </>
   );
 };
 
-const ReplyTools = ({ author, cid, hasLabel, index, showReplyForm, subplebbitAddress }: CommentToolsProps) => {
+const ReplyTools = ({ author, cid, hasLabel, index, isMod, showReplyForm, subplebbitAddress }: CommentToolsProps) => {
   const { t } = useTranslation();
 
   return (
@@ -50,10 +61,18 @@ const ReplyTools = ({ author, cid, hasLabel, index, showReplyForm, subplebbitAdd
       <li className={`${styles.button} ${!hasLabel ? styles.firstButton : ''}`}>
         <Link to={cid ? `/p/${subplebbitAddress}/c/${cid}` : `/profile/${index}`}>{t('reply_permalink')}</Link>
       </li>
+      <ShareMenu cid={cid} subplebbitAddress={subplebbitAddress} />
       <li className={styles.button}>
         <span>{t('save')}</span>
       </li>
-      <HideMenu author={author} cid={cid} subplebbitAddress={subplebbitAddress} />
+      <HideMenu author={author} cid={cid} isMod={isMod} subplebbitAddress={subplebbitAddress} />
+      {isMod ? (
+        <ModTools cid={cid} />
+      ) : (
+        <li className={`${styles.button} ${styles.reportButton}`}>
+          <span>{t('report')}</span>
+        </li>
+      )}
       <li className={!cid ? styles.hideReply : styles.button}>
         <span onClick={() => cid && showReplyForm?.()}>{t('reply_reply')}</span>
       </li>
@@ -61,7 +80,7 @@ const ReplyTools = ({ author, cid, hasLabel, index, showReplyForm, subplebbitAdd
   );
 };
 
-const SingleReplyTools = ({ cid, hasLabel, index, parentCid, subplebbitAddress }: CommentToolsProps) => {
+const SingleReplyTools = ({ author, cid, hasLabel, index, isMod, parentCid, showReplyForm, subplebbitAddress }: CommentToolsProps) => {
   const { t } = useTranslation();
   const comment = useComment({ commentCid: parentCid });
 
@@ -74,10 +93,16 @@ const SingleReplyTools = ({ cid, hasLabel, index, parentCid, subplebbitAddress }
         <span>{t('save')}</span>
       </li>
       <li className={styles.button}>
-        <Link to={cid ? `/p/${subplebbitAddress}/c/${parentCid}` : `/profile/${index}`}>context</Link>
+        <Link to={cid ? `/p/${subplebbitAddress}/c/${parentCid}` : `/profile/${index}`}>{t('context')}</Link>
       </li>
       <li className={styles.button}>
-        <Link to={cid ? `/p/${subplebbitAddress}/c/${parentCid}` : `/profile/${index}`}>full comments ({comment?.replyCount || 0})</Link>
+        <Link to={cid ? `/p/${subplebbitAddress}/c/${parentCid}` : `/profile/${index}`}>
+          {t('full_comments')} ({comment?.replyCount || 0})
+        </Link>
+      </li>
+      <HideMenu author={author} cid={cid} isMod={isMod} subplebbitAddress={subplebbitAddress} />
+      <li className={!cid ? styles.hideReply : styles.button}>
+        <span onClick={() => cid && showReplyForm?.()}>{t('reply_reply')}</span>
       </li>
     </>
   );
@@ -118,22 +143,31 @@ const CommentTools = ({
       {hasLabel && <CommentToolsLabel cid={cid} failed={failed} isReply={isReply} spoiler={spoiler} subplebbitAddress={subplebbitAddress} />}
       {isReply ? (
         isSingleReply ? (
-          <SingleReplyTools cid={cid} hasLabel={hasLabel} index={index} parentCid={parentCid} subplebbitAddress={subplebbitAddress} />
+          <SingleReplyTools
+            author={author}
+            cid={cid}
+            hasLabel={hasLabel}
+            index={index}
+            isMod={isMod}
+            parentCid={parentCid}
+            showReplyForm={showReplyForm}
+            subplebbitAddress={subplebbitAddress}
+          />
         ) : (
           <ReplyTools
             author={author}
             cid={cid}
             hasLabel={hasLabel}
             index={index}
+            isMod={isMod}
             parentCid={parentCid}
             showReplyForm={showReplyForm}
             subplebbitAddress={subplebbitAddress}
           />
         )
       ) : (
-        <PostTools author={author} cid={cid} hasLabel={hasLabel} index={index} subplebbitAddress={subplebbitAddress} replyCount={replyCount} />
+        <PostTools author={author} cid={cid} hasLabel={hasLabel} index={index} isMod={isMod} subplebbitAddress={subplebbitAddress} replyCount={replyCount} />
       )}
-      {isMod && <ModTools cid={cid} />}
     </ul>
   );
 };
