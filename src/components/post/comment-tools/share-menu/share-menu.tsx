@@ -63,12 +63,12 @@ const ShareMenu = ({ cid, subplebbitAddress }: ShareMenuProps) => {
               <div className={styles.menuItem}>embed</div>
               <div className={styles.menuItem}>
                 <a href={`https://plebchan.eth.limo/#/p/${subplebbitAddress}/c/${cid}`} target='_blank' rel='noopener noreferrer'>
-                  view on plebchan
+                  {t('view_on', { destination: 'plebchan' })}
                 </a>
               </div>
               <div className={styles.menuItem}>
                 <a href={`https://plebones.eth.limo/#/p/${subplebbitAddress}/c/${cid}`} target='_blank' rel='noopener noreferrer'>
-                  view on plebones
+                  {t('view_on', { destination: 'plebones' })}
                 </a>
               </div>
             </div>

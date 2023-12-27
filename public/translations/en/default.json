@@ -150,5 +150,10 @@
   "post_hidden": "post hidden",
   "old": "old",
   "copy_link": "copy link",
-  "link_copied": "link copied"
+  "link_copied": "link copied",
+  "view_on": "view on {{destination}}",
+  "block_community": "block community",
+  "unblock_community": "unblock community",
+  "block_community_alert": "Are you sure you want to block this community?",
+  "unblock_community_alert": "Are you sure you want to unblock this community?"
 }

@@ -150,5 +150,10 @@
   "post_hidden": "piilotettu viesti",
   "old": "vanhat",
   "copy_link": "kopioi linkki",
-  "link_copied": "linkki kopioitu"
+  "link_copied": "linkki kopioitu",
+  "view_on": "näytä kohteessa {{destination}}",
+  "block_community": "estä yhteisö",
+  "unblock_community": "poista yhteisön esto",
+  "block_community_alert": "Oletko varma, että haluat estää tämän yhteisön?",
+  "unblock_community_alert": "Oletko varma, että haluat poistaa tämän yhteisön estoista?"
 }

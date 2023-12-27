@@ -150,5 +150,10 @@
   "post_hidden": "非表示の投稿",
   "old": "古い",
   "copy_link": "リンクをコピー",
-  "link_copied": "リンクがコピーされました"
+  "link_copied": "リンクがコピーされました",
+  "view_on": "{{destination}} で表示",
+  "block_community": "コミュニティをブロック",
+  "unblock_community": "コミュニティのブロック解除",
+  "block_community_alert": "このコミュニティをブロックしてもよろしいですか？",
+  "unblock_community_alert": "このコミュニティのブロック解除を確認しますか？"
 }

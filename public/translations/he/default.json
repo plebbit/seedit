@@ -150,5 +150,10 @@
   "post_hidden": "הפוסט מוסתר",
   "old": "ישנים",
   "copy_link": "העתק קישור",
-  "link_copied": "הקישור הועתק"
+  "link_copied": "הקישור הועתק",
+  "view_on": "הצג ב-{{destination}}",
+  "block_community": "חסום קהל",
+  "unblock_community": "ביטול חסימת הקהל",
+  "block_community_alert": "האם אתה בטוח שברצונך לחסום את הקהל הזה?",
+  "unblock_community_alert": "האם אתה בטוח שברצונך לבטל את חסימת הקהל הזו?"
 }

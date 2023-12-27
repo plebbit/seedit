@@ -150,5 +150,10 @@
   "post_hidden": "postimi i fshehtë",
   "old": "e vjetra",
   "copy_link": "kopjo lidhjen",
-  "link_copied": "lidhja u kopjua"
+  "link_copied": "lidhja u kopjua",
+  "view_on": "shqyrto në {{destination}}",
+  "block_community": "blloko komunitetin",
+  "unblock_community": "zhblloko komunitetin",
+  "block_community_alert": "A jeni të sigurt se dëshironi të bllokoni këtë komunitet?",
+  "unblock_community_alert": "A jeni të sigurt se dëshironi ta zhbllokoni këtë komunitet?"
 }

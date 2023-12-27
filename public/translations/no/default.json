@@ -150,5 +150,10 @@
   "post_hidden": "skjult innlegg",
   "old": "gamle",
   "copy_link": "kopier lenken",
-  "link_copied": "lenken er kopiert"
+  "link_copied": "lenken er kopiert",
+  "view_on": "vis på {{destination}}",
+  "block_community": "blokker samfunnet",
+  "unblock_community": "fjern samfunnsblokkeringen",
+  "block_community_alert": "Er du sikker på at du vil blokkere dette samfunnet?",
+  "unblock_community_alert": "Er du sikker på at du vil fjerne blokkeringen av dette samfunnet?"
 }

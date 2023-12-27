@@ -150,5 +150,10 @@
   "post_hidden": "gizli gönderi",
   "old": "eski",
   "copy_link": "bağlantıyı kopyala",
-  "link_copied": "bağlantı kopyalandı"
+  "link_copied": "bağlantı kopyalandı",
+  "view_on": "{{destination}} üzerinde görüntüle",
+  "block_community": "topluluğu engelle",
+  "unblock_community": "topluluğu engeli kaldır",
+  "block_community_alert": "Bu topluluğu engellemek istediğinizden emin misiniz?",
+  "unblock_community_alert": "Bu topluluğun engelini kaldırmak istediğinizden emin misiniz?"
 }

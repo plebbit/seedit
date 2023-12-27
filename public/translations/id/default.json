@@ -150,5 +150,10 @@
   "post_hidden": "postingan tersembunyi",
   "old": "lama",
   "copy_link": "salin tautan",
-  "link_copied": "tautan disalin"
+  "link_copied": "tautan disalin",
+  "view_on": "lihat di {{destination}}",
+  "block_community": "blokir komunitas",
+  "unblock_community": "buka blokir komunitas",
+  "block_community_alert": "Apakah Anda yakin ingin memblokir komunitas ini?",
+  "unblock_community_alert": "Apakah Anda yakin ingin membuka blokir komunitas ini?"
 }

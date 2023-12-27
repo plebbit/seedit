@@ -150,5 +150,10 @@
   "post_hidden": "โพสต์ที่ซ่อนอยู่",
   "old": "เก่า",
   "copy_link": "คัดลอกลิงก์",
-  "link_copied": "คัดลอกลิงก์แล้ว"
+  "link_copied": "คัดลอกลิงก์แล้ว",
+  "view_on": "ดูบน {{destination}}",
+  "block_community": "บล็อกชุมชน",
+  "unblock_community": "ยกเลิกการบล็อกชุมชน",
+  "block_community_alert": "คุณแน่ใจหรือไม่ว่าต้องการบล็อกชุมชนนี้?",
+  "unblock_community_alert": "คุณแน่ใจหรือไม่ว่าต้องการยกเลิกการบล็อกชุมชนนี้?"
 }

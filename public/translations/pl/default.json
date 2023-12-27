@@ -150,5 +150,10 @@
   "post_hidden": "ukryty post",
   "old": "stare",
   "copy_link": "skopiuj link",
-  "link_copied": "skopiowano link"
+  "link_copied": "skopiowano link",
+  "view_on": "zobacz na {{destination}}",
+  "block_community": "zablokuj społeczność",
+  "unblock_community": "odblokuj społeczność",
+  "block_community_alert": "Jesteś pewien, że chcesz zablokować tę społeczność?",
+  "unblock_community_alert": "Jesteś pewien, że chcesz odblokować tę społeczność?"
 }

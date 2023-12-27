@@ -150,5 +150,10 @@
   "post_hidden": "verborgen bericht",
   "old": "oud",
   "copy_link": "link kopiëren",
-  "link_copied": "link gekopieerd"
+  "link_copied": "link gekopieerd",
+  "view_on": "bekijk op {{destination}}",
+  "block_community": "gemeenschap blokkeren",
+  "unblock_community": "gemeenschapsblokkering opheffen",
+  "block_community_alert": "Weet u zeker dat u deze gemeenschap wilt blokkeren?",
+  "unblock_community_alert": "Weet u zeker dat u deze gemeenschap wilt deblokkeren?"
 }

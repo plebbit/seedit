@@ -98,10 +98,12 @@ const Sidebar = ({ address, cid, createdAt, description, downvoteCount = 0, role
   const { blocked, unblock, block } = useBlock({ address });
 
   const blockConfirm = () => {
-    if (window.confirm(`Are you sure you want to ${blocked ? 'unblock' : 'block'} this community?`)) {
-      if (blocked) {
+    if (blocked) {
+      if (window.confirm(t('unblock_community_alert'))) {
         unblock();
-      } else {
+      }
+    } else if (!blocked) {
+      if (window.confirm(t('block_community_alert'))) {
         block();
       }
     }
@@ -157,7 +159,7 @@ const Sidebar = ({ address, cid, createdAt, description, downvoteCount = 0, role
             <Link to={`/u/${creatorAddress}`} onClick={(e) => e.preventDefault()}>{`u/${creatorAddress}`}</Link>
             {createdAt && <span className={styles.age}> {t('community_for', { date: getFormattedDuration(createdAt) })}</span>}
             <div className={styles.blockSub} onClick={blockConfirm}>
-              {blocked ? 'Unblock community' : 'Block community'}
+              {blocked ? t('unblock_community') : t('block_community')}
             </div>
           </div>
         </div>

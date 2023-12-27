@@ -150,5 +150,10 @@
   "post_hidden": "पोस्ट लपविली",
   "old": "जुने",
   "copy_link": "लिंक कॉपी करा",
-  "link_copied": "लिंक कॉपी केला गेला"
+  "link_copied": "लिंक कॉपी केला गेला",
+  "view_on": "{{destination}} वर पहा",
+  "block_community": "समुदाय अवरोधित करा",
+  "unblock_community": "समुदाय अवरोधन काढा",
+  "block_community_alert": "क्या आपल्याला आपल्या ही समुदाय ब्लॉक करायचं आहे का?",
+  "unblock_community_alert": "क्या आपल्याला खात्री आहे की आपल्याला हे समुदाय अनब्लॉक करायचं आहे का?"
 }

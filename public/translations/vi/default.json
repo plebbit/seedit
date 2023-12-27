@@ -150,5 +150,10 @@
   "post_hidden": "bài viết bị ẩn",
   "old": "cũ",
   "copy_link": "sao chép liên kết",
-  "link_copied": "liên kết đã được sao chép"
+  "link_copied": "liên kết đã được sao chép",
+  "view_on": "xem trên {{destination}}",
+  "block_community": "chặn cộng đồng",
+  "unblock_community": "bỏ chặn cộng đồng",
+  "block_community_alert": "Bạn có chắc muốn chặn cộng đồng này không?",
+  "unblock_community_alert": "Bạn có chắc muốn bỏ chặn cộng đồng này không?"
 }

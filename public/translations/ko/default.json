@@ -150,5 +150,10 @@
   "post_hidden": "숨겨진 게시물",
   "old": "오래된",
   "copy_link": "링크 복사",
-  "link_copied": "링크 복사됨"
+  "link_copied": "링크 복사됨",
+  "view_on": "{{destination}}에서 보기",
+  "block_community": "커뮤니티 차단",
+  "unblock_community": "커뮤니티 차단 해제",
+  "block_community_alert": "이 커뮤니티를 차단하시겠습니까?",
+  "unblock_community_alert": "이 커뮤니티의 차단을 해제하시겠습니까?"
 }

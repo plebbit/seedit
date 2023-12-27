@@ -150,5 +150,10 @@
   "post_hidden": "postagem oculta",
   "old": "antigos",
   "copy_link": "copiar link",
-  "link_copied": "link copiado"
+  "link_copied": "link copiado",
+  "view_on": "ver em {{destination}}",
+  "block_community": "bloquear comunidade",
+  "unblock_community": "desbloquear comunidade",
+  "block_community_alert": "Tem certeza de que deseja bloquear esta comunidade?",
+  "unblock_community_alert": "Tem certeza de que deseja desbloquear esta comunidade?"
 }

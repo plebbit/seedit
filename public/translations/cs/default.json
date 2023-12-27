@@ -150,5 +150,10 @@
   "post_hidden": "skrytý příspěvek",
   "old": "staré",
   "copy_link": "kopírovat odkaz",
-  "link_copied": "odkaz byl zkopírován"
+  "link_copied": "odkaz byl zkopírován",
+  "view_on": "zobrazit na {{destination}}",
+  "block_community": "blokovat komunitu",
+  "unblock_community": "odblokovat komunitu",
+  "block_community_alert": "Jste si jisti, že chcete tuto komunitu blokovat?",
+  "unblock_community_alert": "Jste si jisti, že chcete tuto komunitu odblokovat?"
 }

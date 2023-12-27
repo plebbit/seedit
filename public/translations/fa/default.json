@@ -150,5 +150,10 @@
   "post_hidden": "پست مخفی",
   "old": "قدیمی",
   "copy_link": "کپی کردن لینک",
-  "link_copied": "لینک کپی شد"
+  "link_copied": "لینک کپی شد",
+  "view_on": "مشاهده در {{destination}}",
+  "block_community": "بلاک جامعه",
+  "unblock_community": "لغو مسدود کردن جامعه",
+  "block_community_alert": "آیا مطمئن هستید که می‌خواهید این جامعه را مسدود کنید؟",
+  "unblock_community_alert": "آیا مطمئن هستید که می‌خواهید این جامعه را از مسدودیت خارج کنید؟"
 }

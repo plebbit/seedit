@@ -150,5 +150,10 @@
   "post_hidden": "postare ascunsă",
   "old": "vechi",
   "copy_link": "copiază linkul",
-  "link_copied": "link copiat"
+  "link_copied": "link copiat",
+  "view_on": "vezi pe {{destination}}",
+  "block_community": "blochează comunitatea",
+  "unblock_community": "deblochează comunitatea",
+  "block_community_alert": "Sunteți sigur că doriți să blocați această comunitate?",
+  "unblock_community_alert": "Sunteți sigur că doriți să deblocați această comunitate?"
 }

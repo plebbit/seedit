@@ -150,5 +150,10 @@
   "post_hidden": "पोस्ट छुपी हुई",
   "old": "पुराने",
   "copy_link": "लिंक कॉपी करें",
-  "link_copied": "लिंक कॉपी किया गया"
+  "link_copied": "लिंक कॉपी किया गया",
+  "view_on": "{{destination}} पर देखें",
+  "block_community": "समुदाय को ब्लॉक करें",
+  "unblock_community": "समुदाय अवरोध को हटाएं",
+  "block_community_alert": "क्या आप इस समुदाय को ब्लॉक करना चाहते हैं?",
+  "unblock_community_alert": "क्या आप इस समुदाय को अनब्लॉक करना चाहते हैं?"
 }

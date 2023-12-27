@@ -150,5 +150,10 @@
   "post_hidden": "পোস্ট লুকানো",
   "old": "পুরাতন",
   "copy_link": "লিংক কপি করুন",
-  "link_copied": "লিংক কপি হয়েছে"
+  "link_copied": "লিংক কপি হয়েছে",
+  "view_on": "{{destination}} দেখুন",
+  "block_community": "সম্প্রদায় ব্লক করুন",
+  "unblock_community": "সম্প্রদায় ব্লক আনব্লক করুন",
+  "block_community_alert": "আপনি কি নিশ্চিত যে আপনি এই সম্প্রদায়টি ব্লক করতে চান?",
+  "unblock_community_alert": "আপনি কি নিশ্চিত যে আপনি এই সম্প্রদায়টি অনব্লক করতে চান?"
 }

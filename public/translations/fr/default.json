@@ -150,5 +150,10 @@
   "post_hidden": "publication masquée",
   "old": "anciens",
   "copy_link": "copier le lien",
-  "link_copied": "lien copié"
+  "link_copied": "lien copié",
+  "view_on": "voir sur {{destination}}",
+  "block_community": "bloquer la communauté",
+  "unblock_community": "débloquer la communauté",
+  "block_community_alert": "Êtes-vous sûr de vouloir bloquer cette communauté ?",
+  "unblock_community_alert": "Êtes-vous sûr de vouloir débloquer cette communauté ?"
 }

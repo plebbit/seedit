@@ -150,5 +150,10 @@
   "post_hidden": "dolt inlägg",
   "old": "gamla",
   "copy_link": "kopiera länk",
-  "link_copied": "länk kopierad"
+  "link_copied": "länk kopierad",
+  "view_on": "visa på {{destination}}",
+  "block_community": "blockera gemenskapen",
+  "unblock_community": "avblockera gemenskapen",
+  "block_community_alert": "Är du säker på att du vill blockera detta samhälle?",
+  "unblock_community_alert": "Är du säker på att du vill avblockera detta samhälle?"
 }

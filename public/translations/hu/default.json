@@ -150,5 +150,10 @@
   "post_hidden": "elrejtett poszt",
   "old": "régi",
   "copy_link": "link másolása",
-  "link_copied": "link másolva"
+  "link_copied": "link másolva",
+  "view_on": "megtekintés itt: {{destination}}",
+  "block_community": "közösség blokkolása",
+  "unblock_community": "közösség tiltásának feloldása",
+  "block_community_alert": "Biztos vagy benne, hogy blokkolni szeretnéd ezt a közösséget?",
+  "unblock_community_alert": "Biztos vagy benne, hogy feloldani szeretnéd ezt a közösséget?"
 }

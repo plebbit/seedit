@@ -150,5 +150,10 @@
   "post_hidden": "المنشور مخفي",
   "old": "قديمة",
   "copy_link": "انسخ الرابط",
-  "link_copied": "تم نسخ الرابط"
+  "link_copied": "تم نسخ الرابط",
+  "view_on": "عرض على {{destination}}",
+  "block_community": "حظر المجتمع",
+  "unblock_community": "إلغاء حظر المجتمع",
+  "block_community_alert": "هل أنت متأكد أنك تريد حظر هذا المجتمع؟",
+  "unblock_community_alert": "هل أنت متأكد أنك تريد إلغاء حظر هذا المجتمع؟"
 }

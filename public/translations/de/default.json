@@ -150,5 +150,10 @@
   "post_hidden": "versteckter Beitrag",
   "old": "alt",
   "copy_link": "Link kopieren",
-  "link_copied": "Link kopiert"
+  "link_copied": "Link kopiert",
+  "view_on": "ansehen auf {{destination}}",
+  "block_community": "Community blockieren",
+  "unblock_community": "Community-Blockierung aufheben",
+  "block_community_alert": "Sind Sie sicher, dass Sie diese Community blockieren möchten?",
+  "unblock_community_alert": "Sind Sie sicher, dass Sie diese Community freischalten möchten?"
 }
