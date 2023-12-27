@@ -119,5 +119,11 @@
   "changes": "schimbări",
   "check": "verificați",
   "crypto_address_verification": "dacă adresa cripto este rezolvată p2p",
-  "is_current_account": "este contul curent"
+  "is_current_account": "este contul curent",
+  "account_data_preview": "previzualizare a datelor contului",
+  "create": "creați",
+  "a_new_account": "un cont nou",
+  "import": "importați",
+  "export": "exportați",
+  "delete": "ștergeți"
 }

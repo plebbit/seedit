@@ -119,5 +119,11 @@
   "changes": "thay đổi",
   "check": "kiểm tra",
   "crypto_address_verification": "nếu địa chỉ tiền điện tử được giải quyết p2p",
-  "is_current_account": "đó có phải là tài khoản hiện tại không"
+  "is_current_account": "đó có phải là tài khoản hiện tại không",
+  "account_data_preview": "xem trước dữ liệu tài khoản",
+  "create": "tạo",
+  "a_new_account": "một tài khoản mới",
+  "import": "nhập",
+  "export": "xuất",
+  "delete": "xóa"
 }

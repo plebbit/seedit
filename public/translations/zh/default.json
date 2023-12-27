@@ -119,5 +119,11 @@
   "changes": "更改",
   "check": "检查",
   "crypto_address_verification": "如果加密地址是p2p解决的",
-  "is_current_account": "这是当前帐户吗"
+  "is_current_account": "这是当前帐户吗",
+  "account_data_preview": "帐户数据预览",
+  "create": "创建",
+  "a_new_account": "一个新帐户",
+  "import": "导入",
+  "export": "导出",
+  "delete": "删除"
 }

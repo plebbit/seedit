@@ -119,5 +119,11 @@
   "changes": "ndryshimet",
   "check": "kontrollo",
   "crypto_address_verification": "nëse adresa e kripto shpërblyhet p2p",
-  "is_current_account": "a është llogaria aktuale"
+  "is_current_account": "a është llogaria aktuale",
+  "account_data_preview": "parapamje e të dhënave të llogarisë",
+  "create": "krijo",
+  "a_new_account": "një llogari e re",
+  "import": "importo",
+  "export": "eksport",
+  "delete": "fshij"
 }

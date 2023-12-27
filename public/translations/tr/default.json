@@ -119,5 +119,11 @@
   "changes": "değişiklikler",
   "check": "kontrol etmek",
   "crypto_address_verification": "eğer kripto adresi p2p ile çözüldüyse",
-  "is_current_account": "bu, şu anki hesap mı"
+  "is_current_account": "bu, şu anki hesap mı",
+  "account_data_preview": "hesap verileri önizleme",
+  "create": "oluştur",
+  "a_new_account": "yeni bir hesap",
+  "import": "ithal et",
+  "export": "dışa aktar",
+  "delete": "sil"
 }

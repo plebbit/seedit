@@ -119,5 +119,11 @@
   "changes": "ændringer",
   "check": "check",
   "crypto_address_verification": "hvis kryptoadressen er løst p2p",
-  "is_current_account": "er dette den nuværende konto"
+  "is_current_account": "er dette den nuværende konto",
+  "account_data_preview": "konto data forhåndsvisning",
+  "create": "opret",
+  "a_new_account": "ny konto",
+  "import": "importer",
+  "export": "eksportér",
+  "delete": "slet"
 }

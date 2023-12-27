@@ -119,5 +119,11 @@
   "changes": "변경사항",
   "check": "확인",
   "crypto_address_verification": "암호 화폐 주소가 p2p로 해결되었을 때",
-  "is_current_account": "현재 계정입니까"
+  "is_current_account": "현재 계정입니까",
+  "account_data_preview": "계정 데이터 미리보기",
+  "create": "만들기",
+  "a_new_account": "새 계정",
+  "import": "가져오기",
+  "export": "내보내기",
+  "delete": "삭제"
 }

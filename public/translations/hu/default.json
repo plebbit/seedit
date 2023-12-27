@@ -119,5 +119,11 @@
   "changes": "változások",
   "check": "ellenőriz",
   "crypto_address_verification": "ha a kriptocím p2p felbontású",
-  "is_current_account": "a jelenlegi számla"
+  "is_current_account": "a jelenlegi számla",
+  "account_data_preview": "számlaadatok előnézete",
+  "create": "készít",
+  "a_new_account": "egy új fiók",
+  "import": "importálás",
+  "export": "exportálás",
+  "delete": "töröl"
 }

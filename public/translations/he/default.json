@@ -119,5 +119,11 @@
   "changes": "שינויים",
   "check": "בדוק",
   "crypto_address_verification": "אם כתובת הקריפטו פתרה p2p",
-  "is_current_account": "האם זה החשבון הנוכחי"
+  "is_current_account": "האם זה החשבון הנוכחי",
+  "account_data_preview": "תצוגה מקדימה של נתוני החשבון",
+  "create": "צור",
+  "a_new_account": "חשבון חדש",
+  "import": "יבא",
+  "export": "יצוא",
+  "delete": "מחק"
 }

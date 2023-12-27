@@ -119,5 +119,11 @@
   "changes": "perubahan",
   "check": "periksa",
   "crypto_address_verification": "jika alamat kripto diselesaikan p2p",
-  "is_current_account": "apakah ini adalah akun saat ini"
+  "is_current_account": "apakah ini adalah akun saat ini",
+  "account_data_preview": "pratinjau data akun",
+  "create": "buat",
+  "a_new_account": "akun baru",
+  "import": "impor",
+  "export": "ekspor",
+  "delete": "hapus"
 }

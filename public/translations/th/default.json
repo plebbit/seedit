@@ -119,5 +119,11 @@
   "changes": "การเปลี่ยนแปลง",
   "check": "ตรวจสอบ",
   "crypto_address_verification": "หากที่อยู่คริปโตได้รับการแก้ไข p2p",
-  "is_current_account": "นี่คือบัญชีปัจจุบันหรือไม่"
+  "is_current_account": "นี่คือบัญชีปัจจุบันหรือไม่",
+  "account_data_preview": "ดูตัวอย่างข้อมูลบัญชี",
+  "create": "สร้าง",
+  "a_new_account": "บัญชีใหม่",
+  "import": "นำเข้า",
+  "export": "ส่งออก",
+  "delete": "ลบ"
 }

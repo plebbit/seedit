@@ -119,5 +119,11 @@
   "changes": "alterações",
   "check": "verificar",
   "crypto_address_verification": "se o endereço de cripto for resolvido p2p",
-  "is_current_account": "é a conta atual"
+  "is_current_account": "é a conta atual",
+  "account_data_preview": "visualização de dados da conta",
+  "create": "criar",
+  "a_new_account": "uma nova conta",
+  "import": "importar",
+  "export": "exportar",
+  "delete": "apagar"
 }

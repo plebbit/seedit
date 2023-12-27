@@ -119,5 +119,11 @@
   "changes": "ändringar",
   "check": "kontrollera",
   "crypto_address_verification": "om kryptoadressen är löst p2p",
-  "is_current_account": "är det nuvarande kontot"
+  "is_current_account": "är det nuvarande kontot",
+  "account_data_preview": "förhandsgranska kontodata",
+  "create": "skapa",
+  "a_new_account": "ett nytt konto",
+  "import": "importera",
+  "export": "exportera",
+  "delete": "ta bort"
 }

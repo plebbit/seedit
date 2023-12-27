@@ -119,5 +119,11 @@
   "changes": "تغییرات",
   "check": "بررسی کنید",
   "crypto_address_verification": "اگر آدرس رمزارز به صورت p2p حل شود",
-  "is_current_account": "آیا این حساب جاری است"
+  "is_current_account": "آیا این حساب جاری است",
+  "account_data_preview": "پیش‌نمایش داده‌های حساب",
+  "create": "ایجاد کنید",
+  "a_new_account": "یک حساب جدید",
+  "import": "وارد کردن",
+  "export": "صدور",
+  "delete": "حذف کنید"
 }

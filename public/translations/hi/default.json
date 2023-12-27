@@ -119,5 +119,11 @@
   "changes": "परिवर्तन",
   "check": "जाँच करें",
   "crypto_address_verification": "यदि क्रिप्टो पता p2p द्वारा हल किया गया है",
-  "is_current_account": "क्या यह वर्तमान खाता है"
+  "is_current_account": "क्या यह वर्तमान खाता है",
+  "account_data_preview": "खाता डेटा पूर्वावलोकन",
+  "create": "बनाएँ",
+  "a_new_account": "एक नया खाता",
+  "import": "आयात",
+  "export": "निर्यात",
+  "delete": "हटाएँ"
 }

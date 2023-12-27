@@ -159,7 +159,7 @@ const AccountSettings = () => {
         </select>{' '}
         {t('is_current_account')}
       </div>
-      <span className={styles.settingTitle}>account data preview</span>
+      <span className={styles.settingTitle}>{t('account_data_preview')}</span>
       <div className={styles.accountData}>
         <textarea className={styles.textarea} value={text} onChange={(e) => setText(e.target.value)} autoCorrect='off' autoComplete='off' spellCheck='false' />
         <div className={styles.accountButtons}>
@@ -167,16 +167,16 @@ const AccountSettings = () => {
             <button onClick={saveAccount}>{t('save')}</button> {t('or')} <button onClick={() => setText(accountJson)}>{t('reset')}</button> {t('changes')}
           </div>
           <div>
-            <button onClick={_createAccount}>Create</button> a new account
+            <button onClick={_createAccount}>{t('create')}</button> {t('a_new_account')}
           </div>
           <div>
-            <button onClick={_importAccount}>Import</button> full account data
+            <button onClick={_importAccount}>{t('import')}</button> full account data
           </div>
           <div>
-            <button onClick={_exportAccount}>Export</button> full account data
+            <button onClick={_exportAccount}>{t('export')}</button> full account data
           </div>
           <div className={styles.deleteAccountBox}>
-            <button onClick={() => _deleteAccount(account?.name)}>Delete</button> this account
+            <button onClick={() => _deleteAccount(account?.name)}>{t('delete')}</button> this account
           </div>
         </div>
       </div>
