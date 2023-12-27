@@ -157,5 +157,11 @@
   "block_community_alert": "이 커뮤니티를 차단하시겠습니까?",
   "unblock_community_alert": "이 커뮤니티의 차단을 해제하시겠습니까?",
   "search_community_address": "커뮤니티 주소 검색",
-  "search_feed_post": "이 피드에서 게시물 검색"
+  "search_feed_post": "이 피드에서 게시물 검색",
+  "from": "보낸 사람",
+  "via": "을 통해",
+  "sent": "보냄",
+  "unread": "읽지 않음",
+  "comment_replies": "댓글 답글",
+  "post_replies": "게시물 답글"
 }

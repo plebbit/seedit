@@ -155,6 +155,7 @@ const InboxParentLink = ({ commentCid }: ParentLinkProps) => {
 };
 
 const InboxParentInfo = ({ commentCid, markedAsRead }: ParentLinkProps) => {
+  const { t } = useTranslation();
   const parent = useComment({ commentCid });
   const { author, cid, subplebbitAddress, timestamp } = parent || {};
   const shortSubplebbitAddress = subplebbitAddress ? (subplebbitAddress.includes('.') ? subplebbitAddress : getShortAddress(subplebbitAddress)) : '';
@@ -162,15 +163,15 @@ const InboxParentInfo = ({ commentCid, markedAsRead }: ParentLinkProps) => {
   return (
     <>
       <div className={`${styles.inboxParentInfo} ${markedAsRead ? styles.inboxParentRead : styles.inboxParentUnread}`}>
-        from{' '}
+        {t('from')}{' '}
         <Link to={`/u/${author?.address}/c/${cid}`} className={styles.inboxParentAuthor}>
           u/{author?.shortAddress}{' '}
         </Link>
-        via{' '}
+        {t('via')}{' '}
         <Link to={`/p/${subplebbitAddress}`} className={styles.inboxParentSubplebbit}>
           p/{shortSubplebbitAddress}{' '}
         </Link>
-        sent {getFormattedTimeAgo(timestamp)}
+        {t('sent')} {getFormattedTimeAgo(timestamp)}
       </div>
       <div className={styles.inboxParentInfoButton}>show parent</div>
     </>

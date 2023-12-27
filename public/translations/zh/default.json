@@ -157,5 +157,11 @@
   "block_community_alert": "您确定要阻止此社区吗？",
   "unblock_community_alert": "您确定要解锁此社区吗？",
   "search_community_address": "搜索社区地址",
-  "search_feed_post": "在此订阅中搜索帖子"
+  "search_feed_post": "在此订阅中搜索帖子",
+  "from": "从",
+  "via": "通过",
+  "sent": "已发送",
+  "unread": "未读",
+  "comment_replies": "评论回复",
+  "post_replies": "帖子回复"
 }

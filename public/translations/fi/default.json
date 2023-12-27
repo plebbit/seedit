@@ -157,5 +157,11 @@
   "block_community_alert": "Oletko varma, että haluat estää tämän yhteisön?",
   "unblock_community_alert": "Oletko varma, että haluat poistaa tämän yhteisön estoista?",
   "search_community_address": "Etsi yhteisön osoite",
-  "search_feed_post": "Etsi viesti tästä syötteestä"
+  "search_feed_post": "Etsi viesti tästä syötteestä",
+  "from": "lähettäjältä",
+  "via": "kautta",
+  "sent": "lähetetty",
+  "unread": "lukemattomat",
+  "comment_replies": "kommenttivastaukset",
+  "post_replies": "viestivastaukset"
 }

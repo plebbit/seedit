@@ -157,5 +157,11 @@
   "block_community_alert": "Sigurado ka bang gusto mong i-block ang komunidad na ito?",
   "unblock_community_alert": "Sigurado ka bang gusto mong i-unblock ang komunidad na ito?",
   "search_community_address": "Maghanap ng address ng komunidad",
-  "search_feed_post": "Maghanap ng post sa feed na ito"
+  "search_feed_post": "Maghanap ng post sa feed na ito",
+  "from": "mula sa",
+  "via": "sa pamamagitan ng",
+  "sent": "ipinadala",
+  "unread": "hindi pa nababasa",
+  "comment_replies": "mga reply sa komento",
+  "post_replies": "mga reply sa post"
 }

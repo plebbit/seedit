@@ -157,5 +157,11 @@
   "block_community_alert": "このコミュニティをブロックしてもよろしいですか？",
   "unblock_community_alert": "このコミュニティのブロック解除を確認しますか？",
   "search_community_address": "コミュニティのアドレスを検索",
-  "search_feed_post": "このフィード内の投稿を検索"
+  "search_feed_post": "このフィード内の投稿を検索",
+  "from": "から",
+  "via": "経由で",
+  "sent": "送信済み",
+  "unread": "未読",
+  "comment_replies": "コメントへの返信",
+  "post_replies": "投稿への返信"
 }

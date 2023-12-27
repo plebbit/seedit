@@ -157,5 +157,11 @@
   "block_community_alert": "क्या आप इस समुदाय को ब्लॉक करना चाहते हैं?",
   "unblock_community_alert": "क्या आप इस समुदाय को अनब्लॉक करना चाहते हैं?",
   "search_community_address": "एक समुदाय पता खोजें",
-  "search_feed_post": "इस फ़ीड में एक पोस्ट खोजें"
+  "search_feed_post": "इस फ़ीड में एक पोस्ट खोजें",
+  "from": "से",
+  "via": "के माध्यम से",
+  "sent": "भेजा गया",
+  "unread": "अपठित",
+  "comment_replies": "टिप्पणियों के जवाब",
+  "post_replies": "पोस्ट के जवाब"
 }

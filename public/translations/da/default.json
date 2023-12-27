@@ -157,5 +157,11 @@
   "block_community_alert": "Er du sikker på, at du vil blokere dette fællesskab?",
   "unblock_community_alert": "Er du sikker på, at du vil fjerne blokeringen af dette fællesskab?",
   "search_community_address": "Søg efter en fællesskabsadresse",
-  "search_feed_post": "Søg efter et opslag på dette feed"
+  "search_feed_post": "Søg efter et opslag på dette feed",
+  "from": "fra",
+  "via": "via",
+  "sent": "sendt",
+  "unread": "ulæst",
+  "comment_replies": "kommentarsvar",
+  "post_replies": "indlægssvar"
 }

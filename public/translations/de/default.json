@@ -157,5 +157,11 @@
   "block_community_alert": "Sind Sie sicher, dass Sie diese Community blockieren möchten?",
   "unblock_community_alert": "Sind Sie sicher, dass Sie diese Community freischalten möchten?",
   "search_community_address": "Suche nach einer Community-Adresse",
-  "search_feed_post": "Suche nach einem Beitrag in diesem Feed"
+  "search_feed_post": "Suche nach einem Beitrag in diesem Feed",
+  "from": "von",
+  "via": "über",
+  "sent": "gesendet",
+  "unread": "ungelesen",
+  "comment_replies": "Antworten auf Kommentare",
+  "post_replies": "Antworten auf Beiträge"
 }

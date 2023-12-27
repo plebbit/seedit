@@ -157,5 +157,11 @@
   "block_community_alert": "Är du säker på att du vill blockera detta samhälle?",
   "unblock_community_alert": "Är du säker på att du vill avblockera detta samhälle?",
   "search_community_address": "Sök efter en gemenskapsadress",
-  "search_feed_post": "Sök efter ett inlägg i detta flöde"
+  "search_feed_post": "Sök efter ett inlägg i detta flöde",
+  "from": "från",
+  "via": "via",
+  "sent": "skickat",
+  "unread": "olästa",
+  "comment_replies": "kommentarsvar",
+  "post_replies": "inläggssvar"
 }

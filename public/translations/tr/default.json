@@ -157,5 +157,11 @@
   "block_community_alert": "Bu topluluğu engellemek istediğinizden emin misiniz?",
   "unblock_community_alert": "Bu topluluğun engelini kaldırmak istediğinizden emin misiniz?",
   "search_community_address": "Bir topluluk adresi arayın",
-  "search_feed_post": "Bu akışta bir gönderi arayın"
+  "search_feed_post": "Bu akışta bir gönderi arayın",
+  "from": "kimden",
+  "via": "aracılığıyla",
+  "sent": "gönderildi",
+  "unread": "okunmamış",
+  "comment_replies": "yorum yanıtları",
+  "post_replies": "gönderi yanıtları"
 }

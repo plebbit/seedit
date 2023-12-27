@@ -157,5 +157,11 @@
   "block_community_alert": "האם אתה בטוח שברצונך לחסום את הקהל הזה?",
   "unblock_community_alert": "האם אתה בטוח שברצונך לבטל את חסימת הקהל הזו?",
   "search_community_address": "חפש כתובת של קהילה",
-  "search_feed_post": "חפש פוסט בפיד זה"
+  "search_feed_post": "חפש פוסט בפיד זה",
+  "from": "מאת",
+  "via": "דרך",
+  "sent": "נשלח",
+  "unread": "לא נקרא",
+  "comment_replies": "תגובות לתגובות",
+  "post_replies": "תגובות לפוסטים"
 }

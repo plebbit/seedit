@@ -157,5 +157,11 @@
   "block_community_alert": "Weet u zeker dat u deze gemeenschap wilt blokkeren?",
   "unblock_community_alert": "Weet u zeker dat u deze gemeenschap wilt deblokkeren?",
   "search_community_address": "Zoek een communityadres",
-  "search_feed_post": "Zoek een bericht in deze feed"
+  "search_feed_post": "Zoek een bericht in deze feed",
+  "from": "van",
+  "via": "via",
+  "sent": "verzonden",
+  "unread": "ongelezen",
+  "comment_replies": "reacties op opmerkingen",
+  "post_replies": "reacties op berichten"
 }

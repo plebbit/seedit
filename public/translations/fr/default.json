@@ -157,5 +157,11 @@
   "block_community_alert": "Êtes-vous sûr de vouloir bloquer cette communauté ?",
   "unblock_community_alert": "Êtes-vous sûr de vouloir débloquer cette communauté ?",
   "search_community_address": "Rechercher une adresse de communauté",
-  "search_feed_post": "Rechercher un article dans ce flux"
+  "search_feed_post": "Rechercher un article dans ce flux",
+  "from": "de",
+  "via": "via",
+  "sent": "envoyé",
+  "unread": "non lu",
+  "comment_replies": "réponses aux commentaires",
+  "post_replies": "réponses aux publications"
 }

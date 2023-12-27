@@ -157,5 +157,11 @@
   "block_community_alert": "Apakah Anda yakin ingin memblokir komunitas ini?",
   "unblock_community_alert": "Apakah Anda yakin ingin membuka blokir komunitas ini?",
   "search_community_address": "Cari alamat komunitas",
-  "search_feed_post": "Cari postingan di umpan ini"
+  "search_feed_post": "Cari postingan di umpan ini",
+  "from": "dari",
+  "via": "melalui",
+  "sent": "dikirim",
+  "unread": "belum dibaca",
+  "comment_replies": "balasan komentar",
+  "post_replies": "balasan pos"
 }

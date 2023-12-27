@@ -157,5 +157,11 @@
   "block_community_alert": "Sei sicuro di voler bloccare questa comunità?",
   "unblock_community_alert": "Sei sicuro di voler sbloccare questa comunità?",
   "search_community_address": "Cerca l'indirizzo di una comunità",
-  "search_feed_post": "Cerca un post in questa pagina"
+  "search_feed_post": "Cerca un post in questa pagina",
+  "from": "da",
+  "via": "via",
+  "sent": "inviato",
+  "unread": "non letti",
+  "comment_replies": "risposte ai commenti",
+  "post_replies": "risposte ai post"
 }

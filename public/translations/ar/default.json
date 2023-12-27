@@ -157,5 +157,11 @@
   "block_community_alert": "هل أنت متأكد أنك تريد حظر هذا المجتمع؟",
   "unblock_community_alert": "هل أنت متأكد أنك تريد إلغاء حظر هذا المجتمع؟",
   "search_community_address": "ابحث عن عنوان مجتمع",
-  "search_feed_post": "ابحث عن منشور في هذا التغذية"
+  "search_feed_post": "ابحث عن منشور في هذا التغذية",
+  "from": "من",
+  "via": "عبر",
+  "sent": "أرسل",
+  "unread": "غير مقروء",
+  "comment_replies": "ردود التعليقات",
+  "post_replies": "ردود المنشورات"
 }
