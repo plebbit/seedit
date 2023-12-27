@@ -147,5 +147,8 @@
   "unhide": "表示",
   "unblock": "ブロック解除",
   "undo": "取り消し",
-  "post_hidden": "非表示の投稿"
+  "post_hidden": "非表示の投稿",
+  "old": "古い",
+  "copy_link": "リンクをコピー",
+  "link_copied": "リンクがコピーされました"
 }

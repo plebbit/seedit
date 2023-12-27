@@ -147,5 +147,8 @@
   "unhide": "vis",
   "unblock": "opphav blokkering",
   "undo": "angre",
-  "post_hidden": "skjult innlegg"
+  "post_hidden": "skjult innlegg",
+  "old": "gamle",
+  "copy_link": "kopier lenken",
+  "link_copied": "lenken er kopiert"
 }

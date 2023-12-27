@@ -59,7 +59,7 @@ const ReplyTools = ({ author, cid, hasLabel, index, isMod, showReplyForm, subple
   return (
     <>
       <li className={`${styles.button} ${!hasLabel ? styles.firstButton : ''}`}>
-        <Link to={cid ? `/p/${subplebbitAddress}/c/${cid}` : `/profile/${index}`}>{t('reply_permalink')}</Link>
+        <Link to={cid ? `/p/${subplebbitAddress}/c/${cid}` : `/profile/${index}`}>permalink</Link>
       </li>
       <ShareMenu cid={cid} subplebbitAddress={subplebbitAddress} />
       <li className={styles.button}>
@@ -87,7 +87,7 @@ const SingleReplyTools = ({ author, cid, hasLabel, index, isMod, parentCid, show
   return (
     <>
       <li className={`${styles.button} ${!hasLabel ? styles.firstButton : ''}`}>
-        <Link to={cid ? `/p/${subplebbitAddress}/c/${cid}` : `/profile/${index}`}>{t('reply_permalink')}</Link>
+        <Link to={cid ? `/p/${subplebbitAddress}/c/${cid}` : `/profile/${index}`}>permalink</Link>
       </li>
       <li className={styles.button}>
         <span>{t('save')}</span>

@@ -147,5 +147,8 @@
   "unhide": "tampilkan",
   "unblock": "batalkan blokir",
   "undo": "batalkan",
-  "post_hidden": "postingan tersembunyi"
+  "post_hidden": "postingan tersembunyi",
+  "old": "lama",
+  "copy_link": "salin tautan",
+  "link_copied": "tautan disalin"
 }

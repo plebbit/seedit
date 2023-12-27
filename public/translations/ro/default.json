@@ -147,5 +147,8 @@
   "unhide": "afișează",
   "unblock": "deblochează",
   "undo": "anulează",
-  "post_hidden": "postare ascunsă"
+  "post_hidden": "postare ascunsă",
+  "old": "vechi",
+  "copy_link": "copiază linkul",
+  "link_copied": "link copiat"
 }

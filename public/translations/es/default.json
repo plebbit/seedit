@@ -147,5 +147,8 @@
   "unhide": "mostrar",
   "unblock": "desbloquear",
   "undo": "deshacer",
-  "post_hidden": "publicación oculta"
+  "post_hidden": "publicación oculta",
+  "old": "antiguos",
+  "copy_link": "copiar enlace",
+  "link_copied": "enlace copiado"
 }

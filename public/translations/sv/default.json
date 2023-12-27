@@ -147,5 +147,8 @@
   "unhide": "visa",
   "unblock": "avblockera",
   "undo": "ångra",
-  "post_hidden": "dolt inlägg"
+  "post_hidden": "dolt inlägg",
+  "old": "gamla",
+  "copy_link": "kopiera länk",
+  "link_copied": "länk kopierad"
 }

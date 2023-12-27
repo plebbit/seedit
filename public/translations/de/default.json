@@ -147,5 +147,8 @@
   "unhide": "anzeigen",
   "unblock": "Blockierung aufheben",
   "undo": "rückgängig machen",
-  "post_hidden": "versteckter Beitrag"
+  "post_hidden": "versteckter Beitrag",
+  "old": "alt",
+  "copy_link": "Link kopieren",
+  "link_copied": "Link kopiert"
 }

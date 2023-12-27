@@ -147,5 +147,8 @@
   "unhide": "göster",
   "unblock": "engeli kaldır",
   "undo": "geri al",
-  "post_hidden": "gizli gönderi"
+  "post_hidden": "gizli gönderi",
+  "old": "eski",
+  "copy_link": "bağlantıyı kopyala",
+  "link_copied": "bağlantı kopyalandı"
 }

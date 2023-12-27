@@ -147,5 +147,8 @@
   "unhide": "vis",
   "unblock": "fjern blokering",
   "undo": "fortryd",
-  "post_hidden": "skjult indlæg"
+  "post_hidden": "skjult indlæg",
+  "old": "gamle",
+  "copy_link": "kopier linket",
+  "link_copied": "link kopieret"
 }

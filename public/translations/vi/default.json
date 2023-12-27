@@ -147,5 +147,8 @@
   "unhide": "hiện",
   "unblock": "bỏ chặn",
   "undo": "hoàn tác",
-  "post_hidden": "bài viết bị ẩn"
+  "post_hidden": "bài viết bị ẩn",
+  "old": "cũ",
+  "copy_link": "sao chép liên kết",
+  "link_copied": "liên kết đã được sao chép"
 }

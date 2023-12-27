@@ -147,5 +147,8 @@
   "unhide": "显示",
   "unblock": "解锁",
   "undo": "撤销",
-  "post_hidden": "隐藏帖子"
+  "post_hidden": "隐藏帖子",
+  "old": "旧的",
+  "copy_link": "复制链接",
+  "link_copied": "链接已复制"
 }

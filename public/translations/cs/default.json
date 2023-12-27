@@ -147,5 +147,8 @@
   "unhide": "zobrazit",
   "unblock": "odblokovat",
   "undo": "vrátit zpět",
-  "post_hidden": "skrytý příspěvek"
+  "post_hidden": "skrytý příspěvek",
+  "old": "staré",
+  "copy_link": "kopírovat odkaz",
+  "link_copied": "odkaz byl zkopírován"
 }

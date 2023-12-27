@@ -10,12 +10,17 @@ import Post from '../../components/post';
 import Reply from '../../components/reply';
 
 const lastVirtuosoStates: { [key: string]: StateSnapshot } = {};
+const sortTypes: string[] = ['new', 'old'];
 
-const SortDropdown = ({ onSortChange }: { onSortChange: (sortType: string) => void }) => {
+type SortDropdownProps = {
+  onSortChange: (sortType: string) => void;
+};
+
+const SortDropdown: React.FC<SortDropdownProps> = ({ onSortChange }) => {
   const { t } = useTranslation();
-  const sortLabels = ['new', 'old'];
-  const [selectedSort, setSelectedSort] = useState('new');
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const sortLabels: string[] = sortTypes.map((sortType) => t(sortType));
+  const [selectedSort, setSelectedSort] = useState<string>(sortTypes[0]);
+  const [isDropdownOpen, setIsDropdownOpen] = useState<boolean>(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
   const dropdownChoicesRef = useRef<HTMLDivElement>(null);
   const dropChoicesClass = isDropdownOpen ? styles.dropChoicesVisible : styles.dropChoicesHidden;
@@ -31,12 +36,6 @@ const SortDropdown = ({ onSortChange }: { onSortChange: (sortType: string) => vo
     }
   }, []);
 
-  const handleSortChange = (sortType: string) => {
-    setSelectedSort(sortType);
-    setIsDropdownOpen(false);
-    onSortChange(sortType);
-  };
-
   useEffect(() => {
     document.addEventListener('mousedown', handleClickOutside);
     return () => {
@@ -44,22 +43,22 @@ const SortDropdown = ({ onSortChange }: { onSortChange: (sortType: string) => vo
     };
   }, [handleClickOutside]);
 
+  const handleSortChange = (sortType: string) => {
+    setSelectedSort(sortType);
+    setIsDropdownOpen(false);
+    onSortChange(sortType);
+  };
+
   return (
     <div className={styles.sortDropdown}>
       <span className={styles.dropdownTitle}>{t('sorted_by')}: </span>
-      <div
-        className={styles.dropdown}
-        onClick={() => {
-          setIsDropdownOpen(!isDropdownOpen);
-        }}
-        ref={dropdownRef}
-      >
-        <span className={styles.selected}>{selectedSort}</span>
+      <div className={styles.dropdown} onClick={() => setIsDropdownOpen(!isDropdownOpen)} ref={dropdownRef}>
+        <span className={styles.selected}>{t(selectedSort)}</span>
       </div>
       <div className={`${styles.dropChoices} ${dropChoicesClass}`} ref={dropdownChoicesRef}>
-        {sortLabels.map((filter: string, index: number) => (
-          <div key={index} className={styles.filter} onClick={() => handleSortChange(filter)}>
-            {filter}
+        {sortLabels.map((label, index) => (
+          <div key={index} className={styles.filter} onClick={() => handleSortChange(sortTypes[index])}>
+            {label}
           </div>
         ))}
       </div>

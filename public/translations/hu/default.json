@@ -147,5 +147,8 @@
   "unhide": "megjelenít",
   "unblock": "blokk feloldása",
   "undo": "visszavon",
-  "post_hidden": "elrejtett poszt"
+  "post_hidden": "elrejtett poszt",
+  "old": "régi",
+  "copy_link": "link másolása",
+  "link_copied": "link másolva"
 }

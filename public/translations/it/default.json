@@ -147,5 +147,8 @@
   "unhide": "mostra",
   "unblock": "sblocca",
   "undo": "annulla",
-  "post_hidden": "post nascosto"
+  "post_hidden": "post nascosto",
+  "old": "vecchi",
+  "copy_link": "copia link",
+  "link_copied": "link copiato"
 }

@@ -147,5 +147,8 @@
   "unhide": "보이기",
   "unblock": "차단 해제",
   "undo": "실행 취소",
-  "post_hidden": "숨겨진 게시물"
+  "post_hidden": "숨겨진 게시물",
+  "old": "오래된",
+  "copy_link": "링크 복사",
+  "link_copied": "링크 복사됨"
 }

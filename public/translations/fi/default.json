@@ -147,5 +147,8 @@
   "unhide": "näytä",
   "unblock": "poista esto",
   "undo": "peruuta",
-  "post_hidden": "piilotettu viesti"
+  "post_hidden": "piilotettu viesti",
+  "old": "vanhat",
+  "copy_link": "kopioi linkki",
+  "link_copied": "linkki kopioitu"
 }

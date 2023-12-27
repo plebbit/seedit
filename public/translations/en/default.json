@@ -147,5 +147,8 @@
   "unhide": "unhide",
   "unblock": "unblock",
   "undo": "undo",
-  "post_hidden": "post hidden"
+  "post_hidden": "post hidden",
+  "old": "old",
+  "copy_link": "copy link",
+  "link_copied": "link copied"
 }

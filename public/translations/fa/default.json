@@ -147,5 +147,8 @@
   "unhide": "نمایش دادن",
   "unblock": "لغو مسدودیت",
   "undo": "لغو",
-  "post_hidden": "پست مخفی"
+  "post_hidden": "پست مخفی",
+  "old": "قدیمی",
+  "copy_link": "کپی کردن لینک",
+  "link_copied": "لینک کپی شد"
 }

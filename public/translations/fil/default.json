@@ -147,5 +147,8 @@
   "unhide": "ibalik",
   "unblock": "ibinuka",
   "undo": "ibalik",
-  "post_hidden": "post na itinago"
+  "post_hidden": "post na itinago",
+  "old": "lumang",
+  "copy_link": "kopyahin ang link",
+  "link_copied": "nakopya ang link"
 }
