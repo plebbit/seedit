@@ -42,7 +42,7 @@ const TopBar = () => {
   const filterDropdownChoicesRef = useRef<HTMLDivElement>(null);
   const filterDropdownClass = isFilterDropdownOpen ? styles.visible : styles.hidden;
 
-  const sortLabels = [t('header_hot'), t('header_new'), t('header_active'), t('header_controversial'), t('header_top')];
+  const sortLabels = [t('hot'), t('new'), t('active'), t('controversial'), t('top')];
   const [selectedSortType, setSelectedSortType] = useState(params.sortType || '/hot');
 
   const getTimeFilterLink = (choice: string) => {
@@ -106,7 +106,7 @@ const TopBar = () => {
     <div className={styles.headerArea}>
       <div className={styles.widthClip}>
         <div className={`${styles.dropdown} ${styles.subsDropdown}`} ref={subsDropdownRef} onClick={toggleSubsDropdown}>
-          <span className={styles.selectedTitle}>{t('topbar_my_subs')}</span>
+          <span className={styles.selectedTitle}>{t('my_communities')}</span>
           <div className={`${styles.dropChoices} ${styles.subsDropChoices} ${subsDropdownClass}`} ref={subsDropdownChoicesRef}>
             {subscriptions?.map((subscription: string, index: number) => (
               <Link key={index} to={`/p/${subscription}`} className={styles.dropdownChoice}>
@@ -140,13 +140,13 @@ const TopBar = () => {
           <ul className={styles.srBar}>
             <li>
               <Link to='/' className={`${styles.homeButton} ${homeButtonClass}`}>
-                {t('topbar_home')}
+                {t('home')}
               </Link>
             </li>
             <li>
               <span className={styles.separator}>-</span>
               <Link to='/p/all' className={isAll ? styles.selected : styles.choice}>
-                {t('topbar_all')}
+                {t('all')}
               </Link>
             </li>
             <span className={styles.separator}> | </span>

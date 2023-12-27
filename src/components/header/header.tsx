@@ -47,7 +47,7 @@ const AboutButton = () => {
           isHomePage && event.preventDefault();
         }}
       >
-        {t('header_about')}
+        {t('about')}
       </Link>
     </li>
   );
@@ -63,7 +63,7 @@ const CommentsButton = () => {
   return (
     <li>
       <Link to={`/p/${params.subplebbitAddress}/c/${params.commentCid}`} className={isPost && !isAbout ? styles.selected : styles.choice}>
-        {t('header_comments')}
+        {t('comments')}
       </Link>
     </li>
   );
@@ -75,7 +75,7 @@ const SortItems = () => {
   const location = useLocation();
   const isAll = isAllView(location.pathname);
   const isSubplebbit = isSubplebbitView(location.pathname, params);
-  const sortLabels = [t('header_hot'), t('header_new'), t('header_active'), t('header_controversial'), t('header_top')];
+  const sortLabels = [t('hot'), t('new'), t('active'), t('controversial'), t('top')];
   const [selectedSortType, setSelectedSortType] = useState(params.sortType || '/hot');
 
   const handleSelect = (choice: string) => {
@@ -144,7 +144,7 @@ const AuthorHeaderTabs = () => {
           to={isAuthorPage ? authorRoute + '/comments' : '/profile/comments'}
           className={isProfileCommentsPage || isAuthorCommentsPage ? styles.selected : styles.choice}
         >
-          {t('header_comments')}
+          {t('comments')}
         </Link>
       </li>
       <li>
