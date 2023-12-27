@@ -15,7 +15,7 @@
   "edit": "편집",
   "home": "홈",
   "all": "모두",
-  "post_submitted": "제출됨",
+  "submitted": "제출됨",
   "post_by": "작성자",
   "post_to": "대상",
   "post_no_comments": "댓글",
@@ -131,5 +131,9 @@
   "locked": "잠금",
   "reason": "이유",
   "no_posts_found": "게시물을 찾을 수 없음",
-  "sorted_by": "정렬 기준"
+  "sorted_by": "정렬 기준",
+  "downvoted": "다운보트",
+  "hidden": "숨겨진",
+  "saved": "저장됨",
+  "overview": "개요"
 }

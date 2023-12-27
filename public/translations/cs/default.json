@@ -15,7 +15,7 @@
   "edit": "Upravit",
   "home": "Domů",
   "all": "Vše",
-  "post_submitted": "Odesláno",
+  "submitted": "Odesláno",
   "post_by": "Od",
   "post_to": "Do",
   "post_no_comments": "Komentovat",
@@ -131,5 +131,9 @@
   "locked": "uzamčeno",
   "reason": "důvod",
   "no_posts_found": "žádné nalezené příspěvky",
-  "sorted_by": "seřazeno podle"
+  "sorted_by": "seřazeno podle",
+  "downvoted": "hlasováno dolů",
+  "hidden": "skrytý",
+  "saved": "uloženo",
+  "overview": "přehled"
 }

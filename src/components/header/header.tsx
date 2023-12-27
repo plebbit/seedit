@@ -136,7 +136,7 @@ const AuthorHeaderTabs = () => {
     <>
       <li>
         <Link to={isAuthorPage ? authorRoute : '/profile'} className={overviewSelectedClass}>
-          overview
+          {t('overview')}
         </Link>
       </li>
       <li>
@@ -152,29 +152,29 @@ const AuthorHeaderTabs = () => {
           to={isAuthorPage ? authorRoute + '/submitted' : '/profile/submitted'}
           className={isProfileSubmittedPage || isAuthorSubmittedPage ? styles.selected : styles.choice}
         >
-          submitted
+          {t('submitted')}
         </Link>
       </li>
       {isProfilePage && (
         <>
           <li>
             <Link to='/profile/upvoted' className={isUpvotedPage ? styles.selected : styles.choice}>
-              upvoted
+              {t('upvoted')}
             </Link>
           </li>
           <li>
             <Link to='/profile/downvoted' className={isDownvotedPage ? styles.selected : styles.choice}>
-              downvoted
+              {t('downvoted')}
             </Link>
           </li>
           <li>
             <Link to={'/'} className={styles.choice} onClick={(e) => e.preventDefault()}>
-              hidden
+              {t('hidden')}
             </Link>
           </li>
           <li>
             <Link to={'/'} className={styles.choice} onClick={(e) => e.preventDefault()}>
-              saved
+              {t('saved')}
             </Link>
           </li>
         </>

@@ -15,7 +15,7 @@
   "edit": "সম্পাদনা",
   "home": "হোম",
   "all": "সব",
-  "post_submitted": "জমা দেওয়া হয়েছে",
+  "submitted": "জমা দেওয়া হয়েছে",
   "post_by": "দ্বারা",
   "post_to": "প্রতি",
   "post_no_comments": "মন্তব্য",
@@ -131,5 +131,9 @@
   "locked": "লক করা",
   "reason": "কারণ",
   "no_posts_found": "পোস্ট খুঁজে পাওয়া যায়নি",
-  "sorted_by": "বাছাই করা"
+  "sorted_by": "বাছাই করা",
+  "downvoted": "নেতিবাচক ভোট দেন",
+  "hidden": "লুকানো",
+  "saved": "সংরক্ষিত",
+  "overview": "সংক্ষেপ"
 }

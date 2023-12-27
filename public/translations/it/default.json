@@ -15,7 +15,7 @@
   "edit": "modifica",
   "home": "home",
   "all": "tutti",
-  "post_submitted": "inviato",
+  "submitted": "inviato",
   "post_by": "da",
   "post_to": "su",
   "post_no_comments": "commenta",
@@ -131,5 +131,9 @@
   "locked": "bloccato",
   "reason": "motivo",
   "no_posts_found": "nessun post trovato",
-  "sorted_by": "ordinato per"
+  "sorted_by": "ordinato per",
+  "downvoted": "hai dato un downvote",
+  "hidden": "nascosto",
+  "saved": "salvato",
+  "overview": "panoramica"
 }

@@ -15,7 +15,7 @@
   "edit": "I-edit",
   "home": "Bahay",
   "all": "Lahat",
-  "post_submitted": "Naipadala",
+  "submitted": "Naipadala",
   "post_by": "Ni",
   "post_to": "Sa",
   "post_no_comments": "Magkomento",
@@ -131,5 +131,9 @@
   "locked": "nakalock",
   "reason": "dahilan",
   "no_posts_found": "walang mga post na natagpuan",
-  "sorted_by": "inurutan ayon sa"
+  "sorted_by": "inurutan ayon sa",
+  "downvoted": "binoto ng negatibo",
+  "hidden": "nakatagong",
+  "saved": "itinago",
+  "overview": "buod"
 }

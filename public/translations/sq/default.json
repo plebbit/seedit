@@ -15,7 +15,7 @@
   "edit": "Redakto",
   "home": "Kryefaqja",
   "all": "Të gjithë",
-  "post_submitted": "I dërguar",
+  "submitted": "I dërguar",
   "post_by": "Nga",
   "post_to": "Tek",
   "post_no_comments": "Komento",
@@ -131,5 +131,9 @@
   "locked": "i bllokuar",
   "reason": "arsye",
   "no_posts_found": "nuk u gjetën postime",
-  "sorted_by": "radhitur sipas"
+  "sorted_by": "radhitur sipas",
+  "downvoted": "votim negativ",
+  "hidden": "fshehur",
+  "saved": "i ruajtur",
+  "overview": "përgledim"
 }

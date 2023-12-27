@@ -15,7 +15,7 @@
   "edit": "تعديل",
   "home": "الرئيسية",
   "all": "الكل",
-  "post_submitted": "تم الإرسال",
+  "submitted": "تم الإرسال",
   "post_by": "بواسطة",
   "post_to": "إلى",
   "post_no_comments": "تعليق",
@@ -131,5 +131,9 @@
   "locked": "مقفل",
   "reason": "السبب",
   "no_posts_found": "لم يتم العثور على منشورات",
-  "sorted_by": "مرتبة حسب"
+  "sorted_by": "مرتبة حسب",
+  "downvoted": "قمت بالتصويت بالسلب",
+  "hidden": "مخفي",
+  "saved": "تم الحفظ",
+  "overview": "نظرة عامة"
 }

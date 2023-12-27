@@ -15,7 +15,7 @@
   "edit": "Rediger",
   "home": "Hjem",
   "all": "Alle",
-  "post_submitted": "Indsendt",
+  "submitted": "Indsendt",
   "post_by": "Af",
   "post_to": "Til",
   "post_no_comments": "Kommenter",
@@ -131,5 +131,9 @@
   "locked": "låst",
   "reason": "grund",
   "no_posts_found": "ingen indlæg fundet",
-  "sorted_by": "sorteret efter"
+  "sorted_by": "sorteret efter",
+  "downvoted": "stemt nedad",
+  "hidden": "skjult",
+  "saved": "gemt",
+  "overview": "oversigt"
 }

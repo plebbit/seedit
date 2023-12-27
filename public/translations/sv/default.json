@@ -15,7 +15,7 @@
   "edit": "Redigera",
   "home": "Hem",
   "all": "Alla",
-  "post_submitted": "Inskickad",
+  "submitted": "Inskickad",
   "post_by": "Av",
   "post_to": "Till",
   "post_no_comments": "Kommentera",
@@ -131,5 +131,9 @@
   "locked": "låst",
   "reason": "anledning",
   "no_posts_found": "inga inlägg hittades",
-  "sorted_by": "sorterat efter"
+  "sorted_by": "sorterat efter",
+  "downvoted": "negativt röstat",
+  "hidden": "dold",
+  "saved": "sparad",
+  "overview": "översikt"
 }

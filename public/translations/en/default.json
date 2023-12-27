@@ -15,7 +15,7 @@
   "edit": "edit",
   "home": "home",
   "all": "all",
-  "post_submitted": "submitted",
+  "submitted": "submitted",
   "post_by": "by",
   "post_to": "to",
   "post_no_comments": "comment",
@@ -131,5 +131,9 @@
   "locked": "locked",
   "reason": "reason",
   "no_posts_found": "no posts found",
-  "sorted_by": "sorted by"
+  "sorted_by": "sorted by",
+  "downvoted": "downvoted",
+  "hidden": "hidden",
+  "saved": "saved",
+  "overview": "overview"
 }

@@ -15,7 +15,7 @@
   "edit": "Düzenle",
   "home": "Ana Sayfa",
   "all": "Tümü",
-  "post_submitted": "Gönderildi",
+  "submitted": "Gönderildi",
   "post_by": "Tarafından",
   "post_to": "Kime",
   "post_no_comments": "Yorum Yap",
@@ -131,5 +131,9 @@
   "locked": "kilitli",
   "reason": "neden",
   "no_posts_found": "hiçbir gönderi bulunamadı",
-  "sorted_by": "sıralama ölçütü"
+  "sorted_by": "sıralama ölçütü",
+  "downvoted": "aşağı oy verildi",
+  "hidden": "gizli",
+  "saved": "kaydedildi",
+  "overview": "genel bakış"
 }

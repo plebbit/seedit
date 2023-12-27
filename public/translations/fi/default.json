@@ -15,7 +15,7 @@
   "edit": "Muokkaa",
   "home": "Etusivu",
   "all": "Kaikki",
-  "post_submitted": "Lähetetty",
+  "submitted": "Lähetetty",
   "post_by": "Tekijä",
   "post_to": "Kohteeseen",
   "post_no_comments": "Kommentoi",
@@ -131,5 +131,9 @@
   "locked": "lukittu",
   "reason": "syy",
   "no_posts_found": "ei löytynyt viestejä",
-  "sorted_by": "lajiteltu"
+  "sorted_by": "lajiteltu",
+  "downvoted": "äänestetty alas",
+  "hidden": "piilotettu",
+  "saved": "tallennettu",
+  "overview": "yleiskatsaus"
 }

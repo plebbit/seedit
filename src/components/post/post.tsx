@@ -170,7 +170,7 @@ const Post = ({ post = {}, index }: PostProps) => {
                 />
               )}
               <p className={styles.tagline}>
-                {t('post_submitted')} {getFormattedTimeAgo(timestamp)} {t('post_by')}{' '}
+                {t('submitted')} {getFormattedTimeAgo(timestamp)} {t('post_by')}{' '}
                 <PostAuthor
                   authorAddress={author?.address}
                   authorRole={authorRole}

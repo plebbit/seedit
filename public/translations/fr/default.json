@@ -15,7 +15,7 @@
   "edit": "modifier",
   "home": "accueil",
   "all": "tous",
-  "post_submitted": "soumis",
+  "submitted": "soumis",
   "post_by": "par",
   "post_to": "dans",
   "post_no_comments": "commenter",
@@ -131,5 +131,9 @@
   "locked": "verrouillé",
   "reason": "raison",
   "no_posts_found": "aucune publication trouvée",
-  "sorted_by": "trié par"
+  "sorted_by": "trié par",
+  "downvoted": "vote négatif",
+  "hidden": "caché",
+  "saved": "enregistré",
+  "overview": "aperçu"
 }

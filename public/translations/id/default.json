@@ -15,7 +15,7 @@
   "edit": "Edit",
   "home": "Beranda",
   "all": "Semua",
-  "post_submitted": "Dikirim",
+  "submitted": "Dikirim",
   "post_by": "Oleh",
   "post_to": "Ke",
   "post_no_comments": "Komentar",
@@ -131,5 +131,9 @@
   "locked": "terkunci",
   "reason": "alasan",
   "no_posts_found": "tidak ditemukan postingan",
-  "sorted_by": "diurutkan berdasarkan"
+  "sorted_by": "diurutkan berdasarkan",
+  "downvoted": "disundul",
+  "hidden": "tersembunyi",
+  "saved": "tersimpan",
+  "overview": "ikhtisar"
 }

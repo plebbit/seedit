@@ -15,7 +15,7 @@
   "edit": "编辑",
   "home": "首页",
   "all": "全部",
-  "post_submitted": "已提交",
+  "submitted": "已提交",
   "post_by": "由",
   "post_to": "至",
   "post_no_comments": "评论",
@@ -131,5 +131,9 @@
   "locked": "已锁定",
   "reason": "原因",
   "no_posts_found": "未找到帖子",
-  "sorted_by": "排序方式"
+  "sorted_by": "排序方式",
+  "downvoted": "负投票",
+  "hidden": "隐藏",
+  "saved": "已保存",
+  "overview": "概观"
 }

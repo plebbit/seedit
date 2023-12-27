@@ -15,7 +15,7 @@
   "edit": "編集",
   "home": "ホーム",
   "all": "すべて",
-  "post_submitted": "送信済み",
+  "submitted": "送信済み",
   "post_by": "投稿者",
   "post_to": "へ",
   "post_no_comments": "コメントする",
@@ -131,5 +131,9 @@
   "locked": "ロックされました",
   "reason": "理由",
   "no_posts_found": "投稿が見つかりません",
-  "sorted_by": "並び替え"
+  "sorted_by": "並び替え",
+  "downvoted": "ダウンボートされました",
+  "hidden": "非表示",
+  "saved": "保存済み",
+  "overview": "概要"
 }

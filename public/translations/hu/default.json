@@ -15,7 +15,7 @@
   "edit": "Szerkesztés",
   "home": "Főoldal",
   "all": "Összes",
-  "post_submitted": "Beküldve",
+  "submitted": "Beküldve",
   "post_by": "Által",
   "post_to": "Címzett",
   "post_no_comments": "Hozzászólás",
@@ -131,5 +131,9 @@
   "locked": "lezárt",
   "reason": "ok",
   "no_posts_found": "nincsenek találatok",
-  "sorted_by": "rendezve"
+  "sorted_by": "rendezve",
+  "downvoted": "leértékelt",
+  "hidden": "rejtett",
+  "saved": "elmentve",
+  "overview": "áttekintés"
 }

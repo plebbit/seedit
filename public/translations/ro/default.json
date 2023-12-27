@@ -15,7 +15,7 @@
   "edit": "Editează",
   "home": "Acasă",
   "all": "Toate",
-  "post_submitted": "Trimis",
+  "submitted": "Trimis",
   "post_by": "De către",
   "post_to": "Către",
   "post_no_comments": "Comentează",
@@ -131,5 +131,9 @@
   "locked": "blocat",
   "reason": "motiv",
   "no_posts_found": "nu au fost găsite postări",
-  "sorted_by": "sortat după"
+  "sorted_by": "sortat după",
+  "downvoted": "vot negativ",
+  "hidden": "ascuns",
+  "saved": "salvat",
+  "overview": "prezentare generală"
 }

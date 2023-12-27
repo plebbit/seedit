@@ -15,7 +15,7 @@
   "edit": "Bewerken",
   "home": "Thuis",
   "all": "Alle",
-  "post_submitted": "Ingediend",
+  "submitted": "Ingediend",
   "post_by": "Door",
   "post_to": "Naar",
   "post_no_comments": "Reageer",
@@ -131,5 +131,9 @@
   "locked": "vergrendeld",
   "reason": "reden",
   "no_posts_found": "geen berichten gevonden",
-  "sorted_by": "gesorteerd op"
+  "sorted_by": "gesorteerd op",
+  "downvoted": "negatief gestemd",
+  "hidden": "verborgen",
+  "saved": "opgeslagen",
+  "overview": "overzicht"
 }

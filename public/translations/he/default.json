@@ -15,7 +15,7 @@
   "edit": "ערוך",
   "home": "בית",
   "all": "הכל",
-  "post_submitted": "נשלח",
+  "submitted": "נשלח",
   "post_by": "על ידי",
   "post_to": "אל",
   "post_no_comments": "הוסף תגובה",
@@ -131,5 +131,9 @@
   "locked": "נעול",
   "reason": "סיבה",
   "no_posts_found": "לא נמצאו פרסומים",
-  "sorted_by": "ממוין לפי"
+  "sorted_by": "ממוין לפי",
+  "downvoted": "קיבל דירוג שלילי",
+  "hidden": "מוסתר",
+  "saved": "נשמר",
+  "overview": "סקירה"
 }

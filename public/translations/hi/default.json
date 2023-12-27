@@ -15,7 +15,7 @@
   "edit": "संपादित करें",
   "home": "होम",
   "all": "सब",
-  "post_submitted": "भेजा गया",
+  "submitted": "भेजा गया",
   "post_by": "द्वारा",
   "post_to": "को",
   "post_no_comments": "टिप्पणी करें",
@@ -131,5 +131,9 @@
   "locked": "लॉक किया गया",
   "reason": "कारण",
   "no_posts_found": "कोई पोस्ट नहीं मिली",
-  "sorted_by": "क्रमित द्वारा"
+  "sorted_by": "क्रमित द्वारा",
+  "downvoted": "नकारात्मक वोट दिया गया",
+  "hidden": "छुपा हुआ",
+  "saved": "सहेजा गया",
+  "overview": "अवलोकन"
 }

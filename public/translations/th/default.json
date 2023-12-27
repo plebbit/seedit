@@ -15,7 +15,7 @@
   "edit": "แก้ไข",
   "home": "หน้าแรก",
   "all": "ทั้งหมด",
-  "post_submitted": "ส่งแล้ว",
+  "submitted": "ส่งแล้ว",
   "post_by": "โดย",
   "post_to": "ถึง",
   "post_no_comments": "แสดงความคิดเห็น",
@@ -131,5 +131,9 @@
   "locked": "ล็อก",
   "reason": "เหตุผล",
   "no_posts_found": "ไม่พบโพสต์",
-  "sorted_by": "เรียงตาม"
+  "sorted_by": "เรียงตาม",
+  "downvoted": "โหวตลบ",
+  "hidden": "ซ่อน",
+  "saved": "บันทึกแล้ว",
+  "overview": "ภาพรวม"
 }

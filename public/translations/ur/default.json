@@ -15,7 +15,7 @@
   "edit": "تدوین کریں",
   "home": "ہوم",
   "all": "تمام",
-  "post_submitted": "جمع کروائی گئی",
+  "submitted": "جمع کروائی گئی",
   "post_by": "کی طرف سے",
   "post_to": "کو",
   "post_no_comments": "تبادلہ خیال کریں",
@@ -131,5 +131,9 @@
   "locked": "مقفل",
   "reason": "وجہ",
   "no_posts_found": "کوئی پوسٹس نہیں ملیں",
-  "sorted_by": "ترتیب دی گئی"
+  "sorted_by": "ترتیب دی گئی",
+  "downvoted": "نیچے ووٹ دیا گیا",
+  "hidden": "چھپا ہوا",
+  "saved": "محفوظ",
+  "overview": "جامع جائزہ"
 }

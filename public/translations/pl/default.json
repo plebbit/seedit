@@ -15,7 +15,7 @@
   "edit": "Edytuj",
   "home": "Strona główna",
   "all": "Wszystko",
-  "post_submitted": "Wysłane",
+  "submitted": "Wysłane",
   "post_by": "Przez",
   "post_to": "Do",
   "post_no_comments": "Komentuj",
@@ -131,5 +131,9 @@
   "locked": "zablokowane",
   "reason": "powód",
   "no_posts_found": "nie znaleziono żadnych postów",
-  "sorted_by": "posortowane według"
+  "sorted_by": "posortowane według",
+  "downvoted": "zagłosowane na nie",
+  "hidden": "ukryty",
+  "saved": "zapisane",
+  "overview": "przegląd"
 }

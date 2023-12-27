@@ -15,7 +15,7 @@
   "edit": "ändern",
   "home": "hauptseite",
   "all": "alle",
-  "post_submitted": "eingereicht",
+  "submitted": "eingereicht",
   "post_by": "von",
   "post_to": "an",
   "post_no_comments": "kommentieren",
@@ -131,5 +131,9 @@
   "locked": "gesperrt",
   "reason": "Grund",
   "no_posts_found": "keine Beiträge gefunden",
-  "sorted_by": "sortiert nach"
+  "sorted_by": "sortiert nach",
+  "downvoted": "negativ bewertet",
+  "hidden": "versteckt",
+  "saved": "gespeichert",
+  "overview": "Übersicht"
 }

@@ -15,7 +15,7 @@
   "edit": "Chỉnh sửa",
   "home": "Trang chủ",
   "all": "Tất cả",
-  "post_submitted": "Đã gửi",
+  "submitted": "Đã gửi",
   "post_by": "Bởi",
   "post_to": "Tới",
   "post_no_comments": "Bình luận",
@@ -131,5 +131,9 @@
   "locked": "bị khóa",
   "reason": "lý do",
   "no_posts_found": "không tìm thấy bài viết",
-  "sorted_by": "sắp xếp theo"
+  "sorted_by": "sắp xếp theo",
+  "downvoted": "đã downvote",
+  "hidden": "ẩn",
+  "saved": "đã lưu",
+  "overview": "tổng quan"
 }
