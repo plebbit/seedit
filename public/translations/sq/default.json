@@ -138,5 +138,14 @@
   "overview": "përgledim",
   "plebbitor_for": "plebbitor për",
   "post_karma": "karma e postimeve",
-  "comment_karma": "karma e komenteve"
+  "comment_karma": "karma e komenteve",
+  "full_comments": "të gjithë komentet",
+  "context": "konteksti",
+  "block": "blloko",
+  "hide_post": "fsheh postën",
+  "post": "postimi",
+  "unhide": "shfaq",
+  "unblock": "zhbllokimi",
+  "undo": "anullo",
+  "post_hidden": "postimi i fshehtë"
 }

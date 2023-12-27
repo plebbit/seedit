@@ -138,5 +138,14 @@
   "overview": "обзор",
   "plebbitor_for": "плеббитор на",
   "post_karma": "карма постов",
-  "comment_karma": "карма комментариев"
+  "comment_karma": "карма комментариев",
+  "full_comments": "все комментарии",
+  "context": "контекст",
+  "block": "заблокировать",
+  "hide_post": "скрыть пост",
+  "post": "пост",
+  "unhide": "показать",
+  "unblock": "разблокировать",
+  "undo": "отменить",
+  "post_hidden": "скрытый пост"
 }

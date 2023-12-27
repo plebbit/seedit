@@ -138,5 +138,14 @@
   "overview": "সংক্ষেপ",
   "plebbitor_for": "প্লেবিটর জন্য",
   "post_karma": "পোস্ট কর্মা",
-  "comment_karma": "মন্তব্য কর্মা"
+  "comment_karma": "মন্তব্য কর্মা",
+  "full_comments": "সম্পূর্ণ মন্তব্য",
+  "context": "প্রসঙ্গ",
+  "block": "ব্লক",
+  "hide_post": "পোস্ট লুকাও",
+  "post": "পোস্ট",
+  "unhide": "দেখাও",
+  "unblock": "ব্লক বাতিল",
+  "undo": "পূর্ববর্তী করা",
+  "post_hidden": "পোস্ট লুকানো"
 }

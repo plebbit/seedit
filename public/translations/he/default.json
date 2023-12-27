@@ -138,5 +138,14 @@
   "overview": "סקירה",
   "plebbitor_for": "פלביטור למשך",
   "post_karma": "כרמה של הפוסטים",
-  "comment_karma": "כרמה של התגובות"
+  "comment_karma": "כרמה של התגובות",
+  "full_comments": "כל התגובות",
+  "context": "הקשר",
+  "block": "חסום",
+  "hide_post": "הסתרת הפוסט",
+  "post": "פוסט",
+  "unhide": "הצג",
+  "unblock": "ביטול חסימה",
+  "undo": "בטל",
+  "post_hidden": "הפוסט מוסתר"
 }

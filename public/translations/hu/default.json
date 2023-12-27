@@ -138,5 +138,14 @@
   "overview": "áttekintés",
   "plebbitor_for": "plebbitorért",
   "post_karma": "poszt karma",
-  "comment_karma": "hozzászólás-karma"
+  "comment_karma": "hozzászólás-karma",
+  "full_comments": "összes hozzászólás",
+  "context": "környezet",
+  "block": "blokkol",
+  "hide_post": "posta elrejtése",
+  "post": "poszt",
+  "unhide": "megjelenít",
+  "unblock": "blokk feloldása",
+  "undo": "visszavon",
+  "post_hidden": "elrejtett poszt"
 }

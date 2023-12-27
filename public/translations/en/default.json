@@ -138,5 +138,14 @@
   "overview": "overview",
   "plebbitor_for": "plebbitor for",
   "post_karma": "post karma",
-  "comment_karma": "comment karma"
+  "comment_karma": "comment karma",
+  "full_comments": "full comments",
+  "context": "context",
+  "block": "block",
+  "hide_post": "hide post",
+  "post": "post",
+  "unhide": "unhide",
+  "unblock": "unblock",
+  "undo": "undo",
+  "post_hidden": "post hidden"
 }

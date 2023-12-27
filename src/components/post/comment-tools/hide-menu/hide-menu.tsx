@@ -14,7 +14,7 @@ type HideMenuProps = {
 };
 
 const BlockAuthorButton = ({ author, toggleIsMenuOpen }: HideMenuProps) => {
-  // const { t } = useTranslation();
+  const { t } = useTranslation();
   const { blocked, unblock, block } = useBlock({ address: author?.address });
 
   return (
@@ -25,29 +25,29 @@ const BlockAuthorButton = ({ author, toggleIsMenuOpen }: HideMenuProps) => {
         toggleIsMenuOpen && toggleIsMenuOpen();
       }}
     >
-      {blocked ? 'unblock' : 'block'} u/{author?.shortAddress}
+      {blocked ? `${t('unblock')}` : `${t('block')}`} u/{author?.shortAddress}
     </div>
   );
 };
 
 const BlockSubplebbitButton = ({ subplebbitAddress }: HideMenuProps) => {
-  // const { t } = useTranslation();
+  const { t } = useTranslation();
   const { blocked, unblock, block } = useBlock({ address: subplebbitAddress });
 
   return (
     <div className={styles.menuItem} onClick={blocked ? unblock : block}>
-      {blocked ? 'unblock' : 'block'} p/{subplebbitAddress && getShortAddress(subplebbitAddress)}
+      {blocked ? `${t('unblock')}` : `${t('block')}`} p/{subplebbitAddress && getShortAddress(subplebbitAddress)}
     </div>
   );
 };
 
 const BlockCommentButton = ({ cid }: HideMenuProps) => {
-  // const { t } = useTranslation();
+  const { t } = useTranslation();
   const { blocked, unblock, block } = useBlock({ address: cid });
 
   return (
     <div className={styles.menuItem} onClick={blocked ? unblock : block}>
-      {blocked ? 'unhide' : 'hide'} post
+      {blocked ? `${t('unhide')}` : `${t('hide')}`} {t('post')}
     </div>
   );
 };

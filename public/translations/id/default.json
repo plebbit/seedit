@@ -138,5 +138,14 @@
   "overview": "ikhtisar",
   "plebbitor_for": "plebbitor selama",
   "post_karma": "karma postingan",
-  "comment_karma": "karma komentar"
+  "comment_karma": "karma komentar",
+  "full_comments": "semua komentar",
+  "context": "konteks",
+  "block": "blokir",
+  "hide_post": "sembunyikan pos",
+  "post": "postingan",
+  "unhide": "tampilkan",
+  "unblock": "batalkan blokir",
+  "undo": "batalkan",
+  "post_hidden": "postingan tersembunyi"
 }

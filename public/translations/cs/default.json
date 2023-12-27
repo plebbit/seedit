@@ -138,5 +138,14 @@
   "overview": "přehled",
   "plebbitor_for": "plebbitor na",
   "post_karma": "karma příspěvků",
-  "comment_karma": "karma komentářů"
+  "comment_karma": "karma komentářů",
+  "full_comments": "všechny komentáře",
+  "context": "kontext",
+  "block": "blokovat",
+  "hide_post": "skrýt příspěvek",
+  "post": "příspěvek",
+  "unhide": "zobrazit",
+  "unblock": "odblokovat",
+  "undo": "vrátit zpět",
+  "post_hidden": "skrytý příspěvek"
 }

@@ -138,5 +138,14 @@
   "overview": "επισκόπηση",
   "plebbitor_for": "Plebbitor για",
   "post_karma": "καρμα δημοσιεύσεων",
-  "comment_karma": "καρμα σχολίων"
+  "comment_karma": "καρμα σχολίων",
+  "full_comments": "όλα τα σχόλια",
+  "context": "πλαίσιο",
+  "block": "φραγή",
+  "hide_post": "απόκρυψη δημοσίευσης",
+  "post": "δημοσίευση",
+  "unhide": "εμφάνιση",
+  "unblock": "αναίρεση φραγής",
+  "undo": "αναίρεση",
+  "post_hidden": "κρυφή δημοσίευση"
 }

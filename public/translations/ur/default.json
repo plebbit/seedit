@@ -138,5 +138,14 @@
   "overview": "جامع جائزہ",
   "plebbitor_for": "پلیبیٹر کے لئے",
   "post_karma": "پوسٹ کرما",
-  "comment_karma": "تبصرہ کرما"
+  "comment_karma": "تبصرہ کرما",
+  "full_comments": "تمام تبصرے",
+  "context": "سیاق",
+  "block": "بلاک",
+  "hide_post": "پوسٹ چھپائیں",
+  "post": "پوسٹ",
+  "unhide": "دکھائیں",
+  "unblock": "بلاک ہٹائیں",
+  "undo": "واپس کریں",
+  "post_hidden": "پوسٹ چھپی ہوئی"
 }

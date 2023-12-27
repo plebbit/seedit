@@ -138,5 +138,14 @@
   "overview": "aperçu",
   "plebbitor_for": "plebbitor pour",
   "post_karma": "karma des publications",
-  "comment_karma": "karma des commentaires"
+  "comment_karma": "karma des commentaires",
+  "full_comments": "tous les commentaires",
+  "context": "contexte",
+  "block": "bloquer",
+  "hide_post": "masquer la publication",
+  "post": "publication",
+  "unhide": "afficher",
+  "unblock": "débloquer",
+  "undo": "annuler",
+  "post_hidden": "publication masquée"
 }

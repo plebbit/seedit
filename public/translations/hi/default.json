@@ -138,5 +138,14 @@
   "overview": "अवलोकन",
   "plebbitor_for": "प्लेबिटर के लिए",
   "post_karma": "पोस्ट कर्मा",
-  "comment_karma": "कमेंट कर्मा"
+  "comment_karma": "कमेंट कर्मा",
+  "full_comments": "सभी टिप्पणियाँ",
+  "context": "संदर्भ",
+  "block": "ब्लॉक",
+  "hide_post": "पोस्ट छुपाएं",
+  "post": "पोस्ट",
+  "unhide": "दिखाएं",
+  "unblock": "ब्लॉक को खोलें",
+  "undo": "पूर्ववत करें",
+  "post_hidden": "पोस्ट छुपी हुई"
 }

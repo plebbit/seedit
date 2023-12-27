@@ -138,5 +138,14 @@
   "overview": "przegląd",
   "plebbitor_for": "plebbitor przez",
   "post_karma": "karma postów",
-  "comment_karma": "karma komentarzy"
+  "comment_karma": "karma komentarzy",
+  "full_comments": "wszystkie komentarze",
+  "context": "kontekst",
+  "block": "zablokuj",
+  "hide_post": "ukryj post",
+  "post": "post",
+  "unhide": "pokaż",
+  "unblock": "odblokuj",
+  "undo": "cofnij",
+  "post_hidden": "ukryty post"
 }

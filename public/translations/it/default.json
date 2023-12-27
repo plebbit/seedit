@@ -138,5 +138,14 @@
   "overview": "panoramica",
   "plebbitor_for": "plebbitor da",
   "post_karma": "karma post",
-  "comment_karma": "karma commenti"
+  "comment_karma": "karma commenti",
+  "full_comments": "tutti i commenti",
+  "context": "contesto",
+  "block": "blocca",
+  "hide_post": "nascondi post",
+  "post": "post",
+  "unhide": "mostra",
+  "unblock": "sblocca",
+  "undo": "annulla",
+  "post_hidden": "post nascosto"
 }

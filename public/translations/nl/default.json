@@ -138,5 +138,14 @@
   "overview": "overzicht",
   "plebbitor_for": "plebbitor voor",
   "post_karma": "post karma",
-  "comment_karma": "commentaar-karma"
+  "comment_karma": "commentaar-karma",
+  "full_comments": "alle reacties",
+  "context": "context",
+  "block": "blokkeren",
+  "hide_post": "verberg bericht",
+  "post": "bericht",
+  "unhide": "toon",
+  "unblock": "deblokkeren",
+  "undo": "ongedaan maken",
+  "post_hidden": "verborgen bericht"
 }

@@ -138,5 +138,14 @@
   "overview": "buod",
   "plebbitor_for": "plebbitor para sa",
   "post_karma": "karma ng post",
-  "comment_karma": "karma ng komento"
+  "comment_karma": "karma ng komento",
+  "full_comments": "kumpletong mga komento",
+  "context": "konteksto",
+  "block": "blocked",
+  "hide_post": "itago ang post",
+  "post": "post",
+  "unhide": "ibalik",
+  "unblock": "ibinuka",
+  "undo": "ibalik",
+  "post_hidden": "post na itinago"
 }

@@ -93,10 +93,12 @@ const SingleReplyTools = ({ author, cid, hasLabel, index, isMod, parentCid, show
         <span>{t('save')}</span>
       </li>
       <li className={styles.button}>
-        <Link to={cid ? `/p/${subplebbitAddress}/c/${parentCid}` : `/profile/${index}`}>context</Link>
+        <Link to={cid ? `/p/${subplebbitAddress}/c/${parentCid}` : `/profile/${index}`}>{t('context')}</Link>
       </li>
       <li className={styles.button}>
-        <Link to={cid ? `/p/${subplebbitAddress}/c/${parentCid}` : `/profile/${index}`}>full comments ({comment?.replyCount || 0})</Link>
+        <Link to={cid ? `/p/${subplebbitAddress}/c/${parentCid}` : `/profile/${index}`}>
+          {t('full_comments')} ({comment?.replyCount || 0})
+        </Link>
       </li>
       <HideMenu author={author} cid={cid} isMod={isMod} subplebbitAddress={subplebbitAddress} />
       <li className={!cid ? styles.hideReply : styles.button}>

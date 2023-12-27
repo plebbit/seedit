@@ -138,5 +138,14 @@
   "overview": "개요",
   "plebbitor_for": "plebbitor을 위한",
   "post_karma": "게시물 카르마",
-  "comment_karma": "댓글 카르마"
+  "comment_karma": "댓글 카르마",
+  "full_comments": "모든 댓글",
+  "context": "맥락",
+  "block": "차단",
+  "hide_post": "게시물 숨기기",
+  "post": "게시물",
+  "unhide": "보이기",
+  "unblock": "차단 해제",
+  "undo": "실행 취소",
+  "post_hidden": "숨겨진 게시물"
 }

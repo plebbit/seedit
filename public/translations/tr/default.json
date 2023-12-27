@@ -138,5 +138,14 @@
   "overview": "genel bakış",
   "plebbitor_for": "plebbitor için",
   "post_karma": "gönderi karma",
-  "comment_karma": "yorum karma"
+  "comment_karma": "yorum karma",
+  "full_comments": "tüm yorumlar",
+  "context": "bağlam",
+  "block": "blok",
+  "hide_post": "gönderiyi gizle",
+  "post": "gönderi",
+  "unhide": "göster",
+  "unblock": "engeli kaldır",
+  "undo": "geri al",
+  "post_hidden": "gizli gönderi"
 }

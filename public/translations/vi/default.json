@@ -138,5 +138,14 @@
   "overview": "tổng quan",
   "plebbitor_for": "plebbitor trong",
   "post_karma": "karma bài viết",
-  "comment_karma": "karma bình luận"
+  "comment_karma": "karma bình luận",
+  "full_comments": "tất cả bình luận",
+  "context": "bối cảnh",
+  "block": "chặn",
+  "hide_post": "ẩn bài viết",
+  "post": "bài viết",
+  "unhide": "hiện",
+  "unblock": "bỏ chặn",
+  "undo": "hoàn tác",
+  "post_hidden": "bài viết bị ẩn"
 }

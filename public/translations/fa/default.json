@@ -138,5 +138,14 @@
   "overview": "بررسی کلی",
   "plebbitor_for": "پلبیتور برای",
   "post_karma": "کارما پست",
-  "comment_karma": "کارما نظرات"
+  "comment_karma": "کارما نظرات",
+  "full_comments": "تمام نظرات",
+  "context": "زمینه",
+  "block": "مسدود کنید",
+  "hide_post": "پنهان کردن پست",
+  "post": "پست",
+  "unhide": "نمایش دادن",
+  "unblock": "لغو مسدودیت",
+  "undo": "لغو",
+  "post_hidden": "پست مخفی"
 }

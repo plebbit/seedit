@@ -138,5 +138,14 @@
   "overview": "prezentare generală",
   "plebbitor_for": "plebbitor pentru",
   "post_karma": "karma postărilor",
-  "comment_karma": "karma comentariilor"
+  "comment_karma": "karma comentariilor",
+  "full_comments": "toate comentariile",
+  "context": "context",
+  "block": "blochează",
+  "hide_post": "ascunde postarea",
+  "post": "postare",
+  "unhide": "afișează",
+  "unblock": "deblochează",
+  "undo": "anulează",
+  "post_hidden": "postare ascunsă"
 }

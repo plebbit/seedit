@@ -138,5 +138,14 @@
   "overview": "نظرة عامة",
   "plebbitor_for": "بليبيتور لـ",
   "post_karma": "نقاط النشر",
-  "comment_karma": "نقاط التعليقات"
+  "comment_karma": "نقاط التعليقات",
+  "full_comments": "جميع التعليقات",
+  "context": "السياق",
+  "block": "حظر",
+  "hide_post": "إخفاء المنشور",
+  "post": "منشور",
+  "unhide": "إظهار",
+  "unblock": "إلغاء الحظر",
+  "undo": "تراجع",
+  "post_hidden": "المنشور مخفي"
 }

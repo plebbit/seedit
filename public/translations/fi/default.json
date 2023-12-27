@@ -138,5 +138,14 @@
   "overview": "yleiskatsaus",
   "plebbitor_for": "Plebbitorille",
   "post_karma": "viestikarma",
-  "comment_karma": "kommenttikarma"
+  "comment_karma": "kommenttikarma",
+  "full_comments": "kaikki kommentit",
+  "context": "yhteys",
+  "block": "estää",
+  "hide_post": "piilota viesti",
+  "post": "viesti",
+  "unhide": "näytä",
+  "unblock": "poista esto",
+  "undo": "peruuta",
+  "post_hidden": "piilotettu viesti"
 }

@@ -138,5 +138,14 @@
   "overview": "గణాంశం",
   "plebbitor_for": "ప్లెబిటర్ కోసం",
   "post_karma": "పోస్ట్ కర్మా",
-  "comment_karma": "వ్యాఖ్య కర్మా"
+  "comment_karma": "వ్యాఖ్య కర్మా",
+  "full_comments": "పూర్తి వ్యాఖ్యలు",
+  "context": "సందర్భం",
+  "block": "బ్లాక్",
+  "hide_post": "పోస్టుని దాచు",
+  "post": "పోస్టు",
+  "unhide": "చూపించు",
+  "unblock": "అవివాదించు",
+  "undo": "రద్దు చేయండి",
+  "post_hidden": "పోస్టు దాచబడింది"
 }

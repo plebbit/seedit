@@ -138,5 +138,14 @@
   "overview": "oversikt",
   "plebbitor_for": "plebbitor i",
   "post_karma": "innleggskarma",
-  "comment_karma": "kommentarkarma"
+  "comment_karma": "kommentarkarma",
+  "full_comments": "alle kommentarer",
+  "context": "kontekst",
+  "block": "blokker",
+  "hide_post": "skjul innlegg",
+  "post": "innlegg",
+  "unhide": "vis",
+  "unblock": "opphav blokkering",
+  "undo": "angre",
+  "post_hidden": "skjult innlegg"
 }

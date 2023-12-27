@@ -138,5 +138,14 @@
   "overview": "概要",
   "plebbitor_for": "プレビットルで",
   "post_karma": "ポストカルマ",
-  "comment_karma": "コメントカルマ"
+  "comment_karma": "コメントカルマ",
+  "full_comments": "すべてのコメント",
+  "context": "コンテキスト",
+  "block": "ブロック",
+  "hide_post": "投稿を非表示",
+  "post": "投稿",
+  "unhide": "表示",
+  "unblock": "ブロック解除",
+  "undo": "取り消し",
+  "post_hidden": "非表示の投稿"
 }

@@ -138,5 +138,14 @@
   "overview": "वर्गीकरण",
   "plebbitor_for": "प्लेबिटरसाठी",
   "post_karma": "पोस्ट कर्मा",
-  "comment_karma": "कॉमेंट कर्मा"
+  "comment_karma": "कॉमेंट कर्मा",
+  "full_comments": "संपूर्ण टिप्पण्या",
+  "context": "संदर्भ",
+  "block": "ब्लॉक",
+  "hide_post": "पोस्ट लपवा",
+  "post": "पोस्ट",
+  "unhide": "दाखवा",
+  "unblock": "ब्लॉक काढा",
+  "undo": "रद्द करा",
+  "post_hidden": "पोस्ट लपविली"
 }
