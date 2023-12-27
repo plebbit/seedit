@@ -125,5 +125,9 @@
   "a_new_account": "një llogari e re",
   "import": "importo",
   "export": "eksport",
-  "delete": "fshij"
+  "delete": "fshij",
+  "full_account_data": "të dhënat e plotë të llogarisë",
+  "this_account": "kjo llogaria",
+  "locked": "i bllokuar",
+  "reason": "arsye"
 }

@@ -125,5 +125,9 @@
   "a_new_account": "บัญชีใหม่",
   "import": "นำเข้า",
   "export": "ส่งออก",
-  "delete": "ลบ"
+  "delete": "ลบ",
+  "full_account_data": "ข้อมูลบัญชีเต็มรูปแบบ",
+  "this_account": "บัญชีนี้",
+  "locked": "ล็อก",
+  "reason": "เหตุผล"
 }

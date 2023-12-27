@@ -125,5 +125,9 @@
   "a_new_account": "een nieuw account",
   "import": "importeer",
   "export": "exporteer",
-  "delete": "verwijderen"
+  "delete": "verwijderen",
+  "full_account_data": "volledige accountgegevens",
+  "this_account": "dit account",
+  "locked": "vergrendeld",
+  "reason": "reden"
 }

@@ -125,5 +125,9 @@
   "a_new_account": "yeni bir hesap",
   "import": "ithal et",
   "export": "dışa aktar",
-  "delete": "sil"
+  "delete": "sil",
+  "full_account_data": "tam hesap verisi",
+  "this_account": "bu hesap",
+  "locked": "kilitli",
+  "reason": "neden"
 }

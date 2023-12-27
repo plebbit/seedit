@@ -125,5 +125,9 @@
   "a_new_account": "uusi tili",
   "import": "tuo",
   "export": "vie",
-  "delete": "poista"
+  "delete": "poista",
+  "full_account_data": "täydelliset tilitiedot",
+  "this_account": "tämä tili",
+  "locked": "lukittu",
+  "reason": "syy"
 }

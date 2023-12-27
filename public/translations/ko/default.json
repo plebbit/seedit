@@ -125,5 +125,9 @@
   "a_new_account": "새 계정",
   "import": "가져오기",
   "export": "내보내기",
-  "delete": "삭제"
+  "delete": "삭제",
+  "full_account_data": "전체 계정 데이터",
+  "this_account": "이 계정",
+  "locked": "잠금",
+  "reason": "이유"
 }

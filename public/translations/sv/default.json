@@ -125,5 +125,9 @@
   "a_new_account": "ett nytt konto",
   "import": "importera",
   "export": "exportera",
-  "delete": "ta bort"
+  "delete": "ta bort",
+  "full_account_data": "fullständig kontodata",
+  "this_account": "detta konto",
+  "locked": "låst",
+  "reason": "anledning"
 }

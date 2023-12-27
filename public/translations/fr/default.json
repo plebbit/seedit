@@ -125,5 +125,9 @@
   "a_new_account": "un nouveau compte",
   "import": "importer",
   "export": "exporter",
-  "delete": "supprimer"
+  "delete": "supprimer",
+  "full_account_data": "données complètes du compte",
+  "this_account": "ce compte",
+  "locked": "verrouillé",
+  "reason": "raison"
 }

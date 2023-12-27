@@ -170,13 +170,13 @@ const AccountSettings = () => {
             <button onClick={_createAccount}>{t('create')}</button> {t('a_new_account')}
           </div>
           <div>
-            <button onClick={_importAccount}>{t('import')}</button> full account data
+            <button onClick={_importAccount}>{t('import')}</button> {t('full_account_data')}
           </div>
           <div>
-            <button onClick={_exportAccount}>{t('export')}</button> full account data
+            <button onClick={_exportAccount}>{t('export')}</button> {t('full_account_data')}
           </div>
           <div className={styles.deleteAccountBox}>
-            <button onClick={() => _deleteAccount(account?.name)}>{t('delete')}</button> this account
+            <button onClick={() => _deleteAccount(account?.name)}>{t('delete')}</button> {t('this_account')}
           </div>
         </div>
       </div>

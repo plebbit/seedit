@@ -125,5 +125,9 @@
   "a_new_account": "নতুন অ্যাকাউন্ট",
   "import": "আমদানি",
   "export": "রপ্তানি",
-  "delete": "মুছে ফেলা"
+  "delete": "মুছে ফেলা",
+  "full_account_data": "সম্পূর্ণ অ্যাকাউন্ট ডেটা",
+  "this_account": "এই অ্যাকাউন্ট",
+  "locked": "লক করা",
+  "reason": "কারণ"
 }

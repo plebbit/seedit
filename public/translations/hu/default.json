@@ -125,5 +125,9 @@
   "a_new_account": "egy új fiók",
   "import": "importálás",
   "export": "exportálás",
-  "delete": "töröl"
+  "delete": "töröl",
+  "full_account_data": "teljes fiókadata",
+  "this_account": "ez a fiók",
+  "locked": "lezárt",
+  "reason": "ok"
 }

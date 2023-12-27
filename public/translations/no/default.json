@@ -125,5 +125,9 @@
   "a_new_account": "en ny konto",
   "import": "importer",
   "export": "eksporter",
-  "delete": "slett"
+  "delete": "slett",
+  "full_account_data": "full kontodata",
+  "this_account": "denne kontoen",
+  "locked": "låst",
+  "reason": "grunn"
 }

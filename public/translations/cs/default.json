@@ -125,5 +125,9 @@
   "a_new_account": "nový účet",
   "import": "import",
   "export": "export",
-  "delete": "smazat"
+  "delete": "smazat",
+  "full_account_data": "plná účetní data",
+  "this_account": "tento účet",
+  "locked": "uzamčeno",
+  "reason": "důvod"
 }

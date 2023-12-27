@@ -125,5 +125,9 @@
   "a_new_account": "కొత్త ఖాతా",
   "import": "దిగుమతి",
   "export": "ఎగుమతి",
-  "delete": "తొలగించండి"
+  "delete": "తొలగించండి",
+  "full_account_data": "పూర్తి ఖాతా డేటా",
+  "this_account": "ఈ ఖాతా",
+  "locked": "లాక్ చేయబడింది",
+  "reason": "కారణం"
 }

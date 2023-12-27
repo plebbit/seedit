@@ -125,5 +125,9 @@
   "a_new_account": "un cont nou",
   "import": "importați",
   "export": "exportați",
-  "delete": "ștergeți"
+  "delete": "ștergeți",
+  "full_account_data": "date complete ale contului",
+  "this_account": "acest cont",
+  "locked": "blocat",
+  "reason": "motiv"
 }

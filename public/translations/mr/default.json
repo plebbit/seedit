@@ -125,5 +125,9 @@
   "a_new_account": "नवीन खाता",
   "import": "आयात करा",
   "export": "निर्यात करा",
-  "delete": "काढा"
+  "delete": "काढा",
+  "full_account_data": "पूर्ण खाते डेटा",
+  "this_account": "हे खाते",
+  "locked": "लॉक केला",
+  "reason": "कारण"
 }

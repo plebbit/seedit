@@ -125,5 +125,9 @@
   "a_new_account": "akun baru",
   "import": "impor",
   "export": "ekspor",
-  "delete": "hapus"
+  "delete": "hapus",
+  "full_account_data": "data akun lengkap",
+  "this_account": "akun ini",
+  "locked": "terkunci",
+  "reason": "alasan"
 }

@@ -125,5 +125,9 @@
   "a_new_account": "新しいアカウント",
   "import": "インポート",
   "export": "エクスポート",
-  "delete": "削除"
+  "delete": "削除",
+  "full_account_data": "フルアカウントデータ",
+  "this_account": "このアカウント",
+  "locked": "ロックされました",
+  "reason": "理由"
 }

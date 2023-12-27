@@ -125,5 +125,9 @@
   "a_new_account": "nowe konto",
   "import": "importuj",
   "export": "eksportuj",
-  "delete": "usuń"
+  "delete": "usuń",
+  "full_account_data": "pełne dane konta",
+  "this_account": "ten rachunek",
+  "locked": "zablokowane",
+  "reason": "powód"
 }

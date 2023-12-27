@@ -125,5 +125,9 @@
   "a_new_account": "ایک نیا اکاؤنٹ",
   "import": "درآمد کریں",
   "export": "برآمد کریں",
-  "delete": "حذف کریں"
+  "delete": "حذف کریں",
+  "full_account_data": "مکمل اکاؤنٹ ڈیٹا",
+  "this_account": "یہ اکاؤنٹ",
+  "locked": "مقفل",
+  "reason": "وجہ"
 }

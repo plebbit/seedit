@@ -125,5 +125,9 @@
   "a_new_account": "a new account",
   "import": "import",
   "export": "export",
-  "delete": "delete"
+  "delete": "delete",
+  "full_account_data": "full account data",
+  "this_account": "this account",
+  "locked": "locked",
+  "reason": "reason"
 }

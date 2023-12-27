@@ -125,5 +125,9 @@
   "a_new_account": "一个新帐户",
   "import": "导入",
   "export": "导出",
-  "delete": "删除"
+  "delete": "删除",
+  "full_account_data": "完整帐户数据",
+  "this_account": "此帐户",
+  "locked": "已锁定",
+  "reason": "原因"
 }
