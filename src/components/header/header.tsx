@@ -35,18 +35,12 @@ const AboutButton = () => {
   const params = useParams();
   const location = useLocation();
   const aboutLink = getAboutLink(location.pathname, params);
-  const isHomePage = isHomeView(location.pathname, params);
   const isAboutPage = isAboutView(location.pathname);
+  const isSubplebbitSubmitPage = isSubplebbitSubmitView(location.pathname, params);
 
   return (
     <li className={styles.about}>
-      <Link
-        to={aboutLink}
-        className={`${isAboutPage ? styles.selected : styles.choice}`}
-        onClick={(event) => {
-          isHomePage && event.preventDefault();
-        }}
-      >
+      <Link to={aboutLink} className={`${isAboutPage ? styles.selected : styles.choice}  ${isSubplebbitSubmitPage ? styles.singleAboutButton : ''}`}>
         {t('about')}
       </Link>
     </li>

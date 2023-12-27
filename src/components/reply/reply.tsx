@@ -139,7 +139,6 @@ const InboxParentLink = ({ commentCid }: ParentLinkProps) => {
   const { postCid, parentCid } = inboxComment || {};
   const parent = useComment({ commentCid: inboxComment?.postCid });
   const { cid, content, title, subplebbitAddress } = parent || {};
-  // const { t } = useTranslation();
   const postTitle = (title?.length > 300 ? title?.slice(0, 300) + '...' : title) || (content?.length > 300 ? content?.slice(0, 300) + '...' : content);
 
   const isInboxCommentReply = postCid !== parentCid;
