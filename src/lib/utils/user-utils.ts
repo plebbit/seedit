@@ -42,7 +42,11 @@ export const estimateAuthorKarma = (accountComments: (Comment | undefined)[]): S
 
   accountComments.forEach((comment) => {
     if (comment) {
-      const score = comment.upvoteCount - comment.downvoteCount;
+      // Ensure upvoteCount and downvoteCount are treated as numbers, defaulting to 0 if null or undefined
+      const upvotes = comment.upvoteCount ?? 0;
+      const downvotes = comment.downvoteCount ?? 0;
+      const score = upvotes - downvotes;
+
       if (comment.parentCid) {
         replyScore += score;
       } else {

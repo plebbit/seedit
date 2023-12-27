@@ -134,6 +134,7 @@ const ParentLink = ({ postCid }: ParentLinkProps) => {
 };
 
 const InboxParentLink = ({ commentCid }: ParentLinkProps) => {
+  const { t } = useTranslation();
   const inboxComment = useComment({ commentCid });
   const { postCid, parentCid } = inboxComment || {};
   const parent = useComment({ commentCid: inboxComment?.postCid });
@@ -146,7 +147,7 @@ const InboxParentLink = ({ commentCid }: ParentLinkProps) => {
 
   return (
     <div className={styles.inboxParentLinkWrapper}>
-      <span className={styles.inboxParentLinkSubject}>{isInboxCommentReply ? 'comment reply' : isInboxPostReply ? 'post reply' : ''}</span>
+      <span className={styles.inboxParentLinkSubject}>{isInboxCommentReply ? t('comment_reply') : isInboxPostReply ? t('post_reply') : ''}</span>
       <Link to={`/p/${subplebbitAddress}/c/${cid}`} className={styles.inboxParentLink}>
         {postTitle}
       </Link>
@@ -155,6 +156,7 @@ const InboxParentLink = ({ commentCid }: ParentLinkProps) => {
 };
 
 const InboxParentInfo = ({ commentCid, markedAsRead }: ParentLinkProps) => {
+  const { t } = useTranslation();
   const parent = useComment({ commentCid });
   const { author, cid, subplebbitAddress, timestamp } = parent || {};
   const shortSubplebbitAddress = subplebbitAddress ? (subplebbitAddress.includes('.') ? subplebbitAddress : getShortAddress(subplebbitAddress)) : '';
@@ -162,17 +164,17 @@ const InboxParentInfo = ({ commentCid, markedAsRead }: ParentLinkProps) => {
   return (
     <>
       <div className={`${styles.inboxParentInfo} ${markedAsRead ? styles.inboxParentRead : styles.inboxParentUnread}`}>
-        from{' '}
+        {t('from')}{' '}
         <Link to={`/u/${author?.address}/c/${cid}`} className={styles.inboxParentAuthor}>
           u/{author?.shortAddress}{' '}
         </Link>
-        via{' '}
+        {t('via')}{' '}
         <Link to={`/p/${subplebbitAddress}`} className={styles.inboxParentSubplebbit}>
           p/{shortSubplebbitAddress}{' '}
         </Link>
-        sent {getFormattedTimeAgo(timestamp)}
+        {t('sent')} {getFormattedTimeAgo(timestamp)}
       </div>
-      <div className={styles.inboxParentInfoButton}>show parent</div>
+      <div className={styles.inboxParentInfoButton}>{t('show_parent')}</div>
     </>
   );
 };

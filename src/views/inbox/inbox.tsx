@@ -5,10 +5,12 @@ import { useAccount, useNotifications } from '@plebbit/plebbit-react-hooks';
 import styles from './inbox.module.css';
 import Reply from '../../components/reply/reply';
 import { isInboxCommentRepliesView, isInboxPostRepliesView, isInboxUnreadView } from '../../lib/utils/view-utils';
+import { useTranslation } from 'react-i18next';
 
 const lastVirtuosoStates: { [key: string]: StateSnapshot } = {};
 
 const InboxTabs = () => {
+  const { t } = useTranslation();
   const location = useLocation();
   const isInboxCommentRepliesPage = isInboxCommentRepliesView(location.pathname);
   const isInboxPostRepliesPage = isInboxPostRepliesView(location.pathname);
@@ -18,25 +20,26 @@ const InboxTabs = () => {
   return (
     <div className={styles.inboxTabs}>
       <Link to='/inbox' className={isAllPage ? styles.selected : styles.choice}>
-        all
+        {t('all')}
       </Link>
       <span className={styles.separator}>|</span>
       <Link to='/inbox/unread' className={isInboxUnreadPage ? styles.selected : styles.choice}>
-        unread
+        {t('unread')}
       </Link>
       <span className={styles.separator}>|</span>
       <Link to='/inbox/commentreplies' className={isInboxCommentRepliesPage ? styles.selected : styles.choice}>
-        comment replies
+        {t('comment_replies')}
       </Link>
       <span className={styles.separator}>|</span>
       <Link to='/inbox/postreplies' className={isInboxPostRepliesPage ? styles.selected : styles.choice}>
-        post replies
+        {t('post_replies')}
       </Link>
     </div>
   );
 };
 
 const Inbox = () => {
+  const { t } = useTranslation();
   const account = useAccount();
   const { unreadNotificationCount } = account || {};
   const { notifications, markAsRead } = useNotifications();
@@ -88,7 +91,7 @@ const Inbox = () => {
       <InboxTabs />
       <div className={styles.markAllAsReadButton}>
         <button onClick={markAsRead} disabled={!unreadNotificationCount} className={styles.markAsReadButton}>
-          mark all as read
+          {t('mark_all_read')}
         </button>
       </div>
       <Virtuoso

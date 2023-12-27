@@ -184,11 +184,13 @@ const AuthorHeaderTabs = () => {
 };
 
 const InboxHeaderTabs = () => {
+  const { t } = useTranslation();
+
   return (
     <>
       <li>
         <Link to={'/inbox'} className={styles.selected}>
-          inbox
+          {t('inbox')}
         </Link>
       </li>
       {/* TODO: add tabs for messaging when available in the API */}
@@ -259,7 +261,7 @@ const HeaderTitle = ({ title, shortAddress }: { title: string; shortAddress: str
   } else if (isAuthorPage) {
     return authorTitle;
   } else if (isInboxPage) {
-    return 'message';
+    return t('messages');
   }
   return null;
 };
