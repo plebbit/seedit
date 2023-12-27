@@ -114,5 +114,10 @@
   "profile": "โปรไฟล์",
   "account": "บัญชี",
   "display_name": "ชื่อที่แสดง",
-  "crypto_address": "ที่อยู่คริปโต"
+  "crypto_address": "ที่อยู่คริปโต",
+  "reset": "รีเซ็ต",
+  "changes": "การเปลี่ยนแปลง",
+  "check": "ตรวจสอบ",
+  "crypto_address_verification": "หากที่อยู่คริปโตได้รับการแก้ไข p2p",
+  "is_current_account": "นี่คือบัญชีปัจจุบันหรือไม่"
 }

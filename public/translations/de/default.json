@@ -114,5 +114,10 @@
   "profile": "Profil",
   "account": "Konto",
   "display_name": "Anzeigename",
-  "crypto_address": "Krypto-Adresse"
+  "crypto_address": "Krypto-Adresse",
+  "reset": "zurücksetzen",
+  "changes": "Änderungen",
+  "check": "überprüfen",
+  "crypto_address_verification": "wenn die Krypto-Adresse p2p aufgelöst ist",
+  "is_current_account": "ist das aktuelle Konto"
 }

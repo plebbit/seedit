@@ -114,5 +114,10 @@
   "profile": "profiel",
   "account": "account",
   "display_name": "weergavenaam",
-  "crypto_address": "crypto adres"
+  "crypto_address": "crypto adres",
+  "reset": "resetten",
+  "changes": "wijzigingen",
+  "check": "controleren",
+  "crypto_address_verification": "als het crypto adres p2p is opgelost",
+  "is_current_account": "is dit de huidige rekening"
 }

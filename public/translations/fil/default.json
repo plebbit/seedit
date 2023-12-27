@@ -114,5 +114,10 @@
   "profile": "profile",
   "account": "account",
   "display_name": "display name",
-  "crypto_address": "crypto address"
+  "crypto_address": "crypto address",
+  "reset": "i-reset",
+  "changes": "pagbabago",
+  "check": "suriin",
+  "crypto_address_verification": "kung nairesolba ang crypto address p2p",
+  "is_current_account": "ang kasalukuyang account ba"
 }

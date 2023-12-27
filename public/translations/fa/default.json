@@ -114,5 +114,10 @@
   "profile": "پروفایل",
   "account": "حساب",
   "display_name": "نام نمایشی",
-  "crypto_address": "آدرس رمزارز"
+  "crypto_address": "آدرس رمزارز",
+  "reset": "بازنشانی",
+  "changes": "تغییرات",
+  "check": "بررسی کنید",
+  "crypto_address_verification": "اگر آدرس رمزارز به صورت p2p حل شود",
+  "is_current_account": "آیا این حساب جاری است"
 }

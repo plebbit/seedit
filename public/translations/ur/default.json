@@ -114,5 +114,10 @@
   "profile": "پروفائل",
   "account": "اکاؤنٹ",
   "display_name": "ڈسپلے نام",
-  "crypto_address": "کرپٹو پتہ"
+  "crypto_address": "کرپٹو پتہ",
+  "reset": "ری سیٹ کریں",
+  "changes": "تبدیلیاں",
+  "check": "چیک کریں",
+  "crypto_address_verification": "اگر کرپٹو پتا p2p کے ذریعے حل ہوتا ہے",
+  "is_current_account": "کیا یہ موجودہ اکاؤنٹ ہے"
 }

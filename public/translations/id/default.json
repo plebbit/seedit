@@ -114,5 +114,10 @@
   "profile": "profil",
   "account": "akun",
   "display_name": "nama tampilan",
-  "crypto_address": "alamat kripto"
+  "crypto_address": "alamat kripto",
+  "reset": "ulang",
+  "changes": "perubahan",
+  "check": "periksa",
+  "crypto_address_verification": "jika alamat kripto diselesaikan p2p",
+  "is_current_account": "apakah ini adalah akun saat ini"
 }

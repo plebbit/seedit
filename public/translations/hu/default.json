@@ -114,5 +114,10 @@
   "profile": "profil",
   "account": "fiók",
   "display_name": "megjelenítendő név",
-  "crypto_address": "kriptovaluta cím"
+  "crypto_address": "kriptovaluta cím",
+  "reset": "alaphelyzetbe állít",
+  "changes": "változások",
+  "check": "ellenőriz",
+  "crypto_address_verification": "ha a kriptocím p2p felbontású",
+  "is_current_account": "a jelenlegi számla"
 }

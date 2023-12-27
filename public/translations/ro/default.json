@@ -114,5 +114,10 @@
   "profile": "profil",
   "account": "cont",
   "display_name": "nume de afișare",
-  "crypto_address": "adresa cripto"
+  "crypto_address": "adresa cripto",
+  "reset": "resetează",
+  "changes": "schimbări",
+  "check": "verificați",
+  "crypto_address_verification": "dacă adresa cripto este rezolvată p2p",
+  "is_current_account": "este contul curent"
 }

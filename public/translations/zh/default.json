@@ -114,5 +114,10 @@
   "profile": "个人资料",
   "account": "帐户",
   "display_name": "显示名称",
-  "crypto_address": "加密地址"
+  "crypto_address": "加密地址",
+  "reset": "重置",
+  "changes": "更改",
+  "check": "检查",
+  "crypto_address_verification": "如果加密地址是p2p解决的",
+  "is_current_account": "这是当前帐户吗"
 }

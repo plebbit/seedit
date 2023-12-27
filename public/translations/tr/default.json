@@ -114,5 +114,10 @@
   "profile": "profil",
   "account": "hesap",
   "display_name": "görünen ad",
-  "crypto_address": "kripto adres"
+  "crypto_address": "kripto adres",
+  "reset": "sıfırla",
+  "changes": "değişiklikler",
+  "check": "kontrol etmek",
+  "crypto_address_verification": "eğer kripto adresi p2p ile çözüldüyse",
+  "is_current_account": "bu, şu anki hesap mı"
 }

@@ -114,5 +114,10 @@
   "profile": "profil",
   "account": "konto",
   "display_name": "visningsnamn",
-  "crypto_address": "kryptoadress"
+  "crypto_address": "kryptoadress",
+  "reset": "återställ",
+  "changes": "ändringar",
+  "check": "kontrollera",
+  "crypto_address_verification": "om kryptoadressen är löst p2p",
+  "is_current_account": "är det nuvarande kontot"
 }

@@ -114,5 +114,10 @@
   "profile": "プロフィール",
   "account": "アカウント",
   "display_name": "表示名",
-  "crypto_address": "暗号通貨アドレス"
+  "crypto_address": "暗号通貨アドレス",
+  "reset": "リセット",
+  "changes": "変更",
+  "check": "チェック",
+  "crypto_address_verification": "暗号通貨アドレスがp2pで解決されている場合",
+  "is_current_account": "これは現在のアカウントですか"
 }

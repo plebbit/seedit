@@ -114,5 +114,10 @@
   "profile": "프로필",
   "account": "계정",
   "display_name": "표시 이름",
-  "crypto_address": "암호 화폐 주소"
+  "crypto_address": "암호 화폐 주소",
+  "reset": "재설정",
+  "changes": "변경사항",
+  "check": "확인",
+  "crypto_address_verification": "암호 화폐 주소가 p2p로 해결되었을 때",
+  "is_current_account": "현재 계정입니까"
 }

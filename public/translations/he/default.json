@@ -114,5 +114,10 @@
   "profile": "פרופיל",
   "account": "חשבון",
   "display_name": "שם התצוגה",
-  "crypto_address": "כתובת קריפטו"
+  "crypto_address": "כתובת קריפטו",
+  "reset": "איפוס",
+  "changes": "שינויים",
+  "check": "בדוק",
+  "crypto_address_verification": "אם כתובת הקריפטו פתרה p2p",
+  "is_current_account": "האם זה החשבון הנוכחי"
 }

@@ -114,5 +114,10 @@
   "profile": "প্রোফাইল",
   "account": "অ্যাকাউন্ট",
   "display_name": "প্রদর্শনী নাম",
-  "crypto_address": "ক্রিপ্টো ঠিকানা"
+  "crypto_address": "ক্রিপ্টো ঠিকানা",
+  "reset": "রিসেট",
+  "changes": "পরিবর্তন",
+  "check": "চেক",
+  "crypto_address_verification": "যদি ক্রিপ্টো ঠিকানা পি2প দ্বারা সমাধান হয়",
+  "is_current_account": "কি এটি বর্তমান অ্যাকাউন্ট"
 }

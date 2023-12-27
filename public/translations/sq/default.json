@@ -114,5 +114,10 @@
   "profile": "profili",
   "account": "llogari",
   "display_name": "emri i shfaqur",
-  "crypto_address": "adresa e kripto"
+  "crypto_address": "adresa e kripto",
+  "reset": "rithqas",
+  "changes": "ndryshimet",
+  "check": "kontrollo",
+  "crypto_address_verification": "nëse adresa e kripto shpërblyhet p2p",
+  "is_current_account": "a është llogaria aktuale"
 }

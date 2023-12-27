@@ -114,5 +114,10 @@
   "profile": "profil",
   "account": "compte",
   "display_name": "nom d'affichage",
-  "crypto_address": "adresse crypto"
+  "crypto_address": "adresse crypto",
+  "reset": "réinitialiser",
+  "changes": "changements",
+  "check": "vérifier",
+  "crypto_address_verification": "si l’adresse crypto est résolue en p2p",
+  "is_current_account": "est-ce le compte actuel"
 }

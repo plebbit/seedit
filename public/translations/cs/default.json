@@ -114,5 +114,10 @@
   "profile": "profil",
   "account": "účet",
   "display_name": "zobrazované jméno",
-  "crypto_address": "adresa kryptoměny"
+  "crypto_address": "adresa kryptoměny",
+  "reset": "obnovit",
+  "changes": "změny",
+  "check": "kontrolovat",
+  "crypto_address_verification": "pokud je kryptoměna vyřešena p2p",
+  "is_current_account": "je to aktuální účet"
 }

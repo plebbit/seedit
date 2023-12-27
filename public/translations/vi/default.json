@@ -114,5 +114,10 @@
   "profile": "hồ sơ",
   "account": "tài khoản",
   "display_name": "tên hiển thị",
-  "crypto_address": "địa chỉ tiền điện tử"
+  "crypto_address": "địa chỉ tiền điện tử",
+  "reset": "đặt lại",
+  "changes": "thay đổi",
+  "check": "kiểm tra",
+  "crypto_address_verification": "nếu địa chỉ tiền điện tử được giải quyết p2p",
+  "is_current_account": "đó có phải là tài khoản hiện tại không"
 }

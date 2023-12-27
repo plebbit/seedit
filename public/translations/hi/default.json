@@ -114,5 +114,10 @@
   "profile": "प्रोफ़ाइल",
   "account": "खाता",
   "display_name": "प्रदर्शन नाम",
-  "crypto_address": "क्रिप्टो पता"
+  "crypto_address": "क्रिप्टो पता",
+  "reset": "रीसेट करें",
+  "changes": "परिवर्तन",
+  "check": "जाँच करें",
+  "crypto_address_verification": "यदि क्रिप्टो पता p2p द्वारा हल किया गया है",
+  "is_current_account": "क्या यह वर्तमान खाता है"
 }

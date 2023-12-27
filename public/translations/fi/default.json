@@ -114,5 +114,10 @@
   "profile": "profiili",
   "account": "tili",
   "display_name": "näyttönimi",
-  "crypto_address": "krypto-osoite"
+  "crypto_address": "krypto-osoite",
+  "reset": "nollaa",
+  "changes": "muutokset",
+  "check": "tarkista",
+  "crypto_address_verification": "jos krypto-osoite on ratkaistu p2p",
+  "is_current_account": "onko tämä nykyinen tili"
 }

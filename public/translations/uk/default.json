@@ -114,5 +114,10 @@
   "profile": "профіль",
   "account": "рахунок",
   "display_name": "відображуване ім'я",
-  "crypto_address": "адреса криптовалюти"
+  "crypto_address": "адреса криптовалюти",
+  "reset": "скинути",
+  "changes": "зміни",
+  "check": "перевірити",
+  "crypto_address_verification": "якщо адреса криптовалюти розглядається p2p",
+  "is_current_account": "це поточний рахунок"
 }

@@ -114,5 +114,10 @@
   "profile": "perfil",
   "account": "cuenta",
   "display_name": "nombre visible",
-  "crypto_address": "dirección de cripto"
+  "crypto_address": "dirección de cripto",
+  "reset": "restablecer",
+  "changes": "cambios",
+  "check": "verificar",
+  "crypto_address_verification": "si la dirección de cripto se resuelve p2p",
+  "is_current_account": "es la cuenta actual"
 }

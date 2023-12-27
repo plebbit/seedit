@@ -114,5 +114,10 @@
   "profile": "profile",
   "account": "account",
   "display_name": "display name",
-  "crypto_address": "crypto address"
+  "crypto_address": "crypto address",
+  "reset": "reset",
+  "changes": "changes",
+  "check": "check",
+  "crypto_address_verification": "if the crypto address is resolved p2p",
+  "is_current_account": "is the current account"
 }

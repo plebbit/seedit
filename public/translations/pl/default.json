@@ -114,5 +114,10 @@
   "profile": "profil",
   "account": "konto",
   "display_name": "nazwa wyświetlana",
-  "crypto_address": "adres kryptowalutowy"
+  "crypto_address": "adres kryptowalutowy",
+  "reset": "zresetuj",
+  "changes": "zmiany",
+  "check": "sprawdź",
+  "crypto_address_verification": "jeśli adres kryptowalutowy jest rozwiązany p2p",
+  "is_current_account": "czy to jest obecne konto"
 }

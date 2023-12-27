@@ -114,5 +114,10 @@
   "profile": "الملف الشخصي",
   "account": "حساب",
   "display_name": "اسم العرض",
-  "crypto_address": "عنوان العملة الرقمية"
+  "crypto_address": "عنوان العملة الرقمية",
+  "reset": "إعادة",
+  "changes": "تغييرات",
+  "check": "تحقق",
+  "crypto_address_verification": "إذا تم حل عنوان العملة الرقمية عبر الند للند",
+  "is_current_account": "هل هذا الحساب الحالي"
 }

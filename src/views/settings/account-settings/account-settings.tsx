@@ -157,14 +157,14 @@ const AccountSettings = () => {
         <select value={account?.name} onChange={(e) => setActiveAccount(e.target.value)}>
           {accountsOptions}
         </select>{' '}
-        is the current account
+        {t('is_current_account')}
       </div>
       <span className={styles.settingTitle}>account data preview</span>
       <div className={styles.accountData}>
         <textarea className={styles.textarea} value={text} onChange={(e) => setText(e.target.value)} autoCorrect='off' autoComplete='off' spellCheck='false' />
         <div className={styles.accountButtons}>
           <div>
-            <button onClick={saveAccount}>{t('save')}</button> {t('or')} <button onClick={() => setText(accountJson)}>Reset</button> changes
+            <button onClick={saveAccount}>{t('save')}</button> {t('or')} <button onClick={() => setText(accountJson)}>{t('reset')}</button> {t('changes')}
           </div>
           <div>
             <button onClick={_createAccount}>Create</button> a new account

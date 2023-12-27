@@ -36,7 +36,7 @@ const ProfileSettings = () => {
     cryptoAddress: '',
     checkingCryptoAddress: false,
     showResolvingMessage: false,
-    resolveString: 'if the crypto address is resolved p2p',
+    resolveString: t('crypto_address_verification'),
     resolveClass: '',
   });
 
@@ -128,7 +128,7 @@ const ProfileSettings = () => {
         ...prevState,
         checkingCryptoAddress: false,
         showResolvingMessage: false,
-        resolveString: 'if the crypto address is resolved p2p',
+        resolveString: t('crypto_address_verification'),
         resolveClass: '',
       }));
     }
@@ -183,7 +183,7 @@ const ProfileSettings = () => {
         </div>
         <div className={styles.checkCryptoAddress}>
           <button className={styles.button} onClick={checkCryptoAddress}>
-            check
+            {t('check')}
           </button>{' '}
           <span className={cryptoState.resolveClass}>{cryptoState.resolveString}</span>
         </div>

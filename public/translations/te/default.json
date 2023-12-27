@@ -114,5 +114,10 @@
   "profile": "ప్రొఫైల్",
   "account": "ఖాతా",
   "display_name": "ప్రదర్శన పేరు",
-  "crypto_address": "క్రిప్టో చిరునామా"
+  "crypto_address": "క్రిప్టో చిరునామా",
+  "reset": "రీసెట్",
+  "changes": "మార్పులు",
+  "check": "తనిఖీ",
+  "crypto_address_verification": "క్రిప్టో చిరునామా p2p ద్వారా మొదల్గయింది",
+  "is_current_account": "ఇది ప్రస్తుత ఖాతా మా"
 }
