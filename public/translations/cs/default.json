@@ -163,5 +163,10 @@
   "sent": "odesláno",
   "unread": "nepřečteno",
   "comment_replies": "odpovědi na komentáře",
-  "post_replies": "odpovědi na příspěvky"
+  "post_replies": "odpovědi na příspěvky",
+  "messages": "zprávy",
+  "inbox": "doručená pošta",
+  "mark_all_read": "označit vše jako přečtené",
+  "comment_reply": "odpovědět na komentář",
+  "post_reply": "odpovědět na příspěvek"
 }

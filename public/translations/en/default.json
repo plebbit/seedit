@@ -163,5 +163,10 @@
   "sent": "sent",
   "unread": "unread",
   "comment_replies": "comment replies",
-  "post_replies": "post replies"
+  "post_replies": "post replies",
+  "messages": "message",
+  "inbox": "inbox",
+  "mark_all_read": "mark all as read",
+  "comment_reply": "comment reply",
+  "post_reply": "post reply"
 }

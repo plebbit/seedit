@@ -163,5 +163,10 @@
   "sent": "送信済み",
   "unread": "未読",
   "comment_replies": "コメントへの返信",
-  "post_replies": "投稿への返信"
+  "post_replies": "投稿への返信",
+  "messages": "メッセージ",
+  "inbox": "受信トレイ",
+  "mark_all_read": "すべてを既読にする",
+  "comment_reply": "コメントに返信",
+  "post_reply": "投稿に返信"
 }

@@ -163,5 +163,10 @@
   "sent": "已发送",
   "unread": "未读",
   "comment_replies": "评论回复",
-  "post_replies": "帖子回复"
+  "post_replies": "帖子回复",
+  "messages": "消息",
+  "inbox": "收件箱",
+  "mark_all_read": "全部标记为已读",
+  "comment_reply": "回复评论",
+  "post_reply": "回复帖子"
 }

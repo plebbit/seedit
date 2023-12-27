@@ -163,5 +163,10 @@
   "sent": "gönderildi",
   "unread": "okunmamış",
   "comment_replies": "yorum yanıtları",
-  "post_replies": "gönderi yanıtları"
+  "post_replies": "gönderi yanıtları",
+  "messages": "mesajlar",
+  "inbox": "gelen kutusu",
+  "mark_all_read": "tümünü okundu olarak işaretle",
+  "comment_reply": "yorumu yanıtla",
+  "post_reply": "gönderiye yanıtla"
 }

@@ -163,5 +163,10 @@
   "sent": "पाठविला",
   "unread": "अपठित",
   "comment_replies": "टिप्पणी उत्तरे",
-  "post_replies": "पोस्ट उत्तरे"
+  "post_replies": "पोस्ट उत्तरे",
+  "messages": "संदेश",
+  "inbox": "इनबॉक्स",
+  "mark_all_read": "सर्व कोणत्याही वाचल्याचं दर्जा",
+  "comment_reply": "कॉमेंटचा उत्तर",
+  "post_reply": "पोस्टचा उत्तर"
 }

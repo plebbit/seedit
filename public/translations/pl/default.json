@@ -163,5 +163,10 @@
   "sent": "wysłane",
   "unread": "nieprzeczytane",
   "comment_replies": "odpowiedzi na komentarze",
-  "post_replies": "odpowiedzi na posty"
+  "post_replies": "odpowiedzi na posty",
+  "messages": "wiadomości",
+  "inbox": "skrzynka odbiorcza",
+  "mark_all_read": "oznacz wszystko jako przeczytane",
+  "comment_reply": "odpowiedź na komentarz",
+  "post_reply": "odpowiedź na post"
 }

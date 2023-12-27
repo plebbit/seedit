@@ -163,5 +163,10 @@
   "sent": "sendt",
   "unread": "ulest",
   "comment_replies": "kommentarsvar",
-  "post_replies": "innleggssvar"
+  "post_replies": "innleggssvar",
+  "messages": "meldinger",
+  "inbox": "innboks",
+  "mark_all_read": "merk alle som lest",
+  "comment_reply": "svar på kommentar",
+  "post_reply": "svar på innlegg"
 }

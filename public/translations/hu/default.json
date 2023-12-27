@@ -163,5 +163,10 @@
   "sent": "küldött",
   "unread": "olvasatlan",
   "comment_replies": "válaszok a kommentekre",
-  "post_replies": "válaszok a posztokra"
+  "post_replies": "válaszok a posztokra",
+  "messages": "üzenetek",
+  "inbox": "beérkezett üzenetek",
+  "mark_all_read": "összes megjelölése olvasottként",
+  "comment_reply": "válasz a hozzászólásra",
+  "post_reply": "válasz a posztra"
 }

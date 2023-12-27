@@ -163,5 +163,10 @@
   "sent": "dërguar",
   "unread": "pa lexuar",
   "comment_replies": "përgjigje te komentet",
-  "post_replies": "përgjigje te postimet"
+  "post_replies": "përgjigje te postimet",
+  "messages": "mesazhe",
+  "inbox": "inbox",
+  "mark_all_read": "shëno të gjitha si të lexuara",
+  "comment_reply": "përgjigju komentit",
+  "post_reply": "përgjigju postës"
 }

@@ -163,5 +163,10 @@
   "sent": "lähetetty",
   "unread": "lukemattomat",
   "comment_replies": "kommenttivastaukset",
-  "post_replies": "viestivastaukset"
+  "post_replies": "viestivastaukset",
+  "messages": "viestit",
+  "inbox": "saapuneet",
+  "mark_all_read": "merkitse kaikki luetuiksi",
+  "comment_reply": "vastaa kommenttiin",
+  "post_reply": "vastaa viestiin"
 }

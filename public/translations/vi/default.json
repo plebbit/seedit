@@ -163,5 +163,10 @@
   "sent": "đã gửi",
   "unread": "chưa đọc",
   "comment_replies": "trả lời bình luận",
-  "post_replies": "trả lời bài viết"
+  "post_replies": "trả lời bài viết",
+  "messages": "tin nhắn",
+  "inbox": "hộp thư đến",
+  "mark_all_read": "đánh dấu tất cả là đã đọc",
+  "comment_reply": "trả lời bình luận",
+  "post_reply": "trả lời bài đăng"
 }

@@ -163,5 +163,10 @@
   "sent": "ipinadala",
   "unread": "hindi pa nababasa",
   "comment_replies": "mga reply sa komento",
-  "post_replies": "mga reply sa post"
+  "post_replies": "mga reply sa post",
+  "messages": "mensahe",
+  "inbox": "inbox",
+  "mark_all_read": "tandaan ang lahat bilang nabasa",
+  "comment_reply": "sagot sa komento",
+  "post_reply": "sagot sa post"
 }

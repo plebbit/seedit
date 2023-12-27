@@ -163,5 +163,10 @@
   "sent": "enviado",
   "unread": "no leído",
   "comment_replies": "respuestas a comentarios",
-  "post_replies": "respuestas a publicaciones"
+  "post_replies": "respuestas a publicaciones",
+  "messages": "mensajes",
+  "inbox": "bandeja de entrada",
+  "mark_all_read": "marcar todos como leídos",
+  "comment_reply": "responder al comentario",
+  "post_reply": "responder al post"
 }

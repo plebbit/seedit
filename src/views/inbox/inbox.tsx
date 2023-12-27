@@ -39,6 +39,7 @@ const InboxTabs = () => {
 };
 
 const Inbox = () => {
+  const { t } = useTranslation();
   const account = useAccount();
   const { unreadNotificationCount } = account || {};
   const { notifications, markAsRead } = useNotifications();
@@ -90,7 +91,7 @@ const Inbox = () => {
       <InboxTabs />
       <div className={styles.markAllAsReadButton}>
         <button onClick={markAsRead} disabled={!unreadNotificationCount} className={styles.markAsReadButton}>
-          mark all as read
+          {t('mark_all_read')}
         </button>
       </div>
       <Virtuoso

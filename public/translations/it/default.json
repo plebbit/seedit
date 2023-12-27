@@ -163,5 +163,10 @@
   "sent": "inviato",
   "unread": "non letti",
   "comment_replies": "risposte ai commenti",
-  "post_replies": "risposte ai post"
+  "post_replies": "risposte ai post",
+  "messages": "messaggi",
+  "inbox": "posta in arrivo",
+  "mark_all_read": "segna tutti come letti",
+  "comment_reply": "rispondi al commento",
+  "post_reply": "rispondi al post"
 }

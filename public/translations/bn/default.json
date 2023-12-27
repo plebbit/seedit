@@ -163,5 +163,10 @@
   "sent": "প্রেরিত",
   "unread": "অপঠিত",
   "comment_replies": "মন্তব্যের উত্তর",
-  "post_replies": "পোস্টের উত্তর"
+  "post_replies": "পোস্টের উত্তর",
+  "messages": "বার্তা",
+  "inbox": "ইনবক্স",
+  "mark_all_read": "সবগুলি পঠিত হিসেবে চিহ্নিত করুন",
+  "comment_reply": "মন্তব্য প্রতিক্রিয়া",
+  "post_reply": "পোস্ট উত্তর"
 }

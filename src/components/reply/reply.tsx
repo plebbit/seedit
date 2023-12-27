@@ -134,6 +134,7 @@ const ParentLink = ({ postCid }: ParentLinkProps) => {
 };
 
 const InboxParentLink = ({ commentCid }: ParentLinkProps) => {
+  const { t } = useTranslation();
   const inboxComment = useComment({ commentCid });
   const { postCid, parentCid } = inboxComment || {};
   const parent = useComment({ commentCid: inboxComment?.postCid });
@@ -146,7 +147,7 @@ const InboxParentLink = ({ commentCid }: ParentLinkProps) => {
 
   return (
     <div className={styles.inboxParentLinkWrapper}>
-      <span className={styles.inboxParentLinkSubject}>{isInboxCommentReply ? 'comment reply' : isInboxPostReply ? 'post reply' : ''}</span>
+      <span className={styles.inboxParentLinkSubject}>{isInboxCommentReply ? t('comment_reply') : isInboxPostReply ? t('post_reply') : ''}</span>
       <Link to={`/p/${subplebbitAddress}/c/${cid}`} className={styles.inboxParentLink}>
         {postTitle}
       </Link>

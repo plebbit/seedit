@@ -163,5 +163,10 @@
   "sent": "נשלח",
   "unread": "לא נקרא",
   "comment_replies": "תגובות לתגובות",
-  "post_replies": "תגובות לפוסטים"
+  "post_replies": "תגובות לפוסטים",
+  "messages": "הודעות",
+  "inbox": "תיבת דואר נכנס",
+  "mark_all_read": "סמן הכל כנקרא",
+  "comment_reply": "הגב לתגובה",
+  "post_reply": "הגב לפוסט"
 }

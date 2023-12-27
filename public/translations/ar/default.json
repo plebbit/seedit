@@ -163,5 +163,10 @@
   "sent": "أرسل",
   "unread": "غير مقروء",
   "comment_replies": "ردود التعليقات",
-  "post_replies": "ردود المنشورات"
+  "post_replies": "ردود المنشورات",
+  "messages": "رسائل",
+  "inbox": "صندوق الوارد",
+  "mark_all_read": "وضع علامة على الجميع كمقروءة",
+  "comment_reply": "رد على التعليق",
+  "post_reply": "رد على المنشور"
 }

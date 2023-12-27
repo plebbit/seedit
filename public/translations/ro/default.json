@@ -163,5 +163,10 @@
   "sent": "trimis",
   "unread": "necitit",
   "comment_replies": "răspunsuri la comentarii",
-  "post_replies": "răspunsuri la postări"
+  "post_replies": "răspunsuri la postări",
+  "messages": "mesaje",
+  "inbox": "inbox",
+  "mark_all_read": "marcați toate ca citite",
+  "comment_reply": "răspunde la comentariu",
+  "post_reply": "răspunde la postare"
 }

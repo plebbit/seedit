@@ -163,5 +163,10 @@
   "sent": "skickat",
   "unread": "olästa",
   "comment_replies": "kommentarsvar",
-  "post_replies": "inläggssvar"
+  "post_replies": "inläggssvar",
+  "messages": "meddelanden",
+  "inbox": "inkorg",
+  "mark_all_read": "markera alla som läst",
+  "comment_reply": "svara på kommentar",
+  "post_reply": "svara på inlägg"
 }

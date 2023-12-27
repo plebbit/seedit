@@ -163,5 +163,10 @@
   "sent": "dikirim",
   "unread": "belum dibaca",
   "comment_replies": "balasan komentar",
-  "post_replies": "balasan pos"
+  "post_replies": "balasan pos",
+  "messages": "pesan",
+  "inbox": "kotak masuk",
+  "mark_all_read": "tandai semua sebagai telah dibaca",
+  "comment_reply": "balas komentar",
+  "post_reply": "balas postingan"
 }

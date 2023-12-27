@@ -163,5 +163,10 @@
   "sent": "भेजा गया",
   "unread": "अपठित",
   "comment_replies": "टिप्पणियों के जवाब",
-  "post_replies": "पोस्ट के जवाब"
+  "post_replies": "पोस्ट के जवाब",
+  "messages": "संदेश",
+  "inbox": "इनबॉक्स",
+  "mark_all_read": "सभी को पढ़ा हुआ चिह्नित करें",
+  "comment_reply": "कमेंट का जवाब दें",
+  "post_reply": "पोस्ट का जवाब दें"
 }
