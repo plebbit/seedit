@@ -155,5 +155,7 @@
   "block_community": "bloquear comunidad",
   "unblock_community": "desbloquear comunidad",
   "block_community_alert": "¿Estás seguro de que quieres bloquear esta comunidad?",
-  "unblock_community_alert": "¿Estás seguro de que quieres desbloquear esta comunidad?"
+  "unblock_community_alert": "¿Estás seguro de que quieres desbloquear esta comunidad?",
+  "search_community_address": "Buscar una dirección de comunidad",
+  "search_feed_post": "Buscar una publicación en este feed"
 }

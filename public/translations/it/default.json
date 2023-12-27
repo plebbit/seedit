@@ -155,5 +155,7 @@
   "block_community": "blocca comunità",
   "unblock_community": "sblocca comunità",
   "block_community_alert": "Sei sicuro di voler bloccare questa comunità?",
-  "unblock_community_alert": "Sei sicuro di voler sbloccare questa comunità?"
+  "unblock_community_alert": "Sei sicuro di voler sbloccare questa comunità?",
+  "search_community_address": "Cerca l'indirizzo di una comunità",
+  "search_feed_post": "Cerca un post in questa pagina"
 }

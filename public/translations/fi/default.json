@@ -155,5 +155,7 @@
   "block_community": "estä yhteisö",
   "unblock_community": "poista yhteisön esto",
   "block_community_alert": "Oletko varma, että haluat estää tämän yhteisön?",
-  "unblock_community_alert": "Oletko varma, että haluat poistaa tämän yhteisön estoista?"
+  "unblock_community_alert": "Oletko varma, että haluat poistaa tämän yhteisön estoista?",
+  "search_community_address": "Etsi yhteisön osoite",
+  "search_feed_post": "Etsi viesti tästä syötteestä"
 }

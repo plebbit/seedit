@@ -155,5 +155,7 @@
   "block_community": "közösség blokkolása",
   "unblock_community": "közösség tiltásának feloldása",
   "block_community_alert": "Biztos vagy benne, hogy blokkolni szeretnéd ezt a közösséget?",
-  "unblock_community_alert": "Biztos vagy benne, hogy feloldani szeretnéd ezt a közösséget?"
+  "unblock_community_alert": "Biztos vagy benne, hogy feloldani szeretnéd ezt a közösséget?",
+  "search_community_address": "Keresse meg egy közösség címét",
+  "search_feed_post": "Keresse meg a hírt ebben az összefoglalóban"
 }

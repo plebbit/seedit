@@ -155,5 +155,7 @@
   "block_community": "コミュニティをブロック",
   "unblock_community": "コミュニティのブロック解除",
   "block_community_alert": "このコミュニティをブロックしてもよろしいですか？",
-  "unblock_community_alert": "このコミュニティのブロック解除を確認しますか？"
+  "unblock_community_alert": "このコミュニティのブロック解除を確認しますか？",
+  "search_community_address": "コミュニティのアドレスを検索",
+  "search_feed_post": "このフィード内の投稿を検索"
 }

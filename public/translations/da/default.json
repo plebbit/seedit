@@ -155,5 +155,7 @@
   "block_community": "blokér fællesskab",
   "unblock_community": "fjern blokering af fællesskab",
   "block_community_alert": "Er du sikker på, at du vil blokere dette fællesskab?",
-  "unblock_community_alert": "Er du sikker på, at du vil fjerne blokeringen af dette fællesskab?"
+  "unblock_community_alert": "Er du sikker på, at du vil fjerne blokeringen af dette fællesskab?",
+  "search_community_address": "Søg efter en fællesskabsadresse",
+  "search_feed_post": "Søg efter et opslag på dette feed"
 }

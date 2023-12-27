@@ -64,11 +64,11 @@ const SearchBar = ({ isFocused = false }: SearchBarProps) => {
       <div className={`${styles.infobar} ${showExpando ? styles.slideDown : styles.slideUp}`}>
         <label>
           <input type='checkbox' checked={!isInCommunitySearch} onChange={() => setIsInCommunitySearch(false)} />
-          search a community address
+          {t('search_community_address')}
         </label>
         <label>
           <input type='checkbox' checked={isInCommunitySearch} onChange={() => setIsInCommunitySearch(true)} />
-          search a post in this feed
+          {t('search_feed_post')}
         </label>
       </div>
     </div>

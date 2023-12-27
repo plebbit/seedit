@@ -155,5 +155,7 @@
   "block_community": "Community blockieren",
   "unblock_community": "Community-Blockierung aufheben",
   "block_community_alert": "Sind Sie sicher, dass Sie diese Community blockieren möchten?",
-  "unblock_community_alert": "Sind Sie sicher, dass Sie diese Community freischalten möchten?"
+  "unblock_community_alert": "Sind Sie sicher, dass Sie diese Community freischalten möchten?",
+  "search_community_address": "Suche nach einer Community-Adresse",
+  "search_feed_post": "Suche nach einem Beitrag in diesem Feed"
 }

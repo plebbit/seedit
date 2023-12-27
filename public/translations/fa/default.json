@@ -155,5 +155,7 @@
   "block_community": "بلاک جامعه",
   "unblock_community": "لغو مسدود کردن جامعه",
   "block_community_alert": "آیا مطمئن هستید که می‌خواهید این جامعه را مسدود کنید؟",
-  "unblock_community_alert": "آیا مطمئن هستید که می‌خواهید این جامعه را از مسدودیت خارج کنید؟"
+  "unblock_community_alert": "آیا مطمئن هستید که می‌خواهید این جامعه را از مسدودیت خارج کنید؟",
+  "search_community_address": "جستجوی آدرس یک جامعه",
+  "search_feed_post": "در این خوراک یک پست جستجو کنید"
 }

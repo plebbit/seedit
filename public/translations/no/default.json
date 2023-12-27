@@ -155,5 +155,7 @@
   "block_community": "blokker samfunnet",
   "unblock_community": "fjern samfunnsblokkeringen",
   "block_community_alert": "Er du sikker på at du vil blokkere dette samfunnet?",
-  "unblock_community_alert": "Er du sikker på at du vil fjerne blokkeringen av dette samfunnet?"
+  "unblock_community_alert": "Er du sikker på at du vil fjerne blokkeringen av dette samfunnet?",
+  "search_community_address": "Søk etter en fellesskapsadresse",
+  "search_feed_post": "Søk etter en post i denne feeden"
 }

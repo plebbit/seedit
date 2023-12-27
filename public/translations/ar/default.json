@@ -155,5 +155,7 @@
   "block_community": "حظر المجتمع",
   "unblock_community": "إلغاء حظر المجتمع",
   "block_community_alert": "هل أنت متأكد أنك تريد حظر هذا المجتمع؟",
-  "unblock_community_alert": "هل أنت متأكد أنك تريد إلغاء حظر هذا المجتمع؟"
+  "unblock_community_alert": "هل أنت متأكد أنك تريد إلغاء حظر هذا المجتمع؟",
+  "search_community_address": "ابحث عن عنوان مجتمع",
+  "search_feed_post": "ابحث عن منشور في هذا التغذية"
 }

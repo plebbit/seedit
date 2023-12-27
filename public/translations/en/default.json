@@ -155,5 +155,7 @@
   "block_community": "block community",
   "unblock_community": "unblock community",
   "block_community_alert": "Are you sure you want to block this community?",
-  "unblock_community_alert": "Are you sure you want to unblock this community?"
+  "unblock_community_alert": "Are you sure you want to unblock this community?",
+  "search_community_address": "Search a community address",
+  "search_feed_post": "Search a post in this feed"
 }

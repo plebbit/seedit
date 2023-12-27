@@ -155,5 +155,7 @@
   "block_community": "חסום קהל",
   "unblock_community": "ביטול חסימת הקהל",
   "block_community_alert": "האם אתה בטוח שברצונך לחסום את הקהל הזה?",
-  "unblock_community_alert": "האם אתה בטוח שברצונך לבטל את חסימת הקהל הזו?"
+  "unblock_community_alert": "האם אתה בטוח שברצונך לבטל את חסימת הקהל הזו?",
+  "search_community_address": "חפש כתובת של קהילה",
+  "search_feed_post": "חפש פוסט בפיד זה"
 }

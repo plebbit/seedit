@@ -155,5 +155,7 @@
   "block_community": "समुदाय को ब्लॉक करें",
   "unblock_community": "समुदाय अवरोध को हटाएं",
   "block_community_alert": "क्या आप इस समुदाय को ब्लॉक करना चाहते हैं?",
-  "unblock_community_alert": "क्या आप इस समुदाय को अनब्लॉक करना चाहते हैं?"
+  "unblock_community_alert": "क्या आप इस समुदाय को अनब्लॉक करना चाहते हैं?",
+  "search_community_address": "एक समुदाय पता खोजें",
+  "search_feed_post": "इस फ़ीड में एक पोस्ट खोजें"
 }

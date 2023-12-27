@@ -155,5 +155,7 @@
   "block_community": "zablokuj społeczność",
   "unblock_community": "odblokuj społeczność",
   "block_community_alert": "Jesteś pewien, że chcesz zablokować tę społeczność?",
-  "unblock_community_alert": "Jesteś pewien, że chcesz odblokować tę społeczność?"
+  "unblock_community_alert": "Jesteś pewien, że chcesz odblokować tę społeczność?",
+  "search_community_address": "Szukaj adresu społeczności",
+  "search_feed_post": "Szukaj posta w tym zasobie"
 }

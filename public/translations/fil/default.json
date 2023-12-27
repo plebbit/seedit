@@ -155,5 +155,7 @@
   "block_community": "i-block ang komunidad",
   "unblock_community": "i-unblock ang komunidad",
   "block_community_alert": "Sigurado ka bang gusto mong i-block ang komunidad na ito?",
-  "unblock_community_alert": "Sigurado ka bang gusto mong i-unblock ang komunidad na ito?"
+  "unblock_community_alert": "Sigurado ka bang gusto mong i-unblock ang komunidad na ito?",
+  "search_community_address": "Maghanap ng address ng komunidad",
+  "search_feed_post": "Maghanap ng post sa feed na ito"
 }

@@ -155,5 +155,7 @@
   "block_community": "заблокувати спільноту",
   "unblock_community": "розблокувати спільноту",
   "block_community_alert": "Ви впевнені, що хочете заблокувати цю спільноту?",
-  "unblock_community_alert": "Ви впевнені, що хочете розблокувати цю спільноту?"
+  "unblock_community_alert": "Ви впевнені, що хочете розблокувати цю спільноту?",
+  "search_community_address": "Пошук адреси спільноти",
+  "search_feed_post": "Шукайте запис у цьому стрічці"
 }

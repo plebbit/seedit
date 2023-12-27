@@ -155,5 +155,7 @@
   "block_community": "blloko komunitetin",
   "unblock_community": "zhblloko komunitetin",
   "block_community_alert": "A jeni të sigurt se dëshironi të bllokoni këtë komunitet?",
-  "unblock_community_alert": "A jeni të sigurt se dëshironi ta zhbllokoni këtë komunitet?"
+  "unblock_community_alert": "A jeni të sigurt se dëshironi ta zhbllokoni këtë komunitet?",
+  "search_community_address": "Kërkoni një adresë komuniteti",
+  "search_feed_post": "Kërkoni një postim në këtë rrjedhë"
 }

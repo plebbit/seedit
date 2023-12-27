@@ -155,5 +155,7 @@
   "block_community": "blochează comunitatea",
   "unblock_community": "deblochează comunitatea",
   "block_community_alert": "Sunteți sigur că doriți să blocați această comunitate?",
-  "unblock_community_alert": "Sunteți sigur că doriți să deblocați această comunitate?"
+  "unblock_community_alert": "Sunteți sigur că doriți să deblocați această comunitate?",
+  "search_community_address": "Caută o adresă de comunitate",
+  "search_feed_post": "Caută o postare în acest flux"
 }
