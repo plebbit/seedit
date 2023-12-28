@@ -171,5 +171,5 @@
   "show_parent": "afișează postarea referită",
   "no_posts": "niciun post",
   "media_url": "URL media",
-  "edit": "editare"
+  "post_locked_info": "Acest post este blocat. Nu vei putea comenta."
 }

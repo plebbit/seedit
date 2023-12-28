@@ -171,5 +171,5 @@
   "show_parent": "mutassa a hivatkozott bejegyzést",
   "no_posts": "nincsenek hozzászólások",
   "media_url": "média URL",
-  "edit": "szerkesztés"
+  "post_locked_info": "Ez a bejegyzés zárolva van. Nem fogsz tudni hozzászólni."
 }

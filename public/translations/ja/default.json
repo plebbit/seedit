@@ -171,5 +171,5 @@
   "show_parent": "参照されている投稿を表示",
   "no_posts": "投稿はありません",
   "media_url": "メディア URL",
-  "edit": "編集"
+  "post_locked_info": "この投稿はロックされています。コメントできません。"
 }

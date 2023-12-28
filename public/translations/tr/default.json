@@ -171,5 +171,5 @@
   "show_parent": "atıfta bulunulan gönderiyi göster",
   "no_posts": "gönderi yok",
   "media_url": "medya URL'si",
-  "edit": "düzenle"
+  "post_locked_info": "Bu gönderi kilitlendi. Yorum yapamayacaksınız."
 }

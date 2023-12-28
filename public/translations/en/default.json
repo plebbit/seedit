@@ -171,5 +171,5 @@
   "show_parent": "show parent",
   "no_posts": "no posts",
   "media_url": "media url",
-  "edit": "edit"
+  "post_locked_info": "This post is locked. You won't be able to comment."
 }

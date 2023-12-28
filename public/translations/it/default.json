@@ -171,5 +171,5 @@
   "show_parent": "mostra il post a cui è riferito",
   "no_posts": "nessun post",
   "media_url": "URL media",
-  "edit": "modifica"
+  "post_locked_info": "Questo post è stato bloccato. Non potrai commentarlo."
 }

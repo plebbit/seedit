@@ -171,5 +171,5 @@
   "show_parent": "tampilkan posting yang dirujuk",
   "no_posts": "tidak ada posting",
   "media_url": "URL media",
-  "edit": "sunting"
+  "post_locked_info": "Pos ini terkunci. Anda tidak akan dapat mengomentari."
 }

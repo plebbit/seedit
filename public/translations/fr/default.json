@@ -171,5 +171,5 @@
   "show_parent": "afficher le post référencé",
   "no_posts": "pas de publications",
   "media_url": "URL multimédia",
-  "edit": "éditer"
+  "post_locked_info": "Ce post est verrouillé. Vous ne pourrez pas commenter."
 }

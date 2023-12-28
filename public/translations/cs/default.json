@@ -171,5 +171,5 @@
   "show_parent": "zobrazit příspěvek, na který se odkazuje",
   "no_posts": "žádné příspěvky",
   "media_url": "URL médií",
-  "edit": "upravit"
+  "post_locked_info": "Tento příspěvek je uzamčen. Nebudete moci komentovat."
 }

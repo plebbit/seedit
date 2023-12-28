@@ -68,7 +68,7 @@ const Post = () => {
       </div>
       {post?.locked && (
         <div className={styles.lockedInfobar}>
-          <div className={styles.lockedInfobarText}>This post is locked. You won't be able to comment.</div>
+          <div className={styles.lockedInfobarText}>{t('post_locked_info')}</div>
         </div>
       )}
       <PostComponent post={post} />

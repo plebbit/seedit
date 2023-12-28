@@ -171,5 +171,5 @@
   "show_parent": "hiển thị bài viết được tham khảo",
   "no_posts": "không có bài viết",
   "media_url": "URL phương tiện",
-  "edit": "chỉnh sửa"
+  "post_locked_info": "Bài viết này đã bị khóa. Bạn sẽ không thể bình luận."
 }

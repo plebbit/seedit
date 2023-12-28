@@ -171,5 +171,5 @@
   "show_parent": "참조된 게시물 표시",
   "no_posts": "게시물이 없습니다",
   "media_url": "미디어 URL",
-  "edit": "편집"
+  "post_locked_info": "이 게시물은 잠겨 있습니다. 댓글을 남길 수 없습니다."
 }

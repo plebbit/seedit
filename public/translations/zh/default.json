@@ -171,5 +171,5 @@
   "show_parent": "显示被引用的帖子",
   "no_posts": "没有帖子",
   "media_url": "媒体链接",
-  "edit": "编辑"
+  "post_locked_info": "此帖已锁定。您将无法评论。"
 }

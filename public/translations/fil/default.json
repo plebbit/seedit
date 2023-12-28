@@ -171,5 +171,5 @@
   "show_parent": "ipakita ang tinutukoy na post",
   "no_posts": "walang post",
   "media_url": "media url",
-  "edit": "i-edit"
+  "post_locked_info": "Ang post na ito ay naka-lock. Hindi ka makakapagkomento."
 }

@@ -171,5 +171,5 @@
   "show_parent": "visa den refererade posten",
   "no_posts": "inga inlägg",
   "media_url": "media-url",
-  "edit": "redigera"
+  "post_locked_info": "Detta inlägg är låst. Du kommer inte att kunna kommentera."
 }

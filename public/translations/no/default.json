@@ -171,5 +171,5 @@
   "show_parent": "vis den refererte posten",
   "no_posts": "ingen innlegg",
   "media_url": "medie-URL",
-  "edit": "redigere"
+  "post_locked_info": "Dette innlegget er låst. Du kan ikke kommentere."
 }
