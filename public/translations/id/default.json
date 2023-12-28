@@ -12,7 +12,6 @@
   "dark": "Gelap",
   "light": "Terang",
   "my_communities": "Komunitas Saya",
-  "edit": "Edit",
   "home": "Beranda",
   "all": "Semua",
   "submitted": "Dikirim",
@@ -169,5 +168,7 @@
   "mark_all_read": "tandai semua sebagai telah dibaca",
   "comment_reply": "balas komentar",
   "post_reply": "balas postingan",
-  "show_parent": "tampilkan posting yang dirujuk"
+  "show_parent": "tampilkan posting yang dirujuk",
+  "no_posts": "tidak ada posting",
+  "media_url": "URL media"
 }

@@ -12,7 +12,6 @@
   "dark": "Madilim",
   "light": "Maliwanag",
   "my_communities": "Aking mga Komunidad",
-  "edit": "I-edit",
   "home": "Bahay",
   "all": "Lahat",
   "submitted": "Naipadala",
@@ -169,5 +168,7 @@
   "mark_all_read": "tandaan ang lahat bilang nabasa",
   "comment_reply": "sagot sa komento",
   "post_reply": "sagot sa post",
-  "show_parent": "ipakita ang tinutukoy na post"
+  "show_parent": "ipakita ang tinutukoy na post",
+  "no_posts": "walang post",
+  "media_url": "media url"
 }

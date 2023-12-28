@@ -12,7 +12,6 @@
   "dark": "어두운",
   "light": "밝은",
   "my_communities": "내 커뮤니티",
-  "edit": "편집",
   "home": "홈",
   "all": "모두",
   "submitted": "제출됨",
@@ -169,5 +168,7 @@
   "mark_all_read": "모두 읽은 상태로 표시",
   "comment_reply": "댓글 답글",
   "post_reply": "게시물 답글",
-  "show_parent": "참조된 게시물 표시"
+  "show_parent": "참조된 게시물 표시",
+  "no_posts": "게시물이 없습니다",
+  "media_url": "미디어 URL"
 }

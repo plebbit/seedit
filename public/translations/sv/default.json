@@ -12,7 +12,6 @@
   "dark": "Mörk",
   "light": "Ljus",
   "my_communities": "Mina gemenskaper",
-  "edit": "Redigera",
   "home": "Hem",
   "all": "Alla",
   "submitted": "Inskickad",
@@ -169,5 +168,7 @@
   "mark_all_read": "markera alla som läst",
   "comment_reply": "svara på kommentar",
   "post_reply": "svara på inlägg",
-  "show_parent": "visa den refererade posten"
+  "show_parent": "visa den refererade posten",
+  "no_posts": "inga inlägg",
+  "media_url": "media-url"
 }

@@ -12,7 +12,6 @@
   "dark": "כהה",
   "light": "בהיר",
   "my_communities": "הקהילות שלי",
-  "edit": "ערוך",
   "home": "בית",
   "all": "הכל",
   "submitted": "נשלח",
@@ -169,5 +168,7 @@
   "mark_all_read": "סמן הכל כנקרא",
   "comment_reply": "הגב לתגובה",
   "post_reply": "הגב לפוסט",
-  "show_parent": "הצג את הפוסט המתייחס אליו"
+  "show_parent": "הצג את הפוסט המתייחס אליו",
+  "no_posts": "אין פוסטים",
+  "media_url": "כתובת מדיה"
 }

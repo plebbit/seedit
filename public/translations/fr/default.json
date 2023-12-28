@@ -12,7 +12,6 @@
   "dark": "sombre",
   "light": "clair",
   "my_communities": "mes communautés",
-  "edit": "modifier",
   "home": "accueil",
   "all": "tous",
   "submitted": "soumis",
@@ -169,5 +168,7 @@
   "mark_all_read": "marquer tout comme lu",
   "comment_reply": "répondre au commentaire",
   "post_reply": "répondre au post",
-  "show_parent": "afficher le post référencé"
+  "show_parent": "afficher le post référencé",
+  "no_posts": "pas de publications",
+  "media_url": "URL multimédia"
 }

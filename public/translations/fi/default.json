@@ -12,7 +12,6 @@
   "dark": "Tumma",
   "light": "Vaalea",
   "my_communities": "Omat yhteisöt",
-  "edit": "Muokkaa",
   "home": "Etusivu",
   "all": "Kaikki",
   "submitted": "Lähetetty",
@@ -169,5 +168,7 @@
   "mark_all_read": "merkitse kaikki luetuiksi",
   "comment_reply": "vastaa kommenttiin",
   "post_reply": "vastaa viestiin",
-  "show_parent": "näytä viitattu viesti"
+  "show_parent": "näytä viitattu viesti",
+  "no_posts": "ei viestejä",
+  "media_url": "medialinkki"
 }

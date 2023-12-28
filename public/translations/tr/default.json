@@ -12,7 +12,6 @@
   "dark": "Karanlık",
   "light": "Açık",
   "my_communities": "Topluluklarım",
-  "edit": "Düzenle",
   "home": "Ana Sayfa",
   "all": "Tümü",
   "submitted": "Gönderildi",
@@ -169,5 +168,7 @@
   "mark_all_read": "tümünü okundu olarak işaretle",
   "comment_reply": "yorumu yanıtla",
   "post_reply": "gönderiye yanıtla",
-  "show_parent": "atıfta bulunulan gönderiyi göster"
+  "show_parent": "atıfta bulunulan gönderiyi göster",
+  "no_posts": "gönderi yok",
+  "media_url": "medya URL'si"
 }

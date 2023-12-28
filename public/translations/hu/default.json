@@ -12,7 +12,6 @@
   "dark": "Sötét",
   "light": "Világos",
   "my_communities": "Saját közösségeim",
-  "edit": "Szerkesztés",
   "home": "Főoldal",
   "all": "Összes",
   "submitted": "Beküldve",
@@ -169,5 +168,7 @@
   "mark_all_read": "összes megjelölése olvasottként",
   "comment_reply": "válasz a hozzászólásra",
   "post_reply": "válasz a posztra",
-  "show_parent": "mutassa a hivatkozott bejegyzést"
+  "show_parent": "mutassa a hivatkozott bejegyzést",
+  "no_posts": "nincsenek hozzászólások",
+  "media_url": "média URL"
 }

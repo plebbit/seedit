@@ -12,7 +12,6 @@
   "dark": "Mørk",
   "light": "Lys",
   "my_communities": "Mine samfunn",
-  "edit": "Rediger",
   "home": "Hjem",
   "all": "Alle",
   "submitted": "Innsendt",
@@ -169,5 +168,7 @@
   "mark_all_read": "merk alle som lest",
   "comment_reply": "svar på kommentar",
   "post_reply": "svar på innlegg",
-  "show_parent": "vis den refererte posten"
+  "show_parent": "vis den refererte posten",
+  "no_posts": "ingen innlegg",
+  "media_url": "medie-URL"
 }

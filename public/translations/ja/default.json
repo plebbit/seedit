@@ -12,7 +12,6 @@
   "dark": "暗い",
   "light": "明るい",
   "my_communities": "マイコミュニティ",
-  "edit": "編集",
   "home": "ホーム",
   "all": "すべて",
   "submitted": "送信済み",
@@ -169,5 +168,7 @@
   "mark_all_read": "すべてを既読にする",
   "comment_reply": "コメントに返信",
   "post_reply": "投稿に返信",
-  "show_parent": "参照されている投稿を表示"
+  "show_parent": "参照されている投稿を表示",
+  "no_posts": "投稿はありません",
+  "media_url": "メディア URL"
 }

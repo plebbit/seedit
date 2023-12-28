@@ -12,7 +12,6 @@
   "dark": "Întunecat",
   "light": "Luminos",
   "my_communities": "Comunitățile mele",
-  "edit": "Editează",
   "home": "Acasă",
   "all": "Toate",
   "submitted": "Trimis",
@@ -169,5 +168,7 @@
   "mark_all_read": "marcați toate ca citite",
   "comment_reply": "răspunde la comentariu",
   "post_reply": "răspunde la postare",
-  "show_parent": "afișează postarea referită"
+  "show_parent": "afișează postarea referită",
+  "no_posts": "niciun post",
+  "media_url": "URL media"
 }

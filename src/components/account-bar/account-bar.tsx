@@ -83,7 +83,7 @@ const AccountBar = () => {
 
   accountDropdownOptions.push(
     <Link key='create' to='#' className={styles.dropdownChoice} onClick={() => createAccount()}>
-      +create
+      +{t('create')}
     </Link>,
   );
 

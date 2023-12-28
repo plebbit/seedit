@@ -12,7 +12,6 @@
   "dark": "Dunkel",
   "light": "hell",
   "my_communities": "meine Communities",
-  "edit": "ändern",
   "home": "hauptseite",
   "all": "alle",
   "submitted": "eingereicht",
@@ -169,5 +168,7 @@
   "mark_all_read": "alle als gelesen markieren",
   "comment_reply": "Kommentar antworten",
   "post_reply": "Beitrag antworten",
-  "show_parent": "zeige den verlinkten Beitrag"
+  "show_parent": "zeige den verlinkten Beitrag",
+  "no_posts": "keine Beiträge",
+  "media_url": "Medien-URL"
 }

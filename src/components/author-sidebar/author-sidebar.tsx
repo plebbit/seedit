@@ -116,7 +116,7 @@ const AuthorSidebar = () => {
               {' '}
               (
               <span className={styles.editButton} onClick={confirmNavigateToSettings}>
-                edit
+                {t('edit')}
               </span>
               )
             </span>

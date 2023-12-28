@@ -12,7 +12,6 @@
   "dark": "Tối",
   "light": "Sáng",
   "my_communities": "Cộng đồng của tôi",
-  "edit": "Chỉnh sửa",
   "home": "Trang chủ",
   "all": "Tất cả",
   "submitted": "Đã gửi",
@@ -169,5 +168,7 @@
   "mark_all_read": "đánh dấu tất cả là đã đọc",
   "comment_reply": "trả lời bình luận",
   "post_reply": "trả lời bài đăng",
-  "show_parent": "hiển thị bài viết được tham khảo"
+  "show_parent": "hiển thị bài viết được tham khảo",
+  "no_posts": "không có bài viết",
+  "media_url": "URL phương tiện"
 }
