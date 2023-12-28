@@ -170,5 +170,6 @@
   "post_reply": "válasz a posztra",
   "show_parent": "mutassa a hivatkozott bejegyzést",
   "no_posts": "nincsenek hozzászólások",
-  "media_url": "média URL"
+  "media_url": "média URL",
+  "edit": "szerkesztés"
 }

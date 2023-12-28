@@ -170,5 +170,6 @@
   "post_reply": "投稿に返信",
   "show_parent": "参照されている投稿を表示",
   "no_posts": "投稿はありません",
-  "media_url": "メディア URL"
+  "media_url": "メディア URL",
+  "edit": "編集"
 }

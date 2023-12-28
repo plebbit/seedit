@@ -170,5 +170,6 @@
   "post_reply": "odpovědět na příspěvek",
   "show_parent": "zobrazit příspěvek, na který se odkazuje",
   "no_posts": "žádné příspěvky",
-  "media_url": "URL médií"
+  "media_url": "URL médií",
+  "edit": "upravit"
 }

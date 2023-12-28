@@ -170,5 +170,6 @@
   "post_reply": "reageren op bericht",
   "show_parent": "toon de verwezen post",
   "no_posts": "geen berichten",
-  "media_url": "media-url"
+  "media_url": "media-url",
+  "edit": "bewerken"
 }

@@ -170,5 +170,6 @@
   "post_reply": "回复帖子",
   "show_parent": "显示被引用的帖子",
   "no_posts": "没有帖子",
-  "media_url": "媒体链接"
+  "media_url": "媒体链接",
+  "edit": "编辑"
 }

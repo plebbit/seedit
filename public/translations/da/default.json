@@ -170,5 +170,6 @@
   "post_reply": "svar på indlæg",
   "show_parent": "vis den henviste post",
   "no_posts": "ingen indlæg",
-  "media_url": "medie-URL"
+  "media_url": "medie-URL",
+  "edit": "redigere"
 }

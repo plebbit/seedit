@@ -170,5 +170,6 @@
   "post_reply": "responder ao post",
   "show_parent": "mostrar a postagem referenciada",
   "no_posts": "sem publicações",
-  "media_url": "URL de mídia"
+  "media_url": "URL de mídia",
+  "edit": "editar"
 }

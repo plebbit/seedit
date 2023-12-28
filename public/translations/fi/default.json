@@ -170,5 +170,6 @@
   "post_reply": "vastaa viestiin",
   "show_parent": "näytä viitattu viesti",
   "no_posts": "ei viestejä",
-  "media_url": "medialinkki"
+  "media_url": "medialinkki",
+  "edit": "muokkaa"
 }
