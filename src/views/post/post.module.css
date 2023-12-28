@@ -81,3 +81,45 @@
     max-width: 100vw;
   }
 }
+
+.lockedInfobar::before {
+  content: '';
+  display: block;
+  width: 45px;
+  height: 100%;
+  background-color: var(--box-yellow-icon);
+  position: absolute;
+  left: 0;
+  top: 0;
+  background-position: center;
+  background-image: url('/public/assets/locked-icon.png');
+  background-size: 20px 25px;
+  background-repeat: no-repeat;
+}
+
+.lockedInfobar {
+  min-height: 45px;
+  padding-left: 55px;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  background-color: var(--box-yellow-background);
+  border-color: var(--box-yellow-contrast);
+  border-style: solid;
+  border-width: 1px;
+  margin-bottom: 10px;
+  overflow: auto;
+  padding: 10px;
+  position: relative;
+}
+
+.lockedInfobarText {
+  font-size: 12px;
+  color: var(--text-markdown);
+  unicode-bidi: isolate;
+  max-width: 60em;
+  word-wrap: break-word;
+  line-height: 1.25em;
+  margin: 5px 0;
+  padding-left: 45px;
+}
