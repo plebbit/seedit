@@ -194,11 +194,13 @@ const InboxHeaderTabs = () => {
 };
 
 const SubplebbitsHeaderTabs = () => {
+  const { t } = useTranslation();
+
   return (
     <>
       <li>
         <Link to={'/communities'} className={styles.selected}>
-          homepage
+          {t('home')}
         </Link>
       </li>
       <li>
@@ -208,7 +210,7 @@ const SubplebbitsHeaderTabs = () => {
       </li>
       <li>
         <Link to={'/communities'} className={styles.choice}>
-          my communities
+          {t('my_communities')}
         </Link>
       </li>
     </>

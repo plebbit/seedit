@@ -5,7 +5,7 @@ import { useBlock, Role, useSubplebbitStats, useAccountComment } from '@plebbit/
 import styles from './sidebar.module.css';
 import { getFormattedDate, getFormattedDuration, getFormattedTimeAgo } from '../../lib/utils/time-utils';
 import { findSubplebbitCreator } from '../../lib/utils/user-utils';
-import { isAboutView, isAllView, isHomeView, isPendingView, isPostView } from '../../lib/utils/view-utils';
+import { isAboutView, isAllView, isHomeView, isPendingView, isPostView, isSubplebbitsView } from '../../lib/utils/view-utils';
 import SearchBar from '../search-bar';
 import SubscribeButton from '../subscribe-button';
 
@@ -88,6 +88,7 @@ const Sidebar = ({ address, cid, createdAt, description, downvoteCount = 0, role
   const isHomePage = isHomeView(location.pathname, params);
   const isPendingPage = isPendingView(location.pathname, params);
   const isPostPage = isPostView(location.pathname, params);
+  const isSubplebbitsPage = isSubplebbitsView(location.pathname);
 
   const pendingPost = useAccountComment({ commentIndex: params?.accountCommentIndex as any });
 
@@ -130,7 +131,7 @@ const Sidebar = ({ address, cid, createdAt, description, downvoteCount = 0, role
           <div className={styles.nub} />
         </div>
       </Link>
-      {!isHomePage && !isAllPage && !isPendingPage && (
+      {!isHomePage && !isAllPage && !isPendingPage && !isSubplebbitsPage && (
         <div className={styles.titleBox}>
           <Link className={styles.title} to={`/p/${address}`}>
             {address}
