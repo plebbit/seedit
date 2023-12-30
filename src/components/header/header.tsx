@@ -218,6 +218,7 @@ const SubplebbitsHeaderTabs = () => {
 };
 
 const HeaderTabs = () => {
+  const { t } = useTranslation();
   const params = useParams();
   const location = useLocation();
   const isAllPage = isAllView(location.pathname);
@@ -238,7 +239,7 @@ const HeaderTabs = () => {
   } else if ((isProfilePage || isAuthorPage) && !isPendingPage) {
     return <AuthorHeaderTabs />;
   } else if (isPendingPage) {
-    return <span className={styles.pageName}>pending</span>;
+    return <span className={styles.pageName}>{t('pending')}</span>;
   } else if (isInboxPage) {
     return <InboxHeaderTabs />;
   } else if (isSubplebbitsPage) {
