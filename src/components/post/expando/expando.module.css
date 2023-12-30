@@ -17,7 +17,7 @@
 
 .markdown {
   background-color: var(--background-markdown);
-  border: 1px solid var(--grey-light);
+  border: 1px solid var(--text-primary);
   border-radius: 7px;
   padding: 5px 10px;
   font-weight: 400;
