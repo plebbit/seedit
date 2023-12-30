@@ -13,6 +13,7 @@ import Profile from './views/profile';
 import Settings from './views/settings';
 import Submit from './views/submit';
 import Subplebbit from './views/subplebbit';
+import Subplebbits from './views/subplebbits';
 import AccountBar from './components/account-bar/';
 import ChallengeModal from './components/challenge-modal';
 import Header from './components/header';
@@ -96,6 +97,8 @@ function App() {
             <Route path='inbox/unread' element={<Inbox />} />
             <Route path='inbox/commentreplies' element={<Inbox />} />
             <Route path='inbox/postreplies' element={<Inbox />} />
+
+            <Route path='/communities' element={<Subplebbits />} />
           </Route>
         </Route>
       </Routes>

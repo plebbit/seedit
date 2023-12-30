@@ -22,6 +22,7 @@ import {
   isProfileView,
   isProfileCommentsView,
   isProfileSubmittedView,
+  isSubplebbitsView,
   isUpvotedView,
 } from '../../lib/utils/view-utils';
 import useTheme from '../../hooks/use-theme';
@@ -192,6 +193,28 @@ const InboxHeaderTabs = () => {
   );
 };
 
+const SubplebbitsHeaderTabs = () => {
+  return (
+    <>
+      <li>
+        <Link to={'/communities'} className={styles.selected}>
+          homepage
+        </Link>
+      </li>
+      <li>
+        <Link to={'/communities'} className={styles.choice}>
+          proposed
+        </Link>
+      </li>
+      <li>
+        <Link to={'/communities'} className={styles.choice}>
+          my communities
+        </Link>
+      </li>
+    </>
+  );
+};
+
 const HeaderTabs = () => {
   const params = useParams();
   const location = useLocation();
@@ -204,6 +227,7 @@ const HeaderTabs = () => {
   const isProfilePage = isProfileView(location.pathname);
   const isSubplebbitPage = isSubplebbitView(location.pathname, params);
   const isSubplebbitSubmitPage = isSubplebbitSubmitView(location.pathname, params);
+  const isSubplebbitsPage = isSubplebbitsView(location.pathname);
 
   if (isPostPage) {
     return <CommentsButton />;
@@ -215,6 +239,8 @@ const HeaderTabs = () => {
     return <span className={styles.pageName}>pending</span>;
   } else if (isInboxPage) {
     return <InboxHeaderTabs />;
+  } else if (isSubplebbitsPage) {
+    return <SubplebbitsHeaderTabs />;
   }
   return null;
 };
@@ -228,10 +254,11 @@ const HeaderTitle = ({ title, shortAddress }: { title: string; shortAddress: str
   const isInboxPage = isInboxView(location.pathname);
   const isPostPage = isPostView(location.pathname, params);
   const isProfilePage = isProfileView(location.pathname);
-  const isSubplebbitPage = isSubplebbitView(location.pathname, params);
-  const isSubmitPage = isSubmitView(location.pathname);
-  const isSubplebbitSubmitPage = isSubplebbitSubmitView(location.pathname, params);
   const isSettingsPage = isSettingsView(location.pathname);
+  const isSubmitPage = isSubmitView(location.pathname);
+  const isSubplebbitPage = isSubplebbitView(location.pathname, params);
+  const isSubplebbitSubmitPage = isSubplebbitSubmitView(location.pathname, params);
+  const isSubplebbitsPage = isSubplebbitsView(location.pathname);
 
   const subplebbitTitle = <Link to={`/p/${params.subplebbitAddress}`}>{title || shortAddress}</Link>;
   const submitTitle = <span className={styles.submitTitle}>{t('submit')}</span>;
@@ -256,6 +283,8 @@ const HeaderTitle = ({ title, shortAddress }: { title: string; shortAddress: str
     return authorTitle;
   } else if (isInboxPage) {
     return t('messages');
+  } else if (isSubplebbitsPage) {
+    return 'communities';
   }
   return null;
 };
