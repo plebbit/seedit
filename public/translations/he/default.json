@@ -92,7 +92,7 @@
   "create_community": "צור את הקהילה שלך",
   "moderators": "מנהלים",
   "about_moderation": "אודות צוות ההנהלה",
-  "join": "הצטרפות",
+  "join": "הצטרף",
   "leave": "לצאת",
   "created_by": "נוצר על ידי {{creatorAddress}}",
   "community_for": "קהילה למשך {{date}}",
@@ -171,5 +171,6 @@
   "show_parent": "הצג את הפוסט המתייחס אליו",
   "no_posts": "אין פוסטים",
   "media_url": "כתובת מדיה",
-  "post_locked_info": "הפוסט הזה נעול. אינך יכול להגיב."
+  "post_locked_info": "הפוסט הזה נעול. אינך יכול להגיב.",
+  "no_subscriptions_notice": "עדיין לא הצטרפת לאף קהילה."
 }

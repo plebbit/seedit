@@ -92,7 +92,7 @@
   "create_community": "Utwórz własną społeczność",
   "moderators": "moderatorzy",
   "about_moderation": "o zespole moderacji",
-  "join": "dołącz",
+  "join": "Dołącz",
   "leave": "opuść",
   "created_by": "utworzone przez {{creatorAddress}}",
   "community_for": "społeczność przez {{date}}",
@@ -171,5 +171,6 @@
   "show_parent": "pokaż post, do którego jest odwołanie",
   "no_posts": "brak postów",
   "media_url": "URL mediów",
-  "post_locked_info": "Ten post jest zablokowany. Nie będziesz mógł komentować."
+  "post_locked_info": "Ten post jest zablokowany. Nie będziesz mógł komentować.",
+  "no_subscriptions_notice": "Nie dołączyłeś jeszcze do żadnej społeczności."
 }

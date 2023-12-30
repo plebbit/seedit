@@ -92,7 +92,7 @@
   "create_community": "Erstelle deine eigene Community",
   "moderators": "Moderatoren",
   "about_moderation": "über das Moderationsteam",
-  "join": "beitreten",
+  "join": "Beitreten",
   "leave": "verlassen",
   "created_by": "erstellt von {{creatorAddress}}",
   "community_for": "eine Gemeinschaft seit {{date}}",
@@ -171,5 +171,6 @@
   "show_parent": "zeige den verlinkten Beitrag",
   "no_posts": "keine Beiträge",
   "media_url": "Medien-URL",
-  "post_locked_info": "Dieser Beitrag ist gesperrt. Sie können keine Kommentare abgeben."
+  "post_locked_info": "Dieser Beitrag ist gesperrt. Sie können keine Kommentare abgeben.",
+  "no_subscriptions_notice": "Du hast dich noch keiner Community angeschlossen."
 }

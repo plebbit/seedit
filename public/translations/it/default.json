@@ -92,7 +92,7 @@
   "create_community": "Crea la tua comunità",
   "moderators": "moderatori",
   "about_moderation": "info sul team dei moderatori",
-  "join": "iscriviti",
+  "join": "Unisciti",
   "leave": "lascia",
   "created_by": "creata da {{creatorAddress}}",
   "community_for": "una comunità da {{date}}",
@@ -171,5 +171,6 @@
   "show_parent": "mostra il post a cui è riferito",
   "no_posts": "nessun post",
   "media_url": "URL media",
-  "post_locked_info": "Questo post è stato bloccato. Non potrai commentarlo."
+  "post_locked_info": "Questo post è stato bloccato. Non potrai commentarlo.",
+  "no_subscriptions_notice": "Non ti sei ancora unito a nessuna comunità."
 }

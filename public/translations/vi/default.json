@@ -92,7 +92,7 @@
   "create_community": "Tạo cộng đồng riêng của bạn",
   "moderators": "quản trị viên",
   "about_moderation": "về đội ngũ quản lý",
-  "join": "tham gia",
+  "join": "Tham gia",
   "leave": "rời",
   "created_by": "tạo bởi {{creatorAddress}}",
   "community_for": "một cộng đồng cho {{date}}",
@@ -171,5 +171,6 @@
   "show_parent": "hiển thị bài viết được tham khảo",
   "no_posts": "không có bài viết",
   "media_url": "URL phương tiện",
-  "post_locked_info": "Bài viết này đã bị khóa. Bạn sẽ không thể bình luận."
+  "post_locked_info": "Bài viết này đã bị khóa. Bạn sẽ không thể bình luận.",
+  "no_subscriptions_notice": "Bạn chưa tham gia vào bất kỳ cộng đồng nào."
 }

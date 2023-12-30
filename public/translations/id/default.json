@@ -92,7 +92,7 @@
   "create_community": "Buat komunitas sendiri",
   "moderators": "moderator",
   "about_moderation": "tentang tim moderasi",
-  "join": "bergabung",
+  "join": "Gabung",
   "leave": "tinggalkan",
   "created_by": "dibuat oleh {{creatorAddress}}",
   "community_for": "sebuah komunitas selama {{date}}",
@@ -171,5 +171,6 @@
   "show_parent": "tampilkan posting yang dirujuk",
   "no_posts": "tidak ada posting",
   "media_url": "URL media",
-  "post_locked_info": "Pos ini terkunci. Anda tidak akan dapat mengomentari."
+  "post_locked_info": "Pos ini terkunci. Anda tidak akan dapat mengomentari.",
+  "no_subscriptions_notice": "Anda belum bergabung dengan komunitas mana pun."
 }

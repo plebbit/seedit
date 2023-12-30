@@ -92,7 +92,7 @@
   "create_community": "Créez votre propre communauté",
   "moderators": "modérateurs",
   "about_moderation": "à propos de l'équipe de modération",
-  "join": "rejoindre",
+  "join": "Rejoindre",
   "leave": "quitter",
   "created_by": "créé par {{creatorAddress}}",
   "community_for": "une communauté depuis {{date}}",
@@ -171,5 +171,6 @@
   "show_parent": "afficher le post référencé",
   "no_posts": "pas de publications",
   "media_url": "URL multimédia",
-  "post_locked_info": "Ce post est verrouillé. Vous ne pourrez pas commenter."
+  "post_locked_info": "Ce post est verrouillé. Vous ne pourrez pas commenter.",
+  "no_subscriptions_notice": "Vous n'avez rejoint aucune communauté."
 }

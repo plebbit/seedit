@@ -92,7 +92,7 @@
   "create_community": "Creează-ți propria comunitate",
   "moderators": "moderatori",
   "about_moderation": "despre echipa de moderare",
-  "join": "alătură-te",
+  "join": "Alătură-te",
   "leave": "plecați",
   "created_by": "creat de {{creatorAddress}}",
   "community_for": "o comunitate pentru {{date}}",
@@ -171,5 +171,6 @@
   "show_parent": "afișează postarea referită",
   "no_posts": "niciun post",
   "media_url": "URL media",
-  "post_locked_info": "Acest post este blocat. Nu vei putea comenta."
+  "post_locked_info": "Acest post este blocat. Nu vei putea comenta.",
+  "no_subscriptions_notice": "Nu te-ai alăturat încă niciunei comunități."
 }

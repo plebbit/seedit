@@ -92,7 +92,7 @@
   "create_community": "Vytvořte si vlastní komunitu",
   "moderators": "moderátoři",
   "about_moderation": "o moderaci týmu",
-  "join": "připojit se",
+  "join": "Připojit se",
   "leave": "odejít",
   "created_by": "vytvořeno uživatelem {{creatorAddress}}",
   "community_for": "komunita po dobu {{date}}",
@@ -171,5 +171,6 @@
   "show_parent": "zobrazit příspěvek, na který se odkazuje",
   "no_posts": "žádné příspěvky",
   "media_url": "URL médií",
-  "post_locked_info": "Tento příspěvek je uzamčen. Nebudete moci komentovat."
+  "post_locked_info": "Tento příspěvek je uzamčen. Nebudete moci komentovat.",
+  "no_subscriptions_notice": "Dosud jste se nepřipojili k žádné komunitě."
 }

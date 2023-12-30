@@ -92,7 +92,7 @@
   "create_community": "Skapa din egen community",
   "moderators": "moderatorer",
   "about_moderation": "om modereringsteamet",
-  "join": "gå med",
+  "join": "Gå med",
   "leave": "lämna",
   "created_by": "skapat av {{creatorAddress}}",
   "community_for": "en gemenskap för {{date}}",
@@ -171,5 +171,6 @@
   "show_parent": "visa den refererade posten",
   "no_posts": "inga inlägg",
   "media_url": "media-url",
-  "post_locked_info": "Detta inlägg är låst. Du kommer inte att kunna kommentera."
+  "post_locked_info": "Detta inlägg är låst. Du kommer inte att kunna kommentera.",
+  "no_subscriptions_notice": "Du har ännu inte gått med i någon gemenskap."
 }

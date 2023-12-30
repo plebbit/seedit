@@ -92,7 +92,7 @@
   "create_community": "Create your own community",
   "moderators": "moderators",
   "about_moderation": "about moderation team",
-  "join": "join",
+  "join": "Join",
   "leave": "leave",
   "created_by": "created by {{creatorAddress}}",
   "community_for": "a community for {{date}}",
@@ -171,5 +171,6 @@
   "show_parent": "show parent",
   "no_posts": "no posts",
   "media_url": "media url",
-  "post_locked_info": "This post is locked. You won't be able to comment."
+  "post_locked_info": "This post is locked. You won't be able to comment.",
+  "no_subscriptions_notice": "You haven't joined any community."
 }

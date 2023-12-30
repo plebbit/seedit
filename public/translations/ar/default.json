@@ -92,7 +92,7 @@
   "create_community": "أنشئ مجتمعك الخاص",
   "moderators": "المشرفون",
   "about_moderation": "عن الإشراف",
-  "join": "انضمام",
+  "join": "انضم",
   "leave": "غادر",
   "created_by": "تم إنشاؤها بواسطة {{creatorAddress}}",
   "community_for": "مجتمع لمدة {{date}}",
@@ -171,5 +171,6 @@
   "show_parent": "أظهر المشاركة المشار إليها",
   "no_posts": "لا توجد مشاركات",
   "media_url": "عنوان وسائط",
-  "post_locked_info": "هذا المنشور مغلق. لن تتمكن من التعليق."
+  "post_locked_info": "هذا المنشور مغلق. لن تتمكن من التعليق.",
+  "no_subscriptions_notice": "لم تنضم إلى أي مجتمع بعد."
 }

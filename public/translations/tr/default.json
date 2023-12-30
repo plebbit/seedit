@@ -92,7 +92,7 @@
   "create_community": "Kendi topluluğunu oluştur",
   "moderators": "moderatorler",
   "about_moderation": "moderasyon ekibi hakkında",
-  "join": "katıl",
+  "join": "Katıl",
   "leave": "ayrıl",
   "created_by": "tarafından oluşturuldu {{creatorAddress}}",
   "community_for": "{{date}} için bir topluluk",
@@ -171,5 +171,6 @@
   "show_parent": "atıfta bulunulan gönderiyi göster",
   "no_posts": "gönderi yok",
   "media_url": "medya URL'si",
-  "post_locked_info": "Bu gönderi kilitlendi. Yorum yapamayacaksınız."
+  "post_locked_info": "Bu gönderi kilitlendi. Yorum yapamayacaksınız.",
+  "no_subscriptions_notice": "Henüz herhangi bir topluluğa katılmadınız."
 }

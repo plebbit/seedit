@@ -92,7 +92,7 @@
   "create_community": "나만의 커뮤니티 만들기",
   "moderators": "모더레이터",
   "about_moderation": "모더레이션 팀 정보",
-  "join": "가입하기",
+  "join": "가입",
   "leave": "나가기",
   "created_by": "만든 사람: {{creatorAddress}}",
   "community_for": "{{date}}에 대한 커뮤니티",
@@ -171,5 +171,6 @@
   "show_parent": "참조된 게시물 표시",
   "no_posts": "게시물이 없습니다",
   "media_url": "미디어 URL",
-  "post_locked_info": "이 게시물은 잠겨 있습니다. 댓글을 남길 수 없습니다."
+  "post_locked_info": "이 게시물은 잠겨 있습니다. 댓글을 남길 수 없습니다.",
+  "no_subscriptions_notice": "아직 어떤 커뮤니티에도 가입하지 않았습니다."
 }
