@@ -12,7 +12,6 @@
   "dark": "Errët",
   "light": "I ndritur",
   "my_communities": "Komunitetet e mia",
-  "edit": "Redakto",
   "home": "Kryefaqja",
   "all": "Të gjithë",
   "submitted": "I dërguar",
@@ -93,7 +92,7 @@
   "create_community": "Krijo komunitetin tënd të vet",
   "moderators": "moderatorët",
   "about_moderation": "rreth ekipit të moderimit",
-  "join": "bashkohu",
+  "join": "Bashkohu",
   "leave": "ndale",
   "created_by": "krijuar nga {{creatorAddress}}",
   "community_for": "një komunitet për {{date}}",
@@ -169,5 +168,9 @@
   "mark_all_read": "shëno të gjitha si të lexuara",
   "comment_reply": "përgjigju komentit",
   "post_reply": "përgjigju postës",
-  "show_parent": "shfaq postën e referuar"
+  "show_parent": "shfaq postën e referuar",
+  "no_posts": "asnjë postim",
+  "media_url": "media url",
+  "post_locked_info": "Ky post është bllokuar. Nuk do të jeni në gjendje të komentoni.",
+  "no_subscriptions_notice": "Nuk keni bashkuar akoma ndonjë komunitet."
 }

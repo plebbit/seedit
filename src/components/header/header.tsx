@@ -22,6 +22,7 @@ import {
   isProfileView,
   isProfileCommentsView,
   isProfileSubmittedView,
+  isSubplebbitsView,
   isUpvotedView,
 } from '../../lib/utils/view-utils';
 import useTheme from '../../hooks/use-theme';
@@ -35,18 +36,12 @@ const AboutButton = () => {
   const params = useParams();
   const location = useLocation();
   const aboutLink = getAboutLink(location.pathname, params);
-  const isHomePage = isHomeView(location.pathname, params);
   const isAboutPage = isAboutView(location.pathname);
+  const isSubplebbitSubmitPage = isSubplebbitSubmitView(location.pathname, params);
 
   return (
     <li className={styles.about}>
-      <Link
-        to={aboutLink}
-        className={`${isAboutPage ? styles.selected : styles.choice}`}
-        onClick={(event) => {
-          isHomePage && event.preventDefault();
-        }}
-      >
+      <Link to={aboutLink} className={`${isAboutPage ? styles.selected : styles.choice}  ${isSubplebbitSubmitPage ? styles.singleAboutButton : ''}`}>
         {t('about')}
       </Link>
     </li>
@@ -198,7 +193,32 @@ const InboxHeaderTabs = () => {
   );
 };
 
+const SubplebbitsHeaderTabs = () => {
+  const { t } = useTranslation();
+
+  return (
+    <>
+      <li>
+        <Link to={'/communities'} className={styles.selected}>
+          {t('home')}
+        </Link>
+      </li>
+      <li>
+        <Link to={'/communities'} className={styles.choice}>
+          proposed
+        </Link>
+      </li>
+      <li>
+        <Link to={'/communities'} className={styles.choice}>
+          {t('my_communities')}
+        </Link>
+      </li>
+    </>
+  );
+};
+
 const HeaderTabs = () => {
+  const { t } = useTranslation();
   const params = useParams();
   const location = useLocation();
   const isAllPage = isAllView(location.pathname);
@@ -210,6 +230,7 @@ const HeaderTabs = () => {
   const isProfilePage = isProfileView(location.pathname);
   const isSubplebbitPage = isSubplebbitView(location.pathname, params);
   const isSubplebbitSubmitPage = isSubplebbitSubmitView(location.pathname, params);
+  const isSubplebbitsPage = isSubplebbitsView(location.pathname);
 
   if (isPostPage) {
     return <CommentsButton />;
@@ -218,9 +239,11 @@ const HeaderTabs = () => {
   } else if ((isProfilePage || isAuthorPage) && !isPendingPage) {
     return <AuthorHeaderTabs />;
   } else if (isPendingPage) {
-    return <span className={styles.pageName}>pending</span>;
+    return <span className={styles.pageName}>{t('pending')}</span>;
   } else if (isInboxPage) {
     return <InboxHeaderTabs />;
+  } else if (isSubplebbitsPage) {
+    return <SubplebbitsHeaderTabs />;
   }
   return null;
 };
@@ -234,10 +257,11 @@ const HeaderTitle = ({ title, shortAddress }: { title: string; shortAddress: str
   const isInboxPage = isInboxView(location.pathname);
   const isPostPage = isPostView(location.pathname, params);
   const isProfilePage = isProfileView(location.pathname);
-  const isSubplebbitPage = isSubplebbitView(location.pathname, params);
-  const isSubmitPage = isSubmitView(location.pathname);
-  const isSubplebbitSubmitPage = isSubplebbitSubmitView(location.pathname, params);
   const isSettingsPage = isSettingsView(location.pathname);
+  const isSubmitPage = isSubmitView(location.pathname);
+  const isSubplebbitPage = isSubplebbitView(location.pathname, params);
+  const isSubplebbitSubmitPage = isSubplebbitSubmitView(location.pathname, params);
+  const isSubplebbitsPage = isSubplebbitsView(location.pathname);
 
   const subplebbitTitle = <Link to={`/p/${params.subplebbitAddress}`}>{title || shortAddress}</Link>;
   const submitTitle = <span className={styles.submitTitle}>{t('submit')}</span>;
@@ -262,6 +286,8 @@ const HeaderTitle = ({ title, shortAddress }: { title: string; shortAddress: str
     return authorTitle;
   } else if (isInboxPage) {
     return t('messages');
+  } else if (isSubplebbitsPage) {
+    return 'communities';
   }
   return null;
 };

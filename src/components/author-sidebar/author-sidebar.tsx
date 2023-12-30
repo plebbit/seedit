@@ -83,7 +83,7 @@ const AuthorSidebar = () => {
 
   const address = isAuthorPage ? params?.authorAddress : isProfilePage ? profileAccount?.author?.shortAddress : '';
   const karma = isAuthorPage ? estimatedAuthorKarma : isProfilePage ? profileAccount?.karma : '';
-  const { postScore, replyScore } = karma;
+  const { postScore, replyScore } = karma || { postScore: 0, replyScore: 0 };
 
   const oldestCommentTimestamp = isAuthorPage ? authorOldestCommentTimestamp : isProfilePage ? profileOldestAccountTimestamp : Date.now();
   const displayName = isAuthorPage ? authorAccount?.author?.displayName : isProfilePage ? profileAccount?.author?.displayName : '';
@@ -116,7 +116,7 @@ const AuthorSidebar = () => {
               {' '}
               (
               <span className={styles.editButton} onClick={confirmNavigateToSettings}>
-                edit
+                {t('edit')}
               </span>
               )
             </span>

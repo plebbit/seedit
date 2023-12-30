@@ -1,0 +1,86 @@
+@media (max-width: 768px) {
+  .content {
+    padding: 7px 0px 0px 0px;
+  }
+
+  .sidebar {
+    display: none;
+  }
+}
+
+@media (min-width: 768px) {
+  .content {
+    padding: 7px 5px 0px 5px;
+  }
+
+  .stateString {
+    max-width: calc(100% - 305px);
+  }
+}
+
+.infobar {
+  background-color: var(--background-orange);
+  border-color: var(--border-orange);
+  border-style: solid;
+  border-width: 1px;
+  font-size: small;
+  margin: 0 305px 5px 0px;
+  padding: 6px 10px;
+  color: var(--text);
+  word-wrap: break-word;
+  font-size: 14px;
+  text-transform: lowercase;
+}
+
+.infobar code {
+  padding: 0 4px;
+  margin: 0 2px;
+  background-color: var(--code-background);
+  border: 1px solid var(--code-border);
+}
+
+.subplebbit {
+  margin-bottom: 10px;
+}
+
+.midcol {
+  margin-right: 5px;
+  margin-top: 5px;
+  text-align: right;
+  width: 12em;
+  float: left;
+  margin-left: 7px;
+}
+
+.entry {
+  overflow: hidden;
+  opacity: 1;
+}
+
+.title {
+  margin-bottom: 1px;
+  font-size: medium;
+  margin-right: 5px;
+  overflow: hidden;
+  unicode-bidi: isolate;
+}
+
+.title a {
+  color: var(--link);
+}
+
+/* .title a:visited {
+  color: var(--link-visited);
+} */
+
+.description {
+  font-size: small;
+  max-width: 60em;
+  unicode-bidi: isolate;
+  background-color: var(--background-markdown);
+  border: 1px solid var(--gray-light);
+  color: var(--text-markdown);
+  padding: 2px 5px;
+  border-radius: 7px;
+  margin: 5px 0px;
+}

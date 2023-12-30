@@ -12,7 +12,6 @@
   "dark": "Mörk",
   "light": "Ljus",
   "my_communities": "Mina gemenskaper",
-  "edit": "Redigera",
   "home": "Hem",
   "all": "Alla",
   "submitted": "Inskickad",
@@ -93,7 +92,7 @@
   "create_community": "Skapa din egen community",
   "moderators": "moderatorer",
   "about_moderation": "om modereringsteamet",
-  "join": "gå med",
+  "join": "Gå med",
   "leave": "lämna",
   "created_by": "skapat av {{creatorAddress}}",
   "community_for": "en gemenskap för {{date}}",
@@ -169,5 +168,9 @@
   "mark_all_read": "markera alla som läst",
   "comment_reply": "svara på kommentar",
   "post_reply": "svara på inlägg",
-  "show_parent": "visa den refererade posten"
+  "show_parent": "visa den refererade posten",
+  "no_posts": "inga inlägg",
+  "media_url": "media-url",
+  "post_locked_info": "Detta inlägg är låst. Du kommer inte att kunna kommentera.",
+  "no_subscriptions_notice": "Du har ännu inte gått med i någon gemenskap."
 }

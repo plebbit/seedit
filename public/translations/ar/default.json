@@ -12,7 +12,6 @@
   "dark": "داكن",
   "light": "فاتح",
   "my_communities": "مجتمعاتي",
-  "edit": "تعديل",
   "home": "الرئيسية",
   "all": "الكل",
   "submitted": "تم الإرسال",
@@ -93,7 +92,7 @@
   "create_community": "أنشئ مجتمعك الخاص",
   "moderators": "المشرفون",
   "about_moderation": "عن الإشراف",
-  "join": "انضمام",
+  "join": "انضم",
   "leave": "غادر",
   "created_by": "تم إنشاؤها بواسطة {{creatorAddress}}",
   "community_for": "مجتمع لمدة {{date}}",
@@ -169,5 +168,9 @@
   "mark_all_read": "وضع علامة على الجميع كمقروءة",
   "comment_reply": "رد على التعليق",
   "post_reply": "رد على المنشور",
-  "show_parent": "أظهر المشاركة المشار إليها"
+  "show_parent": "أظهر المشاركة المشار إليها",
+  "no_posts": "لا توجد مشاركات",
+  "media_url": "عنوان وسائط",
+  "post_locked_info": "هذا المنشور مغلق. لن تتمكن من التعليق.",
+  "no_subscriptions_notice": "لم تنضم إلى أي مجتمع بعد."
 }

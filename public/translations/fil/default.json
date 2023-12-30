@@ -12,7 +12,6 @@
   "dark": "Madilim",
   "light": "Maliwanag",
   "my_communities": "Aking mga Komunidad",
-  "edit": "I-edit",
   "home": "Bahay",
   "all": "Lahat",
   "submitted": "Naipadala",
@@ -93,7 +92,7 @@
   "create_community": "Lumikha ng sariling komunidad",
   "moderators": "moderators",
   "about_moderation": "tungkol sa koponan ng moderation",
-  "join": "sumali",
+  "join": "Sumali",
   "leave": "iwanan",
   "created_by": "likha ni {{creatorAddress}}",
   "community_for": "isang komunidad para sa {{date}}",
@@ -169,5 +168,9 @@
   "mark_all_read": "tandaan ang lahat bilang nabasa",
   "comment_reply": "sagot sa komento",
   "post_reply": "sagot sa post",
-  "show_parent": "ipakita ang tinutukoy na post"
+  "show_parent": "ipakita ang tinutukoy na post",
+  "no_posts": "walang post",
+  "media_url": "media url",
+  "post_locked_info": "Ang post na ito ay naka-lock. Hindi ka makakapagkomento.",
+  "no_subscriptions_notice": "Hindi ka pa sumali sa anumang komunidad."
 }

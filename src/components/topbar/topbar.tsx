@@ -113,7 +113,7 @@ const TopBar = () => {
                 {getShortAddress(subscription)}
               </Link>
             ))}
-            {subscriptions?.length === 0 && <div className={`${styles.dropdownChoice} ${styles.noSubs}`}>you haven't joined any community</div>}
+            {subscriptions?.length === 0 && <div className={`${styles.dropdownChoice} ${styles.noSubs}`}>{t('no_subscriptions_notice')}</div>}
           </div>
         </div>
         <div className={styles.dropdown} ref={sortsDropdownRef} onClick={toggleSortsDropdown}>
@@ -160,7 +160,7 @@ const TopBar = () => {
             ))}
           </ul>
         </div>
-        <Link to='#' className={styles.moreLink}>
+        <Link to='/communities' className={styles.moreLink}>
           {t('edit')} »
         </Link>
       </div>

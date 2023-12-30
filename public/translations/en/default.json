@@ -12,7 +12,6 @@
   "dark": "dark",
   "light": "light",
   "my_communities": "my communities",
-  "edit": "edit",
   "home": "home",
   "all": "all",
   "submitted": "submitted",
@@ -93,7 +92,7 @@
   "create_community": "Create your own community",
   "moderators": "moderators",
   "about_moderation": "about moderation team",
-  "join": "join",
+  "join": "Join",
   "leave": "leave",
   "created_by": "created by {{creatorAddress}}",
   "community_for": "a community for {{date}}",
@@ -169,5 +168,9 @@
   "mark_all_read": "mark all as read",
   "comment_reply": "comment reply",
   "post_reply": "post reply",
-  "show_parent": "show parent"
+  "show_parent": "show parent",
+  "no_posts": "no posts",
+  "media_url": "media url",
+  "post_locked_info": "This post is locked. You won't be able to comment.",
+  "no_subscriptions_notice": "You haven't joined any community."
 }

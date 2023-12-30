@@ -12,7 +12,6 @@
   "dark": "Tối",
   "light": "Sáng",
   "my_communities": "Cộng đồng của tôi",
-  "edit": "Chỉnh sửa",
   "home": "Trang chủ",
   "all": "Tất cả",
   "submitted": "Đã gửi",
@@ -93,7 +92,7 @@
   "create_community": "Tạo cộng đồng riêng của bạn",
   "moderators": "quản trị viên",
   "about_moderation": "về đội ngũ quản lý",
-  "join": "tham gia",
+  "join": "Tham gia",
   "leave": "rời",
   "created_by": "tạo bởi {{creatorAddress}}",
   "community_for": "một cộng đồng cho {{date}}",
@@ -169,5 +168,9 @@
   "mark_all_read": "đánh dấu tất cả là đã đọc",
   "comment_reply": "trả lời bình luận",
   "post_reply": "trả lời bài đăng",
-  "show_parent": "hiển thị bài viết được tham khảo"
+  "show_parent": "hiển thị bài viết được tham khảo",
+  "no_posts": "không có bài viết",
+  "media_url": "URL phương tiện",
+  "post_locked_info": "Bài viết này đã bị khóa. Bạn sẽ không thể bình luận.",
+  "no_subscriptions_notice": "Bạn chưa tham gia vào bất kỳ cộng đồng nào."
 }

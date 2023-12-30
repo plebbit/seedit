@@ -12,7 +12,6 @@
   "dark": "oscuro",
   "light": "claro",
   "my_communities": "mis comunidades",
-  "edit": "editar",
   "home": "inicio",
   "all": "todos",
   "submitted": "enviado",
@@ -93,7 +92,7 @@
   "create_community": "Crea tu propia comunidad",
   "moderators": "moderadores",
   "about_moderation": "sobre el equipo de moderación",
-  "join": "unirse",
+  "join": "Unirse",
   "leave": "salir",
   "created_by": "creado por {{creatorAddress}}",
   "community_for": "una comunidad por {{date}}",
@@ -169,5 +168,9 @@
   "mark_all_read": "marcar todos como leídos",
   "comment_reply": "responder al comentario",
   "post_reply": "responder al post",
-  "show_parent": "mostrar el post al que se hace referencia"
+  "show_parent": "mostrar el post al que se hace referencia",
+  "no_posts": "sin publicaciones",
+  "media_url": "URL de medios",
+  "post_locked_info": "Esta publicación está bloqueada. No podrás comentar.",
+  "no_subscriptions_notice": "Todavía no te has unido a ninguna comunidad."
 }

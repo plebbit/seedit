@@ -12,7 +12,6 @@
   "dark": "Donker",
   "light": "Licht",
   "my_communities": "Mijn gemeenschappen",
-  "edit": "Bewerken",
   "home": "Thuis",
   "all": "Alle",
   "submitted": "Ingediend",
@@ -93,7 +92,7 @@
   "create_community": "Maak je eigen gemeenschap",
   "moderators": "moderators",
   "about_moderation": "over het moderatieteam",
-  "join": "meedoen",
+  "join": "Lid worden",
   "leave": "vertrekken",
   "created_by": "gemaakt door {{creatorAddress}}",
   "community_for": "een gemeenschap voor {{date}}",
@@ -169,5 +168,9 @@
   "mark_all_read": "markeer alles als gelezen",
   "comment_reply": "reageren op reactie",
   "post_reply": "reageren op bericht",
-  "show_parent": "toon de verwezen post"
+  "show_parent": "toon de verwezen post",
+  "no_posts": "geen berichten",
+  "media_url": "media-url",
+  "post_locked_info": "Dit bericht is vergrendeld. Je kunt geen opmerkingen plaatsen.",
+  "no_subscriptions_notice": "Je hebt je nog niet bij een community aangesloten."
 }

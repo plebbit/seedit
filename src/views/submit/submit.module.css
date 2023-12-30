@@ -56,7 +56,8 @@ h1 {
 
 .input {
   font-size: 100%;
-  width: 492px;
+  min-width: 492px;
+  max-width: 492px;
   padding: 3px;
   margin: 0;
   color: var(--text);
@@ -64,12 +65,12 @@ h1 {
 }
 
 .inputTitle {
-  height: 60px;
+  min-height: 60px;
   font-size: 18px;
 }
 
 .inputText {
-  height: 100px;
+  min-height: 100px;
   font-size: 14px;
 }
 
@@ -111,6 +112,11 @@ h1 {
   .description {
     width: calc(100% - 6px);
     box-sizing: border-box;
+  }
+
+  .input {
+    min-width: calc(100% - 6px);
+    max-width: calc(100% - 6px);
   }
 
   h1 {

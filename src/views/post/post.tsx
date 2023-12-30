@@ -66,6 +66,11 @@ const Post = () => {
           upvoteCount={upvoteCount}
         />
       </div>
+      {post?.locked && (
+        <div className={styles.lockedInfobar}>
+          <div className={styles.lockedInfobarText}>{t('post_locked_info')}</div>
+        </div>
+      )}
       <PostComponent post={post} />
       {!isPendingPage && (
         <div className={styles.replyArea}>

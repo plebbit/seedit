@@ -9,6 +9,7 @@
   font-weight: bold;
   border-radius: 3px;
   cursor: pointer;
+  text-transform: lowercase;
 }
 
 .joinButton {

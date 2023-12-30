@@ -12,7 +12,6 @@
   "dark": "暗",
   "light": "浅色",
   "my_communities": "我的社群",
-  "edit": "编辑",
   "home": "首页",
   "all": "全部",
   "submitted": "已提交",
@@ -169,5 +168,9 @@
   "mark_all_read": "全部标记为已读",
   "comment_reply": "回复评论",
   "post_reply": "回复帖子",
-  "show_parent": "显示被引用的帖子"
+  "show_parent": "显示被引用的帖子",
+  "no_posts": "没有帖子",
+  "media_url": "媒体链接",
+  "post_locked_info": "此帖已锁定。您将无法评论。",
+  "no_subscriptions_notice": "您尚未加入任何社区。"
 }

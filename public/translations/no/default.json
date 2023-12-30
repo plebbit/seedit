@@ -12,7 +12,6 @@
   "dark": "Mørk",
   "light": "Lys",
   "my_communities": "Mine samfunn",
-  "edit": "Rediger",
   "home": "Hjem",
   "all": "Alle",
   "submitted": "Innsendt",
@@ -93,7 +92,7 @@
   "create_community": "Opprett din egen fellesskap",
   "moderators": "moderatorer",
   "about_moderation": "om moderasjonsteamet",
-  "join": "bli med",
+  "join": "Bli med",
   "leave": "forlat",
   "created_by": "opprettet av {{creatorAddress}}",
   "community_for": "et fellesskap for {{date}}",
@@ -169,5 +168,9 @@
   "mark_all_read": "merk alle som lest",
   "comment_reply": "svar på kommentar",
   "post_reply": "svar på innlegg",
-  "show_parent": "vis den refererte posten"
+  "show_parent": "vis den refererte posten",
+  "no_posts": "ingen innlegg",
+  "media_url": "medie-URL",
+  "post_locked_info": "Dette innlegget er låst. Du kan ikke kommentere.",
+  "no_subscriptions_notice": "Du har ikke blitt med i noen fellesskap ennå."
 }

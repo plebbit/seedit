@@ -12,7 +12,6 @@
   "dark": "Sötét",
   "light": "Világos",
   "my_communities": "Saját közösségeim",
-  "edit": "Szerkesztés",
   "home": "Főoldal",
   "all": "Összes",
   "submitted": "Beküldve",
@@ -93,7 +92,7 @@
   "create_community": "Hozd létre saját közösséged",
   "moderators": "moderátorok",
   "about_moderation": "a moderációs csapatról",
-  "join": "csatlakozás",
+  "join": "Csatlakozás",
   "leave": "elhagy",
   "created_by": "készítette {{creatorAddress}}",
   "community_for": "egy közösség {{date}}",
@@ -169,5 +168,9 @@
   "mark_all_read": "összes megjelölése olvasottként",
   "comment_reply": "válasz a hozzászólásra",
   "post_reply": "válasz a posztra",
-  "show_parent": "mutassa a hivatkozott bejegyzést"
+  "show_parent": "mutassa a hivatkozott bejegyzést",
+  "no_posts": "nincsenek hozzászólások",
+  "media_url": "média URL",
+  "post_locked_info": "Ez a bejegyzés zárolva van. Nem fogsz tudni hozzászólni.",
+  "no_subscriptions_notice": "Még nem csatlakoztál egyetlen közösséghez sem."
 }

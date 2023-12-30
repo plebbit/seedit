@@ -12,7 +12,6 @@
   "dark": "Mørk",
   "light": "Lys",
   "my_communities": "Mine samfund",
-  "edit": "Rediger",
   "home": "Hjem",
   "all": "Alle",
   "submitted": "Indsendt",
@@ -93,7 +92,7 @@
   "create_community": "Opret din egen fællesskab",
   "moderators": "moderatorer",
   "about_moderation": "om moderationsholdet",
-  "join": "bliv medlem",
+  "join": "Deltag",
   "leave": "forlad",
   "created_by": "oprettet af {{creatorAddress}}",
   "community_for": "fællesskab i {{date}}",
@@ -169,5 +168,9 @@
   "mark_all_read": "markér alle som læst",
   "comment_reply": "svar på kommentar",
   "post_reply": "svar på indlæg",
-  "show_parent": "vis den henviste post"
+  "show_parent": "vis den henviste post",
+  "no_posts": "ingen indlæg",
+  "media_url": "medie-URL",
+  "post_locked_info": "Dette indlæg er låst. Du kan ikke kommentere.",
+  "no_subscriptions_notice": "Du har endnu ikke tilsluttet dig nogen fællesskab."
 }

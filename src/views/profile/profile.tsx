@@ -67,6 +67,7 @@ const SortDropdown: React.FC<SortDropdownProps> = ({ onSortChange }) => {
 };
 
 const Profile = () => {
+  const { t } = useTranslation();
   const account = useAccount();
   const location = useLocation();
   const params = useParams();
@@ -137,7 +138,7 @@ const Profile = () => {
       </div>
       <SortDropdown onSortChange={handleSortChange} />
       {account && !accountComments.length ? (
-        'no posts'
+        t('no_posts')
       ) : (
         <Virtuoso
           increaseViewportBy={{ bottom: 1200, top: 600 }}

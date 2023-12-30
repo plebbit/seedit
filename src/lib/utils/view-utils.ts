@@ -106,6 +106,10 @@ export const isSubplebbitSubmitView = (pathname: string, params: ParamsType): bo
   return params.subplebbitAddress ? pathname === `/p/${params.subplebbitAddress}/submit` : false;
 };
 
+export const isSubplebbitsView = (pathname: string): boolean => {
+  return pathname.startsWith('/communities');
+};
+
 export const isUpvotedView = (pathname: string): boolean => {
   return pathname === '/profile/upvoted';
 };

@@ -12,7 +12,6 @@
   "dark": "Tumma",
   "light": "Vaalea",
   "my_communities": "Omat yhteisöt",
-  "edit": "Muokkaa",
   "home": "Etusivu",
   "all": "Kaikki",
   "submitted": "Lähetetty",
@@ -93,7 +92,7 @@
   "create_community": "Luo oma yhteisösi",
   "moderators": "moderaattorit",
   "about_moderation": "tietoa moderaatiotiimistä",
-  "join": "liity",
+  "join": "Liity",
   "leave": "poistu",
   "created_by": "luonut {{creatorAddress}}",
   "community_for": "yhteisössä {{date}}",
@@ -169,5 +168,9 @@
   "mark_all_read": "merkitse kaikki luetuiksi",
   "comment_reply": "vastaa kommenttiin",
   "post_reply": "vastaa viestiin",
-  "show_parent": "näytä viitattu viesti"
+  "show_parent": "näytä viitattu viesti",
+  "no_posts": "ei viestejä",
+  "media_url": "medialinkki",
+  "post_locked_info": "Tämä viesti on lukittu. Et voi kommentoida sitä.",
+  "no_subscriptions_notice": "Et ole vielä liittynyt mihinkään yhteisöön."
 }
