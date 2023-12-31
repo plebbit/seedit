@@ -172,5 +172,6 @@
   "no_posts": "geen berichten",
   "media_url": "media-url",
   "post_locked_info": "Dit bericht is vergrendeld. Je kunt geen opmerkingen plaatsen.",
-  "no_subscriptions_notice": "Je hebt je nog niet bij een community aangesloten."
+  "no_subscriptions_notice": "Je hebt je nog niet bij een community aangesloten.",
+  "members_count": "{{count}} leden"
 }

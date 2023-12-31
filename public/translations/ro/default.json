@@ -172,5 +172,6 @@
   "no_posts": "niciun post",
   "media_url": "URL media",
   "post_locked_info": "Acest post este blocat. Nu vei putea comenta.",
-  "no_subscriptions_notice": "Nu te-ai alăturat încă niciunei comunități."
+  "no_subscriptions_notice": "Nu te-ai alăturat încă niciunei comunități.",
+  "members_count": "{{count}} membri"
 }

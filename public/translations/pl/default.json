@@ -172,5 +172,6 @@
   "no_posts": "brak postów",
   "media_url": "URL mediów",
   "post_locked_info": "Ten post jest zablokowany. Nie będziesz mógł komentować.",
-  "no_subscriptions_notice": "Nie dołączyłeś jeszcze do żadnej społeczności."
+  "no_subscriptions_notice": "Nie dołączyłeś jeszcze do żadnej społeczności.",
+  "members_count": "{{count}} członków"
 }

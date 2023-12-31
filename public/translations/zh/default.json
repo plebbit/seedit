@@ -172,5 +172,6 @@
   "no_posts": "没有帖子",
   "media_url": "媒体链接",
   "post_locked_info": "此帖已锁定。您将无法评论。",
-  "no_subscriptions_notice": "您尚未加入任何社区。"
+  "no_subscriptions_notice": "您尚未加入任何社区。",
+  "members_count": "{{count}} 成员"
 }

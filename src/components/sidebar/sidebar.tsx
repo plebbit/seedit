@@ -138,7 +138,7 @@ const Sidebar = ({ address, cid, createdAt, description, downvoteCount = 0, role
           </Link>
           <div className={styles.subscribeContainer}>
             <SubscribeButton address={address} />
-            <span className={styles.subscribers}>{t('readers_count', { count: allActiveUserCount })}</span>
+            <span className={styles.subscribers}>{t('members_count', { count: allActiveUserCount })}</span>
           </div>
           <div className={styles.onlineLine}>
             <span className={`${styles.onlineIndicator} ${isOnline ? styles.online : styles.offline}`} />

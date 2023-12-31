@@ -172,5 +172,6 @@
   "no_posts": "ei viestejä",
   "media_url": "medialinkki",
   "post_locked_info": "Tämä viesti on lukittu. Et voi kommentoida sitä.",
-  "no_subscriptions_notice": "Et ole vielä liittynyt mihinkään yhteisöön."
+  "no_subscriptions_notice": "Et ole vielä liittynyt mihinkään yhteisöön.",
+  "members_count": "{{count}} jäsentä"
 }

@@ -172,5 +172,6 @@
   "no_posts": "ingen innlegg",
   "media_url": "medie-URL",
   "post_locked_info": "Dette innlegget er låst. Du kan ikke kommentere.",
-  "no_subscriptions_notice": "Du har ikke blitt med i noen fellesskap ennå."
+  "no_subscriptions_notice": "Du har ikke blitt med i noen fellesskap ennå.",
+  "members_count": "{{count}} medlemmer"
 }

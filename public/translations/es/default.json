@@ -172,5 +172,6 @@
   "no_posts": "sin publicaciones",
   "media_url": "URL de medios",
   "post_locked_info": "Esta publicación está bloqueada. No podrás comentar.",
-  "no_subscriptions_notice": "Todavía no te has unido a ninguna comunidad."
+  "no_subscriptions_notice": "Todavía no te has unido a ninguna comunidad.",
+  "members_count": "{{count}} miembros"
 }
