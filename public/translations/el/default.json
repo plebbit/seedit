@@ -173,5 +173,7 @@
   "media_url": "URL πολυμέσων",
   "post_locked_info": "Αυτή η ανάρτηση είναι κλειδωμένη. Δεν θα μπορείτε να σχολιάσετε.",
   "no_subscriptions_notice": "Δεν έχετε εγγραφεί ακόμη σε κοινότητα.",
-  "members_count": "{{count}} μέλη"
+  "members_count": "{{count}} μέλη",
+  "communities": "κοινόνια",
+  "edit": "επικοινωνιακό"
 }

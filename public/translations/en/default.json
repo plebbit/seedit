@@ -173,5 +173,7 @@
   "media_url": "media url",
   "post_locked_info": "This post is locked. You won't be able to comment.",
   "no_subscriptions_notice": "You haven't joined any community.",
-  "members_count": "{{count}} members"
+  "members_count": "{{count}} members",
+  "communities": "communities",
+  "edit": "edit"
 }

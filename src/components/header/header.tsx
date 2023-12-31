@@ -287,7 +287,7 @@ const HeaderTitle = ({ title, shortAddress }: { title: string; shortAddress: str
   } else if (isInboxPage) {
     return t('messages');
   } else if (isSubplebbitsPage) {
-    return 'communities';
+    return t('communities');
   }
   return null;
 };

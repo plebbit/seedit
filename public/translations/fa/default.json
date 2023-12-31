@@ -173,5 +173,7 @@
   "media_url": "آدرس رسانه",
   "post_locked_info": "این پست قفل شده است. نمی‌توانید نظر دهید.",
   "no_subscriptions_notice": "هنوز به هیچ انجمنی پیوسته نشده‌اید.",
-  "members_count": "{{count}} عضو"
+  "members_count": "{{count}} عضو",
+  "communities": "انجمن",
+  "edit": "ویرایش"
 }

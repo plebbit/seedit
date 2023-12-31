@@ -173,5 +173,7 @@
   "media_url": "כתובת מדיה",
   "post_locked_info": "הפוסט הזה נעול. אינך יכול להגיב.",
   "no_subscriptions_notice": "עדיין לא הצטרפת לאף קהילה.",
-  "members_count": "{{count}} חברים"
+  "members_count": "{{count}} חברים",
+  "communities": "קהילה",
+  "edit": "עריכה"
 }

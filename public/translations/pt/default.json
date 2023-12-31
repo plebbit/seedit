@@ -173,5 +173,7 @@
   "media_url": "URL de mídia",
   "post_locked_info": "Esta postagem está bloqueada. Você não poderá comentar.",
   "no_subscriptions_notice": "Ainda não se juntou a nenhuma comunidade.",
-  "members_count": "{{count}} membros"
+  "members_count": "{{count}} membros",
+  "communities": "comunidade",
+  "edit": "editar"
 }

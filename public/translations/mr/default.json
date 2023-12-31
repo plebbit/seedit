@@ -173,5 +173,7 @@
   "media_url": "मिडिया URL",
   "post_locked_info": "हा पोस्ट लॉक झाला आहे. आपण टिप्पणी करू शकणार नाहीत.",
   "no_subscriptions_notice": "तुम्ही अद्याप कोणत्याही संघात सामील झालं नाही.",
-  "members_count": "{{count}} सदस्य"
+  "members_count": "{{count}} सदस्य",
+  "communities": "संघा",
+  "edit": "संपादन"
 }

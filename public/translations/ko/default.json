@@ -173,5 +173,7 @@
   "media_url": "미디어 URL",
   "post_locked_info": "이 게시물은 잠겨 있습니다. 댓글을 남길 수 없습니다.",
   "no_subscriptions_notice": "아직 어떤 커뮤니티에도 가입하지 않았습니다.",
-  "members_count": "{{count}} 회원"
+  "members_count": "{{count}} 회원",
+  "communities": "커뮤니티",
+  "edit": "편집"
 }

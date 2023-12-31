@@ -173,5 +173,7 @@
   "media_url": "URL медиа",
   "post_locked_info": "Этот пост заблокирован. Вы не сможете оставить комментарий.",
   "no_subscriptions_notice": "Вы еще не присоединились ни к одному сообществу.",
-  "members_count": "{{count}} участников"
+  "members_count": "{{count}} участников",
+  "communities": "сообщество",
+  "edit": "редактировать"
 }

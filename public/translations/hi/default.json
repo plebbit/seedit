@@ -173,5 +173,7 @@
   "media_url": "मीडिया यूआरएल",
   "post_locked_info": "यह पोस्ट बंद है। आप टिप्पणी नहीं कर सकेंगे।",
   "no_subscriptions_notice": "आपने अब तक किसी समुदाय में शामिल नहीं हुए हैं।",
-  "members_count": "{{count}} सदस्य"
+  "members_count": "{{count}} सदस्य",
+  "communities": "समुदाय",
+  "edit": "संपादित करें"
 }

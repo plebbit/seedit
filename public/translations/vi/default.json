@@ -173,5 +173,7 @@
   "media_url": "URL phương tiện",
   "post_locked_info": "Bài viết này đã bị khóa. Bạn sẽ không thể bình luận.",
   "no_subscriptions_notice": "Bạn chưa tham gia vào bất kỳ cộng đồng nào.",
-  "members_count": "{{count}} thành viên"
+  "members_count": "{{count}} thành viên",
+  "communities": "cộng đồng",
+  "edit": "sửa đổi"
 }

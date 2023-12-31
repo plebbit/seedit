@@ -173,5 +173,7 @@
   "media_url": "URL สื่อ",
   "post_locked_info": "โพสต์นี้ถูกล็อก คุณจะไม่สามารถแสดงความคิดเห็นได้",
   "no_subscriptions_notice": "คุณยังไม่ได้เข้าร่วมชุมชนใด ๆ",
-  "members_count": "{{count}} สมาชิก"
+  "members_count": "{{count}} สมาชิก",
+  "communities": "ชุมชน",
+  "edit": "แก้ไข"
 }

@@ -173,5 +173,7 @@
   "media_url": "URL multimédia",
   "post_locked_info": "Ce post est verrouillé. Vous ne pourrez pas commenter.",
   "no_subscriptions_notice": "Vous n'avez rejoint aucune communauté.",
-  "members_count": "{{count}} membres"
+  "members_count": "{{count}} membres",
+  "communities": "communauté",
+  "edit": "modifier"
 }
