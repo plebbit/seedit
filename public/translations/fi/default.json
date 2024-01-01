@@ -175,5 +175,6 @@
   "no_subscriptions_notice": "Et ole vielä liittynyt mihinkään yhteisöön.",
   "members_count": "{{count}} jäsentä",
   "communities": "yhteisö",
-  "edit": "muokata"
+  "edit": "muokata",
+  "moderator": "Moderaattori"
 }

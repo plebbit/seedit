@@ -175,5 +175,6 @@
   "no_subscriptions_notice": "Henüz herhangi bir topluluğa katılmadınız.",
   "members_count": "{{count}} üye",
   "communities": "topluluk",
-  "edit": "düzenle"
+  "edit": "düzenle",
+  "moderator": "Moderatör"
 }

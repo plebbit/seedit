@@ -175,5 +175,6 @@
   "no_subscriptions_notice": "आपने अब तक किसी समुदाय में शामिल नहीं हुए हैं।",
   "members_count": "{{count}} सदस्य",
   "communities": "समुदाय",
-  "edit": "संपादित करें"
+  "edit": "संपादित करें",
+  "moderator": "मॉडरेटर"
 }

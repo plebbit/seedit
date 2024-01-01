@@ -175,5 +175,6 @@
   "no_subscriptions_notice": "아직 어떤 커뮤니티에도 가입하지 않았습니다.",
   "members_count": "{{count}} 회원",
   "communities": "커뮤니티",
-  "edit": "편집"
+  "edit": "편집",
+  "moderator": "모더레이터"
 }

@@ -175,5 +175,6 @@
   "no_subscriptions_notice": "Nuk keni bashkuar akoma ndonjë komunitet.",
   "members_count": "{{count}} anëtarë",
   "communities": "komunitet",
-  "edit": "modifikohu"
+  "edit": "modifikohu",
+  "moderator": "Moderator"
 }

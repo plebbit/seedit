@@ -175,5 +175,6 @@
   "no_subscriptions_notice": "Todavía no te has unido a ninguna comunidad.",
   "members_count": "{{count}} miembros",
   "communities": "comunidades",
-  "edit": "editar"
+  "edit": "editar",
+  "moderator": "Moderador"
 }

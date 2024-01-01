@@ -175,5 +175,6 @@
   "no_subscriptions_notice": "Dosud jste se nepřipojili k žádné komunitě.",
   "members_count": "{{count}} členů",
   "communities": "komunita",
-  "edit": "upravit"
+  "edit": "upravit",
+  "moderator": "Moderátor"
 }

@@ -175,5 +175,6 @@
   "no_subscriptions_notice": "עדיין לא הצטרפת לאף קהילה.",
   "members_count": "{{count}} חברים",
   "communities": "קהילה",
-  "edit": "עריכה"
+  "edit": "עריכה",
+  "moderator": "מנהל"
 }

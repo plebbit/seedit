@@ -175,5 +175,6 @@
   "no_subscriptions_notice": "คุณยังไม่ได้เข้าร่วมชุมชนใด ๆ",
   "members_count": "{{count}} สมาชิก",
   "communities": "ชุมชน",
-  "edit": "แก้ไข"
+  "edit": "แก้ไข",
+  "moderator": "ผู้ดูแล"
 }

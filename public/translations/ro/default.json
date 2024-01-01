@@ -175,5 +175,6 @@
   "no_subscriptions_notice": "Nu te-ai alăturat încă niciunei comunități.",
   "members_count": "{{count}} membri",
   "communities": "comunitate",
-  "edit": "modifica"
+  "edit": "modifica",
+  "moderator": "Moderator"
 }

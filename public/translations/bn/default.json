@@ -175,5 +175,6 @@
   "no_subscriptions_notice": "আপনি এখনো কোনও সম্প্রদানে যোগ দিননি।",
   "members_count": "{{count}} সদস্য",
   "communities": "সম্প্রদান",
-  "edit": "সম্পাদনা"
+  "edit": "সম্পাদনা",
+  "moderator": "মডারেটর"
 }

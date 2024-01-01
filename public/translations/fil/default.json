@@ -175,5 +175,6 @@
   "no_subscriptions_notice": "Hindi ka pa sumali sa anumang komunidad.",
   "members_count": "{{count}} miyembro",
   "communities": "komunidad",
-  "edit": "ipunin"
+  "edit": "ipunin",
+  "moderator": "Moderator"
 }

@@ -175,5 +175,6 @@
   "no_subscriptions_notice": "Még nem csatlakoztál egyetlen közösséghez sem.",
   "members_count": "{{count}} tag",
   "communities": "közösség",
-  "edit": "szerkesztés"
+  "edit": "szerkesztés",
+  "moderator": "Moderátor"
 }

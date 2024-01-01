@@ -175,5 +175,6 @@
   "no_subscriptions_notice": "Δεν έχετε εγγραφεί ακόμη σε κοινότητα.",
   "members_count": "{{count}} μέλη",
   "communities": "κοινόνια",
-  "edit": "επικοινωνιακό"
+  "edit": "επικοινωνιακό",
+  "moderator": "Διαμεσολαβητής"
 }

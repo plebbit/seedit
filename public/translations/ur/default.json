@@ -175,5 +175,6 @@
   "no_subscriptions_notice": "آپ نے ابھی تک کسی بھی کمیونٹی میں شامل نہیں ہوئے۔",
   "members_count": "{{count}} رکن",
   "communities": "مجتمع",
-  "edit": "ترمیم کرنا"
+  "edit": "ترمیم کرنا",
+  "moderator": "منتظم"
 }

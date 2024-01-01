@@ -175,5 +175,6 @@
   "no_subscriptions_notice": "هنوز به هیچ انجمنی پیوسته نشده‌اید.",
   "members_count": "{{count}} عضو",
   "communities": "انجمن",
-  "edit": "ویرایش"
+  "edit": "ویرایش",
+  "moderator": "مدیر"
 }

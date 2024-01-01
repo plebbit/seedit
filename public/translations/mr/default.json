@@ -175,5 +175,6 @@
   "no_subscriptions_notice": "तुम्ही अद्याप कोणत्याही संघात सामील झालं नाही.",
   "members_count": "{{count}} सदस्य",
   "communities": "संघा",
-  "edit": "संपादन"
+  "edit": "संपादन",
+  "moderator": "संचालक"
 }

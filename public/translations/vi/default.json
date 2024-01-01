@@ -175,5 +175,6 @@
   "no_subscriptions_notice": "Bạn chưa tham gia vào bất kỳ cộng đồng nào.",
   "members_count": "{{count}} thành viên",
   "communities": "cộng đồng",
-  "edit": "sửa đổi"
+  "edit": "sửa đổi",
+  "moderator": "Quản trị viên"
 }

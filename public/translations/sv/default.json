@@ -175,5 +175,6 @@
   "no_subscriptions_notice": "Du har ännu inte gått med i någon gemenskap.",
   "members_count": "{{count}} medlemmar",
   "communities": "gemenskap",
-  "edit": "redigera"
+  "edit": "redigera",
+  "moderator": "Moderator"
 }

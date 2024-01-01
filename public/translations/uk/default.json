@@ -175,5 +175,6 @@
   "no_subscriptions_notice": "Ви ще не приєдналися до жодної спільноти.",
   "members_count": "{{count}} учасників",
   "communities": "спільнота",
-  "edit": "редагування"
+  "edit": "редагування",
+  "moderator": "Модератор"
 }

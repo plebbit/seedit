@@ -175,5 +175,6 @@
   "no_subscriptions_notice": "لم تنضم إلى أي مجتمع بعد.",
   "members_count": "{{count}} أعضاء",
   "communities": "مجتمع",
-  "edit": "تعديل"
+  "edit": "تعديل",
+  "moderator": "مشرف"
 }

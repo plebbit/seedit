@@ -175,5 +175,6 @@
   "no_subscriptions_notice": "Du har endnu ikke tilsluttet dig nogen fællesskab.",
   "members_count": "{{count}} medlemmer",
   "communities": "fællesskab",
-  "edit": "redigere"
+  "edit": "redigere",
+  "moderator": "Moderator"
 }

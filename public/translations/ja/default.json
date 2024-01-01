@@ -175,5 +175,6 @@
   "no_subscriptions_notice": "まだどのコミュニティにも参加していません。",
   "members_count": "{{count}} メンバー",
   "communities": "コミュニティ",
-  "edit": "編集"
+  "edit": "編集",
+  "moderator": "モデレーター"
 }

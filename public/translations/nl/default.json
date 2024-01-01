@@ -175,5 +175,6 @@
   "no_subscriptions_notice": "Je hebt je nog niet bij een community aangesloten.",
   "members_count": "{{count}} leden",
   "communities": "gemeenschap",
-  "edit": "bewerken"
+  "edit": "bewerken",
+  "moderator": "Moderator"
 }
