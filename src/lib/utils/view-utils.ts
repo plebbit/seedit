@@ -102,6 +102,10 @@ export const isSubplebbitView = (pathname: string, params: ParamsType): boolean 
   return params.subplebbitAddress ? pathname.startsWith(`/p/${params.subplebbitAddress}`) : false;
 };
 
+export const isSubplebbitSettingsView = (pathname: string, params: ParamsType): boolean => {
+  return params.subplebbitAddress ? pathname === `/p/${params.subplebbitAddress}/settings` : false;
+};
+
 export const isSubplebbitSubmitView = (pathname: string, params: ParamsType): boolean => {
   return params.subplebbitAddress ? pathname === `/p/${params.subplebbitAddress}/submit` : false;
 };

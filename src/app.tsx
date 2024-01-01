@@ -13,6 +13,7 @@ import Profile from './views/profile';
 import Settings from './views/settings';
 import Submit from './views/submit';
 import Subplebbit from './views/subplebbit';
+import SubplebbitSettings from './views/subplebbit/subplebbit-settings';
 import Subplebbits from './views/subplebbits';
 import AccountBar from './components/account-bar/';
 import ChallengeModal from './components/challenge-modal';
@@ -73,9 +74,9 @@ function App() {
             <Route path='/profile/comments/:sortType?/:timeFilterName?' element={<Profile />} />
             <Route path='/profile/submitted/:sortType?/:timeFilterName?' element={<Profile />} />
 
-            <Route path='u/:authorAddress/c/:commentCid?/:sortType?/:timeFilterName?' element={<Author />} />
-            <Route path='u/:authorAddress/c/:commentCid?/comments/:sortType?/:timeFilterName?' element={<Author />} />
-            <Route path='u/:authorAddress/c/:commentCid?/submitted/:sortType?/:timeFilterName?' element={<Author />} />
+            <Route path='/u/:authorAddress/c/:commentCid?/:sortType?/:timeFilterName?' element={<Author />} />
+            <Route path='/u/:authorAddress/c/:commentCid?/comments/:sortType?/:timeFilterName?' element={<Author />} />
+            <Route path='/u/:authorAddress/c/:commentCid?/submitted/:sortType?/:timeFilterName?' element={<Author />} />
           </Route>
           <Route element={pagesLayout}>
             <Route path='/submit' element={<Submit />} />
@@ -87,6 +88,7 @@ function App() {
             <Route path='/p/:subplebbitAddress/about' element={<About />} />
 
             <Route path='/settings' element={<Settings />} />
+            <Route path='/p/:subplebbitAddress/settings' element={<SubplebbitSettings />} />
 
             <Route path='/profile/:accountCommentIndex' element={<PendingPost />} />
             <Route path='/profile/about' element={<About />} />
@@ -94,9 +96,9 @@ function App() {
             <Route path='/u/:authorAddress/c/:commentCid/about' element={<About />} />
 
             <Route path='/inbox' element={<Inbox />} />
-            <Route path='inbox/unread' element={<Inbox />} />
-            <Route path='inbox/commentreplies' element={<Inbox />} />
-            <Route path='inbox/postreplies' element={<Inbox />} />
+            <Route path='/inbox/unread' element={<Inbox />} />
+            <Route path='/inbox/commentreplies' element={<Inbox />} />
+            <Route path='/inbox/postreplies' element={<Inbox />} />
 
             <Route path='/communities' element={<Subplebbits />} />
             <Route path='/communities/mine' element={<Subplebbits />} />

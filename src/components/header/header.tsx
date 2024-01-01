@@ -13,15 +13,16 @@ import {
   isDownvotedView,
   isHomeView,
   isInboxView,
-  isPostView,
-  isSettingsView,
-  isSubplebbitView,
-  isSubmitView,
-  isSubplebbitSubmitView,
   isPendingView,
+  isPostView,
   isProfileView,
   isProfileCommentsView,
   isProfileSubmittedView,
+  isSettingsView,
+  isSubmitView,
+  isSubplebbitView,
+  isSubplebbitSettingsView,
+  isSubplebbitSubmitView,
   isSubplebbitsView,
   isUpvotedView,
 } from '../../lib/utils/view-utils';
@@ -229,12 +230,13 @@ const HeaderTabs = () => {
   const isPostPage = isPostView(location.pathname, params);
   const isProfilePage = isProfileView(location.pathname);
   const isSubplebbitPage = isSubplebbitView(location.pathname, params);
+  const isSubplebbitSettingsPage = isSubplebbitSettingsView(location.pathname, params);
   const isSubplebbitSubmitPage = isSubplebbitSubmitView(location.pathname, params);
   const isSubplebbitsPage = isSubplebbitsView(location.pathname);
 
   if (isPostPage) {
     return <CommentsButton />;
-  } else if (isHomePage || (isSubplebbitPage && !isSubplebbitSubmitPage) || isAllPage) {
+  } else if (isHomePage || (isSubplebbitPage && !isSubplebbitSubmitPage && !isSubplebbitSettingsPage) || isAllPage) {
     return <SortItems />;
   } else if ((isProfilePage || isAuthorPage) && !isPendingPage) {
     return <AuthorHeaderTabs />;
@@ -261,6 +263,7 @@ const HeaderTitle = ({ title, shortAddress }: { title: string; shortAddress: str
   const isSubmitPage = isSubmitView(location.pathname);
   const isSubplebbitPage = isSubplebbitView(location.pathname, params);
   const isSubplebbitSubmitPage = isSubplebbitSubmitView(location.pathname, params);
+  const isSubplebbitSettingsPage = isSubplebbitSettingsView(location.pathname, params);
   const isSubplebbitsPage = isSubplebbitsView(location.pathname);
 
   const subplebbitTitle = <Link to={`/p/${params.subplebbitAddress}`}>{title || shortAddress}</Link>;
@@ -274,8 +277,14 @@ const HeaderTitle = ({ title, shortAddress }: { title: string; shortAddress: str
         {subplebbitTitle}: {submitTitle}
       </>
     );
-  } else if (isPostPage || isSubplebbitPage) {
+  } else if (isPostPage || (isSubplebbitPage && !isSubplebbitSettingsPage)) {
     return subplebbitTitle;
+  } else if (isSubplebbitSettingsPage) {
+    return (
+      <>
+        {subplebbitTitle}: {t('settings')}
+      </>
+    );
   } else if (isSubmitPage) {
     return submitTitle;
   } else if (isSettingsPage) {
@@ -311,16 +320,17 @@ const Header = () => {
   const isSubplebbitPage = isSubplebbitView(location.pathname, params);
   const isSubmitPage = isSubmitView(location.pathname);
   const isSubplebbitSubmitPage = isSubplebbitSubmitView(location.pathname, params);
+  const isSubplebbitSettingsPage = isSubplebbitSettingsView(location.pathname, params);
 
   const account = useAccount();
   const authorComment = useComment({ commentCid: params?.commentCid });
   const author = isProfilePage ? account?.author : isAuthorPage ? authorComment?.author : null;
   const { imageUrl } = useAuthorAvatar({ author });
 
-  const hasFewTabs = isPostPage || isSubmitPage || isSubplebbitSubmitPage || isSettingsPage || isInboxPage;
+  const hasFewTabs = isPostPage || isSubmitPage || isSubplebbitSubmitPage || isSubplebbitSettingsPage || isSettingsPage || isInboxPage;
   const hasStickyHeader =
     isHomePage ||
-    (isSubplebbitPage && !isSubplebbitSubmitPage && !isPostPage && !isAboutPage) ||
+    (isSubplebbitPage && !isSubplebbitSubmitPage && !isSubplebbitSettingsPage && !isPostPage && !isAboutPage) ||
     (isProfilePage && !isAboutPage) ||
     isAllPage ||
     (isAuthorPage && !isAboutPage);
