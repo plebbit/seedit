@@ -92,6 +92,7 @@ const Subplebbit = ({ subplebbit }: SubplebbitProps) => {
       </div>
       <div className={styles.entry}>
         <div className={styles.title}>
+          <span className={`${styles.onlineIndicator} ${isOnline ? styles.online : styles.offline}`} />
           <Link to={`/p/${address}`}>
             p/{address.includes('.') ? address : shortAddress}
             {title && `: ${title}`}

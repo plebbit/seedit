@@ -101,6 +101,22 @@
   opacity: 1;
 }
 
+.onlineIndicator {
+  background-repeat: no-repeat;
+  display: inline-flex;
+  height: 13px;
+  width: 13px;
+  margin: 2px 5px -2px 2px;
+}
+
+.online {
+  background-image: url('/public/assets/indicator-online.png');
+}
+
+.offline {
+  background-image: url('/public/assets/indicator-offline.png');
+}
+
 .title {
   display: inline-flex;
   flex-wrap: wrap;
