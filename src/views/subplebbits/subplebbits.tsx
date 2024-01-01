@@ -21,11 +21,19 @@ const Tabs = () => {
 
   return (
     <div className={styles.subplebbitsTabs}>
-      <Link to='/communities/mine/subscriber' className={isSubplebbitsMineSubscriberPage ? styles.selected : styles.choice}>
+      <Link
+        to='/communities/mine/subscriber'
+        className={isSubplebbitsMineSubscriberPage ? styles.selected : styles.choice}
+        onClick={(e) => e.preventDefault()} // TODO: enable after useSubplebbits cache is implemented in the API
+      >
         subscriber
       </Link>
       <span className={styles.separator}>|</span>
-      <Link to='/communities/mine/contributor' className={isSubplebbitsMineContributorPage ? styles.selected : styles.choice}>
+      <Link
+        to='/communities/mine/contributor'
+        className={isSubplebbitsMineContributorPage ? styles.selected : styles.choice}
+        onClick={(e) => e.preventDefault()} // TODO: enable after approving user is implemented in the API
+      >
         approved user
       </Link>
       <span className={styles.separator}>|</span>

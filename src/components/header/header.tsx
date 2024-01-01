@@ -199,17 +199,17 @@ const SubplebbitsHeaderTabs = () => {
   return (
     <>
       <li>
-        <Link to={'/communities'} className={styles.choice}>
+        <Link to={'/communities'} className={styles.choice} onClick={(e) => e.preventDefault()}>
           approved
         </Link>
       </li>
       <li>
-        <Link to={'/communities'} className={styles.choice}>
+        <Link to={'/communities'} className={styles.choice} onClick={(e) => e.preventDefault()}>
           proposed
         </Link>
       </li>
       <li>
-        <Link to={'/communities'} className={styles.selected}>
+        <Link to={'/communities'} className={styles.selected} onClick={(e) => e.preventDefault()}>
           {t('my_communities')}
         </Link>
       </li>
