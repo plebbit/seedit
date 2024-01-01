@@ -199,8 +199,8 @@ const SubplebbitsHeaderTabs = () => {
   return (
     <>
       <li>
-        <Link to={'/communities'} className={styles.selected}>
-          {t('home')}
+        <Link to={'/communities'} className={styles.choice}>
+          approved
         </Link>
       </li>
       <li>
@@ -209,7 +209,7 @@ const SubplebbitsHeaderTabs = () => {
         </Link>
       </li>
       <li>
-        <Link to={'/communities'} className={styles.choice}>
+        <Link to={'/communities'} className={styles.selected}>
           {t('my_communities')}
         </Link>
       </li>

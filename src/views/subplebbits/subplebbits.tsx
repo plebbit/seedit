@@ -16,10 +16,26 @@ const Subplebbit = ({ subplebbit }: SubplebbitProps) => {
   const { address, createdAt, description, shortAddress, title } = subplebbit || {};
   const { allActiveUserCount } = useSubplebbitStats({ subplebbitAddress: address });
 
+  // TODO: make arrows functional when token voting is implemented in the API
+  const upvoted = false;
+  const downvoted = false;
+  const upvoteCount = 0;
+  const downvoteCount = 0;
+
+  const postScore = upvoteCount === 0 && downvoteCount === 0 ? '•' : upvoteCount - downvoteCount || '•';
+
   return (
     <div className={styles.subplebbit}>
       <div className={styles.midcol}>
-        <SubscribeButton address={address} />
+        <div className={styles.midcol}>
+          <div className={styles.arrowWrapper}>
+            <div className={`${styles.arrowCommon} ${upvoted ? styles.upvoted : styles.arrowUp}`} />
+          </div>
+          <div className={styles.score}>{postScore}</div>
+          <div className={styles.arrowWrapper}>
+            <div className={`${styles.arrowCommon} ${downvoted ? styles.downvoted : styles.arrowDown}`} />
+          </div>
+        </div>
       </div>
       <div className={styles.entry}>
         <div className={styles.title}>
@@ -27,11 +43,25 @@ const Subplebbit = ({ subplebbit }: SubplebbitProps) => {
             p/{address.includes('.') ? address : shortAddress}
             {title && `: ${title}`}
           </Link>
+          <span className={styles.subscribeButton}>
+            <SubscribeButton address={address} />
+          </span>
         </div>
         {description && <div className={styles.description}>{description}</div>}
         <div className={styles.tagline}>
           <span>
-            {t('readers_count', { count: allActiveUserCount })}, {t('community_for', { date: getFormattedDuration(createdAt) })}
+            {allActiveUserCount ? (
+              <>
+                {t('members_count', { count: allActiveUserCount })}, {t('community_for', { date: getFormattedDuration(createdAt) })}
+                <div className={styles.subplebbitPreferences}>
+                  <Link to={`/p/${address}/settings`} onClick={(e) => e.preventDefault()}>
+                    {t('preferences')}
+                  </Link>
+                </div>
+              </>
+            ) : (
+              'this community is offline'
+            )}
           </span>
         </div>
       </div>
