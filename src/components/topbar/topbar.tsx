@@ -160,7 +160,7 @@ const TopBar = () => {
             ))}
           </ul>
         </div>
-        <Link to='/communities' className={styles.moreLink}>
+        <Link to='/communities/mine' className={styles.moreLink}>
           {t('edit')} »
         </Link>
       </div>

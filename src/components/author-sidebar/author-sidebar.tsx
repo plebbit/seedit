@@ -16,7 +16,7 @@ import {
 } from '@plebbit/plebbit-react-hooks';
 // import { getShortAddress } from '@plebbit/plebbit-js';
 import styles from './author-sidebar.module.css';
-import { getFormattedDuration } from '../../lib/utils/time-utils';
+import { getFormattedTimeDuration } from '../../lib/utils/time-utils';
 import { isAuthorView, isProfileView } from '../../lib/utils/view-utils';
 import {
   // findAuthorSubplebbits,
@@ -141,7 +141,7 @@ const AuthorSidebar = () => {
             </span>
           )}
           <span className={styles.age}>
-            {t('plebbitor_for')} {getFormattedDuration(oldestCommentTimestamp)}
+            {t('plebbitor_for')} {getFormattedTimeDuration(oldestCommentTimestamp)}
           </span>
         </div>
       </div>

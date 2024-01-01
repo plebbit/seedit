@@ -110,6 +110,22 @@ export const isSubplebbitsView = (pathname: string): boolean => {
   return pathname.startsWith('/communities');
 };
 
+export const isSubplebbitsMineView = (pathname: string): boolean => {
+  return pathname === '/communities/mine';
+};
+
+export const isSubplebbitsMineSubscriberView = (pathname: string): boolean => {
+  return pathname === '/communities/mine' || pathname === '/communities/mine/subscriber';
+};
+
+export const isSubplebbitsMineContributorView = (pathname: string): boolean => {
+  return pathname === '/communities/mine/contributor';
+};
+
+export const isSubplebbitsMineModeratorView = (pathname: string): boolean => {
+  return pathname === '/communities/mine/moderator';
+};
+
 export const isUpvotedView = (pathname: string): boolean => {
   return pathname === '/profile/upvoted';
 };

@@ -1,19 +1,70 @@
 import { useMemo } from 'react';
-import { Subplebbit as SubplebbitType, useAccountSubplebbits, useSubplebbitStats } from '@plebbit/plebbit-react-hooks';
+import { Link, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import { Subplebbit as SubplebbitType, useAccountSubplebbits, useSubplebbitStats } from '@plebbit/plebbit-react-hooks';
 import styles from './subplebbits.module.css';
 import Sidebar from '../../components/sidebar';
 import SubscribeButton from '../../components/subscribe-button';
-import { Link } from 'react-router-dom';
-import { getFormattedDuration } from '../../lib/utils/time-utils';
+import { getFormattedTimeDuration, getFormattedTimeAgo } from '../../lib/utils/time-utils';
+import { isSubplebbitsMineContributorView, isSubplebbitsMineSubscriberView, isSubplebbitsMineModeratorView } from '../../lib/utils/view-utils';
 
 interface SubplebbitProps {
   subplebbit: SubplebbitType;
 }
 
+const Tabs = () => {
+  const { t } = useTranslation();
+  const location = useLocation();
+  const isSubplebbitsMineSubscriberPage = isSubplebbitsMineSubscriberView(location.pathname);
+  const isSubplebbitsMineContributorPage = isSubplebbitsMineContributorView(location.pathname);
+  const isSubplebbitsMineModeratorPage = isSubplebbitsMineModeratorView(location.pathname);
+
+  return (
+    <div className={styles.subplebbitsTabs}>
+      <Link to='/communities/mine/subscriber' className={isSubplebbitsMineSubscriberPage ? styles.selected : styles.choice}>
+        subscriber
+      </Link>
+      <span className={styles.separator}>|</span>
+      <Link to='/communities/mine/contributor' className={isSubplebbitsMineContributorPage ? styles.selected : styles.choice}>
+        approved user
+      </Link>
+      <span className={styles.separator}>|</span>
+      <Link to='/communities/mine/moderator' className={isSubplebbitsMineModeratorPage ? styles.selected : styles.choice}>
+        {t('moderator')}
+      </Link>
+    </div>
+  );
+};
+
+const Infobar = () => {
+  const { t } = useTranslation();
+  const location = useLocation();
+  const isSubplebbitsMineSubscriberPage = isSubplebbitsMineSubscriberView(location.pathname);
+  const isSubplebbitsMineContributorPage = isSubplebbitsMineContributorView(location.pathname);
+  const isSubplebbitsMineModeratorPage = isSubplebbitsMineModeratorView(location.pathname);
+
+  const infobarText = useMemo(() => {
+    if (isSubplebbitsMineSubscriberPage) {
+      return 'below are communities you have subscribed to.';
+    } else if (isSubplebbitsMineContributorPage) {
+      return 'below are the communities that you are an approved user on.';
+    } else if (isSubplebbitsMineModeratorPage) {
+      return 'below are the communities that you have moderator access to.';
+    } else {
+      return (
+        <>
+          click the <code>{t('join')}</code> or <code>{t('leave')}</code> buttons to choose which communities appear on the home feed.
+        </>
+      );
+    }
+  }, [isSubplebbitsMineSubscriberPage, isSubplebbitsMineContributorPage, isSubplebbitsMineModeratorPage, t]);
+
+  return <div className={styles.infobar}>{infobarText}</div>;
+};
+
 const Subplebbit = ({ subplebbit }: SubplebbitProps) => {
   const { t } = useTranslation();
-  const { address, createdAt, description, shortAddress, title } = subplebbit || {};
+  const { address, createdAt, description, shortAddress, title, updatedAt } = subplebbit || {};
   const { allActiveUserCount } = useSubplebbitStats({ subplebbitAddress: address });
 
   // TODO: make arrows functional when token voting is implemented in the API
@@ -23,6 +74,8 @@ const Subplebbit = ({ subplebbit }: SubplebbitProps) => {
   const downvoteCount = 0;
 
   const postScore = upvoteCount === 0 && downvoteCount === 0 ? '•' : upvoteCount - downvoteCount || '•';
+  const isOnline = updatedAt && updatedAt > Date.now() / 1000 - 60 * 30;
+  const offlineNotice = updatedAt && t('community_last_seen', { dateAgo: getFormattedTimeAgo(updatedAt) });
 
   return (
     <div className={styles.subplebbit}>
@@ -50,9 +103,9 @@ const Subplebbit = ({ subplebbit }: SubplebbitProps) => {
         {description && <div className={styles.description}>{description}</div>}
         <div className={styles.tagline}>
           <span>
-            {allActiveUserCount ? (
+            {isOnline ? (
               <>
-                {t('members_count', { count: allActiveUserCount })}, {t('community_for', { date: getFormattedDuration(createdAt) })}
+                {t('members_count', { count: allActiveUserCount })}, {t('community_for', { date: getFormattedTimeDuration(createdAt) })}
                 <div className={styles.subplebbitPreferences}>
                   <Link to={`/p/${address}/settings`} onClick={(e) => e.preventDefault()}>
                     {t('preferences')}
@@ -60,7 +113,7 @@ const Subplebbit = ({ subplebbit }: SubplebbitProps) => {
                 </div>
               </>
             ) : (
-              'this community is offline'
+              offlineNotice
             )}
           </span>
         </div>
@@ -70,7 +123,6 @@ const Subplebbit = ({ subplebbit }: SubplebbitProps) => {
 };
 
 const Subplebbits = () => {
-  const { t } = useTranslation();
   const { accountSubplebbits } = useAccountSubplebbits();
   const accountSubplebbitsArray = useMemo(() => Object.values(accountSubplebbits), [accountSubplebbits]);
 
@@ -79,9 +131,8 @@ const Subplebbits = () => {
       <div className={`${styles.sidebar}`}>
         <Sidebar />
       </div>
-      <div className={styles.infobar}>
-        click the <code>{t('join')}</code> or <code>{t('leave')}</code> buttons to choose which communities appear on the home feed.
-      </div>
+      <Tabs />
+      <Infobar />
       {accountSubplebbitsArray?.map((subplebbit) => <Subplebbit subplebbit={subplebbit} />)}
     </div>
   );

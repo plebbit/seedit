@@ -32,7 +32,7 @@
   border-style: solid;
   border-width: 1px;
   font-size: small;
-  margin-bottom: 10px;
+  margin: 3px 0px;
   padding: 6px 10px;
   color: var(--text);
   word-wrap: break-word;
@@ -117,6 +117,7 @@
   color: var(--link);
 }
 
+/* TODO: consider to enable this later, when lots of new communities will be proposed */
 /* .title a:visited {
   color: var(--link-visited);
 } */
@@ -151,4 +152,36 @@
 .subplebbitPreferences a:hover {
   text-decoration: underline;
   cursor: pointer;
+}
+
+.subplebbitsTabs {
+  border-bottom: 1px dotted gray;
+  padding: 5px 10px;
+  margin-left: 5px;
+  overflow: hidden;
+  font-size: larger;
+  display: inline-block;
+  margin-right: 15px;
+  text-transform: lowercase;
+}
+
+.subplebbitsTabs a span {
+  display: inline;
+  white-space: nowrap;
+}
+
+.subplebbitsTabs a {
+  text-decoration: none;
+  color: var(--text-primary);
+}
+
+.separator {
+  color: var(--gray);
+  margin: 0px .7ex 0px .7ex;
+  cursor: default;
+}
+
+.selected {
+  color: var(--green) !important;
+  font-weight: bold;
 }
