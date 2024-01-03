@@ -35,7 +35,7 @@ export const getFormattedTimeAgo = (unixTimestamp: number): string => {
   return t('time_x_years_ago', { count: Math.floor(timeDifference / 31104000) });
 };
 
-export const getFormattedDuration = (unixTimestamp: number): string => {
+export const getFormattedTimeDuration = (unixTimestamp: number): string => {
   const currentTime = Date.now() / 1000;
   const timeDifference = currentTime - unixTimestamp;
   const t = i18next.t;

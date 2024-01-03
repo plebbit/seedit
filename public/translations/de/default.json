@@ -172,5 +172,9 @@
   "no_posts": "keine Beiträge",
   "media_url": "Medien-URL",
   "post_locked_info": "Dieser Beitrag ist gesperrt. Sie können keine Kommentare abgeben.",
-  "no_subscriptions_notice": "Du hast dich noch keiner Community angeschlossen."
+  "no_subscriptions_notice": "Du hast dich noch keiner Community angeschlossen.",
+  "members_count": "{{count}} Mitglieder",
+  "communities": "Gemeinschaft",
+  "edit": "bearbeiten",
+  "moderator": "Moderator"
 }

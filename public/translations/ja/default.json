@@ -172,5 +172,9 @@
   "no_posts": "投稿はありません",
   "media_url": "メディア URL",
   "post_locked_info": "この投稿はロックされています。コメントできません。",
-  "no_subscriptions_notice": "まだどのコミュニティにも参加していません。"
+  "no_subscriptions_notice": "まだどのコミュニティにも参加していません。",
+  "members_count": "{{count}} メンバー",
+  "communities": "コミュニティ",
+  "edit": "編集",
+  "moderator": "モデレーター"
 }

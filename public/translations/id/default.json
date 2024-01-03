@@ -172,5 +172,9 @@
   "no_posts": "tidak ada posting",
   "media_url": "URL media",
   "post_locked_info": "Pos ini terkunci. Anda tidak akan dapat mengomentari.",
-  "no_subscriptions_notice": "Anda belum bergabung dengan komunitas mana pun."
+  "no_subscriptions_notice": "Anda belum bergabung dengan komunitas mana pun.",
+  "members_count": "{{count}} anggota",
+  "communities": "komunitas",
+  "edit": "mengedit",
+  "moderator": "Moderator"
 }

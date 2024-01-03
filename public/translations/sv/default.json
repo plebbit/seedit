@@ -172,5 +172,9 @@
   "no_posts": "inga inlägg",
   "media_url": "media-url",
   "post_locked_info": "Detta inlägg är låst. Du kommer inte att kunna kommentera.",
-  "no_subscriptions_notice": "Du har ännu inte gått med i någon gemenskap."
+  "no_subscriptions_notice": "Du har ännu inte gått med i någon gemenskap.",
+  "members_count": "{{count}} medlemmar",
+  "communities": "gemenskap",
+  "edit": "redigera",
+  "moderator": "Moderator"
 }

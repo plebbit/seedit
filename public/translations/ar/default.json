@@ -172,5 +172,9 @@
   "no_posts": "لا توجد مشاركات",
   "media_url": "عنوان وسائط",
   "post_locked_info": "هذا المنشور مغلق. لن تتمكن من التعليق.",
-  "no_subscriptions_notice": "لم تنضم إلى أي مجتمع بعد."
+  "no_subscriptions_notice": "لم تنضم إلى أي مجتمع بعد.",
+  "members_count": "{{count}} أعضاء",
+  "communities": "مجتمع",
+  "edit": "تعديل",
+  "moderator": "مشرف"
 }

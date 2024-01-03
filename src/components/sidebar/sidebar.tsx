@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { getShortAddress } from '@plebbit/plebbit-js';
 import { useBlock, Role, useSubplebbitStats, useAccountComment } from '@plebbit/plebbit-react-hooks';
 import styles from './sidebar.module.css';
-import { getFormattedDate, getFormattedDuration, getFormattedTimeAgo } from '../../lib/utils/time-utils';
+import { getFormattedDate, getFormattedTimeDuration, getFormattedTimeAgo } from '../../lib/utils/time-utils';
 import { findSubplebbitCreator } from '../../lib/utils/user-utils';
 import { isAboutView, isAllView, isHomeView, isPendingView, isPostView, isSubplebbitsView } from '../../lib/utils/view-utils';
 import SearchBar from '../search-bar';
@@ -138,7 +138,7 @@ const Sidebar = ({ address, cid, createdAt, description, downvoteCount = 0, role
           </Link>
           <div className={styles.subscribeContainer}>
             <SubscribeButton address={address} />
-            <span className={styles.subscribers}>{t('readers_count', { count: allActiveUserCount })}</span>
+            <span className={styles.subscribers}>{t('members_count', { count: allActiveUserCount })}</span>
           </div>
           <div className={styles.onlineLine}>
             <span className={`${styles.onlineIndicator} ${isOnline ? styles.online : styles.offline}`} />
@@ -158,7 +158,7 @@ const Sidebar = ({ address, cid, createdAt, description, downvoteCount = 0, role
           <div className={styles.bottom}>
             {t('created_by', { creatorAddress: '' })}
             <Link to={`/u/${creatorAddress}`} onClick={(e) => e.preventDefault()}>{`u/${creatorAddress}`}</Link>
-            {createdAt && <span className={styles.age}> {t('community_for', { date: getFormattedDuration(createdAt) })}</span>}
+            {createdAt && <span className={styles.age}> {t('community_for', { date: getFormattedTimeDuration(createdAt) })}</span>}
             <div className={styles.blockSub} onClick={blockConfirm}>
               {blocked ? t('unblock_community') : t('block_community')}
             </div>

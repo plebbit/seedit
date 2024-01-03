@@ -172,5 +172,9 @@
   "no_posts": "gönderi yok",
   "media_url": "medya URL'si",
   "post_locked_info": "Bu gönderi kilitlendi. Yorum yapamayacaksınız.",
-  "no_subscriptions_notice": "Henüz herhangi bir topluluğa katılmadınız."
+  "no_subscriptions_notice": "Henüz herhangi bir topluluğa katılmadınız.",
+  "members_count": "{{count}} üye",
+  "communities": "topluluk",
+  "edit": "düzenle",
+  "moderator": "Moderatör"
 }

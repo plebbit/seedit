@@ -1,10 +1,18 @@
 @media (max-width: 768px) {
   .content {
-    padding: 7px 0px 0px 0px;
+    padding: 7px 0px 20px 0px;
   }
 
   .sidebar {
     display: none;
+  }
+
+  .infobar {
+    margin: 0px 5px;
+  }
+
+  .subplebbit {
+    padding-right: 5px;
   }
 }
 
@@ -13,8 +21,8 @@
     padding: 7px 5px 0px 5px;
   }
 
-  .stateString {
-    max-width: calc(100% - 305px);
+  .stateString, .infobar {
+    max-width: calc(100% - 327px);
   }
 }
 
@@ -24,7 +32,7 @@
   border-style: solid;
   border-width: 1px;
   font-size: small;
-  margin: 0 305px 5px 0px;
+  margin: 3px 0px;
   padding: 6px 10px;
   color: var(--text);
   word-wrap: break-word;
@@ -41,15 +49,51 @@
 
 .subplebbit {
   margin-bottom: 10px;
+  height: auto;
+  overflow: hidden;
 }
 
 .midcol {
-  margin-right: 5px;
-  margin-top: 5px;
-  text-align: right;
-  width: 12em;
+  width: 37px;
+  font-weight: bold;
+  font-size: small;
   float: left;
-  margin-left: 7px;
+  padding-right: 7px;
+  background: transparent;
+  overflow: hidden;
+}
+
+.arrowWrapper {
+  padding-left: 11px;
+  padding-top: 2px;
+}
+
+.arrowCommon {
+  width: 15px;
+  height: 14px;
+  display: block;
+  cursor: pointer;
+}
+
+.arrowUp {
+  background-image: url("/public/assets/buttons/arrow-up.png");
+}
+
+.upvoted {
+  background-image: url("/public/assets/buttons/arrow-upvoted.png") !important;
+}
+
+.arrowDown {
+  background-image: url("/public/assets/buttons/arrow-down.png");
+}
+
+.downvoted {
+  background-image: url("/public/assets/buttons/arrow-downvoted.png") !important;
+}
+
+.score {
+  text-align: center;
+  color: var(--icon);
 }
 
 .entry {
@@ -57,24 +101,48 @@
   opacity: 1;
 }
 
+.onlineIndicator {
+  background-repeat: no-repeat;
+  display: inline-flex;
+  height: 13px;
+  width: 13px;
+  margin: 3px 5px -2px 2px;
+}
+
+.online {
+  background-image: url('/public/assets/indicator-online.png');
+}
+
+.offline {
+  background-image: url('/public/assets/indicator-offline.png');
+}
+
 .title {
-  margin-bottom: 1px;
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
   font-size: medium;
-  margin-right: 5px;
   overflow: hidden;
   unicode-bidi: isolate;
+  margin-bottom: -2px;
 }
 
 .title a {
+  margin-right: 10px;
+  flex-grow: 1;
   color: var(--link);
 }
 
+/* TODO: consider to enable this later, when lots of new communities will be proposed */
 /* .title a:visited {
   color: var(--link-visited);
 } */
 
+.subscribeButton {
+  margin-top: 2px;
+}
+
 .description {
-  font-size: small;
   max-width: 60em;
   unicode-bidi: isolate;
   background-color: var(--background-markdown);
@@ -83,4 +151,53 @@
   padding: 2px 5px;
   border-radius: 7px;
   margin: 5px 0px;
+  word-wrap: break-word;
+  font-size: 14px;
+}
+
+.subplebbitPreferences {
+  padding: 0 1px;
+  line-height: 1.6em;
+}
+
+.subplebbitPreferences a {
+  color: var(--gray-contrast);
+  font-weight: bold;
+}
+
+.subplebbitPreferences a:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.subplebbitsTabs {
+  border-bottom: 1px dotted gray;
+  padding: 5px 10px;
+  margin-left: 5px;
+  overflow: hidden;
+  font-size: larger;
+  display: inline-block;
+  margin-right: 15px;
+  text-transform: lowercase;
+}
+
+.subplebbitsTabs a span {
+  display: inline;
+  white-space: nowrap;
+}
+
+.subplebbitsTabs a {
+  text-decoration: none;
+  color: var(--text-primary);
+}
+
+.separator {
+  color: var(--gray);
+  margin: 0px .7ex 0px .7ex;
+  cursor: default;
+}
+
+.selected {
+  color: var(--green) !important;
+  font-weight: bold;
 }

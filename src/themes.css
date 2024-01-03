@@ -1,4 +1,5 @@
 :root .light {
+  --blue: blue;
   --orange: #FF7500;
   --green: #228822;
   --yellow: goldenrod;
@@ -52,6 +53,7 @@
 }
 
 :root .dark {
+  --blue: rgb(47, 125, 255);
   --orange: #FF7500;
   --green: #228822;
   --yellow: rgb(200, 171, 0);

@@ -172,5 +172,9 @@
   "no_posts": "nincsenek hozzászólások",
   "media_url": "média URL",
   "post_locked_info": "Ez a bejegyzés zárolva van. Nem fogsz tudni hozzászólni.",
-  "no_subscriptions_notice": "Még nem csatlakoztál egyetlen közösséghez sem."
+  "no_subscriptions_notice": "Még nem csatlakoztál egyetlen közösséghez sem.",
+  "members_count": "{{count}} tag",
+  "communities": "közösség",
+  "edit": "szerkesztés",
+  "moderator": "Moderátor"
 }

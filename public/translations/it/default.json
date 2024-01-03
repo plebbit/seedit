@@ -172,5 +172,9 @@
   "no_posts": "nessun post",
   "media_url": "URL media",
   "post_locked_info": "Questo post è stato bloccato. Non potrai commentarlo.",
-  "no_subscriptions_notice": "Non ti sei ancora unito a nessuna comunità."
+  "no_subscriptions_notice": "Non ti sei ancora unito a nessuna comunità.",
+  "members_count": "{{count}} membri",
+  "communities": "comunità",
+  "edit": "modifica",
+  "moderator": "Moderatore"
 }

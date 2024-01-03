@@ -172,5 +172,9 @@
   "no_posts": "žádné příspěvky",
   "media_url": "URL médií",
   "post_locked_info": "Tento příspěvek je uzamčen. Nebudete moci komentovat.",
-  "no_subscriptions_notice": "Dosud jste se nepřipojili k žádné komunitě."
+  "no_subscriptions_notice": "Dosud jste se nepřipojili k žádné komunitě.",
+  "members_count": "{{count}} členů",
+  "communities": "komunita",
+  "edit": "upravit",
+  "moderator": "Moderátor"
 }
