@@ -176,5 +176,9 @@
   "members_count": "{{count}} सदस्य",
   "communities": "समुदाय",
   "edit": "संपादित करें",
-  "moderator": "मॉडरेटर"
+  "moderator": "मॉडरेटर",
+  "description": "विवरण",
+  "rules": "नियम",
+  "challenge": "चुनौती",
+  "settings": "सेटिंग्स"
 }

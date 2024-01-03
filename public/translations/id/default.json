@@ -176,5 +176,9 @@
   "members_count": "{{count}} anggota",
   "communities": "komunitas",
   "edit": "mengedit",
-  "moderator": "Moderator"
+  "moderator": "Moderator",
+  "description": "Deskripsi",
+  "rules": "Aturan",
+  "challenge": "Tantangan",
+  "settings": "Pengaturan"
 }

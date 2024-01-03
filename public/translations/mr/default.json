@@ -176,5 +176,9 @@
   "members_count": "{{count}} सदस्य",
   "communities": "संघा",
   "edit": "संपादन",
-  "moderator": "संचालक"
+  "moderator": "संचालक",
+  "description": "वर्णन",
+  "rules": "नियम",
+  "challenge": "सवाल",
+  "settings": "सेटिंग्ज"
 }

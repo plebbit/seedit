@@ -176,5 +176,9 @@
   "members_count": "{{count}} członków",
   "communities": "społeczność",
   "edit": "edytuj",
-  "moderator": "Moderator"
+  "moderator": "Moderator",
+  "description": "Opis",
+  "rules": "Reguły",
+  "challenge": "Wyzwanie",
+  "settings": "Ustawienia"
 }

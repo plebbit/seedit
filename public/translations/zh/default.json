@@ -176,5 +176,9 @@
   "members_count": "{{count}} 成员",
   "communities": "社区",
   "edit": "编辑",
-  "moderator": "版主"
+  "moderator": "版主",
+  "description": "描述",
+  "rules": "规则",
+  "challenge": "挑战",
+  "settings": "设置"
 }

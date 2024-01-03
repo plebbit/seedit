@@ -176,5 +176,9 @@
   "members_count": "{{count}} عضو",
   "communities": "انجمن",
   "edit": "ویرایش",
-  "moderator": "مدیر"
+  "moderator": "مدیر",
+  "description": "توضیحات",
+  "rules": "قوانین",
+  "challenge": "چالش",
+  "settings": "تنظیمات"
 }

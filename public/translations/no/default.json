@@ -176,5 +176,9 @@
   "members_count": "{{count}} medlemmer",
   "communities": "fellesskap",
   "edit": "redigere",
-  "moderator": "Moderator"
+  "moderator": "Moderator",
+  "description": "Beskrivelse",
+  "rules": "Regler",
+  "challenge": "Utfordring",
+  "settings": "Innstillinger"
 }

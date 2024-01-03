@@ -176,5 +176,9 @@
   "members_count": "{{count}} رکن",
   "communities": "مجتمع",
   "edit": "ترمیم کرنا",
-  "moderator": "منتظم"
+  "moderator": "منتظم",
+  "description": "تفصیل",
+  "rules": "قوانین",
+  "challenge": "مقابلہ",
+  "settings": "ترتیبات"
 }

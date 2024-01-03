@@ -176,5 +176,9 @@
   "members_count": "{{count}} участников",
   "communities": "сообщество",
   "edit": "редактировать",
-  "moderator": "Модератор"
+  "moderator": "Модератор",
+  "description": "Описание",
+  "rules": "Правила",
+  "challenge": "Испытание",
+  "settings": "Настройки"
 }

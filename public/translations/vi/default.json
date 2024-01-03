@@ -176,5 +176,9 @@
   "members_count": "{{count}} thành viên",
   "communities": "cộng đồng",
   "edit": "sửa đổi",
-  "moderator": "Quản trị viên"
+  "moderator": "Quản trị viên",
+  "description": "Mô tả",
+  "rules": "Quy tắc",
+  "challenge": "Thử thách",
+  "settings": "Cài đặt"
 }

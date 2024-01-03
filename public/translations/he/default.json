@@ -176,5 +176,9 @@
   "members_count": "{{count}} חברים",
   "communities": "קהילה",
   "edit": "עריכה",
-  "moderator": "מנהל"
+  "moderator": "מנהל",
+  "description": "תיאור",
+  "rules": "כללים",
+  "challenge": "אתגר",
+  "settings": "הגדרות"
 }

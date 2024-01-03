@@ -176,5 +176,9 @@
   "members_count": "{{count}} সদস্য",
   "communities": "সম্প্রদান",
   "edit": "সম্পাদনা",
-  "moderator": "মডারেটর"
+  "moderator": "মডারেটর",
+  "description": "বর্ণনা",
+  "rules": "নির্বাচনসমূহ",
+  "challenge": "চ্যালেঞ্জ",
+  "settings": "সেটিংস"
 }

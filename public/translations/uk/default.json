@@ -176,5 +176,9 @@
   "members_count": "{{count}} учасників",
   "communities": "спільнота",
   "edit": "редагування",
-  "moderator": "Модератор"
+  "moderator": "Модератор",
+  "description": "Опис",
+  "rules": "Правила",
+  "challenge": "Виклик",
+  "settings": "Налаштування"
 }

@@ -176,5 +176,9 @@
   "members_count": "{{count}} membri",
   "communities": "comunitate",
   "edit": "modifica",
-  "moderator": "Moderator"
+  "moderator": "Moderator",
+  "description": "Descriere",
+  "rules": "Reguli",
+  "challenge": "Provocare",
+  "settings": "Setări"
 }

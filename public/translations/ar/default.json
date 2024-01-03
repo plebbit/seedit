@@ -176,5 +176,9 @@
   "members_count": "{{count}} أعضاء",
   "communities": "مجتمع",
   "edit": "تعديل",
-  "moderator": "مشرف"
+  "moderator": "مشرف",
+  "description": "وصف",
+  "rules": "قواعد",
+  "challenge": "تحدي",
+  "settings": "الإعدادات"
 }

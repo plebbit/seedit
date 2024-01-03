@@ -176,5 +176,9 @@
   "members_count": "{{count}} jäsentä",
   "communities": "yhteisö",
   "edit": "muokata",
-  "moderator": "Moderaattori"
+  "moderator": "Moderaattori",
+  "description": "Kuvaus",
+  "rules": "Säännöt",
+  "challenge": "Haaste",
+  "settings": "Asetukset"
 }

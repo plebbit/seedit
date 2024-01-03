@@ -176,5 +176,9 @@
   "members_count": "{{count}} anëtarë",
   "communities": "komunitet",
   "edit": "modifikohu",
-  "moderator": "Moderator"
+  "moderator": "Moderator",
+  "description": "Përshkrim",
+  "rules": "Rregullat",
+  "challenge": "Sfidë",
+  "settings": "Cilësimet"
 }

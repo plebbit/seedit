@@ -176,5 +176,9 @@
   "members_count": "{{count}} μέλη",
   "communities": "κοινόνια",
   "edit": "επικοινωνιακό",
-  "moderator": "Διαμεσολαβητής"
+  "moderator": "Διαμεσολαβητής",
+  "description": "Περιγραφή",
+  "rules": "Κανόνες",
+  "challenge": "Πρόκληση",
+  "settings": "Ρυθμίσεις"
 }

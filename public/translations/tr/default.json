@@ -176,5 +176,9 @@
   "members_count": "{{count}} üye",
   "communities": "topluluk",
   "edit": "düzenle",
-  "moderator": "Moderatör"
+  "moderator": "Moderatör",
+  "description": "Açıklama",
+  "rules": "Kurallar",
+  "challenge": "Meydan okuma",
+  "settings": "Ayarlar"
 }

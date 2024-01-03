@@ -282,7 +282,7 @@ const HeaderTitle = ({ title, shortAddress }: { title: string; shortAddress: str
   } else if (isSubplebbitSettingsPage) {
     return (
       <>
-        {subplebbitTitle}: {t('settings')}
+        {subplebbitTitle}: <span className={styles.lowercase}>{t('settings')}</span>
       </>
     );
   } else if (isSubmitPage) {

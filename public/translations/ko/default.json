@@ -176,5 +176,9 @@
   "members_count": "{{count}} 회원",
   "communities": "커뮤니티",
   "edit": "편집",
-  "moderator": "모더레이터"
+  "moderator": "모더레이터",
+  "description": "설명",
+  "rules": "규칙",
+  "challenge": "도전",
+  "settings": "설정"
 }

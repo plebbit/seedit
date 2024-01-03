@@ -176,5 +176,9 @@
   "members_count": "{{count}} సభ్యులు",
   "communities": "సమూహం",
   "edit": "సమూహం",
-  "moderator": "మాడరేటర్"
+  "moderator": "మాడరేటర్",
+  "description": "వివరణ",
+  "rules": "నియమాలు",
+  "challenge": "ఛాలెంజ్",
+  "settings": "సెట్టింగ్లు"
 }

@@ -176,5 +176,9 @@
   "members_count": "{{count}} สมาชิก",
   "communities": "ชุมชน",
   "edit": "แก้ไข",
-  "moderator": "ผู้ดูแล"
+  "moderator": "ผู้ดูแล",
+  "description": "คำอธิบาย",
+  "rules": "กฎ",
+  "challenge": "ท้าทาย",
+  "settings": "การตั้งค่า"
 }

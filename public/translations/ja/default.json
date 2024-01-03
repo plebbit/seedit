@@ -176,5 +176,9 @@
   "members_count": "{{count}} メンバー",
   "communities": "コミュニティ",
   "edit": "編集",
-  "moderator": "モデレーター"
+  "moderator": "モデレーター",
+  "description": "説明",
+  "rules": "ルール",
+  "challenge": "挑戦",
+  "settings": "設定"
 }

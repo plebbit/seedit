@@ -176,5 +176,9 @@
   "members_count": "{{count}} leden",
   "communities": "gemeenschap",
   "edit": "bewerken",
-  "moderator": "Moderator"
+  "moderator": "Moderator",
+  "description": "Beschrijving",
+  "rules": "Regels",
+  "challenge": "Uitdaging",
+  "settings": "Instellingen"
 }

@@ -176,5 +176,9 @@
   "members_count": "{{count}} tag",
   "communities": "közösség",
   "edit": "szerkesztés",
-  "moderator": "Moderátor"
+  "moderator": "Moderátor",
+  "description": "Leírás",
+  "rules": "Szabályok",
+  "challenge": "Kihívás",
+  "settings": "Beállítások"
 }

@@ -176,5 +176,9 @@
   "members_count": "{{count}} miyembro",
   "communities": "komunidad",
   "edit": "ipunin",
-  "moderator": "Moderator"
+  "moderator": "Moderator",
+  "description": "Deskripsyon",
+  "rules": "Mga Alituntunin",
+  "challenge": "Hamong",
+  "settings": "Mga Setting"
 }

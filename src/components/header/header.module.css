@@ -181,3 +181,7 @@
 .singleAboutButton {
   margin-bottom: 1px;
 }
+
+.lowercase {
+  text-transform: lowercase;
+}
