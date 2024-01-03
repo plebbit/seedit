@@ -1,4 +1,4 @@
-import { useMemo } from 'react';
+import { useEffect, useMemo } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { Subplebbit as SubplebbitType, useAccountSubplebbits, useSubplebbitStats } from '@plebbit/plebbit-react-hooks';
@@ -84,6 +84,10 @@ const Subplebbit = ({ subplebbit }: SubplebbitProps) => {
   const postScore = upvoteCount === 0 && downvoteCount === 0 ? '•' : upvoteCount - downvoteCount || '•';
   const isOnline = updatedAt && updatedAt > Date.now() / 1000 - 60 * 30;
   const offlineNotice = updatedAt && t('community_last_seen', { dateAgo: getFormattedTimeAgo(updatedAt) });
+
+  useEffect(() => {
+    document.title = `${t('communities')} - seedit`;
+  }, [t]);
 
   return (
     <div className={styles.subplebbit}>
