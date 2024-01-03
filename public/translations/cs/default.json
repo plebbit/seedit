@@ -180,5 +180,8 @@
   "description": "Popis",
   "rules": "Pravidla",
   "challenge": "Výzva",
-  "settings": "Nastavení"
+  "settings": "Nastavení",
+  "save_options": "Uložit možnosti",
+  "logo": "Logo",
+  "address": "Adresa"
 }

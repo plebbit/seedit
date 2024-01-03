@@ -180,5 +180,8 @@
   "description": "वर्णन",
   "rules": "नियम",
   "challenge": "सवाल",
-  "settings": "सेटिंग्ज"
+  "settings": "सेटिंग्ज",
+  "save_options": "विकल्प साठवा",
+  "logo": "लोगो",
+  "address": "पत्ता"
 }

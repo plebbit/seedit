@@ -180,5 +180,8 @@
   "description": "描述",
   "rules": "规则",
   "challenge": "挑战",
-  "settings": "设置"
+  "settings": "设置",
+  "save_options": "保存选项",
+  "logo": "标志",
+  "address": "地址"
 }

@@ -180,5 +180,8 @@
   "description": "Beskrivning",
   "rules": "Regler",
   "challenge": "Utmaning",
-  "settings": "Inställningar"
+  "settings": "Inställningar",
+  "save_options": "Spara alternativ",
+  "logo": "Logotyp",
+  "address": "Adress"
 }

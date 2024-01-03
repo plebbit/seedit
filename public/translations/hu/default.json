@@ -180,5 +180,8 @@
   "description": "Leírás",
   "rules": "Szabályok",
   "challenge": "Kihívás",
-  "settings": "Beállítások"
+  "settings": "Beállítások",
+  "save_options": "Beállítások mentése",
+  "logo": "Logó",
+  "address": "Cím"
 }

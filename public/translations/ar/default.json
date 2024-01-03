@@ -180,5 +180,8 @@
   "description": "وصف",
   "rules": "قواعد",
   "challenge": "تحدي",
-  "settings": "الإعدادات"
+  "settings": "الإعدادات",
+  "save_options": "حفظ الخيارات",
+  "logo": "شعار",
+  "address": "عنوان"
 }

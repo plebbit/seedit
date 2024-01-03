@@ -180,5 +180,8 @@
   "description": "תיאור",
   "rules": "כללים",
   "challenge": "אתגר",
-  "settings": "הגדרות"
+  "settings": "הגדרות",
+  "save_options": "שמירת האפשרויות",
+  "logo": "לוגו",
+  "address": "כתובת"
 }

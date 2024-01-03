@@ -180,5 +180,8 @@
   "description": "వివరణ",
   "rules": "నియమాలు",
   "challenge": "ఛాలెంజ్",
-  "settings": "సెట్టింగ్లు"
+  "settings": "సెట్టింగ్లు",
+  "save_options": "ఎంచుకోండి సేవ్ చేయండి",
+  "logo": "లోగో",
+  "address": "చిరునామా"
 }

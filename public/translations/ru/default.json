@@ -180,5 +180,8 @@
   "description": "Описание",
   "rules": "Правила",
   "challenge": "Испытание",
-  "settings": "Настройки"
+  "settings": "Настройки",
+  "save_options": "Сохранить настройки",
+  "logo": "Логотип",
+  "address": "Адрес"
 }

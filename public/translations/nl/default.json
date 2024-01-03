@@ -180,5 +180,8 @@
   "description": "Beschrijving",
   "rules": "Regels",
   "challenge": "Uitdaging",
-  "settings": "Instellingen"
+  "settings": "Instellingen",
+  "save_options": "Opties opslaan",
+  "logo": "Logo",
+  "address": "Adres"
 }

@@ -180,5 +180,8 @@
   "description": "Description",
   "rules": "Rules",
   "challenge": "Challenge",
-  "settings": "Settings"
+  "settings": "Settings",
+  "save_options": "Save Options",
+  "logo": "Logo",
+  "address": "Address"
 }

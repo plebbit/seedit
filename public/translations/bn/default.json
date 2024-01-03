@@ -180,5 +180,8 @@
   "description": "বর্ণনা",
   "rules": "নির্বাচনসমূহ",
   "challenge": "চ্যালেঞ্জ",
-  "settings": "সেটিংস"
+  "settings": "সেটিংস",
+  "save_options": "অপশন সংরক্ষণ করুন",
+  "logo": "লোগো",
+  "address": "ঠিকানা"
 }

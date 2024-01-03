@@ -180,5 +180,8 @@
   "description": "توضیحات",
   "rules": "قوانین",
   "challenge": "چالش",
-  "settings": "تنظیمات"
+  "settings": "تنظیمات",
+  "save_options": "ذخیره گزینه‌ها",
+  "logo": "آرم",
+  "address": "آدرس"
 }

@@ -180,5 +180,8 @@
   "description": "Deskripsyon",
   "rules": "Mga Alituntunin",
   "challenge": "Hamong",
-  "settings": "Mga Setting"
+  "settings": "Mga Setting",
+  "save_options": "I-save ang mga Opsyon",
+  "logo": "Logo",
+  "address": "Address"
 }

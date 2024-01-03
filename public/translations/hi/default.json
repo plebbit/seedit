@@ -180,5 +180,8 @@
   "description": "विवरण",
   "rules": "नियम",
   "challenge": "चुनौती",
-  "settings": "सेटिंग्स"
+  "settings": "सेटिंग्स",
+  "save_options": "विकल्प सहेजें",
+  "logo": "लोगो",
+  "address": "पता"
 }

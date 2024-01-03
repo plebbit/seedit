@@ -180,5 +180,8 @@
   "description": "Descriere",
   "rules": "Reguli",
   "challenge": "Provocare",
-  "settings": "Setări"
+  "settings": "Setări",
+  "save_options": "Salvați opțiunile",
+  "logo": "Logo",
+  "address": "Adresă"
 }

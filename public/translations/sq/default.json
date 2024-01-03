@@ -180,5 +180,8 @@
   "description": "Përshkrim",
   "rules": "Rregullat",
   "challenge": "Sfidë",
-  "settings": "Cilësimet"
+  "settings": "Cilësimet",
+  "save_options": "Ruaj Cilësimet",
+  "logo": "Logos",
+  "address": "Adresë"
 }

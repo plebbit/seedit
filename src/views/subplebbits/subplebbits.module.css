@@ -158,6 +158,7 @@
 .subplebbitPreferences {
   padding: 0 1px;
   line-height: 1.6em;
+  text-transform: lowercase;
 }
 
 .subplebbitPreferences a {

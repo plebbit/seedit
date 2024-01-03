@@ -180,5 +180,8 @@
   "description": "설명",
   "rules": "규칙",
   "challenge": "도전",
-  "settings": "설정"
+  "settings": "설정",
+  "save_options": "옵션 저장",
+  "logo": "로고",
+  "address": "주소"
 }

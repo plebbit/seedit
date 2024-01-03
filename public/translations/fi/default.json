@@ -180,5 +180,8 @@
   "description": "Kuvaus",
   "rules": "Säännöt",
   "challenge": "Haaste",
-  "settings": "Asetukset"
+  "settings": "Asetukset",
+  "save_options": "Tallenna asetukset",
+  "logo": "Logo",
+  "address": "Osoite"
 }

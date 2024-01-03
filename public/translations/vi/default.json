@@ -180,5 +180,8 @@
   "description": "Mô tả",
   "rules": "Quy tắc",
   "challenge": "Thử thách",
-  "settings": "Cài đặt"
+  "settings": "Cài đặt",
+  "save_options": "Lưu tùy chọn",
+  "logo": "Logo",
+  "address": "Địa chỉ"
 }

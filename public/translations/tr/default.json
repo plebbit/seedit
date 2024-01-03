@@ -180,5 +180,8 @@
   "description": "Açıklama",
   "rules": "Kurallar",
   "challenge": "Meydan okuma",
-  "settings": "Ayarlar"
+  "settings": "Ayarlar",
+  "save_options": "Seçenekleri Kaydet",
+  "logo": "Logo",
+  "address": "Adres"
 }

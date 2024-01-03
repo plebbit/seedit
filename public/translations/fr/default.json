@@ -180,5 +180,8 @@
   "description": "Description",
   "rules": "Règles",
   "challenge": "Défi",
-  "settings": "Paramètres"
+  "settings": "Paramètres",
+  "save_options": "Enregistrer les options",
+  "logo": "Logo",
+  "address": "Adresse"
 }

@@ -180,5 +180,8 @@
   "description": "Deskripsi",
   "rules": "Aturan",
   "challenge": "Tantangan",
-  "settings": "Pengaturan"
+  "settings": "Pengaturan",
+  "save_options": "Simpan Opsi",
+  "logo": "Logo",
+  "address": "Alamat"
 }
