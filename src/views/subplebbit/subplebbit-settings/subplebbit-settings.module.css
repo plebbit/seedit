@@ -1,0 +1,66 @@
+.content {
+  padding: 7px 5px 50px 5px;
+  color: var(--text);
+}
+
+.box {
+  width: 514px;
+  background-color: var(--background-primary);
+  padding: 10px 5px;
+  font-size: large;
+  margin-bottom: 10px;
+}
+
+.boxTitle {
+  color: var(--blue);
+  font-size: 15px;
+  font-weight: bold;
+  padding: 0px 10px;
+  overflow: hidden;
+  unicode-bidi: isolate;
+}
+
+.boxSubtitle {
+  font-size: 10px;
+  color: var(--text-info);
+  padding-left: 10px;
+  padding-top: 1px;
+}
+
+.boxInput {
+  vertical-align: top;
+  margin-top: 5px;
+  padding: 2px 0px 2px 8px;
+  width: 500px;
+}
+
+.boxInput input {
+  font-size: 100%;
+  width: 492px;
+  padding: 3px;
+  border: 1px solid var(--border-text);
+  box-shadow: var(--box-shadow-input);
+}
+
+.boxInput textarea {
+  box-shadow: var(--box-shadow-input);
+  width: 492px;
+  padding: 3px;
+  border: 1px solid gray;
+  height: 100px;
+  font-family: verdana, arial, helvetica, sans-serif;
+  line-height: 20px;
+  font-size: 14px;
+}
+
+@media (max-width: 768px) {
+  .box {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .boxInput input, .boxInput textarea {
+    width: calc(100% - 104px);
+    box-sizing: border-box;
+  }
+}
