@@ -57,7 +57,6 @@ const YoutubeEmbed = ({ parsedUrl }: EmbedComponentProps) => {
       className={styles.videoEmbed}
       height='100%'
       width='100%'
-      referrerPolicy='no-referrer'
       allow='accelerometer; encrypted-media; gyroscope; picture-in-picture; web-share'
       allowFullScreen
       title={parsedUrl.href}
