@@ -183,5 +183,6 @@
   "settings": "Ajustes",
   "save_options": "Guardar opciones",
   "logo": "Logotipo",
-  "address": "Dirección"
+  "address": "Dirección",
+  "nothing_found": "No parece haber nada aquí"
 }

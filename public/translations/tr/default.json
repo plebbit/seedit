@@ -183,5 +183,6 @@
   "settings": "Ayarlar",
   "save_options": "Seçenekleri Kaydet",
   "logo": "Logo",
-  "address": "Adres"
+  "address": "Adres",
+  "nothing_found": "Burada hiçbir şey görünmüyor gibi"
 }

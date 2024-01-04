@@ -183,5 +183,6 @@
   "settings": "Asetukset",
   "save_options": "Tallenna asetukset",
   "logo": "Logo",
-  "address": "Osoite"
+  "address": "Osoite",
+  "nothing_found": "Täällä ei näytä olevan mitään"
 }

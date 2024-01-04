@@ -91,7 +91,7 @@ const Inbox = () => {
             {t('mark_all_read')}
           </button>
         ) : (
-          <div className={styles.noNotifications}>there doesn't seem to be anything here</div>
+          <div className={styles.noNotifications}>{t('nothing_found')}</div>
         )}
       </div>
       <Virtuoso

@@ -183,5 +183,6 @@
   "settings": "Instellingen",
   "save_options": "Opties opslaan",
   "logo": "Logo",
-  "address": "Adres"
+  "address": "Adres",
+  "nothing_found": "Het lijkt erop dat hier niets is"
 }

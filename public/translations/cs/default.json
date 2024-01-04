@@ -183,5 +183,6 @@
   "settings": "Nastavení",
   "save_options": "Uložit možnosti",
   "logo": "Logo",
-  "address": "Adresa"
+  "address": "Adresa",
+  "nothing_found": "Zdá se, že zde nic není"
 }

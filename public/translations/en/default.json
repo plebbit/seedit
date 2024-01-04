@@ -183,5 +183,6 @@
   "settings": "Settings",
   "save_options": "Save Options",
   "logo": "Logo",
-  "address": "Address"
+  "address": "Address",
+  "nothing_found": "There doesn't seem to be anything here"
 }

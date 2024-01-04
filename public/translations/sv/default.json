@@ -183,5 +183,6 @@
   "settings": "Inställningar",
   "save_options": "Spara alternativ",
   "logo": "Logotyp",
-  "address": "Adress"
+  "address": "Adress",
+  "nothing_found": "Det verkar inte finnas något här"
 }

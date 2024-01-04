@@ -183,5 +183,6 @@
   "settings": "الإعدادات",
   "save_options": "حفظ الخيارات",
   "logo": "شعار",
-  "address": "عنوان"
+  "address": "عنوان",
+  "nothing_found": "لا يبدو أن هناك شيء هنا"
 }

@@ -183,5 +183,6 @@
   "settings": "Beállítások",
   "save_options": "Beállítások mentése",
   "logo": "Logó",
-  "address": "Cím"
+  "address": "Cím",
+  "nothing_found": "Úgy tűnik, nincs itt semmi"
 }

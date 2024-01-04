@@ -183,5 +183,6 @@
   "settings": "Innstillinger",
   "save_options": "Lagre alternativer",
   "logo": "Logo",
-  "address": "Adresse"
+  "address": "Adresse",
+  "nothing_found": "Det ser ikke ut til å være noe her"
 }

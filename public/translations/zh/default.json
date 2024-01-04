@@ -183,5 +183,6 @@
   "settings": "设置",
   "save_options": "保存选项",
   "logo": "标志",
-  "address": "地址"
+  "address": "地址",
+  "nothing_found": "这里似乎什么都没有"
 }
