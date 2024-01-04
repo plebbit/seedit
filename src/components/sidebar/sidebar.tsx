@@ -159,8 +159,13 @@ const Sidebar = ({ address, cid, createdAt, description, downvoteCount = 0, role
             {t('created_by', { creatorAddress: '' })}
             <Link to={`/u/${creatorAddress}`} onClick={(e) => e.preventDefault()}>{`u/${creatorAddress}`}</Link>
             {createdAt && <span className={styles.age}> {t('community_for', { date: getFormattedTimeDuration(createdAt) })}</span>}
-            <div className={styles.blockSub} onClick={blockConfirm}>
-              {blocked ? t('unblock_community') : t('block_community')}
+            <div className={styles.bottomButtons}>
+              <span className={styles.blockSub} onClick={blockConfirm}>
+                {blocked ? t('unblock_community') : t('block_community')}
+              </span>
+              <span className={styles.communitySettings}>
+                <Link to={`/p/${address}/settings`}>{t('settings')}</Link>
+              </span>
             </div>
           </div>
         </div>
