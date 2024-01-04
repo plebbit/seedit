@@ -82,17 +82,17 @@ const Inbox = () => {
     return () => window.removeEventListener('scroll', setLastVirtuosoState);
   }, [unreadNotificationCount]);
 
-  if (account && !notifications.length) {
-    return 'empty';
-  }
-
   return (
     <div className={styles.content}>
       <InboxTabs />
       <div className={styles.markAllAsReadButton}>
-        <button onClick={markAsRead} disabled={!unreadNotificationCount} className={styles.markAsReadButton}>
-          {t('mark_all_read')}
-        </button>
+        {account && notifications.length ? (
+          <button onClick={markAsRead} disabled={!unreadNotificationCount} className={styles.markAsReadButton}>
+            {t('mark_all_read')}
+          </button>
+        ) : (
+          <div className={styles.noNotifications}>there doesn't seem to be anything here</div>
+        )}
       </div>
       <Virtuoso
         increaseViewportBy={{ bottom: 1200, top: 600 }}
