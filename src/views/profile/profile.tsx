@@ -2,7 +2,7 @@ import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { useLocation, useParams } from 'react-router-dom';
 import { StateSnapshot, Virtuoso, VirtuosoHandle } from 'react-virtuoso';
 import { useAccount, useAccountComments, useAccountVotes, useComments } from '@plebbit/plebbit-react-hooks';
-import { isDownvotedView, isUpvotedView, isProfileCommentsView, isProfileSubmittedView } from '../../lib/utils/view-utils';
+import { isProfileDownvotedView, isProfileUpvotedView, isProfileCommentsView, isProfileSubmittedView } from '../../lib/utils/view-utils';
 import { useTranslation } from 'react-i18next';
 import styles from './profile.module.css';
 import AuthorSidebar from '../../components/author-sidebar';
@@ -74,10 +74,10 @@ const Profile = () => {
   let { accountComments } = useAccountComments();
   accountComments = [...accountComments].reverse();
   const { accountVotes } = useAccountVotes();
-  const isUpvotedPage = isUpvotedView(location.pathname);
-  const isDownvotedPage = isDownvotedView(location.pathname);
-  const isCommentsPage = isProfileCommentsView(location.pathname);
-  const isSubmittedPage = isProfileSubmittedView(location.pathname);
+  const isInProfileUpvotedView = isProfileUpvotedView(location.pathname);
+  const isInProfileDownvotedView = isProfileDownvotedView(location.pathname);
+  const isInCommentsView = isProfileCommentsView(location.pathname);
+  const isInSubmittedView = isProfileSubmittedView(location.pathname);
   const isMobile = window.innerWidth < 768;
 
   // get comments for upvoted/downvoted/comments/submitted pages
@@ -94,18 +94,28 @@ const Profile = () => {
   };
 
   const comments = useMemo(() => {
-    if (isUpvotedPage) {
+    if (isInProfileUpvotedView) {
       return upvotedComments;
-    } else if (isDownvotedPage) {
+    } else if (isInProfileDownvotedView) {
       return downvotedComments;
-    } else if (isCommentsPage) {
+    } else if (isInCommentsView) {
       return replyComments;
-    } else if (isSubmittedPage) {
+    } else if (isInSubmittedView) {
       return postComments;
     } else {
       return accountComments;
     }
-  }, [isUpvotedPage, isDownvotedPage, isCommentsPage, isSubmittedPage, upvotedComments, downvotedComments, replyComments, postComments, accountComments]);
+  }, [
+    isInProfileUpvotedView,
+    isInProfileDownvotedView,
+    isInCommentsView,
+    isInSubmittedView,
+    upvotedComments,
+    downvotedComments,
+    replyComments,
+    postComments,
+    accountComments,
+  ]);
 
   const virtuosoData = useMemo(() => {
     let sortedData = [...comments];

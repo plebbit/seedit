@@ -61,8 +61,8 @@ const AuthorSidebar = () => {
   const { authorAddress, commentCid } = useParams() || {};
   const { blocked, unblock, block } = useBlock({ address: authorAddress });
 
-  const isAuthorPage = isAuthorView(location.pathname);
-  const isProfilePage = isProfileView(location.pathname);
+  const isInAuthorView = isAuthorView(location.pathname);
+  const isInProfileView = isProfileView(location.pathname);
 
   const profileAccount = useAccount();
   const { accountComments } = useAccountComments();
@@ -81,12 +81,12 @@ const AuthorSidebar = () => {
 
   const estimatedAuthorKarma = estimateAuthorKarma(authorComments);
 
-  const address = isAuthorPage ? params?.authorAddress : isProfilePage ? profileAccount?.author?.shortAddress : '';
-  const karma = isAuthorPage ? estimatedAuthorKarma : isProfilePage ? profileAccount?.karma : '';
+  const address = isInAuthorView ? params?.authorAddress : isInProfileView ? profileAccount?.author?.shortAddress : '';
+  const karma = isInAuthorView ? estimatedAuthorKarma : isInProfileView ? profileAccount?.karma : '';
   const { postScore, replyScore } = karma || { postScore: 0, replyScore: 0 };
 
-  const oldestCommentTimestamp = isAuthorPage ? authorOldestCommentTimestamp : isProfilePage ? profileOldestAccountTimestamp : Date.now();
-  const displayName = isAuthorPage ? authorAccount?.author?.displayName : isProfilePage ? profileAccount?.author?.displayName : '';
+  const oldestCommentTimestamp = isInAuthorView ? authorOldestCommentTimestamp : isInProfileView ? profileOldestAccountTimestamp : Date.now();
+  const displayName = isInAuthorView ? authorAccount?.author?.displayName : isInProfileView ? profileAccount?.author?.displayName : '';
 
   const confirmNavigateToSettings = () => {
     if (window.confirm('Go to the settings to set a display name.')) {
@@ -111,7 +111,7 @@ const AuthorSidebar = () => {
       <div className={styles.titleBox}>
         <div className={styles.title}>
           {address}
-          {isProfilePage && !displayName && (
+          {isInProfileView && !displayName && (
             <span className={styles.editButtonWrapper}>
               {' '}
               (
@@ -123,7 +123,7 @@ const AuthorSidebar = () => {
           )}
         </div>
         {displayName && <div className={styles.displayName}>{displayName}</div>}
-        {isAuthorPage && authorAddress !== profileAccount?.author?.address && (
+        {isInAuthorView && authorAddress !== profileAccount?.author?.address && (
           <div className={styles.friends}>
             <SubscribeButton address={address} />
           </div>
@@ -135,7 +135,7 @@ const AuthorSidebar = () => {
           <span className={styles.karma}>{replyScore}</span> {t('comment_karma')}
         </div>
         <div className={styles.bottom}>
-          {isAuthorPage && authorAddress !== profileAccount?.author?.address && (
+          {isInAuthorView && authorAddress !== profileAccount?.author?.address && (
             <span className={styles.blockUser} onClick={confirmBlock}>
               {blocked ? 'Unblock user' : 'Block user'}
             </span>
@@ -146,7 +146,7 @@ const AuthorSidebar = () => {
         </div>
       </div>
       {/* {Object.keys(accountSubplebbits).length > 0 && (
-        <AuthorModeratingList accountSubplebbits={accountSubplebbits} isAuthor={isAuthorPage} authorSubplebbits={authorSubplebbits} />
+        <AuthorModeratingList accountSubplebbits={accountSubplebbits} isAuthor={isInAuthorView} authorSubplebbits={authorSubplebbits} />
       )} */}
     </div>
   );

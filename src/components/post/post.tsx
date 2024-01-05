@@ -102,10 +102,10 @@ const Post = ({ post = {}, index }: PostProps) => {
 
   const authorRole = subplebbit?.roles?.[post.author?.address]?.role;
 
-  const isPostPage = isPostView(location.pathname, params);
-  const isPendingPage = isPendingView(location.pathname, params);
-  const isSubplebbitPage = isSubplebbitView(location.pathname, params);
-  const isInPostView = isPostPage || isPendingPage;
+  const isInPostView = isPostView(location.pathname, params);
+  const isInPendingView = isPendingView(location.pathname, params);
+  const isInSubplebbitView = isSubplebbitView(location.pathname, params);
+  const isInPostView = isInPostView || isInPendingView;
 
   const [isExpanded, setIsExpanded] = useState(isInPostView);
   const toggleExpanded = () => setIsExpanded(!isExpanded);
@@ -204,7 +204,7 @@ const Post = ({ post = {}, index }: PostProps) => {
                   shortAuthorAddress={shortAuthorAddress}
                   authorAddressChanged={authorAddressChanged}
                 />
-                {!isSubplebbitPage && (
+                {!isInSubplebbitView && (
                   <>
                      {t('post_to')}
                     <Link className={styles.subplebbit} to={`/p/${subplebbitAddress}`}>

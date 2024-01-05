@@ -136,10 +136,10 @@ const CommentTools = ({
   const authorRole = useSubplebbit({ subplebbitAddress })?.roles?.[account?.author?.address]?.role;
   const isMod = authorRole === 'admin' || authorRole === 'owner' || authorRole === 'moderator';
   hasLabel = spoiler || (cid === undefined && !isReply);
-  const isInboxPage = isInboxView(useLocation().pathname);
+  const isInInboxView = isInboxView(useLocation().pathname);
 
   return (
-    <ul className={`${styles.buttons} ${isReply && !isInboxPage ? styles.buttonsReply : ''} ${hasLabel ? styles.buttonsLabel : ''}`}>
+    <ul className={`${styles.buttons} ${isReply && !isInInboxView ? styles.buttonsReply : ''} ${hasLabel ? styles.buttonsLabel : ''}`}>
       {hasLabel && <CommentToolsLabel cid={cid} failed={failed} isReply={isReply} spoiler={spoiler} subplebbitAddress={subplebbitAddress} />}
       {isReply ? (
         isSingleReply ? (

@@ -17,10 +17,10 @@ const Post = () => {
 
   const params = useParams();
   const location = useLocation();
-  const isPendingPage = isPendingView(location.pathname, params);
+  const isInPendingView = isPendingView(location.pathname, params);
   const comment = useComment({ commentCid: params?.commentCid });
   const pendingPost = useAccountComment({ commentIndex: params?.accountCommentIndex as any });
-  const post = isPendingPage ? pendingPost : comment;
+  const post = isInPendingView ? pendingPost : comment;
 
   // in pending page, redirect to post view when post.cid is received
   const navigate = useNavigate();
@@ -72,7 +72,7 @@ const Post = () => {
         </div>
       )}
       <PostComponent post={post} />
-      {!isPendingPage && (
+      {!isInPendingView && (
         <div className={styles.replyArea}>
           <div className={styles.repliesTitle}>
             <span className={styles.title}>{commentCount}</span>

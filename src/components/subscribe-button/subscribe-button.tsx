@@ -12,13 +12,13 @@ const SubscribeButton = ({ address }: subscribeButtonProps) => {
   const { subscribe, subscribed, unsubscribe } = useSubscribe({ subplebbitAddress: address });
   const { t } = useTranslation();
   const location = useLocation();
-  const isAuthorPage = isAuthorView(location.pathname);
-  const isProfilePage = isProfileView(location.pathname);
+  const isInAuthorView = isAuthorView(location.pathname);
+  const isInProfileView = isProfileView(location.pathname);
   const subplebbitPageString = subscribed ? `${t('leave')}` : `${t('join')}`;
   const authorPageString = '+ friends'; // TODO: add functionality once implemented in backend
 
   const handleSubscribe = () => {
-    if (isAuthorPage) return; // TODO: remove once implemented in backend
+    if (isInAuthorView) return; // TODO: remove once implemented in backend
 
     if (subscribed === false) {
       subscribe();
@@ -28,8 +28,11 @@ const SubscribeButton = ({ address }: subscribeButtonProps) => {
   };
 
   return (
-    <span className={`${isProfilePage ? styles.hidden : ''} ${styles.subscribeButton} ${subscribed ? styles.leaveButton : styles.joinButton}`} onClick={handleSubscribe}>
-      {isAuthorPage ? authorPageString : subplebbitPageString}
+    <span
+      className={`${isInProfileView ? styles.hidden : ''} ${styles.subscribeButton} ${subscribed ? styles.leaveButton : styles.joinButton}`}
+      onClick={handleSubscribe}
+    >
+      {isInAuthorView ? authorPageString : subplebbitPageString}
     </span>
   );
 };
