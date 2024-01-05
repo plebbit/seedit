@@ -1,3 +1,40 @@
+## [0.1.3](https://github.com/plebbit/seedit/compare/v0.1.2...v0.1.3) (2024-01-05)
+
+
+### Bug Fixes
+
+* **author sidebar:** handle nullish values in karma calculation to prevent NaN ([faed873](https://github.com/plebbit/seedit/commit/faed8736a876bd9281b081f489a82f49137d55ef))
+* **author sidebar:** undefined ([85e3930](https://github.com/plebbit/seedit/commit/85e3930a84752af7d46284b3a7ad1efa1b4c3b21))
+* **embed:** remove noreferrer for youtube-nocookie because it prevented some videos from loading ([8d0e73b](https://github.com/plebbit/seedit/commit/8d0e73bc0c32af10348caa7c7abe7d8af38d68f1))
+* **header:** add missing translation ([b094523](https://github.com/plebbit/seedit/commit/b094523cd5351669e4693d685a64bf00b8f47a17))
+* **header:** correct height on mobile submit page ([a68b009](https://github.com/plebbit/seedit/commit/a68b009f3e0e47a17628ef1384eeb858d36244f6))
+* **language settings:** trigger page refresh at language change because some strings get stuck ([0304b5c](https://github.com/plebbit/seedit/commit/0304b5cde5013d8a3e576226c3fc1864ba0f89c9))
+* **media utils:** use 0.jpg instead of sddefault for youtube thumbnails, some wouldn't load the specific sd res ([8bcded4](https://github.com/plebbit/seedit/commit/8bcded4237cb58d9fa997f274d909c2f8dd7b6db))
+* **mod menu:** don't show locked option for replies, they can't be locked ([4ad46b6](https://github.com/plebbit/seedit/commit/4ad46b6c14ae308924fd13e1ab128c1b3856a37b))
+* **submit:** limit input resizing to fit in UI ([b794ea7](https://github.com/plebbit/seedit/commit/b794ea74da9445ac750e8c24f307f0fe008733d1))
+* **submit:** set min height/width of input elements ([a6a1795](https://github.com/plebbit/seedit/commit/a6a17952adcc687bc518e41436308efb37ece204))
+
+
+### Features
+
+* add subplebbits component and header ([69f3d20](https://github.com/plebbit/seedit/commit/69f3d2019f43a6ca7ed74946d99ebf164a282973))
+* **comment tools:** show mod if mod, else show report, move some buttons to menus only on mobile, show them on desktop ([b62831b](https://github.com/plebbit/seedit/commit/b62831b3588359b6f89df20c6dac9d7cb9fdf19b))
+* **inbox:** add red info text for no notifications found ([5d4ca28](https://github.com/plebbit/seedit/commit/5d4ca287d57728d7f35f39c8894862315716cd3c))
+* **post:** add locked post info banner ([d5a9472](https://github.com/plebbit/seedit/commit/d5a94723c8714f435eff5f0665606b582e1d7c0d))
+* **post:** implement instant edits ([0a9b154](https://github.com/plebbit/seedit/commit/0a9b154aec286bbd25c74d5dc4d5917264f1b32a))
+* **reply:** add pinned replies ('stickied comment') ([f04ef91](https://github.com/plebbit/seedit/commit/f04ef913d9f38d294edbcf89f253fa2d016ffbed))
+* **reply:** implement instant edits ([38cb7d9](https://github.com/plebbit/seedit/commit/38cb7d9b6287a0f7882bb95ced72c47d29afc8b5))
+* **sidebar:** add community settings button ([dbbba07](https://github.com/plebbit/seedit/commit/dbbba0732f2f35292e7ae338d2574c4d2b62f1ed))
+* **subplebbit settings:** add initial UI ([f4634b6](https://github.com/plebbit/seedit/commit/f4634b645538e1e4619fcc75140839253067bfdc))
+* **subplebbits:** add 'my communities' routes and tabs ([79c8682](https://github.com/plebbit/seedit/commit/79c86822c337e3a719def664b93d4fd4ce32b350))
+* **subplebbits:** add initial UI ([12306a6](https://github.com/plebbit/seedit/commit/12306a68164b3fd50fe58532ce6e7340812a4c34))
+* **subplebbits:** add online indicator ([e24aa06](https://github.com/plebbit/seedit/commit/e24aa066dac2c232de99451f0e5301ba2607947c))
+* **subplebbits:** add page title ([1eb75fa](https://github.com/plebbit/seedit/commit/1eb75fa92a6e025ecf07bde021fd1a06e9f480bf))
+* **subplebbits:** add responsive design, vote buttons, preferences button ([e1d1682](https://github.com/plebbit/seedit/commit/e1d168297cd891099d51498c86ab82ca9dd901cf))
+* **subplebbits:** add settings route, header title ([91be80f](https://github.com/plebbit/seedit/commit/91be80f3e5135af244fd0a7a921301c8a786d75d))
+
+
+
 ## [0.1.2](https://github.com/plebbit/seedit/compare/v0.1.1...v0.1.2) (2023-12-25)
 
 
