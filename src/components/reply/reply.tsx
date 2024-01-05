@@ -202,6 +202,7 @@ const Reply = ({ depth = 0, isSingle, isNotification = false, reply = {} }: Repl
     linkHeight,
     linkWidth,
     markedAsRead,
+    pinned,
     postCid,
     removed,
     spoiler,
@@ -285,7 +286,8 @@ const Reply = ({ depth = 0, isSingle, isNotification = false, reply = {} }: Repl
                   [{collapsed ? '+' : '–'}]
                 </span>
                 <ReplyAuthor address={author?.address} authorRole={authorRole} cid={cid} displayName={author.displayName} shortAuthorAddress={shortAuthorAddress} />
-                <span className={styles.score}>{scoreString}</span> <span className={styles.time}>{getFormattedTimeAgo(timestamp)}</span>
+                <span className={styles.score}>{scoreString}</span> <span className={styles.time}>{getFormattedTimeAgo(timestamp)}</span>{' '}
+                {pinned && <span className={styles.pinned}>- stickied comment</span>}
                 {collapsed && <span className={styles.children}> ({childrenString})</span>}
                 {stateLabel}
                 {!collapsed && flair && (
