@@ -15,6 +15,7 @@ type ModToolsProps = {
 const ModTools = ({ cid }: ModToolsProps) => {
   const { t } = useTranslation();
   const post = useComment({ commentCid: cid });
+  const isReply = post?.parentCid;
   const [isModToolsOpen, setIsModToolsOpen] = useState(false);
 
   const defaultPublishOptions: PublishCommentEditOptions = {
@@ -78,12 +79,14 @@ const ModTools = ({ cid }: ModToolsProps) => {
                   {t('removed')}
                 </label>
               </div>
-              <div className={styles.menuItem}>
-                <label>
-                  <input onChange={onCheckbox} checked={publishCommentEditOptions.locked} type='checkbox' id='locked' />
-                  {t('locked')}
-                </label>
-              </div>
+              {!isReply && (
+                <div className={styles.menuItem}>
+                  <label>
+                    <input onChange={onCheckbox} checked={publishCommentEditOptions.locked} type='checkbox' id='locked' />
+                    {t('locked')}
+                  </label>
+                </div>
+              )}
               <div className={styles.menuItem}>
                 <label>
                   <input onChange={onCheckbox} checked={publishCommentEditOptions.spoiler} type='checkbox' id='spoiler' />
