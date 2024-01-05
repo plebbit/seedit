@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from 'react';
-import { Comment, useAccountComment, useAuthorAddress, useBlock, useComment, useSubplebbit } from '@plebbit/plebbit-react-hooks';
+import { Comment, useAccountComment, useAuthorAddress, useBlock, useComment, useEditedComment, useSubplebbit } from '@plebbit/plebbit-react-hooks';
 import { flattenCommentsPages } from '@plebbit/plebbit-react-hooks/dist/lib/utils';
 import { Link, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
@@ -187,6 +187,11 @@ interface ReplyProps {
 }
 
 const Reply = ({ depth = 0, isSingle, isNotification = false, reply = {} }: ReplyProps) => {
+  // handle pending mod or author edit
+  const { editedComment: editedPost } = useEditedComment({ comment: reply });
+  if (editedPost) {
+    reply = editedPost;
+  }
   const {
     author,
     cid,

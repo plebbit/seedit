@@ -105,9 +105,9 @@ const Post = ({ post = {}, index }: PostProps) => {
   const isInPostView = isPostView(location.pathname, params);
   const isInPendingView = isPendingView(location.pathname, params);
   const isInSubplebbitView = isSubplebbitView(location.pathname, params);
-  const isInPostView = isInPostView || isInPendingView;
+  const isInPostPage = isInPostView || isInPendingView;
 
-  const [isExpanded, setIsExpanded] = useState(isInPostView);
+  const [isExpanded, setIsExpanded] = useState(isInPostPage);
   const toggleExpanded = () => setIsExpanded(!isExpanded);
 
   const [upvoted, upvote] = useUpvote(post);
