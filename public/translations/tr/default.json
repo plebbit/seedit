@@ -176,5 +176,14 @@
   "members_count": "{{count}} üye",
   "communities": "topluluk",
   "edit": "düzenle",
-  "moderator": "Moderatör"
+  "moderator": "Moderatör",
+  "description": "Açıklama",
+  "rules": "Kurallar",
+  "challenge": "Meydan okuma",
+  "settings": "Ayarlar",
+  "save_options": "Seçenekleri Kaydet",
+  "logo": "Logo",
+  "address": "Adres",
+  "nothing_found": "Burada hiçbir şey görünmüyor gibi",
+  "stickied_comment": "Sabitleyici Yorum"
 }

@@ -176,5 +176,14 @@
   "members_count": "{{count}} สมาชิก",
   "communities": "ชุมชน",
   "edit": "แก้ไข",
-  "moderator": "ผู้ดูแล"
+  "moderator": "ผู้ดูแล",
+  "description": "คำอธิบาย",
+  "rules": "กฎ",
+  "challenge": "ท้าทาย",
+  "settings": "การตั้งค่า",
+  "save_options": "บันทึกตัวเลือก",
+  "logo": "โลโก้",
+  "address": "ที่อยู่",
+  "nothing_found": "ดูเหมือนว่าจะไม่มีอะไรที่นี่",
+  "stickied_comment": "ความคิดเห็นที่ตรึง"
 }

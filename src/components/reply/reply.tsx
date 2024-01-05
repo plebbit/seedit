@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from 'react';
-import { Comment, useAccountComment, useAuthorAddress, useBlock, useComment, useSubplebbit } from '@plebbit/plebbit-react-hooks';
+import { Comment, useAccountComment, useAuthorAddress, useBlock, useComment, useEditedComment, useSubplebbit } from '@plebbit/plebbit-react-hooks';
 import { flattenCommentsPages } from '@plebbit/plebbit-react-hooks/dist/lib/utils';
 import { Link, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
@@ -187,6 +187,11 @@ interface ReplyProps {
 }
 
 const Reply = ({ depth = 0, isSingle, isNotification = false, reply = {} }: ReplyProps) => {
+  // handle pending mod or author edit
+  const { editedComment: editedPost } = useEditedComment({ comment: reply });
+  if (editedPost) {
+    reply = editedPost;
+  }
   const {
     author,
     cid,
@@ -197,6 +202,7 @@ const Reply = ({ depth = 0, isSingle, isNotification = false, reply = {} }: Repl
     linkHeight,
     linkWidth,
     markedAsRead,
+    pinned,
     postCid,
     removed,
     spoiler,
@@ -259,12 +265,12 @@ const Reply = ({ depth = 0, isSingle, isNotification = false, reply = {} }: Repl
   const parentOfPendingReply = useComment({ commentCid: pendingReply?.parentCid });
 
   const location = useLocation();
-  const isInboxPage = isInboxView(location.pathname);
+  const isInInboxView = isInboxView(location.pathname);
 
   return (
     <div className={styles.reply}>
-      {isSingle && !isInboxPage && <ParentLink postCid={cid ? postCid : parentOfPendingReply?.postCid} />}
-      {isInboxPage && <InboxParentLink commentCid={cid} />}
+      {isSingle && !isInInboxView && <ParentLink postCid={cid ? postCid : parentOfPendingReply?.postCid} />}
+      {isInInboxView && <InboxParentLink commentCid={cid} />}
       <div className={`${!isSingle ? styles.replyWrapper : styles.singleReplyWrapper} ${depth > 1 && styles.nested}`}>
         {!collapsed && (
           <div className={styles.midcol}>
@@ -274,13 +280,14 @@ const Reply = ({ depth = 0, isSingle, isNotification = false, reply = {} }: Repl
         )}
         <div className={`${isNotification && !markedAsRead ? styles.unreadNotification : ''}`}>
           <div className={`${styles.entry} ${collapsed && styles.collapsedEntry}`}>
-            {!isInboxPage && (
+            {!isInInboxView && (
               <p className={styles.tagline}>
                 <span className={styles.expand} onClick={handleCollapseButton}>
                   [{collapsed ? '+' : '–'}]
                 </span>
                 <ReplyAuthor address={author?.address} authorRole={authorRole} cid={cid} displayName={author.displayName} shortAuthorAddress={shortAuthorAddress} />
-                <span className={styles.score}>{scoreString}</span> <span className={styles.time}>{getFormattedTimeAgo(timestamp)}</span>
+                <span className={styles.score}>{scoreString}</span> <span className={styles.time}>{getFormattedTimeAgo(timestamp)}</span>{' '}
+                {pinned && <span className={styles.pinned}>- {t('stickied_comment')}</span>}
                 {collapsed && <span className={styles.children}> ({childrenString})</span>}
                 {stateLabel}
                 {!collapsed && flair && (
@@ -292,7 +299,7 @@ const Reply = ({ depth = 0, isSingle, isNotification = false, reply = {} }: Repl
                 {state === 'pending' && loadingString}
               </p>
             )}
-            {isInboxPage && <InboxParentInfo commentCid={cid} markedAsRead={markedAsRead} />}
+            {isInInboxView && <InboxParentInfo commentCid={cid} markedAsRead={markedAsRead} />}
             {!collapsed && (
               <div className={styles.usertext}>
                 {commentMediaInfo && (
@@ -312,7 +319,7 @@ const Reply = ({ depth = 0, isSingle, isNotification = false, reply = {} }: Repl
             )}
           </div>
           {!collapsed && (
-            <div className={isInboxPage && markedAsRead ? styles.addMargin : ''}>
+            <div className={isInInboxView && markedAsRead ? styles.addMargin : ''}>
               <CommentTools
                 author={author}
                 cid={cid}

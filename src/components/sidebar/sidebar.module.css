@@ -217,3 +217,12 @@ a {
   color: var(--text-primary);
   cursor: pointer;
 }
+
+.bottomButtons {
+  margin-top: 10px;
+  text-transform: lowercase;
+}
+
+.communitySettings {
+  float: right;
+}

@@ -234,3 +234,8 @@
 .addMargin {
   margin-left: 29px;
 }
+
+.pinned {
+  color: var(--green);
+  text-transform: lowercase;
+}

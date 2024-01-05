@@ -176,5 +176,14 @@
   "members_count": "{{count}} medlemmer",
   "communities": "fellesskap",
   "edit": "redigere",
-  "moderator": "Moderator"
+  "moderator": "Moderator",
+  "description": "Beskrivelse",
+  "rules": "Regler",
+  "challenge": "Utfordring",
+  "settings": "Innstillinger",
+  "save_options": "Lagre alternativer",
+  "logo": "Logo",
+  "address": "Adresse",
+  "nothing_found": "Det ser ikke ut til å være noe her",
+  "stickied_comment": "Festet kommentar"
 }

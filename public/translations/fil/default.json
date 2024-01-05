@@ -176,5 +176,14 @@
   "members_count": "{{count}} miyembro",
   "communities": "komunidad",
   "edit": "ipunin",
-  "moderator": "Moderator"
+  "moderator": "Moderator",
+  "description": "Deskripsyon",
+  "rules": "Mga Alituntunin",
+  "challenge": "Hamong",
+  "settings": "Mga Setting",
+  "save_options": "I-save ang mga Opsyon",
+  "logo": "Logo",
+  "address": "Address",
+  "nothing_found": "Wala yatang nandito",
+  "stickied_comment": "Naka-pinned na Komento"
 }

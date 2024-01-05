@@ -15,15 +15,15 @@ interface SubplebbitProps {
 const Tabs = () => {
   const { t } = useTranslation();
   const location = useLocation();
-  const isSubplebbitsMineSubscriberPage = isSubplebbitsMineSubscriberView(location.pathname);
-  const isSubplebbitsMineContributorPage = isSubplebbitsMineContributorView(location.pathname);
-  const isSubplebbitsMineModeratorPage = isSubplebbitsMineModeratorView(location.pathname);
+  const isInSubplebbitsMineSubscriberView = isSubplebbitsMineSubscriberView(location.pathname);
+  const isInSubplebbitsMineContributorView = isSubplebbitsMineContributorView(location.pathname);
+  const isInSubplebbitsMineModeratorView = isSubplebbitsMineModeratorView(location.pathname);
 
   return (
     <div className={styles.subplebbitsTabs}>
       <Link
         to='/communities/mine/subscriber'
-        className={isSubplebbitsMineSubscriberPage ? styles.selected : styles.choice}
+        className={isInSubplebbitsMineSubscriberView ? styles.selected : styles.choice}
         onClick={(e) => e.preventDefault()} // TODO: enable after useSubplebbits cache is implemented in the API
       >
         subscriber
@@ -31,13 +31,13 @@ const Tabs = () => {
       <span className={styles.separator}>|</span>
       <Link
         to='/communities/mine/contributor'
-        className={isSubplebbitsMineContributorPage ? styles.selected : styles.choice}
+        className={isInSubplebbitsMineContributorView ? styles.selected : styles.choice}
         onClick={(e) => e.preventDefault()} // TODO: enable after approving user is implemented in the API
       >
         approved user
       </Link>
       <span className={styles.separator}>|</span>
-      <Link to='/communities/mine/moderator' className={isSubplebbitsMineModeratorPage ? styles.selected : styles.choice}>
+      <Link to='/communities/mine/moderator' className={isInSubplebbitsMineModeratorView ? styles.selected : styles.choice}>
         {t('moderator')}
       </Link>
     </div>
@@ -47,16 +47,16 @@ const Tabs = () => {
 const Infobar = () => {
   const { t } = useTranslation();
   const location = useLocation();
-  const isSubplebbitsMineSubscriberPage = isSubplebbitsMineSubscriberView(location.pathname);
-  const isSubplebbitsMineContributorPage = isSubplebbitsMineContributorView(location.pathname);
-  const isSubplebbitsMineModeratorPage = isSubplebbitsMineModeratorView(location.pathname);
+  const isInSubplebbitsMineSubscriberView = isSubplebbitsMineSubscriberView(location.pathname);
+  const isInSubplebbitsMineContributorView = isSubplebbitsMineContributorView(location.pathname);
+  const isInSubplebbitsMineModeratorView = isSubplebbitsMineModeratorView(location.pathname);
 
   const infobarText = useMemo(() => {
-    if (isSubplebbitsMineSubscriberPage) {
+    if (isInSubplebbitsMineSubscriberView) {
       return 'below are communities you have subscribed to.';
-    } else if (isSubplebbitsMineContributorPage) {
+    } else if (isInSubplebbitsMineContributorView) {
       return 'below are the communities that you are an approved user on.';
-    } else if (isSubplebbitsMineModeratorPage) {
+    } else if (isInSubplebbitsMineModeratorView) {
       return 'below are the communities that you have moderator access to.';
     } else {
       return (
@@ -65,7 +65,7 @@ const Infobar = () => {
         </>
       );
     }
-  }, [isSubplebbitsMineSubscriberPage, isSubplebbitsMineContributorPage, isSubplebbitsMineModeratorPage, t]);
+  }, [isInSubplebbitsMineSubscriberView, isInSubplebbitsMineContributorView, isInSubplebbitsMineModeratorView, t]);
 
   return <div className={styles.infobar}>{infobarText}</div>;
 };
@@ -120,7 +120,7 @@ const Subplebbit = ({ subplebbit }: SubplebbitProps) => {
               <>
                 {t('members_count', { count: allActiveUserCount })}, {t('community_for', { date: getFormattedTimeDuration(createdAt) })}
                 <div className={styles.subplebbitPreferences}>
-                  <Link to={`/p/${address}/settings`}>settings</Link>
+                  <Link to={`/p/${address}/settings`}>{t('settings')}</Link>
                 </div>
               </>
             ) : (

@@ -176,5 +176,14 @@
   "members_count": "{{count}} సభ్యులు",
   "communities": "సమూహం",
   "edit": "సమూహం",
-  "moderator": "మాడరేటర్"
+  "moderator": "మాడరేటర్",
+  "description": "వివరణ",
+  "rules": "నియమాలు",
+  "challenge": "ఛాలెంజ్",
+  "settings": "సెట్టింగ్లు",
+  "save_options": "ఎంచుకోండి సేవ్ చేయండి",
+  "logo": "లోగో",
+  "address": "చిరునామా",
+  "nothing_found": "ఇక్కడ ఏమి ఉందని లేదని అనుకున్నట్లయిదేమీ లేదు",
+  "stickied_comment": "పిన్ చేసిన వ్యాఖ్య"
 }

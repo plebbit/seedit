@@ -176,5 +176,14 @@
   "members_count": "{{count}} anëtarë",
   "communities": "komunitet",
   "edit": "modifikohu",
-  "moderator": "Moderator"
+  "moderator": "Moderator",
+  "description": "Përshkrim",
+  "rules": "Rregullat",
+  "challenge": "Sfidë",
+  "settings": "Cilësimet",
+  "save_options": "Ruaj Cilësimet",
+  "logo": "Logos",
+  "address": "Adresë",
+  "nothing_found": "Nuk duket të ketë asgjë këtu",
+  "stickied_comment": "Komenti i fiksuar"
 }

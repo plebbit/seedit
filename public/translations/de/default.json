@@ -176,5 +176,14 @@
   "members_count": "{{count}} Mitglieder",
   "communities": "Gemeinschaft",
   "edit": "bearbeiten",
-  "moderator": "Moderator"
+  "moderator": "Moderator",
+  "description": "Beschreibung",
+  "rules": "Regeln",
+  "challenge": "Herausforderung",
+  "settings": "Einstellungen",
+  "save_options": "Optionen speichern",
+  "logo": "Logo",
+  "address": "Adresse",
+  "nothing_found": "Hier scheint nichts zu sein",
+  "stickied_comment": "Angehängter Kommentar"
 }

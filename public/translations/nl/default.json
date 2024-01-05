@@ -176,5 +176,14 @@
   "members_count": "{{count}} leden",
   "communities": "gemeenschap",
   "edit": "bewerken",
-  "moderator": "Moderator"
+  "moderator": "Moderator",
+  "description": "Beschrijving",
+  "rules": "Regels",
+  "challenge": "Uitdaging",
+  "settings": "Instellingen",
+  "save_options": "Opties opslaan",
+  "logo": "Logo",
+  "address": "Adres",
+  "nothing_found": "Het lijkt erop dat hier niets is",
+  "stickied_comment": "Vastgezette opmerking"
 }

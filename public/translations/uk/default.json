@@ -176,5 +176,14 @@
   "members_count": "{{count}} учасників",
   "communities": "спільнота",
   "edit": "редагування",
-  "moderator": "Модератор"
+  "moderator": "Модератор",
+  "description": "Опис",
+  "rules": "Правила",
+  "challenge": "Виклик",
+  "settings": "Налаштування",
+  "save_options": "Зберегти налаштування",
+  "logo": "Логотип",
+  "address": "Адреса",
+  "nothing_found": "Тут, здається, нічого немає",
+  "stickied_comment": "Закріплений коментар"
 }

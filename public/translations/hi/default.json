@@ -176,5 +176,14 @@
   "members_count": "{{count}} सदस्य",
   "communities": "समुदाय",
   "edit": "संपादित करें",
-  "moderator": "मॉडरेटर"
+  "moderator": "मॉडरेटर",
+  "description": "विवरण",
+  "rules": "नियम",
+  "challenge": "चुनौती",
+  "settings": "सेटिंग्स",
+  "save_options": "विकल्प सहेजें",
+  "logo": "लोगो",
+  "address": "पता",
+  "nothing_found": "ऐसा कुछ नहीं दिखता है कि यहां कुछ है",
+  "stickied_comment": "पिन किया गया टिप्पणी"
 }

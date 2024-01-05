@@ -176,5 +176,14 @@
   "members_count": "{{count}} jäsentä",
   "communities": "yhteisö",
   "edit": "muokata",
-  "moderator": "Moderaattori"
+  "moderator": "Moderaattori",
+  "description": "Kuvaus",
+  "rules": "Säännöt",
+  "challenge": "Haaste",
+  "settings": "Asetukset",
+  "save_options": "Tallenna asetukset",
+  "logo": "Logo",
+  "address": "Osoite",
+  "nothing_found": "Täällä ei näytä olevan mitään",
+  "stickied_comment": "Kiinnitetty kommentti"
 }

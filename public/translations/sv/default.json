@@ -176,5 +176,14 @@
   "members_count": "{{count}} medlemmar",
   "communities": "gemenskap",
   "edit": "redigera",
-  "moderator": "Moderator"
+  "moderator": "Moderator",
+  "description": "Beskrivning",
+  "rules": "Regler",
+  "challenge": "Utmaning",
+  "settings": "Inställningar",
+  "save_options": "Spara alternativ",
+  "logo": "Logotyp",
+  "address": "Adress",
+  "nothing_found": "Det verkar inte finnas något här",
+  "stickied_comment": "Fast kommentar"
 }

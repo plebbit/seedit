@@ -83,18 +83,18 @@ const Sidebar = ({ address, cid, createdAt, description, downvoteCount = 0, role
 
   const location = useLocation();
   const params = useParams();
-  const isAboutPage = isAboutView(location.pathname);
-  const isAllPage = isAllView(location.pathname);
-  const isHomePage = isHomeView(location.pathname, params);
-  const isPendingPage = isPendingView(location.pathname, params);
-  const isPostPage = isPostView(location.pathname, params);
-  const isSubplebbitsPage = isSubplebbitsView(location.pathname);
+  const isInAboutView = isAboutView(location.pathname);
+  const isInAllView = isAllView(location.pathname);
+  const isInHomeView = isHomeView(location.pathname, params);
+  const isInPendingView = isPendingView(location.pathname, params);
+  const isInPostView = isPostView(location.pathname, params);
+  const isInSubplebbitsView = isSubplebbitsView(location.pathname);
 
   const pendingPost = useAccountComment({ commentIndex: params?.accountCommentIndex as any });
 
   const subplebbitCreator = findSubplebbitCreator(roles);
   const creatorAddress = subplebbitCreator === 'anonymous' ? 'anonymous' : `${getShortAddress(subplebbitCreator)}`;
-  const submitRoute = isHomePage || isAllPage ? '/submit' : isPendingPage ? `/p/${pendingPost?.subplebbitAddress}/submit` : `/p/${address}/submit`;
+  const submitRoute = isInHomeView || isInAllView ? '/submit' : isInPendingView ? `/p/${pendingPost?.subplebbitAddress}/submit` : `/p/${address}/submit`;
 
   const { blocked, unblock, block } = useBlock({ address });
 
@@ -115,10 +115,10 @@ const Sidebar = ({ address, cid, createdAt, description, downvoteCount = 0, role
   };
 
   return (
-    <div className={`${isAboutPage ? styles.about : styles.sidebar}`}>
+    <div className={`${isInAboutView ? styles.about : styles.sidebar}`}>
       <SearchBar />
       <div className={styles.searchBarSpacer} />
-      {isPostPage && <PostInfo address={address} cid={cid} downvoteCount={downvoteCount} timestamp={timestamp} upvoteCount={upvoteCount} />}
+      {isInPostView && <PostInfo address={address} cid={cid} downvoteCount={downvoteCount} timestamp={timestamp} upvoteCount={upvoteCount} />}
       <Link to={submitRoute}>
         <div className={styles.largeButton}>
           {t('submit_post')}
@@ -131,7 +131,7 @@ const Sidebar = ({ address, cid, createdAt, description, downvoteCount = 0, role
           <div className={styles.nub} />
         </div>
       </Link>
-      {!isHomePage && !isAllPage && !isPendingPage && !isSubplebbitsPage && (
+      {!isInHomeView && !isInAllView && !isInPendingView && !isInSubplebbitsView && (
         <div className={styles.titleBox}>
           <Link className={styles.title} to={`/p/${address}`}>
             {address}
@@ -159,8 +159,13 @@ const Sidebar = ({ address, cid, createdAt, description, downvoteCount = 0, role
             {t('created_by', { creatorAddress: '' })}
             <Link to={`/u/${creatorAddress}`} onClick={(e) => e.preventDefault()}>{`u/${creatorAddress}`}</Link>
             {createdAt && <span className={styles.age}> {t('community_for', { date: getFormattedTimeDuration(createdAt) })}</span>}
-            <div className={styles.blockSub} onClick={blockConfirm}>
-              {blocked ? t('unblock_community') : t('block_community')}
+            <div className={styles.bottomButtons}>
+              <span className={styles.blockSub} onClick={blockConfirm}>
+                {blocked ? t('unblock_community') : t('block_community')}
+              </span>
+              <span className={styles.communitySettings}>
+                <Link to={`/p/${address}/settings`}>{t('settings')}</Link>
+              </span>
             </div>
           </div>
         </div>

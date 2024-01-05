@@ -176,5 +176,14 @@
   "members_count": "{{count}} 회원",
   "communities": "커뮤니티",
   "edit": "편집",
-  "moderator": "모더레이터"
+  "moderator": "모더레이터",
+  "description": "설명",
+  "rules": "규칙",
+  "challenge": "도전",
+  "settings": "설정",
+  "save_options": "옵션 저장",
+  "logo": "로고",
+  "address": "주소",
+  "nothing_found": "여기에는 아무것도 없는 것 같습니다",
+  "stickied_comment": "고정된 댓글"
 }

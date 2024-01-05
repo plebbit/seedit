@@ -12,26 +12,26 @@ const lastVirtuosoStates: { [key: string]: StateSnapshot } = {};
 const InboxTabs = () => {
   const { t } = useTranslation();
   const location = useLocation();
-  const isInboxCommentRepliesPage = isInboxCommentRepliesView(location.pathname);
-  const isInboxPostRepliesPage = isInboxPostRepliesView(location.pathname);
-  const isInboxUnreadPage = isInboxUnreadView(location.pathname);
-  const isAllPage = !isInboxCommentRepliesPage && !isInboxPostRepliesPage && !isInboxUnreadPage;
+  const isInInboxCommentRepliesView = isInboxCommentRepliesView(location.pathname);
+  const isInInboxPostRepliesView = isInboxPostRepliesView(location.pathname);
+  const isInInboxUnreadView = isInboxUnreadView(location.pathname);
+  const isInAllView = !isInInboxCommentRepliesView && !isInInboxPostRepliesView && !isInInboxUnreadView;
 
   return (
     <div className={styles.inboxTabs}>
-      <Link to='/inbox' className={isAllPage ? styles.selected : styles.choice}>
+      <Link to='/inbox' className={isInAllView ? styles.selected : styles.choice}>
         {t('all')}
       </Link>
       <span className={styles.separator}>|</span>
-      <Link to='/inbox/unread' className={isInboxUnreadPage ? styles.selected : styles.choice}>
+      <Link to='/inbox/unread' className={isInInboxUnreadView ? styles.selected : styles.choice}>
         {t('unread')}
       </Link>
       <span className={styles.separator}>|</span>
-      <Link to='/inbox/commentreplies' className={isInboxCommentRepliesPage ? styles.selected : styles.choice}>
+      <Link to='/inbox/commentreplies' className={isInInboxCommentRepliesView ? styles.selected : styles.choice}>
         {t('comment_replies')}
       </Link>
       <span className={styles.separator}>|</span>
-      <Link to='/inbox/postreplies' className={isInboxPostRepliesPage ? styles.selected : styles.choice}>
+      <Link to='/inbox/postreplies' className={isInInboxPostRepliesView ? styles.selected : styles.choice}>
         {t('post_replies')}
       </Link>
     </div>
@@ -45,9 +45,9 @@ const Inbox = () => {
   const { notifications, markAsRead } = useNotifications();
 
   const location = useLocation();
-  const isInboxCommentRepliesPage = isInboxCommentRepliesView(location.pathname);
-  const isInboxPostRepliesPage = isInboxPostRepliesView(location.pathname);
-  const isInboxUnreadPage = isInboxUnreadView(location.pathname);
+  const isInInboxCommentRepliesView = isInboxCommentRepliesView(location.pathname);
+  const isInInboxPostRepliesView = isInboxPostRepliesView(location.pathname);
+  const isInInboxUnreadView = isInboxUnreadView(location.pathname);
 
   const filterRepliesToUserReplies = useCallback(() => notifications?.filter((comment) => comment.parentCid !== comment.postCid) || [], [notifications]);
 
@@ -56,11 +56,11 @@ const Inbox = () => {
   const filterUnreadNotifications = useCallback(() => notifications?.filter((comment) => !comment.markedAsRead) || [], [notifications]);
 
   let comments;
-  if (isInboxCommentRepliesPage) {
+  if (isInInboxCommentRepliesView) {
     comments = filterRepliesToUserReplies();
-  } else if (isInboxPostRepliesPage) {
+  } else if (isInInboxPostRepliesView) {
     comments = filterRepliesToUserPosts();
-  } else if (isInboxUnreadPage) {
+  } else if (isInInboxUnreadView) {
     comments = filterUnreadNotifications();
   } else {
     comments = notifications;
@@ -82,17 +82,17 @@ const Inbox = () => {
     return () => window.removeEventListener('scroll', setLastVirtuosoState);
   }, [unreadNotificationCount]);
 
-  if (account && !notifications.length) {
-    return 'empty';
-  }
-
   return (
     <div className={styles.content}>
       <InboxTabs />
       <div className={styles.markAllAsReadButton}>
-        <button onClick={markAsRead} disabled={!unreadNotificationCount} className={styles.markAsReadButton}>
-          {t('mark_all_read')}
-        </button>
+        {account && notifications.length ? (
+          <button onClick={markAsRead} disabled={!unreadNotificationCount} className={styles.markAsReadButton}>
+            {t('mark_all_read')}
+          </button>
+        ) : (
+          <div className={styles.noNotifications}>{t('nothing_found')}</div>
+        )}
       </div>
       <Virtuoso
         increaseViewportBy={{ bottom: 1200, top: 600 }}

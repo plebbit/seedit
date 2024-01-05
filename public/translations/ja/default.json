@@ -176,5 +176,14 @@
   "members_count": "{{count}} メンバー",
   "communities": "コミュニティ",
   "edit": "編集",
-  "moderator": "モデレーター"
+  "moderator": "モデレーター",
+  "description": "説明",
+  "rules": "ルール",
+  "challenge": "挑戦",
+  "settings": "設定",
+  "save_options": "オプションを保存",
+  "logo": "ロゴ",
+  "address": "住所",
+  "nothing_found": "ここには何もないようです",
+  "stickied_comment": "固定されたコメント"
 }

@@ -176,5 +176,14 @@
   "members_count": "{{count}} thành viên",
   "communities": "cộng đồng",
   "edit": "sửa đổi",
-  "moderator": "Quản trị viên"
+  "moderator": "Quản trị viên",
+  "description": "Mô tả",
+  "rules": "Quy tắc",
+  "challenge": "Thử thách",
+  "settings": "Cài đặt",
+  "save_options": "Lưu tùy chọn",
+  "logo": "Logo",
+  "address": "Địa chỉ",
+  "nothing_found": "Dường như không có gì ở đây",
+  "stickied_comment": "Bình luận ghim"
 }

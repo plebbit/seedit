@@ -176,5 +176,14 @@
   "members_count": "{{count}} участников",
   "communities": "сообщество",
   "edit": "редактировать",
-  "moderator": "Модератор"
+  "moderator": "Модератор",
+  "description": "Описание",
+  "rules": "Правила",
+  "challenge": "Испытание",
+  "settings": "Настройки",
+  "save_options": "Сохранить настройки",
+  "logo": "Логотип",
+  "address": "Адрес",
+  "nothing_found": "Здесь, кажется, ничего нет",
+  "stickied_comment": "Закрепленный комментарий"
 }

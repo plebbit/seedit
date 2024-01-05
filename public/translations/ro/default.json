@@ -176,5 +176,14 @@
   "members_count": "{{count}} membri",
   "communities": "comunitate",
   "edit": "modifica",
-  "moderator": "Moderator"
+  "moderator": "Moderator",
+  "description": "Descriere",
+  "rules": "Reguli",
+  "challenge": "Provocare",
+  "settings": "Setări",
+  "save_options": "Salvați opțiunile",
+  "logo": "Logo",
+  "address": "Adresă",
+  "nothing_found": "Nu pare să fie nimic aici",
+  "stickied_comment": "Comentariu fixat"
 }

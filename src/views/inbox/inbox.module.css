@@ -45,3 +45,11 @@
   color: var(--green) !important;
   font-weight: bold;
 }
+
+.noNotifications {
+  color: var(--red);
+  font-size: 13px;
+  font-family: verdana, Arial, Helvetica, sans-serif;
+  margin-top: -2px;
+  text-transform: lowercase;
+}

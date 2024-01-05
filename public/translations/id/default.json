@@ -176,5 +176,14 @@
   "members_count": "{{count}} anggota",
   "communities": "komunitas",
   "edit": "mengedit",
-  "moderator": "Moderator"
+  "moderator": "Moderator",
+  "description": "Deskripsi",
+  "rules": "Aturan",
+  "challenge": "Tantangan",
+  "settings": "Pengaturan",
+  "save_options": "Simpan Opsi",
+  "logo": "Logo",
+  "address": "Alamat",
+  "nothing_found": "Tidak ada yang tampaknya di sini",
+  "stickied_comment": "Komentar yang Dipasang"
 }

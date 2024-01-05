@@ -176,5 +176,14 @@
   "members_count": "{{count}} عضو",
   "communities": "انجمن",
   "edit": "ویرایش",
-  "moderator": "مدیر"
+  "moderator": "مدیر",
+  "description": "توضیحات",
+  "rules": "قوانین",
+  "challenge": "چالش",
+  "settings": "تنظیمات",
+  "save_options": "ذخیره گزینه‌ها",
+  "logo": "آرم",
+  "address": "آدرس",
+  "nothing_found": "به نظر نمی رسد که چیزی وجود داشته باشد",
+  "stickied_comment": "نظر ثابت"
 }

@@ -176,5 +176,14 @@
   "members_count": "{{count}} সদস্য",
   "communities": "সম্প্রদান",
   "edit": "সম্পাদনা",
-  "moderator": "মডারেটর"
+  "moderator": "মডারেটর",
+  "description": "বর্ণনা",
+  "rules": "নির্বাচনসমূহ",
+  "challenge": "চ্যালেঞ্জ",
+  "settings": "সেটিংস",
+  "save_options": "অপশন সংরক্ষণ করুন",
+  "logo": "লোগো",
+  "address": "ঠিকানা",
+  "nothing_found": "এখানে কিছুই নেই মনে হয় না",
+  "stickied_comment": "পিন করা মন্তব্য"
 }

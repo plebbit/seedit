@@ -46,7 +46,7 @@ export const isAuthorSubmittedView = (pathname: string, params: ParamsType): boo
   return pathname === `/u/${params.authorAddress}/c/${params.commentCid}/submitted`;
 };
 
-export const isDownvotedView = (pathname: string): boolean => {
+export const isProfileDownvotedView = (pathname: string): boolean => {
   return pathname === '/profile/downvoted';
 };
 
@@ -130,6 +130,6 @@ export const isSubplebbitsMineModeratorView = (pathname: string): boolean => {
   return pathname === '/communities/mine/moderator';
 };
 
-export const isUpvotedView = (pathname: string): boolean => {
+export const isProfileUpvotedView = (pathname: string): boolean => {
   return pathname === '/profile/upvoted';
 };

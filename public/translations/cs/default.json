@@ -176,5 +176,14 @@
   "members_count": "{{count}} členů",
   "communities": "komunita",
   "edit": "upravit",
-  "moderator": "Moderátor"
+  "moderator": "Moderátor",
+  "description": "Popis",
+  "rules": "Pravidla",
+  "challenge": "Výzva",
+  "settings": "Nastavení",
+  "save_options": "Uložit možnosti",
+  "logo": "Logo",
+  "address": "Adresa",
+  "nothing_found": "Zdá se, že zde nic není",
+  "stickied_comment": "Připnutý komentář"
 }

@@ -18,8 +18,8 @@ const Author = () => {
   const navigate = useNavigate();
   const { authorAddress, commentCid, sortType } = useParams();
   const params = useParams();
-  const isAuthorCommentsPage = isAuthorCommentsView(location.pathname, params);
-  const isAuthorSubmittedPage = isAuthorSubmittedView(location.pathname, params);
+  const isInAuthorCommentsView = isAuthorCommentsView(location.pathname, params);
+  const isInAuthorSubmittedView = isAuthorSubmittedView(location.pathname, params);
   const isMobile = window.innerWidth < 768;
 
   const { authorComments, lastCommentCid, hasMore, loadMore } = useAuthorComments({ commentCid, authorAddress });
@@ -34,9 +34,9 @@ const Author = () => {
   const virtuosoRef = useRef<VirtuosoHandle | null>(null);
 
   let virtuosoData;
-  if (isAuthorCommentsPage) {
+  if (isInAuthorCommentsView) {
     virtuosoData = replyComments;
-  } else if (isAuthorSubmittedPage) {
+  } else if (isInAuthorSubmittedView) {
     virtuosoData = postComments;
   } else {
     virtuosoData = authorComments;
