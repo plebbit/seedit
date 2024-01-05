@@ -184,5 +184,6 @@
   "save_options": "Seçenekleri Kaydet",
   "logo": "Logo",
   "address": "Adres",
-  "nothing_found": "Burada hiçbir şey görünmüyor gibi"
+  "nothing_found": "Burada hiçbir şey görünmüyor gibi",
+  "stickied_comment": "Sabitleyici Yorum"
 }

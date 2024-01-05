@@ -184,5 +184,6 @@
   "save_options": "Tallenna asetukset",
   "logo": "Logo",
   "address": "Osoite",
-  "nothing_found": "Täällä ei näytä olevan mitään"
+  "nothing_found": "Täällä ei näytä olevan mitään",
+  "stickied_comment": "Kiinnitetty kommentti"
 }

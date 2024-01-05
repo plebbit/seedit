@@ -184,5 +184,6 @@
   "save_options": "Opties opslaan",
   "logo": "Logo",
   "address": "Adres",
-  "nothing_found": "Het lijkt erop dat hier niets is"
+  "nothing_found": "Het lijkt erop dat hier niets is",
+  "stickied_comment": "Vastgezette opmerking"
 }

@@ -287,7 +287,7 @@ const Reply = ({ depth = 0, isSingle, isNotification = false, reply = {} }: Repl
                 </span>
                 <ReplyAuthor address={author?.address} authorRole={authorRole} cid={cid} displayName={author.displayName} shortAuthorAddress={shortAuthorAddress} />
                 <span className={styles.score}>{scoreString}</span> <span className={styles.time}>{getFormattedTimeAgo(timestamp)}</span>{' '}
-                {pinned && <span className={styles.pinned}>- stickied comment</span>}
+                {pinned && <span className={styles.pinned}>- {t('stickied_comment')}</span>}
                 {collapsed && <span className={styles.children}> ({childrenString})</span>}
                 {stateLabel}
                 {!collapsed && flair && (

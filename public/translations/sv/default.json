@@ -184,5 +184,6 @@
   "save_options": "Spara alternativ",
   "logo": "Logotyp",
   "address": "Adress",
-  "nothing_found": "Det verkar inte finnas något här"
+  "nothing_found": "Det verkar inte finnas något här",
+  "stickied_comment": "Fast kommentar"
 }

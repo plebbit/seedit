@@ -184,5 +184,6 @@
   "save_options": "Beállítások mentése",
   "logo": "Logó",
   "address": "Cím",
-  "nothing_found": "Úgy tűnik, nincs itt semmi"
+  "nothing_found": "Úgy tűnik, nincs itt semmi",
+  "stickied_comment": "Kitűzött hozzászólás"
 }

@@ -184,5 +184,6 @@
   "save_options": "Gem indstillinger",
   "logo": "Logo",
   "address": "Adresse",
-  "nothing_found": "Der ser ikke ud til at være noget her"
+  "nothing_found": "Der ser ikke ud til at være noget her",
+  "stickied_comment": "Fastgjort kommentar"
 }

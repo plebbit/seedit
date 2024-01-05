@@ -184,5 +184,6 @@
   "save_options": "옵션 저장",
   "logo": "로고",
   "address": "주소",
-  "nothing_found": "여기에는 아무것도 없는 것 같습니다"
+  "nothing_found": "여기에는 아무것도 없는 것 같습니다",
+  "stickied_comment": "고정된 댓글"
 }

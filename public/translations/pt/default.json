@@ -184,5 +184,6 @@
   "save_options": "Salvar opções",
   "logo": "Logotipo",
   "address": "Endereço",
-  "nothing_found": "Não parece haver nada aqui"
+  "nothing_found": "Não parece haver nada aqui",
+  "stickied_comment": "Comentário fixado"
 }

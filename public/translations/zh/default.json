@@ -184,5 +184,6 @@
   "save_options": "保存选项",
   "logo": "标志",
   "address": "地址",
-  "nothing_found": "这里似乎什么都没有"
+  "nothing_found": "这里似乎什么都没有",
+  "stickied_comment": "置顶评论"
 }

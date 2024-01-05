@@ -184,5 +184,6 @@
   "save_options": "Lagre alternativer",
   "logo": "Logo",
   "address": "Adresse",
-  "nothing_found": "Det ser ikke ut til å være noe her"
+  "nothing_found": "Det ser ikke ut til å være noe her",
+  "stickied_comment": "Festet kommentar"
 }

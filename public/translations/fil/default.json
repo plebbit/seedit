@@ -184,5 +184,6 @@
   "save_options": "I-save ang mga Opsyon",
   "logo": "Logo",
   "address": "Address",
-  "nothing_found": "Wala yatang nandito"
+  "nothing_found": "Wala yatang nandito",
+  "stickied_comment": "Naka-pinned na Komento"
 }

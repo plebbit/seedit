@@ -237,4 +237,5 @@
 
 .pinned {
   color: var(--green);
+  text-transform: lowercase;
 }
