@@ -39,6 +39,9 @@ const PostTools = ({ author, cid, hasLabel, index, isMod, subplebbitAddress, rep
         <span>{t('save')}</span>
       </li>
       <HideMenu author={author} cid={cid} isMod={isMod} subplebbitAddress={subplebbitAddress} />
+      <li className={`${styles.button} ${styles.crosspostButton}`}>
+        <span>{t('crosspost')}</span>
+      </li>
       {isMod ? (
         <ModTools cid={cid} />
       ) : (
@@ -46,9 +49,6 @@ const PostTools = ({ author, cid, hasLabel, index, isMod, subplebbitAddress, rep
           <span>{t('report')}</span>
         </li>
       )}
-      <li className={`${styles.button} ${styles.crosspostButton}`}>
-        <span>{t('crosspost')}</span>
-      </li>
     </>
   );
 };
@@ -66,6 +66,9 @@ const ReplyTools = ({ author, cid, hasLabel, index, isMod, showReplyForm, subple
         <span>{t('save')}</span>
       </li>
       <HideMenu author={author} cid={cid} isMod={isMod} subplebbitAddress={subplebbitAddress} />
+      <li className={!cid ? styles.hideReply : styles.button}>
+        <span onClick={() => cid && showReplyForm?.()}>{t('reply_reply')}</span>
+      </li>
       {isMod ? (
         <ModTools cid={cid} />
       ) : (
@@ -73,9 +76,6 @@ const ReplyTools = ({ author, cid, hasLabel, index, isMod, showReplyForm, subple
           <span>{t('report')}</span>
         </li>
       )}
-      <li className={!cid ? styles.hideReply : styles.button}>
-        <span onClick={() => cid && showReplyForm?.()}>{t('reply_reply')}</span>
-      </li>
     </>
   );
 };
@@ -104,6 +104,13 @@ const SingleReplyTools = ({ author, cid, hasLabel, index, isMod, parentCid, show
       <li className={!cid ? styles.hideReply : styles.button}>
         <span onClick={() => cid && showReplyForm?.()}>{t('reply_reply')}</span>
       </li>
+      {isMod ? (
+        <ModTools cid={cid} />
+      ) : (
+        <li className={`${styles.button} ${styles.reportButton}`}>
+          <span>{t('report')}</span>
+        </li>
+      )}
     </>
   );
 };
