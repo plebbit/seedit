@@ -54,6 +54,85 @@
   font-size: 14px;
 }
 
+.saveOptions button {
+  text-transform: lowercase;
+  margin: 3px 5px;
+  padding: 2px 5px 3px;
+}
+
+.fullSettings textarea {
+  height: 200px;
+}
+
+.noChallengeWarning {
+  color: var(--red);
+  font-size: 12px;
+  margin-left: 10px;
+}
+
+.infobar {
+  background-color: var(--background-orange);
+  border-color: var(--border-orange);
+  border-style: solid;
+  border-width: 1px;
+  font-size: small;
+  margin-bottom: 5px;
+  padding: 6px 10px;
+  color: var(--text);
+  word-wrap: break-word;
+  font-size: 14px;
+  text-transform: lowercase;
+}
+
+.captchaSelect {
+  padding-top: 0;
+  margin-top: 3px;
+}
+
+.moderator {
+  font-size: 15px;
+  color: var(--text);
+  margin-top: 5px;
+}
+
+.moderator input {
+  width: 180px;
+  margin-right: 10px;
+}
+
+.addModerator {
+  display: block;
+}
+
+.rule {
+  font-size: 15px;
+}
+
+.rule input {
+  width: 400px;
+  margin-top: 10px;
+}
+
+.addRule {
+  display: block;
+}
+
+.deleteRule {
+  background: none no-repeat scroll center right;
+  background-image: url("/public/assets/buttons/delete-button.png");
+  padding-right: 10px;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.deleteModerator {
+  background: none no-repeat scroll center right;
+  background-image: url("/public/assets/buttons/delete-button.png");
+  padding-right: 10px;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
 @media (max-width: 768px) {
   .box {
     width: 100%;
@@ -62,6 +141,16 @@
 
   .boxInput input, .boxInput textarea {
     width: calc(100% - 104px);
+    box-sizing: border-box;
+  }
+
+  .rule input {
+    width: calc(100% - 150px);
+    box-sizing: border-box;
+  }
+
+  .moderator input {
+    width: calc(100% - 390px);
     box-sizing: border-box;
   }
 }
