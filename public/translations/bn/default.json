@@ -97,7 +97,6 @@
   "created_by": "দ্বারা তৈরি {{creatorAddress}}",
   "community_for": "মেয়াদ শেষে একটি সম্প্রদায়",
   "post_submitted_on": "এই পোস্টটি {{postDate}} তে সাবমিট করা হয়েছে",
-  "community_last_seen": "সম্প্রদায় নোডটি শেষ দেখা গেছে {{dateAgo}}",
   "readers_count": "{{count}} পাঠক",
   "users_online": "{{count}} ব্যবহারকারী এখানে এখন",
   "point": "পয়েন্ট",
@@ -185,5 +184,6 @@
   "logo": "লোগো",
   "address": "ঠিকানা",
   "nothing_found": "এখানে কিছুই নেই মনে হয় না",
-  "stickied_comment": "পিন করা মন্তব্য"
+  "stickied_comment": "পিন করা মন্তব্য",
+  "posts_last_synced": "পোস্টগুলি সর্বশেষ সিঙ্ক হয়েছে {{dateAgo}}"
 }

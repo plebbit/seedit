@@ -83,7 +83,7 @@ const Subplebbit = ({ subplebbit }: SubplebbitProps) => {
 
   const postScore = upvoteCount === 0 && downvoteCount === 0 ? '•' : upvoteCount - downvoteCount || '•';
   const isOnline = updatedAt && updatedAt > Date.now() / 1000 - 60 * 30;
-  const offlineNotice = updatedAt && t('community_last_seen', { dateAgo: getFormattedTimeAgo(updatedAt) });
+  const offlineNotice = updatedAt && t('posts_last_synced', { dateAgo: getFormattedTimeAgo(updatedAt) });
 
   useEffect(() => {
     document.title = `${t('communities')} - seedit`;

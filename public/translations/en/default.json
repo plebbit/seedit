@@ -97,7 +97,6 @@
   "created_by": "created by {{creatorAddress}}",
   "community_for": "a community for {{date}}",
   "post_submitted_on": "this post was submitted on {{postDate}}",
-  "community_last_seen": "community node last seen {{dateAgo}}",
   "readers_count": "{{count}} readers",
   "users_online": "{{count}} users here now",
   "point": "point",
@@ -185,5 +184,6 @@
   "logo": "Logo",
   "address": "Address",
   "nothing_found": "There doesn't seem to be anything here",
-  "stickied_comment": "Stickied Comment"
+  "stickied_comment": "Stickied Comment",
+  "posts_last_synced": "Posts last synced {{dateAgo}}"
 }

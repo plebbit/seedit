@@ -97,7 +97,6 @@
   "created_by": "gemaakt door {{creatorAddress}}",
   "community_for": "een gemeenschap voor {{date}}",
   "post_submitted_on": "deze post is ingediend op {{postDate}}",
-  "community_last_seen": "laatst gezien gemeenschapsknoop {{dateAgo}}",
   "readers_count": "{{count}} lezers",
   "users_online": "{{count}} gebruikers hier nu",
   "point": "punt",
@@ -185,5 +184,6 @@
   "logo": "Logo",
   "address": "Adres",
   "nothing_found": "Het lijkt erop dat hier niets is",
-  "stickied_comment": "Vastgezette opmerking"
+  "stickied_comment": "Vastgezette opmerking",
+  "posts_last_synced": "Laatst gesynchroniseerde berichten {{dateAgo}}"
 }

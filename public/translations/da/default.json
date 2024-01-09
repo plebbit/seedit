@@ -97,7 +97,6 @@
   "created_by": "oprettet af {{creatorAddress}}",
   "community_for": "fællesskab i {{date}}",
   "post_submitted_on": "denne indsendt dette indlæg på {{postDate}}",
-  "community_last_seen": "fællesskabsnode sidst set {{dateAgo}}",
   "readers_count": "{{count}} læsere",
   "users_online": "{{count}} brugere her nu",
   "point": "punkt",
@@ -185,5 +184,6 @@
   "logo": "Logo",
   "address": "Adresse",
   "nothing_found": "Der ser ikke ud til at være noget her",
-  "stickied_comment": "Fastgjort kommentar"
+  "stickied_comment": "Fastgjort kommentar",
+  "posts_last_synced": "Seneste opdatering af indlæg {{dateAgo}}"
 }

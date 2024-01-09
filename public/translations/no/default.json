@@ -97,7 +97,6 @@
   "created_by": "opprettet av {{creatorAddress}}",
   "community_for": "et fellesskap for {{date}}",
   "post_submitted_on": "dette innlegget ble sendt inn på {{postDate}}",
-  "community_last_seen": "samfunnsnode sist sett {{dateAgo}}",
   "readers_count": "{{count}} lesere",
   "users_online": "{{count}} brukere her nå",
   "point": "punkt",
@@ -185,5 +184,6 @@
   "logo": "Logo",
   "address": "Adresse",
   "nothing_found": "Det ser ikke ut til å være noe her",
-  "stickied_comment": "Festet kommentar"
+  "stickied_comment": "Festet kommentar",
+  "posts_last_synced": "Innlegg sist synkronisert {{dateAgo}}"
 }

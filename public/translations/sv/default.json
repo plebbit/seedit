@@ -97,7 +97,6 @@
   "created_by": "skapat av {{creatorAddress}}",
   "community_for": "en gemenskap för {{date}}",
   "post_submitted_on": "detta inlägg skickades in den {{postDate}}",
-  "community_last_seen": "gemenskapsnoden senast sedd {{dateAgo}}",
   "readers_count": "{{count}} läsare",
   "users_online": "{{count}} användare här nu",
   "point": "punkt",
@@ -185,5 +184,6 @@
   "logo": "Logotyp",
   "address": "Adress",
   "nothing_found": "Det verkar inte finnas något här",
-  "stickied_comment": "Fast kommentar"
+  "stickied_comment": "Fast kommentar",
+  "posts_last_synced": "Senast synkroniserade inlägg {{dateAgo}}"
 }

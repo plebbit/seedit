@@ -97,7 +97,6 @@
   "created_by": "luonut {{creatorAddress}}",
   "community_for": "yhteisössä {{date}}",
   "post_submitted_on": "tämä viesti on toimitettu {{postDate}}",
-  "community_last_seen": "yhteisö solmu viimeksi nähty {{dateAgo}}",
   "readers_count": "{{count}} lukijat",
   "users_online": "{{count}} käyttäjää täällä nyt",
   "point": "piste",
@@ -185,5 +184,6 @@
   "logo": "Logo",
   "address": "Osoite",
   "nothing_found": "Täällä ei näytä olevan mitään",
-  "stickied_comment": "Kiinnitetty kommentti"
+  "stickied_comment": "Kiinnitetty kommentti",
+  "posts_last_synced": "Viimeksi synkronoidut viestit {{dateAgo}}"
 }

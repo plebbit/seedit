@@ -97,7 +97,6 @@
   "created_by": "ద్వారా రూపొందించబడినది {{creatorAddress}}",
   "community_for": "{{date}} కోసం ఒక కమ్యూనిటీ",
   "post_submitted_on": "ఈ పోస్టు {{postDate}} న సమర్పించబడింది",
-  "community_last_seen": "సముదాయ నోడు చివరి సారి చూడబడింది {{dateAgo}}",
   "readers_count": "{{count}} రీడర్స్",
   "users_online": "ప్రస్తుతం ఇక్కడ {{count}} వినియోగదారులు",
   "point": "పాయింట్",
@@ -185,5 +184,6 @@
   "logo": "లోగో",
   "address": "చిరునామా",
   "nothing_found": "ఇక్కడ ఏమి ఉందని లేదని అనుకున్నట్లయిదేమీ లేదు",
-  "stickied_comment": "పిన్ చేసిన వ్యాఖ్య"
+  "stickied_comment": "పిన్ చేసిన వ్యాఖ్య",
+  "posts_last_synced": "పోస్టులు చివరిలో సింక్ అయ్యాయి {{dateAgo}}"
 }

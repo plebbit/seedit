@@ -97,7 +97,6 @@
   "created_by": "tarafından oluşturuldu {{creatorAddress}}",
   "community_for": "{{date}} için bir topluluk",
   "post_submitted_on": "bu gönderi {{postDate}} tarihinde gönderildi",
-  "community_last_seen": "topluluk düğümü son görülen {{dateAgo}}",
   "readers_count": "{{count}} okuyucu",
   "users_online": "şu anda {{count}} kullanıcı burada",
   "point": "nokta",
@@ -185,5 +184,6 @@
   "logo": "Logo",
   "address": "Adres",
   "nothing_found": "Burada hiçbir şey görünmüyor gibi",
-  "stickied_comment": "Sabitleyici Yorum"
+  "stickied_comment": "Sabitleyici Yorum",
+  "posts_last_synced": "Son senkronize edilen gönderiler {{dateAgo}}"
 }

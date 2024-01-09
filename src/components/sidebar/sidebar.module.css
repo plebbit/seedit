@@ -49,6 +49,7 @@ a {
 }
 
 .onlineLine {
+  text-transform: lowercase;
   padding-bottom: 5px;
 }
 

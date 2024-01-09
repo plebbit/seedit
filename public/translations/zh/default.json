@@ -97,7 +97,6 @@
   "created_by": "创建者：{{creatorAddress}}",
   "community_for": "一个社区{{date}}",
   "post_submitted_on": "此帖子提交于{{postDate}}",
-  "community_last_seen": "社区节点最后一次在{{dateAgo}}看到",
   "readers_count": "{{count}} 读者",
   "users_online": "现在有{{count}}用户在这里",
   "point": "点",
@@ -185,5 +184,6 @@
   "logo": "标志",
   "address": "地址",
   "nothing_found": "这里似乎什么都没有",
-  "stickied_comment": "置顶评论"
+  "stickied_comment": "置顶评论",
+  "posts_last_synced": "最后同步的帖子 {{dateAgo}}"
 }
