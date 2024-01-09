@@ -75,8 +75,10 @@ const Rules = ({ rules }: { rules: string[] }) => {
         <button className={styles.addRule}>add a rule</button>
         {rules?.map((rule, index) => (
           <div className={styles.rule} key={index}>
-            {index + 1}. <input type='text' defaultValue={rule} />
+            Rule #{index + 1}
             <span className={styles.deleteRule} title='delete rule' />
+            <br />
+            <input type='text' defaultValue={rule} />
           </div>
         ))}
       </div>
@@ -93,22 +95,27 @@ const Moderators = ({ roles }: { roles: RolesCollection | undefined }) => {
       <div className={styles.boxTitle}>{t('moderators')}</div>
       <div className={styles.boxSubtitle}>let other users moderate and post without challenges</div>
       <div className={styles.boxInput}>
-        <button className={styles.addModerator}>add a user</button>
+        <button className={styles.addModerator}>add a moderator</button>
         {rolesList?.map(({ address, role }, index) => (
           <div className={styles.moderator} key={index}>
-            {index + 1}.{' '}
+            Moderator #{index + 1}
+            <span className={styles.deleteModerator} title='delete moderator' />
+            <br />
             <span className={styles.moderatorAddress}>
-              user address: <input type='text' value={address} />
+              User address:
+              <br />
+              <input type='text' value={address} />
+              <br />
             </span>
             <span className={styles.moderatorRole}>
-              role:{' '}
+              Moderator role:
+              <br />
               <select value={role}>
                 <option value='moderator'>moderator</option>
                 <option value='admin'>admin</option>
                 <option value='owner'>owner</option>
               </select>
             </span>
-            <span className={styles.deleteModerator} title='delete moderator' />
           </div>
         ))}
       </div>
@@ -128,15 +135,58 @@ const Challenge = ({ challenge, selected, setSelected }: { challenge: string; se
         <select defaultValue='captcha' onChange={(e) => setSelectedChallenge(e.target.value)}>
           <option value='captcha'>captcha</option>
           <option value='karma'>karma</option>
+          <option value='token'>token</option>
           <option value='password'>password</option>
           <option value='custom'>custom</option>
           <option value='none'>none</option>
         </select>
-        {selectedChallenge === 'none' && (
-          <span className={styles.noChallengeWarning}>
-            warning: only set to 'none' for private testing - without a challenge, your community is vulnerable to spam attacks.
-          </span>
+        {selectedChallenge === 'captcha' && (
+          <>
+            <br />
+            <label>
+              <input type='checkbox' /> case sensitive
+            </label>
+          </>
         )}
+        {selectedChallenge === 'karma' && (
+          <>
+            <br />
+            <label>
+              Minimum karma: <input type='number' />
+            </label>
+          </>
+        )}
+        {selectedChallenge === 'token' && (
+          <>
+            <br />
+            <label>
+              Contract address (ERC20): <br />
+              <input type='text' />
+            </label>
+            <br />
+            <label>
+              Minumum balance: <br />
+              <input type='number' />
+            </label>
+          </>
+        )}
+        {selectedChallenge === 'password' && (
+          <>
+            <br />
+            <label>
+              Password (case sensitive): <input type='password' />
+            </label>
+          </>
+        )}
+        {selectedChallenge === 'custom' && (
+          <>
+            <br />
+            <label>
+              Paste code: <textarea />
+            </label>
+          </>
+        )}
+        {selectedChallenge === 'none' && <span className={styles.noChallengeWarning}>Warning: vulnerable to spam attacks.</span>}
       </div>
     </div>
   );
@@ -199,7 +249,7 @@ const SubplebbitSettings = () => {
 
   return (
     <div className={styles.content}>
-      {!isElectron && <div className={styles.infobar}>only the admins and owner of a community can edit its settings</div>}
+      {!isElectron && <div className={styles.infobar}>only the admins and the owner of a community can edit its settings</div>}
       <Title title={title} />
       <Description description={description} />
       <Address address={address} />

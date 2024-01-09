@@ -29,7 +29,6 @@
 }
 
 .boxInput {
-  vertical-align: top;
   margin-top: 5px;
   padding: 2px 0px 2px 8px;
   width: 500px;
@@ -89,28 +88,53 @@
   margin-top: 3px;
 }
 
-.moderator {
+.captchaSelect select {
+  margin-bottom: 5px;
+}
+
+.captchaSelect label {
   font-size: 15px;
-  color: var(--text);
+}
+
+.captchaSelect input[type="checkbox"] {
+  width: auto;
+  vertical-align: text-bottom;
+}
+
+.captchaSelect textarea {
   margin-top: 5px;
 }
 
-.moderator input {
-  width: 180px;
-  margin-right: 10px;
+.moderator {
+  font-size: 15px;
+  color: var(--text);
+  margin-top: 20px;
 }
 
 .addModerator {
   display: block;
 }
 
-.rule {
+.moderatorAddress, .moderatorRole {
+  font-size: 13px;
+  margin-top: 5px;
+}
+
+.moderatorAddress input, .moderatorRole input {
   font-size: 15px;
 }
 
-.rule input {
-  width: 400px;
+.moderatorAddress input {
+  margin-bottom: 5px;
+}
+
+.rule {
+  font-size: 15px;
   margin-top: 10px;
+}
+
+.rule input {
+  margin-top: 3px;
 }
 
 .addRule {
@@ -141,16 +165,6 @@
 
   .boxInput input, .boxInput textarea {
     width: calc(100% - 104px);
-    box-sizing: border-box;
-  }
-
-  .rule input {
-    width: calc(100% - 150px);
-    box-sizing: border-box;
-  }
-
-  .moderator input {
-    width: calc(100% - 390px);
     box-sizing: border-box;
   }
 }
