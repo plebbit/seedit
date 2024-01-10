@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { useSubplebbit } from '@plebbit/plebbit-react-hooks';
+import { useAccount, useSubplebbit, usePublishSubplebbitEdit } from '@plebbit/plebbit-react-hooks';
 import { RolesCollection } from '../../../lib/utils/user-utils';
 import { useTranslation } from 'react-i18next';
 import stringify from 'json-stringify-pretty-compact';
@@ -192,9 +192,23 @@ const Challenge = ({ challenge, selected, setSelected }: { challenge: string; se
   );
 };
 
-const FullSettings = ({ subplebbitAddress }: { subplebbitAddress: string }) => {
+const SubplebbitSettings = () => {
+  const { t } = useTranslation();
+
+  const account = useAccount();
+  const { subplebbitAddress } = useParams<{ subplebbitAddress: string }>();
   const subplebbit = useSubplebbit({ subplebbitAddress });
+  const userRole = subplebbit?.roles?.[account.author?.address]?.role;
+  const isAdmin = userRole === 'admin' || userRole === 'owner';
+  const { address, description, rules, suggested, roles, title } = subplebbit || {};
+
   const [text, setText] = useState('');
+  let usePublishSubplebbitEditOptions;
+  try {
+    usePublishSubplebbitEditOptions = { ...JSON.parse(text), subplebbitAddress };
+  } catch (e) {}
+  const { publishSubplebbitEdit } = usePublishSubplebbitEdit(usePublishSubplebbitEditOptions);
+
   const subplebbitJson = useMemo(
     () =>
       stringify({
@@ -226,22 +240,22 @@ const FullSettings = ({ subplebbitAddress }: { subplebbitAddress: string }) => {
     setText(subplebbitJson);
   }, [subplebbitJson]);
 
-  return (
-    <div className={styles.box}>
-      <div className={styles.boxTitle}>full settings data</div>
-      <div className={styles.boxSubtitle}>quickly copy or paste the community settings</div>
-      <div className={`${styles.boxInput} ${styles.fullSettings}`}>
-        <textarea onChange={(e) => setText(e.target.value)} autoCorrect='off' autoComplete='off' value={text} />
-      </div>
-    </div>
-  );
-};
+  const saveSubplebbit = async () => {
+    try {
+      // test parsing the options before saving
+      JSON.parse(text);
 
-const SubplebbitSettings = () => {
-  const { t } = useTranslation();
-  const { subplebbitAddress } = useParams<{ subplebbitAddress: string }>();
-  const subplebbit = useSubplebbit({ subplebbitAddress });
-  const { address, description, rules, suggested, roles, title } = subplebbit || {};
+      await publishSubplebbitEdit();
+      alert(`saved`);
+    } catch (e) {
+      if (e instanceof Error) {
+        console.warn(e);
+        alert(`failed editing subplebbit: ${e.message}`);
+      } else {
+        console.error('An unknown error occurred:', e);
+      }
+    }
+  };
 
   useEffect(() => {
     document.title = `${t('preferences')} - seedit`;
@@ -249,7 +263,8 @@ const SubplebbitSettings = () => {
 
   return (
     <div className={styles.content}>
-      {!isElectron && <div className={styles.infobar}>only the admins and the owner of a community can edit its settings</div>}
+      {!isAdmin && <div className={styles.infobar}>only the admins and the owner of a community can edit its settings</div>}
+      {!isElectron && isAdmin && <div className={styles.infobar}>you must be using the desktop app to edit community settings</div>}
       <Title title={title} />
       <Description description={description} />
       <Address address={address} />
@@ -257,9 +272,17 @@ const SubplebbitSettings = () => {
       <Rules rules={rules} />
       <Moderators roles={roles} />
       <Challenge challenge={''} selected={''} setSelected={() => {}} />
-      <FullSettings subplebbitAddress={address} />
+      <div className={styles.box}>
+        <div className={styles.boxTitle}>full settings data</div>
+        <div className={styles.boxSubtitle}>quickly copy or paste the community settings</div>
+        <div className={`${styles.boxInput} ${styles.fullSettings}`}>
+          <textarea onChange={(e) => setText(e.target.value)} autoCorrect='off' autoComplete='off' value={text} />
+        </div>
+      </div>
       <div className={styles.saveOptions}>
-        <button>{t('save_options')}</button>
+        <button disabled={!isElectron || !isAdmin} onClick={saveSubplebbit}>
+          {t('save_options')}
+        </button>
       </div>
     </div>
   );
