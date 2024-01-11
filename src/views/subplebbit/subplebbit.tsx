@@ -35,7 +35,7 @@ const Subplebbit = () => {
     let footerContent;
 
     if (feed.length === 0) {
-      footerContent = 'no posts';
+      footerContent = t('no_posts');
     }
 
     if (hasMore || subplebbitAddresses.length === 0) {
