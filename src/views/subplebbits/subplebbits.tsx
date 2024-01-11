@@ -49,6 +49,10 @@ const Tabs = () => {
 };
 
 const Infobar = () => {
+  const account = useAccount();
+  const { accountSubplebbits } = useAccountSubplebbits();
+  console.log(accountSubplebbits);
+  const subscriptions = account?.subscriptions || [];
   const { t } = useTranslation();
   const location = useLocation();
   const isInSubplebbitsMineSubscriberView = isSubplebbitsMineSubscriberView(location.pathname);
@@ -57,11 +61,11 @@ const Infobar = () => {
 
   const infobarText = useMemo(() => {
     if (isInSubplebbitsMineSubscriberView) {
-      return 'below are communities you have subscribed to.';
+      return subscriptions.length === 0 ? 'you are not subscribed to any community.' : 'below are communities you have subscribed to.';
     } else if (isInSubplebbitsMineContributorView) {
       return 'below are the communities that you are an approved user on.';
     } else if (isInSubplebbitsMineModeratorView) {
-      return 'below are the communities that you have moderator access to.';
+      return Object.keys(accountSubplebbits).length > 0 ? 'below are the communities that you have moderator access to.' : 'you are not a moderator on any community.';
     } else {
       return (
         <>
@@ -69,7 +73,7 @@ const Infobar = () => {
         </>
       );
     }
-  }, [isInSubplebbitsMineSubscriberView, isInSubplebbitsMineContributorView, isInSubplebbitsMineModeratorView, t]);
+  }, [isInSubplebbitsMineSubscriberView, isInSubplebbitsMineContributorView, isInSubplebbitsMineModeratorView, t, subscriptions.length, accountSubplebbits]);
 
   return <div className={styles.infobar}>{infobarText}</div>;
 };
