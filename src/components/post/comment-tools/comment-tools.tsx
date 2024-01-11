@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { Author, useAccount, useComment, useSubplebbit } from '@plebbit/plebbit-react-hooks';
 import styles from './comment-tools.module.css';
 import HideMenu from './hide-menu';
-import ModTools from './mod-menu';
+import ModMenu from './mod-menu';
 import ShareMenu from './share-menu';
 import { FailedLabel, PendingLabel, SpoilerLabel } from '../label';
 import { isInboxView } from '../../../lib/utils/view-utils';
@@ -39,16 +39,16 @@ const PostTools = ({ author, cid, hasLabel, index, isMod, subplebbitAddress, rep
         <span>{t('save')}</span>
       </li>
       <HideMenu author={author} cid={cid} isMod={isMod} subplebbitAddress={subplebbitAddress} />
+      <li className={`${styles.button} ${styles.crosspostButton}`}>
+        <span>{t('crosspost')}</span>
+      </li>
       {isMod ? (
-        <ModTools cid={cid} />
+        <ModMenu cid={cid} />
       ) : (
         <li className={`${styles.button} ${styles.reportButton}`}>
           <span>{t('report')}</span>
         </li>
       )}
-      <li className={`${styles.button} ${styles.crosspostButton}`}>
-        <span>{t('crosspost')}</span>
-      </li>
     </>
   );
 };
@@ -66,16 +66,16 @@ const ReplyTools = ({ author, cid, hasLabel, index, isMod, showReplyForm, subple
         <span>{t('save')}</span>
       </li>
       <HideMenu author={author} cid={cid} isMod={isMod} subplebbitAddress={subplebbitAddress} />
+      <li className={!cid ? styles.hideReply : styles.button}>
+        <span onClick={() => cid && showReplyForm?.()}>{t('reply_reply')}</span>
+      </li>
       {isMod ? (
-        <ModTools cid={cid} />
+        <ModMenu cid={cid} />
       ) : (
         <li className={`${styles.button} ${styles.reportButton}`}>
           <span>{t('report')}</span>
         </li>
       )}
-      <li className={!cid ? styles.hideReply : styles.button}>
-        <span onClick={() => cid && showReplyForm?.()}>{t('reply_reply')}</span>
-      </li>
     </>
   );
 };
@@ -104,6 +104,13 @@ const SingleReplyTools = ({ author, cid, hasLabel, index, isMod, parentCid, show
       <li className={!cid ? styles.hideReply : styles.button}>
         <span onClick={() => cid && showReplyForm?.()}>{t('reply_reply')}</span>
       </li>
+      {isMod ? (
+        <ModMenu cid={cid} />
+      ) : (
+        <li className={`${styles.button} ${styles.reportButton}`}>
+          <span>{t('report')}</span>
+        </li>
+      )}
     </>
   );
 };

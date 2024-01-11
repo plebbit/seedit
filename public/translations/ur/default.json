@@ -97,7 +97,6 @@
   "created_by": "کا سروری کیا گیا {{creatorAddress}}",
   "community_for": "ایک کمیونٹی کے لئے {{date}}",
   "post_submitted_on": "یہ پوسٹ {{postDate}} کو جمع کی گئی تھی",
-  "community_last_seen": "آخری بار دیکھا گیا سماجی نوڈ {{dateAgo}}",
   "readers_count": "{{count}} پڑھنے والے",
   "users_online": "اب {{count}} صارفین یہاں ہیں",
   "point": "نقطہ",
@@ -185,5 +184,6 @@
   "logo": "لوگو",
   "address": "پتہ",
   "nothing_found": "یہاں کچھ بھی نظر نہیں آرہا",
-  "stickied_comment": "پن کردہ تبصرہ"
+  "stickied_comment": "پن کردہ تبصرہ",
+  "posts_last_synced": "آخری مرتب سبقت کردہ پوسٹس {{dateAgo}}"
 }

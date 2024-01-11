@@ -8,15 +8,15 @@ import challengesStore from '../../../../hooks/use-challenges';
 
 const { addChallenge } = challengesStore.getState();
 
-type ModToolsProps = {
+type ModMenuProps = {
   cid: string;
 };
 
-const ModTools = ({ cid }: ModToolsProps) => {
+const ModMenu = ({ cid }: ModMenuProps) => {
   const { t } = useTranslation();
   const post = useComment({ commentCid: cid });
   const isReply = post?.parentCid;
-  const [isModToolsOpen, setIsModToolsOpen] = useState(false);
+  const [isModMenuOpen, setIsModMenuOpen] = useState(false);
 
   const defaultPublishOptions: PublishCommentEditOptions = {
     removed: post?.removed,
@@ -39,9 +39,9 @@ const ModTools = ({ cid }: ModToolsProps) => {
   // close the modal after publishing
   useEffect(() => {
     if (state && state !== 'failed' && state !== 'initializing' && state !== 'ready') {
-      setIsModToolsOpen(false);
+      setIsModMenuOpen(false);
     }
-  }, [state, setIsModToolsOpen]);
+  }, [state, setIsModMenuOpen]);
 
   const onCheckbox = (e: React.ChangeEvent<HTMLInputElement>) => setPublishCommentEditOptions((state) => ({ ...state, [e.target.id]: e.target.checked }));
 
@@ -50,8 +50,8 @@ const ModTools = ({ cid }: ModToolsProps) => {
 
   const { refs, floatingStyles, context } = useFloating({
     placement: 'bottom-start',
-    open: isModToolsOpen,
-    onOpenChange: setIsModToolsOpen,
+    open: isModMenuOpen,
+    onOpenChange: setIsModMenuOpen,
     middleware: [offset(2), flip({ fallbackAxisSideDirection: 'end' }), shift()],
     whileElementsMounted: autoUpdate,
   });
@@ -67,12 +67,12 @@ const ModTools = ({ cid }: ModToolsProps) => {
   return (
     <>
       <li className={styles.button} ref={refs.setReference} {...getReferenceProps()}>
-        <span onClick={() => setIsModToolsOpen(!isModToolsOpen)}>{t('moderation')}</span>
+        <span onClick={() => setIsModMenuOpen(!isModMenuOpen)}>{t('moderation')}</span>
       </li>
-      {isModToolsOpen && (
+      {isModMenuOpen && (
         <FloatingFocusManager context={context} modal={false}>
           <div className={styles.modal} ref={refs.setFloating} style={floatingStyles} aria-labelledby={headingId} {...getFloatingProps()}>
-            <div className={styles.modTools}>
+            <div className={styles.ModMenu}>
               <div className={styles.menuItem}>
                 <label>
                   <input onChange={onCheckbox} checked={publishCommentEditOptions.removed} type='checkbox' id='removed' />
@@ -114,4 +114,4 @@ const ModTools = ({ cid }: ModToolsProps) => {
   );
 };
 
-export default ModTools;
+export default ModMenu;

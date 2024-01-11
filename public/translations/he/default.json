@@ -97,7 +97,6 @@
   "created_by": "נוצר על ידי {{creatorAddress}}",
   "community_for": "קהילה למשך {{date}}",
   "post_submitted_on": "הפוסט הזה הוגש בתאריך {{postDate}}",
-  "community_last_seen": "צומת קהילה נראה לאחרונה ב {{dateAgo}}",
   "readers_count": "{{count}} קוראים",
   "users_online": "{{count}} משתמשים כאן עכשיו",
   "point": "נקודה",
@@ -185,5 +184,6 @@
   "logo": "לוגו",
   "address": "כתובת",
   "nothing_found": "נראה שאין כאן שום דבר",
-  "stickied_comment": "תגובה מוצבת"
+  "stickied_comment": "תגובה מוצבת",
+  "posts_last_synced": "פוסטים אחרונים שנסנכרנו {{dateAgo}}"
 }

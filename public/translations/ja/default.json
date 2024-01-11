@@ -97,7 +97,6 @@
   "created_by": "作成者：{{creatorAddress}}",
   "community_for": "{{date}} のコミュニティ",
   "post_submitted_on": "この投稿は{{postDate}}に投稿されました",
-  "community_last_seen": "コミュニティノードは最後に{{dateAgo}}に見られました",
   "readers_count": "{{count}} 読者",
   "users_online": "現在{{count}}人のユーザーがここにいます",
   "point": "ポイント",
@@ -185,5 +184,6 @@
   "logo": "ロゴ",
   "address": "住所",
   "nothing_found": "ここには何もないようです",
-  "stickied_comment": "固定されたコメント"
+  "stickied_comment": "固定されたコメント",
+  "posts_last_synced": "最後に同期された投稿 {{dateAgo}}"
 }

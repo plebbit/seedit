@@ -29,7 +29,6 @@
 }
 
 .boxInput {
-  vertical-align: top;
   margin-top: 5px;
   padding: 2px 0px 2px 8px;
   width: 500px;
@@ -52,6 +51,110 @@
   font-family: verdana, arial, helvetica, sans-serif;
   line-height: 20px;
   font-size: 14px;
+}
+
+.saveOptions button {
+  text-transform: lowercase;
+  margin: 3px 5px;
+  padding: 2px 5px 3px;
+}
+
+.fullSettings textarea {
+  height: 200px;
+}
+
+.noChallengeWarning {
+  color: var(--red);
+  font-size: 12px;
+  margin-left: 10px;
+}
+
+.infobar {
+  background-color: var(--background-orange);
+  border-color: var(--border-orange);
+  border-style: solid;
+  border-width: 1px;
+  font-size: small;
+  margin-bottom: 5px;
+  padding: 6px 10px;
+  color: var(--text);
+  word-wrap: break-word;
+  font-size: 14px;
+  text-transform: lowercase;
+}
+
+.captchaSelect {
+  padding-top: 0;
+  margin-top: 3px;
+}
+
+.captchaSelect select {
+  margin-bottom: 5px;
+}
+
+.captchaSelect label {
+  font-size: 15px;
+}
+
+.captchaSelect input[type="checkbox"] {
+  width: auto;
+  vertical-align: text-bottom;
+}
+
+.captchaSelect textarea {
+  margin-top: 5px;
+}
+
+.moderator {
+  font-size: 15px;
+  color: var(--text);
+  margin-top: 20px;
+}
+
+.addModerator {
+  display: block;
+}
+
+.moderatorAddress, .moderatorRole {
+  font-size: 13px;
+  margin-top: 5px;
+}
+
+.moderatorAddress input, .moderatorRole input {
+  font-size: 15px;
+}
+
+.moderatorAddress input {
+  margin-bottom: 5px;
+}
+
+.rule {
+  font-size: 15px;
+  margin-top: 10px;
+}
+
+.rule input {
+  margin-top: 3px;
+}
+
+.addRule {
+  display: block;
+}
+
+.deleteRule {
+  background: none no-repeat scroll center right;
+  background-image: url("/public/assets/buttons/delete-button.png");
+  padding-right: 10px;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.deleteModerator {
+  background: none no-repeat scroll center right;
+  background-image: url("/public/assets/buttons/delete-button.png");
+  padding-right: 10px;
+  margin-left: 10px;
+  cursor: pointer;
 }
 
 @media (max-width: 768px) {

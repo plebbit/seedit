@@ -97,7 +97,6 @@
   "created_by": "dibuat oleh {{creatorAddress}}",
   "community_for": "sebuah komunitas selama {{date}}",
   "post_submitted_on": "posting ini diajukan pada {{postDate}}",
-  "community_last_seen": "node komunitas terakhir terlihat {{dateAgo}}",
   "readers_count": "{{count}} pembaca",
   "users_online": "{{count}} pengguna di sini sekarang",
   "point": "titik",
@@ -185,5 +184,6 @@
   "logo": "Logo",
   "address": "Alamat",
   "nothing_found": "Tidak ada yang tampaknya di sini",
-  "stickied_comment": "Komentar yang Dipasang"
+  "stickied_comment": "Komentar yang Dipasang",
+  "posts_last_synced": "Postingan yang terakhir disinkronkan {{dateAgo}}"
 }

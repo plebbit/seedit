@@ -97,7 +97,6 @@
   "created_by": "likha ni {{creatorAddress}}",
   "community_for": "isang komunidad para sa {{date}}",
   "post_submitted_on": "ang post na ito ay isinumite noong {{postDate}}",
-  "community_last_seen": "komunidad node huli nakita sa {{dateAgo}}",
   "readers_count": "{{count}} mga mambabasa",
   "users_online": "{{count}} mga gumagamit dito ngayon",
   "point": "punto",
@@ -185,5 +184,6 @@
   "logo": "Logo",
   "address": "Address",
   "nothing_found": "Wala yatang nandito",
-  "stickied_comment": "Naka-pinned na Komento"
+  "stickied_comment": "Naka-pinned na Komento",
+  "posts_last_synced": "Mga huling na-synchronize na mga post {{dateAgo}}"
 }

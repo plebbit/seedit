@@ -155,6 +155,10 @@
   font-size: 14px;
 }
 
+.tagline {
+  text-transform: lowercase;
+}
+
 .subplebbitPreferences {
   padding: 0 1px;
   line-height: 1.6em;

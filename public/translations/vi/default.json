@@ -97,7 +97,6 @@
   "created_by": "tạo bởi {{creatorAddress}}",
   "community_for": "một cộng đồng cho {{date}}",
   "post_submitted_on": "bài viết này đã được đăng vào ngày {{postDate}}",
-  "community_last_seen": "nút cộng đồng cuối cùng được thấy vào {{dateAgo}}",
   "readers_count": "{{count}} người đọc",
   "users_online": "{{count}} người dùng ở đây bây giờ",
   "point": "điểm",
@@ -185,5 +184,6 @@
   "logo": "Logo",
   "address": "Địa chỉ",
   "nothing_found": "Dường như không có gì ở đây",
-  "stickied_comment": "Bình luận ghim"
+  "stickied_comment": "Bình luận ghim",
+  "posts_last_synced": "Bài viết gần nhất đã đồng bộ {{dateAgo}}"
 }

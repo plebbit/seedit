@@ -97,7 +97,6 @@
   "created_by": "criado por {{creatorAddress}}",
   "community_for": "uma comunidade por {{date}}",
   "post_submitted_on": "esta postagem foi enviada em {{postDate}}",
-  "community_last_seen": "nó da comunidade visto pela última vez {{dateAgo}}",
   "readers_count": "{{count}} leitores",
   "users_online": "{{count}} usuários aqui agora",
   "point": "ponto",
@@ -185,5 +184,6 @@
   "logo": "Logotipo",
   "address": "Endereço",
   "nothing_found": "Não parece haver nada aqui",
-  "stickied_comment": "Comentário fixado"
+  "stickied_comment": "Comentário fixado",
+  "posts_last_synced": "Últimas postagens sincronizadas {{dateAgo}}"
 }

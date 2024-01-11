@@ -97,7 +97,6 @@
   "created_by": "ساخته شده توسط {{creatorAddress}}",
   "community_for": "یک جامعه برای {{date}}",
   "post_submitted_on": "این پست در {{postDate}} ارسال شده است",
-  "community_last_seen": "آخرین باری که گره جامعه دیده شده است {{dateAgo}}",
   "readers_count": "{{count}} خوانندگان",
   "users_online": "کاربران {{count}} در حال حاضر اینجا هستند",
   "point": "نقطه",
@@ -185,5 +184,6 @@
   "logo": "آرم",
   "address": "آدرس",
   "nothing_found": "به نظر نمی رسد که چیزی وجود داشته باشد",
-  "stickied_comment": "نظر ثابت"
+  "stickied_comment": "نظر ثابت",
+  "posts_last_synced": "آخرین باری که پست‌ها همگام‌سازی شدند {{dateAgo}}"
 }

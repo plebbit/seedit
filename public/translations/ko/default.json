@@ -97,7 +97,6 @@
   "created_by": "만든 사람: {{creatorAddress}}",
   "community_for": "{{date}}에 대한 커뮤니티",
   "post_submitted_on": "이 게시물은 {{postDate}}에 게시되었습니다",
-  "community_last_seen": "커뮤니티 노드가 마지막으로 {{dateAgo}}에 본 날",
   "readers_count": "{{count}} 독자",
   "users_online": "지금 여기 {{count}} 명의 사용자",
   "point": "포인트",
@@ -185,5 +184,6 @@
   "logo": "로고",
   "address": "주소",
   "nothing_found": "여기에는 아무것도 없는 것 같습니다",
-  "stickied_comment": "고정된 댓글"
+  "stickied_comment": "고정된 댓글",
+  "posts_last_synced": "마지막 동기화된 게시물 {{dateAgo}}"
 }

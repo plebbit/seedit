@@ -24,6 +24,9 @@ import {
   isSubplebbitSettingsView,
   isSubplebbitSubmitView,
   isSubplebbitsView,
+  isSubplebbitsMineView,
+  isSubplebbitsMineSubscriberView,
+  isSubplebbitsMineModeratorView,
   isProfileUpvotedView,
 } from '../../lib/utils/view-utils';
 import useTheme from '../../hooks/use-theme';
@@ -196,11 +199,16 @@ const InboxHeaderTabs = () => {
 
 const SubplebbitsHeaderTabs = () => {
   const { t } = useTranslation();
+  const location = useLocation();
+  const isInSubplebbitsMineSubscriberView = isSubplebbitsMineSubscriberView(location.pathname);
+  const isInSubplebbitsMineModeratorView = isSubplebbitsMineModeratorView(location.pathname);
+  const isInSubplebbitsView = isSubplebbitsView(location.pathname) && !isInSubplebbitsMineSubscriberView && !isInSubplebbitsMineModeratorView;
+  const isInSubplebbitsMineView = isSubplebbitsMineView(location.pathname);
 
   return (
     <>
       <li>
-        <Link to={'/communities'} className={styles.choice} onClick={(e) => e.preventDefault()}>
+        <Link to={'/communities'} className={`${isInSubplebbitsView ? styles.selected : styles.choice}`}>
           approved
         </Link>
       </li>
@@ -210,7 +218,10 @@ const SubplebbitsHeaderTabs = () => {
         </Link>
       </li>
       <li>
-        <Link to={'/communities'} className={styles.selected} onClick={(e) => e.preventDefault()}>
+        <Link
+          to={'/communities/mine'}
+          className={isInSubplebbitsMineView || isInSubplebbitsMineModeratorView || isInSubplebbitsMineSubscriberView ? styles.selected : styles.choice}
+        >
           {t('my_communities')}
         </Link>
       </li>

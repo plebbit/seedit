@@ -1,15 +1,23 @@
 import { useEffect, useMemo } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { Subplebbit as SubplebbitType, useAccountSubplebbits, useSubplebbitStats } from '@plebbit/plebbit-react-hooks';
+import { Subplebbit as SubplebbitType, useAccount, useAccountSubplebbits, useSubplebbits, useSubplebbitStats } from '@plebbit/plebbit-react-hooks';
 import styles from './subplebbits.module.css';
 import Sidebar from '../../components/sidebar';
 import SubscribeButton from '../../components/subscribe-button';
 import { getFormattedTimeDuration, getFormattedTimeAgo } from '../../lib/utils/time-utils';
-import { isSubplebbitsMineContributorView, isSubplebbitsMineSubscriberView, isSubplebbitsMineModeratorView } from '../../lib/utils/view-utils';
+import {
+  isSubplebbitsView,
+  isSubplebbitsMineView,
+  isSubplebbitsMineContributorView,
+  isSubplebbitsMineSubscriberView,
+  isSubplebbitsMineModeratorView,
+} from '../../lib/utils/view-utils';
+import { useDefaultSubplebbitAddresses } from '../../lib/utils/addresses-utils';
 
 interface SubplebbitProps {
-  subplebbit: SubplebbitType;
+  index?: number;
+  subplebbit: SubplebbitType | undefined;
 }
 
 const Tabs = () => {
@@ -21,11 +29,7 @@ const Tabs = () => {
 
   return (
     <div className={styles.subplebbitsTabs}>
-      <Link
-        to='/communities/mine/subscriber'
-        className={isInSubplebbitsMineSubscriberView ? styles.selected : styles.choice}
-        onClick={(e) => e.preventDefault()} // TODO: enable after useSubplebbits cache is implemented in the API
-      >
+      <Link to='/communities/mine/subscriber' className={isInSubplebbitsMineSubscriberView ? styles.selected : styles.choice}>
         subscriber
       </Link>
       <span className={styles.separator}>|</span>
@@ -83,7 +87,7 @@ const Subplebbit = ({ subplebbit }: SubplebbitProps) => {
 
   const postScore = upvoteCount === 0 && downvoteCount === 0 ? '•' : upvoteCount - downvoteCount || '•';
   const isOnline = updatedAt && updatedAt > Date.now() / 1000 - 60 * 30;
-  const offlineNotice = updatedAt && t('community_last_seen', { dateAgo: getFormattedTimeAgo(updatedAt) });
+  const offlineNotice = updatedAt && t('posts_last_synced', { dateAgo: getFormattedTimeAgo(updatedAt) });
 
   useEffect(() => {
     document.title = `${t('communities')} - seedit`;
@@ -106,7 +110,7 @@ const Subplebbit = ({ subplebbit }: SubplebbitProps) => {
         <div className={styles.title}>
           <span className={`${styles.onlineIndicator} ${isOnline ? styles.online : styles.offline}`} />
           <Link to={`/p/${address}`}>
-            p/{address.includes('.') ? address : shortAddress}
+            p/{address?.includes('.') ? address : shortAddress}
             {title && `: ${title}`}
           </Link>
           <span className={styles.subscribeButton}>
@@ -133,18 +137,44 @@ const Subplebbit = ({ subplebbit }: SubplebbitProps) => {
   );
 };
 
-const Subplebbits = () => {
+const AccountSubplebbits = () => {
   const { accountSubplebbits } = useAccountSubplebbits();
   const accountSubplebbitsArray = useMemo(() => Object.values(accountSubplebbits), [accountSubplebbits]);
+  return accountSubplebbitsArray?.map((subplebbit, index) => <Subplebbit key={index} subplebbit={subplebbit} />);
+};
+
+const SubscriberSubplebbits = () => {
+  const account = useAccount();
+  const { subplebbits } = useSubplebbits({ subplebbitAddresses: account?.subscriptions || [] });
+  const subplebbitsArray = useMemo(() => Object.values(subplebbits), [subplebbits]);
+  return subplebbitsArray?.map((subplebbit, index) => <Subplebbit key={index} subplebbit={subplebbit} />);
+};
+
+const ApprovedSubplebbits = () => {
+  const defaultSubplebbitAddresses = useDefaultSubplebbitAddresses();
+  const { subplebbits } = useSubplebbits({ subplebbitAddresses: defaultSubplebbitAddresses || [] });
+  const subplebbitsArray = useMemo(() => Object.values(subplebbits), [subplebbits]);
+  return subplebbitsArray?.map((subplebbit, index) => <Subplebbit key={index} subplebbit={subplebbit} />);
+};
+
+const Subplebbits = () => {
+  const location = useLocation();
+  const isInSubplebbitsMineSubscriberView = isSubplebbitsMineSubscriberView(location.pathname);
+  const isInSubplebbitsMineModeratorView = isSubplebbitsMineModeratorView(location.pathname);
+  const isInSubplebbitsView = isSubplebbitsView(location.pathname) && !isInSubplebbitsMineSubscriberView && !isInSubplebbitsMineModeratorView;
+  const isInSubplebbitsMineView = isSubplebbitsMineView(location.pathname);
 
   return (
     <div className={styles.content}>
       <div className={`${styles.sidebar}`}>
         <Sidebar />
       </div>
-      <Tabs />
+
+      {(isInSubplebbitsMineView || isInSubplebbitsMineModeratorView || isInSubplebbitsMineSubscriberView) && <Tabs />}
       <Infobar />
-      {accountSubplebbitsArray?.map((subplebbit) => <Subplebbit subplebbit={subplebbit} />)}
+      {isInSubplebbitsView && <ApprovedSubplebbits />}
+      {isInSubplebbitsMineModeratorView && <AccountSubplebbits />}
+      {isInSubplebbitsMineSubscriberView && <SubscriberSubplebbits />}
     </div>
   );
 };

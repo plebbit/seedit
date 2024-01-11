@@ -123,7 +123,7 @@ const Post = ({ post = {}, index }: PostProps) => {
   const { blocked, unblock } = useBlock({ address: cid });
 
   return (
-    <div className={`${styles.content} ${removed ? styles.hidden : styles.visible}`} key={index}>
+    <div className={`${styles.content} ${removed ? styles.minimalHeight : ''}`} key={index}>
       <div className={`${styles.hiddenPost} ${blocked ? styles.visible : styles.hidden}`}>
         <div className={styles.hiddenPostText}>{t('post_hidden').charAt(0).toUpperCase() + t('post_hidden').slice(1)}</div>
         <div className={styles.undoHiddenPost} onClick={unblock}>
