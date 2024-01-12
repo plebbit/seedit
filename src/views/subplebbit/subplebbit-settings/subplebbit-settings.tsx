@@ -5,6 +5,7 @@ import { RolesCollection } from '../../../lib/utils/user-utils';
 import { useTranslation } from 'react-i18next';
 import stringify from 'json-stringify-pretty-compact';
 import styles from './subplebbit-settings.module.css';
+import Sidebar from '../../../components/sidebar';
 
 const isElectron = window.electron && window.electron.isElectron;
 
@@ -200,7 +201,7 @@ const SubplebbitSettings = () => {
   const subplebbit = useSubplebbit({ subplebbitAddress });
   const userRole = subplebbit?.roles?.[account.author?.address]?.role;
   const isAdmin = userRole === 'admin' || userRole === 'owner';
-  const { address, description, rules, suggested, roles, title } = subplebbit || {};
+  const { address, createdAt, description, rules, suggested, roles, title, updatedAt } = subplebbit || {};
 
   const [text, setText] = useState('');
   let usePublishSubplebbitEditOptions;
@@ -263,6 +264,9 @@ const SubplebbitSettings = () => {
 
   return (
     <div className={styles.content}>
+      <div className={styles.sidebar}>
+        <Sidebar address={subplebbitAddress} createdAt={createdAt} description={description} roles={roles} rules={rules} title={title} updatedAt={updatedAt} />
+      </div>
       {!isAdmin && <div className={styles.infobar}>only the admins and the owner of a community can edit its settings</div>}
       {!isElectron && isAdmin && <div className={styles.infobar}>you must be using the desktop app to edit community settings</div>}
       <Title title={title} />

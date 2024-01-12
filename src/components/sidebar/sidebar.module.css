@@ -177,6 +177,31 @@ a {
   padding-left: 40px;
 }
 
+.moderationTool {
+  margin: 5px 0;
+  text-transform: lowercase;
+}
+
+.selectedTool {
+  font-weight: bold;
+}
+
+.moderationTool a {
+  text-decoration: none;
+  color: var(--text-primary);
+  cursor: pointer;
+}
+
+.communitySettingsTool::before {
+  background-image: url('/public/assets/community_settings.png');
+  background-size: 16px 16px;
+  height: 16px;
+  width: 16px;
+  content: '';
+  float: left;
+  margin-right: 5px;
+}
+
 .postInfo {
   padding: 5px;
   border: 1px solid var(--border-primary);

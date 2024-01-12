@@ -2,6 +2,7 @@
   padding-left: 5px;
 }
 
+/* position virtuoso window content relatively to sidebar */
 div[data-viewport-type="window"] {
   position: relative !important;
 }

@@ -51,7 +51,6 @@ const Tabs = () => {
 const Infobar = () => {
   const account = useAccount();
   const { accountSubplebbits } = useAccountSubplebbits();
-  console.log(accountSubplebbits);
   const subscriptions = account?.subscriptions || [];
   const { t } = useTranslation();
   const location = useLocation();
