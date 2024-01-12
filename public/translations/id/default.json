@@ -185,5 +185,6 @@
   "address": "Alamat",
   "nothing_found": "Tidak ada yang tampaknya di sini",
   "stickied_comment": "Komentar yang Dipasang",
-  "posts_last_synced": "Postingan yang terakhir disinkronkan {{dateAgo}}"
+  "posts_last_synced": "Postingan yang terakhir disinkronkan {{dateAgo}}",
+  "community_settings": "Pengaturan Komunitas"
 }

@@ -185,5 +185,6 @@
   "address": "عنوان",
   "nothing_found": "لا يبدو أن هناك شيء هنا",
   "stickied_comment": "التعليق المثبت",
-  "posts_last_synced": "آخر مرة تمت مزامنة المشاركات {{dateAgo}}"
+  "posts_last_synced": "آخر مرة تمت مزامنة المشاركات {{dateAgo}}",
+  "community_settings": "إعدادات المجتمع"
 }

@@ -185,5 +185,6 @@
   "address": "Адреса",
   "nothing_found": "Тут, здається, нічого немає",
   "stickied_comment": "Закріплений коментар",
-  "posts_last_synced": "Останні синхронізовані пости {{dateAgo}}"
+  "posts_last_synced": "Останні синхронізовані пости {{dateAgo}}",
+  "community_settings": "Налаштування спільноти"
 }

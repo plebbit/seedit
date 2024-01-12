@@ -185,5 +185,6 @@
   "address": "Διεύθυνση",
   "nothing_found": "Δεν φαίνεται να υπάρχει τίποτα εδώ",
   "stickied_comment": "Καρφωμένο σχόλιο",
-  "posts_last_synced": "Τελευταία συγχρονισμένες δημοσιεύσεις {{dateAgo}}"
+  "posts_last_synced": "Τελευταία συγχρονισμένες δημοσιεύσεις {{dateAgo}}",
+  "community_settings": "Ρυθμίσεις κοινότητας"
 }

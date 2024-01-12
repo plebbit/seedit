@@ -185,5 +185,6 @@
   "address": "पत्ता",
   "nothing_found": "काहीतरी दिसत नाही आहे",
   "stickied_comment": "टाळलेला टिप्पणी",
-  "posts_last_synced": "शेवटी सिंक केलेले पोस्ट्स {{dateAgo}}"
+  "posts_last_synced": "शेवटी सिंक केलेले पोस्ट्स {{dateAgo}}",
+  "community_settings": "समुदाय सेटिंग्स"
 }

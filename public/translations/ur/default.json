@@ -185,5 +185,6 @@
   "address": "پتہ",
   "nothing_found": "یہاں کچھ بھی نظر نہیں آرہا",
   "stickied_comment": "پن کردہ تبصرہ",
-  "posts_last_synced": "آخری مرتب سبقت کردہ پوسٹس {{dateAgo}}"
+  "posts_last_synced": "آخری مرتب سبقت کردہ پوسٹس {{dateAgo}}",
+  "community_settings": "کمیونٹی کی ترتیبات"
 }

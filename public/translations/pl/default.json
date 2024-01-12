@@ -185,5 +185,6 @@
   "address": "Adres",
   "nothing_found": "Nie wydaje się, że jest tu cokolwiek",
   "stickied_comment": "Przypięty komentarz",
-  "posts_last_synced": "Ostatnio zsynchronizowane posty {{dateAgo}}"
+  "posts_last_synced": "Ostatnio zsynchronizowane posty {{dateAgo}}",
+  "community_settings": "Ustawienia społeczności"
 }

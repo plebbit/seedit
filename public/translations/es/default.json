@@ -185,5 +185,6 @@
   "address": "Dirección",
   "nothing_found": "No parece haber nada aquí",
   "stickied_comment": "Comentario fijado",
-  "posts_last_synced": "Últimas publicaciones sincronizadas {{dateAgo}}"
+  "posts_last_synced": "Últimas publicaciones sincronizadas {{dateAgo}}",
+  "community_settings": "Configuración de la comunidad"
 }

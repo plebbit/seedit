@@ -185,5 +185,6 @@
   "address": "Adresa",
   "nothing_found": "Zdá se, že zde nic není",
   "stickied_comment": "Připnutý komentář",
-  "posts_last_synced": "Poslední synchronizace příspěvků {{dateAgo}}"
+  "posts_last_synced": "Poslední synchronizace příspěvků {{dateAgo}}",
+  "community_settings": "Nastavení komunity"
 }

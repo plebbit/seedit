@@ -185,5 +185,6 @@
   "address": "آدرس",
   "nothing_found": "به نظر نمی رسد که چیزی وجود داشته باشد",
   "stickied_comment": "نظر ثابت",
-  "posts_last_synced": "آخرین باری که پست‌ها همگام‌سازی شدند {{dateAgo}}"
+  "posts_last_synced": "آخرین باری که پست‌ها همگام‌سازی شدند {{dateAgo}}",
+  "community_settings": "تنظیمات اجتماعی"
 }

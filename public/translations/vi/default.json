@@ -185,5 +185,6 @@
   "address": "Địa chỉ",
   "nothing_found": "Dường như không có gì ở đây",
   "stickied_comment": "Bình luận ghim",
-  "posts_last_synced": "Bài viết gần nhất đã đồng bộ {{dateAgo}}"
+  "posts_last_synced": "Bài viết gần nhất đã đồng bộ {{dateAgo}}",
+  "community_settings": "Cài đặt cộng đồng"
 }

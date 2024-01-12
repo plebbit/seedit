@@ -185,5 +185,6 @@
   "address": "住所",
   "nothing_found": "ここには何もないようです",
   "stickied_comment": "固定されたコメント",
-  "posts_last_synced": "最後に同期された投稿 {{dateAgo}}"
+  "posts_last_synced": "最後に同期された投稿 {{dateAgo}}",
+  "community_settings": "コミュニティの設定"
 }
