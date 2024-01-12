@@ -186,5 +186,6 @@
   "nothing_found": "ดูเหมือนว่าจะไม่มีอะไรที่นี่",
   "stickied_comment": "ความคิดเห็นที่ตรึง",
   "posts_last_synced": "โพสต์ล่าสุดที่ซิงค์ {{dateAgo}}",
-  "community_settings": "การตั้งค่าชุมชน"
+  "community_settings": "การตั้งค่าชุมชน",
+  "moderation_tools": "เครื่องมือการตรวจสอบ"
 }

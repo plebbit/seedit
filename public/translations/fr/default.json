@@ -186,5 +186,6 @@
   "nothing_found": "Il ne semble pas y avoir de contenu ici",
   "stickied_comment": "Commentaire épinglé",
   "posts_last_synced": "Dernières publications synchronisées {{dateAgo}}",
-  "community_settings": "Paramètres de la communauté"
+  "community_settings": "Paramètres de la communauté",
+  "moderation_tools": "Outils de modération"
 }

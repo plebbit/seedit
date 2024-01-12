@@ -186,5 +186,6 @@
   "nothing_found": "Úgy tűnik, nincs itt semmi",
   "stickied_comment": "Kitűzött hozzászólás",
   "posts_last_synced": "Legutóbb szinkronizált bejegyzések {{dateAgo}}",
-  "community_settings": "Közösségi beállítások"
+  "community_settings": "Közösségi beállítások",
+  "moderation_tools": "Moderációs eszközök"
 }

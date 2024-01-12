@@ -81,7 +81,7 @@ const ModerationTools = ({ address }: sidebarProps) => {
 
   return (
     <div className={styles.list}>
-      <div className={styles.listTitle}>moderation tools</div>
+      <div className={styles.listTitle}>{t('moderation_tools')}</div>
       <ul className={`${styles.listContent} ${styles.modsList}`}>
         <li className={`${styles.moderationTool} ${isInSubplebbitSettingsView ? styles.selectedTool : ''}`}>
           <Link className={styles.communitySettingsTool} to={`/p/${address}/settings`}>

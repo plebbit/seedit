@@ -186,5 +186,6 @@
   "nothing_found": "There doesn't seem to be anything here",
   "stickied_comment": "Stickied Comment",
   "posts_last_synced": "Posts last synced {{dateAgo}}",
-  "community_settings": "Community Settings"
+  "community_settings": "Community Settings",
+  "moderation_tools": "Moderation Tools"
 }

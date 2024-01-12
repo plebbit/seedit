@@ -186,5 +186,6 @@
   "nothing_found": "Dường như không có gì ở đây",
   "stickied_comment": "Bình luận ghim",
   "posts_last_synced": "Bài viết gần nhất đã đồng bộ {{dateAgo}}",
-  "community_settings": "Cài đặt cộng đồng"
+  "community_settings": "Cài đặt cộng đồng",
+  "moderation_tools": "Công cụ kiểm duyệt"
 }

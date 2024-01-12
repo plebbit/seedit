@@ -186,5 +186,6 @@
   "nothing_found": "Det verkar inte finnas något här",
   "stickied_comment": "Fast kommentar",
   "posts_last_synced": "Senast synkroniserade inlägg {{dateAgo}}",
-  "community_settings": "Samhällsinställningar"
+  "community_settings": "Samhällsinställningar",
+  "moderation_tools": "Modereringsverktyg"
 }

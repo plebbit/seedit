@@ -186,5 +186,6 @@
   "nothing_found": "Тут, здається, нічого немає",
   "stickied_comment": "Закріплений коментар",
   "posts_last_synced": "Останні синхронізовані пости {{dateAgo}}",
-  "community_settings": "Налаштування спільноти"
+  "community_settings": "Налаштування спільноти",
+  "moderation_tools": "Інструменти модерації"
 }

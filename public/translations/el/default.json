@@ -186,5 +186,6 @@
   "nothing_found": "Δεν φαίνεται να υπάρχει τίποτα εδώ",
   "stickied_comment": "Καρφωμένο σχόλιο",
   "posts_last_synced": "Τελευταία συγχρονισμένες δημοσιεύσεις {{dateAgo}}",
-  "community_settings": "Ρυθμίσεις κοινότητας"
+  "community_settings": "Ρυθμίσεις κοινότητας",
+  "moderation_tools": "Εργαλεία διαμεσολάβησης"
 }

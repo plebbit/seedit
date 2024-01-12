@@ -186,5 +186,6 @@
   "nothing_found": "Nuk duket të ketë asgjë këtu",
   "stickied_comment": "Komenti i fiksuar",
   "posts_last_synced": "Postimet e fundit të sinkronizuara {{dateAgo}}",
-  "community_settings": "Cilësimet e komunitetit"
+  "community_settings": "Cilësimet e komunitetit",
+  "moderation_tools": "Mjete moderimi"
 }

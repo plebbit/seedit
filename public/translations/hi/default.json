@@ -186,5 +186,6 @@
   "nothing_found": "ऐसा कुछ नहीं दिखता है कि यहां कुछ है",
   "stickied_comment": "पिन किया गया टिप्पणी",
   "posts_last_synced": "पोस्ट्स अंतिम बार {{dateAgo}} को सिंक की गईं",
-  "community_settings": "समुदाय सेटिंग्स"
+  "community_settings": "समुदाय सेटिंग्स",
+  "moderation_tools": "मॉडरेशन टूल्स"
 }

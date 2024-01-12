@@ -186,5 +186,6 @@
   "nothing_found": "ここには何もないようです",
   "stickied_comment": "固定されたコメント",
   "posts_last_synced": "最後に同期された投稿 {{dateAgo}}",
-  "community_settings": "コミュニティの設定"
+  "community_settings": "コミュニティの設定",
+  "moderation_tools": "モデレーションツール"
 }

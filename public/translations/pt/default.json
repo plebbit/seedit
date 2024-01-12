@@ -186,5 +186,6 @@
   "nothing_found": "Não parece haver nada aqui",
   "stickied_comment": "Comentário fixado",
   "posts_last_synced": "Últimas postagens sincronizadas {{dateAgo}}",
-  "community_settings": "Configurações da comunidade"
+  "community_settings": "Configurações da comunidade",
+  "moderation_tools": "Ferramentas de moderação"
 }

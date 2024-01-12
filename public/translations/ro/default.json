@@ -186,5 +186,6 @@
   "nothing_found": "Nu pare să fie nimic aici",
   "stickied_comment": "Comentariu fixat",
   "posts_last_synced": "Ultimele postări sincronizate {{dateAgo}}",
-  "community_settings": "Setări ale comunității"
+  "community_settings": "Setări ale comunității",
+  "moderation_tools": "Instrumente de moderare"
 }

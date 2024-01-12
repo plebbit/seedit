@@ -186,5 +186,6 @@
   "nothing_found": "Burada hiçbir şey görünmüyor gibi",
   "stickied_comment": "Sabitleyici Yorum",
   "posts_last_synced": "Son senkronize edilen gönderiler {{dateAgo}}",
-  "community_settings": "Topluluk Ayarları"
+  "community_settings": "Topluluk Ayarları",
+  "moderation_tools": "Moderasyon Araçları"
 }

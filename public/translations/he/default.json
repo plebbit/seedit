@@ -186,5 +186,6 @@
   "nothing_found": "נראה שאין כאן שום דבר",
   "stickied_comment": "תגובה מוצבת",
   "posts_last_synced": "פוסטים אחרונים שנסנכרנו {{dateAgo}}",
-  "community_settings": "הגדרות הקהילה"
+  "community_settings": "הגדרות הקהילה",
+  "moderation_tools": "כלי ניטור"
 }

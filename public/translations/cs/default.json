@@ -186,5 +186,6 @@
   "nothing_found": "Zdá se, že zde nic není",
   "stickied_comment": "Připnutý komentář",
   "posts_last_synced": "Poslední synchronizace příspěvků {{dateAgo}}",
-  "community_settings": "Nastavení komunity"
+  "community_settings": "Nastavení komunity",
+  "moderation_tools": "Nástroje pro moderaci"
 }

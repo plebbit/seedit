@@ -186,5 +186,6 @@
   "nothing_found": "Det ser ikke ut til å være noe her",
   "stickied_comment": "Festet kommentar",
   "posts_last_synced": "Innlegg sist synkronisert {{dateAgo}}",
-  "community_settings": "Fellesskapsinnstillinger"
+  "community_settings": "Fellesskapsinnstillinger",
+  "moderation_tools": "Moderasjonsverktøy"
 }

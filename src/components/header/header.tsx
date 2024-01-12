@@ -293,7 +293,7 @@ const HeaderTitle = ({ title, shortAddress }: { title: string; shortAddress: str
   } else if (isInSubplebbitSettingsView) {
     return (
       <>
-        {subplebbitTitle}: <span className={styles.lowercase}>{t('settings')}</span>
+        {subplebbitTitle}: <span className={styles.lowercase}>{t('community_settings')}</span>
       </>
     );
   } else if (isInSubmitView) {

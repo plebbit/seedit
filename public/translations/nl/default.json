@@ -186,5 +186,6 @@
   "nothing_found": "Het lijkt erop dat hier niets is",
   "stickied_comment": "Vastgezette opmerking",
   "posts_last_synced": "Laatst gesynchroniseerde berichten {{dateAgo}}",
-  "community_settings": "Community-instellingen"
+  "community_settings": "Community-instellingen",
+  "moderation_tools": "Moderatiehulpmiddelen"
 }

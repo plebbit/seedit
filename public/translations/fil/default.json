@@ -186,5 +186,6 @@
   "nothing_found": "Wala yatang nandito",
   "stickied_comment": "Naka-pinned na Komento",
   "posts_last_synced": "Mga huling na-synchronize na mga post {{dateAgo}}",
-  "community_settings": "Mga Setting ng Komunidad"
+  "community_settings": "Mga Setting ng Komunidad",
+  "moderation_tools": "Mga Kasangkapan sa Moderasyon"
 }

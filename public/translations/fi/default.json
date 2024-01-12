@@ -186,5 +186,6 @@
   "nothing_found": "Täällä ei näytä olevan mitään",
   "stickied_comment": "Kiinnitetty kommentti",
   "posts_last_synced": "Viimeksi synkronoidut viestit {{dateAgo}}",
-  "community_settings": "Yhteisön asetukset"
+  "community_settings": "Yhteisön asetukset",
+  "moderation_tools": "Moderointityökalut"
 }

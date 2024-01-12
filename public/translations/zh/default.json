@@ -186,5 +186,6 @@
   "nothing_found": "这里似乎什么都没有",
   "stickied_comment": "置顶评论",
   "posts_last_synced": "最后同步的帖子 {{dateAgo}}",
-  "community_settings": "社区设置"
+  "community_settings": "社区设置",
+  "moderation_tools": "管理工具"
 }
