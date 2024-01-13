@@ -1,11 +1,11 @@
 import { Link, useLocation, useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { getShortAddress } from '@plebbit/plebbit-js';
-import { useBlock, Role, useSubplebbitStats, useAccountComment } from '@plebbit/plebbit-react-hooks';
+import { useAccount, useBlock, Role, useSubplebbitStats, useAccountComment } from '@plebbit/plebbit-react-hooks';
 import styles from './sidebar.module.css';
 import { getFormattedDate, getFormattedTimeDuration, getFormattedTimeAgo } from '../../lib/utils/time-utils';
 import { findSubplebbitCreator } from '../../lib/utils/user-utils';
-import { isAboutView, isAllView, isHomeView, isPendingView, isPostView, isSubplebbitsView } from '../../lib/utils/view-utils';
+import { isAboutView, isAllView, isHomeView, isPendingView, isPostView, isSubplebbitSettingsView, isSubplebbitsView } from '../../lib/utils/view-utils';
 import SearchBar from '../search-bar';
 import SubscribeButton from '../subscribe-button';
 
@@ -73,6 +73,26 @@ const PostInfo = ({ address, cid, downvoteCount = 0, timestamp = 0, upvoteCount 
   );
 };
 
+const ModerationTools = ({ address }: sidebarProps) => {
+  const { t } = useTranslation();
+  const location = useLocation();
+  const params = useParams();
+  const isInSubplebbitSettingsView = isSubplebbitSettingsView(location.pathname, params);
+
+  return (
+    <div className={styles.list}>
+      <div className={styles.listTitle}>{t('moderation_tools')}</div>
+      <ul className={`${styles.listContent} ${styles.modsList}`}>
+        <li className={`${styles.moderationTool} ${isInSubplebbitSettingsView ? styles.selectedTool : ''}`}>
+          <Link className={styles.communitySettingsTool} to={`/p/${address}/settings`}>
+            {t('community_settings')}
+          </Link>
+        </li>
+      </ul>
+    </div>
+  );
+};
+
 const Sidebar = ({ address, cid, createdAt, description, downvoteCount = 0, roles, rules, timestamp = 0, title, updatedAt, upvoteCount = 0 }: sidebarProps) => {
   const { t } = useTranslation();
   const { allActiveUserCount, hourActiveUserCount } = useSubplebbitStats({ subplebbitAddress: address });
@@ -114,6 +134,9 @@ const Sidebar = ({ address, cid, createdAt, description, downvoteCount = 0, role
     alert('Not available in this version. You can create a community with the CLI: https://github.com/plebbit/plebbit-cli');
   };
 
+  const account = useAccount();
+  const isModerator = roles?.[account.author?.address]?.role;
+
   return (
     <div className={`${isInAboutView ? styles.about : styles.sidebar}`}>
       <SearchBar />
@@ -137,7 +160,9 @@ const Sidebar = ({ address, cid, createdAt, description, downvoteCount = 0, role
             {address}
           </Link>
           <div className={styles.subscribeContainer}>
-            <SubscribeButton address={address} />
+            <span className={styles.subscribeButton}>
+              <SubscribeButton address={address} />
+            </span>
             <span className={styles.subscribers}>{t('members_count', { count: allActiveUserCount })}</span>
           </div>
           <div className={styles.onlineLine}>
@@ -163,13 +188,11 @@ const Sidebar = ({ address, cid, createdAt, description, downvoteCount = 0, role
               <span className={styles.blockSub} onClick={blockConfirm}>
                 {blocked ? t('unblock_community') : t('block_community')}
               </span>
-              <span className={styles.communitySettings}>
-                <Link to={`/p/${address}/settings`}>{t('settings')}</Link>
-              </span>
             </div>
           </div>
         </div>
       )}
+      {isModerator && <ModerationTools address={address} />}
       {roles && <ModeratorsList roles={roles} />}
     </div>
   );

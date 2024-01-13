@@ -49,8 +49,6 @@
   "reply_score_plural": "{{count}} ポイント",
   "removed": "削除されました",
   "one_comment": "1つのコメント",
-  "submit_to_before": "",
-  "submit_to_after": " に提出",
   "submit_url_description": "直接のリンク（.jpg、.gif、.mp4などで終わる）を投稿してメディアを埋め込む",
   "title": "タイトル",
   "text": "テキスト",
@@ -69,7 +67,7 @@
   "loading": "読み込み中",
   "pending": "保留中",
   "or": "または",
-  "submit_subscriptions_notice": "コミュニティにサブスクライブしてすばやくアクセス",
+  "submit_subscriptions_notice": "おすすめコミュニティ",
   "submit_subscriptions": "購読しているコミュニティ",
   "rules_for": "のルール",
   "no_communities_found": "<1>https://github.com/plebbit/temporary-default-subplebbits</1>にコミュニティは見つかりませんでした",
@@ -185,5 +183,9 @@
   "address": "住所",
   "nothing_found": "ここには何もないようです",
   "stickied_comment": "固定されたコメント",
-  "posts_last_synced": "最後に同期された投稿 {{dateAgo}}"
+  "posts_last_synced": "最後に同期された投稿 {{dateAgo}}",
+  "community_settings": "コミュニティの設定",
+  "moderation_tools": "モデレーションツール",
+  "submit_to": "<1>{{link}}</1>に提出する",
+  "edit_subscriptions": "購読の編集"
 }

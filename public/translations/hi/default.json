@@ -49,8 +49,6 @@
   "reply_score_plural": "{{count}} अंक",
   "removed": "हटा दिया गया",
   "one_comment": "1 टिप्पणी",
-  "submit_to_before": "",
-  "submit_to_after": " को जमा करें",
   "submit_url_description": ".jpg, .gif, .mp4 आदि में समाप्त होने वाले सीधे लिंक को पोस्ट करके मीडिया एम्बेड करें",
   "title": "शीर्षक",
   "text": "पाठ",
@@ -69,7 +67,7 @@
   "loading": "लोड हो रहा है",
   "pending": "लंबित",
   "or": "या",
-  "submit_subscriptions_notice": "इसे जल्दी से एक्सेस करने के लिए किसी समुदाय की सदस्यता लें",
+  "submit_subscriptions_notice": "सुझाई गई कम्युनिटीज़",
   "submit_subscriptions": "आपके सब्सक्राइब किए गए समुदाय",
   "rules_for": "के लिए नियम",
   "no_communities_found": "<1>https://github.com/plebbit/temporary-default-subplebbits</1> पर कोई समुदाय नहीं मिला",
@@ -185,5 +183,9 @@
   "address": "पता",
   "nothing_found": "ऐसा कुछ नहीं दिखता है कि यहां कुछ है",
   "stickied_comment": "पिन किया गया टिप्पणी",
-  "posts_last_synced": "पोस्ट्स अंतिम बार {{dateAgo}} को सिंक की गईं"
+  "posts_last_synced": "पोस्ट्स अंतिम बार {{dateAgo}} को सिंक की गईं",
+  "community_settings": "समुदाय सेटिंग्स",
+  "moderation_tools": "मॉडरेशन टूल्स",
+  "submit_to": "जमा करें <1>{{link}}</1>",
+  "edit_subscriptions": "सदस्यता संपादित करें"
 }

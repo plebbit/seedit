@@ -49,8 +49,6 @@
   "reply_score_plural": "{{count}} điểm",
   "removed": "Đã xóa",
   "one_comment": "1 bình luận",
-  "submit_to_before": "gửi đến ",
-  "submit_to_after": "",
   "submit_url_description": "nhúng phương tiện bằng cách đăng liên kết trực tiếp của nó (kết thúc bằng .jpg, .gif, .mp4, v.v.)",
   "title": "tiêu đề",
   "text": "văn bản",
@@ -69,7 +67,7 @@
   "loading": "Đang tải",
   "pending": "Đang chờ duyệt",
   "or": "hoặc",
-  "submit_subscriptions_notice": "Đăng ký vào một cộng đồng để nhanh chóng truy cập",
+  "submit_subscriptions_notice": "Cộng đồng được đề xuất",
   "submit_subscriptions": "các cộng đồng bạn đã đăng ký",
   "rules_for": "quy tắc cho",
   "no_communities_found": "Không tìm thấy cộng đồng nào trên <1>https://github.com/plebbit/temporary-default-subplebbits</1>",
@@ -185,5 +183,9 @@
   "address": "Địa chỉ",
   "nothing_found": "Dường như không có gì ở đây",
   "stickied_comment": "Bình luận ghim",
-  "posts_last_synced": "Bài viết gần nhất đã đồng bộ {{dateAgo}}"
+  "posts_last_synced": "Bài viết gần nhất đã đồng bộ {{dateAgo}}",
+  "community_settings": "Cài đặt cộng đồng",
+  "moderation_tools": "Công cụ kiểm duyệt",
+  "submit_to": "Gửi đến <1>{{link}}</1>",
+  "edit_subscriptions": "Chỉnh sửa đăng ký"
 }

@@ -31,6 +31,7 @@ const AccountSettings = () => {
       const lastAccount = accounts[accounts.length - 1];
       setActiveAccount(lastAccount.name);
       setSwitchToLastAccount(false);
+      window.location.reload();
     }
   }, [accounts, switchToLastAccount]);
 
@@ -49,7 +50,10 @@ const AccountSettings = () => {
   };
 
   const _deleteAccount = (accountName: string) => {
-    if (!accountName) {
+    if (accounts.length === 1) {
+      alert('You cannot delete your last account. Please create a new one.');
+      return;
+    } else if (!accountName) {
       return;
     } else if (window.confirm(`Are you sure you want to delete ${accountName}?`)) {
       deleteAccount(accountName);

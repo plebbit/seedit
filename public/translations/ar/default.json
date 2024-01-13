@@ -49,8 +49,6 @@
   "reply_score_plural": "{{count}} نقاط",
   "removed": "تمت الإزالة",
   "one_comment": "1 تعليق",
-  "submit_to_before": "أرسل إلى ",
-  "submit_to_after": "",
   "submit_url_description": "قم بتضمين الوسائط عن طريق نشر الرابط المباشر (الذي ينتهي بـ .jpg، .gif، .mp4، إلخ)",
   "title": "عنوان",
   "text": "نص",
@@ -69,7 +67,7 @@
   "loading": "تحميل",
   "pending": "قيد الانتظار",
   "or": "أو",
-  "submit_subscriptions_notice": "اشترك في مجتمع للوصول إليه بسرعة",
+  "submit_subscriptions_notice": "المجتمعات المقترحة",
   "submit_subscriptions": "مجتمعاتك المشتركة",
   "rules_for": "قواعد لـ",
   "no_communities_found": "لا توجد مجتمعات على <1>https://github.com/plebbit/temporary-default-subplebbits</1>",
@@ -185,5 +183,9 @@
   "address": "عنوان",
   "nothing_found": "لا يبدو أن هناك شيء هنا",
   "stickied_comment": "التعليق المثبت",
-  "posts_last_synced": "آخر مرة تمت مزامنة المشاركات {{dateAgo}}"
+  "posts_last_synced": "آخر مرة تمت مزامنة المشاركات {{dateAgo}}",
+  "community_settings": "إعدادات المجتمع",
+  "moderation_tools": "أدوات الإشراف",
+  "submit_to": "إرسال إلى <1>{{link}}</1>",
+  "edit_subscriptions": "تحرير الاشتراكات"
 }

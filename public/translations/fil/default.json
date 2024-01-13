@@ -49,8 +49,6 @@
   "reply_score_plural": "{{count}} punto",
   "removed": "Tinanggal",
   "one_comment": "1 komento",
-  "submit_to_before": "ipasa sa ",
-  "submit_to_after": "",
   "submit_url_description": "i-embed ang media sa pamamagitan ng pag-post ng direktang link nito (nagtatapos sa .jpg, .gif, .mp4, atbp.)",
   "title": "pamagat",
   "text": "teksto",
@@ -69,7 +67,7 @@
   "loading": "Naglo-load",
   "pending": "Nakabinbin",
   "or": "o",
-  "submit_subscriptions_notice": "Mag-subscribe sa isang komunidad para mabilis na ma-access ito",
+  "submit_subscriptions_notice": "Mga Inirerekomendang Komunidad",
   "submit_subscriptions": "iyong mga sinubskribang komunidad",
   "rules_for": "mga patakaran para sa",
   "no_communities_found": "Walang natagpuang mga komunidad sa <1>https://github.com/plebbit/temporary-default-subplebbits</1>",
@@ -185,5 +183,9 @@
   "address": "Address",
   "nothing_found": "Wala yatang nandito",
   "stickied_comment": "Naka-pinned na Komento",
-  "posts_last_synced": "Mga huling na-synchronize na mga post {{dateAgo}}"
+  "posts_last_synced": "Mga huling na-synchronize na mga post {{dateAgo}}",
+  "community_settings": "Mga Setting ng Komunidad",
+  "moderation_tools": "Mga Kasangkapan sa Moderasyon",
+  "submit_to": "Isumite sa <1>{{link}}</1>",
+  "edit_subscriptions": "I-edit ang mga Subskripsyon"
 }

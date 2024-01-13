@@ -49,8 +49,6 @@
   "reply_score_plural": "{{count}} puan",
   "removed": "Kaldırıldı",
   "one_comment": "1 yorum",
-  "submit_to_before": "",
-  "submit_to_after": " gönder",
   "submit_url_description": "medya ekleyin doğrudan bağlantısını göndererek (.jpg, .gif, .mp4 vb. ile biten)",
   "title": "başlık",
   "text": "metin",
@@ -69,7 +67,7 @@
   "loading": "Yükleniyor",
   "pending": "Beklemede",
   "or": "veya",
-  "submit_subscriptions_notice": "Hızlı erişim için bir topluluğa abone olun",
+  "submit_subscriptions_notice": "Önerilen Topluluklar",
   "submit_subscriptions": "abone olduğunuz topluluklar",
   "rules_for": "için kurallar",
   "no_communities_found": "<1>https://github.com/plebbit/temporary-default-subplebbits</1> üzerinde hiçbir topluluk bulunamadı",
@@ -185,5 +183,9 @@
   "address": "Adres",
   "nothing_found": "Burada hiçbir şey görünmüyor gibi",
   "stickied_comment": "Sabitleyici Yorum",
-  "posts_last_synced": "Son senkronize edilen gönderiler {{dateAgo}}"
+  "posts_last_synced": "Son senkronize edilen gönderiler {{dateAgo}}",
+  "community_settings": "Topluluk Ayarları",
+  "moderation_tools": "Moderasyon Araçları",
+  "submit_to": "<1>{{link}}</1> adresine gönder",
+  "edit_subscriptions": "Abonelikleri Düzenle"
 }

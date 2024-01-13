@@ -49,8 +49,6 @@
   "reply_score_plural": "{{count}} Punkte",
   "removed": "Entfernt",
   "one_comment": "1 Kommentar",
-  "submit_to_before": "senden an ",
-  "submit_to_after": "",
   "submit_url_description": "medien einbetten, indem Sie den direkten Link posten (endet auf .jpg, .gif, .mp4 usw.)",
   "title": "Titel",
   "text": "Text",
@@ -69,7 +67,7 @@
   "loading": "Laden",
   "pending": "Ausstehend",
   "or": "oder",
-  "submit_subscriptions_notice": "Abonnieren Sie eine Gemeinschaft, um schnell darauf zuzugreifen",
+  "submit_subscriptions_notice": "Vorgeschlagene Communitys",
   "submit_subscriptions": "Ihre abonnierten Gemeinschaften",
   "rules_for": "Regeln für",
   "no_communities_found": "Keine Gemeinschaften gefunden auf <1>https://github.com/plebbit/temporary-default-subplebbits</1>",
@@ -185,5 +183,9 @@
   "address": "Adresse",
   "nothing_found": "Hier scheint nichts zu sein",
   "stickied_comment": "Angehängter Kommentar",
-  "posts_last_synced": "Zuletzt synchronisierte Beiträge {{dateAgo}}"
+  "posts_last_synced": "Zuletzt synchronisierte Beiträge {{dateAgo}}",
+  "community_settings": "Community-Einstellungen",
+  "moderation_tools": "Moderationstools",
+  "submit_to": "Einreichen an <1>{{link}}</1>",
+  "edit_subscriptions": "Abonnements bearbeiten"
 }

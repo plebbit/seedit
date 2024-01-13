@@ -49,8 +49,6 @@
   "reply_score_plural": "{{count}} pistettä",
   "removed": "Poistettu",
   "one_comment": "1 kommentti",
-  "submit_to_before": "lähetä kohteeseen ",
-  "submit_to_after": "",
   "submit_url_description": "upota mediaa lähettämällä sen suora linkki (päättyy .jpg, .gif, .mp4, jne.)",
   "title": "otsikko",
   "text": "teksti",
@@ -69,7 +67,7 @@
   "loading": "Ladataan",
   "pending": "Odottaa hyväksyntää",
   "or": "tai",
-  "submit_subscriptions_notice": "Tilaa yhteisö nopeaan pääsyyn",
+  "submit_subscriptions_notice": "Ehdotetut yhteisöt",
   "submit_subscriptions": "tilaamasi yhteisöt",
   "rules_for": "säännöt",
   "no_communities_found": "Yhteisöjä ei löytynyt osoitteesta <1>https://github.com/plebbit/temporary-default-subplebbits</1>",
@@ -185,5 +183,9 @@
   "address": "Osoite",
   "nothing_found": "Täällä ei näytä olevan mitään",
   "stickied_comment": "Kiinnitetty kommentti",
-  "posts_last_synced": "Viimeksi synkronoidut viestit {{dateAgo}}"
+  "posts_last_synced": "Viimeksi synkronoidut viestit {{dateAgo}}",
+  "community_settings": "Yhteisön asetukset",
+  "moderation_tools": "Moderointityökalut",
+  "submit_to": "Lähetä osoitteeseen <1>{{link}}</1>",
+  "edit_subscriptions": "Muokkaa tilauksia"
 }

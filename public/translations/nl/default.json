@@ -49,8 +49,6 @@
   "reply_score_plural": "{{count}} punten",
   "removed": "Verwijderd",
   "one_comment": "1 opmerking",
-  "submit_to_before": "inzenden naar ",
-  "submit_to_after": "",
   "submit_url_description": "media insluiten door de directe link te posten (eindigend op .jpg, .gif, .mp4, etc.)",
   "title": "titel",
   "text": "tekst",
@@ -69,7 +67,7 @@
   "loading": "Laden",
   "pending": "In afwachting",
   "or": "of",
-  "submit_subscriptions_notice": "Abonneer op een gemeenschap voor snelle toegang",
+  "submit_subscriptions_notice": "Aanbevolen gemeenschappen",
   "submit_subscriptions": "uw geabonneerde gemeenschappen",
   "rules_for": "regels voor",
   "no_communities_found": "Geen gemeenschappen gevonden op <1>https://github.com/plebbit/temporary-default-subplebbits</1>",
@@ -185,5 +183,9 @@
   "address": "Adres",
   "nothing_found": "Het lijkt erop dat hier niets is",
   "stickied_comment": "Vastgezette opmerking",
-  "posts_last_synced": "Laatst gesynchroniseerde berichten {{dateAgo}}"
+  "posts_last_synced": "Laatst gesynchroniseerde berichten {{dateAgo}}",
+  "community_settings": "Community-instellingen",
+  "moderation_tools": "Moderatiehulpmiddelen",
+  "submit_to": "Verzenden naar <1>{{link}}</1>",
+  "edit_subscriptions": "Abonnementen bewerken"
 }

@@ -49,8 +49,6 @@
   "reply_score_plural": "{{count}} পয়েন্ট",
   "removed": "অপসারণ করা হয়েছে",
   "one_comment": "1 মন্তব্য",
-  "submit_to_before": "",
-  "submit_to_after": " প্রেরণ করুন",
   "submit_url_description": ".jpg, .gif, .mp4 ইত্যাদি দ্বারা সরাসরি লিঙ্ক পোস্ট করে মিডিয়া এম্বেড করুন",
   "title": "শিরোনাম",
   "text": "পাঠ",
@@ -69,7 +67,7 @@
   "loading": "লোড হচ্ছে",
   "pending": "মুলতুবি",
   "or": "অথবা",
-  "submit_subscriptions_notice": "দ্রুত অ্যাক্সেসের জন্য কোনো কমিউনিটিতে সাবস্ক্রাইব করুন",
+  "submit_subscriptions_notice": "প্রস্তাবিত কমিউনিটিগুলি",
   "submit_subscriptions": "আপনার সাবস্ক্রাইব করা কমিউনিটিগুলি",
   "rules_for": "এর নিয়মাবলী",
   "no_communities_found": "<1>https://github.com/plebbit/temporary-default-subplebbits</1> এ কোনো সম্প্রদায় পাওয়া যায়নি",
@@ -185,5 +183,9 @@
   "address": "ঠিকানা",
   "nothing_found": "এখানে কিছুই নেই মনে হয় না",
   "stickied_comment": "পিন করা মন্তব্য",
-  "posts_last_synced": "পোস্টগুলি সর্বশেষ সিঙ্ক হয়েছে {{dateAgo}}"
+  "posts_last_synced": "পোস্টগুলি সর্বশেষ সিঙ্ক হয়েছে {{dateAgo}}",
+  "community_settings": "সম্প্রদায় সেটিংস",
+  "moderation_tools": "মধ্যস্থতা সরঞ্জাম",
+  "submit_to": "জমা দিন <1>{{link}}</1>",
+  "edit_subscriptions": "সাবস্ক্রিপশন সম্পাদনা"
 }

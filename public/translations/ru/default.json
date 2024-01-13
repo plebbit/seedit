@@ -49,8 +49,6 @@
   "reply_score_plural": "{{count}} очков",
   "removed": "Удалено",
   "one_comment": "1 комментарий",
-  "submit_to_before": "отправить в ",
-  "submit_to_after": "",
   "submit_url_description": "вставьте медиа, разместив его прямую ссылку (заканчивается на .jpg, .gif, .mp4 и т. д.)",
   "title": "заголовок",
   "text": "текст",
@@ -69,7 +67,7 @@
   "loading": "Загрузка",
   "pending": "В ожидании",
   "or": "или",
-  "submit_subscriptions_notice": "Подпишитесь на сообщество для быстрого доступа",
+  "submit_subscriptions_notice": "Рекомендуемые сообщества",
   "submit_subscriptions": "ваши подписанные сообщества",
   "rules_for": "правила для",
   "no_communities_found": "Сообщества не найдены на <1>https://github.com/plebbit/temporary-default-subplebbits</1>",
@@ -185,5 +183,9 @@
   "address": "Адрес",
   "nothing_found": "Здесь, кажется, ничего нет",
   "stickied_comment": "Закрепленный комментарий",
-  "posts_last_synced": "Последние синхронизированные посты {{dateAgo}}"
+  "posts_last_synced": "Последние синхронизированные посты {{dateAgo}}",
+  "community_settings": "Настройки сообщества",
+  "moderation_tools": "Инструменты модерации",
+  "submit_to": "Отправить на <1>{{link}}</1>",
+  "edit_subscriptions": "Редактировать подписки"
 }

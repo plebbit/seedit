@@ -49,8 +49,6 @@
   "reply_score_plural": "{{count}} poin",
   "removed": "Dihapus",
   "one_comment": "1 komentar",
-  "submit_to_before": "kirim ke ",
-  "submit_to_after": "",
   "submit_url_description": "tanamkan media dengan memposting tautan langsungnya (berakhir dengan .jpg, .gif, .mp4, dll.)",
   "title": "judul",
   "text": "teks",
@@ -69,7 +67,7 @@
   "loading": "Memuat",
   "pending": "Tertunda",
   "or": "atau",
-  "submit_subscriptions_notice": "Berlangganan komunitas untuk mengaksesnya dengan cepat",
+  "submit_subscriptions_notice": "Komunitas yang Disarankan",
   "submit_subscriptions": "komunitas yang Anda langgani",
   "rules_for": "aturan untuk",
   "no_communities_found": "Tidak ada komunitas yang ditemukan di <1>https://github.com/plebbit/temporary-default-subplebbits</1>",
@@ -185,5 +183,9 @@
   "address": "Alamat",
   "nothing_found": "Tidak ada yang tampaknya di sini",
   "stickied_comment": "Komentar yang Dipasang",
-  "posts_last_synced": "Postingan yang terakhir disinkronkan {{dateAgo}}"
+  "posts_last_synced": "Postingan yang terakhir disinkronkan {{dateAgo}}",
+  "community_settings": "Pengaturan Komunitas",
+  "moderation_tools": "Alat Moderasi",
+  "submit_to": "Kirim ke <1>{{link}}</1>",
+  "edit_subscriptions": "Edit Langganan"
 }

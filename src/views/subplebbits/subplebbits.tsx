@@ -49,6 +49,9 @@ const Tabs = () => {
 };
 
 const Infobar = () => {
+  const account = useAccount();
+  const { accountSubplebbits } = useAccountSubplebbits();
+  const subscriptions = account?.subscriptions || [];
   const { t } = useTranslation();
   const location = useLocation();
   const isInSubplebbitsMineSubscriberView = isSubplebbitsMineSubscriberView(location.pathname);
@@ -57,11 +60,11 @@ const Infobar = () => {
 
   const infobarText = useMemo(() => {
     if (isInSubplebbitsMineSubscriberView) {
-      return 'below are communities you have subscribed to.';
+      return subscriptions.length === 0 ? 'you are not subscribed to any community.' : 'below are communities you have subscribed to.';
     } else if (isInSubplebbitsMineContributorView) {
       return 'below are the communities that you are an approved user on.';
     } else if (isInSubplebbitsMineModeratorView) {
-      return 'below are the communities that you have moderator access to.';
+      return Object.keys(accountSubplebbits).length > 0 ? 'below are the communities that you have moderator access to.' : 'you are not a moderator on any community.';
     } else {
       return (
         <>
@@ -69,7 +72,7 @@ const Infobar = () => {
         </>
       );
     }
-  }, [isInSubplebbitsMineSubscriberView, isInSubplebbitsMineContributorView, isInSubplebbitsMineModeratorView, t]);
+  }, [isInSubplebbitsMineSubscriberView, isInSubplebbitsMineContributorView, isInSubplebbitsMineModeratorView, t, subscriptions.length, accountSubplebbits]);
 
   return <div className={styles.infobar}>{infobarText}</div>;
 };
@@ -108,14 +111,18 @@ const Subplebbit = ({ subplebbit }: SubplebbitProps) => {
       </div>
       <div className={styles.entry}>
         <div className={styles.title}>
-          <span className={`${styles.onlineIndicator} ${isOnline ? styles.online : styles.offline}`} />
-          <Link to={`/p/${address}`}>
-            p/{address?.includes('.') ? address : shortAddress}
-            {title && `: ${title}`}
-          </Link>
-          <span className={styles.subscribeButton}>
-            <SubscribeButton address={address} />
-          </span>
+          <div className={styles.onlineIndicatorWrapper}>
+            <span className={`${styles.onlineIndicator} ${isOnline ? styles.online : styles.offline}`} />
+          </div>
+          <div className={styles.titleWrapper}>
+            <Link to={`/p/${address}`}>
+              p/{address?.includes('.') ? address : shortAddress}
+              {title && `: ${title}`}
+            </Link>
+            <span className={styles.subscribeButton}>
+              <SubscribeButton address={address} />
+            </span>
+          </div>
         </div>
         {description && <div className={styles.description}>{description}</div>}
         <div className={styles.tagline}>
@@ -166,10 +173,9 @@ const Subplebbits = () => {
 
   return (
     <div className={styles.content}>
-      <div className={`${styles.sidebar}`}>
+      <div className={styles.sidebar}>
         <Sidebar />
       </div>
-
       {(isInSubplebbitsMineView || isInSubplebbitsMineModeratorView || isInSubplebbitsMineSubscriberView) && <Tabs />}
       <Infobar />
       {isInSubplebbitsView && <ApprovedSubplebbits />}

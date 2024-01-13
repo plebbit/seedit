@@ -49,8 +49,6 @@
   "reply_score_plural": "{{count}} бали",
   "removed": "Видалено",
   "one_comment": "1 коментар",
-  "submit_to_before": "надіслати до ",
-  "submit_to_after": "",
   "submit_url_description": "вставте медіа, розмістивши його пряме посилання (закінчується на .jpg, .gif, .mp4 тощо)",
   "title": "заголовок",
   "text": "текст",
@@ -69,7 +67,7 @@
   "loading": "Завантаження",
   "pending": "Очікується",
   "or": "або",
-  "submit_subscriptions_notice": "Підпишіться на спільноту, щоб швидко отримати доступ",
+  "submit_subscriptions_notice": "Рекомендовані спільноти",
   "submit_subscriptions": "ваші підписані спільноти",
   "rules_for": "правила для",
   "no_communities_found": "Спільноти не знайдені на <1>https://github.com/plebbit/temporary-default-subplebbits</1>",
@@ -185,5 +183,9 @@
   "address": "Адреса",
   "nothing_found": "Тут, здається, нічого немає",
   "stickied_comment": "Закріплений коментар",
-  "posts_last_synced": "Останні синхронізовані пости {{dateAgo}}"
+  "posts_last_synced": "Останні синхронізовані пости {{dateAgo}}",
+  "community_settings": "Налаштування спільноти",
+  "moderation_tools": "Інструменти модерації",
+  "submit_to": "Надіслати до <1>{{link}}</1>",
+  "edit_subscriptions": "Редагувати підписки"
 }

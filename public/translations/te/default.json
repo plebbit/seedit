@@ -49,8 +49,6 @@
   "reply_score_plural": "{{count}} పాయింట్లు",
   "removed": "తొలగించబడింది",
   "one_comment": "1 వ్యాఖ్య",
-  "submit_to_before": "",
-  "submit_to_after": "కి సమర్పించు",
   "submit_url_description": ".jpg, .gif, .mp4 వంటివిలో ముగిసే ప్రత్యక్ష లింకును పోస్ట్ చేసి మీడియాను ఎంబెడ్ చేయండి",
   "title": "శీర్షిక",
   "text": "టెక్స్ట్",
@@ -69,7 +67,7 @@
   "loading": "లోడ్ అవుతోంది",
   "pending": "అనుమతి కోసం వేచి ఉంది",
   "or": "లేదా",
-  "submit_subscriptions_notice": "దీనిని త్వరగా యాక్సెస్ చేయడానికి ఒక సముదాయానికి చందా చేసుకోండి",
+  "submit_subscriptions_notice": "సూచింపబడిన సంఘటనలు",
   "submit_subscriptions": "మీరు చందా చేసుకున్న సముదాయాలు",
   "rules_for": "కోసం నియమాలు",
   "no_communities_found": "<1>https://github.com/plebbit/temporary-default-subplebbits</1>లో సమూహాలు కనిపించలేదు",
@@ -185,5 +183,9 @@
   "address": "చిరునామా",
   "nothing_found": "ఇక్కడ ఏమి ఉందని లేదని అనుకున్నట్లయిదేమీ లేదు",
   "stickied_comment": "పిన్ చేసిన వ్యాఖ్య",
-  "posts_last_synced": "పోస్టులు చివరిలో సింక్ అయ్యాయి {{dateAgo}}"
+  "posts_last_synced": "పోస్టులు చివరిలో సింక్ అయ్యాయి {{dateAgo}}",
+  "community_settings": "కమ్యూనిటీ సెట్టింగులు",
+  "moderation_tools": "మాడరేషన్ సాధనాలు",
+  "submit_to": "<1>{{link}}</1> కు పంపండి",
+  "edit_subscriptions": "సబ్‌స్క్రిప్షన్స్ సవరించండి"
 }

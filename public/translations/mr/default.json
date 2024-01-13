@@ -49,8 +49,6 @@
   "reply_score_plural": "{{count}} गुण",
   "removed": "काढून टाकला",
   "one_comment": "1 टिप्पणी",
-  "submit_to_before": "",
-  "submit_to_after": " किंवा प्रेषित करा",
   "submit_url_description": ".jpg, .gif, .mp4 इत्यादीत समाप्त होणार्या थेट लिंकच्या माध्यमातून माध्यमाची एम्बेड करा",
   "title": "शीर्षक",
   "text": "मजकूर",
@@ -69,7 +67,7 @@
   "loading": "लोड करीत आहे",
   "pending": "प्रलंबित",
   "or": "किंवा",
-  "submit_subscriptions_notice": "लवकर प्रवेश करण्यासाठी समुदायाला सदस्यता घ्या",
+  "submit_subscriptions_notice": "सुचविलेले संघटने",
   "submit_subscriptions": "आपण सदस्यता घेतलेली समुदाय",
   "rules_for": "साठीचे नियम",
   "no_communities_found": "<1>https://github.com/plebbit/temporary-default-subplebbits</1> वर कोणत्याही समुदायाचा शोध लागलेला नाही",
@@ -185,5 +183,9 @@
   "address": "पत्ता",
   "nothing_found": "काहीतरी दिसत नाही आहे",
   "stickied_comment": "टाळलेला टिप्पणी",
-  "posts_last_synced": "शेवटी सिंक केलेले पोस्ट्स {{dateAgo}}"
+  "posts_last_synced": "शेवटी सिंक केलेले पोस्ट्स {{dateAgo}}",
+  "community_settings": "समुदाय सेटिंग्स",
+  "moderation_tools": "निरीक्षण साधने",
+  "submit_to": "<1>{{link}}</1> कडे पाठवा",
+  "edit_subscriptions": "सदस्यता संपादने"
 }

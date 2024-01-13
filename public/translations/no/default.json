@@ -49,8 +49,6 @@
   "reply_score_plural": "{{count}} poeng",
   "removed": "Fjernet",
   "one_comment": "1 kommentar",
-  "submit_to_before": "send inn til ",
-  "submit_to_after": "",
   "submit_url_description": "bygg inn medier ved å poste dens direkte lenke (slutter med .jpg, .gif, .mp4 osv.)",
   "title": "tittel",
   "text": "tekst",
@@ -69,7 +67,7 @@
   "loading": "Laster",
   "pending": "Venter på godkjenning",
   "or": "eller",
-  "submit_subscriptions_notice": "Abonner på et samfunn for rask tilgang",
+  "submit_subscriptions_notice": "Anbefalte fellesskap",
   "submit_subscriptions": "dine abonnerte samfunn",
   "rules_for": "regler for",
   "no_communities_found": "Ingen samfunn funnet på <1>https://github.com/plebbit/temporary-default-subplebbits</1>",
@@ -185,5 +183,9 @@
   "address": "Adresse",
   "nothing_found": "Det ser ikke ut til å være noe her",
   "stickied_comment": "Festet kommentar",
-  "posts_last_synced": "Innlegg sist synkronisert {{dateAgo}}"
+  "posts_last_synced": "Innlegg sist synkronisert {{dateAgo}}",
+  "community_settings": "Fellesskapsinnstillinger",
+  "moderation_tools": "Moderasjonsverktøy",
+  "submit_to": "Send til <1>{{link}}</1>",
+  "edit_subscriptions": "Rediger abonnementer"
 }

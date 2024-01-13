@@ -49,8 +49,6 @@
   "reply_score_plural": "{{count}} pikë",
   "removed": "U hoq",
   "one_comment": "1 koment",
-  "submit_to_before": "dërgo te ",
-  "submit_to_after": "",
   "submit_url_description": "ngulit media duke postuar lidhjen e saj të drejtpërdrejtë (që përfundon në .jpg, .gif, .mp4, etj.)",
   "title": "titull",
   "text": "tekst",
@@ -69,7 +67,7 @@
   "loading": "Po ngarkohet",
   "pending": "Në pritje",
   "or": "ose",
-  "submit_subscriptions_notice": "Abonohuni në një komunitet për të hyrë shpejt",
+  "submit_subscriptions_notice": "Komunitete të propozuara",
   "submit_subscriptions": "komunitetet tuaja të abonuara",
   "rules_for": "rregullat për",
   "no_communities_found": "Nuk u gjetën komunitete në <1>https://github.com/plebbit/temporary-default-subplebbits</1>",
@@ -185,5 +183,9 @@
   "address": "Adresë",
   "nothing_found": "Nuk duket të ketë asgjë këtu",
   "stickied_comment": "Komenti i fiksuar",
-  "posts_last_synced": "Postimet e fundit të sinkronizuara {{dateAgo}}"
+  "posts_last_synced": "Postimet e fundit të sinkronizuara {{dateAgo}}",
+  "community_settings": "Cilësimet e komunitetit",
+  "moderation_tools": "Mjete moderimi",
+  "submit_to": "Dërgo te <1>{{link}}</1>",
+  "edit_subscriptions": "Ndrysho abonimet"
 }

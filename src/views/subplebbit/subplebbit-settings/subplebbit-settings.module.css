@@ -1,5 +1,4 @@
 .content {
-  padding: 7px 5px 50px 5px;
   color: var(--text);
 }
 
@@ -75,8 +74,8 @@
   border-style: solid;
   border-width: 1px;
   font-size: small;
-  margin-bottom: 5px;
-  padding: 6px 10px;
+  margin: 0px 5px 5px 0px;
+  padding: 6px 10px 6px 10px;
   color: var(--text);
   word-wrap: break-word;
   font-size: 14px;
@@ -158,6 +157,13 @@
 }
 
 @media (max-width: 768px) {
+  .content {
+    padding: 7px 0px 0px 0px;
+  }
+
+  .sidebar {
+    display: none;
+  }
   .box {
     width: 100%;
     box-sizing: border-box;
@@ -166,5 +172,15 @@
   .boxInput input, .boxInput textarea {
     width: calc(100% - 104px);
     box-sizing: border-box;
+  }
+}
+
+@media (min-width: 768px) {
+  .content {
+    padding: 7px 5px 0px 5px;
+  }
+
+  .infobar {
+    max-width: calc(100% - 327px);
   }
 }

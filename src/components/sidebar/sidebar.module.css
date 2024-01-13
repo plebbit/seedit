@@ -32,12 +32,16 @@ a {
   margin-top: 5px;
 }
 
+.subscribeButton {
+  margin-right: 5px;
+}
+
 .onlineIndicator {
   background-repeat: no-repeat;
   display: inline-block;
   height: 13px;
   width: 13px;
-  margin: 0 7px -2px 2px;
+  margin: 7px 7px -2px 2px;
 }
 
 .online {
@@ -175,6 +179,31 @@ a {
 .rulesList {
   padding-top: 3px;
   padding-left: 40px;
+}
+
+.moderationTool {
+  margin: 5px 0;
+  text-transform: lowercase;
+}
+
+.selectedTool {
+  font-weight: bold;
+}
+
+.moderationTool a {
+  text-decoration: none;
+  color: var(--text-primary);
+  cursor: pointer;
+}
+
+.communitySettingsTool::before {
+  background-image: url('/public/assets/community_settings.png');
+  background-size: 16px 16px;
+  height: 16px;
+  width: 16px;
+  content: '';
+  float: left;
+  margin-right: 5px;
 }
 
 .postInfo {

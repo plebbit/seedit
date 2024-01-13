@@ -49,8 +49,6 @@
   "reply_score_plural": "{{count}} βαθμοί",
   "removed": "Αφαιρέθηκε",
   "one_comment": "1 σχόλιο",
-  "submit_to_before": "υποβάλλω σε ",
-  "submit_to_after": "",
   "submit_url_description": "ενσωματώστε πολυμέσα αναρτώντας τον άμεσο σύνδεσμό τους (τελειώνει σε .jpg, .gif, .mp4 κ.λπ.)",
   "title": "τίτλος",
   "text": "κείμενο",
@@ -69,7 +67,7 @@
   "loading": "Φόρτωση",
   "pending": "Εκκρεμεί",
   "or": "ή",
-  "submit_subscriptions_notice": "Εγγραφείτε σε μια κοινότητα για γρήγορη πρόσβαση",
+  "submit_subscriptions_notice": "Προτεινόμενες κοινότητες",
   "submit_subscriptions": "οι κοινότητες στις οποίες έχετε συνδρομή",
   "rules_for": "κανόνες για",
   "no_communities_found": "Δεν βρέθηκαν κοινότητες στο <1>https://github.com/plebbit/temporary-default-subplebbits</1>",
@@ -185,5 +183,9 @@
   "address": "Διεύθυνση",
   "nothing_found": "Δεν φαίνεται να υπάρχει τίποτα εδώ",
   "stickied_comment": "Καρφωμένο σχόλιο",
-  "posts_last_synced": "Τελευταία συγχρονισμένες δημοσιεύσεις {{dateAgo}}"
+  "posts_last_synced": "Τελευταία συγχρονισμένες δημοσιεύσεις {{dateAgo}}",
+  "community_settings": "Ρυθμίσεις κοινότητας",
+  "moderation_tools": "Εργαλεία διαμεσολάβησης",
+  "submit_to": "Υποβολή σε <1>{{link}}</1>",
+  "edit_subscriptions": "Επεξεργασία συνδρομών"
 }

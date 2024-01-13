@@ -49,8 +49,6 @@
   "reply_score_plural": "{{count}} 점",
   "removed": "제거됨",
   "one_comment": "1 댓글",
-  "submit_to_before": "",
-  "submit_to_after": "에 제출",
   "submit_url_description": "직접 링크를 게시하여 미디어 포함 (.jpg, .gif, .mp4 등으로 끝남)",
   "title": "제목",
   "text": "텍스트",
@@ -69,7 +67,7 @@
   "loading": "로딩 중",
   "pending": "승인 대기 중",
   "or": "또는",
-  "submit_subscriptions_notice": "빠르게 접근하기 위해 커뮤니티에 구독하세요",
+  "submit_subscriptions_notice": "추천 커뮤니티",
   "submit_subscriptions": "구독한 커뮤니티",
   "rules_for": "규칙",
   "no_communities_found": "<1>https://github.com/plebbit/temporary-default-subplebbits</1>에 커뮤니티를 찾을 수 없습니다",
@@ -185,5 +183,9 @@
   "address": "주소",
   "nothing_found": "여기에는 아무것도 없는 것 같습니다",
   "stickied_comment": "고정된 댓글",
-  "posts_last_synced": "마지막 동기화된 게시물 {{dateAgo}}"
+  "posts_last_synced": "마지막 동기화된 게시물 {{dateAgo}}",
+  "community_settings": "커뮤니티 설정",
+  "moderation_tools": "모더레이션 도구",
+  "submit_to": "<1>{{link}}</1>(으)로 제출하기",
+  "edit_subscriptions": "구독 편집"
 }

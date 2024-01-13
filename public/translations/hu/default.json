@@ -49,8 +49,6 @@
   "reply_score_plural": "{{count}} pont",
   "removed": "Eltávolítva",
   "one_comment": "1 megjegyzés",
-  "submit_to_before": "küldés ide: ",
-  "submit_to_after": "",
   "submit_url_description": "ágyazza be a médiát a közvetlen linkjének közzétételével (vége .jpg, .gif, .mp4 stb.)",
   "title": "cím",
   "text": "szöveg",
@@ -69,7 +67,7 @@
   "loading": "Betöltés",
   "pending": "Függőben",
   "or": "vagy",
-  "submit_subscriptions_notice": "Iratkozzon fel egy közösségre a gyors hozzáférés érdekében",
+  "submit_subscriptions_notice": "Ajánlott közösségek",
   "submit_subscriptions": "az Ön által feliratkozott közösségek",
   "rules_for": "szabályok a",
   "no_communities_found": "Nem található közösségek a <1>https://github.com/plebbit/temporary-default-subplebbits</1>-en",
@@ -185,5 +183,9 @@
   "address": "Cím",
   "nothing_found": "Úgy tűnik, nincs itt semmi",
   "stickied_comment": "Kitűzött hozzászólás",
-  "posts_last_synced": "Legutóbb szinkronizált bejegyzések {{dateAgo}}"
+  "posts_last_synced": "Legutóbb szinkronizált bejegyzések {{dateAgo}}",
+  "community_settings": "Közösségi beállítások",
+  "moderation_tools": "Moderációs eszközök",
+  "submit_to": "Küldés ide: <1>{{link}}</1>",
+  "edit_subscriptions": "Előfizetések szerkesztése"
 }

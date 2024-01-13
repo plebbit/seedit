@@ -49,8 +49,6 @@
   "reply_score_plural": "{{count}} puncte",
   "removed": "Eliminat",
   "one_comment": "1 comentariu",
-  "submit_to_before": "trimite la ",
-  "submit_to_after": "",
   "submit_url_description": "încorporați media postând linkul său direct (terminând în .jpg, .gif, .mp4, etc.)",
   "title": "titlu",
   "text": "text",
@@ -69,7 +67,7 @@
   "loading": "Se încarcă",
   "pending": "În așteptare",
   "or": "sau",
-  "submit_subscriptions_notice": "Abonează-te la o comunitate pentru acces rapid",
+  "submit_subscriptions_notice": "Comunități recomandate",
   "submit_subscriptions": "comunitățile dvs. abonate",
   "rules_for": "reguli pentru",
   "no_communities_found": "Nicio comunitate găsită pe <1>https://github.com/plebbit/temporary-default-subplebbits</1>",
@@ -185,5 +183,9 @@
   "address": "Adresă",
   "nothing_found": "Nu pare să fie nimic aici",
   "stickied_comment": "Comentariu fixat",
-  "posts_last_synced": "Ultimele postări sincronizate {{dateAgo}}"
+  "posts_last_synced": "Ultimele postări sincronizate {{dateAgo}}",
+  "community_settings": "Setări ale comunității",
+  "moderation_tools": "Instrumente de moderare",
+  "submit_to": "Trimite la <1>{{link}}</1>",
+  "edit_subscriptions": "Editează abonamente"
 }

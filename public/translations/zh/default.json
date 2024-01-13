@@ -49,8 +49,6 @@
   "reply_score_plural": "{{count}} 分",
   "removed": "已删除",
   "one_comment": "1 条评论",
-  "submit_to_before": "提交至",
-  "submit_to_after": "",
   "submit_url_description": "通过发布其直接链接（以.jpg、.gif、.mp4等结尾）嵌入媒体",
   "title": "标题",
   "text": "文本",
@@ -69,7 +67,7 @@
   "loading": "加载中",
   "pending": "待审批",
   "or": "或",
-  "submit_subscriptions_notice": "订阅社区以快速访问",
+  "submit_subscriptions_notice": "建议的社区",
   "submit_subscriptions": "您订阅的社区",
   "rules_for": "规则适用于",
   "no_communities_found": "在<1>https://github.com/plebbit/temporary-default-subplebbits</1>上未找到任何社区",
@@ -185,5 +183,9 @@
   "address": "地址",
   "nothing_found": "这里似乎什么都没有",
   "stickied_comment": "置顶评论",
-  "posts_last_synced": "最后同步的帖子 {{dateAgo}}"
+  "posts_last_synced": "最后同步的帖子 {{dateAgo}}",
+  "community_settings": "社区设置",
+  "moderation_tools": "管理工具",
+  "submit_to": "提交至 <1>{{link}}</1>",
+  "edit_subscriptions": "编辑订阅"
 }
