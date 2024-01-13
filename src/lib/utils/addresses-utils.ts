@@ -15,6 +15,11 @@ export interface SubplebbitWithDisplay extends Subplebbit {
   displayAddress: string;
 }
 
+export const getRandomSubplebbits = (addresses: string[], count: number) => {
+  let shuffled = addresses.sort(() => 0.5 - Math.random());
+  return shuffled.slice(0, count);
+};
+
 export const useDefaultSubplebbitAddresses = () => {
   const defaultSubplebbits = useDefaultSubplebbits();
   return useMemo(() => defaultSubplebbits.map((subplebbit: Subplebbit) => subplebbit.address), [defaultSubplebbits]);

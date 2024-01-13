@@ -8,7 +8,7 @@ import { alertChallengeVerificationFailed } from '../../lib/utils/challenge-util
 import { isValidURL } from '../../lib/utils/url-utils';
 import styles from './submit.module.css';
 import challengesStore from '../../hooks/use-challenges';
-import { useDefaultSubplebbitAddresses } from '../../lib/utils/addresses-utils';
+import { getRandomSubplebbits, useDefaultSubplebbitAddresses } from '../../lib/utils/addresses-utils';
 
 type SubmitState = {
   subplebbitAddress: string | undefined;
@@ -117,9 +117,10 @@ const Submit = () => {
 
   const subsDescription = <div className={styles.subsDescription}>{subscriptions?.length > 0 ? t('submit_subscriptions') : t('submit_subscriptions_notice')}</div>;
 
+  const listSource = subscriptions?.length > 0 ? subscriptions : getRandomSubplebbits(defaultSubplebbitAddresses, 10);
   const subscriptionsList = (
     <div className={styles.subs}>
-      {subscriptions?.map((sub: string) => (
+      {listSource.map((sub: string) => (
         <span
           key={sub}
           className={styles.sub}
