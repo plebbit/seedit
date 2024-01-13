@@ -173,10 +173,9 @@ const Subplebbits = () => {
 
   return (
     <div className={styles.content}>
-      <div className={`${styles.sidebar}`}>
+      <div className={styles.sidebar}>
         <Sidebar />
       </div>
-
       {(isInSubplebbitsMineView || isInSubplebbitsMineModeratorView || isInSubplebbitsMineSubscriberView) && <Tabs />}
       <Infobar />
       {isInSubplebbitsView && <ApprovedSubplebbits />}

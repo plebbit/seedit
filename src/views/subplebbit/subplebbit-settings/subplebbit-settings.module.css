@@ -74,8 +74,8 @@
   border-style: solid;
   border-width: 1px;
   font-size: small;
-  margin-bottom: 5px;
-  padding: 6px 10px;
+  margin: 0px 5px 5px 0px;
+  padding: 6px 10px 6px 10px;
   color: var(--text);
   word-wrap: break-word;
   font-size: 14px;
@@ -178,5 +178,9 @@
 @media (min-width: 768px) {
   .content {
     padding: 7px 5px 0px 5px;
+  }
+
+  .infobar {
+    max-width: calc(100% - 327px);
   }
 }
