@@ -1,39 +1,12 @@
-@media (max-width: 768px) {
-  .content {
-    padding: 7px 0px 20px 0px;
-  }
-
-  .sidebar {
-    display: none;
-  }
-
-  .infobar {
-    margin: 0px 5px;
-  }
-
-  .subplebbit {
-    padding-right: 5px;
-  }
-}
-
-@media (min-width: 768px) {
-  .content {
-    padding: 7px 5px 0px 5px;
-  }
-
-  .stateString, .infobar {
-    max-width: calc(100% - 327px);
-  }
-}
-
 .infobar {
   background-color: var(--background-orange);
   border-color: var(--border-orange);
   border-style: solid;
   border-width: 1px;
   font-size: small;
-  margin: 3px 0px;
-  padding: 6px 10px;
+  margin: 5px 0px;
+  padding: 5px 10px;
+  margin-top: 0px;
   color: var(--text);
   word-wrap: break-word;
   font-size: 14px;
@@ -106,7 +79,7 @@
   display: inline-flex;
   height: 13px;
   width: 13px;
-  margin: 3px 5px -2px 2px;
+  margin: 0 5px -3px 0;
 }
 
 .online {
@@ -119,10 +92,7 @@
 
 .title {
   display: inline-flex;
-  flex-wrap: wrap;
-  align-items: center;
   font-size: medium;
-  overflow: hidden;
   unicode-bidi: isolate;
   margin-bottom: -2px;
 }
@@ -137,10 +107,6 @@
 /* .title a:visited {
   color: var(--link-visited);
 } */
-
-.subscribeButton {
-  margin-top: 2px;
-}
 
 .description {
   max-width: 60em;
@@ -205,4 +171,32 @@
 .selected {
   color: var(--green) !important;
   font-weight: bold;
+}
+
+@media (max-width: 768px) {
+  .content {
+    padding: 7px 0px 20px 0px;
+  }
+
+  .sidebar {
+    display: none;
+  }
+
+  .infobar {
+    margin: 5px 5px;
+  }
+
+  .subplebbit {
+    padding-right: 5px;
+  }
+}
+
+@media (min-width: 768px) {
+  .content {
+    padding: 7px 5px 0px 5px;
+  }
+
+  .stateString, .infobar {
+    max-width: calc(100% - 327px);
+  }
 }

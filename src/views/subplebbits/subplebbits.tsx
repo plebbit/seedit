@@ -111,14 +111,18 @@ const Subplebbit = ({ subplebbit }: SubplebbitProps) => {
       </div>
       <div className={styles.entry}>
         <div className={styles.title}>
-          <span className={`${styles.onlineIndicator} ${isOnline ? styles.online : styles.offline}`} />
-          <Link to={`/p/${address}`}>
-            p/{address?.includes('.') ? address : shortAddress}
-            {title && `: ${title}`}
-          </Link>
-          <span className={styles.subscribeButton}>
-            <SubscribeButton address={address} />
-          </span>
+          <div className={styles.onlineIndicatorWrapper}>
+            <span className={`${styles.onlineIndicator} ${isOnline ? styles.online : styles.offline}`} />
+          </div>
+          <div className={styles.titleWrapper}>
+            <Link to={`/p/${address}`}>
+              p/{address?.includes('.') ? address : shortAddress}
+              {title && `: ${title}`}
+            </Link>
+            <span className={styles.subscribeButton}>
+              <SubscribeButton address={address} />
+            </span>
+          </div>
         </div>
         {description && <div className={styles.description}>{description}</div>}
         <div className={styles.tagline}>
