@@ -4,9 +4,8 @@
   border-style: solid;
   border-width: 1px;
   font-size: small;
-  margin: 5px 0px;
-  padding: 5px 10px;
-  margin-top: 0px;
+  margin: 0px 5px 5px 0px;
+  padding: 6px 10px 6px 10px;
   color: var(--text);
   word-wrap: break-word;
   font-size: 14px;
@@ -145,9 +144,9 @@
   border-bottom: 1px dotted gray;
   padding: 5px 10px;
   margin-left: 5px;
+  margin-bottom: 5px;
   overflow: hidden;
   font-size: larger;
-  display: inline-block;
   margin-right: 15px;
   text-transform: lowercase;
 }
@@ -182,12 +181,16 @@
     display: none;
   }
 
-  .infobar {
-    margin: 5px 5px;
-  }
-
   .subplebbit {
     padding-right: 5px;
+  }
+
+  .infobar {
+    margin-left: 5px;
+  }
+
+  .subplebbitsTabs {
+    margin-right: 5px;
   }
 }
 
