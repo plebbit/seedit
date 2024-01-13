@@ -115,9 +115,15 @@ const Submit = () => {
     }
   }, [index, resetSubmitStore, navigate]);
 
-  const subsDescription = <div className={styles.subsDescription}>{subscriptions?.length > 0 ? t('submit_subscriptions') : t('submit_subscriptions_notice')}</div>;
+  const subsDescription = <div className={styles.subsDescription}>{subscriptions?.length > 5 ? t('submit_subscriptions') : t('submit_subscriptions_notice')}</div>;
 
-  const listSource = subscriptions?.length > 0 ? subscriptions : getRandomSubplebbits(defaultSubplebbitAddresses, 10);
+  const [randomSubplebbits, setRandomSubplebbits] = useState<string[]>([]);
+  useEffect(() => {
+    // Generate random subplebbits only once when the component mounts
+    const generatedSubplebbits = getRandomSubplebbits(defaultSubplebbitAddresses, 10);
+    setRandomSubplebbits(generatedSubplebbits);
+  }, [defaultSubplebbitAddresses]);
+  const listSource = subscriptions?.length > 5 ? subscriptions : randomSubplebbits;
   const subscriptionsList = (
     <div className={styles.subs}>
       {listSource.map((sub: string) => (

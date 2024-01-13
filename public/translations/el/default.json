@@ -69,7 +69,7 @@
   "loading": "Φόρτωση",
   "pending": "Εκκρεμεί",
   "or": "ή",
-  "submit_subscriptions_notice": "Εγγραφείτε σε μια κοινότητα για γρήγορη πρόσβαση",
+  "submit_subscriptions_notice": "Προτεινόμενες κοινότητες",
   "submit_subscriptions": "οι κοινότητες στις οποίες έχετε συνδρομή",
   "rules_for": "κανόνες για",
   "no_communities_found": "Δεν βρέθηκαν κοινότητες στο <1>https://github.com/plebbit/temporary-default-subplebbits</1>",
