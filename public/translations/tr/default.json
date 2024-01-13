@@ -49,8 +49,6 @@
   "reply_score_plural": "{{count}} puan",
   "removed": "Kaldırıldı",
   "one_comment": "1 yorum",
-  "submit_to_before": "",
-  "submit_to_after": " gönder",
   "submit_url_description": "medya ekleyin doğrudan bağlantısını göndererek (.jpg, .gif, .mp4 vb. ile biten)",
   "title": "başlık",
   "text": "metin",
@@ -187,5 +185,6 @@
   "stickied_comment": "Sabitleyici Yorum",
   "posts_last_synced": "Son senkronize edilen gönderiler {{dateAgo}}",
   "community_settings": "Topluluk Ayarları",
-  "moderation_tools": "Moderasyon Araçları"
+  "moderation_tools": "Moderasyon Araçları",
+  "submit_to": "<1>{{link}}</1> adresine gönder"
 }

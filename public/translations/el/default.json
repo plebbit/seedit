@@ -49,8 +49,6 @@
   "reply_score_plural": "{{count}} βαθμοί",
   "removed": "Αφαιρέθηκε",
   "one_comment": "1 σχόλιο",
-  "submit_to_before": "υποβάλλω σε ",
-  "submit_to_after": "",
   "submit_url_description": "ενσωματώστε πολυμέσα αναρτώντας τον άμεσο σύνδεσμό τους (τελειώνει σε .jpg, .gif, .mp4 κ.λπ.)",
   "title": "τίτλος",
   "text": "κείμενο",
@@ -187,5 +185,6 @@
   "stickied_comment": "Καρφωμένο σχόλιο",
   "posts_last_synced": "Τελευταία συγχρονισμένες δημοσιεύσεις {{dateAgo}}",
   "community_settings": "Ρυθμίσεις κοινότητας",
-  "moderation_tools": "Εργαλεία διαμεσολάβησης"
+  "moderation_tools": "Εργαλεία διαμεσολάβησης",
+  "submit_to": "Υποβολή σε <1>{{link}}</1>"
 }

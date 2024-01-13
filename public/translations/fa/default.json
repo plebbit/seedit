@@ -49,8 +49,6 @@
   "reply_score_plural": "{{count}} امتیاز",
   "removed": "حذف شد",
   "one_comment": "1 نظر",
-  "submit_to_before": "ارسال به ",
-  "submit_to_after": "",
   "submit_url_description": "رسانه را با ارسال پیوند مستقیم آن جاسازی کنید (پایان یافته در .jpg، .gif، .mp4، و غیره)",
   "title": "عنوان",
   "text": "متن",
@@ -187,5 +185,6 @@
   "stickied_comment": "نظر ثابت",
   "posts_last_synced": "آخرین باری که پست‌ها همگام‌سازی شدند {{dateAgo}}",
   "community_settings": "تنظیمات اجتماعی",
-  "moderation_tools": "ابزارهای نظارت"
+  "moderation_tools": "ابزارهای نظارت",
+  "submit_to": "ارسال به <1>{{link}}</1>"
 }

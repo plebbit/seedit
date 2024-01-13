@@ -49,8 +49,6 @@
   "reply_score_plural": "{{count}} แต้ม",
   "removed": "ถูกนำออก",
   "one_comment": "1 ความคิดเห็น",
-  "submit_to_before": "ส่งไปยัง ",
-  "submit_to_after": "",
   "submit_url_description": "ฝังสื่อโดยการโพสต์ลิงก์ตรง (ลงท้ายด้วย .jpg, .gif, .mp4 ฯลฯ)",
   "title": "หัวข้อ",
   "text": "ข้อความ",
@@ -187,5 +185,6 @@
   "stickied_comment": "ความคิดเห็นที่ตรึง",
   "posts_last_synced": "โพสต์ล่าสุดที่ซิงค์ {{dateAgo}}",
   "community_settings": "การตั้งค่าชุมชน",
-  "moderation_tools": "เครื่องมือการตรวจสอบ"
+  "moderation_tools": "เครื่องมือการตรวจสอบ",
+  "submit_to": "ส่งไปที่ <1>{{link}}</1>"
 }

@@ -49,8 +49,6 @@
   "reply_score_plural": "{{count}} puncte",
   "removed": "Eliminat",
   "one_comment": "1 comentariu",
-  "submit_to_before": "trimite la ",
-  "submit_to_after": "",
   "submit_url_description": "încorporați media postând linkul său direct (terminând în .jpg, .gif, .mp4, etc.)",
   "title": "titlu",
   "text": "text",
@@ -187,5 +185,6 @@
   "stickied_comment": "Comentariu fixat",
   "posts_last_synced": "Ultimele postări sincronizate {{dateAgo}}",
   "community_settings": "Setări ale comunității",
-  "moderation_tools": "Instrumente de moderare"
+  "moderation_tools": "Instrumente de moderare",
+  "submit_to": "Trimite la <1>{{link}}</1>"
 }

@@ -49,8 +49,6 @@
   "reply_score_plural": "{{count}} pont",
   "removed": "Eltávolítva",
   "one_comment": "1 megjegyzés",
-  "submit_to_before": "küldés ide: ",
-  "submit_to_after": "",
   "submit_url_description": "ágyazza be a médiát a közvetlen linkjének közzétételével (vége .jpg, .gif, .mp4 stb.)",
   "title": "cím",
   "text": "szöveg",
@@ -187,5 +185,6 @@
   "stickied_comment": "Kitűzött hozzászólás",
   "posts_last_synced": "Legutóbb szinkronizált bejegyzések {{dateAgo}}",
   "community_settings": "Közösségi beállítások",
-  "moderation_tools": "Moderációs eszközök"
+  "moderation_tools": "Moderációs eszközök",
+  "submit_to": "Küldés ide: <1>{{link}}</1>"
 }

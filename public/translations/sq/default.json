@@ -49,8 +49,6 @@
   "reply_score_plural": "{{count}} pikë",
   "removed": "U hoq",
   "one_comment": "1 koment",
-  "submit_to_before": "dërgo te ",
-  "submit_to_after": "",
   "submit_url_description": "ngulit media duke postuar lidhjen e saj të drejtpërdrejtë (që përfundon në .jpg, .gif, .mp4, etj.)",
   "title": "titull",
   "text": "tekst",
@@ -187,5 +185,6 @@
   "stickied_comment": "Komenti i fiksuar",
   "posts_last_synced": "Postimet e fundit të sinkronizuara {{dateAgo}}",
   "community_settings": "Cilësimet e komunitetit",
-  "moderation_tools": "Mjete moderimi"
+  "moderation_tools": "Mjete moderimi",
+  "submit_to": "Dërgo te <1>{{link}}</1>"
 }

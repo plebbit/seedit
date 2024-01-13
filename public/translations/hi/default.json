@@ -49,8 +49,6 @@
   "reply_score_plural": "{{count}} अंक",
   "removed": "हटा दिया गया",
   "one_comment": "1 टिप्पणी",
-  "submit_to_before": "",
-  "submit_to_after": " को जमा करें",
   "submit_url_description": ".jpg, .gif, .mp4 आदि में समाप्त होने वाले सीधे लिंक को पोस्ट करके मीडिया एम्बेड करें",
   "title": "शीर्षक",
   "text": "पाठ",
@@ -187,5 +185,6 @@
   "stickied_comment": "पिन किया गया टिप्पणी",
   "posts_last_synced": "पोस्ट्स अंतिम बार {{dateAgo}} को सिंक की गईं",
   "community_settings": "समुदाय सेटिंग्स",
-  "moderation_tools": "मॉडरेशन टूल्स"
+  "moderation_tools": "मॉडरेशन टूल्स",
+  "submit_to": "जमा करें <1>{{link}}</1>"
 }

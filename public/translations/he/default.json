@@ -49,8 +49,6 @@
   "reply_score_plural": "{{count}} נקודות",
   "removed": "הוסר",
   "one_comment": "1 הערה",
-  "submit_to_before": "שלח אל ",
-  "submit_to_after": "",
   "submit_url_description": "הטמע מדיה על ידי פרסום הקישור הישיר שלה (מסתיים ב-.jpg, .gif, .mp4, וכו')",
   "title": "כותרת",
   "text": "טקסט",
@@ -187,5 +185,6 @@
   "stickied_comment": "תגובה מוצבת",
   "posts_last_synced": "פוסטים אחרונים שנסנכרנו {{dateAgo}}",
   "community_settings": "הגדרות הקהילה",
-  "moderation_tools": "כלי ניטור"
+  "moderation_tools": "כלי ניטור",
+  "submit_to": "שלח אל <1>{{link}}</1>"
 }

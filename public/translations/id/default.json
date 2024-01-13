@@ -49,8 +49,6 @@
   "reply_score_plural": "{{count}} poin",
   "removed": "Dihapus",
   "one_comment": "1 komentar",
-  "submit_to_before": "kirim ke ",
-  "submit_to_after": "",
   "submit_url_description": "tanamkan media dengan memposting tautan langsungnya (berakhir dengan .jpg, .gif, .mp4, dll.)",
   "title": "judul",
   "text": "teks",
@@ -187,5 +185,6 @@
   "stickied_comment": "Komentar yang Dipasang",
   "posts_last_synced": "Postingan yang terakhir disinkronkan {{dateAgo}}",
   "community_settings": "Pengaturan Komunitas",
-  "moderation_tools": "Alat Moderasi"
+  "moderation_tools": "Alat Moderasi",
+  "submit_to": "Kirim ke <1>{{link}}</1>"
 }

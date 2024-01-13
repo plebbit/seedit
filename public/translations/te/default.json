@@ -49,8 +49,6 @@
   "reply_score_plural": "{{count}} పాయింట్లు",
   "removed": "తొలగించబడింది",
   "one_comment": "1 వ్యాఖ్య",
-  "submit_to_before": "",
-  "submit_to_after": "కి సమర్పించు",
   "submit_url_description": ".jpg, .gif, .mp4 వంటివిలో ముగిసే ప్రత్యక్ష లింకును పోస్ట్ చేసి మీడియాను ఎంబెడ్ చేయండి",
   "title": "శీర్షిక",
   "text": "టెక్స్ట్",
@@ -187,5 +185,6 @@
   "stickied_comment": "పిన్ చేసిన వ్యాఖ్య",
   "posts_last_synced": "పోస్టులు చివరిలో సింక్ అయ్యాయి {{dateAgo}}",
   "community_settings": "కమ్యూనిటీ సెట్టింగులు",
-  "moderation_tools": "మాడరేషన్ సాధనాలు"
+  "moderation_tools": "మాడరేషన్ సాధనాలు",
+  "submit_to": "<1>{{link}}</1> కు పంపండి"
 }

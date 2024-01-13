@@ -49,8 +49,6 @@
   "reply_score_plural": "{{count}} points",
   "removed": "Supprimé",
   "one_comment": "1 commentaire",
-  "submit_to_before": "soumettre à ",
-  "submit_to_after": "",
   "submit_url_description": "intégrez des médias en postant son lien direct (se terminant par .jpg, .gif, .mp4, etc.)",
   "title": "titre",
   "text": "texte",
@@ -187,5 +185,6 @@
   "stickied_comment": "Commentaire épinglé",
   "posts_last_synced": "Dernières publications synchronisées {{dateAgo}}",
   "community_settings": "Paramètres de la communauté",
-  "moderation_tools": "Outils de modération"
+  "moderation_tools": "Outils de modération",
+  "submit_to": "Soumettre à <1>{{link}}</1>"
 }

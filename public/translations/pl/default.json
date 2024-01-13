@@ -49,8 +49,6 @@
   "reply_score_plural": "{{count}} punkty",
   "removed": "Usunięto",
   "one_comment": "1 komentarz",
-  "submit_to_before": "prześlij do ",
-  "submit_to_after": "",
   "submit_url_description": "osadź media, publikując jego bezpośredni link (kończący się na .jpg, .gif, .mp4 itp.)",
   "title": "tytuł",
   "text": "tekst",
@@ -187,5 +185,6 @@
   "stickied_comment": "Przypięty komentarz",
   "posts_last_synced": "Ostatnio zsynchronizowane posty {{dateAgo}}",
   "community_settings": "Ustawienia społeczności",
-  "moderation_tools": "Narzędzia moderacji"
+  "moderation_tools": "Narzędzia moderacji",
+  "submit_to": "Prześlij do <1>{{link}}</1>"
 }

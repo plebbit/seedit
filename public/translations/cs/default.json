@@ -49,8 +49,6 @@
   "reply_score_plural": "{{count}} body",
   "removed": "Odstraněno",
   "one_comment": "1 komentář",
-  "submit_to_before": "odeslat do ",
-  "submit_to_after": "",
   "submit_url_description": "vložte média zveřejněním přímého odkazu (končícího na .jpg, .gif, .mp4 atd.)",
   "title": "název",
   "text": "text",
@@ -187,5 +185,6 @@
   "stickied_comment": "Připnutý komentář",
   "posts_last_synced": "Poslední synchronizace příspěvků {{dateAgo}}",
   "community_settings": "Nastavení komunity",
-  "moderation_tools": "Nástroje pro moderaci"
+  "moderation_tools": "Nástroje pro moderaci",
+  "submit_to": "Odeslat na <1>{{link}}</1>"
 }

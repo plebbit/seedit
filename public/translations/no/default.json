@@ -49,8 +49,6 @@
   "reply_score_plural": "{{count}} poeng",
   "removed": "Fjernet",
   "one_comment": "1 kommentar",
-  "submit_to_before": "send inn til ",
-  "submit_to_after": "",
   "submit_url_description": "bygg inn medier ved å poste dens direkte lenke (slutter med .jpg, .gif, .mp4 osv.)",
   "title": "tittel",
   "text": "tekst",
@@ -187,5 +185,6 @@
   "stickied_comment": "Festet kommentar",
   "posts_last_synced": "Innlegg sist synkronisert {{dateAgo}}",
   "community_settings": "Fellesskapsinnstillinger",
-  "moderation_tools": "Moderasjonsverktøy"
+  "moderation_tools": "Moderasjonsverktøy",
+  "submit_to": "Send til <1>{{link}}</1>"
 }

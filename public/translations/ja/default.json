@@ -49,8 +49,6 @@
   "reply_score_plural": "{{count}} ポイント",
   "removed": "削除されました",
   "one_comment": "1つのコメント",
-  "submit_to_before": "",
-  "submit_to_after": " に提出",
   "submit_url_description": "直接のリンク（.jpg、.gif、.mp4などで終わる）を投稿してメディアを埋め込む",
   "title": "タイトル",
   "text": "テキスト",
@@ -187,5 +185,6 @@
   "stickied_comment": "固定されたコメント",
   "posts_last_synced": "最後に同期された投稿 {{dateAgo}}",
   "community_settings": "コミュニティの設定",
-  "moderation_tools": "モデレーションツール"
+  "moderation_tools": "モデレーションツール",
+  "submit_to": "<1>{{link}}</1>に提出する"
 }

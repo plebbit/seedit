@@ -49,8 +49,6 @@
   "reply_score_plural": "{{count}} punto",
   "removed": "Tinanggal",
   "one_comment": "1 komento",
-  "submit_to_before": "ipasa sa ",
-  "submit_to_after": "",
   "submit_url_description": "i-embed ang media sa pamamagitan ng pag-post ng direktang link nito (nagtatapos sa .jpg, .gif, .mp4, atbp.)",
   "title": "pamagat",
   "text": "teksto",
@@ -187,5 +185,6 @@
   "stickied_comment": "Naka-pinned na Komento",
   "posts_last_synced": "Mga huling na-synchronize na mga post {{dateAgo}}",
   "community_settings": "Mga Setting ng Komunidad",
-  "moderation_tools": "Mga Kasangkapan sa Moderasyon"
+  "moderation_tools": "Mga Kasangkapan sa Moderasyon",
+  "submit_to": "Isumite sa <1>{{link}}</1>"
 }

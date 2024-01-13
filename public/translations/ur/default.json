@@ -49,8 +49,6 @@
   "reply_score_plural": "{{count}} پوائنٹس",
   "removed": "ہٹا دیا گیا",
   "one_comment": "1 تبصرہ",
-  "submit_to_before": "",
-  "submit_to_after": " کو جمع کروائیں",
   "submit_url_description": ".jpg، .gif، .mp4 وغیرہ میں ختم ہونے والے براہ راست لنک کو پوسٹ کرکے میڈیا انکارپوریٹ کریں",
   "title": "عنوان",
   "text": "مواد",
@@ -187,5 +185,6 @@
   "stickied_comment": "پن کردہ تبصرہ",
   "posts_last_synced": "آخری مرتب سبقت کردہ پوسٹس {{dateAgo}}",
   "community_settings": "کمیونٹی کی ترتیبات",
-  "moderation_tools": "موڈریشن ٹولز"
+  "moderation_tools": "موڈریشن ٹولز",
+  "submit_to": "جمع کرائیں <1>{{link}}</1>"
 }

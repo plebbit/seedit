@@ -49,8 +49,6 @@
   "reply_score_plural": "{{count}} бали",
   "removed": "Видалено",
   "one_comment": "1 коментар",
-  "submit_to_before": "надіслати до ",
-  "submit_to_after": "",
   "submit_url_description": "вставте медіа, розмістивши його пряме посилання (закінчується на .jpg, .gif, .mp4 тощо)",
   "title": "заголовок",
   "text": "текст",
@@ -187,5 +185,6 @@
   "stickied_comment": "Закріплений коментар",
   "posts_last_synced": "Останні синхронізовані пости {{dateAgo}}",
   "community_settings": "Налаштування спільноти",
-  "moderation_tools": "Інструменти модерації"
+  "moderation_tools": "Інструменти модерації",
+  "submit_to": "Надіслати до <1>{{link}}</1>"
 }

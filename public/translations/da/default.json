@@ -49,8 +49,6 @@
   "reply_score_plural": "{{count}} point",
   "removed": "Fjernet",
   "one_comment": "1 kommentar",
-  "submit_to_before": "send til ",
-  "submit_to_after": "",
   "submit_url_description": "integrer medier ved at poste dens direkte link (slutter med .jpg, .gif, .mp4 osv.)",
   "title": "titel",
   "text": "tekst",
@@ -187,5 +185,6 @@
   "stickied_comment": "Fastgjort kommentar",
   "posts_last_synced": "Seneste opdatering af indlæg {{dateAgo}}",
   "community_settings": "Fællesskabsindstillinger",
-  "moderation_tools": "Moderationsværktøjer"
+  "moderation_tools": "Moderationsværktøjer",
+  "submit_to": "Indsend til <1>{{link}}</1>"
 }

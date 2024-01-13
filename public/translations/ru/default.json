@@ -49,8 +49,6 @@
   "reply_score_plural": "{{count}} очков",
   "removed": "Удалено",
   "one_comment": "1 комментарий",
-  "submit_to_before": "отправить в ",
-  "submit_to_after": "",
   "submit_url_description": "вставьте медиа, разместив его прямую ссылку (заканчивается на .jpg, .gif, .mp4 и т. д.)",
   "title": "заголовок",
   "text": "текст",
@@ -187,5 +185,6 @@
   "stickied_comment": "Закрепленный комментарий",
   "posts_last_synced": "Последние синхронизированные посты {{dateAgo}}",
   "community_settings": "Настройки сообщества",
-  "moderation_tools": "Инструменты модерации"
+  "moderation_tools": "Инструменты модерации",
+  "submit_to": "Отправить на <1>{{link}}</1>"
 }
