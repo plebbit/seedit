@@ -1,14 +1,15 @@
 import { ChangeEvent, useEffect, useRef, useState } from 'react';
-import { Link, useNavigate, useParams } from 'react-router-dom';
+import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
 import { PublishCommentOptions, useAccount, usePublishComment, useSubplebbit } from '@plebbit/plebbit-react-hooks';
 import { getShortAddress } from '@plebbit/plebbit-js';
-import { useTranslation } from 'react-i18next';
+import { Trans, useTranslation } from 'react-i18next';
 import { create } from 'zustand';
 import { alertChallengeVerificationFailed } from '../../lib/utils/challenge-utils';
 import { isValidURL } from '../../lib/utils/url-utils';
 import styles from './submit.module.css';
 import challengesStore from '../../hooks/use-challenges';
 import { getRandomSubplebbits, useDefaultSubplebbitAddresses } from '../../lib/utils/addresses-utils';
+import { isSubmitView } from '../../lib/utils/view-utils';
 
 type SubmitState = {
   subplebbitAddress: string | undefined;
@@ -66,6 +67,9 @@ const Submit = () => {
   const subplebbit = useSubplebbit({ subplebbitAddress: selectedSubplebbit });
   const navigate = useNavigate();
 
+  const location = useLocation();
+  const isInSubmitView = isSubmitView(location.pathname);
+
   const titleRef = useRef<HTMLTextAreaElement>(null);
   const linkRef = useRef<HTMLInputElement>(null);
   const contentRef = useRef<HTMLTextAreaElement>(null);
@@ -100,12 +104,6 @@ const Submit = () => {
 
     publishComment();
   };
-
-  const subplebbitHeaderLink = (
-    <Link to={`/p/${subplebbitAddress}`} className={styles.location} onClick={(e) => e.preventDefault()}>
-      {subplebbit?.title || subplebbit?.shortAddress || 'seedit'}
-    </Link>
-  );
 
   // redirect to pending page when pending comment is created
   useEffect(() => {
@@ -187,9 +185,11 @@ const Submit = () => {
   return (
     <div className={styles.content}>
       <h1>
-        {t('submit_to_before')}
-        {selectedSubplebbit ? subplebbitHeaderLink : 'seedit'}
-        {t('submit_to_after')}
+        <Trans
+          i18nKey='submit_to'
+          values={{ link: subplebbit?.title || subplebbit?.shortAddress || 'seedit' }}
+          components={{ 1: isInSubmitView ? <></> : <Link to={`/p/${subplebbitAddress}`} className={styles.location} /> }}
+        />
       </h1>
       <div className={styles.form}>
         <div className={styles.formContent}>
