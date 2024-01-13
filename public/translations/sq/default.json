@@ -186,5 +186,6 @@
   "posts_last_synced": "Postimet e fundit të sinkronizuara {{dateAgo}}",
   "community_settings": "Cilësimet e komunitetit",
   "moderation_tools": "Mjete moderimi",
-  "submit_to": "Dërgo te <1>{{link}}</1>"
+  "submit_to": "Dërgo te <1>{{link}}</1>",
+  "edit_subscriptions": "Ndrysho abonimet"
 }

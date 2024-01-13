@@ -186,5 +186,6 @@
   "posts_last_synced": "Ostatnio zsynchronizowane posty {{dateAgo}}",
   "community_settings": "Ustawienia społeczności",
   "moderation_tools": "Narzędzia moderacji",
-  "submit_to": "Prześlij do <1>{{link}}</1>"
+  "submit_to": "Prześlij do <1>{{link}}</1>",
+  "edit_subscriptions": "Edytuj subskrypcje"
 }

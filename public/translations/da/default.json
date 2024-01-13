@@ -186,5 +186,6 @@
   "posts_last_synced": "Seneste opdatering af indlæg {{dateAgo}}",
   "community_settings": "Fællesskabsindstillinger",
   "moderation_tools": "Moderationsværktøjer",
-  "submit_to": "Indsend til <1>{{link}}</1>"
+  "submit_to": "Indsend til <1>{{link}}</1>",
+  "edit_subscriptions": "Rediger abonnementer"
 }

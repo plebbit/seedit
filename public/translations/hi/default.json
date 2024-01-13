@@ -186,5 +186,6 @@
   "posts_last_synced": "पोस्ट्स अंतिम बार {{dateAgo}} को सिंक की गईं",
   "community_settings": "समुदाय सेटिंग्स",
   "moderation_tools": "मॉडरेशन टूल्स",
-  "submit_to": "जमा करें <1>{{link}}</1>"
+  "submit_to": "जमा करें <1>{{link}}</1>",
+  "edit_subscriptions": "सदस्यता संपादित करें"
 }

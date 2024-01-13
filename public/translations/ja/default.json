@@ -186,5 +186,6 @@
   "posts_last_synced": "最後に同期された投稿 {{dateAgo}}",
   "community_settings": "コミュニティの設定",
   "moderation_tools": "モデレーションツール",
-  "submit_to": "<1>{{link}}</1>に提出する"
+  "submit_to": "<1>{{link}}</1>に提出する",
+  "edit_subscriptions": "購読の編集"
 }

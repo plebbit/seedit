@@ -186,5 +186,6 @@
   "posts_last_synced": "פוסטים אחרונים שנסנכרנו {{dateAgo}}",
   "community_settings": "הגדרות הקהילה",
   "moderation_tools": "כלי ניטור",
-  "submit_to": "שלח אל <1>{{link}}</1>"
+  "submit_to": "שלח אל <1>{{link}}</1>",
+  "edit_subscriptions": "ערוך מנויים"
 }

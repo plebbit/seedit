@@ -186,5 +186,6 @@
   "posts_last_synced": "마지막 동기화된 게시물 {{dateAgo}}",
   "community_settings": "커뮤니티 설정",
   "moderation_tools": "모더레이션 도구",
-  "submit_to": "<1>{{link}}</1>(으)로 제출하기"
+  "submit_to": "<1>{{link}}</1>(으)로 제출하기",
+  "edit_subscriptions": "구독 편집"
 }

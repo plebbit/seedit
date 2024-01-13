@@ -186,5 +186,6 @@
   "posts_last_synced": "Legutóbb szinkronizált bejegyzések {{dateAgo}}",
   "community_settings": "Közösségi beállítások",
   "moderation_tools": "Moderációs eszközök",
-  "submit_to": "Küldés ide: <1>{{link}}</1>"
+  "submit_to": "Küldés ide: <1>{{link}}</1>",
+  "edit_subscriptions": "Előfizetések szerkesztése"
 }

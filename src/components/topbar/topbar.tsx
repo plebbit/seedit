@@ -113,6 +113,11 @@ const TopBar = () => {
                 {getShortAddress(subscription)}
               </Link>
             ))}
+            {subscriptions?.length > 0 && (
+              <Link to='/communities' className={`${styles.dropdownChoice} ${styles.editSubscriptions}`}>
+                {t('edit_subscriptions')}
+              </Link>
+            )}
             {subscriptions?.length === 0 && <div className={`${styles.dropdownChoice} ${styles.noSubs}`}>{t('no_subscriptions_notice')}</div>}
           </div>
         </div>

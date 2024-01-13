@@ -186,5 +186,6 @@
   "posts_last_synced": "Son senkronize edilen gönderiler {{dateAgo}}",
   "community_settings": "Topluluk Ayarları",
   "moderation_tools": "Moderasyon Araçları",
-  "submit_to": "<1>{{link}}</1> adresine gönder"
+  "submit_to": "<1>{{link}}</1> adresine gönder",
+  "edit_subscriptions": "Abonelikleri Düzenle"
 }

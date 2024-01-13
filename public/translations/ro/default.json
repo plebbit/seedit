@@ -186,5 +186,6 @@
   "posts_last_synced": "Ultimele postări sincronizate {{dateAgo}}",
   "community_settings": "Setări ale comunității",
   "moderation_tools": "Instrumente de moderare",
-  "submit_to": "Trimite la <1>{{link}}</1>"
+  "submit_to": "Trimite la <1>{{link}}</1>",
+  "edit_subscriptions": "Editează abonamente"
 }

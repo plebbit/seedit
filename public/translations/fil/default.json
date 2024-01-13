@@ -186,5 +186,6 @@
   "posts_last_synced": "Mga huling na-synchronize na mga post {{dateAgo}}",
   "community_settings": "Mga Setting ng Komunidad",
   "moderation_tools": "Mga Kasangkapan sa Moderasyon",
-  "submit_to": "Isumite sa <1>{{link}}</1>"
+  "submit_to": "Isumite sa <1>{{link}}</1>",
+  "edit_subscriptions": "I-edit ang mga Subskripsyon"
 }

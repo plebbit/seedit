@@ -186,5 +186,6 @@
   "posts_last_synced": "Laatst gesynchroniseerde berichten {{dateAgo}}",
   "community_settings": "Community-instellingen",
   "moderation_tools": "Moderatiehulpmiddelen",
-  "submit_to": "Verzenden naar <1>{{link}}</1>"
+  "submit_to": "Verzenden naar <1>{{link}}</1>",
+  "edit_subscriptions": "Abonnementen bewerken"
 }

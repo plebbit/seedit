@@ -186,5 +186,6 @@
   "posts_last_synced": "Postingan yang terakhir disinkronkan {{dateAgo}}",
   "community_settings": "Pengaturan Komunitas",
   "moderation_tools": "Alat Moderasi",
-  "submit_to": "Kirim ke <1>{{link}}</1>"
+  "submit_to": "Kirim ke <1>{{link}}</1>",
+  "edit_subscriptions": "Edit Langganan"
 }

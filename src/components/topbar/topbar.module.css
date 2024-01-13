@@ -52,6 +52,12 @@
   background-color: var(--background-primary);
 }
 
+.editSubscriptions {
+  font-style: italic;
+  text-transform: uppercase;
+  border-top: 1px dotted var(--text-primary);
+}
+
 .dropChoices a {
   text-decoration: none;
   color: var(--text-primary);

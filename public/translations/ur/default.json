@@ -186,5 +186,6 @@
   "posts_last_synced": "آخری مرتب سبقت کردہ پوسٹس {{dateAgo}}",
   "community_settings": "کمیونٹی کی ترتیبات",
   "moderation_tools": "موڈریشن ٹولز",
-  "submit_to": "جمع کرائیں <1>{{link}}</1>"
+  "submit_to": "جمع کرائیں <1>{{link}}</1>",
+  "edit_subscriptions": "سبسکرائب کو ترتیب دیں"
 }
