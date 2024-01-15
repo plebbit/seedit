@@ -187,5 +187,7 @@
   "community_settings": "การตั้งค่าชุมชน",
   "moderation_tools": "เครื่องมือการตรวจสอบ",
   "submit_to": "ส่งไปที่ <1>{{link}}</1>",
-  "edit_subscriptions": "แก้ไขการสมัครสมาชิก"
+  "edit_subscriptions": "แก้ไขการสมัครสมาชิก",
+  "last_account_notice": "คุณไม่สามารถลบบัญชีครั้งสุดท้ายของคุณได้ โปรดสร้างบัญชีใหม่ก่อน",
+  "delete_confirm": "คุณแน่ใจหรือไม่ว่าต้องการลบ {{value}}?"
 }

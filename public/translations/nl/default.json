@@ -187,5 +187,7 @@
   "community_settings": "Community-instellingen",
   "moderation_tools": "Moderatiehulpmiddelen",
   "submit_to": "Verzenden naar <1>{{link}}</1>",
-  "edit_subscriptions": "Abonnementen bewerken"
+  "edit_subscriptions": "Abonnementen bewerken",
+  "last_account_notice": "U kunt uw laatste account niet verwijderen, maak eerst een nieuwe aan.",
+  "delete_confirm": "Weet je zeker dat je {{value}} wilt verwijderen?"
 }

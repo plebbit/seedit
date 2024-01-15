@@ -187,5 +187,7 @@
   "community_settings": "社区设置",
   "moderation_tools": "管理工具",
   "submit_to": "提交至 <1>{{link}}</1>",
-  "edit_subscriptions": "编辑订阅"
+  "edit_subscriptions": "编辑订阅",
+  "last_account_notice": "您不能删除您的最后一个帐户，请先创建一个新帐户。",
+  "delete_confirm": "您确定要删除 {{value}} 吗？"
 }

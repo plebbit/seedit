@@ -187,5 +187,7 @@
   "community_settings": "تنظیمات اجتماعی",
   "moderation_tools": "ابزارهای نظارت",
   "submit_to": "ارسال به <1>{{link}}</1>",
-  "edit_subscriptions": "ویرایش اشتراک‌ها"
+  "edit_subscriptions": "ویرایش اشتراک‌ها",
+  "last_account_notice": "شما نمی‌توانید حساب آخر خود را حذف کنید، لطفاً ابتدا یک حساب جدید ایجاد کنید.",
+  "delete_confirm": "آیا مطمئن هستید که می‌خواهید {{value}} را حذف کنید؟"
 }

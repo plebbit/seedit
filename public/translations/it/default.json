@@ -187,5 +187,7 @@
   "community_settings": "Impostazioni della comunità",
   "moderation_tools": "Strumenti di moderazione",
   "submit_to": "Invia a <1>{{link}}</1>",
-  "edit_subscriptions": "Modifica sottoscrizioni"
+  "edit_subscriptions": "Modifica sottoscrizioni",
+  "last_account_notice": "Non puoi eliminare il tuo ultimo account, crea prima un nuovo account.",
+  "delete_confirm": "Confermi di voler cancellare {{value}}?"
 }

@@ -187,5 +187,7 @@
   "community_settings": "Cài đặt cộng đồng",
   "moderation_tools": "Công cụ kiểm duyệt",
   "submit_to": "Gửi đến <1>{{link}}</1>",
-  "edit_subscriptions": "Chỉnh sửa đăng ký"
+  "edit_subscriptions": "Chỉnh sửa đăng ký",
+  "last_account_notice": "Bạn không thể xóa tài khoản cuối cùng của mình, vui lòng tạo một tài khoản mới trước.",
+  "delete_confirm": "Bạn có chắc chắn muốn xóa {{value}} không?"
 }

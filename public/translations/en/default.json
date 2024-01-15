@@ -187,5 +187,7 @@
   "community_settings": "Community Settings",
   "moderation_tools": "Moderation Tools",
   "submit_to": "Submit to <1>{{link}}</1>",
-  "edit_subscriptions": "Edit Subscriptions"
+  "edit_subscriptions": "Edit Subscriptions",
+  "last_account_notice": "You cannot delete your last account, please create a new one first.",
+  "delete_confirm": "Are you sure you want to delete {{value}}?"
 }
