@@ -125,7 +125,7 @@ const ParentLink = ({ postCid }: ParentLinkProps) => {
       <Link to={`/u/${author?.shortAddress}/c/${cid}`} className={styles.parentAuthor}>
         u/{author?.shortAddress}{' '}
       </Link>
-      in{' '}
+      {t('via')}{' '}
       <Link to={`/p/${subplebbitAddress}`} className={styles.parentSubplebbit}>
         p/{subplebbitAddress}
       </Link>
