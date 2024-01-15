@@ -6,6 +6,7 @@ import { useTranslation } from 'react-i18next';
 import stringify from 'json-stringify-pretty-compact';
 import styles from './subplebbit-settings.module.css';
 import Sidebar from '../../../components/sidebar';
+import { isValidURL } from '../../../lib/utils/url-utils';
 
 const isElectron = window.electron && window.electron.isElectron;
 
@@ -51,15 +52,36 @@ const Address = ({ address }: { address: string }) => {
   );
 };
 
-const Logo = ({ logo, avatarUrl }: { logo: string; avatarUrl: string | undefined }) => {
+const Logo = ({ avatarUrl }: { avatarUrl: string | undefined }) => {
   const { t } = useTranslation();
+  const [logoUrl, setLogoUrl] = useState(avatarUrl);
+  const [imageError, setImageError] = useState(false);
+
+  // Update logoUrl when avatarUrl changes
+  useEffect(() => {
+    setLogoUrl(avatarUrl);
+    setImageError(false); // Reset the error state as well
+  }, [avatarUrl]);
 
   return (
     <div className={styles.box}>
       <div className={styles.boxTitle}>{t('logo')}</div>
       <div className={styles.boxSubtitle}>set a community logo using its direct image link (ending in .jpg, .png)</div>
       <div className={styles.boxInput}>
-        <input type='text' defaultValue={avatarUrl} />
+        <input
+          type='text'
+          value={logoUrl}
+          onChange={(e) => {
+            setLogoUrl(e.target.value);
+            setImageError(false);
+          }}
+        />
+        {logoUrl && isValidURL(logoUrl) && (
+          <div className={styles.logoPreview}>
+            preview:
+            {imageError ? <span className={styles.logoError}>no image found</span> : <img src={logoUrl} alt='logo preview' onError={() => setImageError(true)} />}
+          </div>
+        )}
       </div>
     </div>
   );
@@ -272,7 +294,7 @@ const SubplebbitSettings = () => {
       <Title title={title} />
       <Description description={description} />
       <Address address={address} />
-      <Logo logo={''} avatarUrl={suggested?.avatarUrl} />
+      <Logo avatarUrl={suggested?.avatarUrl} />
       <Rules rules={rules} />
       <Moderators roles={roles} />
       <Challenge challenge={''} selected={''} setSelected={() => {}} />
