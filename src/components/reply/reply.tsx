@@ -105,9 +105,14 @@ const ReplyMedia = ({ commentMediaInfo, content, expanded, hasThumbnail, link, l
 };
 
 type ParentLinkProps = {
+  address?: string;
+  cid?: string;
   commentCid?: string;
   markedAsRead?: boolean;
   postCid?: string;
+  shortAddress?: string;
+  subplebbitAddress?: string;
+  timestamp?: number;
 };
 
 const ParentLink = ({ postCid }: ParentLinkProps) => {
@@ -154,24 +159,22 @@ const InboxParentLink = ({ commentCid }: ParentLinkProps) => {
   );
 };
 
-const InboxParentInfo = ({ commentCid, markedAsRead }: ParentLinkProps) => {
+const InboxParentInfo = ({ address, cid, markedAsRead, shortAddress, subplebbitAddress, timestamp }: ParentLinkProps) => {
   const { t } = useTranslation();
-  const parent = useComment({ commentCid });
-  const { author, cid, subplebbitAddress, timestamp } = parent || {};
   const shortSubplebbitAddress = subplebbitAddress ? (subplebbitAddress.includes('.') ? subplebbitAddress : getShortAddress(subplebbitAddress)) : '';
 
   return (
     <>
       <div className={`${styles.inboxParentInfo} ${markedAsRead ? styles.inboxParentRead : styles.inboxParentUnread}`}>
         {t('from')}{' '}
-        <Link to={`/u/${author?.address}/c/${cid}`} className={styles.inboxParentAuthor}>
-          u/{author?.shortAddress}{' '}
+        <Link to={`/u/${address}/c/${cid}`} className={styles.inboxParentAuthor}>
+          u/{shortAddress}{' '}
         </Link>
         {t('via')}{' '}
         <Link to={`/p/${subplebbitAddress}`} className={styles.inboxParentSubplebbit}>
           p/{shortSubplebbitAddress}{' '}
         </Link>
-        {t('sent')} {getFormattedTimeAgo(timestamp)}
+        {t('sent')} {timestamp && getFormattedTimeAgo(timestamp)}
       </div>
       <div className={styles.inboxParentInfoButton}>{t('show_parent')}</div>
     </>
@@ -299,7 +302,16 @@ const Reply = ({ depth = 0, isSingle, isNotification = false, reply = {} }: Repl
                 {state === 'pending' && loadingString}
               </p>
             )}
-            {isInInboxView && <InboxParentInfo commentCid={cid} markedAsRead={markedAsRead} />}
+            {isInInboxView && (
+              <InboxParentInfo
+                address={author?.address}
+                cid={cid}
+                markedAsRead={markedAsRead}
+                shortAddress={author?.shortAddress}
+                subplebbitAddress={subplebbitAddress}
+                timestamp={timestamp}
+              />
+            )}
             {!collapsed && (
               <div className={styles.usertext}>
                 {commentMediaInfo && (
