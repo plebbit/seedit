@@ -20,6 +20,7 @@ import useStateString from '../../hooks/use-state-string';
 import useUpvote from '../../hooks/use-upvote';
 import { isInboxView } from '../../lib/utils/view-utils';
 import { getShortAddress } from '@plebbit/plebbit-js';
+import Markdown from '../markdown';
 
 interface ReplyAuthorProps {
   address: string;
@@ -326,7 +327,9 @@ const Reply = ({ depth = 0, isSingle, isNotification = false, reply = {} }: Repl
                     toggleExpanded={toggleExpanded}
                   />
                 )}
-                <div className={styles.md}>{contentString}</div>
+                <div className={styles.md}>
+                  <Markdown content={contentString} />
+                </div>
               </div>
             )}
           </div>

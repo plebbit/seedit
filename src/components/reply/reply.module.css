@@ -117,6 +117,10 @@
   word-wrap: break-word;
 }
 
+.md a {
+  color: var(--markdown-link) !important;
+}
+
 .usertext a {
   color: var(--text);
   text-decoration: none;

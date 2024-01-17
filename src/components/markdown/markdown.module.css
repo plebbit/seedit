@@ -1,0 +1,31 @@
+.markdown a {
+  color: var(--markdown-link);
+}
+
+.markdown ol {
+  padding-left: 40px;
+  margin-top: -20px;
+  margin-bottom: -15px;
+}
+
+.markdown ul {
+  padding-left: 40px;
+  margin-top: -20px;
+  margin-bottom: -15px;
+}
+
+.markdown ul li, .markdown ol li {
+  margin-top: -10px;
+}
+
+.markdown blockquote {
+  padding: 0 8px;
+  margin-left: 5px;
+  border-left: 2px solid var(--markdown-blockquote-border);
+  color: var(--markdown-blockquote);
+}
+
+.markdown blockquote p {
+  margin-top: -15px;
+  margin-bottom: -15px;
+}

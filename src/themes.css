@@ -29,6 +29,9 @@
   --text: black;
   --text-input: black;
   --text-markdown: #222222;
+  --markdown-link: #0079d3;
+  --markdown-blockquote: #4f4f4f;
+  --markdown-blockquote-border: #c5c1ad;
   --text-primary: #369;
   --button-border-primary: #c4dbf1;
   --button-border-primary-hover: #879eb4;
@@ -83,6 +86,9 @@
   --text: #bfbfbf;
   --text-input: white;
   --text-markdown: #f0f0f0;
+  --markdown-link: rgb(74, 183, 255);
+  --markdown-blockquote: rgb(185, 178, 168);
+  --markdown-blockquote-border: rgb(65, 70, 73);
   --text-primary: #c7c7c7;
   --button-border-primary: #1f1f1f;
   --button-border-primary-hover: #3e3e3e;

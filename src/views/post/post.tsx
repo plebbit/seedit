@@ -49,6 +49,8 @@ const Post = () => {
     window.scrollTo(0, 0);
   }, []);
 
+  console.log(post.content);
+
   return (
     <div className={styles.content}>
       <div className={styles.sidebar}>

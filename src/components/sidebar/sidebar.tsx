@@ -6,6 +6,7 @@ import styles from './sidebar.module.css';
 import { getFormattedDate, getFormattedTimeDuration, getFormattedTimeAgo } from '../../lib/utils/time-utils';
 import { findSubplebbitCreator } from '../../lib/utils/user-utils';
 import { isAboutView, isAllView, isHomeView, isPendingView, isPostView, isSubplebbitSettingsView, isSubplebbitsView } from '../../lib/utils/view-utils';
+import Markdown from '../markdown';
 import SearchBar from '../search-bar';
 import SubscribeButton from '../subscribe-button';
 
@@ -176,7 +177,9 @@ const Sidebar = ({ address, cid, createdAt, description, downvoteCount = 0, role
                   <strong>{title}</strong>
                 </div>
               )}
-              <div className={styles.description}>{description}</div>
+              <div className={styles.description}>
+                <Markdown content={description} />
+              </div>
             </div>
           )}
           {rules && <RulesList rules={rules} />}
