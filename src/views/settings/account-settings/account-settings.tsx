@@ -57,7 +57,6 @@ const AccountSettings = () => {
       return;
     } else if (window.confirm(t('delete_confirm', { value: accountName }))) {
       deleteAccount(accountName);
-      setSwitchToLastAccount(true);
     } else {
       return;
     }
