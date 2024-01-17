@@ -256,3 +256,41 @@ a {
 .communitySettings {
   float: right;
 }
+
+.footer {
+  font-family: arial, verdana, helvetica, sans-serif;
+}
+
+.footer ul {
+  text-align: left;
+  list-style: none;
+}
+
+.footerTitle {
+  color: var(--gray-footer);
+  font-size: 18px;
+  font-weight: normal;
+  margin-bottom: 5px;
+}
+
+.footer li a {
+  font-size: 12px;
+}
+
+.footer a {
+  color: var(--link-footer);
+}
+
+.footer a:hover {
+  text-decoration: underline;
+}
+
+.version {
+ margin: 14px 0 24px 0;
+ text-align: center;
+ font-size: 10px;
+}
+
+.unstable {
+  color: var(--yellow);
+}

@@ -9,6 +9,9 @@ import { isAboutView, isAllView, isHomeView, isPendingView, isPostView, isSubple
 import Markdown from '../markdown';
 import SearchBar from '../search-bar';
 import SubscribeButton from '../subscribe-button';
+import packageJson from '../../../package.json';
+const { version } = packageJson;
+const commitRef = process?.env?.REACT_APP_COMMIT_REF ? ` ${process.env.REACT_APP_COMMIT_REF.slice(0, 7)}` : '';
 
 interface sidebarProps {
   address?: string | undefined;
@@ -197,6 +200,36 @@ const Sidebar = ({ address, cid, createdAt, description, downvoteCount = 0, role
       )}
       {isModerator && <ModerationTools address={address} />}
       {roles && <ModeratorsList roles={roles} />}
+      <div className={styles.footer}>
+        <ul>
+          <li className={styles.footerTitle}>about</li>
+          <li>
+            <a href='https://plebbit.com' target='_blank' rel='noopener noreferrer'>
+              plebbit
+            </a>
+          </li>
+          <li>
+            <a href='https://github.com/plebbit/seedit' target='_blank' rel='noopener noreferrer'>
+              github
+            </a>
+          </li>
+          <li>
+            <a href='https://twitter.com/getplebbit' target='_blank' rel='noopener noreferrer'>
+              twitter
+            </a>
+          </li>
+          <li>
+            <a href='https://t.me/telegram' target='_blank' rel='noopener noreferrer'>
+              telegram
+            </a>
+          </li>
+        </ul>
+        <div className={`${styles.version} ${commitRef ? styles.unstable : ''}`}>
+          <a href='https://github.com/plebbit/seedit/releases/latest' target='_blank' rel='noopener noreferrer'>
+            seedit {commitRef ? 'development build ' + commitRef : window.electron && window.electron.isElectron ? 'desktop' : 'web'} v{version} - GPL 2.0
+          </a>
+        </div>
+      </div>
     </div>
   );
 };
