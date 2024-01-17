@@ -291,6 +291,6 @@ a {
  font-size: 10px;
 }
 
-.unstable {
+.unstable a {
   color: var(--yellow);
 }
