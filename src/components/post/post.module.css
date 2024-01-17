@@ -121,9 +121,8 @@
   text-decoration: none;
 }
 
-.domain:hover {
+.domain a:hover {
   text-decoration: underline;
-  max-width: none;
 }
 
 .tagline a {
@@ -131,11 +130,7 @@
   text-decoration: none;
 }
 
-.tagline .author:hover {
-  text-decoration: underline;
-}
-
-.tagline .subplebbit:hover {
+.subplebbit:hover, .author:hover span {
   text-decoration: underline;
 }
 
