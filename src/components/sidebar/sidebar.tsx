@@ -231,9 +231,9 @@ const Sidebar = ({ address, cid, createdAt, description, downvoteCount = 0, role
           </a>
           <span className={styles.desktopAdSubtitle}>
             <br />
-            ...each community's data needs to be seeded!
+            ...each community's data needs to be seeded.
             <br />
-            ...seed it automatically with the desktop app.
+            ...use the desktop app to seed it automatically!
           </span>
         </div>
         <div className={`${styles.version} ${commitRef ? styles.unstable : ''}`}>
