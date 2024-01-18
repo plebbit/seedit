@@ -51,13 +51,12 @@ const AccountSettings = () => {
 
   const _deleteAccount = (accountName: string) => {
     if (accounts.length === 1) {
-      alert('You cannot delete your last account. Please create a new one.');
+      alert(t('last_account_notice'));
       return;
     } else if (!accountName) {
       return;
-    } else if (window.confirm(`Are you sure you want to delete ${accountName}?`)) {
+    } else if (window.confirm(t('delete_confirm', { value: accountName }))) {
       deleteAccount(accountName);
-      setSwitchToLastAccount(true);
     } else {
       return;
     }

@@ -37,14 +37,12 @@ const PostAuthor = ({ authorAddress, authorRole, cid, displayName, index, shortA
 
   return (
     <>
-      {displayName && (
-        <Link to={cid ? `/u/${authorAddress}/c/${cid}` : `/profile/${index}`} className={`${styles.displayName} ${moderatorClass}`}>
-          {displayName}{' '}
-        </Link>
-      )}
-      <Link className={`${styles.authorAddressWrapper} ${moderatorClass}`} to={cid ? `/u/${authorAddress}/c/${cid}` : `/profile/${index}`}>
-        <span className={styles.authorAddressHidden}>u/{shortAddress || shortAuthorAddress}</span>
-        <span className={`${styles.authorAddressVisible} ${authorAddressChanged && styles.authorAddressChanged}`}>u/{shortAuthorAddress}</span>
+      <Link to={cid ? `/u/${authorAddress}/c/${cid}` : `/profile/${index}`} className={`${styles.author} ${moderatorClass}`}>
+        {displayName && <span className={`${styles.displayName} ${moderatorClass}`}>{displayName} </span>}
+        <span className={`${styles.authorAddressWrapper} ${moderatorClass}`}>
+          <span className={styles.authorAddressHidden}>u/{shortAddress || shortAuthorAddress}</span>
+          <span className={`${styles.authorAddressVisible} ${authorAddressChanged && styles.authorAddressChanged}`}>u/{shortAuthorAddress}</span>
+        </span>
       </Link>
       {authorRole && (
         <span>
@@ -206,9 +204,8 @@ const Post = ({ post = {}, index }: PostProps) => {
                 />
                 {!isInSubplebbitView && (
                   <>
-                     {t('post_to')}
+                     {t('post_to')}{' '}
                     <Link className={styles.subplebbit} to={`/p/${subplebbitAddress}`}>
-                      {' '}
                       p/{subplebbit?.shortAddress || subplebbitAddress}
                     </Link>
                   </>

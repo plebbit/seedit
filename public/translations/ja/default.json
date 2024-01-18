@@ -100,7 +100,7 @@
   "point": "ポイント",
   "points": "ポイント",
   "share_link": "リンクを共有",
-  "upvoted": "がUpvoteしました",
+  "upvoted": "アップボートされました",
   "announcement": "お知らせ",
   "child": "{{childrenCount}} 子供",
   "children": "{{childrenCount}} 子供たち",
@@ -187,5 +187,7 @@
   "community_settings": "コミュニティの設定",
   "moderation_tools": "モデレーションツール",
   "submit_to": "<1>{{link}}</1>に提出する",
-  "edit_subscriptions": "購読の編集"
+  "edit_subscriptions": "購読の編集",
+  "last_account_notice": "最後のアカウントは削除できません。新しいアカウントを作成してください。",
+  "delete_confirm": "{{value}} を削除してもよろしいですか？"
 }

@@ -187,6 +187,7 @@ const Submit = () => {
       <h1>
         <Trans
           i18nKey='submit_to'
+          shouldUnescape={true}
           values={{ link: subplebbit?.title || subplebbit?.shortAddress || 'seedit' }}
           components={{ 1: isInSubmitView ? <></> : <Link to={`/p/${subplebbitAddress}`} className={styles.location} /> }}
         />

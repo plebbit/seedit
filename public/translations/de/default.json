@@ -187,5 +187,7 @@
   "community_settings": "Community-Einstellungen",
   "moderation_tools": "Moderationstools",
   "submit_to": "Einreichen an <1>{{link}}</1>",
-  "edit_subscriptions": "Abonnements bearbeiten"
+  "edit_subscriptions": "Abonnements bearbeiten",
+  "last_account_notice": "Sie können Ihr letztes Konto nicht löschen, bitte erstellen Sie zuerst ein neues.",
+  "delete_confirm": "Möchten Sie {{value}} wirklich löschen?"
 }

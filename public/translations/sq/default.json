@@ -187,5 +187,7 @@
   "community_settings": "Cilësimet e komunitetit",
   "moderation_tools": "Mjete moderimi",
   "submit_to": "Dërgo te <1>{{link}}</1>",
-  "edit_subscriptions": "Ndrysho abonimet"
+  "edit_subscriptions": "Ndrysho abonimet",
+  "last_account_notice": "Nuk mund të fshini llogarinë tuaj të fundit, ju lutemi krijoni një të re fillimisht.",
+  "delete_confirm": "A jeni të sigurt se dëshironi të fshini {{value}}?"
 }

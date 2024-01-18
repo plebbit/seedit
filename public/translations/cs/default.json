@@ -187,5 +187,7 @@
   "community_settings": "Nastavení komunity",
   "moderation_tools": "Nástroje pro moderaci",
   "submit_to": "Odeslat na <1>{{link}}</1>",
-  "edit_subscriptions": "Upravit předplatné"
+  "edit_subscriptions": "Upravit předplatné",
+  "last_account_notice": "Nemůžete smazat svůj poslední účet, nejprve si vytvořte nový.",
+  "delete_confirm": "Opravdu chcete smazat {{value}}?"
 }

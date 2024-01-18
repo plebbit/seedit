@@ -187,5 +187,7 @@
   "community_settings": "إعدادات المجتمع",
   "moderation_tools": "أدوات الإشراف",
   "submit_to": "إرسال إلى <1>{{link}}</1>",
-  "edit_subscriptions": "تحرير الاشتراكات"
+  "edit_subscriptions": "تحرير الاشتراكات",
+  "last_account_notice": "لا يمكنك حذف حسابك الأخير، يرجى إنشاء حساب جديد أولاً.",
+  "delete_confirm": "هل أنت متأكد أنك تريد حذف {{value}}؟"
 }

@@ -156,6 +156,23 @@
   cursor: pointer;
 }
 
+.logoPreview {
+  display: flex;
+  align-items: center;
+  height: 40px;
+  margin-top: 10px;
+  font-size: smaller;
+}
+
+.logoError {
+  padding-left: 10px;
+}
+
+.logoPreview img {
+  max-height: 40px;
+  padding-left: 10px;
+}
+
 @media (max-width: 768px) {
   .content {
     padding: 7px 0px 0px 0px;

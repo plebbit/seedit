@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import styles from './expando.module.css';
 import Embed from '../embed';
 import { CommentMediaInfo } from '../../../lib/utils/media-utils';
+import Markdown from '../../markdown';
 
 interface ExpandoProps {
   commentMediaInfo?: CommentMediaInfo;
@@ -49,7 +50,9 @@ const Expando = ({ commentMediaInfo, content, expanded, link, showContent, toggl
       )}
       {content && showContent && (
         <div className={styles.usertext}>
-          <div className={styles.markdown}>{content}</div>
+          <div className={styles.markdown}>
+            <Markdown content={content} />
+          </div>
         </div>
       )}
     </div>

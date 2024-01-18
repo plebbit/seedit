@@ -187,5 +187,7 @@
   "community_settings": "Topluluk Ayarları",
   "moderation_tools": "Moderasyon Araçları",
   "submit_to": "<1>{{link}}</1> adresine gönder",
-  "edit_subscriptions": "Abonelikleri Düzenle"
+  "edit_subscriptions": "Abonelikleri Düzenle",
+  "last_account_notice": "Son hesabınızı silemezsiniz, lütfen önce yeni bir tane oluşturun.",
+  "delete_confirm": "{{value}}'yi silmek istediğinizden emin misiniz?"
 }
