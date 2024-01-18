@@ -80,6 +80,9 @@ function App() {
           </Route>
           <Route element={pagesLayout}>
             <Route path='/submit' element={<Submit />} />
+            <Route path='/about' element={<About />} />
+
+            <Route path='/p/all/about' element={<About />} />
 
             <Route path='/p/:subplebbitAddress/c/:commentCid' element={<Post />} />
             <Route path='/p/:subplebbitAddress/c/:commentCid/about' element={<About />} />

@@ -7,10 +7,12 @@ import {
   getAboutLink,
   isAboutView,
   isAllView,
+  isAllAboutView,
   isAuthorView,
   isAuthorCommentsView,
   isAuthorSubmittedView,
   isProfileDownvotedView,
+  isHomeAboutView,
   isHomeView,
   isInboxView,
   isPendingView,
@@ -235,6 +237,7 @@ const HeaderTabs = () => {
   const location = useLocation();
   const isInAllView = isAllView(location.pathname);
   const isInAuthorView = isAuthorView(location.pathname);
+  const isInHomeAboutView = isHomeAboutView(location.pathname);
   const isInHomeView = isHomeView(location.pathname, params);
   const isInInboxView = isInboxView(location.pathname);
   const isInPendingView = isPendingView(location.pathname, params);
@@ -247,7 +250,7 @@ const HeaderTabs = () => {
 
   if (isInPostView) {
     return <CommentsButton />;
-  } else if (isInHomeView || (isInSubplebbitView && !isInSubplebbitSubmitView && !isInSubplebbitSettingsView) || isInAllView) {
+  } else if (isInHomeView || isInHomeAboutView || (isInSubplebbitView && !isInSubplebbitSubmitView && !isInSubplebbitSettingsView) || isInAllView) {
     return <SortItems />;
   } else if ((isInProfileView || isInAuthorView) && !isInPendingView) {
     return <AuthorHeaderTabs />;
@@ -321,6 +324,7 @@ const Header = () => {
 
   const isMobile = window.innerWidth < 768;
   const isInAboutView = isAboutView(location.pathname);
+  const isInAllAboutView = isAllAboutView(location.pathname);
   const isInAllView = isAllView(location.pathname);
   const isInAuthorView = isAuthorView(location.pathname);
   const isInHomeView = isHomeView(location.pathname, params);
@@ -343,7 +347,7 @@ const Header = () => {
     isInHomeView ||
     (isInSubplebbitView && !isInSubplebbitSubmitView && !isInSubplebbitSettingsView && !isInPostView && !isInAboutView) ||
     (isInProfileView && !isInAboutView) ||
-    isInAllView ||
+    (isInAllView && !isInAllAboutView) ||
     (isInAuthorView && !isInAboutView);
   const logoSrc = isInSubplebbitView ? suggested?.avatarUrl : isInProfileView ? imageUrl : 'assets/logo/seedit.png';
   const logoIsAvatar = (isInSubplebbitView && suggested?.avatarUrl) || (isInProfileView && imageUrl);
@@ -385,7 +389,7 @@ const Header = () => {
         <div className={`${styles.tabs} ${hasFewTabs ? styles.fewTabs : ''}`}>
           <ul className={styles.tabMenu}>
             <HeaderTabs />
-            {(isInSubplebbitView || isInSubplebbitSubmitView || isInPostView) && <AboutButton />}
+            {(isInHomeView || isInAllView || isInAboutView || isInSubplebbitView || isInSubplebbitSubmitView || isInPostView) && <AboutButton />}
           </ul>
         </div>
       )}
