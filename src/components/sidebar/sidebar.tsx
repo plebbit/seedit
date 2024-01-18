@@ -224,9 +224,20 @@ const Sidebar = ({ address, cid, createdAt, description, downvoteCount = 0, role
             </a>
           </li>
         </ul>
+        <div className={styles.desktopAd}>
+          <a className={styles.desktopAdMascot} href='https://github.com/plebbit/seedit/releases/latest' target='_blank' rel='noopener noreferrer'>
+            <img src='icon.png' alt='seedit mascot' />
+          </a>
+          <span className={styles.desktopAdSubtitle}>
+            <br />
+            ...each community's data needs to be seeded!
+            <br />
+            ...seed it automatically with the desktop app.
+          </span>
+        </div>
         <div className={`${styles.version} ${commitRef ? styles.unstable : ''}`}>
           <a href='https://github.com/plebbit/seedit/releases/latest' target='_blank' rel='noopener noreferrer'>
-            seedit {commitRef ? 'development build ' + commitRef : window.electron && window.electron.isElectron ? 'desktop' : 'web'} v{version} - GPL 2.0
+            seedit {commitRef ? 'dev build (unstable) ' + commitRef : window.electron && window.electron.isElectron ? 'desktop' : 'web'} v{version} - GPL 2.0
           </a>
         </div>
       </div>

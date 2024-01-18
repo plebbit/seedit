@@ -258,7 +258,7 @@ a {
 }
 
 .footer {
-  font-family: arial, verdana, helvetica, sans-serif;
+  font: normal x-small verdana, arial, helvetica, sans-serif;
 }
 
 .footer ul {
@@ -286,11 +286,28 @@ a {
 }
 
 .version {
- margin: 14px 0 24px 0;
+ margin: 7px 0 24px 0;
  text-align: center;
  font-size: 10px;
 }
 
 .unstable a {
   color: var(--yellow);
+}
+
+.desktopAd {
+  margin-top: 10px;
+  padding: 5px 0 15px 0;
+}
+
+.desktopAdSubtitle {
+  font: normal x-small verdana, arial, helvetica, sans-serif;
+  font-size: 10px;
+  color: var(--gray-strong);
+}
+
+.desktopAdMascot img {
+  height: 40px;
+  margin: 5px 10px 0 0;
+  float: left;
 }
