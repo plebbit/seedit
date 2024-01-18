@@ -119,7 +119,8 @@ const Sidebar = ({ address, cid, createdAt, description, downvoteCount = 0, role
 
   const subplebbitCreator = findSubplebbitCreator(roles);
   const creatorAddress = subplebbitCreator === 'anonymous' ? 'anonymous' : `${getShortAddress(subplebbitCreator)}`;
-  const submitRoute = isInHomeView || isInAllView ? '/submit' : isInPendingView ? `/p/${pendingPost?.subplebbitAddress}/submit` : `/p/${address}/submit`;
+  const submitRoute =
+    isInHomeView || isInHomeAboutView || isInAllView ? '/submit' : isInPendingView ? `/p/${pendingPost?.subplebbitAddress}/submit` : `/p/${address}/submit`;
 
   const { blocked, unblock, block } = useBlock({ address });
 
