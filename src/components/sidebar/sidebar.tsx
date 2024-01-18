@@ -204,7 +204,7 @@ const Sidebar = ({ address, cid, createdAt, description, downvoteCount = 0, role
       {roles && <ModeratorsList roles={roles} />}
       <div className={styles.footer}>
         <ul>
-          <li className={styles.footerTitle}>about</li>
+          <li className={styles.footerTitle}>{t('about')}</li>
           <li>
             <a href='https://plebbit.com' target='_blank' rel='noopener noreferrer'>
               plebbit
