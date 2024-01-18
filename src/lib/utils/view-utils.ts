@@ -57,7 +57,7 @@ export const isProfileDownvotedView = (pathname: string): boolean => {
 };
 
 export const isHomeView = (pathname: string, params: ParamsType): boolean => {
-  return pathname === '/' || sortTypes.includes(pathname) || (timeFilterNames.includes(params.timeFilterName as TimeFilterKey) && !pathname.startsWith('/p/all'));
+  return pathname === '/' || sortTypes.includes(pathname) || (timeFilterNames.includes(params.timeFilterName as TimeFilterKey) && !pathname.startsWith('/p/'));
 };
 
 export const isHomeAboutView = (pathname: string): boolean => {
