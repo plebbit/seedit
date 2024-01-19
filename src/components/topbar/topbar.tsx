@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { useAccount } from '@plebbit/plebbit-react-hooks';
 import { getShortAddress } from '@plebbit/plebbit-js';
 import styles from './topbar.module.css';
-import { SubplebbitWithDisplay, useDefaultAndSubscriptionsSubplebbits } from '../../lib/utils/addresses-utils';
+import { useDefaultSubplebbitAddresses } from '../../lib/utils/addresses-utils';
 import useTimeFilter from '../../hooks/use-time-filter';
 import { isAllView, isHomeView, isSubplebbitView } from '../../lib/utils/view-utils';
 
@@ -12,17 +12,18 @@ const sortTypes = ['hot', 'new', 'active', 'controversialAll', 'topAll'];
 
 const TopBar = () => {
   const account = useAccount();
-  const subplebbitAddresses = useDefaultAndSubscriptionsSubplebbits();
+  const subplebbitAddresses = useDefaultSubplebbitAddresses();
   const { t } = useTranslation();
   const location = useLocation();
   const params = useParams();
   const { timeFilterNames } = useTimeFilter();
-  const selectedTimeFilterName = params.timeFilterName || timeFilterNames[5];
   const subscriptions = account?.subscriptions;
-  const isAll = isAllView(location.pathname);
-  const isHome = isHomeView(location.pathname, params);
-  const isSubplebbit = isSubplebbitView(location.pathname, params);
-  const homeButtonClass = isHome ? styles.selected : styles.choice;
+  const isinAllView = isAllView(location.pathname);
+  const isInHomeView = isHomeView(location.pathname, params);
+  const isInSubplebbitView = isSubplebbitView(location.pathname, params);
+  const homeButtonClass = isInHomeView ? styles.selected : styles.choice;
+
+  const selectedTimeFilterName = params.timeFilterName || (isInHomeView ? timeFilterNames[2] : timeFilterNames[5]);
 
   const [isSubsDropdownOpen, setIsSubsDropdownOpen] = useState(false);
   const toggleSubsDropdown = () => setIsSubsDropdownOpen(!isSubsDropdownOpen);
@@ -46,9 +47,9 @@ const TopBar = () => {
   const [selectedSortType, setSelectedSortType] = useState(params.sortType || '/hot');
 
   const getTimeFilterLink = (choice: string) => {
-    return isSubplebbit
+    return isInSubplebbitView
       ? `/p/${params.subplebbitAddress}/${selectedSortType}/${choice}`
-      : isAll
+      : isinAllView
       ? `p/all/${selectedSortType}/${choice}`
       : `/${selectedSortType}/${choice}`;
   };
@@ -125,7 +126,7 @@ const TopBar = () => {
           <span className={styles.selectedTitle}>{getSelectedSortLabel()}</span>
           <div className={`${styles.dropChoices} ${styles.sortsDropChoices} ${sortsDropdownClass}`} ref={sortsDropdownChoicesRef}>
             {sortTypes.map((choice, index) => (
-              <Link to={isSubplebbit ? `/p/${params.subplebbitAddress}/${choice}` : choice} key={index} className={styles.dropdownChoice}>
+              <Link to={isInSubplebbitView ? `/p/${params.subplebbitAddress}/${choice}` : choice} key={index} className={styles.dropdownChoice}>
                 {sortLabels[index]}
               </Link>
             ))}
@@ -150,16 +151,16 @@ const TopBar = () => {
             </li>
             <li>
               <span className={styles.separator}>-</span>
-              <Link to='/p/all' className={isAll ? styles.selected : styles.choice}>
+              <Link to='/p/all' className={isinAllView ? styles.selected : styles.choice}>
                 {t('all')}
               </Link>
             </li>
             <span className={styles.separator}> | </span>
-            {subplebbitAddresses?.map((subplebbit: SubplebbitWithDisplay, index) => (
+            {subplebbitAddresses?.map((address, index) => (
               <li key={index}>
                 {index !== 0 && <span className={styles.separator}>-</span>}
-                <Link to={`/p/${subplebbit.address}`} className={params.subplebbitAddress === subplebbit.address ? styles.selected : styles.choice}>
-                  {subplebbit.displayAddress}
+                <Link to={`/p/${address}`} className={params.subplebbitAddress === address ? styles.selected : styles.choice}>
+                  {address}
                 </Link>
               </li>
             ))}

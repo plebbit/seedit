@@ -27,7 +27,7 @@ const Home = () => {
 
   const params = useParams<{ sortType?: string; timeFilterName?: string }>();
   const sortType = params?.sortType || 'hot';
-  const timeFilterName = (params.timeFilterName as TimeFilterKey) || 'all';
+  const timeFilterName = (params.timeFilterName as TimeFilterKey) || '1w';
   const { timeFilter } = useTimeFilter(sortType, timeFilterName);
 
   const { feed, hasMore, loadMore } = useFeed({

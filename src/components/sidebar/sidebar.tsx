@@ -5,7 +5,7 @@ import { useAccount, useBlock, Role, useSubplebbitStats, useAccountComment } fro
 import styles from './sidebar.module.css';
 import { getFormattedDate, getFormattedTimeDuration, getFormattedTimeAgo } from '../../lib/utils/time-utils';
 import { findSubplebbitCreator } from '../../lib/utils/user-utils';
-import { isAboutView, isAllView, isHomeView, isPendingView, isPostView, isSubplebbitSettingsView, isSubplebbitsView } from '../../lib/utils/view-utils';
+import { isAboutView, isAllView, isHomeAboutView, isHomeView, isPendingView, isPostView, isSubplebbitSettingsView, isSubplebbitsView } from '../../lib/utils/view-utils';
 import Markdown from '../markdown';
 import SearchBar from '../search-bar';
 import SubscribeButton from '../subscribe-button';
@@ -109,6 +109,7 @@ const Sidebar = ({ address, cid, createdAt, description, downvoteCount = 0, role
   const params = useParams();
   const isInAboutView = isAboutView(location.pathname);
   const isInAllView = isAllView(location.pathname);
+  const isInHomeAboutView = isHomeAboutView(location.pathname);
   const isInHomeView = isHomeView(location.pathname, params);
   const isInPendingView = isPendingView(location.pathname, params);
   const isInPostView = isPostView(location.pathname, params);
@@ -118,7 +119,8 @@ const Sidebar = ({ address, cid, createdAt, description, downvoteCount = 0, role
 
   const subplebbitCreator = findSubplebbitCreator(roles);
   const creatorAddress = subplebbitCreator === 'anonymous' ? 'anonymous' : `${getShortAddress(subplebbitCreator)}`;
-  const submitRoute = isInHomeView || isInAllView ? '/submit' : isInPendingView ? `/p/${pendingPost?.subplebbitAddress}/submit` : `/p/${address}/submit`;
+  const submitRoute =
+    isInHomeView || isInHomeAboutView || isInAllView ? '/submit' : isInPendingView ? `/p/${pendingPost?.subplebbitAddress}/submit` : `/p/${address}/submit`;
 
   const { blocked, unblock, block } = useBlock({ address });
 
@@ -152,13 +154,7 @@ const Sidebar = ({ address, cid, createdAt, description, downvoteCount = 0, role
           <div className={styles.nub} />
         </div>
       </Link>
-      <Link to='/communities/create' onClick={(e) => e.preventDefault()}>
-        <div className={styles.largeButton} onClick={alertCreateCommunity}>
-          {t('create_community')}
-          <div className={styles.nub} />
-        </div>
-      </Link>
-      {!isInHomeView && !isInAllView && !isInPendingView && !isInSubplebbitsView && (
+      {!isInHomeView && !isInHomeAboutView && !isInAllView && !isInPendingView && !isInSubplebbitsView && (
         <div className={styles.titleBox}>
           <Link className={styles.title} to={`/p/${address}`}>
             {address}
@@ -200,9 +196,26 @@ const Sidebar = ({ address, cid, createdAt, description, downvoteCount = 0, role
       )}
       {isModerator && <ModerationTools address={address} />}
       {roles && <ModeratorsList roles={roles} />}
+      <Link to='/communities/create' onClick={(e) => e.preventDefault()}>
+        <div className={styles.largeButton} onClick={alertCreateCommunity}>
+          {t('create_community')}
+          <div className={styles.nub} />
+        </div>
+      </Link>
+      <div className={styles.desktopAd}>
+        <a className={styles.desktopAdLogo} href='https://github.com/plebbit/seedit/releases/latest' target='_blank' rel='noopener noreferrer'>
+          <img src='icon.png' alt='seedit mascot' />
+        </a>
+        <span className={styles.desktopAdSubtitle}>
+          <br />
+          ...each community needs to be seeded.
+          <br />
+          ...the desktop app seeds automatically!
+        </span>
+      </div>
       <div className={styles.footer}>
+        <div className={styles.footerTitle}>{t('about')}</div>
         <ul>
-          <li className={styles.footerTitle}>about</li>
           <li>
             <a href='https://plebbit.com' target='_blank' rel='noopener noreferrer'>
               plebbit
@@ -224,9 +237,32 @@ const Sidebar = ({ address, cid, createdAt, description, downvoteCount = 0, role
             </a>
           </li>
         </ul>
+        <div className={`${styles.footerTitle} ${styles.footerSecondTitle}`}>apps & tools</div>
+        <ul>
+          <li>
+            <a href={`https://github.com/plebbit/seedit/releases/download/v${version}/seedit-${version}.AppImage`} target='_blank' rel='noopener noreferrer'>
+              download for linux
+            </a>
+          </li>
+          <li>
+            <a href={`https://github.com/plebbit/seedit/releases/download/v${version}/seedit.Portable.${version}.exe`} target='_blank' rel='noopener noreferrer'>
+              download for windows
+            </a>
+          </li>
+          <li>
+            <a href={`https://github.com/plebbit/seedit/releases/download/v${version}/seedit-${version}.dmg`} target='_blank' rel='noopener noreferrer'>
+              download for macOS
+            </a>
+          </li>
+          <li>
+            <a href={`https://github.com/plebbit/seedit/releases/latest`} target='_blank' rel='noopener noreferrer'>
+              download for android
+            </a>
+          </li>
+        </ul>
         <div className={`${styles.version} ${commitRef ? styles.unstable : ''}`}>
-          <a href='https://github.com/plebbit/seedit/releases/latest' target='_blank' rel='noopener noreferrer'>
-            seedit {commitRef ? 'development build ' + commitRef : window.electron && window.electron.isElectron ? 'desktop' : 'web'} v{version} - GPL 2.0
+          <a href={`https://github.com/plebbit/seedit/releases/tag/v${version}`} target='_blank' rel='noopener noreferrer'>
+            seedit {commitRef ? 'dev build (unstable) ' + commitRef : window.electron && window.electron.isElectron ? 'desktop' : 'web'} v{version} - GPL 2.0
           </a>
         </div>
       </div>

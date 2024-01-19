@@ -104,6 +104,21 @@
   margin-top: 5px;
 }
 
+.challengeOption {
+  font-size: 15px;
+  margin-top: 10px !important;
+}
+
+.challengeDescription {
+  margin: 5px 0 15px 0;
+  font-size: 15px;
+}
+
+.challengeOptionDescription {
+  margin: 5px 0;
+  font-size: 12px;
+}
+
 .moderator {
   font-size: 15px;
   color: var(--text);

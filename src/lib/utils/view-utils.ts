@@ -21,6 +21,8 @@ export const getAboutLink = (pathname: string, params: ParamsType): string => {
     return '/profile/about';
   } else if (pathname.startsWith('/u/')) {
     return `/u/${params.authorAddress}/c/${params.commentCid}/about`;
+  } else if (pathname.startsWith('/p/all')) {
+    return '/p/all/about';
   } else {
     return '/about';
   }
@@ -32,6 +34,10 @@ export const isAboutView = (pathname: string): boolean => {
 
 export const isAllView = (pathname: string): boolean => {
   return pathname.startsWith('/p/all');
+};
+
+export const isAllAboutView = (pathname: string): boolean => {
+  return pathname === '/p/all/about';
 };
 
 export const isAuthorView = (pathname: string): boolean => {
@@ -51,7 +57,11 @@ export const isProfileDownvotedView = (pathname: string): boolean => {
 };
 
 export const isHomeView = (pathname: string, params: ParamsType): boolean => {
-  return pathname === '/' || sortTypes.includes(pathname) || (timeFilterNames.includes(params.timeFilterName as TimeFilterKey) && !pathname.startsWith('/p/all'));
+  return pathname === '/' || sortTypes.includes(pathname) || (timeFilterNames.includes(params.timeFilterName as TimeFilterKey) && !pathname.startsWith('/p/'));
+};
+
+export const isHomeAboutView = (pathname: string): boolean => {
+  return pathname === '/about';
 };
 
 export const isInboxView = (pathname: string): boolean => {
