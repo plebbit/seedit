@@ -262,7 +262,10 @@ a {
 }
 
 .footer ul {
-  text-align: left;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
   list-style: none;
 }
 
@@ -286,7 +289,7 @@ a {
 }
 
 .version {
- margin: 7px 0 24px 0;
+ margin: 20px 0 24px 0;
  text-align: center;
  font-size: 10px;
 }
@@ -296,13 +299,13 @@ a {
 }
 
 .desktopAd {
-  margin-top: 10px;
-  padding: 5px 0 15px 0;
+  padding: 0px 0 15px 0;
+  margin-top: -5px;
 }
 
 .desktopAdSubtitle {
   font: normal x-small verdana, arial, helvetica, sans-serif;
-  font-size: 10px;
+  font-size: 11px;
   color: var(--gray-strong);
 }
 
@@ -310,4 +313,8 @@ a {
   height: 40px;
   margin: 5px 10px 0 0;
   float: left;
+}
+
+.footerSecondTitle {
+  margin-top: 10px;
 }

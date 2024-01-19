@@ -154,12 +154,6 @@ const Sidebar = ({ address, cid, createdAt, description, downvoteCount = 0, role
           <div className={styles.nub} />
         </div>
       </Link>
-      <Link to='/communities/create' onClick={(e) => e.preventDefault()}>
-        <div className={styles.largeButton} onClick={alertCreateCommunity}>
-          {t('create_community')}
-          <div className={styles.nub} />
-        </div>
-      </Link>
       {!isInHomeView && !isInHomeAboutView && !isInAllView && !isInPendingView && !isInSubplebbitsView && (
         <div className={styles.titleBox}>
           <Link className={styles.title} to={`/p/${address}`}>
@@ -202,9 +196,26 @@ const Sidebar = ({ address, cid, createdAt, description, downvoteCount = 0, role
       )}
       {isModerator && <ModerationTools address={address} />}
       {roles && <ModeratorsList roles={roles} />}
+      <Link to='/communities/create' onClick={(e) => e.preventDefault()}>
+        <div className={styles.largeButton} onClick={alertCreateCommunity}>
+          {t('create_community')}
+          <div className={styles.nub} />
+        </div>
+      </Link>
+      <div className={styles.desktopAd}>
+        <a className={styles.desktopAdLogo} href='https://github.com/plebbit/seedit/releases/latest' target='_blank' rel='noopener noreferrer'>
+          <img src='icon.png' alt='seedit mascot' />
+        </a>
+        <span className={styles.desktopAdSubtitle}>
+          <br />
+          ...each community needs to be seeded.
+          <br />
+          ...the desktop app seeds automatically!
+        </span>
+      </div>
       <div className={styles.footer}>
+        <div className={styles.footerTitle}>{t('about')}</div>
         <ul>
-          <li className={styles.footerTitle}>{t('about')}</li>
           <li>
             <a href='https://plebbit.com' target='_blank' rel='noopener noreferrer'>
               plebbit
@@ -226,17 +237,29 @@ const Sidebar = ({ address, cid, createdAt, description, downvoteCount = 0, role
             </a>
           </li>
         </ul>
-        <div className={styles.desktopAd}>
-          <a className={styles.desktopAdLogo} href='https://github.com/plebbit/seedit/releases/latest' target='_blank' rel='noopener noreferrer'>
-            <img src='icon.png' alt='seedit mascot' />
-          </a>
-          <span className={styles.desktopAdSubtitle}>
-            <br />
-            ...each community needs to be seeded.
-            <br />
-            ...the desktop app seeds automatically!
-          </span>
-        </div>
+        <div className={`${styles.footerTitle} ${styles.footerSecondTitle}`}>apps & tools</div>
+        <ul>
+          <li>
+            <a href={`https://github.com/plebbit/seedit/releases/download/v${version}/seedit-${version}.AppImage`} target='_blank' rel='noopener noreferrer'>
+              download for linux
+            </a>
+          </li>
+          <li>
+            <a href={`https://github.com/plebbit/seedit/releases/download/v${version}/seedit.Portable.${version}.exe`} target='_blank' rel='noopener noreferrer'>
+              download for windows
+            </a>
+          </li>
+          <li>
+            <a href={`https://github.com/plebbit/seedit/releases/download/v${version}/seedit-${version}.dmg`} target='_blank' rel='noopener noreferrer'>
+              download for macOS
+            </a>
+          </li>
+          <li>
+            <a href={`https://github.com/plebbit/seedit/releases/latest`} target='_blank' rel='noopener noreferrer'>
+              download for android
+            </a>
+          </li>
+        </ul>
         <div className={`${styles.version} ${commitRef ? styles.unstable : ''}`}>
           <a href={`https://github.com/plebbit/seedit/releases/tag/v${version}`} target='_blank' rel='noopener noreferrer'>
             seedit {commitRef ? 'dev build (unstable) ' + commitRef : window.electron && window.electron.isElectron ? 'desktop' : 'web'} v{version} - GPL 2.0
