@@ -146,67 +146,128 @@ const Moderators = ({ roles }: { roles: RolesCollection | undefined }) => {
   );
 };
 
+const challenges = ['text-math', 'captcha-canvas-v3', 'fail', 'blacklist', 'question', 'evm-contract-call'];
+
 const Challenge = ({ challenge, selected, setSelected }: { challenge: string; selected: string; setSelected: (challenge: string) => void }) => {
   const { t } = useTranslation();
-  const [selectedChallenge, setSelectedChallenge] = useState('captcha');
+  const [selectedChallenge, setSelectedChallenge] = useState('none');
 
   return (
     <div className={styles.box}>
       <div className={styles.boxTitle}>{t('challenge')}</div>
       <div className={styles.boxSubtitle}>choose a challenge to prevent spam</div>
       <div className={`${styles.boxInput} ${styles.captchaSelect}`}>
-        <select defaultValue='captcha' onChange={(e) => setSelectedChallenge(e.target.value)}>
-          <option value='captcha'>captcha</option>
-          <option value='karma'>karma</option>
-          <option value='token'>token</option>
-          <option value='password'>password</option>
-          <option value='custom'>custom</option>
+        <select defaultValue='none' onChange={(e) => setSelectedChallenge(e.target.value)}>
+          {challenges.map((challenge) => (
+            <option key={challenge} value={challenge}>
+              {challenge}
+            </option>
+          ))}
           <option value='none'>none</option>
         </select>
-        {selectedChallenge === 'captcha' && (
+        {selectedChallenge === 'text-math' && (
           <>
-            <br />
-            <label>
-              <input type='checkbox' /> case sensitive
-            </label>
+            <div className={styles.challengeDescription}>Ask a plain text math question, insecure, use ONLY for testing.</div>
+            <div className={styles.challengeOption}>
+              Difficulty
+              <div className={styles.challengeOptionDescription}>The math difficulty of the challenge between 1-3.</div>
+              <input type='number' defaultValue={1} placeholder='1' />
+            </div>
           </>
         )}
-        {selectedChallenge === 'karma' && (
+        {selectedChallenge === 'captcha-canvas-v3' && (
           <>
-            <br />
-            <label>
-              Minimum karma: <input type='number' />
-            </label>
-          </>
-        )}
-        {selectedChallenge === 'token' && (
-          <>
-            <br />
-            <label>
-              Contract address (ERC20): <br />
-              <input type='text' />
-            </label>
-            <br />
-            <label>
-              Minumum balance: <br />
+            <div className={styles.challengeDescription}>make custom image captcha</div>
+            <div className={styles.challengeOption}>
+              Characters
+              <div className={styles.challengeOptionDescription}>Amount of characters of the captcha.</div>
               <input type='number' />
-            </label>
+            </div>
+            <div className={styles.challengeOption}>
+              Width
+              <div className={styles.challengeOptionDescription}>Height of the captcha.</div>
+              <input type='number' />
+            </div>
+            <div className={styles.challengeOption}>
+              Height
+              <div className={styles.challengeOptionDescription}>Width of the captcha.</div>
+              <input type='number' />
+            </div>
+            <div className={styles.challengeOption}>
+              Color
+              <div className={styles.challengeOptionDescription}>Color of the captcha.</div>
+              <input type='color' />
+            </div>
           </>
         )}
-        {selectedChallenge === 'password' && (
+        {selectedChallenge === 'fail' && (
           <>
-            <br />
-            <label>
-              Password (case sensitive): <input type='password' />
-            </label>
+            <div className={styles.challengeDescription}>A challenge that automatically fails with a custom error message.</div>
+            <div className={styles.challengeOption}>
+              Error
+              <div className={styles.challengeOptionDescription}>The error to display to the author.</div>
+              <input type='text' defaultValue="You're not allowed to publish." placeholder="You're not allowed to publish." />
+            </div>
           </>
         )}
-        {selectedChallenge === 'custom' && (
+        {selectedChallenge === 'blacklist' && (
           <>
-            <br />
-            <label>
-              Paste code: <textarea />
-            </label>
+            <div className={styles.challengeDescription}>Blacklist author addresses.</div>
+            <div className={styles.challengeOption}>
+              Blacklist
+              <div className={styles.challengeOptionDescription}>Comma separated list of author addresses to be blacklisted.</div>
+              <input type='text' placeholder='address1.eth,address2.eth,address3.eth' />
+            </div>
+            <div className={styles.challengeOption}>
+              Error
+              <div className={styles.challengeOptionDescription}>The error to display to the author.</div>
+              <input type='text' defaultValue="You're blacklisted." placeholder="You're blacklisted." />
+            </div>
+          </>
+        )}
+        {selectedChallenge === 'question' && (
+          <>
+            <div className={styles.challengeDescription}>Ask a question, like 'What is the password?'</div>
+            <div className={styles.challengeOption}>
+              Question
+              <div className={styles.challengeOptionDescription}>The question to answer.</div>
+              <input type='text' />
+            </div>
+            <div className={styles.challengeOption}>
+              Answer
+              <div className={styles.challengeOptionDescription}>The answer to the question.</div>
+              <input type='text' />
+            </div>
+          </>
+        )}
+        {selectedChallenge === 'evm-contract-call' && (
+          <>
+            <div className={styles.challengeDescription}>The response from an EVM contract call passes a condition, e.g. a token balance challenge.</div>
+            <div className={styles.challengeOption}>
+              chainTicker
+              <div className={styles.challengeOptionDescription}>The chain ticker</div>
+              <input type='text' placeholder='eth' defaultValue='eth' />
+            </div>
+            <div className={styles.challengeOption}>
+              Address
+              <div className={styles.challengeOptionDescription}>The contract address.</div>
+              <input type='text' placeholder='0x...' />
+            </div>
+            <div className={styles.challengeOption}>
+              ABI
+              <div className={styles.challengeOptionDescription}>The ABI of the contract method.</div>
+              <textarea placeholder='{"constant":true,"inputs":[{"internalType":"address","name":"account...' autoCorrect='off' autoComplete='off' spellCheck='false' />
+            </div>
+            <div className={styles.challengeOption}>
+              Condition
+              <div className={styles.challengeOptionDescription}>The condition the contract call response must pass.</div>
+              <textarea placeholder='>1000' autoCorrect='off' autoComplete='off' spellCheck='false' />
+            </div>
+            <div className={styles.challengeOption}>
+              Error
+              <div className={styles.challengeOptionDescription}>The error to display to the author.</div>
+              <input type='text' defaultValue="Contract call response doesn't pass condition." placeholder="Contract call response doesn't pass condition." />
+            </div>
           </>
         )}
         {selectedChallenge === 'none' && <span className={styles.noChallengeWarning}>Warning: vulnerable to spam attacks.</span>}
