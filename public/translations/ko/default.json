@@ -189,5 +189,6 @@
   "submit_to": "<1>{{link}}</1>(으)로 제출하기",
   "edit_subscriptions": "구독 편집",
   "last_account_notice": "마지막 계정을 삭제할 수 없습니다. 먼저 새로운 계정을 만드십시오.",
-  "delete_confirm": "{{value}}를 삭제하시겠습니까?"
+  "delete_confirm": "{{value}}를 삭제하시겠습니까?",
+  "saving": "저장 중"
 }

@@ -189,5 +189,6 @@
   "submit_to": "Küldés ide: <1>{{link}}</1>",
   "edit_subscriptions": "Előfizetések szerkesztése",
   "last_account_notice": "Nem törölheti az utolsó fiókját, először hozzon létre egy újat.",
-  "delete_confirm": "Biztosan törölni szeretné {{value}}?"
+  "delete_confirm": "Biztosan törölni szeretné {{value}}?",
+  "saving": "Mentés"
 }

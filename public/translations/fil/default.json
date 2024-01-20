@@ -189,5 +189,6 @@
   "submit_to": "Isumite sa <1>{{link}}</1>",
   "edit_subscriptions": "I-edit ang mga Subskripsyon",
   "last_account_notice": "Hindi mo maaaring burahin ang iyong huling account, mangyaring gumawa muna ng bago.",
-  "delete_confirm": "Sigurado ka bang nais mong burahin ang {{value}}?"
+  "delete_confirm": "Sigurado ka bang nais mong burahin ang {{value}}?",
+  "saving": "Nag-i-save"
 }

@@ -189,5 +189,6 @@
   "submit_to": "Enviar para <1>{{link}}</1>",
   "edit_subscriptions": "Editar assinaturas",
   "last_account_notice": "Você não pode excluir sua última conta, por favor crie uma nova primeiro.",
-  "delete_confirm": "Tem certeza de que deseja excluir {{value}}?"
+  "delete_confirm": "Tem certeza de que deseja excluir {{value}}?",
+  "saving": "Salvando"
 }
