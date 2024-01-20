@@ -218,58 +218,52 @@ const Sidebar = ({ address, cid, createdAt, description, downvoteCount = 0, role
           <div className={styles.nub} />
         </div>
       </Link>
-      <div className={styles.desktopAd}>
-        <a className={styles.desktopAdLogo} href='https://github.com/plebbit/seedit/releases/latest' target='_blank' rel='noopener noreferrer'>
+      <div className={styles.footer}>
+        <a className={styles.footerLogo} href='https://github.com/plebbit/seedit/releases/latest' target='_blank' rel='noopener noreferrer'>
           <img src='icon.png' alt='seedit mascot' />
         </a>
-        <span className={styles.desktopAdSubtitle}>
-          <br />
-          ...for your DAO.
-          <br />
-          ...because you got banned from reddit.
-        </span>
-      </div>
-      <div className={styles.footer}>
-        <ul>
-          <li>
-            <a href='https://plebbit.com' target='_blank' rel='noopener noreferrer'>
-              about
-            </a>
-            <span className={styles.footerSeparator}>|</span>
-          </li>
-          <li>
-            <a href='https://github.com/plebbit/whitepaper/discussions/2' target='_blank' rel='noopener noreferrer'>
-              whitepaper
-            </a>
-            <span className={styles.footerSeparator}>|</span>
-          </li>
-          <li>
-            <a href='https://github.com/plebbit/seedit' target='_blank' rel='noopener noreferrer'>
-              github
-            </a>
-            <span className={styles.footerSeparator}>|</span>
-          </li>
-          <li>
-            <a href='https://t.me/plebbit' target='_blank' rel='noopener noreferrer'>
-              telegram
-            </a>
-          </li>
-        </ul>
-        <ul>
-          <li>
-            <a href={`https://github.com/plebbit/seedit/releases/tag/v${version}`} target='_blank' rel='noopener noreferrer'>
-              v{version}
-            </a>
-          </li>
-          {downloadAppLink && (
+        <div className={styles.footerLinks}>
+          <ul>
             <li>
+              <a href='https://plebbit.com' target='_blank' rel='noopener noreferrer'>
+                about
+              </a>
               <span className={styles.footerSeparator}>|</span>
-              <a href={downloadAppLink} target='_blank' rel='noopener noreferrer'>
-                download app
+            </li>
+            <li>
+              <a href='https://github.com/plebbit/whitepaper/discussions/2' target='_blank' rel='noopener noreferrer'>
+                whitepaper
+              </a>
+              <span className={styles.footerSeparator}>|</span>
+            </li>
+            <li>
+              <a href='https://github.com/plebbit/seedit' target='_blank' rel='noopener noreferrer'>
+                github
+              </a>
+              <span className={styles.footerSeparator}>|</span>
+            </li>
+            <li>
+              <a href='https://t.me/plebbit' target='_blank' rel='noopener noreferrer'>
+                telegram
               </a>
             </li>
-          )}
-        </ul>
+          </ul>
+          <ul>
+            <li>
+              <a href={`https://github.com/plebbit/seedit/releases/tag/v${version}`} target='_blank' rel='noopener noreferrer'>
+                v{version}
+              </a>
+            </li>
+            {downloadAppLink && (
+              <li>
+                <span className={styles.footerSeparator}>|</span>
+                <a href={downloadAppLink} target='_blank' rel='noopener noreferrer'>
+                  download app
+                </a>
+              </li>
+            )}
+          </ul>
+        </div>
       </div>
     </div>
   );

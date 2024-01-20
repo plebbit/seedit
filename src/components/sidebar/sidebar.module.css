@@ -263,9 +263,7 @@ a {
 
 .footer ul {
   margin-top: 5px;
-  margin-bottom: 10px;
   display: flex;
-  justify-content: center;
   list-style: none;
 }
 
@@ -285,23 +283,12 @@ a {
   text-decoration: underline;
 }
 
-.desktopAd {
-  padding: 0px 0 15px 0;
-  margin-top: -5px;
-}
-
-.desktopAdSubtitle {
-  font: normal x-small verdana, arial, helvetica, sans-serif;
-  font-size: 11px;
-  color: var(--gray-strong);
-}
-
-.desktopAdLogo img {
+.footerLogo img {
   height: 40px;
-  margin: 5px 10px 0 0;
+  margin: 0 10px 0 0;
   float: left;
 }
 
-.footerSecondTitle {
-  margin-top: 10px;
+.footerLinks {
+  padding-top: 1px;
 }
