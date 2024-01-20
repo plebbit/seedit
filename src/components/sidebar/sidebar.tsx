@@ -97,6 +97,23 @@ const ModerationTools = ({ address }: sidebarProps) => {
   );
 };
 
+const downloadAppLink = (() => {
+  const platform = navigator.platform;
+  if (platform === 'Linux' || platform === 'Linux x86_64' || platform === 'Linux i686' || platform === 'Linux aarch64') {
+    return `https://github.com/plebbit/seedit/releases/download/v${version}/seedit-${version}.AppImage`;
+  } else if (platform === 'Win32' || platform === 'Win64' || platform === 'Windows') {
+    return `https://github.com/plebbit/seedit/releases/download/v${version}/seedit.Portable.${version}.exe`;
+  } else if (platform === 'MacIntel' || platform === 'Macintosh') {
+    return `https://github.com/plebbit/seedit/releases/download/v${version}/seedit-${version}.dmg`;
+  } else if (platform === 'Android') {
+    return undefined;
+  } else if (platform === 'iPhone' || platform === 'iPad') {
+    return undefined;
+  } else {
+    return undefined;
+  }
+})();
+
 const Sidebar = ({ address, cid, createdAt, description, downvoteCount = 0, roles, rules, timestamp = 0, title, updatedAt, upvoteCount = 0 }: sidebarProps) => {
   const { t } = useTranslation();
   const { allActiveUserCount, hourActiveUserCount } = useSubplebbitStats({ subplebbitAddress: address });
@@ -208,63 +225,52 @@ const Sidebar = ({ address, cid, createdAt, description, downvoteCount = 0, role
         </a>
         <span className={styles.desktopAdSubtitle}>
           <br />
-          ...each community needs to be seeded.
+          ...for your DAO.
           <br />
-          ...the desktop app seeds automatically!
+          ...because you got banned from reddit.
         </span>
       </div>
       <div className={styles.footer}>
-        <div className={styles.footerTitle}>{t('about')}</div>
         <ul>
           <li>
             <a href='https://plebbit.com' target='_blank' rel='noopener noreferrer'>
-              plebbit
+              about
             </a>
+            <span className={styles.footerSeparator}>|</span>
+          </li>
+          <li>
+            <a href='https://github.com/plebbit/whitepaper/discussions/2' target='_blank' rel='noopener noreferrer'>
+              whitepaper
+            </a>
+            <span className={styles.footerSeparator}>|</span>
           </li>
           <li>
             <a href='https://github.com/plebbit/seedit' target='_blank' rel='noopener noreferrer'>
               github
             </a>
+            <span className={styles.footerSeparator}>|</span>
           </li>
           <li>
-            <a href='https://twitter.com/getplebbit' target='_blank' rel='noopener noreferrer'>
-              twitter
-            </a>
-          </li>
-          <li>
-            <a href='https://t.me/telegram' target='_blank' rel='noopener noreferrer'>
+            <a href='https://t.me/plebbit' target='_blank' rel='noopener noreferrer'>
               telegram
             </a>
           </li>
         </ul>
-        <div className={`${styles.footerTitle} ${styles.footerSecondTitle}`}>apps & tools</div>
         <ul>
           <li>
-            <a href={`https://github.com/plebbit/seedit/releases/download/v${version}/seedit-${version}.AppImage`} target='_blank' rel='noopener noreferrer'>
-              download for linux
+            <a href={`https://github.com/plebbit/seedit/releases/tag/v${version}`} target='_blank' rel='noopener noreferrer'>
+              v{version}
             </a>
           </li>
-          <li>
-            <a href={`https://github.com/plebbit/seedit/releases/download/v${version}/seedit.Portable.${version}.exe`} target='_blank' rel='noopener noreferrer'>
-              download for windows
-            </a>
-          </li>
-          <li>
-            <a href={`https://github.com/plebbit/seedit/releases/download/v${version}/seedit-${version}.dmg`} target='_blank' rel='noopener noreferrer'>
-              download for macOS
-            </a>
-          </li>
-          <li>
-            <a href={`https://github.com/plebbit/seedit/releases/latest`} target='_blank' rel='noopener noreferrer'>
-              download for android
-            </a>
-          </li>
+          {downloadAppLink && (
+            <li>
+              <span className={styles.footerSeparator}>|</span>
+              <a href={downloadAppLink} target='_blank' rel='noopener noreferrer'>
+                download app
+              </a>
+            </li>
+          )}
         </ul>
-        <div className={`${styles.version} ${commitRef ? styles.unstable : ''}`}>
-          <a href={`https://github.com/plebbit/seedit/releases/tag/v${version}`} target='_blank' rel='noopener noreferrer'>
-            seedit {commitRef ? 'dev build (unstable) ' + commitRef : window.electron && window.electron.isElectron ? 'desktop' : 'web'} v{version} - GPL 2.0
-          </a>
-        </div>
       </div>
     </div>
   );
