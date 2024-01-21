@@ -9,8 +9,7 @@
   --code-background: #fcfcfb;
   --code-border: #e6e6de;
   --red: red;
-  --gray-strong: dimgray;
-  --gray-footer: #777;
+  --gray-footer: dimgray;
   --gray-contrast: #888;
   --gray-overlay: #F7F7F7;
   --gray-overlay-border: #E9E9E9;
@@ -69,8 +68,7 @@
   --code-background: rgb(19, 19, 13);
   --code-border: rgb(52, 58, 60);
   --red: rgb(200, 0, 0);
-  --gray-strong: rgb(168, 160, 147);
-  --gray-footer: rgb(158, 149, 136);
+  --gray-footer: rgb(168, 160, 147);
   --gray-contrast: #c7c7c7;
   --gray-overlay: #1f1f1f;
   --gray-overlay-border: #3e3e3e;

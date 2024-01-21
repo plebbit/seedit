@@ -231,14 +231,8 @@ const Sidebar = ({ address, cid, createdAt, description, downvoteCount = 0, role
               <span className={styles.footerSeparator}>|</span>
             </li>
             <li>
-              <a href='https://github.com/plebbit/whitepaper/discussions/2' target='_blank' rel='noopener noreferrer'>
-                whitepaper
-              </a>
-              <span className={styles.footerSeparator}>|</span>
-            </li>
-            <li>
-              <a href='https://github.com/plebbit/seedit' target='_blank' rel='noopener noreferrer'>
-                github
+              <a href='https://twitter.com/getplebbit' target='_blank' rel='noopener noreferrer'>
+                twitter
               </a>
               <span className={styles.footerSeparator}>|</span>
             </li>
@@ -246,22 +240,34 @@ const Sidebar = ({ address, cid, createdAt, description, downvoteCount = 0, role
               <a href='https://t.me/plebbit' target='_blank' rel='noopener noreferrer'>
                 telegram
               </a>
+              <span className={styles.footerSeparator}>|</span>
+            </li>
+            <li>
+              <a href='https://discord.gg/E7ejphwzGW' target='_blank' rel='noopener noreferrer'>
+                discord
+              </a>
             </li>
           </ul>
           <ul>
+            <li>
+              <a href='https://github.com/plebbit/seedit' target='_blank' rel='noopener noreferrer'>
+                github
+              </a>
+              <span className={styles.footerSeparator}>|</span>
+            </li>
+            {downloadAppLink && (
+              <li>
+                <a href={downloadAppLink} target='_blank' rel='noopener noreferrer'>
+                  download app
+                </a>
+                <span className={styles.footerSeparator}>|</span>
+              </li>
+            )}
             <li>
               <a href={`https://github.com/plebbit/seedit/releases/tag/v${version}`} target='_blank' rel='noopener noreferrer'>
                 v{version}
               </a>
             </li>
-            {downloadAppLink && (
-              <li>
-                <span className={styles.footerSeparator}>|</span>
-                <a href={downloadAppLink} target='_blank' rel='noopener noreferrer'>
-                  download app
-                </a>
-              </li>
-            )}
           </ul>
         </div>
       </div>

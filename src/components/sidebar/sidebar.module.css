@@ -262,7 +262,7 @@ a {
 }
 
 .footer ul {
-  margin-top: 5px;
+  margin-top: 1px;
   display: flex;
   list-style: none;
 }
@@ -272,7 +272,7 @@ a {
 }
 
 .footer li a {
-  font-size: 10px;
+  font-size: 11px;
 }
 
 .footer a {
