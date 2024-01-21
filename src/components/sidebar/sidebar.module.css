@@ -262,6 +262,7 @@ a {
 }
 
 .footer ul {
+  margin-top: 2px;
   display: flex;
   list-style: none;
 }
@@ -289,5 +290,5 @@ a {
 }
 
 .footerLinks {
-  padding-top: 3px;
+  padding-top: 5px;
 }
