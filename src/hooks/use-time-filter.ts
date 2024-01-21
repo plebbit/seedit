@@ -21,28 +21,32 @@ const timeFilters: TimeFilters = {
 };
 
 // Last Visit Timestamp
-const lastVisitTimestampString = localStorage.getItem('plebonesLastVisitTimestamp');
-const lastVisitTimestamp = lastVisitTimestampString ? Number(lastVisitTimestampString) : Date.now();
+const lastVisitTimestampString = localStorage.getItem('seeditLastVisitTimestamp');
+let lastVisitTimeFilterName: TimeFilterKey;
+
+if (lastVisitTimestampString) {
+  const lastVisitTimestamp = Number(lastVisitTimestampString);
+  const secondsSinceLastVisit = (Date.now() - lastVisitTimestamp) / 1000;
+  const day = 24 * 60 * 60;
+
+  if (secondsSinceLastVisit > 30 * day) {
+    lastVisitTimeFilterName = '1m';
+  } else if (secondsSinceLastVisit > 7 * day) {
+    lastVisitTimeFilterName = '1w';
+  } else if (secondsSinceLastVisit > day) {
+    lastVisitTimeFilterName = '24h';
+  } else {
+    lastVisitTimeFilterName = '24h';
+  }
+} else {
+  // User has never visited before
+  lastVisitTimeFilterName = '1m';
+}
 
 // Update the last visited timestamp every n seconds
 setInterval(() => {
-  localStorage.setItem('plebonesLastVisitTimestamp', Date.now().toString());
+  localStorage.setItem('seeditLastVisitTimestamp', Date.now().toString());
 }, 60 * 1000);
-
-// Calculate the Last Visit Filter
-const secondsSinceLastVisit = (Date.now() - lastVisitTimestamp) / 1000;
-const day = 24 * 60 * 60;
-let lastVisitTimeFilterName: TimeFilterKey = '24h';
-
-if (secondsSinceLastVisit > 30 * day) {
-  lastVisitTimeFilterName = '1m';
-} else if (secondsSinceLastVisit > 7 * day) {
-  lastVisitTimeFilterName = '1w';
-} else if (secondsSinceLastVisit > day) {
-  lastVisitTimeFilterName = '24h';
-} else {
-  lastVisitTimeFilterName = '24h';
-}
 
 // useTimeFilter Function
 const useTimeFilter = (
