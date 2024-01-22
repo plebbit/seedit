@@ -203,5 +203,11 @@
   "approved_user": "Schválený uživatel",
   "subscriber": "Odběratel",
   "approved": "Schváleno",
-  "proposed": "Navrženo"
+  "proposed": "Navrženo",
+  "join_communities_notice": "Klikněte na tlačítka <1>{{join}}</1> nebo <2>{{leave}}</2> pro výběr komunit, které se zobrazí na úvodní stránce.",
+  "below_subscribed": "Níže jsou komunity, do kterých jste se přihlásili.",
+  "not_subscribed": "Zatím nejste přihlášeni ke žádné komunitě.",
+  "below_approved_user": "Níže jsou komunity, na kterých jste schváleným uživatelem.",
+  "below_moderator_access": "Níže jsou komunity, ke kterým máte moderátorský přístup.",
+  "not_moderator": "Nejste moderátorem žádné komunity."
 }

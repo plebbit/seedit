@@ -203,5 +203,11 @@
   "approved_user": "Usuario aprobado",
   "subscriber": "Suscriptor",
   "approved": "Aprobado",
-  "proposed": "Propuesto"
+  "proposed": "Propuesto",
+  "join_communities_notice": "Haz clic en los botones <1>{{join}}</1> o <2>{{leave}}</2> para elegir qué comunidades aparecen en la página de inicio.",
+  "below_subscribed": "A continuación se muestran las comunidades a las que te has suscrito.",
+  "not_subscribed": "Todavía no estás suscrito a ninguna comunidad.",
+  "below_approved_user": "A continuación se muestran las comunidades en las que eres un usuario aprobado.",
+  "below_moderator_access": "A continuación se muestran las comunidades a las que tienes acceso como moderador.",
+  "not_moderator": "No eres moderador en ninguna comunidad."
 }

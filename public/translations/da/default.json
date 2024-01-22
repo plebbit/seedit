@@ -203,5 +203,11 @@
   "approved_user": "Godkendt bruger",
   "subscriber": "Abonnent",
   "approved": "Godkendt",
-  "proposed": "Foreslået"
+  "proposed": "Foreslået",
+  "join_communities_notice": "Klik på knapperne <1>{{join}}</1> eller <2>{{leave}}</2> for at vælge, hvilke fællesskaber der skal vises på hjemmesiden.",
+  "below_subscribed": "Nedenfor er de fællesskaber, du har tilmeldt dig.",
+  "not_subscribed": "Du er ikke tilmeldt nogen fællesskab endnu.",
+  "below_approved_user": "Nedenfor er de fællesskaber, hvor du er en godkendt bruger.",
+  "below_moderator_access": "Nedenfor er de fællesskaber, du har moderatoradgang til.",
+  "not_moderator": "Du er ikke moderator på nogen fællesskab."
 }

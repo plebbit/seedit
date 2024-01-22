@@ -1,6 +1,6 @@
 import { useEffect, useMemo } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { useTranslation } from 'react-i18next';
+import { Trans, useTranslation } from 'react-i18next';
 import { Subplebbit as SubplebbitType, useAccount, useAccountSubplebbits, useSubplebbits, useSubplebbitStats } from '@plebbit/plebbit-react-hooks';
 import styles from './subplebbits.module.css';
 import Sidebar from '../../components/sidebar';
@@ -60,17 +60,13 @@ const Infobar = () => {
 
   const infobarText = useMemo(() => {
     if (isInSubplebbitsMineSubscriberView) {
-      return subscriptions.length === 0 ? 'you are not subscribed to any community.' : 'below are communities you have subscribed to.';
+      return subscriptions.length === 0 ? t('not_subscribed') : t('below_subscribed');
     } else if (isInSubplebbitsMineContributorView) {
-      return 'below are the communities that you are an approved user on.';
+      return t('below_approved_user');
     } else if (isInSubplebbitsMineModeratorView) {
-      return Object.keys(accountSubplebbits).length > 0 ? 'below are the communities that you have moderator access to.' : 'you are not a moderator on any community.';
+      return Object.keys(accountSubplebbits).length > 0 ? t('below_moderator_access') : t('not_moderator');
     } else {
-      return (
-        <>
-          click the <code>{t('join')}</code> or <code>{t('leave')}</code> buttons to choose which communities appear on the home feed.
-        </>
-      );
+      return <Trans i18nKey='join_communities_notice' values={{ join: t('join'), leave: t('leave') }} components={{ 1: <code />, 2: <code /> }} />;
     }
   }, [isInSubplebbitsMineSubscriberView, isInSubplebbitsMineContributorView, isInSubplebbitsMineModeratorView, t, subscriptions.length, accountSubplebbits]);
 

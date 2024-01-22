@@ -203,5 +203,11 @@
   "approved_user": "Aprobado na User",
   "subscriber": "Subscriber",
   "approved": "Aprobado",
-  "proposed": "Proposed"
+  "proposed": "Proposed",
+  "join_communities_notice": "I-click ang mga pindutan <1>{{join}}</1> o <2>{{leave}}</2> upang pumili kung aling mga komunidad ang magpapakita sa home feed.",
+  "below_subscribed": "Narito ang mga komunidad na iyong sinubaybayan.",
+  "not_subscribed": "Hindi ka pa nakasubok sa alinmang komunidad.",
+  "below_approved_user": "Narito ang mga komunidad na ikaw ay isang inaprubahang tagagamit.",
+  "below_moderator_access": "Narito ang mga komunidad na mayroon kang access bilang moderator.",
+  "not_moderator": "Hindi ka moderator sa anumang komunidad."
 }

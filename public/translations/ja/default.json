@@ -203,5 +203,11 @@
   "approved_user": "承認済みユーザー",
   "subscriber": "購読者",
   "approved": "承認済み",
-  "proposed": "提案済み"
+  "proposed": "提案済み",
+  "join_communities_notice": "ホームフィードに表示されるコミュニティを選択するには、<1>{{join}}</1> または <2>{{leave}}</2> ボタンをクリックしてください。",
+  "below_subscribed": "以下は、購読しているコミュニティです。",
+  "not_subscribed": "まだコミュニティに参加していません。",
+  "below_approved_user": "以下は、承認されたユーザーであるコミュニティです。",
+  "below_moderator_access": "以下は、あなたがモデレーターアクセス権を持つコミュニティです。",
+  "not_moderator": "あなたはどのコミュニティでもモデレーターではありません。"
 }

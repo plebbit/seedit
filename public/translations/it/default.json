@@ -203,5 +203,11 @@
   "approved_user": "Utente approvato",
   "subscriber": "Iscritto",
   "approved": "Approvate",
-  "proposed": "Proposte"
+  "proposed": "Proposte",
+  "join_communities_notice": "Clicca i bottoni <1>{{join}}</1> o <2>{{leave}}</2> per scegliere quali comunità debbano apparire nella schermata home.",
+  "below_subscribed": "Di seguito sono elencate le comunità a cui sei iscritto.",
+  "not_subscribed": "Non sei iscritto a nessuna comunità.",
+  "below_approved_user": "Di seguito sono elencate le comunità in cui sei un utente approvato.",
+  "below_moderator_access": "Di seguito sono elencate le comunità alle quali hai accesso come moderatore.",
+  "not_moderator": "Non sei un moderatore in nessuna comunità."
 }

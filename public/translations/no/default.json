@@ -203,5 +203,11 @@
   "approved_user": "Godkjent bruker",
   "subscriber": "Abonnent",
   "approved": "Godkjent",
-  "proposed": "Foreslått"
+  "proposed": "Foreslått",
+  "join_communities_notice": "Klikk på knappene <1>{{join}}</1> eller <2>{{leave}}</2> for å velge hvilke fellesskap som skal vises på hjemmesiden.",
+  "below_subscribed": "Nedenfor er fellesskapene du har abonnert på.",
+  "not_subscribed": "Du er ikke abonnert på noen fellesskap ennå.",
+  "below_approved_user": "Nedenfor er samfunnene du er en godkjent bruker på.",
+  "below_moderator_access": "Nedenfor er samfunnene du har moderator tilgang til.",
+  "not_moderator": "Du er ikke moderator i noen fellesskap."
 }

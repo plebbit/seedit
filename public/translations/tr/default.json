@@ -203,5 +203,11 @@
   "approved_user": "Onaylanmış Kullanıcı",
   "subscriber": "Abone",
   "approved": "Onaylandı",
-  "proposed": "Önerilen"
+  "proposed": "Önerilen",
+  "join_communities_notice": "Ana sayfada hangi toplulukların görüntüleneceğini seçmek için <1>{{join}}</1> veya <2>{{leave}}</2> düğmelerine tıklayın.",
+  "below_subscribed": "Aşağıda abone olduğunuz topluluklar bulunmaktadır.",
+  "not_subscribed": "Henüz hiçbir topluluğa abone değilsiniz.",
+  "below_approved_user": "Aşağıda onaylı bir kullanıcı olduğunuz topluluklar bulunmaktadır.",
+  "below_moderator_access": "Aşağıda moderatör erişimine sahip olduğunuz topluluklar bulunmaktadır.",
+  "not_moderator": "Hiçbir topluluğun moderatörü değilsiniz."
 }

@@ -203,5 +203,11 @@
   "approved_user": "Zatwierdzony użytkownik",
   "subscriber": "Subskrybent",
   "approved": "Zatwierdzone",
-  "proposed": "Zaproponowane"
+  "proposed": "Zaproponowane",
+  "join_communities_notice": "Kliknij przyciski <1>{{join}}</1> lub <2>{{leave}}</2>, aby wybrać, które społeczności mają się pojawić na stronie głównej.",
+  "below_subscribed": "Poniżej znajdują się społeczności, do których się zapisałeś.",
+  "not_subscribed": "Nie jesteś jeszcze subskrybentem żadnej społeczności.",
+  "below_approved_user": "Poniżej znajdują się społeczności, na których jesteś zaakceptowanym użytkownikiem.",
+  "below_moderator_access": "Poniżej znajdują się społeczności, do których masz dostęp jako moderator.",
+  "not_moderator": "Nie jesteś moderatorem w żadnej społeczności."
 }

@@ -203,5 +203,11 @@
   "approved_user": "승인된 사용자",
   "subscriber": "구독자",
   "approved": "승인됨",
-  "proposed": "제안됨"
+  "proposed": "제안됨",
+  "join_communities_notice": "홈 피드에 표시되는 커뮤니티를 선택하려면 <1>{{join}}</1> 또는 <2>{{leave}}</2> 버튼을 클릭하세요.",
+  "below_subscribed": "아래는 가입한 커뮤니티입니다.",
+  "not_subscribed": "아직 어떤 커뮤니티에도 가입하지 않았습니다.",
+  "below_approved_user": "아래에서 승인된 사용자인 커뮤니티를 확인할 수 있습니다.",
+  "below_moderator_access": "아래에서는 관리자로 액세스 할 수있는 커뮤니티가 나열되어 있습니다.",
+  "not_moderator": "어떤 커뮤니티에서도 모더레이터가 아닙니다."
 }
