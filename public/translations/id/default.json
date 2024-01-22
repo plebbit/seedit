@@ -196,5 +196,7 @@
   "remove_spoiler": "Hapus spoiler",
   "delete_post": "Hapus Kiriman",
   "undo_delete": "Batalkan Hapus",
-  "edit_content": "Edit Konten"
+  "edit_content": "Edit Konten",
+  "online": "Online",
+  "offline": "Offline"
 }

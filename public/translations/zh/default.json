@@ -196,5 +196,7 @@
   "remove_spoiler": "移除剧透",
   "delete_post": "删除帖子",
   "undo_delete": "撤销删除",
-  "edit_content": "编辑内容"
+  "edit_content": "编辑内容",
+  "online": "在线",
+  "offline": "离线"
 }

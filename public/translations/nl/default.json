@@ -196,5 +196,7 @@
   "remove_spoiler": "Spoiler verwijderen",
   "delete_post": "Bericht verwijderen",
   "undo_delete": "Ongedaan maken verwijderen",
-  "edit_content": "Inhoud bewerken"
+  "edit_content": "Inhoud bewerken",
+  "online": "Online",
+  "offline": "Offline"
 }

@@ -196,5 +196,7 @@
   "remove_spoiler": "स्पॉईलर काढा",
   "delete_post": "पोस्ट काढा",
   "undo_delete": "काढण्याची प्रक्रिया रद्द करा",
-  "edit_content": "सामग्री संपादित करा"
+  "edit_content": "सामग्री संपादित करा",
+  "online": "ऑनलाइन",
+  "offline": "ऑफलाइन"
 }

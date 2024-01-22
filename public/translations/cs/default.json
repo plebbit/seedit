@@ -196,5 +196,7 @@
   "remove_spoiler": "Odebrat spoiler",
   "delete_post": "Smazat příspěvek",
   "undo_delete": "Zrušit smazání",
-  "edit_content": "Upravit obsah"
+  "edit_content": "Upravit obsah",
+  "online": "Online",
+  "offline": "Offline"
 }

@@ -196,5 +196,7 @@
   "remove_spoiler": "إزالة حريف",
   "delete_post": "حذف المنشور",
   "undo_delete": "تراجع الحذف",
-  "edit_content": "تحرير المحتوى"
+  "edit_content": "تحرير المحتوى",
+  "online": "متصل",
+  "offline": "غير متصل"
 }

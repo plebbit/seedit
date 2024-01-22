@@ -196,5 +196,7 @@
   "remove_spoiler": "Tanggalin ang spoiler",
   "delete_post": "Burahin ang Post",
   "undo_delete": "I-undo ang Pag-delete",
-  "edit_content": "I-edit ang Nilalaman"
+  "edit_content": "I-edit ang Nilalaman",
+  "online": "Online",
+  "offline": "Offline"
 }

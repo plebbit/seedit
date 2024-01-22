@@ -196,5 +196,7 @@
   "remove_spoiler": "حذف حریف",
   "delete_post": "حذف پست",
   "undo_delete": "بازگشت حذف",
-  "edit_content": "ویرایش محتوا"
+  "edit_content": "ویرایش محتوا",
+  "online": "آنلاین",
+  "offline": "آفلاین"
 }

@@ -196,5 +196,7 @@
   "remove_spoiler": "স্পোইলার সরানো",
   "delete_post": "পোস্ট মুছে ফেলুন",
   "undo_delete": "মুছে ফেলা পূনঃস্থাপন করুন",
-  "edit_content": "সামগ্রী সম্পাদনা"
+  "edit_content": "সামগ্রী সম্পাদনা",
+  "online": "অনলাইন",
+  "offline": "অফলাইন"
 }

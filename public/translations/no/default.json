@@ -196,5 +196,7 @@
   "remove_spoiler": "Fjern spoiler",
   "delete_post": "Slett innlegg",
   "undo_delete": "Angre sletting",
-  "edit_content": "Rediger innhold"
+  "edit_content": "Rediger innhold",
+  "online": "Online",
+  "offline": "Offline"
 }

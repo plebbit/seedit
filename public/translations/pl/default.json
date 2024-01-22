@@ -196,5 +196,7 @@
   "remove_spoiler": "Usuń spoiler",
   "delete_post": "Usuń wpis",
   "undo_delete": "Cofnij usunięcie",
-  "edit_content": "Edytuj zawartość"
+  "edit_content": "Edytuj zawartość",
+  "online": "Online",
+  "offline": "Offline"
 }

@@ -196,5 +196,7 @@
   "remove_spoiler": "הסרת ספוילר",
   "delete_post": "מחיקת הפרסום",
   "undo_delete": "בטל מחיקה",
-  "edit_content": "ערוך תוכן"
+  "edit_content": "ערוך תוכן",
+  "online": "מקוון",
+  "offline": "מנותק"
 }

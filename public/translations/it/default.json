@@ -196,5 +196,7 @@
   "remove_spoiler": "Rimuovi spoiler",
   "delete_post": "Elimina post",
   "undo_delete": "Annulla cancellazione",
-  "edit_content": "Modifica contenuto"
+  "edit_content": "Modifica contenuto",
+  "online": "Online",
+  "offline": "Offline"
 }

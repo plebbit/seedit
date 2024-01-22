@@ -196,5 +196,7 @@
   "remove_spoiler": "Видалити спойлер",
   "delete_post": "Видалити пост",
   "undo_delete": "Скасувати видалення",
-  "edit_content": "Редагувати вміст"
+  "edit_content": "Редагувати вміст",
+  "online": "Онлайн",
+  "offline": "Офлайн"
 }

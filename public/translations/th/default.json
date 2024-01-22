@@ -196,5 +196,7 @@
   "remove_spoiler": "ลบสปอยล์เลอร์",
   "delete_post": "ลบโพสต์",
   "undo_delete": "ยกเลิกการลบ",
-  "edit_content": "แก้ไขเนื้อหา"
+  "edit_content": "แก้ไขเนื้อหา",
+  "online": "ออนไลน์",
+  "offline": "ออฟไลน์"
 }

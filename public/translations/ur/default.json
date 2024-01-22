@@ -196,5 +196,7 @@
   "remove_spoiler": "اسپائلر ہٹائیں",
   "delete_post": "پوسٹ حذف کریں",
   "undo_delete": "حذف کو منسوخ کریں",
-  "edit_content": "مواد میں ترمیم کریں"
+  "edit_content": "مواد میں ترمیم کریں",
+  "online": "آن لائن",
+  "offline": "آف لائن"
 }

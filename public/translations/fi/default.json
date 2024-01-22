@@ -196,5 +196,7 @@
   "remove_spoiler": "Poista spoiler",
   "delete_post": "Poista viesti",
   "undo_delete": "Peru poistaminen",
-  "edit_content": "Muokkaa sisältöä"
+  "edit_content": "Muokkaa sisältöä",
+  "online": "Verkossa",
+  "offline": "Poissa verkosta"
 }

@@ -196,5 +196,7 @@
   "remove_spoiler": "スポイラーを削除",
   "delete_post": "投稿を削除",
   "undo_delete": "削除を取り消す",
-  "edit_content": "コンテンツを編集"
+  "edit_content": "コンテンツを編集",
+  "online": "オンライン",
+  "offline": "オフライン"
 }

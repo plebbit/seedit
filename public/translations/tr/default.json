@@ -196,5 +196,7 @@
   "remove_spoiler": "Spoileri Kaldır",
   "delete_post": "Gönderiyi Sil",
   "undo_delete": "Silme İptal",
-  "edit_content": "İçerik düzenleme"
+  "edit_content": "İçerik düzenleme",
+  "online": "Çevrimiçi",
+  "offline": "Çevrimdışı"
 }

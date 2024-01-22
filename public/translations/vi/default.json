@@ -196,5 +196,7 @@
   "remove_spoiler": "Xóa spoiler",
   "delete_post": "Xóa bài viết",
   "undo_delete": "Hoàn tác xóa",
-  "edit_content": "Chỉnh sửa nội dung"
+  "edit_content": "Chỉnh sửa nội dung",
+  "online": "Trực tuyến",
+  "offline": "Ngoại tuyến"
 }

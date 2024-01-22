@@ -196,5 +196,7 @@
   "remove_spoiler": "Spoiler entfernen",
   "delete_post": "Beitrag löschen",
   "undo_delete": "Löschen rückgängig machen",
-  "edit_content": "Inhalt bearbeiten"
+  "edit_content": "Inhalt bearbeiten",
+  "online": "Online",
+  "offline": "Offline"
 }

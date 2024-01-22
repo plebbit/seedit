@@ -196,5 +196,7 @@
   "remove_spoiler": "Fjern spoiler",
   "delete_post": "Slet indlæg",
   "undo_delete": "Fortryd sletning",
-  "edit_content": "Rediger indhold"
+  "edit_content": "Rediger indhold",
+  "online": "Online",
+  "offline": "Offline"
 }

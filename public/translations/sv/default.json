@@ -196,5 +196,7 @@
   "remove_spoiler": "Ta bort spoiler",
   "delete_post": "Ta bort inlägg",
   "undo_delete": "Ångra radering",
-  "edit_content": "Redigera innehåll"
+  "edit_content": "Redigera innehåll",
+  "online": "Online",
+  "offline": "Offline"
 }

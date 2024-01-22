@@ -196,5 +196,7 @@
   "remove_spoiler": "스포일러 제거",
   "delete_post": "게시물 삭제",
   "undo_delete": "삭제 복원",
-  "edit_content": "콘텐츠 편집"
+  "edit_content": "콘텐츠 편집",
+  "online": "온라인",
+  "offline": "오프라인"
 }

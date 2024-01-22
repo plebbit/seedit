@@ -196,5 +196,7 @@
   "remove_spoiler": "Eliminați spoilerul",
   "delete_post": "Ștergeți postarea",
   "undo_delete": "Anulează ștergerea",
-  "edit_content": "Editează conținutul"
+  "edit_content": "Editează conținutul",
+  "online": "Online",
+  "offline": "Offline"
 }

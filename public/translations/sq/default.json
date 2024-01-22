@@ -196,5 +196,7 @@
   "remove_spoiler": "Hiqni spoiler",
   "delete_post": "Fshi Postën",
   "undo_delete": "Anulo fshirjen",
-  "edit_content": "Ndrysho përmbajtjen"
+  "edit_content": "Ndrysho përmbajtjen",
+  "online": "Online",
+  "offline": "Offline"
 }

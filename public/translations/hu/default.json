@@ -196,5 +196,7 @@
   "remove_spoiler": "Spoiler eltávolítása",
   "delete_post": "Bejegyzés törlése",
   "undo_delete": "Törlés visszavonása",
-  "edit_content": "Tartalom szerkesztése"
+  "edit_content": "Tartalom szerkesztése",
+  "online": "Online",
+  "offline": "Offline"
 }
