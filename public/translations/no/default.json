@@ -189,5 +189,12 @@
   "submit_to": "Send til <1>{{link}}</1>",
   "edit_subscriptions": "Rediger abonnementer",
   "last_account_notice": "Du kan ikke slette din siste konto, vennligst opprett en ny først.",
-  "delete_confirm": "Er du sikker på at du vil slette {{value}}?"
+  "delete_confirm": "Er du sikker på at du vil slette {{value}}?",
+  "saving": "Lagrer",
+  "deleted": "Slettet",
+  "mark_spoiler": "Marker som spoiler",
+  "remove_spoiler": "Fjern spoiler",
+  "delete_post": "Slett innlegg",
+  "undo_delete": "Angre sletting",
+  "edit_content": "Rediger innhold"
 }

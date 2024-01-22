@@ -209,11 +209,3 @@
   font-size: 10px;
   cursor: pointer;
 }
-
-/* 1px compromise to hide removed posts immediately, before the feed updates, while avoiding virtuoso's zero-sized element error */
-.minimalHeight {
-  visibility: hidden;
-  padding: 0;
-  margin: 0;
-  height: 1px;
-}

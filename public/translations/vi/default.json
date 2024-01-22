@@ -189,5 +189,12 @@
   "submit_to": "Gửi đến <1>{{link}}</1>",
   "edit_subscriptions": "Chỉnh sửa đăng ký",
   "last_account_notice": "Bạn không thể xóa tài khoản cuối cùng của mình, vui lòng tạo một tài khoản mới trước.",
-  "delete_confirm": "Bạn có chắc chắn muốn xóa {{value}} không?"
+  "delete_confirm": "Bạn có chắc chắn muốn xóa {{value}} không?",
+  "saving": "Đang lưu",
+  "deleted": "Đã xóa",
+  "mark_spoiler": "Đánh dấu là spoiler",
+  "remove_spoiler": "Xóa spoiler",
+  "delete_post": "Xóa bài viết",
+  "undo_delete": "Hoàn tác xóa",
+  "edit_content": "Chỉnh sửa nội dung"
 }

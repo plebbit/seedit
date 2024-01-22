@@ -7,17 +7,17 @@
   padding: 0 4px;
 }
 
-.stampSpoiler {
+.black {
   color: var(--text);
   border-color: currentColor;
 }
 
-.stampPending {
+.yellow {
   color: var(--yellow);
   border-color: var(--yellow);
 }
 
-.stampFailed {
+.red {
   color: var(--red);
   border-color: var(--red);
 }

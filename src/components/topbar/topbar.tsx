@@ -5,7 +5,7 @@ import { useAccount } from '@plebbit/plebbit-react-hooks';
 import { getShortAddress } from '@plebbit/plebbit-js';
 import styles from './topbar.module.css';
 import { useDefaultSubplebbitAddresses } from '../../lib/utils/addresses-utils';
-import useTimeFilter from '../../hooks/use-time-filter';
+import useTimeFilter, { TimeFilterKey } from '../../hooks/use-time-filter';
 import { isAllView, isHomeView, isSubplebbitView } from '../../lib/utils/view-utils';
 
 const sortTypes = ['hot', 'new', 'active', 'controversialAll', 'topAll'];
@@ -16,14 +16,17 @@ const TopBar = () => {
   const { t } = useTranslation();
   const location = useLocation();
   const params = useParams();
-  const { timeFilterNames } = useTimeFilter();
   const subscriptions = account?.subscriptions;
   const isinAllView = isAllView(location.pathname);
   const isInHomeView = isHomeView(location.pathname, params);
   const isInSubplebbitView = isSubplebbitView(location.pathname, params);
   const homeButtonClass = isInHomeView ? styles.selected : styles.choice;
 
-  const selectedTimeFilterName = params.timeFilterName || (isInHomeView ? timeFilterNames[2] : timeFilterNames[5]);
+  const sortType = params?.sortType || 'hot';
+  const { timeFilterNames } = useTimeFilter();
+  const timeFilterName = params.timeFilterName as TimeFilterKey;
+  const { currentFilterName } = useTimeFilter(sortType, timeFilterName);
+  const selectedTimeFilter = isInSubplebbitView ? params.timeFilterName || 'all' : currentFilterName;
 
   const [isSubsDropdownOpen, setIsSubsDropdownOpen] = useState(false);
   const toggleSubsDropdown = () => setIsSubsDropdownOpen(!isSubsDropdownOpen);
@@ -133,7 +136,7 @@ const TopBar = () => {
           </div>
         </div>
         <div className={styles.dropdown} ref={filterDropdownRef} onClick={toggleFilterDropdown}>
-          <span className={styles.selectedTitle}>{selectedTimeFilterName}</span>
+          <span className={styles.selectedTitle}>{selectedTimeFilter}</span>
           <div className={`${styles.dropChoices} ${styles.filterDropChoices} ${filterDropdownClass}`} ref={filterDropdownChoicesRef}>
             {timeFilterNames.map((choice, index) => (
               <Link to={getTimeFilterLink(choice)} key={index} className={styles.dropdownChoice}>

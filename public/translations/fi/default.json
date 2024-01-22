@@ -189,5 +189,12 @@
   "submit_to": "Lähetä osoitteeseen <1>{{link}}</1>",
   "edit_subscriptions": "Muokkaa tilauksia",
   "last_account_notice": "Et voi poistaa viimeistä tiliäsi, luo ensin uusi.",
-  "delete_confirm": "Haluatko varmasti poistaa {{value}}?"
+  "delete_confirm": "Haluatko varmasti poistaa {{value}}?",
+  "saving": "Tallentaa",
+  "deleted": "Poistettu",
+  "mark_spoiler": "Merkitse spoilereiksi",
+  "remove_spoiler": "Poista spoiler",
+  "delete_post": "Poista viesti",
+  "undo_delete": "Peru poistaminen",
+  "edit_content": "Muokkaa sisältöä"
 }

@@ -73,6 +73,7 @@ const Post = ({ post = {}, index }: PostProps) => {
     author,
     cid,
     content,
+    deleted,
     downvoteCount,
     flair,
     link,
@@ -121,7 +122,7 @@ const Post = ({ post = {}, index }: PostProps) => {
   const { blocked, unblock } = useBlock({ address: cid });
 
   return (
-    <div className={`${styles.content} ${removed ? styles.minimalHeight : ''}`} key={index}>
+    <div className={styles.content} key={index}>
       <div className={`${styles.hiddenPost} ${blocked ? styles.visible : styles.hidden}`}>
         <div className={styles.hiddenPostText}>{t('post_hidden').charAt(0).toUpperCase() + t('post_hidden').slice(1)}</div>
         <div className={styles.undoHiddenPost} onClick={unblock}>
@@ -216,8 +217,10 @@ const Post = ({ post = {}, index }: PostProps) => {
               <CommentTools
                 author={author}
                 cid={cid}
+                deleted={deleted}
                 failed={state === 'failed'}
                 index={post?.index}
+                removed={removed}
                 replyCount={replyCount}
                 spoiler={spoiler}
                 subplebbitAddress={subplebbitAddress}

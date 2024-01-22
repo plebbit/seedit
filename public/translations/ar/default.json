@@ -189,5 +189,12 @@
   "submit_to": "إرسال إلى <1>{{link}}</1>",
   "edit_subscriptions": "تحرير الاشتراكات",
   "last_account_notice": "لا يمكنك حذف حسابك الأخير، يرجى إنشاء حساب جديد أولاً.",
-  "delete_confirm": "هل أنت متأكد أنك تريد حذف {{value}}؟"
+  "delete_confirm": "هل أنت متأكد أنك تريد حذف {{value}}؟",
+  "saving": "حفظ",
+  "deleted": "تم الحذف",
+  "mark_spoiler": "وسم كما حرق",
+  "remove_spoiler": "إزالة حريف",
+  "delete_post": "حذف المنشور",
+  "undo_delete": "تراجع الحذف",
+  "edit_content": "تحرير المحتوى"
 }

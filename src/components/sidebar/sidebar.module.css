@@ -169,7 +169,7 @@ a {
 }
 
 .rules {
-  margin-bottom: 10px;
+  margin-bottom: 5px;
   margin-top: 7px;
   color: var(--text-markdown);
   line-height: 15px;
@@ -262,59 +262,33 @@ a {
 }
 
 .footer ul {
+  margin-top: 2px;
   display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
   list-style: none;
 }
 
-.footerTitle {
-  color: var(--gray-footer);
-  font-size: 18px;
-  font-weight: normal;
-  margin-bottom: 5px;
+.footerSeparator {
+  margin: 0 2px;
 }
 
 .footer li a {
-  font-size: 12px;
+  font-size: 11px;
 }
 
 .footer a {
-  color: var(--link-footer);
+  color: var(--gray-footer);
 }
 
 .footer a:hover {
   text-decoration: underline;
 }
 
-.version {
- margin: 20px 0 24px 0;
- text-align: center;
- font-size: 10px;
-}
-
-.unstable a {
-  color: var(--yellow);
-}
-
-.desktopAd {
-  padding: 0px 0 15px 0;
-  margin-top: -5px;
-}
-
-.desktopAdSubtitle {
-  font: normal x-small verdana, arial, helvetica, sans-serif;
-  font-size: 11px;
-  color: var(--gray-strong);
-}
-
-.desktopAdLogo img {
+.footerLogo img {
   height: 40px;
-  margin: 5px 10px 0 0;
+  margin: 0 10px 0 0;
   float: left;
 }
 
-.footerSecondTitle {
-  margin-top: 10px;
+.footerLinks {
+  padding-top: 5px;
 }

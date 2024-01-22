@@ -7,6 +7,7 @@ import stringify from 'json-stringify-pretty-compact';
 import styles from './subplebbit-settings.module.css';
 import Sidebar from '../../../components/sidebar';
 import { isValidURL } from '../../../lib/utils/url-utils';
+import LoadingEllipsis from '../../../components/loading-ellipsis';
 
 const isElectron = window.electron && window.electron.isElectron;
 
@@ -95,11 +96,11 @@ const Rules = ({ rules }: { rules: string[] }) => {
       <div className={styles.boxTitle}>{t('rules')}</div>
       <div className={styles.boxSubtitle}>shown in the sidebar of your community</div>
       <div className={styles.boxInput}>
-        <button className={styles.addRule}>add a rule</button>
+        <button className={styles.addButton}>add a rule</button>
         {rules?.map((rule, index) => (
           <div className={styles.rule} key={index}>
             Rule #{index + 1}
-            <span className={styles.deleteRule} title='delete rule' />
+            <span className={styles.deleteButton} title='delete rule' />
             <br />
             <input type='text' defaultValue={rule} />
           </div>
@@ -118,11 +119,11 @@ const Moderators = ({ roles }: { roles: RolesCollection | undefined }) => {
       <div className={styles.boxTitle}>{t('moderators')}</div>
       <div className={styles.boxSubtitle}>let other users moderate and post without challenges</div>
       <div className={styles.boxInput}>
-        <button className={styles.addModerator}>add a moderator</button>
+        <button className={styles.addButton}>add a moderator</button>
         {rolesList?.map(({ address, role }, index) => (
           <div className={styles.moderator} key={index}>
             Moderator #{index + 1}
-            <span className={styles.deleteModerator} title='delete moderator' />
+            <span className={styles.deleteButton} title='delete moderator' />
             <br />
             <span className={styles.moderatorAddress}>
               User address:
@@ -146,131 +147,157 @@ const Moderators = ({ roles }: { roles: RolesCollection | undefined }) => {
   );
 };
 
-const challenges = ['text-math', 'captcha-canvas-v3', 'fail', 'blacklist', 'question', 'evm-contract-call'];
+const challengesNames = ['text-math', 'captcha-canvas-v3', 'fail', 'blacklist', 'question', 'evm-contract-call'];
 
-const Challenge = ({ challenge, selected, setSelected }: { challenge: string; selected: string; setSelected: (challenge: string) => void }) => {
+const ChallengeSettings = ({ challenge }: any) => {
+  const { name } = challenge || {};
+
+  return (
+    <>
+      {name === 'text-math' && (
+        <>
+          <div className={styles.challengeDescription}>Ask a plain text math question, insecure, use ONLY for testing.</div>
+          <div className={styles.challengeOption}>
+            Difficulty
+            <div className={styles.challengeOptionDescription}>The math difficulty of the challenge between 1-3.</div>
+            <input type='text' defaultValue='1' placeholder='1' />
+          </div>
+        </>
+      )}
+      {name === 'captcha-canvas-v3' && (
+        <>
+          <div className={styles.challengeDescription}>custom image captcha</div>
+          <div className={styles.challengeOption}>
+            Characters
+            <div className={styles.challengeOptionDescription}>Amount of characters of the captcha.</div>
+            <input type='text' />
+          </div>
+          <div className={styles.challengeOption}>
+            Width
+            <div className={styles.challengeOptionDescription}>Height of the captcha.</div>
+            <input type='text' />
+          </div>
+          <div className={styles.challengeOption}>
+            Height
+            <div className={styles.challengeOptionDescription}>Width of the captcha.</div>
+            <input type='text' />
+          </div>
+          <div className={styles.challengeOption}>
+            Color
+            <div className={styles.challengeOptionDescription}>Color of the captcha.</div>
+            <input type='text' />
+          </div>
+        </>
+      )}
+      {name === 'fail' && (
+        <>
+          <div className={styles.challengeDescription}>A challenge that automatically fails with a custom error message.</div>
+          <div className={styles.challengeOption}>
+            Error
+            <div className={styles.challengeOptionDescription}>The error to display to the author.</div>
+            <input type='text' defaultValue="You're not allowed to publish." placeholder="You're not allowed to publish." />
+          </div>
+        </>
+      )}
+      {name === 'blacklist' && (
+        <>
+          <div className={styles.challengeDescription}>Blacklist author addresses.</div>
+          <div className={styles.challengeOption}>
+            Blacklist
+            <div className={styles.challengeOptionDescription}>Comma separated list of author addresses to be blacklisted.</div>
+            <input type='text' placeholder='address1.eth,address2.eth,address3.eth' />
+          </div>
+          <div className={styles.challengeOption}>
+            Error
+            <div className={styles.challengeOptionDescription}>The error to display to the author.</div>
+            <input type='text' defaultValue="You're blacklisted." placeholder="You're blacklisted." />
+          </div>
+        </>
+      )}
+      {name === 'question' && (
+        <>
+          <div className={styles.challengeDescription}>Ask a question, like 'What is the password?'</div>
+          <div className={styles.challengeOption}>
+            Question
+            <div className={styles.challengeOptionDescription}>The question to answer.</div>
+            <input type='text' />
+          </div>
+          <div className={styles.challengeOption}>
+            Answer
+            <div className={styles.challengeOptionDescription}>The answer to the question.</div>
+            <input type='text' />
+          </div>
+        </>
+      )}
+      {name === 'evm-contract-call' && (
+        <>
+          <div className={styles.challengeDescription}>The response from an EVM contract call passes a condition, e.g. a token balance challenge.</div>
+          <div className={styles.challengeOption}>
+            chainTicker
+            <div className={styles.challengeOptionDescription}>The chain ticker</div>
+            <input type='text' placeholder='eth' defaultValue='eth' />
+          </div>
+          <div className={styles.challengeOption}>
+            Address
+            <div className={styles.challengeOptionDescription}>The contract address.</div>
+            <input type='text' placeholder='0x...' />
+          </div>
+          <div className={styles.challengeOption}>
+            ABI
+            <div className={styles.challengeOptionDescription}>The ABI of the contract method.</div>
+            <textarea placeholder='{"constant":true,"inputs":[{"internalType":"address","name":"account...' autoCorrect='off' autoComplete='off' spellCheck='false' />
+          </div>
+          <div className={styles.challengeOption}>
+            Condition
+            <div className={styles.challengeOptionDescription}>The condition the contract call response must pass.</div>
+            <textarea placeholder='>1000' autoCorrect='off' autoComplete='off' spellCheck='false' />
+          </div>
+          <div className={styles.challengeOption}>
+            Error
+            <div className={styles.challengeOptionDescription}>The error to display to the author.</div>
+            <input type='text' defaultValue="Contract call response doesn't pass condition." placeholder="Contract call response doesn't pass condition." />
+          </div>
+        </>
+      )}
+    </>
+  );
+};
+
+const Challenges = ({ challenges }: any) => {
   const { t } = useTranslation();
-  const [selectedChallenge, setSelectedChallenge] = useState('none');
+  const [showSettings, setShowSettings] = useState<boolean[]>([]);
+
+  const toggleSettings = (index: number) => {
+    const newShowSettings = [...showSettings];
+    newShowSettings[index] = !newShowSettings[index];
+    setShowSettings(newShowSettings);
+  };
 
   return (
     <div className={styles.box}>
-      <div className={styles.boxTitle}>{t('challenge')}</div>
-      <div className={styles.boxSubtitle}>choose a challenge to prevent spam</div>
-      <div className={`${styles.boxInput} ${styles.captchaSelect}`}>
-        <select defaultValue='none' onChange={(e) => setSelectedChallenge(e.target.value)}>
-          {challenges.map((challenge) => (
-            <option key={challenge} value={challenge}>
-              {challenge}
-            </option>
-          ))}
-          <option value='none'>none</option>
-        </select>
-        {selectedChallenge === 'text-math' && (
-          <>
-            <div className={styles.challengeDescription}>Ask a plain text math question, insecure, use ONLY for testing.</div>
-            <div className={styles.challengeOption}>
-              Difficulty
-              <div className={styles.challengeOptionDescription}>The math difficulty of the challenge between 1-3.</div>
-              <input type='number' defaultValue={1} placeholder='1' />
-            </div>
-          </>
-        )}
-        {selectedChallenge === 'captcha-canvas-v3' && (
-          <>
-            <div className={styles.challengeDescription}>make custom image captcha</div>
-            <div className={styles.challengeOption}>
-              Characters
-              <div className={styles.challengeOptionDescription}>Amount of characters of the captcha.</div>
-              <input type='number' />
-            </div>
-            <div className={styles.challengeOption}>
-              Width
-              <div className={styles.challengeOptionDescription}>Height of the captcha.</div>
-              <input type='number' />
-            </div>
-            <div className={styles.challengeOption}>
-              Height
-              <div className={styles.challengeOptionDescription}>Width of the captcha.</div>
-              <input type='number' />
-            </div>
-            <div className={styles.challengeOption}>
-              Color
-              <div className={styles.challengeOptionDescription}>Color of the captcha.</div>
-              <input type='color' />
-            </div>
-          </>
-        )}
-        {selectedChallenge === 'fail' && (
-          <>
-            <div className={styles.challengeDescription}>A challenge that automatically fails with a custom error message.</div>
-            <div className={styles.challengeOption}>
-              Error
-              <div className={styles.challengeOptionDescription}>The error to display to the author.</div>
-              <input type='text' defaultValue="You're not allowed to publish." placeholder="You're not allowed to publish." />
-            </div>
-          </>
-        )}
-        {selectedChallenge === 'blacklist' && (
-          <>
-            <div className={styles.challengeDescription}>Blacklist author addresses.</div>
-            <div className={styles.challengeOption}>
-              Blacklist
-              <div className={styles.challengeOptionDescription}>Comma separated list of author addresses to be blacklisted.</div>
-              <input type='text' placeholder='address1.eth,address2.eth,address3.eth' />
-            </div>
-            <div className={styles.challengeOption}>
-              Error
-              <div className={styles.challengeOptionDescription}>The error to display to the author.</div>
-              <input type='text' defaultValue="You're blacklisted." placeholder="You're blacklisted." />
-            </div>
-          </>
-        )}
-        {selectedChallenge === 'question' && (
-          <>
-            <div className={styles.challengeDescription}>Ask a question, like 'What is the password?'</div>
-            <div className={styles.challengeOption}>
-              Question
-              <div className={styles.challengeOptionDescription}>The question to answer.</div>
-              <input type='text' />
-            </div>
-            <div className={styles.challengeOption}>
-              Answer
-              <div className={styles.challengeOptionDescription}>The answer to the question.</div>
-              <input type='text' />
-            </div>
-          </>
-        )}
-        {selectedChallenge === 'evm-contract-call' && (
-          <>
-            <div className={styles.challengeDescription}>The response from an EVM contract call passes a condition, e.g. a token balance challenge.</div>
-            <div className={styles.challengeOption}>
-              chainTicker
-              <div className={styles.challengeOptionDescription}>The chain ticker</div>
-              <input type='text' placeholder='eth' defaultValue='eth' />
-            </div>
-            <div className={styles.challengeOption}>
-              Address
-              <div className={styles.challengeOptionDescription}>The contract address.</div>
-              <input type='text' placeholder='0x...' />
-            </div>
-            <div className={styles.challengeOption}>
-              ABI
-              <div className={styles.challengeOptionDescription}>The ABI of the contract method.</div>
-              <textarea placeholder='{"constant":true,"inputs":[{"internalType":"address","name":"account...' autoCorrect='off' autoComplete='off' spellCheck='false' />
-            </div>
-            <div className={styles.challengeOption}>
-              Condition
-              <div className={styles.challengeOptionDescription}>The condition the contract call response must pass.</div>
-              <textarea placeholder='>1000' autoCorrect='off' autoComplete='off' spellCheck='false' />
-            </div>
-            <div className={styles.challengeOption}>
-              Error
-              <div className={styles.challengeOptionDescription}>The error to display to the author.</div>
-              <input type='text' defaultValue="Contract call response doesn't pass condition." placeholder="Contract call response doesn't pass condition." />
-            </div>
-          </>
-        )}
-        {selectedChallenge === 'none' && <span className={styles.noChallengeWarning}>Warning: vulnerable to spam attacks.</span>}
+      <div className={styles.boxTitle}>{t('challenges')}</div>
+      <div className={styles.boxSubtitle}>choose one or more challenges to prevent spam</div>
+      <div className={styles.boxInput}>
+        <button className={styles.addButton}>add a challenge</button>
+        {challenges.length === 0 && <span className={styles.noChallengeWarning}>Warning: vulnerable to spam attacks.</span>}
+        {challenges.map((challenge: any, index: number) => (
+          <div key={index} className={styles.challenge}>
+            Challenge #{index + 1}
+            <span className={styles.deleteButton} title='delete challenge' />
+            <br />
+            <select value={challenge?.name}>
+              {challengesNames.map((challenge) => (
+                <option key={challenge} value={challenge}>
+                  {challenge}
+                </option>
+              ))}
+            </select>
+            <button className={styles.challengeEditButton} onClick={() => toggleSettings(index)}>
+              {showSettings[index] ? 'hide settings' : 'show settings'}
+            </button>
+            {showSettings[index] && <ChallengeSettings challenge={challenge} />}
+          </div>
+        ))}
       </div>
     </div>
   );
@@ -324,13 +351,16 @@ const SubplebbitSettings = () => {
     setText(subplebbitJson);
   }, [subplebbitJson]);
 
+  const [showLoading, setShowLoading] = useState(false);
   const saveSubplebbit = async () => {
     try {
       // test parsing the options before saving
       JSON.parse(text);
+      setShowLoading(true);
 
       await publishSubplebbitEdit();
       alert(`saved`);
+      setShowLoading(false);
     } catch (e) {
       if (e instanceof Error) {
         console.warn(e);
@@ -338,6 +368,7 @@ const SubplebbitSettings = () => {
       } else {
         console.error('An unknown error occurred:', e);
       }
+      setShowLoading(false);
     }
   };
 
@@ -358,18 +389,20 @@ const SubplebbitSettings = () => {
       <Logo avatarUrl={suggested?.avatarUrl} />
       <Rules rules={rules} />
       <Moderators roles={roles} />
-      <Challenge challenge={''} selected={''} setSelected={() => {}} />
+      {/* subplebbit.settings is private, only shows to the sub owner */}
+      {subplebbit?.settings?.challenges && <Challenges challenges={subplebbit?.settings?.challenges} />}
       <div className={styles.box}>
         <div className={styles.boxTitle}>full settings data</div>
         <div className={styles.boxSubtitle}>quickly copy or paste the community settings</div>
         <div className={`${styles.boxInput} ${styles.fullSettings}`}>
-          <textarea onChange={(e) => setText(e.target.value)} autoCorrect='off' autoComplete='off' value={text} />
+          <textarea onChange={(e) => setText(e.target.value)} autoCorrect='off' autoComplete='off' spellCheck='false' value={text} />
         </div>
       </div>
       <div className={styles.saveOptions}>
-        <button disabled={!isElectron || !isAdmin} onClick={saveSubplebbit}>
+        <button disabled={!isElectron || !isAdmin || showLoading} onClick={saveSubplebbit}>
           {t('save_options')}
         </button>
+        {showLoading && <LoadingEllipsis string={t('saving')} />}
       </div>
     </div>
   );

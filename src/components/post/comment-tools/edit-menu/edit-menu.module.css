@@ -1,0 +1,44 @@
+.button {
+  color: var(--text-info);
+  font-weight: bold;
+  text-decoration: none;
+  padding: 0 4px 0 4px;
+  cursor: pointer;
+}
+
+.modal {
+  z-index: 7;
+  background-color: var(--background);
+  border: 1px solid var(--border-text);
+  outline: none;
+  font-size: 12px;
+}
+
+.menuItem {
+  color: var(--text-primary);
+  cursor: pointer;
+  padding: 2px 3px 1px 3px;
+  display: block;
+  text-transform: lowercase;
+}
+
+.menuItem a {
+  color: var(--text-primary);
+  text-decoration: none;
+}
+
+.menuItem:hover {
+  background-color: var(--background-primary);
+}
+
+@media (min-width: 768px) {
+  .reportButton {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .reportButton {
+    display: block;
+  }
+}

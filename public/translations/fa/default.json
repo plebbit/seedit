@@ -189,5 +189,12 @@
   "submit_to": "ارسال به <1>{{link}}</1>",
   "edit_subscriptions": "ویرایش اشتراک‌ها",
   "last_account_notice": "شما نمی‌توانید حساب آخر خود را حذف کنید، لطفاً ابتدا یک حساب جدید ایجاد کنید.",
-  "delete_confirm": "آیا مطمئن هستید که می‌خواهید {{value}} را حذف کنید؟"
+  "delete_confirm": "آیا مطمئن هستید که می‌خواهید {{value}} را حذف کنید؟",
+  "saving": "ذخیره",
+  "deleted": "حذف شده",
+  "mark_spoiler": "علامت گذاری به عنوان حریف",
+  "remove_spoiler": "حذف حریف",
+  "delete_post": "حذف پست",
+  "undo_delete": "بازگشت حذف",
+  "edit_content": "ویرایش محتوا"
 }

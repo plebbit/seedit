@@ -39,7 +39,7 @@ const getCommentMediaInfo = (comment: Comment) => {
     const host = url.hostname;
     let patternThumbnailUrl;
 
-    if (['youtube.com', 'www.youtube.com', 'youtu.be'].includes(host)) {
+    if (['youtube.com', 'www.youtube.com', 'youtu.be', 'www.youtu.be', 'm.youtube.com'].includes(host)) {
       const videoId = host === 'youtu.be' ? url.pathname.slice(1) : url.searchParams.get('v');
       patternThumbnailUrl = `https://img.youtube.com/vi/${videoId}/0.jpg`;
     } else if (host.includes('streamable.com')) {

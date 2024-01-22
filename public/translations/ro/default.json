@@ -189,5 +189,12 @@
   "submit_to": "Trimite la <1>{{link}}</1>",
   "edit_subscriptions": "Editează abonamente",
   "last_account_notice": "Nu puteți șterge ultimul dvs. cont, vă rugăm să creați unul nou mai întâi.",
-  "delete_confirm": "Sunteți sigur că doriți să ștergeți {{value}}?"
+  "delete_confirm": "Sunteți sigur că doriți să ștergeți {{value}}?",
+  "saving": "Se salvează",
+  "deleted": "Șters",
+  "mark_spoiler": "Marchează ca spoiler",
+  "remove_spoiler": "Eliminați spoilerul",
+  "delete_post": "Ștergeți postarea",
+  "undo_delete": "Anulează ștergerea",
+  "edit_content": "Editează conținutul"
 }
