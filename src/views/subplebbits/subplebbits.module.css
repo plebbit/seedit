@@ -74,8 +74,6 @@
 }
 
 .avatar img {
-  height: 50px;
-  width: 50px;
   object-fit: cover;
 }
 
@@ -196,6 +194,11 @@
     padding-right: 5px;
   }
 
+  .avatar img {
+    height: 40px;
+    width: 40px;
+  }
+
   .infobar {
     margin-left: 5px;
   }
@@ -208,6 +211,11 @@
 @media (min-width: 768px) {
   .content {
     padding: 7px 5px 0px 5px;
+  }
+
+  .avatar img {
+    height: 50px;
+    width: 50px;
   }
 
   .stateString, .infobar {
