@@ -75,7 +75,7 @@ const Infobar = () => {
 
 const Subplebbit = ({ subplebbit }: SubplebbitProps) => {
   const { t } = useTranslation();
-  const { address, createdAt, description, shortAddress, title, updatedAt } = subplebbit || {};
+  const { address, createdAt, description, shortAddress, suggested, title, updatedAt } = subplebbit || {};
   const { allActiveUserCount } = useSubplebbitStats({ subplebbitAddress: address });
 
   // TODO: make arrows functional when token voting is implemented in the API
@@ -105,6 +105,13 @@ const Subplebbit = ({ subplebbit }: SubplebbitProps) => {
           </div>
         </div>
       </div>
+      {suggested?.avatarUrl && (
+        <div className={styles.avatar}>
+          <Link to={`/p/${address}`}>
+            <img src={suggested?.avatarUrl} alt={address} />
+          </Link>
+        </div>
+      )}
       <div className={styles.entry}>
         <div className={styles.title}>
           <div className={styles.onlineIndicatorWrapper} title={isOnline ? t('online') : t('offline')}>
