@@ -5,12 +5,13 @@ import styles from './comment-tools.module.css';
 import HideMenu from './hide-menu';
 import ModMenu from './mod-menu';
 import ShareMenu from './share-menu';
-import { FailedLabel, PendingLabel, SpoilerLabel } from '../label';
+import { DeletedLabel, FailedLabel, PendingLabel, RemovedLabel, SpoilerLabel } from '../label';
 import { isInboxView } from '../../../lib/utils/view-utils';
 
 interface CommentToolsProps {
   author?: Author;
   cid: string;
+  deleted?: boolean;
   failed?: boolean;
   hasLabel?: boolean;
   index?: number;
@@ -18,6 +19,7 @@ interface CommentToolsProps {
   isReply?: boolean;
   isSingleReply?: boolean;
   parentCid?: string;
+  removed?: boolean;
   replyCount?: number;
   spoiler?: boolean;
   subplebbitAddress: string;
@@ -115,12 +117,17 @@ const SingleReplyTools = ({ author, cid, hasLabel, index, isMod, parentCid, show
   );
 };
 
-const CommentToolsLabel = ({ cid, failed, isReply, spoiler }: CommentToolsProps) => {
+const CommentToolsLabel = ({ cid, deleted, failed, isReply, removed, spoiler }: CommentToolsProps) => {
+  const pending = cid === undefined && !isReply && !failed;
+  const hasLabel = spoiler || deleted || failed || removed || pending;
+
   return (
-    <span className={styles.label}>
+    <span className={`${hasLabel ? styles.label : ''}`}>
       {spoiler && <SpoilerLabel />}
-      {cid === undefined && !isReply && !failed && <PendingLabel />}
+      {pending && <PendingLabel />}
       {failed && <FailedLabel />}
+      {deleted && <DeletedLabel />}
+      {removed && <RemovedLabel />}
     </span>
   );
 };
@@ -128,12 +135,14 @@ const CommentToolsLabel = ({ cid, failed, isReply, spoiler }: CommentToolsProps)
 const CommentTools = ({
   author,
   cid,
+  deleted,
   failed,
   hasLabel = false,
   index,
   isReply,
   isSingleReply,
   parentCid,
+  removed,
   replyCount,
   spoiler,
   subplebbitAddress,
@@ -142,12 +151,11 @@ const CommentTools = ({
   const account = useAccount();
   const authorRole = useSubplebbit({ subplebbitAddress })?.roles?.[account?.author?.address]?.role;
   const isMod = authorRole === 'admin' || authorRole === 'owner' || authorRole === 'moderator';
-  hasLabel = spoiler || (cid === undefined && !isReply);
   const isInInboxView = isInboxView(useLocation().pathname);
 
   return (
     <ul className={`${styles.buttons} ${isReply && !isInInboxView ? styles.buttonsReply : ''} ${hasLabel ? styles.buttonsLabel : ''}`}>
-      {hasLabel && <CommentToolsLabel cid={cid} failed={failed} isReply={isReply} spoiler={spoiler} subplebbitAddress={subplebbitAddress} />}
+      <CommentToolsLabel cid={cid} deleted={deleted} failed={failed} isReply={isReply} removed={removed} spoiler={spoiler} subplebbitAddress={subplebbitAddress} />
       {isReply ? (
         isSingleReply ? (
           <SingleReplyTools

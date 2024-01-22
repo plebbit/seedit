@@ -200,6 +200,7 @@ const Reply = ({ depth = 0, isSingle, isNotification = false, reply = {} }: Repl
     author,
     cid,
     content,
+    deleted,
     downvoteCount,
     flair,
     link,
@@ -338,10 +339,12 @@ const Reply = ({ depth = 0, isSingle, isNotification = false, reply = {} }: Repl
               <CommentTools
                 author={author}
                 cid={cid}
+                deleted={deleted}
                 isReply={true}
                 isSingleReply={isSingle}
                 index={reply?.index}
                 parentCid={postCid}
+                removed={removed}
                 replyCount={replies.length}
                 spoiler={spoiler}
                 subplebbitAddress={subplebbitAddress}
