@@ -111,7 +111,7 @@ const Subplebbit = ({ subplebbit }: SubplebbitProps) => {
       </div>
       <div className={styles.entry}>
         <div className={styles.title}>
-          <div className={styles.onlineIndicatorWrapper}>
+          <div className={styles.onlineIndicatorWrapper} title={isOnline ? t('online') : t('offline')}>
             <span className={`${styles.onlineIndicator} ${isOnline ? styles.online : styles.offline}`} />
           </div>
           <div className={styles.titleWrapper}>

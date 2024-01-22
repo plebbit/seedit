@@ -182,7 +182,7 @@ const Sidebar = ({ address, cid, createdAt, description, downvoteCount = 0, role
             <span className={styles.subscribers}>{t('members_count', { count: allActiveUserCount })}</span>
           </div>
           <div className={styles.onlineLine}>
-            <span className={`${styles.onlineIndicator} ${isOnline ? styles.online : styles.offline}`} />
+            <span className={`${styles.onlineIndicator} ${isOnline ? styles.online : styles.offline}`} title={isOnline ? t('online') : t('offline')} />
             <span>{onlineStatus}</span>
           </div>
           {description && (
