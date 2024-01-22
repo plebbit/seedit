@@ -30,7 +30,7 @@ const Tabs = () => {
   return (
     <div className={styles.subplebbitsTabs}>
       <Link to='/communities/mine/subscriber' className={isInSubplebbitsMineSubscriberView ? styles.selected : styles.choice}>
-        subscriber
+        {t('subscriber')}
       </Link>
       <span className={styles.separator}>|</span>
       <Link
@@ -38,7 +38,7 @@ const Tabs = () => {
         className={isInSubplebbitsMineContributorView ? styles.selected : styles.choice}
         onClick={(e) => e.preventDefault()} // TODO: enable after approving user is implemented in the API
       >
-        approved user
+        {t('approved_user')}
       </Link>
       <span className={styles.separator}>|</span>
       <Link to='/communities/mine/moderator' className={isInSubplebbitsMineModeratorView ? styles.selected : styles.choice}>

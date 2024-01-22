@@ -198,5 +198,10 @@
   "undo_delete": "حذف کو منسوخ کریں",
   "edit_content": "مواد میں ترمیم کریں",
   "online": "آن لائن",
-  "offline": "آف لائن"
+  "offline": "آف لائن",
+  "download_app": "ایپ ڈاؤن لوڈ کریں",
+  "approved_user": "منظورشدہ صارف",
+  "subscriber": "سبسکرائبر",
+  "approved": "منظورشدہ",
+  "proposed": "موصول"
 }

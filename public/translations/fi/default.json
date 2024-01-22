@@ -198,5 +198,10 @@
   "undo_delete": "Peru poistaminen",
   "edit_content": "Muokkaa sisältöä",
   "online": "Verkossa",
-  "offline": "Poissa verkosta"
+  "offline": "Poissa verkosta",
+  "download_app": "Lataa sovellus",
+  "approved_user": "Hyväksytty käyttäjä",
+  "subscriber": "Tilaaja",
+  "approved": "Hyväksytty",
+  "proposed": "Ehdotettu"
 }

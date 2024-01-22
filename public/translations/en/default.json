@@ -198,5 +198,10 @@
   "undo_delete": "Undo Delete",
   "edit_content": "Edit Content",
   "online": "Online",
-  "offline": "Offline"
+  "offline": "Offline",
+  "download_app": "Download App",
+  "approved_user": "Approved User",
+  "subscriber": "Subscriber",
+  "approved": "Approved",
+  "proposed": "Proposed"
 }

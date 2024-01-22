@@ -198,5 +198,10 @@
   "undo_delete": "Angre sletting",
   "edit_content": "Rediger innhold",
   "online": "Online",
-  "offline": "Offline"
+  "offline": "Offline",
+  "download_app": "Last ned appen",
+  "approved_user": "Godkjent bruker",
+  "subscriber": "Abonnent",
+  "approved": "Godkjent",
+  "proposed": "Foreslått"
 }

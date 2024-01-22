@@ -198,5 +198,10 @@
   "undo_delete": "בטל מחיקה",
   "edit_content": "ערוך תוכן",
   "online": "מקוון",
-  "offline": "מנותק"
+  "offline": "מנותק",
+  "download_app": "הורד את האפליקציה",
+  "approved_user": "משתמש מאושר",
+  "subscriber": "מנוי",
+  "approved": "מאושר",
+  "proposed": "מוצע"
 }

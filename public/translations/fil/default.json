@@ -198,5 +198,10 @@
   "undo_delete": "I-undo ang Pag-delete",
   "edit_content": "I-edit ang Nilalaman",
   "online": "Online",
-  "offline": "Offline"
+  "offline": "Offline",
+  "download_app": "I-download ang App",
+  "approved_user": "Aprobado na User",
+  "subscriber": "Subscriber",
+  "approved": "Aprobado",
+  "proposed": "Proposed"
 }

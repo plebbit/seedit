@@ -198,5 +198,10 @@
   "undo_delete": "Annuler la suppression",
   "edit_content": "Modifier le contenu",
   "online": "En ligne",
-  "offline": "Hors ligne"
+  "offline": "Hors ligne",
+  "download_app": "Télécharger l'application",
+  "approved_user": "Utilisateur approuvé",
+  "subscriber": "Abonné",
+  "approved": "Approuvé",
+  "proposed": "Proposé"
 }

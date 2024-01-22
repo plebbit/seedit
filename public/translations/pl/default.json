@@ -198,5 +198,10 @@
   "undo_delete": "Cofnij usunięcie",
   "edit_content": "Edytuj zawartość",
   "online": "Online",
-  "offline": "Offline"
+  "offline": "Offline",
+  "download_app": "Pobierz aplikację",
+  "approved_user": "Zatwierdzony użytkownik",
+  "subscriber": "Subskrybent",
+  "approved": "Zatwierdzone",
+  "proposed": "Zaproponowane"
 }

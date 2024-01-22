@@ -198,5 +198,10 @@
   "undo_delete": "삭제 복원",
   "edit_content": "콘텐츠 편집",
   "online": "온라인",
-  "offline": "오프라인"
+  "offline": "오프라인",
+  "download_app": "앱 다운로드",
+  "approved_user": "승인된 사용자",
+  "subscriber": "구독자",
+  "approved": "승인됨",
+  "proposed": "제안됨"
 }

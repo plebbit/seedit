@@ -198,5 +198,10 @@
   "undo_delete": "بازگشت حذف",
   "edit_content": "ویرایش محتوا",
   "online": "آنلاین",
-  "offline": "آفلاین"
+  "offline": "آفلاین",
+  "download_app": "دانلود اپلیکیشن",
+  "approved_user": "کاربر تأیید شده",
+  "subscriber": "مشترک",
+  "approved": "تایید شده",
+  "proposed": "پیشنهادی"
 }

@@ -198,5 +198,10 @@
   "undo_delete": "ยกเลิกการลบ",
   "edit_content": "แก้ไขเนื้อหา",
   "online": "ออนไลน์",
-  "offline": "ออฟไลน์"
+  "offline": "ออฟไลน์",
+  "download_app": "ดาวน์โหลดแอพ",
+  "approved_user": "ผู้ใช้ที่ได้รับการอนุมัติ",
+  "subscriber": "ผู้ติดตาม",
+  "approved": "ได้รับการอนุมัติ",
+  "proposed": "เสนอ"
 }

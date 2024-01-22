@@ -198,5 +198,10 @@
   "undo_delete": "Anulo fshirjen",
   "edit_content": "Ndrysho përmbajtjen",
   "online": "Online",
-  "offline": "Offline"
+  "offline": "Offline",
+  "download_app": "Shkarko aplikacionin",
+  "approved_user": "Përdorues i miratuar",
+  "subscriber": "Abonues",
+  "approved": "Miratuar",
+  "proposed": "Propozuar"
 }

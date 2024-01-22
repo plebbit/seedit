@@ -198,5 +198,10 @@
   "undo_delete": "Fortryd sletning",
   "edit_content": "Rediger indhold",
   "online": "Online",
-  "offline": "Offline"
+  "offline": "Offline",
+  "download_app": "Hent appen",
+  "approved_user": "Godkendt bruger",
+  "subscriber": "Abonnent",
+  "approved": "Godkendt",
+  "proposed": "Foreslået"
 }

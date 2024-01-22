@@ -198,5 +198,10 @@
   "undo_delete": "Zrušit smazání",
   "edit_content": "Upravit obsah",
   "online": "Online",
-  "offline": "Offline"
+  "offline": "Offline",
+  "download_app": "Stáhnout aplikaci",
+  "approved_user": "Schválený uživatel",
+  "subscriber": "Odběratel",
+  "approved": "Schváleno",
+  "proposed": "Navrženo"
 }

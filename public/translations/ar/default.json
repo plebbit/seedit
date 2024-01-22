@@ -198,5 +198,10 @@
   "undo_delete": "تراجع الحذف",
   "edit_content": "تحرير المحتوى",
   "online": "متصل",
-  "offline": "غير متصل"
+  "offline": "غير متصل",
+  "download_app": "تحميل التطبيق",
+  "approved_user": "مستخدم معتمد",
+  "subscriber": "مشترك",
+  "approved": "معتمد",
+  "proposed": "مقترح"
 }

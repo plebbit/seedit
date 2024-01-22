@@ -198,5 +198,10 @@
   "undo_delete": "Batalkan Hapus",
   "edit_content": "Edit Konten",
   "online": "Online",
-  "offline": "Offline"
+  "offline": "Offline",
+  "download_app": "Unduh Aplikasi",
+  "approved_user": "Pengguna Disetujui",
+  "subscriber": "Pelanggan",
+  "approved": "Disetujui",
+  "proposed": "Diusulkan"
 }

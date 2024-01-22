@@ -198,5 +198,10 @@
   "undo_delete": "মুছে ফেলা পূনঃস্থাপন করুন",
   "edit_content": "সামগ্রী সম্পাদনা",
   "online": "অনলাইন",
-  "offline": "অফলাইন"
+  "offline": "অফলাইন",
+  "download_app": "অ্যাপ ডাউনলোড করুন",
+  "approved_user": "অনুমোদিত ব্যবহারকারী",
+  "subscriber": "সাবস্ক্রাইবার",
+  "approved": "অনুমোদিত",
+  "proposed": "প্রস্তাবিত"
 }

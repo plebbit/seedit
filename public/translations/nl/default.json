@@ -198,5 +198,10 @@
   "undo_delete": "Ongedaan maken verwijderen",
   "edit_content": "Inhoud bewerken",
   "online": "Online",
-  "offline": "Offline"
+  "offline": "Offline",
+  "download_app": "App downloaden",
+  "approved_user": "Goedgekeurde gebruiker",
+  "subscriber": "Abonnee",
+  "approved": "Goedgekeurd",
+  "proposed": "Voorgesteld"
 }

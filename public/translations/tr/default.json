@@ -198,5 +198,10 @@
   "undo_delete": "Silme İptal",
   "edit_content": "İçerik düzenleme",
   "online": "Çevrimiçi",
-  "offline": "Çevrimdışı"
+  "offline": "Çevrimdışı",
+  "download_app": "Uygulamayı indir",
+  "approved_user": "Onaylanmış Kullanıcı",
+  "subscriber": "Abone",
+  "approved": "Onaylandı",
+  "proposed": "Önerilen"
 }

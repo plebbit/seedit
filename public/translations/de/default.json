@@ -198,5 +198,10 @@
   "undo_delete": "Löschen rückgängig machen",
   "edit_content": "Inhalt bearbeiten",
   "online": "Online",
-  "offline": "Offline"
+  "offline": "Offline",
+  "download_app": "App herunterladen",
+  "approved_user": "Bestätigter Benutzer",
+  "subscriber": "Abonnent",
+  "approved": "Genehmigt",
+  "proposed": "Vorgeschlagen"
 }

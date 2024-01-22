@@ -198,5 +198,10 @@
   "undo_delete": "削除を取り消す",
   "edit_content": "コンテンツを編集",
   "online": "オンライン",
-  "offline": "オフライン"
+  "offline": "オフライン",
+  "download_app": "アプリをダウンロード",
+  "approved_user": "承認済みユーザー",
+  "subscriber": "購読者",
+  "approved": "承認済み",
+  "proposed": "提案済み"
 }

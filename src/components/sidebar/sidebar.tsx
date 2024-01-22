@@ -226,7 +226,7 @@ const Sidebar = ({ address, cid, createdAt, description, downvoteCount = 0, role
           <ul>
             <li>
               <a href='https://plebbit.com' target='_blank' rel='noopener noreferrer'>
-                about
+                {t('about')}
               </a>
               <span className={styles.footerSeparator}>|</span>
             </li>
@@ -258,7 +258,7 @@ const Sidebar = ({ address, cid, createdAt, description, downvoteCount = 0, role
             {downloadAppLink && (
               <li>
                 <a href={downloadAppLink} target='_blank' rel='noopener noreferrer'>
-                  download app
+                  {t('download_app')}
                 </a>
                 <span className={styles.footerSeparator}>|</span>
               </li>

@@ -198,5 +198,10 @@
   "undo_delete": "Anulează ștergerea",
   "edit_content": "Editează conținutul",
   "online": "Online",
-  "offline": "Offline"
+  "offline": "Offline",
+  "download_app": "Descarcă aplicația",
+  "approved_user": "Utilizator aprobat",
+  "subscriber": "Abonat",
+  "approved": "Aprobat",
+  "proposed": "Propus"
 }

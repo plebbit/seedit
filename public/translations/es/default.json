@@ -198,5 +198,10 @@
   "undo_delete": "Deshacer eliminación",
   "edit_content": "Editar contenido",
   "online": "En línea",
-  "offline": "Sin conexión"
+  "offline": "Sin conexión",
+  "download_app": "Descargar aplicación",
+  "approved_user": "Usuario aprobado",
+  "subscriber": "Suscriptor",
+  "approved": "Aprobado",
+  "proposed": "Propuesto"
 }

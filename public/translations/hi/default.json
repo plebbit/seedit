@@ -198,5 +198,10 @@
   "undo_delete": "मिटाने को पूना करें",
   "edit_content": "सामग्री संपादित करें",
   "online": "ऑनलाइन",
-  "offline": "ऑफ़लाइन"
+  "offline": "ऑफ़लाइन",
+  "download_app": "ऐप डाउनलोड करें",
+  "approved_user": "मान्यता प्राप्त उपयोगकर्ता",
+  "subscriber": "सदस्य",
+  "approved": "मान्यता प्राप्त",
+  "proposed": "प्रस्तावित"
 }

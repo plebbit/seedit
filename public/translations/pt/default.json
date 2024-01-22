@@ -198,5 +198,10 @@
   "undo_delete": "Desfazer exclusão",
   "edit_content": "Editar conteúdo",
   "online": "Online",
-  "offline": "Offline"
+  "offline": "Offline",
+  "download_app": "Baixar aplicativo",
+  "approved_user": "Usuário aprovado",
+  "subscriber": "Inscrito",
+  "approved": "Aprovado",
+  "proposed": "Proposto"
 }

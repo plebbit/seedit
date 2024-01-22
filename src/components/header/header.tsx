@@ -211,12 +211,12 @@ const SubplebbitsHeaderTabs = () => {
     <>
       <li>
         <Link to={'/communities'} className={`${isInSubplebbitsView ? styles.selected : styles.choice}`}>
-          approved
+          {t('approved')}
         </Link>
       </li>
       <li>
         <Link to={'/communities'} className={styles.choice} onClick={(e) => e.preventDefault()}>
-          proposed
+          {t('proposed')}
         </Link>
       </li>
       <li>
