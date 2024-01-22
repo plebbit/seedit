@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { autoUpdate, flip, FloatingFocusManager, offset, shift, useClick, useDismiss, useFloating, useId, useInteractions, useRole } from '@floating-ui/react';
 import { useTranslation } from 'react-i18next';
-import { PublishCommentEditOptions, useComment, usePublishCommentEdit } from '@plebbit/plebbit-react-hooks';
+import { PublishCommentEditOptions, useComment, useEditedComment, usePublishCommentEdit } from '@plebbit/plebbit-react-hooks';
 import styles from './mod-menu.module.css';
 import { alertChallengeVerificationFailed } from '../../../../lib/utils/challenge-utils';
 import challengesStore from '../../../../hooks/use-challenges';
@@ -14,7 +14,15 @@ type ModMenuProps = {
 
 const ModMenu = ({ cid }: ModMenuProps) => {
   const { t } = useTranslation();
-  const post = useComment({ commentCid: cid });
+
+  let post: any;
+  const comment = useComment({ commentCid: cid });
+  const { editedComment } = useEditedComment({ comment });
+  if (editedComment) {
+    post = editedComment;
+  } else if (comment) {
+    post = comment;
+  }
   const isReply = post?.parentCid;
   const [isModMenuOpen, setIsModMenuOpen] = useState(false);
 
