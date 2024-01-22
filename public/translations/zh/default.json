@@ -191,5 +191,10 @@
   "last_account_notice": "您不能删除您的最后一个帐户，请先创建一个新帐户。",
   "delete_confirm": "您确定要删除 {{value}} 吗？",
   "saving": "正在保存",
-  "deleted": "已删除"
+  "deleted": "已删除",
+  "mark_spoiler": "标记为剧透",
+  "remove_spoiler": "移除剧透",
+  "delete_post": "删除帖子",
+  "undo_delete": "撤销删除",
+  "edit_content": "编辑内容"
 }

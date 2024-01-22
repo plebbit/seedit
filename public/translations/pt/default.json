@@ -191,5 +191,10 @@
   "last_account_notice": "Você não pode excluir sua última conta, por favor crie uma nova primeiro.",
   "delete_confirm": "Tem certeza de que deseja excluir {{value}}?",
   "saving": "Salvando",
-  "deleted": "Excluído"
+  "deleted": "Excluído",
+  "mark_spoiler": "Marcar como spoiler",
+  "remove_spoiler": "Remover spoiler",
+  "delete_post": "Excluir postagem",
+  "undo_delete": "Desfazer exclusão",
+  "edit_content": "Editar conteúdo"
 }

@@ -191,5 +191,10 @@
   "last_account_notice": "Son hesabınızı silemezsiniz, lütfen önce yeni bir tane oluşturun.",
   "delete_confirm": "{{value}}'yi silmek istediğinizden emin misiniz?",
   "saving": "Kaydediliyor",
-  "deleted": "Silindi"
+  "deleted": "Silindi",
+  "mark_spoiler": "Spoiler olarak işaretle",
+  "remove_spoiler": "Spoileri Kaldır",
+  "delete_post": "Gönderiyi Sil",
+  "undo_delete": "Silme İptal",
+  "edit_content": "İçerik düzenleme"
 }

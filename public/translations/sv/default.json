@@ -191,5 +191,10 @@
   "last_account_notice": "Du kan inte ta bort ditt senaste konto, skapa först ett nytt.",
   "delete_confirm": "Är du säker på att du vill ta bort {{value}}?",
   "saving": "Sparar",
-  "deleted": "Raderat"
+  "deleted": "Raderat",
+  "mark_spoiler": "Markera som spoiler",
+  "remove_spoiler": "Ta bort spoiler",
+  "delete_post": "Ta bort inlägg",
+  "undo_delete": "Ångra radering",
+  "edit_content": "Redigera innehåll"
 }

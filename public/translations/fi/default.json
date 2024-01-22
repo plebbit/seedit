@@ -191,5 +191,10 @@
   "last_account_notice": "Et voi poistaa viimeistä tiliäsi, luo ensin uusi.",
   "delete_confirm": "Haluatko varmasti poistaa {{value}}?",
   "saving": "Tallentaa",
-  "deleted": "Poistettu"
+  "deleted": "Poistettu",
+  "mark_spoiler": "Merkitse spoilereiksi",
+  "remove_spoiler": "Poista spoiler",
+  "delete_post": "Poista viesti",
+  "undo_delete": "Peru poistaminen",
+  "edit_content": "Muokkaa sisältöä"
 }

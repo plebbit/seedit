@@ -191,5 +191,10 @@
   "last_account_notice": "Nemůžete smazat svůj poslední účet, nejprve si vytvořte nový.",
   "delete_confirm": "Opravdu chcete smazat {{value}}?",
   "saving": "Ukládání",
-  "deleted": "Smazáno"
+  "deleted": "Smazáno",
+  "mark_spoiler": "Označit jako spoilery",
+  "remove_spoiler": "Odebrat spoiler",
+  "delete_post": "Smazat příspěvek",
+  "undo_delete": "Zrušit smazání",
+  "edit_content": "Upravit obsah"
 }

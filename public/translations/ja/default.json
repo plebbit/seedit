@@ -191,5 +191,10 @@
   "last_account_notice": "最後のアカウントは削除できません。新しいアカウントを作成してください。",
   "delete_confirm": "{{value}} を削除してもよろしいですか？",
   "saving": "保存中",
-  "deleted": "削除されました"
+  "deleted": "削除されました",
+  "mark_spoiler": "スポイラーとしてマーク",
+  "remove_spoiler": "スポイラーを削除",
+  "delete_post": "投稿を削除",
+  "undo_delete": "削除を取り消す",
+  "edit_content": "コンテンツを編集"
 }

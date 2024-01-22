@@ -191,5 +191,10 @@
   "last_account_notice": "Sie können Ihr letztes Konto nicht löschen, bitte erstellen Sie zuerst ein neues.",
   "delete_confirm": "Möchten Sie {{value}} wirklich löschen?",
   "saving": "Speichern",
-  "deleted": "Gelöscht"
+  "deleted": "Gelöscht",
+  "mark_spoiler": "Als Spoiler markieren",
+  "remove_spoiler": "Spoiler entfernen",
+  "delete_post": "Beitrag löschen",
+  "undo_delete": "Löschen rückgängig machen",
+  "edit_content": "Inhalt bearbeiten"
 }

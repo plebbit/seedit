@@ -191,5 +191,10 @@
   "last_account_notice": "U kunt uw laatste account niet verwijderen, maak eerst een nieuwe aan.",
   "delete_confirm": "Weet je zeker dat je {{value}} wilt verwijderen?",
   "saving": "Opslaan",
-  "deleted": "Verwijderd"
+  "deleted": "Verwijderd",
+  "mark_spoiler": "Markeer als spoiler",
+  "remove_spoiler": "Spoiler verwijderen",
+  "delete_post": "Bericht verwijderen",
+  "undo_delete": "Ongedaan maken verwijderen",
+  "edit_content": "Inhoud bewerken"
 }

@@ -191,5 +191,10 @@
   "last_account_notice": "Hindi mo maaaring burahin ang iyong huling account, mangyaring gumawa muna ng bago.",
   "delete_confirm": "Sigurado ka bang nais mong burahin ang {{value}}?",
   "saving": "Nag-i-save",
-  "deleted": "Nadelete"
+  "deleted": "Nadelete",
+  "mark_spoiler": "I-mark bilang spoiler",
+  "remove_spoiler": "Tanggalin ang spoiler",
+  "delete_post": "Burahin ang Post",
+  "undo_delete": "I-undo ang Pag-delete",
+  "edit_content": "I-edit ang Nilalaman"
 }

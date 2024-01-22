@@ -191,5 +191,10 @@
   "last_account_notice": "Vous ne pouvez pas supprimer votre dernier compte, veuillez d'abord en créer un nouveau.",
   "delete_confirm": "Êtes-vous sûr de vouloir supprimer {{value}}?",
   "saving": "Enregistrement",
-  "deleted": "Supprimé"
+  "deleted": "Supprimé",
+  "mark_spoiler": "Marquer comme spoiler",
+  "remove_spoiler": "Supprimer le spoiler",
+  "delete_post": "Supprimer la publication",
+  "undo_delete": "Annuler la suppression",
+  "edit_content": "Modifier le contenu"
 }

@@ -191,5 +191,10 @@
   "last_account_notice": "Non puoi eliminare il tuo ultimo account, crea prima un nuovo account.",
   "delete_confirm": "Confermi di voler cancellare {{value}}?",
   "saving": "Salvataggio",
-  "deleted": "Cancellato"
+  "deleted": "Cancellato",
+  "mark_spoiler": "Segna come spoiler",
+  "remove_spoiler": "Rimuovi spoiler",
+  "delete_post": "Elimina post",
+  "undo_delete": "Annulla cancellazione",
+  "edit_content": "Modifica contenuto"
 }

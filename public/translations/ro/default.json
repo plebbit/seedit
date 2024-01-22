@@ -191,5 +191,10 @@
   "last_account_notice": "Nu puteți șterge ultimul dvs. cont, vă rugăm să creați unul nou mai întâi.",
   "delete_confirm": "Sunteți sigur că doriți să ștergeți {{value}}?",
   "saving": "Se salvează",
-  "deleted": "Șters"
+  "deleted": "Șters",
+  "mark_spoiler": "Marchează ca spoiler",
+  "remove_spoiler": "Eliminați spoilerul",
+  "delete_post": "Ștergeți postarea",
+  "undo_delete": "Anulează ștergerea",
+  "edit_content": "Editează conținutul"
 }

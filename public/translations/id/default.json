@@ -191,5 +191,10 @@
   "last_account_notice": "Anda tidak dapat menghapus akun terakhir Anda, harap buat yang baru terlebih dahulu.",
   "delete_confirm": "Apakah Anda yakin ingin menghapus {{value}}?",
   "saving": "Menyimpan",
-  "deleted": "Dihapus"
+  "deleted": "Dihapus",
+  "mark_spoiler": "Tandai sebagai spoiler",
+  "remove_spoiler": "Hapus spoiler",
+  "delete_post": "Hapus Kiriman",
+  "undo_delete": "Batalkan Hapus",
+  "edit_content": "Edit Konten"
 }

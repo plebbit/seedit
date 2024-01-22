@@ -191,5 +191,10 @@
   "last_account_notice": "Nuk mund të fshini llogarinë tuaj të fundit, ju lutemi krijoni një të re fillimisht.",
   "delete_confirm": "A jeni të sigurt se dëshironi të fshini {{value}}?",
   "saving": "Ruajtja",
-  "deleted": "Fshirë"
+  "deleted": "Fshirë",
+  "mark_spoiler": "Shënimi si spoiler",
+  "remove_spoiler": "Hiqni spoiler",
+  "delete_post": "Fshi Postën",
+  "undo_delete": "Anulo fshirjen",
+  "edit_content": "Ndrysho përmbajtjen"
 }
