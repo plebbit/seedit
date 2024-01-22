@@ -190,5 +190,6 @@
   "edit_subscriptions": "Ndrysho abonimet",
   "last_account_notice": "Nuk mund të fshini llogarinë tuaj të fundit, ju lutemi krijoni një të re fillimisht.",
   "delete_confirm": "A jeni të sigurt se dëshironi të fshini {{value}}?",
-  "saving": "Ruajtja"
+  "saving": "Ruajtja",
+  "deleted": "Fshirë"
 }

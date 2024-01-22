@@ -190,5 +190,6 @@
   "edit_subscriptions": "Modifier les abonnements",
   "last_account_notice": "Vous ne pouvez pas supprimer votre dernier compte, veuillez d'abord en créer un nouveau.",
   "delete_confirm": "Êtes-vous sûr de vouloir supprimer {{value}}?",
-  "saving": "Enregistrement"
+  "saving": "Enregistrement",
+  "deleted": "Supprimé"
 }

@@ -190,5 +190,6 @@
   "edit_subscriptions": "購読の編集",
   "last_account_notice": "最後のアカウントは削除できません。新しいアカウントを作成してください。",
   "delete_confirm": "{{value}} を削除してもよろしいですか？",
-  "saving": "保存中"
+  "saving": "保存中",
+  "deleted": "削除されました"
 }

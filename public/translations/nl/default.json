@@ -190,5 +190,6 @@
   "edit_subscriptions": "Abonnementen bewerken",
   "last_account_notice": "U kunt uw laatste account niet verwijderen, maak eerst een nieuwe aan.",
   "delete_confirm": "Weet je zeker dat je {{value}} wilt verwijderen?",
-  "saving": "Opslaan"
+  "saving": "Opslaan",
+  "deleted": "Verwijderd"
 }

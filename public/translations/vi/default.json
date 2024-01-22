@@ -190,5 +190,6 @@
   "edit_subscriptions": "Chỉnh sửa đăng ký",
   "last_account_notice": "Bạn không thể xóa tài khoản cuối cùng của mình, vui lòng tạo một tài khoản mới trước.",
   "delete_confirm": "Bạn có chắc chắn muốn xóa {{value}} không?",
-  "saving": "Đang lưu"
+  "saving": "Đang lưu",
+  "deleted": "Đã xóa"
 }

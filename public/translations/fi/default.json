@@ -190,5 +190,6 @@
   "edit_subscriptions": "Muokkaa tilauksia",
   "last_account_notice": "Et voi poistaa viimeistä tiliäsi, luo ensin uusi.",
   "delete_confirm": "Haluatko varmasti poistaa {{value}}?",
-  "saving": "Tallentaa"
+  "saving": "Tallentaa",
+  "deleted": "Poistettu"
 }

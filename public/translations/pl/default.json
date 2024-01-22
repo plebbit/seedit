@@ -190,5 +190,6 @@
   "edit_subscriptions": "Edytuj subskrypcje",
   "last_account_notice": "Nie możesz usunąć swojego ostatniego konta, proszę najpierw utwórz nowe.",
   "delete_confirm": "Czy na pewno chcesz usunąć {{value}}?",
-  "saving": "Zapisywanie"
+  "saving": "Zapisywanie",
+  "deleted": "Usunięte"
 }

@@ -190,5 +190,6 @@
   "edit_subscriptions": "Edit Langganan",
   "last_account_notice": "Anda tidak dapat menghapus akun terakhir Anda, harap buat yang baru terlebih dahulu.",
   "delete_confirm": "Apakah Anda yakin ingin menghapus {{value}}?",
-  "saving": "Menyimpan"
+  "saving": "Menyimpan",
+  "deleted": "Dihapus"
 }

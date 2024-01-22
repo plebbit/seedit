@@ -190,5 +190,6 @@
   "edit_subscriptions": "Redigera prenumerationer",
   "last_account_notice": "Du kan inte ta bort ditt senaste konto, skapa först ett nytt.",
   "delete_confirm": "Är du säker på att du vill ta bort {{value}}?",
-  "saving": "Sparar"
+  "saving": "Sparar",
+  "deleted": "Raderat"
 }

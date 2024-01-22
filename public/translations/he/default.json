@@ -190,5 +190,6 @@
   "edit_subscriptions": "ערוך מנויים",
   "last_account_notice": "אינך יכול למחוק את החשבון האחרון שלך, אנא צור חשבון חדש תחילה.",
   "delete_confirm": "האם אתה בטוח שברצונך למחוק את {{value}}?",
-  "saving": "שמירה"
+  "saving": "שמירה",
+  "deleted": "נמחק"
 }

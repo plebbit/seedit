@@ -190,5 +190,6 @@
   "edit_subscriptions": "Edit Subscriptions",
   "last_account_notice": "You cannot delete your last account, please create a new one first.",
   "delete_confirm": "Are you sure you want to delete {{value}}?",
-  "saving": "Saving"
+  "saving": "Saving",
+  "deleted": "Deleted"
 }

@@ -190,5 +190,6 @@
   "edit_subscriptions": "Upravit předplatné",
   "last_account_notice": "Nemůžete smazat svůj poslední účet, nejprve si vytvořte nový.",
   "delete_confirm": "Opravdu chcete smazat {{value}}?",
-  "saving": "Ukládání"
+  "saving": "Ukládání",
+  "deleted": "Smazáno"
 }

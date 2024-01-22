@@ -190,5 +190,6 @@
   "edit_subscriptions": "Editează abonamente",
   "last_account_notice": "Nu puteți șterge ultimul dvs. cont, vă rugăm să creați unul nou mai întâi.",
   "delete_confirm": "Sunteți sigur că doriți să ștergeți {{value}}?",
-  "saving": "Se salvează"
+  "saving": "Se salvează",
+  "deleted": "Șters"
 }

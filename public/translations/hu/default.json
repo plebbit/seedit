@@ -190,5 +190,6 @@
   "edit_subscriptions": "Előfizetések szerkesztése",
   "last_account_notice": "Nem törölheti az utolsó fiókját, először hozzon létre egy újat.",
   "delete_confirm": "Biztosan törölni szeretné {{value}}?",
-  "saving": "Mentés"
+  "saving": "Mentés",
+  "deleted": "Törölve"
 }

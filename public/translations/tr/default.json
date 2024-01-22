@@ -190,5 +190,6 @@
   "edit_subscriptions": "Abonelikleri Düzenle",
   "last_account_notice": "Son hesabınızı silemezsiniz, lütfen önce yeni bir tane oluşturun.",
   "delete_confirm": "{{value}}'yi silmek istediğinizden emin misiniz?",
-  "saving": "Kaydediliyor"
+  "saving": "Kaydediliyor",
+  "deleted": "Silindi"
 }
