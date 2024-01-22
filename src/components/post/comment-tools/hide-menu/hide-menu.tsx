@@ -81,7 +81,7 @@ const HideMenu = ({ author, cid, isMod, subplebbitAddress }: HideMenuProps) => {
       {isHideMenuOpen && (
         <FloatingFocusManager context={context} modal={false}>
           <div className={styles.modal} ref={refs.setFloating} style={floatingStyles} aria-labelledby={headingId} {...getFloatingProps()}>
-            <div className={styles.modMenu}>
+            <div className={styles.menu}>
               <BlockCommentButton cid={cid} toggleIsMenuOpen={toggleIsMenuOpen} />
               <BlockSubplebbitButton subplebbitAddress={subplebbitAddress} />
               <BlockAuthorButton author={author} />

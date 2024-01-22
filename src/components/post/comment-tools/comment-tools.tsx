@@ -2,6 +2,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { Author, useAccount, useComment, useSubplebbit } from '@plebbit/plebbit-react-hooks';
 import styles from './comment-tools.module.css';
+import EditMenu from './edit-menu';
 import HideMenu from './hide-menu';
 import ModMenu from './mod-menu';
 import ShareMenu from './share-menu';
@@ -15,6 +16,7 @@ interface CommentToolsProps {
   failed?: boolean;
   hasLabel?: boolean;
   index?: number;
+  isAuthor?: boolean;
   isMod?: boolean;
   isReply?: boolean;
   isSingleReply?: boolean;
@@ -26,7 +28,7 @@ interface CommentToolsProps {
   showReplyForm?: () => void;
 }
 
-const PostTools = ({ author, cid, hasLabel, index, isMod, subplebbitAddress, replyCount = 0 }: CommentToolsProps) => {
+const PostTools = ({ author, cid, hasLabel, index, isAuthor, isMod, subplebbitAddress, replyCount = 0 }: CommentToolsProps) => {
   const { t } = useTranslation();
   const validReplyCount = isNaN(replyCount) ? 0 : replyCount;
   const commentCount = validReplyCount === 0 ? t('post_no_comments') : `${validReplyCount} ${validReplyCount === 1 ? t('post_comment') : t('post_comments')}`;
@@ -40,6 +42,7 @@ const PostTools = ({ author, cid, hasLabel, index, isMod, subplebbitAddress, rep
       <li className={styles.button}>
         <span>{t('save')}</span>
       </li>
+      {isAuthor && <EditMenu cid={cid} />}
       <HideMenu author={author} cid={cid} isMod={isMod} subplebbitAddress={subplebbitAddress} />
       <li className={`${styles.button} ${styles.crosspostButton}`}>
         <span>{t('crosspost')}</span>
@@ -55,7 +58,7 @@ const PostTools = ({ author, cid, hasLabel, index, isMod, subplebbitAddress, rep
   );
 };
 
-const ReplyTools = ({ author, cid, hasLabel, index, isMod, showReplyForm, subplebbitAddress }: CommentToolsProps) => {
+const ReplyTools = ({ author, cid, hasLabel, index, isAuthor, isMod, showReplyForm, subplebbitAddress }: CommentToolsProps) => {
   const { t } = useTranslation();
 
   return (
@@ -67,6 +70,7 @@ const ReplyTools = ({ author, cid, hasLabel, index, isMod, showReplyForm, subple
       <li className={styles.button}>
         <span>{t('save')}</span>
       </li>
+      {isAuthor && <EditMenu cid={cid} />}
       <HideMenu author={author} cid={cid} isMod={isMod} subplebbitAddress={subplebbitAddress} />
       <li className={!cid ? styles.hideReply : styles.button}>
         <span onClick={() => cid && showReplyForm?.()}>{t('reply_reply')}</span>
@@ -82,7 +86,7 @@ const ReplyTools = ({ author, cid, hasLabel, index, isMod, showReplyForm, subple
   );
 };
 
-const SingleReplyTools = ({ author, cid, hasLabel, index, isMod, parentCid, showReplyForm, subplebbitAddress }: CommentToolsProps) => {
+const SingleReplyTools = ({ author, cid, hasLabel, index, isAuthor, isMod, parentCid, showReplyForm, subplebbitAddress }: CommentToolsProps) => {
   const { t } = useTranslation();
   const comment = useComment({ commentCid: parentCid });
 
@@ -94,6 +98,7 @@ const SingleReplyTools = ({ author, cid, hasLabel, index, isMod, parentCid, show
       <li className={styles.button}>
         <span>{t('save')}</span>
       </li>
+      {isAuthor && <EditMenu cid={cid} />}
       <li className={styles.button}>
         <Link to={cid ? `/p/${subplebbitAddress}/c/${parentCid}` : `/profile/${index}`}>{t('context')}</Link>
       </li>
@@ -149,6 +154,7 @@ const CommentTools = ({
   showReplyForm,
 }: CommentToolsProps) => {
   const account = useAccount();
+  const isAuthor = account?.author?.address === author?.address;
   const authorRole = useSubplebbit({ subplebbitAddress })?.roles?.[account?.author?.address]?.role;
   const isMod = authorRole === 'admin' || authorRole === 'owner' || authorRole === 'moderator';
   const isInInboxView = isInboxView(useLocation().pathname);
@@ -163,6 +169,7 @@ const CommentTools = ({
             cid={cid}
             hasLabel={hasLabel}
             index={index}
+            isAuthor={isAuthor}
             isMod={isMod}
             parentCid={parentCid}
             showReplyForm={showReplyForm}
@@ -174,6 +181,7 @@ const CommentTools = ({
             cid={cid}
             hasLabel={hasLabel}
             index={index}
+            isAuthor={isAuthor}
             isMod={isMod}
             parentCid={parentCid}
             showReplyForm={showReplyForm}
@@ -181,7 +189,16 @@ const CommentTools = ({
           />
         )
       ) : (
-        <PostTools author={author} cid={cid} hasLabel={hasLabel} index={index} isMod={isMod} subplebbitAddress={subplebbitAddress} replyCount={replyCount} />
+        <PostTools
+          author={author}
+          cid={cid}
+          hasLabel={hasLabel}
+          index={index}
+          isAuthor={isAuthor}
+          isMod={isMod}
+          subplebbitAddress={subplebbitAddress}
+          replyCount={replyCount}
+        />
       )}
     </ul>
   );
