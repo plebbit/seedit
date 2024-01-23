@@ -133,13 +133,13 @@ const Subplebbit = ({ subplebbit }: SubplebbitProps) => {
             {isOnline ? (
               <>
                 {t('members_count', { count: allActiveUserCount })}, {t('community_for', { date: getFormattedTimeDuration(createdAt) })}
-                <div className={styles.subplebbitPreferences}>
-                  <Link to={`/p/${address}/settings`}>{t('settings')}</Link>
-                </div>
               </>
             ) : (
               offlineNotice
             )}
+            <div className={styles.subplebbitPreferences}>
+              <Link to={`/p/${address}/settings`}>{t('settings')}</Link>
+            </div>
           </span>
         </div>
       </div>
