@@ -7,7 +7,10 @@ import remarkGfm from 'remark-gfm';
 
 const Markdown = ({ content }: { content: string }) => {
   // replace \n with \n\n when it follows a sentence starting with '>'
-  let preserveNewlineAfterQuote = content?.replace(/(>.*?)(\n)/g, '\n$1\n\n');
+  let preserveNewlineAfterQuote = content?.replace(/(^|\n)(>[^>].*?)(\n)/gm, '$1\n$2\n\n');
+
+  // replace \n\n with \n for list items separated by two newlines
+  let adjustListNewlines = preserveNewlineAfterQuote.replace(/(\n\n)([*-]|[0-9]+\.) (.+?)(?=\n\n([*-]|[0-9]+\.) )/gms, '\n$2 $3');
 
   const customSchema = useMemo(
     () => ({
@@ -38,7 +41,7 @@ const Markdown = ({ content }: { content: string }) => {
   return (
     <span className={styles.markdown}>
       <ReactMarkdown
-        children={preserveNewlineAfterQuote}
+        children={adjustListNewlines}
         remarkPlugins={[excludeBlockquote, [remarkGfm, { singleTilde: false }], breaks]}
         rehypePlugins={[[rehypeSanitize, customSchema]]}
         components={{
