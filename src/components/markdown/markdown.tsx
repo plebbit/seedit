@@ -10,7 +10,7 @@ const Markdown = ({ content }: { content: string }) => {
   let preserveNewlineAfterQuote = content?.replace(/(^|\n)(>[^>].*?)(\n)/gm, '$1\n$2\n\n');
 
   // replace \n\n with \n for list items separated by two newlines
-  let adjustListNewlines = preserveNewlineAfterQuote.replace(/(\n\n)([*-]|[0-9]+\.) (.+?)(?=\n\n([*-]|[0-9]+\.) )/gms, '\n$2 $3');
+  let adjustListNewlines = preserveNewlineAfterQuote?.replace(/(\n\n)([*-]|[0-9]+\.) (.+?)(?=\n\n([*-]|[0-9]+\.) )/gms, '\n$2 $3');
 
   const customSchema = useMemo(
     () => ({
