@@ -134,7 +134,7 @@ const Subplebbit = ({ subplebbit }: SubplebbitProps) => {
               p/{address?.includes('.') ? address : shortAddress}
               {title && `: ${title}`}
             </Link>
-            {userRole && <Flair flair={roleFlair} />}
+            {(userRole || isUserOwner) && <Flair flair={roleFlair} />}
             <span className={styles.subscribeButton}>
               <SubscribeButton address={address} />
             </span>
