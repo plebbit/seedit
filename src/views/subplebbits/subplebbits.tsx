@@ -1,6 +1,6 @@
 import { useEffect, useMemo } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { useTranslation } from 'react-i18next';
+import { Trans, useTranslation } from 'react-i18next';
 import { Subplebbit as SubplebbitType, useAccount, useAccountSubplebbits, useSubplebbits, useSubplebbitStats } from '@plebbit/plebbit-react-hooks';
 import styles from './subplebbits.module.css';
 import Sidebar from '../../components/sidebar';
@@ -30,7 +30,7 @@ const Tabs = () => {
   return (
     <div className={styles.subplebbitsTabs}>
       <Link to='/communities/mine/subscriber' className={isInSubplebbitsMineSubscriberView ? styles.selected : styles.choice}>
-        subscriber
+        {t('subscriber')}
       </Link>
       <span className={styles.separator}>|</span>
       <Link
@@ -38,7 +38,7 @@ const Tabs = () => {
         className={isInSubplebbitsMineContributorView ? styles.selected : styles.choice}
         onClick={(e) => e.preventDefault()} // TODO: enable after approving user is implemented in the API
       >
-        approved user
+        {t('approved_user')}
       </Link>
       <span className={styles.separator}>|</span>
       <Link to='/communities/mine/moderator' className={isInSubplebbitsMineModeratorView ? styles.selected : styles.choice}>
@@ -60,17 +60,13 @@ const Infobar = () => {
 
   const infobarText = useMemo(() => {
     if (isInSubplebbitsMineSubscriberView) {
-      return subscriptions.length === 0 ? 'you are not subscribed to any community.' : 'below are communities you have subscribed to.';
+      return subscriptions.length === 0 ? t('not_subscribed') : t('below_subscribed');
     } else if (isInSubplebbitsMineContributorView) {
-      return 'below are the communities that you are an approved user on.';
+      return t('below_approved_user');
     } else if (isInSubplebbitsMineModeratorView) {
-      return Object.keys(accountSubplebbits).length > 0 ? 'below are the communities that you have moderator access to.' : 'you are not a moderator on any community.';
+      return Object.keys(accountSubplebbits).length > 0 ? t('below_moderator_access') : t('not_moderator');
     } else {
-      return (
-        <>
-          click the <code>{t('join')}</code> or <code>{t('leave')}</code> buttons to choose which communities appear on the home feed.
-        </>
-      );
+      return <Trans i18nKey='join_communities_notice' values={{ join: t('join'), leave: t('leave') }} components={{ 1: <code />, 2: <code /> }} />;
     }
   }, [isInSubplebbitsMineSubscriberView, isInSubplebbitsMineContributorView, isInSubplebbitsMineModeratorView, t, subscriptions.length, accountSubplebbits]);
 
@@ -79,7 +75,7 @@ const Infobar = () => {
 
 const Subplebbit = ({ subplebbit }: SubplebbitProps) => {
   const { t } = useTranslation();
-  const { address, createdAt, description, shortAddress, title, updatedAt } = subplebbit || {};
+  const { address, createdAt, description, shortAddress, suggested, title, updatedAt } = subplebbit || {};
   const { allActiveUserCount } = useSubplebbitStats({ subplebbitAddress: address });
 
   // TODO: make arrows functional when token voting is implemented in the API
@@ -109,9 +105,16 @@ const Subplebbit = ({ subplebbit }: SubplebbitProps) => {
           </div>
         </div>
       </div>
+      {suggested?.avatarUrl && (
+        <div className={styles.avatar}>
+          <Link to={`/p/${address}`}>
+            <img src={suggested?.avatarUrl} alt={address} />
+          </Link>
+        </div>
+      )}
       <div className={styles.entry}>
         <div className={styles.title}>
-          <div className={styles.onlineIndicatorWrapper}>
+          <div className={styles.onlineIndicatorWrapper} title={isOnline ? t('online') : t('offline')}>
             <span className={`${styles.onlineIndicator} ${isOnline ? styles.online : styles.offline}`} />
           </div>
           <div className={styles.titleWrapper}>
@@ -130,13 +133,13 @@ const Subplebbit = ({ subplebbit }: SubplebbitProps) => {
             {isOnline ? (
               <>
                 {t('members_count', { count: allActiveUserCount })}, {t('community_for', { date: getFormattedTimeDuration(createdAt) })}
-                <div className={styles.subplebbitPreferences}>
-                  <Link to={`/p/${address}/settings`}>{t('settings')}</Link>
-                </div>
               </>
             ) : (
               offlineNotice
             )}
+            <div className={styles.subplebbitPreferences}>
+              <Link to={`/p/${address}/settings`}>{t('settings')}</Link>
+            </div>
           </span>
         </div>
       </div>

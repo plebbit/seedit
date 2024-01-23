@@ -196,5 +196,18 @@
   "remove_spoiler": "إزالة حريف",
   "delete_post": "حذف المنشور",
   "undo_delete": "تراجع الحذف",
-  "edit_content": "تحرير المحتوى"
+  "edit_content": "تحرير المحتوى",
+  "online": "متصل",
+  "offline": "غير متصل",
+  "download_app": "تحميل التطبيق",
+  "approved_user": "مستخدم معتمد",
+  "subscriber": "مشترك",
+  "approved": "معتمد",
+  "proposed": "مقترح",
+  "join_communities_notice": "انقر على الأزرار <1>{{join}}</1> أو <2>{{leave}}</2> لاختيار المجتمعات التي تظهر على صفحة البداية.",
+  "below_subscribed": "فيما يلي المجتمعات التي اشتركت فيها.",
+  "not_subscribed": "لم تشترك في أي مجتمع حتى الآن.",
+  "below_approved_user": "أدناه هي المجتمعات التي أنت مستخدم معتمد فيها.",
+  "below_moderator_access": "أدناه هي المجتمعات التي لديك وصولاً كمشرف إليها.",
+  "not_moderator": "أنت لست مشرفًا على أي مجتمع."
 }

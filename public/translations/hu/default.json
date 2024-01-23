@@ -196,5 +196,18 @@
   "remove_spoiler": "Spoiler eltávolítása",
   "delete_post": "Bejegyzés törlése",
   "undo_delete": "Törlés visszavonása",
-  "edit_content": "Tartalom szerkesztése"
+  "edit_content": "Tartalom szerkesztése",
+  "online": "Online",
+  "offline": "Offline",
+  "download_app": "App letöltése",
+  "approved_user": "Jóváhagyott felhasználó",
+  "subscriber": "Előfizető",
+  "approved": "Elfogadva",
+  "proposed": "Javasolt",
+  "join_communities_notice": "Kattints a <1>{{join}}</1> vagy <2>{{leave}}</2> gombokra, hogy kiválaszd, mely közösségek jelenjenek meg a főoldalon.",
+  "below_subscribed": "Az alábbiakban azok a közösségek találhatók, amelyekhez csatlakoztál.",
+  "not_subscribed": "Még nincs előfizetése egyetlen közösségre sem.",
+  "below_approved_user": "Lent láthatók azok a közösségek, amelyekben jóváhagyott felhasználó vagy.",
+  "below_moderator_access": "Lent láthatók azok a közösségek, amelyekhez moderátorként hozzáférhet.",
+  "not_moderator": "Nem vagy moderátor egyetlen közösségben sem."
 }

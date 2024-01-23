@@ -196,5 +196,18 @@
   "remove_spoiler": "Supprimer le spoiler",
   "delete_post": "Supprimer la publication",
   "undo_delete": "Annuler la suppression",
-  "edit_content": "Modifier le contenu"
+  "edit_content": "Modifier le contenu",
+  "online": "En ligne",
+  "offline": "Hors ligne",
+  "download_app": "Télécharger l'application",
+  "approved_user": "Utilisateur approuvé",
+  "subscriber": "Abonné",
+  "approved": "Approuvé",
+  "proposed": "Proposé",
+  "join_communities_notice": "Cliquez sur les boutons <1>{{join}}</1> ou <2>{{leave}}</2> pour choisir quelles communautés apparaissent sur la page d'accueil.",
+  "below_subscribed": "Ci-dessous se trouvent les communautés auxquelles vous êtes abonné.",
+  "not_subscribed": "Vous n'êtes abonné à aucune communauté pour le moment.",
+  "below_approved_user": "Ci-dessous se trouvent les communautés où vous êtes un utilisateur approuvé.",
+  "below_moderator_access": "Ci-dessous se trouvent les communautés auxquelles vous avez accès en tant que modérateur.",
+  "not_moderator": "Vous n'êtes pas modérateur dans aucune communauté."
 }

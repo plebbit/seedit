@@ -124,16 +124,15 @@ const SingleReplyTools = ({ author, cid, hasLabel, index, isAuthor, isMod, paren
 
 const CommentToolsLabel = ({ cid, deleted, failed, isReply, removed, spoiler }: CommentToolsProps) => {
   const pending = cid === undefined && !isReply && !failed;
-  const hasLabel = spoiler || deleted || failed || removed || pending;
 
   return (
-    <span className={`${hasLabel ? styles.label : ''}`}>
+    <>
       {spoiler && <SpoilerLabel />}
       {pending && <PendingLabel />}
       {failed && <FailedLabel />}
       {deleted && <DeletedLabel />}
       {removed && <RemovedLabel />}
-    </span>
+    </>
   );
 };
 

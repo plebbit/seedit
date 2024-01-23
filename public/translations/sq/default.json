@@ -196,5 +196,18 @@
   "remove_spoiler": "Hiqni spoiler",
   "delete_post": "Fshi Postën",
   "undo_delete": "Anulo fshirjen",
-  "edit_content": "Ndrysho përmbajtjen"
+  "edit_content": "Ndrysho përmbajtjen",
+  "online": "Online",
+  "offline": "Offline",
+  "download_app": "Shkarko aplikacionin",
+  "approved_user": "Përdorues i miratuar",
+  "subscriber": "Abonues",
+  "approved": "Miratuar",
+  "proposed": "Propozuar",
+  "join_communities_notice": "Klikoni butonat <1>{{join}}</1> ose <2>{{leave}}</2> për të zgjedhur cilat komunitete do të shfaqen në faqen kryesore.",
+  "below_subscribed": "Më poshtë janë komunitetet në të cilat keni bërë abonimin.",
+  "not_subscribed": "Ju nuk jeni ende i abonuar në ndonjë komunitet.",
+  "below_approved_user": "Më poshtë janë komunitetet që jeni një përdorues i miratuar në to.",
+  "below_moderator_access": "Më poshtë janë komunitetet në të cilat keni akses si moderator.",
+  "not_moderator": "Ju nuk jeni moderator në asnjë komunitet."
 }

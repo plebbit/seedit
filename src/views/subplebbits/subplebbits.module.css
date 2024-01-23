@@ -68,6 +68,18 @@
   color: var(--icon);
 }
 
+.avatar {
+  float: left;
+  margin-right: 5px;
+  margin-top: 5px;
+}
+
+.avatar img {
+  object-fit: cover;
+  width: 70px;
+  max-height: 70px;
+}
+
 .entry {
   overflow: hidden;
   opacity: 1;

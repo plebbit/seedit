@@ -196,5 +196,18 @@
   "remove_spoiler": "Xóa spoiler",
   "delete_post": "Xóa bài viết",
   "undo_delete": "Hoàn tác xóa",
-  "edit_content": "Chỉnh sửa nội dung"
+  "edit_content": "Chỉnh sửa nội dung",
+  "online": "Trực tuyến",
+  "offline": "Ngoại tuyến",
+  "download_app": "Tải ứng dụng",
+  "approved_user": "Người dùng được chấp thuận",
+  "subscriber": "Người đăng ký",
+  "approved": "Được phê duyệt",
+  "proposed": "Được đề xuất",
+  "join_communities_notice": "Nhấn vào các nút <1>{{join}}</1> hoặc <2>{{leave}}</2> để chọn xem cộng đồng nào sẽ xuất hiện trên trang chính.",
+  "below_subscribed": "Dưới đây là các cộng đồng mà bạn đã đăng ký.",
+  "not_subscribed": "Bạn chưa đăng ký bất kỳ cộng đồng nào.",
+  "below_approved_user": "Dưới đây là các cộng đồng mà bạn là một người dùng được phê duyệt.",
+  "below_moderator_access": "Dưới đây là các cộng đồng mà bạn có quyền truy cập với tư cách là người quản trị viên.",
+  "not_moderator": "Bạn không phải là người quản trị viên trên bất kỳ cộng đồng nào."
 }

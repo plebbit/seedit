@@ -196,5 +196,18 @@
   "remove_spoiler": "移除剧透",
   "delete_post": "删除帖子",
   "undo_delete": "撤销删除",
-  "edit_content": "编辑内容"
+  "edit_content": "编辑内容",
+  "online": "在线",
+  "offline": "离线",
+  "download_app": "下载应用程序",
+  "approved_user": "已批准用户",
+  "subscriber": "订阅者",
+  "approved": "已批准",
+  "proposed": "提出",
+  "join_communities_notice": "点击 <1>{{join}}</1> 或 <2>{{leave}}</2> 按钮选择在主页上显示哪些社区。",
+  "below_subscribed": "以下是您订阅的社区。",
+  "not_subscribed": "您尚未订阅任何社区。",
+  "below_approved_user": "下面是您是批准用户的社区。",
+  "below_moderator_access": "以下是您作为版主拥有访问权限的社区。",
+  "not_moderator": "您不是任何社区的版主。"
 }

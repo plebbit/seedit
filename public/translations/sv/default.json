@@ -196,5 +196,18 @@
   "remove_spoiler": "Ta bort spoiler",
   "delete_post": "Ta bort inlägg",
   "undo_delete": "Ångra radering",
-  "edit_content": "Redigera innehåll"
+  "edit_content": "Redigera innehåll",
+  "online": "Online",
+  "offline": "Offline",
+  "download_app": "Ladda ner appen",
+  "approved_user": "Godkänd användare",
+  "subscriber": "Prenumerant",
+  "approved": "Godkänd",
+  "proposed": "Förslaget",
+  "join_communities_notice": "Klicka på knapparna <1>{{join}}</1> eller <2>{{leave}}</2> för att välja vilka gemenskaper som ska visas på startsidan.",
+  "below_subscribed": "Nedan finns de gemenskaper du har prenumererat på.",
+  "not_subscribed": "Du är inte prenumererad på någon gemenskap ännu.",
+  "below_approved_user": "Nedan finns de gemenskaper där du är en godkänd användare.",
+  "below_moderator_access": "Nedan finns de gemenskaper som du har moderatoråtkomst till.",
+  "not_moderator": "Du är inte moderator i någon community."
 }

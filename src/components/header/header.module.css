@@ -103,6 +103,7 @@
   list-style: none;
   white-space: nowrap;
   display: inline-block;
+  text-transform: lowercase;
 }
 
 .tabMenu li {

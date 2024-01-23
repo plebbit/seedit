@@ -196,5 +196,18 @@
   "remove_spoiler": "Remove Spoiler",
   "delete_post": "Delete Post",
   "undo_delete": "Undo Delete",
-  "edit_content": "Edit Content"
+  "edit_content": "Edit Content",
+  "online": "Online",
+  "offline": "Offline",
+  "download_app": "Download App",
+  "approved_user": "Approved User",
+  "subscriber": "Subscriber",
+  "approved": "Approved",
+  "proposed": "Proposed",
+  "join_communities_notice": "Click the <1>{{join}}</1> or <2>{{leave}}</2> buttons to choose which communities appear on the home feed.",
+  "below_subscribed": "Below are communities you have subscribed to.",
+  "not_subscribed": "You are not subscribed to any community.",
+  "below_approved_user": "Below are the communities that you are an approved user on.",
+  "below_moderator_access": "Below are the communities that you have moderator access to.",
+  "not_moderator": "You are not a moderator on any community."
 }

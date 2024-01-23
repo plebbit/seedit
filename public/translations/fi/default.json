@@ -196,5 +196,18 @@
   "remove_spoiler": "Poista spoiler",
   "delete_post": "Poista viesti",
   "undo_delete": "Peru poistaminen",
-  "edit_content": "Muokkaa sisältöä"
+  "edit_content": "Muokkaa sisältöä",
+  "online": "Verkossa",
+  "offline": "Poissa verkosta",
+  "download_app": "Lataa sovellus",
+  "approved_user": "Hyväksytty käyttäjä",
+  "subscriber": "Tilaaja",
+  "approved": "Hyväksytty",
+  "proposed": "Ehdotettu",
+  "join_communities_notice": "Valitse, mitkä yhteisöt näkyvät etusivulla napsauttamalla painikkeita <1>{{join}}</1> tai <2>{{leave}}</2>.",
+  "below_subscribed": "Alla ovat yhteisöt, joihin olet tilannut.",
+  "not_subscribed": "Et ole vielä tilannut yhteenkään yhteisöön.",
+  "below_approved_user": "Alla ovat yhteisöt, joissa olet hyväksytty käyttäjä.",
+  "below_moderator_access": "Alla ovat yhteisöt, joissa sinulla on moderaattoripääsy.",
+  "not_moderator": "Et ole moderaattori missään yhteisössä."
 }

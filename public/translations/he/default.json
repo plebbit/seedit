@@ -196,5 +196,18 @@
   "remove_spoiler": "הסרת ספוילר",
   "delete_post": "מחיקת הפרסום",
   "undo_delete": "בטל מחיקה",
-  "edit_content": "ערוך תוכן"
+  "edit_content": "ערוך תוכן",
+  "online": "מקוון",
+  "offline": "מנותק",
+  "download_app": "הורד את האפליקציה",
+  "approved_user": "משתמש מאושר",
+  "subscriber": "מנוי",
+  "approved": "מאושר",
+  "proposed": "מוצע",
+  "join_communities_notice": "לחץ על הכפתורים <1>{{join}}</1> או <2>{{leave}}</2> כדי לבחור אילו קהילות יוצגו בעמוד הבית.",
+  "below_subscribed": "למטה הן הקהילות שנרשמת אליהן.",
+  "not_subscribed": "אתה עדיין לא רשום לשום קהילה.",
+  "below_approved_user": "למטה תוכלו למצוא את הקהילות בהן אתם משתמשים מאושרים.",
+  "below_moderator_access": "למטה תוכלו למצוא את הקהילות בהם יש לך גישה כמנהל.",
+  "not_moderator": "אינך מודרטור בקהילה אחת."
 }

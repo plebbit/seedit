@@ -196,5 +196,18 @@
   "remove_spoiler": "Remover spoiler",
   "delete_post": "Excluir postagem",
   "undo_delete": "Desfazer exclusão",
-  "edit_content": "Editar conteúdo"
+  "edit_content": "Editar conteúdo",
+  "online": "Online",
+  "offline": "Offline",
+  "download_app": "Baixar aplicativo",
+  "approved_user": "Usuário aprovado",
+  "subscriber": "Inscrito",
+  "approved": "Aprovado",
+  "proposed": "Proposto",
+  "join_communities_notice": "Clique nos botões <1>{{join}}</1> ou <2>{{leave}}</2> para escolher quais comunidades aparecem no feed inicial.",
+  "below_subscribed": "Abaixo estão as comunidades às quais você se inscreveu.",
+  "not_subscribed": "Você ainda não está inscrito em nenhuma comunidade.",
+  "below_approved_user": "Abaixo estão as comunidades em que você é um usuário aprovado.",
+  "below_moderator_access": "Abaixo estão as comunidades às quais você tem acesso como moderador.",
+  "not_moderator": "Você não é moderador em nenhuma comunidade."
 }

@@ -196,5 +196,18 @@
   "remove_spoiler": "Hapus spoiler",
   "delete_post": "Hapus Kiriman",
   "undo_delete": "Batalkan Hapus",
-  "edit_content": "Edit Konten"
+  "edit_content": "Edit Konten",
+  "online": "Online",
+  "offline": "Offline",
+  "download_app": "Unduh Aplikasi",
+  "approved_user": "Pengguna Disetujui",
+  "subscriber": "Pelanggan",
+  "approved": "Disetujui",
+  "proposed": "Diusulkan",
+  "join_communities_notice": "Klik tombol <1>{{join}}</1> atau <2>{{leave}}</2> untuk memilih komunitas mana yang akan muncul di beranda.",
+  "below_subscribed": "Di bawah ini adalah komunitas yang telah Anda berlangganan.",
+  "not_subscribed": "Anda belum berlangganan ke komunitas mana pun.",
+  "below_approved_user": "Di bawah ini adalah komunitas di mana Anda adalah pengguna yang disetujui.",
+  "below_moderator_access": "Di bawah ini adalah komunitas yang Anda miliki akses moderator.",
+  "not_moderator": "Anda bukan moderator di komunitas mana pun."
 }

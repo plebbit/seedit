@@ -196,5 +196,18 @@
   "remove_spoiler": "Spoiler verwijderen",
   "delete_post": "Bericht verwijderen",
   "undo_delete": "Ongedaan maken verwijderen",
-  "edit_content": "Inhoud bewerken"
+  "edit_content": "Inhoud bewerken",
+  "online": "Online",
+  "offline": "Offline",
+  "download_app": "App downloaden",
+  "approved_user": "Goedgekeurde gebruiker",
+  "subscriber": "Abonnee",
+  "approved": "Goedgekeurd",
+  "proposed": "Voorgesteld",
+  "join_communities_notice": "Klik op de knoppen <1>{{join}}</1> of <2>{{leave}}</2> om te kiezen welke gemeenschappen op de startpagina verschijnen.",
+  "below_subscribed": "Hieronder vind je de gemeenschappen waarop je geabonneerd bent.",
+  "not_subscribed": "Je bent nog niet geabonneerd op een gemeenschap.",
+  "below_approved_user": "Hieronder staan de gemeenschappen waarop je een goedgekeurde gebruiker bent.",
+  "below_moderator_access": "Hieronder staan de gemeenschappen waarop u moderator toegang heeft.",
+  "not_moderator": "Je bent geen moderator in een gemeenschap."
 }

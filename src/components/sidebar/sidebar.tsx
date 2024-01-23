@@ -182,7 +182,7 @@ const Sidebar = ({ address, cid, createdAt, description, downvoteCount = 0, role
             <span className={styles.subscribers}>{t('members_count', { count: allActiveUserCount })}</span>
           </div>
           <div className={styles.onlineLine}>
-            <span className={`${styles.onlineIndicator} ${isOnline ? styles.online : styles.offline}`} />
+            <span className={`${styles.onlineIndicator} ${isOnline ? styles.online : styles.offline}`} title={isOnline ? t('online') : t('offline')} />
             <span>{onlineStatus}</span>
           </div>
           {description && (
@@ -226,7 +226,7 @@ const Sidebar = ({ address, cid, createdAt, description, downvoteCount = 0, role
           <ul>
             <li>
               <a href='https://plebbit.com' target='_blank' rel='noopener noreferrer'>
-                about
+                {t('about')}
               </a>
               <span className={styles.footerSeparator}>|</span>
             </li>
@@ -258,7 +258,7 @@ const Sidebar = ({ address, cid, createdAt, description, downvoteCount = 0, role
             {downloadAppLink && (
               <li>
                 <a href={downloadAppLink} target='_blank' rel='noopener noreferrer'>
-                  download app
+                  {t('download_app')}
                 </a>
                 <span className={styles.footerSeparator}>|</span>
               </li>

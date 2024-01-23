@@ -196,5 +196,18 @@
   "remove_spoiler": "Spoiler entfernen",
   "delete_post": "Beitrag löschen",
   "undo_delete": "Löschen rückgängig machen",
-  "edit_content": "Inhalt bearbeiten"
+  "edit_content": "Inhalt bearbeiten",
+  "online": "Online",
+  "offline": "Offline",
+  "download_app": "App herunterladen",
+  "approved_user": "Bestätigter Benutzer",
+  "subscriber": "Abonnent",
+  "approved": "Genehmigt",
+  "proposed": "Vorgeschlagen",
+  "join_communities_notice": "Klicken Sie auf die Schaltflächen <1>{{join}}</1> oder <2>{{leave}}</2>, um auszuwählen, welche Communities auf der Startseite angezeigt werden sollen.",
+  "below_subscribed": "Unten sind die Communities, denen du beigetreten bist.",
+  "not_subscribed": "Du bist bisher in keiner Community angemeldet.",
+  "below_approved_user": "Hier sind die Gemeinschaften, auf denen du ein genehmigter Benutzer bist.",
+  "below_moderator_access": "Hier sind die Gemeinschaften, auf die Sie als Moderator zugreifen können.",
+  "not_moderator": "Du bist kein Moderator in einer Gemeinschaft."
 }

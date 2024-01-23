@@ -265,6 +265,7 @@ a {
   margin-top: 2px;
   display: flex;
   list-style: none;
+  text-transform: lowercase;
 }
 
 .footerSeparator {

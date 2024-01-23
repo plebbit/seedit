@@ -32,6 +32,7 @@
     "react-scripts": "5.0.1",
     "react-virtuoso": "4.6.0",
     "rehype-sanitize": "6.0.0",
+    "remark-breaks": "^4.0.0",
     "remark-gfm": "4.0.0",
     "tcp-port-used": "1.0.2",
     "typescript": "5.2.2",

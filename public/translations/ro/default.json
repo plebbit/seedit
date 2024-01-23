@@ -196,5 +196,18 @@
   "remove_spoiler": "Eliminați spoilerul",
   "delete_post": "Ștergeți postarea",
   "undo_delete": "Anulează ștergerea",
-  "edit_content": "Editează conținutul"
+  "edit_content": "Editează conținutul",
+  "online": "Online",
+  "offline": "Offline",
+  "download_app": "Descarcă aplicația",
+  "approved_user": "Utilizator aprobat",
+  "subscriber": "Abonat",
+  "approved": "Aprobat",
+  "proposed": "Propus",
+  "join_communities_notice": "Faceți clic pe butoanele <1>{{join}}</1> sau <2>{{leave}}</2> pentru a alege ce comunități apar pe pagina de pornire.",
+  "below_subscribed": "Mai jos sunt comunitățile la care te-ai abonat.",
+  "not_subscribed": "Nu sunteți abonat la nicio comunitate încă.",
+  "below_approved_user": "Mai jos sunt comunitățile unde ești un utilizator aprobat.",
+  "below_moderator_access": "Mai jos sunt comunitățile la care aveți acces ca moderator.",
+  "not_moderator": "Nu ești moderator în nicio comunitate."
 }
