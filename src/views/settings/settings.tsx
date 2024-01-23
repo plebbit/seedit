@@ -10,6 +10,10 @@ const Settings = () => {
   const { t } = useTranslation();
 
   useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  useEffect(() => {
     document.title = `${t('preferences')} - seedit`;
   }, [t]);
 
