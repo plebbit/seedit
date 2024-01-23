@@ -150,6 +150,7 @@
 
 .addButton {
   display: block;
+  text-transform: lowercase;
 }
 
 .moderatorAddress, .moderatorRole {

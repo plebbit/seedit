@@ -1,68 +1,129 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { useAccount, useSubplebbit, usePublishSubplebbitEdit } from '@plebbit/plebbit-react-hooks';
+import { PublishSubplebbitEditOptions, useAccount, useSubplebbit, usePublishSubplebbitEdit } from '@plebbit/plebbit-react-hooks';
 import { RolesCollection } from '../../../lib/utils/user-utils';
 import { useTranslation } from 'react-i18next';
-import stringify from 'json-stringify-pretty-compact';
+import { create } from 'zustand';
 import styles from './subplebbit-settings.module.css';
-import Sidebar from '../../../components/sidebar';
 import { isValidURL } from '../../../lib/utils/url-utils';
 import LoadingEllipsis from '../../../components/loading-ellipsis';
+import Sidebar from '../../../components/sidebar';
 
 const isElectron = window.electron && window.electron.isElectron;
 
-const Title = ({ title }: { title: string }) => {
+type SubplebbitSettingsState = {
+  title: string | undefined;
+  description: string | undefined;
+  address: string | undefined;
+  suggested: any | undefined;
+  rules: string[] | undefined;
+  roles: RolesCollection | undefined;
+  settings: any | undefined;
+  subplebbitAddress: string | undefined;
+  publishSubplebbitEditOptions: PublishSubplebbitEditOptions;
+  setSubmitStore: (data: Partial<SubplebbitSettingsState>) => void;
+  resetSubplebbitSettingsStore: () => void;
+};
+
+const useSubplebbitSettingsStore = create<SubplebbitSettingsState>((set) => ({
+  title: undefined,
+  description: undefined,
+  address: undefined,
+  suggested: undefined,
+  rules: undefined,
+  roles: undefined,
+  settings: undefined,
+  subplebbitAddress: undefined,
+  publishSubplebbitEditOptions: {},
+  setSubmitStore: ({ title, description, address, suggested, rules, roles, settings, subplebbitAddress }) =>
+    set((state) => {
+      const nextState = { ...state };
+      if (title !== undefined) nextState.title = title;
+      if (description !== undefined) nextState.description = description;
+      if (address !== undefined) nextState.address = address;
+      if (suggested !== undefined) nextState.suggested = suggested;
+      if (rules !== undefined) nextState.rules = rules;
+      if (roles !== undefined) nextState.roles = roles;
+      if (settings !== undefined) nextState.settings = settings;
+      if (subplebbitAddress !== undefined) nextState.subplebbitAddress = subplebbitAddress;
+
+      nextState.publishSubplebbitEditOptions = {
+        ...nextState,
+      };
+
+      return nextState;
+    }),
+  resetSubplebbitSettingsStore: () =>
+    set({
+      title: undefined,
+      description: undefined,
+      address: undefined,
+      suggested: undefined,
+      rules: undefined,
+      roles: undefined,
+      settings: undefined,
+      subplebbitAddress: undefined,
+      publishSubplebbitEditOptions: undefined,
+    }),
+}));
+
+const Title = () => {
   const { t } = useTranslation();
+  const { title, setSubmitStore } = useSubplebbitSettingsStore();
 
   return (
     <div className={styles.box}>
       <div className={styles.boxTitle}>{t('title')}</div>
       <div className={styles.boxSubtitle}>e.g., books: made from trees or pixels. recommendations, news, or thoughts</div>
       <div className={styles.boxInput}>
-        <input type='text' defaultValue={title} />
+        <input type='text' defaultValue={title ?? ''} onChange={(e) => setSubmitStore({ title: e.target.value || undefined })} />
       </div>
     </div>
   );
 };
 
-const Description = ({ description }: { description: string }) => {
+const Description = () => {
   const { t } = useTranslation();
+  const { description, setSubmitStore } = useSubplebbitSettingsStore();
 
   return (
     <div className={styles.box}>
       <div className={styles.boxTitle}>{t('description')}</div>
       <div className={styles.boxSubtitle}>shown in the sidebar of your community</div>
       <div className={styles.boxInput}>
-        <textarea defaultValue={description} />
+        <textarea defaultValue={description ?? ''} onChange={(e) => setSubmitStore({ description: e.target.value || undefined })} />
       </div>
     </div>
   );
 };
 
-const Address = ({ address }: { address: string }) => {
+const Address = () => {
   const { t } = useTranslation();
+  const { address, setSubmitStore } = useSubplebbitSettingsStore();
 
   return (
     <div className={styles.box}>
       <div className={styles.boxTitle}>{t('address')}</div>
       <div className={styles.boxSubtitle}>set a readable community address using ens.domains</div>
       <div className={styles.boxInput}>
-        <input type='text' defaultValue={address} />
+        <input type='text' defaultValue={address ?? ''} onChange={(e) => setSubmitStore({ title: e.target.value || undefined })} />
       </div>
     </div>
   );
 };
 
-const Logo = ({ avatarUrl }: { avatarUrl: string | undefined }) => {
+const Logo = () => {
   const { t } = useTranslation();
-  const [logoUrl, setLogoUrl] = useState(avatarUrl);
+  const { suggested, setSubmitStore } = useSubplebbitSettingsStore();
+
+  const [logoUrl, setLogoUrl] = useState(suggested?.avatarUrl);
   const [imageError, setImageError] = useState(false);
 
   // Update logoUrl when avatarUrl changes
   useEffect(() => {
-    setLogoUrl(avatarUrl);
+    setLogoUrl(suggested?.avatarUrl);
     setImageError(false); // Reset the error state as well
-  }, [avatarUrl]);
+  }, [suggested?.avatarUrl]);
 
   return (
     <div className={styles.box}>
@@ -71,10 +132,11 @@ const Logo = ({ avatarUrl }: { avatarUrl: string | undefined }) => {
       <div className={styles.boxInput}>
         <input
           type='text'
-          value={logoUrl}
+          defaultValue={logoUrl ?? ''}
           onChange={(e) => {
             setLogoUrl(e.target.value);
             setImageError(false);
+            setSubmitStore({ suggested: { ...suggested, avatarUrl: e.target.value || undefined } });
           }}
         />
         {logoUrl && isValidURL(logoUrl) && (
@@ -88,21 +150,47 @@ const Logo = ({ avatarUrl }: { avatarUrl: string | undefined }) => {
   );
 };
 
-const Rules = ({ rules }: { rules: string[] }) => {
+const Rules = () => {
   const { t } = useTranslation();
+  const { rules, setSubmitStore } = useSubplebbitSettingsStore();
+  const lastRuleRef = useRef(null);
+
+  const handleRuleChange = (index: number, newRule: string) => {
+    const updatedRules = [...(rules ?? [])];
+    updatedRules[index] = newRule;
+    setSubmitStore({ rules: updatedRules });
+  };
+
+  const addRule = () => {
+    const newRules = rules ? [...rules, ''] : [''];
+    setSubmitStore({ rules: newRules });
+
+    setTimeout(() => {
+      (lastRuleRef.current as any).focus();
+    }, 0);
+  };
+
+  const deleteRule = (index: number) => {
+    if (rules) {
+      const filteredRules = rules.filter((_, i) => i !== index);
+      setSubmitStore({ rules: filteredRules });
+    }
+  };
 
   return (
     <div className={styles.box}>
       <div className={styles.boxTitle}>{t('rules')}</div>
       <div className={styles.boxSubtitle}>shown in the sidebar of your community</div>
       <div className={styles.boxInput}>
-        <button className={styles.addButton}>add a rule</button>
+        <button className={styles.addButton} onClick={addRule}>
+          Add a Rule
+        </button>
         {rules?.map((rule, index) => (
           <div className={styles.rule} key={index}>
             Rule #{index + 1}
-            <span className={styles.deleteButton} title='delete rule' />
+            <span className={styles.deleteButton} title='Delete Rule' onClick={() => deleteRule(index)} />
             <br />
-            <input type='text' defaultValue={rule} />
+            <input ref={index === rules?.length - 1 ? lastRuleRef : null} type='text' value={rule} onChange={(e) => handleRuleChange(index, e.target.value)} />
           </div>
         ))}
       </div>
@@ -110,8 +198,10 @@ const Rules = ({ rules }: { rules: string[] }) => {
   );
 };
 
-const Moderators = ({ roles }: { roles: RolesCollection | undefined }) => {
+const Moderators = () => {
   const { t } = useTranslation();
+  const { roles, setSubmitStore } = useSubplebbitSettingsStore();
+
   const rolesList = roles ? Object.entries(roles).map(([address, { role }]) => ({ address, role })) : [];
 
   return (
@@ -263,8 +353,10 @@ const ChallengeSettings = ({ challenge }: any) => {
   );
 };
 
-const Challenges = ({ challenges }: any) => {
+const Challenges = () => {
   const { t } = useTranslation();
+  const { settings, setSubmitStore } = useSubplebbitSettingsStore();
+  const challenges = settings?.challenges || [];
   const [showSettings, setShowSettings] = useState<boolean[]>([]);
 
   const toggleSettings = (index: number) => {
@@ -303,6 +395,36 @@ const Challenges = ({ challenges }: any) => {
   );
 };
 
+const FullSettings = () => {
+  const { title, description, address, suggested, rules, roles, settings, subplebbitAddress, setSubmitStore } = useSubplebbitSettingsStore();
+  const [text, setText] = useState('');
+
+  useEffect(() => {
+    const fullSettings = JSON.stringify({ title, description, address, suggested, rules, roles, settings, subplebbitAddress }, null, 2);
+    setText(fullSettings);
+  }, [title, description, address, suggested, rules, roles, settings, subplebbitAddress]);
+
+  const handleChange = (newText: string) => {
+    setText(newText);
+    try {
+      const newSettings = JSON.parse(newText);
+      setSubmitStore(newSettings);
+    } catch (e) {
+      console.error('Invalid JSON format');
+    }
+  };
+
+  return (
+    <div className={styles.box}>
+      <div className={styles.boxTitle}>full settings data</div>
+      <div className={styles.boxSubtitle}>quickly copy or paste the community settings</div>
+      <div className={`${styles.boxInput} ${styles.fullSettings}`}>
+        <textarea onChange={(e) => handleChange(e.target.value)} autoCorrect='off' autoComplete='off' spellCheck='false' value={text} />
+      </div>
+    </div>
+  );
+};
+
 const SubplebbitSettings = () => {
   const { t } = useTranslation();
 
@@ -310,57 +432,41 @@ const SubplebbitSettings = () => {
   const { subplebbitAddress } = useParams<{ subplebbitAddress: string }>();
   const subplebbit = useSubplebbit({ subplebbitAddress });
   const userRole = subplebbit?.roles?.[account.author?.address]?.role;
-  const isAdmin = userRole === 'admin' || userRole === 'owner';
-  const { address, createdAt, description, rules, suggested, roles, title, updatedAt } = subplebbit || {};
+  const { address, createdAt, description, rules, settings, suggested, roles, title, updatedAt } = subplebbit || {};
+  const isAdmin = userRole === 'admin' || userRole === 'owner' || settings;
 
-  const [text, setText] = useState('');
-  let usePublishSubplebbitEditOptions;
-  try {
-    usePublishSubplebbitEditOptions = { ...JSON.parse(text), subplebbitAddress };
-  } catch (e) {}
-  const { publishSubplebbitEdit } = usePublishSubplebbitEdit(usePublishSubplebbitEditOptions);
+  const { publishSubplebbitEditOptions, resetSubplebbitSettingsStore, setSubmitStore } = useSubplebbitSettingsStore();
+  const { publishSubplebbitEdit } = usePublishSubplebbitEdit(publishSubplebbitEditOptions);
 
-  const subplebbitJson = useMemo(
-    () =>
-      stringify({
-        ...subplebbit,
-        // remove fields that cant be edited
-        posts: undefined,
-        clients: undefined,
-        state: undefined,
-        startedState: undefined,
-        updatingState: undefined,
-        createdAt: undefined,
-        updatedAt: undefined,
-        fetchedAt: undefined,
-        signature: undefined,
-        errors: undefined,
-        error: undefined,
-        encryption: undefined,
-        statsCid: undefined,
-        pubsubTopic: undefined,
-        lastPostCid: undefined,
-        shortAddress: undefined,
-        challenges: undefined,
-      }),
-    [subplebbit],
-  );
-
-  // set the initial subplebbit json
   useEffect(() => {
-    setText(subplebbitJson);
-  }, [subplebbitJson]);
+    window.scrollTo(0, 0);
+  }, []);
+
+  // set the store with the initial data
+  useEffect(() => {
+    if (subplebbit) {
+      setSubmitStore({
+        title,
+        description,
+        address,
+        suggested,
+        rules,
+        roles,
+        settings,
+        subplebbitAddress,
+      });
+    }
+  }, [subplebbit]);
 
   const [showLoading, setShowLoading] = useState(false);
   const saveSubplebbit = async () => {
     try {
-      // test parsing the options before saving
-      JSON.parse(text);
       setShowLoading(true);
-
       await publishSubplebbitEdit();
-      alert(`saved`);
       setShowLoading(false);
+      alert(`saved`);
+      resetSubplebbitSettingsStore();
+      window.location.reload();
     } catch (e) {
       if (e instanceof Error) {
         console.warn(e);
@@ -383,21 +489,15 @@ const SubplebbitSettings = () => {
       </div>
       {!isAdmin && <div className={styles.infobar}>only the admins and the owner of a community can edit its settings</div>}
       {!isElectron && isAdmin && <div className={styles.infobar}>you must be using the desktop app to edit community settings</div>}
-      <Title title={title} />
-      <Description description={description} />
-      <Address address={address} />
-      <Logo avatarUrl={suggested?.avatarUrl} />
-      <Rules rules={rules} />
-      <Moderators roles={roles} />
+      <Title />
+      <Description />
+      <Address />
+      <Logo />
+      <Rules />
+      <Moderators />
       {/* subplebbit.settings is private, only shows to the sub owner */}
-      {subplebbit?.settings?.challenges && <Challenges challenges={subplebbit?.settings?.challenges} />}
-      <div className={styles.box}>
-        <div className={styles.boxTitle}>full settings data</div>
-        <div className={styles.boxSubtitle}>quickly copy or paste the community settings</div>
-        <div className={`${styles.boxInput} ${styles.fullSettings}`}>
-          <textarea onChange={(e) => setText(e.target.value)} autoCorrect='off' autoComplete='off' spellCheck='false' value={text} />
-        </div>
-      </div>
+      {settings?.challenges && <Challenges />}
+      <FullSettings />
       <div className={styles.saveOptions}>
         <button disabled={!isElectron || !isAdmin || showLoading} onClick={saveSubplebbit}>
           {t('save_options')}
