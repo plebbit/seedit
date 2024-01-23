@@ -109,9 +109,13 @@
 }
 
 .title a {
-  margin-right: 10px;
+  margin-right: 5px;
   flex-grow: 1;
   color: var(--link);
+}
+
+.subscribeButton {
+  margin-left: 5px;
 }
 
 /* TODO: consider to enable this later, when lots of new communities will be proposed */
@@ -145,6 +149,7 @@
 .subplebbitPreferences a {
   color: var(--gray-contrast);
   font-weight: bold;
+  margin-right: 5px;
 }
 
 .subplebbitPreferences a:hover {

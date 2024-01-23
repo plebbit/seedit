@@ -3,6 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { Trans, useTranslation } from 'react-i18next';
 import { Subplebbit as SubplebbitType, useAccount, useAccountSubplebbits, useSubplebbits, useSubplebbitStats } from '@plebbit/plebbit-react-hooks';
 import styles from './subplebbits.module.css';
+import Flair from '../../components/post/flair';
 import Sidebar from '../../components/sidebar';
 import SubscribeButton from '../../components/subscribe-button';
 import { getFormattedTimeDuration, getFormattedTimeAgo } from '../../lib/utils/time-utils';
@@ -75,8 +76,19 @@ const Infobar = () => {
 
 const Subplebbit = ({ subplebbit }: SubplebbitProps) => {
   const { t } = useTranslation();
-  const { address, createdAt, description, shortAddress, suggested, title, updatedAt } = subplebbit || {};
+  const { address, createdAt, description, roles, shortAddress, settings, suggested, title, updatedAt } = subplebbit || {};
   const { allActiveUserCount } = useSubplebbitStats({ subplebbitAddress: address });
+
+  // subplebbit.settings is a private field that is only available to the owner of the subplebbit
+  const isUserOwner = settings;
+  const account = useAccount();
+  const userRole = roles?.[account?.author?.address]?.role;
+
+  const roleFlair = {
+    text: isUserOwner ? 'owner' : userRole,
+    backgroundColor: '#228822',
+    textColor: '#ffffff',
+  };
 
   // TODO: make arrows functional when token voting is implemented in the API
   const upvoted = false;
@@ -122,6 +134,7 @@ const Subplebbit = ({ subplebbit }: SubplebbitProps) => {
               p/{address?.includes('.') ? address : shortAddress}
               {title && `: ${title}`}
             </Link>
+            {userRole && <Flair flair={roleFlair} />}
             <span className={styles.subscribeButton}>
               <SubscribeButton address={address} />
             </span>
@@ -139,6 +152,7 @@ const Subplebbit = ({ subplebbit }: SubplebbitProps) => {
             )}
             <div className={styles.subplebbitPreferences}>
               <Link to={`/p/${address}/settings`}>{t('settings')}</Link>
+              {isUserOwner && <Link to={`/p/${address}/settings`}>{t('edit')}</Link>}
             </div>
           </span>
         </div>
