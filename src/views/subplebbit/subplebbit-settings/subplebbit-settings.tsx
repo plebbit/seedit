@@ -6,6 +6,7 @@ import { useTranslation } from 'react-i18next';
 import { create } from 'zustand';
 import styles from './subplebbit-settings.module.css';
 import { isValidURL } from '../../../lib/utils/url-utils';
+import { getDefaultExclude, getDefaultOptionInputs } from '../../../lib/utils/challenge-utils';
 import LoadingEllipsis from '../../../components/loading-ellipsis';
 import Sidebar from '../../../components/sidebar';
 
@@ -289,11 +290,16 @@ const Moderators = () => {
 
 const challengesNames = ['text-math', 'captcha-canvas-v3', 'fail', 'blacklist', 'question', 'evm-contract-call'];
 
-const ChallengeSettings = ({ challenge }: any) => {
+interface ChallengeSettingsProps {
+  challenge: any;
+  showSettings: boolean;
+}
+
+const ChallengeSettings = ({ challenge, showSettings }: ChallengeSettingsProps) => {
   const { name } = challenge || {};
 
   return (
-    <>
+    <div className={showSettings ? styles.visible : styles.hidden}>
       {name === 'text-math' && (
         <>
           <div className={styles.challengeDescription}>Ask a plain text math question, insecure, use ONLY for testing.</div>
@@ -444,7 +450,7 @@ const ChallengeSettings = ({ challenge }: any) => {
           </label>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
@@ -452,7 +458,7 @@ const Challenges = () => {
   const { t } = useTranslation();
   const { settings, setSubmitStore } = useSubplebbitSettingsStore();
   const challenges = settings?.challenges || [];
-  const [showSettings, setShowSettings] = useState<boolean[]>([]);
+  const [showSettings, setShowSettings] = useState<boolean[]>(challenges.map(() => true));
 
   const toggleSettings = (index: number) => {
     const newShowSettings = [...showSettings];
@@ -461,13 +467,25 @@ const Challenges = () => {
   };
 
   const handleAddChallenge = () => {
-    const newChallenge = { name: 'captcha-canvas-v3', optionInputs: {} };
+    const newChallenge = {
+      name: 'captcha-canvas-v3',
+      optionInputs: getDefaultOptionInputs('captcha-canvas-v3'),
+      exclude: getDefaultExclude(),
+    };
     const updatedChallenges = [...(settings?.challenges || []), newChallenge];
     setSubmitStore({ settings: { ...settings, challenges: updatedChallenges } });
+    setShowSettings((oldShowSettings) => [...oldShowSettings, true]);
   };
 
   const handleDeleteChallenge = (index: number) => {
     const updatedChallenges = settings?.challenges.filter((_: any, idx: number) => idx !== index);
+    setSubmitStore({ settings: { ...settings, challenges: updatedChallenges } });
+    setShowSettings((oldShowSettings) => oldShowSettings.filter((_, idx) => idx !== index));
+  };
+
+  const handleChallengeTypeChange = (index: number, newType: string) => {
+    const updatedChallenges = [...challenges];
+    updatedChallenges[index] = { ...updatedChallenges[index], name: newType, optionInputs: getDefaultOptionInputs(newType) };
     setSubmitStore({ settings: { ...settings, challenges: updatedChallenges } });
   };
 
@@ -485,7 +503,7 @@ const Challenges = () => {
             Challenge #{index + 1}
             <span className={styles.deleteButton} title='delete challenge' onClick={() => handleDeleteChallenge(index)} />
             <br />
-            <select value={challenge?.name}>
+            <select value={challenge?.name} onChange={(e) => handleChallengeTypeChange(index, e.target.value)}>
               {challengesNames.map((challenge) => (
                 <option key={challenge} value={challenge}>
                   {challenge}
@@ -495,7 +513,7 @@ const Challenges = () => {
             <button className={styles.challengeEditButton} onClick={() => toggleSettings(index)}>
               {showSettings[index] ? 'hide settings' : 'show settings'}
             </button>
-            {showSettings[index] && <ChallengeSettings challenge={challenge} />}
+            <ChallengeSettings challenge={challenge} showSettings={showSettings[index]} />
           </div>
         ))}
       </div>

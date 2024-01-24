@@ -153,6 +153,14 @@
   display: inline-block;
 }
 
+.visible {
+  display: block;
+}
+
+.hidden {
+  display: none;
+}
+
 .moderator {
   font-size: 15px;
   color: var(--text);
