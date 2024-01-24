@@ -41,10 +41,14 @@ const useSubplebbitSettingsStore = create<SubplebbitSettingsState>((set) => ({
       if (title !== undefined) nextState.title = title;
       if (description !== undefined) nextState.description = description;
       if (address !== undefined) nextState.address = address;
-      if (suggested !== undefined) nextState.suggested = suggested;
+      if (suggested?.avatarUrl !== undefined) {
+        nextState.suggested = { ...state.suggested, avatarUrl: suggested.avatarUrl };
+      }
       if (rules !== undefined) nextState.rules = rules;
       if (roles !== undefined) nextState.roles = roles;
-      if (settings !== undefined) nextState.settings = settings;
+      if (settings?.challenges !== undefined) {
+        nextState.settings = { ...state.settings, challenges: settings.challenges };
+      }
       if (subplebbitAddress !== undefined) nextState.subplebbitAddress = subplebbitAddress;
 
       nextState.publishSubplebbitEditOptions = {
@@ -53,6 +57,7 @@ const useSubplebbitSettingsStore = create<SubplebbitSettingsState>((set) => ({
 
       return nextState;
     }),
+
   resetSubplebbitSettingsStore: () =>
     set({
       title: undefined,
@@ -76,7 +81,7 @@ const Title = () => {
       <div className={styles.boxTitle}>{t('title')}</div>
       <div className={styles.boxSubtitle}>e.g., books: made from trees or pixels. recommendations, news, or thoughts</div>
       <div className={styles.boxInput}>
-        <input type='text' defaultValue={title ?? ''} onChange={(e) => setSubmitStore({ title: e.target.value || undefined })} />
+        <input type='text' value={title ?? ''} onChange={(e) => setSubmitStore({ title: e.target.value })} />
       </div>
     </div>
   );
@@ -91,7 +96,7 @@ const Description = () => {
       <div className={styles.boxTitle}>{t('description')}</div>
       <div className={styles.boxSubtitle}>shown in the sidebar of your community</div>
       <div className={styles.boxInput}>
-        <textarea defaultValue={description ?? ''} onChange={(e) => setSubmitStore({ description: e.target.value || undefined })} />
+        <textarea value={description ?? ''} onChange={(e) => setSubmitStore({ description: e.target.value })} />
       </div>
     </div>
   );
@@ -106,7 +111,7 @@ const Address = () => {
       <div className={styles.boxTitle}>{t('address')}</div>
       <div className={styles.boxSubtitle}>set a readable community address using ens.domains</div>
       <div className={styles.boxInput}>
-        <input type='text' defaultValue={address ?? ''} onChange={(e) => setSubmitStore({ title: e.target.value || undefined })} />
+        <input type='text' value={address ?? ''} onChange={(e) => setSubmitStore({ title: e.target.value })} />
       </div>
     </div>
   );
@@ -132,11 +137,11 @@ const Logo = () => {
       <div className={styles.boxInput}>
         <input
           type='text'
-          defaultValue={logoUrl ?? ''}
+          value={logoUrl ?? ''}
           onChange={(e) => {
             setLogoUrl(e.target.value);
             setImageError(false);
-            setSubmitStore({ suggested: { ...suggested, avatarUrl: e.target.value || undefined } });
+            setSubmitStore({ suggested: { ...suggested, avatarUrl: e.target.value } });
           }}
         />
         {logoUrl && isValidURL(logoUrl) && (
@@ -200,7 +205,7 @@ const Rules = () => {
 
 const Moderators = () => {
   const { t } = useTranslation();
-  const { roles, setSubmitStore } = useSubplebbitSettingsStore();
+  const { roles } = useSubplebbitSettingsStore();
 
   const rolesList = roles ? Object.entries(roles).map(([address, { role }]) => ({ address, role })) : [];
 
@@ -355,7 +360,7 @@ const ChallengeSettings = ({ challenge }: any) => {
 
 const Challenges = () => {
   const { t } = useTranslation();
-  const { settings, setSubmitStore } = useSubplebbitSettingsStore();
+  const { settings } = useSubplebbitSettingsStore();
   const challenges = settings?.challenges || [];
   const [showSettings, setShowSettings] = useState<boolean[]>([]);
 
@@ -435,7 +440,7 @@ const SubplebbitSettings = () => {
   const { address, createdAt, description, rules, settings, suggested, roles, title, updatedAt } = subplebbit || {};
   const isAdmin = userRole === 'admin' || userRole === 'owner' || settings;
 
-  const { publishSubplebbitEditOptions, resetSubplebbitSettingsStore, setSubmitStore } = useSubplebbitSettingsStore();
+  const { publishSubplebbitEditOptions, setSubmitStore } = useSubplebbitSettingsStore();
   const { publishSubplebbitEdit } = usePublishSubplebbitEdit(publishSubplebbitEditOptions);
 
   useEffect(() => {
@@ -444,19 +449,17 @@ const SubplebbitSettings = () => {
 
   // set the store with the initial data
   useEffect(() => {
-    if (subplebbit) {
-      setSubmitStore({
-        title,
-        description,
-        address,
-        suggested,
-        rules,
-        roles,
-        settings,
-        subplebbitAddress,
-      });
-    }
-  }, [subplebbit]);
+    setSubmitStore({
+      title: title ?? '',
+      description: description ?? '',
+      address,
+      suggested: suggested ?? {},
+      rules: rules ?? [],
+      roles: roles ?? {},
+      settings: settings ?? {},
+      subplebbitAddress,
+    });
+  }, [subplebbitAddress, setSubmitStore, title, description, address, suggested, rules, roles, settings]);
 
   const [showLoading, setShowLoading] = useState(false);
   const saveSubplebbit = async () => {
@@ -465,8 +468,6 @@ const SubplebbitSettings = () => {
       await publishSubplebbitEdit();
       setShowLoading(false);
       alert(`saved`);
-      resetSubplebbitSettingsStore();
-      window.location.reload();
     } catch (e) {
       if (e instanceof Error) {
         console.warn(e);
@@ -487,8 +488,7 @@ const SubplebbitSettings = () => {
       <div className={styles.sidebar}>
         <Sidebar address={subplebbitAddress} createdAt={createdAt} description={description} roles={roles} rules={rules} title={title} updatedAt={updatedAt} />
       </div>
-      {!isAdmin && <div className={styles.infobar}>only the admins and the owner of a community can edit its settings</div>}
-      {!isElectron && isAdmin && <div className={styles.infobar}>you must be using the desktop app to edit community settings</div>}
+      {!settings && <div className={styles.infobar}>can't connect to community node - only the owner of a community can edit its settings.</div>}
       <Title />
       <Description />
       <Address />
