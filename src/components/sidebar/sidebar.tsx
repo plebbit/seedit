@@ -197,7 +197,7 @@ const Sidebar = ({ address, cid, createdAt, description, downvoteCount = 0, role
               </div>
             </div>
           )}
-          {rules && <RulesList rules={rules} />}
+          {rules && rules.length > 0 && <RulesList rules={rules} />}
           <div className={styles.bottom}>
             {t('created_by', { creatorAddress: '' })}
             <Link to={`/u/${creatorAddress}`} onClick={(e) => e.preventDefault()}>{`u/${creatorAddress}`}</Link>
