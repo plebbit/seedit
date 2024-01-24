@@ -1,6 +1,6 @@
 import { Role, Subplebbit, Comment } from '@plebbit/plebbit-react-hooks';
 
-export type RolesCollection = Record<string, Role>;
+export type RolesCollection = { [address: string]: Role };
 
 export const findSubplebbitCreator = (roles: RolesCollection | undefined): string => {
   if (!roles) {

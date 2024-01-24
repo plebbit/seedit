@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { PublishSubplebbitEditOptions, useAccount, useSubplebbit, usePublishSubplebbitEdit } from '@plebbit/plebbit-react-hooks';
+import { PublishSubplebbitEditOptions, useAccount, useSubplebbit, usePublishSubplebbitEdit, Role } from '@plebbit/plebbit-react-hooks';
 import { RolesCollection } from '../../../lib/utils/user-utils';
 import { useTranslation } from 'react-i18next';
 import { create } from 'zustand';
@@ -205,38 +205,82 @@ const Rules = () => {
 
 const Moderators = () => {
   const { t } = useTranslation();
-  const { roles } = useSubplebbitSettingsStore();
+  const { roles, setSubmitStore } = useSubplebbitSettingsStore();
+  const lastModeratorRef = useRef(null);
 
-  const rolesList = roles ? Object.entries(roles).map(([address, { role }]) => ({ address, role })) : [];
+  const handleAddModerator = () => {
+    if (roles) {
+      const newRoles: RolesCollection = { ...roles, '': { role: 'moderator' } };
+      setSubmitStore({ roles: newRoles });
+
+      setTimeout(() => {
+        if (lastModeratorRef.current) {
+          (lastModeratorRef.current as any).focus();
+        }
+      }, 0);
+    }
+  };
+
+  const handleRoleChange = (address: string, newRole: Role) => {
+    if (roles) {
+      const updatedRoles: RolesCollection = { ...roles, [address]: newRole };
+      setSubmitStore({ roles: updatedRoles });
+    }
+  };
+
+  const handleDeleteModerator = (address: string) => {
+    if (roles) {
+      const { [address]: _, ...remainingRoles } = roles;
+      setSubmitStore({ roles: remainingRoles });
+    }
+  };
+
+  const handleAddressChange = (oldAddress: string, newAddress: string) => {
+    if (roles) {
+      const { [oldAddress]: roleData, ...remainingRoles } = roles;
+      if (roleData) {
+        const updatedRoles: RolesCollection = { ...remainingRoles, [newAddress]: roleData };
+        setSubmitStore({ roles: updatedRoles });
+      }
+    }
+  };
 
   return (
     <div className={styles.box}>
       <div className={styles.boxTitle}>{t('moderators')}</div>
       <div className={styles.boxSubtitle}>let other users moderate and post without challenges</div>
       <div className={styles.boxInput}>
-        <button className={styles.addButton}>add a moderator</button>
-        {rolesList?.map(({ address, role }, index) => (
-          <div className={styles.moderator} key={index}>
-            Moderator #{index + 1}
-            <span className={styles.deleteButton} title='delete moderator' />
-            <br />
-            <span className={styles.moderatorAddress}>
-              User address:
+        <button className={styles.addButton} onClick={handleAddModerator}>
+          add a moderator
+        </button>
+        {roles &&
+          Object.entries(roles).map(([address, role], index) => (
+            <div className={styles.moderator} key={index}>
+              Moderator #{index + 1}
+              <span className={styles.deleteButton} title='delete moderator' onClick={() => handleDeleteModerator(address)} />
               <br />
-              <input type='text' value={address} />
-              <br />
-            </span>
-            <span className={styles.moderatorRole}>
-              Moderator role:
-              <br />
-              <select value={role}>
-                <option value='moderator'>moderator</option>
-                <option value='admin'>admin</option>
-                <option value='owner'>owner</option>
-              </select>
-            </span>
-          </div>
-        ))}
+              <span className={styles.moderatorAddress}>
+                User address:
+                <br />
+                <input
+                  ref={index === Object.keys(roles).length - 1 ? lastModeratorRef : null}
+                  type='text'
+                  value={address}
+                  onChange={(e) => handleAddressChange(address, e.target.value)}
+                />
+                <br />
+              </span>
+              <span className={styles.moderatorRole}>
+                Moderator role:
+                <br />
+                <select value={role.role} onChange={(e) => handleRoleChange(address, e.target.value as unknown as Role)}>
+                  <option value='moderator'>moderator</option>
+                  <option value='admin'>admin</option>
+                  <option value='owner'>owner</option>
+                </select>
+              </span>
+            </div>
+          ))}
       </div>
     </div>
   );
