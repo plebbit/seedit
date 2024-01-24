@@ -306,7 +306,7 @@ const ChallengeSettings = ({ challenge }: any) => {
       )}
       {name === 'captcha-canvas-v3' && (
         <>
-          <div className={styles.challengeDescription}>custom image captcha</div>
+          <div className={styles.challengeDescription}>Make a custom image captcha</div>
           <div className={styles.challengeOption}>
             Characters
             <div className={styles.challengeOptionDescription}>Amount of characters of the captcha.</div>
@@ -399,13 +399,58 @@ const ChallengeSettings = ({ challenge }: any) => {
           </div>
         </>
       )}
+      <div className={styles.challengeDescription}>Exclude from challenge</div>
+      <div className={styles.challengeOption}>
+        Moderators
+        <div className={styles.challengeOptionDescription}>Exclude a specific moderator role</div>
+        <div>
+          <label>
+            <input type='checkbox' />
+            exclude moderators
+          </label>
+        </div>
+        <div>
+          <label>
+            <input type='checkbox' />
+            exclude admins
+          </label>
+        </div>
+        <div>
+          <label>
+            <input type='checkbox' />
+            exclude owners
+          </label>
+        </div>
+      </div>
+      <div className={styles.challengeOption}>
+        Actions
+        <div className={styles.challengeOptionDescription}>Exclude a specific user action</div>
+        <div>
+          <label>
+            <input type='checkbox' />
+            exclude posts
+          </label>
+        </div>
+        <div>
+          <label>
+            <input type='checkbox' />
+            exclude replies
+          </label>
+        </div>
+        <div>
+          <label>
+            <input type='checkbox' />
+            exclude votes
+          </label>
+        </div>
+      </div>
     </>
   );
 };
 
 const Challenges = () => {
   const { t } = useTranslation();
-  const { settings } = useSubplebbitSettingsStore();
+  const { settings, setSubmitStore } = useSubplebbitSettingsStore();
   const challenges = settings?.challenges || [];
   const [showSettings, setShowSettings] = useState<boolean[]>([]);
 
@@ -415,17 +460,30 @@ const Challenges = () => {
     setShowSettings(newShowSettings);
   };
 
+  const handleAddChallenge = () => {
+    const newChallenge = { name: 'captcha-canvas-v3', optionInputs: {} };
+    const updatedChallenges = [...(settings?.challenges || []), newChallenge];
+    setSubmitStore({ settings: { ...settings, challenges: updatedChallenges } });
+  };
+
+  const handleDeleteChallenge = (index: number) => {
+    const updatedChallenges = settings?.challenges.filter((_: any, idx: number) => idx !== index);
+    setSubmitStore({ settings: { ...settings, challenges: updatedChallenges } });
+  };
+
   return (
     <div className={styles.box}>
       <div className={styles.boxTitle}>{t('challenges')}</div>
       <div className={styles.boxSubtitle}>choose one or more challenges to prevent spam</div>
       <div className={styles.boxInput}>
-        <button className={styles.addButton}>add a challenge</button>
+        <button className={styles.addButton} onClick={handleAddChallenge}>
+          add a challenge
+        </button>
         {challenges.length === 0 && <span className={styles.noChallengeWarning}>Warning: vulnerable to spam attacks.</span>}
         {challenges.map((challenge: any, index: number) => (
           <div key={index} className={styles.challenge}>
             Challenge #{index + 1}
-            <span className={styles.deleteButton} title='delete challenge' />
+            <span className={styles.deleteButton} title='delete challenge' onClick={() => handleDeleteChallenge(index)} />
             <br />
             <select value={challenge?.name}>
               {challengesNames.map((challenge) => (

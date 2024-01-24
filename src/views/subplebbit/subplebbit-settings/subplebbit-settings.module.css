@@ -117,13 +117,24 @@
 }
 
 .challengeDescription {
-  margin: 5px 0 15px 0;
+  margin: 15px 0 15px 0;
   font-size: 15px;
 }
 
 .challengeOptionDescription {
   margin: 5px 0;
   font-size: 12px;
+}
+
+.challengeOption label {
+  font-size: 12px;
+}
+
+.challengeOption input[type="checkbox"] {
+  margin-right: 3px;
+  width: auto !important;
+  outline: none;
+  cursor: pointer;
 }
 
 .challengesArray {
