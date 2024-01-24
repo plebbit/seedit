@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { PublishSubplebbitEditOptions, useAccount, useSubplebbit, usePublishSubplebbitEdit, Role } from '@plebbit/plebbit-react-hooks';
-import { RolesCollection } from '../../../lib/utils/user-utils';
+import { Roles } from '../../../lib/utils/user-utils';
 import { useTranslation } from 'react-i18next';
 import { create } from 'zustand';
 import styles from './subplebbit-settings.module.css';
@@ -17,7 +17,7 @@ type SubplebbitSettingsState = {
   address: string | undefined;
   suggested: any | undefined;
   rules: string[] | undefined;
-  roles: RolesCollection | undefined;
+  roles: Roles | undefined;
   settings: any | undefined;
   subplebbitAddress: string | undefined;
   publishSubplebbitEditOptions: PublishSubplebbitEditOptions;
@@ -210,7 +210,7 @@ const Moderators = () => {
 
   const handleAddModerator = () => {
     if (roles) {
-      const newRoles: RolesCollection = { ...roles, '': { role: 'moderator' } };
+      const newRoles: Roles = { ...roles, '': { role: 'moderator' } };
       setSubmitStore({ roles: newRoles });
 
       setTimeout(() => {
@@ -221,9 +221,10 @@ const Moderators = () => {
     }
   };
 
-  const handleRoleChange = (address: string, newRole: Role) => {
+  const handleRoleChange = (address: string, newRole: 'owner' | 'admin' | 'moderator') => {
     if (roles) {
-      const updatedRoles: RolesCollection = { ...roles, [address]: newRole };
+      const updatedRole: Role = { role: newRole };
+      const updatedRoles: Roles = { ...roles, [address]: updatedRole };
       setSubmitStore({ roles: updatedRoles });
     }
   };
@@ -239,7 +240,7 @@ const Moderators = () => {
     if (roles) {
       const { [oldAddress]: roleData, ...remainingRoles } = roles;
       if (roleData) {
-        const updatedRoles: RolesCollection = { ...remainingRoles, [newAddress]: roleData };
+        const updatedRoles: Roles = { ...remainingRoles, [newAddress]: roleData };
         setSubmitStore({ roles: updatedRoles });
       }
     }
@@ -273,7 +274,7 @@ const Moderators = () => {
               <span className={styles.moderatorRole}>
                 Moderator role:
                 <br />
-                <select value={role.role} onChange={(e) => handleRoleChange(address, e.target.value as unknown as Role)}>
+                <select value={role.role} onChange={(e) => handleRoleChange(address, e.target.value as any)}>
                   <option value='moderator'>moderator</option>
                   <option value='admin'>admin</option>
                   <option value='owner'>owner</option>
