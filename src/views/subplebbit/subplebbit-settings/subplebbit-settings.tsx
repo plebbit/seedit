@@ -309,13 +309,35 @@ type OptionInput = {
 };
 
 const ChallengeSettings = ({ challenge, index, setSubmitStore, settings, showSettings }: ChallengeSettingsProps) => {
-  const { name, optionInputs } = challenge || {};
+  const { exclude, name, optionInputs } = challenge || {};
 
   const handleOptionChange = (optionName: string, newValue: string) => {
     const updatedOptionInputs = optionInputs.map((input: any) => (input.option === optionName ? { ...input, value: newValue } : input));
 
     const updatedChallenges = settings.challenges.map((ch: any, idx: number) => (idx === index ? { ...ch, optionInputs: updatedOptionInputs } : ch));
 
+    setSubmitStore({ settings: { ...settings, challenges: updatedChallenges } });
+  };
+
+  const handleExcludeChange = (type: 'role' | 'post' | 'reply' | 'vote', value: string | boolean) => {
+    const updatedExclude = { ...exclude[0] }; // Clone the first exclude object
+
+    if (type === 'role') {
+      if (typeof value === 'string') {
+        const roleIndex = updatedExclude.role.indexOf(value);
+        if (roleIndex > -1) {
+          updatedExclude.role.splice(roleIndex, 1); // Remove role
+        } else {
+          updatedExclude.role.push(value); // Add role
+        }
+      }
+    } else {
+      // Handle post, reply, vote
+      updatedExclude[type] = value;
+    }
+
+    const updatedChallenges = [...settings.challenges];
+    updatedChallenges[index] = { ...updatedChallenges[index], exclude: [updatedExclude] };
     setSubmitStore({ settings: { ...settings, challenges: updatedChallenges } });
   };
 
@@ -341,19 +363,19 @@ const ChallengeSettings = ({ challenge, index, setSubmitStore, settings, showSet
         <div className={styles.challengeOptionDescription}>Exclude a specific moderator role</div>
         <div>
           <label>
-            <input type='checkbox' />
+            <input type='checkbox' checked={exclude[0]?.role.includes('moderator')} onChange={() => handleExcludeChange('role', 'moderator')} />
             exclude moderators
           </label>
         </div>
         <div>
           <label>
-            <input type='checkbox' />
+            <input type='checkbox' checked={exclude[0]?.role.includes('admin')} onChange={() => handleExcludeChange('role', 'admin')} />
             exclude admins
           </label>
         </div>
         <div>
           <label>
-            <input type='checkbox' />
+            <input type='checkbox' checked={exclude[0]?.role.includes('owner')} onChange={() => handleExcludeChange('role', 'owner')} />
             exclude owners
           </label>
         </div>
@@ -363,19 +385,19 @@ const ChallengeSettings = ({ challenge, index, setSubmitStore, settings, showSet
         <div className={styles.challengeOptionDescription}>Exclude a specific user action</div>
         <div>
           <label>
-            <input type='checkbox' />
+            <input type='checkbox' checked={exclude[0]?.post} onChange={(e) => handleExcludeChange('post', e.target.checked)} />
             exclude posts
           </label>
         </div>
         <div>
           <label>
-            <input type='checkbox' />
+            <input type='checkbox' checked={exclude[1]?.post} onChange={(e) => handleExcludeChange('reply', e.target.checked)} />
             exclude replies
           </label>
         </div>
         <div>
           <label>
-            <input type='checkbox' />
+            <input type='checkbox' checked={exclude[2]?.post} onChange={(e) => handleExcludeChange('vote', e.target.checked)} />
             exclude votes
           </label>
         </div>
