@@ -22,3 +22,8 @@
   color: var(--red);
   border-color: var(--red);
 }
+
+.green {
+  color: var(--green);
+  border-color: var(--green);
+}

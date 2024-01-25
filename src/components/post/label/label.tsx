@@ -30,3 +30,9 @@ export const SpoilerLabel = () => {
 
   return <span className={`${styles.stamp} ${styles.black}`}>{t('spoiler').toUpperCase()}</span>;
 };
+
+export const RoleLabel = ({ role }: { role: string }) => {
+  const { t } = useTranslation();
+
+  return <span className={`${styles.stamp} ${styles.green}`}>{t(role).toUpperCase()}</span>;
+};

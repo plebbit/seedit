@@ -15,6 +15,7 @@ import {
   isSubplebbitsMineModeratorView,
 } from '../../lib/utils/view-utils';
 import { useDefaultSubplebbitAddresses } from '../../lib/utils/addresses-utils';
+import { RoleLabel } from '../../components/post/label/label';
 
 interface SubplebbitProps {
   index?: number;
@@ -84,12 +85,6 @@ const Subplebbit = ({ subplebbit }: SubplebbitProps) => {
   const account = useAccount();
   const userRole = roles?.[account?.author?.address]?.role;
 
-  const roleFlair = {
-    text: isUserOwner ? 'owner' : userRole,
-    backgroundColor: '#228822',
-    textColor: '#ffffff',
-  };
-
   // TODO: make arrows functional when token voting is implemented in the API
   const upvoted = false;
   const downvoted = false;
@@ -134,7 +129,6 @@ const Subplebbit = ({ subplebbit }: SubplebbitProps) => {
               p/{address?.includes('.') ? address : shortAddress}
               {title && `: ${title}`}
             </Link>
-            {(userRole || isUserOwner) && <Flair flair={roleFlair} />}
             <span className={styles.subscribeButton}>
               <SubscribeButton address={address} />
             </span>
@@ -151,8 +145,12 @@ const Subplebbit = ({ subplebbit }: SubplebbitProps) => {
               offlineNotice
             )}
             <div className={styles.subplebbitPreferences}>
-              <Link to={`/p/${address}/settings`}>{t('settings')}</Link>
-              {isUserOwner && <Link to={`/p/${address}/settings`}>{t('edit')}</Link>}
+              {(userRole || isUserOwner) && (
+                <span className={styles.roleLabel}>
+                  <RoleLabel role={userRole || 'owner'} />
+                </span>
+              )}
+              <Link to={`/p/${address}/settings`}>{isUserOwner ? t('edit') : t('settings')}</Link>
             </div>
           </span>
         </div>

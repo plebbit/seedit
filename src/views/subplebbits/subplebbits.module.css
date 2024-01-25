@@ -30,6 +30,7 @@
   font-weight: bold;
   font-size: small;
   float: left;
+  padding-top: 2px;
   padding-right: 7px;
   background: transparent;
   overflow: hidden;
@@ -144,6 +145,7 @@
   padding: 0 1px;
   line-height: 1.6em;
   text-transform: lowercase;
+  margin-top: 1px;
 }
 
 .subplebbitPreferences a {
@@ -155,6 +157,10 @@
 .subplebbitPreferences a:hover {
   text-decoration: underline;
   cursor: pointer;
+}
+
+.roleLabel {
+  padding-right: 2px;
 }
 
 .subplebbitsTabs {
