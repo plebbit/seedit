@@ -609,7 +609,7 @@ const SubplebbitSettings = () => {
       <div className={styles.sidebar}>
         <Sidebar address={subplebbitAddress} createdAt={createdAt} description={description} roles={roles} rules={rules} title={title} updatedAt={updatedAt} />
       </div>
-      {!settings && <div className={styles.infobar}>can't connect to community node - only the owner of a community can edit its settings.</div>}
+      {!settings && <div className={styles.infobar}>can't connect to community p2p node - only the owner of a community can edit its settings.</div>}
       <Title />
       <Description />
       <Address />

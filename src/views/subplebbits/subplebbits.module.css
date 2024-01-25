@@ -222,7 +222,7 @@
     padding: 7px 5px 0px 5px;
   }
 
-  .stateString, .infobar {
+  .infobar {
     max-width: calc(100% - 327px);
   }
 }

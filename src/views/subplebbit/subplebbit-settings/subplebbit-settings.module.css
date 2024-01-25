@@ -37,6 +37,7 @@
 .boxInput input {
   font-size: 100%;
   width: 492px;
+  box-sizing: border-box;
   padding: 3px;
   border: 1px solid var(--border-text);
   box-shadow: var(--box-shadow-input);
@@ -45,6 +46,7 @@
 .boxInput textarea {
   box-shadow: var(--box-shadow-input);
   width: 492px;
+  box-sizing: border-box;
   padding: 3px;
   border: 1px solid gray;
   height: 100px;
@@ -214,18 +216,36 @@
   padding-left: 10px;
 }
 
+@media (min-width: 768px) {
+  .content {
+    padding: 7px 5px 0px 5px;
+  }
+}
+
+@media (max-width: 853px) {
+  .box, .boxInput {
+    width: calc(100% - 315px);
+  }
+
+  .boxInput input, .boxInput textarea {
+    width: calc(100% + 293px);
+  }
+}
+
 @media (max-width: 768px) {
   .content {
-    padding: 7px 0px 0px 0px;
+    padding: 7px 0px 0px 5px;
   }
 
   .sidebar {
     display: none;
   }
-}
 
-@media (min-width: 768px) {
-  .content {
-    padding: 7px 5px 0px 5px;
+  .box, .boxInput {
+    width: 95vw;
+  }
+
+  .boxInput input, .boxInput textarea {
+    width: calc(100% - 20px)
   }
 }
