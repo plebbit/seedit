@@ -344,7 +344,7 @@ const ChallengeSettings = ({ challenge, index, setSubmitStore, settings, showSet
   return (
     <div className={showSettings ? styles.visible : styles.hidden}>
       <div className={styles.challengeDescription}>{getDefaultChallengeDescription(name)}</div>
-      {challenge.optionInputs.map((inputOption: OptionInput) => (
+      {challenge?.optionInputs?.map((inputOption: OptionInput) => (
         <div key={inputOption.option} className={styles.challengeOption}>
           {inputOption.label}
           <div className={styles.challengeOptionDescription}>{inputOption.description}</div>
