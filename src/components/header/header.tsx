@@ -26,9 +26,10 @@ import {
   isSubplebbitSettingsView,
   isSubplebbitSubmitView,
   isSubplebbitsView,
-  isSubplebbitsMineView,
-  isSubplebbitsMineSubscriberView,
-  isSubplebbitsMineModeratorView,
+  isSubplebbitsSubscriberView,
+  isSubplebbitsModeratorView,
+  isSubplebbitsAdminView,
+  isSubplebbitsOwnerView,
   isProfileUpvotedView,
 } from '../../lib/utils/view-utils';
 import useTheme from '../../hooks/use-theme';
@@ -202,10 +203,12 @@ const InboxHeaderTabs = () => {
 const SubplebbitsHeaderTabs = () => {
   const { t } = useTranslation();
   const location = useLocation();
-  const isInSubplebbitsMineSubscriberView = isSubplebbitsMineSubscriberView(location.pathname);
-  const isInSubplebbitsMineModeratorView = isSubplebbitsMineModeratorView(location.pathname);
-  const isInSubplebbitsView = isSubplebbitsView(location.pathname) && !isInSubplebbitsMineSubscriberView && !isInSubplebbitsMineModeratorView;
-  const isInSubplebbitsMineView = isSubplebbitsMineView(location.pathname);
+  const isInSubplebbitsSubscriberView = isSubplebbitsSubscriberView(location.pathname);
+  const isInSubplebbitsModeratorView = isSubplebbitsModeratorView(location.pathname);
+  const isInSubplebbitsAdminView = isSubplebbitsAdminView(location.pathname);
+  const isInSubplebbitsOwnerView = isSubplebbitsOwnerView(location.pathname);
+  const isInSubplebbitsView =
+    isSubplebbitsView(location.pathname) && !isInSubplebbitsSubscriberView && !isInSubplebbitsModeratorView && !isInSubplebbitsAdminView && !isInSubplebbitsOwnerView;
 
   return (
     <>
@@ -221,8 +224,10 @@ const SubplebbitsHeaderTabs = () => {
       </li>
       <li>
         <Link
-          to={'/communities/mine'}
-          className={isInSubplebbitsMineView || isInSubplebbitsMineModeratorView || isInSubplebbitsMineSubscriberView ? styles.selected : styles.choice}
+          to={'/communities/subscriber'}
+          className={
+            isInSubplebbitsSubscriberView || isInSubplebbitsModeratorView || isInSubplebbitsAdminView || isInSubplebbitsOwnerView ? styles.selected : styles.choice
+          }
         >
           {t('my_communities')}
         </Link>
