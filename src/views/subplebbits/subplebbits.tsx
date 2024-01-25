@@ -150,7 +150,7 @@ const Subplebbit = ({ subplebbit }: SubplebbitProps) => {
                   <RoleLabel role={userRole || 'owner'} />
                 </span>
               )}
-              <Link to={`/p/${address}/settings`}>{isUserOwner ? t('edit') : t('settings')}</Link>
+              <Link to={`/p/${address}/settings`}>{t('settings')}</Link>
             </div>
           </span>
         </div>
