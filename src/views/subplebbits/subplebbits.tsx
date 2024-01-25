@@ -3,7 +3,6 @@ import { Link, useLocation } from 'react-router-dom';
 import { Trans, useTranslation } from 'react-i18next';
 import { Subplebbit as SubplebbitType, useAccount, useAccountSubplebbits, useSubplebbits, useSubplebbitStats } from '@plebbit/plebbit-react-hooks';
 import styles from './subplebbits.module.css';
-import Flair from '../../components/post/flair';
 import Sidebar from '../../components/sidebar';
 import SubscribeButton from '../../components/subscribe-button';
 import { getFormattedTimeDuration, getFormattedTimeAgo } from '../../lib/utils/time-utils';
