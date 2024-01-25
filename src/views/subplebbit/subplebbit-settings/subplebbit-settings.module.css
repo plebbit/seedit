@@ -250,7 +250,7 @@
   }
 
   .box, .boxInput {
-    width: calc(100vw - 35px);
+    width: calc(100vw - 20px);
   }
 
   .boxInput input, .boxInput textarea {
