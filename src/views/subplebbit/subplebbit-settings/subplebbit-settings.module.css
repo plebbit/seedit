@@ -37,6 +37,7 @@
 .boxInput input {
   font-size: 100%;
   width: 492px;
+  box-sizing: border-box;
   padding: 3px;
   border: 1px solid var(--border-text);
   box-shadow: var(--box-shadow-input);
@@ -45,6 +46,7 @@
 .boxInput textarea {
   box-shadow: var(--box-shadow-input);
   width: 492px;
+  box-sizing: border-box;
   padding: 3px;
   border: 1px solid gray;
   height: 100px;
@@ -117,13 +119,24 @@
 }
 
 .challengeDescription {
-  margin: 5px 0 15px 0;
+  margin: 15px 0 15px 0;
   font-size: 15px;
 }
 
 .challengeOptionDescription {
   margin: 5px 0;
   font-size: 12px;
+}
+
+.challengeOption label {
+  font-size: 12px;
+}
+
+.challengeOption input[type="checkbox"] {
+  margin-right: 3px;
+  width: auto !important;
+  outline: none;
+  cursor: pointer;
 }
 
 .challengesArray {
@@ -142,6 +155,14 @@
   display: inline-block;
 }
 
+.visible {
+  display: block;
+}
+
+.hidden {
+  display: none;
+}
+
 .moderator {
   font-size: 15px;
   color: var(--text);
@@ -150,6 +171,7 @@
 
 .addButton {
   display: block;
+  text-transform: lowercase;
 }
 
 .moderatorAddress, .moderatorRole {
@@ -194,18 +216,48 @@
   padding-left: 10px;
 }
 
+@media (min-width: 768px) {
+  .content {
+    padding: 7px 5px 0px 5px;
+  }
+
+  .infobar {
+    max-width: calc(100% - 306px);
+  }
+}
+
+@media (max-width: 853px) {
+  .box, .boxInput {
+    width: calc(100% - 315px);
+  }
+
+  .boxInput input, .boxInput textarea {
+    width: calc(100% + 293px);
+  }
+
+  .infobar {
+    max-width: calc(100% - 306px);
+  }
+}
+
 @media (max-width: 768px) {
   .content {
-    padding: 7px 0px 0px 0px;
+    padding: 7px 0px 0px 5px;
   }
 
   .sidebar {
     display: none;
   }
-}
 
-@media (min-width: 768px) {
-  .content {
-    padding: 7px 5px 0px 5px;
+  .box, .boxInput {
+    width: calc(100vw - 35px);
+  }
+
+  .boxInput input, .boxInput textarea {
+    width: calc(100% - 20px)
+  }
+
+  .infobar {
+    max-width: 100%;
   }
 }

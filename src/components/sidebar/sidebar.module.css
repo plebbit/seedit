@@ -270,6 +270,7 @@ a {
 
 .footerSeparator {
   margin: 0 2px;
+  color: var(--gray-footer-separator);
 }
 
 .footer li a {

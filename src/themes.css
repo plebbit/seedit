@@ -10,6 +10,7 @@
   --code-border: #e6e6de;
   --red: red;
   --gray-footer: dimgray;
+  --gray-footer-separator: rgb(151, 151, 151);
   --gray-contrast: #888;
   --gray-overlay: #F7F7F7;
   --gray-overlay-border: #E9E9E9;
@@ -69,6 +70,7 @@
   --code-border: rgb(52, 58, 60);
   --red: rgb(200, 0, 0);
   --gray-footer: rgb(168, 160, 147);
+  --gray-footer-separator: #6a6a6a;
   --gray-contrast: #c7c7c7;
   --gray-overlay: #1f1f1f;
   --gray-overlay-border: #3e3e3e;

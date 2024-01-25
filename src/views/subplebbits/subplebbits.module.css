@@ -30,6 +30,7 @@
   font-weight: bold;
   font-size: small;
   float: left;
+  padding-top: 2px;
   padding-right: 7px;
   background: transparent;
   overflow: hidden;
@@ -109,9 +110,13 @@
 }
 
 .title a {
-  margin-right: 10px;
+  margin-right: 5px;
   flex-grow: 1;
   color: var(--link);
+}
+
+.subscribeButton {
+  margin-left: 5px;
 }
 
 /* TODO: consider to enable this later, when lots of new communities will be proposed */
@@ -140,16 +145,22 @@
   padding: 0 1px;
   line-height: 1.6em;
   text-transform: lowercase;
+  margin-top: 1px;
 }
 
 .subplebbitPreferences a {
   color: var(--gray-contrast);
   font-weight: bold;
+  margin-right: 5px;
 }
 
 .subplebbitPreferences a:hover {
   text-decoration: underline;
   cursor: pointer;
+}
+
+.roleLabel {
+  padding-right: 2px;
 }
 
 .subplebbitsTabs {
@@ -211,7 +222,7 @@
     padding: 7px 5px 0px 5px;
   }
 
-  .stateString, .infobar {
+  .infobar {
     max-width: calc(100% - 327px);
   }
 }
