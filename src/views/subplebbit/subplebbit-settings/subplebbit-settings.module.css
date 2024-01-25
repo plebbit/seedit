@@ -220,6 +220,10 @@
   .content {
     padding: 7px 5px 0px 5px;
   }
+
+  .infobar {
+    max-width: calc(100% - 306px);
+  }
 }
 
 @media (max-width: 853px) {
@@ -229,6 +233,10 @@
 
   .boxInput input, .boxInput textarea {
     width: calc(100% + 293px);
+  }
+
+  .infobar {
+    max-width: calc(100% - 306px);
   }
 }
 
@@ -242,10 +250,14 @@
   }
 
   .box, .boxInput {
-    width: 95vw;
+    width: calc(100vw - 35px);
   }
 
   .boxInput input, .boxInput textarea {
     width: calc(100% - 20px)
+  }
+
+  .infobar {
+    max-width: 100%;
   }
 }
