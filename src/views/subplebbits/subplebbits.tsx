@@ -9,6 +9,7 @@ import { getFormattedTimeDuration, getFormattedTimeAgo } from '../../lib/utils/t
 import { isSubplebbitsView, isSubplebbitsSubscriberView, isSubplebbitsModeratorView, isSubplebbitsAdminView, isSubplebbitsOwnerView } from '../../lib/utils/view-utils';
 import { useDefaultSubplebbitAddresses } from '../../lib/utils/addresses-utils';
 import { RoleLabel } from '../../components/post/label/label';
+const isMobile = window.innerWidth <= 768;
 
 interface SubplebbitProps {
   index?: number;
@@ -72,7 +73,7 @@ const Subplebbit = ({ subplebbit }: SubplebbitProps) => {
   const { t } = useTranslation();
   const { address, createdAt, description, roles, shortAddress, settings, suggested, title, updatedAt } = subplebbit || {};
 
-  const [showDescription, setShowDescription] = useState(false);
+  const [showDescription, setShowDescription] = useState(isMobile ? false : true);
   const buttonType = showDescription ? 'closeButton' : 'textButton';
   const toggleExpanded = () => setShowDescription(!showDescription);
 
@@ -142,8 +143,6 @@ const Subplebbit = ({ subplebbit }: SubplebbitProps) => {
               )}
               <Link to={`/p/${address}/settings`}>{t('settings')}</Link>
               <span className={styles.onlineLine}>
-                {/* <span className={`${styles.onlineIndicator} ${isOnline ? styles.online : styles.offline}`} title={isOnline ? t('online') : t('offline')} /> */}
-                {/* <span className={`${styles.onlineStatus} ${isOnline ? styles.green : styles.red}`}>{isOnline ? t('online') : t('offline')}</span> */}
                 <span>{onlineStatus}</span>
               </span>
             </div>
