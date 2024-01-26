@@ -6,7 +6,16 @@ import styles from './subplebbits.module.css';
 import Sidebar from '../../components/sidebar';
 import SubscribeButton from '../../components/subscribe-button';
 import { getFormattedTimeDuration, getFormattedTimeAgo } from '../../lib/utils/time-utils';
-import { isSubplebbitsView, isSubplebbitsSubscriberView, isSubplebbitsModeratorView, isSubplebbitsAdminView, isSubplebbitsOwnerView } from '../../lib/utils/view-utils';
+import {
+  isSubplebbitsView,
+  isSubplebbitsSubscriberView,
+  isSubplebbitsModeratorView,
+  isSubplebbitsAdminView,
+  isSubplebbitsOwnerView,
+  isSubplebbitsVoteView,
+  isSubplebbitsVotePassedView,
+  isSubplebbitsVoteRejectedView,
+} from '../../lib/utils/view-utils';
 import { useDefaultSubplebbitAddresses } from '../../lib/utils/addresses-utils';
 import { RoleLabel } from '../../components/post/label/label';
 const isMobile = window.innerWidth <= 768;
@@ -16,7 +25,7 @@ interface SubplebbitProps {
   subplebbit: SubplebbitType | undefined;
 }
 
-const Tabs = () => {
+const MyCommunitiesTabs = () => {
   const { t } = useTranslation();
   const location = useLocation();
   const isInSubplebbitsSubscriberView = isSubplebbitsSubscriberView(location.pathname);
@@ -40,6 +49,30 @@ const Tabs = () => {
       <span className={styles.separator}>|</span>
       <Link to='/communities/owner' className={isInSubplebbitsOwnerView ? styles.selected : styles.choice}>
         {t('owner')}
+      </Link>
+    </div>
+  );
+};
+
+const VoteTabs = () => {
+  const { t } = useTranslation();
+  const location = useLocation();
+  const isInSubplebbitsVoteView = isSubplebbitsVoteView(location.pathname);
+  const isInSubplebbitsVotePassedView = isSubplebbitsVotePassedView(location.pathname);
+  const isInSubplebbitsVoteRejectedView = isSubplebbitsVoteRejectedView(location.pathname);
+
+  return (
+    <div className={styles.subplebbitsTabs}>
+      <Link to='/communities/vote' className={isInSubplebbitsVoteView ? styles.selected : styles.choice}>
+        {t('all')}
+      </Link>
+      <span className={styles.separator}>|</span>
+      <Link to='/communities/vote/passed' className={isInSubplebbitsVotePassedView ? styles.selected : styles.choice}>
+        {t('passed')}
+      </Link>
+      <span className={styles.separator}>|</span>
+      <Link to='/communities/vote/rejected' className={isInSubplebbitsVoteRejectedView ? styles.selected : styles.choice}>
+        {t('rejected')}
       </Link>
     </div>
   );
@@ -205,7 +238,7 @@ const Subplebbits = () => {
       <div className={styles.sidebar}>
         <Sidebar />
       </div>
-      {(isInSubplebbitsSubscriberView || isInSubplebbitsModeratorView || isInSubplebbitsAdminView || isInSubplebbitsOwnerView) && <Tabs />}
+      {isInSubplebbitsSubscriberView || isInSubplebbitsModeratorView || isInSubplebbitsAdminView || isInSubplebbitsOwnerView ? <MyCommunitiesTabs /> : <VoteTabs />}
       <Infobar />
       {isInSubplebbitsView && <ApprovedSubplebbits />}
       {(isInSubplebbitsModeratorView || isInSubplebbitsAdminView || isInSubplebbitsOwnerView) && <AccountSubplebbits viewRole={viewRole} />}
