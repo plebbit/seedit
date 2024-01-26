@@ -11,6 +11,7 @@ import SearchBar from '../search-bar';
 import SubscribeButton from '../subscribe-button';
 import packageJson from '../../../package.json';
 const { version } = packageJson;
+const commitRef = process.env.REACT_APP_COMMIT_REF;
 
 interface sidebarProps {
   address?: string | undefined;
@@ -267,6 +268,14 @@ const Sidebar = ({ address, cid, createdAt, description, downvoteCount = 0, role
               <a href={`https://github.com/plebbit/seedit/releases/tag/v${version}`} target='_blank' rel='noopener noreferrer'>
                 v{version}
               </a>
+              {commitRef && (
+                <>
+                  {' '}
+                  <a href={`https://github.com/plebbit/seedit/commit/${commitRef}`} target='_blank' rel='noopener noreferrer'>
+                    ({commitRef.slice(0, 7)})
+                  </a>
+                </>
+              )}
             </li>
           </ul>
         </div>

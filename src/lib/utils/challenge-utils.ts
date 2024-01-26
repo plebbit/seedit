@@ -73,6 +73,25 @@ export const getDefaultExclude = () => {
   ];
 };
 
+export const getDefaultChallengeDescription = (challengeType: string) => {
+  switch (challengeType) {
+    case 'text-math':
+      return 'Ask a plain text math question, insecure, use ONLY for testing.';
+    case 'captcha-canvas-v3':
+      return 'Make a custom image captcha';
+    case 'fail':
+      return 'A challenge that automatically fails with a custom error message.';
+    case 'blacklist':
+      return 'Blacklist author addresses.';
+    case 'question':
+      return "Ask a question, like 'What is the password?'";
+    case 'evm-contract-call':
+      return 'The response from an EVM contract call passes a condition, e.g. a token balance challenge.';
+    default:
+      return '';
+  }
+};
+
 export const getDefaultOptionInputs = (challengeType: string) => {
   switch (challengeType) {
     case 'text-math':

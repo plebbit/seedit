@@ -1,50 +1,78 @@
-import { useEffect, useMemo } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Trans, useTranslation } from 'react-i18next';
 import { Subplebbit as SubplebbitType, useAccount, useAccountSubplebbits, useSubplebbits, useSubplebbitStats } from '@plebbit/plebbit-react-hooks';
 import styles from './subplebbits.module.css';
-import Flair from '../../components/post/flair';
 import Sidebar from '../../components/sidebar';
 import SubscribeButton from '../../components/subscribe-button';
 import { getFormattedTimeDuration, getFormattedTimeAgo } from '../../lib/utils/time-utils';
 import {
   isSubplebbitsView,
-  isSubplebbitsMineView,
-  isSubplebbitsMineContributorView,
-  isSubplebbitsMineSubscriberView,
-  isSubplebbitsMineModeratorView,
+  isSubplebbitsSubscriberView,
+  isSubplebbitsModeratorView,
+  isSubplebbitsAdminView,
+  isSubplebbitsOwnerView,
+  isSubplebbitsVoteView,
+  isSubplebbitsVotePassedView,
+  isSubplebbitsVoteRejectedView,
 } from '../../lib/utils/view-utils';
 import { useDefaultSubplebbitAddresses } from '../../lib/utils/addresses-utils';
 import { RoleLabel } from '../../components/post/label/label';
+const isMobile = window.innerWidth <= 768;
 
 interface SubplebbitProps {
   index?: number;
   subplebbit: SubplebbitType | undefined;
 }
 
-const Tabs = () => {
+const MyCommunitiesTabs = () => {
   const { t } = useTranslation();
   const location = useLocation();
-  const isInSubplebbitsMineSubscriberView = isSubplebbitsMineSubscriberView(location.pathname);
-  const isInSubplebbitsMineContributorView = isSubplebbitsMineContributorView(location.pathname);
-  const isInSubplebbitsMineModeratorView = isSubplebbitsMineModeratorView(location.pathname);
+  const isInSubplebbitsSubscriberView = isSubplebbitsSubscriberView(location.pathname);
+  const isInSubplebbitsModeratorView = isSubplebbitsModeratorView(location.pathname);
+  const isInSubplebbitsAdminView = isSubplebbitsAdminView(location.pathname);
+  const isInSubplebbitsOwnerView = isSubplebbitsOwnerView(location.pathname);
 
   return (
     <div className={styles.subplebbitsTabs}>
-      <Link to='/communities/mine/subscriber' className={isInSubplebbitsMineSubscriberView ? styles.selected : styles.choice}>
+      <Link to='/communities/subscriber' className={isInSubplebbitsSubscriberView ? styles.selected : styles.choice}>
         {t('subscriber')}
       </Link>
       <span className={styles.separator}>|</span>
-      <Link
-        to='/communities/mine/contributor'
-        className={isInSubplebbitsMineContributorView ? styles.selected : styles.choice}
-        onClick={(e) => e.preventDefault()} // TODO: enable after approving user is implemented in the API
-      >
-        {t('approved_user')}
+      <Link to='/communities/moderator' className={isInSubplebbitsModeratorView ? styles.selected : styles.choice}>
+        {t('moderator')}
       </Link>
       <span className={styles.separator}>|</span>
-      <Link to='/communities/mine/moderator' className={isInSubplebbitsMineModeratorView ? styles.selected : styles.choice}>
-        {t('moderator')}
+      <Link to='/communities/admin' className={isInSubplebbitsAdminView ? styles.selected : styles.choice}>
+        {t('admin')}
+      </Link>
+      <span className={styles.separator}>|</span>
+      <Link to='/communities/owner' className={isInSubplebbitsOwnerView ? styles.selected : styles.choice}>
+        {t('owner')}
+      </Link>
+    </div>
+  );
+};
+
+const VoteTabs = () => {
+  const { t } = useTranslation();
+  const location = useLocation();
+  const isInSubplebbitsVoteView = isSubplebbitsVoteView(location.pathname);
+  const isInSubplebbitsVotePassedView = isSubplebbitsVotePassedView(location.pathname);
+  const isInSubplebbitsVoteRejectedView = isSubplebbitsVoteRejectedView(location.pathname);
+
+  return (
+    <div className={styles.subplebbitsTabs}>
+      <Link to='/communities/vote' className={isInSubplebbitsVoteView ? styles.selected : styles.choice}>
+        {t('all')}
+      </Link>
+      <span className={styles.separator}>|</span>
+      <Link to='/communities/vote/passed' className={isInSubplebbitsVotePassedView ? styles.selected : styles.choice} onClick={(e) => e.preventDefault()}>
+        {t('passed')}
+      </Link>
+      <span className={styles.separator}>|</span>
+      <Link to='/communities/vote/rejected' className={isInSubplebbitsVoteRejectedView ? styles.selected : styles.choice} onClick={(e) => e.preventDefault()}>
+        {t('rejected')}
       </Link>
     </div>
   );
@@ -56,21 +84,20 @@ const Infobar = () => {
   const subscriptions = account?.subscriptions || [];
   const { t } = useTranslation();
   const location = useLocation();
-  const isInSubplebbitsMineSubscriberView = isSubplebbitsMineSubscriberView(location.pathname);
-  const isInSubplebbitsMineContributorView = isSubplebbitsMineContributorView(location.pathname);
-  const isInSubplebbitsMineModeratorView = isSubplebbitsMineModeratorView(location.pathname);
+  const isInSubplebbitsSubscriberView = isSubplebbitsSubscriberView(location.pathname);
+  const isInSubplebbitsModeratorView = isSubplebbitsModeratorView(location.pathname);
+  const isInSubplebbitsAdminView = isSubplebbitsAdminView(location.pathname);
+  const isInSubplebbitsOwnerView = isSubplebbitsOwnerView(location.pathname);
 
   const infobarText = useMemo(() => {
-    if (isInSubplebbitsMineSubscriberView) {
+    if (isInSubplebbitsSubscriberView) {
       return subscriptions.length === 0 ? t('not_subscribed') : t('below_subscribed');
-    } else if (isInSubplebbitsMineContributorView) {
-      return t('below_approved_user');
-    } else if (isInSubplebbitsMineModeratorView) {
+    } else if (isInSubplebbitsModeratorView || isInSubplebbitsAdminView || isInSubplebbitsOwnerView) {
       return Object.keys(accountSubplebbits).length > 0 ? t('below_moderator_access') : t('not_moderator');
     } else {
       return <Trans i18nKey='join_communities_notice' values={{ join: t('join'), leave: t('leave') }} components={{ 1: <code />, 2: <code /> }} />;
     }
-  }, [isInSubplebbitsMineSubscriberView, isInSubplebbitsMineContributorView, isInSubplebbitsMineModeratorView, t, subscriptions.length, accountSubplebbits]);
+  }, [t, subscriptions.length, accountSubplebbits, isInSubplebbitsSubscriberView, isInSubplebbitsModeratorView, isInSubplebbitsAdminView, isInSubplebbitsOwnerView]);
 
   return <div className={styles.infobar}>{infobarText}</div>;
 };
@@ -78,7 +105,10 @@ const Infobar = () => {
 const Subplebbit = ({ subplebbit }: SubplebbitProps) => {
   const { t } = useTranslation();
   const { address, createdAt, description, roles, shortAddress, settings, suggested, title, updatedAt } = subplebbit || {};
-  const { allActiveUserCount } = useSubplebbitStats({ subplebbitAddress: address });
+
+  const [showDescription, setShowDescription] = useState(isMobile ? false : true);
+  const buttonType = showDescription ? 'closeButton' : 'textButton';
+  const toggleExpanded = () => setShowDescription(!showDescription);
 
   // subplebbit.settings is a private field that is only available to the owner of the subplebbit
   const isUserOwner = settings;
@@ -93,7 +123,10 @@ const Subplebbit = ({ subplebbit }: SubplebbitProps) => {
 
   const postScore = upvoteCount === 0 && downvoteCount === 0 ? '•' : upvoteCount - downvoteCount || '•';
   const isOnline = updatedAt && updatedAt > Date.now() / 1000 - 60 * 30;
+  const { allActiveUserCount, hourActiveUserCount } = useSubplebbitStats({ subplebbitAddress: address });
+  const onlineNotice = t('users_online', { count: hourActiveUserCount });
   const offlineNotice = updatedAt && t('posts_last_synced', { dateAgo: getFormattedTimeAgo(updatedAt) });
+  const onlineStatus = isOnline ? onlineNotice : offlineNotice;
 
   useEffect(() => {
     document.title = `${t('communities')} - seedit`;
@@ -121,9 +154,6 @@ const Subplebbit = ({ subplebbit }: SubplebbitProps) => {
       )}
       <div className={styles.entry}>
         <div className={styles.title}>
-          <div className={styles.onlineIndicatorWrapper} title={isOnline ? t('online') : t('offline')}>
-            <span className={`${styles.onlineIndicator} ${isOnline ? styles.online : styles.offline}`} />
-          </div>
           <div className={styles.titleWrapper}>
             <Link to={`/p/${address}`}>
               p/{address?.includes('.') ? address : shortAddress}
@@ -134,35 +164,41 @@ const Subplebbit = ({ subplebbit }: SubplebbitProps) => {
             </span>
           </div>
         </div>
-        {description && <div className={styles.description}>{description}</div>}
         <div className={styles.tagline}>
+          {description && <span className={`${styles.expandButton} ${styles[buttonType]}`} onClick={toggleExpanded} />}
           <span>
-            {isOnline ? (
-              <>
-                {t('members_count', { count: allActiveUserCount })}, {t('community_for', { date: getFormattedTimeDuration(createdAt) })}
-              </>
-            ) : (
-              offlineNotice
-            )}
+            {t('members_count', { count: allActiveUserCount })}, {t('community_for', { date: getFormattedTimeDuration(createdAt) })}
             <div className={styles.subplebbitPreferences}>
               {(userRole || isUserOwner) && (
                 <span className={styles.roleLabel}>
                   <RoleLabel role={userRole || 'owner'} />
                 </span>
               )}
-              <Link to={`/p/${address}/settings`}>{isUserOwner ? t('edit') : t('settings')}</Link>
+              <Link to={`/p/${address}/settings`}>{t('settings')}</Link>
+              <span className={styles.onlineLine}>
+                <span>{onlineStatus}</span>
+              </span>
             </div>
           </span>
         </div>
+        {description && showDescription && <div className={styles.description}>{description}</div>}
       </div>
     </div>
   );
 };
 
-const AccountSubplebbits = () => {
+const AccountSubplebbits = ({ viewRole }: { viewRole: string }) => {
   const { accountSubplebbits } = useAccountSubplebbits();
-  const accountSubplebbitsArray = useMemo(() => Object.values(accountSubplebbits), [accountSubplebbits]);
-  return accountSubplebbitsArray?.map((subplebbit, index) => <Subplebbit key={index} subplebbit={subplebbit} />);
+  const account = useAccount();
+
+  const filteredSubplebbits = useMemo(() => {
+    return Object.values(accountSubplebbits).filter((subplebbit) => {
+      const userRole = (subplebbit as any).roles?.[account?.author?.address]?.role;
+      return userRole === viewRole;
+    });
+  }, [accountSubplebbits, account, viewRole]);
+
+  return filteredSubplebbits.map((subplebbit, index) => <Subplebbit key={index} subplebbit={subplebbit} />);
 };
 
 const SubscriberSubplebbits = () => {
@@ -181,21 +217,32 @@ const ApprovedSubplebbits = () => {
 
 const Subplebbits = () => {
   const location = useLocation();
-  const isInSubplebbitsMineSubscriberView = isSubplebbitsMineSubscriberView(location.pathname);
-  const isInSubplebbitsMineModeratorView = isSubplebbitsMineModeratorView(location.pathname);
-  const isInSubplebbitsView = isSubplebbitsView(location.pathname) && !isInSubplebbitsMineSubscriberView && !isInSubplebbitsMineModeratorView;
-  const isInSubplebbitsMineView = isSubplebbitsMineView(location.pathname);
+  const isInSubplebbitsSubscriberView = isSubplebbitsSubscriberView(location.pathname);
+  const isInSubplebbitsModeratorView = isSubplebbitsModeratorView(location.pathname);
+  const isInSubplebbitsAdminView = isSubplebbitsAdminView(location.pathname);
+  const isInSubplebbitsOwnerView = isSubplebbitsOwnerView(location.pathname);
+  const isInSubplebbitsView =
+    isSubplebbitsView(location.pathname) && !isInSubplebbitsSubscriberView && !isInSubplebbitsModeratorView && !isInSubplebbitsAdminView && !isInSubplebbitsOwnerView;
+
+  let viewRole = 'subscriber';
+  if (isInSubplebbitsModeratorView) {
+    viewRole = 'moderator';
+  } else if (isInSubplebbitsAdminView) {
+    viewRole = 'admin';
+  } else if (isInSubplebbitsOwnerView) {
+    viewRole = 'owner';
+  }
 
   return (
     <div className={styles.content}>
       <div className={styles.sidebar}>
         <Sidebar />
       </div>
-      {(isInSubplebbitsMineView || isInSubplebbitsMineModeratorView || isInSubplebbitsMineSubscriberView) && <Tabs />}
+      {isInSubplebbitsSubscriberView || isInSubplebbitsModeratorView || isInSubplebbitsAdminView || isInSubplebbitsOwnerView ? <MyCommunitiesTabs /> : <VoteTabs />}
       <Infobar />
       {isInSubplebbitsView && <ApprovedSubplebbits />}
-      {isInSubplebbitsMineModeratorView && <AccountSubplebbits />}
-      {isInSubplebbitsMineSubscriberView && <SubscriberSubplebbits />}
+      {(isInSubplebbitsModeratorView || isInSubplebbitsAdminView || isInSubplebbitsOwnerView) && <AccountSubplebbits viewRole={viewRole} />}
+      {isInSubplebbitsSubscriberView && <SubscriberSubplebbits />}
     </div>
   );
 };

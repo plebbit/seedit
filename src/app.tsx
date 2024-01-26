@@ -104,10 +104,13 @@ function App() {
             <Route path='/inbox/postreplies' element={<Inbox />} />
 
             <Route path='/communities' element={<Subplebbits />} />
-            <Route path='/communities/mine' element={<Subplebbits />} />
-            <Route path='/communities/mine/subscriber' element={<Subplebbits />} />
-            <Route path='/communities/mine/contributor' element={<Subplebbits />} />
-            <Route path='/communities/mine/moderator' element={<Subplebbits />} />
+            <Route path='/communities/subscriber' element={<Subplebbits />} />
+            <Route path='/communities/moderator' element={<Subplebbits />} />
+            <Route path='/communities/admin' element={<Subplebbits />} />
+            <Route path='/communities/owner' element={<Subplebbits />} />
+            <Route path='/communities/vote' element={<Subplebbits />} />
+            <Route path='/communities/vote/passed' element={<Subplebbits />} />
+            <Route path='/communities/vote/rejected' element={<Subplebbits />} />
           </Route>
         </Route>
       </Routes>

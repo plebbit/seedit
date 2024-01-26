@@ -119,10 +119,37 @@
   margin-left: 5px;
 }
 
-/* TODO: consider to enable this later, when lots of new communities will be proposed */
-/* .title a:visited {
-  color: var(--link-visited);
-} */
+.tagline {
+  text-transform: lowercase;
+  margin-top: 2px;
+}
+
+.expandButton {
+  background-size: cover;
+  height: 23px;
+  width: 23px;
+  float: left;
+  margin-right: 5px;
+  margin-top: 2px;
+}
+
+.textButton {
+  background-image: var(--text-button);
+}
+
+.textButton:hover {
+  background-image: var(--text-button-hover);
+  cursor: pointer;
+}
+
+.closeButton {
+  background-image: var(--close-button);
+}
+
+.closeButton:hover {
+  background-image: var(--close-button-hover);
+  cursor: pointer;
+}
 
 .description {
   max-width: 60em;
@@ -137,10 +164,6 @@
   font-size: 14px;
 }
 
-.tagline {
-  text-transform: lowercase;
-}
-
 .subplebbitPreferences {
   padding: 0 1px;
   line-height: 1.6em;
@@ -152,11 +175,23 @@
   color: var(--gray-contrast);
   font-weight: bold;
   margin-right: 5px;
-}
+} 
 
 .subplebbitPreferences a:hover {
   text-decoration: underline;
   cursor: pointer;
+}
+
+.onlineStatus {
+  margin-right: 5px;
+}
+
+.green {
+  color: var(--green);
+}
+
+.red {
+  color: var(--red);
 }
 
 .roleLabel {

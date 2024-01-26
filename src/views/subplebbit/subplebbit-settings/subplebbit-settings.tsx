@@ -6,7 +6,7 @@ import { useTranslation } from 'react-i18next';
 import { create } from 'zustand';
 import styles from './subplebbit-settings.module.css';
 import { isValidURL } from '../../../lib/utils/url-utils';
-import { getDefaultExclude, getDefaultOptionInputs } from '../../../lib/utils/challenge-utils';
+import { getDefaultChallengeDescription, getDefaultExclude, getDefaultOptionInputs } from '../../../lib/utils/challenge-utils';
 import LoadingEllipsis from '../../../components/loading-ellipsis';
 import Sidebar from '../../../components/sidebar';
 
@@ -292,138 +292,90 @@ const challengesNames = ['text-math', 'captcha-canvas-v3', 'fail', 'blacklist', 
 
 interface ChallengeSettingsProps {
   challenge: any;
+  index: number;
+  setSubmitStore: (data: Partial<SubplebbitSettingsState>) => void;
+  settings: any;
   showSettings: boolean;
 }
 
-const ChallengeSettings = ({ challenge, showSettings }: ChallengeSettingsProps) => {
-  const { name } = challenge || {};
+type OptionInput = {
+  option: string;
+  value?: string;
+  label: string;
+  default?: string;
+  description: string;
+  placeholder?: string;
+  required?: boolean;
+};
+
+const ChallengeSettings = ({ challenge, index, setSubmitStore, settings, showSettings }: ChallengeSettingsProps) => {
+  const { exclude, name, optionInputs } = challenge || {};
+
+  const handleOptionChange = (optionName: string, newValue: string) => {
+    const updatedOptionInputs = optionInputs.map((input: any) => (input.option === optionName ? { ...input, value: newValue } : input));
+
+    const updatedChallenges = settings.challenges.map((ch: any, idx: number) => (idx === index ? { ...ch, optionInputs: updatedOptionInputs } : ch));
+
+    setSubmitStore({ settings: { ...settings, challenges: updatedChallenges } });
+  };
+
+  const handleExcludeChange = (type: 'role' | 'post' | 'reply' | 'vote', value: string | boolean) => {
+    const updatedExclude = { ...exclude[0] }; // Clone the first exclude object
+
+    if (type === 'role') {
+      if (typeof value === 'string') {
+        const roleIndex = updatedExclude.role.indexOf(value);
+        if (roleIndex > -1) {
+          updatedExclude.role.splice(roleIndex, 1); // Remove role
+        } else {
+          updatedExclude.role.push(value); // Add role
+        }
+      }
+    } else {
+      // Handle post, reply, vote
+      updatedExclude[type] = value;
+    }
+
+    const updatedChallenges = [...settings.challenges];
+    updatedChallenges[index] = { ...updatedChallenges[index], exclude: [updatedExclude] };
+    setSubmitStore({ settings: { ...settings, challenges: updatedChallenges } });
+  };
 
   return (
     <div className={showSettings ? styles.visible : styles.hidden}>
-      {name === 'text-math' && (
-        <>
-          <div className={styles.challengeDescription}>Ask a plain text math question, insecure, use ONLY for testing.</div>
-          <div className={styles.challengeOption}>
-            Difficulty
-            <div className={styles.challengeOptionDescription}>The math difficulty of the challenge between 1-3.</div>
-            <input type='text' defaultValue='1' placeholder='1' />
-          </div>
-        </>
-      )}
-      {name === 'captcha-canvas-v3' && (
-        <>
-          <div className={styles.challengeDescription}>Make a custom image captcha</div>
-          <div className={styles.challengeOption}>
-            Characters
-            <div className={styles.challengeOptionDescription}>Amount of characters of the captcha.</div>
-            <input type='text' />
-          </div>
-          <div className={styles.challengeOption}>
-            Width
-            <div className={styles.challengeOptionDescription}>Height of the captcha.</div>
-            <input type='text' />
-          </div>
-          <div className={styles.challengeOption}>
-            Height
-            <div className={styles.challengeOptionDescription}>Width of the captcha.</div>
-            <input type='text' />
-          </div>
-          <div className={styles.challengeOption}>
-            Color
-            <div className={styles.challengeOptionDescription}>Color of the captcha.</div>
-            <input type='text' />
-          </div>
-        </>
-      )}
-      {name === 'fail' && (
-        <>
-          <div className={styles.challengeDescription}>A challenge that automatically fails with a custom error message.</div>
-          <div className={styles.challengeOption}>
-            Error
-            <div className={styles.challengeOptionDescription}>The error to display to the author.</div>
-            <input type='text' defaultValue="You're not allowed to publish." placeholder="You're not allowed to publish." />
-          </div>
-        </>
-      )}
-      {name === 'blacklist' && (
-        <>
-          <div className={styles.challengeDescription}>Blacklist author addresses.</div>
-          <div className={styles.challengeOption}>
-            Blacklist
-            <div className={styles.challengeOptionDescription}>Comma separated list of author addresses to be blacklisted.</div>
-            <input type='text' placeholder='address1.eth,address2.eth,address3.eth' />
-          </div>
-          <div className={styles.challengeOption}>
-            Error
-            <div className={styles.challengeOptionDescription}>The error to display to the author.</div>
-            <input type='text' defaultValue="You're blacklisted." placeholder="You're blacklisted." />
-          </div>
-        </>
-      )}
-      {name === 'question' && (
-        <>
-          <div className={styles.challengeDescription}>Ask a question, like 'What is the password?'</div>
-          <div className={styles.challengeOption}>
-            Question
-            <div className={styles.challengeOptionDescription}>The question to answer.</div>
-            <input type='text' />
-          </div>
-          <div className={styles.challengeOption}>
-            Answer
-            <div className={styles.challengeOptionDescription}>The answer to the question.</div>
-            <input type='text' />
-          </div>
-        </>
-      )}
-      {name === 'evm-contract-call' && (
-        <>
-          <div className={styles.challengeDescription}>The response from an EVM contract call passes a condition, e.g. a token balance challenge.</div>
-          <div className={styles.challengeOption}>
-            chainTicker
-            <div className={styles.challengeOptionDescription}>The chain ticker</div>
-            <input type='text' placeholder='eth' defaultValue='eth' />
-          </div>
-          <div className={styles.challengeOption}>
-            Address
-            <div className={styles.challengeOptionDescription}>The contract address.</div>
-            <input type='text' placeholder='0x...' />
-          </div>
-          <div className={styles.challengeOption}>
-            ABI
-            <div className={styles.challengeOptionDescription}>The ABI of the contract method.</div>
-            <textarea placeholder='{"constant":true,"inputs":[{"internalType":"address","name":"account...' autoCorrect='off' autoComplete='off' spellCheck='false' />
-          </div>
-          <div className={styles.challengeOption}>
-            Condition
-            <div className={styles.challengeOptionDescription}>The condition the contract call response must pass.</div>
-            <textarea placeholder='>1000' autoCorrect='off' autoComplete='off' spellCheck='false' />
-          </div>
-          <div className={styles.challengeOption}>
-            Error
-            <div className={styles.challengeOptionDescription}>The error to display to the author.</div>
-            <input type='text' defaultValue="Contract call response doesn't pass condition." placeholder="Contract call response doesn't pass condition." />
-          </div>
-        </>
-      )}
+      <div className={styles.challengeDescription}>{getDefaultChallengeDescription(name)}</div>
+      {challenge?.optionInputs?.map((inputOption: OptionInput) => (
+        <div key={inputOption.option} className={styles.challengeOption}>
+          {inputOption.label}
+          <div className={styles.challengeOptionDescription}>{inputOption.description}</div>
+          <input
+            type='text'
+            value={inputOption.value || inputOption.default || ''}
+            placeholder={inputOption.placeholder || ''}
+            onChange={(e) => handleOptionChange(inputOption.option, e.target.value)}
+            required={inputOption.required || false}
+          />
+        </div>
+      ))}
       <div className={styles.challengeDescription}>Exclude from challenge</div>
       <div className={styles.challengeOption}>
         Moderators
         <div className={styles.challengeOptionDescription}>Exclude a specific moderator role</div>
         <div>
           <label>
-            <input type='checkbox' />
+            <input type='checkbox' checked={exclude[0]?.role.includes('moderator')} onChange={() => handleExcludeChange('role', 'moderator')} />
             exclude moderators
           </label>
         </div>
         <div>
           <label>
-            <input type='checkbox' />
+            <input type='checkbox' checked={exclude[0]?.role.includes('admin')} onChange={() => handleExcludeChange('role', 'admin')} />
             exclude admins
           </label>
         </div>
         <div>
           <label>
-            <input type='checkbox' />
+            <input type='checkbox' checked={exclude[0]?.role.includes('owner')} onChange={() => handleExcludeChange('role', 'owner')} />
             exclude owners
           </label>
         </div>
@@ -433,19 +385,19 @@ const ChallengeSettings = ({ challenge, showSettings }: ChallengeSettingsProps) 
         <div className={styles.challengeOptionDescription}>Exclude a specific user action</div>
         <div>
           <label>
-            <input type='checkbox' />
+            <input type='checkbox' checked={exclude[0]?.post} onChange={(e) => handleExcludeChange('post', e.target.checked)} />
             exclude posts
           </label>
         </div>
         <div>
           <label>
-            <input type='checkbox' />
+            <input type='checkbox' checked={exclude[1]?.post} onChange={(e) => handleExcludeChange('reply', e.target.checked)} />
             exclude replies
           </label>
         </div>
         <div>
           <label>
-            <input type='checkbox' />
+            <input type='checkbox' checked={exclude[2]?.post} onChange={(e) => handleExcludeChange('vote', e.target.checked)} />
             exclude votes
           </label>
         </div>
@@ -513,7 +465,7 @@ const Challenges = () => {
             <button className={styles.challengeEditButton} onClick={() => toggleSettings(index)}>
               {showSettings[index] ? 'hide settings' : 'show settings'}
             </button>
-            <ChallengeSettings challenge={challenge} showSettings={showSettings[index]} />
+            <ChallengeSettings challenge={challenge} index={index} setSubmitStore={setSubmitStore} settings={settings} showSettings={showSettings[index]} />
           </div>
         ))}
       </div>

@@ -5,7 +5,7 @@ export const getFormattedTimeAgo = (unixTimestamp: number): string => {
   const timeDifference = currentTime - unixTimestamp;
   const t = i18next.t;
 
-  if (timeDifference < 60) {
+  if (timeDifference < 120) {
     return t('time_1_minute_ago');
   }
   if (timeDifference < 3600) {
@@ -40,7 +40,7 @@ export const getFormattedTimeDuration = (unixTimestamp: number): string => {
   const timeDifference = currentTime - unixTimestamp;
   const t = i18next.t;
 
-  if (timeDifference < 60) {
+  if (timeDifference < 120) {
     return t('time_1_minute');
   }
   if (timeDifference < 3600) {

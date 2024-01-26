@@ -52,10 +52,6 @@ export const isAuthorSubmittedView = (pathname: string, params: ParamsType): boo
   return pathname === `/u/${params.authorAddress}/c/${params.commentCid}/submitted`;
 };
 
-export const isProfileDownvotedView = (pathname: string): boolean => {
-  return pathname === '/profile/downvoted';
-};
-
 export const isHomeView = (pathname: string, params: ParamsType): boolean => {
   return pathname === '/' || sortTypes.includes(pathname) || (timeFilterNames.includes(params.timeFilterName as TimeFilterKey) && !pathname.startsWith('/p/'));
 };
@@ -100,6 +96,14 @@ export const isProfileSubmittedView = (pathname: string): boolean => {
   return pathname.startsWith('/profile/submitted');
 };
 
+export const isProfileDownvotedView = (pathname: string): boolean => {
+  return pathname === '/profile/downvoted';
+};
+
+export const isProfileUpvotedView = (pathname: string): boolean => {
+  return pathname === '/profile/upvoted';
+};
+
 export const isSettingsView = (pathname: string): boolean => {
   return pathname === '/settings';
 };
@@ -124,22 +128,30 @@ export const isSubplebbitsView = (pathname: string): boolean => {
   return pathname.startsWith('/communities');
 };
 
-export const isSubplebbitsMineView = (pathname: string): boolean => {
-  return pathname === '/communities/mine';
+export const isSubplebbitsSubscriberView = (pathname: string): boolean => {
+  return pathname === '/communities/subscriber';
 };
 
-export const isSubplebbitsMineSubscriberView = (pathname: string): boolean => {
-  return pathname === '/communities/mine' || pathname === '/communities/mine/subscriber';
+export const isSubplebbitsModeratorView = (pathname: string): boolean => {
+  return pathname === '/communities/moderator';
 };
 
-export const isSubplebbitsMineContributorView = (pathname: string): boolean => {
-  return pathname === '/communities/mine/contributor';
+export const isSubplebbitsAdminView = (pathname: string): boolean => {
+  return pathname === '/communities/admin';
 };
 
-export const isSubplebbitsMineModeratorView = (pathname: string): boolean => {
-  return pathname === '/communities/mine/moderator';
+export const isSubplebbitsOwnerView = (pathname: string): boolean => {
+  return pathname === '/communities/owner';
 };
 
-export const isProfileUpvotedView = (pathname: string): boolean => {
-  return pathname === '/profile/upvoted';
+export const isSubplebbitsVoteView = (pathname: string): boolean => {
+  return pathname === '/communities/vote';
+};
+
+export const isSubplebbitsVotePassedView = (pathname: string): boolean => {
+  return pathname === '/communities/vote/passed';
+};
+
+export const isSubplebbitsVoteRejectedView = (pathname: string): boolean => {
+  return pathname === '/communities/vote/rejected';
 };
