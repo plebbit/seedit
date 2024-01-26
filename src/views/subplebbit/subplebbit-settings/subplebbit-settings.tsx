@@ -6,7 +6,13 @@ import { useTranslation } from 'react-i18next';
 import { create } from 'zustand';
 import styles from './subplebbit-settings.module.css';
 import { isValidURL } from '../../../lib/utils/url-utils';
-import { getDefaultChallengeDescription, getDefaultExclude, getDefaultOptionInputs } from '../../../lib/utils/challenge-utils';
+import {
+  ChallengeSetting,
+  getDefaultChallengeDescription,
+  getDefaultExclude,
+  getDefaultChallengeOptions,
+  getDefaultChallengeSettings,
+} from '../../../lib/utils/challenge-utils';
 import LoadingEllipsis from '../../../components/loading-ellipsis';
 import Sidebar from '../../../components/sidebar';
 
@@ -298,24 +304,16 @@ interface ChallengeSettingsProps {
   showSettings: boolean;
 }
 
-type OptionInput = {
-  option: string;
-  value?: string;
-  label: string;
-  default?: string;
-  description: string;
-  placeholder?: string;
-  required?: boolean;
-};
+const rolesToExclude = ['moderator', 'admin', 'owner'];
+const actionsToExclude: Array<'post' | 'reply' | 'vote'> = ['post', 'reply', 'vote'];
 
 const ChallengeSettings = ({ challenge, index, setSubmitStore, settings, showSettings }: ChallengeSettingsProps) => {
-  const { exclude, name, optionInputs } = challenge || {};
+  const { exclude, name, options } = challenge || {};
+  const challengeSettings: ChallengeSetting[] = getDefaultChallengeSettings(name);
 
   const handleOptionChange = (optionName: string, newValue: string) => {
-    const updatedOptionInputs = optionInputs.map((input: any) => (input.option === optionName ? { ...input, value: newValue } : input));
-
-    const updatedChallenges = settings.challenges.map((ch: any, idx: number) => (idx === index ? { ...ch, optionInputs: updatedOptionInputs } : ch));
-
+    const updatedOptions = { ...options, [optionName]: newValue };
+    const updatedChallenges = settings.challenges.map((ch: any, idx: number) => (idx === index ? { ...ch, options: updatedOptions } : ch));
     setSubmitStore({ settings: { ...settings, challenges: updatedChallenges } });
   };
 
@@ -344,16 +342,16 @@ const ChallengeSettings = ({ challenge, index, setSubmitStore, settings, showSet
   return (
     <div className={showSettings ? styles.visible : styles.hidden}>
       <div className={styles.challengeDescription}>{getDefaultChallengeDescription(name)}</div>
-      {challenge?.optionInputs?.map((inputOption: OptionInput) => (
-        <div key={inputOption.option} className={styles.challengeOption}>
-          {inputOption.label}
-          <div className={styles.challengeOptionDescription}>{inputOption.description}</div>
+      {challengeSettings.map((setting) => (
+        <div key={setting.option} className={styles.challengeOption}>
+          <div className={styles.challengeOptionLabel}>{setting.label}</div>
+          <div className={styles.challengeOptionDescription}>{setting.description}</div>
           <input
             type='text'
-            value={inputOption.value || inputOption.default || ''}
-            placeholder={inputOption.placeholder || ''}
-            onChange={(e) => handleOptionChange(inputOption.option, e.target.value)}
-            required={inputOption.required || false}
+            value={options[setting.option] || setting.default || ''}
+            placeholder={setting.placeholder || ''}
+            onChange={(e) => handleOptionChange(setting.option, e.target.value)}
+            required={setting.required || false}
           />
         </div>
       ))}
@@ -361,46 +359,26 @@ const ChallengeSettings = ({ challenge, index, setSubmitStore, settings, showSet
       <div className={styles.challengeOption}>
         Moderators
         <div className={styles.challengeOptionDescription}>Exclude a specific moderator role</div>
-        <div>
-          <label>
-            <input type='checkbox' checked={exclude[0]?.role.includes('moderator')} onChange={() => handleExcludeChange('role', 'moderator')} />
-            exclude moderators
-          </label>
-        </div>
-        <div>
-          <label>
-            <input type='checkbox' checked={exclude[0]?.role.includes('admin')} onChange={() => handleExcludeChange('role', 'admin')} />
-            exclude admins
-          </label>
-        </div>
-        <div>
-          <label>
-            <input type='checkbox' checked={exclude[0]?.role.includes('owner')} onChange={() => handleExcludeChange('role', 'owner')} />
-            exclude owners
-          </label>
-        </div>
+        {rolesToExclude.map((role) => (
+          <div key={role}>
+            <label>
+              <input type='checkbox' checked={exclude[0]?.role.includes(role)} onChange={() => handleExcludeChange('role', role)} />
+              exclude {role}
+            </label>
+          </div>
+        ))}
       </div>
       <div className={styles.challengeOption}>
         Actions
         <div className={styles.challengeOptionDescription}>Exclude a specific user action</div>
-        <div>
-          <label>
-            <input type='checkbox' checked={exclude[0]?.post} onChange={(e) => handleExcludeChange('post', e.target.checked)} />
-            exclude posts
-          </label>
-        </div>
-        <div>
-          <label>
-            <input type='checkbox' checked={exclude[1]?.post} onChange={(e) => handleExcludeChange('reply', e.target.checked)} />
-            exclude replies
-          </label>
-        </div>
-        <div>
-          <label>
-            <input type='checkbox' checked={exclude[2]?.post} onChange={(e) => handleExcludeChange('vote', e.target.checked)} />
-            exclude votes
-          </label>
-        </div>
+        {actionsToExclude.map((action) => (
+          <div key={action}>
+            <label>
+              <input type='checkbox' checked={exclude[0]?.[action]} onChange={(e) => handleExcludeChange(action, e.target.checked)} />
+              exclude {action}
+            </label>
+          </div>
+        ))}
       </div>
     </div>
   );
@@ -419,9 +397,11 @@ const Challenges = () => {
   };
 
   const handleAddChallenge = () => {
+    const defaultChallenge = 'captcha-canvas-v3';
+    const options = getDefaultChallengeOptions(defaultChallenge);
     const newChallenge = {
-      name: 'captcha-canvas-v3',
-      optionInputs: getDefaultOptionInputs('captcha-canvas-v3'),
+      name: defaultChallenge,
+      options,
       exclude: getDefaultExclude(),
     };
     const updatedChallenges = [...(settings?.challenges || []), newChallenge];
@@ -437,7 +417,7 @@ const Challenges = () => {
 
   const handleChallengeTypeChange = (index: number, newType: string) => {
     const updatedChallenges = [...challenges];
-    updatedChallenges[index] = { ...updatedChallenges[index], name: newType, optionInputs: getDefaultOptionInputs(newType) };
+    updatedChallenges[index] = { ...updatedChallenges[index], name: newType, options: getDefaultChallengeOptions(newType) };
     setSubmitStore({ settings: { ...settings, challenges: updatedChallenges } });
   };
 

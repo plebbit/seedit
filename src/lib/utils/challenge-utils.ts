@@ -92,7 +92,56 @@ export const getDefaultChallengeDescription = (challengeType: string) => {
   }
 };
 
-export const getDefaultOptionInputs = (challengeType: string) => {
+export const getDefaultChallengeOptions = (challengeType: string) => {
+  switch (challengeType) {
+    case 'text-math':
+      return {
+        difficulty: '1',
+      };
+    case 'captcha-canvas-v3':
+      return {
+        characters: '',
+        height: '',
+        width: '',
+        color: '',
+      };
+    case 'fail':
+      return {
+        error: "You're not allowed to publish.",
+      };
+    case 'blacklist':
+      return {
+        blacklist: '',
+        error: "You're blacklisted.",
+      };
+    case 'question':
+      return {
+        question: '',
+        answer: '',
+      };
+    case 'evm-contract-call':
+      return {
+        chainTicker: 'eth',
+        address: '',
+        abi: '',
+        condition: '',
+        error: "Contract call response doesn't pass condition.",
+      };
+    default:
+      return {};
+  }
+};
+
+export type ChallengeSetting = {
+  option: string;
+  label: string;
+  description: string;
+  default?: string;
+  placeholder?: string;
+  required?: boolean;
+};
+
+export const getDefaultChallengeSettings = (challengeType: string) => {
   switch (challengeType) {
     case 'text-math':
       return [
