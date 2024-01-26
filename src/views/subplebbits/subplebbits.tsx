@@ -1,4 +1,4 @@
-import { useEffect, useMemo } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Trans, useTranslation } from 'react-i18next';
 import { Subplebbit as SubplebbitType, useAccount, useAccountSubplebbits, useSubplebbits, useSubplebbitStats } from '@plebbit/plebbit-react-hooks';
@@ -71,7 +71,10 @@ const Infobar = () => {
 const Subplebbit = ({ subplebbit }: SubplebbitProps) => {
   const { t } = useTranslation();
   const { address, createdAt, description, roles, shortAddress, settings, suggested, title, updatedAt } = subplebbit || {};
-  const { allActiveUserCount } = useSubplebbitStats({ subplebbitAddress: address });
+
+  const [showDescription, setShowDescription] = useState(false);
+  const buttonType = showDescription ? 'closeButton' : 'textButton';
+  const toggleExpanded = () => setShowDescription(!showDescription);
 
   // subplebbit.settings is a private field that is only available to the owner of the subplebbit
   const isUserOwner = settings;
@@ -86,7 +89,10 @@ const Subplebbit = ({ subplebbit }: SubplebbitProps) => {
 
   const postScore = upvoteCount === 0 && downvoteCount === 0 ? '•' : upvoteCount - downvoteCount || '•';
   const isOnline = updatedAt && updatedAt > Date.now() / 1000 - 60 * 30;
+  const { allActiveUserCount, hourActiveUserCount } = useSubplebbitStats({ subplebbitAddress: address });
+  const onlineNotice = t('users_online', { count: hourActiveUserCount });
   const offlineNotice = updatedAt && t('posts_last_synced', { dateAgo: getFormattedTimeAgo(updatedAt) });
+  const onlineStatus = isOnline ? onlineNotice : offlineNotice;
 
   useEffect(() => {
     document.title = `${t('communities')} - seedit`;
@@ -114,9 +120,6 @@ const Subplebbit = ({ subplebbit }: SubplebbitProps) => {
       )}
       <div className={styles.entry}>
         <div className={styles.title}>
-          <div className={styles.onlineIndicatorWrapper} title={isOnline ? t('online') : t('offline')}>
-            <span className={`${styles.onlineIndicator} ${isOnline ? styles.online : styles.offline}`} />
-          </div>
           <div className={styles.titleWrapper}>
             <Link to={`/p/${address}`}>
               p/{address?.includes('.') ? address : shortAddress}
@@ -127,16 +130,10 @@ const Subplebbit = ({ subplebbit }: SubplebbitProps) => {
             </span>
           </div>
         </div>
-        {description && <div className={styles.description}>{description}</div>}
         <div className={styles.tagline}>
+          {description && <span className={`${styles.expandButton} ${styles[buttonType]}`} onClick={toggleExpanded} />}
           <span>
-            {isOnline ? (
-              <>
-                {t('members_count', { count: allActiveUserCount })}, {t('community_for', { date: getFormattedTimeDuration(createdAt) })}
-              </>
-            ) : (
-              offlineNotice
-            )}
+            {t('members_count', { count: allActiveUserCount })}, {t('community_for', { date: getFormattedTimeDuration(createdAt) })}
             <div className={styles.subplebbitPreferences}>
               {(userRole || isUserOwner) && (
                 <span className={styles.roleLabel}>
@@ -144,9 +141,15 @@ const Subplebbit = ({ subplebbit }: SubplebbitProps) => {
                 </span>
               )}
               <Link to={`/p/${address}/settings`}>{t('settings')}</Link>
+              <span className={styles.onlineLine}>
+                {/* <span className={`${styles.onlineIndicator} ${isOnline ? styles.online : styles.offline}`} title={isOnline ? t('online') : t('offline')} /> */}
+                {/* <span className={`${styles.onlineStatus} ${isOnline ? styles.green : styles.red}`}>{isOnline ? t('online') : t('offline')}</span> */}
+                <span>{onlineStatus}</span>
+              </span>
             </div>
           </span>
         </div>
+        {description && showDescription && <div className={styles.description}>{description}</div>}
       </div>
     </div>
   );
