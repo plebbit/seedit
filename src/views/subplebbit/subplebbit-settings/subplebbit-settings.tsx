@@ -337,15 +337,15 @@ const ChallengeSettings = ({ challenge, index, setSubmitStore, settings, showSet
     <div className={showSettings ? styles.visible : styles.hidden}>
       <div className={styles.challengeDescription}>{getDefaultChallengeDescription(name)}</div>
       {challengeSettings.map((setting) => (
-        <div key={setting.option} className={styles.challengeOption}>
-          <div className={styles.challengeOptionLabel}>{setting.label}</div>
-          <div className={styles.challengeOptionDescription}>{setting.description}</div>
+        <div key={setting?.option} className={styles.challengeOption}>
+          <div className={styles.challengeOptionLabel}>{setting?.label}</div>
+          <div className={styles.challengeOptionDescription}>{setting?.description}</div>
           <input
             type='text'
-            value={options[setting.option] || setting.default || ''}
-            placeholder={setting.placeholder || ''}
-            onChange={(e) => handleOptionChange(setting.option, e.target.value)}
-            required={setting.required || false}
+            value={options && (options[setting?.option] || setting?.default || '')}
+            placeholder={setting?.placeholder || ''}
+            onChange={(e) => handleOptionChange(setting?.option, e.target.value)}
+            required={setting?.required || false}
           />
         </div>
       ))}
