@@ -67,11 +67,11 @@ const VoteTabs = () => {
         {t('all')}
       </Link>
       <span className={styles.separator}>|</span>
-      <Link to='/communities/vote/passed' className={isInSubplebbitsVotePassedView ? styles.selected : styles.choice}>
+      <Link to='/communities/vote/passed' className={isInSubplebbitsVotePassedView ? styles.selected : styles.choice} onClick={(e) => e.preventDefault()}>
         {t('passed')}
       </Link>
       <span className={styles.separator}>|</span>
-      <Link to='/communities/vote/rejected' className={isInSubplebbitsVoteRejectedView ? styles.selected : styles.choice}>
+      <Link to='/communities/vote/rejected' className={isInSubplebbitsVoteRejectedView ? styles.selected : styles.choice} onClick={(e) => e.preventDefault()}>
         {t('rejected')}
       </Link>
     </div>
