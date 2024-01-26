@@ -6,6 +6,7 @@
   line-height: 14px;
   padding: 0 4px;
   margin: 0 2px 2px 0;
+  text-transform: uppercase;
 }
 
 .black {
@@ -26,8 +27,4 @@
 .green {
   color: var(--green);
   border-color: var(--green);
-}
-
-.uppercase {
-  text-transform: uppercase;
 }
