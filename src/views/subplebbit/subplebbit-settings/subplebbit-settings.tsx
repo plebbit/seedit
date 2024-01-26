@@ -8,6 +8,7 @@ import styles from './subplebbit-settings.module.css';
 import { isValidURL } from '../../../lib/utils/url-utils';
 import {
   ChallengeSetting,
+  Exclude,
   getDefaultChallengeDescription,
   getDefaultExclude,
   getDefaultChallengeOptions,
@@ -317,26 +318,19 @@ const ChallengeSettings = ({ challenge, index, setSubmitStore, settings, showSet
     setSubmitStore({ settings: { ...settings, challenges: updatedChallenges } });
   };
 
-  const handleExcludeChange = (type: 'role' | 'post' | 'reply' | 'vote', value: string | boolean) => {
-    const updatedExclude = { ...exclude[0] }; // Clone the first exclude object
-
-    if (type === 'role') {
-      if (typeof value === 'string') {
-        const roleIndex = updatedExclude.role.indexOf(value);
-        if (roleIndex > -1) {
-          updatedExclude.role.splice(roleIndex, 1); // Remove role
-        } else {
-          updatedExclude.role.push(value); // Add role
-        }
-      }
-    } else {
-      // Handle post, reply, vote
-      updatedExclude[type] = value;
-    }
-
-    const updatedChallenges = [...settings.challenges];
-    updatedChallenges[index] = { ...updatedChallenges[index], exclude: [updatedExclude] };
+  const handleExcludeChange = (type: keyof Exclude, value: string | boolean | number | string[] | number[]) => {
+    const updatedExclude = { ...exclude[0], [type]: value };
+    const updatedChallenges = settings.challenges.map((ch: any, idx: number) => (idx === index ? { ...ch, exclude: [updatedExclude] } : ch));
     setSubmitStore({ settings: { ...settings, challenges: updatedChallenges } });
+  };
+
+  const handleExcludeAddress = (value: string) => {
+    // Split the input by commas, trim spaces, and filter out empty strings
+    const addresses = value
+      .split(',')
+      .map((addr) => addr.trim())
+      .filter((addr) => addr !== '');
+    handleExcludeChange('address', addresses);
   };
 
   return (
@@ -356,6 +350,18 @@ const ChallengeSettings = ({ challenge, index, setSubmitStore, settings, showSet
         </div>
       ))}
       <div className={styles.challengeDescription}>Exclude from challenge</div>
+      <div className={styles.challengeOption}>
+        Specific Users
+        <div className={styles.challengeOptionDescription}>Exclude specific user addresses, separated by a comma</div>
+        <input type='text' value={exclude?.address?.join(', ')} onChange={(e) => handleExcludeAddress(e.target.value)} />
+      </div>
+      <div className={styles.challengeOption}>
+        User Karma
+        <div className={styles.challengeOptionDescription}>Minimum post karma required:</div>
+        <input type='number' value={exclude?.postScore || undefined} onChange={(e) => handleExcludeChange('postScore', e.target.value)} />
+        <div className={styles.challengeOptionDescription}>Minimum comment karma required:</div>
+        <input type='number' value={exclude?.postReply || undefined} onChange={(e) => handleExcludeChange('postReply', e.target.value)} />
+      </div>
       <div className={styles.challengeOption}>
         Moderators
         <div className={styles.challengeOptionDescription}>Exclude a specific moderator role</div>

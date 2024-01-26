@@ -141,6 +141,20 @@ export type ChallengeSetting = {
   required?: boolean;
 };
 
+export type Exclude = {
+  postScore?: number;
+  postReply?: number;
+  firstCommentTimestamp?: number;
+  challenges?: number[];
+  post?: boolean;
+  reply?: boolean;
+  vote?: boolean;
+  role?: string[];
+  address?: string[];
+  rateLimit?: number;
+  rateLimitChallengeSuccess?: boolean;
+};
+
 export const getDefaultChallengeSettings = (challengeType: string) => {
   switch (challengeType) {
     case 'text-math':
