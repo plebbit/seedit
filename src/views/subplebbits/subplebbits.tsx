@@ -13,8 +13,8 @@ import {
   isSubplebbitsAdminView,
   isSubplebbitsOwnerView,
   isSubplebbitsVoteView,
-  isSubplebbitsVotePassedView,
-  isSubplebbitsVoteRejectedView,
+  isSubplebbitsVotePassingView,
+  isSubplebbitsVoteRejectingView,
 } from '../../lib/utils/view-utils';
 import { useDefaultSubplebbitAddresses } from '../../lib/utils/addresses-utils';
 import { RoleLabel } from '../../components/post/label/label';
@@ -58,8 +58,8 @@ const VoteTabs = () => {
   const { t } = useTranslation();
   const location = useLocation();
   const isInSubplebbitsVoteView = isSubplebbitsVoteView(location.pathname);
-  const isInSubplebbitsVotePassedView = isSubplebbitsVotePassedView(location.pathname);
-  const isInSubplebbitsVoteRejectedView = isSubplebbitsVoteRejectedView(location.pathname);
+  const isInSubplebbitsVotePassingView = isSubplebbitsVotePassingView(location.pathname);
+  const isInSubplebbitsVoteRejectingView = isSubplebbitsVoteRejectingView(location.pathname);
 
   return (
     <div className={styles.subplebbitsTabs}>
@@ -67,12 +67,12 @@ const VoteTabs = () => {
         {t('all')}
       </Link>
       <span className={styles.separator}>|</span>
-      <Link to='/communities/vote/passed' className={isInSubplebbitsVotePassedView ? styles.selected : styles.choice} onClick={(e) => e.preventDefault()}>
-        {t('passed')}
+      <Link to='/communities/vote/passing' className={isInSubplebbitsVotePassingView ? styles.selected : styles.choice} onClick={(e) => e.preventDefault()}>
+        {t('passing')}
       </Link>
       <span className={styles.separator}>|</span>
-      <Link to='/communities/vote/rejected' className={isInSubplebbitsVoteRejectedView ? styles.selected : styles.choice} onClick={(e) => e.preventDefault()}>
-        {t('rejected')}
+      <Link to='/communities/vote/rejecting' className={isInSubplebbitsVoteRejectingView ? styles.selected : styles.choice} onClick={(e) => e.preventDefault()}>
+        {t('rejecting')}
       </Link>
     </div>
   );

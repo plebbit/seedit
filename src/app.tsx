@@ -109,8 +109,8 @@ function App() {
             <Route path='/communities/admin' element={<Subplebbits />} />
             <Route path='/communities/owner' element={<Subplebbits />} />
             <Route path='/communities/vote' element={<Subplebbits />} />
-            <Route path='/communities/vote/passed' element={<Subplebbits />} />
-            <Route path='/communities/vote/rejected' element={<Subplebbits />} />
+            <Route path='/communities/vote/passing' element={<Subplebbits />} />
+            <Route path='/communities/vote/rejecting' element={<Subplebbits />} />
           </Route>
         </Route>
       </Routes>
