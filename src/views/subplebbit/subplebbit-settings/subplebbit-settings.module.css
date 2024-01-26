@@ -137,6 +137,7 @@
   width: auto !important;
   outline: none;
   cursor: pointer;
+  margin-top: 2px;
 }
 
 .challengesArray {

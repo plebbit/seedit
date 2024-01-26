@@ -7,7 +7,7 @@ import { create } from 'zustand';
 import styles from './subplebbit-settings.module.css';
 import { isValidURL } from '../../../lib/utils/url-utils';
 import {
-  ChallengeSetting,
+  OptionInput,
   Exclude,
   getDefaultChallengeDescription,
   getDefaultExclude,
@@ -310,7 +310,7 @@ const actionsToExclude: Array<'post' | 'reply' | 'vote'> = ['post', 'reply', 'vo
 
 const ChallengeSettings = ({ challenge, index, setSubmitStore, settings, showSettings }: ChallengeSettingsProps) => {
   const { exclude, name, options } = challenge || {};
-  const challengeSettings: ChallengeSetting[] = getDefaultChallengeSettings(name);
+  const challengeSettings: OptionInput[] = getDefaultChallengeSettings(name);
 
   const handleOptionChange = (optionName: string, newValue: string) => {
     const updatedOptions = { ...options, [optionName]: newValue };
@@ -351,16 +351,21 @@ const ChallengeSettings = ({ challenge, index, setSubmitStore, settings, showSet
       ))}
       <div className={styles.challengeDescription}>Exclude from challenge</div>
       <div className={styles.challengeOption}>
-        Specific Users
-        <div className={styles.challengeOptionDescription}>Exclude specific user addresses, separated by a comma</div>
+        Users
+        <div className={styles.challengeOptionDescription}>Exclude specific users by their addresses, separated by a comma</div>
         <input type='text' value={exclude?.address?.join(', ')} onChange={(e) => handleExcludeAddress(e.target.value)} />
       </div>
       <div className={styles.challengeOption}>
-        User Karma
+        Users with Karma
         <div className={styles.challengeOptionDescription}>Minimum post karma required:</div>
         <input type='number' value={exclude?.postScore || undefined} onChange={(e) => handleExcludeChange('postScore', e.target.value)} />
         <div className={styles.challengeOptionDescription}>Minimum comment karma required:</div>
         <input type='number' value={exclude?.postReply || undefined} onChange={(e) => handleExcludeChange('postReply', e.target.value)} />
+      </div>
+      <div className={styles.challengeOption}>
+        Users by account age
+        <div className={styles.challengeOptionDescription}>Minimum account age in Unix Timestamp (seconds):</div>
+        <input type='number' value={exclude?.firstCommentTimestamp || undefined} onChange={(e) => handleExcludeChange('firstCommentTimestamp', e.target.value)} />
       </div>
       <div className={styles.challengeOption}>
         Moderators
@@ -385,6 +390,15 @@ const ChallengeSettings = ({ challenge, index, setSubmitStore, settings, showSet
             </label>
           </div>
         ))}
+      </div>
+      <div className={styles.challengeOption}>
+        Rate Limit
+        <div className={styles.challengeOptionDescription}>Number of free user actions per hour:</div>
+        <input type='number' value={exclude?.rateLimit || undefined} onChange={(e) => handleExcludeChange('rateLimit', e.target.value)} />
+        <label>
+          <input type='checkbox' checked={exclude?.rateLimitChallengeSuccess} onChange={(e) => handleExcludeChange('rateLimitChallengeSuccess', e.target.checked)} />
+          only rate limit after a challenge is successfully completed
+        </label>
       </div>
     </div>
   );

@@ -132,11 +132,11 @@ export const getDefaultChallengeOptions = (challengeType: string) => {
   }
 };
 
-export type ChallengeSetting = {
+export type OptionInput = {
   option: string;
   label: string;
-  description: string;
   default?: string;
+  description: string;
   placeholder?: string;
   required?: boolean;
 };
