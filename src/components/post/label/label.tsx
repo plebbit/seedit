@@ -36,3 +36,9 @@ export const RoleLabel = ({ role }: { role: string }) => {
 
   return <span className={`${styles.stamp} ${styles.green}`}>{t(role).toUpperCase()}</span>;
 };
+
+export const OfflineLabel = () => {
+  const { t } = useTranslation();
+
+  return <span className={`${styles.stamp} ${styles.red} ${styles.uppercase}`}>{t('offline')}</span>;
+};

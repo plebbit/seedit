@@ -17,7 +17,7 @@ import {
   isSubplebbitsVoteRejectingView,
 } from '../../lib/utils/view-utils';
 import { useDefaultSubplebbitAddresses } from '../../lib/utils/addresses-utils';
-import { RoleLabel } from '../../components/post/label/label';
+import { OfflineLabel, RoleLabel } from '../../components/post/label/label';
 
 interface SubplebbitProps {
   index?: number;
@@ -103,7 +103,7 @@ const Infobar = () => {
 
 const Subplebbit = ({ subplebbit }: SubplebbitProps) => {
   const { t } = useTranslation();
-  const { address, createdAt, description, roles, shortAddress, settings, suggested, title } = subplebbit || {};
+  const { address, createdAt, description, roles, shortAddress, settings, suggested, title, updatedAt } = subplebbit || {};
 
   const [showDescription, setShowDescription] = useState(false);
   const buttonType = showDescription ? 'closeButton' : 'textButton';
@@ -122,6 +122,7 @@ const Subplebbit = ({ subplebbit }: SubplebbitProps) => {
 
   const postScore = upvoteCount === 0 && downvoteCount === 0 ? '•' : upvoteCount - downvoteCount || '•';
   const { allActiveUserCount } = useSubplebbitStats({ subplebbitAddress: address });
+  const isOnline = updatedAt && updatedAt > Date.now() / 1000 - 60 * 30;
 
   useEffect(() => {
     document.title = `${t('communities')} - seedit`;
@@ -164,8 +165,9 @@ const Subplebbit = ({ subplebbit }: SubplebbitProps) => {
           <span>
             {t('members_count', { count: allActiveUserCount })}, {t('community_for', { date: getFormattedTimeDuration(createdAt) })}
             <div className={styles.subplebbitPreferences}>
+              {!isOnline && <OfflineLabel />}
               {(userRole || isUserOwner) && (
-                <span className={styles.roleLabel}>
+                <span className={styles.label}>
                   <RoleLabel role={userRole || 'owner'} />
                 </span>
               )}

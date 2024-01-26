@@ -27,3 +27,7 @@
   color: var(--green);
   border-color: var(--green);
 }
+
+.uppercase {
+  text-transform: uppercase;
+}

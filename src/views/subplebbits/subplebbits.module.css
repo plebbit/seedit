@@ -167,14 +167,14 @@
 .subplebbitPreferences {
   padding: 0 1px;
   line-height: 1.6em;
-  text-transform: lowercase;
   margin-top: 1px;
+  margin-left: 28px;
 }
 
 .subplebbitPreferences a {
   color: var(--gray-contrast);
   font-weight: bold;
-  margin-right: 5px;
+  margin-left: 1px;
 } 
 
 .subplebbitPreferences a:hover {
@@ -182,20 +182,8 @@
   cursor: pointer;
 }
 
-.onlineStatus {
-  margin-right: 5px;
-}
-
-.green {
-  color: var(--green);
-}
-
-.red {
-  color: var(--red);
-}
-
-.roleLabel {
-  padding-right: 2px;
+.label {
+  padding: 0 1px;
 }
 
 .subplebbitsTabs {
