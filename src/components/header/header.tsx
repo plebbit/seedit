@@ -30,7 +30,6 @@ import {
   isSubplebbitsModeratorView,
   isSubplebbitsAdminView,
   isSubplebbitsOwnerView,
-  isSubplebbitsVoteView,
   isProfileUpvotedView,
 } from '../../lib/utils/view-utils';
 import useTheme from '../../hooks/use-theme';
