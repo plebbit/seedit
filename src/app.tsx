@@ -108,6 +108,7 @@ function App() {
             <Route path='/communities/moderator' element={<Subplebbits />} />
             <Route path='/communities/admin' element={<Subplebbits />} />
             <Route path='/communities/owner' element={<Subplebbits />} />
+            <Route path='/communities/vote' element={<Subplebbits />} />
           </Route>
         </Route>
       </Routes>

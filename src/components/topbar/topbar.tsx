@@ -118,7 +118,7 @@ const TopBar = () => {
               </Link>
             ))}
             {subscriptions?.length > 0 && (
-              <Link to='/communities' className={`${styles.dropdownChoice} ${styles.editSubscriptions}`}>
+              <Link to='/communities/subscriber' className={`${styles.dropdownChoice} ${styles.editSubscriptions}`}>
                 {t('edit_subscriptions')}
               </Link>
             )}
@@ -169,7 +169,7 @@ const TopBar = () => {
             ))}
           </ul>
         </div>
-        <Link to='/communities' className={styles.moreLink}>
+        <Link to='/communities/vote' className={styles.moreLink}>
           {t('edit')} »
         </Link>
       </div>

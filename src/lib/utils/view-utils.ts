@@ -143,3 +143,7 @@ export const isSubplebbitsAdminView = (pathname: string): boolean => {
 export const isSubplebbitsOwnerView = (pathname: string): boolean => {
   return pathname === '/communities/owner';
 };
+
+export const isSubplebbitsVoteView = (pathname: string): boolean => {
+  return pathname === '/communities/vote';
+};

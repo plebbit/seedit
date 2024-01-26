@@ -30,6 +30,7 @@ import {
   isSubplebbitsModeratorView,
   isSubplebbitsAdminView,
   isSubplebbitsOwnerView,
+  isSubplebbitsVoteView,
   isProfileUpvotedView,
 } from '../../lib/utils/view-utils';
 import useTheme from '../../hooks/use-theme';
@@ -213,13 +214,8 @@ const SubplebbitsHeaderTabs = () => {
   return (
     <>
       <li>
-        <Link to={'/communities'} className={`${isInSubplebbitsView ? styles.selected : styles.choice}`}>
-          {t('approved')}
-        </Link>
-      </li>
-      <li>
-        <Link to={'/communities'} className={styles.choice} onClick={(e) => e.preventDefault()}>
-          {t('proposed')}
+        <Link to={'/communities/vote'} className={`${isInSubplebbitsView ? styles.selected : styles.choice}`}>
+          {t('vote')}
         </Link>
       </li>
       <li>
