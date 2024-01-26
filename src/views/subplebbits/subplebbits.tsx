@@ -5,7 +5,7 @@ import { Subplebbit as SubplebbitType, useAccount, useAccountSubplebbits, useSub
 import styles from './subplebbits.module.css';
 import Sidebar from '../../components/sidebar';
 import SubscribeButton from '../../components/subscribe-button';
-import { getFormattedTimeDuration, getFormattedTimeAgo } from '../../lib/utils/time-utils';
+import { getFormattedTimeDuration } from '../../lib/utils/time-utils';
 import {
   isSubplebbitsView,
   isSubplebbitsSubscriberView,
@@ -18,7 +18,6 @@ import {
 } from '../../lib/utils/view-utils';
 import { useDefaultSubplebbitAddresses } from '../../lib/utils/addresses-utils';
 import { RoleLabel } from '../../components/post/label/label';
-const isMobile = window.innerWidth <= 768;
 
 interface SubplebbitProps {
   index?: number;
@@ -104,9 +103,9 @@ const Infobar = () => {
 
 const Subplebbit = ({ subplebbit }: SubplebbitProps) => {
   const { t } = useTranslation();
-  const { address, createdAt, description, roles, shortAddress, settings, suggested, title, updatedAt } = subplebbit || {};
+  const { address, createdAt, description, roles, shortAddress, settings, suggested, title } = subplebbit || {};
 
-  const [showDescription, setShowDescription] = useState(isMobile ? false : true);
+  const [showDescription, setShowDescription] = useState(false);
   const buttonType = showDescription ? 'closeButton' : 'textButton';
   const toggleExpanded = () => setShowDescription(!showDescription);
 
@@ -122,11 +121,7 @@ const Subplebbit = ({ subplebbit }: SubplebbitProps) => {
   const downvoteCount = 0;
 
   const postScore = upvoteCount === 0 && downvoteCount === 0 ? '•' : upvoteCount - downvoteCount || '•';
-  const isOnline = updatedAt && updatedAt > Date.now() / 1000 - 60 * 30;
-  const { allActiveUserCount, hourActiveUserCount } = useSubplebbitStats({ subplebbitAddress: address });
-  const onlineNotice = t('users_online', { count: hourActiveUserCount });
-  const offlineNotice = updatedAt && t('posts_last_synced', { dateAgo: getFormattedTimeAgo(updatedAt) });
-  const onlineStatus = isOnline ? onlineNotice : offlineNotice;
+  const { allActiveUserCount } = useSubplebbitStats({ subplebbitAddress: address });
 
   useEffect(() => {
     document.title = `${t('communities')} - seedit`;
@@ -175,9 +170,6 @@ const Subplebbit = ({ subplebbit }: SubplebbitProps) => {
                 </span>
               )}
               <Link to={`/p/${address}/settings`}>{t('settings')}</Link>
-              <span className={styles.onlineLine}>
-                <span>{onlineStatus}</span>
-              </span>
             </div>
           </span>
         </div>
