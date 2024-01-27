@@ -212,7 +212,7 @@ const Rules = ({ isReadOnly }: { isReadOnly: boolean }) => {
             {isReadOnly ? (
               <span className={styles.readOnlyRule}>{rule}</span>
             ) : (
-              <textarea ref={index === rules?.length - 1 ? lastRuleRef : null} value={rule} onChange={(e) => handleRuleChange(index, e.target.value)} />
+              <input ref={index === rules?.length - 1 ? lastRuleRef : null} value={rule} onChange={(e) => handleRuleChange(index, e.target.value)} />
             )}
           </div>
         ))}
@@ -318,6 +318,7 @@ interface ChallengeSettingsProps {
 
 const rolesToExclude = ['moderator', 'admin', 'owner'];
 const actionsToExclude: Array<'post' | 'reply' | 'vote'> = ['post', 'reply', 'vote'];
+const customActions: Array<'non-post' | 'non-reply' | 'non-vote'> = ['non-post', 'non-reply', 'non-vote'];
 
 const ChallengeSettings = ({ challenge, index, setSubmitStore, settings, showSettings }: ChallengeSettingsProps) => {
   const { exclude, name, options } = challenge || {};
@@ -329,19 +330,32 @@ const ChallengeSettings = ({ challenge, index, setSubmitStore, settings, showSet
     setSubmitStore({ settings: { ...settings, challenges: updatedChallenges } });
   };
 
-  const handleExcludeChange = (type: keyof Exclude, value: string | boolean | number | string[] | number[]) => {
+  const handleExcludeChange = (type: keyof Exclude | 'non-post' | 'non-reply' | 'non-vote', value: any) => {
     const updatedExclude = { ...exclude[0] }; // Clone the first exclude object
-    if (type === 'role') {
-      if (typeof value === 'string') {
-        const roleIndex = updatedExclude.role.indexOf(value);
-        if (roleIndex > -1) {
-          updatedExclude.role.splice(roleIndex, 1);
-        } else {
-          updatedExclude.role.push(value);
+
+    switch (type) {
+      case 'non-post':
+        updatedExclude.post = value ? undefined : false;
+        break;
+      case 'non-reply':
+        updatedExclude.reply = value ? undefined : false;
+        break;
+      case 'non-vote':
+        updatedExclude.vote = value ? undefined : false;
+        break;
+      case 'role':
+        if (typeof value === 'string') {
+          const roleIndex = updatedExclude.role.indexOf(value);
+          if (roleIndex > -1) {
+            updatedExclude.role.splice(roleIndex, 1);
+          } else {
+            updatedExclude.role.push(value);
+          }
         }
-      }
-    } else {
-      updatedExclude[type] = value;
+        break;
+      default:
+        updatedExclude[type] = value;
+        break;
     }
 
     const updatedChallenges = [...settings.challenges];
@@ -420,6 +434,14 @@ const ChallengeSettings = ({ challenge, index, setSubmitStore, settings, showSet
           <div key={action}>
             <label>
               <input type='checkbox' checked={exclude[0]?.[action]} onChange={(e) => handleExcludeChange(action, e.target.checked)} />
+              exclude {action}
+            </label>
+          </div>
+        ))}
+        {customActions.map((action) => (
+          <div key={action}>
+            <label>
+              <input type='checkbox' checked={exclude[0]?.[action.replace('non-', '')] === undefined} onChange={(e) => handleExcludeChange(action, e.target.checked)} />
               exclude {action}
             </label>
           </div>
