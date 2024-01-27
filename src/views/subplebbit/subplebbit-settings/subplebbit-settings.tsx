@@ -453,7 +453,7 @@ const ChallengeSettings = ({ challenge, index, setSubmitStore, settings, showSet
         <input type='number' placeholder='2' value={exclude?.rateLimit || undefined} onChange={(e) => handleExcludeChange('rateLimit', e.target.value)} />
         <label>
           <input type='checkbox' checked={exclude?.rateLimitChallengeSuccess} onChange={(e) => handleExcludeChange('rateLimitChallengeSuccess', e.target.checked)} />
-          only rate limit after a challenge is successfully completed
+          apply rate limit only to successfully completed challenges
         </label>
       </div>
     </div>
@@ -509,9 +509,9 @@ const Challenges = ({ isReadOnly }: { isReadOnly: boolean }) => {
         {challenges.map((challenge: any, index: number) => (
           <div key={index} className={styles.challenge}>
             Challenge #{index + 1}
-            <span className={styles.deleteButton} title='delete challenge' onClick={() => handleDeleteChallenge(index)} />
+            <span className={styles.deleteButton} title='delete challenge' onClick={() => (isReadOnly ? {} : handleDeleteChallenge(index))} />
             <br />
-            <select value={challenge?.name} onChange={(e) => handleChallengeTypeChange(index, e.target.value)}>
+            <select value={challenge?.name} onChange={(e) => handleChallengeTypeChange(index, e.target.value)} disabled={isReadOnly}>
               {challengesNames.map((challenge) => (
                 <option key={challenge} value={challenge}>
                   {challenge}
