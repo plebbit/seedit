@@ -244,14 +244,11 @@ const Moderators = () => {
     }
   };
 
-  const handleAddressChange = (oldAddress: string, newAddress: string) => {
-    if (roles) {
-      const { [oldAddress]: roleData, ...remainingRoles } = roles;
-      if (roleData) {
-        const updatedRoles: Roles = { ...remainingRoles, [newAddress]: roleData };
-        setSubmitStore({ roles: updatedRoles });
-      }
-    }
+  const handleAddressChange = (index: number, newAddress: string) => {
+    const rolesArray = Object.entries(roles || {});
+    rolesArray[index] = [newAddress, rolesArray[index][1]];
+    const updatedRoles = Object.fromEntries(rolesArray);
+    setSubmitStore({ roles: updatedRoles });
   };
 
   return (
@@ -275,7 +272,7 @@ const Moderators = () => {
                   ref={index === Object.keys(roles).length - 1 ? lastModeratorRef : null}
                   type='text'
                   value={address}
-                  onChange={(e) => handleAddressChange(address, e.target.value)}
+                  onChange={(e) => handleAddressChange(index, e.target.value)}
                 />
                 <br />
               </span>
