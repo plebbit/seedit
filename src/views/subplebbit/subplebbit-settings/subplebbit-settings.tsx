@@ -319,13 +319,26 @@ const ChallengeSettings = ({ challenge, index, setSubmitStore, settings, showSet
   };
 
   const handleExcludeChange = (type: keyof Exclude, value: string | boolean | number | string[] | number[]) => {
-    const updatedExclude = { ...exclude[0], [type]: value };
-    const updatedChallenges = settings.challenges.map((ch: any, idx: number) => (idx === index ? { ...ch, exclude: [updatedExclude] } : ch));
+    const updatedExclude = { ...exclude[0] }; // Clone the first exclude object
+    if (type === 'role') {
+      if (typeof value === 'string') {
+        const roleIndex = updatedExclude.role.indexOf(value);
+        if (roleIndex > -1) {
+          updatedExclude.role.splice(roleIndex, 1);
+        } else {
+          updatedExclude.role.push(value);
+        }
+      }
+    } else {
+      updatedExclude[type] = value;
+    }
+
+    const updatedChallenges = [...settings.challenges];
+    updatedChallenges[index] = { ...updatedChallenges[index], exclude: [updatedExclude] };
     setSubmitStore({ settings: { ...settings, challenges: updatedChallenges } });
   };
 
   const handleExcludeAddress = (value: string) => {
-    // Split the input by commas, trim spaces, and filter out empty strings
     const addresses = value
       .split(',')
       .map((addr) => addr.trim())
