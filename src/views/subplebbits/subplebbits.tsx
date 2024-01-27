@@ -165,7 +165,7 @@ const Subplebbit = ({ subplebbit }: SubplebbitProps) => {
           <span>
             {t('members_count', { count: allActiveUserCount })}, {t('community_for', { date: getFormattedTimeDuration(createdAt) })}
             <div className={styles.subplebbitPreferences}>
-              {!isOnline && <OfflineLabel />}
+              {updatedAt && !isOnline && <OfflineLabel />}
               {(userRole || isUserOwner) && (
                 <span className={styles.label}>
                   <RoleLabel role={userRole || 'owner'} />
