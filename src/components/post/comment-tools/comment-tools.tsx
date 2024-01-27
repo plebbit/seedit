@@ -6,7 +6,7 @@ import EditMenu from './edit-menu';
 import HideMenu from './hide-menu';
 import ModMenu from './mod-menu';
 import ShareMenu from './share-menu';
-import { DeletedLabel, FailedLabel, PendingLabel, RemovedLabel, SpoilerLabel } from '../label';
+import Label from '../label';
 import { isInboxView } from '../../../lib/utils/view-utils';
 
 interface CommentToolsProps {
@@ -123,15 +123,16 @@ const SingleReplyTools = ({ author, cid, hasLabel, index, isAuthor, isMod, paren
 };
 
 const CommentToolsLabel = ({ cid, deleted, failed, isReply, removed, spoiler }: CommentToolsProps) => {
+  const { t } = useTranslation();
   const pending = cid === undefined && !isReply && !failed;
 
   return (
     <>
-      {spoiler && <SpoilerLabel />}
-      {pending && <PendingLabel />}
-      {failed && <FailedLabel />}
-      {deleted && <DeletedLabel />}
-      {removed && <RemovedLabel />}
+      {spoiler && <Label color='black' text={t('spoiler')} />}
+      {pending && <Label color='yellow' text={t('pending')} />}
+      {failed && <Label color='red' text={t('failed')} />}
+      {deleted && <Label color='red' text={t('deleted')} />}
+      {removed && <Label color='red' text={t('removed')} />}
     </>
   );
 };

@@ -3,6 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { Trans, useTranslation } from 'react-i18next';
 import { Subplebbit as SubplebbitType, useAccount, useAccountSubplebbits, useSubplebbits, useSubplebbitStats } from '@plebbit/plebbit-react-hooks';
 import styles from './subplebbits.module.css';
+import Label from '../../components/post/label';
 import Sidebar from '../../components/sidebar';
 import SubscribeButton from '../../components/subscribe-button';
 import { getFormattedTimeDuration } from '../../lib/utils/time-utils';
@@ -17,7 +18,6 @@ import {
   isSubplebbitsVoteRejectingView,
 } from '../../lib/utils/view-utils';
 import { useDefaultSubplebbitAddresses } from '../../lib/utils/addresses-utils';
-import { OfflineLabel, RoleLabel } from '../../components/post/label/label';
 
 interface SubplebbitProps {
   index?: number;
@@ -31,9 +31,15 @@ const MyCommunitiesTabs = () => {
   const isInSubplebbitsModeratorView = isSubplebbitsModeratorView(location.pathname);
   const isInSubplebbitsAdminView = isSubplebbitsAdminView(location.pathname);
   const isInSubplebbitsOwnerView = isSubplebbitsOwnerView(location.pathname);
+  const isInSubplebbitsView =
+    isSubplebbitsView(location.pathname) && !isInSubplebbitsSubscriberView && !isInSubplebbitsModeratorView && !isInSubplebbitsAdminView && !isInSubplebbitsOwnerView;
 
   return (
     <div className={styles.subplebbitsTabs}>
+      <Link to='/communities' className={isInSubplebbitsView ? styles.selected : styles.choice}>
+        {t('all')}
+      </Link>
+      <span className={styles.separator}>|</span>
       <Link to='/communities/subscriber' className={isInSubplebbitsSubscriberView ? styles.selected : styles.choice}>
         {t('subscriber')}
       </Link>
@@ -165,10 +171,10 @@ const Subplebbit = ({ subplebbit }: SubplebbitProps) => {
           <span>
             {t('members_count', { count: allActiveUserCount })}, {t('community_for', { date: getFormattedTimeDuration(createdAt) })}
             <div className={styles.subplebbitPreferences}>
-              {updatedAt && !isOnline && <OfflineLabel />}
+              {updatedAt && !isOnline && <Label color='red' text={t('offline')} />}
               {(userRole || isUserOwner) && (
                 <span className={styles.label}>
-                  <RoleLabel role={userRole || 'owner'} />
+                  <Label color='green' text={userRole || 'owner'} />
                 </span>
               )}
               <Link to={`/p/${address}/settings`}>{t('settings')}</Link>
@@ -209,14 +215,37 @@ const ApprovedSubplebbits = () => {
   return subplebbitsArray?.map((subplebbit, index) => <Subplebbit key={index} subplebbit={subplebbit} />);
 };
 
+const AccountAndSubscriberSubplebbits = () => {
+  const { accountSubplebbits } = useAccountSubplebbits();
+  const account = useAccount();
+  const { subplebbits: subscribedSubplebbits } = useSubplebbits({ subplebbitAddresses: account?.subscriptions || [] });
+
+  const combinedSubplebbits = useMemo(() => {
+    const ownSubplebbitsAddresses = Object.keys(accountSubplebbits);
+    const subscribedAddresses = account?.subscriptions || [];
+
+    const uniqueAddresses = Array.from(new Set([...ownSubplebbitsAddresses, ...subscribedAddresses]));
+
+    return uniqueAddresses.map((addr) => accountSubplebbits[addr] || subscribedSubplebbits[addr]);
+  }, [accountSubplebbits, subscribedSubplebbits, account?.subscriptions]);
+
+  return combinedSubplebbits.map((subplebbit, index) => <Subplebbit key={index} subplebbit={subplebbit} />);
+};
+
 const Subplebbits = () => {
   const location = useLocation();
   const isInSubplebbitsSubscriberView = isSubplebbitsSubscriberView(location.pathname);
   const isInSubplebbitsModeratorView = isSubplebbitsModeratorView(location.pathname);
   const isInSubplebbitsAdminView = isSubplebbitsAdminView(location.pathname);
   const isInSubplebbitsOwnerView = isSubplebbitsOwnerView(location.pathname);
+  const isInSubplebbitsVoteView = isSubplebbitsVoteView(location.pathname);
   const isInSubplebbitsView =
-    isSubplebbitsView(location.pathname) && !isInSubplebbitsSubscriberView && !isInSubplebbitsModeratorView && !isInSubplebbitsAdminView && !isInSubplebbitsOwnerView;
+    isSubplebbitsView(location.pathname) &&
+    !isInSubplebbitsSubscriberView &&
+    !isInSubplebbitsModeratorView &&
+    !isInSubplebbitsAdminView &&
+    !isInSubplebbitsOwnerView &&
+    !isInSubplebbitsVoteView;
 
   let viewRole = 'subscriber';
   if (isInSubplebbitsModeratorView) {
@@ -232,11 +261,16 @@ const Subplebbits = () => {
       <div className={styles.sidebar}>
         <Sidebar />
       </div>
-      {isInSubplebbitsSubscriberView || isInSubplebbitsModeratorView || isInSubplebbitsAdminView || isInSubplebbitsOwnerView ? <MyCommunitiesTabs /> : <VoteTabs />}
+      {isInSubplebbitsSubscriberView || isInSubplebbitsModeratorView || isInSubplebbitsAdminView || isInSubplebbitsOwnerView || isInSubplebbitsView ? (
+        <MyCommunitiesTabs />
+      ) : (
+        <VoteTabs />
+      )}
       <Infobar />
-      {isInSubplebbitsView && <ApprovedSubplebbits />}
+      {isInSubplebbitsVoteView && <ApprovedSubplebbits />}
       {(isInSubplebbitsModeratorView || isInSubplebbitsAdminView || isInSubplebbitsOwnerView) && <AccountSubplebbits viewRole={viewRole} />}
       {isInSubplebbitsSubscriberView && <SubscriberSubplebbits />}
+      {isInSubplebbitsView && <AccountAndSubscriberSubplebbits />}
     </div>
   );
 };

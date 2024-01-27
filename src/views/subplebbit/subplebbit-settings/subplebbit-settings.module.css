@@ -55,6 +55,12 @@
   font-size: 14px;
 }
 
+.readOnlyDescription {
+  font-size: 14px;
+  font-family: verdana, arial, helvetica, sans-serif;
+  white-space: pre-wrap;
+}
+
 .saveOptions button {
   text-transform: lowercase;
   margin: 3px 5px;
@@ -67,6 +73,10 @@
 
 .JSONSettings textarea {
   height: 200px;
+}
+
+.JSONSettingsTitle {
+  text-transform: none !important;
 }
 
 .noChallengeWarning {
@@ -170,9 +180,14 @@
   margin-top: 15px;
 }
 
+.firstModerator {
+  margin-top: 5px !important;
+}
+
 .addButton {
   display: block;
   text-transform: lowercase;
+  margin-bottom: 10px;
 }
 
 .moderatorAddress, .moderatorRole {
@@ -186,6 +201,10 @@
 .rule {
   font-size: 15px;
   margin-top: 10px;
+}
+
+.firstRule {
+  margin-top: 5px !important;
 }
 
 .rule input {

@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { PublishSubplebbitEditOptions, useAccount, useSubplebbit, usePublishSubplebbitEdit, Role } from '@plebbit/plebbit-react-hooks';
+import { PublishSubplebbitEditOptions, useSubplebbit, usePublishSubplebbitEdit, Role } from '@plebbit/plebbit-react-hooks';
 import { Roles } from '../../../lib/utils/user-utils';
 import { useTranslation } from 'react-i18next';
 import { create } from 'zustand';
@@ -16,8 +16,6 @@ import {
 } from '../../../lib/utils/challenge-utils';
 import LoadingEllipsis from '../../../components/loading-ellipsis';
 import Sidebar from '../../../components/sidebar';
-
-const isElectron = window.electron && window.electron.isElectron;
 
 type SubplebbitSettingsState = {
   title: string | undefined;
@@ -80,7 +78,7 @@ const useSubplebbitSettingsStore = create<SubplebbitSettingsState>((set) => ({
     }),
 }));
 
-const Title = () => {
+const Title = ({ isReadOnly }: { isReadOnly: boolean }) => {
   const { t } = useTranslation();
   const { title, setSubmitStore } = useSubplebbitSettingsStore();
 
@@ -89,13 +87,13 @@ const Title = () => {
       <div className={styles.boxTitle}>{t('title')}</div>
       <div className={styles.boxSubtitle}>e.g., books: made from trees or pixels. recommendations, news, or thoughts</div>
       <div className={styles.boxInput}>
-        <input type='text' value={title ?? ''} onChange={(e) => setSubmitStore({ title: e.target.value })} />
+        {isReadOnly ? <span>{title}</span> : <input type='text' value={title ?? ''} onChange={(e) => setSubmitStore({ title: e.target.value })} />}
       </div>
     </div>
   );
 };
 
-const Description = () => {
+const Description = ({ isReadOnly }: { isReadOnly: boolean }) => {
   const { t } = useTranslation();
   const { description, setSubmitStore } = useSubplebbitSettingsStore();
 
@@ -104,13 +102,17 @@ const Description = () => {
       <div className={styles.boxTitle}>{t('description')}</div>
       <div className={styles.boxSubtitle}>shown in the sidebar of your community</div>
       <div className={styles.boxInput}>
-        <textarea value={description ?? ''} onChange={(e) => setSubmitStore({ description: e.target.value })} />
+        {isReadOnly ? (
+          <pre className={styles.readOnlyDescription}>{description}</pre>
+        ) : (
+          <textarea value={description ?? ''} onChange={(e) => setSubmitStore({ description: e.target.value })} />
+        )}
       </div>
     </div>
   );
 };
 
-const Address = () => {
+const Address = ({ isReadOnly }: { isReadOnly: boolean }) => {
   const { t } = useTranslation();
   const { address, setSubmitStore } = useSubplebbitSettingsStore();
 
@@ -119,13 +121,13 @@ const Address = () => {
       <div className={styles.boxTitle}>{t('address')}</div>
       <div className={styles.boxSubtitle}>set a readable community address using ens.domains</div>
       <div className={styles.boxInput}>
-        <input type='text' value={address ?? ''} onChange={(e) => setSubmitStore({ title: e.target.value })} />
+        {isReadOnly ? <span>{address}</span> : <input type='text' value={address ?? ''} onChange={(e) => setSubmitStore({ address: e.target.value })} />}
       </div>
     </div>
   );
 };
 
-const Logo = () => {
+const Logo = ({ isReadOnly }: { isReadOnly: boolean }) => {
   const { t } = useTranslation();
   const { suggested, setSubmitStore } = useSubplebbitSettingsStore();
 
@@ -143,15 +145,19 @@ const Logo = () => {
       <div className={styles.boxTitle}>{t('logo')}</div>
       <div className={styles.boxSubtitle}>set a community logo using its direct image link (ending in .jpg, .png)</div>
       <div className={styles.boxInput}>
-        <input
-          type='text'
-          value={logoUrl ?? ''}
-          onChange={(e) => {
-            setLogoUrl(e.target.value);
-            setImageError(false);
-            setSubmitStore({ suggested: { ...suggested, avatarUrl: e.target.value } });
-          }}
-        />
+        {isReadOnly ? (
+          <span>{logoUrl}</span>
+        ) : (
+          <input
+            type='text'
+            value={logoUrl ?? ''}
+            onChange={(e) => {
+              setLogoUrl(e.target.value);
+              setImageError(false);
+              setSubmitStore({ suggested: { ...suggested, avatarUrl: e.target.value } });
+            }}
+          />
+        )}
         {logoUrl && isValidURL(logoUrl) && (
           <div className={styles.logoPreview}>
             preview:
@@ -163,7 +169,7 @@ const Logo = () => {
   );
 };
 
-const Rules = () => {
+const Rules = ({ isReadOnly }: { isReadOnly: boolean }) => {
   const { t } = useTranslation();
   const { rules, setSubmitStore } = useSubplebbitSettingsStore();
   const lastRuleRef = useRef(null);
@@ -177,11 +183,13 @@ const Rules = () => {
   const addRule = () => {
     const newRules = rules ? [...rules, ''] : [''];
     setSubmitStore({ rules: newRules });
-
-    setTimeout(() => {
-      (lastRuleRef.current as any).focus();
-    }, 0);
   };
+
+  useEffect(() => {
+    if (!isReadOnly && rules && rules.length > 0) {
+      (lastRuleRef.current as any).focus();
+    }
+  }, [rules?.length, isReadOnly]);
 
   const deleteRule = (index: number) => {
     if (rules) {
@@ -195,15 +203,21 @@ const Rules = () => {
       <div className={styles.boxTitle}>{t('rules')}</div>
       <div className={styles.boxSubtitle}>shown in the sidebar of your community</div>
       <div className={styles.boxInput}>
-        <button className={styles.addButton} onClick={addRule}>
-          Add a Rule
-        </button>
+        {!isReadOnly && (
+          <button className={styles.addButton} onClick={addRule} disabled={isReadOnly}>
+            Add a Rule
+          </button>
+        )}
         {rules?.map((rule, index) => (
-          <div className={styles.rule} key={index}>
+          <div className={`${styles.rule} ${index === 0 && styles.firstRule}`} key={index}>
             Rule #{index + 1}
-            <span className={styles.deleteButton} title='Delete Rule' onClick={() => deleteRule(index)} />
+            {!isReadOnly && <span className={styles.deleteButton} title='Delete Rule' onClick={() => (isReadOnly ? {} : deleteRule(index))} />}
             <br />
-            <input ref={index === rules?.length - 1 ? lastRuleRef : null} type='text' value={rule} onChange={(e) => handleRuleChange(index, e.target.value)} />
+            {isReadOnly ? (
+              <span className={styles.readOnlyRule}>{rule}</span>
+            ) : (
+              <input ref={index === rules?.length - 1 ? lastRuleRef : null} value={rule} onChange={(e) => handleRuleChange(index, e.target.value)} />
+            )}
           </div>
         ))}
       </div>
@@ -211,7 +225,7 @@ const Rules = () => {
   );
 };
 
-const Moderators = () => {
+const Moderators = ({ isReadOnly }: { isReadOnly: boolean }) => {
   const { t } = useTranslation();
   const { roles, setSubmitStore } = useSubplebbitSettingsStore();
   const lastModeratorRef = useRef(null);
@@ -220,14 +234,14 @@ const Moderators = () => {
     if (roles) {
       const newRoles: Roles = { ...roles, '': { role: 'moderator' } };
       setSubmitStore({ roles: newRoles });
-
-      setTimeout(() => {
-        if (lastModeratorRef.current) {
-          (lastModeratorRef.current as any).focus();
-        }
-      }, 0);
     }
   };
+
+  useEffect(() => {
+    if (!isReadOnly && Object.keys(roles || {}).length > 0) {
+      (lastModeratorRef.current as any).focus();
+    }
+  }, [Object.keys(roles || {}).length, isReadOnly]);
 
   const handleRoleChange = (address: string, newRole: 'owner' | 'admin' | 'moderator') => {
     if (roles) {
@@ -244,14 +258,11 @@ const Moderators = () => {
     }
   };
 
-  const handleAddressChange = (oldAddress: string, newAddress: string) => {
-    if (roles) {
-      const { [oldAddress]: roleData, ...remainingRoles } = roles;
-      if (roleData) {
-        const updatedRoles: Roles = { ...remainingRoles, [newAddress]: roleData };
-        setSubmitStore({ roles: updatedRoles });
-      }
-    }
+  const handleAddressChange = (index: number, newAddress: string) => {
+    const rolesArray = Object.entries(roles || {});
+    rolesArray[index] = [newAddress, rolesArray[index][1]];
+    const updatedRoles = Object.fromEntries(rolesArray);
+    setSubmitStore({ roles: updatedRoles });
   };
 
   return (
@@ -259,34 +270,44 @@ const Moderators = () => {
       <div className={styles.boxTitle}>{t('moderators')}</div>
       <div className={styles.boxSubtitle}>let other users moderate and post without challenges</div>
       <div className={styles.boxInput}>
-        <button className={styles.addButton} onClick={handleAddModerator}>
-          add a moderator
-        </button>
+        {!isReadOnly && (
+          <button className={styles.addButton} onClick={handleAddModerator} disabled={isReadOnly}>
+            add a moderator
+          </button>
+        )}
         {roles &&
           Object.entries(roles).map(([address, role], index) => (
-            <div className={styles.moderator} key={index}>
+            <div className={`${styles.moderator} ${index === 0 && styles.firstModerator}`} key={index}>
               Moderator #{index + 1}
-              <span className={styles.deleteButton} title='delete moderator' onClick={() => handleDeleteModerator(address)} />
+              {!isReadOnly && <span className={styles.deleteButton} title='delete moderator' onClick={() => (isReadOnly ? {} : handleDeleteModerator(address))} />}
               <br />
               <span className={styles.moderatorAddress}>
                 User address:
                 <br />
-                <input
-                  ref={index === Object.keys(roles).length - 1 ? lastModeratorRef : null}
-                  type='text'
-                  value={address}
-                  onChange={(e) => handleAddressChange(address, e.target.value)}
-                />
+                {isReadOnly ? (
+                  <span>{address}</span>
+                ) : (
+                  <input
+                    ref={index === Object.keys(roles).length - 1 ? lastModeratorRef : null}
+                    type='text'
+                    value={address}
+                    onChange={(e) => handleAddressChange(index, e.target.value)}
+                  />
+                )}
                 <br />
               </span>
               <span className={styles.moderatorRole}>
                 Moderator role:
                 <br />
-                <select value={role.role} onChange={(e) => handleRoleChange(address, e.target.value as any)}>
-                  <option value='moderator'>moderator</option>
-                  <option value='admin'>admin</option>
-                  <option value='owner'>owner</option>
-                </select>
+                {isReadOnly ? (
+                  <span>{role.role}</span>
+                ) : (
+                  <select value={role.role} onChange={(e) => handleRoleChange(address, e.target.value as any)}>
+                    <option value='moderator'>moderator</option>
+                    <option value='admin'>admin</option>
+                    <option value='owner'>owner</option>
+                  </select>
+                )}
               </span>
             </div>
           ))}
@@ -307,6 +328,7 @@ interface ChallengeSettingsProps {
 
 const rolesToExclude = ['moderator', 'admin', 'owner'];
 const actionsToExclude: Array<'post' | 'reply' | 'vote'> = ['post', 'reply', 'vote'];
+const customActions: Array<'non-post' | 'non-reply' | 'non-vote'> = ['non-post', 'non-reply', 'non-vote'];
 
 const ChallengeSettings = ({ challenge, index, setSubmitStore, settings, showSettings }: ChallengeSettingsProps) => {
   const { exclude, name, options } = challenge || {};
@@ -318,14 +340,40 @@ const ChallengeSettings = ({ challenge, index, setSubmitStore, settings, showSet
     setSubmitStore({ settings: { ...settings, challenges: updatedChallenges } });
   };
 
-  const handleExcludeChange = (type: keyof Exclude, value: string | boolean | number | string[] | number[]) => {
-    const updatedExclude = { ...exclude[0], [type]: value };
-    const updatedChallenges = settings.challenges.map((ch: any, idx: number) => (idx === index ? { ...ch, exclude: [updatedExclude] } : ch));
+  const handleExcludeChange = (type: keyof Exclude | 'non-post' | 'non-reply' | 'non-vote', value: any) => {
+    const updatedExclude = { ...exclude[0] }; // Clone the first exclude object
+
+    switch (type) {
+      case 'non-post':
+        updatedExclude.post = value ? undefined : false;
+        break;
+      case 'non-reply':
+        updatedExclude.reply = value ? undefined : false;
+        break;
+      case 'non-vote':
+        updatedExclude.vote = value ? undefined : false;
+        break;
+      case 'role':
+        if (typeof value === 'string') {
+          const roleIndex = updatedExclude.role.indexOf(value);
+          if (roleIndex > -1) {
+            updatedExclude.role.splice(roleIndex, 1);
+          } else {
+            updatedExclude.role.push(value);
+          }
+        }
+        break;
+      default:
+        updatedExclude[type] = value;
+        break;
+    }
+
+    const updatedChallenges = [...settings.challenges];
+    updatedChallenges[index] = { ...updatedChallenges[index], exclude: [updatedExclude] };
     setSubmitStore({ settings: { ...settings, challenges: updatedChallenges } });
   };
 
   const handleExcludeAddress = (value: string) => {
-    // Split the input by commas, trim spaces, and filter out empty strings
     const addresses = value
       .split(',')
       .map((addr) => addr.trim())
@@ -400,6 +448,14 @@ const ChallengeSettings = ({ challenge, index, setSubmitStore, settings, showSet
             </label>
           </div>
         ))}
+        {customActions.map((action) => (
+          <div key={action}>
+            <label>
+              <input type='checkbox' checked={exclude[0]?.[action.replace('non-', '')] === undefined} onChange={(e) => handleExcludeChange(action, e.target.checked)} />
+              exclude {action}
+            </label>
+          </div>
+        ))}
       </div>
       <div className={styles.challengeOption}>
         Rate Limit
@@ -407,18 +463,18 @@ const ChallengeSettings = ({ challenge, index, setSubmitStore, settings, showSet
         <input type='number' placeholder='2' value={exclude?.rateLimit || undefined} onChange={(e) => handleExcludeChange('rateLimit', e.target.value)} />
         <label>
           <input type='checkbox' checked={exclude?.rateLimitChallengeSuccess} onChange={(e) => handleExcludeChange('rateLimitChallengeSuccess', e.target.checked)} />
-          only rate limit after a challenge is successfully completed
+          apply rate limit only to successfully completed challenges
         </label>
       </div>
     </div>
   );
 };
 
-const Challenges = () => {
+const Challenges = ({ isReadOnly, readOnlyChallenges }: { isReadOnly: boolean; readOnlyChallenges: any }) => {
   const { t } = useTranslation();
   const { settings, setSubmitStore } = useSubplebbitSettingsStore();
-  const challenges = settings?.challenges || [];
-  const [showSettings, setShowSettings] = useState<boolean[]>(challenges.map(() => true));
+  const challenges = settings?.challenges || readOnlyChallenges || [];
+  const [showSettings, setShowSettings] = useState<boolean[]>(challenges.map(() => false));
 
   const toggleSettings = (index: number) => {
     const newShowSettings = [...showSettings];
@@ -456,25 +512,33 @@ const Challenges = () => {
       <div className={styles.boxTitle}>{t('challenges')}</div>
       <div className={styles.boxSubtitle}>choose one or more challenges to prevent spam</div>
       <div className={styles.boxInput}>
-        <button className={styles.addButton} onClick={handleAddChallenge}>
-          add a challenge
-        </button>
+        {!isReadOnly && (
+          <button className={styles.addButton} onClick={handleAddChallenge} disabled={isReadOnly}>
+            add a challenge
+          </button>
+        )}
         {challenges.length === 0 && <span className={styles.noChallengeWarning}>Warning: vulnerable to spam attacks.</span>}
         {challenges.map((challenge: any, index: number) => (
           <div key={index} className={styles.challenge}>
             Challenge #{index + 1}
-            <span className={styles.deleteButton} title='delete challenge' onClick={() => handleDeleteChallenge(index)} />
+            {!isReadOnly && <span className={styles.deleteButton} title='delete challenge' onClick={() => (isReadOnly ? {} : handleDeleteChallenge(index))} />}
             <br />
-            <select value={challenge?.name} onChange={(e) => handleChallengeTypeChange(index, e.target.value)}>
-              {challengesNames.map((challenge) => (
-                <option key={challenge} value={challenge}>
-                  {challenge}
-                </option>
-              ))}
-            </select>
-            <button className={styles.challengeEditButton} onClick={() => toggleSettings(index)}>
-              {showSettings[index] ? 'hide settings' : 'show settings'}
-            </button>
+            {isReadOnly ? (
+              <span className={styles.readOnlyChallenge}>{challenge?.name}</span>
+            ) : (
+              <select value={challenge?.name} onChange={(e) => handleChallengeTypeChange(index, e.target.value)} disabled={isReadOnly}>
+                {challengesNames.map((challenge) => (
+                  <option key={challenge} value={challenge}>
+                    {challenge}
+                  </option>
+                ))}
+              </select>
+            )}
+            {!isReadOnly && (
+              <button className={styles.challengeEditButton} onClick={() => toggleSettings(index)} disabled={isReadOnly}>
+                {showSettings[index] ? 'hide settings' : 'show settings'}
+              </button>
+            )}
             <ChallengeSettings challenge={challenge} index={index} setSubmitStore={setSubmitStore} settings={settings} showSettings={showSettings[index]} />
           </div>
         ))}
@@ -483,7 +547,7 @@ const Challenges = () => {
   );
 };
 
-const JSONSettings = () => {
+const JSONSettings = ({ isReadOnly }: { isReadOnly: boolean }) => {
   const { title, description, address, suggested, rules, roles, settings, subplebbitAddress, setSubmitStore } = useSubplebbitSettingsStore();
   const [text, setText] = useState('');
 
@@ -504,10 +568,10 @@ const JSONSettings = () => {
 
   return (
     <div className={styles.box}>
-      <div className={styles.boxTitle}>JSON Settings</div>
+      <div className={`${styles.boxTitle} ${styles.JSONSettingsTitle}`}>JSON settings</div>
       <div className={styles.boxSubtitle}>quickly copy or paste the community settings</div>
       <div className={`${styles.boxInput} ${styles.JSONSettings}`}>
-        <textarea onChange={(e) => handleChange(e.target.value)} autoCorrect='off' autoComplete='off' spellCheck='false' value={text} />
+        <textarea onChange={(e) => handleChange(e.target.value)} autoCorrect='off' autoComplete='off' spellCheck='false' value={text} disabled={isReadOnly} />
       </div>
     </div>
   );
@@ -515,34 +579,13 @@ const JSONSettings = () => {
 
 const SubplebbitSettings = () => {
   const { t } = useTranslation();
-
-  const account = useAccount();
   const { subplebbitAddress } = useParams<{ subplebbitAddress: string }>();
   const subplebbit = useSubplebbit({ subplebbitAddress });
-  const userRole = subplebbit?.roles?.[account.author?.address]?.role;
   const { address, createdAt, description, rules, settings, suggested, roles, title, updatedAt } = subplebbit || {};
-  const isAdmin = userRole === 'admin' || userRole === 'owner' || settings;
+  const isReadOnly = !settings;
 
   const { publishSubplebbitEditOptions, setSubmitStore } = useSubplebbitSettingsStore();
   const { publishSubplebbitEdit } = usePublishSubplebbitEdit(publishSubplebbitEditOptions);
-
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
-
-  // set the store with the initial data
-  useEffect(() => {
-    setSubmitStore({
-      title: title ?? '',
-      description: description ?? '',
-      address,
-      suggested: suggested ?? {},
-      rules: rules ?? [],
-      roles: roles ?? {},
-      settings: settings ?? {},
-      subplebbitAddress,
-    });
-  }, [subplebbitAddress, setSubmitStore, title, description, address, suggested, rules, roles, settings]);
 
   const [showLoading, setShowLoading] = useState(false);
   const saveSubplebbit = async () => {
@@ -562,6 +605,23 @@ const SubplebbitSettings = () => {
     }
   };
 
+  // set the store with the initial data
+  useEffect(() => {
+    setSubmitStore({
+      title: title ?? '',
+      description: description ?? '',
+      address,
+      suggested: suggested ?? {},
+      rules: rules ?? [],
+      roles: roles ?? {},
+      settings: settings ?? {},
+      subplebbitAddress,
+    });
+
+    window.scrollTo(0, 0);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   useEffect(() => {
     document.title = `${t('preferences')} - seedit`;
   }, [t]);
@@ -571,20 +631,18 @@ const SubplebbitSettings = () => {
       <div className={styles.sidebar}>
         <Sidebar address={subplebbitAddress} createdAt={createdAt} description={description} roles={roles} rules={rules} title={title} updatedAt={updatedAt} />
       </div>
-      {!settings && <div className={styles.infobar}>can't connect to community p2p node - only the owner of a community can edit its settings.</div>}
-      <Title />
-      <Description />
-      <Address />
-      <Logo />
-      <Rules />
-      <Moderators />
       {/* subplebbit.settings is private, only shows to the sub owner */}
-      {settings?.challenges && <Challenges />}
-      <JSONSettings />
+      {!settings && <div className={styles.infobar}>can't connect to community p2p node - only the owner of a community can edit its settings.</div>}
+      <Title isReadOnly={isReadOnly} />
+      <Description isReadOnly={isReadOnly} />
+      <Address isReadOnly={isReadOnly} />
+      <Logo isReadOnly={isReadOnly} />
+      <Rules isReadOnly={isReadOnly} />
+      <Moderators isReadOnly={isReadOnly} />
+      <Challenges isReadOnly={isReadOnly} readOnlyChallenges={subplebbit?.challenges} />
+      <JSONSettings isReadOnly={isReadOnly} />
       <div className={styles.saveOptions}>
-        <button disabled={!isElectron || !isAdmin || showLoading} onClick={saveSubplebbit}>
-          {t('save_options')}
-        </button>
+        {!isReadOnly && <button onClick={saveSubplebbit}>{t('save_options')}</button>}
         {showLoading && <LoadingEllipsis string={t('saving')} />}
       </div>
     </div>
