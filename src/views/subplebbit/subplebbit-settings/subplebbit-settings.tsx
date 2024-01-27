@@ -201,13 +201,15 @@ const Rules = ({ isReadOnly }: { isReadOnly: boolean }) => {
       <div className={styles.boxTitle}>{t('rules')}</div>
       <div className={styles.boxSubtitle}>shown in the sidebar of your community</div>
       <div className={styles.boxInput}>
-        <button className={styles.addButton} onClick={addRule} disabled={isReadOnly}>
-          Add a Rule
-        </button>
+        {!isReadOnly && (
+          <button className={styles.addButton} onClick={addRule} disabled={isReadOnly}>
+            Add a Rule
+          </button>
+        )}
         {rules?.map((rule, index) => (
-          <div className={styles.rule} key={index}>
+          <div className={`${styles.rule} ${index === 0 && styles.firstRule}`} key={index}>
             Rule #{index + 1}
-            <span className={styles.deleteButton} title='Delete Rule' onClick={() => (isReadOnly ? {} : deleteRule(index))} />
+            {!isReadOnly && <span className={styles.deleteButton} title='Delete Rule' onClick={() => (isReadOnly ? {} : deleteRule(index))} />}
             <br />
             {isReadOnly ? (
               <span className={styles.readOnlyRule}>{rule}</span>
@@ -266,14 +268,16 @@ const Moderators = ({ isReadOnly }: { isReadOnly: boolean }) => {
       <div className={styles.boxTitle}>{t('moderators')}</div>
       <div className={styles.boxSubtitle}>let other users moderate and post without challenges</div>
       <div className={styles.boxInput}>
-        <button className={styles.addButton} onClick={handleAddModerator} disabled={isReadOnly}>
-          add a moderator
-        </button>
+        {!isReadOnly && (
+          <button className={styles.addButton} onClick={handleAddModerator} disabled={isReadOnly}>
+            add a moderator
+          </button>
+        )}
         {roles &&
           Object.entries(roles).map(([address, role], index) => (
-            <div className={styles.moderator} key={index}>
+            <div className={`${styles.moderator} ${index === 0 && styles.firstModerator}`} key={index}>
               Moderator #{index + 1}
-              <span className={styles.deleteButton} title='delete moderator' onClick={() => (isReadOnly ? {} : handleDeleteModerator(address))} />
+              {!isReadOnly && <span className={styles.deleteButton} title='delete moderator' onClick={() => (isReadOnly ? {} : handleDeleteModerator(address))} />}
               <br />
               <span className={styles.moderatorAddress}>
                 User address:
@@ -293,11 +297,15 @@ const Moderators = ({ isReadOnly }: { isReadOnly: boolean }) => {
               <span className={styles.moderatorRole}>
                 Moderator role:
                 <br />
-                <select value={role.role} onChange={(e) => handleRoleChange(address, e.target.value as any)} disabled={isReadOnly}>
-                  <option value='moderator'>moderator</option>
-                  <option value='admin'>admin</option>
-                  <option value='owner'>owner</option>
-                </select>
+                {isReadOnly ? (
+                  <span>{role.role}</span>
+                ) : (
+                  <select value={role.role} onChange={(e) => handleRoleChange(address, e.target.value as any)}>
+                    <option value='moderator'>moderator</option>
+                    <option value='admin'>admin</option>
+                    <option value='owner'>owner</option>
+                  </select>
+                )}
               </span>
             </div>
           ))}
@@ -460,10 +468,10 @@ const ChallengeSettings = ({ challenge, index, setSubmitStore, settings, showSet
   );
 };
 
-const Challenges = ({ isReadOnly }: { isReadOnly: boolean }) => {
+const Challenges = ({ isReadOnly, readOnlyChallenges }: { isReadOnly: boolean; readOnlyChallenges: any }) => {
   const { t } = useTranslation();
   const { settings, setSubmitStore } = useSubplebbitSettingsStore();
-  const challenges = settings?.challenges || [];
+  const challenges = settings?.challenges || readOnlyChallenges || [];
   const [showSettings, setShowSettings] = useState<boolean[]>(challenges.map(() => false));
 
   const toggleSettings = (index: number) => {
@@ -502,25 +510,33 @@ const Challenges = ({ isReadOnly }: { isReadOnly: boolean }) => {
       <div className={styles.boxTitle}>{t('challenges')}</div>
       <div className={styles.boxSubtitle}>choose one or more challenges to prevent spam</div>
       <div className={styles.boxInput}>
-        <button className={styles.addButton} onClick={handleAddChallenge} disabled={isReadOnly}>
-          add a challenge
-        </button>
+        {!isReadOnly && (
+          <button className={styles.addButton} onClick={handleAddChallenge} disabled={isReadOnly}>
+            add a challenge
+          </button>
+        )}
         {challenges.length === 0 && <span className={styles.noChallengeWarning}>Warning: vulnerable to spam attacks.</span>}
         {challenges.map((challenge: any, index: number) => (
           <div key={index} className={styles.challenge}>
             Challenge #{index + 1}
-            <span className={styles.deleteButton} title='delete challenge' onClick={() => (isReadOnly ? {} : handleDeleteChallenge(index))} />
+            {!isReadOnly && <span className={styles.deleteButton} title='delete challenge' onClick={() => (isReadOnly ? {} : handleDeleteChallenge(index))} />}
             <br />
-            <select value={challenge?.name} onChange={(e) => handleChallengeTypeChange(index, e.target.value)} disabled={isReadOnly}>
-              {challengesNames.map((challenge) => (
-                <option key={challenge} value={challenge}>
-                  {challenge}
-                </option>
-              ))}
-            </select>
-            <button className={styles.challengeEditButton} onClick={() => toggleSettings(index)} disabled={isReadOnly}>
-              {showSettings[index] ? 'hide settings' : 'show settings'}
-            </button>
+            {isReadOnly ? (
+              <span className={styles.readOnlyChallenge}>{challenge?.name}</span>
+            ) : (
+              <select value={challenge?.name} onChange={(e) => handleChallengeTypeChange(index, e.target.value)} disabled={isReadOnly}>
+                {challengesNames.map((challenge) => (
+                  <option key={challenge} value={challenge}>
+                    {challenge}
+                  </option>
+                ))}
+              </select>
+            )}
+            {!isReadOnly && (
+              <button className={styles.challengeEditButton} onClick={() => toggleSettings(index)} disabled={isReadOnly}>
+                {showSettings[index] ? 'hide settings' : 'show settings'}
+              </button>
+            )}
             <ChallengeSettings challenge={challenge} index={index} setSubmitStore={setSubmitStore} settings={settings} showSettings={showSettings[index]} />
           </div>
         ))}
@@ -621,12 +637,10 @@ const SubplebbitSettings = () => {
       <Logo isReadOnly={isReadOnly} />
       <Rules isReadOnly={isReadOnly} />
       <Moderators isReadOnly={isReadOnly} />
-      <Challenges isReadOnly={isReadOnly} />
+      <Challenges isReadOnly={isReadOnly} readOnlyChallenges={subplebbit?.challenges} />
       <JSONSettings isReadOnly={isReadOnly} />
       <div className={styles.saveOptions}>
-        <button disabled={isReadOnly} onClick={saveSubplebbit}>
-          {t('save_options')}
-        </button>
+        {!isReadOnly && <button onClick={saveSubplebbit}>{t('save_options')}</button>}
         {showLoading && <LoadingEllipsis string={t('saving')} />}
       </div>
     </div>
