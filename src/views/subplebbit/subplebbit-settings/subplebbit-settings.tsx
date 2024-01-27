@@ -536,24 +536,6 @@ const SubplebbitSettings = () => {
   const { publishSubplebbitEditOptions, setSubmitStore } = useSubplebbitSettingsStore();
   const { publishSubplebbitEdit } = usePublishSubplebbitEdit(publishSubplebbitEditOptions);
 
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
-
-  // set the store with the initial data
-  useEffect(() => {
-    setSubmitStore({
-      title: title ?? '',
-      description: description ?? '',
-      address,
-      suggested: suggested ?? {},
-      rules: rules ?? [],
-      roles: roles ?? {},
-      settings: settings ?? {},
-      subplebbitAddress,
-    });
-  }, [subplebbitAddress, setSubmitStore, title, description, address, suggested, rules, roles, settings]);
-
   const [showLoading, setShowLoading] = useState(false);
   const saveSubplebbit = async () => {
     try {
@@ -571,6 +553,23 @@ const SubplebbitSettings = () => {
       setShowLoading(false);
     }
   };
+
+  // set the store with the initial data
+  useEffect(() => {
+    setSubmitStore({
+      title: title ?? '',
+      description: description ?? '',
+      address,
+      suggested: suggested ?? {},
+      rules: rules ?? [],
+      roles: roles ?? {},
+      settings: settings ?? {},
+      subplebbitAddress,
+    });
+
+    window.scrollTo(0, 0);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   useEffect(() => {
     document.title = `${t('preferences')} - seedit`;
