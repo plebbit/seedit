@@ -183,11 +183,13 @@ const Rules = ({ isReadOnly }: { isReadOnly: boolean }) => {
   const addRule = () => {
     const newRules = rules ? [...rules, ''] : [''];
     setSubmitStore({ rules: newRules });
-
-    setTimeout(() => {
-      (lastRuleRef.current as any).focus();
-    }, 0);
   };
+
+  useEffect(() => {
+    if (!isReadOnly && rules && rules.length > 0) {
+      (lastRuleRef.current as any).focus();
+    }
+  }, [rules?.length, isReadOnly]);
 
   const deleteRule = (index: number) => {
     if (rules) {
@@ -232,14 +234,14 @@ const Moderators = ({ isReadOnly }: { isReadOnly: boolean }) => {
     if (roles) {
       const newRoles: Roles = { ...roles, '': { role: 'moderator' } };
       setSubmitStore({ roles: newRoles });
-
-      setTimeout(() => {
-        if (lastModeratorRef.current) {
-          (lastModeratorRef.current as any).focus();
-        }
-      }, 0);
     }
   };
+
+  useEffect(() => {
+    if (!isReadOnly && Object.keys(roles || {}).length > 0) {
+      (lastModeratorRef.current as any).focus();
+    }
+  }, [Object.keys(roles || {}).length, isReadOnly]);
 
   const handleRoleChange = (address: string, newRole: 'owner' | 'admin' | 'moderator') => {
     if (roles) {
@@ -566,7 +568,7 @@ const JSONSettings = ({ isReadOnly }: { isReadOnly: boolean }) => {
 
   return (
     <div className={styles.box}>
-      <div className={styles.boxTitle}>JSON Settings</div>
+      <div className={`${styles.boxTitle} ${styles.JSONSettingsTitle}`}>JSON settings</div>
       <div className={styles.boxSubtitle}>quickly copy or paste the community settings</div>
       <div className={`${styles.boxInput} ${styles.JSONSettings}`}>
         <textarea onChange={(e) => handleChange(e.target.value)} autoCorrect='off' autoComplete='off' spellCheck='false' value={text} disabled={isReadOnly} />

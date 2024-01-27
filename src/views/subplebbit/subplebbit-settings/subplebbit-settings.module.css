@@ -75,6 +75,10 @@
   height: 200px;
 }
 
+.JSONSettingsTitle {
+  text-transform: none !important;
+}
+
 .noChallengeWarning {
   color: var(--red);
   font-size: 12px;
