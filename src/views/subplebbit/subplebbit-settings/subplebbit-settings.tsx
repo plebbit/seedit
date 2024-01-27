@@ -428,7 +428,7 @@ const Challenges = () => {
   const { t } = useTranslation();
   const { settings, setSubmitStore } = useSubplebbitSettingsStore();
   const challenges = settings?.challenges || [];
-  const [showSettings, setShowSettings] = useState<boolean[]>(challenges.map(() => true));
+  const [showSettings, setShowSettings] = useState<boolean[]>(challenges.map(() => false));
 
   const toggleSettings = (index: number) => {
     const newShowSettings = [...showSettings];
