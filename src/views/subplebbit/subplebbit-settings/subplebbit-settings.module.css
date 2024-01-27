@@ -65,7 +65,7 @@
   text-transform: lowercase;
 }
 
-.fullSettings textarea {
+.JSONSettings textarea {
   height: 200px;
 }
 

@@ -483,13 +483,13 @@ const Challenges = () => {
   );
 };
 
-const FullSettings = () => {
+const JSONSettings = () => {
   const { title, description, address, suggested, rules, roles, settings, subplebbitAddress, setSubmitStore } = useSubplebbitSettingsStore();
   const [text, setText] = useState('');
 
   useEffect(() => {
-    const fullSettings = JSON.stringify({ title, description, address, suggested, rules, roles, settings, subplebbitAddress }, null, 2);
-    setText(fullSettings);
+    const JSONSettings = JSON.stringify({ title, description, address, suggested, rules, roles, settings, subplebbitAddress }, null, 2);
+    setText(JSONSettings);
   }, [title, description, address, suggested, rules, roles, settings, subplebbitAddress]);
 
   const handleChange = (newText: string) => {
@@ -504,9 +504,9 @@ const FullSettings = () => {
 
   return (
     <div className={styles.box}>
-      <div className={styles.boxTitle}>full settings data</div>
+      <div className={styles.boxTitle}>JSON Settings</div>
       <div className={styles.boxSubtitle}>quickly copy or paste the community settings</div>
-      <div className={`${styles.boxInput} ${styles.fullSettings}`}>
+      <div className={`${styles.boxInput} ${styles.JSONSettings}`}>
         <textarea onChange={(e) => handleChange(e.target.value)} autoCorrect='off' autoComplete='off' spellCheck='false' value={text} />
       </div>
     </div>
@@ -580,7 +580,7 @@ const SubplebbitSettings = () => {
       <Moderators />
       {/* subplebbit.settings is private, only shows to the sub owner */}
       {settings?.challenges && <Challenges />}
-      <FullSettings />
+      <JSONSettings />
       <div className={styles.saveOptions}>
         <button disabled={!isElectron || !isAdmin || showLoading} onClick={saveSubplebbit}>
           {t('save_options')}
