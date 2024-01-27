@@ -3,6 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { Trans, useTranslation } from 'react-i18next';
 import { Subplebbit as SubplebbitType, useAccount, useAccountSubplebbits, useSubplebbits, useSubplebbitStats } from '@plebbit/plebbit-react-hooks';
 import styles from './subplebbits.module.css';
+import Label from '../../components/post/label';
 import Sidebar from '../../components/sidebar';
 import SubscribeButton from '../../components/subscribe-button';
 import { getFormattedTimeDuration } from '../../lib/utils/time-utils';
@@ -17,7 +18,6 @@ import {
   isSubplebbitsVoteRejectingView,
 } from '../../lib/utils/view-utils';
 import { useDefaultSubplebbitAddresses } from '../../lib/utils/addresses-utils';
-import { OfflineLabel, RoleLabel } from '../../components/post/label/label';
 
 interface SubplebbitProps {
   index?: number;
@@ -165,10 +165,10 @@ const Subplebbit = ({ subplebbit }: SubplebbitProps) => {
           <span>
             {t('members_count', { count: allActiveUserCount })}, {t('community_for', { date: getFormattedTimeDuration(createdAt) })}
             <div className={styles.subplebbitPreferences}>
-              {updatedAt && !isOnline && <OfflineLabel />}
+              {updatedAt && !isOnline && <Label color='red' text={t('offline')} />}
               {(userRole || isUserOwner) && (
                 <span className={styles.label}>
-                  <RoleLabel role={userRole || 'owner'} />
+                  <Label color='green' text={userRole || 'owner'} />
                 </span>
               )}
               <Link to={`/p/${address}/settings`}>{t('settings')}</Link>

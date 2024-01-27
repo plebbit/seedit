@@ -1,1 +1,1 @@
-export { DeletedLabel, FailedLabel, PendingLabel, RemovedLabel, SpoilerLabel } from './label';
+export { default } from './label';

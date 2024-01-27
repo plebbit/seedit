@@ -12,7 +12,7 @@ import Expando from '../post/expando/';
 import ExpandButton from '../post/expand-button/';
 import Thumbnail from '../post/thumbnail/';
 import Flair from '../post/flair/';
-import { PendingLabel, FailedLabel } from '../post/label';
+import Label from '../post/label/';
 import CommentTools from '../post/comment-tools';
 import ReplyForm from '../reply-form';
 import useDownvote from '../../hooks/use-downvote';
@@ -257,8 +257,8 @@ const Reply = ({ depth = 0, isSingle, isNotification = false, reply = {} }: Repl
 
   const stateLabel = (
     <span className={styles.stateLabel}>
-      {state === 'failed' && <FailedLabel />}
-      {cid === undefined && state !== 'failed' && <PendingLabel />}
+      {state === 'failed' && <Label color='red' text={t('failed')} />}
+      {cid === undefined && state !== 'failed' && <Label color='yellow' text={t('pending')} />}
     </span>
   );
 
