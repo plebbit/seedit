@@ -55,6 +55,12 @@
   font-size: 14px;
 }
 
+.readOnlyDescription {
+  font-size: 14px;
+  font-family: verdana, arial, helvetica, sans-serif;
+  white-space: pre-wrap;
+}
+
 .saveOptions button {
   text-transform: lowercase;
   margin: 3px 5px;

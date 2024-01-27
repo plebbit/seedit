@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { PublishSubplebbitEditOptions, useAccount, useSubplebbit, usePublishSubplebbitEdit, Role } from '@plebbit/plebbit-react-hooks';
+import { PublishSubplebbitEditOptions, useSubplebbit, usePublishSubplebbitEdit, Role } from '@plebbit/plebbit-react-hooks';
 import { Roles } from '../../../lib/utils/user-utils';
 import { useTranslation } from 'react-i18next';
 import { create } from 'zustand';
@@ -16,8 +16,6 @@ import {
 } from '../../../lib/utils/challenge-utils';
 import LoadingEllipsis from '../../../components/loading-ellipsis';
 import Sidebar from '../../../components/sidebar';
-
-const isElectron = window.electron && window.electron.isElectron;
 
 type SubplebbitSettingsState = {
   title: string | undefined;
@@ -80,7 +78,7 @@ const useSubplebbitSettingsStore = create<SubplebbitSettingsState>((set) => ({
     }),
 }));
 
-const Title = () => {
+const Title = ({ isReadOnly }: { isReadOnly: boolean }) => {
   const { t } = useTranslation();
   const { title, setSubmitStore } = useSubplebbitSettingsStore();
 
@@ -89,13 +87,13 @@ const Title = () => {
       <div className={styles.boxTitle}>{t('title')}</div>
       <div className={styles.boxSubtitle}>e.g., books: made from trees or pixels. recommendations, news, or thoughts</div>
       <div className={styles.boxInput}>
-        <input type='text' value={title ?? ''} onChange={(e) => setSubmitStore({ title: e.target.value })} />
+        {isReadOnly ? <span>{title}</span> : <input type='text' value={title ?? ''} onChange={(e) => setSubmitStore({ title: e.target.value })} />}
       </div>
     </div>
   );
 };
 
-const Description = () => {
+const Description = ({ isReadOnly }: { isReadOnly: boolean }) => {
   const { t } = useTranslation();
   const { description, setSubmitStore } = useSubplebbitSettingsStore();
 
@@ -104,13 +102,17 @@ const Description = () => {
       <div className={styles.boxTitle}>{t('description')}</div>
       <div className={styles.boxSubtitle}>shown in the sidebar of your community</div>
       <div className={styles.boxInput}>
-        <textarea value={description ?? ''} onChange={(e) => setSubmitStore({ description: e.target.value })} />
+        {isReadOnly ? (
+          <pre className={styles.readOnlyDescription}>{description}</pre>
+        ) : (
+          <textarea value={description ?? ''} onChange={(e) => setSubmitStore({ description: e.target.value })} />
+        )}
       </div>
     </div>
   );
 };
 
-const Address = () => {
+const Address = ({ isReadOnly }: { isReadOnly: boolean }) => {
   const { t } = useTranslation();
   const { address, setSubmitStore } = useSubplebbitSettingsStore();
 
@@ -119,13 +121,13 @@ const Address = () => {
       <div className={styles.boxTitle}>{t('address')}</div>
       <div className={styles.boxSubtitle}>set a readable community address using ens.domains</div>
       <div className={styles.boxInput}>
-        <input type='text' value={address ?? ''} onChange={(e) => setSubmitStore({ title: e.target.value })} />
+        {isReadOnly ? <span>{address}</span> : <input type='text' value={address ?? ''} onChange={(e) => setSubmitStore({ address: e.target.value })} />}
       </div>
     </div>
   );
 };
 
-const Logo = () => {
+const Logo = ({ isReadOnly }: { isReadOnly: boolean }) => {
   const { t } = useTranslation();
   const { suggested, setSubmitStore } = useSubplebbitSettingsStore();
 
@@ -143,15 +145,19 @@ const Logo = () => {
       <div className={styles.boxTitle}>{t('logo')}</div>
       <div className={styles.boxSubtitle}>set a community logo using its direct image link (ending in .jpg, .png)</div>
       <div className={styles.boxInput}>
-        <input
-          type='text'
-          value={logoUrl ?? ''}
-          onChange={(e) => {
-            setLogoUrl(e.target.value);
-            setImageError(false);
-            setSubmitStore({ suggested: { ...suggested, avatarUrl: e.target.value } });
-          }}
-        />
+        {isReadOnly ? (
+          <span>{logoUrl}</span>
+        ) : (
+          <input
+            type='text'
+            value={logoUrl ?? ''}
+            onChange={(e) => {
+              setLogoUrl(e.target.value);
+              setImageError(false);
+              setSubmitStore({ suggested: { ...suggested, avatarUrl: e.target.value } });
+            }}
+          />
+        )}
         {logoUrl && isValidURL(logoUrl) && (
           <div className={styles.logoPreview}>
             preview:
@@ -163,7 +169,7 @@ const Logo = () => {
   );
 };
 
-const Rules = () => {
+const Rules = ({ isReadOnly }: { isReadOnly: boolean }) => {
   const { t } = useTranslation();
   const { rules, setSubmitStore } = useSubplebbitSettingsStore();
   const lastRuleRef = useRef(null);
@@ -195,15 +201,19 @@ const Rules = () => {
       <div className={styles.boxTitle}>{t('rules')}</div>
       <div className={styles.boxSubtitle}>shown in the sidebar of your community</div>
       <div className={styles.boxInput}>
-        <button className={styles.addButton} onClick={addRule}>
+        <button className={styles.addButton} onClick={addRule} disabled={isReadOnly}>
           Add a Rule
         </button>
         {rules?.map((rule, index) => (
           <div className={styles.rule} key={index}>
             Rule #{index + 1}
-            <span className={styles.deleteButton} title='Delete Rule' onClick={() => deleteRule(index)} />
+            <span className={styles.deleteButton} title='Delete Rule' onClick={() => (isReadOnly ? {} : deleteRule(index))} />
             <br />
-            <input ref={index === rules?.length - 1 ? lastRuleRef : null} type='text' value={rule} onChange={(e) => handleRuleChange(index, e.target.value)} />
+            {isReadOnly ? (
+              <span className={styles.readOnlyRule}>{rule}</span>
+            ) : (
+              <textarea ref={index === rules?.length - 1 ? lastRuleRef : null} value={rule} onChange={(e) => handleRuleChange(index, e.target.value)} />
+            )}
           </div>
         ))}
       </div>
@@ -211,7 +221,7 @@ const Rules = () => {
   );
 };
 
-const Moderators = () => {
+const Moderators = ({ isReadOnly }: { isReadOnly: boolean }) => {
   const { t } = useTranslation();
   const { roles, setSubmitStore } = useSubplebbitSettingsStore();
   const lastModeratorRef = useRef(null);
@@ -256,30 +266,34 @@ const Moderators = () => {
       <div className={styles.boxTitle}>{t('moderators')}</div>
       <div className={styles.boxSubtitle}>let other users moderate and post without challenges</div>
       <div className={styles.boxInput}>
-        <button className={styles.addButton} onClick={handleAddModerator}>
+        <button className={styles.addButton} onClick={handleAddModerator} disabled={isReadOnly}>
           add a moderator
         </button>
         {roles &&
           Object.entries(roles).map(([address, role], index) => (
             <div className={styles.moderator} key={index}>
               Moderator #{index + 1}
-              <span className={styles.deleteButton} title='delete moderator' onClick={() => handleDeleteModerator(address)} />
+              <span className={styles.deleteButton} title='delete moderator' onClick={() => (isReadOnly ? {} : handleDeleteModerator(address))} />
               <br />
               <span className={styles.moderatorAddress}>
                 User address:
                 <br />
-                <input
-                  ref={index === Object.keys(roles).length - 1 ? lastModeratorRef : null}
-                  type='text'
-                  value={address}
-                  onChange={(e) => handleAddressChange(index, e.target.value)}
-                />
+                {isReadOnly ? (
+                  <span>{address}</span>
+                ) : (
+                  <input
+                    ref={index === Object.keys(roles).length - 1 ? lastModeratorRef : null}
+                    type='text'
+                    value={address}
+                    onChange={(e) => handleAddressChange(index, e.target.value)}
+                  />
+                )}
                 <br />
               </span>
               <span className={styles.moderatorRole}>
                 Moderator role:
                 <br />
-                <select value={role.role} onChange={(e) => handleRoleChange(address, e.target.value as any)}>
+                <select value={role.role} onChange={(e) => handleRoleChange(address, e.target.value as any)} disabled={isReadOnly}>
                   <option value='moderator'>moderator</option>
                   <option value='admin'>admin</option>
                   <option value='owner'>owner</option>
@@ -424,7 +438,7 @@ const ChallengeSettings = ({ challenge, index, setSubmitStore, settings, showSet
   );
 };
 
-const Challenges = () => {
+const Challenges = ({ isReadOnly }: { isReadOnly: boolean }) => {
   const { t } = useTranslation();
   const { settings, setSubmitStore } = useSubplebbitSettingsStore();
   const challenges = settings?.challenges || [];
@@ -466,7 +480,7 @@ const Challenges = () => {
       <div className={styles.boxTitle}>{t('challenges')}</div>
       <div className={styles.boxSubtitle}>choose one or more challenges to prevent spam</div>
       <div className={styles.boxInput}>
-        <button className={styles.addButton} onClick={handleAddChallenge}>
+        <button className={styles.addButton} onClick={handleAddChallenge} disabled={isReadOnly}>
           add a challenge
         </button>
         {challenges.length === 0 && <span className={styles.noChallengeWarning}>Warning: vulnerable to spam attacks.</span>}
@@ -482,7 +496,7 @@ const Challenges = () => {
                 </option>
               ))}
             </select>
-            <button className={styles.challengeEditButton} onClick={() => toggleSettings(index)}>
+            <button className={styles.challengeEditButton} onClick={() => toggleSettings(index)} disabled={isReadOnly}>
               {showSettings[index] ? 'hide settings' : 'show settings'}
             </button>
             <ChallengeSettings challenge={challenge} index={index} setSubmitStore={setSubmitStore} settings={settings} showSettings={showSettings[index]} />
@@ -493,7 +507,7 @@ const Challenges = () => {
   );
 };
 
-const JSONSettings = () => {
+const JSONSettings = ({ isReadOnly }: { isReadOnly: boolean }) => {
   const { title, description, address, suggested, rules, roles, settings, subplebbitAddress, setSubmitStore } = useSubplebbitSettingsStore();
   const [text, setText] = useState('');
 
@@ -517,7 +531,7 @@ const JSONSettings = () => {
       <div className={styles.boxTitle}>JSON Settings</div>
       <div className={styles.boxSubtitle}>quickly copy or paste the community settings</div>
       <div className={`${styles.boxInput} ${styles.JSONSettings}`}>
-        <textarea onChange={(e) => handleChange(e.target.value)} autoCorrect='off' autoComplete='off' spellCheck='false' value={text} />
+        <textarea onChange={(e) => handleChange(e.target.value)} autoCorrect='off' autoComplete='off' spellCheck='false' value={text} disabled={isReadOnly} />
       </div>
     </div>
   );
@@ -525,13 +539,10 @@ const JSONSettings = () => {
 
 const SubplebbitSettings = () => {
   const { t } = useTranslation();
-
-  const account = useAccount();
   const { subplebbitAddress } = useParams<{ subplebbitAddress: string }>();
   const subplebbit = useSubplebbit({ subplebbitAddress });
-  const userRole = subplebbit?.roles?.[account.author?.address]?.role;
   const { address, createdAt, description, rules, settings, suggested, roles, title, updatedAt } = subplebbit || {};
-  const isAdmin = userRole === 'admin' || userRole === 'owner' || settings;
+  const isReadOnly = !settings;
 
   const { publishSubplebbitEditOptions, setSubmitStore } = useSubplebbitSettingsStore();
   const { publishSubplebbitEdit } = usePublishSubplebbitEdit(publishSubplebbitEditOptions);
@@ -580,18 +591,18 @@ const SubplebbitSettings = () => {
       <div className={styles.sidebar}>
         <Sidebar address={subplebbitAddress} createdAt={createdAt} description={description} roles={roles} rules={rules} title={title} updatedAt={updatedAt} />
       </div>
-      {!settings && <div className={styles.infobar}>can't connect to community p2p node - only the owner of a community can edit its settings.</div>}
-      <Title />
-      <Description />
-      <Address />
-      <Logo />
-      <Rules />
-      <Moderators />
       {/* subplebbit.settings is private, only shows to the sub owner */}
-      {settings?.challenges && <Challenges />}
-      <JSONSettings />
+      {!settings && <div className={styles.infobar}>can't connect to community p2p node - only the owner of a community can edit its settings.</div>}
+      <Title isReadOnly={isReadOnly} />
+      <Description isReadOnly={isReadOnly} />
+      <Address isReadOnly={isReadOnly} />
+      <Logo isReadOnly={isReadOnly} />
+      <Rules isReadOnly={isReadOnly} />
+      <Moderators isReadOnly={isReadOnly} />
+      <Challenges isReadOnly={isReadOnly} />
+      <JSONSettings isReadOnly={isReadOnly} />
       <div className={styles.saveOptions}>
-        <button disabled={!isElectron || !isAdmin || showLoading} onClick={saveSubplebbit}>
+        <button disabled={isReadOnly} onClick={saveSubplebbit}>
           {t('save_options')}
         </button>
         {showLoading && <LoadingEllipsis string={t('saving')} />}
