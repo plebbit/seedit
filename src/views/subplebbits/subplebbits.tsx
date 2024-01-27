@@ -31,9 +31,15 @@ const MyCommunitiesTabs = () => {
   const isInSubplebbitsModeratorView = isSubplebbitsModeratorView(location.pathname);
   const isInSubplebbitsAdminView = isSubplebbitsAdminView(location.pathname);
   const isInSubplebbitsOwnerView = isSubplebbitsOwnerView(location.pathname);
+  const isInSubplebbitsView =
+    isSubplebbitsView(location.pathname) && !isInSubplebbitsSubscriberView && !isInSubplebbitsModeratorView && !isInSubplebbitsAdminView && !isInSubplebbitsOwnerView;
 
   return (
     <div className={styles.subplebbitsTabs}>
+      <Link to='/communities' className={isInSubplebbitsView ? styles.selected : styles.choice}>
+        {t('all')}
+      </Link>
+      <span className={styles.separator}>|</span>
       <Link to='/communities/subscriber' className={isInSubplebbitsSubscriberView ? styles.selected : styles.choice}>
         {t('subscriber')}
       </Link>
@@ -209,14 +215,37 @@ const ApprovedSubplebbits = () => {
   return subplebbitsArray?.map((subplebbit, index) => <Subplebbit key={index} subplebbit={subplebbit} />);
 };
 
+const AccountAndSubscriberSubplebbits = () => {
+  const { accountSubplebbits } = useAccountSubplebbits();
+  const account = useAccount();
+  const { subplebbits: subscribedSubplebbits } = useSubplebbits({ subplebbitAddresses: account?.subscriptions || [] });
+
+  const combinedSubplebbits = useMemo(() => {
+    const ownSubplebbitsAddresses = Object.keys(accountSubplebbits);
+    const subscribedAddresses = account?.subscriptions || [];
+
+    const uniqueAddresses = Array.from(new Set([...ownSubplebbitsAddresses, ...subscribedAddresses]));
+
+    return uniqueAddresses.map((addr) => accountSubplebbits[addr] || subscribedSubplebbits[addr]);
+  }, [accountSubplebbits, subscribedSubplebbits, account?.subscriptions]);
+
+  return combinedSubplebbits.map((subplebbit, index) => <Subplebbit key={index} subplebbit={subplebbit} />);
+};
+
 const Subplebbits = () => {
   const location = useLocation();
   const isInSubplebbitsSubscriberView = isSubplebbitsSubscriberView(location.pathname);
   const isInSubplebbitsModeratorView = isSubplebbitsModeratorView(location.pathname);
   const isInSubplebbitsAdminView = isSubplebbitsAdminView(location.pathname);
   const isInSubplebbitsOwnerView = isSubplebbitsOwnerView(location.pathname);
+  const isInSubplebbitsVoteView = isSubplebbitsVoteView(location.pathname);
   const isInSubplebbitsView =
-    isSubplebbitsView(location.pathname) && !isInSubplebbitsSubscriberView && !isInSubplebbitsModeratorView && !isInSubplebbitsAdminView && !isInSubplebbitsOwnerView;
+    isSubplebbitsView(location.pathname) &&
+    !isInSubplebbitsSubscriberView &&
+    !isInSubplebbitsModeratorView &&
+    !isInSubplebbitsAdminView &&
+    !isInSubplebbitsOwnerView &&
+    !isInSubplebbitsVoteView;
 
   let viewRole = 'subscriber';
   if (isInSubplebbitsModeratorView) {
@@ -232,11 +261,16 @@ const Subplebbits = () => {
       <div className={styles.sidebar}>
         <Sidebar />
       </div>
-      {isInSubplebbitsSubscriberView || isInSubplebbitsModeratorView || isInSubplebbitsAdminView || isInSubplebbitsOwnerView ? <MyCommunitiesTabs /> : <VoteTabs />}
+      {isInSubplebbitsSubscriberView || isInSubplebbitsModeratorView || isInSubplebbitsAdminView || isInSubplebbitsOwnerView || isInSubplebbitsView ? (
+        <MyCommunitiesTabs />
+      ) : (
+        <VoteTabs />
+      )}
       <Infobar />
-      {isInSubplebbitsView && <ApprovedSubplebbits />}
+      {isInSubplebbitsVoteView && <ApprovedSubplebbits />}
       {(isInSubplebbitsModeratorView || isInSubplebbitsAdminView || isInSubplebbitsOwnerView) && <AccountSubplebbits viewRole={viewRole} />}
       {isInSubplebbitsSubscriberView && <SubscriberSubplebbits />}
+      {isInSubplebbitsView && <AccountAndSubscriberSubplebbits />}
     </div>
   );
 };

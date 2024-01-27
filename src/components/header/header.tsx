@@ -29,6 +29,7 @@ import {
   isSubplebbitsSubscriberView,
   isSubplebbitsModeratorView,
   isSubplebbitsAdminView,
+  isSubplebbitsVoteView,
   isSubplebbitsOwnerView,
   isProfileUpvotedView,
 } from '../../lib/utils/view-utils';
@@ -207,21 +208,29 @@ const SubplebbitsHeaderTabs = () => {
   const isInSubplebbitsModeratorView = isSubplebbitsModeratorView(location.pathname);
   const isInSubplebbitsAdminView = isSubplebbitsAdminView(location.pathname);
   const isInSubplebbitsOwnerView = isSubplebbitsOwnerView(location.pathname);
+  const isInSubplebbitsVoteView = isSubplebbitsVoteView(location.pathname);
   const isInSubplebbitsView =
-    isSubplebbitsView(location.pathname) && !isInSubplebbitsSubscriberView && !isInSubplebbitsModeratorView && !isInSubplebbitsAdminView && !isInSubplebbitsOwnerView;
+    isSubplebbitsView(location.pathname) &&
+    !isInSubplebbitsSubscriberView &&
+    !isInSubplebbitsModeratorView &&
+    !isInSubplebbitsAdminView &&
+    !isInSubplebbitsOwnerView &&
+    !isInSubplebbitsVoteView;
 
   return (
     <>
       <li>
-        <Link to={'/communities/vote'} className={`${isInSubplebbitsView ? styles.selected : styles.choice}`}>
+        <Link to={'/communities/vote'} className={`${isInSubplebbitsVoteView ? styles.selected : styles.choice}`}>
           {t('vote')}
         </Link>
       </li>
       <li>
         <Link
-          to={'/communities/subscriber'}
+          to={'/communities'}
           className={
-            isInSubplebbitsSubscriberView || isInSubplebbitsModeratorView || isInSubplebbitsAdminView || isInSubplebbitsOwnerView ? styles.selected : styles.choice
+            isInSubplebbitsSubscriberView || isInSubplebbitsModeratorView || isInSubplebbitsAdminView || isInSubplebbitsOwnerView || isInSubplebbitsView
+              ? styles.selected
+              : styles.choice
           }
         >
           {t('my_communities')}
