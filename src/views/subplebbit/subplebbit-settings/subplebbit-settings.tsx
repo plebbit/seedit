@@ -6,7 +6,14 @@ import { useTranslation } from 'react-i18next';
 import { create } from 'zustand';
 import styles from './subplebbit-settings.module.css';
 import { isValidURL } from '../../../lib/utils/url-utils';
-import { getDefaultChallengeDescription, getDefaultExclude, getDefaultOptionInputs } from '../../../lib/utils/challenge-utils';
+import {
+  OptionInput,
+  Exclude,
+  getDefaultChallengeDescription,
+  getDefaultExclude,
+  getDefaultChallengeOptions,
+  getDefaultChallengeSettings,
+} from '../../../lib/utils/challenge-utils';
 import LoadingEllipsis from '../../../components/loading-ellipsis';
 import Sidebar from '../../../components/sidebar';
 
@@ -298,109 +305,110 @@ interface ChallengeSettingsProps {
   showSettings: boolean;
 }
 
-type OptionInput = {
-  option: string;
-  value?: string;
-  label: string;
-  default?: string;
-  description: string;
-  placeholder?: string;
-  required?: boolean;
-};
+const rolesToExclude = ['moderator', 'admin', 'owner'];
+const actionsToExclude: Array<'post' | 'reply' | 'vote'> = ['post', 'reply', 'vote'];
 
 const ChallengeSettings = ({ challenge, index, setSubmitStore, settings, showSettings }: ChallengeSettingsProps) => {
-  const { exclude, name, optionInputs } = challenge || {};
+  const { exclude, name, options } = challenge || {};
+  const challengeSettings: OptionInput[] = getDefaultChallengeSettings(name);
 
   const handleOptionChange = (optionName: string, newValue: string) => {
-    const updatedOptionInputs = optionInputs.map((input: any) => (input.option === optionName ? { ...input, value: newValue } : input));
-
-    const updatedChallenges = settings.challenges.map((ch: any, idx: number) => (idx === index ? { ...ch, optionInputs: updatedOptionInputs } : ch));
-
+    const updatedOptions = { ...options, [optionName]: newValue };
+    const updatedChallenges = settings.challenges.map((ch: any, idx: number) => (idx === index ? { ...ch, options: updatedOptions } : ch));
     setSubmitStore({ settings: { ...settings, challenges: updatedChallenges } });
   };
 
-  const handleExcludeChange = (type: 'role' | 'post' | 'reply' | 'vote', value: string | boolean) => {
-    const updatedExclude = { ...exclude[0] }; // Clone the first exclude object
-
-    if (type === 'role') {
-      if (typeof value === 'string') {
-        const roleIndex = updatedExclude.role.indexOf(value);
-        if (roleIndex > -1) {
-          updatedExclude.role.splice(roleIndex, 1); // Remove role
-        } else {
-          updatedExclude.role.push(value); // Add role
-        }
-      }
-    } else {
-      // Handle post, reply, vote
-      updatedExclude[type] = value;
-    }
-
-    const updatedChallenges = [...settings.challenges];
-    updatedChallenges[index] = { ...updatedChallenges[index], exclude: [updatedExclude] };
+  const handleExcludeChange = (type: keyof Exclude, value: string | boolean | number | string[] | number[]) => {
+    const updatedExclude = { ...exclude[0], [type]: value };
+    const updatedChallenges = settings.challenges.map((ch: any, idx: number) => (idx === index ? { ...ch, exclude: [updatedExclude] } : ch));
     setSubmitStore({ settings: { ...settings, challenges: updatedChallenges } });
+  };
+
+  const handleExcludeAddress = (value: string) => {
+    // Split the input by commas, trim spaces, and filter out empty strings
+    const addresses = value
+      .split(',')
+      .map((addr) => addr.trim())
+      .filter((addr) => addr !== '');
+    handleExcludeChange('address', addresses);
   };
 
   return (
     <div className={showSettings ? styles.visible : styles.hidden}>
       <div className={styles.challengeDescription}>{getDefaultChallengeDescription(name)}</div>
-      {challenge?.optionInputs?.map((inputOption: OptionInput) => (
-        <div key={inputOption.option} className={styles.challengeOption}>
-          {inputOption.label}
-          <div className={styles.challengeOptionDescription}>{inputOption.description}</div>
+      {challengeSettings.map((setting) => (
+        <div key={setting?.option} className={styles.challengeOption}>
+          <div className={styles.challengeOptionLabel}>{setting?.label}</div>
+          <div className={styles.challengeOptionDescription}>{setting?.description}</div>
           <input
             type='text'
-            value={inputOption.value || inputOption.default || ''}
-            placeholder={inputOption.placeholder || ''}
-            onChange={(e) => handleOptionChange(inputOption.option, e.target.value)}
-            required={inputOption.required || false}
+            value={options && (options[setting?.option] || setting?.default || '')}
+            placeholder={setting?.placeholder || ''}
+            onChange={(e) => handleOptionChange(setting?.option, e.target.value)}
+            required={setting?.required || false}
           />
         </div>
       ))}
       <div className={styles.challengeDescription}>Exclude from challenge</div>
       <div className={styles.challengeOption}>
+        Users
+        <div className={styles.challengeOptionDescription}>Exclude specific users by their addresses, separated by a comma</div>
+        <input
+          type='text'
+          placeholder='address1.eth, address2.eth, address3.eth'
+          value={exclude?.address?.join(', ')}
+          onChange={(e) => handleExcludeAddress(e.target.value)}
+        />
+      </div>
+      <div className={styles.challengeOption}>
+        Users with Karma
+        <div className={styles.challengeOptionDescription}>Minimum post karma required:</div>
+        <input type='number' placeholder='3' value={exclude?.postScore || undefined} onChange={(e) => handleExcludeChange('postScore', e.target.value)} />
+        <div className={styles.challengeOptionDescription}>Minimum comment karma required:</div>
+        <input type='number' placeholder='3' value={exclude?.postReply || undefined} onChange={(e) => handleExcludeChange('postReply', e.target.value)} />
+      </div>
+      <div className={styles.challengeOption}>
+        Users by account age
+        <div className={styles.challengeOptionDescription}>Minimum account age in Unix Timestamp (seconds):</div>
+        <input
+          type='number'
+          placeholder='604800'
+          value={exclude?.firstCommentTimestamp || undefined}
+          onChange={(e) => handleExcludeChange('firstCommentTimestamp', e.target.value)}
+        />
+      </div>
+      <div className={styles.challengeOption}>
         Moderators
         <div className={styles.challengeOptionDescription}>Exclude a specific moderator role</div>
-        <div>
-          <label>
-            <input type='checkbox' checked={exclude[0]?.role.includes('moderator')} onChange={() => handleExcludeChange('role', 'moderator')} />
-            exclude moderators
-          </label>
-        </div>
-        <div>
-          <label>
-            <input type='checkbox' checked={exclude[0]?.role.includes('admin')} onChange={() => handleExcludeChange('role', 'admin')} />
-            exclude admins
-          </label>
-        </div>
-        <div>
-          <label>
-            <input type='checkbox' checked={exclude[0]?.role.includes('owner')} onChange={() => handleExcludeChange('role', 'owner')} />
-            exclude owners
-          </label>
-        </div>
+        {rolesToExclude.map((role) => (
+          <div key={role}>
+            <label>
+              <input type='checkbox' checked={exclude[0]?.role.includes(role)} onChange={() => handleExcludeChange('role', role)} />
+              exclude {role}
+            </label>
+          </div>
+        ))}
       </div>
       <div className={styles.challengeOption}>
         Actions
         <div className={styles.challengeOptionDescription}>Exclude a specific user action</div>
-        <div>
-          <label>
-            <input type='checkbox' checked={exclude[0]?.post} onChange={(e) => handleExcludeChange('post', e.target.checked)} />
-            exclude posts
-          </label>
-        </div>
-        <div>
-          <label>
-            <input type='checkbox' checked={exclude[1]?.post} onChange={(e) => handleExcludeChange('reply', e.target.checked)} />
-            exclude replies
-          </label>
-        </div>
-        <div>
-          <label>
-            <input type='checkbox' checked={exclude[2]?.post} onChange={(e) => handleExcludeChange('vote', e.target.checked)} />
-            exclude votes
-          </label>
-        </div>
+        {actionsToExclude.map((action) => (
+          <div key={action}>
+            <label>
+              <input type='checkbox' checked={exclude[0]?.[action]} onChange={(e) => handleExcludeChange(action, e.target.checked)} />
+              exclude {action}
+            </label>
+          </div>
+        ))}
+      </div>
+      <div className={styles.challengeOption}>
+        Rate Limit
+        <div className={styles.challengeOptionDescription}>Number of free user actions per hour:</div>
+        <input type='number' placeholder='2' value={exclude?.rateLimit || undefined} onChange={(e) => handleExcludeChange('rateLimit', e.target.value)} />
+        <label>
+          <input type='checkbox' checked={exclude?.rateLimitChallengeSuccess} onChange={(e) => handleExcludeChange('rateLimitChallengeSuccess', e.target.checked)} />
+          only rate limit after a challenge is successfully completed
+        </label>
       </div>
     </div>
   );
@@ -419,9 +427,11 @@ const Challenges = () => {
   };
 
   const handleAddChallenge = () => {
+    const defaultChallenge = 'captcha-canvas-v3';
+    const options = getDefaultChallengeOptions(defaultChallenge);
     const newChallenge = {
-      name: 'captcha-canvas-v3',
-      optionInputs: getDefaultOptionInputs('captcha-canvas-v3'),
+      name: defaultChallenge,
+      options,
       exclude: getDefaultExclude(),
     };
     const updatedChallenges = [...(settings?.challenges || []), newChallenge];
@@ -437,7 +447,7 @@ const Challenges = () => {
 
   const handleChallengeTypeChange = (index: number, newType: string) => {
     const updatedChallenges = [...challenges];
-    updatedChallenges[index] = { ...updatedChallenges[index], name: newType, optionInputs: getDefaultOptionInputs(newType) };
+    updatedChallenges[index] = { ...updatedChallenges[index], name: newType, options: getDefaultChallengeOptions(newType) };
     setSubmitStore({ settings: { ...settings, challenges: updatedChallenges } });
   };
 
@@ -473,13 +483,13 @@ const Challenges = () => {
   );
 };
 
-const FullSettings = () => {
+const JSONSettings = () => {
   const { title, description, address, suggested, rules, roles, settings, subplebbitAddress, setSubmitStore } = useSubplebbitSettingsStore();
   const [text, setText] = useState('');
 
   useEffect(() => {
-    const fullSettings = JSON.stringify({ title, description, address, suggested, rules, roles, settings, subplebbitAddress }, null, 2);
-    setText(fullSettings);
+    const JSONSettings = JSON.stringify({ title, description, address, suggested, rules, roles, settings, subplebbitAddress }, null, 2);
+    setText(JSONSettings);
   }, [title, description, address, suggested, rules, roles, settings, subplebbitAddress]);
 
   const handleChange = (newText: string) => {
@@ -494,9 +504,9 @@ const FullSettings = () => {
 
   return (
     <div className={styles.box}>
-      <div className={styles.boxTitle}>full settings data</div>
+      <div className={styles.boxTitle}>JSON Settings</div>
       <div className={styles.boxSubtitle}>quickly copy or paste the community settings</div>
-      <div className={`${styles.boxInput} ${styles.fullSettings}`}>
+      <div className={`${styles.boxInput} ${styles.JSONSettings}`}>
         <textarea onChange={(e) => handleChange(e.target.value)} autoCorrect='off' autoComplete='off' spellCheck='false' value={text} />
       </div>
     </div>
@@ -570,7 +580,7 @@ const SubplebbitSettings = () => {
       <Moderators />
       {/* subplebbit.settings is private, only shows to the sub owner */}
       {settings?.challenges && <Challenges />}
-      <FullSettings />
+      <JSONSettings />
       <div className={styles.saveOptions}>
         <button disabled={!isElectron || !isAdmin || showLoading} onClick={saveSubplebbit}>
           {t('save_options')}

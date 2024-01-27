@@ -5,7 +5,7 @@ import { Subplebbit as SubplebbitType, useAccount, useAccountSubplebbits, useSub
 import styles from './subplebbits.module.css';
 import Sidebar from '../../components/sidebar';
 import SubscribeButton from '../../components/subscribe-button';
-import { getFormattedTimeDuration, getFormattedTimeAgo } from '../../lib/utils/time-utils';
+import { getFormattedTimeDuration } from '../../lib/utils/time-utils';
 import {
   isSubplebbitsView,
   isSubplebbitsSubscriberView,
@@ -13,12 +13,11 @@ import {
   isSubplebbitsAdminView,
   isSubplebbitsOwnerView,
   isSubplebbitsVoteView,
-  isSubplebbitsVotePassedView,
-  isSubplebbitsVoteRejectedView,
+  isSubplebbitsVotePassingView,
+  isSubplebbitsVoteRejectingView,
 } from '../../lib/utils/view-utils';
 import { useDefaultSubplebbitAddresses } from '../../lib/utils/addresses-utils';
-import { RoleLabel } from '../../components/post/label/label';
-const isMobile = window.innerWidth <= 768;
+import { OfflineLabel, RoleLabel } from '../../components/post/label/label';
 
 interface SubplebbitProps {
   index?: number;
@@ -58,8 +57,8 @@ const VoteTabs = () => {
   const { t } = useTranslation();
   const location = useLocation();
   const isInSubplebbitsVoteView = isSubplebbitsVoteView(location.pathname);
-  const isInSubplebbitsVotePassedView = isSubplebbitsVotePassedView(location.pathname);
-  const isInSubplebbitsVoteRejectedView = isSubplebbitsVoteRejectedView(location.pathname);
+  const isInSubplebbitsVotePassingView = isSubplebbitsVotePassingView(location.pathname);
+  const isInSubplebbitsVoteRejectingView = isSubplebbitsVoteRejectingView(location.pathname);
 
   return (
     <div className={styles.subplebbitsTabs}>
@@ -67,12 +66,12 @@ const VoteTabs = () => {
         {t('all')}
       </Link>
       <span className={styles.separator}>|</span>
-      <Link to='/communities/vote/passed' className={isInSubplebbitsVotePassedView ? styles.selected : styles.choice} onClick={(e) => e.preventDefault()}>
-        {t('passed')}
+      <Link to='/communities/vote/passing' className={isInSubplebbitsVotePassingView ? styles.selected : styles.choice} onClick={(e) => e.preventDefault()}>
+        {t('passing')}
       </Link>
       <span className={styles.separator}>|</span>
-      <Link to='/communities/vote/rejected' className={isInSubplebbitsVoteRejectedView ? styles.selected : styles.choice} onClick={(e) => e.preventDefault()}>
-        {t('rejected')}
+      <Link to='/communities/vote/rejecting' className={isInSubplebbitsVoteRejectingView ? styles.selected : styles.choice} onClick={(e) => e.preventDefault()}>
+        {t('rejecting')}
       </Link>
     </div>
   );
@@ -106,7 +105,7 @@ const Subplebbit = ({ subplebbit }: SubplebbitProps) => {
   const { t } = useTranslation();
   const { address, createdAt, description, roles, shortAddress, settings, suggested, title, updatedAt } = subplebbit || {};
 
-  const [showDescription, setShowDescription] = useState(isMobile ? false : true);
+  const [showDescription, setShowDescription] = useState(false);
   const buttonType = showDescription ? 'closeButton' : 'textButton';
   const toggleExpanded = () => setShowDescription(!showDescription);
 
@@ -122,11 +121,8 @@ const Subplebbit = ({ subplebbit }: SubplebbitProps) => {
   const downvoteCount = 0;
 
   const postScore = upvoteCount === 0 && downvoteCount === 0 ? '•' : upvoteCount - downvoteCount || '•';
+  const { allActiveUserCount } = useSubplebbitStats({ subplebbitAddress: address });
   const isOnline = updatedAt && updatedAt > Date.now() / 1000 - 60 * 30;
-  const { allActiveUserCount, hourActiveUserCount } = useSubplebbitStats({ subplebbitAddress: address });
-  const onlineNotice = t('users_online', { count: hourActiveUserCount });
-  const offlineNotice = updatedAt && t('posts_last_synced', { dateAgo: getFormattedTimeAgo(updatedAt) });
-  const onlineStatus = isOnline ? onlineNotice : offlineNotice;
 
   useEffect(() => {
     document.title = `${t('communities')} - seedit`;
@@ -169,15 +165,13 @@ const Subplebbit = ({ subplebbit }: SubplebbitProps) => {
           <span>
             {t('members_count', { count: allActiveUserCount })}, {t('community_for', { date: getFormattedTimeDuration(createdAt) })}
             <div className={styles.subplebbitPreferences}>
+              {updatedAt && !isOnline && <OfflineLabel />}
               {(userRole || isUserOwner) && (
-                <span className={styles.roleLabel}>
+                <span className={styles.label}>
                   <RoleLabel role={userRole || 'owner'} />
                 </span>
               )}
               <Link to={`/p/${address}/settings`}>{t('settings')}</Link>
-              <span className={styles.onlineLine}>
-                <span>{onlineStatus}</span>
-              </span>
             </div>
           </span>
         </div>

@@ -148,10 +148,10 @@ export const isSubplebbitsVoteView = (pathname: string): boolean => {
   return pathname === '/communities/vote';
 };
 
-export const isSubplebbitsVotePassedView = (pathname: string): boolean => {
-  return pathname === '/communities/vote/passed';
+export const isSubplebbitsVotePassingView = (pathname: string): boolean => {
+  return pathname === '/communities/vote/passing';
 };
 
-export const isSubplebbitsVoteRejectedView = (pathname: string): boolean => {
-  return pathname === '/communities/vote/rejected';
+export const isSubplebbitsVoteRejectingView = (pathname: string): boolean => {
+  return pathname === '/communities/vote/rejecting';
 };

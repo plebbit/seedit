@@ -6,7 +6,7 @@
   "private": true,
   "dependencies": {
     "@floating-ui/react": "0.26.1",
-    "@plebbit/plebbit-react-hooks": "https://github.com/plebbit/plebbit-react-hooks.git#80f19b488013cf386f4926fefb5790c79a3b9b96",
+    "@plebbit/plebbit-react-hooks": "https://github.com/plebbit/plebbit-react-hooks.git#6b614e0bf6c304de7b184564198a0ce7b98bca1d",
     "@testing-library/jest-dom": "5.14.1",
     "@testing-library/react": "13.0.0",
     "@testing-library/user-event": "13.2.1",
