@@ -413,19 +413,14 @@ const ChallengeSettings = ({ challenge, index, setSubmitStore, settings, showSet
       <div className={styles.challengeOption}>
         Users with Karma
         <div className={styles.challengeOptionDescription}>Minimum post karma required:</div>
-        <input type='number' placeholder='3' value={exclude?.postScore || undefined} onChange={(e) => handleExcludeChange('postScore', e.target.value)} />
+        <input type='number' value={exclude?.postScore || undefined} onChange={(e) => handleExcludeChange('postScore', e.target.value)} />
         <div className={styles.challengeOptionDescription}>Minimum comment karma required:</div>
-        <input type='number' placeholder='3' value={exclude?.postReply || undefined} onChange={(e) => handleExcludeChange('postReply', e.target.value)} />
+        <input type='number' value={exclude?.postReply || undefined} onChange={(e) => handleExcludeChange('postReply', e.target.value)} />
       </div>
       <div className={styles.challengeOption}>
         Users by account age
         <div className={styles.challengeOptionDescription}>Minimum account age in Unix Timestamp (seconds):</div>
-        <input
-          type='number'
-          placeholder='604800'
-          value={exclude?.firstCommentTimestamp || undefined}
-          onChange={(e) => handleExcludeChange('firstCommentTimestamp', e.target.value)}
-        />
+        <input type='number' value={exclude?.firstCommentTimestamp || undefined} onChange={(e) => handleExcludeChange('firstCommentTimestamp', e.target.value)} />
       </div>
       <div className={styles.challengeOption}>
         Moderators
@@ -462,7 +457,7 @@ const ChallengeSettings = ({ challenge, index, setSubmitStore, settings, showSet
       <div className={styles.challengeOption}>
         Rate Limit
         <div className={styles.challengeOptionDescription}>Number of free user actions per hour:</div>
-        <input type='number' placeholder='2' value={exclude?.rateLimit || undefined} onChange={(e) => handleExcludeChange('rateLimit', e.target.value)} />
+        <input type='number' value={exclude?.rateLimit || undefined} onChange={(e) => handleExcludeChange('rateLimit', e.target.value)} />
         <label>
           <input type='checkbox' checked={exclude?.rateLimitChallengeSuccess} onChange={(e) => handleExcludeChange('rateLimitChallengeSuccess', e.target.checked)} />
           apply rate limit only to successfully completed challenges
