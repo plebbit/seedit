@@ -419,7 +419,7 @@ const ChallengeSettings = ({ challenge, index, setSubmitStore, settings, showSet
       </div>
       <div className={styles.challengeOption}>
         Users by account age
-        <div className={styles.challengeOptionDescription}>Minimum account age in Unix Timestamp (seconds):</div>
+        <div className={styles.challengeOptionDescription}>Minimum account age in seconds (eg. 86400 = 24h):</div>
         <input type='number' value={exclude?.firstCommentTimestamp || undefined} onChange={(e) => handleExcludeChange('firstCommentTimestamp', e.target.value)} />
       </div>
       <div className={styles.challengeOption}>
