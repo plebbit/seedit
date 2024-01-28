@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { PublishSubplebbitEditOptions, useSubplebbit, usePublishSubplebbitEdit, Role } from '@plebbit/plebbit-react-hooks';
 import { Roles } from '../../../lib/utils/user-utils';
@@ -189,7 +189,7 @@ const Rules = ({ isReadOnly }: { isReadOnly: boolean }) => {
     if (!isReadOnly && rules && rules.length > 0) {
       (lastRuleRef.current as any).focus();
     }
-  }, [rules?.length, isReadOnly]);
+  }, [rules?.length, isReadOnly, rules]);
 
   const deleteRule = (index: number) => {
     if (rules) {
@@ -237,11 +237,13 @@ const Moderators = ({ isReadOnly }: { isReadOnly: boolean }) => {
     }
   };
 
+  const numberOfModerators = useMemo(() => Object.keys(roles || {}).length, [roles]);
+
   useEffect(() => {
-    if (!isReadOnly && Object.keys(roles || {}).length > 0) {
+    if (!isReadOnly && numberOfModerators > 0) {
       (lastModeratorRef.current as any).focus();
     }
-  }, [Object.keys(roles || {}).length, isReadOnly]);
+  }, [numberOfModerators, isReadOnly, roles]);
 
   const handleRoleChange = (address: string, newRole: 'owner' | 'admin' | 'moderator') => {
     if (roles) {
