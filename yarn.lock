@@ -2626,9 +2626,9 @@
     uuid "8.3.2"
     zustand "4.0.0"
 
-"@plebbit/plebbit-react-hooks@https://github.com/plebbit/plebbit-react-hooks.git#80f19b488013cf386f4926fefb5790c79a3b9b96":
+"@plebbit/plebbit-react-hooks@https://github.com/plebbit/plebbit-react-hooks.git#99b74b363060027985fbb7abca3589e827ccb199":
   version "0.0.1"
-  resolved "https://github.com/plebbit/plebbit-react-hooks.git#80f19b488013cf386f4926fefb5790c79a3b9b96"
+  resolved "https://github.com/plebbit/plebbit-react-hooks.git#99b74b363060027985fbb7abca3589e827ccb199"
   dependencies:
     "@plebbit/plebbit-js" "https://github.com/plebbit/plebbit-js.git#4a7ced7497fcbf863e9457b7e83a7bb2889bd518"
     "@plebbit/plebbit-logger" "https://github.com/plebbit/plebbit-logger.git"
