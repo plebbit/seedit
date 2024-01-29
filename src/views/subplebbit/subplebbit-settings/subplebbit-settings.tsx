@@ -584,15 +584,35 @@ const ChallengeSettings = ({ challenge, index, isReadOnly, setSubmitStore, setti
                       <input type='number' value={exclude?.rateLimit || undefined} onChange={(e) => handleExcludeChange(excludeIndex, 'rateLimit', e.target.value)} />
                     )}
                     {isReadOnly && !exclude?.rateLimitChallengeSuccess ? null : (
-                      <label>
-                        <input
-                          type='checkbox'
-                          checked={exclude?.rateLimitChallengeSuccess}
-                          onChange={(e) => handleExcludeChange(excludeIndex, 'rateLimitChallengeSuccess', e.target.checked)}
-                          disabled={isReadOnly}
-                        />
-                        apply rate limit only to successfully completed challenges
-                      </label>
+                      <>
+                        <label>
+                          <input
+                            type='checkbox'
+                            checked={exclude?.rateLimitChallengeSuccess}
+                            onChange={(e) => handleExcludeChange(excludeIndex, 'rateLimitChallengeSuccess', e.target.checked)}
+                            disabled={isReadOnly}
+                          />
+                          apply rate limit only on challenge success
+                        </label>
+                        <div>
+                          <label>
+                            <input
+                              className={styles.rateLimitChallengeFail}
+                              type='checkbox'
+                              checked={exclude?.rateLimitChallengeSuccess === undefined}
+                              onChange={(e) => {
+                                if (e.target.checked) {
+                                  handleExcludeChange(excludeIndex, 'rateLimitChallengeSuccess', undefined);
+                                } else {
+                                  handleExcludeChange(excludeIndex, 'rateLimitChallengeSuccess', false);
+                                }
+                              }}
+                              disabled={isReadOnly}
+                            />
+                            apply rate limit only on challenge fail
+                          </label>
+                        </div>
+                      </>
                     )}
                   </div>
                 )}
