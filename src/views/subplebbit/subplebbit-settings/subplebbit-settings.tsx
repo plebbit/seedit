@@ -168,14 +168,17 @@ const Rules = ({ isReadOnly }: { isReadOnly: boolean }) => {
     setSubmitStore({ rules: updatedRules });
   };
 
+  const addedRuleRef = useRef(false);
   const addRule = () => {
     const newRules = rules ? [...rules, ''] : [''];
     setSubmitStore({ rules: newRules });
+    addedRuleRef.current = true;
   };
 
   useEffect(() => {
-    if (!isReadOnly && rules && rules.length > 0) {
-      (lastRuleRef.current as any).focus();
+    if (!isReadOnly && rules && rules.length > 0 && addedRuleRef.current) {
+      (lastRuleRef.current as any).focus({ preventScroll: true });
+      addedRuleRef.current = false;
     }
   }, [rules?.length, isReadOnly, rules]);
 
@@ -218,20 +221,21 @@ const Moderators = ({ isReadOnly }: { isReadOnly: boolean }) => {
   const { roles, setSubmitStore } = useSubplebbitSettingsStore();
   const lastModeratorRef = useRef(null);
 
+  const addedModeratorRef = useRef(false);
   const handleAddModerator = () => {
     if (roles) {
       const newRoles: Roles = { ...roles, '': { role: 'moderator' } };
       setSubmitStore({ roles: newRoles });
+      addedModeratorRef.current = true;
     }
   };
 
-  const numberOfModerators = useMemo(() => Object.keys(roles || {}).length, [roles]);
-
   useEffect(() => {
-    if (!isReadOnly && numberOfModerators > 0) {
-      (lastModeratorRef.current as any).focus();
+    if (!isReadOnly && roles && Object.keys(roles).length > 0 && addedModeratorRef.current) {
+      (lastModeratorRef.current as any).focus({ preventScroll: true });
+      addedModeratorRef.current = false;
     }
-  }, [numberOfModerators, isReadOnly, roles]);
+  }, [roles, isReadOnly]);
 
   const handleRoleChange = (address: string, newRole: 'owner' | 'admin' | 'moderator') => {
     if (roles) {
