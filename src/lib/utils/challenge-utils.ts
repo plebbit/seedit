@@ -173,21 +173,29 @@ export const getDefaultChallengeSettings = (challengeType: string) => {
           option: 'characters',
           label: 'Characters',
           description: 'Amount of characters of the captcha.',
+          default: '6',
+          placeholder: 'example: 6',
         },
         {
           option: 'height',
           label: 'Height',
           description: 'Height of the captcha.',
+          default: '100',
+          placeholder: 'example: 100',
         },
         {
           option: 'width',
           label: 'Width',
           description: 'Width of the captcha.',
+          default: '300',
+          placeholder: 'example: 300',
         },
         {
           option: 'color',
           label: 'Color',
           description: 'Color of the captcha.',
+          default: '#32cf7e',
+          placeholder: 'example: #ff0000,#00ff00,#0000ff',
         },
       ];
     case 'fail':

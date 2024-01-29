@@ -61,6 +61,23 @@
   white-space: pre-wrap;
 }
 
+.readOnlyRoleExclude {
+  font-size: 12px;
+}
+
+.readOnlyActionExclude {
+  font-size: 12px;
+}
+
+.readOnlyChallengeType {
+  padding: 5px 0;
+  font-size: 12px;
+}
+
+.excludeGroup {
+  margin-top: 15px;
+}
+
 .saveOptions button {
   text-transform: lowercase;
   margin: 3px 5px;
@@ -172,6 +189,20 @@
 
 .hidden {
   display: none;
+}
+
+.excludeCombination {
+  margin-top: 10px;
+}
+
+.addExclude {
+  margin-top: 10px;
+}
+
+.hideCombo {
+  display: block;
+  margin-top: 5px;
+  text-transform: lowercase;
 }
 
 .moderator {

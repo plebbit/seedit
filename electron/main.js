@@ -261,12 +261,12 @@ const createMainWindow = () => {
   }
 
   const appMenuBack = new MenuItem({
-    label: 'Previous',
+    label: '←',
     enabled: mainWindow?.webContents?.canGoBack(),
     click: () => mainWindow?.webContents?.goBack(),
   });
   const appMenuForward = new MenuItem({
-    label: 'Next',
+    label: '→',
     enabled: mainWindow?.webContents?.canGoForward(),
     click: () => mainWindow?.webContents?.goForward(),
   });
