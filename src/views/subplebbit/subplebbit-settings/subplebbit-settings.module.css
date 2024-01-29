@@ -69,6 +69,15 @@
   font-size: 12px;
 }
 
+.readOnlyChallengeType {
+  padding: 5px 0;
+  font-size: 12px;
+}
+
+.excludeGroup {
+  margin-top: 15px;
+}
+
 .saveOptions button {
   text-transform: lowercase;
   margin: 3px 5px;

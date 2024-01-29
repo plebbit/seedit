@@ -18,6 +18,7 @@ import LoadingEllipsis from '../../../components/loading-ellipsis';
 import Sidebar from '../../../components/sidebar';
 
 type SubplebbitSettingsState = {
+  challenges: any[] | undefined;
   title: string | undefined;
   description: string | undefined;
   address: string | undefined;
@@ -28,10 +29,10 @@ type SubplebbitSettingsState = {
   subplebbitAddress: string | undefined;
   publishSubplebbitEditOptions: PublishSubplebbitEditOptions;
   setSubmitStore: (data: Partial<SubplebbitSettingsState>) => void;
-  resetSubplebbitSettingsStore: () => void;
 };
 
 const useSubplebbitSettingsStore = create<SubplebbitSettingsState>((set) => ({
+  challenges: undefined,
   title: undefined,
   description: undefined,
   address: undefined,
@@ -41,9 +42,10 @@ const useSubplebbitSettingsStore = create<SubplebbitSettingsState>((set) => ({
   settings: undefined,
   subplebbitAddress: undefined,
   publishSubplebbitEditOptions: {},
-  setSubmitStore: ({ title, description, address, suggested, rules, roles, settings, subplebbitAddress }) =>
+  setSubmitStore: ({ challenges, title, description, address, suggested, rules, roles, settings, subplebbitAddress }) =>
     set((state) => {
       const nextState = { ...state };
+      if (challenges !== undefined) nextState.challenges = challenges;
       if (title !== undefined) nextState.title = title;
       if (description !== undefined) nextState.description = description;
       if (address !== undefined) nextState.address = address;
@@ -62,19 +64,6 @@ const useSubplebbitSettingsStore = create<SubplebbitSettingsState>((set) => ({
       };
 
       return nextState;
-    }),
-
-  resetSubplebbitSettingsStore: () =>
-    set({
-      title: undefined,
-      description: undefined,
-      address: undefined,
-      suggested: undefined,
-      rules: undefined,
-      roles: undefined,
-      settings: undefined,
-      subplebbitAddress: undefined,
-      publishSubplebbitEditOptions: undefined,
     }),
 }));
 
@@ -417,18 +406,29 @@ const ChallengeSettings = ({ challenge, index, isReadOnly, setSubmitStore, setti
 
   return (
     <div className={showSettings ? styles.visible : styles.hidden}>
-      <div className={styles.challengeDescription}>{getDefaultChallengeDescription(name)}</div>
+      {isReadOnly ? (
+        <>
+          <div className={styles.readOnlyChallengeType}>type: {challenge?.type}</div>
+          <div className={styles.readOnlyChallengeDescription}>{challenge?.description}</div>
+        </>
+      ) : (
+        <div className={styles.challengeDescription}>{getDefaultChallengeDescription(name)}</div>
+      )}
       {challengeSettings.map((setting) => (
         <div key={setting?.option} className={styles.challengeOption}>
           <div className={styles.challengeOptionLabel}>{setting?.label}</div>
           <div className={styles.challengeOptionDescription}>{setting?.description}</div>
-          <input
-            type='text'
-            value={options && (options[setting?.option] || '')}
-            defaultValue={setting?.default || ''}
-            placeholder={setting?.placeholder || ''}
-            onChange={(e) => handleOptionChange(setting?.option, e.target.value)}
-          />
+          {isReadOnly ? (
+            <span>{options && (options[setting?.option] || '')}</span>
+          ) : (
+            <input
+              type='text'
+              value={options && (options[setting?.option] || '')}
+              defaultValue={setting?.default || ''}
+              placeholder={setting?.placeholder || ''}
+              onChange={(e) => handleOptionChange(setting?.option, e.target.value)}
+            />
+          )}
         </div>
       ))}
       <div className={styles.challengeDescription}>Exclude from challenge #{index + 1}</div>
@@ -690,13 +690,13 @@ const Challenges = ({ isReadOnly, readOnlyChallenges }: { isReadOnly: boolean; r
 };
 
 const JSONSettings = ({ isReadOnly }: { isReadOnly: boolean }) => {
-  const { title, description, address, suggested, rules, roles, settings, subplebbitAddress, setSubmitStore } = useSubplebbitSettingsStore();
+  const { challenges, title, description, address, suggested, rules, roles, settings, subplebbitAddress, setSubmitStore } = useSubplebbitSettingsStore();
   const [text, setText] = useState('');
 
   useEffect(() => {
-    const JSONSettings = JSON.stringify({ title, description, address, suggested, rules, roles, settings, subplebbitAddress }, null, 2);
+    const JSONSettings = JSON.stringify({ title, description, address, suggested, rules, roles, settings, challenges, subplebbitAddress }, null, 2);
     setText(JSONSettings);
-  }, [title, description, address, suggested, rules, roles, settings, subplebbitAddress]);
+  }, [challenges, title, description, address, suggested, rules, roles, settings, subplebbitAddress]);
 
   const handleChange = (newText: string) => {
     setText(newText);
@@ -723,7 +723,7 @@ const SubplebbitSettings = () => {
   const { t } = useTranslation();
   const { subplebbitAddress } = useParams<{ subplebbitAddress: string }>();
   const subplebbit = useSubplebbit({ subplebbitAddress });
-  const { address, createdAt, description, rules, settings, suggested, roles, title, updatedAt } = subplebbit || {};
+  const { address, challenges, createdAt, description, rules, settings, suggested, roles, title, updatedAt } = subplebbit || {};
   const isReadOnly = !settings;
 
   const { publishSubplebbitEditOptions, setSubmitStore } = useSubplebbitSettingsStore();
@@ -757,6 +757,7 @@ const SubplebbitSettings = () => {
       rules: rules ?? [],
       roles: roles ?? {},
       settings: settings ?? {},
+      challenges: challenges ?? [],
       subplebbitAddress,
     });
 
