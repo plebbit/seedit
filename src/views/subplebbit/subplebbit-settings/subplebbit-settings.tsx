@@ -405,7 +405,7 @@ const ChallengeSettings = ({ challenge, index, isReadOnly, setSubmitStore, setti
   };
 
   return (
-    <div className={showSettings ? styles.visible : styles.hidden}>
+    <div className={showSettings || isReadOnly ? styles.visible : styles.hidden}>
       {isReadOnly ? (
         <>
           <div className={styles.readOnlyChallengeType}>type: {challenge?.type}</div>
@@ -609,7 +609,7 @@ const Challenges = ({ isReadOnly, readOnlyChallenges }: { isReadOnly: boolean; r
   const { t } = useTranslation();
   const { settings, setSubmitStore } = useSubplebbitSettingsStore();
   const challenges = settings?.challenges || readOnlyChallenges || [];
-  const [showSettings, setShowSettings] = useState<boolean[]>(challenges.map(() => (isReadOnly ? true : false)));
+  const [showSettings, setShowSettings] = useState<boolean[]>(challenges.map(() => false));
 
   const toggleSettings = (index: number) => {
     const newShowSettings = [...showSettings];
@@ -749,21 +749,25 @@ const SubplebbitSettings = () => {
 
   // set the store with the initial data
   useEffect(() => {
-    setSubmitStore({
-      title: title ?? '',
-      description: description ?? '',
-      address,
-      suggested: suggested ?? {},
-      rules: rules ?? [],
-      roles: roles ?? {},
-      settings: settings ?? {},
-      challenges: challenges ?? [],
-      subplebbitAddress,
-    });
-
-    window.scrollTo(0, 0);
+    if (address) {
+      setSubmitStore({
+        title: title ?? '',
+        description: description ?? '',
+        address,
+        suggested: suggested ?? {},
+        rules: rules ?? [],
+        roles: roles ?? {},
+        settings: settings ?? {},
+        challenges: challenges ?? [],
+        subplebbitAddress,
+      });
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [title, description, address, suggested, rules, roles, settings, challenges, subplebbitAddress]);
+  }, [address]);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   useEffect(() => {
     document.title = `${t('preferences')} - seedit`;
