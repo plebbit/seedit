@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { PublishSubplebbitEditOptions, useSubplebbit, usePublishSubplebbitEdit, Role } from '@plebbit/plebbit-react-hooks';
 import { Roles } from '../../../lib/utils/user-utils';
@@ -72,7 +72,7 @@ const Title = ({ isReadOnly }: { isReadOnly: boolean }) => {
   const { title, setSubmitStore } = useSubplebbitSettingsStore();
 
   return (
-    <div className={styles.box}>
+    <div className={`${styles.box} ${isReadOnly && !title ? styles.hidden : styles.visible}`}>
       <div className={styles.boxTitle}>{t('title')}</div>
       <div className={styles.boxSubtitle}>e.g., books: made from trees or pixels. recommendations, news, or thoughts</div>
       <div className={styles.boxInput}>
@@ -87,7 +87,7 @@ const Description = ({ isReadOnly }: { isReadOnly: boolean }) => {
   const { description, setSubmitStore } = useSubplebbitSettingsStore();
 
   return (
-    <div className={styles.box}>
+    <div className={`${styles.box} ${isReadOnly && !description ? styles.hidden : styles.visible}`}>
       <div className={styles.boxTitle}>{t('description')}</div>
       <div className={styles.boxSubtitle}>shown in the sidebar of your community</div>
       <div className={styles.boxInput}>
@@ -129,7 +129,7 @@ const Logo = ({ isReadOnly }: { isReadOnly: boolean }) => {
   }, [suggested?.avatarUrl]);
 
   return (
-    <div className={styles.box}>
+    <div className={`${styles.box} ${isReadOnly && !logoUrl ? styles.hidden : styles.visible}`}>
       <div className={styles.boxTitle}>{t('logo')}</div>
       <div className={styles.boxSubtitle}>set a community logo using its direct image link (ending in .jpg, .png)</div>
       <div className={styles.boxInput}>
@@ -168,14 +168,17 @@ const Rules = ({ isReadOnly }: { isReadOnly: boolean }) => {
     setSubmitStore({ rules: updatedRules });
   };
 
+  const addedRuleRef = useRef(false);
   const addRule = () => {
     const newRules = rules ? [...rules, ''] : [''];
     setSubmitStore({ rules: newRules });
+    addedRuleRef.current = true;
   };
 
   useEffect(() => {
-    if (!isReadOnly && rules && rules.length > 0) {
-      (lastRuleRef.current as any).focus();
+    if (!isReadOnly && rules && rules.length > 0 && addedRuleRef.current) {
+      (lastRuleRef.current as any).focus({ preventScroll: true });
+      addedRuleRef.current = false;
     }
   }, [rules?.length, isReadOnly, rules]);
 
@@ -187,7 +190,7 @@ const Rules = ({ isReadOnly }: { isReadOnly: boolean }) => {
   };
 
   return (
-    <div className={styles.box}>
+    <div className={`${styles.box} ${isReadOnly && (!rules || rules.length < 1) ? styles.hidden : styles.visible}`}>
       <div className={styles.boxTitle}>{t('rules')}</div>
       <div className={styles.boxSubtitle}>shown in the sidebar of your community</div>
       <div className={styles.boxInput}>
@@ -218,20 +221,21 @@ const Moderators = ({ isReadOnly }: { isReadOnly: boolean }) => {
   const { roles, setSubmitStore } = useSubplebbitSettingsStore();
   const lastModeratorRef = useRef(null);
 
+  const addedModeratorRef = useRef(false);
   const handleAddModerator = () => {
     if (roles) {
       const newRoles: Roles = { ...roles, '': { role: 'moderator' } };
       setSubmitStore({ roles: newRoles });
+      addedModeratorRef.current = true;
     }
   };
 
-  const numberOfModerators = useMemo(() => Object.keys(roles || {}).length, [roles]);
-
   useEffect(() => {
-    if (!isReadOnly && numberOfModerators > 0) {
-      (lastModeratorRef.current as any).focus();
+    if (!isReadOnly && roles && Object.keys(roles).length > 0 && addedModeratorRef.current) {
+      (lastModeratorRef.current as any).focus({ preventScroll: true });
+      addedModeratorRef.current = false;
     }
-  }, [numberOfModerators, isReadOnly, roles]);
+  }, [roles, isReadOnly]);
 
   const handleRoleChange = (address: string, newRole: 'owner' | 'admin' | 'moderator') => {
     if (roles) {
@@ -256,7 +260,7 @@ const Moderators = ({ isReadOnly }: { isReadOnly: boolean }) => {
   };
 
   return (
-    <div className={styles.box}>
+    <div className={`${styles.box} ${isReadOnly && !roles ? styles.hidden : styles.visible}`}>
       <div className={styles.boxTitle}>{t('moderators')}</div>
       <div className={styles.boxSubtitle}>let other users moderate and post without challenges</div>
       <div className={styles.boxInput}>
@@ -405,7 +409,7 @@ const ChallengeSettings = ({ challenge, index, isReadOnly, setSubmitStore, setti
   };
 
   return (
-    <div className={showSettings ? styles.visible : styles.hidden}>
+    <div className={showSettings || isReadOnly ? styles.visible : styles.hidden}>
       {isReadOnly ? (
         <>
           <div className={styles.readOnlyChallengeType}>type: {challenge?.type}</div>
@@ -431,7 +435,7 @@ const ChallengeSettings = ({ challenge, index, isReadOnly, setSubmitStore, setti
           )}
         </div>
       ))}
-      <div className={styles.challengeDescription}>Exclude from challenge #{index + 1}</div>
+      <div className={styles.challengeDescription}>Exclude groups for challenge #{index + 1}</div>
       <div className={styles.excludeGroupSection}>
         {!isReadOnly && (
           <button className={`${styles.addButton} ${styles.addExclude}`} onClick={addExcludeGroup} disabled={isReadOnly}>
@@ -440,7 +444,7 @@ const ChallengeSettings = ({ challenge, index, isReadOnly, setSubmitStore, setti
         )}
         {challenge.exclude.map((exclude: any, excludeIndex: number) => (
           <div key={excludeIndex} className={styles.excludeGroup}>
-            Exclude Group #{excludeIndex + 1}
+            Exclude group #{excludeIndex + 1}
             {!isReadOnly && <span className={styles.deleteButton} onClick={() => deleteExcludeGroup(excludeIndex)} title='delete group' />}
             {!isReadOnly && (
               <button className={styles.hideCombo} onClick={() => toggleExcludeSettings(excludeIndex)} disabled={isReadOnly}>
@@ -467,7 +471,7 @@ const ChallengeSettings = ({ challenge, index, isReadOnly, setSubmitStore, setti
                 )}
                 {isReadOnly && !exclude?.postScore && !exclude?.postReply ? null : (
                   <div className={styles.challengeOption}>
-                    Users with Karma
+                    Users with karma
                     {isReadOnly && !exclude?.postScore ? null : (
                       <>
                         <div className={styles.challengeOptionDescription}>Minimum post karma required:</div>
@@ -576,7 +580,7 @@ const ChallengeSettings = ({ challenge, index, isReadOnly, setSubmitStore, setti
                 )}
                 {isReadOnly && !exclude?.rateLimit ? null : (
                   <div className={styles.challengeOption}>
-                    Rate Limit
+                    Rate limit
                     <div className={styles.challengeOptionDescription}>Number of free user actions per hour:</div>
                     {isReadOnly ? (
                       <div>{exclude?.rateLimit}</div>
@@ -584,15 +588,35 @@ const ChallengeSettings = ({ challenge, index, isReadOnly, setSubmitStore, setti
                       <input type='number' value={exclude?.rateLimit || undefined} onChange={(e) => handleExcludeChange(excludeIndex, 'rateLimit', e.target.value)} />
                     )}
                     {isReadOnly && !exclude?.rateLimitChallengeSuccess ? null : (
-                      <label>
-                        <input
-                          type='checkbox'
-                          checked={exclude?.rateLimitChallengeSuccess}
-                          onChange={(e) => handleExcludeChange(excludeIndex, 'rateLimitChallengeSuccess', e.target.checked)}
-                          disabled={isReadOnly}
-                        />
-                        apply rate limit only to successfully completed challenges
-                      </label>
+                      <>
+                        <label>
+                          <input
+                            type='checkbox'
+                            checked={exclude?.rateLimitChallengeSuccess}
+                            onChange={(e) => handleExcludeChange(excludeIndex, 'rateLimitChallengeSuccess', e.target.checked)}
+                            disabled={isReadOnly}
+                          />
+                          apply rate limit only on challenge success
+                        </label>
+                        <div>
+                          <label>
+                            <input
+                              className={styles.rateLimitChallengeFail}
+                              type='checkbox'
+                              checked={exclude?.rateLimitChallengeSuccess === undefined}
+                              onChange={(e) => {
+                                if (e.target.checked) {
+                                  handleExcludeChange(excludeIndex, 'rateLimitChallengeSuccess', undefined);
+                                } else {
+                                  handleExcludeChange(excludeIndex, 'rateLimitChallengeSuccess', false);
+                                }
+                              }}
+                              disabled={isReadOnly}
+                            />
+                            apply rate limit only on challenge fail
+                          </label>
+                        </div>
+                      </>
                     )}
                   </div>
                 )}
@@ -609,7 +633,7 @@ const Challenges = ({ isReadOnly, readOnlyChallenges }: { isReadOnly: boolean; r
   const { t } = useTranslation();
   const { settings, setSubmitStore } = useSubplebbitSettingsStore();
   const challenges = settings?.challenges || readOnlyChallenges || [];
-  const [showSettings, setShowSettings] = useState<boolean[]>(challenges.map(() => (isReadOnly ? true : false)));
+  const [showSettings, setShowSettings] = useState<boolean[]>(challenges.map(() => false));
 
   const toggleSettings = (index: number) => {
     const newShowSettings = [...showSettings];
@@ -643,7 +667,7 @@ const Challenges = ({ isReadOnly, readOnlyChallenges }: { isReadOnly: boolean; r
   };
 
   return (
-    <div className={styles.box}>
+    <div className={`${styles.box} ${isReadOnly && !challenges ? styles.hidden : styles.visible}`}>
       <div className={styles.boxTitle}>{t('challenges')}</div>
       <div className={styles.boxSubtitle}>choose one or more challenges to prevent spam</div>
       <div className={styles.boxInput}>
@@ -709,7 +733,7 @@ const JSONSettings = ({ isReadOnly }: { isReadOnly: boolean }) => {
   };
 
   return (
-    <div className={styles.box}>
+    <div className={`${styles.box}`}>
       <div className={`${styles.boxTitle} ${styles.JSONSettingsTitle}`}>JSON settings</div>
       <div className={styles.boxSubtitle}>quickly copy or paste the community settings</div>
       <div className={`${styles.boxInput} ${styles.JSONSettings}`}>
@@ -749,21 +773,25 @@ const SubplebbitSettings = () => {
 
   // set the store with the initial data
   useEffect(() => {
-    setSubmitStore({
-      title: title ?? '',
-      description: description ?? '',
-      address,
-      suggested: suggested ?? {},
-      rules: rules ?? [],
-      roles: roles ?? {},
-      settings: settings ?? {},
-      challenges: challenges ?? [],
-      subplebbitAddress,
-    });
-
-    window.scrollTo(0, 0);
+    if (address) {
+      setSubmitStore({
+        title: title ?? '',
+        description: description ?? '',
+        address,
+        suggested: suggested ?? {},
+        rules: rules ?? [],
+        roles: roles ?? {},
+        settings: settings ?? {},
+        challenges: challenges ?? [],
+        subplebbitAddress,
+      });
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [title, description, address, suggested, rules, roles, settings, challenges, subplebbitAddress]);
+  }, [address]);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   useEffect(() => {
     document.title = `${t('preferences')} - seedit`;

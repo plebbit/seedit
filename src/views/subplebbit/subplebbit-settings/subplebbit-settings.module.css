@@ -205,6 +205,10 @@
   text-transform: lowercase;
 }
 
+.rateLimitChallengeFail {
+  display: inline-block;
+}
+
 .moderator {
   font-size: 15px;
   color: var(--text);
