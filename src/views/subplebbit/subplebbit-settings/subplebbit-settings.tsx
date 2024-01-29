@@ -763,7 +763,7 @@ const SubplebbitSettings = () => {
 
     window.scrollTo(0, 0);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [subplebbitAddress]);
+  }, [title, description, address, suggested, rules, roles, settings, challenges, subplebbitAddress]);
 
   useEffect(() => {
     document.title = `${t('preferences')} - seedit`;
