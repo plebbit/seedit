@@ -134,10 +134,9 @@ const Logo = ({ isReadOnly }: { isReadOnly: boolean }) => {
   const [logoUrl, setLogoUrl] = useState(suggested?.avatarUrl);
   const [imageError, setImageError] = useState(false);
 
-  // Update logoUrl when avatarUrl changes
   useEffect(() => {
     setLogoUrl(suggested?.avatarUrl);
-    setImageError(false); // Reset the error state as well
+    setImageError(false);
   }, [suggested?.avatarUrl]);
 
   return (
@@ -333,7 +332,7 @@ const actionsToExclude: Array<'post' | 'reply' | 'vote'> = ['post', 'reply', 'vo
 const customActions: Array<'non-post' | 'non-reply' | 'non-vote'> = ['non-post', 'non-reply', 'non-vote'];
 
 const ChallengeSettings = ({ challenge, index, setSubmitStore, settings, showSettings }: ChallengeSettingsProps) => {
-  const { exclude, name, options } = challenge || {};
+  const { name, options } = challenge || {};
   const challengeSettings: OptionInput[] = getDefaultChallengeSettings(name);
 
   const handleOptionChange = (optionName: string, newValue: string) => {
@@ -342,45 +341,77 @@ const ChallengeSettings = ({ challenge, index, setSubmitStore, settings, showSet
     setSubmitStore({ settings: { ...settings, challenges: updatedChallenges } });
   };
 
-  const handleExcludeChange = (type: keyof Exclude | 'non-post' | 'non-reply' | 'non-vote', value: any) => {
-    const updatedExclude = { ...exclude[0] }; // Clone the first exclude object
-
-    switch (type) {
-      case 'non-post':
-        updatedExclude.post = value ? undefined : false;
-        break;
-      case 'non-reply':
-        updatedExclude.reply = value ? undefined : false;
-        break;
-      case 'non-vote':
-        updatedExclude.vote = value ? undefined : false;
-        break;
-      case 'role':
-        if (typeof value === 'string') {
-          const roleIndex = updatedExclude.role.indexOf(value);
-          if (roleIndex > -1) {
-            updatedExclude.role.splice(roleIndex, 1);
-          } else {
-            updatedExclude.role.push(value);
-          }
-        }
-        break;
-      default:
-        updatedExclude[type] = value;
-        break;
-    }
-
-    const updatedChallenges = [...settings.challenges];
-    updatedChallenges[index] = { ...updatedChallenges[index], exclude: [updatedExclude] };
+  const addExcludeCombination = () => {
+    const newExclude = getDefaultExclude()[0];
+    const updatedChallenges = settings.challenges.map((ch: any, idx: number) => (idx === index ? { ...ch, exclude: [...ch.exclude, newExclude] } : ch));
     setSubmitStore({ settings: { ...settings, challenges: updatedChallenges } });
   };
 
-  const handleExcludeAddress = (value: string) => {
+  const deleteExcludeCombination = (excludeIndex: number) => {
+    const updatedChallenges = [...settings.challenges];
+    const currentChallenge = updatedChallenges[index];
+    currentChallenge.exclude.splice(excludeIndex, 1);
+    setSubmitStore({ settings: { ...settings, challenges: updatedChallenges } });
+  };
+
+  const [showExcludeSettings, setShowExcludeSettings] = useState<boolean[]>(challenge.exclude.map(() => false));
+  const toggleExcludeSettings = (excludeIndex: number) => {
+    const newShowExcludeSettings = [...showExcludeSettings];
+    newShowExcludeSettings[excludeIndex] = !newShowExcludeSettings[excludeIndex];
+    setShowExcludeSettings(newShowExcludeSettings);
+  };
+
+  const handleExcludeChange = (excludeIndex: number, type: keyof Exclude | 'non-post' | 'non-reply' | 'non-vote', value: any) => {
+    const updatedChallenges = settings.challenges.map((ch: any, idx: number) => {
+      if (idx === index) {
+        const updatedExclude = ch.exclude.map((ex: any, exIdx: number) => {
+          if (exIdx === excludeIndex) {
+            let newEx = { ...ex };
+
+            // Convert empty string to undefined
+            const processedValue = value === '' ? undefined : value;
+
+            switch (type) {
+              case 'non-post':
+                newEx.post = value ? undefined : false;
+                break;
+              case 'non-reply':
+                newEx.reply = value ? undefined : false;
+                break;
+              case 'non-vote':
+                newEx.vote = value ? undefined : false;
+                break;
+              case 'role':
+                if (typeof value === 'string') {
+                  const roleIndex = newEx.role.indexOf(value);
+                  if (roleIndex > -1) {
+                    newEx.role.splice(roleIndex, 1);
+                  } else {
+                    newEx.role.push(value);
+                  }
+                }
+                break;
+              default:
+                newEx[type] = processedValue;
+            }
+            return newEx;
+          }
+          return ex;
+        });
+        return { ...ch, exclude: updatedExclude };
+      }
+      return ch;
+    });
+
+    setSubmitStore({ settings: { ...settings, challenges: updatedChallenges } });
+  };
+
+  const handleExcludeAddress = (excludeIndex: number, value: string) => {
     const addresses = value
       .split(',')
       .map((addr) => addr.trim())
       .filter((addr) => addr !== '');
-    handleExcludeChange('address', addresses);
+    handleExcludeChange(excludeIndex, 'address', addresses);
   };
 
   return (
@@ -399,69 +430,99 @@ const ChallengeSettings = ({ challenge, index, setSubmitStore, settings, showSet
           />
         </div>
       ))}
-      <div className={styles.challengeDescription}>Exclude from challenge</div>
-      <div className={styles.challengeOption}>
-        Users
-        <div className={styles.challengeOptionDescription}>Exclude specific users by their addresses, separated by a comma</div>
-        <input
-          type='text'
-          placeholder='address1.eth, address2.eth, address3.eth'
-          value={exclude?.address?.join(', ')}
-          onChange={(e) => handleExcludeAddress(e.target.value)}
-        />
-      </div>
-      <div className={styles.challengeOption}>
-        Users with Karma
-        <div className={styles.challengeOptionDescription}>Minimum post karma required:</div>
-        <input type='number' value={exclude?.postScore || undefined} onChange={(e) => handleExcludeChange('postScore', e.target.value)} />
-        <div className={styles.challengeOptionDescription}>Minimum comment karma required:</div>
-        <input type='number' value={exclude?.postReply || undefined} onChange={(e) => handleExcludeChange('postReply', e.target.value)} />
-      </div>
-      <div className={styles.challengeOption}>
-        Users by account age
-        <div className={styles.challengeOptionDescription}>Minimum account age in seconds (eg. 86400 = 24h):</div>
-        <input type='number' value={exclude?.firstCommentTimestamp || undefined} onChange={(e) => handleExcludeChange('firstCommentTimestamp', e.target.value)} />
-      </div>
-      <div className={styles.challengeOption}>
-        Moderators
-        <div className={styles.challengeOptionDescription}>Exclude a specific moderator role</div>
-        {rolesToExclude.map((role) => (
-          <div key={role}>
-            <label>
-              <input type='checkbox' checked={exclude[0]?.role.includes(role)} onChange={() => handleExcludeChange('role', role)} />
-              exclude {role}
-            </label>
+      <div className={styles.challengeDescription}>Exclude from challenge #{index + 1}</div>
+      <div className={styles.excludeCombinationSection}>
+        <button className={`${styles.addButton} ${styles.addExclude}`} onClick={addExcludeCombination}>
+          Add Combination
+        </button>
+        {challenge.exclude.map((exclude: any, excludeIndex: number) => (
+          <div key={excludeIndex} className={styles.excludeCombination}>
+            Exclude Combination #{excludeIndex + 1}
+            <span className={styles.deleteButton} onClick={() => deleteExcludeCombination(excludeIndex)} title='delete combination' />
+            <button className={styles.hideCombo} onClick={() => toggleExcludeSettings(excludeIndex)}>
+              {showExcludeSettings[excludeIndex] ? 'Hide' : 'Show'} Combination Settings
+            </button>
+            {showExcludeSettings[excludeIndex] && (
+              <>
+                <div className={styles.challengeOption}>
+                  Users
+                  <div className={styles.challengeOptionDescription}>Exclude specific users by their addresses, separated by a comma</div>
+                  <input
+                    type='text'
+                    placeholder='address1.eth, address2.eth, address3.eth'
+                    value={exclude?.address?.join(', ')}
+                    onChange={(e) => handleExcludeAddress(excludeIndex, e.target.value)}
+                  />
+                </div>
+                <div className={styles.challengeOption}>
+                  Users with Karma
+                  <div className={styles.challengeOptionDescription}>Minimum post karma required:</div>
+                  <input type='number' value={exclude?.postScore || undefined} onChange={(e) => handleExcludeChange(excludeIndex, 'postScore', e.target.value)} />
+                  <div className={styles.challengeOptionDescription}>Minimum comment karma required:</div>
+                  <input type='number' value={exclude?.postReply || undefined} onChange={(e) => handleExcludeChange(excludeIndex, 'postReply', e.target.value)} />
+                </div>
+                <div className={styles.challengeOption}>
+                  Users by account age
+                  <div className={styles.challengeOptionDescription}>Minimum account age in seconds (eg. 86400 = 24h):</div>
+                  <input
+                    type='number'
+                    value={exclude?.firstCommentTimestamp || undefined}
+                    onChange={(e) => handleExcludeChange(excludeIndex, 'firstCommentTimestamp', e.target.value)}
+                  />
+                </div>
+                <div className={styles.challengeOption}>
+                  Moderators
+                  <div className={styles.challengeOptionDescription}>Exclude a specific moderator role</div>
+                  {rolesToExclude.map((role) => (
+                    <div key={role}>
+                      <label>
+                        <input type='checkbox' checked={exclude?.role?.includes(role)} onChange={() => handleExcludeChange(excludeIndex, 'role', role)} />
+                        exclude {role}
+                      </label>
+                    </div>
+                  ))}
+                </div>
+                <div className={styles.challengeOption}>
+                  Actions
+                  <div className={styles.challengeOptionDescription}>Exclude a specific user action</div>
+                  {actionsToExclude.map((action) => (
+                    <div key={action}>
+                      <label>
+                        <input type='checkbox' checked={exclude?.[action]} onChange={(e) => handleExcludeChange(excludeIndex, action, e.target.checked)} />
+                        exclude {action}
+                      </label>
+                    </div>
+                  ))}
+                  {customActions.map((action) => (
+                    <div key={action}>
+                      <label>
+                        <input
+                          type='checkbox'
+                          checked={exclude?.[action.replace('non-', '')] === undefined}
+                          onChange={(e) => handleExcludeChange(excludeIndex, action, e.target.checked)}
+                        />
+                        exclude {action}
+                      </label>
+                    </div>
+                  ))}
+                </div>
+                <div className={styles.challengeOption}>
+                  Rate Limit
+                  <div className={styles.challengeOptionDescription}>Number of free user actions per hour:</div>
+                  <input type='number' value={exclude?.rateLimit || undefined} onChange={(e) => handleExcludeChange(excludeIndex, 'rateLimit', e.target.value)} />
+                  <label>
+                    <input
+                      type='checkbox'
+                      checked={exclude?.rateLimitChallengeSuccess}
+                      onChange={(e) => handleExcludeChange(excludeIndex, 'rateLimitChallengeSuccess', e.target.checked)}
+                    />
+                    apply rate limit only to successfully completed challenges
+                  </label>
+                </div>
+              </>
+            )}
           </div>
         ))}
-      </div>
-      <div className={styles.challengeOption}>
-        Actions
-        <div className={styles.challengeOptionDescription}>Exclude a specific user action</div>
-        {actionsToExclude.map((action) => (
-          <div key={action}>
-            <label>
-              <input type='checkbox' checked={exclude[0]?.[action]} onChange={(e) => handleExcludeChange(action, e.target.checked)} />
-              exclude {action}
-            </label>
-          </div>
-        ))}
-        {customActions.map((action) => (
-          <div key={action}>
-            <label>
-              <input type='checkbox' checked={exclude[0]?.[action.replace('non-', '')] === undefined} onChange={(e) => handleExcludeChange(action, e.target.checked)} />
-              exclude {action}
-            </label>
-          </div>
-        ))}
-      </div>
-      <div className={styles.challengeOption}>
-        Rate Limit
-        <div className={styles.challengeOptionDescription}>Number of free user actions per hour:</div>
-        <input type='number' value={exclude?.rateLimit || undefined} onChange={(e) => handleExcludeChange('rateLimit', e.target.value)} />
-        <label>
-          <input type='checkbox' checked={exclude?.rateLimitChallengeSuccess} onChange={(e) => handleExcludeChange('rateLimitChallengeSuccess', e.target.checked)} />
-          apply rate limit only to successfully completed challenges
-        </label>
       </div>
     </div>
   );
