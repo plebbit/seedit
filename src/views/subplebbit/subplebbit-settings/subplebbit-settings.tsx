@@ -423,10 +423,10 @@ const ChallengeSettings = ({ challenge, index, setSubmitStore, settings, showSet
           <div className={styles.challengeOptionDescription}>{setting?.description}</div>
           <input
             type='text'
-            value={options && (options[setting?.option] || setting?.default || '')}
+            value={options && (options[setting?.option] || '')}
+            defaultValue={setting?.default || ''}
             placeholder={setting?.placeholder || ''}
             onChange={(e) => handleOptionChange(setting?.option, e.target.value)}
-            required={setting?.required || false}
           />
         </div>
       ))}
