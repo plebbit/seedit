@@ -431,7 +431,7 @@ const ChallengeSettings = ({ challenge, index, isReadOnly, setSubmitStore, setti
           )}
         </div>
       ))}
-      <div className={styles.challengeDescription}>Exclude from challenge #{index + 1}</div>
+      <div className={styles.challengeDescription}>Exclude groups for challenge #{index + 1}</div>
       <div className={styles.excludeGroupSection}>
         {!isReadOnly && (
           <button className={`${styles.addButton} ${styles.addExclude}`} onClick={addExcludeGroup} disabled={isReadOnly}>
@@ -440,7 +440,7 @@ const ChallengeSettings = ({ challenge, index, isReadOnly, setSubmitStore, setti
         )}
         {challenge.exclude.map((exclude: any, excludeIndex: number) => (
           <div key={excludeIndex} className={styles.excludeGroup}>
-            Exclude Group #{excludeIndex + 1}
+            Exclude group #{excludeIndex + 1}
             {!isReadOnly && <span className={styles.deleteButton} onClick={() => deleteExcludeGroup(excludeIndex)} title='delete group' />}
             {!isReadOnly && (
               <button className={styles.hideCombo} onClick={() => toggleExcludeSettings(excludeIndex)} disabled={isReadOnly}>
@@ -467,7 +467,7 @@ const ChallengeSettings = ({ challenge, index, isReadOnly, setSubmitStore, setti
                 )}
                 {isReadOnly && !exclude?.postScore && !exclude?.postReply ? null : (
                   <div className={styles.challengeOption}>
-                    Users with Karma
+                    Users with karma
                     {isReadOnly && !exclude?.postScore ? null : (
                       <>
                         <div className={styles.challengeOptionDescription}>Minimum post karma required:</div>
@@ -576,7 +576,7 @@ const ChallengeSettings = ({ challenge, index, isReadOnly, setSubmitStore, setti
                 )}
                 {isReadOnly && !exclude?.rateLimit ? null : (
                   <div className={styles.challengeOption}>
-                    Rate Limit
+                    Rate limit
                     <div className={styles.challengeOptionDescription}>Number of free user actions per hour:</div>
                     {isReadOnly ? (
                       <div>{exclude?.rateLimit}</div>
