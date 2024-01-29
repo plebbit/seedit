@@ -342,13 +342,13 @@ const ChallengeSettings = ({ challenge, index, isReadOnly, setSubmitStore, setti
     setSubmitStore({ settings: { ...settings, challenges: updatedChallenges } });
   };
 
-  const addExcludeCombination = () => {
+  const addExcludeGroup = () => {
     const newExclude = getDefaultExclude()[0];
     const updatedChallenges = settings.challenges.map((ch: any, idx: number) => (idx === index ? { ...ch, exclude: [...ch.exclude, newExclude] } : ch));
     setSubmitStore({ settings: { ...settings, challenges: updatedChallenges } });
   };
 
-  const deleteExcludeCombination = (excludeIndex: number) => {
+  const deleteExcludeGroup = (excludeIndex: number) => {
     const updatedChallenges = [...settings.challenges];
     const currentChallenge = updatedChallenges[index];
     currentChallenge.exclude.splice(excludeIndex, 1);
@@ -432,19 +432,19 @@ const ChallengeSettings = ({ challenge, index, isReadOnly, setSubmitStore, setti
         </div>
       ))}
       <div className={styles.challengeDescription}>Exclude from challenge #{index + 1}</div>
-      <div className={styles.excludeCombinationSection}>
+      <div className={styles.excludeGroupSection}>
         {!isReadOnly && (
-          <button className={`${styles.addButton} ${styles.addExclude}`} onClick={addExcludeCombination} disabled={isReadOnly}>
-            Add Combination
+          <button className={`${styles.addButton} ${styles.addExclude}`} onClick={addExcludeGroup} disabled={isReadOnly}>
+            Add Group
           </button>
         )}
         {challenge.exclude.map((exclude: any, excludeIndex: number) => (
-          <div key={excludeIndex} className={styles.excludeCombination}>
-            Exclude Combination #{excludeIndex + 1}
-            {!isReadOnly && <span className={styles.deleteButton} onClick={() => deleteExcludeCombination(excludeIndex)} title='delete combination' />}
+          <div key={excludeIndex} className={styles.excludeGroup}>
+            Exclude Group #{excludeIndex + 1}
+            {!isReadOnly && <span className={styles.deleteButton} onClick={() => deleteExcludeGroup(excludeIndex)} title='delete group' />}
             {!isReadOnly && (
               <button className={styles.hideCombo} onClick={() => toggleExcludeSettings(excludeIndex)} disabled={isReadOnly}>
-                {showExcludeSettings[excludeIndex] ? 'Hide' : 'Show'} Combination Settings
+                {showExcludeSettings[excludeIndex] ? 'Hide' : 'Show'} Group Settings
               </button>
             )}
             {showExcludeSettings[excludeIndex] && (
