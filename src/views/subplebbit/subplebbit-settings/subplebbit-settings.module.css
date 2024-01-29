@@ -65,6 +65,10 @@
   font-size: 12px;
 }
 
+.readOnlyActionExclude {
+  font-size: 12px;
+}
+
 .saveOptions button {
   text-transform: lowercase;
   margin: 3px 5px;
