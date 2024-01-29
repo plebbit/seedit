@@ -61,6 +61,10 @@
   white-space: pre-wrap;
 }
 
+.readOnlyRoleExclude {
+  font-size: 12px;
+}
+
 .saveOptions button {
   text-transform: lowercase;
   margin: 3px 5px;
