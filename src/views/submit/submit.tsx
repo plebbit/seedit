@@ -196,6 +196,9 @@ const Submit = () => {
               <input
                 className={`${styles.input} ${styles.inputUrl}`}
                 type='text'
+                autoCorrect='off'
+                autoComplete='off'
+                spellCheck='false'
                 ref={linkRef}
                 onChange={(e) => {
                   setSubmitStore({ link: e.target.value });
@@ -237,6 +240,9 @@ const Submit = () => {
                 className={`${styles.input} ${styles.inputCommunity}`}
                 type='text'
                 placeholder={`"community.eth" ${t('or')} "12D3KooW..."`}
+                autoCorrect='off'
+                autoComplete='off'
+                spellCheck='false'
                 defaultValue={selectedSubplebbit ? paramsSubplebbitAddress : undefined}
                 ref={subplebbitAddressRef}
                 onChange={(e) => {
