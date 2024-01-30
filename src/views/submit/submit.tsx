@@ -136,33 +136,53 @@ const Submit = () => {
     </div>
   );
 
-  const defaultSubplebbits = inputAddress && defaultSubplebbitAddresses.filter((address) => address.toLowerCase().includes(inputAddress.toLowerCase())).length > 0 && (
+  const [activeDropdownIndex, setActiveDropdownIndex] = useState<number>(-1);
+  const [isInputAddressFocused, setIsInputAddressFocused] = useState(false);
+
+  const filteredSubplebbitAddresses = defaultSubplebbitAddresses.filter((address) => address.toLowerCase().includes(inputAddress.toLowerCase())).slice(0, 10);
+
+  const handleKeyDown = (e: KeyboardEvent) => {
+    if (e.key === 'ArrowDown') {
+      setActiveDropdownIndex((prevIndex) => (prevIndex < filteredSubplebbitAddresses.length - 1 ? prevIndex + 1 : prevIndex));
+    } else if (e.key === 'ArrowUp') {
+      setActiveDropdownIndex((prevIndex) => (prevIndex > 0 ? prevIndex - 1 : 0));
+    } else if (e.key === 'Enter' && activeDropdownIndex !== -1) {
+      const selectedAddress = filteredSubplebbitAddresses[activeDropdownIndex];
+      if (subplebbitAddressRef.current) {
+        subplebbitAddressRef.current.value = selectedAddress;
+        setSelectedSubplebbit(selectedAddress);
+      }
+      setSubmitStore({ subplebbitAddress: selectedAddress });
+      setInputAddress('');
+      setActiveDropdownIndex(-1);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener('keydown', handleKeyDown);
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [filteredSubplebbitAddresses, activeDropdownIndex]);
+
+  const defaultSubplebbitsDropdown = inputAddress && (
     <ul className={styles.dropdown}>
-      {defaultSubplebbitAddresses
-        .filter((address) => address.toLowerCase().includes(inputAddress.toLowerCase()))
-        .slice(0, 10)
-        .map((subplebbitAddress) => (
-          <li key={subplebbitAddress} className={styles.dropdownItem}>
-            <span
-              className={styles.dropdownLink}
-              onClick={() => {
-                if (subplebbitAddressRef.current) {
-                  subplebbitAddressRef.current.value = subplebbitAddress;
-                  setSelectedSubplebbit(subplebbitAddress);
-                }
-                setSubmitStore({ subplebbitAddress });
-                setInputAddress('');
-              }}
-            >
-              {subplebbitAddress}
-            </span>
-          </li>
-        ))}
+      {filteredSubplebbitAddresses.map((subplebbitAddress, index) => (
+        <li
+          key={subplebbitAddress}
+          className={`${styles.dropdownItem} ${index === activeDropdownIndex ? styles.activeDropdownItem : ''}`}
+          onClick={() => setSelectedSubplebbit(subplebbitAddress)}
+          onMouseEnter={() => setActiveDropdownIndex(index)}
+        >
+          {subplebbitAddress}
+        </li>
+      ))}
     </ul>
   );
 
   const handleAddressChange = (e: ChangeEvent<HTMLInputElement>) => {
     setInputAddress(e.target.value);
+    setSelectedSubplebbit(e.target.value);
   };
 
   useEffect(() => {
@@ -240,9 +260,12 @@ const Submit = () => {
                 className={`${styles.input} ${styles.inputCommunity}`}
                 type='text'
                 placeholder={`"community.eth" ${t('or')} "12D3KooW..."`}
+                onFocus={() => setIsInputAddressFocused(true)}
+                onBlur={() => setTimeout(() => setIsInputAddressFocused(false), 100)}
                 autoCorrect='off'
                 autoComplete='off'
                 spellCheck='false'
+                value={selectedSubplebbit}
                 defaultValue={selectedSubplebbit ? paramsSubplebbitAddress : undefined}
                 ref={subplebbitAddressRef}
                 onChange={(e) => {
@@ -250,7 +273,7 @@ const Submit = () => {
                   setSubmitStore({ subplebbitAddress: e.target.value });
                 }}
               />
-              {inputAddress && defaultSubplebbits}
+              {inputAddress && isInputAddressFocused && defaultSubplebbitsDropdown}
               {subsDescription}
               {subscriptionsList}
             </div>

@@ -174,7 +174,7 @@ h1 {
   overflow: hidden;
 }
 
-.dropdownItem:hover {
+.dropdownItem:hover, .activeDropdownItem {
   background-color: var(--text-primary);
   color: var(--background);
 }
