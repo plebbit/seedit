@@ -1,4 +1,4 @@
-import { ChangeEvent, useEffect, useRef, useState } from 'react';
+import { ChangeEvent, useCallback, useEffect, useRef, useState } from 'react';
 import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
 import { PublishCommentOptions, useAccount, usePublishComment, useSubplebbit } from '@plebbit/plebbit-react-hooks';
 import { getShortAddress } from '@plebbit/plebbit-js';
@@ -141,29 +141,32 @@ const Submit = () => {
 
   const filteredSubplebbitAddresses = defaultSubplebbitAddresses.filter((address) => address.toLowerCase().includes(inputAddress.toLowerCase())).slice(0, 10);
 
-  const handleKeyDown = (e: KeyboardEvent) => {
-    if (e.key === 'ArrowDown') {
-      setActiveDropdownIndex((prevIndex) => (prevIndex < filteredSubplebbitAddresses.length - 1 ? prevIndex + 1 : prevIndex));
-    } else if (e.key === 'ArrowUp') {
-      setActiveDropdownIndex((prevIndex) => (prevIndex > 0 ? prevIndex - 1 : 0));
-    } else if (e.key === 'Enter' && activeDropdownIndex !== -1) {
-      const selectedAddress = filteredSubplebbitAddresses[activeDropdownIndex];
-      if (subplebbitAddressRef.current) {
-        subplebbitAddressRef.current.value = selectedAddress;
-        setSelectedSubplebbit(selectedAddress);
+  const handleKeyDown = useCallback(
+    (e: KeyboardEvent) => {
+      if (e.key === 'ArrowDown') {
+        setActiveDropdownIndex((prevIndex) => (prevIndex < filteredSubplebbitAddresses.length - 1 ? prevIndex + 1 : prevIndex));
+      } else if (e.key === 'ArrowUp') {
+        setActiveDropdownIndex((prevIndex) => (prevIndex > 0 ? prevIndex - 1 : 0));
+      } else if (e.key === 'Enter' && activeDropdownIndex !== -1) {
+        const selectedAddress = filteredSubplebbitAddresses[activeDropdownIndex];
+        if (subplebbitAddressRef.current) {
+          subplebbitAddressRef.current.value = selectedAddress;
+          setSelectedSubplebbit(selectedAddress);
+        }
+        setSubmitStore({ subplebbitAddress: selectedAddress });
+        setInputAddress('');
+        setActiveDropdownIndex(-1);
       }
-      setSubmitStore({ subplebbitAddress: selectedAddress });
-      setInputAddress('');
-      setActiveDropdownIndex(-1);
-    }
-  };
+    },
+    [filteredSubplebbitAddresses, activeDropdownIndex, subplebbitAddressRef, setSelectedSubplebbit, setSubmitStore],
+  );
 
   useEffect(() => {
     window.addEventListener('keydown', handleKeyDown);
     return () => {
       window.removeEventListener('keydown', handleKeyDown);
     };
-  }, [filteredSubplebbitAddresses, activeDropdownIndex]);
+  }, [handleKeyDown]);
 
   const defaultSubplebbitsDropdown = inputAddress && (
     <ul className={styles.dropdown}>
