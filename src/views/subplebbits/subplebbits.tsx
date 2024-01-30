@@ -188,48 +188,42 @@ const Subplebbit = ({ subplebbit }: SubplebbitProps) => {
 };
 
 const AccountSubplebbits = ({ viewRole }: { viewRole: string }) => {
-  const { accountSubplebbits } = useAccountSubplebbits();
   const account = useAccount();
+  const { accountSubplebbits } = useAccountSubplebbits();
 
-  const filteredSubplebbits = useMemo(() => {
+  const filteredSubplebbitsArray = useMemo(() => {
     return Object.values(accountSubplebbits).filter((subplebbit) => {
       const userRole = (subplebbit as any).roles?.[account?.author?.address]?.role;
       return userRole === viewRole;
     });
   }, [accountSubplebbits, account, viewRole]);
 
-  return filteredSubplebbits.map((subplebbit, index) => <Subplebbit key={index} subplebbit={subplebbit} />);
+  return filteredSubplebbitsArray.map((subplebbit, index) => <Subplebbit key={index} subplebbit={subplebbit} />);
 };
 
 const SubscriberSubplebbits = () => {
   const account = useAccount();
-  const { subplebbits } = useSubplebbits({ subplebbitAddresses: account?.subscriptions || [] });
+  const { subplebbits } = useSubplebbits({ subplebbitAddresses: account?.subscriptions });
   const subplebbitsArray = useMemo(() => Object.values(subplebbits), [subplebbits]);
   return subplebbitsArray?.map((subplebbit, index) => <Subplebbit key={index} subplebbit={subplebbit} />);
 };
 
-const ApprovedSubplebbits = () => {
-  const defaultSubplebbitAddresses = useDefaultSubplebbitAddresses();
-  const { subplebbits } = useSubplebbits({ subplebbitAddresses: defaultSubplebbitAddresses || [] });
+const AllDefaultSubplebbits = () => {
+  const subplebbitAddresses = useDefaultSubplebbitAddresses();
+  const { subplebbits } = useSubplebbits({ subplebbitAddresses });
   const subplebbitsArray = useMemo(() => Object.values(subplebbits), [subplebbits]);
   return subplebbitsArray?.map((subplebbit, index) => <Subplebbit key={index} subplebbit={subplebbit} />);
 };
 
-const AccountAndSubscriberSubplebbits = () => {
-  const { accountSubplebbits } = useAccountSubplebbits();
+const AllAccountSubplebbits = () => {
   const account = useAccount();
-  const { subplebbits: subscribedSubplebbits } = useSubplebbits({ subplebbitAddresses: account?.subscriptions || [] });
-
-  const combinedSubplebbits = useMemo(() => {
-    const ownSubplebbitsAddresses = Object.keys(accountSubplebbits);
-    const subscribedAddresses = account?.subscriptions || [];
-
-    const uniqueAddresses = Array.from(new Set([...ownSubplebbitsAddresses, ...subscribedAddresses]));
-
-    return uniqueAddresses.map((addr) => accountSubplebbits[addr] || subscribedSubplebbits[addr]);
-  }, [accountSubplebbits, subscribedSubplebbits, account?.subscriptions]);
-
-  return combinedSubplebbits.map((subplebbit, index) => <Subplebbit key={index} subplebbit={subplebbit} />);
+  const { accountSubplebbits } = useAccountSubplebbits();
+  const accountSubplebbitAddresses = Object.keys(accountSubplebbits);
+  const subscriptionsArray = account?.subscriptions ?? [];
+  const uniqueAddresses = Array.from(new Set([...accountSubplebbitAddresses, ...subscriptionsArray]));
+  const { subplebbits } = useSubplebbits({ subplebbitAddresses: uniqueAddresses });
+  const subplebbitsArray = useMemo(() => Object.values(subplebbits ?? {}), [subplebbits]);
+  return subplebbitsArray?.map((subplebbit, index) => <Subplebbit key={index} subplebbit={subplebbit} />);
 };
 
 const Subplebbits = () => {
@@ -267,10 +261,10 @@ const Subplebbits = () => {
         <VoteTabs />
       )}
       <Infobar />
-      {isInSubplebbitsVoteView && <ApprovedSubplebbits />}
+      {isInSubplebbitsVoteView && <AllDefaultSubplebbits />}
       {(isInSubplebbitsModeratorView || isInSubplebbitsAdminView || isInSubplebbitsOwnerView) && <AccountSubplebbits viewRole={viewRole} />}
       {isInSubplebbitsSubscriberView && <SubscriberSubplebbits />}
-      {isInSubplebbitsView && <AccountAndSubscriberSubplebbits />}
+      {isInSubplebbitsView && <AllAccountSubplebbits />}
     </div>
   );
 };

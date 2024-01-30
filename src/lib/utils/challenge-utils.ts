@@ -78,7 +78,7 @@ export const getDefaultChallengeDescription = (challengeType: string) => {
     case 'text-math':
       return 'Ask a plain text math question, insecure, use ONLY for testing.';
     case 'captcha-canvas-v3':
-      return 'Make a custom image captcha';
+      return 'make custom image captcha';
     case 'fail':
       return 'A challenge that automatically fails with a custom error message.';
     case 'blacklist':
@@ -96,7 +96,7 @@ export const getDefaultChallengeOptions = (challengeType: string) => {
   switch (challengeType) {
     case 'text-math':
       return {
-        difficulty: '1',
+        difficulty: '',
       };
     case 'captcha-canvas-v3':
       return {
@@ -107,12 +107,12 @@ export const getDefaultChallengeOptions = (challengeType: string) => {
       };
     case 'fail':
       return {
-        error: "You're not allowed to publish.",
+        error: '',
       };
     case 'blacklist':
       return {
         blacklist: '',
-        error: "You're blacklisted.",
+        error: '',
       };
     case 'question':
       return {
@@ -121,11 +121,11 @@ export const getDefaultChallengeOptions = (challengeType: string) => {
       };
     case 'evm-contract-call':
       return {
-        chainTicker: 'eth',
+        chainTicker: '',
         address: '',
         abi: '',
         condition: '',
-        error: "Contract call response doesn't pass condition.",
+        error: '',
       };
     default:
       return {};

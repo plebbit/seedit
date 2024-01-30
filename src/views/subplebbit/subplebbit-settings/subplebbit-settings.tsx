@@ -28,7 +28,7 @@ type SubplebbitSettingsState = {
   settings: any | undefined;
   subplebbitAddress: string | undefined;
   publishSubplebbitEditOptions: PublishSubplebbitEditOptions;
-  setSubmitStore: (data: Partial<SubplebbitSettingsState>) => void;
+  setSubplebbitSettingsStore: (data: Partial<SubplebbitSettingsState>) => void;
 };
 
 const useSubplebbitSettingsStore = create<SubplebbitSettingsState>((set) => ({
@@ -42,7 +42,7 @@ const useSubplebbitSettingsStore = create<SubplebbitSettingsState>((set) => ({
   settings: undefined,
   subplebbitAddress: undefined,
   publishSubplebbitEditOptions: {},
-  setSubmitStore: ({ challenges, title, description, address, suggested, rules, roles, settings, subplebbitAddress }) =>
+  setSubplebbitSettingsStore: ({ challenges, title, description, address, suggested, rules, roles, settings, subplebbitAddress }) =>
     set((state) => {
       const nextState = { ...state };
       if (challenges !== undefined) nextState.challenges = challenges;
@@ -69,14 +69,14 @@ const useSubplebbitSettingsStore = create<SubplebbitSettingsState>((set) => ({
 
 const Title = ({ isReadOnly }: { isReadOnly: boolean }) => {
   const { t } = useTranslation();
-  const { title, setSubmitStore } = useSubplebbitSettingsStore();
+  const { title, setSubplebbitSettingsStore } = useSubplebbitSettingsStore();
 
   return (
     <div className={`${styles.box} ${isReadOnly && !title ? styles.hidden : styles.visible}`}>
       <div className={styles.boxTitle}>{t('title')}</div>
       <div className={styles.boxSubtitle}>e.g., books: made from trees or pixels. recommendations, news, or thoughts</div>
       <div className={styles.boxInput}>
-        {isReadOnly ? <span>{title}</span> : <input type='text' value={title ?? ''} onChange={(e) => setSubmitStore({ title: e.target.value })} />}
+        {isReadOnly ? <span>{title}</span> : <input type='text' value={title ?? ''} onChange={(e) => setSubplebbitSettingsStore({ title: e.target.value })} />}
       </div>
     </div>
   );
@@ -84,7 +84,7 @@ const Title = ({ isReadOnly }: { isReadOnly: boolean }) => {
 
 const Description = ({ isReadOnly }: { isReadOnly: boolean }) => {
   const { t } = useTranslation();
-  const { description, setSubmitStore } = useSubplebbitSettingsStore();
+  const { description, setSubplebbitSettingsStore } = useSubplebbitSettingsStore();
 
   return (
     <div className={`${styles.box} ${isReadOnly && !description ? styles.hidden : styles.visible}`}>
@@ -94,7 +94,7 @@ const Description = ({ isReadOnly }: { isReadOnly: boolean }) => {
         {isReadOnly ? (
           <pre className={styles.readOnlyDescription}>{description}</pre>
         ) : (
-          <textarea value={description ?? ''} onChange={(e) => setSubmitStore({ description: e.target.value })} />
+          <textarea value={description ?? ''} onChange={(e) => setSubplebbitSettingsStore({ description: e.target.value })} />
         )}
       </div>
     </div>
@@ -103,14 +103,14 @@ const Description = ({ isReadOnly }: { isReadOnly: boolean }) => {
 
 const Address = ({ isReadOnly }: { isReadOnly: boolean }) => {
   const { t } = useTranslation();
-  const { address, setSubmitStore } = useSubplebbitSettingsStore();
+  const { address, setSubplebbitSettingsStore } = useSubplebbitSettingsStore();
 
   return (
     <div className={styles.box}>
       <div className={styles.boxTitle}>{t('address')}</div>
       <div className={styles.boxSubtitle}>set a readable community address using ens.domains</div>
       <div className={styles.boxInput}>
-        {isReadOnly ? <span>{address}</span> : <input type='text' value={address ?? ''} onChange={(e) => setSubmitStore({ address: e.target.value })} />}
+        {isReadOnly ? <span>{address}</span> : <input type='text' value={address ?? ''} onChange={(e) => setSubplebbitSettingsStore({ address: e.target.value })} />}
       </div>
     </div>
   );
@@ -118,7 +118,7 @@ const Address = ({ isReadOnly }: { isReadOnly: boolean }) => {
 
 const Logo = ({ isReadOnly }: { isReadOnly: boolean }) => {
   const { t } = useTranslation();
-  const { suggested, setSubmitStore } = useSubplebbitSettingsStore();
+  const { suggested, setSubplebbitSettingsStore } = useSubplebbitSettingsStore();
 
   const [logoUrl, setLogoUrl] = useState(suggested?.avatarUrl);
   const [imageError, setImageError] = useState(false);
@@ -142,7 +142,7 @@ const Logo = ({ isReadOnly }: { isReadOnly: boolean }) => {
             onChange={(e) => {
               setLogoUrl(e.target.value);
               setImageError(false);
-              setSubmitStore({ suggested: { ...suggested, avatarUrl: e.target.value } });
+              setSubplebbitSettingsStore({ suggested: { ...suggested, avatarUrl: e.target.value } });
             }}
           />
         )}
@@ -159,19 +159,19 @@ const Logo = ({ isReadOnly }: { isReadOnly: boolean }) => {
 
 const Rules = ({ isReadOnly }: { isReadOnly: boolean }) => {
   const { t } = useTranslation();
-  const { rules, setSubmitStore } = useSubplebbitSettingsStore();
+  const { rules, setSubplebbitSettingsStore } = useSubplebbitSettingsStore();
   const lastRuleRef = useRef(null);
 
   const handleRuleChange = (index: number, newRule: string) => {
     const updatedRules = [...(rules ?? [])];
     updatedRules[index] = newRule;
-    setSubmitStore({ rules: updatedRules });
+    setSubplebbitSettingsStore({ rules: updatedRules });
   };
 
   const addedRuleRef = useRef(false);
   const addRule = () => {
     const newRules = rules ? [...rules, ''] : [''];
-    setSubmitStore({ rules: newRules });
+    setSubplebbitSettingsStore({ rules: newRules });
     addedRuleRef.current = true;
   };
 
@@ -185,7 +185,7 @@ const Rules = ({ isReadOnly }: { isReadOnly: boolean }) => {
   const deleteRule = (index: number) => {
     if (rules) {
       const filteredRules = rules.filter((_, i) => i !== index);
-      setSubmitStore({ rules: filteredRules });
+      setSubplebbitSettingsStore({ rules: filteredRules });
     }
   };
 
@@ -218,14 +218,14 @@ const Rules = ({ isReadOnly }: { isReadOnly: boolean }) => {
 
 const Moderators = ({ isReadOnly }: { isReadOnly: boolean }) => {
   const { t } = useTranslation();
-  const { roles, setSubmitStore } = useSubplebbitSettingsStore();
+  const { roles, setSubplebbitSettingsStore } = useSubplebbitSettingsStore();
   const lastModeratorRef = useRef(null);
 
   const addedModeratorRef = useRef(false);
   const handleAddModerator = () => {
     if (roles) {
       const newRoles: Roles = { ...roles, '': { role: 'moderator' } };
-      setSubmitStore({ roles: newRoles });
+      setSubplebbitSettingsStore({ roles: newRoles });
       addedModeratorRef.current = true;
     }
   };
@@ -241,14 +241,14 @@ const Moderators = ({ isReadOnly }: { isReadOnly: boolean }) => {
     if (roles) {
       const updatedRole: Role = { role: newRole };
       const updatedRoles: Roles = { ...roles, [address]: updatedRole };
-      setSubmitStore({ roles: updatedRoles });
+      setSubplebbitSettingsStore({ roles: updatedRoles });
     }
   };
 
   const handleDeleteModerator = (address: string) => {
     if (roles) {
       const { [address]: _, ...remainingRoles } = roles;
-      setSubmitStore({ roles: remainingRoles });
+      setSubplebbitSettingsStore({ roles: remainingRoles });
     }
   };
 
@@ -256,7 +256,7 @@ const Moderators = ({ isReadOnly }: { isReadOnly: boolean }) => {
     const rolesArray = Object.entries(roles || {});
     rolesArray[index] = [newAddress, rolesArray[index][1]];
     const updatedRoles = Object.fromEntries(rolesArray);
-    setSubmitStore({ roles: updatedRoles });
+    setSubplebbitSettingsStore({ roles: updatedRoles });
   };
 
   return (
@@ -316,7 +316,7 @@ interface ChallengeSettingsProps {
   challenge: any;
   index: number;
   isReadOnly: boolean;
-  setSubmitStore: (data: Partial<SubplebbitSettingsState>) => void;
+  setSubplebbitSettingsStore: (data: Partial<SubplebbitSettingsState>) => void;
   settings: any;
   showSettings: boolean;
 }
@@ -325,27 +325,27 @@ const rolesToExclude = ['moderator', 'admin', 'owner'];
 const actionsToExclude: Array<'post' | 'reply' | 'vote'> = ['post', 'reply', 'vote'];
 const customActions: Array<'non-post' | 'non-reply' | 'non-vote'> = ['non-post', 'non-reply', 'non-vote'];
 
-const ChallengeSettings = ({ challenge, index, isReadOnly, setSubmitStore, settings, showSettings }: ChallengeSettingsProps) => {
+const ChallengeSettings = ({ challenge, index, isReadOnly, setSubplebbitSettingsStore, settings, showSettings }: ChallengeSettingsProps) => {
   const { name, options } = challenge || {};
   const challengeSettings: OptionInput[] = getDefaultChallengeSettings(name);
 
   const handleOptionChange = (optionName: string, newValue: string) => {
     const updatedOptions = { ...options, [optionName]: newValue };
     const updatedChallenges = settings.challenges.map((ch: any, idx: number) => (idx === index ? { ...ch, options: updatedOptions } : ch));
-    setSubmitStore({ settings: { ...settings, challenges: updatedChallenges } });
+    setSubplebbitSettingsStore({ settings: { ...settings, challenges: updatedChallenges } });
   };
 
   const addExcludeGroup = () => {
     const newExclude = getDefaultExclude()[0];
     const updatedChallenges = settings.challenges.map((ch: any, idx: number) => (idx === index ? { ...ch, exclude: [...ch.exclude, newExclude] } : ch));
-    setSubmitStore({ settings: { ...settings, challenges: updatedChallenges } });
+    setSubplebbitSettingsStore({ settings: { ...settings, challenges: updatedChallenges } });
   };
 
   const deleteExcludeGroup = (excludeIndex: number) => {
     const updatedChallenges = [...settings.challenges];
     const currentChallenge = updatedChallenges[index];
     currentChallenge.exclude.splice(excludeIndex, 1);
-    setSubmitStore({ settings: { ...settings, challenges: updatedChallenges } });
+    setSubplebbitSettingsStore({ settings: { ...settings, challenges: updatedChallenges } });
   };
 
   const [showExcludeSettings, setShowExcludeSettings] = useState<boolean[]>(challenge.exclude.map(() => (isReadOnly ? true : false)));
@@ -397,7 +397,7 @@ const ChallengeSettings = ({ challenge, index, isReadOnly, setSubmitStore, setti
       return ch;
     });
 
-    setSubmitStore({ settings: { ...settings, challenges: updatedChallenges } });
+    setSubplebbitSettingsStore({ settings: { ...settings, challenges: updatedChallenges } });
   };
 
   const handleExcludeAddress = (excludeIndex: number, value: string) => {
@@ -421,14 +421,15 @@ const ChallengeSettings = ({ challenge, index, isReadOnly, setSubmitStore, setti
       {challengeSettings.map((setting) => (
         <div key={setting?.option} className={styles.challengeOption}>
           <div className={styles.challengeOptionLabel}>{setting?.label}</div>
-          <div className={styles.challengeOptionDescription}>{setting?.description}</div>
+          <div className={styles.challengeOptionDescription}>
+            {setting?.description} {setting?.default && `(default: "${setting?.default}")`}
+          </div>
           {isReadOnly ? (
             <span>{options && (options[setting?.option] || '')}</span>
           ) : (
             <input
               type='text'
               value={options && (options[setting?.option] || '')}
-              defaultValue={setting?.default || ''}
               placeholder={setting?.placeholder || ''}
               onChange={(e) => handleOptionChange(setting?.option, e.target.value)}
             />
@@ -592,8 +593,14 @@ const ChallengeSettings = ({ challenge, index, isReadOnly, setSubmitStore, setti
                         <label>
                           <input
                             type='checkbox'
-                            checked={exclude?.rateLimitChallengeSuccess}
-                            onChange={(e) => handleExcludeChange(excludeIndex, 'rateLimitChallengeSuccess', e.target.checked)}
+                            checked={exclude?.rateLimitChallengeSuccess === true}
+                            onChange={(e) => {
+                              if (e.target.checked) {
+                                handleExcludeChange(excludeIndex, 'rateLimitChallengeSuccess', e.target.checked);
+                              } else {
+                                handleExcludeChange(excludeIndex, 'rateLimitChallengeSuccess', undefined);
+                              }
+                            }}
                             disabled={isReadOnly}
                           />
                           apply rate limit only on challenge success
@@ -603,12 +610,12 @@ const ChallengeSettings = ({ challenge, index, isReadOnly, setSubmitStore, setti
                             <input
                               className={styles.rateLimitChallengeFail}
                               type='checkbox'
-                              checked={exclude?.rateLimitChallengeSuccess === undefined}
+                              checked={exclude?.rateLimitChallengeSuccess === false}
                               onChange={(e) => {
                                 if (e.target.checked) {
-                                  handleExcludeChange(excludeIndex, 'rateLimitChallengeSuccess', undefined);
-                                } else {
                                   handleExcludeChange(excludeIndex, 'rateLimitChallengeSuccess', false);
+                                } else {
+                                  handleExcludeChange(excludeIndex, 'rateLimitChallengeSuccess', undefined);
                                 }
                               }}
                               disabled={isReadOnly}
@@ -631,7 +638,7 @@ const ChallengeSettings = ({ challenge, index, isReadOnly, setSubmitStore, setti
 
 const Challenges = ({ isReadOnly, readOnlyChallenges }: { isReadOnly: boolean; readOnlyChallenges: any }) => {
   const { t } = useTranslation();
-  const { settings, setSubmitStore } = useSubplebbitSettingsStore();
+  const { settings, setSubplebbitSettingsStore } = useSubplebbitSettingsStore();
   const challenges = settings?.challenges || readOnlyChallenges || [];
   const [showSettings, setShowSettings] = useState<boolean[]>(challenges.map(() => false));
 
@@ -650,20 +657,20 @@ const Challenges = ({ isReadOnly, readOnlyChallenges }: { isReadOnly: boolean; r
       exclude: getDefaultExclude(),
     };
     const updatedChallenges = [...(settings?.challenges || []), newChallenge];
-    setSubmitStore({ settings: { ...settings, challenges: updatedChallenges } });
+    setSubplebbitSettingsStore({ settings: { ...settings, challenges: updatedChallenges } });
     setShowSettings((oldShowSettings) => [...oldShowSettings, true]);
   };
 
   const handleDeleteChallenge = (index: number) => {
     const updatedChallenges = settings?.challenges.filter((_: any, idx: number) => idx !== index);
-    setSubmitStore({ settings: { ...settings, challenges: updatedChallenges } });
+    setSubplebbitSettingsStore({ settings: { ...settings, challenges: updatedChallenges } });
     setShowSettings((oldShowSettings) => oldShowSettings.filter((_, idx) => idx !== index));
   };
 
   const handleChallengeTypeChange = (index: number, newType: string) => {
     const updatedChallenges = [...challenges];
     updatedChallenges[index] = { ...updatedChallenges[index], name: newType, options: getDefaultChallengeOptions(newType) };
-    setSubmitStore({ settings: { ...settings, challenges: updatedChallenges } });
+    setSubplebbitSettingsStore({ settings: { ...settings, challenges: updatedChallenges } });
   };
 
   return (
@@ -702,7 +709,7 @@ const Challenges = ({ isReadOnly, readOnlyChallenges }: { isReadOnly: boolean; r
               challenge={challenge}
               index={index}
               isReadOnly={isReadOnly}
-              setSubmitStore={setSubmitStore}
+              setSubplebbitSettingsStore={setSubplebbitSettingsStore}
               settings={settings}
               showSettings={showSettings[index]}
             />
@@ -714,7 +721,7 @@ const Challenges = ({ isReadOnly, readOnlyChallenges }: { isReadOnly: boolean; r
 };
 
 const JSONSettings = ({ isReadOnly }: { isReadOnly: boolean }) => {
-  const { challenges, title, description, address, suggested, rules, roles, settings, subplebbitAddress, setSubmitStore } = useSubplebbitSettingsStore();
+  const { challenges, title, description, address, suggested, rules, roles, settings, subplebbitAddress, setSubplebbitSettingsStore } = useSubplebbitSettingsStore();
   const [text, setText] = useState('');
 
   useEffect(() => {
@@ -726,7 +733,7 @@ const JSONSettings = ({ isReadOnly }: { isReadOnly: boolean }) => {
     setText(newText);
     try {
       const newSettings = JSON.parse(newText);
-      setSubmitStore(newSettings);
+      setSubplebbitSettingsStore(newSettings);
     } catch (e) {
       console.error('Invalid JSON format');
     }
@@ -750,7 +757,7 @@ const SubplebbitSettings = () => {
   const { address, challenges, createdAt, description, rules, settings, suggested, roles, title, updatedAt } = subplebbit || {};
   const isReadOnly = !settings;
 
-  const { publishSubplebbitEditOptions, setSubmitStore } = useSubplebbitSettingsStore();
+  const { publishSubplebbitEditOptions, setSubplebbitSettingsStore } = useSubplebbitSettingsStore();
   const { publishSubplebbitEdit } = usePublishSubplebbitEdit(publishSubplebbitEditOptions);
 
   const [showLoading, setShowLoading] = useState(false);
@@ -774,7 +781,7 @@ const SubplebbitSettings = () => {
   // set the store with the initial data
   useEffect(() => {
     if (address) {
-      setSubmitStore({
+      setSubplebbitSettingsStore({
         title: title ?? '',
         description: description ?? '',
         address,
