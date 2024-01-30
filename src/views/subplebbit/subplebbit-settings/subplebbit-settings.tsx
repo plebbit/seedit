@@ -592,8 +592,14 @@ const ChallengeSettings = ({ challenge, index, isReadOnly, setSubmitStore, setti
                         <label>
                           <input
                             type='checkbox'
-                            checked={exclude?.rateLimitChallengeSuccess}
-                            onChange={(e) => handleExcludeChange(excludeIndex, 'rateLimitChallengeSuccess', e.target.checked)}
+                            checked={exclude?.rateLimitChallengeSuccess === true}
+                            onChange={(e) => {
+                              if (e.target.checked) {
+                                handleExcludeChange(excludeIndex, 'rateLimitChallengeSuccess', e.target.checked);
+                              } else {
+                                handleExcludeChange(excludeIndex, 'rateLimitChallengeSuccess', undefined);
+                              }
+                            }}
                             disabled={isReadOnly}
                           />
                           apply rate limit only on challenge success
@@ -603,12 +609,12 @@ const ChallengeSettings = ({ challenge, index, isReadOnly, setSubmitStore, setti
                             <input
                               className={styles.rateLimitChallengeFail}
                               type='checkbox'
-                              checked={exclude?.rateLimitChallengeSuccess === undefined}
+                              checked={exclude?.rateLimitChallengeSuccess === false}
                               onChange={(e) => {
                                 if (e.target.checked) {
-                                  handleExcludeChange(excludeIndex, 'rateLimitChallengeSuccess', undefined);
-                                } else {
                                   handleExcludeChange(excludeIndex, 'rateLimitChallengeSuccess', false);
+                                } else {
+                                  handleExcludeChange(excludeIndex, 'rateLimitChallengeSuccess', undefined);
                                 }
                               }}
                               disabled={isReadOnly}
