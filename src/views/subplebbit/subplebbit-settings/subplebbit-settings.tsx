@@ -421,14 +421,15 @@ const ChallengeSettings = ({ challenge, index, isReadOnly, setSubmitStore, setti
       {challengeSettings.map((setting) => (
         <div key={setting?.option} className={styles.challengeOption}>
           <div className={styles.challengeOptionLabel}>{setting?.label}</div>
-          <div className={styles.challengeOptionDescription}>{setting?.description}</div>
+          <div className={styles.challengeOptionDescription}>
+            {setting?.description} {setting?.default && `(default: "${setting?.default}")`}
+          </div>
           {isReadOnly ? (
             <span>{options && (options[setting?.option] || '')}</span>
           ) : (
             <input
               type='text'
               value={options && (options[setting?.option] || '')}
-              defaultValue={setting?.default || ''}
               placeholder={setting?.placeholder || ''}
               onChange={(e) => handleOptionChange(setting?.option, e.target.value)}
             />
