@@ -589,7 +589,7 @@ const ChallengeSettings = ({ challenge, index, isReadOnly, setSubplebbitSettings
                       <input type='number' value={exclude?.rateLimit || undefined} onChange={(e) => handleExcludeChange(excludeIndex, 'rateLimit', e.target.value)} />
                     )}
                     {isReadOnly && !exclude?.rateLimitChallengeSuccess ? null : (
-                      <>
+                      <div>
                         <label>
                           <input
                             type='checkbox'
@@ -605,25 +605,22 @@ const ChallengeSettings = ({ challenge, index, isReadOnly, setSubplebbitSettings
                           />
                           apply rate limit only on challenge success
                         </label>
-                        <div>
-                          <label>
-                            <input
-                              className={styles.rateLimitChallengeFail}
-                              type='checkbox'
-                              checked={exclude?.rateLimitChallengeSuccess === false}
-                              onChange={(e) => {
-                                if (e.target.checked) {
-                                  handleExcludeChange(excludeIndex, 'rateLimitChallengeSuccess', false);
-                                } else {
-                                  handleExcludeChange(excludeIndex, 'rateLimitChallengeSuccess', undefined);
-                                }
-                              }}
-                              disabled={isReadOnly}
-                            />
-                            apply rate limit only on challenge fail
-                          </label>
-                        </div>
-                      </>
+                        <label className={styles.rateLimitChallengeFail}>
+                          <input
+                            type='checkbox'
+                            checked={exclude?.rateLimitChallengeSuccess === false}
+                            onChange={(e) => {
+                              if (e.target.checked) {
+                                handleExcludeChange(excludeIndex, 'rateLimitChallengeSuccess', false);
+                              } else {
+                                handleExcludeChange(excludeIndex, 'rateLimitChallengeSuccess', undefined);
+                              }
+                            }}
+                            disabled={isReadOnly}
+                          />
+                          apply rate limit only on challenge fail
+                        </label>
+                      </div>
                     )}
                   </div>
                 )}
