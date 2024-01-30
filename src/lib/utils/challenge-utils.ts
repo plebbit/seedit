@@ -78,7 +78,7 @@ export const getDefaultChallengeDescription = (challengeType: string) => {
     case 'text-math':
       return 'Ask a plain text math question, insecure, use ONLY for testing.';
     case 'captcha-canvas-v3':
-      return 'Make a custom image captcha';
+      return 'make custom image captcha';
     case 'fail':
       return 'A challenge that automatically fails with a custom error message.';
     case 'blacklist':
