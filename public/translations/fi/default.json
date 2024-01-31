@@ -209,5 +209,6 @@
   "not_subscribed": "Et ole vielä tilannut yhteenkään yhteisöön.",
   "below_approved_user": "Alla ovat yhteisöt, joissa olet hyväksytty käyttäjä.",
   "below_moderator_access": "Alla ovat yhteisöt, joissa sinulla on moderaattoripääsy.",
-  "not_moderator": "Et ole moderaattori missään yhteisössä."
+  "not_moderator": "Et ole moderaattori missään yhteisössä.",
+  "create_community": "Luo yhteisö"
 }

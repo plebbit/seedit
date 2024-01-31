@@ -209,5 +209,6 @@
   "not_subscribed": "Hindi ka pa nakasubok sa alinmang komunidad.",
   "below_approved_user": "Narito ang mga komunidad na ikaw ay isang inaprubahang tagagamit.",
   "below_moderator_access": "Narito ang mga komunidad na mayroon kang access bilang moderator.",
-  "not_moderator": "Hindi ka moderator sa anumang komunidad."
+  "not_moderator": "Hindi ka moderator sa anumang komunidad.",
+  "create_community": "Lumikha ng komunidad"
 }

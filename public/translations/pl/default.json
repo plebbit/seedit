@@ -209,5 +209,6 @@
   "not_subscribed": "Nie jesteś jeszcze subskrybentem żadnej społeczności.",
   "below_approved_user": "Poniżej znajdują się społeczności, na których jesteś zaakceptowanym użytkownikiem.",
   "below_moderator_access": "Poniżej znajdują się społeczności, do których masz dostęp jako moderator.",
-  "not_moderator": "Nie jesteś moderatorem w żadnej społeczności."
+  "not_moderator": "Nie jesteś moderatorem w żadnej społeczności.",
+  "create_community": "Utwórz społeczność"
 }

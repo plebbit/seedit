@@ -209,5 +209,6 @@
   "not_subscribed": "Du er ikke abonnert på noen fellesskap ennå.",
   "below_approved_user": "Nedenfor er samfunnene du er en godkjent bruker på.",
   "below_moderator_access": "Nedenfor er samfunnene du har moderator tilgang til.",
-  "not_moderator": "Du er ikke moderator i noen fellesskap."
+  "not_moderator": "Du er ikke moderator i noen fellesskap.",
+  "create_community": "Opprett fellesskap"
 }

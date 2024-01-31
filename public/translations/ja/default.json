@@ -209,5 +209,6 @@
   "not_subscribed": "まだコミュニティに参加していません。",
   "below_approved_user": "以下は、承認されたユーザーであるコミュニティです。",
   "below_moderator_access": "以下は、あなたがモデレーターアクセス権を持つコミュニティです。",
-  "not_moderator": "あなたはどのコミュニティでもモデレーターではありません。"
+  "not_moderator": "あなたはどのコミュニティでもモデレーターではありません。",
+  "create_community": "コミュニティを作成"
 }

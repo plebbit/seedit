@@ -209,5 +209,6 @@
   "not_subscribed": "Du är inte prenumererad på någon gemenskap ännu.",
   "below_approved_user": "Nedan finns de gemenskaper där du är en godkänd användare.",
   "below_moderator_access": "Nedan finns de gemenskaper som du har moderatoråtkomst till.",
-  "not_moderator": "Du är inte moderator i någon community."
+  "not_moderator": "Du är inte moderator i någon community.",
+  "create_community": "Skapa gemenskap"
 }

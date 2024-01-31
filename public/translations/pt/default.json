@@ -209,5 +209,6 @@
   "not_subscribed": "Você ainda não está inscrito em nenhuma comunidade.",
   "below_approved_user": "Abaixo estão as comunidades em que você é um usuário aprovado.",
   "below_moderator_access": "Abaixo estão as comunidades às quais você tem acesso como moderador.",
-  "not_moderator": "Você não é moderador em nenhuma comunidade."
+  "not_moderator": "Você não é moderador em nenhuma comunidade.",
+  "create_community": "Criar comunidade"
 }

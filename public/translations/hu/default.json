@@ -209,5 +209,6 @@
   "not_subscribed": "Még nincs előfizetése egyetlen közösségre sem.",
   "below_approved_user": "Lent láthatók azok a közösségek, amelyekben jóváhagyott felhasználó vagy.",
   "below_moderator_access": "Lent láthatók azok a közösségek, amelyekhez moderátorként hozzáférhet.",
-  "not_moderator": "Nem vagy moderátor egyetlen közösségben sem."
+  "not_moderator": "Nem vagy moderátor egyetlen közösségben sem.",
+  "create_community": "Közösség létrehozása"
 }
