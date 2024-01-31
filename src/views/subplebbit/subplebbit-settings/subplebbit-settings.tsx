@@ -67,7 +67,7 @@ const useSubplebbitSettingsStore = create<SubplebbitSettingsState>((set) => ({
     }),
 }));
 
-const Title = ({ isReadOnly }: { isReadOnly: boolean }) => {
+const Title = ({ isReadOnly = false }: { isReadOnly?: boolean }) => {
   const { t } = useTranslation();
   const { title, setSubplebbitSettingsStore } = useSubplebbitSettingsStore();
 
@@ -82,7 +82,7 @@ const Title = ({ isReadOnly }: { isReadOnly: boolean }) => {
   );
 };
 
-const Description = ({ isReadOnly }: { isReadOnly: boolean }) => {
+const Description = ({ isReadOnly = false }: { isReadOnly?: boolean }) => {
   const { t } = useTranslation();
   const { description, setSubplebbitSettingsStore } = useSubplebbitSettingsStore();
 
@@ -101,7 +101,7 @@ const Description = ({ isReadOnly }: { isReadOnly: boolean }) => {
   );
 };
 
-const Address = ({ isReadOnly }: { isReadOnly: boolean }) => {
+const Address = ({ isReadOnly = false }: { isReadOnly?: boolean }) => {
   const { t } = useTranslation();
   const { address, setSubplebbitSettingsStore } = useSubplebbitSettingsStore();
 
@@ -116,7 +116,7 @@ const Address = ({ isReadOnly }: { isReadOnly: boolean }) => {
   );
 };
 
-const Logo = ({ isReadOnly }: { isReadOnly: boolean }) => {
+const Logo = ({ isReadOnly = false }: { isReadOnly?: boolean }) => {
   const { t } = useTranslation();
   const { suggested, setSubplebbitSettingsStore } = useSubplebbitSettingsStore();
 
@@ -157,7 +157,7 @@ const Logo = ({ isReadOnly }: { isReadOnly: boolean }) => {
   );
 };
 
-const Rules = ({ isReadOnly }: { isReadOnly: boolean }) => {
+const Rules = ({ isReadOnly = false }: { isReadOnly?: boolean }) => {
   const { t } = useTranslation();
   const { rules, setSubplebbitSettingsStore } = useSubplebbitSettingsStore();
   const lastRuleRef = useRef(null);
@@ -216,7 +216,7 @@ const Rules = ({ isReadOnly }: { isReadOnly: boolean }) => {
   );
 };
 
-const Moderators = ({ isReadOnly }: { isReadOnly: boolean }) => {
+const Moderators = ({ isReadOnly = false }: { isReadOnly?: boolean }) => {
   const { t } = useTranslation();
   const { roles, setSubplebbitSettingsStore } = useSubplebbitSettingsStore();
   const lastModeratorRef = useRef(null);
@@ -717,7 +717,7 @@ const Challenges = ({ isReadOnly, readOnlyChallenges }: { isReadOnly: boolean; r
   );
 };
 
-const JSONSettings = ({ isReadOnly }: { isReadOnly: boolean }) => {
+const JSONSettings = ({ isReadOnly = false }: { isReadOnly?: boolean }) => {
   const { challenges, title, description, address, suggested, rules, roles, settings, subplebbitAddress, setSubplebbitSettingsStore } = useSubplebbitSettingsStore();
   const [text, setText] = useState('');
 

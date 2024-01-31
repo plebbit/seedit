@@ -11,7 +11,7 @@ import {
   isAuthorView,
   isAuthorCommentsView,
   isAuthorSubmittedView,
-  isProfileDownvotedView,
+  isCreateSubplebbitView,
   isHomeAboutView,
   isHomeView,
   isInboxView,
@@ -19,6 +19,7 @@ import {
   isPostView,
   isProfileView,
   isProfileCommentsView,
+  isProfileDownvotedView,
   isProfileSubmittedView,
   isSettingsView,
   isSubmitView,
@@ -256,6 +257,7 @@ const HeaderTabs = () => {
   const isInSubplebbitSettingsView = isSubplebbitSettingsView(location.pathname, params);
   const isInSubplebbitSubmitView = isSubplebbitSubmitView(location.pathname, params);
   const isInSubplebbitsView = isSubplebbitsView(location.pathname);
+  const isInCreateSubplebbitView = isCreateSubplebbitView(location.pathname);
 
   if (isInPostView) {
     return <CommentsButton />;
@@ -267,7 +269,7 @@ const HeaderTabs = () => {
     return <span className={styles.pageName}>{t('pending')}</span>;
   } else if (isInInboxView) {
     return <InboxHeaderTabs />;
-  } else if (isInSubplebbitsView) {
+  } else if (isInSubplebbitsView && !isInCreateSubplebbitView) {
     return <SubplebbitsHeaderTabs />;
   }
   return null;
@@ -288,6 +290,7 @@ const HeaderTitle = ({ title, shortAddress }: { title: string; shortAddress: str
   const isInSubplebbitSubmitView = isSubplebbitSubmitView(location.pathname, params);
   const isInSubplebbitSettingsView = isSubplebbitSettingsView(location.pathname, params);
   const isInSubplebbitsView = isSubplebbitsView(location.pathname);
+  const isInCreateSubplebbitView = isCreateSubplebbitView(location.pathname);
 
   const subplebbitTitle = <Link to={`/p/${params.subplebbitAddress}`}>{title || shortAddress}</Link>;
   const submitTitle = <span className={styles.submitTitle}>{t('submit')}</span>;
@@ -318,6 +321,8 @@ const HeaderTitle = ({ title, shortAddress }: { title: string; shortAddress: str
     return authorTitle;
   } else if (isInInboxView) {
     return t('messages');
+  } else if (isInCreateSubplebbitView) {
+    return <span className={styles.lowercase}>{t('create_community')}</span>;
   } else if (isInSubplebbitsView) {
     return t('communities');
   }
