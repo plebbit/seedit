@@ -323,7 +323,7 @@ interface ChallengeSettingsProps {
 
 const rolesToExclude = ['moderator', 'admin', 'owner'];
 const actionsToExclude: Array<'post' | 'reply' | 'vote'> = ['post', 'reply', 'vote'];
-const customActions: Array<'non-post' | 'non-reply' | 'non-vote'> = ['non-post', 'non-reply', 'non-vote'];
+const nonActionsToExclude: Array<'non-post' | 'non-reply' | 'non-vote'> = ['non-post', 'non-reply', 'non-vote'];
 
 const ChallengeSettings = ({ challenge, index, isReadOnly, setSubplebbitSettingsStore, settings, showSettings }: ChallengeSettingsProps) => {
   const { name, options } = challenge || {};
@@ -558,20 +558,20 @@ const ChallengeSettings = ({ challenge, index, isReadOnly, setSubplebbitSettings
                         </div>
                       ),
                     )}
-                    {customActions.map((action) =>
-                      isReadOnly && exclude?.[action.replace('non-', '')] ? null : (
-                        <div key={action}>
+                    {nonActionsToExclude.map((nonAction) =>
+                      isReadOnly && exclude?.[nonAction.replace('non-', '')] ? null : (
+                        <div key={nonAction}>
                           {isReadOnly ? (
-                            <span className={styles.readOnlyActionExclude}>{action} excluded</span>
+                            <span className={styles.readOnlyActionExclude}>{nonAction} excluded</span>
                           ) : (
                             <label>
                               <input
                                 type='checkbox'
-                                checked={exclude?.[action.replace('non-', '')]}
-                                onChange={(e) => handleExcludeChange(excludeIndex, action, e.target.checked)}
+                                checked={exclude?.[nonAction.replace('non-', '')] === undefined}
+                                onChange={(e) => handleExcludeChange(excludeIndex, nonAction, e.target.checked)}
                                 disabled={isReadOnly}
                               />
-                              exclude {action}
+                              exclude {nonAction}
                             </label>
                           )}
                         </div>
