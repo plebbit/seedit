@@ -28,7 +28,7 @@ const Challenge = ({ challenge, closeModal }: ChallengeProps) => {
   const [answers, setAnswers] = useState<string[]>([]);
 
   const isTextChallenge = challenges[currentChallengeIndex].type === 'text/plain';
-  const isImageChallenge = challenge[currentChallengeIndex].type === 'image/png';
+  const isImageChallenge = challenges[currentChallengeIndex].type === 'image/png';
 
   const onAnswersChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setAnswers((prevAnswers) => {
