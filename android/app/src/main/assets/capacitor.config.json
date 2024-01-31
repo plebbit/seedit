@@ -1,0 +1,6 @@
+{
+	"appId": "seedit.android",
+	"appName": "seedit",
+	"webDir": "build",
+	"bundledWebRuntime": false
+}
