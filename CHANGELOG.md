@@ -1,3 +1,81 @@
+## [0.1.4](https://github.com/plebbit/seedit/compare/v0.1.3...v0.1.4) (2024-01-30)
+
+
+### Bug Fixes
+
+* **account settings:** prevent deleting last account, reload page when changing active account ([14fde38](https://github.com/plebbit/seedit/commit/14fde3833a1be67b4db232e682848c172e40ea3f))
+* **home:** some text would be cut on mobile, padding-right was needed ([e599393](https://github.com/plebbit/seedit/commit/e59939375785e654c7bacefecc1ef3b44c031488))
+* **index.html:** disable auto zoom on safari mobile ([497b8d6](https://github.com/plebbit/seedit/commit/497b8d6d34dba0f96952e0687c9c1c4b80bcfe4b))
+* **markdown:** add regex to fix newlines in list items separated by empty lines ([b65e9aa](https://github.com/plebbit/seedit/commit/b65e9aa153b50f6743d03946cc4ca199c8f494ac))
+* **markdown:** remove regex, adopting conventional markdown rules ([337373f](https://github.com/plebbit/seedit/commit/337373fdf5ebc1d7a9e2b416c36967842ae24c1b))
+* **markdown:** use regex and a custom remark plugin to correctly style quotes and lists ([361a479](https://github.com/plebbit/seedit/commit/361a479111098f592e4ffd214d950f31fd69b9be))
+* **media utils:** add m.youtube ([c81d240](https://github.com/plebbit/seedit/commit/c81d240b90f80844d87bf313bd369cd88dcfb285))
+* **post:** author address wouldn't underline on mouse over ([cfcda0f](https://github.com/plebbit/seedit/commit/cfcda0f4ee83fad59eed01b8cd4eba356750096c))
+* **post:** fix virtuoso zero-sized element error ([b2cbacc](https://github.com/plebbit/seedit/commit/b2cbacc3b4d08f27ae94ff0e3fe992fd61bc09ca))
+* **sidebar:** don't render rules if they are an empty array ([ad91dd7](https://github.com/plebbit/seedit/commit/ad91dd7432e45dfe991245c6f2da04e11a57358a))
+* **submit:** show suggested communities if subs are less than 5, update translation, fix state ([c56b944](https://github.com/plebbit/seedit/commit/c56b944e99b55941f1d4bd4785c80dde03b37f48))
+* **subplebbits:** don't show offline label if updatedAt is undefined ([9d0bd81](https://github.com/plebbit/seedit/commit/9d0bd81584e0fd2c4ffa34b742e6b4e283e42f63))
+* **subplebbit:** selecting the time filter would bug the header title and topbar ([90f9d35](https://github.com/plebbit/seedit/commit/90f9d3546c4fcd1d03fdcdcd3e8c5b7b26e13c35))
+* **time utils:** show 1 minute if 1.x minutes ([8f941c1](https://github.com/plebbit/seedit/commit/8f941c14db882c53c54bf09ee1d3393d18a7e88b))
+* **topbar:** subscriptions were showing in default sub list ([dbd2f34](https://github.com/plebbit/seedit/commit/dbd2f348fbcf7009f6e0abacb7eb30423e32adf7))
+* unescape html encoded tags in i18next trans element ([76065a8](https://github.com/plebbit/seedit/commit/76065a80c0dd94e62967a7b6d0158bc0450e53be))
+
+
+### Features
+
+* add mobile about page to home, p/all ([e1e28b9](https://github.com/plebbit/seedit/commit/e1e28b94909149ecd9ebd92e7241a93918f74cd7))
+* add offline/online title to indicator ([8a56bf1](https://github.com/plebbit/seedit/commit/8a56bf1f15ec5ae4480042166ced77062d7e630f))
+* **edit menu:** implemented instant author edits to delete post, mark as spoiler ([33d1e6b](https://github.com/plebbit/seedit/commit/33d1e6bc93dc1af6fdbac707ff777eb77e63cbc5))
+* **electron:** improve navigation labels ([32dd697](https://github.com/plebbit/seedit/commit/32dd69789cb9578234cecbaaa4b696861867d306))
+* **home:** default time filter to 1 week to avoid showing old posts ([16b0f39](https://github.com/plebbit/seedit/commit/16b0f39491317b8be501d5ad69eddffa6f2c63ee))
+* **home:** implement last visit time filter, automatically selected ([5f651fc](https://github.com/plebbit/seedit/commit/5f651fcffbacb6699fccc5df33f63fa489cd4fe2))
+* implement markdown, styled, in posts, replies and sidebars ([5e61fd6](https://github.com/plebbit/seedit/commit/5e61fd6a8717de338011275840629dc8b9c82468))
+* **label:** add removed and deleted labels, don't hide post when deleting to allow other edits ([5314d10](https://github.com/plebbit/seedit/commit/5314d10b935165ed6cc082d068e6e8484f89b391))
+* **mod menu:** allow multiple instant edits ([f887972](https://github.com/plebbit/seedit/commit/f8879724646e62b5e4520d44a8f80a41b81933ef))
+* **mod menu:** show mod menu for single replies, put it last in tools for quicker access ([3c1da1c](https://github.com/plebbit/seedit/commit/3c1da1cfee6328054f5aff3d2ee34e3a46f3bde6))
+* **sidebar:** add desktop app banner ([4266964](https://github.com/plebbit/seedit/commit/4266964323d8804005be4f8b18c0caa7bea3a928))
+* **sidebar:** add dev version commit ref with link to the commit ([052aad9](https://github.com/plebbit/seedit/commit/052aad9bff2a67599e70cf40646a6ef99ddf733d))
+* **sidebar:** add download links for the desktop client ([2578249](https://github.com/plebbit/seedit/commit/2578249e3049bbbf9d45bae176f2c7199a90625e))
+* **sidebar:** add footer with version and link to release ([218840f](https://github.com/plebbit/seedit/commit/218840fd0b4b05349a01a444904232a6311ecb0f))
+* **sidebar:** add moderation tools and community settings link ([7b1ebf7](https://github.com/plebbit/seedit/commit/7b1ebf7eecafff97d2cdf88dd318233b07109b18))
+* **sidebar:** detect OS for 'download app' button in footer ([103a209](https://github.com/plebbit/seedit/commit/103a20959444676903cb02145c27618d1f826418))
+* **sidebar:** version footer links to specific version changelog ([cf6f7d9](https://github.com/plebbit/seedit/commit/cf6f7d99470ff4b0f9154a4c5fe965cecf929fc8))
+* **submit:** 'submit to' page title links to subplebbit, passing link element to translation ([8fd70b6](https://github.com/plebbit/seedit/commit/8fd70b67134181081abe48c746becd8535b35301))
+* **submit:** suggest random communities when subscriptions are zero ([9ed7c42](https://github.com/plebbit/seedit/commit/9ed7c420883eb52add96c6ee2387a9d0f59e9621))
+* **subplebbit settings:** add challenges UI from API ([d2f9249](https://github.com/plebbit/seedit/commit/d2f924981e2cabf7800410dcb7ced4ce444fb50c))
+* **subplebbit settings:** add combinations for exclude from challenge settings ([1e93bad](https://github.com/plebbit/seedit/commit/1e93bad0476260acc9e36e4965e35bd4d297a83e))
+* **subplebbit settings:** add exceptions setting to challenges ([416f097](https://github.com/plebbit/seedit/commit/416f097f681ed00901edadbca2c8dbc1713aaee1))
+* **subplebbit settings:** add functional setting for adding/removing moderators and changing roles ([4680021](https://github.com/plebbit/seedit/commit/46800212c8eef703d4fcf45c2ef70b2c67a4e58d))
+* **subplebbit settings:** add functional settings for subplebbit title, description, address, avatar, rules, settings json ([0d3622f](https://github.com/plebbit/seedit/commit/0d3622f823444544e666dd96546051ee65d557dc))
+* **subplebbit settings:** add functionality to add and remove challenges, include challenge details and exclude values ([dc36065](https://github.com/plebbit/seedit/commit/dc36065635fec96f00d9fd544352860b9c3f15a1))
+* **subplebbit settings:** add info banners for required admin role and desktop app ([118ba4a](https://github.com/plebbit/seedit/commit/118ba4a03768e0d85dd40f51e99fc7b36fbc9bbb))
+* **subplebbit settings:** add logo preview ([7a451df](https://github.com/plebbit/seedit/commit/7a451df71902a7fd600b35d42e27b519f2c2b795))
+* **subplebbit settings:** add negative action exclusion types for challenges ([afe9746](https://github.com/plebbit/seedit/commit/afe9746635f4f2aa97d72aa397ff582a1a7e3a93))
+* **subplebbit settings:** add read-only challenge type and description ([87e305f](https://github.com/plebbit/seedit/commit/87e305f1b3726a437bdd553ce0838ad84cccfead))
+* **subplebbit settings:** add UI ([5f70b02](https://github.com/plebbit/seedit/commit/5f70b022fb86da530c5dc87a0a18c1006baeb6f8))
+* **subplebbit settings:** allow to define custom challenges in default types, using strings as values ([8216994](https://github.com/plebbit/seedit/commit/82169943b26d889bf7553bd9ddb2f119d39e318f))
+* **subplebbit settings:** allow to define exceptions for each challenge, defining exclude array ([c2c68be](https://github.com/plebbit/seedit/commit/c2c68bed2f52f6deaa9c6c0b45fb892873dea96c))
+* **subplebbit settings:** automatically show settings of a challenge when adding it ([3495fee](https://github.com/plebbit/seedit/commit/3495fee801e8d0b3f86e0b8ed159ace4df577b42))
+* **subplebbit settings:** exclude specific user addresses from challenges, minimum user karma ([592a889](https://github.com/plebbit/seedit/commit/592a8893d04b148ced67a7237cad8052afd70e95))
+* **subplebbit settings:** exclude users from challenge by account age, and by free actions per hour ([52533e8](https://github.com/plebbit/seedit/commit/52533e8b801207b9366477c22e7b346461d9f94e))
+* **subplebbits:** add 'all' tab to 'my communities' ([d408cc5](https://github.com/plebbit/seedit/commit/d408cc511398fa4519e0000bd214a1f70cfb5941))
+* **subplebbits:** add 'passed' and 'rejected' tabs to vote page ([fcdb478](https://github.com/plebbit/seedit/commit/fcdb4784a0294c2ff2cc7a3ca1ac6fad66858250))
+* **subplebbits:** add avatars to communities page ([10a4b46](https://github.com/plebbit/seedit/commit/10a4b4662c33460cd4d8232c246bf607438b138d))
+* **subplebbits:** add default subs view, subscriptions view ([b9efbc9](https://github.com/plebbit/seedit/commit/b9efbc940bfc5aee235aab8b99769f2af28a86fe))
+* **subplebbits:** add filtering by user role in 'my communities' tab, routes ([7dfc053](https://github.com/plebbit/seedit/commit/7dfc05395bd200a480ec8ae705ddebb565a6ec40))
+* **subplebbits:** add flair for user role if any ([9cb27c1](https://github.com/plebbit/seedit/commit/9cb27c103c33fecba62a8a6fa3a492feb344e671))
+* **subplebbits:** link to communities, show empty subscriptions view to user, empty moderating subs page ([a485bc9](https://github.com/plebbit/seedit/commit/a485bc98e38b791f45455a2da862898fa3278fa8))
+* **time filter:** default to 1m for new users ([8166d0f](https://github.com/plebbit/seedit/commit/8166d0fcd2dc40fe8781016737839d1fc0fa27ff))
+* **topbar:** add 'edit subscriptions' button ([e14fe49](https://github.com/plebbit/seedit/commit/e14fe49b9cd99f532de13e0b3fa6911d4dbd1ca3))
+* **topbar:** show 'edit subscriptions' button in 'my communities' dropdown ([3b13281](https://github.com/plebbit/seedit/commit/3b13281704b5932d1bbaed31fa499c9a4ea4675a))
+
+
+### Performance Improvements
+
+* **inbox:** improve loading of notification details ([11ddd46](https://github.com/plebbit/seedit/commit/11ddd46aad70b75f6f0ecf0756f8a5d777b897fb))
+
+
+
 ## [0.1.3](https://github.com/plebbit/seedit/compare/v0.1.2...v0.1.3) (2024-01-05)
 
 
