@@ -277,9 +277,11 @@ const Sidebar = ({ address, cid, createdAt, description, downvoteCount = 0, role
               {commitRef && (
                 <>
                   {' '}
+                  (
                   <a href={`https://github.com/plebbit/seedit/commit/${commitRef}`} target='_blank' rel='noopener noreferrer'>
-                    ({commitRef.slice(0, 7)})
+                    {commitRef.slice(0, 7)}
                   </a>
+                  )
                 </>
               )}
             </li>
