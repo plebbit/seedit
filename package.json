@@ -5,8 +5,9 @@
   "author": "plebeius.eth",
   "private": true,
   "dependencies": {
+    "@capacitor/app": "1.1.1",
     "@floating-ui/react": "0.26.1",
-    "@plebbit/plebbit-react-hooks": "https://github.com/plebbit/plebbit-react-hooks.git#99b74b363060027985fbb7abca3589e827ccb199",
+    "@plebbit/plebbit-react-hooks": "https://github.com/plebbit/plebbit-react-hooks.git#4ed2705f50f94f0392aaba1f069d332a6168af78",
     "@testing-library/jest-dom": "5.14.1",
     "@testing-library/react": "13.0.0",
     "@testing-library/user-event": "13.2.1",
@@ -55,6 +56,7 @@
     "electron:before:download-ipfs": "node electron/download-ipfs",
     "electron:before:delete-data": "rimraf .plebbit",
     "prettier": "prettier {src,electron}/**/*.{js,ts,tsx} --write",
+    "android:build:icons": "cordova-res android --skip-config --copy --resources /tmp/plebbit-react-android-icons --icon-source ./android/icons/icon.png --splash-source ./android/icons/splash.png --icon-foreground-source ./android/icons/icon-foreground.png --icon-background-source '#ffffff'",
     "changelog": "conventional-changelog --preset angular --infile CHANGELOG.md --same-file --release-count 0"
   },
   "eslintConfig": {
@@ -78,6 +80,10 @@
     ]
   },
   "devDependencies": {
+    "@capacitor/android": "3.6.0",
+    "@capacitor/cli": "3.6.0",
+    "@capacitor/core": "3.6.0",
+    "cordova-res": "0.15.4",
     "@types/memoizee": "0.4.9",
     "concurrently": "8.0.1",
     "conventional-changelog-cli": "4.1.0",
