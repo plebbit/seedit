@@ -122,7 +122,7 @@
 }
 
 .singleCommentHighlight {
-  background-color: #ffc;
+  background-color: var(--yellow-highlight);
   padding: 2px 5px;
 }
 
