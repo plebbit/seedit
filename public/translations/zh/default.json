@@ -87,7 +87,7 @@
   "time_x_years": "{{count}} 年",
   "search": "搜索",
   "submit_post": "提交新帖",
-  "create_community": "创建您自己的社区",
+  "create_your_community": "创建您自己的社区",
   "moderators": "版主",
   "about_moderation": "关于管理团队",
   "join": "加入",
@@ -209,5 +209,6 @@
   "not_subscribed": "您尚未订阅任何社区。",
   "below_approved_user": "下面是您是批准用户的社区。",
   "below_moderator_access": "以下是您作为版主拥有访问权限的社区。",
-  "not_moderator": "您不是任何社区的版主。"
+  "not_moderator": "您不是任何社区的版主。",
+  "create_community": "创建社区"
 }

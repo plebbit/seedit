@@ -206,7 +206,7 @@
 }
 
 .rateLimitChallengeFail {
-  display: inline-block;
+  display: block;
 }
 
 .moderator {

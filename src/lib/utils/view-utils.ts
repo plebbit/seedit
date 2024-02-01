@@ -52,6 +52,10 @@ export const isAuthorSubmittedView = (pathname: string, params: ParamsType): boo
   return pathname === `/u/${params.authorAddress}/c/${params.commentCid}/submitted`;
 };
 
+export const isCreateSubplebbitView = (pathname: string): boolean => {
+  return pathname === '/communities/create';
+};
+
 export const isHomeView = (pathname: string, params: ParamsType): boolean => {
   return pathname === '/' || sortTypes.includes(pathname) || (timeFilterNames.includes(params.timeFilterName as TimeFilterKey) && !pathname.startsWith('/p/'));
 };

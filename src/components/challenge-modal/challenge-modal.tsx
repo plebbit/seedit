@@ -27,6 +27,9 @@ const Challenge = ({ challenge, closeModal }: ChallengeProps) => {
   const [currentChallengeIndex, setCurrentChallengeIndex] = useState(0);
   const [answers, setAnswers] = useState<string[]>([]);
 
+  const isTextChallenge = challenges[currentChallengeIndex].type === 'text/plain';
+  const isImageChallenge = challenges[currentChallengeIndex].type === 'image/png';
+
   const onAnswersChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setAnswers((prevAnswers) => {
       const updatedAnswers = [...prevAnswers];
@@ -58,10 +61,19 @@ const Challenge = ({ challenge, closeModal }: ChallengeProps) => {
         {parentCid ? t('challenge_for_reply', { parentAddress, publicationContent }) : t('challenge_for_post', { publicationContent })}
       </div>
       <div className={styles.challengeMediaWrapper}>
-        <img alt={t('loading')} className={styles.challengeMedia} src={`data:image/png;base64,${challenges[currentChallengeIndex]?.challenge}`} />
+        {isTextChallenge && <div className={styles.challengeMedia}>{challenges[currentChallengeIndex]?.challenge}</div>}
+        {isImageChallenge && <img alt={t('loading')} className={styles.challengeMedia} src={`data:image/png;base64,${challenges[currentChallengeIndex]?.challenge}`} />}
       </div>
       <div>
-        <input onKeyDown={onEnterKey} onChange={onAnswersChange} value={answers[currentChallengeIndex] || ''} className={styles.challengeInput} />
+        <input
+          onKeyDown={onEnterKey}
+          onChange={onAnswersChange}
+          value={answers[currentChallengeIndex] || ''}
+          className={styles.challengeInput}
+          autoCorrect='off'
+          autoComplete='off'
+          spellCheck='false'
+        />
       </div>
       <div className={styles.challengeFooter}>
         <div className={styles.counter}>{t('challenge_counter', { index: currentChallengeIndex + 1, total: challenges?.length })}</div>

@@ -87,7 +87,7 @@
   "time_x_years": "{{count}} years",
   "search": "search",
   "submit_post": "Submit a new post",
-  "create_community": "Create your own community",
+  "create_your_community": "Create your own community",
   "moderators": "moderators",
   "about_moderation": "about moderation team",
   "join": "Join",
@@ -209,5 +209,6 @@
   "not_subscribed": "You are not subscribed to any community.",
   "below_approved_user": "Below are the communities that you are an approved user on.",
   "below_moderator_access": "Below are the communities that you have moderator access to.",
-  "not_moderator": "You are not a moderator on any community."
+  "not_moderator": "You are not a moderator on any community.",
+  "create_community": "Create community"
 }

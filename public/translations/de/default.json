@@ -87,7 +87,7 @@
   "time_x_years": "{{count}} Jahre",
   "search": "suchen",
   "submit_post": "Einen neuen Beitrag veröffentlichen",
-  "create_community": "Erstelle deine eigene Community",
+  "create_your_community": "Erstelle deine eigene Community",
   "moderators": "Moderatoren",
   "about_moderation": "über das Moderationsteam",
   "join": "Beitreten",
@@ -209,5 +209,6 @@
   "not_subscribed": "Du bist bisher in keiner Community angemeldet.",
   "below_approved_user": "Hier sind die Gemeinschaften, auf denen du ein genehmigter Benutzer bist.",
   "below_moderator_access": "Hier sind die Gemeinschaften, auf die Sie als Moderator zugreifen können.",
-  "not_moderator": "Du bist kein Moderator in einer Gemeinschaft."
+  "not_moderator": "Du bist kein Moderator in einer Gemeinschaft.",
+  "create_community": "Gemeinschaft erstellen"
 }

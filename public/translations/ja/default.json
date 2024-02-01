@@ -87,7 +87,7 @@
   "time_x_years": "{{count}}年",
   "search": "検索",
   "submit_post": "新しい投稿を送信",
-  "create_community": "独自のコミュニティを作成",
+  "create_your_community": "独自のコミュニティを作成",
   "moderators": "モデレーター",
   "about_moderation": "モデレーションチームについて",
   "join": "参加",
@@ -209,5 +209,6 @@
   "not_subscribed": "まだコミュニティに参加していません。",
   "below_approved_user": "以下は、承認されたユーザーであるコミュニティです。",
   "below_moderator_access": "以下は、あなたがモデレーターアクセス権を持つコミュニティです。",
-  "not_moderator": "あなたはどのコミュニティでもモデレーターではありません。"
+  "not_moderator": "あなたはどのコミュニティでもモデレーターではありません。",
+  "create_community": "コミュニティを作成"
 }

@@ -87,7 +87,7 @@
   "time_x_years": "{{count}} سنوات",
   "search": "بحث",
   "submit_post": "قدم مشاركة جديدة",
-  "create_community": "أنشئ مجتمعك الخاص",
+  "create_your_community": "أنشئ مجتمعك الخاص",
   "moderators": "المشرفون",
   "about_moderation": "عن الإشراف",
   "join": "انضم",
@@ -209,5 +209,6 @@
   "not_subscribed": "لم تشترك في أي مجتمع حتى الآن.",
   "below_approved_user": "أدناه هي المجتمعات التي أنت مستخدم معتمد فيها.",
   "below_moderator_access": "أدناه هي المجتمعات التي لديك وصولاً كمشرف إليها.",
-  "not_moderator": "أنت لست مشرفًا على أي مجتمع."
+  "not_moderator": "أنت لست مشرفًا على أي مجتمع.",
+  "create_community": "إنشاء مجتمع"
 }

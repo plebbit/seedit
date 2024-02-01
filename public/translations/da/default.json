@@ -87,7 +87,7 @@
   "time_x_years": "{{count}} år",
   "search": "søge",
   "submit_post": "Indsend en ny post",
-  "create_community": "Opret din egen fællesskab",
+  "create_your_community": "Opret din egen fællesskab",
   "moderators": "moderatorer",
   "about_moderation": "om moderationsholdet",
   "join": "Deltag",
@@ -209,5 +209,6 @@
   "not_subscribed": "Du er ikke tilmeldt nogen fællesskab endnu.",
   "below_approved_user": "Nedenfor er de fællesskaber, hvor du er en godkendt bruger.",
   "below_moderator_access": "Nedenfor er de fællesskaber, du har moderatoradgang til.",
-  "not_moderator": "Du er ikke moderator på nogen fællesskab."
+  "not_moderator": "Du er ikke moderator på nogen fællesskab.",
+  "create_community": "Opret fællesskab"
 }

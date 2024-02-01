@@ -87,7 +87,7 @@
   "time_x_years": "{{count}} ani",
   "search": "căutare",
   "submit_post": "Trimite o postare nouă",
-  "create_community": "Creează-ți propria comunitate",
+  "create_your_community": "Creează-ți propria comunitate",
   "moderators": "moderatori",
   "about_moderation": "despre echipa de moderare",
   "join": "Alătură-te",
@@ -209,5 +209,6 @@
   "not_subscribed": "Nu sunteți abonat la nicio comunitate încă.",
   "below_approved_user": "Mai jos sunt comunitățile unde ești un utilizator aprobat.",
   "below_moderator_access": "Mai jos sunt comunitățile la care aveți acces ca moderator.",
-  "not_moderator": "Nu ești moderator în nicio comunitate."
+  "not_moderator": "Nu ești moderator în nicio comunitate.",
+  "create_community": "Creați comunitate"
 }

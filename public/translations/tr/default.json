@@ -87,7 +87,7 @@
   "time_x_years": "{{count}} yıl",
   "search": "arama",
   "submit_post": "Yeni bir gönderi gönder",
-  "create_community": "Kendi topluluğunu oluştur",
+  "create_your_community": "Kendi topluluğunu oluştur",
   "moderators": "moderatorler",
   "about_moderation": "moderasyon ekibi hakkında",
   "join": "Katıl",
@@ -209,5 +209,6 @@
   "not_subscribed": "Henüz hiçbir topluluğa abone değilsiniz.",
   "below_approved_user": "Aşağıda onaylı bir kullanıcı olduğunuz topluluklar bulunmaktadır.",
   "below_moderator_access": "Aşağıda moderatör erişimine sahip olduğunuz topluluklar bulunmaktadır.",
-  "not_moderator": "Hiçbir topluluğun moderatörü değilsiniz."
+  "not_moderator": "Hiçbir topluluğun moderatörü değilsiniz.",
+  "create_community": "Topluluk oluştur"
 }

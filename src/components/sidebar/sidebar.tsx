@@ -1,4 +1,4 @@
-import { Link, useLocation, useParams } from 'react-router-dom';
+import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { getShortAddress } from '@plebbit/plebbit-js';
 import { useAccount, useBlock, Role, useSubplebbitStats, useAccountComment } from '@plebbit/plebbit-react-hooks';
@@ -12,6 +12,7 @@ import SubscribeButton from '../subscribe-button';
 import packageJson from '../../../package.json';
 const { version } = packageJson;
 const commitRef = process.env.REACT_APP_COMMIT_REF;
+const isElectron = window.electron && window.electron.isElectron;
 
 interface sidebarProps {
   address?: string | undefined;
@@ -153,8 +154,15 @@ const Sidebar = ({ address, cid, createdAt, description, downvoteCount = 0, role
     }
   };
 
-  const alertCreateCommunity = () => {
-    alert('Not available in this version. You can create a community with the CLI: https://github.com/plebbit/plebbit-cli');
+  const navigate = useNavigate();
+  const handleCreateCommunity = () => {
+    if (isElectron) {
+      navigate('/communities/create');
+    } else {
+      alert(
+        'Not yet available on web. You can create a community using the desktop app. If you are comfortable with the command line, check out: https://github.com/plebbit/plebbit-cli',
+      );
+    }
   };
 
   const account = useAccount();
@@ -213,12 +221,10 @@ const Sidebar = ({ address, cid, createdAt, description, downvoteCount = 0, role
       )}
       {isModerator && <ModerationTools address={address} />}
       {roles && <ModeratorsList roles={roles} />}
-      <Link to='/communities/create' onClick={(e) => e.preventDefault()}>
-        <div className={styles.largeButton} onClick={alertCreateCommunity}>
-          {t('create_community')}
-          <div className={styles.nub} />
-        </div>
-      </Link>
+      <div className={styles.largeButton} onClick={handleCreateCommunity}>
+        {t('create_your_community')}
+        <div className={styles.nub} />
+      </div>
       <div className={styles.footer}>
         <a className={styles.footerLogo} href='https://github.com/plebbit/seedit/releases/latest' target='_blank' rel='noopener noreferrer'>
           <img src='icon.png' alt='seedit mascot' />

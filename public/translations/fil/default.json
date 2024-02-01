@@ -87,7 +87,7 @@
   "time_x_years": "{{count}} taon",
   "search": "hanapin",
   "submit_post": "Magsumite ng bagong post",
-  "create_community": "Lumikha ng sariling komunidad",
+  "create_your_community": "Lumikha ng sariling komunidad",
   "moderators": "moderators",
   "about_moderation": "tungkol sa koponan ng moderation",
   "join": "Sumali",
@@ -209,5 +209,6 @@
   "not_subscribed": "Hindi ka pa nakasubok sa alinmang komunidad.",
   "below_approved_user": "Narito ang mga komunidad na ikaw ay isang inaprubahang tagagamit.",
   "below_moderator_access": "Narito ang mga komunidad na mayroon kang access bilang moderator.",
-  "not_moderator": "Hindi ka moderator sa anumang komunidad."
+  "not_moderator": "Hindi ka moderator sa anumang komunidad.",
+  "create_community": "Lumikha ng komunidad"
 }

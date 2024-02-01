@@ -87,7 +87,7 @@
   "time_x_years": "{{count}} tahun",
   "search": "cari",
   "submit_post": "Kirim postingan baru",
-  "create_community": "Buat komunitas sendiri",
+  "create_your_community": "Buat komunitas sendiri",
   "moderators": "moderator",
   "about_moderation": "tentang tim moderasi",
   "join": "Gabung",
@@ -209,5 +209,6 @@
   "not_subscribed": "Anda belum berlangganan ke komunitas mana pun.",
   "below_approved_user": "Di bawah ini adalah komunitas di mana Anda adalah pengguna yang disetujui.",
   "below_moderator_access": "Di bawah ini adalah komunitas yang Anda miliki akses moderator.",
-  "not_moderator": "Anda bukan moderator di komunitas mana pun."
+  "not_moderator": "Anda bukan moderator di komunitas mana pun.",
+  "create_community": "Buat komunitas"
 }

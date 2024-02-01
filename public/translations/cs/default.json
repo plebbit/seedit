@@ -87,7 +87,7 @@
   "time_x_years": "{{count}} let",
   "search": "hledat",
   "submit_post": "Odeslat nový příspěvek",
-  "create_community": "Vytvořte si vlastní komunitu",
+  "create_your_community": "Vytvořte si vlastní komunitu",
   "moderators": "moderátoři",
   "about_moderation": "o moderaci týmu",
   "join": "Připojit se",
@@ -209,5 +209,6 @@
   "not_subscribed": "Zatím nejste přihlášeni ke žádné komunitě.",
   "below_approved_user": "Níže jsou komunity, na kterých jste schváleným uživatelem.",
   "below_moderator_access": "Níže jsou komunity, ke kterým máte moderátorský přístup.",
-  "not_moderator": "Nejste moderátorem žádné komunity."
+  "not_moderator": "Nejste moderátorem žádné komunity.",
+  "create_community": "Vytvořit komunitu"
 }

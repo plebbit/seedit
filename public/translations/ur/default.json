@@ -87,7 +87,7 @@
   "time_x_years": "{{count}} سال",
   "search": "تلاش",
   "submit_post": "نیا پوسٹ جمع کروائیں",
-  "create_community": "اپنا خود کا کمیونٹی بنائیں",
+  "create_your_community": "اپنا خود کا کمیونٹی بنائیں",
   "moderators": "ماڈریٹرز",
   "about_moderation": "ماڈریشن ٹیم کے بارے میں",
   "join": "شامل ہوں",
@@ -209,5 +209,6 @@
   "not_subscribed": "آپ کسی بھی کمیونٹی کا مشترک نہیں ہیں۔",
   "below_approved_user": "نیچے وہ کمیونٹیاں ہیں جو آپ ایک منظور شدہ صارف ہیں۔",
   "below_moderator_access": "نیچے وہ کمیونٹیز ہیں جن کا موڈریٹر رسائی ہے۔",
-  "not_moderator": "آپ کسی بھی کمیونٹی پر موڈریٹر نہیں ہیں۔"
+  "not_moderator": "آپ کسی بھی کمیونٹی پر موڈریٹر نہیں ہیں۔",
+  "create_community": "کمیونٹی بنائیں"
 }

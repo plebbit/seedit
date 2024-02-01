@@ -87,7 +87,7 @@
   "time_x_years": "{{count}} ans",
   "search": "rechercher",
   "submit_post": "Soumettre une nouvelle publication",
-  "create_community": "Créez votre propre communauté",
+  "create_your_community": "Créez votre propre communauté",
   "moderators": "modérateurs",
   "about_moderation": "à propos de l'équipe de modération",
   "join": "Rejoindre",
@@ -209,5 +209,6 @@
   "not_subscribed": "Vous n'êtes abonné à aucune communauté pour le moment.",
   "below_approved_user": "Ci-dessous se trouvent les communautés où vous êtes un utilisateur approuvé.",
   "below_moderator_access": "Ci-dessous se trouvent les communautés auxquelles vous avez accès en tant que modérateur.",
-  "not_moderator": "Vous n'êtes pas modérateur dans aucune communauté."
+  "not_moderator": "Vous n'êtes pas modérateur dans aucune communauté.",
+  "create_community": "Créer une communauté"
 }

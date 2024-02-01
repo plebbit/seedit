@@ -67,7 +67,7 @@ const useSubplebbitSettingsStore = create<SubplebbitSettingsState>((set) => ({
     }),
 }));
 
-const Title = ({ isReadOnly }: { isReadOnly: boolean }) => {
+const Title = ({ isReadOnly = false }: { isReadOnly?: boolean }) => {
   const { t } = useTranslation();
   const { title, setSubplebbitSettingsStore } = useSubplebbitSettingsStore();
 
@@ -82,7 +82,7 @@ const Title = ({ isReadOnly }: { isReadOnly: boolean }) => {
   );
 };
 
-const Description = ({ isReadOnly }: { isReadOnly: boolean }) => {
+const Description = ({ isReadOnly = false }: { isReadOnly?: boolean }) => {
   const { t } = useTranslation();
   const { description, setSubplebbitSettingsStore } = useSubplebbitSettingsStore();
 
@@ -101,7 +101,7 @@ const Description = ({ isReadOnly }: { isReadOnly: boolean }) => {
   );
 };
 
-const Address = ({ isReadOnly }: { isReadOnly: boolean }) => {
+const Address = ({ isReadOnly = false }: { isReadOnly?: boolean }) => {
   const { t } = useTranslation();
   const { address, setSubplebbitSettingsStore } = useSubplebbitSettingsStore();
 
@@ -116,7 +116,7 @@ const Address = ({ isReadOnly }: { isReadOnly: boolean }) => {
   );
 };
 
-const Logo = ({ isReadOnly }: { isReadOnly: boolean }) => {
+const Logo = ({ isReadOnly = false }: { isReadOnly?: boolean }) => {
   const { t } = useTranslation();
   const { suggested, setSubplebbitSettingsStore } = useSubplebbitSettingsStore();
 
@@ -157,7 +157,7 @@ const Logo = ({ isReadOnly }: { isReadOnly: boolean }) => {
   );
 };
 
-const Rules = ({ isReadOnly }: { isReadOnly: boolean }) => {
+const Rules = ({ isReadOnly = false }: { isReadOnly?: boolean }) => {
   const { t } = useTranslation();
   const { rules, setSubplebbitSettingsStore } = useSubplebbitSettingsStore();
   const lastRuleRef = useRef(null);
@@ -216,7 +216,7 @@ const Rules = ({ isReadOnly }: { isReadOnly: boolean }) => {
   );
 };
 
-const Moderators = ({ isReadOnly }: { isReadOnly: boolean }) => {
+const Moderators = ({ isReadOnly = false }: { isReadOnly?: boolean }) => {
   const { t } = useTranslation();
   const { roles, setSubplebbitSettingsStore } = useSubplebbitSettingsStore();
   const lastModeratorRef = useRef(null);
@@ -323,7 +323,7 @@ interface ChallengeSettingsProps {
 
 const rolesToExclude = ['moderator', 'admin', 'owner'];
 const actionsToExclude: Array<'post' | 'reply' | 'vote'> = ['post', 'reply', 'vote'];
-const customActions: Array<'non-post' | 'non-reply' | 'non-vote'> = ['non-post', 'non-reply', 'non-vote'];
+const nonActionsToExclude: Array<'non-post' | 'non-reply' | 'non-vote'> = ['non-post', 'non-reply', 'non-vote'];
 
 const ChallengeSettings = ({ challenge, index, isReadOnly, setSubplebbitSettingsStore, settings, showSettings }: ChallengeSettingsProps) => {
   const { name, options } = challenge || {};
@@ -558,20 +558,20 @@ const ChallengeSettings = ({ challenge, index, isReadOnly, setSubplebbitSettings
                         </div>
                       ),
                     )}
-                    {customActions.map((action) =>
-                      isReadOnly && exclude?.[action.replace('non-', '')] ? null : (
-                        <div key={action}>
+                    {nonActionsToExclude.map((nonAction) =>
+                      isReadOnly && exclude?.[nonAction.replace('non-', '')] ? null : (
+                        <div key={nonAction}>
                           {isReadOnly ? (
-                            <span className={styles.readOnlyActionExclude}>{action} excluded</span>
+                            <span className={styles.readOnlyActionExclude}>{nonAction} excluded</span>
                           ) : (
                             <label>
                               <input
                                 type='checkbox'
-                                checked={exclude?.[action.replace('non-', '')]}
-                                onChange={(e) => handleExcludeChange(excludeIndex, action, e.target.checked)}
+                                checked={exclude?.[nonAction.replace('non-', '')] === undefined}
+                                onChange={(e) => handleExcludeChange(excludeIndex, nonAction, e.target.checked)}
                                 disabled={isReadOnly}
                               />
-                              exclude {action}
+                              exclude {nonAction}
                             </label>
                           )}
                         </div>
@@ -589,7 +589,7 @@ const ChallengeSettings = ({ challenge, index, isReadOnly, setSubplebbitSettings
                       <input type='number' value={exclude?.rateLimit || undefined} onChange={(e) => handleExcludeChange(excludeIndex, 'rateLimit', e.target.value)} />
                     )}
                     {isReadOnly && !exclude?.rateLimitChallengeSuccess ? null : (
-                      <>
+                      <div>
                         <label>
                           <input
                             type='checkbox'
@@ -605,25 +605,22 @@ const ChallengeSettings = ({ challenge, index, isReadOnly, setSubplebbitSettings
                           />
                           apply rate limit only on challenge success
                         </label>
-                        <div>
-                          <label>
-                            <input
-                              className={styles.rateLimitChallengeFail}
-                              type='checkbox'
-                              checked={exclude?.rateLimitChallengeSuccess === false}
-                              onChange={(e) => {
-                                if (e.target.checked) {
-                                  handleExcludeChange(excludeIndex, 'rateLimitChallengeSuccess', false);
-                                } else {
-                                  handleExcludeChange(excludeIndex, 'rateLimitChallengeSuccess', undefined);
-                                }
-                              }}
-                              disabled={isReadOnly}
-                            />
-                            apply rate limit only on challenge fail
-                          </label>
-                        </div>
-                      </>
+                        <label className={styles.rateLimitChallengeFail}>
+                          <input
+                            type='checkbox'
+                            checked={exclude?.rateLimitChallengeSuccess === false}
+                            onChange={(e) => {
+                              if (e.target.checked) {
+                                handleExcludeChange(excludeIndex, 'rateLimitChallengeSuccess', false);
+                              } else {
+                                handleExcludeChange(excludeIndex, 'rateLimitChallengeSuccess', undefined);
+                              }
+                            }}
+                            disabled={isReadOnly}
+                          />
+                          apply rate limit only on challenge fail
+                        </label>
+                      </div>
                     )}
                   </div>
                 )}
@@ -720,7 +717,7 @@ const Challenges = ({ isReadOnly, readOnlyChallenges }: { isReadOnly: boolean; r
   );
 };
 
-const JSONSettings = ({ isReadOnly }: { isReadOnly: boolean }) => {
+const JSONSettings = ({ isReadOnly = false }: { isReadOnly?: boolean }) => {
   const { challenges, title, description, address, suggested, rules, roles, settings, subplebbitAddress, setSubplebbitSettingsStore } = useSubplebbitSettingsStore();
   const [text, setText] = useState('');
 
