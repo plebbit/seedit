@@ -92,9 +92,9 @@ const Post = () => {
           </div>
           {isSingleComment && (
             <div className={styles.singleCommentInfobar}>
-              <div className={styles.singleCommentInfobarText}>you are viewing a single comment's thread</div>
+              <div className={styles.singleCommentInfobarText}>{t('single_comment_notice')}</div>
               <div className={styles.singleCommentInfobarLink}>
-                <Link to={`/p/${subplebbitAddress}/c/${postCid}`}>view the rest of the comments</Link> →
+                <Link to={`/p/${subplebbitAddress}/c/${postCid}`}>{t('single_comment_link')}</Link> →
               </div>
             </div>
           )}

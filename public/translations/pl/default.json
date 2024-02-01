@@ -210,5 +210,7 @@
   "below_approved_user": "Poniżej znajdują się społeczności, na których jesteś zaakceptowanym użytkownikiem.",
   "below_moderator_access": "Poniżej znajdują się społeczności, do których masz dostęp jako moderator.",
   "not_moderator": "Nie jesteś moderatorem w żadnej społeczności.",
-  "create_community": "Utwórz społeczność"
+  "create_community": "Utwórz społeczność",
+  "single_comment_notice": "Przeglądasz wątek jednego komentarza",
+  "single_comment_link": "Zobacz resztę komentarzy"
 }

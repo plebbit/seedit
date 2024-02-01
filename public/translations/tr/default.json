@@ -210,5 +210,7 @@
   "below_approved_user": "Aşağıda onaylı bir kullanıcı olduğunuz topluluklar bulunmaktadır.",
   "below_moderator_access": "Aşağıda moderatör erişimine sahip olduğunuz topluluklar bulunmaktadır.",
   "not_moderator": "Hiçbir topluluğun moderatörü değilsiniz.",
-  "create_community": "Topluluk oluştur"
+  "create_community": "Topluluk oluştur",
+  "single_comment_notice": "Tek bir yorumun konusunu görüntülüyorsunuz",
+  "single_comment_link": "Diğer yorumları görüntüle"
 }

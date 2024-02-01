@@ -210,5 +210,7 @@
   "below_approved_user": "نیچے وہ کمیونٹیاں ہیں جو آپ ایک منظور شدہ صارف ہیں۔",
   "below_moderator_access": "نیچے وہ کمیونٹیز ہیں جن کا موڈریٹر رسائی ہے۔",
   "not_moderator": "آپ کسی بھی کمیونٹی پر موڈریٹر نہیں ہیں۔",
-  "create_community": "کمیونٹی بنائیں"
+  "create_community": "کمیونٹی بنائیں",
+  "single_comment_notice": "آپ صرف ایک تبصرے کی تھریڈ دیکھ رہے ہیں",
+  "single_comment_link": "بقیہ تبصرے دیکھیں"
 }

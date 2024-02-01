@@ -210,5 +210,7 @@
   "below_approved_user": "Nedenfor er samfunnene du er en godkjent bruker på.",
   "below_moderator_access": "Nedenfor er samfunnene du har moderator tilgang til.",
   "not_moderator": "Du er ikke moderator i noen fellesskap.",
-  "create_community": "Opprett fellesskap"
+  "create_community": "Opprett fellesskap",
+  "single_comment_notice": "Du ser på en tråd med kun en kommentar",
+  "single_comment_link": "Se resten av kommentarene"
 }

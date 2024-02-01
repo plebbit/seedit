@@ -210,5 +210,7 @@
   "below_approved_user": "Hieronder staan de gemeenschappen waarop je een goedgekeurde gebruiker bent.",
   "below_moderator_access": "Hieronder staan de gemeenschappen waarop u moderator toegang heeft.",
   "not_moderator": "Je bent geen moderator in een gemeenschap.",
-  "create_community": "Gemeenschap creëren"
+  "create_community": "Gemeenschap creëren",
+  "single_comment_notice": "Je bekijkt een draad van slechts één opmerking",
+  "single_comment_link": "Bekijk de rest van de opmerkingen"
 }

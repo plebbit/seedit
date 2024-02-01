@@ -210,5 +210,7 @@
   "below_approved_user": "Narito ang mga komunidad na ikaw ay isang inaprubahang tagagamit.",
   "below_moderator_access": "Narito ang mga komunidad na mayroon kang access bilang moderator.",
   "not_moderator": "Hindi ka moderator sa anumang komunidad.",
-  "create_community": "Lumikha ng komunidad"
+  "create_community": "Lumikha ng komunidad",
+  "single_comment_notice": "Nakikita mo ang isang thread ng isang komento lamang",
+  "single_comment_link": "Tingnan ang iba pang mga komento"
 }

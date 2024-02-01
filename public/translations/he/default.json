@@ -210,5 +210,7 @@
   "below_approved_user": "למטה תוכלו למצוא את הקהילות בהן אתם משתמשים מאושרים.",
   "below_moderator_access": "למטה תוכלו למצוא את הקהילות בהם יש לך גישה כמנהל.",
   "not_moderator": "אינך מודרטור בקהילה אחת.",
-  "create_community": "צור קהילה"
+  "create_community": "צור קהילה",
+  "single_comment_notice": "אתה צופה בנושא של תגובה אחת בלבד",
+  "single_comment_link": "צפייה בשאר התגובות"
 }

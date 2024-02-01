@@ -210,5 +210,7 @@
   "below_approved_user": "Më poshtë janë komunitetet që jeni një përdorues i miratuar në to.",
   "below_moderator_access": "Më poshtë janë komunitetet në të cilat keni akses si moderator.",
   "not_moderator": "Ju nuk jeni moderator në asnjë komunitet.",
-  "create_community": "Krijo komunitetin"
+  "create_community": "Krijo komunitetin",
+  "single_comment_notice": "Po shikoni një diskutim të një vetëm komenti",
+  "single_comment_link": "Shiko pjesën tjetër të komenteve"
 }

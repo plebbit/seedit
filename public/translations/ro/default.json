@@ -210,5 +210,7 @@
   "below_approved_user": "Mai jos sunt comunitățile unde ești un utilizator aprobat.",
   "below_moderator_access": "Mai jos sunt comunitățile la care aveți acces ca moderator.",
   "not_moderator": "Nu ești moderator în nicio comunitate.",
-  "create_community": "Creați comunitate"
+  "create_community": "Creați comunitate",
+  "single_comment_notice": "Vizualizați un fir de discuție cu un singur comentariu",
+  "single_comment_link": "Vizualizați restul comentariilor"
 }

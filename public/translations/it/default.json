@@ -210,5 +210,7 @@
   "below_approved_user": "Di seguito sono elencate le comunità in cui sei un utente approvato.",
   "below_moderator_access": "Di seguito sono elencate le comunità alle quali hai accesso come moderatore.",
   "not_moderator": "Non sei un moderatore in nessuna comunità.",
-  "create_community": "Crea comunità"
+  "create_community": "Crea comunità",
+  "single_comment_notice": "Stai vedendo una discussione derivante da un commento",
+  "single_comment_link": "Guarda il resto dei commenti"
 }

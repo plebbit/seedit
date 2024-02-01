@@ -210,5 +210,7 @@
   "below_approved_user": "Hier sind die Gemeinschaften, auf denen du ein genehmigter Benutzer bist.",
   "below_moderator_access": "Hier sind die Gemeinschaften, auf die Sie als Moderator zugreifen können.",
   "not_moderator": "Du bist kein Moderator in einer Gemeinschaft.",
-  "create_community": "Gemeinschaft erstellen"
+  "create_community": "Gemeinschaft erstellen",
+  "single_comment_notice": "Sie sehen einen Thread mit nur einem Kommentar",
+  "single_comment_link": "Den Rest der Kommentare anzeigen"
 }

@@ -210,5 +210,7 @@
   "below_approved_user": "以下は、承認されたユーザーであるコミュニティです。",
   "below_moderator_access": "以下は、あなたがモデレーターアクセス権を持つコミュニティです。",
   "not_moderator": "あなたはどのコミュニティでもモデレーターではありません。",
-  "create_community": "コミュニティを作成"
+  "create_community": "コミュニティを作成",
+  "single_comment_notice": "1つのコメントのスレッドを表示しています",
+  "single_comment_link": "他のコメントを表示"
 }

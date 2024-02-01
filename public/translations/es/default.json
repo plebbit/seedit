@@ -210,5 +210,7 @@
   "below_approved_user": "A continuación se muestran las comunidades en las que eres un usuario aprobado.",
   "below_moderator_access": "A continuación se muestran las comunidades a las que tienes acceso como moderador.",
   "not_moderator": "No eres moderador en ninguna comunidad.",
-  "create_community": "Crear comunidad"
+  "create_community": "Crear comunidad",
+  "single_comment_notice": "Estás viendo un hilo de un solo comentario",
+  "single_comment_link": "Ver el resto de los comentarios"
 }

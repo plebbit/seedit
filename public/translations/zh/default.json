@@ -210,5 +210,7 @@
   "below_approved_user": "下面是您是批准用户的社区。",
   "below_moderator_access": "以下是您作为版主拥有访问权限的社区。",
   "not_moderator": "您不是任何社区的版主。",
-  "create_community": "创建社区"
+  "create_community": "创建社区",
+  "single_comment_notice": "您正在查看单个评论的主题",
+  "single_comment_link": "查看其余评论"
 }

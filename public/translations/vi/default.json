@@ -210,5 +210,7 @@
   "below_approved_user": "Dưới đây là các cộng đồng mà bạn là một người dùng được phê duyệt.",
   "below_moderator_access": "Dưới đây là các cộng đồng mà bạn có quyền truy cập với tư cách là người quản trị viên.",
   "not_moderator": "Bạn không phải là người quản trị viên trên bất kỳ cộng đồng nào.",
-  "create_community": "Tạo cộng đồng"
+  "create_community": "Tạo cộng đồng",
+  "single_comment_notice": "Bạn đang xem một luồng bình luận duy nhất",
+  "single_comment_link": "Xem phần còn lại của các bình luận"
 }

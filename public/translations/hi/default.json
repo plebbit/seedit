@@ -210,5 +210,7 @@
   "below_approved_user": "नीचे वे समुदाय हैं जिनमें आप मंजूर उपयोगकर्ता हैं।",
   "below_moderator_access": "नीचे वे समुदाय हैं जिनकी आपके पास मॉडरेटर एक्सेस है।",
   "not_moderator": "आप किसी भी समुदाय में मॉडरेटर नहीं हैं।",
-  "create_community": "समुदाय बनाएं"
+  "create_community": "समुदाय बनाएं",
+  "single_comment_notice": "आप केवल एक टिप्पणी की थ्रेड देख रहे हैं",
+  "single_comment_link": "बाकी टिप्पणियों को देखें"
 }

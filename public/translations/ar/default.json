@@ -210,5 +210,7 @@
   "below_approved_user": "أدناه هي المجتمعات التي أنت مستخدم معتمد فيها.",
   "below_moderator_access": "أدناه هي المجتمعات التي لديك وصولاً كمشرف إليها.",
   "not_moderator": "أنت لست مشرفًا على أي مجتمع.",
-  "create_community": "إنشاء مجتمع"
+  "create_community": "إنشاء مجتمع",
+  "single_comment_notice": "أنت تشاهد موضوع تعليق واحد فقط",
+  "single_comment_link": "عرض بقية التعليقات"
 }
