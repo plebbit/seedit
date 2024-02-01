@@ -100,7 +100,7 @@ const Inbox = () => {
         data={comments}
         itemContent={(index, notification) => (
           <div className={styles.notification}>
-            <Reply index={index} isSingle={true} reply={notification} isNotification={true} />
+            <Reply index={index} isSingleReply={true} reply={notification} isNotification={true} />
           </div>
         )}
         useWindowScroll={true}

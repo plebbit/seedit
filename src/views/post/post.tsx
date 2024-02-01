@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { useLocation, useNavigate, useParams } from 'react-router-dom';
+import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
 import { useAccountComment, useComment, useSubplebbit } from '@plebbit/plebbit-react-hooks';
 import { useTranslation } from 'react-i18next';
 import styles from './post.module.css';
@@ -14,13 +14,13 @@ import { isPendingView } from '../../lib/utils/view-utils';
 
 const Post = () => {
   const { t } = useTranslation();
-
   const params = useParams();
   const location = useLocation();
   const isInPendingView = isPendingView(location.pathname, params);
   const comment = useComment({ commentCid: params?.commentCid });
   const pendingPost = useAccountComment({ commentIndex: params?.accountCommentIndex as any });
   const post = isInPendingView ? pendingPost : comment;
+  const isSingleComment = comment?.parentCid ? true : false;
 
   // in pending page, redirect to post view when post.cid is received
   const navigate = useNavigate();
@@ -30,7 +30,7 @@ const Post = () => {
     }
   }, [post?.cid, post?.subplebbitAddress, navigate]);
 
-  const { cid, downvoteCount, replyCount, subplebbitAddress, timestamp, title, upvoteCount } = comment || {};
+  const { cid, downvoteCount, postCid, replyCount, subplebbitAddress, timestamp, title, upvoteCount } = comment || {};
   const subplebbit = useSubplebbit({ subplebbitAddress });
   const { createdAt, description, roles, rules, updatedAt } = subplebbit || {};
 
@@ -74,9 +74,11 @@ const Post = () => {
       <PostComponent post={post} />
       {!isInPendingView && (
         <div className={styles.replyArea}>
-          <div className={styles.repliesTitle}>
-            <span className={styles.title}>{commentCount}</span>
-          </div>
+          {!isSingleComment && (
+            <div className={styles.repliesTitle}>
+              <span className={styles.title}>{commentCount}</span>
+            </div>
+          )}
           <div className={styles.menuArea}>
             <div className={styles.spacer}>
               <span className={styles.dropdownTitle}>{t('reply_sorted_by')}: </span>
@@ -85,13 +87,20 @@ const Post = () => {
               </div>
             </div>
             <div className={styles.spacer} />
-            <ReplyForm cid={cid} />
+            {!isSingleComment && <ReplyForm cid={cid} />}
             {loadingString && loadingString}
           </div>
+          {isSingleComment && (
+            <div className={styles.singleCommentInfobar}>
+              <div className={styles.singleCommentInfobarText}>you are viewing a single comment's thread</div>
+              <div className={styles.singleCommentInfobarLink}>
+                <Link to={`/p/${subplebbitAddress}/c/${postCid}`}>view the rest of the comments</Link> →
+              </div>
+            </div>
+          )}
           <div className={styles.replies}>
-            {replies.map((reply, index) => (
-              <Reply key={`${index}${reply.cid}`} reply={reply} depth={comment.depth} />
-            ))}
+            {isSingleComment && <Reply key={`singleComment-${comment.cid}`} reply={comment} depth={0} isSingleComment={true} />}
+            {!isSingleComment && replies.map((reply, index) => <Reply key={`${index}${reply.cid}`} reply={reply} depth={comment.depth} />)}
           </div>
         </div>
       )}

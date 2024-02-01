@@ -186,11 +186,12 @@ interface ReplyProps {
   depth?: number;
   index?: number;
   isNotification?: boolean;
-  isSingle?: boolean;
+  isSingleComment?: boolean;
+  isSingleReply?: boolean;
   reply: Comment | undefined;
 }
 
-const Reply = ({ depth = 0, isSingle, isNotification = false, reply = {} }: ReplyProps) => {
+const Reply = ({ depth = 0, isSingleComment, isSingleReply, isNotification = false, reply = {} }: ReplyProps) => {
   // handle pending mod or author edit
   const { editedComment: editedPost } = useEditedComment({ comment: reply });
   if (editedPost) {
@@ -274,9 +275,9 @@ const Reply = ({ depth = 0, isSingle, isNotification = false, reply = {} }: Repl
 
   return (
     <div className={styles.reply}>
-      {isSingle && !isInInboxView && <ParentLink postCid={cid ? postCid : parentOfPendingReply?.postCid} />}
+      {isSingleReply && !isInInboxView && <ParentLink postCid={cid ? postCid : parentOfPendingReply?.postCid} />}
       {isInInboxView && <InboxParentLink commentCid={cid} />}
-      <div className={`${!isSingle ? styles.replyWrapper : styles.singleReplyWrapper} ${depth > 1 && styles.nested}`}>
+      <div className={`${!isSingleReply ? styles.replyWrapper : styles.singleReplyWrapper} ${depth > 1 && styles.nested}`}>
         {!collapsed && (
           <div className={styles.midcol}>
             <div className={`${styles.arrow} ${upvoted ? styles.upvoted : styles.arrowUp}`} onClick={() => cid && upvote()} />
@@ -328,7 +329,7 @@ const Reply = ({ depth = 0, isSingle, isNotification = false, reply = {} }: Repl
                     toggleExpanded={toggleExpanded}
                   />
                 )}
-                <div className={styles.md}>
+                <div className={`${styles.md} ${isSingleComment ? styles.singleCommentHighlight : ''}`}>
                   <Markdown content={contentString} />
                 </div>
               </div>
@@ -341,7 +342,7 @@ const Reply = ({ depth = 0, isSingle, isNotification = false, reply = {} }: Repl
                 cid={cid}
                 deleted={deleted}
                 isReply={true}
-                isSingleReply={isSingle}
+                isSingleReply={isSingleReply}
                 index={reply?.index}
                 parentCid={postCid}
                 removed={removed}
@@ -351,7 +352,7 @@ const Reply = ({ depth = 0, isSingle, isNotification = false, reply = {} }: Repl
                 showReplyForm={showReplyForm}
               />
               {isReplying && <ReplyForm cid={cid} isReplyingToReply={true} hideReplyForm={hideReplyForm} />}
-              {!isSingle && replies.map((reply, index) => <Reply key={`${index}${reply.cid}`} reply={reply} depth={(reply.depth || 1) + 1} />)}
+              {!isSingleReply && replies.map((reply, index) => <Reply key={`${index}${reply.cid}`} reply={reply} depth={(reply.depth || 1) + 1} />)}
             </div>
           )}
         </div>

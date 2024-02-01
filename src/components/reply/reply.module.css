@@ -121,6 +121,11 @@
   color: var(--markdown-link) !important;
 }
 
+.singleCommentHighlight {
+  background-color: #ffc;
+  padding: 2px 5px;
+}
+
 .usertext a {
   color: var(--text);
   text-decoration: none;
