@@ -212,5 +212,13 @@
   "not_moderator": "Hiçbir topluluğun moderatörü değilsiniz.",
   "create_community": "Topluluk oluştur",
   "single_comment_notice": "Tek bir yorumun konusunu görüntülüyorsunuz",
-  "single_comment_link": "Diğer yorumları görüntüle"
+  "single_comment_link": "Diğer yorumları görüntüle",
+  "owner_settings_notice": "topluluğun P2P düğümüne bağlanılamıyor - sadece bir topluluğun sahibi ayarlarını düzenleyebilir.",
+  "preview": "önizleme",
+  "shown_in_sidebar": "topluluğunuzun yan çubuğunda gösterilir",
+  "community_logo_info": "doğrudan görüntü bağlantısını kullanarak bir topluluk logosu ayarlayın (.jpg, .png ile bitiyor)",
+  "moderators_setting_info": "diğer kullanıcıların sorunsuzca moderasyon yapmasına ve göndermesine izin verin",
+  "vote": "oy vermek",
+  "passing": "geçen",
+  "rejecting": "reddetme"
 }

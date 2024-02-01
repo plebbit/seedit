@@ -212,5 +212,13 @@
   "not_moderator": "أنت لست مشرفًا على أي مجتمع.",
   "create_community": "إنشاء مجتمع",
   "single_comment_notice": "أنت تشاهد موضوع تعليق واحد فقط",
-  "single_comment_link": "عرض بقية التعليقات"
+  "single_comment_link": "عرض بقية التعليقات",
+  "owner_settings_notice": "لا يمكن الاتصال بعقدة P2P للمجتمع - يمكن لمالك المجتمع فقط تحرير إعداداته.",
+  "preview": "معاينة",
+  "shown_in_sidebar": "يُعرَض في الشريط الجانبي لمجتمعك",
+  "community_logo_info": "قم بتعيين شعار المجتمع باستخدام رابط صورة مباشر (منتهي بـ .jpg أو .png)",
+  "moderators_setting_info": "اسمح للمستخدمين الآخرين بالتدخل والنشر دون تحديات",
+  "vote": "صوت",
+  "passing": "مرور",
+  "rejecting": "رفض"
 }

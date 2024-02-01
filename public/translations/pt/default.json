@@ -212,5 +212,13 @@
   "not_moderator": "Você não é moderador em nenhuma comunidade.",
   "create_community": "Criar comunidade",
   "single_comment_notice": "Você está visualizando o tópico de um único comentário",
-  "single_comment_link": "Ver o resto dos comentários"
+  "single_comment_link": "Ver o resto dos comentários",
+  "owner_settings_notice": "não é possível conectar ao nó P2P da comunidade - apenas o proprietário de uma comunidade pode editar suas configurações.",
+  "preview": "pré-visualização",
+  "shown_in_sidebar": "mostrado na barra lateral da sua comunidade",
+  "community_logo_info": "defina um logotipo da comunidade usando o link direto da imagem (terminando em .jpg, .png)",
+  "moderators_setting_info": "deixe que outros usuários moderem e postem sem desafios",
+  "vote": "votar",
+  "passing": "passando",
+  "rejecting": "rejeitando"
 }

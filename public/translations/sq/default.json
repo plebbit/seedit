@@ -212,5 +212,13 @@
   "not_moderator": "Ju nuk jeni moderator në asnjë komunitet.",
   "create_community": "Krijo komunitetin",
   "single_comment_notice": "Po shikoni një diskutim të një vetëm komenti",
-  "single_comment_link": "Shiko pjesën tjetër të komenteve"
+  "single_comment_link": "Shiko pjesën tjetër të komenteve",
+  "owner_settings_notice": "nuk mund të lidhet me një nodë P2P të komunitetit - vetëm pronari i një komuniteti mund ta redaktojë konfigurimin e tij.",
+  "preview": "paraprake",
+  "shown_in_sidebar": "të shfaqet në anën e majtë të komunitetit tuaj",
+  "community_logo_info": "vendosni një logon e komunitetit duke përdorur lidhjen e drejtpërdrejtë të imazhit të tij (përfundon në .jpg, .png)",
+  "moderators_setting_info": "lejojini të tjerët të moderohen dhe të postohen pa sfida",
+  "vote": "voto",
+  "passing": "kalimi",
+  "rejecting": "refuzim"
 }

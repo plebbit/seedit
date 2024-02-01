@@ -89,7 +89,7 @@ const Description = ({ isReadOnly = false }: { isReadOnly?: boolean }) => {
   return (
     <div className={`${styles.box} ${isReadOnly && !description ? styles.hidden : styles.visible}`}>
       <div className={styles.boxTitle}>{t('description')}</div>
-      <div className={styles.boxSubtitle}>shown in the sidebar of your community</div>
+      <div className={styles.boxSubtitle}>{t('shown_in_sidebar')}</div>
       <div className={styles.boxInput}>
         {isReadOnly ? (
           <pre className={styles.readOnlyDescription}>{description}</pre>
@@ -131,7 +131,7 @@ const Logo = ({ isReadOnly = false }: { isReadOnly?: boolean }) => {
   return (
     <div className={`${styles.box} ${isReadOnly && !logoUrl ? styles.hidden : styles.visible}`}>
       <div className={styles.boxTitle}>{t('logo')}</div>
-      <div className={styles.boxSubtitle}>set a community logo using its direct image link (ending in .jpg, .png)</div>
+      <div className={styles.boxSubtitle}>{t('community_logo_info')}</div>
       <div className={styles.boxInput}>
         {isReadOnly ? (
           <span>{logoUrl}</span>
@@ -148,7 +148,7 @@ const Logo = ({ isReadOnly = false }: { isReadOnly?: boolean }) => {
         )}
         {logoUrl && isValidURL(logoUrl) && (
           <div className={styles.logoPreview}>
-            preview:
+            {t('preview')}:
             {imageError ? <span className={styles.logoError}>no image found</span> : <img src={logoUrl} alt='logo preview' onError={() => setImageError(true)} />}
           </div>
         )}
@@ -192,7 +192,7 @@ const Rules = ({ isReadOnly = false }: { isReadOnly?: boolean }) => {
   return (
     <div className={`${styles.box} ${isReadOnly && (!rules || rules.length < 1) ? styles.hidden : styles.visible}`}>
       <div className={styles.boxTitle}>{t('rules')}</div>
-      <div className={styles.boxSubtitle}>shown in the sidebar of your community</div>
+      <div className={styles.boxSubtitle}>{t('shown_in_sidebar')}</div>
       <div className={styles.boxInput}>
         {!isReadOnly && (
           <button className={styles.addButton} onClick={addRule} disabled={isReadOnly}>
@@ -262,7 +262,7 @@ const Moderators = ({ isReadOnly = false }: { isReadOnly?: boolean }) => {
   return (
     <div className={`${styles.box} ${isReadOnly && !roles ? styles.hidden : styles.visible}`}>
       <div className={styles.boxTitle}>{t('moderators')}</div>
-      <div className={styles.boxSubtitle}>let other users moderate and post without challenges</div>
+      <div className={styles.boxSubtitle}>{t('moderators_setting_info')}</div>
       <div className={styles.boxInput}>
         {!isReadOnly && (
           <button className={styles.addButton} onClick={handleAddModerator} disabled={isReadOnly}>
@@ -807,7 +807,7 @@ const SubplebbitSettings = () => {
         <Sidebar address={subplebbitAddress} createdAt={createdAt} description={description} roles={roles} rules={rules} title={title} updatedAt={updatedAt} />
       </div>
       {/* subplebbit.settings is private, only shows to the sub owner */}
-      {!settings && <div className={styles.infobar}>can't connect to community p2p node - only the owner of a community can edit its settings.</div>}
+      {!settings && <div className={styles.infobar}>{t('owner_settings_notice')}</div>}
       <Title isReadOnly={isReadOnly} />
       <Description isReadOnly={isReadOnly} />
       <Address isReadOnly={isReadOnly} />

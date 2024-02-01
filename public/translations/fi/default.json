@@ -212,5 +212,13 @@
   "not_moderator": "Et ole moderaattori missään yhteisössä.",
   "create_community": "Luo yhteisö",
   "single_comment_notice": "Katsotte yhden kommentin keskustelua",
-  "single_comment_link": "Näytä loput kommentit"
+  "single_comment_link": "Näytä loput kommentit",
+  "owner_settings_notice": "ei voi muodostaa yhteyttä yhteisön P2P-solmuun - vain yhteisön omistaja voi muokata sen asetuksia.",
+  "preview": "esikatselu",
+  "shown_in_sidebar": "näytetään yhteisösi sivupalkissa",
+  "community_logo_info": "aseta yhteisön logo sen suoran kuvan linkin avulla (päättyen .jpg, .png)",
+  "moderators_setting_info": "anna muiden käyttäjien moderoida ja lähettää ilman haasteita",
+  "vote": "äänestää",
+  "passing": "läpäisy",
+  "rejecting": "hylkääminen"
 }

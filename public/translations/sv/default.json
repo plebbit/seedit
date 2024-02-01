@@ -212,5 +212,13 @@
   "not_moderator": "Du är inte moderator i någon community.",
   "create_community": "Skapa gemenskap",
   "single_comment_notice": "Du tittar på en tråd med en enda kommentar",
-  "single_comment_link": "Visa resten av kommentarerna"
+  "single_comment_link": "Visa resten av kommentarerna",
+  "owner_settings_notice": "kan inte ansluta till samhällets P2P-nod - endast ägaren till ett samhälle kan redigera dess inställningar.",
+  "preview": "förhandsvisning",
+  "shown_in_sidebar": "visas i din kommunitets sidofält",
+  "community_logo_info": "ställ in en gemenskapslogotyp med hjälp av dess direkta bildlänk (slutar på .jpg, .png)",
+  "moderators_setting_info": "låt andra användare moderera och posta utan utmaningar",
+  "vote": "rösta",
+  "passing": "godkänd",
+  "rejecting": "avvisar"
 }

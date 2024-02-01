@@ -212,5 +212,13 @@
   "not_moderator": "어떤 커뮤니티에서도 모더레이터가 아닙니다.",
   "create_community": "커뮤니티 만들기",
   "single_comment_notice": "하나의 댓글 스레드를 보고 있습니다",
-  "single_comment_link": "나머지 댓글 보기"
+  "single_comment_link": "나머지 댓글 보기",
+  "owner_settings_notice": "커뮤니티 P2P 노드에 연결할 수 없습니다 - 커뮤니티의 소유자만이 해당 설정을 편집할 수 있습니다.",
+  "preview": "미리보기",
+  "shown_in_sidebar": "귀하의 커뮤니티 사이드바에 표시됩니다",
+  "community_logo_info": "직접 이미지 링크를 사용하여 커뮤니티 로고를 설정하세요 (.jpg, .png 로 끝남)",
+  "moderators_setting_info": "다른 사용자가 도전 없이 중재하고 게시하도록 허용합니다",
+  "vote": "투표",
+  "passing": "통과",
+  "rejecting": "거부"
 }

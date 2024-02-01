@@ -212,5 +212,13 @@
   "not_moderator": "Du er ikke moderator på nogen fællesskab.",
   "create_community": "Opret fællesskab",
   "single_comment_notice": "Du ser en tråd med kun en kommentar",
-  "single_comment_link": "Se resten af kommentarerne"
+  "single_comment_link": "Se resten af kommentarerne",
+  "owner_settings_notice": "Kan ikke forbinde til samfunds P2P-node - kun ejeren af et samfund kan redigere dets indstillinger.",
+  "preview": "Forhåndsvisning",
+  "shown_in_sidebar": "vist i sidepanelet for din samfund",
+  "community_logo_info": "Indstil et fællesskabslogo ved hjælp af dets direkte billedlink (slutter i .jpg, .png)",
+  "moderators_setting_info": "lad andre brugere moderere og poste uden udfordringer",
+  "vote": "stemme",
+  "passing": "bestået",
+  "rejecting": "afvisning"
 }

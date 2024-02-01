@@ -259,6 +259,7 @@
   height: 40px;
   margin-top: 10px;
   font-size: smaller;
+  text-transform: capitalize;
 }
 
 .logoError {

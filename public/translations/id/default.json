@@ -212,5 +212,13 @@
   "not_moderator": "Anda bukan moderator di komunitas mana pun.",
   "create_community": "Buat komunitas",
   "single_comment_notice": "Anda sedang melihat benang komentar tunggal",
-  "single_comment_link": "Lihat sisa komentar"
+  "single_comment_link": "Lihat sisa komentar",
+  "owner_settings_notice": "tidak dapat terhubung ke node P2P komunitas - hanya pemilik komunitas yang dapat mengedit pengaturannya.",
+  "preview": "pratinjau",
+  "shown_in_sidebar": "ditampilkan di bilah samping komunitas Anda",
+  "community_logo_info": "setel logo komunitas menggunakan tautan gambar langsungnya (berakhir dengan .jpg, .png)",
+  "moderators_setting_info": "biarkan pengguna lain memoderasi dan memposting tanpa tantangan",
+  "vote": "memilih",
+  "passing": "lulus",
+  "rejecting": "menolak"
 }

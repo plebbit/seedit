@@ -212,5 +212,13 @@
   "not_moderator": "אינך מודרטור בקהילה אחת.",
   "create_community": "צור קהילה",
   "single_comment_notice": "אתה צופה בנושא של תגובה אחת בלבד",
-  "single_comment_link": "צפייה בשאר התגובות"
+  "single_comment_link": "צפייה בשאר התגובות",
+  "owner_settings_notice": "אין אפשרות להתחבר לצומת P2P של הקהילה - רק בעל הקהילה יכול לערוך את הגדרותיה.",
+  "preview": "תצוגה מקדימה",
+  "shown_in_sidebar": "מוצג בסרגל הצד של הקהילה שלך",
+  "community_logo_info": "הגדר לוגו של הקהילה באמצעות הקישור הישיר לתמונה (מסתיים ב-.jpg, .png)",
+  "moderators_setting_info": "תאפשר למשתמשים אחרים להנהיג ולפרסם בלי אתגרים",
+  "vote": "להצביע",
+  "passing": "עובר",
+  "rejecting": "דחיה"
 }

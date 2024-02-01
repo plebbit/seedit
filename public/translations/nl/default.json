@@ -212,5 +212,13 @@
   "not_moderator": "Je bent geen moderator in een gemeenschap.",
   "create_community": "Gemeenschap creëren",
   "single_comment_notice": "Je bekijkt een draad van slechts één opmerking",
-  "single_comment_link": "Bekijk de rest van de opmerkingen"
+  "single_comment_link": "Bekijk de rest van de opmerkingen",
+  "owner_settings_notice": "kan geen verbinding maken met de P2P-node van de community - alleen de eigenaar van een community kan de instellingen ervan bewerken.",
+  "preview": "voorbeeld",
+  "shown_in_sidebar": "getoond in de zijbalk van uw gemeenschap",
+  "community_logo_info": "stel een gemeenschapslogo in met behulp van de directe afbeeldingslink (eindigend op .jpg, .png)",
+  "moderators_setting_info": "laat andere gebruikers modereren en posten zonder uitdagingen",
+  "vote": "stemmen",
+  "passing": "slagen",
+  "rejecting": "afwijzing"
 }
