@@ -220,5 +220,10 @@
   "moderators_setting_info": "pabayaang mag-moderate at mag-post ang iba pang mga gumagamit nang walang mga hamon",
   "vote": "bumoto",
   "passing": "pumapasa",
-  "rejecting": "tanggihan"
+  "rejecting": "tanggihan",
+  "add_moderator": "magdagdag ng isang moderator",
+  "add_rule": "magdagdag ng isang patakaran",
+  "json_settings": "Mga setting ng JSON",
+  "json_settings_info": "mabilis na kopya o i-paste ang mga setting ng komunidad",
+  "address_setting_info": "itakda ang isang mababasa oso ng komunidad gamit ang ens.domains"
 }

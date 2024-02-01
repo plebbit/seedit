@@ -220,5 +220,10 @@
   "moderators_setting_info": "অন্যান্য ব্যবহারকারীদের সম্মোদন করতে এবং চ্যালেঞ্জ ছাড়া পোস্ট করতে দিন",
   "vote": "ভোট দাও",
   "passing": "পাস",
-  "rejecting": "বাতিল"
+  "rejecting": "বাতিল",
+  "add_moderator": "একটি মডারেটর যোগ করুন",
+  "add_rule": "একটি নিয়ম যোগ করুন",
+  "json_settings": "JSON সেটিংস",
+  "json_settings_info": "দ্রুত সমুদায়ের সেটিংস অনুলিপি বা পেস্ট করুন",
+  "address_setting_info": "ens.domains ব্যবহার করে একটি পঠনীয় সমুদায় ঠিকানা সেট করুন"
 }

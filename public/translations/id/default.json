@@ -220,5 +220,10 @@
   "moderators_setting_info": "biarkan pengguna lain memoderasi dan memposting tanpa tantangan",
   "vote": "memilih",
   "passing": "lulus",
-  "rejecting": "menolak"
+  "rejecting": "menolak",
+  "add_moderator": "tambahkan moderator",
+  "add_rule": "tambahkan aturan",
+  "json_settings": "Pengaturan JSON",
+  "json_settings_info": "salin atau tempel cepat pengaturan komunitas",
+  "address_setting_info": "atur alamat komunitas yang dapat dibaca menggunakan ens.domains"
 }

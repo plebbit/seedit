@@ -220,5 +220,10 @@
   "moderators_setting_info": "diğer kullanıcıların sorunsuzca moderasyon yapmasına ve göndermesine izin verin",
   "vote": "oy vermek",
   "passing": "geçen",
-  "rejecting": "reddetme"
+  "rejecting": "reddetme",
+  "add_moderator": "bir moderatör ekleyin",
+  "add_rule": "bir kural ekleyin",
+  "json_settings": "JSON ayarları",
+  "json_settings_info": "topluluk ayarlarını hızlı bir şekilde kopyala veya yapıştır",
+  "address_setting_info": "ens.domains kullanarak okunabilir bir topluluk adresi ayarlayın"
 }

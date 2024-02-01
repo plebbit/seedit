@@ -220,5 +220,10 @@
   "moderators_setting_info": "lejojini të tjerët të moderohen dhe të postohen pa sfida",
   "vote": "voto",
   "passing": "kalimi",
-  "rejecting": "refuzim"
+  "rejecting": "refuzim",
+  "add_moderator": "shtoni një moderator",
+  "add_rule": "shtoni një rregull",
+  "json_settings": "Cilësimet JSON",
+  "json_settings_info": "kopjoni ose ngjitni shpejt konfigurimet e komunitetit",
+  "address_setting_info": "vendosni një adresë të lexueshme të komunitetit duke përdorur ens.domains"
 }

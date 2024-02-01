@@ -220,5 +220,10 @@
   "moderators_setting_info": "允许其他用户在没有挑战的情况下进行管理和发布",
   "vote": "投票",
   "passing": "通过",
-  "rejecting": "拒绝"
+  "rejecting": "拒绝",
+  "add_moderator": "添加一名版主",
+  "add_rule": "添加一条规则",
+  "json_settings": "JSON设置",
+  "json_settings_info": "快速复制或粘贴社区设置",
+  "address_setting_info": "使用 ens.domains 设置可读的社区地址"
 }

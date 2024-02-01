@@ -220,5 +220,10 @@
   "moderators_setting_info": "låt andra användare moderera och posta utan utmaningar",
   "vote": "rösta",
   "passing": "godkänd",
-  "rejecting": "avvisar"
+  "rejecting": "avvisar",
+  "add_moderator": "lägg till en moderator",
+  "add_rule": "lägg till en regel",
+  "json_settings": "JSON-inställningar",
+  "json_settings_info": "snabbt kopiera eller klistra in samhällets inställningar",
+  "address_setting_info": "sätt en läsbar samhällsadress med hjälp av ens.domains"
 }

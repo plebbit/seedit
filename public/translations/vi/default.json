@@ -220,5 +220,10 @@
   "moderators_setting_info": "cho phép người dùng khác kiểm duyệt và đăng bài mà không cần đối mặt với thách thức",
   "vote": "bỏ phiếu",
   "passing": "đi qua",
-  "rejecting": "từ chối"
+  "rejecting": "từ chối",
+  "add_moderator": "thêm một quản trị viên",
+  "add_rule": "thêm một quy tắc",
+  "json_settings": "Cài đặt JSON",
+  "json_settings_info": "nhanh chóng sao chép hoặc dán cài đặt của cộng đồng",
+  "address_setting_info": "đặt một địa chỉ cộng đồng có thể đọc bằng cách sử dụng ens.domains"
 }

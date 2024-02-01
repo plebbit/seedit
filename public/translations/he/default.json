@@ -220,5 +220,10 @@
   "moderators_setting_info": "תאפשר למשתמשים אחרים להנהיג ולפרסם בלי אתגרים",
   "vote": "להצביע",
   "passing": "עובר",
-  "rejecting": "דחיה"
+  "rejecting": "דחיה",
+  "add_moderator": "הוסף מנהל",
+  "add_rule": "הוסף כלל",
+  "json_settings": "הגדרות JSON",
+  "json_settings_info": "העתיק או הדביק מהר את ההגדרות של הקהילה",
+  "address_setting_info": "קבע כתובת קהילה קריאה באמצעות ens.domains"
 }

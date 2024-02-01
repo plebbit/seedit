@@ -220,5 +220,10 @@
   "moderators_setting_info": "lad andre brugere moderere og poste uden udfordringer",
   "vote": "stemme",
   "passing": "bestået",
-  "rejecting": "afvisning"
+  "rejecting": "afvisning",
+  "add_moderator": "tilføj en moderator",
+  "add_rule": "tilføj en regel",
+  "json_settings": "JSON indstillinger",
+  "json_settings_info": "Hurtigt kopier eller indsæt fællesskabsindstillinger",
+  "address_setting_info": "indstil en læsbar fællesskabsadresse ved hjælp af ens.domains"
 }

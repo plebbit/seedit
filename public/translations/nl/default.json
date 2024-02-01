@@ -220,5 +220,10 @@
   "moderators_setting_info": "laat andere gebruikers modereren en posten zonder uitdagingen",
   "vote": "stemmen",
   "passing": "slagen",
-  "rejecting": "afwijzing"
+  "rejecting": "afwijzing",
+  "add_moderator": "een moderator toevoegen",
+  "add_rule": "een regel toevoegen",
+  "json_settings": "JSON-instellingen",
+  "json_settings_info": "snel de gemeenschapsinstellingen kopiëren of plakken",
+  "address_setting_info": "stel een leesbaar gemeenschapsadres in met behulp van ens.domains"
 }

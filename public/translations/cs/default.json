@@ -220,5 +220,10 @@
   "moderators_setting_info": "nechte ostatní uživatele moderovat a přispívat bez výzev",
   "vote": "hlasovat",
   "passing": "projde",
-  "rejecting": "zamítání"
+  "rejecting": "zamítání",
+  "add_moderator": "přidat moderátora",
+  "add_rule": "přidat pravidlo",
+  "json_settings": "JSON nastavení",
+  "json_settings_info": "Rychle zkopírujte nebo vložte nastavení komunity",
+  "address_setting_info": "nastavte čitelnou adresu komunity pomocí ens.domains"
 }

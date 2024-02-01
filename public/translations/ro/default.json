@@ -220,5 +220,10 @@
   "moderators_setting_info": "permiteți altor utilizatori să modereze și să posteze fără provocări",
   "vote": "vota",
   "passing": "trecere",
-  "rejecting": "respingere"
+  "rejecting": "respingere",
+  "add_moderator": "adăugați un moderator",
+  "add_rule": "adăugați o regulă",
+  "json_settings": "Setări JSON",
+  "json_settings_info": "copiați sau lipiți rapid setările comunității",
+  "address_setting_info": "setați o adresă de comunitate citibilă folosind ens.domains"
 }

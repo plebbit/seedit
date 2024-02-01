@@ -220,5 +220,10 @@
   "moderators_setting_info": "engedje meg más felhasználóknak a moderálást és a bejegyzést kihívások nélkül",
   "vote": "szavaz",
   "passing": "átmenő",
-  "rejecting": "elutasítás"
+  "rejecting": "elutasítás",
+  "add_moderator": "moderátort hozzáad",
+  "add_rule": "szabály hozzáadása",
+  "json_settings": "JSON beállítások",
+  "json_settings_info": "gyorsan másolja vagy illessze be a közösség beállításait",
+  "address_setting_info": "állítson be egy olvasható közösségi címet az ens.domains segítségével"
 }

@@ -220,5 +220,10 @@
   "moderators_setting_info": "اسمح للمستخدمين الآخرين بالتدخل والنشر دون تحديات",
   "vote": "صوت",
   "passing": "مرور",
-  "rejecting": "رفض"
+  "rejecting": "رفض",
+  "add_moderator": "إضافة مشرف",
+  "add_rule": "إضافة قاعدة",
+  "json_settings": "إعدادات JSON",
+  "json_settings_info": "نسخ أو لصق إعدادات المجتمع بسرعة",
+  "address_setting_info": "قم بتعيين عنوان مجتمع قابل للقراءة باستخدام ens.domains"
 }

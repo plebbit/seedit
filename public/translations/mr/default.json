@@ -220,5 +220,10 @@
   "moderators_setting_info": "इतर वापरकर्त्यांना चॅलेंज न करून मॉडरेट आणि पोस्ट करू द्या",
   "vote": "वोट द्या",
   "passing": "अशीत करणे",
-  "rejecting": "अस्वीकृत करणारे"
+  "rejecting": "अस्वीकृत करणारे",
+  "add_moderator": "मॉडरेटर जोडा",
+  "add_rule": "नियम जोडा",
+  "json_settings": "JSON सेटिंग्ज",
+  "json_settings_info": "समुदाय सेटिंग्ज कॉपी किंवा पेस्ट करा",
+  "address_setting_info": "ens.domains वापरून एक वाचनीय समुदाय पत्ता सेट करा"
 }

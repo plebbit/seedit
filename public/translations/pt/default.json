@@ -220,5 +220,10 @@
   "moderators_setting_info": "deixe que outros usuários moderem e postem sem desafios",
   "vote": "votar",
   "passing": "passando",
-  "rejecting": "rejeitando"
+  "rejecting": "rejeitando",
+  "add_moderator": "adicionar um moderador",
+  "add_rule": "adicionar uma regra",
+  "json_settings": "Configurações JSON",
+  "json_settings_info": "copie ou cole rapidamente as configurações da comunidade",
+  "address_setting_info": "defina um endereço de comunidade legível usando ens.domains"
 }

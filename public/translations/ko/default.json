@@ -220,5 +220,10 @@
   "moderators_setting_info": "다른 사용자가 도전 없이 중재하고 게시하도록 허용합니다",
   "vote": "투표",
   "passing": "통과",
-  "rejecting": "거부"
+  "rejecting": "거부",
+  "add_moderator": "모더레이터 추가",
+  "add_rule": "규칙 추가",
+  "json_settings": "JSON 설정",
+  "json_settings_info": "커뮤니티 설정을 빠르게 복사 또는 붙여넣기",
+  "address_setting_info": "ens.domains를 사용하여 읽기 쉬운 커뮤니티 주소 설정"
 }

@@ -220,5 +220,10 @@
   "moderators_setting_info": "به کاربران دیگر اجازه دهید که بدون چالش ها مدیریت و ارسال کنند",
   "vote": "رأی دادن",
   "passing": "گذراندن",
-  "rejecting": "رد کردن"
+  "rejecting": "رد کردن",
+  "add_moderator": "افزودن یک ناظر",
+  "add_rule": "افزودن یک قانون",
+  "json_settings": "تنظیمات JSON",
+  "json_settings_info": "سریعاً تنظیمات اجتماعی را کپی یا پیست کنید",
+  "address_setting_info": "تنظیم یک آدرس مشترک قابل خواندن با استفاده از ens.domains"
 }

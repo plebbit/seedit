@@ -108,7 +108,7 @@ const Address = ({ isReadOnly = false }: { isReadOnly?: boolean }) => {
   return (
     <div className={styles.box}>
       <div className={styles.boxTitle}>{t('address')}</div>
-      <div className={styles.boxSubtitle}>set a readable community address using ens.domains</div>
+      <div className={styles.boxSubtitle}>{t('address_setting_info')}</div>
       <div className={styles.boxInput}>
         {isReadOnly ? <span>{address}</span> : <input type='text' value={address ?? ''} onChange={(e) => setSubplebbitSettingsStore({ address: e.target.value })} />}
       </div>
@@ -196,7 +196,7 @@ const Rules = ({ isReadOnly = false }: { isReadOnly?: boolean }) => {
       <div className={styles.boxInput}>
         {!isReadOnly && (
           <button className={styles.addButton} onClick={addRule} disabled={isReadOnly}>
-            Add a Rule
+            {t('add_rule')}
           </button>
         )}
         {rules?.map((rule, index) => (
@@ -266,13 +266,13 @@ const Moderators = ({ isReadOnly = false }: { isReadOnly?: boolean }) => {
       <div className={styles.boxInput}>
         {!isReadOnly && (
           <button className={styles.addButton} onClick={handleAddModerator} disabled={isReadOnly}>
-            add a moderator
+            {t('add_moderator')}
           </button>
         )}
         {roles &&
           Object.entries(roles).map(([address, role], index) => (
             <div className={`${styles.moderator} ${index === 0 && styles.firstModerator}`} key={index}>
-              Moderator #{index + 1}
+              {t('moderator')} #{index + 1}
               {!isReadOnly && <span className={styles.deleteButton} title='delete moderator' onClick={() => (isReadOnly ? {} : handleDeleteModerator(address))} />}
               <br />
               <span className={styles.moderatorAddress}>
@@ -718,6 +718,7 @@ const Challenges = ({ isReadOnly, readOnlyChallenges }: { isReadOnly: boolean; r
 };
 
 const JSONSettings = ({ isReadOnly = false }: { isReadOnly?: boolean }) => {
+  const { t } = useTranslation();
   const { challenges, title, description, address, suggested, rules, roles, settings, subplebbitAddress, setSubplebbitSettingsStore } = useSubplebbitSettingsStore();
   const [text, setText] = useState('');
 
@@ -738,8 +739,8 @@ const JSONSettings = ({ isReadOnly = false }: { isReadOnly?: boolean }) => {
 
   return (
     <div className={`${styles.box}`}>
-      <div className={`${styles.boxTitle} ${styles.JSONSettingsTitle}`}>JSON settings</div>
-      <div className={styles.boxSubtitle}>quickly copy or paste the community settings</div>
+      <div className={`${styles.boxTitle} ${styles.JSONSettingsTitle}`}>{t('json_settings')}</div>
+      <div className={styles.boxSubtitle}>{t('json_settings_info')}</div>
       <div className={`${styles.boxInput} ${styles.JSONSettings}`}>
         <textarea onChange={(e) => handleChange(e.target.value)} autoCorrect='off' autoComplete='off' spellCheck='false' value={text} disabled={isReadOnly} />
       </div>

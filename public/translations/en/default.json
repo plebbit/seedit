@@ -220,5 +220,10 @@
   "moderators_setting_info": "let other users moderate and post without challenges",
   "vote": "vote",
   "passing": "passing",
-  "rejecting": "rejecting"
+  "rejecting": "rejecting",
+  "add_moderator": "add a moderator",
+  "add_rule": "add a rule",
+  "json_settings": "JSON settings",
+  "json_settings_info": "quickly copy or paste the community settings",
+  "address_setting_info": "set a readable community address using ens.domains"
 }

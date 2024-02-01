@@ -220,5 +220,10 @@
   "moderators_setting_info": "อนุญาตให้ผู้ใช้คนอื่นๆ ตรวจสอบและโพสต์โดยไม่มีความท้าทาย",
   "vote": "ลงคะแนนเสียง",
   "passing": "ผ่าน",
-  "rejecting": "ปฏิเสธ"
+  "rejecting": "ปฏิเสธ",
+  "add_moderator": "เพิ่มผู้ดูแล",
+  "add_rule": "เพิ่มกฎ",
+  "json_settings": "การตั้งค่า JSON",
+  "json_settings_info": "คัดลอกหรือวางการตั้งค่าของชุมชนอย่างรวดเร็ว",
+  "address_setting_info": "ตั้งค่าที่อยู่ชุมชนที่อ่านได้โดยใช้ ens.domains"
 }

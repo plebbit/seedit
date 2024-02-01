@@ -220,5 +220,10 @@
   "moderators_setting_info": "他のユーザーにチャレンジなしでモデレートおよび投稿を許可",
   "vote": "投票する",
   "passing": "合格",
-  "rejecting": "拒否"
+  "rejecting": "拒否",
+  "add_moderator": "モデレーターを追加",
+  "add_rule": "ルールを追加",
+  "json_settings": "JSON設定",
+  "json_settings_info": "コミュニティの設定を素早くコピーまたは貼り付ける",
+  "address_setting_info": "ens.domainsを使用して読み取り可能なコミュニティのアドレスを設定"
 }

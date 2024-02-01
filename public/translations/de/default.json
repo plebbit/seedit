@@ -220,5 +220,10 @@
   "moderators_setting_info": "lassen Sie andere Benutzer moderieren und posten, ohne Herausforderungen",
   "vote": "abstimmen",
   "passing": "bestanden",
-  "rejecting": "ablehnend"
+  "rejecting": "ablehnend",
+  "add_moderator": "einen Moderator hinzufügen",
+  "add_rule": "eine Regel hinzufügen",
+  "json_settings": "JSON-Einstellungen",
+  "json_settings_info": "Gemeinschaftseinstellungen schnell kopieren oder einfügen",
+  "address_setting_info": "Setzen Sie eine lesbare Community-Adresse mit ens.domains"
 }
