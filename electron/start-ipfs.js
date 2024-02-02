@@ -60,7 +60,7 @@ const startIpfs = async () => {
   } catch (e) {}
 
   // dont use 8080 port because it's too common
-  await spawnAsync(ipfsPath, ['config', '--json', 'Addresses.Gateway', 'null'], {
+  await spawnAsync(ipfsPath, ['config', '--json', 'Addresses.Gateway', '"/ip4/127.0.0.1/tcp/6473"'], {
     env,
     hideWindows: true,
   });
