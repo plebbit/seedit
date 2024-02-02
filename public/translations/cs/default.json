@@ -210,5 +210,20 @@
   "below_approved_user": "Níže jsou komunity, na kterých jste schváleným uživatelem.",
   "below_moderator_access": "Níže jsou komunity, ke kterým máte moderátorský přístup.",
   "not_moderator": "Nejste moderátorem žádné komunity.",
-  "create_community": "Vytvořit komunitu"
+  "create_community": "Vytvořit komunitu",
+  "single_comment_notice": "Prohlížíte si vlákno jednoho komentáře",
+  "single_comment_link": "Zobrazit zbytek komentářů",
+  "owner_settings_notice": "Nelze se připojit k uzlu komunity P2P - pouze vlastník komunity může upravit její nastavení.",
+  "preview": "Náhled",
+  "shown_in_sidebar": "zobrazeno na boční liště vaší komunity",
+  "community_logo_info": "Nastavte logo komunity pomocí jeho přímého odkazu na obrázek (končícího na .jpg, .png)",
+  "moderators_setting_info": "nechte ostatní uživatele moderovat a přispívat bez výzev",
+  "vote": "hlasovat",
+  "passing": "projde",
+  "rejecting": "zamítání",
+  "add_moderator": "přidat moderátora",
+  "add_rule": "přidat pravidlo",
+  "json_settings": "JSON nastavení",
+  "json_settings_info": "Rychle zkopírujte nebo vložte nastavení komunity",
+  "address_setting_info": "nastavte čitelnou adresu komunity pomocí ens.domains"
 }

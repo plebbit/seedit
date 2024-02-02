@@ -210,5 +210,20 @@
   "below_approved_user": "以下は、承認されたユーザーであるコミュニティです。",
   "below_moderator_access": "以下は、あなたがモデレーターアクセス権を持つコミュニティです。",
   "not_moderator": "あなたはどのコミュニティでもモデレーターではありません。",
-  "create_community": "コミュニティを作成"
+  "create_community": "コミュニティを作成",
+  "single_comment_notice": "1つのコメントのスレッドを表示しています",
+  "single_comment_link": "他のコメントを表示",
+  "owner_settings_notice": "コミュニティのP2Pノードに接続できません - コミュニティの所有者のみが設定を編集できます。",
+  "preview": "プレビュー",
+  "shown_in_sidebar": "あなたのコミュニティのサイドバーに表示されます",
+  "community_logo_info": "直接の画像リンクを使用してコミュニティのロゴを設定します（.jpg、.pngで終了）",
+  "moderators_setting_info": "他のユーザーにチャレンジなしでモデレートおよび投稿を許可",
+  "vote": "投票する",
+  "passing": "合格",
+  "rejecting": "拒否",
+  "add_moderator": "モデレーターを追加",
+  "add_rule": "ルールを追加",
+  "json_settings": "JSON設定",
+  "json_settings_info": "コミュニティの設定を素早くコピーまたは貼り付ける",
+  "address_setting_info": "ens.domainsを使用して読み取り可能なコミュニティのアドレスを設定"
 }

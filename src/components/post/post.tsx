@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import styles from './post.module.css';
 import { Link, useLocation, useParams } from 'react-router-dom';
-import { Comment, useAuthorAddress, useBlock, useEditedComment, useSubplebbit } from '@plebbit/plebbit-react-hooks';
+import { Comment, useAuthorAddress, useBlock, useComment, useEditedComment, useSubplebbit } from '@plebbit/plebbit-react-hooks';
 import { useTranslation } from 'react-i18next';
 import { isPendingView, isPostView, isSubplebbitView } from '../../lib/utils/view-utils';
 import { getCommentMediaInfoMemoized, getHasThumbnail } from '../../lib/utils/media-utils';
@@ -64,6 +64,11 @@ interface PostProps {
 }
 
 const Post = ({ post = {}, index }: PostProps) => {
+  // handle single comment thread
+  const op = useComment({ commentCid: post?.parentCid ? post?.postCid : '' });
+  if (post?.parentCid) {
+    post = op;
+  }
   // handle pending mod or author edit
   const { editedComment: editedPost } = useEditedComment({ comment: post });
   if (editedPost) {

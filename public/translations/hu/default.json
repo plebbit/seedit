@@ -210,5 +210,20 @@
   "below_approved_user": "Lent láthatók azok a közösségek, amelyekben jóváhagyott felhasználó vagy.",
   "below_moderator_access": "Lent láthatók azok a közösségek, amelyekhez moderátorként hozzáférhet.",
   "not_moderator": "Nem vagy moderátor egyetlen közösségben sem.",
-  "create_community": "Közösség létrehozása"
+  "create_community": "Közösség létrehozása",
+  "single_comment_notice": "Egyetlen hozzászólás szála van megtekintés alatt",
+  "single_comment_link": "Tekintse meg a többi megjegyzést",
+  "owner_settings_notice": "nem lehet kapcsolódni a közösség P2P csomópontjához - csak egy közösség tulajdonosa szerkesztheti a beállításait.",
+  "preview": "előnézet",
+  "shown_in_sidebar": "megjelenik a közösséged oldalsávjában",
+  "community_logo_info": "állítsa be a közösség logóját a közvetlen képlinkjének használatával (.jpg, .png befejezése)",
+  "moderators_setting_info": "engedje meg más felhasználóknak a moderálást és a bejegyzést kihívások nélkül",
+  "vote": "szavaz",
+  "passing": "átmenő",
+  "rejecting": "elutasítás",
+  "add_moderator": "moderátort hozzáad",
+  "add_rule": "szabály hozzáadása",
+  "json_settings": "JSON beállítások",
+  "json_settings_info": "gyorsan másolja vagy illessze be a közösség beállításait",
+  "address_setting_info": "állítson be egy olvasható közösségi címet az ens.domains segítségével"
 }

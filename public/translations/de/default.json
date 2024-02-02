@@ -210,5 +210,20 @@
   "below_approved_user": "Hier sind die Gemeinschaften, auf denen du ein genehmigter Benutzer bist.",
   "below_moderator_access": "Hier sind die Gemeinschaften, auf die Sie als Moderator zugreifen können.",
   "not_moderator": "Du bist kein Moderator in einer Gemeinschaft.",
-  "create_community": "Gemeinschaft erstellen"
+  "create_community": "Gemeinschaft erstellen",
+  "single_comment_notice": "Sie sehen einen Thread mit nur einem Kommentar",
+  "single_comment_link": "Den Rest der Kommentare anzeigen",
+  "owner_settings_notice": "Kann keine Verbindung zum P2P-Knoten der Community herstellen - nur der Eigentümer einer Community kann deren Einstellungen bearbeiten.",
+  "preview": "Vorschau",
+  "shown_in_sidebar": "im Seitenbereich Ihrer Community angezeigt",
+  "community_logo_info": "Legen Sie ein Gemeinschaftslogo mit seinem direkten Bildlink fest (endet in .jpg, .png)",
+  "moderators_setting_info": "lassen Sie andere Benutzer moderieren und posten, ohne Herausforderungen",
+  "vote": "abstimmen",
+  "passing": "bestanden",
+  "rejecting": "ablehnend",
+  "add_moderator": "einen Moderator hinzufügen",
+  "add_rule": "eine Regel hinzufügen",
+  "json_settings": "JSON-Einstellungen",
+  "json_settings_info": "Gemeinschaftseinstellungen schnell kopieren oder einfügen",
+  "address_setting_info": "Setzen Sie eine lesbare Community-Adresse mit ens.domains"
 }

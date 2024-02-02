@@ -210,5 +210,20 @@
   "below_approved_user": "Narito ang mga komunidad na ikaw ay isang inaprubahang tagagamit.",
   "below_moderator_access": "Narito ang mga komunidad na mayroon kang access bilang moderator.",
   "not_moderator": "Hindi ka moderator sa anumang komunidad.",
-  "create_community": "Lumikha ng komunidad"
+  "create_community": "Lumikha ng komunidad",
+  "single_comment_notice": "Nakikita mo ang isang thread ng isang komento lamang",
+  "single_comment_link": "Tingnan ang iba pang mga komento",
+  "owner_settings_notice": "hindi makakonekta sa komunidad ng p2p node - tanging ang may-ari ng isang komunidad ang makakapag-edit ng mga setting nito.",
+  "preview": "preview",
+  "shown_in_sidebar": "ipinapakita sa sidebar ng iyong komunidad",
+  "community_logo_info": "itakda ang logo ng komunidad gamit ang direktang link ng larawan nito (natatapos sa .jpg, .png)",
+  "moderators_setting_info": "pabayaang mag-moderate at mag-post ang iba pang mga gumagamit nang walang mga hamon",
+  "vote": "bumoto",
+  "passing": "pumapasa",
+  "rejecting": "tanggihan",
+  "add_moderator": "magdagdag ng isang moderator",
+  "add_rule": "magdagdag ng isang patakaran",
+  "json_settings": "Mga setting ng JSON",
+  "json_settings_info": "mabilis na kopya o i-paste ang mga setting ng komunidad",
+  "address_setting_info": "itakda ang isang mababasa oso ng komunidad gamit ang ens.domains"
 }

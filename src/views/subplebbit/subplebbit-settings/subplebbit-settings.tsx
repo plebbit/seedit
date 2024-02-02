@@ -89,7 +89,7 @@ const Description = ({ isReadOnly = false }: { isReadOnly?: boolean }) => {
   return (
     <div className={`${styles.box} ${isReadOnly && !description ? styles.hidden : styles.visible}`}>
       <div className={styles.boxTitle}>{t('description')}</div>
-      <div className={styles.boxSubtitle}>shown in the sidebar of your community</div>
+      <div className={styles.boxSubtitle}>{t('shown_in_sidebar')}</div>
       <div className={styles.boxInput}>
         {isReadOnly ? (
           <pre className={styles.readOnlyDescription}>{description}</pre>
@@ -108,7 +108,7 @@ const Address = ({ isReadOnly = false }: { isReadOnly?: boolean }) => {
   return (
     <div className={styles.box}>
       <div className={styles.boxTitle}>{t('address')}</div>
-      <div className={styles.boxSubtitle}>set a readable community address using ens.domains</div>
+      <div className={styles.boxSubtitle}>{t('address_setting_info')}</div>
       <div className={styles.boxInput}>
         {isReadOnly ? <span>{address}</span> : <input type='text' value={address ?? ''} onChange={(e) => setSubplebbitSettingsStore({ address: e.target.value })} />}
       </div>
@@ -131,7 +131,7 @@ const Logo = ({ isReadOnly = false }: { isReadOnly?: boolean }) => {
   return (
     <div className={`${styles.box} ${isReadOnly && !logoUrl ? styles.hidden : styles.visible}`}>
       <div className={styles.boxTitle}>{t('logo')}</div>
-      <div className={styles.boxSubtitle}>set a community logo using its direct image link (ending in .jpg, .png)</div>
+      <div className={styles.boxSubtitle}>{t('community_logo_info')}</div>
       <div className={styles.boxInput}>
         {isReadOnly ? (
           <span>{logoUrl}</span>
@@ -148,7 +148,7 @@ const Logo = ({ isReadOnly = false }: { isReadOnly?: boolean }) => {
         )}
         {logoUrl && isValidURL(logoUrl) && (
           <div className={styles.logoPreview}>
-            preview:
+            {t('preview')}:
             {imageError ? <span className={styles.logoError}>no image found</span> : <img src={logoUrl} alt='logo preview' onError={() => setImageError(true)} />}
           </div>
         )}
@@ -192,11 +192,11 @@ const Rules = ({ isReadOnly = false }: { isReadOnly?: boolean }) => {
   return (
     <div className={`${styles.box} ${isReadOnly && (!rules || rules.length < 1) ? styles.hidden : styles.visible}`}>
       <div className={styles.boxTitle}>{t('rules')}</div>
-      <div className={styles.boxSubtitle}>shown in the sidebar of your community</div>
+      <div className={styles.boxSubtitle}>{t('shown_in_sidebar')}</div>
       <div className={styles.boxInput}>
         {!isReadOnly && (
           <button className={styles.addButton} onClick={addRule} disabled={isReadOnly}>
-            Add a Rule
+            {t('add_rule')}
           </button>
         )}
         {rules?.map((rule, index) => (
@@ -262,17 +262,17 @@ const Moderators = ({ isReadOnly = false }: { isReadOnly?: boolean }) => {
   return (
     <div className={`${styles.box} ${isReadOnly && !roles ? styles.hidden : styles.visible}`}>
       <div className={styles.boxTitle}>{t('moderators')}</div>
-      <div className={styles.boxSubtitle}>let other users moderate and post without challenges</div>
+      <div className={styles.boxSubtitle}>{t('moderators_setting_info')}</div>
       <div className={styles.boxInput}>
         {!isReadOnly && (
           <button className={styles.addButton} onClick={handleAddModerator} disabled={isReadOnly}>
-            add a moderator
+            {t('add_moderator')}
           </button>
         )}
         {roles &&
           Object.entries(roles).map(([address, role], index) => (
             <div className={`${styles.moderator} ${index === 0 && styles.firstModerator}`} key={index}>
-              Moderator #{index + 1}
+              {t('moderator')} #{index + 1}
               {!isReadOnly && <span className={styles.deleteButton} title='delete moderator' onClick={() => (isReadOnly ? {} : handleDeleteModerator(address))} />}
               <br />
               <span className={styles.moderatorAddress}>
@@ -323,7 +323,7 @@ interface ChallengeSettingsProps {
 
 const rolesToExclude = ['moderator', 'admin', 'owner'];
 const actionsToExclude: Array<'post' | 'reply' | 'vote'> = ['post', 'reply', 'vote'];
-const nonActionsToExclude: Array<'non-post' | 'non-reply' | 'non-vote'> = ['non-post', 'non-reply', 'non-vote'];
+const nonActionsToExclude: Array<'not post' | 'not reply' | 'not vote'> = ['not post', 'not reply', 'not vote'];
 
 const ChallengeSettings = ({ challenge, index, isReadOnly, setSubplebbitSettingsStore, settings, showSettings }: ChallengeSettingsProps) => {
   const { name, options } = challenge || {};
@@ -355,7 +355,7 @@ const ChallengeSettings = ({ challenge, index, isReadOnly, setSubplebbitSettings
     setShowExcludeSettings(newShowExcludeSettings);
   };
 
-  const handleExcludeChange = (excludeIndex: number, type: keyof Exclude | 'non-post' | 'non-reply' | 'non-vote', value: any) => {
+  const handleExcludeChange = (excludeIndex: number, type: keyof Exclude | 'not post' | 'not reply' | 'not vote', value: any) => {
     const updatedChallenges = settings.challenges.map((ch: any, idx: number) => {
       if (idx === index) {
         const updatedExclude = ch.exclude.map((ex: any, exIdx: number) => {
@@ -366,13 +366,13 @@ const ChallengeSettings = ({ challenge, index, isReadOnly, setSubplebbitSettings
             const processedValue = value === '' ? undefined : value;
 
             switch (type) {
-              case 'non-post':
+              case 'not post':
                 newEx.post = value ? undefined : false;
                 break;
-              case 'non-reply':
+              case 'not reply':
                 newEx.reply = value ? undefined : false;
                 break;
-              case 'non-vote':
+              case 'not vote':
                 newEx.vote = value ? undefined : false;
                 break;
               case 'role':
@@ -456,8 +456,8 @@ const ChallengeSettings = ({ challenge, index, isReadOnly, setSubplebbitSettings
               <>
                 {isReadOnly && !exclude?.address ? null : (
                   <div className={styles.challengeOption}>
-                    Users
-                    <div className={styles.challengeOptionDescription}>Exclude specific users by their addresses, separated by a comma</div>
+                    User's address
+                    <div className={styles.challengeOptionDescription}>Is one of the following:</div>
                     {isReadOnly ? (
                       <span>{exclude?.address?.join(', ')}</span>
                     ) : (
@@ -472,10 +472,10 @@ const ChallengeSettings = ({ challenge, index, isReadOnly, setSubplebbitSettings
                 )}
                 {isReadOnly && !exclude?.postScore && !exclude?.postReply ? null : (
                   <div className={styles.challengeOption}>
-                    Users with karma
+                    User's karma
                     {isReadOnly && !exclude?.postScore ? null : (
                       <>
-                        <div className={styles.challengeOptionDescription}>Minimum post karma required:</div>
+                        <div className={styles.challengeOptionDescription}>Post karma is at least:</div>
                         {isReadOnly ? (
                           <span>{exclude?.postScore}</span>
                         ) : (
@@ -485,7 +485,7 @@ const ChallengeSettings = ({ challenge, index, isReadOnly, setSubplebbitSettings
                     )}
                     {isReadOnly && !exclude?.postReply ? null : (
                       <>
-                        <div className={styles.challengeOptionDescription}>Minimum comment karma required:</div>
+                        <div className={styles.challengeOptionDescription}>Comment karma is at least:</div>
                         {isReadOnly ? (
                           <span>{exclude?.postReply}</span>
                         ) : (
@@ -497,8 +497,8 @@ const ChallengeSettings = ({ challenge, index, isReadOnly, setSubplebbitSettings
                 )}
                 {isReadOnly && !exclude?.firstCommentTimestamp ? null : (
                   <div className={styles.challengeOption}>
-                    Users by account age
-                    <div className={styles.challengeOptionDescription}>Minimum account age in seconds (eg. 86400 = 24h):</div>
+                    User's account age
+                    <div className={styles.challengeOptionDescription}>In seconds (eg. 86400 = 24h) is at least:</div>
                     {isReadOnly ? (
                       <span>{exclude?.firstCommentTimestamp}</span>
                     ) : (
@@ -512,8 +512,8 @@ const ChallengeSettings = ({ challenge, index, isReadOnly, setSubplebbitSettings
                 )}
                 {isReadOnly && !exclude?.role ? null : (
                   <div className={styles.challengeOption}>
-                    Moderators
-                    <div className={styles.challengeOptionDescription}>Exclude a specific moderator role</div>
+                    User's role
+                    <div className={styles.challengeOptionDescription}>Exclude a specific assigned role</div>
                     {rolesToExclude.map((role) =>
                       isReadOnly && !exclude?.role?.includes(role) ? null : (
                         <div key={role}>
@@ -527,7 +527,7 @@ const ChallengeSettings = ({ challenge, index, isReadOnly, setSubplebbitSettings
                                 onChange={() => handleExcludeChange(excludeIndex, 'role', role)}
                                 disabled={isReadOnly}
                               />
-                              exclude {role}
+                              is {role}
                             </label>
                           )}
                         </div>
@@ -537,7 +537,7 @@ const ChallengeSettings = ({ challenge, index, isReadOnly, setSubplebbitSettings
                 )}
                 {isReadOnly && actionsToExclude.some((action) => exclude.hasOwnProperty(action)) ? null : (
                   <div className={styles.challengeOption}>
-                    Actions
+                    User's action
                     <div className={styles.challengeOptionDescription}>Exclude a specific user action</div>
                     {actionsToExclude.map((action) =>
                       isReadOnly && !exclude?.[action] ? null : (
@@ -552,14 +552,14 @@ const ChallengeSettings = ({ challenge, index, isReadOnly, setSubplebbitSettings
                                 onChange={(e) => handleExcludeChange(excludeIndex, action, e.target.checked)}
                                 disabled={isReadOnly}
                               />
-                              exclude {action}
+                              is {action}
                             </label>
                           )}
                         </div>
                       ),
                     )}
                     {nonActionsToExclude.map((nonAction) =>
-                      isReadOnly && exclude?.[nonAction.replace('non-', '')] ? null : (
+                      isReadOnly && exclude?.[nonAction.replace('not ', '')] ? null : (
                         <div key={nonAction}>
                           {isReadOnly ? (
                             <span className={styles.readOnlyActionExclude}>{nonAction} excluded</span>
@@ -567,11 +567,11 @@ const ChallengeSettings = ({ challenge, index, isReadOnly, setSubplebbitSettings
                             <label>
                               <input
                                 type='checkbox'
-                                checked={exclude?.[nonAction.replace('non-', '')] === undefined}
+                                checked={exclude?.[nonAction.replace('not ', '')] === undefined}
                                 onChange={(e) => handleExcludeChange(excludeIndex, nonAction, e.target.checked)}
                                 disabled={isReadOnly}
                               />
-                              exclude {nonAction}
+                              is {nonAction}
                             </label>
                           )}
                         </div>
@@ -718,6 +718,7 @@ const Challenges = ({ isReadOnly, readOnlyChallenges }: { isReadOnly: boolean; r
 };
 
 const JSONSettings = ({ isReadOnly = false }: { isReadOnly?: boolean }) => {
+  const { t } = useTranslation();
   const { challenges, title, description, address, suggested, rules, roles, settings, subplebbitAddress, setSubplebbitSettingsStore } = useSubplebbitSettingsStore();
   const [text, setText] = useState('');
 
@@ -738,8 +739,8 @@ const JSONSettings = ({ isReadOnly = false }: { isReadOnly?: boolean }) => {
 
   return (
     <div className={`${styles.box}`}>
-      <div className={`${styles.boxTitle} ${styles.JSONSettingsTitle}`}>JSON settings</div>
-      <div className={styles.boxSubtitle}>quickly copy or paste the community settings</div>
+      <div className={`${styles.boxTitle} ${styles.JSONSettingsTitle}`}>{t('json_settings')}</div>
+      <div className={styles.boxSubtitle}>{t('json_settings_info')}</div>
       <div className={`${styles.boxInput} ${styles.JSONSettings}`}>
         <textarea onChange={(e) => handleChange(e.target.value)} autoCorrect='off' autoComplete='off' spellCheck='false' value={text} disabled={isReadOnly} />
       </div>
@@ -807,7 +808,7 @@ const SubplebbitSettings = () => {
         <Sidebar address={subplebbitAddress} createdAt={createdAt} description={description} roles={roles} rules={rules} title={title} updatedAt={updatedAt} />
       </div>
       {/* subplebbit.settings is private, only shows to the sub owner */}
-      {!settings && <div className={styles.infobar}>can't connect to community p2p node - only the owner of a community can edit its settings.</div>}
+      {!settings && <div className={styles.infobar}>{t('owner_settings_notice')}</div>}
       <Title isReadOnly={isReadOnly} />
       <Description isReadOnly={isReadOnly} />
       <Address isReadOnly={isReadOnly} />

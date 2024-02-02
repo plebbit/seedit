@@ -76,7 +76,7 @@ const Author = () => {
         data={virtuosoData}
         itemContent={(index, post) => {
           const isReply = post?.parentCid;
-          return !isReply ? <Post index={index} post={post} /> : <Reply index={index} isSingle={true} reply={post} />;
+          return !isReply ? <Post index={index} post={post} /> : <Reply index={index} isSingleReply={true} reply={post} />;
         }}
         useWindowScroll={true}
         components={{ Footer }}

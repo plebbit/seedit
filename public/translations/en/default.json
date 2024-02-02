@@ -210,5 +210,20 @@
   "below_approved_user": "Below are the communities that you are an approved user on.",
   "below_moderator_access": "Below are the communities that you have moderator access to.",
   "not_moderator": "You are not a moderator on any community.",
-  "create_community": "Create community"
+  "create_community": "Create community",
+  "single_comment_notice": "You are viewing a single comment's thread",
+  "single_comment_link": "View the rest of the comments",
+  "owner_settings_notice": "can't connect to community p2p node - only the owner of a community can edit its settings.",
+  "preview": "preview",
+  "shown_in_sidebar": "shown in the sidebar of your community",
+  "community_logo_info": "set a community logo using its direct image link (ending in .jpg, .png)",
+  "moderators_setting_info": "let other users moderate and post without challenges",
+  "vote": "vote",
+  "passing": "passing",
+  "rejecting": "rejecting",
+  "add_moderator": "add a moderator",
+  "add_rule": "add a rule",
+  "json_settings": "JSON settings",
+  "json_settings_info": "quickly copy or paste the community settings",
+  "address_setting_info": "set a readable community address using ens.domains"
 }

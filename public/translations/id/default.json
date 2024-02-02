@@ -210,5 +210,20 @@
   "below_approved_user": "Di bawah ini adalah komunitas di mana Anda adalah pengguna yang disetujui.",
   "below_moderator_access": "Di bawah ini adalah komunitas yang Anda miliki akses moderator.",
   "not_moderator": "Anda bukan moderator di komunitas mana pun.",
-  "create_community": "Buat komunitas"
+  "create_community": "Buat komunitas",
+  "single_comment_notice": "Anda sedang melihat benang komentar tunggal",
+  "single_comment_link": "Lihat sisa komentar",
+  "owner_settings_notice": "tidak dapat terhubung ke node P2P komunitas - hanya pemilik komunitas yang dapat mengedit pengaturannya.",
+  "preview": "pratinjau",
+  "shown_in_sidebar": "ditampilkan di bilah samping komunitas Anda",
+  "community_logo_info": "setel logo komunitas menggunakan tautan gambar langsungnya (berakhir dengan .jpg, .png)",
+  "moderators_setting_info": "biarkan pengguna lain memoderasi dan memposting tanpa tantangan",
+  "vote": "memilih",
+  "passing": "lulus",
+  "rejecting": "menolak",
+  "add_moderator": "tambahkan moderator",
+  "add_rule": "tambahkan aturan",
+  "json_settings": "Pengaturan JSON",
+  "json_settings_info": "salin atau tempel cepat pengaturan komunitas",
+  "address_setting_info": "atur alamat komunitas yang dapat dibaca menggunakan ens.domains"
 }

@@ -210,5 +210,20 @@
   "below_approved_user": "Ci-dessous se trouvent les communautés où vous êtes un utilisateur approuvé.",
   "below_moderator_access": "Ci-dessous se trouvent les communautés auxquelles vous avez accès en tant que modérateur.",
   "not_moderator": "Vous n'êtes pas modérateur dans aucune communauté.",
-  "create_community": "Créer une communauté"
+  "create_community": "Créer une communauté",
+  "single_comment_notice": "Vous regardez le fil d'un seul commentaire",
+  "single_comment_link": "Voir le reste des commentaires",
+  "owner_settings_notice": "impossible de se connecter au nœud P2P de la communauté - seul le propriétaire d'une communauté peut éditer ses paramètres.",
+  "preview": "aperçu",
+  "shown_in_sidebar": "affiché dans la barre latérale de votre communauté",
+  "community_logo_info": "définir un logo de communauté à l'aide de son lien direct vers une image (se terminant par .jpg, .png)",
+  "moderators_setting_info": "laissez d'autres utilisateurs modérer et publier sans défis",
+  "vote": "voter",
+  "passing": "passage",
+  "rejecting": "rejet",
+  "add_moderator": "ajouter un modérateur",
+  "add_rule": "ajouter une règle",
+  "json_settings": "Paramètres JSON",
+  "json_settings_info": "copier ou coller rapidement les paramètres de la communauté",
+  "address_setting_info": "définissez une adresse de communauté lisible en utilisant ens.domains"
 }

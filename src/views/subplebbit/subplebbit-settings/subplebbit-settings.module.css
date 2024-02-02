@@ -109,7 +109,6 @@
   border-color: var(--border-orange);
   border-style: solid;
   border-width: 1px;
-  font-size: small;
   margin: 0px 5px 5px 0px;
   padding: 6px 10px 6px 10px;
   color: var(--text);
@@ -260,6 +259,7 @@
   height: 40px;
   margin-top: 10px;
   font-size: smaller;
+  text-transform: capitalize;
 }
 
 .logoError {

@@ -210,5 +210,20 @@
   "below_approved_user": "Alla ovat yhteisöt, joissa olet hyväksytty käyttäjä.",
   "below_moderator_access": "Alla ovat yhteisöt, joissa sinulla on moderaattoripääsy.",
   "not_moderator": "Et ole moderaattori missään yhteisössä.",
-  "create_community": "Luo yhteisö"
+  "create_community": "Luo yhteisö",
+  "single_comment_notice": "Katsotte yhden kommentin keskustelua",
+  "single_comment_link": "Näytä loput kommentit",
+  "owner_settings_notice": "ei voi muodostaa yhteyttä yhteisön P2P-solmuun - vain yhteisön omistaja voi muokata sen asetuksia.",
+  "preview": "esikatselu",
+  "shown_in_sidebar": "näytetään yhteisösi sivupalkissa",
+  "community_logo_info": "aseta yhteisön logo sen suoran kuvan linkin avulla (päättyen .jpg, .png)",
+  "moderators_setting_info": "anna muiden käyttäjien moderoida ja lähettää ilman haasteita",
+  "vote": "äänestää",
+  "passing": "läpäisy",
+  "rejecting": "hylkääminen",
+  "add_moderator": "lisää moderaattori",
+  "add_rule": "lisää sääntö",
+  "json_settings": "JSON-asetukset",
+  "json_settings_info": "kopioi tai liitä yhteisön asetukset nopeasti",
+  "address_setting_info": "aseta luettava yhteisön osoite käyttäen ens.domains"
 }

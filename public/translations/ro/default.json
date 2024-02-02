@@ -210,5 +210,20 @@
   "below_approved_user": "Mai jos sunt comunitățile unde ești un utilizator aprobat.",
   "below_moderator_access": "Mai jos sunt comunitățile la care aveți acces ca moderator.",
   "not_moderator": "Nu ești moderator în nicio comunitate.",
-  "create_community": "Creați comunitate"
+  "create_community": "Creați comunitate",
+  "single_comment_notice": "Vizualizați un fir de discuție cu un singur comentariu",
+  "single_comment_link": "Vizualizați restul comentariilor",
+  "owner_settings_notice": "nu se poate conecta la nodul P2P al comunității - doar proprietarul unei comunități poate edita setările sale.",
+  "preview": "previzualizare",
+  "shown_in_sidebar": "afișat în bara laterală a comunității tale",
+  "community_logo_info": "setați un logo de comunitate folosind link-ul direct al imaginii (care se termină în .jpg, .png)",
+  "moderators_setting_info": "permiteți altor utilizatori să modereze și să posteze fără provocări",
+  "vote": "vota",
+  "passing": "trecere",
+  "rejecting": "respingere",
+  "add_moderator": "adăugați un moderator",
+  "add_rule": "adăugați o regulă",
+  "json_settings": "Setări JSON",
+  "json_settings_info": "copiați sau lipiți rapid setările comunității",
+  "address_setting_info": "setați o adresă de comunitate citibilă folosind ens.domains"
 }

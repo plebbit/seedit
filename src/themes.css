@@ -28,6 +28,7 @@
   --background-markdown: #fafafa;
   --background-contrast: #E4F2FB;
   --background-orange: #f6e69f;
+  --yellow-highlight: #ffc;
   --text: black;
   --text-input: black;
   --text-markdown: #222222;
@@ -56,6 +57,7 @@
   --button-large-nub: url('/public/assets/buttons/button-large-nub.png');
   --button-large-hover-nub: url('/public/assets/buttons/button-large-nub-hover.png');
   --account-dropdown-arrow: url("/public/assets/buttons/droparrowblue.gif");
+  --continue-thread-arrow: url('/public/assets/buttons/continue-this-thread-arrow.png');
 }
 
 :root .dark {
@@ -63,6 +65,7 @@
   --orange: #FF7500;
   --green: #228822;
   --yellow: rgb(200, 171, 0);
+  --yellow-highlight: rgb(58, 50, 0);
   --box-yellow-contrast: rgb(163, 130, 0);
   --box-yellow-background: rgb(56, 45, 0);
   --box-yellow-icon: rgb(130, 103, 0);
@@ -116,4 +119,5 @@
   --button-large-nub: url('/public/assets/buttons/button-large-nub-dark.png');
   --button-large-hover-nub: url('/public/assets/buttons/button-large-nub-hover-dark.png');
   --account-dropdown-arrow: url("/public/assets/buttons/droparrowgray.gif");
+  --continue-thread-arrow: url('/public/assets/buttons/continue-this-thread-arrow-dark.png');
 }

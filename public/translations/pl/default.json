@@ -210,5 +210,20 @@
   "below_approved_user": "Poniżej znajdują się społeczności, na których jesteś zaakceptowanym użytkownikiem.",
   "below_moderator_access": "Poniżej znajdują się społeczności, do których masz dostęp jako moderator.",
   "not_moderator": "Nie jesteś moderatorem w żadnej społeczności.",
-  "create_community": "Utwórz społeczność"
+  "create_community": "Utwórz społeczność",
+  "single_comment_notice": "Przeglądasz wątek jednego komentarza",
+  "single_comment_link": "Zobacz resztę komentarzy",
+  "owner_settings_notice": "nie można połączyć się z węzłem P2P społeczności - tylko właściciel społeczności może edytować jej ustawienia.",
+  "preview": "podgląd",
+  "shown_in_sidebar": "wyświetlane na pasku bocznym twojej społeczności",
+  "community_logo_info": "ustaw logo społeczności za pomocą bezpośredniego linku do obrazu (zakończonego na .jpg, .png)",
+  "moderators_setting_info": "pozwól innym użytkownikom moderować i publikować bez wyzwań",
+  "vote": "głosować",
+  "passing": "zaliczenie",
+  "rejecting": "odrzucanie",
+  "add_moderator": "dodaj moderatora",
+  "add_rule": "dodaj regułę",
+  "json_settings": "Ustawienia JSON",
+  "json_settings_info": "szybko kopiuj lub wklej ustawienia społeczności",
+  "address_setting_info": "ustaw czytelny adres społeczności za pomocą ens.domains"
 }
