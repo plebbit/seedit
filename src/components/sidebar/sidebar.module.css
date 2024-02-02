@@ -286,8 +286,8 @@ a {
 }
 
 .footerLogo img {
-  height: 40px;
-  margin: 0 10px 0 0;
+  height: 45px;
+  margin: -2px 7px 0 -2px;
   float: left;
 }
 
