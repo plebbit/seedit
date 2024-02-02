@@ -248,3 +248,26 @@
   color: var(--green);
   text-transform: lowercase;
 }
+
+.continueThisThread {
+  display: block;
+  margin: 10px 0 0 25px;
+  border-left: 1px dotted #DDF;
+  font-size: 12px;
+}
+
+.continueThisThread a {
+  color: var(--text-primary);
+  text-decoration: none;
+  margin-left: 3px;
+}
+
+.continueThisThread a::after {
+  background-image: var(--continue-thread-arrow);
+  background-repeat: no-repeat;
+  content: " ";
+  display: inline-block;
+  width: 25px;
+  height: 9px;
+  margin: 5px 0 0 5px;
+}

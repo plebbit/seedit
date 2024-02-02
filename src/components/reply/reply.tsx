@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react';
+import { Fragment, useEffect, useMemo, useState } from 'react';
 import { Comment, useAccountComment, useAuthorAddress, useBlock, useComment, useEditedComment, useSubplebbit } from '@plebbit/plebbit-react-hooks';
 import { flattenCommentsPages } from '@plebbit/plebbit-react-hooks/dist/lib/utils';
 import { Link, useLocation } from 'react-router-dom';
@@ -277,7 +277,7 @@ const Reply = ({ depth = 0, isSingleComment, isSingleReply, isNotification = fal
     <div className={styles.reply}>
       {isSingleReply && !isInInboxView && <ParentLink postCid={cid ? postCid : parentOfPendingReply?.postCid} />}
       {isInInboxView && <InboxParentLink commentCid={cid} />}
-      <div className={`${!isSingleReply ? styles.replyWrapper : styles.singleReplyWrapper} ${depth > 1 && styles.nested}`}>
+      <div className={`${!isSingleReply ? styles.replyWrapper : styles.singleReplyWrapper} ${depth > 0 && styles.nested}`}>
         {!collapsed && (
           <div className={styles.midcol}>
             <div className={`${styles.arrow} ${upvoted ? styles.upvoted : styles.arrowUp}`} onClick={() => cid && upvote()} />
@@ -352,7 +352,20 @@ const Reply = ({ depth = 0, isSingleComment, isSingleReply, isNotification = fal
                 showReplyForm={showReplyForm}
               />
               {isReplying && <ReplyForm cid={cid} isReplyingToReply={true} hideReplyForm={hideReplyForm} />}
-              {!isSingleReply && replies.map((reply, index) => <Reply key={`${index}${reply.cid}`} reply={reply} depth={(reply.depth || 1) + 1} />)}
+              {!isSingleReply &&
+                replies.map((reply, index) => {
+                  return (
+                    <Fragment key={`${index}-${reply.cid}`}>
+                      {!depth || depth < 9 ? (
+                        <Reply key={`${index}${reply.cid}`} reply={reply} depth={(depth || 0) + 1} />
+                      ) : (
+                        <div className={styles.continueThisThread}>
+                          <Link to={`/p/${subplebbitAddress}/c/${cid}`}>continue this thread</Link>
+                        </div>
+                      )}
+                    </Fragment>
+                  );
+                })}
             </div>
           )}
         </div>
