@@ -225,5 +225,6 @@
   "add_rule": "إضافة قاعدة",
   "json_settings": "إعدادات JSON",
   "json_settings_info": "نسخ أو لصق إعدادات المجتمع بسرعة",
-  "address_setting_info": "قم بتعيين عنوان مجتمع قابل للقراءة باستخدام ens.domains"
+  "address_setting_info": "قم بتعيين عنوان مجتمع قابل للقراءة باستخدام ens.domains",
+  "enter_crypto_address": "الرجاء إدخال عنوان كريبتو صالح."
 }

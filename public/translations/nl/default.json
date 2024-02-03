@@ -225,5 +225,6 @@
   "add_rule": "een regel toevoegen",
   "json_settings": "JSON-instellingen",
   "json_settings_info": "snel de gemeenschapsinstellingen kopiëren of plakken",
-  "address_setting_info": "stel een leesbaar gemeenschapsadres in met behulp van ens.domains"
+  "address_setting_info": "stel een leesbaar gemeenschapsadres in met behulp van ens.domains",
+  "enter_crypto_address": "Voer alstublieft een geldig crypto-adres in."
 }

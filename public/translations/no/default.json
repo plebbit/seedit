@@ -225,5 +225,6 @@
   "add_rule": "legg til en regel",
   "json_settings": "JSON-innstillinger",
   "json_settings_info": "raskt kopiere eller lime inn fellesskapsinnstillinger",
-  "address_setting_info": "sett en lesbar fellesskapsadresse ved hjelp av ens.domains"
+  "address_setting_info": "sett en lesbar fellesskapsadresse ved hjelp av ens.domains",
+  "enter_crypto_address": "Vennligst skriv inn en gyldig kryptoadresse."
 }

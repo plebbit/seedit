@@ -98,7 +98,7 @@ const ProfileSettings = () => {
 
   const saveCryptoAddress = async () => {
     if (!cryptoState.cryptoAddress || !cryptoState.cryptoAddress.includes('.')) {
-      alert('Please enter a crypto address.');
+      alert(t('enter_crypto_address'));
       return;
     } else if (resolvedAddress && resolvedAddress !== account?.signer?.address) {
       alert(`Cannot save resolved crypto address, it belongs to another account, address: ${resolvedAddress}`);
@@ -136,7 +136,7 @@ const ProfileSettings = () => {
 
   const checkCryptoAddress = () => {
     if (!cryptoState.cryptoAddress || !cryptoState.cryptoAddress.includes('.')) {
-      alert('Please enter a valid crypto address.');
+      alert(t('enter_crypto_address'));
       return;
     }
     setCryptoState((prevState) => ({
@@ -162,7 +162,7 @@ const ProfileSettings = () => {
         <button className={styles.button} onClick={saveUsername}>
           {t('save')}
         </button>
-        {savedUsername && <span className={styles.saved}>Saved.</span>}
+        {savedUsername && <span className={styles.saved}>{t('saved')}</span>}
       </div>
       <div className={styles.cryptoAddressSetting}>
         <span className={styles.settingTitle}>{t('crypto_address')}</span>
@@ -179,7 +179,7 @@ const ProfileSettings = () => {
           <button className={styles.button} onClick={saveCryptoAddress}>
             {t('save')}
           </button>
-          {savedCryptoAddress && <span className={styles.saved}>Saved.</span>}
+          {savedCryptoAddress && <span className={styles.saved}>{t('saved')}</span>}
         </div>
         <div className={styles.checkCryptoAddress}>
           <button className={styles.button} onClick={checkCryptoAddress}>
