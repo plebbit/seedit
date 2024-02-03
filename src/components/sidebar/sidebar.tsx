@@ -12,7 +12,7 @@ import SubscribeButton from '../subscribe-button';
 import packageJson from '../../../package.json';
 const { version } = packageJson;
 const commitRef = process.env.REACT_APP_COMMIT_REF;
-const isElectron = window.electron && window.electron.isElectron;
+const isElectron = window.isElectron === true;
 
 interface sidebarProps {
   address?: string | undefined;
