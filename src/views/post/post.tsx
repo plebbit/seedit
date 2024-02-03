@@ -10,25 +10,33 @@ import PostComponent from '../../components/post';
 import Sidebar from '../../components/sidebar/';
 import useReplies from '../../hooks/use-replies';
 import useStateString from '../../hooks/use-state-string';
-import { isPendingView } from '../../lib/utils/view-utils';
+import { isPendingView, isPostContextView } from '../../lib/utils/view-utils';
+import findTopParentCidOfReply from '../../lib/utils/cid-utils';
 
 const Post = () => {
   const { t } = useTranslation();
   const params = useParams();
   const location = useLocation();
   const isInPendingView = isPendingView(location.pathname, params);
+  const isInPostContextView = isPostContextView(location.pathname, params);
   const comment = useComment({ commentCid: params?.commentCid });
   const pendingPost = useAccountComment({ commentIndex: params?.accountCommentIndex as any });
+
+  // if in inbox reply context view, get the context comment
+  const postComment = useComment({ commentCid: comment?.postCid });
+  const topParentCid = findTopParentCidOfReply(comment.cid, postComment);
+  const topParentComment = useComment({ commentCid: topParentCid || '' });
+
   const post = isInPendingView ? pendingPost : comment;
   const isSingleComment = comment?.parentCid ? true : false;
 
   // in pending page, redirect to post view when post.cid is received
   const navigate = useNavigate();
   useEffect(() => {
-    if (post?.cid && post?.subplebbitAddress) {
+    if (post?.cid && post?.subplebbitAddress && !isInPostContextView) {
       navigate(`/p/${post?.subplebbitAddress}/c/${post?.cid}`, { replace: true });
     }
-  }, [post?.cid, post?.subplebbitAddress, navigate]);
+  }, [post?.cid, post?.subplebbitAddress, navigate, isInPostContextView]);
 
   const { cid, downvoteCount, postCid, replyCount, subplebbitAddress, timestamp, title, upvoteCount } = comment || {};
   const subplebbit = useSubplebbit({ subplebbitAddress });
@@ -99,7 +107,8 @@ const Post = () => {
             </div>
           )}
           <div className={styles.replies}>
-            {isSingleComment && <Reply key={`singleComment-${comment.cid}`} reply={comment} depth={0} isSingleComment={true} />}
+            {isSingleComment && isInPostContextView && <Reply key={`contextComment-${topParentComment.cid}-test`} reply={topParentComment} depth={0} />}
+            {isSingleComment && !isInPostContextView && <Reply key={`singleComment-${comment.cid}`} reply={comment} depth={0} isSingleComment={true} />}
             {!isSingleComment && replies.map((reply, index) => <Reply key={`${index}${reply.cid}`} reply={reply} depth={comment.depth} />)}
           </div>
         </div>

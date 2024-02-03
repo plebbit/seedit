@@ -1,7 +1,7 @@
 import { Fragment, useEffect, useMemo, useState } from 'react';
 import { Comment, useAccountComment, useAuthorAddress, useBlock, useComment, useEditedComment, useSubplebbit } from '@plebbit/plebbit-react-hooks';
 import { flattenCommentsPages } from '@plebbit/plebbit-react-hooks/dist/lib/utils';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import styles from './reply.module.css';
 import useReplies from '../../hooks/use-replies';
@@ -18,7 +18,7 @@ import ReplyForm from '../reply-form';
 import useDownvote from '../../hooks/use-downvote';
 import useStateString from '../../hooks/use-state-string';
 import useUpvote from '../../hooks/use-upvote';
-import { isInboxView } from '../../lib/utils/view-utils';
+import { isInboxView, isPostContextView } from '../../lib/utils/view-utils';
 import { getShortAddress } from '@plebbit/plebbit-js';
 import Markdown from '../markdown';
 
@@ -183,6 +183,7 @@ const InboxParentInfo = ({ address, cid, markedAsRead, shortAddress, subplebbitA
 };
 
 interface ReplyProps {
+  cidOfReplyWithContext?: string;
   depth?: number;
   index?: number;
   isNotification?: boolean;
@@ -191,7 +192,7 @@ interface ReplyProps {
   reply: Comment | undefined;
 }
 
-const Reply = ({ depth = 0, isSingleComment, isSingleReply, isNotification = false, reply = {} }: ReplyProps) => {
+const Reply = ({ cidOfReplyWithContext, depth = 0, isSingleComment, isSingleReply, isNotification = false, reply = {} }: ReplyProps) => {
   // handle pending mod or author edit
   const { editedComment: editedPost } = useEditedComment({ comment: reply });
   if (editedPost) {
@@ -209,6 +210,7 @@ const Reply = ({ depth = 0, isSingleComment, isSingleReply, isNotification = fal
     linkWidth,
     markedAsRead,
     pinned,
+    parentCid,
     postCid,
     removed,
     spoiler,
@@ -271,7 +273,9 @@ const Reply = ({ depth = 0, isSingleComment, isSingleReply, isNotification = fal
   const parentOfPendingReply = useComment({ commentCid: pendingReply?.parentCid });
 
   const location = useLocation();
+  const params = useParams();
   const isInInboxView = isInboxView(location.pathname);
+  const isInPostContextView = isPostContextView(location.pathname, params);
 
   return (
     <div className={styles.reply}>
@@ -291,7 +295,7 @@ const Reply = ({ depth = 0, isSingleComment, isSingleReply, isNotification = fal
                 <span className={styles.expand} onClick={handleCollapseButton}>
                   [{collapsed ? '+' : '–'}]
                 </span>
-                <ReplyAuthor address={author?.address} authorRole={authorRole} cid={cid} displayName={author.displayName} shortAuthorAddress={shortAuthorAddress} />
+                <ReplyAuthor address={author?.address} authorRole={authorRole} cid={cid} displayName={author?.displayName} shortAuthorAddress={shortAuthorAddress} />
                 <span className={styles.score}>{scoreString}</span> <span className={styles.time}>{getFormattedTimeAgo(timestamp)}</span>{' '}
                 {pinned && <span className={styles.pinned}>- {t('stickied_comment')}</span>}
                 {collapsed && <span className={styles.children}> ({childrenString})</span>}
@@ -316,7 +320,7 @@ const Reply = ({ depth = 0, isSingleComment, isSingleReply, isNotification = fal
               />
             )}
             {!collapsed && (
-              <div className={styles.usertext}>
+              <div className={`${styles.usertext} ${commentMediaInfo && (isSingleComment || cidOfReplyWithContext === cid) ? styles.highlightMedia : ''}`}>
                 {commentMediaInfo && (
                   <ReplyMedia
                     commentMediaInfo={commentMediaInfo}
@@ -329,7 +333,7 @@ const Reply = ({ depth = 0, isSingleComment, isSingleReply, isNotification = fal
                     toggleExpanded={toggleExpanded}
                   />
                 )}
-                <div className={`${styles.md} ${isSingleComment ? styles.singleCommentHighlight : ''}`}>
+                <div className={`${styles.md} ${isSingleComment || cidOfReplyWithContext === cid ? styles.highlightContent : ''}`}>
                   <Markdown content={contentString} />
                 </div>
               </div>
@@ -344,7 +348,8 @@ const Reply = ({ depth = 0, isSingleComment, isSingleReply, isNotification = fal
                 isReply={true}
                 isSingleReply={isSingleReply}
                 index={reply?.index}
-                parentCid={postCid}
+                parentCid={parentCid}
+                postCid={postCid}
                 removed={removed}
                 replyCount={replies.length}
                 spoiler={spoiler}
@@ -357,7 +362,12 @@ const Reply = ({ depth = 0, isSingleComment, isSingleReply, isNotification = fal
                   return (
                     <Fragment key={`${index}-${reply.cid}`}>
                       {!depth || depth < 9 ? (
-                        <Reply key={`${index}${reply.cid}`} reply={reply} depth={(depth || 0) + 1} />
+                        <Reply
+                          key={`${index}${reply.cid}`}
+                          reply={reply}
+                          depth={(depth || 0) + 1}
+                          cidOfReplyWithContext={isInPostContextView ? params?.commentCid : undefined}
+                        />
                       ) : (
                         <div className={styles.continueThisThread}>
                           <Link to={`/p/${subplebbitAddress}/c/${cid}`}>continue this thread</Link>
