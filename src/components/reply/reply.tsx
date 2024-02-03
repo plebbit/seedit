@@ -320,7 +320,7 @@ const Reply = ({ cidOfReplyWithContext, depth = 0, isSingleComment, isSingleRepl
               />
             )}
             {!collapsed && (
-              <div className={`${styles.usertext} ${commentMediaInfo && (isSingleComment || cidOfReplyWithContext === cid) ? styles.highlightMedia : ''}`}>
+              <div className={`${styles.usertext} ${cid && commentMediaInfo && (isSingleComment || cidOfReplyWithContext === cid) ? styles.highlightMedia : ''}`}>
                 {commentMediaInfo && (
                   <ReplyMedia
                     commentMediaInfo={commentMediaInfo}
@@ -333,7 +333,7 @@ const Reply = ({ cidOfReplyWithContext, depth = 0, isSingleComment, isSingleRepl
                     toggleExpanded={toggleExpanded}
                   />
                 )}
-                <div className={`${styles.md} ${isSingleComment || cidOfReplyWithContext === cid ? styles.highlightContent : ''}`}>
+                <div className={`${styles.md} ${cid && (isSingleComment || cidOfReplyWithContext === cid) ? styles.highlightContent : ''}`}>
                   <Markdown content={contentString} />
                 </div>
               </div>
