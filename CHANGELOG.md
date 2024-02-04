@@ -1,3 +1,25 @@
+## [0.1.5](https://github.com/plebbit/seedit/compare/v0.1.4...v0.1.5) (2024-02-04)
+
+
+### Bug Fixes
+
+* **electron:** make sure repo is migrated when starting ipfs ([e3804e3](https://github.com/plebbit/seedit/commit/e3804e353330601a7cb19d91b29333444514ab24))
+* **submit:** don't spellcheck and autocorrect in url input and community address input ([65ea473](https://github.com/plebbit/seedit/commit/65ea473dcadf78eb4af14b4082c15bb3dbc0dec7))
+* **subplebbit settings:** in challenge exclude, non-actions were incorrectly checked by their counterparts ([0b193ad](https://github.com/plebbit/seedit/commit/0b193ad5664f0e6389a6d488e0523bab638c9078))
+
+
+### Features
+
+* add 'continue this thread' nested replies limit ([d4f66ac](https://github.com/plebbit/seedit/commit/d4f66ac3a17a376a1b987725fe6976c11132af24))
+* add service worker (PWA) ([8c7ebf2](https://github.com/plebbit/seedit/commit/8c7ebf231a2010258c89922400eff7f829976afb))
+* **android:** add android build script ([f58827a](https://github.com/plebbit/seedit/commit/f58827a0aa441b33a6e051a3159dce112738c7af))
+* implement text challenge modal ([bf8b575](https://github.com/plebbit/seedit/commit/bf8b575d334b02c99e75880670c886504f4c187b))
+* **post:** add single comment's thread view ([a605bdd](https://github.com/plebbit/seedit/commit/a605bdd77e696ca92c3a6e055c09514a6226b85f))
+* **submit:** add arrow keys control to community address dropdown items ([aea68e6](https://github.com/plebbit/seedit/commit/aea68e66eb08a687fe26796cab820a0948e5163e))
+* update app icon design ([b3a37d5](https://github.com/plebbit/seedit/commit/b3a37d541e116e7f9feb2577fc28c833111ac9fa))
+
+
+
 ## [0.1.4](https://github.com/plebbit/seedit/compare/v0.1.3...v0.1.4) (2024-01-30)
 
 
