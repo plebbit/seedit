@@ -225,5 +225,6 @@
   "add_rule": "添加一条规则",
   "json_settings": "JSON设置",
   "json_settings_info": "快速复制或粘贴社区设置",
-  "address_setting_info": "使用 ens.domains 设置可读的社区地址"
+  "address_setting_info": "使用 ens.domains 设置可读的社区地址",
+  "enter_crypto_address": "请输入有效的加密货币地址。"
 }

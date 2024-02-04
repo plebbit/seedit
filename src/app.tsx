@@ -86,6 +86,7 @@ function App() {
             <Route path='/p/all/about' element={<About />} />
 
             <Route path='/p/:subplebbitAddress/c/:commentCid' element={<Post />} />
+            <Route path='/p/:subplebbitAddress/c/:commentCid/context' element={<Post />} />
             <Route path='/p/:subplebbitAddress/c/:commentCid/about' element={<About />} />
 
             <Route path='/p/:subplebbitAddress/submit' element={<Submit />} />

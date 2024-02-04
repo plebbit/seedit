@@ -225,5 +225,6 @@
   "add_rule": "नियम जोड़ें",
   "json_settings": "JSON सेटिंग्स",
   "json_settings_info": "समुदाय की सेटिंग्स को तेजी से कॉपी या पेस्ट करें",
-  "address_setting_info": "ens.domains का उपयोग करके एक पठनीय समुदाय पता सेट करें"
+  "address_setting_info": "ens.domains का उपयोग करके एक पठनीय समुदाय पता सेट करें",
+  "enter_crypto_address": "कृपया एक मान्य क्रिप्टो पता दर्ज करें।"
 }

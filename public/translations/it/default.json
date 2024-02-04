@@ -225,5 +225,6 @@
   "add_rule": "aggiungi una regola",
   "json_settings": "impostazioni JSON",
   "json_settings_info": "copia o incolla rapidamente le impostazioni della comunità",
-  "address_setting_info": "imposta un indirizzo di comunità leggibile utilizzando ens.domains"
+  "address_setting_info": "imposta un indirizzo di comunità leggibile utilizzando ens.domains",
+  "enter_crypto_address": "Inserisci un indirizzo cripto valido."
 }
