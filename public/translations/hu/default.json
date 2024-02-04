@@ -225,5 +225,6 @@
   "add_rule": "szabály hozzáadása",
   "json_settings": "JSON beállítások",
   "json_settings_info": "gyorsan másolja vagy illessze be a közösség beállításait",
-  "address_setting_info": "állítson be egy olvasható közösségi címet az ens.domains segítségével"
+  "address_setting_info": "állítson be egy olvasható közösségi címet az ens.domains segítségével",
+  "enter_crypto_address": "Kérjük, adjon meg egy érvényes kripto címet."
 }

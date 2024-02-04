@@ -10,6 +10,7 @@ import {
   // useAccountSubplebbits,
   // AccountSubplebbit,
   useAuthor,
+  useAuthorAvatar,
   useAuthorComments,
   useBlock,
   // useSubplebbits,
@@ -61,6 +62,9 @@ const AuthorSidebar = () => {
   const { authorAddress, commentCid } = useParams() || {};
   const { blocked, unblock, block } = useBlock({ address: authorAddress });
 
+  const author = useAuthor({ commentCid, authorAddress });
+  const { imageUrl } = useAuthorAvatar({ author });
+
   const isInAuthorView = isAuthorView(location.pathname);
   const isInProfileView = isProfileView(location.pathname);
 
@@ -108,6 +112,11 @@ const AuthorSidebar = () => {
 
   return (
     <div className={styles.sidebar}>
+      {imageUrl && (
+        <div className={styles.avatar}>
+          <img src={imageUrl} alt='avatar' />
+        </div>
+      )}
       <div className={styles.titleBox}>
         <div className={styles.title}>
           {address}

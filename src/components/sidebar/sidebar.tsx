@@ -12,7 +12,7 @@ import SubscribeButton from '../subscribe-button';
 import packageJson from '../../../package.json';
 const { version } = packageJson;
 const commitRef = process.env.REACT_APP_COMMIT_REF;
-const isElectron = window.electron && window.electron.isElectron;
+const isElectron = window.isElectron === true;
 
 interface sidebarProps {
   address?: string | undefined;
@@ -227,7 +227,7 @@ const Sidebar = ({ address, cid, createdAt, description, downvoteCount = 0, role
       </div>
       <div className={styles.footer}>
         <a className={styles.footerLogo} href='https://github.com/plebbit/seedit/releases/latest' target='_blank' rel='noopener noreferrer'>
-          <img src='icon.png' alt='seedit mascot' />
+          <img src='assets/logo/seedit.png' alt='seedit mascot' />
         </a>
         <div className={styles.footerLinks}>
           <ul>

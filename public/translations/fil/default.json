@@ -225,5 +225,6 @@
   "add_rule": "magdagdag ng isang patakaran",
   "json_settings": "Mga setting ng JSON",
   "json_settings_info": "mabilis na kopya o i-paste ang mga setting ng komunidad",
-  "address_setting_info": "itakda ang isang mababasa oso ng komunidad gamit ang ens.domains"
+  "address_setting_info": "itakda ang isang mababasa oso ng komunidad gamit ang ens.domains",
+  "enter_crypto_address": "Mangyaring magpasok ng wastong crypto address."
 }

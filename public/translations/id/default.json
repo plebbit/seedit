@@ -225,5 +225,6 @@
   "add_rule": "tambahkan aturan",
   "json_settings": "Pengaturan JSON",
   "json_settings_info": "salin atau tempel cepat pengaturan komunitas",
-  "address_setting_info": "atur alamat komunitas yang dapat dibaca menggunakan ens.domains"
+  "address_setting_info": "atur alamat komunitas yang dapat dibaca menggunakan ens.domains",
+  "enter_crypto_address": "Harap masukkan alamat kripto yang valid."
 }

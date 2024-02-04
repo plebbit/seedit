@@ -225,5 +225,6 @@
   "add_rule": "नियम जोडा",
   "json_settings": "JSON सेटिंग्ज",
   "json_settings_info": "समुदाय सेटिंग्ज कॉपी किंवा पेस्ट करा",
-  "address_setting_info": "ens.domains वापरून एक वाचनीय समुदाय पत्ता सेट करा"
+  "address_setting_info": "ens.domains वापरून एक वाचनीय समुदाय पत्ता सेट करा",
+  "enter_crypto_address": "कृपया मान्य क्रिप्टो पत्ता प्रविष्ट करा."
 }
