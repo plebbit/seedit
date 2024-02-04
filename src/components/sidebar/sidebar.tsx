@@ -72,7 +72,7 @@ const PostInfo = ({ address, cid, downvoteCount = 0, timestamp = 0, upvoteCount 
         <span className={styles.postScoreWord}>{postScore === 1 ? t('point') : t('points')}</span> ({upvotePercentage}% {t('upvoted')})
       </div>
       <div className={styles.shareLink}>
-        {t('share_link')}: <input type='text' value={`https://seedit.eth.limo/#/p/${address}/c/${cid}`} readOnly={true} />
+        {t('share_link')}: <input type='text' value={`https://pleb.bz/p/${address}/c/${cid}`} readOnly={true} />
       </div>
     </div>
   );
