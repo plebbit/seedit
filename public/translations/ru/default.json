@@ -229,5 +229,10 @@
   "enter_crypto_address": "Пожалуйста, введите действительный криптовалютный адрес.",
   "check_for_updates": "Проверить наличие обновлений",
   "general_settings": "Общие настройки",
-  "refresh_to_update": "Обновите, чтобы обновить."
+  "refresh_to_update": "Обновите, чтобы обновить.",
+  "latest_development_version": "Вы используете последнюю версию разработки, коммит {{commit}}. Чтобы использовать стабильную версию, перейдите по ссылке {{link}}.",
+  "latest_stable_version": "Вы используете последнюю стабильную версию, seedit v{{version}}.",
+  "new_development_version": "Доступна новая версия разработки, коммит {{newCommit}}. Вы используете коммит {{oldCommit}}.",
+  "new_stable_version": "Доступна новая стабильная версия, seedit v{{newVersion}}. Вы используете seedit v{{oldVersion}}.",
+  "download_latest_desktop": "Скачать последнюю версию для рабочего стола здесь: {{link}}"
 }

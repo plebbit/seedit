@@ -229,5 +229,10 @@
   "enter_crypto_address": "请输入有效的加密货币地址。",
   "check_for_updates": "检查更新",
   "general_settings": "一般设置",
-  "refresh_to_update": "刷新以更新。"
+  "refresh_to_update": "刷新以更新。",
+  "latest_development_version": "您正在使用最新的开发版本，提交 {{commit}}。要使用稳定版本，请前往 {{link}}。",
+  "latest_stable_version": "您正在使用最新的稳定版本，seedit v{{version}}。",
+  "new_development_version": "新的开发版本可用，commit {{newCommit}}。您正在使用commit {{oldCommit}}。",
+  "new_stable_version": "新的稳定版可用，seedit v{{newVersion}}。您正在使用seedit v{{oldVersion}}。",
+  "download_latest_desktop": "在这里下载最新的桌面版本: {{link}}"
 }

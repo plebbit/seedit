@@ -229,5 +229,10 @@
   "enter_crypto_address": "দয়া করে একটি বৈধ ক্রিপ্টো ঠিকানা দিন।",
   "check_for_updates": "আপডেট চেক করুন",
   "general_settings": "সাধারণ সেটিংস",
-  "refresh_to_update": "আপডেট করতে রিফ্রেশ করুন।"
+  "refresh_to_update": "আপডেট করতে রিফ্রেশ করুন।",
+  "latest_development_version": "আপনি সর্বশেষ ডেভেলপমেন্ট সংস্করণে আছেন, কমিট {{commit}}। স্থিতিশীল সংস্করণ ব্যবহার করতে, {{link}} যান।",
+  "latest_stable_version": "আপনি সর্বশেষ স্থিতিশীল সংস্করণে আছেন, seedit v{{version}}।",
+  "new_development_version": "নতুন ডেভেলপমেন্ট সংস্করণ উপলব্ধ, কমিট {{newCommit}}। আপনি কমিট {{oldCommit}} ব্যবহার করছেন।",
+  "new_stable_version": "নতুন স্থিতিশীল সংস্করণ উপলব্ধ, seedit v{{newVersion}}। আপনি seedit v{{oldVersion}} ব্যবহার করছেন।",
+  "download_latest_desktop": "সর্বশেষ ডেস্কটপ সংস্করণ এখানে ডাউনলোড করুন: {{link}}"
 }

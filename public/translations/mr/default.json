@@ -229,5 +229,10 @@
   "enter_crypto_address": "कृपया मान्य क्रिप्टो पत्ता प्रविष्ट करा.",
   "check_for_updates": "अद्यतन साठी तपासा",
   "general_settings": "सामान्य सेटिंग्ज",
-  "refresh_to_update": "अद्यतनसाठी रीफ्रेश करा."
+  "refresh_to_update": "अद्यतनसाठी रीफ्रेश करा.",
+  "latest_development_version": "तुम्ही आधुनिक विकास संस्करणावर आहात, कमिट {{commit}}. स्थिर संस्करण वापरण्यासाठी, {{link}} जा.",
+  "latest_stable_version": "तुम्ही आधुनिक स्थिर संस्करणावर आहात, seedit v{{version}}.",
+  "new_development_version": "नवीन विकास संस्करण उपलब्ध आहे, कमिट {{newCommit}}. आपण कमिट {{oldCommit}} वापरत आहात.",
+  "new_stable_version": "नवीन स्थिर संस्करण उपलब्ध आहे, seedit v{{newVersion}}. आपण seedit v{{oldVersion}} वापरत आहात.",
+  "download_latest_desktop": "येथे नवीन डेस्कटॉप संस्करण डाउनलोड करा: {{link}}"
 }

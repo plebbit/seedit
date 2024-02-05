@@ -229,5 +229,10 @@
   "enter_crypto_address": "لطفاً یک آدرس کریپتو صحیح وارد کنید.",
   "check_for_updates": "بررسی برای بروزرسانی‌ها",
   "general_settings": "تنظیمات عمومی",
-  "refresh_to_update": "برای به روز رسانی راه اندازی مجدد کنید."
+  "refresh_to_update": "برای به روز رسانی راه اندازی مجدد کنید.",
+  "latest_development_version": "شما در نسخه توسعه‌ی جدیدتر هستید، کامیت {{commit}}. برای استفاده از نسخه پایدار، به {{link}} بروید.",
+  "latest_stable_version": "شما در آخرین نسخه پایدار، seedit v{{version}} هستید.",
+  "new_development_version": "نسخه توسعه جدید موجود است، کامیت {{newCommit}}. شما کامیت {{oldCommit}} را استفاده می‌کنید.",
+  "new_stable_version": "نسخه پایدار جدید موجود است، seedit v{{newVersion}}. شما seedit v{{oldVersion}} را استفاده می‌کنید.",
+  "download_latest_desktop": "نسخه‌ی جدید سطح میز کامپیوتر را از اینجا دانلود کنید: {{link}}"
 }

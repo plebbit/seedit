@@ -229,5 +229,10 @@
   "enter_crypto_address": "Proszę podać prawidłowy adres kryptowalutowy.",
   "check_for_updates": "Sprawdź aktualizacje",
   "general_settings": "Ustawienia ogólne",
-  "refresh_to_update": "Odśwież, aby zaktualizować."
+  "refresh_to_update": "Odśwież, aby zaktualizować.",
+  "latest_development_version": "Korzystasz z najnowszej wersji rozwojowej, commit {{commit}}. Aby użyć wersji stabilnej, przejdź pod {{link}}.",
+  "latest_stable_version": "Korzystasz z najnowszej wersji stabilnej, seedit v{{version}}.",
+  "new_development_version": "Nowa wersja rozwojowa dostępna, commit {{newCommit}}. Używasz commit {{oldCommit}}.",
+  "new_stable_version": "Nowa stabilna wersja dostępna, seedit v{{newVersion}}. Używasz seedit v{{oldVersion}}.",
+  "download_latest_desktop": "Pobierz najnowszą wersję na pulpit tutaj: {{link}}"
 }

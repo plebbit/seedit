@@ -229,5 +229,10 @@
   "enter_crypto_address": "Mangyaring magpasok ng wastong crypto address.",
   "check_for_updates": "Tingnan ang mga update",
   "general_settings": "Pangkalahatang mga setting",
-  "refresh_to_update": "I-refresh para i-update."
+  "refresh_to_update": "I-refresh para i-update.",
+  "latest_development_version": "Nasa pinakabagong bersyon ng pag-unlad, commit {{commit}}. Upang gamitin ang stable na bersyon, pumunta sa {{link}}.",
+  "latest_stable_version": "Nasa pinakabagong stable na bersyon, seedit v{{version}}.",
+  "new_development_version": "Bagong development version na magagamit, commit {{newCommit}}. Ginagamit mo ang commit {{oldCommit}}.",
+  "new_stable_version": "Bagong stable na bersyon na magagamit, seedit v{{newVersion}}. Ginagamit mo ang seedit v{{oldVersion}}.",
+  "download_latest_desktop": "I-download ang pinakabagong bersyon ng desktop dito: {{link}}"
 }

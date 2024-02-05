@@ -229,5 +229,10 @@
   "enter_crypto_address": "Kérjük, adjon meg egy érvényes kripto címet.",
   "check_for_updates": "Frissítések keresése",
   "general_settings": "Általános beállítások",
-  "refresh_to_update": "Frissítéshez frissítés."
+  "refresh_to_update": "Frissítéshez frissítés.",
+  "latest_development_version": "A legújabb fejlesztői verziót használod, commit {{commit}}. A stabil verzió használatához látogass el ide: {{link}}.",
+  "latest_stable_version": "A legújabb stabil verziót használod, seedit v{{version}}.",
+  "new_development_version": "Új fejlesztési verzió elérhető, commit {{newCommit}}. A commit {{oldCommit}}-t használod.",
+  "new_stable_version": "Új stabil verzió elérhető, seedit v{{newVersion}}. A seedit v{{oldVersion}}-t használod.",
+  "download_latest_desktop": "Töltsd le a legújabb asztali verziót itt: {{link}}"
 }

@@ -229,5 +229,10 @@
   "enter_crypto_address": "Syötä voimassa oleva krypto-osoite.",
   "check_for_updates": "Tarkista päivitykset",
   "general_settings": "Yleiset asetukset",
-  "refresh_to_update": "Päivitä päivittääksesi."
+  "refresh_to_update": "Päivitä päivittääksesi.",
+  "latest_development_version": "Olet uusimmassa kehitysversion, commit {{commit}}. Käyttääksesi vakaa versio, siirry osoitteeseen {{link}}.",
+  "latest_stable_version": "Olet viimeisimmässä vakaa versio, seedit v{{version}}.",
+  "new_development_version": "Uusi kehitysversion saatavilla, commit {{newCommit}}. Käytät commit {{oldCommit}}.",
+  "new_stable_version": "Uusi vakaa versio saatavilla, seedit v{{newVersion}}. Käytät seedit v{{oldVersion}}.",
+  "download_latest_desktop": "Lataa uusin työpöytäversio täältä: {{link}}"
 }

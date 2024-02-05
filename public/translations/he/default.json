@@ -229,5 +229,10 @@
   "enter_crypto_address": "אנא הזן כתובת קריפטו תקף.",
   "check_for_updates": "בדוק עדכונים",
   "general_settings": "הגדרות כלליות",
-  "refresh_to_update": "רענן כדי לעדכן."
+  "refresh_to_update": "רענן כדי לעדכן.",
+  "latest_development_version": "אתה נמצא בגרסת הפיתוח האחרונה, קומיט {{commit}}. כדי להשתמש בגרסה יציבה, עבור אל {{link}}.",
+  "latest_stable_version": "אתה נמצא בגרסה היציבה האחרונה, seedit v{{version}}.",
+  "new_development_version": "גרסת פיתוח חדשה זמינה, קומיט {{newCommit}}. אתה משתמש בקומיט {{oldCommit}}.",
+  "new_stable_version": "גרסה יציבה חדשה זמינה, seedit v{{newVersion}}. אתה משתמש seedit v{{oldVersion}}.",
+  "download_latest_desktop": "הורד את הגרסה האחרונה לשולחן העבודה כאן: {{link}}"
 }

@@ -229,5 +229,10 @@
   "enter_crypto_address": "Bitte geben Sie eine gültige Krypto-Adresse ein.",
   "check_for_updates": "Nach Updates suchen",
   "general_settings": "Allgemeine Einstellungen",
-  "refresh_to_update": "Aktualisieren, um zu aktualisieren."
+  "refresh_to_update": "Aktualisieren, um zu aktualisieren.",
+  "latest_development_version": "Du befindest dich auf der neuesten Entwicklungsversion, Commit {{commit}}. Um die stabile Version zu verwenden, gehe zu {{link}}.",
+  "latest_stable_version": "Du befindest dich auf der neuesten stabilen Version, seedit v{{version}}.",
+  "new_development_version": "Neue Entwicklungsversion verfügbar, Commit {{newCommit}}. Du verwendest Commit {{oldCommit}}.",
+  "new_stable_version": "Neue stabile Version verfügbar, seedit v{{newVersion}}. Du verwendest seedit v{{oldVersion}}.",
+  "download_latest_desktop": "Laden Sie hier die neueste Desktop-Version herunter: {{link}}"
 }

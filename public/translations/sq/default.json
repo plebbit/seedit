@@ -229,5 +229,10 @@
   "enter_crypto_address": "Ju lutemi vendosni një adresë kripto të vlefshme.",
   "check_for_updates": "Kontrollo për përditësime",
   "general_settings": "Cilësimet e përgjithshme",
-  "refresh_to_update": "Rifresko për të përditësuar."
+  "refresh_to_update": "Rifresko për të përditësuar.",
+  "latest_development_version": "Jeni në versionin më të fundit të zhvillimit, komitimi {{commit}}. Për të përdorur versionin e qëndrueshëm, shkoni te {{link}}.",
+  "latest_stable_version": "Jeni në versionin më të fundit të qëndrueshëm, seedit v{{version}}.",
+  "new_development_version": "Versioni i ri i zhvillimit është në dispozicion, komiti {{newCommit}}. Ju po përdorni komitin {{oldCommit}}.",
+  "new_stable_version": "Version i ri i qëndrueshëm është në dispozicion, seedit v{{newVersion}}. Ju po përdorni seedit v{{oldVersion}}.",
+  "download_latest_desktop": "Shkarko versionin më të ri të desktopit këtu: {{link}}"
 }

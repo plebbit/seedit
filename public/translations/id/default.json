@@ -229,5 +229,10 @@
   "enter_crypto_address": "Harap masukkan alamat kripto yang valid.",
   "check_for_updates": "Periksa pembaruan",
   "general_settings": "Pengaturan umum",
-  "refresh_to_update": "Segarkan untuk memperbarui."
+  "refresh_to_update": "Segarkan untuk memperbarui.",
+  "latest_development_version": "Anda menggunakan versi pengembangan terbaru, commit {{commit}}. Untuk menggunakan versi stabil, pergi ke {{link}}.",
+  "latest_stable_version": "Anda menggunakan versi stabil terbaru, seedit v{{version}}.",
+  "new_development_version": "Versi pengembangan baru tersedia, commit {{newCommit}}. Anda menggunakan commit {{oldCommit}}.",
+  "new_stable_version": "Versi stabil baru tersedia, seedit v{{newVersion}}. Anda menggunakan seedit v{{oldVersion}}.",
+  "download_latest_desktop": "Unduh versi desktop terbaru di sini: {{link}}"
 }

@@ -229,5 +229,10 @@
   "enter_crypto_address": "الرجاء إدخال عنوان كريبتو صالح.",
   "check_for_updates": "تحقق من وجود تحديثات",
   "general_settings": "إعدادات عامة",
-  "refresh_to_update": "تحديث للتحديث."
+  "refresh_to_update": "تحديث للتحديث.",
+  "latest_development_version": "أنت على أحدث إصدار تطوير، النسخة {{commit}}. لاستخدام النسخة الثابتة، انتقل إلى {{link}}.",
+  "latest_stable_version": "أنت على أحدث نسخة ثابتة، seedit v{{version}}.",
+  "new_development_version": "إصدار تطوير جديد متاح، كوميت {{newCommit}}. أنت تستخدم كوميت {{oldCommit}}.",
+  "new_stable_version": "إصدار مستقر جديد متاح، seedit v{{newVersion}}. أنت تستخدم seedit v{{oldVersion}}.",
+  "download_latest_desktop": "حمل أحدث إصدار سطح المكتب هنا: {{link}}"
 }

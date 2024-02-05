@@ -229,5 +229,10 @@
   "enter_crypto_address": "โปรดป้อนที่อยู่คริปโตที่ถูกต้อง",
   "check_for_updates": "ตรวจสอบการอัปเดต",
   "general_settings": "การตั้งค่าทั่วไป",
-  "refresh_to_update": "รีเฟรชเพื่ออัปเดต"
+  "refresh_to_update": "รีเฟรชเพื่ออัปเดต",
+  "latest_development_version": "คุณกำลังใช้รุ่นการพัฒนาล่าสุด, คอมมิต {{commit}} ในการใช้รุ่นเสถียร ไปที่ {{link}}.",
+  "latest_stable_version": "คุณกำลังใช้รุ่นเสถียรล่าสุด, seedit v{{version}}.",
+  "new_development_version": "มีเวอร์ชันการพัฒนาใหม่ที่ใช้ได้, คอมมิต {{newCommit}} คุณกำลังใช้คอมมิต {{oldCommit}}",
+  "new_stable_version": "มีเวอร์ชันที่มีความเสถียรใหม่ที่ใช้ได้, seedit v{{newVersion}} คุณกำลังใช้ seedit v{{oldVersion}}",
+  "download_latest_desktop": "ดาวน์โหลดเวอร์ชันเดสก์ท็อปล่าสุดที่นี่: {{link}}"
 }

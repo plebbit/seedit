@@ -229,5 +229,10 @@
   "enter_crypto_address": "దయచేసి చేసిన క్రిప్టో చిరునామాను నమోదు చేయండి.",
   "check_for_updates": "నవీకరణలను తనిఖీ చేయండి",
   "general_settings": "సాధారణ సెట్టింగులు",
-  "refresh_to_update": "నవీకరించడానికి రిఫ్రెష్ చేయండి."
+  "refresh_to_update": "నవీకరించడానికి రిఫ్రెష్ చేయండి.",
+  "latest_development_version": "మీరు తొలగించే త్వరిత అప్డేటు, కమిట్ {{commit}} పరిపాలన ముగింది స్థిర అప్డేటు కోసం {{link}}.",
+  "latest_stable_version": "మీరు తొలగించిన తొలగిన సంస్కరణం, seedit v{{version}} నందు.",
+  "new_development_version": "కొత్త డెవలప్మెంట్ వెర్షన్ అందుబాటులో ఉంది, కమిట్ {{newCommit}}. మీరు కమిట్ {{oldCommit}} ను ఉపయోగిస్తున్నారు.",
+  "new_stable_version": "కొత్త స్థిర వెర్షన్ అందుబాటులో ఉంది, seedit v{{newVersion}}. మీరు seedit v{{oldVersion}} ను ఉపయోగిస్తున్నారు.",
+  "download_latest_desktop": "ఇక్కడ తాజా డెస్క్టాప్ వెర్షన్‌ను డౌన్‌లోడ్ చేయండి: {{link}}"
 }

@@ -19,9 +19,11 @@ const CheckForUpdates = () => {
       let updateAvailable = false;
 
       if (packageJson.version !== packageData.version) {
-        const newVersionText = `New version available, seedit v${packageData.version}. You are using v${packageJson.version}. `;
-        const updateActionText = isElectron ? ` Download the latest desktop version here: https://github.com/plebbit/seedit/releases/latest` : ` Refresh to update.`;
-        alert(newVersionText + updateActionText);
+        const newVersionText = t('new_stable_version', { newVersion: packageData.version, oldVersion: packageJson.version });
+        const updateActionText = isElectron
+          ? t('download_latest_desktop', { link: 'https://github.com/plebbit/seedit/releases/latest', interpolation: { escapeValue: false } })
+          : t('refresh_to_update');
+        alert(newVersionText + ' ' + updateActionText);
         updateAvailable = true;
       }
 
@@ -32,7 +34,8 @@ const CheckForUpdates = () => {
         const latestCommitHash = commitData[0].sha;
 
         if (latestCommitHash.trim() !== commitRef.trim()) {
-          const newVersionText = `New dev version available, commit ${latestCommitHash.slice(0, 7)}. You are using commit ${commitRef.slice(0, 7)}. Refresh to update.`;
+          const newVersionText =
+            `${t('new_development_version', { newCommit: latestCommitHash.slice(0, 7), oldCommit: commitRef.slice(0, 7) })}` + ` ${t('refresh_to_update')}`;
           alert(newVersionText);
           updateAvailable = true;
         }
@@ -41,8 +44,8 @@ const CheckForUpdates = () => {
       if (!updateAvailable) {
         alert(
           commitRef
-            ? `You're on the latest development version, commit ${commitRef.slice(0, 7)}.`
-            : `You are on the latest stable version, seedit v${packageJson.version}.`,
+            ? `${t('latest_development_version', { commit: commitRef.slice(0, 7), link: 'https://seedit.eth.limo/#/', interpolation: { escapeValue: false } })}`
+            : `${t('latest_stable_version', { version: packageJson.version })}`,
         );
       }
     } catch (error) {

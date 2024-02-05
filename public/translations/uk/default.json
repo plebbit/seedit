@@ -229,5 +229,10 @@
   "enter_crypto_address": "Будь ласка, введіть дійсну криптовалютну адресу.",
   "check_for_updates": "Перевірте оновлення",
   "general_settings": "Загальні налаштування",
-  "refresh_to_update": "Оновіть для оновлення."
+  "refresh_to_update": "Оновіть для оновлення.",
+  "latest_development_version": "Ви використовуєте останню версію розробки, коміт {{commit}}. Щоб використовувати стабільну версію, перейдіть за посиланням {{link}}.",
+  "latest_stable_version": "Ви використовуєте останню стабільну версію, seedit v{{version}}.",
+  "new_development_version": "Нова версія розробки доступна, коміт {{newCommit}}. Ви використовуєте коміт {{oldCommit}}.",
+  "new_stable_version": "Нова стабільна версія доступна, seedit v{{newVersion}}. Ви використовуєте seedit v{{oldVersion}}.",
+  "download_latest_desktop": "Завантажте останню версію для робочого столу тут: {{link}}"
 }

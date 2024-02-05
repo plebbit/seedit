@@ -229,5 +229,10 @@
   "enter_crypto_address": "有効な暗号通貨アドレスを入力してください。",
   "check_for_updates": "更新をチェック",
   "general_settings": "一般設定",
-  "refresh_to_update": "更新のために更新してください。"
+  "refresh_to_update": "更新のために更新してください。",
+  "latest_development_version": "最新の開発バージョン、コミット{{commit}}を使用しています。安定版を使用するには、{{link}}に移動してください。",
+  "latest_stable_version": "最新の安定版、seedit v{{version}}を使用しています。",
+  "new_development_version": "新しい開発バージョンが利用可能です、コミット {{newCommit}}。あなたはコミット {{oldCommit}} を使用しています。",
+  "new_stable_version": "新しい安定版が利用可能です、seedit v{{newVersion}}。あなたはseedit v{{oldVersion}} を使用しています。",
+  "download_latest_desktop": "最新のデスクトップバージョンをこちらからダウンロード: {{link}}"
 }
