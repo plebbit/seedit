@@ -811,23 +811,13 @@ const SubplebbitSettings = () => {
     }
   };
 
-  const _createSubplebbit = async () => {
-    try {
-      setShowLoading(true);
-      await createSubplebbit();
-    } catch (e) {
-      if (e instanceof Error) {
-        console.warn(e);
-        alert(`failed creating community: ${e.message}`);
-      } else {
-        console.error('An unknown error occurred:', e);
-      }
-    }
+  const _createSubplebbit = () => {
+    createSubplebbit();
+    resetSubplebbitSettingsStore();
   };
 
   useEffect(() => {
     if (createdSubplebbit) {
-      setShowLoading(false);
       console.log('createdSubplebbit', createdSubplebbit);
       alert(`community created, address: ${createdSubplebbit?.address}`);
       navigate(`/p/${createdSubplebbit?.address}/`);
