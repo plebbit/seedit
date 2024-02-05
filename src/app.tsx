@@ -15,7 +15,6 @@ import Submit from './views/submit';
 import Subplebbit from './views/subplebbit';
 import SubplebbitSettings from './views/subplebbit/subplebbit-settings';
 import Subplebbits from './views/subplebbits';
-import CreateSubplebbit from './views/subplebbits/create-subplebbit';
 import AccountBar from './components/account-bar/';
 import ChallengeModal from './components/challenge-modal';
 import Header from './components/header';
@@ -113,7 +112,8 @@ function App() {
             <Route path='/communities/vote' element={<Subplebbits />} />
             <Route path='/communities/vote/passing' element={<Subplebbits />} />
             <Route path='/communities/vote/rejecting' element={<Subplebbits />} />
-            <Route path='/communities/create' element={<CreateSubplebbit />} />
+
+            <Route path='/communities/create' element={<SubplebbitSettings />} />
           </Route>
         </Route>
       </Routes>

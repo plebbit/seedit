@@ -226,5 +226,15 @@
   "json_settings": "Cài đặt JSON",
   "json_settings_info": "nhanh chóng sao chép hoặc dán cài đặt của cộng đồng",
   "address_setting_info": "đặt một địa chỉ cộng đồng có thể đọc bằng cách sử dụng ens.domains",
-  "enter_crypto_address": "Vui lòng nhập địa chỉ tiền điện tử hợp lệ."
+  "enter_crypto_address": "Vui lòng nhập địa chỉ tiền điện tử hợp lệ.",
+  "check_for_updates": "Kiểm tra cập nhật",
+  "general_settings": "Cài đặt chung",
+  "refresh_to_update": "Làm mới để cập nhật.",
+  "latest_development_version": "Bạn đang sử dụng phiên bản phát triển mới nhất, commit {{commit}}. Để sử dụng phiên bản ổn định, hãy truy cập {{link}}.",
+  "latest_stable_version": "Bạn đang sử dụng phiên bản ổn định mới nhất, seedit v{{version}}.",
+  "new_development_version": "Phiên bản phát triển mới có sẵn, commit {{newCommit}}. Bạn đang sử dụng commit {{oldCommit}}.",
+  "new_stable_version": "Phiên bản ổn định mới có sẵn, seedit v{{newVersion}}. Bạn đang sử dụng seedit v{{oldVersion}}.",
+  "download_latest_desktop": "Tải xuống phiên bản máy tính để bàn mới nhất tại đây: {{link}}",
+  "contribute_on_github": "Đóng góp trên GitHub",
+  "create_community_not_available": "Chưa có sẵn trên web. Bạn có thể tạo một cộng đồng bằng cách sử dụng ứng dụng máy tính để bàn, tải xuống ở đây: {{desktopLink}}. Nếu bạn thoải mái với dòng lệnh, kiểm tra ở đây: {{cliLink}}"
 }

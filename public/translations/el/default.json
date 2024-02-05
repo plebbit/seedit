@@ -226,5 +226,15 @@
   "json_settings": "Ρυθμίσεις JSON",
   "json_settings_info": "Γρήγορη αντιγραφή ή επικόλληση των ρυθμίσεων της κοινότητας",
   "address_setting_info": "ορίστε μια αναγνώσιμη διεύθυνση κοινότητας χρησιμοποιώντας το ens.domains",
-  "enter_crypto_address": "Παρακαλώ εισαγάγετε μια έγκυρη διεύθυνση κρυπτονομίσματος."
+  "enter_crypto_address": "Παρακαλώ εισαγάγετε μια έγκυρη διεύθυνση κρυπτονομίσματος.",
+  "check_for_updates": "Έλεγχος για ενημερώσεις",
+  "general_settings": "Γενικές ρυθμίσεις",
+  "refresh_to_update": "Ανανεώστε για να ενημερώσετε.",
+  "latest_development_version": "Βρίσκεστε στην πιο πρόσφατη έκδοση ανάπτυξης, commit {{commit}}. Για να χρησιμοποιήσετε την σταθερή έκδοση, πηγαίνετε στη διεύθυνση {{link}}.",
+  "latest_stable_version": "Βρίσκεστε στην πιο πρόσφατη σταθερή έκδοση, seedit v{{version}}.",
+  "new_development_version": "Νέα έκδοση ανάπτυξης διαθέσιμη, commit {{newCommit}}. Χρησιμοποιείτε commit {{oldCommit}}.",
+  "new_stable_version": "Νέα σταθερή έκδοση διαθέσιμη, seedit v{{newVersion}}. Χρησιμοποιείτε seedit v{{oldVersion}}.",
+  "download_latest_desktop": "Κατεβάστε την πιο πρόσφατη έκδοση για επιτραπέζιο υπολογιστή εδώ: {{link}}",
+  "contribute_on_github": "Συνεισφέρετε στο GitHub",
+  "create_community_not_available": "Ακόμη δεν είναι διαθέσιμο στο web. Μπορείτε να δημιουργήσετε μια κοινότητα χρησιμοποιώντας την εφαρμογή επιφάνειας εργασίας, κατεβάστε την εδώ: {{desktopLink}}. Αν είστε άνετοι με τη γραμμή εντολών, ελέγξτε εδώ: {{cliLink}}"
 }

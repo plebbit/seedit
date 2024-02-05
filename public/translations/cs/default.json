@@ -226,5 +226,15 @@
   "json_settings": "JSON nastavení",
   "json_settings_info": "Rychle zkopírujte nebo vložte nastavení komunity",
   "address_setting_info": "nastavte čitelnou adresu komunity pomocí ens.domains",
-  "enter_crypto_address": "Zadejte prosím platnou kryptoadresu."
+  "enter_crypto_address": "Zadejte prosím platnou kryptoadresu.",
+  "check_for_updates": "Zkontrolovat aktualizace",
+  "general_settings": "Obecné nastavení",
+  "refresh_to_update": "Obnovte pro aktualizaci.",
+  "latest_development_version": "Jste na nejnovější vývojové verzi, commit {{commit}}. Chcete-li použít stabilní verzi, přejděte na {{link}}.",
+  "latest_stable_version": "Jste na nejnovější stabilní verzi, seedit v{{version}}.",
+  "new_development_version": "Nová vývojová verze k dispozici, commit {{newCommit}}. Používáte commit {{oldCommit}}.",
+  "new_stable_version": "Nová stabilní verze k dispozici, seedit v{{newVersion}}. Používáte seedit v{{oldVersion}}.",
+  "download_latest_desktop": "Stáhněte si nejnovější verzi pro stolní počítače zde: {{link}}",
+  "contribute_on_github": "Přispět na GitHubu",
+  "create_community_not_available": "Zatím nedostupné na webu. Můžete vytvořit komunitu pomocí desktopové aplikace, stáhnout ji zde: {{desktopLink}}. Pokud se cítíte pohodlně s příkazovým řádkem, podívejte se sem: {{cliLink}}"
 }

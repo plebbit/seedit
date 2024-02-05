@@ -226,5 +226,15 @@
   "json_settings": "Configurações JSON",
   "json_settings_info": "copie ou cole rapidamente as configurações da comunidade",
   "address_setting_info": "defina um endereço de comunidade legível usando ens.domains",
-  "enter_crypto_address": "Por favor, insira um endereço de cripto válido."
+  "enter_crypto_address": "Por favor, insira um endereço de cripto válido.",
+  "check_for_updates": "Verificar atualizações",
+  "general_settings": "Configurações gerais",
+  "refresh_to_update": "Atualize para atualizar.",
+  "latest_development_version": "Você está na última versão de desenvolvimento, commit {{commit}}. Para usar a versão estável, vá para {{link}}.",
+  "latest_stable_version": "Você está na versão estável mais recente, seedit v{{version}}.",
+  "new_development_version": "Nova versão de desenvolvimento disponível, commit {{newCommit}}. Você está usando o commit {{oldCommit}}.",
+  "new_stable_version": "Nova versão estável disponível, seedit v{{newVersion}}. Você está usando seedit v{{oldVersion}}.",
+  "download_latest_desktop": "Baixe a versão mais recente para desktop aqui: {{link}}",
+  "contribute_on_github": "Contribua no GitHub",
+  "create_community_not_available": "Ainda não disponível na web. Você pode criar uma comunidade usando o aplicativo para desktop, faça o download aqui: {{desktopLink}}. Se você se sentir confortável com a linha de comando, confira aqui: {{cliLink}}"
 }

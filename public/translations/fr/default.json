@@ -226,5 +226,15 @@
   "json_settings": "Paramètres JSON",
   "json_settings_info": "copier ou coller rapidement les paramètres de la communauté",
   "address_setting_info": "définissez une adresse de communauté lisible en utilisant ens.domains",
-  "enter_crypto_address": "Veuillez entrer une adresse crypto valide."
+  "enter_crypto_address": "Veuillez entrer une adresse crypto valide.",
+  "check_for_updates": "Vérifier les mises à jour",
+  "general_settings": "Paramètres généraux",
+  "refresh_to_update": "Actualisez pour mettre à jour.",
+  "latest_development_version": "Vous êtes sur la dernière version de développement, commit {{commit}}. Pour utiliser la version stable, allez sur {{link}}.",
+  "latest_stable_version": "Vous êtes sur la dernière version stable, seedit v{{version}}.",
+  "new_development_version": "Nouvelle version de développement disponible, commit {{newCommit}}. Vous utilisez commit {{oldCommit}}.",
+  "new_stable_version": "Nouvelle version stable disponible, seedit v{{newVersion}}. Vous utilisez seedit v{{oldVersion}}.",
+  "download_latest_desktop": "Téléchargez la dernière version de bureau ici : {{link}}",
+  "contribute_on_github": "Contribuer sur GitHub",
+  "create_community_not_available": "Pas encore disponible sur le web. Vous pouvez créer une communauté en utilisant l'application de bureau, téléchargez-la ici : {{desktopLink}}. Si vous êtes à l'aise avec la ligne de commande, consultez ici : {{cliLink}}"
 }

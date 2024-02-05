@@ -10,6 +10,7 @@ import Markdown from '../markdown';
 import SearchBar from '../search-bar';
 import SubscribeButton from '../subscribe-button';
 import packageJson from '../../../package.json';
+
 const { version } = packageJson;
 const commitRef = process.env.REACT_APP_COMMIT_REF;
 const isElectron = window.isElectron === true;
@@ -72,7 +73,7 @@ const PostInfo = ({ address, cid, downvoteCount = 0, timestamp = 0, upvoteCount 
         <span className={styles.postScoreWord}>{postScore === 1 ? t('point') : t('points')}</span> ({upvotePercentage}% {t('upvoted')})
       </div>
       <div className={styles.shareLink}>
-        {t('share_link')}: <input type='text' value={`https://seedit.eth.limo/#/p/${address}/c/${cid}`} readOnly={true} />
+        {t('share_link')}: <input type='text' value={`https://pleb.bz/p/${address}/c/${cid}`} readOnly={true} />
       </div>
     </div>
   );
@@ -154,19 +155,25 @@ const Sidebar = ({ address, cid, createdAt, description, downvoteCount = 0, role
     }
   };
 
+  const account = useAccount();
+  const isModerator = roles?.[account.author?.address]?.role;
+
+  const isConnectedToRpc = !!account?.plebbitOptions.plebbitRpcClientsOptions;
   const navigate = useNavigate();
   const handleCreateCommunity = () => {
-    if (isElectron) {
+    // creating a community only works if the user is running a full node
+    if (isElectron || isConnectedToRpc) {
       navigate('/communities/create');
     } else {
       alert(
-        'Not yet available on web. You can create a community using the desktop app. If you are comfortable with the command line, check out: https://github.com/plebbit/plebbit-cli',
+        t('create_community_not_available', {
+          desktopLink: 'https://github.com/plebbit/seedit/releases/latest',
+          cliLink: 'https://github.com/plebbit/plebbit-cli',
+          interpolation: { escapeValue: false },
+        }),
       );
     }
   };
-
-  const account = useAccount();
-  const isModerator = roles?.[account.author?.address]?.role;
 
   return (
     <div className={`${isInAboutView ? styles.about : styles.sidebar}`}>

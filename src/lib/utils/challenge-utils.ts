@@ -65,7 +65,7 @@ export const getPublicationPreview = (publication: any) => {
 export const getDefaultExclude = () => {
   return [
     {
-      role: ['moderator', 'admin', 'owner'],
+      role: [],
       post: false,
       reply: false,
       vote: false,

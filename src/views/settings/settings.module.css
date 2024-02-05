@@ -16,6 +16,7 @@
   padding: 10px;
   font-weight: bold;
   text-align: right;
+  text-transform: lowercase;
 }
 
 .categorySettings {

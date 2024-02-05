@@ -226,5 +226,15 @@
   "json_settings": "JSON-innstillinger",
   "json_settings_info": "raskt kopiere eller lime inn fellesskapsinnstillinger",
   "address_setting_info": "sett en lesbar fellesskapsadresse ved hjelp av ens.domains",
-  "enter_crypto_address": "Vennligst skriv inn en gyldig kryptoadresse."
+  "enter_crypto_address": "Vennligst skriv inn en gyldig kryptoadresse.",
+  "check_for_updates": "Sjekk for oppdateringer",
+  "general_settings": "Generelle innstillinger",
+  "refresh_to_update": "Oppdater for å oppdatere.",
+  "latest_development_version": "Du bruker den nyeste utviklingsversjonen, commit {{commit}}. For å bruke den stabile versjonen, gå til {{link}}.",
+  "latest_stable_version": "Du bruker den nyeste stabile versjonen, seedit v{{version}}.",
+  "new_development_version": "Ny utviklingsversjon tilgjengelig, commit {{newCommit}}. Du bruker commit {{oldCommit}}.",
+  "new_stable_version": "Ny stabil versjon tilgjengelig, seedit v{{newVersion}}. Du bruker seedit v{{oldVersion}}.",
+  "download_latest_desktop": "Last ned den nyeste skrivebordsversjonen her: {{link}}",
+  "contribute_on_github": "Bidra på GitHub",
+  "create_community_not_available": "Ikke tilgjengelig på nettet ennå. Du kan opprette et fellesskap ved å bruke skrivebordsappen, last den ned her: {{desktopLink}}. Hvis du er komfortabel med kommandolinjen, kan du sjekke her: {{cliLink}}"
 }

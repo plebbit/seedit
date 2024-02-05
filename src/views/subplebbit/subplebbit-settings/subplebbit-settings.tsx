@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
-import { useParams } from 'react-router-dom';
-import { PublishSubplebbitEditOptions, useSubplebbit, usePublishSubplebbitEdit, Role } from '@plebbit/plebbit-react-hooks';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
+import { PublishSubplebbitEditOptions, Role, useAccount, useCreateSubplebbit, useSubplebbit, usePublishSubplebbitEdit } from '@plebbit/plebbit-react-hooks';
 import { Roles } from '../../../lib/utils/user-utils';
 import { useTranslation } from 'react-i18next';
 import { create } from 'zustand';
@@ -16,6 +16,7 @@ import {
 } from '../../../lib/utils/challenge-utils';
 import LoadingEllipsis from '../../../components/loading-ellipsis';
 import Sidebar from '../../../components/sidebar';
+import { isCreateSubplebbitView, isSubplebbitSettingsView } from '../../../lib/utils/view-utils';
 
 type SubplebbitSettingsState = {
   challenges: any[] | undefined;
@@ -29,6 +30,7 @@ type SubplebbitSettingsState = {
   subplebbitAddress: string | undefined;
   publishSubplebbitEditOptions: PublishSubplebbitEditOptions;
   setSubplebbitSettingsStore: (data: Partial<SubplebbitSettingsState>) => void;
+  resetSubplebbitSettingsStore: () => void;
 };
 
 const useSubplebbitSettingsStore = create<SubplebbitSettingsState>((set) => ({
@@ -64,6 +66,21 @@ const useSubplebbitSettingsStore = create<SubplebbitSettingsState>((set) => ({
       };
 
       return nextState;
+    }),
+  resetSubplebbitSettingsStore: () =>
+    set(() => {
+      return {
+        challenges: undefined,
+        title: undefined,
+        description: undefined,
+        address: undefined,
+        suggested: undefined,
+        rules: undefined,
+        roles: undefined,
+        settings: undefined,
+        subplebbitAddress: undefined,
+        publishSubplebbitEditOptions: {},
+      };
     }),
 }));
 
@@ -226,6 +243,9 @@ const Moderators = ({ isReadOnly = false }: { isReadOnly?: boolean }) => {
     if (roles) {
       const newRoles: Roles = { ...roles, '': { role: 'moderator' } };
       setSubplebbitSettingsStore({ roles: newRoles });
+      addedModeratorRef.current = true;
+    } else {
+      setSubplebbitSettingsStore({ roles: { '': { role: 'moderator' } } });
       addedModeratorRef.current = true;
     }
   };
@@ -513,7 +533,7 @@ const ChallengeSettings = ({ challenge, index, isReadOnly, setSubplebbitSettings
                 {isReadOnly && !exclude?.role ? null : (
                   <div className={styles.challengeOption}>
                     User's role
-                    <div className={styles.challengeOptionDescription}>Exclude a specific assigned role</div>
+                    <div className={styles.challengeOptionDescription}>Is any of the following:</div>
                     {rolesToExclude.map((role) =>
                       isReadOnly && !exclude?.role?.includes(role) ? null : (
                         <div key={role}>
@@ -538,7 +558,7 @@ const ChallengeSettings = ({ challenge, index, isReadOnly, setSubplebbitSettings
                 {isReadOnly && actionsToExclude.some((action) => exclude.hasOwnProperty(action)) ? null : (
                   <div className={styles.challengeOption}>
                     User's action
-                    <div className={styles.challengeOptionDescription}>Exclude a specific user action</div>
+                    <div className={styles.challengeOptionDescription}>Is all of the following:</div>
                     {actionsToExclude.map((action) =>
                       isReadOnly && !exclude?.[action] ? null : (
                         <div key={action}>
@@ -748,17 +768,31 @@ const JSONSettings = ({ isReadOnly = false }: { isReadOnly?: boolean }) => {
   );
 };
 
+const isElectron = window.isElectron === true;
+
 const SubplebbitSettings = () => {
   const { t } = useTranslation();
   const { subplebbitAddress } = useParams<{ subplebbitAddress: string }>();
   const subplebbit = useSubplebbit({ subplebbitAddress });
   const { address, challenges, createdAt, description, rules, settings, suggested, roles, title, updatedAt } = subplebbit || {};
-  const isReadOnly = !settings;
 
-  const { publishSubplebbitEditOptions, setSubplebbitSettingsStore } = useSubplebbitSettingsStore();
+  const account = useAccount();
+  const location = useLocation();
+  const navigate = useNavigate();
+  const params = useParams();
+  const isInCreateSubplebbitView = isCreateSubplebbitView(location.pathname);
+  const isInSubplebbitSettingsView = isSubplebbitSettingsView(location.pathname, params);
+  const isConnectedToRpc = !!account?.plebbitOptions.plebbitRpcClientsOptions;
+  const isOnFullNode = isElectron || isConnectedToRpc;
+
+  const isReadOnly = (!settings && isInSubplebbitSettingsView) || (!isOnFullNode && isInCreateSubplebbitView);
+
+  const { publishSubplebbitEditOptions, resetSubplebbitSettingsStore, setSubplebbitSettingsStore } = useSubplebbitSettingsStore();
   const { publishSubplebbitEdit } = usePublishSubplebbitEdit(publishSubplebbitEditOptions);
+  const { createdSubplebbit, createSubplebbit } = useCreateSubplebbit(publishSubplebbitEditOptions);
 
   const [showLoading, setShowLoading] = useState(false);
+
   const saveSubplebbit = async () => {
     try {
       setShowLoading(true);
@@ -772,13 +806,27 @@ const SubplebbitSettings = () => {
       } else {
         console.error('An unknown error occurred:', e);
       }
+    } finally {
       setShowLoading(false);
     }
   };
 
+  const _createSubplebbit = () => {
+    createSubplebbit();
+    resetSubplebbitSettingsStore();
+  };
+
+  useEffect(() => {
+    if (createdSubplebbit) {
+      console.log('createdSubplebbit', createdSubplebbit);
+      alert(`community created, address: ${createdSubplebbit?.address}`);
+      navigate(`/p/${createdSubplebbit?.address}/`);
+    }
+  }, [createdSubplebbit, navigate]);
+
   // set the store with the initial data
   useEffect(() => {
-    if (address) {
+    if (subplebbitAddress) {
       setSubplebbitSettingsStore({
         title: title ?? '',
         description: description ?? '',
@@ -792,7 +840,13 @@ const SubplebbitSettings = () => {
       });
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [address]);
+  }, [subplebbitAddress]);
+
+  useEffect(() => {
+    if (isInCreateSubplebbitView) {
+      resetSubplebbitSettingsStore();
+    }
+  }, [isInCreateSubplebbitView, resetSubplebbitSettingsStore]);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -808,10 +862,10 @@ const SubplebbitSettings = () => {
         <Sidebar address={subplebbitAddress} createdAt={createdAt} description={description} roles={roles} rules={rules} title={title} updatedAt={updatedAt} />
       </div>
       {/* subplebbit.settings is private, only shows to the sub owner */}
-      {!settings && <div className={styles.infobar}>{t('owner_settings_notice')}</div>}
+      {isReadOnly && <div className={styles.infobar}>{t('owner_settings_notice')}</div>}
       <Title isReadOnly={isReadOnly} />
       <Description isReadOnly={isReadOnly} />
-      <Address isReadOnly={isReadOnly} />
+      {!isInCreateSubplebbitView && <Address isReadOnly={isReadOnly} />}
       <Logo isReadOnly={isReadOnly} />
       <Rules isReadOnly={isReadOnly} />
       <Moderators isReadOnly={isReadOnly} />
@@ -819,8 +873,8 @@ const SubplebbitSettings = () => {
       <JSONSettings isReadOnly={isReadOnly} />
       <div className={styles.saveOptions}>
         {!isReadOnly && (
-          <button onClick={saveSubplebbit} disabled={showLoading}>
-            {t('save_options')}
+          <button onClick={isInCreateSubplebbitView ? _createSubplebbit : saveSubplebbit} disabled={showLoading}>
+            {isInCreateSubplebbitView ? t('create_community') : t('save_options')}
           </button>
         )}
         {showLoading && <LoadingEllipsis string={t('saving')} />}

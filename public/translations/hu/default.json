@@ -226,5 +226,15 @@
   "json_settings": "JSON beállítások",
   "json_settings_info": "gyorsan másolja vagy illessze be a közösség beállításait",
   "address_setting_info": "állítson be egy olvasható közösségi címet az ens.domains segítségével",
-  "enter_crypto_address": "Kérjük, adjon meg egy érvényes kripto címet."
+  "enter_crypto_address": "Kérjük, adjon meg egy érvényes kripto címet.",
+  "check_for_updates": "Frissítések keresése",
+  "general_settings": "Általános beállítások",
+  "refresh_to_update": "Frissítéshez frissítés.",
+  "latest_development_version": "A legújabb fejlesztői verziót használod, commit {{commit}}. A stabil verzió használatához látogass el ide: {{link}}.",
+  "latest_stable_version": "A legújabb stabil verziót használod, seedit v{{version}}.",
+  "new_development_version": "Új fejlesztési verzió elérhető, commit {{newCommit}}. A commit {{oldCommit}}-t használod.",
+  "new_stable_version": "Új stabil verzió elérhető, seedit v{{newVersion}}. A seedit v{{oldVersion}}-t használod.",
+  "download_latest_desktop": "Töltsd le a legújabb asztali verziót itt: {{link}}",
+  "contribute_on_github": "Hozzájárulás a GitHubon",
+  "create_community_not_available": "Még nem elérhető a weben. Egy közösséget létrehozhat a desktop alkalmazás segítségével, töltsd le itt: {{desktopLink}}. Ha kényelmes vagy a parancssor használatával, nézd meg itt: {{cliLink}}"
 }

@@ -226,5 +226,15 @@
   "json_settings": "JSON-instellingen",
   "json_settings_info": "snel de gemeenschapsinstellingen kopiëren of plakken",
   "address_setting_info": "stel een leesbaar gemeenschapsadres in met behulp van ens.domains",
-  "enter_crypto_address": "Voer alstublieft een geldig crypto-adres in."
+  "enter_crypto_address": "Voer alstublieft een geldig crypto-adres in.",
+  "check_for_updates": "Controleren op updates",
+  "general_settings": "Algemene instellingen",
+  "refresh_to_update": "Vernieuwen om bij te werken.",
+  "latest_development_version": "Je gebruikt de nieuwste ontwikkelingsversie, commit {{commit}}. Ga naar {{link}} om de stabiele versie te gebruiken.",
+  "latest_stable_version": "Je gebruikt de nieuwste stabiele versie, seedit v{{version}}.",
+  "new_development_version": "Nieuwe ontwikkelingsversie beschikbaar, commit {{newCommit}}. Je gebruikt commit {{oldCommit}}.",
+  "new_stable_version": "Nieuwe stabiele versie beschikbaar, seedit v{{newVersion}}. Je gebruikt seedit v{{oldVersion}}.",
+  "download_latest_desktop": "Download de nieuwste desktopversie hier: {{link}}",
+  "contribute_on_github": "Bijdragen op GitHub",
+  "create_community_not_available": "Nog niet beschikbaar op het web. U kunt een community maken met behulp van de desktop-app, download deze hier: {{desktopLink}}. Als u vertrouwd bent met de opdrachtregel, kijk dan hier: {{cliLink}}"
 }

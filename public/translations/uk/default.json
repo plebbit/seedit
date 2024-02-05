@@ -226,5 +226,15 @@
   "json_settings": "Налаштування JSON",
   "json_settings_info": "швидко копіюйте або вставте налаштування спільноти",
   "address_setting_info": "встановіть читабельну адресу спільноти за допомогою ens.domains",
-  "enter_crypto_address": "Будь ласка, введіть дійсну криптовалютну адресу."
+  "enter_crypto_address": "Будь ласка, введіть дійсну криптовалютну адресу.",
+  "check_for_updates": "Перевірте оновлення",
+  "general_settings": "Загальні налаштування",
+  "refresh_to_update": "Оновіть для оновлення.",
+  "latest_development_version": "Ви використовуєте останню версію розробки, коміт {{commit}}. Щоб використовувати стабільну версію, перейдіть за посиланням {{link}}.",
+  "latest_stable_version": "Ви використовуєте останню стабільну версію, seedit v{{version}}.",
+  "new_development_version": "Нова версія розробки доступна, коміт {{newCommit}}. Ви використовуєте коміт {{oldCommit}}.",
+  "new_stable_version": "Нова стабільна версія доступна, seedit v{{newVersion}}. Ви використовуєте seedit v{{oldVersion}}.",
+  "download_latest_desktop": "Завантажте останню версію для робочого столу тут: {{link}}",
+  "contribute_on_github": "Сприяти на GitHub",
+  "create_community_not_available": "Ще не доступно в Інтернеті. Ви можете створити спільноту за допомогою програми для робочого столу, завантажте її тут: {{desktopLink}}. Якщо ви впевнені в командному рядку, перевірте тут: {{cliLink}}"
 }

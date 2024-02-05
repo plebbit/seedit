@@ -226,5 +226,15 @@
   "json_settings": "JSON-inställningar",
   "json_settings_info": "snabbt kopiera eller klistra in samhällets inställningar",
   "address_setting_info": "sätt en läsbar samhällsadress med hjälp av ens.domains",
-  "enter_crypto_address": "Ange en giltig kryptoadress."
+  "enter_crypto_address": "Ange en giltig kryptoadress.",
+  "check_for_updates": "Kontrollera efter uppdateringar",
+  "general_settings": "Allmänna inställningar",
+  "refresh_to_update": "Uppdatera för att uppdatera.",
+  "latest_development_version": "Du är på den senaste utvecklingsversionen, commit {{commit}}. För att använda den stabila versionen, gå till {{link}}.",
+  "latest_stable_version": "Du är på den senaste stabila versionen, seedit v{{version}}.",
+  "new_development_version": "Ny utvecklingsversion tillgänglig, commit {{newCommit}}. Du använder commit {{oldCommit}}.",
+  "new_stable_version": "Ny stabil version tillgänglig, seedit v{{newVersion}}. Du använder seedit v{{oldVersion}}.",
+  "download_latest_desktop": "Ladda ner den senaste skrivbordsversionen här: {{link}}",
+  "contribute_on_github": "Bidra på GitHub",
+  "create_community_not_available": "Ännu inte tillgängligt på webben. Du kan skapa en community med hjälp av desktop-appen, ladda ner den här: {{desktopLink}}. Om du är bekant med kommandoraden, kolla här: {{cliLink}}"
 }

@@ -226,5 +226,15 @@
   "json_settings": "JSON indstillinger",
   "json_settings_info": "Hurtigt kopier eller indsæt fællesskabsindstillinger",
   "address_setting_info": "indstil en læsbar fællesskabsadresse ved hjælp af ens.domains",
-  "enter_crypto_address": "Indtast venligst en gyldig krypto adresse."
+  "enter_crypto_address": "Indtast venligst en gyldig krypto adresse.",
+  "check_for_updates": "Tjek for opdateringer",
+  "general_settings": "Generelle indstillinger",
+  "refresh_to_update": "Opdater for at opdatere.",
+  "latest_development_version": "Du er på den nyeste udviklingsversion, commit {{commit}}. For at bruge den stabile version, gå til {{link}}.",
+  "latest_stable_version": "Du er på den seneste stabile version, seedit v{{version}}.",
+  "new_development_version": "Ny udviklingsversion tilgængelig, commit {{newCommit}}. Du bruger commit {{oldCommit}}.",
+  "new_stable_version": "Ny stabil version tilgængelig, seedit v{{newVersion}}. Du bruger seedit v{{oldVersion}}.",
+  "download_latest_desktop": "Download den seneste version til skrivebordet her: {{link}}",
+  "contribute_on_github": "Bidrag på GitHub",
+  "create_community_not_available": "Endnu ikke tilgængelig på internettet. Du kan oprette en fællesskab ved hjælp af desktop-appen, download den her: {{desktopLink}}. Hvis du er fortrolig med kommandolinjen, kan du tjekke: {{cliLink}}"
 }

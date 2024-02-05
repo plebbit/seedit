@@ -226,5 +226,15 @@
   "json_settings": "Mga setting ng JSON",
   "json_settings_info": "mabilis na kopya o i-paste ang mga setting ng komunidad",
   "address_setting_info": "itakda ang isang mababasa oso ng komunidad gamit ang ens.domains",
-  "enter_crypto_address": "Mangyaring magpasok ng wastong crypto address."
+  "enter_crypto_address": "Mangyaring magpasok ng wastong crypto address.",
+  "check_for_updates": "Tingnan ang mga update",
+  "general_settings": "Pangkalahatang mga setting",
+  "refresh_to_update": "I-refresh para i-update.",
+  "latest_development_version": "Nasa pinakabagong bersyon ng pag-unlad, commit {{commit}}. Upang gamitin ang stable na bersyon, pumunta sa {{link}}.",
+  "latest_stable_version": "Nasa pinakabagong stable na bersyon, seedit v{{version}}.",
+  "new_development_version": "Bagong development version na magagamit, commit {{newCommit}}. Ginagamit mo ang commit {{oldCommit}}.",
+  "new_stable_version": "Bagong stable na bersyon na magagamit, seedit v{{newVersion}}. Ginagamit mo ang seedit v{{oldVersion}}.",
+  "download_latest_desktop": "I-download ang pinakabagong bersyon ng desktop dito: {{link}}",
+  "contribute_on_github": "Mag-contribute sa GitHub",
+  "create_community_not_available": "Hindi pa ito magagamit sa web. Maaari kang lumikha ng isang komunidad gamit ang desktop app, i-download ito dito: {{desktopLink}}. Kung komportable ka sa command line, tingnan ito: {{cliLink}}"
 }
