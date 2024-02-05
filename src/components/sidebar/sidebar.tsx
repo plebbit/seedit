@@ -158,7 +158,7 @@ const Sidebar = ({ address, cid, createdAt, description, downvoteCount = 0, role
   const account = useAccount();
   const isModerator = roles?.[account.author?.address]?.role;
 
-  const isConnectedToRpc = !account?.plebbitOptions.plebbitRpcClientsOptions;
+  const isConnectedToRpc = !!account?.plebbitOptions.plebbitRpcClientsOptions;
   const navigate = useNavigate();
   const handleCreateCommunity = () => {
     // creating a community only works if the user is running a full node
