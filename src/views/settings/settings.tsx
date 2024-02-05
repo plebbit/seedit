@@ -19,7 +19,7 @@ const Settings = () => {
   return (
     <div className={styles.content}>
       <div className={styles.category}>
-        <span className={styles.categoryTitle}>general settings</span>
+        <span className={styles.categoryTitle}>{t('general_settings')}</span>
         <span className={styles.categorySettings}>
           <GeneralSettings />
         </span>

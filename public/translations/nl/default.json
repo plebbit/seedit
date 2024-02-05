@@ -226,5 +226,8 @@
   "json_settings": "JSON-instellingen",
   "json_settings_info": "snel de gemeenschapsinstellingen kopiëren of plakken",
   "address_setting_info": "stel een leesbaar gemeenschapsadres in met behulp van ens.domains",
-  "enter_crypto_address": "Voer alstublieft een geldig crypto-adres in."
+  "enter_crypto_address": "Voer alstublieft een geldig crypto-adres in.",
+  "check_for_updates": "Controleren op updates",
+  "general_settings": "Algemene instellingen",
+  "refresh_to_update": "Vernieuwen om bij te werken."
 }

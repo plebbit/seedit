@@ -226,5 +226,8 @@
   "json_settings": "JSON 설정",
   "json_settings_info": "커뮤니티 설정을 빠르게 복사 또는 붙여넣기",
   "address_setting_info": "ens.domains를 사용하여 읽기 쉬운 커뮤니티 주소 설정",
-  "enter_crypto_address": "유효한 암호 주소를 입력하세요."
+  "enter_crypto_address": "유효한 암호 주소를 입력하세요.",
+  "check_for_updates": "업데이트 확인",
+  "general_settings": "일반 설정",
+  "refresh_to_update": "업데이트하려면 새로 고침하세요."
 }

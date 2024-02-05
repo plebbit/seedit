@@ -226,5 +226,8 @@
   "json_settings": "Paramètres JSON",
   "json_settings_info": "copier ou coller rapidement les paramètres de la communauté",
   "address_setting_info": "définissez une adresse de communauté lisible en utilisant ens.domains",
-  "enter_crypto_address": "Veuillez entrer une adresse crypto valide."
+  "enter_crypto_address": "Veuillez entrer une adresse crypto valide.",
+  "check_for_updates": "Vérifier les mises à jour",
+  "general_settings": "Paramètres généraux",
+  "refresh_to_update": "Actualisez pour mettre à jour."
 }

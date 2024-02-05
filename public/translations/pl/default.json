@@ -226,5 +226,8 @@
   "json_settings": "Ustawienia JSON",
   "json_settings_info": "szybko kopiuj lub wklej ustawienia społeczności",
   "address_setting_info": "ustaw czytelny adres społeczności za pomocą ens.domains",
-  "enter_crypto_address": "Proszę podać prawidłowy adres kryptowalutowy."
+  "enter_crypto_address": "Proszę podać prawidłowy adres kryptowalutowy.",
+  "check_for_updates": "Sprawdź aktualizacje",
+  "general_settings": "Ustawienia ogólne",
+  "refresh_to_update": "Odśwież, aby zaktualizować."
 }

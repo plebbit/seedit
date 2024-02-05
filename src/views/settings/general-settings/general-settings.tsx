@@ -100,7 +100,7 @@ const GeneralSettings = () => {
   return (
     <>
       <div className={styles.checkForUpdates}>
-        <div className={styles.settingTitle}>check for updates</div>
+        <div className={styles.settingTitle}>{t('check_for_updates')}</div>
         <CheckForUpdates />
       </div>
       <div className={styles.languageSettings}>

@@ -226,5 +226,8 @@
   "json_settings": "JSON सेटिंग्ज",
   "json_settings_info": "समुदाय सेटिंग्ज कॉपी किंवा पेस्ट करा",
   "address_setting_info": "ens.domains वापरून एक वाचनीय समुदाय पत्ता सेट करा",
-  "enter_crypto_address": "कृपया मान्य क्रिप्टो पत्ता प्रविष्ट करा."
+  "enter_crypto_address": "कृपया मान्य क्रिप्टो पत्ता प्रविष्ट करा.",
+  "check_for_updates": "अद्यतन साठी तपासा",
+  "general_settings": "सामान्य सेटिंग्ज",
+  "refresh_to_update": "अद्यतनसाठी रीफ्रेश करा."
 }

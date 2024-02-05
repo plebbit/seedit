@@ -226,5 +226,8 @@
   "json_settings": "Cài đặt JSON",
   "json_settings_info": "nhanh chóng sao chép hoặc dán cài đặt của cộng đồng",
   "address_setting_info": "đặt một địa chỉ cộng đồng có thể đọc bằng cách sử dụng ens.domains",
-  "enter_crypto_address": "Vui lòng nhập địa chỉ tiền điện tử hợp lệ."
+  "enter_crypto_address": "Vui lòng nhập địa chỉ tiền điện tử hợp lệ.",
+  "check_for_updates": "Kiểm tra cập nhật",
+  "general_settings": "Cài đặt chung",
+  "refresh_to_update": "Làm mới để cập nhật."
 }

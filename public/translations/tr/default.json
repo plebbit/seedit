@@ -226,5 +226,8 @@
   "json_settings": "JSON ayarları",
   "json_settings_info": "topluluk ayarlarını hızlı bir şekilde kopyala veya yapıştır",
   "address_setting_info": "ens.domains kullanarak okunabilir bir topluluk adresi ayarlayın",
-  "enter_crypto_address": "Lütfen geçerli bir kripto adresi girin."
+  "enter_crypto_address": "Lütfen geçerli bir kripto adresi girin.",
+  "check_for_updates": "Güncellemeleri kontrol et",
+  "general_settings": "Genel ayarlar",
+  "refresh_to_update": "Güncellemek için yeniden yükleyin."
 }

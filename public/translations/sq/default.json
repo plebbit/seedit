@@ -226,5 +226,8 @@
   "json_settings": "Cilësimet JSON",
   "json_settings_info": "kopjoni ose ngjitni shpejt konfigurimet e komunitetit",
   "address_setting_info": "vendosni një adresë të lexueshme të komunitetit duke përdorur ens.domains",
-  "enter_crypto_address": "Ju lutemi vendosni një adresë kripto të vlefshme."
+  "enter_crypto_address": "Ju lutemi vendosni një adresë kripto të vlefshme.",
+  "check_for_updates": "Kontrollo për përditësime",
+  "general_settings": "Cilësimet e përgjithshme",
+  "refresh_to_update": "Rifresko për të përditësuar."
 }

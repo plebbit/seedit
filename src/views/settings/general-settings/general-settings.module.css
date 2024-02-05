@@ -8,4 +8,5 @@
 
 .settingTitle {
   padding-bottom: 2px;
+  text-transform: lowercase;
 }

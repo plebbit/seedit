@@ -226,5 +226,8 @@
   "json_settings": "تنظیمات JSON",
   "json_settings_info": "سریعاً تنظیمات اجتماعی را کپی یا پیست کنید",
   "address_setting_info": "تنظیم یک آدرس مشترک قابل خواندن با استفاده از ens.domains",
-  "enter_crypto_address": "لطفاً یک آدرس کریپتو صحیح وارد کنید."
+  "enter_crypto_address": "لطفاً یک آدرس کریپتو صحیح وارد کنید.",
+  "check_for_updates": "بررسی برای بروزرسانی‌ها",
+  "general_settings": "تنظیمات عمومی",
+  "refresh_to_update": "برای به روز رسانی راه اندازی مجدد کنید."
 }

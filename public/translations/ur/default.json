@@ -226,5 +226,8 @@
   "json_settings": "JSON ترتیبات",
   "json_settings_info": "جلدی سے کمیونٹی کی ترتیبات کاپی یا پیسٹ کریں",
   "address_setting_info": "ens.domains کا استعمال کرکے پڑھنے کے قابل کمیونٹی ایڈریس ترتیب دیں",
-  "enter_crypto_address": "براہ کرم ایک معتبر کرپٹو پتہ داخل کریں۔"
+  "enter_crypto_address": "براہ کرم ایک معتبر کرپٹو پتہ داخل کریں۔",
+  "check_for_updates": "اپ ڈیٹس کی جانچ پڑتال کریں",
+  "general_settings": "عام امور",
+  "refresh_to_update": "تازہ کرنے کے لئے تازہ کریں۔"
 }

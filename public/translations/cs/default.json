@@ -226,5 +226,8 @@
   "json_settings": "JSON nastavení",
   "json_settings_info": "Rychle zkopírujte nebo vložte nastavení komunity",
   "address_setting_info": "nastavte čitelnou adresu komunity pomocí ens.domains",
-  "enter_crypto_address": "Zadejte prosím platnou kryptoadresu."
+  "enter_crypto_address": "Zadejte prosím platnou kryptoadresu.",
+  "check_for_updates": "Zkontrolovat aktualizace",
+  "general_settings": "Obecné nastavení",
+  "refresh_to_update": "Obnovte pro aktualizaci."
 }
