@@ -235,5 +235,6 @@
   "new_development_version": "Нова версія розробки доступна, коміт {{newCommit}}. Ви використовуєте коміт {{oldCommit}}.",
   "new_stable_version": "Нова стабільна версія доступна, seedit v{{newVersion}}. Ви використовуєте seedit v{{oldVersion}}.",
   "download_latest_desktop": "Завантажте останню версію для робочого столу тут: {{link}}",
-  "contribute_on_github": "Сприяти на GitHub"
+  "contribute_on_github": "Сприяти на GitHub",
+  "create_community_not_available": "Ще не доступно в Інтернеті. Ви можете створити спільноту за допомогою програми для робочого столу, завантажте її тут: {{desktopLink}}. Якщо ви впевнені в командному рядку, перевірте тут: {{cliLink}}"
 }

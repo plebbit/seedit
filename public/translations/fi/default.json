@@ -235,5 +235,6 @@
   "new_development_version": "Uusi kehitysversion saatavilla, commit {{newCommit}}. Käytät commit {{oldCommit}}.",
   "new_stable_version": "Uusi vakaa versio saatavilla, seedit v{{newVersion}}. Käytät seedit v{{oldVersion}}.",
   "download_latest_desktop": "Lataa uusin työpöytäversio täältä: {{link}}",
-  "contribute_on_github": "Osallistu GitHubissa"
+  "contribute_on_github": "Osallistu GitHubissa",
+  "create_community_not_available": "Ei vielä saatavilla verkossa. Voit luoda yhteisön käyttämällä työpöytäsovellusta, lataa se täältä: {{desktopLink}}. Jos olet mukava komentorivin kanssa, tarkista täältä: {{cliLink}}"
 }

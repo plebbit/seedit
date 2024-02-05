@@ -235,5 +235,6 @@
   "new_development_version": "Phiên bản phát triển mới có sẵn, commit {{newCommit}}. Bạn đang sử dụng commit {{oldCommit}}.",
   "new_stable_version": "Phiên bản ổn định mới có sẵn, seedit v{{newVersion}}. Bạn đang sử dụng seedit v{{oldVersion}}.",
   "download_latest_desktop": "Tải xuống phiên bản máy tính để bàn mới nhất tại đây: {{link}}",
-  "contribute_on_github": "Đóng góp trên GitHub"
+  "contribute_on_github": "Đóng góp trên GitHub",
+  "create_community_not_available": "Chưa có sẵn trên web. Bạn có thể tạo một cộng đồng bằng cách sử dụng ứng dụng máy tính để bàn, tải xuống ở đây: {{desktopLink}}. Nếu bạn thoải mái với dòng lệnh, kiểm tra ở đây: {{cliLink}}"
 }

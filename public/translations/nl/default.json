@@ -235,5 +235,6 @@
   "new_development_version": "Nieuwe ontwikkelingsversie beschikbaar, commit {{newCommit}}. Je gebruikt commit {{oldCommit}}.",
   "new_stable_version": "Nieuwe stabiele versie beschikbaar, seedit v{{newVersion}}. Je gebruikt seedit v{{oldVersion}}.",
   "download_latest_desktop": "Download de nieuwste desktopversie hier: {{link}}",
-  "contribute_on_github": "Bijdragen op GitHub"
+  "contribute_on_github": "Bijdragen op GitHub",
+  "create_community_not_available": "Nog niet beschikbaar op het web. U kunt een community maken met behulp van de desktop-app, download deze hier: {{desktopLink}}. Als u vertrouwd bent met de opdrachtregel, kijk dan hier: {{cliLink}}"
 }

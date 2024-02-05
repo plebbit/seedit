@@ -235,5 +235,6 @@
   "new_development_version": "Ny utvecklingsversion tillgänglig, commit {{newCommit}}. Du använder commit {{oldCommit}}.",
   "new_stable_version": "Ny stabil version tillgänglig, seedit v{{newVersion}}. Du använder seedit v{{oldVersion}}.",
   "download_latest_desktop": "Ladda ner den senaste skrivbordsversionen här: {{link}}",
-  "contribute_on_github": "Bidra på GitHub"
+  "contribute_on_github": "Bidra på GitHub",
+  "create_community_not_available": "Ännu inte tillgängligt på webben. Du kan skapa en community med hjälp av desktop-appen, ladda ner den här: {{desktopLink}}. Om du är bekant med kommandoraden, kolla här: {{cliLink}}"
 }

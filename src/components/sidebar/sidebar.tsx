@@ -10,6 +10,7 @@ import Markdown from '../markdown';
 import SearchBar from '../search-bar';
 import SubscribeButton from '../subscribe-button';
 import packageJson from '../../../package.json';
+
 const { version } = packageJson;
 const commitRef = process.env.REACT_APP_COMMIT_REF;
 const isElectron = window.isElectron === true;
@@ -154,19 +155,25 @@ const Sidebar = ({ address, cid, createdAt, description, downvoteCount = 0, role
     }
   };
 
+  const account = useAccount();
+  const isModerator = roles?.[account.author?.address]?.role;
+
+  const isConnectedToRpc = !account?.plebbitOptions.plebbitRpcClientsOptions;
   const navigate = useNavigate();
   const handleCreateCommunity = () => {
-    if (isElectron) {
+    // creating a community only works if the user is running a full node
+    if (isElectron || isConnectedToRpc) {
       navigate('/communities/create');
     } else {
       alert(
-        'Not yet available on web. You can create a community using the desktop app. If you are comfortable with the command line, check out: https://github.com/plebbit/plebbit-cli',
+        t('create_community_not_available', {
+          desktopLink: 'https://github.com/plebbit/seedit/releases/latest',
+          cliLink: 'https://github.com/plebbit/plebbit-cli',
+          interpolation: { escapeValue: false },
+        }),
       );
     }
   };
-
-  const account = useAccount();
-  const isModerator = roles?.[account.author?.address]?.role;
 
   return (
     <div className={`${isInAboutView ? styles.about : styles.sidebar}`}>

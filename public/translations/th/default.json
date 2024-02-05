@@ -235,5 +235,6 @@
   "new_development_version": "มีเวอร์ชันการพัฒนาใหม่ที่ใช้ได้, คอมมิต {{newCommit}} คุณกำลังใช้คอมมิต {{oldCommit}}",
   "new_stable_version": "มีเวอร์ชันที่มีความเสถียรใหม่ที่ใช้ได้, seedit v{{newVersion}} คุณกำลังใช้ seedit v{{oldVersion}}",
   "download_latest_desktop": "ดาวน์โหลดเวอร์ชันเดสก์ท็อปล่าสุดที่นี่: {{link}}",
-  "contribute_on_github": "มีส่วนร่วมบน GitHub"
+  "contribute_on_github": "มีส่วนร่วมบน GitHub",
+  "create_community_not_available": "ยังไม่พร้อมใช้งานบนเว็บ คุณสามารถสร้างชุมชนโดยใช้แอปเดสก์ท็อป ดาวน์โหลดที่นี่: {{desktopLink}} หากคุณรู้สึกสบายใจกับบรรทัดคำสั่ง ตรวจสอบที่นี่: {{cliLink}}"
 }

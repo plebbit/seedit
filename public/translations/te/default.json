@@ -235,5 +235,6 @@
   "new_development_version": "కొత్త డెవలప్మెంట్ వెర్షన్ అందుబాటులో ఉంది, కమిట్ {{newCommit}}. మీరు కమిట్ {{oldCommit}} ను ఉపయోగిస్తున్నారు.",
   "new_stable_version": "కొత్త స్థిర వెర్షన్ అందుబాటులో ఉంది, seedit v{{newVersion}}. మీరు seedit v{{oldVersion}} ను ఉపయోగిస్తున్నారు.",
   "download_latest_desktop": "ఇక్కడ తాజా డెస్క్టాప్ వెర్షన్‌ను డౌన్‌లోడ్ చేయండి: {{link}}",
-  "contribute_on_github": "GitHub లో అమరికలు"
+  "contribute_on_github": "GitHub లో అమరికలు",
+  "create_community_not_available": "ఇప్పుడు వెబ్‌లో అందుబాటులో లేదు. డెస్క్టాప్ యాప్‌ను ఉపయోగించి ఒక కమ్యూనిటీని రూపొందించవచ్చు, ఇక్కడ డౌన్‌లోడ్ చేయండి: {{desktopLink}}. మీకు కమాండ్ లైన్‌తో సంతృప్తి ఉందానే, ఇక్కడ చూడండి: {{cliLink}}"
 }

@@ -235,5 +235,6 @@
   "new_development_version": "नई डेवलपमेंट संस्करण उपलब्ध है, कमिट {{newCommit}}। आप कमिट {{oldCommit}} का उपयोग कर रहे हैं।",
   "new_stable_version": "नई स्थिर संस्करण उपलब्ध है, seedit v{{newVersion}}। आप seedit v{{oldVersion}} का उपयोग कर रहे हैं।",
   "download_latest_desktop": "यहां सबसे नवीन डेस्कटॉप संस्करण डाउनलोड करें: {{link}}",
-  "contribute_on_github": "GitHub पर सहयोग करें"
+  "contribute_on_github": "GitHub पर सहयोग करें",
+  "create_community_not_available": "अभी तक वेब पर उपलब्ध नहीं है। आप डेस्कटॉप ऐप का उपयोग करके एक समुदाय बना सकते हैं, इसे यहां डाउनलोड करें: {{desktopLink}}। यदि आप कमांड लाइन के साथ सहायक हैं, तो यहां जांचें: {{cliLink}}"
 }

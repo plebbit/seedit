@@ -235,5 +235,6 @@
   "new_development_version": "Versioni i ri i zhvillimit është në dispozicion, komiti {{newCommit}}. Ju po përdorni komitin {{oldCommit}}.",
   "new_stable_version": "Version i ri i qëndrueshëm është në dispozicion, seedit v{{newVersion}}. Ju po përdorni seedit v{{oldVersion}}.",
   "download_latest_desktop": "Shkarko versionin më të ri të desktopit këtu: {{link}}",
-  "contribute_on_github": "Kontribuoni në GitHub"
+  "contribute_on_github": "Kontribuoni në GitHub",
+  "create_community_not_available": "Ende nuk është në dispozicion në internet. Mund të krijoni një komunitet duke përdorur aplikacionin e desktopit, shkarkoni këtu: {{desktopLink}}. Nëse jeni të rehatshëm me linjën e komandës, kontrolloni këtu: {{cliLink}}"
 }

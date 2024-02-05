@@ -235,5 +235,6 @@
   "new_development_version": "Noua versiune de dezvoltare disponibilă, commit {{newCommit}}. Folosiți commit {{oldCommit}}.",
   "new_stable_version": "Noua versiune stabilă disponibilă, seedit v{{newVersion}}. Folosiți seedit v{{oldVersion}}.",
   "download_latest_desktop": "Descărcați cea mai recentă versiune de desktop aici: {{link}}",
-  "contribute_on_github": "Contribuiți pe GitHub"
+  "contribute_on_github": "Contribuiți pe GitHub",
+  "create_community_not_available": "Încă nu este disponibil pe web. Puteți crea o comunitate folosind aplicația desktop, descărcați-o de aici: {{desktopLink}}. Dacă vă simțiți confortabil cu linia de comandă, verificați aici: {{cliLink}}"
 }

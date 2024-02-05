@@ -235,5 +235,6 @@
   "new_development_version": "Nouvelle version de développement disponible, commit {{newCommit}}. Vous utilisez commit {{oldCommit}}.",
   "new_stable_version": "Nouvelle version stable disponible, seedit v{{newVersion}}. Vous utilisez seedit v{{oldVersion}}.",
   "download_latest_desktop": "Téléchargez la dernière version de bureau ici : {{link}}",
-  "contribute_on_github": "Contribuer sur GitHub"
+  "contribute_on_github": "Contribuer sur GitHub",
+  "create_community_not_available": "Pas encore disponible sur le web. Vous pouvez créer une communauté en utilisant l'application de bureau, téléchargez-la ici : {{desktopLink}}. Si vous êtes à l'aise avec la ligne de commande, consultez ici : {{cliLink}}"
 }
