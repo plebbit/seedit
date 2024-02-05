@@ -74,7 +74,7 @@
 }
 
 .singleCommentInfobar a {
-  color: var(--link-footer);
+  color: var(--link-primary);
 }
 
 .replies {

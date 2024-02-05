@@ -234,5 +234,6 @@
   "latest_stable_version": "Ești pe cea mai recentă versiune stabilă, seedit v{{version}}.",
   "new_development_version": "Noua versiune de dezvoltare disponibilă, commit {{newCommit}}. Folosiți commit {{oldCommit}}.",
   "new_stable_version": "Noua versiune stabilă disponibilă, seedit v{{newVersion}}. Folosiți seedit v{{oldVersion}}.",
-  "download_latest_desktop": "Descărcați cea mai recentă versiune de desktop aici: {{link}}"
+  "download_latest_desktop": "Descărcați cea mai recentă versiune de desktop aici: {{link}}",
+  "contribute_on_github": "Contribuiți pe GitHub"
 }

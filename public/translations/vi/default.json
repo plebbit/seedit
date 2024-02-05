@@ -234,5 +234,6 @@
   "latest_stable_version": "Bạn đang sử dụng phiên bản ổn định mới nhất, seedit v{{version}}.",
   "new_development_version": "Phiên bản phát triển mới có sẵn, commit {{newCommit}}. Bạn đang sử dụng commit {{oldCommit}}.",
   "new_stable_version": "Phiên bản ổn định mới có sẵn, seedit v{{newVersion}}. Bạn đang sử dụng seedit v{{oldVersion}}.",
-  "download_latest_desktop": "Tải xuống phiên bản máy tính để bàn mới nhất tại đây: {{link}}"
+  "download_latest_desktop": "Tải xuống phiên bản máy tính để bàn mới nhất tại đây: {{link}}",
+  "contribute_on_github": "Đóng góp trên GitHub"
 }

@@ -234,5 +234,6 @@
   "latest_stable_version": "Jste na nejnovější stabilní verzi, seedit v{{version}}.",
   "new_development_version": "Nová vývojová verze k dispozici, commit {{newCommit}}. Používáte commit {{oldCommit}}.",
   "new_stable_version": "Nová stabilní verze k dispozici, seedit v{{newVersion}}. Používáte seedit v{{oldVersion}}.",
-  "download_latest_desktop": "Stáhněte si nejnovější verzi pro stolní počítače zde: {{link}}"
+  "download_latest_desktop": "Stáhněte si nejnovější verzi pro stolní počítače zde: {{link}}",
+  "contribute_on_github": "Přispět na GitHubu"
 }

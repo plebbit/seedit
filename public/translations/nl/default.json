@@ -234,5 +234,6 @@
   "latest_stable_version": "Je gebruikt de nieuwste stabiele versie, seedit v{{version}}.",
   "new_development_version": "Nieuwe ontwikkelingsversie beschikbaar, commit {{newCommit}}. Je gebruikt commit {{oldCommit}}.",
   "new_stable_version": "Nieuwe stabiele versie beschikbaar, seedit v{{newVersion}}. Je gebruikt seedit v{{oldVersion}}.",
-  "download_latest_desktop": "Download de nieuwste desktopversie hier: {{link}}"
+  "download_latest_desktop": "Download de nieuwste desktopversie hier: {{link}}",
+  "contribute_on_github": "Bijdragen op GitHub"
 }

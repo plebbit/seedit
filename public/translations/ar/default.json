@@ -234,5 +234,6 @@
   "latest_stable_version": "أنت على أحدث نسخة ثابتة، seedit v{{version}}.",
   "new_development_version": "إصدار تطوير جديد متاح، كوميت {{newCommit}}. أنت تستخدم كوميت {{oldCommit}}.",
   "new_stable_version": "إصدار مستقر جديد متاح، seedit v{{newVersion}}. أنت تستخدم seedit v{{oldVersion}}.",
-  "download_latest_desktop": "حمل أحدث إصدار سطح المكتب هنا: {{link}}"
+  "download_latest_desktop": "حمل أحدث إصدار سطح المكتب هنا: {{link}}",
+  "contribute_on_github": "المساهمة على GitHub"
 }

@@ -34,8 +34,7 @@ const CheckForUpdates = () => {
         const latestCommitHash = commitData[0].sha;
 
         if (latestCommitHash.trim() !== commitRef.trim()) {
-          const newVersionText =
-            `${t('new_development_version', { newCommit: latestCommitHash.slice(0, 7), oldCommit: commitRef.slice(0, 7) })}` + ` ${t('refresh_to_update')}`;
+          const newVersionText = t('new_development_version', { newCommit: latestCommitHash.slice(0, 7), oldCommit: commitRef.slice(0, 7) }) + t('refresh_to_update');
           alert(newVersionText);
           updateAvailable = true;
         }
@@ -66,7 +65,7 @@ const CheckForUpdates = () => {
 const availableLanguages = ['ar', 'bn', 'cs', 'da', 'de', 'el', 'en', 'es', 'fa', 'fi', 'fil', 'fr', 'he', 'hi', 'hu', 'id', 'it', 'ja', 'ko', 'mr', 'nl', 'no', 'pl', 'pt', 'ro', 'ru', 'sq', 'sv', 'te', 'th', 'tr', 'uk', 'ur', 'vi', 'zh'];
 
 const LanguageSettings = () => {
-  const { i18n } = useTranslation();
+  const { t, i18n } = useTranslation();
   const { changeLanguage, language } = i18n;
 
   const onSelectLanguage = (e: React.ChangeEvent<HTMLSelectElement>) => {
@@ -75,13 +74,18 @@ const LanguageSettings = () => {
   };
 
   return (
-    <select value={language} onChange={onSelectLanguage}>
-      {availableLanguages.map((lang) => (
-        <option key={lang} value={lang}>
-          {lang}
-        </option>
-      ))}
-    </select>
+    <>
+      <select value={language} onChange={onSelectLanguage}>
+        {availableLanguages.map((lang) => (
+          <option key={lang} value={lang}>
+            {lang}
+          </option>
+        ))}
+      </select>
+      <a href='https://github.com/plebbit/seedit/tree/master/public/translations' target='_blank' rel='noopener noreferrer'>
+        {t('contribute_on_github')}
+      </a>
+    </>
   );
 };
 

@@ -234,5 +234,6 @@
   "latest_stable_version": "En son kararlı sürümünde, seedit v{{version}}s.",
   "new_development_version": "Yeni geliştirme sürümü kullanılabilir, commit {{newCommit}}. Commit {{oldCommit}} kullanıyorsunuz.",
   "new_stable_version": "Yeni stabil sürüm kullanılabilir, seedit v{{newVersion}}. seedit v{{oldVersion}} kullanıyorsunuz.",
-  "download_latest_desktop": "Son masaüstü sürümünü buradan indirin: {{link}}"
+  "download_latest_desktop": "Son masaüstü sürümünü buradan indirin: {{link}}",
+  "contribute_on_github": "GitHub üzerinde katkı sağlayın"
 }

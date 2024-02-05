@@ -234,5 +234,6 @@
   "latest_stable_version": "شما در آخرین نسخه پایدار، seedit v{{version}} هستید.",
   "new_development_version": "نسخه توسعه جدید موجود است، کامیت {{newCommit}}. شما کامیت {{oldCommit}} را استفاده می‌کنید.",
   "new_stable_version": "نسخه پایدار جدید موجود است، seedit v{{newVersion}}. شما seedit v{{oldVersion}} را استفاده می‌کنید.",
-  "download_latest_desktop": "نسخه‌ی جدید سطح میز کامپیوتر را از اینجا دانلود کنید: {{link}}"
+  "download_latest_desktop": "نسخه‌ی جدید سطح میز کامپیوتر را از اینجا دانلود کنید: {{link}}",
+  "contribute_on_github": "مشارکت در GitHub"
 }

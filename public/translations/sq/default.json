@@ -234,5 +234,6 @@
   "latest_stable_version": "Jeni në versionin më të fundit të qëndrueshëm, seedit v{{version}}.",
   "new_development_version": "Versioni i ri i zhvillimit është në dispozicion, komiti {{newCommit}}. Ju po përdorni komitin {{oldCommit}}.",
   "new_stable_version": "Version i ri i qëndrueshëm është në dispozicion, seedit v{{newVersion}}. Ju po përdorni seedit v{{oldVersion}}.",
-  "download_latest_desktop": "Shkarko versionin më të ri të desktopit këtu: {{link}}"
+  "download_latest_desktop": "Shkarko versionin më të ri të desktopit këtu: {{link}}",
+  "contribute_on_github": "Kontribuoni në GitHub"
 }

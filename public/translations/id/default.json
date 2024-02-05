@@ -234,5 +234,6 @@
   "latest_stable_version": "Anda menggunakan versi stabil terbaru, seedit v{{version}}.",
   "new_development_version": "Versi pengembangan baru tersedia, commit {{newCommit}}. Anda menggunakan commit {{oldCommit}}.",
   "new_stable_version": "Versi stabil baru tersedia, seedit v{{newVersion}}. Anda menggunakan seedit v{{oldVersion}}.",
-  "download_latest_desktop": "Unduh versi desktop terbaru di sini: {{link}}"
+  "download_latest_desktop": "Unduh versi desktop terbaru di sini: {{link}}",
+  "contribute_on_github": "Berkontribusi di GitHub"
 }

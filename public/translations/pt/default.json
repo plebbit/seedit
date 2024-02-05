@@ -234,5 +234,6 @@
   "latest_stable_version": "Você está na versão estável mais recente, seedit v{{version}}.",
   "new_development_version": "Nova versão de desenvolvimento disponível, commit {{newCommit}}. Você está usando o commit {{oldCommit}}.",
   "new_stable_version": "Nova versão estável disponível, seedit v{{newVersion}}. Você está usando seedit v{{oldVersion}}.",
-  "download_latest_desktop": "Baixe a versão mais recente para desktop aqui: {{link}}"
+  "download_latest_desktop": "Baixe a versão mais recente para desktop aqui: {{link}}",
+  "contribute_on_github": "Contribua no GitHub"
 }

@@ -234,5 +234,6 @@
   "latest_stable_version": "최신 안정 버전, seedit v{{version}}을 사용 중입니다.",
   "new_development_version": "새로운 개발 버전이 사용 가능합니다, 커밋 {{newCommit}}. 커밋 {{oldCommit}}을(를) 사용 중입니다.",
   "new_stable_version": "새로운 안정 버전이 사용 가능합니다, seedit v{{newVersion}}. seedit v{{oldVersion}}을(를) 사용 중입니다.",
-  "download_latest_desktop": "최신 데스크톱 버전을 여기에서 다운로드하세요: {{link}}"
+  "download_latest_desktop": "최신 데스크톱 버전을 여기에서 다운로드하세요: {{link}}",
+  "contribute_on_github": "GitHub에서 기여하기"
 }

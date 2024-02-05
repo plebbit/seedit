@@ -234,5 +234,6 @@
   "latest_stable_version": "אתה נמצא בגרסה היציבה האחרונה, seedit v{{version}}.",
   "new_development_version": "גרסת פיתוח חדשה זמינה, קומיט {{newCommit}}. אתה משתמש בקומיט {{oldCommit}}.",
   "new_stable_version": "גרסה יציבה חדשה זמינה, seedit v{{newVersion}}. אתה משתמש seedit v{{oldVersion}}.",
-  "download_latest_desktop": "הורד את הגרסה האחרונה לשולחן העבודה כאן: {{link}}"
+  "download_latest_desktop": "הורד את הגרסה האחרונה לשולחן העבודה כאן: {{link}}",
+  "contribute_on_github": "לתרום ב-GitHub"
 }

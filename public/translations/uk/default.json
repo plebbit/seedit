@@ -234,5 +234,6 @@
   "latest_stable_version": "Ви використовуєте останню стабільну версію, seedit v{{version}}.",
   "new_development_version": "Нова версія розробки доступна, коміт {{newCommit}}. Ви використовуєте коміт {{oldCommit}}.",
   "new_stable_version": "Нова стабільна версія доступна, seedit v{{newVersion}}. Ви використовуєте seedit v{{oldVersion}}.",
-  "download_latest_desktop": "Завантажте останню версію для робочого столу тут: {{link}}"
+  "download_latest_desktop": "Завантажте останню версію для робочого столу тут: {{link}}",
+  "contribute_on_github": "Сприяти на GitHub"
 }

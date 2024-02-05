@@ -234,5 +234,6 @@
   "latest_stable_version": "Du er på den seneste stabile version, seedit v{{version}}.",
   "new_development_version": "Ny udviklingsversion tilgængelig, commit {{newCommit}}. Du bruger commit {{oldCommit}}.",
   "new_stable_version": "Ny stabil version tilgængelig, seedit v{{newVersion}}. Du bruger seedit v{{oldVersion}}.",
-  "download_latest_desktop": "Download den seneste version til skrivebordet her: {{link}}"
+  "download_latest_desktop": "Download den seneste version til skrivebordet her: {{link}}",
+  "contribute_on_github": "Bidrag på GitHub"
 }

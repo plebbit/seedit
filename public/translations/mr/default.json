@@ -234,5 +234,6 @@
   "latest_stable_version": "तुम्ही आधुनिक स्थिर संस्करणावर आहात, seedit v{{version}}.",
   "new_development_version": "नवीन विकास संस्करण उपलब्ध आहे, कमिट {{newCommit}}. आपण कमिट {{oldCommit}} वापरत आहात.",
   "new_stable_version": "नवीन स्थिर संस्करण उपलब्ध आहे, seedit v{{newVersion}}. आपण seedit v{{oldVersion}} वापरत आहात.",
-  "download_latest_desktop": "येथे नवीन डेस्कटॉप संस्करण डाउनलोड करा: {{link}}"
+  "download_latest_desktop": "येथे नवीन डेस्कटॉप संस्करण डाउनलोड करा: {{link}}",
+  "contribute_on_github": "GitHub वर सहय्यक करा"
 }

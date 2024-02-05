@@ -234,5 +234,6 @@
   "latest_stable_version": "Βρίσκεστε στην πιο πρόσφατη σταθερή έκδοση, seedit v{{version}}.",
   "new_development_version": "Νέα έκδοση ανάπτυξης διαθέσιμη, commit {{newCommit}}. Χρησιμοποιείτε commit {{oldCommit}}.",
   "new_stable_version": "Νέα σταθερή έκδοση διαθέσιμη, seedit v{{newVersion}}. Χρησιμοποιείτε seedit v{{oldVersion}}.",
-  "download_latest_desktop": "Κατεβάστε την πιο πρόσφατη έκδοση για επιτραπέζιο υπολογιστή εδώ: {{link}}"
+  "download_latest_desktop": "Κατεβάστε την πιο πρόσφατη έκδοση για επιτραπέζιο υπολογιστή εδώ: {{link}}",
+  "contribute_on_github": "Συνεισφέρετε στο GitHub"
 }

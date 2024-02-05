@@ -234,5 +234,6 @@
   "latest_stable_version": "最新の安定版、seedit v{{version}}を使用しています。",
   "new_development_version": "新しい開発バージョンが利用可能です、コミット {{newCommit}}。あなたはコミット {{oldCommit}} を使用しています。",
   "new_stable_version": "新しい安定版が利用可能です、seedit v{{newVersion}}。あなたはseedit v{{oldVersion}} を使用しています。",
-  "download_latest_desktop": "最新のデスクトップバージョンをこちらからダウンロード: {{link}}"
+  "download_latest_desktop": "最新のデスクトップバージョンをこちらからダウンロード: {{link}}",
+  "contribute_on_github": "GitHub で貢献する"
 }

@@ -234,5 +234,6 @@
   "latest_stable_version": "A legújabb stabil verziót használod, seedit v{{version}}.",
   "new_development_version": "Új fejlesztési verzió elérhető, commit {{newCommit}}. A commit {{oldCommit}}-t használod.",
   "new_stable_version": "Új stabil verzió elérhető, seedit v{{newVersion}}. A seedit v{{oldVersion}}-t használod.",
-  "download_latest_desktop": "Töltsd le a legújabb asztali verziót itt: {{link}}"
+  "download_latest_desktop": "Töltsd le a legújabb asztali verziót itt: {{link}}",
+  "contribute_on_github": "Hozzájárulás a GitHubon"
 }

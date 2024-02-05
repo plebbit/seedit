@@ -10,3 +10,12 @@
   padding-bottom: 2px;
   text-transform: lowercase;
 }
+
+.languageSettings a {
+  text-decoration: none;
+  text-transform: lowercase;
+  cursor: pointer;
+  font-size: 10px;
+  color: var(--link-primary);
+  margin-left: 5px;
+}

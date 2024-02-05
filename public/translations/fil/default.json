@@ -234,5 +234,6 @@
   "latest_stable_version": "Nasa pinakabagong stable na bersyon, seedit v{{version}}.",
   "new_development_version": "Bagong development version na magagamit, commit {{newCommit}}. Ginagamit mo ang commit {{oldCommit}}.",
   "new_stable_version": "Bagong stable na bersyon na magagamit, seedit v{{newVersion}}. Ginagamit mo ang seedit v{{oldVersion}}.",
-  "download_latest_desktop": "I-download ang pinakabagong bersyon ng desktop dito: {{link}}"
+  "download_latest_desktop": "I-download ang pinakabagong bersyon ng desktop dito: {{link}}",
+  "contribute_on_github": "Mag-contribute sa GitHub"
 }

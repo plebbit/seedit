@@ -43,7 +43,7 @@
   --border-text: gray;
   --border-orange: #ffa500;
   --link: #0000ff;
-  --link-footer: #369;
+  --link-primary: #369;
   --link-visited: #551a8b;
   --icon: #c6c6c6;
   --text-button: url("/public/assets/buttons/text-button.png");
@@ -105,7 +105,7 @@
   --border-text: #3e3e3e;
   --border-orange: #a76d00;
   --link: #bfbfbf;
-  --link-footer: rgb(125, 175, 216);
+  --link-primary: rgb(125, 175, 216);
   --link-visited: #757575;
   --icon: #c6c6c6;
   --text-button: url("/public/assets/buttons/text-button-dark.png");

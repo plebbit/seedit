@@ -234,5 +234,6 @@
   "latest_stable_version": "您正在使用最新的稳定版本，seedit v{{version}}。",
   "new_development_version": "新的开发版本可用，commit {{newCommit}}。您正在使用commit {{oldCommit}}。",
   "new_stable_version": "新的稳定版可用，seedit v{{newVersion}}。您正在使用seedit v{{oldVersion}}。",
-  "download_latest_desktop": "在这里下载最新的桌面版本: {{link}}"
+  "download_latest_desktop": "在这里下载最新的桌面版本: {{link}}",
+  "contribute_on_github": "在 GitHub 上贡献"
 }
