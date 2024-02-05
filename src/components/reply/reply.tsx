@@ -299,7 +299,7 @@ const Reply = ({ cidOfReplyWithContext, depth = 0, isSingleComment, isSingleRepl
                 <span className={styles.score}>{scoreString}</span> <span className={styles.time}>{getFormattedTimeAgo(timestamp)}</span>{' '}
                 {pinned && <span className={styles.pinned}>- {t('stickied_comment')}</span>}
                 {collapsed && <span className={styles.children}> ({childrenString})</span>}
-                {stateLabel}
+                {stateLabel}{' '}
                 {!collapsed && flair && (
                   <>
                     {' '}
