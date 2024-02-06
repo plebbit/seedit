@@ -108,6 +108,9 @@
   color: var(--text-info);
   font-size: x-small;
   white-space: nowrap;
+  vertical-align: middle;
+  display: inline-block;
+  padding-bottom: 2px;
 }
 
 .domain a {
@@ -208,4 +211,17 @@
   font-weight: bold;
   font-size: 10px;
   cursor: pointer;
+}
+
+.authorAvatar {
+  width: 18px;
+  display: inline-block;
+  position: relative;
+}
+
+.authorAvatar img {
+  width: 18px;
+  max-height: 18px;
+  position: absolute;
+  bottom: -5px;
 }
