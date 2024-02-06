@@ -34,7 +34,8 @@ const CheckForUpdates = () => {
         const latestCommitHash = commitData[0].sha;
 
         if (latestCommitHash.trim() !== commitRef.trim()) {
-          const newVersionText = t('new_development_version', { newCommit: latestCommitHash.slice(0, 7), oldCommit: commitRef.slice(0, 7) }) + t('refresh_to_update');
+          const newVersionText =
+            t('new_development_version', { newCommit: latestCommitHash.slice(0, 7), oldCommit: commitRef.slice(0, 7) }) + ' ' + t('refresh_to_update');
           alert(newVersionText);
           updateAvailable = true;
         }
@@ -48,7 +49,7 @@ const CheckForUpdates = () => {
         );
       }
     } catch (error) {
-      alert('Failed to fetch latest version info:' + error);
+      alert('Failed to fetch latest version info: ' + error);
     } finally {
       setLoading(false);
     }
