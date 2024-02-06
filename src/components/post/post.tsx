@@ -41,7 +41,7 @@ const PostAuthor = ({ authorAddress, authorRole, cid, displayName, imageUrl, ind
       <Link to={cid ? `/u/${authorAddress}/c/${cid}` : `/profile/${index}`} className={`${styles.author} ${moderatorClass}`}>
         {imageUrl && (
           <span className={styles.authorAvatar}>
-            <img src={imageUrl} />
+            <img src={imageUrl} alt='avatar' />
           </span>
         )}
         {displayName && <span className={`${styles.displayName} ${moderatorClass}`}>{displayName} </span>}
