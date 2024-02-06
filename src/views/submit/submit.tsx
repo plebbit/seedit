@@ -1,15 +1,17 @@
-import { ChangeEvent, useCallback, useEffect, useRef, useState } from 'react';
+import { ChangeEvent, forwardRef, useCallback, useEffect, useRef, useState } from 'react';
 import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
 import { PublishCommentOptions, useAccount, usePublishComment, useSubplebbit } from '@plebbit/plebbit-react-hooks';
 import { getShortAddress } from '@plebbit/plebbit-js';
 import { Trans, useTranslation } from 'react-i18next';
 import { create } from 'zustand';
+import { getRandomSubplebbits, useDefaultSubplebbitAddresses } from '../../lib/utils/addresses-utils';
 import { alertChallengeVerificationFailed } from '../../lib/utils/challenge-utils';
+import { getLinkMediaInfo } from '../../lib/utils/media-utils';
 import { isValidURL } from '../../lib/utils/url-utils';
+import { isSubmitView } from '../../lib/utils/view-utils';
 import styles from './submit.module.css';
 import challengesStore from '../../hooks/use-challenges';
-import { getRandomSubplebbits, useDefaultSubplebbitAddresses } from '../../lib/utils/addresses-utils';
-import { isSubmitView } from '../../lib/utils/view-utils';
+import Embed from '../../components/post/embed/';
 
 type SubmitState = {
   subplebbitAddress: string | undefined;
@@ -51,6 +53,69 @@ const useSubmitStore = create<SubmitState>((set) => ({
     }),
   resetSubmitStore: () => set({ subplebbitAddress: undefined, title: undefined, content: undefined, link: undefined, publishCommentOptions: undefined }),
 }));
+
+const UrlField = forwardRef<HTMLInputElement>((_, ref) => {
+  const { t } = useTranslation();
+  const { setSubmitStore } = useSubmitStore();
+  const [mediaError, setMediaError] = useState(false);
+  const [url, setUrl] = useState('');
+  const [mediaType, setMediaType] = useState('');
+
+  useEffect(() => {
+    const mediaInfo = getLinkMediaInfo(url);
+    if (mediaInfo?.type) {
+      setMediaType(mediaInfo.type);
+    }
+  }, [url]);
+
+  let mediaComponent;
+
+  if (mediaType === 'image') {
+    mediaComponent = <img src={url} alt='' onError={() => setMediaError(true)} />;
+  } else if (mediaType === 'video') {
+    mediaComponent = <video src={url} controls />;
+  } else if (mediaType === 'webpage') {
+    mediaComponent = <></>;
+  } else if (mediaType === 'audio') {
+    mediaComponent = <audio src={url} controls />;
+  } else if (mediaType === 'iframe') {
+    mediaComponent = <Embed url={url} />;
+  }
+
+  return (
+    <>
+      {url && isValidURL(url) ? (
+        <span className={styles.boxTitleOptional}>{mediaType}</span>
+      ) : (
+        <>
+          <span className={styles.boxTitleOptional}>url</span>
+          <span className={styles.optional}> ({t('optional')})</span>
+        </>
+      )}
+      <div className={styles.boxContent}>
+        <input
+          className={`${styles.input} ${styles.inputUrl}`}
+          type='text'
+          value={url ?? ''}
+          autoCorrect='off'
+          autoComplete='off'
+          spellCheck='false'
+          ref={ref}
+          onChange={(e) => {
+            setUrl(e.target.value);
+            setMediaError(false);
+            setSubmitStore({ link: e.target.value });
+          }}
+        />
+        {url && isValidURL(url) ? (
+          <div className={styles.mediaPreview}>{mediaError ? <span className={styles.mediaError}>no media found</span> : mediaComponent}</div>
+        ) : (
+          <div className={styles.description}>{t('submit_url_description')}</div>
+        )}
+      </div>
+    </>
+  );
+});
 
 const Submit = () => {
   const account = useAccount();
@@ -213,22 +278,7 @@ const Submit = () => {
       <div className={styles.form}>
         <div className={styles.formContent}>
           <div className={styles.box}>
-            <span className={styles.boxTitleOptional}>url</span>
-            <span className={styles.optional}> ({t('optional')})</span>
-            <div className={styles.boxContent}>
-              <input
-                className={`${styles.input} ${styles.inputUrl}`}
-                type='text'
-                autoCorrect='off'
-                autoComplete='off'
-                spellCheck='false'
-                ref={linkRef}
-                onChange={(e) => {
-                  setSubmitStore({ link: e.target.value });
-                }}
-              />
-              <div className={styles.description}>{t('submit_url_description')}</div>
-            </div>
+            <UrlField ref={linkRef} />
           </div>
           <div className={styles.box}>
             <span className={styles.boxTitleRequired}>{t('title')}</span>
