@@ -108,7 +108,7 @@ const UrlField = forwardRef<HTMLInputElement>((_, ref) => {
           }}
         />
         {url && isValidURL(url) ? (
-          <div className={styles.mediaPreview}>{mediaError ? <span className={styles.mediaError}>no media found</span> : mediaComponent}</div>
+          <div className={styles.mediaPreview}>{mediaError ? <span className={styles.mediaError}>{t('no_media_found')}</span> : mediaComponent}</div>
         ) : (
           <div className={styles.description}>{t('submit_url_description')}</div>
         )}

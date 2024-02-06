@@ -236,5 +236,7 @@
   "new_stable_version": "نیو مستقر ورژن دستیاب ہے, seedit v{{newVersion}}۔ آپ seedit v{{oldVersion}} استعمال کر رہے ہیں۔",
   "download_latest_desktop": "یہاں سب سے تازہ ڈیسک ٹاپ ورژن ڈاؤن لوڈ کریں: {{link}}",
   "contribute_on_github": "GitHub پر شراکت کریں",
-  "create_community_not_available": "ابھی تک ویب پر دستیاب نہیں ہے۔ آپ ڈیسک ٹاپ ایپ کا استعمال کرکے ایک کمیونٹی بنا سکتے ہیں، یہاں سے ڈاؤن لوڈ کریں: {{desktopLink}}۔ اگر آپ کمانڈ لائن کے ساتھ محتاج ہیں تو یہاں دیکھیں: {{cliLink}}"
+  "create_community_not_available": "ابھی تک ویب پر دستیاب نہیں ہے۔ آپ ڈیسک ٹاپ ایپ کا استعمال کرکے ایک کمیونٹی بنا سکتے ہیں، یہاں سے ڈاؤن لوڈ کریں: {{desktopLink}}۔ اگر آپ کمانڈ لائن کے ساتھ محتاج ہیں تو یہاں دیکھیں: {{cliLink}}",
+  "no_media_found": "کوئی میڈیا نہیں ملی",
+  "no_image_found": "کوئی تصویر نہیں ملی"
 }

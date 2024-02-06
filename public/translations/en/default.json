@@ -236,5 +236,7 @@
   "new_stable_version": "New stable version available, seedit v{{newVersion}}. You are using seedit v{{oldVersion}}.",
   "download_latest_desktop": "Download the latest desktop version here: {{link}}",
   "contribute_on_github": "Contribute on GitHub",
-  "create_community_not_available": "Not yet available on web. You can create a community using the desktop app, download it here: {{desktopLink}}. If you are comfortable with the command line, check out: {{cliLink}}"
+  "create_community_not_available": "Not yet available on web. You can create a community using the desktop app, download it here: {{desktopLink}}. If you are comfortable with the command line, check out: {{cliLink}}",
+  "no_media_found": "No media found",
+  "no_image_found": "No image found"
 }

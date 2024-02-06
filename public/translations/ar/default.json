@@ -236,5 +236,7 @@
   "new_stable_version": "إصدار مستقر جديد متاح، seedit v{{newVersion}}. أنت تستخدم seedit v{{oldVersion}}.",
   "download_latest_desktop": "حمل أحدث إصدار سطح المكتب هنا: {{link}}",
   "contribute_on_github": "المساهمة على GitHub",
-  "create_community_not_available": "غير متاح على الويب بعد. يمكنك إنشاء مجتمع باستخدام تطبيق سطح المكتب، قم بتنزيله هنا: {{desktopLink}}. إذا كنت مرتاحًا باستخدام سطر الأوامر، تحقق من: {{cliLink}}"
+  "create_community_not_available": "غير متاح على الويب بعد. يمكنك إنشاء مجتمع باستخدام تطبيق سطح المكتب، قم بتنزيله هنا: {{desktopLink}}. إذا كنت مرتاحًا باستخدام سطر الأوامر، تحقق من: {{cliLink}}",
+  "no_media_found": "لم يتم العثور على وسائط",
+  "no_image_found": "لم يتم العثور على صورة"
 }

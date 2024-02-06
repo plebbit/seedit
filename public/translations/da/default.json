@@ -236,5 +236,7 @@
   "new_stable_version": "Ny stabil version tilgængelig, seedit v{{newVersion}}. Du bruger seedit v{{oldVersion}}.",
   "download_latest_desktop": "Download den seneste version til skrivebordet her: {{link}}",
   "contribute_on_github": "Bidrag på GitHub",
-  "create_community_not_available": "Endnu ikke tilgængelig på internettet. Du kan oprette en fællesskab ved hjælp af desktop-appen, download den her: {{desktopLink}}. Hvis du er fortrolig med kommandolinjen, kan du tjekke: {{cliLink}}"
+  "create_community_not_available": "Endnu ikke tilgængelig på internettet. Du kan oprette en fællesskab ved hjælp af desktop-appen, download den her: {{desktopLink}}. Hvis du er fortrolig med kommandolinjen, kan du tjekke: {{cliLink}}",
+  "no_media_found": "Ingen medier fundet",
+  "no_image_found": "Ingen billede fundet"
 }

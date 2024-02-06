@@ -236,5 +236,7 @@
   "new_stable_version": "新的稳定版可用，seedit v{{newVersion}}。您正在使用seedit v{{oldVersion}}。",
   "download_latest_desktop": "在这里下载最新的桌面版本: {{link}}",
   "contribute_on_github": "在 GitHub 上贡献",
-  "create_community_not_available": "尚未在Web上提供。您可以使用桌面应用程序创建社区，在此处下载：{{desktopLink}}。如果您熟悉命令行，请查看此处：{{cliLink}}"
+  "create_community_not_available": "尚未在Web上提供。您可以使用桌面应用程序创建社区，在此处下载：{{desktopLink}}。如果您熟悉命令行，请查看此处：{{cliLink}}",
+  "no_media_found": "未找到媒体",
+  "no_image_found": "未找到图像"
 }

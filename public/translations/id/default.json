@@ -236,5 +236,7 @@
   "new_stable_version": "Versi stabil baru tersedia, seedit v{{newVersion}}. Anda menggunakan seedit v{{oldVersion}}.",
   "download_latest_desktop": "Unduh versi desktop terbaru di sini: {{link}}",
   "contribute_on_github": "Berkontribusi di GitHub",
-  "create_community_not_available": "Belum tersedia di web. Anda dapat membuat komunitas menggunakan aplikasi desktop, unduh di sini: {{desktopLink}}. Jika Anda nyaman dengan baris perintah, periksa di sini: {{cliLink}}"
+  "create_community_not_available": "Belum tersedia di web. Anda dapat membuat komunitas menggunakan aplikasi desktop, unduh di sini: {{desktopLink}}. Jika Anda nyaman dengan baris perintah, periksa di sini: {{cliLink}}",
+  "no_media_found": "Tidak ada media ditemukan",
+  "no_image_found": "Tidak ada gambar ditemukan"
 }
