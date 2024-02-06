@@ -238,5 +238,6 @@
   "contribute_on_github": "GitHub で貢献する",
   "create_community_not_available": "まだウェブで利用できません。デスクトップアプリを使用してコミュニティを作成できます。ここからダウンロードしてください：{{desktopLink}}。コマンドラインがお好きな場合は、こちらをご覧ください：{{cliLink}}",
   "no_media_found": "メディアが見つかりませんでした",
-  "no_image_found": "画像が見つかりませんでした"
+  "no_image_found": "画像が見つかりませんでした",
+  "warning_spam": "警告: スパム攻撃の対象となりやすい"
 }

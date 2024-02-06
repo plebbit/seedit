@@ -703,7 +703,7 @@ const Challenges = ({ isReadOnly, readOnlyChallenges }: { isReadOnly: boolean; r
             add a challenge
           </button>
         )}
-        {challenges.length === 0 && !isInCreateSubplebbitView && <span className={styles.noChallengeWarning}></span>}
+        {challenges.length === 0 && !isInCreateSubplebbitView && <span className={styles.noChallengeWarning}>{t('warning_spam')}</span>}
         {challenges.map((challenge: any, index: number) => (
           <div key={index} className={styles.challenge}>
             Challenge #{index + 1}

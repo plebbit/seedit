@@ -238,5 +238,6 @@
   "contribute_on_github": "Hozzájárulás a GitHubon",
   "create_community_not_available": "Még nem elérhető a weben. Egy közösséget létrehozhat a desktop alkalmazás segítségével, töltsd le itt: {{desktopLink}}. Ha kényelmes vagy a parancssor használatával, nézd meg itt: {{cliLink}}",
   "no_media_found": "Nincs talált média",
-  "no_image_found": "Nincs talált kép"
+  "no_image_found": "Nincs talált kép",
+  "warning_spam": "Figyelmeztetés: sebezhető a spam támadásokkal szemben"
 }

@@ -238,5 +238,6 @@
   "contribute_on_github": "GitHub üzerinde katkı sağlayın",
   "create_community_not_available": "Henüz web üzerinde kullanılamıyor. Masaüstü uygulamasını kullanarak bir topluluk oluşturabilirsiniz, buradan indirin: {{desktopLink}}. Komut satırıyla rahatsanız, buraya göz atın: {{cliLink}}",
   "no_media_found": "Medya bulunamadı",
-  "no_image_found": "Resim bulunamadı"
+  "no_image_found": "Resim bulunamadı",
+  "warning_spam": "Uyarı: spam saldırılarına karşı savunmasız"
 }

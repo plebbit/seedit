@@ -238,5 +238,6 @@
   "contribute_on_github": "Bidra på GitHub",
   "create_community_not_available": "Ikke tilgjengelig på nettet ennå. Du kan opprette et fellesskap ved å bruke skrivebordsappen, last den ned her: {{desktopLink}}. Hvis du er komfortabel med kommandolinjen, kan du sjekke her: {{cliLink}}",
   "no_media_found": "Ingen media funnet",
-  "no_image_found": "Ingen bilde funnet"
+  "no_image_found": "Ingen bilde funnet",
+  "warning_spam": "Advarsel: Sårbar for spam-angrep"
 }

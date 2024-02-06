@@ -238,5 +238,6 @@
   "contribute_on_github": "Přispět na GitHubu",
   "create_community_not_available": "Zatím nedostupné na webu. Můžete vytvořit komunitu pomocí desktopové aplikace, stáhnout ji zde: {{desktopLink}}. Pokud se cítíte pohodlně s příkazovým řádkem, podívejte se sem: {{cliLink}}",
   "no_media_found": "Žádná média nebyla nalezena",
-  "no_image_found": "Obrázek nebyl nalezen"
+  "no_image_found": "Obrázek nebyl nalezen",
+  "warning_spam": "Upozornění: Zranitelné vůči spamovým útokům"
 }

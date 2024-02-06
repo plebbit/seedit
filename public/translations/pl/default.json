@@ -238,5 +238,6 @@
   "contribute_on_github": "Wspomóż na GitHubie",
   "create_community_not_available": "Jeszcze niedostępne w sieci. Możesz utworzyć społeczność za pomocą aplikacji na pulpicie, pobierz ją tutaj: {{desktopLink}}. Jeśli czujesz się komfortowo z wierszem poleceń, sprawdź tutaj: {{cliLink}}",
   "no_media_found": "Nie znaleziono mediów",
-  "no_image_found": "Nie znaleziono obrazu"
+  "no_image_found": "Nie znaleziono obrazu",
+  "warning_spam": "Ostrzeżenie: podatny na ataki spamu"
 }

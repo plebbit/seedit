@@ -238,5 +238,6 @@
   "contribute_on_github": "Bijdragen op GitHub",
   "create_community_not_available": "Nog niet beschikbaar op het web. U kunt een community maken met behulp van de desktop-app, download deze hier: {{desktopLink}}. Als u vertrouwd bent met de opdrachtregel, kijk dan hier: {{cliLink}}",
   "no_media_found": "Geen media gevonden",
-  "no_image_found": "Geen afbeelding gevonden"
+  "no_image_found": "Geen afbeelding gevonden",
+  "warning_spam": "Waarschuwing: kwetsbaar voor spam-aanvallen"
 }

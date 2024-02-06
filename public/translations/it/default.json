@@ -238,5 +238,6 @@
   "contribute_on_github": "Contribuisci su GitHub",
   "create_community_not_available": "Non ancora disponibile su web. Puoi creare una comunità utilizzando l'applicazione desktop, scaricala qui: {{desktopLink}}. Se ti senti a tuo agio con la riga di comando, controlla qui: {{cliLink}}",
   "no_media_found": "Nessun media trovato",
-  "no_image_found": "Nessuna immagine trovata"
+  "no_image_found": "Nessuna immagine trovata",
+  "warning_spam": "Attenzione: vulnerabile agli attacchi spam"
 }

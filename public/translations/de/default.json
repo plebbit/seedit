@@ -238,5 +238,6 @@
   "contribute_on_github": "Beitragen auf GitHub",
   "create_community_not_available": "Noch nicht im Web verfügbar. Sie können eine Community mit der Desktop-App erstellen, laden Sie sie hier herunter: {{desktopLink}}. Wenn Sie sich mit der Befehlszeile wohlfühlen, schauen Sie hier nach: {{cliLink}}",
   "no_media_found": "Keine Medien gefunden",
-  "no_image_found": "Kein Bild gefunden"
+  "no_image_found": "Kein Bild gefunden",
+  "warning_spam": "Achtung: Gefährdet durch Spam-Angriffe"
 }

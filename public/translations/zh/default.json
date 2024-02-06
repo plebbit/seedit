@@ -238,5 +238,6 @@
   "contribute_on_github": "在 GitHub 上贡献",
   "create_community_not_available": "尚未在Web上提供。您可以使用桌面应用程序创建社区，在此处下载：{{desktopLink}}。如果您熟悉命令行，请查看此处：{{cliLink}}",
   "no_media_found": "未找到媒体",
-  "no_image_found": "未找到图像"
+  "no_image_found": "未找到图像",
+  "warning_spam": "警告：易受垃圾邮件攻击"
 }
