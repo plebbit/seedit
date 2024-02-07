@@ -106,6 +106,15 @@ const TopBar = () => {
     };
   }, [handleClickOutside]);
 
+  const [homeLink, setHomeLink] = useState('/');
+  const [allLink, setAllLink] = useState('/p/all');
+  useEffect(() => {
+    if (timeFilterName && !isInSubplebbitView) {
+      setHomeLink(`/${selectedSortType}/${timeFilterName}`);
+      setAllLink(`/p/all/${selectedSortType}/${timeFilterName}`);
+    }
+  }, [timeFilterName, isInSubplebbitView]);
+
   return (
     <div className={styles.headerArea}>
       <div className={styles.widthClip}>
@@ -151,13 +160,13 @@ const TopBar = () => {
         <div className={styles.srList}>
           <ul className={styles.srBar}>
             <li>
-              <Link to='/' className={`${styles.homeButton} ${homeButtonClass}`}>
+              <Link to={homeLink} className={`${styles.homeButton} ${homeButtonClass}`}>
                 {t('home')}
               </Link>
             </li>
             <li>
               <span className={styles.separator}>-</span>
-              <Link to='/p/all' className={isinAllView ? styles.selected : styles.choice}>
+              <Link to={allLink} className={isinAllView ? styles.selected : styles.choice}>
                 {t('all')}
               </Link>
             </li>
