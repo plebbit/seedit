@@ -95,7 +95,7 @@
 }
 
 .tableFirstRow {
-  background-color: #ffff99;
+  background-color: var(--yellow-table);
   text-align: center;
   text-transform: lowercase;
   font-style: italic;
@@ -108,7 +108,7 @@
 .markdownHelp td {
   padding: 5px;
   width: 50%;
-  border: 1px solid #c0c0c0;
+  border: 1px solid var(--gray);
   text-align: left;
   padding: 4px 9px;
 }

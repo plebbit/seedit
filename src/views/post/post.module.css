@@ -97,7 +97,7 @@
   display: block;
   width: 45px;
   height: 100%;
-  background-color: var(--box-yellow-icon);
+  background-color: var(--yellow-box-icon);
   position: absolute;
   left: 0;
   top: 0;
@@ -113,8 +113,8 @@
   box-sizing: border-box;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
-  background-color: var(--box-yellow-background);
-  border-color: var(--box-yellow-contrast);
+  background-color: var(--yellow-box-background);
+  border-color: var(--yellow-box-contrast);
   border-style: solid;
   border-width: 1px;
   margin-bottom: 10px;
