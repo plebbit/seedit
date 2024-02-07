@@ -146,12 +146,6 @@
   margin-left: -5px;
 }
 
-@media (max-width: 768px) {
-  .md {
-    padding-right: 5px;
-  }
-}
-
 .moderatorBrackets {
   color: var(--text-info);
 }
@@ -279,4 +273,24 @@
   width: 25px;
   height: 9px;
   margin: 5px 0 0 5px;
+}
+
+.authorAvatar {
+  width: 18px;
+  display: inline-block;
+  position: relative;
+  margin-right: 3px;
+}
+
+.authorAvatar img {
+  width: 18px;
+  max-height: 18px;
+  position: absolute;
+  bottom: -5px;
+}
+
+@media (max-width: 768px) {
+  .md {
+    padding-right: 5px;
+  }
 }

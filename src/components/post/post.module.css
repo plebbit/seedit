@@ -217,6 +217,7 @@
   width: 18px;
   display: inline-block;
   position: relative;
+  padding-right: 1px;
 }
 
 .authorAvatar img {

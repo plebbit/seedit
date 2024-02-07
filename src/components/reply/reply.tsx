@@ -1,5 +1,5 @@
 import { Fragment, useEffect, useMemo, useState } from 'react';
-import { Comment, useAccountComment, useAuthorAddress, useBlock, useComment, useEditedComment, useSubplebbit } from '@plebbit/plebbit-react-hooks';
+import { Comment, useAccountComment, useAuthorAddress, useAuthorAvatar, useBlock, useComment, useEditedComment, useSubplebbit } from '@plebbit/plebbit-react-hooks';
 import { flattenCommentsPages } from '@plebbit/plebbit-react-hooks/dist/lib/utils';
 import { Link, useLocation, useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
@@ -27,10 +27,11 @@ interface ReplyAuthorProps {
   authorRole: string;
   cid: string;
   displayName: string;
+  imageUrl: string | undefined;
   shortAuthorAddress: string | undefined;
 }
 
-const ReplyAuthor = ({ address, authorRole, cid, displayName, shortAuthorAddress }: ReplyAuthorProps) => {
+const ReplyAuthor = ({ address, authorRole, cid, displayName, imageUrl, shortAuthorAddress }: ReplyAuthorProps) => {
   const isAuthorOwner = authorRole === 'owner';
   const isAuthorAdmin = authorRole === 'admin';
   const isAuthorModerator = authorRole === 'moderator';
@@ -39,6 +40,11 @@ const ReplyAuthor = ({ address, authorRole, cid, displayName, shortAuthorAddress
 
   return (
     <>
+      {imageUrl && (
+        <span className={styles.authorAvatar}>
+          <img src={imageUrl} alt='avatar' />
+        </span>
+      )}
       {displayName && (
         <Link to={`/u/${address}/c/${cid}`} className={`${styles.author} ${moderatorClass}`}>
           {displayName}{' '}
@@ -235,8 +241,9 @@ const Reply = ({ cidOfReplyWithContext, depth = 0, isSingleComment, isSingleRepl
     setCollapsed(!collapsed);
   };
 
-  const authorRole = subplebbit?.roles?.[reply.author?.address]?.role;
+  const authorRole = subplebbit?.roles?.[author?.address]?.role;
   const { shortAuthorAddress } = useAuthorAddress({ comment: reply });
+  const { imageUrl } = useAuthorAvatar({ author });
   const replies = useReplies(reply);
   const [expanded, setExpanded] = useState(false);
   const [isReplying, setIsReplying] = useState(false);
@@ -295,7 +302,14 @@ const Reply = ({ cidOfReplyWithContext, depth = 0, isSingleComment, isSingleRepl
                 <span className={styles.expand} onClick={handleCollapseButton}>
                   [{collapsed ? '+' : '–'}]
                 </span>
-                <ReplyAuthor address={author?.address} authorRole={authorRole} cid={cid} displayName={author?.displayName} shortAuthorAddress={shortAuthorAddress} />
+                <ReplyAuthor
+                  address={author?.address}
+                  authorRole={authorRole}
+                  cid={cid}
+                  displayName={author?.displayName}
+                  imageUrl={imageUrl}
+                  shortAuthorAddress={shortAuthorAddress}
+                />
                 <span className={styles.score}>{scoreString}</span> <span className={styles.time}>{getFormattedTimeAgo(timestamp)}</span>{' '}
                 {pinned && <span className={styles.pinned}>- {t('stickied_comment')}</span>}
                 {collapsed && <span className={styles.children}> ({childrenString})</span>}
