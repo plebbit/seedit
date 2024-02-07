@@ -125,11 +125,17 @@ const TopBar = () => {
         <div className={styles.dropdown} ref={sortsDropdownRef} onClick={toggleSortsDropdown}>
           <span className={styles.selectedTitle}>{getSelectedSortLabel()}</span>
           <div className={`${styles.dropChoices} ${styles.sortsDropChoices} ${sortsDropdownClass}`} ref={sortsDropdownChoicesRef}>
-            {sortTypes.map((choice, index) => (
-              <Link to={isInSubplebbitView ? `/p/${params.subplebbitAddress}/${choice}` : choice} key={index} className={styles.dropdownChoice}>
-                {sortLabels[index]}
-              </Link>
-            ))}
+            {sortTypes.map((choice, index) => {
+              let dropdownLink = isInSubplebbitView ? `/p/${params.subplebbitAddress}/${choice}` : choice;
+              if (timeFilterName) {
+                dropdownLink += `/${timeFilterName}`;
+              }
+              return (
+                <Link to={dropdownLink} key={index} className={styles.dropdownChoice}>
+                  {sortLabels[index]}
+                </Link>
+              );
+            })}
           </div>
         </div>
         <div className={styles.dropdown} ref={filterDropdownRef} onClick={toggleFilterDropdown}>
