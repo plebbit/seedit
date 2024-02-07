@@ -65,6 +65,7 @@
   margin-right: 5px;
   color: var(--text-primary);
   cursor: pointer;
+  text-transform: lowercase;
 }
 
 .options {
@@ -96,6 +97,7 @@
 .tableFirstRow {
   background-color: #ffff99;
   text-align: center;
+  text-transform: lowercase;
   font-style: italic;
 }
 

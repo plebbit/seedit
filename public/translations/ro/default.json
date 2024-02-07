@@ -239,5 +239,13 @@
   "create_community_not_available": "Încă nu este disponibil pe web. Puteți crea o comunitate folosind aplicația desktop, descărcați-o de aici: {{desktopLink}}. Dacă vă simțiți confortabil cu linia de comandă, verificați aici: {{cliLink}}",
   "no_media_found": "Nu s-au găsit media",
   "no_image_found": "Nu s-a găsit nicio imagine",
-  "warning_spam": "Avertisment: vulnerabil la atacuri de tip spam"
+  "warning_spam": "Avertisment: vulnerabil la atacuri de tip spam",
+  "hide_help": "Ascundeți ajutorul",
+  "formatting_help": "Ajutor de formatare",
+  "you_see": "vezi",
+  "you_type": "Tu tastezi",
+  "italics": "italic",
+  "bold": "bold",
+  "quoted_text": "text citat",
+  "item": "articol"
 }

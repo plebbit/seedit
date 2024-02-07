@@ -239,5 +239,13 @@
   "create_community_not_available": "Ainda não disponível na web. Você pode criar uma comunidade usando o aplicativo para desktop, faça o download aqui: {{desktopLink}}. Se você se sentir confortável com a linha de comando, confira aqui: {{cliLink}}",
   "no_media_found": "Nenhum media encontrado",
   "no_image_found": "Nenhuma imagem encontrada",
-  "warning_spam": "Aviso: vulnerável a ataques de spam"
+  "warning_spam": "Aviso: vulnerável a ataques de spam",
+  "hide_help": "Ocultar ajuda",
+  "formatting_help": "Ajuda de formatação",
+  "you_see": "você vê",
+  "you_type": "Você digita",
+  "italics": "itálico",
+  "bold": "negrito",
+  "quoted_text": "texto citado",
+  "item": "item"
 }

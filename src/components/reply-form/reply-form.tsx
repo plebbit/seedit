@@ -78,19 +78,19 @@ const ReplyForm = ({ cid, isReplyingToReply, hideReplyForm }: ReplyFormProps) =>
       <table>
         <tbody>
           <tr className={styles.tableFirstRow}>
-            <td>you type:</td>
-            <td>you see:</td>
+            <td>{t('you_type')}:</td>
+            <td>{t('you_see')}:</td>
           </tr>
           <tr>
-            <td>*italics*</td>
+            <td>*{t('italics')}*</td>
             <td>
-              <Markdown content='*italics*' />
+              <Markdown content={`*${t('italics')}*`} />
             </td>
           </tr>
           <tr>
-            <td>**bold**</td>
+            <td>**{t('bold')}**</td>
             <td>
-              <Markdown content='**bold**' />
+              <Markdown content={`**${t('bold')}**`} />
             </td>
           </tr>
           <tr>
@@ -101,16 +101,18 @@ const ReplyForm = ({ cid, isReplyingToReply, hideReplyForm }: ReplyFormProps) =>
           </tr>
           <tr>
             <td>
-              * item 1<br />* item 2<br />* item 3
+              * {t('item')} 1<br />* {t('item')} 2<br />* {t('item')} 3
             </td>
             <td>
-              <Markdown content={['* item 1', '* item 2', '* item 3'].join('\n')} />
+              <Markdown content={[`* ${t('item')} 1`, `* ${t('item')} 2`, `* ${t('item')} 3`].join('\n')} />
             </td>
           </tr>
           <tr>
-            <td>{'>'} quoted text</td>
             <td>
-              <Markdown content='> quoted text' />
+              {'>'} {t('quoted_text')}
+            </td>
+            <td>
+              <Markdown content={`> ${t('quoted_text')}`} />
             </td>
           </tr>
           <tr>
@@ -160,11 +162,11 @@ const ReplyForm = ({ cid, isReplyingToReply, hideReplyForm }: ReplyFormProps) =>
             {t('cancel')}
           </button>
         )}
+        <span className={styles.optionsButton} onClick={() => setShowFormattingHelp(!showFormattingHelp)}>
+          {showFormattingHelp ? t('hide_help') : t('formatting_help')}
+        </span>
         <span className={styles.optionsButton} onClick={() => setShowOptions(!showOptions)}>
           {showOptions ? t('hide_options') : t('options')}
-        </span>
-        <span className={styles.optionsButton} onClick={() => setShowFormattingHelp(!showFormattingHelp)}>
-          {showFormattingHelp ? t('hide_formatting_help') : t('formatting_help')}
         </span>
       </div>
       {showFormattingHelp && formattingHelp}

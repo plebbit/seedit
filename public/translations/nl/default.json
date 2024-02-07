@@ -239,5 +239,13 @@
   "create_community_not_available": "Nog niet beschikbaar op het web. U kunt een community maken met behulp van de desktop-app, download deze hier: {{desktopLink}}. Als u vertrouwd bent met de opdrachtregel, kijk dan hier: {{cliLink}}",
   "no_media_found": "Geen media gevonden",
   "no_image_found": "Geen afbeelding gevonden",
-  "warning_spam": "Waarschuwing: kwetsbaar voor spam-aanvallen"
+  "warning_spam": "Waarschuwing: kwetsbaar voor spam-aanvallen",
+  "hide_help": "Help verbergen",
+  "formatting_help": "Opmaakhulp",
+  "you_see": "je ziet",
+  "you_type": "Je typt",
+  "italics": "cursief",
+  "bold": "vet",
+  "quoted_text": "geciteerde tekst",
+  "item": "item"
 }

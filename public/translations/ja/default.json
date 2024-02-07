@@ -239,5 +239,13 @@
   "create_community_not_available": "まだウェブで利用できません。デスクトップアプリを使用してコミュニティを作成できます。ここからダウンロードしてください：{{desktopLink}}。コマンドラインがお好きな場合は、こちらをご覧ください：{{cliLink}}",
   "no_media_found": "メディアが見つかりませんでした",
   "no_image_found": "画像が見つかりませんでした",
-  "warning_spam": "警告: スパム攻撃の対象となりやすい"
+  "warning_spam": "警告: スパム攻撃の対象となりやすい",
+  "hide_help": "ヘルプを非表示",
+  "formatting_help": "フォーマットのヘルプ",
+  "you_see": "見ます",
+  "you_type": "入力中",
+  "italics": "イタリック",
+  "bold": "太字",
+  "quoted_text": "引用されたテキスト",
+  "item": "アイテム"
 }

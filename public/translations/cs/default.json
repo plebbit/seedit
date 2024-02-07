@@ -239,5 +239,13 @@
   "create_community_not_available": "Zatím nedostupné na webu. Můžete vytvořit komunitu pomocí desktopové aplikace, stáhnout ji zde: {{desktopLink}}. Pokud se cítíte pohodlně s příkazovým řádkem, podívejte se sem: {{cliLink}}",
   "no_media_found": "Žádná média nebyla nalezena",
   "no_image_found": "Obrázek nebyl nalezen",
-  "warning_spam": "Upozornění: Zranitelné vůči spamovým útokům"
+  "warning_spam": "Upozornění: Zranitelné vůči spamovým útokům",
+  "hide_help": "Skrýt nápovědu",
+  "formatting_help": "Formátování nápovědy",
+  "you_see": "Vidíte",
+  "you_type": "Píšete",
+  "italics": "kurzíva",
+  "bold": "tučné",
+  "quoted_text": "citovaný text",
+  "item": "položka"
 }

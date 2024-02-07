@@ -239,5 +239,13 @@
   "create_community_not_available": "Endnu ikke tilgængelig på internettet. Du kan oprette en fællesskab ved hjælp af desktop-appen, download den her: {{desktopLink}}. Hvis du er fortrolig med kommandolinjen, kan du tjekke: {{cliLink}}",
   "no_media_found": "Ingen medier fundet",
   "no_image_found": "Ingen billede fundet",
-  "warning_spam": "Advarsel: Sårbar over for spam-angreb"
+  "warning_spam": "Advarsel: Sårbar over for spam-angreb",
+  "hide_help": "Skjul hjælp",
+  "formatting_help": "Formateringshjælp",
+  "you_see": "Du ser",
+  "you_type": "Du skriver",
+  "italics": "kursiv",
+  "bold": "fed",
+  "quoted_text": "citeret tekst",
+  "item": "vare"
 }
