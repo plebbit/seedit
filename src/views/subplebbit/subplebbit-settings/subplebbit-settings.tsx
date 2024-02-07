@@ -1,6 +1,14 @@
 import { useEffect, useRef, useState } from 'react';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
-import { PublishSubplebbitEditOptions, Role, useAccount, useCreateSubplebbit, useSubplebbit, usePublishSubplebbitEdit } from '@plebbit/plebbit-react-hooks';
+import {
+  deleteSubplebbit,
+  PublishSubplebbitEditOptions,
+  Role,
+  useAccount,
+  useCreateSubplebbit,
+  useSubplebbit,
+  usePublishSubplebbitEdit,
+} from '@plebbit/plebbit-react-hooks';
 import { Roles } from '../../../lib/utils/user-utils';
 import { useTranslation } from 'react-i18next';
 import { create } from 'zustand';
@@ -777,7 +785,7 @@ const SubplebbitSettings = () => {
   const { t } = useTranslation();
   const { subplebbitAddress } = useParams<{ subplebbitAddress: string }>();
   const subplebbit = useSubplebbit({ subplebbitAddress });
-  const { address, challenges, createdAt, description, rules, settings, suggested, roles, title, updatedAt } = subplebbit || {};
+  const { address, challenges, createdAt, description, rules, shortAddress, settings, suggested, roles, title, updatedAt } = subplebbit || {};
 
   const account = useAccount();
   const location = useLocation();
@@ -794,13 +802,12 @@ const SubplebbitSettings = () => {
   const { publishSubplebbitEdit } = usePublishSubplebbitEdit(publishSubplebbitEditOptions);
   const { createdSubplebbit, createSubplebbit } = useCreateSubplebbit(publishSubplebbitEditOptions);
 
-  const [showLoading, setShowLoading] = useState(false);
-
+  const [showSaving, setShowSaving] = useState(false);
   const saveSubplebbit = async () => {
     try {
-      setShowLoading(true);
+      setShowSaving(true);
       await publishSubplebbitEdit();
-      setShowLoading(false);
+      setShowSaving(false);
       alert(`saved`);
     } catch (e) {
       if (e instanceof Error) {
@@ -809,14 +816,32 @@ const SubplebbitSettings = () => {
       } else {
         console.error('An unknown error occurred:', e);
       }
-    } finally {
-      setShowLoading(false);
     }
   };
 
   const _createSubplebbit = () => {
     createSubplebbit();
     resetSubplebbitSettingsStore();
+  };
+
+  const [showDeleting, setShowDeleting] = useState(false);
+  const _deleteSubplebbit = async () => {
+    if (subplebbitAddress && window.confirm(`Are you sure you want to delete p/${shortAddress}? This action is irreversible.`)) {
+      try {
+        setShowDeleting(true);
+        await deleteSubplebbit(subplebbitAddress);
+        setShowDeleting(false);
+        alert(`Deleted p/${shortAddress}`);
+        navigate('/communities', { replace: true });
+      } catch (e) {
+        if (e instanceof Error) {
+          console.warn(e);
+          alert(`failed deleting subplebbit: ${e.message}`);
+        } else {
+          console.error('An unknown error occurred:', e);
+        }
+      }
+    }
   };
 
   useEffect(() => {
@@ -876,11 +901,15 @@ const SubplebbitSettings = () => {
       {!isInCreateSubplebbitView && <JSONSettings isReadOnly={isReadOnly} />}
       <div className={styles.saveOptions}>
         {!isReadOnly && (
-          <button onClick={isInCreateSubplebbitView ? _createSubplebbit : saveSubplebbit} disabled={showLoading}>
+          <button onClick={isInCreateSubplebbitView ? _createSubplebbit : saveSubplebbit} disabled={showSaving || showDeleting}>
             {isInCreateSubplebbitView ? t('create_community') : t('save_options')}
           </button>
         )}
-        {showLoading && <LoadingEllipsis string={t('saving')} />}
+        {showSaving && <LoadingEllipsis string={t('saving')} />}
+        <button onClick={_deleteSubplebbit} disabled={showDeleting || showSaving}>
+          delete community
+        </button>
+        {showDeleting && <LoadingEllipsis string={t('deleting')} />}
       </div>
     </div>
   );
