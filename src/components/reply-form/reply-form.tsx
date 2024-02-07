@@ -1,9 +1,10 @@
 import { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import styles from './reply-form.module.css';
-import useReply from '../../hooks/use-reply';
 import { useComment } from '@plebbit/plebbit-react-hooks';
+import styles from './reply-form.module.css';
 import { isValidURL } from '../../lib/utils/url-utils';
+import useReply from '../../hooks/use-reply';
+import Markdown from '../markdown';
 
 type ReplyFormProps = {
   cid: string;
@@ -14,6 +15,7 @@ type ReplyFormProps = {
 const ReplyForm = ({ cid, isReplyingToReply, hideReplyForm }: ReplyFormProps) => {
   const { t } = useTranslation();
   const [showOptions, setShowOptions] = useState(false);
+  const [showFormattingHelp, setShowFormattingHelp] = useState(false);
   const reply = useComment({ commentCid: cid });
   const { setContent, resetContent, replyIndex, publishReply } = useReply(reply);
 
@@ -71,6 +73,69 @@ const ReplyForm = ({ cid, isReplyingToReply, hideReplyForm }: ReplyFormProps) =>
     }
   }, [replyIndex, resetContent, hideReplyForm]);
 
+  const formattingHelp = (
+    <div className={styles.markdownHelp}>
+      <table>
+        <tbody>
+          <tr className={styles.tableFirstRow}>
+            <td>you type:</td>
+            <td>you see:</td>
+          </tr>
+          <tr>
+            <td>*italics*</td>
+            <td>
+              <Markdown content='*italics*' />
+            </td>
+          </tr>
+          <tr>
+            <td>**bold**</td>
+            <td>
+              <Markdown content='**bold**' />
+            </td>
+          </tr>
+          <tr>
+            <td>[plebbit!](https://plebbit.com)</td>
+            <td>
+              <Markdown content='[plebbit!](https://plebbit.com)' />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              * item 1<br />* item 2<br />* item 3
+            </td>
+            <td>
+              <Markdown content={['* item 1', '* item 2', '* item 3'].join('\n')} />
+            </td>
+          </tr>
+          <tr>
+            <td>{'>'} quoted text</td>
+            <td>
+              <Markdown content='> quoted text' />
+            </td>
+          </tr>
+          <tr>
+            <td>~~strikethrough~~</td>
+            <td>
+              <Markdown content='~~strikethrough~~' />
+            </td>
+          </tr>
+          <tr>
+            <td>super^script^</td>
+            <td>
+              <Markdown content='super^script^' />
+            </td>
+          </tr>
+          <tr>
+            <td>sub~script~</td>
+            <td>
+              <Markdown content='sub~script~' />
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  );
+
   return (
     <div className={mdContainerClass}>
       <div className={styles.md}>
@@ -98,7 +163,11 @@ const ReplyForm = ({ cid, isReplyingToReply, hideReplyForm }: ReplyFormProps) =>
         <span className={styles.optionsButton} onClick={() => setShowOptions(!showOptions)}>
           {showOptions ? t('hide_options') : t('options')}
         </span>
+        <span className={styles.optionsButton} onClick={() => setShowFormattingHelp(!showFormattingHelp)}>
+          {showFormattingHelp ? t('hide_formatting_help') : t('formatting_help')}
+        </span>
       </div>
+      {showFormattingHelp && formattingHelp}
     </div>
   );
 };
