@@ -135,7 +135,11 @@ const Address = ({ isReadOnly = false }: { isReadOnly?: boolean }) => {
       <div className={styles.boxTitle}>{t('address')}</div>
       <div className={styles.boxSubtitle}>{t('address_setting_info')}</div>
       <div className={styles.boxInput}>
-        {isReadOnly ? <span>{address}</span> : <input type='text' value={address ?? ''} onChange={(e) => setSubplebbitSettingsStore({ address: e.target.value })} />}
+        {isReadOnly ? (
+          <span className={styles.readOnlyAddress}>{address}</span>
+        ) : (
+          <input type='text' value={address ?? ''} onChange={(e) => setSubplebbitSettingsStore({ address: e.target.value })} />
+        )}
       </div>
     </div>
   );
