@@ -260,6 +260,12 @@ const Submit = () => {
   }, [inputAddress]);
 
   useEffect(() => {
+    if (selectedSubplebbit) {
+      setSubmitStore({ subplebbitAddress: selectedSubplebbit });
+    }
+  }, [selectedSubplebbit, setSubmitStore]);
+
+  useEffect(() => {
     if (paramsSubplebbitAddress) {
       setSubmitStore({ subplebbitAddress: paramsSubplebbitAddress });
     }
