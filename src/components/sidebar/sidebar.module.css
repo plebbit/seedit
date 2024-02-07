@@ -64,7 +64,7 @@ a {
 
 .description {
   padding: 5px 0;
-  white-space: pre-wrap;
+  /* white-space: pre-wrap; */
   word-wrap: break-word;
   color: var(--text-markdown);
   line-height: 15px;
