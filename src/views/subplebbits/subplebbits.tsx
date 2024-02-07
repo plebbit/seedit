@@ -192,9 +192,10 @@ const AccountSubplebbits = ({ viewRole }: { viewRole: string }) => {
   const { accountSubplebbits } = useAccountSubplebbits();
 
   const filteredSubplebbitsArray = useMemo(() => {
-    return Object.values(accountSubplebbits).filter((subplebbit) => {
+    return Object.values(accountSubplebbits).filter((subplebbit: any) => {
+      const isUserOwner = subplebbit.settings !== undefined;
       const userRole = (subplebbit as any).roles?.[account?.author?.address]?.role;
-      return userRole === viewRole;
+      return isUserOwner || userRole === viewRole;
     });
   }, [accountSubplebbits, account, viewRole]);
 

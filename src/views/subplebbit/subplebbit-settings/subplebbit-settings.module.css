@@ -55,6 +55,10 @@
   font-size: 14px;
 }
 
+.readOnlyAddress {
+  word-wrap: break-word;
+}
+
 .readOnlyDescription {
   font-size: 14px;
   font-family: verdana, arial, helvetica, sans-serif;

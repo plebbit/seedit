@@ -239,5 +239,13 @@
   "create_community_not_available": "Not yet available on web. You can create a community using the desktop app, download it here: {{desktopLink}}. If you are comfortable with the command line, check out: {{cliLink}}",
   "no_media_found": "No media found",
   "no_image_found": "No image found",
-  "warning_spam": "Warning: vulnerable to spam attacks"
+  "warning_spam": "Warning: vulnerable to spam attacks",
+  "hide_help": "Hide help",
+  "formatting_help": "Formatting help",
+  "you_see": "you see",
+  "you_type": "You type",
+  "italics": "italics",
+  "bold": "bold",
+  "quoted_text": "quoted text",
+  "item": "item"
 }

@@ -1,19 +1,20 @@
 import { useEffect, useRef, useState } from 'react';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
-import { PublishSubplebbitEditOptions, Role, useAccount, useCreateSubplebbit, useSubplebbit, usePublishSubplebbitEdit } from '@plebbit/plebbit-react-hooks';
+import {
+  deleteSubplebbit,
+  PublishSubplebbitEditOptions,
+  Role,
+  useAccount,
+  useCreateSubplebbit,
+  useSubplebbit,
+  usePublishSubplebbitEdit,
+} from '@plebbit/plebbit-react-hooks';
 import { Roles } from '../../../lib/utils/user-utils';
 import { useTranslation } from 'react-i18next';
 import { create } from 'zustand';
 import styles from './subplebbit-settings.module.css';
 import { isValidURL } from '../../../lib/utils/url-utils';
-import {
-  OptionInput,
-  Exclude,
-  getDefaultChallengeDescription,
-  getDefaultExclude,
-  getDefaultChallengeOptions,
-  getDefaultChallengeSettings,
-} from '../../../lib/utils/challenge-utils';
+import { OptionInput, Exclude, getDefaultChallengeDescription, getDefaultChallengeOptions, getDefaultChallengeSettings } from '../../../lib/utils/challenge-utils';
 import LoadingEllipsis from '../../../components/loading-ellipsis';
 import Sidebar from '../../../components/sidebar';
 import { isCreateSubplebbitView, isSubplebbitSettingsView } from '../../../lib/utils/view-utils';
@@ -127,7 +128,11 @@ const Address = ({ isReadOnly = false }: { isReadOnly?: boolean }) => {
       <div className={styles.boxTitle}>{t('address')}</div>
       <div className={styles.boxSubtitle}>{t('address_setting_info')}</div>
       <div className={styles.boxInput}>
-        {isReadOnly ? <span>{address}</span> : <input type='text' value={address ?? ''} onChange={(e) => setSubplebbitSettingsStore({ address: e.target.value })} />}
+        {isReadOnly ? (
+          <span className={styles.readOnlyAddress}>{address}</span>
+        ) : (
+          <input type='text' value={address ?? ''} onChange={(e) => setSubplebbitSettingsStore({ address: e.target.value })} />
+        )}
       </div>
     </div>
   );
@@ -356,10 +361,15 @@ const ChallengeSettings = ({ challenge, index, isReadOnly, setSubplebbitSettings
   };
 
   const addExcludeGroup = () => {
-    const newExclude = getDefaultExclude()[0];
-    const updatedChallenges = settings.challenges.map((ch: any, idx: number) => (idx === index ? { ...ch, exclude: [...ch.exclude, newExclude] } : ch));
+    const newExclude = { role: [], post: false, reply: false, vote: false };
+    const updatedChallenges = settings?.challenges?.map((ch: any, idx: number) => (idx === index ? { ...ch, exclude: [...(ch.exclude || []), newExclude] } : ch));
     setSubplebbitSettingsStore({ settings: { ...settings, challenges: updatedChallenges } });
+    setShowExcludeSettings((prev) => [...prev, false]);
   };
+
+  useEffect(() => {
+    setShowExcludeSettings(challenge.exclude?.map(() => false) || []);
+  }, [challenge.exclude]);
 
   const deleteExcludeGroup = (excludeIndex: number) => {
     const updatedChallenges = [...settings.challenges];
@@ -368,7 +378,7 @@ const ChallengeSettings = ({ challenge, index, isReadOnly, setSubplebbitSettings
     setSubplebbitSettingsStore({ settings: { ...settings, challenges: updatedChallenges } });
   };
 
-  const [showExcludeSettings, setShowExcludeSettings] = useState<boolean[]>(challenge.exclude.map(() => (isReadOnly ? true : false)));
+  const [showExcludeSettings, setShowExcludeSettings] = useState<boolean[]>(challenge?.exclude?.map(() => (isReadOnly ? true : false)));
   const toggleExcludeSettings = (excludeIndex: number) => {
     const newShowExcludeSettings = [...showExcludeSettings];
     newShowExcludeSettings[excludeIndex] = !newShowExcludeSettings[excludeIndex];
@@ -463,7 +473,7 @@ const ChallengeSettings = ({ challenge, index, isReadOnly, setSubplebbitSettings
             Add Group
           </button>
         )}
-        {challenge.exclude.map((exclude: any, excludeIndex: number) => (
+        {challenge?.exclude?.map((exclude: any, excludeIndex: number) => (
           <div key={excludeIndex} className={styles.excludeGroup}>
             Exclude group #{excludeIndex + 1}
             {!isReadOnly && <span className={styles.deleteButton} onClick={() => deleteExcludeGroup(excludeIndex)} title='delete group' />}
@@ -674,7 +684,6 @@ const Challenges = ({ isReadOnly, readOnlyChallenges }: { isReadOnly: boolean; r
     const newChallenge = {
       name: defaultChallenge,
       options,
-      exclude: getDefaultExclude(),
     };
     const updatedChallenges = [...(settings?.challenges || []), newChallenge];
     setSubplebbitSettingsStore({ settings: { ...settings, challenges: updatedChallenges } });
@@ -777,7 +786,7 @@ const SubplebbitSettings = () => {
   const { t } = useTranslation();
   const { subplebbitAddress } = useParams<{ subplebbitAddress: string }>();
   const subplebbit = useSubplebbit({ subplebbitAddress });
-  const { address, challenges, createdAt, description, rules, settings, suggested, roles, title, updatedAt } = subplebbit || {};
+  const { address, challenges, createdAt, description, rules, shortAddress, settings, suggested, roles, title, updatedAt } = subplebbit || {};
 
   const account = useAccount();
   const location = useLocation();
@@ -794,13 +803,12 @@ const SubplebbitSettings = () => {
   const { publishSubplebbitEdit } = usePublishSubplebbitEdit(publishSubplebbitEditOptions);
   const { createdSubplebbit, createSubplebbit } = useCreateSubplebbit(publishSubplebbitEditOptions);
 
-  const [showLoading, setShowLoading] = useState(false);
-
+  const [showSaving, setShowSaving] = useState(false);
   const saveSubplebbit = async () => {
     try {
-      setShowLoading(true);
+      setShowSaving(true);
       await publishSubplebbitEdit();
-      setShowLoading(false);
+      setShowSaving(false);
       alert(`saved`);
     } catch (e) {
       if (e instanceof Error) {
@@ -809,14 +817,32 @@ const SubplebbitSettings = () => {
       } else {
         console.error('An unknown error occurred:', e);
       }
-    } finally {
-      setShowLoading(false);
     }
   };
 
   const _createSubplebbit = () => {
     createSubplebbit();
     resetSubplebbitSettingsStore();
+  };
+
+  const [showDeleting, setShowDeleting] = useState(false);
+  const _deleteSubplebbit = async () => {
+    if (subplebbitAddress && window.confirm(`Are you sure you want to delete p/${shortAddress}? This action is irreversible.`)) {
+      try {
+        setShowDeleting(true);
+        await deleteSubplebbit(subplebbitAddress);
+        setShowDeleting(false);
+        alert(`Deleted p/${shortAddress}`);
+        navigate('/communities', { replace: true });
+      } catch (e) {
+        if (e instanceof Error) {
+          console.warn(e);
+          alert(`failed deleting subplebbit: ${e.message}`);
+        } else {
+          console.error('An unknown error occurred:', e);
+        }
+      }
+    }
   };
 
   useEffect(() => {
@@ -876,11 +902,15 @@ const SubplebbitSettings = () => {
       {!isInCreateSubplebbitView && <JSONSettings isReadOnly={isReadOnly} />}
       <div className={styles.saveOptions}>
         {!isReadOnly && (
-          <button onClick={isInCreateSubplebbitView ? _createSubplebbit : saveSubplebbit} disabled={showLoading}>
+          <button onClick={isInCreateSubplebbitView ? _createSubplebbit : saveSubplebbit} disabled={showSaving || showDeleting}>
             {isInCreateSubplebbitView ? t('create_community') : t('save_options')}
           </button>
         )}
-        {showLoading && <LoadingEllipsis string={t('saving')} />}
+        {showSaving && <LoadingEllipsis string={t('saving')} />}
+        <button onClick={_deleteSubplebbit} disabled={showDeleting || showSaving}>
+          delete community
+        </button>
+        {showDeleting && <LoadingEllipsis string={t('deleting')} />}
       </div>
     </div>
   );

@@ -4,20 +4,22 @@
 
 .markdown ol {
   padding-left: 40px;
+  white-space: normal;
 }
 
 .markdown ul {
   padding-left: 40px;
+  white-space: normal;
 }
 
-.markdown ul li, .markdown ol li {
-  margin-top: -5px;
-  margin-bottom: -5px;
-}
-
-.quote {
+.markdown blockquote {
   padding: 0 8px;
   margin-left: 5px;
   border-left: 2px solid var(--markdown-blockquote-border);
   color: var(--markdown-blockquote);
+  white-space: normal;
+}
+
+.markdown li {
+  white-space: normal;
 }

@@ -30,10 +30,15 @@ interface sidebarProps {
 }
 
 const RulesList = ({ rules }: { rules: string[] }) => {
+  const { t } = useTranslation();
+  const markdownRules = rules.map((rule, index) => `${index + 1}. ${rule}`).join('\n');
+
   return (
     <div className={styles.rules}>
-      <strong>Rules</strong>
-      <ol className={styles.rulesList}>{rules?.map((rule, index) => <li key={index}>{rule}</li>)}</ol>
+      <div className={styles.rulesTitle}>
+        <strong>{t('rules')}</strong>
+      </div>
+      <Markdown content={markdownRules} />
     </div>
   );
 };

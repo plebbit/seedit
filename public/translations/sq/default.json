@@ -239,5 +239,13 @@
   "create_community_not_available": "Ende nuk është në dispozicion në internet. Mund të krijoni një komunitet duke përdorur aplikacionin e desktopit, shkarkoni këtu: {{desktopLink}}. Nëse jeni të rehatshëm me linjën e komandës, kontrolloni këtu: {{cliLink}}",
   "no_media_found": "Nuk u gjet asnje media",
   "no_image_found": "Nuk u gjet asnje imazh",
-  "warning_spam": "Njoftim: i prekshëm nga sulmet e spamit"
+  "warning_spam": "Njoftim: i prekshëm nga sulmet e spamit",
+  "hide_help": "Fshih ndihmën",
+  "formatting_help": "Ndihmë për formatimin",
+  "you_see": "shikon",
+  "you_type": "Ti shkruan",
+  "italics": "italik",
+  "bold": "i trashë",
+  "quoted_text": "teksti i cituar",
+  "item": "artikull"
 }

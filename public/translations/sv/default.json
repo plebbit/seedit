@@ -239,5 +239,13 @@
   "create_community_not_available": "Ännu inte tillgängligt på webben. Du kan skapa en community med hjälp av desktop-appen, ladda ner den här: {{desktopLink}}. Om du är bekant med kommandoraden, kolla här: {{cliLink}}",
   "no_media_found": "Inget medium hittades",
   "no_image_found": "Ingen bild hittades",
-  "warning_spam": "Varning: sårbar för spamattacker"
+  "warning_spam": "Varning: sårbar för spamattacker",
+  "hide_help": "Dölj hjälp",
+  "formatting_help": "Formateringshjälp",
+  "you_see": "du ser",
+  "you_type": "Du skriver",
+  "italics": "kursiv",
+  "bold": "fetstil",
+  "quoted_text": "citerad text",
+  "item": "föremål"
 }

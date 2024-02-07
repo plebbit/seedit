@@ -65,12 +65,52 @@
   margin-right: 5px;
   color: var(--text-primary);
   cursor: pointer;
+  text-transform: lowercase;
 }
 
 .options {
   font-size: 12px;
   padding-bottom: 2px;
   padding-top: 2px;
+}
+
+.markdownHelp {
+  display: block;
+  padding: 4px 4px 0px 4px;
+  margin-top: 5px;
+  border-top: 1px dotted #c0c0c0;
+}
+
+.markdownHelp table {
+  width: 100%;
+  margin-top: 5px;
+  font-weight: 400;
+  color: var(--text-markdown);
+  font-size: 14px;
+  border-collapse: collapse;
+  box-sizing: border-box;
+  text-indent: initial;
+  border-spacing: 2px;
+  border-color: gray;
+}
+
+.tableFirstRow {
+  background-color: var(--yellow-table);
+  text-align: center;
+  text-transform: lowercase;
+  font-style: italic;
+}
+
+.markdownHelp tr {
+  margin: 0;
+}
+
+.markdownHelp td {
+  padding: 5px;
+  width: 50%;
+  border: 1px solid var(--gray);
+  text-align: left;
+  padding: 4px 9px;
 }
 
 @media (max-width: 768px) {

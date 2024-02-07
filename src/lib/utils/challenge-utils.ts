@@ -62,17 +62,6 @@ export const getPublicationPreview = (publication: any) => {
   return publicationPreview;
 };
 
-export const getDefaultExclude = () => {
-  return [
-    {
-      role: [],
-      post: false,
-      reply: false,
-      vote: false,
-    },
-  ];
-};
-
 export const getDefaultChallengeDescription = (challengeType: string) => {
   switch (challengeType) {
     case 'text-math':
