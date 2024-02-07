@@ -113,7 +113,7 @@ const TopBar = () => {
       setHomeLink(`/${selectedSortType}/${timeFilterName}`);
       setAllLink(`/p/all/${selectedSortType}/${timeFilterName}`);
     }
-  }, [timeFilterName, isInSubplebbitView]);
+  }, [timeFilterName, isInSubplebbitView, selectedSortType]);
 
   return (
     <div className={styles.headerArea}>
