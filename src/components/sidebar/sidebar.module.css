@@ -169,16 +169,16 @@ a {
 }
 
 .rules {
-  margin-bottom: 5px;
-  margin-top: 7px;
+  padding-bottom: 5px;
+  padding-top: 7px;
   color: var(--text-markdown);
   line-height: 15px;
   word-wrap: break-word;
 }
 
-.rulesList {
-  padding-top: 3px;
-  padding-left: 40px;
+.rulesTitle {
+  margin-bottom: 5px;
+  text-transform: capitalize;
 }
 
 .moderationTool {
