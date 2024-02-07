@@ -236,5 +236,8 @@
   "new_stable_version": "גרסה יציבה חדשה זמינה, seedit v{{newVersion}}. אתה משתמש seedit v{{oldVersion}}.",
   "download_latest_desktop": "הורד את הגרסה האחרונה לשולחן העבודה כאן: {{link}}",
   "contribute_on_github": "לתרום ב-GitHub",
-  "create_community_not_available": "עדיין לא זמין ברשת. ניתן ליצור קהילה באמצעות האפליקציה לשולחן העבודה, הורד אותה כאן: {{desktopLink}}. אם אתה מרגיש בנוח עם שורת הפקודות, היכנס לכאן: {{cliLink}}"
+  "create_community_not_available": "עדיין לא זמין ברשת. ניתן ליצור קהילה באמצעות האפליקציה לשולחן העבודה, הורד אותה כאן: {{desktopLink}}. אם אתה מרגיש בנוח עם שורת הפקודות, היכנס לכאן: {{cliLink}}",
+  "no_media_found": "לא נמצאו מדיה",
+  "no_image_found": "לא נמצאה תמונה",
+  "warning_spam": "אזהרה: פגיע לפני התקפות ספאם"
 }

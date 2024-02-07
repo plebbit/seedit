@@ -98,32 +98,6 @@ h1 {
   padding: 2px 6px 3px;
 }
 
-@media (max-width: 768px) {
-  .formContent {
-    width: 100%;
-  }
-
-  .box {
-    width: 100%;
-    box-sizing: border-box;
-  }
-
-  .input, 
-  .description {
-    width: calc(100% - 6px);
-    box-sizing: border-box;
-  }
-
-  .input {
-    min-width: calc(100% - 6px);
-    max-width: calc(100% - 6px);
-  }
-
-  h1 {
-    font-size: 16px;
-  }
-}
-
 .subsDescription {
   font-size: 13px;
   font-weight: normal;
@@ -181,4 +155,48 @@ h1 {
 
 .dropdownLink:hover {
   color: var(--background);
+}
+
+.mediaPreview {
+  display: inline-block;
+  position: relative;
+  align-items: center;
+  margin-top: 10px;
+  font-size: smaller;
+  text-transform: capitalize;
+}
+
+.logoError {
+  padding-left: 10px;
+}
+
+.mediaPreview img, .mediaPreview iframe, .mediaPreview video {
+  max-width: 100%;
+  max-height: 300px;
+  box-sizing: border-box;
+}
+
+@media (max-width: 768px) {
+  .formContent {
+    width: 100%;
+  }
+
+  .box {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .input, 
+  .description {
+    width: calc(100% - 6px);
+    box-sizing: border-box;
+  }
+
+  .input {
+    min-width: 100%;
+  }
+
+  h1 {
+    font-size: 16px;
+  }
 }

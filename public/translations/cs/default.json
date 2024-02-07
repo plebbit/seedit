@@ -236,5 +236,8 @@
   "new_stable_version": "Nová stabilní verze k dispozici, seedit v{{newVersion}}. Používáte seedit v{{oldVersion}}.",
   "download_latest_desktop": "Stáhněte si nejnovější verzi pro stolní počítače zde: {{link}}",
   "contribute_on_github": "Přispět na GitHubu",
-  "create_community_not_available": "Zatím nedostupné na webu. Můžete vytvořit komunitu pomocí desktopové aplikace, stáhnout ji zde: {{desktopLink}}. Pokud se cítíte pohodlně s příkazovým řádkem, podívejte se sem: {{cliLink}}"
+  "create_community_not_available": "Zatím nedostupné na webu. Můžete vytvořit komunitu pomocí desktopové aplikace, stáhnout ji zde: {{desktopLink}}. Pokud se cítíte pohodlně s příkazovým řádkem, podívejte se sem: {{cliLink}}",
+  "no_media_found": "Žádná média nebyla nalezena",
+  "no_image_found": "Obrázek nebyl nalezen",
+  "warning_spam": "Upozornění: Zranitelné vůči spamovým útokům"
 }

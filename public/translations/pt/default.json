@@ -236,5 +236,8 @@
   "new_stable_version": "Nova versão estável disponível, seedit v{{newVersion}}. Você está usando seedit v{{oldVersion}}.",
   "download_latest_desktop": "Baixe a versão mais recente para desktop aqui: {{link}}",
   "contribute_on_github": "Contribua no GitHub",
-  "create_community_not_available": "Ainda não disponível na web. Você pode criar uma comunidade usando o aplicativo para desktop, faça o download aqui: {{desktopLink}}. Se você se sentir confortável com a linha de comando, confira aqui: {{cliLink}}"
+  "create_community_not_available": "Ainda não disponível na web. Você pode criar uma comunidade usando o aplicativo para desktop, faça o download aqui: {{desktopLink}}. Se você se sentir confortável com a linha de comando, confira aqui: {{cliLink}}",
+  "no_media_found": "Nenhum media encontrado",
+  "no_image_found": "Nenhuma imagem encontrada",
+  "warning_spam": "Aviso: vulnerável a ataques de spam"
 }

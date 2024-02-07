@@ -8,6 +8,7 @@ const defaultPlebbitOptions = {
 };
 
 contextBridge.exposeInMainWorld('defaultPlebbitOptions', defaultPlebbitOptions);
+contextBridge.exposeInMainWorld('defaultMediaIpfsGatewayUrl', 'http://localhost:6473');
 
 // expose a flag to indicate that we are running in electron
 contextBridge.exposeInMainWorld('isElectron', true);

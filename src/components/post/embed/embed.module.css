@@ -54,7 +54,7 @@
 @media (max-width: 768px) {
   .videoEmbed {
     max-height: 250px !important;
-    width: 100% !important;
+    width: 100%;
   }
 }
 

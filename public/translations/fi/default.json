@@ -236,5 +236,8 @@
   "new_stable_version": "Uusi vakaa versio saatavilla, seedit v{{newVersion}}. Käytät seedit v{{oldVersion}}.",
   "download_latest_desktop": "Lataa uusin työpöytäversio täältä: {{link}}",
   "contribute_on_github": "Osallistu GitHubissa",
-  "create_community_not_available": "Ei vielä saatavilla verkossa. Voit luoda yhteisön käyttämällä työpöytäsovellusta, lataa se täältä: {{desktopLink}}. Jos olet mukava komentorivin kanssa, tarkista täältä: {{cliLink}}"
+  "create_community_not_available": "Ei vielä saatavilla verkossa. Voit luoda yhteisön käyttämällä työpöytäsovellusta, lataa se täältä: {{desktopLink}}. Jos olet mukava komentorivin kanssa, tarkista täältä: {{cliLink}}",
+  "no_media_found": "Ei löydettyjä medioita",
+  "no_image_found": "Ei löytynyt kuvaa",
+  "warning_spam": "Varoitus: haavoittuvainen roskapostihyökkäyksille"
 }

@@ -166,7 +166,7 @@ const Logo = ({ isReadOnly = false }: { isReadOnly?: boolean }) => {
         {logoUrl && isValidURL(logoUrl) && (
           <div className={styles.logoPreview}>
             {t('preview')}:
-            {imageError ? <span className={styles.logoError}>no image found</span> : <img src={logoUrl} alt='logo preview' onError={() => setImageError(true)} />}
+            {imageError ? <span className={styles.logoError}>{t('no_image_found')}</span> : <img src={logoUrl} alt='logo preview' onError={() => setImageError(true)} />}
           </div>
         )}
       </div>
@@ -659,6 +659,9 @@ const Challenges = ({ isReadOnly, readOnlyChallenges }: { isReadOnly: boolean; r
   const challenges = settings?.challenges || readOnlyChallenges || [];
   const [showSettings, setShowSettings] = useState<boolean[]>(challenges.map(() => false));
 
+  const location = useLocation();
+  const isInCreateSubplebbitView = isCreateSubplebbitView(location.pathname);
+
   const toggleSettings = (index: number) => {
     const newShowSettings = [...showSettings];
     newShowSettings[index] = !newShowSettings[index];
@@ -700,7 +703,7 @@ const Challenges = ({ isReadOnly, readOnlyChallenges }: { isReadOnly: boolean; r
             add a challenge
           </button>
         )}
-        {challenges.length === 0 && <span className={styles.noChallengeWarning}>Warning: vulnerable to spam attacks.</span>}
+        {challenges.length === 0 && !isInCreateSubplebbitView && <span className={styles.noChallengeWarning}>{t('warning_spam')}</span>}
         {challenges.map((challenge: any, index: number) => (
           <div key={index} className={styles.challenge}>
             Challenge #{index + 1}
@@ -870,7 +873,7 @@ const SubplebbitSettings = () => {
       <Rules isReadOnly={isReadOnly} />
       <Moderators isReadOnly={isReadOnly} />
       <Challenges isReadOnly={isReadOnly} readOnlyChallenges={subplebbit?.challenges} />
-      <JSONSettings isReadOnly={isReadOnly} />
+      {!isInCreateSubplebbitView && <JSONSettings isReadOnly={isReadOnly} />}
       <div className={styles.saveOptions}>
         {!isReadOnly && (
           <button onClick={isInCreateSubplebbitView ? _createSubplebbit : saveSubplebbit} disabled={showLoading}>

@@ -236,5 +236,8 @@
   "new_stable_version": "Bagong stable na bersyon na magagamit, seedit v{{newVersion}}. Ginagamit mo ang seedit v{{oldVersion}}.",
   "download_latest_desktop": "I-download ang pinakabagong bersyon ng desktop dito: {{link}}",
   "contribute_on_github": "Mag-contribute sa GitHub",
-  "create_community_not_available": "Hindi pa ito magagamit sa web. Maaari kang lumikha ng isang komunidad gamit ang desktop app, i-download ito dito: {{desktopLink}}. Kung komportable ka sa command line, tingnan ito: {{cliLink}}"
+  "create_community_not_available": "Hindi pa ito magagamit sa web. Maaari kang lumikha ng isang komunidad gamit ang desktop app, i-download ito dito: {{desktopLink}}. Kung komportable ka sa command line, tingnan ito: {{cliLink}}",
+  "no_media_found": "Walang natagpuang midya",
+  "no_image_found": "Walang natagpuang larawan",
+  "warning_spam": "Babala: madaling target sa mga spam na atake"
 }
