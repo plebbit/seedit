@@ -828,18 +828,20 @@ const SubplebbitSettings = () => {
   const [showDeleting, setShowDeleting] = useState(false);
   const _deleteSubplebbit = async () => {
     if (subplebbitAddress && window.confirm(`Are you sure you want to delete p/${shortAddress}? This action is irreversible.`)) {
-      try {
-        setShowDeleting(true);
-        await deleteSubplebbit(subplebbitAddress);
-        setShowDeleting(false);
-        alert(`Deleted p/${shortAddress}`);
-        navigate('/communities', { replace: true });
-      } catch (e) {
-        if (e instanceof Error) {
-          console.warn(e);
-          alert(`failed deleting subplebbit: ${e.message}`);
-        } else {
-          console.error('An unknown error occurred:', e);
+      if (window.confirm(`Are you really sure? This action is irreversible.`)) {
+        try {
+          setShowDeleting(true);
+          await deleteSubplebbit(subplebbitAddress);
+          setShowDeleting(false);
+          alert(`Deleted p/${shortAddress}`);
+          navigate('/communities', { replace: true });
+        } catch (e) {
+          if (e instanceof Error) {
+            console.warn(e);
+            alert(`failed deleting subplebbit: ${e.message}`);
+          } else {
+            console.error('An unknown error occurred:', e);
+          }
         }
       }
     }
