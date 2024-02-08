@@ -57,7 +57,7 @@
   "community_address": "yhteisön osoite",
   "submit_choose": "valitse, minne haluat lähettää",
   "submit_notice": "Ole tietoinen yhteisön säännöistä, seeditillä ei ole maailmanlaajuisia ylläpitäjiä.",
-  "challenge_from": "Haaste käyttäjältä p/{{subplebbit}}",
+  "challenge_from": "Challenge p/{{subplebbit}}:lta",
   "challenge_for_post": "julkaisulle: \"{{publicationContent}}\"",
   "challenge_for_reply": "vastauksena u/{{parentAddress}}: \"{{publicationContent}}\"",
   "challenge_counter": "{{index}}/{{total}}",
@@ -239,7 +239,7 @@
   "create_community_not_available": "Ei vielä saatavilla verkossa. Voit luoda yhteisön käyttämällä työpöytäsovellusta, lataa se täältä: {{desktopLink}}. Jos olet mukava komentorivin kanssa, tarkista täältä: {{cliLink}}",
   "no_media_found": "Ei löydettyjä medioita",
   "no_image_found": "Ei löytynyt kuvaa",
-  "warning_spam": "Varoitus: haavoittuvainen roskapostihyökkäyksille",
+  "warning_spam": "Varoitus: haastetta ei ole valittu, yhteisö on altis roskapostihyökkäyksille.",
   "hide_help": "Piilota ohje",
   "formatting_help": "Muotoiluohjeet",
   "you_see": "näet",
@@ -247,5 +247,8 @@
   "italics": "kursiivi",
   "bold": "lihavoitu",
   "quoted_text": "lainattu teksti",
-  "item": "kohde"
+  "item": "kohde",
+  "delete_community": "poista yhteisö",
+  "delete_community_description": "Poista tämä yhteisö pysyvästi. Sen sisältö voi silti olla siemenenä vertaisverkossa",
+  "add": "lisää"
 }

@@ -57,7 +57,7 @@
   "community_address": "כתובת הקהילה",
   "submit_choose": "בחר היכן לפרסם",
   "submit_notice": "אנא היה מודע לכללי הקהילה, ל-seedit אין מנהלים גלובליים.",
-  "challenge_from": "אתגר מp/{{subplebbit}}",
+  "challenge_from": "האתגר מ-p/{{subplebbit}}",
   "challenge_for_post": "לפוסט: \"{{publicationContent}}\"",
   "challenge_for_reply": "לתגובה ל-u/{{parentAddress}}: \"{{publicationContent}}\"",
   "challenge_counter": "{{index}} מתוך {{total}}",
@@ -239,7 +239,7 @@
   "create_community_not_available": "עדיין לא זמין ברשת. ניתן ליצור קהילה באמצעות האפליקציה לשולחן העבודה, הורד אותה כאן: {{desktopLink}}. אם אתה מרגיש בנוח עם שורת הפקודות, היכנס לכאן: {{cliLink}}",
   "no_media_found": "לא נמצאו מדיה",
   "no_image_found": "לא נמצאה תמונה",
-  "warning_spam": "אזהרה: פגיע לפני התקפות ספאם",
+  "warning_spam": "אזהרה: לא נבחר אף אתגר, הקהילה חשופה לתקיפות דואר זבל.",
   "hide_help": "הסתר עזרה",
   "formatting_help": "עזרה בעיצוב",
   "you_see": "אתה רואה",
@@ -247,5 +247,8 @@
   "italics": "נטוי",
   "bold": "מודגש",
   "quoted_text": "טקסט מובא",
-  "item": "פריט"
+  "item": "פריט",
+  "delete_community": "מחק את הקהילה",
+  "delete_community_description": "מחק את הקהילה הזו לצמיתות. התוכן שלו עדיין עשוי להיות מזורע על ידי עמיתים",
+  "add": "הוסף"
 }

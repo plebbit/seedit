@@ -57,7 +57,7 @@
   "community_address": "dirección de la comunidad",
   "submit_choose": "elige dónde publicar",
   "submit_notice": "por favor tenga en cuenta las reglas de la comunidad, seedit no tiene administradores globales.",
-  "challenge_from": "Desafío de p/{{subplebbit}}",
+  "challenge_from": "Reto de p/{{subplebbit}}",
   "challenge_for_post": "para la publicación: \"{{publicationContent}}\"",
   "challenge_for_reply": "para la respuesta a u/{{parentAddress}}: \"{{publicationContent}}\"",
   "challenge_counter": "{{index}} de {{total}}",
@@ -239,7 +239,7 @@
   "create_community_not_available": "Todavía no disponible en la web. Puedes crear una comunidad utilizando la aplicación de escritorio, descárgala aquí: {{desktopLink}}. Si te sientes cómodo con la línea de comandos, échale un vistazo aquí: {{cliLink}}",
   "no_media_found": "No se encontraron medios",
   "no_image_found": "No se encontró imagen",
-  "warning_spam": "Advertencia: vulnerable a ataques de spam",
+  "warning_spam": "Advertencia: no se ha seleccionado ningún desafío, la comunidad es vulnerable a los ataques de spam.",
   "hide_help": "Ocultar ayuda",
   "formatting_help": "Ayuda de formato",
   "you_see": "ves",
@@ -247,5 +247,8 @@
   "italics": "cursiva",
   "bold": "negrita",
   "quoted_text": "texto citado",
-  "item": "elemento"
+  "item": "elemento",
+  "delete_community": "eliminar comunidad",
+  "delete_community_description": "Eliminar permanentemente esta comunidad. Su contenido aún podría ser sembrado por pares",
+  "add": "añadir"
 }

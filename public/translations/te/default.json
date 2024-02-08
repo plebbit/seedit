@@ -57,7 +57,7 @@
   "community_address": "సముదాయ చిరునామా",
   "submit_choose": "పోస్ట్ చేయాలనుండి ఎక్కడని ఎంచుకోండి",
   "submit_notice": "కమ్యూనిటీ యొక్క నియమాలను గమనించండి, seeditలో గ్లోబల్ అడ్మిన్స్ లేవు.",
-  "challenge_from": "p/{{subplebbit}} నుండి సవాలు",
+  "challenge_from": "p/{{subplebbit}} నుండి చాలెంజ్",
   "challenge_for_post": "పోస్ట్ కోసం: \"{{publicationContent}}\"",
   "challenge_for_reply": "u/{{parentAddress}}కు జవాబుగా: \"{{publicationContent}}\"",
   "challenge_counter": "{{index}} లో {{total}}",
@@ -239,7 +239,7 @@
   "create_community_not_available": "ఇప్పుడు వెబ్‌లో అందుబాటులో లేదు. డెస్క్టాప్ యాప్‌ను ఉపయోగించి ఒక కమ్యూనిటీని రూపొందించవచ్చు, ఇక్కడ డౌన్‌లోడ్ చేయండి: {{desktopLink}}. మీకు కమాండ్ లైన్‌తో సంతృప్తి ఉందానే, ఇక్కడ చూడండి: {{cliLink}}",
   "no_media_found": "ఎటువంటి మీడియా కనబడలేదు",
   "no_image_found": "ఎటువంటి చిత్రం కనబడలేదు",
-  "warning_spam": "హెచ్చరిక: స్పామ్ దాడికి తొడిలేందు",
+  "warning_spam": "హెచ్చరిక: చాలెంజ్ ఎంచుకోలేదు, కమ్యూనిటీ స్పామ్ దాడులకు గురిపెట్టబడింది.",
   "hide_help": "సహాయం దాచు",
   "formatting_help": "ఫార్మాటింగ్ సహాయం",
   "you_see": "మీరు చూస్తారు",
@@ -247,5 +247,8 @@
   "italics": "ఇటాలిక్స్",
   "bold": "బోల్డ్",
   "quoted_text": "ఉద్ధరించబడిన పఠ్యం",
-  "item": "అంశం"
+  "item": "అంశం",
+  "delete_community": "సముదాయాన్ని తొలగించండి",
+  "delete_community_description": "ఈ సముదాయాన్ని స్థాయిగా తొలగించండి. అది సామాన్య పీర్ల ద్వారా ఇప్పుడు సీడ్ చేయబడవచ్చు",
+  "add": "జోడించండి"
 }

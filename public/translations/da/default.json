@@ -57,7 +57,7 @@
   "community_address": "fællesskabsadresse",
   "submit_choose": "Vælg, hvor du vil poste",
   "submit_notice": "Vær opmærksom på fællesskabets regler, seedit har ikke globale administratorer.",
-  "challenge_from": "Udfordring fra p/{{subplebbit}}",
+  "challenge_from": "Challenge fra p/{{subplebbit}}",
   "challenge_for_post": "for opslag: \"{{publicationContent}}\"",
   "challenge_for_reply": "for svar til u/{{parentAddress}}: \"{{publicationContent}}\"",
   "challenge_counter": "{{index}} af {{total}}",
@@ -239,7 +239,7 @@
   "create_community_not_available": "Endnu ikke tilgængelig på internettet. Du kan oprette en fællesskab ved hjælp af desktop-appen, download den her: {{desktopLink}}. Hvis du er fortrolig med kommandolinjen, kan du tjekke: {{cliLink}}",
   "no_media_found": "Ingen medier fundet",
   "no_image_found": "Ingen billede fundet",
-  "warning_spam": "Advarsel: Sårbar over for spam-angreb",
+  "warning_spam": "Advarsel: Ingen udfordring valgt, fællesskabet er sårbart over for spam-angreb.",
   "hide_help": "Skjul hjælp",
   "formatting_help": "Formateringshjælp",
   "you_see": "Du ser",
@@ -247,5 +247,8 @@
   "italics": "kursiv",
   "bold": "fed",
   "quoted_text": "citeret tekst",
-  "item": "vare"
+  "item": "vare",
+  "delete_community": "slet fællesskab",
+  "delete_community_description": "Slet denne fællesskab permanent. Dets indhold kan stadig være sået af ligemænd",
+  "add": "tilføje"
 }

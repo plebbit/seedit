@@ -21,7 +21,7 @@ const Subplebbit = () => {
   const subplebbitAddress = params.subplebbitAddress;
   const subplebbitAddresses = useMemo(() => [subplebbitAddress], [subplebbitAddress]) as string[];
   const subplebbit = useSubplebbit({ subplebbitAddress });
-  const { createdAt, description, roles, rules, shortAddress, state, title, updatedAt } = subplebbit || {};
+  const { createdAt, description, roles, rules, shortAddress, state, title, updatedAt, settings } = subplebbit || {};
   const { feed, hasMore, loadMore } = useFeed({ subplebbitAddresses, sortType, filter: timeFilter });
   const loadingStateString = useFeedStateString(subplebbitAddresses) || t('loading');
 
@@ -51,33 +51,44 @@ const Subplebbit = () => {
     const setLastVirtuosoState = () => {
       virtuosoRef.current?.getState((snapshot: StateSnapshot) => {
         if (snapshot?.ranges?.length) {
-          lastVirtuosoStates[`${subplebbitAddress} ${timeFilterName}`] = snapshot;
+          lastVirtuosoStates[subplebbitAddress + sortType + timeFilterName] = snapshot;
         }
       });
     };
     window.addEventListener('scroll', setLastVirtuosoState);
     return () => window.removeEventListener('scroll', setLastVirtuosoState);
-  }, [subplebbitAddress, timeFilterName]);
+  }, [subplebbitAddress, sortType, timeFilterName]);
 
-  const lastVirtuosoState = lastVirtuosoStates?.[`${subplebbitAddress} ${timeFilterName}}`];
+  const lastVirtuosoState = lastVirtuosoStates?.[subplebbitAddress + sortType + timeFilterName];
 
   return (
     <div className={styles.content}>
       <div className={styles.sidebar}>
-        <Sidebar address={subplebbitAddress} createdAt={createdAt} description={description} roles={roles} rules={rules} title={title} updatedAt={updatedAt} />
+        <Sidebar
+          address={subplebbitAddress}
+          createdAt={createdAt}
+          description={description}
+          roles={roles}
+          rules={rules}
+          title={title}
+          updatedAt={updatedAt}
+          settings={settings}
+        />
       </div>
-      <Virtuoso
-        increaseViewportBy={{ bottom: 1200, top: 600 }}
-        totalCount={feed?.length || 0}
-        data={feed}
-        itemContent={(index, post) => <Post index={index} post={post} />}
-        useWindowScroll={true}
-        components={{ Footer }}
-        endReached={loadMore}
-        ref={virtuosoRef}
-        restoreStateFrom={lastVirtuosoState}
-        initialScrollTop={lastVirtuosoState?.scrollTop}
-      />
+      <div className={styles.feed}>
+        <Virtuoso
+          increaseViewportBy={{ bottom: 1200, top: 600 }}
+          totalCount={feed?.length || 0}
+          data={feed}
+          itemContent={(index, post) => <Post index={index} post={post} />}
+          useWindowScroll={true}
+          components={{ Footer }}
+          endReached={loadMore}
+          ref={virtuosoRef}
+          restoreStateFrom={lastVirtuosoState}
+          initialScrollTop={lastVirtuosoState?.scrollTop}
+        />
+      </div>
     </div>
   );
 };

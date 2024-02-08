@@ -57,7 +57,7 @@
   "community_address": "адрес сообщества",
   "submit_choose": "выберите, куда отправить",
   "submit_notice": "пожалуйста, соблюдайте правила сообщества, в seedit нет глобальных администраторов.",
-  "challenge_from": "Тест от p/{{subplebbit}}",
+  "challenge_from": "Челлендж от p/{{subplebbit}}",
   "challenge_for_post": "для поста: \"{{publicationContent}}\"",
   "challenge_for_reply": "для ответа u/{{parentAddress}}: \"{{publicationContent}}\"",
   "challenge_counter": "{{index}} из {{total}}",
@@ -239,7 +239,7 @@
   "create_community_not_available": "Пока недоступно в Интернете. Вы можете создать сообщество с помощью приложения для рабочего стола, загрузите его здесь: {{desktopLink}}. Если вы уверены в командной строке, проверьте здесь: {{cliLink}}",
   "no_media_found": "Медиа не найдены",
   "no_image_found": "Изображение не найдено",
-  "warning_spam": "Предупреждение: уязвим к спам-атакам",
+  "warning_spam": "Предупреждение: не выбрано никакого вызова, сообщество уязвимо для спам-атак.",
   "hide_help": "Скрыть помощь",
   "formatting_help": "Справка по форматированию",
   "you_see": "вы видите",
@@ -247,5 +247,8 @@
   "italics": "курсив",
   "bold": "жирный",
   "quoted_text": "цитируемый текст",
-  "item": "пункт"
+  "item": "пункт",
+  "delete_community": "удалить сообщество",
+  "delete_community_description": "Постоянно удалить это сообщество. Его содержимое все еще может быть засеяно сверстниками",
+  "add": "добавить"
 }

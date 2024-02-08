@@ -57,7 +57,7 @@
   "community_address": "адреса спільноти",
   "submit_choose": "виберіть, куди відправити",
   "submit_notice": "будь ласка, дотримуйтесь правил спільноти, в seedit немає глобальних адміністраторів.",
-  "challenge_from": "Випробування від p/{{subplebbit}}",
+  "challenge_from": "Виклик від p/{{subplebbit}}",
   "challenge_for_post": "для посту: \"{{publicationContent}}\"",
   "challenge_for_reply": "для відповіді u/{{parentAddress}}: \"{{publicationContent}}\"",
   "challenge_counter": "{{index}} з {{total}}",
@@ -239,7 +239,7 @@
   "create_community_not_available": "Ще не доступно в Інтернеті. Ви можете створити спільноту за допомогою програми для робочого столу, завантажте її тут: {{desktopLink}}. Якщо ви впевнені в командному рядку, перевірте тут: {{cliLink}}",
   "no_media_found": "Медіа не знайдено",
   "no_image_found": "Зображення не знайдено",
-  "warning_spam": "Попередження: вразливий до атак спаму",
+  "warning_spam": "Попередження: жодного виклику не обрано, спільнота вразлива до спам-атак.",
   "hide_help": "Сховати довідку",
   "formatting_help": "Довідка з форматування",
   "you_see": "ви бачите",
@@ -247,5 +247,8 @@
   "italics": "курсив",
   "bold": "жирний",
   "quoted_text": "цитований текст",
-  "item": "елемент"
+  "item": "елемент",
+  "delete_community": "видалити спільноту",
+  "delete_community_description": "Видалити цю спільноту назавжди. Його вміст все ще може бути засіяно ровесниками",
+  "add": "додати"
 }

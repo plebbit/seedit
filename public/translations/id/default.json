@@ -57,7 +57,7 @@
   "community_address": "alamat komunitas",
   "submit_choose": "pilih di mana untuk memposting",
   "submit_notice": "harap berhati-hati dengan aturan komunitas, seedit tidak memiliki admin global.",
-  "challenge_from": "Tantangan dari p/{{subplebbit}}",
+  "challenge_from": "Challenge dari p/{{subplebbit}}",
   "challenge_for_post": "untuk pos: \"{{publicationContent}}\"",
   "challenge_for_reply": "untuk balasan u/{{parentAddress}}: \"{{publicationContent}}\"",
   "challenge_counter": "{{index}} dari {{total}}",
@@ -239,7 +239,7 @@
   "create_community_not_available": "Belum tersedia di web. Anda dapat membuat komunitas menggunakan aplikasi desktop, unduh di sini: {{desktopLink}}. Jika Anda nyaman dengan baris perintah, periksa di sini: {{cliLink}}",
   "no_media_found": "Tidak ada media ditemukan",
   "no_image_found": "Tidak ada gambar ditemukan",
-  "warning_spam": "Peringatan: rentan terhadap serangan spam",
+  "warning_spam": "Peringatan: tidak ada tantangan yang dipilih, komunitas rentan terhadap serangan spam.",
   "hide_help": "Sembunyikan bantuan",
   "formatting_help": "Bantuan formatting",
   "you_see": "Anda melihat",
@@ -247,5 +247,8 @@
   "italics": "miring",
   "bold": "tebal",
   "quoted_text": "teks kutipan",
-  "item": "item"
+  "item": "item",
+  "delete_community": "hapus komunitas",
+  "delete_community_description": "Hapus komunitas ini secara permanen. Isinya masih mungkin disebarkan oleh rekan sebaya",
+  "add": "tambahkan"
 }

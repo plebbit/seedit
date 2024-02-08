@@ -57,7 +57,7 @@
   "community_address": "커뮤니티 주소",
   "submit_choose": "게시할 위치 선택",
   "submit_notice": "커뮤니티의 규칙을 준수해 주세요, seedit에는 전역 관리자가 없습니다.",
-  "challenge_from": "p/{{subplebbit}}로부터의 도전",
+  "challenge_from": "p/{{subplebbit}}에서의 챌린지",
   "challenge_for_post": "게시물에 대하여: \"{{publicationContent}}\"",
   "challenge_for_reply": "u/{{parentAddress}}에 대한 답변: \"{{publicationContent}}\"",
   "challenge_counter": "{{index}} 중 {{total}}",
@@ -239,7 +239,7 @@
   "create_community_not_available": "아직 웹에서 사용할 수 없습니다. 데스크톱 앱을 사용하여 커뮤니티를 만들 수 있으며, 여기서 다운로드하십시오: {{desktopLink}}. 명령 줄을 사용하는 데 익숙하다면 여기를 확인하십시오: {{cliLink}}",
   "no_media_found": "미디어를 찾을 수 없습니다",
   "no_image_found": "이미지를 찾을 수 없습니다",
-  "warning_spam": "경고: 스팸 공격에 취약합니다",
+  "warning_spam": "경고: 도전 선택 안 함. 커뮤니티는 스팸 공격에 취약합니다.",
   "hide_help": "도움말 숨기기",
   "formatting_help": "서식 도움말",
   "you_see": "보이는",
@@ -247,5 +247,8 @@
   "italics": "이탤릭",
   "bold": "굵게",
   "quoted_text": "인용된 텍스트",
-  "item": "항목"
+  "item": "항목",
+  "delete_community": "커뮤니티 삭제",
+  "delete_community_description": "이 커뮤니티를 영구적으로 삭제하십시오. 해당 콘텐츠는 여전히 동료에 의해 씨앗이 될 수 있습니다",
+  "add": "추가"
 }

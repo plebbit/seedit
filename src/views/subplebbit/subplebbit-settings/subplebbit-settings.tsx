@@ -828,18 +828,20 @@ const SubplebbitSettings = () => {
   const [showDeleting, setShowDeleting] = useState(false);
   const _deleteSubplebbit = async () => {
     if (subplebbitAddress && window.confirm(`Are you sure you want to delete p/${shortAddress}? This action is irreversible.`)) {
-      try {
-        setShowDeleting(true);
-        await deleteSubplebbit(subplebbitAddress);
-        setShowDeleting(false);
-        alert(`Deleted p/${shortAddress}`);
-        navigate('/communities', { replace: true });
-      } catch (e) {
-        if (e instanceof Error) {
-          console.warn(e);
-          alert(`failed deleting subplebbit: ${e.message}`);
-        } else {
-          console.error('An unknown error occurred:', e);
+      if (window.confirm(`Are you really sure? This action is irreversible.`)) {
+        try {
+          setShowDeleting(true);
+          await deleteSubplebbit(subplebbitAddress);
+          setShowDeleting(false);
+          alert(`Deleted p/${shortAddress}`);
+          navigate('/communities', { replace: true });
+        } catch (e) {
+          if (e instanceof Error) {
+            console.warn(e);
+            alert(`failed deleting subplebbit: ${e.message}`);
+          } else {
+            console.error('An unknown error occurred:', e);
+          }
         }
       }
     }
@@ -901,16 +903,26 @@ const SubplebbitSettings = () => {
       <Challenges isReadOnly={isReadOnly} readOnlyChallenges={subplebbit?.challenges} />
       {!isInCreateSubplebbitView && <JSONSettings isReadOnly={isReadOnly} />}
       <div className={styles.saveOptions}>
+        {!isInCreateSubplebbitView && !isReadOnly && (
+          <div className={`${styles.box} ${styles.deleteCommunity}`}>
+            <div className={styles.boxTitle}>{t('delete_community')}</div>
+            <div className={styles.boxSubtitle}>{t('delete_community_description')}</div>
+            <div className={styles.boxInput}>
+              <div className={styles.deleteSubplebbit}>
+                <button onClick={_deleteSubplebbit} disabled={showDeleting || showSaving}>
+                  {t('delete')}
+                </button>
+                <span className={styles.deletingString}>{showDeleting && <LoadingEllipsis string={t('deleting')} />}</span>
+              </div>
+            </div>
+          </div>
+        )}
         {!isReadOnly && (
           <button onClick={isInCreateSubplebbitView ? _createSubplebbit : saveSubplebbit} disabled={showSaving || showDeleting}>
             {isInCreateSubplebbitView ? t('create_community') : t('save_options')}
           </button>
         )}
         {showSaving && <LoadingEllipsis string={t('saving')} />}
-        <button onClick={_deleteSubplebbit} disabled={showDeleting || showSaving}>
-          delete community
-        </button>
-        {showDeleting && <LoadingEllipsis string={t('deleting')} />}
       </div>
     </div>
   );

@@ -57,7 +57,7 @@
   "community_address": "indirizzo della comunità",
   "submit_choose": "scegli dove postare",
   "submit_notice": "per favore, rispetta le regole della comunità, seedit non ha amministratori globali.",
-  "challenge_from": "Test da p/{{subplebbit}}",
+  "challenge_from": "Challenge da p/{{subplebbit}}",
   "challenge_for_post": "per il post: \"{{publicationContent}}\"",
   "challenge_for_reply": "per la risposta a u/{{parentAddress}}: \"{{publicationContent}}\"",
   "challenge_counter": "{{index}} di {{total}}",
@@ -239,7 +239,7 @@
   "create_community_not_available": "Non ancora disponibile su web. Puoi creare una comunità utilizzando l'applicazione desktop, scaricala qui: {{desktopLink}}. Se ti senti a tuo agio con la riga di comando, controlla qui: {{cliLink}}",
   "no_media_found": "Nessun media trovato",
   "no_image_found": "Nessuna immagine trovata",
-  "warning_spam": "Attenzione: vulnerabile agli attacchi spam",
+  "warning_spam": "Attenzione: nessun challenge selezionato, la comunità è vulnerabile agli attacchi spam.",
   "hide_help": "Nascondi aiuto",
   "formatting_help": "Aiuto con la formattazione",
   "you_see": "vedrai",
@@ -247,5 +247,8 @@
   "italics": "corsivo",
   "bold": "grassetto",
   "quoted_text": "testo citato",
-  "item": "oggetto"
+  "item": "oggetto",
+  "delete_community": "elimina comunità",
+  "delete_community_description": "Elimina definitivamente questa comunità. Il suo contenuto potrebbe ancora essere diffuso dai peer",
+  "add": "aggiungi"
 }

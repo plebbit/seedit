@@ -239,7 +239,7 @@
   "create_community_not_available": "Ikke tilgjengelig på nettet ennå. Du kan opprette et fellesskap ved å bruke skrivebordsappen, last den ned her: {{desktopLink}}. Hvis du er komfortabel med kommandolinjen, kan du sjekke her: {{cliLink}}",
   "no_media_found": "Ingen media funnet",
   "no_image_found": "Ingen bilde funnet",
-  "warning_spam": "Advarsel: Sårbar for spam-angrep",
+  "warning_spam": "Advarsel: Ingen utfordring valgt, samfunnet er sårbart for spam-angrep.",
   "hide_help": "Skjul hjelp",
   "formatting_help": "Formateringshjelp",
   "you_see": "du ser",
@@ -247,5 +247,8 @@
   "italics": "kursiv",
   "bold": "fet",
   "quoted_text": "sitert tekst",
-  "item": "element"
+  "item": "element",
+  "delete_community": "slett fellesskap",
+  "delete_community_description": "Slett denne fellesskapet permanent. Dets innhold kan fortsatt sås av jevnaldrende",
+  "add": "legg til"
 }

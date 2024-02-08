@@ -100,6 +100,18 @@
   text-transform: none !important;
 }
 
+.deleteCommunity .boxTitle, .deleteCommunity button:enabled {
+  color: var(--red) !important;
+}
+
+.deleteCommunity button {
+  margin-left: 2px;
+}
+
+.deletingString {
+  font-size: 12px;
+}
+
 .noChallengeWarning {
   color: var(--red);
   font-size: 12px;
@@ -226,6 +238,7 @@
   display: block;
   text-transform: lowercase;
   margin-bottom: 10px;
+  margin-left: 2px;
 }
 
 .moderatorAddress, .moderatorRole {

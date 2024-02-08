@@ -57,7 +57,7 @@
   "community_address": "社区地址",
   "submit_choose": "选择发布位置",
   "submit_notice": "请注意社区的规则，seedit没有全球管理员。",
-  "challenge_from": "来自p/{{subplebbit}}的挑战",
+  "challenge_from": "来自 p/{{subplebbit}} 的挑战",
   "challenge_for_post": "对于帖子: \"{{publicationContent}}\"",
   "challenge_for_reply": "对于回复 u/{{parentAddress}}: \"{{publicationContent}}\"",
   "challenge_counter": "{{index}} 共 {{total}}",
@@ -239,7 +239,7 @@
   "create_community_not_available": "尚未在Web上提供。您可以使用桌面应用程序创建社区，在此处下载：{{desktopLink}}。如果您熟悉命令行，请查看此处：{{cliLink}}",
   "no_media_found": "未找到媒体",
   "no_image_found": "未找到图像",
-  "warning_spam": "警告：易受垃圾邮件攻击",
+  "warning_spam": "警告：未选择任何挑战，社区容易受到垃圾邮件攻击。",
   "hide_help": "隐藏帮助",
   "formatting_help": "格式化帮助",
   "you_see": "你看到",
@@ -247,5 +247,8 @@
   "italics": "斜体",
   "bold": "粗体",
   "quoted_text": "引用文本",
-  "item": "项目"
+  "item": "项目",
+  "delete_community": "删除社区",
+  "delete_community_description": "永久删除此社区。 其内容可能仍然由对等节点播种",
+  "add": "添加"
 }

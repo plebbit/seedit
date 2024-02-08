@@ -37,8 +37,7 @@ import {
 import useTheme from '../../hooks/use-theme';
 import styles from './header.module.css';
 import SubscribeButton from '../subscribe-button';
-
-const sortTypes = ['hot', 'new', 'active', 'controversialAll', 'topAll'];
+import { TimeFilterKey } from '../../hooks/use-time-filter';
 
 const AboutButton = () => {
   const { t } = useTranslation();
@@ -73,6 +72,8 @@ const CommentsButton = () => {
   );
 };
 
+const sortTypes = ['hot', 'new', 'active', 'controversialAll', 'topAll'];
+
 const SortItems = () => {
   const { t } = useTranslation();
   const params = useParams();
@@ -81,6 +82,7 @@ const SortItems = () => {
   const isInSubplebbitView = isSubplebbitView(location.pathname, params);
   const sortLabels = [t('hot'), t('new'), t('active'), t('controversial'), t('top')];
   const [selectedSortType, setSelectedSortType] = useState(params.sortType || '/hot');
+  const timeFilterName = params.timeFilterName as TimeFilterKey;
 
   const handleSelect = (choice: string) => {
     setSelectedSortType(choice);
@@ -97,8 +99,10 @@ const SortItems = () => {
   }, [params.sortType, location.pathname]);
 
   return sortTypes.map((choice, index) => {
-    const sortLink = isInSubplebbitView ? `/p/${params.subplebbitAddress}/${choice}` : isInAllView ? `p/all/${choice}` : choice;
-
+    let sortLink = isInSubplebbitView ? `/p/${params.subplebbitAddress}/${choice}` : isInAllView ? `p/all/${choice}` : choice;
+    if (timeFilterName) {
+      sortLink = sortLink + `/${timeFilterName}`;
+    }
     return (
       <li key={choice}>
         <Link to={sortLink} className={selectedSortType === choice ? styles.selected : styles.choice} onClick={() => handleSelect(choice)}>

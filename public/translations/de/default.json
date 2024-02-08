@@ -57,7 +57,7 @@
   "community_address": "Gemeinschaftsadresse",
   "submit_choose": "Wählen Sie aus, wo Sie posten möchten",
   "submit_notice": "Bitte beachten Sie die Regeln der Gemeinschaft, seedit hat keine globalen Administratoren.",
-  "challenge_from": "Herausforderung von p/{{subplebbit}}",
+  "challenge_from": "Challenge von p/{{subplebbit}}",
   "challenge_for_post": "für Beitrag: \"{{publicationContent}}\"",
   "challenge_for_reply": "für Antwort an u/{{parentAddress}}: \"{{publicationContent}}\"",
   "challenge_counter": "{{index}} von {{total}}",
@@ -239,7 +239,7 @@
   "create_community_not_available": "Noch nicht im Web verfügbar. Sie können eine Community mit der Desktop-App erstellen, laden Sie sie hier herunter: {{desktopLink}}. Wenn Sie sich mit der Befehlszeile wohlfühlen, schauen Sie hier nach: {{cliLink}}",
   "no_media_found": "Keine Medien gefunden",
   "no_image_found": "Kein Bild gefunden",
-  "warning_spam": "Achtung: Gefährdet durch Spam-Angriffe",
+  "warning_spam": "Warnung: Keine Herausforderung ausgewählt, die Gemeinschaft ist anfällig für Spam-Angriffe.",
   "hide_help": "Hilfe ausblenden",
   "formatting_help": "Formatierungshilfe",
   "you_see": "Du siehst",
@@ -247,5 +247,8 @@
   "italics": "kursiv",
   "bold": "fett",
   "quoted_text": "zitierter Text",
-  "item": "Artikel"
+  "item": "Artikel",
+  "delete_community": "Gemeinschaft löschen",
+  "delete_community_description": "Diese Gemeinschaft endgültig löschen. Ihr Inhalt kann immer noch von Peers geerntet werden",
+  "add": "hinzufügen"
 }

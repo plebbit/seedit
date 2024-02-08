@@ -106,6 +106,15 @@ const TopBar = () => {
     };
   }, [handleClickOutside]);
 
+  const [homeLink, setHomeLink] = useState('/');
+  const [allLink, setAllLink] = useState('/p/all');
+  useEffect(() => {
+    if (timeFilterName && !isInSubplebbitView) {
+      setHomeLink(`/${selectedSortType}/${timeFilterName}`);
+      setAllLink(`/p/all/${selectedSortType}/${timeFilterName}`);
+    }
+  }, [timeFilterName, isInSubplebbitView, selectedSortType]);
+
   return (
     <div className={styles.headerArea}>
       <div className={styles.widthClip}>
@@ -125,11 +134,17 @@ const TopBar = () => {
         <div className={styles.dropdown} ref={sortsDropdownRef} onClick={toggleSortsDropdown}>
           <span className={styles.selectedTitle}>{getSelectedSortLabel()}</span>
           <div className={`${styles.dropChoices} ${styles.sortsDropChoices} ${sortsDropdownClass}`} ref={sortsDropdownChoicesRef}>
-            {sortTypes.map((choice, index) => (
-              <Link to={isInSubplebbitView ? `/p/${params.subplebbitAddress}/${choice}` : choice} key={index} className={styles.dropdownChoice}>
-                {sortLabels[index]}
-              </Link>
-            ))}
+            {sortTypes.map((choice, index) => {
+              let dropdownLink = isInSubplebbitView ? `/p/${params.subplebbitAddress}/${choice}` : choice;
+              if (timeFilterName) {
+                dropdownLink += `/${timeFilterName}`;
+              }
+              return (
+                <Link to={dropdownLink} key={index} className={styles.dropdownChoice}>
+                  {sortLabels[index]}
+                </Link>
+              );
+            })}
           </div>
         </div>
         <div className={styles.dropdown} ref={filterDropdownRef} onClick={toggleFilterDropdown}>
@@ -145,13 +160,13 @@ const TopBar = () => {
         <div className={styles.srList}>
           <ul className={styles.srBar}>
             <li>
-              <Link to='/' className={`${styles.homeButton} ${homeButtonClass}`}>
+              <Link to={homeLink} className={`${styles.homeButton} ${homeButtonClass}`}>
                 {t('home')}
               </Link>
             </li>
             <li>
               <span className={styles.separator}>-</span>
-              <Link to='/p/all' className={isinAllView ? styles.selected : styles.choice}>
+              <Link to={allLink} className={isinAllView ? styles.selected : styles.choice}>
                 {t('all')}
               </Link>
             </li>

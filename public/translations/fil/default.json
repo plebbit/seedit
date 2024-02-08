@@ -57,7 +57,7 @@
   "community_address": "address ng komunidad",
   "submit_choose": "pumili kung saan mag-post",
   "submit_notice": "mangyaring maging maingat sa mga patakaran ng komunidad, walang pangkalahatang mga admin ang seedit.",
-  "challenge_from": "Hamon mula sa p/{{subplebbit}}",
+  "challenge_from": "Challenge mula sa p/{{subplebbit}}",
   "challenge_for_post": "para sa post: \"{{publicationContent}}\"",
   "challenge_for_reply": "para sa tugon kay u/{{parentAddress}}: \"{{publicationContent}}\"",
   "challenge_counter": "{{index}} ng {{total}}",
@@ -239,7 +239,7 @@
   "create_community_not_available": "Hindi pa ito magagamit sa web. Maaari kang lumikha ng isang komunidad gamit ang desktop app, i-download ito dito: {{desktopLink}}. Kung komportable ka sa command line, tingnan ito: {{cliLink}}",
   "no_media_found": "Walang natagpuang midya",
   "no_image_found": "Walang natagpuang larawan",
-  "warning_spam": "Babala: madaling target sa mga spam na atake",
+  "warning_spam": "Babala: walang piniling hamon, ang komunidad ay madaling sakupin ng mga atake ng spam.",
   "hide_help": "Itago ang tulong",
   "formatting_help": "Tulong sa format",
   "you_see": "nakikita mo",
@@ -247,5 +247,8 @@
   "italics": "italics",
   "bold": "bold",
   "quoted_text": "quoted text",
-  "item": "item"
+  "item": "item",
+  "delete_community": "alisin ang komunidad",
+  "delete_community_description": "Permanenteng burahin ang komunidad na ito. Maaaring ang nilalaman nito ay patuloy na iniisip ng mga kapwa",
+  "add": "magdagdag"
 }

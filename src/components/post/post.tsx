@@ -69,7 +69,7 @@ interface PostProps {
   post: Comment | undefined;
 }
 
-const Post = ({ post = {}, index }: PostProps) => {
+const Post = ({ index, post = {} }: PostProps) => {
   // handle single comment thread
   const op = useComment({ commentCid: post?.parentCid ? post?.postCid : '' });
   if (post?.parentCid) {
@@ -133,8 +133,20 @@ const Post = ({ post = {}, index }: PostProps) => {
 
   const { blocked, unblock } = useBlock({ address: cid });
 
+  // show gray dotted border around last clicked post
+  const isLastClicked = localStorage.getItem('lastClickedPost') === cid;
+  const handlePostClick = () => {
+    if (cid) {
+      if (localStorage.getItem('lastClickedPost') === cid) {
+        localStorage.removeItem('lastClickedPost');
+      } else {
+        localStorage.setItem('lastClickedPost', cid);
+      }
+    }
+  };
+
   return (
-    <div className={styles.content} key={index}>
+    <div className={`${styles.content} ${isLastClicked && !isInPostView ? styles.lastClicked : ''}`} key={index}>
       <div className={`${styles.hiddenPost} ${blocked ? styles.visible : styles.hidden}`}>
         <div className={styles.hiddenPostText}>{t('post_hidden').charAt(0).toUpperCase() + t('post_hidden').slice(1)}</div>
         <div className={styles.undoHiddenPost} onClick={unblock}>
@@ -167,7 +179,7 @@ const Post = ({ post = {}, index }: PostProps) => {
           </div>
           <div className={styles.entry}>
             <div className={styles.topMatter}>
-              <p className={styles.title}>
+              <p className={styles.title} onClick={handlePostClick}>
                 {isInPostView && link ? (
                   <a href={link} className={linkClass} target='_blank' rel='noopener noreferrer'>
                     {postTitle}

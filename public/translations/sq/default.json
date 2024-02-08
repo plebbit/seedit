@@ -57,7 +57,7 @@
   "community_address": "adresa e komunitetit",
   "submit_choose": "zgjidh ku të postosh",
   "submit_notice": "ju lutemi jeni të kujdesshëm me rregullat e komunitetit, seedit nuk ka administratorë globalë.",
-  "challenge_from": "Sfidë nga p/{{subplebbit}}",
+  "challenge_from": "Provokim nga p/{{subplebbit}}",
   "challenge_for_post": "për postimin: \"{{publicationContent}}\"",
   "challenge_for_reply": "për përgjigjen ndaj u/{{parentAddress}}: \"{{publicationContent}}\"",
   "challenge_counter": "{{index}} nga {{total}}",
@@ -239,7 +239,7 @@
   "create_community_not_available": "Ende nuk është në dispozicion në internet. Mund të krijoni një komunitet duke përdorur aplikacionin e desktopit, shkarkoni këtu: {{desktopLink}}. Nëse jeni të rehatshëm me linjën e komandës, kontrolloni këtu: {{cliLink}}",
   "no_media_found": "Nuk u gjet asnje media",
   "no_image_found": "Nuk u gjet asnje imazh",
-  "warning_spam": "Njoftim: i prekshëm nga sulmet e spamit",
+  "warning_spam": "Paralajmërim: asnjë sfidë e zgjedhur, komuniteti është i prekshëm ndaj sulmeve të spamit.",
   "hide_help": "Fshih ndihmën",
   "formatting_help": "Ndihmë për formatimin",
   "you_see": "shikon",
@@ -247,5 +247,8 @@
   "italics": "italik",
   "bold": "i trashë",
   "quoted_text": "teksti i cituar",
-  "item": "artikull"
+  "item": "artikull",
+  "delete_community": "fshij komunitetin",
+  "delete_community_description": "Fshini këtë komunitet përherë. Përmbajtja e tij ende mund të jetë mbjellë nga bashkëmoshatarët",
+  "add": "shto"
 }

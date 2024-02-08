@@ -57,7 +57,7 @@
   "community_address": "عنوان المجتمع",
   "submit_choose": "اختر أين ترغب في النشر",
   "submit_notice": "يرجى الحذر من قوانين المجتمع ، لا توجد إدارة عامة في seedit.",
-  "challenge_from": "اختبار من p/{{subplebbit}}",
+  "challenge_from": "التحدي من p/{{subplebbit}}",
   "challenge_for_post": "للمنشور: \"{{publicationContent}}\"",
   "challenge_for_reply": "للرد على u/{{parentAddress}}: \"{{publicationContent}}\"",
   "challenge_counter": "{{index}} من {{total}}",
@@ -239,7 +239,7 @@
   "create_community_not_available": "غير متاح على الويب بعد. يمكنك إنشاء مجتمع باستخدام تطبيق سطح المكتب، قم بتنزيله هنا: {{desktopLink}}. إذا كنت مرتاحًا باستخدام سطر الأوامر، تحقق من: {{cliLink}}",
   "no_media_found": "لم يتم العثور على وسائط",
   "no_image_found": "لم يتم العثور على صورة",
-  "warning_spam": "تحذير: عرضة لهجمات البريد العشوائي",
+  "warning_spam": "تحذير: لم يتم تحديد تحدي، المجتمع عُرضة لهجمات البريد العشوائي.",
   "hide_help": "إخفاء المساعدة",
   "formatting_help": "مساعدة التنسيق",
   "you_see": "ترى",
@@ -247,5 +247,8 @@
   "italics": "مائل",
   "bold": "عريض",
   "quoted_text": "النص المقتبس",
-  "item": "العنصر"
+  "item": "العنصر",
+  "delete_community": "حذف المجتمع",
+  "delete_community_description": "احذف هذه المجتمع نهائيًا. قد تظل المحتويات موجودة ومشتتة بواسطة الأقران",
+  "add": "إضافة"
 }
