@@ -182,10 +182,6 @@
   cursor: pointer;
 }
 
-.label {
-  padding: 0 1px;
-}
-
 .subplebbitsTabs {
   border-bottom: 1px dotted gray;
   padding: 5px 10px;
