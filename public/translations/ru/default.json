@@ -57,7 +57,7 @@
   "community_address": "адрес сообщества",
   "submit_choose": "выберите, куда отправить",
   "submit_notice": "пожалуйста, соблюдайте правила сообщества, в seedit нет глобальных администраторов.",
-  "challenge_from": "Тест от p/{{subplebbit}}",
+  "challenge_from": "Челлендж от p/{{subplebbit}}",
   "challenge_for_post": "для поста: \"{{publicationContent}}\"",
   "challenge_for_reply": "для ответа u/{{parentAddress}}: \"{{publicationContent}}\"",
   "challenge_counter": "{{index}} из {{total}}",

@@ -57,7 +57,7 @@
   "community_address": "సముదాయ చిరునామా",
   "submit_choose": "పోస్ట్ చేయాలనుండి ఎక్కడని ఎంచుకోండి",
   "submit_notice": "కమ్యూనిటీ యొక్క నియమాలను గమనించండి, seeditలో గ్లోబల్ అడ్మిన్స్ లేవు.",
-  "challenge_from": "p/{{subplebbit}} నుండి సవాలు",
+  "challenge_from": "p/{{subplebbit}} నుండి చాలెంజ్",
   "challenge_for_post": "పోస్ట్ కోసం: \"{{publicationContent}}\"",
   "challenge_for_reply": "u/{{parentAddress}}కు జవాబుగా: \"{{publicationContent}}\"",
   "challenge_counter": "{{index}} లో {{total}}",

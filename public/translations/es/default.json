@@ -57,7 +57,7 @@
   "community_address": "dirección de la comunidad",
   "submit_choose": "elige dónde publicar",
   "submit_notice": "por favor tenga en cuenta las reglas de la comunidad, seedit no tiene administradores globales.",
-  "challenge_from": "Desafío de p/{{subplebbit}}",
+  "challenge_from": "Reto de p/{{subplebbit}}",
   "challenge_for_post": "para la publicación: \"{{publicationContent}}\"",
   "challenge_for_reply": "para la respuesta a u/{{parentAddress}}: \"{{publicationContent}}\"",
   "challenge_counter": "{{index}} de {{total}}",

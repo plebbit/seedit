@@ -57,7 +57,7 @@
   "community_address": "adresa e komunitetit",
   "submit_choose": "zgjidh ku të postosh",
   "submit_notice": "ju lutemi jeni të kujdesshëm me rregullat e komunitetit, seedit nuk ka administratorë globalë.",
-  "challenge_from": "Sfidë nga p/{{subplebbit}}",
+  "challenge_from": "Provokim nga p/{{subplebbit}}",
   "challenge_for_post": "për postimin: \"{{publicationContent}}\"",
   "challenge_for_reply": "për përgjigjen ndaj u/{{parentAddress}}: \"{{publicationContent}}\"",
   "challenge_counter": "{{index}} nga {{total}}",

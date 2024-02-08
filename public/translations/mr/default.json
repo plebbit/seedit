@@ -57,7 +57,7 @@
   "community_address": "समुदाय पत्ता",
   "submit_choose": "पोस्ट कुठे करावे हे निवडा",
   "submit_notice": "कृपया समुदायाच्या नियमांची पालना करा, seedit मध्ये जागतिक प्रशासक नाहीत.",
-  "challenge_from": "p/{{subplebbit}} कडून आव्हान",
+  "challenge_from": "p/{{subplebbit}} मधून चॅलेंज",
   "challenge_for_post": "पोस्टसाठी: \"{{publicationContent}}\"",
   "challenge_for_reply": "u/{{parentAddress}} ला प्रतिसाद: \"{{publicationContent}}\"",
   "challenge_counter": "{{index}} पैकी {{total}}",
