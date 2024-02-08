@@ -229,7 +229,7 @@
   "enter_crypto_address": "Harap masukkan alamat kripto yang valid.",
   "check_for_updates": "Periksa pembaruan",
   "general_settings": "Pengaturan umum",
-  "refresh_to_update": "Segarkan untuk memperbarui.",
+  "refresh_to_update": "Segarkan halaman untuk memperbarui",
   "latest_development_version": "Anda menggunakan versi pengembangan terbaru, commit {{commit}}. Untuk menggunakan versi stabil, pergi ke {{link}}.",
   "latest_stable_version": "Anda menggunakan versi stabil terbaru, seedit v{{version}}.",
   "new_development_version": "Versi pengembangan baru tersedia, commit {{newCommit}}. Anda menggunakan commit {{oldCommit}}.",
@@ -250,5 +250,7 @@
   "item": "item",
   "delete_community": "hapus komunitas",
   "delete_community_description": "Hapus komunitas ini secara permanen. Isinya masih mungkin disebarkan oleh rekan sebaya",
-  "add": "tambahkan"
+  "add": "tambahkan",
+  "owner": "pemilik",
+  "admin": "admin"
 }

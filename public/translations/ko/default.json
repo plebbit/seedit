@@ -229,7 +229,7 @@
   "enter_crypto_address": "유효한 암호 주소를 입력하세요.",
   "check_for_updates": "업데이트 확인",
   "general_settings": "일반 설정",
-  "refresh_to_update": "업데이트하려면 새로 고침하세요.",
+  "refresh_to_update": "업데이트를 위해 페이지를 새로 고칩니다",
   "latest_development_version": "최신 개발 버전, 커밋 {{commit}}을 사용 중입니다. 안정 버전을 사용하려면 {{link}}로 이동하세요.",
   "latest_stable_version": "최신 안정 버전, seedit v{{version}}을 사용 중입니다.",
   "new_development_version": "새로운 개발 버전이 사용 가능합니다, 커밋 {{newCommit}}. 커밋 {{oldCommit}}을(를) 사용 중입니다.",
@@ -250,5 +250,7 @@
   "item": "항목",
   "delete_community": "커뮤니티 삭제",
   "delete_community_description": "이 커뮤니티를 영구적으로 삭제하십시오. 해당 콘텐츠는 여전히 동료에 의해 씨앗이 될 수 있습니다",
-  "add": "추가"
+  "add": "추가",
+  "owner": "소유자",
+  "admin": "관리자"
 }

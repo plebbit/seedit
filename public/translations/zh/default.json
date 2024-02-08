@@ -229,7 +229,7 @@
   "enter_crypto_address": "请输入有效的加密货币地址。",
   "check_for_updates": "检查更新",
   "general_settings": "一般设置",
-  "refresh_to_update": "刷新以更新。",
+  "refresh_to_update": "刷新页面以更新",
   "latest_development_version": "您正在使用最新的开发版本，提交 {{commit}}。要使用稳定版本，请前往 {{link}}。",
   "latest_stable_version": "您正在使用最新的稳定版本，seedit v{{version}}。",
   "new_development_version": "新的开发版本可用，commit {{newCommit}}。您正在使用commit {{oldCommit}}。",
@@ -250,5 +250,7 @@
   "item": "项目",
   "delete_community": "删除社区",
   "delete_community_description": "永久删除此社区。 其内容可能仍然由对等节点播种",
-  "add": "添加"
+  "add": "添加",
+  "owner": "所有者",
+  "admin": "管理员"
 }

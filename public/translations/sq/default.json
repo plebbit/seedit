@@ -229,7 +229,7 @@
   "enter_crypto_address": "Ju lutemi vendosni një adresë kripto të vlefshme.",
   "check_for_updates": "Kontrollo për përditësime",
   "general_settings": "Cilësimet e përgjithshme",
-  "refresh_to_update": "Rifresko për të përditësuar.",
+  "refresh_to_update": "Rifresko faqen për të rifreskuar",
   "latest_development_version": "Jeni në versionin më të fundit të zhvillimit, komitimi {{commit}}. Për të përdorur versionin e qëndrueshëm, shkoni te {{link}}.",
   "latest_stable_version": "Jeni në versionin më të fundit të qëndrueshëm, seedit v{{version}}.",
   "new_development_version": "Versioni i ri i zhvillimit është në dispozicion, komiti {{newCommit}}. Ju po përdorni komitin {{oldCommit}}.",
@@ -250,5 +250,7 @@
   "item": "artikull",
   "delete_community": "fshij komunitetin",
   "delete_community_description": "Fshini këtë komunitet përherë. Përmbajtja e tij ende mund të jetë mbjellë nga bashkëmoshatarët",
-  "add": "shto"
+  "add": "shto",
+  "owner": "pronar",
+  "admin": "administrator"
 }

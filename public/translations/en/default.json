@@ -229,7 +229,7 @@
   "enter_crypto_address": "Please enter a valid crypto address.",
   "check_for_updates": "check for updates",
   "general_settings": "general settings",
-  "refresh_to_update": "Refresh to update.",
+  "refresh_to_update": "Refresh the page to update",
   "latest_development_version": "You're on the latest development version, commit {{commit}}. To use the stable version, go to {{link}}.",
   "latest_stable_version": "You are on the latest stable version, seedit v{{version}}.",
   "new_development_version": "New development version available, commit {{newCommit}}. You are using commit {{oldCommit}}.",
@@ -250,5 +250,7 @@
   "item": "item",
   "delete_community": "delete community",
   "delete_community_description": "Permanently delete this community. its content might still be seeded by peers",
-  "add": "add"
+  "add": "add",
+  "owner": "owner",
+  "admin": "admin"
 }

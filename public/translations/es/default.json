@@ -229,7 +229,7 @@
   "enter_crypto_address": "Por favor, introduzca una dirección de cripto válida.",
   "check_for_updates": "Comprobar actualizaciones",
   "general_settings": "Configuración general",
-  "refresh_to_update": "Actualiza para actualizar.",
+  "refresh_to_update": "Actualiza la página para actualizar",
   "latest_development_version": "Estás en la última versión de desarrollo, commit {{commit}}. Para usar la versión estable, ve a {{link}}.",
   "latest_stable_version": "Estás en la última versión estable, seedit v{{version}}.",
   "new_development_version": "Nueva versión de desarrollo disponible, commit {{newCommit}}. Estás usando commit {{oldCommit}}.",
@@ -250,5 +250,7 @@
   "item": "elemento",
   "delete_community": "eliminar comunidad",
   "delete_community_description": "Eliminar permanentemente esta comunidad. Su contenido aún podría ser sembrado por pares",
-  "add": "añadir"
+  "add": "añadir",
+  "owner": "propietario",
+  "admin": "administrador"
 }

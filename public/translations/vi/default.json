@@ -229,7 +229,7 @@
   "enter_crypto_address": "Vui lòng nhập địa chỉ tiền điện tử hợp lệ.",
   "check_for_updates": "Kiểm tra cập nhật",
   "general_settings": "Cài đặt chung",
-  "refresh_to_update": "Làm mới để cập nhật.",
+  "refresh_to_update": "Làm mới trang để cập nhật",
   "latest_development_version": "Bạn đang sử dụng phiên bản phát triển mới nhất, commit {{commit}}. Để sử dụng phiên bản ổn định, hãy truy cập {{link}}.",
   "latest_stable_version": "Bạn đang sử dụng phiên bản ổn định mới nhất, seedit v{{version}}.",
   "new_development_version": "Phiên bản phát triển mới có sẵn, commit {{newCommit}}. Bạn đang sử dụng commit {{oldCommit}}.",
@@ -250,5 +250,7 @@
   "item": "mục",
   "delete_community": "xóa cộng đồng",
   "delete_community_description": "Xóa cộng đồng này một cách vĩnh viễn. Nội dung của nó vẫn có thể được trồng bởi các người đồng nghiệp",
-  "add": "thêm"
+  "add": "thêm",
+  "owner": "chủ sở hữu",
+  "admin": "quản trị viên"
 }

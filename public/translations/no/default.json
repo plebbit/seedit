@@ -229,7 +229,7 @@
   "enter_crypto_address": "Vennligst skriv inn en gyldig kryptoadresse.",
   "check_for_updates": "Sjekk for oppdateringer",
   "general_settings": "Generelle innstillinger",
-  "refresh_to_update": "Oppdater for å oppdatere.",
+  "refresh_to_update": "Oppdater siden for å oppdatere",
   "latest_development_version": "Du bruker den nyeste utviklingsversjonen, commit {{commit}}. For å bruke den stabile versjonen, gå til {{link}}.",
   "latest_stable_version": "Du bruker den nyeste stabile versjonen, seedit v{{version}}.",
   "new_development_version": "Ny utviklingsversjon tilgjengelig, commit {{newCommit}}. Du bruker commit {{oldCommit}}.",
@@ -250,5 +250,7 @@
   "item": "element",
   "delete_community": "slett fellesskap",
   "delete_community_description": "Slett denne fellesskapet permanent. Dets innhold kan fortsatt sås av jevnaldrende",
-  "add": "legg til"
+  "add": "legg til",
+  "owner": "eier",
+  "admin": "administrator"
 }

@@ -229,7 +229,7 @@
   "enter_crypto_address": "Vă rugăm să introduceți o adresă crypto validă.",
   "check_for_updates": "Verifică actualizările",
   "general_settings": "Setări generale",
-  "refresh_to_update": "Reîmprospătați pentru a actualiza.",
+  "refresh_to_update": "Actualizați pagina pentru a actualiza",
   "latest_development_version": "Ești pe cea mai recentă versiune de dezvoltare, commit {{commit}}. Pentru a folosi versiunea stabilă, mergi la {{link}}.",
   "latest_stable_version": "Ești pe cea mai recentă versiune stabilă, seedit v{{version}}.",
   "new_development_version": "Noua versiune de dezvoltare disponibilă, commit {{newCommit}}. Folosiți commit {{oldCommit}}.",
@@ -250,5 +250,7 @@
   "item": "articol",
   "delete_community": "ștergeți comunitatea",
   "delete_community_description": "Ștergeți permanent această comunitate. Conținutul său ar putea fi încă semănat de pereți",
-  "add": "adăuga"
+  "add": "adăuga",
+  "owner": "proprietar",
+  "admin": "administrator"
 }

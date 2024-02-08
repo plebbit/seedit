@@ -229,7 +229,7 @@
   "enter_crypto_address": "Bitte geben Sie eine gültige Krypto-Adresse ein.",
   "check_for_updates": "Nach Updates suchen",
   "general_settings": "Allgemeine Einstellungen",
-  "refresh_to_update": "Aktualisieren, um zu aktualisieren.",
+  "refresh_to_update": "Aktualisieren Sie die Seite, um zu aktualisieren",
   "latest_development_version": "Du befindest dich auf der neuesten Entwicklungsversion, Commit {{commit}}. Um die stabile Version zu verwenden, gehe zu {{link}}.",
   "latest_stable_version": "Du befindest dich auf der neuesten stabilen Version, seedit v{{version}}.",
   "new_development_version": "Neue Entwicklungsversion verfügbar, Commit {{newCommit}}. Du verwendest Commit {{oldCommit}}.",
@@ -250,5 +250,7 @@
   "item": "Artikel",
   "delete_community": "Gemeinschaft löschen",
   "delete_community_description": "Diese Gemeinschaft endgültig löschen. Ihr Inhalt kann immer noch von Peers geerntet werden",
-  "add": "hinzufügen"
+  "add": "hinzufügen",
+  "owner": "Besitzer",
+  "admin": "Administrator"
 }

@@ -229,7 +229,7 @@
   "enter_crypto_address": "Kérjük, adjon meg egy érvényes kripto címet.",
   "check_for_updates": "Frissítések keresése",
   "general_settings": "Általános beállítások",
-  "refresh_to_update": "Frissítéshez frissítés.",
+  "refresh_to_update": "Frissítse az oldalt az frissítéshez",
   "latest_development_version": "A legújabb fejlesztői verziót használod, commit {{commit}}. A stabil verzió használatához látogass el ide: {{link}}.",
   "latest_stable_version": "A legújabb stabil verziót használod, seedit v{{version}}.",
   "new_development_version": "Új fejlesztési verzió elérhető, commit {{newCommit}}. A commit {{oldCommit}}-t használod.",
@@ -250,5 +250,7 @@
   "item": "tétel",
   "delete_community": "közösség törlése",
   "delete_community_description": "Véglegesen törölje ezt a közösséget. A tartalma továbbra is terjedhet a peer-ek által",
-  "add": "hozzáad"
+  "add": "hozzáad",
+  "owner": "tulajdonos",
+  "admin": "adminisztrátor"
 }

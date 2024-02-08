@@ -229,7 +229,7 @@
   "enter_crypto_address": "אנא הזן כתובת קריפטו תקף.",
   "check_for_updates": "בדוק עדכונים",
   "general_settings": "הגדרות כלליות",
-  "refresh_to_update": "רענן כדי לעדכן.",
+  "refresh_to_update": "רענן את העמוד כדי לעדכן",
   "latest_development_version": "אתה נמצא בגרסת הפיתוח האחרונה, קומיט {{commit}}. כדי להשתמש בגרסה יציבה, עבור אל {{link}}.",
   "latest_stable_version": "אתה נמצא בגרסה היציבה האחרונה, seedit v{{version}}.",
   "new_development_version": "גרסת פיתוח חדשה זמינה, קומיט {{newCommit}}. אתה משתמש בקומיט {{oldCommit}}.",
@@ -250,5 +250,7 @@
   "item": "פריט",
   "delete_community": "מחק את הקהילה",
   "delete_community_description": "מחק את הקהילה הזו לצמיתות. התוכן שלו עדיין עשוי להיות מזורע על ידי עמיתים",
-  "add": "הוסף"
+  "add": "הוסף",
+  "owner": "בעלים",
+  "admin": "מנהל"
 }
