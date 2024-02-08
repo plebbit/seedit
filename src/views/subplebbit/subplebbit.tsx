@@ -75,18 +75,20 @@ const Subplebbit = () => {
           settings={settings}
         />
       </div>
-      <Virtuoso
-        increaseViewportBy={{ bottom: 1200, top: 600 }}
-        totalCount={feed?.length || 0}
-        data={feed}
-        itemContent={(index, post) => <Post index={index} post={post} />}
-        useWindowScroll={true}
-        components={{ Footer }}
-        endReached={loadMore}
-        ref={virtuosoRef}
-        restoreStateFrom={lastVirtuosoState}
-        initialScrollTop={lastVirtuosoState?.scrollTop}
-      />
+      <div className={styles.feed}>
+        <Virtuoso
+          increaseViewportBy={{ bottom: 1200, top: 600 }}
+          totalCount={feed?.length || 0}
+          data={feed}
+          itemContent={(index, post) => <Post index={index} post={post} />}
+          useWindowScroll={true}
+          components={{ Footer }}
+          endReached={loadMore}
+          ref={virtuosoRef}
+          restoreStateFrom={lastVirtuosoState}
+          initialScrollTop={lastVirtuosoState?.scrollTop}
+        />
+      </div>
     </div>
   );
 };

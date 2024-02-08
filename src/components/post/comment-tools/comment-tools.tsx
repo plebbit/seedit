@@ -34,9 +34,20 @@ const PostTools = ({ author, cid, hasLabel, index, isAuthor, isMod, subplebbitAd
   const validReplyCount = isNaN(replyCount) ? 0 : replyCount;
   const commentCount = validReplyCount === 0 ? t('post_no_comments') : `${validReplyCount} ${validReplyCount === 1 ? t('post_comment') : t('post_comments')}`;
 
+  // show gray dotted border around last clicked post
+  const handlePostClick = () => {
+    if (cid) {
+      if (localStorage.getItem('lastClickedPost') === cid) {
+        localStorage.removeItem('lastClickedPost');
+      } else {
+        localStorage.setItem('lastClickedPost', cid);
+      }
+    }
+  };
+
   return (
     <>
-      <li className={`${styles.button} ${!hasLabel ? styles.firstButton : ''}`}>
+      <li className={`${styles.button} ${!hasLabel ? styles.firstButton : ''}`} onClick={() => cid && handlePostClick?.()}>
         <Link to={cid ? `/p/${subplebbitAddress}/c/${cid}` : `/profile/${index}`}>{commentCount}</Link>
       </li>
       <ShareMenu cid={cid} subplebbitAddress={subplebbitAddress} />

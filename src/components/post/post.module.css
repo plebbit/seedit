@@ -1,7 +1,7 @@
 .content {
   display: flex;
   flex-direction: column;
-  padding-bottom: 8px;
+  padding: 4px 0;
 }
 
 .row {
@@ -225,4 +225,8 @@
   max-height: 18px;
   position: absolute;
   bottom: -5px;
+}
+
+.lastClicked {
+  border: 1px dashed gray;
 }

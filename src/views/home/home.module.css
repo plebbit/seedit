@@ -8,11 +8,15 @@
 
 @media (max-width: 768px) {
   .content {
-    padding: 7px 5px 0px 0px;
+    padding: 7px 2px 0px 2px;
   }
 
   .sidebar {
     display: none;
+  }
+  
+  .feed {
+    margin-top: -5px;
   }
 }
 
