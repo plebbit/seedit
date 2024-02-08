@@ -51,15 +51,15 @@ const Subplebbit = () => {
     const setLastVirtuosoState = () => {
       virtuosoRef.current?.getState((snapshot: StateSnapshot) => {
         if (snapshot?.ranges?.length) {
-          lastVirtuosoStates[`${subplebbitAddress} ${timeFilterName}`] = snapshot;
+          lastVirtuosoStates[subplebbitAddress + sortType + timeFilterName] = snapshot;
         }
       });
     };
     window.addEventListener('scroll', setLastVirtuosoState);
     return () => window.removeEventListener('scroll', setLastVirtuosoState);
-  }, [subplebbitAddress, timeFilterName]);
+  }, [subplebbitAddress, sortType, timeFilterName]);
 
-  const lastVirtuosoState = lastVirtuosoStates?.[`${subplebbitAddress} ${timeFilterName}}`];
+  const lastVirtuosoState = lastVirtuosoStates?.[subplebbitAddress + sortType + timeFilterName];
 
   return (
     <div className={styles.content}>
