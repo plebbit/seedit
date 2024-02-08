@@ -239,7 +239,7 @@
   "create_community_not_available": "Ei vielä saatavilla verkossa. Voit luoda yhteisön käyttämällä työpöytäsovellusta, lataa se täältä: {{desktopLink}}. Jos olet mukava komentorivin kanssa, tarkista täältä: {{cliLink}}",
   "no_media_found": "Ei löydettyjä medioita",
   "no_image_found": "Ei löytynyt kuvaa",
-  "warning_spam": "Varoitus: haavoittuvainen roskapostihyökkäyksille",
+  "warning_spam": "Varoitus: haastetta ei ole valittu, yhteisö on altis roskapostihyökkäyksille.",
   "hide_help": "Piilota ohje",
   "formatting_help": "Muotoiluohjeet",
   "you_see": "näet",

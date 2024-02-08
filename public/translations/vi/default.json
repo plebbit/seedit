@@ -239,7 +239,7 @@
   "create_community_not_available": "Chưa có sẵn trên web. Bạn có thể tạo một cộng đồng bằng cách sử dụng ứng dụng máy tính để bàn, tải xuống ở đây: {{desktopLink}}. Nếu bạn thoải mái với dòng lệnh, kiểm tra ở đây: {{cliLink}}",
   "no_media_found": "Không tìm thấy phương tiện",
   "no_image_found": "Không tìm thấy hình ảnh",
-  "warning_spam": "Cảnh báo: dễ bị tấn công spam",
+  "warning_spam": "Cảnh báo: không có thách thức nào được chọn, cộng đồng dễ bị tấn công spam.",
   "hide_help": "Ẩn trợ giúp",
   "formatting_help": "Trợ giúp định dạng",
   "you_see": "bạn thấy",

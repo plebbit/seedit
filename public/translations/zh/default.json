@@ -239,7 +239,7 @@
   "create_community_not_available": "尚未在Web上提供。您可以使用桌面应用程序创建社区，在此处下载：{{desktopLink}}。如果您熟悉命令行，请查看此处：{{cliLink}}",
   "no_media_found": "未找到媒体",
   "no_image_found": "未找到图像",
-  "warning_spam": "警告：易受垃圾邮件攻击",
+  "warning_spam": "警告：未选择任何挑战，社区容易受到垃圾邮件攻击。",
   "hide_help": "隐藏帮助",
   "formatting_help": "格式化帮助",
   "you_see": "你看到",

@@ -239,7 +239,7 @@
   "create_community_not_available": "Jeszcze niedostępne w sieci. Możesz utworzyć społeczność za pomocą aplikacji na pulpicie, pobierz ją tutaj: {{desktopLink}}. Jeśli czujesz się komfortowo z wierszem poleceń, sprawdź tutaj: {{cliLink}}",
   "no_media_found": "Nie znaleziono mediów",
   "no_image_found": "Nie znaleziono obrazu",
-  "warning_spam": "Ostrzeżenie: podatny na ataki spamu",
+  "warning_spam": "Ostrzeżenie: nie wybrano żadnego wyzwania, społeczność jest podatna na ataki spamu.",
   "hide_help": "Ukryj pomoc",
   "formatting_help": "Pomoc w formatowaniu",
   "you_see": "widzisz",

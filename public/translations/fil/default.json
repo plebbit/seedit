@@ -239,7 +239,7 @@
   "create_community_not_available": "Hindi pa ito magagamit sa web. Maaari kang lumikha ng isang komunidad gamit ang desktop app, i-download ito dito: {{desktopLink}}. Kung komportable ka sa command line, tingnan ito: {{cliLink}}",
   "no_media_found": "Walang natagpuang midya",
   "no_image_found": "Walang natagpuang larawan",
-  "warning_spam": "Babala: madaling target sa mga spam na atake",
+  "warning_spam": "Babala: walang piniling hamon, ang komunidad ay madaling sakupin ng mga atake ng spam.",
   "hide_help": "Itago ang tulong",
   "formatting_help": "Tulong sa format",
   "you_see": "nakikita mo",

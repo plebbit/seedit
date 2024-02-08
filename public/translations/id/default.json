@@ -239,7 +239,7 @@
   "create_community_not_available": "Belum tersedia di web. Anda dapat membuat komunitas menggunakan aplikasi desktop, unduh di sini: {{desktopLink}}. Jika Anda nyaman dengan baris perintah, periksa di sini: {{cliLink}}",
   "no_media_found": "Tidak ada media ditemukan",
   "no_image_found": "Tidak ada gambar ditemukan",
-  "warning_spam": "Peringatan: rentan terhadap serangan spam",
+  "warning_spam": "Peringatan: tidak ada tantangan yang dipilih, komunitas rentan terhadap serangan spam.",
   "hide_help": "Sembunyikan bantuan",
   "formatting_help": "Bantuan formatting",
   "you_see": "Anda melihat",

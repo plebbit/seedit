@@ -239,7 +239,7 @@
   "create_community_not_available": "Non ancora disponibile su web. Puoi creare una comunità utilizzando l'applicazione desktop, scaricala qui: {{desktopLink}}. Se ti senti a tuo agio con la riga di comando, controlla qui: {{cliLink}}",
   "no_media_found": "Nessun media trovato",
   "no_image_found": "Nessuna immagine trovata",
-  "warning_spam": "Attenzione: vulnerabile agli attacchi spam",
+  "warning_spam": "Attenzione: nessun challenge selezionato, la comunità è vulnerabile agli attacchi spam.",
   "hide_help": "Nascondi aiuto",
   "formatting_help": "Aiuto con la formattazione",
   "you_see": "vedrai",

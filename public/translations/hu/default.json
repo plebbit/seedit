@@ -239,7 +239,7 @@
   "create_community_not_available": "Még nem elérhető a weben. Egy közösséget létrehozhat a desktop alkalmazás segítségével, töltsd le itt: {{desktopLink}}. Ha kényelmes vagy a parancssor használatával, nézd meg itt: {{cliLink}}",
   "no_media_found": "Nincs talált média",
   "no_image_found": "Nincs talált kép",
-  "warning_spam": "Figyelmeztetés: sebezhető a spam támadásokkal szemben",
+  "warning_spam": "Figyelem: nem választottak kihívást, a közösség sebezhetővé vált a spam-támadásokkal szemben.",
   "hide_help": "Súgó elrejtése",
   "formatting_help": "Formázási súgó",
   "you_see": "látod",

@@ -239,7 +239,7 @@
   "create_community_not_available": "Ende nuk është në dispozicion në internet. Mund të krijoni një komunitet duke përdorur aplikacionin e desktopit, shkarkoni këtu: {{desktopLink}}. Nëse jeni të rehatshëm me linjën e komandës, kontrolloni këtu: {{cliLink}}",
   "no_media_found": "Nuk u gjet asnje media",
   "no_image_found": "Nuk u gjet asnje imazh",
-  "warning_spam": "Njoftim: i prekshëm nga sulmet e spamit",
+  "warning_spam": "Paralajmërim: asnjë sfidë e zgjedhur, komuniteti është i prekshëm ndaj sulmeve të spamit.",
   "hide_help": "Fshih ndihmën",
   "formatting_help": "Ndihmë për formatimin",
   "you_see": "shikon",
