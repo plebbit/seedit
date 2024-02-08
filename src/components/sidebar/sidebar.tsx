@@ -27,6 +27,7 @@ interface sidebarProps {
   title?: string;
   updatedAt?: number;
   upvoteCount?: number;
+  settings?: any;
 }
 
 const RulesList = ({ rules }: { rules: string[] }) => {
@@ -121,7 +122,7 @@ const downloadAppLink = (() => {
   }
 })();
 
-const Sidebar = ({ address, cid, createdAt, description, downvoteCount = 0, roles, rules, timestamp = 0, title, updatedAt, upvoteCount = 0 }: sidebarProps) => {
+const Sidebar = ({ address, cid, createdAt, description, downvoteCount = 0, roles, rules, timestamp = 0, title, updatedAt, upvoteCount = 0, settings }: sidebarProps) => {
   const { t } = useTranslation();
   const { allActiveUserCount, hourActiveUserCount } = useSubplebbitStats({ subplebbitAddress: address });
   const isOnline = updatedAt && updatedAt > Date.now() / 1000 - 60 * 30;
@@ -162,6 +163,7 @@ const Sidebar = ({ address, cid, createdAt, description, downvoteCount = 0, role
 
   const account = useAccount();
   const isModerator = roles?.[account.author?.address]?.role;
+  const isOwner = !!settings;
 
   const isConnectedToRpc = !!account?.plebbitOptions.plebbitRpcClientsOptions;
   const navigate = useNavigate();
@@ -231,7 +233,7 @@ const Sidebar = ({ address, cid, createdAt, description, downvoteCount = 0, role
           </div>
         </div>
       )}
-      {isModerator && <ModerationTools address={address} />}
+      {(isModerator || isOwner) && <ModerationTools address={address} />}
       {roles && <ModeratorsList roles={roles} />}
       <div className={styles.largeButton} onClick={handleCreateCommunity}>
         {t('create_your_community')}

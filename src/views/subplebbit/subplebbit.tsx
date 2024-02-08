@@ -21,7 +21,7 @@ const Subplebbit = () => {
   const subplebbitAddress = params.subplebbitAddress;
   const subplebbitAddresses = useMemo(() => [subplebbitAddress], [subplebbitAddress]) as string[];
   const subplebbit = useSubplebbit({ subplebbitAddress });
-  const { createdAt, description, roles, rules, shortAddress, state, title, updatedAt } = subplebbit || {};
+  const { createdAt, description, roles, rules, shortAddress, state, title, updatedAt, settings } = subplebbit || {};
   const { feed, hasMore, loadMore } = useFeed({ subplebbitAddresses, sortType, filter: timeFilter });
   const loadingStateString = useFeedStateString(subplebbitAddresses) || t('loading');
 
@@ -64,7 +64,16 @@ const Subplebbit = () => {
   return (
     <div className={styles.content}>
       <div className={styles.sidebar}>
-        <Sidebar address={subplebbitAddress} createdAt={createdAt} description={description} roles={roles} rules={rules} title={title} updatedAt={updatedAt} />
+        <Sidebar
+          address={subplebbitAddress}
+          createdAt={createdAt}
+          description={description}
+          roles={roles}
+          rules={rules}
+          title={title}
+          updatedAt={updatedAt}
+          settings={settings}
+        />
       </div>
       <Virtuoso
         increaseViewportBy={{ bottom: 1200, top: 600 }}
