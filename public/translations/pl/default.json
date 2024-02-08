@@ -249,5 +249,6 @@
   "quoted_text": "cytowany tekst",
   "item": "pozycja",
   "delete_community": "usuń społeczność",
-  "delete_community_description": "Trwale usuń tę społeczność. Jej zawartość nadal może być zasiewana przez rówieśników"
+  "delete_community_description": "Trwale usuń tę społeczność. Jej zawartość nadal może być zasiewana przez rówieśników",
+  "add": "dodać"
 }

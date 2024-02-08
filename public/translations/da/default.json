@@ -249,5 +249,6 @@
   "quoted_text": "citeret tekst",
   "item": "vare",
   "delete_community": "slet fællesskab",
-  "delete_community_description": "Slet denne fællesskab permanent. Dets indhold kan stadig være sået af ligemænd"
+  "delete_community_description": "Slet denne fællesskab permanent. Dets indhold kan stadig være sået af ligemænd",
+  "add": "tilføje"
 }

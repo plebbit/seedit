@@ -249,5 +249,6 @@
   "quoted_text": "citovaný text",
   "item": "položka",
   "delete_community": "smazat komunitu",
-  "delete_community_description": "Trvale smazat tuto komunitu. Jeho obsah by stále mohl být zasevován ostatními uzly"
+  "delete_community_description": "Trvale smazat tuto komunitu. Jeho obsah by stále mohl být zasevován ostatními uzly",
+  "add": "přidat"
 }

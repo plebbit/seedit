@@ -249,5 +249,6 @@
   "quoted_text": "geciteerde tekst",
   "item": "item",
   "delete_community": "gemeenschap verwijderen",
-  "delete_community_description": "Verwijder deze community permanent. De inhoud kan nog steeds door peers worden gezaaid"
+  "delete_community_description": "Verwijder deze community permanent. De inhoud kan nog steeds door peers worden gezaaid",
+  "add": "toevoegen"
 }

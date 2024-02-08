@@ -249,5 +249,6 @@
   "quoted_text": "teksti i cituar",
   "item": "artikull",
   "delete_community": "fshij komunitetin",
-  "delete_community_description": "Fshini këtë komunitet përherë. Përmbajtja e tij ende mund të jetë mbjellë nga bashkëmoshatarët"
+  "delete_community_description": "Fshini këtë komunitet përherë. Përmbajtja e tij ende mund të jetë mbjellë nga bashkëmoshatarët",
+  "add": "shto"
 }

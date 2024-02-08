@@ -901,7 +901,7 @@ const SubplebbitSettings = () => {
       <Challenges isReadOnly={isReadOnly} readOnlyChallenges={subplebbit?.challenges} />
       {!isInCreateSubplebbitView && <JSONSettings isReadOnly={isReadOnly} />}
       <div className={styles.saveOptions}>
-        {!isInCreateSubplebbitView && (
+        {!isInCreateSubplebbitView && !isReadOnly && (
           <div className={`${styles.box} ${styles.deleteCommunity}`}>
             <div className={styles.boxTitle}>{t('delete_community')}</div>
             <div className={styles.boxSubtitle}>{t('delete_community_description')}</div>

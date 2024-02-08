@@ -249,5 +249,6 @@
   "quoted_text": "인용된 텍스트",
   "item": "항목",
   "delete_community": "커뮤니티 삭제",
-  "delete_community_description": "이 커뮤니티를 영구적으로 삭제하십시오. 해당 콘텐츠는 여전히 동료에 의해 씨앗이 될 수 있습니다"
+  "delete_community_description": "이 커뮤니티를 영구적으로 삭제하십시오. 해당 콘텐츠는 여전히 동료에 의해 씨앗이 될 수 있습니다",
+  "add": "추가"
 }

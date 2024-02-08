@@ -249,5 +249,6 @@
   "quoted_text": "texte cité",
   "item": "article",
   "delete_community": "supprimer la communauté",
-  "delete_community_description": "Supprimer définitivement cette communauté. Son contenu pourrait encore être semé par des pairs"
+  "delete_community_description": "Supprimer définitivement cette communauté. Son contenu pourrait encore être semé par des pairs",
+  "add": "ajouter"
 }
