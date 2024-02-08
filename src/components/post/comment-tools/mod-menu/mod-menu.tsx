@@ -42,14 +42,7 @@ const ModMenu = ({ cid }: ModMenuProps) => {
   };
 
   const [publishCommentEditOptions, setPublishCommentEditOptions] = useState(defaultPublishOptions);
-  const { state, publishCommentEdit } = usePublishCommentEdit(publishCommentEditOptions);
-
-  // close the modal after publishing
-  useEffect(() => {
-    if (state && state !== 'failed' && state !== 'initializing' && state !== 'ready') {
-      setIsModMenuOpen(false);
-    }
-  }, [state, setIsModMenuOpen]);
+  const { publishCommentEdit } = usePublishCommentEdit(publishCommentEditOptions);
 
   const onCheckbox = (e: React.ChangeEvent<HTMLInputElement>) => setPublishCommentEditOptions((state) => ({ ...state, [e.target.id]: e.target.checked }));
 
@@ -71,6 +64,11 @@ const ModMenu = ({ cid }: ModMenuProps) => {
   const { getReferenceProps, getFloatingProps } = useInteractions([click, dismiss, role]);
 
   const headingId = useId();
+
+  const handleSaveClick = async () => {
+    await publishCommentEdit();
+    setIsModMenuOpen(false);
+  };
 
   return (
     <>
@@ -112,7 +110,7 @@ const ModMenu = ({ cid }: ModMenuProps) => {
                 <input type='text' onChange={onReason} defaultValue={post?.reason} size={14} />
               </div>
               <div className={styles.bottom}>
-                <button onClick={publishCommentEdit}>{t('save')}</button>
+                <button onClick={handleSaveClick}>{t('save')}</button>
               </div>
             </div>
           </div>
