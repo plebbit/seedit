@@ -247,5 +247,7 @@
   "italics": "イタリック",
   "bold": "太字",
   "quoted_text": "引用されたテキスト",
-  "item": "アイテム"
+  "item": "アイテム",
+  "delete_community": "コミュニティを削除",
+  "delete_community_description": "このコミュニティを永久に削除します。そのコンテンツは依然としてピアによってシードされている可能性があります"
 }

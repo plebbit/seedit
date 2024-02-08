@@ -247,5 +247,7 @@
   "italics": "kursywa",
   "bold": "pogrubienie",
   "quoted_text": "cytowany tekst",
-  "item": "pozycja"
+  "item": "pozycja",
+  "delete_community": "usuń społeczność",
+  "delete_community_description": "Trwale usuń tę społeczność. Jej zawartość nadal może być zasiewana przez rówieśników"
 }

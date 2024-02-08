@@ -247,5 +247,7 @@
   "italics": "italics",
   "bold": "bold",
   "quoted_text": "quoted text",
-  "item": "item"
+  "item": "item",
+  "delete_community": "delete community",
+  "delete_community_description": "Permanently delete this community. its content might still be seeded by peers"
 }

@@ -247,5 +247,7 @@
   "italics": "kursiivi",
   "bold": "lihavoitu",
   "quoted_text": "lainattu teksti",
-  "item": "kohde"
+  "item": "kohde",
+  "delete_community": "poista yhteisö",
+  "delete_community_description": "Poista tämä yhteisö pysyvästi. Sen sisältö voi silti olla siemenenä vertaisverkossa"
 }

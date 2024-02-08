@@ -247,5 +247,7 @@
   "italics": "italik",
   "bold": "i trashë",
   "quoted_text": "teksti i cituar",
-  "item": "artikull"
+  "item": "artikull",
+  "delete_community": "fshij komunitetin",
+  "delete_community_description": "Fshini këtë komunitet përherë. Përmbajtja e tij ende mund të jetë mbjellë nga bashkëmoshatarët"
 }

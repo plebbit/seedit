@@ -247,5 +247,7 @@
   "italics": "italique",
   "bold": "gras",
   "quoted_text": "texte cité",
-  "item": "article"
+  "item": "article",
+  "delete_community": "supprimer la communauté",
+  "delete_community_description": "Supprimer définitivement cette communauté. Son contenu pourrait encore être semé par des pairs"
 }

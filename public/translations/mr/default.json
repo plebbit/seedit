@@ -247,5 +247,7 @@
   "italics": "इटॅलिक",
   "bold": "बोल्ड",
   "quoted_text": "नुदंबित मजकूर",
-  "item": "आयटम"
+  "item": "आयटम",
+  "delete_community": "समुदाय मिटवा",
+  "delete_community_description": "हे समुदाय कायमपणे हटवा. त्याची सामग्री हल्लामध्ये असू शकते"
 }

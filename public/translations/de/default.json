@@ -247,5 +247,7 @@
   "italics": "kursiv",
   "bold": "fett",
   "quoted_text": "zitierter Text",
-  "item": "Artikel"
+  "item": "Artikel",
+  "delete_community": "Gemeinschaft löschen",
+  "delete_community_description": "Diese Gemeinschaft endgültig löschen. Ihr Inhalt kann immer noch von Peers geerntet werden"
 }

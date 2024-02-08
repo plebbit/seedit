@@ -247,5 +247,7 @@
   "italics": "kursiv",
   "bold": "fetstil",
   "quoted_text": "citerad text",
-  "item": "föremål"
+  "item": "föremål",
+  "delete_community": "ta bort gemenskap",
+  "delete_community_description": "Radera permanent den här gemenskapen. Dess innehåll kan fortfarande vara fröat av kamrater"
 }

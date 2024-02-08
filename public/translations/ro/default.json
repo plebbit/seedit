@@ -247,5 +247,7 @@
   "italics": "italic",
   "bold": "bold",
   "quoted_text": "text citat",
-  "item": "articol"
+  "item": "articol",
+  "delete_community": "ștergeți comunitatea",
+  "delete_community_description": "Ștergeți permanent această comunitate. Conținutul său ar putea fi încă semănat de pereți"
 }

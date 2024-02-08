@@ -247,5 +247,7 @@
   "italics": "corsivo",
   "bold": "grassetto",
   "quoted_text": "testo citato",
-  "item": "oggetto"
+  "item": "oggetto",
+  "delete_community": "elimina comunità",
+  "delete_community_description": "Elimina definitivamente questa comunità. Il suo contenuto potrebbe ancora essere diffuso dai peer"
 }

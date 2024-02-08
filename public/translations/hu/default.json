@@ -247,5 +247,7 @@
   "italics": "dőlt",
   "bold": "félkövér",
   "quoted_text": "idézett szöveg",
-  "item": "tétel"
+  "item": "tétel",
+  "delete_community": "közösség törlése",
+  "delete_community_description": "Véglegesen törölje ezt a közösséget. A tartalma továbbra is terjedhet a peer-ek által"
 }

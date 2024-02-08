@@ -247,5 +247,7 @@
   "italics": "miring",
   "bold": "tebal",
   "quoted_text": "teks kutipan",
-  "item": "item"
+  "item": "item",
+  "delete_community": "hapus komunitas",
+  "delete_community_description": "Hapus komunitas ini secara permanen. Isinya masih mungkin disebarkan oleh rekan sebaya"
 }

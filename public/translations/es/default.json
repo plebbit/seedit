@@ -247,5 +247,7 @@
   "italics": "cursiva",
   "bold": "negrita",
   "quoted_text": "texto citado",
-  "item": "elemento"
+  "item": "elemento",
+  "delete_community": "eliminar comunidad",
+  "delete_community_description": "Eliminar permanentemente esta comunidad. Su contenido aún podría ser sembrado por pares"
 }

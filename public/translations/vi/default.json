@@ -247,5 +247,7 @@
   "italics": "nghiêng",
   "bold": "đậm",
   "quoted_text": "văn bản trích dẫn",
-  "item": "mục"
+  "item": "mục",
+  "delete_community": "xóa cộng đồng",
+  "delete_community_description": "Xóa cộng đồng này một cách vĩnh viễn. Nội dung của nó vẫn có thể được trồng bởi các người đồng nghiệp"
 }

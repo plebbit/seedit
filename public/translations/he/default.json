@@ -247,5 +247,7 @@
   "italics": "נטוי",
   "bold": "מודגש",
   "quoted_text": "טקסט מובא",
-  "item": "פריט"
+  "item": "פריט",
+  "delete_community": "מחק את הקהילה",
+  "delete_community_description": "מחק את הקהילה הזו לצמיתות. התוכן שלו עדיין עשוי להיות מזורע על ידי עמיתים"
 }

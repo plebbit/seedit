@@ -247,5 +247,7 @@
   "italics": "itálico",
   "bold": "negrito",
   "quoted_text": "texto citado",
-  "item": "item"
+  "item": "item",
+  "delete_community": "apagar comunidade",
+  "delete_community_description": "Excluir permanentemente esta comunidade. Seu conteúdo ainda pode ser semeado por pares"
 }

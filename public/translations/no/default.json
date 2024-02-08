@@ -247,5 +247,7 @@
   "italics": "kursiv",
   "bold": "fet",
   "quoted_text": "sitert tekst",
-  "item": "element"
+  "item": "element",
+  "delete_community": "slett fellesskap",
+  "delete_community_description": "Slett denne fellesskapet permanent. Dets innhold kan fortsatt sås av jevnaldrende"
 }
