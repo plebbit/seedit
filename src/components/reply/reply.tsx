@@ -336,7 +336,7 @@ const Reply = ({ cidOfReplyWithContext, depth = 0, isSingleComment, isSingleRepl
             )}
             {!collapsed && (
               <div className={`${styles.usertext} ${cid && commentMediaInfo && (isSingleComment || cidOfReplyWithContext === cid) ? styles.highlightMedia : ''}`}>
-                {commentMediaInfo && (
+                {commentMediaInfo && !removed && (
                   <ReplyMedia
                     commentMediaInfo={commentMediaInfo}
                     content={content}

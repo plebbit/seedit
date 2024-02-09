@@ -170,20 +170,22 @@ const Post = ({ index, post = {} }: PostProps) => {
               </div>
             </div>
             {hasThumbnail && !isInPostView && (
-              <Thumbnail
-                cid={cid}
-                commentMediaInfo={commentMediaInfo}
-                isReply={false}
-                link={link}
-                linkHeight={linkHeight}
-                linkWidth={linkWidth}
-                subplebbitAddress={subplebbitAddress}
-              />
+              <span className={removed ? styles.removedThumbnail : ''}>
+                <Thumbnail
+                  cid={cid}
+                  commentMediaInfo={commentMediaInfo}
+                  isReply={false}
+                  link={link}
+                  linkHeight={linkHeight}
+                  linkWidth={linkWidth}
+                  subplebbitAddress={subplebbitAddress}
+                />
+              </span>
             )}
           </div>
           <div className={styles.entry}>
             <div className={styles.topMatter}>
-              <p className={styles.title} onClick={handlePostClick}>
+              <p className={`${styles.title} ${removed && !isInPostView ? styles.removedTitle : ''}`} onClick={handlePostClick}>
                 {isInPostView && link ? (
                   <a href={link} className={linkClass} target='_blank' rel='noopener noreferrer'>
                     {postTitle}
@@ -257,7 +259,7 @@ const Post = ({ index, post = {} }: PostProps) => {
             </div>
           </div>
         </div>
-        <Expando commentMediaInfo={commentMediaInfo} content={content} expanded={isExpanded} link={link} reason={reason} showContent={true} />
+        <Expando commentMediaInfo={commentMediaInfo} content={content} expanded={isExpanded} link={link} reason={reason} removed={removed} showContent={true} />
       </div>
     </div>
   );

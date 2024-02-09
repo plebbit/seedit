@@ -11,11 +11,12 @@ interface ExpandoProps {
   expanded: boolean;
   link: string;
   reason?: string;
+  removed?: boolean;
   showContent: boolean;
   toggleExpanded?: () => void;
 }
 
-const Expando = ({ commentMediaInfo, content, expanded, link, reason, showContent, toggleExpanded }: ExpandoProps) => {
+const Expando = ({ commentMediaInfo, content, expanded, link, reason, removed, showContent, toggleExpanded }: ExpandoProps) => {
   const { t } = useTranslation();
 
   let mediaComponent = null;
@@ -37,7 +38,7 @@ const Expando = ({ commentMediaInfo, content, expanded, link, reason, showConten
 
   return (
     <div className={expanded ? styles.expando : styles.expandoHidden}>
-      {link && (
+      {link && !removed && (
         <div className={styles.mediaPreview}>
           <Link
             to={link}
