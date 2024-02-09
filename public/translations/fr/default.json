@@ -229,7 +229,7 @@
   "enter_crypto_address": "Veuillez entrer une adresse crypto valide.",
   "check_for_updates": "Vérifier les mises à jour",
   "general_settings": "Paramètres généraux",
-  "refresh_to_update": "Actualisez pour mettre à jour.",
+  "refresh_to_update": "Actualisez la page pour mettre à jour",
   "latest_development_version": "Vous êtes sur la dernière version de développement, commit {{commit}}. Pour utiliser la version stable, allez sur {{link}}.",
   "latest_stable_version": "Vous êtes sur la dernière version stable, seedit v{{version}}.",
   "new_development_version": "Nouvelle version de développement disponible, commit {{newCommit}}. Vous utilisez commit {{oldCommit}}.",
@@ -250,5 +250,11 @@
   "item": "article",
   "delete_community": "supprimer la communauté",
   "delete_community_description": "Supprimer définitivement cette communauté. Son contenu pourrait encore être semé par des pairs",
-  "add": "ajouter"
+  "add": "ajouter",
+  "owner": "propriétaire",
+  "admin": "administrateur",
+  "settings_saved": "Paramètres enregistrés pour p/{{subplebbitAddress}}",
+  "mod_edit": "mod edit",
+  "continue_thread": "continuer ce fil de discussion",
+  "mod_reason": "raison du modérateur"
 }

@@ -229,7 +229,7 @@
   "enter_crypto_address": "براہ کرم ایک معتبر کرپٹو پتہ داخل کریں۔",
   "check_for_updates": "اپ ڈیٹس کی جانچ پڑتال کریں",
   "general_settings": "عام امور",
-  "refresh_to_update": "تازہ کرنے کے لئے تازہ کریں۔",
+  "refresh_to_update": "اپ ڈیٹ کرنے کے لئے صفحہ تازہ کریں",
   "latest_development_version": "آپ تازہ ترین ڈویلپمنٹ ورژن پر ہیں, کمیٹ {{commit}}۔ مستحکم ورژن استعمال کرنے کے لئے, {{link}} پر جائیں۔",
   "latest_stable_version": "آپ تازہ ترین مستحکم ورژن پر ہیں, seedit v{{version}}۔",
   "new_development_version": "نیو ڈویلپمنٹ ورژن دستیاب ہے, کمیٹ {{newCommit}}۔ آپ کمیٹ {{oldCommit}} استعمال کر رہے ہیں۔",
@@ -250,5 +250,11 @@
   "item": "اشیاء",
   "delete_community": "کمیونٹی کو حذف کریں",
   "delete_community_description": "اس کمیونٹی کو مستقل طور پر حذف کریں۔ اس کا مواد ابھی بھی سمندر کے ذریعہ کیا جا سکتا ہے",
-  "add": "شامل کریں"
+  "add": "شامل کریں",
+  "owner": "مالک",
+  "admin": "ایڈمن",
+  "settings_saved": "p/{{subplebbitAddress}} کے لئے ترتیبات محفوظ ہوگئیں",
+  "mod_edit": "موڈ سنواریں",
+  "continue_thread": "اس ٹھریڈ کو جاری رکھیں",
+  "mod_reason": "موڈ کا سبب"
 }

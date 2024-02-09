@@ -229,7 +229,7 @@
   "enter_crypto_address": "Proszę podać prawidłowy adres kryptowalutowy.",
   "check_for_updates": "Sprawdź aktualizacje",
   "general_settings": "Ustawienia ogólne",
-  "refresh_to_update": "Odśwież, aby zaktualizować.",
+  "refresh_to_update": "Odśwież stronę, aby zaktualizować",
   "latest_development_version": "Korzystasz z najnowszej wersji rozwojowej, commit {{commit}}. Aby użyć wersji stabilnej, przejdź pod {{link}}.",
   "latest_stable_version": "Korzystasz z najnowszej wersji stabilnej, seedit v{{version}}.",
   "new_development_version": "Nowa wersja rozwojowa dostępna, commit {{newCommit}}. Używasz commit {{oldCommit}}.",
@@ -250,5 +250,11 @@
   "item": "pozycja",
   "delete_community": "usuń społeczność",
   "delete_community_description": "Trwale usuń tę społeczność. Jej zawartość nadal może być zasiewana przez rówieśników",
-  "add": "dodać"
+  "add": "dodać",
+  "owner": "właściciel",
+  "admin": "administrator",
+  "settings_saved": "Ustawienia zapisane dla p/{{subplebbitAddress}}",
+  "mod_edit": "edycja mod",
+  "continue_thread": "kontynuuj ten wątek",
+  "mod_reason": "powód mod"
 }

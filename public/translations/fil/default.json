@@ -229,7 +229,7 @@
   "enter_crypto_address": "Mangyaring magpasok ng wastong crypto address.",
   "check_for_updates": "Tingnan ang mga update",
   "general_settings": "Pangkalahatang mga setting",
-  "refresh_to_update": "I-refresh para i-update.",
+  "refresh_to_update": "I-refresh ang pahina upang i-update",
   "latest_development_version": "Nasa pinakabagong bersyon ng pag-unlad, commit {{commit}}. Upang gamitin ang stable na bersyon, pumunta sa {{link}}.",
   "latest_stable_version": "Nasa pinakabagong stable na bersyon, seedit v{{version}}.",
   "new_development_version": "Bagong development version na magagamit, commit {{newCommit}}. Ginagamit mo ang commit {{oldCommit}}.",
@@ -250,5 +250,11 @@
   "item": "item",
   "delete_community": "alisin ang komunidad",
   "delete_community_description": "Permanenteng burahin ang komunidad na ito. Maaaring ang nilalaman nito ay patuloy na iniisip ng mga kapwa",
-  "add": "magdagdag"
+  "add": "magdagdag",
+  "owner": "may-ari",
+  "admin": "admin",
+  "settings_saved": "Naisilbi ang mga setting para sa p/{{subplebbitAddress}}",
+  "mod_edit": "pag-edit ng mod",
+  "continue_thread": "ituloy ang thread na ito",
+  "mod_reason": "dahilan ng mod"
 }

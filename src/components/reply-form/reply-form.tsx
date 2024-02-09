@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useComment } from '@plebbit/plebbit-react-hooks';
+import { useParams } from 'react-router-dom';
 import styles from './reply-form.module.css';
 import { isValidURL } from '../../lib/utils/url-utils';
 import useReply from '../../hooks/use-reply';
@@ -16,8 +16,8 @@ const ReplyForm = ({ cid, isReplyingToReply, hideReplyForm }: ReplyFormProps) =>
   const { t } = useTranslation();
   const [showOptions, setShowOptions] = useState(false);
   const [showFormattingHelp, setShowFormattingHelp] = useState(false);
-  const reply = useComment({ commentCid: cid });
-  const { setContent, resetContent, replyIndex, publishReply } = useReply(reply);
+  const subplebbitAddress = useParams().subplebbitAddress as string;
+  const { setContent, resetContent, replyIndex, publishReply } = useReply({ cid, subplebbitAddress });
 
   const mdContainerClass = isReplyingToReply ? `${styles.mdContainer} ${styles.mdContainerReplying}` : styles.mdContainer;
   const urlClass = showOptions ? styles.urlVisible : styles.urlHidden;

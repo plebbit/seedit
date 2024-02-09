@@ -229,7 +229,7 @@
   "enter_crypto_address": "โปรดป้อนที่อยู่คริปโตที่ถูกต้อง",
   "check_for_updates": "ตรวจสอบการอัปเดต",
   "general_settings": "การตั้งค่าทั่วไป",
-  "refresh_to_update": "รีเฟรชเพื่ออัปเดต",
+  "refresh_to_update": "รีเฟรชหน้าเพื่ออัปเดต",
   "latest_development_version": "คุณกำลังใช้รุ่นการพัฒนาล่าสุด, คอมมิต {{commit}} ในการใช้รุ่นเสถียร ไปที่ {{link}}.",
   "latest_stable_version": "คุณกำลังใช้รุ่นเสถียรล่าสุด, seedit v{{version}}.",
   "new_development_version": "มีเวอร์ชันการพัฒนาใหม่ที่ใช้ได้, คอมมิต {{newCommit}} คุณกำลังใช้คอมมิต {{oldCommit}}",
@@ -250,5 +250,11 @@
   "item": "สิ่งของ",
   "delete_community": "ลบชุมชน",
   "delete_community_description": "ลบชุมชนนี้อย่างถาวร การเผยแพร่ของเนื้อหาอาจยังถูกซีดโดยพีร์",
-  "add": "เพิ่ม"
+  "add": "เพิ่ม",
+  "owner": "เจ้าของ",
+  "admin": "ผู้ดูแลระบบ",
+  "settings_saved": "บันทึกการตั้งค่าสำหรับ p/{{subplebbitAddress}}",
+  "mod_edit": "mod edit",
+  "continue_thread": "ดำเนินการเรื่องนี้ต่อ",
+  "mod_reason": "เหตุผลของ mod"
 }

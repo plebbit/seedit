@@ -229,7 +229,7 @@
   "enter_crypto_address": "Ange en giltig kryptoadress.",
   "check_for_updates": "Kontrollera efter uppdateringar",
   "general_settings": "Allmänna inställningar",
-  "refresh_to_update": "Uppdatera för att uppdatera.",
+  "refresh_to_update": "Uppdatera sidan för att uppdatera",
   "latest_development_version": "Du är på den senaste utvecklingsversionen, commit {{commit}}. För att använda den stabila versionen, gå till {{link}}.",
   "latest_stable_version": "Du är på den senaste stabila versionen, seedit v{{version}}.",
   "new_development_version": "Ny utvecklingsversion tillgänglig, commit {{newCommit}}. Du använder commit {{oldCommit}}.",
@@ -250,5 +250,11 @@
   "item": "föremål",
   "delete_community": "ta bort gemenskap",
   "delete_community_description": "Radera permanent den här gemenskapen. Dess innehåll kan fortfarande vara fröat av kamrater",
-  "add": "lägg till"
+  "add": "lägg till",
+  "owner": "ägare",
+  "admin": "administratör",
+  "settings_saved": "Inställningar sparade för p/{{subplebbitAddress}}",
+  "mod_edit": "moderatoredigering",
+  "continue_thread": "fortsätt den här tråden",
+  "mod_reason": "mod anledning"
 }

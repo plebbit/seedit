@@ -229,7 +229,7 @@
   "enter_crypto_address": "Syötä voimassa oleva krypto-osoite.",
   "check_for_updates": "Tarkista päivitykset",
   "general_settings": "Yleiset asetukset",
-  "refresh_to_update": "Päivitä päivittääksesi.",
+  "refresh_to_update": "Päivitä sivu päivittääksesi",
   "latest_development_version": "Olet uusimmassa kehitysversion, commit {{commit}}. Käyttääksesi vakaa versio, siirry osoitteeseen {{link}}.",
   "latest_stable_version": "Olet viimeisimmässä vakaa versio, seedit v{{version}}.",
   "new_development_version": "Uusi kehitysversion saatavilla, commit {{newCommit}}. Käytät commit {{oldCommit}}.",
@@ -250,5 +250,11 @@
   "item": "kohde",
   "delete_community": "poista yhteisö",
   "delete_community_description": "Poista tämä yhteisö pysyvästi. Sen sisältö voi silti olla siemenenä vertaisverkossa",
-  "add": "lisää"
+  "add": "lisää",
+  "owner": "omistaja",
+  "admin": "ylläpitäjä",
+  "settings_saved": "Asetukset tallennettu p/{{subplebbitAddress}} varten",
+  "mod_edit": "moderoinnin muokkaus",
+  "continue_thread": "jatka tätä säiettä",
+  "mod_reason": "mod-syy"
 }

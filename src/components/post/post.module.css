@@ -68,6 +68,14 @@
   overflow: hidden;
 }
 
+.removedTitle {
+  filter: blur(4px);
+}
+
+.removedThumbnail {
+  filter: blur(4px);
+}
+
 .link {
   text-decoration: none;
   color: var(--link);

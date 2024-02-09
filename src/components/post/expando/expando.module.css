@@ -67,3 +67,7 @@
   border: none;
   background-color: var(--background-thumbnail);
 }
+
+.modEdit {
+  color: var(--yellow);
+}

@@ -69,10 +69,8 @@ const useReplyStore = create<ReplyState>((set) => ({
     })),
 }));
 
-const useReply = (comment: Comment) => {
-  const subplebbitAddress = comment?.subplebbitAddress;
-  const parentCid = comment?.cid;
-
+const useReply = ({ cid, subplebbitAddress }: { cid: string; subplebbitAddress: string }) => {
+  const parentCid = cid;
   const { content, link, spoiler, publishCommentOptions } = useReplyStore((state) => ({
     content: state.content[parentCid],
     link: state.link[parentCid],

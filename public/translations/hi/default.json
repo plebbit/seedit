@@ -229,7 +229,7 @@
   "enter_crypto_address": "कृपया एक मान्य क्रिप्टो पता दर्ज करें।",
   "check_for_updates": "अपडेट्स की जाँच करें",
   "general_settings": "सामान्य सेटिंग्स",
-  "refresh_to_update": "अपडेट के लिए रिफ्रेश करें।",
+  "refresh_to_update": "अपडेट करने के लिए पृष्ठ को रिफ्रेश करें",
   "latest_development_version": "आप नवीनतम विकास संस्करण पर हैं, कमिट {{commit}}। स्थिर संस्करण का उपयोग करने के लिए, {{link}} पर जाएं।",
   "latest_stable_version": "आप नवीनतम स्थिर संस्करण पर हैं, seedit v{{version}}।",
   "new_development_version": "नई डेवलपमेंट संस्करण उपलब्ध है, कमिट {{newCommit}}। आप कमिट {{oldCommit}} का उपयोग कर रहे हैं।",
@@ -250,5 +250,11 @@
   "item": "आइटम",
   "delete_community": "समुदाय को हटाएं",
   "delete_community_description": "इस समुदाय को स्थायी रूप से हटा दें। इसकी सामग्री अभी भी सहपीर्स द्वारा बीजित हो सकती है",
-  "add": "जोड़ें"
+  "add": "जोड़ें",
+  "owner": "मालिक",
+  "admin": "व्यवस्थापक",
+  "settings_saved": "प/{{subplebbitAddress}} के लिए सेटिंग्स सहेजी गईं",
+  "mod_edit": "मॉड संपादन",
+  "continue_thread": "इस धागे को जारी रखें",
+  "mod_reason": "मॉड कारण"
 }
