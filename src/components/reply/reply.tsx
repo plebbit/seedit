@@ -351,9 +351,9 @@ const Reply = ({ cidOfReplyWithContext, depth = 0, isSingleComment, isSingleRepl
                 <div className={`${styles.md} ${cid && (isSingleComment || cidOfReplyWithContext === cid) ? styles.highlightContent : ''}`}>
                   <Markdown content={contentString} />
                   {reason && (
-                    <div className={styles.modEdit}>
+                    <div className={styles.modReason}>
                       <br />
-                      {t('mod_reason')}: {reason}
+                      <img alt='mod' src='assets/mod.png' /> {t('reason')}: {reason}
                     </div>
                   )}
                 </div>

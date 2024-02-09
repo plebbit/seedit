@@ -58,9 +58,9 @@ const Expando = ({ commentMediaInfo, content, expanded, link, reason, removed, s
           <div className={styles.markdown}>
             <Markdown content={content} />
             {reason && (
-              <div className={styles.modEdit}>
+              <div className={styles.modReason}>
                 <br />
-                {t('mod_reason')}: {reason}
+                <img alt='mod' src='assets/mod.png' /> {t('reason')}: {reason}
               </div>
             )}
           </div>

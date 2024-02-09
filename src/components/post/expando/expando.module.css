@@ -68,6 +68,6 @@
   background-color: var(--background-thumbnail);
 }
 
-.modEdit {
-  color: var(--yellow);
+.modReason img {
+  margin-bottom: -2px;
 }

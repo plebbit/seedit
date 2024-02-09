@@ -128,8 +128,8 @@
   color: var(--markdown-link) !important;
 }
 
-.modEdit {
-  color: var(--yellow);
+.modReason img {
+  margin-bottom: -2px;
 }
 
 .highlightContent {
