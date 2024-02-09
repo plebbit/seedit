@@ -252,5 +252,8 @@
   "delete_community_description": "احذف هذه المجتمع نهائيًا. قد تظل المحتويات موجودة ومشتتة بواسطة الأقران",
   "add": "إضافة",
   "owner": "المالك",
-  "admin": "مسؤول"
+  "admin": "مسؤول",
+  "settings_saved": "تم حفظ الإعدادات لـ p/{{subplebbitAddress}}",
+  "mod_edit": "تحرير المشرف",
+  "continue_thread": "تابع هذا الموضوع"
 }

@@ -252,5 +252,8 @@
   "delete_community_description": "Permanently delete this community. its content might still be seeded by peers",
   "add": "add",
   "owner": "owner",
-  "admin": "admin"
+  "admin": "admin",
+  "settings_saved": "Settings saved for p/{{subplebbitAddress}}",
+  "mod_edit": "mod edit",
+  "continue_thread": "continue this thread"
 }

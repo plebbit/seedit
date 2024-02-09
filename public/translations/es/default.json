@@ -252,5 +252,8 @@
   "delete_community_description": "Eliminar permanentemente esta comunidad. Su contenido aún podría ser sembrado por pares",
   "add": "añadir",
   "owner": "propietario",
-  "admin": "administrador"
+  "admin": "administrador",
+  "settings_saved": "Ajustes guardados para p/{{subplebbitAddress}}",
+  "mod_edit": "edición de moderador",
+  "continue_thread": "continuar este hilo"
 }

@@ -252,5 +252,8 @@
   "delete_community_description": "Fshini këtë komunitet përherë. Përmbajtja e tij ende mund të jetë mbjellë nga bashkëmoshatarët",
   "add": "shto",
   "owner": "pronar",
-  "admin": "administrator"
+  "admin": "administrator",
+  "settings_saved": "Cilësimet u ruajtën për p/{{subplebbitAddress}}",
+  "mod_edit": "mod edit",
+  "continue_thread": "vazhdoni këtë temë"
 }

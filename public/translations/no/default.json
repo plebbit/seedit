@@ -252,5 +252,8 @@
   "delete_community_description": "Slett denne fellesskapet permanent. Dets innhold kan fortsatt sås av jevnaldrende",
   "add": "legg til",
   "owner": "eier",
-  "admin": "administrator"
+  "admin": "administrator",
+  "settings_saved": "Innstillinger lagret for p/{{subplebbitAddress}}",
+  "mod_edit": "moderatorendring",
+  "continue_thread": "fortsett denne tråden"
 }

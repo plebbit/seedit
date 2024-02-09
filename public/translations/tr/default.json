@@ -252,5 +252,8 @@
   "delete_community_description": "Bu topluluğu kalıcı olarak sil. İçeriği hala eşler tarafından ekmeklenebilir",
   "add": "ekle",
   "owner": "sahip",
-  "admin": "yönetici"
+  "admin": "yönetici",
+  "settings_saved": "Ayarlar p/{{subplebbitAddress}} için kaydedildi",
+  "mod_edit": "mod düzenle",
+  "continue_thread": "bu konuyu devam ettir"
 }

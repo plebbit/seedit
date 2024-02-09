@@ -252,5 +252,8 @@
   "delete_community_description": "Slet denne fællesskab permanent. Dets indhold kan stadig være sået af ligemænd",
   "add": "tilføje",
   "owner": "ejeren",
-  "admin": "administrator"
+  "admin": "administrator",
+  "settings_saved": "Indstillinger gemt for p/{{subplebbitAddress}}",
+  "mod_edit": "moderatorredigering",
+  "continue_thread": "fortsæt denne tråd"
 }

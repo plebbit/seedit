@@ -252,5 +252,8 @@
   "delete_community_description": "このコミュニティを永久に削除します。そのコンテンツは依然としてピアによってシードされている可能性があります",
   "add": "追加",
   "owner": "オーナー",
-  "admin": "管理者"
+  "admin": "管理者",
+  "settings_saved": "p/{{subplebbitAddress}} の設定が保存されました",
+  "mod_edit": "モデレーター編集",
+  "continue_thread": "このスレッドを続ける"
 }

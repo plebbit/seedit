@@ -252,5 +252,8 @@
   "delete_community_description": "اس کمیونٹی کو مستقل طور پر حذف کریں۔ اس کا مواد ابھی بھی سمندر کے ذریعہ کیا جا سکتا ہے",
   "add": "شامل کریں",
   "owner": "مالک",
-  "admin": "ایڈمن"
+  "admin": "ایڈمن",
+  "settings_saved": "p/{{subplebbitAddress}} کے لئے ترتیبات محفوظ ہوگئیں",
+  "mod_edit": "موڈ سنواریں",
+  "continue_thread": "اس ٹھریڈ کو جاری رکھیں"
 }

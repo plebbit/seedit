@@ -252,5 +252,8 @@
   "delete_community_description": "Trvale smazat tuto komunitu. Jeho obsah by stále mohl být zasevován ostatními uzly",
   "add": "přidat",
   "owner": "vlastník",
-  "admin": "správce"
+  "admin": "správce",
+  "settings_saved": "Nastavení uloženo pro p/{{subplebbitAddress}}",
+  "mod_edit": "úprava moderátora",
+  "continue_thread": "pokračovat v tématu"
 }

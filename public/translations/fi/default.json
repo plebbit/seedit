@@ -252,5 +252,8 @@
   "delete_community_description": "Poista tämä yhteisö pysyvästi. Sen sisältö voi silti olla siemenenä vertaisverkossa",
   "add": "lisää",
   "owner": "omistaja",
-  "admin": "ylläpitäjä"
+  "admin": "ylläpitäjä",
+  "settings_saved": "Asetukset tallennettu p/{{subplebbitAddress}} varten",
+  "mod_edit": "moderoinnin muokkaus",
+  "continue_thread": "jatka tätä säiettä"
 }

@@ -252,5 +252,8 @@
   "delete_community_description": "Verwijder deze community permanent. De inhoud kan nog steeds door peers worden gezaaid",
   "add": "toevoegen",
   "owner": "eigenaar",
-  "admin": "beheerder"
+  "admin": "beheerder",
+  "settings_saved": "Instellingen opgeslagen voor p/{{subplebbitAddress}}",
+  "mod_edit": "mod-bewerking",
+  "continue_thread": "ga verder in deze thread"
 }

@@ -252,5 +252,8 @@
   "delete_community_description": "Xóa cộng đồng này một cách vĩnh viễn. Nội dung của nó vẫn có thể được trồng bởi các người đồng nghiệp",
   "add": "thêm",
   "owner": "chủ sở hữu",
-  "admin": "quản trị viên"
+  "admin": "quản trị viên",
+  "settings_saved": "Cài đặt đã được lưu cho p/{{subplebbitAddress}}",
+  "mod_edit": "chỉnh sửa mod",
+  "continue_thread": "tiếp tục chủ đề này"
 }

@@ -252,5 +252,8 @@
   "delete_community_description": "ลบชุมชนนี้อย่างถาวร การเผยแพร่ของเนื้อหาอาจยังถูกซีดโดยพีร์",
   "add": "เพิ่ม",
   "owner": "เจ้าของ",
-  "admin": "ผู้ดูแลระบบ"
+  "admin": "ผู้ดูแลระบบ",
+  "settings_saved": "บันทึกการตั้งค่าสำหรับ p/{{subplebbitAddress}}",
+  "mod_edit": "mod edit",
+  "continue_thread": "ดำเนินการเรื่องนี้ต่อ"
 }

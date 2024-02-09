@@ -252,5 +252,8 @@
   "delete_community_description": "این جامعه را بطور دائمی حذف کنید. ممکن است محتوای آن هنوز توسط همتایان تکثیر شود",
   "add": "افزودن",
   "owner": "صاحب",
-  "admin": "مدیر"
+  "admin": "مدیر",
+  "settings_saved": "تنظیمات برای p/{{subplebbitAddress}} ذخیره شد",
+  "mod_edit": "ویرایش مدیر",
+  "continue_thread": "ادامه این موضوع"
 }

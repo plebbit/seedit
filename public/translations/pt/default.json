@@ -252,5 +252,8 @@
   "delete_community_description": "Excluir permanentemente esta comunidade. Seu conteúdo ainda pode ser semeado por pares",
   "add": "adicionar",
   "owner": "dono",
-  "admin": "administrador"
+  "admin": "administrador",
+  "settings_saved": "Configurações salvas para p/{{subplebbitAddress}}",
+  "mod_edit": "edição de mod",
+  "continue_thread": "continue este tópico"
 }

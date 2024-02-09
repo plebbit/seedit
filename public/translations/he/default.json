@@ -252,5 +252,8 @@
   "delete_community_description": "מחק את הקהילה הזו לצמיתות. התוכן שלו עדיין עשוי להיות מזורע על ידי עמיתים",
   "add": "הוסף",
   "owner": "בעלים",
-  "admin": "מנהל"
+  "admin": "מנהל",
+  "settings_saved": "הגדרות נשמרו עבור p/{{subplebbitAddress}}",
+  "mod_edit": "עריכת מנהל",
+  "continue_thread": "המשך את השרשור הזה"
 }

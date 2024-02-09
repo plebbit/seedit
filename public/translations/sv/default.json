@@ -252,5 +252,8 @@
   "delete_community_description": "Radera permanent den här gemenskapen. Dess innehåll kan fortfarande vara fröat av kamrater",
   "add": "lägg till",
   "owner": "ägare",
-  "admin": "administratör"
+  "admin": "administratör",
+  "settings_saved": "Inställningar sparade för p/{{subplebbitAddress}}",
+  "mod_edit": "moderatoredigering",
+  "continue_thread": "fortsätt den här tråden"
 }

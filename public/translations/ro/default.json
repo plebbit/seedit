@@ -252,5 +252,8 @@
   "delete_community_description": "Ștergeți permanent această comunitate. Conținutul său ar putea fi încă semănat de pereți",
   "add": "adăuga",
   "owner": "proprietar",
-  "admin": "administrator"
+  "admin": "administrator",
+  "settings_saved": "Setările au fost salvate pentru p/{{subplebbitAddress}}",
+  "mod_edit": "editare mod",
+  "continue_thread": "continuați acest fir de discuție"
 }

@@ -252,5 +252,8 @@
   "delete_community_description": "Diese Gemeinschaft endgültig löschen. Ihr Inhalt kann immer noch von Peers geerntet werden",
   "add": "hinzufügen",
   "owner": "Besitzer",
-  "admin": "Administrator"
+  "admin": "Administrator",
+  "settings_saved": "Einstellungen für p/{{subplebbitAddress}} gespeichert",
+  "mod_edit": "Moderator bearbeiten",
+  "continue_thread": "diesen Thread fortsetzen"
 }

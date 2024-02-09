@@ -252,5 +252,8 @@
   "delete_community_description": "Véglegesen törölje ezt a közösséget. A tartalma továbbra is terjedhet a peer-ek által",
   "add": "hozzáad",
   "owner": "tulajdonos",
-  "admin": "adminisztrátor"
+  "admin": "adminisztrátor",
+  "settings_saved": "Beállítások mentve p/{{subplebbitAddress}} esetén",
+  "mod_edit": "moderátor szerkesztése",
+  "continue_thread": "folytassa ezt a témát"
 }
