@@ -3,17 +3,21 @@ import styles from './expando.module.css';
 import Embed from '../embed';
 import { CommentMediaInfo } from '../../../lib/utils/media-utils';
 import Markdown from '../../markdown';
+import { useTranslation } from 'react-i18next';
 
 interface ExpandoProps {
   commentMediaInfo?: CommentMediaInfo;
   content?: string;
   expanded: boolean;
   link: string;
+  reason?: string;
   showContent: boolean;
   toggleExpanded?: () => void;
 }
 
-const Expando = ({ commentMediaInfo, content, expanded, link, showContent, toggleExpanded }: ExpandoProps) => {
+const Expando = ({ commentMediaInfo, content, expanded, link, reason, showContent, toggleExpanded }: ExpandoProps) => {
+  const { t } = useTranslation();
+
   let mediaComponent = null;
   let noExpandButton = false;
 
@@ -52,6 +56,12 @@ const Expando = ({ commentMediaInfo, content, expanded, link, showContent, toggl
         <div className={styles.usertext}>
           <div className={styles.markdown}>
             <Markdown content={content} />
+            {reason && (
+              <div className={styles.modEdit}>
+                <br />
+                {t('mod_edit')}: {reason}
+              </div>
+            )}
           </div>
         </div>
       )}

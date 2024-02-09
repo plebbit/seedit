@@ -805,7 +805,7 @@ const SubplebbitSettings = () => {
       setShowSaving(true);
       await publishSubplebbitEdit();
       setShowSaving(false);
-      alert(`settings saved for p/${shortAddress}`);
+      alert(t('settings_saved', { subplebbitAddress: shortAddress }));
     } catch (e) {
       if (e instanceof Error) {
         console.warn(e);

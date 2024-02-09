@@ -218,6 +218,7 @@ const Reply = ({ cidOfReplyWithContext, depth = 0, isSingleComment, isSingleRepl
     pinned,
     parentCid,
     postCid,
+    reason,
     removed,
     spoiler,
     state,
@@ -349,6 +350,12 @@ const Reply = ({ cidOfReplyWithContext, depth = 0, isSingleComment, isSingleRepl
                 )}
                 <div className={`${styles.md} ${cid && (isSingleComment || cidOfReplyWithContext === cid) ? styles.highlightContent : ''}`}>
                   <Markdown content={contentString} />
+                  {reason && (
+                    <div className={styles.modEdit}>
+                      <br />
+                      {t('mod_edit')}: {reason}
+                    </div>
+                  )}
                 </div>
               </div>
             )}
@@ -384,7 +391,7 @@ const Reply = ({ cidOfReplyWithContext, depth = 0, isSingleComment, isSingleRepl
                         />
                       ) : (
                         <div className={styles.continueThisThread}>
-                          <Link to={`/p/${subplebbitAddress}/c/${cid}`}>continue this thread</Link>
+                          <Link to={`/p/${subplebbitAddress}/c/${cid}`}>{t('continue_thread')}</Link>
                         </div>
                       )}
                     </Fragment>

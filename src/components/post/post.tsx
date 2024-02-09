@@ -83,7 +83,6 @@ const Post = ({ index, post = {} }: PostProps) => {
   const {
     author,
     cid,
-    content,
     deleted,
     downvoteCount,
     flair,
@@ -91,6 +90,7 @@ const Post = ({ index, post = {} }: PostProps) => {
     linkHeight,
     linkWidth,
     pinned,
+    reason,
     removed,
     replyCount,
     spoiler,
@@ -100,6 +100,10 @@ const Post = ({ index, post = {} }: PostProps) => {
     title,
     upvoteCount,
   } = post || {};
+  let content = post?.content;
+  if (removed) {
+    content = '[removed]';
+  }
   const { displayName, shortAddress } = author || {};
   const { shortAuthorAddress, authorAddressChanged } = useAuthorAddress({ comment: post });
   const { imageUrl } = useAuthorAvatar({ author });
@@ -253,7 +257,7 @@ const Post = ({ index, post = {} }: PostProps) => {
             </div>
           </div>
         </div>
-        <Expando commentMediaInfo={commentMediaInfo} content={content} expanded={isExpanded} link={link} showContent={true} />
+        <Expando commentMediaInfo={commentMediaInfo} content={content} expanded={isExpanded} link={link} reason={reason} showContent={true} />
       </div>
     </div>
   );
