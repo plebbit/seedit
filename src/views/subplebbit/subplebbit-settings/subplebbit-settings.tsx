@@ -367,10 +367,6 @@ const ChallengeSettings = ({ challenge, index, isReadOnly, setSubplebbitSettings
     setShowExcludeSettings((prev) => [...prev, false]);
   };
 
-  useEffect(() => {
-    setShowExcludeSettings(challenge.exclude?.map(() => false) || []);
-  }, [challenge.exclude]);
-
   const deleteExcludeGroup = (excludeIndex: number) => {
     const updatedChallenges = [...settings.challenges];
     const currentChallenge = updatedChallenges[index];
@@ -809,7 +805,7 @@ const SubplebbitSettings = () => {
       setShowSaving(true);
       await publishSubplebbitEdit();
       setShowSaving(false);
-      alert(`saved`);
+      alert(`settings saved for p/${shortAddress}`);
     } catch (e) {
       if (e instanceof Error) {
         console.warn(e);
