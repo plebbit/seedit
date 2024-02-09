@@ -255,5 +255,6 @@
   "admin": "yönetici",
   "settings_saved": "Ayarlar p/{{subplebbitAddress}} için kaydedildi",
   "mod_edit": "mod düzenle",
-  "continue_thread": "bu konuyu devam ettir"
+  "continue_thread": "bu konuyu devam ettir",
+  "mod_reason": "mod nedeni"
 }

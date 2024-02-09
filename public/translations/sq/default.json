@@ -255,5 +255,6 @@
   "admin": "administrator",
   "settings_saved": "Cilësimet u ruajtën për p/{{subplebbitAddress}}",
   "mod_edit": "mod edit",
-  "continue_thread": "vazhdoni këtë temë"
+  "continue_thread": "vazhdoni këtë temë",
+  "mod_reason": "arsyeja mod"
 }

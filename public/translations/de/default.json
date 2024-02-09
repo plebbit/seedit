@@ -255,5 +255,6 @@
   "admin": "Administrator",
   "settings_saved": "Einstellungen für p/{{subplebbitAddress}} gespeichert",
   "mod_edit": "Moderator bearbeiten",
-  "continue_thread": "diesen Thread fortsetzen"
+  "continue_thread": "diesen Thread fortsetzen",
+  "mod_reason": "Mod-Begründung"
 }

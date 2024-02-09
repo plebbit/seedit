@@ -255,5 +255,6 @@
   "admin": "administrador",
   "settings_saved": "Configurações salvas para p/{{subplebbitAddress}}",
   "mod_edit": "edição de mod",
-  "continue_thread": "continue este tópico"
+  "continue_thread": "continue este tópico",
+  "mod_reason": "razão do mod"
 }

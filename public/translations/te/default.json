@@ -255,5 +255,6 @@
   "admin": "అంచనా",
   "settings_saved": "p/{{subplebbitAddress}} కోసం సెట్టింగులు సేవ్ చేయబడ్డాయి",
   "mod_edit": "మోడ్ సవరించినప్పుడు",
-  "continue_thread": "ఈ థ్రెడ్‌ను కొనసాగండి"
+  "continue_thread": "ఈ థ్రెడ్‌ను కొనసాగండి",
+  "mod_reason": "మోడ్ కారణం"
 }

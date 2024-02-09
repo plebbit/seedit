@@ -353,7 +353,7 @@ const Reply = ({ cidOfReplyWithContext, depth = 0, isSingleComment, isSingleRepl
                   {reason && (
                     <div className={styles.modEdit}>
                       <br />
-                      {t('mod_edit')}: {reason}
+                      {t('mod_reason')}: {reason}
                     </div>
                   )}
                 </div>

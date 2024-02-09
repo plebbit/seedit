@@ -255,5 +255,6 @@
   "admin": "διαχειριστής",
   "settings_saved": "Οι ρυθμίσεις αποθηκεύτηκαν για το p/{{subplebbitAddress}}",
   "mod_edit": "επεξεργασία του διαχειριστή",
-  "continue_thread": "συνεχίστε αυτό το θέμα"
+  "continue_thread": "συνεχίστε αυτό το θέμα",
+  "mod_reason": "λόγος mod"
 }

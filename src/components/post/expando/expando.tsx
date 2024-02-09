@@ -59,7 +59,7 @@ const Expando = ({ commentMediaInfo, content, expanded, link, reason, showConten
             {reason && (
               <div className={styles.modEdit}>
                 <br />
-                {t('mod_edit')}: {reason}
+                {t('mod_reason')}: {reason}
               </div>
             )}
           </div>

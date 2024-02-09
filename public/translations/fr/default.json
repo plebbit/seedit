@@ -255,5 +255,6 @@
   "admin": "administrateur",
   "settings_saved": "Paramètres enregistrés pour p/{{subplebbitAddress}}",
   "mod_edit": "mod edit",
-  "continue_thread": "continuer ce fil de discussion"
+  "continue_thread": "continuer ce fil de discussion",
+  "mod_reason": "raison du modérateur"
 }

@@ -255,5 +255,6 @@
   "admin": "מנהל",
   "settings_saved": "הגדרות נשמרו עבור p/{{subplebbitAddress}}",
   "mod_edit": "עריכת מנהל",
-  "continue_thread": "המשך את השרשור הזה"
+  "continue_thread": "המשך את השרשור הזה",
+  "mod_reason": "סיבת המנהל"
 }

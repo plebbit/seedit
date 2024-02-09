@@ -255,5 +255,6 @@
   "admin": "ผู้ดูแลระบบ",
   "settings_saved": "บันทึกการตั้งค่าสำหรับ p/{{subplebbitAddress}}",
   "mod_edit": "mod edit",
-  "continue_thread": "ดำเนินการเรื่องนี้ต่อ"
+  "continue_thread": "ดำเนินการเรื่องนี้ต่อ",
+  "mod_reason": "เหตุผลของ mod"
 }

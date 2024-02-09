@@ -255,5 +255,6 @@
   "admin": "administrator",
   "settings_saved": "Indstillinger gemt for p/{{subplebbitAddress}}",
   "mod_edit": "moderatorredigering",
-  "continue_thread": "fortsæt denne tråd"
+  "continue_thread": "fortsæt denne tråd",
+  "mod_reason": "mod begrundelse"
 }

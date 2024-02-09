@@ -255,5 +255,6 @@
   "admin": "beheerder",
   "settings_saved": "Instellingen opgeslagen voor p/{{subplebbitAddress}}",
   "mod_edit": "mod-bewerking",
-  "continue_thread": "ga verder in deze thread"
+  "continue_thread": "ga verder in deze thread",
+  "mod_reason": "mod reden"
 }

@@ -255,5 +255,6 @@
   "admin": "администратор",
   "settings_saved": "Настройки сохранены для p/{{subplebbitAddress}}",
   "mod_edit": "редактирование модератора",
-  "continue_thread": "продолжить эту тему"
+  "continue_thread": "продолжить эту тему",
+  "mod_reason": "причина мода"
 }

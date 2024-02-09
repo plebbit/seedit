@@ -255,5 +255,6 @@
   "admin": "व्यवस्थापक",
   "settings_saved": "p/{{subplebbitAddress}} साठी सेटिंग्ज सेव्ह केल्या",
   "mod_edit": "मॉड संपादन",
-  "continue_thread": "हा थ्रेड सुरू ठेवा"
+  "continue_thread": "हा थ्रेड सुरू ठेवा",
+  "mod_reason": "मॉड कारण"
 }

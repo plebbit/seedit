@@ -255,5 +255,6 @@
   "admin": "ylläpitäjä",
   "settings_saved": "Asetukset tallennettu p/{{subplebbitAddress}} varten",
   "mod_edit": "moderoinnin muokkaus",
-  "continue_thread": "jatka tätä säiettä"
+  "continue_thread": "jatka tätä säiettä",
+  "mod_reason": "mod-syy"
 }

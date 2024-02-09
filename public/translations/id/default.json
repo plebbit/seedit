@@ -255,5 +255,6 @@
   "admin": "admin",
   "settings_saved": "Pengaturan disimpan untuk p/{{subplebbitAddress}}",
   "mod_edit": "edit mod",
-  "continue_thread": "lanjutkan utas ini"
+  "continue_thread": "lanjutkan utas ini",
+  "mod_reason": "alasan mod"
 }

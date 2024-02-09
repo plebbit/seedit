@@ -255,5 +255,6 @@
   "admin": "অ্যাডমিন",
   "settings_saved": "p/{{subplebbitAddress}} এর জন্য সেটিংস সংরক্ষিত হয়েছে",
   "mod_edit": "মড সম্পাদনা",
-  "continue_thread": "এই থ্রেড চালিয়ে যান"
+  "continue_thread": "এই থ্রেড চালিয়ে যান",
+  "mod_reason": "মড কারণ"
 }

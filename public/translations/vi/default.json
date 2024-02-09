@@ -255,5 +255,6 @@
   "admin": "quản trị viên",
   "settings_saved": "Cài đặt đã được lưu cho p/{{subplebbitAddress}}",
   "mod_edit": "chỉnh sửa mod",
-  "continue_thread": "tiếp tục chủ đề này"
+  "continue_thread": "tiếp tục chủ đề này",
+  "mod_reason": "lý do mod"
 }

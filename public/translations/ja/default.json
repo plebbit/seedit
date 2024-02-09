@@ -255,5 +255,6 @@
   "admin": "管理者",
   "settings_saved": "p/{{subplebbitAddress}} の設定が保存されました",
   "mod_edit": "モデレーター編集",
-  "continue_thread": "このスレッドを続ける"
+  "continue_thread": "このスレッドを続ける",
+  "mod_reason": "mod理由"
 }

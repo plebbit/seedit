@@ -255,5 +255,6 @@
   "admin": "amministratore",
   "settings_saved": "Impostazioni salvate per p/{{subplebbitAddress}}",
   "mod_edit": "modifica dei moderatori",
-  "continue_thread": "continua questa discussione"
+  "continue_thread": "continua questa discussione",
+  "mod_reason": "motivo di moderazione"
 }

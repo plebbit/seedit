@@ -255,5 +255,6 @@
   "admin": "správce",
   "settings_saved": "Nastavení uloženo pro p/{{subplebbitAddress}}",
   "mod_edit": "úprava moderátora",
-  "continue_thread": "pokračovat v tématu"
+  "continue_thread": "pokračovat v tématu",
+  "mod_reason": "důvod mod"
 }

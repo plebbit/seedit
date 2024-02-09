@@ -255,5 +255,6 @@
   "admin": "ایڈمن",
   "settings_saved": "p/{{subplebbitAddress}} کے لئے ترتیبات محفوظ ہوگئیں",
   "mod_edit": "موڈ سنواریں",
-  "continue_thread": "اس ٹھریڈ کو جاری رکھیں"
+  "continue_thread": "اس ٹھریڈ کو جاری رکھیں",
+  "mod_reason": "موڈ کا سبب"
 }

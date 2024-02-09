@@ -255,5 +255,6 @@
   "admin": "مسؤول",
   "settings_saved": "تم حفظ الإعدادات لـ p/{{subplebbitAddress}}",
   "mod_edit": "تحرير المشرف",
-  "continue_thread": "تابع هذا الموضوع"
+  "continue_thread": "تابع هذا الموضوع",
+  "mod_reason": "سبب المشرف"
 }
