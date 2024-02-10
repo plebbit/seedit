@@ -128,10 +128,6 @@
   color: var(--markdown-link) !important;
 }
 
-.modReason img {
-  margin-bottom: -2px;
-}
-
 .highlightContent {
   background-color: var(--yellow-highlight);
   padding: 2px 5px;
