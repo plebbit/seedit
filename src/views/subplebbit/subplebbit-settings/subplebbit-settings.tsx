@@ -16,6 +16,7 @@ import styles from './subplebbit-settings.module.css';
 import { isValidURL } from '../../../lib/utils/url-utils';
 import { OptionInput, Exclude, getDefaultChallengeDescription, getDefaultChallengeOptions, getDefaultChallengeSettings } from '../../../lib/utils/challenge-utils';
 import LoadingEllipsis from '../../../components/loading-ellipsis';
+import Markdown from '../../../components/markdown';
 import Sidebar from '../../../components/sidebar';
 import { isCreateSubplebbitView, isSubplebbitSettingsView } from '../../../lib/utils/view-utils';
 
@@ -112,7 +113,17 @@ const Description = ({ isReadOnly = false }: { isReadOnly?: boolean }) => {
         {isReadOnly ? (
           <pre className={styles.readOnlyDescription}>{description}</pre>
         ) : (
-          <textarea value={description ?? ''} onChange={(e) => setSubplebbitSettingsStore({ description: e.target.value })} />
+          <>
+            <textarea value={description ?? ''} onChange={(e) => setSubplebbitSettingsStore({ description: e.target.value })} />
+            <div className={styles.descriptionPreview}>
+              {description && (
+                <>
+                  <div className={styles.descriptionMarkdownPreviewTitle}>Markdown Preview:</div>
+                  <Markdown content={description} />
+                </>
+              )}
+            </div>
+          </>
         )}
       </div>
     </div>
