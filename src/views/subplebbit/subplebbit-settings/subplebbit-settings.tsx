@@ -373,9 +373,15 @@ const ChallengeSettings = ({ challenge, index, isReadOnly, setSubplebbitSettings
 
   const addExcludeGroup = () => {
     const newExclude = { role: [], post: false, reply: false, vote: false };
-    const updatedChallenges = settings?.challenges?.map((ch: any, idx: number) => (idx === index ? { ...ch, exclude: [...(ch.exclude || []), newExclude] } : ch));
-    setSubplebbitSettingsStore({ settings: { ...settings, challenges: updatedChallenges } });
-    setShowExcludeSettings((prev) => [...prev, false]);
+    if (challenge?.exclude) {
+      const updatedChallenges = settings?.challenges?.map((ch: any, idx: number) => (idx === index ? { ...ch, exclude: [...ch.exclude, newExclude] } : ch));
+      setSubplebbitSettingsStore({ settings: { ...settings, challenges: updatedChallenges } });
+      setShowExcludeSettings((oldShowExcludeSettings) => [...oldShowExcludeSettings, true]);
+    } else {
+      const updatedChallenges = settings?.challenges?.map((ch: any, idx: number) => (idx === index ? { ...ch, exclude: [newExclude] } : ch));
+      setSubplebbitSettingsStore({ settings: { ...settings, challenges: updatedChallenges } });
+      setShowExcludeSettings([true]);
+    }
   };
 
   const deleteExcludeGroup = (excludeIndex: number) => {
