@@ -227,7 +227,7 @@
   "json_settings_info": "คัดลอกหรือวางการตั้งค่าของชุมชนอย่างรวดเร็ว",
   "address_setting_info": "ตั้งค่าที่อยู่ชุมชนที่อ่านได้โดยใช้ ens.domains",
   "enter_crypto_address": "โปรดป้อนที่อยู่คริปโตที่ถูกต้อง",
-  "check_for_updates": "ตรวจสอบการอัปเดต",
+  "check_for_updates": "<1>ตรวจสอบ</1> อัปเดต",
   "general_settings": "การตั้งค่าทั่วไป",
   "refresh_to_update": "รีเฟรชหน้าเพื่ออัปเดต",
   "latest_development_version": "คุณกำลังใช้รุ่นการพัฒนาล่าสุด, คอมมิต {{commit}} ในการใช้รุ่นเสถียร ไปที่ {{link}}.",

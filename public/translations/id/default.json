@@ -227,7 +227,7 @@
   "json_settings_info": "salin atau tempel cepat pengaturan komunitas",
   "address_setting_info": "atur alamat komunitas yang dapat dibaca menggunakan ens.domains",
   "enter_crypto_address": "Harap masukkan alamat kripto yang valid.",
-  "check_for_updates": "Periksa pembaruan",
+  "check_for_updates": "<1>Periksa</1> pembaruan",
   "general_settings": "Pengaturan umum",
   "refresh_to_update": "Segarkan halaman untuk memperbarui",
   "latest_development_version": "Anda menggunakan versi pengembangan terbaru, commit {{commit}}. Untuk menggunakan versi stabil, pergi ke {{link}}.",

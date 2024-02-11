@@ -97,6 +97,12 @@ const AddressSettings = () => {
     }));
   }, [resolvedAddress, account?.signer?.address]);
 
+  const cryptoAddressInfo = () => {
+    alert(
+      'Change your account address to an ENS name you own: in your ENS name page on ens.domains, click on "Records", "Edit Records", "Add record", add "plebbit-author-address" as record name, add your full address as value (you can copy it from your account data) and save.',
+    );
+  };
+
   const saveCryptoAddress = async () => {
     if (!cryptoState.cryptoAddress || !cryptoState.cryptoAddress.includes('.')) {
       alert(t('enter_crypto_address'));
@@ -156,7 +162,7 @@ const AddressSettings = () => {
   }, [savedCryptoAddress]);
 
   return (
-    <>
+    <div className={styles.addressSettings}>
       <span className={styles.settingTitle}>{t('display_name')}</span>
       <div className={styles.usernameInput}>
         <input type='text' placeholder='My Name' value={displayName} onChange={(e) => setDisplayName(e.target.value)} />
@@ -167,6 +173,9 @@ const AddressSettings = () => {
       </div>
       <div className={styles.cryptoAddressSetting}>
         <span className={styles.settingTitle}>{t('crypto_address')}</span>
+        <button className={styles.infoButton} onClick={cryptoAddressInfo}>
+          ?
+        </button>
         <div className={styles.usernameInput}>
           <input
             type='text'
@@ -187,7 +196,7 @@ const AddressSettings = () => {
         </div>
         <div></div>
       </div>
-    </>
+    </div>
   );
 };
 

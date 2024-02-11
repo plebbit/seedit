@@ -227,7 +227,7 @@
   "json_settings_info": "Hurtigt kopier eller indsæt fællesskabsindstillinger",
   "address_setting_info": "indstil en læsbar fællesskabsadresse ved hjælp af ens.domains",
   "enter_crypto_address": "Indtast venligst en gyldig krypto adresse.",
-  "check_for_updates": "Tjek for opdateringer",
+  "check_for_updates": "<1>Tjek</1> for opdateringer",
   "general_settings": "Generelle indstillinger",
   "refresh_to_update": "Opdater siden for at opdatere",
   "latest_development_version": "Du er på den nyeste udviklingsversion, commit {{commit}}. For at bruge den stabile version, gå til {{link}}.",

@@ -227,7 +227,7 @@
   "json_settings_info": "kopjoni ose ngjitni shpejt konfigurimet e komunitetit",
   "address_setting_info": "vendosni një adresë të lexueshme të komunitetit duke përdorur ens.domains",
   "enter_crypto_address": "Ju lutemi vendosni një adresë kripto të vlefshme.",
-  "check_for_updates": "Kontrollo për përditësime",
+  "check_for_updates": "<1>Kontrolloni</1> për përditësime",
   "general_settings": "Cilësimet e përgjithshme",
   "refresh_to_update": "Rifresko faqen për të rifreskuar",
   "latest_development_version": "Jeni në versionin më të fundit të zhvillimit, komitimi {{commit}}. Për të përdorur versionin e qëndrueshëm, shkoni te {{link}}.",

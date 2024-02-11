@@ -227,7 +227,7 @@
   "json_settings_info": "Rychle zkopírujte nebo vložte nastavení komunity",
   "address_setting_info": "nastavte čitelnou adresu komunity pomocí ens.domains",
   "enter_crypto_address": "Zadejte prosím platnou kryptoadresu.",
-  "check_for_updates": "Zkontrolovat aktualizace",
+  "check_for_updates": "<1>Zkontrolujte</1> aktualizace",
   "general_settings": "Obecné nastavení",
   "refresh_to_update": "Obnovte stránku pro aktualizaci",
   "latest_development_version": "Jste na nejnovější vývojové verzi, commit {{commit}}. Chcete-li použít stabilní verzi, přejděte na {{link}}.",

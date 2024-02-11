@@ -227,7 +227,7 @@
   "json_settings_info": "topluluk ayarlarını hızlı bir şekilde kopyala veya yapıştır",
   "address_setting_info": "ens.domains kullanarak okunabilir bir topluluk adresi ayarlayın",
   "enter_crypto_address": "Lütfen geçerli bir kripto adresi girin.",
-  "check_for_updates": "Güncellemeleri kontrol et",
+  "check_for_updates": "<1>Güncellemeleri</1> kontrol et",
   "general_settings": "Genel ayarlar",
   "refresh_to_update": "Güncellemek için sayfayı yenileyin",
   "latest_development_version": "En son geliştirme sürümündesiniz, commit {{commit}}. Kararlı sürümü kullanmak için {{link}} gidin.",

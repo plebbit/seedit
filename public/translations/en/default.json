@@ -227,7 +227,7 @@
   "json_settings_info": "quickly copy or paste the community settings",
   "address_setting_info": "set a readable community address using ens.domains",
   "enter_crypto_address": "Please enter a valid crypto address.",
-  "check_for_updates": "check for updates",
+  "check_for_updates": "<1>Check</1> for updates",
   "general_settings": "general settings",
   "refresh_to_update": "Refresh the page to update",
   "latest_development_version": "You're on the latest development version, commit {{commit}}. To use the stable version, go to {{link}}.",

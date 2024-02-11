@@ -227,7 +227,7 @@
   "json_settings_info": "コミュニティの設定を素早くコピーまたは貼り付ける",
   "address_setting_info": "ens.domainsを使用して読み取り可能なコミュニティのアドレスを設定",
   "enter_crypto_address": "有効な暗号通貨アドレスを入力してください。",
-  "check_for_updates": "更新をチェック",
+  "check_for_updates": "<1>更新</1> を確認",
   "general_settings": "一般設定",
   "refresh_to_update": "更新するにはページを更新してください",
   "latest_development_version": "最新の開発バージョン、コミット{{commit}}を使用しています。安定版を使用するには、{{link}}に移動してください。",

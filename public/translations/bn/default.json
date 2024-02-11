@@ -227,7 +227,7 @@
   "json_settings_info": "দ্রুত সমুদায়ের সেটিংস অনুলিপি বা পেস্ট করুন",
   "address_setting_info": "ens.domains ব্যবহার করে একটি পঠনীয় সমুদায় ঠিকানা সেট করুন",
   "enter_crypto_address": "দয়া করে একটি বৈধ ক্রিপ্টো ঠিকানা দিন।",
-  "check_for_updates": "আপডেট চেক করুন",
+  "check_for_updates": "<1>যাচাই</1> করুন আপডেট",
   "general_settings": "সাধারণ সেটিংস",
   "refresh_to_update": "আপডেট করতে পৃষ্ঠাটি রিফ্রেশ করুন",
   "latest_development_version": "আপনি সর্বশেষ ডেভেলপমেন্ট সংস্করণে আছেন, কমিট {{commit}}। স্থিতিশীল সংস্করণ ব্যবহার করতে, {{link}} যান।",

@@ -1,3 +1,7 @@
+.addressSettings button {
+  margin-left: 5px;
+}
+
 .green {
   color: var(--green);
 }
@@ -8,6 +12,10 @@
 
 .yellow {
   color: var(--yellow);
+}
+
+.settingTitle {
+  font-style: italic;
 }
 
 .usernameInput input {
@@ -31,7 +39,7 @@
 }
 
 .cryptoAddressSetting {
-  padding-top: 15px;
+  padding-top: 10px;
 }
 
 .infoButton {

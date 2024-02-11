@@ -227,7 +227,7 @@
   "json_settings_info": "copiar o pegar rápidamente la configuración de la comunidad",
   "address_setting_info": "establezca una dirección de comunidad legible utilizando ens.domains",
   "enter_crypto_address": "Por favor, introduzca una dirección de cripto válida.",
-  "check_for_updates": "Comprobar actualizaciones",
+  "check_for_updates": "<1>Verifique</1> las actualizaciones",
   "general_settings": "Configuración general",
   "refresh_to_update": "Actualiza la página para actualizar",
   "latest_development_version": "Estás en la última versión de desarrollo, commit {{commit}}. Para usar la versión estable, ve a {{link}}.",

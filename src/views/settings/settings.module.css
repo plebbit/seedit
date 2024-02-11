@@ -1,3 +1,15 @@
+.version a:hover {
+  text-decoration: underline;
+}
+
+.fullNodeStats {
+  text-transform: lowercase;
+  cursor: pointer;
+  font-size: 10px;
+  color: var(--link-primary);
+  margin-left: 5px;
+}
+
 .content {
   margin: 7px 5px 0px 5px;
   font-size: 12px;
@@ -35,8 +47,32 @@
 
 .categorySettings button {
   text-transform: capitalize;
-  margin-left: 5px;
   cursor: pointer;
+}
+
+.checkForUpdates {
+  padding-top: 10px;
+}
+
+.checkForUpdates button {
+  margin: 0;
+}
+
+.settingTitle {
+  padding-bottom: 2px;
+  text-transform: lowercase;
+}
+
+.languageSettings a {
+  text-transform: lowercase;
+  cursor: pointer;
+  font-size: 10px;
+  color: var(--link-primary);
+  margin-left: 5px;
+}
+
+.languageSettings a:hover {
+  text-decoration: underline;
 }
 
 @media (max-width: 768px) {
