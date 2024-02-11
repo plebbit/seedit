@@ -257,5 +257,8 @@
   "mod_edit": "modifica dei moderatori",
   "continue_thread": "continua questa discussione",
   "mod_reason": "motivo di moderazione",
-  "double_confirm": "Sei davvero sicuro? Questa azione è irreversibile."
+  "double_confirm": "Sei davvero sicuro? Questa azione è irreversibile.",
+  "crypto_address_not_yours": "L'indirizzo cripto appartiene a un altro account.",
+  "crypto_address_yours": "L'indirizzo cripto appartiene a questo account.",
+  "crypto_address_not_resolved": "L'indirizzo cripto non è ancora risolto."
 }

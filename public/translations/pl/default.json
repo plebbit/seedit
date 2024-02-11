@@ -257,5 +257,8 @@
   "mod_edit": "edycja mod",
   "continue_thread": "kontynuuj ten wątek",
   "mod_reason": "powód mod",
-  "double_confirm": "Jesteś naprawdę pewien? Ta akcja jest nieodwracalna."
+  "double_confirm": "Jesteś naprawdę pewien? Ta akcja jest nieodwracalna.",
+  "crypto_address_not_yours": "Adres kryptowaluty należy do innego konta.",
+  "crypto_address_yours": "Adres kryptowaluty należy do tego konta.",
+  "crypto_address_not_resolved": "Adres kryptowaluty nie jest jeszcze rozwiązany."
 }

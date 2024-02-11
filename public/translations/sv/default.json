@@ -257,5 +257,8 @@
   "mod_edit": "moderatoredigering",
   "continue_thread": "fortsätt den här tråden",
   "mod_reason": "mod anledning",
-  "double_confirm": "Är du verkligen säker? Denna åtgärd är oåterkallelig."
+  "double_confirm": "Är du verkligen säker? Denna åtgärd är oåterkallelig.",
+  "crypto_address_not_yours": "Crypto-adress tillhör ett annat konto.",
+  "crypto_address_yours": "Crypto-adressen tillhör denna konto.",
+  "crypto_address_not_resolved": "Crypto-adressen är ännu inte löst."
 }

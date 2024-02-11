@@ -257,5 +257,8 @@
   "mod_edit": "モデレーター編集",
   "continue_thread": "このスレッドを続ける",
   "mod_reason": "mod理由",
-  "double_confirm": "本当によろしいですか？このアクションは取り消せません。"
+  "double_confirm": "本当によろしいですか？このアクションは取り消せません。",
+  "crypto_address_not_yours": "暗号通貨アドレスは別のアカウントに属しています。",
+  "crypto_address_yours": "暗号通貨アドレスはこのアカウントに属しています。",
+  "crypto_address_not_resolved": "暗号通貨アドレスはまだ解決されていません。"
 }

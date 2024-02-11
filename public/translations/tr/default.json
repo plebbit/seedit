@@ -257,5 +257,8 @@
   "mod_edit": "mod düzenle",
   "continue_thread": "bu konuyu devam ettir",
   "mod_reason": "mod nedeni",
-  "double_confirm": "Gerçekten emin misiniz? Bu eylem geri alınamaz."
+  "double_confirm": "Gerçekten emin misiniz? Bu eylem geri alınamaz.",
+  "crypto_address_not_yours": "Kripto adres başka bir hesaba aittir.",
+  "crypto_address_yours": "Kripto adres bu hesaba aittir.",
+  "crypto_address_not_resolved": "Kripto adres henüz çözülmedi."
 }

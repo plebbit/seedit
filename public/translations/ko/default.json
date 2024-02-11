@@ -257,5 +257,8 @@
   "mod_edit": "모드 편집",
   "continue_thread": "이 스레드 계속하기",
   "mod_reason": "모드 이유",
-  "double_confirm": "정말로 확실합니까? 이 작업은 되돌릴 수 없습니다."
+  "double_confirm": "정말로 확실합니까? 이 작업은 되돌릴 수 없습니다.",
+  "crypto_address_not_yours": "암호 주소는 다른 계정에 속합니다.",
+  "crypto_address_yours": "암호 주소는이 계정에 속합니다.",
+  "crypto_address_not_resolved": "암호 주소가 아직 해결되지 않았습니다."
 }

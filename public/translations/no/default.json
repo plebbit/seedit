@@ -257,5 +257,8 @@
   "mod_edit": "moderatorendring",
   "continue_thread": "fortsett denne tråden",
   "mod_reason": "mod grunn",
-  "double_confirm": "Er du virkelig sikker? Denne handlingen er ugjenkallelig."
+  "double_confirm": "Er du virkelig sikker? Denne handlingen er ugjenkallelig.",
+  "crypto_address_not_yours": "Crypto-adressen tilhører en annen konto.",
+  "crypto_address_yours": "Crypto-adressen tilhører denne kontoen.",
+  "crypto_address_not_resolved": "Crypto-adresse er ikke løst ennå."
 }

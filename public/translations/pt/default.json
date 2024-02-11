@@ -257,5 +257,8 @@
   "mod_edit": "edição de mod",
   "continue_thread": "continue este tópico",
   "mod_reason": "razão do mod",
-  "double_confirm": "Tem certeza? Esta ação é irreversível."
+  "double_confirm": "Tem certeza? Esta ação é irreversível.",
+  "crypto_address_not_yours": "O endereço de criptomoeda pertence a outra conta.",
+  "crypto_address_yours": "O endereço de criptomoeda pertence a esta conta.",
+  "crypto_address_not_resolved": "O endereço de criptomoeda ainda não foi resolvido."
 }

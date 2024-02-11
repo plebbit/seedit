@@ -257,5 +257,8 @@
   "mod_edit": "mod edit",
   "continue_thread": "vazhdoni këtë temë",
   "mod_reason": "arsyeja mod",
-  "double_confirm": "A jeni të sigurtë? Ky veprim është i papërkthyeshëm."
+  "double_confirm": "A jeni të sigurtë? Ky veprim është i papërkthyeshëm.",
+  "crypto_address_not_yours": "Adresa e kriptovalutës i përket një llogarie tjetër.",
+  "crypto_address_yours": "Adresa e kriptovalutës i përket këtij llogarie.",
+  "crypto_address_not_resolved": "Adresa e kriptovalutës nuk është ende e zgjidhur."
 }

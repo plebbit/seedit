@@ -257,5 +257,8 @@
   "mod_edit": "موڈ سنواریں",
   "continue_thread": "اس ٹھریڈ کو جاری رکھیں",
   "mod_reason": "موڈ کا سبب",
-  "double_confirm": "کیا آپ واقعی میں یقینی ہیں؟ یہ کارروائی بے واپس ہے۔"
+  "double_confirm": "کیا آپ واقعی میں یقینی ہیں؟ یہ کارروائی بے واپس ہے۔",
+  "crypto_address_not_yours": "کرپٹو پتا دوسرے اکاؤنٹ کا حصہ ہے۔",
+  "crypto_address_yours": "کرپٹو پتا اس اکاؤنٹ کا حصہ ہے۔",
+  "crypto_address_not_resolved": "کرپٹو پتا ابھی تک حل نہیں ہوا ہے۔"
 }

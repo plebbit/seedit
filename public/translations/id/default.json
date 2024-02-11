@@ -257,5 +257,8 @@
   "mod_edit": "edit mod",
   "continue_thread": "lanjutkan utas ini",
   "mod_reason": "alasan mod",
-  "double_confirm": "Apakah Anda benar-benar yakin? Tindakan ini tidak dapat diurungkan."
+  "double_confirm": "Apakah Anda benar-benar yakin? Tindakan ini tidak dapat diurungkan.",
+  "crypto_address_not_yours": "Alamat kripto milik akun lain.",
+  "crypto_address_yours": "Alamat kripto milik akun ini.",
+  "crypto_address_not_resolved": "Alamat kripto belum terpecahkan."
 }

@@ -257,5 +257,8 @@
   "mod_edit": "moderátor szerkesztése",
   "continue_thread": "folytassa ezt a témát",
   "mod_reason": "mod indok",
-  "double_confirm": "Biztos vagy benne? Ez a művelet visszafordíthatatlan."
+  "double_confirm": "Biztos vagy benne? Ez a művelet visszafordíthatatlan.",
+  "crypto_address_not_yours": "A kripto-cím egy másik fiókhoz tartozik.",
+  "crypto_address_yours": "A kripto-cím ehhez a fiókhoz tartozik.",
+  "crypto_address_not_resolved": "A kripto cím még nem oldódott meg."
 }

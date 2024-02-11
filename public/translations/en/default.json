@@ -257,5 +257,8 @@
   "mod_edit": "mod edit",
   "continue_thread": "continue this thread",
   "mod_reason": "mod reason",
-  "double_confirm": "Are you really sure? This action is irreversible."
+  "double_confirm": "Are you really sure? This action is irreversible.",
+  "crypto_address_not_yours": "Crypto address belongs to another account.",
+  "crypto_address_yours": "Crypto address belongs to this account.",
+  "crypto_address_not_resolved": "Crypto address is not resolved yet."
 }

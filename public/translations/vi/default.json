@@ -257,5 +257,8 @@
   "mod_edit": "chỉnh sửa mod",
   "continue_thread": "tiếp tục chủ đề này",
   "mod_reason": "lý do mod",
-  "double_confirm": "Bạn có chắc chắn không? Hành động này không thể hoàn tác."
+  "double_confirm": "Bạn có chắc chắn không? Hành động này không thể hoàn tác.",
+  "crypto_address_not_yours": "Địa chỉ tiền điện tử thuộc về một tài khoản khác.",
+  "crypto_address_yours": "Địa chỉ tiền điện tử thuộc về tài khoản này.",
+  "crypto_address_not_resolved": "Địa chỉ tiền điện tử vẫn chưa được giải quyết."
 }

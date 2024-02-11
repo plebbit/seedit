@@ -257,5 +257,8 @@
   "mod_edit": "Moderator bearbeiten",
   "continue_thread": "diesen Thread fortsetzen",
   "mod_reason": "Mod-Begründung",
-  "double_confirm": "Sind Sie wirklich sicher? Diese Aktion ist nicht rückgängig zu machen."
+  "double_confirm": "Sind Sie wirklich sicher? Diese Aktion ist nicht rückgängig zu machen.",
+  "crypto_address_not_yours": "Krypto-Adresse gehört zu einem anderen Konto.",
+  "crypto_address_yours": "Krypto-Adresse gehört zu diesem Konto.",
+  "crypto_address_not_resolved": "Krypto-Adresse ist noch nicht aufgelöst."
 }

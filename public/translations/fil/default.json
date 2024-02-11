@@ -257,5 +257,8 @@
   "mod_edit": "pag-edit ng mod",
   "continue_thread": "ituloy ang thread na ito",
   "mod_reason": "dahilan ng mod",
-  "double_confirm": "Sigurado ka ba talaga? Ang aksyon na ito ay hindi mababawi."
+  "double_confirm": "Sigurado ka ba talaga? Ang aksyon na ito ay hindi mababawi.",
+  "crypto_address_not_yours": "Ang crypto address ay nauugnay sa ibang account.",
+  "crypto_address_yours": "Ang crypto address ay nauugnay sa account na ito.",
+  "crypto_address_not_resolved": "Hindi pa naresolba ang crypto address."
 }

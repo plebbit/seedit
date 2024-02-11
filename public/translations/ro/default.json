@@ -257,5 +257,8 @@
   "mod_edit": "editare mod",
   "continue_thread": "continuați acest fir de discuție",
   "mod_reason": "motivul mod",
-  "double_confirm": "Sunteți sigur? Această acțiune este ireversibilă."
+  "double_confirm": "Sunteți sigur? Această acțiune este ireversibilă.",
+  "crypto_address_not_yours": "Adresa crypto aparține unui alt cont.",
+  "crypto_address_yours": "Adresa crypto aparține acestui cont.",
+  "crypto_address_not_resolved": "Adresa crypto nu este încă rezolvată."
 }

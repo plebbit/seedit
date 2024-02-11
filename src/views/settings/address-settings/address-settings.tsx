@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import { setAccount, useAccount, useResolvedAuthorAddress } from '@plebbit/plebbit-react-hooks';
-import { getShortAddress } from '@plebbit/plebbit-js';
 import { useTranslation } from 'react-i18next';
 import styles from './address-settings.module.css';
 
@@ -81,10 +80,10 @@ const AddressSettings = () => {
     let resolveClass = '';
 
     if (resolvedAddress && resolvedAddress === account?.signer?.address) {
-      resolveString = `crypto address belongs to this account, address: ${getShortAddress(resolvedAddress)}`;
+      resolveString = t('crypto_address_yours');
       resolveClass = styles.green;
     } else if (resolvedAddress && resolvedAddress !== account?.signer?.address) {
-      resolveString = `crypto address belongs to another account, address: ${getShortAddress(resolvedAddress)}`;
+      resolveString = t('crypto_address_not_yours');
       resolveClass = styles.red;
     } else {
       return;
@@ -98,21 +97,15 @@ const AddressSettings = () => {
     }));
   }, [resolvedAddress, account?.signer?.address]);
 
-  const cryptoAddressInfo = () => {
-    alert(
-      'Change your account address to an ENS name you own: in your ENS name page on ens.domains, click on "Records", "Edit Records", "Add record", add "plebbit-author-address" as record name, add your full address as value (you can copy it from your account data) and save.',
-    );
-  };
-
   const saveCryptoAddress = async () => {
     if (!cryptoState.cryptoAddress || !cryptoState.cryptoAddress.includes('.')) {
       alert(t('enter_crypto_address'));
       return;
     } else if (resolvedAddress && resolvedAddress !== account?.signer?.address) {
-      alert(`Cannot save resolved crypto address, it belongs to another account, address: ${resolvedAddress}`);
+      alert(t('crypto_address_not_yours'));
       return;
     } else if (cryptoState.cryptoAddress && !resolvedAddress) {
-      alert('Please wait, crypto address is not resolved yet.');
+      alert(t('crypto_address_not_resolved'));
       return;
     } else if (resolvedAddress && resolvedAddress === account?.signer?.address) {
       try {
@@ -174,9 +167,6 @@ const AddressSettings = () => {
       </div>
       <div className={styles.cryptoAddressSetting}>
         <span className={styles.settingTitle}>{t('crypto_address')}</span>
-        <button className={styles.infoButton} onClick={cryptoAddressInfo}>
-          ?
-        </button>
         <div className={styles.usernameInput}>
           <input
             type='text'
