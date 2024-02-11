@@ -256,5 +256,6 @@
   "settings_saved": "تنظیمات برای p/{{subplebbitAddress}} ذخیره شد",
   "mod_edit": "ویرایش مدیر",
   "continue_thread": "ادامه این موضوع",
-  "mod_reason": "دلیل مدیر"
+  "mod_reason": "دلیل مدیر",
+  "double_confirm": "آیا مطمئن هستید؟ این عمل غیرقابل برگشت است."
 }

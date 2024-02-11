@@ -256,5 +256,6 @@
   "settings_saved": "Paramètres enregistrés pour p/{{subplebbitAddress}}",
   "mod_edit": "mod edit",
   "continue_thread": "continuer ce fil de discussion",
-  "mod_reason": "raison du modérateur"
+  "mod_reason": "raison du modérateur",
+  "double_confirm": "Êtes-vous vraiment sûr? Cette action est irréversible."
 }

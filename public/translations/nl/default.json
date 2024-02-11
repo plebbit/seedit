@@ -256,5 +256,6 @@
   "settings_saved": "Instellingen opgeslagen voor p/{{subplebbitAddress}}",
   "mod_edit": "mod-bewerking",
   "continue_thread": "ga verder in deze thread",
-  "mod_reason": "mod reden"
+  "mod_reason": "mod reden",
+  "double_confirm": "Weet u het zeker? Deze actie is onomkeerbaar."
 }

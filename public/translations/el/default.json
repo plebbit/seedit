@@ -256,5 +256,6 @@
   "settings_saved": "Οι ρυθμίσεις αποθηκεύτηκαν για το p/{{subplebbitAddress}}",
   "mod_edit": "επεξεργασία του διαχειριστή",
   "continue_thread": "συνεχίστε αυτό το θέμα",
-  "mod_reason": "λόγος mod"
+  "mod_reason": "λόγος mod",
+  "double_confirm": "Είστε σίγουροι; Αυτή η ενέργεια είναι αναίρεση."
 }

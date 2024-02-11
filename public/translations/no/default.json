@@ -256,5 +256,6 @@
   "settings_saved": "Innstillinger lagret for p/{{subplebbitAddress}}",
   "mod_edit": "moderatorendring",
   "continue_thread": "fortsett denne tråden",
-  "mod_reason": "mod grunn"
+  "mod_reason": "mod grunn",
+  "double_confirm": "Er du virkelig sikker? Denne handlingen er ugjenkallelig."
 }

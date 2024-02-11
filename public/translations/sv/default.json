@@ -256,5 +256,6 @@
   "settings_saved": "Inställningar sparade för p/{{subplebbitAddress}}",
   "mod_edit": "moderatoredigering",
   "continue_thread": "fortsätt den här tråden",
-  "mod_reason": "mod anledning"
+  "mod_reason": "mod anledning",
+  "double_confirm": "Är du verkligen säker? Denna åtgärd är oåterkallelig."
 }

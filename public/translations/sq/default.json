@@ -256,5 +256,6 @@
   "settings_saved": "Cilësimet u ruajtën për p/{{subplebbitAddress}}",
   "mod_edit": "mod edit",
   "continue_thread": "vazhdoni këtë temë",
-  "mod_reason": "arsyeja mod"
+  "mod_reason": "arsyeja mod",
+  "double_confirm": "A jeni të sigurtë? Ky veprim është i papërkthyeshëm."
 }

@@ -256,5 +256,6 @@
   "settings_saved": "Ayarlar p/{{subplebbitAddress}} için kaydedildi",
   "mod_edit": "mod düzenle",
   "continue_thread": "bu konuyu devam ettir",
-  "mod_reason": "mod nedeni"
+  "mod_reason": "mod nedeni",
+  "double_confirm": "Gerçekten emin misiniz? Bu eylem geri alınamaz."
 }

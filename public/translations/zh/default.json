@@ -256,5 +256,6 @@
   "settings_saved": "已保存 p/{{subplebbitAddress}} 的设置",
   "mod_edit": "mod 编辑",
   "continue_thread": "继续这个主题",
-  "mod_reason": "mod 原因"
+  "mod_reason": "mod 原因",
+  "double_confirm": "您真的确定吗？此操作不可逆转。"
 }

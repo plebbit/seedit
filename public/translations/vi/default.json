@@ -256,5 +256,6 @@
   "settings_saved": "Cài đặt đã được lưu cho p/{{subplebbitAddress}}",
   "mod_edit": "chỉnh sửa mod",
   "continue_thread": "tiếp tục chủ đề này",
-  "mod_reason": "lý do mod"
+  "mod_reason": "lý do mod",
+  "double_confirm": "Bạn có chắc chắn không? Hành động này không thể hoàn tác."
 }
