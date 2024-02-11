@@ -840,8 +840,8 @@ const SubplebbitSettings = () => {
 
   const [showDeleting, setShowDeleting] = useState(false);
   const _deleteSubplebbit = async () => {
-    if (subplebbitAddress && window.confirm(`Are you sure you want to delete p/${shortAddress}? This action is irreversible.`)) {
-      if (window.confirm(`Are you really sure? This action is irreversible.`)) {
+    if (subplebbitAddress && window.confirm(t('delete_confirm', { value: `p/${shortAddress}`, interpolation: { escapeValue: false } }))) {
+      if (window.confirm(t('double_confirm'))) {
         try {
           setShowDeleting(true);
           await deleteSubplebbit(subplebbitAddress);
