@@ -256,5 +256,6 @@
   "settings_saved": "Ustawienia zapisane dla p/{{subplebbitAddress}}",
   "mod_edit": "edycja mod",
   "continue_thread": "kontynuuj ten wątek",
-  "mod_reason": "powód mod"
+  "mod_reason": "powód mod",
+  "double_confirm": "Jesteś naprawdę pewien? Ta akcja jest nieodwracalna."
 }

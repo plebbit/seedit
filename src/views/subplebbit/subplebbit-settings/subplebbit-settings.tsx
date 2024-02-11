@@ -16,6 +16,7 @@ import styles from './subplebbit-settings.module.css';
 import { isValidURL } from '../../../lib/utils/url-utils';
 import { OptionInput, Exclude, getDefaultChallengeDescription, getDefaultChallengeOptions, getDefaultChallengeSettings } from '../../../lib/utils/challenge-utils';
 import LoadingEllipsis from '../../../components/loading-ellipsis';
+import Markdown from '../../../components/markdown';
 import Sidebar from '../../../components/sidebar';
 import { isCreateSubplebbitView, isSubplebbitSettingsView } from '../../../lib/utils/view-utils';
 
@@ -112,7 +113,17 @@ const Description = ({ isReadOnly = false }: { isReadOnly?: boolean }) => {
         {isReadOnly ? (
           <pre className={styles.readOnlyDescription}>{description}</pre>
         ) : (
-          <textarea value={description ?? ''} onChange={(e) => setSubplebbitSettingsStore({ description: e.target.value })} />
+          <>
+            <textarea value={description ?? ''} onChange={(e) => setSubplebbitSettingsStore({ description: e.target.value })} />
+            <div className={styles.descriptionPreview}>
+              {description && (
+                <>
+                  <div className={styles.descriptionMarkdownPreviewTitle}>Markdown Preview:</div>
+                  <Markdown content={description} />
+                </>
+              )}
+            </div>
+          </>
         )}
       </div>
     </div>
@@ -362,9 +373,15 @@ const ChallengeSettings = ({ challenge, index, isReadOnly, setSubplebbitSettings
 
   const addExcludeGroup = () => {
     const newExclude = { role: [], post: false, reply: false, vote: false };
-    const updatedChallenges = settings?.challenges?.map((ch: any, idx: number) => (idx === index ? { ...ch, exclude: [...(ch.exclude || []), newExclude] } : ch));
-    setSubplebbitSettingsStore({ settings: { ...settings, challenges: updatedChallenges } });
-    setShowExcludeSettings((prev) => [...prev, false]);
+    if (challenge?.exclude) {
+      const updatedChallenges = settings?.challenges?.map((ch: any, idx: number) => (idx === index ? { ...ch, exclude: [...ch.exclude, newExclude] } : ch));
+      setSubplebbitSettingsStore({ settings: { ...settings, challenges: updatedChallenges } });
+      setShowExcludeSettings((oldShowExcludeSettings) => [...oldShowExcludeSettings, true]);
+    } else {
+      const updatedChallenges = settings?.challenges?.map((ch: any, idx: number) => (idx === index ? { ...ch, exclude: [newExclude] } : ch));
+      setSubplebbitSettingsStore({ settings: { ...settings, challenges: updatedChallenges } });
+      setShowExcludeSettings([true]);
+    }
   };
 
   const deleteExcludeGroup = (excludeIndex: number) => {
@@ -823,8 +840,8 @@ const SubplebbitSettings = () => {
 
   const [showDeleting, setShowDeleting] = useState(false);
   const _deleteSubplebbit = async () => {
-    if (subplebbitAddress && window.confirm(`Are you sure you want to delete p/${shortAddress}? This action is irreversible.`)) {
-      if (window.confirm(`Are you really sure? This action is irreversible.`)) {
+    if (subplebbitAddress && window.confirm(t('delete_confirm', { value: `p/${shortAddress}`, interpolation: { escapeValue: false } }))) {
+      if (window.confirm(t('double_confirm'))) {
         try {
           setShowDeleting(true);
           await deleteSubplebbit(subplebbitAddress);

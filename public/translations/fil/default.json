@@ -256,5 +256,6 @@
   "settings_saved": "Naisilbi ang mga setting para sa p/{{subplebbitAddress}}",
   "mod_edit": "pag-edit ng mod",
   "continue_thread": "ituloy ang thread na ito",
-  "mod_reason": "dahilan ng mod"
+  "mod_reason": "dahilan ng mod",
+  "double_confirm": "Sigurado ka ba talaga? Ang aksyon na ito ay hindi mababawi."
 }

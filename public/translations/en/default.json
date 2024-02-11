@@ -256,5 +256,6 @@
   "settings_saved": "Settings saved for p/{{subplebbitAddress}}",
   "mod_edit": "mod edit",
   "continue_thread": "continue this thread",
-  "mod_reason": "mod reason"
+  "mod_reason": "mod reason",
+  "double_confirm": "Are you really sure? This action is irreversible."
 }

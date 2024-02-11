@@ -23,3 +23,7 @@
 .markdown li {
   white-space: normal;
 }
+
+.markdown h2 {
+  font-size: larger;
+}

@@ -256,5 +256,6 @@
   "settings_saved": "p/{{subplebbitAddress}} کے لئے ترتیبات محفوظ ہوگئیں",
   "mod_edit": "موڈ سنواریں",
   "continue_thread": "اس ٹھریڈ کو جاری رکھیں",
-  "mod_reason": "موڈ کا سبب"
+  "mod_reason": "موڈ کا سبب",
+  "double_confirm": "کیا آپ واقعی میں یقینی ہیں؟ یہ کارروائی بے واپس ہے۔"
 }

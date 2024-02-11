@@ -2,25 +2,33 @@ import { useEffect, useState } from 'react';
 import { setAccount, useAccount, useResolvedAuthorAddress } from '@plebbit/plebbit-react-hooks';
 import { getShortAddress } from '@plebbit/plebbit-js';
 import { useTranslation } from 'react-i18next';
-import styles from './profile-settings.module.css';
+import styles from './address-settings.module.css';
 
-const ProfileSettings = () => {
+const AddressSettings = () => {
   const { t } = useTranslation();
   const account = useAccount();
-  const [username, setUsername] = useState(account?.author.displayName || '');
-  const [savedUsername, setSavedUsername] = useState(false);
+  const [displayName, setDisplayName] = useState(account?.author.displayName || '');
+  const [savedDisplayName, setSavedDisplayName] = useState(false);
 
   useEffect(() => {
-    if (savedUsername) {
+    if (account?.author.displayName) {
+      setDisplayName(account?.author.displayName);
+    } else {
+      setDisplayName('');
+    }
+  }, [account?.author.displayName]);
+
+  useEffect(() => {
+    if (savedDisplayName) {
       setTimeout(() => {
-        setSavedUsername(false);
+        setSavedDisplayName(false);
       }, 2000);
     }
-  }, [savedUsername]);
+  }, [savedDisplayName]);
 
   const saveUsername = async () => {
     try {
-      await setAccount({ ...account, author: { ...account?.author, displayName: username } });
+      await setAccount({ ...account, author: { ...account?.author, displayName } });
     } catch (error) {
       if (error instanceof Error) {
         alert(error.message);
@@ -29,7 +37,7 @@ const ProfileSettings = () => {
         console.error('An unknown error occurred:', error);
       }
     }
-    setSavedUsername(true);
+    setSavedDisplayName(true);
   };
 
   const [cryptoState, setCryptoState] = useState({
@@ -158,11 +166,11 @@ const ProfileSettings = () => {
     <>
       <span className={styles.settingTitle}>{t('display_name')}</span>
       <div className={styles.usernameInput}>
-        <input type='text' placeholder='My Name' value={username} onChange={(e) => setUsername(e.target.value)} />
+        <input type='text' placeholder='My Name' value={displayName} onChange={(e) => setDisplayName(e.target.value)} />
         <button className={styles.button} onClick={saveUsername}>
           {t('save')}
         </button>
-        {savedUsername && <span className={styles.saved}>{t('saved')}</span>}
+        {savedDisplayName && <span className={styles.saved}>{t('saved')}</span>}
       </div>
       <div className={styles.cryptoAddressSetting}>
         <span className={styles.settingTitle}>{t('crypto_address')}</span>
@@ -193,4 +201,4 @@ const ProfileSettings = () => {
   );
 };
 
-export default ProfileSettings;
+export default AddressSettings;

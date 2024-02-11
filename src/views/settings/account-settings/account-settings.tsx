@@ -55,8 +55,10 @@ const AccountSettings = () => {
       return;
     } else if (!accountName) {
       return;
-    } else if (window.confirm(t('delete_confirm', { value: accountName }))) {
-      deleteAccount(accountName);
+    } else if (window.confirm(t('delete_confirm', { value: accountName, interpolation: { escapeValue: false } }))) {
+      if (window.confirm(t('double_confirm'))) {
+        deleteAccount(accountName);
+      }
     } else {
       return;
     }

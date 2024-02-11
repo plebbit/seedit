@@ -256,5 +256,6 @@
   "settings_saved": "Nastavení uloženo pro p/{{subplebbitAddress}}",
   "mod_edit": "úprava moderátora",
   "continue_thread": "pokračovat v tématu",
-  "mod_reason": "důvod mod"
+  "mod_reason": "důvod mod",
+  "double_confirm": "Opravdu jste si jisti? Tato akce je nevratná."
 }

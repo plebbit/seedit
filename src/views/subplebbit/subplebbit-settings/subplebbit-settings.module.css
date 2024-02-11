@@ -65,6 +65,15 @@
   white-space: pre-wrap;
 }
 
+.descriptionMarkdownPreviewTitle {
+  margin: 10px 0;
+  font-size: 16px;
+}
+
+.descriptionPreview {
+  font-size: 14px;
+}
+
 .readOnlyRoleExclude {
   font-size: 12px;
 }

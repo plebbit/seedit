@@ -256,5 +256,6 @@
   "settings_saved": "تم حفظ الإعدادات لـ p/{{subplebbitAddress}}",
   "mod_edit": "تحرير المشرف",
   "continue_thread": "تابع هذا الموضوع",
-  "mod_reason": "سبب المشرف"
+  "mod_reason": "سبب المشرف",
+  "double_confirm": "هل أنت متأكد حقًا؟ هذا الإجراء لا يمكن التراجع عنه."
 }

@@ -256,5 +256,6 @@
   "settings_saved": "Beállítások mentve p/{{subplebbitAddress}} esetén",
   "mod_edit": "moderátor szerkesztése",
   "continue_thread": "folytassa ezt a témát",
-  "mod_reason": "mod indok"
+  "mod_reason": "mod indok",
+  "double_confirm": "Biztos vagy benne? Ez a művelet visszafordíthatatlan."
 }

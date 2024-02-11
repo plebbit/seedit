@@ -256,5 +256,6 @@
   "settings_saved": "Setările au fost salvate pentru p/{{subplebbitAddress}}",
   "mod_edit": "editare mod",
   "continue_thread": "continuați acest fir de discuție",
-  "mod_reason": "motivul mod"
+  "mod_reason": "motivul mod",
+  "double_confirm": "Sunteți sigur? Această acțiune este ireversibilă."
 }

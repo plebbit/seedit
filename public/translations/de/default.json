@@ -256,5 +256,6 @@
   "settings_saved": "Einstellungen für p/{{subplebbitAddress}} gespeichert",
   "mod_edit": "Moderator bearbeiten",
   "continue_thread": "diesen Thread fortsetzen",
-  "mod_reason": "Mod-Begründung"
+  "mod_reason": "Mod-Begründung",
+  "double_confirm": "Sind Sie wirklich sicher? Diese Aktion ist nicht rückgängig zu machen."
 }

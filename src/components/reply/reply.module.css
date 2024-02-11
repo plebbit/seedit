@@ -128,13 +128,13 @@
   color: var(--markdown-link) !important;
 }
 
-.modEdit {
-  color: var(--yellow);
-}
-
 .highlightContent {
   background-color: var(--yellow-highlight);
   padding: 2px 5px;
+}
+
+.removedContent, .deletedContent {
+  text-transform: lowercase;
 }
 
 .usertext a {

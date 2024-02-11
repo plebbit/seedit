@@ -256,5 +256,6 @@
   "settings_saved": "p/{{subplebbitAddress}} の設定が保存されました",
   "mod_edit": "モデレーター編集",
   "continue_thread": "このスレッドを続ける",
-  "mod_reason": "mod理由"
+  "mod_reason": "mod理由",
+  "double_confirm": "本当によろしいですか？このアクションは取り消せません。"
 }
