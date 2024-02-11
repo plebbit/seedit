@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import styles from './settings.module.css';
 import GeneralSettings from './general-settings/general-settings';
-import ProfileSettings from './profile-settings';
+import AddressSettings from './address-settings';
 import AccountSettings from './account-settings/account-settings';
 
 const Settings = () => {
@@ -25,9 +25,9 @@ const Settings = () => {
         </span>
       </div>
       <div className={styles.category}>
-        <span className={styles.categoryTitle}>{t('profile')}</span>
+        <span className={styles.categoryTitle}>{t('address')}</span>
         <span className={styles.categorySettings}>
-          <ProfileSettings />
+          <AddressSettings />
         </span>
       </div>
       <div className={styles.category}>
