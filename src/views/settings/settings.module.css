@@ -1,17 +1,5 @@
-.version a:hover {
-  text-decoration: underline;
-}
-
-.fullNodeStats {
-  text-transform: lowercase;
-  cursor: pointer;
-  font-size: 10px;
-  color: var(--link-primary);
-  margin-left: 5px;
-}
-
 .content {
-  margin: 7px 5px 0px 5px;
+  margin: 7px 5px 40px 5px;
   font-size: 12px;
   color: var(--text);
   width: 100%;
@@ -50,6 +38,18 @@
   cursor: pointer;
 }
 
+.version a:hover {
+  text-decoration: underline;
+}
+
+.fullNodeStats {
+  text-transform: lowercase;
+  cursor: pointer;
+  font-size: 10px;
+  color: var(--link-primary);
+  margin-left: 5px;
+}
+
 .checkForUpdates {
   padding-top: 10px;
 }
@@ -73,6 +73,43 @@
 
 .languageSettings a:hover {
   text-decoration: underline;
+}
+
+.avatar {
+  width: 70px;
+  height: 70px;
+  margin-bottom: 5px;
+  border: 1px solid var(--border-text);
+}
+
+.avatar img {
+  width: 70px;
+  height: 70px;
+}
+
+.emptyAvatar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 100%;
+  cursor: pointer;
+}
+
+.usernameInput input {
+  width: 200px;
+  padding: 2px;
+  box-shadow: var(--box-shadow-input);
+}
+
+.usernameInput button {
+  margin-left: 5px;
+}
+
+.saved {
+  padding-left: 5px;
+  font-style: italic;
+  text-transform: capitalize;
 }
 
 @media (max-width: 768px) {

@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Trans, useTranslation } from 'react-i18next';
+import { setAccount, useAccount, useAuthorAvatar } from '@plebbit/plebbit-react-hooks';
 import styles from './settings.module.css';
 import AccountSettings from './account-settings';
 import AddressSettings from './address-settings';
@@ -104,6 +105,58 @@ const ThemeSettings = () => {
   );
 };
 
+const ProfileSettings = () => {
+  const { t } = useTranslation();
+  const account = useAccount();
+  const { imageUrl } = useAuthorAvatar({ author: account?.author });
+  const [displayName, setDisplayName] = useState(account?.author.displayName || '');
+  const [savedDisplayName, setSavedDisplayName] = useState(false);
+
+  useEffect(() => {
+    if (account?.author.displayName) {
+      setDisplayName(account?.author.displayName);
+    } else {
+      setDisplayName('');
+    }
+  }, [account?.author.displayName]);
+
+  useEffect(() => {
+    if (savedDisplayName) {
+      setTimeout(() => {
+        setSavedDisplayName(false);
+      }, 2000);
+    }
+  }, [savedDisplayName]);
+  const saveUsername = async () => {
+    try {
+      await setAccount({ ...account, author: { ...account?.author, displayName } });
+    } catch (error) {
+      if (error instanceof Error) {
+        alert(error.message);
+        console.log(error);
+      } else {
+        console.error('An unknown error occurred:', error);
+      }
+    }
+    setSavedDisplayName(true);
+  };
+
+  return (
+    <div className={styles.profileSettings}>
+      <span className={styles.settingTitle}>avatar</span>
+      <div className={styles.avatar}>{imageUrl ? <img src={imageUrl} alt='avatar' /> : <span className={styles.emptyAvatar}>+{t('add')}</span>}</div>
+      <span className={styles.settingTitle}>{t('display_name')}</span>
+      <div className={styles.usernameInput}>
+        <input type='text' placeholder='My Name' value={displayName} onChange={(e) => setDisplayName(e.target.value)} />
+        <button className={styles.button} onClick={saveUsername}>
+          {t('save')}
+        </button>
+        {savedDisplayName && <span className={styles.saved}>{t('saved')}</span>}
+      </div>
+    </div>
+  );
+};
+
 const Settings = () => {
   const { t } = useTranslation();
 
@@ -154,6 +207,12 @@ const Settings = () => {
         <span className={styles.categoryTitle}>{t('theme')}</span>
         <span className={styles.categorySettings}>
           <ThemeSettings />
+        </span>
+      </div>
+      <div className={styles.category}>
+        <span className={styles.categoryTitle}>{t('profile')}</span>
+        <span className={styles.categorySettings}>
+          <ProfileSettings />
         </span>
       </div>
       <div className={styles.category}>

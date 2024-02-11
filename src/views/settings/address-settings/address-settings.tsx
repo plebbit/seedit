@@ -6,38 +6,6 @@ import styles from './address-settings.module.css';
 const AddressSettings = () => {
   const { t } = useTranslation();
   const account = useAccount();
-  const [displayName, setDisplayName] = useState(account?.author.displayName || '');
-  const [savedDisplayName, setSavedDisplayName] = useState(false);
-
-  useEffect(() => {
-    if (account?.author.displayName) {
-      setDisplayName(account?.author.displayName);
-    } else {
-      setDisplayName('');
-    }
-  }, [account?.author.displayName]);
-
-  useEffect(() => {
-    if (savedDisplayName) {
-      setTimeout(() => {
-        setSavedDisplayName(false);
-      }, 2000);
-    }
-  }, [savedDisplayName]);
-
-  const saveUsername = async () => {
-    try {
-      await setAccount({ ...account, author: { ...account?.author, displayName } });
-    } catch (error) {
-      if (error instanceof Error) {
-        alert(error.message);
-        console.log(error);
-      } else {
-        console.error('An unknown error occurred:', error);
-      }
-    }
-    setSavedDisplayName(true);
-  };
 
   const [cryptoState, setCryptoState] = useState({
     cryptoAddress: '',
@@ -95,7 +63,7 @@ const AddressSettings = () => {
       resolveClass: resolveClass,
       showResolvingMessage: false,
     }));
-  }, [resolvedAddress, account?.signer?.address]);
+  }, [resolvedAddress, account?.signer?.address, t]);
 
   const cryptoAddressInfo = () => {
     alert(
@@ -163,14 +131,6 @@ const AddressSettings = () => {
 
   return (
     <div className={styles.addressSettings}>
-      <span className={styles.settingTitle}>{t('display_name')}</span>
-      <div className={styles.usernameInput}>
-        <input type='text' placeholder='My Name' value={displayName} onChange={(e) => setDisplayName(e.target.value)} />
-        <button className={styles.button} onClick={saveUsername}>
-          {t('save')}
-        </button>
-        {savedDisplayName && <span className={styles.saved}>{t('saved')}</span>}
-      </div>
       <div className={styles.cryptoAddressSetting}>
         <span className={styles.settingTitle}>{t('crypto_address')}</span>
         <button className={styles.infoButton} onClick={cryptoAddressInfo}>
