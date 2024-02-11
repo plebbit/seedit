@@ -259,7 +259,6 @@ const Reply = ({ cidOfReplyWithContext, depth = 0, isSingleComment, isSingleRepl
     score = 1;
   }
   const scoreString = score === 1 ? t('reply_score_singular') : t('reply_score_plural', { count: score });
-  const contentString = removed ? `[${t('removed')}]` : content;
   const stateString = useStateString(reply);
   const loadingString = stateString && <span className={styles.stateString}>{stateString !== 'Failed' ? <LoadingEllipsis string={stateString} /> : ''}</span>;
 
@@ -336,7 +335,7 @@ const Reply = ({ cidOfReplyWithContext, depth = 0, isSingleComment, isSingleRepl
             )}
             {!collapsed && (
               <div className={`${styles.usertext} ${cid && commentMediaInfo && (isSingleComment || cidOfReplyWithContext === cid) ? styles.highlightMedia : ''}`}>
-                {commentMediaInfo && !removed && (
+                {commentMediaInfo && (!removed || !deleted) && (
                   <ReplyMedia
                     commentMediaInfo={commentMediaInfo}
                     content={content}
@@ -349,7 +348,14 @@ const Reply = ({ cidOfReplyWithContext, depth = 0, isSingleComment, isSingleRepl
                   />
                 )}
                 <div className={`${styles.md} ${cid && (isSingleComment || cidOfReplyWithContext === cid) ? styles.highlightContent : ''}`}>
-                  <Markdown content={contentString} />
+                  {content &&
+                    (removed ? (
+                      <div className={styles.removedContent}>[{t('removed')}]</div>
+                    ) : deleted ? (
+                      <div className={styles.deletedContent}>[{t('deleted')}]</div>
+                    ) : (
+                      <Markdown content={content} />
+                    ))}
                   {reason && (
                     <div className={styles.modReason}>
                       <br />

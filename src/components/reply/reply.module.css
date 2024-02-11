@@ -133,6 +133,10 @@
   padding: 2px 5px;
 }
 
+.removedContent, .deletedContent {
+  text-transform: lowercase;
+}
+
 .usertext a {
   color: var(--text);
   text-decoration: none;
