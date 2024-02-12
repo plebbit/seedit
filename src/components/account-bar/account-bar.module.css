@@ -95,13 +95,13 @@
   line-height: normal;
 }
 
-.dropdownChoice {
+.dropdownItem {
   cursor: pointer;
   padding: 2px 3px 1px 3px;
   display: block;
 }
 
-.dropdownChoice:hover {
+.dropdownItem:hover {
   background-color: var(--background-primary);
 }
 

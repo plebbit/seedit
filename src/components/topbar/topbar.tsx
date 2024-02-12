@@ -31,30 +31,30 @@ const TopBar = () => {
   const [isSubsDropdownOpen, setIsSubsDropdownOpen] = useState(false);
   const toggleSubsDropdown = () => setIsSubsDropdownOpen(!isSubsDropdownOpen);
   const subsDropdownRef = useRef<HTMLDivElement>(null);
-  const subsDropdownChoicesRef = useRef<HTMLDivElement>(null);
+  const subsdropdownItemsRef = useRef<HTMLDivElement>(null);
   const subsDropdownClass = isSubsDropdownOpen ? styles.visible : styles.hidden;
 
   const [isSortsDropdownOpen, setIsSortsDropdownOpen] = useState(false);
   const toggleSortsDropdown = () => setIsSortsDropdownOpen(!isSortsDropdownOpen);
   const sortsDropdownRef = useRef<HTMLDivElement>(null);
-  const sortsDropdownChoicesRef = useRef<HTMLDivElement>(null);
+  const sortsdropdownItemsRef = useRef<HTMLDivElement>(null);
   const sortsDropdownClass = isSortsDropdownOpen ? styles.visible : styles.hidden;
 
   const [isFilterDropdownOpen, setIsFilterDropdownOpen] = useState(false);
   const toggleFilterDropdown = () => setIsFilterDropdownOpen(!isFilterDropdownOpen);
   const filterDropdownRef = useRef<HTMLDivElement>(null);
-  const filterDropdownChoicesRef = useRef<HTMLDivElement>(null);
+  const filterdropdownItemsRef = useRef<HTMLDivElement>(null);
   const filterDropdownClass = isFilterDropdownOpen ? styles.visible : styles.hidden;
 
   const sortLabels = [t('hot'), t('new'), t('active'), t('controversial'), t('top')];
   const [selectedSortType, setSelectedSortType] = useState(params.sortType || '/hot');
 
-  const getTimeFilterLink = (choice: string) => {
+  const getTimeFilterLink = (timeFilterName: string) => {
     return isInSubplebbitView
-      ? `/p/${params.subplebbitAddress}/${selectedSortType}/${choice}`
+      ? `/p/${params.subplebbitAddress}/${selectedSortType}/${timeFilterName}`
       : isinAllView
-      ? `p/all/${selectedSortType}/${choice}`
-      : `/${selectedSortType}/${choice}`;
+      ? `p/all/${selectedSortType}/${timeFilterName}`
+      : `/${selectedSortType}/${timeFilterName}`;
   };
 
   const getSelectedSortLabel = () => {
@@ -75,14 +75,11 @@ const TopBar = () => {
       const target = event.target as Node;
 
       const isOutsideSubs =
-        subsDropdownRef.current && !subsDropdownRef.current.contains(target) && subsDropdownChoicesRef.current && !subsDropdownChoicesRef.current.contains(target);
+        subsDropdownRef.current && !subsDropdownRef.current.contains(target) && subsdropdownItemsRef.current && !subsdropdownItemsRef.current.contains(target);
       const isOutsideSorts =
-        sortsDropdownRef.current && !sortsDropdownRef.current.contains(target) && sortsDropdownChoicesRef.current && !sortsDropdownChoicesRef.current.contains(target);
+        sortsDropdownRef.current && !sortsDropdownRef.current.contains(target) && sortsdropdownItemsRef.current && !sortsdropdownItemsRef.current.contains(target);
       const isOutsideFilter =
-        filterDropdownRef.current &&
-        !filterDropdownRef.current.contains(target) &&
-        filterDropdownChoicesRef.current &&
-        !filterDropdownChoicesRef.current.contains(target);
+        filterDropdownRef.current && !filterDropdownRef.current.contains(target) && filterdropdownItemsRef.current && !filterdropdownItemsRef.current.contains(target);
 
       if (isOutsideSubs) {
         setIsSubsDropdownOpen(false);
@@ -96,7 +93,7 @@ const TopBar = () => {
         setIsFilterDropdownOpen(false);
       }
     },
-    [subsDropdownRef, subsDropdownChoicesRef, sortsDropdownRef, sortsDropdownChoicesRef, filterDropdownRef, filterDropdownChoicesRef],
+    [subsDropdownRef, subsdropdownItemsRef, sortsDropdownRef, sortsdropdownItemsRef, filterDropdownRef, filterdropdownItemsRef],
   );
 
   useEffect(() => {
@@ -120,27 +117,27 @@ const TopBar = () => {
       <div className={styles.widthClip}>
         <div className={`${styles.dropdown} ${styles.subsDropdown}`} ref={subsDropdownRef} onClick={toggleSubsDropdown}>
           <span className={styles.selectedTitle}>{t('my_communities')}</span>
-          <div className={`${styles.dropChoices} ${styles.subsDropChoices} ${subsDropdownClass}`} ref={subsDropdownChoicesRef}>
+          <div className={`${styles.dropChoices} ${styles.subsDropChoices} ${subsDropdownClass}`} ref={subsdropdownItemsRef}>
             {subscriptions?.map((subscription: string, index: number) => (
-              <Link key={index} to={`/p/${subscription}`} className={styles.dropdownChoice}>
+              <Link key={index} to={`/p/${subscription}`} className={styles.dropdownItem}>
                 {getShortAddress(subscription)}
               </Link>
             ))}
-            <Link to='/communities/subscriber' className={`${styles.dropdownChoice} ${styles.editSubscriptions}`}>
+            <Link to='/communities/subscriber' className={`${styles.dropdownItem} ${styles.editSubscriptions}`}>
               {t('edit_subscriptions')}
             </Link>
           </div>
         </div>
         <div className={styles.dropdown} ref={sortsDropdownRef} onClick={toggleSortsDropdown}>
           <span className={styles.selectedTitle}>{getSelectedSortLabel()}</span>
-          <div className={`${styles.dropChoices} ${styles.sortsDropChoices} ${sortsDropdownClass}`} ref={sortsDropdownChoicesRef}>
+          <div className={`${styles.dropChoices} ${styles.sortsDropChoices} ${sortsDropdownClass}`} ref={sortsdropdownItemsRef}>
             {sortTypes.map((choice, index) => {
               let dropdownLink = isInSubplebbitView ? `/p/${params.subplebbitAddress}/${choice}` : choice;
               if (timeFilterName) {
                 dropdownLink += `/${timeFilterName}`;
               }
               return (
-                <Link to={dropdownLink} key={index} className={styles.dropdownChoice}>
+                <Link to={dropdownLink} key={index} className={styles.dropdownItem}>
                   {sortLabels[index]}
                 </Link>
               );
@@ -149,9 +146,9 @@ const TopBar = () => {
         </div>
         <div className={styles.dropdown} ref={filterDropdownRef} onClick={toggleFilterDropdown}>
           <span className={styles.selectedTitle}>{selectedTimeFilter}</span>
-          <div className={`${styles.dropChoices} ${styles.filterDropChoices} ${filterDropdownClass}`} ref={filterDropdownChoicesRef}>
-            {timeFilterNames.map((choice, index) => (
-              <Link to={getTimeFilterLink(choice)} key={index} className={styles.dropdownChoice}>
+          <div className={`${styles.dropChoices} ${styles.filterDropChoices} ${filterDropdownClass}`} ref={filterdropdownItemsRef}>
+            {timeFilterNames.map((timeFilterName, index) => (
+              <Link to={getTimeFilterLink(timeFilterName)} key={index} className={styles.dropdownItem}>
                 {timeFilterNames[index]}
               </Link>
             ))}

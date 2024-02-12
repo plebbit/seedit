@@ -84,10 +84,6 @@ const SortItems = () => {
   const [selectedSortType, setSelectedSortType] = useState(params.sortType || '/hot');
   const timeFilterName = params.timeFilterName as TimeFilterKey;
 
-  const handleSelect = (choice: string) => {
-    setSelectedSortType(choice);
-  };
-
   useEffect(() => {
     if (location.pathname.endsWith('/about')) {
       setSelectedSortType('');
@@ -98,14 +94,14 @@ const SortItems = () => {
     }
   }, [params.sortType, location.pathname]);
 
-  return sortTypes.map((choice, index) => {
-    let sortLink = isInSubplebbitView ? `/p/${params.subplebbitAddress}/${choice}` : isInAllView ? `p/all/${choice}` : choice;
+  return sortTypes.map((sortType, index) => {
+    let sortLink = isInSubplebbitView ? `/p/${params.subplebbitAddress}/${sortType}` : isInAllView ? `p/all/${sortType}` : sortType;
     if (timeFilterName) {
       sortLink = sortLink + `/${timeFilterName}`;
     }
     return (
-      <li key={choice}>
-        <Link to={sortLink} className={selectedSortType === choice ? styles.selected : styles.choice} onClick={() => handleSelect(choice)}>
+      <li key={sortType}>
+        <Link to={sortLink} className={selectedSortType === sortType ? styles.selected : styles.choice} onClick={() => setSelectedSortType(sortType)}>
           {sortLabels[index]}
         </Link>
       </li>
