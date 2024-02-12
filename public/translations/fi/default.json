@@ -260,5 +260,6 @@
   "double_confirm": "Oletko varma? Tämä toiminto on peruuttamaton.",
   "crypto_address_not_yours": "Krypto-osoite kuuluu toiseen tiliin.",
   "crypto_address_yours": "Krypto-osoite kuuluu tähän tiliin.",
-  "crypto_address_not_resolved": "Krypto-osoitetta ei ole vielä ratkaistu."
+  "crypto_address_not_resolved": "Krypto-osoitetta ei ole vielä ratkaistu.",
+  "submit_to_string": "Lähetä kohteeseen {{string}}"
 }

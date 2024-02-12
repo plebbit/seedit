@@ -260,5 +260,6 @@
   "double_confirm": "మీరు నిజంగా ఖచ్చితముగా ఉన్నారా? ఈ చర్య రద్దు చేయలేదు.",
   "crypto_address_not_yours": "క్రిప్టో చిరునామా మరొక ఖాతాకు చేరుకుంది.",
   "crypto_address_yours": "క్రిప్టో చిరునామా ఈ ఖాతాకు చేరుకుంది.",
-  "crypto_address_not_resolved": "క్రిప్టో చిరునామా ఇంకా పరిష్కరించబడలేదు."
+  "crypto_address_not_resolved": "క్రిప్టో చిరునామా ఇంకా పరిష్కరించబడలేదు.",
+  "submit_to_string": "{{string}} కు సబ్‌మిట్ చేయండి"
 }

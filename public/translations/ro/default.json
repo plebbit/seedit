@@ -260,5 +260,6 @@
   "double_confirm": "Sunteți sigur? Această acțiune este ireversibilă.",
   "crypto_address_not_yours": "Adresa crypto aparține unui alt cont.",
   "crypto_address_yours": "Adresa crypto aparține acestui cont.",
-  "crypto_address_not_resolved": "Adresa crypto nu este încă rezolvată."
+  "crypto_address_not_resolved": "Adresa crypto nu este încă rezolvată.",
+  "submit_to_string": "Trimite la {{string}}"
 }

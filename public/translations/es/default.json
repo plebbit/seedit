@@ -260,5 +260,6 @@
   "double_confirm": "¿Estás realmente seguro? Esta acción es irreversible.",
   "crypto_address_not_yours": "La dirección de criptomoneda pertenece a otra cuenta.",
   "crypto_address_yours": "La dirección de criptomoneda pertenece a esta cuenta.",
-  "crypto_address_not_resolved": "La dirección de criptomoneda aún no está resuelta."
+  "crypto_address_not_resolved": "La dirección de criptomoneda aún no está resuelta.",
+  "submit_to_string": "Enviar a {{string}}"
 }

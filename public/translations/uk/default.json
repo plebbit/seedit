@@ -260,5 +260,6 @@
   "double_confirm": "Ви впевнені? Ця дія незворотня.",
   "crypto_address_not_yours": "Адреса криптовалюти належить до іншого облікового запису.",
   "crypto_address_yours": "Адреса криптовалюти належить цьому обліковому запису.",
-  "crypto_address_not_resolved": "Адреса криптовалюти ще не вирішена."
+  "crypto_address_not_resolved": "Адреса криптовалюти ще не вирішена.",
+  "submit_to_string": "Надіслати до {{string}}"
 }

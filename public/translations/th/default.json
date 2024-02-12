@@ -260,5 +260,6 @@
   "double_confirm": "คุณแน่ใจหรือไม่? การดำเนินการนี้ไม่สามารถย้อนกลับได้",
   "crypto_address_not_yours": "ที่อยู่คริปโตเป็นของบัญชีอื่น",
   "crypto_address_yours": "ที่อยู่คริปโตเป็นของบัญชีนี้",
-  "crypto_address_not_resolved": "ที่อยู่คริปโตยังไม่ได้รับการแก้ไข"
+  "crypto_address_not_resolved": "ที่อยู่คริปโตยังไม่ได้รับการแก้ไข",
+  "submit_to_string": "ส่งไปยัง {{string}}"
 }

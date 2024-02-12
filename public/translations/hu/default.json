@@ -260,5 +260,6 @@
   "double_confirm": "Biztos vagy benne? Ez a művelet visszafordíthatatlan.",
   "crypto_address_not_yours": "A kripto-cím egy másik fiókhoz tartozik.",
   "crypto_address_yours": "A kripto-cím ehhez a fiókhoz tartozik.",
-  "crypto_address_not_resolved": "A kripto cím még nem oldódott meg."
+  "crypto_address_not_resolved": "A kripto cím még nem oldódott meg.",
+  "submit_to_string": "Beküldés ide: {{string}}"
 }

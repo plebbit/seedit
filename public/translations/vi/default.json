@@ -260,5 +260,6 @@
   "double_confirm": "Bạn có chắc chắn không? Hành động này không thể hoàn tác.",
   "crypto_address_not_yours": "Địa chỉ tiền điện tử thuộc về một tài khoản khác.",
   "crypto_address_yours": "Địa chỉ tiền điện tử thuộc về tài khoản này.",
-  "crypto_address_not_resolved": "Địa chỉ tiền điện tử vẫn chưa được giải quyết."
+  "crypto_address_not_resolved": "Địa chỉ tiền điện tử vẫn chưa được giải quyết.",
+  "submit_to_string": "Gửi đến {{string}}"
 }

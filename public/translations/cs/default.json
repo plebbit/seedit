@@ -260,5 +260,6 @@
   "double_confirm": "Opravdu jste si jisti? Tato akce je nevratná.",
   "crypto_address_not_yours": "Adresa kryptoměny patří k jinému účtu.",
   "crypto_address_yours": "Adresa kryptoměny patří k tomuto účtu.",
-  "crypto_address_not_resolved": "Adresa kryptoměny ještě není vyřešena."
+  "crypto_address_not_resolved": "Adresa kryptoměny ještě není vyřešena.",
+  "submit_to_string": "Odeslat do {{string}}"
 }

@@ -260,5 +260,6 @@
   "double_confirm": "האם אתה באמת בטוח? הפעולה הזו היא לא הפיכה.",
   "crypto_address_not_yours": "כתובת המטבע הקריפטוגרפי שייכת לחשבון אחר.",
   "crypto_address_yours": "כתובת המטבע הקריפטוגרפי שייכת לחשבון זה.",
-  "crypto_address_not_resolved": "כתובת המטבע הקריפטוגרפית עדיין לא נפתרה."
+  "crypto_address_not_resolved": "כתובת המטבע הקריפטוגרפית עדיין לא נפתרה.",
+  "submit_to_string": "שליחה אל {{string}}"
 }

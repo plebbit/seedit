@@ -260,5 +260,6 @@
   "double_confirm": "क्या आप वास्तव में सुनिश्चित हैं? यह क्रिया अपरिवर्तनीय है।",
   "crypto_address_not_yours": "क्रिप्टो पता दूसरे खाते से संबंधित है।",
   "crypto_address_yours": "क्रिप्टो पता इस खाते से संबंधित है।",
-  "crypto_address_not_resolved": "क्रिप्टो पता अभी तक हल नहीं किया गया है।"
+  "crypto_address_not_resolved": "क्रिप्टो पता अभी तक हल नहीं किया गया है।",
+  "submit_to_string": "{{string}} को सबमिट करें"
 }

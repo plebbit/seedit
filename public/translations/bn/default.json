@@ -260,5 +260,6 @@
   "double_confirm": "আপনি কি সত্যিই নিশ্চিত? এই অ্যাকশন বিপর্যস্ত করা যাবে না।",
   "crypto_address_not_yours": "ক্রিপ্টো ঠিকানা অন্য একটি অ্যাকাউন্টের অংশ।",
   "crypto_address_yours": "ক্রিপ্টো ঠিকানা এই অ্যাকাউন্টের অংশ।",
-  "crypto_address_not_resolved": "ক্রিপ্টো ঠিকানা এখনো সমাধান করা হয়নি।"
+  "crypto_address_not_resolved": "ক্রিপ্টো ঠিকানা এখনো সমাধান করা হয়নি।",
+  "submit_to_string": "{{string}} এ জমা দিন"
 }

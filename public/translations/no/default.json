@@ -260,5 +260,6 @@
   "double_confirm": "Er du virkelig sikker? Denne handlingen er ugjenkallelig.",
   "crypto_address_not_yours": "Crypto-adressen tilhører en annen konto.",
   "crypto_address_yours": "Crypto-adressen tilhører denne kontoen.",
-  "crypto_address_not_resolved": "Crypto-adresse er ikke løst ennå."
+  "crypto_address_not_resolved": "Crypto-adresse er ikke løst ennå.",
+  "submit_to_string": "Send til {{string}}"
 }
