@@ -227,7 +227,7 @@
   "json_settings_info": "topluluk ayarlarını hızlı bir şekilde kopyala veya yapıştır",
   "address_setting_info": "ens.domains kullanarak okunabilir bir topluluk adresi ayarlayın",
   "enter_crypto_address": "Lütfen geçerli bir kripto adresi girin.",
-  "check_for_updates": "Güncellemeleri kontrol et",
+  "check_for_updates": "<1>Güncellemeleri</1> kontrol et",
   "general_settings": "Genel ayarlar",
   "refresh_to_update": "Güncellemek için sayfayı yenileyin",
   "latest_development_version": "En son geliştirme sürümündesiniz, commit {{commit}}. Kararlı sürümü kullanmak için {{link}} gidin.",
@@ -257,5 +257,9 @@
   "mod_edit": "mod düzenle",
   "continue_thread": "bu konuyu devam ettir",
   "mod_reason": "mod nedeni",
-  "double_confirm": "Gerçekten emin misiniz? Bu eylem geri alınamaz."
+  "double_confirm": "Gerçekten emin misiniz? Bu eylem geri alınamaz.",
+  "crypto_address_not_yours": "Kripto adres başka bir hesaba aittir.",
+  "crypto_address_yours": "Kripto adres bu hesaba aittir.",
+  "crypto_address_not_resolved": "Kripto adres henüz çözülmedi.",
+  "submit_to_string": "{{string}} e gönder"
 }

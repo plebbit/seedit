@@ -227,7 +227,7 @@
   "json_settings_info": "نسخ أو لصق إعدادات المجتمع بسرعة",
   "address_setting_info": "قم بتعيين عنوان مجتمع قابل للقراءة باستخدام ens.domains",
   "enter_crypto_address": "الرجاء إدخال عنوان كريبتو صالح.",
-  "check_for_updates": "تحقق من وجود تحديثات",
+  "check_for_updates": "<1>تحقق</1> من التحديثات",
   "general_settings": "إعدادات عامة",
   "refresh_to_update": "قم بتحديث الصفحة للتحديث",
   "latest_development_version": "أنت على أحدث إصدار تطوير، النسخة {{commit}}. لاستخدام النسخة الثابتة، انتقل إلى {{link}}.",
@@ -257,5 +257,9 @@
   "mod_edit": "تحرير المشرف",
   "continue_thread": "تابع هذا الموضوع",
   "mod_reason": "سبب المشرف",
-  "double_confirm": "هل أنت متأكد حقًا؟ هذا الإجراء لا يمكن التراجع عنه."
+  "double_confirm": "هل أنت متأكد حقًا؟ هذا الإجراء لا يمكن التراجع عنه.",
+  "crypto_address_not_yours": "عنوان العملة الرقمية ينتمي إلى حساب آخر.",
+  "crypto_address_yours": "عنوان العملة الرقمية ينتمي إلى هذا الحساب.",
+  "crypto_address_not_resolved": "لم يتم حل عنوان العملة الرقمية بعد.",
+  "submit_to_string": "إرسال إلى {{string}}"
 }

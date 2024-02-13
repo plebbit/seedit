@@ -1,3 +1,7 @@
+.settingTitle {
+  font-style: italic;
+}
+
 .accountData textarea {
   box-shadow: var(--box-shadow-input);
 }
@@ -17,7 +21,12 @@
 
 .accountButtons button {
   margin-top: 5px;
-  margin-left: 0px !important;
+  margin-left: 0px;
+}
+
+.createAccount button {
+  margin-left: 0px;
+  margin-bottom: 10px;
 }
 
 @media (min-width: 768px) {

@@ -6,7 +6,7 @@ import All from './views/all';
 import Inbox from './views/inbox';
 import Home from './views/home';
 import PendingPost from './views/pending-post';
-import Post from './views/post';
+import PostPage from './views/post-page';
 import About from './views/about/about';
 import Author from './views/author';
 import Profile from './views/profile';
@@ -67,7 +67,7 @@ function App() {
             <Route path='/p/:subplebbitAddress/:sortType?' element={<Subplebbit />} />
             <Route path='/p/:subplebbitAddress/:sortType?/:timeFilterName?' element={<Subplebbit />} />
 
-            <Route path='/profile/:accountCommentIndex' element={<Post />} />
+            <Route path='/profile/:accountCommentIndex' element={<PostPage />} />
             <Route path='/profile/:sortType?/:timeFilterName?' element={<Profile />} />
             <Route path='/profile/upvoted/:sortType?/:timeFilterName?' element={<Profile />} />
             <Route path='/profile/downvoted/:sortType?/:timeFilterName?' element={<Profile />} />
@@ -84,8 +84,8 @@ function App() {
 
             <Route path='/p/all/about' element={<About />} />
 
-            <Route path='/p/:subplebbitAddress/c/:commentCid' element={<Post />} />
-            <Route path='/p/:subplebbitAddress/c/:commentCid/context' element={<Post />} />
+            <Route path='/p/:subplebbitAddress/c/:commentCid' element={<PostPage />} />
+            <Route path='/p/:subplebbitAddress/c/:commentCid/context' element={<PostPage />} />
             <Route path='/p/:subplebbitAddress/c/:commentCid/about' element={<About />} />
 
             <Route path='/p/:subplebbitAddress/submit' element={<Submit />} />

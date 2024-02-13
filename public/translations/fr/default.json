@@ -227,7 +227,7 @@
   "json_settings_info": "copier ou coller rapidement les paramètres de la communauté",
   "address_setting_info": "définissez une adresse de communauté lisible en utilisant ens.domains",
   "enter_crypto_address": "Veuillez entrer une adresse crypto valide.",
-  "check_for_updates": "Vérifier les mises à jour",
+  "check_for_updates": "<1>Vérifiez</1> les mises à jour",
   "general_settings": "Paramètres généraux",
   "refresh_to_update": "Actualisez la page pour mettre à jour",
   "latest_development_version": "Vous êtes sur la dernière version de développement, commit {{commit}}. Pour utiliser la version stable, allez sur {{link}}.",
@@ -257,5 +257,9 @@
   "mod_edit": "mod edit",
   "continue_thread": "continuer ce fil de discussion",
   "mod_reason": "raison du modérateur",
-  "double_confirm": "Êtes-vous vraiment sûr? Cette action est irréversible."
+  "double_confirm": "Êtes-vous vraiment sûr? Cette action est irréversible.",
+  "crypto_address_not_yours": "L'adresse crypto appartient à un autre compte.",
+  "crypto_address_yours": "L'adresse crypto appartient à ce compte.",
+  "crypto_address_not_resolved": "L'adresse crypto n'est pas encore résolue.",
+  "submit_to_string": "Soumettre à {{string}}"
 }

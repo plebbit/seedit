@@ -1,6 +1,6 @@
 .app {
   background-color: var(--background);
-  font: normal x-small verdana, arial, helvetica, sans-serif;
+  font: normal 10px verdana, arial, helvetica, sans-serif;
   z-index: 1;
   min-height: 100%;
   color: var(--text-info);

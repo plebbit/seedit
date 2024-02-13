@@ -25,7 +25,7 @@ const AccountBar = () => {
   const [isAccountDropdownOpen, setIsAccountDropdownOpen] = useState(false);
   const toggleAccountDropdown = () => setIsAccountDropdownOpen(!isAccountDropdownOpen);
   const accountDropdownRef = useRef<HTMLDivElement>(null);
-  const accountDropdownChoicesRef = useRef<HTMLDivElement>(null);
+  const accountdropdownItemsRef = useRef<HTMLDivElement>(null);
   const accountDropdownClass = isAccountDropdownOpen ? styles.visible : styles.hidden;
   const accountSelectButtonRef = useRef<HTMLDivElement>(null);
 
@@ -46,8 +46,8 @@ const AccountBar = () => {
       const isOutsideAccountDropdown =
         accountDropdownRef.current &&
         !accountDropdownRef.current.contains(target) &&
-        accountDropdownChoicesRef.current &&
-        !accountDropdownChoicesRef.current.contains(target);
+        accountdropdownItemsRef.current &&
+        !accountdropdownItemsRef.current.contains(target);
       const isOutsideAccountSelectButton = accountSelectButtonRef.current && !accountSelectButtonRef.current.contains(target);
 
       if (isOutsideAccountSelectButton && isOutsideAccountDropdown) {
@@ -58,7 +58,7 @@ const AccountBar = () => {
         setSearchVisible(false);
       }
     },
-    [searchBarRef, accountSelectButtonRef, accountDropdownRef, accountDropdownChoicesRef],
+    [searchBarRef, accountSelectButtonRef, accountDropdownRef, accountdropdownItemsRef],
   );
 
   const [isFocused, setIsFocused] = useState(false);
@@ -76,13 +76,13 @@ const AccountBar = () => {
   }, [handleClickOutside]);
 
   const accountDropdownOptions = accounts.map((account, index) => (
-    <span key={index} className={styles.dropdownChoice} onClick={() => setActiveAccount(account?.name)}>
+    <span key={index} className={styles.dropdownItem} onClick={() => setActiveAccount(account?.name)}>
       {`u/${account?.author?.shortAddress}`}
     </span>
   ));
 
   accountDropdownOptions.push(
-    <Link key='create' to='#' className={styles.dropdownChoice} onClick={() => createAccount()}>
+    <Link key='create' to='#' className={styles.dropdownItem} onClick={() => createAccount()}>
       +{t('create')}
     </Link>,
   );
@@ -94,7 +94,7 @@ const AccountBar = () => {
         <span className={styles.userDropdownButton} ref={accountSelectButtonRef} onClick={toggleAccountDropdown} />
         {isAccountDropdownOpen && (
           <div className={`${styles.dropdown} ${accountDropdownClass}`} ref={accountDropdownRef}>
-            <div className={`${styles.dropChoices} ${styles.accountDropChoices}`} ref={accountDropdownChoicesRef}>
+            <div className={`${styles.dropChoices} ${styles.accountDropChoices}`} ref={accountdropdownItemsRef}>
               {accountDropdownOptions}
             </div>
           </div>

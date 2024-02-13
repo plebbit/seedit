@@ -227,7 +227,7 @@
   "json_settings_info": "salin atau tempel cepat pengaturan komunitas",
   "address_setting_info": "atur alamat komunitas yang dapat dibaca menggunakan ens.domains",
   "enter_crypto_address": "Harap masukkan alamat kripto yang valid.",
-  "check_for_updates": "Periksa pembaruan",
+  "check_for_updates": "<1>Periksa</1> pembaruan",
   "general_settings": "Pengaturan umum",
   "refresh_to_update": "Segarkan halaman untuk memperbarui",
   "latest_development_version": "Anda menggunakan versi pengembangan terbaru, commit {{commit}}. Untuk menggunakan versi stabil, pergi ke {{link}}.",
@@ -257,5 +257,9 @@
   "mod_edit": "edit mod",
   "continue_thread": "lanjutkan utas ini",
   "mod_reason": "alasan mod",
-  "double_confirm": "Apakah Anda benar-benar yakin? Tindakan ini tidak dapat diurungkan."
+  "double_confirm": "Apakah Anda benar-benar yakin? Tindakan ini tidak dapat diurungkan.",
+  "crypto_address_not_yours": "Alamat kripto milik akun lain.",
+  "crypto_address_yours": "Alamat kripto milik akun ini.",
+  "crypto_address_not_resolved": "Alamat kripto belum terpecahkan.",
+  "submit_to_string": "Kirim ke {{string}}"
 }

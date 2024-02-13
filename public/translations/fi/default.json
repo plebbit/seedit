@@ -227,7 +227,7 @@
   "json_settings_info": "kopioi tai liitä yhteisön asetukset nopeasti",
   "address_setting_info": "aseta luettava yhteisön osoite käyttäen ens.domains",
   "enter_crypto_address": "Syötä voimassa oleva krypto-osoite.",
-  "check_for_updates": "Tarkista päivitykset",
+  "check_for_updates": "<1>Tarkista</1> päivitykset",
   "general_settings": "Yleiset asetukset",
   "refresh_to_update": "Päivitä sivu päivittääksesi",
   "latest_development_version": "Olet uusimmassa kehitysversion, commit {{commit}}. Käyttääksesi vakaa versio, siirry osoitteeseen {{link}}.",
@@ -257,5 +257,9 @@
   "mod_edit": "moderoinnin muokkaus",
   "continue_thread": "jatka tätä säiettä",
   "mod_reason": "mod-syy",
-  "double_confirm": "Oletko varma? Tämä toiminto on peruuttamaton."
+  "double_confirm": "Oletko varma? Tämä toiminto on peruuttamaton.",
+  "crypto_address_not_yours": "Krypto-osoite kuuluu toiseen tiliin.",
+  "crypto_address_yours": "Krypto-osoite kuuluu tähän tiliin.",
+  "crypto_address_not_resolved": "Krypto-osoitetta ei ole vielä ratkaistu.",
+  "submit_to_string": "Lähetä kohteeseen {{string}}"
 }

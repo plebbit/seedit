@@ -227,7 +227,7 @@
   "json_settings_info": "mabilis na kopya o i-paste ang mga setting ng komunidad",
   "address_setting_info": "itakda ang isang mababasa oso ng komunidad gamit ang ens.domains",
   "enter_crypto_address": "Mangyaring magpasok ng wastong crypto address.",
-  "check_for_updates": "Tingnan ang mga update",
+  "check_for_updates": "<1>Tingnan</1> para sa mga update",
   "general_settings": "Pangkalahatang mga setting",
   "refresh_to_update": "I-refresh ang pahina upang i-update",
   "latest_development_version": "Nasa pinakabagong bersyon ng pag-unlad, commit {{commit}}. Upang gamitin ang stable na bersyon, pumunta sa {{link}}.",
@@ -257,5 +257,9 @@
   "mod_edit": "pag-edit ng mod",
   "continue_thread": "ituloy ang thread na ito",
   "mod_reason": "dahilan ng mod",
-  "double_confirm": "Sigurado ka ba talaga? Ang aksyon na ito ay hindi mababawi."
+  "double_confirm": "Sigurado ka ba talaga? Ang aksyon na ito ay hindi mababawi.",
+  "crypto_address_not_yours": "Ang crypto address ay nauugnay sa ibang account.",
+  "crypto_address_yours": "Ang crypto address ay nauugnay sa account na ito.",
+  "crypto_address_not_resolved": "Hindi pa naresolba ang crypto address.",
+  "submit_to_string": "Isusumite sa {{string}}"
 }

@@ -227,7 +227,7 @@
   "json_settings_info": "समुदाय सेटिंग्ज कॉपी किंवा पेस्ट करा",
   "address_setting_info": "ens.domains वापरून एक वाचनीय समुदाय पत्ता सेट करा",
   "enter_crypto_address": "कृपया मान्य क्रिप्टो पत्ता प्रविष्ट करा.",
-  "check_for_updates": "अद्यतन साठी तपासा",
+  "check_for_updates": "<1>चेक</1> अपडेट्ससाठी",
   "general_settings": "सामान्य सेटिंग्ज",
   "refresh_to_update": "अपडेट करण्यासाठी पृष्ठ पुन्हा लोड करा",
   "latest_development_version": "तुम्ही आधुनिक विकास संस्करणावर आहात, कमिट {{commit}}. स्थिर संस्करण वापरण्यासाठी, {{link}} जा.",
@@ -257,5 +257,9 @@
   "mod_edit": "मॉड संपादन",
   "continue_thread": "हा थ्रेड सुरू ठेवा",
   "mod_reason": "मॉड कारण",
-  "double_confirm": "खात्री आहात का? हा क्रियेचा परत न लागणारा आहे."
+  "double_confirm": "खात्री आहात का? हा क्रियेचा परत न लागणारा आहे.",
+  "crypto_address_not_yours": "क्रिप्टो पत्ता इतर खात्याशी संबंधित आहे.",
+  "crypto_address_yours": "क्रिप्टो पत्ता हा खात्याकडे संबंधित आहे.",
+  "crypto_address_not_resolved": "क्रिप्टो पत्ता अजून सोपवला नाही.",
+  "submit_to_string": "{{string}} वर सबमिट करा"
 }

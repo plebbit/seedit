@@ -227,7 +227,7 @@
   "json_settings_info": "copia o incolla rapidamente le impostazioni della comunità",
   "address_setting_info": "imposta un indirizzo di comunità leggibile utilizzando ens.domains",
   "enter_crypto_address": "Inserisci un indirizzo cripto valido.",
-  "check_for_updates": "Controlla aggiornamenti",
+  "check_for_updates": "<1>Controlla</1> aggiornamenti",
   "general_settings": "Impostazioni generali",
   "refresh_to_update": "Ricarica la pagina per aggiornare",
   "latest_development_version": "Stai utilizzando la versione per sviluppatori più recente, commit {{commit}}. Per utilizzare la versione stabile, vai su {{link}}.",
@@ -257,5 +257,9 @@
   "mod_edit": "modifica dei moderatori",
   "continue_thread": "continua questa discussione",
   "mod_reason": "motivo di moderazione",
-  "double_confirm": "Sei davvero sicuro? Questa azione è irreversibile."
+  "double_confirm": "Sei davvero sicuro? Questa azione è irreversibile.",
+  "crypto_address_not_yours": "L'indirizzo cripto appartiene a un altro account.",
+  "crypto_address_yours": "L'indirizzo cripto appartiene a questo account.",
+  "crypto_address_not_resolved": "L'indirizzo cripto non è ancora risolto.",
+  "submit_to_string": "Invia a {{string}}"
 }

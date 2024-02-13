@@ -22,15 +22,15 @@ const SortDropdown: React.FC<SortDropdownProps> = ({ onSortChange }) => {
   const [selectedSort, setSelectedSort] = useState<string>(sortTypes[0]);
   const [isDropdownOpen, setIsDropdownOpen] = useState<boolean>(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
-  const dropdownChoicesRef = useRef<HTMLDivElement>(null);
+  const dropdownItemsRef = useRef<HTMLDivElement>(null);
   const dropChoicesClass = isDropdownOpen ? styles.dropChoicesVisible : styles.dropChoicesHidden;
 
   const handleClickOutside = useCallback((event: MouseEvent) => {
     if (
       dropdownRef.current &&
       !dropdownRef.current.contains(event.target as Node) &&
-      dropdownChoicesRef.current &&
-      !dropdownChoicesRef.current.contains(event.target as Node)
+      dropdownItemsRef.current &&
+      !dropdownItemsRef.current.contains(event.target as Node)
     ) {
       setIsDropdownOpen(false);
     }
@@ -55,7 +55,7 @@ const SortDropdown: React.FC<SortDropdownProps> = ({ onSortChange }) => {
       <div className={styles.dropdown} onClick={() => setIsDropdownOpen(!isDropdownOpen)} ref={dropdownRef}>
         <span className={styles.selected}>{t(selectedSort)}</span>
       </div>
-      <div className={`${styles.dropChoices} ${dropChoicesClass}`} ref={dropdownChoicesRef}>
+      <div className={`${styles.dropChoices} ${dropChoicesClass}`} ref={dropdownItemsRef}>
         {sortLabels.map((label, index) => (
           <div key={index} className={styles.filter} onClick={() => handleSortChange(sortTypes[index])}>
             {label}

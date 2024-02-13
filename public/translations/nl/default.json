@@ -227,7 +227,7 @@
   "json_settings_info": "snel de gemeenschapsinstellingen kopiëren of plakken",
   "address_setting_info": "stel een leesbaar gemeenschapsadres in met behulp van ens.domains",
   "enter_crypto_address": "Voer alstublieft een geldig crypto-adres in.",
-  "check_for_updates": "Controleren op updates",
+  "check_for_updates": "<1>Controleer</1> op updates",
   "general_settings": "Algemene instellingen",
   "refresh_to_update": "Vernieuw de pagina om bij te werken",
   "latest_development_version": "Je gebruikt de nieuwste ontwikkelingsversie, commit {{commit}}. Ga naar {{link}} om de stabiele versie te gebruiken.",
@@ -257,5 +257,9 @@
   "mod_edit": "mod-bewerking",
   "continue_thread": "ga verder in deze thread",
   "mod_reason": "mod reden",
-  "double_confirm": "Weet u het zeker? Deze actie is onomkeerbaar."
+  "double_confirm": "Weet u het zeker? Deze actie is onomkeerbaar.",
+  "crypto_address_not_yours": "Crypto-adres behoort tot een andere account.",
+  "crypto_address_yours": "Crypto-adres behoort tot deze account.",
+  "crypto_address_not_resolved": "Crypto-adres is nog niet opgelost.",
+  "submit_to_string": "Indienen bij {{string}}"
 }

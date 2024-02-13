@@ -221,7 +221,7 @@ const Post = ({ index, post = {} }: PostProps) => {
                   toggleExpanded={toggleExpanded}
                 />
               )}
-              <p className={styles.tagline}>
+              <div className={styles.tagline}>
                 {t('submitted')} {getFormattedTimeAgo(timestamp)} {t('post_by')}{' '}
                 <PostAuthor
                   authorAddress={author?.address}
@@ -243,7 +243,7 @@ const Post = ({ index, post = {} }: PostProps) => {
                   </>
                 )}
                 {pinned && <span className={styles.announcement}> - {t('announcement')}</span>}
-              </p>
+              </div>
               {state === 'pending' && <p className={styles.pending}>{loadingString}</p>}
               <CommentTools
                 author={author}

@@ -145,8 +145,8 @@ const Submit = () => {
   }, []);
 
   useEffect(() => {
-    document.title = t('submit_to_before') + (selectedSubplebbit ? subplebbit?.title || subplebbit?.shortAddress || 'seedit' : 'seedit') + t('submit_to_after');
-  }, [selectedSubplebbit, subplebbit, t]);
+    document.title = t('submit_to_string', { string: subplebbit?.title || subplebbit?.shortAddress || 'seedit', interpolation: { escapeValue: false } });
+  }, [subplebbit, t]);
 
   const onPublish = () => {
     if (!titleRef.current?.value) {

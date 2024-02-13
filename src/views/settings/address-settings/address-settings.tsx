@@ -1,44 +1,11 @@
 import { useEffect, useState } from 'react';
 import { setAccount, useAccount, useResolvedAuthorAddress } from '@plebbit/plebbit-react-hooks';
-import { getShortAddress } from '@plebbit/plebbit-js';
 import { useTranslation } from 'react-i18next';
 import styles from './address-settings.module.css';
 
 const AddressSettings = () => {
   const { t } = useTranslation();
   const account = useAccount();
-  const [displayName, setDisplayName] = useState(account?.author.displayName || '');
-  const [savedDisplayName, setSavedDisplayName] = useState(false);
-
-  useEffect(() => {
-    if (account?.author.displayName) {
-      setDisplayName(account?.author.displayName);
-    } else {
-      setDisplayName('');
-    }
-  }, [account?.author.displayName]);
-
-  useEffect(() => {
-    if (savedDisplayName) {
-      setTimeout(() => {
-        setSavedDisplayName(false);
-      }, 2000);
-    }
-  }, [savedDisplayName]);
-
-  const saveUsername = async () => {
-    try {
-      await setAccount({ ...account, author: { ...account?.author, displayName } });
-    } catch (error) {
-      if (error instanceof Error) {
-        alert(error.message);
-        console.log(error);
-      } else {
-        console.error('An unknown error occurred:', error);
-      }
-    }
-    setSavedDisplayName(true);
-  };
 
   const [cryptoState, setCryptoState] = useState({
     cryptoAddress: '',
@@ -81,10 +48,10 @@ const AddressSettings = () => {
     let resolveClass = '';
 
     if (resolvedAddress && resolvedAddress === account?.signer?.address) {
-      resolveString = `crypto address belongs to this account, address: ${getShortAddress(resolvedAddress)}`;
+      resolveString = t('crypto_address_yours');
       resolveClass = styles.green;
     } else if (resolvedAddress && resolvedAddress !== account?.signer?.address) {
-      resolveString = `crypto address belongs to another account, address: ${getShortAddress(resolvedAddress)}`;
+      resolveString = t('crypto_address_not_yours');
       resolveClass = styles.red;
     } else {
       return;
@@ -96,7 +63,7 @@ const AddressSettings = () => {
       resolveClass: resolveClass,
       showResolvingMessage: false,
     }));
-  }, [resolvedAddress, account?.signer?.address]);
+  }, [resolvedAddress, account?.signer?.address, t]);
 
   const cryptoAddressInfo = () => {
     alert(
@@ -109,10 +76,10 @@ const AddressSettings = () => {
       alert(t('enter_crypto_address'));
       return;
     } else if (resolvedAddress && resolvedAddress !== account?.signer?.address) {
-      alert(`Cannot save resolved crypto address, it belongs to another account, address: ${resolvedAddress}`);
+      alert(t('crypto_address_not_yours'));
       return;
     } else if (cryptoState.cryptoAddress && !resolvedAddress) {
-      alert('Please wait, crypto address is not resolved yet.');
+      alert(t('crypto_address_not_resolved'));
       return;
     } else if (resolvedAddress && resolvedAddress === account?.signer?.address) {
       try {
@@ -163,15 +130,7 @@ const AddressSettings = () => {
   }, [savedCryptoAddress]);
 
   return (
-    <>
-      <span className={styles.settingTitle}>{t('display_name')}</span>
-      <div className={styles.usernameInput}>
-        <input type='text' placeholder='My Name' value={displayName} onChange={(e) => setDisplayName(e.target.value)} />
-        <button className={styles.button} onClick={saveUsername}>
-          {t('save')}
-        </button>
-        {savedDisplayName && <span className={styles.saved}>{t('saved')}</span>}
-      </div>
+    <div className={styles.addressSettings}>
       <div className={styles.cryptoAddressSetting}>
         <span className={styles.settingTitle}>{t('crypto_address')}</span>
         <button className={styles.infoButton} onClick={cryptoAddressInfo}>
@@ -197,7 +156,7 @@ const AddressSettings = () => {
         </div>
         <div></div>
       </div>
-    </>
+    </div>
   );
 };
 

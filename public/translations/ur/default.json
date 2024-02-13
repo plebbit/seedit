@@ -227,7 +227,7 @@
   "json_settings_info": "جلدی سے کمیونٹی کی ترتیبات کاپی یا پیسٹ کریں",
   "address_setting_info": "ens.domains کا استعمال کرکے پڑھنے کے قابل کمیونٹی ایڈریس ترتیب دیں",
   "enter_crypto_address": "براہ کرم ایک معتبر کرپٹو پتہ داخل کریں۔",
-  "check_for_updates": "اپ ڈیٹس کی جانچ پڑتال کریں",
+  "check_for_updates": "<1>چیک</1> کریں اپ ڈیٹس کے لئے",
   "general_settings": "عام امور",
   "refresh_to_update": "اپ ڈیٹ کرنے کے لئے صفحہ تازہ کریں",
   "latest_development_version": "آپ تازہ ترین ڈویلپمنٹ ورژن پر ہیں, کمیٹ {{commit}}۔ مستحکم ورژن استعمال کرنے کے لئے, {{link}} پر جائیں۔",
@@ -257,5 +257,9 @@
   "mod_edit": "موڈ سنواریں",
   "continue_thread": "اس ٹھریڈ کو جاری رکھیں",
   "mod_reason": "موڈ کا سبب",
-  "double_confirm": "کیا آپ واقعی میں یقینی ہیں؟ یہ کارروائی بے واپس ہے۔"
+  "double_confirm": "کیا آپ واقعی میں یقینی ہیں؟ یہ کارروائی بے واپس ہے۔",
+  "crypto_address_not_yours": "کرپٹو پتا دوسرے اکاؤنٹ کا حصہ ہے۔",
+  "crypto_address_yours": "کرپٹو پتا اس اکاؤنٹ کا حصہ ہے۔",
+  "crypto_address_not_resolved": "کرپٹو پتا ابھی تک حل نہیں ہوا ہے۔",
+  "submit_to_string": "{{string}} کو جمع کرائیں"
 }

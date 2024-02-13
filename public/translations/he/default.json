@@ -227,7 +227,7 @@
   "json_settings_info": "העתיק או הדביק מהר את ההגדרות של הקהילה",
   "address_setting_info": "קבע כתובת קהילה קריאה באמצעות ens.domains",
   "enter_crypto_address": "אנא הזן כתובת קריפטו תקף.",
-  "check_for_updates": "בדוק עדכונים",
+  "check_for_updates": "<1>בדוק</1> עבור עדכונים",
   "general_settings": "הגדרות כלליות",
   "refresh_to_update": "רענן את העמוד כדי לעדכן",
   "latest_development_version": "אתה נמצא בגרסת הפיתוח האחרונה, קומיט {{commit}}. כדי להשתמש בגרסה יציבה, עבור אל {{link}}.",
@@ -257,5 +257,9 @@
   "mod_edit": "עריכת מנהל",
   "continue_thread": "המשך את השרשור הזה",
   "mod_reason": "סיבת המנהל",
-  "double_confirm": "האם אתה באמת בטוח? הפעולה הזו היא לא הפיכה."
+  "double_confirm": "האם אתה באמת בטוח? הפעולה הזו היא לא הפיכה.",
+  "crypto_address_not_yours": "כתובת המטבע הקריפטוגרפי שייכת לחשבון אחר.",
+  "crypto_address_yours": "כתובת המטבע הקריפטוגרפי שייכת לחשבון זה.",
+  "crypto_address_not_resolved": "כתובת המטבע הקריפטוגרפית עדיין לא נפתרה.",
+  "submit_to_string": "שליחה אל {{string}}"
 }

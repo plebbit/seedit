@@ -227,7 +227,7 @@
   "json_settings_info": "copiați sau lipiți rapid setările comunității",
   "address_setting_info": "setați o adresă de comunitate citibilă folosind ens.domains",
   "enter_crypto_address": "Vă rugăm să introduceți o adresă crypto validă.",
-  "check_for_updates": "Verifică actualizările",
+  "check_for_updates": "<1>Verifică</1> pentru actualizări",
   "general_settings": "Setări generale",
   "refresh_to_update": "Actualizați pagina pentru a actualiza",
   "latest_development_version": "Ești pe cea mai recentă versiune de dezvoltare, commit {{commit}}. Pentru a folosi versiunea stabilă, mergi la {{link}}.",
@@ -257,5 +257,9 @@
   "mod_edit": "editare mod",
   "continue_thread": "continuați acest fir de discuție",
   "mod_reason": "motivul mod",
-  "double_confirm": "Sunteți sigur? Această acțiune este ireversibilă."
+  "double_confirm": "Sunteți sigur? Această acțiune este ireversibilă.",
+  "crypto_address_not_yours": "Adresa crypto aparține unui alt cont.",
+  "crypto_address_yours": "Adresa crypto aparține acestui cont.",
+  "crypto_address_not_resolved": "Adresa crypto nu este încă rezolvată.",
+  "submit_to_string": "Trimite la {{string}}"
 }

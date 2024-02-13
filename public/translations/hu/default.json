@@ -227,7 +227,7 @@
   "json_settings_info": "gyorsan másolja vagy illessze be a közösség beállításait",
   "address_setting_info": "állítson be egy olvasható közösségi címet az ens.domains segítségével",
   "enter_crypto_address": "Kérjük, adjon meg egy érvényes kripto címet.",
-  "check_for_updates": "Frissítések keresése",
+  "check_for_updates": "<1>Ellenőrizd</1> a frissítéseket",
   "general_settings": "Általános beállítások",
   "refresh_to_update": "Frissítse az oldalt az frissítéshez",
   "latest_development_version": "A legújabb fejlesztői verziót használod, commit {{commit}}. A stabil verzió használatához látogass el ide: {{link}}.",
@@ -257,5 +257,9 @@
   "mod_edit": "moderátor szerkesztése",
   "continue_thread": "folytassa ezt a témát",
   "mod_reason": "mod indok",
-  "double_confirm": "Biztos vagy benne? Ez a művelet visszafordíthatatlan."
+  "double_confirm": "Biztos vagy benne? Ez a művelet visszafordíthatatlan.",
+  "crypto_address_not_yours": "A kripto-cím egy másik fiókhoz tartozik.",
+  "crypto_address_yours": "A kripto-cím ehhez a fiókhoz tartozik.",
+  "crypto_address_not_resolved": "A kripto cím még nem oldódott meg.",
+  "submit_to_string": "Beküldés ide: {{string}}"
 }

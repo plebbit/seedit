@@ -227,7 +227,7 @@
   "json_settings_info": "nhanh chóng sao chép hoặc dán cài đặt của cộng đồng",
   "address_setting_info": "đặt một địa chỉ cộng đồng có thể đọc bằng cách sử dụng ens.domains",
   "enter_crypto_address": "Vui lòng nhập địa chỉ tiền điện tử hợp lệ.",
-  "check_for_updates": "Kiểm tra cập nhật",
+  "check_for_updates": "<1>Kiểm tra</1> cập nhật",
   "general_settings": "Cài đặt chung",
   "refresh_to_update": "Làm mới trang để cập nhật",
   "latest_development_version": "Bạn đang sử dụng phiên bản phát triển mới nhất, commit {{commit}}. Để sử dụng phiên bản ổn định, hãy truy cập {{link}}.",
@@ -257,5 +257,9 @@
   "mod_edit": "chỉnh sửa mod",
   "continue_thread": "tiếp tục chủ đề này",
   "mod_reason": "lý do mod",
-  "double_confirm": "Bạn có chắc chắn không? Hành động này không thể hoàn tác."
+  "double_confirm": "Bạn có chắc chắn không? Hành động này không thể hoàn tác.",
+  "crypto_address_not_yours": "Địa chỉ tiền điện tử thuộc về một tài khoản khác.",
+  "crypto_address_yours": "Địa chỉ tiền điện tử thuộc về tài khoản này.",
+  "crypto_address_not_resolved": "Địa chỉ tiền điện tử vẫn chưa được giải quyết.",
+  "submit_to_string": "Gửi đến {{string}}"
 }

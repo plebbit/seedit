@@ -227,7 +227,7 @@
   "json_settings_info": "コミュニティの設定を素早くコピーまたは貼り付ける",
   "address_setting_info": "ens.domainsを使用して読み取り可能なコミュニティのアドレスを設定",
   "enter_crypto_address": "有効な暗号通貨アドレスを入力してください。",
-  "check_for_updates": "更新をチェック",
+  "check_for_updates": "<1>更新</1> を確認",
   "general_settings": "一般設定",
   "refresh_to_update": "更新するにはページを更新してください",
   "latest_development_version": "最新の開発バージョン、コミット{{commit}}を使用しています。安定版を使用するには、{{link}}に移動してください。",
@@ -257,5 +257,9 @@
   "mod_edit": "モデレーター編集",
   "continue_thread": "このスレッドを続ける",
   "mod_reason": "mod理由",
-  "double_confirm": "本当によろしいですか？このアクションは取り消せません。"
+  "double_confirm": "本当によろしいですか？このアクションは取り消せません。",
+  "crypto_address_not_yours": "暗号通貨アドレスは別のアカウントに属しています。",
+  "crypto_address_yours": "暗号通貨アドレスはこのアカウントに属しています。",
+  "crypto_address_not_resolved": "暗号通貨アドレスはまだ解決されていません。",
+  "submit_to_string": "{{string}} に提出"
 }
