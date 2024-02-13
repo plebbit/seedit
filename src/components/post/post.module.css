@@ -60,12 +60,12 @@
   flex-grow: 1;
   overflow: visible;
   padding: 0;
+  overflow: hidden;
 }
 
 .title {
   font-size: 16px;
   font-weight: normal;
-  overflow: hidden;
 }
 
 .removedTitle {
