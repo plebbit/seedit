@@ -679,18 +679,8 @@ const ChallengeSettings = ({ challenge, index, isReadOnly, setSubplebbitSettings
 const Challenges = ({ isReadOnly, readOnlyChallenges }: { isReadOnly: boolean; readOnlyChallenges: any }) => {
   const { t } = useTranslation();
   const { settings, setSubplebbitSettingsStore } = useSubplebbitSettingsStore();
-  const [challenges, setChallenges] = useState<any[]>([]);
+  const challenges = settings?.challenges || readOnlyChallenges || [];
   const [showSettings, setShowSettings] = useState<boolean[]>(challenges.map(() => false));
-
-  useEffect(() => {
-    if (settings) {
-      setChallenges(settings.challenges);
-    } else if (readOnlyChallenges) {
-      setChallenges(readOnlyChallenges);
-    } else {
-      return;
-    }
-  }, [settings, readOnlyChallenges]);
 
   const location = useLocation();
   const isInCreateSubplebbitView = isCreateSubplebbitView(location.pathname);
