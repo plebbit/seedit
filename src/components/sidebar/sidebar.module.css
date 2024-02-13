@@ -123,6 +123,21 @@ a {
   background-image: var(--button-large-hover-nub);
 }
 
+.largeButtonDisabled {
+  background-image: var(--button-large-disabled) !important;
+  border-color: var(--button-border-disabled) !important;
+  color: var(--gray-button-text) !important;
+  cursor: default;
+}
+
+.largeButtonDisabled .nub {
+  background-image: var(--button-large-nub-disabled) !important;
+}
+
+.largeButtonDisabled:hover {
+  cursor: default !important;
+}
+
 .list {
   margin-bottom: 12px;
 }
@@ -254,6 +269,13 @@ a {
 
 .communitySettings {
   float: right;
+}
+
+.disabledButtonDescription {
+  margin: 10px 0 10px 10px;
+  font-size: 11px;
+  font-family: verdana, Arial, Helvetica, sans-serif;
+  text-transform: lowercase;
 }
 
 .footer {
