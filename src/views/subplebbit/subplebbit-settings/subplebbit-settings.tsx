@@ -118,8 +118,10 @@ const Description = ({ isReadOnly = false }: { isReadOnly?: boolean }) => {
             <div className={styles.descriptionPreview}>
               {description && (
                 <>
-                  <div className={styles.descriptionMarkdownPreviewTitle}>Markdown Preview:</div>
-                  <Markdown content={description} />
+                  <div className={styles.descriptionMarkdownPreviewTitle}>{t('preview')}:</div>
+                  <div className={styles.descriptionPreviewMarkdown}>
+                    <Markdown content={description} />
+                  </div>
                 </>
               )}
             </div>

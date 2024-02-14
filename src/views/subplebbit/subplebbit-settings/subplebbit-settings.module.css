@@ -74,6 +74,11 @@
   font-size: 14px;
 }
 
+.descriptionPreviewMarkdown {
+  width: 300px;
+  font-size: 12px;
+}
+
 .readOnlyRoleExclude {
   font-size: 12px;
 }
