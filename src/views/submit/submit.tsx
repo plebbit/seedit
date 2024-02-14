@@ -12,6 +12,7 @@ import { isSubmitView } from '../../lib/utils/view-utils';
 import styles from './submit.module.css';
 import challengesStore from '../../hooks/use-challenges';
 import Embed from '../../components/post/embed/';
+import Markdown from '../../components/markdown';
 
 type SubmitState = {
   subplebbitAddress: string | undefined;
@@ -309,6 +310,14 @@ const Submit = () => {
                   setSubmitStore({ content: e.target.value });
                 }}
               />
+              {contentRef.current?.value && (
+                <div className={styles.contentPreview}>
+                  <div className={styles.contentPreviewTitle}>{t('preview')}:</div>
+                  <div className={styles.contentPreviewMarkdown}>
+                    <Markdown content={contentRef.current.value} />
+                  </div>
+                </div>
+              )}
             </div>
           </div>
           <div className={styles.box}>
