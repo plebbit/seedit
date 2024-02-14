@@ -261,5 +261,7 @@
   "crypto_address_not_yours": "暗号通貨アドレスは別のアカウントに属しています。",
   "crypto_address_yours": "暗号通貨アドレスはこのアカウントに属しています。",
   "crypto_address_not_resolved": "暗号通貨アドレスはまだ解決されていません。",
-  "submit_to_string": "{{string}} に提出"
+  "submit_to_string": "{{string}} に提出",
+  "page_not_found": "ページが見つかりません",
+  "not_found_description": "要求されたページは存在しません"
 }

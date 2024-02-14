@@ -261,5 +261,7 @@
   "crypto_address_not_yours": "암호 주소는 다른 계정에 속합니다.",
   "crypto_address_yours": "암호 주소는이 계정에 속합니다.",
   "crypto_address_not_resolved": "암호 주소가 아직 해결되지 않았습니다.",
-  "submit_to_string": "{{string}} 로 제출"
+  "submit_to_string": "{{string}} 로 제출",
+  "page_not_found": "페이지를 찾을 수 없음",
+  "not_found_description": "요청하신 페이지가 존재하지 않습니다"
 }

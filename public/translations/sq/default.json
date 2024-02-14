@@ -261,5 +261,7 @@
   "crypto_address_not_yours": "Adresa e kriptovalutës i përket një llogarie tjetër.",
   "crypto_address_yours": "Adresa e kriptovalutës i përket këtij llogarie.",
   "crypto_address_not_resolved": "Adresa e kriptovalutës nuk është ende e zgjidhur.",
-  "submit_to_string": "Dërgo në {{string}}"
+  "submit_to_string": "Dërgo në {{string}}",
+  "page_not_found": "Faqja nuk u gjet",
+  "not_found_description": "Faqja që keni kërkuar nuk ekziston"
 }

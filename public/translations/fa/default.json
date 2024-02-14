@@ -261,5 +261,7 @@
   "crypto_address_not_yours": "آدرس رمزارز به حساب دیگری تعلق دارد.",
   "crypto_address_yours": "آدرس رمزارز به این حساب تعلق دارد.",
   "crypto_address_not_resolved": "آدرس رمزارز هنوز حل نشده است.",
-  "submit_to_string": "ارسال به {{string}}"
+  "submit_to_string": "ارسال به {{string}}",
+  "page_not_found": "صفحه یافت نشد",
+  "not_found_description": "صفحه‌ای که درخواست کرده‌اید وجود ندارد"
 }

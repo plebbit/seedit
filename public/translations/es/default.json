@@ -261,5 +261,7 @@
   "crypto_address_not_yours": "La dirección de criptomoneda pertenece a otra cuenta.",
   "crypto_address_yours": "La dirección de criptomoneda pertenece a esta cuenta.",
   "crypto_address_not_resolved": "La dirección de criptomoneda aún no está resuelta.",
-  "submit_to_string": "Enviar a {{string}}"
+  "submit_to_string": "Enviar a {{string}}",
+  "page_not_found": "Página no encontrada",
+  "not_found_description": "La página que solicitaste no existe"
 }

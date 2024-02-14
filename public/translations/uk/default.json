@@ -261,5 +261,7 @@
   "crypto_address_not_yours": "Адреса криптовалюти належить до іншого облікового запису.",
   "crypto_address_yours": "Адреса криптовалюти належить цьому обліковому запису.",
   "crypto_address_not_resolved": "Адреса криптовалюти ще не вирішена.",
-  "submit_to_string": "Надіслати до {{string}}"
+  "submit_to_string": "Надіслати до {{string}}",
+  "page_not_found": "Сторінка не знайдена",
+  "not_found_description": "Сторінка, яку ви запросили, не існує"
 }

@@ -261,5 +261,7 @@
   "crypto_address_not_yours": "Adresa kryptoměny patří k jinému účtu.",
   "crypto_address_yours": "Adresa kryptoměny patří k tomuto účtu.",
   "crypto_address_not_resolved": "Adresa kryptoměny ještě není vyřešena.",
-  "submit_to_string": "Odeslat do {{string}}"
+  "submit_to_string": "Odeslat do {{string}}",
+  "page_not_found": "Stránka nenalezena",
+  "not_found_description": "Požadovaná stránka neexistuje"
 }

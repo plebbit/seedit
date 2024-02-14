@@ -261,5 +261,7 @@
   "crypto_address_not_yours": "加密地址属于另一个帐户。",
   "crypto_address_yours": "加密地址属于此帐户。",
   "crypto_address_not_resolved": "加密地址尚未解析。",
-  "submit_to_string": "提交到{{string}}"
+  "submit_to_string": "提交到{{string}}",
+  "page_not_found": "页面未找到",
+  "not_found_description": "您请求的页面不存在"
 }

@@ -261,5 +261,7 @@
   "crypto_address_not_yours": "כתובת המטבע הקריפטוגרפי שייכת לחשבון אחר.",
   "crypto_address_yours": "כתובת המטבע הקריפטוגרפי שייכת לחשבון זה.",
   "crypto_address_not_resolved": "כתובת המטבע הקריפטוגרפית עדיין לא נפתרה.",
-  "submit_to_string": "שליחה אל {{string}}"
+  "submit_to_string": "שליחה אל {{string}}",
+  "page_not_found": "הדף לא נמצא",
+  "not_found_description": "הדף שביקשת אינו קיים"
 }

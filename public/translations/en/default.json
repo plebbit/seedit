@@ -261,5 +261,7 @@
   "crypto_address_not_yours": "Crypto address belongs to another account.",
   "crypto_address_yours": "Crypto address belongs to this account.",
   "crypto_address_not_resolved": "Crypto address is not resolved yet.",
-  "submit_to_string": "Submit to {{string}}"
+  "submit_to_string": "Submit to {{string}}",
+  "page_not_found": "Page not found",
+  "not_found_description": "The page you requested does not exist"
 }

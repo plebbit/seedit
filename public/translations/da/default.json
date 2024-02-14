@@ -261,5 +261,7 @@
   "crypto_address_not_yours": "Crypto-adresse tilhører en anden konto.",
   "crypto_address_yours": "Crypto-adresse tilhører denne konto.",
   "crypto_address_not_resolved": "Crypto-adresse er endnu ikke løst.",
-  "submit_to_string": "Indsend til {{string}}"
+  "submit_to_string": "Indsend til {{string}}",
+  "page_not_found": "Side ikke fundet",
+  "not_found_description": "Den side, du har anmodet om, findes ikke"
 }

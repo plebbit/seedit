@@ -261,5 +261,7 @@
   "crypto_address_not_yours": "A kripto-cím egy másik fiókhoz tartozik.",
   "crypto_address_yours": "A kripto-cím ehhez a fiókhoz tartozik.",
   "crypto_address_not_resolved": "A kripto cím még nem oldódott meg.",
-  "submit_to_string": "Beküldés ide: {{string}}"
+  "submit_to_string": "Beküldés ide: {{string}}",
+  "page_not_found": "Az oldal nem található",
+  "not_found_description": "Az általad kért oldal nem létezik"
 }

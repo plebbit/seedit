@@ -261,5 +261,7 @@
   "crypto_address_not_yours": "ที่อยู่คริปโตเป็นของบัญชีอื่น",
   "crypto_address_yours": "ที่อยู่คริปโตเป็นของบัญชีนี้",
   "crypto_address_not_resolved": "ที่อยู่คริปโตยังไม่ได้รับการแก้ไข",
-  "submit_to_string": "ส่งไปยัง {{string}}"
+  "submit_to_string": "ส่งไปยัง {{string}}",
+  "page_not_found": "ไม่พบหน้า",
+  "not_found_description": "หน้าที่คุณขอไม่มีอยู่จริง"
 }

@@ -261,5 +261,7 @@
   "crypto_address_not_yours": "Kripto adres başka bir hesaba aittir.",
   "crypto_address_yours": "Kripto adres bu hesaba aittir.",
   "crypto_address_not_resolved": "Kripto adres henüz çözülmedi.",
-  "submit_to_string": "{{string}} e gönder"
+  "submit_to_string": "{{string}} e gönder",
+  "page_not_found": "Sayfa bulunamadı",
+  "not_found_description": "İstediğiniz sayfa mevcut değil"
 }

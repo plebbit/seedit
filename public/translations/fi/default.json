@@ -261,5 +261,7 @@
   "crypto_address_not_yours": "Krypto-osoite kuuluu toiseen tiliin.",
   "crypto_address_yours": "Krypto-osoite kuuluu tähän tiliin.",
   "crypto_address_not_resolved": "Krypto-osoitetta ei ole vielä ratkaistu.",
-  "submit_to_string": "Lähetä kohteeseen {{string}}"
+  "submit_to_string": "Lähetä kohteeseen {{string}}",
+  "page_not_found": "Sivua ei löytynyt",
+  "not_found_description": "Pyytämääsi sivua ei löydy"
 }

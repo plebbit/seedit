@@ -261,5 +261,7 @@
   "crypto_address_not_yours": "عنوان العملة الرقمية ينتمي إلى حساب آخر.",
   "crypto_address_yours": "عنوان العملة الرقمية ينتمي إلى هذا الحساب.",
   "crypto_address_not_resolved": "لم يتم حل عنوان العملة الرقمية بعد.",
-  "submit_to_string": "إرسال إلى {{string}}"
+  "submit_to_string": "إرسال إلى {{string}}",
+  "page_not_found": "الصفحة غير موجودة",
+  "not_found_description": "الصفحة التي طلبتها غير موجودة"
 }
