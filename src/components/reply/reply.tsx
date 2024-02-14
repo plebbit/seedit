@@ -7,6 +7,7 @@ import styles from './reply.module.css';
 import useReplies from '../../hooks/use-replies';
 import { CommentMediaInfo, getCommentMediaInfoMemoized, getHasThumbnail } from '../../lib/utils/media-utils';
 import { getFormattedTimeAgo } from '../../lib/utils/time-utils';
+import EditForm from '../edit-form';
 import LoadingEllipsis from '../loading-ellipsis/';
 import Expando from '../post/expando/';
 import ExpandButton from '../post/expand-button/';
@@ -210,6 +211,7 @@ const Reply = ({ cidOfReplyWithContext, depth = 0, isSingleComment, isSingleRepl
     content,
     deleted,
     downvoteCount,
+    edit,
     flair,
     link,
     linkHeight,
@@ -246,13 +248,21 @@ const Reply = ({ cidOfReplyWithContext, depth = 0, isSingleComment, isSingleRepl
   const { shortAuthorAddress } = useAuthorAddress({ comment: reply });
   const { imageUrl } = useAuthorAvatar({ author });
   const replies = useReplies(reply);
+
   const [expanded, setExpanded] = useState(false);
-  const [isReplying, setIsReplying] = useState(false);
   const toggleExpanded = () => setExpanded(!expanded);
+
+  const [isReplying, setIsReplying] = useState(false);
   const showReplyForm = () => setIsReplying(true);
   const hideReplyForm = () => setIsReplying(false);
+
+  const [isEditing, setIsEditing] = useState(false);
+  const showEditForm = () => setIsEditing(true);
+  const hideEditForm = () => setIsEditing(false);
+
   const commentMediaInfo = getCommentMediaInfoMemoized(reply);
   const hasThumbnail = getHasThumbnail(commentMediaInfo, link);
+
   const { t } = useTranslation();
   let score = upvoteCount - downvoteCount || 1;
   if ((upvoteCount === 0 && downvoteCount === 0) || (upvoteCount === 1 && downvoteCount === 0)) {
@@ -310,7 +320,11 @@ const Reply = ({ cidOfReplyWithContext, depth = 0, isSingleComment, isSingleRepl
                   imageUrl={imageUrl}
                   shortAuthorAddress={shortAuthorAddress}
                 />
-                <span className={styles.score}>{scoreString}</span> <span className={styles.time}>{getFormattedTimeAgo(timestamp)}</span>{' '}
+                <span className={styles.score}>{scoreString}</span>{' '}
+                <span className={styles.time}>
+                  {getFormattedTimeAgo(timestamp)}
+                  {edit && <span title={t('last_edited', { timestamp: getFormattedTimeAgo(edit.timestamp) })}>*</span>}
+                </span>{' '}
                 {pinned && <span className={styles.pinned}>- {t('stickied_comment')}</span>}
                 {collapsed && <span className={styles.children}> ({childrenString})</span>}
                 {stateLabel}{' '}
@@ -347,22 +361,26 @@ const Reply = ({ cidOfReplyWithContext, depth = 0, isSingleComment, isSingleRepl
                     toggleExpanded={toggleExpanded}
                   />
                 )}
-                <div className={`${styles.md} ${cid && (isSingleComment || cidOfReplyWithContext === cid) ? styles.highlightContent : ''}`}>
-                  {content &&
-                    (removed ? (
-                      <div className={styles.removedContent}>[{t('removed')}]</div>
-                    ) : deleted ? (
-                      <div className={styles.deletedContent}>[{t('deleted')}]</div>
-                    ) : (
-                      <Markdown content={content} />
-                    ))}
-                  {reason && (
-                    <div className={styles.modReason}>
-                      <br />
-                      {t('mod_reason')}: {reason}
-                    </div>
-                  )}
-                </div>
+                {isEditing ? (
+                  <EditForm commentCid={cid} content={content} hideEditForm={hideEditForm} subplebbitAddress={subplebbitAddress} />
+                ) : (
+                  <div className={`${styles.md} ${cid && (isSingleComment || cidOfReplyWithContext === cid) ? styles.highlightContent : ''}`}>
+                    {content &&
+                      (removed ? (
+                        <div className={styles.removedContent}>[{t('removed')}]</div>
+                      ) : deleted ? (
+                        <div className={styles.deletedContent}>[{t('deleted')}]</div>
+                      ) : (
+                        <Markdown content={content} />
+                      ))}
+                    {reason && (
+                      <div className={styles.modReason}>
+                        <br />
+                        {t('mod_reason')}: {reason}
+                      </div>
+                    )}
+                  </div>
+                )}
               </div>
             )}
           </div>
@@ -381,6 +399,7 @@ const Reply = ({ cidOfReplyWithContext, depth = 0, isSingleComment, isSingleRepl
                 replyCount={replies.length}
                 spoiler={spoiler}
                 subplebbitAddress={subplebbitAddress}
+                showEditForm={showEditForm}
                 showReplyForm={showReplyForm}
               />
               {isReplying && <ReplyForm cid={cid} isReplyingToReply={true} hideReplyForm={hideReplyForm} />}

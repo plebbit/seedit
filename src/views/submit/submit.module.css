@@ -74,6 +74,15 @@ h1 {
   font-size: 14px;
 }
 
+.contentPreviewMarkdown {
+  font-size: 14px;
+}
+
+.contentPreviewTitle {
+  text-transform: capitalize;
+  margin: 10px 0;
+}
+
 .description {
   margin-top: 5px;
   width: 500px;

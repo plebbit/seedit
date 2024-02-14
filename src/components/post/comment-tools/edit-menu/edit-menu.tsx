@@ -10,9 +10,10 @@ const { addChallenge } = challengesStore.getState();
 
 type EditMenuProps = {
   cid: string;
+  showEditForm?: () => void;
 };
 
-const EditMenu = ({ cid }: EditMenuProps) => {
+const EditMenu = ({ cid, showEditForm }: EditMenuProps) => {
   const { t } = useTranslation();
 
   let post: any;
@@ -118,11 +119,15 @@ const EditMenu = ({ cid }: EditMenuProps) => {
         <FloatingFocusManager context={context} modal={false}>
           <div className={styles.modal} ref={refs.setFloating} style={floatingStyles} aria-labelledby={headingId} {...getFloatingProps()}>
             <div className={styles.menu}>
-              {content && (
-                <div className={styles.menuItem} onClick={() => {}}>
-                  {t('edit_content')}
-                </div>
-              )}
+              <div
+                className={styles.menuItem}
+                onClick={() => {
+                  showEditForm && showEditForm();
+                  setIsEditMenuOpen(false);
+                }}
+              >
+                {t('edit_content')}
+              </div>
               <div className={styles.menuItem} onClick={markAsSpoiler}>
                 {spoiler ? t('remove_spoiler') : t('mark_spoiler')}
               </div>

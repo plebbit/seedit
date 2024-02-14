@@ -261,5 +261,8 @@
   "crypto_address_not_yours": "کرپٹو پتا دوسرے اکاؤنٹ کا حصہ ہے۔",
   "crypto_address_yours": "کرپٹو پتا اس اکاؤنٹ کا حصہ ہے۔",
   "crypto_address_not_resolved": "کرپٹو پتا ابھی تک حل نہیں ہوا ہے۔",
-  "submit_to_string": "{{string}} کو جمع کرائیں"
+  "submit_to_string": "{{string}} کو جمع کرائیں",
+  "page_not_found": "صفحہ نہیں ملا",
+  "not_found_description": "آپ نے جو صفحہ درخواست کیا ہے وہ موجود نہیں ہے",
+  "last_edited": "آخری ترمیم {{timestamp}}"
 }

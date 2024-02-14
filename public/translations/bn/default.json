@@ -261,5 +261,8 @@
   "crypto_address_not_yours": "ক্রিপ্টো ঠিকানা অন্য একটি অ্যাকাউন্টের অংশ।",
   "crypto_address_yours": "ক্রিপ্টো ঠিকানা এই অ্যাকাউন্টের অংশ।",
   "crypto_address_not_resolved": "ক্রিপ্টো ঠিকানা এখনো সমাধান করা হয়নি।",
-  "submit_to_string": "{{string}} এ জমা দিন"
+  "submit_to_string": "{{string}} এ জমা দিন",
+  "page_not_found": "পৃষ্ঠাটি খুঁজে পাওয়া যায়নি",
+  "not_found_description": "আপনি যে পৃষ্ঠাটি অনুরোধ করেছেন সেটি অস্তিত্বে নেই",
+  "last_edited": "শেষ সম্পাদনা {{timestamp}}"
 }

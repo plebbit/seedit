@@ -261,5 +261,8 @@
   "crypto_address_not_yours": "क्रिप्टो पता दूसरे खाते से संबंधित है।",
   "crypto_address_yours": "क्रिप्टो पता इस खाते से संबंधित है।",
   "crypto_address_not_resolved": "क्रिप्टो पता अभी तक हल नहीं किया गया है।",
-  "submit_to_string": "{{string}} को सबमिट करें"
+  "submit_to_string": "{{string}} को सबमिट करें",
+  "page_not_found": "पृष्ठ नहीं मिला",
+  "not_found_description": "आपके द्वारा अनुरोधित पृष्ठ मौजूद नहीं है",
+  "last_edited": "अंतिम संशोधन {{timestamp}}"
 }

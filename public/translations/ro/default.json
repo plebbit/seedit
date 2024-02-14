@@ -261,5 +261,8 @@
   "crypto_address_not_yours": "Adresa crypto aparține unui alt cont.",
   "crypto_address_yours": "Adresa crypto aparține acestui cont.",
   "crypto_address_not_resolved": "Adresa crypto nu este încă rezolvată.",
-  "submit_to_string": "Trimite la {{string}}"
+  "submit_to_string": "Trimite la {{string}}",
+  "page_not_found": "Pagina nu a fost găsită",
+  "not_found_description": "Pagina pe care ai solicitat-o nu există",
+  "last_edited": "ultima editare {{timestamp}}"
 }

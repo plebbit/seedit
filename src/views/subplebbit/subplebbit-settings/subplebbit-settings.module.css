@@ -68,10 +68,16 @@
 .descriptionMarkdownPreviewTitle {
   margin: 10px 0;
   font-size: 16px;
+  text-transform: capitalize;
 }
 
 .descriptionPreview {
   font-size: 14px;
+}
+
+.descriptionPreviewMarkdown {
+  width: 300px;
+  font-size: 12px;
 }
 
 .readOnlyRoleExclude {

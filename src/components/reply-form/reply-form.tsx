@@ -12,68 +12,9 @@ type ReplyFormProps = {
   hideReplyForm?: () => void;
 };
 
-const ReplyForm = ({ cid, isReplyingToReply, hideReplyForm }: ReplyFormProps) => {
+export const FormattingHelpTable = () => {
   const { t } = useTranslation();
-  const [showOptions, setShowOptions] = useState(false);
-  const [showFormattingHelp, setShowFormattingHelp] = useState(false);
-  const subplebbitAddress = useParams().subplebbitAddress as string;
-  const { setContent, resetContent, replyIndex, publishReply } = useReply({ cid, subplebbitAddress });
-
-  const mdContainerClass = isReplyingToReply ? `${styles.mdContainer} ${styles.mdContainerReplying}` : styles.mdContainer;
-  const urlClass = showOptions ? styles.urlVisible : styles.urlHidden;
-  const spoilerClass = showOptions ? styles.spoilerVisible : styles.spoilerHidden;
-
-  const textRef = useRef<HTMLTextAreaElement>(null);
-  const urlRef = useRef<HTMLInputElement>(null);
-  const spoilerRef = useRef<HTMLInputElement>(null);
-
-  useEffect(() => {
-    if (isReplyingToReply && textRef.current) {
-      textRef.current.focus();
-    }
-  }, [isReplyingToReply, textRef]);
-
-  const resetFields = () => {
-    if (textRef.current) {
-      textRef.current.value = '';
-    }
-    if (urlRef.current) {
-      urlRef.current.value = '';
-    }
-    if (spoilerRef.current) {
-      spoilerRef.current.checked = false;
-    }
-  };
-
-  const onPublish = () => {
-    const currentContent = textRef.current?.value || '';
-    const currentUrl = urlRef.current?.value || '';
-
-    if (!currentContent.trim() && !currentUrl) {
-      alert(`missing content or url`);
-      return;
-    }
-
-    if (currentUrl && !isValidURL(currentUrl)) {
-      alert('The provided link is not a valid URL.');
-      return;
-    }
-    publishReply();
-  };
-
-  useEffect(() => {
-    if (typeof replyIndex === 'number') {
-      resetContent();
-
-      if (hideReplyForm) {
-        hideReplyForm();
-      }
-
-      resetFields();
-    }
-  }, [replyIndex, resetContent, hideReplyForm]);
-
-  const formattingHelp = (
+  return (
     <div className={styles.markdownHelp}>
       <table>
         <tbody>
@@ -137,6 +78,68 @@ const ReplyForm = ({ cid, isReplyingToReply, hideReplyForm }: ReplyFormProps) =>
       </table>
     </div>
   );
+};
+
+const ReplyForm = ({ cid, isReplyingToReply, hideReplyForm }: ReplyFormProps) => {
+  const { t } = useTranslation();
+  const [showOptions, setShowOptions] = useState(false);
+  const [showFormattingHelp, setShowFormattingHelp] = useState(false);
+  const subplebbitAddress = useParams().subplebbitAddress as string;
+  const { setContent, resetContent, replyIndex, publishReply } = useReply({ cid, subplebbitAddress });
+
+  const mdContainerClass = isReplyingToReply ? `${styles.mdContainer} ${styles.mdContainerReplying}` : styles.mdContainer;
+  const urlClass = showOptions ? styles.urlVisible : styles.urlHidden;
+  const spoilerClass = showOptions ? styles.spoilerVisible : styles.spoilerHidden;
+
+  const textRef = useRef<HTMLTextAreaElement>(null);
+  const urlRef = useRef<HTMLInputElement>(null);
+  const spoilerRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    if (isReplyingToReply && textRef.current) {
+      textRef.current.focus();
+    }
+  }, [isReplyingToReply, textRef]);
+
+  const resetFields = () => {
+    if (textRef.current) {
+      textRef.current.value = '';
+    }
+    if (urlRef.current) {
+      urlRef.current.value = '';
+    }
+    if (spoilerRef.current) {
+      spoilerRef.current.checked = false;
+    }
+  };
+
+  const onPublish = () => {
+    const currentContent = textRef.current?.value || '';
+    const currentUrl = urlRef.current?.value || '';
+
+    if (!currentContent.trim() && !currentUrl) {
+      alert(`missing content or url`);
+      return;
+    }
+
+    if (currentUrl && !isValidURL(currentUrl)) {
+      alert('The provided link is not a valid URL.');
+      return;
+    }
+    publishReply();
+  };
+
+  useEffect(() => {
+    if (typeof replyIndex === 'number') {
+      resetContent();
+
+      if (hideReplyForm) {
+        hideReplyForm();
+      }
+
+      resetFields();
+    }
+  }, [replyIndex, resetContent, hideReplyForm]);
 
   return (
     <div className={mdContainerClass}>
@@ -169,7 +172,7 @@ const ReplyForm = ({ cid, isReplyingToReply, hideReplyForm }: ReplyFormProps) =>
           {showOptions ? t('hide_options') : t('options')}
         </span>
       </div>
-      {showFormattingHelp && formattingHelp}
+      {showFormattingHelp && <FormattingHelpTable />}
     </div>
   );
 };

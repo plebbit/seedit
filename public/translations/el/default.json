@@ -261,5 +261,8 @@
   "crypto_address_not_yours": "Η διεύθυνση κρυπτονομίσματος ανήκει σε άλλο λογαριασμό.",
   "crypto_address_yours": "Η διεύθυνση κρυπτονομίσματος ανήκει σε αυτόν τον λογαριασμό.",
   "crypto_address_not_resolved": "Η διεύθυνση κρυπτονομίσματος δεν έχει ακόμη επιλυθεί.",
-  "submit_to_string": "Υποβολή στο {{string}}"
+  "submit_to_string": "Υποβολή στο {{string}}",
+  "page_not_found": "Η σελίδα δεν βρέθηκε",
+  "not_found_description": "Η σελίδα που ζητήσατε δεν υπάρχει",
+  "last_edited": "Τελευταία επεξεργασία {{timestamp}}"
 }

@@ -261,5 +261,8 @@
   "crypto_address_not_yours": "Crypto-adressen tilhører en annen konto.",
   "crypto_address_yours": "Crypto-adressen tilhører denne kontoen.",
   "crypto_address_not_resolved": "Crypto-adresse er ikke løst ennå.",
-  "submit_to_string": "Send til {{string}}"
+  "submit_to_string": "Send til {{string}}",
+  "page_not_found": "Siden ble ikke funnet",
+  "not_found_description": "Siden du ba om, finnes ikke",
+  "last_edited": "sist endret {{timestamp}}"
 }

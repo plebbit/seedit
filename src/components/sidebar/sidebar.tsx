@@ -188,6 +188,7 @@ const Sidebar = ({ address, cid, createdAt, description, downvoteCount = 0, role
       <div className={styles.searchBarSpacer} />
       {isInPostView && <PostInfo address={address} cid={cid} downvoteCount={downvoteCount} timestamp={timestamp} upvoteCount={upvoteCount} />}
       <Link to={submitRoute}>
+        {/* TODO: add .largeButtonDisabled and disabledButtonDescription classnames for subs that don't accept posts */}
         <div className={styles.largeButton}>
           {t('submit_post')}
           <div className={styles.nub} />
