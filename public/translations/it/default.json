@@ -263,5 +263,6 @@
   "crypto_address_not_resolved": "L'indirizzo cripto non è ancora risolto.",
   "submit_to_string": "Invia a {{string}}",
   "page_not_found": "Pagina non trovata",
-  "not_found_description": "La pagina che hai richiesto non esiste"
+  "not_found_description": "La pagina che hai richiesto non esiste",
+  "last_edited": "ultima modifica {{timestamp}}"
 }

@@ -263,5 +263,6 @@
   "crypto_address_not_resolved": "Địa chỉ tiền điện tử vẫn chưa được giải quyết.",
   "submit_to_string": "Gửi đến {{string}}",
   "page_not_found": "Không tìm thấy trang",
-  "not_found_description": "Trang bạn yêu cầu không tồn tại"
+  "not_found_description": "Trang bạn yêu cầu không tồn tại",
+  "last_edited": "sửa lần cuối {{timestamp}}"
 }

@@ -263,5 +263,6 @@
   "crypto_address_not_resolved": "آدرس رمزارز هنوز حل نشده است.",
   "submit_to_string": "ارسال به {{string}}",
   "page_not_found": "صفحه یافت نشد",
-  "not_found_description": "صفحه‌ای که درخواست کرده‌اید وجود ندارد"
+  "not_found_description": "صفحه‌ای که درخواست کرده‌اید وجود ندارد",
+  "last_edited": "آخرین ویرایش {{timestamp}}"
 }

@@ -263,5 +263,6 @@
   "crypto_address_not_resolved": "Hindi pa naresolba ang crypto address.",
   "submit_to_string": "Isusumite sa {{string}}",
   "page_not_found": "Hindi makita ang pahina",
-  "not_found_description": "Ang pahinang hiniling mo ay hindi umiiral"
+  "not_found_description": "Ang pahinang hiniling mo ay hindi umiiral",
+  "last_edited": "huling inedit {{timestamp}}"
 }

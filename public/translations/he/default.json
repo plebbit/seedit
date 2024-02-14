@@ -263,5 +263,6 @@
   "crypto_address_not_resolved": "כתובת המטבע הקריפטוגרפית עדיין לא נפתרה.",
   "submit_to_string": "שליחה אל {{string}}",
   "page_not_found": "הדף לא נמצא",
-  "not_found_description": "הדף שביקשת אינו קיים"
+  "not_found_description": "הדף שביקשת אינו קיים",
+  "last_edited": "עריכה אחרונה {{timestamp}}"
 }

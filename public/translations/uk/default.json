@@ -263,5 +263,6 @@
   "crypto_address_not_resolved": "Адреса криптовалюти ще не вирішена.",
   "submit_to_string": "Надіслати до {{string}}",
   "page_not_found": "Сторінка не знайдена",
-  "not_found_description": "Сторінка, яку ви запросили, не існує"
+  "not_found_description": "Сторінка, яку ви запросили, не існує",
+  "last_edited": "остання редакція {{timestamp}}"
 }

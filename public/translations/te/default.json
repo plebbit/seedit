@@ -263,5 +263,6 @@
   "crypto_address_not_resolved": "క్రిప్టో చిరునామా ఇంకా పరిష్కరించబడలేదు.",
   "submit_to_string": "{{string}} కు సబ్‌మిట్ చేయండి",
   "page_not_found": "పేజీ కనబడలేదు",
-  "not_found_description": "మీ అభ్యర్థించిన పేజీ లేదు"
+  "not_found_description": "మీ అభ్యర్థించిన పేజీ లేదు",
+  "last_edited": "చివరి సవరించబడినది {{timestamp}}"
 }

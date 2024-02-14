@@ -263,5 +263,6 @@
   "crypto_address_not_resolved": "Crypto address is not resolved yet.",
   "submit_to_string": "Submit to {{string}}",
   "page_not_found": "Page not found",
-  "not_found_description": "The page you requested does not exist"
+  "not_found_description": "The page you requested does not exist",
+  "last_edited": "last edited {{timestamp}}"
 }

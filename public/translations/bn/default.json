@@ -263,5 +263,6 @@
   "crypto_address_not_resolved": "ক্রিপ্টো ঠিকানা এখনো সমাধান করা হয়নি।",
   "submit_to_string": "{{string}} এ জমা দিন",
   "page_not_found": "পৃষ্ঠাটি খুঁজে পাওয়া যায়নি",
-  "not_found_description": "আপনি যে পৃষ্ঠাটি অনুরোধ করেছেন সেটি অস্তিত্বে নেই"
+  "not_found_description": "আপনি যে পৃষ্ঠাটি অনুরোধ করেছেন সেটি অস্তিত্বে নেই",
+  "last_edited": "শেষ সম্পাদনা {{timestamp}}"
 }

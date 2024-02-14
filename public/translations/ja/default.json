@@ -263,5 +263,6 @@
   "crypto_address_not_resolved": "暗号通貨アドレスはまだ解決されていません。",
   "submit_to_string": "{{string}} に提出",
   "page_not_found": "ページが見つかりません",
-  "not_found_description": "要求されたページは存在しません"
+  "not_found_description": "要求されたページは存在しません",
+  "last_edited": "最終編集 {{timestamp}}"
 }

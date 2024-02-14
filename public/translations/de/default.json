@@ -263,5 +263,6 @@
   "crypto_address_not_resolved": "Krypto-Adresse ist noch nicht aufgelöst.",
   "submit_to_string": "Einreichen bei {{string}}",
   "page_not_found": "Seite nicht gefunden",
-  "not_found_description": "Die von Ihnen angeforderte Seite existiert nicht"
+  "not_found_description": "Die von Ihnen angeforderte Seite existiert nicht",
+  "last_edited": "Zuletzt bearbeitet am {{timestamp}}"
 }

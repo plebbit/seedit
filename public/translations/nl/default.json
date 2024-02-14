@@ -263,5 +263,6 @@
   "crypto_address_not_resolved": "Crypto-adres is nog niet opgelost.",
   "submit_to_string": "Indienen bij {{string}}",
   "page_not_found": "Pagina niet gevonden",
-  "not_found_description": "De pagina die je hebt opgevraagd, bestaat niet"
+  "not_found_description": "De pagina die je hebt opgevraagd, bestaat niet",
+  "last_edited": "laatst bewerkt {{timestamp}}"
 }

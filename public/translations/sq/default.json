@@ -263,5 +263,6 @@
   "crypto_address_not_resolved": "Adresa e kriptovalutës nuk është ende e zgjidhur.",
   "submit_to_string": "Dërgo në {{string}}",
   "page_not_found": "Faqja nuk u gjet",
-  "not_found_description": "Faqja që keni kërkuar nuk ekziston"
+  "not_found_description": "Faqja që keni kërkuar nuk ekziston",
+  "last_edited": "i fundit i ndryshuar {{timestamp}}"
 }
