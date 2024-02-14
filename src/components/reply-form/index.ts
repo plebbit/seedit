@@ -1,1 +1,1 @@
-export { default } from './reply-form';
+export { FormattingHelpTable, default } from './reply-form';

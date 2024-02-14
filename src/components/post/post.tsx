@@ -7,6 +7,7 @@ import { isPendingView, isPostView, isSubplebbitView } from '../../lib/utils/vie
 import { getCommentMediaInfoMemoized, getHasThumbnail } from '../../lib/utils/media-utils';
 import { getHostname } from '../../lib/utils/url-utils';
 import { getFormattedTimeAgo } from '../../lib/utils/time-utils';
+import EditForm from '../edit-form';
 import ExpandButton from './expand-button';
 import Expando from './expando';
 import Flair from './flair';
@@ -85,6 +86,7 @@ const Post = ({ index, post = {} }: PostProps) => {
     cid,
     deleted,
     downvoteCount,
+    edit,
     flair,
     link,
     linkHeight,
@@ -124,6 +126,10 @@ const Post = ({ index, post = {} }: PostProps) => {
 
   const [isExpanded, setIsExpanded] = useState(isInPostPage);
   const toggleExpanded = () => setIsExpanded(!isExpanded);
+
+  const [isEditing, setIsEditing] = useState(false);
+  const showEditForm = () => setIsEditing(true);
+  const hideEditForm = () => setIsEditing(false);
 
   const [upvoted, upvote] = useUpvote(post);
   const [downvoted, downvote] = useDownvote(post);
@@ -222,7 +228,8 @@ const Post = ({ index, post = {} }: PostProps) => {
                 />
               )}
               <div className={styles.tagline}>
-                {t('submitted')} {getFormattedTimeAgo(timestamp)} {t('post_by')}{' '}
+                {t('submitted')} {getFormattedTimeAgo(timestamp)} {edit && <span title={t('last_edited', { timestamp: getFormattedTimeAgo(edit.timestamp) })}>*</span>}{' '}
+                {t('post_by')}{' '}
                 <PostAuthor
                   authorAddress={author?.address}
                   authorRole={authorRole}
@@ -253,13 +260,18 @@ const Post = ({ index, post = {} }: PostProps) => {
                 index={post?.index}
                 removed={removed}
                 replyCount={replyCount}
+                showEditForm={showEditForm}
                 spoiler={spoiler}
                 subplebbitAddress={subplebbitAddress}
               />
             </div>
           </div>
         </div>
-        <Expando commentMediaInfo={commentMediaInfo} content={content} expanded={isExpanded} link={link} reason={reason} removed={removed} showContent={true} />
+        {isEditing ? (
+          <EditForm commentCid={cid} content={content} hideEditForm={hideEditForm} subplebbitAddress={subplebbitAddress} />
+        ) : (
+          <Expando commentMediaInfo={commentMediaInfo} content={content} expanded={isExpanded} link={link} reason={reason} removed={removed} showContent={true} />
+        )}
       </div>
     </div>
   );
