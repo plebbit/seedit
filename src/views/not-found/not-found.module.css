@@ -1,0 +1,21 @@
+.content {
+  margin: 7px 5px 0px 5px;
+}
+
+.notFound {
+  text-align: center;
+  text-transform: lowercase;
+  color: var(--text);
+}
+
+.notFound h1 {
+  font-size: 18px;
+  font-weight: 400;
+  margin: 10px 0;
+}
+
+.notFound p {
+  margin: 1em auto;
+  width: 500px;
+  font-size: 13px;
+}

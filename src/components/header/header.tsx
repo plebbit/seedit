@@ -3,6 +3,7 @@ import { Link, useLocation, useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { getShortAddress } from '@plebbit/plebbit-js';
 import { useAccount, useAuthorAvatar, useComment, useSubplebbit } from '@plebbit/plebbit-react-hooks';
+import { sortTypes } from '../../app';
 import {
   getAboutLink,
   isAboutView,
@@ -35,9 +36,10 @@ import {
   isProfileUpvotedView,
 } from '../../lib/utils/view-utils';
 import useTheme from '../../hooks/use-theme';
+import { TimeFilterKey } from '../../hooks/use-time-filter';
+import { useNotFoundStore } from '../../views/not-found';
 import styles from './header.module.css';
 import SubscribeButton from '../subscribe-button';
-import { TimeFilterKey } from '../../hooks/use-time-filter';
 
 const AboutButton = () => {
   const { t } = useTranslation();
@@ -71,8 +73,6 @@ const CommentsButton = () => {
     </li>
   );
 };
-
-const sortTypes = ['hot', 'new', 'active', 'controversialAll', 'topAll'];
 
 const SortItems = () => {
   const { t } = useTranslation();
@@ -291,6 +291,7 @@ const HeaderTitle = ({ title, shortAddress }: { title: string; shortAddress: str
   const isInSubplebbitSettingsView = isSubplebbitSettingsView(location.pathname, params);
   const isInSubplebbitsView = isSubplebbitsView(location.pathname);
   const isInCreateSubplebbitView = isCreateSubplebbitView(location.pathname);
+  const isInNotFoundView = useNotFoundStore((state) => state.isNotFound);
 
   const subplebbitTitle = <Link to={`/p/${params.subplebbitAddress}`}>{title || shortAddress}</Link>;
   const submitTitle = <span className={styles.submitTitle}>{t('submit')}</span>;
@@ -325,6 +326,8 @@ const HeaderTitle = ({ title, shortAddress }: { title: string; shortAddress: str
     return <span className={styles.lowercase}>{t('create_community')}</span>;
   } else if (isInSubplebbitsView) {
     return t('communities');
+  } else if (isInNotFoundView) {
+    return <span className={styles.lowercase}>{t('page_not_found')}</span>;
   }
   return null;
 };
@@ -350,6 +353,7 @@ const Header = () => {
   const isInSubmitView = isSubmitView(location.pathname);
   const isInSubplebbitSubmitView = isSubplebbitSubmitView(location.pathname, params);
   const isInSubplebbitSettingsView = isSubplebbitSettingsView(location.pathname, params);
+  const isInNotFoundView = useNotFoundStore((state) => state.isNotFound);
 
   const account = useAccount();
   const authorComment = useComment({ commentCid: params?.commentCid });
@@ -359,6 +363,7 @@ const Header = () => {
   const hasFewTabs = isInPostView || isInSubmitView || isInSubplebbitSubmitView || isInSubplebbitSettingsView || isInSettingsView || isInInboxView;
   const hasStickyHeader =
     isInHomeView ||
+    isInNotFoundView ||
     (isInSubplebbitView && !isInSubplebbitSubmitView && !isInSubplebbitSettingsView && !isInPostView && !isInAboutView) ||
     (isInProfileView && !isInAboutView) ||
     (isInAllView && !isInAllAboutView) ||
