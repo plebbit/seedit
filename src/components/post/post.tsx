@@ -194,11 +194,11 @@ const Post = ({ index, post = {} }: PostProps) => {
               <p className={`${styles.title} ${removed && !isInPostView ? styles.removedTitle : ''}`} onClick={handlePostClick}>
                 {isInPostView && link ? (
                   <a href={link} className={linkClass} target='_blank' rel='noopener noreferrer'>
-                    {postTitle}
+                    {postTitle ?? '-'}
                   </a>
                 ) : (
                   <Link className={linkClass} to={cid ? `/p/${subplebbitAddress}/c/${cid}` : `/profile/${post?.index}`}>
-                    {postTitle}
+                    {postTitle ?? '-'}
                   </Link>
                 )}
                 {flair && (
