@@ -25,6 +25,17 @@
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
     <title>seedit</title>
+    <script>
+      (function() {
+        // This checks if the URL does not contain a hash
+        if (!window.location.hash) {
+          // Calculate the base URL (protocol + host)
+          const baseURL = window.location.protocol + '//' + window.location.host + '/';
+          // Redirect to the base URL with `#/`
+          window.location.replace(baseURL + '#/');
+        }
+      })();
+    </script>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
