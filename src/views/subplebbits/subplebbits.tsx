@@ -3,9 +3,6 @@ import { Link, useLocation } from 'react-router-dom';
 import { Trans, useTranslation } from 'react-i18next';
 import { Subplebbit as SubplebbitType, useAccount, useAccountSubplebbits, useSubplebbits, useSubplebbitStats } from '@plebbit/plebbit-react-hooks';
 import styles from './subplebbits.module.css';
-import Label from '../../components/post/label';
-import Sidebar from '../../components/sidebar';
-import SubscribeButton from '../../components/subscribe-button';
 import { getFormattedTimeDuration } from '../../lib/utils/time-utils';
 import {
   isSubplebbitsView,
@@ -18,6 +15,10 @@ import {
   isSubplebbitsVoteRejectingView,
 } from '../../lib/utils/view-utils';
 import { useDefaultSubplebbitAddresses } from '../../lib/utils/addresses-utils';
+import Markdown from '../../components/markdown';
+import Label from '../../components/post/label';
+import Sidebar from '../../components/sidebar';
+import SubscribeButton from '../../components/subscribe-button';
 
 interface SubplebbitProps {
   index?: number;
@@ -181,7 +182,11 @@ const Subplebbit = ({ subplebbit }: SubplebbitProps) => {
             </div>
           </span>
         </div>
-        {description && showDescription && <div className={styles.description}>{description}</div>}
+        {description && showDescription && (
+          <div className={styles.description}>
+            <Markdown content={description} />
+          </div>
+        )}
       </div>
     </div>
   );
