@@ -230,6 +230,8 @@ const Reply = ({ cidOfReplyWithContext, depth = 0, isSingleComment, isSingleRepl
   } = reply || {};
   const subplebbit = useSubplebbit({ subplebbitAddress });
 
+  const [showSpoiler, setShowSpoiler] = useState(false);
+
   const { blocked, unblock } = useBlock({ address: cid });
   const [collapsed, setCollapsed] = useState(blocked);
   useEffect(() => {
@@ -348,8 +350,14 @@ const Reply = ({ cidOfReplyWithContext, depth = 0, isSingleComment, isSingleRepl
               />
             )}
             {!collapsed && (
-              <div className={`${styles.usertext} ${cid && commentMediaInfo && (isSingleComment || cidOfReplyWithContext === cid) ? styles.highlightMedia : ''}`}>
-                {commentMediaInfo && (!removed || !deleted) && (
+              <div
+                className={`${styles.usertext} ${cid && commentMediaInfo && (isSingleComment || cidOfReplyWithContext === cid) ? styles.highlightMedia : ''}`}
+                onClick={() => {
+                  spoiler && !showSpoiler && setShowSpoiler(true);
+                }}
+              >
+                <div className={spoiler && !showSpoiler ? styles.hideSpoiler : ''} />
+                {commentMediaInfo && !(removed || deleted || (spoiler && !showSpoiler)) && (
                   <ReplyMedia
                     commentMediaInfo={commentMediaInfo}
                     content={content}
@@ -365,6 +373,7 @@ const Reply = ({ cidOfReplyWithContext, depth = 0, isSingleComment, isSingleRepl
                   <EditForm commentCid={cid} content={content} hideEditForm={hideEditForm} subplebbitAddress={subplebbitAddress} />
                 ) : (
                   <div className={`${styles.md} ${cid && (isSingleComment || cidOfReplyWithContext === cid) ? styles.highlightContent : ''}`}>
+                    {spoiler && !showSpoiler && <div className={styles.showSpoilerButton}>{t('view_spoiler')}</div>}
                     {content &&
                       (removed ? (
                         <div className={styles.removedContent}>[{t('removed')}]</div>

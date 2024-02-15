@@ -68,11 +68,7 @@
   font-weight: normal;
 }
 
-.removedTitle {
-  filter: blur(4px);
-}
-
-.removedThumbnail {
+.blur {
   filter: blur(4px);
 }
 

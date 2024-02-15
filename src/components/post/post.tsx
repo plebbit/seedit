@@ -176,7 +176,7 @@ const Post = ({ index, post = {} }: PostProps) => {
               </div>
             </div>
             {hasThumbnail && !isInPostView && (
-              <span className={removed ? styles.removedThumbnail : ''}>
+              <span className={removed ? styles.blur : ''}>
                 <Thumbnail
                   cid={cid}
                   commentMediaInfo={commentMediaInfo}
@@ -191,7 +191,7 @@ const Post = ({ index, post = {} }: PostProps) => {
           </div>
           <div className={styles.entry}>
             <div className={styles.topMatter}>
-              <p className={`${styles.title} ${removed && !isInPostView ? styles.removedTitle : ''}`} onClick={handlePostClick}>
+              <p className={`${styles.title} ${removed && !isInPostView ? styles.blur : ''}`} onClick={handlePostClick}>
                 {isInPostView && link ? (
                   <a href={link} className={linkClass} target='_blank' rel='noopener noreferrer'>
                     {postTitle ?? '-'}
@@ -270,7 +270,16 @@ const Post = ({ index, post = {} }: PostProps) => {
         {isEditing ? (
           <EditForm commentCid={cid} content={content} hideEditForm={hideEditForm} subplebbitAddress={subplebbitAddress} />
         ) : (
-          <Expando commentMediaInfo={commentMediaInfo} content={content} expanded={isExpanded} link={link} reason={reason} removed={removed} showContent={true} />
+          <Expando
+            commentMediaInfo={commentMediaInfo}
+            content={content}
+            expanded={isExpanded}
+            link={link}
+            reason={reason}
+            removed={removed}
+            showContent={true}
+            spoiler={spoiler}
+          />
         )}
       </div>
     </div>
