@@ -264,5 +264,6 @@
   "submit_to_string": "Odeslat do {{string}}",
   "page_not_found": "Stránka nenalezena",
   "not_found_description": "Požadovaná stránka neexistuje",
-  "last_edited": "Poslední úprava {{timestamp}}"
+  "last_edited": "Poslední úprava {{timestamp}}",
+  "view_spoiler": "zobrazit spoiler"
 }

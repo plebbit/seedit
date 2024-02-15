@@ -264,5 +264,6 @@
   "submit_to_string": "Kirim ke {{string}}",
   "page_not_found": "Halaman tidak ditemukan",
   "not_found_description": "Halaman yang Anda minta tidak ada",
-  "last_edited": "terakhir diubah {{timestamp}}"
+  "last_edited": "terakhir diubah {{timestamp}}",
+  "view_spoiler": "lihat spoiler"
 }

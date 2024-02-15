@@ -264,5 +264,6 @@
   "submit_to_string": "Enviar a {{string}}",
   "page_not_found": "Página no encontrada",
   "not_found_description": "La página que solicitaste no existe",
-  "last_edited": "última edición {{timestamp}}"
+  "last_edited": "última edición {{timestamp}}",
+  "view_spoiler": "ver spoiler"
 }

@@ -264,5 +264,6 @@
   "submit_to_string": "Gửi đến {{string}}",
   "page_not_found": "Không tìm thấy trang",
   "not_found_description": "Trang bạn yêu cầu không tồn tại",
-  "last_edited": "sửa lần cuối {{timestamp}}"
+  "last_edited": "sửa lần cuối {{timestamp}}",
+  "view_spoiler": "xem spoiler"
 }

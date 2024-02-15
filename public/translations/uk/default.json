@@ -264,5 +264,6 @@
   "submit_to_string": "Надіслати до {{string}}",
   "page_not_found": "Сторінка не знайдена",
   "not_found_description": "Сторінка, яку ви запросили, не існує",
-  "last_edited": "остання редакція {{timestamp}}"
+  "last_edited": "остання редакція {{timestamp}}",
+  "view_spoiler": "переглянути спойлер"
 }

@@ -264,5 +264,6 @@
   "submit_to_string": "Lähetä kohteeseen {{string}}",
   "page_not_found": "Sivua ei löytynyt",
   "not_found_description": "Pyytämääsi sivua ei löydy",
-  "last_edited": "Viimeksi muokattu {{timestamp}}"
+  "last_edited": "Viimeksi muokattu {{timestamp}}",
+  "view_spoiler": "näytä spoiler"
 }

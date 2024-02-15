@@ -264,5 +264,6 @@
   "submit_to_string": "Isusumite sa {{string}}",
   "page_not_found": "Hindi makita ang pahina",
   "not_found_description": "Ang pahinang hiniling mo ay hindi umiiral",
-  "last_edited": "huling inedit {{timestamp}}"
+  "last_edited": "huling inedit {{timestamp}}",
+  "view_spoiler": "tingnan ang spoiler"
 }

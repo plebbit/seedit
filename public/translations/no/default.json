@@ -264,5 +264,6 @@
   "submit_to_string": "Send til {{string}}",
   "page_not_found": "Siden ble ikke funnet",
   "not_found_description": "Siden du ba om, finnes ikke",
-  "last_edited": "sist endret {{timestamp}}"
+  "last_edited": "sist endret {{timestamp}}",
+  "view_spoiler": "se spoiler"
 }

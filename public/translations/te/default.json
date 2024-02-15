@@ -264,5 +264,6 @@
   "submit_to_string": "{{string}} కు సబ్‌మిట్ చేయండి",
   "page_not_found": "పేజీ కనబడలేదు",
   "not_found_description": "మీ అభ్యర్థించిన పేజీ లేదు",
-  "last_edited": "చివరి సవరించబడినది {{timestamp}}"
+  "last_edited": "చివరి సవరించబడినది {{timestamp}}",
+  "view_spoiler": "స్పోయ్లర్ వీక్షించండి"
 }

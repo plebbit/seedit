@@ -264,5 +264,6 @@
   "submit_to_string": "ส่งไปยัง {{string}}",
   "page_not_found": "ไม่พบหน้า",
   "not_found_description": "หน้าที่คุณขอไม่มีอยู่จริง",
-  "last_edited": "แก้ไขล่าสุด {{timestamp}}"
+  "last_edited": "แก้ไขล่าสุด {{timestamp}}",
+  "view_spoiler": "ดูสปอยล์เลอร์"
 }
