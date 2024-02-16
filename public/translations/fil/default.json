@@ -270,5 +270,8 @@
   "default_communities": "default na mga komunidad",
   "avatar": "avatar",
   "pending_edit": "naka-pending na edit",
-  "failed_edit": "nakabigong edit"
+  "failed_edit": "nakabigong edit",
+  "copy_full_address": "<1>kopyahin</1> ang buong address",
+  "node_stats": "stats ng node",
+  "version": "bersyon"
 }

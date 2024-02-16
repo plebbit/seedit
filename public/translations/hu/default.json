@@ -270,5 +270,8 @@
   "default_communities": "alapértelmezett közösségek",
   "avatar": "avatár",
   "pending_edit": "folyamatban lévő szerkesztés",
-  "failed_edit": "sikertelen szerkesztés"
+  "failed_edit": "sikertelen szerkesztés",
+  "copy_full_address": "<1>másol</1> teljes cím",
+  "node_stats": "csomópont statisztikák",
+  "version": "verzió"
 }

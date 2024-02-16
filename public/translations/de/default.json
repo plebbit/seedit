@@ -270,5 +270,8 @@
   "default_communities": "Standard-Communities",
   "avatar": "Avatar",
   "pending_edit": "ausstehende Bearbeitung",
-  "failed_edit": "fehlgeschlagene Bearbeitung"
+  "failed_edit": "fehlgeschlagene Bearbeitung",
+  "copy_full_address": "<1>Kopieren</1> Sie die vollständige Adresse",
+  "node_stats": "Knotenstatistiken",
+  "version": "Version"
 }

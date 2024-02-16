@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { setAccount, useAccount, useResolvedAuthorAddress } from '@plebbit/plebbit-react-hooks';
-import { useTranslation } from 'react-i18next';
+import { Trans, useTranslation } from 'react-i18next';
 import styles from './address-settings.module.css';
 
 const AddressSettings = () => {
@@ -132,7 +132,7 @@ const AddressSettings = () => {
   return (
     <div className={styles.addressSettings}>
       <div className={styles.copyAddressSetting}>
-        <button onClick={() => navigator.clipboard.writeText(account?.signer?.address)}>copy</button> full address
+        <Trans i18nKey='copy_full_address' components={{ 1: <button onClick={() => navigator.clipboard.writeText(account?.signer?.address)} /> }} />
       </div>
       <div className={styles.cryptoAddressSetting}>
         <span className={styles.settingTitle}>{t('crypto_address')}</span>

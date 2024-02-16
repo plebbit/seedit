@@ -270,5 +270,8 @@
   "default_communities": "comunități implicite",
   "avatar": "avatar",
   "pending_edit": "editare în așteptare",
-  "failed_edit": "editare eșuată"
+  "failed_edit": "editare eșuată",
+  "copy_full_address": "<1>copiază</1> adresa completă",
+  "node_stats": "statistici de nod",
+  "version": "versiune"
 }

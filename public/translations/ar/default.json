@@ -270,5 +270,8 @@
   "default_communities": "المجتمعات الافتراضية",
   "avatar": "الصورة الرمزية",
   "pending_edit": "تحرير معلق",
-  "failed_edit": "فشل التعديل"
+  "failed_edit": "فشل التعديل",
+  "copy_full_address": "<1>نسخ</1> العنوان الكامل",
+  "node_stats": "إحصائيات العقدة",
+  "version": "الإصدار"
 }

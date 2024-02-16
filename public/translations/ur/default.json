@@ -270,5 +270,8 @@
   "default_communities": "ڈیفالٹ کمیونٹیز",
   "avatar": "اوتار",
   "pending_edit": "زیر التواء ترتیبات",
-  "failed_edit": "ناکام ترتیبات"
+  "failed_edit": "ناکام ترتیبات",
+  "copy_full_address": "<1>کاپی</1> مکمل پتہ",
+  "node_stats": "نوڈ اشاریہ",
+  "version": "ورژن"
 }

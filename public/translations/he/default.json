@@ -270,5 +270,8 @@
   "default_communities": "קהילות ברירת מחדל",
   "avatar": "אוואטר",
   "pending_edit": "עריכה ממתינה",
-  "failed_edit": "עריכה נכשלה"
+  "failed_edit": "עריכה נכשלה",
+  "copy_full_address": "<1>העתק</1> כתובת מלאה",
+  "node_stats": "סטטיסטיקות הצומת",
+  "version": "גרסה"
 }

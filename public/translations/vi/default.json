@@ -270,5 +270,8 @@
   "default_communities": "các cộng đồng mặc định",
   "avatar": "avatar",
   "pending_edit": "chỉnh sửa đang chờ",
-  "failed_edit": "chỉnh sửa thất bại"
+  "failed_edit": "chỉnh sửa thất bại",
+  "copy_full_address": "<1>sao chép</1> địa chỉ đầy đủ",
+  "node_stats": "thống kê nút",
+  "version": "phiên bản"
 }

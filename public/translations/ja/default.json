@@ -270,5 +270,8 @@
   "default_communities": "デフォルトコミュニティ",
   "avatar": "アバター",
   "pending_edit": "保留中の編集",
-  "failed_edit": "失敗した編集"
+  "failed_edit": "失敗した編集",
+  "copy_full_address": "<1>コピー</1>完全な住所",
+  "node_stats": "ノードの統計",
+  "version": "バージョン"
 }
