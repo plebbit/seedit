@@ -270,5 +270,8 @@
   "default_communities": "varsayılan topluluklar",
   "avatar": "avatar",
   "pending_edit": "bekleyen düzenleme",
-  "failed_edit": "başarısız düzenleme"
+  "failed_edit": "başarısız düzenleme",
+  "copy_full_address": "<1>kopyala</1> tam adres",
+  "node_stats": "düğüm istatistikleri",
+  "version": "sürüm"
 }

@@ -189,7 +189,7 @@ const Settings = () => {
             </a>
             {isElectron && (
               <a className={styles.fullNodeStats} href='http://localhost:5001/webui/' target='_blank' rel='noreferrer'>
-                node stats
+                {t('node_stats')}
               </a>
             )}
             {commitRef && (

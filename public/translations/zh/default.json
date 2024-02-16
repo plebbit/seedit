@@ -270,5 +270,8 @@
   "default_communities": "默认社区",
   "avatar": "头像",
   "pending_edit": "待处理的编辑",
-  "failed_edit": "编辑失败"
+  "failed_edit": "编辑失败",
+  "copy_full_address": "<1>复制</1>完整地址",
+  "node_stats": "节点统计",
+  "version": "版本"
 }

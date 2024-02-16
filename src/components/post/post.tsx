@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import styles from './post.module.css';
 import { Link, useLocation, useParams } from 'react-router-dom';
-import { Comment, useAuthorAddress, useAuthorAvatar, useBlock, useComment, useEditedComment, useSubplebbit } from '@plebbit/plebbit-react-hooks';
+import { Comment, useAuthorAddress, useAuthorAvatar, useBlock, useComment, useEditedComment, useSubplebbit, useSubscribe } from '@plebbit/plebbit-react-hooks';
 import { useTranslation } from 'react-i18next';
-import { isPendingView, isPostView, isSubplebbitView } from '../../lib/utils/view-utils';
+import { isAllView, isPendingView, isPostView, isSubplebbitView } from '../../lib/utils/view-utils';
 import { getCommentMediaInfoMemoized, getHasThumbnail } from '../../lib/utils/media-utils';
 import { getHostname } from '../../lib/utils/url-utils';
 import { getFormattedTimeAgo } from '../../lib/utils/time-utils';
@@ -106,6 +106,9 @@ const Post = ({ index, post = {} }: PostProps) => {
   if (removed) {
     content = '[removed]';
   }
+  if (deleted) {
+    content = '[deleted]';
+  }
   const { displayName, shortAddress } = author || {};
   const { shortAuthorAddress, authorAddressChanged } = useAuthorAddress({ comment: post });
   const { imageUrl } = useAuthorAvatar({ author });
@@ -119,6 +122,7 @@ const Post = ({ index, post = {} }: PostProps) => {
 
   const authorRole = subplebbit?.roles?.[post.author?.address]?.role;
 
+  const isInAllView = isAllView(location.pathname);
   const isInPostView = isPostView(location.pathname, params);
   const isInPendingView = isPendingView(location.pathname, params);
   const isInSubplebbitView = isSubplebbitView(location.pathname, params);
@@ -142,6 +146,10 @@ const Post = ({ index, post = {} }: PostProps) => {
   const linkClass = `${isInPostView ? (link ? styles.externalLink : styles.internalLink) : styles.link} ${pinned ? styles.pinnedLink : ''}`;
 
   const { blocked, unblock } = useBlock({ address: cid });
+
+  const [hasClickedSubscribe, setHasClickedSubscribe] = useState(false);
+  const [isHoveringOnSubscribe, setIsHoveringOnSubscribe] = useState(false);
+  const { subscribe, subscribed } = useSubscribe({ subplebbitAddress });
 
   // show gray dotted border around last clicked post
   const isLastClicked = localStorage.getItem('lastClickedPost') === cid;
@@ -176,7 +184,7 @@ const Post = ({ index, post = {} }: PostProps) => {
                   <div className={`${styles.arrowCommon} ${downvoted ? styles.downvoted : styles.arrowDown}`} onClick={() => cid && downvote()} />
                 </div>
               </div>
-              {hasThumbnail && !isInPostView && (
+              {hasThumbnail && !isInPostView && !spoiler && (
                 <span className={removed ? styles.blur : ''}>
                   <Thumbnail
                     cid={cid}
@@ -245,7 +253,23 @@ const Post = ({ index, post = {} }: PostProps) => {
                   {!isInSubplebbitView && (
                     <>
                        {t('post_to')}{' '}
-                      <Link className={styles.subplebbit} to={`/p/${subplebbitAddress}`}>
+                      {isInAllView && (!subscribed || (subscribed && hasClickedSubscribe)) && (
+                        <span className={styles.subscribeButtonWrapper}>
+                          <button
+                            className={`${styles.subscribeButton} ${subscribed ? styles.buttonSubscribed : styles.buttonSubscribe}`}
+                            onClick={() => {
+                              subscribe();
+                              setHasClickedSubscribe(true);
+                            }}
+                            onMouseOver={() => setIsHoveringOnSubscribe(true)}
+                            onMouseLeave={() => setIsHoveringOnSubscribe(false)}
+                          />
+                        </span>
+                      )}
+                      <Link
+                        className={`${styles.subplebbit} ${isHoveringOnSubscribe || (subscribed && hasClickedSubscribe) ? styles.greenSubplebbitAddress : ''}`}
+                        to={`/p/${subplebbitAddress}`}
+                      >
                         p/{subplebbit?.shortAddress || subplebbitAddress}
                       </Link>
                     </>

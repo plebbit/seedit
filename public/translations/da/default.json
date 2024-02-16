@@ -270,5 +270,8 @@
   "default_communities": "standardfællesskaber",
   "avatar": "avatar",
   "pending_edit": "ventende redigering",
-  "failed_edit": "mislykket redigering"
+  "failed_edit": "mislykket redigering",
+  "copy_full_address": "<1>kopiér</1> fuld adresse",
+  "node_stats": "nodestatistikker",
+  "version": "version"
 }

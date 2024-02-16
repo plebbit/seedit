@@ -47,7 +47,8 @@ const Expando = ({ commentMediaInfo, content, expanded, link, reason, removed, s
         spoiler && !showSpoiler && setShowSpoiler(true);
       }}
     >
-      {link && !removed && !(spoiler && !showSpoiler) && (
+      <div className={spoiler && !showSpoiler ? styles.hideSpoiler : ''} />
+      {link && !removed && (
         <div className={styles.mediaPreview}>
           <Link
             to={link}
@@ -64,7 +65,6 @@ const Expando = ({ commentMediaInfo, content, expanded, link, reason, removed, s
       )}
       {content && showContent && (
         <div className={styles.usertext}>
-          <div className={spoiler && !showSpoiler ? styles.hideSpoiler : ''} />
           <div className={styles.markdown}>
             {spoiler && !showSpoiler && <div className={styles.showSpoilerButton}>{t('view_spoiler')}</div>}
             <Markdown content={content} />

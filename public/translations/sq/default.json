@@ -270,5 +270,8 @@
   "default_communities": "komunitete parazgjedhur",
   "avatar": "avatar",
   "pending_edit": "ndryshimi në pritje",
-  "failed_edit": "ndryshimi i dështuar"
+  "failed_edit": "ndryshimi i dështuar",
+  "copy_full_address": "<1>kopjo</1> adresën e plotë",
+  "node_stats": "statistikat e nyjes",
+  "version": "versioni"
 }

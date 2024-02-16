@@ -31,7 +31,6 @@ const AccountSettings = () => {
       const lastAccount = accounts[accounts.length - 1];
       setActiveAccount(lastAccount.name);
       setSwitchToLastAccount(false);
-      window.location.reload();
     }
   }, [accounts, switchToLastAccount]);
 
@@ -50,10 +49,7 @@ const AccountSettings = () => {
   };
 
   const _deleteAccount = (accountName: string) => {
-    if (accounts.length === 1) {
-      alert(t('last_account_notice'));
-      return;
-    } else if (!accountName) {
+    if (!accountName) {
       return;
     } else if (window.confirm(t('delete_confirm', { value: accountName, interpolation: { escapeValue: false } }))) {
       if (window.confirm(t('double_confirm'))) {

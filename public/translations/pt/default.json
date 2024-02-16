@@ -270,5 +270,8 @@
   "default_communities": "comunidades padrão",
   "avatar": "avatar",
   "pending_edit": "edição pendente",
-  "failed_edit": "edição falhada"
+  "failed_edit": "edição falhada",
+  "copy_full_address": "<1>copiar</1> endereço completo",
+  "node_stats": "estatísticas do nó",
+  "version": "versão"
 }

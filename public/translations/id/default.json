@@ -270,5 +270,8 @@
   "default_communities": "komunitas default",
   "avatar": "avatar",
   "pending_edit": "pengeditan tertunda",
-  "failed_edit": "edit gagal"
+  "failed_edit": "edit gagal",
+  "copy_full_address": "<1>salin</1> alamat lengkap",
+  "node_stats": "statistik node",
+  "version": "versi"
 }

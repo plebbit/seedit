@@ -280,6 +280,7 @@ const HeaderTitle = ({ title, shortAddress }: { title: string; shortAddress: str
   const { t } = useTranslation();
   const params = useParams();
   const location = useLocation();
+  const isInAllView = isAllView(location.pathname);
   const isInAuthorView = isAuthorView(location.pathname);
   const isInInboxView = isInboxView(location.pathname);
   const isInPostView = isPostView(location.pathname, params);
@@ -328,6 +329,8 @@ const HeaderTitle = ({ title, shortAddress }: { title: string; shortAddress: str
     return t('communities');
   } else if (isInNotFoundView) {
     return <span className={styles.lowercase}>{t('page_not_found')}</span>;
+  } else if (isInAllView) {
+    return t('all');
   }
   return null;
 };
@@ -385,7 +388,7 @@ const Header = () => {
             )}
           </Link>
         </div>
-        {!isInHomeView && !isInAllView && (
+        {!isInHomeView && (
           <span className={`${styles.pageName} ${!logoIsAvatar && styles.soloPageName}`}>
             <HeaderTitle title={title} shortAddress={shortAddress} />
           </span>

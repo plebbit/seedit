@@ -270,5 +270,8 @@
   "default_communities": "domyślne społeczności",
   "avatar": "avatar",
   "pending_edit": "edycja oczekująca",
-  "failed_edit": "nieudana edycja"
+  "failed_edit": "nieudana edycja",
+  "copy_full_address": "<1>skopiuj</1> pełny adres",
+  "node_stats": "statystyki węzła",
+  "version": "wersja"
 }

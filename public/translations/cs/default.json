@@ -270,5 +270,8 @@
   "default_communities": "výchozí komunity",
   "avatar": "avatar",
   "pending_edit": "čekající úprava",
-  "failed_edit": "neúspěšná úprava"
+  "failed_edit": "neúspěšná úprava",
+  "copy_full_address": "<1>kopírovat</1> plnou adresu",
+  "node_stats": "statistiky uzlu",
+  "version": "verze"
 }

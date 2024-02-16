@@ -47,7 +47,7 @@ const TopBar = () => {
   const filterDropdownClass = isFilterDropdownOpen ? styles.visible : styles.hidden;
 
   const sortLabels = [t('hot'), t('new'), t('active'), t('controversial'), t('top')];
-  const [selectedSortType, setSelectedSortType] = useState(params.sortType || '/hot');
+  const selectedSortType = params.sortType || 'hot';
 
   const getTimeFilterLink = (timeFilterName: string) => {
     return isInSubplebbitView
@@ -61,14 +61,6 @@ const TopBar = () => {
     const index = sortTypes.indexOf(selectedSortType);
     return index >= 0 ? sortLabels[index] : '';
   };
-
-  useEffect(() => {
-    if (params.sortType) {
-      setSelectedSortType(params.sortType);
-    } else {
-      setSelectedSortType('hot');
-    }
-  }, [params.sortType, location.pathname]);
 
   const handleClickOutside = useCallback(
     (event: MouseEvent) => {
@@ -103,14 +95,13 @@ const TopBar = () => {
     };
   }, [handleClickOutside]);
 
-  const [homeLink, setHomeLink] = useState('/');
-  const [allLink, setAllLink] = useState('/p/all');
-  useEffect(() => {
-    if (timeFilterName && !isInSubplebbitView) {
-      setHomeLink(`/${selectedSortType}/${timeFilterName}`);
-      setAllLink(`/p/all/${selectedSortType}/${timeFilterName}`);
-    }
-  }, [timeFilterName, isInSubplebbitView, selectedSortType]);
+  let homeLink = '/';
+  let allLink = '/p/all';
+
+  if (timeFilterName && !isInSubplebbitView) {
+    homeLink += `${selectedSortType}/${timeFilterName}`;
+    allLink += `/${selectedSortType}/${timeFilterName}`;
+  }
 
   return (
     <div className={styles.headerArea}>
@@ -123,19 +114,19 @@ const TopBar = () => {
                 {getShortAddress(subscription)}
               </Link>
             ))}
-            <Link to='/communities/subscriber' className={`${styles.dropdownItem} ${styles.editSubscriptions}`}>
-              {t('edit_subscriptions')}
-            </Link>
             <Link to='/communities/vote' className={`${styles.dropdownItem} ${styles.editSubscriptions}`}>
               {t('default_communities')}
+            </Link>
+            <Link to='/communities/subscriber' className={`${styles.dropdownItem} ${styles.editSubscriptions}`}>
+              {t('edit_subscriptions')}
             </Link>
           </div>
         </div>
         <div className={styles.dropdown} ref={sortsDropdownRef} onClick={toggleSortsDropdown}>
           <span className={styles.selectedTitle}>{getSelectedSortLabel()}</span>
           <div className={`${styles.dropChoices} ${styles.sortsDropChoices} ${sortsDropdownClass}`} ref={sortsdropdownItemsRef}>
-            {sortTypes.map((choice, index) => {
-              let dropdownLink = isInSubplebbitView ? `/p/${params.subplebbitAddress}/${choice}` : choice;
+            {sortTypes.map((sortType, index) => {
+              let dropdownLink = isInSubplebbitView ? `/p/${params.subplebbitAddress}/${sortType}` : isinAllView ? `/p/all/${sortType}` : sortType;
               if (timeFilterName) {
                 dropdownLink += `/${timeFilterName}`;
               }

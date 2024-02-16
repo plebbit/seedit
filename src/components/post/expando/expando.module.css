@@ -60,6 +60,7 @@
   border: 1px solid var(--text-primary);
   background-color: black;
   color: black;
+  z-index: 1;
   cursor: pointer;
 }
 
@@ -67,6 +68,7 @@
   color: white;
   text-transform: lowercase;
   position: absolute;
+  z-index: 1;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);

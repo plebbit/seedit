@@ -270,5 +270,8 @@
   "default_communities": "جوامع پیش‌فرض",
   "avatar": "آواتار",
   "pending_edit": "ویرایش در انتظار",
-  "failed_edit": "ویرایش ناموفق"
+  "failed_edit": "ویرایش ناموفق",
+  "copy_full_address": "<1>کپی</1> آدرس کامل",
+  "node_stats": "آمار گره",
+  "version": "نسخه"
 }

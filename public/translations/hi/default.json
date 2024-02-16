@@ -270,5 +270,8 @@
   "default_communities": "डिफ़ॉल्ट समुदाय",
   "avatar": "अवतार",
   "pending_edit": "अपूर्ण संपादन",
-  "failed_edit": "विफल संपादन"
+  "failed_edit": "विफल संपादन",
+  "copy_full_address": "<1>कॉपी</1> पूरा पता",
+  "node_stats": "नोड आंकड़े",
+  "version": "संस्करण"
 }

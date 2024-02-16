@@ -270,5 +270,8 @@
   "default_communities": "oletusyhteisöt",
   "avatar": "avatar",
   "pending_edit": "odottava muokkaus",
-  "failed_edit": "epäonnistunut muokkaus"
+  "failed_edit": "epäonnistunut muokkaus",
+  "copy_full_address": "<1>kopioi</1> koko osoite",
+  "node_stats": "solmustatistiikka",
+  "version": "versio"
 }
