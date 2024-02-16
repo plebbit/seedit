@@ -126,6 +126,9 @@ const TopBar = () => {
             <Link to='/communities/subscriber' className={`${styles.dropdownItem} ${styles.editSubscriptions}`}>
               {t('edit_subscriptions')}
             </Link>
+            <Link to='/communities/vote' className={`${styles.dropdownItem} ${styles.editSubscriptions}`}>
+              {t('default_communities')}
+            </Link>
           </div>
         </div>
         <div className={styles.dropdown} ref={sortsDropdownRef} onClick={toggleSortsDropdown}>
@@ -179,7 +182,7 @@ const TopBar = () => {
           </ul>
         </div>
         <Link to='/communities/vote' className={styles.moreLink}>
-          {t('edit')} »
+          {t('more')} »
         </Link>
       </div>
     </div>
