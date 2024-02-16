@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import styles from './expando.module.css';
 import Embed from '../embed';
@@ -13,11 +14,14 @@ interface ExpandoProps {
   reason?: string;
   removed?: boolean;
   showContent: boolean;
+  spoiler?: boolean;
   toggleExpanded?: () => void;
 }
 
-const Expando = ({ commentMediaInfo, content, expanded, link, reason, removed, showContent, toggleExpanded }: ExpandoProps) => {
+const Expando = ({ commentMediaInfo, content, expanded, link, reason, removed, showContent, spoiler = false, toggleExpanded }: ExpandoProps) => {
   const { t } = useTranslation();
+
+  const [showSpoiler, setShowSpoiler] = useState(false);
 
   let mediaComponent = null;
   let noExpandButton = false;
@@ -37,8 +41,13 @@ const Expando = ({ commentMediaInfo, content, expanded, link, reason, removed, s
   }
 
   return (
-    <div className={expanded ? styles.expando : styles.expandoHidden}>
-      {link && !removed && (
+    <div
+      className={expanded ? styles.expando : styles.expandoHidden}
+      onClick={() => {
+        spoiler && !showSpoiler && setShowSpoiler(true);
+      }}
+    >
+      {link && !removed && !(spoiler && !showSpoiler) && (
         <div className={styles.mediaPreview}>
           <Link
             to={link}
@@ -55,7 +64,9 @@ const Expando = ({ commentMediaInfo, content, expanded, link, reason, removed, s
       )}
       {content && showContent && (
         <div className={styles.usertext}>
+          <div className={spoiler && !showSpoiler ? styles.hideSpoiler : ''} />
           <div className={styles.markdown}>
+            {spoiler && !showSpoiler && <div className={styles.showSpoilerButton}>{t('view_spoiler')}</div>}
             <Markdown content={content} />
             {reason && (
               <div className={styles.modReason}>

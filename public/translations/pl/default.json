@@ -264,5 +264,11 @@
   "submit_to_string": "Prześlij do {{string}}",
   "page_not_found": "Strona nie znaleziona",
   "not_found_description": "Strona, którą żądasz, nie istnieje",
-  "last_edited": "ostatnio edytowano {{timestamp}}"
+  "last_edited": "ostatnio edytowano {{timestamp}}",
+  "view_spoiler": "pokaż spoiler",
+  "more": "więcej",
+  "default_communities": "domyślne społeczności",
+  "avatar": "avatar",
+  "pending_edit": "edycja oczekująca",
+  "failed_edit": "nieudana edycja"
 }

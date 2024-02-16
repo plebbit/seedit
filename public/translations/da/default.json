@@ -264,5 +264,11 @@
   "submit_to_string": "Indsend til {{string}}",
   "page_not_found": "Side ikke fundet",
   "not_found_description": "Den side, du har anmodet om, findes ikke",
-  "last_edited": "Sidst redigeret {{timestamp}}"
+  "last_edited": "Sidst redigeret {{timestamp}}",
+  "view_spoiler": "vis spoiler",
+  "more": "mere",
+  "default_communities": "standardfællesskaber",
+  "avatar": "avatar",
+  "pending_edit": "ventende redigering",
+  "failed_edit": "mislykket redigering"
 }

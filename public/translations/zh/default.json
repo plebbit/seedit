@@ -264,5 +264,11 @@
   "submit_to_string": "提交到{{string}}",
   "page_not_found": "页面未找到",
   "not_found_description": "您请求的页面不存在",
-  "last_edited": "上次编辑时间：{{timestamp}}"
+  "last_edited": "上次编辑时间：{{timestamp}}",
+  "view_spoiler": "查看剧透",
+  "more": "更多",
+  "default_communities": "默认社区",
+  "avatar": "头像",
+  "pending_edit": "待处理的编辑",
+  "failed_edit": "编辑失败"
 }

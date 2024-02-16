@@ -264,5 +264,11 @@
   "submit_to_string": "ارسال به {{string}}",
   "page_not_found": "صفحه یافت نشد",
   "not_found_description": "صفحه‌ای که درخواست کرده‌اید وجود ندارد",
-  "last_edited": "آخرین ویرایش {{timestamp}}"
+  "last_edited": "آخرین ویرایش {{timestamp}}",
+  "view_spoiler": "نمایش اسپویلر",
+  "more": "بیشتر",
+  "default_communities": "جوامع پیش‌فرض",
+  "avatar": "آواتار",
+  "pending_edit": "ویرایش در انتظار",
+  "failed_edit": "ویرایش ناموفق"
 }

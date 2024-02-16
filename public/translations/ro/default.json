@@ -264,5 +264,11 @@
   "submit_to_string": "Trimite la {{string}}",
   "page_not_found": "Pagina nu a fost găsită",
   "not_found_description": "Pagina pe care ai solicitat-o nu există",
-  "last_edited": "ultima editare {{timestamp}}"
+  "last_edited": "ultima editare {{timestamp}}",
+  "view_spoiler": "vezi spoilerul",
+  "more": "mai multe",
+  "default_communities": "comunități implicite",
+  "avatar": "avatar",
+  "pending_edit": "editare în așteptare",
+  "failed_edit": "editare eșuată"
 }

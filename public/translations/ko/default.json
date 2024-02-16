@@ -264,5 +264,11 @@
   "submit_to_string": "{{string}} 로 제출",
   "page_not_found": "페이지를 찾을 수 없음",
   "not_found_description": "요청하신 페이지가 존재하지 않습니다",
-  "last_edited": "마지막으로 편집한 날짜: {{timestamp}}"
+  "last_edited": "마지막으로 편집한 날짜: {{timestamp}}",
+  "view_spoiler": "스포일러 보기",
+  "more": "더 보기",
+  "default_communities": "기본 커뮤니티",
+  "avatar": "아바타",
+  "pending_edit": "대기 중인 편집",
+  "failed_edit": "실패한 편집"
 }

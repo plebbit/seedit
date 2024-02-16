@@ -104,6 +104,7 @@
   font-size: small;
   unicode-bidi: isolate;
   margin-top: 5px;
+  position: relative;
 }
 
 .highlightMedia {
@@ -126,6 +127,25 @@
 
 .md a {
   color: var(--markdown-link) !important;
+}
+
+.hideSpoiler {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-color: black;
+  color: black;
+  cursor: pointer;
+}
+
+.showSpoilerButton {
+  color: white;
+  text-transform: lowercase;
+  position: absolute;
+  cursor: pointer;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .highlightContent {

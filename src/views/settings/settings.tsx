@@ -105,10 +105,21 @@ const ThemeSettings = () => {
   );
 };
 
-const ProfileSettings = () => {
+const AvatarSettings = () => {
   const { t } = useTranslation();
   const account = useAccount();
   const { imageUrl } = useAuthorAvatar({ author: account?.author });
+
+  return (
+    <div className={styles.avatarSettings}>
+      <div className={styles.avatar}>{imageUrl ? <img src={imageUrl} alt='avatar' /> : <span className={styles.emptyAvatar}>+{t('add')}</span>}</div>
+    </div>
+  );
+};
+
+const DisplayNameSetting = () => {
+  const { t } = useTranslation();
+  const account = useAccount();
   const [displayName, setDisplayName] = useState(account?.author.displayName || '');
   const [savedDisplayName, setSavedDisplayName] = useState(false);
 
@@ -127,6 +138,7 @@ const ProfileSettings = () => {
       }, 2000);
     }
   }, [savedDisplayName]);
+
   const saveUsername = async () => {
     try {
       await setAccount({ ...account, author: { ...account?.author, displayName } });
@@ -142,10 +154,7 @@ const ProfileSettings = () => {
   };
 
   return (
-    <div className={styles.profileSettings}>
-      <span className={styles.settingTitle}>avatar</span>
-      <div className={styles.avatar}>{imageUrl ? <img src={imageUrl} alt='avatar' /> : <span className={styles.emptyAvatar}>+{t('add')}</span>}</div>
-      <span className={styles.settingTitle}>{t('display_name')}</span>
+    <div className={styles.displayNameSetting}>
       <div className={styles.usernameInput}>
         <input type='text' placeholder='My Name' value={displayName} onChange={(e) => setDisplayName(e.target.value)} />
         <button className={styles.button} onClick={saveUsername}>
@@ -210,9 +219,15 @@ const Settings = () => {
         </span>
       </div>
       <div className={styles.category}>
-        <span className={styles.categoryTitle}>{t('profile')}</span>
+        <span className={styles.categoryTitle}>{t('avatar')}</span>
         <span className={styles.categorySettings}>
-          <ProfileSettings />
+          <AvatarSettings />
+        </span>
+      </div>
+      <div className={styles.category}>
+        <span className={styles.categoryTitle}>{t('display_name')}</span>
+        <span className={styles.categorySettings}>
+          <DisplayNameSetting />
         </span>
       </div>
       <div className={styles.category}>

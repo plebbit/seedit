@@ -264,5 +264,11 @@
   "submit_to_string": "{{string}} に提出",
   "page_not_found": "ページが見つかりません",
   "not_found_description": "要求されたページは存在しません",
-  "last_edited": "最終編集 {{timestamp}}"
+  "last_edited": "最終編集 {{timestamp}}",
+  "view_spoiler": "スポイラーを表示",
+  "more": "もっと",
+  "default_communities": "デフォルトコミュニティ",
+  "avatar": "アバター",
+  "pending_edit": "保留中の編集",
+  "failed_edit": "失敗した編集"
 }

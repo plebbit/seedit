@@ -131,6 +131,9 @@ const AddressSettings = () => {
 
   return (
     <div className={styles.addressSettings}>
+      <div className={styles.copyAddressSetting}>
+        <button onClick={() => navigator.clipboard.writeText(account?.signer?.address)}>copy</button> full address
+      </div>
       <div className={styles.cryptoAddressSetting}>
         <span className={styles.settingTitle}>{t('crypto_address')}</span>
         <button className={styles.infoButton} onClick={cryptoAddressInfo}>

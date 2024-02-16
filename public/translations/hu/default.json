@@ -264,5 +264,11 @@
   "submit_to_string": "Beküldés ide: {{string}}",
   "page_not_found": "Az oldal nem található",
   "not_found_description": "Az általad kért oldal nem létezik",
-  "last_edited": "utoljára szerkesztve: {{timestamp}}"
+  "last_edited": "utoljára szerkesztve: {{timestamp}}",
+  "view_spoiler": "spoiler megtekintése",
+  "more": "több",
+  "default_communities": "alapértelmezett közösségek",
+  "avatar": "avatár",
+  "pending_edit": "folyamatban lévő szerkesztés",
+  "failed_edit": "sikertelen szerkesztés"
 }

@@ -264,5 +264,11 @@
   "submit_to_string": "Submit to {{string}}",
   "page_not_found": "Page not found",
   "not_found_description": "The page you requested does not exist",
-  "last_edited": "last edited {{timestamp}}"
+  "last_edited": "last edited {{timestamp}}",
+  "view_spoiler": "view spoiler",
+  "more": "more",
+  "default_communities": "default communities",
+  "avatar": "avatar",
+  "pending_edit": "pending edit",
+  "failed_edit": "failed edit"
 }

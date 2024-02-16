@@ -78,7 +78,6 @@
 .avatar {
   width: 70px;
   height: 70px;
-  margin-bottom: 5px;
   border: 1px solid var(--border-text);
 }
 

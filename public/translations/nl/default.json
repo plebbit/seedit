@@ -264,5 +264,11 @@
   "submit_to_string": "Indienen bij {{string}}",
   "page_not_found": "Pagina niet gevonden",
   "not_found_description": "De pagina die je hebt opgevraagd, bestaat niet",
-  "last_edited": "laatst bewerkt {{timestamp}}"
+  "last_edited": "laatst bewerkt {{timestamp}}",
+  "view_spoiler": "bekijk spoiler",
+  "more": "meer",
+  "default_communities": "standaardgemeenschappen",
+  "avatar": "avatar",
+  "pending_edit": "in afwachting van bewerking",
+  "failed_edit": "mislukte bewerking"
 }

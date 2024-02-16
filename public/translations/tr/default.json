@@ -264,5 +264,11 @@
   "submit_to_string": "{{string}} e gönder",
   "page_not_found": "Sayfa bulunamadı",
   "not_found_description": "İstediğiniz sayfa mevcut değil",
-  "last_edited": "son düzenleme {{timestamp}}"
+  "last_edited": "son düzenleme {{timestamp}}",
+  "view_spoiler": "spoileri görüntüle",
+  "more": "daha fazla",
+  "default_communities": "varsayılan topluluklar",
+  "avatar": "avatar",
+  "pending_edit": "bekleyen düzenleme",
+  "failed_edit": "başarısız düzenleme"
 }

@@ -201,9 +201,9 @@ interface ReplyProps {
 
 const Reply = ({ cidOfReplyWithContext, depth = 0, isSingleComment, isSingleReply, isNotification = false, reply = {} }: ReplyProps) => {
   // handle pending mod or author edit
-  const { editedComment: editedPost } = useEditedComment({ comment: reply });
-  if (editedPost) {
-    reply = editedPost;
+  const { state: editState, editedComment } = useEditedComment({ comment: reply });
+  if (editedComment) {
+    reply = editedComment;
   }
   const {
     author,
@@ -229,6 +229,8 @@ const Reply = ({ cidOfReplyWithContext, depth = 0, isSingleComment, isSingleRepl
     upvoteCount,
   } = reply || {};
   const subplebbit = useSubplebbit({ subplebbitAddress });
+
+  const [showSpoiler, setShowSpoiler] = useState(false);
 
   const { blocked, unblock } = useBlock({ address: cid });
   const [collapsed, setCollapsed] = useState(blocked);
@@ -279,6 +281,8 @@ const Reply = ({ cidOfReplyWithContext, depth = 0, isSingleComment, isSingleRepl
     <span className={styles.stateLabel}>
       {state === 'failed' && <Label color='red' text={t('failed')} />}
       {cid === undefined && state !== 'failed' && <Label color='yellow' text={t('pending')} />}
+      {editState === 'failed' && <Label color='red' text={t('failed_edit')} />}
+      {editState === 'pending' && <Label color='yellow' text={t('pending_edit')} />}
     </span>
   );
 
@@ -348,8 +352,14 @@ const Reply = ({ cidOfReplyWithContext, depth = 0, isSingleComment, isSingleRepl
               />
             )}
             {!collapsed && (
-              <div className={`${styles.usertext} ${cid && commentMediaInfo && (isSingleComment || cidOfReplyWithContext === cid) ? styles.highlightMedia : ''}`}>
-                {commentMediaInfo && (!removed || !deleted) && (
+              <div
+                className={`${styles.usertext} ${cid && commentMediaInfo && (isSingleComment || cidOfReplyWithContext === cid) ? styles.highlightMedia : ''}`}
+                onClick={() => {
+                  spoiler && !showSpoiler && setShowSpoiler(true);
+                }}
+              >
+                <div className={spoiler && !showSpoiler ? styles.hideSpoiler : ''} />
+                {commentMediaInfo && !(removed || deleted || (spoiler && !showSpoiler)) && (
                   <ReplyMedia
                     commentMediaInfo={commentMediaInfo}
                     content={content}
@@ -365,6 +375,7 @@ const Reply = ({ cidOfReplyWithContext, depth = 0, isSingleComment, isSingleRepl
                   <EditForm commentCid={cid} content={content} hideEditForm={hideEditForm} subplebbitAddress={subplebbitAddress} />
                 ) : (
                   <div className={`${styles.md} ${cid && (isSingleComment || cidOfReplyWithContext === cid) ? styles.highlightContent : ''}`}>
+                    {spoiler && !showSpoiler && <div className={styles.showSpoilerButton}>{t('view_spoiler')}</div>}
                     {content &&
                       (removed ? (
                         <div className={styles.removedContent}>[{t('removed')}]</div>

@@ -14,6 +14,7 @@ interface CommentToolsProps {
   cid: string;
   deleted?: boolean;
   failed?: boolean;
+  editState?: string;
   hasLabel?: boolean;
   index?: number;
   isAuthor?: boolean;
@@ -137,9 +138,11 @@ const SingleReplyTools = ({ author, cid, hasLabel, index, isAuthor, isMod, paren
   );
 };
 
-const CommentToolsLabel = ({ cid, deleted, failed, isReply, removed, spoiler }: CommentToolsProps) => {
+const CommentToolsLabel = ({ cid, deleted, failed, editState, isReply, removed, spoiler }: CommentToolsProps) => {
   const { t } = useTranslation();
   const pending = cid === undefined && !isReply && !failed;
+  const failedEdit = editState === 'failed';
+  const pendingEdit = editState === 'pending';
 
   return (
     <>
@@ -148,6 +151,8 @@ const CommentToolsLabel = ({ cid, deleted, failed, isReply, removed, spoiler }: 
       {failed && <Label color='red' text={t('failed')} />}
       {deleted && <Label color='red' text={t('deleted')} />}
       {removed && <Label color='red' text={t('removed')} />}
+      {failedEdit && <Label color='red' text={t('failed_edit')} />}
+      {pendingEdit && <Label color='yellow' text={t('pending_edit')} />}
     </>
   );
 };
@@ -157,6 +162,7 @@ const CommentTools = ({
   cid,
   deleted,
   failed,
+  editState,
   hasLabel = false,
   index,
   isReply,
@@ -178,7 +184,16 @@ const CommentTools = ({
 
   return (
     <ul className={`${styles.buttons} ${isReply && !isInInboxView ? styles.buttonsReply : ''} ${hasLabel ? styles.buttonsLabel : ''}`}>
-      <CommentToolsLabel cid={cid} deleted={deleted} failed={failed} isReply={isReply} removed={removed} spoiler={spoiler} subplebbitAddress={subplebbitAddress} />
+      <CommentToolsLabel
+        cid={cid}
+        deleted={deleted}
+        failed={failed}
+        editState={editState}
+        isReply={isReply}
+        removed={removed}
+        spoiler={spoiler}
+        subplebbitAddress={subplebbitAddress}
+      />
       {isReply ? (
         isSingleReply ? (
           <SingleReplyTools

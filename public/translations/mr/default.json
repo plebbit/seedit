@@ -264,5 +264,11 @@
   "submit_to_string": "{{string}} वर सबमिट करा",
   "page_not_found": "पृष्ठ सापडला नाही",
   "not_found_description": "आपण विनंती केलेला पृष्ठ अस्तित्वात नाही",
-  "last_edited": "शेवटचा संपादन {{timestamp}}"
+  "last_edited": "शेवटचा संपादन {{timestamp}}",
+  "view_spoiler": "स्पॉईलर पहा",
+  "more": "अधिक",
+  "default_communities": "डिफॉल्ट समुदाय",
+  "avatar": "अवतार",
+  "pending_edit": "प्रलंबित संपादन",
+  "failed_edit": "अयशस्वी संपादन"
 }

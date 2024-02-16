@@ -1,7 +1,7 @@
 .content {
   display: flex;
   flex-direction: column;
-  padding: 4px 0;
+  padding-bottom: 8px;
 }
 
 .row {
@@ -68,11 +68,7 @@
   font-weight: normal;
 }
 
-.removedTitle {
-  filter: blur(4px);
-}
-
-.removedThumbnail {
+.blur {
   filter: blur(4px);
 }
 

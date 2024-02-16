@@ -264,5 +264,11 @@
   "submit_to_string": "שליחה אל {{string}}",
   "page_not_found": "הדף לא נמצא",
   "not_found_description": "הדף שביקשת אינו קיים",
-  "last_edited": "עריכה אחרונה {{timestamp}}"
+  "last_edited": "עריכה אחרונה {{timestamp}}",
+  "view_spoiler": "הצג ספוילר",
+  "more": "יותר",
+  "default_communities": "קהילות ברירת מחדל",
+  "avatar": "אוואטר",
+  "pending_edit": "עריכה ממתינה",
+  "failed_edit": "עריכה נכשלה"
 }

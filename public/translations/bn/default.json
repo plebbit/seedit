@@ -264,5 +264,11 @@
   "submit_to_string": "{{string}} এ জমা দিন",
   "page_not_found": "পৃষ্ঠাটি খুঁজে পাওয়া যায়নি",
   "not_found_description": "আপনি যে পৃষ্ঠাটি অনুরোধ করেছেন সেটি অস্তিত্বে নেই",
-  "last_edited": "শেষ সম্পাদনা {{timestamp}}"
+  "last_edited": "শেষ সম্পাদনা {{timestamp}}",
+  "view_spoiler": "স্পোয়ালার দেখুন",
+  "more": "আরও",
+  "default_communities": "ডিফল্ট কমিউনিটিস",
+  "avatar": "অবতার",
+  "pending_edit": "মুলতুবি সম্পাদনা",
+  "failed_edit": "ব্যর্থ সম্পাদনা"
 }

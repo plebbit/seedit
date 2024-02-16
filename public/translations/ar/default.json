@@ -264,5 +264,11 @@
   "submit_to_string": "إرسال إلى {{string}}",
   "page_not_found": "الصفحة غير موجودة",
   "not_found_description": "الصفحة التي طلبتها غير موجودة",
-  "last_edited": "آخر تعديل {{timestamp}}"
+  "last_edited": "آخر تعديل {{timestamp}}",
+  "view_spoiler": "عرض الحاضر",
+  "more": "المزيد",
+  "default_communities": "المجتمعات الافتراضية",
+  "avatar": "الصورة الرمزية",
+  "pending_edit": "تحرير معلق",
+  "failed_edit": "فشل التعديل"
 }
