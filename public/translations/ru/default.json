@@ -265,5 +265,7 @@
   "page_not_found": "Страница не найдена",
   "not_found_description": "Запрошенная вами страница не существует",
   "last_edited": "последнее редактирование {{timestamp}}",
-  "view_spoiler": "посмотреть спойлер"
+  "view_spoiler": "посмотреть спойлер",
+  "more": "больше",
+  "default_communities": "стандартные сообщества"
 }

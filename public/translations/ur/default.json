@@ -265,5 +265,7 @@
   "page_not_found": "صفحہ نہیں ملا",
   "not_found_description": "آپ نے جو صفحہ درخواست کیا ہے وہ موجود نہیں ہے",
   "last_edited": "آخری ترمیم {{timestamp}}",
-  "view_spoiler": "اسپوائلر دیکھیں"
+  "view_spoiler": "اسپوائلر دیکھیں",
+  "more": "مزید",
+  "default_communities": "ڈیفالٹ کمیونٹیز"
 }

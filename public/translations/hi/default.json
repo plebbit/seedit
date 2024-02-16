@@ -265,5 +265,7 @@
   "page_not_found": "पृष्ठ नहीं मिला",
   "not_found_description": "आपके द्वारा अनुरोधित पृष्ठ मौजूद नहीं है",
   "last_edited": "अंतिम संशोधन {{timestamp}}",
-  "view_spoiler": "स्पॉइलर देखें"
+  "view_spoiler": "स्पॉइलर देखें",
+  "more": "अधिक",
+  "default_communities": "डिफ़ॉल्ट समुदाय"
 }

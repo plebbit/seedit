@@ -265,5 +265,7 @@
   "page_not_found": "Side ikke fundet",
   "not_found_description": "Den side, du har anmodet om, findes ikke",
   "last_edited": "Sidst redigeret {{timestamp}}",
-  "view_spoiler": "vis spoiler"
+  "view_spoiler": "vis spoiler",
+  "more": "mere",
+  "default_communities": "standardfællesskaber"
 }

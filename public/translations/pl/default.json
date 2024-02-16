@@ -265,5 +265,7 @@
   "page_not_found": "Strona nie znaleziona",
   "not_found_description": "Strona, którą żądasz, nie istnieje",
   "last_edited": "ostatnio edytowano {{timestamp}}",
-  "view_spoiler": "pokaż spoiler"
+  "view_spoiler": "pokaż spoiler",
+  "more": "więcej",
+  "default_communities": "domyślne społeczności"
 }

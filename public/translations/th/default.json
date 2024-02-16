@@ -265,5 +265,7 @@
   "page_not_found": "ไม่พบหน้า",
   "not_found_description": "หน้าที่คุณขอไม่มีอยู่จริง",
   "last_edited": "แก้ไขล่าสุด {{timestamp}}",
-  "view_spoiler": "ดูสปอยล์เลอร์"
+  "view_spoiler": "ดูสปอยล์เลอร์",
+  "more": "มากกว่า",
+  "default_communities": "ชุมชนเริ่มต้น"
 }

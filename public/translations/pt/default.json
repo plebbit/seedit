@@ -265,5 +265,7 @@
   "page_not_found": "Página não encontrada",
   "not_found_description": "A página que você solicitou não existe",
   "last_edited": "última edição {{timestamp}}",
-  "view_spoiler": "ver spoiler"
+  "view_spoiler": "ver spoiler",
+  "more": "mais",
+  "default_communities": "comunidades padrão"
 }

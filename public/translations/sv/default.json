@@ -265,5 +265,7 @@
   "page_not_found": "Sidan kunde inte hittas",
   "not_found_description": "Sidan du begärde finns inte",
   "last_edited": "senast redigerad {{timestamp}}",
-  "view_spoiler": "visa spoiler"
+  "view_spoiler": "visa spoiler",
+  "more": "mer",
+  "default_communities": "standardgemenskaper"
 }

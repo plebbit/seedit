@@ -265,5 +265,7 @@
   "page_not_found": "पृष्ठ सापडला नाही",
   "not_found_description": "आपण विनंती केलेला पृष्ठ अस्तित्वात नाही",
   "last_edited": "शेवटचा संपादन {{timestamp}}",
-  "view_spoiler": "स्पॉईलर पहा"
+  "view_spoiler": "स्पॉईलर पहा",
+  "more": "अधिक",
+  "default_communities": "डिफॉल्ट समुदाय"
 }

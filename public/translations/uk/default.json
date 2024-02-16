@@ -265,5 +265,7 @@
   "page_not_found": "Сторінка не знайдена",
   "not_found_description": "Сторінка, яку ви запросили, не існує",
   "last_edited": "остання редакція {{timestamp}}",
-  "view_spoiler": "переглянути спойлер"
+  "view_spoiler": "переглянути спойлер",
+  "more": "більше",
+  "default_communities": "типові спільноти"
 }

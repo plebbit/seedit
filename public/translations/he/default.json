@@ -265,5 +265,7 @@
   "page_not_found": "הדף לא נמצא",
   "not_found_description": "הדף שביקשת אינו קיים",
   "last_edited": "עריכה אחרונה {{timestamp}}",
-  "view_spoiler": "הצג ספוילר"
+  "view_spoiler": "הצג ספוילר",
+  "more": "יותר",
+  "default_communities": "קהילות ברירת מחדל"
 }

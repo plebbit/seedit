@@ -265,5 +265,7 @@
   "page_not_found": "Pagina niet gevonden",
   "not_found_description": "De pagina die je hebt opgevraagd, bestaat niet",
   "last_edited": "laatst bewerkt {{timestamp}}",
-  "view_spoiler": "bekijk spoiler"
+  "view_spoiler": "bekijk spoiler",
+  "more": "meer",
+  "default_communities": "standaardgemeenschappen"
 }

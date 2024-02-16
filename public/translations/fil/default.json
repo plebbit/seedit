@@ -265,5 +265,7 @@
   "page_not_found": "Hindi makita ang pahina",
   "not_found_description": "Ang pahinang hiniling mo ay hindi umiiral",
   "last_edited": "huling inedit {{timestamp}}",
-  "view_spoiler": "tingnan ang spoiler"
+  "view_spoiler": "tingnan ang spoiler",
+  "more": "higit pa",
+  "default_communities": "default na mga komunidad"
 }

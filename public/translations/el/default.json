@@ -265,5 +265,7 @@
   "page_not_found": "Η σελίδα δεν βρέθηκε",
   "not_found_description": "Η σελίδα που ζητήσατε δεν υπάρχει",
   "last_edited": "Τελευταία επεξεργασία {{timestamp}}",
-  "view_spoiler": "προβολή spoiler"
+  "view_spoiler": "προβολή spoiler",
+  "more": "περισσότερα",
+  "default_communities": "προεπιλεγμένες κοινότητες"
 }

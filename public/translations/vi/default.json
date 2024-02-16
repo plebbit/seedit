@@ -265,5 +265,7 @@
   "page_not_found": "Không tìm thấy trang",
   "not_found_description": "Trang bạn yêu cầu không tồn tại",
   "last_edited": "sửa lần cuối {{timestamp}}",
-  "view_spoiler": "xem spoiler"
+  "view_spoiler": "xem spoiler",
+  "more": "thêm",
+  "default_communities": "các cộng đồng mặc định"
 }

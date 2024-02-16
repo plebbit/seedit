@@ -265,5 +265,7 @@
   "page_not_found": "Sivua ei löytynyt",
   "not_found_description": "Pyytämääsi sivua ei löydy",
   "last_edited": "Viimeksi muokattu {{timestamp}}",
-  "view_spoiler": "näytä spoiler"
+  "view_spoiler": "näytä spoiler",
+  "more": "lisää",
+  "default_communities": "oletusyhteisöt"
 }

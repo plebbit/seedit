@@ -265,5 +265,7 @@
   "page_not_found": "Stránka nenalezena",
   "not_found_description": "Požadovaná stránka neexistuje",
   "last_edited": "Poslední úprava {{timestamp}}",
-  "view_spoiler": "zobrazit spoiler"
+  "view_spoiler": "zobrazit spoiler",
+  "more": "více",
+  "default_communities": "výchozí komunity"
 }

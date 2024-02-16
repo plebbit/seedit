@@ -265,5 +265,7 @@
   "page_not_found": "Faqja nuk u gjet",
   "not_found_description": "Faqja që keni kërkuar nuk ekziston",
   "last_edited": "i fundit i ndryshuar {{timestamp}}",
-  "view_spoiler": "shikoni spoiler"
+  "view_spoiler": "shikoni spoiler",
+  "more": "më shumë",
+  "default_communities": "komunitete parazgjedhur"
 }
