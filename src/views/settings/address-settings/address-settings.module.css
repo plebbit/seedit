@@ -45,3 +45,11 @@
   bottom: 2px;
   margin-bottom: -2px;
 }
+
+.copyAddressSetting {
+  padding-bottom: 10px;
+}
+
+.copyAddressSetting button {
+  margin-left: 0;
+}
