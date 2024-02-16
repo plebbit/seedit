@@ -156,131 +156,133 @@ const Post = ({ index, post = {} }: PostProps) => {
   };
 
   return (
-    <div className={`${styles.content} ${isLastClicked && !isInPostView ? styles.lastClicked : ''}`} key={index}>
-      <div className={`${styles.hiddenPost} ${blocked ? styles.visible : styles.hidden}`}>
-        <div className={styles.hiddenPostText}>{t('post_hidden').charAt(0).toUpperCase() + t('post_hidden').slice(1)}</div>
-        <div className={styles.undoHiddenPost} onClick={unblock}>
-          {t('undo')}
+    <div className={styles.content} key={index}>
+      <div className={isLastClicked && !isInPostView ? styles.lastClicked : ''}>
+        <div className={`${styles.hiddenPost} ${blocked ? styles.visible : styles.hidden}`}>
+          <div className={styles.hiddenPostText}>{t('post_hidden').charAt(0).toUpperCase() + t('post_hidden').slice(1)}</div>
+          <div className={styles.undoHiddenPost} onClick={unblock}>
+            {t('undo')}
+          </div>
         </div>
-      </div>
-      <div className={`${styles.container} ${blocked ? styles.hidden : styles.visible}`}>
-        <div className={styles.row}>
-          <div className={styles.leftcol}>
-            <div className={styles.midcol}>
-              <div className={styles.arrowWrapper}>
-                <div className={`${styles.arrowCommon} ${upvoted ? styles.upvoted : styles.arrowUp}`} onClick={() => cid && upvote()} />
+        <div className={`${styles.container} ${blocked ? styles.hidden : styles.visible}`}>
+          <div className={styles.row}>
+            <div className={styles.leftcol}>
+              <div className={styles.midcol}>
+                <div className={styles.arrowWrapper}>
+                  <div className={`${styles.arrowCommon} ${upvoted ? styles.upvoted : styles.arrowUp}`} onClick={() => cid && upvote()} />
+                </div>
+                <div className={styles.score}>{postScore}</div>
+                <div className={styles.arrowWrapper}>
+                  <div className={`${styles.arrowCommon} ${downvoted ? styles.downvoted : styles.arrowDown}`} onClick={() => cid && downvote()} />
+                </div>
               </div>
-              <div className={styles.score}>{postScore}</div>
-              <div className={styles.arrowWrapper}>
-                <div className={`${styles.arrowCommon} ${downvoted ? styles.downvoted : styles.arrowDown}`} onClick={() => cid && downvote()} />
-              </div>
+              {hasThumbnail && !isInPostView && (
+                <span className={removed ? styles.blur : ''}>
+                  <Thumbnail
+                    cid={cid}
+                    commentMediaInfo={commentMediaInfo}
+                    isReply={false}
+                    link={link}
+                    linkHeight={linkHeight}
+                    linkWidth={linkWidth}
+                    subplebbitAddress={subplebbitAddress}
+                  />
+                </span>
+              )}
             </div>
-            {hasThumbnail && !isInPostView && (
-              <span className={removed ? styles.blur : ''}>
-                <Thumbnail
+            <div className={styles.entry}>
+              <div className={styles.topMatter}>
+                <p className={`${styles.title} ${removed && !isInPostView ? styles.blur : ''}`} onClick={handlePostClick}>
+                  {isInPostView && link ? (
+                    <a href={link} className={linkClass} target='_blank' rel='noopener noreferrer'>
+                      {postTitle ?? '-'}
+                    </a>
+                  ) : (
+                    <Link className={linkClass} to={cid ? `/p/${subplebbitAddress}/c/${cid}` : `/profile/${post?.index}`}>
+                      {postTitle ?? '-'}
+                    </Link>
+                  )}
+                  {flair && (
+                    <>
+                      {' '}
+                      <Flair flair={flair} />
+                    </>
+                  )}{' '}
+                  {linkUrl && (
+                    <span className={styles.domain}>
+                      (
+                      <a href={link} target='_blank' rel='noopener noreferrer'>
+                        {linkUrl}
+                      </a>
+                      )
+                    </span>
+                  )}
+                </p>
+                {!isInPostView && (
+                  <ExpandButton
+                    commentMediaInfo={commentMediaInfo}
+                    content={content}
+                    expanded={isExpanded}
+                    hasThumbnail={hasThumbnail}
+                    link={link}
+                    toggleExpanded={toggleExpanded}
+                  />
+                )}
+                <div className={styles.tagline}>
+                  {t('submitted')} {getFormattedTimeAgo(timestamp)} {edit && <span title={t('last_edited', { timestamp: getFormattedTimeAgo(edit.timestamp) })}>*</span>}{' '}
+                  {t('post_by')}{' '}
+                  <PostAuthor
+                    authorAddress={author?.address}
+                    authorRole={authorRole}
+                    cid={cid}
+                    displayName={displayName}
+                    imageUrl={imageUrl}
+                    index={post?.index}
+                    shortAddress={shortAddress}
+                    shortAuthorAddress={shortAuthorAddress}
+                    authorAddressChanged={authorAddressChanged}
+                  />
+                  {!isInSubplebbitView && (
+                    <>
+                       {t('post_to')}{' '}
+                      <Link className={styles.subplebbit} to={`/p/${subplebbitAddress}`}>
+                        p/{subplebbit?.shortAddress || subplebbitAddress}
+                      </Link>
+                    </>
+                  )}
+                  {pinned && <span className={styles.announcement}> - {t('announcement')}</span>}
+                </div>
+                {state === 'pending' && <p className={styles.pending}>{loadingString}</p>}
+                <CommentTools
+                  author={author}
                   cid={cid}
-                  commentMediaInfo={commentMediaInfo}
-                  isReply={false}
-                  link={link}
-                  linkHeight={linkHeight}
-                  linkWidth={linkWidth}
+                  deleted={deleted}
+                  failed={state === 'failed'}
+                  index={post?.index}
+                  removed={removed}
+                  replyCount={replyCount}
+                  showEditForm={showEditForm}
+                  spoiler={spoiler}
                   subplebbitAddress={subplebbitAddress}
                 />
-              </span>
-            )}
-          </div>
-          <div className={styles.entry}>
-            <div className={styles.topMatter}>
-              <p className={`${styles.title} ${removed && !isInPostView ? styles.blur : ''}`} onClick={handlePostClick}>
-                {isInPostView && link ? (
-                  <a href={link} className={linkClass} target='_blank' rel='noopener noreferrer'>
-                    {postTitle ?? '-'}
-                  </a>
-                ) : (
-                  <Link className={linkClass} to={cid ? `/p/${subplebbitAddress}/c/${cid}` : `/profile/${post?.index}`}>
-                    {postTitle ?? '-'}
-                  </Link>
-                )}
-                {flair && (
-                  <>
-                    {' '}
-                    <Flair flair={flair} />
-                  </>
-                )}{' '}
-                {linkUrl && (
-                  <span className={styles.domain}>
-                    (
-                    <a href={link} target='_blank' rel='noopener noreferrer'>
-                      {linkUrl}
-                    </a>
-                    )
-                  </span>
-                )}
-              </p>
-              {!isInPostView && (
-                <ExpandButton
-                  commentMediaInfo={commentMediaInfo}
-                  content={content}
-                  expanded={isExpanded}
-                  hasThumbnail={hasThumbnail}
-                  link={link}
-                  toggleExpanded={toggleExpanded}
-                />
-              )}
-              <div className={styles.tagline}>
-                {t('submitted')} {getFormattedTimeAgo(timestamp)} {edit && <span title={t('last_edited', { timestamp: getFormattedTimeAgo(edit.timestamp) })}>*</span>}{' '}
-                {t('post_by')}{' '}
-                <PostAuthor
-                  authorAddress={author?.address}
-                  authorRole={authorRole}
-                  cid={cid}
-                  displayName={displayName}
-                  imageUrl={imageUrl}
-                  index={post?.index}
-                  shortAddress={shortAddress}
-                  shortAuthorAddress={shortAuthorAddress}
-                  authorAddressChanged={authorAddressChanged}
-                />
-                {!isInSubplebbitView && (
-                  <>
-                     {t('post_to')}{' '}
-                    <Link className={styles.subplebbit} to={`/p/${subplebbitAddress}`}>
-                      p/{subplebbit?.shortAddress || subplebbitAddress}
-                    </Link>
-                  </>
-                )}
-                {pinned && <span className={styles.announcement}> - {t('announcement')}</span>}
               </div>
-              {state === 'pending' && <p className={styles.pending}>{loadingString}</p>}
-              <CommentTools
-                author={author}
-                cid={cid}
-                deleted={deleted}
-                failed={state === 'failed'}
-                index={post?.index}
-                removed={removed}
-                replyCount={replyCount}
-                showEditForm={showEditForm}
-                spoiler={spoiler}
-                subplebbitAddress={subplebbitAddress}
-              />
             </div>
           </div>
+          {isEditing ? (
+            <EditForm commentCid={cid} content={content} hideEditForm={hideEditForm} subplebbitAddress={subplebbitAddress} />
+          ) : (
+            <Expando
+              commentMediaInfo={commentMediaInfo}
+              content={content}
+              expanded={isExpanded}
+              link={link}
+              reason={reason}
+              removed={removed}
+              showContent={true}
+              spoiler={spoiler}
+            />
+          )}
         </div>
-        {isEditing ? (
-          <EditForm commentCid={cid} content={content} hideEditForm={hideEditForm} subplebbitAddress={subplebbitAddress} />
-        ) : (
-          <Expando
-            commentMediaInfo={commentMediaInfo}
-            content={content}
-            expanded={isExpanded}
-            link={link}
-            reason={reason}
-            removed={removed}
-            showContent={true}
-            spoiler={spoiler}
-          />
-        )}
       </div>
     </div>
   );
