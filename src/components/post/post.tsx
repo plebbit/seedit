@@ -106,6 +106,9 @@ const Post = ({ index, post = {} }: PostProps) => {
   if (removed) {
     content = '[removed]';
   }
+  if (deleted) {
+    content = '[deleted]';
+  }
   const { displayName, shortAddress } = author || {};
   const { shortAuthorAddress, authorAddressChanged } = useAuthorAddress({ comment: post });
   const { imageUrl } = useAuthorAvatar({ author });
