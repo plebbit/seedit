@@ -234,3 +234,37 @@
 .lastClicked {
   border: 1px dashed gray;
 }
+
+.subscribeButtonWrapper {
+  padding-right: 14px;
+  position: relative;
+}
+
+.subscribeButton {
+  position: absolute;
+  bottom: -1px;
+  border: none;
+  background: none;
+  background-repeat: no-repeat;
+  height: 12px;
+  width: 12px;
+  background-size: 12px;
+}
+
+.buttonSubscribe {
+  background-image: url("/public/assets/buttons/all_feed_subscribe.png");
+  cursor: pointer;
+}
+
+.buttonSubscribe:hover {
+  background-image: url("/public/assets/buttons/all_feed_subscribe_hover.png");
+  cursor: pointer;
+}
+
+.buttonSubscribed {
+  background-image: url("/public/assets/buttons/all_feed_subscribed.png");
+}
+
+.greenSubplebbitAddress {
+  color: var(--green-bright) !important;
+}

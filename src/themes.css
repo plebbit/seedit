@@ -2,6 +2,7 @@
   --blue: blue;
   --orange: #FF7500;
   --green: #228822;
+  --green-bright: #3bc54c;
   --yellow: goldenrod;
   --yellow-box-contrast: #ffd634;
   --yellow-box-background: #fff7d7;
@@ -70,6 +71,7 @@
   --blue: rgb(47, 125, 255);
   --orange: #FF7500;
   --green: #228822;
+  --green-bright: rgb(76, 207, 92);
   --yellow: rgb(200, 171, 0);
   --yellow-highlight: rgb(58, 50, 0);
   --yellow-box-contrast: rgb(163, 130, 0);
