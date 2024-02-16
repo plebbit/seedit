@@ -201,9 +201,9 @@ interface ReplyProps {
 
 const Reply = ({ cidOfReplyWithContext, depth = 0, isSingleComment, isSingleReply, isNotification = false, reply = {} }: ReplyProps) => {
   // handle pending mod or author edit
-  const { editedComment: editedPost } = useEditedComment({ comment: reply });
-  if (editedPost) {
-    reply = editedPost;
+  const { state: editState, editedComment } = useEditedComment({ comment: reply });
+  if (editedComment) {
+    reply = editedComment;
   }
   const {
     author,
@@ -281,6 +281,8 @@ const Reply = ({ cidOfReplyWithContext, depth = 0, isSingleComment, isSingleRepl
     <span className={styles.stateLabel}>
       {state === 'failed' && <Label color='red' text={t('failed')} />}
       {cid === undefined && state !== 'failed' && <Label color='yellow' text={t('pending')} />}
+      {editState === 'failed' && <Label color='red' text={t('failed_edit')} />}
+      {editState === 'pending' && <Label color='yellow' text={t('pending_edit')} />}
     </span>
   );
 

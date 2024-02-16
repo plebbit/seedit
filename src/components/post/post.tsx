@@ -77,9 +77,9 @@ const Post = ({ index, post = {} }: PostProps) => {
     post = op;
   }
   // handle pending mod or author edit
-  const { editedComment: editedPost } = useEditedComment({ comment: post });
-  if (editedPost) {
-    post = editedPost;
+  const { state: editState, editedComment } = useEditedComment({ comment: post });
+  if (editedComment) {
+    post = editedComment;
   }
   const {
     author,
@@ -258,6 +258,7 @@ const Post = ({ index, post = {} }: PostProps) => {
                   cid={cid}
                   deleted={deleted}
                   failed={state === 'failed'}
+                  editState={editState}
                   index={post?.index}
                   removed={removed}
                   replyCount={replyCount}
