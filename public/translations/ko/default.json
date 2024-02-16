@@ -267,5 +267,6 @@
   "last_edited": "마지막으로 편집한 날짜: {{timestamp}}",
   "view_spoiler": "스포일러 보기",
   "more": "더 보기",
-  "default_communities": "기본 커뮤니티"
+  "default_communities": "기본 커뮤니티",
+  "avatar": "아바타"
 }

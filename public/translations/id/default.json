@@ -267,5 +267,6 @@
   "last_edited": "terakhir diubah {{timestamp}}",
   "view_spoiler": "lihat spoiler",
   "more": "lebih",
-  "default_communities": "komunitas default"
+  "default_communities": "komunitas default",
+  "avatar": "avatar"
 }

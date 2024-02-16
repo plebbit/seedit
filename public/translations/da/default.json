@@ -267,5 +267,6 @@
   "last_edited": "Sidst redigeret {{timestamp}}",
   "view_spoiler": "vis spoiler",
   "more": "mere",
-  "default_communities": "standardfællesskaber"
+  "default_communities": "standardfællesskaber",
+  "avatar": "avatar"
 }

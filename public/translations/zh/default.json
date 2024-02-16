@@ -267,5 +267,6 @@
   "last_edited": "上次编辑时间：{{timestamp}}",
   "view_spoiler": "查看剧透",
   "more": "更多",
-  "default_communities": "默认社区"
+  "default_communities": "默认社区",
+  "avatar": "头像"
 }

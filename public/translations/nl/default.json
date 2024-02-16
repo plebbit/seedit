@@ -267,5 +267,6 @@
   "last_edited": "laatst bewerkt {{timestamp}}",
   "view_spoiler": "bekijk spoiler",
   "more": "meer",
-  "default_communities": "standaardgemeenschappen"
+  "default_communities": "standaardgemeenschappen",
+  "avatar": "avatar"
 }

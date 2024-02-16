@@ -267,5 +267,6 @@
   "last_edited": "sửa lần cuối {{timestamp}}",
   "view_spoiler": "xem spoiler",
   "more": "thêm",
-  "default_communities": "các cộng đồng mặc định"
+  "default_communities": "các cộng đồng mặc định",
+  "avatar": "avatar"
 }

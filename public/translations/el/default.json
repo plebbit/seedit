@@ -267,5 +267,6 @@
   "last_edited": "Τελευταία επεξεργασία {{timestamp}}",
   "view_spoiler": "προβολή spoiler",
   "more": "περισσότερα",
-  "default_communities": "προεπιλεγμένες κοινότητες"
+  "default_communities": "προεπιλεγμένες κοινότητες",
+  "avatar": "εικόνα προφίλ"
 }

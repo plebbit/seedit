@@ -267,5 +267,6 @@
   "last_edited": "utoljára szerkesztve: {{timestamp}}",
   "view_spoiler": "spoiler megtekintése",
   "more": "több",
-  "default_communities": "alapértelmezett közösségek"
+  "default_communities": "alapértelmezett közösségek",
+  "avatar": "avatár"
 }

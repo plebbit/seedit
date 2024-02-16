@@ -267,5 +267,6 @@
   "last_edited": "son düzenleme {{timestamp}}",
   "view_spoiler": "spoileri görüntüle",
   "more": "daha fazla",
-  "default_communities": "varsayılan topluluklar"
+  "default_communities": "varsayılan topluluklar",
+  "avatar": "avatar"
 }

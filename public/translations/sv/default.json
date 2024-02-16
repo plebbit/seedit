@@ -267,5 +267,6 @@
   "last_edited": "senast redigerad {{timestamp}}",
   "view_spoiler": "visa spoiler",
   "more": "mer",
-  "default_communities": "standardgemenskaper"
+  "default_communities": "standardgemenskaper",
+  "avatar": "avatar"
 }

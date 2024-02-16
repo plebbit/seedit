@@ -267,5 +267,6 @@
   "last_edited": "ultima modifica {{timestamp}}",
   "view_spoiler": "mostra spoiler",
   "more": "altri",
-  "default_communities": "comunità predefinite"
+  "default_communities": "comunità predefinite",
+  "avatar": "avatar"
 }

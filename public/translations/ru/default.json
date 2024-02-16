@@ -267,5 +267,6 @@
   "last_edited": "последнее редактирование {{timestamp}}",
   "view_spoiler": "посмотреть спойлер",
   "more": "больше",
-  "default_communities": "стандартные сообщества"
+  "default_communities": "стандартные сообщества",
+  "avatar": "аватар"
 }

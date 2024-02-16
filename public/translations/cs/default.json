@@ -267,5 +267,6 @@
   "last_edited": "Poslední úprava {{timestamp}}",
   "view_spoiler": "zobrazit spoiler",
   "more": "více",
-  "default_communities": "výchozí komunity"
+  "default_communities": "výchozí komunity",
+  "avatar": "avatar"
 }

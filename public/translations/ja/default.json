@@ -267,5 +267,6 @@
   "last_edited": "最終編集 {{timestamp}}",
   "view_spoiler": "スポイラーを表示",
   "more": "もっと",
-  "default_communities": "デフォルトコミュニティ"
+  "default_communities": "デフォルトコミュニティ",
+  "avatar": "アバター"
 }
