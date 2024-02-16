@@ -253,7 +253,7 @@ const Post = ({ index, post = {} }: PostProps) => {
                   {!isInSubplebbitView && (
                     <>
                        {t('post_to')}{' '}
-                      {isInAllView && (!subscribed || subscribed) && hasClickedSubscribe && (
+                      {isInAllView && (!subscribed || (subscribed && hasClickedSubscribe)) && (
                         <span className={styles.subscribeButtonWrapper}>
                           <button
                             className={`${styles.subscribeButton} ${subscribed ? styles.buttonSubscribed : styles.buttonSubscribe}`}
