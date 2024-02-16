@@ -268,5 +268,7 @@
   "view_spoiler": "shikoni spoiler",
   "more": "më shumë",
   "default_communities": "komunitete parazgjedhur",
-  "avatar": "avatar"
+  "avatar": "avatar",
+  "pending_edit": "ndryshimi në pritje",
+  "failed_edit": "ndryshimi i dështuar"
 }

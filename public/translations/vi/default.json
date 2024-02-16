@@ -268,5 +268,7 @@
   "view_spoiler": "xem spoiler",
   "more": "thêm",
   "default_communities": "các cộng đồng mặc định",
-  "avatar": "avatar"
+  "avatar": "avatar",
+  "pending_edit": "chỉnh sửa đang chờ",
+  "failed_edit": "chỉnh sửa thất bại"
 }

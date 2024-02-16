@@ -268,5 +268,7 @@
   "view_spoiler": "mostra spoiler",
   "more": "altri",
   "default_communities": "comunità predefinite",
-  "avatar": "avatar"
+  "avatar": "avatar",
+  "pending_edit": "modifica in attesa",
+  "failed_edit": "modifica fallita"
 }

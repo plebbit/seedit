@@ -268,5 +268,7 @@
   "view_spoiler": "स्पॉइलर देखें",
   "more": "अधिक",
   "default_communities": "डिफ़ॉल्ट समुदाय",
-  "avatar": "अवतार"
+  "avatar": "अवतार",
+  "pending_edit": "अपूर्ण संपादन",
+  "failed_edit": "विफल संपादन"
 }

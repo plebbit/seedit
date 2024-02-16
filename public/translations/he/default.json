@@ -268,5 +268,7 @@
   "view_spoiler": "הצג ספוילר",
   "more": "יותר",
   "default_communities": "קהילות ברירת מחדל",
-  "avatar": "אוואטר"
+  "avatar": "אוואטר",
+  "pending_edit": "עריכה ממתינה",
+  "failed_edit": "עריכה נכשלה"
 }

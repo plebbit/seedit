@@ -268,5 +268,7 @@
   "view_spoiler": "স্পোয়ালার দেখুন",
   "more": "আরও",
   "default_communities": "ডিফল্ট কমিউনিটিস",
-  "avatar": "অবতার"
+  "avatar": "অবতার",
+  "pending_edit": "মুলতুবি সম্পাদনা",
+  "failed_edit": "ব্যর্থ সম্পাদনা"
 }

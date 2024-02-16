@@ -268,5 +268,7 @@
   "view_spoiler": "اسپوائلر دیکھیں",
   "more": "مزید",
   "default_communities": "ڈیفالٹ کمیونٹیز",
-  "avatar": "اوتار"
+  "avatar": "اوتار",
+  "pending_edit": "زیر التواء ترتیبات",
+  "failed_edit": "ناکام ترتیبات"
 }

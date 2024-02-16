@@ -268,5 +268,7 @@
   "view_spoiler": "bekijk spoiler",
   "more": "meer",
   "default_communities": "standaardgemeenschappen",
-  "avatar": "avatar"
+  "avatar": "avatar",
+  "pending_edit": "in afwachting van bewerking",
+  "failed_edit": "mislukte bewerking"
 }

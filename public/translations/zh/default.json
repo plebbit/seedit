@@ -268,5 +268,7 @@
   "view_spoiler": "查看剧透",
   "more": "更多",
   "default_communities": "默认社区",
-  "avatar": "头像"
+  "avatar": "头像",
+  "pending_edit": "待处理的编辑",
+  "failed_edit": "编辑失败"
 }

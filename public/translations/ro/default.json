@@ -268,5 +268,7 @@
   "view_spoiler": "vezi spoilerul",
   "more": "mai multe",
   "default_communities": "comunități implicite",
-  "avatar": "avatar"
+  "avatar": "avatar",
+  "pending_edit": "editare în așteptare",
+  "failed_edit": "editare eșuată"
 }

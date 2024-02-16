@@ -268,5 +268,7 @@
   "view_spoiler": "se spoiler",
   "more": "mer",
   "default_communities": "standardfellesskap",
-  "avatar": "avatar"
+  "avatar": "avatar",
+  "pending_edit": "ventende redigering",
+  "failed_edit": "mislykket redigering"
 }

@@ -268,5 +268,7 @@
   "view_spoiler": "lihat spoiler",
   "more": "lebih",
   "default_communities": "komunitas default",
-  "avatar": "avatar"
+  "avatar": "avatar",
+  "pending_edit": "pengeditan tertunda",
+  "failed_edit": "edit gagal"
 }

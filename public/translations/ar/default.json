@@ -268,5 +268,7 @@
   "view_spoiler": "عرض الحاضر",
   "more": "المزيد",
   "default_communities": "المجتمعات الافتراضية",
-  "avatar": "الصورة الرمزية"
+  "avatar": "الصورة الرمزية",
+  "pending_edit": "تحرير معلق",
+  "failed_edit": "فشل التعديل"
 }

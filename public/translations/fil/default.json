@@ -268,5 +268,7 @@
   "view_spoiler": "tingnan ang spoiler",
   "more": "higit pa",
   "default_communities": "default na mga komunidad",
-  "avatar": "avatar"
+  "avatar": "avatar",
+  "pending_edit": "naka-pending na edit",
+  "failed_edit": "nakabigong edit"
 }

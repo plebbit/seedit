@@ -268,5 +268,7 @@
   "view_spoiler": "スポイラーを表示",
   "more": "もっと",
   "default_communities": "デフォルトコミュニティ",
-  "avatar": "アバター"
+  "avatar": "アバター",
+  "pending_edit": "保留中の編集",
+  "failed_edit": "失敗した編集"
 }

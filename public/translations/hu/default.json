@@ -268,5 +268,7 @@
   "view_spoiler": "spoiler megtekintése",
   "more": "több",
   "default_communities": "alapértelmezett közösségek",
-  "avatar": "avatár"
+  "avatar": "avatár",
+  "pending_edit": "folyamatban lévő szerkesztés",
+  "failed_edit": "sikertelen szerkesztés"
 }

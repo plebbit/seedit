@@ -268,5 +268,7 @@
   "view_spoiler": "näytä spoiler",
   "more": "lisää",
   "default_communities": "oletusyhteisöt",
-  "avatar": "avatar"
+  "avatar": "avatar",
+  "pending_edit": "odottava muokkaus",
+  "failed_edit": "epäonnistunut muokkaus"
 }

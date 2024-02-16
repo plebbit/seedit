@@ -268,5 +268,7 @@
   "view_spoiler": "spoileri görüntüle",
   "more": "daha fazla",
   "default_communities": "varsayılan topluluklar",
-  "avatar": "avatar"
+  "avatar": "avatar",
+  "pending_edit": "bekleyen düzenleme",
+  "failed_edit": "başarısız düzenleme"
 }

@@ -268,5 +268,7 @@
   "view_spoiler": "zobrazit spoiler",
   "more": "více",
   "default_communities": "výchozí komunity",
-  "avatar": "avatar"
+  "avatar": "avatar",
+  "pending_edit": "čekající úprava",
+  "failed_edit": "neúspěšná úprava"
 }

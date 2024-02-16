@@ -268,5 +268,7 @@
   "view_spoiler": "view spoiler",
   "more": "more",
   "default_communities": "default communities",
-  "avatar": "avatar"
+  "avatar": "avatar",
+  "pending_edit": "pending edit",
+  "failed_edit": "failed edit"
 }

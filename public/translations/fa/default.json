@@ -268,5 +268,7 @@
   "view_spoiler": "نمایش اسپویلر",
   "more": "بیشتر",
   "default_communities": "جوامع پیش‌فرض",
-  "avatar": "آواتار"
+  "avatar": "آواتار",
+  "pending_edit": "ویرایش در انتظار",
+  "failed_edit": "ویرایش ناموفق"
 }
