@@ -184,7 +184,7 @@ const Post = ({ index, post = {} }: PostProps) => {
                   <div className={`${styles.arrowCommon} ${downvoted ? styles.downvoted : styles.arrowDown}`} onClick={() => cid && downvote()} />
                 </div>
               </div>
-              {hasThumbnail && !isInPostView && (
+              {hasThumbnail && !isInPostView && !spoiler && (
                 <span className={removed ? styles.blur : ''}>
                   <Thumbnail
                     cid={cid}
