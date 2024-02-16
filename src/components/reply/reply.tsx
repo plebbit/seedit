@@ -283,6 +283,9 @@ const Reply = ({ cidOfReplyWithContext, depth = 0, isSingleComment, isSingleRepl
       {cid === undefined && state !== 'failed' && <Label color='yellow' text={t('pending')} />}
       {editState === 'failed' && <Label color='red' text={t('failed_edit')} />}
       {editState === 'pending' && <Label color='yellow' text={t('pending_edit')} />}
+      {deleted && <Label color='red' text={t('deleted')} />}
+      {removed && <Label color='red' text={t('removed')} />}
+      {spoiler && <Label color='black' text={t('spoiler')} />}
     </span>
   );
 
@@ -400,15 +403,12 @@ const Reply = ({ cidOfReplyWithContext, depth = 0, isSingleComment, isSingleRepl
               <CommentTools
                 author={author}
                 cid={cid}
-                deleted={deleted}
                 isReply={true}
                 isSingleReply={isSingleReply}
                 index={reply?.index}
                 parentCid={parentCid}
                 postCid={postCid}
-                removed={removed}
                 replyCount={replies.length}
-                spoiler={spoiler}
                 subplebbitAddress={subplebbitAddress}
                 showEditForm={showEditForm}
                 showReplyForm={showReplyForm}
