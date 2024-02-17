@@ -132,7 +132,7 @@ export type OptionInput = {
 
 export type Exclude = {
   postScore?: number;
-  postReply?: number;
+  replyScore?: number;
   firstCommentTimestamp?: number;
   challenges?: number[];
   post?: boolean;

@@ -515,7 +515,7 @@ const ChallengeSettings = ({ challenge, index, isReadOnly, setSubplebbitSettings
                     )}
                   </div>
                 )}
-                {isReadOnly && !exclude?.postScore && !exclude?.postReply ? null : (
+                {isReadOnly && !(exclude?.postScore || exclude?.replyScore) ? null : (
                   <div className={styles.challengeOption}>
                     User's karma
                     {isReadOnly && !exclude?.postScore ? null : (
@@ -528,13 +528,17 @@ const ChallengeSettings = ({ challenge, index, isReadOnly, setSubplebbitSettings
                         )}
                       </>
                     )}
-                    {isReadOnly && !exclude?.postReply ? null : (
+                    {isReadOnly && !exclude?.replyScore ? null : (
                       <>
                         <div className={styles.challengeOptionDescription}>Comment karma is at least:</div>
                         {isReadOnly ? (
-                          <span>{exclude?.postReply}</span>
+                          <span>{exclude?.replyScore}</span>
                         ) : (
-                          <input type='number' value={exclude?.postReply || undefined} onChange={(e) => handleExcludeChange(excludeIndex, 'postReply', e.target.value)} />
+                          <input
+                            type='number'
+                            value={exclude?.replyScore || undefined}
+                            onChange={(e) => handleExcludeChange(excludeIndex, 'replyScore', e.target.value)}
+                          />
                         )}
                       </>
                     )}
@@ -580,7 +584,7 @@ const ChallengeSettings = ({ challenge, index, isReadOnly, setSubplebbitSettings
                     )}
                   </div>
                 )}
-                {isReadOnly && actionsToExclude.some((action) => exclude.hasOwnProperty(action)) ? null : (
+                {isReadOnly && !actionsToExclude.some((action) => exclude[action] === true) ? null : (
                   <div className={styles.challengeOption}>
                     User's action
                     <div className={styles.challengeOptionDescription}>Is all of the following:</div>
@@ -604,7 +608,7 @@ const ChallengeSettings = ({ challenge, index, isReadOnly, setSubplebbitSettings
                       ),
                     )}
                     {nonActionsToExclude.map((nonAction) =>
-                      isReadOnly && exclude?.[nonAction.replace('not ', '')] ? null : (
+                      isReadOnly && exclude?.[nonAction.replace('not ', '')] !== null ? null : (
                         <div key={nonAction}>
                           {isReadOnly ? (
                             <span className={styles.readOnlyActionExclude}>{nonAction} excluded</span>
