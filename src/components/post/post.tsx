@@ -152,13 +152,13 @@ const Post = ({ index, post = {} }: PostProps) => {
   const { subscribe, subscribed } = useSubscribe({ subplebbitAddress });
 
   // show gray dotted border around last clicked post
-  const isLastClicked = localStorage.getItem('lastClickedPost') === cid;
+  const isLastClicked = sessionStorage.getItem('lastClickedPost') === cid;
   const handlePostClick = () => {
     if (cid) {
-      if (localStorage.getItem('lastClickedPost') === cid) {
-        localStorage.removeItem('lastClickedPost');
+      if (sessionStorage.getItem('lastClickedPost') === cid) {
+        sessionStorage.removeItem('lastClickedPost');
       } else {
-        localStorage.setItem('lastClickedPost', cid);
+        sessionStorage.setItem('lastClickedPost', cid);
       }
     }
   };
