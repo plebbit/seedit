@@ -870,8 +870,8 @@ const SubplebbitSettings = () => {
     }
   }, [createdSubplebbit, navigate]);
 
-  // set the store with the initial data
   useEffect(() => {
+    resetSubplebbitSettingsStore();
     if (subplebbitAddress) {
       setSubplebbitSettingsStore({
         title: title ?? '',
@@ -886,7 +886,7 @@ const SubplebbitSettings = () => {
       });
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [subplebbitAddress]);
+  }, [subplebbitAddress, resetSubplebbitSettingsStore]);
 
   useEffect(() => {
     if (isInCreateSubplebbitView) {
