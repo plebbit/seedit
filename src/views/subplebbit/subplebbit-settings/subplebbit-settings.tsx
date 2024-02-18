@@ -408,10 +408,15 @@ const ChallengeSettings = ({ challenge, index, isReadOnly, setSubplebbitSettings
           if (exIdx === excludeIndex) {
             let newEx = { ...ex };
 
-            // Convert empty string to undefined
-            const processedValue = value === '' ? undefined : value;
-
             switch (type) {
+              case 'rateLimit':
+              case 'postScore':
+              case 'replyScore':
+                const parsedValue = parseInt(value, 10);
+                if (!isNaN(parsedValue)) {
+                  newEx[type] = parsedValue;
+                }
+                break;
               case 'not post':
                 newEx.post = value ? undefined : false;
                 break;
@@ -432,7 +437,7 @@ const ChallengeSettings = ({ challenge, index, isReadOnly, setSubplebbitSettings
                 }
                 break;
               default:
-                newEx[type] = processedValue;
+                newEx[type] = value;
             }
             return newEx;
           }
@@ -525,7 +530,7 @@ const ChallengeSettings = ({ challenge, index, isReadOnly, setSubplebbitSettings
                         {isReadOnly ? (
                           <span>{exclude?.postScore}</span>
                         ) : (
-                          <input type='number' value={exclude?.postScore || undefined} onChange={(e) => handleExcludeChange(excludeIndex, 'postScore', e.target.value)} />
+                          <input type='text' value={exclude?.postScore || undefined} onChange={(e) => handleExcludeChange(excludeIndex, 'postScore', e.target.value)} />
                         )}
                       </>
                     )}
@@ -535,11 +540,7 @@ const ChallengeSettings = ({ challenge, index, isReadOnly, setSubplebbitSettings
                         {isReadOnly ? (
                           <span>{exclude?.replyScore}</span>
                         ) : (
-                          <input
-                            type='number'
-                            value={exclude?.replyScore || undefined}
-                            onChange={(e) => handleExcludeChange(excludeIndex, 'replyScore', e.target.value)}
-                          />
+                          <input type='text' value={exclude?.replyScore || undefined} onChange={(e) => handleExcludeChange(excludeIndex, 'replyScore', e.target.value)} />
                         )}
                       </>
                     )}
@@ -553,7 +554,7 @@ const ChallengeSettings = ({ challenge, index, isReadOnly, setSubplebbitSettings
                       <span>{exclude?.firstCommentTimestamp}</span>
                     ) : (
                       <input
-                        type='number'
+                        type='text'
                         value={exclude?.firstCommentTimestamp || undefined}
                         onChange={(e) => handleExcludeChange(excludeIndex, 'firstCommentTimestamp', e.target.value)}
                       />
@@ -636,7 +637,7 @@ const ChallengeSettings = ({ challenge, index, isReadOnly, setSubplebbitSettings
                     {isReadOnly ? (
                       <div>{exclude?.rateLimit}</div>
                     ) : (
-                      <input type='number' value={exclude?.rateLimit || undefined} onChange={(e) => handleExcludeChange(excludeIndex, 'rateLimit', e.target.value)} />
+                      <input type='text' value={exclude?.rateLimit || undefined} onChange={(e) => handleExcludeChange(excludeIndex, 'rateLimit', e.target.value)} />
                     )}
                     {isReadOnly && !exclude?.rateLimitChallengeSuccess ? null : (
                       <div>
