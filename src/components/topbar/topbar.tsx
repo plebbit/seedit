@@ -114,7 +114,7 @@ const TopBar = () => {
                 {getShortAddress(subscription)}
               </Link>
             ))}
-            <Link to='/communities/vote' className={`${styles.dropdownItem} ${styles.editSubscriptions}`}>
+            <Link to='/communities/vote' className={`${styles.dropdownItem} ${styles.defaultCommunities}`}>
               {t('default_communities')}
             </Link>
             <Link to='/communities/subscriber' className={`${styles.dropdownItem} ${styles.editSubscriptions}`}>
