@@ -24,16 +24,13 @@ const Expando = ({ commentMediaInfo, content, expanded, link, reason, removed, s
   const [showSpoiler, setShowSpoiler] = useState(false);
 
   let mediaComponent = null;
-  let noExpandButton = false;
 
   if (commentMediaInfo?.type === 'image') {
     mediaComponent = <img src={commentMediaInfo.url} alt='' />;
-    noExpandButton = true;
   } else if (commentMediaInfo?.type === 'video' && expanded) {
     mediaComponent = <video src={commentMediaInfo.url} controls />;
   } else if (commentMediaInfo?.type === 'webpage' && commentMediaInfo?.thumbnail) {
     mediaComponent = <img src={commentMediaInfo.thumbnail} alt='' />;
-    noExpandButton = true;
   } else if (commentMediaInfo?.type === 'audio' && expanded) {
     mediaComponent = <audio src={commentMediaInfo.url} controls />;
   } else if (commentMediaInfo?.type === 'iframe' && expanded) {
@@ -53,7 +50,7 @@ const Expando = ({ commentMediaInfo, content, expanded, link, reason, removed, s
           <Link
             to={link}
             onClick={(e) => {
-              if (e.button === 0 && noExpandButton) {
+              if (e.button === 0) {
                 e.preventDefault();
                 toggleExpanded && toggleExpanded();
               }
