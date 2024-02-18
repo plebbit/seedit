@@ -267,3 +267,7 @@
 .greenSubplebbitAddress {
   color: var(--green-bright) !important;
 }
+
+.subscribeButtonWrapper:hover + .subplebbit {
+  color: var(--green-bright) !important;
+}

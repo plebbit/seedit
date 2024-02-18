@@ -148,7 +148,6 @@ const Post = ({ index, post = {} }: PostProps) => {
   const { blocked, unblock } = useBlock({ address: cid });
 
   const [hasClickedSubscribe, setHasClickedSubscribe] = useState(false);
-  const [isHoveringOnSubscribe, setIsHoveringOnSubscribe] = useState(false);
   const { subscribe, subscribed } = useSubscribe({ subplebbitAddress });
 
   // show gray dotted border around last clicked post
@@ -253,25 +252,22 @@ const Post = ({ index, post = {} }: PostProps) => {
                   {!isInSubplebbitView && (
                     <>
                        {t('post_to')}{' '}
-                      {isInAllView && (!subscribed || (subscribed && hasClickedSubscribe)) && (
-                        <span className={styles.subscribeButtonWrapper}>
-                          <button
-                            className={`${styles.subscribeButton} ${subscribed ? styles.buttonSubscribed : styles.buttonSubscribe}`}
-                            onClick={() => {
-                              subscribe();
-                              setHasClickedSubscribe(true);
-                            }}
-                            onMouseOver={() => setIsHoveringOnSubscribe(true)}
-                            onMouseLeave={() => setIsHoveringOnSubscribe(false)}
-                          />
-                        </span>
-                      )}
-                      <Link
-                        className={`${styles.subplebbit} ${isHoveringOnSubscribe || (subscribed && hasClickedSubscribe) ? styles.greenSubplebbitAddress : ''}`}
-                        to={`/p/${subplebbitAddress}`}
-                      >
-                        p/{subplebbit?.shortAddress || subplebbitAddress}
-                      </Link>
+                      <span className={styles.subscribeHoverGroup}>
+                        {isInAllView && (!subscribed || (subscribed && hasClickedSubscribe)) && (
+                          <span className={styles.subscribeButtonWrapper}>
+                            <button
+                              className={`${styles.subscribeButton} ${subscribed ? styles.buttonSubscribed : styles.buttonSubscribe}`}
+                              onClick={() => {
+                                subscribe();
+                                setHasClickedSubscribe(true);
+                              }}
+                            />
+                          </span>
+                        )}
+                        <Link className={`${styles.subplebbit} ${subscribed && hasClickedSubscribe ? styles.greenSubplebbitAddress : ''}`} to={`/p/${subplebbitAddress}`}>
+                          p/{subplebbit?.shortAddress || subplebbitAddress}
+                        </Link>
+                      </span>
                     </>
                   )}
                   {pinned && <span className={styles.announcement}> - {t('announcement')}</span>}
