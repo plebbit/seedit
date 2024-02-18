@@ -41,7 +41,7 @@ const All = () => {
   );
 
   useEffect(() => {
-    document.title = `p/all - seedit`;
+    document.title = t('all');
   }, [t]);
 
   const Footer = () => {

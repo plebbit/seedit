@@ -141,6 +141,11 @@ const Profile = () => {
     return () => window.removeEventListener('scroll', setLastVirtuosoState);
   }, [account?.shortAddress, params.sortType]);
 
+  const profileTitle = account?.author?.displayName ? `${account?.author?.displayName} (u/${account?.author?.shortAddress})` : `u/${account?.author?.shortAddress}`;
+  useEffect(() => {
+    document.title = profileTitle + ' - Seedit';
+  }, [t]);
+
   return (
     <div className={styles.content}>
       <div className={isMobile ? styles.sidebarMobile : styles.sidebarDesktop}>

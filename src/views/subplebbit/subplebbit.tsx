@@ -28,7 +28,7 @@ const Subplebbit = () => {
   const loadingString = <div className={styles.stateString}>{state === 'failed' ? state : <LoadingEllipsis string={loadingStateString} />}</div>;
 
   useEffect(() => {
-    document.title = (title ? title : shortAddress) + ' - seedit';
+    document.title = title ? title : shortAddress;
   }, [title, shortAddress]);
 
   const Footer = () => {

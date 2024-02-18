@@ -173,9 +173,10 @@ const Settings = () => {
     window.scrollTo(0, 0);
   }, []);
 
+  const documentTitle = `${t('preferences').charAt(0).toUpperCase()}${t('preferences').slice(1)} - Seedit`;
   useEffect(() => {
-    document.title = `${t('preferences')} - seedit`;
-  }, [t]);
+    document.title = documentTitle;
+  }, [documentTitle]);
 
   return (
     <div className={styles.content}>
