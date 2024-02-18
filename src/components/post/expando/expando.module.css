@@ -68,6 +68,7 @@
   color: white;
   text-transform: lowercase;
   position: absolute;
+  font-size: 12px;
   z-index: 1;
   top: 50%;
   left: 50%;
