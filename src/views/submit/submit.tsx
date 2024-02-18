@@ -141,14 +141,6 @@ const Submit = () => {
   const { subscriptions } = account || {};
   const defaultSubplebbitAddresses = useDefaultSubplebbitAddresses();
 
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
-
-  useEffect(() => {
-    document.title = t('submit_to_string', { string: subplebbit?.title || subplebbit?.shortAddress || 'seedit', interpolation: { escapeValue: false } });
-  }, [subplebbit, t]);
-
   const onPublish = () => {
     if (!titleRef.current?.value) {
       alert(`Missing title`);
@@ -271,6 +263,15 @@ const Submit = () => {
       setSubmitStore({ subplebbitAddress: paramsSubplebbitAddress });
     }
   }, [paramsSubplebbitAddress, setSubmitStore]);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  const documentTitle = t('submit_to_string', { string: subplebbit?.title || subplebbit?.shortAddress || 'Seedit', interpolation: { escapeValue: false } });
+  useEffect(() => {
+    document.title = documentTitle;
+  }, [documentTitle]);
 
   return (
     <div className={styles.content}>

@@ -144,7 +144,7 @@ const PostPage = () => {
   const postTitle = post.title?.slice(0, 40) || post?.content?.slice(0, 40);
   const subplebbitTitle = subplebbit?.title || subplebbit?.shortAddress;
   useEffect(() => {
-    document.title = `${postTitle || ''}${postTitle && subplebbitTitle ? ' - ' : ''}${subplebbitTitle || ''}${postTitle || subplebbitTitle ? ' - seedit' : 'seedit'}`;
+    document.title = `${postTitle || ''}${postTitle && subplebbitTitle ? ' - ' : ''}${subplebbitTitle || ''}${postTitle || subplebbitTitle ? ' - Seedit' : 'Seedit'}`;
   }, [postTitle, subplebbitTitle]);
 
   useEffect(() => {

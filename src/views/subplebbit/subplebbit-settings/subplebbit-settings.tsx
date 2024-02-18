@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import {
   deleteSubplebbit,
@@ -19,6 +19,7 @@ import LoadingEllipsis from '../../../components/loading-ellipsis';
 import Markdown from '../../../components/markdown';
 import Sidebar from '../../../components/sidebar';
 import { isCreateSubplebbitView, isSubplebbitSettingsView } from '../../../lib/utils/view-utils';
+import _ from 'lodash';
 
 type SubplebbitSettingsState = {
   challenges: any[] | undefined;
@@ -902,9 +903,19 @@ const SubplebbitSettings = () => {
     window.scrollTo(0, 0);
   }, []);
 
+  const documentTitle = useMemo(() => {
+    let title;
+    if (isInSubplebbitSettingsView) {
+      title = _.startCase(t('community_settings'));
+    } else if (isInCreateSubplebbitView) {
+      title = _.startCase(t('create_community'));
+    }
+    return `${title} - Seedit`;
+  }, [isInCreateSubplebbitView, isInSubplebbitSettingsView, t]);
+
   useEffect(() => {
-    document.title = `${t('preferences')} - seedit`;
-  }, [t]);
+    document.title = documentTitle;
+  }, [documentTitle]);
 
   return (
     <div className={styles.content}>

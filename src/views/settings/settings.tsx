@@ -174,7 +174,7 @@ const Settings = () => {
     window.scrollTo(0, 0);
   }, []);
 
-  const documentTitle = `${_.capitalize(t('preferences'))} - Seedit`;
+  const documentTitle = `${_.startCase(t('preferences'))} - Seedit`;
   useEffect(() => {
     document.title = documentTitle;
   }, [documentTitle]);

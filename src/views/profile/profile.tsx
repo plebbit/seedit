@@ -144,7 +144,7 @@ const Profile = () => {
   const profileTitle = account?.author?.displayName ? `${account?.author?.displayName} (u/${account?.author?.shortAddress})` : `u/${account?.author?.shortAddress}`;
   useEffect(() => {
     document.title = profileTitle + ' - Seedit';
-  }, [t]);
+  }, [t, profileTitle]);
 
   return (
     <div className={styles.content}>
