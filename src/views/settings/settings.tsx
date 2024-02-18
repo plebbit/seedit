@@ -6,6 +6,7 @@ import AccountSettings from './account-settings';
 import AddressSettings from './address-settings';
 import useTheme from '../../hooks/use-theme';
 import packageJson from '../../../package.json';
+import _ from 'lodash';
 
 const commitRef = process.env.REACT_APP_COMMIT_REF;
 const isElectron = window.isElectron === true;
@@ -173,7 +174,7 @@ const Settings = () => {
     window.scrollTo(0, 0);
   }, []);
 
-  const documentTitle = `${t('preferences').charAt(0).toUpperCase()}${t('preferences').slice(1)} - Seedit`;
+  const documentTitle = `${_.capitalize(t('preferences'))} - Seedit`;
   useEffect(() => {
     document.title = documentTitle;
   }, [documentTitle]);

@@ -4,3 +4,5 @@ declare module '*.module.css' {
 }
 
 declare module 'ext-name';
+
+declare module 'lodash';
