@@ -132,7 +132,7 @@ const AddressSettings = () => {
   return (
     <div className={styles.addressSettings}>
       <div className={styles.copyAddressSetting}>
-        <Trans i18nKey='copy_full_address' components={{ 1: <button onClick={() => navigator.clipboard.writeText(account?.signer?.address)} /> }} />
+        <button onClick={() => navigator.clipboard.writeText(account?.signer?.address)}>{t('copy')}</button> plebbit-author-address
       </div>
       <div className={styles.cryptoAddressSetting}>
         <span className={styles.settingTitle}>{t('crypto_address')}</span>
