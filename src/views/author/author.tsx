@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useRef } from 'react';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
-import { useAuthorComments } from '@plebbit/plebbit-react-hooks';
+import { useAuthorComments, useAuthor } from '@plebbit/plebbit-react-hooks';
 import { StateSnapshot, Virtuoso, VirtuosoHandle } from 'react-virtuoso';
 import { isAuthorCommentsView, isAuthorSubmittedView } from '../../lib/utils/view-utils';
 import { useTranslation } from 'react-i18next';
@@ -17,6 +17,7 @@ const Author = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const { authorAddress, commentCid, sortType } = useParams();
+  const author = useAuthor({ commentCid, authorAddress });
   const params = useParams();
   const isInAuthorCommentsView = isAuthorCommentsView(location.pathname, params);
   const isInAuthorSubmittedView = isAuthorSubmittedView(location.pathname, params);
@@ -63,6 +64,11 @@ const Author = () => {
       navigate(`/u/${authorAddress}/c/${lastCommentCid}`, { replace: true });
     }
   }, [authorAddress, lastCommentCid, commentCid, navigate]);
+
+  const profileTitle = author?.author?.displayName ? `${author?.author?.displayName} (u/${author?.author?.shortAddress})` : `u/${author?.author?.shortAddress}`;
+  useEffect(() => {
+    document.title = profileTitle + ' - Seedit';
+  }, [t, profileTitle]);
 
   return (
     <div className={styles.content}>

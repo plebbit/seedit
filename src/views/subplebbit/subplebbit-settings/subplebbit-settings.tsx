@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import {
   deleteSubplebbit,
@@ -19,6 +19,7 @@ import LoadingEllipsis from '../../../components/loading-ellipsis';
 import Markdown from '../../../components/markdown';
 import Sidebar from '../../../components/sidebar';
 import { isCreateSubplebbitView, isSubplebbitSettingsView } from '../../../lib/utils/view-utils';
+import _ from 'lodash';
 
 type SubplebbitSettingsState = {
   challenges: any[] | undefined;
@@ -407,10 +408,15 @@ const ChallengeSettings = ({ challenge, index, isReadOnly, setSubplebbitSettings
           if (exIdx === excludeIndex) {
             let newEx = { ...ex };
 
-            // Convert empty string to undefined
-            const processedValue = value === '' ? undefined : value;
-
             switch (type) {
+              case 'rateLimit':
+              case 'postScore':
+              case 'replyScore':
+                const parsedValue = parseInt(value, 10);
+                if (!isNaN(parsedValue)) {
+                  newEx[type] = parsedValue;
+                }
+                break;
               case 'not post':
                 newEx.post = value ? undefined : false;
                 break;
@@ -431,7 +437,7 @@ const ChallengeSettings = ({ challenge, index, isReadOnly, setSubplebbitSettings
                 }
                 break;
               default:
-                newEx[type] = processedValue;
+                newEx[type] = value;
             }
             return newEx;
           }
@@ -515,7 +521,7 @@ const ChallengeSettings = ({ challenge, index, isReadOnly, setSubplebbitSettings
                     )}
                   </div>
                 )}
-                {isReadOnly && !exclude?.postScore && !exclude?.postReply ? null : (
+                {isReadOnly && !(exclude?.postScore || exclude?.replyScore) ? null : (
                   <div className={styles.challengeOption}>
                     User's karma
                     {isReadOnly && !exclude?.postScore ? null : (
@@ -524,17 +530,17 @@ const ChallengeSettings = ({ challenge, index, isReadOnly, setSubplebbitSettings
                         {isReadOnly ? (
                           <span>{exclude?.postScore}</span>
                         ) : (
-                          <input type='number' value={exclude?.postScore || undefined} onChange={(e) => handleExcludeChange(excludeIndex, 'postScore', e.target.value)} />
+                          <input type='text' value={exclude?.postScore || undefined} onChange={(e) => handleExcludeChange(excludeIndex, 'postScore', e.target.value)} />
                         )}
                       </>
                     )}
-                    {isReadOnly && !exclude?.postReply ? null : (
+                    {isReadOnly && !exclude?.replyScore ? null : (
                       <>
                         <div className={styles.challengeOptionDescription}>Comment karma is at least:</div>
                         {isReadOnly ? (
-                          <span>{exclude?.postReply}</span>
+                          <span>{exclude?.replyScore}</span>
                         ) : (
-                          <input type='number' value={exclude?.postReply || undefined} onChange={(e) => handleExcludeChange(excludeIndex, 'postReply', e.target.value)} />
+                          <input type='text' value={exclude?.replyScore || undefined} onChange={(e) => handleExcludeChange(excludeIndex, 'replyScore', e.target.value)} />
                         )}
                       </>
                     )}
@@ -548,7 +554,7 @@ const ChallengeSettings = ({ challenge, index, isReadOnly, setSubplebbitSettings
                       <span>{exclude?.firstCommentTimestamp}</span>
                     ) : (
                       <input
-                        type='number'
+                        type='text'
                         value={exclude?.firstCommentTimestamp || undefined}
                         onChange={(e) => handleExcludeChange(excludeIndex, 'firstCommentTimestamp', e.target.value)}
                       />
@@ -580,7 +586,7 @@ const ChallengeSettings = ({ challenge, index, isReadOnly, setSubplebbitSettings
                     )}
                   </div>
                 )}
-                {isReadOnly && actionsToExclude.some((action) => exclude.hasOwnProperty(action)) ? null : (
+                {isReadOnly && !actionsToExclude.some((action) => exclude[action] === true) ? null : (
                   <div className={styles.challengeOption}>
                     User's action
                     <div className={styles.challengeOptionDescription}>Is all of the following:</div>
@@ -604,7 +610,7 @@ const ChallengeSettings = ({ challenge, index, isReadOnly, setSubplebbitSettings
                       ),
                     )}
                     {nonActionsToExclude.map((nonAction) =>
-                      isReadOnly && exclude?.[nonAction.replace('not ', '')] ? null : (
+                      isReadOnly && exclude?.[nonAction.replace('not ', '')] !== null ? null : (
                         <div key={nonAction}>
                           {isReadOnly ? (
                             <span className={styles.readOnlyActionExclude}>{nonAction} excluded</span>
@@ -631,7 +637,7 @@ const ChallengeSettings = ({ challenge, index, isReadOnly, setSubplebbitSettings
                     {isReadOnly ? (
                       <div>{exclude?.rateLimit}</div>
                     ) : (
-                      <input type='number' value={exclude?.rateLimit || undefined} onChange={(e) => handleExcludeChange(excludeIndex, 'rateLimit', e.target.value)} />
+                      <input type='text' value={exclude?.rateLimit || undefined} onChange={(e) => handleExcludeChange(excludeIndex, 'rateLimit', e.target.value)} />
                     )}
                     {isReadOnly && !exclude?.rateLimitChallengeSuccess ? null : (
                       <div>
@@ -870,8 +876,8 @@ const SubplebbitSettings = () => {
     }
   }, [createdSubplebbit, navigate]);
 
-  // set the store with the initial data
   useEffect(() => {
+    resetSubplebbitSettingsStore();
     if (subplebbitAddress) {
       setSubplebbitSettingsStore({
         title: title ?? '',
@@ -886,7 +892,7 @@ const SubplebbitSettings = () => {
       });
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [subplebbitAddress]);
+  }, [subplebbitAddress, resetSubplebbitSettingsStore]);
 
   useEffect(() => {
     if (isInCreateSubplebbitView) {
@@ -898,9 +904,19 @@ const SubplebbitSettings = () => {
     window.scrollTo(0, 0);
   }, []);
 
+  const documentTitle = useMemo(() => {
+    let title;
+    if (isInSubplebbitSettingsView) {
+      title = _.startCase(t('community_settings'));
+    } else if (isInCreateSubplebbitView) {
+      title = _.startCase(t('create_community'));
+    }
+    return `${title} - Seedit`;
+  }, [isInCreateSubplebbitView, isInSubplebbitSettingsView, t]);
+
   useEffect(() => {
-    document.title = `${t('preferences')} - seedit`;
-  }, [t]);
+    document.title = documentTitle;
+  }, [documentTitle]);
 
   return (
     <div className={styles.content}>

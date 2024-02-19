@@ -56,7 +56,7 @@ const Home = () => {
   );
 
   useEffect(() => {
-    document.title = `${t('home')} - seedit`;
+    document.title = `Seedit`;
   }, [t]);
 
   const Footer = () => {

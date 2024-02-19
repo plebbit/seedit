@@ -52,10 +52,15 @@
   background-color: var(--background-primary);
 }
 
-.editSubscriptions {
+.defaultCommunities {
   font-style: italic;
   text-transform: uppercase;
   border-top: 1px dotted var(--text-primary);
+}
+
+.editSubscriptions {
+  font-style: italic;
+  text-transform: uppercase;
 }
 
 .dropChoices a {

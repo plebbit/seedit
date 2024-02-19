@@ -19,6 +19,7 @@ import Markdown from '../../components/markdown';
 import Label from '../../components/post/label';
 import Sidebar from '../../components/sidebar';
 import SubscribeButton from '../../components/subscribe-button';
+import _ from 'lodash';
 
 interface SubplebbitProps {
   index?: number;
@@ -131,10 +132,6 @@ const Subplebbit = ({ subplebbit }: SubplebbitProps) => {
   const { allActiveUserCount } = useSubplebbitStats({ subplebbitAddress: address });
   const isOnline = updatedAt && updatedAt > Date.now() / 1000 - 60 * 30;
 
-  useEffect(() => {
-    document.title = `${t('communities')} - seedit`;
-  }, [t]);
-
   return (
     <div className={styles.subplebbit}>
       <div className={styles.midcol}>
@@ -233,6 +230,7 @@ const AllAccountSubplebbits = () => {
 };
 
 const Subplebbits = () => {
+  const { t } = useTranslation();
   const location = useLocation();
   const isInSubplebbitsSubscriberView = isSubplebbitsSubscriberView(location.pathname);
   const isInSubplebbitsModeratorView = isSubplebbitsModeratorView(location.pathname);
@@ -255,6 +253,28 @@ const Subplebbits = () => {
   } else if (isInSubplebbitsOwnerView) {
     viewRole = 'owner';
   }
+
+  const documentTitle = useMemo(() => {
+    let title = _.startCase(t('communities'));
+    if (isInSubplebbitsVoteView) {
+      title += ` - ${_.startCase(t('vote'))}`;
+    } else if (isInSubplebbitsSubscriberView) {
+      title += ` - ${_.startCase(t('subscriber'))}`;
+    } else if (isInSubplebbitsModeratorView) {
+      title += ` - ${_.startCase(t('moderator'))}`;
+    } else if (isInSubplebbitsAdminView) {
+      title += ` - ${_.startCase(t('admin'))}`;
+    } else if (isInSubplebbitsOwnerView) {
+      title += ` - ${_.startCase(t('owner'))}`;
+    } else if (isInSubplebbitsView) {
+      title += ` - ${_.startCase(t('all'))}`;
+    }
+    return `${title} - Seedit`;
+  }, [isInSubplebbitsSubscriberView, isInSubplebbitsModeratorView, isInSubplebbitsAdminView, isInSubplebbitsOwnerView, isInSubplebbitsView, isInSubplebbitsVoteView, t]);
+
+  useEffect(() => {
+    document.title = documentTitle;
+  }, [documentTitle]);
 
   return (
     <div className={styles.content}>

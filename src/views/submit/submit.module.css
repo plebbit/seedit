@@ -6,6 +6,7 @@
 h1 {
   font-size: 18px;
   font-weight: normal;
+  text-transform: lowercase;
   margin: 10px 0 !important;
 }
 

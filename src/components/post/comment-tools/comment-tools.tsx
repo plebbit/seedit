@@ -39,10 +39,10 @@ const PostTools = ({ author, cid, hasLabel, index, isAuthor, isMod, subplebbitAd
   // show gray dotted border around last clicked post
   const handlePostClick = () => {
     if (cid) {
-      if (localStorage.getItem('lastClickedPost') === cid) {
-        localStorage.removeItem('lastClickedPost');
+      if (sessionStorage.getItem('lastClickedPost') === cid) {
+        sessionStorage.removeItem('lastClickedPost');
       } else {
-        localStorage.setItem('lastClickedPost', cid);
+        sessionStorage.setItem('lastClickedPost', cid);
       }
     }
   };

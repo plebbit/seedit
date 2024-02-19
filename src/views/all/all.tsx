@@ -10,6 +10,7 @@ import Sidebar from '../../components/sidebar';
 import { useDefaultSubplebbitAddresses } from '../../lib/utils/addresses-utils';
 import useFeedStateString from '../../hooks/use-feed-state-string';
 import useTimeFilter, { TimeFilterKey } from '../../hooks/use-time-filter';
+import _ from 'lodash';
 
 const lastVirtuosoStates: { [key: string]: StateSnapshot } = {};
 
@@ -40,9 +41,10 @@ const All = () => {
     </div>
   );
 
+  const documentTitle = _.capitalize(t('all')) + ' - Seedit';
   useEffect(() => {
-    document.title = `p/all - seedit`;
-  }, [t]);
+    document.title = documentTitle;
+  }, [documentTitle]);
 
   const Footer = () => {
     let footerContent;

@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef } from 'react';
+import { useCallback, useEffect, useMemo, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { StateSnapshot, Virtuoso, VirtuosoHandle } from 'react-virtuoso';
 import { useAccount, useNotifications } from '@plebbit/plebbit-react-hooks';
@@ -6,6 +6,7 @@ import styles from './inbox.module.css';
 import Reply from '../../components/reply/reply';
 import { isInboxCommentRepliesView, isInboxPostRepliesView, isInboxUnreadView } from '../../lib/utils/view-utils';
 import { useTranslation } from 'react-i18next';
+import _ from 'lodash';
 
 const lastVirtuosoStates: { [key: string]: StateSnapshot } = {};
 
@@ -81,6 +82,22 @@ const Inbox = () => {
     // clean listener on unmount
     return () => window.removeEventListener('scroll', setLastVirtuosoState);
   }, [unreadNotificationCount]);
+
+  const documentTitle = useMemo(() => {
+    let title = _.startCase(t('inbox'));
+    if (isInInboxUnreadView) {
+      title += ` - ${_.startCase(t('unread'))}`;
+    } else if (isInInboxCommentRepliesView) {
+      title += ` - ${_.startCase(t('comment_replies'))}`;
+    } else if (isInInboxPostRepliesView) {
+      title += ` - ${_.startCase(t('post_replies'))}`;
+    }
+    return `${title} - Seedit`;
+  }, [isInInboxCommentRepliesView, isInInboxPostRepliesView, isInInboxUnreadView, t]);
+
+  useEffect(() => {
+    document.title = documentTitle;
+  }, [documentTitle]);
 
   return (
     <div className={styles.content}>
