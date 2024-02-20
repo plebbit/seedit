@@ -58,7 +58,9 @@ const Challenge = ({ challenge, closeModal }: ChallengeProps) => {
       <div className={styles.title}>{t('challenge_from', { subplebbit: shortSubplebbitAddress || subplebbitAddress })}</div>
       <div className={styles.subTitle}>
         {publicationType === 'vote' && votePreview + ' '}
-        {parentCid ? t('challenge_for_reply', { parentAddress, publicationContent }) : t('challenge_for_post', { publicationContent })}
+        {parentCid
+          ? t('challenge_for_reply', { parentAddress, publicationContent, interpolation: { escapeValue: false } })
+          : t('challenge_for_post', { publicationContent, interpolation: { escapeValue: false } })}
       </div>
       <div className={styles.challengeMediaWrapper}>
         {isTextChallenge && <div className={styles.challengeMedia}>{challenges[currentChallengeIndex]?.challenge}</div>}
