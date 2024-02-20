@@ -199,13 +199,13 @@ const Post = ({ index, post = {} }: PostProps) => {
             </div>
             <div className={styles.entry}>
               <div className={styles.topMatter}>
-                <p className={`${styles.title} ${removed && !isInPostView ? styles.blur : ''}`} onClick={handlePostClick}>
+                <p className={`${styles.title} ${removed && !isInPostView ? styles.blur : ''}`}>
                   {isInPostView && link ? (
-                    <a href={link} className={linkClass} target='_blank' rel='noopener noreferrer'>
+                    <a href={link} className={linkClass} target='_blank' rel='noopener noreferrer' onClick={handlePostClick}>
                       {postTitle ?? '-'}
                     </a>
                   ) : (
-                    <Link className={linkClass} to={cid ? `/p/${subplebbitAddress}/c/${cid}` : `/profile/${post?.index}`}>
+                    <Link className={linkClass} to={cid ? `/p/${subplebbitAddress}/c/${cid}` : `/profile/${post?.index}`} onClick={handlePostClick}>
                       {postTitle ?? '-'}
                     </Link>
                   )}
