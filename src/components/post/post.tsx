@@ -17,6 +17,7 @@ import Thumbnail from './thumbnail';
 import useDownvote from '../../hooks/use-downvote';
 import useStateString from '../../hooks/use-state-string';
 import useUpvote from '../../hooks/use-upvote';
+import _ from 'lodash';
 
 interface PostAuthorProps {
   authorAddress: string;
@@ -84,6 +85,7 @@ const Post = ({ index, post = {} }: PostProps) => {
   const {
     author,
     cid,
+    content,
     deleted,
     downvoteCount,
     edit,
@@ -102,13 +104,6 @@ const Post = ({ index, post = {} }: PostProps) => {
     title,
     upvoteCount,
   } = post || {};
-  let content = post?.content;
-  if (removed) {
-    content = '[removed]';
-  }
-  if (deleted) {
-    content = '[deleted]';
-  }
   const { displayName, shortAddress } = author || {};
   const { shortAuthorAddress, authorAddressChanged } = useAuthorAddress({ comment: post });
   const { imageUrl } = useAuthorAvatar({ author });
@@ -295,7 +290,7 @@ const Post = ({ index, post = {} }: PostProps) => {
             <Expando
               authorEditReason={edit?.reason}
               commentMediaInfo={commentMediaInfo}
-              content={content}
+              content={removed ? `[${_.lowerCase(t('removed'))}]` : deleted ? `[${_.lowerCase(t('deleted'))}]` : content}
               expanded={isExpanded}
               link={link}
               modEditReason={reason}
