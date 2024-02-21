@@ -273,5 +273,6 @@
   "failed_edit": "विफल संपादन",
   "copy_full_address": "<1>कॉपी</1> पूरा पता",
   "node_stats": "नोड आंकड़े",
-  "version": "संस्करण"
+  "version": "संस्करण",
+  "edit_reason": "संपादन का कारण"
 }

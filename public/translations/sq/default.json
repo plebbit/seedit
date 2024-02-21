@@ -273,5 +273,6 @@
   "failed_edit": "ndryshimi i dështuar",
   "copy_full_address": "<1>kopjo</1> adresën e plotë",
   "node_stats": "statistikat e nyjes",
-  "version": "versioni"
+  "version": "versioni",
+  "edit_reason": "arsyeja e ndryshimit"
 }

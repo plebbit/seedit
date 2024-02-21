@@ -273,5 +273,6 @@
   "failed_edit": "edición fallida",
   "copy_full_address": "<1>copiar</1> la dirección completa",
   "node_stats": "estadísticas del nodo",
-  "version": "versión"
+  "version": "versión",
+  "edit_reason": "motivo de la edición"
 }

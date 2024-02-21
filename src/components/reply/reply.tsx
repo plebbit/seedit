@@ -412,6 +412,7 @@ const Reply = ({ cidOfReplyWithContext, depth = 0, isSingleComment, isSingleRepl
                 subplebbitAddress={subplebbitAddress}
                 showEditForm={showEditForm}
                 showReplyForm={showReplyForm}
+                spoiler={spoiler}
               />
               {isReplying && <ReplyForm cid={cid} isReplyingToReply={true} hideReplyForm={hideReplyForm} />}
               {!isSingleReply &&

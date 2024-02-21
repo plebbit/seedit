@@ -118,3 +118,17 @@
     max-width: 400px !important;
   }
 }
+
+.editReason {
+  font-size: 12px;
+  float: left;
+}
+
+.editReason input {
+  width: 60%;
+}
+
+.editSaveButtons {
+  width: 100%;
+  display: inline-block;
+}

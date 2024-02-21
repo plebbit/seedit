@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import { autoUpdate, flip, FloatingFocusManager, offset, shift, useClick, useDismiss, useFloating, useId, useInteractions, useRole } from '@floating-ui/react';
 import { useTranslation } from 'react-i18next';
 import { PublishCommentEditOptions, useComment, useEditedComment, usePublishCommentEdit } from '@plebbit/plebbit-react-hooks';
 import styles from './edit-menu.module.css';
@@ -11,6 +10,7 @@ const { addChallenge } = challengesStore.getState();
 type EditMenuProps = {
   cid: string;
   showEditForm?: () => void;
+  spoiler?: boolean;
 };
 
 const EditMenu = ({ cid, showEditForm }: EditMenuProps) => {
@@ -25,14 +25,12 @@ const EditMenu = ({ cid, showEditForm }: EditMenuProps) => {
     post = comment;
   }
 
-  const { content, deleted, spoiler, subplebbitAddress } = post || {};
-  const [isEditMenuOpen, setIsEditMenuOpen] = useState(false);
+  const { content, deleted, subplebbitAddress } = post || {};
 
   const defaultPublishOptions: PublishCommentEditOptions = {
     commentCid: cid,
     content,
     deleted,
-    spoiler,
     subplebbitAddress,
     onChallenge: (...args: any) => addChallenge([...args, post]),
     onChallengeVerification: alertChallengeVerificationFailed,
@@ -44,7 +42,7 @@ const EditMenu = ({ cid, showEditForm }: EditMenuProps) => {
 
   const [publishCommentEditOptions, setPublishCommentEditOptions] = useState(defaultPublishOptions);
   const [publishEdit, setPublishEdit] = useState(false);
-  const { state, publishCommentEdit } = usePublishCommentEdit(publishCommentEditOptions);
+  const { publishCommentEdit } = usePublishCommentEdit(publishCommentEditOptions);
 
   useEffect(() => {
     if (publishEdit) {
@@ -53,15 +51,7 @@ const EditMenu = ({ cid, showEditForm }: EditMenuProps) => {
     }
   }, [publishEdit, publishCommentEdit]);
 
-  // close the modal after publishing
-  useEffect(() => {
-    if (state && state !== 'failed' && state !== 'initializing' && state !== 'ready') {
-      setIsEditMenuOpen(false);
-    }
-  }, [state, setIsEditMenuOpen]);
-
   const deleteComment = () => {
-    setIsEditMenuOpen(false);
     if (deleted) {
       if (window.confirm('Are you sure you want to undelete this post?')) {
         setPublishCommentEditOptions((state) => ({ ...state, deleted: false }));
@@ -77,67 +67,20 @@ const EditMenu = ({ cid, showEditForm }: EditMenuProps) => {
     }
   };
 
-  const markAsSpoiler = () => {
-    setIsEditMenuOpen(false);
-    if (spoiler) {
-      if (window.confirm('Are you sure you want to remove the spoiler tag from this post?')) {
-        setPublishCommentEditOptions((state) => ({ ...state, spoiler: false }));
-        setPublishEdit(true);
-      } else {
-        return;
-      }
-    } else {
-      if (window.confirm('Are you sure you want to mark this post as a spoiler?')) {
-        setPublishCommentEditOptions((state) => ({ ...state, spoiler: true }));
-        setPublishEdit(true);
-      }
-    }
-  };
-
-  const { refs, floatingStyles, context } = useFloating({
-    placement: 'bottom-start',
-    open: isEditMenuOpen,
-    onOpenChange: setIsEditMenuOpen,
-    middleware: [offset(2), flip({ fallbackAxisSideDirection: 'end' }), shift()],
-    whileElementsMounted: autoUpdate,
-  });
-
-  const click = useClick(context);
-  const dismiss = useDismiss(context);
-  const role = useRole(context);
-
-  const { getReferenceProps, getFloatingProps } = useInteractions([click, dismiss, role]);
-
-  const headingId = useId();
-
   return (
     <>
-      <li className={styles.button} ref={refs.setReference} {...getReferenceProps()}>
-        <span onClick={() => setIsEditMenuOpen(!isEditMenuOpen)}>{t('edit')}</span>
+      <li className={styles.button}>
+        <span
+          onClick={() => {
+            showEditForm && showEditForm();
+          }}
+        >
+          {t('edit')}
+        </span>
       </li>
-      {isEditMenuOpen && (
-        <FloatingFocusManager context={context} modal={false}>
-          <div className={styles.modal} ref={refs.setFloating} style={floatingStyles} aria-labelledby={headingId} {...getFloatingProps()}>
-            <div className={styles.menu}>
-              <div
-                className={styles.menuItem}
-                onClick={() => {
-                  showEditForm && showEditForm();
-                  setIsEditMenuOpen(false);
-                }}
-              >
-                {t('edit_content')}
-              </div>
-              <div className={styles.menuItem} onClick={markAsSpoiler}>
-                {spoiler ? t('remove_spoiler') : t('mark_spoiler')}
-              </div>
-              <div className={styles.menuItem} onClick={deleteComment}>
-                {deleted ? t('undo_delete') : t('delete_post')}
-              </div>
-            </div>
-          </div>
-        </FloatingFocusManager>
-      )}
+      <li className={styles.button}>
+        <span onClick={deleteComment}>{t('delete')}</span>
+      </li>
     </>
   );
 };
