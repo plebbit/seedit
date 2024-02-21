@@ -25,13 +25,13 @@ interface CommentToolsProps {
   postCid?: string;
   removed?: boolean;
   replyCount?: number;
-  spoiler?: boolean;
+  spoiler?: boolean | undefined;
   subplebbitAddress: string;
   showEditForm?: () => void;
   showReplyForm?: () => void;
 }
 
-const PostTools = ({ author, cid, hasLabel, index, isAuthor, isMod, subplebbitAddress, replyCount = 0, showEditForm }: CommentToolsProps) => {
+const PostTools = ({ author, cid, hasLabel, index, isAuthor, isMod, subplebbitAddress, replyCount = 0, showEditForm, spoiler = false }: CommentToolsProps) => {
   const { t } = useTranslation();
   const validReplyCount = isNaN(replyCount) ? 0 : replyCount;
   const commentCount = validReplyCount === 0 ? t('post_no_comments') : `${validReplyCount} ${validReplyCount === 1 ? t('post_comment') : t('post_comments')}`;
@@ -56,7 +56,7 @@ const PostTools = ({ author, cid, hasLabel, index, isAuthor, isMod, subplebbitAd
       <li className={styles.button}>
         <span>{t('save')}</span>
       </li>
-      {isAuthor && <EditMenu cid={cid} showEditForm={showEditForm} />}
+      {isAuthor && <EditMenu cid={cid} showEditForm={showEditForm} spoiler={spoiler} />}
       <HideMenu author={author} cid={cid} isMod={isMod} subplebbitAddress={subplebbitAddress} />
       <li className={`${styles.button} ${styles.crosspostButton}`}>
         <span>{t('crosspost')}</span>
@@ -72,7 +72,7 @@ const PostTools = ({ author, cid, hasLabel, index, isAuthor, isMod, subplebbitAd
   );
 };
 
-const ReplyTools = ({ author, cid, hasLabel, index, isAuthor, isMod, showReplyForm, subplebbitAddress, showEditForm }: CommentToolsProps) => {
+const ReplyTools = ({ author, cid, hasLabel, index, isAuthor, isMod, showReplyForm, subplebbitAddress, showEditForm, spoiler = false }: CommentToolsProps) => {
   const { t } = useTranslation();
 
   return (
@@ -84,7 +84,7 @@ const ReplyTools = ({ author, cid, hasLabel, index, isAuthor, isMod, showReplyFo
       <li className={styles.button}>
         <span>{t('save')}</span>
       </li>
-      {isAuthor && <EditMenu cid={cid} showEditForm={showEditForm} />}
+      {isAuthor && <EditMenu cid={cid} showEditForm={showEditForm} spoiler={spoiler} />}
       <HideMenu author={author} cid={cid} isMod={isMod} subplebbitAddress={subplebbitAddress} />
       <li className={!cid ? styles.hideReply : styles.button}>
         <span onClick={() => cid && showReplyForm?.()}>{t('reply_reply')}</span>
@@ -100,7 +100,20 @@ const ReplyTools = ({ author, cid, hasLabel, index, isAuthor, isMod, showReplyFo
   );
 };
 
-const SingleReplyTools = ({ author, cid, hasLabel, index, isAuthor, isMod, parentCid, postCid, showReplyForm, subplebbitAddress, showEditForm }: CommentToolsProps) => {
+const SingleReplyTools = ({
+  author,
+  cid,
+  hasLabel,
+  index,
+  isAuthor,
+  isMod,
+  parentCid,
+  postCid,
+  showReplyForm,
+  spoiler = false,
+  subplebbitAddress,
+  showEditForm,
+}: CommentToolsProps) => {
   const { t } = useTranslation();
   const comment = useComment({ commentCid: postCid });
 
@@ -114,7 +127,7 @@ const SingleReplyTools = ({ author, cid, hasLabel, index, isAuthor, isMod, paren
       <li className={styles.button}>
         <span>{t('save')}</span>
       </li>
-      {isAuthor && <EditMenu cid={cid} showEditForm={showEditForm} />}
+      {isAuthor && <EditMenu cid={cid} spoiler={spoiler} showEditForm={showEditForm} />}
       <li className={styles.button}>
         <Link to={cid ? (hasContext ? `/p/${subplebbitAddress}/c/${cid}/context` : `/p/${subplebbitAddress}/c/${cid}`) : `/profile/${index}`}>{t('context')}</Link>
       </li>
@@ -207,6 +220,7 @@ const CommentTools = ({
             postCid={postCid}
             showEditForm={showEditForm}
             showReplyForm={showReplyForm}
+            spoiler={spoiler}
             subplebbitAddress={subplebbitAddress}
           />
         ) : (
@@ -219,6 +233,7 @@ const CommentTools = ({
             isMod={isMod}
             showEditForm={showEditForm}
             showReplyForm={showReplyForm}
+            spoiler={spoiler}
             subplebbitAddress={subplebbitAddress}
           />
         )
@@ -230,9 +245,10 @@ const CommentTools = ({
           index={index}
           isAuthor={isAuthor}
           isMod={isMod}
-          showEditForm={showEditForm}
-          subplebbitAddress={subplebbitAddress}
           replyCount={replyCount}
+          showEditForm={showEditForm}
+          spoiler={spoiler}
+          subplebbitAddress={subplebbitAddress}
         />
       )}
     </ul>

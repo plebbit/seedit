@@ -7,18 +7,19 @@ import Markdown from '../../markdown';
 import { useTranslation } from 'react-i18next';
 
 interface ExpandoProps {
+  authorEditReason?: string;
   commentMediaInfo?: CommentMediaInfo;
   content?: string;
   expanded: boolean;
   link: string;
-  reason?: string;
+  modEditReason?: string;
   removed?: boolean;
   showContent: boolean;
   spoiler?: boolean;
   toggleExpanded?: () => void;
 }
 
-const Expando = ({ commentMediaInfo, content, expanded, link, reason, removed, showContent, spoiler = false, toggleExpanded }: ExpandoProps) => {
+const Expando = ({ authorEditReason, commentMediaInfo, content, expanded, link, modEditReason, removed, showContent, spoiler = false, toggleExpanded }: ExpandoProps) => {
   const { t } = useTranslation();
 
   const [showSpoiler, setShowSpoiler] = useState(false);
@@ -69,10 +70,16 @@ const Expando = ({ commentMediaInfo, content, expanded, link, reason, removed, s
         <div className={styles.usertext}>
           <div className={styles.markdown}>
             <Markdown content={content} />
-            {reason && (
-              <div className={styles.modReason}>
+            {modEditReason && (
+              <div>
                 <br />
-                {t('mod_reason')}: {reason}
+                {t('mod_reason')}: {modEditReason}
+              </div>
+            )}
+            {authorEditReason && (
+              <div>
+                <br />
+                {t('edit')}: {authorEditReason}
               </div>
             )}
           </div>

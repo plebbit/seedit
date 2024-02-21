@@ -293,11 +293,12 @@ const Post = ({ index, post = {} }: PostProps) => {
             <EditForm commentCid={cid} content={content} hideEditForm={hideEditForm} subplebbitAddress={subplebbitAddress} />
           ) : (
             <Expando
+              authorEditReason={edit?.reason}
               commentMediaInfo={commentMediaInfo}
               content={content}
               expanded={isExpanded}
               link={link}
-              reason={reason}
+              modEditReason={reason}
               removed={removed}
               showContent={true}
               spoiler={spoiler}

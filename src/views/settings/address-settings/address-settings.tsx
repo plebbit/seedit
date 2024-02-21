@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { setAccount, useAccount, useResolvedAuthorAddress } from '@plebbit/plebbit-react-hooks';
-import { Trans, useTranslation } from 'react-i18next';
+import { useTranslation } from 'react-i18next';
 import styles from './address-settings.module.css';
 
 const AddressSettings = () => {

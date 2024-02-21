@@ -52,7 +52,7 @@ const useSubmitStore = create<SubmitState>((set) => ({
       };
       return nextState;
     }),
-  resetSubmitStore: () => set({ subplebbitAddress: undefined, title: undefined, content: undefined, link: undefined, publishCommentOptions: undefined }),
+  resetSubmitStore: () => set({ subplebbitAddress: undefined, title: undefined, content: undefined, link: undefined, publishCommentOptions: {} }),
 }));
 
 const UrlField = forwardRef<HTMLInputElement>((_, ref) => {
@@ -308,7 +308,7 @@ const Submit = () => {
                 className={`${styles.input} ${styles.inputText}`}
                 ref={contentRef}
                 onChange={(e) => {
-                  setSubmitStore({ content: e.target.value });
+                  setSubmitStore({ content: e.target.value || undefined });
                 }}
               />
               {contentRef.current?.value && (

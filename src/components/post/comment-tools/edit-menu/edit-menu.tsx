@@ -11,6 +11,7 @@ const { addChallenge } = challengesStore.getState();
 type EditMenuProps = {
   cid: string;
   showEditForm?: () => void;
+  spoiler?: boolean;
 };
 
 const EditMenu = ({ cid, showEditForm }: EditMenuProps) => {
@@ -25,14 +26,13 @@ const EditMenu = ({ cid, showEditForm }: EditMenuProps) => {
     post = comment;
   }
 
-  const { content, deleted, spoiler, subplebbitAddress } = post || {};
+  const { content, deleted, subplebbitAddress } = post || {};
   const [isEditMenuOpen, setIsEditMenuOpen] = useState(false);
 
   const defaultPublishOptions: PublishCommentEditOptions = {
     commentCid: cid,
     content,
     deleted,
-    spoiler,
     subplebbitAddress,
     onChallenge: (...args: any) => addChallenge([...args, post]),
     onChallengeVerification: alertChallengeVerificationFailed,
@@ -77,23 +77,6 @@ const EditMenu = ({ cid, showEditForm }: EditMenuProps) => {
     }
   };
 
-  const markAsSpoiler = () => {
-    setIsEditMenuOpen(false);
-    if (spoiler) {
-      if (window.confirm('Are you sure you want to remove the spoiler tag from this post?')) {
-        setPublishCommentEditOptions((state) => ({ ...state, spoiler: false }));
-        setPublishEdit(true);
-      } else {
-        return;
-      }
-    } else {
-      if (window.confirm('Are you sure you want to mark this post as a spoiler?')) {
-        setPublishCommentEditOptions((state) => ({ ...state, spoiler: true }));
-        setPublishEdit(true);
-      }
-    }
-  };
-
   const { refs, floatingStyles, context } = useFloating({
     placement: 'bottom-start',
     open: isEditMenuOpen,
@@ -127,9 +110,6 @@ const EditMenu = ({ cid, showEditForm }: EditMenuProps) => {
                 }}
               >
                 {t('edit_content')}
-              </div>
-              <div className={styles.menuItem} onClick={markAsSpoiler}>
-                {spoiler ? t('remove_spoiler') : t('mark_spoiler')}
               </div>
               <div className={styles.menuItem} onClick={deleteComment}>
                 {deleted ? t('undo_delete') : t('delete_post')}
