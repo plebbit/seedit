@@ -256,7 +256,7 @@
   "settings_saved": "Impostazioni salvate per p/{{subplebbitAddress}}",
   "mod_edit": "modifica dei moderatori",
   "continue_thread": "continua questa discussione",
-  "mod_reason": "motivo di moderazione",
+  "mod_reason": "motivo della moderazione",
   "double_confirm": "Sei davvero sicuro? Questa azione è irreversibile.",
   "crypto_address_not_yours": "L'indirizzo cripto appartiene a un altro account.",
   "crypto_address_yours": "L'indirizzo cripto appartiene a questo account.",
@@ -273,5 +273,6 @@
   "failed_edit": "modifica fallita",
   "copy_full_address": "<1>copia</1> l'indirizzo completo",
   "node_stats": "statistiche del nodo",
-  "version": "versione"
+  "version": "versione",
+  "edit_reason": "motivo della modifica"
 }

@@ -273,5 +273,6 @@
   "failed_edit": "mislukte bewerking",
   "copy_full_address": "<1>kopieer</1> het volledige adres",
   "node_stats": "knoopstatistieken",
-  "version": "versie"
+  "version": "versie",
+  "edit_reason": "reden van bewerking"
 }
