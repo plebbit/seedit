@@ -290,7 +290,7 @@ const Post = ({ index, post = {} }: PostProps) => {
             </div>
           </div>
           {isEditing ? (
-            <EditForm commentCid={cid} content={content} hideEditForm={hideEditForm} subplebbitAddress={subplebbitAddress} />
+            <EditForm commentCid={cid} content={content} hideEditForm={hideEditForm} spoiler={spoiler} subplebbitAddress={subplebbitAddress} />
           ) : (
             <Expando
               authorEditReason={edit?.reason}
