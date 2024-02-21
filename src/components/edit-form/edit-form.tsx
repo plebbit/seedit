@@ -77,7 +77,7 @@ const EditForm = ({ commentCid, content, hideEditForm, spoiler = false, subplebb
       // cleanup
       resetEditStore();
     };
-  }, [commentCid, content, spoiler, subplebbitAddress]);
+  }, [commentCid, content, spoiler, subplebbitAddress, resetEditStore, setEditStore]);
 
   const { publishCommentEdit } = usePublishCommentEdit(publishCommentEditOptions);
 
