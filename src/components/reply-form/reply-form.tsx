@@ -10,6 +10,7 @@ type ReplyFormProps = {
   cid: string;
   isReplyingToReply?: boolean;
   hideReplyForm?: () => void;
+  subplebbitAddress: string;
 };
 
 export const FormattingHelpTable = () => {
@@ -80,11 +81,10 @@ export const FormattingHelpTable = () => {
   );
 };
 
-const ReplyForm = ({ cid, isReplyingToReply, hideReplyForm }: ReplyFormProps) => {
+const ReplyForm = ({ cid, isReplyingToReply, hideReplyForm, subplebbitAddress }: ReplyFormProps) => {
   const { t } = useTranslation();
   const [showOptions, setShowOptions] = useState(false);
   const [showFormattingHelp, setShowFormattingHelp] = useState(false);
-  const subplebbitAddress = useParams().subplebbitAddress as string;
   const { setContent, resetContent, replyIndex, publishReply } = useReply({ cid, subplebbitAddress });
 
   const mdContainerClass = isReplyingToReply ? `${styles.mdContainer} ${styles.mdContainerReplying}` : styles.mdContainer;

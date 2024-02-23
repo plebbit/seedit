@@ -61,7 +61,7 @@ const Post = ({ post }: { post: Comment }) => {
             </div>
           </div>
           <div className={styles.spacer} />
-          {!isSingleComment && <ReplyForm cid={cid} />}
+          {!isSingleComment && <ReplyForm cid={cid} subplebbitAddress={subplebbitAddress} />}
           {loadingString && loadingString}
         </div>
         {isSingleComment && (
