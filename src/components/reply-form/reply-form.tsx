@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useParams } from 'react-router-dom';
 import styles from './reply-form.module.css';
 import { isValidURL } from '../../lib/utils/url-utils';
 import useReply from '../../hooks/use-reply';
