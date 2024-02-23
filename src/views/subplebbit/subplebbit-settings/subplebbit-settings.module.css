@@ -62,6 +62,7 @@
 .readOnlyDescription {
   font-size: 14px;
   font-family: verdana, arial, helvetica, sans-serif;
+  word-wrap: break-word;
   white-space: pre-wrap;
 }
 
