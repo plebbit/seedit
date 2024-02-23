@@ -65,12 +65,6 @@ const AddressSettings = () => {
     }));
   }, [resolvedAddress, account?.signer?.address, t]);
 
-  const cryptoAddressInfo = () => {
-    alert(
-      'Change your account address to an ENS name you own: in your ENS name page on ens.domains, click on "Records", "Edit Records", "Add record", add "plebbit-author-address" as record name, add your full address as value (you can copy it from your account data) and save.',
-    );
-  };
-
   const saveCryptoAddress = async () => {
     if (!cryptoState.cryptoAddress || !cryptoState.cryptoAddress.includes('.')) {
       alert(t('enter_crypto_address'));
@@ -129,16 +123,11 @@ const AddressSettings = () => {
     }
   }, [savedCryptoAddress]);
 
+  const [showCryptoAddressInfo, setShowCryptoAddressInfo] = useState(false);
+
   return (
     <div className={styles.addressSettings}>
-      <div className={styles.copyAddressSetting}>
-        <button onClick={() => navigator.clipboard.writeText(account?.signer?.address)}>{t('copy')}</button> plebbit-author-address
-      </div>
       <div className={styles.cryptoAddressSetting}>
-        <span className={styles.settingTitle}>{t('crypto_address')}</span>
-        <button className={styles.infoButton} onClick={cryptoAddressInfo}>
-          ?
-        </button>
         <div className={styles.usernameInput}>
           <input
             type='text'
@@ -146,9 +135,20 @@ const AddressSettings = () => {
             value={cryptoState.cryptoAddress}
             onChange={(e) => setCryptoState((prevState) => ({ ...prevState, cryptoAddress: e.target.value }))}
           />
+          <button className={styles.infoButton} onClick={() => setShowCryptoAddressInfo(!showCryptoAddressInfo)}>
+            {showCryptoAddressInfo ? 'x' : '?'}
+          </button>
           <button className={styles.button} onClick={saveCryptoAddress}>
             {t('save')}
           </button>
+          {showCryptoAddressInfo && (
+            <div className={styles.cryptoAddressInfo}>
+              <a href='https://app.ens.domains/' target='_blank' rel='noopener noreferrer'>
+                https://app.ens.domains/
+              </a>
+              {` > address.eth > records > edit records > add record > record name: "plebbit-author-address" > record value: ${account?.signer?.address} > save`}
+            </div>
+          )}
           {savedCryptoAddress && <span className={styles.saved}>{t('saved')}</span>}
         </div>
         <div className={styles.checkCryptoAddress}>

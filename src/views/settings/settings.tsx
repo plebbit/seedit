@@ -233,7 +233,7 @@ const Settings = () => {
         </span>
       </div>
       <div className={styles.category}>
-        <span className={styles.categoryTitle}>{t('address')}</span>
+        <span className={styles.categoryTitle}>{t('crypto_address')}</span>
         <span className={styles.categorySettings}>
           <AddressSettings />
         </span>
