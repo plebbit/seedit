@@ -42,8 +42,6 @@ const useEditStore = create<EditStoreState>((set) => ({
         onChallengeVerification: alertChallengeVerificationFailed,
         onError: (error: Error) => {
           console.error(error);
-          let errorMessage = error.message;
-          alert(errorMessage);
         },
       };
       return nextState;

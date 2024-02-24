@@ -38,18 +38,23 @@
   width: 80vw;
 }
 
-.infoButton {
-  padding: 0px 4px 0px 4px;
-  font-size: 11px;
-  position: relative;
-  bottom: 2px;
-  margin-bottom: -2px;
-}
-
 .copyAddressSetting {
   padding-bottom: 10px;
 }
 
 .copyAddressSetting button {
   margin-left: 0;
+}
+
+.cryptoAddressInfo {
+  padding: 5px 20px 5px 0;
+  word-break: break-word;
+}
+
+.cryptoAddressInfo a {
+  color: var(--text-primary);
+}
+
+.cryptoAddressInfo a:hover {
+  text-decoration: underline;
 }

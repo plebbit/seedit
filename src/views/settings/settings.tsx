@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react';
 import { Trans, useTranslation } from 'react-i18next';
-import { setAccount, useAccount, useAuthorAvatar } from '@plebbit/plebbit-react-hooks';
+import { setAccount, useAccount } from '@plebbit/plebbit-react-hooks';
 import styles from './settings.module.css';
 import AccountSettings from './account-settings';
 import AddressSettings from './address-settings';
+import AvatarSettings from './avatar-settings';
 import useTheme from '../../hooks/use-theme';
 import packageJson from '../../../package.json';
 import _ from 'lodash';
@@ -103,18 +104,6 @@ const ThemeSettings = () => {
       <option value='light'>{t('light')}</option>
       <option value='dark'>{t('dark')}</option>
     </select>
-  );
-};
-
-const AvatarSettings = () => {
-  const { t } = useTranslation();
-  const account = useAccount();
-  const { imageUrl } = useAuthorAvatar({ author: account?.author });
-
-  return (
-    <div className={styles.avatarSettings}>
-      <div className={styles.avatar}>{imageUrl ? <img src={imageUrl} alt='avatar' /> : <span className={styles.emptyAvatar}>+{t('add')}</span>}</div>
-    </div>
   );
 };
 
@@ -233,7 +222,7 @@ const Settings = () => {
         </span>
       </div>
       <div className={styles.category}>
-        <span className={styles.categoryTitle}>{t('address')}</span>
+        <span className={styles.categoryTitle}>{t('crypto_address')}</span>
         <span className={styles.categorySettings}>
           <AddressSettings />
         </span>
