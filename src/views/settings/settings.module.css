@@ -75,26 +75,6 @@
   text-decoration: underline;
 }
 
-.avatar {
-  width: 70px;
-  height: 70px;
-  border: 1px solid var(--border-text);
-}
-
-.avatar img {
-  width: 70px;
-  height: 70px;
-}
-
-.emptyAvatar {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  height: 100%;
-  cursor: pointer;
-}
-
 .usernameInput input {
   width: 200px;
   padding: 2px;

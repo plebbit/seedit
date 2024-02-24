@@ -11,11 +11,11 @@ type ShareMenuProps = {
 
 const ShareButton = ({ cid, subplebbitAddress }: ShareMenuProps) => {
   const { t } = useTranslation();
-  const [hasCopied, sethasCopied] = useState(false);
+  const [hasCopied, setHasCopied] = useState(false);
 
   useEffect(() => {
     if (hasCopied) {
-      setTimeout(() => sethasCopied(false), 2000);
+      setTimeout(() => setHasCopied(false), 2000);
     }
   }, [hasCopied]);
 
@@ -23,7 +23,7 @@ const ShareButton = ({ cid, subplebbitAddress }: ShareMenuProps) => {
     <div
       className={`${!hasCopied ? styles.menuItem : styles.text}`}
       onClick={() => {
-        sethasCopied(true);
+        setHasCopied(true);
         copyShareLinkToClipboard(subplebbitAddress, cid);
       }}
     >
