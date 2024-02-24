@@ -53,3 +53,11 @@
 .state {
   padding-top: 10px;
 }
+
+.copyMessage a {
+  color: var(--text-primary);
+}
+
+.copyMessage a:hover {
+  text-decoration: underline;
+}

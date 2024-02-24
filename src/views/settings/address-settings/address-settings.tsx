@@ -144,7 +144,7 @@ const AddressSettings = () => {
           {showCryptoAddressInfo && (
             <div className={styles.cryptoAddressInfo}>
               <a href='https://app.ens.domains/' target='_blank' rel='noopener noreferrer'>
-                https://app.ens.domains/
+                app.ens.domains
               </a>
               {` > address.eth > records > edit records > add record > record name: "plebbit-author-address" > record value: ${account?.signer?.address} > save`}
             </div>

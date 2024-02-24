@@ -168,7 +168,10 @@ const AvatarSettings = () => {
             />
           </div>
           <div className={styles.copyMessage}>
-            <button onClick={copyMessageToSign}>{hasCopied ? 'copied' : 'copy'}</button> message to sign
+            <button onClick={copyMessageToSign}>{hasCopied ? 'copied' : 'copy'}</button> message to sign on{' '}
+            <a href='https://etherscan.io/verifiedSignatures' target='_blank' rel='noopener noreferrer'>
+              etherscan
+            </a>
           </div>
           <div className={styles.pasteSignature}>
             <span className={styles.settingTitle}>paste signature</span>
