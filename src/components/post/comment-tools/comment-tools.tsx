@@ -64,9 +64,11 @@ const PostTools = ({ author, cid, hasLabel, index, isAuthor, isMod, subplebbitAd
       {isMod ? (
         <ModMenu cid={cid} />
       ) : (
-        <li className={`${styles.button} ${styles.reportButton}`}>
-          <span>{t('report')}</span>
-        </li>
+        !isAuthor && (
+          <li className={`${styles.button} ${styles.reportButton}`}>
+            <span>{t('report')}</span>
+          </li>
+        )
       )}
     </>
   );
@@ -92,9 +94,11 @@ const ReplyTools = ({ author, cid, hasLabel, index, isAuthor, isMod, showReplyFo
       {isMod ? (
         <ModMenu cid={cid} />
       ) : (
-        <li className={`${styles.button} ${styles.reportButton}`}>
-          <span>{t('report')}</span>
-        </li>
+        !isAuthor && (
+          <li className={`${styles.button} ${styles.reportButton}`}>
+            <span>{t('report')}</span>
+          </li>
+        )
       )}
     </>
   );
@@ -143,9 +147,11 @@ const SingleReplyTools = ({
       {isMod ? (
         <ModMenu cid={cid} />
       ) : (
-        <li className={`${styles.button} ${styles.reportButton}`}>
-          <span>{t('report')}</span>
-        </li>
+        !isAuthor && (
+          <li className={`${styles.button} ${styles.reportButton}`}>
+            <span>{t('report')}</span>
+          </li>
+        )
       )}
     </>
   );
