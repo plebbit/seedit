@@ -31,6 +31,26 @@ interface CommentToolsProps {
   showReplyForm?: () => void;
 }
 
+interface ModOrReportButtonProps {
+  cid: string;
+  isAuthor: boolean | undefined;
+  isMod: boolean | undefined;
+}
+
+const ModOrReportButton = ({ cid, isAuthor, isMod }: ModOrReportButtonProps) => {
+  const { t } = useTranslation();
+
+  return isMod ? (
+    <ModMenu cid={cid} />
+  ) : (
+    !isAuthor && (
+      <li className={`${styles.button} ${styles.reportButton}`}>
+        <span>{t('report')}</span>
+      </li>
+    )
+  );
+};
+
 const PostTools = ({ author, cid, hasLabel, index, isAuthor, isMod, subplebbitAddress, replyCount = 0, showEditForm, spoiler = false }: CommentToolsProps) => {
   const { t } = useTranslation();
   const validReplyCount = isNaN(replyCount) ? 0 : replyCount;
@@ -61,15 +81,7 @@ const PostTools = ({ author, cid, hasLabel, index, isAuthor, isMod, subplebbitAd
       <li className={`${styles.button} ${styles.crosspostButton}`}>
         <span>{t('crosspost')}</span>
       </li>
-      {isMod ? (
-        <ModMenu cid={cid} />
-      ) : (
-        !isAuthor && (
-          <li className={`${styles.button} ${styles.reportButton}`}>
-            <span>{t('report')}</span>
-          </li>
-        )
-      )}
+      <ModOrReportButton cid={cid} isAuthor={isAuthor} isMod={isMod} />
     </>
   );
 };
@@ -91,15 +103,7 @@ const ReplyTools = ({ author, cid, hasLabel, index, isAuthor, isMod, showReplyFo
       <li className={!cid ? styles.hideReply : styles.button}>
         <span onClick={() => cid && showReplyForm?.()}>{t('reply_reply')}</span>
       </li>
-      {isMod ? (
-        <ModMenu cid={cid} />
-      ) : (
-        !isAuthor && (
-          <li className={`${styles.button} ${styles.reportButton}`}>
-            <span>{t('report')}</span>
-          </li>
-        )
-      )}
+      <ModOrReportButton cid={cid} isAuthor={isAuthor} isMod={isMod} />
     </>
   );
 };
@@ -144,15 +148,7 @@ const SingleReplyTools = ({
       <li className={!cid ? styles.hideReply : styles.button}>
         <span onClick={() => cid && showReplyForm?.()}>{t('reply_reply')}</span>
       </li>
-      {isMod ? (
-        <ModMenu cid={cid} />
-      ) : (
-        !isAuthor && (
-          <li className={`${styles.button} ${styles.reportButton}`}>
-            <span>{t('report')}</span>
-          </li>
-        )
-      )}
+      <ModOrReportButton cid={cid} isAuthor={isAuthor} isMod={isMod} />
     </>
   );
 };
