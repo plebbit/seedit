@@ -13,6 +13,7 @@ import {
   useAuthorAvatar,
   useAuthorComments,
   useBlock,
+  useComment,
   // useSubplebbits,
 } from '@plebbit/plebbit-react-hooks';
 // import { getShortAddress } from '@plebbit/plebbit-js';
@@ -62,8 +63,8 @@ const AuthorSidebar = () => {
   const { authorAddress, commentCid } = useParams() || {};
   const { blocked, unblock, block } = useBlock({ address: authorAddress });
 
-  const author = useAuthor({ commentCid, authorAddress });
-  const { imageUrl } = useAuthorAvatar({ author });
+  const comment = useComment({ commentCid });
+  const { imageUrl } = useAuthorAvatar({ author: comment?.author });
 
   const isInAuthorView = isAuthorView(location.pathname);
   const isInProfileView = isProfileView(location.pathname);
