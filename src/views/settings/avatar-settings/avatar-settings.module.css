@@ -2,6 +2,7 @@
   width: 70px;
   height: 70px;
   border: 1px solid var(--border-text);
+  cursor: pointer;
 }
 
 .avatar img {
