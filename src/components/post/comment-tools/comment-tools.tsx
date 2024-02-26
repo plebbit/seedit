@@ -73,14 +73,18 @@ const PostTools = ({ author, cid, hasLabel, index, isAuthor, isMod, subplebbitAd
         <Link to={cid ? `/p/${subplebbitAddress}/c/${cid}` : `/profile/${index}`}>{commentCount}</Link>
       </li>
       <ShareMenu cid={cid} subplebbitAddress={subplebbitAddress} />
-      <li className={styles.button}>
-        <span>{t('save')}</span>
-      </li>
+      {/* TODO: Implement save functionality
+        <li className={styles.button}>
+          <span>{t('save')}</span>
+        </li> 
+      */}
       {isAuthor && <EditMenu cid={cid} showEditForm={showEditForm} spoiler={spoiler} />}
       <HideMenu author={author} cid={cid} isMod={isMod} subplebbitAddress={subplebbitAddress} />
-      <li className={`${styles.button} ${styles.crosspostButton}`}>
-        <span>{t('crosspost')}</span>
-      </li>
+      {/* TODO: Implement crosspost functionality
+        <li className={`${styles.button} ${styles.crosspostButton}`}>
+          <span>{t('crosspost')}</span>
+        </li> 
+      */}
       <ModOrReportButton cid={cid} isAuthor={isAuthor} isMod={isMod} />
     </>
   );
@@ -95,9 +99,11 @@ const ReplyTools = ({ author, cid, hasLabel, index, isAuthor, isMod, showReplyFo
         <Link to={cid ? `/p/${subplebbitAddress}/c/${cid}` : `/profile/${index}`}>permalink</Link>
       </li>
       <ShareMenu cid={cid} subplebbitAddress={subplebbitAddress} />
-      <li className={styles.button}>
-        <span>{t('save')}</span>
-      </li>
+      {/* TODO: Implement save functionality
+        <li className={styles.button}>
+          <span>{t('save')}</span>
+        </li> 
+      */}
       {isAuthor && <EditMenu cid={cid} showEditForm={showEditForm} spoiler={spoiler} />}
       <HideMenu author={author} cid={cid} isMod={isMod} subplebbitAddress={subplebbitAddress} />
       <li className={!cid ? styles.hideReply : styles.button}>
@@ -132,9 +138,11 @@ const SingleReplyTools = ({
       <li className={`${styles.button} ${!hasLabel ? styles.firstButton : ''}`}>
         <Link to={cid ? `/p/${subplebbitAddress}/c/${cid}` : `/profile/${index}`}>permalink</Link>
       </li>
-      <li className={styles.button}>
-        <span>{t('save')}</span>
-      </li>
+      {/* TODO: Implement save functionality
+        <li className={styles.button}>
+          <span>{t('save')}</span>
+        </li> 
+      */}
       {isAuthor && <EditMenu cid={cid} spoiler={spoiler} showEditForm={showEditForm} />}
       <li className={styles.button}>
         <Link to={cid ? (hasContext ? `/p/${subplebbitAddress}/c/${cid}/context` : `/p/${subplebbitAddress}/c/${cid}`) : `/profile/${index}`}>{t('context')}</Link>
