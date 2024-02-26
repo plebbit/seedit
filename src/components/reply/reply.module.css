@@ -313,6 +313,12 @@
   bottom: -5px;
 }
 
+.viewParentComment {
+  font-size: 12px;
+  color: var(--text-primary);
+  cursor: pointer;
+}
+
 @media (max-width: 768px) {
   .md {
     padding-right: 5px;
