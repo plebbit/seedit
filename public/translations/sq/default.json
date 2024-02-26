@@ -274,5 +274,6 @@
   "copy_full_address": "<1>kopjo</1> adresën e plotë",
   "node_stats": "statistikat e nyjes",
   "version": "versioni",
-  "edit_reason": "arsyeja e ndryshimit"
+  "edit_reason": "arsyeja e ndryshimit",
+  "view_parent_comment": "shiko komentin prind"
 }

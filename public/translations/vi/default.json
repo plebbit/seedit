@@ -274,5 +274,6 @@
   "copy_full_address": "<1>sao chép</1> địa chỉ đầy đủ",
   "node_stats": "thống kê nút",
   "version": "phiên bản",
-  "edit_reason": "lý do chỉnh sửa"
+  "edit_reason": "lý do chỉnh sửa",
+  "view_parent_comment": "xem bình luận cha"
 }

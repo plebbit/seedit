@@ -178,7 +178,7 @@ const InboxShowParentButton = ({ parentCid }: { parentCid: string | undefined })
     <>
       <Expando content={content} expanded={true} showContent={true} />
       <Link className={styles.viewParentComment} to={`/p/${subplebbitAddress}/c/${parentCid}`}>
-        view parent comment
+        {t('view_parent_comment')}
       </Link>
     </>
   ) : (

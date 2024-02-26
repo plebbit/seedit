@@ -274,5 +274,6 @@
   "copy_full_address": "<1>kopioi</1> koko osoite",
   "node_stats": "solmustatistiikka",
   "version": "versio",
-  "edit_reason": "muokkaussyy"
+  "edit_reason": "muokkaussyy",
+  "view_parent_comment": "näytä alkuperäinen kommentti"
 }

@@ -274,5 +274,6 @@
   "copy_full_address": "<1>অনুলিপি</1> সম্পূর্ণ ঠিকানা",
   "node_stats": "নোড পরিসংখ্যান",
   "version": "সংস্করণ",
-  "edit_reason": "সম্পাদনার কারণ"
+  "edit_reason": "সম্পাদনার কারণ",
+  "view_parent_comment": "মূল মন্তব্য দেখুন"
 }
