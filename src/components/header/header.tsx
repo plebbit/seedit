@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { Link, useLocation, useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { getShortAddress } from '@plebbit/plebbit-js';
-import { useAccount, useAuthorAvatar, useComment, useSubplebbit } from '@plebbit/plebbit-react-hooks';
+import { useAccount, useSubplebbit } from '@plebbit/plebbit-react-hooks';
 import { sortTypes } from '../../app';
 import {
   getAboutLink,
@@ -358,11 +358,6 @@ const Header = () => {
   const isInSubplebbitSettingsView = isSubplebbitSettingsView(location.pathname, params);
   const isInNotFoundView = useNotFoundStore((state) => state.isNotFound);
 
-  const account = useAccount();
-  const authorComment = useComment({ commentCid: params?.commentCid });
-  const author = isInProfileView ? account?.author : isInAuthorView ? authorComment?.author : null;
-  const { imageUrl } = useAuthorAvatar({ author });
-
   const hasFewTabs = isInPostView || isInSubmitView || isInSubplebbitSubmitView || isInSubplebbitSettingsView || isInSettingsView || isInInboxView;
   const hasStickyHeader =
     isInHomeView ||
@@ -371,8 +366,7 @@ const Header = () => {
     (isInProfileView && !isInAboutView) ||
     (isInAllView && !isInAllAboutView) ||
     (isInAuthorView && !isInAboutView);
-  const logoSrc = isInSubplebbitView ? suggested?.avatarUrl : isInProfileView ? imageUrl : 'assets/logo/seedit.png';
-  const logoIsAvatar = (isInSubplebbitView && suggested?.avatarUrl) || (isInProfileView && imageUrl);
+  const logoSrc = isInSubplebbitView ? suggested?.avatarUrl : isInProfileView ? '' : 'assets/logo/seedit.png';
   const logoLink = isInSubplebbitView ? `/p/${params.subplebbitAddress}` : isInProfileView ? '/profile' : '/';
 
   return (
@@ -380,16 +374,14 @@ const Header = () => {
       <div className={`${styles.container} ${hasFewTabs && styles.reducedHeight} ${hasStickyHeader && styles.increasedHeight}`}>
         <div className={styles.logoContainer}>
           <Link to={logoLink} className={styles.logoLink}>
-            {(logoIsAvatar || (!isInSubplebbitView && !isInProfileView && !isInAuthorView)) && (
-              <img className={`${logoIsAvatar ? styles.avatar : styles.logo}`} src={logoSrc} alt='logo' />
-            )}
+            {!isInSubplebbitView && !isInProfileView && !isInAuthorView && <img className={`${styles.logo}`} src={logoSrc} alt='logo' />}
             {!isInSubplebbitView && !isInProfileView && !isInAuthorView && (
               <img src={`assets/logo/seedit-text-${theme === 'dark' ? 'dark' : 'light'}.svg`} className={styles.logoText} alt='logo' />
             )}
           </Link>
         </div>
         {!isInHomeView && (
-          <span className={`${styles.pageName} ${!logoIsAvatar && styles.soloPageName}`}>
+          <span className={`${styles.pageName} ${styles.soloPageName}`}>
             <HeaderTitle title={title} shortAddress={shortAddress} />
           </span>
         )}

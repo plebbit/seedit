@@ -64,12 +64,13 @@ const AuthorSidebar = () => {
   const { blocked, unblock, block } = useBlock({ address: authorAddress });
 
   const comment = useComment({ commentCid });
-  const { imageUrl } = useAuthorAvatar({ author: comment?.author });
+  const { imageUrl: authorPageAvatar } = useAuthorAvatar({ author: comment?.author });
 
   const isInAuthorView = isAuthorView(location.pathname);
   const isInProfileView = isProfileView(location.pathname);
 
   const profileAccount = useAccount();
+  const { imageUrl: profilePageAvatar } = useAuthorAvatar({ author: profileAccount?.author });
   const { accountComments } = useAccountComments();
   // const { accountSubplebbits } = useAccountSubplebbits();
   const profileOldestAccountTimestamp = accountComments?.[0]?.timestamp || Date.now();
@@ -113,9 +114,9 @@ const AuthorSidebar = () => {
 
   return (
     <div className={styles.sidebar}>
-      {imageUrl && (
+      {((isInAuthorView && authorPageAvatar) || (isInProfileView && profilePageAvatar)) && (
         <div className={styles.avatar}>
-          <img src={imageUrl} alt='avatar' />
+          <img src={isInAuthorView ? authorPageAvatar : profilePageAvatar} alt='avatar' />
         </div>
       )}
       <div className={styles.titleBox}>
