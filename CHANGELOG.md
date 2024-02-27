@@ -1,3 +1,82 @@
+## [0.1.6](https://github.com/plebbit/seedit/compare/v0.1.5...v0.1.6) (2024-02-27)
+
+
+### Bug Fixes
+
+* **account settings:** removed unnecessary reload when switching account, allow to delete last account (refreshing creates a new one) ([51f7dba](https://github.com/plebbit/seedit/commit/51f7dbadae5f385216d97b60d65c6ceb5ea0f765))
+* **challenge modal:** special characters couldn't get rendered in post content preview ([9d2c01d](https://github.com/plebbit/seedit/commit/9d2c01d12fff752422581988a05d779a76719c86))
+* **comment tools:** don't show 'report' button if the user is the author ([96fd888](https://github.com/plebbit/seedit/commit/96fd888194a6f019e3deedf2b251142c11823fa5))
+* don't reset time filter when changing sort in feeds ([e2de559](https://github.com/plebbit/seedit/commit/e2de55987cc02ecee94a0c57c4954d31a478ef27))
+* **embed:** twitter embed width would glitch ([0c415fa](https://github.com/plebbit/seedit/commit/0c415fa94d5c83bb7c0a66b76f15347347c0c477))
+* **embed:** videos on mobile had wrong width ([c560dd7](https://github.com/plebbit/seedit/commit/c560dd7d962f77639d6037a6289a86167ed7c439))
+* **expando:** clicking on video would redirect to external link ([ff52a9a](https://github.com/plebbit/seedit/commit/ff52a9a05e50770133a18648d8683242281cf0ad))
+* hide buttons that aren't functional yet (save, crosspost, embed, report) ([265f6c1](https://github.com/plebbit/seedit/commit/265f6c1df0f62e566a68d5fa26741c0ad219f56c))
+* **mod menu:** close modal when saving, instead of waiting for publishing ([929514f](https://github.com/plebbit/seedit/commit/929514ffde1ace70bb50cbddd15470797423c690))
+* **post:** display title as dash if it's empty ([712779d](https://github.com/plebbit/seedit/commit/712779d30e01d4ead71166d7544992cce6db8619))
+* **post:** dotted border for last visited post should only persist in the same window ([0a67399](https://github.com/plebbit/seedit/commit/0a673991236fa8a1314746ccc2ada42ff83a3e33))
+* **post:** font size would bug out with overflowing title ([5890b92](https://github.com/plebbit/seedit/commit/5890b92888af1c5cc5c685f80be695ebc53b0dc1))
+* **reply form:** couldn't reply from inbox page because subplebbit address wasn't defined ([c31b7eb](https://github.com/plebbit/seedit/commit/c31b7eb52fee9aad04d2f6666b071b40031eb502))
+* **settings:** display name setting wouldn't reset on account change ([b961626](https://github.com/plebbit/seedit/commit/b9616264f8584992e5c3e9c27e32ce971a8111b5))
+* **sidebar:** show moderation tools to sub owner without role ([15921ef](https://github.com/plebbit/seedit/commit/15921ef75c4cb5296710748c21a904b1c4224813))
+* **submit:** address wasn't selected when clicking it in the dropdown ([c55cd75](https://github.com/plebbit/seedit/commit/c55cd75a70da7f47d326ce1449327a989583a3f5))
+* **subplebbit settings:** don't add empty exclude group when adding challenge ([2465a8b](https://github.com/plebbit/seedit/commit/2465a8bcf9b74949d3bbc2b9cf0e47095d4d3ffd))
+* **subplebbit settings:** read only address would overflow if too long ([f02c71f](https://github.com/plebbit/seedit/commit/f02c71f5e1095bfd5bca31e184daa37fa1bc26f7))
+* **subplebbit settings:** read only description needed word wrap ([6fdecce](https://github.com/plebbit/seedit/commit/6fdecce49730c9ca59a277aa8974f0721b557b2b))
+* **subplebbit settings:** read only exclude setting wasn't displayed properly ([2f81578](https://github.com/plebbit/seedit/commit/2f815785fa707f5a7d38f56730d2ffa39bd18fef))
+* **subplebbit settings:** reset store, challenges setting would not update on subplebbitAddress change ([e0862a8](https://github.com/plebbit/seedit/commit/e0862a85ff5a1a6732bc698924dcab16c3153078))
+* **subplebbit settings:** when adding an exclude group for challenges, the roles should not be checked by default ([7dc0297](https://github.com/plebbit/seedit/commit/7dc0297983f6beed2094f0c5c1fa324a81a04685))
+* **subplebbit:** scroll position wasn't retained ([f74ce22](https://github.com/plebbit/seedit/commit/f74ce2274542353e6d8d026eb1101e946642fc16))
+* **subplebbits:** show subplebbit run in local node in mod/admin/owner tabs regardless of role ([32a6c01](https://github.com/plebbit/seedit/commit/32a6c01b8b27995d8decb64cbf723f49f28ed8b6))
+
+
+### Features
+
+* add 'edit content' functionality to edit button for replies and posts, show asterisk in date with timestamp title ([5055fde](https://github.com/plebbit/seedit/commit/5055fde320db05699c4e83066998bd5abdc74252))
+* add 'not found' page for invalid links ([e8ee496](https://github.com/plebbit/seedit/commit/e8ee4963da7e7656ca1312aee3c598b0d9e3ffce))
+* add 'pending edit' and 'failed edit' labels for mod and author edits ([3bf9ead](https://github.com/plebbit/seedit/commit/3bf9ead33ecaf5cf11907b88dad4aad9d01c534c))
+* add "delete" button for user's posts ([1918ee9](https://github.com/plebbit/seedit/commit/1918ee96ee378c980ea7b3c33241cea258013774))
+* add author edit reason, spoiler ([11cc1a4](https://github.com/plebbit/seedit/commit/11cc1a430fc98429a2a2e52b4e1ed339f317f26c))
+* add mod edit reason to posts and replies ([dd6744a](https://github.com/plebbit/seedit/commit/dd6744ab7003792c1c66daf60b43731f068d1562))
+* add spoiler styling as black overlay above post or reply content ([d9e5086](https://github.com/plebbit/seedit/commit/d9e508602ec5e75d1eaf71171168a9d692cd0f41))
+* **communities:** add markdown to each sub expandable description ([486710c](https://github.com/plebbit/seedit/commit/486710c9e29d90b06e81a03003a1f35358657084))
+* **feed:** add dotted border to last visited post ([6e5d644](https://github.com/plebbit/seedit/commit/6e5d6445a16becaad21a805521d60c4e065b1785))
+* **header:** add 'all' title to p/all header ([6273029](https://github.com/plebbit/seedit/commit/6273029a1c803756d1f9502366bb18da5c507db4))
+* hide media of removed posts and replies, blur title and media in feed for mods ([dbbe9b0](https://github.com/plebbit/seedit/commit/dbbe9b0dcd90f3e93471e0f645c4d8f9a28ba758))
+* implement community creation on desktop app (p2p full node) ([b724894](https://github.com/plebbit/seedit/commit/b72489424f8edb2259944de5319b283fe9e3960a))
+* **inbox:** add functionality to "show parent" button in comment replies ([3443445](https://github.com/plebbit/seedit/commit/3443445a6ffe0dfb5851e18a562735bb62a6ec55))
+* **markdown:** add same markdown styling and rules as reddit ([83c2b3c](https://github.com/plebbit/seedit/commit/83c2b3c702222e51ea06b0611d6bc91ff16790ee))
+* **post:** add '+' subscribe button to posts in p/all ([5699739](https://github.com/plebbit/seedit/commit/569973947cc21a54ed2c43896d93aed843d52062))
+* **post:** add small profile nft avatar next to username ([da6e474](https://github.com/plebbit/seedit/commit/da6e474a6ef0bde4a6c909a6743f20c29932cf76))
+* **post:** show "[deleted]" as content if user deletes his own post ([26ae8ea](https://github.com/plebbit/seedit/commit/26ae8ea33a8c57e0d6c248cd6bfbacb0a85dccd8))
+* **reply form:** add formatting help table for markdown ([1c73e70](https://github.com/plebbit/seedit/commit/1c73e7063d5a0a5740986960df8a5abe428c4d8e))
+* **reply:** add deleted (by author) styling, hide media ([d3e8b89](https://github.com/plebbit/seedit/commit/d3e8b89aba68ea2bafc816ac6f528a54a17468e1))
+* **reply:** display nft profile picture if set ([14c2cec](https://github.com/plebbit/seedit/commit/14c2cec5650e444ddf6db254b7c9232298114534))
+* **settings:** add 'check for updates' button ([1acab82](https://github.com/plebbit/seedit/commit/1acab82b994c1b383a291599f072d8e0c2e9d3f2))
+* **settings:** add 'contribute to github' link to translations setting ([5804c7d](https://github.com/plebbit/seedit/commit/5804c7d88b8f5de09f01cd82fe2595c93bf6157a))
+* **settings:** add button to copy full account address ([306919c](https://github.com/plebbit/seedit/commit/306919ca3ba2d58591728b844f7ab4e88635c3a3))
+* **settings:** add double confirm when deleting account, red color ([5afcf5c](https://github.com/plebbit/seedit/commit/5afcf5c21a886d5f60a7a4b36e8d1b4eab899c8b))
+* **settings:** add link to ipfs stats on desktop full node, version info ([d833a89](https://github.com/plebbit/seedit/commit/d833a89fc43777690396e8c02900fc9ad78e5343))
+* **settings:** add profile avatar setting ([4b90287](https://github.com/plebbit/seedit/commit/4b902871b92043920e3cff64536d88af53cb4ad2))
+* **submit:** add markdown preview for post content ([5c5273f](https://github.com/plebbit/seedit/commit/5c5273fc17421d4d5f6b9b636d0f5170b85af392))
+* **submit:** add media preview to url field ([2d6e7dd](https://github.com/plebbit/seedit/commit/2d6e7ddb381e31befcf546cd542fa0db2761cfa1))
+* **subplebbit settings:** add delete community button ([615bd0d](https://github.com/plebbit/seedit/commit/615bd0d00c09efbe08c5701c3160bc5c2d45a7ee))
+* **subplebbit settings:** add markdown preview for description ([30caa7e](https://github.com/plebbit/seedit/commit/30caa7e7abe71cca1bcde0e0953d36da060ffc9f))
+* **topbar:** add link to default communities in "my communities" dropdown, rename "edit" link to "more" ([09a7e63](https://github.com/plebbit/seedit/commit/09a7e63dc48b1b172582a64a64e8723cfc1c793b))
+
+
+### Performance Improvements
+
+* **markdown:** only render links in content if its length is less than 10000, to avoid lag ([0edca2a](https://github.com/plebbit/seedit/commit/0edca2aad90821e1757ee451d53967eadb8552e2))
+* **post page:** optimize load time ([369360c](https://github.com/plebbit/seedit/commit/369360ca0c17d79d1eba28c40445c53a034b7a5f))
+* **reply form:** faster replying by passing cid and sub address without having to load the post; fix no sub address error ([3b40538](https://github.com/plebbit/seedit/commit/3b40538b84089714352613b53aa973a39096da6a))
+
+
+### Reverts
+
+* Revert "Update subplebbit-settings.tsx" ([d16c354](https://github.com/plebbit/seedit/commit/d16c35423eecdd0c26bdb03924b84b22428556b1))
+
+
+
 ## [0.1.5](https://github.com/plebbit/seedit/compare/v0.1.4...v0.1.5) (2024-02-04)
 
 
@@ -13,7 +92,9 @@
 * add 'continue this thread' nested replies limit ([d4f66ac](https://github.com/plebbit/seedit/commit/d4f66ac3a17a376a1b987725fe6976c11132af24))
 * add service worker (PWA) ([8c7ebf2](https://github.com/plebbit/seedit/commit/8c7ebf231a2010258c89922400eff7f829976afb))
 * **android:** add android build script ([f58827a](https://github.com/plebbit/seedit/commit/f58827a0aa441b33a6e051a3159dce112738c7af))
+* **author sidebar:** show avatar if set ([3574546](https://github.com/plebbit/seedit/commit/3574546c539ac567467bb1233e175d937b728467))
 * implement text challenge modal ([bf8b575](https://github.com/plebbit/seedit/commit/bf8b575d334b02c99e75880670c886504f4c187b))
+* **inbox:** add functionality to 'context' button, highlighting reply in single comment thread ([7537cba](https://github.com/plebbit/seedit/commit/7537cbaa6dd117535cd736441eea606f3432fdfd))
 * **post:** add single comment's thread view ([a605bdd](https://github.com/plebbit/seedit/commit/a605bdd77e696ca92c3a6e055c09514a6226b85f))
 * **submit:** add arrow keys control to community address dropdown items ([aea68e6](https://github.com/plebbit/seedit/commit/aea68e66eb08a687fe26796cab820a0948e5163e))
 * update app icon design ([b3a37d5](https://github.com/plebbit/seedit/commit/b3a37d541e116e7f9feb2577fc28c833111ac9fa))
