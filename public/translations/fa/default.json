@@ -274,5 +274,6 @@
   "copy_full_address": "<1>کپی</1> آدرس کامل",
   "node_stats": "آمار گره",
   "version": "نسخه",
-  "edit_reason": "دلیل ویرایش"
+  "edit_reason": "دلیل ویرایش",
+  "view_parent_comment": "نمایش نظر والد"
 }

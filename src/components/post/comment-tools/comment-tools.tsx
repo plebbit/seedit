@@ -31,6 +31,26 @@ interface CommentToolsProps {
   showReplyForm?: () => void;
 }
 
+interface ModOrReportButtonProps {
+  cid: string;
+  isAuthor: boolean | undefined;
+  isMod: boolean | undefined;
+}
+
+const ModOrReportButton = ({ cid, isAuthor, isMod }: ModOrReportButtonProps) => {
+  const { t } = useTranslation();
+
+  return isMod ? (
+    <ModMenu cid={cid} />
+  ) : (
+    !isAuthor && (
+      <li className={`${styles.button} ${styles.reportButton}`}>
+        <span>{t('report')}</span>
+      </li>
+    )
+  );
+};
+
 const PostTools = ({ author, cid, hasLabel, index, isAuthor, isMod, subplebbitAddress, replyCount = 0, showEditForm, spoiler = false }: CommentToolsProps) => {
   const { t } = useTranslation();
   const validReplyCount = isNaN(replyCount) ? 0 : replyCount;
@@ -53,21 +73,19 @@ const PostTools = ({ author, cid, hasLabel, index, isAuthor, isMod, subplebbitAd
         <Link to={cid ? `/p/${subplebbitAddress}/c/${cid}` : `/profile/${index}`}>{commentCount}</Link>
       </li>
       <ShareMenu cid={cid} subplebbitAddress={subplebbitAddress} />
-      <li className={styles.button}>
-        <span>{t('save')}</span>
-      </li>
+      {/* TODO: Implement save functionality
+        <li className={styles.button}>
+          <span>{t('save')}</span>
+        </li> 
+      */}
       {isAuthor && <EditMenu cid={cid} showEditForm={showEditForm} spoiler={spoiler} />}
       <HideMenu author={author} cid={cid} isMod={isMod} subplebbitAddress={subplebbitAddress} />
-      <li className={`${styles.button} ${styles.crosspostButton}`}>
-        <span>{t('crosspost')}</span>
-      </li>
-      {isMod ? (
-        <ModMenu cid={cid} />
-      ) : (
-        <li className={`${styles.button} ${styles.reportButton}`}>
-          <span>{t('report')}</span>
-        </li>
-      )}
+      {/* TODO: Implement crosspost functionality
+        <li className={`${styles.button} ${styles.crosspostButton}`}>
+          <span>{t('crosspost')}</span>
+        </li> 
+      */}
+      <ModOrReportButton cid={cid} isAuthor={isAuthor} isMod={isMod} />
     </>
   );
 };
@@ -81,21 +99,17 @@ const ReplyTools = ({ author, cid, hasLabel, index, isAuthor, isMod, showReplyFo
         <Link to={cid ? `/p/${subplebbitAddress}/c/${cid}` : `/profile/${index}`}>permalink</Link>
       </li>
       <ShareMenu cid={cid} subplebbitAddress={subplebbitAddress} />
-      <li className={styles.button}>
-        <span>{t('save')}</span>
-      </li>
+      {/* TODO: Implement save functionality
+        <li className={styles.button}>
+          <span>{t('save')}</span>
+        </li> 
+      */}
       {isAuthor && <EditMenu cid={cid} showEditForm={showEditForm} spoiler={spoiler} />}
       <HideMenu author={author} cid={cid} isMod={isMod} subplebbitAddress={subplebbitAddress} />
       <li className={!cid ? styles.hideReply : styles.button}>
         <span onClick={() => cid && showReplyForm?.()}>{t('reply_reply')}</span>
       </li>
-      {isMod ? (
-        <ModMenu cid={cid} />
-      ) : (
-        <li className={`${styles.button} ${styles.reportButton}`}>
-          <span>{t('report')}</span>
-        </li>
-      )}
+      <ModOrReportButton cid={cid} isAuthor={isAuthor} isMod={isMod} />
     </>
   );
 };
@@ -124,9 +138,11 @@ const SingleReplyTools = ({
       <li className={`${styles.button} ${!hasLabel ? styles.firstButton : ''}`}>
         <Link to={cid ? `/p/${subplebbitAddress}/c/${cid}` : `/profile/${index}`}>permalink</Link>
       </li>
-      <li className={styles.button}>
-        <span>{t('save')}</span>
-      </li>
+      {/* TODO: Implement save functionality
+        <li className={styles.button}>
+          <span>{t('save')}</span>
+        </li> 
+      */}
       {isAuthor && <EditMenu cid={cid} spoiler={spoiler} showEditForm={showEditForm} />}
       <li className={styles.button}>
         <Link to={cid ? (hasContext ? `/p/${subplebbitAddress}/c/${cid}/context` : `/p/${subplebbitAddress}/c/${cid}`) : `/profile/${index}`}>{t('context')}</Link>
@@ -140,13 +156,7 @@ const SingleReplyTools = ({
       <li className={!cid ? styles.hideReply : styles.button}>
         <span onClick={() => cid && showReplyForm?.()}>{t('reply_reply')}</span>
       </li>
-      {isMod ? (
-        <ModMenu cid={cid} />
-      ) : (
-        <li className={`${styles.button} ${styles.reportButton}`}>
-          <span>{t('report')}</span>
-        </li>
-      )}
+      <ModOrReportButton cid={cid} isAuthor={isAuthor} isMod={isMod} />
     </>
   );
 };

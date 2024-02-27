@@ -255,7 +255,7 @@ const Subplebbits = () => {
   }
 
   const documentTitle = useMemo(() => {
-    let title = _.startCase(t('communities'));
+    let title = t('communities').charAt(0).toUpperCase() + t('communities').slice(1);
     if (isInSubplebbitsVoteView) {
       title += ` - ${_.startCase(t('vote'))}`;
     } else if (isInSubplebbitsSubscriberView) {

@@ -274,5 +274,6 @@
   "copy_full_address": "<1>copier</1> l'adresse complète",
   "node_stats": "statistiques du nœud",
   "version": "version",
-  "edit_reason": "motif de la modification"
+  "edit_reason": "motif de la modification",
+  "view_parent_comment": "voir le commentaire parent"
 }

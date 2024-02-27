@@ -274,5 +274,6 @@
   "copy_full_address": "<1>kopiér</1> fuld adresse",
   "node_stats": "nodestatistikker",
   "version": "version",
-  "edit_reason": "redigeringsgrund"
+  "edit_reason": "redigeringsgrund",
+  "view_parent_comment": "vis oprindelig kommentar"
 }

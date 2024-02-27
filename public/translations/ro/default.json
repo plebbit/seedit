@@ -274,5 +274,6 @@
   "copy_full_address": "<1>copiază</1> adresa completă",
   "node_stats": "statistici de nod",
   "version": "versiune",
-  "edit_reason": "motivul editării"
+  "edit_reason": "motivul editării",
+  "view_parent_comment": "vezi comentariul părinte"
 }

@@ -274,5 +274,6 @@
   "copy_full_address": "<1>कॉपी</1> पूरा पता",
   "node_stats": "नोड आंकड़े",
   "version": "संस्करण",
-  "edit_reason": "संपादन का कारण"
+  "edit_reason": "संपादन का कारण",
+  "view_parent_comment": "मूल टिप्पणी देखें"
 }

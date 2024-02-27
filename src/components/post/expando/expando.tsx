@@ -11,7 +11,7 @@ interface ExpandoProps {
   commentMediaInfo?: CommentMediaInfo;
   content?: string;
   expanded: boolean;
-  link: string;
+  link?: string;
   modEditReason?: string;
   removed?: boolean;
   showContent: boolean;

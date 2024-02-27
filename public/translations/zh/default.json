@@ -274,5 +274,6 @@
   "copy_full_address": "<1>复制</1>完整地址",
   "node_stats": "节点统计",
   "version": "版本",
-  "edit_reason": "编辑原因"
+  "edit_reason": "编辑原因",
+  "view_parent_comment": "查看父级评论"
 }

@@ -1,16 +1,13 @@
 import { useEffect, useMemo, useState } from 'react';
 import { setAccount, useAccount, useAuthorAvatar } from '@plebbit/plebbit-react-hooks';
-import { useTranslation } from 'react-i18next';
 import styles from './avatar-settings.module.css';
 
 interface AvatarSettingsProps {
-  areSettingsShown?: boolean;
   avatar?: any;
   showSettings?: () => void;
 }
 
-const AvatarPreview = ({ avatar, showSettings, areSettingsShown }: AvatarSettingsProps) => {
-  const { t } = useTranslation();
+const AvatarPreview = ({ avatar, showSettings }: AvatarSettingsProps) => {
   const account = useAccount();
   let author = useMemo(() => ({ ...account?.author, avatar }), [account, avatar]);
 
@@ -30,18 +27,14 @@ const AvatarPreview = ({ avatar, showSettings, areSettingsShown }: AvatarSetting
 
   return (
     <>
-      <div className={styles.avatar}>
-        {imageUrl && state !== 'initializing' ? (
-          <img src={imageUrl} alt='avatar' />
-        ) : (
-          <span className={styles.emptyAvatar} onClick={showSettings}>
-            {areSettingsShown ? '–' + t('hide') : '+' + t('add')}
-          </span>
-        )}
+      <div className={styles.avatar} onClick={showSettings}>
+        {imageUrl && state !== 'initializing' && <img src={imageUrl} alt='avatar' />}
       </div>
-      <div className={styles.state}>
-        {stateText} {error?.message}
-      </div>
+      {state !== 'succeeded' && account?.author?.avatar && (
+        <div className={styles.state}>
+          {stateText} {error?.message}
+        </div>
+      )}
     </>
   );
 };
@@ -128,7 +121,7 @@ const AvatarSettings = () => {
 
   return (
     <div className={styles.avatarSettings}>
-      <AvatarPreview avatar={avatar} showSettings={() => setShowSettings(!showSettings)} areSettingsShown={showSettings} />
+      <AvatarPreview avatar={avatar} showSettings={() => setShowSettings(!showSettings)} />
       {showSettings && (
         <div className={styles.avatarSettingsForm}>
           <div className={styles.avatarSettingInput}>

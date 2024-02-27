@@ -117,6 +117,7 @@ type ParentLinkProps = {
   cid?: string;
   commentCid?: string;
   markedAsRead?: boolean;
+  parentCid?: string;
   postCid?: string;
   shortAddress?: string;
   subplebbitAddress?: string;
@@ -167,7 +168,27 @@ const InboxParentLink = ({ commentCid }: ParentLinkProps) => {
   );
 };
 
-const InboxParentInfo = ({ address, cid, markedAsRead, shortAddress, subplebbitAddress, timestamp }: ParentLinkProps) => {
+const InboxShowParentButton = ({ parentCid }: { parentCid: string | undefined }) => {
+  const { t } = useTranslation();
+  const [showParent, setShowParent] = useState(false);
+  const parentComment = useComment({ commentCid: parentCid });
+  const { content, subplebbitAddress } = parentComment || {};
+
+  return showParent ? (
+    <>
+      <Expando content={content} expanded={true} showContent={true} />
+      <Link className={styles.viewParentComment} to={`/p/${subplebbitAddress}/c/${parentCid}`}>
+        {t('view_parent_comment')}
+      </Link>
+    </>
+  ) : (
+    <div className={styles.inboxParentInfoButton} onClick={() => setShowParent(true)}>
+      {t('show_parent')}
+    </div>
+  );
+};
+
+const InboxParentInfo = ({ address, cid, markedAsRead, parentCid, postCid, shortAddress, subplebbitAddress, timestamp }: ParentLinkProps) => {
   const { t } = useTranslation();
   const shortSubplebbitAddress = subplebbitAddress ? (subplebbitAddress.includes('.') ? subplebbitAddress : getShortAddress(subplebbitAddress)) : '';
 
@@ -184,7 +205,7 @@ const InboxParentInfo = ({ address, cid, markedAsRead, shortAddress, subplebbitA
         </Link>
         {t('sent')} {timestamp && getFormattedTimeAgo(timestamp)}
       </div>
-      <div className={styles.inboxParentInfoButton}>{t('show_parent')}</div>
+      {parentCid !== postCid && <InboxShowParentButton parentCid={parentCid} />}
     </>
   );
 };
@@ -349,6 +370,8 @@ const Reply = ({ cidOfReplyWithContext, depth = 0, isSingleComment, isSingleRepl
                 address={author?.address}
                 cid={cid}
                 markedAsRead={markedAsRead}
+                parentCid={parentCid}
+                postCid={postCid}
                 shortAddress={author?.shortAddress}
                 subplebbitAddress={subplebbitAddress}
                 timestamp={timestamp}

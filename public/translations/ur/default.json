@@ -274,5 +274,6 @@
   "copy_full_address": "<1>کاپی</1> مکمل پتہ",
   "node_stats": "نوڈ اشاریہ",
   "version": "ورژن",
-  "edit_reason": "ترتیب دینے کا سبب"
+  "edit_reason": "ترتیب دینے کا سبب",
+  "view_parent_comment": "ماں کمنٹ دیکھیں"
 }

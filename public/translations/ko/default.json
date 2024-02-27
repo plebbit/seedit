@@ -274,5 +274,6 @@
   "copy_full_address": "<1>복사</1> 전체 주소",
   "node_stats": "노드 통계",
   "version": "버전",
-  "edit_reason": "편집 이유"
+  "edit_reason": "편집 이유",
+  "view_parent_comment": "상위 댓글 보기"
 }

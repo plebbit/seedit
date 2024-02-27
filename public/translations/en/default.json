@@ -274,5 +274,6 @@
   "copy_full_address": "<1>copy</1> full address",
   "node_stats": "node stats",
   "version": "version",
-  "edit_reason": "edit reason"
+  "edit_reason": "edit reason",
+  "view_parent_comment": "view parent comment"
 }

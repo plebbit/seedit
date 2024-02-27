@@ -274,5 +274,6 @@
   "copy_full_address": "<1>salin</1> alamat lengkap",
   "node_stats": "statistik node",
   "version": "versi",
-  "edit_reason": "alasan sunting"
+  "edit_reason": "alasan sunting",
+  "view_parent_comment": "lihat komentar induk"
 }

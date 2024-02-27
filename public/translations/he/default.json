@@ -274,5 +274,6 @@
   "copy_full_address": "<1>העתק</1> כתובת מלאה",
   "node_stats": "סטטיסטיקות הצומת",
   "version": "גרסה",
-  "edit_reason": "סיבת העריכה"
+  "edit_reason": "סיבת העריכה",
+  "view_parent_comment": "הצג תגובה הורה"
 }

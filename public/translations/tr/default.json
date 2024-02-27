@@ -274,5 +274,6 @@
   "copy_full_address": "<1>kopyala</1> tam adres",
   "node_stats": "düğüm istatistikleri",
   "version": "sürüm",
-  "edit_reason": "düzenleme nedeni"
+  "edit_reason": "düzenleme nedeni",
+  "view_parent_comment": "ana yorumu görüntüle"
 }

@@ -274,5 +274,6 @@
   "copy_full_address": "<1>نسخ</1> العنوان الكامل",
   "node_stats": "إحصائيات العقدة",
   "version": "الإصدار",
-  "edit_reason": "سبب التعديل"
+  "edit_reason": "سبب التعديل",
+  "view_parent_comment": "عرض التعليق الأصلي"
 }
