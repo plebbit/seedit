@@ -114,9 +114,9 @@ const AuthorSidebar = () => {
 
   return (
     <div className={styles.sidebar}>
-      {(profilePageAvatar || authorPageAvatar) && (
+      {((isInAuthorView && authorPageAvatar) || (isInProfileView && profilePageAvatar)) && (
         <div className={styles.avatar}>
-          <img src={profilePageAvatar || authorPageAvatar} alt='avatar' />
+          <img src={isInAuthorView ? authorPageAvatar : profilePageAvatar} alt='avatar' />
         </div>
       )}
       <div className={styles.titleBox}>
