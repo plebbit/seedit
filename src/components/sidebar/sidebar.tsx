@@ -55,7 +55,8 @@ const ModeratorsList = ({ roles }: { roles: Record<string, Role> }) => {
         {rolesList.map(({ address }, index) => (
           <li key={index}>u/{getShortAddress(address)}</li>
         ))}
-        <li className={styles.listMore}>{t('about_moderation')} »</li>
+        {/* TODO: https://github.com/plebbit/seedit/issues/274
+         <li className={styles.listMore}>{t('about_moderation')} »</li> */}
       </ul>
     </div>
   );
