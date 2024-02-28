@@ -224,7 +224,7 @@ const Sidebar = ({ address, cid, createdAt, description, downvoteCount = 0, role
           {rules && rules.length > 0 && <RulesList rules={rules} />}
           <div className={styles.bottom}>
             {t('created_by', { creatorAddress: '' })}
-            <Link to={`/u/${creatorAddress}`} onClick={(e) => e.preventDefault()}>{`u/${creatorAddress}`}</Link>
+            <span>{`u/${creatorAddress}`}</span>
             {createdAt && <span className={styles.age}> {t('community_for', { date: getFormattedTimeDuration(createdAt) })}</span>}
             <div className={styles.bottomButtons}>
               <span className={styles.blockSub} onClick={blockConfirm}>
