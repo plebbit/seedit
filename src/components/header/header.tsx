@@ -171,6 +171,7 @@ const AuthorHeaderTabs = () => {
               {t('downvoted')}
             </Link>
           </li>
+          {/* TODO: implement functionality from API once available
           <li>
             <Link to={'/'} className={styles.choice} onClick={(e) => e.preventDefault()}>
               {t('hidden')}
@@ -180,7 +181,7 @@ const AuthorHeaderTabs = () => {
             <Link to={'/'} className={styles.choice} onClick={(e) => e.preventDefault()}>
               {t('saved')}
             </Link>
-          </li>
+          </li> */}
         </>
       )}
     </>
