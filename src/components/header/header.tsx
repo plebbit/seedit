@@ -366,7 +366,8 @@ const Header = () => {
     (isInProfileView && !isInAboutView) ||
     (isInAllView && !isInAllAboutView) ||
     (isInAuthorView && !isInAboutView);
-  const logoSrc = isInSubplebbitView ? suggested?.avatarUrl : isInProfileView ? '' : 'assets/logo/seedit.png';
+  const logoSrc = isInSubplebbitView ? suggested?.avatarUrl : 'assets/logo/seedit.png';
+  const logoIsAvatar = isInSubplebbitView && suggested?.avatarUrl;
   const logoLink = isInSubplebbitView ? `/p/${params.subplebbitAddress}` : isInProfileView ? '/profile' : '/';
 
   return (
@@ -374,14 +375,16 @@ const Header = () => {
       <div className={`${styles.container} ${hasFewTabs && styles.reducedHeight} ${hasStickyHeader && styles.increasedHeight}`}>
         <div className={styles.logoContainer}>
           <Link to={logoLink} className={styles.logoLink}>
-            {!isInSubplebbitView && !isInProfileView && !isInAuthorView && <img className={`${styles.logo}`} src={logoSrc} alt='logo' />}
+            {(logoIsAvatar || (!isInSubplebbitView && !isInProfileView && !isInAuthorView)) && (
+              <img className={`${logoIsAvatar ? styles.avatar : styles.logo}`} src={logoSrc} alt='logo' />
+            )}
             {!isInSubplebbitView && !isInProfileView && !isInAuthorView && (
               <img src={`assets/logo/seedit-text-${theme === 'dark' ? 'dark' : 'light'}.svg`} className={styles.logoText} alt='logo' />
             )}
           </Link>
         </div>
         {!isInHomeView && (
-          <span className={`${styles.pageName} ${styles.soloPageName}`}>
+          <span className={`${styles.pageName} ${!logoIsAvatar && styles.soloPageName}`}>
             <HeaderTitle title={title} shortAddress={shortAddress} />
           </span>
         )}
