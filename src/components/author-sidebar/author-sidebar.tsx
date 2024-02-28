@@ -26,7 +26,6 @@ import {
 } from '../../lib/utils/user-utils';
 import { useTranslation } from 'react-i18next';
 // import { useDefaultSubplebbitAddresses } from '../../lib/utils/addresses-utils';
-import SubscribeButton from '../subscribe-button';
 
 // TODO: uncomment when useSubplebbits({fetch: false}) is implemented, because fetching all subs for this is too expensive
 
