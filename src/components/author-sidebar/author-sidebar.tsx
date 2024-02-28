@@ -134,11 +134,12 @@ const AuthorSidebar = () => {
           )}
         </div>
         {displayName && <div className={styles.displayName}>{displayName}</div>}
+        {/*  TODO: implement functionality for subscribing to users
         {isInAuthorView && authorAddress !== profileAccount?.author?.address && (
           <div className={styles.friends}>
             <SubscribeButton address={address} />
           </div>
-        )}
+        )} */}
         <div>
           <span className={styles.karma}>{postScore}</span> {t('post_karma')}
         </div>
