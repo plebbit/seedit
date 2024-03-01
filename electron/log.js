@@ -1,9 +1,10 @@
 // require this file to log to file in case there's a crash
 
-const envPaths = require('env-paths').default('plebbit', { suffix: false });
-const util = require('util');
-const fs = require('fs-extra');
-const path = require('path');
+import util from 'util';
+import fs from 'fs-extra';
+import path from 'path';
+import EnvPaths from 'env-paths';
+const envPaths = EnvPaths.default('plebbit', { suffix: false });
 
 // previous version created a file instead of folder
 // we should remove this at some point

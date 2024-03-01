@@ -1,2 +1,2 @@
-const downloadIpfsClients = require('./before-pack').downloadIpfsClients;
+import { downloadIpfsClients } from './before-pack.js';
 downloadIpfsClients();
