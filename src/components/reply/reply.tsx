@@ -29,19 +29,20 @@ interface ReplyAuthorProps {
   cid: string;
   displayName: string;
   imageUrl: string | undefined;
+  isAvatarDefined: boolean;
   shortAuthorAddress: string | undefined;
 }
 
-const ReplyAuthor = ({ address, authorRole, cid, displayName, imageUrl, shortAuthorAddress }: ReplyAuthorProps) => {
-  const isAuthorOwner = authorRole === 'owner';
+const ReplyAuthor = ({ address, authorRole, cid, displayName, imageUrl, isAvatarDefined, shortAuthorAddress }: ReplyAuthorProps) => {
   const isAuthorAdmin = authorRole === 'admin';
+  const isAuthorOwner = authorRole === 'owner';
   const isAuthorModerator = authorRole === 'moderator';
   const authorRoleInitial = (isAuthorOwner && 'O') || (isAuthorAdmin && 'A') || (isAuthorModerator && 'M') || '';
   const moderatorClass = `${isAuthorOwner ? styles.owner : isAuthorAdmin ? styles.admin : isAuthorModerator ? styles.moderator : ''}`;
 
   return (
     <>
-      {imageUrl && (
+      {isAvatarDefined && (
         <span className={styles.authorAvatar}>
           <img src={imageUrl} alt='avatar' />
         </span>
@@ -346,6 +347,7 @@ const Reply = ({ cidOfReplyWithContext, depth = 0, isSingleComment, isSingleRepl
                   cid={cid}
                   displayName={author?.displayName}
                   imageUrl={imageUrl}
+                  isAvatarDefined={!!author?.avatar}
                   shortAuthorAddress={shortAuthorAddress}
                 />
                 <span className={styles.score}>{scoreString}</span>{' '}

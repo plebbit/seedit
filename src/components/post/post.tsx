@@ -26,12 +26,24 @@ interface PostAuthorProps {
   displayName: string;
   imageUrl: string | undefined;
   index?: number;
+  isAvatarDefined: boolean;
   shortAddress: string;
   shortAuthorAddress: string | undefined;
   authorAddressChanged: boolean;
 }
 
-const PostAuthor = ({ authorAddress, authorRole, cid, displayName, imageUrl, index, shortAddress, shortAuthorAddress, authorAddressChanged }: PostAuthorProps) => {
+const PostAuthor = ({
+  authorAddress,
+  authorRole,
+  cid,
+  displayName,
+  imageUrl,
+  index,
+  isAvatarDefined,
+  shortAddress,
+  shortAuthorAddress,
+  authorAddressChanged,
+}: PostAuthorProps) => {
   const isAuthorOwner = authorRole === 'owner';
   const isAuthorAdmin = authorRole === 'admin';
   const isAuthorModerator = authorRole === 'moderator';
@@ -41,7 +53,7 @@ const PostAuthor = ({ authorAddress, authorRole, cid, displayName, imageUrl, ind
   return (
     <>
       <Link to={cid ? `/u/${authorAddress}/c/${cid}` : `/profile/${index}`} className={`${styles.author} ${moderatorClass}`}>
-        {imageUrl && (
+        {isAvatarDefined && (
           <span className={styles.authorAvatar}>
             <img src={imageUrl} alt='avatar' />
           </span>
@@ -240,6 +252,7 @@ const Post = ({ index, post = {} }: PostProps) => {
                     displayName={displayName}
                     imageUrl={imageUrl}
                     index={post?.index}
+                    isAvatarDefined={!!author?.avatar}
                     shortAddress={shortAddress}
                     shortAuthorAddress={shortAuthorAddress}
                     authorAddressChanged={authorAddressChanged}
