@@ -1,7 +1,7 @@
 import { useMemo } from 'react';
 import { useParams } from 'react-router-dom';
 import { useAccount } from '@plebbit/plebbit-react-hooks';
-import { getShortAddress } from '@plebbit/plebbit-js';
+import Plebbit from '@plebbit/plebbit-js/dist/browser/index.js';
 import useDefaultSubplebbits from '../../hooks/use-default-subplebbits';
 
 interface Subplebbit {
@@ -34,7 +34,7 @@ export const useDefaultAndSubscriptionsSubplebbits = (): SubplebbitWithDisplay[]
     const subplebbitsObj: { [key: string]: SubplebbitWithDisplay } = {};
 
     const addSubplebbit = (subplebbit: Subplebbit) => {
-      let displayAddress = subplebbit.address.includes('.') ? subplebbit.address : getShortAddress(subplebbit.address);
+      let displayAddress = subplebbit.address.includes('.') ? subplebbit.address : Plebbit.getShortAddress(subplebbit.address);
 
       // Append title in parentheses only if the address doesn't contain '.'
       if (!subplebbit.address.includes('.') && subplebbit.title) {

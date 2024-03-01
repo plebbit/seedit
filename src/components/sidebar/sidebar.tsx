@@ -1,6 +1,6 @@
 import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { getShortAddress } from '@plebbit/plebbit-js';
+import Plebbit from '@plebbit/plebbit-js/dist/browser/index.js';
 import { useAccount, useBlock, Role, useSubplebbitStats, useAccountComment } from '@plebbit/plebbit-react-hooks';
 import styles from './sidebar.module.css';
 import { getFormattedDate, getFormattedTimeDuration, getFormattedTimeAgo } from '../../lib/utils/time-utils';
@@ -53,7 +53,7 @@ const ModeratorsList = ({ roles }: { roles: Record<string, Role> }) => {
       <div className={styles.listTitle}>{t('moderators')}</div>
       <ul className={`${styles.listContent} ${styles.modsList}`}>
         {rolesList.map(({ address }, index) => (
-          <li key={index}>u/{getShortAddress(address)}</li>
+          <li key={index}>u/{Plebbit.getShortAddress(address)}</li>
         ))}
         {/* TODO: https://github.com/plebbit/seedit/issues/274
          <li className={styles.listMore}>{t('about_moderation')} »</li> */}
@@ -144,7 +144,7 @@ const Sidebar = ({ address, cid, createdAt, description, downvoteCount = 0, role
   const pendingPost = useAccountComment({ commentIndex: params?.accountCommentIndex as any });
 
   const subplebbitCreator = findSubplebbitCreator(roles);
-  const creatorAddress = subplebbitCreator === 'anonymous' ? 'anonymous' : `${getShortAddress(subplebbitCreator)}`;
+  const creatorAddress = subplebbitCreator === 'anonymous' ? 'anonymous' : `${Plebbit.getShortAddress(subplebbitCreator)}`;
   const submitRoute =
     isInHomeView || isInHomeAboutView || isInAllView ? '/submit' : isInPendingView ? `/p/${pendingPost?.subplebbitAddress}/submit` : `/p/${address}/submit`;
 
