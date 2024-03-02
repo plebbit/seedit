@@ -29,7 +29,7 @@ const AvatarPreview = ({ avatar, showSettings }: AvatarSettingsProps) => {
   return (
     <>
       <div className={styles.avatar} onClick={showSettings}>
-        {imageUrl && state !== 'initializing' && <img src={imageUrl} alt='avatar' />}
+        {imageUrl && state !== 'initializing' && <img src={imageUrl} alt='' />}
       </div>
       {state !== 'succeeded' && account?.author?.avatar && (
         <div className={styles.state}>

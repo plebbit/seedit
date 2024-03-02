@@ -377,10 +377,10 @@ const Header = () => {
         <div className={styles.logoContainer}>
           <Link to={logoLink} className={styles.logoLink}>
             {(logoIsAvatar || (!isInSubplebbitView && !isInProfileView && !isInAuthorView)) && (
-              <img className={`${logoIsAvatar ? styles.avatar : styles.logo}`} src={logoSrc} alt='logo' />
+              <img className={`${logoIsAvatar ? styles.avatar : styles.logo}`} src={logoSrc} alt='' />
             )}
             {!isInSubplebbitView && !isInProfileView && !isInAuthorView && (
-              <img src={`assets/logo/seedit-text-${theme === 'dark' ? 'dark' : 'light'}.svg`} className={styles.logoText} alt='logo' />
+              <img src={`assets/logo/seedit-text-${theme === 'dark' ? 'dark' : 'light'}.svg`} className={styles.logoText} alt='' />
             )}
           </Link>
         </div>

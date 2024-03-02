@@ -55,7 +55,7 @@ const PostAuthor = ({
       <Link to={cid ? `/u/${authorAddress}/c/${cid}` : `/profile/${index}`} className={`${styles.author} ${moderatorClass}`}>
         {isAvatarDefined ? (
           <span className={styles.authorAvatar}>
-            <img src={imageUrl} alt='avatar' />
+            <img src={imageUrl} alt='' />
           </span>
         ) : (
           <> </>

@@ -44,7 +44,7 @@ const ReplyAuthor = ({ address, authorRole, cid, displayName, imageUrl, isAvatar
     <>
       {isAvatarDefined && (
         <span className={styles.authorAvatar}>
-          <img src={imageUrl} alt='avatar' />
+          <img src={imageUrl} alt='' />
         </span>
       )}
       {displayName && (

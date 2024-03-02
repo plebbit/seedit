@@ -185,7 +185,7 @@ const Logo = ({ isReadOnly = false }: { isReadOnly?: boolean }) => {
         {logoUrl && isValidURL(logoUrl) && (
           <div className={styles.logoPreview}>
             {t('preview')}:
-            {imageError ? <span className={styles.logoError}>{t('no_image_found')}</span> : <img src={logoUrl} alt='logo preview' onError={() => setImageError(true)} />}
+            {imageError ? <span className={styles.logoError}>{t('no_image_found')}</span> : <img src={logoUrl} alt='' onError={() => setImageError(true)} />}
           </div>
         )}
       </div>
