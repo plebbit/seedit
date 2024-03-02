@@ -1,9 +1,11 @@
 // hook that runs after electron-build
 
-const fs = require('fs-extra');
-const path = require('path');
-const { execSync } = require('child_process');
-const rootPath = path.resolve(__dirname, '..');
+import fs from 'fs-extra';
+import path from 'path';
+import { execSync } from 'child_process';
+import packageJson from '../package.json' assert { type: 'json' };
+import { fileURLToPath } from 'url';
+const rootPath = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const distFolderPath = path.resolve(rootPath, 'dist');
 
 const addPortableToPortableExecutableFileName = () => {
@@ -21,9 +23,8 @@ const createHtmlArchive = () => {
   if (process.platform !== 'linux') {
     return;
   }
-  const { version } = require('../package.json');
   const zipBinPath = path.resolve(rootPath, 'node_modules', '7zip-bin', 'linux', 'x64', '7za');
-  const seeditHtmlFolderName = `seedit-html-${version}`;
+  const seeditHtmlFolderName = `seedit-html-${packageJson.version}`;
   const outputFile = path.resolve(distFolderPath, `${seeditHtmlFolderName}.zip`);
   const inputFolder = path.resolve(rootPath, 'build');
   try {
@@ -37,7 +38,7 @@ const createHtmlArchive = () => {
   }
 };
 
-exports.default = async (buildResult) => {
+export default async (buildResult) => {
   addPortableToPortableExecutableFileName();
   createHtmlArchive();
 };

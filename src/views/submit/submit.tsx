@@ -1,7 +1,7 @@
 import { ChangeEvent, forwardRef, useCallback, useEffect, useRef, useState } from 'react';
 import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
 import { PublishCommentOptions, useAccount, usePublishComment, useSubplebbit } from '@plebbit/plebbit-react-hooks';
-import { getShortAddress } from '@plebbit/plebbit-js';
+import Plebbit from '@plebbit/plebbit-js/dist/browser/index.js';
 import { Trans, useTranslation } from 'react-i18next';
 import { create } from 'zustand';
 import { getRandomSubplebbits, useDefaultSubplebbitAddresses } from '../../lib/utils/addresses-utils';
@@ -188,7 +188,7 @@ const Submit = () => {
             }
           }}
         >
-          {getShortAddress(sub)}
+          {Plebbit.getShortAddress(sub)}
         </span>
       ))}
     </div>

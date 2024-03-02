@@ -1,10 +1,13 @@
-require('./log');
-const { app, BrowserWindow, Menu, MenuItem, Tray, screen: electronScreen, shell, dialog, nativeTheme } = require('electron');
-const isDev = require('electron-is-dev');
-const path = require('path');
-const startIpfs = require('./start-ipfs');
-const startPlebbitRpcServer = require('./start-plebbit-rpc');
-const { URL } = require('node:url');
+import './log.js';
+import { app, BrowserWindow, Menu, MenuItem, Tray, screen as electronScreen, shell, dialog, nativeTheme } from 'electron';
+import isDev from 'electron-is-dev';
+import path from 'path';
+import startIpfs from './start-ipfs.js';
+import './start-plebbit-rpc.js';
+import { URL, fileURLToPath } from 'node:url';
+import contextMenu from 'electron-context-menu';
+import packageJson from '../package.json' assert { type: 'json' };
+const dirname = path.join(path.dirname(fileURLToPath(import.meta.url)));
 
 let startIpfsError;
 startIpfs.onError = (error) => {
@@ -23,10 +26,9 @@ startIpfs.onError = (error) => {
 let fakeUserAgent = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36';
 if (process.platform === 'darwin') fakeUserAgent = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 13_5_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36';
 if (process.platform === 'linux') fakeUserAgent = 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36';
-const realUserAgent = `seedit/${require('../package.json').version}`;
+const realUserAgent = `seedit/${packageJson.version}`;
 
 // add right click menu
-const contextMenu = require('electron-context-menu');
 contextMenu({
   // prepend custom buttons to top
   prepend: (defaultActions, parameters, browserWindow) => [
@@ -69,7 +71,7 @@ const createMainWindow = () => {
       nodeIntegration: false,
       contextIsolation: true,
       devTools: true, // TODO: change to isDev when no bugs left
-      preload: path.join(__dirname, 'preload.js'),
+      preload: path.join(dirname, 'preload.js'),
     },
   });
 
@@ -115,7 +117,7 @@ const createMainWindow = () => {
     callback({ responseHeaders: details.responseHeaders });
   });
 
-  const startURL = isDev ? 'http://localhost:3000' : `file://${path.join(__dirname, '../build/index.html')}`;
+  const startURL = isDev ? 'http://localhost:3000' : `file://${path.join(dirname, '../build/index.html')}`;
 
   mainWindow.loadURL(startURL);
 
@@ -219,7 +221,7 @@ const createMainWindow = () => {
 
   if (process.platform !== 'darwin') {
     // tray
-    const trayIconPath = path.join(__dirname, '..', isDev ? 'public' : 'build', 'electron-tray-icon.png');
+    const trayIconPath = path.join(dirname, '..', isDev ? 'public' : 'build', 'electron-tray-icon.png');
     const tray = new Tray(trayIconPath);
     tray.setToolTip('seedit');
     const trayMenu = Menu.buildFromTemplate([

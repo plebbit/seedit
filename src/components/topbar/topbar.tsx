@@ -2,7 +2,7 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import { Link, useLocation, useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useAccount } from '@plebbit/plebbit-react-hooks';
-import { getShortAddress } from '@plebbit/plebbit-js';
+import Plebbit from '@plebbit/plebbit-js/dist/browser/index.js';
 import styles from './topbar.module.css';
 import { useDefaultSubplebbitAddresses } from '../../lib/utils/addresses-utils';
 import useTimeFilter, { TimeFilterKey } from '../../hooks/use-time-filter';
@@ -111,7 +111,7 @@ const TopBar = () => {
           <div className={`${styles.dropChoices} ${styles.subsDropChoices} ${subsDropdownClass}`} ref={subsdropdownItemsRef}>
             {subscriptions?.map((subscription: string, index: number) => (
               <Link key={index} to={`/p/${subscription}`} className={styles.dropdownItem}>
-                {getShortAddress(subscription)}
+                {Plebbit.getShortAddress(subscription)}
               </Link>
             ))}
             <Link to='/communities/vote' className={`${styles.dropdownItem} ${styles.defaultCommunities}`}>
