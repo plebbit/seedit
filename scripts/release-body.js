@@ -1,6 +1,8 @@
-const {execSync} = require('child_process')
-const path = require('path')
-const conventionalChangelog = path.join('node_modules', '.bin', 'conventional-changelog')
+import {execSync} from 'child_process'
+import path from 'path'
+import {fileURLToPath} from 'url'
+const dirname = path.join(path.dirname(fileURLToPath(import.meta.url)))
+const conventionalChangelog = path.join(dirname, '..', 'node_modules', '.bin', 'conventional-changelog')
 
 // sometimes release-count 1 is empty
 let releaseChangelog = 

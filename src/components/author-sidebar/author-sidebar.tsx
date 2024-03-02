@@ -16,7 +16,7 @@ import {
   useComment,
   // useSubplebbits,
 } from '@plebbit/plebbit-react-hooks';
-// import { getShortAddress } from '@plebbit/plebbit-js';
+// import Plebbit from '@plebbit/plebbit-js/dist/browser/index.js';
 import styles from './author-sidebar.module.css';
 import { getFormattedTimeDuration } from '../../lib/utils/time-utils';
 import { isAuthorView, isProfileView } from '../../lib/utils/view-utils';
@@ -45,7 +45,7 @@ import { useTranslation } from 'react-i18next';
 //         <ul className={`${styles.modListContent} ${styles.modsList}`}>
 //           {subplebbitAddresses.map((address, index) => (
 //             <li key={index}>
-//               <Link to={`/p/${address}`}>p/{getShortAddress(address)}</Link>
+//               <Link to={`/p/${address}`}>p/{Plebbit.getShortAddress(address)}</Link>
 //             </li>
 //           ))}
 //         </ul>

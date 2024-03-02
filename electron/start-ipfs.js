@@ -1,11 +1,14 @@
-const isDev = require('electron-is-dev');
-const path = require('path');
-const { spawn } = require('child_process');
-const fs = require('fs-extra');
-const envPaths = require('env-paths').default('plebbit', { suffix: false });
-const ps = require('node:process');
-const proxyServer = require('./proxy-server');
-const tcpPortUsed = require('tcp-port-used');
+import isDev from 'electron-is-dev';
+import path from 'path';
+import { spawn } from 'child_process';
+import fs from 'fs-extra';
+import ps from 'node:process';
+import proxyServer from './proxy-server.js';
+import tcpPortUsed from 'tcp-port-used';
+import EnvPaths from 'env-paths';
+import { fileURLToPath } from 'url';
+const dirname = path.join(path.dirname(fileURLToPath(import.meta.url)));
+const envPaths = EnvPaths.default('plebbit', { suffix: false });
 
 // use this custom function instead of spawnSync for better logging
 // also spawnSync might have been causing crash on start on windows
@@ -37,8 +40,8 @@ const startIpfs = async () => {
     if (process.platform === 'darwin') {
       binFolderName = 'mac';
     }
-    ipfsPath = path.join(__dirname, '..', 'bin', binFolderName, ipfsFileName);
-    ipfsDataPath = path.join(__dirname, '..', '.plebbit', 'ipfs');
+    ipfsPath = path.join(dirname, '..', 'bin', binFolderName, ipfsFileName);
+    ipfsDataPath = path.join(dirname, '..', '.plebbit', 'ipfs');
   }
 
   if (!fs.existsSync(ipfsPath)) {
@@ -104,6 +107,8 @@ const startIpfs = async () => {
   });
 };
 
+const DefaultExport = {};
+
 let pendingStart = false;
 const start = async () => {
   if (pendingStart) {
@@ -120,7 +125,7 @@ const start = async () => {
     console.log('failed starting ipfs', e);
     try {
       // try to run exported onError callback, can be undefined
-      module.exports.onError(e)?.catch?.(console.log);
+      DefaultExport.onError(e)?.catch?.(console.log);
     } catch (e) {}
   }
   pendingStart = false;
@@ -132,3 +137,6 @@ start();
 setInterval(() => {
   start();
 }, 1000);
+
+DefaultExport.start = start;
+export default DefaultExport;

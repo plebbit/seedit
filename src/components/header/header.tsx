@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Link, useLocation, useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { getShortAddress } from '@plebbit/plebbit-js';
+import Plebbit from '@plebbit/plebbit-js/dist/browser/index.js';
 import { useAccount, useSubplebbit } from '@plebbit/plebbit-react-hooks';
 import { sortTypes } from '../../app';
 import {
@@ -298,7 +298,7 @@ const HeaderTitle = ({ title, shortAddress }: { title: string; shortAddress: str
   const subplebbitTitle = <Link to={`/p/${params.subplebbitAddress}`}>{title || shortAddress}</Link>;
   const submitTitle = <span className={styles.submitTitle}>{t('submit')}</span>;
   const profileTitle = <Link to='/profile'>{account?.author?.shortAddress}</Link>;
-  const authorTitle = <Link to={`/u/${params.authorAddress}/c/${params.commentCid}`}>{params.authorAddress && getShortAddress(params.authorAddress)}</Link>;
+  const authorTitle = <Link to={`/u/${params.authorAddress}/c/${params.commentCid}`}>{params.authorAddress && Plebbit.getShortAddress(params.authorAddress)}</Link>;
 
   if (isInSubplebbitSubmitView) {
     return (

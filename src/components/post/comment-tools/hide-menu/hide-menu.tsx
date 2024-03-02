@@ -3,7 +3,7 @@ import { Author, useBlock } from '@plebbit/plebbit-react-hooks';
 import { autoUpdate, flip, FloatingFocusManager, offset, shift, useClick, useDismiss, useFloating, useId, useInteractions, useRole } from '@floating-ui/react';
 import styles from './hide-menu.module.css';
 import { useTranslation } from 'react-i18next';
-import { getShortAddress } from '@plebbit/plebbit-js';
+import Plebbit from '@plebbit/plebbit-js/dist/browser/index.js';
 
 type HideMenuProps = {
   author?: Author | undefined;
@@ -36,7 +36,7 @@ const BlockSubplebbitButton = ({ subplebbitAddress }: HideMenuProps) => {
 
   return (
     <div className={styles.menuItem} onClick={blocked ? unblock : block}>
-      {blocked ? `${t('unblock')}` : `${t('block')}`} p/{subplebbitAddress && getShortAddress(subplebbitAddress)}
+      {blocked ? `${t('unblock')}` : `${t('block')}`} p/{subplebbitAddress && Plebbit.getShortAddress(subplebbitAddress)}
     </div>
   );
 };

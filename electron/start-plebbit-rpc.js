@@ -1,20 +1,19 @@
-const tcpPortUsed = require('tcp-port-used');
-const { PlebbitWsServer } = require('@plebbit/plebbit-js/rpc');
-const path = require('path');
-const envPaths = require('env-paths').default('plebbit', { suffix: false });
-const { randomBytes } = require('crypto');
-const fs = require('fs-extra');
-
-let isDev = true;
-try {
-  isDev = require('electron-is-dev');
-} catch (e) {}
+import tcpPortUsed from 'tcp-port-used';
+import EnvPaths from 'env-paths';
+import { randomBytes } from 'crypto';
+import fs from 'fs-extra';
+import PlebbitRpc from '@plebbit/plebbit-js/dist/node/rpc/src/index.js';
+import path from 'path';
+import { fileURLToPath } from 'url';
+import isDev from 'electron-is-dev';
+const dirname = path.join(path.dirname(fileURLToPath(import.meta.url)));
+const envPaths = EnvPaths.default('plebbit', { suffix: false });
 
 //           PLEB, always run plebbit rpc on this port so all clients can use it
 const port = 9138;
 const defaultPlebbitOptions = {
   // find the user's OS data path
-  dataPath: !isDev ? envPaths.data : path.join(__dirname, '..', '.plebbit'),
+  dataPath: !isDev ? envPaths.data : path.join(dirname, '..', '.plebbit'),
   ipfsHttpClientsOptions: ['http://localhost:5001/api/v0'],
   // TODO: having to define pubsubHttpClientsOptions and ipfsHttpClientsOptions is a bug with plebbit-js
   pubsubHttpClientsOptions: ['http://localhost:5001/api/v0'],
@@ -42,7 +41,7 @@ const start = async () => {
     if (started) {
       return;
     }
-    const plebbitWebSocketServer = await PlebbitWsServer({ port, plebbitOptions: defaultPlebbitOptions, authKey: plebbitRpcAuthKey });
+    const plebbitWebSocketServer = await PlebbitRpc.PlebbitWsServer({ port, plebbitOptions: defaultPlebbitOptions, authKey: plebbitRpcAuthKey });
 
     console.log(`plebbit rpc: listening on ws://localhost:${port} (local connections only)`);
     console.log(`plebbit rpc: listening on ws://localhost:${port}/${plebbitRpcAuthKey} (secret auth key for remote connections)`);

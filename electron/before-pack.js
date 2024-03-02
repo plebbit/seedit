@@ -1,11 +1,12 @@
 // download the ipfs binaries before building the electron clients
 
-const fs = require('fs-extra');
-const ProgressBar = require('progress');
-const https = require('https');
-const decompress = require('decompress');
-const path = require('path');
-const ipfsClientsPath = path.join(__dirname, '..', 'bin');
+import fs from 'fs-extra';
+import ProgressBar from 'progress';
+import https from 'https';
+import decompress from 'decompress';
+import path from 'path';
+import { fileURLToPath } from 'url';
+const ipfsClientsPath = path.join(path.dirname(fileURLToPath(import.meta.url)), '..', 'bin');
 const ipfsClientWindowsPath = path.join(ipfsClientsPath, 'win');
 const ipfsClientMacPath = path.join(ipfsClientsPath, 'mac');
 const ipfsClientLinuxPath = path.join(ipfsClientsPath, 'linux');
@@ -98,14 +99,12 @@ const downloadAndExtract = async (url, destinationPath) => {
   fs.removeSync(dowloadPath);
 };
 
-const downloadIpfsClients = async () => {
+export const downloadIpfsClients = async () => {
   await downloadAndExtract(ipfsClientWindowsUrl, ipfsClientWindowsPath);
   await downloadAndExtract(ipfsClientMacUrl, ipfsClientMacPath);
   await downloadAndExtract(ipfsClientLinuxPUrl, ipfsClientLinuxPath);
 };
 
-exports.downloadIpfsClients = downloadIpfsClients;
-
-exports.default = async (context) => {
+export default async (context) => {
   await downloadIpfsClients();
 };

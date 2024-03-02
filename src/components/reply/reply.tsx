@@ -20,7 +20,7 @@ import useDownvote from '../../hooks/use-downvote';
 import useStateString from '../../hooks/use-state-string';
 import useUpvote from '../../hooks/use-upvote';
 import { isInboxView, isPostContextView } from '../../lib/utils/view-utils';
-import { getShortAddress } from '@plebbit/plebbit-js';
+import Plebbit from '@plebbit/plebbit-js/dist/browser/index.js';
 import Markdown from '../markdown';
 
 interface ReplyAuthorProps {
@@ -191,7 +191,7 @@ const InboxShowParentButton = ({ parentCid }: { parentCid: string | undefined })
 
 const InboxParentInfo = ({ address, cid, markedAsRead, parentCid, postCid, shortAddress, subplebbitAddress, timestamp }: ParentLinkProps) => {
   const { t } = useTranslation();
-  const shortSubplebbitAddress = subplebbitAddress ? (subplebbitAddress.includes('.') ? subplebbitAddress : getShortAddress(subplebbitAddress)) : '';
+  const shortSubplebbitAddress = subplebbitAddress ? (subplebbitAddress.includes('.') ? subplebbitAddress : Plebbit.getShortAddress(subplebbitAddress)) : '';
 
   return (
     <>
