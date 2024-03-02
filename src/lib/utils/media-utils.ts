@@ -78,7 +78,7 @@ const getCommentMediaInfo = (comment: Comment) => {
 
 export const getCommentMediaInfoMemoized = memoize(getCommentMediaInfo, { max: 1000 });
 
-export const getLinkMediaInfo = (link: string) => {
+const getLinkMediaInfo = (link: string) => {
   let mime: string | undefined;
   try {
     mime = extName(new URL(link).pathname.toLowerCase().replace('/', ''))[0]?.mime;
@@ -117,3 +117,5 @@ export const getLinkMediaInfo = (link: string) => {
   }
   return { url: link, type: 'webpage' };
 };
+
+export const getLinkMediaInfoMemoized = memoize(getLinkMediaInfo, { max: 1000 });
