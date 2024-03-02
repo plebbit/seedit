@@ -283,5 +283,8 @@
   "copy_message_etherscan": "<1>{{copy}}</1> pesan untuk ditandatangani di <2>etherscan</2>",
   "copy": "salin",
   "copied": "disalin",
-  "missing_chain_ticker": "Ticker blockchain yang hilang"
+  "missing_chain_ticker": "Ticker blockchain yang hilang",
+  "missing_token_address": "Alamat token yang hilang",
+  "missing_token_id": "ID token yang hilang",
+  "missing_signature": "Tanda tangan yang hilang"
 }

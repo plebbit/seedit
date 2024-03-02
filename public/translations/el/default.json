@@ -283,5 +283,8 @@
   "copy_message_etherscan": "<1>{{copy}}</1> μήνυμα για υπογραφή στο <2>etherscan</2>",
   "copy": "αντιγραφή",
   "copied": "αντιγράφηκε",
-  "missing_chain_ticker": "Ελλειπτικός αλυσιδωτός ticker"
+  "missing_chain_ticker": "Ελλειπτικός αλυσιδωτός ticker",
+  "missing_token_address": "Ελλειπτική διεύθυνση του token",
+  "missing_token_id": "Ελλειπτικό αναγνωριστικό token",
+  "missing_signature": "Ελλειπτική υπογραφή"
 }

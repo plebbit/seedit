@@ -283,5 +283,8 @@
   "copy_message_etherscan": "<1>{{copy}}</1> bericht om te ondertekenen op <2>etherscan</2>",
   "copy": "kopiëren",
   "copied": "gekopieerd",
-  "missing_chain_ticker": "Ontbrekende blockchain ticker"
+  "missing_chain_ticker": "Ontbrekende blockchain ticker",
+  "missing_token_address": "Ontbrekend tokenadres",
+  "missing_token_id": "Ontbrekend token-ID",
+  "missing_signature": "Ontbrekende handtekening"
 }

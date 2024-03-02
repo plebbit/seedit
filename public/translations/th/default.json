@@ -283,5 +283,8 @@
   "copy_message_etherscan": "<1>{{copy}}</1> ข้อความเพื่อเซ็นบน <2>etherscan</2>",
   "copy": "คัดลอก",
   "copied": "คัดลอกแล้ว",
-  "missing_chain_ticker": "เครื่องหมายเหตุที่หายไป"
+  "missing_chain_ticker": "เครื่องหมายเหตุที่หายไป",
+  "missing_token_address": "เหตุที่หายไปของที่อยู่โทเค็น",
+  "missing_token_id": "เหตุที่หายไปของรหัสของโทเค็น",
+  "missing_signature": "เหตุที่หายไปของลายเซ็น"
 }

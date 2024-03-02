@@ -74,13 +74,13 @@ const AvatarSettings = () => {
 
   const copyMessageToSign = () => {
     if (!chainTicker) {
-      return alert('missing chain ticker');
+      return alert(t('missing_chain_ticker'));
     }
     if (!tokenAddress) {
-      return alert('missing token address');
+      return alert(t('missing_token_address'));
     }
     if (!tokenId) {
-      return alert('missing token id');
+      return alert(t('missing_token_id'));
     }
     const newTimestamp = Math.floor(Date.now() / 1000);
     const messageToSign = getNftMessageToSign(authorAddress, newTimestamp, tokenAddress, tokenId);
@@ -107,13 +107,13 @@ const AvatarSettings = () => {
       return alert(t('missing_chain_ticker'));
     }
     if (!tokenAddress) {
-      return alert('missing token address');
+      return alert(t('missing_token_address'));
     }
     if (!tokenId) {
-      return alert('missing token id');
+      return alert(t('missing_token_id'));
     }
     if (!signature) {
-      return alert('missing signature');
+      return alert(t('missing_signature'));
     }
     setAccount({ ...account, author: { ...account?.author, avatar } });
     alert(`saved`);

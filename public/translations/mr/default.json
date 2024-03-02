@@ -283,5 +283,8 @@
   "copy_message_etherscan": "<1>{{copy}}</1> संदेश <2>etherscan</2> वर हस्ताक्षर करण्यासाठी",
   "copy": "कॉपी",
   "copied": "कॉपी केली",
-  "missing_chain_ticker": "गुमलेला श्रृंखला टिकर"
+  "missing_chain_ticker": "गुमलेला श्रृंखला टिकर",
+  "missing_token_address": "गुमलेला टोकन पत्ता",
+  "missing_token_id": "गुमलेला टोकन आयडी",
+  "missing_signature": "गुमलेली स्वाक्षरे"
 }

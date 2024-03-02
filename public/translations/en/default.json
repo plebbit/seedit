@@ -283,5 +283,8 @@
   "copy_message_etherscan": "<1>{{copy}}</1> message to sign on <2>etherscan</2>",
   "copy": "copy",
   "copied": "copied",
-  "missing_chain_ticker": "Missing chain ticker"
+  "missing_chain_ticker": "Missing chain ticker",
+  "missing_token_address": "Missing token address",
+  "missing_token_id": "Missing token ID",
+  "missing_signature": "Missing signature"
 }

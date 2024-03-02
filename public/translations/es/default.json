@@ -283,5 +283,8 @@
   "copy_message_etherscan": "<1>{{copy}}</1> mensaje para firmar en <2>etherscan</2>",
   "copy": "copiar",
   "copied": "copiado",
-  "missing_chain_ticker": "Falta de ticker de blockchain"
+  "missing_chain_ticker": "Falta de ticker de blockchain",
+  "missing_token_address": "Falta de dirección de token",
+  "missing_token_id": "Falta de ID de token",
+  "missing_signature": "Falta de firma"
 }

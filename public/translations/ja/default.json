@@ -283,5 +283,8 @@
   "copy_message_etherscan": "<1>{{copy}}</1> メッセージを<2>etherscan</2>でサイン",
   "copy": "コピー",
   "copied": "コピー済み",
-  "missing_chain_ticker": "不足しているチェーンティッカー"
+  "missing_chain_ticker": "不足しているチェーンティッカー",
+  "missing_token_address": "不足しているトークンアドレス",
+  "missing_token_id": "不足しているトークンID",
+  "missing_signature": "不足している署名"
 }

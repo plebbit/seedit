@@ -283,5 +283,8 @@
   "copy_message_etherscan": "<1>{{copy}}</1> сообщение для подписи на <2>etherscan</2>",
   "copy": "копировать",
   "copied": "скопировано",
-  "missing_chain_ticker": "Отсутствующий тикер блокчейна"
+  "missing_chain_ticker": "Отсутствующий тикер блокчейна",
+  "missing_token_address": "Отсутствующий адрес токена",
+  "missing_token_id": "Отсутствующий идентификатор токена",
+  "missing_signature": "Отсутствующая подпись"
 }

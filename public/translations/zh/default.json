@@ -283,5 +283,8 @@
   "copy_message_etherscan": "<1>{{copy}}</1> 在<2>etherscan</2>上签名的消息",
   "copy": "复制",
   "copied": "已复制",
-  "missing_chain_ticker": "缺失的区块链标记"
+  "missing_chain_ticker": "缺失的区块链标记",
+  "missing_token_address": "缺失的代币地址",
+  "missing_token_id": "缺失的代币ID",
+  "missing_signature": "缺失的签名"
 }

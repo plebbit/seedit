@@ -283,5 +283,8 @@
   "copy_message_etherscan": "<1>{{copy}}</1> zpráva k podpisu na <2>etherscan</2>",
   "copy": "kopírovat",
   "copied": "zkopírováno",
-  "missing_chain_ticker": "Chybějící řetězový ticker"
+  "missing_chain_ticker": "Chybějící řetězový ticker",
+  "missing_token_address": "Chybějící tokenová adresa",
+  "missing_token_id": "Chybějící ID tokenu",
+  "missing_signature": "Chybějící podpis"
 }

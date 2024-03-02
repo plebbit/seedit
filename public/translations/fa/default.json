@@ -283,5 +283,8 @@
   "copy_message_etherscan": "<1>{{copy}}</1> پیامی برای امضا در <2>etherscan</2>",
   "copy": "کپی",
   "copied": "کپی شد",
-  "missing_chain_ticker": "تیکر زنجیره ای گم شده"
+  "missing_chain_ticker": "تیکر زنجیره ای گم شده",
+  "missing_token_address": "آدرس توکن گم شده",
+  "missing_token_id": "شناسه توکن گم شده",
+  "missing_signature": "امضای گم شده"
 }

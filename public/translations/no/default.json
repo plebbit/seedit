@@ -283,5 +283,8 @@
   "copy_message_etherscan": "<1>{{copy}}</1> melding å signere på <2>etherscan</2>",
   "copy": "kopier",
   "copied": "kopiert",
-  "missing_chain_ticker": "Manglende Blockchain-ticker"
+  "missing_chain_ticker": "Manglende Blockchain-ticker",
+  "missing_token_address": "Manglende tokenadresse",
+  "missing_token_id": "Manglende token-ID",
+  "missing_signature": "Manglende signatur"
 }

@@ -283,5 +283,8 @@
   "copy_message_etherscan": "<1>{{copy}}</1> הודעה לחתימה ב-<2>etherscan</2>",
   "copy": "העתק",
   "copied": "הועתק",
-  "missing_chain_ticker": "ציון בלוקצ'יין חסר"
+  "missing_chain_ticker": "ציון בלוקצ'יין חסר",
+  "missing_token_address": "כתובת הטוקן חסרה",
+  "missing_token_id": "מזהה הטוקן חסר",
+  "missing_signature": "חתימה חסרה"
 }

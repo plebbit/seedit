@@ -283,5 +283,8 @@
   "copy_message_etherscan": "<1>{{copy}}</1> సందేశం సాఇన్ చేయడానికి <2>etherscan</2> మీద",
   "copy": "నకలు",
   "copied": "నకలు చేయబడింది",
-  "missing_chain_ticker": "తప్పిన బ్లాక్ చేన్ టిక్కర్"
+  "missing_chain_ticker": "తప్పిన బ్లాక్ చేన్ టిక్కర్",
+  "missing_token_address": "తప్పని టోకెన్ చిరునామా",
+  "missing_token_id": "తప్పని టోకెన్ ఐడి",
+  "missing_signature": "తప్పని సంతకం"
 }

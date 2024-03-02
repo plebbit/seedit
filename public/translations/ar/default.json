@@ -283,5 +283,8 @@
   "copy_message_etherscan": "<1>{{copy}}</1> رسالة للتوقيع على <2>etherscan</2>",
   "copy": "نسخ",
   "copied": "تم النسخ",
-  "missing_chain_ticker": "ناقص الرمز المتسلسل"
+  "missing_chain_ticker": "ناقص الرمز المتسلسل",
+  "missing_token_address": "عنوان الرمز المفقود",
+  "missing_token_id": "معرف الرمز المفقود",
+  "missing_signature": "التوقيع المفقود"
 }

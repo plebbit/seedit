@@ -283,5 +283,8 @@
   "copy_message_etherscan": "<1>{{copy}}</1> mesaj de semnat pe <2>etherscan</2>",
   "copy": "copiere",
   "copied": "copiat",
-  "missing_chain_ticker": "Lipsește ticker blockchain"
+  "missing_chain_ticker": "Lipsește ticker blockchain",
+  "missing_token_address": "Lipsește adresa tokenului",
+  "missing_token_id": "Lipsește ID-ul tokenului",
+  "missing_signature": "Lipsește semnătura"
 }

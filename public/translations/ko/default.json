@@ -283,5 +283,8 @@
   "copy_message_etherscan": "<1>{{copy}}</1> 메시지를 <2>etherscan</2>에서 서명",
   "copy": "복사",
   "copied": "복사됨",
-  "missing_chain_ticker": "부재중인 블록체인 티커"
+  "missing_chain_ticker": "부재중인 블록체인 티커",
+  "missing_token_address": "부재중인 토큰 주소",
+  "missing_token_id": "부재중인 토큰 ID",
+  "missing_signature": "부재중인 서명"
 }

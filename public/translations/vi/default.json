@@ -283,5 +283,8 @@
   "copy_message_etherscan": "<1>{{copy}}</1> tin nhắn để ký trên <2>etherscan</2>",
   "copy": "sao chép",
   "copied": "đã sao chép",
-  "missing_chain_ticker": "Ticker chuỗi khối bị thiếu"
+  "missing_chain_ticker": "Ticker chuỗi khối bị thiếu",
+  "missing_token_address": "Địa chỉ token bị thiếu",
+  "missing_token_id": "Thiếu ID của token",
+  "missing_signature": "Thiếu chữ ký"
 }

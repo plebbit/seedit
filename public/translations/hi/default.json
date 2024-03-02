@@ -283,5 +283,8 @@
   "copy_message_etherscan": "<1>{{copy}}</1> संदेश को <2>etherscan</2> पर हस्ताक्षर करें",
   "copy": "कॉपी",
   "copied": "कॉपी किया गया",
-  "missing_chain_ticker": "गायब श्रृंखला टिकर"
+  "missing_chain_ticker": "गायब श्रृंखला टिकर",
+  "missing_token_address": "गायब टोकन पता",
+  "missing_token_id": "गायब टोकन आईडी",
+  "missing_signature": "गायब हस्ताक्षर"
 }

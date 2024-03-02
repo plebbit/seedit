@@ -283,5 +283,8 @@
   "copy_message_etherscan": "<1>{{copy}}</1> <2>etherscan</2> üzerinde imzalanacak mesaj",
   "copy": "kopyala",
   "copied": "kopyalandı",
-  "missing_chain_ticker": "Eksik Blockchain ticker"
+  "missing_chain_ticker": "Eksik Blockchain ticker",
+  "missing_token_address": "Eksik token adresi",
+  "missing_token_id": "Eksik token kimliği",
+  "missing_signature": "Eksik imza"
 }

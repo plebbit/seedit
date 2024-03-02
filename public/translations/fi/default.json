@@ -283,5 +283,8 @@
   "copy_message_etherscan": "<1>{{copy}}</1> viesti allekirjoitettavaksi <2>etherscan</2>:ssa",
   "copy": "kopioi",
   "copied": "kopioitu",
-  "missing_chain_ticker": "Puuttuva ketjuticker"
+  "missing_chain_ticker": "Puuttuva ketjuticker",
+  "missing_token_address": "Puuttuva token-osoite",
+  "missing_token_id": "Puuttuva token-id",
+  "missing_signature": "Puuttuva allekirjoitus"
 }

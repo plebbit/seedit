@@ -283,5 +283,8 @@
   "copy_message_etherscan": "<1>{{copy}}</1> বার্তা সাইন করতে <2>etherscan</2> এ",
   "copy": "কপি",
   "copied": "নকল হয়েছে",
-  "missing_chain_ticker": "নিখোঁজ শৃঙ্খলা টিকার"
+  "missing_chain_ticker": "নিখোঁজ শৃঙ্খলা টিকার",
+  "missing_token_address": "নিখোঁজ টোকেন ঠিকানা",
+  "missing_token_id": "নিখোঁজ টোকেন আইডি",
+  "missing_signature": "নিখোঁজ স্বাক্ষর"
 }

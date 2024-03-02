@@ -283,5 +283,8 @@
   "copy_message_etherscan": "<1>{{copy}}</1> پیغام <2>etherscan</2> پر دستخط کریں",
   "copy": "کاپی",
   "copied": "کاپی کی گئی",
-  "missing_chain_ticker": "گمشدہ بلاک چین ٹکر"
+  "missing_chain_ticker": "گمشدہ بلاک چین ٹکر",
+  "missing_token_address": "گمشدہ ٹوکن ایڈریس",
+  "missing_token_id": "گمشدہ ٹوکن شناختی نمبر",
+  "missing_signature": "گمشدہ دستخط"
 }
