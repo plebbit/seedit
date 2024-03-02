@@ -275,5 +275,13 @@
   "node_stats": "nodestatistikker",
   "version": "version",
   "edit_reason": "redigeringsgrund",
-  "view_parent_comment": "vis oprindelig kommentar"
+  "view_parent_comment": "vis oprindelig kommentar",
+  "chain_ticker": "Kæde ticker",
+  "token_address_whitelist": "Tokenadresse (kun hvis på whitelist)",
+  "token_id": "Token ID",
+  "paste_signature": "Indsæt underskrift",
+  "copy_message_etherscan": "<1>{{copy}}</1> besked at underskrive på <2>etherscan</2>",
+  "copy": "kopier",
+  "copied": "kopieret",
+  "missing_chain_ticker": "Manglende kæde ticker"
 }

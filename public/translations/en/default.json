@@ -275,5 +275,13 @@
   "node_stats": "node stats",
   "version": "version",
   "edit_reason": "edit reason",
-  "view_parent_comment": "view parent comment"
+  "view_parent_comment": "view parent comment",
+  "chain_ticker": "Chain ticker",
+  "token_address_whitelist": "Token address (whitelist only)",
+  "token_id": "token id",
+  "paste_signature": "paste signature",
+  "copy_message_etherscan": "<1>{{copy}}</1> message to sign on <2>etherscan</2>",
+  "copy": "copy",
+  "copied": "copied",
+  "missing_chain_ticker": "Missing chain ticker"
 }

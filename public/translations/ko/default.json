@@ -275,5 +275,13 @@
   "node_stats": "노드 통계",
   "version": "버전",
   "edit_reason": "편집 이유",
-  "view_parent_comment": "상위 댓글 보기"
+  "view_parent_comment": "상위 댓글 보기",
+  "chain_ticker": "블록체인 티커",
+  "token_address_whitelist": "토큰 주소 (화이트리스트에 등록되어 있는 경우에만)",
+  "token_id": "토큰 ID",
+  "paste_signature": "서명 붙여넣기",
+  "copy_message_etherscan": "<1>{{copy}}</1> 메시지를 <2>etherscan</2>에서 서명",
+  "copy": "복사",
+  "copied": "복사됨",
+  "missing_chain_ticker": "부재중인 블록체인 티커"
 }

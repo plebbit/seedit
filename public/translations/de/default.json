@@ -275,5 +275,13 @@
   "node_stats": "Knotenstatistiken",
   "version": "Version",
   "edit_reason": "Bearbeitungsgrund",
-  "view_parent_comment": "ursprünglichen Kommentar anzeigen"
+  "view_parent_comment": "ursprünglichen Kommentar anzeigen",
+  "chain_ticker": "Blockchain-Ticker",
+  "token_address_whitelist": "Token-Adresse (nur bei Whitelist)",
+  "token_id": "Token-ID",
+  "paste_signature": "Unterschrift einfügen",
+  "copy_message_etherscan": "<1>{{copy}}</1> Nachricht zum Signieren auf <2>etherscan</2>",
+  "copy": "kopieren",
+  "copied": "kopiert",
+  "missing_chain_ticker": "Fehlender Blockchain-Ticker"
 }

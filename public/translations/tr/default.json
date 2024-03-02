@@ -275,5 +275,13 @@
   "node_stats": "düğüm istatistikleri",
   "version": "sürüm",
   "edit_reason": "düzenleme nedeni",
-  "view_parent_comment": "ana yorumu görüntüle"
+  "view_parent_comment": "ana yorumu görüntüle",
+  "chain_ticker": "Blockchain ticker",
+  "token_address_whitelist": "Jeton adresi (yalnızca beyaz listede ise)",
+  "token_id": "Token kimliği",
+  "paste_signature": "İmza yapıştır",
+  "copy_message_etherscan": "<1>{{copy}}</1> <2>etherscan</2> üzerinde imzalanacak mesaj",
+  "copy": "kopyala",
+  "copied": "kopyalandı",
+  "missing_chain_ticker": "Eksik Blockchain ticker"
 }

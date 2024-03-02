@@ -275,5 +275,13 @@
   "node_stats": "nodstatistik",
   "version": "version",
   "edit_reason": "redigeringsorsak",
-  "view_parent_comment": "visa förälder kommentar"
+  "view_parent_comment": "visa förälder kommentar",
+  "chain_ticker": "Blockchain ticker",
+  "token_address_whitelist": "Tokenadress (endast om på whitelist)",
+  "token_id": "Token ID",
+  "paste_signature": "Klistra in signatur",
+  "copy_message_etherscan": "<1>{{copy}}</1> meddelande att signera på <2>etherscan</2>",
+  "copy": "kopiera",
+  "copied": "kopierad",
+  "missing_chain_ticker": "Saknad blockchain ticker"
 }

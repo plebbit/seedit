@@ -275,5 +275,13 @@
   "node_stats": "नोड आंकड़े",
   "version": "संस्करण",
   "edit_reason": "संपादन का कारण",
-  "view_parent_comment": "मूल टिप्पणी देखें"
+  "view_parent_comment": "मूल टिप्पणी देखें",
+  "chain_ticker": "श्रृंखला टिकर",
+  "token_address_whitelist": "टोकन पता (केवल व्हाइटलिस्ट पर होने पर)",
+  "token_id": "टोकन आईडी",
+  "paste_signature": "हस्ताक्षर पेस्ट करें",
+  "copy_message_etherscan": "<1>{{copy}}</1> संदेश को <2>etherscan</2> पर हस्ताक्षर करें",
+  "copy": "कॉपी",
+  "copied": "कॉपी किया गया",
+  "missing_chain_ticker": "गायब श्रृंखला टिकर"
 }

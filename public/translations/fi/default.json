@@ -275,5 +275,13 @@
   "node_stats": "solmustatistiikka",
   "version": "versio",
   "edit_reason": "muokkaussyy",
-  "view_parent_comment": "näytä alkuperäinen kommentti"
+  "view_parent_comment": "näytä alkuperäinen kommentti",
+  "chain_ticker": "Ketjuticker",
+  "token_address_whitelist": "Token-osoite (vain valkoisella listalla)",
+  "token_id": "Token-id",
+  "paste_signature": "Liitä allekirjoitus",
+  "copy_message_etherscan": "<1>{{copy}}</1> viesti allekirjoitettavaksi <2>etherscan</2>:ssa",
+  "copy": "kopioi",
+  "copied": "kopioitu",
+  "missing_chain_ticker": "Puuttuva ketjuticker"
 }

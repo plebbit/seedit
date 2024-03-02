@@ -275,5 +275,13 @@
   "node_stats": "thống kê nút",
   "version": "phiên bản",
   "edit_reason": "lý do chỉnh sửa",
-  "view_parent_comment": "xem bình luận cha"
+  "view_parent_comment": "xem bình luận cha",
+  "chain_ticker": "Ticker chuỗi khối",
+  "token_address_whitelist": "Địa chỉ token (chỉ nếu nằm trong danh sách trắng)",
+  "token_id": "ID token",
+  "paste_signature": "Dán chữ ký",
+  "copy_message_etherscan": "<1>{{copy}}</1> tin nhắn để ký trên <2>etherscan</2>",
+  "copy": "sao chép",
+  "copied": "đã sao chép",
+  "missing_chain_ticker": "Ticker chuỗi khối bị thiếu"
 }
