@@ -7,7 +7,7 @@ import { isAllView, isPendingView, isPostView, isSubplebbitView } from '../../li
 import { getCommentMediaInfoMemoized, getHasThumbnail } from '../../lib/utils/media-utils';
 import { getHostname } from '../../lib/utils/url-utils';
 import { getFormattedTimeAgo } from '../../lib/utils/time-utils';
-import EditForm from '../edit-form';
+import CommentEditForm from '../comment-edit-form';
 import ExpandButton from './expand-button';
 import Expando from './expando';
 import Flair from './flair';
@@ -141,8 +141,8 @@ const Post = ({ index, post = {} }: PostProps) => {
   const toggleExpanded = () => setIsExpanded(!isExpanded);
 
   const [isEditing, setIsEditing] = useState(false);
-  const showEditForm = () => setIsEditing(true);
-  const hideEditForm = () => setIsEditing(false);
+  const showCommentEditForm = () => setIsEditing(true);
+  const hideCommentEditForm = () => setIsEditing(false);
 
   const [upvoted, upvote] = useUpvote(post);
   const [downvoted, downvote] = useDownvote(post);
@@ -292,7 +292,7 @@ const Post = ({ index, post = {} }: PostProps) => {
                   index={post?.index}
                   removed={removed}
                   replyCount={replyCount}
-                  showEditForm={showEditForm}
+                  showCommentEditForm={showCommentEditForm}
                   spoiler={spoiler}
                   subplebbitAddress={subplebbitAddress}
                 />
@@ -300,7 +300,7 @@ const Post = ({ index, post = {} }: PostProps) => {
             </div>
           </div>
           {isEditing ? (
-            <EditForm commentCid={cid} content={content} hideEditForm={hideEditForm} spoiler={spoiler} subplebbitAddress={subplebbitAddress} />
+            <CommentEditForm commentCid={cid} content={content} hideCommentEditForm={hideCommentEditForm} spoiler={spoiler} subplebbitAddress={subplebbitAddress} />
           ) : (
             <Expando
               authorEditReason={edit?.reason}

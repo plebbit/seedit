@@ -7,7 +7,7 @@ import styles from './reply.module.css';
 import useReplies from '../../hooks/use-replies';
 import { CommentMediaInfo, getCommentMediaInfoMemoized, getHasThumbnail } from '../../lib/utils/media-utils';
 import { getFormattedTimeAgo } from '../../lib/utils/time-utils';
-import EditForm from '../edit-form';
+import CommentEditForm from '../comment-edit-form';
 import LoadingEllipsis from '../loading-ellipsis/';
 import Expando from '../post/expando/';
 import ExpandButton from '../post/expand-button/';
@@ -281,8 +281,8 @@ const Reply = ({ cidOfReplyWithContext, depth = 0, isSingleComment, isSingleRepl
   const hideReplyForm = () => setIsReplying(false);
 
   const [isEditing, setIsEditing] = useState(false);
-  const showEditForm = () => setIsEditing(true);
-  const hideEditForm = () => setIsEditing(false);
+  const showCommentEditForm = () => setIsEditing(true);
+  const hideCommentEditForm = () => setIsEditing(false);
 
   const commentMediaInfo = getCommentMediaInfoMemoized(reply);
   const hasThumbnail = getHasThumbnail(commentMediaInfo, link);
@@ -400,7 +400,7 @@ const Reply = ({ cidOfReplyWithContext, depth = 0, isSingleComment, isSingleRepl
                   />
                 )}
                 {isEditing ? (
-                  <EditForm commentCid={cid} content={content} hideEditForm={hideEditForm} subplebbitAddress={subplebbitAddress} />
+                  <CommentEditForm commentCid={cid} content={content} hideCommentEditForm={hideCommentEditForm} subplebbitAddress={subplebbitAddress} />
                 ) : (
                   <div className={`${styles.md} ${cid && (isSingleComment || cidOfReplyWithContext === cid) ? styles.highlightContent : ''}`}>
                     {spoiler && !showSpoiler && <div className={styles.showSpoilerButton}>{t('view_spoiler')}</div>}
@@ -435,7 +435,7 @@ const Reply = ({ cidOfReplyWithContext, depth = 0, isSingleComment, isSingleRepl
                 postCid={postCid}
                 replyCount={replies.length}
                 subplebbitAddress={subplebbitAddress}
-                showEditForm={showEditForm}
+                showCommentEditForm={showCommentEditForm}
                 showReplyForm={showReplyForm}
                 spoiler={spoiler}
               />

@@ -9,11 +9,11 @@ const { addChallenge } = challengesStore.getState();
 
 type EditMenuProps = {
   cid: string;
-  showEditForm?: () => void;
+  showCommentEditForm?: () => void;
   spoiler?: boolean;
 };
 
-const EditMenu = ({ cid, showEditForm }: EditMenuProps) => {
+const EditMenu = ({ cid, showCommentEditForm }: EditMenuProps) => {
   const { t } = useTranslation();
 
   let post: any;
@@ -72,7 +72,7 @@ const EditMenu = ({ cid, showEditForm }: EditMenuProps) => {
       <li className={styles.button}>
         <span
           onClick={() => {
-            showEditForm && showEditForm();
+            showCommentEditForm && showCommentEditForm();
           }}
         >
           {t('edit')}
