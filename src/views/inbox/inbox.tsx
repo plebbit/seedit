@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useRef } from 'react';
+import { useEffect, useMemo, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { StateSnapshot, Virtuoso, VirtuosoHandle } from 'react-virtuoso';
 import { useAccount, useNotifications } from '@plebbit/plebbit-react-hooks';
@@ -50,19 +50,17 @@ const Inbox = () => {
   const isInInboxPostRepliesView = isInboxPostRepliesView(location.pathname);
   const isInInboxUnreadView = isInboxUnreadView(location.pathname);
 
-  const filterRepliesToUserReplies = useCallback(() => notifications?.filter((comment) => comment.parentCid !== comment.postCid) || [], [notifications]);
-
-  const filterRepliesToUserPosts = useCallback(() => notifications?.filter((comment) => comment.parentCid === comment.postCid) || [], [notifications]);
-
-  const filterUnreadNotifications = useCallback(() => notifications?.filter((comment) => !comment.markedAsRead) || [], [notifications]);
+  const filteredRepliesToUserReplies = useMemo(() => notifications?.filter((comment) => comment.parentCid !== comment.postCid) || [], [notifications]);
+  const filteredRepliesToUserPosts = useMemo(() => notifications?.filter((comment) => comment.parentCid === comment.postCid) || [], [notifications]);
+  const filteredUnreadNotifications = useMemo(() => notifications?.filter((comment) => !comment.markedAsRead) || [], [notifications]);
 
   let comments;
   if (isInInboxCommentRepliesView) {
-    comments = filterRepliesToUserReplies();
+    comments = filteredRepliesToUserReplies;
   } else if (isInInboxPostRepliesView) {
-    comments = filterRepliesToUserPosts();
+    comments = filteredRepliesToUserPosts;
   } else if (isInInboxUnreadView) {
-    comments = filterUnreadNotifications();
+    comments = filteredUnreadNotifications;
   } else {
     comments = notifications;
   }
