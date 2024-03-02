@@ -53,10 +53,12 @@ const PostAuthor = ({
   return (
     <>
       <Link to={cid ? `/u/${authorAddress}/c/${cid}` : `/profile/${index}`} className={`${styles.author} ${moderatorClass}`}>
-        {isAvatarDefined && (
+        {isAvatarDefined ? (
           <span className={styles.authorAvatar}>
             <img src={imageUrl} alt='avatar' />
           </span>
+        ) : (
+          <> </>
         )}
         {displayName && <span className={`${styles.displayName} ${moderatorClass}`}>{displayName} </span>}
         <span className={`${styles.authorAddressWrapper} ${moderatorClass}`}>
@@ -244,7 +246,7 @@ const Post = ({ index, post = {} }: PostProps) => {
                 )}
                 <div className={styles.tagline}>
                   {t('submitted')} {getFormattedTimeAgo(timestamp)} {edit && <span title={t('last_edited', { timestamp: getFormattedTimeAgo(edit.timestamp) })}>*</span>}{' '}
-                  {t('post_by')}{' '}
+                  {t('post_by')}
                   <PostAuthor
                     authorAddress={author?.address}
                     authorRole={authorRole}
