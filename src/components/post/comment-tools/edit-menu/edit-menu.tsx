@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { PublishCommentEditOptions, useComment, useEditedComment, usePublishCommentEdit } from '@plebbit/plebbit-react-hooks';
 import styles from './edit-menu.module.css';
@@ -41,28 +41,22 @@ const EditMenu = ({ cid, showCommentEditForm }: EditMenuProps) => {
   };
 
   const [publishCommentEditOptions, setPublishCommentEditOptions] = useState(defaultPublishOptions);
-  const [publishEdit, setPublishEdit] = useState(false);
   const { publishCommentEdit } = usePublishCommentEdit(publishCommentEditOptions);
-
-  useEffect(() => {
-    if (publishEdit) {
-      publishCommentEdit();
-      setPublishEdit(false);
-    }
-  }, [publishEdit, publishCommentEdit]);
 
   const deleteComment = () => {
     if (deleted) {
+      setPublishCommentEditOptions((state) => ({ ...state, deleted: false }));
       if (window.confirm('Are you sure you want to undelete this post?')) {
-        setPublishCommentEditOptions((state) => ({ ...state, deleted: false }));
-        setPublishEdit(true);
+        publishCommentEdit();
       } else {
-        return;
+        setPublishCommentEditOptions((state) => ({ ...state, deleted: true }));
       }
     } else {
+      setPublishCommentEditOptions((state) => ({ ...state, deleted: true }));
       if (window.confirm('Are you sure you want to delete this post?')) {
-        setPublishCommentEditOptions((state) => ({ ...state, deleted: true }));
-        setPublishEdit(true);
+        publishCommentEdit();
+      } else {
+        setPublishCommentEditOptions((state) => ({ ...state, deleted: false }));
       }
     }
   };
