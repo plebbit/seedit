@@ -113,25 +113,13 @@ const DisplayNameSetting = () => {
   const [displayName, setDisplayName] = useState(account?.author.displayName || '');
   const [savedDisplayName, setSavedDisplayName] = useState(false);
 
-  useEffect(() => {
-    if (account?.author.displayName) {
-      setDisplayName(account?.author.displayName);
-    } else {
-      setDisplayName('');
-    }
-  }, [account?.author.displayName]);
-
-  useEffect(() => {
-    if (savedDisplayName) {
-      setTimeout(() => {
-        setSavedDisplayName(false);
-      }, 2000);
-    }
-  }, [savedDisplayName]);
-
   const saveUsername = async () => {
     try {
       await setAccount({ ...account, author: { ...account?.author, displayName } });
+      setSavedDisplayName(true);
+      setTimeout(() => {
+        setSavedDisplayName(false);
+      }, 2000);
     } catch (error) {
       if (error instanceof Error) {
         alert(error.message);
@@ -140,7 +128,6 @@ const DisplayNameSetting = () => {
         console.error('An unknown error occurred:', error);
       }
     }
-    setSavedDisplayName(true);
   };
 
   return (

@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { setAccount, useAccount, useResolvedAuthorAddress } from '@plebbit/plebbit-react-hooks';
 import { useTranslation } from 'react-i18next';
 import styles from './address-settings.module.css';
@@ -11,7 +11,7 @@ const AddressSettings = () => {
     cryptoAddress: '',
     checkingCryptoAddress: false,
     showResolvingMessage: false,
-    resolveString: t('crypto_address_verification'),
+    resolveString: t('crypto_address_verification'), // Default message
     resolveClass: '',
   });
 
@@ -20,50 +20,39 @@ const AddressSettings = () => {
   const author = { ...account?.author, address: cryptoState.cryptoAddress };
   const { resolvedAddress, state, error, chainProvider } = useResolvedAuthorAddress({ author, cache: false });
 
-  useEffect(() => {
-    if (cryptoState.showResolvingMessage) {
-      let resolveString = '';
-      let resolveClass = '';
-
-      if (state === 'failed') {
-        resolveString = error instanceof Error ? `failed to resolve crypto address, error: ${error.message}` : 'cannot resolve crypto address, unknown error';
-        resolveClass = styles.red;
-      } else if (state === 'resolving') {
-        resolveString = `resolving from ${chainProvider?.urls}`;
-        resolveClass = styles.yellow;
-      } else {
-        return;
-      }
-
-      setCryptoState((prevState) => ({
-        ...prevState,
-        resolveString: resolveString,
-        resolveClass: resolveClass,
-      }));
+  const checkCryptoAddress = () => {
+    if (!cryptoState.cryptoAddress || !cryptoState.cryptoAddress.includes('.')) {
+      alert(t('enter_crypto_address'));
+      return;
     }
-  }, [cryptoState.showResolvingMessage, state, error, chainProvider]);
 
-  useEffect(() => {
     let resolveString = '';
     let resolveClass = '';
 
-    if (resolvedAddress && resolvedAddress === account?.signer?.address) {
+    if (state === 'failed') {
+      resolveString = error instanceof Error ? `failed to resolve crypto address, error: ${error.message}` : 'cannot resolve crypto address, unknown error';
+      resolveClass = styles.red;
+    } else if (state === 'resolving') {
+      resolveString = `resolving from ${chainProvider?.urls}`;
+      resolveClass = styles.yellow;
+    } else if (resolvedAddress && resolvedAddress === account?.signer?.address) {
       resolveString = t('crypto_address_yours');
       resolveClass = styles.green;
     } else if (resolvedAddress && resolvedAddress !== account?.signer?.address) {
       resolveString = t('crypto_address_not_yours');
       resolveClass = styles.red;
     } else {
-      return;
+      resolveString = t('crypto_address_verification');
+      resolveClass = '';
     }
 
     setCryptoState((prevState) => ({
       ...prevState,
-      resolveString: resolveString,
-      resolveClass: resolveClass,
-      showResolvingMessage: false,
+      showResolvingMessage: true,
+      resolveString,
+      resolveClass,
     }));
-  }, [resolvedAddress, account?.signer?.address, t]);
+  };
 
   const saveCryptoAddress = async () => {
     if (!cryptoState.cryptoAddress || !cryptoState.cryptoAddress.includes('.')) {
@@ -78,6 +67,12 @@ const AddressSettings = () => {
     } else if (resolvedAddress && resolvedAddress === account?.signer?.address) {
       try {
         await setAccount({ ...account, author: { ...account?.author, address: cryptoState.cryptoAddress } });
+        setSavedCryptoAddress(true);
+
+        setTimeout(() => {
+          setSavedCryptoAddress(false);
+        }, 2000);
+
         setCryptoState((prevState) => ({
           ...prevState,
           savedCryptoAddress: true,
@@ -102,26 +97,6 @@ const AddressSettings = () => {
       }));
     }
   };
-
-  const checkCryptoAddress = () => {
-    if (!cryptoState.cryptoAddress || !cryptoState.cryptoAddress.includes('.')) {
-      alert(t('enter_crypto_address'));
-      return;
-    }
-    setCryptoState((prevState) => ({
-      ...prevState,
-      checkingCryptoAddress: true,
-      showResolvingMessage: true,
-    }));
-  };
-
-  useEffect(() => {
-    if (savedCryptoAddress) {
-      setTimeout(() => {
-        setSavedCryptoAddress(false);
-      }, 2000);
-    }
-  }, [savedCryptoAddress]);
 
   const [showCryptoAddressInfo, setShowCryptoAddressInfo] = useState(false);
 
