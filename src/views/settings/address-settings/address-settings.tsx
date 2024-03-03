@@ -107,7 +107,7 @@ const AddressSettings = () => {
           <input
             type='text'
             placeholder='address.eth'
-            value={cryptoState.cryptoAddress}
+            defaultValue={cryptoState.cryptoAddress || (account?.author?.shortAddress.includes('.') ? account.author.shortAddress : '')}
             onChange={(e) => setCryptoState((prevState) => ({ ...prevState, cryptoAddress: e.target.value }))}
           />
           <button className={styles.infoButton} onClick={() => setShowCryptoAddressInfo(!showCryptoAddressInfo)}>

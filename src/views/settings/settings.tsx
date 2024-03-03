@@ -110,7 +110,7 @@ const ThemeSettings = () => {
 const DisplayNameSetting = () => {
   const { t } = useTranslation();
   const account = useAccount();
-  const [displayName, setDisplayName] = useState(account?.author.displayName || '');
+  const [displayName, setDisplayName] = useState(account?.author?.displayName || '');
   const [savedDisplayName, setSavedDisplayName] = useState(false);
 
   const saveUsername = async () => {
@@ -133,7 +133,7 @@ const DisplayNameSetting = () => {
   return (
     <div className={styles.displayNameSetting}>
       <div className={styles.usernameInput}>
-        <input type='text' placeholder='My Name' value={displayName} onChange={(e) => setDisplayName(e.target.value)} />
+        <input type='text' placeholder='My Name' value={displayName || account?.author?.displayName || ''} onChange={(e) => setDisplayName(e.target.value)} />
         <button className={styles.button} onClick={saveUsername}>
           {t('save')}
         </button>
