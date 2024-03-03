@@ -275,5 +275,16 @@
   "node_stats": "statistiche del nodo",
   "version": "versione",
   "edit_reason": "motivo della modifica",
-  "view_parent_comment": "vai al post a cui è riferito"
+  "view_parent_comment": "vai al post a cui è riferito",
+  "chain_ticker": "Ticker blockchain",
+  "token_address_whitelist": "Indirizzo del token (solo se sulla whitelist)",
+  "token_id": "token id",
+  "paste_signature": "incolla firma",
+  "copy_message_etherscan": "<1>{{copy}}</1> messaggio da firmare su <2>etherscan</2>",
+  "copy": "copia",
+  "copied": "copiato",
+  "missing_chain_ticker": "Ticker blockchain mancante",
+  "missing_token_address": "Indirizzo del token mancante",
+  "missing_token_id": "ID del token mancante",
+  "missing_signature": "Firma mancante"
 }

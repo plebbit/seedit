@@ -275,5 +275,16 @@
   "node_stats": "статистика вузла",
   "version": "версія",
   "edit_reason": "причина редагування",
-  "view_parent_comment": "переглянути батьківський коментар"
+  "view_parent_comment": "переглянути батьківський коментар",
+  "chain_ticker": "Блокчейн тікер",
+  "token_address_whitelist": "Адреса токена (лише якщо в білому списку)",
+  "token_id": "Ідентифікатор токена",
+  "paste_signature": "Вставте підпис",
+  "copy_message_etherscan": "<1>{{copy}}</1> повідомлення для підпису на <2>etherscan</2>",
+  "copy": "копіювати",
+  "copied": "скопійовано",
+  "missing_chain_ticker": "Відсутній тікер блокчейну",
+  "missing_token_address": "Відсутня адреса токена",
+  "missing_token_id": "Відсутній ідентифікатор токена",
+  "missing_signature": "Відсутній підпис"
 }

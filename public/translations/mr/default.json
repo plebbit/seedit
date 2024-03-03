@@ -275,5 +275,16 @@
   "node_stats": "नोड स्टॅट्स",
   "version": "आवृत्ती",
   "edit_reason": "संपादनाचे कारण",
-  "view_parent_comment": "मूळ टिप्पणी पहा"
+  "view_parent_comment": "मूळ टिप्पणी पहा",
+  "chain_ticker": "श्रृंखला टिकर",
+  "token_address_whitelist": "टोकन पत्ता (केवळ व्हायटलिस्टवर असल्यास)",
+  "token_id": "टोकन आयडी",
+  "paste_signature": "हस्ताक्षर पेस्ट करा",
+  "copy_message_etherscan": "<1>{{copy}}</1> संदेश <2>etherscan</2> वर हस्ताक्षर करण्यासाठी",
+  "copy": "कॉपी",
+  "copied": "कॉपी केली",
+  "missing_chain_ticker": "गुमलेला श्रृंखला टिकर",
+  "missing_token_address": "गुमलेला टोकन पत्ता",
+  "missing_token_id": "गुमलेला टोकन आयडी",
+  "missing_signature": "गुमलेली स्वाक्षरे"
 }

@@ -6,7 +6,7 @@ import { Trans, useTranslation } from 'react-i18next';
 import { create } from 'zustand';
 import { getRandomSubplebbits, useDefaultSubplebbitAddresses } from '../../lib/utils/addresses-utils';
 import { alertChallengeVerificationFailed } from '../../lib/utils/challenge-utils';
-import { getLinkMediaInfo } from '../../lib/utils/media-utils';
+import { getLinkMediaInfoMemoized } from '../../lib/utils/media-utils';
 import { isValidURL } from '../../lib/utils/url-utils';
 import { isSubmitView } from '../../lib/utils/view-utils';
 import styles from './submit.module.css';
@@ -60,14 +60,9 @@ const UrlField = forwardRef<HTMLInputElement>((_, ref) => {
   const { setSubmitStore } = useSubmitStore();
   const [mediaError, setMediaError] = useState(false);
   const [url, setUrl] = useState('');
-  const [mediaType, setMediaType] = useState('');
 
-  useEffect(() => {
-    const mediaInfo = getLinkMediaInfo(url);
-    if (mediaInfo?.type) {
-      setMediaType(mediaInfo.type);
-    }
-  }, [url]);
+  const mediaInfo = getLinkMediaInfoMemoized(url);
+  const mediaType = mediaInfo?.type;
 
   let mediaComponent;
 

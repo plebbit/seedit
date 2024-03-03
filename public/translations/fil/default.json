@@ -275,5 +275,16 @@
   "node_stats": "stats ng node",
   "version": "bersyon",
   "edit_reason": "dahilan ng pag-edit",
-  "view_parent_comment": "tingnan ang orihinal na komento"
+  "view_parent_comment": "tingnan ang orihinal na komento",
+  "chain_ticker": "Ticker ng chain",
+  "token_address_whitelist": "Address ng token (kung nasa whitelist lang)",
+  "token_id": "Token ID",
+  "paste_signature": "I-paste ang lagda",
+  "copy_message_etherscan": "<1>{{copy}}</1> mensahe na pipirmahan sa <2>etherscan</2>",
+  "copy": "kopya",
+  "copied": "nakopya",
+  "missing_chain_ticker": "Kulang na ticker ng chain",
+  "missing_token_address": "Kulang na address ng token",
+  "missing_token_id": "Kulang na ID ng token",
+  "missing_signature": "Kulang na lagda"
 }

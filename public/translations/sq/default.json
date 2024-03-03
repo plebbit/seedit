@@ -275,5 +275,16 @@
   "node_stats": "statistikat e nyjes",
   "version": "versioni",
   "edit_reason": "arsyeja e ndryshimit",
-  "view_parent_comment": "shiko komentin prind"
+  "view_parent_comment": "shiko komentin prind",
+  "chain_ticker": "Ticker blockchain",
+  "token_address_whitelist": "Adresa e tokenit (vetëm nëse është në listën e bardhë)",
+  "token_id": "ID e tokenit",
+  "paste_signature": "Ngjit nënshkrimin",
+  "copy_message_etherscan": "<1>{{copy}}</1> mesazh për nënshkrim në <2>etherscan</2>",
+  "copy": "kopjo",
+  "copied": "kopjuar",
+  "missing_chain_ticker": "Mungon ticker blockchain",
+  "missing_token_address": "Adresa e munguar e tokenit",
+  "missing_token_id": "ID e munguar e tokenit",
+  "missing_signature": "Nënshkrimi i munguar"
 }

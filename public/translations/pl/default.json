@@ -275,5 +275,16 @@
   "node_stats": "statystyki węzła",
   "version": "wersja",
   "edit_reason": "powód edycji",
-  "view_parent_comment": "zobacz oryginalny komentarz"
+  "view_parent_comment": "zobacz oryginalny komentarz",
+  "chain_ticker": "Ticker blockchain",
+  "token_address_whitelist": "Adres tokena (tylko jeśli na białej liście)",
+  "token_id": "Identyfikator tokena",
+  "paste_signature": "Wklej podpis",
+  "copy_message_etherscan": "<1>{{copy}}</1> wiadomość do podpisania na <2>etherscan</2>",
+  "copy": "kopiuj",
+  "copied": "skopiowano",
+  "missing_chain_ticker": "Brakujący ticker blockchain",
+  "missing_token_address": "Brakujący adres tokena",
+  "missing_token_id": "Brakujące ID tokenu",
+  "missing_signature": "Brakujący podpis"
 }

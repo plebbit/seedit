@@ -303,7 +303,7 @@
   width: 18px;
   display: inline-block;
   position: relative;
-  margin-right: 3px;
+  margin-left: -3px;
 }
 
 .authorAvatar img {

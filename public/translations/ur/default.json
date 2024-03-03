@@ -275,5 +275,16 @@
   "node_stats": "نوڈ اشاریہ",
   "version": "ورژن",
   "edit_reason": "ترتیب دینے کا سبب",
-  "view_parent_comment": "ماں کمنٹ دیکھیں"
+  "view_parent_comment": "ماں کمنٹ دیکھیں",
+  "chain_ticker": "بلاک چین ٹکر",
+  "token_address_whitelist": "ٹوکن کا پتا (صرف وائٹ لسٹ میں ہونے کی صورت میں)",
+  "token_id": "ٹوکن شناخت",
+  "paste_signature": "سرنی چسپاں کریں",
+  "copy_message_etherscan": "<1>{{copy}}</1> پیغام <2>etherscan</2> پر دستخط کریں",
+  "copy": "کاپی",
+  "copied": "کاپی کی گئی",
+  "missing_chain_ticker": "گمشدہ بلاک چین ٹکر",
+  "missing_token_address": "گمشدہ ٹوکن ایڈریس",
+  "missing_token_id": "گمشدہ ٹوکن شناختی نمبر",
+  "missing_signature": "گمشدہ دستخط"
 }

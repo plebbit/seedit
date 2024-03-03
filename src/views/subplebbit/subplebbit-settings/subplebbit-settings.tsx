@@ -185,7 +185,7 @@ const Logo = ({ isReadOnly = false }: { isReadOnly?: boolean }) => {
         {logoUrl && isValidURL(logoUrl) && (
           <div className={styles.logoPreview}>
             {t('preview')}:
-            {imageError ? <span className={styles.logoError}>{t('no_image_found')}</span> : <img src={logoUrl} alt='logo preview' onError={() => setImageError(true)} />}
+            {imageError ? <span className={styles.logoError}>{t('no_image_found')}</span> : <img src={logoUrl} alt='' onError={() => setImageError(true)} />}
           </div>
         )}
       </div>
@@ -773,12 +773,7 @@ const Challenges = ({ isReadOnly, readOnlyChallenges }: { isReadOnly: boolean; r
 const JSONSettings = ({ isReadOnly = false }: { isReadOnly?: boolean }) => {
   const { t } = useTranslation();
   const { challenges, title, description, address, suggested, rules, roles, settings, subplebbitAddress, setSubplebbitSettingsStore } = useSubplebbitSettingsStore();
-  const [text, setText] = useState('');
-
-  useEffect(() => {
-    const JSONSettings = JSON.stringify({ title, description, address, suggested, rules, roles, settings, challenges, subplebbitAddress }, null, 2);
-    setText(JSONSettings);
-  }, [challenges, title, description, address, suggested, rules, roles, settings, subplebbitAddress]);
+  const [text, setText] = useState(JSON.stringify({ title, description, address, suggested, rules, roles, settings, challenges, subplebbitAddress }, null, 2));
 
   const handleChange = (newText: string) => {
     setText(newText);

@@ -275,5 +275,16 @@
   "node_stats": "statistici de nod",
   "version": "versiune",
   "edit_reason": "motivul editării",
-  "view_parent_comment": "vezi comentariul părinte"
+  "view_parent_comment": "vezi comentariul părinte",
+  "chain_ticker": "Ticker blockchain",
+  "token_address_whitelist": "Adresa tokenului (doar dacă este pe lista albă)",
+  "token_id": "ID token",
+  "paste_signature": "Lipește semnătura",
+  "copy_message_etherscan": "<1>{{copy}}</1> mesaj de semnat pe <2>etherscan</2>",
+  "copy": "copiere",
+  "copied": "copiat",
+  "missing_chain_ticker": "Lipsește ticker blockchain",
+  "missing_token_address": "Lipsește adresa tokenului",
+  "missing_token_id": "Lipsește ID-ul tokenului",
+  "missing_signature": "Lipsește semnătura"
 }

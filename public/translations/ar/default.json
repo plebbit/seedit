@@ -275,5 +275,16 @@
   "node_stats": "إحصائيات العقدة",
   "version": "الإصدار",
   "edit_reason": "سبب التعديل",
-  "view_parent_comment": "عرض التعليق الأصلي"
+  "view_parent_comment": "عرض التعليق الأصلي",
+  "chain_ticker": "تذييل سلسلة",
+  "token_address_whitelist": "عنوان الرمز (فقط في القائمة البيضاء)",
+  "token_id": "تعريف الرمز",
+  "paste_signature": "لصق التوقيع",
+  "copy_message_etherscan": "<1>{{copy}}</1> رسالة للتوقيع على <2>etherscan</2>",
+  "copy": "نسخ",
+  "copied": "تم النسخ",
+  "missing_chain_ticker": "ناقص الرمز المتسلسل",
+  "missing_token_address": "عنوان الرمز المفقود",
+  "missing_token_id": "معرف الرمز المفقود",
+  "missing_signature": "التوقيع المفقود"
 }

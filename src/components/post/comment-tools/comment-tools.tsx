@@ -27,7 +27,7 @@ interface CommentToolsProps {
   replyCount?: number;
   spoiler?: boolean | undefined;
   subplebbitAddress: string;
-  showEditForm?: () => void;
+  showCommentEditForm?: () => void;
   showReplyForm?: () => void;
 }
 
@@ -51,7 +51,7 @@ const ModOrReportButton = ({ cid, isAuthor, isMod }: ModOrReportButtonProps) => 
   );
 };
 
-const PostTools = ({ author, cid, hasLabel, index, isAuthor, isMod, subplebbitAddress, replyCount = 0, showEditForm, spoiler = false }: CommentToolsProps) => {
+const PostTools = ({ author, cid, hasLabel, index, isAuthor, isMod, subplebbitAddress, replyCount = 0, showCommentEditForm, spoiler = false }: CommentToolsProps) => {
   const { t } = useTranslation();
   const validReplyCount = isNaN(replyCount) ? 0 : replyCount;
   const commentCount = validReplyCount === 0 ? t('post_no_comments') : `${validReplyCount} ${validReplyCount === 1 ? t('post_comment') : t('post_comments')}`;
@@ -78,7 +78,7 @@ const PostTools = ({ author, cid, hasLabel, index, isAuthor, isMod, subplebbitAd
           <span>{t('save')}</span>
         </li> 
       */}
-      {isAuthor && <EditMenu cid={cid} showEditForm={showEditForm} spoiler={spoiler} />}
+      {isAuthor && <EditMenu cid={cid} showCommentEditForm={showCommentEditForm} spoiler={spoiler} />}
       <HideMenu author={author} cid={cid} isMod={isMod} subplebbitAddress={subplebbitAddress} />
       {/* TODO: Implement crosspost functionality
         <li className={`${styles.button} ${styles.crosspostButton}`}>
@@ -90,7 +90,7 @@ const PostTools = ({ author, cid, hasLabel, index, isAuthor, isMod, subplebbitAd
   );
 };
 
-const ReplyTools = ({ author, cid, hasLabel, index, isAuthor, isMod, showReplyForm, subplebbitAddress, showEditForm, spoiler = false }: CommentToolsProps) => {
+const ReplyTools = ({ author, cid, hasLabel, index, isAuthor, isMod, showReplyForm, subplebbitAddress, showCommentEditForm, spoiler = false }: CommentToolsProps) => {
   const { t } = useTranslation();
 
   return (
@@ -104,7 +104,7 @@ const ReplyTools = ({ author, cid, hasLabel, index, isAuthor, isMod, showReplyFo
           <span>{t('save')}</span>
         </li> 
       */}
-      {isAuthor && <EditMenu cid={cid} showEditForm={showEditForm} spoiler={spoiler} />}
+      {isAuthor && <EditMenu cid={cid} showCommentEditForm={showCommentEditForm} spoiler={spoiler} />}
       <HideMenu author={author} cid={cid} isMod={isMod} subplebbitAddress={subplebbitAddress} />
       <li className={!cid ? styles.hideReply : styles.button}>
         <span onClick={() => cid && showReplyForm?.()}>{t('reply_reply')}</span>
@@ -126,7 +126,7 @@ const SingleReplyTools = ({
   showReplyForm,
   spoiler = false,
   subplebbitAddress,
-  showEditForm,
+  showCommentEditForm,
 }: CommentToolsProps) => {
   const { t } = useTranslation();
   const comment = useComment({ commentCid: postCid });
@@ -143,7 +143,7 @@ const SingleReplyTools = ({
           <span>{t('save')}</span>
         </li> 
       */}
-      {isAuthor && <EditMenu cid={cid} spoiler={spoiler} showEditForm={showEditForm} />}
+      {isAuthor && <EditMenu cid={cid} spoiler={spoiler} showCommentEditForm={showCommentEditForm} />}
       <li className={styles.button}>
         <Link to={cid ? (hasContext ? `/p/${subplebbitAddress}/c/${cid}/context` : `/p/${subplebbitAddress}/c/${cid}`) : `/profile/${index}`}>{t('context')}</Link>
       </li>
@@ -196,7 +196,7 @@ const CommentTools = ({
   replyCount,
   spoiler,
   subplebbitAddress,
-  showEditForm,
+  showCommentEditForm,
   showReplyForm,
 }: CommentToolsProps) => {
   const account = useAccount();
@@ -228,7 +228,7 @@ const CommentTools = ({
             isMod={isMod}
             parentCid={parentCid}
             postCid={postCid}
-            showEditForm={showEditForm}
+            showCommentEditForm={showCommentEditForm}
             showReplyForm={showReplyForm}
             spoiler={spoiler}
             subplebbitAddress={subplebbitAddress}
@@ -241,7 +241,7 @@ const CommentTools = ({
             index={index}
             isAuthor={isAuthor}
             isMod={isMod}
-            showEditForm={showEditForm}
+            showCommentEditForm={showCommentEditForm}
             showReplyForm={showReplyForm}
             spoiler={spoiler}
             subplebbitAddress={subplebbitAddress}
@@ -256,7 +256,7 @@ const CommentTools = ({
           isAuthor={isAuthor}
           isMod={isMod}
           replyCount={replyCount}
-          showEditForm={showEditForm}
+          showCommentEditForm={showCommentEditForm}
           spoiler={spoiler}
           subplebbitAddress={subplebbitAddress}
         />

@@ -275,5 +275,16 @@
   "node_stats": "estatísticas do nó",
   "version": "versão",
   "edit_reason": "motivo da edição",
-  "view_parent_comment": "ver comentário pai"
+  "view_parent_comment": "ver comentário pai",
+  "chain_ticker": "Ticker de blockchain",
+  "token_address_whitelist": "Endereço do token (apenas se estiver na lista branca)",
+  "token_id": "ID do token",
+  "paste_signature": "Colar assinatura",
+  "copy_message_etherscan": "<1>{{copy}}</1> mensagem para assinar no <2>etherscan</2>",
+  "copy": "copiar",
+  "copied": "copiado",
+  "missing_chain_ticker": "Faltando ticker de blockchain",
+  "missing_token_address": "Endereço do token em falta",
+  "missing_token_id": "ID de token em falta",
+  "missing_signature": "Assinatura em falta"
 }

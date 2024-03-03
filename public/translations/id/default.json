@@ -275,5 +275,16 @@
   "node_stats": "statistik node",
   "version": "versi",
   "edit_reason": "alasan sunting",
-  "view_parent_comment": "lihat komentar induk"
+  "view_parent_comment": "lihat komentar induk",
+  "chain_ticker": "Ticker blockchain",
+  "token_address_whitelist": "Alamat token (hanya jika dalam whitelist)",
+  "token_id": "ID token",
+  "paste_signature": "Tempelkan tanda tangan",
+  "copy_message_etherscan": "<1>{{copy}}</1> pesan untuk ditandatangani di <2>etherscan</2>",
+  "copy": "salin",
+  "copied": "disalin",
+  "missing_chain_ticker": "Ticker blockchain yang hilang",
+  "missing_token_address": "Alamat token yang hilang",
+  "missing_token_id": "ID token yang hilang",
+  "missing_signature": "Tanda tangan yang hilang"
 }

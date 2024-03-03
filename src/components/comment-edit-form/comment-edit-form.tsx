@@ -50,15 +50,15 @@ const useEditStore = create<EditStoreState>((set) => ({
     set({ commentCid: undefined, content: undefined, reason: undefined, spoiler: undefined, subplebbitAddress: undefined, publishCommentEditOptions: {} }),
 }));
 
-interface EditFormProps {
+interface CommentEditFormProps {
   commentCid: string;
   content: string;
-  hideEditForm?: () => void;
+  hideCommentEditForm?: () => void;
   spoiler?: boolean;
   subplebbitAddress: string;
 }
 
-const EditForm = ({ commentCid, content, hideEditForm, spoiler = false, subplebbitAddress }: EditFormProps) => {
+const CommentEditForm = ({ commentCid, content, hideCommentEditForm, spoiler = false, subplebbitAddress }: CommentEditFormProps) => {
   const { t } = useTranslation();
   const [showOptions, setShowOptions] = useState(false);
   const [showFormattingHelp, setShowFormattingHelp] = useState(false);
@@ -118,7 +118,7 @@ const EditForm = ({ commentCid, content, hideEditForm, spoiler = false, subplebb
             className={styles.save}
             onClick={() => {
               publishCommentEdit();
-              hideEditForm && hideEditForm();
+              hideCommentEditForm && hideCommentEditForm();
             }}
           >
             {t('save')}
@@ -126,7 +126,7 @@ const EditForm = ({ commentCid, content, hideEditForm, spoiler = false, subplebb
           <button
             className={styles.cancel}
             onClick={() => {
-              hideEditForm && hideEditForm();
+              hideCommentEditForm && hideCommentEditForm();
             }}
           >
             {t('cancel')}
@@ -138,4 +138,4 @@ const EditForm = ({ commentCid, content, hideEditForm, spoiler = false, subplebb
   );
 };
 
-export default EditForm;
+export default CommentEditForm;

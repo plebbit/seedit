@@ -7,7 +7,7 @@ import { isAllView, isPendingView, isPostView, isSubplebbitView } from '../../li
 import { getCommentMediaInfoMemoized, getHasThumbnail } from '../../lib/utils/media-utils';
 import { getHostname } from '../../lib/utils/url-utils';
 import { getFormattedTimeAgo } from '../../lib/utils/time-utils';
-import EditForm from '../edit-form';
+import CommentEditForm from '../comment-edit-form';
 import ExpandButton from './expand-button';
 import Expando from './expando';
 import Flair from './flair';
@@ -26,12 +26,24 @@ interface PostAuthorProps {
   displayName: string;
   imageUrl: string | undefined;
   index?: number;
+  isAvatarDefined: boolean;
   shortAddress: string;
   shortAuthorAddress: string | undefined;
   authorAddressChanged: boolean;
 }
 
-const PostAuthor = ({ authorAddress, authorRole, cid, displayName, imageUrl, index, shortAddress, shortAuthorAddress, authorAddressChanged }: PostAuthorProps) => {
+const PostAuthor = ({
+  authorAddress,
+  authorRole,
+  cid,
+  displayName,
+  imageUrl,
+  index,
+  isAvatarDefined,
+  shortAddress,
+  shortAuthorAddress,
+  authorAddressChanged,
+}: PostAuthorProps) => {
   const isAuthorOwner = authorRole === 'owner';
   const isAuthorAdmin = authorRole === 'admin';
   const isAuthorModerator = authorRole === 'moderator';
@@ -41,10 +53,12 @@ const PostAuthor = ({ authorAddress, authorRole, cid, displayName, imageUrl, ind
   return (
     <>
       <Link to={cid ? `/u/${authorAddress}/c/${cid}` : `/profile/${index}`} className={`${styles.author} ${moderatorClass}`}>
-        {imageUrl && (
+        {isAvatarDefined ? (
           <span className={styles.authorAvatar}>
-            <img src={imageUrl} alt='avatar' />
+            <img src={imageUrl} alt='' />
           </span>
+        ) : (
+          <> </>
         )}
         {displayName && <span className={`${styles.displayName} ${moderatorClass}`}>{displayName} </span>}
         <span className={`${styles.authorAddressWrapper} ${moderatorClass}`}>
@@ -127,8 +141,8 @@ const Post = ({ index, post = {} }: PostProps) => {
   const toggleExpanded = () => setIsExpanded(!isExpanded);
 
   const [isEditing, setIsEditing] = useState(false);
-  const showEditForm = () => setIsEditing(true);
-  const hideEditForm = () => setIsEditing(false);
+  const showCommentEditForm = () => setIsEditing(true);
+  const hideCommentEditForm = () => setIsEditing(false);
 
   const [upvoted, upvote] = useUpvote(post);
   const [downvoted, downvote] = useDownvote(post);
@@ -232,7 +246,7 @@ const Post = ({ index, post = {} }: PostProps) => {
                 )}
                 <div className={styles.tagline}>
                   {t('submitted')} {getFormattedTimeAgo(timestamp)} {edit && <span title={t('last_edited', { timestamp: getFormattedTimeAgo(edit.timestamp) })}>*</span>}{' '}
-                  {t('post_by')}{' '}
+                  {t('post_by')}
                   <PostAuthor
                     authorAddress={author?.address}
                     authorRole={authorRole}
@@ -240,6 +254,7 @@ const Post = ({ index, post = {} }: PostProps) => {
                     displayName={displayName}
                     imageUrl={imageUrl}
                     index={post?.index}
+                    isAvatarDefined={!!author?.avatar}
                     shortAddress={shortAddress}
                     shortAuthorAddress={shortAuthorAddress}
                     authorAddressChanged={authorAddressChanged}
@@ -277,7 +292,7 @@ const Post = ({ index, post = {} }: PostProps) => {
                   index={post?.index}
                   removed={removed}
                   replyCount={replyCount}
-                  showEditForm={showEditForm}
+                  showCommentEditForm={showCommentEditForm}
                   spoiler={spoiler}
                   subplebbitAddress={subplebbitAddress}
                 />
@@ -285,7 +300,7 @@ const Post = ({ index, post = {} }: PostProps) => {
             </div>
           </div>
           {isEditing ? (
-            <EditForm commentCid={cid} content={content} hideEditForm={hideEditForm} spoiler={spoiler} subplebbitAddress={subplebbitAddress} />
+            <CommentEditForm commentCid={cid} content={content} hideCommentEditForm={hideCommentEditForm} spoiler={spoiler} subplebbitAddress={subplebbitAddress} />
           ) : (
             <Expando
               authorEditReason={edit?.reason}

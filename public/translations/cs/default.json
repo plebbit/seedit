@@ -275,5 +275,16 @@
   "node_stats": "statistiky uzlu",
   "version": "verze",
   "edit_reason": "důvod úpravy",
-  "view_parent_comment": "zobrazit původní komentář"
+  "view_parent_comment": "zobrazit původní komentář",
+  "chain_ticker": "Řetězový ticker",
+  "token_address_whitelist": "Adresa tokenu (pouze v bílém seznamu)",
+  "token_id": "Token ID",
+  "paste_signature": "Vložit podpis",
+  "copy_message_etherscan": "<1>{{copy}}</1> zpráva k podpisu na <2>etherscan</2>",
+  "copy": "kopírovat",
+  "copied": "zkopírováno",
+  "missing_chain_ticker": "Chybějící řetězový ticker",
+  "missing_token_address": "Chybějící tokenová adresa",
+  "missing_token_id": "Chybějící ID tokenu",
+  "missing_signature": "Chybějící podpis"
 }

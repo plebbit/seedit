@@ -275,5 +275,16 @@
   "node_stats": "নোড পরিসংখ্যান",
   "version": "সংস্করণ",
   "edit_reason": "সম্পাদনার কারণ",
-  "view_parent_comment": "মূল মন্তব্য দেখুন"
+  "view_parent_comment": "মূল মন্তব্য দেখুন",
+  "chain_ticker": "শৃঙ্খলা টিকার",
+  "token_address_whitelist": "টোকেন ঠিকানা (কেবল সফেদ তালিকা তৈরি করলে)",
+  "token_id": "টোকেন আইডি",
+  "paste_signature": "স্বাক্ষর পেস্ট করুন",
+  "copy_message_etherscan": "<1>{{copy}}</1> বার্তা সাইন করতে <2>etherscan</2> এ",
+  "copy": "কপি",
+  "copied": "নকল হয়েছে",
+  "missing_chain_ticker": "নিখোঁজ শৃঙ্খলা টিকার",
+  "missing_token_address": "নিখোঁজ টোকেন ঠিকানা",
+  "missing_token_id": "নিখোঁজ টোকেন আইডি",
+  "missing_signature": "নিখোঁজ স্বাক্ষর"
 }

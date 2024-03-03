@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from 'react';
 import { setAccount, useAccount, useAuthorAvatar } from '@plebbit/plebbit-react-hooks';
 import styles from './avatar-settings.module.css';
+import { Trans, useTranslation } from 'react-i18next';
 
 interface AvatarSettingsProps {
   avatar?: any;
@@ -28,7 +29,7 @@ const AvatarPreview = ({ avatar, showSettings }: AvatarSettingsProps) => {
   return (
     <>
       <div className={styles.avatar} onClick={showSettings}>
-        {imageUrl && state !== 'initializing' && <img src={imageUrl} alt='avatar' />}
+        {imageUrl && state !== 'initializing' && <img src={imageUrl} alt='' />}
       </div>
       {state !== 'succeeded' && account?.author?.avatar && (
         <div className={styles.state}>
@@ -40,10 +41,9 @@ const AvatarPreview = ({ avatar, showSettings }: AvatarSettingsProps) => {
 };
 
 const AvatarSettings = () => {
+  const { t } = useTranslation();
   const [showSettings, setShowSettings] = useState(false);
-
   const account = useAccount();
-
   const authorAddress = account?.author?.address;
   const [chainTicker, setChainTicker] = useState(account?.author?.avatar?.chainTicker);
   const [tokenAddress, setTokenAddress] = useState(account?.author?.avatar?.address);
@@ -74,13 +74,13 @@ const AvatarSettings = () => {
 
   const copyMessageToSign = () => {
     if (!chainTicker) {
-      return alert('missing chain ticker');
+      return alert(t('missing_chain_ticker'));
     }
     if (!tokenAddress) {
-      return alert('missing token address');
+      return alert(t('missing_token_address'));
     }
     if (!tokenId) {
-      return alert('missing token id');
+      return alert(t('missing_token_id'));
     }
     const newTimestamp = Math.floor(Date.now() / 1000);
     const messageToSign = getNftMessageToSign(authorAddress, newTimestamp, tokenAddress, tokenId);
@@ -104,16 +104,16 @@ const AvatarSettings = () => {
 
   const save = () => {
     if (!chainTicker) {
-      return alert('missing chain ticker');
+      return alert(t('missing_chain_ticker'));
     }
     if (!tokenAddress) {
-      return alert('missing token address');
+      return alert(t('missing_token_address'));
     }
     if (!tokenId) {
-      return alert('missing token id');
+      return alert(t('missing_token_id'));
     }
     if (!signature) {
-      return alert('missing signature');
+      return alert(t('missing_signature'));
     }
     setAccount({ ...account, author: { ...account?.author, avatar } });
     alert(`saved`);
@@ -125,7 +125,7 @@ const AvatarSettings = () => {
       {showSettings && (
         <div className={styles.avatarSettingsForm}>
           <div className={styles.avatarSettingInput}>
-            <span className={styles.settingTitle}>chain ticker</span>
+            <span className={styles.settingTitle}>{t('chain_ticker')}</span>
             <input
               type='text'
               placeholder='eth/sol/avax'
@@ -137,7 +137,7 @@ const AvatarSettings = () => {
             />
           </div>
           <div className={styles.avatarSettingInput}>
-            <span className={styles.settingTitle}>token address</span>
+            <span className={styles.settingTitle}>{t('token_address_whitelist')}</span>
             <input
               type='text'
               placeholder='0x...'
@@ -149,7 +149,7 @@ const AvatarSettings = () => {
             />
           </div>
           <div className={styles.avatarSettingInput}>
-            <span className={styles.settingTitle}>token id</span>
+            <span className={styles.settingTitle}>{t('token_id')}</span>
             <input
               type='text'
               placeholder='Token ID'
@@ -161,13 +161,18 @@ const AvatarSettings = () => {
             />
           </div>
           <div className={styles.copyMessage}>
-            <button onClick={copyMessageToSign}>{hasCopied ? 'copied' : 'copy'}</button> message to sign on{' '}
-            <a href='https://etherscan.io/verifiedSignatures' target='_blank' rel='noopener noreferrer'>
-              etherscan
-            </a>
+            <Trans
+              i18nKey='copy_message_etherscan'
+              values={{ copy: hasCopied ? t('copied') : t('copy') }}
+              components={{
+                1: <button onClick={copyMessageToSign} />,
+                // eslint-disable-next-line
+                2: <a href='https://etherscan.io/verifiedSignatures' target='_blank' rel='noopener noreferrer' />,
+              }}
+            />
           </div>
           <div className={styles.pasteSignature}>
-            <span className={styles.settingTitle}>paste signature</span>
+            <span className={styles.settingTitle}>{t('paste_signature')}</span>
             <input
               type='text'
               placeholder='0x...'
@@ -177,7 +182,7 @@ const AvatarSettings = () => {
               defaultValue={account?.author?.avatar?.signature?.signature}
               onChange={(e) => setSignature(e.target.value)}
             />
-            <button onClick={save}>save</button>
+            <button onClick={save}>{t('save')}</button>
           </div>
         </div>
       )}
