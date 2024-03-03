@@ -773,7 +773,12 @@ const Challenges = ({ isReadOnly, readOnlyChallenges }: { isReadOnly: boolean; r
 const JSONSettings = ({ isReadOnly = false }: { isReadOnly?: boolean }) => {
   const { t } = useTranslation();
   const { challenges, title, description, address, suggested, rules, roles, settings, subplebbitAddress, setSubplebbitSettingsStore } = useSubplebbitSettingsStore();
-  const [text, setText] = useState(JSON.stringify({ title, description, address, suggested, rules, roles, settings, challenges, subplebbitAddress }, null, 2));
+  const [text, setText] = useState('');
+
+  useEffect(() => {
+    const JSONSettings = JSON.stringify({ title, description, address, suggested, rules, roles, settings, challenges, subplebbitAddress }, null, 2);
+    setText(JSONSettings);
+  }, [challenges, title, description, address, suggested, rules, roles, settings, subplebbitAddress]);
 
   const handleChange = (newText: string) => {
     setText(newText);
