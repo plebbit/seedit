@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { Link, useLocation, useParams } from 'react-router-dom';
+import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useAccount } from '@plebbit/plebbit-react-hooks';
 import Plebbit from '@plebbit/plebbit-js/dist/browser/index.js';
@@ -9,6 +9,7 @@ import useTimeFilter, { TimeFilterKey } from '../../hooks/use-time-filter';
 import { isAllView, isHomeView, isSubplebbitView } from '../../lib/utils/view-utils';
 
 const sortTypes = ['hot', 'new', 'active', 'controversialAll', 'topAll'];
+const isElectron = window.isElectron === true;
 
 const TopBar = () => {
   const account = useAccount();
@@ -103,6 +104,23 @@ const TopBar = () => {
     allLink += `/${selectedSortType}/${timeFilterName}`;
   }
 
+  const isConnectedToRpc = !!account?.plebbitOptions.plebbitRpcClientsOptions;
+  const navigate = useNavigate();
+  const handleCreateCommunity = () => {
+    // creating a community only works if the user is running a full node
+    if (isElectron || isConnectedToRpc) {
+      navigate('/communities/create');
+    } else {
+      alert(
+        t('create_community_not_available', {
+          desktopLink: 'https://github.com/plebbit/seedit/releases/latest',
+          cliLink: 'https://github.com/plebbit/plebbit-cli',
+          interpolation: { escapeValue: false },
+        }),
+      );
+    }
+  };
+
   return (
     <div className={styles.headerArea}>
       <div className={styles.widthClip}>
@@ -114,10 +132,13 @@ const TopBar = () => {
                 {Plebbit.getShortAddress(subscription)}
               </Link>
             ))}
-            <Link to='/communities/vote' className={`${styles.dropdownItem} ${styles.defaultCommunities}`}>
+            <span onClick={handleCreateCommunity} className={`${styles.dropdownItem} ${styles.myCommunitiesItemButtonDotted}`}>
+              {t('create_community')}
+            </span>
+            <Link to='/communities/vote' className={`${styles.dropdownItem} ${styles.myCommunitiesItemButton}`}>
               {t('default_communities')}
             </Link>
-            <Link to='/communities/subscriber' className={`${styles.dropdownItem} ${styles.editSubscriptions}`}>
+            <Link to='/communities/subscriber' className={`${styles.dropdownItem} ${styles.myCommunitiesItemButton}`}>
               {t('edit_subscriptions')}
             </Link>
           </div>

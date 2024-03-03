@@ -52,18 +52,18 @@
   background-color: var(--background-primary);
 }
 
-.defaultCommunities {
+.myCommunitiesItemButtonDotted {
   font-style: italic;
   text-transform: uppercase;
   border-top: 1px dotted var(--text-primary);
 }
 
-.editSubscriptions {
+.myCommunitiesItemButton {
   font-style: italic;
   text-transform: uppercase;
 }
 
-.dropChoices a {
+.dropChoices a, .dropChoices span {
   text-decoration: none;
   color: var(--text-primary);
 }
