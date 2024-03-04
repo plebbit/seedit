@@ -1,9 +1,10 @@
-## [0.1.6](https://github.com/plebbit/seedit/compare/v0.1.5...v0.1.6) (2024-02-27)
+## [0.1.6](https://github.com/plebbit/seedit/compare/v0.1.5...v0.1.6) (2024-03-03)
 
 
 ### Bug Fixes
 
 * **account settings:** removed unnecessary reload when switching account, allow to delete last account (refreshing creates a new one) ([51f7dba](https://github.com/plebbit/seedit/commit/51f7dbadae5f385216d97b60d65c6ceb5ea0f765))
+* **author sidebar:** hide +friends button until functionality is implemented ([83ea30d](https://github.com/plebbit/seedit/commit/83ea30d8e7ab06b70a98efaba6b8c756a8b89aa9))
 * **challenge modal:** special characters couldn't get rendered in post content preview ([9d2c01d](https://github.com/plebbit/seedit/commit/9d2c01d12fff752422581988a05d779a76719c86))
 * **comment tools:** don't show 'report' button if the user is the author ([96fd888](https://github.com/plebbit/seedit/commit/96fd888194a6f019e3deedf2b251142c11823fa5))
 * don't reset time filter when changing sort in feeds ([e2de559](https://github.com/plebbit/seedit/commit/e2de55987cc02ecee94a0c57c4954d31a478ef27))
@@ -11,12 +12,16 @@
 * **embed:** videos on mobile had wrong width ([c560dd7](https://github.com/plebbit/seedit/commit/c560dd7d962f77639d6037a6289a86167ed7c439))
 * **expando:** clicking on video would redirect to external link ([ff52a9a](https://github.com/plebbit/seedit/commit/ff52a9a05e50770133a18648d8683242281cf0ad))
 * hide buttons that aren't functional yet (save, crosspost, embed, report) ([265f6c1](https://github.com/plebbit/seedit/commit/265f6c1df0f62e566a68d5fa26741c0ad219f56c))
+* loading avatar should have empty space ([4e8142c](https://github.com/plebbit/seedit/commit/4e8142cd2196e57c0d17fe6a5c7d164f5f143118))
 * **mod menu:** close modal when saving, instead of waiting for publishing ([929514f](https://github.com/plebbit/seedit/commit/929514ffde1ace70bb50cbddd15470797423c690))
 * **post:** display title as dash if it's empty ([712779d](https://github.com/plebbit/seedit/commit/712779d30e01d4ead71166d7544992cce6db8619))
 * **post:** dotted border for last visited post should only persist in the same window ([0a67399](https://github.com/plebbit/seedit/commit/0a673991236fa8a1314746ccc2ada42ff83a3e33))
 * **post:** font size would bug out with overflowing title ([5890b92](https://github.com/plebbit/seedit/commit/5890b92888af1c5cc5c685f80be695ebc53b0dc1))
+* **profile:** hide 'saved' and 'hidden' tabs until functional ([ad5f73f](https://github.com/plebbit/seedit/commit/ad5f73f0de618b46dc2f7c262d22526ddd131659))
 * **reply form:** couldn't reply from inbox page because subplebbit address wasn't defined ([c31b7eb](https://github.com/plebbit/seedit/commit/c31b7eb52fee9aad04d2f6666b071b40031eb502))
 * **settings:** display name setting wouldn't reset on account change ([b961626](https://github.com/plebbit/seedit/commit/b9616264f8584992e5c3e9c27e32ce971a8111b5))
+* **sidebar:** 'created by u/' link shouldn't be a link because it has no cid ([1e73aee](https://github.com/plebbit/seedit/commit/1e73aee41ec50d38016c2b09b28677f87dfaef72))
+* **sidebar:** hide 'about moderation team' button, not functional yet ([f887dc2](https://github.com/plebbit/seedit/commit/f887dc273d0520f9c88da08bb3ba179e555573a1))
 * **sidebar:** show moderation tools to sub owner without role ([15921ef](https://github.com/plebbit/seedit/commit/15921ef75c4cb5296710748c21a904b1c4224813))
 * **submit:** address wasn't selected when clicking it in the dropdown ([c55cd75](https://github.com/plebbit/seedit/commit/c55cd75a70da7f47d326ce1449327a989583a3f5))
 * **subplebbit settings:** don't add empty exclude group when adding challenge ([2465a8b](https://github.com/plebbit/seedit/commit/2465a8bcf9b74949d3bbc2b9cf0e47095d4d3ffd))
@@ -57,18 +62,24 @@
 * **settings:** add double confirm when deleting account, red color ([5afcf5c](https://github.com/plebbit/seedit/commit/5afcf5c21a886d5f60a7a4b36e8d1b4eab899c8b))
 * **settings:** add link to ipfs stats on desktop full node, version info ([d833a89](https://github.com/plebbit/seedit/commit/d833a89fc43777690396e8c02900fc9ad78e5343))
 * **settings:** add profile avatar setting ([4b90287](https://github.com/plebbit/seedit/commit/4b902871b92043920e3cff64536d88af53cb4ad2))
+* show avatar in profile page sidebar ([d3e85ab](https://github.com/plebbit/seedit/commit/d3e85ab214d5a052a9d58825f40b09e092491ea1))
 * **submit:** add markdown preview for post content ([5c5273f](https://github.com/plebbit/seedit/commit/5c5273fc17421d4d5f6b9b636d0f5170b85af392))
 * **submit:** add media preview to url field ([2d6e7dd](https://github.com/plebbit/seedit/commit/2d6e7ddb381e31befcf546cd542fa0db2761cfa1))
 * **subplebbit settings:** add delete community button ([615bd0d](https://github.com/plebbit/seedit/commit/615bd0d00c09efbe08c5701c3160bc5c2d45a7ee))
 * **subplebbit settings:** add markdown preview for description ([30caa7e](https://github.com/plebbit/seedit/commit/30caa7e7abe71cca1bcde0e0953d36da060ffc9f))
+* **topbar:** add create community button to 'my communities' dropdown, so it's easier to find on mobile ([55a30e8](https://github.com/plebbit/seedit/commit/55a30e87c17834e558b638467285670c839affda))
 * **topbar:** add link to default communities in "my communities" dropdown, rename "edit" link to "more" ([09a7e63](https://github.com/plebbit/seedit/commit/09a7e63dc48b1b172582a64a64e8723cfc1c793b))
 
 
 ### Performance Improvements
 
+* **inbox:** memoize filters to avoid recalculation at every render ([f6caf90](https://github.com/plebbit/seedit/commit/f6caf90d8d2d2dff0db5fe9db697d81bbd5b3d00))
 * **markdown:** only render links in content if its length is less than 10000, to avoid lag ([0edca2a](https://github.com/plebbit/seedit/commit/0edca2aad90821e1757ee451d53967eadb8552e2))
+* **media utils:** memoize link media info ([caa5390](https://github.com/plebbit/seedit/commit/caa5390d995530208e1e1bd3e330ac46379c31bb))
 * **post page:** optimize load time ([369360c](https://github.com/plebbit/seedit/commit/369360ca0c17d79d1eba28c40445c53a034b7a5f))
 * **reply form:** faster replying by passing cid and sub address without having to load the post; fix no sub address error ([3b40538](https://github.com/plebbit/seedit/commit/3b40538b84089714352613b53aa973a39096da6a))
+* **settings:** remove unnecessary useEffect from crypto address and displayName functions ([a2ade9f](https://github.com/plebbit/seedit/commit/a2ade9fc65bf4b3193c4c4ed660ead7152870ee5))
+* **settings:** use default value and inline fallback for dynamic strings, instead of useEffect ([1c4883e](https://github.com/plebbit/seedit/commit/1c4883e83f2d7e543c2b97cda2e26cb9eb72a5cd))
 
 
 ### Reverts
