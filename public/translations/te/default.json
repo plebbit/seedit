@@ -286,5 +286,6 @@
   "missing_chain_ticker": "తప్పిన బ్లాక్ చేన్ టిక్కర్",
   "missing_token_address": "తప్పని టోకెన్ చిరునామా",
   "missing_token_id": "తప్పని టోకెన్ ఐడి",
-  "missing_signature": "తప్పని సంతకం"
+  "missing_signature": "తప్పని సంతకం",
+  "edited_timestamp": "{{timestamp}} ముందు సవరించబడింది"
 }

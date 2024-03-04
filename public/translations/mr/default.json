@@ -286,5 +286,6 @@
   "missing_chain_ticker": "गुमलेला श्रृंखला टिकर",
   "missing_token_address": "गुमलेला टोकन पत्ता",
   "missing_token_id": "गुमलेला टोकन आयडी",
-  "missing_signature": "गुमलेली स्वाक्षरे"
+  "missing_signature": "गुमलेली स्वाक्षरे",
+  "edited_timestamp": "{{timestamp}} संपादित"
 }

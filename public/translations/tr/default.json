@@ -286,5 +286,6 @@
   "missing_chain_ticker": "Eksik Blockchain ticker",
   "missing_token_address": "Eksik token adresi",
   "missing_token_id": "Eksik token kimliği",
-  "missing_signature": "Eksik imza"
+  "missing_signature": "Eksik imza",
+  "edited_timestamp": "{{timestamp}} önce düzenlendi"
 }

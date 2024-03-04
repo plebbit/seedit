@@ -286,5 +286,6 @@
   "missing_chain_ticker": "不足しているチェーンティッカー",
   "missing_token_address": "不足しているトークンアドレス",
   "missing_token_id": "不足しているトークンID",
-  "missing_signature": "不足している署名"
+  "missing_signature": "不足している署名",
+  "edited_timestamp": "編集済み {{timestamp}}"
 }

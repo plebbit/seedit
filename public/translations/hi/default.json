@@ -286,5 +286,6 @@
   "missing_chain_ticker": "गायब श्रृंखला टिकर",
   "missing_token_address": "गायब टोकन पता",
   "missing_token_id": "गायब टोकन आईडी",
-  "missing_signature": "गायब हस्ताक्षर"
+  "missing_signature": "गायब हस्ताक्षर",
+  "edited_timestamp": "संपादित {{timestamp}}"
 }

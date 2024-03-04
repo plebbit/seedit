@@ -286,5 +286,6 @@
   "missing_chain_ticker": "Hiányzó lánc ticker",
   "missing_token_address": "Hiányzó token cím",
   "missing_token_id": "Hiányzó token azonosító",
-  "missing_signature": "Hiányzó aláírás"
+  "missing_signature": "Hiányzó aláírás",
+  "edited_timestamp": "Szerkesztve {{timestamp}}"
 }

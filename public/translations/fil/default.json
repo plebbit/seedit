@@ -286,5 +286,6 @@
   "missing_chain_ticker": "Kulang na ticker ng chain",
   "missing_token_address": "Kulang na address ng token",
   "missing_token_id": "Kulang na ID ng token",
-  "missing_signature": "Kulang na lagda"
+  "missing_signature": "Kulang na lagda",
+  "edited_timestamp": "Na-edit na ang {{timestamp}}"
 }

@@ -286,5 +286,6 @@
   "missing_chain_ticker": "ناقص الرمز المتسلسل",
   "missing_token_address": "عنوان الرمز المفقود",
   "missing_token_id": "معرف الرمز المفقود",
-  "missing_signature": "التوقيع المفقود"
+  "missing_signature": "التوقيع المفقود",
+  "edited_timestamp": "تم التحرير {{timestamp}}"
 }

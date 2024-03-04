@@ -286,5 +286,6 @@
   "missing_chain_ticker": "گمشدہ بلاک چین ٹکر",
   "missing_token_address": "گمشدہ ٹوکن ایڈریس",
   "missing_token_id": "گمشدہ ٹوکن شناختی نمبر",
-  "missing_signature": "گمشدہ دستخط"
+  "missing_signature": "گمشدہ دستخط",
+  "edited_timestamp": "{{timestamp}} پہلے ترمیم شدہ"
 }

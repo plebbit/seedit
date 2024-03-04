@@ -286,5 +286,6 @@
   "missing_chain_ticker": "Відсутній тікер блокчейну",
   "missing_token_address": "Відсутня адреса токена",
   "missing_token_id": "Відсутній ідентифікатор токена",
-  "missing_signature": "Відсутній підпис"
+  "missing_signature": "Відсутній підпис",
+  "edited_timestamp": "Відредаговано {{timestamp}}"
 }

@@ -286,5 +286,6 @@
   "missing_chain_ticker": "Mungon ticker blockchain",
   "missing_token_address": "Adresa e munguar e tokenit",
   "missing_token_id": "ID e munguar e tokenit",
-  "missing_signature": "Nënshkrimi i munguar"
+  "missing_signature": "Nënshkrimi i munguar",
+  "edited_timestamp": "Redaktuar {{timestamp}}"
 }

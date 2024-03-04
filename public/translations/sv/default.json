@@ -286,5 +286,6 @@
   "missing_chain_ticker": "Saknad blockchain ticker",
   "missing_token_address": "Saknad tokenadress",
   "missing_token_id": "Saknad token-ID",
-  "missing_signature": "Saknad signatur"
+  "missing_signature": "Saknad signatur",
+  "edited_timestamp": "Redigerat {{timestamp}}"
 }

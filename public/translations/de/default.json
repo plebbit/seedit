@@ -286,5 +286,6 @@
   "missing_chain_ticker": "Fehlender Blockchain-Ticker",
   "missing_token_address": "Fehlende Tokenadresse",
   "missing_token_id": "Fehlende Token-ID",
-  "missing_signature": "Fehlende Signatur"
+  "missing_signature": "Fehlende Signatur",
+  "edited_timestamp": "Bearbeitet {{timestamp}}"
 }

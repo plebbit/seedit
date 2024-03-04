@@ -286,5 +286,6 @@
   "missing_chain_ticker": "Chybějící řetězový ticker",
   "missing_token_address": "Chybějící tokenová adresa",
   "missing_token_id": "Chybějící ID tokenu",
-  "missing_signature": "Chybějící podpis"
+  "missing_signature": "Chybějící podpis",
+  "edited_timestamp": "Upraveno {{timestamp}}"
 }
