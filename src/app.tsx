@@ -24,6 +24,7 @@ import StickyHeader from './components/sticky-header';
 import TopBar from './components/topbar';
 
 export const sortTypes = ['hot', 'new', 'active', 'controversialAll', 'topAll'];
+const isElectron = window.isElectron === true;
 
 const CheckRouteParams = () => {
   let { sortType, timeFilterName, accountCommentIndex } = useParams<{ sortType?: string; timeFilterName?: string; accountCommentIndex?: string }>();
@@ -70,6 +71,15 @@ const App = () => {
       <Outlet />
     </>
   );
+
+  useEffect(() => {
+    if (!window.location.hash && !isElectron) {
+      // Calculate the base URL (protocol + host)
+      const baseURL = window.location.protocol + '//' + window.location.host + '/';
+      // Redirect to the base URL with `#/`
+      window.location.replace(baseURL + '#/');
+    }
+  }, []);
 
   return (
     <div className={`${styles.app} ${theme}`}>
