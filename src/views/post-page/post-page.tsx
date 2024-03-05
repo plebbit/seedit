@@ -41,7 +41,7 @@ const Post = ({ post }: { post: Comment }) => {
 
   return (
     <>
-      {post?.locked && (
+      {(post?.locked || post?.removed) && (
         <div className={styles.lockedInfobar}>
           <div className={styles.lockedInfobarText}>{t('post_locked_info')}</div>
         </div>
@@ -97,7 +97,7 @@ const PostWithContext = ({ post }: { post: Comment }) => {
 
   return (
     <>
-      {post?.locked && (
+      {(post?.locked || post?.removed) && (
         <div className={styles.lockedInfobar}>
           <div className={styles.lockedInfobarText}>{t('post_locked_info')}</div>
         </div>
