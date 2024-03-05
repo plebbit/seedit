@@ -321,7 +321,7 @@ const Reply = ({ cidOfReplyWithContext, depth = 0, isSingleComment, isSingleRepl
   const location = useLocation();
   const params = useParams();
   const isInInboxView = isInboxView(location.pathname);
-  const isInPostContextView = isPostContextView(location.pathname, params);
+  const isInPostContextView = isPostContextView(location.pathname, params, location.search);
 
   return (
     <div className={styles.reply}>

@@ -158,7 +158,7 @@ const SingleReplyTools = ({
   const permalinkButton = cid ? <Link to={cid ? `/p/${subplebbitAddress}/c/${cid}` : `/profile/${index}`}>permalink</Link> : <span>permalink</span>;
 
   const contextButton = cid ? (
-    <Link to={cid ? (hasContext ? `/p/${subplebbitAddress}/c/${cid}/context` : `/p/${subplebbitAddress}/c/${cid}`) : `/profile/${index}`}>{t('context')}</Link>
+    <Link to={cid ? (hasContext ? `/p/${subplebbitAddress}/c/${cid}?context=1` : `/p/${subplebbitAddress}/c/${cid}`) : `/profile/${index}`}>{t('context')}</Link>
   ) : (
     <span>{t('context')}</span>
   );

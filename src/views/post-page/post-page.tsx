@@ -133,7 +133,7 @@ const PostPage = () => {
   const location = useLocation();
 
   const isInPendingView = isPendingView(location.pathname, params);
-  const isInPostContextView = isPostContextView(location.pathname, params);
+  const isInPostContextView = isPostContextView(location.pathname, params, location.search);
 
   const post = useComment({ commentCid: params?.commentCid });
   const { cid, downvoteCount, timestamp, upvoteCount } = post || {};
