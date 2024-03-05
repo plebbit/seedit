@@ -72,8 +72,8 @@ const ModMenu = ({ cid }: ModMenuProps) => {
 
   return (
     <>
-      <li className={styles.button} ref={refs.setReference} {...getReferenceProps()}>
-        <span onClick={() => setIsModMenuOpen(!isModMenuOpen)}>{t('moderation')}</span>
+      <li className={styles.button} ref={refs.setReference} {...(cid && getReferenceProps())}>
+        <span onClick={() => cid && setIsModMenuOpen(!isModMenuOpen)}>{t('moderation')}</span>
       </li>
       {isModMenuOpen && (
         <FloatingFocusManager context={context} modal={false}>

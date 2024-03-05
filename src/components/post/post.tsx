@@ -92,7 +92,7 @@ const Post = ({ index, post = {} }: PostProps) => {
     post = op;
   }
   // handle pending mod or author edit
-  const { state: editState, editedComment } = useEditedComment({ comment: post });
+  const { editedComment } = useEditedComment({ comment: post });
   if (editedComment) {
     post = editedComment;
   }
@@ -286,11 +286,8 @@ const Post = ({ index, post = {} }: PostProps) => {
                 <CommentTools
                   author={author}
                   cid={cid}
-                  deleted={deleted}
                   failed={state === 'failed'}
-                  editState={editState}
                   index={post?.index}
-                  removed={removed}
                   replyCount={replyCount}
                   showCommentEditForm={showCommentEditForm}
                   spoiler={spoiler}

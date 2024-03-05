@@ -66,14 +66,14 @@ const EditMenu = ({ cid, showCommentEditForm }: EditMenuProps) => {
       <li className={styles.button}>
         <span
           onClick={() => {
-            showCommentEditForm && showCommentEditForm();
+            showCommentEditForm && cid && showCommentEditForm();
           }}
         >
           {t('edit')}
         </span>
       </li>
       <li className={styles.button}>
-        <span onClick={deleteComment}>{t('delete')}</span>
+        <span onClick={() => cid && deleteComment()}>{t('delete')}</span>
       </li>
     </>
   );

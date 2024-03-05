@@ -6,15 +6,12 @@ import EditMenu from './edit-menu';
 import HideMenu from './hide-menu';
 import ModMenu from './mod-menu';
 import ShareMenu from './share-menu';
-import Label from '../label';
 import { isInboxView } from '../../../lib/utils/view-utils';
 
 interface CommentToolsProps {
   author?: Author;
   cid: string;
-  deleted?: boolean;
   failed?: boolean;
-  editState?: string;
   hasLabel?: boolean;
   index?: number;
   isAuthor?: boolean;
@@ -23,7 +20,6 @@ interface CommentToolsProps {
   isSingleReply?: boolean;
   parentCid?: string;
   postCid?: string;
-  removed?: boolean;
   replyCount?: number;
   spoiler?: boolean | undefined;
   subplebbitAddress: string;
@@ -90,14 +86,32 @@ const PostTools = ({ author, cid, hasLabel, index, isAuthor, isMod, subplebbitAd
   );
 };
 
-const ReplyTools = ({ author, cid, hasLabel, index, isAuthor, isMod, showReplyForm, subplebbitAddress, showCommentEditForm, spoiler = false }: CommentToolsProps) => {
+const ReplyTools = ({
+  author,
+  cid,
+  failed,
+  hasLabel,
+  index,
+  isAuthor,
+  isMod,
+  showReplyForm,
+  subplebbitAddress,
+  showCommentEditForm,
+  spoiler = false,
+}: CommentToolsProps) => {
   const { t } = useTranslation();
+
+  const permalink = failed ? (
+    <span className={`${styles.button} ${!hasLabel ? styles.firstButton : ''}`}>permalink</span>
+  ) : (
+    <Link to={cid ? `/p/${subplebbitAddress}/c/${cid}` : `/profile/${index}`} className={`${styles.button} ${!hasLabel ? styles.firstButton : ''}`}>
+      permalink
+    </Link>
+  );
 
   return (
     <>
-      <li className={`${styles.button} ${!hasLabel ? styles.firstButton : ''}`}>
-        <Link to={cid ? `/p/${subplebbitAddress}/c/${cid}` : `/profile/${index}`}>permalink</Link>
-      </li>
+      <li className={`${styles.button} ${!hasLabel ? styles.firstButton : ''}`}>{permalink}</li>
       <ShareMenu cid={cid} subplebbitAddress={subplebbitAddress} />
       {/* TODO: Implement save functionality
         <li className={styles.button}>
@@ -161,38 +175,16 @@ const SingleReplyTools = ({
   );
 };
 
-const CommentToolsLabel = ({ cid, deleted, failed, editState, isReply, removed, spoiler }: CommentToolsProps) => {
-  const { t } = useTranslation();
-  const pending = cid === undefined && !isReply && !failed;
-  const failedEdit = editState === 'failed';
-  const pendingEdit = editState === 'pending';
-
-  return (
-    <>
-      {spoiler && <Label color='black' text={t('spoiler')} />}
-      {pending && <Label color='yellow' text={t('pending')} />}
-      {failed && <Label color='red' text={t('failed')} />}
-      {deleted && <Label color='red' text={t('deleted')} />}
-      {removed && <Label color='red' text={t('removed')} />}
-      {failedEdit && <Label color='red' text={t('failed_edit')} />}
-      {pendingEdit && <Label color='yellow' text={t('pending_edit')} />}
-    </>
-  );
-};
-
 const CommentTools = ({
   author,
   cid,
-  deleted,
   failed,
-  editState,
   hasLabel = false,
   index,
   isReply,
   isSingleReply,
   parentCid,
   postCid,
-  removed,
   replyCount,
   spoiler,
   subplebbitAddress,
@@ -207,21 +199,12 @@ const CommentTools = ({
 
   return (
     <ul className={`${styles.buttons} ${isReply && !isInInboxView ? styles.buttonsReply : ''} ${hasLabel ? styles.buttonsLabel : ''}`}>
-      <CommentToolsLabel
-        cid={cid}
-        deleted={deleted}
-        failed={failed}
-        editState={editState}
-        isReply={isReply}
-        removed={removed}
-        spoiler={spoiler}
-        subplebbitAddress={subplebbitAddress}
-      />
       {isReply ? (
         isSingleReply ? (
           <SingleReplyTools
             author={author}
             cid={cid}
+            failed={failed}
             hasLabel={hasLabel}
             index={index}
             isAuthor={isAuthor}
@@ -237,6 +220,7 @@ const CommentTools = ({
           <ReplyTools
             author={author}
             cid={cid}
+            failed={failed}
             hasLabel={hasLabel}
             index={index}
             isAuthor={isAuthor}
@@ -251,6 +235,7 @@ const CommentTools = ({
         <PostTools
           author={author}
           cid={cid}
+          failed={failed}
           hasLabel={hasLabel}
           index={index}
           isAuthor={isAuthor}

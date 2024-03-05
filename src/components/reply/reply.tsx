@@ -428,6 +428,7 @@ const Reply = ({ cidOfReplyWithContext, depth = 0, isSingleComment, isSingleRepl
               <CommentTools
                 author={author}
                 cid={cid}
+                failed={state === 'failed'}
                 isReply={true}
                 isSingleReply={isSingleReply}
                 index={reply?.index}

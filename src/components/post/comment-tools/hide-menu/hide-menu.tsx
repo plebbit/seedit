@@ -75,8 +75,8 @@ const HideMenu = ({ author, cid, isMod, subplebbitAddress }: HideMenuProps) => {
 
   return (
     <>
-      <li className={styles.button} ref={refs.setReference} {...getReferenceProps()}>
-        <span onClick={() => setIsHideMenuOpen(!isHideMenuOpen)}>{t('hide')}</span>
+      <li className={styles.button} ref={refs.setReference} {...(cid && getReferenceProps())}>
+        <span onClick={() => cid && setIsHideMenuOpen(!isHideMenuOpen)}>{t('hide')}</span>
       </li>
       {isHideMenuOpen && (
         <FloatingFocusManager context={context} modal={false}>
