@@ -102,7 +102,7 @@ const ModMenu = ({ cid }: ModMenuProps) => {
               <div className={styles.menuItem}>
                 <label>
                   <input onChange={onCheckbox} checked={publishCommentEditOptions.pinned} type='checkbox' id='pinned' />
-                  {t('announcement')}
+                  {isReply ? t('stickied_comment') : t('announcement')}
                 </label>
               </div>
               <div className={`${styles.menuItem} ${styles.menuReason}`}>
