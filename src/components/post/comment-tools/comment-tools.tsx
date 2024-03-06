@@ -4,6 +4,7 @@ import { Author, useAccount, useComment, useSubplebbit } from '@plebbit/plebbit-
 import styles from './comment-tools.module.css';
 import EditMenu from './edit-menu';
 import HideMenu from './hide-menu';
+import Label from '../label';
 import ModMenu from './mod-menu';
 import ShareMenu from './share-menu';
 import { isInboxView } from '../../../lib/utils/view-utils';
@@ -11,7 +12,9 @@ import { isInboxView } from '../../../lib/utils/view-utils';
 interface CommentToolsProps {
   author?: Author;
   cid: string;
+  deleted?: boolean;
   failed?: boolean;
+  editState?: string;
   hasLabel?: boolean;
   index?: number;
   isAuthor?: boolean;
@@ -20,6 +23,7 @@ interface CommentToolsProps {
   isSingleReply?: boolean;
   parentCid?: string;
   postCid?: string;
+  removed?: boolean;
   replyCount?: number;
   spoiler?: boolean | undefined;
   subplebbitAddress: string;
@@ -193,16 +197,38 @@ const SingleReplyTools = ({
   );
 };
 
+const CommentToolsLabel = ({ cid, deleted, failed, editState, isReply, removed, spoiler }: CommentToolsProps) => {
+  const { t } = useTranslation();
+  const pending = cid === undefined && !isReply && !failed;
+  const failedEdit = editState === 'failed';
+  const pendingEdit = editState === 'pending';
+
+  return (
+    <>
+      {spoiler && <Label color='black' text={t('spoiler')} />}
+      {pending && <Label color='yellow' text={t('pending')} />}
+      {failed && <Label color='red' text={t('failed')} />}
+      {deleted && <Label color='red' text={t('deleted')} />}
+      {removed && <Label color='red' text={t('removed')} />}
+      {failedEdit && <Label color='red' text={t('failed_edit')} />}
+      {pendingEdit && <Label color='yellow' text={t('pending_edit')} />}
+    </>
+  );
+};
+
 const CommentTools = ({
   author,
   cid,
+  deleted,
   failed,
+  editState,
   hasLabel = false,
   index,
   isReply,
   isSingleReply,
   parentCid,
   postCid,
+  removed,
   replyCount,
   spoiler,
   subplebbitAddress,
@@ -250,19 +276,31 @@ const CommentTools = ({
           />
         )
       ) : (
-        <PostTools
-          author={author}
-          cid={cid}
-          failed={failed}
-          hasLabel={hasLabel}
-          index={index}
-          isAuthor={isAuthor}
-          isMod={isMod}
-          replyCount={replyCount}
-          showCommentEditForm={showCommentEditForm}
-          spoiler={spoiler}
-          subplebbitAddress={subplebbitAddress}
-        />
+        <>
+          <CommentToolsLabel
+            cid={cid}
+            deleted={deleted}
+            failed={failed}
+            editState={editState}
+            isReply={isReply}
+            removed={removed}
+            spoiler={spoiler}
+            subplebbitAddress={subplebbitAddress}
+          />
+          <PostTools
+            author={author}
+            cid={cid}
+            failed={failed}
+            hasLabel={hasLabel}
+            index={index}
+            isAuthor={isAuthor}
+            isMod={isMod}
+            replyCount={replyCount}
+            showCommentEditForm={showCommentEditForm}
+            spoiler={spoiler}
+            subplebbitAddress={subplebbitAddress}
+          />
+        </>
       )}
     </ul>
   );
