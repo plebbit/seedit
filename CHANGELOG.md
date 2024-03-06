@@ -1,3 +1,18 @@
+## [0.1.7](https://github.com/plebbit/seedit/compare/v0.1.6...v0.1.7) (2024-03-06)
+
+
+### Bug Fixes
+
+* disable buttons for comments that are failed, remove duplicate label from reply ([6e341e3](https://github.com/plebbit/seedit/commit/6e341e33fc5b57dae7eb7d6858a5159e20e054d6))
+
+
+### Features
+
+* **app:** redirect to link with hash on first load ([365b40d](https://github.com/plebbit/seedit/commit/365b40d3626a40131b7b0d722a3d9e0e6ab9359b))
+* **post:** if post is removed, show locked info banner ([2490bc3](https://github.com/plebbit/seedit/commit/2490bc35f452e2231afea94edac14a9280bf430d))
+
+
+
 ## [0.1.6](https://github.com/plebbit/seedit/compare/v0.1.5...v0.1.6) (2024-03-03)
 
 
