@@ -270,6 +270,7 @@
   cursor: pointer;
   font-weight: 700;
   color: var(--text-primary);
+  display: inline-block
 }
 
 .addMargin {
@@ -322,6 +323,7 @@
   font-size: 13px;
   color: var(--text-primary);
   cursor: pointer;
+  display: inline-block
 }
 
 @media (max-width: 768px) {
