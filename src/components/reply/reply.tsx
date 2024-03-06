@@ -382,7 +382,9 @@ const Reply = ({ cidOfReplyWithContext, depth = 0, isSingleComment, isSingleRepl
             )}
             {!collapsed && (
               <div
-                className={`${styles.usertext} ${cid && commentMediaInfo && (isSingleComment || cidOfReplyWithContext === cid) ? styles.highlightMedia : ''}`}
+                className={`${styles.usertext} ${cid && commentMediaInfo && (isSingleComment || cidOfReplyWithContext === cid) ? styles.highlightMedia : ''} ${
+                  spoiler && !showSpoiler ? styles.hideSpoiler : ''
+                }`}
                 onClick={() => {
                   spoiler && !showSpoiler && setShowSpoiler(true);
                 }}

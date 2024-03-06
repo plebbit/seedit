@@ -3,8 +3,9 @@
   float: left;
   padding-right: 5px;
   padding-bottom: 2px;
-  width: var(--width, 70px); /* Fallback to 70px if variable not set */
-  height: var(--height, 70px); /* Fallback to 70px if variable not set */
+  width: var(--width, 70px);
+  height: var(--height, 70px);
+  z-index: 1;
 }
 
 .thumbnailHidden {
