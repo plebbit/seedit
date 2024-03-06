@@ -41,7 +41,7 @@ const Post = ({ post }: { post: Comment }) => {
 
   return (
     <>
-      {post?.locked && (
+      {(post?.locked || post?.removed) && (
         <div className={styles.lockedInfobar}>
           <div className={styles.lockedInfobarText}>{t('post_locked_info')}</div>
         </div>
@@ -97,7 +97,7 @@ const PostWithContext = ({ post }: { post: Comment }) => {
 
   return (
     <>
-      {post?.locked && (
+      {(post?.locked || post?.removed) && (
         <div className={styles.lockedInfobar}>
           <div className={styles.lockedInfobarText}>{t('post_locked_info')}</div>
         </div>
@@ -133,7 +133,7 @@ const PostPage = () => {
   const location = useLocation();
 
   const isInPendingView = isPendingView(location.pathname, params);
-  const isInPostContextView = isPostContextView(location.pathname, params);
+  const isInPostContextView = isPostContextView(location.pathname, params, location.search);
 
   const post = useComment({ commentCid: params?.commentCid });
   const { cid, downvoteCount, timestamp, upvoteCount } = post || {};

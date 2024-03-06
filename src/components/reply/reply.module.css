@@ -95,6 +95,11 @@
   font-size: x-small;
 }
 
+.timeEdited {
+  font-style: italic;
+  text-transform: lowercase;
+}
+
 .stateString {
   font-size: x-small;
   color: var(--text-info);

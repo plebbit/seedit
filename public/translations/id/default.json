@@ -286,5 +286,6 @@
   "missing_chain_ticker": "Ticker blockchain yang hilang",
   "missing_token_address": "Alamat token yang hilang",
   "missing_token_id": "ID token yang hilang",
-  "missing_signature": "Tanda tangan yang hilang"
+  "missing_signature": "Tanda tangan yang hilang",
+  "edited_timestamp": "Diedit {{timestamp}}"
 }

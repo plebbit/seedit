@@ -286,5 +286,6 @@
   "missing_chain_ticker": "ציון בלוקצ'יין חסר",
   "missing_token_address": "כתובת הטוקן חסרה",
   "missing_token_id": "מזהה הטוקן חסר",
-  "missing_signature": "חתימה חסרה"
+  "missing_signature": "חתימה חסרה",
+  "edited_timestamp": "נערך {{timestamp}}"
 }

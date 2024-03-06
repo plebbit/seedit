@@ -137,6 +137,11 @@
   text-decoration: none;
 }
 
+.timeEdit {
+  text-transform: lowercase;
+  font-style: italic;
+}
+
 .subplebbit:hover, .author:hover span {
   text-decoration: underline;
 }

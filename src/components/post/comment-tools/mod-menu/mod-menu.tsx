@@ -72,8 +72,8 @@ const ModMenu = ({ cid }: ModMenuProps) => {
 
   return (
     <>
-      <li className={styles.button} ref={refs.setReference} {...getReferenceProps()}>
-        <span onClick={() => setIsModMenuOpen(!isModMenuOpen)}>{t('moderation')}</span>
+      <li className={styles.button} ref={refs.setReference} {...(cid && getReferenceProps())}>
+        <span onClick={() => cid && setIsModMenuOpen(!isModMenuOpen)}>{t('moderation')}</span>
       </li>
       {isModMenuOpen && (
         <FloatingFocusManager context={context} modal={false}>
@@ -102,7 +102,7 @@ const ModMenu = ({ cid }: ModMenuProps) => {
               <div className={styles.menuItem}>
                 <label>
                   <input onChange={onCheckbox} checked={publishCommentEditOptions.pinned} type='checkbox' id='pinned' />
-                  {t('announcement')}
+                  {isReply ? t('stickied_comment') : t('announcement')}
                 </label>
               </div>
               <div className={`${styles.menuItem} ${styles.menuReason}`}>

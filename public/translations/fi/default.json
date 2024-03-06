@@ -286,5 +286,6 @@
   "missing_chain_ticker": "Puuttuva ketjuticker",
   "missing_token_address": "Puuttuva token-osoite",
   "missing_token_id": "Puuttuva token-id",
-  "missing_signature": "Puuttuva allekirjoitus"
+  "missing_signature": "Puuttuva allekirjoitus",
+  "edited_timestamp": "Muokattu {{timestamp}}"
 }

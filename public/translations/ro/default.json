@@ -286,5 +286,6 @@
   "missing_chain_ticker": "Lipsește ticker blockchain",
   "missing_token_address": "Lipsește adresa tokenului",
   "missing_token_id": "Lipsește ID-ul tokenului",
-  "missing_signature": "Lipsește semnătura"
+  "missing_signature": "Lipsește semnătura",
+  "edited_timestamp": "Editat {{timestamp}}"
 }

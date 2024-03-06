@@ -88,8 +88,8 @@ export const isPostView = (pathname: string, params: ParamsType): boolean => {
   return params.subplebbitAddress && params.commentCid ? pathname.startsWith(`/p/${params.subplebbitAddress}/c/${params.commentCid}`) : false;
 };
 
-export const isPostContextView = (pathname: string, params: ParamsType): boolean => {
-  return params.subplebbitAddress && params.commentCid ? pathname.startsWith(`/p/${params.subplebbitAddress}/c/${params.commentCid}/context`) : false;
+export const isPostContextView = (pathname: string, params: ParamsType, search: string): boolean => {
+  return params.subplebbitAddress && params.commentCid ? `${pathname}${search}` === `/p/${params.subplebbitAddress}/c/${params.commentCid}?context=1` : false;
 };
 
 export const isProfileView = (pathname: string): boolean => {

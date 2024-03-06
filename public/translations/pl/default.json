@@ -286,5 +286,6 @@
   "missing_chain_ticker": "Brakujący ticker blockchain",
   "missing_token_address": "Brakujący adres tokena",
   "missing_token_id": "Brakujące ID tokenu",
-  "missing_signature": "Brakujący podpis"
+  "missing_signature": "Brakujący podpis",
+  "edited_timestamp": "Edytowane {{timestamp}}"
 }

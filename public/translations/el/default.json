@@ -286,5 +286,6 @@
   "missing_chain_ticker": "Ελλειπτικός αλυσιδωτός ticker",
   "missing_token_address": "Ελλειπτική διεύθυνση του token",
   "missing_token_id": "Ελλειπτικό αναγνωριστικό token",
-  "missing_signature": "Ελλειπτική υπογραφή"
+  "missing_signature": "Ελλειπτική υπογραφή",
+  "edited_timestamp": "Επεξεργάστηκε {{timestamp}}"
 }

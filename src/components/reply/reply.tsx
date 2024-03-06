@@ -321,7 +321,7 @@ const Reply = ({ cidOfReplyWithContext, depth = 0, isSingleComment, isSingleRepl
   const location = useLocation();
   const params = useParams();
   const isInInboxView = isInboxView(location.pathname);
-  const isInPostContextView = isPostContextView(location.pathname, params);
+  const isInPostContextView = isPostContextView(location.pathname, params, location.search);
 
   return (
     <div className={styles.reply}>
@@ -353,7 +353,7 @@ const Reply = ({ cidOfReplyWithContext, depth = 0, isSingleComment, isSingleRepl
                 <span className={styles.score}>{scoreString}</span>{' '}
                 <span className={styles.time}>
                   {getFormattedTimeAgo(timestamp)}
-                  {edit && <span title={t('last_edited', { timestamp: getFormattedTimeAgo(edit.timestamp) })}>*</span>}
+                  {edit && <span className={styles.timeEdited}> {t('edited_timestamp', { timestamp: getFormattedTimeAgo(edit.timestamp) })}</span>}
                 </span>{' '}
                 {pinned && <span className={styles.pinned}>- {t('stickied_comment')}</span>}
                 {collapsed && <span className={styles.children}> ({childrenString})</span>}
@@ -428,6 +428,7 @@ const Reply = ({ cidOfReplyWithContext, depth = 0, isSingleComment, isSingleRepl
               <CommentTools
                 author={author}
                 cid={cid}
+                failed={state === 'failed'}
                 isReply={true}
                 isSingleReply={isSingleReply}
                 index={reply?.index}

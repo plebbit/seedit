@@ -4,9 +4,9 @@ import { Author, useAccount, useComment, useSubplebbit } from '@plebbit/plebbit-
 import styles from './comment-tools.module.css';
 import EditMenu from './edit-menu';
 import HideMenu from './hide-menu';
+import Label from '../label';
 import ModMenu from './mod-menu';
 import ShareMenu from './share-menu';
-import Label from '../label';
 import { isInboxView } from '../../../lib/utils/view-utils';
 
 interface CommentToolsProps {
@@ -51,7 +51,19 @@ const ModOrReportButton = ({ cid, isAuthor, isMod }: ModOrReportButtonProps) => 
   );
 };
 
-const PostTools = ({ author, cid, hasLabel, index, isAuthor, isMod, subplebbitAddress, replyCount = 0, showCommentEditForm, spoiler = false }: CommentToolsProps) => {
+const PostTools = ({
+  author,
+  cid,
+  failed,
+  hasLabel,
+  index,
+  isAuthor,
+  isMod,
+  subplebbitAddress,
+  replyCount = 0,
+  showCommentEditForm,
+  spoiler = false,
+}: CommentToolsProps) => {
   const { t } = useTranslation();
   const validReplyCount = isNaN(replyCount) ? 0 : replyCount;
   const commentCount = validReplyCount === 0 ? t('post_no_comments') : `${validReplyCount} ${validReplyCount === 1 ? t('post_comment') : t('post_comments')}`;
@@ -67,10 +79,12 @@ const PostTools = ({ author, cid, hasLabel, index, isAuthor, isMod, subplebbitAd
     }
   };
 
+  const commentCountButton = failed ? <span>{commentCount}</span> : <Link to={cid ? `/p/${subplebbitAddress}/c/${cid}` : `/profile/${index}`}>{commentCount}</Link>;
+
   return (
     <>
       <li className={`${styles.button} ${!hasLabel ? styles.firstButton : ''}`} onClick={() => cid && handlePostClick?.()}>
-        <Link to={cid ? `/p/${subplebbitAddress}/c/${cid}` : `/profile/${index}`}>{commentCount}</Link>
+        {commentCountButton}
       </li>
       <ShareMenu cid={cid} subplebbitAddress={subplebbitAddress} />
       {/* TODO: Implement save functionality
@@ -90,14 +104,26 @@ const PostTools = ({ author, cid, hasLabel, index, isAuthor, isMod, subplebbitAd
   );
 };
 
-const ReplyTools = ({ author, cid, hasLabel, index, isAuthor, isMod, showReplyForm, subplebbitAddress, showCommentEditForm, spoiler = false }: CommentToolsProps) => {
+const ReplyTools = ({
+  author,
+  cid,
+  failed,
+  hasLabel,
+  index,
+  isAuthor,
+  isMod,
+  showReplyForm,
+  subplebbitAddress,
+  showCommentEditForm,
+  spoiler = false,
+}: CommentToolsProps) => {
   const { t } = useTranslation();
+
+  const permalink = failed ? <span>permalink</span> : <Link to={cid ? `/p/${subplebbitAddress}/c/${cid}` : `/profile/${index}`}>permalink</Link>;
 
   return (
     <>
-      <li className={`${styles.button} ${!hasLabel ? styles.firstButton : ''}`}>
-        <Link to={cid ? `/p/${subplebbitAddress}/c/${cid}` : `/profile/${index}`}>permalink</Link>
-      </li>
+      <li className={`${styles.button} ${!hasLabel ? styles.firstButton : ''}`}>{permalink}</li>
       <ShareMenu cid={cid} subplebbitAddress={subplebbitAddress} />
       {/* TODO: Implement save functionality
         <li className={styles.button}>
@@ -133,25 +159,35 @@ const SingleReplyTools = ({
 
   const hasContext = parentCid !== postCid;
 
+  const permalinkButton = cid ? <Link to={cid ? `/p/${subplebbitAddress}/c/${cid}` : `/profile/${index}`}>permalink</Link> : <span>permalink</span>;
+
+  const contextButton = cid ? (
+    <Link to={cid ? (hasContext ? `/p/${subplebbitAddress}/c/${cid}?context=1` : `/p/${subplebbitAddress}/c/${cid}`) : `/profile/${index}`}>{t('context')}</Link>
+  ) : (
+    <span>{t('context')}</span>
+  );
+
+  const fullCommentsButton = cid ? (
+    <Link to={cid ? `/p/${subplebbitAddress}/c/${postCid}` : `/profile/${index}`}>
+      {t('full_comments')} ({comment?.replyCount || 0})
+    </Link>
+  ) : (
+    <span>
+      {t('full_comments')} ({comment?.replyCount || 0})
+    </span>
+  );
+
   return (
     <>
-      <li className={`${styles.button} ${!hasLabel ? styles.firstButton : ''}`}>
-        <Link to={cid ? `/p/${subplebbitAddress}/c/${cid}` : `/profile/${index}`}>permalink</Link>
-      </li>
+      <li className={`${styles.button} ${!hasLabel ? styles.firstButton : ''}`}>{permalinkButton}</li>
       {/* TODO: Implement save functionality
         <li className={styles.button}>
           <span>{t('save')}</span>
         </li> 
       */}
       {isAuthor && <EditMenu cid={cid} spoiler={spoiler} showCommentEditForm={showCommentEditForm} />}
-      <li className={styles.button}>
-        <Link to={cid ? (hasContext ? `/p/${subplebbitAddress}/c/${cid}/context` : `/p/${subplebbitAddress}/c/${cid}`) : `/profile/${index}`}>{t('context')}</Link>
-      </li>
-      <li className={styles.button}>
-        <Link to={cid ? `/p/${subplebbitAddress}/c/${postCid}` : `/profile/${index}`}>
-          {t('full_comments')} ({comment?.replyCount || 0})
-        </Link>
-      </li>
+      <li className={styles.button}>{contextButton}</li>
+      <li className={styles.button}>{fullCommentsButton}</li>
       <HideMenu author={author} cid={cid} isMod={isMod} subplebbitAddress={subplebbitAddress} />
       <li className={!cid ? styles.hideReply : styles.button}>
         <span onClick={() => cid && showReplyForm?.()}>{t('reply_reply')}</span>
@@ -207,21 +243,12 @@ const CommentTools = ({
 
   return (
     <ul className={`${styles.buttons} ${isReply && !isInInboxView ? styles.buttonsReply : ''} ${hasLabel ? styles.buttonsLabel : ''}`}>
-      <CommentToolsLabel
-        cid={cid}
-        deleted={deleted}
-        failed={failed}
-        editState={editState}
-        isReply={isReply}
-        removed={removed}
-        spoiler={spoiler}
-        subplebbitAddress={subplebbitAddress}
-      />
       {isReply ? (
         isSingleReply ? (
           <SingleReplyTools
             author={author}
             cid={cid}
+            failed={failed}
             hasLabel={hasLabel}
             index={index}
             isAuthor={isAuthor}
@@ -237,6 +264,7 @@ const CommentTools = ({
           <ReplyTools
             author={author}
             cid={cid}
+            failed={failed}
             hasLabel={hasLabel}
             index={index}
             isAuthor={isAuthor}
@@ -248,18 +276,31 @@ const CommentTools = ({
           />
         )
       ) : (
-        <PostTools
-          author={author}
-          cid={cid}
-          hasLabel={hasLabel}
-          index={index}
-          isAuthor={isAuthor}
-          isMod={isMod}
-          replyCount={replyCount}
-          showCommentEditForm={showCommentEditForm}
-          spoiler={spoiler}
-          subplebbitAddress={subplebbitAddress}
-        />
+        <>
+          <CommentToolsLabel
+            cid={cid}
+            deleted={deleted}
+            failed={failed}
+            editState={editState}
+            isReply={isReply}
+            removed={removed}
+            spoiler={spoiler}
+            subplebbitAddress={subplebbitAddress}
+          />
+          <PostTools
+            author={author}
+            cid={cid}
+            failed={failed}
+            hasLabel={hasLabel}
+            index={index}
+            isAuthor={isAuthor}
+            isMod={isMod}
+            replyCount={replyCount}
+            showCommentEditForm={showCommentEditForm}
+            spoiler={spoiler}
+            subplebbitAddress={subplebbitAddress}
+          />
+        </>
       )}
     </ul>
   );

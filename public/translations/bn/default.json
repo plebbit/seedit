@@ -286,5 +286,6 @@
   "missing_chain_ticker": "নিখোঁজ শৃঙ্খলা টিকার",
   "missing_token_address": "নিখোঁজ টোকেন ঠিকানা",
   "missing_token_id": "নিখোঁজ টোকেন আইডি",
-  "missing_signature": "নিখোঁজ স্বাক্ষর"
+  "missing_signature": "নিখোঁজ স্বাক্ষর",
+  "edited_timestamp": "সম্পাদনা করা হয়েছে {{timestamp}}"
 }

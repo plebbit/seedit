@@ -286,5 +286,6 @@
   "missing_chain_ticker": "缺失的区块链标记",
   "missing_token_address": "缺失的代币地址",
   "missing_token_id": "缺失的代币ID",
-  "missing_signature": "缺失的签名"
+  "missing_signature": "缺失的签名",
+  "edited_timestamp": "编辑于{{timestamp}}"
 }
