@@ -122,11 +122,12 @@
 .md {
   margin-top: 5px;
   margin-bottom: 5px;
-  font-size: 1.0769230769230769em;
+  font-size: 14px;
   font-weight: 400;
   color: var(--text);
   max-width: 60em;
   word-wrap: break-word;
+  line-height: 20px;
 }
 
 .md a {
