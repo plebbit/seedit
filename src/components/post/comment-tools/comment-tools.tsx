@@ -79,13 +79,17 @@ const PostTools = ({
     }
   };
 
-  const commentCountButton = failed ? <span>{commentCount}</span> : <Link to={cid ? `/p/${subplebbitAddress}/c/${cid}` : `/profile/${index}`}>{commentCount}</Link>;
+  const commentCountButton = failed ? (
+    <span>{commentCount}</span>
+  ) : (
+    <Link to={cid ? `/p/${subplebbitAddress}/c/${cid}` : `/profile/${index}`} onClick={() => cid && handlePostClick?.()}>
+      {commentCount}
+    </Link>
+  );
 
   return (
     <>
-      <li className={`${styles.button} ${!hasLabel ? styles.firstButton : ''}`} onClick={() => cid && handlePostClick?.()}>
-        {commentCountButton}
-      </li>
+      <li className={`${styles.button} ${!hasLabel ? styles.firstButton : ''}`}>{commentCountButton}</li>
       <ShareMenu cid={cid} subplebbitAddress={subplebbitAddress} />
       {/* TODO: Implement save functionality
         <li className={styles.button}>
