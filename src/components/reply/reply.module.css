@@ -126,7 +126,6 @@
   font-weight: 400;
   color: var(--text);
   max-width: 60em;
-  white-space: pre-wrap;
   word-wrap: break-word;
 }
 

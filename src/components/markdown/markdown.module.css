@@ -27,3 +27,7 @@
 .markdown h2 {
   font-size: larger;
 }
+
+.markdown p {
+  margin-bottom: 5px;
+}
