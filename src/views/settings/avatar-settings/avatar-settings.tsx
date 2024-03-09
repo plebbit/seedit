@@ -67,11 +67,6 @@ const AvatarSettings = () => {
   };
 
   const [hasCopied, setHasCopied] = useState(false);
-  useEffect(() => {
-    if (hasCopied) {
-      setTimeout(() => setHasCopied(false), 2000);
-    }
-  }, [hasCopied]);
 
   const copyMessageToSign = () => {
     if (!chainTicker) {
@@ -89,6 +84,9 @@ const AvatarSettings = () => {
     setTimestamp(newTimestamp);
     navigator.clipboard.writeText(messageToSign);
     setHasCopied(true);
+    setTimeout(() => {
+      setHasCopied(false);
+    }, 2000);
   };
 
   // how to resolve and verify NFT signatures https://github.com/plebbit/plebbit-js/blob/master/docs/nft.md
