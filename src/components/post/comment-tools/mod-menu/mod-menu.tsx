@@ -32,7 +32,7 @@ const ModMenu = ({ cid, isCommentAuthorMod }: ModMenuProps) => {
     locked: post?.locked,
     spoiler: post?.spoiler,
     pinned: post?.pinned,
-    banExpiresAt: post?.banExpiresAt,
+    commentAuthor: { banExpiresAt: post?.banExpiresAt },
     commentCid: post?.cid,
     subplebbitAddress: post?.subplebbitAddress,
     onChallenge: (...args: any) => addChallenge([...args, post]),
@@ -59,7 +59,7 @@ const ModMenu = ({ cid, isCommentAuthorMod }: ModMenuProps) => {
     if (id === 'banUser') {
       setPublishCommentEditOptions((state) => ({
         ...state,
-        banExpiresAt: checked ? daysToTimestampInSeconds(banDuration) : undefined,
+        commentAuthor: { ...state.commentAuthor, banExpiresAt: checked ? daysToTimestampInSeconds(banDuration) : undefined },
       }));
     } else {
       setPublishCommentEditOptions((state) => ({ ...state, [id]: checked }));
@@ -71,7 +71,7 @@ const ModMenu = ({ cid, isCommentAuthorMod }: ModMenuProps) => {
     setBanDuration(days);
     setPublishCommentEditOptions((state) => ({
       ...state,
-      banExpiresAt: daysToTimestampInSeconds(days),
+      commentAuthor: { ...state.commentAuthor, banExpiresAt: daysToTimestampInSeconds(days) },
     }));
   };
 
@@ -137,7 +137,7 @@ const ModMenu = ({ cid, isCommentAuthorMod }: ModMenuProps) => {
               {!isCommentAuthorMod && (
                 <div className={styles.menuItem}>
                   <label>
-                    <input onChange={onCheckbox} checked={!!publishCommentEditOptions.banExpiresAt} type='checkbox' id='banUser' />
+                    <input onChange={onCheckbox} checked={!!publishCommentEditOptions.commentAuthor?.banExpiresAt} type='checkbox' id='banUser' />
                     <Trans
                       i18nKey='ban_user_for'
                       shouldUnescape={true}
