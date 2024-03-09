@@ -277,7 +277,7 @@
   "edit_reason": "arsyeja e ndryshimit",
   "view_parent_comment": "shiko komentin prind",
   "chain_ticker": "Ticker blockchain",
-  "token_address_whitelist": "Adresa e tokenit (vetëm nëse është në listën e bardhë)",
+  "token_address_whitelist": "Adresa e tokenit (<1>vetëm lista e bardhë</1>)",
   "token_id": "ID e tokenit",
   "paste_signature": "Ngjit nënshkrimin",
   "copy_message_etherscan": "<1>{{copy}}</1> mesazh për nënshkrim në <2>etherscan</2>",

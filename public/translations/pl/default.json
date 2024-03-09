@@ -277,7 +277,7 @@
   "edit_reason": "powód edycji",
   "view_parent_comment": "zobacz oryginalny komentarz",
   "chain_ticker": "Ticker blockchain",
-  "token_address_whitelist": "Adres tokena (tylko jeśli na białej liście)",
+  "token_address_whitelist": "Adres tokenu (<1>tylko biała lista</1>)",
   "token_id": "Identyfikator tokena",
   "paste_signature": "Wklej podpis",
   "copy_message_etherscan": "<1>{{copy}}</1> wiadomość do podpisania na <2>etherscan</2>",

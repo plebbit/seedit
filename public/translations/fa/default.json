@@ -277,7 +277,7 @@
   "edit_reason": "دلیل ویرایش",
   "view_parent_comment": "نمایش نظر والد",
   "chain_ticker": "نماد زنجیره",
-  "token_address_whitelist": "آدرس توکن (فقط اگر در لیست سفید باشد)",
+  "token_address_whitelist": "آدرس توکن (<1>فقط سفیدپوشان</1>)",
   "token_id": "شناسه توکن",
   "paste_signature": "چسباندن امضا",
   "copy_message_etherscan": "<1>{{copy}}</1> پیامی برای امضا در <2>etherscan</2>",

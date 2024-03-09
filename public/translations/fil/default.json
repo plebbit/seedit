@@ -277,7 +277,7 @@
   "edit_reason": "dahilan ng pag-edit",
   "view_parent_comment": "tingnan ang orihinal na komento",
   "chain_ticker": "Ticker ng chain",
-  "token_address_whitelist": "Address ng token (kung nasa whitelist lang)",
+  "token_address_whitelist": "Address ng token (<1>whitelist</1> lang)",
   "token_id": "Token ID",
   "paste_signature": "I-paste ang lagda",
   "copy_message_etherscan": "<1>{{copy}}</1> mensahe na pipirmahan sa <2>etherscan</2>",

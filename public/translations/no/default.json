@@ -277,7 +277,7 @@
   "edit_reason": "redigeringsgrunn",
   "view_parent_comment": "se original kommentar",
   "chain_ticker": "Blockchain-ticker",
-  "token_address_whitelist": "Tokenadresse (bare hvis på hvitelisten)",
+  "token_address_whitelist": "Tokenadresse (<1>kun hvitelisten</1>)",
   "token_id": "Token ID",
   "paste_signature": "Lim signatur",
   "copy_message_etherscan": "<1>{{copy}}</1> melding å signere på <2>etherscan</2>",

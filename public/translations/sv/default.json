@@ -277,7 +277,7 @@
   "edit_reason": "redigeringsorsak",
   "view_parent_comment": "visa förälder kommentar",
   "chain_ticker": "Blockchain ticker",
-  "token_address_whitelist": "Tokenadress (endast om på whitelist)",
+  "token_address_whitelist": "Tokenadress (<1>endast vitlista</1>)",
   "token_id": "Token ID",
   "paste_signature": "Klistra in signatur",
   "copy_message_etherscan": "<1>{{copy}}</1> meddelande att signera på <2>etherscan</2>",

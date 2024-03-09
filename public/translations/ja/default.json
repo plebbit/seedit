@@ -277,7 +277,7 @@
   "edit_reason": "編集理由",
   "view_parent_comment": "親コメントを表示",
   "chain_ticker": "チェーンティッカー",
-  "token_address_whitelist": "トークンアドレス（ホワイトリストに登録されている場合のみ）",
+  "token_address_whitelist": "トークンアドレス（<1>ホワイトリスト</1>のみ）",
   "token_id": "トークンID",
   "paste_signature": "署名を貼り付ける",
   "copy_message_etherscan": "<1>{{copy}}</1> メッセージを<2>etherscan</2>でサイン",

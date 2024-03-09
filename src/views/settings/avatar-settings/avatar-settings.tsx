@@ -137,7 +137,21 @@ const AvatarSettings = () => {
             />
           </div>
           <div className={styles.avatarSettingInput}>
-            <span className={styles.settingTitle}>{t('token_address_whitelist')}</span>
+            <span className={styles.settingTitle}>
+              <Trans
+                i18nKey='token_address_whitelist'
+                shouldUnescape={true}
+                components={{
+                  1: (
+                    <a
+                      href='https://github.com/plebbit/plebbit-react-hooks/blob/557cc3f40b5933a00553ed9c0bc310d2cd7a3b52/src/hooks/authors/author-avatars.ts#L133'
+                      target='_blank'
+                      rel='noopener noreferrer'
+                    />
+                  ),
+                }}
+              />
+            </span>
             <input
               type='text'
               placeholder='0x...'

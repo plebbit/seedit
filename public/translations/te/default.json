@@ -277,7 +277,7 @@
   "edit_reason": "సవరించడం యొక్క కారణం",
   "view_parent_comment": "మూల వ్యాఖ్య చూడండి",
   "chain_ticker": "బ్లాక్ చేన్ టిక్కర్",
-  "token_address_whitelist": "టోకెన్ చిరునామా (వెండో వెలిపినవి మాత్రమే)",
+  "token_address_whitelist": "టోకెన్ చిరునామా (<1>కేవలం వెలుపల్లి</1>)",
   "token_id": "టోకెన్ ఐడి",
   "paste_signature": "సహిమస్తు పేస్ట్ చేయండి",
   "copy_message_etherscan": "<1>{{copy}}</1> సందేశం సాఇన్ చేయడానికి <2>etherscan</2> మీద",

@@ -42,6 +42,10 @@
   text-decoration: underline;
 }
 
+.version a {
+  color: var(--link-primary);
+}
+
 .fullNodeStats {
   text-transform: lowercase;
   cursor: pointer;

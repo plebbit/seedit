@@ -277,7 +277,7 @@
   "edit_reason": "סיבת העריכה",
   "view_parent_comment": "הצג תגובה הורה",
   "chain_ticker": "ציון בלוקצ'יין",
-  "token_address_whitelist": "כתובת הטוקן (רק אם יש ברשימת הלבנה)",
+  "token_address_whitelist": "כתובת הטוקן (<1>רק רשימה לבנה</1>)",
   "token_id": "מזהה טוקן",
   "paste_signature": "הדבק חתימה",
   "copy_message_etherscan": "<1>{{copy}}</1> הודעה לחתימה ב-<2>etherscan</2>",

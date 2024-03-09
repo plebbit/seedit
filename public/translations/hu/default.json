@@ -277,7 +277,7 @@
   "edit_reason": "szerkesztés okának",
   "view_parent_comment": "szülő megjegyzés megtekintése",
   "chain_ticker": "Lánc ticker",
-  "token_address_whitelist": "Token cím (csak fehérlistán)",
+  "token_address_whitelist": "Token cím (<1>csak fehérlista</1>)",
   "token_id": "Token azonosító",
   "paste_signature": "Aláírás beillesztése",
   "copy_message_etherscan": "<1>{{copy}}</1> üzenet aláírásához az <2>etherscan</2>-en",

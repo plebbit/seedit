@@ -277,7 +277,7 @@
   "edit_reason": "reden van bewerking",
   "view_parent_comment": "bekijk ouder commentaar",
   "chain_ticker": "Blockchain ticker",
-  "token_address_whitelist": "Tokenadres (alleen als op whitelist)",
+  "token_address_whitelist": "Tokenadres (<1>alleen whitelist</1>)",
   "token_id": "Token-ID",
   "paste_signature": "Plak handtekening",
   "copy_message_etherscan": "<1>{{copy}}</1> bericht om te ondertekenen op <2>etherscan</2>",
