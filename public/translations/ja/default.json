@@ -287,5 +287,6 @@
   "missing_token_address": "不足しているトークンアドレス",
   "missing_token_id": "不足しているトークンID",
   "missing_signature": "不足している署名",
-  "edited_timestamp": "編集済み {{timestamp}}"
+  "edited_timestamp": "編集済み {{timestamp}}",
+  "ban_user_for": "ユーザーを<1></1>日間禁止する"
 }

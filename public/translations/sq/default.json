@@ -287,5 +287,6 @@
   "missing_token_address": "Adresa e munguar e tokenit",
   "missing_token_id": "ID e munguar e tokenit",
   "missing_signature": "Nënshkrimi i munguar",
-  "edited_timestamp": "Redaktuar {{timestamp}}"
+  "edited_timestamp": "Redaktuar {{timestamp}}",
+  "ban_user_for": "Ndalo përdoruesin për <1></1> ditë"
 }

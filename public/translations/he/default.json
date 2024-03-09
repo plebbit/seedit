@@ -287,5 +287,6 @@
   "missing_token_address": "כתובת הטוקן חסרה",
   "missing_token_id": "מזהה הטוקן חסר",
   "missing_signature": "חתימה חסרה",
-  "edited_timestamp": "נערך {{timestamp}}"
+  "edited_timestamp": "נערך {{timestamp}}",
+  "ban_user_for": "אסור למשתמש למשך <1></1> יום"
 }

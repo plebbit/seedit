@@ -287,5 +287,6 @@
   "missing_token_address": "Kulang na address ng token",
   "missing_token_id": "Kulang na ID ng token",
   "missing_signature": "Kulang na lagda",
-  "edited_timestamp": "Na-edit na ang {{timestamp}}"
+  "edited_timestamp": "Na-edit na ang {{timestamp}}",
+  "ban_user_for": "I-ban ang user para sa <1></1> araw"
 }

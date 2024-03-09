@@ -287,5 +287,6 @@
   "missing_token_address": "Ελλειπτική διεύθυνση του token",
   "missing_token_id": "Ελλειπτικό αναγνωριστικό token",
   "missing_signature": "Ελλειπτική υπογραφή",
-  "edited_timestamp": "Επεξεργάστηκε {{timestamp}}"
+  "edited_timestamp": "Επεξεργάστηκε {{timestamp}}",
+  "ban_user_for": "Αποκλεισμός χρήστη για <1></1> ημέρα(ες)"
 }

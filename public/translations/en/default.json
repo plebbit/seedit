@@ -287,5 +287,6 @@
   "missing_token_address": "Missing token address",
   "missing_token_id": "Missing token ID",
   "missing_signature": "Missing signature",
-  "edited_timestamp": "Edited {{timestamp}}"
+  "edited_timestamp": "Edited {{timestamp}}",
+  "ban_user_for": "Ban user for <1></1> day(s)"
 }

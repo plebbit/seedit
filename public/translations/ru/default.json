@@ -287,5 +287,6 @@
   "missing_token_address": "Отсутствующий адрес токена",
   "missing_token_id": "Отсутствующий идентификатор токена",
   "missing_signature": "Отсутствующая подпись",
-  "edited_timestamp": "Отредактировано {{timestamp}}"
+  "edited_timestamp": "Отредактировано {{timestamp}}",
+  "ban_user_for": "Заблокировать пользователя на <1></1> день(дней)"
 }

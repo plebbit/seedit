@@ -287,5 +287,6 @@
   "missing_token_address": "缺失的代币地址",
   "missing_token_id": "缺失的代币ID",
   "missing_signature": "缺失的签名",
-  "edited_timestamp": "编辑于{{timestamp}}"
+  "edited_timestamp": "编辑于{{timestamp}}",
+  "ban_user_for": "封禁用户 <1></1> 天"
 }

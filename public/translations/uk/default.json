@@ -287,5 +287,6 @@
   "missing_token_address": "Відсутня адреса токена",
   "missing_token_id": "Відсутній ідентифікатор токена",
   "missing_signature": "Відсутній підпис",
-  "edited_timestamp": "Відредаговано {{timestamp}}"
+  "edited_timestamp": "Відредаговано {{timestamp}}",
+  "ban_user_for": "Заборонити користувача на <1></1> день (днів)"
 }

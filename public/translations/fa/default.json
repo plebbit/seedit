@@ -287,5 +287,6 @@
   "missing_token_address": "آدرس توکن گم شده",
   "missing_token_id": "شناسه توکن گم شده",
   "missing_signature": "امضای گم شده",
-  "edited_timestamp": "ویرایش شده {{timestamp}}"
+  "edited_timestamp": "ویرایش شده {{timestamp}}",
+  "ban_user_for": "بستن کاربر برای <1></1> روز"
 }

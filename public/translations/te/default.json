@@ -287,5 +287,6 @@
   "missing_token_address": "తప్పని టోకెన్ చిరునామా",
   "missing_token_id": "తప్పని టోకెన్ ఐడి",
   "missing_signature": "తప్పని సంతకం",
-  "edited_timestamp": "{{timestamp}} ముందు సవరించబడింది"
+  "edited_timestamp": "{{timestamp}} ముందు సవరించబడింది",
+  "ban_user_for": "<1></1> రోజుల కోసం వాడుకరినీ బ్యాన్ చేయండి"
 }

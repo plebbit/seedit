@@ -287,5 +287,6 @@
   "missing_token_address": "부재중인 토큰 주소",
   "missing_token_id": "부재중인 토큰 ID",
   "missing_signature": "부재중인 서명",
-  "edited_timestamp": "편집됨 {{timestamp}}"
+  "edited_timestamp": "편집됨 {{timestamp}}",
+  "ban_user_for": "사용자를 <1></1>일 동안 차단하기"
 }

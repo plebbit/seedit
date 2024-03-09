@@ -287,5 +287,6 @@
   "missing_token_address": "गुमलेला टोकन पत्ता",
   "missing_token_id": "गुमलेला टोकन आयडी",
   "missing_signature": "गुमलेली स्वाक्षरे",
-  "edited_timestamp": "{{timestamp}} संपादित"
+  "edited_timestamp": "{{timestamp}} संपादित",
+  "ban_user_for": "वापरकर्ता ब्लॉक करा <1></1> दिवस"
 }

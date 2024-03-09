@@ -287,5 +287,6 @@
   "missing_token_address": "Indirizzo del token mancante",
   "missing_token_id": "ID del token mancante",
   "missing_signature": "Firma mancante",
-  "edited_timestamp": "Modificato {{timestamp}}"
+  "edited_timestamp": "Modificato {{timestamp}}",
+  "ban_user_for": "Banna l'utente per <1></1> giorno/i"
 }

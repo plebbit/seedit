@@ -287,5 +287,6 @@
   "missing_token_address": "Puuttuva token-osoite",
   "missing_token_id": "Puuttuva token-id",
   "missing_signature": "Puuttuva allekirjoitus",
-  "edited_timestamp": "Muokattu {{timestamp}}"
+  "edited_timestamp": "Muokattu {{timestamp}}",
+  "ban_user_for": "Estä käyttäjä <1></1> päiväksi"
 }

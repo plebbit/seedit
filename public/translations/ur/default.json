@@ -287,5 +287,6 @@
   "missing_token_address": "گمشدہ ٹوکن ایڈریس",
   "missing_token_id": "گمشدہ ٹوکن شناختی نمبر",
   "missing_signature": "گمشدہ دستخط",
-  "edited_timestamp": "{{timestamp}} پہلے ترمیم شدہ"
+  "edited_timestamp": "{{timestamp}} پہلے ترمیم شدہ",
+  "ban_user_for": "<1></1> دنوں کے لیے صارف کو پابندی عائد کریں"
 }

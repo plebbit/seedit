@@ -287,5 +287,6 @@
   "missing_token_address": "เหตุที่หายไปของที่อยู่โทเค็น",
   "missing_token_id": "เหตุที่หายไปของรหัสของโทเค็น",
   "missing_signature": "เหตุที่หายไปของลายเซ็น",
-  "edited_timestamp": "แก้ไขเมื่อ {{timestamp}}"
+  "edited_timestamp": "แก้ไขเมื่อ {{timestamp}}",
+  "ban_user_for": "แบนผู้ใช้ <1></1> วัน"
 }
