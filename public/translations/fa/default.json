@@ -277,7 +277,7 @@
   "edit_reason": "دلیل ویرایش",
   "view_parent_comment": "نمایش نظر والد",
   "chain_ticker": "نماد زنجیره",
-  "token_address_whitelist": "آدرس توکن (فقط اگر در لیست سفید باشد)",
+  "token_address_whitelist": "آدرس توکن (<1>فقط سفیدپوشان</1>)",
   "token_id": "شناسه توکن",
   "paste_signature": "چسباندن امضا",
   "copy_message_etherscan": "<1>{{copy}}</1> پیامی برای امضا در <2>etherscan</2>",
@@ -287,5 +287,6 @@
   "missing_token_address": "آدرس توکن گم شده",
   "missing_token_id": "شناسه توکن گم شده",
   "missing_signature": "امضای گم شده",
-  "edited_timestamp": "ویرایش شده {{timestamp}}"
+  "edited_timestamp": "ویرایش شده {{timestamp}}",
+  "ban_user_for": "بستن کاربر برای <1></1> روز"
 }

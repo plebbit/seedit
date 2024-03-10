@@ -277,7 +277,7 @@
   "edit_reason": "λόγος επεξεργασίας",
   "view_parent_comment": "προβολή αρχικού σχολίου",
   "chain_ticker": "Αλυσιδωτό ticker",
-  "token_address_whitelist": "Διεύθυνση token (μόνο εάν είναι στη λευκή λίστα)",
+  "token_address_whitelist": "Διεύθυνση του token (<1>μόνο λευκή λίστα</1>)",
   "token_id": "Token ID",
   "paste_signature": "Επικόλληση υπογραφής",
   "copy_message_etherscan": "<1>{{copy}}</1> μήνυμα για υπογραφή στο <2>etherscan</2>",
@@ -287,5 +287,6 @@
   "missing_token_address": "Ελλειπτική διεύθυνση του token",
   "missing_token_id": "Ελλειπτικό αναγνωριστικό token",
   "missing_signature": "Ελλειπτική υπογραφή",
-  "edited_timestamp": "Επεξεργάστηκε {{timestamp}}"
+  "edited_timestamp": "Επεξεργάστηκε {{timestamp}}",
+  "ban_user_for": "Αποκλεισμός χρήστη για <1></1> ημέρα(ες)"
 }

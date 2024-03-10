@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { setAccount, useAccount, useAuthorAvatar } from '@plebbit/plebbit-react-hooks';
 import styles from './avatar-settings.module.css';
 import { Trans, useTranslation } from 'react-i18next';
@@ -66,11 +67,6 @@ const AvatarSettings = () => {
   };
 
   const [hasCopied, setHasCopied] = useState(false);
-  useEffect(() => {
-    if (hasCopied) {
-      setTimeout(() => setHasCopied(false), 2000);
-    }
-  }, [hasCopied]);
 
   const copyMessageToSign = () => {
     if (!chainTicker) {
@@ -88,6 +84,9 @@ const AvatarSettings = () => {
     setTimestamp(newTimestamp);
     navigator.clipboard.writeText(messageToSign);
     setHasCopied(true);
+    setTimeout(() => {
+      setHasCopied(false);
+    }, 2000);
   };
 
   // how to resolve and verify NFT signatures https://github.com/plebbit/plebbit-js/blob/master/docs/nft.md
@@ -137,7 +136,21 @@ const AvatarSettings = () => {
             />
           </div>
           <div className={styles.avatarSettingInput}>
-            <span className={styles.settingTitle}>{t('token_address_whitelist')}</span>
+            <span className={styles.settingTitle}>
+              <Trans
+                i18nKey='token_address_whitelist'
+                shouldUnescape={true}
+                components={{
+                  1: (
+                    <Link
+                      to='https://github.com/plebbit/plebbit-react-hooks/blob/557cc3f40b5933a00553ed9c0bc310d2cd7a3b52/src/hooks/authors/author-avatars.ts#L133'
+                      target='_blank'
+                      rel='noopener noreferrer'
+                    />
+                  ),
+                }}
+              />
+            </span>
             <input
               type='text'
               placeholder='0x...'

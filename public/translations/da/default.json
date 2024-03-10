@@ -277,7 +277,7 @@
   "edit_reason": "redigeringsgrund",
   "view_parent_comment": "vis oprindelig kommentar",
   "chain_ticker": "Kæde ticker",
-  "token_address_whitelist": "Tokenadresse (kun hvis på whitelist)",
+  "token_address_whitelist": "Tokenadresse (<1>kun hvidliste</1>)",
   "token_id": "Token ID",
   "paste_signature": "Indsæt underskrift",
   "copy_message_etherscan": "<1>{{copy}}</1> besked at underskrive på <2>etherscan</2>",
@@ -287,5 +287,6 @@
   "missing_token_address": "Manglende tokensadresse",
   "missing_token_id": "Manglende token-id",
   "missing_signature": "Manglende signatur",
-  "edited_timestamp": "Redigeret {{timestamp}}"
+  "edited_timestamp": "Redigeret {{timestamp}}",
+  "ban_user_for": "Udeluk brugeren i <1></1> dag(e)"
 }

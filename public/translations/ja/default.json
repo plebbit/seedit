@@ -277,7 +277,7 @@
   "edit_reason": "編集理由",
   "view_parent_comment": "親コメントを表示",
   "chain_ticker": "チェーンティッカー",
-  "token_address_whitelist": "トークンアドレス（ホワイトリストに登録されている場合のみ）",
+  "token_address_whitelist": "トークンアドレス（<1>ホワイトリスト</1>のみ）",
   "token_id": "トークンID",
   "paste_signature": "署名を貼り付ける",
   "copy_message_etherscan": "<1>{{copy}}</1> メッセージを<2>etherscan</2>でサイン",
@@ -287,5 +287,6 @@
   "missing_token_address": "不足しているトークンアドレス",
   "missing_token_id": "不足しているトークンID",
   "missing_signature": "不足している署名",
-  "edited_timestamp": "編集済み {{timestamp}}"
+  "edited_timestamp": "編集済み {{timestamp}}",
+  "ban_user_for": "ユーザーを<1></1>日間禁止する"
 }

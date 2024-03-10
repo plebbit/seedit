@@ -277,7 +277,7 @@
   "edit_reason": "düzenleme nedeni",
   "view_parent_comment": "ana yorumu görüntüle",
   "chain_ticker": "Blockchain ticker",
-  "token_address_whitelist": "Jeton adresi (yalnızca beyaz listede ise)",
+  "token_address_whitelist": "Token adresi (<1>yalnızca beyaz liste</1>)",
   "token_id": "Token kimliği",
   "paste_signature": "İmza yapıştır",
   "copy_message_etherscan": "<1>{{copy}}</1> <2>etherscan</2> üzerinde imzalanacak mesaj",
@@ -287,5 +287,6 @@
   "missing_token_address": "Eksik token adresi",
   "missing_token_id": "Eksik token kimliği",
   "missing_signature": "Eksik imza",
-  "edited_timestamp": "{{timestamp}} önce düzenlendi"
+  "edited_timestamp": "{{timestamp}} önce düzenlendi",
+  "ban_user_for": "Kullanıcıyı <1></1> gün boyunca yasakla"
 }

@@ -122,12 +122,12 @@
 .md {
   margin-top: 5px;
   margin-bottom: 5px;
-  font-size: 1.0769230769230769em;
+  font-size: 14px;
   font-weight: 400;
   color: var(--text);
   max-width: 60em;
-  white-space: pre-wrap;
   word-wrap: break-word;
+  line-height: 20px;
 }
 
 .md a {
@@ -135,19 +135,20 @@
 }
 
 .hideSpoiler {
-  width: 100%;
-  height: 100%;
-  position: absolute;
   background-color: black;
   color: black;
   cursor: pointer;
+  width: 400px;
+  z-index: 999;
+  height: 50px;
 }
 
 .showSpoilerButton {
   color: white;
+  background-color: black;
   text-transform: lowercase;
   position: absolute;
-  cursor: pointer;
+  font-size: 12px;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -270,6 +271,7 @@
   cursor: pointer;
   font-weight: 700;
   color: var(--text-primary);
+  display: inline-block
 }
 
 .addMargin {
@@ -322,6 +324,7 @@
   font-size: 13px;
   color: var(--text-primary);
   cursor: pointer;
+  display: inline-block
 }
 
 @media (max-width: 768px) {

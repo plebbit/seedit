@@ -18,7 +18,8 @@ interface CommentToolsProps {
   hasLabel?: boolean;
   index?: number;
   isAuthor?: boolean;
-  isMod?: boolean;
+  isAccountMod?: boolean;
+  isCommentAuthorMod?: boolean;
   isReply?: boolean;
   isSingleReply?: boolean;
   parentCid?: string;
@@ -34,14 +35,15 @@ interface CommentToolsProps {
 interface ModOrReportButtonProps {
   cid: string;
   isAuthor: boolean | undefined;
-  isMod: boolean | undefined;
+  isAccountMod: boolean | undefined;
+  isCommentAuthorMod?: boolean;
 }
 
-const ModOrReportButton = ({ cid, isAuthor, isMod }: ModOrReportButtonProps) => {
+const ModOrReportButton = ({ cid, isAuthor, isAccountMod, isCommentAuthorMod }: ModOrReportButtonProps) => {
   const { t } = useTranslation();
 
-  return isMod ? (
-    <ModMenu cid={cid} />
+  return isAccountMod ? (
+    <ModMenu cid={cid} isCommentAuthorMod={isCommentAuthorMod} />
   ) : (
     !isAuthor && (
       <li className={`${styles.button} ${styles.reportButton}`}>
@@ -58,7 +60,8 @@ const PostTools = ({
   hasLabel,
   index,
   isAuthor,
-  isMod,
+  isAccountMod,
+  isCommentAuthorMod,
   subplebbitAddress,
   replyCount = 0,
   showCommentEditForm,
@@ -79,13 +82,17 @@ const PostTools = ({
     }
   };
 
-  const commentCountButton = failed ? <span>{commentCount}</span> : <Link to={cid ? `/p/${subplebbitAddress}/c/${cid}` : `/profile/${index}`}>{commentCount}</Link>;
+  const commentCountButton = failed ? (
+    <span>{commentCount}</span>
+  ) : (
+    <Link to={cid ? `/p/${subplebbitAddress}/c/${cid}` : `/profile/${index}`} onClick={() => cid && handlePostClick?.()}>
+      {commentCount}
+    </Link>
+  );
 
   return (
     <>
-      <li className={`${styles.button} ${!hasLabel ? styles.firstButton : ''}`} onClick={() => cid && handlePostClick?.()}>
-        {commentCountButton}
-      </li>
+      <li className={`${styles.button} ${!hasLabel ? styles.firstButton : ''}`}>{commentCountButton}</li>
       <ShareMenu cid={cid} subplebbitAddress={subplebbitAddress} />
       {/* TODO: Implement save functionality
         <li className={styles.button}>
@@ -93,13 +100,13 @@ const PostTools = ({
         </li> 
       */}
       {isAuthor && <EditMenu cid={cid} showCommentEditForm={showCommentEditForm} spoiler={spoiler} />}
-      <HideMenu author={author} cid={cid} isMod={isMod} subplebbitAddress={subplebbitAddress} />
+      <HideMenu author={author} cid={cid} isAccountMod={isAccountMod} subplebbitAddress={subplebbitAddress} />
       {/* TODO: Implement crosspost functionality
         <li className={`${styles.button} ${styles.crosspostButton}`}>
           <span>{t('crosspost')}</span>
         </li> 
       */}
-      <ModOrReportButton cid={cid} isAuthor={isAuthor} isMod={isMod} />
+      <ModOrReportButton cid={cid} isAuthor={isAuthor} isAccountMod={isAccountMod} isCommentAuthorMod={isCommentAuthorMod} />
     </>
   );
 };
@@ -111,7 +118,8 @@ const ReplyTools = ({
   hasLabel,
   index,
   isAuthor,
-  isMod,
+  isAccountMod,
+  isCommentAuthorMod,
   showReplyForm,
   subplebbitAddress,
   showCommentEditForm,
@@ -131,11 +139,11 @@ const ReplyTools = ({
         </li> 
       */}
       {isAuthor && <EditMenu cid={cid} showCommentEditForm={showCommentEditForm} spoiler={spoiler} />}
-      <HideMenu author={author} cid={cid} isMod={isMod} subplebbitAddress={subplebbitAddress} />
+      <HideMenu author={author} cid={cid} isAccountMod={isAccountMod} subplebbitAddress={subplebbitAddress} />
       <li className={!cid ? styles.hideReply : styles.button}>
         <span onClick={() => cid && showReplyForm?.()}>{t('reply_reply')}</span>
       </li>
-      <ModOrReportButton cid={cid} isAuthor={isAuthor} isMod={isMod} />
+      <ModOrReportButton cid={cid} isAuthor={isAuthor} isAccountMod={isAccountMod} isCommentAuthorMod={isCommentAuthorMod} />
     </>
   );
 };
@@ -146,7 +154,8 @@ const SingleReplyTools = ({
   hasLabel,
   index,
   isAuthor,
-  isMod,
+  isAccountMod,
+  isCommentAuthorMod,
   parentCid,
   postCid,
   showReplyForm,
@@ -188,11 +197,11 @@ const SingleReplyTools = ({
       {isAuthor && <EditMenu cid={cid} spoiler={spoiler} showCommentEditForm={showCommentEditForm} />}
       <li className={styles.button}>{contextButton}</li>
       <li className={styles.button}>{fullCommentsButton}</li>
-      <HideMenu author={author} cid={cid} isMod={isMod} subplebbitAddress={subplebbitAddress} />
+      <HideMenu author={author} cid={cid} isAccountMod={isAccountMod} subplebbitAddress={subplebbitAddress} />
       <li className={!cid ? styles.hideReply : styles.button}>
         <span onClick={() => cid && showReplyForm?.()}>{t('reply_reply')}</span>
       </li>
-      <ModOrReportButton cid={cid} isAuthor={isAuthor} isMod={isMod} />
+      <ModOrReportButton cid={cid} isAuthor={isAuthor} isAccountMod={isAccountMod} isCommentAuthorMod={isCommentAuthorMod} />
     </>
   );
 };
@@ -237,8 +246,11 @@ const CommentTools = ({
 }: CommentToolsProps) => {
   const account = useAccount();
   const isAuthor = account?.author?.address === author?.address;
-  const authorRole = useSubplebbit({ subplebbitAddress })?.roles?.[account?.author?.address]?.role;
-  const isMod = authorRole === 'admin' || authorRole === 'owner' || authorRole === 'moderator';
+  const subplebbit = useSubplebbit({ subplebbitAddress });
+  const accountAuthorRole = subplebbit?.roles?.[account?.author?.address]?.role;
+  const commentAuthorRole = subplebbit?.roles?.[author?.address]?.role;
+  const isAccountMod = accountAuthorRole === 'admin' || accountAuthorRole === 'owner' || accountAuthorRole === 'moderator';
+  const isCommentAuthorMod = commentAuthorRole === 'admin' || commentAuthorRole === 'owner' || commentAuthorRole === 'moderator';
   const isInInboxView = isInboxView(useLocation().pathname);
 
   return (
@@ -252,7 +264,8 @@ const CommentTools = ({
             hasLabel={hasLabel}
             index={index}
             isAuthor={isAuthor}
-            isMod={isMod}
+            isAccountMod={isAccountMod}
+            isCommentAuthorMod={isCommentAuthorMod}
             parentCid={parentCid}
             postCid={postCid}
             showCommentEditForm={showCommentEditForm}
@@ -268,7 +281,8 @@ const CommentTools = ({
             hasLabel={hasLabel}
             index={index}
             isAuthor={isAuthor}
-            isMod={isMod}
+            isAccountMod={isAccountMod}
+            isCommentAuthorMod={isCommentAuthorMod}
             showCommentEditForm={showCommentEditForm}
             showReplyForm={showReplyForm}
             spoiler={spoiler}
@@ -294,7 +308,8 @@ const CommentTools = ({
             hasLabel={hasLabel}
             index={index}
             isAuthor={isAuthor}
-            isMod={isMod}
+            isAccountMod={isAccountMod}
+            isCommentAuthorMod={isCommentAuthorMod}
             replyCount={replyCount}
             showCommentEditForm={showCommentEditForm}
             spoiler={spoiler}

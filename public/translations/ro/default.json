@@ -277,7 +277,7 @@
   "edit_reason": "motivul editării",
   "view_parent_comment": "vezi comentariul părinte",
   "chain_ticker": "Ticker blockchain",
-  "token_address_whitelist": "Adresa tokenului (doar dacă este pe lista albă)",
+  "token_address_whitelist": "Adresa tokenului (<1>doar lista albă</1>)",
   "token_id": "ID token",
   "paste_signature": "Lipește semnătura",
   "copy_message_etherscan": "<1>{{copy}}</1> mesaj de semnat pe <2>etherscan</2>",
@@ -287,5 +287,6 @@
   "missing_token_address": "Lipsește adresa tokenului",
   "missing_token_id": "Lipsește ID-ul tokenului",
   "missing_signature": "Lipsește semnătura",
-  "edited_timestamp": "Editat {{timestamp}}"
+  "edited_timestamp": "Editat {{timestamp}}",
+  "ban_user_for": "Interzice utilizatorul pentru <1></1> zi(zile)"
 }

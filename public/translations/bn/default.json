@@ -277,7 +277,7 @@
   "edit_reason": "সম্পাদনার কারণ",
   "view_parent_comment": "মূল মন্তব্য দেখুন",
   "chain_ticker": "শৃঙ্খলা টিকার",
-  "token_address_whitelist": "টোকেন ঠিকানা (কেবল সফেদ তালিকা তৈরি করলে)",
+  "token_address_whitelist": "টোকেন ঠিকানা (<1>সাফল্যবান</1> কেবল)",
   "token_id": "টোকেন আইডি",
   "paste_signature": "স্বাক্ষর পেস্ট করুন",
   "copy_message_etherscan": "<1>{{copy}}</1> বার্তা সাইন করতে <2>etherscan</2> এ",
@@ -287,5 +287,6 @@
   "missing_token_address": "নিখোঁজ টোকেন ঠিকানা",
   "missing_token_id": "নিখোঁজ টোকেন আইডি",
   "missing_signature": "নিখোঁজ স্বাক্ষর",
-  "edited_timestamp": "সম্পাদনা করা হয়েছে {{timestamp}}"
+  "edited_timestamp": "সম্পাদনা করা হয়েছে {{timestamp}}",
+  "ban_user_for": "ব্যবহারকারীকে <1></1> দিনের জন্য বন্ধ করুন"
 }

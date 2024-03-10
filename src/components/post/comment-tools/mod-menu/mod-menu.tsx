@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { autoUpdate, flip, FloatingFocusManager, offset, shift, useClick, useDismiss, useFloating, useId, useInteractions, useRole } from '@floating-ui/react';
-import { useTranslation } from 'react-i18next';
+import { Trans, useTranslation } from 'react-i18next';
 import { PublishCommentEditOptions, useComment, useEditedComment, usePublishCommentEdit } from '@plebbit/plebbit-react-hooks';
 import styles from './mod-menu.module.css';
 import { alertChallengeVerificationFailed } from '../../../../lib/utils/challenge-utils';
@@ -10,9 +10,10 @@ const { addChallenge } = challengesStore.getState();
 
 type ModMenuProps = {
   cid: string;
+  isCommentAuthorMod?: boolean;
 };
 
-const ModMenu = ({ cid }: ModMenuProps) => {
+const ModMenu = ({ cid, isCommentAuthorMod }: ModMenuProps) => {
   const { t } = useTranslation();
 
   let post: any;
@@ -31,6 +32,7 @@ const ModMenu = ({ cid }: ModMenuProps) => {
     locked: post?.locked,
     spoiler: post?.spoiler,
     pinned: post?.pinned,
+    commentAuthor: { banExpiresAt: post?.banExpiresAt },
     commentCid: post?.cid,
     subplebbitAddress: post?.subplebbitAddress,
     onChallenge: (...args: any) => addChallenge([...args, post]),
@@ -44,7 +46,34 @@ const ModMenu = ({ cid }: ModMenuProps) => {
   const [publishCommentEditOptions, setPublishCommentEditOptions] = useState(defaultPublishOptions);
   const { publishCommentEdit } = usePublishCommentEdit(publishCommentEditOptions);
 
-  const onCheckbox = (e: React.ChangeEvent<HTMLInputElement>) => setPublishCommentEditOptions((state) => ({ ...state, [e.target.id]: e.target.checked }));
+  const [banDuration, setBanDuration] = useState(1);
+
+  const daysToTimestampInSeconds = (days: number) => {
+    const now = new Date();
+    now.setDate(now.getDate() + days);
+    return Math.floor(now.getTime() / 1000);
+  };
+
+  const onCheckbox = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { id, checked } = e.target;
+    if (id === 'banUser') {
+      setPublishCommentEditOptions((state) => ({
+        ...state,
+        commentAuthor: { ...state.commentAuthor, banExpiresAt: checked ? daysToTimestampInSeconds(banDuration) : undefined },
+      }));
+    } else {
+      setPublishCommentEditOptions((state) => ({ ...state, [id]: checked }));
+    }
+  };
+
+  const onBanDurationChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const days = parseInt(e.target.value, 10) || 1;
+    setBanDuration(days);
+    setPublishCommentEditOptions((state) => ({
+      ...state,
+      commentAuthor: { ...state.commentAuthor, banExpiresAt: daysToTimestampInSeconds(days) },
+    }));
+  };
 
   const onReason = (e: React.ChangeEvent<HTMLInputElement>) =>
     setPublishCommentEditOptions((state) => ({ ...state, reason: e.target.value ? e.target.value : undefined }));
@@ -105,6 +134,18 @@ const ModMenu = ({ cid }: ModMenuProps) => {
                   {isReply ? t('stickied_comment') : t('announcement')}
                 </label>
               </div>
+              {!isCommentAuthorMod && (
+                <div className={styles.menuItem}>
+                  <label>
+                    <input onChange={onCheckbox} checked={!!publishCommentEditOptions.commentAuthor?.banExpiresAt} type='checkbox' id='banUser' />
+                    <Trans
+                      i18nKey='ban_user_for'
+                      shouldUnescape={true}
+                      components={{ 1: <input onChange={onBanDurationChange} type='number' min={1} max={100} defaultValue={banDuration} /> }}
+                    />
+                  </label>
+                </div>
+              )}
               <div className={`${styles.menuItem} ${styles.menuReason}`}>
                 {t('reason')} <span className={styles.optional}>({t('optional')})</span>
                 <input type='text' onChange={onReason} defaultValue={post?.reason} size={14} />

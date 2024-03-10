@@ -34,6 +34,10 @@
   display: block;
 }
 
+.avatarSettingInput a {
+  color: var(--link-primary);
+}
+
 .settingTitle {
   font-style: italic;
   text-transform: lowercase;

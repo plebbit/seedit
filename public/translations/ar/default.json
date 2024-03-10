@@ -277,7 +277,7 @@
   "edit_reason": "سبب التعديل",
   "view_parent_comment": "عرض التعليق الأصلي",
   "chain_ticker": "تذييل سلسلة",
-  "token_address_whitelist": "عنوان الرمز (فقط في القائمة البيضاء)",
+  "token_address_whitelist": "عنوان الرمز (فقط على الـ <1>قائمة البيضاء</1>)",
   "token_id": "تعريف الرمز",
   "paste_signature": "لصق التوقيع",
   "copy_message_etherscan": "<1>{{copy}}</1> رسالة للتوقيع على <2>etherscan</2>",
@@ -287,5 +287,6 @@
   "missing_token_address": "عنوان الرمز المفقود",
   "missing_token_id": "معرف الرمز المفقود",
   "missing_signature": "التوقيع المفقود",
-  "edited_timestamp": "تم التحرير {{timestamp}}"
+  "edited_timestamp": "تم التحرير {{timestamp}}",
+  "ban_user_for": "حظر المستخدم لمدة <1></1> يوم(أيام)"
 }

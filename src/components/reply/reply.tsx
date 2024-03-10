@@ -39,6 +39,7 @@ const ReplyAuthor = ({ address, authorRole, cid, displayName, imageUrl, isAvatar
   const isAuthorModerator = authorRole === 'moderator';
   const authorRoleInitial = (isAuthorOwner && 'O') || (isAuthorAdmin && 'A') || (isAuthorModerator && 'M') || '';
   const moderatorClass = `${isAuthorOwner ? styles.owner : isAuthorAdmin ? styles.admin : isAuthorModerator ? styles.moderator : ''}`;
+  const shortDisplayName = displayName?.length > 20 ? displayName?.slice(0, 20) + '...' : displayName;
 
   return (
     <>
@@ -49,7 +50,7 @@ const ReplyAuthor = ({ address, authorRole, cid, displayName, imageUrl, isAvatar
       )}
       {displayName && (
         <Link to={`/u/${address}/c/${cid}`} className={`${styles.author} ${moderatorClass}`}>
-          {displayName}{' '}
+          {shortDisplayName}{' '}
         </Link>
       )}
       <Link to={`/u/${address}/c/${cid}`} className={`${styles.author} ${moderatorClass}`}>
@@ -381,7 +382,9 @@ const Reply = ({ cidOfReplyWithContext, depth = 0, isSingleComment, isSingleRepl
             )}
             {!collapsed && (
               <div
-                className={`${styles.usertext} ${cid && commentMediaInfo && (isSingleComment || cidOfReplyWithContext === cid) ? styles.highlightMedia : ''}`}
+                className={`${styles.usertext} ${cid && commentMediaInfo && (isSingleComment || cidOfReplyWithContext === cid) ? styles.highlightMedia : ''} ${
+                  spoiler && !showSpoiler ? styles.hideSpoiler : ''
+                }`}
                 onClick={() => {
                   spoiler && !showSpoiler && setShowSpoiler(true);
                 }}

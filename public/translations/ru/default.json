@@ -277,7 +277,7 @@
   "edit_reason": "причина редактирования",
   "view_parent_comment": "просмотреть родительский комментарий",
   "chain_ticker": "Блокчейн тикер",
-  "token_address_whitelist": "Адрес токена (только если в белом списке)",
+  "token_address_whitelist": "Адрес токена (<1>только белый список</1>)",
   "token_id": "Идентификатор токена",
   "paste_signature": "Вставить подпись",
   "copy_message_etherscan": "<1>{{copy}}</1> сообщение для подписи на <2>etherscan</2>",
@@ -287,5 +287,6 @@
   "missing_token_address": "Отсутствующий адрес токена",
   "missing_token_id": "Отсутствующий идентификатор токена",
   "missing_signature": "Отсутствующая подпись",
-  "edited_timestamp": "Отредактировано {{timestamp}}"
+  "edited_timestamp": "Отредактировано {{timestamp}}",
+  "ban_user_for": "Заблокировать пользователя на <1></1> день(дней)"
 }

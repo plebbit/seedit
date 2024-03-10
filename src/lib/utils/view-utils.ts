@@ -89,7 +89,12 @@ export const isPostView = (pathname: string, params: ParamsType): boolean => {
 };
 
 export const isPostContextView = (pathname: string, params: ParamsType, search: string): boolean => {
-  return params.subplebbitAddress && params.commentCid ? `${pathname}${search}` === `/p/${params.subplebbitAddress}/c/${params.commentCid}?context=1` : false;
+  if (!params.subplebbitAddress || !params.commentCid) return false;
+  const expectedPathname = `/p/${params.subplebbitAddress}/c/${params.commentCid}`;
+  if (pathname !== expectedPathname) return false;
+  const searchParams = new URLSearchParams(search);
+  const context = searchParams.get('context');
+  return context !== null && !isNaN(Number(context));
 };
 
 export const isProfileView = (pathname: string): boolean => {

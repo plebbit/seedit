@@ -277,7 +277,7 @@
   "edit_reason": "Bearbeitungsgrund",
   "view_parent_comment": "ursprünglichen Kommentar anzeigen",
   "chain_ticker": "Blockchain-Ticker",
-  "token_address_whitelist": "Token-Adresse (nur bei Whitelist)",
+  "token_address_whitelist": "Tokenadresse (<1>nur Weiße Liste</1>)",
   "token_id": "Token-ID",
   "paste_signature": "Unterschrift einfügen",
   "copy_message_etherscan": "<1>{{copy}}</1> Nachricht zum Signieren auf <2>etherscan</2>",
@@ -287,5 +287,6 @@
   "missing_token_address": "Fehlende Tokenadresse",
   "missing_token_id": "Fehlende Token-ID",
   "missing_signature": "Fehlende Signatur",
-  "edited_timestamp": "Bearbeitet {{timestamp}}"
+  "edited_timestamp": "Bearbeitet {{timestamp}}",
+  "ban_user_for": "Benutzer für <1></1> Tag(e) sperren"
 }

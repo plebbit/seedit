@@ -49,6 +49,7 @@ const PostAuthor = ({
   const isAuthorModerator = authorRole === 'moderator';
   const moderatorClass = `${isAuthorOwner ? styles.owner : isAuthorAdmin ? styles.admin : isAuthorModerator ? styles.moderator : ''}`;
   const authorRoleInitial = (isAuthorOwner && 'O') || (isAuthorAdmin && 'A') || (isAuthorModerator && 'M') || '';
+  const shortDisplayName = displayName?.length > 20 ? displayName?.slice(0, 20) + '...' : displayName;
 
   return (
     <>
@@ -60,7 +61,7 @@ const PostAuthor = ({
         ) : (
           <> </>
         )}
-        {displayName && <span className={`${styles.displayName} ${moderatorClass}`}>{displayName} </span>}
+        {displayName && <span className={`${styles.displayName} ${moderatorClass}`}>{shortDisplayName} </span>}
         <span className={`${styles.authorAddressWrapper} ${moderatorClass}`}>
           <span className={styles.authorAddressHidden}>u/{shortAddress || shortAuthorAddress}</span>
           <span className={`${styles.authorAddressVisible} ${authorAddressChanged && styles.authorAddressChanged}`}>u/{shortAuthorAddress}</span>

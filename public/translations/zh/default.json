@@ -277,7 +277,7 @@
   "edit_reason": "编辑原因",
   "view_parent_comment": "查看父级评论",
   "chain_ticker": "区块链标记",
-  "token_address_whitelist": "代币地址（仅当在白名单中时）",
+  "token_address_whitelist": "代币地址（<1>仅限白名单</1>）",
   "token_id": "令牌ID",
   "paste_signature": "粘贴签名",
   "copy_message_etherscan": "<1>{{copy}}</1> 在<2>etherscan</2>上签名的消息",
@@ -287,5 +287,6 @@
   "missing_token_address": "缺失的代币地址",
   "missing_token_id": "缺失的代币ID",
   "missing_signature": "缺失的签名",
-  "edited_timestamp": "编辑于{{timestamp}}"
+  "edited_timestamp": "编辑于{{timestamp}}",
+  "ban_user_for": "封禁用户 <1></1> 天"
 }
