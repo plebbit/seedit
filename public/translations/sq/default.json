@@ -290,5 +290,8 @@
   "edited_timestamp": "Redaktuar {{timestamp}}",
   "ban_user_for": "Ndalo përdoruesin për <1></1> ditë",
   "crypto_wallets": "Portofolitë e cryptos",
-  "wallet_address": "Adresa e wallet"
+  "wallet_address": "Adresa e wallet",
+  "save_wallets": "Ruaj <1>{{save}}</1> wallet(s) në llogari",
+  "remove": "Hiqni",
+  "add_wallet": "<1>Shto</1> një xhepë crypto"
 }

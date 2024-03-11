@@ -290,5 +290,8 @@
   "edited_timestamp": "Redigeret {{timestamp}}",
   "ban_user_for": "Udeluk brugeren i <1></1> dag(e)",
   "crypto_wallets": "Crypto Wallets",
-  "wallet_address": "Walletadresse"
+  "wallet_address": "Walletadresse",
+  "save_wallets": "Gem <1>{{save}}</1> wallet(s) til konto",
+  "remove": "Fjern",
+  "add_wallet": "<1>Tilføj</1> en crypto-wallet"
 }

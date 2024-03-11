@@ -290,5 +290,8 @@
   "edited_timestamp": "تم التحرير {{timestamp}}",
   "ban_user_for": "حظر المستخدم لمدة <1></1> يوم(أيام)",
   "crypto_wallets": "محافظ العملات الرقمية",
-  "wallet_address": "عنوان المحفظة"
+  "wallet_address": "عنوان المحفظة",
+  "save_wallets": "حفظ <1>{{save}}</1> محفظة في الحساب",
+  "remove": "إزالة",
+  "add_wallet": "<1>إضافة</1> محفظة رقمية"
 }

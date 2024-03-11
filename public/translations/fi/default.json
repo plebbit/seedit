@@ -290,5 +290,8 @@
   "edited_timestamp": "Muokattu {{timestamp}}",
   "ban_user_for": "Estä käyttäjä <1></1> päiväksi",
   "crypto_wallets": "Krypto-lompakot",
-  "wallet_address": "Lompakon osoite"
+  "wallet_address": "Lompakon osoite",
+  "save_wallets": "Tallenna <1>{{save}}</1> lompakko(a) tilille",
+  "remove": "Poista",
+  "add_wallet": "<1>Lisää</1> krypto-lompakko"
 }

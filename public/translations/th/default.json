@@ -290,5 +290,8 @@
   "edited_timestamp": "แก้ไขเมื่อ {{timestamp}}",
   "ban_user_for": "แบนผู้ใช้ <1></1> วัน",
   "crypto_wallets": "กระเป๋าเงินดิจิทัล",
-  "wallet_address": "ที่อยู่กระเป๋าเงิน"
+  "wallet_address": "ที่อยู่กระเป๋าเงิน",
+  "save_wallets": "บันทึก <1>{{save}}</1> กระเป๋าเงินเข้าบัญชี",
+  "remove": "ลบ",
+  "add_wallet": "<1>เพิ่ม</1> กระเป๋าเงินดิจิทัล"
 }

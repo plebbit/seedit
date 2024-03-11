@@ -290,5 +290,8 @@
   "edited_timestamp": "Na-edit na ang {{timestamp}}",
   "ban_user_for": "I-ban ang user para sa <1></1> araw",
   "crypto_wallets": "Mga Wallet ng Crypto",
-  "wallet_address": "Address ng wallet"
+  "wallet_address": "Address ng wallet",
+  "save_wallets": "I-save ang <1>{{save}}</1> wallet(s) sa account",
+  "remove": "Alisin",
+  "add_wallet": "<1>Magdagdag</1> ng isang crypto wallet"
 }

@@ -290,5 +290,8 @@
   "edited_timestamp": "Édité {{timestamp}}",
   "ban_user_for": "Bannir l'utilisateur pendant <1></1> jour(s)",
   "crypto_wallets": "Portefeuilles de crypto",
-  "wallet_address": "Adresse de portefeuille"
+  "wallet_address": "Adresse de portefeuille",
+  "save_wallets": "Sauvegarder <1>{{save}}</1> porte-monnaie(s) sur le compte",
+  "remove": "Retirer",
+  "add_wallet": "<1>Ajouter</1> un portefeuille crypto"
 }

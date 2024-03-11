@@ -290,5 +290,8 @@
   "edited_timestamp": "編集済み {{timestamp}}",
   "ban_user_for": "ユーザーを<1></1>日間禁止する",
   "crypto_wallets": "暗号通貨ウォレット",
-  "wallet_address": "ウォレットアドレス"
+  "wallet_address": "ウォレットアドレス",
+  "save_wallets": "アカウントに<1>{{save}}</1>のウォレットを保存する",
+  "remove": "削除",
+  "add_wallet": "<1>追加</1> クリプトウォレット"
 }

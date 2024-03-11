@@ -290,5 +290,8 @@
   "edited_timestamp": "Szerkesztve {{timestamp}}",
   "ban_user_for": "Felhasználó letiltása <1></1> napra",
   "crypto_wallets": "Kriptopénztárcák",
-  "wallet_address": "Pénztárca címe"
+  "wallet_address": "Pénztárca címe",
+  "save_wallets": "<1>{{save}}</1> pénztárcát ment a fiókba",
+  "remove": "Eltávolítás",
+  "add_wallet": "<1>Kriptopénztárca</1> hozzáadása"
 }

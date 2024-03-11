@@ -290,5 +290,8 @@
   "edited_timestamp": "संपादित {{timestamp}}",
   "ban_user_for": "उपयोगकर्ता को <1></1> दिनों के लिए प्रतिबंधित करें",
   "crypto_wallets": "क्रिप्टो वॉलेट्स",
-  "wallet_address": "वॉलेट पता"
+  "wallet_address": "वॉलेट पता",
+  "save_wallets": "हिसाब में <1>{{save}}</1> वॉलेट(s) सहेजें",
+  "remove": "हटाएं",
+  "add_wallet": "<1>को जोड़ें</1> एक क्रिप्टो वॉलेट"
 }

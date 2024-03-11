@@ -290,5 +290,8 @@
   "edited_timestamp": "{{timestamp}} پہلے ترمیم شدہ",
   "ban_user_for": "<1></1> دنوں کے لیے صارف کو پابندی عائد کریں",
   "crypto_wallets": "کرپٹو والٹس",
-  "wallet_address": "والیٹ کا پتہ"
+  "wallet_address": "والیٹ کا پتہ",
+  "save_wallets": "خود کو <1>{{save}}</1> والیٹس کو حساب میں محفوظ کریں",
+  "remove": "ہٹا دو",
+  "add_wallet": "<1>شامل کریں</1> ایک کرپٹو والیٹ"
 }

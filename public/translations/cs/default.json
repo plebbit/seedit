@@ -290,5 +290,8 @@
   "edited_timestamp": "Upraveno {{timestamp}}",
   "ban_user_for": "Zakázat uživatele na <1></1> den (dní)",
   "crypto_wallets": "Kryptoměny",
-  "wallet_address": "Adresa peněženky"
+  "wallet_address": "Adresa peněženky",
+  "save_wallets": "Uložit <1>{{save}}</1> peněženku do účtu",
+  "remove": "Odebrat",
+  "add_wallet": "<1>Přidat</1> kryptoměnovou peněženku"
 }

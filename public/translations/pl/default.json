@@ -290,5 +290,8 @@
   "edited_timestamp": "Edytowane {{timestamp}}",
   "ban_user_for": "Zablokuj użytkownika na <1></1> dzień (dni)",
   "crypto_wallets": "Portfele kryptowalut",
-  "wallet_address": "Adres portfela"
+  "wallet_address": "Adres portfela",
+  "save_wallets": "Zapisz <1>{{save}}</1> portfel(e) do konta",
+  "remove": "Usuń",
+  "add_wallet": "<1>Dodaj</1> portfel kryptowalutowy"
 }

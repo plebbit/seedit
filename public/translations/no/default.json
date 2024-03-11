@@ -290,5 +290,8 @@
   "edited_timestamp": "Redigert {{timestamp}}",
   "ban_user_for": "Blokker bruker i <1></1> dag(er)",
   "crypto_wallets": "Crypto-lommebøker",
-  "wallet_address": "Lommebokadresse"
+  "wallet_address": "Lommebokadresse",
+  "save_wallets": "Lagre <1>{{save}}</1> lommebok(er) til konto",
+  "remove": "Fjern",
+  "add_wallet": "<1>Legg til</1> en crypto-lommebok"
 }

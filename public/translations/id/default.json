@@ -290,5 +290,8 @@
   "edited_timestamp": "Diedit {{timestamp}}",
   "ban_user_for": "Blokir pengguna selama <1></1> hari",
   "crypto_wallets": "Dompet Crypto",
-  "wallet_address": "Alamat dompet"
+  "wallet_address": "Alamat dompet",
+  "save_wallets": "Simpan <1>{{save}}</1> dompet ke akun",
+  "remove": "Hapus",
+  "add_wallet": "<1>Tambahkan</1> dompet kripto"
 }

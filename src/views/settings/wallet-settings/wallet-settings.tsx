@@ -97,7 +97,7 @@ const CryptoWalletsForm = ({ account }: { account: Account | undefined }) => {
           <div className={styles.walletFieldTitle}>{t('paste_signature')}</div>
           <input onChange={(e) => setWalletsArrayProperty(index, 'signature', e.target.value)} value={wallet.signature} placeholder='0x...' />
         </div>
-        <button onClick={() => setWalletsArray([...walletsArray.slice(0, index), ...walletsArray.slice(index + 1)])}>remove</button>
+        <button onClick={() => setWalletsArray([...walletsArray.slice(0, index), ...walletsArray.slice(index + 1)])}>{t('remove')}</button>
       </div>
     </>
   ));
@@ -117,18 +117,18 @@ const CryptoWalletsForm = ({ account }: { account: Account | undefined }) => {
       }
     });
     setAccount({ ...account, author: { ...account.author, wallets } });
-    alert(`saved`);
+    alert(t('saved'));
   };
 
   return (
     <>
       <div className={styles.addWallet}>
-        <button onClick={() => setWalletsArray([...walletsArray, defaultWalletObject])}>add</button> a crypto wallet
+        <Trans i18nKey='add_wallet' components={{ 1: <button onClick={() => setWalletsArray([...walletsArray, defaultWalletObject])} /> }} />
       </div>
       {walletsInputs}
       {walletsArray.length > 0 && (
         <div className={styles.saveWallets}>
-          <button onClick={save}>save</button> wallet(s) to account
+          <Trans i18nKey='save_wallets' values={{ save: t('save') }} components={{ 1: <button onClick={save} /> }} />
         </div>
       )}
     </>

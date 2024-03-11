@@ -290,5 +290,8 @@
   "edited_timestamp": "ویرایش شده {{timestamp}}",
   "ban_user_for": "بستن کاربر برای <1></1> روز",
   "crypto_wallets": "کیف پول رمز ارز",
-  "wallet_address": "آدرس کیف پول"
+  "wallet_address": "آدرس کیف پول",
+  "save_wallets": "ذخیره کن <1>{{save}}</1> کیف پول در حساب",
+  "remove": "حذف",
+  "add_wallet": "<1>افزودن</1> یک کیف پول رمز ارز"
 }

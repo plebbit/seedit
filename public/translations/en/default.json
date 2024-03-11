@@ -290,5 +290,8 @@
   "edited_timestamp": "Edited {{timestamp}}",
   "ban_user_for": "Ban user for <1></1> day(s)",
   "crypto_wallets": "Crypto Wallets",
-  "wallet_address": "Wallet address"
+  "wallet_address": "Wallet address",
+  "save_wallets": "Save <1>{{save}}</1> wallet(s) to account",
+  "remove": "Remove",
+  "add_wallet": "<1>Add</1> a crypto wallet"
 }
