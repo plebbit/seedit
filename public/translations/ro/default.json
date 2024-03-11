@@ -288,5 +288,6 @@
   "missing_token_id": "Lipsește ID-ul tokenului",
   "missing_signature": "Lipsește semnătura",
   "edited_timestamp": "Editat {{timestamp}}",
-  "ban_user_for": "Interzice utilizatorul pentru <1></1> zi(zile)"
+  "ban_user_for": "Interzice utilizatorul pentru <1></1> zi(zile)",
+  "crypto_wallets": "Portofele crypto"
 }

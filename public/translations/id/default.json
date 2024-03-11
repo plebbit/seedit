@@ -288,5 +288,6 @@
   "missing_token_id": "ID token yang hilang",
   "missing_signature": "Tanda tangan yang hilang",
   "edited_timestamp": "Diedit {{timestamp}}",
-  "ban_user_for": "Blokir pengguna selama <1></1> hari"
+  "ban_user_for": "Blokir pengguna selama <1></1> hari",
+  "crypto_wallets": "Dompet Crypto"
 }

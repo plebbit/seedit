@@ -288,5 +288,6 @@
   "missing_token_id": "מזהה הטוקן חסר",
   "missing_signature": "חתימה חסרה",
   "edited_timestamp": "נערך {{timestamp}}",
-  "ban_user_for": "אסור למשתמש למשך <1></1> יום"
+  "ban_user_for": "אסור למשתמש למשך <1></1> יום",
+  "crypto_wallets": "ארנק קריפטו"
 }

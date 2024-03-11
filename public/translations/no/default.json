@@ -288,5 +288,6 @@
   "missing_token_id": "Manglende token-ID",
   "missing_signature": "Manglende signatur",
   "edited_timestamp": "Redigert {{timestamp}}",
-  "ban_user_for": "Blokker bruker i <1></1> dag(er)"
+  "ban_user_for": "Blokker bruker i <1></1> dag(er)",
+  "crypto_wallets": "Crypto-lommebøker"
 }

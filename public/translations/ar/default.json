@@ -288,5 +288,6 @@
   "missing_token_id": "معرف الرمز المفقود",
   "missing_signature": "التوقيع المفقود",
   "edited_timestamp": "تم التحرير {{timestamp}}",
-  "ban_user_for": "حظر المستخدم لمدة <1></1> يوم(أيام)"
+  "ban_user_for": "حظر المستخدم لمدة <1></1> يوم(أيام)",
+  "crypto_wallets": "محافظ العملات الرقمية"
 }

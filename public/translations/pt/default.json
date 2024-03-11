@@ -288,5 +288,6 @@
   "missing_token_id": "ID de token em falta",
   "missing_signature": "Assinatura em falta",
   "edited_timestamp": "Editado {{timestamp}}",
-  "ban_user_for": "Banir usuário por <1></1> dia(s)"
+  "ban_user_for": "Banir usuário por <1></1> dia(s)",
+  "crypto_wallets": "Carteiras cripto"
 }

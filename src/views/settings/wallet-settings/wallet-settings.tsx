@@ -20,7 +20,7 @@ const getWalletMessageToSign = (authorAddress: string, timestamp: number, addres
   return JSON.stringify(messageToSign);
 };
 
-const CryptoWalletsForm = ({ account }: { account: Account }) => {
+const CryptoWalletsForm = ({ account }: { account: Account | undefined }) => {
   const { t } = useTranslation();
 
   if (!account) {

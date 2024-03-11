@@ -288,5 +288,6 @@
   "missing_token_id": "गायब टोकन आईडी",
   "missing_signature": "गायब हस्ताक्षर",
   "edited_timestamp": "संपादित {{timestamp}}",
-  "ban_user_for": "उपयोगकर्ता को <1></1> दिनों के लिए प्रतिबंधित करें"
+  "ban_user_for": "उपयोगकर्ता को <1></1> दिनों के लिए प्रतिबंधित करें",
+  "crypto_wallets": "क्रिप्टो वॉलेट्स"
 }

@@ -288,5 +288,6 @@
   "missing_token_id": "Ontbrekend token-ID",
   "missing_signature": "Ontbrekende handtekening",
   "edited_timestamp": "Bewerkt {{timestamp}}",
-  "ban_user_for": "Gebruiker verbannen voor <1></1> dag(en)"
+  "ban_user_for": "Gebruiker verbannen voor <1></1> dag(en)",
+  "crypto_wallets": "Crypto-portefeuilles"
 }

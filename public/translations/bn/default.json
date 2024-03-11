@@ -288,5 +288,6 @@
   "missing_token_id": "নিখোঁজ টোকেন আইডি",
   "missing_signature": "নিখোঁজ স্বাক্ষর",
   "edited_timestamp": "সম্পাদনা করা হয়েছে {{timestamp}}",
-  "ban_user_for": "ব্যবহারকারীকে <1></1> দিনের জন্য বন্ধ করুন"
+  "ban_user_for": "ব্যবহারকারীকে <1></1> দিনের জন্য বন্ধ করুন",
+  "crypto_wallets": "ক্রিপ্টো ওয়ালেট"
 }
