@@ -289,5 +289,6 @@
   "missing_signature": "गुमलेली स्वाक्षरे",
   "edited_timestamp": "{{timestamp}} संपादित",
   "ban_user_for": "वापरकर्ता ब्लॉक करा <1></1> दिवस",
-  "crypto_wallets": "क्रिप्टो बटव्या"
+  "crypto_wallets": "क्रिप्टो बटव्या",
+  "wallet_address": "बटव्या पत्ता"
 }

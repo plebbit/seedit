@@ -289,5 +289,6 @@
   "missing_signature": "Tanda tangan yang hilang",
   "edited_timestamp": "Diedit {{timestamp}}",
   "ban_user_for": "Blokir pengguna selama <1></1> hari",
-  "crypto_wallets": "Dompet Crypto"
+  "crypto_wallets": "Dompet Crypto",
+  "wallet_address": "Alamat dompet"
 }

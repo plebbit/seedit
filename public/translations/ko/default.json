@@ -289,5 +289,6 @@
   "missing_signature": "부재중인 서명",
   "edited_timestamp": "편집됨 {{timestamp}}",
   "ban_user_for": "사용자를 <1></1>일 동안 차단하기",
-  "crypto_wallets": "암호 화폐 지갑"
+  "crypto_wallets": "암호 화폐 지갑",
+  "wallet_address": "지갑 주소"
 }

@@ -289,5 +289,6 @@
   "missing_signature": "Chybějící podpis",
   "edited_timestamp": "Upraveno {{timestamp}}",
   "ban_user_for": "Zakázat uživatele na <1></1> den (dní)",
-  "crypto_wallets": "Kryptoměny"
+  "crypto_wallets": "Kryptoměny",
+  "wallet_address": "Adresa peněženky"
 }

@@ -289,5 +289,6 @@
   "missing_signature": "Signature manquante",
   "edited_timestamp": "Édité {{timestamp}}",
   "ban_user_for": "Bannir l'utilisateur pendant <1></1> jour(s)",
-  "crypto_wallets": "Portefeuilles de crypto"
+  "crypto_wallets": "Portefeuilles de crypto",
+  "wallet_address": "Adresse de portefeuille"
 }

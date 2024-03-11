@@ -289,5 +289,6 @@
   "missing_signature": "Nënshkrimi i munguar",
   "edited_timestamp": "Redaktuar {{timestamp}}",
   "ban_user_for": "Ndalo përdoruesin për <1></1> ditë",
-  "crypto_wallets": "Portofolitë e cryptos"
+  "crypto_wallets": "Portofolitë e cryptos",
+  "wallet_address": "Adresa e wallet"
 }

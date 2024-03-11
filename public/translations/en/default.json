@@ -289,5 +289,6 @@
   "missing_signature": "Missing signature",
   "edited_timestamp": "Edited {{timestamp}}",
   "ban_user_for": "Ban user for <1></1> day(s)",
-  "crypto_wallets": "Crypto Wallets"
+  "crypto_wallets": "Crypto Wallets",
+  "wallet_address": "Wallet address"
 }

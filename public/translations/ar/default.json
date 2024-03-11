@@ -289,5 +289,6 @@
   "missing_signature": "التوقيع المفقود",
   "edited_timestamp": "تم التحرير {{timestamp}}",
   "ban_user_for": "حظر المستخدم لمدة <1></1> يوم(أيام)",
-  "crypto_wallets": "محافظ العملات الرقمية"
+  "crypto_wallets": "محافظ العملات الرقمية",
+  "wallet_address": "عنوان المحفظة"
 }

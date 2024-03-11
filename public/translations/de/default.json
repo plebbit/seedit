@@ -289,5 +289,6 @@
   "missing_signature": "Fehlende Signatur",
   "edited_timestamp": "Bearbeitet {{timestamp}}",
   "ban_user_for": "Benutzer für <1></1> Tag(e) sperren",
-  "crypto_wallets": "Krypto-Wallets"
+  "crypto_wallets": "Krypto-Wallets",
+  "wallet_address": "Wallet-Adresse"
 }

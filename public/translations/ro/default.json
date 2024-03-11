@@ -289,5 +289,6 @@
   "missing_signature": "Lipsește semnătura",
   "edited_timestamp": "Editat {{timestamp}}",
   "ban_user_for": "Interzice utilizatorul pentru <1></1> zi(zile)",
-  "crypto_wallets": "Portofele crypto"
+  "crypto_wallets": "Portofele crypto",
+  "wallet_address": "Adresa portofelului"
 }

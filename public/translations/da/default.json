@@ -289,5 +289,6 @@
   "missing_signature": "Manglende signatur",
   "edited_timestamp": "Redigeret {{timestamp}}",
   "ban_user_for": "Udeluk brugeren i <1></1> dag(e)",
-  "crypto_wallets": "Crypto Wallets"
+  "crypto_wallets": "Crypto Wallets",
+  "wallet_address": "Walletadresse"
 }

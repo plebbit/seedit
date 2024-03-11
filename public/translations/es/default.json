@@ -289,5 +289,6 @@
   "missing_signature": "Falta de firma",
   "edited_timestamp": "Editado {{timestamp}}",
   "ban_user_for": "Prohibir al usuario durante <1></1> día(s)",
-  "crypto_wallets": "Billeteras cripto"
+  "crypto_wallets": "Billeteras cripto",
+  "wallet_address": "Dirección de la billetera"
 }

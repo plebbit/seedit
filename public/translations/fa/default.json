@@ -289,5 +289,6 @@
   "missing_signature": "امضای گم شده",
   "edited_timestamp": "ویرایش شده {{timestamp}}",
   "ban_user_for": "بستن کاربر برای <1></1> روز",
-  "crypto_wallets": "کیف پول رمز ارز"
+  "crypto_wallets": "کیف پول رمز ارز",
+  "wallet_address": "آدرس کیف پول"
 }

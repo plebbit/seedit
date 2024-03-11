@@ -289,5 +289,6 @@
   "missing_signature": "Eksik imza",
   "edited_timestamp": "{{timestamp}} önce düzenlendi",
   "ban_user_for": "Kullanıcıyı <1></1> gün boyunca yasakla",
-  "crypto_wallets": "Kripto Cüzdanlar"
+  "crypto_wallets": "Kripto Cüzdanlar",
+  "wallet_address": "Cüzdan adresi"
 }

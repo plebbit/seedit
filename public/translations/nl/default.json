@@ -289,5 +289,6 @@
   "missing_signature": "Ontbrekende handtekening",
   "edited_timestamp": "Bewerkt {{timestamp}}",
   "ban_user_for": "Gebruiker verbannen voor <1></1> dag(en)",
-  "crypto_wallets": "Crypto-portefeuilles"
+  "crypto_wallets": "Crypto-portefeuilles",
+  "wallet_address": "Wallet adres"
 }

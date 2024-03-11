@@ -289,5 +289,6 @@
   "missing_signature": "Thiếu chữ ký",
   "edited_timestamp": "Đã chỉnh sửa {{timestamp}}",
   "ban_user_for": "Cấm người dùng trong <1></1> ngày",
-  "crypto_wallets": "Ví tiền điện tử"
+  "crypto_wallets": "Ví tiền điện tử",
+  "wallet_address": "Địa chỉ ví"
 }

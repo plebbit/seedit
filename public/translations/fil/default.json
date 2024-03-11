@@ -289,5 +289,6 @@
   "missing_signature": "Kulang na lagda",
   "edited_timestamp": "Na-edit na ang {{timestamp}}",
   "ban_user_for": "I-ban ang user para sa <1></1> araw",
-  "crypto_wallets": "Mga Wallet ng Crypto"
+  "crypto_wallets": "Mga Wallet ng Crypto",
+  "wallet_address": "Address ng wallet"
 }

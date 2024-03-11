@@ -289,5 +289,6 @@
   "missing_signature": "Firma mancante",
   "edited_timestamp": "Modificato {{timestamp}}",
   "ban_user_for": "Banna l'utente per <1></1> giorno/i",
-  "crypto_wallets": "Wallet crypto"
+  "crypto_wallets": "Wallet crypto",
+  "wallet_address": "Indirizzo wallet"
 }

@@ -289,5 +289,6 @@
   "missing_signature": "Hiányzó aláírás",
   "edited_timestamp": "Szerkesztve {{timestamp}}",
   "ban_user_for": "Felhasználó letiltása <1></1> napra",
-  "crypto_wallets": "Kriptopénztárcák"
+  "crypto_wallets": "Kriptopénztárcák",
+  "wallet_address": "Pénztárca címe"
 }

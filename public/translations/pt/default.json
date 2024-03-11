@@ -289,5 +289,6 @@
   "missing_signature": "Assinatura em falta",
   "edited_timestamp": "Editado {{timestamp}}",
   "ban_user_for": "Banir usuário por <1></1> dia(s)",
-  "crypto_wallets": "Carteiras cripto"
+  "crypto_wallets": "Carteiras cripto",
+  "wallet_address": "Endereço da carteira"
 }

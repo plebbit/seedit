@@ -289,5 +289,6 @@
   "missing_signature": "Ελλειπτική υπογραφή",
   "edited_timestamp": "Επεξεργάστηκε {{timestamp}}",
   "ban_user_for": "Αποκλεισμός χρήστη για <1></1> ημέρα(ες)",
-  "crypto_wallets": "Πορτοφόλια κρυπτονομισμάτων"
+  "crypto_wallets": "Πορτοφόλια κρυπτονομισμάτων",
+  "wallet_address": "Διεύθυνση πορτοφολιού"
 }

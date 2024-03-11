@@ -289,5 +289,6 @@
   "missing_signature": "เหตุที่หายไปของลายเซ็น",
   "edited_timestamp": "แก้ไขเมื่อ {{timestamp}}",
   "ban_user_for": "แบนผู้ใช้ <1></1> วัน",
-  "crypto_wallets": "กระเป๋าเงินดิจิทัล"
+  "crypto_wallets": "กระเป๋าเงินดิจิทัล",
+  "wallet_address": "ที่อยู่กระเป๋าเงิน"
 }

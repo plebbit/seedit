@@ -289,5 +289,6 @@
   "missing_signature": "Brakujący podpis",
   "edited_timestamp": "Edytowane {{timestamp}}",
   "ban_user_for": "Zablokuj użytkownika na <1></1> dzień (dni)",
-  "crypto_wallets": "Portfele kryptowalut"
+  "crypto_wallets": "Portfele kryptowalut",
+  "wallet_address": "Adres portfela"
 }

@@ -289,5 +289,6 @@
   "missing_signature": "Puuttuva allekirjoitus",
   "edited_timestamp": "Muokattu {{timestamp}}",
   "ban_user_for": "Estä käyttäjä <1></1> päiväksi",
-  "crypto_wallets": "Krypto-lompakot"
+  "crypto_wallets": "Krypto-lompakot",
+  "wallet_address": "Lompakon osoite"
 }

@@ -137,7 +137,7 @@ const CryptoWalletsForm = ({ account }: { account: Account | undefined }) => {
 
 const WalletSettings = () => {
   const account = useAccount();
-  return <CryptoWalletsForm account={account} />;
+  return account && <CryptoWalletsForm account={account} />;
 };
 
 export default WalletSettings;

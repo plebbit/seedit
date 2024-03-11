@@ -289,5 +289,6 @@
   "missing_signature": "缺失的签名",
   "edited_timestamp": "编辑于{{timestamp}}",
   "ban_user_for": "封禁用户 <1></1> 天",
-  "crypto_wallets": "加密货币钱包"
+  "crypto_wallets": "加密货币钱包",
+  "wallet_address": "钱包地址"
 }

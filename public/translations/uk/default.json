@@ -289,5 +289,6 @@
   "missing_signature": "Відсутній підпис",
   "edited_timestamp": "Відредаговано {{timestamp}}",
   "ban_user_for": "Заборонити користувача на <1></1> день (днів)",
-  "crypto_wallets": "Криптокошельки"
+  "crypto_wallets": "Криптокошельки",
+  "wallet_address": "Адреса гаманця"
 }

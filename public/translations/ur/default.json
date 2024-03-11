@@ -289,5 +289,6 @@
   "missing_signature": "گمشدہ دستخط",
   "edited_timestamp": "{{timestamp}} پہلے ترمیم شدہ",
   "ban_user_for": "<1></1> دنوں کے لیے صارف کو پابندی عائد کریں",
-  "crypto_wallets": "کرپٹو والٹس"
+  "crypto_wallets": "کرپٹو والٹس",
+  "wallet_address": "والیٹ کا پتہ"
 }

@@ -289,5 +289,6 @@
   "missing_signature": "Saknad signatur",
   "edited_timestamp": "Redigerat {{timestamp}}",
   "ban_user_for": "Blockera användaren i <1></1> dag(ar)",
-  "crypto_wallets": "Crypto-plånböcker"
+  "crypto_wallets": "Crypto-plånböcker",
+  "wallet_address": "Plånboksadress"
 }
