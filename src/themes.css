@@ -19,6 +19,7 @@
   --gray-overlay: #F7F7F7;
   --gray-overlay-border: #E9E9E9;
   --gray-border: #ddd;
+  --border-contrast: black;
   --gray-light: #ccc;
   --box-shadow-modal: 4px 4px 4px #ccc;
   --box-shadow-input: inset 0px 1px 1px rgba(0,0,0,0.3),0px 1px 0px rgba(255,255,255,0.6);
@@ -89,6 +90,7 @@
   --gray-overlay: #1f1f1f;
   --gray-overlay-border: #3e3e3e;
   --gray-border: #3e3e3e;
+  --border-contrast: #6a6a6a;
   --gray-light: #3e3e3e9d;
   --box-shadow-modal: 4px 4px 4px #000;
   --box-shadow-input: none;
