@@ -58,3 +58,8 @@
 .cryptoAddressInfo a:hover {
   text-decoration: underline;
 }
+
+.cryptoAddressInfo ol {
+  padding-bottom: 5px;
+  padding-left: 40px;
+}
