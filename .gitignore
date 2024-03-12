@@ -1,6 +1,8 @@
 # plebbit temp files
 .plebbit
 bin
+.env
+.deploy-env
 
 # Logs
 logs
