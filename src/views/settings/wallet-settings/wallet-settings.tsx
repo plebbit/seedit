@@ -70,34 +70,48 @@ const CryptoWalletsForm = ({ account }: { account: Account | undefined }) => {
     }, 2000);
   };
 
+  const [showWallet, setShowWallet] = useState<boolean[]>(walletsArray.map(() => false));
+  const toggleShowWallet = (index: number) => {
+    const newShowWallet = [...showWallet];
+    newShowWallet[index] = !newShowWallet[index];
+    setShowWallet(newShowWallet);
+  };
+
   const walletsInputs = walletsArray.map((wallet, index) => (
     <>
-      <div className={styles.walletTitle}>wallet #{index + 1}</div>
+      <div className={styles.walletTitle}>
+        {t('wallet')} #{index + 1}
+      </div>
       <div key={index} className={styles.walletBox}>
-        <div className={styles.walletField}>
-          <div className={styles.walletFieldTitle}>{t('chain_ticker')}</div>
-          <input onChange={(e) => setWalletsArrayProperty(index, 'chainTicker', e.target.value)} value={wallet.chainTicker} placeholder='eth/sol/avax' />
-        </div>
-        <div className={styles.walletField}>
-          <div className={styles.walletFieldTitle}>{t('wallet_address')}</div>
-          <input onChange={(e) => setWalletsArrayProperty(index, 'address', e.target.value)} value={wallet.address} placeholder='0x...' />
-        </div>
-        <div className={`${styles.walletField} ${styles.copyMessage}`}>
-          <Trans
-            i18nKey='copy_message_etherscan'
-            values={{ copy: hasCopied ? t('copied') : t('copy') }}
-            components={{
-              1: <button onClick={() => copyMessageToSign(wallet, index)} />,
-              // eslint-disable-next-line
-              2: <a href='https://etherscan.io/verifiedSignatures' target='_blank' rel='noopener noreferrer' />,
-            }}
-          />
-        </div>
-        <div className={styles.walletField}>
-          <div className={styles.walletFieldTitle}>{t('paste_signature')}</div>
-          <input onChange={(e) => setWalletsArrayProperty(index, 'signature', e.target.value)} value={wallet.signature} placeholder='0x...' />
-        </div>
+        <button className={styles.toggleWallet} onClick={() => toggleShowWallet(index)}>
+          {showWallet[index] ? t('hide_settings') : t('show_settings')}
+        </button>
         <button onClick={() => setWalletsArray([...walletsArray.slice(0, index), ...walletsArray.slice(index + 1)])}>{t('remove')}</button>
+        <div className={`${showWallet[index] ? styles.show : styles.hide}`}>
+          <div className={styles.walletField}>
+            <div className={styles.walletFieldTitle}>{t('chain_ticker')}</div>
+            <input onChange={(e) => setWalletsArrayProperty(index, 'chainTicker', e.target.value)} value={wallet.chainTicker} placeholder='eth/sol/avax' />
+          </div>
+          <div className={styles.walletField}>
+            <div className={styles.walletFieldTitle}>{t('wallet_address')}</div>
+            <input onChange={(e) => setWalletsArrayProperty(index, 'address', e.target.value)} value={wallet.address} placeholder='0x...' />
+          </div>
+          <div className={`${styles.walletField} ${styles.copyMessage}`}>
+            <Trans
+              i18nKey='copy_message_etherscan'
+              values={{ copy: hasCopied ? t('copied') : t('copy') }}
+              components={{
+                1: <button onClick={() => copyMessageToSign(wallet, index)} />,
+                // eslint-disable-next-line
+                2: <a href='https://etherscan.io/verifiedSignatures' target='_blank' rel='noopener noreferrer' />,
+              }}
+            />
+          </div>
+          <div className={styles.walletField}>
+            <div className={styles.walletFieldTitle}>{t('paste_signature')}</div>
+            <input onChange={(e) => setWalletsArrayProperty(index, 'signature', e.target.value)} value={wallet.signature} placeholder='0x...' />
+          </div>
+        </div>
       </div>
     </>
   ));

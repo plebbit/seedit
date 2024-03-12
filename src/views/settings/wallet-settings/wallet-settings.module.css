@@ -22,19 +22,19 @@
 }
 
 .walletFieldTitle {
+  margin-top: 10px;
   font-style: italic;
   text-transform: lowercase;
 }
 
 .walletField input {
-  margin-bottom: 10px;
   width: 200px;
   padding: 2px;
   box-shadow: var(--box-shadow-input);
 }
 
 .copyMessage {
-  padding-bottom: 10px;
+  padding-top: 10px;
 }
 
 .copyMessage a {
@@ -47,4 +47,16 @@
 
 .pasteSignature button {
   margin-left: 5px;
+}
+
+.show {
+  display: block;
+}
+
+.hide {
+  display: none;
+}
+
+.toggleWallet {
+  margin-right: 7px;
 }
