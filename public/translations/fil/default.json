@@ -293,5 +293,8 @@
   "wallet_address": "Address ng wallet",
   "save_wallets": "I-save ang <1>{{save}}</1> wallet(s) sa account",
   "remove": "Alisin",
-  "add_wallet": "<1>Magdagdag</1> ng isang crypto wallet"
+  "add_wallet": "<1>Magdagdag</1> ng isang crypto wallet",
+  "show_settings": "Ipakita ang mga setting",
+  "hide_settings": "Itago ang mga setting",
+  "wallet": "Wallet"
 }

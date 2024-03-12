@@ -293,5 +293,8 @@
   "wallet_address": "Lommebokadresse",
   "save_wallets": "Lagre <1>{{save}}</1> lommebok(er) til konto",
   "remove": "Fjern",
-  "add_wallet": "<1>Legg til</1> en crypto-lommebok"
+  "add_wallet": "<1>Legg til</1> en crypto-lommebok",
+  "show_settings": "Vis innstillinger",
+  "hide_settings": "Skjul innstillinger",
+  "wallet": "Lommebok"
 }

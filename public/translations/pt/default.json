@@ -293,5 +293,8 @@
   "wallet_address": "Endereço da carteira",
   "save_wallets": "Salvar <1>{{save}}</1> carteira(s) na conta",
   "remove": "Remover",
-  "add_wallet": "<1>Adicionar</1> uma carteira cripto"
+  "add_wallet": "<1>Adicionar</1> uma carteira cripto",
+  "show_settings": "Mostrar configurações",
+  "hide_settings": "Ocultar configurações",
+  "wallet": "Carteira"
 }

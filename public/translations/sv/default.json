@@ -293,5 +293,8 @@
   "wallet_address": "Plånboksadress",
   "save_wallets": "Spara <1>{{save}}</1> plånbok(ar) till konto",
   "remove": "Ta bort",
-  "add_wallet": "<1>Lägg till</1> en krypto-plånbok"
+  "add_wallet": "<1>Lägg till</1> en krypto-plånbok",
+  "show_settings": "Visa inställningar",
+  "hide_settings": "Dölj inställningar",
+  "wallet": "Plånbok"
 }

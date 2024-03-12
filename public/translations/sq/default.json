@@ -293,5 +293,8 @@
   "wallet_address": "Adresa e wallet",
   "save_wallets": "Ruaj <1>{{save}}</1> wallet(s) në llogari",
   "remove": "Hiqni",
-  "add_wallet": "<1>Shto</1> një xhepë crypto"
+  "add_wallet": "<1>Shto</1> një xhepë crypto",
+  "show_settings": "Shfaq rregullimet",
+  "hide_settings": "Fshih rregullimet",
+  "wallet": "Wallet"
 }

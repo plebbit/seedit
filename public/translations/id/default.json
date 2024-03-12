@@ -293,5 +293,8 @@
   "wallet_address": "Alamat dompet",
   "save_wallets": "Simpan <1>{{save}}</1> dompet ke akun",
   "remove": "Hapus",
-  "add_wallet": "<1>Tambahkan</1> dompet kripto"
+  "add_wallet": "<1>Tambahkan</1> dompet kripto",
+  "show_settings": "Tampilkan pengaturan",
+  "hide_settings": "Sembunyikan pengaturan",
+  "wallet": "Dompet"
 }

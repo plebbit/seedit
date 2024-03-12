@@ -293,5 +293,8 @@
   "wallet_address": "Adresse de portefeuille",
   "save_wallets": "Sauvegarder <1>{{save}}</1> porte-monnaie(s) sur le compte",
   "remove": "Retirer",
-  "add_wallet": "<1>Ajouter</1> un portefeuille crypto"
+  "add_wallet": "<1>Ajouter</1> un portefeuille crypto",
+  "show_settings": "Afficher les paramètres",
+  "hide_settings": "Masquer les paramètres",
+  "wallet": "Portefeuille"
 }

@@ -293,5 +293,8 @@
   "wallet_address": "Cüzdan adresi",
   "save_wallets": "Hesaba <1>{{save}}</1> cüzdan kaydet",
   "remove": "Kaldır",
-  "add_wallet": "<1>Kripto cüzdan</1> ekle"
+  "add_wallet": "<1>Kripto cüzdan</1> ekle",
+  "show_settings": "Ayarları göster",
+  "hide_settings": "Ayarları gizle",
+  "wallet": "Cüzdan"
 }

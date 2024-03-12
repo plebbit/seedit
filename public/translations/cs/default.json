@@ -293,5 +293,8 @@
   "wallet_address": "Adresa peněženky",
   "save_wallets": "Uložit <1>{{save}}</1> peněženku do účtu",
   "remove": "Odebrat",
-  "add_wallet": "<1>Přidat</1> kryptoměnovou peněženku"
+  "add_wallet": "<1>Přidat</1> kryptoměnovou peněženku",
+  "show_settings": "Zobrazit nastavení",
+  "hide_settings": "Skrýt nastavení",
+  "wallet": "Peněženka"
 }

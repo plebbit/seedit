@@ -293,5 +293,8 @@
   "wallet_address": "Wallet-Adresse",
   "save_wallets": "Speichere <1>{{save}}</1> Wallet(s) im Konto",
   "remove": "Entfernen",
-  "add_wallet": "<1>Hinzufügen</1> einer Krypto-Brieftasche"
+  "add_wallet": "<1>Hinzufügen</1> einer Krypto-Brieftasche",
+  "show_settings": "Einstellungen anzeigen",
+  "hide_settings": "Einstellungen ausblenden",
+  "wallet": "Wallet"
 }

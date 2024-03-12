@@ -293,5 +293,8 @@
   "wallet_address": "Adres portfela",
   "save_wallets": "Zapisz <1>{{save}}</1> portfel(e) do konta",
   "remove": "Usuń",
-  "add_wallet": "<1>Dodaj</1> portfel kryptowalutowy"
+  "add_wallet": "<1>Dodaj</1> portfel kryptowalutowy",
+  "show_settings": "Pokaż ustawienia",
+  "hide_settings": "Ukryj ustawienia",
+  "wallet": "Portfel"
 }

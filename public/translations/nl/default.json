@@ -293,5 +293,8 @@
   "wallet_address": "Wallet adres",
   "save_wallets": "Sla <1>{{save}}</1> wallet(s) op in het account",
   "remove": "Verwijderen",
-  "add_wallet": "<1>Voeg toe</1> een cryptoportemonnee toe"
+  "add_wallet": "<1>Voeg toe</1> een cryptoportemonnee toe",
+  "show_settings": "Instellingen weergeven",
+  "hide_settings": "Instellingen verbergen",
+  "wallet": "Wallet"
 }

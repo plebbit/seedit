@@ -293,5 +293,8 @@
   "wallet_address": "Wallet address",
   "save_wallets": "Save <1>{{save}}</1> wallet(s) to account",
   "remove": "Remove",
-  "add_wallet": "<1>Add</1> a crypto wallet"
+  "add_wallet": "<1>Add</1> a crypto wallet",
+  "show_settings": "Show settings",
+  "hide_settings": "Hide settings",
+  "wallet": "Wallet"
 }

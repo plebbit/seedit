@@ -293,5 +293,8 @@
   "wallet_address": "Pénztárca címe",
   "save_wallets": "<1>{{save}}</1> pénztárcát ment a fiókba",
   "remove": "Eltávolítás",
-  "add_wallet": "<1>Kriptopénztárca</1> hozzáadása"
+  "add_wallet": "<1>Kriptopénztárca</1> hozzáadása",
+  "show_settings": "Beállítások megjelenítése",
+  "hide_settings": "Beállítások elrejtése",
+  "wallet": "Pénztárca"
 }

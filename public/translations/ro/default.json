@@ -293,5 +293,8 @@
   "wallet_address": "Adresa portofelului",
   "save_wallets": "Salvează <1>{{save}}</1> portofele în cont",
   "remove": "Elimină",
-  "add_wallet": "<1>Adăugați</1> un portofel cripto"
+  "add_wallet": "<1>Adăugați</1> un portofel cripto",
+  "show_settings": "Afișare setări",
+  "hide_settings": "Ascunde setările",
+  "wallet": "Portofel"
 }

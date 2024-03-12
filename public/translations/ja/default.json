@@ -293,5 +293,8 @@
   "wallet_address": "ウォレットアドレス",
   "save_wallets": "アカウントに<1>{{save}}</1>のウォレットを保存する",
   "remove": "削除",
-  "add_wallet": "<1>追加</1> クリプトウォレット"
+  "add_wallet": "<1>追加</1> クリプトウォレット",
+  "show_settings": "設定を表示",
+  "hide_settings": "設定を非表示",
+  "wallet": "ウォレット"
 }

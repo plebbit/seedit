@@ -293,5 +293,8 @@
   "wallet_address": "Địa chỉ ví",
   "save_wallets": "Lưu <1>{{save}}</1> ví vào tài khoản",
   "remove": "Xóa bỏ",
-  "add_wallet": "<1>Thêm</1> một ví tiền điện tử"
+  "add_wallet": "<1>Thêm</1> một ví tiền điện tử",
+  "show_settings": "Hiển thị cài đặt",
+  "hide_settings": "Ẩn cài đặt",
+  "wallet": "Ví"
 }
