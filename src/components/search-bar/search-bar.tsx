@@ -58,7 +58,16 @@ const SearchBar = ({ isFocused = false }: SearchBarProps) => {
   return (
     <div ref={wrapperRef}>
       <form className={styles.searchBar} ref={searchBarRef} onSubmit={handleSearchSubmit}>
-        <input type='text' placeholder={placeholder} ref={searchInputRef} onFocus={handleInputFocus} />
+        <input
+          type='text'
+          autoCorrect='off'
+          autoComplete='off'
+          spellCheck='false'
+          autoCapitalize='off'
+          placeholder={placeholder}
+          ref={searchInputRef}
+          onFocus={handleInputFocus}
+        />
         <input type='submit' value='' />
       </form>
       <div className={`${styles.infobar} ${showExpando ? styles.slideDown : styles.slideUp}`}>
