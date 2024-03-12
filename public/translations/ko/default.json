@@ -291,7 +291,7 @@
   "ban_user_for": "사용자를 <1></1>일 동안 차단하기",
   "crypto_wallets": "암호 화폐 지갑",
   "wallet_address": "지갑 주소",
-  "save_wallets": "계정에 <1>{{save}}</1> 지갑 저장",
+  "save_wallets": "<1>저장</1> 계정에 지갑",
   "remove": "삭제",
   "add_wallet": "<1>추가</1> 암호 화폐 지갑",
   "show_settings": "설정 표시",

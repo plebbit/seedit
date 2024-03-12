@@ -29,7 +29,6 @@ const CryptoWalletsForm = ({ account }: { account: Account | undefined }) => {
   const authorAddress = account?.author?.address;
   const defaultWalletObject: Wallet = { chainTicker: '', address: '', timestamp: 0, signature: '' };
 
-  // Use a separate variable to avoid referencing 'defaultWalletsArray' in its own initializer
   const walletsFromAccount = Object.keys(account?.author?.wallets || {}).map(
     (chainTicker): Wallet => ({
       chainTicker,
@@ -39,8 +38,7 @@ const CryptoWalletsForm = ({ account }: { account: Account | undefined }) => {
     }),
   );
 
-  // Now decide whether to add the default object
-  const defaultWalletsArray: Wallet[] = walletsFromAccount.length ? walletsFromAccount : [defaultWalletObject];
+  const defaultWalletsArray: Wallet[] = walletsFromAccount.length ? walletsFromAccount : [];
 
   const [walletsArray, setWalletsArray] = useState<Wallet[]>(defaultWalletsArray);
   const setWalletsArrayProperty = (index: number, property: keyof Wallet, value: string | number) => {

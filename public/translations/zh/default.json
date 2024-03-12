@@ -291,7 +291,7 @@
   "ban_user_for": "封禁用户 <1></1> 天",
   "crypto_wallets": "加密货币钱包",
   "wallet_address": "钱包地址",
-  "save_wallets": "将<1>{{save}}</1>个钱包保存到帐户",
+  "save_wallets": "<1>保存</1>钱包到账户",
   "remove": "删除",
   "add_wallet": "<1>添加</1>一个加密货币钱包",
   "show_settings": "显示设置",

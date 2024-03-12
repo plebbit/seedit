@@ -291,7 +291,7 @@
   "ban_user_for": "Interzice utilizatorul pentru <1></1> zi(zile)",
   "crypto_wallets": "Portofele crypto",
   "wallet_address": "Adresa portofelului",
-  "save_wallets": "Salvează <1>{{save}}</1> portofele în cont",
+  "save_wallets": "<1>Salvează</1> portofele în cont",
   "remove": "Elimină",
   "add_wallet": "<1>Adăugați</1> un portofel cripto",
   "show_settings": "Afișare setări",

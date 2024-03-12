@@ -291,7 +291,7 @@
   "ban_user_for": "ユーザーを<1></1>日間禁止する",
   "crypto_wallets": "暗号通貨ウォレット",
   "wallet_address": "ウォレットアドレス",
-  "save_wallets": "アカウントに<1>{{save}}</1>のウォレットを保存する",
+  "save_wallets": "<1>ウォレットを保存</1> アカウントに",
   "remove": "削除",
   "add_wallet": "<1>追加</1> クリプトウォレット",
   "show_settings": "設定を表示",

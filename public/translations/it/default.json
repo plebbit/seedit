@@ -291,7 +291,7 @@
   "ban_user_for": "Banna l'utente per <1></1> giorno/i",
   "crypto_wallets": "Wallet crypto",
   "wallet_address": "Indirizzo wallet",
-  "save_wallets": "<1>{{save}}</1> wallet nell'account",
+  "save_wallets": "<1>Salva</1> wallet nell'account",
   "remove": "Rimuovi",
   "add_wallet": "<1>Aggiungi</1> un wallet crypto",
   "show_settings": "Mostra impostazioni",
