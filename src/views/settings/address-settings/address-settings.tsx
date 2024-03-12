@@ -106,7 +106,7 @@ const AddressSettings = () => {
         <div className={styles.usernameInput}>
           <input
             type='text'
-            placeholder='address.eth'
+            placeholder='address.eth/.sol'
             defaultValue={cryptoState.cryptoAddress || (account?.author?.shortAddress.includes('.') ? account.author.shortAddress : '')}
             onChange={(e) => setCryptoState((prevState) => ({ ...prevState, cryptoAddress: e.target.value }))}
           />
@@ -118,10 +118,35 @@ const AddressSettings = () => {
           </button>
           {showCryptoAddressInfo && (
             <div className={styles.cryptoAddressInfo}>
-              <a href='https://app.ens.domains/' target='_blank' rel='noopener noreferrer'>
-                app.ens.domains
-              </a>
-              {` > address.eth > records > edit records > add record > record name: "plebbit-author-address" > record value: ${account?.signer?.address} > save`}
+              steps to set a .eth user address:
+              <br />
+              <ol>
+                <li>
+                  go to{' '}
+                  <a href='https://app.ens.domains/' target='_blank' rel='noopener noreferrer'>
+                    app.ens.domains
+                  </a>{' '}
+                  and search the address
+                </li>
+                <li>once you own the address, go to its page, click on "records", then "edit records"</li>
+                <li>add a new text record with name "plebbit-author-address" and value: {account?.signer?.address}</li>
+                <li>click save</li>
+              </ol>
+              steps to set a .sol user address:
+              <br />
+              <ol>
+                <li>
+                  go to{' '}
+                  <a href='https://www.sns.id/' target='_blank' rel='noopener noreferrer'>
+                    sns.id
+                  </a>{' '}
+                  and search the address
+                </li>
+                <li>once you own the address, go to your profile, click the address menu "...", then "create subdomain"</li>
+                <li>enter subdomain "plebbit-author-address" and create</li>
+                <li>go to subdomain, "content", change content to: {account?.signer?.address}</li>
+                <li>click save</li>
+              </ol>
             </div>
           )}
           {savedCryptoAddress && <span className={styles.saved}>{t('saved')}</span>}

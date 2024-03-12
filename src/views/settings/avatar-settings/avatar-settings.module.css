@@ -38,6 +38,10 @@
   color: var(--link-primary);
 }
 
+.avatarSettingInput a:hover {
+  text-decoration: underline;
+}
+
 .settingTitle {
   font-style: italic;
   text-transform: lowercase;

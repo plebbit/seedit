@@ -5,6 +5,7 @@ import styles from './settings.module.css';
 import AccountSettings from './account-settings';
 import AddressSettings from './address-settings';
 import AvatarSettings from './avatar-settings';
+import WalletSettings from './wallet-settings';
 import useTheme from '../../hooks/use-theme';
 import packageJson from '../../../package.json';
 import _ from 'lodash';
@@ -212,6 +213,12 @@ const Settings = () => {
         <span className={styles.categoryTitle}>{t('crypto_address')}</span>
         <span className={styles.categorySettings}>
           <AddressSettings />
+        </span>
+      </div>
+      <div className={styles.category}>
+        <span className={styles.categoryTitle}>{t('crypto_wallets')}</span>
+        <span className={styles.categorySettings}>
+          <WalletSettings />
         </span>
       </div>
       <div className={styles.category}>

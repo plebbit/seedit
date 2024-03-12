@@ -288,5 +288,13 @@
   "missing_token_id": "เหตุที่หายไปของรหัสของโทเค็น",
   "missing_signature": "เหตุที่หายไปของลายเซ็น",
   "edited_timestamp": "แก้ไขเมื่อ {{timestamp}}",
-  "ban_user_for": "แบนผู้ใช้ <1></1> วัน"
+  "ban_user_for": "แบนผู้ใช้ <1></1> วัน",
+  "crypto_wallets": "กระเป๋าเงินดิจิทัล",
+  "wallet_address": "ที่อยู่กระเป๋าเงิน",
+  "save_wallets": "<1>บันทึก</1> กระเป๋าเงินเข้าบัญชี",
+  "remove": "ลบ",
+  "add_wallet": "<1>เพิ่ม</1> กระเป๋าเงินดิจิทัล",
+  "show_settings": "แสดงการตั้งค่า",
+  "hide_settings": "ซ่อนการตั้งค่า",
+  "wallet": "กระเป๋าเงิน"
 }

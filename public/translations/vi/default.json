@@ -288,5 +288,13 @@
   "missing_token_id": "Thiếu ID của token",
   "missing_signature": "Thiếu chữ ký",
   "edited_timestamp": "Đã chỉnh sửa {{timestamp}}",
-  "ban_user_for": "Cấm người dùng trong <1></1> ngày"
+  "ban_user_for": "Cấm người dùng trong <1></1> ngày",
+  "crypto_wallets": "Ví tiền điện tử",
+  "wallet_address": "Địa chỉ ví",
+  "save_wallets": "<1>Lưu</1> ví vào tài khoản",
+  "remove": "Xóa bỏ",
+  "add_wallet": "<1>Thêm</1> một ví tiền điện tử",
+  "show_settings": "Hiển thị cài đặt",
+  "hide_settings": "Ẩn cài đặt",
+  "wallet": "Ví"
 }

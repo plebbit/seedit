@@ -288,5 +288,13 @@
   "missing_token_id": "Saknad token-ID",
   "missing_signature": "Saknad signatur",
   "edited_timestamp": "Redigerat {{timestamp}}",
-  "ban_user_for": "Blockera användaren i <1></1> dag(ar)"
+  "ban_user_for": "Blockera användaren i <1></1> dag(ar)",
+  "crypto_wallets": "Crypto-plånböcker",
+  "wallet_address": "Plånboksadress",
+  "save_wallets": "<1>Spara</1> plånbok(ar) till konto",
+  "remove": "Ta bort",
+  "add_wallet": "<1>Lägg till</1> en krypto-plånbok",
+  "show_settings": "Visa inställningar",
+  "hide_settings": "Dölj inställningar",
+  "wallet": "Plånbok"
 }

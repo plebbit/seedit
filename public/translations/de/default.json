@@ -288,5 +288,13 @@
   "missing_token_id": "Fehlende Token-ID",
   "missing_signature": "Fehlende Signatur",
   "edited_timestamp": "Bearbeitet {{timestamp}}",
-  "ban_user_for": "Benutzer für <1></1> Tag(e) sperren"
+  "ban_user_for": "Benutzer für <1></1> Tag(e) sperren",
+  "crypto_wallets": "Krypto-Wallets",
+  "wallet_address": "Wallet-Adresse",
+  "save_wallets": "<1>Speichern</1> von Wallet(s) im Konto",
+  "remove": "Entfernen",
+  "add_wallet": "<1>Hinzufügen</1> einer Krypto-Brieftasche",
+  "show_settings": "Einstellungen anzeigen",
+  "hide_settings": "Einstellungen ausblenden",
+  "wallet": "Wallet"
 }

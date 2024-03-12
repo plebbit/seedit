@@ -288,5 +288,13 @@
   "missing_token_id": "گمشدہ ٹوکن شناختی نمبر",
   "missing_signature": "گمشدہ دستخط",
   "edited_timestamp": "{{timestamp}} پہلے ترمیم شدہ",
-  "ban_user_for": "<1></1> دنوں کے لیے صارف کو پابندی عائد کریں"
+  "ban_user_for": "<1></1> دنوں کے لیے صارف کو پابندی عائد کریں",
+  "crypto_wallets": "کرپٹو والٹس",
+  "wallet_address": "والیٹ کا پتہ",
+  "save_wallets": "<1>والیٹ کو</1> حساب میں محفوظ کریں",
+  "remove": "ہٹا دو",
+  "add_wallet": "<1>شامل کریں</1> ایک کرپٹو والیٹ",
+  "show_settings": "ترتیبات دکھائیں",
+  "hide_settings": "ترتیبات چھپائیں",
+  "wallet": "والیٹ"
 }

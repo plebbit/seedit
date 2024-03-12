@@ -288,5 +288,13 @@
   "missing_token_id": "Hiányzó token azonosító",
   "missing_signature": "Hiányzó aláírás",
   "edited_timestamp": "Szerkesztve {{timestamp}}",
-  "ban_user_for": "Felhasználó letiltása <1></1> napra"
+  "ban_user_for": "Felhasználó letiltása <1></1> napra",
+  "crypto_wallets": "Kriptopénztárcák",
+  "wallet_address": "Pénztárca címe",
+  "save_wallets": "<1>Mentés</1> wallet(s) a fiókba",
+  "remove": "Eltávolítás",
+  "add_wallet": "<1>Kriptopénztárca</1> hozzáadása",
+  "show_settings": "Beállítások megjelenítése",
+  "hide_settings": "Beállítások elrejtése",
+  "wallet": "Pénztárca"
 }

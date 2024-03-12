@@ -288,5 +288,13 @@
   "missing_token_id": "Brakujące ID tokenu",
   "missing_signature": "Brakujący podpis",
   "edited_timestamp": "Edytowane {{timestamp}}",
-  "ban_user_for": "Zablokuj użytkownika na <1></1> dzień (dni)"
+  "ban_user_for": "Zablokuj użytkownika na <1></1> dzień (dni)",
+  "crypto_wallets": "Portfele kryptowalut",
+  "wallet_address": "Adres portfela",
+  "save_wallets": "<1>Zapisz</1> portfel(e) do konta",
+  "remove": "Usuń",
+  "add_wallet": "<1>Dodaj</1> portfel kryptowalutowy",
+  "show_settings": "Pokaż ustawienia",
+  "hide_settings": "Ukryj ustawienia",
+  "wallet": "Portfel"
 }

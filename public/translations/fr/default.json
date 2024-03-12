@@ -288,5 +288,13 @@
   "missing_token_id": "ID de token manquant",
   "missing_signature": "Signature manquante",
   "edited_timestamp": "Édité {{timestamp}}",
-  "ban_user_for": "Bannir l'utilisateur pendant <1></1> jour(s)"
+  "ban_user_for": "Bannir l'utilisateur pendant <1></1> jour(s)",
+  "crypto_wallets": "Portefeuilles de crypto",
+  "wallet_address": "Adresse de portefeuille",
+  "save_wallets": "<1>Enregistrer</1> le(s) portefeuille(s) dans le compte",
+  "remove": "Retirer",
+  "add_wallet": "<1>Ajouter</1> un portefeuille crypto",
+  "show_settings": "Afficher les paramètres",
+  "hide_settings": "Masquer les paramètres",
+  "wallet": "Portefeuille"
 }

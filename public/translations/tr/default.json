@@ -288,5 +288,13 @@
   "missing_token_id": "Eksik token kimliği",
   "missing_signature": "Eksik imza",
   "edited_timestamp": "{{timestamp}} önce düzenlendi",
-  "ban_user_for": "Kullanıcıyı <1></1> gün boyunca yasakla"
+  "ban_user_for": "Kullanıcıyı <1></1> gün boyunca yasakla",
+  "crypto_wallets": "Kripto Cüzdanlar",
+  "wallet_address": "Cüzdan adresi",
+  "save_wallets": "<1>Kaydet</1> cüzdanları hesaba",
+  "remove": "Kaldır",
+  "add_wallet": "<1>Kripto cüzdan</1> ekle",
+  "show_settings": "Ayarları göster",
+  "hide_settings": "Ayarları gizle",
+  "wallet": "Cüzdan"
 }

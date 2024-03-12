@@ -288,5 +288,13 @@
   "missing_token_id": "Chybějící ID tokenu",
   "missing_signature": "Chybějící podpis",
   "edited_timestamp": "Upraveno {{timestamp}}",
-  "ban_user_for": "Zakázat uživatele na <1></1> den (dní)"
+  "ban_user_for": "Zakázat uživatele na <1></1> den (dní)",
+  "crypto_wallets": "Kryptoměny",
+  "wallet_address": "Adresa peněženky",
+  "save_wallets": "<1>Uložit</1> peněženku(y) do účtu",
+  "remove": "Odebrat",
+  "add_wallet": "<1>Přidat</1> kryptoměnovou peněženku",
+  "show_settings": "Zobrazit nastavení",
+  "hide_settings": "Skrýt nastavení",
+  "wallet": "Peněženka"
 }

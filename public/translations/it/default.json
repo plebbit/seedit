@@ -288,5 +288,13 @@
   "missing_token_id": "ID del token mancante",
   "missing_signature": "Firma mancante",
   "edited_timestamp": "Modificato {{timestamp}}",
-  "ban_user_for": "Banna l'utente per <1></1> giorno/i"
+  "ban_user_for": "Banna l'utente per <1></1> giorno/i",
+  "crypto_wallets": "Wallet crypto",
+  "wallet_address": "Indirizzo wallet",
+  "save_wallets": "<1>Salva</1> wallet nell'account",
+  "remove": "Rimuovi",
+  "add_wallet": "<1>Aggiungi</1> un wallet crypto",
+  "show_settings": "Mostra impostazioni",
+  "hide_settings": "Nascondi impostazioni",
+  "wallet": "Wallet"
 }

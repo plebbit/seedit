@@ -1,0 +1,62 @@
+.addWallet {
+  margin-bottom: 7px;
+}
+
+.saveWallets{
+  margin-top: 7px;
+}
+
+.walletTitle {
+  text-transform: lowercase;
+  font-style: italic;
+  margin-left: 7px;
+}
+
+.walletBox {
+  border: 1px solid var(--border-contrast);
+  border-radius: 7px;
+  margin-bottom: 0.5em;
+  padding: 7px;
+  position: relative;
+  display: inline-block;
+}
+
+.walletFieldTitle {
+  margin-top: 10px;
+  font-style: italic;
+  text-transform: lowercase;
+}
+
+.walletField input {
+  width: 200px;
+  padding: 2px;
+  box-shadow: var(--box-shadow-input);
+}
+
+.copyMessage {
+  padding-top: 10px;
+}
+
+.copyMessage a {
+  color: var(--text-primary);
+}
+
+.copyMessage a:hover {
+  text-decoration: underline;
+}
+
+.pasteSignature button {
+  margin-left: 5px;
+}
+
+.show {
+  display: block;
+}
+
+.hide {
+  display: none;
+}
+
+.toggleWallet {
+  margin-right: 7px;
+}

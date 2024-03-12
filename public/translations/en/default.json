@@ -288,5 +288,13 @@
   "missing_token_id": "Missing token ID",
   "missing_signature": "Missing signature",
   "edited_timestamp": "Edited {{timestamp}}",
-  "ban_user_for": "Ban user for <1></1> day(s)"
+  "ban_user_for": "Ban user for <1></1> day(s)",
+  "crypto_wallets": "Crypto Wallets",
+  "wallet_address": "Wallet address",
+  "save_wallets": "<1>Save</1> wallet(s) to account",
+  "remove": "Remove",
+  "add_wallet": "<1>Add</1> a crypto wallet",
+  "show_settings": "Show settings",
+  "hide_settings": "Hide settings",
+  "wallet": "Wallet"
 }

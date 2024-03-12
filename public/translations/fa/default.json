@@ -288,5 +288,13 @@
   "missing_token_id": "شناسه توکن گم شده",
   "missing_signature": "امضای گم شده",
   "edited_timestamp": "ویرایش شده {{timestamp}}",
-  "ban_user_for": "بستن کاربر برای <1></1> روز"
+  "ban_user_for": "بستن کاربر برای <1></1> روز",
+  "crypto_wallets": "کیف پول رمز ارز",
+  "wallet_address": "آدرس کیف پول",
+  "save_wallets": "<1>ذخیره</1> کیف پول(ها) در حساب",
+  "remove": "حذف",
+  "add_wallet": "<1>افزودن</1> یک کیف پول رمز ارز",
+  "show_settings": "نمایش تنظیمات",
+  "hide_settings": "مخفی کردن تنظیمات",
+  "wallet": "کیف پول"
 }

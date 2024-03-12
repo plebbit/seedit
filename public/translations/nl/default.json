@@ -288,5 +288,13 @@
   "missing_token_id": "Ontbrekend token-ID",
   "missing_signature": "Ontbrekende handtekening",
   "edited_timestamp": "Bewerkt {{timestamp}}",
-  "ban_user_for": "Gebruiker verbannen voor <1></1> dag(en)"
+  "ban_user_for": "Gebruiker verbannen voor <1></1> dag(en)",
+  "crypto_wallets": "Crypto-portefeuilles",
+  "wallet_address": "Wallet adres",
+  "save_wallets": "<1>Sla</1> wallet(s) op in het account",
+  "remove": "Verwijderen",
+  "add_wallet": "<1>Voeg toe</1> een cryptoportemonnee toe",
+  "show_settings": "Instellingen weergeven",
+  "hide_settings": "Instellingen verbergen",
+  "wallet": "Wallet"
 }

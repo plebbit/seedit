@@ -288,5 +288,13 @@
   "missing_token_id": "Falta de ID de token",
   "missing_signature": "Falta de firma",
   "edited_timestamp": "Editado {{timestamp}}",
-  "ban_user_for": "Prohibir al usuario durante <1></1> día(s)"
+  "ban_user_for": "Prohibir al usuario durante <1></1> día(s)",
+  "crypto_wallets": "Billeteras cripto",
+  "wallet_address": "Dirección de la billetera",
+  "save_wallets": "<1>Guardar</1> cartera(s) en la cuenta",
+  "remove": "Eliminar",
+  "add_wallet": "<1>Agregar</1> una billetera cripto",
+  "show_settings": "Mostrar ajustes",
+  "hide_settings": "Ocultar ajustes",
+  "wallet": "Cartera"
 }
