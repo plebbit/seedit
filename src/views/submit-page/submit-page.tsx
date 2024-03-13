@@ -9,9 +9,9 @@ import { alertChallengeVerificationFailed } from '../../lib/utils/challenge-util
 import { getLinkMediaInfoMemoized } from '../../lib/utils/media-utils';
 import { isValidURL } from '../../lib/utils/url-utils';
 import { isSubmitView } from '../../lib/utils/view-utils';
-import styles from './submit.module.css';
+import styles from './submit-page.module.css';
 import challengesStore from '../../hooks/use-challenges';
-import Embed from '../../components/post/embed/';
+import Embed from '../../components/post/embed';
 import Markdown from '../../components/markdown';
 
 type SubmitState = {
@@ -342,14 +342,14 @@ const Submit = () => {
               {subscriptionsList}
             </div>
           </div>
-          {subplebbit?.rules.length > 0 && (
+          {subplebbit?.rules?.length > 0 && (
             <div className={styles.box}>
               <span className={`${styles.boxTitle} ${styles.rulesTitle}`}>
                 {t('rules_for')} p/{subplebbit?.shortAddress}
               </span>
               <div className={styles.boxContent}>
                 <div className={styles.description}>
-                  <ol className={styles.rules}>{subplebbit?.rules.map((rule: string, index: number) => <li key={index}>{rule}</li>)}</ol>
+                  <ol className={styles.rules}>{subplebbit?.rules?.map((rule: string, index: number) => <li key={index}>{rule}</li>)}</ol>
                 </div>
               </div>
             </div>
