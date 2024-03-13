@@ -16,33 +16,49 @@ if [ -z "${DEPLOY_USER+xxx}" ]; then echo "DEPLOY_USER not set" && exit; fi
 if [ -z "${DEPLOY_PASSWORD+xxx}" ]; then echo "DEPLOY_PASSWORD not set" && exit; fi
 
 # save version
-PLEBONES_VERSION=$(node -e "console.log(require('../package.json').version)")
-PLEBONES_HTML_NAME="plebones-html-$PLEBONES_VERSION"
+SEEDIT_VERSION=$(node -e "console.log(require('../package.json').version)")
+SEEDIT_HTML_NAME="seedit-html-$SEEDIT_VERSION"
+SEEDIT_PREVIOUS_VERSIONS=$(git tag | sed 's/v//g' | tr '\n' ' ')
 
 SCRIPT="
 # download html
 cd ~
-rm $PLEBONES_HTML_NAME.zip
-rm -fr $PLEBONES_HTML_NAME
-wget https://github.com/plebbit/plebones/releases/download/v$PLEBONES_VERSION/$PLEBONES_HTML_NAME.zip || exit
+rm $SEEDIT_HTML_NAME.zip
+rm -fr $SEEDIT_HTML_NAME
+wget https://github.com/plebbit/seedit/releases/download/v$SEEDIT_VERSION/$SEEDIT_HTML_NAME.zip || exit
 
 # extract html
-unzip $PLEBONES_HTML_NAME.zip || exit
-rm $PLEBONES_HTML_NAME.zip || exit
+unzip $SEEDIT_HTML_NAME.zip || exit
+rm $SEEDIT_HTML_NAME.zip || exit
+
+# add previous versions as folders e.g. /0.1.1
+cd $SEEDIT_HTML_NAME
+for SEEDIT_PREVIOUS_VERSION in $SEEDIT_PREVIOUS_VERSIONS
+do
+  # download previous version
+  SEEDIT_PREVIOUS_VERSION_HTML_NAME="seedit-html-\$SEEDIT_PREVIOUS_VERSION"
+  echo \$SEEDIT_PREVIOUS_VERSION_HTML_NAME
+  wget https://github.com/plebbit/seedit/releases/download/v\$SEEDIT_PREVIOUS_VERSION/\$SEEDIT_PREVIOUS_VERSION_HTML_NAME.zip
+  # extract previous version html
+  unzip \$SEEDIT_PREVIOUS_VERSION_HTML_NAME.zip
+  rm \$SEEDIT_PREVIOUS_VERSION_HTML_NAME.zip
+  mv \$SEEDIT_PREVIOUS_VERSION_HTML_NAME \$SEEDIT_PREVIOUS_VERSION
+done
+cd ..
 
 # add to ipfs
-CID=\`ipfs add --recursive --pin --quieter $PLEBONES_HTML_NAME | tail -n 1\`
+CID=\`ipfs add --recursive --pin --quieter $SEEDIT_HTML_NAME | tail -n 1\`
 ipfs pin add --recursive \"\$CID\"
 
 # start ipfs daemon if not started
 ipfs init
 nohup ipfs daemon &
 
-# the CID of plebones html, add this CID to ENS
+# the CID of seedit html, add this CID to ENS
 sleep 3
 echo \"\"
 CID=\`ipfs cid base32 \$CID\`
-echo $PLEBONES_HTML_NAME \"CID: \$CID\"
+echo $SEEDIT_HTML_NAME \"CID: \$CID\"
 echo \"\"
 "
 
