@@ -225,7 +225,7 @@
   "add_rule": "একটি নিয়ম যোগ করুন",
   "json_settings": "JSON সেটিংস",
   "json_settings_info": "দ্রুত সমুদায়ের সেটিংস অনুলিপি বা পেস্ট করুন",
-  "address_setting_info": "ens.domains ব্যবহার করে একটি পঠনীয় সমুদায় ঠিকানা সেট করুন",
+  "address_setting_info": "একটি ক্রিপ্টো ডোমেন ব্যবহার করে একটি পঠনযোগ্য সম্প্রদায় ঠিকানা সেট করুন",
   "enter_crypto_address": "দয়া করে একটি বৈধ ক্রিপ্টো ঠিকানা দিন।",
   "check_for_updates": "<1>যাচাই</1> করুন আপডেট",
   "general_settings": "সাধারণ সেটিংস",

@@ -225,7 +225,7 @@
   "add_rule": "lägg till en regel",
   "json_settings": "JSON-inställningar",
   "json_settings_info": "snabbt kopiera eller klistra in samhällets inställningar",
-  "address_setting_info": "sätt en läsbar samhällsadress med hjälp av ens.domains",
+  "address_setting_info": "Ange en läsbar gemenskapsadress med hjälp av en krypto-domän",
   "enter_crypto_address": "Ange en giltig kryptoadress.",
   "check_for_updates": "<1>Kontrollera</1> uppdateringar",
   "general_settings": "Allmänna inställningar",

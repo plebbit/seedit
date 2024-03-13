@@ -225,7 +225,7 @@
   "add_rule": "규칙 추가",
   "json_settings": "JSON 설정",
   "json_settings_info": "커뮤니티 설정을 빠르게 복사 또는 붙여넣기",
-  "address_setting_info": "ens.domains를 사용하여 읽기 쉬운 커뮤니티 주소 설정",
+  "address_setting_info": "암호 도메인을 사용하여 읽기 가능한 커뮤니티 주소 설정",
   "enter_crypto_address": "유효한 암호 주소를 입력하세요.",
   "check_for_updates": "<1>업데이트</1> 확인",
   "general_settings": "일반 설정",

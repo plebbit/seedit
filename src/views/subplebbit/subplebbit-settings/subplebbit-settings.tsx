@@ -137,10 +137,18 @@ const Address = ({ isReadOnly = false }: { isReadOnly?: boolean }) => {
   const { t } = useTranslation();
   const { address, setSubplebbitSettingsStore } = useSubplebbitSettingsStore();
 
+  const alertCryptoAddressInfo = () => {
+    alert(`steps to set a .eth user address:\n1. go to app.ens.domains and search the address\n2.  once you own the address, go to its page, click on "records", then "edit records"\n3. add a new text record with name "subplebbit-address" and value: ${address}\n\n steps to set a .sol user address:\n1. go to sns.id and search the address\n2. once you own the address, go to your profile, click the address menu "...", then "create subdomain"\n3. enter subdomain "subplebbit-address" and create\n4. go to subdomain, "content", change content to: ${address}
+    `);
+  };
+
   return (
     <div className={styles.box}>
       <div className={styles.boxTitle}>{t('address')}</div>
-      <div className={styles.boxSubtitle}>{t('address_setting_info')}</div>
+      <div className={styles.boxSubtitle}>
+        {t('address_setting_info')}
+        <span onClick={alertCryptoAddressInfo}>[?]</span>
+      </div>
       <div className={styles.boxInput}>
         {isReadOnly ? (
           <span className={styles.readOnlyAddress}>{address}</span>

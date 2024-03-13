@@ -225,7 +225,7 @@
   "add_rule": "přidat pravidlo",
   "json_settings": "JSON nastavení",
   "json_settings_info": "Rychle zkopírujte nebo vložte nastavení komunity",
-  "address_setting_info": "nastavte čitelnou adresu komunity pomocí ens.domains",
+  "address_setting_info": "Nastavte čitelnou adresu komunity pomocí krypto domény",
   "enter_crypto_address": "Zadejte prosím platnou kryptoadresu.",
   "check_for_updates": "<1>Zkontrolujte</1> aktualizace",
   "general_settings": "Obecné nastavení",

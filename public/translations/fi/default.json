@@ -225,7 +225,7 @@
   "add_rule": "lisää sääntö",
   "json_settings": "JSON-asetukset",
   "json_settings_info": "kopioi tai liitä yhteisön asetukset nopeasti",
-  "address_setting_info": "aseta luettava yhteisön osoite käyttäen ens.domains",
+  "address_setting_info": "Aseta luettava yhteisön osoite käyttämällä kryptoaluetta",
   "enter_crypto_address": "Syötä voimassa oleva krypto-osoite.",
   "check_for_updates": "<1>Tarkista</1> päivitykset",
   "general_settings": "Yleiset asetukset",

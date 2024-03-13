@@ -225,7 +225,7 @@
   "add_rule": "thêm một quy tắc",
   "json_settings": "Cài đặt JSON",
   "json_settings_info": "nhanh chóng sao chép hoặc dán cài đặt của cộng đồng",
-  "address_setting_info": "đặt một địa chỉ cộng đồng có thể đọc bằng cách sử dụng ens.domains",
+  "address_setting_info": "Thiết lập một địa chỉ cộng đồng có thể đọc được bằng cách sử dụng một tên miền tiền điện tử",
   "enter_crypto_address": "Vui lòng nhập địa chỉ tiền điện tử hợp lệ.",
   "check_for_updates": "<1>Kiểm tra</1> cập nhật",
   "general_settings": "Cài đặt chung",

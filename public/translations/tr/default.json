@@ -225,7 +225,7 @@
   "add_rule": "bir kural ekleyin",
   "json_settings": "JSON ayarları",
   "json_settings_info": "topluluk ayarlarını hızlı bir şekilde kopyala veya yapıştır",
-  "address_setting_info": "ens.domains kullanarak okunabilir bir topluluk adresi ayarlayın",
+  "address_setting_info": "Bir kripto alan kullanarak okunabilir bir topluluk adresi belirleyin",
   "enter_crypto_address": "Lütfen geçerli bir kripto adresi girin.",
   "check_for_updates": "<1>Güncellemeleri</1> kontrol et",
   "general_settings": "Genel ayarlar",

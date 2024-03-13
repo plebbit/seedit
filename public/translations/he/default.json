@@ -225,7 +225,7 @@
   "add_rule": "הוסף כלל",
   "json_settings": "הגדרות JSON",
   "json_settings_info": "העתיק או הדביק מהר את ההגדרות של הקהילה",
-  "address_setting_info": "קבע כתובת קהילה קריאה באמצעות ens.domains",
+  "address_setting_info": "הגדר כתובת קהילה נקראת באמצעות תחום קריפטוגרפי",
   "enter_crypto_address": "אנא הזן כתובת קריפטו תקף.",
   "check_for_updates": "<1>בדוק</1> עבור עדכונים",
   "general_settings": "הגדרות כלליות",
