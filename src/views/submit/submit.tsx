@@ -342,7 +342,7 @@ const Submit = () => {
               {subscriptionsList}
             </div>
           </div>
-          {subplebbit?.rules && (
+          {subplebbit?.rules.length > 0 && (
             <div className={styles.box}>
               <span className={`${styles.boxTitle} ${styles.rulesTitle}`}>
                 {t('rules_for')} p/{subplebbit?.shortAddress}
