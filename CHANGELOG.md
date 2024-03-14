@@ -1,3 +1,34 @@
+## [0.1.8](https://github.com/plebbit/seedit/compare/v0.1.7...v0.1.8) (2024-03-14)
+
+
+### Bug Fixes
+
+* **comment edit form:** author edit wasn't instant ([38baa01](https://github.com/plebbit/seedit/commit/38baa0123410cf1540b20f432b14152dde03582d))
+* **delete button:** deleting own post wasn't instant ([db801ab](https://github.com/plebbit/seedit/commit/db801ab9842bd72a10625c6bd22d92256c049c83))
+* **inbox:** show parent buttons were clickable outside of their space ([13b7b94](https://github.com/plebbit/seedit/commit/13b7b94a534c79dc49b8a8ff895d9fcdd285beb8))
+* **markdown:** replies had incorrect white-space and double returns needed margin on posts ([ed02146](https://github.com/plebbit/seedit/commit/ed02146103bf3f5ec44e84338cd2cdd7e272ae1f))
+* **post:** clicking near the 'comments' button would add the dotted border ([400b4f2](https://github.com/plebbit/seedit/commit/400b4f2f43a506e4da90b7506c7c4aad2bacbafa))
+* **post:** dotted border for last visited post shouldn't appear in post page ([121cf3d](https://github.com/plebbit/seedit/commit/121cf3da976641dc140a87cf5aaf74b421fca0f0))
+* **posts:** limit display name character count ([ff4a97b](https://github.com/plebbit/seedit/commit/ff4a97b9b4e4ece27b98be84edcb4b05608642a6))
+* **reply:** spoiler styling couldn't be clicked ([29b5f72](https://github.com/plebbit/seedit/commit/29b5f72b241b184b787201d738febebf1edcda24))
+* **search bar:** disable autocapitalize, autocorrect, autocomplete, spellcheck ([8eebb0f](https://github.com/plebbit/seedit/commit/8eebb0ff1bfc945fa9ac47bc313559e1c0e7aa7f))
+* **submit page:** rules box would appear for sub with rules defined but empty ([358d6c8](https://github.com/plebbit/seedit/commit/358d6c87bf16a9a3f56be93c5797b1e670730723))
+* **submit page:** some fields would update incorrectly or return 'option is an empty string' error ([24ab3c9](https://github.com/plebbit/seedit/commit/24ab3c9ca1b57ef9c72b5eb0132be63429a9feab))
+
+
+### Features
+
+* **address settings:** update setting for sol addresses, with guide on how to set up ([430c597](https://github.com/plebbit/seedit/commit/430c5970761e3e3fd0af03ce230a543cea6be3ab))
+* **context:** allow any number as post context, always showing the top level reply ([b9d050c](https://github.com/plebbit/seedit/commit/b9d050c87c45b2e1c541a4ac45e7f23b6e5490f7))
+* **mod menu:** community moderators can ban their users ([22beb4e](https://github.com/plebbit/seedit/commit/22beb4e0ea6a2c300422fa8a21b5f230af985ec0))
+* **post page:** hide reply form and display 'loading comments...' while the post is loading ([a068691](https://github.com/plebbit/seedit/commit/a06869196d236f51ab8bfffae46bdf08aefd95df))
+* **scripts:** add old versions to folders e.g. seedit.eth.limo/0.1.1 ([a384e7b](https://github.com/plebbit/seedit/commit/a384e7b845f6a6071f7cf0cfab3347d82c8d2528))
+* **settings:** add link to nft whitelist ([f174602](https://github.com/plebbit/seedit/commit/f174602c81bab926ece3adb45c3fd14338c2f953))
+* **settings:** users can add crypto wallets to their plebbit account ([75b25e7](https://github.com/plebbit/seedit/commit/75b25e74cd6dba73aae7b3385669c5a80b2c2c75))
+* **subplebbit settings:** add info on how to set up .sol crypto domain as sub address ([5f54bbe](https://github.com/plebbit/seedit/commit/5f54bbe07ad6bf5acd8c6ff02da3e976a0730be0))
+
+
+
 ## [0.1.7](https://github.com/plebbit/seedit/compare/v0.1.6...v0.1.7) (2024-03-06)
 
 
