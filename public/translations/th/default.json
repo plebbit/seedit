@@ -297,5 +297,6 @@
   "show_settings": "แสดงการตั้งค่า",
   "hide_settings": "ซ่อนการตั้งค่า",
   "wallet": "กระเป๋าเงิน",
-  "undelete": "ยกเลิกการลบ"
+  "undelete": "ยกเลิกการลบ",
+  "loading_comments": "กำลังโหลดความคิดเห็น"
 }

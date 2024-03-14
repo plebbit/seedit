@@ -297,5 +297,6 @@
   "show_settings": "Показать настройки",
   "hide_settings": "Скрыть настройки",
   "wallet": "Кошелек",
-  "undelete": "Восстановить"
+  "undelete": "Восстановить",
+  "loading_comments": "Загрузка комментариев"
 }

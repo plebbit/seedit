@@ -297,5 +297,6 @@
   "show_settings": "Vis indstillinger",
   "hide_settings": "Skjul indstillinger",
   "wallet": "Wallet",
-  "undelete": "Gendan sletning"
+  "undelete": "Gendan sletning",
+  "loading_comments": "Indlæser kommentarer"
 }

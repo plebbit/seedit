@@ -297,5 +297,6 @@
   "show_settings": "Zobrazit nastavení",
   "hide_settings": "Skrýt nastavení",
   "wallet": "Peněženka",
-  "undelete": "Obnovit smazání"
+  "undelete": "Obnovit smazání",
+  "loading_comments": "Načítání komentářů"
 }

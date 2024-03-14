@@ -297,5 +297,6 @@
   "show_settings": "نمایش تنظیمات",
   "hide_settings": "مخفی کردن تنظیمات",
   "wallet": "کیف پول",
-  "undelete": "بازیابی"
+  "undelete": "بازیابی",
+  "loading_comments": "بارگذاری نظرات"
 }

@@ -297,5 +297,6 @@
   "show_settings": "عرض الإعدادات",
   "hide_settings": "إخفاء الإعدادات",
   "wallet": "محفظة",
-  "undelete": "إلغاء الحذف"
+  "undelete": "إلغاء الحذف",
+  "loading_comments": "تحميل التعليقات"
 }

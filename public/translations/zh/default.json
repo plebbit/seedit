@@ -297,5 +297,6 @@
   "show_settings": "显示设置",
   "hide_settings": "隐藏设置",
   "wallet": "钱包",
-  "undelete": "取消删除"
+  "undelete": "取消删除",
+  "loading_comments": "正在加载评论"
 }

@@ -297,5 +297,6 @@
   "show_settings": "Näytä asetukset",
   "hide_settings": "Piilota asetukset",
   "wallet": "Lompakko",
-  "undelete": "Palauta"
+  "undelete": "Palauta",
+  "loading_comments": "Ladataan kommentteja"
 }

@@ -297,5 +297,6 @@
   "show_settings": "সেটিংস দেখুন",
   "hide_settings": "সেটিংস লুকান",
   "wallet": "ওয়ালেট",
-  "undelete": "মুছে ফেলা প্রত্যাহার"
+  "undelete": "মুছে ফেলা প্রত্যাহার",
+  "loading_comments": "মন্তব্য লোড হচ্ছে"
 }

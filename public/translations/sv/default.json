@@ -297,5 +297,6 @@
   "show_settings": "Visa inställningar",
   "hide_settings": "Dölj inställningar",
   "wallet": "Plånbok",
-  "undelete": "Ångra radering"
+  "undelete": "Ångra radering",
+  "loading_comments": "Laddar kommentarer"
 }

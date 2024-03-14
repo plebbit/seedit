@@ -297,5 +297,6 @@
   "show_settings": "Vis innstillinger",
   "hide_settings": "Skjul innstillinger",
   "wallet": "Lommebok",
-  "undelete": "Gjenopprette"
+  "undelete": "Gjenopprette",
+  "loading_comments": "Laster inn kommentarer"
 }

@@ -297,5 +297,6 @@
   "show_settings": "सेटिंग्ज दाखवा",
   "hide_settings": "सेटिंग्ज लपवा",
   "wallet": "बटवा",
-  "undelete": "डिलीट करा"
+  "undelete": "डिलीट करा",
+  "loading_comments": "टिप्पणी लोड होत आहे"
 }

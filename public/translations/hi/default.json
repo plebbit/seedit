@@ -297,5 +297,6 @@
   "show_settings": "सेटिंग्स दिखाएं",
   "hide_settings": "सेटिंग्स छुपाएं",
   "wallet": "वॉलेट",
-  "undelete": "डिलीट को वापस लाओ"
+  "undelete": "डिलीट को वापस लाओ",
+  "loading_comments": "टिप्पणियाँ लोड हो रही हैं"
 }

@@ -297,5 +297,6 @@
   "show_settings": "Instellingen weergeven",
   "hide_settings": "Instellingen verbergen",
   "wallet": "Wallet",
-  "undelete": "Herstellen"
+  "undelete": "Herstellen",
+  "loading_comments": "Reacties laden"
 }

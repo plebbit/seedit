@@ -297,5 +297,6 @@
   "show_settings": "Afișare setări",
   "hide_settings": "Ascunde setările",
   "wallet": "Portofel",
-  "undelete": "Recuperare"
+  "undelete": "Recuperare",
+  "loading_comments": "Se încarcă comentariile"
 }

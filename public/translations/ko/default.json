@@ -297,5 +297,6 @@
   "show_settings": "설정 표시",
   "hide_settings": "설정 숨기기",
   "wallet": "지갑",
-  "undelete": "삭제 취소"
+  "undelete": "삭제 취소",
+  "loading_comments": "댓글 로드 중"
 }

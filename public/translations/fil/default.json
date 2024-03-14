@@ -297,5 +297,6 @@
   "show_settings": "Ipakita ang mga setting",
   "hide_settings": "Itago ang mga setting",
   "wallet": "Wallet",
-  "undelete": "I-undelete"
+  "undelete": "I-undelete",
+  "loading_comments": "Naglo-load ng mga komento"
 }

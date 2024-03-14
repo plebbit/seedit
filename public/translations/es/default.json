@@ -297,5 +297,6 @@
   "show_settings": "Mostrar ajustes",
   "hide_settings": "Ocultar ajustes",
   "wallet": "Cartera",
-  "undelete": "Recuperar"
+  "undelete": "Recuperar",
+  "loading_comments": "Cargando comentarios"
 }

@@ -297,5 +297,6 @@
   "show_settings": "Tampilkan pengaturan",
   "hide_settings": "Sembunyikan pengaturan",
   "wallet": "Dompet",
-  "undelete": "Batalkan penghapusan"
+  "undelete": "Batalkan penghapusan",
+  "loading_comments": "Memuat komentar"
 }

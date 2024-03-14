@@ -297,5 +297,6 @@
   "show_settings": "Afficher les paramètres",
   "hide_settings": "Masquer les paramètres",
   "wallet": "Portefeuille",
-  "undelete": "Récupérer"
+  "undelete": "Récupérer",
+  "loading_comments": "Chargement des commentaires"
 }

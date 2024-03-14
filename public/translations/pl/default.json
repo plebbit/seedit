@@ -297,5 +297,6 @@
   "show_settings": "Pokaż ustawienia",
   "hide_settings": "Ukryj ustawienia",
   "wallet": "Portfel",
-  "undelete": "Przywróć"
+  "undelete": "Przywróć",
+  "loading_comments": "Ładowanie komentarzy"
 }

@@ -297,5 +297,6 @@
   "show_settings": "Show settings",
   "hide_settings": "Hide settings",
   "wallet": "Wallet",
-  "undelete": "Undelete"
+  "undelete": "Undelete",
+  "loading_comments": "Loading comments"
 }

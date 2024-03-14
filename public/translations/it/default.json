@@ -297,5 +297,6 @@
   "show_settings": "Mostra impostazioni",
   "hide_settings": "Nascondi impostazioni",
   "wallet": "Wallet",
-  "undelete": "Annulla eliminazione"
+  "undelete": "Annulla eliminazione",
+  "loading_comments": "Caricamento commenti"
 }
