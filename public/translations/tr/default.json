@@ -296,5 +296,6 @@
   "add_wallet": "<1>Kripto cüzdan</1> ekle",
   "show_settings": "Ayarları göster",
   "hide_settings": "Ayarları gizle",
-  "wallet": "Cüzdan"
+  "wallet": "Cüzdan",
+  "undelete": "Silme işlemini geri al"
 }

@@ -296,5 +296,6 @@
   "add_wallet": "<1>추가</1> 암호 화폐 지갑",
   "show_settings": "설정 표시",
   "hide_settings": "설정 숨기기",
-  "wallet": "지갑"
+  "wallet": "지갑",
+  "undelete": "삭제 취소"
 }

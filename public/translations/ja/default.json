@@ -296,5 +296,6 @@
   "add_wallet": "<1>追加</1> クリプトウォレット",
   "show_settings": "設定を表示",
   "hide_settings": "設定を非表示",
-  "wallet": "ウォレット"
+  "wallet": "ウォレット",
+  "undelete": "削除を取り消す"
 }

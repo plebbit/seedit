@@ -296,5 +296,6 @@
   "add_wallet": "<1>Tilføj</1> en crypto-wallet",
   "show_settings": "Vis indstillinger",
   "hide_settings": "Skjul indstillinger",
-  "wallet": "Wallet"
+  "wallet": "Wallet",
+  "undelete": "Gendan sletning"
 }

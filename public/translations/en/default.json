@@ -296,5 +296,6 @@
   "add_wallet": "<1>Add</1> a crypto wallet",
   "show_settings": "Show settings",
   "hide_settings": "Hide settings",
-  "wallet": "Wallet"
+  "wallet": "Wallet",
+  "undelete": "Undelete"
 }

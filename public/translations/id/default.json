@@ -296,5 +296,6 @@
   "add_wallet": "<1>Tambahkan</1> dompet kripto",
   "show_settings": "Tampilkan pengaturan",
   "hide_settings": "Sembunyikan pengaturan",
-  "wallet": "Dompet"
+  "wallet": "Dompet",
+  "undelete": "Batalkan penghapusan"
 }

@@ -296,5 +296,6 @@
   "add_wallet": "<1>Adăugați</1> un portofel cripto",
   "show_settings": "Afișare setări",
   "hide_settings": "Ascunde setările",
-  "wallet": "Portofel"
+  "wallet": "Portofel",
+  "undelete": "Recuperare"
 }

@@ -296,5 +296,6 @@
   "add_wallet": "<1>Agregar</1> una billetera cripto",
   "show_settings": "Mostrar ajustes",
   "hide_settings": "Ocultar ajustes",
-  "wallet": "Cartera"
+  "wallet": "Cartera",
+  "undelete": "Recuperar"
 }

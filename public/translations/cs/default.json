@@ -296,5 +296,6 @@
   "add_wallet": "<1>Přidat</1> kryptoměnovou peněženku",
   "show_settings": "Zobrazit nastavení",
   "hide_settings": "Skrýt nastavení",
-  "wallet": "Peněženka"
+  "wallet": "Peněženka",
+  "undelete": "Obnovit smazání"
 }

@@ -296,5 +296,6 @@
   "add_wallet": "<1>Adicionar</1> uma carteira cripto",
   "show_settings": "Mostrar configurações",
   "hide_settings": "Ocultar configurações",
-  "wallet": "Carteira"
+  "wallet": "Carteira",
+  "undelete": "Recuperar"
 }

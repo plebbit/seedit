@@ -296,5 +296,6 @@
   "add_wallet": "<1>Thêm</1> một ví tiền điện tử",
   "show_settings": "Hiển thị cài đặt",
   "hide_settings": "Ẩn cài đặt",
-  "wallet": "Ví"
+  "wallet": "Ví",
+  "undelete": "Khôi phục"
 }

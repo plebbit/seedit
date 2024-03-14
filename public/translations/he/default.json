@@ -296,5 +296,6 @@
   "add_wallet": "<1>הוסף</1> ארנק קריפטו",
   "show_settings": "הצג הגדרות",
   "hide_settings": "הסתר הגדרות",
-  "wallet": "ארנק"
+  "wallet": "ארנק",
+  "undelete": "שחזור מחיקה"
 }

@@ -296,5 +296,6 @@
   "add_wallet": "<1>Voeg toe</1> een cryptoportemonnee toe",
   "show_settings": "Instellingen weergeven",
   "hide_settings": "Instellingen verbergen",
-  "wallet": "Wallet"
+  "wallet": "Wallet",
+  "undelete": "Herstellen"
 }

@@ -296,5 +296,6 @@
   "add_wallet": "<1>Shto</1> një xhepë crypto",
   "show_settings": "Shfaq rregullimet",
   "hide_settings": "Fshih rregullimet",
-  "wallet": "Wallet"
+  "wallet": "Wallet",
+  "undelete": "Rikuperimi"
 }

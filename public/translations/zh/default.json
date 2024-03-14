@@ -296,5 +296,6 @@
   "add_wallet": "<1>添加</1>一个加密货币钱包",
   "show_settings": "显示设置",
   "hide_settings": "隐藏设置",
-  "wallet": "钱包"
+  "wallet": "钱包",
+  "undelete": "取消删除"
 }

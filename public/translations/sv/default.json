@@ -296,5 +296,6 @@
   "add_wallet": "<1>Lägg till</1> en krypto-plånbok",
   "show_settings": "Visa inställningar",
   "hide_settings": "Dölj inställningar",
-  "wallet": "Plånbok"
+  "wallet": "Plånbok",
+  "undelete": "Ångra radering"
 }

@@ -296,5 +296,6 @@
   "add_wallet": "<1>Lisää</1> krypto-lompakko",
   "show_settings": "Näytä asetukset",
   "hide_settings": "Piilota asetukset",
-  "wallet": "Lompakko"
+  "wallet": "Lompakko",
+  "undelete": "Palauta"
 }
