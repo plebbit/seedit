@@ -225,7 +225,7 @@
   "add_rule": "เพิ่มกฎ",
   "json_settings": "การตั้งค่า JSON",
   "json_settings_info": "คัดลอกหรือวางการตั้งค่าของชุมชนอย่างรวดเร็ว",
-  "address_setting_info": "ตั้งค่าที่อยู่ชุมชนที่อ่านได้โดยใช้ ens.domains",
+  "address_setting_info": "ตั้งค่าที่อยู่ชุมชนที่อ่านได้โดยใช้โดเมนคริปโต",
   "enter_crypto_address": "โปรดป้อนที่อยู่คริปโตที่ถูกต้อง",
   "check_for_updates": "<1>ตรวจสอบ</1> อัปเดต",
   "general_settings": "การตั้งค่าทั่วไป",
@@ -296,5 +296,7 @@
   "add_wallet": "<1>เพิ่ม</1> กระเป๋าเงินดิจิทัล",
   "show_settings": "แสดงการตั้งค่า",
   "hide_settings": "ซ่อนการตั้งค่า",
-  "wallet": "กระเป๋าเงิน"
+  "wallet": "กระเป๋าเงิน",
+  "undelete": "ยกเลิกการลบ",
+  "loading_comments": "กำลังโหลดความคิดเห็น"
 }

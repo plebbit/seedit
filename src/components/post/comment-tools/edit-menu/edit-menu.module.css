@@ -4,6 +4,7 @@
   text-decoration: none;
   padding: 0 4px 0 4px;
   cursor: pointer;
+  text-transform: lowercase;
 }
 
 .modal {

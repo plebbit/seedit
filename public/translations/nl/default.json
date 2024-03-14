@@ -225,7 +225,7 @@
   "add_rule": "een regel toevoegen",
   "json_settings": "JSON-instellingen",
   "json_settings_info": "snel de gemeenschapsinstellingen kopiëren of plakken",
-  "address_setting_info": "stel een leesbaar gemeenschapsadres in met behulp van ens.domains",
+  "address_setting_info": "Stel een leesbaar gemeenschapsadres in met behulp van een crypto-domein",
   "enter_crypto_address": "Voer alstublieft een geldig crypto-adres in.",
   "check_for_updates": "<1>Controleer</1> op updates",
   "general_settings": "Algemene instellingen",
@@ -296,5 +296,7 @@
   "add_wallet": "<1>Voeg toe</1> een cryptoportemonnee toe",
   "show_settings": "Instellingen weergeven",
   "hide_settings": "Instellingen verbergen",
-  "wallet": "Wallet"
+  "wallet": "Wallet",
+  "undelete": "Herstellen",
+  "loading_comments": "Reacties laden"
 }

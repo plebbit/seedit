@@ -225,7 +225,7 @@
   "add_rule": "नियम जोड़ें",
   "json_settings": "JSON सेटिंग्स",
   "json_settings_info": "समुदाय की सेटिंग्स को तेजी से कॉपी या पेस्ट करें",
-  "address_setting_info": "ens.domains का उपयोग करके एक पठनीय समुदाय पता सेट करें",
+  "address_setting_info": "क्रिप्टो डोमेन का उपयोग करके एक पठनीय समुदाय पता सेट करें",
   "enter_crypto_address": "कृपया एक मान्य क्रिप्टो पता दर्ज करें।",
   "check_for_updates": "<1>जाँचें</1> अपडेट के लिए",
   "general_settings": "सामान्य सेटिंग्स",
@@ -296,5 +296,7 @@
   "add_wallet": "<1>को जोड़ें</1> एक क्रिप्टो वॉलेट",
   "show_settings": "सेटिंग्स दिखाएं",
   "hide_settings": "सेटिंग्स छुपाएं",
-  "wallet": "वॉलेट"
+  "wallet": "वॉलेट",
+  "undelete": "डिलीट को वापस लाओ",
+  "loading_comments": "टिप्पणियाँ लोड हो रही हैं"
 }

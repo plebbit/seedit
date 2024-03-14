@@ -65,7 +65,6 @@ const PostTools = ({
   subplebbitAddress,
   replyCount = 0,
   showCommentEditForm,
-  spoiler = false,
 }: CommentToolsProps) => {
   const { t } = useTranslation();
   const validReplyCount = isNaN(replyCount) ? 0 : replyCount;
@@ -99,7 +98,7 @@ const PostTools = ({
           <span>{t('save')}</span>
         </li> 
       */}
-      {isAuthor && <EditMenu cid={cid} showCommentEditForm={showCommentEditForm} spoiler={spoiler} />}
+      {isAuthor && <EditMenu commentCid={cid} showCommentEditForm={showCommentEditForm} />}
       <HideMenu author={author} cid={cid} isAccountMod={isAccountMod} subplebbitAddress={subplebbitAddress} />
       {/* TODO: Implement crosspost functionality
         <li className={`${styles.button} ${styles.crosspostButton}`}>
@@ -123,7 +122,6 @@ const ReplyTools = ({
   showReplyForm,
   subplebbitAddress,
   showCommentEditForm,
-  spoiler = false,
 }: CommentToolsProps) => {
   const { t } = useTranslation();
 
@@ -138,7 +136,7 @@ const ReplyTools = ({
           <span>{t('save')}</span>
         </li> 
       */}
-      {isAuthor && <EditMenu cid={cid} showCommentEditForm={showCommentEditForm} spoiler={spoiler} />}
+      {isAuthor && <EditMenu commentCid={cid} showCommentEditForm={showCommentEditForm} />}
       <HideMenu author={author} cid={cid} isAccountMod={isAccountMod} subplebbitAddress={subplebbitAddress} />
       <li className={!cid ? styles.hideReply : styles.button}>
         <span onClick={() => cid && showReplyForm?.()}>{t('reply_reply')}</span>
@@ -159,7 +157,6 @@ const SingleReplyTools = ({
   parentCid,
   postCid,
   showReplyForm,
-  spoiler = false,
   subplebbitAddress,
   showCommentEditForm,
 }: CommentToolsProps) => {
@@ -194,7 +191,7 @@ const SingleReplyTools = ({
           <span>{t('save')}</span>
         </li> 
       */}
-      {isAuthor && <EditMenu cid={cid} spoiler={spoiler} showCommentEditForm={showCommentEditForm} />}
+      {isAuthor && <EditMenu commentCid={cid} showCommentEditForm={showCommentEditForm} />}
       <li className={styles.button}>{contextButton}</li>
       <li className={styles.button}>{fullCommentsButton}</li>
       <HideMenu author={author} cid={cid} isAccountMod={isAccountMod} subplebbitAddress={subplebbitAddress} />
@@ -270,7 +267,6 @@ const CommentTools = ({
             postCid={postCid}
             showCommentEditForm={showCommentEditForm}
             showReplyForm={showReplyForm}
-            spoiler={spoiler}
             subplebbitAddress={subplebbitAddress}
           />
         ) : (
@@ -285,7 +281,6 @@ const CommentTools = ({
             isCommentAuthorMod={isCommentAuthorMod}
             showCommentEditForm={showCommentEditForm}
             showReplyForm={showReplyForm}
-            spoiler={spoiler}
             subplebbitAddress={subplebbitAddress}
           />
         )
@@ -312,7 +307,6 @@ const CommentTools = ({
             isCommentAuthorMod={isCommentAuthorMod}
             replyCount={replyCount}
             showCommentEditForm={showCommentEditForm}
-            spoiler={spoiler}
             subplebbitAddress={subplebbitAddress}
           />
         </>

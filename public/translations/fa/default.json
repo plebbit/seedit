@@ -225,7 +225,7 @@
   "add_rule": "افزودن یک قانون",
   "json_settings": "تنظیمات JSON",
   "json_settings_info": "سریعاً تنظیمات اجتماعی را کپی یا پیست کنید",
-  "address_setting_info": "تنظیم یک آدرس مشترک قابل خواندن با استفاده از ens.domains",
+  "address_setting_info": "تنظیم یک آدرس مشترک قابل خواندن با استفاده از یک دامنه رمزنگاری",
   "enter_crypto_address": "لطفاً یک آدرس کریپتو صحیح وارد کنید.",
   "check_for_updates": "<1>بررسی</1> برای به‌روزرسانی‌ها",
   "general_settings": "تنظیمات عمومی",
@@ -296,5 +296,7 @@
   "add_wallet": "<1>افزودن</1> یک کیف پول رمز ارز",
   "show_settings": "نمایش تنظیمات",
   "hide_settings": "مخفی کردن تنظیمات",
-  "wallet": "کیف پول"
+  "wallet": "کیف پول",
+  "undelete": "بازیابی",
+  "loading_comments": "بارگذاری نظرات"
 }

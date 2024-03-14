@@ -13,7 +13,7 @@ import PendingPost from './views/pending-post';
 import PostPage from './views/post-page';
 import Profile from './views/profile';
 import Settings from './views/settings';
-import Submit from './views/submit';
+import SubmitPage from './views/submit-page';
 import Subplebbit from './views/subplebbit';
 import SubplebbitSettings from './views/subplebbit/subplebbit-settings';
 import Subplebbits from './views/subplebbits';
@@ -109,7 +109,7 @@ const App = () => {
             </Route>
           </Route>
           <Route element={pagesLayout}>
-            <Route path='/submit' element={<Submit />} />
+            <Route path='/submit' element={<SubmitPage />} />
             <Route path='/about' element={<About />} />
 
             <Route path='/p/all/about' element={<About />} />
@@ -118,7 +118,7 @@ const App = () => {
             <Route path='/p/:subplebbitAddress/c/:commentCid?context=1' element={<PostPage />} />
             <Route path='/p/:subplebbitAddress/c/:commentCid/about' element={<About />} />
 
-            <Route path='/p/:subplebbitAddress/submit' element={<Submit />} />
+            <Route path='/p/:subplebbitAddress/submit' element={<SubmitPage />} />
             <Route path='/p/:subplebbitAddress/about' element={<About />} />
 
             <Route path='/settings' element={<Settings />} />

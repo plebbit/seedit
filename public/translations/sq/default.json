@@ -225,7 +225,7 @@
   "add_rule": "shtoni një rregull",
   "json_settings": "Cilësimet JSON",
   "json_settings_info": "kopjoni ose ngjitni shpejt konfigurimet e komunitetit",
-  "address_setting_info": "vendosni një adresë të lexueshme të komunitetit duke përdorur ens.domains",
+  "address_setting_info": "Vendosni një adresë të lexueshme të komunitetit duke përdorur një domen kripto",
   "enter_crypto_address": "Ju lutemi vendosni një adresë kripto të vlefshme.",
   "check_for_updates": "<1>Kontrolloni</1> për përditësime",
   "general_settings": "Cilësimet e përgjithshme",
@@ -296,5 +296,7 @@
   "add_wallet": "<1>Shto</1> një xhepë crypto",
   "show_settings": "Shfaq rregullimet",
   "hide_settings": "Fshih rregullimet",
-  "wallet": "Wallet"
+  "wallet": "Wallet",
+  "undelete": "Rikuperimi",
+  "loading_comments": "Duke u ngarkuar komentet"
 }

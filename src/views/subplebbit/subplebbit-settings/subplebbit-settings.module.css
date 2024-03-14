@@ -28,6 +28,13 @@
   padding-top: 1px;
 }
 
+.boxSubtitle span {
+  font-size: 10px;
+  vertical-align: top;
+  margin-left: 2px;
+  cursor: pointer;
+}
+
 .boxInput {
   margin-top: 5px;
   padding: 2px 0px 2px 8px;

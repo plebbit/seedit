@@ -225,7 +225,7 @@
   "add_rule": "إضافة قاعدة",
   "json_settings": "إعدادات JSON",
   "json_settings_info": "نسخ أو لصق إعدادات المجتمع بسرعة",
-  "address_setting_info": "قم بتعيين عنوان مجتمع قابل للقراءة باستخدام ens.domains",
+  "address_setting_info": "قم بتعيين عنوان مجتمع قابل قراءة باستخدام نطاق العملات الرقمية",
   "enter_crypto_address": "الرجاء إدخال عنوان كريبتو صالح.",
   "check_for_updates": "<1>تحقق</1> من التحديثات",
   "general_settings": "إعدادات عامة",
@@ -296,5 +296,7 @@
   "add_wallet": "<1>إضافة</1> محفظة رقمية",
   "show_settings": "عرض الإعدادات",
   "hide_settings": "إخفاء الإعدادات",
-  "wallet": "محفظة"
+  "wallet": "محفظة",
+  "undelete": "إلغاء الحذف",
+  "loading_comments": "تحميل التعليقات"
 }

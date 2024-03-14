@@ -225,7 +225,7 @@
   "add_rule": "adăugați o regulă",
   "json_settings": "Setări JSON",
   "json_settings_info": "copiați sau lipiți rapid setările comunității",
-  "address_setting_info": "setați o adresă de comunitate citibilă folosind ens.domains",
+  "address_setting_info": "Setați o adresă comunitară citibilă folosind un domeniu cripto",
   "enter_crypto_address": "Vă rugăm să introduceți o adresă crypto validă.",
   "check_for_updates": "<1>Verifică</1> pentru actualizări",
   "general_settings": "Setări generale",
@@ -296,5 +296,7 @@
   "add_wallet": "<1>Adăugați</1> un portofel cripto",
   "show_settings": "Afișare setări",
   "hide_settings": "Ascunde setările",
-  "wallet": "Portofel"
+  "wallet": "Portofel",
+  "undelete": "Recuperare",
+  "loading_comments": "Se încarcă comentariile"
 }

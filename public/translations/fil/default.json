@@ -225,7 +225,7 @@
   "add_rule": "magdagdag ng isang patakaran",
   "json_settings": "Mga setting ng JSON",
   "json_settings_info": "mabilis na kopya o i-paste ang mga setting ng komunidad",
-  "address_setting_info": "itakda ang isang mababasa oso ng komunidad gamit ang ens.domains",
+  "address_setting_info": "Itakda ang isang mababasa ang komunidad na address gamit ang isang crypto domain",
   "enter_crypto_address": "Mangyaring magpasok ng wastong crypto address.",
   "check_for_updates": "<1>Tingnan</1> para sa mga update",
   "general_settings": "Pangkalahatang mga setting",
@@ -296,5 +296,7 @@
   "add_wallet": "<1>Magdagdag</1> ng isang crypto wallet",
   "show_settings": "Ipakita ang mga setting",
   "hide_settings": "Itago ang mga setting",
-  "wallet": "Wallet"
+  "wallet": "Wallet",
+  "undelete": "I-undelete",
+  "loading_comments": "Naglo-load ng mga komento"
 }

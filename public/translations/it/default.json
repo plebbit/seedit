@@ -225,7 +225,7 @@
   "add_rule": "aggiungi una regola",
   "json_settings": "impostazioni JSON",
   "json_settings_info": "copia o incolla rapidamente le impostazioni della comunità",
-  "address_setting_info": "imposta un indirizzo di comunità leggibile utilizzando ens.domains",
+  "address_setting_info": "Imposta un indirizzo di comunità leggibile utilizzando un dominio crypto",
   "enter_crypto_address": "Inserisci un indirizzo cripto valido.",
   "check_for_updates": "<1>Controlla</1> aggiornamenti",
   "general_settings": "Impostazioni generali",
@@ -296,5 +296,7 @@
   "add_wallet": "<1>Aggiungi</1> un wallet crypto",
   "show_settings": "Mostra impostazioni",
   "hide_settings": "Nascondi impostazioni",
-  "wallet": "Wallet"
+  "wallet": "Wallet",
+  "undelete": "Annulla eliminazione",
+  "loading_comments": "Caricamento commenti"
 }

@@ -161,7 +161,7 @@ const Post = ({ index, post = {} }: PostProps) => {
   const { subscribe, subscribed } = useSubscribe({ subplebbitAddress });
 
   // show gray dotted border around last clicked post
-  const isLastClicked = sessionStorage.getItem('lastClickedPost') === cid;
+  const isLastClicked = sessionStorage.getItem('lastClickedPost') === cid && !isInPostView;
   const handlePostClick = () => {
     if (cid) {
       if (sessionStorage.getItem('lastClickedPost') === cid) {
@@ -174,7 +174,7 @@ const Post = ({ index, post = {} }: PostProps) => {
 
   return (
     <div className={styles.content} key={index}>
-      <div className={isLastClicked && !isInPostView ? styles.lastClicked : ''}>
+      <div className={isLastClicked ? styles.lastClicked : ''}>
         <div className={`${styles.hiddenPost} ${blocked ? styles.visible : styles.hidden}`}>
           <div className={styles.hiddenPostText}>{t('post_hidden').charAt(0).toUpperCase() + t('post_hidden').slice(1)}</div>
           <div className={styles.undoHiddenPost} onClick={unblock}>
@@ -301,7 +301,7 @@ const Post = ({ index, post = {} }: PostProps) => {
             </div>
           </div>
           {isEditing ? (
-            <CommentEditForm commentCid={cid} content={content} hideCommentEditForm={hideCommentEditForm} spoiler={spoiler} subplebbitAddress={subplebbitAddress} />
+            <CommentEditForm commentCid={cid} hideCommentEditForm={hideCommentEditForm} />
           ) : (
             <Expando
               authorEditReason={edit?.reason}

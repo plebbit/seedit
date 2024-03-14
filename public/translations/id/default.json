@@ -225,7 +225,7 @@
   "add_rule": "tambahkan aturan",
   "json_settings": "Pengaturan JSON",
   "json_settings_info": "salin atau tempel cepat pengaturan komunitas",
-  "address_setting_info": "atur alamat komunitas yang dapat dibaca menggunakan ens.domains",
+  "address_setting_info": "Atur alamat komunitas yang dapat dibaca menggunakan domain crypto",
   "enter_crypto_address": "Harap masukkan alamat kripto yang valid.",
   "check_for_updates": "<1>Periksa</1> pembaruan",
   "general_settings": "Pengaturan umum",
@@ -296,5 +296,7 @@
   "add_wallet": "<1>Tambahkan</1> dompet kripto",
   "show_settings": "Tampilkan pengaturan",
   "hide_settings": "Sembunyikan pengaturan",
-  "wallet": "Dompet"
+  "wallet": "Dompet",
+  "undelete": "Batalkan penghapusan",
+  "loading_comments": "Memuat komentar"
 }

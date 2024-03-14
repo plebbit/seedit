@@ -225,7 +225,7 @@
   "add_rule": "dodaj regułę",
   "json_settings": "Ustawienia JSON",
   "json_settings_info": "szybko kopiuj lub wklej ustawienia społeczności",
-  "address_setting_info": "ustaw czytelny adres społeczności za pomocą ens.domains",
+  "address_setting_info": "Ustaw czytelny adres społecznościowy za pomocą domeny kryptograficznej",
   "enter_crypto_address": "Proszę podać prawidłowy adres kryptowalutowy.",
   "check_for_updates": "<1>Sprawdź</1> aktualizacje",
   "general_settings": "Ustawienia ogólne",
@@ -296,5 +296,7 @@
   "add_wallet": "<1>Dodaj</1> portfel kryptowalutowy",
   "show_settings": "Pokaż ustawienia",
   "hide_settings": "Ukryj ustawienia",
-  "wallet": "Portfel"
+  "wallet": "Portfel",
+  "undelete": "Przywróć",
+  "loading_comments": "Ładowanie komentarzy"
 }

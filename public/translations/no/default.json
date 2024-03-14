@@ -225,7 +225,7 @@
   "add_rule": "legg til en regel",
   "json_settings": "JSON-innstillinger",
   "json_settings_info": "raskt kopiere eller lime inn fellesskapsinnstillinger",
-  "address_setting_info": "sett en lesbar fellesskapsadresse ved hjelp av ens.domains",
+  "address_setting_info": "Sett en lesbar fellesskapsadresse ved hjelp av et kryptodomene",
   "enter_crypto_address": "Vennligst skriv inn en gyldig kryptoadresse.",
   "check_for_updates": "<1>Sjekk</1> for oppdateringer",
   "general_settings": "Generelle innstillinger",
@@ -296,5 +296,7 @@
   "add_wallet": "<1>Legg til</1> en crypto-lommebok",
   "show_settings": "Vis innstillinger",
   "hide_settings": "Skjul innstillinger",
-  "wallet": "Lommebok"
+  "wallet": "Lommebok",
+  "undelete": "Gjenopprette",
+  "loading_comments": "Laster inn kommentarer"
 }

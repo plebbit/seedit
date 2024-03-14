@@ -225,7 +225,7 @@
   "add_rule": "添加一条规则",
   "json_settings": "JSON设置",
   "json_settings_info": "快速复制或粘贴社区设置",
-  "address_setting_info": "使用 ens.domains 设置可读的社区地址",
+  "address_setting_info": "使用加密域名设置可读的社区地址",
   "enter_crypto_address": "请输入有效的加密货币地址。",
   "check_for_updates": "<1>检查</1> 更新",
   "general_settings": "一般设置",
@@ -296,5 +296,7 @@
   "add_wallet": "<1>添加</1>一个加密货币钱包",
   "show_settings": "显示设置",
   "hide_settings": "隐藏设置",
-  "wallet": "钱包"
+  "wallet": "钱包",
+  "undelete": "取消删除",
+  "loading_comments": "正在加载评论"
 }

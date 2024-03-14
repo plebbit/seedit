@@ -225,7 +225,7 @@
   "add_rule": "ajouter une règle",
   "json_settings": "Paramètres JSON",
   "json_settings_info": "copier ou coller rapidement les paramètres de la communauté",
-  "address_setting_info": "définissez une adresse de communauté lisible en utilisant ens.domains",
+  "address_setting_info": "Définir une adresse de communauté lisible à l'aide d'un domaine cryptographique",
   "enter_crypto_address": "Veuillez entrer une adresse crypto valide.",
   "check_for_updates": "<1>Vérifiez</1> les mises à jour",
   "general_settings": "Paramètres généraux",
@@ -296,5 +296,7 @@
   "add_wallet": "<1>Ajouter</1> un portefeuille crypto",
   "show_settings": "Afficher les paramètres",
   "hide_settings": "Masquer les paramètres",
-  "wallet": "Portefeuille"
+  "wallet": "Portefeuille",
+  "undelete": "Récupérer",
+  "loading_comments": "Chargement des commentaires"
 }

@@ -225,7 +225,7 @@
   "add_rule": "नियम जोडा",
   "json_settings": "JSON सेटिंग्ज",
   "json_settings_info": "समुदाय सेटिंग्ज कॉपी किंवा पेस्ट करा",
-  "address_setting_info": "ens.domains वापरून एक वाचनीय समुदाय पत्ता सेट करा",
+  "address_setting_info": "क्रिप्टो डोमेन वापरून वाचण्यायोग्य समुदाय पत्ता सेट करा",
   "enter_crypto_address": "कृपया मान्य क्रिप्टो पत्ता प्रविष्ट करा.",
   "check_for_updates": "<1>चेक</1> अपडेट्ससाठी",
   "general_settings": "सामान्य सेटिंग्ज",
@@ -296,5 +296,7 @@
   "add_wallet": "<1>जोडा</1> एक क्रिप्टो बटवा",
   "show_settings": "सेटिंग्ज दाखवा",
   "hide_settings": "सेटिंग्ज लपवा",
-  "wallet": "बटवा"
+  "wallet": "बटवा",
+  "undelete": "डिलीट करा",
+  "loading_comments": "टिप्पणी लोड होत आहे"
 }

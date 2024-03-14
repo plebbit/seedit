@@ -225,7 +225,7 @@
   "add_rule": "eine Regel hinzufügen",
   "json_settings": "JSON-Einstellungen",
   "json_settings_info": "Gemeinschaftseinstellungen schnell kopieren oder einfügen",
-  "address_setting_info": "Setzen Sie eine lesbare Community-Adresse mit ens.domains",
+  "address_setting_info": "Setzen Sie eine lesbare Gemeindeadresse mit einer Krypto-Domäne",
   "enter_crypto_address": "Bitte geben Sie eine gültige Krypto-Adresse ein.",
   "check_for_updates": "<1>Überprüfen</1> Sie auf Updates",
   "general_settings": "Allgemeine Einstellungen",
@@ -296,5 +296,7 @@
   "add_wallet": "<1>Hinzufügen</1> einer Krypto-Brieftasche",
   "show_settings": "Einstellungen anzeigen",
   "hide_settings": "Einstellungen ausblenden",
-  "wallet": "Wallet"
+  "wallet": "Wallet",
+  "undelete": "Wiederherstellen",
+  "loading_comments": "Lade Kommentare"
 }

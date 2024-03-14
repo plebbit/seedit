@@ -403,7 +403,7 @@ const Reply = ({ cidOfReplyWithContext, depth = 0, isSingleComment, isSingleRepl
                   />
                 )}
                 {isEditing ? (
-                  <CommentEditForm commentCid={cid} content={content} hideCommentEditForm={hideCommentEditForm} subplebbitAddress={subplebbitAddress} />
+                  <CommentEditForm commentCid={cid} hideCommentEditForm={hideCommentEditForm} />
                 ) : (
                   <div className={`${styles.md} ${cid && (isSingleComment || cidOfReplyWithContext === cid) ? styles.highlightContent : ''}`}>
                     {spoiler && !showSpoiler && <div className={styles.showSpoilerButton}>{t('view_spoiler')}</div>}

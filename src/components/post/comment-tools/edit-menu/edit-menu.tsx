@@ -8,16 +8,15 @@ import challengesStore from '../../../../hooks/use-challenges';
 const { addChallenge } = challengesStore.getState();
 
 type EditMenuProps = {
-  cid: string;
+  commentCid: string;
   showCommentEditForm?: () => void;
-  spoiler?: boolean;
 };
 
-const EditMenu = ({ cid, showCommentEditForm }: EditMenuProps) => {
+const EditMenu = ({ commentCid, showCommentEditForm }: EditMenuProps) => {
   const { t } = useTranslation();
 
   let post: any;
-  const comment = useComment({ commentCid: cid });
+  const comment = useComment({ commentCid });
   const { editedComment } = useEditedComment({ comment });
   if (editedComment) {
     post = editedComment;
@@ -25,11 +24,10 @@ const EditMenu = ({ cid, showCommentEditForm }: EditMenuProps) => {
     post = comment;
   }
 
-  const { content, deleted, subplebbitAddress } = post || {};
+  const { deleted, subplebbitAddress } = post || {};
 
   const defaultPublishOptions: PublishCommentEditOptions = {
-    commentCid: cid,
-    content,
+    commentCid,
     deleted,
     subplebbitAddress,
     onChallenge: (...args: any) => addChallenge([...args, post]),
@@ -43,18 +41,18 @@ const EditMenu = ({ cid, showCommentEditForm }: EditMenuProps) => {
   const [publishCommentEditOptions, setPublishCommentEditOptions] = useState(defaultPublishOptions);
   const { publishCommentEdit } = usePublishCommentEdit(publishCommentEditOptions);
 
-  const deleteComment = () => {
+  const deleteComment = async () => {
     if (deleted) {
-      setPublishCommentEditOptions((state) => ({ ...state, deleted: false }));
       if (window.confirm('Are you sure you want to undelete this post?')) {
-        publishCommentEdit();
+        setPublishCommentEditOptions((state) => ({ ...state, deleted: false }));
+        await publishCommentEdit();
       } else {
         setPublishCommentEditOptions((state) => ({ ...state, deleted: true }));
       }
     } else {
-      setPublishCommentEditOptions((state) => ({ ...state, deleted: true }));
       if (window.confirm('Are you sure you want to delete this post?')) {
-        publishCommentEdit();
+        setPublishCommentEditOptions((state) => ({ ...state, deleted: true }));
+        await publishCommentEdit();
       } else {
         setPublishCommentEditOptions((state) => ({ ...state, deleted: false }));
       }
@@ -66,14 +64,14 @@ const EditMenu = ({ cid, showCommentEditForm }: EditMenuProps) => {
       <li className={styles.button}>
         <span
           onClick={() => {
-            showCommentEditForm && cid && showCommentEditForm();
+            showCommentEditForm && commentCid && showCommentEditForm();
           }}
         >
           {t('edit')}
         </span>
       </li>
       <li className={styles.button}>
-        <span onClick={() => cid && deleteComment()}>{t('delete')}</span>
+        <span onClick={() => commentCid && deleteComment()}>{deleted ? t('undelete') : t('delete')}</span>
       </li>
     </>
   );

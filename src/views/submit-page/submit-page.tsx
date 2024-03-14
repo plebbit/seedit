@@ -1,4 +1,4 @@
-import { ChangeEvent, forwardRef, useCallback, useEffect, useRef, useState } from 'react';
+import { ChangeEvent, useCallback, useEffect, useState } from 'react';
 import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
 import { PublishCommentOptions, useAccount, usePublishComment, useSubplebbit } from '@plebbit/plebbit-react-hooks';
 import Plebbit from '@plebbit/plebbit-js/dist/browser/index.js';
@@ -9,9 +9,9 @@ import { alertChallengeVerificationFailed } from '../../lib/utils/challenge-util
 import { getLinkMediaInfoMemoized } from '../../lib/utils/media-utils';
 import { isValidURL } from '../../lib/utils/url-utils';
 import { isSubmitView } from '../../lib/utils/view-utils';
-import styles from './submit.module.css';
+import styles from './submit-page.module.css';
 import challengesStore from '../../hooks/use-challenges';
-import Embed from '../../components/post/embed/';
+import Embed from '../../components/post/embed';
 import Markdown from '../../components/markdown';
 
 type SubmitState = {
@@ -36,9 +36,9 @@ const useSubmitStore = create<SubmitState>((set) => ({
     set((state) => {
       const nextState = { ...state };
       if (subplebbitAddress !== undefined) nextState.subplebbitAddress = subplebbitAddress;
-      if (title !== undefined) nextState.title = title;
-      if (content !== undefined) nextState.content = content;
-      if (link !== undefined) nextState.link = link;
+      if (title !== undefined) nextState.title = title || undefined;
+      if (content !== undefined) nextState.content = content || undefined;
+      if (link !== undefined) nextState.link = link || undefined;
 
       nextState.publishCommentOptions = {
         ...nextState,
@@ -55,7 +55,7 @@ const useSubmitStore = create<SubmitState>((set) => ({
   resetSubmitStore: () => set({ subplebbitAddress: undefined, title: undefined, content: undefined, link: undefined, publishCommentOptions: {} }),
 }));
 
-const UrlField = forwardRef<HTMLInputElement>((_, ref) => {
+const UrlField = () => {
   const { t } = useTranslation();
   const { setSubmitStore } = useSubmitStore();
   const [mediaError, setMediaError] = useState(false);
@@ -96,7 +96,6 @@ const UrlField = forwardRef<HTMLInputElement>((_, ref) => {
           autoCorrect='off'
           autoComplete='off'
           spellCheck='false'
-          ref={ref}
           onChange={(e) => {
             setUrl(e.target.value);
             setMediaError(false);
@@ -111,7 +110,7 @@ const UrlField = forwardRef<HTMLInputElement>((_, ref) => {
       </div>
     </>
   );
-});
+};
 
 const Submit = () => {
   const account = useAccount();
@@ -126,26 +125,21 @@ const Submit = () => {
   const location = useLocation();
   const isInSubmitView = isSubmitView(location.pathname);
 
-  const titleRef = useRef<HTMLTextAreaElement>(null);
-  const linkRef = useRef<HTMLInputElement>(null);
-  const contentRef = useRef<HTMLTextAreaElement>(null);
-  const subplebbitAddressRef = useRef<HTMLInputElement>(null);
-
-  const { subplebbitAddress, publishCommentOptions, setSubmitStore, resetSubmitStore } = useSubmitStore();
+  const { title, content, link, subplebbitAddress, publishCommentOptions, setSubmitStore, resetSubmitStore } = useSubmitStore();
   const { index, publishComment } = usePublishComment(publishCommentOptions);
   const { subscriptions } = account || {};
   const defaultSubplebbitAddresses = useDefaultSubplebbitAddresses();
 
   const onPublish = () => {
-    if (!titleRef.current?.value) {
+    if (!title) {
       alert(`Missing title`);
       return;
     }
-    if (linkRef.current?.value && !isValidURL(linkRef.current?.value)) {
+    if (link && !isValidURL(link)) {
       alert(`Invalid URL`);
       return;
     }
-    if (!subplebbitAddressRef.current?.value) {
+    if (!subplebbitAddress) {
       alert(`Missing community address`);
       return;
     }
@@ -172,18 +166,9 @@ const Submit = () => {
   const listSource = subscriptions?.length > 5 ? subscriptions : randomSubplebbits;
   const subscriptionsList = (
     <div className={styles.subs}>
-      {listSource.map((sub: string) => (
-        <span
-          key={sub}
-          className={styles.sub}
-          onClick={() => {
-            if (subplebbitAddressRef.current) {
-              subplebbitAddressRef.current.value = sub;
-              setSelectedSubplebbit(sub);
-            }
-          }}
-        >
-          {Plebbit.getShortAddress(sub)}
+      {listSource.map((subscription: string) => (
+        <span key={subscription} className={styles.sub} onClick={() => setSelectedSubplebbit(subscription)}>
+          {Plebbit.getShortAddress(subscription)}
         </span>
       ))}
     </div>
@@ -202,16 +187,15 @@ const Submit = () => {
         setActiveDropdownIndex((prevIndex) => (prevIndex > 0 ? prevIndex - 1 : 0));
       } else if (e.key === 'Enter' && activeDropdownIndex !== -1) {
         const selectedAddress = filteredSubplebbitAddresses[activeDropdownIndex];
-        if (subplebbitAddressRef.current) {
-          subplebbitAddressRef.current.value = selectedAddress;
-          setSelectedSubplebbit(selectedAddress);
+        if (subplebbitAddress) {
+          setSelectedSubplebbit(subplebbitAddress);
         }
         setSubmitStore({ subplebbitAddress: selectedAddress });
         setInputAddress('');
         setActiveDropdownIndex(-1);
       }
     },
-    [filteredSubplebbitAddresses, activeDropdownIndex, subplebbitAddressRef, setSelectedSubplebbit, setSubmitStore],
+    [filteredSubplebbitAddresses, activeDropdownIndex, subplebbitAddress, setSelectedSubplebbit, setSubmitStore],
   );
 
   useEffect(() => {
@@ -281,14 +265,13 @@ const Submit = () => {
       <div className={styles.form}>
         <div className={styles.formContent}>
           <div className={styles.box}>
-            <UrlField ref={linkRef} />
+            <UrlField />
           </div>
           <div className={styles.box}>
             <span className={styles.boxTitleRequired}>{t('title')}</span>
             <div className={styles.boxContent}>
               <textarea
                 className={`${styles.input} ${styles.inputTitle}`}
-                ref={titleRef}
                 onChange={(e) => {
                   setSubmitStore({ title: e.target.value });
                 }}
@@ -301,16 +284,15 @@ const Submit = () => {
             <div className={styles.boxContent}>
               <textarea
                 className={`${styles.input} ${styles.inputText}`}
-                ref={contentRef}
                 onChange={(e) => {
-                  setSubmitStore({ content: e.target.value || undefined });
+                  setSubmitStore({ content: e.target.value });
                 }}
               />
-              {contentRef.current?.value && (
+              {content && (
                 <div className={styles.contentPreview}>
                   <div className={styles.contentPreviewTitle}>{t('preview')}:</div>
                   <div className={styles.contentPreviewMarkdown}>
-                    <Markdown content={contentRef.current.value} />
+                    <Markdown content={content} />
                   </div>
                 </div>
               )}
@@ -331,7 +313,6 @@ const Submit = () => {
                 spellCheck='false'
                 value={selectedSubplebbit}
                 defaultValue={selectedSubplebbit ? paramsSubplebbitAddress : undefined}
-                ref={subplebbitAddressRef}
                 onChange={(e) => {
                   handleAddressChange(e);
                   setSubmitStore({ subplebbitAddress: e.target.value });
@@ -342,14 +323,14 @@ const Submit = () => {
               {subscriptionsList}
             </div>
           </div>
-          {subplebbit?.rules && (
+          {subplebbit?.rules?.length > 0 && (
             <div className={styles.box}>
               <span className={`${styles.boxTitle} ${styles.rulesTitle}`}>
                 {t('rules_for')} p/{subplebbit?.shortAddress}
               </span>
               <div className={styles.boxContent}>
                 <div className={styles.description}>
-                  <ol className={styles.rules}>{subplebbit?.rules.map((rule: string, index: number) => <li key={index}>{rule}</li>)}</ol>
+                  <ol className={styles.rules}>{subplebbit?.rules?.map((rule: string, index: number) => <li key={index}>{rule}</li>)}</ol>
                 </div>
               </div>
             </div>
