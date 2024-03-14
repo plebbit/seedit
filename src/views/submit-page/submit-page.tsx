@@ -195,7 +195,7 @@ const Submit = () => {
         setActiveDropdownIndex(-1);
       }
     },
-    [filteredSubplebbitAddresses, activeDropdownIndex, setSelectedSubplebbit, setSubmitStore],
+    [filteredSubplebbitAddresses, activeDropdownIndex, subplebbitAddress, setSelectedSubplebbit, setSubmitStore],
   );
 
   useEffect(() => {
