@@ -168,7 +168,7 @@
   "show_parent": "mutassa a hivatkozott bejegyzést",
   "no_posts": "nincsenek hozzászólások",
   "media_url": "média URL",
-  "post_locked_info": "Ez a bejegyzés zárolva van. Nem fogsz tudni hozzászólni.",
+  "post_locked_info": "Ez a bejegyzés {{state}}. Nem fogsz tudni kommentálni.",
   "no_subscriptions_notice": "Még nem csatlakoztál egyetlen közösséghez sem.",
   "members_count": "{{count}} tag",
   "communities": "közösség",

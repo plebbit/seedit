@@ -168,7 +168,7 @@
   "show_parent": "ذکر کردہ پوسٹ دکھائیں",
   "no_posts": "کوئی پوسٹ نہیں",
   "media_url": "میڈیا یو آر ایل",
-  "post_locked_info": "یہ پوسٹ بند ہے۔ آپ تبصرہ نہیں کر سکیں گے۔",
+  "post_locked_info": "یہ پوسٹ {{state}} ہے۔ آپ تبصرہ نہیں کر سکیں گے۔",
   "no_subscriptions_notice": "آپ نے ابھی تک کسی بھی کمیونٹی میں شامل نہیں ہوئے۔",
   "members_count": "{{count}} رکن",
   "communities": "مجتمع",

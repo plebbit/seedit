@@ -168,7 +168,7 @@
   "show_parent": "visa den refererade posten",
   "no_posts": "inga inlägg",
   "media_url": "media-url",
-  "post_locked_info": "Detta inlägg är låst. Du kommer inte att kunna kommentera.",
+  "post_locked_info": "Det här inlägget är {{state}}. Du kommer inte att kunna kommentera.",
   "no_subscriptions_notice": "Du har ännu inte gått med i någon gemenskap.",
   "members_count": "{{count}} medlemmar",
   "communities": "gemenskap",

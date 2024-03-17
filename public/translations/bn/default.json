@@ -168,7 +168,7 @@
   "show_parent": "সূচিত পোস্ট দেখুন",
   "no_posts": "কোন পোস্ট নেই",
   "media_url": "মিডিয়া ইউআরএল",
-  "post_locked_info": "এই পোস্টটি লক হয়েছে। আপনি মন্তব্য করতে পারবেন না।",
+  "post_locked_info": "এই পোস্ট {{state}}। আপনি মন্তব্য করতে পারবেন না।",
   "no_subscriptions_notice": "আপনি এখনো কোনও সম্প্রদানে যোগ দিননি।",
   "members_count": "{{count}} সদস্য",
   "communities": "সম্প্রদান",

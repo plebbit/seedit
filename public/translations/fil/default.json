@@ -168,7 +168,7 @@
   "show_parent": "ipakita ang tinutukoy na post",
   "no_posts": "walang post",
   "media_url": "media url",
-  "post_locked_info": "Ang post na ito ay naka-lock. Hindi ka makakapagkomento.",
+  "post_locked_info": "Ang post na ito ay {{state}}. Hindi ka makakapagkomento.",
   "no_subscriptions_notice": "Hindi ka pa sumali sa anumang komunidad.",
   "members_count": "{{count}} miyembro",
   "communities": "komunidad",

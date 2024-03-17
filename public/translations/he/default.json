@@ -168,7 +168,7 @@
   "show_parent": "הצג את הפוסט המתייחס אליו",
   "no_posts": "אין פוסטים",
   "media_url": "כתובת מדיה",
-  "post_locked_info": "הפוסט הזה נעול. אינך יכול להגיב.",
+  "post_locked_info": "הפוסט הזה הוא {{state}}. לא תוכל להגיב.",
   "no_subscriptions_notice": "עדיין לא הצטרפת לאף קהילה.",
   "members_count": "{{count}} חברים",
   "communities": "קהילה",

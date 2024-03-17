@@ -86,7 +86,7 @@ const Post = ({ post }: { post: Comment }) => {
 
 const PostWithContext = ({ post }: { post: Comment }) => {
   const { t } = useTranslation();
-  const { postCid, subplebbitAddress } = post || {};
+  const { deleted, locked, postCid, removed, subplebbitAddress } = post || {};
 
   const postComment = useComment({ commentCid: post?.postCid });
   const topParentCid = findTopParentCidOfReply(post.cid, postComment);
@@ -97,9 +97,9 @@ const PostWithContext = ({ post }: { post: Comment }) => {
 
   return (
     <>
-      {(post?.locked || post?.removed) && (
+      {(deleted || locked || removed) && (
         <div className={styles.lockedInfobar}>
-          <div className={styles.lockedInfobarText}>{t('post_locked_info')}</div>
+          <div className={styles.lockedInfobarText}>{t('post_locked_info', { state: deleted ? t('deleted') : locked ? t('locked') : removed ? t('removed') : '' })}</div>
         </div>
       )}
       <PostComponent post={post} />

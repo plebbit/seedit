@@ -168,7 +168,7 @@
   "show_parent": "tampilkan posting yang dirujuk",
   "no_posts": "tidak ada posting",
   "media_url": "URL media",
-  "post_locked_info": "Pos ini terkunci. Anda tidak akan dapat mengomentari.",
+  "post_locked_info": "Postingan ini {{state}}. Anda tidak akan dapat berkomentar.",
   "no_subscriptions_notice": "Anda belum bergabung dengan komunitas mana pun.",
   "members_count": "{{count}} anggota",
   "communities": "komunitas",

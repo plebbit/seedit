@@ -168,7 +168,7 @@
   "show_parent": "atıfta bulunulan gönderiyi göster",
   "no_posts": "gönderi yok",
   "media_url": "medya URL'si",
-  "post_locked_info": "Bu gönderi kilitlendi. Yorum yapamayacaksınız.",
+  "post_locked_info": "Bu gönderi {{state}}. Yorum yapamayacaksınız.",
   "no_subscriptions_notice": "Henüz herhangi bir topluluğa katılmadınız.",
   "members_count": "{{count}} üye",
   "communities": "topluluk",

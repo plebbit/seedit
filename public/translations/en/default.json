@@ -168,7 +168,7 @@
   "show_parent": "show parent",
   "no_posts": "no posts",
   "media_url": "media url",
-  "post_locked_info": "This post is locked. You won't be able to comment.",
+  "post_locked_info": "This post is {{state}}. You won't be able to comment.",
   "no_subscriptions_notice": "You haven't joined any community.",
   "members_count": "{{count}} members",
   "communities": "communities",
