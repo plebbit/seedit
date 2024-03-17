@@ -60,6 +60,6 @@
 
 @supports (-moz-appearance: none) {
   .banInput {
-    width: 3.5em; /* Adjust this width as needed */
+    width: 3.5em;
   }
 }

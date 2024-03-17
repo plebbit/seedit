@@ -305,7 +305,7 @@ const Submit = () => {
               <input
                 className={`${styles.input} ${styles.inputCommunity}`}
                 type='text'
-                placeholder={`"community.eth" ${t('or')} "12D3KooW..."`}
+                placeholder={`"community.eth/.sol" ${t('or')} "12D3KooW..."`}
                 onFocus={() => setIsInputAddressFocused(true)}
                 onBlur={() => setTimeout(() => setIsInputAddressFocused(false), 100)}
                 autoCorrect='off'
