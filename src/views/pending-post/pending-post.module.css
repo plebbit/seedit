@@ -8,4 +8,5 @@
   text-overflow: ellipsis;
   width: calc(100vw - 28px);
   width: 100vw;
+  margin-top: -10px;
 }
