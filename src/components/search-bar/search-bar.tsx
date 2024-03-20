@@ -14,7 +14,7 @@ const SearchBar = ({ isFocused = false }: SearchBarProps) => {
   const navigate = useNavigate();
   const { t } = useTranslation();
   const [isInCommunitySearch, setIsInCommunitySearch] = useState(false);
-  const placeholder = isInCommunitySearch ? t('search') : `"community.eth" ${t('or')} "12D3KooW..."`;
+  const placeholder = isInCommunitySearch ? t('search') : `"community.eth/.sol" ${t('or')} "12D3KooW..."`;
   const [showExpando, setShowExpando] = useState(false);
 
   const handleInputFocus = () => {

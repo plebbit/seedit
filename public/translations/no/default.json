@@ -168,7 +168,7 @@
   "show_parent": "vis den refererte posten",
   "no_posts": "ingen innlegg",
   "media_url": "medie-URL",
-  "post_locked_info": "Dette innlegget er låst. Du kan ikke kommentere.",
+  "post_locked_info": "Dette innlegget er {{state}}. Du vil ikke kunne kommentere.",
   "no_subscriptions_notice": "Du har ikke blitt med i noen fellesskap ennå.",
   "members_count": "{{count}} medlemmer",
   "communities": "fellesskap",

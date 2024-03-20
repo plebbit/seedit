@@ -168,7 +168,7 @@
   "show_parent": "संदर्भित पोस्ट दिखाएं",
   "no_posts": "कोई पोस्ट नहीं",
   "media_url": "मीडिया यूआरएल",
-  "post_locked_info": "यह पोस्ट बंद है। आप टिप्पणी नहीं कर सकेंगे।",
+  "post_locked_info": "यह पोस्ट {{state}} है। आप टिप्पणी नहीं कर पाएंगे।",
   "no_subscriptions_notice": "आपने अब तक किसी समुदाय में शामिल नहीं हुए हैं।",
   "members_count": "{{count}} सदस्य",
   "communities": "समुदाय",

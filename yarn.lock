@@ -3203,13 +3203,6 @@
     progress-events "^1.0.0"
     uint8arrays "^5.0.2"
 
-"@multiformats/mafmt@^11.0.3":
-  version "11.1.2"
-  resolved "https://registry.yarnpkg.com/@multiformats/mafmt/-/mafmt-11.1.2.tgz#c03ef4022c795b7f230b136f2f974fc263eac4f1"
-  integrity sha512-3n1o5eLU7WzTAPLuz3AodV7Iql6NWf7Ws8fqVaGT7o5nDDabUPYGBm2cZuh3OrqmwyCY61LrNUIsjzivU6UdpQ==
-  dependencies:
-    "@multiformats/multiaddr" "^12.0.0"
-
 "@multiformats/mafmt@^12.1.6":
   version "12.1.6"
   resolved "https://registry.yarnpkg.com/@multiformats/mafmt/-/mafmt-12.1.6.tgz#e7c1831c1e94c94932621826049afc89f3ad43b7"
@@ -3233,7 +3226,7 @@
   dependencies:
     "@multiformats/multiaddr" "^12.0.0"
 
-"@multiformats/multiaddr@^11.0.0", "@multiformats/multiaddr@^11.1.5":
+"@multiformats/multiaddr@^11.1.5":
   version "11.6.1"
   resolved "https://registry.yarnpkg.com/@multiformats/multiaddr/-/multiaddr-11.6.1.tgz#ec46984a298e715e27a398434c087856db5f3185"
   integrity sha512-doST0+aB7/3dGK9+U5y3mtF3jq85KGbke1QiH0KE1F5mGQ9y56mFebTeu2D9FNOm+OT6UHb8Ss8vbSnpGjeLNw==
@@ -3421,69 +3414,6 @@
     uuid "9.0.1"
     viem "1.5.2"
 
-"@plebbit/plebbit-js@https://github.com/plebbit/plebbit-js.git#2fb1b02830f0cc67cabb54f4361e30e7285b195b":
-  version "0.0.3"
-  resolved "https://github.com/plebbit/plebbit-js.git#2fb1b02830f0cc67cabb54f4361e30e7285b195b"
-  dependencies:
-    "@bonfida/spl-name-service" "2.3.8"
-    "@chainsafe/libp2p-gossipsub" "12.0.0"
-    "@chainsafe/libp2p-noise" "15.0.0"
-    "@chainsafe/libp2p-yamux" "6.0.2"
-    "@ensdomains/eth-ens-namehash" "2.0.15"
-    "@keyv/sqlite" "3.6.7"
-    "@libp2p/autonat" "1.0.12"
-    "@libp2p/bootstrap" "10.0.15"
-    "@libp2p/circuit-relay-v2" "^1.0.15"
-    "@libp2p/identify" "1.0.14"
-    "@libp2p/kad-dht" "12.0.7"
-    "@libp2p/mplex" "10.0.15"
-    "@libp2p/peer-id-factory" "4.0.6"
-    "@libp2p/webrtc" "4.0.19"
-    "@libp2p/webtransport" "4.0.19"
-    "@plebbit/plebbit-logger" "github:plebbit/plebbit-logger#355a96d7659ed820047980049dfa627d30d83a69"
-    "@plebbit/proper-lockfile" "github:plebbit/node-proper-lockfile#7fd6332117340c1d3d98dd0afee2d31cc06f72b8"
-    "@types/proper-lockfile" "4.1.2"
-    "@types/uuid" "8.3.4"
-    assert "2.1.0"
-    better-sqlite3 "9.3.0"
-    buffer "6.0.3"
-    captcha-canvas "3.2.1"
-    cbor "9.0.1"
-    debounce "1.2.1"
-    err-code "3.0.1"
-    ethers "6.10.0"
-    ext-name "5.0.0"
-    file-type "16.5.4"
-    hpagent "1.2.0"
-    ipfs-only-hash "4.0.0"
-    is-ipfs "8.0.1"
-    jose "4.11.0"
-    js-sha256 "0.9.0"
-    keyv "4.5.4"
-    knex "3.1.0"
-    kubo-rpc-client "3.0.3"
-    libp2p "1.2.1"
-    libp2p-crypto "0.21.2"
-    limiter-es6-compat "2.1.2"
-    localforage "1.10.0"
-    lodash-es "4.17.21"
-    lru-cache "10.1.0"
-    open-graph-scraper "6.3.3"
-    p-limit "4.0.0"
-    p-timeout "6.1.2"
-    peer-id "0.16.0"
-    probe-image-size "7.2.3"
-    retry "0.13.1"
-    rpc-websockets "7.9.0"
-    safe-stable-stringify "2.4.3"
-    sha1-uint8array "0.10.7"
-    skia-canvas "1.0.0"
-    tiny-typed-emitter "2.1.0"
-    tinycache "1.1.2"
-    ts-custom-error "3.3.1"
-    uuid "9.0.1"
-    viem "1.5.2"
-
 "@plebbit/plebbit-logger@github:plebbit/plebbit-logger#355a96d7659ed820047980049dfa627d30d83a69":
   version "0.0.1"
   uid "355a96d7659ed820047980049dfa627d30d83a69"
@@ -3513,11 +3443,11 @@
     uuid "8.3.2"
     zustand "4.0.0"
 
-"@plebbit/plebbit-react-hooks@https://github.com/plebbit/plebbit-react-hooks.git#a0578ec34971ead21fadbc5b6d51f32833f0a97b":
+"@plebbit/plebbit-react-hooks@https://github.com/plebbit/plebbit-react-hooks.git#63833e978ca25f9846544d32b9c67810af0daf19":
   version "0.0.1"
-  resolved "https://github.com/plebbit/plebbit-react-hooks.git#a0578ec34971ead21fadbc5b6d51f32833f0a97b"
+  resolved "https://github.com/plebbit/plebbit-react-hooks.git#63833e978ca25f9846544d32b9c67810af0daf19"
   dependencies:
-    "@plebbit/plebbit-js" "https://github.com/plebbit/plebbit-js.git#2fb1b02830f0cc67cabb54f4361e30e7285b195b"
+    "@plebbit/plebbit-js" "https://github.com/plebbit/plebbit-js.git#073d5f501ccf9521942d93f6522d1125058c196a"
     "@plebbit/plebbit-logger" "https://github.com/plebbit/plebbit-logger.git"
     assert "2.0.0"
     ethers "5.6.9"
@@ -10077,17 +10007,6 @@ is-interactive@^1.0.0:
   resolved "https://registry.yarnpkg.com/is-interactive/-/is-interactive-1.0.0.tgz#cea6e6ae5c870a7b0a0004070b7b587e0252912e"
   integrity sha512-2HvIEKRoqS62guEC+qBjpvRubdX910WCMuJTZ+I9yvqKU2/12eSL549HMwtabb4oupdj2sMP50k+XJfB/8JE6w==
 
-is-ipfs@8.0.1:
-  version "8.0.1"
-  resolved "https://registry.yarnpkg.com/is-ipfs/-/is-ipfs-8.0.1.tgz#23aefd086d32a7fce7b180bc55bf71313a641415"
-  integrity sha512-hoBSElmPath3aDdtaOpVZsuCh2SXTqvLML+H75S7iDgKdqNmENJ6tsRucP1HLfpqEyZ/uIlj/+ZBxIC/F8B5Eg==
-  dependencies:
-    "@multiformats/mafmt" "^11.0.3"
-    "@multiformats/multiaddr" "^11.0.0"
-    iso-url "^1.1.3"
-    multiformats "^11.0.0"
-    uint8arrays "^4.0.2"
-
 is-lambda@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/is-lambda/-/is-lambda-1.0.1.tgz#3d9877899e6a53efc0160504cde15f82e6f061d5"
@@ -10350,7 +10269,7 @@ iso-random-stream@^2.0.0:
     events "^3.3.0"
     readable-stream "^3.4.0"
 
-iso-url@^1.1.3, iso-url@^1.1.5:
+iso-url@^1.1.5:
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/iso-url/-/iso-url-1.2.1.tgz#db96a49d8d9a64a1c889fc07cc525d093afb1811"
   integrity sha512-9JPDgCN4B7QPkLtYAAOrEuAWvP9rWvR5offAr0/SeF046wIkglqH3VXgYYP6NcsKslH80UIVgmPqNe3j7tG2ng==

@@ -57,3 +57,9 @@
 .optional {
   color: var(--text-info);
 }
+
+@supports (-moz-appearance: none) {
+  .banInput {
+    width: 3.5em;
+  }
+}

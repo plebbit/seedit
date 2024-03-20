@@ -168,7 +168,7 @@
   "show_parent": "vis den henviste post",
   "no_posts": "ingen indlæg",
   "media_url": "medie-URL",
-  "post_locked_info": "Dette indlæg er låst. Du kan ikke kommentere.",
+  "post_locked_info": "Dette indlæg er {{state}}. Du vil ikke kunne kommentere.",
   "no_subscriptions_notice": "Du har endnu ikke tilsluttet dig nogen fællesskab.",
   "members_count": "{{count}} medlemmer",
   "communities": "fællesskab",

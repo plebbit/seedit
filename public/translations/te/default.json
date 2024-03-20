@@ -168,7 +168,7 @@
   "show_parent": "సూచించబడిన పోస్ట్ చూపించు",
   "no_posts": "పోస్టులు లేవు",
   "media_url": "మీడియా URL",
-  "post_locked_info": "ఈ పోస్టు లాక్ చేయబడింది. మీరు వ్యాఖ్యానించలేరు.",
+  "post_locked_info": "ఈ పోస్టు {{state}}. మీరు వ్యాఖ్య చేయలేరు.",
   "no_subscriptions_notice": "మీరు ఇంకా ఏ కమ్యూనిటీలో చేరలేదు.",
   "members_count": "{{count}} సభ్యులు",
   "communities": "సమూహం",

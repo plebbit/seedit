@@ -115,7 +115,7 @@ const App = () => {
             <Route path='/p/all/about' element={<About />} />
 
             <Route path='/p/:subplebbitAddress/c/:commentCid' element={<PostPage />} />
-            <Route path='/p/:subplebbitAddress/c/:commentCid?context=1' element={<PostPage />} />
+            <Route path='/p/:subplebbitAddress/c/:commentCid?context=3' element={<PostPage />} />
             <Route path='/p/:subplebbitAddress/c/:commentCid/about' element={<About />} />
 
             <Route path='/p/:subplebbitAddress/submit' element={<SubmitPage />} />

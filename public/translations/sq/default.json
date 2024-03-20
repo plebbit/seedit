@@ -168,7 +168,7 @@
   "show_parent": "shfaq postën e referuar",
   "no_posts": "asnjë postim",
   "media_url": "media url",
-  "post_locked_info": "Ky post është bllokuar. Nuk do të jeni në gjendje të komentoni.",
+  "post_locked_info": "Ky post është {{state}}. Nuk do të jeni në gjendje të komentoni.",
   "no_subscriptions_notice": "Nuk keni bashkuar akoma ndonjë komunitet.",
   "members_count": "{{count}} anëtarë",
   "communities": "komunitet",

@@ -168,7 +168,7 @@
   "show_parent": "نمایش پست مرجع داده شده",
   "no_posts": "بدون پست",
   "media_url": "آدرس رسانه",
-  "post_locked_info": "این پست قفل شده است. نمی‌توانید نظر دهید.",
+  "post_locked_info": "این پست {{state}} است. شما نمی‌توانید نظر دهید.",
   "no_subscriptions_notice": "هنوز به هیچ انجمنی پیوسته نشده‌اید.",
   "members_count": "{{count}} عضو",
   "communities": "انجمن",
