@@ -1,3 +1,13 @@
+## [0.1.9](https://github.com/plebbit/seedit/compare/v0.1.8...v0.1.9) (2024-03-20)
+
+
+### Bug Fixes
+
+* **mod menu:** ban days input was too long on firefox ([3f780a5](https://github.com/plebbit/seedit/commit/3f780a54ba64e9aaca563cc53bf7bae21a89eeed))
+* **subplebbit settings:** creating a subplebbit would clear all fields even when failing to create ([81de00d](https://github.com/plebbit/seedit/commit/81de00d10be047f95294f373c737fc206790c6cd))
+
+
+
 ## [0.1.8](https://github.com/plebbit/seedit/compare/v0.1.7...v0.1.8) (2024-03-14)
 
 
