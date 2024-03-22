@@ -3,7 +3,7 @@ import styles from './post.module.css';
 import { Link, useLocation, useParams } from 'react-router-dom';
 import { Comment, useAuthorAddress, useAuthorAvatar, useBlock, useComment, useEditedComment, useSubplebbit, useSubscribe } from '@plebbit/plebbit-react-hooks';
 import { useTranslation } from 'react-i18next';
-import { isAllView, isPendingView, isPostView, isSubplebbitView } from '../../lib/utils/view-utils';
+import { isAllView, isPostView, isSubplebbitView } from '../../lib/utils/view-utils';
 import { getCommentMediaInfoMemoized, getHasThumbnail } from '../../lib/utils/media-utils';
 import { getHostname } from '../../lib/utils/url-utils';
 import { getFormattedTimeAgo } from '../../lib/utils/time-utils';
@@ -130,11 +130,9 @@ const Post = ({ index, post = {} }: PostProps) => {
 
   const isInAllView = isAllView(location.pathname);
   const isInPostView = isPostView(location.pathname, params);
-  const isInPendingView = isPendingView(location.pathname, params);
   const isInSubplebbitView = isSubplebbitView(location.pathname, params);
-  const isInPostPage = isInPostView || isInPendingView;
 
-  const [isExpanded, setIsExpanded] = useState(isInPostPage);
+  const [isExpanded, setIsExpanded] = useState(isInPostView);
   const toggleExpanded = () => setIsExpanded(!isExpanded);
 
   const [isEditing, setIsEditing] = useState(false);
