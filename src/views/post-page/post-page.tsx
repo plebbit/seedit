@@ -12,6 +12,7 @@ import useReplies from '../../hooks/use-replies';
 import useStateString from '../../hooks/use-state-string';
 import { isPendingView, isPostContextView } from '../../lib/utils/view-utils';
 import findTopParentCidOfReply from '../../lib/utils/cid-utils';
+import _ from 'lodash';
 
 const PendingPost = ({ commentIndex }: { commentIndex?: number }) => {
   const post = useAccountComment({ commentIndex });
@@ -29,7 +30,7 @@ const PendingPost = ({ commentIndex }: { commentIndex?: number }) => {
 
 const Post = ({ post }: { post: Comment }) => {
   const { t } = useTranslation();
-  const { cid, depth, postCid, replyCount, subplebbitAddress } = post || {};
+  const { cid, deleted, depth, locked, removed, postCid, replyCount, subplebbitAddress } = post || {};
 
   const replies = useReplies(post);
 
@@ -39,11 +40,13 @@ const Post = ({ post }: { post: Comment }) => {
   const stateString = useStateString(post);
   const loadingString = stateString && <div className={styles.stateString}>{stateString !== 'failed' ? <LoadingEllipsis string={stateString} /> : stateString}</div>;
 
+  const lockedState = deleted ? t('deleted') : locked ? t('locked') : removed ? t('removed') : '';
+
   return (
     <>
-      {(post?.locked || post?.removed) && (
+      {(deleted || locked || removed) && (
         <div className={styles.lockedInfobar}>
-          <div className={styles.lockedInfobarText}>{t('post_locked_info')}</div>
+          <div className={styles.lockedInfobarText}>{t('post_locked_info', { state: _.lowerCase(lockedState) })}</div>
         </div>
       )}
       <PostComponent post={post} />
