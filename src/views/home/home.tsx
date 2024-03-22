@@ -33,6 +33,7 @@ const Home = () => {
   const { feed, hasMore, loadMore } = useFeed({
     subplebbitAddresses: subplebbitAddresses || [],
     sortType,
+    postsPerPage: 5,
     filter: timeFilter,
   });
 
