@@ -10,12 +10,11 @@ interface Wallet {
   signature: string;
 }
 
-const getWalletMessageToSign = (authorAddress: string, timestamp: number, address: string): string => {
+const getWalletMessageToSign = (authorAddress: string, timestamp: number): string => {
   const messageToSign = {
     domainSeparator: 'plebbit-author-wallet',
     authorAddress,
     timestamp,
-    address,
   };
   return JSON.stringify(messageToSign);
 };
@@ -57,7 +56,7 @@ const CryptoWalletsForm = ({ account }: { account: Account | undefined }) => {
       return alert('missing address');
     }
     const timestamp = wallet.timestamp || Math.floor(Date.now() / 1000);
-    const messageToSign = getWalletMessageToSign(authorAddress, timestamp, wallet.address);
+    const messageToSign = getWalletMessageToSign(authorAddress, timestamp);
     if (timestamp !== wallet.timestamp) {
       setWalletsArrayProperty(index, 'timestamp', timestamp);
     }

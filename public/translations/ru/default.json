@@ -298,5 +298,6 @@
   "hide_settings": "Скрыть настройки",
   "wallet": "Кошелек",
   "undelete": "Восстановить",
-  "loading_comments": "Загрузка комментариев"
+  "loading_comments": "Загрузка комментариев",
+  "you_blocked_community": "Вы заблокировали это сообщество"
 }

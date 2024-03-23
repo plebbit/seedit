@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import styles from './post.module.css';
 import { Link, useLocation, useParams } from 'react-router-dom';
-import { Comment, useAuthorAddress, useAuthorAvatar, useBlock, useComment, useEditedComment, useSubplebbit, useSubscribe } from '@plebbit/plebbit-react-hooks';
+import { Comment, useAuthorAddress, useBlock, useComment, useEditedComment, useSubplebbit, useSubscribe } from '@plebbit/plebbit-react-hooks';
 import { useTranslation } from 'react-i18next';
-import { isAllView, isPendingView, isPostView, isSubplebbitView } from '../../lib/utils/view-utils';
+import { isAllView, isPostView, isSubplebbitView } from '../../lib/utils/view-utils';
 import { getCommentMediaInfoMemoized, getHasThumbnail } from '../../lib/utils/media-utils';
 import { getHostname } from '../../lib/utils/url-utils';
 import { getFormattedTimeAgo } from '../../lib/utils/time-utils';
@@ -22,26 +22,13 @@ interface PostAuthorProps {
   authorRole: string;
   cid: string;
   displayName: string;
-  imageUrl: string | undefined;
   index?: number;
-  isAvatarDefined: boolean;
   shortAddress: string;
   shortAuthorAddress: string | undefined;
   authorAddressChanged: boolean;
 }
 
-const PostAuthor = ({
-  authorAddress,
-  authorRole,
-  cid,
-  displayName,
-  imageUrl,
-  index,
-  isAvatarDefined,
-  shortAddress,
-  shortAuthorAddress,
-  authorAddressChanged,
-}: PostAuthorProps) => {
+const PostAuthor = ({ authorAddress, authorRole, cid, displayName, index, shortAddress, shortAuthorAddress, authorAddressChanged }: PostAuthorProps) => {
   const isAuthorOwner = authorRole === 'owner';
   const isAuthorAdmin = authorRole === 'admin';
   const isAuthorModerator = authorRole === 'moderator';
@@ -52,14 +39,7 @@ const PostAuthor = ({
   return (
     <>
       <Link to={cid ? `/u/${authorAddress}/c/${cid}` : `/profile/${index}`} className={`${styles.author} ${moderatorClass}`}>
-        {isAvatarDefined ? (
-          <span className={styles.authorAvatar}>
-            <img src={imageUrl} alt='' />
-          </span>
-        ) : (
-          <> </>
-        )}
-        {displayName && <span className={`${styles.displayName} ${moderatorClass}`}>{shortDisplayName} </span>}
+        {displayName && <span className={`${styles.displayName} ${moderatorClass}`}> {shortDisplayName}</span>}{' '}
         <span className={`${styles.authorAddressWrapper} ${moderatorClass}`}>
           <span className={styles.authorAddressHidden}>u/{shortAddress || shortAuthorAddress}</span>
           <span className={`${styles.authorAddressVisible} ${authorAddressChanged && styles.authorAddressChanged}`}>u/{shortAuthorAddress}</span>
@@ -119,7 +99,6 @@ const Post = ({ index, post = {} }: PostProps) => {
   } = post || {};
   const { displayName, shortAddress } = author || {};
   const { shortAuthorAddress, authorAddressChanged } = useAuthorAddress({ comment: post });
-  const { imageUrl } = useAuthorAvatar({ author });
 
   const { t } = useTranslation();
   const params = useParams();
@@ -130,11 +109,9 @@ const Post = ({ index, post = {} }: PostProps) => {
 
   const isInAllView = isAllView(location.pathname);
   const isInPostView = isPostView(location.pathname, params);
-  const isInPendingView = isPendingView(location.pathname, params);
   const isInSubplebbitView = isSubplebbitView(location.pathname, params);
-  const isInPostPage = isInPostView || isInPendingView;
 
-  const [isExpanded, setIsExpanded] = useState(isInPostPage);
+  const [isExpanded, setIsExpanded] = useState(isInPostView);
   const toggleExpanded = () => setIsExpanded(!isExpanded);
 
   const [isEditing, setIsEditing] = useState(false);
@@ -249,9 +226,7 @@ const Post = ({ index, post = {} }: PostProps) => {
                     authorRole={authorRole}
                     cid={cid}
                     displayName={displayName}
-                    imageUrl={imageUrl}
                     index={post?.index}
-                    isAvatarDefined={!!author?.avatar}
                     shortAddress={shortAddress}
                     shortAuthorAddress={shortAuthorAddress}
                     authorAddressChanged={authorAddressChanged}

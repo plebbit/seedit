@@ -298,5 +298,6 @@
   "hide_settings": "設定を非表示",
   "wallet": "ウォレット",
   "undelete": "削除を取り消す",
-  "loading_comments": "コメントを読み込み中"
+  "loading_comments": "コメントを読み込み中",
+  "you_blocked_community": "このコミュニティをブロックしました"
 }

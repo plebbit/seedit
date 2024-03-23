@@ -26,10 +26,10 @@ const Expando = ({ authorEditReason, commentMediaInfo, content, expanded, link, 
 
   let mediaComponent = null;
 
-  if (commentMediaInfo?.type === 'image') {
+  if (commentMediaInfo?.type === 'image' || commentMediaInfo?.type === 'gif') {
     mediaComponent = <img src={commentMediaInfo.url} alt='' />;
   } else if (commentMediaInfo?.type === 'video' && expanded) {
-    mediaComponent = <video src={commentMediaInfo.url} controls />;
+    mediaComponent = <video src={`${commentMediaInfo.url}#t=0.001`} controls />;
   } else if (commentMediaInfo?.type === 'webpage' && commentMediaInfo?.thumbnail) {
     mediaComponent = <img src={commentMediaInfo.thumbnail} alt='' />;
   } else if (commentMediaInfo?.type === 'audio' && expanded) {

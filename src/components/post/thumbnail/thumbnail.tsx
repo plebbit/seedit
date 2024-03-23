@@ -1,6 +1,7 @@
 import styles from './thumbnail.module.css';
 import { Link } from 'react-router-dom';
 import { CommentMediaInfo } from '../../../lib/utils/media-utils';
+import useFetchGifFirstFrame from '../../../hooks/use-fetch-gif-first-frame';
 
 interface ThumbnailProps {
   cid?: string;
@@ -34,15 +35,18 @@ const Thumbnail = ({ cid, commentMediaInfo, expanded = false, isReply = false, l
   const style = hasLinkDimensions ? ({ '--width': displayWidth, '--height': displayHeight } as React.CSSProperties) : {};
 
   let mediaComponent = null;
+  const gifFrameUrl = useFetchGifFirstFrame(commentMediaInfo?.type === 'gif' ? commentMediaInfo.url : undefined);
 
   if (commentMediaInfo?.type === 'image') {
     mediaComponent = <img src={commentMediaInfo.url} alt='' />;
   } else if (commentMediaInfo?.type === 'video') {
-    mediaComponent = commentMediaInfo.thumbnail ? <img src={commentMediaInfo.thumbnail} alt='' /> : <video src={commentMediaInfo.url} />;
+    mediaComponent = commentMediaInfo.thumbnail ? <img src={commentMediaInfo.thumbnail} alt='' /> : <video src={`${commentMediaInfo.url}#t=0.001`} />;
   } else if (commentMediaInfo?.type === 'webpage') {
     mediaComponent = <img src={commentMediaInfo.thumbnail} alt='' />;
   } else if (commentMediaInfo?.type === 'iframe') {
     mediaComponent = iframeThumbnail ? <img src={iframeThumbnail} alt='' /> : null;
+  } else if (commentMediaInfo?.type === 'gif' && gifFrameUrl) {
+    mediaComponent = <img src={gifFrameUrl} alt='' />;
   }
 
   return (

@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useRef } from 'react';
 import { useParams } from 'react-router-dom';
-import { useFeed, useSubplebbit } from '@plebbit/plebbit-react-hooks';
+import { useBlock, useFeed, useSubplebbit } from '@plebbit/plebbit-react-hooks';
 import { Virtuoso, VirtuosoHandle, StateSnapshot } from 'react-virtuoso';
 import { useTranslation } from 'react-i18next';
 import styles from '../home/home.module.css';
@@ -27,6 +27,8 @@ const Subplebbit = () => {
 
   const loadingString = <div className={styles.stateString}>{state === 'failed' ? state : <LoadingEllipsis string={loadingStateString} />}</div>;
 
+  const { blocked } = useBlock({ address: subplebbitAddress });
+
   useEffect(() => {
     document.title = title ? title : shortAddress;
   }, [title, shortAddress]);
@@ -35,7 +37,11 @@ const Subplebbit = () => {
     let footerContent;
 
     if (feed.length === 0) {
-      footerContent = t('no_posts');
+      if (blocked) {
+        footerContent = t('you_blocked_community');
+      } else {
+        footerContent = t('no_posts');
+      }
     }
 
     if (hasMore || subplebbitAddresses.length === 0) {

@@ -66,7 +66,7 @@ const UrlField = () => {
 
   let mediaComponent;
 
-  if (mediaType === 'image') {
+  if (mediaType === 'image' || mediaType === 'gif') {
     mediaComponent = <img src={url} alt='' onError={() => setMediaError(true)} />;
   } else if (mediaType === 'video') {
     mediaComponent = <video src={url} controls />;

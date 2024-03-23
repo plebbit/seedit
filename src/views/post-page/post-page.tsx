@@ -12,6 +12,7 @@ import useReplies from '../../hooks/use-replies';
 import useStateString from '../../hooks/use-state-string';
 import { isPendingView, isPostContextView } from '../../lib/utils/view-utils';
 import findTopParentCidOfReply from '../../lib/utils/cid-utils';
+import _ from 'lodash';
 
 const PendingPost = ({ commentIndex }: { commentIndex?: number }) => {
   const post = useAccountComment({ commentIndex });
@@ -29,7 +30,7 @@ const PendingPost = ({ commentIndex }: { commentIndex?: number }) => {
 
 const Post = ({ post }: { post: Comment }) => {
   const { t } = useTranslation();
-  const { cid, depth, postCid, replyCount, subplebbitAddress } = post || {};
+  const { cid, deleted, depth, locked, removed, postCid, replyCount, subplebbitAddress, timestamp } = post || {};
 
   const replies = useReplies(post);
 
@@ -39,47 +40,51 @@ const Post = ({ post }: { post: Comment }) => {
   const stateString = useStateString(post);
   const loadingString = stateString && <div className={styles.stateString}>{stateString !== 'failed' ? <LoadingEllipsis string={stateString} /> : stateString}</div>;
 
+  const lockedState = deleted ? t('deleted') : locked ? t('locked') : removed ? t('removed') : '';
+
   return (
     <>
-      {(post?.locked || post?.removed) && (
+      {(deleted || locked || removed) && (
         <div className={styles.lockedInfobar}>
-          <div className={styles.lockedInfobarText}>{t('post_locked_info')}</div>
+          <div className={styles.lockedInfobarText}>{t('post_locked_info', { state: _.lowerCase(lockedState) })}</div>
         </div>
       )}
       <PostComponent post={post} />
-      <div className={styles.replyArea}>
-        {!isSingleComment && (
-          <div className={styles.repliesTitle}>
-            <span className={styles.title}>{replyCount !== undefined ? commentCount : <LoadingEllipsis string={t('loading_comments')} />}</span>
-          </div>
-        )}
-        <div className={styles.menuArea}>
-          <div className={styles.spacer}>
-            <span className={styles.dropdownTitle}>{t('reply_sorted_by')}: </span>
-            <div className={styles.dropdown}>
-              <span className={styles.selected}>{t('reply_best')}</span>
+      {timestamp && (
+        <div className={styles.replyArea}>
+          {!isSingleComment && (
+            <div className={styles.repliesTitle}>
+              <span className={styles.title}>{replyCount !== undefined ? commentCount : <LoadingEllipsis string={t('loading_comments')} />}</span>
             </div>
-          </div>
-          <div className={styles.spacer} />
-          {!isSingleComment && replyCount !== undefined && <ReplyForm cid={cid} subplebbitAddress={subplebbitAddress} />}
-          {loadingString && loadingString}
-        </div>
-        {isSingleComment && (
-          <div className={styles.singleCommentInfobar}>
-            <div className={styles.singleCommentInfobarText}>{t('single_comment_notice')}</div>
-            <div className={styles.singleCommentInfobarLink}>
-              <Link to={`/p/${subplebbitAddress}/c/${postCid}`}>{t('single_comment_link')}</Link> →
-            </div>
-          </div>
-        )}
-        <div className={styles.replies}>
-          {isSingleComment ? (
-            <Reply key={`singleComment-${cid}`} reply={post} depth={0} isSingleComment={true} />
-          ) : (
-            replies.map((reply, index) => <Reply key={`${index}${reply.cid}`} reply={reply} depth={depth} />)
           )}
+          <div className={styles.menuArea}>
+            <div className={styles.spacer}>
+              <span className={styles.dropdownTitle}>{t('reply_sorted_by')}: </span>
+              <div className={styles.dropdown}>
+                <span className={styles.selected}>{t('reply_best')}</span>
+              </div>
+            </div>
+            <div className={styles.spacer} />
+            {!isSingleComment && subplebbitAddress && cid && <ReplyForm cid={cid} subplebbitAddress={subplebbitAddress} />}
+            <span className={styles.loadingString}>{loadingString && loadingString}</span>
+          </div>
+          {isSingleComment && (
+            <div className={styles.singleCommentInfobar}>
+              <div className={styles.singleCommentInfobarText}>{t('single_comment_notice')}</div>
+              <div className={styles.singleCommentInfobarLink}>
+                <Link to={`/p/${subplebbitAddress}/c/${postCid}`}>{t('single_comment_link')}</Link> →
+              </div>
+            </div>
+          )}
+          <div className={styles.replies}>
+            {isSingleComment ? (
+              <Reply key={`singleComment-${cid}`} reply={post} depth={0} isSingleComment={true} />
+            ) : (
+              replies.map((reply, index) => <Reply key={`${index}${reply.cid}`} reply={reply} depth={depth} />)
+            )}
+          </div>
         </div>
-      </div>
+      )}
     </>
   );
 };

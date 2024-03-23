@@ -298,5 +298,6 @@
   "hide_settings": "Piilota asetukset",
   "wallet": "Lompakko",
   "undelete": "Palauta",
-  "loading_comments": "Ladataan kommentteja"
+  "loading_comments": "Ladataan kommentteja",
+  "you_blocked_community": "Olet estänyt tämän yhteisön"
 }

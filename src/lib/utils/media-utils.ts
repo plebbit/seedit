@@ -16,6 +16,7 @@ export const getHasThumbnail = (commentMediaInfo: CommentMediaInfo | undefined, 
     commentMediaInfo &&
     (commentMediaInfo.type === 'image' ||
       commentMediaInfo.type === 'video' ||
+      commentMediaInfo.type === 'gif' ||
       (commentMediaInfo.type === 'webpage' && commentMediaInfo.thumbnail) ||
       (commentMediaInfo.type === 'iframe' && iframeThumbnail))
     ? true
@@ -56,6 +57,10 @@ const getCommentMediaInfo = (comment: Comment) => {
       };
     }
 
+    if (mime === 'image/gif') {
+      return { url: comment.link, type: 'gif' };
+    }
+
     if (mime?.startsWith('image')) {
       return { url: comment.link, type: 'image' };
     }
@@ -86,24 +91,8 @@ const getLinkMediaInfo = (link: string) => {
     return;
   }
 
-  const url = new URL(link);
-  const host = url.hostname;
-  let patternThumbnailUrl;
-
-  if (['youtube.com', 'www.youtube.com', 'youtu.be', 'www.youtu.be', 'm.youtube.com'].includes(host)) {
-    const videoId = host === 'youtu.be' ? url.pathname.slice(1) : url.searchParams.get('v');
-    patternThumbnailUrl = `https://img.youtube.com/vi/${videoId}/0.jpg`;
-  } else if (host.includes('streamable.com')) {
-    const videoId = url.pathname.split('/')[1];
-    patternThumbnailUrl = `https://cdn-cf-east.streamable.com/image/${videoId}.jpg`;
-  }
-
-  if (canEmbed(url)) {
-    return {
-      url: link,
-      type: 'iframe',
-      patternThumbnailUrl,
-    };
+  if (mime === 'image/gif') {
+    return { url: link, type: 'gif' };
   }
 
   if (mime?.startsWith('image')) {

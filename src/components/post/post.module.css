@@ -151,12 +151,6 @@
   overflow-x: clip;
 }
 
-@supports (-webkit-appearance: none) {
-  .authorAddressWrapper {
-    overflow-x: unset; /* adds unwanted margin on safari */
-  }
-}
-
 /* use the crypto name as the width of the html element, but hide it and display the verified author address instead */
 .authorAddressHidden {
   visibility: hidden;
@@ -220,20 +214,6 @@
   font-weight: bold;
   font-size: 10px;
   cursor: pointer;
-}
-
-.authorAvatar {
-  width: 18px;
-  display: inline-block;
-  position: relative;
-  padding: 0 1px;
-}
-
-.authorAvatar img {
-  width: 18px;
-  max-height: 18px;
-  position: absolute;
-  bottom: -5px;
 }
 
 .lastClicked {
