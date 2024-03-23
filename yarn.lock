@@ -8913,11 +8913,6 @@ getopts@2.3.0:
   resolved "https://registry.yarnpkg.com/getopts/-/getopts-2.3.0.tgz#71e5593284807e03e2427449d4f6712a268666f4"
   integrity sha512-5eDf9fuSXwxBL6q5HX+dhDj+dslFGWzU5thZ9kNKUkcPtaPdatmUFKwHFrLb/uf/WpA4BHET+AX3Scl56cAjpA==
 
-gifff@^0.0.3:
-  version "0.0.3"
-  resolved "https://registry.yarnpkg.com/gifff/-/gifff-0.0.3.tgz#eceb88b0a9af30078530af9a81aa565049d0308d"
-  integrity sha512-XDs0GChE93dySkN0UCsS0XNiP7T0DNEHMQrXdzV0I7eb3DLDZK5psFKqien9nlTZsdT0zSpUH12qW9SmYznN/Q==
-
 git-raw-commits@^4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/git-raw-commits/-/git-raw-commits-4.0.0.tgz#b212fd2bff9726d27c1283a1157e829490593285"
