@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import styles from './post.module.css';
 import { Link, useLocation, useParams } from 'react-router-dom';
-import { Comment, useAuthorAddress, useAuthorAvatar, useBlock, useComment, useEditedComment, useSubplebbit, useSubscribe } from '@plebbit/plebbit-react-hooks';
+import { Comment, useAuthorAddress, useBlock, useComment, useEditedComment, useSubplebbit, useSubscribe } from '@plebbit/plebbit-react-hooks';
 import { useTranslation } from 'react-i18next';
 import { isAllView, isPostView, isSubplebbitView } from '../../lib/utils/view-utils';
 import { getCommentMediaInfoMemoized, getHasThumbnail } from '../../lib/utils/media-utils';

@@ -298,5 +298,6 @@
   "hide_settings": "隐藏设置",
   "wallet": "钱包",
   "undelete": "取消删除",
-  "loading_comments": "正在加载评论"
+  "loading_comments": "正在加载评论",
+  "you_blocked_community": "您已封锁了此社区"
 }

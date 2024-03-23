@@ -298,5 +298,6 @@
   "hide_settings": "ซ่อนการตั้งค่า",
   "wallet": "กระเป๋าเงิน",
   "undelete": "ยกเลิกการลบ",
-  "loading_comments": "กำลังโหลดความคิดเห็น"
+  "loading_comments": "กำลังโหลดความคิดเห็น",
+  "you_blocked_community": "คุณบล็อกชุมชนนี้แล้ว"
 }
