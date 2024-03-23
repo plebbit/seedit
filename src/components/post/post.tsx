@@ -39,7 +39,7 @@ const PostAuthor = ({ authorAddress, authorRole, cid, displayName, index, shortA
   return (
     <>
       <Link to={cid ? `/u/${authorAddress}/c/${cid}` : `/profile/${index}`} className={`${styles.author} ${moderatorClass}`}>
-        {displayName && <span className={`${styles.displayName} ${moderatorClass}`}> {shortDisplayName} </span>}
+        {displayName && <span className={`${styles.displayName} ${moderatorClass}`}> {shortDisplayName}</span>}{' '}
         <span className={`${styles.authorAddressWrapper} ${moderatorClass}`}>
           <span className={styles.authorAddressHidden}>u/{shortAddress || shortAuthorAddress}</span>
           <span className={`${styles.authorAddressVisible} ${authorAddressChanged && styles.authorAddressChanged}`}>u/{shortAuthorAddress}</span>
