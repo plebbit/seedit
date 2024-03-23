@@ -39,6 +39,10 @@
   margin-right: 15px;
 }
 
+.loadingString {
+  padding: 5px;
+}
+
 .dropdown {
   display: inline;
   position: relative;
