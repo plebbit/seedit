@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { Virtuoso, VirtuosoHandle, StateSnapshot } from 'react-virtuoso';
 import { useAccount, useFeed } from '@plebbit/plebbit-react-hooks';
-import { Trans, useTranslation } from 'react-i18next';
+import { useTranslation } from 'react-i18next';
 import styles from './home.module.css';
 import LoadingEllipsis from '../../components/loading-ellipsis';
 import Post from '../../components/post';
@@ -38,39 +38,19 @@ const Home = () => {
   });
 
   let loadingStateString = useFeedStateString(subplebbitAddresses) || t('loading');
-
   const loadingString = (
     <div className={styles.stateString}>
-      {subplebbitAddresses && subplebbitAddresses.length === 0 ? (
-        <div>
-          <Trans
-            i18nKey='no_communities_found'
-            components={[<a href='https://github.com/plebbit/temporary-default-subplebbits'>https://github.com/plebbit/temporary-default-subplebbits</a>]}
-          />
-          <br />
-          {t('connect_community_notice')}
-        </div>
-      ) : (
-        <LoadingEllipsis string={loadingStateString} />
-      )}
+      <LoadingEllipsis string={loadingStateString} />
     </div>
   );
-
-  useEffect(() => {
-    document.title = `Seedit`;
-  }, [t]);
-
   const Footer = () => {
     let footerContent;
-
     if (feed.length === 0) {
       footerContent = t('no_posts');
     }
-
     if (hasMore || (subplebbitAddresses && subplebbitAddresses.length === 0)) {
       footerContent = loadingString;
     }
-
     return <div className={styles.footer}>{footerContent}</div>;
   };
 
@@ -89,6 +69,10 @@ const Home = () => {
   }, [sortType, timeFilterName]);
 
   const lastVirtuosoState = lastVirtuosoStates?.[sortType + timeFilterName];
+
+  useEffect(() => {
+    document.title = `Seedit`;
+  }, [t]);
 
   return (
     <div>
