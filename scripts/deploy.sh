@@ -37,10 +37,10 @@ for SEEDIT_PREVIOUS_VERSION in $SEEDIT_PREVIOUS_VERSIONS
 do
   # download previous version
   SEEDIT_PREVIOUS_VERSION_HTML_NAME="seedit-html-\$SEEDIT_PREVIOUS_VERSION"
-  echo \$SEEDIT_PREVIOUS_VERSION_HTML_NAME
-  wget https://github.com/plebbit/seedit/releases/download/v\$SEEDIT_PREVIOUS_VERSION/\$SEEDIT_PREVIOUS_VERSION_HTML_NAME.zip
+  echo downloading \$SEEDIT_PREVIOUS_VERSION_HTML_NAME...
+  wget --quiet https://github.com/plebbit/seedit/releases/download/v\$SEEDIT_PREVIOUS_VERSION/\$SEEDIT_PREVIOUS_VERSION_HTML_NAME.zip
   # extract previous version html
-  unzip \$SEEDIT_PREVIOUS_VERSION_HTML_NAME.zip
+  unzip -qq \$SEEDIT_PREVIOUS_VERSION_HTML_NAME.zip
   rm \$SEEDIT_PREVIOUS_VERSION_HTML_NAME.zip
   mv \$SEEDIT_PREVIOUS_VERSION_HTML_NAME \$SEEDIT_PREVIOUS_VERSION
 done
