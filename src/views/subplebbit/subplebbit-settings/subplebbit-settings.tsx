@@ -924,9 +924,11 @@ const SubplebbitSettings = () => {
 
   return (
     <div className={styles.content}>
-      <div className={styles.sidebar}>
-        <Sidebar address={subplebbitAddress} createdAt={createdAt} description={description} roles={roles} rules={rules} title={title} updatedAt={updatedAt} />
-      </div>
+      {!isInCreateSubplebbitView && (
+        <div className={styles.sidebar}>
+          <Sidebar address={subplebbitAddress} createdAt={createdAt} description={description} roles={roles} rules={rules} title={title} updatedAt={updatedAt} />
+        </div>
+      )}
       {/* subplebbit.settings is private, only shows to the sub owner */}
       {isReadOnly && <div className={styles.infobar}>{t('owner_settings_notice')}</div>}
       <Title isReadOnly={isReadOnly} />
