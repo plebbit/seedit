@@ -2,6 +2,7 @@ import { Comment } from '@plebbit/plebbit-react-hooks';
 import extName from 'ext-name';
 import { canEmbed } from '../../components/post/embed';
 import memoize from 'memoizee';
+import { isValidURL } from './url-utils';
 
 export interface CommentMediaInfo {
   url: string;
@@ -23,100 +24,75 @@ export const getHasThumbnail = (commentMediaInfo: CommentMediaInfo | undefined, 
     : false;
 };
 
-const getCommentMediaInfo = (comment: Comment) => {
+const isCustomYoutubeUrl = (url: URL): boolean => {
+  return url.host.startsWith('yt.') && url.pathname.includes('/watch') && url.searchParams.has('v');
+};
+
+const getYouTubeVideoId = (url: URL): string | null => {
+  if (url.host.includes('youtu.be')) {
+    return url.pathname.slice(1);
+  } else if (url.searchParams.has('v')) {
+    return url.searchParams.get('v');
+  } else if (isCustomYoutubeUrl(url)) {
+    return url.searchParams.get('v');
+  }
+  return null;
+};
+
+const getPatternThumbnailUrl = (url: URL): string | undefined => {
+  const videoId = getYouTubeVideoId(url);
+  if (videoId) {
+    return `https://img.youtube.com/vi/${videoId}/0.jpg`;
+  }
+  if (url.host.includes('streamable.com')) {
+    const videoId = url.pathname.split('/')[1];
+    return `https://cdn-cf-east.streamable.com/image/${videoId}.jpg`;
+  }
+};
+
+const getLinkMediaInfo = (link: string): CommentMediaInfo | undefined => {
+  if (!isValidURL(link)) {
+    return;
+  }
+  const url = new URL(link);
+  let patternThumbnailUrl: string | undefined;
+  let type: string = 'webpage';
+  let mime: string | undefined;
+
+  try {
+    mime = extName(url.pathname.slice(url.pathname.lastIndexOf('/') + 1))[0]?.mime;
+    if (mime) {
+      if (mime.startsWith('image')) {
+        type = mime === 'image/gif' ? 'gif' : 'image';
+      } else if (mime.startsWith('video')) {
+        type = 'video';
+      } else if (mime.startsWith('audio')) {
+        type = 'audio';
+      }
+    }
+
+    if (canEmbed(url) || isCustomYoutubeUrl(url)) {
+      type = 'iframe';
+      patternThumbnailUrl = getPatternThumbnailUrl(url);
+    }
+  } catch (e) {
+    console.error(e);
+  }
+
+  return { url: link, type, patternThumbnailUrl };
+};
+
+const getCommentMediaInfo = (comment: Comment): CommentMediaInfo | undefined => {
   if (!comment?.thumbnailUrl && !comment?.link) {
     return;
   }
-
-  if (comment?.link) {
-    // Check for common dynamic image URL patterns
-    if (comment.link.includes('_next/image')) {
-      // Next.js Image component
-      return { url: comment.link, type: 'image' };
-    }
-
-    let mime: string | undefined;
-    try {
-      mime = extName(new URL(comment.link).pathname.toLowerCase().replace('/', ''))[0]?.mime;
-    } catch (e) {
-      return;
-    }
-
-    const url = new URL(comment.link);
-    const host = url.hostname;
-    let patternThumbnailUrl;
-
-    if (['youtube.com', 'www.youtube.com', 'youtu.be', 'www.youtu.be', 'm.youtube.com'].includes(host)) {
-      const videoId = host === 'youtu.be' ? url.pathname.slice(1) : url.searchParams.get('v');
-      patternThumbnailUrl = `https://img.youtube.com/vi/${videoId}/0.jpg`;
-    } else if (host.includes('streamable.com')) {
-      const videoId = url.pathname.split('/')[1];
-      patternThumbnailUrl = `https://cdn-cf-east.streamable.com/image/${videoId}.jpg`;
-    }
-
-    if (canEmbed(url)) {
-      return {
-        url: comment.link,
-        type: 'iframe',
-        thumbnail: comment.thumbnailUrl,
-        patternThumbnailUrl,
-      };
-    }
-
-    if (mime === 'image/gif') {
-      return { url: comment.link, type: 'gif' };
-    }
-
-    if (mime?.startsWith('image')) {
-      return { url: comment.link, type: 'image' };
-    }
-    if (mime?.startsWith('video')) {
-      return { url: comment.link, type: 'video', thumbnail: comment.thumbnailUrl };
-    }
-    if (mime?.startsWith('audio')) {
-      return { url: comment.link, type: 'audio' };
-    }
-
-    if (comment?.thumbnailUrl && comment?.thumbnailUrl !== comment?.link) {
-      return { url: comment.link, type: 'webpage', thumbnail: comment.thumbnailUrl };
-    }
-
-    if (comment?.link) {
-      return { url: comment.link, type: 'webpage' };
-    }
+  const linkInfo = comment.link ? getLinkMediaInfo(comment.link) : undefined;
+  if (linkInfo) {
+    linkInfo.thumbnail = comment.thumbnailUrl || linkInfo.thumbnail;
+    return linkInfo;
   }
+  return;
 };
 
 export const getCommentMediaInfoMemoized = memoize(getCommentMediaInfo, { max: 1000 });
-
-const getLinkMediaInfo = (link: string) => {
-  // Check for common dynamic image URL patterns
-  if (link.includes('_next/image')) {
-    // Next.js Image component
-    return { url: link, type: 'image' };
-  }
-
-  let mime: string | undefined;
-  try {
-    mime = extName(new URL(link).pathname.toLowerCase().replace('/', ''))[0]?.mime;
-  } catch (e) {
-    return;
-  }
-
-  if (mime === 'image/gif') {
-    return { url: link, type: 'gif' };
-  }
-
-  if (mime?.startsWith('image')) {
-    return { url: link, type: 'image' };
-  }
-  if (mime?.startsWith('video')) {
-    return { url: link, type: 'video' };
-  }
-  if (mime?.startsWith('audio')) {
-    return { url: link, type: 'audio' };
-  }
-  return { url: link, type: 'webpage' };
-};
-
 export const getLinkMediaInfoMemoized = memoize(getLinkMediaInfo, { max: 1000 });
