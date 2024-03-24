@@ -29,9 +29,15 @@ const getCommentMediaInfo = (comment: Comment) => {
   }
 
   if (comment?.link) {
+    // Check for common dynamic image URL patterns
+    if (comment.link.includes('_next/image')) {
+      // Next.js Image component
+      return { url: comment.link, type: 'image' };
+    }
+
     let mime: string | undefined;
     try {
-      mime = extName(new URL(comment?.link).pathname.toLowerCase().replace('/', ''))[0]?.mime;
+      mime = extName(new URL(comment.link).pathname.toLowerCase().replace('/', ''))[0]?.mime;
     } catch (e) {
       return;
     }
@@ -84,6 +90,12 @@ const getCommentMediaInfo = (comment: Comment) => {
 export const getCommentMediaInfoMemoized = memoize(getCommentMediaInfo, { max: 1000 });
 
 const getLinkMediaInfo = (link: string) => {
+  // Check for common dynamic image URL patterns
+  if (link.includes('_next/image')) {
+    // Next.js Image component
+    return { url: link, type: 'image' };
+  }
+
   let mime: string | undefined;
   try {
     mime = extName(new URL(link).pathname.toLowerCase().replace('/', ''))[0]?.mime;
