@@ -10,13 +10,12 @@
   height: 70px;
 }
 
-.emptyAvatar {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  height: 100%;
-  cursor: pointer;
+.settingsBox {
+  border: 1px solid var(--border-contrast);
+  border-radius: 7px;
+  padding: 7px;
+  position: relative;
+  display: inline-block;
 }
 
 .avatarSettingsForm {
@@ -24,13 +23,13 @@
 }
 
 .avatarSettingsForm input {
-  margin-bottom: 10px;
   width: 200px;
   padding: 2px;
   box-shadow: var(--box-shadow-input);
 }
 
 .avatarSettingInput input {
+  margin-bottom: 10px;
   display: block;
 }
 
@@ -60,7 +59,8 @@
 }
 
 .state {
-  padding-top: 10px;
+  padding: 10px 0;
+  max-width: 300px;
 }
 
 .copyMessage a {

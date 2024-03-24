@@ -6,10 +6,9 @@ import { Trans, useTranslation } from 'react-i18next';
 
 interface AvatarSettingsProps {
   avatar?: any;
-  showSettings?: () => void;
 }
 
-const AvatarPreview = ({ avatar, showSettings }: AvatarSettingsProps) => {
+const AvatarPreview = ({ avatar }: AvatarSettingsProps) => {
   const account = useAccount();
   let author = useMemo(() => ({ ...account?.author, avatar }), [account, avatar]);
 
@@ -29,9 +28,7 @@ const AvatarPreview = ({ avatar, showSettings }: AvatarSettingsProps) => {
 
   return (
     <>
-      <div className={styles.avatar} onClick={showSettings}>
-        {imageUrl && state !== 'initializing' && <img src={imageUrl} alt='' />}
-      </div>
+      <div className={styles.avatar}>{imageUrl && state !== 'initializing' && <img src={imageUrl} alt='' />}</div>
       {state !== 'succeeded' && account?.author?.avatar && (
         <div className={styles.state}>
           {stateText} {error?.message}
@@ -120,85 +117,90 @@ const AvatarSettings = () => {
 
   return (
     <div className={styles.avatarSettings}>
-      <AvatarPreview avatar={avatar} showSettings={() => setShowSettings(!showSettings)} />
-      {showSettings && (
-        <div className={styles.avatarSettingsForm}>
-          <div className={styles.avatarSettingInput}>
-            <span className={styles.settingTitle}>{t('chain_ticker')}</span>
-            <input
-              type='text'
-              placeholder='eth/sol/avax'
-              autoCorrect='off'
-              autoComplete='off'
-              spellCheck='false'
-              defaultValue={account?.author?.avatar?.chainTicker}
-              onChange={(e) => setChainTicker(e.target.value)}
-            />
-          </div>
-          <div className={styles.avatarSettingInput}>
-            <span className={styles.settingTitle}>
+      <AvatarPreview avatar={avatar} />
+      <div className={styles.settingsBox}>
+        <button className={styles.showSettings} onClick={() => setShowSettings(!showSettings)}>
+          {showSettings ? t('hide_settings') : t('show_settings')}
+        </button>
+        {showSettings && (
+          <div className={styles.avatarSettingsForm}>
+            <div className={styles.avatarSettingInput}>
+              <span className={styles.settingTitle}>{t('chain_ticker')}</span>
+              <input
+                type='text'
+                placeholder='eth/sol/avax'
+                autoCorrect='off'
+                autoComplete='off'
+                spellCheck='false'
+                defaultValue={account?.author?.avatar?.chainTicker}
+                onChange={(e) => setChainTicker(e.target.value)}
+              />
+            </div>
+            <div className={styles.avatarSettingInput}>
+              <span className={styles.settingTitle}>
+                <Trans
+                  i18nKey='token_address_whitelist'
+                  shouldUnescape={true}
+                  components={{
+                    1: (
+                      <Link
+                        to='https://github.com/plebbit/plebbit-react-hooks/blob/557cc3f40b5933a00553ed9c0bc310d2cd7a3b52/src/hooks/authors/author-avatars.ts#L133'
+                        target='_blank'
+                        rel='noopener noreferrer'
+                      />
+                    ),
+                  }}
+                />
+              </span>
+              <input
+                type='text'
+                placeholder='0x...'
+                autoCorrect='off'
+                autoComplete='off'
+                spellCheck='false'
+                defaultValue={account?.author?.avatar?.address}
+                onChange={(e) => setTokenAddress(e.target.value)}
+              />
+            </div>
+            <div className={styles.avatarSettingInput}>
+              <span className={styles.settingTitle}>{t('token_id')}</span>
+              <input
+                type='text'
+                placeholder='Token ID'
+                autoCorrect='off'
+                autoComplete='off'
+                spellCheck='false'
+                defaultValue={account?.author?.avatar?.id}
+                onChange={(e) => setTokenId(e.target.value)}
+              />
+            </div>
+            <div className={styles.copyMessage}>
               <Trans
-                i18nKey='token_address_whitelist'
-                shouldUnescape={true}
+                i18nKey='copy_message_etherscan'
+                values={{ copy: hasCopied ? t('copied') : t('copy') }}
                 components={{
-                  1: (
-                    <Link
-                      to='https://github.com/plebbit/plebbit-react-hooks/blob/557cc3f40b5933a00553ed9c0bc310d2cd7a3b52/src/hooks/authors/author-avatars.ts#L133'
-                      target='_blank'
-                      rel='noopener noreferrer'
-                    />
-                  ),
+                  1: <button onClick={copyMessageToSign} />,
+                  // eslint-disable-next-line
+                  2: <a href='https://etherscan.io/verifiedSignatures' target='_blank' rel='noopener noreferrer' />,
                 }}
               />
-            </span>
-            <input
-              type='text'
-              placeholder='0x...'
-              autoCorrect='off'
-              autoComplete='off'
-              spellCheck='false'
-              defaultValue={account?.author?.avatar?.address}
-              onChange={(e) => setTokenAddress(e.target.value)}
-            />
+            </div>
+            <div className={styles.pasteSignature}>
+              <span className={styles.settingTitle}>{t('paste_signature')}</span>
+              <input
+                type='text'
+                placeholder='0x...'
+                autoCorrect='off'
+                autoComplete='off'
+                spellCheck='false'
+                defaultValue={account?.author?.avatar?.signature?.signature}
+                onChange={(e) => setSignature(e.target.value)}
+              />
+              <button onClick={save}>{t('save')}</button>
+            </div>
           </div>
-          <div className={styles.avatarSettingInput}>
-            <span className={styles.settingTitle}>{t('token_id')}</span>
-            <input
-              type='text'
-              placeholder='Token ID'
-              autoCorrect='off'
-              autoComplete='off'
-              spellCheck='false'
-              defaultValue={account?.author?.avatar?.id}
-              onChange={(e) => setTokenId(e.target.value)}
-            />
-          </div>
-          <div className={styles.copyMessage}>
-            <Trans
-              i18nKey='copy_message_etherscan'
-              values={{ copy: hasCopied ? t('copied') : t('copy') }}
-              components={{
-                1: <button onClick={copyMessageToSign} />,
-                // eslint-disable-next-line
-                2: <a href='https://etherscan.io/verifiedSignatures' target='_blank' rel='noopener noreferrer' />,
-              }}
-            />
-          </div>
-          <div className={styles.pasteSignature}>
-            <span className={styles.settingTitle}>{t('paste_signature')}</span>
-            <input
-              type='text'
-              placeholder='0x...'
-              autoCorrect='off'
-              autoComplete='off'
-              spellCheck='false'
-              defaultValue={account?.author?.avatar?.signature?.signature}
-              onChange={(e) => setSignature(e.target.value)}
-            />
-            <button onClick={save}>{t('save')}</button>
-          </div>
-        </div>
-      )}
+        )}
+      </div>
     </div>
   );
 };
