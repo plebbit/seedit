@@ -299,5 +299,6 @@
   "wallet": "Lompakko",
   "undelete": "Palauta",
   "loading_comments": "Ladataan kommentteja",
-  "you_blocked_community": "Olet estänyt tämän yhteisön"
+  "you_blocked_community": "Olet estänyt tämän yhteisön",
+  "show": "näyttää"
 }

@@ -299,5 +299,6 @@
   "wallet": "Peněženka",
   "undelete": "Obnovit smazání",
   "loading_comments": "Načítání komentářů",
-  "you_blocked_community": "Zablokovali jste tuto komunitu"
+  "you_blocked_community": "Zablokovali jste tuto komunitu",
+  "show": "ukázat"
 }

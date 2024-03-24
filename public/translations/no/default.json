@@ -299,5 +299,6 @@
   "wallet": "Lommebok",
   "undelete": "Gjenopprette",
   "loading_comments": "Laster inn kommentarer",
-  "you_blocked_community": "Du har blokkert dette fellesskapet"
+  "you_blocked_community": "Du har blokkert dette fellesskapet",
+  "show": "vise"
 }

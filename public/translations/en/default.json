@@ -299,5 +299,6 @@
   "wallet": "Wallet",
   "undelete": "Undelete",
   "loading_comments": "Loading comments",
-  "you_blocked_community": "You blocked this community"
+  "you_blocked_community": "You blocked this community",
+  "show": "show"
 }

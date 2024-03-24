@@ -5,18 +5,13 @@
   cursor: pointer;
 }
 
+.avatarPreview {
+  display: inline-block;
+}
+
 .avatar img {
   width: 70px;
   height: 70px;
-}
-
-.settingsBox {
-  margin-top: 5px;
-  border: 1px solid var(--border-contrast);
-  border-radius: 7px;
-  padding: 7px;
-  position: relative;
-  display: inline-block;
 }
 
 .avatarSettingsForm {
@@ -60,7 +55,7 @@
 }
 
 .state {
-  padding: 10px 0;
+  padding-top: 10px;
   max-width: 300px;
 }
 

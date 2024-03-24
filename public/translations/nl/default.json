@@ -299,5 +299,6 @@
   "wallet": "Wallet",
   "undelete": "Herstellen",
   "loading_comments": "Reacties laden",
-  "you_blocked_community": "U hebt deze gemeenschap geblokkeerd"
+  "you_blocked_community": "U hebt deze gemeenschap geblokkeerd",
+  "show": "tonen"
 }

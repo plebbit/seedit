@@ -81,7 +81,7 @@ const CryptoWalletsForm = ({ account }: { account: Account | undefined }) => {
       </div>
       <div key={index} className={styles.walletBox}>
         <button className={styles.toggleWallet} onClick={() => toggleShowWallet(index)}>
-          {showWallet[index] ? t('hide_settings') : t('show_settings')}
+          {showWallet[index] ? t('hide') : t('show')}
         </button>
         <button onClick={() => setWalletsArray([...walletsArray.slice(0, index), ...walletsArray.slice(index + 1)])}>{t('remove')}</button>
         <div className={`${showWallet[index] ? styles.show : styles.hide}`}>

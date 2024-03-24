@@ -299,5 +299,6 @@
   "wallet": "Wallet",
   "undelete": "Annulla eliminazione",
   "loading_comments": "Caricamento commenti",
-  "you_blocked_community": "Hai bloccato questa comunità"
+  "you_blocked_community": "Hai bloccato questa comunità",
+  "show": "mostra"
 }

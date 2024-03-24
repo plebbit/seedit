@@ -299,5 +299,6 @@
   "wallet": "Wallet",
   "undelete": "Wiederherstellen",
   "loading_comments": "Lade Kommentare",
-  "you_blocked_community": "Du hast diese Gemeinschaft blockiert"
+  "you_blocked_community": "Du hast diese Gemeinschaft blockiert",
+  "show": "zeigen"
 }

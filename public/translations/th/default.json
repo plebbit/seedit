@@ -299,5 +299,6 @@
   "wallet": "กระเป๋าเงิน",
   "undelete": "ยกเลิกการลบ",
   "loading_comments": "กำลังโหลดความคิดเห็น",
-  "you_blocked_community": "คุณบล็อกชุมชนนี้แล้ว"
+  "you_blocked_community": "คุณบล็อกชุมชนนี้แล้ว",
+  "show": "แสดง"
 }
