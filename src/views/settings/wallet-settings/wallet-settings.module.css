@@ -2,8 +2,8 @@
   margin-bottom: 7px;
 }
 
-.saveWallets{
-  margin-top: 7px;
+.save {
+  margin-left: 5px;
 }
 
 .walletTitle {
@@ -43,10 +43,6 @@
 
 .copyMessage a:hover {
   text-decoration: underline;
-}
-
-.pasteSignature button {
-  margin-left: 5px;
 }
 
 .show {

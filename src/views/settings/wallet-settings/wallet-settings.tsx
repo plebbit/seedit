@@ -74,6 +74,24 @@ const CryptoWalletsForm = ({ account }: { account: Account | undefined }) => {
     setShowWallet(newShowWallet);
   };
 
+  const save = () => {
+    const wallets: { [key: string]: { address: string; timestamp: number; signature: { signature: string; type: string } } } = {};
+    walletsArray.forEach((wallet) => {
+      if (wallet.chainTicker && wallet.address && wallet.signature && wallet.timestamp) {
+        wallets[wallet.chainTicker] = {
+          address: wallet.address,
+          timestamp: wallet.timestamp,
+          signature: {
+            signature: wallet.signature,
+            type: 'eip191',
+          },
+        };
+      }
+    });
+    setAccount({ ...account, author: { ...account.author, wallets } });
+    alert(t('saved'));
+  };
+
   const walletsInputs = walletsArray.map((wallet, index) => (
     <>
       <div className={styles.walletTitle}>
@@ -107,29 +125,14 @@ const CryptoWalletsForm = ({ account }: { account: Account | undefined }) => {
           <div className={styles.walletField}>
             <div className={styles.walletFieldTitle}>{t('paste_signature')}</div>
             <input onChange={(e) => setWalletsArrayProperty(index, 'signature', e.target.value)} value={wallet.signature} placeholder='0x...' />
+            <button className={styles.save} onClick={save}>
+              {t('save')}
+            </button>
           </div>
         </div>
       </div>
     </>
   ));
-
-  const save = () => {
-    const wallets: { [key: string]: { address: string; timestamp: number; signature: { signature: string; type: string } } } = {};
-    walletsArray.forEach((wallet) => {
-      if (wallet.chainTicker && wallet.address && wallet.signature && wallet.timestamp) {
-        wallets[wallet.chainTicker] = {
-          address: wallet.address,
-          timestamp: wallet.timestamp,
-          signature: {
-            signature: wallet.signature,
-            type: 'eip191',
-          },
-        };
-      }
-    });
-    setAccount({ ...account, author: { ...account.author, wallets } });
-    alert(t('saved'));
-  };
 
   return (
     <>
@@ -137,11 +140,6 @@ const CryptoWalletsForm = ({ account }: { account: Account | undefined }) => {
         <Trans i18nKey='add_wallet' components={{ 1: <button onClick={() => setWalletsArray([...walletsArray, defaultWalletObject])} /> }} />
       </div>
       {walletsInputs}
-      {walletsArray.length > 0 && (
-        <div className={styles.saveWallets}>
-          <Trans i18nKey='save_wallets' values={{ save: t('save') }} components={{ 1: <button onClick={save} /> }} />
-        </div>
-      )}
     </>
   );
 };
