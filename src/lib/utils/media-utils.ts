@@ -24,8 +24,16 @@ export const getHasThumbnail = (commentMediaInfo: CommentMediaInfo | undefined, 
     : false;
 };
 
-export const isCustomYoutubeUrl = (url: URL): boolean => {
-  return url.host.startsWith('yt.') && url.pathname.includes('/watch') && url.searchParams.has('v');
+// check for custom youtube urls like invidious instances
+let customUrlCache = new Map();
+export const isCustomYoutubeUrl = (parsedUrl: URL): boolean => {
+  const urlString = parsedUrl.toString();
+  if (customUrlCache.has(urlString)) {
+    return customUrlCache.get(urlString);
+  }
+  const isCustom = parsedUrl.host.startsWith('yt.') && parsedUrl.pathname.includes('/watch') && parsedUrl.searchParams.has('v');
+  customUrlCache.set(urlString, isCustom);
+  return isCustom;
 };
 
 const getYouTubeVideoId = (url: URL): string | null => {
