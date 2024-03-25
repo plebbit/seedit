@@ -59,6 +59,12 @@ const getLinkMediaInfo = (link: string): CommentMediaInfo | undefined => {
   let type: string = 'webpage';
   let mime: string | undefined;
 
+  // Check for common dynamic image URL patterns
+  if (link.includes('/_next/image?')) {
+    // Next.js Image component
+    return { url: link, type: 'image' };
+  }
+
   try {
     mime = extName(url.pathname.slice(url.pathname.lastIndexOf('/') + 1))[0]?.mime;
     if (mime) {
