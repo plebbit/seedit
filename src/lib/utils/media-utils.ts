@@ -24,7 +24,7 @@ export const getHasThumbnail = (commentMediaInfo: CommentMediaInfo | undefined, 
     : false;
 };
 
-const isCustomYoutubeUrl = (url: URL): boolean => {
+export const isCustomYoutubeUrl = (url: URL): boolean => {
   return url.host.startsWith('yt.') && url.pathname.includes('/watch') && url.searchParams.has('v');
 };
 
