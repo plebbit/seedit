@@ -7,7 +7,7 @@ interface EmbedProps {
 const Embed = ({ url }: EmbedProps) => {
   const parsedUrl = new URL(url);
 
-  if (youtubeHosts.has(parsedUrl.host)) {
+  if (youtubeHosts.has(parsedUrl.host) || parsedUrl.host.startsWith('yt.')) {
     return <YoutubeEmbed parsedUrl={parsedUrl} />;
   }
   if (xHosts.has(parsedUrl.host)) {
@@ -46,23 +46,26 @@ interface EmbedComponentProps {
 const youtubeHosts = new Set<string>(['youtube.com', 'www.youtube.com', 'youtu.be', 'www.youtu.be', 'm.youtube.com']);
 
 const YoutubeEmbed = ({ parsedUrl }: EmbedComponentProps) => {
-  let youtubeId;
-  if (parsedUrl.host.endsWith('youtu.be')) {
-    youtubeId = parsedUrl.pathname.replaceAll('/', '');
-  } else {
-    youtubeId = parsedUrl.searchParams.get('v');
+  let youtubeId = parsedUrl.searchParams.get('v');
+
+  if (!youtubeId && parsedUrl.host.includes('youtu.be')) {
+    youtubeId = parsedUrl.pathname.substring(1);
   }
-  return (
-    <iframe
-      className={styles.videoEmbed}
-      height='100%'
-      width='100%'
-      allow='accelerometer; encrypted-media; gyroscope; picture-in-picture; web-share'
-      allowFullScreen
-      title={parsedUrl.href}
-      src={`https://www.youtube-nocookie.com/embed/${youtubeId}`}
-    />
-  );
+
+  if (youtubeId) {
+    return (
+      <iframe
+        className={styles.videoEmbed}
+        height='100%'
+        width='100%'
+        allow='accelerometer; encrypted-media; gyroscope; picture-in-picture; web-share'
+        allowFullScreen
+        title={parsedUrl.href}
+        src={`https://www.youtube-nocookie.com/embed/${youtubeId}`}
+      />
+    );
+  }
+  return null;
 };
 
 const xHosts = new Set<string>(['twitter.com', 'www.twitter.com', 'x.com', 'www.x.com']);

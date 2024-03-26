@@ -299,5 +299,6 @@
   "wallet": "Carteira",
   "undelete": "Recuperar",
   "loading_comments": "Carregando comentários",
-  "you_blocked_community": "Você bloqueou esta comunidade"
+  "you_blocked_community": "Você bloqueou esta comunidade",
+  "show": "mostrar"
 }

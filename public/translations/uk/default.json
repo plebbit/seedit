@@ -299,5 +299,6 @@
   "wallet": "Гаманець",
   "undelete": "Скасувати видалення",
   "loading_comments": "Завантаження коментарів",
-  "you_blocked_community": "Ви заблокували цю спільноту"
+  "you_blocked_community": "Ви заблокували цю спільноту",
+  "show": "показати"
 }

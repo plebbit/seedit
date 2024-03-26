@@ -5,18 +5,13 @@
   cursor: pointer;
 }
 
+.avatarPreview {
+  display: inline-block;
+}
+
 .avatar img {
   width: 70px;
   height: 70px;
-}
-
-.emptyAvatar {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  height: 100%;
-  cursor: pointer;
 }
 
 .avatarSettingsForm {
@@ -24,13 +19,13 @@
 }
 
 .avatarSettingsForm input {
-  margin-bottom: 10px;
   width: 200px;
   padding: 2px;
   box-shadow: var(--box-shadow-input);
 }
 
 .avatarSettingInput input {
+  margin-bottom: 10px;
   display: block;
 }
 
@@ -61,6 +56,7 @@
 
 .state {
   padding-top: 10px;
+  max-width: 300px;
 }
 
 .copyMessage a {

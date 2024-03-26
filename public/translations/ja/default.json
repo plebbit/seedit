@@ -299,5 +299,6 @@
   "wallet": "ウォレット",
   "undelete": "削除を取り消す",
   "loading_comments": "コメントを読み込み中",
-  "you_blocked_community": "このコミュニティをブロックしました"
+  "you_blocked_community": "このコミュニティをブロックしました",
+  "show": "表示"
 }

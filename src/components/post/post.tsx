@@ -220,7 +220,7 @@ const Post = ({ index, post = {} }: PostProps) => {
                 )}
                 <div className={styles.tagline}>
                   {t('submitted')} {getFormattedTimeAgo(timestamp)}{' '}
-                  {edit && <span className={styles.timeEdit}>{t('last_edited', { timestamp: getFormattedTimeAgo(edit.timestamp) })}</span>} {t('post_by')}
+                  {edit && isInPostView && <span className={styles.timeEdit}>{t('last_edited', { timestamp: getFormattedTimeAgo(edit.timestamp) })}</span>} {t('post_by')}
                   <PostAuthor
                     authorAddress={author?.address}
                     authorRole={authorRole}

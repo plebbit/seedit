@@ -299,5 +299,6 @@
   "wallet": "Dompet",
   "undelete": "Batalkan penghapusan",
   "loading_comments": "Memuat komentar",
-  "you_blocked_community": "Anda telah memblokir komunitas ini"
+  "you_blocked_community": "Anda telah memblokir komunitas ini",
+  "show": "menunjukkan"
 }

@@ -299,5 +299,6 @@
   "wallet": "Cüzdan",
   "undelete": "Silme işlemini geri al",
   "loading_comments": "Yorumlar yükleniyor",
-  "you_blocked_community": "Bu topluluğu engellediniz"
+  "you_blocked_community": "Bu topluluğu engellediniz",
+  "show": "göstermek"
 }

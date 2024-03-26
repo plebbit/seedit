@@ -11,7 +11,7 @@ const AddressSettings = () => {
     cryptoAddress: '',
     checkingCryptoAddress: false,
     showResolvingMessage: false,
-    resolveString: t('crypto_address_verification'), // Default message
+    resolveString: t('crypto_address_verification'),
     resolveClass: '',
   });
 

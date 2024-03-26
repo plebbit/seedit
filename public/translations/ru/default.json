@@ -299,5 +299,6 @@
   "wallet": "Кошелек",
   "undelete": "Восстановить",
   "loading_comments": "Загрузка комментариев",
-  "you_blocked_community": "Вы заблокировали это сообщество"
+  "you_blocked_community": "Вы заблокировали это сообщество",
+  "show": "показать"
 }
