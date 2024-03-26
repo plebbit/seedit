@@ -27,6 +27,7 @@ const Markdown = ({ content }: MarkdownProps) => {
           img: ({ src }) => <span>{src}</span>,
           video: ({ src }) => <span>{src}</span>,
           iframe: ({ src }) => <span>{src}</span>,
+          source: ({ src }) => <span>{src}</span>,
         }}
       />
     </span>
