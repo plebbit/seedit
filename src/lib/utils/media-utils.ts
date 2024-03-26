@@ -24,24 +24,12 @@ export const getHasThumbnail = (commentMediaInfo: CommentMediaInfo | undefined, 
     : false;
 };
 
-// check for custom youtube urls like invidious instances
-let customUrlCache = new Map();
-export const isCustomYoutubeUrl = (parsedUrl: URL): boolean => {
-  const urlString = parsedUrl.toString();
-  if (customUrlCache.has(urlString)) {
-    return customUrlCache.get(urlString);
-  }
-  const isCustom = parsedUrl.host.startsWith('yt.') && parsedUrl.pathname.includes('/watch') && parsedUrl.searchParams.has('v');
-  customUrlCache.set(urlString, isCustom);
-  return isCustom;
-};
-
 const getYouTubeVideoId = (url: URL): string | null => {
   if (url.host.includes('youtu.be')) {
     return url.pathname.slice(1);
   } else if (url.searchParams.has('v')) {
     return url.searchParams.get('v');
-  } else if (isCustomYoutubeUrl(url)) {
+  } else if (url.host.startsWith('yt.')) {
     return url.searchParams.get('v');
   }
   return null;
@@ -85,7 +73,7 @@ const getLinkMediaInfo = (link: string): CommentMediaInfo | undefined => {
       }
     }
 
-    if (canEmbed(url) || isCustomYoutubeUrl(url)) {
+    if (canEmbed(url) || url.host.startsWith('yt.')) {
       type = 'iframe';
       patternThumbnailUrl = getPatternThumbnailUrl(url);
     }

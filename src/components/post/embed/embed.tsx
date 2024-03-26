@@ -1,5 +1,4 @@
 import styles from './embed.module.css';
-import { isCustomYoutubeUrl } from '../../../lib/utils/media-utils';
 
 interface EmbedProps {
   url: string;
@@ -8,7 +7,7 @@ interface EmbedProps {
 const Embed = ({ url }: EmbedProps) => {
   const parsedUrl = new URL(url);
 
-  if (youtubeHosts.has(parsedUrl.host) || isCustomYoutubeUrl(parsedUrl)) {
+  if (youtubeHosts.has(parsedUrl.host) || parsedUrl.host.startsWith('yt.')) {
     return <YoutubeEmbed parsedUrl={parsedUrl} />;
   }
   if (xHosts.has(parsedUrl.host)) {
