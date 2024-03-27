@@ -1,3 +1,35 @@
+## [0.1.10](https://github.com/plebbit/seedit/compare/v0.1.9...v0.1.10) (2024-03-27)
+
+
+### Bug Fixes
+
+* **home:** 'no communities found' would appear while loading multisub ([a281a6f](https://github.com/plebbit/seedit/commit/a281a6fa7d050136c9249f62f8af4a53c99c9084))
+* **pending post:** don't expand media for visibility of the publishing state ([3dc5940](https://github.com/plebbit/seedit/commit/3dc5940824584580a2fb3237511a80b29254ed4a))
+* **post page:** locked post state was missing in yellow banner alert ([6041aa1](https://github.com/plebbit/seedit/commit/6041aa102e0ff35503eb639b04e4e429f1aad694))
+* **post page:** reply form wouldn't appear until replies loaded, but the user can reply already ([e276763](https://github.com/plebbit/seedit/commit/e276763a3d0370242ae20d2a04ae17d0f5ddccb5))
+* **post:** remove avatars from posts in feed, they are distracting and don't look good ([929b648](https://github.com/plebbit/seedit/commit/929b648edd675ae50ac34c2154c5712dc9a0fa88))
+* **post:** video thumbnails were not showing on mobile, without preload ([51cceae](https://github.com/plebbit/seedit/commit/51cceae2d823dc7559519bd4f7642ebf4cb0d95f))
+* **reply:** upvoting a reply of score 1 would keep its score at 1 ([ce765b1](https://github.com/plebbit/seedit/commit/ce765b1d1e7fdd9585e0bec7372ee7fa1da1bd9c))
+* **subplebbit:** a community blocked by the user would show 'no posts', show 'you blocked this community' instead ([e018205](https://github.com/plebbit/seedit/commit/e0182057dd674ba41fcff93517036727297031aa))
+* **subplebbit:** a subplebbit address with emojis in it would cause bugs in the sub, such as broken links ([5552285](https://github.com/plebbit/seedit/commit/55522854a3c7ec03d100c369bac4822ea2937476))
+* **wallet settings:** signature shouldn't include wallet address, only plebbit author address ([c45d2d3](https://github.com/plebbit/seedit/commit/c45d2d3e8c551817fff896d1712a4e500e32d924))
+
+
+### Features
+
+* **home:** optimize home feed content by limiting number of posts per sub ([e8a136b](https://github.com/plebbit/seedit/commit/e8a136bd25d2e88180e9e1eb4ceaf9ff6ab62d57))
+* **media utils:** add embed support for custom youtube links, eg from invidious instances ([4e07055](https://github.com/plebbit/seedit/commit/4e070551c588a5ec1fef2f48d48744cd2d936296))
+* **media utils:** add support for Next.js image links ([791e1ce](https://github.com/plebbit/seedit/commit/791e1ce422be3b8e5d931be6cecde626b5c087fa))
+* **media utils:** detect GIFs as separate type from image ([7ad0953](https://github.com/plebbit/seedit/commit/7ad0953d8719324264d29f38d89a6cd4e55017e2))
+* **thumbnails:** render the first frame of gifs so they don't autoplay in the feed ([7d8a80b](https://github.com/plebbit/seedit/commit/7d8a80b1f9aca5dcfc752e3f3ae2dec881cf3647))
+
+
+### Performance Improvements
+
+* **media utils:** cache check for invidious yt links ([7bf9c85](https://github.com/plebbit/seedit/commit/7bf9c857a505121d8fc9c8cbd12c4d6901637172))
+
+
+
 ## [0.1.9](https://github.com/plebbit/seedit/compare/v0.1.8...v0.1.9) (2024-03-20)
 
 
