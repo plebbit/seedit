@@ -4,11 +4,12 @@
   "description": "A GUI for plebbit similar to old.reddit",
   "type": "module",
   "author": "plebeius.eth",
+  "license": "GPL-2.0-only",
   "private": true,
   "dependencies": {
     "@capacitor/app": "1.1.1",
     "@floating-ui/react": "0.26.1",
-    "@plebbit/plebbit-react-hooks": "https://github.com/plebbit/plebbit-react-hooks.git#63833e978ca25f9846544d32b9c67810af0daf19",
+    "@plebbit/plebbit-react-hooks": "https://github.com/plebbit/plebbit-react-hooks.git#00aabcce2276c671c0f4a371d459c93eb39c936a",
     "@testing-library/jest-dom": "5.14.1",
     "@testing-library/react": "13.0.0",
     "@testing-library/user-event": "13.2.1",
