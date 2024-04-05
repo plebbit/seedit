@@ -220,11 +220,6 @@
   border: 1px dashed gray;
 }
 
-.subscribeButtonWrapper {
-  padding-right: 14px;
-  position: relative;
-}
-
 .subscribeButton {
   position: absolute;
   border: none;
@@ -255,4 +250,8 @@
 
 .subscribeButtonWrapper:hover + .subplebbit {
   color: var(--green-bright) !important;
+}
+
+.subscribeButtonWrapper {
+  padding-right: 14px;
 }
