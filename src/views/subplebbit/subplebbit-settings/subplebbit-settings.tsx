@@ -47,27 +47,23 @@ const useSubplebbitSettingsStore = create<SubplebbitSettingsState>((set) => ({
   settings: undefined,
   subplebbitAddress: undefined,
   publishSubplebbitEditOptions: {},
-  setSubplebbitSettingsStore: ({ challenges, title, description, address, suggested, rules, roles, settings, subplebbitAddress }) =>
+  setSubplebbitSettingsStore: (props) =>
     set((state) => {
       const nextState = { ...state };
-      if (challenges !== undefined) nextState.challenges = challenges;
-      if (title !== undefined) nextState.title = title;
-      if (description !== undefined) nextState.description = description;
-      if (address !== undefined) nextState.address = address;
-      if (suggested?.avatarUrl !== undefined) {
-        nextState.suggested = { ...state.suggested, avatarUrl: suggested.avatarUrl };
-      }
-      if (rules !== undefined) nextState.rules = rules;
-      if (roles !== undefined) nextState.roles = roles;
-      if (settings?.challenges !== undefined) {
-        nextState.settings = { ...state.settings, challenges: settings.challenges };
-      }
-      if (subplebbitAddress !== undefined) nextState.subplebbitAddress = subplebbitAddress;
-
-      nextState.publishSubplebbitEditOptions = {
-        ...nextState,
-      };
-
+      Object.entries(props).forEach(([key, value]) => {
+        if (value !== undefined) {
+          (nextState as any)[key] = value;
+        }
+      });
+      const editOptions: Partial<SubplebbitSettingsState> = {};
+      if (nextState.title !== undefined) editOptions.title = nextState.title;
+      if (nextState.description !== undefined) editOptions.description = nextState.description;
+      if (nextState.address !== undefined) editOptions.address = nextState.address;
+      if (nextState.suggested !== undefined) editOptions.suggested = nextState.suggested;
+      if (nextState.rules !== undefined) editOptions.rules = nextState.rules;
+      if (nextState.roles !== undefined) editOptions.roles = nextState.roles;
+      if (nextState.settings !== undefined) editOptions.settings = nextState.settings;
+      nextState.publishSubplebbitEditOptions = editOptions;
       return nextState;
     }),
   resetSubplebbitSettingsStore: () =>
