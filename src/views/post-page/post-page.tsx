@@ -54,7 +54,7 @@ const Post = ({ post }: { post: Comment }) => {
         <div className={styles.replyArea}>
           {!isSingleComment && (
             <div className={styles.repliesTitle}>
-              <span className={styles.title}>{replyCount !== undefined ? commentCount : <LoadingEllipsis string={t('loading_comments')} />}</span>
+              <span className={styles.title}>{replyCount !== undefined ? commentCount : t('loading_comments')}</span>
             </div>
           )}
           <div className={styles.menuArea}>
@@ -66,7 +66,6 @@ const Post = ({ post }: { post: Comment }) => {
             </div>
             <div className={styles.spacer} />
             {!isSingleComment && subplebbitAddress && cid && <ReplyForm cid={cid} subplebbitAddress={subplebbitAddress} />}
-            <span className={styles.loadingString}>{loadingString && loadingString}</span>
           </div>
           {isSingleComment && (
             <div className={styles.singleCommentInfobar}>
@@ -85,6 +84,7 @@ const Post = ({ post }: { post: Comment }) => {
           </div>
         </div>
       )}
+      <span className={styles.loadingString}>{loadingString && loadingString}</span>
     </>
   );
 };

@@ -5,11 +5,13 @@ import styles from './avatar-settings.module.css';
 import { Trans, useTranslation } from 'react-i18next';
 
 interface AvatarSettingsProps {
+  areSettingsShown?: boolean;
   avatar?: any;
   showSettings?: () => void;
 }
 
-const AvatarPreview = ({ avatar, showSettings }: AvatarSettingsProps) => {
+const AvatarPreview = ({ areSettingsShown, avatar, showSettings }: AvatarSettingsProps) => {
+  const { t } = useTranslation();
   const account = useAccount();
   let author = useMemo(() => ({ ...account?.author, avatar }), [account, avatar]);
 
@@ -29,8 +31,14 @@ const AvatarPreview = ({ avatar, showSettings }: AvatarSettingsProps) => {
 
   return (
     <>
-      <div className={styles.avatar} onClick={showSettings}>
-        {imageUrl && state !== 'initializing' && <img src={imageUrl} alt='' />}
+      <div className={styles.avatar}>
+        {imageUrl && state !== 'initializing' ? (
+          <img src={imageUrl} alt='avatar' />
+        ) : (
+          <span className={styles.emptyAvatar} onClick={showSettings}>
+            {areSettingsShown ? '–' + t('hide') : '+' + t('add')}
+          </span>
+        )}
       </div>
       {state !== 'succeeded' && account?.author?.avatar && (
         <div className={styles.state}>
@@ -120,7 +128,7 @@ const AvatarSettings = () => {
 
   return (
     <div className={styles.avatarSettings}>
-      <AvatarPreview avatar={avatar} showSettings={() => setShowSettings(!showSettings)} />
+      <AvatarPreview avatar={avatar} showSettings={() => setShowSettings(!showSettings)} areSettingsShown={showSettings} />
       {showSettings && (
         <div className={styles.avatarSettingsForm}>
           <div className={styles.avatarSettingInput}>
