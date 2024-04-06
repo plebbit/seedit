@@ -7,7 +7,7 @@ interface EmbedProps {
 const Embed = ({ url }: EmbedProps) => {
   const parsedUrl = new URL(url);
 
-  if (youtubeHosts.has(parsedUrl.host) || parsedUrl.host.startsWith('yt.')) {
+  if (youtubeHosts.has(parsedUrl.host) || (parsedUrl.host.startsWith('yt.') && parsedUrl.searchParams.has('v'))) {
     return <YoutubeEmbed parsedUrl={parsedUrl} />;
   }
   if (xHosts.has(parsedUrl.host)) {
