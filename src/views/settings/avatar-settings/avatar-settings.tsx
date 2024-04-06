@@ -31,13 +31,11 @@ const AvatarPreview = ({ areSettingsShown, avatar, showSettings }: AvatarSetting
 
   return (
     <>
-      <div className={styles.avatar}>
+      <div className={styles.avatar} onClick={showSettings}>
         {imageUrl && state !== 'initializing' ? (
           <img src={imageUrl} alt='avatar' />
         ) : (
-          <span className={styles.emptyAvatar} onClick={showSettings}>
-            {areSettingsShown ? '–' + t('hide') : '+' + t('add')}
-          </span>
+          <span className={styles.emptyAvatar}>{areSettingsShown ? '–' + t('hide') : '+' + t('add')}</span>
         )}
       </div>
       {state !== 'succeeded' && account?.author?.avatar && (
