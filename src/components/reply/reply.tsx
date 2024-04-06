@@ -289,7 +289,7 @@ const Reply = ({ cidOfReplyWithContext, depth = 0, isSingleComment, isSingleRepl
   const hasThumbnail = getHasThumbnail(commentMediaInfo, link);
 
   const { t } = useTranslation();
-  let score = upvoteCount - downvoteCount + 1;
+  let score = upvoteCount - downvoteCount + 1 || 1;
   if ((upvoteCount === 0 && downvoteCount === 0) || (upvoteCount === 1 && downvoteCount === 0)) {
     score = 1;
   }
