@@ -5,7 +5,7 @@ import { Link, useLocation, useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import styles from './reply.module.css';
 import useReplies from '../../hooks/use-replies';
-import { CommentMediaInfo, getCommentMediaInfoMemoized, getHasThumbnail } from '../../lib/utils/media-utils';
+import { CommentMediaInfo, getCommentMediaInfo, getHasThumbnail } from '../../lib/utils/media-utils';
 import { getFormattedTimeAgo } from '../../lib/utils/time-utils';
 import CommentEditForm from '../comment-edit-form';
 import LoadingEllipsis from '../loading-ellipsis/';
@@ -285,7 +285,7 @@ const Reply = ({ cidOfReplyWithContext, depth = 0, isSingleComment, isSingleRepl
   const showCommentEditForm = () => setIsEditing(true);
   const hideCommentEditForm = () => setIsEditing(false);
 
-  const commentMediaInfo = getCommentMediaInfoMemoized(reply);
+  const commentMediaInfo = getCommentMediaInfo(reply);
   const hasThumbnail = getHasThumbnail(commentMediaInfo, link);
 
   const { t } = useTranslation();

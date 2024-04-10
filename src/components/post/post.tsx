@@ -4,7 +4,7 @@ import { Link, useLocation, useParams } from 'react-router-dom';
 import { Comment, useAuthorAddress, useBlock, useComment, useEditedComment, useSubplebbit, useSubscribe } from '@plebbit/plebbit-react-hooks';
 import { useTranslation } from 'react-i18next';
 import { isAllView, isPostView, isSubplebbitView } from '../../lib/utils/view-utils';
-import { getCommentMediaInfoMemoized, getHasThumbnail } from '../../lib/utils/media-utils';
+import { getCommentMediaInfo, getHasThumbnail } from '../../lib/utils/media-utils';
 import { getHostname } from '../../lib/utils/url-utils';
 import { getFormattedTimeAgo } from '../../lib/utils/time-utils';
 import CommentEditForm from '../comment-edit-form';
@@ -128,7 +128,7 @@ const Post = ({ index, post = {} }: PostProps) => {
   const postScore = upvoteCount === 0 && downvoteCount === 0 ? '•' : upvoteCount - downvoteCount || '•';
   const postTitle = (title?.length > 300 ? title?.slice(0, 300) + '...' : title) || (content?.length > 300 ? content?.slice(0, 300) + '...' : content);
 
-  const commentMediaInfo = getCommentMediaInfoMemoized(post);
+  const commentMediaInfo = getCommentMediaInfo(post);
   const hasThumbnail = getHasThumbnail(commentMediaInfo, link);
   const linkUrl = getHostname(link);
   const linkClass = `${isInPostView ? (link ? styles.externalLink : styles.internalLink) : styles.link} ${pinned ? styles.pinnedLink : ''}`;
