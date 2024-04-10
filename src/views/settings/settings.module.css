@@ -95,7 +95,7 @@
   text-transform: capitalize;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 640px) {
   .categoryTitle {
     flex: 0 0 65px;
   }

@@ -166,7 +166,7 @@
   text-decoration: underline;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 640px) {
   .homeButton {
     padding-left: 10px;
   }

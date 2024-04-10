@@ -32,13 +32,13 @@
   background-color: var(--background-primary);
 }
 
-@media (min-width: 768px) {
+@media (min-width: 640px) {
   .reportButton {
     display: none;
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 640px) {
   .reportButton {
     display: block;
   }

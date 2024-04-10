@@ -83,7 +83,7 @@
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 640px) {
   .container {
     max-width: 400px;
     width: 85vw;

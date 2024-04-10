@@ -46,7 +46,7 @@
   filter: var(--filter90);
 }
 
-@media (max-width: 768px) {
+@media (max-width: 640px) {
   .container {
     height: 45px;
   }
@@ -60,7 +60,7 @@
   padding-top: 19px;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 640px) {
   .container {
     height: 45px;
   }
@@ -149,7 +149,7 @@
 }
 
 
-@media (min-width: 768px) {
+@media (min-width: 640px) {
   .about {
     display: none !important;
   }
@@ -159,7 +159,7 @@
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 640px) {
   .fewTabs {
     position: relative;
   }

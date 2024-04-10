@@ -50,13 +50,13 @@
   display: none !important;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 640px) {
   .reportButton, .crosspostButton, .embedButton {
     display: block;
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 640px) {
   .reportButton, .crosspostButton, .embedButton {
     display: none !important;
   }

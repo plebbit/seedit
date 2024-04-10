@@ -29,7 +29,7 @@
   margin-bottom: 10px;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 640px) {
   .accountData textarea {
     width: 600px;
     height: 300px;
@@ -40,7 +40,7 @@
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 640px) {
   .accountData textarea {
     width: 60vw;
     height: 200px;

@@ -113,7 +113,7 @@
   padding: 4px 9px;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 640px) {
   .textarea {
     max-width: 400px !important;
   }

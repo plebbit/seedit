@@ -327,7 +327,7 @@
   display: inline-block
 }
 
-@media (max-width: 768px) {
+@media (max-width: 640px) {
   .md {
     padding-right: 5px;
   }

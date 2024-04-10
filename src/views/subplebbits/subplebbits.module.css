@@ -214,7 +214,7 @@
   font-weight: bold;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 640px) {
   .content {
     padding: 7px 0px 20px 0px;
   }
@@ -236,7 +236,7 @@
   }
 }
 
-@media (min-width: 768px) {
+@media (min-width: 640px) {
   .content {
     padding: 7px 5px 0px 5px;
   }

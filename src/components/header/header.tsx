@@ -37,6 +37,7 @@ import {
 } from '../../lib/utils/view-utils';
 import useTheme from '../../hooks/use-theme';
 import { TimeFilterKey } from '../../hooks/use-time-filter';
+import useWindowWidth from '../../hooks/use-window-width';
 import { useNotFoundStore } from '../../views/not-found';
 import styles from './header.module.css';
 import SubscribeButton from '../subscribe-button';
@@ -343,7 +344,7 @@ const Header = () => {
   const subplebbit = useSubplebbit({ subplebbitAddress: params.subplebbitAddress });
   const { suggested, title, shortAddress } = subplebbit || {};
 
-  const isMobile = window.innerWidth < 768;
+  const isMobile = useWindowWidth() < 640;
   const isInAboutView = isAboutView(location.pathname);
   const isInAllAboutView = isAllAboutView(location.pathname);
   const isInAllView = isAllView(location.pathname);
