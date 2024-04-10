@@ -271,6 +271,8 @@ const canEmbedHosts = new Set<string>([
   ...spotifyHosts,
 ]);
 
-export const canEmbed = (parsedUrl: URL): boolean => canEmbedHosts.has(parsedUrl.host);
+export const canEmbed = (parsedUrl: URL): boolean => {
+  return canEmbedHosts.has(parsedUrl.host) || (parsedUrl.host.startsWith('yt.') && parsedUrl.searchParams.has('v'));
+};
 
 export default Embed;
