@@ -24,7 +24,6 @@ import StickyHeader from './components/sticky-header';
 import TopBar from './components/topbar';
 
 export const sortTypes = ['hot', 'new', 'active', 'controversialAll', 'topAll'];
-const isElectron = window.isElectron === true;
 
 const CheckRouteParams = () => {
   let { sortType, timeFilterName, accountCommentIndex } = useParams<{ sortType?: string; timeFilterName?: string; accountCommentIndex?: string }>();
@@ -41,13 +40,6 @@ const CheckRouteParams = () => {
 };
 
 const App = () => {
-  const [theme] = useTheme();
-
-  useEffect(() => {
-    document.body.classList.forEach((className) => document.body.classList.remove(className));
-    document.body.classList.add(theme);
-  }, [theme]);
-
   const globalLayout = (
     <>
       <ChallengeModal />
@@ -72,14 +64,12 @@ const App = () => {
     </>
   );
 
+  // add theme className to body so it can set the correct body background in index.css
+  const [theme] = useTheme();
   useEffect(() => {
-    if (!window.location.hash && !isElectron) {
-      // Calculate the base URL (protocol + host)
-      const baseURL = window.location.protocol + '//' + window.location.host + '/';
-      // Redirect to the base URL with `#/`
-      window.location.replace(baseURL + '#/');
-    }
-  }, []);
+    document.body.classList.forEach((className) => document.body.classList.remove(className));
+    document.body.classList.add(theme);
+  }, [theme]);
 
   return (
     <div className={`${styles.app} ${theme}`}>
