@@ -10,7 +10,10 @@
 }
 
 .widthClip {
-  position: absolute;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
   left: 0;
   right: 0;
 }
@@ -154,7 +157,6 @@
   color: var(--text);
   text-decoration: none;
   background-color: var(--background-text);
-  position: absolute;
   right: 0;
   top: 0;
   padding: 0 5px 0 15px;
