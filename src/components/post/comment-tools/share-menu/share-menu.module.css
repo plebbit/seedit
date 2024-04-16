@@ -39,13 +39,13 @@
   padding: 2px 3px 1px 3px;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 640px) {
   .crosspostButton {
     display: none;
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 640px) {
   .crosspostButton {
     display: block;
   }

@@ -1,14 +1,15 @@
 import { useEffect, useMemo, useRef } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import { useAuthorComments, useAuthor } from '@plebbit/plebbit-react-hooks';
 import { StateSnapshot, Virtuoso, VirtuosoHandle } from 'react-virtuoso';
 import { isAuthorCommentsView, isAuthorSubmittedView } from '../../lib/utils/view-utils';
-import { useTranslation } from 'react-i18next';
-import styles from './author.module.css';
-import AuthorSidebar from '../../components/author-sidebar';
+import useWindowWidth from '../../hooks/use-window-width';
 import LoadingEllipsis from '../../components/loading-ellipsis';
 import Post from '../../components/post';
 import Reply from '../../components/reply/';
+import AuthorSidebar from '../../components/author-sidebar';
+import styles from './author.module.css';
 
 const lastVirtuosoStates: { [key: string]: StateSnapshot } = {};
 
@@ -21,7 +22,7 @@ const Author = () => {
   const params = useParams();
   const isInAuthorCommentsView = isAuthorCommentsView(location.pathname, params);
   const isInAuthorSubmittedView = isAuthorSubmittedView(location.pathname, params);
-  const isMobile = window.innerWidth < 768;
+  const isMobile = useWindowWidth() < 640;
 
   const { authorComments, lastCommentCid, hasMore, loadMore } = useAuthorComments({ commentCid, authorAddress });
 

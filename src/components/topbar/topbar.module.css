@@ -10,9 +10,7 @@
 }
 
 .widthClip {
-  position: absolute;
-  left: 0;
-  right: 0;
+  display: flex;
 }
 
 .dropdown {
@@ -154,19 +152,15 @@
   color: var(--text);
   text-decoration: none;
   background-color: var(--background-text);
-  position: absolute;
-  right: 0;
-  top: 0;
   padding: 0 5px 0 15px;
   font-weight: bold;
-  margin: 0;
 }
 
 .moreLink:hover {
   text-decoration: underline;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 640px) {
   .homeButton {
     padding-left: 10px;
   }

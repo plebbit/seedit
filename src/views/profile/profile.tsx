@@ -1,13 +1,14 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useLocation, useParams } from 'react-router-dom';
 import { StateSnapshot, Virtuoso, VirtuosoHandle } from 'react-virtuoso';
 import { useAccount, useAccountComments, useAccountVotes, useComments } from '@plebbit/plebbit-react-hooks';
 import { isProfileDownvotedView, isProfileUpvotedView, isProfileCommentsView, isProfileSubmittedView } from '../../lib/utils/view-utils';
-import { useTranslation } from 'react-i18next';
-import styles from './profile.module.css';
+import useWindowWidth from '../../hooks/use-window-width';
 import AuthorSidebar from '../../components/author-sidebar';
 import Post from '../../components/post';
 import Reply from '../../components/reply';
+import styles from './profile.module.css';
 
 const lastVirtuosoStates: { [key: string]: StateSnapshot } = {};
 const sortTypes: string[] = ['new', 'old'];
@@ -78,7 +79,7 @@ const Profile = () => {
   const isInProfileDownvotedView = isProfileDownvotedView(location.pathname);
   const isInCommentsView = isProfileCommentsView(location.pathname);
   const isInSubmittedView = isProfileSubmittedView(location.pathname);
-  const isMobile = window.innerWidth < 768;
+  const isMobile = useWindowWidth() < 640;
 
   // get comments for upvoted/downvoted/comments/submitted pages
   const upvotedCommentCids = useMemo(() => accountVotes?.filter((vote) => vote.vote === 1).map((vote) => vote.commentCid) || [], [accountVotes]);

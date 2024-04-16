@@ -6,7 +6,7 @@ div[data-viewport-type="window"] {
   position: relative !important;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 640px) {
   .sidebarDesktop {
     display: none;
   }

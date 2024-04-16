@@ -188,7 +188,7 @@ h1 {
   border: none;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 640px) {
   .formContent {
     width: 100%;
   }
