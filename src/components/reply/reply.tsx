@@ -22,6 +22,7 @@ import useUpvote from '../../hooks/use-upvote';
 import { isInboxView, isPostContextView } from '../../lib/utils/view-utils';
 import Plebbit from '@plebbit/plebbit-js/dist/browser/index.js';
 import Markdown from '../markdown';
+import { getHostname } from '../../lib/utils/url-utils';
 
 interface ReplyAuthorProps {
   address: string;
@@ -82,6 +83,7 @@ interface ReplyMediaProps {
 }
 
 const ReplyMedia = ({ commentMediaInfo, content, expanded, hasThumbnail, link, linkHeight, linkWidth, toggleExpanded }: ReplyMediaProps) => {
+  const { type } = commentMediaInfo || {};
   return (
     <>
       {hasThumbnail && (
@@ -95,13 +97,21 @@ const ReplyMedia = ({ commentMediaInfo, content, expanded, hasThumbnail, link, l
           toggleExpanded={toggleExpanded}
         />
       )}
-      {commentMediaInfo?.type === 'iframe' && (
-        <ExpandButton commentMediaInfo={commentMediaInfo} content={content} expanded={expanded} hasThumbnail={hasThumbnail} link={link} toggleExpanded={toggleExpanded} />
-      )}
-      {link && (commentMediaInfo?.type === 'iframe' || commentMediaInfo?.type === 'webpage') && (
+      {type === 'iframe' ||
+        (type === 'audio' && (
+          <ExpandButton
+            commentMediaInfo={commentMediaInfo}
+            content={content}
+            expanded={expanded}
+            hasThumbnail={hasThumbnail}
+            link={link}
+            toggleExpanded={toggleExpanded}
+          />
+        ))}
+      {link && (type === 'iframe' || type === 'webpage' || type === 'audio') && (
         <>
           <a href={link} target='_blank' rel='noopener noreferrer'>
-            ({link})
+            ({getHostname(link) || link})
           </a>
           <br />
           <br />
