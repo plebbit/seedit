@@ -37,6 +37,9 @@ const Embed = ({ url }: EmbedProps) => {
   if (spotifyHosts.has(parsedUrl.host)) {
     return <SpotifyEmbed parsedUrl={parsedUrl} />;
   }
+  if (soundcloudHosts.has(parsedUrl.host)) {
+    return <SoundcloudEmbed parsedUrl={parsedUrl} />;
+  }
 };
 
 interface EmbedComponentProps {
@@ -258,6 +261,24 @@ const SpotifyEmbed = ({ parsedUrl }: EmbedComponentProps) => {
   );
 };
 
+const soundcloudHosts = new Set(['soundcloud.com', 'www.soundcloud.com', 'on.soundcloud.com', 'api.soundcloud.com', 'w.soundcloud.com']);
+
+// not officially documented https://stackoverflow.com/questions/20870270/how-to-get-soundcloud-embed-code-by-soundcloud-com-url
+const SoundcloudEmbed = ({ parsedUrl }: EmbedComponentProps) => {
+  return (
+    <iframe
+      className={styles.soundcloudEmbed}
+      height='100%'
+      width='100%'
+      referrerPolicy='no-referrer'
+      allow='accelerometer; encrypted-media; gyroscope; picture-in-picture; web-share'
+      allowFullScreen
+      title={parsedUrl.href}
+      src={`https://w.soundcloud.com/player/?url=${parsedUrl.href}`}
+    />
+  );
+};
+
 const canEmbedHosts = new Set<string>([
   ...youtubeHosts,
   ...xHosts,
@@ -267,6 +288,7 @@ const canEmbedHosts = new Set<string>([
   ...instagramHosts,
   ...odyseeHosts,
   ...bitchuteHosts,
+  ...soundcloudHosts,
   ...streamableHosts,
   ...spotifyHosts,
 ]);
