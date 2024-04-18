@@ -1,7 +1,9 @@
 import './log.js';
-import { app, BrowserWindow, Menu, MenuItem, Tray, screen as electronScreen, shell, dialog, nativeTheme } from 'electron';
+import { app, BrowserWindow, Menu, MenuItem, Tray, screen as electronScreen, shell, dialog, nativeTheme, ipcMain } from 'electron';
 import isDev from 'electron-is-dev';
+import fs from 'fs';
 import path from 'path';
+import EnvPaths from 'env-paths';
 import startIpfs from './start-ipfs.js';
 import './start-plebbit-rpc.js';
 import { URL, fileURLToPath } from 'node:url';
@@ -18,6 +20,11 @@ startIpfs.onError = (error) => {
     dialog.showErrorBox('IPFS warning', error.message);
   }
 };
+
+// send plebbit rpc auth key to renderer
+const plebbitDataPath = !isDev ? EnvPaths('plebbit', { suffix: false }).data : path.join(dirname, '..', '.plebbit');
+const plebbitRpcAuthKey = fs.readFileSync(path.join(plebbitDataPath, 'auth-key'), 'utf8');
+ipcMain.on('get-plebbit-rpc-auth-key', (event) => event.reply('plebbit-rpc-auth-key', plebbitRpcAuthKey));
 
 // use common user agent instead of electron so img, video, audio, iframe elements don't get blocked
 // https://www.whatismybrowser.com/guides/the-latest-version/chrome

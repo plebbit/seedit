@@ -4,7 +4,7 @@ import util from 'util';
 import fs from 'fs-extra';
 import path from 'path';
 import EnvPaths from 'env-paths';
-const envPaths = EnvPaths.default('plebbit', { suffix: false });
+const envPaths = EnvPaths('plebbit', { suffix: false });
 
 // previous version created a file instead of folder
 // we should remove this at some point
