@@ -8,7 +8,7 @@ import tcpPortUsed from 'tcp-port-used';
 import EnvPaths from 'env-paths';
 import { fileURLToPath } from 'url';
 const dirname = path.join(path.dirname(fileURLToPath(import.meta.url)));
-const envPaths = EnvPaths.default('plebbit', { suffix: false });
+const envPaths = EnvPaths('plebbit', { suffix: false });
 
 // use this custom function instead of spawnSync for better logging
 // also spawnSync might have been causing crash on start on windows

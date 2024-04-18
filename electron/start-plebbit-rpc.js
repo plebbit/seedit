@@ -7,7 +7,7 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import isDev from 'electron-is-dev';
 const dirname = path.join(path.dirname(fileURLToPath(import.meta.url)));
-const envPaths = EnvPaths.default('plebbit', { suffix: false });
+const envPaths = EnvPaths('plebbit', { suffix: false });
 
 //           PLEB, always run plebbit rpc on this port so all clients can use it
 const port = 9138;
