@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { useAccount } from '@plebbit/plebbit-react-hooks';
 import Plebbit from '@plebbit/plebbit-js/dist/browser/index.js';
 import styles from './topbar.module.css';
-import { useDefaultSubplebbitAddresses } from '../../lib/utils/addresses-utils';
+import { useDefaultSubplebbitAddresses } from '../../hooks/use-default-subplebbits';
 import useTimeFilter, { TimeFilterKey } from '../../hooks/use-time-filter';
 import { isAllView, isHomeView, isSubplebbitView } from '../../lib/utils/view-utils';
 

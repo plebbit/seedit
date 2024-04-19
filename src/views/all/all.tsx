@@ -7,7 +7,7 @@ import styles from '../home/home.module.css';
 import LoadingEllipsis from '../../components/loading-ellipsis';
 import Post from '../../components/post';
 import Sidebar from '../../components/sidebar';
-import { useDefaultSubplebbitAddresses } from '../../lib/utils/addresses-utils';
+import { useDefaultSubplebbitAddresses } from '../../hooks/use-default-subplebbits';
 import useFeedStateString from '../../hooks/use-feed-state-string';
 import useTimeFilter, { TimeFilterKey } from '../../hooks/use-time-filter';
 import _ from 'lodash';
