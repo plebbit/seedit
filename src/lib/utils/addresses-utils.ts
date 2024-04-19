@@ -25,6 +25,21 @@ export const useDefaultSubplebbitAddresses = () => {
   return useMemo(() => defaultSubplebbits.map((subplebbit: Subplebbit) => subplebbit.address), [defaultSubplebbits]);
 };
 
+export const useDefaultAndSubscriptionsSubplebbitAddresses = () => {
+  const subscriptions = useAccount()?.subscriptions ?? [];
+  const defaultSubplebbitAddresses = useDefaultSubplebbitAddresses();
+
+  return useMemo(() => {
+    const subplebbitAddresses = new Set(defaultSubplebbitAddresses);
+
+    subscriptions.forEach((address: string) => {
+      subplebbitAddresses.add(address);
+    });
+
+    return Array.from(subplebbitAddresses);
+  }, [subscriptions, defaultSubplebbitAddresses]);
+};
+
 export const useDefaultAndSubscriptionsSubplebbits = (): SubplebbitWithDisplay[] => {
   const account = useAccount();
   const { subplebbitAddress: subplebbitAddressParam } = useParams();

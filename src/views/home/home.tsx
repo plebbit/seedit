@@ -1,13 +1,13 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 import { useParams } from 'react-router-dom';
 import { Virtuoso, VirtuosoHandle, StateSnapshot } from 'react-virtuoso';
-import { useAccount, useFeed } from '@plebbit/plebbit-react-hooks';
+import { useFeed } from '@plebbit/plebbit-react-hooks';
 import { useTranslation } from 'react-i18next';
 import styles from './home.module.css';
 import LoadingEllipsis from '../../components/loading-ellipsis';
 import Post from '../../components/post';
 import Sidebar from '../../components/sidebar';
-import { useDefaultSubplebbitAddresses } from '../../lib/utils/addresses-utils';
+import { useDefaultAndSubscriptionsSubplebbitAddresses } from '../../lib/utils/addresses-utils';
 import useFeedStateString from '../../hooks/use-feed-state-string';
 import useTimeFilter, { TimeFilterKey } from '../../hooks/use-time-filter';
 
@@ -15,16 +15,7 @@ const lastVirtuosoStates: { [key: string]: StateSnapshot } = {};
 
 const Home = () => {
   const { t } = useTranslation();
-  const account = useAccount();
-  const defaultSubplebbitAddresses = useDefaultSubplebbitAddresses();
-  const [subplebbitAddresses, setSubplebbitAddresses] = useState<string[] | undefined>(undefined);
-
-  useEffect(() => {
-    if (defaultSubplebbitAddresses && account?.subscriptions) {
-      setSubplebbitAddresses(defaultSubplebbitAddresses.concat(account.subscriptions));
-    }
-  }, [defaultSubplebbitAddresses, account?.subscriptions]);
-
+  const subplebbitAddresses = useDefaultAndSubscriptionsSubplebbitAddresses();
   const params = useParams<{ sortType?: string; timeFilterName?: string }>();
   const sortType = params?.sortType || 'hot';
   const timeFilterName = params.timeFilterName as TimeFilterKey;
