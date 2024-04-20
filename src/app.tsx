@@ -113,6 +113,7 @@ const App = () => {
 
             <Route path='/settings' element={<Settings />} />
             <Route path='/p/:subplebbitAddress/settings' element={<SubplebbitSettings />} />
+            <Route path='/settings/plebbit-options' element={<Settings />} />
 
             <Route path='/profile/about' element={<About />} />
 
