@@ -300,5 +300,7 @@
   "undelete": "Palauta",
   "loading_comments": "Ladataan kommentteja",
   "you_blocked_community": "Olet estänyt tämän yhteisön",
-  "show": "näyttää"
+  "show": "näyttää",
+  "plebbit_options": "plebbit-vaihtoehdot",
+  "general": "yleinen"
 }

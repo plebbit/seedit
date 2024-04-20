@@ -300,5 +300,7 @@
   "undelete": "Gendan sletning",
   "loading_comments": "Indlæser kommentarer",
   "you_blocked_community": "Du har blokeret dette fællesskab",
-  "show": "vise"
+  "show": "vise",
+  "plebbit_options": "plebbit indstillinger",
+  "general": "almindelig"
 }

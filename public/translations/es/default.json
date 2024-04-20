@@ -300,5 +300,7 @@
   "undelete": "Recuperar",
   "loading_comments": "Cargando comentarios",
   "you_blocked_community": "Has bloqueado esta comunidad",
-  "show": "mostrar"
+  "show": "mostrar",
+  "plebbit_options": "opciones plebbit",
+  "general": "general"
 }

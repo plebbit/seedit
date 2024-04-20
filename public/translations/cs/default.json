@@ -300,5 +300,7 @@
   "undelete": "Obnovit smazání",
   "loading_comments": "Načítání komentářů",
   "you_blocked_community": "Zablokovali jste tuto komunitu",
-  "show": "ukázat"
+  "show": "ukázat",
+  "plebbit_options": "plebbit možnosti",
+  "general": "obecné"
 }
