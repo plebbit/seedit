@@ -14745,7 +14745,7 @@ react-scripts@5.0.1:
   optionalDependencies:
     fsevents "^2.3.2"
 
-react-virtuoso@^4.7.8:
+react-virtuoso@4.7.8:
   version "4.7.8"
   resolved "https://registry.yarnpkg.com/react-virtuoso/-/react-virtuoso-4.7.8.tgz#d64f950b726a3fbcba647b0dc3c0d892ea80b1d4"
   integrity sha512-P0BHOsLrmfnXv1bY9Nja07nvFciRGNgM7lTRHMcVDteTDb9tLtHzajBapKGUZ5zdyUOEVWvuW6ufQxzdGN2AKw==

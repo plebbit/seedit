@@ -27,3 +27,51 @@
 .settingTitle {
   font-style: italic;
 }
+
+.content input[type="text"], .content textarea {
+  padding: 2px;
+  box-shadow: var(--box-shadow-input);
+}
+
+.content input[type="text"], .content textarea {
+  width: 210px;
+}
+
+.content textarea {
+  height: 80px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.content button {
+  vertical-align: top;
+  margin-left: 5px;
+  cursor: pointer;
+}
+
+.ipfsGatewaysSettings textarea {
+  margin-bottom: 5px;
+}
+
+.blockchainProvidersSettings input[type="text"] {
+  margin-bottom: 5px;
+}
+
+.plebbitRpcSettingsInfo {
+  padding: 5px 20px 0 0;
+  word-break: break-word;
+}
+
+.plebbitRpcSettingsInfo ol {
+  padding-bottom: 5px;
+  padding-left: 40px;
+}
+
+@media (max-width: 640px) {
+  .categoryTitle {
+    flex: 0 0 65px;
+  }
+
+  .categorySettings input {
+    width: 35vw;
+  }
+}
