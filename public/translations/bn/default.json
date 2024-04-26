@@ -300,5 +300,7 @@
   "undelete": "মুছে ফেলা প্রত্যাহার",
   "loading_comments": "মন্তব্য লোড হচ্ছে",
   "you_blocked_community": "আপনি এই সম্প্রদায়টি ব্লক করেছেন",
-  "show": "দেখান"
+  "show": "দেখান",
+  "plebbit_options": "প্লেবিট বিকল্প",
+  "general": "সাধারণ"
 }

@@ -300,5 +300,7 @@
   "undelete": "Annulla eliminazione",
   "loading_comments": "Caricamento commenti",
   "you_blocked_community": "Hai bloccato questa comunità",
-  "show": "mostra"
+  "show": "mostra",
+  "plebbit_options": "opzioni plebbit",
+  "general": "generali"
 }

@@ -300,5 +300,7 @@
   "undelete": "Przywróć",
   "loading_comments": "Ładowanie komentarzy",
   "you_blocked_community": "Zablokowałeś tę społeczność",
-  "show": "pokazać"
+  "show": "pokazać",
+  "plebbit_options": "opcje plebbit",
+  "general": "ogólny"
 }

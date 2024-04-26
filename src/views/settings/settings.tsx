@@ -1,10 +1,13 @@
 import { useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import { Trans, useTranslation } from 'react-i18next';
 import { setAccount, useAccount } from '@plebbit/plebbit-react-hooks';
+import { isSettingsPlebbitOptionsView } from '../../lib/utils/view-utils';
 import styles from './settings.module.css';
 import AccountSettings from './account-settings';
 import AddressSettings from './address-settings';
 import AvatarSettings from './avatar-settings';
+import PlebbitOptions from './plebbit-options';
 import WalletSettings from './wallet-settings';
 import useTheme from '../../hooks/use-theme';
 import packageJson from '../../../package.json';
@@ -144,20 +147,11 @@ const DisplayNameSetting = () => {
   );
 };
 
-const Settings = () => {
+const GeneralSettings = () => {
   const { t } = useTranslation();
 
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
-
-  const documentTitle = `${_.startCase(t('preferences'))} - Seedit`;
-  useEffect(() => {
-    document.title = documentTitle;
-  }, [documentTitle]);
-
   return (
-    <div className={styles.content}>
+    <>
       <div className={styles.category}>
         <span className={styles.categoryTitle}>{t('version')}</span>
         <span className={styles.categorySettings}>
@@ -227,8 +221,24 @@ const Settings = () => {
           <AccountSettings />
         </span>
       </div>
-    </div>
+    </>
   );
+};
+
+const Settings = () => {
+  const { t } = useTranslation();
+  const isInSettingsPlebbitOptionsView = isSettingsPlebbitOptionsView(useLocation().pathname);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  const documentTitle = `${_.startCase(t('preferences'))} - Seedit`;
+  useEffect(() => {
+    document.title = documentTitle;
+  }, [documentTitle]);
+
+  return <div className={styles.content}>{isInSettingsPlebbitOptionsView ? <PlebbitOptions /> : <GeneralSettings />}</div>;
 };
 
 export default Settings;

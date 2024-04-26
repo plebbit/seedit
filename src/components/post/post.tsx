@@ -34,7 +34,7 @@ const PostAuthor = ({ authorAddress, authorRole, cid, displayName, index, shortA
   const isAuthorModerator = authorRole === 'moderator';
   const moderatorClass = `${isAuthorOwner ? styles.owner : isAuthorAdmin ? styles.admin : isAuthorModerator ? styles.moderator : ''}`;
   const authorRoleInitial = (isAuthorOwner && 'O') || (isAuthorAdmin && 'A') || (isAuthorModerator && 'M') || '';
-  const shortDisplayName = displayName?.length > 20 ? displayName?.slice(0, 20) + '...' : displayName;
+  const shortDisplayName = displayName?.trim().length > 20 ? displayName?.trim().slice(0, 20).trim() + '...' : displayName?.trim();
 
   return (
     <>

@@ -3479,6 +3479,22 @@
     uuid "8.3.2"
     zustand "4.0.0"
 
+"@plebbit/plebbit-react-hooks@https://github.com/plebbit/plebbit-react-hooks.git#6d0d38ad52ce77715cb05be6cec55d691f5f013d":
+  version "0.0.1"
+  resolved "https://github.com/plebbit/plebbit-react-hooks.git#6d0d38ad52ce77715cb05be6cec55d691f5f013d"
+  dependencies:
+    "@plebbit/plebbit-js" "https://github.com/plebbit/plebbit-js.git#347579798478c27eea4808b923ab6f21799fce89"
+    "@plebbit/plebbit-logger" "https://github.com/plebbit/plebbit-logger.git"
+    assert "2.0.0"
+    ethers "5.6.9"
+    localforage "1.10.0"
+    lodash.isequal "4.5.0"
+    memoizee "0.4.15"
+    quick-lru "5.1.1"
+    uint8arrays "3.1.1"
+    uuid "8.3.2"
+    zustand "4.0.0"
+
 "@plebbit/proper-lockfile@github:plebbit/node-proper-lockfile#7fd6332117340c1d3d98dd0afee2d31cc06f72b8":
   version "4.1.2"
   resolved "https://codeload.github.com/plebbit/node-proper-lockfile/tar.gz/7fd6332117340c1d3d98dd0afee2d31cc06f72b8"
@@ -14745,7 +14761,7 @@ react-scripts@5.0.1:
   optionalDependencies:
     fsevents "^2.3.2"
 
-react-virtuoso@^4.7.8:
+react-virtuoso@4.7.8:
   version "4.7.8"
   resolved "https://registry.yarnpkg.com/react-virtuoso/-/react-virtuoso-4.7.8.tgz#d64f950b726a3fbcba647b0dc3c0d892ea80b1d4"
   integrity sha512-P0BHOsLrmfnXv1bY9Nja07nvFciRGNgM7lTRHMcVDteTDb9tLtHzajBapKGUZ5zdyUOEVWvuW6ufQxzdGN2AKw==

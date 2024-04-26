@@ -4,7 +4,7 @@ import { PublishCommentOptions, useAccount, usePublishComment, useSubplebbit } f
 import Plebbit from '@plebbit/plebbit-js/dist/browser/index.js';
 import { Trans, useTranslation } from 'react-i18next';
 import { create } from 'zustand';
-import { getRandomSubplebbits, useDefaultSubplebbitAddresses } from '../../lib/utils/addresses-utils';
+import { useDefaultSubplebbitAddresses } from '../../hooks/use-default-subplebbits';
 import { alertChallengeVerificationFailed } from '../../lib/utils/challenge-utils';
 import { getLinkMediaInfo } from '../../lib/utils/media-utils';
 import { isValidURL } from '../../lib/utils/url-utils';
@@ -156,6 +156,11 @@ const Submit = () => {
   }, [index, resetSubmitStore, navigate]);
 
   const subsDescription = <div className={styles.subsDescription}>{subscriptions?.length > 5 ? t('submit_subscriptions') : t('submit_subscriptions_notice')}</div>;
+
+  const getRandomSubplebbits = (addresses: string[], count: number) => {
+    let shuffled = addresses.sort(() => 0.5 - Math.random());
+    return shuffled.slice(0, count);
+  };
 
   const [randomSubplebbits, setRandomSubplebbits] = useState<string[]>([]);
   useEffect(() => {

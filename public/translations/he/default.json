@@ -300,5 +300,7 @@
   "undelete": "שחזור מחיקה",
   "loading_comments": "טוען תגובות",
   "you_blocked_community": "חסמת את הקהילה הזו",
-  "show": "תצוגה"
+  "show": "תצוגה",
+  "plebbit_options": "אפשרויות plebbit",
+  "general": "כללי"
 }

@@ -126,6 +126,10 @@ export const isSettingsView = (pathname: string): boolean => {
   return pathname === '/settings';
 };
 
+export const isSettingsPlebbitOptionsView = (pathname: string): boolean => {
+  return pathname === '/settings/plebbit-options';
+};
+
 export const isSubmitView = (pathname: string): boolean => {
   return pathname === '/submit';
 };

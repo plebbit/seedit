@@ -300,5 +300,7 @@
   "undelete": "삭제 취소",
   "loading_comments": "댓글 로드 중",
   "you_blocked_community": "이 커뮤니티를 차단했습니다",
-  "show": "보여주다"
+  "show": "보여주다",
+  "plebbit_options": "plebbit 옵션",
+  "general": "일반"
 }

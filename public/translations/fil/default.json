@@ -300,5 +300,7 @@
   "undelete": "I-undelete",
   "loading_comments": "Naglo-load ng mga komento",
   "you_blocked_community": "I-block mo ang komunidad na ito",
-  "show": "ipakita"
+  "show": "ipakita",
+  "plebbit_options": "mga pagpipilian ng plebbit",
+  "general": "pangkalahatan"
 }

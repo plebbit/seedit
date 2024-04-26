@@ -300,5 +300,7 @@
   "undelete": "Herstellen",
   "loading_comments": "Reacties laden",
   "you_blocked_community": "U hebt deze gemeenschap geblokkeerd",
-  "show": "tonen"
+  "show": "tonen",
+  "plebbit_options": "plebbit-opties",
+  "general": "algemeen"
 }

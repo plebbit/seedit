@@ -34,6 +34,7 @@ import {
   isSubplebbitsVoteView,
   isSubplebbitsOwnerView,
   isProfileUpvotedView,
+  isSettingsPlebbitOptionsView,
 } from '../../lib/utils/view-utils';
 import useTheme from '../../hooks/use-theme';
 import { TimeFilterKey } from '../../hooks/use-time-filter';
@@ -243,6 +244,26 @@ const SubplebbitsHeaderTabs = () => {
   );
 };
 
+const SettingsHeaderTabs = () => {
+  const { t } = useTranslation();
+  const isInSettingsPlebbitOptionsView = isSettingsPlebbitOptionsView(useLocation().pathname);
+
+  return (
+    <>
+      <li>
+        <Link to={'/settings'} className={isInSettingsPlebbitOptionsView ? styles.choice : styles.selected}>
+          {t('general')}
+        </Link>
+      </li>
+      <li>
+        <Link to={'/settings/plebbit-options'} className={isInSettingsPlebbitOptionsView ? styles.selected : styles.choice}>
+          {t('plebbit_options')}
+        </Link>
+      </li>
+    </>
+  );
+};
+
 const HeaderTabs = () => {
   const { t } = useTranslation();
   const params = useParams();
@@ -260,6 +281,8 @@ const HeaderTabs = () => {
   const isInSubplebbitSubmitView = isSubplebbitSubmitView(location.pathname, params);
   const isInSubplebbitsView = isSubplebbitsView(location.pathname);
   const isInCreateSubplebbitView = isCreateSubplebbitView(location.pathname);
+  const isInSettingsView = isSettingsView(location.pathname);
+  const isInSettingsPlebbitOptionsView = isSettingsPlebbitOptionsView(location.pathname);
 
   if (isInPostView) {
     return <CommentsButton />;
@@ -273,6 +296,8 @@ const HeaderTabs = () => {
     return <InboxHeaderTabs />;
   } else if (isInSubplebbitsView && !isInCreateSubplebbitView) {
     return <SubplebbitsHeaderTabs />;
+  } else if (isInSettingsView || isInSettingsPlebbitOptionsView) {
+    return <SettingsHeaderTabs />;
   }
   return null;
 };
@@ -288,6 +313,7 @@ const HeaderTitle = ({ title, shortAddress }: { title: string; shortAddress: str
   const isInPostView = isPostView(location.pathname, params);
   const isInProfileView = isProfileView(location.pathname);
   const isInSettingsView = isSettingsView(location.pathname);
+  const isInSettingsPlebbitOptionsView = isSettingsPlebbitOptionsView(location.pathname);
   const isInSubmitView = isSubmitView(location.pathname);
   const isInSubplebbitView = isSubplebbitView(location.pathname, params);
   const isInSubplebbitSubmitView = isSubplebbitSubmitView(location.pathname, params);
@@ -317,7 +343,7 @@ const HeaderTitle = ({ title, shortAddress }: { title: string; shortAddress: str
     );
   } else if (isInSubmitView) {
     return submitTitle;
-  } else if (isInSettingsView) {
+  } else if (isInSettingsView || isInSettingsPlebbitOptionsView) {
     return t('preferences');
   } else if (isInProfileView) {
     return profileTitle;
@@ -360,7 +386,7 @@ const Header = () => {
   const isInSubplebbitSettingsView = isSubplebbitSettingsView(location.pathname, params);
   const isInNotFoundView = useNotFoundStore((state) => state.isNotFound);
 
-  const hasFewTabs = isInPostView || isInSubmitView || isInSubplebbitSubmitView || isInSubplebbitSettingsView || isInSettingsView || isInInboxView;
+  const hasFewTabs = isInPostView || isInSubmitView || isInSubplebbitSubmitView || isInSubplebbitSettingsView || isInSettingsView || isInInboxView || isInSettingsView;
   const hasStickyHeader =
     isInHomeView ||
     isInNotFoundView ||

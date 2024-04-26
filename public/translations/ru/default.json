@@ -300,5 +300,7 @@
   "undelete": "Восстановить",
   "loading_comments": "Загрузка комментариев",
   "you_blocked_community": "Вы заблокировали это сообщество",
-  "show": "показать"
+  "show": "показать",
+  "plebbit_options": "опции plebbit",
+  "general": "общий"
 }

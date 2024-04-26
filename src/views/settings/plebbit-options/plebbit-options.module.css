@@ -1,0 +1,77 @@
+.content {
+  margin: 7px 5px 40px 5px;
+  font-size: 12px;
+  color: var(--text);
+  width: 100%;
+}
+
+.category {
+  display: flex;
+  align-items: flex-start;
+}
+
+.categoryTitle {
+  flex: 0 0 169px;
+  height: 100%;
+  padding: 10px;
+  font-weight: bold;
+  text-align: right;
+  text-transform: lowercase;
+}
+
+.categorySettings {
+  flex-grow: 1;
+  padding: 10px 0;
+}
+
+.settingTitle {
+  font-style: italic;
+}
+
+.content input[type="text"], .content textarea {
+  padding: 2px;
+  box-shadow: var(--box-shadow-input);
+}
+
+.content input[type="text"], .content textarea {
+  width: 210px;
+}
+
+.content textarea {
+  height: 80px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.content button {
+  vertical-align: top;
+  margin-left: 5px;
+  cursor: pointer;
+}
+
+.ipfsGatewaysSettings textarea {
+  margin-bottom: 5px;
+}
+
+.blockchainProvidersSettings input[type="text"] {
+  margin-bottom: 5px;
+}
+
+.plebbitRpcSettingsInfo {
+  padding: 5px 20px 0 0;
+  word-break: break-word;
+}
+
+.plebbitRpcSettingsInfo ol {
+  padding-bottom: 5px;
+  padding-left: 40px;
+}
+
+@media (max-width: 640px) {
+  .categoryTitle {
+    flex: 0 0 65px;
+  }
+
+  .categorySettings input {
+    width: 35vw;
+  }
+}

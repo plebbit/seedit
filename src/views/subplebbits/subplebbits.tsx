@@ -14,7 +14,7 @@ import {
   isSubplebbitsVotePassingView,
   isSubplebbitsVoteRejectingView,
 } from '../../lib/utils/view-utils';
-import { useDefaultSubplebbitAddresses } from '../../lib/utils/addresses-utils';
+import { useDefaultSubplebbitAddresses } from '../../hooks/use-default-subplebbits';
 import Markdown from '../../components/markdown';
 import Label from '../../components/post/label';
 import Sidebar from '../../components/sidebar';
