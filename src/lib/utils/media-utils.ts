@@ -55,7 +55,8 @@ export const getLinkMediaInfo = memoize(
     let mime: string | undefined;
 
     try {
-      mime = extName(url.pathname.slice(url.pathname.lastIndexOf('/') + 1))[0]?.mime;
+      const fileName = url.pathname.slice(url.pathname.lastIndexOf('/') + 1).toLowerCase();
+      mime = extName(fileName)[0]?.mime;
       if (mime) {
         if (mime.startsWith('image')) {
           type = mime === 'image/gif' ? 'gif' : 'image';
