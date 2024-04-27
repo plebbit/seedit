@@ -302,5 +302,6 @@
   "you_blocked_community": "Вы заблокировали это сообщество",
   "show": "показать",
   "plebbit_options": "опции plebbit",
-  "general": "общий"
+  "general": "общий",
+  "own_communities": "собственные сообщества"
 }

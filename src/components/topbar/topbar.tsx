@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { useAccount } from '@plebbit/plebbit-react-hooks';
+import { useAccount, useAccountSubplebbits } from '@plebbit/plebbit-react-hooks';
 import Plebbit from '@plebbit/plebbit-js/dist/browser/index.js';
 import styles from './topbar.module.css';
 import { useDefaultSubplebbitAddresses } from '../../hooks/use-default-subplebbits';
@@ -121,6 +121,8 @@ const TopBar = () => {
     }
   };
 
+  const { accountSubplebbits } = useAccountSubplebbits();
+
   return (
     <div className={styles.headerArea}>
       <div className={styles.widthClip}>
@@ -135,6 +137,11 @@ const TopBar = () => {
             <span onClick={handleCreateCommunity} className={`${styles.dropdownItem} ${styles.myCommunitiesItemButtonDotted}`}>
               {t('create_community')}
             </span>
+            {accountSubplebbits && Object.keys(accountSubplebbits).length > 0 && (
+              <Link to='/communities/owner' className={`${styles.dropdownItem} ${styles.myCommunitiesItemButton}`}>
+                {t('own_communities')}
+              </Link>
+            )}
             <Link to='/communities/vote' className={`${styles.dropdownItem} ${styles.myCommunitiesItemButton}`}>
               {t('default_communities')}
             </Link>

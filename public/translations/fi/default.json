@@ -302,5 +302,6 @@
   "you_blocked_community": "Olet estänyt tämän yhteisön",
   "show": "näyttää",
   "plebbit_options": "plebbit-vaihtoehdot",
-  "general": "yleinen"
+  "general": "yleinen",
+  "own_communities": "omat yhteisöt"
 }

@@ -302,5 +302,6 @@
   "you_blocked_community": "이 커뮤니티를 차단했습니다",
   "show": "보여주다",
   "plebbit_options": "plebbit 옵션",
-  "general": "일반"
+  "general": "일반",
+  "own_communities": "나의 커뮤니티"
 }
