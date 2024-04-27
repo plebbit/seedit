@@ -73,14 +73,15 @@ const PlebbitRPCSettings = ({ isElectron }: { isElectron: boolean }) => {
       </div>
       {showInfo && (
         <div className={styles.plebbitRpcSettingsInfo}>
-          connect to a plebbit full node locally, or remotely if SSL is setup
+          use a plebbit full node locally, or remotely via SSL
           <br />
           <ol>
             <li>get secret auth key from the node</li>
             <li>get IP address and port used by the node</li>
             <li>
-              save node rpc: <code>{`ws://<IP>:<port>/<secretAuthKey>`}</code>
+              enter: <code>{`ws://<IP>:<port>/<secretAuthKey>`}</code>
             </li>
+            <li>click save to connect</li>
           </ol>
         </div>
       )}

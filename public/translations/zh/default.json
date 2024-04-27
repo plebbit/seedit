@@ -302,5 +302,6 @@
   "you_blocked_community": "您已封锁了此社区",
   "show": "显示",
   "plebbit_options": "plebbit选项",
-  "general": "一般"
+  "general": "一般",
+  "own_communities": "自己的社区"
 }

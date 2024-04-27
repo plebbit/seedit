@@ -302,5 +302,6 @@
   "you_blocked_community": "Du har blokeret dette fællesskab",
   "show": "vise",
   "plebbit_options": "plebbit indstillinger",
-  "general": "almindelig"
+  "general": "almindelig",
+  "own_communities": "egne fællesskaber"
 }

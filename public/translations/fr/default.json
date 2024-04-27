@@ -302,5 +302,6 @@
   "you_blocked_community": "Vous avez bloqué cette communauté",
   "show": "montrer",
   "plebbit_options": "options plebbit",
-  "general": "général"
+  "general": "général",
+  "own_communities": "communautés propres"
 }

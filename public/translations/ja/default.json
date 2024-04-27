@@ -302,5 +302,6 @@
   "you_blocked_community": "このコミュニティをブロックしました",
   "show": "表示",
   "plebbit_options": "plebbitのオプション",
-  "general": "一般的な"
+  "general": "一般的な",
+  "own_communities": "自分のコミュニティ"
 }

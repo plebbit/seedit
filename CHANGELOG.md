@@ -1,3 +1,33 @@
+## [0.1.11](https://github.com/plebbit/seedit/compare/v0.1.10...v0.1.11) (2024-04-27)
+
+
+### Bug Fixes
+
+* creating a sub wouldn't work if fields were defined ([2a4f057](https://github.com/plebbit/seedit/commit/2a4f057059d2922ebb53d1193c5baa614406eb56))
+* **embed:** detect uppercase extension in link ([18a63df](https://github.com/plebbit/seedit/commit/18a63df59de35fc3fb3bee4dea6174ba6bb8c2c6))
+* **home:** remove feed render delay for subscriptions ([c383d90](https://github.com/plebbit/seedit/commit/c383d90c5f711fcb83d02cbf99e9a10f6f50ac4f))
+* **reply:** default vote count to 1 ([ae3b28f](https://github.com/plebbit/seedit/commit/ae3b28f39e9019d9893691b9ae994d393ad71ea7))
+* the position of subscribe buttons in p/all feed is bugged on narrow screen ([7dd6846](https://github.com/plebbit/seedit/commit/7dd6846cdb5518113b8993a1e359e684f7696bf0))
+* **topbar:** last sub in the list was covered by the 'more' button ([ce3ed14](https://github.com/plebbit/seedit/commit/ce3ed1447ef71fe1b4f49f6f80898e879d469f74))
+
+
+### Features
+
+* **electron:** add window.plebbitRpcAuthKey ([328e3a0](https://github.com/plebbit/seedit/commit/328e3a09e94d4925c872c1f4568da84b388a8f7b))
+* **embed:** add soundcloud embeds ([4058df5](https://github.com/plebbit/seedit/commit/4058df5b25177d786c2b88ae73753dc0c39bdb5e))
+* **reply:** add support for audio embeds, prefer hostname as link to show instead of full link ([d457a50](https://github.com/plebbit/seedit/commit/d457a506f43d96256779e3d56432b80ebedaa15c))
+* **settings:** add plebbit options ([5ab14bf](https://github.com/plebbit/seedit/commit/5ab14bff0a20757bcb55deb019aa6aebe0dfade8))
+* **settings:** add plebbit options route ([25ff98e](https://github.com/plebbit/seedit/commit/25ff98e09543195e9f5f5a30026d3ffc187a5871))
+* **topbar:** add 'own communities' button in dropdown ([0cf89c2](https://github.com/plebbit/seedit/commit/0cf89c2d39f52a9474e0853ebbe1b9dbc5361efd))
+
+
+### Performance Improvements
+
+* **app:** improve mobile design rensponsiveness ([6fe43e4](https://github.com/plebbit/seedit/commit/6fe43e43dcd34564438fc235121d7e8f6ed872d4))
+* **media utils:** optimize loading of media and link preview ([177a994](https://github.com/plebbit/seedit/commit/177a994502e1bc4dd4534e62d643d19212158093))
+
+
+
 ## [0.1.10](https://github.com/plebbit/seedit/compare/v0.1.9...v0.1.10) (2024-03-27)
 
 
