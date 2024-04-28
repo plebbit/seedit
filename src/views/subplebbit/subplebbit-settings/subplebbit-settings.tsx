@@ -951,7 +951,7 @@ const SubplebbitSettings = () => {
           </div>
         )}
         {!isReadOnly && (
-          <button onClick={() => (isInCreateSubplebbitView ? createSubplebbit() : saveSubplebbit)} disabled={showSaving || showDeleting}>
+          <button onClick={() => (isInCreateSubplebbitView ? createSubplebbit() : saveSubplebbit())} disabled={showSaving || showDeleting}>
             {isInCreateSubplebbitView ? t('create_community') : t('save_options')}
           </button>
         )}
