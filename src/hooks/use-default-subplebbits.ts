@@ -46,7 +46,8 @@ export const useDefaultSubplebbitAddresses = () => {
 };
 
 export const useDefaultAndSubscriptionsSubplebbitAddresses = () => {
-  const subscriptions = useAccount()?.subscriptions ?? [];
+  const account = useAccount();
+  const subscriptions = useMemo(() => account?.subscriptions ?? [], [account?.subscriptions]);
   const defaultSubplebbitAddresses = useDefaultSubplebbitAddresses();
 
   return useMemo(() => {
