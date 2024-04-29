@@ -20,6 +20,7 @@ type SubmitState = {
   content: string | undefined;
   link: string | undefined;
   publishCommentOptions: PublishCommentOptions;
+  spoiler: boolean | undefined;
   setSubmitStore: (data: Partial<SubmitState>) => void;
   resetSubmitStore: () => void;
 };
@@ -31,14 +32,16 @@ const useSubmitStore = create<SubmitState>((set) => ({
   title: undefined,
   content: undefined,
   link: undefined,
+  spoiler: undefined,
   publishCommentOptions: {},
-  setSubmitStore: ({ subplebbitAddress, title, content, link }) =>
+  setSubmitStore: ({ subplebbitAddress, title, content, link, spoiler }) =>
     set((state) => {
       const nextState = { ...state };
       if (subplebbitAddress !== undefined) nextState.subplebbitAddress = subplebbitAddress;
       if (title !== undefined) nextState.title = title || undefined;
       if (content !== undefined) nextState.content = content || undefined;
       if (link !== undefined) nextState.link = link || undefined;
+      if (spoiler !== undefined) nextState.spoiler = spoiler || undefined;
 
       nextState.publishCommentOptions = {
         ...nextState,
@@ -52,7 +55,7 @@ const useSubmitStore = create<SubmitState>((set) => ({
       };
       return nextState;
     }),
-  resetSubmitStore: () => set({ subplebbitAddress: undefined, title: undefined, content: undefined, link: undefined, publishCommentOptions: {} }),
+  resetSubmitStore: () => set({ subplebbitAddress: undefined, title: undefined, content: undefined, link: undefined, spoiler: undefined, publishCommentOptions: {} }),
 }));
 
 const UrlField = () => {
@@ -125,7 +128,7 @@ const Submit = () => {
   const location = useLocation();
   const isInSubmitView = isSubmitView(location.pathname);
 
-  const { title, content, link, subplebbitAddress, publishCommentOptions, setSubmitStore, resetSubmitStore } = useSubmitStore();
+  const { title, content, link, spoiler, subplebbitAddress, publishCommentOptions, setSubmitStore, resetSubmitStore } = useSubmitStore();
   const { index, publishComment } = usePublishComment(publishCommentOptions);
   const { subscriptions } = account || {};
   const defaultSubplebbitAddresses = useDefaultSubplebbitAddresses();
@@ -340,6 +343,17 @@ const Submit = () => {
               </div>
             </div>
           )}
+          <div className={styles.box}>
+            <div className={styles.boxTitle}>{t('options')}</div>
+            <div className={styles.boxContent}>
+              <div className={styles.options}>
+                <label>
+                  <input type='checkbox' onChange={(e) => setSubmitStore({ spoiler: e.target.checked })} />
+                  {t('mark_spoiler')}
+                </label>
+              </div>
+            </div>
+          </div>
           <div className={`${styles.box} ${styles.notice}`}>{t('submit_notice')}</div>
           <div>*{t('required')}</div>
           <div className={styles.submit}>

@@ -188,6 +188,15 @@ h1 {
   border: none;
 }
 
+.options {
+  text-transform: lowercase;
+  font-size: 15px;
+}
+
+.options input {
+  margin: 2px .5em 0 0;
+}
+
 @media (max-width: 640px) {
   .formContent {
     width: 100%;
