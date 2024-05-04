@@ -1,3 +1,23 @@
+## [0.1.12](https://github.com/plebbit/seedit/compare/v0.1.11...v0.1.12) (2024-05-04)
+
+
+### Bug Fixes
+
+* **subplebbit settings:** stupid typo prevented edit from working ([6f67c26](https://github.com/plebbit/seedit/commit/6f67c263d00e1379843121a319cb6aa7c565ed3c))
+
+
+### Features
+
+* **loading ellipsis:** improve animation ([e8fafad](https://github.com/plebbit/seedit/commit/e8fafad27b2b5da7964c3bf866c1337aa30e0aa6))
+* **submit page:** add spoiler option ([e4a50fe](https://github.com/plebbit/seedit/commit/e4a50feec7e6abb179daba9bddca63bc6516ddfc))
+
+
+### Performance Improvements
+
+* **use-default-subplebbits:** memoize subscriptions ([8470300](https://github.com/plebbit/seedit/commit/8470300a0fad1d6a982c414f95ca725f993ea9e4))
+
+
+
 ## [0.1.11](https://github.com/plebbit/seedit/compare/v0.1.10...v0.1.11) (2024-04-27)
 
 

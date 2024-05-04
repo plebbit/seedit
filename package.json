@@ -1,6 +1,6 @@
 {
   "name": "seedit",
-  "version": "0.1.11",
+  "version": "0.1.12",
   "description": "A GUI for plebbit similar to old.reddit",
   "type": "module",
   "author": "plebeius.eth",
@@ -9,7 +9,7 @@
   "dependencies": {
     "@capacitor/app": "1.1.1",
     "@floating-ui/react": "0.26.1",
-    "@plebbit/plebbit-react-hooks": "https://github.com/plebbit/plebbit-react-hooks.git#6d0d38ad52ce77715cb05be6cec55d691f5f013d",
+    "@plebbit/plebbit-react-hooks": "https://github.com/plebbit/plebbit-react-hooks.git#ebad94cad75020c6eef2516fffc87f5a7b7181ff",
     "@testing-library/jest-dom": "5.14.1",
     "@testing-library/react": "13.0.0",
     "@testing-library/user-event": "13.2.1",

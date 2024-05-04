@@ -128,7 +128,7 @@ const Submit = () => {
   const location = useLocation();
   const isInSubmitView = isSubmitView(location.pathname);
 
-  const { title, content, link, spoiler, subplebbitAddress, publishCommentOptions, setSubmitStore, resetSubmitStore } = useSubmitStore();
+  const { title, content, link, subplebbitAddress, publishCommentOptions, setSubmitStore, resetSubmitStore } = useSubmitStore();
   const { index, publishComment } = usePublishComment(publishCommentOptions);
   const { subscriptions } = account || {};
   const defaultSubplebbitAddresses = useDefaultSubplebbitAddresses();
