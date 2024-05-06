@@ -21,11 +21,14 @@ const Subplebbit = () => {
   const subplebbitAddress = params.subplebbitAddress;
   const subplebbitAddresses = useMemo(() => [subplebbitAddress], [subplebbitAddress]) as string[];
   const subplebbit = useSubplebbit({ subplebbitAddress });
-  const { createdAt, description, roles, rules, shortAddress, state, title, updatedAt, settings } = subplebbit || {};
+  const { createdAt, description, roles, rules, shortAddress, started, state, title, updatedAt, settings } = subplebbit || {};
   const { feed, hasMore, loadMore } = useFeed({ subplebbitAddresses, sortType, filter: timeFilter });
-  const loadingStateString = useFeedStateString(subplebbitAddresses) || t('loading');
 
+  const loadingStateString = useFeedStateString(subplebbitAddresses) || t('loading');
   const loadingString = <div className={styles.stateString}>{state === 'failed' ? state : <LoadingEllipsis string={loadingStateString} />}</div>;
+
+  let isOnline = updatedAt && updatedAt > Date.now() / 1000 - 60 * 30;
+  const isSubCreatedButNotYetPublished = typeof createdAt === 'number' && !updatedAt;
 
   const { blocked } = useBlock({ address: subplebbitAddress });
 
@@ -36,16 +39,18 @@ const Subplebbit = () => {
   const Footer = () => {
     let footerContent;
 
-    if (feed.length === 0) {
+    if (feed.length === 0 && isOnline) {
       if (blocked) {
         footerContent = t('you_blocked_community');
       } else {
         footerContent = t('no_posts');
       }
-    }
-
-    if (hasMore || subplebbitAddresses.length === 0) {
+    } else if (feed.length === 0 && started && isSubCreatedButNotYetPublished) {
+      footerContent = t('no_posts');
+    } else if (hasMore) {
       footerContent = loadingString;
+    } else {
+      return;
     }
 
     return <div className={styles.footer}>{footerContent}</div>;
@@ -74,6 +79,7 @@ const Subplebbit = () => {
           address={subplebbitAddress}
           createdAt={createdAt}
           description={description}
+          isSubCreatedButNotYetPublished={started && isSubCreatedButNotYetPublished}
           roles={roles}
           rules={rules}
           title={title}
