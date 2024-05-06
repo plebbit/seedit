@@ -1,3 +1,20 @@
+## [0.1.13](https://github.com/plebbit/seedit/compare/v0.1.12...v0.1.13) (2024-05-06)
+
+
+### Bug Fixes
+
+* **embed:** pass origin to youtube because popular videos won't load without it ([4d60d9b](https://github.com/plebbit/seedit/commit/4d60d9b576a35c5a28960b2afd9c237f6797b97c))
+* **index.html:** add no-referrer meta tag to resolve CORP-related media access issues ([dcd06d3](https://github.com/plebbit/seedit/commit/dcd06d3fc1921a523b05c4bd1740456a09b7b97c))
+* **loading ellipsis:** was not aligned to text bottom ([f184bb6](https://github.com/plebbit/seedit/commit/f184bb67ee80c48811aa049953840a063389947a))
+* **subplebbit settings:** edits didn't work ([3cb5229](https://github.com/plebbit/seedit/commit/3cb52299410ca8319d974adc3c6a54fd7065b468))
+
+
+### Features
+
+* **subplebbit:** show 'no posts' loading state if sub was just created, not yet published and there are no posts yet (owner can already post) ([de5e999](https://github.com/plebbit/seedit/commit/de5e9997ad649d0c4586510503ba492ba436570c))
+
+
+
 ## [0.1.12](https://github.com/plebbit/seedit/compare/v0.1.11...v0.1.12) (2024-05-04)
 
 
