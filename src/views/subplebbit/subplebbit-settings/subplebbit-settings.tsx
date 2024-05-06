@@ -63,6 +63,7 @@ const useSubplebbitSettingsStore = create<SubplebbitSettingsState>((set) => ({
       if (nextState.rules !== undefined) editOptions.rules = nextState.rules;
       if (nextState.roles !== undefined) editOptions.roles = nextState.roles;
       if (nextState.settings !== undefined) editOptions.settings = nextState.settings;
+      if (nextState.subplebbitAddress !== undefined) editOptions.subplebbitAddress = nextState.subplebbitAddress;
       nextState.publishSubplebbitEditOptions = editOptions;
       return nextState;
     }),
@@ -834,7 +835,7 @@ const SubplebbitSettings = () => {
       setShowSaving(true);
       await publishSubplebbitEdit();
       setShowSaving(false);
-      alert(t('settings_saved', { subplebbitAddress: shortAddress }));
+      alert(t('settings_saved', { subplebbitAddress }));
     } catch (e) {
       if (e instanceof Error) {
         console.warn(e);
