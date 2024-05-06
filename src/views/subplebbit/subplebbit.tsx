@@ -21,13 +21,14 @@ const Subplebbit = () => {
   const subplebbitAddress = params.subplebbitAddress;
   const subplebbitAddresses = useMemo(() => [subplebbitAddress], [subplebbitAddress]) as string[];
   const subplebbit = useSubplebbit({ subplebbitAddress });
-  const { createdAt, description, roles, rules, shortAddress, state, title, updatedAt, settings } = subplebbit || {};
+  const { createdAt, description, roles, rules, shortAddress, started, state, title, updatedAt, settings } = subplebbit || {};
   const { feed, hasMore, loadMore } = useFeed({ subplebbitAddresses, sortType, filter: timeFilter });
 
-  const isSubCreatedButNotYetPublished = typeof createdAt === 'number' && !updatedAt;
   const loadingStateString = useFeedStateString(subplebbitAddresses) || t('loading');
   const loadingString = <div className={styles.stateString}>{state === 'failed' ? state : <LoadingEllipsis string={loadingStateString} />}</div>;
-  const isOnline = updatedAt && updatedAt > Date.now() / 1000 - 60 * 30;
+
+  let isOnline = updatedAt && updatedAt > Date.now() / 1000 - 60 * 30;
+  const isSubCreatedButNotYetPublished = typeof createdAt === 'number' && !updatedAt;
 
   const { blocked } = useBlock({ address: subplebbitAddress });
 
@@ -44,7 +45,7 @@ const Subplebbit = () => {
       } else {
         footerContent = t('no_posts');
       }
-    } else if (feed.length === 0 && isSubCreatedButNotYetPublished) {
+    } else if (feed.length === 0 && started && isSubCreatedButNotYetPublished) {
       footerContent = t('no_posts');
     } else if (hasMore) {
       footerContent = loadingString;
@@ -78,6 +79,7 @@ const Subplebbit = () => {
           address={subplebbitAddress}
           createdAt={createdAt}
           description={description}
+          isSubCreatedButNotYetPublished={started && isSubCreatedButNotYetPublished}
           roles={roles}
           rules={rules}
           title={title}

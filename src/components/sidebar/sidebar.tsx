@@ -21,6 +21,7 @@ interface sidebarProps {
   cid?: string;
   createdAt?: number;
   description?: string;
+  isSubCreatedButNotYetPublished?: boolean;
   downvoteCount?: number;
   roles?: Record<string, Role>;
   rules?: string[];
@@ -124,7 +125,21 @@ const downloadAppLink = (() => {
   }
 })();
 
-const Sidebar = ({ address, cid, createdAt, description, downvoteCount = 0, roles, rules, timestamp = 0, title, updatedAt, upvoteCount = 0, settings }: sidebarProps) => {
+const Sidebar = ({
+  address,
+  cid,
+  createdAt,
+  description,
+  downvoteCount = 0,
+  isSubCreatedButNotYetPublished,
+  roles,
+  rules,
+  timestamp = 0,
+  title,
+  updatedAt,
+  upvoteCount = 0,
+  settings,
+}: sidebarProps) => {
   const { t } = useTranslation();
   const { allActiveUserCount, hourActiveUserCount } = useSubplebbitStats({ subplebbitAddress: address });
   const isOnline = updatedAt && updatedAt > Date.now() / 1000 - 60 * 30;
@@ -132,7 +147,6 @@ const Sidebar = ({ address, cid, createdAt, description, downvoteCount = 0, role
   const offlineNotice = updatedAt && t('posts_last_synced', { dateAgo: getFormattedTimeAgo(updatedAt) });
   const onlineStatus = isOnline ? onlineNotice : offlineNotice;
 
-  const isSubCreatedButNotYetPublished = typeof createdAt === 'number' && !updatedAt;
   const subCreatedButNotYetPublishedStatus = <LoadingEllipsis string='Publishing community over IPFS' />;
 
   const location = useLocation();
