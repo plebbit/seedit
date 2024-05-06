@@ -10,6 +10,7 @@ import Markdown from '../markdown';
 import SearchBar from '../search-bar';
 import SubscribeButton from '../subscribe-button';
 import packageJson from '../../../package.json';
+import LoadingEllipsis from '../loading-ellipsis';
 
 const { version } = packageJson;
 const commitRef = process.env.REACT_APP_COMMIT_REF;
@@ -131,6 +132,9 @@ const Sidebar = ({ address, cid, createdAt, description, downvoteCount = 0, role
   const offlineNotice = updatedAt && t('posts_last_synced', { dateAgo: getFormattedTimeAgo(updatedAt) });
   const onlineStatus = isOnline ? onlineNotice : offlineNotice;
 
+  const isSubCreatedButNotYetPublished = typeof createdAt === 'number' && !updatedAt;
+  const subCreatedButNotYetPublishedStatus = <LoadingEllipsis string='Publishing community over IPFS' />;
+
   const location = useLocation();
   const params = useParams();
   const isInAboutView = isAboutView(location.pathname);
@@ -208,7 +212,7 @@ const Sidebar = ({ address, cid, createdAt, description, downvoteCount = 0, role
           </div>
           <div className={styles.onlineLine}>
             <span className={`${styles.onlineIndicator} ${isOnline ? styles.online : styles.offline}`} title={isOnline ? t('online') : t('offline')} />
-            <span>{onlineStatus}</span>
+            <span>{isSubCreatedButNotYetPublished ? subCreatedButNotYetPublishedStatus : onlineStatus}</span>
           </div>
           {description && (
             <div>
