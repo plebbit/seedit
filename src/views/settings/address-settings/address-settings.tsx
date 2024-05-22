@@ -155,7 +155,6 @@ const AddressSettings = () => {
           </button>{' '}
           <span className={cryptoState.resolveClass}>{cryptoState.resolveString}</span>
         </div>
-        <div></div>
       </div>
     </div>
   );

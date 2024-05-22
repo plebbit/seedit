@@ -38,7 +38,6 @@ const Post = ({ post }: { post: Comment }) => {
 
   const commentCount = replyCount === 0 ? t('no_comments') : replyCount === 1 ? t('one_comment') : t('all_comments', { count: replyCount });
   const stateString = useStateString(post);
-  const loadingString = stateString && <div className={styles.stateString}>{stateString !== 'failed' ? <LoadingEllipsis string={stateString} /> : stateString}</div>;
 
   const lockedState = deleted ? t('deleted') : locked ? t('locked') : removed ? t('removed') : '';
 
@@ -84,7 +83,15 @@ const Post = ({ post }: { post: Comment }) => {
           </div>
         </div>
       )}
-      <span className={styles.loadingString}>{loadingString && loadingString}</span>
+      <span className={styles.loadingString}>
+        {stateString && stateString !== 'Failed' ? (
+          <div className={styles.stateString}>
+            <LoadingEllipsis string={stateString} />
+          </div>
+        ) : (
+          t('failed')
+        )}
+      </span>
     </>
   );
 };
@@ -98,7 +105,6 @@ const PostWithContext = ({ post }: { post: Comment }) => {
   const topParentComment = useComment({ commentCid: topParentCid || '' });
 
   const stateString = useStateString(post);
-  const loadingString = stateString && <div className={styles.stateString}>{stateString !== 'failed' ? <LoadingEllipsis string={stateString} /> : stateString}</div>;
 
   return (
     <>
@@ -117,7 +123,13 @@ const PostWithContext = ({ post }: { post: Comment }) => {
             </div>
           </div>
           <div className={styles.spacer} />
-          {loadingString && loadingString}
+          {stateString && stateString !== 'Failed' ? (
+            <div className={styles.stateString}>
+              <LoadingEllipsis string={stateString} />
+            </div>
+          ) : (
+            t('failed')
+          )}
         </div>
         <div className={styles.singleCommentInfobar}>
           <div className={styles.singleCommentInfobarText}>{t('single_comment_notice')}</div>

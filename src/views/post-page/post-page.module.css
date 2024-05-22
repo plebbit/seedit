@@ -40,6 +40,7 @@
 
 .loadingString {
   padding: 5px;
+  position: absolute;
 }
 
 .dropdown {

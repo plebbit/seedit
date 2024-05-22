@@ -73,7 +73,7 @@ const PlebbitRPCSettings = ({ isElectron }: { isElectron: boolean }) => {
       </div>
       {showInfo && (
         <div className={styles.plebbitRpcSettingsInfo}>
-          use a plebbit full node locally, or remotely via SSL
+          use a plebbit full node locally, or remotely with SSL
           <br />
           <ol>
             <li>get secret auth key from the node</li>
