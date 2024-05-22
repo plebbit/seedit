@@ -26,7 +26,9 @@ const PendingPost = () => {
   return (
     <div className={styles.container}>
       <Post post={post} />
-      <div className={styles.stateString}>{stateString && stateString !== 'Failed' ? <LoadingEllipsis string={stateString} /> : t('failed')}</div>
+      <div className={styles.stateString}>
+        {stateString && stateString !== 'Failed' ? <LoadingEllipsis string={stateString} /> : post?.state === 'failed' && t('failed')}
+      </div>
     </div>
   );
 };

@@ -30,7 +30,7 @@ const PendingPost = ({ commentIndex }: { commentIndex?: number }) => {
 
 const Post = ({ post }: { post: Comment }) => {
   const { t } = useTranslation();
-  const { cid, deleted, depth, locked, removed, postCid, replyCount, subplebbitAddress, timestamp } = post || {};
+  const { cid, deleted, depth, locked, removed, postCid, replyCount, state, subplebbitAddress, timestamp } = post || {};
 
   const replies = useReplies(post);
 
@@ -89,7 +89,7 @@ const Post = ({ post }: { post: Comment }) => {
             <LoadingEllipsis string={stateString} />
           </div>
         ) : (
-          t('failed')
+          state === 'failed' && t('failed')
         )}
       </span>
     </>
@@ -98,7 +98,7 @@ const Post = ({ post }: { post: Comment }) => {
 
 const PostWithContext = ({ post }: { post: Comment }) => {
   const { t } = useTranslation();
-  const { deleted, locked, postCid, removed, subplebbitAddress } = post || {};
+  const { deleted, locked, postCid, removed, state, subplebbitAddress } = post || {};
 
   const postComment = useComment({ commentCid: post?.postCid });
   const topParentCid = findTopParentCidOfReply(post.cid, postComment);
@@ -128,7 +128,7 @@ const PostWithContext = ({ post }: { post: Comment }) => {
               <LoadingEllipsis string={stateString} />
             </div>
           ) : (
-            t('failed')
+            state === 'failed' && t('failed')
           )}
         </div>
         <div className={styles.singleCommentInfobar}>
