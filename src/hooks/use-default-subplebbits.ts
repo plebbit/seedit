@@ -16,6 +16,18 @@ export interface SubplebbitWithDisplay extends Subplebbit {
 
 let cache: Subplebbit[] | null = null;
 
+export const categorizeSubplebbits = (subplebbits: Subplebbit[]) => {
+  const plebbitSubs = subplebbits.filter((sub) => sub.tags?.includes('plebbit'));
+  const interestsSubs = subplebbits.filter(
+    (sub) => sub.tags?.includes('topic') && !sub.tags?.includes('plebbit') && !sub.tags?.includes('country') && !sub.tags?.includes('international'),
+  );
+  const randomSubs = subplebbits.filter((sub) => sub.tags?.includes('random') && !sub.tags?.includes('plebbit'));
+  const internationalSubs = subplebbits.filter((sub) => sub.tags?.includes('international') || sub.tags?.includes('country'));
+  const projectsSubs = subplebbits.filter((sub) => sub.tags?.includes('project') && !sub.tags?.includes('plebbit') && !sub.tags?.includes('topic'));
+
+  return { plebbitSubs, interestsSubs, randomSubs, internationalSubs, projectsSubs };
+};
+
 export const useDefaultSubplebbits = () => {
   const [subplebbits, setSubplebbits] = useState<Subplebbit[]>([]);
   const nsfwTags = ['gore', 'adult', 'anti'];
@@ -48,7 +60,18 @@ export const useDefaultSubplebbits = () => {
 
 export const useDefaultSubplebbitAddresses = () => {
   const defaultSubplebbits = useDefaultSubplebbits();
-  return useMemo(() => defaultSubplebbits.map((subplebbit: Subplebbit) => subplebbit.address), [defaultSubplebbits]);
+  const categorizedSubplebbits = useMemo(() => categorizeSubplebbits(defaultSubplebbits), [defaultSubplebbits]);
+  return useMemo(
+    () =>
+      [
+        ...categorizedSubplebbits.plebbitSubs,
+        ...categorizedSubplebbits.interestsSubs,
+        ...categorizedSubplebbits.randomSubs,
+        ...categorizedSubplebbits.projectsSubs,
+        ...categorizedSubplebbits.internationalSubs,
+      ].map((subplebbit) => subplebbit.address),
+    [categorizedSubplebbits],
+  );
 };
 
 export const useDefaultAndSubscriptionsSubplebbitAddresses = () => {
