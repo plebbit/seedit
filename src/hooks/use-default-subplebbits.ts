@@ -28,9 +28,10 @@ export const categorizeSubplebbits = (subplebbits: Subplebbit[]) => {
   return { plebbitSubs, interestsSubs, randomSubs, internationalSubs, projectsSubs };
 };
 
+const nsfwTags = ['gore', 'adult', 'anti'];
+
 export const useDefaultSubplebbits = () => {
   const [subplebbits, setSubplebbits] = useState<Subplebbit[]>([]);
-  const nsfwTags = ['gore', 'adult', 'anti'];
 
   useEffect(() => {
     if (cache) {
