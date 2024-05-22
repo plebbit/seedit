@@ -16,6 +16,24 @@
 
 .notFound p {
   margin: 1em auto;
-  width: 500px;
   font-size: 13px;
+}
+
+.content img {
+  display: block;
+  margin: auto;
+  border: 0;
+}
+
+@media (max-width: 640px) {
+  .content {
+    min-width: 0;
+    text-align: center;
+    width: auto;
+    padding: 10px;
+  }
+
+  .content img {
+    width: 100%;
+  }
 }
