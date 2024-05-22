@@ -18,6 +18,7 @@ let cache: Subplebbit[] | null = null;
 
 export const useDefaultSubplebbits = () => {
   const [subplebbits, setSubplebbits] = useState<Subplebbit[]>([]);
+  const nsfwTags = ['gore', 'adult', 'anti'];
 
   useEffect(() => {
     if (cache) {
@@ -29,8 +30,13 @@ export const useDefaultSubplebbits = () => {
           'https://raw.githubusercontent.com/plebbit/temporary-default-subplebbits/master/multisub.json',
           // { cache: 'no-cache' }
         ).then((res) => res.json());
-        cache = multisub.subplebbits;
-        setSubplebbits(multisub.subplebbits);
+
+        const filteredSubplebbits = multisub.subplebbits.filter((subplebbit: Subplebbit) => {
+          return !subplebbit.tags?.some((tag) => nsfwTags.includes(tag));
+        });
+
+        cache = filteredSubplebbits;
+        setSubplebbits(filteredSubplebbits);
       } catch (e) {
         console.warn(e);
       }
