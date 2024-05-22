@@ -1,7 +1,18 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { create } from 'zustand';
 import styles from './not-found.module.css';
+
+const totalNotFoundImages = 2;
+
+const NotFoundImage = () => {
+  const [imagePath] = useState(() => {
+    const randomBannerIndex = Math.floor(Math.random() * totalNotFoundImages) + 1;
+    return `assets/not-found/not-found-${randomBannerIndex}.jpg`;
+  });
+
+  return <img src={imagePath} alt='' />;
+};
 
 interface NotFoundState {
   isNotFound: boolean;
@@ -25,6 +36,7 @@ const NotFound = () => {
   return (
     <div className={styles.content}>
       <div className={styles.notFound}>
+        <NotFoundImage />
         <h1>{t('page_not_found')}</h1>
         <p>{t('not_found_description')}</p>
       </div>
