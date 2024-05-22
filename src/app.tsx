@@ -26,13 +26,16 @@ import TopBar from './components/topbar';
 export const sortTypes = ['hot', 'new', 'active', 'controversialAll', 'topAll'];
 
 const CheckRouteParams = () => {
-  let { sortType, timeFilterName, accountCommentIndex } = useParams<{ sortType?: string; timeFilterName?: string; accountCommentIndex?: string }>();
+  const { accountCommentIndex, commentCid, sortType, subplebbitAddress, timeFilterName } = useParams();
 
+  const isValidAccountCommentIndex = !accountCommentIndex || (!isNaN(parseInt(accountCommentIndex)) && parseInt(accountCommentIndex) >= 0);
+  const isValidCommentCid = !commentCid || /^Qm[a-zA-Z0-9]{44}$/.test(commentCid);
+  const isValidSubplebbitAddress = !subplebbitAddress || subplebbitAddress.includes('.') || /^12D3K[a-zA-Z0-9]{44}$/.test(subplebbitAddress);
   const isSortTypeValid = !sortType || sortTypes.includes(sortType);
   const isTimeFilterNameValid = !timeFilterName || timeFilterNames.includes(timeFilterName as any);
   const isAccountCommentIndexValid = !accountCommentIndex || !isNaN(parseInt(accountCommentIndex));
 
-  if (!isSortTypeValid || !isTimeFilterNameValid || !isAccountCommentIndexValid) {
+  if (!isValidAccountCommentIndex || !isValidCommentCid || !isValidSubplebbitAddress || !isSortTypeValid || !isTimeFilterNameValid || !isAccountCommentIndexValid) {
     return <NotFound />;
   }
 
