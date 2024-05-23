@@ -303,5 +303,6 @@
   "show": "показать",
   "plebbit_options": "опции plebbit",
   "general": "общий",
-  "own_communities": "собственные сообщества"
+  "own_communities": "собственные сообщества",
+  "invalid_community_address": "Недействительный адрес сообщества"
 }

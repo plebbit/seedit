@@ -303,5 +303,6 @@
   "show": "দেখান",
   "plebbit_options": "প্লেবিট বিকল্প",
   "general": "সাধারণ",
-  "own_communities": "নিজস্ব সম্প্রদায়"
+  "own_communities": "নিজস্ব সম্প্রদায়",
+  "invalid_community_address": "অবৈধ সম্প্রদায় ঠিকানা"
 }

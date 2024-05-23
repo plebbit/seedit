@@ -303,5 +303,6 @@
   "show": "表示",
   "plebbit_options": "plebbitのオプション",
   "general": "一般的な",
-  "own_communities": "自分のコミュニティ"
+  "own_communities": "自分のコミュニティ",
+  "invalid_community_address": "無効なコミュニティアドレス"
 }

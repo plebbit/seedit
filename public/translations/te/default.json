@@ -303,5 +303,6 @@
   "show": "చూపించు",
   "plebbit_options": "plebbit ఎంపికలు",
   "general": "సాధారణ",
-  "own_communities": "నా సముదాయాలు"
+  "own_communities": "నా సముదాయాలు",
+  "invalid_community_address": "అమాన్యమైన సముదాయ చిరునామా"
 }

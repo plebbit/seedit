@@ -303,5 +303,6 @@
   "show": "दिखाएँ",
   "plebbit_options": "plebbit विकल्प",
   "general": "सामान्य",
-  "own_communities": "खुद की समुदायें"
+  "own_communities": "खुद की समुदायें",
+  "invalid_community_address": "अमान्य समुदाय पता"
 }

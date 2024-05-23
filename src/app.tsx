@@ -30,7 +30,7 @@ const CheckRouteParams = () => {
 
   const isValidAccountCommentIndex = !accountCommentIndex || (!isNaN(parseInt(accountCommentIndex)) && parseInt(accountCommentIndex) >= 0);
   const isValidCommentCid = !commentCid || /^Qm[a-zA-Z0-9]{44}$/.test(commentCid);
-  const isValidSubplebbitAddress = !subplebbitAddress || subplebbitAddress.includes('.') || /^12D3K[a-zA-Z0-9]{44}$/.test(subplebbitAddress);
+  const isValidSubplebbitAddress = !subplebbitAddress || subplebbitAddress.includes('.') || /^12D3KooW[a-zA-Z0-9]{44}$/.test(subplebbitAddress);
   const isSortTypeValid = !sortType || sortTypes.includes(sortType);
   const isTimeFilterNameValid = !timeFilterName || timeFilterNames.includes(timeFilterName as any);
   const isAccountCommentIndexValid = !accountCommentIndex || !isNaN(parseInt(accountCommentIndex));

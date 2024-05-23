@@ -303,5 +303,6 @@
   "show": "εμφάνιση",
   "plebbit_options": "επιλογές plebbit",
   "general": "γενικός",
-  "own_communities": "δικές μου κοινότητες"
+  "own_communities": "δικές μου κοινότητες",
+  "invalid_community_address": "Μη έγκυρη διεύθυνση κοινότητας"
 }

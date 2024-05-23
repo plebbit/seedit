@@ -50,6 +50,11 @@ const SearchBar = ({ isFocused = false }: SearchBarProps) => {
     }
     const searchInput = searchInputRef.current?.value;
     if (searchInput) {
+      const isValidSubplebbitAddress = searchInput.includes('.') || /^12D3KooW[a-zA-Z0-9]{44}$/.test(searchInput);
+      if (!isValidSubplebbitAddress) {
+        alert(t('invalid_community_address'));
+        return;
+      }
       searchInputRef.current.value = '';
       navigate(`/p/${searchInput}`);
     }

@@ -303,5 +303,6 @@
   "show": "显示",
   "plebbit_options": "plebbit选项",
   "general": "一般",
-  "own_communities": "自己的社区"
+  "own_communities": "自己的社区",
+  "invalid_community_address": "无效的社区地址"
 }

@@ -303,5 +303,6 @@
   "show": "shfaq",
   "plebbit_options": "opsione plebbit",
   "general": "i përgjithshëm",
-  "own_communities": "komunitete të mia"
+  "own_communities": "komunitete të mia",
+  "invalid_community_address": "Adresa e komunitetit e pavlefshme"
 }

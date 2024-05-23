@@ -303,5 +303,6 @@
   "show": "보여주다",
   "plebbit_options": "plebbit 옵션",
   "general": "일반",
-  "own_communities": "나의 커뮤니티"
+  "own_communities": "나의 커뮤니티",
+  "invalid_community_address": "잘못된 커뮤니티 주소"
 }

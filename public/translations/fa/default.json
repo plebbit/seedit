@@ -303,5 +303,6 @@
   "show": "نمایش",
   "plebbit_options": "گزینه های plebbit",
   "general": "عمومی",
-  "own_communities": "انجمن‌های خودم"
+  "own_communities": "انجمن‌های خودم",
+  "invalid_community_address": "آدرس انجمن نامعتبر است"
 }

@@ -303,5 +303,6 @@
   "show": "اظهر",
   "plebbit_options": "خيارات plebbit",
   "general": "عام",
-  "own_communities": "المجتمعات الخاصة بي"
+  "own_communities": "المجتمعات الخاصة بي",
+  "invalid_community_address": "عنوان المجتمع غير صالح"
 }

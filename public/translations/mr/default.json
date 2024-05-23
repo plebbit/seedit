@@ -303,5 +303,6 @@
   "show": "दाखवा",
   "plebbit_options": "प्लेबिट पर्याय",
   "general": "सामान्य",
-  "own_communities": "स्वत: समुदाये"
+  "own_communities": "स्वत: समुदाये",
+  "invalid_community_address": "अवैध समुदाय पत्ता"
 }

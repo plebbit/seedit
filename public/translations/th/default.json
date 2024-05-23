@@ -303,5 +303,6 @@
   "show": "แสดง",
   "plebbit_options": "ตัวเลือก plebbit",
   "general": "ทั่วไป",
-  "own_communities": "ชุมชนของฉัน"
+  "own_communities": "ชุมชนของฉัน",
+  "invalid_community_address": "ที่อยู่ชุมชนไม่ถูกต้อง"
 }

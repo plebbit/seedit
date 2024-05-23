@@ -303,5 +303,6 @@
   "show": "arată",
   "plebbit_options": "opțiuni plebbit",
   "general": "general",
-  "own_communities": "comunități proprii"
+  "own_communities": "comunități proprii",
+  "invalid_community_address": "Adresă comunitară nevalidă"
 }

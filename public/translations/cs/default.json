@@ -303,5 +303,6 @@
   "show": "ukázat",
   "plebbit_options": "plebbit možnosti",
   "general": "obecné",
-  "own_communities": "vlastní komunity"
+  "own_communities": "vlastní komunity",
+  "invalid_community_address": "Neplatná adresa komunity"
 }

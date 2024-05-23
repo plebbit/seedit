@@ -303,5 +303,6 @@
   "show": "tonen",
   "plebbit_options": "plebbit-opties",
   "general": "algemeen",
-  "own_communities": "eigen gemeenschappen"
+  "own_communities": "eigen gemeenschappen",
+  "invalid_community_address": "Ongeldig gemeenschapsadres"
 }
