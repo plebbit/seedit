@@ -1,3 +1,20 @@
+## [0.1.14](https://github.com/plebbit/seedit/compare/v0.1.13...v0.1.14) (2024-05-22)
+
+
+### Bug Fixes
+
+* **loading state:** position was bugged on post page and it wouldn't render on state 'failed' ([f40665d](https://github.com/plebbit/seedit/commit/f40665dc5cec28cdc859c5dc1f83f1aa6adecb1c))
+
+
+### Features
+
+* add plebchan mascot to 'page not found' ([bb8ed53](https://github.com/plebbit/seedit/commit/bb8ed53105eeade01ca13b54cc0cddafd05bfa78))
+* **app:** return 'not found' for invalid pending comment indexes, subplebbit addresses and CIDs ([bc84faf](https://github.com/plebbit/seedit/commit/bc84faf43968f7c15fd2d9ce55e72d0b2bb1d6c8))
+* change default communities order to respect category (plebbit, interests, random, projects, international) ([5b05e2a](https://github.com/plebbit/seedit/commit/5b05e2a547f10956d85aa080f037b1ad603ac4e7))
+* exclude nsfw communities from the default list (hide nsfw posts in home) ([e978654](https://github.com/plebbit/seedit/commit/e978654dbf00bc30523c172240a75c879ead162e))
+
+
+
 ## [0.1.13](https://github.com/plebbit/seedit/compare/v0.1.12...v0.1.13) (2024-05-06)
 
 
