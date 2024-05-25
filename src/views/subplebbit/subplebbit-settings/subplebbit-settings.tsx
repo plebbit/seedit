@@ -14,11 +14,12 @@ import { useTranslation } from 'react-i18next';
 import { create } from 'zustand';
 import styles from './subplebbit-settings.module.css';
 import { isValidURL } from '../../../lib/utils/url-utils';
-import { OptionInput, Exclude, getDefaultChallengeDescription, getDefaultChallengeOptions, getDefaultChallengeSettings } from '../../../lib/utils/challenge-utils';
+import { OptionInput, Exclude, getDefaultChallengeOptions } from '../../../lib/utils/challenge-utils';
+import { isCreateSubplebbitView, isSubplebbitSettingsView } from '../../../lib/utils/view-utils';
+import useChallengeSettings from '../../../hooks/use-challenge-settings';
 import LoadingEllipsis from '../../../components/loading-ellipsis';
 import Markdown from '../../../components/markdown';
 import Sidebar from '../../../components/sidebar';
-import { isCreateSubplebbitView, isSubplebbitSettingsView } from '../../../lib/utils/view-utils';
 import _ from 'lodash';
 
 type SubplebbitSettingsState = {
@@ -371,7 +372,7 @@ const nonActionsToExclude: Array<'not post' | 'not reply' | 'not vote'> = ['not 
 
 const ChallengeSettings = ({ challenge, index, isReadOnly, setSubplebbitSettingsStore, settings, showSettings }: ChallengeSettingsProps) => {
   const { name, options } = challenge || {};
-  const challengeSettings: OptionInput[] = getDefaultChallengeSettings(name);
+  const challengeSettings: any = useChallengeSettings(name);
 
   const handleOptionChange = (optionName: string, newValue: string) => {
     const updatedOptions = { ...options, [optionName]: newValue };
@@ -469,12 +470,12 @@ const ChallengeSettings = ({ challenge, index, isReadOnly, setSubplebbitSettings
       {isReadOnly ? (
         <>
           <div className={styles.readOnlyChallengeType}>type: {challenge?.type}</div>
-          <div className={styles.readOnlyChallengeDescription}>{challenge?.description}</div>
+          <div className={styles.readOnlyChallengeDescription}>{challengeSettings?.description}</div>
         </>
       ) : (
-        <div className={styles.challengeDescription}>{getDefaultChallengeDescription(name)}</div>
+        <div className={styles.challengeDescription}>{challengeSettings?.description}</div>
       )}
-      {challengeSettings.map((setting) => (
+      {challengeSettings?.optionInputs.map((setting: OptionInput) => (
         <div key={setting?.option} className={styles.challengeOption}>
           <div className={styles.challengeOptionLabel}>{setting?.label}</div>
           <div className={styles.challengeOptionDescription}>
