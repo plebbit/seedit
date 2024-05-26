@@ -896,11 +896,28 @@ const SubplebbitSettings = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [subplebbitAddress, resetSubplebbitSettingsStore]);
 
+  const defaultChallengeSettings = useChallengeSettings('captcha-canvas-v3');
+
   useEffect(() => {
-    if (isInCreateSubplebbitView) {
+    if (isInCreateSubplebbitView && defaultChallengeSettings) {
+      const defaultChallenge = {
+        ...(defaultChallengeSettings && typeof defaultChallengeSettings === 'object' ? defaultChallengeSettings : {}),
+        name: 'captcha-canvas-v3',
+        options: {
+          characters: '6',
+          height: '100',
+          width: '300',
+          colors: '#32cf7e',
+        },
+      };
       resetSubplebbitSettingsStore();
+      setSubplebbitSettingsStore({
+        settings: {
+          challenges: [defaultChallenge],
+        },
+      });
     }
-  }, [isInCreateSubplebbitView, resetSubplebbitSettingsStore]);
+  }, [isInCreateSubplebbitView, defaultChallengeSettings, resetSubplebbitSettingsStore, setSubplebbitSettingsStore]);
 
   useEffect(() => {
     window.scrollTo(0, 0);
