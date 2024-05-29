@@ -34,7 +34,14 @@ const IPFSGatewaysSettings = () => {
   return (
     <div className={styles.ipfsGatewaysSettings}>
       <div className={styles.ipfsGatewaysSetting}>
-        <textarea defaultValue={ipfsGatewayUrlsDefaultValue} ref={ipfsGatewayUrlsRef} disabled={isConnectedToRpc} />
+        <textarea
+          defaultValue={ipfsGatewayUrlsDefaultValue}
+          ref={ipfsGatewayUrlsRef}
+          disabled={isConnectedToRpc}
+          autoCorrect='off'
+          autoComplete='off'
+          spellCheck='false'
+        />
         <button onClick={handleSave} disabled={isConnectedToRpc}>
           {t('save')}
         </button>
@@ -75,7 +82,7 @@ const PubsubProvidersSettings = () => {
 
   return (
     <div className={styles.pubsubProvidersSettings}>
-      <textarea defaultValue={pubsubProvidersDefaultValue} ref={pubsubProvidersRef} disabled={isConnectedToRpc} />
+      <textarea defaultValue={pubsubProvidersDefaultValue} ref={pubsubProvidersRef} disabled={isConnectedToRpc} autoCorrect='off' autoComplete='off' spellCheck='false' />
       <button onClick={handleSave} disabled={isConnectedToRpc}>
         {t('save')}
       </button>
@@ -88,20 +95,20 @@ const BlockchainProvidersSettings = () => {
   const account = useAccount();
   const { plebbitOptions } = account || {};
   const { chainProviders } = plebbitOptions || {};
-  const ethRpcDefaultValue = chainProviders?.['eth']?.urls.join(', ');
-  const solRpcDefaultValue = chainProviders?.['sol']?.urls.join(', ');
-  const maticRpcDefaultValue = chainProviders?.['matic']?.urls.join(', ');
-  const avaxRpcDefaultValue = chainProviders?.['avax']?.urls.join(', ');
-  const ethRpcRef = useRef<HTMLInputElement>(null);
-  const solRpcRef = useRef<HTMLInputElement>(null);
-  const maticRpcRef = useRef<HTMLInputElement>(null);
-  const avaxRpcRef = useRef<HTMLInputElement>(null);
+  const ethRpcDefaultValue = chainProviders?.['eth']?.urls.join('\n');
+  const solRpcDefaultValue = chainProviders?.['sol']?.urls.join('\n');
+  const maticRpcDefaultValue = chainProviders?.['matic']?.urls.join('\n');
+  const avaxRpcDefaultValue = chainProviders?.['avax']?.urls.join('\n');
+  const ethRpcRef = useRef<HTMLTextAreaElement>(null);
+  const solRpcRef = useRef<HTMLTextAreaElement>(null);
+  const maticRpcRef = useRef<HTMLTextAreaElement>(null);
+  const avaxRpcRef = useRef<HTMLTextAreaElement>(null);
 
   const handleSave = async () => {
-    const ethRpcUrls = ethRpcRef.current?.value.split(',').map((url) => url.trim());
-    const solRpcUrls = solRpcRef.current?.value.split(',').map((url) => url.trim());
-    const maticRpcUrls = maticRpcRef.current?.value.split(',').map((url) => url.trim());
-    const avaxRpcUrls = avaxRpcRef.current?.value.split(',').map((url) => url.trim());
+    const ethRpcUrls = ethRpcRef.current?.value.split('\n').map((url) => url.trim());
+    const solRpcUrls = solRpcRef.current?.value.split('\n').map((url) => url.trim());
+    const maticRpcUrls = maticRpcRef.current?.value.split('\n').map((url) => url.trim());
+    const avaxRpcUrls = avaxRpcRef.current?.value.split('\n').map((url) => url.trim());
 
     const chainProviders = {
       eth: {
@@ -145,20 +152,20 @@ const BlockchainProvidersSettings = () => {
     <div className={styles.blockchainProvidersSettings}>
       <span className={styles.settingTitle}>ethereum rpc, for .eth addresses</span>
       <div>
-        <input type='text' defaultValue={ethRpcDefaultValue} ref={ethRpcRef} />
+        <textarea defaultValue={ethRpcDefaultValue} ref={ethRpcRef} autoCorrect='off' autoComplete='off' spellCheck='false' />
         <button onClick={handleSave}>{t('save')}</button>
       </div>
       <span className={styles.settingTitle}>solana rpc, for .sol addresses</span>
       <div>
-        <input type='text' defaultValue={solRpcDefaultValue} ref={solRpcRef} />
+        <textarea defaultValue={solRpcDefaultValue} ref={solRpcRef} autoCorrect='off' autoComplete='off' spellCheck='false' />
       </div>
       <span className={styles.settingTitle}>polygon rpc, for nft profile pics</span>
       <div>
-        <input type='text' defaultValue={maticRpcDefaultValue} ref={maticRpcRef} />
+        <textarea defaultValue={maticRpcDefaultValue} ref={maticRpcRef} autoCorrect='off' autoComplete='off' spellCheck='false' />
       </div>
       <span className={styles.settingTitle}>avalanche rpc</span>
       <div>
-        <input type='text' defaultValue={avaxRpcDefaultValue} ref={avaxRpcRef} />
+        <textarea defaultValue={avaxRpcDefaultValue} ref={avaxRpcRef} autoCorrect='off' autoComplete='off' spellCheck='false' />
       </div>
     </div>
   );
