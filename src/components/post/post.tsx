@@ -133,7 +133,7 @@ const Post = ({ index, post = {} }: PostProps) => {
   const linkUrl = getHostname(link);
   const linkClass = `${isInPostView ? (link ? styles.externalLink : styles.internalLink) : styles.link} ${pinned ? styles.pinnedLink : ''}`;
 
-  const { blocked, unblock } = useBlock({ address: cid });
+  const { blocked, unblock } = useBlock({ cid });
 
   const [hasClickedSubscribe, setHasClickedSubscribe] = useState(false);
   const { subscribe, subscribed } = useSubscribe({ subplebbitAddress });

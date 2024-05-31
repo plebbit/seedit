@@ -43,7 +43,7 @@ const BlockSubplebbitButton = ({ subplebbitAddress }: HideMenuProps) => {
 
 const BlockCommentButton = ({ cid }: HideMenuProps) => {
   const { t } = useTranslation();
-  const { blocked, unblock, block } = useBlock({ address: cid });
+  const { blocked, unblock, block } = useBlock({ cid });
 
   return (
     <div className={styles.menuItem} onClick={blocked ? unblock : block}>
