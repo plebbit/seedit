@@ -78,6 +78,11 @@
   padding-left: 40px;
 }
 
+.saveOptions {
+  text-transform: lowercase;
+  margin-top: 10px;
+}
+
 @media (max-width: 640px) {
   .categoryTitle {
     flex: 0 0 65px;
