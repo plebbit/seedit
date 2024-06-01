@@ -5,6 +5,7 @@ import { Virtuoso, VirtuosoHandle, StateSnapshot } from 'react-virtuoso';
 import { useTranslation } from 'react-i18next';
 import styles from '../home/home.module.css';
 import LoadingEllipsis from '../../components/loading-ellipsis';
+import NewPostsButton from '../../components/new-posts-button';
 import Post from '../../components/post';
 import Sidebar from '../../components/sidebar';
 import useFeedStateString from '../../hooks/use-feed-state-string';
@@ -22,7 +23,7 @@ const Subplebbit = () => {
   const subplebbitAddresses = useMemo(() => [subplebbitAddress], [subplebbitAddress]) as string[];
   const subplebbit = useSubplebbit({ subplebbitAddress });
   const { createdAt, description, roles, rules, shortAddress, started, state, title, updatedAt, settings } = subplebbit || {};
-  const { feed, hasMore, loadMore } = useFeed({ subplebbitAddresses, sortType, filter: timeFilter });
+  const { feed, hasMore, loadMore, reset, subplebbitAddressesWithNewerPosts } = useFeed({ subplebbitAddresses, sortType, filter: timeFilter });
 
   const loadingStateString = useFeedStateString(subplebbitAddresses) || t('loading');
   const loadingString = <div className={styles.stateString}>{state === 'failed' ? state : <LoadingEllipsis string={loadingStateString} />}</div>;
@@ -88,6 +89,7 @@ const Subplebbit = () => {
         />
       </div>
       <div className={styles.feed}>
+        <NewPostsButton reset={reset} subplebbitAddressesWithNewerPosts={subplebbitAddressesWithNewerPosts} />
         <Virtuoso
           increaseViewportBy={{ bottom: 1200, top: 600 }}
           totalCount={feed?.length || 0}

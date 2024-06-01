@@ -1,0 +1,43 @@
+.newPostsButton {
+  position: fixed;
+  left: 10%;
+  border-radius: 25px;
+  background-color: green;
+  color: white;
+  z-index: 5;
+  transition: top 0.3s ease-in-out;
+  font-size: 13px;
+}
+
+.resetButton {
+  display: inline-block;
+  cursor: pointer;
+  font-weight: 700;
+  padding: 5px 10px;
+}
+
+.resetButton:hover {
+  opacity: 0.8;
+}
+
+.hide {
+  display: none;
+}
+
+.hideButton {
+  display: inline-block;
+  cursor: pointer;
+  background-image: url("/public/assets/buttons/close-x-button.png");
+  background-size: cover;
+  height: 12px;
+  width: 12px;
+  transform: translateY(1px);
+}
+
+.hideButtonWrapper {
+  padding-right: 10px;
+}
+
+.hideButton:hover {
+  opacity: 0.8;
+}
