@@ -115,6 +115,7 @@ const Profile = () => {
   }, [
     isInProfileUpvotedView,
     isInProfileDownvotedView,
+    isInProfileHiddenView,
     isInCommentsView,
     isInSubmittedView,
     upvotedComments,
