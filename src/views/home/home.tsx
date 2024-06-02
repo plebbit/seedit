@@ -5,7 +5,7 @@ import { useFeed } from '@plebbit/plebbit-react-hooks';
 import { useTranslation } from 'react-i18next';
 import styles from './home.module.css';
 import LoadingEllipsis from '../../components/loading-ellipsis';
-import NewPostsButton from '../../components/new-posts-button';
+import NewerPostsButton from '../../components/newer-posts-button';
 import Post from '../../components/post';
 import Sidebar from '../../components/sidebar';
 import { useDefaultAndSubscriptionsSubplebbitAddresses } from '../../hooks/use-default-subplebbits';
@@ -73,7 +73,7 @@ const Home = () => {
           <Sidebar />
         </div>
         <div className={styles.feed}>
-          <NewPostsButton reset={reset} subplebbitAddressesWithNewerPosts={subplebbitAddressesWithNewerPosts} />
+          <NewerPostsButton reset={reset} subplebbitAddressesWithNewerPosts={subplebbitAddressesWithNewerPosts} />
           <Virtuoso
             increaseViewportBy={{ bottom: 1200, top: 600 }}
             totalCount={feed?.length || 0}
