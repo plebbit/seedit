@@ -22,6 +22,7 @@ import {
   isProfileCommentsView,
   isProfileDownvotedView,
   isProfileSubmittedView,
+  isProfileHiddenView,
   isSettingsView,
   isSubmitView,
   isSubplebbitView,
@@ -124,6 +125,7 @@ const AuthorHeaderTabs = () => {
   const isInProfileCommentsView = isProfileCommentsView(location.pathname);
   const isInProfileSubmittedView = isProfileSubmittedView(location.pathname);
   const isInProfileUpvotedView = isProfileUpvotedView(location.pathname);
+  const isInProfileHiddenView = isProfileHiddenView(location.pathname);
 
   const authorRoute = `/u/${params.authorAddress}/c/${params.commentCid}`;
   const overviewSelectedClass =
@@ -173,12 +175,12 @@ const AuthorHeaderTabs = () => {
               {t('downvoted')}
             </Link>
           </li>
-          {/* TODO: implement functionality from API once available
           <li>
-            <Link to={'/'} className={styles.choice} onClick={(e) => e.preventDefault()}>
+            <Link to={'/profile/hidden'} className={isInProfileHiddenView ? styles.selected : styles.choice}>
               {t('hidden')}
             </Link>
           </li>
+          {/* TODO: implement functionality from API once available
           <li>
             <Link to={'/'} className={styles.choice} onClick={(e) => e.preventDefault()}>
               {t('saved')}

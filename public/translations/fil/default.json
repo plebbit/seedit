@@ -303,5 +303,6 @@
   "show": "ipakita",
   "plebbit_options": "mga pagpipilian ng plebbit",
   "general": "pangkalahatan",
-  "own_communities": "sariling mga pamayanan"
+  "own_communities": "sariling mga pamayanan",
+  "invalid_community_address": "Hindi wastong address ng pamayanan"
 }

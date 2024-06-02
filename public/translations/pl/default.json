@@ -303,5 +303,6 @@
   "show": "pokazać",
   "plebbit_options": "opcje plebbit",
   "general": "ogólny",
-  "own_communities": "własne społeczności"
+  "own_communities": "własne społeczności",
+  "invalid_community_address": "Nieprawidłowy adres społeczności"
 }

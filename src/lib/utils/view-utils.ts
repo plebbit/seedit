@@ -122,8 +122,12 @@ export const isProfileUpvotedView = (pathname: string): boolean => {
   return pathname === '/profile/upvoted';
 };
 
+export const isProfileHiddenView = (pathname: string): boolean => {
+  return pathname === '/profile/hidden';
+};
+
 export const isSettingsView = (pathname: string): boolean => {
-  return pathname === '/settings';
+  return pathname === '/settings' || pathname === '/settings/plebbit-options';
 };
 
 export const isSettingsPlebbitOptionsView = (pathname: string): boolean => {

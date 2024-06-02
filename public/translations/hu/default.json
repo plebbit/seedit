@@ -303,5 +303,6 @@
   "show": "mutat",
   "plebbit_options": "plebbit lehetőségek",
   "general": "általános",
-  "own_communities": "saját közösségek"
+  "own_communities": "saját közösségek",
+  "invalid_community_address": "Érvénytelen közösségi cím"
 }

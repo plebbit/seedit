@@ -303,5 +303,6 @@
   "show": "menunjukkan",
   "plebbit_options": "opsi plebbit",
   "general": "umum",
-  "own_communities": "komunitas sendiri"
+  "own_communities": "komunitas sendiri",
+  "invalid_community_address": "Alamat komunitas tidak valid"
 }

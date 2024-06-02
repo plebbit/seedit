@@ -303,5 +303,6 @@
   "show": "hiển thị",
   "plebbit_options": "tùy chọn plebbit",
   "general": "chung",
-  "own_communities": "cộng đồng của riêng tôi"
+  "own_communities": "cộng đồng của riêng tôi",
+  "invalid_community_address": "Địa chỉ cộng đồng không hợp lệ"
 }

@@ -303,5 +303,6 @@
   "show": "visa",
   "plebbit_options": "plebbit-alternativ",
   "general": "allmän",
-  "own_communities": "egna samhällen"
+  "own_communities": "egna samhällen",
+  "invalid_community_address": "Ogiltig samhällsadress"
 }

@@ -303,5 +303,6 @@
   "show": "vise",
   "plebbit_options": "plebbit indstillinger",
   "general": "almindelig",
-  "own_communities": "egne fællesskaber"
+  "own_communities": "egne fællesskaber",
+  "invalid_community_address": "Ugyldig fællesskabsadresse"
 }

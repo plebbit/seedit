@@ -6,6 +6,10 @@
   text-transform: lowercase;
 }
 
+.feed {
+  position: relative;
+}
+
 @media (max-width: 640px) {
   .content {
     padding: 7px 2px 0px 2px;

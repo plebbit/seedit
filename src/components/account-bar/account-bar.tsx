@@ -13,9 +13,9 @@ const AccountBar = () => {
   const location = useLocation();
   const params = useParams();
   const subplebbitAddress = params.subplebbitAddress;
-  const isSubplebbit = isSubplebbitView(location.pathname, params);
-  const isSubmit = isSubmitView(location.pathname);
-  const isSettings = isSettingsView(location.pathname);
+  const isInSubplebbitView = isSubplebbitView(location.pathname, params);
+  const isInSubmitView = isSubmitView(location.pathname);
+  const isInSettingsView = isSettingsView(location.pathname);
 
   const [searchVisible, setSearchVisible] = useState(false);
   const toggleSearchVisible = () => setSearchVisible(!searchVisible);
@@ -33,7 +33,7 @@ const AccountBar = () => {
   const mailClass = unreadNotificationCount ? styles.mailIconUnread : styles.mailIconRead;
 
   let submitLink = '/submit';
-  if (isSubplebbit) {
+  if (isInSubplebbitView) {
     submitLink = `/p/${subplebbitAddress}/submit`;
   }
 
@@ -102,7 +102,7 @@ const AccountBar = () => {
       </span>
       <span className={styles.submitButton}>
         <span className={styles.separator}>|</span>
-        <Link to={submitLink} className={`${styles.textButton} ${isSubmit && styles.selectedTextButton}`}>
+        <Link to={submitLink} className={`${styles.textButton} ${isInSubmitView && styles.selectedTextButton}`}>
           {t('submit')}
         </Link>
       </span>
@@ -123,7 +123,7 @@ const AccountBar = () => {
         )}
       </span>
       <span className={styles.separator}>|</span>
-      <Link to='/settings' className={`${styles.textButton} ${isSettings && styles.selectedTextButton}`}>
+      <Link to='/settings' className={`${styles.textButton} ${isInSettingsView && styles.selectedTextButton}`}>
         {t('preferences')}
       </Link>
     </div>

@@ -303,5 +303,6 @@
   "show": "دکھائیں",
   "plebbit_options": "پلیبٹ اختیارات",
   "general": "عام",
-  "own_communities": "اپنی کمیونٹیاں"
+  "own_communities": "اپنی کمیونٹیاں",
+  "invalid_community_address": "غیر درست مجتمع کا پتہ"
 }

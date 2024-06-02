@@ -1,9 +1,11 @@
 import { useState } from 'react';
-import { Author, useBlock } from '@plebbit/plebbit-react-hooks';
-import { autoUpdate, flip, FloatingFocusManager, offset, shift, useClick, useDismiss, useFloating, useId, useInteractions, useRole } from '@floating-ui/react';
-import styles from './hide-menu.module.css';
+import { useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import { Author, useBlock } from '@plebbit/plebbit-react-hooks';
 import Plebbit from '@plebbit/plebbit-js/dist/browser/index.js';
+import { autoUpdate, flip, FloatingFocusManager, offset, shift, useClick, useDismiss, useFloating, useId, useInteractions, useRole } from '@floating-ui/react';
+import { isProfileHiddenView } from '../../../../lib/utils/view-utils';
+import styles from './hide-menu.module.css';
 
 type HideMenuProps = {
   author?: Author | undefined;
@@ -43,7 +45,7 @@ const BlockSubplebbitButton = ({ subplebbitAddress }: HideMenuProps) => {
 
 const BlockCommentButton = ({ cid }: HideMenuProps) => {
   const { t } = useTranslation();
-  const { blocked, unblock, block } = useBlock({ address: cid });
+  const { blocked, unblock, block } = useBlock({ cid });
 
   return (
     <div className={styles.menuItem} onClick={blocked ? unblock : block}>
@@ -56,6 +58,9 @@ const HideMenu = ({ author, cid, isAccountMod, subplebbitAddress }: HideMenuProp
   const { t } = useTranslation();
   const [isHideMenuOpen, setIsHideMenuOpen] = useState(false);
   const toggleIsMenuOpen = () => setIsHideMenuOpen(!isHideMenuOpen);
+
+  const isInProfileHiddenView = isProfileHiddenView(useLocation().pathname);
+  const { unblock } = useBlock({ cid });
 
   const { refs, floatingStyles, context } = useFloating({
     placement: 'bottom-start',
@@ -76,9 +81,9 @@ const HideMenu = ({ author, cid, isAccountMod, subplebbitAddress }: HideMenuProp
   return (
     <>
       <li className={styles.button} ref={refs.setReference} {...(cid && getReferenceProps())}>
-        <span onClick={() => cid && setIsHideMenuOpen(!isHideMenuOpen)}>{t('hide')}</span>
+        {isInProfileHiddenView ? <span onClick={unblock}>{t('unhide')}</span> : <span onClick={() => cid && setIsHideMenuOpen(!isHideMenuOpen)}>{t('hide')}</span>}
       </li>
-      {isHideMenuOpen && (
+      {isHideMenuOpen && !isInProfileHiddenView && (
         <FloatingFocusManager context={context} modal={false}>
           <div className={styles.modal} ref={refs.setFloating} style={floatingStyles} aria-labelledby={headingId} {...getFloatingProps()}>
             <div className={styles.menu}>

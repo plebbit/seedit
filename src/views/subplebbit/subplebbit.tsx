@@ -5,6 +5,7 @@ import { Virtuoso, VirtuosoHandle, StateSnapshot } from 'react-virtuoso';
 import { useTranslation } from 'react-i18next';
 import styles from '../home/home.module.css';
 import LoadingEllipsis from '../../components/loading-ellipsis';
+import NewerPostsButton from '../../components/newer-posts-button';
 import Post from '../../components/post';
 import Sidebar from '../../components/sidebar';
 import useFeedStateString from '../../hooks/use-feed-state-string';
@@ -15,17 +16,29 @@ const lastVirtuosoStates: { [key: string]: StateSnapshot } = {};
 const Subplebbit = () => {
   const { t } = useTranslation();
   const params = useParams();
+  const subplebbitAddress = params.subplebbitAddress;
+  const subplebbitAddresses = useMemo(() => [subplebbitAddress], [subplebbitAddress]) as string[];
+
   const sortType = params?.sortType || 'hot';
   const timeFilterName = (params.timeFilterName as TimeFilterKey) || 'all';
   const { timeFilter } = useTimeFilter(sortType, timeFilterName);
-  const subplebbitAddress = params.subplebbitAddress;
-  const subplebbitAddresses = useMemo(() => [subplebbitAddress], [subplebbitAddress]) as string[];
-  const subplebbit = useSubplebbit({ subplebbitAddress });
-  const { createdAt, description, roles, rules, shortAddress, started, state, title, updatedAt, settings } = subplebbit || {};
-  const { feed, hasMore, loadMore } = useFeed({ subplebbitAddresses, sortType, filter: timeFilter });
+  const { feed, hasMore, loadMore, reset, subplebbitAddressesWithNewerPosts } = useFeed({ subplebbitAddresses, sortType, filter: timeFilter });
+
+  const { subplebbit, error } = useSubplebbit({ subplebbitAddress });
+  const { createdAt, description, roles, rules, shortAddress, started, title, updatedAt, settings } = subplebbit || {};
 
   const loadingStateString = useFeedStateString(subplebbitAddresses) || t('loading');
-  const loadingString = <div className={styles.stateString}>{state === 'failed' ? state : <LoadingEllipsis string={loadingStateString} />}</div>;
+  const loadingString = (
+    <>
+      <div className={styles.stateString}>{loadingStateString === 'Failed' ? 'failed' : <LoadingEllipsis string={loadingStateString} />}</div>
+      {error && (
+        <div style={{ color: 'red' }}>
+          <br />
+          {error.message}
+        </div>
+      )}
+    </>
+  );
 
   let isOnline = updatedAt && updatedAt > Date.now() / 1000 - 60 * 30;
   const isSubCreatedButNotYetPublished = typeof createdAt === 'number' && !updatedAt;
@@ -33,8 +46,8 @@ const Subplebbit = () => {
   const { blocked } = useBlock({ address: subplebbitAddress });
 
   useEffect(() => {
-    document.title = title ? title : shortAddress;
-  }, [title, shortAddress]);
+    document.title = title ? title : shortAddress || subplebbitAddress;
+  }, [title, shortAddress, subplebbitAddress]);
 
   const Footer = () => {
     let footerContent;
@@ -88,6 +101,7 @@ const Subplebbit = () => {
         />
       </div>
       <div className={styles.feed}>
+        <NewerPostsButton reset={reset} subplebbitAddressesWithNewerPosts={subplebbitAddressesWithNewerPosts} />
         <Virtuoso
           increaseViewportBy={{ bottom: 1200, top: 600 }}
           totalCount={feed?.length || 0}

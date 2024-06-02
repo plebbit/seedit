@@ -26,16 +26,13 @@ import TopBar from './components/topbar';
 export const sortTypes = ['hot', 'new', 'active', 'controversialAll', 'topAll'];
 
 const CheckRouteParams = () => {
-  const { accountCommentIndex, commentCid, sortType, subplebbitAddress, timeFilterName } = useParams();
-
+  const { accountCommentIndex, sortType, timeFilterName } = useParams();
   const isValidAccountCommentIndex = !accountCommentIndex || (!isNaN(parseInt(accountCommentIndex)) && parseInt(accountCommentIndex) >= 0);
-  const isValidCommentCid = !commentCid || /^Qm[a-zA-Z0-9]{44}$/.test(commentCid);
-  const isValidSubplebbitAddress = !subplebbitAddress || subplebbitAddress.includes('.') || /^12D3K[a-zA-Z0-9]{44}$/.test(subplebbitAddress);
   const isSortTypeValid = !sortType || sortTypes.includes(sortType);
   const isTimeFilterNameValid = !timeFilterName || timeFilterNames.includes(timeFilterName as any);
   const isAccountCommentIndexValid = !accountCommentIndex || !isNaN(parseInt(accountCommentIndex));
 
-  if (!isValidAccountCommentIndex || !isValidCommentCid || !isValidSubplebbitAddress || !isSortTypeValid || !isTimeFilterNameValid || !isAccountCommentIndexValid) {
+  if (!isValidAccountCommentIndex || !isSortTypeValid || !isTimeFilterNameValid || !isAccountCommentIndexValid) {
     return <NotFound />;
   }
 
@@ -95,6 +92,7 @@ const App = () => {
               <Route path='/profile/downvoted/:sortType?/:timeFilterName?' element={<Profile />} />
               <Route path='/profile/comments/:sortType?/:timeFilterName?' element={<Profile />} />
               <Route path='/profile/submitted/:sortType?/:timeFilterName?' element={<Profile />} />
+              <Route path='/profile/hidden/:sortType?/:timeFilterName?' element={<Profile />} />
 
               <Route path='/u/:authorAddress/c/:commentCid?/:sortType?/:timeFilterName?' element={<Author />} />
               <Route path='/u/:authorAddress/c/:commentCid?/comments/:sortType?/:timeFilterName?' element={<Author />} />

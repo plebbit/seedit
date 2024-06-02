@@ -53,7 +53,7 @@ const Post = ({ post }: { post: Comment }) => {
         <div className={styles.replyArea}>
           {!isSingleComment && (
             <div className={styles.repliesTitle}>
-              <span className={styles.title}>{replyCount !== undefined ? commentCount : t('loading_comments')}</span>
+              <span className={styles.title}>{replyCount !== undefined ? commentCount : `${t('loading_comments')}...`}</span>
             </div>
           )}
           <div className={styles.menuArea}>

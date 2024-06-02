@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { useLocation, useParams } from 'react-router-dom';
 import { StateSnapshot, Virtuoso, VirtuosoHandle } from 'react-virtuoso';
 import { useAccount, useAccountComments, useAccountVotes, useComments } from '@plebbit/plebbit-react-hooks';
-import { isProfileDownvotedView, isProfileUpvotedView, isProfileCommentsView, isProfileSubmittedView } from '../../lib/utils/view-utils';
+import { isProfileDownvotedView, isProfileUpvotedView, isProfileCommentsView, isProfileSubmittedView, isProfileHiddenView } from '../../lib/utils/view-utils';
 import useWindowWidth from '../../hooks/use-window-width';
 import AuthorSidebar from '../../components/author-sidebar';
 import Post from '../../components/post';
@@ -17,7 +17,7 @@ type SortDropdownProps = {
   onSortChange: (sortType: string) => void;
 };
 
-const SortDropdown: React.FC<SortDropdownProps> = ({ onSortChange }) => {
+const SortDropdown = ({ onSortChange }: SortDropdownProps) => {
   const { t } = useTranslation();
   const sortLabels: string[] = sortTypes.map((sortType) => t(sortType));
   const [selectedSort, setSelectedSort] = useState<string>(sortTypes[0]);
@@ -77,17 +77,21 @@ const Profile = () => {
   const { accountVotes } = useAccountVotes();
   const isInProfileUpvotedView = isProfileUpvotedView(location.pathname);
   const isInProfileDownvotedView = isProfileDownvotedView(location.pathname);
+  const isInProfileHiddenView = isProfileHiddenView(location.pathname);
   const isInCommentsView = isProfileCommentsView(location.pathname);
   const isInSubmittedView = isProfileSubmittedView(location.pathname);
   const isMobile = useWindowWidth() < 640;
 
   // get comments for upvoted/downvoted/comments/submitted pages
+  const postComments = useMemo(() => accountComments?.filter((comment) => !comment.parentCid) || [], [accountComments]);
+  const replyComments = useMemo(() => accountComments?.filter((comment) => comment.parentCid) || [], [accountComments]);
   const upvotedCommentCids = useMemo(() => accountVotes?.filter((vote) => vote.vote === 1).map((vote) => vote.commentCid) || [], [accountVotes]);
   const downvotedCommentCids = useMemo(() => accountVotes?.filter((vote) => vote.vote === -1).map((vote) => vote.commentCid) || [], [accountVotes]);
-  const replyComments = useMemo(() => accountComments?.filter((comment) => comment.parentCid) || [], [accountComments]);
-  const postComments = useMemo(() => accountComments?.filter((comment) => !comment.parentCid) || [], [accountComments]);
+  const hiddenCommentCids = useMemo(() => Object.keys(account?.blockedCids ?? {}), [account?.blockedCids]);
+
   const { comments: upvotedComments } = useComments({ commentCids: upvotedCommentCids });
   const { comments: downvotedComments } = useComments({ commentCids: downvotedCommentCids });
+  const { comments: hiddenComments } = useComments({ commentCids: hiddenCommentCids });
 
   const [sortType, setSortType] = useState('new');
   const handleSortChange = (newSortType: string) => {
@@ -103,18 +107,22 @@ const Profile = () => {
       return replyComments;
     } else if (isInSubmittedView) {
       return postComments;
+    } else if (isInProfileHiddenView) {
+      return hiddenComments;
     } else {
       return accountComments;
     }
   }, [
     isInProfileUpvotedView,
     isInProfileDownvotedView,
+    isInProfileHiddenView,
     isInCommentsView,
     isInSubmittedView,
     upvotedComments,
     downvotedComments,
     replyComments,
     postComments,
+    hiddenComments,
     accountComments,
   ]);
 

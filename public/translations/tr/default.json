@@ -303,5 +303,6 @@
   "show": "göstermek",
   "plebbit_options": "plebbit seçenekleri",
   "general": "genel",
-  "own_communities": "kendi topluluklarım"
+  "own_communities": "kendi topluluklarım",
+  "invalid_community_address": "Geçersiz topluluk adresi"
 }

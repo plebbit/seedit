@@ -303,5 +303,6 @@
   "show": "תצוגה",
   "plebbit_options": "אפשרויות plebbit",
   "general": "כללי",
-  "own_communities": "הקהילות שלי"
+  "own_communities": "הקהילות שלי",
+  "invalid_community_address": "כתובת הקהילה אינה חוקית"
 }

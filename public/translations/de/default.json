@@ -303,5 +303,6 @@
   "show": "zeigen",
   "plebbit_options": "plebbit optionen",
   "general": "allgemein",
-  "own_communities": "eigene Gemeinschaften"
+  "own_communities": "eigene Gemeinschaften",
+  "invalid_community_address": "Ungültige Gemeindeadresse"
 }

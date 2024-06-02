@@ -38,9 +38,20 @@
 }
 
 .content textarea {
-  height: 80px;
   font-size: 13px;
   font-family: Arial, Helvetica, sans-serif;
+}
+
+.ipfsGatewaysSettings textarea {
+  height: 80px;
+}
+
+.pubsubProvidersSettings textarea {
+  height: 50px;
+}
+
+.blockchainProvidersSettings textarea {
+  height: 50px;
 }
 
 .content button {
@@ -65,6 +76,11 @@
 .plebbitRpcSettingsInfo ol {
   padding-bottom: 5px;
   padding-left: 40px;
+}
+
+.saveOptions {
+  text-transform: lowercase;
+  margin-top: 10px;
 }
 
 @media (max-width: 640px) {

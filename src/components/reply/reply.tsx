@@ -265,7 +265,7 @@ const Reply = ({ cidOfReplyWithContext, depth = 0, isSingleComment, isSingleRepl
 
   const [showSpoiler, setShowSpoiler] = useState(false);
 
-  const { blocked, unblock } = useBlock({ address: cid });
+  const { blocked, unblock } = useBlock({ cid });
   const [collapsed, setCollapsed] = useState(blocked);
   useEffect(() => {
     if (blocked) {
