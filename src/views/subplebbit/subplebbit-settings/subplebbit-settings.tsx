@@ -14,8 +14,8 @@ import { useTranslation } from 'react-i18next';
 import { create } from 'zustand';
 import styles from './subplebbit-settings.module.css';
 import { isValidURL } from '../../../lib/utils/url-utils';
-import { OptionInput, Exclude, getDefaultChallengeOptions } from '../../../lib/utils/challenge-utils';
 import { isCreateSubplebbitView, isSubplebbitSettingsView } from '../../../lib/utils/view-utils';
+import useChallengesOptions from '../../../hooks/use-challenges-options';
 import useChallengeSettings from '../../../hooks/use-challenge-settings';
 import LoadingEllipsis from '../../../components/loading-ellipsis';
 import Markdown from '../../../components/markdown';
@@ -366,6 +366,29 @@ interface ChallengeSettingsProps {
   showSettings: boolean;
 }
 
+type OptionInput = {
+  option: string;
+  label: string;
+  default?: string;
+  description: string;
+  placeholder?: string;
+  required?: boolean;
+};
+
+type Exclude = {
+  postScore?: number;
+  replyScore?: number;
+  firstCommentTimestamp?: number;
+  challenges?: number[];
+  post?: boolean;
+  reply?: boolean;
+  vote?: boolean;
+  role?: string[];
+  address?: string[];
+  rateLimit?: number;
+  rateLimitChallengeSuccess?: boolean;
+};
+
 const rolesToExclude = ['moderator', 'admin', 'owner'];
 const actionsToExclude: Array<'post' | 'reply' | 'vote'> = ['post', 'reply', 'vote'];
 const nonActionsToExclude: Array<'not post' | 'not reply' | 'not vote'> = ['not post', 'not reply', 'not vote'];
@@ -695,6 +718,7 @@ const Challenges = ({ isReadOnly, readOnlyChallenges }: { isReadOnly: boolean; r
   const { settings, setSubplebbitSettingsStore } = useSubplebbitSettingsStore();
   const challenges = settings?.challenges || readOnlyChallenges || [];
   const [showSettings, setShowSettings] = useState<boolean[]>(challenges.map(() => false));
+  const challengeOptions = useChallengesOptions();
 
   const location = useLocation();
   const isInCreateSubplebbitView = isCreateSubplebbitView(location.pathname);
@@ -706,11 +730,10 @@ const Challenges = ({ isReadOnly, readOnlyChallenges }: { isReadOnly: boolean; r
   };
 
   const handleAddChallenge = () => {
-    const defaultChallenge = 'captcha-canvas-v3';
-    const options = getDefaultChallengeOptions(defaultChallenge);
+    const defaultOptions = challengeOptions['captcha-canvas-v3'] || {};
     const newChallenge = {
-      name: defaultChallenge,
-      options,
+      name: 'captcha-canvas-v3',
+      defaultOptions,
     };
     const updatedChallenges = [...(settings?.challenges || []), newChallenge];
     setSubplebbitSettingsStore({ settings: { ...settings, challenges: updatedChallenges } });
@@ -724,8 +747,9 @@ const Challenges = ({ isReadOnly, readOnlyChallenges }: { isReadOnly: boolean; r
   };
 
   const handleChallengeTypeChange = (index: number, newType: string) => {
+    const options = challengeOptions[newType] || {};
     const updatedChallenges = [...challenges];
-    updatedChallenges[index] = { ...updatedChallenges[index], name: newType, options: getDefaultChallengeOptions(newType) };
+    updatedChallenges[index] = { ...updatedChallenges[index], name: newType, options };
     setSubplebbitSettingsStore({ settings: { ...settings, challenges: updatedChallenges } });
   };
 
