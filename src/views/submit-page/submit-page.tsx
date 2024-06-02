@@ -349,7 +349,7 @@ const Submit = () => {
               <div className={styles.options}>
                 <label>
                   <input type='checkbox' onChange={(e) => setSubmitStore({ spoiler: e.target.checked })} />
-                  {t('mark_spoiler')}
+                  {t('spoiler')}
                 </label>
               </div>
             </div>
