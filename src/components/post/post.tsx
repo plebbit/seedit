@@ -3,7 +3,7 @@ import styles from './post.module.css';
 import { Link, useLocation, useParams } from 'react-router-dom';
 import { Comment, useAuthorAddress, useBlock, useComment, useEditedComment, useSubplebbit, useSubscribe } from '@plebbit/plebbit-react-hooks';
 import { useTranslation } from 'react-i18next';
-import { isAllView, isPostView, isSubplebbitView } from '../../lib/utils/view-utils';
+import { isAllView, isPostView, isProfileHiddenView, isSubplebbitView } from '../../lib/utils/view-utils';
 import { getCommentMediaInfo, getHasThumbnail } from '../../lib/utils/media-utils';
 import { getHostname } from '../../lib/utils/url-utils';
 import { getFormattedTimeAgo } from '../../lib/utils/time-utils';
@@ -114,6 +114,7 @@ const Post = ({ index, post = {} }: PostProps) => {
 
   const isInAllView = isAllView(location.pathname);
   const isInPostView = isPostView(location.pathname, params);
+  const isInProfileHiddenView = isProfileHiddenView(location.pathname);
   const isInSubplebbitView = isSubplebbitView(location.pathname, params);
 
   const [isExpanded, setIsExpanded] = useState(isInPostView);
@@ -153,13 +154,13 @@ const Post = ({ index, post = {} }: PostProps) => {
   return (
     <div className={styles.content} key={index}>
       <div className={isLastClicked ? styles.lastClicked : ''}>
-        <div className={`${styles.hiddenPost} ${blocked ? styles.visible : styles.hidden}`}>
+        <div className={`${styles.hiddenPost} ${blocked && !isInProfileHiddenView ? styles.visible : styles.hidden}`}>
           <div className={styles.hiddenPostText}>{t('post_hidden').charAt(0).toUpperCase() + t('post_hidden').slice(1)}</div>
           <div className={styles.undoHiddenPost} onClick={unblock}>
             {t('undo')}
           </div>
         </div>
-        <div className={`${styles.container} ${blocked ? styles.hidden : styles.visible}`}>
+        <div className={`${styles.container} ${blocked && !isInProfileHiddenView ? styles.hidden : styles.visible}`}>
           <div className={styles.row}>
             <div className={styles.leftcol}>
               <div className={styles.midcol}>

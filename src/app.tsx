@@ -95,6 +95,7 @@ const App = () => {
               <Route path='/profile/downvoted/:sortType?/:timeFilterName?' element={<Profile />} />
               <Route path='/profile/comments/:sortType?/:timeFilterName?' element={<Profile />} />
               <Route path='/profile/submitted/:sortType?/:timeFilterName?' element={<Profile />} />
+              <Route path='/profile/hidden/:sortType?/:timeFilterName?' element={<Profile />} />
 
               <Route path='/u/:authorAddress/c/:commentCid?/:sortType?/:timeFilterName?' element={<Author />} />
               <Route path='/u/:authorAddress/c/:commentCid?/comments/:sortType?/:timeFilterName?' element={<Author />} />
