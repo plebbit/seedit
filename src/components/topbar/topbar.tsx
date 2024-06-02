@@ -138,8 +138,8 @@ const TopBar = () => {
               {t('create_community')}
             </span>
             {accountSubplebbits && Object.keys(accountSubplebbits).length > 0 && (
-              <Link to='/communities/owner' className={`${styles.dropdownItem} ${styles.myCommunitiesItemButton}`}>
-                {t('own_communities')}
+              <Link to='/communities' className={`${styles.dropdownItem} ${styles.myCommunitiesItemButton}`}>
+                {t('my_communities')}
               </Link>
             )}
             <Link to='/communities/vote' className={`${styles.dropdownItem} ${styles.myCommunitiesItemButton}`}>
