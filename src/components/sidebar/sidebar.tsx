@@ -135,7 +135,7 @@ const Sidebar = ({ comment, isSubCreatedButNotYetPublished, settings, subplebbit
   const { cid, downvoteCount, timestamp, upvoteCount } = comment || {};
 
   const { allActiveUserCount, hourActiveUserCount } = useSubplebbitStats({ subplebbitAddress: address });
-  const isOnline = updatedAt && updatedAt > Date.now() / 1000 - 60 * 30;
+  const isOnline = updatedAt && updatedAt > Date.now() / 1000 - 60 * 60;
   const onlineNotice = t('users_online', { count: hourActiveUserCount });
   const offlineNotice = updatedAt && t('posts_last_synced', { dateAgo: getFormattedTimeAgo(updatedAt) });
   const onlineStatus = isOnline ? onlineNotice : offlineNotice;

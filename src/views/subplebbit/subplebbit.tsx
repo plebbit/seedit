@@ -42,7 +42,7 @@ const Subplebbit = () => {
     </>
   );
 
-  let isOnline = updatedAt && updatedAt > Date.now() / 1000 - 60 * 30;
+  let isOnline = updatedAt && updatedAt > Date.now() / 1000 - 60 * 60;
   const isSubCreatedButNotYetPublished = typeof createdAt === 'number' && !updatedAt;
 
   const { blocked } = useBlock({ address: subplebbitAddress });
