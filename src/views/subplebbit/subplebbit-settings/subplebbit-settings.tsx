@@ -837,7 +837,7 @@ const SubplebbitSettings = () => {
   const { t } = useTranslation();
   const { subplebbitAddress } = useParams<{ subplebbitAddress: string }>();
   const subplebbit = useSubplebbit({ subplebbitAddress });
-  const { address, challenges, createdAt, description, rules, shortAddress, settings, suggested, roles, title, updatedAt } = subplebbit || {};
+  const { address, challenges, description, rules, shortAddress, settings, suggested, roles, title } = subplebbit || {};
 
   const account = useAccount();
   const location = useLocation();
@@ -965,7 +965,7 @@ const SubplebbitSettings = () => {
     <div className={styles.content}>
       {!isInCreateSubplebbitView && (
         <div className={styles.sidebar}>
-          <Sidebar address={subplebbitAddress} createdAt={createdAt} description={description} roles={roles} rules={rules} title={title} updatedAt={updatedAt} />
+          <Sidebar subplebbit={subplebbit} />
         </div>
       )}
       {/* subplebbit.settings is private, only shows to the sub owner */}

@@ -148,15 +148,11 @@ const PostWithContext = ({ post }: { post: Comment }) => {
 const PostPage = () => {
   const params = useParams();
   const location = useLocation();
-
   const isInPendingView = isPendingView(location.pathname, params);
   const isInPostContextView = isPostContextView(location.pathname, params, location.search);
 
   const post = useComment({ commentCid: params?.commentCid });
-  const { cid, downvoteCount, timestamp, upvoteCount } = post || {};
-
   const subplebbit = useSubplebbit({ subplebbitAddress: params?.subplebbitAddress });
-  const { createdAt, description, roles, rules, updatedAt } = subplebbit || {};
 
   const postTitle = post.title?.slice(0, 40) || post?.content?.slice(0, 40);
   const subplebbitTitle = subplebbit?.title || subplebbit?.shortAddress;
@@ -171,19 +167,7 @@ const PostPage = () => {
   return (
     <div className={styles.content}>
       <div className={styles.sidebar}>
-        <Sidebar
-          address={params?.subplebbitAddress}
-          cid={cid}
-          createdAt={createdAt}
-          description={description}
-          downvoteCount={downvoteCount}
-          roles={roles}
-          rules={rules}
-          timestamp={timestamp}
-          title={subplebbit?.title}
-          updatedAt={updatedAt}
-          upvoteCount={upvoteCount}
-        />
+        <Sidebar subplebbit={subplebbit} comment={post} />
       </div>
       {isInPendingView && params?.accountCommentIndex ? (
         <PendingPost commentIndex={+params?.accountCommentIndex || undefined} />

@@ -24,8 +24,10 @@ const Subplebbit = () => {
   const { timeFilter } = useTimeFilter(sortType, timeFilterName);
   const { feed, hasMore, loadMore, reset, subplebbitAddressesWithNewerPosts } = useFeed({ subplebbitAddresses, sortType, filter: timeFilter });
 
-  const { subplebbit, error } = useSubplebbit({ subplebbitAddress });
-  const { createdAt, description, roles, rules, shortAddress, started, title, updatedAt, settings } = subplebbit || {};
+  const { error } = useSubplebbit({ subplebbitAddress });
+  const subplebbit = useSubplebbit({ subplebbitAddress });
+
+  const { createdAt, shortAddress, started, title, updatedAt, settings } = subplebbit || {};
 
   const loadingStateString = useFeedStateString(subplebbitAddresses) || t('loading');
   const loadingString = (
@@ -88,17 +90,7 @@ const Subplebbit = () => {
   return (
     <div className={styles.content}>
       <div className={styles.sidebar}>
-        <Sidebar
-          address={subplebbitAddress}
-          createdAt={createdAt}
-          description={description}
-          isSubCreatedButNotYetPublished={started && isSubCreatedButNotYetPublished}
-          roles={roles}
-          rules={rules}
-          title={title}
-          updatedAt={updatedAt}
-          settings={settings}
-        />
+        <Sidebar subplebbit={subplebbit} isSubCreatedButNotYetPublished={started && isSubCreatedButNotYetPublished} settings={settings} />
       </div>
       <div className={styles.feed}>
         <NewerPostsButton reset={reset} subplebbitAddressesWithNewerPosts={subplebbitAddressesWithNewerPosts} />
