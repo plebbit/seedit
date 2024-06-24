@@ -33,7 +33,7 @@ const AvatarPreview = ({ areSettingsShown, avatar, showSettings }: AvatarSetting
     <>
       <div className={styles.avatar} onClick={showSettings}>
         {imageUrl && state !== 'initializing' ? (
-          <img src={imageUrl} alt='avatar' />
+          <img src={imageUrl} alt='' />
         ) : (
           <span className={styles.emptyAvatar}>{areSettingsShown ? '–' + t('hide') : '+' + t('add')}</span>
         )}
