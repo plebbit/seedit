@@ -77,16 +77,14 @@ const App = () => {
         <Route element={globalLayout}>
           <Route element={feedLayout}>
             <Route element={<CheckRouteParams />}>
-              <Route path='/:sortType?' element={<Home />} />
               <Route path='/:sortType?/:timeFilterName?' element={<Home />} />
 
-              <Route path='/p/all/:sortType?' element={<All />} />
               <Route path='/p/all/:sortType?/:timeFilterName?' element={<All />} />
 
-              <Route path='/p/:subplebbitAddress/:sortType?' element={<Subplebbit />} />
               <Route path='/p/:subplebbitAddress/:sortType?/:timeFilterName?' element={<Subplebbit />} />
 
               <Route path='/profile/:accountCommentIndex' element={<PendingPost />} />
+
               <Route path='/profile/:sortType?/:timeFilterName?' element={<Profile />} />
               <Route path='/profile/upvoted/:sortType?/:timeFilterName?' element={<Profile />} />
               <Route path='/profile/downvoted/:sortType?/:timeFilterName?' element={<Profile />} />

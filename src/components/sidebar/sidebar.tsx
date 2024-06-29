@@ -1,7 +1,7 @@
 import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import Plebbit from '@plebbit/plebbit-js/dist/browser/index.js';
-import { useAccount, useBlock, Role, useSubplebbitStats, useAccountComment } from '@plebbit/plebbit-react-hooks';
+import { Comment, useAccount, useBlock, Role, Subplebbit, useSubplebbitStats, useAccountComment } from '@plebbit/plebbit-react-hooks';
 import styles from './sidebar.module.css';
 import { getFormattedDate, getFormattedTimeDuration, getFormattedTimeAgo } from '../../lib/utils/time-utils';
 import { findSubplebbitCreator } from '../../lib/utils/user-utils';
@@ -15,22 +15,6 @@ import LoadingEllipsis from '../loading-ellipsis';
 const { version } = packageJson;
 const commitRef = process.env.REACT_APP_COMMIT_REF;
 const isElectron = window.isElectron === true;
-
-interface sidebarProps {
-  address?: string | undefined;
-  cid?: string;
-  createdAt?: number;
-  description?: string;
-  isSubCreatedButNotYetPublished?: boolean;
-  downvoteCount?: number;
-  roles?: Record<string, Role>;
-  rules?: string[];
-  timestamp?: number;
-  title?: string;
-  updatedAt?: number;
-  upvoteCount?: number;
-  settings?: any;
-}
 
 const RulesList = ({ rules }: { rules: string[] }) => {
   const { t } = useTranslation();
@@ -64,7 +48,20 @@ const ModeratorsList = ({ roles }: { roles: Record<string, Role> }) => {
   );
 };
 
-const PostInfo = ({ address, cid, downvoteCount = 0, timestamp = 0, upvoteCount = 0 }: sidebarProps) => {
+const PostInfo = ({
+  address,
+  cid,
+  downvoteCount = 0,
+  timestamp = 0,
+  upvoteCount = 0,
+}: {
+  address?: string;
+  cid?: string;
+  downvoteCount?: number;
+  timestamp?: number;
+  updatedAt?: number;
+  upvoteCount?: number;
+}) => {
   const { t, i18n } = useTranslation();
   const { language } = i18n;
   const postScore = upvoteCount - downvoteCount;
@@ -88,7 +85,7 @@ const PostInfo = ({ address, cid, downvoteCount = 0, timestamp = 0, upvoteCount 
   );
 };
 
-const ModerationTools = ({ address }: sidebarProps) => {
+const ModerationTools = ({ address }: { address?: string }) => {
   const { t } = useTranslation();
   const location = useLocation();
   const params = useParams();
@@ -125,24 +122,20 @@ const downloadAppLink = (() => {
   }
 })();
 
-const Sidebar = ({
-  address,
-  cid,
-  createdAt,
-  description,
-  downvoteCount = 0,
-  isSubCreatedButNotYetPublished,
-  roles,
-  rules,
-  timestamp = 0,
-  title,
-  updatedAt,
-  upvoteCount = 0,
-  settings,
-}: sidebarProps) => {
+interface sidebarProps {
+  comment?: Comment;
+  isSubCreatedButNotYetPublished?: boolean;
+  settings?: any;
+  subplebbit?: Subplebbit;
+}
+
+const Sidebar = ({ comment, isSubCreatedButNotYetPublished, settings, subplebbit }: sidebarProps) => {
   const { t } = useTranslation();
+  const { address, createdAt, description, roles, rules, title, updatedAt } = subplebbit || {};
+  const { cid, downvoteCount, timestamp, upvoteCount } = comment || {};
+
   const { allActiveUserCount, hourActiveUserCount } = useSubplebbitStats({ subplebbitAddress: address });
-  const isOnline = updatedAt && updatedAt > Date.now() / 1000 - 60 * 30;
+  const isOnline = updatedAt && updatedAt > Date.now() / 1000 - 60 * 60;
   const onlineNotice = t('users_online', { count: hourActiveUserCount });
   const offlineNotice = updatedAt && t('posts_last_synced', { dateAgo: getFormattedTimeAgo(updatedAt) });
   const onlineStatus = isOnline ? onlineNotice : offlineNotice;
@@ -216,7 +209,7 @@ const Sidebar = ({
       {!isInHomeView && !isInHomeAboutView && !isInAllView && !isInPendingView && !isInSubplebbitsView && (
         <div className={styles.titleBox}>
           <Link className={styles.title} to={`/p/${address}`}>
-            {address}
+            {subplebbit?.address}
           </Link>
           <div className={styles.subscribeContainer}>
             <span className={styles.subscribeButton}>

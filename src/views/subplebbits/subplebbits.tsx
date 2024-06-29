@@ -130,7 +130,7 @@ const Subplebbit = ({ subplebbit }: SubplebbitProps) => {
 
   const postScore = upvoteCount === 0 && downvoteCount === 0 ? '•' : upvoteCount - downvoteCount || '•';
   const { allActiveUserCount } = useSubplebbitStats({ subplebbitAddress: address });
-  const isOnline = updatedAt && updatedAt > Date.now() / 1000 - 60 * 30;
+  const isOnline = updatedAt && updatedAt > Date.now() / 1000 - 60 * 60;
 
   return (
     <div className={styles.subplebbit}>
