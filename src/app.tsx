@@ -15,7 +15,7 @@ import Profile from './views/profile';
 import Settings from './views/settings';
 import SubmitPage from './views/submit-page';
 import Subplebbit from './views/subplebbit';
-import SubplebbitSettings from './views/subplebbit/subplebbit-settings';
+import SubplebbitSettings from './views/subplebbit-settings';
 import Subplebbits from './views/subplebbits';
 import AccountBar from './components/account-bar/';
 import ChallengeModal from './components/challenge-modal';

@@ -9,17 +9,17 @@ import {
   useSubplebbit,
   usePublishSubplebbitEdit,
 } from '@plebbit/plebbit-react-hooks';
-import { Roles } from '../../../lib/utils/user-utils';
+import { Roles } from '../../lib/utils/user-utils';
 import { useTranslation } from 'react-i18next';
 import { create } from 'zustand';
 import styles from './subplebbit-settings.module.css';
-import { isValidURL } from '../../../lib/utils/url-utils';
-import { isCreateSubplebbitView, isSubplebbitSettingsView } from '../../../lib/utils/view-utils';
-import useChallengesOptions from '../../../hooks/use-challenges-options';
-import useChallengeSettings from '../../../hooks/use-challenge-settings';
-import LoadingEllipsis from '../../../components/loading-ellipsis';
-import Markdown from '../../../components/markdown';
-import Sidebar from '../../../components/sidebar';
+import { isValidURL } from '../../lib/utils/url-utils';
+import { isCreateSubplebbitView, isSubplebbitSettingsView } from '../../lib/utils/view-utils';
+import useChallengesOptions from '../../hooks/use-challenges-options';
+import useChallengeSettings from '../../hooks/use-challenge-settings';
+import LoadingEllipsis from '../../components/loading-ellipsis';
+import Markdown from '../../components/markdown';
+import Sidebar from '../../components/sidebar';
 import _ from 'lodash';
 
 type SubplebbitSettingsState = {
@@ -315,7 +315,7 @@ const Moderators = ({ isReadOnly = false }: { isReadOnly?: boolean }) => {
           </button>
         )}
         {roles &&
-          Object.entries(roles).map(([address, role], index) => (
+          Object.entries(roles)?.map(([address, role], index) => (
             <div className={`${styles.moderator} ${index === 0 && styles.firstModerator}`} key={index}>
               {t('moderator')} #{index + 1}
               {!isReadOnly && <span className={styles.deleteButton} title='delete moderator' onClick={() => (isReadOnly ? {} : handleDeleteModerator(address))} />}
@@ -399,7 +399,7 @@ const ChallengeSettings = ({ challenge, index, isReadOnly, setSubplebbitSettings
 
   const handleOptionChange = (optionName: string, newValue: string) => {
     const updatedOptions = { ...options, [optionName]: newValue };
-    const updatedChallenges = settings.challenges.map((ch: any, idx: number) => (idx === index ? { ...ch, options: updatedOptions } : ch));
+    const updatedChallenges = settings.challenges?.map((ch: any, idx: number) => (idx === index ? { ...ch, options: updatedOptions } : ch));
     setSubplebbitSettingsStore({ settings: { ...settings, challenges: updatedChallenges } });
   };
 
@@ -431,9 +431,9 @@ const ChallengeSettings = ({ challenge, index, isReadOnly, setSubplebbitSettings
   };
 
   const handleExcludeChange = (excludeIndex: number, type: keyof Exclude | 'not post' | 'not reply' | 'not vote', value: any) => {
-    const updatedChallenges = settings.challenges.map((ch: any, idx: number) => {
+    const updatedChallenges = settings.challenges?.map((ch: any, idx: number) => {
       if (idx === index) {
-        const updatedExclude = ch.exclude.map((ex: any, exIdx: number) => {
+        const updatedExclude = ch.exclude?.map((ex: any, exIdx: number) => {
           if (exIdx === excludeIndex) {
             let newEx = { ...ex };
 
@@ -483,7 +483,7 @@ const ChallengeSettings = ({ challenge, index, isReadOnly, setSubplebbitSettings
   const handleExcludeAddress = (excludeIndex: number, value: string) => {
     const addresses = value
       .split(',')
-      .map((addr) => addr.trim())
+      ?.map((addr) => addr.trim())
       .filter((addr) => addr !== '');
     handleExcludeChange(excludeIndex, 'address', addresses);
   };
@@ -498,7 +498,7 @@ const ChallengeSettings = ({ challenge, index, isReadOnly, setSubplebbitSettings
       ) : (
         <div className={styles.challengeDescription}>{challengeSettings?.description}</div>
       )}
-      {challengeSettings?.optionInputs.map((setting: OptionInput) => (
+      {challengeSettings?.optionInputs?.map((setting: OptionInput) => (
         <div key={setting?.option} className={styles.challengeOption}>
           <div className={styles.challengeOptionLabel}>{setting?.label}</div>
           <div className={styles.challengeOptionDescription}>
@@ -594,7 +594,7 @@ const ChallengeSettings = ({ challenge, index, isReadOnly, setSubplebbitSettings
                   <div className={styles.challengeOption}>
                     User's role
                     <div className={styles.challengeOptionDescription}>Is any of the following:</div>
-                    {rolesToExclude.map((role) =>
+                    {rolesToExclude?.map((role) =>
                       isReadOnly && !exclude?.role?.includes(role) ? null : (
                         <div key={role}>
                           {isReadOnly ? (
@@ -619,7 +619,7 @@ const ChallengeSettings = ({ challenge, index, isReadOnly, setSubplebbitSettings
                   <div className={styles.challengeOption}>
                     User's action
                     <div className={styles.challengeOptionDescription}>Is all of the following:</div>
-                    {actionsToExclude.map((action) =>
+                    {actionsToExclude?.map((action) =>
                       isReadOnly && !exclude?.[action] ? null : (
                         <div key={action}>
                           {isReadOnly ? (
@@ -638,7 +638,7 @@ const ChallengeSettings = ({ challenge, index, isReadOnly, setSubplebbitSettings
                         </div>
                       ),
                     )}
-                    {nonActionsToExclude.map((nonAction) =>
+                    {nonActionsToExclude?.map((nonAction) =>
                       isReadOnly && exclude?.[nonAction.replace('not ', '')] !== null ? null : (
                         <div key={nonAction}>
                           {isReadOnly ? (
@@ -717,7 +717,7 @@ const Challenges = ({ isReadOnly, readOnlyChallenges }: { isReadOnly: boolean; r
   const { t } = useTranslation();
   const { settings, setSubplebbitSettingsStore } = useSubplebbitSettingsStore();
   const challenges = settings?.challenges || readOnlyChallenges || [];
-  const [showSettings, setShowSettings] = useState<boolean[]>(challenges.map(() => false));
+  const [showSettings, setShowSettings] = useState<boolean[]>(challenges?.map(() => false));
   const challengeOptions = useChallengesOptions();
 
   const location = useLocation();
@@ -764,7 +764,7 @@ const Challenges = ({ isReadOnly, readOnlyChallenges }: { isReadOnly: boolean; r
           </button>
         )}
         {challenges.length === 0 && !isInCreateSubplebbitView && <span className={styles.noChallengeWarning}>{t('warning_spam')}</span>}
-        {challenges.map((challenge: any, index: number) => (
+        {challenges?.map((challenge: any, index: number) => (
           <div key={index} className={styles.challenge}>
             Challenge #{index + 1}
             {!isReadOnly && <span className={styles.deleteButton} title='delete challenge' onClick={() => (isReadOnly ? {} : handleDeleteChallenge(index))} />}
@@ -773,7 +773,7 @@ const Challenges = ({ isReadOnly, readOnlyChallenges }: { isReadOnly: boolean; r
               <span className={styles.readOnlyChallenge}>{challenge?.name}</span>
             ) : (
               <select value={challenge?.name} onChange={(e) => handleChallengeTypeChange(index, e.target.value)} disabled={isReadOnly}>
-                {challengesNames.map((challenge) => (
+                {challengesNames?.map((challenge) => (
                   <option key={challenge} value={challenge}>
                     {challenge}
                   </option>
