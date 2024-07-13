@@ -58,13 +58,13 @@ a {
 
 .descriptionTitle {
   padding-top: 5px;
-  color: var(--text-markdown);
+  color: var(--text);
 }
 
 .description {
   padding: 5px 0;
   word-wrap: break-word;
-  color: var(--text-markdown);
+  color: var(--text);
   line-height: 15px;
 }
 
@@ -183,7 +183,7 @@ a {
 .rules {
   padding-bottom: 5px;
   padding-top: 7px;
-  color: var(--text-markdown);
+  color: var(--text);
   line-height: 15px;
   word-wrap: break-word;
 }
