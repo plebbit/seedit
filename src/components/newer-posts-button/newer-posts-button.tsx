@@ -38,11 +38,13 @@ const NewerPostsButton = ({ reset, subplebbitAddressesWithNewerPosts }: NewerPos
 
   return (
     <div className={`${styles.newerPostsButton} ${!hide && styles.show} ${hide && styles.hide}`} style={{ top: `${buttonPosition}px` }}>
-      <span className={styles.resetButton} onClick={handleNewerPostsButtonClick}>
-        Newer Posts
-      </span>
+      <button className={styles.resetButton} onClick={handleNewerPostsButtonClick}>
+        ↑ new posts
+      </button>
       <span className={styles.hideButtonWrapper}>
-        <span className={styles.hideButton} onClick={() => setHideButton(true)} />
+        <button className={styles.hideButton} onClick={() => setHideButton(true)}>
+          x
+        </button>
       </span>
     </div>
   );
