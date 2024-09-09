@@ -1,3 +1,32 @@
+## [0.1.15](https://github.com/plebbit/seedit/compare/v0.1.14...v0.1.15) (2024-09-09)
+
+
+### Bug Fixes
+
+* **electron:** download url redirect status code changed ([bb94bdf](https://github.com/plebbit/seedit/commit/bb94bdf5f67b8d048bddffaebad94b452a1e8b1c))
+* hiding/blocking comments wouldn't work because useBlock takes cid, not address ([e459132](https://github.com/plebbit/seedit/commit/e4591320a43f1f2ea74b315d251f33ff9f572989))
+* **import account:** reload after import to ensure rpc starts ([a5f5d24](https://github.com/plebbit/seedit/commit/a5f5d24624e7b668f0cb6a06b2aa3b0830f93870))
+* **offline indicator:** change last online check from 30 to 60 minutes for a better estimate ([dbb91bf](https://github.com/plebbit/seedit/commit/dbb91bf16c1eb7d23db07f2016f504b1b543ad03))
+* **topbar:** always show 'my communities' link ([5a96239](https://github.com/plebbit/seedit/commit/5a96239053cf1ac64d240c4fa9e5091c9f4b98f6))
+
+
+### Features
+
+* add 'new posts' button to refresh feed and scroll to the top ([0077df0](https://github.com/plebbit/seedit/commit/0077df01a125c885cddbf136aa9446948ca082c4))
+* **profile:** add 'hidden' tab and feed for blocked comments ([911fa76](https://github.com/plebbit/seedit/commit/911fa767c5295bfdcc3b7d222352d1f9a2138609))
+* **public:** add redirect.html ([2ad3879](https://github.com/plebbit/seedit/commit/2ad3879fd2a87054dbb2842798247f34cdc3e860))
+* **search bar:** alert 'invalid subplebbit address' if the user forgot to type the tld ([f4798f3](https://github.com/plebbit/seedit/commit/f4798f304c52572495dc64d8ce7d495b676e170f))
+* **settings:** add functionality to plebbit options settings ([fe49694](https://github.com/plebbit/seedit/commit/fe49694458272f56eff7446255ffaf8e69f6ff6c))
+* **subplebbit settings:** when first creating a sub, show the captcha challenge already set as default ([ea7853b](https://github.com/plebbit/seedit/commit/ea7853be63a9f7604ce579d7469ad09885b2ebc8))
+* **subplebbit:** display error near state string in feed ([a40442d](https://github.com/plebbit/seedit/commit/a40442d785eed15563dd9865e5bdd1720d80aee8))
+
+
+### Performance Improvements
+
+* **profile:** too many comments could load at the same time ([2295599](https://github.com/plebbit/seedit/commit/2295599a20e8ff3477849f6a1996617484fd291e))
+
+
+
 ## [0.1.14](https://github.com/plebbit/seedit/compare/v0.1.13...v0.1.14) (2024-05-22)
 
 
