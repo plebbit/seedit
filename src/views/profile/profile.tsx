@@ -67,27 +67,74 @@ const SortDropdown = ({ onSortChange }: SortDropdownProps) => {
   );
 };
 
+const pageSize = 10;
+
 const Profile = () => {
   const { t } = useTranslation();
   const account = useAccount();
   const location = useLocation();
   const params = useParams();
-  let { accountComments } = useAccountComments();
-  accountComments = [...accountComments].reverse();
-  const { accountVotes } = useAccountVotes();
+  const isMobile = useWindowWidth() < 640;
+
+  const [activeTab, setActiveTab] = useState('overview');
+  const [currentPage, setCurrentPage] = useState(1);
+
   const isInProfileUpvotedView = isProfileUpvotedView(location.pathname);
   const isInProfileDownvotedView = isProfileDownvotedView(location.pathname);
   const isInProfileHiddenView = isProfileHiddenView(location.pathname);
   const isInCommentsView = isProfileCommentsView(location.pathname);
   const isInSubmittedView = isProfileSubmittedView(location.pathname);
-  const isMobile = useWindowWidth() < 640;
 
-  // get comments for upvoted/downvoted/comments/submitted pages
+  useEffect(() => {
+    if (isInProfileUpvotedView) setActiveTab('upvoted');
+    else if (isInProfileDownvotedView) setActiveTab('downvoted');
+    else if (isInProfileHiddenView) setActiveTab('hidden');
+    else if (isInCommentsView) setActiveTab('comments');
+    else if (isInSubmittedView) setActiveTab('submitted');
+    else setActiveTab('overview');
+
+    setCurrentPage(1); // Reset page when changing tabs
+  }, [isInProfileUpvotedView, isInProfileDownvotedView, isInProfileHiddenView, isInCommentsView, isInSubmittedView]);
+
+  const { accountComments } = useAccountComments();
+  const { accountVotes } = useAccountVotes();
+
   const postComments = useMemo(() => accountComments?.filter((comment) => !comment.parentCid) || [], [accountComments]);
   const replyComments = useMemo(() => accountComments?.filter((comment) => comment.parentCid) || [], [accountComments]);
-  const upvotedCommentCids = useMemo(() => accountVotes?.filter((vote) => vote.vote === 1).map((vote) => vote.commentCid) || [], [accountVotes]);
-  const downvotedCommentCids = useMemo(() => accountVotes?.filter((vote) => vote.vote === -1).map((vote) => vote.commentCid) || [], [accountVotes]);
-  const hiddenCommentCids = useMemo(() => Object.keys(account?.blockedCids ?? {}), [account?.blockedCids]);
+
+  const upvotedCommentCids = useMemo(() => {
+    const allUpvotedCids = accountVotes?.filter((vote) => vote.vote === 1).map((vote) => vote.commentCid) || [];
+    return allUpvotedCids.slice(0, currentPage * pageSize);
+  }, [accountVotes, currentPage]);
+
+  const downvotedCommentCids = useMemo(() => {
+    const allDownvotedCids = accountVotes?.filter((vote) => vote.vote === -1).map((vote) => vote.commentCid) || [];
+    return allDownvotedCids.slice(0, currentPage * pageSize);
+  }, [accountVotes, currentPage]);
+
+  const hiddenCommentCids = useMemo(() => {
+    const allHiddenCids = Object.keys(account?.blockedCids ?? {});
+    return allHiddenCids.slice(0, currentPage * pageSize);
+  }, [account?.blockedCids, currentPage]);
+
+  const { hasMoreUpvoted, hasMoreDownvoted, hasMoreHidden } = useMemo(() => {
+    const allUpvotedCids = accountVotes?.filter((vote) => vote.vote === 1).map((vote) => vote.commentCid) || [];
+    const allDownvotedCids = accountVotes?.filter((vote) => vote.vote === -1).map((vote) => vote.commentCid) || [];
+    const allHiddenCids = Object.keys(account?.blockedCids ?? {});
+
+    return {
+      hasMoreUpvoted: currentPage * pageSize < allUpvotedCids.length,
+      hasMoreDownvoted: currentPage * pageSize < allDownvotedCids.length,
+      hasMoreHidden: currentPage * pageSize < allHiddenCids.length,
+    };
+  }, [accountVotes, account?.blockedCids, currentPage]);
+
+  const hasMore = useMemo(() => {
+    if (isInProfileUpvotedView) return hasMoreUpvoted;
+    if (isInProfileDownvotedView) return hasMoreDownvoted;
+    if (isInProfileHiddenView) return hasMoreHidden;
+    return false;
+  }, [hasMoreUpvoted, hasMoreDownvoted, hasMoreHidden, isInProfileUpvotedView, isInProfileDownvotedView, isInProfileHiddenView]);
 
   const { comments: upvotedComments } = useComments({ commentCids: upvotedCommentCids });
   const { comments: downvotedComments } = useComments({ commentCids: downvotedCommentCids });
@@ -96,45 +143,51 @@ const Profile = () => {
   const [sortType, setSortType] = useState('new');
   const handleSortChange = (newSortType: string) => {
     setSortType(newSortType);
+    setCurrentPage(1);
   };
 
   const comments = useMemo(() => {
-    if (isInProfileUpvotedView) {
-      return upvotedComments;
-    } else if (isInProfileDownvotedView) {
-      return downvotedComments;
-    } else if (isInCommentsView) {
-      return replyComments;
-    } else if (isInSubmittedView) {
-      return postComments;
-    } else if (isInProfileHiddenView) {
-      return hiddenComments;
-    } else {
-      return accountComments;
+    let selectedComments;
+    switch (activeTab) {
+      case 'upvoted':
+        selectedComments = upvotedComments;
+        break;
+      case 'downvoted':
+        selectedComments = downvotedComments;
+        break;
+      case 'hidden':
+        selectedComments = hiddenComments;
+        break;
+      case 'comments':
+        selectedComments = replyComments;
+        break;
+      case 'submitted':
+        selectedComments = postComments;
+        break;
+      case 'overview':
+      default:
+        selectedComments = [...postComments, ...replyComments];
     }
-  }, [
-    isInProfileUpvotedView,
-    isInProfileDownvotedView,
-    isInProfileHiddenView,
-    isInCommentsView,
-    isInSubmittedView,
-    upvotedComments,
-    downvotedComments,
-    replyComments,
-    postComments,
-    hiddenComments,
-    accountComments,
-  ]);
 
-  const virtuosoData = useMemo(() => {
-    let sortedData = [...comments];
-    if (sortType === 'new') {
-      sortedData.sort((a, b) => b!.timestamp - a!.timestamp);
-    } else {
-      sortedData.sort((a, b) => a!.timestamp - b!.timestamp);
-    }
-    return sortedData;
-  }, [sortType, comments]);
+    // Sort comments
+    selectedComments.sort((a, b) => (sortType === 'new' ? b!.timestamp - a!.timestamp : a!.timestamp - b!.timestamp));
+
+    return selectedComments;
+  }, [activeTab, upvotedComments, downvotedComments, hiddenComments, replyComments, postComments, sortType]);
+
+  const loadMore = useCallback(() => {
+    console.log('LoadMore called, current page:', currentPage);
+    setCurrentPage((prevPage) => {
+      const newPage = prevPage + 1;
+      console.log('Setting new page:', newPage);
+      return newPage;
+    });
+  }, [currentPage]);
+
+  const profileTitle = account?.author?.displayName ? `${account?.author?.displayName} (u/${account?.author?.shortAddress})` : `u/${account?.author?.shortAddress}`;
+  useEffect(() => {
+    document.title = profileTitle + ' - Seedit';
+  }, [t, profileTitle]);
 
   // save last virtuoso state on each scroll
   const virtuosoRef = useRef<VirtuosoHandle | null>(null);
@@ -150,28 +203,23 @@ const Profile = () => {
     return () => window.removeEventListener('scroll', setLastVirtuosoState);
   }, [account?.shortAddress, params.sortType]);
 
-  const profileTitle = account?.author?.displayName ? `${account?.author?.displayName} (u/${account?.author?.shortAddress})` : `u/${account?.author?.shortAddress}`;
-  useEffect(() => {
-    document.title = profileTitle + ' - Seedit';
-  }, [t, profileTitle]);
-
   return (
     <div className={styles.content}>
       <div className={isMobile ? styles.sidebarMobile : styles.sidebarDesktop}>
         <AuthorSidebar />
       </div>
       <SortDropdown onSortChange={handleSortChange} />
-      {account && !accountComments.length ? (
-        t('no_posts')
+      {account && comments.length === 0 ? (
+        <div>{t('no_posts')}</div>
       ) : (
         <Virtuoso
           increaseViewportBy={{ bottom: 1200, top: 600 }}
-          totalCount={accountComments?.length || 0}
-          data={virtuosoData}
-          itemContent={(index, post) => {
-            const isReply = post?.parentCid;
-            return !isReply ? <Post index={index} post={post} /> : <Reply index={index} isSingleReply={true} reply={post} />;
-          }}
+          data={comments}
+          totalCount={comments.length}
+          itemContent={(index, post) =>
+            post?.parentCid ? <Reply key={post?.cid} index={index} isSingleReply={true} reply={post} /> : <Post key={post?.cid} index={index} post={post} />
+          }
+          endReached={hasMore ? loadMore : undefined}
           useWindowScroll={true}
           ref={virtuosoRef}
           restoreStateFrom={lastVirtuosoState}
