@@ -122,9 +122,7 @@
   display: inline-block;
   overflow: hidden;
   white-space: nowrap;
-  text-overflow: ellipsis;
   vertical-align: middle;
-  max-width: 19em;
   text-decoration: none;
 }
 

@@ -208,7 +208,7 @@ const Post = ({ index, post = {} }: PostProps) => {
                     <span className={styles.domain}>
                       (
                       <a href={link} target='_blank' rel='noopener noreferrer'>
-                        {linkUrl}
+                        {linkUrl.length > 25 ? linkUrl.slice(0, 25) + '...' : linkUrl}
                       </a>
                       )
                     </span>

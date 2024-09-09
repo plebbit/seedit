@@ -136,6 +136,7 @@ const AuthorHeaderTabs = () => {
     !isInProfileCommentsView &&
     !isInProfileSubmittedView &&
     !isInAuthorCommentsView &&
+    !isInProfileHiddenView &&
     !isInAuthorSubmittedView
       ? styles.selected
       : styles.choice;
