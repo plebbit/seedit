@@ -320,7 +320,6 @@ const Submit = () => {
                 autoComplete='off'
                 spellCheck='false'
                 value={selectedSubplebbit}
-                defaultValue={selectedSubplebbit ? paramsSubplebbitAddress : undefined}
                 onChange={(e) => {
                   handleAddressChange(e);
                   setSubmitStore({ subplebbitAddress: e.target.value });
