@@ -68,6 +68,10 @@ a {
   line-height: 15px;
 }
 
+.description p {
+  margin: 0 !important;
+}
+
 .bottom {
   border-top: 1px solid var(--border-text);
   color: var(--text-info);
