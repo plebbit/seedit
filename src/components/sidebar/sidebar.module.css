@@ -96,7 +96,7 @@ a {
   line-height: 29px;
   height: 29px;
   cursor: pointer;
-  margin: 7px 0 12px 0;
+  margin-bottom: 12px;
   color: var(--text-primary);
 }
 
@@ -109,10 +109,6 @@ a {
   background: var(--background) none no-repeat scroll center left;
   background-image: var(--button-large-nub);
   background-repeat: no-repeat;
-}
-
-.searchBarSpacer {
-  height: 11px;
 }
 
 .largeButton:hover {

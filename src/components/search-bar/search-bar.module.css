@@ -56,24 +56,26 @@
   padding: 0 10px;
   height: 0;
   overflow: hidden;
-  transition: height 0.4s linear, 
+  transition: height 0.4s linear,
+              visibility 0.4s linear,
               padding-top 0.4s linear, 
               margin-top 0.4s linear, 
               padding-bottom 0.4s linear, 
               margin-bottom 0.4s linear;  
   z-index: 1;
+  margin-bottom: 10px;
 }
 
 .slideDown {
   height: 49px;
-  padding-top: 9px;
-  margin-top: 6px;
-  padding-bottom: 9px;
-  margin-bottom: 0;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-top: 5px;
+  margin-bottom: 12px;
 }
 
 .slideUp {
-  margin-top: -8px;
+  visibility: hidden;
 }
 
 .infobar label {
