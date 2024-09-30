@@ -59,6 +59,7 @@ const Home = () => {
               />
             </div>
           ) : (
+            showMorePostsSuggestionRef.current &&
             monthlyFeed.length > feed.length &&
             (weeklyFeed.length > feed.length ? (
               <div className={styles.stateString}>
@@ -92,6 +93,7 @@ const Home = () => {
   };
 
   const virtuosoRef = useRef<VirtuosoHandle | null>(null);
+  const showMorePostsSuggestionRef = useRef(false);
 
   useEffect(() => {
     const setLastVirtuosoState = () => {
@@ -106,6 +108,14 @@ const Home = () => {
   }, [sortType, timeFilterName]);
 
   const lastVirtuosoState = lastVirtuosoStates?.[sortType + timeFilterName];
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      showMorePostsSuggestionRef.current = true;
+    }, 5000);
+
+    return () => clearTimeout(timer);
+  }, []);
 
   useEffect(() => {
     document.title = `Seedit`;
