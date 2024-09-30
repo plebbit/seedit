@@ -9,7 +9,7 @@ import NewerPostsButton from '../../components/newer-posts-button';
 import Post from '../../components/post';
 import Sidebar from '../../components/sidebar';
 import useFeedStateString from '../../hooks/use-feed-state-string';
-import useTimeFilter, { TimeFilterKey } from '../../hooks/use-time-filter';
+import useTimeFilter from '../../hooks/use-time-filter';
 
 const lastVirtuosoStates: { [key: string]: StateSnapshot } = {};
 
@@ -20,9 +20,9 @@ const Subplebbit = () => {
   const subplebbitAddresses = useMemo(() => [subplebbitAddress], [subplebbitAddress]) as string[];
 
   const sortType = params?.sortType || 'hot';
-  const timeFilterName = (params.timeFilterName as TimeFilterKey) || 'all';
-  const { timeFilter } = useTimeFilter(sortType, timeFilterName);
-  const { feed, hasMore, loadMore, reset, subplebbitAddressesWithNewerPosts } = useFeed({ subplebbitAddresses, sortType, filter: timeFilter });
+  const timeFilterName = params.timeFilterName || 'all';
+  const { timeFilterSeconds } = useTimeFilter();
+  const { feed, hasMore, loadMore, reset, subplebbitAddressesWithNewerPosts } = useFeed({ subplebbitAddresses, sortType, newerThan: timeFilterSeconds });
 
   const { error } = useSubplebbit({ subplebbitAddress });
   const subplebbit = useSubplebbit({ subplebbitAddress });

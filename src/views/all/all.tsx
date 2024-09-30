@@ -9,7 +9,7 @@ import Post from '../../components/post';
 import Sidebar from '../../components/sidebar';
 import { useDefaultSubplebbitAddresses } from '../../hooks/use-default-subplebbits';
 import useFeedStateString from '../../hooks/use-feed-state-string';
-import useTimeFilter, { TimeFilterKey } from '../../hooks/use-time-filter';
+import useTimeFilter from '../../hooks/use-time-filter';
 import _ from 'lodash';
 
 const lastVirtuosoStates: { [key: string]: StateSnapshot } = {};
@@ -18,9 +18,9 @@ const All = () => {
   const subplebbitAddresses = useDefaultSubplebbitAddresses();
   const params = useParams<{ sortType?: string; timeFilterName?: string }>();
   const sortType = params?.sortType || 'hot';
-  const timeFilterName = params.timeFilterName as TimeFilterKey;
-  const { timeFilter } = useTimeFilter(sortType, timeFilterName);
-  const { feed, hasMore, loadMore } = useFeed({ subplebbitAddresses, sortType, filter: timeFilter });
+  const timeFilterName = params.timeFilterName;
+  const { timeFilterSeconds } = useTimeFilter();
+  const { feed, hasMore, loadMore } = useFeed({ subplebbitAddresses, sortType, newerThan: timeFilterSeconds });
   const { t } = useTranslation();
   let loadingStateString = useFeedStateString(subplebbitAddresses) || t('loading');
 

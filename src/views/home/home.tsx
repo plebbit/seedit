@@ -10,7 +10,7 @@ import Post from '../../components/post';
 import Sidebar from '../../components/sidebar';
 import { useDefaultAndSubscriptionsSubplebbitAddresses } from '../../hooks/use-default-subplebbits';
 import useFeedStateString from '../../hooks/use-feed-state-string';
-import useTimeFilter, { TimeFilterKey } from '../../hooks/use-time-filter';
+import useTimeFilter from '../../hooks/use-time-filter';
 
 const lastVirtuosoStates: { [key: string]: StateSnapshot } = {};
 
@@ -19,11 +19,10 @@ const Home = () => {
   const subplebbitAddresses = useDefaultAndSubscriptionsSubplebbitAddresses();
   const params = useParams<{ sortType?: string; timeFilterName?: string }>();
   const sortType = params?.sortType || 'hot';
-  const timeFilterName = params.timeFilterName as TimeFilterKey;
-  const { timeFilter } = useTimeFilter(sortType, timeFilterName);
-
+  const timeFilterName = params.timeFilterName;
+  const { timeFilterSeconds } = useTimeFilter();
   const { feed, hasMore, loadMore, reset, subplebbitAddressesWithNewerPosts } = useFeed({
-    filter: timeFilter,
+    newerThan: timeFilterSeconds,
     postsPerPage: 10,
     sortType,
     subplebbitAddresses: subplebbitAddresses || [],
