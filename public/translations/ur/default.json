@@ -304,5 +304,8 @@
   "plebbit_options": "پلیبٹ اختیارات",
   "general": "عام",
   "own_communities": "اپنی کمیونٹیاں",
-  "invalid_community_address": "غیر درست مجتمع کا پتہ"
+  "invalid_community_address": "غیر درست مجتمع کا پتہ",
+  "newer_posts_available": "نئے پوسٹس دستیاب ہیں، <1>فیڈ کو دوبارہ لوڈ کریں</1>",
+  "more_posts_last_week": "{{currentTimeFilterName}} سے پوسٹ دکھا رہا ہے، <1>پچھلے ہفتے کے مزید پوسٹس دکھائیں</1>",
+  "more_posts_last_month": "{{currentTimeFilterName}} سے پوسٹ دکھا رہا ہے، <1>پچھلے مہینے کے مزید پوسٹس دکھائیں</1>"
 }

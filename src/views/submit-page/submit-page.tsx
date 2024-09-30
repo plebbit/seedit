@@ -195,15 +195,13 @@ const Submit = () => {
         setActiveDropdownIndex((prevIndex) => (prevIndex > 0 ? prevIndex - 1 : 0));
       } else if (e.key === 'Enter' && activeDropdownIndex !== -1) {
         const selectedAddress = filteredSubplebbitAddresses[activeDropdownIndex];
-        if (subplebbitAddress) {
-          setSelectedSubplebbit(subplebbitAddress);
-        }
+        setSelectedSubplebbit(selectedAddress);
         setSubmitStore({ subplebbitAddress: selectedAddress });
-        setInputAddress('');
+        setInputAddress(selectedAddress);
         setActiveDropdownIndex(-1);
       }
     },
-    [filteredSubplebbitAddresses, activeDropdownIndex, subplebbitAddress, setSelectedSubplebbit, setSubmitStore],
+    [filteredSubplebbitAddresses, activeDropdownIndex, setSubmitStore, setSelectedSubplebbit],
   );
 
   useEffect(() => {
@@ -320,7 +318,6 @@ const Submit = () => {
                 autoComplete='off'
                 spellCheck='false'
                 value={selectedSubplebbit}
-                defaultValue={selectedSubplebbit ? paramsSubplebbitAddress : undefined}
                 onChange={(e) => {
                   handleAddressChange(e);
                   setSubmitStore({ subplebbitAddress: e.target.value });

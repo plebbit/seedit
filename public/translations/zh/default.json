@@ -304,5 +304,8 @@
   "plebbit_options": "plebbit选项",
   "general": "一般",
   "own_communities": "自己的社区",
-  "invalid_community_address": "无效的社区地址"
+  "invalid_community_address": "无效的社区地址",
+  "newer_posts_available": "新帖子可用，<1>重新加载源</1>",
+  "more_posts_last_week": "显示自 {{currentTimeFilterName}} 以来的帖子，<1>显示上周的更多帖子</1>",
+  "more_posts_last_month": "显示自 {{currentTimeFilterName}} 以来的帖子，<1>显示上个月的更多帖子</1>"
 }

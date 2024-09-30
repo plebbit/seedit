@@ -304,5 +304,8 @@
   "plebbit_options": "επιλογές plebbit",
   "general": "γενικός",
   "own_communities": "δικές μου κοινότητες",
-  "invalid_community_address": "Μη έγκυρη διεύθυνση κοινότητας"
+  "invalid_community_address": "Μη έγκυρη διεύθυνση κοινότητας",
+  "newer_posts_available": "Διατίθενται νεότερες δημοσιεύσεις, <1>επανεκκινήστε τη ροή</1>",
+  "more_posts_last_week": "Εμφανίζονται αναρτήσεις από {{currentTimeFilterName}}, <1>εμφάνιση περισσότερων αναρτήσεων από την περασμένη εβδομάδα</1>",
+  "more_posts_last_month": "Διατίθενται αναρτήσεις από {{currentTimeFilterName}}, <1>εμφάνιση περισσότερων αναρτήσεων από τον περασμένο μήνα</1>"
 }

@@ -5,11 +5,10 @@ import { Virtuoso, VirtuosoHandle, StateSnapshot } from 'react-virtuoso';
 import { useTranslation } from 'react-i18next';
 import styles from '../home/home.module.css';
 import LoadingEllipsis from '../../components/loading-ellipsis';
-import NewerPostsButton from '../../components/newer-posts-button';
 import Post from '../../components/post';
 import Sidebar from '../../components/sidebar';
 import useFeedStateString from '../../hooks/use-feed-state-string';
-import useTimeFilter, { TimeFilterKey } from '../../hooks/use-time-filter';
+import useTimeFilter from '../../hooks/use-time-filter';
 
 const lastVirtuosoStates: { [key: string]: StateSnapshot } = {};
 
@@ -20,9 +19,9 @@ const Subplebbit = () => {
   const subplebbitAddresses = useMemo(() => [subplebbitAddress], [subplebbitAddress]) as string[];
 
   const sortType = params?.sortType || 'hot';
-  const timeFilterName = (params.timeFilterName as TimeFilterKey) || 'all';
-  const { timeFilter } = useTimeFilter(sortType, timeFilterName);
-  const { feed, hasMore, loadMore, reset, subplebbitAddressesWithNewerPosts } = useFeed({ subplebbitAddresses, sortType, filter: timeFilter });
+  const timeFilterName = params.timeFilterName || 'all';
+  const { timeFilterSeconds } = useTimeFilter();
+  const { feed, hasMore, loadMore, reset, subplebbitAddressesWithNewerPosts } = useFeed({ subplebbitAddresses, sortType, newerThan: timeFilterSeconds });
 
   const { error } = useSubplebbit({ subplebbitAddress });
   const subplebbit = useSubplebbit({ subplebbitAddress });
@@ -51,6 +50,13 @@ const Subplebbit = () => {
     document.title = title ? title : shortAddress || subplebbitAddress;
   }, [title, shortAddress, subplebbitAddress]);
 
+  const handleNewerPostsButtonClick = () => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+    setTimeout(() => {
+      reset();
+    }, 300);
+  };
+
   const Footer = () => {
     let footerContent;
 
@@ -68,7 +74,19 @@ const Subplebbit = () => {
       return;
     }
 
-    return <div className={styles.footer}>{footerContent}</div>;
+    return (
+      <div className={styles.footer}>
+        {subplebbitAddressesWithNewerPosts.length > 0 && (
+          <div className={styles.stateString}>
+            newer posts are available,{' '}
+            <span className={styles.link} onClick={handleNewerPostsButtonClick}>
+              reload feed
+            </span>
+          </div>
+        )}
+        {footerContent}
+      </div>
+    );
   };
 
   const virtuosoRef = useRef<VirtuosoHandle | null>(null);
@@ -93,7 +111,6 @@ const Subplebbit = () => {
         <Sidebar subplebbit={subplebbit} isSubCreatedButNotYetPublished={started && isSubCreatedButNotYetPublished} settings={settings} />
       </div>
       <div className={styles.feed}>
-        <NewerPostsButton reset={reset} subplebbitAddressesWithNewerPosts={subplebbitAddressesWithNewerPosts} />
         <Virtuoso
           increaseViewportBy={{ bottom: 1200, top: 600 }}
           totalCount={feed?.length || 0}

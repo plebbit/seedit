@@ -5,7 +5,7 @@ import { useAccount } from '@plebbit/plebbit-react-hooks';
 import Plebbit from '@plebbit/plebbit-js/dist/browser/index.js';
 import styles from './topbar.module.css';
 import { useDefaultSubplebbitAddresses } from '../../hooks/use-default-subplebbits';
-import useTimeFilter, { TimeFilterKey } from '../../hooks/use-time-filter';
+import useTimeFilter from '../../hooks/use-time-filter';
 import { isAllView, isHomeView, isSubplebbitView } from '../../lib/utils/view-utils';
 
 const sortTypes = ['hot', 'new', 'active', 'controversialAll', 'topAll'];
@@ -23,11 +23,8 @@ const TopBar = () => {
   const isInSubplebbitView = isSubplebbitView(location.pathname, params);
   const homeButtonClass = isInHomeView ? styles.selected : styles.choice;
 
-  const sortType = params?.sortType || 'hot';
-  const { timeFilterNames } = useTimeFilter();
-  const timeFilterName = params.timeFilterName as TimeFilterKey;
-  const { currentFilterName } = useTimeFilter(sortType, timeFilterName);
-  const selectedTimeFilter = isInSubplebbitView ? params.timeFilterName || 'all' : currentFilterName;
+  const { timeFilterName, timeFilterNames } = useTimeFilter();
+  const selectedTimeFilter = timeFilterName || (isInSubplebbitView ? 'all' : timeFilterName);
 
   const [isSubsDropdownOpen, setIsSubsDropdownOpen] = useState(false);
   const toggleSubsDropdown = () => setIsSubsDropdownOpen(!isSubsDropdownOpen);

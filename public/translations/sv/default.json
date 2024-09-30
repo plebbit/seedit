@@ -304,5 +304,8 @@
   "plebbit_options": "plebbit-alternativ",
   "general": "allmän",
   "own_communities": "egna samhällen",
-  "invalid_community_address": "Ogiltig samhällsadress"
+  "invalid_community_address": "Ogiltig samhällsadress",
+  "newer_posts_available": "Nyare inlägg är tillgängliga, <1>ladda om flödet</1>",
+  "more_posts_last_week": "Visar inlägg sedan {{currentTimeFilterName}}, <1>visa fler inlägg från förra veckan</1>",
+  "more_posts_last_month": "Visar inlägg sedan {{currentTimeFilterName}}, <1>visa fler inlägg från förra månaden</1>"
 }

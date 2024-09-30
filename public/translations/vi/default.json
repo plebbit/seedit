@@ -304,5 +304,8 @@
   "plebbit_options": "tùy chọn plebbit",
   "general": "chung",
   "own_communities": "cộng đồng của riêng tôi",
-  "invalid_community_address": "Địa chỉ cộng đồng không hợp lệ"
+  "invalid_community_address": "Địa chỉ cộng đồng không hợp lệ",
+  "newer_posts_available": "Có bài viết mới, <1>tải lại nguồn cấp dữ liệu</1>",
+  "more_posts_last_week": "Đang hiển thị bài viết từ {{currentTimeFilterName}}, <1>hiển thị thêm bài viết từ tuần trước</1>",
+  "more_posts_last_month": "Đang hiển thị bài viết từ {{currentTimeFilterName}}, <1>hiển thị thêm bài viết từ tháng trước</1>"
 }

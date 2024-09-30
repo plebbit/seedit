@@ -304,5 +304,8 @@
   "plebbit_options": "plebbitのオプション",
   "general": "一般的な",
   "own_communities": "自分のコミュニティ",
-  "invalid_community_address": "無効なコミュニティアドレス"
+  "invalid_community_address": "無効なコミュニティアドレス",
+  "newer_posts_available": "新しい投稿が利用可能です、<1>フィードを再読み込み</1>",
+  "more_posts_last_week": "{{currentTimeFilterName}} からの投稿を表示しています。<1>先週の投稿をさらに表示</1>",
+  "more_posts_last_month": "{{currentTimeFilterName}} からの投稿を表示しています。<1>先月の投稿をさらに表示</1>"
 }

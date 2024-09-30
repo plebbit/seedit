@@ -38,7 +38,6 @@ import {
   isSettingsPlebbitOptionsView,
 } from '../../lib/utils/view-utils';
 import useTheme from '../../hooks/use-theme';
-import { TimeFilterKey } from '../../hooks/use-time-filter';
 import useWindowWidth from '../../hooks/use-window-width';
 import { useNotFoundStore } from '../../views/not-found';
 import styles from './header.module.css';
@@ -85,7 +84,7 @@ const SortItems = () => {
   const isInSubplebbitView = isSubplebbitView(location.pathname, params);
   const sortLabels = [t('hot'), t('new'), t('active'), t('controversial'), t('top')];
   const [selectedSortType, setSelectedSortType] = useState(params.sortType || '/hot');
-  const timeFilterName = params.timeFilterName as TimeFilterKey;
+  const timeFilterName = params.timeFilterName;
 
   useEffect(() => {
     if (location.pathname.endsWith('/about')) {

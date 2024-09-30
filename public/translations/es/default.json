@@ -304,5 +304,8 @@
   "plebbit_options": "opciones plebbit",
   "general": "general",
   "own_communities": "comunidades propias",
-  "invalid_community_address": "Dirección de comunidad no válida"
+  "invalid_community_address": "Dirección de comunidad no válida",
+  "newer_posts_available": "Hay publicaciones más recientes disponibles, <1>recargar el feed</1>",
+  "more_posts_last_week": "Mostrando publicaciones desde {{currentTimeFilterName}}, <1>mostrar más publicaciones de la semana pasada</1>",
+  "more_posts_last_month": "Mostrando publicaciones desde {{currentTimeFilterName}}, <1>mostrar más publicaciones del mes pasado</1>"
 }

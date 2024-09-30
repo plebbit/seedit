@@ -304,5 +304,8 @@
   "plebbit_options": "opsione plebbit",
   "general": "i përgjithshëm",
   "own_communities": "komunitete të mia",
-  "invalid_community_address": "Adresa e komunitetit e pavlefshme"
+  "invalid_community_address": "Adresa e komunitetit e pavlefshme",
+  "newer_posts_available": "Postime më të reja janë të disponueshme, <1>rifreskoje fluxin</1>",
+  "more_posts_last_week": "Duke treguar postimet që nga {{currentTimeFilterName}}, <1>tregoni më shumë postime nga java e kaluar</1>",
+  "more_posts_last_month": "Duke treguar postimet që nga {{currentTimeFilterName}}, <1>tregoni më shumë postime nga java e kaluar</1>"
 }

@@ -304,5 +304,8 @@
   "plebbit_options": "plebbit options",
   "general": "general",
   "own_communities": "own communities",
-  "invalid_community_address": "Invalid community address"
+  "invalid_community_address": "Invalid community address",
+  "newer_posts_available": "Newer posts are available, <1>reload feed</1>",
+  "more_posts_last_week": "Showing posts since {{currentTimeFilterName}}, <1>show more posts from last week</1>",
+  "more_posts_last_month": "Showing posts since {{currentTimeFilterName}}, <1>show more posts from last month</1>"
 }

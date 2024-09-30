@@ -304,5 +304,8 @@
   "plebbit_options": "plebbit možnosti",
   "general": "obecné",
   "own_communities": "vlastní komunity",
-  "invalid_community_address": "Neplatná adresa komunity"
+  "invalid_community_address": "Neplatná adresa komunity",
+  "newer_posts_available": "Jsou k dispozici novější příspěvky, <1>aktualizujte kanál</1>",
+  "more_posts_last_week": "Zobrazujeme příspěvky od {{currentTimeFilterName}}, <1>zobrazit další příspěvky z minulého týdne</1>",
+  "more_posts_last_month": "Zobrazujeme příspěvky od {{currentTimeFilterName}}, <1>zobrazit další příspěvky z minulého měsíce</1>"
 }

@@ -197,7 +197,6 @@ const Sidebar = ({ comment, isSubCreatedButNotYetPublished, settings, subplebbit
   return (
     <div className={`${isInAboutView ? styles.about : styles.sidebar}`}>
       <SearchBar />
-      <div className={styles.searchBarSpacer} />
       {isInPostView && <PostInfo address={address} cid={cid} downvoteCount={downvoteCount} timestamp={timestamp} upvoteCount={upvoteCount} />}
       <Link to={submitRoute}>
         {/* TODO: add .largeButtonDisabled and disabledButtonDescription classnames for subs that don't accept posts */}

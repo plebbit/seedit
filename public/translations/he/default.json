@@ -304,5 +304,8 @@
   "plebbit_options": "אפשרויות plebbit",
   "general": "כללי",
   "own_communities": "הקהילות שלי",
-  "invalid_community_address": "כתובת הקהילה אינה חוקית"
+  "invalid_community_address": "כתובת הקהילה אינה חוקית",
+  "newer_posts_available": "ישנם פוסטים חדשים זמינים, <1>טען מחדש את הפיד</1>",
+  "more_posts_last_week": "מראה פוסטים מאז {{currentTimeFilterName}}, <1>הצג פוסטים נוספים מהשבוע שעבר</1>",
+  "more_posts_last_month": "מראה פוסטים מאז {{currentTimeFilterName}}, <1>הצג פוסטים נוספים מהחודש שעבר</1>"
 }
