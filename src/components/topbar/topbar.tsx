@@ -23,9 +23,8 @@ const TopBar = () => {
   const isInSubplebbitView = isSubplebbitView(location.pathname, params);
   const homeButtonClass = isInHomeView ? styles.selected : styles.choice;
 
-  const { timeFilterNames } = useTimeFilter();
-  const timeFilterName = params.timeFilterName;
-  const selectedTimeFilter = timeFilterName || (isInSubplebbitView ? 'all' : timeFilterNames[0]);
+  const { timeFilterName, timeFilterNames } = useTimeFilter();
+  const selectedTimeFilter = timeFilterName || (isInSubplebbitView ? 'all' : timeFilterName);
 
   const [isSubsDropdownOpen, setIsSubsDropdownOpen] = useState(false);
   const toggleSubsDropdown = () => setIsSubsDropdownOpen(!isSubsDropdownOpen);

@@ -1,11 +1,10 @@
 import { useEffect, useRef } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { Virtuoso, VirtuosoHandle, StateSnapshot } from 'react-virtuoso';
 import { useFeed } from '@plebbit/plebbit-react-hooks';
 import { useTranslation } from 'react-i18next';
 import styles from './home.module.css';
 import LoadingEllipsis from '../../components/loading-ellipsis';
-import NewerPostsButton from '../../components/newer-posts-button';
 import Post from '../../components/post';
 import Sidebar from '../../components/sidebar';
 import { useDefaultAndSubscriptionsSubplebbitAddresses } from '../../hooks/use-default-subplebbits';
@@ -19,8 +18,7 @@ const Home = () => {
   const subplebbitAddresses = useDefaultAndSubscriptionsSubplebbitAddresses();
   const params = useParams<{ sortType?: string; timeFilterName?: string }>();
   const sortType = params?.sortType || 'hot';
-  const timeFilterName = params.timeFilterName;
-  const { timeFilterSeconds } = useTimeFilter();
+  const { timeFilterName, timeFilterSeconds } = useTimeFilter();
   const { feed, hasMore, loadMore, reset, subplebbitAddressesWithNewerPosts } = useFeed({
     newerThan: timeFilterSeconds,
     postsPerPage: 10,
@@ -28,19 +26,50 @@ const Home = () => {
     subplebbitAddresses: subplebbitAddresses || [],
   });
 
-  let loadingStateString = useFeedStateString(subplebbitAddresses) || t('loading');
-  const loadingString = (
-    <div className={styles.stateString}>
-      <LoadingEllipsis string={loadingStateString} />
-    </div>
-  );
+  // suggest the user to change time filter if there aren't enough posts
+  const { feed: weeklyFeed } = useFeed({ subplebbitAddresses, sortType, newerThan: 60 * 60 * 24 * 7 });
+  const { feed: monthlyFeed } = useFeed({ subplebbitAddresses, sortType, newerThan: 60 * 60 * 24 * 30 });
+
+  const loadingStateString = useFeedStateString(subplebbitAddresses) || t('loading');
+
+  const handleNewerPostsButtonClick = () => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+    setTimeout(() => {
+      reset();
+    }, 300);
+  };
+
+  const currentTimeFilterName = params.timeFilterName || timeFilterName;
+
   const Footer = () => {
     let footerContent;
     if (feed.length === 0) {
       footerContent = t('no_posts');
     }
     if (hasMore || (subplebbitAddresses && subplebbitAddresses.length === 0)) {
-      footerContent = loadingString;
+      footerContent = (
+        <>
+          {subplebbitAddressesWithNewerPosts.length > 0 ? (
+            <div className={styles.stateString}>
+              newer posts are available, <span onClick={handleNewerPostsButtonClick}>reload feed</span>
+            </div>
+          ) : (
+            monthlyFeed.length > feed.length &&
+            (weeklyFeed.length > feed.length ? (
+              <div className={styles.stateString}>
+                showing posts since {currentTimeFilterName}, <Link to={'/' + (params?.sortType || 'hot') + '/1w'}>show more posts from last week</Link>
+              </div>
+            ) : (
+              <div className={styles.stateString}>
+                showing posts since {currentTimeFilterName}, <Link to={'/' + (params?.sortType || 'hot') + '/1m'}>show more posts from last month</Link>
+              </div>
+            ))
+          )}
+          <div className={styles.stateString}>
+            <LoadingEllipsis string={loadingStateString} />
+          </div>
+        </>
+      );
     }
     return <div className={styles.footer}>{footerContent}</div>;
   };
@@ -72,7 +101,6 @@ const Home = () => {
           <Sidebar />
         </div>
         <div className={styles.feed}>
-          <NewerPostsButton reset={reset} subplebbitAddressesWithNewerPosts={subplebbitAddressesWithNewerPosts} />
           <Virtuoso
             increaseViewportBy={{ bottom: 1200, top: 600 }}
             totalCount={feed?.length || 0}

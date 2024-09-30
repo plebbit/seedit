@@ -6,6 +6,11 @@
   text-transform: lowercase;
 }
 
+.stateString a, .link {
+  color: var(--text-primary);
+  text-decoration: none;
+}
+
 .feed {
   position: relative;
 }

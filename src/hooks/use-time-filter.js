@@ -52,7 +52,7 @@ const useTimeFilter = () => {
   assert(!timeFilterName || typeof timeFilterName === 'string', `useTimeFilter timeFilterName argument '${timeFilterName}' not a string`);
   const timeFilterSeconds = timeFilterNamesToSeconds[timeFilterName];
   assert(!timeFilterName || timeFilterName === 'all' || timeFilterSeconds !== undefined, `useTimeFilter no filter for timeFilterName '${timeFilterName}'`);
-  return { timeFilterSeconds, timeFilterNames };
+  return { timeFilterSeconds, timeFilterNames, timeFilterName };
 };
 
 export default useTimeFilter;
