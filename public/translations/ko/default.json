@@ -304,5 +304,8 @@
   "plebbit_options": "plebbit 옵션",
   "general": "일반",
   "own_communities": "나의 커뮤니티",
-  "invalid_community_address": "잘못된 커뮤니티 주소"
+  "invalid_community_address": "잘못된 커뮤니티 주소",
+  "newer_posts_available": "새로운 게시물이 있습니다, <1>피드를 새로 고침</1>",
+  "more_posts_last_week": "{{currentTimeFilterName}} 이후의 게시물이 표시됩니다. <1>지난 주의 게시물 더 보기</1>",
+  "more_posts_last_month": "{{currentTimeFilterName}} 이후의 게시물이 표시됩니다. <1>지난달의 게시물 더 보기</1>"
 }

@@ -304,5 +304,8 @@
   "plebbit_options": "خيارات plebbit",
   "general": "عام",
   "own_communities": "المجتمعات الخاصة بي",
-  "invalid_community_address": "عنوان المجتمع غير صالح"
+  "invalid_community_address": "عنوان المجتمع غير صالح",
+  "newer_posts_available": "تتوفر مشاركات جديدة، <1>قم بتحديث الخلاصة</1>",
+  "more_posts_last_week": "تظهر المشاركات منذ {{currentTimeFilterName}} ، <1>عرض المزيد من المشاركات من الأسبوع الماضي</1>",
+  "more_posts_last_month": "تظهر المشاركات منذ {{currentTimeFilterName}} ، <1>عرض المزيد من المشاركات من الشهر الماضي</1>"
 }

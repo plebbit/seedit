@@ -304,5 +304,8 @@
   "plebbit_options": "plebbit ఎంపికలు",
   "general": "సాధారణ",
   "own_communities": "నా సముదాయాలు",
-  "invalid_community_address": "అమాన్యమైన సముదాయ చిరునామా"
+  "invalid_community_address": "అమాన్యమైన సముదాయ చిరునామా",
+  "newer_posts_available": "కొత్త పోస్టులు అందుబాటులో ఉన్నాయి, <1>ఫీడ్‌ను తిరిగి లోడ్ చేయండి</1>",
+  "more_posts_last_week": "{{currentTimeFilterName}} నుండి పోస్టులు చూపిస్తున్నాయి, <1>గత వారంనుంచి మరిన్ని పోస్టులను చూపించు</1>",
+  "more_posts_last_month": "{{currentTimeFilterName}} నుండి పోస్టులు చూపిస్తున్నాయి, <1>గత నెల నుండి మరిన్ని పోస్టులను చూపించండి</1>"
 }

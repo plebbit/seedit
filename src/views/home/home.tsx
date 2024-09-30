@@ -2,7 +2,7 @@ import { useEffect, useRef } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { Virtuoso, VirtuosoHandle, StateSnapshot } from 'react-virtuoso';
 import { useFeed } from '@plebbit/plebbit-react-hooks';
-import { useTranslation } from 'react-i18next';
+import { Trans, useTranslation } from 'react-i18next';
 import styles from './home.module.css';
 import LoadingEllipsis from '../../components/loading-ellipsis';
 import Post from '../../components/post';
@@ -51,17 +51,34 @@ const Home = () => {
         <>
           {subplebbitAddressesWithNewerPosts.length > 0 ? (
             <div className={styles.stateString}>
-              newer posts are available, <span onClick={handleNewerPostsButtonClick}>reload feed</span>
+              <Trans
+                i18nKey='newer_posts_available'
+                components={{
+                  1: <span onClick={handleNewerPostsButtonClick} />,
+                }}
+              />
             </div>
           ) : (
             monthlyFeed.length > feed.length &&
             (weeklyFeed.length > feed.length ? (
               <div className={styles.stateString}>
-                showing posts since {currentTimeFilterName}, <Link to={'/' + (params?.sortType || 'hot') + '/1w'}>show more posts from last week</Link>
+                <Trans
+                  i18nKey='more_posts_last_week'
+                  values={{ currentTimeFilterName }}
+                  components={{
+                    1: <Link to={'/' + (params?.sortType || 'hot') + '/1w'} />,
+                  }}
+                />
               </div>
             ) : (
               <div className={styles.stateString}>
-                showing posts since {currentTimeFilterName}, <Link to={'/' + (params?.sortType || 'hot') + '/1m'}>show more posts from last month</Link>
+                <Trans
+                  i18nKey='more_posts_last_month'
+                  values={{ currentTimeFilterName }}
+                  components={{
+                    1: <Link to={'/' + (params?.sortType || 'hot') + '/1m'} />,
+                  }}
+                />
               </div>
             ))
           )}

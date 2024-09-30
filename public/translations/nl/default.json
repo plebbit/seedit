@@ -304,5 +304,8 @@
   "plebbit_options": "plebbit-opties",
   "general": "algemeen",
   "own_communities": "eigen gemeenschappen",
-  "invalid_community_address": "Ongeldig gemeenschapsadres"
+  "invalid_community_address": "Ongeldig gemeenschapsadres",
+  "newer_posts_available": "Nieuwere berichten zijn beschikbaar, <1>herlaad feed</1>",
+  "more_posts_last_week": "Berichten sinds {{currentTimeFilterName}}, <1>meer berichten van afgelopen week tonen</1>",
+  "more_posts_last_month": "Berichten sinds {{currentTimeFilterName}}, <1>meer berichten van afgelopen maand tonen</1>"
 }

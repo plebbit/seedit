@@ -304,5 +304,8 @@
   "plebbit_options": "প্লেবিট বিকল্প",
   "general": "সাধারণ",
   "own_communities": "নিজস্ব সম্প্রদায়",
-  "invalid_community_address": "অবৈধ সম্প্রদায় ঠিকানা"
+  "invalid_community_address": "অবৈধ সম্প্রদায় ঠিকানা",
+  "newer_posts_available": "নতুন পোস্টগুলি উপলব্ধ, <1>ফিডটি রিফ্রেশ করুন</1>",
+  "more_posts_last_week": "আপনি {{currentTimeFilterName}} থেকে পোস্টগুলি দেখছেন, <1>গত সপ্তাহ থেকে আরও পোস্ট দেখান</1>",
+  "more_posts_last_month": "আপনি {{currentTimeFilterName}} থেকে পোস্টগুলি দেখছেন, <1>গত মাস থেকে আরও পোস্ট দেখান</1>"
 }

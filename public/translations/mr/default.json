@@ -304,5 +304,8 @@
   "plebbit_options": "प्लेबिट पर्याय",
   "general": "सामान्य",
   "own_communities": "स्वत: समुदाये",
-  "invalid_community_address": "अवैध समुदाय पत्ता"
+  "invalid_community_address": "अवैध समुदाय पत्ता",
+  "newer_posts_available": "नवीनतम पोस्ट उपलब्ध आहेत, <1>फीड रीलोड करा</1>",
+  "more_posts_last_week": "{{currentTimeFilterName}} पासून पोस्ट दर्शवित आहेत, <1>गेल्या आठवड्यातील अधिक पोस्ट दर्शवा</1>",
+  "more_posts_last_month": "{{currentTimeFilterName}} पासून पोस्ट दर्शवित आहेत, <1>गेल्या महिन्यातील अधिक पोस्ट दर्शवा</1>"
 }
