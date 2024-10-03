@@ -10,6 +10,10 @@
   position: relative;
 }
 
+.expando p {
+  margin-bottom: 5px;
+}
+
 .usertext {
   unicode-bidi: isolate;
   font-size: small;

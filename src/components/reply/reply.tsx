@@ -426,10 +426,14 @@ const Reply = ({ cidOfReplyWithContext, depth = 0, isSingleComment, isSingleRepl
                         <Markdown content={content} />
                       ))}
                     {reason && (
-                      <div className={styles.modReason}>
-                        <br />
+                      <p>
                         {t('mod_reason')}: {reason}
-                      </div>
+                      </p>
+                    )}
+                    {edit?.reason && (
+                      <p>
+                        {t('edit')}: {edit.reason}
+                      </p>
                     )}
                   </div>
                 )}

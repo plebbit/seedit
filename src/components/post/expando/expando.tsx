@@ -71,16 +71,14 @@ const Expando = ({ authorEditReason, commentMediaInfo, content, expanded, link, 
           <div className={styles.markdown}>
             <Markdown content={content} />
             {modEditReason && (
-              <div>
-                <br />
+              <p>
                 {t('mod_reason')}: {modEditReason}
-              </div>
+              </p>
             )}
             {authorEditReason && (
-              <div>
-                <br />
+              <p>
                 {t('edit')}: {authorEditReason}
-              </div>
+              </p>
             )}
           </div>
         </div>
