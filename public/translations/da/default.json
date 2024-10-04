@@ -307,5 +307,7 @@
   "invalid_community_address": "Ugyldig fællesskabsadresse",
   "newer_posts_available": "Der er nyere indlæg tilgængelige, <1>genindlæs feed</1>",
   "more_posts_last_week": "Viser indlæg siden {{currentTimeFilterName}}, <1>vis flere indlæg fra sidste uge</1>",
-  "more_posts_last_month": "Viser indlæg siden {{currentTimeFilterName}}, <1>vis flere indlæg fra sidste måned</1>"
+  "more_posts_last_month": "Viser indlæg siden {{currentTimeFilterName}}, <1>vis flere indlæg fra sidste måned</1>",
+  "sure_delete": "Er du sikker på, at du vil slette dette indlæg?",
+  "sure_undelete": "Er du sikker på, at du vil gendanne dette indlæg?"
 }

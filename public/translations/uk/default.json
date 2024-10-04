@@ -307,5 +307,7 @@
   "invalid_community_address": "Недійсна адреса спільноти",
   "newer_posts_available": "Доступні нові пости, <1>перезавантажити стрічку</1>",
   "more_posts_last_week": "Показані пости з {{currentTimeFilterName}}, <1>показати більше постів з минулого тижня</1>",
-  "more_posts_last_month": "Показані пости з {{currentTimeFilterName}}, <1>показати більше постів з минулого місяця</1>"
+  "more_posts_last_month": "Показані пости з {{currentTimeFilterName}}, <1>показати більше постів з минулого місяця</1>",
+  "sure_delete": "Ви впевнені, що хочете видалити цей пост?",
+  "sure_undelete": "Ви впевнені, що хочете відновити цей пост?"
 }

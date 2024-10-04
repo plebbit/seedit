@@ -307,5 +307,7 @@
   "invalid_community_address": "Adresse de la communauté non valide",
   "newer_posts_available": "De nouveaux messages sont disponibles, <1>recharger le fil</1>",
   "more_posts_last_week": "Affichage des publications depuis {{currentTimeFilterName}}, <1>afficher plus de publications de la semaine dernière</1>",
-  "more_posts_last_month": "Affichage des publications depuis {{currentTimeFilterName}}, <1>recharger plus de publications du mois dernier</1>"
+  "more_posts_last_month": "Affichage des publications depuis {{currentTimeFilterName}}, <1>recharger plus de publications du mois dernier</1>",
+  "sure_delete": "Êtes-vous sûr de vouloir supprimer ce post ?",
+  "sure_undelete": "Êtes-vous sûr de vouloir restaurer ce post ?"
 }

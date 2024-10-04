@@ -307,5 +307,7 @@
   "invalid_community_address": "Địa chỉ cộng đồng không hợp lệ",
   "newer_posts_available": "Có bài viết mới, <1>tải lại nguồn cấp dữ liệu</1>",
   "more_posts_last_week": "Đang hiển thị bài viết từ {{currentTimeFilterName}}, <1>hiển thị thêm bài viết từ tuần trước</1>",
-  "more_posts_last_month": "Đang hiển thị bài viết từ {{currentTimeFilterName}}, <1>hiển thị thêm bài viết từ tháng trước</1>"
+  "more_posts_last_month": "Đang hiển thị bài viết từ {{currentTimeFilterName}}, <1>hiển thị thêm bài viết từ tháng trước</1>",
+  "sure_delete": "Bạn có chắc chắn muốn xóa bài viết này không?",
+  "sure_undelete": "Bạn có chắc chắn muốn khôi phục bài viết này không?"
 }

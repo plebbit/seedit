@@ -307,5 +307,7 @@
   "invalid_community_address": "Virheellinen yhteisön osoite",
   "newer_posts_available": "Uudemmat viestit ovat saatavilla, <1>lataa syöte uudelleen</1>",
   "more_posts_last_week": "Näytetään viestejä ajasta {{currentTimeFilterName}}, <1>näytä lisää viestejä viime viikolta</1>",
-  "more_posts_last_month": "Näytetään viestejä ajasta {{currentTimeFilterName}}, <1>näytä lisää viestejä viime kuulta</1>"
+  "more_posts_last_month": "Näytetään viestejä ajasta {{currentTimeFilterName}}, <1>näytä lisää viestejä viime kuulta</1>",
+  "sure_delete": "Oletko varma, että haluat poistaa tämän viestin?",
+  "sure_undelete": "Oletko varma, että haluat palauttaa tämän viestin?"
 }

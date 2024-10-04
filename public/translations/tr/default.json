@@ -307,5 +307,7 @@
   "invalid_community_address": "Geçersiz topluluk adresi",
   "newer_posts_available": "Daha yeni gönderiler mevcut, <1>beslemeyi yenile</1>",
   "more_posts_last_week": "{{currentTimeFilterName}} tarihinden itibaren gönderiler gösteriliyor, <1>geçen haftadan daha fazla gönderi göster</1>",
-  "more_posts_last_month": "{{currentTimeFilterName}} tarihinden itibaren gönderiler gösteriliyor, <1>geçen aydan daha fazla gönderi göster</1>"
+  "more_posts_last_month": "{{currentTimeFilterName}} tarihinden itibaren gönderiler gösteriliyor, <1>geçen aydan daha fazla gönderi göster</1>",
+  "sure_delete": "Bu gönderiyi silmek istediğinize emin misiniz?",
+  "sure_undelete": "Bu gönderiyi geri yüklemek istediğinize emin misiniz?"
 }

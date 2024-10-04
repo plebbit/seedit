@@ -307,5 +307,7 @@
   "invalid_community_address": "Indirizzo comunità non valido",
   "newer_posts_available": "Nuovi post sono disponibili, <1>ricarica il feed</1>",
   "more_posts_last_week": "Stai visualizzando post da {{currentTimeFilterName}}, <1>visualizza più post della scorsa settimana</1>",
-  "more_posts_last_month": "Stai visualizzando post da {{currentTimeFilterName}}, <1>visualizza più post del mese scorso</1>"
+  "more_posts_last_month": "Stai visualizzando post da {{currentTimeFilterName}}, <1>visualizza più post del mese scorso</1>",
+  "sure_delete": "Sei sicuro di voler eliminare questo post?",
+  "sure_undelete": "Sei sicuro di voler ripristinare questo post?"
 }

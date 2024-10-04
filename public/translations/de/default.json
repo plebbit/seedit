@@ -307,5 +307,7 @@
   "invalid_community_address": "Ungültige Gemeindeadresse",
   "newer_posts_available": "Neuere Beiträge sind verfügbar, <1>Feed neu laden</1>",
   "more_posts_last_week": "Zeigt Beiträge seit {{currentTimeFilterName}}, <1>zeige mehr Beiträge aus der letzten Woche</1>",
-  "more_posts_last_month": "Zeigt Beiträge seit {{currentTimeFilterName}}, <1>zeige mehr Beiträge aus dem letzten Monat</1>"
+  "more_posts_last_month": "Zeigt Beiträge seit {{currentTimeFilterName}}, <1>zeige mehr Beiträge aus dem letzten Monat</1>",
+  "sure_delete": "Sind Sie sicher, dass Sie diesen Beitrag löschen möchten?",
+  "sure_undelete": "Sind Sie sicher, dass Sie diesen Beitrag wiederherstellen möchten?"
 }

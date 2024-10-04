@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { PublishCommentEditOptions, useComment, useEditedComment, usePublishCommentEdit } from '@plebbit/plebbit-react-hooks';
 import styles from './edit-menu.module.css';
@@ -34,30 +34,30 @@ const EditMenu = ({ commentCid, showCommentEditForm }: EditMenuProps) => {
     onChallengeVerification: alertChallengeVerificationFailed,
     onError: (error: Error) => {
       console.warn(error);
-      alert(error.message);
+      alert('Comment edit failed. ' + error.message);
     },
   };
 
-  const [publishCommentEditOptions, setPublishCommentEditOptions] = useState(defaultPublishOptions);
-  const { publishCommentEdit } = usePublishCommentEdit(publishCommentEditOptions);
+  const [publishOptions, setPublishOptions] = useState(defaultPublishOptions);
+  const { publishCommentEdit } = usePublishCommentEdit(publishOptions);
 
-  const deleteComment = async () => {
-    if (deleted) {
-      if (window.confirm('Are you sure you want to undelete this post?')) {
-        setPublishCommentEditOptions((state) => ({ ...state, deleted: false }));
-        await publishCommentEdit();
-      } else {
-        setPublishCommentEditOptions((state) => ({ ...state, deleted: true }));
-      }
-    } else {
-      if (window.confirm('Are you sure you want to delete this post?')) {
-        setPublishCommentEditOptions((state) => ({ ...state, deleted: true }));
-        await publishCommentEdit();
-      } else {
-        setPublishCommentEditOptions((state) => ({ ...state, deleted: false }));
-      }
+  const deleteComment = useCallback(() => {
+    const newDeletedState = !deleted;
+    const confirmMessage = deleted ? t('sure_undelete') : t('sure_delete');
+
+    if (window.confirm(confirmMessage)) {
+      setPublishOptions((prevOptions) => ({
+        ...prevOptions,
+        deleted: newDeletedState,
+      }));
     }
-  };
+  }, [deleted]);
+
+  useEffect(() => {
+    if (publishOptions.deleted !== defaultPublishOptions.deleted) {
+      publishCommentEdit();
+    }
+  }, [publishOptions, publishCommentEdit]);
 
   return (
     <>
@@ -71,7 +71,7 @@ const EditMenu = ({ commentCid, showCommentEditForm }: EditMenuProps) => {
         </span>
       </li>
       <li className={styles.button}>
-        <span onClick={() => commentCid && deleteComment()}>{deleted ? t('undelete') : t('delete')}</span>
+        <span onClick={deleteComment}>{deleted ? t('undelete') : t('delete')}</span>
       </li>
     </>
   );
