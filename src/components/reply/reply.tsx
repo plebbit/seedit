@@ -430,7 +430,7 @@ const Reply = ({ cidOfReplyWithContext, depth = 0, isSingleComment, isSingleRepl
                         {t('mod_reason')}: {reason}
                       </p>
                     )}
-                    {edit?.reason && (
+                    {edit?.reason && !(removed || deleted) && (
                       <p>
                         {t('edit')}: {edit.reason}
                       </p>

@@ -286,6 +286,7 @@ const Post = ({ index, post = {} }: PostProps) => {
               expanded={isExpanded}
               link={link}
               modEditReason={reason}
+              deleted={deleted}
               removed={removed}
               showContent={true}
               spoiler={spoiler}
