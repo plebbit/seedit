@@ -125,7 +125,13 @@ const ReplyTools = ({
 }: CommentToolsProps) => {
   const { t } = useTranslation();
 
-  const permalink = failed ? <span>permalink</span> : <Link to={cid ? `/p/${subplebbitAddress}/c/${cid}` : `/profile/${index}`}>permalink</Link>;
+  const permalink = failed ? (
+    <span>permalink</span>
+  ) : (
+    <Link to={cid ? `/p/${subplebbitAddress}/c/${cid}` : `/profile/${index}`} onClick={(e) => !cid && e.preventDefault()}>
+      permalink
+    </Link>
+  );
 
   return (
     <>
@@ -165,7 +171,13 @@ const SingleReplyTools = ({
 
   const hasContext = parentCid !== postCid;
 
-  const permalinkButton = cid ? <Link to={cid ? `/p/${subplebbitAddress}/c/${cid}` : `/profile/${index}`}>permalink</Link> : <span>permalink</span>;
+  const permalinkButton = cid ? (
+    <Link to={cid ? `/p/${subplebbitAddress}/c/${cid}` : `/profile/${index}`} onClick={(e) => !cid && e.preventDefault()}>
+      permalink
+    </Link>
+  ) : (
+    <span>permalink</span>
+  );
 
   const contextButton = cid ? (
     <Link to={cid ? (hasContext ? `/p/${subplebbitAddress}/c/${cid}?context=3` : `/p/${subplebbitAddress}/c/${cid}`) : `/profile/${index}`}>{t('context')}</Link>
