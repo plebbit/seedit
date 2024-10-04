@@ -51,13 +51,13 @@ const EditMenu = ({ commentCid, showCommentEditForm }: EditMenuProps) => {
         deleted: newDeletedState,
       }));
     }
-  }, [deleted]);
+  }, [deleted, t]);
 
   useEffect(() => {
     if (publishOptions.deleted !== defaultPublishOptions.deleted) {
       publishCommentEdit();
     }
-  }, [publishOptions, publishCommentEdit]);
+  }, [publishOptions, publishCommentEdit, defaultPublishOptions.deleted]);
 
   return (
     <>
