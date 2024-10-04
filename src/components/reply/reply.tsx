@@ -419,9 +419,9 @@ const Reply = ({ cidOfReplyWithContext, depth = 0, isSingleComment, isSingleRepl
                     {spoiler && !showSpoiler && <div className={styles.showSpoilerButton}>{t('view_spoiler')}</div>}
                     {content &&
                       (removed ? (
-                        <div className={styles.removedContent}>[{t('removed')}]</div>
+                        <p className={styles.removedContent}>[{t('removed')}]</p>
                       ) : deleted ? (
-                        <div className={styles.deletedContent}>[{t('deleted')}]</div>
+                        <p className={styles.deletedContent}>[{t('deleted')}]</p>
                       ) : (
                         <Markdown content={content} />
                       ))}
