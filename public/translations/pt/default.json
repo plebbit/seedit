@@ -309,5 +309,6 @@
   "more_posts_last_week": "Exibindo postagens desde {{currentTimeFilterName}}, <1>mostrar mais postagens da semana passada</1>",
   "more_posts_last_month": "Exibindo postagens desde {{currentTimeFilterName}}, <1>atualize o feed com mais postagens do mês passado</1>",
   "sure_delete": "Tem certeza de que deseja excluir este post?",
-  "sure_undelete": "Tem certeza de que deseja restaurar este post?"
+  "sure_undelete": "Tem certeza de que deseja restaurar este post?",
+  "profile_info": "Sua conta u/{{shortAddress}} foi criada. Vá para <1>preferências</1> para exportar sua conta, definir um nome de exibição e mais."
 }

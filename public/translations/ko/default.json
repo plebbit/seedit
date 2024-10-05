@@ -309,5 +309,6 @@
   "more_posts_last_week": "{{currentTimeFilterName}} 이후의 게시물이 표시됩니다. <1>지난 주의 게시물 더 보기</1>",
   "more_posts_last_month": "{{currentTimeFilterName}} 이후의 게시물이 표시됩니다. <1>지난달의 게시물 더 보기</1>",
   "sure_delete": "이 게시물을 삭제하시겠습니까?",
-  "sure_undelete": "이 게시물을 복원하시겠습니까?"
+  "sure_undelete": "이 게시물을 복원하시겠습니까?",
+  "profile_info": "귀하의 계정 u/{{shortAddress}}가 생성되었습니다. 계정을 내보내고 표시 이름을 설정하려면 <1>환경설정</1>으로 이동하십시오."
 }

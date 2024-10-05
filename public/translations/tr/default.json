@@ -309,5 +309,6 @@
   "more_posts_last_week": "{{currentTimeFilterName}} tarihinden itibaren gönderiler gösteriliyor, <1>geçen haftadan daha fazla gönderi göster</1>",
   "more_posts_last_month": "{{currentTimeFilterName}} tarihinden itibaren gönderiler gösteriliyor, <1>geçen aydan daha fazla gönderi göster</1>",
   "sure_delete": "Bu gönderiyi silmek istediğinize emin misiniz?",
-  "sure_undelete": "Bu gönderiyi geri yüklemek istediğinize emin misiniz?"
+  "sure_undelete": "Bu gönderiyi geri yüklemek istediğinize emin misiniz?",
+  "profile_info": "Hesabınız u/{{shortAddress}} oluşturuldu. Hesabınızı dışa aktarmak, bir görüntü adı ayarlamak ve daha fazlası için <1>tercihler</1> e gidin."
 }

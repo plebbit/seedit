@@ -309,5 +309,6 @@
   "more_posts_last_week": "Showing posts since {{currentTimeFilterName}}, <1>show more posts from last week</1>",
   "more_posts_last_month": "Showing posts since {{currentTimeFilterName}}, <1>show more posts from last month</1>",
   "sure_delete": "Are you sure you want to delete this post?",
-  "sure_undelete": "Are you sure you want to undelete this post?"
+  "sure_undelete": "Are you sure you want to undelete this post?",
+  "profile_info": "Your account u/{{shortAddress}} was created. Go to <1>preferences</1> to export your account, set a display name, and more."
 }

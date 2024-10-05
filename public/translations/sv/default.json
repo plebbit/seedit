@@ -309,5 +309,6 @@
   "more_posts_last_week": "Visar inlägg sedan {{currentTimeFilterName}}, <1>visa fler inlägg från förra veckan</1>",
   "more_posts_last_month": "Visar inlägg sedan {{currentTimeFilterName}}, <1>visa fler inlägg från förra månaden</1>",
   "sure_delete": "Är du säker på att du vill ta bort detta inlägg?",
-  "sure_undelete": "Är du säker på att du vill återställa detta inlägg?"
+  "sure_undelete": "Är du säker på att du vill återställa detta inlägg?",
+  "profile_info": "Ditt konto u/{{shortAddress}} har skapats. Gå till <1>inställningar</1> för att exportera ditt konto, ställa in ett visningsnamn och mer."
 }

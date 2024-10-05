@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import { useTranslation } from 'react-i18next';
+import { Trans, useTranslation } from 'react-i18next';
 import { Link, useLocation, useParams } from 'react-router-dom';
 import { StateSnapshot, Virtuoso, VirtuosoHandle } from 'react-virtuoso';
 import { useAccount, useAccountComments, useAccountVotes, useComments } from '@plebbit/plebbit-react-hooks';
@@ -215,7 +215,7 @@ const Profile = () => {
 
   const infobar = showInfobarRef.current && (
     <div className={styles.infobar}>
-      Your account u/{account?.author?.shortAddress} was created. Go to <Link to='/settings'>preferences</Link> to export your account, set a display name, and more.
+      <Trans i18nKey='profile_info' values={{ shortAddress: account?.author?.shortAddress }} components={{ 1: <Link to='/settings' /> }} />
     </div>
   );
 

@@ -309,5 +309,6 @@
   "more_posts_last_week": "Berichten sinds {{currentTimeFilterName}}, <1>meer berichten van afgelopen week tonen</1>",
   "more_posts_last_month": "Berichten sinds {{currentTimeFilterName}}, <1>meer berichten van afgelopen maand tonen</1>",
   "sure_delete": "Weet je zeker dat je deze post wilt verwijderen?",
-  "sure_undelete": "Weet je zeker dat je deze post wilt herstellen?"
+  "sure_undelete": "Weet je zeker dat je deze post wilt herstellen?",
+  "profile_info": "Uw account u/{{shortAddress}} is aangemaakt. Ga naar <1>voorkeuren</1> om uw account te exporteren, een weergeven naam in te stellen en meer."
 }

@@ -309,5 +309,6 @@
   "more_posts_last_week": "Pokazuje posty od {{currentTimeFilterName}}, <1>pokaż więcej postów z zeszłego tygodnia</1>",
   "more_posts_last_month": "Pokazuje posty od {{currentTimeFilterName}}, <1>pokaż więcej postów z zeszłego miesiąca</1>",
   "sure_delete": "Czy na pewno chcesz usunąć ten post?",
-  "sure_undelete": "Czy na pewno chcesz przywrócić ten post?"
+  "sure_undelete": "Czy na pewno chcesz przywrócić ten post?",
+  "profile_info": "Twoje konto u/{{shortAddress}} zostało utworzone. Przejdź do <1>preferencji</1>, aby wyeksportować swoje konto, ustawić nazwę wyświetlaną i nie tylko."
 }

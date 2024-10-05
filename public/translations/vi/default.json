@@ -309,5 +309,6 @@
   "more_posts_last_week": "Đang hiển thị bài viết từ {{currentTimeFilterName}}, <1>hiển thị thêm bài viết từ tuần trước</1>",
   "more_posts_last_month": "Đang hiển thị bài viết từ {{currentTimeFilterName}}, <1>hiển thị thêm bài viết từ tháng trước</1>",
   "sure_delete": "Bạn có chắc chắn muốn xóa bài viết này không?",
-  "sure_undelete": "Bạn có chắc chắn muốn khôi phục bài viết này không?"
+  "sure_undelete": "Bạn có chắc chắn muốn khôi phục bài viết này không?",
+  "profile_info": "Tài khoản của bạn u/{{shortAddress}} đã được tạo. Đi đến <1>cài đặt</1> để xuất tài khoản của bạn, đặt tên hiển thị và hơn thế nữa."
 }

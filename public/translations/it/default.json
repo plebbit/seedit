@@ -309,5 +309,6 @@
   "more_posts_last_week": "Stai visualizzando post da {{currentTimeFilterName}}, <1>visualizza più post della scorsa settimana</1>",
   "more_posts_last_month": "Stai visualizzando post da {{currentTimeFilterName}}, <1>visualizza più post del mese scorso</1>",
   "sure_delete": "Sei sicuro di voler eliminare questo post?",
-  "sure_undelete": "Sei sicuro di voler ripristinare questo post?"
+  "sure_undelete": "Sei sicuro di voler ripristinare questo post?",
+  "profile_info": "Il tuo account u/{{shortAddress}} è stato creato. Vai su <1>preferenze</1> per esportare il tuo account, scegliere un nome utente e altro."
 }

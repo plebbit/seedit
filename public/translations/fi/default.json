@@ -309,5 +309,6 @@
   "more_posts_last_week": "Näytetään viestejä ajasta {{currentTimeFilterName}}, <1>näytä lisää viestejä viime viikolta</1>",
   "more_posts_last_month": "Näytetään viestejä ajasta {{currentTimeFilterName}}, <1>näytä lisää viestejä viime kuulta</1>",
   "sure_delete": "Oletko varma, että haluat poistaa tämän viestin?",
-  "sure_undelete": "Oletko varma, että haluat palauttaa tämän viestin?"
+  "sure_undelete": "Oletko varma, että haluat palauttaa tämän viestin?",
+  "profile_info": "Tilisi u/{{shortAddress}} on luotu. Siirry kohtaan <1>asetukset</1> viedäksesi tilisi, asettaaksesi näyttönimen ja muuta."
 }

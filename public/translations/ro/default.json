@@ -309,5 +309,6 @@
   "more_posts_last_week": "Afișând postări din {{currentTimeFilterName}}, <1>afișați mai multe postări din săptămâna trecută</1>",
   "more_posts_last_month": "Afișând postări din {{currentTimeFilterName}}, <1>afișați mai multe postări din luna trecută</1>",
   "sure_delete": "Ești sigur că vrei să ștergi această postare?",
-  "sure_undelete": "Ești sigur că vrei să restaurezi această postare?"
+  "sure_undelete": "Ești sigur că vrei să restaurezi această postare?",
+  "profile_info": "Contul tău u/{{shortAddress}} a fost creat. Accesați <1>preferințe</1> pentru a exporta contul tău, seta un nume de afișare și altele."
 }
