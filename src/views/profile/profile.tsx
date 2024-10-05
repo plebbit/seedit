@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useLocation, useParams } from 'react-router-dom';
+import { Link, useLocation, useParams } from 'react-router-dom';
 import { StateSnapshot, Virtuoso, VirtuosoHandle } from 'react-virtuoso';
 import { useAccount, useAccountComments, useAccountVotes, useComments } from '@plebbit/plebbit-react-hooks';
 import { isProfileDownvotedView, isProfileUpvotedView, isProfileCommentsView, isProfileSubmittedView, isProfileHiddenView } from '../../lib/utils/view-utils';
@@ -203,10 +203,28 @@ const Profile = () => {
     return () => window.removeEventListener('scroll', setLastVirtuosoState);
   }, [account?.shortAddress, params.sortType]);
 
+  // only show infobar on first profile access
+  const showInfobarRef = useRef(false);
+  useEffect(() => {
+    const wasProfileAccessed = localStorage.getItem('wasProfileAccessed');
+    if (!wasProfileAccessed) {
+      showInfobarRef.current = true;
+      localStorage.setItem('wasProfileAccessed', 'true');
+    }
+  }, []);
+
+  const infobar = showInfobarRef.current && (
+    <div className={styles.infobar}>
+      Your account u/{account?.author?.shortAddress} was created. Go to <Link to='/settings'>preferences</Link> to export your account, set a display name, and more.
+    </div>
+  );
+
   return (
     <div className={styles.content}>
+      {isMobile && infobar}
       <div className={isMobile ? styles.sidebarMobile : styles.sidebarDesktop}>
         <AuthorSidebar />
+        {!isMobile && infobar}
       </div>
       <SortDropdown onSortChange={handleSortChange} />
       {account && comments.length === 0 ? (
