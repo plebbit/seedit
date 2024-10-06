@@ -203,15 +203,17 @@ const Profile = () => {
     return () => window.removeEventListener('scroll', setLastVirtuosoState);
   }, [account?.shortAddress, params.sortType]);
 
-  // only show infobar on first profile access
+  // only show infobar on first profile access and if the current account wasn't imported
   const showInfobarRef = useRef(false);
   useEffect(() => {
     const wasProfileAccessed = localStorage.getItem('wasProfileAccessed');
-    if (!wasProfileAccessed) {
+    const importedAccountAddress = localStorage.getItem('importedAccountAddress');
+
+    if (!wasProfileAccessed && importedAccountAddress !== account?.author?.address) {
       showInfobarRef.current = true;
       localStorage.setItem('wasProfileAccessed', 'true');
     }
-  }, []);
+  }, [account?.author?.address]);
 
   const infobar = showInfobarRef.current && (
     <div className={styles.infobar}>
