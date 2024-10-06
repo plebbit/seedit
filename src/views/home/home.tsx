@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { Virtuoso, VirtuosoHandle, StateSnapshot } from 'react-virtuoso';
 import { useFeed } from '@plebbit/plebbit-react-hooks';
@@ -59,7 +59,7 @@ const Home = () => {
               />
             </div>
           ) : (
-            showMorePostsSuggestionRef.current &&
+            showMorePostsSuggestion &&
             monthlyFeed.length > feed.length &&
             (weeklyFeed.length > feed.length ? (
               <div className={styles.stateString}>
@@ -93,7 +93,7 @@ const Home = () => {
   };
 
   const virtuosoRef = useRef<VirtuosoHandle | null>(null);
-  const showMorePostsSuggestionRef = useRef(false);
+  const [showMorePostsSuggestion, setShowMorePostsSuggestion] = useState(false);
 
   useEffect(() => {
     const setLastVirtuosoState = () => {
@@ -111,7 +111,7 @@ const Home = () => {
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      showMorePostsSuggestionRef.current = true;
+      setShowMorePostsSuggestion(true);
     }, 5000);
 
     return () => clearTimeout(timer);

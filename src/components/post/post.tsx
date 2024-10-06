@@ -126,7 +126,7 @@ const Post = ({ index, post = {} }: PostProps) => {
 
   const [upvoted, upvote] = useUpvote(post);
   const [downvoted, downvote] = useDownvote(post);
-  const postScore = upvoteCount === 0 && downvoteCount === 0 ? '•' : upvoteCount - downvoteCount || '•';
+  const postScore = upvoteCount === 0 && downvoteCount === 0 ? '•' : upvoteCount - downvoteCount || '?';
   const postTitle = (title?.length > 300 ? title?.slice(0, 300) + '...' : title) || (content?.length > 300 ? content?.slice(0, 300) + '...' : content);
 
   const commentMediaInfo = getCommentMediaInfo(post);
@@ -286,6 +286,7 @@ const Post = ({ index, post = {} }: PostProps) => {
               expanded={isExpanded}
               link={link}
               modEditReason={reason}
+              deleted={deleted}
               removed={removed}
               showContent={true}
               spoiler={spoiler}

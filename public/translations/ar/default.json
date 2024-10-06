@@ -305,7 +305,11 @@
   "general": "عام",
   "own_communities": "المجتمعات الخاصة بي",
   "invalid_community_address": "عنوان المجتمع غير صالح",
-  "newer_posts_available": "تتوفر مشاركات جديدة، <1>قم بتحديث الخلاصة</1>",
+  "newer_posts_available": "مشاركات جديدة متاحة، <1>قم بتحديث الخلاصة</1>",
   "more_posts_last_week": "تظهر المشاركات منذ {{currentTimeFilterName}} ، <1>عرض المزيد من المشاركات من الأسبوع الماضي</1>",
-  "more_posts_last_month": "تظهر المشاركات منذ {{currentTimeFilterName}} ، <1>عرض المزيد من المشاركات من الشهر الماضي</1>"
+  "more_posts_last_month": "تظهر المشاركات منذ {{currentTimeFilterName}} ، <1>عرض المزيد من المشاركات من الشهر الماضي</1>",
+  "sure_delete": "هل أنت متأكد أنك تريد حذف هذا المنشور؟",
+  "sure_undelete": "هل أنت متأكد أنك تريد استعادة هذا المنشور؟",
+  "profile_info": "تم إنشاء حسابك u/{{shortAddress}}. انتقل إلى <1>التفضيلات</1> لتصدير حسابك، وتعيين اسم عرض، والمزيد.",
+  "show_all_instead": "عرض المشاركات منذ {{timeFilterName}} ، <1>عرض الكل بدلاً من ذلك</1>"
 }

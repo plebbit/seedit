@@ -307,5 +307,9 @@
   "invalid_community_address": "無効なコミュニティアドレス",
   "newer_posts_available": "新しい投稿が利用可能です、<1>フィードを再読み込み</1>",
   "more_posts_last_week": "{{currentTimeFilterName}} からの投稿を表示しています。<1>先週の投稿をさらに表示</1>",
-  "more_posts_last_month": "{{currentTimeFilterName}} からの投稿を表示しています。<1>先月の投稿をさらに表示</1>"
+  "more_posts_last_month": "{{currentTimeFilterName}} からの投稿を表示しています。<1>先月の投稿をさらに表示</1>",
+  "sure_delete": "この投稿を削除してもよろしいですか？",
+  "sure_undelete": "この投稿を復元してもよろしいですか？",
+  "profile_info": "あなたのアカウントu/{{shortAddress}}が作成されました。アカウントをエクスポートし、表示名を設定するには、<1>設定</1>に移動してください。",
+  "show_all_instead": "{{timeFilterName}} からの投稿を表示しています。<1>その代わりにすべて表示</1>"
 }

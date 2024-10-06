@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import { useTranslation } from 'react-i18next';
-import { useLocation, useParams } from 'react-router-dom';
+import { Trans, useTranslation } from 'react-i18next';
+import { Link, useLocation, useParams } from 'react-router-dom';
 import { StateSnapshot, Virtuoso, VirtuosoHandle } from 'react-virtuoso';
 import { useAccount, useAccountComments, useAccountVotes, useComments } from '@plebbit/plebbit-react-hooks';
 import { isProfileDownvotedView, isProfileUpvotedView, isProfileCommentsView, isProfileSubmittedView, isProfileHiddenView } from '../../lib/utils/view-utils';
@@ -203,10 +203,30 @@ const Profile = () => {
     return () => window.removeEventListener('scroll', setLastVirtuosoState);
   }, [account?.shortAddress, params.sortType]);
 
+  // only show infobar on first profile access and if the current account wasn't imported
+  const showInfobarRef = useRef(false);
+  useEffect(() => {
+    const wasProfileAccessed = localStorage.getItem('wasProfileAccessed');
+    const importedAccountAddress = localStorage.getItem('importedAccountAddress');
+
+    if (!wasProfileAccessed && importedAccountAddress !== account?.author?.address) {
+      showInfobarRef.current = true;
+      localStorage.setItem('wasProfileAccessed', 'true');
+    }
+  }, [account?.author?.address]);
+
+  const infobar = showInfobarRef.current && (
+    <div className={styles.infobar}>
+      <Trans i18nKey='profile_info' values={{ shortAddress: account?.author?.shortAddress }} components={{ 1: <Link to='/settings' /> }} />
+    </div>
+  );
+
   return (
     <div className={styles.content}>
+      {isMobile && infobar}
       <div className={isMobile ? styles.sidebarMobile : styles.sidebarDesktop}>
         <AuthorSidebar />
+        {!isMobile && infobar}
       </div>
       <SortDropdown onSortChange={handleSortChange} />
       {account && comments.length === 0 ? (

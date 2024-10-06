@@ -307,5 +307,9 @@
   "invalid_community_address": "כתובת הקהילה אינה חוקית",
   "newer_posts_available": "ישנם פוסטים חדשים זמינים, <1>טען מחדש את הפיד</1>",
   "more_posts_last_week": "מראה פוסטים מאז {{currentTimeFilterName}}, <1>הצג פוסטים נוספים מהשבוע שעבר</1>",
-  "more_posts_last_month": "מראה פוסטים מאז {{currentTimeFilterName}}, <1>הצג פוסטים נוספים מהחודש שעבר</1>"
+  "more_posts_last_month": "מראה פוסטים מאז {{currentTimeFilterName}}, <1>הצג פוסטים נוספים מהחודש שעבר</1>",
+  "sure_delete": "האם אתה בטוח שברצונך למחוק את הפוסט הזה?",
+  "sure_undelete": "האם אתה בטוח שברצונך לשחזר את הפוסט הזה?",
+  "profile_info": "החשבון שלך u/{{shortAddress}} נוצר. עבור אל <1>העדפות</1> כדי לייצא את החשבון שלך, להגדיר שם תצוגה ועוד.",
+  "show_all_instead": "מראה פוסטים מאז {{timeFilterName}}, <1>הצג הכל במקום זאת</1>"
 }

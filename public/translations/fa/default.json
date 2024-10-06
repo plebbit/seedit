@@ -307,5 +307,9 @@
   "invalid_community_address": "آدرس انجمن نامعتبر است",
   "newer_posts_available": "پست‌های جدیدتر در دسترس هستند، <1>بارگذاری مجدد خوراک</1>",
   "more_posts_last_week": "نمایش پست‌ها از {{currentTimeFilterName}}، <1>نمایش پست‌های بیشتر از هفته گذشته</1>",
-  "more_posts_last_month": "نمایش پست‌ها از {{currentTimeFilterName}}، <1>نمایش پست‌های بیشتر از ماه گذشته</1>"
+  "more_posts_last_month": "نمایش پست‌ها از {{currentTimeFilterName}}، <1>نمایش پست‌های بیشتر از ماه گذشته</1>",
+  "sure_delete": "آیا مطمئن هستید که می‌خواهید این پست را حذف کنید؟",
+  "sure_undelete": "آیا مطمئن هستید که می‌خواهید این پست را بازیابی کنید؟",
+  "profile_info": "حساب شما u/{{shortAddress}} ایجاد شد. به <1>تنظیمات</1> بروید تا حساب خود را صادر کنید، نام نمایشی تنظیم کنید و موارد دیگر.",
+  "show_all_instead": "نمایش پست‌ها از {{timeFilterName}}، <1>به‌جای آن همه را نشان بده</1>"
 }

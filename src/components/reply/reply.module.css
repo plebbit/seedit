@@ -130,6 +130,10 @@
   line-height: 20px;
 }
 
+.md p {
+  margin-bottom: 5px;
+}
+
 .md a {
   color: var(--markdown-link) !important;
 }

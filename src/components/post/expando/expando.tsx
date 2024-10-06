@@ -10,6 +10,7 @@ interface ExpandoProps {
   authorEditReason?: string;
   commentMediaInfo?: CommentMediaInfo;
   content?: string;
+  deleted?: boolean;
   expanded: boolean;
   link?: string;
   modEditReason?: string;
@@ -19,7 +20,19 @@ interface ExpandoProps {
   toggleExpanded?: () => void;
 }
 
-const Expando = ({ authorEditReason, commentMediaInfo, content, expanded, link, modEditReason, removed, showContent, spoiler = false, toggleExpanded }: ExpandoProps) => {
+const Expando = ({
+  authorEditReason,
+  commentMediaInfo,
+  content,
+  deleted,
+  expanded,
+  link,
+  modEditReason,
+  removed,
+  showContent,
+  spoiler = false,
+  toggleExpanded,
+}: ExpandoProps) => {
   const { t } = useTranslation();
 
   const [showSpoiler, setShowSpoiler] = useState(false);
@@ -71,16 +84,14 @@ const Expando = ({ authorEditReason, commentMediaInfo, content, expanded, link, 
           <div className={styles.markdown}>
             <Markdown content={content} />
             {modEditReason && (
-              <div>
-                <br />
+              <p>
                 {t('mod_reason')}: {modEditReason}
-              </div>
+              </p>
             )}
-            {authorEditReason && (
-              <div>
-                <br />
+            {authorEditReason && !(removed || deleted) && (
+              <p>
                 {t('edit')}: {authorEditReason}
-              </div>
+              </p>
             )}
           </div>
         </div>

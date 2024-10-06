@@ -1,8 +1,8 @@
 import { useEffect, useMemo, useRef } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { useBlock, useFeed, useSubplebbit } from '@plebbit/plebbit-react-hooks';
 import { Virtuoso, VirtuosoHandle, StateSnapshot } from 'react-virtuoso';
-import { useTranslation } from 'react-i18next';
+import { Trans, useTranslation } from 'react-i18next';
 import styles from '../home/home.module.css';
 import LoadingEllipsis from '../../components/loading-ellipsis';
 import Post from '../../components/post';
@@ -58,33 +58,51 @@ const Subplebbit = () => {
   };
 
   const Footer = () => {
-    let footerContent;
+    let footerFirstLine;
+    let footerSecondLine;
 
     if (feed.length === 0 && isOnline) {
       if (blocked) {
-        footerContent = t('you_blocked_community');
+        footerFirstLine = t('you_blocked_community');
       } else {
-        footerContent = t('no_posts');
+        footerFirstLine = t('no_posts');
       }
     } else if (feed.length === 0 && started && isSubCreatedButNotYetPublished) {
-      footerContent = t('no_posts');
+      footerFirstLine = t('no_posts');
     } else if (hasMore) {
-      footerContent = loadingString;
-    } else {
-      return;
+      footerFirstLine = loadingString;
+    }
+
+    if (subplebbitAddressesWithNewerPosts.length > 0) {
+      footerSecondLine = (
+        <div className={styles.stateString}>
+          <Trans
+            i18nKey='newer_posts_available'
+            values={{ timeFilterName: params.timeFilterName }}
+            components={{
+              1: <span className={styles.link} onClick={handleNewerPostsButtonClick} />,
+            }}
+          />
+        </div>
+      );
+    } else if (params.timeFilterName) {
+      footerSecondLine = (
+        <div className={styles.stateString}>
+          <Trans
+            i18nKey='show_all_instead'
+            values={{ timeFilterName: params.timeFilterName }}
+            components={{
+              1: <Link to={`/p/${subplebbitAddress}`} />,
+            }}
+          />
+        </div>
+      );
     }
 
     return (
       <div className={styles.footer}>
-        {subplebbitAddressesWithNewerPosts.length > 0 && (
-          <div className={styles.stateString}>
-            newer posts are available,{' '}
-            <span className={styles.link} onClick={handleNewerPostsButtonClick}>
-              reload feed
-            </span>
-          </div>
-        )}
-        {footerContent}
+        {footerFirstLine}
+        {footerSecondLine}
       </div>
     );
   };

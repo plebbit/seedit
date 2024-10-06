@@ -305,7 +305,11 @@
   "general": "generell",
   "own_communities": "egne fellesskap",
   "invalid_community_address": "Ugyldig fellesskapsadresse",
-  "newer_posts_available": "Nyere innlegg er tilgjengelige, <1>oppdater feed</1>",
+  "newer_posts_available": "Nyere innlegg tilgjengelige, <1>oppdater feed</1>",
   "more_posts_last_week": "Viser innlegg siden {{currentTimeFilterName}}, <1>vis flere innlegg fra forrige uke</1>",
-  "more_posts_last_month": "Viser innlegg siden {{currentTimeFilterName}}, <1>vis flere innlegg fra forrige måned</1>"
+  "more_posts_last_month": "Viser innlegg siden {{currentTimeFilterName}}, <1>vis flere innlegg fra forrige måned</1>",
+  "sure_delete": "Er du sikker på at du vil slette dette innlegget?",
+  "sure_undelete": "Er du sikker på at du vil gjenopprette dette innlegget?",
+  "profile_info": "Kontoen din u/{{shortAddress}} ble opprettet. Gå til <1>innstillinger</1> for å eksportere kontoen din, sette et visningsnavn og mer.",
+  "show_all_instead": "Viser innlegg siden {{timeFilterName}}, <1>vis alt i stedet</1>"
 }

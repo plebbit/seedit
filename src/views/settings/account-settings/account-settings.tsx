@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { createAccount, deleteAccount, exportAccount, importAccount, setAccount, setActiveAccount, useAccount, useAccounts } from '@plebbit/plebbit-react-hooks';
 import stringify from 'json-stringify-pretty-compact';
 import { useTranslation } from 'react-i18next';
@@ -9,7 +9,7 @@ const AccountSettings = () => {
   const account = useAccount();
   const { accounts } = useAccounts();
   const [text, setText] = useState('');
-  const [switchToLastAccount, setSwitchToLastAccount] = useState(false);
+  const switchToNewAccountRef = useRef(false);
 
   const accountJson = useMemo(
     () => stringify({ account: { ...account, plebbit: undefined, karma: undefined, plebbitReactOptions: undefined, unreadNotificationCount: undefined } }),
@@ -26,17 +26,22 @@ const AccountSettings = () => {
     setText(accountJson);
   }, [accountJson]);
 
-  useEffect(() => {
-    if (switchToLastAccount && accounts.length > 0) {
+  const switchToLastAccount = useCallback(async () => {
+    if (switchToNewAccountRef.current && accounts.length > 0) {
       const lastAccount = accounts[accounts.length - 1];
-      setActiveAccount(lastAccount.name);
-      setSwitchToLastAccount(false);
+      await setActiveAccount(lastAccount.name);
+      switchToNewAccountRef.current = false;
     }
-  }, [accounts, switchToLastAccount]);
+  }, [accounts]);
+
+  useEffect(() => {
+    switchToLastAccount();
+  }, [switchToLastAccount]);
 
   const _createAccount = async () => {
     try {
       await createAccount();
+      switchToNewAccountRef.current = true;
     } catch (error) {
       if (error instanceof Error) {
         alert(error.message);
@@ -45,7 +50,6 @@ const AccountSettings = () => {
         console.error('An unknown error occurred:', error);
       }
     }
-    setSwitchToLastAccount(true);
   };
 
   const _deleteAccount = (accountName: string) => {
@@ -94,15 +98,30 @@ const AccountSettings = () => {
         // Read the file content
         const reader = new FileReader();
         reader.onload = async (e) => {
-          const fileContent = e.target!.result; // Non-null assertion
-          if (typeof fileContent !== 'string') {
-            throw new Error('File content is not a string.');
+          try {
+            const fileContent = e.target!.result;
+            if (typeof fileContent !== 'string') {
+              throw new Error('File content is not a string.');
+            }
+            const newAccount = JSON.parse(fileContent);
+            await importAccount(fileContent);
+
+            // Store the imported account's address to prevent showing the info bar in the profile page on first access
+            if (newAccount.account?.author?.address) {
+              localStorage.setItem('importedAccountAddress', newAccount.account.author.address);
+            }
+
+            switchToNewAccountRef.current = true;
+            alert(`Imported ${newAccount.account?.name}`);
+            window.location.reload();
+          } catch (error) {
+            if (error instanceof Error) {
+              alert(error.message);
+              console.log(error);
+            } else {
+              console.error('An unknown error occurred:', error);
+            }
           }
-          const newAccount = JSON.parse(fileContent);
-          await importAccount(fileContent);
-          setSwitchToLastAccount(true);
-          alert(`Imported ${newAccount.account?.name}`);
-          window.location.reload();
         };
         reader.readAsText(file);
       } catch (error) {
