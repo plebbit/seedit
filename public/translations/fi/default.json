@@ -305,10 +305,11 @@
   "general": "yleinen",
   "own_communities": "omat yhteisöt",
   "invalid_community_address": "Virheellinen yhteisön osoite",
-  "newer_posts_available": "Uudemmat viestit ovat saatavilla, <1>lataa syöte uudelleen</1>",
+  "newer_posts_available": "Uudemmat viestit saatavilla, <1>lataa syöte uudelleen</1>",
   "more_posts_last_week": "Näytetään viestejä ajasta {{currentTimeFilterName}}, <1>näytä lisää viestejä viime viikolta</1>",
   "more_posts_last_month": "Näytetään viestejä ajasta {{currentTimeFilterName}}, <1>näytä lisää viestejä viime kuulta</1>",
   "sure_delete": "Oletko varma, että haluat poistaa tämän viestin?",
   "sure_undelete": "Oletko varma, että haluat palauttaa tämän viestin?",
-  "profile_info": "Tilisi u/{{shortAddress}} on luotu. Siirry kohtaan <1>asetukset</1> viedäksesi tilisi, asettaaksesi näyttönimen ja muuta."
+  "profile_info": "Tilisi u/{{shortAddress}} on luotu. Siirry kohtaan <1>asetukset</1> viedäksesi tilisi, asettaaksesi näyttönimen ja muuta.",
+  "show_all_instead": "Näytetään viestejä ajasta {{timeFilterName}}, <1>näytä kaikki sen sijaan</1>"
 }

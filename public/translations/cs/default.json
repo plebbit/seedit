@@ -305,10 +305,11 @@
   "general": "obecné",
   "own_communities": "vlastní komunity",
   "invalid_community_address": "Neplatná adresa komunity",
-  "newer_posts_available": "Jsou k dispozici novější příspěvky, <1>aktualizujte kanál</1>",
+  "newer_posts_available": "Novější příspěvky jsou k dispozici, <1>aktualizujte kanál</1>",
   "more_posts_last_week": "Zobrazujeme příspěvky od {{currentTimeFilterName}}, <1>zobrazit další příspěvky z minulého týdne</1>",
   "more_posts_last_month": "Zobrazujeme příspěvky od {{currentTimeFilterName}}, <1>zobrazit další příspěvky z minulého měsíce</1>",
   "sure_delete": "Opravdu chcete smazat tento příspěvek?",
   "sure_undelete": "Opravdu chcete obnovit tento příspěvek?",
-  "profile_info": "Váš účet u/{{shortAddress}} byl vytvořen. Přejděte na <1>nastavení</1>, abyste exportovali svůj účet, nastavili zobrazené jméno a další."
+  "profile_info": "Váš účet u/{{shortAddress}} byl vytvořen. Přejděte na <1>nastavení</1>, abyste exportovali svůj účet, nastavili zobrazené jméno a další.",
+  "show_all_instead": "Zobrazujeme příspěvky od {{timeFilterName}}, <1>zobrazit vše místo toho</1>"
 }

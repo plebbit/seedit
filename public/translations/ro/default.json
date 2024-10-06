@@ -305,10 +305,11 @@
   "general": "general",
   "own_communities": "comunități proprii",
   "invalid_community_address": "Adresă comunitară nevalidă",
-  "newer_posts_available": "Postări mai recente sunt disponibile, <1>reîncarcă fluxul</1>",
+  "newer_posts_available": "Postări mai recente disponibile, <1>reîncarcă fluxul</1>",
   "more_posts_last_week": "Afișând postări din {{currentTimeFilterName}}, <1>afișați mai multe postări din săptămâna trecută</1>",
   "more_posts_last_month": "Afișând postări din {{currentTimeFilterName}}, <1>afișați mai multe postări din luna trecută</1>",
   "sure_delete": "Ești sigur că vrei să ștergi această postare?",
   "sure_undelete": "Ești sigur că vrei să restaurezi această postare?",
-  "profile_info": "Contul tău u/{{shortAddress}} a fost creat. Accesați <1>preferințe</1> pentru a exporta contul tău, seta un nume de afișare și altele."
+  "profile_info": "Contul tău u/{{shortAddress}} a fost creat. Accesați <1>preferințe</1> pentru a exporta contul tău, seta un nume de afișare și altele.",
+  "show_all_instead": "Afișând postări din {{timeFilterName}}, <1>afișați totul în schimb</1>"
 }

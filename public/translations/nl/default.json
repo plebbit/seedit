@@ -305,10 +305,11 @@
   "general": "algemeen",
   "own_communities": "eigen gemeenschappen",
   "invalid_community_address": "Ongeldig gemeenschapsadres",
-  "newer_posts_available": "Nieuwere berichten zijn beschikbaar, <1>herlaad feed</1>",
+  "newer_posts_available": "Nieuwere berichten beschikbaar, <1>herlaad feed</1>",
   "more_posts_last_week": "Berichten sinds {{currentTimeFilterName}}, <1>meer berichten van afgelopen week tonen</1>",
   "more_posts_last_month": "Berichten sinds {{currentTimeFilterName}}, <1>meer berichten van afgelopen maand tonen</1>",
   "sure_delete": "Weet je zeker dat je deze post wilt verwijderen?",
   "sure_undelete": "Weet je zeker dat je deze post wilt herstellen?",
-  "profile_info": "Uw account u/{{shortAddress}} is aangemaakt. Ga naar <1>voorkeuren</1> om uw account te exporteren, een weergeven naam in te stellen en meer."
+  "profile_info": "Uw account u/{{shortAddress}} is aangemaakt. Ga naar <1>voorkeuren</1> om uw account te exporteren, een weergeven naam in te stellen en meer.",
+  "show_all_instead": "Berichten sinds {{timeFilterName}}, <1>toon in plaats daarvan alles</1>"
 }

@@ -310,5 +310,6 @@
   "more_posts_last_month": "Menampilkan pos sejak {{currentTimeFilterName}}, <1>tampilkan lebih banyak pos dari bulan lalu</1>",
   "sure_delete": "Apakah Anda yakin ingin menghapus pos ini?",
   "sure_undelete": "Apakah Anda yakin ingin mengembalikan pos ini?",
-  "profile_info": "Akun Anda u/{{shortAddress}} telah dibuat. Pergi ke <1>pengaturan</1> untuk mengekspor akun Anda, mengatur nama tampilan, dan lainnya."
+  "profile_info": "Akun Anda u/{{shortAddress}} telah dibuat. Pergi ke <1>pengaturan</1> untuk mengekspor akun Anda, mengatur nama tampilan, dan lainnya.",
+  "show_all_instead": "Menampilkan pos sejak {{timeFilterName}}, <1>tampilkan semua sebagai gantinya</1>"
 }

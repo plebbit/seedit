@@ -305,10 +305,11 @@
   "general": "general",
   "own_communities": "comunidades propias",
   "invalid_community_address": "Dirección de comunidad no válida",
-  "newer_posts_available": "Hay publicaciones más recientes disponibles, <1>recargar el feed</1>",
+  "newer_posts_available": "Nuevas publicaciones disponibles, <1>recargar el feed</1>",
   "more_posts_last_week": "Mostrando publicaciones desde {{currentTimeFilterName}}, <1>mostrar más publicaciones de la semana pasada</1>",
   "more_posts_last_month": "Mostrando publicaciones desde {{currentTimeFilterName}}, <1>mostrar más publicaciones del mes pasado</1>",
   "sure_delete": "¿Está seguro de que desea eliminar esta publicación?",
   "sure_undelete": "¿Está seguro de que desea restaurar esta publicación?",
-  "profile_info": "Tu cuenta u/{{shortAddress}} fue creada. Ve a <1>preferencias</1> para exportar tu cuenta, establecer un nombre de visualización y más."
+  "profile_info": "Tu cuenta u/{{shortAddress}} fue creada. Ve a <1>preferencias</1> para exportar tu cuenta, establecer un nombre de visualización y más.",
+  "show_all_instead": "Mostrando publicaciones desde {{timeFilterName}}, <1>mostrar todo en su lugar</1>"
 }
