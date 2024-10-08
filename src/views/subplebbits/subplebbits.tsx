@@ -15,6 +15,7 @@ import {
   isSubplebbitsVoteRejectingView,
 } from '../../lib/utils/view-utils';
 import { useDefaultSubplebbitAddresses } from '../../hooks/use-default-subplebbits';
+import useIsSubplebbitOffline from '../../hooks/use-is-subplebbit-offline';
 import Markdown from '../../components/markdown';
 import Label from '../../components/post/label';
 import Sidebar from '../../components/sidebar';
@@ -23,7 +24,7 @@ import _ from 'lodash';
 
 interface SubplebbitProps {
   index?: number;
-  subplebbit: SubplebbitType | undefined;
+  subplebbit: SubplebbitType;
 }
 
 const MyCommunitiesTabs = () => {
@@ -130,7 +131,7 @@ const Subplebbit = ({ subplebbit }: SubplebbitProps) => {
 
   const postScore = upvoteCount === 0 && downvoteCount === 0 ? '•' : upvoteCount - downvoteCount || '•';
   const { allActiveUserCount } = useSubplebbitStats({ subplebbitAddress: address });
-  const isOnline = updatedAt && updatedAt > Date.now() / 1000 - 60 * 60;
+  const { isOffline, isOnlineStatusLoading } = useIsSubplebbitOffline(subplebbit);
 
   return (
     <div className={styles.subplebbit}>
@@ -169,7 +170,7 @@ const Subplebbit = ({ subplebbit }: SubplebbitProps) => {
           <span>
             {t('members_count', { count: allActiveUserCount })}, {t('community_for', { date: getFormattedTimeDuration(createdAt) })}
             <div className={styles.subplebbitPreferences}>
-              {updatedAt && !isOnline && <Label color='red' text={t('offline')} />}
+              {isOffline && !isOnlineStatusLoading && <Label color='red' text={t('offline')} />}
               {(userRole || isUserOwner) && (
                 <span className={styles.label}>
                   <Label color='green' text={userRole || 'owner'} />
@@ -208,14 +209,14 @@ const SubscriberSubplebbits = () => {
   const account = useAccount();
   const { subplebbits } = useSubplebbits({ subplebbitAddresses: account?.subscriptions });
   const subplebbitsArray = useMemo(() => Object.values(subplebbits), [subplebbits]);
-  return subplebbitsArray?.map((subplebbit, index) => <Subplebbit key={index} subplebbit={subplebbit} />);
+  return subplebbitsArray?.map((subplebbit, index) => subplebbit && <Subplebbit key={index} subplebbit={subplebbit} />).filter(Boolean);
 };
 
 const AllDefaultSubplebbits = () => {
   const subplebbitAddresses = useDefaultSubplebbitAddresses();
   const { subplebbits } = useSubplebbits({ subplebbitAddresses });
   const subplebbitsArray = useMemo(() => Object.values(subplebbits), [subplebbits]);
-  return subplebbitsArray?.map((subplebbit, index) => <Subplebbit key={index} subplebbit={subplebbit} />);
+  return subplebbitsArray?.map((subplebbit, index) => subplebbit && <Subplebbit key={index} subplebbit={subplebbit} />).filter(Boolean);
 };
 
 const AllAccountSubplebbits = () => {
@@ -226,7 +227,7 @@ const AllAccountSubplebbits = () => {
   const uniqueAddresses = Array.from(new Set([...accountSubplebbitAddresses, ...subscriptionsArray]));
   const { subplebbits } = useSubplebbits({ subplebbitAddresses: uniqueAddresses });
   const subplebbitsArray = useMemo(() => Object.values(subplebbits ?? {}), [subplebbits]);
-  return subplebbitsArray?.map((subplebbit, index) => <Subplebbit key={index} subplebbit={subplebbit} />);
+  return subplebbitsArray?.map((subplebbit, index) => subplebbit && <Subplebbit key={index} subplebbit={subplebbit} />).filter(Boolean);
 };
 
 const Subplebbits = () => {
