@@ -3,6 +3,19 @@
   color: var(--text);
 }
 
+.infobar {
+  box-sizing: border-box;
+  background-color: var(--background-orange);
+  border-color: var(--border-orange);
+  border-style: solid;
+  border-width: 1px;
+  margin: 0px 5px 5px 0px;
+  padding: 6px 10px 6px 10px;
+  color: var(--text);
+  word-wrap: break-word;
+  font-size: 14px;
+}
+
 h1 {
   font-size: 18px;
   font-weight: normal;

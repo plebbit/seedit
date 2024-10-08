@@ -1,62 +1,16 @@
 import { ChangeEvent, useCallback, useEffect, useState } from 'react';
 import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
-import { PublishCommentOptions, useAccount, usePublishComment, useSubplebbit } from '@plebbit/plebbit-react-hooks';
-import Plebbit from '@plebbit/plebbit-js/dist/browser/index.js';
 import { Trans, useTranslation } from 'react-i18next';
-import { create } from 'zustand';
+import Plebbit from '@plebbit/plebbit-js/dist/browser/index.js';
+import { useAccount, usePublishComment, useSubplebbit } from '@plebbit/plebbit-react-hooks';
+import useSubmitStore from '../../stores/use-submit-store';
 import { useDefaultSubplebbitAddresses } from '../../hooks/use-default-subplebbits';
-import { alertChallengeVerificationFailed } from '../../lib/utils/challenge-utils';
 import { getLinkMediaInfo } from '../../lib/utils/media-utils';
 import { isValidURL } from '../../lib/utils/url-utils';
 import { isSubmitView } from '../../lib/utils/view-utils';
-import styles from './submit-page.module.css';
-import challengesStore from '../../hooks/use-challenges';
 import Embed from '../../components/post/embed';
 import Markdown from '../../components/markdown';
-
-type SubmitState = {
-  subplebbitAddress: string | undefined;
-  title: string | undefined;
-  content: string | undefined;
-  link: string | undefined;
-  publishCommentOptions: PublishCommentOptions;
-  spoiler: boolean | undefined;
-  setSubmitStore: (data: Partial<SubmitState>) => void;
-  resetSubmitStore: () => void;
-};
-
-const { addChallenge } = challengesStore.getState();
-
-const useSubmitStore = create<SubmitState>((set) => ({
-  subplebbitAddress: undefined,
-  title: undefined,
-  content: undefined,
-  link: undefined,
-  spoiler: undefined,
-  publishCommentOptions: {},
-  setSubmitStore: ({ subplebbitAddress, title, content, link, spoiler }) =>
-    set((state) => {
-      const nextState = { ...state };
-      if (subplebbitAddress !== undefined) nextState.subplebbitAddress = subplebbitAddress;
-      if (title !== undefined) nextState.title = title || undefined;
-      if (content !== undefined) nextState.content = content || undefined;
-      if (link !== undefined) nextState.link = link || undefined;
-      if (spoiler !== undefined) nextState.spoiler = spoiler || undefined;
-
-      nextState.publishCommentOptions = {
-        ...nextState,
-        onChallenge: (...args: any) => addChallenge(args),
-        onChallengeVerification: alertChallengeVerificationFailed,
-        onError: (error: Error) => {
-          console.error(error);
-          let errorMessage = error.message;
-          alert(errorMessage);
-        },
-      };
-      return nextState;
-    }),
-  resetSubmitStore: () => set({ subplebbitAddress: undefined, title: undefined, content: undefined, link: undefined, spoiler: undefined, publishCommentOptions: {} }),
-}));
+import styles from './submit-page.module.css';
 
 const UrlField = () => {
   const { t } = useTranslation();
@@ -132,6 +86,24 @@ const Submit = () => {
   const { index, publishComment } = usePublishComment(publishCommentOptions);
   const { subscriptions } = account || {};
   const defaultSubplebbitAddresses = useDefaultSubplebbitAddresses();
+
+  const [isOffline, setIsOffline] = useState(false);
+
+  useEffect(() => {
+    const checkOfflineStatus = () => {
+      if (subplebbit?.updatedAt !== undefined) {
+        setIsOffline(subplebbit.updatedAt < Date.now() / 1000 - 60 * 60);
+      } else {
+        setTimeout(() => {
+          setIsOffline(subplebbit?.updatedAt === undefined || subplebbit.updatedAt < Date.now() / 1000 - 60 * 60);
+        }, 5000);
+      }
+    };
+
+    if (subplebbitAddress) {
+      checkOfflineStatus();
+    }
+  }, [subplebbit?.updatedAt, subplebbitAddress]);
 
   const onPublish = () => {
     if (!title) {
@@ -260,6 +232,7 @@ const Submit = () => {
 
   return (
     <div className={styles.content}>
+      {isOffline && <div className={styles.infobar}>test</div>}
       <h1>
         <Trans
           i18nKey='submit_to'

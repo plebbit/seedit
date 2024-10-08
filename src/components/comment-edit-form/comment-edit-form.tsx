@@ -4,7 +4,7 @@ import { PublishCommentEditOptions, useComment, useEditedComment, usePublishComm
 import { FormattingHelpTable } from '../reply-form';
 import styles from '../reply-form/reply-form.module.css';
 import { alertChallengeVerificationFailed } from '../../lib/utils/challenge-utils';
-import challengesStore from '../../hooks/use-challenges';
+import challengesStore from '../../stores/use-challenges-store';
 
 const { addChallenge } = challengesStore.getState();
 

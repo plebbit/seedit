@@ -4,7 +4,7 @@ import { Trans, useTranslation } from 'react-i18next';
 import { PublishCommentEditOptions, useComment, useEditedComment, usePublishCommentEdit } from '@plebbit/plebbit-react-hooks';
 import styles from './mod-menu.module.css';
 import { alertChallengeVerificationFailed } from '../../../../lib/utils/challenge-utils';
-import challengesStore from '../../../../hooks/use-challenges';
+import challengesStore from '../../../../stores/use-challenges-store';
 
 const { addChallenge } = challengesStore.getState();
 

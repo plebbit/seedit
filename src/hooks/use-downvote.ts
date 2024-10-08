@@ -1,7 +1,7 @@
 import { useMemo } from 'react';
 import { ChallengeVerification, Comment, usePublishVote, useAccountVote } from '@plebbit/plebbit-react-hooks';
 import { alertChallengeVerificationFailed } from '../lib/utils/challenge-utils';
-import useChallengesStore from './use-challenges';
+import useChallengesStore from '../stores/use-challenges-store';
 
 const useDownvote = (comment: Comment): [boolean, () => void] => {
   const { addChallenge } = useChallengesStore();
