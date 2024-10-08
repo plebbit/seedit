@@ -165,15 +165,18 @@ const Submit = () => {
         setActiveDropdownIndex((prevIndex) => (prevIndex < filteredSubplebbitAddresses.length - 1 ? prevIndex + 1 : prevIndex));
       } else if (e.key === 'ArrowUp') {
         setActiveDropdownIndex((prevIndex) => (prevIndex > 0 ? prevIndex - 1 : 0));
-      } else if (e.key === 'Enter' && activeDropdownIndex !== -1) {
-        const selectedAddress = filteredSubplebbitAddresses[activeDropdownIndex];
-        setSelectedSubplebbit(selectedAddress);
-        setSubmitStore({ subplebbitAddress: selectedAddress });
-        setInputAddress(selectedAddress);
+      } else if (e.key === 'Enter') {
+        if (activeDropdownIndex !== -1) {
+          const selectedAddress = filteredSubplebbitAddresses[activeDropdownIndex];
+          setSelectedSubplebbit(selectedAddress);
+          setSubmitStore({ subplebbitAddress: selectedAddress });
+          setInputAddress(selectedAddress);
+        }
         setActiveDropdownIndex(-1);
+        setIsInputAddressFocused(false);
       }
     },
-    [filteredSubplebbitAddresses, activeDropdownIndex, setSubmitStore, setSelectedSubplebbit],
+    [filteredSubplebbitAddresses, activeDropdownIndex, setSubmitStore, setSelectedSubplebbit, setIsInputAddressFocused],
   );
 
   useEffect(() => {
@@ -294,6 +297,12 @@ const Submit = () => {
                 onChange={(e) => {
                   handleAddressChange(e);
                   setSubmitStore({ subplebbitAddress: e.target.value });
+                }}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter') {
+                    e.preventDefault();
+                    (e.target as HTMLInputElement).blur();
+                  }
                 }}
               />
               {inputAddress && isInputAddressFocused && defaultSubplebbitsDropdown}
