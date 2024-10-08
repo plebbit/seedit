@@ -112,7 +112,7 @@ const Infobar = () => {
 
 const Subplebbit = ({ subplebbit }: SubplebbitProps) => {
   const { t } = useTranslation();
-  const { address, createdAt, description, roles, shortAddress, settings, suggested, title, updatedAt } = subplebbit || {};
+  const { address, createdAt, description, roles, shortAddress, settings, suggested, title } = subplebbit || {};
 
   const [showDescription, setShowDescription] = useState(false);
   const buttonType = showDescription ? 'closeButton' : 'textButton';

@@ -220,7 +220,6 @@ const Submit = () => {
 
   return (
     <div className={styles.content}>
-      {isOffline && selectedSubplebbit && <div className={styles.infobar}>{offlineTitle}</div>}
       <h1>
         <Trans
           i18nKey='submit_to'
@@ -231,6 +230,7 @@ const Submit = () => {
       </h1>
       <div className={styles.form}>
         <div className={styles.formContent}>
+          {isOffline && selectedSubplebbit && <div className={styles.infobar}>{offlineTitle}</div>}
           <div className={styles.box}>
             <UrlField />
           </div>
