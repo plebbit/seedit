@@ -311,5 +311,7 @@
   "sure_delete": "Bạn có chắc chắn muốn xóa bài viết này không?",
   "sure_undelete": "Bạn có chắc chắn muốn khôi phục bài viết này không?",
   "profile_info": "Tài khoản của bạn u/{{shortAddress}} đã được tạo. Đi đến <1>cài đặt</1> để xuất tài khoản của bạn, đặt tên hiển thị và hơn thế nữa.",
-  "show_all_instead": "Đang hiển thị bài viết từ {{timeFilterName}}, <1>hiển thị tất cả thay vào đó</1>"
+  "show_all_instead": "Đang hiển thị bài viết từ {{timeFilterName}}, <1>hiển thị tất cả thay vào đó</1>",
+  "subplebbit_offline_info": "Subplebbit có thể ngoại tuyến và việc xuất bản có thể thất bại.",
+  "posts_last_synced_info": "Bài viết được đồng bộ lần cuối {{time}}, subplebbit có thể ngoại tuyến và việc xuất bản có thể thất bại."
 }

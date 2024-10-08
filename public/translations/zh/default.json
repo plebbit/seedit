@@ -311,5 +311,7 @@
   "sure_delete": "您确定要删除此帖子吗？",
   "sure_undelete": "您确定要恢复此帖子吗？",
   "profile_info": "您的账户 u/{{shortAddress}} 已创建。前往 <1>偏好设置</1> 以导出您的账户、设置显示名称等。",
-  "show_all_instead": "显示自 {{timeFilterName}} 以来的帖子，<1>显示所有帖子</1>"
+  "show_all_instead": "显示自 {{timeFilterName}} 以来的帖子，<1>显示所有帖子</1>",
+  "subplebbit_offline_info": "子维基可能离线，发布可能失败。",
+  "posts_last_synced_info": "最后同步的帖子 {{time}}, 子维基可能离线，发布可能失败。"
 }

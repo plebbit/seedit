@@ -311,5 +311,7 @@
   "sure_delete": "Oletko varma, että haluat poistaa tämän viestin?",
   "sure_undelete": "Oletko varma, että haluat palauttaa tämän viestin?",
   "profile_info": "Tilisi u/{{shortAddress}} on luotu. Siirry kohtaan <1>asetukset</1> viedäksesi tilisi, asettaaksesi näyttönimen ja muuta.",
-  "show_all_instead": "Näytetään viestejä ajasta {{timeFilterName}}, <1>näytä kaikki sen sijaan</1>"
+  "show_all_instead": "Näytetään viestejä ajasta {{timeFilterName}}, <1>näytä kaikki sen sijaan</1>",
+  "subplebbit_offline_info": "Subplebbit voi olla offline-tilassa, ja julkaisu voi epäonnistua.",
+  "posts_last_synced_info": "Viimeksi synkronoidut viestit {{time}}, subplebbit voi olla offline-tilassa, ja julkaisu voi epäonnistua."
 }
