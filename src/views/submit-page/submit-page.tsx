@@ -11,6 +11,7 @@ import { isSubmitView } from '../../lib/utils/view-utils';
 import Embed from '../../components/post/embed';
 import Markdown from '../../components/markdown';
 import styles from './submit-page.module.css';
+import useIsSubplebbitOffline from '../../hooks/use-is-subplebbit-offline';
 
 const UrlField = () => {
   const { t } = useTranslation();
@@ -87,23 +88,7 @@ const Submit = () => {
   const { subscriptions } = account || {};
   const defaultSubplebbitAddresses = useDefaultSubplebbitAddresses();
 
-  const [isOffline, setIsOffline] = useState(false);
-
-  useEffect(() => {
-    const checkOfflineStatus = () => {
-      if (subplebbit?.updatedAt !== undefined) {
-        setIsOffline(subplebbit.updatedAt < Date.now() / 1000 - 60 * 60);
-      } else {
-        setTimeout(() => {
-          setIsOffline(subplebbit?.updatedAt === undefined || subplebbit.updatedAt < Date.now() / 1000 - 60 * 60);
-        }, 5000);
-      }
-    };
-
-    if (subplebbitAddress) {
-      checkOfflineStatus();
-    }
-  }, [subplebbit?.updatedAt, subplebbitAddress]);
+  const { isOffline, offlineTitle } = useIsSubplebbitOffline(subplebbit);
 
   const onPublish = () => {
     if (!title) {
@@ -235,7 +220,7 @@ const Submit = () => {
 
   return (
     <div className={styles.content}>
-      {isOffline && <div className={styles.infobar}>test</div>}
+      {isOffline && selectedSubplebbit && <div className={styles.infobar}>{offlineTitle}</div>}
       <h1>
         <Trans
           i18nKey='submit_to'
