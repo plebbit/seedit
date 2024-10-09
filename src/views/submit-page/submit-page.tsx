@@ -138,7 +138,7 @@ const Submit = () => {
   const [activeDropdownIndex, setActiveDropdownIndex] = useState<number>(-1);
   const [isInputAddressFocused, setIsInputAddressFocused] = useState(false);
 
-  const filteredSubplebbitAddresses = defaultSubplebbitAddresses.filter((address) => address.toLowerCase().includes(inputAddress.toLowerCase())).slice(0, 10);
+  const filteredSubplebbitAddresses = defaultSubplebbitAddresses.filter((address) => address?.toLowerCase()?.includes(inputAddress?.toLowerCase())).slice(0, 10);
 
   const handleKeyDown = useCallback(
     (e: KeyboardEvent) => {
