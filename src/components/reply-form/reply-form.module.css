@@ -5,13 +5,25 @@
   max-width: 500px;
   unicode-bidi: isolate;
   font-size: small;
-  overflow: hidden;
+}
+
+.infobar {
+  width: 500px;
+  box-sizing: border-box;
+  background-color: var(--background-orange);
+  border-color: var(--border-orange);
+  border-style: solid;
+  border-width: 1px;
+  padding: 6px 10px;
+  color: var(--text);
+  word-wrap: break-word;
+  font-size: 14px;
 }
 
 .md {
   margin-bottom: 5px;
   font-weight: 400;
-  max-width: 60em;
+  width: 60em;
 }
 
 .url {
@@ -36,9 +48,8 @@
 }
 
 .textarea {
-  min-width: 100%;
-  max-width: 500px;
-  min-height: 100px;
+  width: 500px;
+  height: 100px;
   background-color: var(--background);
   color: var(--text);
   font: normal small verdana,arial,helvetica,sans-serif;
