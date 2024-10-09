@@ -135,7 +135,7 @@ export const isSettingsPlebbitOptionsView = (pathname: string): boolean => {
 };
 
 export const isSubmitView = (pathname: string): boolean => {
-  return pathname === '/submit';
+  return pathname.endsWith('/submit');
 };
 
 export const isSubplebbitView = (pathname: string, params: ParamsType): boolean => {

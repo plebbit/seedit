@@ -1,5 +1,5 @@
 import { ChangeEvent, useCallback, useEffect, useState } from 'react';
-import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import { Trans, useTranslation } from 'react-i18next';
 import Plebbit from '@plebbit/plebbit-js/dist/browser/index.js';
 import { useAccount, usePublishComment, useSubplebbit } from '@plebbit/plebbit-react-hooks';
@@ -7,7 +7,6 @@ import useSubmitStore from '../../stores/use-submit-store';
 import { useDefaultSubplebbitAddresses } from '../../hooks/use-default-subplebbits';
 import { getLinkMediaInfo } from '../../lib/utils/media-utils';
 import { isValidURL } from '../../lib/utils/url-utils';
-import { isSubmitView } from '../../lib/utils/view-utils';
 import Embed from '../../components/post/embed';
 import Markdown from '../../components/markdown';
 import styles from './submit-page.module.css';
@@ -79,9 +78,6 @@ const Submit = () => {
   const [selectedSubplebbit, setSelectedSubplebbit] = useState(paramsSubplebbitAddress);
   const subplebbit = useSubplebbit({ subplebbitAddress: selectedSubplebbit });
   const navigate = useNavigate();
-
-  const location = useLocation();
-  const isInSubmitView = isSubmitView(location.pathname);
 
   const { title, content, link, subplebbitAddress, publishCommentOptions, setSubmitStore, resetSubmitStore } = useSubmitStore();
   const { index, publishComment } = usePublishComment(publishCommentOptions);
@@ -225,7 +221,7 @@ const Submit = () => {
           i18nKey='submit_to'
           shouldUnescape={true}
           values={{ link: subplebbit?.title || subplebbit?.shortAddress || 'seedit' }}
-          components={{ 1: isInSubmitView ? <></> : <Link to={`/p/${subplebbitAddress}`} className={styles.location} /> }}
+          components={{ 1: subplebbit?.shortAddress ? <Link to={`/p/${subplebbitAddress}`} className={styles.location} /> : <></> }}
         />
       </h1>
       <div className={styles.form}>
