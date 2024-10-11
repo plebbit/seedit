@@ -55,7 +55,7 @@
   width: 492px;
   box-sizing: border-box;
   padding: 3px;
-  border: 1px solid gray;
+  border: 1px solid var(--border-text);
   height: 100px;
   font-family: verdana, arial, helvetica, sans-serif;
   line-height: 20px;
