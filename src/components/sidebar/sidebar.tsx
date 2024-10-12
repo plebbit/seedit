@@ -11,6 +11,7 @@ import SearchBar from '../search-bar';
 import SubscribeButton from '../subscribe-button';
 import packageJson from '../../../package.json';
 import LoadingEllipsis from '../loading-ellipsis';
+import useIsSubplebbitOffline from '../../hooks/use-is-subplebbit-offline';
 
 const { version } = packageJson;
 const commitRef = process.env.REACT_APP_COMMIT_REF;
@@ -135,10 +136,10 @@ const Sidebar = ({ comment, isSubCreatedButNotYetPublished, settings, subplebbit
   const { cid, downvoteCount, timestamp, upvoteCount } = comment || {};
 
   const { allActiveUserCount, hourActiveUserCount } = useSubplebbitStats({ subplebbitAddress: address });
-  const isOnline = updatedAt && updatedAt > Date.now() / 1000 - 60 * 60;
+  const { isOffline, offlineTitle } = useIsSubplebbitOffline(subplebbit || {});
   const onlineNotice = t('users_online', { count: hourActiveUserCount });
-  const offlineNotice = updatedAt && t('posts_last_synced', { dateAgo: getFormattedTimeAgo(updatedAt) });
-  const onlineStatus = isOnline ? onlineNotice : offlineNotice;
+  const offlineNotice = updatedAt ? t('posts_last_synced', { dateAgo: getFormattedTimeAgo(updatedAt) }) : offlineTitle;
+  const onlineStatus = !isOffline ? onlineNotice : offlineNotice;
 
   const subCreatedButNotYetPublishedStatus = <LoadingEllipsis string='Publishing community over IPFS' />;
 
@@ -217,7 +218,7 @@ const Sidebar = ({ comment, isSubCreatedButNotYetPublished, settings, subplebbit
             <span className={styles.subscribers}>{t('members_count', { count: allActiveUserCount })}</span>
           </div>
           <div className={styles.onlineLine}>
-            <span className={`${styles.onlineIndicator} ${isOnline ? styles.online : styles.offline}`} title={isOnline ? t('online') : t('offline')} />
+            <span className={`${styles.onlineIndicator} ${!isOffline ? styles.online : styles.offline}`} title={!isOffline ? t('online') : t('offline')} />
             <span>{isSubCreatedButNotYetPublished ? subCreatedButNotYetPublishedStatus : onlineStatus}</span>
           </div>
           {description && (
