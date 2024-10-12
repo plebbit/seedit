@@ -54,9 +54,12 @@ export const getLinkMediaInfo = memoize(
     let type: string = 'webpage';
     let mime: string | undefined;
 
+    if (url.pathname === '/_next/image' && url.search.startsWith('?url=')) {
+      return { url: link, type: 'image' };
+    }
+
     try {
-      const fileName = url.pathname.slice(url.pathname.lastIndexOf('/') + 1).toLowerCase();
-      mime = extName(fileName)[0]?.mime;
+      mime = extName(new URL(link).pathname.toLowerCase().replace('/', ''))[0]?.mime;
       if (mime) {
         if (mime.startsWith('image')) {
           type = mime === 'image/gif' ? 'gif' : 'image';
@@ -65,6 +68,10 @@ export const getLinkMediaInfo = memoize(
         } else if (mime.startsWith('audio')) {
           type = 'audio';
         }
+      }
+
+      if (!url.pathname.includes('.')) {
+        type = 'webpage';
       }
 
       if (canEmbed(url) || url.host.startsWith('yt.')) {
