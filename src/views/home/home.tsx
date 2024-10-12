@@ -41,6 +41,15 @@ const Home = () => {
 
   const currentTimeFilterName = params.timeFilterName || timeFilterName;
 
+  const [showMorePostsSuggestion, setShowMorePostsSuggestion] = useState(false);
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowMorePostsSuggestion(true);
+    }, 5000);
+
+    return () => clearTimeout(timer);
+  }, []);
+
   const Footer = () => {
     let footerContent;
     if (feed.length === 0) {
@@ -93,7 +102,6 @@ const Home = () => {
   };
 
   const virtuosoRef = useRef<VirtuosoHandle | null>(null);
-  const [showMorePostsSuggestion, setShowMorePostsSuggestion] = useState(false);
 
   useEffect(() => {
     const setLastVirtuosoState = () => {
@@ -108,14 +116,6 @@ const Home = () => {
   }, [sortType, timeFilterName]);
 
   const lastVirtuosoState = lastVirtuosoStates?.[sortType + timeFilterName];
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setShowMorePostsSuggestion(true);
-    }, 5000);
-
-    return () => clearTimeout(timer);
-  }, []);
 
   useEffect(() => {
     document.title = `Seedit`;

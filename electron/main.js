@@ -16,7 +16,7 @@ startIpfs.onError = (error) => {
   // only show error once or it spams the user
   const alreadyShownIpfsError = !!startIpfsError;
   startIpfsError = error;
-  if (!alreadyShownIpfsError) {
+  if (!alreadyShownIpfsError && error.message) {
     dialog.showErrorBox('IPFS warning', error.message);
   }
 };

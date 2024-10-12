@@ -6,7 +6,7 @@ import { useTranslation } from 'react-i18next';
 import styles from './reply.module.css';
 import useReplies from '../../hooks/use-replies';
 import { CommentMediaInfo, getCommentMediaInfo, getHasThumbnail } from '../../lib/utils/media-utils';
-import { getFormattedTimeAgo } from '../../lib/utils/time-utils';
+import { formatLocalizedUTCTimestamp, getFormattedTimeAgo } from '../../lib/utils/time-utils';
 import CommentEditForm from '../comment-edit-form';
 import LoadingEllipsis from '../loading-ellipsis/';
 import Expando from '../post/expando/';
@@ -298,7 +298,8 @@ const Reply = ({ cidOfReplyWithContext, depth = 0, isSingleComment, isSingleRepl
   const commentMediaInfo = getCommentMediaInfo(reply);
   const hasThumbnail = getHasThumbnail(commentMediaInfo, link);
 
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const { language } = i18n;
   let score = upvoteCount - downvoteCount + 1 || 1;
   if ((upvoteCount === 0 && downvoteCount === 0) || (upvoteCount === 1 && downvoteCount === 0)) {
     score = 1;
@@ -363,7 +364,7 @@ const Reply = ({ cidOfReplyWithContext, depth = 0, isSingleComment, isSingleRepl
                 />
                 <span className={styles.score}>{scoreString}</span>{' '}
                 <span className={styles.time}>
-                  {getFormattedTimeAgo(timestamp)}
+                  <span title={formatLocalizedUTCTimestamp(timestamp, language)}>{getFormattedTimeAgo(timestamp)}</span>
                   {edit && <span className={styles.timeEdited}> {t('edited_timestamp', { timestamp: getFormattedTimeAgo(edit.timestamp) })}</span>}
                 </span>{' '}
                 {pinned && <span className={styles.pinned}>- {t('stickied_comment')}</span>}

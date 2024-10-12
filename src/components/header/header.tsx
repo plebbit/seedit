@@ -37,9 +37,9 @@ import {
   isProfileUpvotedView,
   isSettingsPlebbitOptionsView,
 } from '../../lib/utils/view-utils';
+import useNotFoundStore from '../../stores/use-not-found-store';
 import useTheme from '../../hooks/use-theme';
 import useWindowWidth from '../../hooks/use-window-width';
-import { useNotFoundStore } from '../../views/not-found';
 import styles from './header.module.css';
 import SubscribeButton from '../subscribe-button';
 

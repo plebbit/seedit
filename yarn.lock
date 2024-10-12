@@ -1248,6 +1248,11 @@
   dependencies:
     tslib "^2.1.0"
 
+"@capacitor/device@^6.0.1":
+  version "6.0.1"
+  resolved "https://registry.yarnpkg.com/@capacitor/device/-/device-6.0.1.tgz#bb5cb2b9e9c37142b71d51e4c6eed84625ce821e"
+  integrity sha512-Tlz67DAO5GKb5YAfupXiENZxDww6mHnG9iKI+8D5SVF82VLpEv5r9qwKtiounuQB2y2HWiHV8tlOk7DqnLVUqQ==
+
 "@chainsafe/as-chacha20poly1305@^0.1.0":
   version "0.1.0"
   resolved "https://registry.yarnpkg.com/@chainsafe/as-chacha20poly1305/-/as-chacha20poly1305-0.1.0.tgz#7da6f8796f9b42dac6e830a086d964f1f9189e09"

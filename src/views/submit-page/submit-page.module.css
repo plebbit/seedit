@@ -3,6 +3,19 @@
   color: var(--text);
 }
 
+.infobar {
+  box-sizing: border-box;
+  background-color: var(--background-orange);
+  border-color: var(--border-orange);
+  border-style: solid;
+  border-width: 1px;
+  margin-bottom: 5px;
+  padding: 6px 10px 6px 10px;
+  color: var(--text);
+  word-wrap: break-word;
+  font-size: 14px;
+}
+
 h1 {
   font-size: 18px;
   font-weight: normal;
@@ -12,7 +25,7 @@ h1 {
 
 .location {
   text-decoration: none;
-  color: var(--text-primary);
+  color: var(--link-primary);
 }
 
 .form {
@@ -20,7 +33,7 @@ h1 {
 }
 
 .formContent {
-  width: 520px
+  width: 520px;
 }
 
 .box {
@@ -119,7 +132,7 @@ h1 {
   display: inline-block;
   padding-right: 5px;
   text-decoration: none;
-  color: #369;
+  color: var(--link-primary);;
   font-size: 13px;
   cursor: pointer;
 }

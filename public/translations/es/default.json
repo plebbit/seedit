@@ -311,5 +311,7 @@
   "sure_delete": "¿Está seguro de que desea eliminar esta publicación?",
   "sure_undelete": "¿Está seguro de que desea restaurar esta publicación?",
   "profile_info": "Tu cuenta u/{{shortAddress}} fue creada. Ve a <1>preferencias</1> para exportar tu cuenta, establecer un nombre de visualización y más.",
-  "show_all_instead": "Mostrando publicaciones desde {{timeFilterName}}, <1>mostrar todo en su lugar</1>"
+  "show_all_instead": "Mostrando publicaciones desde {{timeFilterName}}, <1>mostrar todo en su lugar</1>",
+  "subplebbit_offline_info": "El subplebbit podría estar fuera de línea y la publicación podría fallar.",
+  "posts_last_synced_info": "Últimas publicaciones sincronizadas {{time}}, el subplebbit podría estar fuera de línea y la publicación podría fallar."
 }

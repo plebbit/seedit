@@ -1,9 +1,11 @@
 import { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import styles from './reply-form.module.css';
+import { useSubplebbit } from '@plebbit/plebbit-react-hooks';
 import { isValidURL } from '../../lib/utils/url-utils';
+import useIsSubplebbitOffline from '../../hooks/use-is-subplebbit-offline';
 import useReply from '../../hooks/use-reply';
 import Markdown from '../markdown';
+import styles from './reply-form.module.css';
 
 type ReplyFormProps = {
   cid: string;
@@ -94,6 +96,9 @@ const ReplyForm = ({ cid, isReplyingToReply, hideReplyForm, subplebbitAddress }:
   const urlRef = useRef<HTMLInputElement>(null);
   const spoilerRef = useRef<HTMLInputElement>(null);
 
+  const subplebbit = useSubplebbit({ subplebbitAddress });
+  const { isOffline, offlineTitle } = useIsSubplebbitOffline(subplebbit);
+
   useEffect(() => {
     if (isReplyingToReply && textRef.current) {
       textRef.current.focus();
@@ -143,6 +148,7 @@ const ReplyForm = ({ cid, isReplyingToReply, hideReplyForm, subplebbitAddress }:
   return (
     <div className={mdContainerClass}>
       <div className={styles.md}>
+        {isOffline && <div className={styles.infobar}>{offlineTitle}</div>}
         <div className={styles.options}>
           <span className={urlClass}>
             {t('media_url')}: <input className={`${styles.url} ${urlClass}`} ref={urlRef} onChange={(e) => setContent.link(e.target.value)} />

@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { FloatingFocusManager, useClick, useDismiss, useFloating, useId, useInteractions, useRole } from '@floating-ui/react';
 import { Challenge as ChallengeType, useComment } from '@plebbit/plebbit-react-hooks';
 import { useTranslation } from 'react-i18next';
-import useChallenges from '../../hooks/use-challenges';
+import useChallenges from '../../stores/use-challenges-store';
 import styles from './challenge-modal.module.css';
 import { getPublicationPreview, getPublicationType, getVotePreview } from '../../lib/utils/challenge-utils';
 

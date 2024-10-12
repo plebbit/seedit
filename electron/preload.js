@@ -7,6 +7,7 @@ const defaultPlebbitOptions = {
   plebbitRpcClientsOptions: ['ws://localhost:9138'],
 };
 
+contextBridge.exposeInMainWorld('isElectron', true);
 contextBridge.exposeInMainWorld('defaultPlebbitOptions', defaultPlebbitOptions);
 contextBridge.exposeInMainWorld('defaultMediaIpfsGatewayUrl', 'http://localhost:6473');
 

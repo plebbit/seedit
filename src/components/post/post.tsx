@@ -6,7 +6,7 @@ import { useTranslation } from 'react-i18next';
 import { isAllView, isPostView, isProfileHiddenView, isSubplebbitView } from '../../lib/utils/view-utils';
 import { getCommentMediaInfo, getHasThumbnail } from '../../lib/utils/media-utils';
 import { getHostname } from '../../lib/utils/url-utils';
-import { getFormattedTimeAgo } from '../../lib/utils/time-utils';
+import { getFormattedTimeAgo, formatLocalizedUTCTimestamp } from '../../lib/utils/time-utils';
 import CommentEditForm from '../comment-edit-form';
 import ExpandButton from './expand-button';
 import Expando from './expando';
@@ -105,7 +105,9 @@ const Post = ({ index, post = {} }: PostProps) => {
   const { displayName, shortAddress } = author || {};
   const { shortAuthorAddress, authorAddressChanged } = useAuthorAddress({ comment: post });
 
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const { language } = i18n;
+  const postDate = formatLocalizedUTCTimestamp(timestamp, language);
   const params = useParams();
   const location = useLocation();
   const subplebbit = useSubplebbit({ subplebbitAddress });
@@ -225,7 +227,7 @@ const Post = ({ index, post = {} }: PostProps) => {
                   />
                 )}
                 <div className={styles.tagline}>
-                  {t('submitted')} {getFormattedTimeAgo(timestamp)}{' '}
+                  {t('submitted')} <span title={postDate}>{getFormattedTimeAgo(timestamp)}</span>{' '}
                   {edit && isInPostView && <span className={styles.timeEdit}>{t('last_edited', { timestamp: getFormattedTimeAgo(edit.timestamp) })}</span>} {t('post_by')}
                   <PostAuthor
                     authorAddress={author?.address}

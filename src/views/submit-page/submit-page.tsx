@@ -1,62 +1,16 @@
 import { ChangeEvent, useCallback, useEffect, useState } from 'react';
-import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
-import { PublishCommentOptions, useAccount, usePublishComment, useSubplebbit } from '@plebbit/plebbit-react-hooks';
-import Plebbit from '@plebbit/plebbit-js/dist/browser/index.js';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import { Trans, useTranslation } from 'react-i18next';
-import { create } from 'zustand';
+import Plebbit from '@plebbit/plebbit-js/dist/browser/index.js';
+import { useAccount, usePublishComment, useSubplebbit } from '@plebbit/plebbit-react-hooks';
+import useSubmitStore from '../../stores/use-submit-store';
 import { useDefaultSubplebbitAddresses } from '../../hooks/use-default-subplebbits';
-import { alertChallengeVerificationFailed } from '../../lib/utils/challenge-utils';
 import { getLinkMediaInfo } from '../../lib/utils/media-utils';
 import { isValidURL } from '../../lib/utils/url-utils';
-import { isSubmitView } from '../../lib/utils/view-utils';
-import styles from './submit-page.module.css';
-import challengesStore from '../../hooks/use-challenges';
 import Embed from '../../components/post/embed';
 import Markdown from '../../components/markdown';
-
-type SubmitState = {
-  subplebbitAddress: string | undefined;
-  title: string | undefined;
-  content: string | undefined;
-  link: string | undefined;
-  publishCommentOptions: PublishCommentOptions;
-  spoiler: boolean | undefined;
-  setSubmitStore: (data: Partial<SubmitState>) => void;
-  resetSubmitStore: () => void;
-};
-
-const { addChallenge } = challengesStore.getState();
-
-const useSubmitStore = create<SubmitState>((set) => ({
-  subplebbitAddress: undefined,
-  title: undefined,
-  content: undefined,
-  link: undefined,
-  spoiler: undefined,
-  publishCommentOptions: {},
-  setSubmitStore: ({ subplebbitAddress, title, content, link, spoiler }) =>
-    set((state) => {
-      const nextState = { ...state };
-      if (subplebbitAddress !== undefined) nextState.subplebbitAddress = subplebbitAddress;
-      if (title !== undefined) nextState.title = title || undefined;
-      if (content !== undefined) nextState.content = content || undefined;
-      if (link !== undefined) nextState.link = link || undefined;
-      if (spoiler !== undefined) nextState.spoiler = spoiler || undefined;
-
-      nextState.publishCommentOptions = {
-        ...nextState,
-        onChallenge: (...args: any) => addChallenge(args),
-        onChallengeVerification: alertChallengeVerificationFailed,
-        onError: (error: Error) => {
-          console.error(error);
-          let errorMessage = error.message;
-          alert(errorMessage);
-        },
-      };
-      return nextState;
-    }),
-  resetSubmitStore: () => set({ subplebbitAddress: undefined, title: undefined, content: undefined, link: undefined, spoiler: undefined, publishCommentOptions: {} }),
-}));
+import styles from './submit-page.module.css';
+import useIsSubplebbitOffline from '../../hooks/use-is-subplebbit-offline';
 
 const UrlField = () => {
   const { t } = useTranslation();
@@ -125,13 +79,12 @@ const Submit = () => {
   const subplebbit = useSubplebbit({ subplebbitAddress: selectedSubplebbit });
   const navigate = useNavigate();
 
-  const location = useLocation();
-  const isInSubmitView = isSubmitView(location.pathname);
-
   const { title, content, link, subplebbitAddress, publishCommentOptions, setSubmitStore, resetSubmitStore } = useSubmitStore();
   const { index, publishComment } = usePublishComment(publishCommentOptions);
   const { subscriptions } = account || {};
   const defaultSubplebbitAddresses = useDefaultSubplebbitAddresses();
+
+  const { isOffline, offlineTitle } = useIsSubplebbitOffline(subplebbit);
 
   const onPublish = () => {
     if (!title) {
@@ -185,7 +138,7 @@ const Submit = () => {
   const [activeDropdownIndex, setActiveDropdownIndex] = useState<number>(-1);
   const [isInputAddressFocused, setIsInputAddressFocused] = useState(false);
 
-  const filteredSubplebbitAddresses = defaultSubplebbitAddresses.filter((address) => address.toLowerCase().includes(inputAddress.toLowerCase())).slice(0, 10);
+  const filteredSubplebbitAddresses = defaultSubplebbitAddresses.filter((address) => address?.toLowerCase()?.includes(inputAddress?.toLowerCase())).slice(0, 10);
 
   const handleKeyDown = useCallback(
     (e: KeyboardEvent) => {
@@ -193,15 +146,18 @@ const Submit = () => {
         setActiveDropdownIndex((prevIndex) => (prevIndex < filteredSubplebbitAddresses.length - 1 ? prevIndex + 1 : prevIndex));
       } else if (e.key === 'ArrowUp') {
         setActiveDropdownIndex((prevIndex) => (prevIndex > 0 ? prevIndex - 1 : 0));
-      } else if (e.key === 'Enter' && activeDropdownIndex !== -1) {
-        const selectedAddress = filteredSubplebbitAddresses[activeDropdownIndex];
-        setSelectedSubplebbit(selectedAddress);
-        setSubmitStore({ subplebbitAddress: selectedAddress });
-        setInputAddress(selectedAddress);
+      } else if (e.key === 'Enter') {
+        if (activeDropdownIndex !== -1) {
+          const selectedAddress = filteredSubplebbitAddresses[activeDropdownIndex];
+          setSelectedSubplebbit(selectedAddress);
+          setSubmitStore({ subplebbitAddress: selectedAddress });
+          setInputAddress(selectedAddress);
+        }
         setActiveDropdownIndex(-1);
+        setIsInputAddressFocused(false);
       }
     },
-    [filteredSubplebbitAddresses, activeDropdownIndex, setSubmitStore, setSelectedSubplebbit],
+    [filteredSubplebbitAddresses, activeDropdownIndex, setSubmitStore, setSelectedSubplebbit, setIsInputAddressFocused],
   );
 
   useEffect(() => {
@@ -265,11 +221,12 @@ const Submit = () => {
           i18nKey='submit_to'
           shouldUnescape={true}
           values={{ link: subplebbit?.title || subplebbit?.shortAddress || 'seedit' }}
-          components={{ 1: isInSubmitView ? <></> : <Link to={`/p/${subplebbitAddress}`} className={styles.location} /> }}
+          components={{ 1: subplebbit?.shortAddress ? <Link to={`/p/${subplebbitAddress}`} className={styles.location} /> : <></> }}
         />
       </h1>
       <div className={styles.form}>
         <div className={styles.formContent}>
+          {isOffline && selectedSubplebbit && <div className={styles.infobar}>{offlineTitle}</div>}
           <div className={styles.box}>
             <UrlField />
           </div>
@@ -321,6 +278,12 @@ const Submit = () => {
                 onChange={(e) => {
                   handleAddressChange(e);
                   setSubmitStore({ subplebbitAddress: e.target.value });
+                }}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter') {
+                    e.preventDefault();
+                    (e.target as HTMLInputElement).blur();
+                  }
                 }}
               />
               {inputAddress && isInputAddressFocused && defaultSubplebbitsDropdown}

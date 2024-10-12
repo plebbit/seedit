@@ -311,5 +311,7 @@
   "sure_delete": "Sind Sie sicher, dass Sie diesen Beitrag löschen möchten?",
   "sure_undelete": "Sind Sie sicher, dass Sie diesen Beitrag wiederherstellen möchten?",
   "profile_info": "Ihr Konto u/{{shortAddress}} wurde erstellt. Gehen Sie zu <1>Präferenzen</1>, um Ihr Konto zu exportieren, einen Anzeigenamen festzulegen und mehr.",
-  "show_all_instead": "Zeigt Beiträge seit {{timeFilterName}}, <1>stattdessen alles anzeigen</1>"
+  "show_all_instead": "Zeigt Beiträge seit {{timeFilterName}}, <1>stattdessen alles anzeigen</1>",
+  "subplebbit_offline_info": "Der Subplebbit könnte offline sein und das Veröffentlichen könnte fehlschlagen.",
+  "posts_last_synced_info": "Beiträge zuletzt synchronisiert {{time}}, der Subplebbit könnte offline sein und das Veröffentlichen könnte fehlschlagen."
 }
