@@ -91,3 +91,57 @@ export const getCommentMediaInfo = (comment: Comment): CommentMediaInfo | undefi
   }
   return;
 };
+
+// some sites have CORS access, so the thumbnail can be fetched client-side, which is helpful if subplebbit.settings.fetchThumbnailUrls is false
+const fetchWebpageThumbnail = async (url: string): Promise<string | undefined> => {
+  try {
+    const response = await fetch(url);
+    const html = await response.text();
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(html, 'text/html');
+
+    // Try to find Open Graph image
+    const ogImage = doc.querySelector('meta[property="og:image"]');
+    if (ogImage && ogImage.getAttribute('content')) {
+      return ogImage.getAttribute('content')!;
+    }
+
+    // If no Open Graph image, try to find the first image
+    const firstImage = doc.querySelector('img');
+    if (firstImage && firstImage.getAttribute('src')) {
+      return new URL(firstImage.getAttribute('src')!, url).href;
+    }
+
+    return undefined;
+  } catch (error) {
+    console.error('Error fetching webpage thumbnail:', error);
+    return undefined;
+  }
+};
+
+export const fetchWebpageThumbnailIfNeeded = async (commentMediaInfo: CommentMediaInfo): Promise<CommentMediaInfo> => {
+  if (commentMediaInfo.type === 'webpage' && !commentMediaInfo.thumbnail) {
+    const cachedThumbnail = getCachedThumbnail(commentMediaInfo.url);
+    if (cachedThumbnail) {
+      return { ...commentMediaInfo, thumbnail: cachedThumbnail };
+    }
+    const thumbnail = await fetchWebpageThumbnail(commentMediaInfo.url);
+    if (thumbnail) {
+      setCachedThumbnail(commentMediaInfo.url, thumbnail);
+    }
+    return { ...commentMediaInfo, thumbnail };
+  }
+  return commentMediaInfo;
+};
+const THUMBNAIL_CACHE_KEY = 'webpageThumbnailCache';
+
+export const getCachedThumbnail = (url: string): string | null => {
+  const cache = JSON.parse(localStorage.getItem(THUMBNAIL_CACHE_KEY) || '{}');
+  return cache[url] || null;
+};
+
+export const setCachedThumbnail = (url: string, thumbnail: string): void => {
+  const cache = JSON.parse(localStorage.getItem(THUMBNAIL_CACHE_KEY) || '{}');
+  cache[url] = thumbnail;
+  localStorage.setItem(THUMBNAIL_CACHE_KEY, JSON.stringify(cache));
+};

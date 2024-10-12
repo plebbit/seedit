@@ -1,11 +1,11 @@
-import { Fragment, useEffect, useMemo, useState } from 'react';
+import { Fragment, useCallback, useEffect, useMemo, useState } from 'react';
 import { Comment, useAccountComment, useAuthorAddress, useAuthorAvatar, useBlock, useComment, useEditedComment, useSubplebbit } from '@plebbit/plebbit-react-hooks';
 import { flattenCommentsPages } from '@plebbit/plebbit-react-hooks/dist/lib/utils';
 import { Link, useLocation, useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import styles from './reply.module.css';
 import useReplies from '../../hooks/use-replies';
-import { CommentMediaInfo, getCommentMediaInfo, getHasThumbnail } from '../../lib/utils/media-utils';
+import { CommentMediaInfo, fetchWebpageThumbnailIfNeeded, getCommentMediaInfo, getHasThumbnail } from '../../lib/utils/media-utils';
 import { formatLocalizedUTCTimestamp, getFormattedTimeAgo } from '../../lib/utils/time-utils';
 import CommentEditForm from '../comment-edit-form';
 import LoadingEllipsis from '../loading-ellipsis/';
@@ -295,7 +295,21 @@ const Reply = ({ cidOfReplyWithContext, depth = 0, isSingleComment, isSingleRepl
   const showCommentEditForm = () => setIsEditing(true);
   const hideCommentEditForm = () => setIsEditing(false);
 
-  const commentMediaInfo = getCommentMediaInfo(reply);
+  // some sites have CORS access, so the thumbnail can be fetched client-side, which is helpful if subplebbit.settings.fetchThumbnailUrls is false
+  const initialCommentMediaInfo = useMemo(() => getCommentMediaInfo(reply), [reply]);
+  const [commentMediaInfo, setCommentMediaInfo] = useState(initialCommentMediaInfo);
+
+  const fetchThumbnail = useCallback(async () => {
+    if (initialCommentMediaInfo?.type === 'webpage' && !initialCommentMediaInfo.thumbnail) {
+      const newMediaInfo = await fetchWebpageThumbnailIfNeeded(initialCommentMediaInfo);
+      setCommentMediaInfo(newMediaInfo);
+    }
+  }, [initialCommentMediaInfo]);
+
+  useEffect(() => {
+    fetchThumbnail();
+  }, [fetchThumbnail]);
+
   const hasThumbnail = getHasThumbnail(commentMediaInfo, link);
 
   const { t, i18n } = useTranslation();
