@@ -313,5 +313,6 @@
   "profile_info": "귀하의 계정 u/{{shortAddress}}가 생성되었습니다. 계정을 내보내고 표시 이름을 설정하려면 <1>환경설정</1>으로 이동하십시오.",
   "show_all_instead": "{{timeFilterName}} 이후의 게시물이 표시됩니다. <1>대신 모두 표시</1>",
   "subplebbit_offline_info": "서브플레빗이 오프라인 일 수 있으며 게시가 실패할 수 있습니다.",
-  "posts_last_synced_info": "최근 동기화된 게시물 {{time}}, 서브플레빗이 오프라인 일 수 있으며 게시가 실패할 수 있습니다."
+  "posts_last_synced_info": "최근 동기화된 게시물 {{time}}, 서브플레빗이 오프라인 일 수 있으며 게시가 실패할 수 있습니다.",
+  "stored_locally": "로컬에 저장됨 ({{location}}), 장치 간에 동기화되지 않음"
 }

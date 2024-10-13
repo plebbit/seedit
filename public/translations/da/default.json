@@ -313,5 +313,6 @@
   "profile_info": "Din konto u/{{shortAddress}} er oprettet. Gå til <1>indstillinger</1> for at eksportere din konto, indstille et visningsnavn og mere.",
   "show_all_instead": "Viser indlæg siden {{timeFilterName}}, <1>vis alle i stedet</1>",
   "subplebbit_offline_info": "Subplebbiten kan være offline, og offentliggørelse kan mislykkes.",
-  "posts_last_synced_info": "Seneste synkroniserede indlæg {{time}}, subplebbiten kan være offline, og offentliggørelse kan mislykkes."
+  "posts_last_synced_info": "Seneste synkroniserede indlæg {{time}}, subplebbiten kan være offline, og offentliggørelse kan mislykkes.",
+  "stored_locally": "Lager lokalt ({{location}}), ikke synkroniseret på tværs af enheder"
 }

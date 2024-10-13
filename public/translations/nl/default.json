@@ -313,5 +313,6 @@
   "profile_info": "Uw account u/{{shortAddress}} is aangemaakt. Ga naar <1>voorkeuren</1> om uw account te exporteren, een weergeven naam in te stellen en meer.",
   "show_all_instead": "Berichten sinds {{timeFilterName}}, <1>toon in plaats daarvan alles</1>",
   "subplebbit_offline_info": "De subplebbit kan offline zijn en publiceren kan mislukken.",
-  "posts_last_synced_info": "Laatste keer gesynchroniseerde berichten {{time}}, de subplebbit kan offline zijn en publiceren kan mislukken."
+  "posts_last_synced_info": "Laatste keer gesynchroniseerde berichten {{time}}, de subplebbit kan offline zijn en publiceren kan mislukken.",
+  "stored_locally": "Lokaal opgeslagen ({{location}}), niet gesynchroniseerd tussen apparaten"
 }

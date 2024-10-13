@@ -313,5 +313,6 @@
   "profile_info": "Hesabınız u/{{shortAddress}} oluşturuldu. Hesabınızı dışa aktarmak, bir görüntü adı ayarlamak ve daha fazlası için <1>tercihler</1> e gidin.",
   "show_all_instead": "{{timeFilterName}} tarihinden itibaren gönderiler gösteriliyor, <1>bunun yerine hepsini göster</1>",
   "subplebbit_offline_info": "Subplebbit çevrimdışı olabilir ve yayınlama başarısız olabilir.",
-  "posts_last_synced_info": "Son senkronize edilen gönderiler {{time}}, subplebbit çevrimdışı olabilir ve yayınlama başarısız olabilir."
+  "posts_last_synced_info": "Son senkronize edilen gönderiler {{time}}, subplebbit çevrimdışı olabilir ve yayınlama başarısız olabilir.",
+  "stored_locally": "Yerel olarak saklanıyor ({{location}}), cihazlar arasında senkronize edilmedi"
 }
