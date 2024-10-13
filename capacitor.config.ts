@@ -4,7 +4,12 @@ const config: CapacitorConfig = {
   appId: 'seedit.android',
   appName: 'seedit',
   webDir: 'build',
-  bundledWebRuntime: false
+  bundledWebRuntime: false,
+  plugins: {
+    Device: {
+      lazyLoad: true,
+    },
+  },
 };
 
 export default config;
