@@ -8,7 +8,7 @@
   "private": true,
   "dependencies": {
     "@capacitor/app": "1.1.1",
-    "@capacitor/device": "^6.0.1",
+    "@capacitor/device": "6.0.1",
     "@floating-ui/react": "0.26.1",
     "@plebbit/plebbit-react-hooks": "https://github.com/plebbit/plebbit-react-hooks.git#e5b30dcd62f1f355bc3ce52555e7f71ea4cae06b",
     "@testing-library/jest-dom": "5.14.1",
@@ -84,9 +84,9 @@
     ]
   },
   "devDependencies": {
-    "@capacitor/android": "3.6.0",
-    "@capacitor/cli": "3.6.0",
-    "@capacitor/core": "3.6.0",
+    "@capacitor/android": "5.0.0",
+    "@capacitor/cli": "5.0.0",
+    "@capacitor/core": "5.0.0",
     "@electron/rebuild": "3.6.0",
     "@types/memoizee": "0.4.9",
     "concurrently": "8.0.1",
