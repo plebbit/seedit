@@ -46,26 +46,37 @@ interface EmbedComponentProps {
   parsedUrl: URL;
 }
 
-const youtubeHosts = new Set<string>(['youtube.com', 'www.youtube.com', 'youtu.be', 'www.youtu.be', 'm.youtube.com']);
+const youtubeHosts = new Set<string>(['youtube.com', 'www.youtube.com', 'youtu.be', 'www.youtu.be', 'm.youtube.com', 'music.youtube.com']);
 
 const YoutubeEmbed = ({ parsedUrl }: EmbedComponentProps) => {
-  let youtubeId = parsedUrl.searchParams.get('v');
+  let embedSrc = '';
 
-  if (!youtubeId && parsedUrl.host.includes('youtu.be')) {
-    youtubeId = parsedUrl.pathname.substring(1);
+  if (parsedUrl.searchParams.has('list')) {
+    const playlistId = parsedUrl.searchParams.get('list');
+    embedSrc = `https://www.youtube.com/embed/videoseries?list=${playlistId}`;
+  } else {
+    let videoId = parsedUrl.searchParams.get('v');
+
+    if (!videoId && parsedUrl.host.includes('youtu.be')) {
+      videoId = parsedUrl.pathname.substring(1);
+    }
+
+    if (videoId) {
+      embedSrc = `https://www.youtube.com/embed/${videoId}`;
+    }
   }
 
-  if (youtubeId) {
+  if (embedSrc) {
     return (
       <iframe
         className={styles.videoEmbed}
         height='100%'
         width='100%'
         referrerPolicy='origin'
-        allow='accelerometer; encrypted-media; gyroscope; picture-in-picture; web-share'
+        allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'
         allowFullScreen
         title={parsedUrl.href}
-        src={`https://www.youtube.com/embed/${youtubeId}`}
+        src={embedSrc}
       />
     );
   }
