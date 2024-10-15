@@ -8,7 +8,6 @@
   "private": true,
   "dependencies": {
     "@capacitor/app": "1.1.1",
-    "@capacitor/device": "6.0.1",
     "@floating-ui/react": "0.26.1",
     "@plebbit/plebbit-react-hooks": "https://github.com/plebbit/plebbit-react-hooks.git#e5b30dcd62f1f355bc3ce52555e7f71ea4cae06b",
     "@testing-library/jest-dom": "5.14.1",
