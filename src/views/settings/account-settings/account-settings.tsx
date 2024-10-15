@@ -3,7 +3,9 @@ import { createAccount, deleteAccount, exportAccount, importAccount, setAccount,
 import stringify from 'json-stringify-pretty-compact';
 import { useTranslation } from 'react-i18next';
 import styles from './account-settings.module.css';
-import { isAndroid } from '../../../lib/utils/platform';
+import { Capacitor } from '@capacitor/core';
+
+const isAndroid = Capacitor.getPlatform() === 'android';
 
 const AccountSettings = () => {
   const { t } = useTranslation();
