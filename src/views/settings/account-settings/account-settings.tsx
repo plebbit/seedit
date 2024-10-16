@@ -3,6 +3,9 @@ import { createAccount, deleteAccount, exportAccount, importAccount, setAccount,
 import stringify from 'json-stringify-pretty-compact';
 import { useTranslation } from 'react-i18next';
 import styles from './account-settings.module.css';
+import { Capacitor } from '@capacitor/core';
+
+const isAndroid = Capacitor.getPlatform() === 'android';
 
 const AccountSettings = () => {
   const { t } = useTranslation();
@@ -182,6 +185,12 @@ const AccountSettings = () => {
       </div>
       <div className={styles.createAccount}>
         <button onClick={_createAccount}>{t('create')}</button> {t('a_new_account')}
+      </div>
+      <div className={styles.warning}>
+        {t('stored_locally', {
+          location: window.isElectron ? 'this desktop app' : isAndroid ? 'this mobile app' : window.location.hostname,
+          interpolation: { escapeValue: false },
+        })}
       </div>
       <span className={styles.settingTitle}>{t('account_data_preview')}</span>
       <div className={styles.accountData}>

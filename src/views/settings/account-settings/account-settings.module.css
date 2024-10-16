@@ -24,6 +24,14 @@
   margin-left: 0px;
 }
 
+.warning {
+  text-transform: lowercase;
+  font-size: 0.8em;
+  color: var(--red);
+  padding-bottom: 10px;
+  padding-right: 10px;
+}
+
 .createAccount button {
   margin-left: 0px;
   margin-bottom: 10px;
@@ -53,4 +61,8 @@
 
 .deleteAccountBox, .deleteAccountBox button {
   color: var(--red);
+}
+
+.deleteAccountBox {
+  padding-top: 10px;
 }

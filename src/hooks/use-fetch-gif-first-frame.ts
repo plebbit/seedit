@@ -1,5 +1,18 @@
 import { useEffect, useState } from 'react';
 
+const GIF_FRAME_CACHE_KEY = 'gifFrameCache';
+
+const getCachedGifFrame = (url: string): string | null => {
+  const cache = JSON.parse(localStorage.getItem(GIF_FRAME_CACHE_KEY) || '{}');
+  return cache[url] || null;
+};
+
+const setCachedGifFrame = (url: string, frameUrl: string): void => {
+  const cache = JSON.parse(localStorage.getItem(GIF_FRAME_CACHE_KEY) || '{}');
+  cache[url] = frameUrl;
+  localStorage.setItem(GIF_FRAME_CACHE_KEY, JSON.stringify(cache));
+};
+
 export const fetchImage = (url: string): Promise<ArrayBuffer> => {
   return new Promise((resolve, reject) => {
     const request = new XMLHttpRequest();
@@ -62,9 +75,18 @@ const useFetchGifFirstFrame = (url: string | undefined) => {
 
     const fetchFrame = async () => {
       try {
+        const cachedFrame = getCachedGifFrame(url);
+        if (cachedFrame) {
+          if (isActive) setFrameUrl(cachedFrame);
+          return;
+        }
+
         const blob = typeof url === 'string' ? await parseGif(await fetchImage(url)) : await parseGif(await readImage(url as File));
         const objectUrl = URL.createObjectURL(blob);
-        if (isActive) setFrameUrl(objectUrl);
+        if (isActive) {
+          setFrameUrl(objectUrl);
+          setCachedGifFrame(url, objectUrl);
+        }
       } catch (error) {
         console.error('Failed to load GIF frame:', error);
         if (isActive) setFrameUrl(null);

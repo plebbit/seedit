@@ -313,5 +313,6 @@
   "profile_info": "Votre compte u/{{shortAddress}} a été créé. Allez dans <1>préférences</1> pour exporter votre compte, définir un nom d'affichage, et plus encore.",
   "show_all_instead": "Affichage des publications depuis {{timeFilterName}}, <1>afficher tout à la place</1>",
   "subplebbit_offline_info": "Le subplebbit pourrait être hors ligne et la publication pourrait échouer.",
-  "posts_last_synced_info": "Dernières publications synchronisées {{time}}, le subplebbit pourrait être hors ligne et la publication pourrait échouer."
+  "posts_last_synced_info": "Dernières publications synchronisées {{time}}, le subplebbit pourrait être hors ligne et la publication pourrait échouer.",
+  "stored_locally": "Stocké localement ({{location}}), non synchronisé entre les appareils"
 }

@@ -313,5 +313,6 @@
   "profile_info": "Ang iyong account na u/{{shortAddress}} ay nalikha na. Pumunta sa <1>mga kagustuhan</1> upang i-export ang iyong account, mag-set ng display name, at higit pa.",
   "show_all_instead": "Ipinapakita ang mga post mula {{timeFilterName}}, <1>ipakita ang lahat sa halip</1>",
   "subplebbit_offline_info": "Maaaring offline ang subplebbit at maaaring mabigo ang paglalathala.",
-  "posts_last_synced_info": "Huling naka-sync na mga post {{time}}, maaaring offline ang subplebbit at maaaring mabigo ang paglalathala."
+  "posts_last_synced_info": "Huling naka-sync na mga post {{time}}, maaaring offline ang subplebbit at maaaring mabigo ang paglalathala.",
+  "stored_locally": "Nakaimbak nang lokal ({{location}}), hindi naka-sync sa iba pang device"
 }

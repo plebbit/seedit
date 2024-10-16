@@ -313,5 +313,6 @@
   "profile_info": "Contul tău u/{{shortAddress}} a fost creat. Accesați <1>preferințe</1> pentru a exporta contul tău, seta un nume de afișare și altele.",
   "show_all_instead": "Afișând postări din {{timeFilterName}}, <1>afișați totul în schimb</1>",
   "subplebbit_offline_info": "Subplebbitul ar putea fi offline și publicarea ar putea eșua.",
-  "posts_last_synced_info": "Ultimele postări sincronizate {{time}}, subplebbitul ar putea fi offline și publicarea ar putea eșua."
+  "posts_last_synced_info": "Ultimele postări sincronizate {{time}}, subplebbitul ar putea fi offline și publicarea ar putea eșua.",
+  "stored_locally": "Stocat local ({{location}}), nu este sincronizat între dispozitive"
 }

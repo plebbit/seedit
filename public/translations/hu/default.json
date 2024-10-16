@@ -313,5 +313,6 @@
   "profile_info": "A fiókod u/{{shortAddress}} létrejött. Menj a <1>beállítások</1> menübe, hogy exportáld a fiókodat, beállíts egy megjelenítési nevet és még többet.",
   "show_all_instead": "A {{timeFilterName}} óta látható bejegyzések, <1>helyette mindent mutass</1>",
   "subplebbit_offline_info": "A subplebbit offline lehet, és a közzététel sikertelen lehet.",
-  "posts_last_synced_info": "Legutóbb szinkronizált bejegyzések {{time}}, a subplebbit offline lehet, és a közzététel sikertelen lehet."
+  "posts_last_synced_info": "Legutóbb szinkronizált bejegyzések {{time}}, a subplebbit offline lehet, és a közzététel sikertelen lehet.",
+  "stored_locally": "Helyben tárolva ({{location}}), nem szinkronizálva eszközök között"
 }

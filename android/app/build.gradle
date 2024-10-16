@@ -1,6 +1,7 @@
 apply plugin: 'com.android.application'
 
 android {
+    namespace "seedit.android"
     compileSdkVersion rootProject.ext.compileSdkVersion
     defaultConfig {
         applicationId "seedit.android"
@@ -24,6 +25,9 @@ android {
 }
 
 repositories {
+    google()
+    mavenCentral()
+    maven { url "https://maven.google.com" }
     flatDir{
         dirs '../capacitor-cordova-android-plugins/src/main/libs', 'libs'
     }
@@ -33,10 +37,11 @@ dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation "androidx.appcompat:appcompat:$androidxAppCompatVersion"
     implementation project(':capacitor-android')
+    implementation project(':capacitor-cordova-android-plugins')
     testImplementation "junit:junit:$junitVersion"
     androidTestImplementation "androidx.test.ext:junit:$androidxJunitVersion"
     androidTestImplementation "androidx.test.espresso:espresso-core:$androidxEspressoCoreVersion"
-    implementation project(':capacitor-cordova-android-plugins')
+    implementation "org.apache.cordova:framework:$cordovaAndroidVersion"
 }
 
 apply from: 'capacitor.build.gradle'

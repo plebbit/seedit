@@ -3,6 +3,7 @@ import extName from 'ext-name';
 import { canEmbed } from '../../components/post/embed';
 import memoize from 'memoizee';
 import { isValidURL } from './url-utils';
+import { Capacitor, CapacitorHttp } from '@capacitor/core';
 
 export interface CommentMediaInfo {
   url: string;
@@ -54,9 +55,12 @@ export const getLinkMediaInfo = memoize(
     let type: string = 'webpage';
     let mime: string | undefined;
 
+    if (url.pathname === '/_next/image' && url.search.startsWith('?url=')) {
+      return { url: link, type: 'image' };
+    }
+
     try {
-      const fileName = url.pathname.slice(url.pathname.lastIndexOf('/') + 1).toLowerCase();
-      mime = extName(fileName)[0]?.mime;
+      mime = extName(new URL(link).pathname.toLowerCase().replace('/', ''))[0]?.mime;
       if (mime) {
         if (mime.startsWith('image')) {
           type = mime === 'image/gif' ? 'gif' : 'image';
@@ -65,6 +69,10 @@ export const getLinkMediaInfo = memoize(
         } else if (mime.startsWith('audio')) {
           type = 'audio';
         }
+      }
+
+      if (!url.pathname.includes('.')) {
+        type = 'webpage';
       }
 
       if (canEmbed(url) || url.host.startsWith('yt.')) {
@@ -90,4 +98,93 @@ export const getCommentMediaInfo = (comment: Comment): CommentMediaInfo | undefi
     return linkInfo;
   }
   return;
+};
+
+const fetchWebpageThumbnail = async (url: string): Promise<string | undefined> => {
+  try {
+    let html: string;
+    const MAX_HTML_SIZE = 1024 * 1024;
+    const TIMEOUT = 5000;
+
+    if (Capacitor.isNativePlatform()) {
+      // in the native app, the Capacitor HTTP plugin is used to fetch the thumbnail
+      const response = await CapacitorHttp.get({
+        url,
+        readTimeout: TIMEOUT,
+        connectTimeout: TIMEOUT,
+        responseType: 'text',
+        headers: { Accept: 'text/html', Range: `bytes=0-${MAX_HTML_SIZE - 1}` },
+      });
+      html = response.data.slice(0, MAX_HTML_SIZE);
+    } else {
+      // some sites have CORS access, from which the thumbnail can be fetched client-side, which is helpful if subplebbit.settings.fetchThumbnailUrls is false
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), TIMEOUT);
+
+      const response = await fetch(url, {
+        signal: controller.signal,
+        headers: { Accept: 'text/html' },
+      });
+
+      clearTimeout(timeoutId);
+
+      if (!response.ok) throw new Error('Network response was not ok');
+
+      const reader = response.body?.getReader();
+      let result = '';
+      while (true) {
+        const { done, value } = await reader!.read();
+        if (done || result.length >= MAX_HTML_SIZE) break;
+        result += new TextDecoder().decode(value);
+      }
+      html = result.slice(0, MAX_HTML_SIZE);
+    }
+
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(html, 'text/html');
+
+    // Try to find Open Graph image
+    const ogImage = doc.querySelector('meta[property="og:image"]');
+    if (ogImage && ogImage.getAttribute('content')) {
+      return ogImage.getAttribute('content')!;
+    }
+
+    // If no Open Graph image, try to find the first image
+    const firstImage = doc.querySelector('img');
+    if (firstImage && firstImage.getAttribute('src')) {
+      return new URL(firstImage.getAttribute('src')!, url).href;
+    }
+
+    return undefined;
+  } catch (error) {
+    console.error('Error fetching webpage thumbnail:', error);
+    return undefined;
+  }
+};
+
+export const fetchWebpageThumbnailIfNeeded = async (commentMediaInfo: CommentMediaInfo): Promise<CommentMediaInfo> => {
+  if (commentMediaInfo.type === 'webpage' && !commentMediaInfo.thumbnail) {
+    const cachedThumbnail = getCachedThumbnail(commentMediaInfo.url);
+    if (cachedThumbnail) {
+      return { ...commentMediaInfo, thumbnail: cachedThumbnail };
+    }
+    const thumbnail = await fetchWebpageThumbnail(commentMediaInfo.url);
+    if (thumbnail) {
+      setCachedThumbnail(commentMediaInfo.url, thumbnail);
+    }
+    return { ...commentMediaInfo, thumbnail };
+  }
+  return commentMediaInfo;
+};
+const THUMBNAIL_CACHE_KEY = 'webpageThumbnailCache';
+
+export const getCachedThumbnail = (url: string): string | null => {
+  const cache = JSON.parse(localStorage.getItem(THUMBNAIL_CACHE_KEY) || '{}');
+  return cache[url] || null;
+};
+
+export const setCachedThumbnail = (url: string, thumbnail: string): void => {
+  const cache = JSON.parse(localStorage.getItem(THUMBNAIL_CACHE_KEY) || '{}');
+  cache[url] = thumbnail;
+  localStorage.setItem(THUMBNAIL_CACHE_KEY, JSON.stringify(cache));
 };
