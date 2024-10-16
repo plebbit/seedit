@@ -119,18 +119,6 @@ const Post = ({ index, post = {} }: PostProps) => {
   const isInProfileHiddenView = isProfileHiddenView(location.pathname);
   const isInSubplebbitView = isSubplebbitView(location.pathname, params);
 
-  const [isExpanded, setIsExpanded] = useState(isInPostView);
-  const toggleExpanded = () => setIsExpanded(!isExpanded);
-
-  const [isEditing, setIsEditing] = useState(false);
-  const showCommentEditForm = () => setIsEditing(true);
-  const hideCommentEditForm = () => setIsEditing(false);
-
-  const [upvoted, upvote] = useUpvote(post);
-  const [downvoted, downvote] = useDownvote(post);
-  const postScore = upvoteCount === 0 && downvoteCount === 0 ? '•' : upvoteCount - downvoteCount || '?';
-  const postTitle = (title?.length > 300 ? title?.slice(0, 300) + '...' : title) || (content?.length > 300 ? content?.slice(0, 300) + '...' : content);
-
   // some sites have CORS access, so the thumbnail can be fetched client-side, which is helpful if subplebbit.settings.fetchThumbnailUrls is false
   const initialCommentMediaInfo = useMemo(() => getCommentMediaInfo(post), [post]);
   const [commentMediaInfo, setCommentMediaInfo] = useState(initialCommentMediaInfo);
@@ -143,6 +131,18 @@ const Post = ({ index, post = {} }: PostProps) => {
   useEffect(() => {
     fetchThumbnail();
   }, [fetchThumbnail]);
+
+  const [isExpanded, setIsExpanded] = useState(isInPostView && commentMediaInfo?.type !== 'webpage');
+  const toggleExpanded = () => setIsExpanded(!isExpanded);
+
+  const [isEditing, setIsEditing] = useState(false);
+  const showCommentEditForm = () => setIsEditing(true);
+  const hideCommentEditForm = () => setIsEditing(false);
+
+  const [upvoted, upvote] = useUpvote(post);
+  const [downvoted, downvote] = useDownvote(post);
+  const postScore = upvoteCount === 0 && downvoteCount === 0 ? '•' : upvoteCount - downvoteCount || '?';
+  const postTitle = (title?.length > 300 ? title?.slice(0, 300) + '...' : title) || (content?.length > 300 ? content?.slice(0, 300) + '...' : content);
 
   const hasThumbnail = getHasThumbnail(commentMediaInfo, link);
   const linkUrl = getHostname(link);
@@ -186,7 +186,7 @@ const Post = ({ index, post = {} }: PostProps) => {
                   <div className={`${styles.arrowCommon} ${downvoted ? styles.downvoted : styles.arrowDown}`} onClick={() => cid && downvote()} />
                 </div>
               </div>
-              {hasThumbnail && !isInPostView && !spoiler && (
+              {hasThumbnail && (!isInPostView || commentMediaInfo?.type === 'webpage') && !spoiler && (
                 <span className={removed ? styles.blur : ''}>
                   <Thumbnail
                     cid={cid}
