@@ -6,8 +6,8 @@ const config: CapacitorConfig = {
   webDir: 'build',
   bundledWebRuntime: false,
   plugins: {
-    Device: {
-      lazyLoad: true,
+    "CapacitorHttp": {
+      "enabled": true
     },
   },
 };
