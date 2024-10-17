@@ -60,7 +60,7 @@ export const getLinkMediaInfo = memoize(
     }
 
     try {
-      mime = extName(new URL(link).pathname.toLowerCase().replace('/', ''))[0]?.mime;
+      mime = extName(url.pathname.toLowerCase().replace('/', ''))[0]?.mime;
       if (mime) {
         if (mime.startsWith('image')) {
           type = mime === 'image/gif' ? 'gif' : 'image';
