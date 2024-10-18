@@ -141,7 +141,16 @@ const Post = ({ index, post = {} }: PostProps) => {
 
   const [upvoted, upvote] = useUpvote(post);
   const [downvoted, downvote] = useDownvote(post);
-  const postScore = upvoteCount === 0 && downvoteCount === 0 ? '•' : upvoteCount - downvoteCount || '?';
+  const getPostScore = () => {
+    if ((upvoteCount === 0 && downvoteCount === 0) || state === 'pending' || state === 'failed') {
+      return '•';
+    } else if (!upvoteCount || !downvoteCount) {
+      return '?';
+    } else {
+      return upvoteCount - downvoteCount;
+    }
+  };
+
   const postTitle = (title?.length > 300 ? title?.slice(0, 300) + '...' : title) || (content?.length > 300 ? content?.slice(0, 300) + '...' : content);
 
   const hasThumbnail = getHasThumbnail(commentMediaInfo, link);
@@ -181,7 +190,7 @@ const Post = ({ index, post = {} }: PostProps) => {
                 <div className={styles.arrowWrapper}>
                   <div className={`${styles.arrowCommon} ${upvoted ? styles.upvoted : styles.arrowUp}`} onClick={() => cid && upvote()} />
                 </div>
-                <div className={styles.score}>{postScore}</div>
+                <div className={styles.score}>{getPostScore()}</div>
                 <div className={styles.arrowWrapper}>
                   <div className={`${styles.arrowCommon} ${downvoted ? styles.downvoted : styles.arrowDown}`} onClick={() => cid && downvote()} />
                 </div>
