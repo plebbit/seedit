@@ -132,7 +132,7 @@ const Post = ({ index, post = {} }: PostProps) => {
     fetchThumbnail();
   }, [fetchThumbnail]);
 
-  const [isExpanded, setIsExpanded] = useState(isInPostView && commentMediaInfo?.type !== 'webpage');
+  const [isExpanded, setIsExpanded] = useState(isInPostView);
   const toggleExpanded = () => setIsExpanded(!isExpanded);
 
   const [isEditing, setIsEditing] = useState(false);
@@ -232,7 +232,7 @@ const Post = ({ index, post = {} }: PostProps) => {
                   <ExpandButton
                     commentMediaInfo={commentMediaInfo}
                     content={content}
-                    expanded={isExpanded}
+                    expanded={commentMediaInfo?.type === 'webpage' ? false : isExpanded}
                     hasThumbnail={hasThumbnail}
                     link={link}
                     toggleExpanded={toggleExpanded}
@@ -297,7 +297,7 @@ const Post = ({ index, post = {} }: PostProps) => {
               authorEditReason={edit?.reason}
               commentMediaInfo={commentMediaInfo}
               content={removed ? `[${_.lowerCase(t('removed'))}]` : deleted ? `[${_.lowerCase(t('deleted'))}]` : content}
-              expanded={isExpanded}
+              expanded={commentMediaInfo?.type === 'webpage' ? false : isExpanded}
               link={link}
               modEditReason={reason}
               deleted={deleted}
