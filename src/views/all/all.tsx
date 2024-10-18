@@ -1,5 +1,5 @@
-import { useEffect, useRef } from 'react';
-import { useParams } from 'react-router-dom';
+import { useEffect, useRef, useState } from 'react';
+import { Link, useParams } from 'react-router-dom';
 import { Virtuoso, VirtuosoHandle, StateSnapshot } from 'react-virtuoso';
 import { useFeed } from '@plebbit/plebbit-react-hooks';
 import { Trans, useTranslation } from 'react-i18next';
@@ -20,26 +20,32 @@ const All = () => {
   const sortType = params?.sortType || 'hot';
   const timeFilterName = params.timeFilterName;
   const { timeFilterSeconds } = useTimeFilter();
-  const { feed, hasMore, loadMore } = useFeed({ subplebbitAddresses, sortType, newerThan: timeFilterSeconds });
+  const { feed, hasMore, loadMore, reset, subplebbitAddressesWithNewerPosts } = useFeed({ subplebbitAddresses, sortType, newerThan: timeFilterSeconds });
   const { t } = useTranslation();
-  let loadingStateString = useFeedStateString(subplebbitAddresses) || t('loading');
 
-  const loadingString = (
-    <div className={styles.stateString}>
-      {subplebbitAddresses.length === 0 ? (
-        <div>
-          <Trans
-            i18nKey='no_communities_found'
-            components={[<a href='https://github.com/plebbit/temporary-default-subplebbits'>https://github.com/plebbit/temporary-default-subplebbits</a>]}
-          />
-          <br />
-          {t('connect_community_notice')}
-        </div>
-      ) : (
-        <LoadingEllipsis string={loadingStateString} />
-      )}
-    </div>
-  );
+  // suggest the user to change time filter if there aren't enough posts
+  const { feed: weeklyFeed } = useFeed({ subplebbitAddresses, sortType, newerThan: 60 * 60 * 24 * 7 });
+  const { feed: monthlyFeed } = useFeed({ subplebbitAddresses, sortType, newerThan: 60 * 60 * 24 * 30 });
+
+  const loadingStateString = useFeedStateString(subplebbitAddresses) || t('loading');
+
+  const handleNewerPostsButtonClick = () => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+    setTimeout(() => {
+      reset();
+    }, 300);
+  };
+
+  const currentTimeFilterName = params.timeFilterName || timeFilterName;
+
+  const [showMorePostsSuggestion, setShowMorePostsSuggestion] = useState(false);
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowMorePostsSuggestion(true);
+    }, 5000);
+
+    return () => clearTimeout(timer);
+  }, []);
 
   const documentTitle = _.capitalize(t('all')) + ' - Seedit';
   useEffect(() => {
@@ -52,11 +58,60 @@ const All = () => {
     if (feed.length === 0) {
       footerContent = t('no_posts');
     }
-
-    if (hasMore || subplebbitAddresses.length === 0) {
-      footerContent = loadingString;
+    if (hasMore || (subplebbitAddresses && subplebbitAddresses.length === 0)) {
+      footerContent = (
+        <>
+          {subplebbitAddressesWithNewerPosts.length > 0 ? (
+            <div className={styles.stateString}>
+              <Trans
+                i18nKey='newer_posts_available'
+                components={{
+                  1: <span onClick={handleNewerPostsButtonClick} />,
+                }}
+              />
+            </div>
+          ) : (
+            showMorePostsSuggestion &&
+            monthlyFeed.length > feed.length &&
+            (weeklyFeed.length > feed.length ? (
+              <div className={styles.stateString}>
+                <Trans
+                  i18nKey='more_posts_last_week'
+                  values={{ currentTimeFilterName }}
+                  components={{
+                    1: <Link to={'/' + (params?.sortType || 'hot') + '/1w'} />,
+                  }}
+                />
+              </div>
+            ) : (
+              <div className={styles.stateString}>
+                <Trans
+                  i18nKey='more_posts_last_month'
+                  values={{ currentTimeFilterName }}
+                  components={{
+                    1: <Link to={'/' + (params?.sortType || 'hot') + '/1m'} />,
+                  }}
+                />
+              </div>
+            ))
+          )}
+          <div className={styles.stateString}>
+            {subplebbitAddresses.length === 0 ? (
+              <div>
+                <Trans
+                  i18nKey='no_communities_found'
+                  components={[<a href='https://github.com/plebbit/temporary-default-subplebbits'>https://github.com/plebbit/temporary-default-subplebbits</a>]}
+                />
+                <br />
+                {t('connect_community_notice')}
+              </div>
+            ) : (
+              <LoadingEllipsis string={loadingStateString} />
+            )}
+          </div>
+        </>
+      );
     }
-
     return <div className={styles.footer}>{footerContent}</div>;
   };
 
