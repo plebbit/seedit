@@ -1,16 +1,14 @@
 import { useEffect, useState } from 'react';
+import localForageLru from '@plebbit/plebbit-react-hooks/dist/lib/localforage-lru/index.js';
 
-const GIF_FRAME_CACHE_KEY = 'gifFrameCache';
+const gifFrameDb = localForageLru.createInstance({ name: 'seeditGifFrames', size: 500 });
 
-const getCachedGifFrame = (url: string): string | null => {
-  const cache = JSON.parse(localStorage.getItem(GIF_FRAME_CACHE_KEY) || '{}');
-  return cache[url] || null;
+const getCachedGifFrame = async (url: string): Promise<string | null> => {
+  return await gifFrameDb.getItem(url);
 };
 
-const setCachedGifFrame = (url: string, frameUrl: string): void => {
-  const cache = JSON.parse(localStorage.getItem(GIF_FRAME_CACHE_KEY) || '{}');
-  cache[url] = frameUrl;
-  localStorage.setItem(GIF_FRAME_CACHE_KEY, JSON.stringify(cache));
+const setCachedGifFrame = async (url: string, frameUrl: string): Promise<void> => {
+  await gifFrameDb.setItem(url, frameUrl);
 };
 
 export const fetchImage = (url: string): Promise<ArrayBuffer> => {
@@ -75,7 +73,7 @@ const useFetchGifFirstFrame = (url: string | undefined) => {
 
     const fetchFrame = async () => {
       try {
-        const cachedFrame = getCachedGifFrame(url);
+        const cachedFrame = await getCachedGifFrame(url);
         if (cachedFrame) {
           if (isActive) setFrameUrl(cachedFrame);
           return;
@@ -85,7 +83,7 @@ const useFetchGifFirstFrame = (url: string | undefined) => {
         const objectUrl = URL.createObjectURL(blob);
         if (isActive) {
           setFrameUrl(objectUrl);
-          setCachedGifFrame(url, objectUrl);
+          await setCachedGifFrame(url, objectUrl);
         }
       } catch (error) {
         console.error('Failed to load GIF frame:', error);
@@ -95,7 +93,6 @@ const useFetchGifFirstFrame = (url: string | undefined) => {
 
     fetchFrame();
 
-    // Cleanup function to avoid setting state on unmounted component
     return () => {
       isActive = false;
     };
