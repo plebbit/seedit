@@ -314,5 +314,11 @@
   "show_all_instead": "Duke treguar postimet që nga {{timeFilterName}}, <1>tregoni gjithçka në vend</1>",
   "subplebbit_offline_info": "Subplebbiti mund të jetë jashtë linje dhe publikimi mund të dështojë.",
   "posts_last_synced_info": "Postimet e fundit të sinkronizuara {{time}}, subplebbiti mund të jetë jashtë linje dhe publikimi mund të dështojë.",
-  "stored_locally": "Ruajtur lokalmente ({{location}}), nuk është sinkronizuar ndërmjet pajisjeve"
+  "stored_locally": "Ruajtur lokalmente ({{location}}), nuk është sinkronizuar ndërmjet pajisjeve",
+  "import_account_backup": "<1>importoni</1> kopjen e llogarisë",
+  "export_account_backup": "<1>eksportoni</1> kopjen e llogarisë",
+  "save_reset_changes": "<1>ruaj</1> ose <2>rivendos</2> ndryshimet",
+  "delete_this_account": "<1>fshi</1> këtë llogari",
+  "create_new_account": "<1>krijo</1> një llogari të re",
+  "wallet_number": "portofol #{{index}}"
 }

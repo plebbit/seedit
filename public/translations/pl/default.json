@@ -314,5 +314,11 @@
   "show_all_instead": "Pokazuje posty od {{timeFilterName}}, <1>pokaż wszystko zamiast tego</1>",
   "subplebbit_offline_info": "Subplebbit może być offline, a publikacja może się nie powieść.",
   "posts_last_synced_info": "Ostatnio zsynchronizowane posty {{time}}, subplebbit może być offline, a publikacja może się nie powieść.",
-  "stored_locally": "Przechowywane lokalnie ({{location}}), nie synchronizowane między urządzeniami"
+  "stored_locally": "Przechowywane lokalnie ({{location}}), nie synchronizowane między urządzeniami",
+  "import_account_backup": "<1>importuj</1> kopię zapasową konta",
+  "export_account_backup": "<1>eksportuj</1> kopię zapasową konta",
+  "save_reset_changes": "<1>zapisz</1> lub <2>zresetuj</2> zmiany",
+  "delete_this_account": "<1>usuń</1> to konto",
+  "create_new_account": "<1>stwórz</1> nowe konto",
+  "wallet_number": "portfel #{{index}}"
 }

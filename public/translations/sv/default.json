@@ -314,5 +314,11 @@
   "show_all_instead": "Visar inlägg sedan {{timeFilterName}}, <1>visa allt istället</1>",
   "subplebbit_offline_info": "Subplebbit kan vara offline och publicering kan misslyckas.",
   "posts_last_synced_info": "Inlägg senast synkroniserade {{time}}, subplebbit kan vara offline och publicering kan misslyckas.",
-  "stored_locally": "Lagrad lokalt ({{location}}), inte synkroniserad mellan enheter"
+  "stored_locally": "Lagrad lokalt ({{location}}), inte synkroniserad mellan enheter",
+  "import_account_backup": "<1>importera</1> kontots säkerhetskopiering",
+  "export_account_backup": "<1>exportera</1> kontots säkerhetskopiering",
+  "save_reset_changes": "<1>spara</1> eller <2>återställ</2> ändringar",
+  "delete_this_account": "<1>ta bort</1> det här kontot",
+  "create_new_account": "<1>skapa</1> ett nytt konto",
+  "wallet_number": "plånbok #{{index}}"
 }

@@ -314,5 +314,11 @@
   "show_all_instead": "Đang hiển thị bài viết từ {{timeFilterName}}, <1>hiển thị tất cả thay vào đó</1>",
   "subplebbit_offline_info": "Subplebbit có thể ngoại tuyến và việc xuất bản có thể thất bại.",
   "posts_last_synced_info": "Bài viết được đồng bộ lần cuối {{time}}, subplebbit có thể ngoại tuyến và việc xuất bản có thể thất bại.",
-  "stored_locally": "Lưu trữ cục bộ ({{location}}), không được đồng bộ qua các thiết bị"
+  "stored_locally": "Lưu trữ cục bộ ({{location}}), không được đồng bộ qua các thiết bị",
+  "import_account_backup": "<1>nhập</1> sao lưu tài khoản",
+  "export_account_backup": "<1>xuất</1> sao lưu tài khoản",
+  "save_reset_changes": "<1>lưu</1> hoặc <2>đặt lại</2> thay đổi",
+  "delete_this_account": "<1>xóa</1> tài khoản này",
+  "create_new_account": "<1>tạo</1> tài khoản mới",
+  "wallet_number": "ví #{{index}}"
 }

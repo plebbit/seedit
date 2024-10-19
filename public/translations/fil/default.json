@@ -314,5 +314,11 @@
   "show_all_instead": "Ipinapakita ang mga post mula {{timeFilterName}}, <1>ipakita ang lahat sa halip</1>",
   "subplebbit_offline_info": "Maaaring offline ang subplebbit at maaaring mabigo ang paglalathala.",
   "posts_last_synced_info": "Huling naka-sync na mga post {{time}}, maaaring offline ang subplebbit at maaaring mabigo ang paglalathala.",
-  "stored_locally": "Nakaimbak nang lokal ({{location}}), hindi naka-sync sa iba pang device"
+  "stored_locally": "Nakaimbak nang lokal ({{location}}), hindi naka-sync sa iba pang device",
+  "import_account_backup": "<1>i-import</1> ang backup ng account",
+  "export_account_backup": "<1>ilabas</1> ang backup ng account",
+  "save_reset_changes": "<1>i-save</1> o <2>i-reset</2> ang mga pagbabago",
+  "delete_this_account": "<1>tanggalin</1> ang account na ito",
+  "create_new_account": "<1>lumikha</1> ng bagong account",
+  "wallet_number": "wallet #{{index}}"
 }

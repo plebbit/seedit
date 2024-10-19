@@ -314,5 +314,11 @@
   "show_all_instead": "Zobrazujeme příspěvky od {{timeFilterName}}, <1>zobrazit vše místo toho</1>",
   "subplebbit_offline_info": "Subplebbit může být offline a zveřejnění může selhat.",
   "posts_last_synced_info": "Poslední synchronizace příspěvků {{time}}, subplebbit může být offline a zveřejňování může selhat.",
-  "stored_locally": "Uloženo lokálně ({{location}}), není synchronizováno mezi zařízeními"
+  "stored_locally": "Uloženo lokálně ({{location}}), není synchronizováno mezi zařízeními",
+  "import_account_backup": "<1>importovat</1> zálohu účtu",
+  "export_account_backup": "<1>exportovat</1> zálohu účtu",
+  "save_reset_changes": "<1>uložit</1> nebo <2>resetovat</2> změny",
+  "delete_this_account": "<1>smazat</1> tento účet",
+  "create_new_account": "<1>vytvořit</1> nový účet",
+  "wallet_number": "peněženka #{{index}}"
 }

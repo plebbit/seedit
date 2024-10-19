@@ -314,5 +314,11 @@
   "show_all_instead": "Viser indlæg siden {{timeFilterName}}, <1>vis alle i stedet</1>",
   "subplebbit_offline_info": "Subplebbiten kan være offline, og offentliggørelse kan mislykkes.",
   "posts_last_synced_info": "Seneste synkroniserede indlæg {{time}}, subplebbiten kan være offline, og offentliggørelse kan mislykkes.",
-  "stored_locally": "Lager lokalt ({{location}}), ikke synkroniseret på tværs af enheder"
+  "stored_locally": "Lager lokalt ({{location}}), ikke synkroniseret på tværs af enheder",
+  "import_account_backup": "<1>importere</1> kontosikkerhedskopi",
+  "export_account_backup": "<1>eksportere</1> kontosikkerhedskopi",
+  "save_reset_changes": "<1>gem</1> eller <2>nulstil</2> ændringer",
+  "delete_this_account": "<1>slet</1> denne konto",
+  "create_new_account": "<1>oprette</1> en ny konto",
+  "wallet_number": "tegneboks #{{index}}"
 }

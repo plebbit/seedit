@@ -314,5 +314,11 @@
   "show_all_instead": "Menampilkan pos sejak {{timeFilterName}}, <1>tampilkan semua sebagai gantinya</1>",
   "subplebbit_offline_info": "Subplebbit mungkin offline dan penerbitan mungkin gagal.",
   "posts_last_synced_info": "Posting terakhir disinkronkan {{time}}, subplebbit mungkin offline dan penerbitan mungkin gagal.",
-  "stored_locally": "Disimpan secara lokal ({{location}}), tidak disinkronkan antar perangkat"
+  "stored_locally": "Disimpan secara lokal ({{location}}), tidak disinkronkan antar perangkat",
+  "import_account_backup": "<1>impor</1> cadangan akun",
+  "export_account_backup": "<1>ekspor</1> cadangan akun",
+  "save_reset_changes": "<1>simpan</1> atau <2>reset</2> perubahan",
+  "delete_this_account": "<1>hapus</1> akun ini",
+  "create_new_account": "<1>buat</1> akun baru",
+  "wallet_number": "dompet #{{index}}"
 }

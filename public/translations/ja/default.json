@@ -314,5 +314,11 @@
   "show_all_instead": "{{timeFilterName}} からの投稿を表示しています。<1>その代わりにすべて表示</1>",
   "subplebbit_offline_info": "サブプレビットがオフラインになっている可能性があり、公開が失敗することがあります。",
   "posts_last_synced_info": "最後に同期された投稿 {{time}}, サブプレビットがオフラインになっている可能性があり、公開が失敗することがあります。",
-  "stored_locally": "ローカルに保存されています ({{location}})、デバイス間で同期されていません"
+  "stored_locally": "ローカルに保存されています ({{location}})、デバイス間で同期されていません",
+  "import_account_backup": "<1>インポート</1> アカウントバックアップ",
+  "export_account_backup": "<1>エクスポート</1> アカウントバックアップ",
+  "save_reset_changes": "<1>保存</1>または<2>リセット</2>変更",
+  "delete_this_account": "<1>削除</1>このアカウント",
+  "create_new_account": "<1>新しい</1>アカウントを作成",
+  "wallet_number": "ウォレット #{{index}}"
 }
