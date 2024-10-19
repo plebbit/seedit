@@ -144,12 +144,13 @@ const Post = ({ index, post = {} }: PostProps) => {
   const getPostScore = () => {
     if ((upvoteCount === 0 && downvoteCount === 0) || state === 'pending' || state === 'failed') {
       return '•';
-    } else if (!upvoteCount || !downvoteCount) {
+    } else if (upvoteCount === undefined || downvoteCount === undefined) {
       return '?';
-    } else {
-      return upvoteCount - downvoteCount;
     }
+    return upvoteCount - downvoteCount;
   };
+
+  console.log(title, upvoteCount, downvoteCount);
 
   const postTitle = (title?.length > 300 ? title?.slice(0, 300) + '...' : title) || (content?.length > 300 ? content?.slice(0, 300) + '...' : content);
 
