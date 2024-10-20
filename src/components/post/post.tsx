@@ -150,8 +150,6 @@ const Post = ({ index, post = {} }: PostProps) => {
     return upvoteCount - downvoteCount;
   };
 
-  console.log(title, upvoteCount, downvoteCount);
-
   const postTitle = (title?.length > 300 ? title?.slice(0, 300) + '...' : title) || (content?.length > 300 ? content?.slice(0, 300) + '...' : content);
 
   const hasThumbnail = getHasThumbnail(commentMediaInfo, link);
