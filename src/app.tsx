@@ -85,12 +85,14 @@ const App = () => {
 
               <Route path='/profile/:accountCommentIndex' element={<PendingPost />} />
 
-              <Route path='/profile/:sortType?/:timeFilterName?' element={<Profile />} />
-              <Route path='/profile/upvoted/:sortType?/:timeFilterName?' element={<Profile />} />
-              <Route path='/profile/downvoted/:sortType?/:timeFilterName?' element={<Profile />} />
-              <Route path='/profile/comments/:sortType?/:timeFilterName?' element={<Profile />} />
-              <Route path='/profile/submitted/:sortType?/:timeFilterName?' element={<Profile />} />
-              <Route path='/profile/hidden/:sortType?/:timeFilterName?' element={<Profile />} />
+              <Route path='/profile' element={<Profile />}>
+                <Route index element={<Profile.Overview />} />
+                <Route path='upvoted' element={<Profile.VotedComments voteType={1} />} />
+                <Route path='downvoted' element={<Profile.VotedComments voteType={-1} />} />
+                <Route path='hidden' element={<Profile.HiddenComments />} />
+                <Route path='comments' element={<Profile.Comments />} />
+                <Route path='submitted' element={<Profile.Submitted />} />
+              </Route>
 
               <Route path='/u/:authorAddress/c/:commentCid?/:sortType?/:timeFilterName?' element={<Author />} />
               <Route path='/u/:authorAddress/c/:commentCid?/comments/:sortType?/:timeFilterName?' element={<Author />} />

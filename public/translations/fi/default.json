@@ -314,5 +314,12 @@
   "show_all_instead": "Näytetään viestejä ajasta {{timeFilterName}}, <1>näytä kaikki sen sijaan</1>",
   "subplebbit_offline_info": "Subplebbit voi olla offline-tilassa, ja julkaisu voi epäonnistua.",
   "posts_last_synced_info": "Viimeksi synkronoidut viestit {{time}}, subplebbit voi olla offline-tilassa, ja julkaisu voi epäonnistua.",
-  "stored_locally": "Tallennettu paikallisesti ({{location}}), ei synkronoitu laitteiden välillä"
+  "stored_locally": "Tallennettu paikallisesti ({{location}}), ei synkronoitu laitteiden välillä",
+  "import_account_backup": "<1>tuoda</1> tilin varmuuskopio",
+  "export_account_backup": "<1>viedä</1> tilin varmuuskopio",
+  "save_reset_changes": "<1>tallenna</1> tai <2>nollaa</2> muutokset",
+  "delete_this_account": "<1>poista</1> tämä tili",
+  "create_new_account": "<1>luo</1> uusi tili",
+  "wallet_number": "lompakko #{{index}}",
+  "view_more": "näytä lisää"
 }

@@ -306,6 +306,11 @@ const canEmbedHosts = new Set<string>([
 ]);
 
 export const canEmbed = (parsedUrl: URL): boolean => {
+  if (redditHosts.has(parsedUrl.host)) {
+    // Reddit posts are not embeddable if the URL does not include '/comments/'
+    return parsedUrl.pathname.includes('/comments/');
+  }
+
   return canEmbedHosts.has(parsedUrl.host) || (parsedUrl.host.startsWith('yt.') && parsedUrl.searchParams.has('v'));
 };
 

@@ -314,5 +314,12 @@
   "show_all_instead": "显示自 {{timeFilterName}} 以来的帖子，<1>显示所有帖子</1>",
   "subplebbit_offline_info": "子维基可能离线，发布可能失败。",
   "posts_last_synced_info": "最后同步的帖子 {{time}}, 子维基可能离线，发布可能失败。",
-  "stored_locally": "本地存储 ({{location}})，未在设备之间同步"
+  "stored_locally": "本地存储 ({{location}})，未在设备之间同步",
+  "import_account_backup": "<1>导入</1>账户备份",
+  "export_account_backup": "<1>导出</1>账户备份",
+  "save_reset_changes": "<1>保存</1>或<2>重置</2>更改",
+  "delete_this_account": "<1>删除</1>此账户",
+  "create_new_account": "<1>创建</1>新账户",
+  "wallet_number": "钱包 #{{index}}",
+  "view_more": "查看更多"
 }

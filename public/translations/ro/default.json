@@ -314,5 +314,12 @@
   "show_all_instead": "Afișând postări din {{timeFilterName}}, <1>afișați totul în schimb</1>",
   "subplebbit_offline_info": "Subplebbitul ar putea fi offline și publicarea ar putea eșua.",
   "posts_last_synced_info": "Ultimele postări sincronizate {{time}}, subplebbitul ar putea fi offline și publicarea ar putea eșua.",
-  "stored_locally": "Stocat local ({{location}}), nu este sincronizat între dispozitive"
+  "stored_locally": "Stocat local ({{location}}), nu este sincronizat între dispozitive",
+  "import_account_backup": "<1>importați</1> backup-ul contului",
+  "export_account_backup": "<1>exportați</1> backup-ul contului",
+  "save_reset_changes": "<1>salvează</1> sau <2>resetează</2> modificările",
+  "delete_this_account": "<1>șterge</1> acest cont",
+  "create_new_account": "<1>creați</1> un cont nou",
+  "wallet_number": "portofel #{{index}}",
+  "view_more": "vezi mai mult"
 }

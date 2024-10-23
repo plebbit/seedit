@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { createAccount, deleteAccount, exportAccount, importAccount, setAccount, setActiveAccount, useAccount, useAccounts } from '@plebbit/plebbit-react-hooks';
 import stringify from 'json-stringify-pretty-compact';
-import { useTranslation } from 'react-i18next';
+import { Trans, useTranslation } from 'react-i18next';
 import styles from './account-settings.module.css';
 import { Capacitor } from '@capacitor/core';
 
@@ -184,7 +184,12 @@ const AccountSettings = () => {
         {t('is_current_account')}
       </div>
       <div className={styles.createAccount}>
-        <button onClick={_createAccount}>{t('create')}</button> {t('a_new_account')}
+        <Trans
+          i18nKey='create_new_account'
+          components={{
+            1: <button onClick={_createAccount} />,
+          }}
+        />
       </div>
       <div className={styles.warning}>
         {t('stored_locally', {
@@ -197,16 +202,37 @@ const AccountSettings = () => {
         <textarea className={styles.textarea} value={text} onChange={(e) => setText(e.target.value)} autoCorrect='off' autoComplete='off' spellCheck='false' />
         <div className={styles.accountButtons}>
           <div>
-            <button onClick={saveAccount}>{t('save')}</button> {t('or')} <button onClick={() => setText(accountJson)}>{t('reset')}</button> {t('changes')}
+            <Trans
+              i18nKey='save_reset_changes'
+              components={{
+                1: <button onClick={saveAccount} />,
+                2: <button onClick={() => setText(accountJson)} />,
+              }}
+            />
           </div>
           <div>
-            <button onClick={_importAccount}>{t('import')}</button> {t('full_account_data')}
+            <Trans
+              i18nKey='import_account_backup'
+              components={{
+                1: <button onClick={_importAccount} />,
+              }}
+            />
           </div>
           <div>
-            <button onClick={_exportAccount}>{t('export')}</button> {t('full_account_data')}
+            <Trans
+              i18nKey='export_account_backup'
+              components={{
+                1: <button onClick={_exportAccount} />,
+              }}
+            />
           </div>
           <div className={styles.deleteAccountBox}>
-            <button onClick={() => _deleteAccount(account?.name)}>{t('delete')}</button> {t('this_account')}
+            <Trans
+              i18nKey='delete_this_account'
+              components={{
+                1: <button onClick={() => _deleteAccount(account?.name)} />,
+              }}
+            />
           </div>
         </div>
       </div>

@@ -314,5 +314,12 @@
   "show_all_instead": "แสดงโพสต์ตั้งแต่ {{timeFilterName}} <1>แสดงทั้งหมดแทน</1>",
   "subplebbit_offline_info": "เซ็บเพล็บบิทอาจออฟไลน์และการเผยแพร่อาจล้มเหลว",
   "posts_last_synced_info": "โพสต์ล่าสุดที่ซิงค์ {{time}}, ซับเพลบบิทอาจออฟไลน์และการเผยแพร่อาจล้มเหลว",
-  "stored_locally": "จัดเก็บในเครื่อง ({{location}}) ไม่ได้ซิงค์ข้ามอุปกรณ์"
+  "stored_locally": "จัดเก็บในเครื่อง ({{location}}) ไม่ได้ซิงค์ข้ามอุปกรณ์",
+  "import_account_backup": "<1>นำเข้า</1> สำรองข้อมูลบัญชี",
+  "export_account_backup": "<1>ส่งออก</1> สำรองข้อมูลบัญชี",
+  "save_reset_changes": "<1>บันทึก</1> หรือ <2>รีเซ็ต</2> การเปลี่ยนแปลง",
+  "delete_this_account": "<1>ลบ</1> บัญชีนี้",
+  "create_new_account": "<1>สร้าง</1> บัญชีใหม่",
+  "wallet_number": "กระเป๋าเงิน #{{index}}",
+  "view_more": "ดูเพิ่มเติม"
 }

@@ -314,5 +314,12 @@
   "show_all_instead": "A {{timeFilterName}} óta látható bejegyzések, <1>helyette mindent mutass</1>",
   "subplebbit_offline_info": "A subplebbit offline lehet, és a közzététel sikertelen lehet.",
   "posts_last_synced_info": "Legutóbb szinkronizált bejegyzések {{time}}, a subplebbit offline lehet, és a közzététel sikertelen lehet.",
-  "stored_locally": "Helyben tárolva ({{location}}), nem szinkronizálva eszközök között"
+  "stored_locally": "Helyben tárolva ({{location}}), nem szinkronizálva eszközök között",
+  "import_account_backup": "<1>importálás</1> fiók biztonsági másolat",
+  "export_account_backup": "<1>exportálás</1> fiók biztonsági másolat",
+  "save_reset_changes": "<1>mentés</1> vagy <2>visszaállítás</2> a változtatásokat",
+  "delete_this_account": "<1>törölni</1> ezt a fiókot",
+  "create_new_account": "<1>hozzon létre</1> egy új fiókot",
+  "wallet_number": "tárca #{{index}}",
+  "view_more": "több megtekintése"
 }

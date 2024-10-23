@@ -314,5 +314,12 @@
   "show_all_instead": "Berichten sinds {{timeFilterName}}, <1>toon in plaats daarvan alles</1>",
   "subplebbit_offline_info": "De subplebbit kan offline zijn en publiceren kan mislukken.",
   "posts_last_synced_info": "Laatste keer gesynchroniseerde berichten {{time}}, de subplebbit kan offline zijn en publiceren kan mislukken.",
-  "stored_locally": "Lokaal opgeslagen ({{location}}), niet gesynchroniseerd tussen apparaten"
+  "stored_locally": "Lokaal opgeslagen ({{location}}), niet gesynchroniseerd tussen apparaten",
+  "import_account_backup": "<1>importeer</1> accountback-up",
+  "export_account_backup": "<1>exporteer</1> accountback-up",
+  "save_reset_changes": "<1>opslaan</1> of <2>resetten</2> wijzigingen",
+  "delete_this_account": "<1>verwijder</1> dit account",
+  "create_new_account": "<1>maak</1> een nieuw account aan",
+  "wallet_number": "portemonnee #{{index}}",
+  "view_more": "meer bekijken"
 }

@@ -314,5 +314,12 @@
   "show_all_instead": "Stai visualizzando post da {{timeFilterName}}, <1>visualizza tutto invece</1>",
   "subplebbit_offline_info": "Il subplebbit potrebbe essere offline e la pubblicazione potrebbe fallire.",
   "posts_last_synced_info": "Ultimi post sincronizzati {{time}}, il subplebbit potrebbe essere offline e la pubblicazione potrebbe fallire.",
-  "stored_locally": "Memorizzato localmente ({{location}}), non sincronizzato tra i dispositivi"
+  "stored_locally": "Memorizzato localmente ({{location}}), non sincronizzato tra i dispositivi",
+  "import_account_backup": "<1>importa</1> backup dell'account",
+  "export_account_backup": "<1>esporta</1> backup dell'account",
+  "save_reset_changes": "<1>salva</1> o <2>ripristina</2> modifiche",
+  "delete_this_account": "<1>elimina</1> questo account",
+  "create_new_account": "<1>crea</1> un nuovo account",
+  "wallet_number": "wallet #{{index}}",
+  "view_more": "altri"
 }

@@ -95,7 +95,7 @@ const CryptoWalletsForm = ({ account }: { account: Account | undefined }) => {
   const walletsInputs = walletsArray.map((wallet, index) => (
     <>
       <div className={styles.walletTitle}>
-        {t('wallet')} #{index + 1}
+        <Trans i18nKey='wallet_number' values={{ index: index + 1 }} />
       </div>
       <div key={index} className={styles.walletBox}>
         <button className={styles.toggleWallet} onClick={() => toggleShowWallet(index)}>

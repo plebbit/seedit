@@ -314,5 +314,12 @@
   "show_all_instead": "{{timeFilterName}} tarihinden itibaren gönderiler gösteriliyor, <1>bunun yerine hepsini göster</1>",
   "subplebbit_offline_info": "Subplebbit çevrimdışı olabilir ve yayınlama başarısız olabilir.",
   "posts_last_synced_info": "Son senkronize edilen gönderiler {{time}}, subplebbit çevrimdışı olabilir ve yayınlama başarısız olabilir.",
-  "stored_locally": "Yerel olarak saklanıyor ({{location}}), cihazlar arasında senkronize edilmedi"
+  "stored_locally": "Yerel olarak saklanıyor ({{location}}), cihazlar arasında senkronize edilmedi",
+  "import_account_backup": "<1>içeri aktarma</1> hesap yedeği",
+  "export_account_backup": "<1>dışa aktarma</1> hesap yedeği",
+  "save_reset_changes": "<1>kaydet</1> veya <2>sıfırla</2> değişiklikleri",
+  "delete_this_account": "<1>sil</1> bu hesabı",
+  "create_new_account": "<1>oluştur</1> yeni bir hesap",
+  "wallet_number": "cüzdan #{{index}}",
+  "view_more": "daha fazla görüntüle"
 }

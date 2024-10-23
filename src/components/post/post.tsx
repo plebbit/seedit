@@ -132,7 +132,7 @@ const Post = ({ index, post = {} }: PostProps) => {
     fetchThumbnail();
   }, [fetchThumbnail]);
 
-  const [isExpanded, setIsExpanded] = useState(isInPostView && commentMediaInfo?.type !== 'webpage');
+  const [isExpanded, setIsExpanded] = useState(isInPostView);
   const toggleExpanded = () => setIsExpanded(!isExpanded);
 
   const [isEditing, setIsEditing] = useState(false);
@@ -141,7 +141,15 @@ const Post = ({ index, post = {} }: PostProps) => {
 
   const [upvoted, upvote] = useUpvote(post);
   const [downvoted, downvote] = useDownvote(post);
-  const postScore = upvoteCount === 0 && downvoteCount === 0 ? '•' : upvoteCount - downvoteCount || '?';
+  const getPostScore = () => {
+    if ((upvoteCount === 0 && downvoteCount === 0) || state !== 'succeeded') {
+      return '•';
+    } else if (upvoteCount === undefined || downvoteCount === undefined) {
+      return '?';
+    }
+    return upvoteCount - downvoteCount;
+  };
+
   const postTitle = (title?.length > 300 ? title?.slice(0, 300) + '...' : title) || (content?.length > 300 ? content?.slice(0, 300) + '...' : content);
 
   const hasThumbnail = getHasThumbnail(commentMediaInfo, link);
@@ -181,7 +189,7 @@ const Post = ({ index, post = {} }: PostProps) => {
                 <div className={styles.arrowWrapper}>
                   <div className={`${styles.arrowCommon} ${upvoted ? styles.upvoted : styles.arrowUp}`} onClick={() => cid && upvote()} />
                 </div>
-                <div className={styles.score}>{postScore}</div>
+                <div className={styles.score}>{getPostScore()}</div>
                 <div className={styles.arrowWrapper}>
                   <div className={`${styles.arrowCommon} ${downvoted ? styles.downvoted : styles.arrowDown}`} onClick={() => cid && downvote()} />
                 </div>
@@ -232,7 +240,7 @@ const Post = ({ index, post = {} }: PostProps) => {
                   <ExpandButton
                     commentMediaInfo={commentMediaInfo}
                     content={content}
-                    expanded={isExpanded}
+                    expanded={commentMediaInfo?.type === 'webpage' ? false : isExpanded}
                     hasThumbnail={hasThumbnail}
                     link={link}
                     toggleExpanded={toggleExpanded}
@@ -297,7 +305,7 @@ const Post = ({ index, post = {} }: PostProps) => {
               authorEditReason={edit?.reason}
               commentMediaInfo={commentMediaInfo}
               content={removed ? `[${_.lowerCase(t('removed'))}]` : deleted ? `[${_.lowerCase(t('deleted'))}]` : content}
-              expanded={isExpanded}
+              expanded={commentMediaInfo?.type === 'webpage' ? false : isExpanded}
               link={link}
               modEditReason={reason}
               deleted={deleted}

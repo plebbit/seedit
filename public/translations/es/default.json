@@ -314,5 +314,12 @@
   "show_all_instead": "Mostrando publicaciones desde {{timeFilterName}}, <1>mostrar todo en su lugar</1>",
   "subplebbit_offline_info": "El subplebbit podría estar fuera de línea y la publicación podría fallar.",
   "posts_last_synced_info": "Últimas publicaciones sincronizadas {{time}}, el subplebbit podría estar fuera de línea y la publicación podría fallar.",
-  "stored_locally": "Almacenado localmente ({{location}}), no sincronizado entre dispositivos"
+  "stored_locally": "Almacenado localmente ({{location}}), no sincronizado entre dispositivos",
+  "import_account_backup": "<1>importar</1> copia de seguridad de la cuenta",
+  "export_account_backup": "<1>exportar</1> copia de seguridad de la cuenta",
+  "save_reset_changes": "<1>guardar</1> o <2>restablecer</2> cambios",
+  "delete_this_account": "<1>eliminar</1> esta cuenta",
+  "create_new_account": "<1>crear</1> una nueva cuenta",
+  "wallet_number": "billetera #{{index}}",
+  "view_more": "ver más"
 }
