@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { Outlet, Route, Routes, useParams } from 'react-router-dom';
 import useTheme from './hooks/use-theme';
-import { timeFilterNames } from './hooks/use-time-filter';
+import useTimeFilter from './hooks/use-time-filter';
 import styles from './app.module.css';
 import All from './views/all';
 import About from './views/about';
@@ -27,9 +27,10 @@ export const sortTypes = ['hot', 'new', 'active', 'controversialAll', 'topAll'];
 
 const CheckRouteParams = () => {
   const { accountCommentIndex, sortType, timeFilterName } = useParams();
+  const { timeFilterNames, lastVisitTimeFilterName } = useTimeFilter();
   const isValidAccountCommentIndex = !accountCommentIndex || (!isNaN(parseInt(accountCommentIndex)) && parseInt(accountCommentIndex) >= 0);
   const isSortTypeValid = !sortType || sortTypes.includes(sortType);
-  const isTimeFilterNameValid = !timeFilterName || timeFilterNames.includes(timeFilterName as any);
+  const isTimeFilterNameValid = !timeFilterName || timeFilterNames.includes(timeFilterName as any) || timeFilterName === lastVisitTimeFilterName;
   const isAccountCommentIndexValid = !accountCommentIndex || !isNaN(parseInt(accountCommentIndex));
 
   if (!isValidAccountCommentIndex || !isSortTypeValid || !isTimeFilterNameValid || !isAccountCommentIndexValid) {

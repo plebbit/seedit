@@ -39,7 +39,7 @@ if (secondsSinceLastVisit > 30 * day) {
   timeFilterNamesToSeconds[lastVisitTimeFilterName] = timeFilterNamesToSeconds['24h'];
 }
 
-export const timeFilterNames = ['1h', '24h', '1w', '1m', '1y', 'all'];
+export const timeFilterNames = ['1h', '24h', '1w', '1m', '1y', 'all', lastVisitTimeFilterName];
 
 const useTimeFilter = () => {
   const params = useParams();
@@ -59,7 +59,7 @@ const useTimeFilter = () => {
   assert(!timeFilterName || typeof timeFilterName === 'string', `useTimeFilter timeFilterName argument '${timeFilterName}' not a string`);
   const timeFilterSeconds = timeFilterNamesToSeconds[timeFilterName as keyof typeof timeFilterNamesToSeconds];
   assert(!timeFilterName || timeFilterName === 'all' || timeFilterSeconds !== undefined, `useTimeFilter no filter for timeFilterName '${timeFilterName}'`);
-  return { timeFilterSeconds, timeFilterNames, timeFilterName };
+  return { timeFilterSeconds, timeFilterNames, timeFilterName, lastVisitTimeFilterName };
 };
 
 export default useTimeFilter;
