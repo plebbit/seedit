@@ -320,5 +320,6 @@
   "save_reset_changes": "<1>simpan</1> atau <2>reset</2> perubahan",
   "delete_this_account": "<1>hapus</1> akun ini",
   "create_new_account": "<1>buat</1> akun baru",
-  "wallet_number": "dompet #{{index}}"
+  "wallet_number": "dompet #{{index}}",
+  "view_more": "lihat lebih banyak"
 }

@@ -320,5 +320,6 @@
   "save_reset_changes": "<1>सहेजें</1> या <2>रीसेट</2> परिवर्तन",
   "delete_this_account": "<1>हटाएँ</1> यह खाता",
   "create_new_account": "<1>नया बनाएं</1> खाता",
-  "wallet_number": "वॉलेट #{{index}}"
+  "wallet_number": "वॉलेट #{{index}}",
+  "view_more": "और देखें"
 }

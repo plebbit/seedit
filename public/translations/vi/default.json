@@ -320,5 +320,6 @@
   "save_reset_changes": "<1>lưu</1> hoặc <2>đặt lại</2> thay đổi",
   "delete_this_account": "<1>xóa</1> tài khoản này",
   "create_new_account": "<1>tạo</1> tài khoản mới",
-  "wallet_number": "ví #{{index}}"
+  "wallet_number": "ví #{{index}}",
+  "view_more": "xem thêm"
 }

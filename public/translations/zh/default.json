@@ -320,5 +320,6 @@
   "save_reset_changes": "<1>保存</1>或<2>重置</2>更改",
   "delete_this_account": "<1>删除</1>此账户",
   "create_new_account": "<1>创建</1>新账户",
-  "wallet_number": "钱包 #{{index}}"
+  "wallet_number": "钱包 #{{index}}",
+  "view_more": "查看更多"
 }

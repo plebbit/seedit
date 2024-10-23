@@ -320,5 +320,6 @@
   "save_reset_changes": "<1>spara</1> eller <2>återställ</2> ändringar",
   "delete_this_account": "<1>ta bort</1> det här kontot",
   "create_new_account": "<1>skapa</1> ett nytt konto",
-  "wallet_number": "plånbok #{{index}}"
+  "wallet_number": "plånbok #{{index}}",
+  "view_more": "visa mer"
 }

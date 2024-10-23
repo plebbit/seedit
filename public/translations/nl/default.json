@@ -320,5 +320,6 @@
   "save_reset_changes": "<1>opslaan</1> of <2>resetten</2> wijzigingen",
   "delete_this_account": "<1>verwijder</1> dit account",
   "create_new_account": "<1>maak</1> een nieuw account aan",
-  "wallet_number": "portemonnee #{{index}}"
+  "wallet_number": "portemonnee #{{index}}",
+  "view_more": "meer bekijken"
 }

@@ -320,5 +320,6 @@
   "save_reset_changes": "<1>i-save</1> o <2>i-reset</2> ang mga pagbabago",
   "delete_this_account": "<1>tanggalin</1> ang account na ito",
   "create_new_account": "<1>lumikha</1> ng bagong account",
-  "wallet_number": "wallet #{{index}}"
+  "wallet_number": "wallet #{{index}}",
+  "view_more": "tingnan pa"
 }

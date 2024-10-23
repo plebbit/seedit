@@ -320,5 +320,6 @@
   "save_reset_changes": "<1>mentés</1> vagy <2>visszaállítás</2> a változtatásokat",
   "delete_this_account": "<1>törölni</1> ezt a fiókot",
   "create_new_account": "<1>hozzon létre</1> egy új fiókot",
-  "wallet_number": "tárca #{{index}}"
+  "wallet_number": "tárca #{{index}}",
+  "view_more": "több megtekintése"
 }

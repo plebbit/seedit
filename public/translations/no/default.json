@@ -320,5 +320,6 @@
   "save_reset_changes": "<1>lagre</1> eller <2>nullstille</2> endringer",
   "delete_this_account": "<1>slett</1> denne kontoen",
   "create_new_account": "<1>opprett</1> en ny konto",
-  "wallet_number": "lommebok #{{index}}"
+  "wallet_number": "lommebok #{{index}}",
+  "view_more": "vis mer"
 }

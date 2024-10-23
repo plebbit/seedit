@@ -320,5 +320,6 @@
   "save_reset_changes": "<1>salvează</1> sau <2>resetează</2> modificările",
   "delete_this_account": "<1>șterge</1> acest cont",
   "create_new_account": "<1>creați</1> un cont nou",
-  "wallet_number": "portofel #{{index}}"
+  "wallet_number": "portofel #{{index}}",
+  "view_more": "vezi mai mult"
 }

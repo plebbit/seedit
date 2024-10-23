@@ -320,5 +320,6 @@
   "save_reset_changes": "<1>ruaj</1> ose <2>rivendos</2> ndryshimet",
   "delete_this_account": "<1>fshi</1> këtë llogari",
   "create_new_account": "<1>krijo</1> një llogari të re",
-  "wallet_number": "portofol #{{index}}"
+  "wallet_number": "portofol #{{index}}",
+  "view_more": "shiko më shumë"
 }

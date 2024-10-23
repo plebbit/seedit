@@ -320,5 +320,6 @@
   "save_reset_changes": "<1>บันทึก</1> หรือ <2>รีเซ็ต</2> การเปลี่ยนแปลง",
   "delete_this_account": "<1>ลบ</1> บัญชีนี้",
   "create_new_account": "<1>สร้าง</1> บัญชีใหม่",
-  "wallet_number": "กระเป๋าเงิน #{{index}}"
+  "wallet_number": "กระเป๋าเงิน #{{index}}",
+  "view_more": "ดูเพิ่มเติม"
 }

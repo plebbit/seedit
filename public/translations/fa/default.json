@@ -320,5 +320,6 @@
   "save_reset_changes": "<1>ذخیره</1> یا <2>بازنشانی</2> تغییرات",
   "delete_this_account": "<1>حذف</1> این حساب",
   "create_new_account": "<1>ایجاد</1> یک حساب جدید",
-  "wallet_number": "کیف پول #{{index}}"
+  "wallet_number": "کیف پول #{{index}}",
+  "view_more": "مشاهده بیشتر"
 }

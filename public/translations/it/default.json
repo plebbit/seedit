@@ -320,5 +320,6 @@
   "save_reset_changes": "<1>salva</1> o <2>ripristina</2> modifiche",
   "delete_this_account": "<1>elimina</1> questo account",
   "create_new_account": "<1>crea</1> un nuovo account",
-  "wallet_number": "wallet #{{index}}"
+  "wallet_number": "wallet #{{index}}",
+  "view_more": "altri"
 }

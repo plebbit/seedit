@@ -45,6 +45,9 @@
   --markdown-blockquote: rgb(185, 178, 168);
   --markdown-blockquote-border: rgb(65, 70, 73);
   --markdown-link: rgb(74, 183, 255);
+  --pagination-button-background: rgb(29, 31, 34);
+  --pagination-button-border: 1px solid rgb(55, 59, 62);
+  --pagination-button-border-hover: 1px solid #5a728a;
   --play-button: url("/public/assets/buttons/play-button-dark.png");
   --play-button-hover: url("/public/assets/buttons/play-button-hover.png");
   --red: rgb(200, 0, 0);
@@ -111,6 +114,9 @@
   --markdown-blockquote: #4f4f4f;
   --markdown-blockquote-border: #c5c1ad;
   --markdown-link: #0079d3;
+  --pagination-button-background: #eee;
+  --pagination-button-border: 1px solid #ddd;
+  --pagination-button-border-hover: 1px solid #82A6C9;
   --play-button: url("/public/assets/buttons/play-button.png");
   --play-button-hover: url("/public/assets/buttons/play-button-hover.png");
   --red: red;

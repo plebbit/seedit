@@ -62,7 +62,7 @@
   "challenge_for_reply": "for reply to u/{{parentAddress}}: \"{{publicationContent}}\"",
   "challenge_counter": "{{index}} of {{total}}",
   "cancel": "Cancel",
-  "previous": "Previous",
+  "previous": "prev",
   "next": "Next",
   "loading": "Loading",
   "pending": "Pending",
@@ -320,5 +320,6 @@
   "save_reset_changes": "<1>save</1> or <2>reset</2> changes",
   "delete_this_account": "<1>delete</1> this account",
   "create_new_account": "<1>create</1> a new account",
-  "wallet_number": "wallet #{{index}}"
+  "wallet_number": "wallet #{{index}}",
+  "view_more": "view more"
 }

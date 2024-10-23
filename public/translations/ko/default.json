@@ -320,5 +320,6 @@
   "save_reset_changes": "<1>저장</1>하거나 <2>재설정</2> 변경 사항",
   "delete_this_account": "<1>삭제</1> 이 계정",
   "create_new_account": "<1>새로 만들기</1> 계정",
-  "wallet_number": "지갑 #{{index}}"
+  "wallet_number": "지갑 #{{index}}",
+  "view_more": "더보기"
 }

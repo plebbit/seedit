@@ -320,5 +320,6 @@
   "save_reset_changes": "<1>gem</1> eller <2>nulstil</2> ændringer",
   "delete_this_account": "<1>slet</1> denne konto",
   "create_new_account": "<1>oprette</1> en ny konto",
-  "wallet_number": "tegneboks #{{index}}"
+  "wallet_number": "tegneboks #{{index}}",
+  "view_more": "se mere"
 }

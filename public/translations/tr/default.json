@@ -320,5 +320,6 @@
   "save_reset_changes": "<1>kaydet</1> veya <2>sıfırla</2> değişiklikleri",
   "delete_this_account": "<1>sil</1> bu hesabı",
   "create_new_account": "<1>oluştur</1> yeni bir hesap",
-  "wallet_number": "cüzdan #{{index}}"
+  "wallet_number": "cüzdan #{{index}}",
+  "view_more": "daha fazla görüntüle"
 }

@@ -320,5 +320,6 @@
   "save_reset_changes": "<1>uložit</1> nebo <2>resetovat</2> změny",
   "delete_this_account": "<1>smazat</1> tento účet",
   "create_new_account": "<1>vytvořit</1> nový účet",
-  "wallet_number": "peněženka #{{index}}"
+  "wallet_number": "peněženka #{{index}}",
+  "view_more": "zobrazit více"
 }

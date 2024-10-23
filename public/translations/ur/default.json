@@ -320,5 +320,6 @@
   "save_reset_changes": "<1>محفوظ کریں</1> یا <2>ری سیٹ کریں</2> تبدیلیاں",
   "delete_this_account": "<1>حذف کریں</1> یہ اکاؤنٹ",
   "create_new_account": "<1>نیا بنائیں</1> اکاؤنٹ",
-  "wallet_number": "والٹ #{{index}}"
+  "wallet_number": "والٹ #{{index}}",
+  "view_more": "مزید دیکھیں"
 }

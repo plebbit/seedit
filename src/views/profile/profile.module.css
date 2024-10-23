@@ -100,3 +100,30 @@ div[data-viewport-type="window"] {
 .dropChoicesVisible {
   display: block;
 }
+
+.pagination {
+  font-size: 12px;
+  margin-top: 10px;
+}
+
+.pagination .button {
+  padding: 1px 4px;
+  background: var(--pagination-button-background);
+  border: var(--pagination-button-border);
+  border-radius: 3px;
+  font-weight: bold;
+  cursor: pointer;
+  text-transform: lowercase;
+  color: var(--link-primary);
+}
+
+.pagination .button:hover {
+  border: var(--pagination-button-border-hover);
+}
+
+.pagination .separator {
+  margin: 0;
+  margin-left: .5em;
+  padding-left: .5em;
+  border-left: 1px solid var(--text-info);
+}

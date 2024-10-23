@@ -320,5 +320,6 @@
   "save_reset_changes": "<1>tallenna</1> tai <2>nollaa</2> muutokset",
   "delete_this_account": "<1>poista</1> tämä tili",
   "create_new_account": "<1>luo</1> uusi tili",
-  "wallet_number": "lompakko #{{index}}"
+  "wallet_number": "lompakko #{{index}}",
+  "view_more": "näytä lisää"
 }

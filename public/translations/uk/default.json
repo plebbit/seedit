@@ -320,5 +320,6 @@
   "save_reset_changes": "<1>зберегти</1> або <2>скинути</2> зміни",
   "delete_this_account": "<1>видалити</1> цей обліковий запис",
   "create_new_account": "<1>створити</1> новий обліковий запис",
-  "wallet_number": "гаманець #{{index}}"
+  "wallet_number": "гаманець #{{index}}",
+  "view_more": "переглянути більше"
 }

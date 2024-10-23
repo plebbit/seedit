@@ -320,5 +320,6 @@
   "save_reset_changes": "<1>حفظ</1> أو <2>إعادة تعيين</2> التغييرات",
   "delete_this_account": "<1>حذف</1> هذا الحساب",
   "create_new_account": "<1>إنشاء</1> حساب جديد",
-  "wallet_number": "المحفظة #{{index}}"
+  "wallet_number": "المحفظة #{{index}}",
+  "view_more": "عرض المزيد"
 }

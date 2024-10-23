@@ -320,5 +320,6 @@
   "save_reset_changes": "<1>שמור</1> או <2>אפס</2> שינויים",
   "delete_this_account": "<1>מחק</1> את החשבון הזה",
   "create_new_account": "<1>צור</1> חשבון חדש",
-  "wallet_number": "ארנק #{{index}}"
+  "wallet_number": "ארנק #{{index}}",
+  "view_more": "ראה עוד"
 }
