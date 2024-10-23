@@ -70,20 +70,24 @@ const SortDropdown = ({ onSortChange }: SortDropdownProps) => {
 const PaginationControls = ({ currentPage, hasMore, onPageChange }: { currentPage: number; hasMore: boolean; onPageChange: (page: number) => void }) => {
   const { t } = useTranslation();
   return (
-    <div className={styles.pagination}>
-      {t('view_more')}:{' '}
-      {currentPage > 1 && (
-        <span className={styles.button} onClick={() => onPageChange(currentPage - 1)}>
-          ‹ {t('previous')}
-        </span>
-      )}
-      {currentPage > 1 && hasMore && <span className={styles.separator} />}
-      {hasMore && (
-        <span className={styles.button} onClick={() => onPageChange(currentPage + 1)}>
-          {t('next')} ›
-        </span>
-      )}
-    </div>
+    (hasMore || currentPage > 1) && (
+      <div className={styles.pagination}>
+        {t('view_more')}:{' '}
+        {currentPage > 1 && (
+          <span className={styles.button} onClick={() => onPageChange(currentPage - 1)}>
+            ‹ {t('previous')}
+          </span>
+        )}
+        {hasMore && (
+          <>
+            {currentPage > 1 && <span className={styles.separator} />}
+            <span className={styles.button} onClick={() => onPageChange(currentPage + 1)}>
+              {t('next')} ›
+            </span>
+          </>
+        )}
+      </div>
+    )
   );
 };
 
