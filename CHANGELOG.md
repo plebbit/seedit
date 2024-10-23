@@ -1,3 +1,48 @@
+## [0.1.16](https://github.com/plebbit/seedit/compare/v0.1.15...v0.1.16) (2024-10-23)
+
+
+### Bug Fixes
+
+* **android:** icon was too big ([6f3b721](https://github.com/plebbit/seedit/commit/6f3b72148d6422d0b3c083d12ed0ed1a61e92e17))
+* **electron:** "ipfs warning" without error message would appear after closing the desktop app ([faa33f0](https://github.com/plebbit/seedit/commit/faa33f08bfe0d26c6028a6a2a80c4aec12e9b53e))
+* **electron:** isElectron flag was missing ([3a39eda](https://github.com/plebbit/seedit/commit/3a39eda7e6ef8b1d04bbec17ef1fea07d9aa1d2c))
+* **embed:** reddit links have to include '/comments/' to be embeddable ([1dd2a4c](https://github.com/plebbit/seedit/commit/1dd2a4c2fd82c724dfc85bb9ab905065155c3606))
+* **post:** confirm dialog for delete button wasn't working ([4aa54a5](https://github.com/plebbit/seedit/commit/4aa54a5c0c866e922f657ee5d1a22257abecf4de))
+* **post:** don't show author edit reason if post is deleted or removed ([6017ac2](https://github.com/plebbit/seedit/commit/6017ac24194938ae67c8cd30d1ce7f77cbccbfd6))
+* **post:** reason field for author edit didn't work ([808a388](https://github.com/plebbit/seedit/commit/808a3889bde3d0ac179bcab3f532dd3223c37b27))
+* **post:** score should show '•' if backend state is not 'succeeded' ([a438daf](https://github.com/plebbit/seedit/commit/a438daf71f3910608ad953536897052a3388b3d5))
+* **post:** score should show "?" while loading ([7f8dc16](https://github.com/plebbit/seedit/commit/7f8dc1696b82d1b6052d5aeabae5c82cc92372d4))
+* **post:** webpage thumbnail was rendered as image from direct link ([9678613](https://github.com/plebbit/seedit/commit/9678613ff3b25f917c292bcb08b8d7e9198e000f))
+* **reply:** permalink button could be clicked while post is pending ([ccdacfe](https://github.com/plebbit/seedit/commit/ccdacfea32cd59472ddc4d62d2f3c4064588fbff))
+* **submit page:** don't link to subplebbit page from title unless the selected address is valid ([4d6ea70](https://github.com/plebbit/seedit/commit/4d6ea7091a675ddf6bbd84526752a7447699c0bd))
+* **submit page:** dropdown would stay opened and focused after selecting sub with keyboard ([8ffa0d4](https://github.com/plebbit/seedit/commit/8ffa0d4fd0e9f26b2093d8d622655184434cc06e))
+* **submit page:** hitting enter key wouldn't select address in dropdown ([bb92bd0](https://github.com/plebbit/seedit/commit/bb92bd0107105c0178b214b610305aabb0cfef5b))
+* subplebbit description showed too much space between lines ([906bb31](https://github.com/plebbit/seedit/commit/906bb31d12d4c2d72db586a3ff38b429a470d1a0))
+* **subplebbits:** online/offline status of each sub would reload from scratch each time it was viewed ([b90d0fb](https://github.com/plebbit/seedit/commit/b90d0fbf385da311705ed10b4bd38768b964ef5b))
+
+
+### Features
+
+* **account settings:** alert user account is stored locally and specify location ([d328c5c](https://github.com/plebbit/seedit/commit/d328c5c2772050a523e3485b3c31153edd1d08e7))
+* **embed:** add support for youtube playlists, music.youtube links ([c4d93fb](https://github.com/plebbit/seedit/commit/c4d93fbf31312ac0cc404dc76476f5529c739a76))
+* **feat:** add automatic last visit time filter ([6823232](https://github.com/plebbit/seedit/commit/6823232a9c4ca4aaa99f316bfffc77d3eda6dd9b))
+* **feed:** show alert to help user change time filter if there aren't enough posts ([35febb2](https://github.com/plebbit/seedit/commit/35febb2ee25c1b5e1603d657b743d7492b57a262))
+* **post:** add client-side thumbnail fetching for webpage links from sites with CORS access ([b3bbb9c](https://github.com/plebbit/seedit/commit/b3bbb9c04d88a75d2956d606a8023bf6120964e9))
+* **profile:** add info message about account, on first access ([6ddb4d7](https://github.com/plebbit/seedit/commit/6ddb4d7928d57b8e4d8292ba4b7993a33849eb0f))
+* **profile:** show info bar about newly created account on profile first access ([9b701a5](https://github.com/plebbit/seedit/commit/9b701a559f9ee2457f01dbc0d784bff446c69865))
+* **reply form:** alert user the subplebbit might be offline before publishing reply ([58218a7](https://github.com/plebbit/seedit/commit/58218a7a0c0a5e708a300323ae3259a61ab8dec2))
+* **sidebar:** add info next to red dot for offline subs without last update timestamp ([5da4c02](https://github.com/plebbit/seedit/commit/5da4c02bc35acc95aaa9257d5512545ff85d34a7))
+* **submit page:** alert user if selected subplebbit might be offline ([7e565ab](https://github.com/plebbit/seedit/commit/7e565ab9fced4d105b0c0f28fa8db5defe579d59))
+* **subplebbit:** inform user about time filter if active ([352a74f](https://github.com/plebbit/seedit/commit/352a74f24c9cc599a5a9ec06bdff398e11d92e43))
+
+
+### Performance Improvements
+
+* **gifs:** cache first frame so gifs don't reload all the time when navigating ([e1c02cd](https://github.com/plebbit/seedit/commit/e1c02cdf8f60c9373c87f0fdac0b40d31e9255d1))
+* **post:** optimize post history resource consumption with memoization, virtualization, pagination, routing ([9434a17](https://github.com/plebbit/seedit/commit/9434a175397c9b442a2b38089ed5852a15770736))
+
+
+
 ## [0.1.15](https://github.com/plebbit/seedit/compare/v0.1.14...v0.1.15) (2024-09-09)
 
 

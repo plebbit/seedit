@@ -1,6 +1,6 @@
 {
   "name": "seedit",
-  "version": "0.1.15",
+  "version": "0.1.16",
   "description": "A GUI for plebbit similar to old.reddit",
   "type": "module",
   "author": "plebeius.eth",
