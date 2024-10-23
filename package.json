@@ -152,5 +152,8 @@
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
     }
+  },
+  "resolutions": {
+    "skia-canvas": "1.0.2"
   }
 }
