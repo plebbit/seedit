@@ -144,7 +144,7 @@ const Overview = () => {
   return (
     <div>
       <SortDropdown onSortChange={setSortType} />
-      {sortedComments.length === 0 ? <div>{t('no_posts')}</div> : <VirtualizedCommentList comments={sortedComments} />}
+      {sortedComments.length === 0 ? <div className={styles.nothingFound}>{t('nothing_found')}</div> : <VirtualizedCommentList comments={sortedComments} />}
     </div>
   );
 };
@@ -163,7 +163,7 @@ const Comments = () => {
   return (
     <div>
       <SortDropdown onSortChange={setSortType} />
-      {sortedComments.length === 0 ? <div>{t('no_comments')}</div> : <VirtualizedCommentList comments={sortedComments} />}
+      {sortedComments.length === 0 ? <div className={styles.nothingFound}>{t('nothing_found')}</div> : <VirtualizedCommentList comments={sortedComments} />}
     </div>
   );
 };
@@ -182,7 +182,7 @@ const Submitted = () => {
   return (
     <div>
       <SortDropdown onSortChange={setSortType} />
-      {sortedComments.length === 0 ? <div>{t('no_posts')}</div> : <VirtualizedCommentList comments={sortedComments} />}
+      {sortedComments.length === 0 ? <div className={styles.nothingFound}>{t('nothing_found')}</div> : <VirtualizedCommentList comments={sortedComments} />}
     </div>
   );
 };
@@ -205,7 +205,7 @@ const VotedComments = ({ voteType }: { voteType: 1 | -1 }) => {
   return (
     <div>
       <SortDropdown onSortChange={setSortType} />
-      {paginatedCids.length === 0 ? <div>{t('no_posts')}</div> : paginatedCids.map((cid) => <CommentItem key={cid} cid={cid} />)}
+      {paginatedCids.length === 0 ? <div className={styles.nothingFound}>{t('nothing_found')}</div> : paginatedCids.map((cid) => <CommentItem key={cid} cid={cid} />)}
       <PaginationControls currentPage={currentPage} hasMore={hasMore} onPageChange={setCurrentPage} />
     </div>
   );
@@ -225,7 +225,11 @@ const HiddenComments = () => {
 
   return (
     <div>
-      {hiddenCommentCids.length === 0 ? <div>{t('no_hidden_posts')}</div> : hiddenCommentCids.map((cid) => <CommentItem key={cid} cid={cid} />)}
+      {hiddenCommentCids.length === 0 ? (
+        <div className={styles.nothingFound}>{t('nothing_found')}</div>
+      ) : (
+        hiddenCommentCids.map((cid) => <CommentItem key={cid} cid={cid} />)
+      )}
       <PaginationControls currentPage={currentPage} hasMore={hasMore} onPageChange={setCurrentPage} />
     </div>
   );

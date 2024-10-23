@@ -127,3 +127,11 @@ div[data-viewport-type="window"] {
   padding-left: .5em;
   border-left: 1px solid var(--text-info);
 }
+
+.nothingFound {
+  color: var(--red);
+  font-size: 13px;
+  font-family: verdana, Arial, Helvetica, sans-serif;
+  margin-top: -2px;
+  text-transform: lowercase;
+}
