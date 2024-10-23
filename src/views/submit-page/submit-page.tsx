@@ -70,21 +70,34 @@ const UrlField = () => {
 };
 
 const Submit = () => {
-  const account = useAccount();
   const { t } = useTranslation();
   const params = useParams();
-  const paramsSubplebbitAddress = params.subplebbitAddress;
-  const [inputAddress, setInputAddress] = useState('');
-  const [selectedSubplebbit, setSelectedSubplebbit] = useState(paramsSubplebbitAddress);
-  const subplebbit = useSubplebbit({ subplebbitAddress: selectedSubplebbit });
   const navigate = useNavigate();
+  const { setSubmitStore, resetSubmitStore } = useSubmitStore();
 
-  const { title, content, link, subplebbitAddress, publishCommentOptions, setSubmitStore, resetSubmitStore } = useSubmitStore();
+  const [inputAddress, setInputAddress] = useState(params.subplebbitAddress || '');
+  const [selectedSubplebbit, setSelectedSubplebbit] = useState(params.subplebbitAddress || '');
+
+  useEffect(() => {
+    return () => {
+      resetSubmitStore();
+    };
+  }, [resetSubmitStore]);
+
+  useEffect(() => {
+    setInputAddress(params.subplebbitAddress || '');
+    setSelectedSubplebbit(params.subplebbitAddress || '');
+    setSubmitStore({ subplebbitAddress: params.subplebbitAddress || '' });
+  }, [params.subplebbitAddress, setSubmitStore]);
+
+  const { title, content, link, subplebbitAddress, publishCommentOptions, setSubmitStore: setSubmitStoreHook, resetSubmitStore: resetSubmitStoreHook } = useSubmitStore();
   const { index, publishComment } = usePublishComment(publishCommentOptions);
-  const { subscriptions } = account || {};
+  const { subscriptions } = useAccount() || {};
   const defaultSubplebbitAddresses = useDefaultSubplebbitAddresses();
 
-  const { isOffline, offlineTitle } = useIsSubplebbitOffline(subplebbit);
+  const selectedSubplebbitData = useSubplebbit({ subplebbitAddress: selectedSubplebbit });
+
+  const { isOffline, offlineTitle } = useIsSubplebbitOffline(selectedSubplebbitData);
 
   const onPublish = () => {
     if (!title) {
@@ -106,10 +119,10 @@ const Submit = () => {
   // redirect to pending page when pending comment is created
   useEffect(() => {
     if (typeof index === 'number') {
-      resetSubmitStore();
+      resetSubmitStoreHook();
       navigate(`/profile/${index}`);
     }
-  }, [index, resetSubmitStore, navigate]);
+  }, [index, resetSubmitStoreHook, navigate]);
 
   const subsDescription = <div className={styles.subsDescription}>{subscriptions?.length > 5 ? t('submit_subscriptions') : t('submit_subscriptions_notice')}</div>;
 
@@ -118,22 +131,13 @@ const Submit = () => {
     return shuffled.slice(0, count);
   };
 
+  // show list of random subplebbits only once when the component mounts
   const [randomSubplebbits, setRandomSubplebbits] = useState<string[]>([]);
   useEffect(() => {
-    // Generate random subplebbits only once when the component mounts
     const generatedSubplebbits = getRandomSubplebbits(defaultSubplebbitAddresses, 10);
     setRandomSubplebbits(generatedSubplebbits);
   }, [defaultSubplebbitAddresses]);
   const listSource = subscriptions?.length > 5 ? subscriptions : randomSubplebbits;
-  const subscriptionsList = (
-    <div className={styles.subs}>
-      {listSource.map((subscription: string) => (
-        <span key={subscription} className={styles.sub} onClick={() => setSelectedSubplebbit(subscription)}>
-          {Plebbit.getShortAddress(subscription)}
-        </span>
-      ))}
-    </div>
-  );
 
   const [activeDropdownIndex, setActiveDropdownIndex] = useState<number>(-1);
   const [isInputAddressFocused, setIsInputAddressFocused] = useState(false);
@@ -157,7 +161,7 @@ const Submit = () => {
         setIsInputAddressFocused(false);
       }
     },
-    [filteredSubplebbitAddresses, activeDropdownIndex, setSubmitStore, setSelectedSubplebbit, setIsInputAddressFocused],
+    [filteredSubplebbitAddresses, activeDropdownIndex, setSubmitStore],
   );
 
   useEffect(() => {
@@ -173,7 +177,7 @@ const Submit = () => {
         <li
           key={subplebbitAddress}
           className={`${styles.dropdownItem} ${index === activeDropdownIndex ? styles.activeDropdownItem : ''}`}
-          onClick={() => setSelectedSubplebbit(subplebbitAddress)}
+          onClick={() => handleSubplebbitSelect(subplebbitAddress)}
           onMouseEnter={() => setActiveDropdownIndex(index)}
         >
           {subplebbitAddress}
@@ -183,36 +187,32 @@ const Submit = () => {
   );
 
   const handleAddressChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setInputAddress(e.target.value);
-    setSelectedSubplebbit(e.target.value);
+    const newValue = e.target.value;
+    setInputAddress(newValue);
+    setSelectedSubplebbit(newValue);
+    setSubmitStoreHook({ subplebbitAddress: newValue });
   };
-
-  useEffect(() => {
-    if (inputAddress) {
-      setSelectedSubplebbit(inputAddress);
-    }
-  }, [inputAddress]);
-
-  useEffect(() => {
-    if (selectedSubplebbit) {
-      setSubmitStore({ subplebbitAddress: selectedSubplebbit });
-    }
-  }, [selectedSubplebbit, setSubmitStore]);
-
-  useEffect(() => {
-    if (paramsSubplebbitAddress) {
-      setSubmitStore({ subplebbitAddress: paramsSubplebbitAddress });
-    }
-  }, [paramsSubplebbitAddress, setSubmitStore]);
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
-  const documentTitle = t('submit_to_string', { string: subplebbit?.title || subplebbit?.shortAddress || 'Seedit', interpolation: { escapeValue: false } });
+  const documentTitle = t('submit_to_string', {
+    string: selectedSubplebbitData?.title || selectedSubplebbitData?.shortAddress || 'Seedit',
+    interpolation: { escapeValue: false },
+  });
+
   useEffect(() => {
     document.title = documentTitle;
   }, [documentTitle]);
+
+  const handleSubplebbitSelect = (subplebbitAddress: string) => {
+    setSelectedSubplebbit(subplebbitAddress);
+    setInputAddress(subplebbitAddress);
+    setSubmitStore({ subplebbitAddress: subplebbitAddress });
+    setIsInputAddressFocused(false);
+    setActiveDropdownIndex(-1);
+  };
 
   return (
     <div className={styles.content}>
@@ -220,8 +220,12 @@ const Submit = () => {
         <Trans
           i18nKey='submit_to'
           shouldUnescape={true}
-          values={{ link: subplebbit?.title || subplebbit?.shortAddress || 'seedit' }}
-          components={{ 1: subplebbit?.shortAddress ? <Link to={`/p/${subplebbitAddress}`} className={styles.location} /> : <></> }}
+          values={{
+            link: selectedSubplebbitData?.title || selectedSubplebbitData?.shortAddress || 'seedit',
+          }}
+          components={{
+            1: selectedSubplebbitData?.shortAddress ? <Link to={`/p/${selectedSubplebbit}`} className={styles.location} /> : <></>,
+          }}
         />
       </h1>
       <div className={styles.form}>
@@ -236,7 +240,7 @@ const Submit = () => {
               <textarea
                 className={`${styles.input} ${styles.inputTitle}`}
                 onChange={(e) => {
-                  setSubmitStore({ title: e.target.value });
+                  setSubmitStoreHook({ title: e.target.value });
                 }}
               />
             </div>
@@ -248,7 +252,7 @@ const Submit = () => {
               <textarea
                 className={`${styles.input} ${styles.inputText}`}
                 onChange={(e) => {
-                  setSubmitStore({ content: e.target.value });
+                  setSubmitStoreHook({ content: e.target.value });
                 }}
               />
               {content && (
@@ -269,16 +273,13 @@ const Submit = () => {
                 className={`${styles.input} ${styles.inputCommunity}`}
                 type='text'
                 placeholder={`"community.eth/.sol" ${t('or')} "12D3KooW..."`}
-                onFocus={() => setIsInputAddressFocused(true)}
-                onBlur={() => setTimeout(() => setIsInputAddressFocused(false), 100)}
+                value={inputAddress}
+                onChange={handleAddressChange}
                 autoCorrect='off'
                 autoComplete='off'
                 spellCheck='false'
-                value={selectedSubplebbit}
-                onChange={(e) => {
-                  handleAddressChange(e);
-                  setSubmitStore({ subplebbitAddress: e.target.value });
-                }}
+                onFocus={() => setIsInputAddressFocused(true)}
+                onBlur={() => setTimeout(() => setIsInputAddressFocused(false), 100)}
                 onKeyDown={(e) => {
                   if (e.key === 'Enter') {
                     e.preventDefault();
@@ -288,17 +289,31 @@ const Submit = () => {
               />
               {inputAddress && isInputAddressFocused && defaultSubplebbitsDropdown}
               {subsDescription}
-              {subscriptionsList}
+              <div className={styles.subs}>
+                {listSource.map((subscription: string) => (
+                  <span
+                    key={subscription}
+                    className={styles.sub}
+                    onClick={() => {
+                      setSelectedSubplebbit(subscription);
+                      setInputAddress(subscription);
+                      setSubmitStoreHook({ subplebbitAddress: subscription });
+                    }}
+                  >
+                    {Plebbit.getShortAddress(subscription)}
+                  </span>
+                ))}
+              </div>
             </div>
           </div>
-          {subplebbit?.rules?.length > 0 && (
+          {selectedSubplebbitData?.rules?.length > 0 && (
             <div className={styles.box}>
               <span className={`${styles.boxTitle} ${styles.rulesTitle}`}>
-                {t('rules_for')} p/{subplebbit?.shortAddress}
+                {t('rules_for')} p/{selectedSubplebbitData.shortAddress}
               </span>
               <div className={styles.boxContent}>
                 <div className={styles.description}>
-                  <ol className={styles.rules}>{subplebbit?.rules?.map((rule: string, index: number) => <li key={index}>{rule}</li>)}</ol>
+                  <ol className={styles.rules}>{selectedSubplebbitData.rules?.map((rule: string, index: number) => <li key={index}>{rule}</li>)}</ol>
                 </div>
               </div>
             </div>
@@ -308,7 +323,7 @@ const Submit = () => {
             <div className={styles.boxContent}>
               <div className={styles.options}>
                 <label>
-                  <input type='checkbox' onChange={(e) => setSubmitStore({ spoiler: e.target.checked })} />
+                  <input type='checkbox' onChange={(e) => setSubmitStoreHook({ spoiler: e.target.checked })} />
                   {t('spoiler')}
                 </label>
               </div>
