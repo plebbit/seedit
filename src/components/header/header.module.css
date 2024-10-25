@@ -53,7 +53,7 @@
   }
 
   .reduceSubmitPageHeight {
-    margin-bottom: -15px;
+    margin-bottom: -5px;
   }
 }
 
@@ -99,7 +99,6 @@
   list-style-type: none;
   white-space: nowrap;
   display: inline-block;
-  margin-top: 5px;
   vertical-align: bottom;
   text-transform: lowercase;
 }
@@ -125,13 +124,15 @@
 }
 
 .tabs {
+  display: flex;
   overflow-x: auto;
-  scrollbar-width: none; /* Hides the scrollbar in Firefox */
-  -ms-overflow-style: none;  /* Hides the scrollbar in IE and Edge */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  padding-top: 5px;
 }
 
 .tabs::-webkit-scrollbar {
-  display: none; /* Hides the scrollbar in WebKit-based browsers */
+  display: none;
 }
 
 @media (min-width: 640px) {
@@ -147,7 +148,6 @@
 @media (max-width: 640px) {
   .tabMenu {
     order: 1;
-    margin-right: 5px;
   }
 
   .pageName {

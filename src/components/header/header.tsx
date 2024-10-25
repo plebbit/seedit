@@ -402,10 +402,10 @@ const Header = () => {
           </ul>
         )}
       </div>
-      {isMobile && (
-        <ul className={styles.tabMenu}>
+      {isMobile && !isInSubplebbitSubmitView && (
+        <ul className={`${styles.tabMenu} ${styles.tabs}`}>
           <HeaderTabs />
-          {(isInHomeView || isInAllView || isInSidebarView || isInSubplebbitView || isInSubplebbitSubmitView || isInPostView) && <SidebarButton />}
+          {(isInHomeView || isInAllView || isInSidebarView || isInSubplebbitView || isInPostView) && <SidebarButton />}
         </ul>
       )}
     </div>
