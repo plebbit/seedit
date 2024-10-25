@@ -2,13 +2,13 @@
   border-bottom: 1px solid var(--border-primary);
   position: relative;
   background-color: var(--background-primary);
+  font-size: 12px;
 }
 
 .container {
   display: flex;
   align-items: flex-end;
   justify-content: flex-start;
-  position: relative;
   white-space: nowrap;
 }
 
@@ -25,16 +25,13 @@
 
 .logo {
   max-height: 38px;
-  margin-left: 1px;
-  margin-bottom: -3px;
-  margin-right: -1px;
+  margin: 0 -1px -3px 1px;
   filter: var(--filter90);
 }
 
 .avatar {
   max-height: 40px;
-  margin-left: 3px;
-  margin-right: 3px;
+  margin: 0 3px;
 }
 
 .logoText {
@@ -66,16 +63,11 @@
   }
 }
 
-.tabs {
-  display: flex;
-  margin-bottom: -1px;
-}
-
 .pageName {
   font-weight: bold;
   padding-right: 1ex;
   font-variant: small-caps;
-  font-size: 14.4px;
+  font-size: 1.2em;
   color: var(--text);
 }
 
@@ -100,38 +92,32 @@
 }
 
 .tabMenu {
-  list-style: none;
+  list-style-type: none;
   white-space: nowrap;
   display: inline-block;
+  margin-top: 5px;
+  vertical-align: bottom;
   text-transform: lowercase;
 }
 
 .tabMenu li {
   display: inline;
   font-weight: bold;
-  padding: 0px 3px;
-  font-size: 12px;
+  margin: 0px 3px;
 }
 
 .tabMenu li a {
   padding: 2px 6px 0 6px;
+  background-color: var(--background-secondary);
   text-decoration: none;
-  color: var(--green);
-  background-color: var(--background);
-  border-bottom: 1px solid var(--background);
+  color: var(--text-primary);
 }
 
-.tabMenu li .selected {
+.tabMenu .selected a {
   color: var(--green);
   background-color: var(--background);
   border: 1px solid var(--border-primary);
   border-bottom: 1px solid var(--background);
-}
-
-.tabMenu li .choice {
-  color: var(--text-primary);
-  background-color: var(--background-secondary);
-  border-bottom: 1px solid var(--border-primary);
 }
 
 .tabs {
@@ -144,11 +130,6 @@
   display: none; /* Hides the scrollbar in WebKit-based browsers */
 }
 
-.tabMenu li {
-  display: inline-flex;
-}
-
-
 @media (min-width: 640px) {
   .about {
     display: none !important;
@@ -160,10 +141,6 @@
 }
 
 @media (max-width: 640px) {
-  .fewTabs {
-    position: relative;
-  }
-
   .tabMenu {
     order: 1;
     margin-right: 5px;

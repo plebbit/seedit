@@ -52,8 +52,8 @@ const AboutButton = () => {
   const isInSubplebbitSubmitView = isSubplebbitSubmitView(location.pathname, params);
 
   return (
-    <li className={styles.about}>
-      <Link to={aboutLink} className={`${isInAboutView ? styles.selected : styles.choice}  ${isInSubplebbitSubmitView ? styles.singleAboutButton : ''}`}>
+    <li className={`${styles.about} ${isInAboutView ? styles.selected : styles.choice}`}>
+      <Link to={aboutLink} className={isInSubplebbitSubmitView ? styles.singleAboutButton : ''}>
         {t('about')}
       </Link>
     </li>
@@ -68,10 +68,8 @@ const CommentsButton = () => {
   const isAbout = isAboutView(location.pathname);
 
   return (
-    <li>
-      <Link to={`/p/${params.subplebbitAddress}/c/${params.commentCid}`} className={isPost && !isAbout ? styles.selected : styles.choice}>
-        {t('comments')}
-      </Link>
+    <li className={isPost && !isAbout ? styles.selected : styles.choice}>
+      <Link to={`/p/${params.subplebbitAddress}/c/${params.commentCid}`}>{t('comments')}</Link>
     </li>
   );
 };
@@ -102,8 +100,8 @@ const SortItems = () => {
       sortLink = sortLink + `/${timeFilterName}`;
     }
     return (
-      <li key={sortType}>
-        <Link to={sortLink} className={selectedSortType === sortType ? styles.selected : styles.choice} onClick={() => setSelectedSortType(sortType)}>
+      <li key={sortType} className={selectedSortType === sortType ? styles.selected : styles.choice}>
+        <Link to={sortLink} onClick={() => setSelectedSortType(sortType)}>
           {sortLabels[index]}
         </Link>
       </li>
@@ -142,43 +140,25 @@ const AuthorHeaderTabs = () => {
 
   return (
     <>
-      <li>
-        <Link to={isInAuthorView ? authorRoute : '/profile'} className={overviewSelectedClass}>
-          {t('overview')}
-        </Link>
+      <li className={overviewSelectedClass}>
+        <Link to={isInAuthorView ? authorRoute : '/profile'}>{t('overview')}</Link>
       </li>
-      <li>
-        <Link
-          to={isInAuthorView ? authorRoute + '/comments' : '/profile/comments'}
-          className={isInProfileCommentsView || isInAuthorCommentsView ? styles.selected : styles.choice}
-        >
-          {t('comments')}
-        </Link>
+      <li className={isInProfileCommentsView || isInAuthorCommentsView ? styles.selected : styles.choice}>
+        <Link to={isInAuthorView ? authorRoute + '/comments' : '/profile/comments'}>{t('comments')}</Link>
       </li>
-      <li>
-        <Link
-          to={isInAuthorView ? authorRoute + '/submitted' : '/profile/submitted'}
-          className={isInProfileSubmittedView || isInAuthorSubmittedView ? styles.selected : styles.choice}
-        >
-          {t('submitted')}
-        </Link>
+      <li className={isInProfileSubmittedView || isInAuthorSubmittedView ? styles.selected : styles.choice}>
+        <Link to={isInAuthorView ? authorRoute + '/submitted' : '/profile/submitted'}>{t('submitted')}</Link>
       </li>
       {isInProfileView && (
         <>
-          <li>
-            <Link to='/profile/upvoted' className={isInProfileUpvotedView ? styles.selected : styles.choice}>
-              {t('upvoted')}
-            </Link>
+          <li className={isInProfileUpvotedView ? styles.selected : styles.choice}>
+            <Link to='/profile/upvoted'>{t('upvoted')}</Link>
           </li>
-          <li>
-            <Link to='/profile/downvoted' className={isInProfileDownvotedView ? styles.selected : styles.choice}>
-              {t('downvoted')}
-            </Link>
+          <li className={isInProfileDownvotedView ? styles.selected : styles.choice}>
+            <Link to='/profile/downvoted'>{t('downvoted')}</Link>
           </li>
-          <li>
-            <Link to={'/profile/hidden'} className={isInProfileHiddenView ? styles.selected : styles.choice}>
-              {t('hidden')}
-            </Link>
+          <li className={isInProfileHiddenView ? styles.selected : styles.choice}>
+            <Link to={'/profile/hidden'}>{t('hidden')}</Link>
           </li>
           {/* TODO: implement functionality from API once available
           <li>
@@ -197,10 +177,8 @@ const InboxHeaderTabs = () => {
 
   return (
     <>
-      <li>
-        <Link to={'/inbox'} className={styles.selected}>
-          {t('inbox')}
-        </Link>
+      <li className={styles.selected}>
+        <Link to={'/inbox'}>{t('inbox')}</Link>
       </li>
       {/* TODO: add tabs for messaging when available in the API */}
     </>
@@ -225,22 +203,17 @@ const SubplebbitsHeaderTabs = () => {
 
   return (
     <>
-      <li>
-        <Link to={'/communities/vote'} className={`${isInSubplebbitsVoteView ? styles.selected : styles.choice}`}>
-          {t('vote')}
-        </Link>
+      <li className={`${isInSubplebbitsVoteView ? styles.selected : styles.choice}`}>
+        <Link to={'/communities/vote'}>{t('vote')}</Link>
       </li>
-      <li>
-        <Link
-          to={'/communities'}
-          className={
-            isInSubplebbitsSubscriberView || isInSubplebbitsModeratorView || isInSubplebbitsAdminView || isInSubplebbitsOwnerView || isInSubplebbitsView
-              ? styles.selected
-              : styles.choice
-          }
-        >
-          {t('my_communities')}
-        </Link>
+      <li
+        className={
+          isInSubplebbitsSubscriberView || isInSubplebbitsModeratorView || isInSubplebbitsAdminView || isInSubplebbitsOwnerView || isInSubplebbitsView
+            ? styles.selected
+            : styles.choice
+        }
+      >
+        <Link to={'/communities'}>{t('my_communities')}</Link>
       </li>
     </>
   );
@@ -252,15 +225,11 @@ const SettingsHeaderTabs = () => {
 
   return (
     <>
-      <li>
-        <Link to={'/settings'} className={isInSettingsPlebbitOptionsView ? styles.choice : styles.selected}>
-          {t('general')}
-        </Link>
+      <li className={isInSettingsPlebbitOptionsView ? styles.choice : styles.selected}>
+        <Link to={'/settings'}>{t('general')}</Link>
       </li>
-      <li>
-        <Link to={'/settings/plebbit-options'} className={isInSettingsPlebbitOptionsView ? styles.selected : styles.choice}>
-          {t('plebbit_options')}
-        </Link>
+      <li className={isInSettingsPlebbitOptionsView ? styles.selected : styles.choice}>
+        <Link to={'/settings/plebbit-options'}>{t('plebbit_options')}</Link>
       </li>
     </>
   );
@@ -424,21 +393,17 @@ const Header = () => {
           </span>
         )}
         {!isMobile && (
-          <div className={`${styles.tabs} ${hasFewTabs ? styles.fewTabs : ''}`}>
-            <ul className={styles.tabMenu}>
-              <HeaderTabs />
-              {(isInSubplebbitView || isInSubplebbitSubmitView || isInPostView || isInProfileView || isInAuthorView) && <AboutButton />}
-            </ul>
-          </div>
+          <ul className={styles.tabMenu}>
+            <HeaderTabs />
+            {(isInSubplebbitView || isInSubplebbitSubmitView || isInPostView || isInProfileView || isInAuthorView) && <AboutButton />}
+          </ul>
         )}
       </div>
       {isMobile && (
-        <div className={`${styles.tabs} ${hasFewTabs ? styles.fewTabs : ''}`}>
-          <ul className={styles.tabMenu}>
-            <HeaderTabs />
-            {(isInHomeView || isInAllView || isInAboutView || isInSubplebbitView || isInSubplebbitSubmitView || isInPostView) && <AboutButton />}
-          </ul>
-        </div>
+        <ul className={styles.tabMenu}>
+          <HeaderTabs />
+          {(isInHomeView || isInAllView || isInAboutView || isInSubplebbitView || isInSubplebbitSubmitView || isInPostView) && <AboutButton />}
+        </ul>
       )}
     </div>
   );
