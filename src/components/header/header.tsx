@@ -371,7 +371,11 @@ const Header = () => {
 
   return (
     <div className={styles.header}>
-      <div className={`${styles.container} ${hasFewTabs && styles.reducedHeight} ${hasStickyHeader && styles.increasedHeight}`}>
+      <div
+        className={`${styles.container} ${hasFewTabs && styles.reducedHeight} ${isInSubmitView && !isInSubplebbitView && isMobile && styles.reduceSubmitPageHeight} ${
+          hasStickyHeader && styles.increasedHeight
+        }`}
+      >
         <div className={styles.logoContainer}>
           <Link to={logoLink} className={styles.logoLink}>
             {(logoIsAvatar || (!isInSubplebbitView && !isInProfileView && !isInAuthorView)) && (
