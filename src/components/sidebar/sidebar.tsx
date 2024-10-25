@@ -5,7 +5,16 @@ import { Comment, useAccount, useBlock, Role, Subplebbit, useSubplebbitStats, us
 import styles from './sidebar.module.css';
 import { getFormattedDate, getFormattedTimeDuration, getFormattedTimeAgo } from '../../lib/utils/time-utils';
 import { findSubplebbitCreator } from '../../lib/utils/user-utils';
-import { isAboutView, isAllView, isHomeAboutView, isHomeView, isPendingView, isPostView, isSubplebbitSettingsView, isSubplebbitsView } from '../../lib/utils/view-utils';
+import {
+  isSidebarView,
+  isAllView,
+  isHomeAboutView,
+  isHomeView,
+  isPendingView,
+  isPostView,
+  isSubplebbitSettingsView,
+  isSubplebbitsView,
+} from '../../lib/utils/view-utils';
 import Markdown from '../markdown';
 import SearchBar from '../search-bar';
 import SubscribeButton from '../subscribe-button';
@@ -145,7 +154,7 @@ const Sidebar = ({ comment, isSubCreatedButNotYetPublished, settings, subplebbit
 
   const location = useLocation();
   const params = useParams();
-  const isInAboutView = isAboutView(location.pathname);
+  const isInSidebarView = isSidebarView(location.pathname);
   const isInAllView = isAllView(location.pathname);
   const isInHomeAboutView = isHomeAboutView(location.pathname);
   const isInHomeView = isHomeView(location.pathname, params);
@@ -196,7 +205,7 @@ const Sidebar = ({ comment, isSubCreatedButNotYetPublished, settings, subplebbit
   };
 
   return (
-    <div className={`${isInAboutView ? styles.about : styles.sidebar}`}>
+    <div className={`${isInSidebarView ? styles.about : styles.sidebar}`}>
       <SearchBar />
       {isInPostView && <PostInfo address={address} cid={cid} downvoteCount={downvoteCount} timestamp={timestamp} upvoteCount={upvoteCount} />}
       <Link to={submitRoute}>

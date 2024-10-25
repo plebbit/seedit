@@ -17,22 +17,22 @@ export const getAboutLink = (pathname: string, params: ParamsType): string => {
   const decodedPathname = decodeURIComponent(pathname);
 
   if (decodedPathname.startsWith(`/p/${params.subplebbitAddress}/c/${params.commentCid}`)) {
-    return `/p/${params.subplebbitAddress}/c/${params.commentCid}/about`;
+    return `/p/${params.subplebbitAddress}/c/${params.commentCid}/sidebar`;
   } else if (decodedPathname.startsWith(`/p/${params.subplebbitAddress}`)) {
-    return `/p/${params.subplebbitAddress}/about`;
+    return `/p/${params.subplebbitAddress}/sidebar`;
   } else if (decodedPathname.startsWith('/profile')) {
-    return '/profile/about';
+    return '/profile/sidebar';
   } else if (decodedPathname.startsWith('/u/')) {
-    return `/u/${params.authorAddress}/c/${params.commentCid}/about`;
+    return `/u/${params.authorAddress}/c/${params.commentCid}/sidebar`;
   } else if (decodedPathname.startsWith('/p/all')) {
-    return '/p/all/about';
+    return '/p/all/sidebar';
   } else {
-    return '/about';
+    return '/sidebar';
   }
 };
 
-export const isAboutView = (pathname: string): boolean => {
-  return pathname.endsWith('/about');
+export const isSidebarView = (pathname: string): boolean => {
+  return pathname.endsWith('/sidebar');
 };
 
 export const isAllView = (pathname: string): boolean => {
@@ -40,7 +40,7 @@ export const isAllView = (pathname: string): boolean => {
 };
 
 export const isAllAboutView = (pathname: string): boolean => {
-  return pathname === '/p/all/about';
+  return pathname === '/p/all/sidebar';
 };
 
 export const isAuthorView = (pathname: string): boolean => {
@@ -64,7 +64,7 @@ export const isHomeView = (pathname: string, params: ParamsType): boolean => {
 };
 
 export const isHomeAboutView = (pathname: string): boolean => {
-  return pathname === '/about';
+  return pathname === '/sidebar';
 };
 
 export const isInboxView = (pathname: string): boolean => {

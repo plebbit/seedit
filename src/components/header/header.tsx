@@ -6,7 +6,7 @@ import { useAccount, useSubplebbit } from '@plebbit/plebbit-react-hooks';
 import { sortTypes } from '../../app';
 import {
   getAboutLink,
-  isAboutView,
+  isSidebarView,
   isAllView,
   isAllAboutView,
   isAuthorView,
@@ -43,15 +43,15 @@ import useWindowWidth from '../../hooks/use-window-width';
 import styles from './header.module.css';
 import SubscribeButton from '../subscribe-button';
 
-const AboutButton = () => {
+const SidebarButton = () => {
   const params = useParams();
   const location = useLocation();
   const aboutLink = getAboutLink(location.pathname, params);
-  const isInAboutView = isAboutView(location.pathname);
+  const isInSidebarView = isSidebarView(location.pathname);
   const isInSubplebbitSubmitView = isSubplebbitSubmitView(location.pathname, params);
 
   return (
-    <li className={`${styles.about} ${isInAboutView ? styles.selected : styles.choice}`}>
+    <li className={`${styles.about} ${isInSidebarView ? styles.selected : styles.choice}`}>
       <Link to={aboutLink} className={isInSubplebbitSubmitView ? styles.singleAboutButton : ''}>
         ▶︎
       </Link>
@@ -64,10 +64,10 @@ const CommentsButton = () => {
   const params = useParams();
   const location = useLocation();
   const isPost = isPostView(location.pathname, params);
-  const isAbout = isAboutView(location.pathname);
+  const isSidebar = isSidebarView(location.pathname);
 
   return (
-    <li className={isPost && !isAbout ? styles.selected : styles.choice}>
+    <li className={isPost && !isSidebar ? styles.selected : styles.choice}>
       <Link to={`/p/${params.subplebbitAddress}/c/${params.commentCid}`}>{t('comments')}</Link>
     </li>
   );
@@ -84,7 +84,7 @@ const SortItems = () => {
   const timeFilterName = params.timeFilterName;
 
   useEffect(() => {
-    if (location.pathname.endsWith('/about')) {
+    if (location.pathname.endsWith('/sidebar')) {
       setSelectedSortType('');
     } else if (params.sortType) {
       setSelectedSortType(params.sortType);
@@ -112,7 +112,7 @@ const AuthorHeaderTabs = () => {
   const { t } = useTranslation();
   const location = useLocation();
   const params = useParams();
-  const isInAboutView = isAboutView(location.pathname);
+  const isInSidebarView = isSidebarView(location.pathname);
   const isInAuthorView = isAuthorView(location.pathname);
   const isInAuthorCommentsView = isAuthorCommentsView(location.pathname, params);
   const isInAuthorSubmittedView = isAuthorSubmittedView(location.pathname, params);
@@ -126,7 +126,7 @@ const AuthorHeaderTabs = () => {
   const authorRoute = `/u/${params.authorAddress}/c/${params.commentCid}`;
   const overviewSelectedClass =
     (isInProfileView || isInAuthorView) &&
-    !isInAboutView &&
+    !isInSidebarView &&
     !isInProfileUpvotedView &&
     !isInProfileDownvotedView &&
     !isInProfileCommentsView &&
@@ -341,7 +341,7 @@ const Header = () => {
   const { suggested, title, shortAddress } = subplebbit || {};
 
   const isMobile = useWindowWidth() < 640;
-  const isInAboutView = isAboutView(location.pathname);
+  const isInSidebarView = isSidebarView(location.pathname);
   const isInAllAboutView = isAllAboutView(location.pathname);
   const isInAllView = isAllView(location.pathname);
   const isInAuthorView = isAuthorView(location.pathname);
@@ -360,10 +360,10 @@ const Header = () => {
   const hasStickyHeader =
     isInHomeView ||
     isInNotFoundView ||
-    (isInSubplebbitView && !isInSubplebbitSubmitView && !isInSubplebbitSettingsView && !isInPostView && !isInAboutView) ||
-    (isInProfileView && !isInAboutView) ||
+    (isInSubplebbitView && !isInSubplebbitSubmitView && !isInSubplebbitSettingsView && !isInPostView && !isInSidebarView) ||
+    (isInProfileView && !isInSidebarView) ||
     (isInAllView && !isInAllAboutView) ||
-    (isInAuthorView && !isInAboutView);
+    (isInAuthorView && !isInSidebarView);
   const logoSrc = isInSubplebbitView ? suggested?.avatarUrl : 'assets/logo/seedit.png';
   const logoIsAvatar = isInSubplebbitView && suggested?.avatarUrl;
   const logoLink = isInSubplebbitView ? `/p/${params.subplebbitAddress}` : isInProfileView ? '/profile' : '/';
@@ -398,14 +398,14 @@ const Header = () => {
         {!isMobile && (
           <ul className={styles.tabMenu}>
             <HeaderTabs />
-            {(isInSubplebbitView || isInSubplebbitSubmitView || isInPostView || isInProfileView || isInAuthorView) && <AboutButton />}
+            {(isInSubplebbitView || isInSubplebbitSubmitView || isInPostView || isInProfileView || isInAuthorView) && <SidebarButton />}
           </ul>
         )}
       </div>
       {isMobile && (
         <ul className={styles.tabMenu}>
           <HeaderTabs />
-          {(isInHomeView || isInAllView || isInAboutView || isInSubplebbitView || isInSubplebbitSubmitView || isInPostView) && <AboutButton />}
+          {(isInHomeView || isInAllView || isInSidebarView || isInSubplebbitView || isInSubplebbitSubmitView || isInPostView) && <SidebarButton />}
         </ul>
       )}
     </div>

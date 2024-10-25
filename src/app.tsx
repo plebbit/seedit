@@ -4,10 +4,10 @@ import useTheme from './hooks/use-theme';
 import useTimeFilter from './hooks/use-time-filter';
 import styles from './app.module.css';
 import All from './views/all';
-import About from './views/about';
 import Author from './views/author';
 import Home from './views/home';
 import Inbox from './views/inbox';
+import SidebarView from './views/sidebar';
 import NotFound from './views/not-found';
 import PendingPost from './views/pending-post';
 import PostPage from './views/post-page';
@@ -102,24 +102,24 @@ const App = () => {
           </Route>
           <Route element={pagesLayout}>
             <Route path='/submit' element={<SubmitPage />} />
-            <Route path='/about' element={<About />} />
+            <Route path='/sidebar' element={<SidebarView />} />
 
-            <Route path='/p/all/about' element={<About />} />
+            <Route path='/p/all/sidebar' element={<SidebarView />} />
 
             <Route path='/p/:subplebbitAddress/c/:commentCid' element={<PostPage />} />
             <Route path='/p/:subplebbitAddress/c/:commentCid?context=3' element={<PostPage />} />
-            <Route path='/p/:subplebbitAddress/c/:commentCid/about' element={<About />} />
+            <Route path='/p/:subplebbitAddress/c/:commentCid/sidebar' element={<SidebarView />} />
 
             <Route path='/p/:subplebbitAddress/submit' element={<SubmitPage />} />
-            <Route path='/p/:subplebbitAddress/about' element={<About />} />
+            <Route path='/p/:subplebbitAddress/sidebar' element={<SidebarView />} />
 
             <Route path='/settings' element={<Settings />} />
             <Route path='/p/:subplebbitAddress/settings' element={<SubplebbitSettings />} />
             <Route path='/settings/plebbit-options' element={<Settings />} />
 
-            <Route path='/profile/about' element={<About />} />
+            <Route path='/profile/sidebar' element={<SidebarView />} />
 
-            <Route path='/u/:authorAddress/c/:commentCid/about' element={<About />} />
+            <Route path='/u/:authorAddress/c/:commentCid/sidebar' element={<SidebarView />} />
 
             <Route path='/inbox' element={<Inbox />} />
             <Route path='/inbox/unread' element={<Inbox />} />
