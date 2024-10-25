@@ -44,7 +44,6 @@ import styles from './header.module.css';
 import SubscribeButton from '../subscribe-button';
 
 const AboutButton = () => {
-  const { t } = useTranslation();
   const params = useParams();
   const location = useLocation();
   const aboutLink = getAboutLink(location.pathname, params);
@@ -54,7 +53,7 @@ const AboutButton = () => {
   return (
     <li className={`${styles.about} ${isInAboutView ? styles.selected : styles.choice}`}>
       <Link to={aboutLink} className={isInSubplebbitSubmitView ? styles.singleAboutButton : ''}>
-        {t('about')}
+        ▶︎
       </Link>
     </li>
   );
@@ -391,7 +390,7 @@ const Header = () => {
             <HeaderTitle title={title} shortAddress={shortAddress} />
           </span>
         )}
-        {isInSubplebbitView && !isInAboutView && (
+        {isInSubplebbitView && (
           <span className={styles.joinButton}>
             <SubscribeButton address={params.subplebbitAddress} />
           </span>

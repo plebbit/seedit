@@ -8,7 +8,6 @@
   background-color: var(--background);
   color: var(--text);
   font-size: 13px;
-  
   font-family: verdana;
   width: 300px;
   box-sizing: border-box;
@@ -58,18 +57,18 @@
   padding: 0 10px;
   height: 0;
   overflow: hidden;
-  transition: height 0.4s linear,
-              visibility 0.4s linear,
-              padding-top 0.4s linear, 
-              margin-top 0.4s linear, 
-              padding-bottom 0.4s linear, 
-              margin-bottom 0.4s linear;  
+  transition: height 0.3s linear,
+              visibility 0.3s linear,
+              padding-top 0.3s linear, 
+              margin-top 0.3s linear, 
+              padding-bottom 0.3s linear, 
+              margin-bottom 0.3s linear;  
   z-index: 1;
   margin-bottom: 10px;
 }
 
 .slideDown {
-  height: 49px;
+  height: 22px;
   padding-top: 10px;
   padding-bottom: 10px;
   margin-top: 5px;

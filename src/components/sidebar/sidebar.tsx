@@ -260,7 +260,7 @@ const Sidebar = ({ comment, isSubCreatedButNotYetPublished, settings, subplebbit
           <ul>
             <li>
               <a href='https://plebbit.com' target='_blank' rel='noopener noreferrer'>
-                {t('about')}
+                plebbit
               </a>
               <span className={styles.footerSeparator}>|</span>
             </li>

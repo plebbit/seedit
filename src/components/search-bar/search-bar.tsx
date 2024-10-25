@@ -75,10 +75,10 @@ const SearchBar = ({ isFocused = false }: SearchBarProps) => {
           <input type='checkbox' checked={!isInCommunitySearch} onChange={() => setIsInCommunitySearch(false)} />
           {t('search_community_address')}
         </label>
-        <label>
+        {/* <label>
           <input disabled type='checkbox' checked={isInCommunitySearch} onChange={() => setIsInCommunitySearch(true)} />
           {t('search_feed_post')}
-        </label>
+        </label> */}
       </div>
     </div>
   );
