@@ -149,7 +149,7 @@ const DisplayNameSetting = () => {
 
 const GeneralSettings = () => {
   const { t } = useTranslation();
-
+  const location = useLocation();
   return (
     <>
       <div className={styles.category}>
@@ -197,7 +197,7 @@ const GeneralSettings = () => {
           <AvatarSettings />
         </span>
       </div>
-      <div className={styles.category}>
+      <div className={`${styles.category} ${location.hash === '#displayName' ? styles.highlightedSetting : ''}`} id='displayName'>
         <span className={styles.categoryTitle}>{t('display_name')}</span>
         <span className={styles.categorySettings}>
           <DisplayNameSetting />
@@ -215,7 +215,7 @@ const GeneralSettings = () => {
           <WalletSettings />
         </span>
       </div>
-      <div className={styles.category}>
+      <div className={`${styles.category} ${location.hash === '#exportBackup' ? styles.highlightedSetting : ''}`} id='exportBackup'>
         <span className={styles.categoryTitle}>{t('account')}</span>
         <span className={styles.categorySettings}>
           <AccountSettings />

@@ -310,7 +310,7 @@
   "more_posts_last_month": "Đang hiển thị bài viết từ {{currentTimeFilterName}}, <1>hiển thị thêm bài viết từ tháng trước</1>",
   "sure_delete": "Bạn có chắc chắn muốn xóa bài viết này không?",
   "sure_undelete": "Bạn có chắc chắn muốn khôi phục bài viết này không?",
-  "profile_info": "Tài khoản của bạn u/{{shortAddress}} đã được tạo. Đi đến <1>cài đặt</1> để xuất tài khoản của bạn, đặt tên hiển thị và hơn thế nữa.",
+  "profile_info": "Tài khoản của bạn u/{{shortAddress}} đã được tạo. <1>Đặt tên hiển thị</1>, <2>sao lưu khóa riêng</2>, <3>tìm hiểu thêm</3>.",
   "show_all_instead": "Đang hiển thị bài viết từ {{timeFilterName}}, <1>hiển thị tất cả thay vào đó</1>",
   "subplebbit_offline_info": "Subplebbit có thể ngoại tuyến và việc xuất bản có thể thất bại.",
   "posts_last_synced_info": "Bài viết được đồng bộ lần cuối {{time}}, subplebbit có thể ngoại tuyến và việc xuất bản có thể thất bại.",

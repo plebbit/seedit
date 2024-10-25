@@ -310,7 +310,7 @@
   "more_posts_last_month": "Pokazuje posty od {{currentTimeFilterName}}, <1>pokaż więcej postów z zeszłego miesiąca</1>",
   "sure_delete": "Czy na pewno chcesz usunąć ten post?",
   "sure_undelete": "Czy na pewno chcesz przywrócić ten post?",
-  "profile_info": "Twoje konto u/{{shortAddress}} zostało utworzone. Przejdź do <1>preferencji</1>, aby wyeksportować swoje konto, ustawić nazwę wyświetlaną i nie tylko.",
+  "profile_info": "Twoje konto u/{{shortAddress}} zostało utworzone. <1>Ustaw nazwę wyświetlania</1>, <2>zrób kopię zapasową klucza prywatnego</2>, <3>dowiedz się więcej</3>.",
   "show_all_instead": "Pokazuje posty od {{timeFilterName}}, <1>pokaż wszystko zamiast tego</1>",
   "subplebbit_offline_info": "Subplebbit może być offline, a publikacja może się nie powieść.",
   "posts_last_synced_info": "Ostatnio zsynchronizowane posty {{time}}, subplebbit może być offline, a publikacja może się nie powieść.",

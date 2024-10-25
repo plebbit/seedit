@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { Trans, useTranslation } from 'react-i18next';
+import { HashLink } from 'react-router-hash-link';
 import { Link, Outlet, useParams } from 'react-router-dom';
 import { StateSnapshot, Virtuoso, VirtuosoHandle } from 'react-virtuoso';
 import { useAccount, useAccountComments, useAccountVotes, useComment } from '@plebbit/plebbit-react-hooks';
@@ -259,7 +260,15 @@ const Profile = () => {
 
   const infobar = showInfobarRef.current && (
     <div className={styles.infobar}>
-      <Trans i18nKey='profile_info' values={{ shortAddress: account?.author?.shortAddress }} components={{ 1: <Link to='/settings' /> }} />
+      <Trans
+        i18nKey='profile_info'
+        values={{ shortAddress: account?.author?.shortAddress }}
+        components={{
+          1: <HashLink to='/settings#displayName' />,
+          2: <HashLink to='/settings#exportBackup' />,
+          3: <Link to='/about' />,
+        }}
+      />
     </div>
   );
 

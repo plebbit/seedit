@@ -310,7 +310,7 @@
   "more_posts_last_month": "Viser innlegg siden {{currentTimeFilterName}}, <1>vis flere innlegg fra forrige måned</1>",
   "sure_delete": "Er du sikker på at du vil slette dette innlegget?",
   "sure_undelete": "Er du sikker på at du vil gjenopprette dette innlegget?",
-  "profile_info": "Kontoen din u/{{shortAddress}} ble opprettet. Gå til <1>innstillinger</1> for å eksportere kontoen din, sette et visningsnavn og mer.",
+  "profile_info": "Kontoen din u/{{shortAddress}} er opprettet. <1>Angi visningsnavn</1>, <2>sikkerhetskopier privatnøkkelen</2>, <3>lær mer</3>.",
   "show_all_instead": "Viser innlegg siden {{timeFilterName}}, <1>vis alt i stedet</1>",
   "subplebbit_offline_info": "Subplebbiten kan være offline, og publisering kan mislykkes.",
   "posts_last_synced_info": "Siste synkroniserte innlegg {{time}}, subplebbiten kan være offline, og publisering kan mislykkes.",

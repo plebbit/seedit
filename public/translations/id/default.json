@@ -310,7 +310,7 @@
   "more_posts_last_month": "Menampilkan pos sejak {{currentTimeFilterName}}, <1>tampilkan lebih banyak pos dari bulan lalu</1>",
   "sure_delete": "Apakah Anda yakin ingin menghapus pos ini?",
   "sure_undelete": "Apakah Anda yakin ingin mengembalikan pos ini?",
-  "profile_info": "Akun Anda u/{{shortAddress}} telah dibuat. Pergi ke <1>pengaturan</1> untuk mengekspor akun Anda, mengatur nama tampilan, dan lainnya.",
+  "profile_info": "Akun Anda u/{{shortAddress}} telah dibuat. <1>Atur nama tampilan</1>, <2>cadangkan kunci pribadi</2>, <3>pelajari lebih lanjut</3>.",
   "show_all_instead": "Menampilkan pos sejak {{timeFilterName}}, <1>tampilkan semua sebagai gantinya</1>",
   "subplebbit_offline_info": "Subplebbit mungkin offline dan penerbitan mungkin gagal.",
   "posts_last_synced_info": "Posting terakhir disinkronkan {{time}}, subplebbit mungkin offline dan penerbitan mungkin gagal.",

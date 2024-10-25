@@ -310,7 +310,7 @@
   "more_posts_last_month": "Duke treguar postimet që nga {{currentTimeFilterName}}, <1>tregoni më shumë postime nga java e kaluar</1>",
   "sure_delete": "A jeni i sigurt se doni të fshini këtë postim?",
   "sure_undelete": "A jeni i sigurt se doni të riktheni këtë postim?",
-  "profile_info": "Llogaria juaj u/{{shortAddress}} është krijuar. Shkoni te <1>preferencat</1> për të eksportuar llogarinë tuaj, vendosur një emër shfaqje dhe më shumë.",
+  "profile_info": "Llogaria juaj u/{{shortAddress}} është krijuar. <1>Vendosni emrin e shfaqjes</1>, <2>bëni kopjen rezervë të çelësit privat</2>, <3>mësoni më shumë</3>.",
   "show_all_instead": "Duke treguar postimet që nga {{timeFilterName}}, <1>tregoni gjithçka në vend</1>",
   "subplebbit_offline_info": "Subplebbiti mund të jetë jashtë linje dhe publikimi mund të dështojë.",
   "posts_last_synced_info": "Postimet e fundit të sinkronizuara {{time}}, subplebbiti mund të jetë jashtë linje dhe publikimi mund të dështojë.",
