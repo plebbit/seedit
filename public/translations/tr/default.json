@@ -321,5 +321,6 @@
   "delete_this_account": "<1>sil</1> bu hesabı",
   "create_new_account": "<1>oluştur</1> yeni bir hesap",
   "wallet_number": "cüzdan #{{index}}",
-  "view_more": "daha fazla görüntüle"
+  "view_more": "daha fazla görüntüle",
+  "submit_community": "Topluluğunuzu gönderin"
 }

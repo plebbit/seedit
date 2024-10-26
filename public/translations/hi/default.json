@@ -321,5 +321,6 @@
   "delete_this_account": "<1>हटाएँ</1> यह खाता",
   "create_new_account": "<1>नया बनाएं</1> खाता",
   "wallet_number": "वॉलेट #{{index}}",
-  "view_more": "और देखें"
+  "view_more": "और देखें",
+  "submit_community": "अपनी समुदाय सबमिट करें"
 }

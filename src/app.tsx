@@ -3,6 +3,7 @@ import { Outlet, Route, Routes, useParams } from 'react-router-dom';
 import useTheme from './hooks/use-theme';
 import useTimeFilter from './hooks/use-time-filter';
 import styles from './app.module.css';
+import About from './views/about';
 import All from './views/all';
 import Author from './views/author';
 import Home from './views/home';
@@ -101,6 +102,7 @@ const App = () => {
             </Route>
           </Route>
           <Route element={pagesLayout}>
+            <Route path='/about' element={<About />} />
             <Route path='/submit' element={<SubmitPage />} />
             <Route path='/sidebar' element={<SidebarView />} />
 

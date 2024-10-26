@@ -8,12 +8,13 @@ import { findSubplebbitCreator } from '../../lib/utils/user-utils';
 import {
   isSidebarView,
   isAllView,
-  isHomeAboutView,
+  isHomeSidebarView,
   isHomeView,
   isPendingView,
   isPostView,
   isSubplebbitSettingsView,
   isSubplebbitsView,
+  isAboutView,
 } from '../../lib/utils/view-utils';
 import Markdown from '../markdown';
 import SearchBar from '../search-bar';
@@ -156,7 +157,8 @@ const Sidebar = ({ comment, isSubCreatedButNotYetPublished, settings, subplebbit
   const params = useParams();
   const isInSidebarView = isSidebarView(location.pathname);
   const isInAllView = isAllView(location.pathname);
-  const isInHomeAboutView = isHomeAboutView(location.pathname);
+  const isInHomeSidebarView = isHomeSidebarView(location.pathname);
+  const isInAboutView = isAboutView(location.pathname);
   const isInHomeView = isHomeView(location.pathname, params);
   const isInPendingView = isPendingView(location.pathname, params);
   const isInPostView = isPostView(location.pathname, params);
@@ -167,7 +169,11 @@ const Sidebar = ({ comment, isSubCreatedButNotYetPublished, settings, subplebbit
   const subplebbitCreator = findSubplebbitCreator(roles);
   const creatorAddress = subplebbitCreator === 'anonymous' ? 'anonymous' : `${Plebbit.getShortAddress(subplebbitCreator)}`;
   const submitRoute =
-    isInHomeView || isInHomeAboutView || isInAllView ? '/submit' : isInPendingView ? `/p/${pendingPost?.subplebbitAddress}/submit` : `/p/${address}/submit`;
+    isInHomeView || isInHomeSidebarView || isInAllView || isInAboutView
+      ? '/submit'
+      : isInPendingView
+      ? `/p/${pendingPost?.subplebbitAddress}/submit`
+      : `/p/${address}/submit`;
 
   const { blocked, unblock, block } = useBlock({ address });
 
@@ -215,7 +221,7 @@ const Sidebar = ({ comment, isSubCreatedButNotYetPublished, settings, subplebbit
           <div className={styles.nub} />
         </div>
       </Link>
-      {!isInHomeView && !isInHomeAboutView && !isInAllView && !isInPendingView && !isInSubplebbitsView && (
+      {!isInHomeView && !isInHomeSidebarView && !isInAllView && !isInPendingView && !isInSubplebbitsView && !isInAboutView && (
         <div className={styles.titleBox}>
           <Link className={styles.title} to={`/p/${address}`}>
             {subplebbit?.address}
@@ -259,6 +265,10 @@ const Sidebar = ({ comment, isSubCreatedButNotYetPublished, settings, subplebbit
       {roles && <ModeratorsList roles={roles} />}
       <div className={styles.largeButton} onClick={handleCreateCommunity}>
         {t('create_your_community')}
+        <div className={styles.nub} />
+      </div>
+      <div className={styles.largeButton} onClick={() => alert('This feature is not available yet.')}>
+        {t('submit_community')}
         <div className={styles.nub} />
       </div>
       <div className={styles.footer}>

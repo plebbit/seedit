@@ -321,5 +321,6 @@
   "delete_this_account": "<1>حذف کریں</1> یہ اکاؤنٹ",
   "create_new_account": "<1>نیا بنائیں</1> اکاؤنٹ",
   "wallet_number": "والٹ #{{index}}",
-  "view_more": "مزید دیکھیں"
+  "view_more": "مزید دیکھیں",
+  "submit_community": "اپنی کمیونٹی جمع کروائیں"
 }

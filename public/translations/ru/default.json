@@ -321,5 +321,6 @@
   "delete_this_account": "<1>удалить</1> эту учетную запись",
   "create_new_account": "<1>создать</1> новую учетную запись",
   "wallet_number": "кошелек #{{index}}",
-  "view_more": "смотреть больше"
+  "view_more": "смотреть больше",
+  "submit_community": "Отправьте ваше сообщество"
 }

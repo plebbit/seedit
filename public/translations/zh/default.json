@@ -321,5 +321,6 @@
   "delete_this_account": "<1>删除</1>此账户",
   "create_new_account": "<1>创建</1>新账户",
   "wallet_number": "钱包 #{{index}}",
-  "view_more": "查看更多"
+  "view_more": "查看更多",
+  "submit_community": "提交您的社区"
 }

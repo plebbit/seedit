@@ -321,5 +321,6 @@
   "delete_this_account": "<1>ta bort</1> det här kontot",
   "create_new_account": "<1>skapa</1> ett nytt konto",
   "wallet_number": "plånbok #{{index}}",
-  "view_more": "visa mer"
+  "view_more": "visa mer",
+  "submit_community": "Skicka in ditt samhälle"
 }

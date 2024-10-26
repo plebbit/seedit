@@ -321,5 +321,6 @@
   "delete_this_account": "<1>삭제</1> 이 계정",
   "create_new_account": "<1>새로 만들기</1> 계정",
   "wallet_number": "지갑 #{{index}}",
-  "view_more": "더보기"
+  "view_more": "더보기",
+  "submit_community": "커뮤니티를 제출하세요"
 }

@@ -321,5 +321,6 @@
   "delete_this_account": "<1>supprimer</1> ce compte",
   "create_new_account": "<1>créer</1> un nouveau compte",
   "wallet_number": "portefeuille #{{index}}",
-  "view_more": "voir plus"
+  "view_more": "voir plus",
+  "submit_community": "Soumettez votre communauté"
 }

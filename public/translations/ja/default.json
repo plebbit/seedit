@@ -321,5 +321,6 @@
   "delete_this_account": "<1>削除</1>このアカウント",
   "create_new_account": "<1>新しい</1>アカウントを作成",
   "wallet_number": "ウォレット #{{index}}",
-  "view_more": "もっと見る"
+  "view_more": "もっと見る",
+  "submit_community": "コミュニティを提出してください"
 }

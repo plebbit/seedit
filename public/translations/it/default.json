@@ -321,5 +321,6 @@
   "delete_this_account": "<1>elimina</1> questo account",
   "create_new_account": "<1>crea</1> un nuovo account",
   "wallet_number": "wallet #{{index}}",
-  "view_more": "altri"
+  "view_more": "altri",
+  "submit_community": "Invia la tua comunità"
 }

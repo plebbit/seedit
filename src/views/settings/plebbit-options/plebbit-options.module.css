@@ -92,3 +92,7 @@
     width: 35vw;
   }
 }
+
+.highlightedSetting {
+  background-color: var(--yellow-highlight);
+}

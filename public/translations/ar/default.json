@@ -321,5 +321,6 @@
   "delete_this_account": "<1>حذف</1> هذا الحساب",
   "create_new_account": "<1>إنشاء</1> حساب جديد",
   "wallet_number": "المحفظة #{{index}}",
-  "view_more": "عرض المزيد"
+  "view_more": "عرض المزيد",
+  "submit_community": "قدم مجتمعك"
 }

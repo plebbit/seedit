@@ -12,7 +12,7 @@ export type ViewType = 'home' | 'pending' | 'post' | 'submit' | 'subplebbit' | '
 
 const sortTypes = ['/hot', '/new', '/active', '/controversialAll', '/topAll'];
 
-export const getAboutLink = (pathname: string, params: ParamsType): string => {
+export const getSidebarLink = (pathname: string, params: ParamsType): string => {
   // some subs might use emojis in their address, so we need to decode the pathname
   const decodedPathname = decodeURIComponent(pathname);
 
@@ -31,6 +31,10 @@ export const getAboutLink = (pathname: string, params: ParamsType): string => {
   }
 };
 
+export const isAboutView = (pathname: string): boolean => {
+  return pathname === '/about';
+};
+
 export const isSidebarView = (pathname: string): boolean => {
   return pathname.endsWith('/sidebar');
 };
@@ -39,7 +43,7 @@ export const isAllView = (pathname: string): boolean => {
   return pathname.startsWith('/p/all');
 };
 
-export const isAllAboutView = (pathname: string): boolean => {
+export const isAllSidebarView = (pathname: string): boolean => {
   return pathname === '/p/all/sidebar';
 };
 
@@ -63,7 +67,7 @@ export const isHomeView = (pathname: string, params: ParamsType): boolean => {
   return pathname === '/' || sortTypes.includes(pathname) || (timeFilterNames.includes(params.timeFilterName || '') && !pathname.startsWith('/p/'));
 };
 
-export const isHomeAboutView = (pathname: string): boolean => {
+export const isHomeSidebarView = (pathname: string): boolean => {
   return pathname === '/sidebar';
 };
 

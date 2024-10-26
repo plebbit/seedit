@@ -321,5 +321,6 @@
   "delete_this_account": "<1>xóa</1> tài khoản này",
   "create_new_account": "<1>tạo</1> tài khoản mới",
   "wallet_number": "ví #{{index}}",
-  "view_more": "xem thêm"
+  "view_more": "xem thêm",
+  "submit_community": "Gửi cộng đồng của bạn"
 }

@@ -321,5 +321,6 @@
   "delete_this_account": "<1>fshi</1> këtë llogari",
   "create_new_account": "<1>krijo</1> një llogari të re",
   "wallet_number": "portofol #{{index}}",
-  "view_more": "shiko më shumë"
+  "view_more": "shiko më shumë",
+  "submit_community": "Dorëzo komunitetin tuaj"
 }

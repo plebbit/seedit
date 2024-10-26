@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { Trans, useTranslation } from 'react-i18next';
 import { HashLink } from 'react-router-hash-link';
-import { Link, Outlet, useParams } from 'react-router-dom';
+import { Outlet, useParams } from 'react-router-dom';
 import { StateSnapshot, Virtuoso, VirtuosoHandle } from 'react-virtuoso';
 import { useAccount, useAccountComments, useAccountVotes, useComment } from '@plebbit/plebbit-react-hooks';
 import useWindowWidth from '../../hooks/use-window-width';
@@ -265,8 +265,8 @@ const Profile = () => {
         values={{ shortAddress: account?.author?.shortAddress }}
         components={{
           1: <HashLink to='/settings#displayName' />,
-          2: <HashLink to='/settings#exportBackup' />,
-          3: <Link to='/about' />,
+          2: <HashLink to='/settings#exportAccount' />,
+          3: <HashLink to='/about#newUsers' />,
         }}
       />
     </div>

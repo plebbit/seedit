@@ -1,4 +1,4 @@
-import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
+import { Link, useLocation, useParams } from 'react-router-dom';
 import {
   useAccount,
   useAccountComments,
@@ -52,7 +52,6 @@ import { useTranslation } from 'react-i18next';
 const AuthorSidebar = () => {
   const { t } = useTranslation();
   const location = useLocation();
-  const navigate = useNavigate();
   const params = useParams();
   const { authorAddress, commentCid } = useParams() || {};
   const { blocked, unblock, block } = useBlock({ address: authorAddress });

@@ -321,5 +321,6 @@
   "delete_this_account": "<1>poista</1> tämä tili",
   "create_new_account": "<1>luo</1> uusi tili",
   "wallet_number": "lompakko #{{index}}",
-  "view_more": "näytä lisää"
+  "view_more": "näytä lisää",
+  "submit_community": "Lähetä yhteisösi"
 }
