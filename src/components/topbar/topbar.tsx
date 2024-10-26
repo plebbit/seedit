@@ -183,14 +183,17 @@ const TopBar = () => {
               </Link>
             </li>
             <span className={styles.separator}> | </span>
-            {subplebbitAddresses?.map((address, index) => (
-              <li key={index}>
-                {index !== 0 && <span className={styles.separator}>-</span>}
-                <Link to={`/p/${address}`} className={params.subplebbitAddress === address ? styles.selected : styles.choice}>
-                  {address}
-                </Link>
-              </li>
-            ))}
+            {subplebbitAddresses?.map((address, index) => {
+              const displayAddress = address.endsWith('.eth') ? address.slice(0, -4) : address.endsWith('.sol') ? address.slice(0, -4) : address;
+              return (
+                <li key={index}>
+                  {index !== 0 && <span className={styles.separator}>-</span>}
+                  <Link to={`/p/${address}`} className={params.subplebbitAddress === address ? styles.selected : styles.choice}>
+                    {displayAddress}
+                  </Link>
+                </li>
+              );
+            })}
           </ul>
         </div>
         <Link to='/communities/vote' className={styles.moreLink}>
