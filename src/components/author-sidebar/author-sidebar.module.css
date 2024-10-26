@@ -103,11 +103,11 @@
   font-family: verdana, arial, helvetica, sans-serif;
 }
 
-.editButton {
+.editButton a {
   color: var(--text-primary);
   cursor: pointer;
 }
 
-.editButton:hover {
+.editButton a:hover {
   text-decoration: underline;
 }

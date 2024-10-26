@@ -1,9 +1,4 @@
-import {
-  // Link,
-  useLocation,
-  useNavigate,
-  useParams,
-} from 'react-router-dom';
+import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
 import {
   useAccount,
   useAccountComments,
@@ -93,14 +88,6 @@ const AuthorSidebar = () => {
   const oldestCommentTimestamp = isInAuthorView ? authorOldestCommentTimestamp : isInProfileView ? profileOldestAccountTimestamp : Date.now();
   const displayName = isInAuthorView ? authorAccount?.author?.displayName : isInProfileView ? profileAccount?.author?.displayName : '';
 
-  const confirmNavigateToSettings = () => {
-    if (window.confirm('Go to the settings to set a display name.')) {
-      navigate('/settings');
-    } else {
-      return;
-    }
-  };
-
   const confirmBlock = () => {
     if (window.confirm(`Are you sure you want to ${blocked ? 'unblock' : 'block'} this user?`)) {
       if (blocked) {
@@ -125,8 +112,8 @@ const AuthorSidebar = () => {
             <span className={styles.editButtonWrapper}>
               {' '}
               (
-              <span className={styles.editButton} onClick={confirmNavigateToSettings}>
-                {t('edit')}
+              <span className={styles.editButton}>
+                <Link to='/settings#displayName'>{t('edit')}</Link>
               </span>
               )
             </span>
