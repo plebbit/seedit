@@ -267,10 +267,12 @@ const Sidebar = ({ comment, isSubCreatedButNotYetPublished, settings, subplebbit
         {t('create_your_community')}
         <div className={styles.nub} />
       </div>
-      <div className={styles.largeButton} onClick={() => alert('This feature is not available yet.')}>
-        {t('submit_community')}
-        <div className={styles.nub} />
-      </div>
+      {isInSubplebbitsView && (
+        <div className={styles.largeButton} onClick={() => alert('This feature is not available yet.')}>
+          {t('submit_community')}
+          <div className={styles.nub} />
+        </div>
+      )}
       <div className={styles.footer}>
         <a className={styles.footerLogo} href='https://github.com/plebbit/seedit/releases/latest' target='_blank' rel='noopener noreferrer'>
           <img src='assets/logo/seedit.png' alt='' />
