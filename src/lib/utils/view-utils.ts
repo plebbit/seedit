@@ -30,7 +30,7 @@ export const getSidebarLink = (pathname: string, params: ParamsType): string => 
 };
 
 export const isAboutView = (pathname: string): boolean => {
-  return pathname.startsWith('/about');
+  return pathname === '/about' || pathname.startsWith('/about#');
 };
 
 export const isSidebarView = (pathname: string): boolean => {

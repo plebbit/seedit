@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { Outlet, Route, Routes, useLocation, useParams } from 'react-router-dom';
+import { Outlet, Route, Routes, useLocation, useNavigate, useParams } from 'react-router-dom';
 import useTheme from './hooks/use-theme';
 import useTimeFilter from './hooks/use-time-filter';
 import styles from './app.module.css';
@@ -80,13 +80,23 @@ const App = () => {
     document.body.classList.add(theme);
   }, [theme]);
 
+  // react router doesn't handle the %23 hash correctly, so we need to replace it with #
+  const navigate = useNavigate();
+  const location = useLocation();
+  useEffect(() => {
+    const currentPath = location.pathname + location.hash;
+    if (currentPath.includes('%23')) {
+      const correctedPath = currentPath.replace('%23', '#');
+      navigate(correctedPath, { replace: true });
+    }
+  }, [location, navigate]);
+
   return (
     <div className={`${styles.app} ${theme}`}>
       <Routes>
         <Route element={globalLayout}>
           <Route element={pagesLayout}>
             <Route path='/about' element={<About />} />
-            <Route path='/about/index:hash' element={<About />} />
             <Route path='/submit' element={<SubmitPage />} />
             <Route path='/sidebar' element={<SidebarView />} />
 

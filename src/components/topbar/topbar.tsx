@@ -57,7 +57,7 @@ const TopBar = () => {
 
   const getSelectedSortLabel = () => {
     const index = sortTypes.indexOf(selectedSortType);
-    return index >= 0 ? sortLabels[index] : '';
+    return index >= 0 ? sortLabels[index] : sortLabels[0];
   };
 
   const handleClickOutside = useCallback(
