@@ -3,11 +3,14 @@
   position: relative;
   background-color: var(--background-primary);
   font-size: 12px;
+  /* Add flex display */
+  display: flex;
+  flex-direction: column;
 }
 
 .container {
   display: flex;
-  align-items: flex-end;
+  align-items: flex-end; /* This aligns children to bottom */
   justify-content: flex-start;
   white-space: nowrap;
 }
@@ -98,15 +101,17 @@
 .tabMenu {
   list-style-type: none;
   white-space: nowrap;
-  display: inline-block;
-  vertical-align: bottom;
+  display: flex;
+  align-items: flex-end;
   text-transform: lowercase;
 }
 
 .tabMenu li {
-  display: inline;
+  display: inline-flex;
+  align-items: flex-end;
   font-weight: bold;
   margin: 0px 3px;
+  line-height: 1.3;
 }
 
 .tabMenu li a {
@@ -114,6 +119,7 @@
   background-color: var(--background-secondary);
   text-decoration: none;
   color: var(--text-primary);
+  box-sizing: border-box;
 }
 
 .tabMenu .selected a {
@@ -121,17 +127,20 @@
   background-color: var(--background);
   border: 1px solid var(--border-primary);
   border-bottom: 1px solid var(--background);
+  padding: 2px 6px 0 6px;
+  display: inline-flex;
+  align-items: flex-end;
+  margin-bottom: -1px;
 }
 
-.tabs {
+.horizontalScroll {
   display: flex;
   overflow-x: auto;
   scrollbar-width: none;
   -ms-overflow-style: none;
-  padding-top: 5px;
 }
 
-.tabs::-webkit-scrollbar {
+.horizontalScroll::-webkit-scrollbar {
   display: none;
 }
 

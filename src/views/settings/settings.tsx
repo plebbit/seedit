@@ -204,7 +204,7 @@ const GeneralSettings = () => {
           <DisplayNameSetting />
         </span>
       </div>
-      <div className={styles.category}>
+      <div className={`${styles.category} ${location.hash === '#cryptoAddress' ? styles.highlightedSetting : ''}`} id='cryptoAddress'>
         <span className={styles.categoryTitle}>{t('crypto_address')}</span>
         <span className={styles.categorySettings}>
           <AddressSettings />
