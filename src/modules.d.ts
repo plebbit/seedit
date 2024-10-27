@@ -6,3 +6,5 @@ declare module '*.module.css' {
 declare module 'ext-name';
 
 declare module 'lodash';
+
+declare module 'react-router-hash-link';

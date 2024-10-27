@@ -5,7 +5,17 @@ import { Comment, useAccount, useBlock, Role, Subplebbit, useSubplebbitStats, us
 import styles from './sidebar.module.css';
 import { getFormattedDate, getFormattedTimeDuration, getFormattedTimeAgo } from '../../lib/utils/time-utils';
 import { findSubplebbitCreator } from '../../lib/utils/user-utils';
-import { isAboutView, isAllView, isHomeAboutView, isHomeView, isPendingView, isPostView, isSubplebbitSettingsView, isSubplebbitsView } from '../../lib/utils/view-utils';
+import {
+  isSidebarView,
+  isAllView,
+  isHomeSidebarView,
+  isHomeView,
+  isPendingView,
+  isPostView,
+  isSubplebbitSettingsView,
+  isSubplebbitsView,
+  isAboutView,
+} from '../../lib/utils/view-utils';
 import Markdown from '../markdown';
 import SearchBar from '../search-bar';
 import SubscribeButton from '../subscribe-button';
@@ -145,10 +155,11 @@ const Sidebar = ({ comment, isSubCreatedButNotYetPublished, settings, subplebbit
 
   const location = useLocation();
   const params = useParams();
-  const isInAboutView = isAboutView(location.pathname);
+  const isInSidebarView = isSidebarView(location.pathname);
   const isInAllView = isAllView(location.pathname);
-  const isInHomeAboutView = isHomeAboutView(location.pathname);
-  const isInHomeView = isHomeView(location.pathname, params);
+  const isInHomeSidebarView = isHomeSidebarView(location.pathname);
+  const isInAboutView = isAboutView(location.pathname);
+  const isInHomeView = isHomeView(location.pathname);
   const isInPendingView = isPendingView(location.pathname, params);
   const isInPostView = isPostView(location.pathname, params);
   const isInSubplebbitsView = isSubplebbitsView(location.pathname);
@@ -158,7 +169,11 @@ const Sidebar = ({ comment, isSubCreatedButNotYetPublished, settings, subplebbit
   const subplebbitCreator = findSubplebbitCreator(roles);
   const creatorAddress = subplebbitCreator === 'anonymous' ? 'anonymous' : `${Plebbit.getShortAddress(subplebbitCreator)}`;
   const submitRoute =
-    isInHomeView || isInHomeAboutView || isInAllView ? '/submit' : isInPendingView ? `/p/${pendingPost?.subplebbitAddress}/submit` : `/p/${address}/submit`;
+    isInHomeView || isInHomeSidebarView || isInAllView || isInAboutView
+      ? '/submit'
+      : isInPendingView
+      ? `/p/${pendingPost?.subplebbitAddress}/submit`
+      : `/p/${address}/submit`;
 
   const { blocked, unblock, block } = useBlock({ address });
 
@@ -196,7 +211,7 @@ const Sidebar = ({ comment, isSubCreatedButNotYetPublished, settings, subplebbit
   };
 
   return (
-    <div className={`${isInAboutView ? styles.about : styles.sidebar}`}>
+    <div className={`${isInSidebarView ? styles.about : styles.sidebar}`}>
       <SearchBar />
       {isInPostView && <PostInfo address={address} cid={cid} downvoteCount={downvoteCount} timestamp={timestamp} upvoteCount={upvoteCount} />}
       <Link to={submitRoute}>
@@ -206,7 +221,7 @@ const Sidebar = ({ comment, isSubCreatedButNotYetPublished, settings, subplebbit
           <div className={styles.nub} />
         </div>
       </Link>
-      {!isInHomeView && !isInHomeAboutView && !isInAllView && !isInPendingView && !isInSubplebbitsView && (
+      {!isInHomeView && !isInHomeSidebarView && !isInAllView && !isInPendingView && !isInSubplebbitsView && !isInAboutView && (
         <div className={styles.titleBox}>
           <Link className={styles.title} to={`/p/${address}`}>
             {subplebbit?.address}
@@ -252,6 +267,12 @@ const Sidebar = ({ comment, isSubCreatedButNotYetPublished, settings, subplebbit
         {t('create_your_community')}
         <div className={styles.nub} />
       </div>
+      {isInSubplebbitsView && (
+        <div className={styles.largeButton} onClick={() => alert('This feature is not available yet.')}>
+          {t('submit_community')}
+          <div className={styles.nub} />
+        </div>
+      )}
       <div className={styles.footer}>
         <a className={styles.footerLogo} href='https://github.com/plebbit/seedit/releases/latest' target='_blank' rel='noopener noreferrer'>
           <img src='assets/logo/seedit.png' alt='' />
@@ -260,7 +281,7 @@ const Sidebar = ({ comment, isSubCreatedButNotYetPublished, settings, subplebbit
           <ul>
             <li>
               <a href='https://plebbit.com' target='_blank' rel='noopener noreferrer'>
-                {t('about')}
+                plebbit
               </a>
               <span className={styles.footerSeparator}>|</span>
             </li>

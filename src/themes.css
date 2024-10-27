@@ -5,12 +5,14 @@
   --background-markdown: #1f1f1f;
   --background-primary: #1f1f1f;
   --background-secondary: #3e3e3e;
+  --background-orange: #4a3700;
   --background-text: #0f0f0f;
   --background-thumbnail: rgba(255, 255, 255, 0.01);
   --border-contrast: #6a6a6a;
   --border-orange: #a76d00;
   --border-primary: #1f1f1f;
   --border-text: #3e3e3e;
+  --box-border-color: gray;
   --button-border-disabled: #6f6f6f34;
   --button-border-primary: #1f1f1f;
   --button-border-primary-hover: #3e3e3e;
@@ -80,6 +82,7 @@
   --border-orange: #ffa500;
   --border-primary: #5f99cf;
   --border-text: gray;
+  --box-border-color: #8D9CAA;
   --button-border-disabled: #dadada;
   --button-border-primary: #c4dbf1;
   --button-border-primary-hover: #879eb4;

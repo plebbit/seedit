@@ -1,5 +1,6 @@
 import { RefObject, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useLocation } from 'react-router-dom';
 import { setAccount, useAccount, usePlebbitRpcSettings } from '@plebbit/plebbit-react-hooks';
 import styles from './plebbit-options.module.css';
 
@@ -136,6 +137,7 @@ const NodeDataPathSettings = ({ nodeDataPathRef }: SettingsProps) => {
 
 const PlebbitOptions = () => {
   const { t } = useTranslation();
+  const location = useLocation();
   const account = useAccount();
   const { plebbitOptions } = account || {};
 
@@ -223,7 +225,7 @@ const PlebbitOptions = () => {
           <BlockchainProvidersSettings ethRpcRef={ethRpcRef} solRpcRef={solRpcRef} maticRpcRef={maticRpcRef} avaxRpcRef={avaxRpcRef} />
         </span>
       </div>
-      <div className={styles.category}>
+      <div className={`${styles.category} ${location.hash === '#nodeRpc' ? styles.highlightedSetting : ''}`} id='nodeRpc'>
         <span className={styles.categoryTitle}>node rpc</span>
         <span className={styles.categorySettings}>
           <PlebbitRPCSettings plebbitRpcRef={plebbitRpcRef} />

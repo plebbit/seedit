@@ -72,13 +72,13 @@ const SearchBar = ({ isFocused = false }: SearchBarProps) => {
       </form>
       <div className={`${styles.infobar} ${showExpando ? styles.slideDown : styles.slideUp}`}>
         <label>
-          <input type='checkbox' checked={!isInCommunitySearch} onChange={() => setIsInCommunitySearch(false)} />
+          <input type='checkbox' disabled checked={!isInCommunitySearch} onChange={() => setIsInCommunitySearch(false)} />
           {t('search_community_address')}
         </label>
-        <label>
+        {/* <label>
           <input disabled type='checkbox' checked={isInCommunitySearch} onChange={() => setIsInCommunitySearch(true)} />
           {t('search_feed_post')}
-        </label>
+        </label> */}
       </div>
     </div>
   );

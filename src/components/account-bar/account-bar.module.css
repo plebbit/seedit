@@ -59,7 +59,6 @@
 .searchBar {
   position: absolute;
   border-radius: 7px;
-  background-color: var(--background-secondary);
   right: 2px;
   top: 25px;
   z-index: 3;

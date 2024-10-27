@@ -19,7 +19,7 @@ const TopBar = () => {
   const params = useParams();
   const subscriptions = account?.subscriptions;
   const isinAllView = isAllView(location.pathname);
-  const isInHomeView = isHomeView(location.pathname, params);
+  const isInHomeView = isHomeView(location.pathname);
   const isInSubplebbitView = isSubplebbitView(location.pathname, params);
   const homeButtonClass = isInHomeView ? styles.selected : styles.choice;
 
@@ -57,7 +57,7 @@ const TopBar = () => {
 
   const getSelectedSortLabel = () => {
     const index = sortTypes.indexOf(selectedSortType);
-    return index >= 0 ? sortLabels[index] : '';
+    return index >= 0 ? sortLabels[index] : sortLabels[0];
   };
 
   const handleClickOutside = useCallback(
@@ -92,14 +92,6 @@ const TopBar = () => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
   }, [handleClickOutside]);
-
-  let homeLink = '/';
-  let allLink = '/p/all';
-
-  if (timeFilterName && !isInSubplebbitView) {
-    homeLink += `${selectedSortType}/${timeFilterName}`;
-    allLink += `/${selectedSortType}/${timeFilterName}`;
-  }
 
   const isConnectedToRpc = !!account?.plebbitOptions.plebbitRpcClientsOptions;
   const navigate = useNavigate();
@@ -162,7 +154,7 @@ const TopBar = () => {
         <div className={styles.dropdown} ref={filterDropdownRef} onClick={toggleFilterDropdown}>
           <span className={styles.selectedTitle}>{selectedTimeFilter}</span>
           <div className={`${styles.dropChoices} ${styles.filterDropChoices} ${filterDropdownClass}`} ref={filterdropdownItemsRef}>
-            {timeFilterNames.map((timeFilterName, index) => (
+            {timeFilterNames.slice(0, -1).map((timeFilterName, index) => (
               <Link to={getTimeFilterLink(timeFilterName)} key={index} className={styles.dropdownItem}>
                 {timeFilterNames[index]}
               </Link>
@@ -172,25 +164,28 @@ const TopBar = () => {
         <div className={styles.srList}>
           <ul className={styles.srBar}>
             <li>
-              <Link to={homeLink} className={`${styles.homeButton} ${homeButtonClass}`}>
+              <Link to='/' className={`${styles.homeButton} ${homeButtonClass}`}>
                 {t('home')}
               </Link>
             </li>
             <li>
               <span className={styles.separator}>-</span>
-              <Link to={allLink} className={isinAllView ? styles.selected : styles.choice}>
+              <Link to='/p/all' className={isinAllView ? styles.selected : styles.choice}>
                 {t('all')}
               </Link>
             </li>
             <span className={styles.separator}> | </span>
-            {subplebbitAddresses?.map((address, index) => (
-              <li key={index}>
-                {index !== 0 && <span className={styles.separator}>-</span>}
-                <Link to={`/p/${address}`} className={params.subplebbitAddress === address ? styles.selected : styles.choice}>
-                  {address}
-                </Link>
-              </li>
-            ))}
+            {subplebbitAddresses?.map((address, index) => {
+              const displayAddress = address.endsWith('.eth') ? address.slice(0, -4) : address.endsWith('.sol') ? address.slice(0, -4) : address;
+              return (
+                <li key={index}>
+                  {index !== 0 && <span className={styles.separator}>-</span>}
+                  <Link to={`/p/${address}`} className={params.subplebbitAddress === address ? styles.selected : styles.choice}>
+                    {displayAddress}
+                  </Link>
+                </li>
+              );
+            })}
           </ul>
         </div>
         <Link to='/communities/vote' className={styles.moreLink}>

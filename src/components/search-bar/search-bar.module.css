@@ -13,13 +13,14 @@
   box-sizing: border-box;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
-  padding: 6px;
-  padding-left: 9px;
+  padding: 6px 25px 6px 9px;
 }
 
 .searchBar input[type="submit"] {
   background-color: transparent;
-  background-image: url('/public/assets/buttons/search-submit.png');
+  background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAAaCAMAAACelLz8AAAAb1BMVEUAAACJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYm4Po3NAAAAJXRSTlMAAQIEDBAREhMUJS0uQ09QV19hZG1udHmbnJ64xMXGx8jOz9DUayO31AAAANNJREFUeAGF0fFugjAUhfGDg3W1blMEC2IV8Lz/My4nEnK7jOz3380nN7XFy0fdJzL1tUeujBMXUyxh7Acaw96UBzPj2sqBmtuDc6Edqe+0U6Km/v01VJ2muJxtUnnDYqc2e0itbRVWlXbWkJ5kC6MleYUkkgcYgWSCkKSD4Uiy+CdpYfi98Pb3MRqS3fbhzxA/61e77C8/vbmorrIXdcmvtwnOhWaknNZH0Zw7mqfcbGWcuXheTqaJr6+JvHVnDxzzJkUBUZNvZGy7Y7PZZH097p8/V4YmEaKXKKIAAAAASUVORK5CYII=');
+  background-size: 13px 13px;
+  background-position: 0 0;
   height: 13px;
   width: 13px;
   border: none;
@@ -31,7 +32,7 @@
 }
 
 .searchBar input[type="submit"]:hover {
-  background-image: url('/public/assets/buttons/search-submit-hover.png');
+  background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAAaCAMAAACelLz8AAAAeFBMVEUAAACJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYl3r/6iAAAAJ3RSTlMAAQMFDhMUFhcYLC02N1FfYGlydXiDhIuRuru8vt3s7e7v8PH4+fpBQVyrAAAA1ElEQVR4AYXQcW+CMBBA8cPBuk7cpgiCiFUE3/f/hksuDbmakf3+uuSl5DhR8lH1AUJfeUnl7UQ0tbktnwPGsDXlTuKxtFzfjM3OubIZ9V0eUwvQv4sqOoA27jYB/ZtEmw6Yvc4VMBayKEag0rEHGjEa4KJTAHY2lUDQCcDZ5ACyf1IAytcPXv9eowbO68sfdfQz0G2SX356c6iusIc6peetS+fKegTgINH2wav90ob1lrcz0fN0SJv46hLgej56kb1pUZaJiu1HUqbdZLXZZH3fb1+/i3YpBcVhtqwAAAAASUVORK5CYII=');
   cursor: pointer;
 }
 
@@ -56,18 +57,18 @@
   padding: 0 10px;
   height: 0;
   overflow: hidden;
-  transition: height 0.4s linear,
-              visibility 0.4s linear,
-              padding-top 0.4s linear, 
-              margin-top 0.4s linear, 
-              padding-bottom 0.4s linear, 
-              margin-bottom 0.4s linear;  
+  transition: height 0.3s linear,
+              visibility 0.3s linear,
+              padding-top 0.3s linear, 
+              margin-top 0.3s linear, 
+              padding-bottom 0.3s linear, 
+              margin-bottom 0.3s linear;  
   z-index: 1;
   margin-bottom: 10px;
 }
 
 .slideDown {
-  height: 49px;
+  height: 22px;
   padding-top: 10px;
   padding-bottom: 10px;
   margin-top: 5px;

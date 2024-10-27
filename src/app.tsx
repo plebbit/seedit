@@ -1,13 +1,14 @@
 import { useEffect } from 'react';
-import { Outlet, Route, Routes, useParams } from 'react-router-dom';
+import { Outlet, Route, Routes, useLocation, useNavigate, useParams } from 'react-router-dom';
 import useTheme from './hooks/use-theme';
-import { timeFilterNames } from './hooks/use-time-filter';
+import useTimeFilter from './hooks/use-time-filter';
 import styles from './app.module.css';
-import All from './views/all';
 import About from './views/about';
+import All from './views/all';
 import Author from './views/author';
 import Home from './views/home';
 import Inbox from './views/inbox';
+import SidebarView from './views/sidebar';
 import NotFound from './views/not-found';
 import PendingPost from './views/pending-post';
 import PostPage from './views/post-page';
@@ -22,17 +23,25 @@ import ChallengeModal from './components/challenge-modal';
 import Header from './components/header';
 import StickyHeader from './components/sticky-header';
 import TopBar from './components/topbar';
+import { isAboutView } from './lib/utils/view-utils';
 
 export const sortTypes = ['hot', 'new', 'active', 'controversialAll', 'topAll'];
 
 const CheckRouteParams = () => {
   const { accountCommentIndex, sortType, timeFilterName } = useParams();
+  const { timeFilterNames, lastVisitTimeFilterName } = useTimeFilter();
   const isValidAccountCommentIndex = !accountCommentIndex || (!isNaN(parseInt(accountCommentIndex)) && parseInt(accountCommentIndex) >= 0);
   const isSortTypeValid = !sortType || sortTypes.includes(sortType);
-  const isTimeFilterNameValid = !timeFilterName || timeFilterNames.includes(timeFilterName as any);
-  const isAccountCommentIndexValid = !accountCommentIndex || !isNaN(parseInt(accountCommentIndex));
 
-  if (!isValidAccountCommentIndex || !isSortTypeValid || !isTimeFilterNameValid || !isAccountCommentIndexValid) {
+  const isDynamicTimeFilter = (filter: string) => /^\d+[dwmy]$/.test(filter);
+  const isTimeFilterNameValid =
+    !timeFilterName || timeFilterNames.includes(timeFilterName as any) || timeFilterName === lastVisitTimeFilterName || isDynamicTimeFilter(timeFilterName);
+
+  const isAccountCommentIndexValid = !accountCommentIndex || !isNaN(parseInt(accountCommentIndex));
+  const location = useLocation();
+  const isInAboutView = isAboutView(location.pathname);
+
+  if (!isValidAccountCommentIndex || (!isSortTypeValid && !isInAboutView) || !isTimeFilterNameValid || !isAccountCommentIndexValid) {
     return <NotFound />;
   }
 
@@ -71,10 +80,61 @@ const App = () => {
     document.body.classList.add(theme);
   }, [theme]);
 
+  // react router doesn't handle the %23 hash correctly, so we need to replace it with #
+  const navigate = useNavigate();
+  const location = useLocation();
+  useEffect(() => {
+    const currentPath = location.pathname + location.hash;
+    if (currentPath.includes('%23')) {
+      const correctedPath = currentPath.replace('%23', '#');
+      navigate(correctedPath, { replace: true });
+    }
+  }, [location, navigate]);
+
   return (
     <div className={`${styles.app} ${theme}`}>
       <Routes>
         <Route element={globalLayout}>
+          <Route element={pagesLayout}>
+            <Route path='/about' element={<About />} />
+            <Route path='/submit' element={<SubmitPage />} />
+            <Route path='/sidebar' element={<SidebarView />} />
+
+            <Route path='/p/all/sidebar' element={<SidebarView />} />
+
+            <Route path='/p/:subplebbitAddress/c/:commentCid' element={<PostPage />} />
+            <Route path='/p/:subplebbitAddress/c/:commentCid?context=3' element={<PostPage />} />
+            <Route path='/p/:subplebbitAddress/c/:commentCid/sidebar' element={<SidebarView />} />
+
+            <Route path='/p/:subplebbitAddress/submit' element={<SubmitPage />} />
+            <Route path='/p/:subplebbitAddress/sidebar' element={<SidebarView />} />
+
+            <Route path='/settings' element={<Settings />} />
+            <Route path='/p/:subplebbitAddress/settings' element={<SubplebbitSettings />} />
+            <Route path='/settings/plebbit-options' element={<Settings />} />
+
+            <Route path='/profile/sidebar' element={<SidebarView />} />
+
+            <Route path='/u/:authorAddress/c/:commentCid/sidebar' element={<SidebarView />} />
+
+            <Route path='/inbox' element={<Inbox />} />
+            <Route path='/inbox/unread' element={<Inbox />} />
+            <Route path='/inbox/commentreplies' element={<Inbox />} />
+            <Route path='/inbox/postreplies' element={<Inbox />} />
+
+            <Route path='/communities' element={<Subplebbits />} />
+            <Route path='/communities/subscriber' element={<Subplebbits />} />
+            <Route path='/communities/moderator' element={<Subplebbits />} />
+            <Route path='/communities/admin' element={<Subplebbits />} />
+            <Route path='/communities/owner' element={<Subplebbits />} />
+            <Route path='/communities/vote' element={<Subplebbits />} />
+            <Route path='/communities/vote/passing' element={<Subplebbits />} />
+            <Route path='/communities/vote/rejecting' element={<Subplebbits />} />
+
+            <Route path='/communities/create' element={<SubplebbitSettings />} />
+
+            <Route path='*' element={<NotFound />} />
+          </Route>
           <Route element={feedLayout}>
             <Route element={<CheckRouteParams />}>
               <Route path='/:sortType?/:timeFilterName?' element={<Home />} />
@@ -98,45 +158,6 @@ const App = () => {
               <Route path='/u/:authorAddress/c/:commentCid?/comments/:sortType?/:timeFilterName?' element={<Author />} />
               <Route path='/u/:authorAddress/c/:commentCid?/submitted/:sortType?/:timeFilterName?' element={<Author />} />
             </Route>
-          </Route>
-          <Route element={pagesLayout}>
-            <Route path='/submit' element={<SubmitPage />} />
-            <Route path='/about' element={<About />} />
-
-            <Route path='/p/all/about' element={<About />} />
-
-            <Route path='/p/:subplebbitAddress/c/:commentCid' element={<PostPage />} />
-            <Route path='/p/:subplebbitAddress/c/:commentCid?context=3' element={<PostPage />} />
-            <Route path='/p/:subplebbitAddress/c/:commentCid/about' element={<About />} />
-
-            <Route path='/p/:subplebbitAddress/submit' element={<SubmitPage />} />
-            <Route path='/p/:subplebbitAddress/about' element={<About />} />
-
-            <Route path='/settings' element={<Settings />} />
-            <Route path='/p/:subplebbitAddress/settings' element={<SubplebbitSettings />} />
-            <Route path='/settings/plebbit-options' element={<Settings />} />
-
-            <Route path='/profile/about' element={<About />} />
-
-            <Route path='/u/:authorAddress/c/:commentCid/about' element={<About />} />
-
-            <Route path='/inbox' element={<Inbox />} />
-            <Route path='/inbox/unread' element={<Inbox />} />
-            <Route path='/inbox/commentreplies' element={<Inbox />} />
-            <Route path='/inbox/postreplies' element={<Inbox />} />
-
-            <Route path='/communities' element={<Subplebbits />} />
-            <Route path='/communities/subscriber' element={<Subplebbits />} />
-            <Route path='/communities/moderator' element={<Subplebbits />} />
-            <Route path='/communities/admin' element={<Subplebbits />} />
-            <Route path='/communities/owner' element={<Subplebbits />} />
-            <Route path='/communities/vote' element={<Subplebbits />} />
-            <Route path='/communities/vote/passing' element={<Subplebbits />} />
-            <Route path='/communities/vote/rejecting' element={<Subplebbits />} />
-
-            <Route path='/communities/create' element={<SubplebbitSettings />} />
-
-            <Route path='*' element={<NotFound />} />
           </Route>
         </Route>
       </Routes>

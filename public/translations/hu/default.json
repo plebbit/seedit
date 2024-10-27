@@ -310,7 +310,7 @@
   "more_posts_last_month": "A {{currentTimeFilterName}} óta látható bejegyzések, <1>további bejegyzések megjelenítése az előző hónapban</1>",
   "sure_delete": "Biztos, hogy törölni szeretné ezt a bejegyzést?",
   "sure_undelete": "Biztos, hogy vissza szeretné állítani ezt a bejegyzést?",
-  "profile_info": "A fiókod u/{{shortAddress}} létrejött. Menj a <1>beállítások</1> menübe, hogy exportáld a fiókodat, beállíts egy megjelenítési nevet és még többet.",
+  "profile_info": "A fiókod u/{{shortAddress}} létrejött. <1>Állítsd be a megjelenítési nevet</1>, <2>biztonsági másolatot készíteni a privát kulcsról</2>, <3>tudj meg többet</3>.",
   "show_all_instead": "A {{timeFilterName}} óta látható bejegyzések, <1>helyette mindent mutass</1>",
   "subplebbit_offline_info": "A subplebbit offline lehet, és a közzététel sikertelen lehet.",
   "posts_last_synced_info": "Legutóbb szinkronizált bejegyzések {{time}}, a subplebbit offline lehet, és a közzététel sikertelen lehet.",
@@ -321,5 +321,6 @@
   "delete_this_account": "<1>törölni</1> ezt a fiókot",
   "create_new_account": "<1>hozzon létre</1> egy új fiókot",
   "wallet_number": "tárca #{{index}}",
-  "view_more": "több megtekintése"
+  "view_more": "több megtekintése",
+  "submit_community": "Küldje el közösségét"
 }

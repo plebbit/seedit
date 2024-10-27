@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { Trans, useTranslation } from 'react-i18next';
-import { Link, Outlet, useParams } from 'react-router-dom';
+import { HashLink } from 'react-router-hash-link';
+import { Outlet, useParams } from 'react-router-dom';
 import { StateSnapshot, Virtuoso, VirtuosoHandle } from 'react-virtuoso';
 import { useAccount, useAccountComments, useAccountVotes, useComment } from '@plebbit/plebbit-react-hooks';
 import useWindowWidth from '../../hooks/use-window-width';
@@ -144,7 +145,7 @@ const Overview = () => {
   return (
     <div>
       <SortDropdown onSortChange={setSortType} />
-      {sortedComments.length === 0 ? <div>{t('no_posts')}</div> : <VirtualizedCommentList comments={sortedComments} />}
+      {sortedComments.length === 0 ? <div className={styles.nothingFound}>{t('nothing_found')}</div> : <VirtualizedCommentList comments={sortedComments} />}
     </div>
   );
 };
@@ -163,7 +164,7 @@ const Comments = () => {
   return (
     <div>
       <SortDropdown onSortChange={setSortType} />
-      {sortedComments.length === 0 ? <div>{t('no_comments')}</div> : <VirtualizedCommentList comments={sortedComments} />}
+      {sortedComments.length === 0 ? <div className={styles.nothingFound}>{t('nothing_found')}</div> : <VirtualizedCommentList comments={sortedComments} />}
     </div>
   );
 };
@@ -182,7 +183,7 @@ const Submitted = () => {
   return (
     <div>
       <SortDropdown onSortChange={setSortType} />
-      {sortedComments.length === 0 ? <div>{t('no_posts')}</div> : <VirtualizedCommentList comments={sortedComments} />}
+      {sortedComments.length === 0 ? <div className={styles.nothingFound}>{t('nothing_found')}</div> : <VirtualizedCommentList comments={sortedComments} />}
     </div>
   );
 };
@@ -205,7 +206,7 @@ const VotedComments = ({ voteType }: { voteType: 1 | -1 }) => {
   return (
     <div>
       <SortDropdown onSortChange={setSortType} />
-      {paginatedCids.length === 0 ? <div>{t('no_posts')}</div> : paginatedCids.map((cid) => <CommentItem key={cid} cid={cid} />)}
+      {paginatedCids.length === 0 ? <div className={styles.nothingFound}>{t('nothing_found')}</div> : paginatedCids.map((cid) => <CommentItem key={cid} cid={cid} />)}
       <PaginationControls currentPage={currentPage} hasMore={hasMore} onPageChange={setCurrentPage} />
     </div>
   );
@@ -225,7 +226,11 @@ const HiddenComments = () => {
 
   return (
     <div>
-      {hiddenCommentCids.length === 0 ? <div>{t('no_hidden_posts')}</div> : hiddenCommentCids.map((cid) => <CommentItem key={cid} cid={cid} />)}
+      {hiddenCommentCids.length === 0 ? (
+        <div className={styles.nothingFound}>{t('nothing_found')}</div>
+      ) : (
+        hiddenCommentCids.map((cid) => <CommentItem key={cid} cid={cid} />)
+      )}
       <PaginationControls currentPage={currentPage} hasMore={hasMore} onPageChange={setCurrentPage} />
     </div>
   );
@@ -255,7 +260,15 @@ const Profile = () => {
 
   const infobar = showInfobarRef.current && (
     <div className={styles.infobar}>
-      <Trans i18nKey='profile_info' values={{ shortAddress: account?.author?.shortAddress }} components={{ 1: <Link to='/settings' /> }} />
+      <Trans
+        i18nKey='profile_info'
+        values={{ shortAddress: account?.author?.shortAddress }}
+        components={{
+          1: <HashLink to='/settings#displayName' />,
+          2: <HashLink to='/settings#exportAccount' />,
+          3: <HashLink to='/about#newUsers' />,
+        }}
+      />
     </div>
   );
 

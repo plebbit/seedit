@@ -1,5 +1,3 @@
-import { timeFilterNames } from '../../hooks/use-time-filter';
-
 export type ParamsType = {
   accountCommentIndex?: string;
   authorAddress?: string;
@@ -12,35 +10,39 @@ export type ViewType = 'home' | 'pending' | 'post' | 'submit' | 'subplebbit' | '
 
 const sortTypes = ['/hot', '/new', '/active', '/controversialAll', '/topAll'];
 
-export const getAboutLink = (pathname: string, params: ParamsType): string => {
+export const getSidebarLink = (pathname: string, params: ParamsType): string => {
   // some subs might use emojis in their address, so we need to decode the pathname
   const decodedPathname = decodeURIComponent(pathname);
 
   if (decodedPathname.startsWith(`/p/${params.subplebbitAddress}/c/${params.commentCid}`)) {
-    return `/p/${params.subplebbitAddress}/c/${params.commentCid}/about`;
+    return `/p/${params.subplebbitAddress}/c/${params.commentCid}/sidebar`;
   } else if (decodedPathname.startsWith(`/p/${params.subplebbitAddress}`)) {
-    return `/p/${params.subplebbitAddress}/about`;
+    return `/p/${params.subplebbitAddress}/sidebar`;
   } else if (decodedPathname.startsWith('/profile')) {
-    return '/profile/about';
+    return '/profile/sidebar';
   } else if (decodedPathname.startsWith('/u/')) {
-    return `/u/${params.authorAddress}/c/${params.commentCid}/about`;
+    return `/u/${params.authorAddress}/c/${params.commentCid}/sidebar`;
   } else if (decodedPathname.startsWith('/p/all')) {
-    return '/p/all/about';
+    return '/p/all/sidebar';
   } else {
-    return '/about';
+    return '/sidebar';
   }
 };
 
 export const isAboutView = (pathname: string): boolean => {
-  return pathname.endsWith('/about');
+  return pathname === '/about' || pathname.startsWith('/about#');
+};
+
+export const isSidebarView = (pathname: string): boolean => {
+  return pathname.endsWith('/sidebar');
 };
 
 export const isAllView = (pathname: string): boolean => {
   return pathname.startsWith('/p/all');
 };
 
-export const isAllAboutView = (pathname: string): boolean => {
-  return pathname === '/p/all/about';
+export const isAllSidebarView = (pathname: string): boolean => {
+  return pathname === '/p/all/sidebar';
 };
 
 export const isAuthorView = (pathname: string): boolean => {
@@ -59,12 +61,20 @@ export const isCreateSubplebbitView = (pathname: string): boolean => {
   return pathname === '/communities/create';
 };
 
-export const isHomeView = (pathname: string, params: ParamsType): boolean => {
-  return pathname === '/' || sortTypes.includes(pathname) || (timeFilterNames.includes(params.timeFilterName || '') && !pathname.startsWith('/p/'));
+export const isHomeView = (pathname: string): boolean => {
+  if (pathname === '/') return true;
+
+  const pathParts = pathname.split('/');
+  if (pathParts.length >= 2) {
+    const potentialSortType = '/' + pathParts[1];
+    return sortTypes.includes(potentialSortType);
+  }
+
+  return false;
 };
 
-export const isHomeAboutView = (pathname: string): boolean => {
-  return pathname === '/about';
+export const isHomeSidebarView = (pathname: string): boolean => {
+  return pathname === '/sidebar';
 };
 
 export const isInboxView = (pathname: string): boolean => {

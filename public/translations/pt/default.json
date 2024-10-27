@@ -310,7 +310,7 @@
   "more_posts_last_month": "Exibindo postagens desde {{currentTimeFilterName}}, <1>atualize o feed com mais postagens do mês passado</1>",
   "sure_delete": "Tem certeza de que deseja excluir este post?",
   "sure_undelete": "Tem certeza de que deseja restaurar este post?",
-  "profile_info": "Sua conta u/{{shortAddress}} foi criada. Vá para <1>preferências</1> para exportar sua conta, definir um nome de exibição e mais.",
+  "profile_info": "Sua conta u/{{shortAddress}} foi criada. <1>Defina o nome de exibição</1>, <2>faça backup da chave privada</2>, <3>saiba mais</3>.",
   "show_all_instead": "Exibindo postagens desde {{timeFilterName}}, <1>mostrar tudo em vez disso</1>",
   "subplebbit_offline_info": "O subplebbit pode estar offline e a publicação pode falhar.",
   "posts_last_synced_info": "Posts sincronizados pela última vez {{time}}, o subplebbit pode estar offline e a publicação pode falhar.",
@@ -321,5 +321,6 @@
   "delete_this_account": "<1>excluir</1> esta conta",
   "create_new_account": "<1>criar</1> uma nova conta",
   "wallet_number": "carteira #{{index}}",
-  "view_more": "ver mais"
+  "view_more": "ver mais",
+  "submit_community": "Envie sua comunidade"
 }

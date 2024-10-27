@@ -10,11 +10,13 @@ import Sidebar from '../../components/sidebar';
 import { useDefaultAndSubscriptionsSubplebbitAddresses } from '../../hooks/use-default-subplebbits';
 import useFeedStateString from '../../hooks/use-feed-state-string';
 import useTimeFilter from '../../hooks/use-time-filter';
+import useRedirectToDefaultSort from '../../hooks/use-redirect-to-default-sort';
 
 const lastVirtuosoStates: { [key: string]: StateSnapshot } = {};
 
 const Home = () => {
   const { t } = useTranslation();
+  useRedirectToDefaultSort();
   const subplebbitAddresses = useDefaultAndSubscriptionsSubplebbitAddresses();
   const params = useParams<{ sortType?: string; timeFilterName?: string }>();
   const sortType = params?.sortType || 'hot';
