@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { Outlet, Route, Routes, useParams } from 'react-router-dom';
+import { Outlet, Route, Routes, useLocation, useParams } from 'react-router-dom';
 import useTheme from './hooks/use-theme';
 import useTimeFilter from './hooks/use-time-filter';
 import styles from './app.module.css';
@@ -23,6 +23,7 @@ import ChallengeModal from './components/challenge-modal';
 import Header from './components/header';
 import StickyHeader from './components/sticky-header';
 import TopBar from './components/topbar';
+import { isAboutView } from './lib/utils/view-utils';
 
 export const sortTypes = ['hot', 'new', 'active', 'controversialAll', 'topAll'];
 
@@ -31,10 +32,16 @@ const CheckRouteParams = () => {
   const { timeFilterNames, lastVisitTimeFilterName } = useTimeFilter();
   const isValidAccountCommentIndex = !accountCommentIndex || (!isNaN(parseInt(accountCommentIndex)) && parseInt(accountCommentIndex) >= 0);
   const isSortTypeValid = !sortType || sortTypes.includes(sortType);
-  const isTimeFilterNameValid = !timeFilterName || timeFilterNames.includes(timeFilterName as any) || timeFilterName === lastVisitTimeFilterName;
-  const isAccountCommentIndexValid = !accountCommentIndex || !isNaN(parseInt(accountCommentIndex));
 
-  if (!isValidAccountCommentIndex || !isSortTypeValid || !isTimeFilterNameValid || !isAccountCommentIndexValid) {
+  const isDynamicTimeFilter = (filter: string) => /^\d+[dwmy]$/.test(filter);
+  const isTimeFilterNameValid =
+    !timeFilterName || timeFilterNames.includes(timeFilterName as any) || timeFilterName === lastVisitTimeFilterName || isDynamicTimeFilter(timeFilterName);
+
+  const isAccountCommentIndexValid = !accountCommentIndex || !isNaN(parseInt(accountCommentIndex));
+  const location = useLocation();
+  const isInAboutView = isAboutView(location.pathname);
+
+  if (!isValidAccountCommentIndex || (!isSortTypeValid && !isInAboutView) || !isTimeFilterNameValid || !isAccountCommentIndexValid) {
     return <NotFound />;
   }
 
@@ -77,32 +84,9 @@ const App = () => {
     <div className={`${styles.app} ${theme}`}>
       <Routes>
         <Route element={globalLayout}>
-          <Route element={feedLayout}>
-            <Route element={<CheckRouteParams />}>
-              <Route path='/:sortType?/:timeFilterName?' element={<Home />} />
-
-              <Route path='/p/all/:sortType?/:timeFilterName?' element={<All />} />
-
-              <Route path='/p/:subplebbitAddress/:sortType?/:timeFilterName?' element={<Subplebbit />} />
-
-              <Route path='/profile/:accountCommentIndex' element={<PendingPost />} />
-
-              <Route path='/profile' element={<Profile />}>
-                <Route index element={<Profile.Overview />} />
-                <Route path='upvoted' element={<Profile.VotedComments voteType={1} />} />
-                <Route path='downvoted' element={<Profile.VotedComments voteType={-1} />} />
-                <Route path='hidden' element={<Profile.HiddenComments />} />
-                <Route path='comments' element={<Profile.Comments />} />
-                <Route path='submitted' element={<Profile.Submitted />} />
-              </Route>
-
-              <Route path='/u/:authorAddress/c/:commentCid?/:sortType?/:timeFilterName?' element={<Author />} />
-              <Route path='/u/:authorAddress/c/:commentCid?/comments/:sortType?/:timeFilterName?' element={<Author />} />
-              <Route path='/u/:authorAddress/c/:commentCid?/submitted/:sortType?/:timeFilterName?' element={<Author />} />
-            </Route>
-          </Route>
           <Route element={pagesLayout}>
             <Route path='/about' element={<About />} />
+            <Route path='/about/index:hash' element={<About />} />
             <Route path='/submit' element={<SubmitPage />} />
             <Route path='/sidebar' element={<SidebarView />} />
 
@@ -140,6 +124,30 @@ const App = () => {
             <Route path='/communities/create' element={<SubplebbitSettings />} />
 
             <Route path='*' element={<NotFound />} />
+          </Route>
+          <Route element={feedLayout}>
+            <Route element={<CheckRouteParams />}>
+              <Route path='/:sortType?/:timeFilterName?' element={<Home />} />
+
+              <Route path='/p/all/:sortType?/:timeFilterName?' element={<All />} />
+
+              <Route path='/p/:subplebbitAddress/:sortType?/:timeFilterName?' element={<Subplebbit />} />
+
+              <Route path='/profile/:accountCommentIndex' element={<PendingPost />} />
+
+              <Route path='/profile' element={<Profile />}>
+                <Route index element={<Profile.Overview />} />
+                <Route path='upvoted' element={<Profile.VotedComments voteType={1} />} />
+                <Route path='downvoted' element={<Profile.VotedComments voteType={-1} />} />
+                <Route path='hidden' element={<Profile.HiddenComments />} />
+                <Route path='comments' element={<Profile.Comments />} />
+                <Route path='submitted' element={<Profile.Submitted />} />
+              </Route>
+
+              <Route path='/u/:authorAddress/c/:commentCid?/:sortType?/:timeFilterName?' element={<Author />} />
+              <Route path='/u/:authorAddress/c/:commentCid?/comments/:sortType?/:timeFilterName?' element={<Author />} />
+              <Route path='/u/:authorAddress/c/:commentCid?/submitted/:sortType?/:timeFilterName?' element={<Author />} />
+            </Route>
           </Route>
         </Route>
       </Routes>

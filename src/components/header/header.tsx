@@ -254,7 +254,7 @@ const HeaderTabs = () => {
   const isInAllView = isAllView(location.pathname);
   const isInAuthorView = isAuthorView(location.pathname);
   const isInHomeSidebarView = isHomeSidebarView(location.pathname);
-  const isInHomeView = isHomeView(location.pathname, params);
+  const isInHomeView = isHomeView(location.pathname);
   const isInInboxView = isInboxView(location.pathname);
   const isInPendingView = isPendingView(location.pathname, params);
   const isInPostView = isPostView(location.pathname, params);
@@ -359,7 +359,7 @@ const Header = () => {
   const isInAllSidebarView = isAllSidebarView(location.pathname);
   const isInAllView = isAllView(location.pathname);
   const isInAuthorView = isAuthorView(location.pathname);
-  const isInHomeView = isHomeView(location.pathname, params);
+  const isInHomeView = isHomeView(location.pathname);
   const isInHomeSidebarView = isHomeSidebarView(location.pathname);
   const isInInboxView = isInboxView(location.pathname);
   const isInPostView = isPostView(location.pathname, params);

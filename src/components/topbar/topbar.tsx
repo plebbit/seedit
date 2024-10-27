@@ -19,7 +19,7 @@ const TopBar = () => {
   const params = useParams();
   const subscriptions = account?.subscriptions;
   const isinAllView = isAllView(location.pathname);
-  const isInHomeView = isHomeView(location.pathname, params);
+  const isInHomeView = isHomeView(location.pathname);
   const isInSubplebbitView = isSubplebbitView(location.pathname, params);
   const homeButtonClass = isInHomeView ? styles.selected : styles.choice;
 
@@ -93,14 +93,6 @@ const TopBar = () => {
     };
   }, [handleClickOutside]);
 
-  let homeLink = '/';
-  let allLink = '/p/all';
-
-  if (timeFilterName && !isInSubplebbitView) {
-    homeLink += `${selectedSortType}/${timeFilterName}`;
-    allLink += `/${selectedSortType}/${timeFilterName}`;
-  }
-
   const isConnectedToRpc = !!account?.plebbitOptions.plebbitRpcClientsOptions;
   const navigate = useNavigate();
   const handleCreateCommunity = () => {
@@ -162,7 +154,7 @@ const TopBar = () => {
         <div className={styles.dropdown} ref={filterDropdownRef} onClick={toggleFilterDropdown}>
           <span className={styles.selectedTitle}>{selectedTimeFilter}</span>
           <div className={`${styles.dropChoices} ${styles.filterDropChoices} ${filterDropdownClass}`} ref={filterdropdownItemsRef}>
-            {timeFilterNames.map((timeFilterName, index) => (
+            {timeFilterNames.slice(0, -1).map((timeFilterName, index) => (
               <Link to={getTimeFilterLink(timeFilterName)} key={index} className={styles.dropdownItem}>
                 {timeFilterNames[index]}
               </Link>
@@ -172,13 +164,13 @@ const TopBar = () => {
         <div className={styles.srList}>
           <ul className={styles.srBar}>
             <li>
-              <Link to={homeLink} className={`${styles.homeButton} ${homeButtonClass}`}>
+              <Link to='/' className={`${styles.homeButton} ${homeButtonClass}`}>
                 {t('home')}
               </Link>
             </li>
             <li>
               <span className={styles.separator}>-</span>
-              <Link to={allLink} className={isinAllView ? styles.selected : styles.choice}>
+              <Link to='/p/all' className={isinAllView ? styles.selected : styles.choice}>
                 {t('all')}
               </Link>
             </li>

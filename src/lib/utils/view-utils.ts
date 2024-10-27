@@ -1,5 +1,3 @@
-import { timeFilterNames } from '../../hooks/use-time-filter';
-
 export type ParamsType = {
   accountCommentIndex?: string;
   authorAddress?: string;
@@ -32,7 +30,7 @@ export const getSidebarLink = (pathname: string, params: ParamsType): string => 
 };
 
 export const isAboutView = (pathname: string): boolean => {
-  return pathname === '/about';
+  return pathname.startsWith('/about');
 };
 
 export const isSidebarView = (pathname: string): boolean => {
@@ -63,8 +61,16 @@ export const isCreateSubplebbitView = (pathname: string): boolean => {
   return pathname === '/communities/create';
 };
 
-export const isHomeView = (pathname: string, params: ParamsType): boolean => {
-  return pathname === '/' || sortTypes.includes(pathname) || (timeFilterNames.includes(params.timeFilterName || '') && !pathname.startsWith('/p/'));
+export const isHomeView = (pathname: string): boolean => {
+  if (pathname === '/') return true;
+
+  const pathParts = pathname.split('/');
+  if (pathParts.length >= 2) {
+    const potentialSortType = '/' + pathParts[1];
+    return sortTypes.includes(potentialSortType);
+  }
+
+  return false;
 };
 
 export const isHomeSidebarView = (pathname: string): boolean => {
