@@ -1,3 +1,24 @@
+## [0.1.17](https://github.com/plebbit/seedit/compare/v0.1.16...v0.1.17) (2024-10-27)
+
+
+### Bug Fixes
+
+* **header:** sort buttons were displaced on android ([59d0c60](https://github.com/plebbit/seedit/commit/59d0c60aabbf13cc6a9569f5a5bca3d3efd8fb88))
+* **home:** auto time filter didn't show posts from last visit ([aaa34b7](https://github.com/plebbit/seedit/commit/aaa34b797bb4f24a6e88b4880b8bbab11047e260))
+* last visit time filter could show 'not found' page ([5d859cb](https://github.com/plebbit/seedit/commit/5d859cb0fb1130add0b6147e3565cd17b2ecb77a))
+* **release.yml:** wrong java version prevented apk build ([f87bb1f](https://github.com/plebbit/seedit/commit/f87bb1fbe058ed8dc1ab9d58f42ab60c84b8b19d))
+* **router:** a link could include '%23' instead of '#' ([ae87561](https://github.com/plebbit/seedit/commit/ae875616527bd96a813b92b81c35c48313f32a4f))
+* **search bar:** fix overflow of text behind button, button resolution ([c5406f2](https://github.com/plebbit/seedit/commit/c5406f2a9b0281059286f5b1bd3fe24cee2b1154))
+
+
+### Features
+
+* **homepage:** add about page for FAQs and welcoming users ([1a245b5](https://github.com/plebbit/seedit/commit/1a245b5164092df671af57811aa7fdc1ba534848))
+* **profile page:** clicking "(edit)" next to display name redirects to setting and highlights it ([aa242c3](https://github.com/plebbit/seedit/commit/aa242c3dfa3332a5a4620645c59c8a4a478dc3ae))
+* **profile:** on first access, link to useful preferences and highlight them ([557db8c](https://github.com/plebbit/seedit/commit/557db8c2291d64fe7a37876af00be8338018d03e))
+
+
+
 ## [0.1.16](https://github.com/plebbit/seedit/compare/v0.1.15...v0.1.16) (2024-10-23)
 
 
@@ -7,6 +28,7 @@
 * **electron:** "ipfs warning" without error message would appear after closing the desktop app ([faa33f0](https://github.com/plebbit/seedit/commit/faa33f08bfe0d26c6028a6a2a80c4aec12e9b53e))
 * **electron:** isElectron flag was missing ([3a39eda](https://github.com/plebbit/seedit/commit/3a39eda7e6ef8b1d04bbec17ef1fea07d9aa1d2c))
 * **embed:** reddit links have to include '/comments/' to be embeddable ([1dd2a4c](https://github.com/plebbit/seedit/commit/1dd2a4c2fd82c724dfc85bb9ab905065155c3606))
+* **package.json:** add resolution for skia-canvas ([0d23bdb](https://github.com/plebbit/seedit/commit/0d23bdb1bb5dd6d3d4421b0cc44eea7e0158bab3))
 * **post:** confirm dialog for delete button wasn't working ([4aa54a5](https://github.com/plebbit/seedit/commit/4aa54a5c0c866e922f657ee5d1a22257abecf4de))
 * **post:** don't show author edit reason if post is deleted or removed ([6017ac2](https://github.com/plebbit/seedit/commit/6017ac24194938ae67c8cd30d1ce7f77cbccbfd6))
 * **post:** reason field for author edit didn't work ([808a388](https://github.com/plebbit/seedit/commit/808a3889bde3d0ac179bcab3f532dd3223c37b27))

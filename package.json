@@ -1,6 +1,6 @@
 {
   "name": "seedit",
-  "version": "0.1.16",
+  "version": "0.1.17",
   "description": "A GUI for plebbit similar to old.reddit",
   "type": "module",
   "author": "plebeius.eth",
@@ -33,7 +33,7 @@
     "react-i18next": "13.2.2",
     "react-markdown": "8.0.6",
     "react-router-dom": "6.16.0",
-    "react-router-hash-link": "^2.4.3",
+    "react-router-hash-link": "2.4.3",
     "react-scripts": "5.0.1",
     "react-virtuoso": "4.7.8",
     "rehype-sanitize": "5.0.1",
