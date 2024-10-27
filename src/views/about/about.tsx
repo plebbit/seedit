@@ -118,8 +118,9 @@ const About = () => {
         <h3 id='registerUsername'>Can I register a username?</h3>
         <p>
           You can set a display name for your account in the <Link to='/settings#displayName'>preferences</Link>. Your account address (u/{account?.author?.shortAddress})
-          is generated randomly from a cryptographic hash of your public key, similarly to how a bitcoin address is generated. You can change your account address to a
-          readable name unique to you, by resolving it with a decentralized domain name service such as{' '}
+          is generated randomly from a cryptographic hash of your public key, similarly to how a bitcoin address is generated. You can{' '}
+          <HashLink to='/settings#cryptoAddress'>change your account address</HashLink> to a unique readable name you own, by resolving it with a decentralized domain
+          name service such as{' '}
           <a href='https://sns.id' target='_blank' rel='noopener noreferrer'>
             ENS
           </a>{' '}

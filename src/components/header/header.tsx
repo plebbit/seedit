@@ -419,7 +419,7 @@ const Header = () => {
         )}
       </div>
       {isMobile && !isInSubplebbitSubmitView && (
-        <ul className={`${styles.tabMenu} ${styles.tabs}`}>
+        <ul className={`${styles.tabMenu} ${isInProfileView ? styles.horizontalScroll : ''}`}>
           <HeaderTabs />
           {(isInHomeView || isInAboutView || isInHomeSidebarView) && <AboutButton />}
           {(isInHomeView || isInAllView || isInSidebarView || isInSubplebbitView || isInPostView || isInAboutView) && <SidebarButton />}

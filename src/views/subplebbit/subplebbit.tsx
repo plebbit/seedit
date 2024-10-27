@@ -61,14 +61,14 @@ const Subplebbit = () => {
     let footerFirstLine;
     let footerSecondLine;
 
-    if (feed.length === 0 && isOnline) {
+    if (feed.length === 0 && isOnline && started && !isSubCreatedButNotYetPublished) {
       if (blocked) {
         footerFirstLine = t('you_blocked_community');
       } else {
         footerFirstLine = t('no_posts');
       }
-    } else if (feed.length === 0 && started && isSubCreatedButNotYetPublished) {
-      footerFirstLine = t('no_posts');
+    } else if (feed.length === 0 || !isOnline) {
+      footerFirstLine = loadingString;
     } else if (hasMore) {
       footerFirstLine = loadingString;
     }

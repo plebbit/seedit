@@ -240,6 +240,7 @@ const Profile = () => {
   const { t } = useTranslation();
   const account = useAccount();
   const isMobile = useWindowWidth() < 640;
+  const [showInfobar, setShowInfobar] = useState(false);
 
   const profileTitle = account?.author?.displayName ? `${account?.author?.displayName} (u/${account?.author?.shortAddress})` : `u/${account?.author?.shortAddress}`;
   useEffect(() => {
@@ -247,18 +248,17 @@ const Profile = () => {
   }, [t, profileTitle]);
 
   // only show infobar on first profile access and if the current account wasn't imported
-  const showInfobarRef = useRef(false);
   useEffect(() => {
     const wasProfileAccessed = localStorage.getItem('wasProfileAccessed');
     const importedAccountAddress = localStorage.getItem('importedAccountAddress');
 
     if (!wasProfileAccessed && importedAccountAddress !== account?.author?.address) {
-      showInfobarRef.current = true;
+      setShowInfobar(true);
       localStorage.setItem('wasProfileAccessed', 'true');
     }
   }, [account?.author?.address]);
 
-  const infobar = showInfobarRef.current && (
+  const infobar = showInfobar && (
     <div className={styles.infobar}>
       <Trans
         i18nKey='profile_info'
