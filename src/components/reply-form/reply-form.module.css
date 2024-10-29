@@ -4,11 +4,10 @@
   padding: 0 1px;
   max-width: 500px;
   unicode-bidi: isolate;
-  font-size: small;
 }
 
 .infobar {
-  width: 500px;
+  width: 100%;
   box-sizing: border-box;
   background-color: var(--background-orange);
   border-color: var(--border-orange);
@@ -23,7 +22,8 @@
 .md {
   margin-bottom: 5px;
   font-weight: 400;
-  width: 60em;
+  width: 100%;
+  max-width: 60em;
 }
 
 .url {
@@ -48,7 +48,7 @@
 }
 
 .textarea {
-  width: 500px;
+  width: 100%;
   height: 100px;
   background-color: var(--background);
   color: var(--text);
@@ -125,8 +125,8 @@
 }
 
 @media (max-width: 640px) {
-  .textarea {
-    max-width: 400px !important;
+  .mdContainer {
+    max-width: calc(100vw - 31px);
   }
 }
 

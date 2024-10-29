@@ -8,7 +8,7 @@ import All from './views/all';
 import Author from './views/author';
 import Home from './views/home';
 import Inbox from './views/inbox';
-import SidebarView from './views/sidebar';
+import AboutView from './views/about';
 import NotFound from './views/not-found';
 import PendingPost from './views/pending-post';
 import PostPage from './views/post-page';
@@ -23,7 +23,7 @@ import ChallengeModal from './components/challenge-modal';
 import Header from './components/header';
 import StickyHeader from './components/sticky-header';
 import TopBar from './components/topbar';
-import { isAboutView } from './lib/utils/view-utils';
+import { isHomeAboutView } from './lib/utils/view-utils';
 
 export const sortTypes = ['hot', 'new', 'active', 'controversialAll', 'topAll'];
 
@@ -39,9 +39,9 @@ const CheckRouteParams = () => {
 
   const isAccountCommentIndexValid = !accountCommentIndex || !isNaN(parseInt(accountCommentIndex));
   const location = useLocation();
-  const isInAboutView = isAboutView(location.pathname);
+  const isInHomeAboutView = isHomeAboutView(location.pathname);
 
-  if (!isValidAccountCommentIndex || (!isSortTypeValid && !isInAboutView) || !isTimeFilterNameValid || !isAccountCommentIndexValid) {
+  if (!isValidAccountCommentIndex || (!isSortTypeValid && !isInHomeAboutView) || !isTimeFilterNameValid || !isAccountCommentIndexValid) {
     return <NotFound />;
   }
 
@@ -98,24 +98,24 @@ const App = () => {
           <Route element={pagesLayout}>
             <Route path='/about' element={<About />} />
             <Route path='/submit' element={<SubmitPage />} />
-            <Route path='/sidebar' element={<SidebarView />} />
+            <Route path='/about' element={<AboutView />} />
 
-            <Route path='/p/all/sidebar' element={<SidebarView />} />
+            <Route path='/p/all/about' element={<AboutView />} />
 
             <Route path='/p/:subplebbitAddress/c/:commentCid' element={<PostPage />} />
             <Route path='/p/:subplebbitAddress/c/:commentCid?context=3' element={<PostPage />} />
-            <Route path='/p/:subplebbitAddress/c/:commentCid/sidebar' element={<SidebarView />} />
+            <Route path='/p/:subplebbitAddress/c/:commentCid/about' element={<AboutView />} />
 
             <Route path='/p/:subplebbitAddress/submit' element={<SubmitPage />} />
-            <Route path='/p/:subplebbitAddress/sidebar' element={<SidebarView />} />
+            <Route path='/p/:subplebbitAddress/about' element={<AboutView />} />
 
             <Route path='/settings' element={<Settings />} />
             <Route path='/p/:subplebbitAddress/settings' element={<SubplebbitSettings />} />
             <Route path='/settings/plebbit-options' element={<Settings />} />
 
-            <Route path='/profile/sidebar' element={<SidebarView />} />
+            <Route path='/profile/about' element={<AboutView />} />
 
-            <Route path='/u/:authorAddress/c/:commentCid/sidebar' element={<SidebarView />} />
+            <Route path='/u/:authorAddress/c/:commentCid/about' element={<AboutView />} />
 
             <Route path='/inbox' element={<Inbox />} />
             <Route path='/inbox/unread' element={<Inbox />} />

@@ -18,7 +18,7 @@ interface ThumbnailProps {
 const Thumbnail = ({ cid, commentMediaInfo, expanded = false, isReply = false, link, linkHeight, linkWidth, subplebbitAddress, toggleExpanded }: ThumbnailProps) => {
   const iframeThumbnail = commentMediaInfo?.patternThumbnailUrl || commentMediaInfo?.thumbnail;
   let displayWidth, displayHeight, hasLinkDimensions;
-  const routeOrLink = isReply ? link : `/p/${subplebbitAddress}/c/${cid}`;
+  const routeOrLink = isReply || commentMediaInfo?.type === 'webpage' ? link : `/p/${subplebbitAddress}/c/${cid}`;
   const thumbnailClass = expanded ? styles.thumbnailHidden : styles.thumbnailVisible;
 
   if (linkWidth && linkHeight) {

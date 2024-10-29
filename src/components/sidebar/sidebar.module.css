@@ -313,3 +313,8 @@ a {
 .footerLinks {
   padding-top: 5px;
 }
+
+.mobileFooter {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}

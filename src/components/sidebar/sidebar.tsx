@@ -6,15 +6,14 @@ import styles from './sidebar.module.css';
 import { getFormattedDate, getFormattedTimeDuration, getFormattedTimeAgo } from '../../lib/utils/time-utils';
 import { findSubplebbitCreator } from '../../lib/utils/user-utils';
 import {
-  isSidebarView,
   isAllView,
-  isHomeSidebarView,
+  isHomeAboutView,
   isHomeView,
   isPendingView,
   isPostView,
+  isSubplebbitAboutView,
   isSubplebbitSettingsView,
   isSubplebbitsView,
-  isAboutView,
 } from '../../lib/utils/view-utils';
 import Markdown from '../markdown';
 import SearchBar from '../search-bar';
@@ -22,6 +21,7 @@ import SubscribeButton from '../subscribe-button';
 import packageJson from '../../../package.json';
 import LoadingEllipsis from '../loading-ellipsis';
 import useIsSubplebbitOffline from '../../hooks/use-is-subplebbit-offline';
+import useIsMobile from '../../hooks/use-is-mobile';
 
 const { version } = packageJson;
 const commitRef = process.env.REACT_APP_COMMIT_REF;
@@ -140,6 +140,79 @@ interface sidebarProps {
   subplebbit?: Subplebbit;
 }
 
+export const Footer = () => {
+  const { t } = useTranslation();
+  const location = useLocation();
+  const isMobile = useIsMobile();
+  const isInHomeAboutView = isHomeAboutView(location.pathname);
+
+  return (
+    <div className={`${styles.footer} ${isMobile && isInHomeAboutView ? styles.mobileFooter : ''}`}>
+      <a className={styles.footerLogo} href='https://github.com/plebbit/seedit/releases/latest' target='_blank' rel='noopener noreferrer'>
+        <img src='assets/logo/seedit.png' alt='' />
+      </a>
+      <div className={styles.footerLinks}>
+        <ul>
+          <li>
+            <a href='https://plebbit.com' target='_blank' rel='noopener noreferrer'>
+              plebbit
+            </a>
+            <span className={styles.footerSeparator}>|</span>
+          </li>
+          <li>
+            <a href='https://twitter.com/getplebbit' target='_blank' rel='noopener noreferrer'>
+              twitter
+            </a>
+            <span className={styles.footerSeparator}>|</span>
+          </li>
+          <li>
+            <a href='https://t.me/plebbit' target='_blank' rel='noopener noreferrer'>
+              telegram
+            </a>
+            <span className={styles.footerSeparator}>|</span>
+          </li>
+          <li>
+            <a href='https://discord.gg/E7ejphwzGW' target='_blank' rel='noopener noreferrer'>
+              discord
+            </a>
+          </li>
+        </ul>
+        <ul>
+          <li>
+            <a href='https://github.com/plebbit/seedit' target='_blank' rel='noopener noreferrer'>
+              github
+            </a>
+            <span className={styles.footerSeparator}>|</span>
+          </li>
+          {downloadAppLink && (
+            <li>
+              <a href={downloadAppLink} target='_blank' rel='noopener noreferrer'>
+                {t('download_app')}
+              </a>
+              <span className={styles.footerSeparator}>|</span>
+            </li>
+          )}
+          <li>
+            <a href={`https://github.com/plebbit/seedit/releases/tag/v${version}`} target='_blank' rel='noopener noreferrer'>
+              v{version}
+            </a>
+            {commitRef && (
+              <>
+                {' '}
+                (
+                <a href={`https://github.com/plebbit/seedit/commit/${commitRef}`} target='_blank' rel='noopener noreferrer'>
+                  {commitRef.slice(0, 7)}
+                </a>
+                )
+              </>
+            )}
+          </li>
+        </ul>
+      </div>
+    </div>
+  );
+};
+
 const Sidebar = ({ comment, isSubCreatedButNotYetPublished, settings, subplebbit }: sidebarProps) => {
   const { t } = useTranslation();
   const { address, createdAt, description, roles, rules, title, updatedAt } = subplebbit || {};
@@ -155,25 +228,20 @@ const Sidebar = ({ comment, isSubCreatedButNotYetPublished, settings, subplebbit
 
   const location = useLocation();
   const params = useParams();
-  const isInSidebarView = isSidebarView(location.pathname);
   const isInAllView = isAllView(location.pathname);
-  const isInHomeSidebarView = isHomeSidebarView(location.pathname);
-  const isInAboutView = isAboutView(location.pathname);
+  const isInHomeAboutView = isHomeAboutView(location.pathname);
   const isInHomeView = isHomeView(location.pathname);
   const isInPendingView = isPendingView(location.pathname, params);
   const isInPostView = isPostView(location.pathname, params);
   const isInSubplebbitsView = isSubplebbitsView(location.pathname);
+  const isInSubplebbitAboutView = isSubplebbitAboutView(location.pathname, params);
 
   const pendingPost = useAccountComment({ commentIndex: params?.accountCommentIndex as any });
 
   const subplebbitCreator = findSubplebbitCreator(roles);
   const creatorAddress = subplebbitCreator === 'anonymous' ? 'anonymous' : `${Plebbit.getShortAddress(subplebbitCreator)}`;
   const submitRoute =
-    isInHomeView || isInHomeSidebarView || isInAllView || isInAboutView
-      ? '/submit'
-      : isInPendingView
-      ? `/p/${pendingPost?.subplebbitAddress}/submit`
-      : `/p/${address}/submit`;
+    isInHomeView || isInHomeAboutView || isInAllView ? '/submit' : isInPendingView ? `/p/${pendingPost?.subplebbitAddress}/submit` : `/p/${address}/submit`;
 
   const { blocked, unblock, block } = useBlock({ address });
 
@@ -210,8 +278,10 @@ const Sidebar = ({ comment, isSubCreatedButNotYetPublished, settings, subplebbit
     }
   };
 
+  const isMobile = useIsMobile();
+
   return (
-    <div className={`${isInSidebarView ? styles.about : styles.sidebar}`}>
+    <div className={`${isMobile ? styles.mobileSidebar : styles.sidebar}`}>
       <SearchBar />
       {isInPostView && <PostInfo address={address} cid={cid} downvoteCount={downvoteCount} timestamp={timestamp} upvoteCount={upvoteCount} />}
       <Link to={submitRoute}>
@@ -221,7 +291,7 @@ const Sidebar = ({ comment, isSubCreatedButNotYetPublished, settings, subplebbit
           <div className={styles.nub} />
         </div>
       </Link>
-      {!isInHomeView && !isInHomeSidebarView && !isInAllView && !isInPendingView && !isInSubplebbitsView && !isInAboutView && (
+      {!isInHomeView && !isInHomeAboutView && !isInAllView && !isInPendingView && !isInSubplebbitsView && !isInHomeAboutView && (
         <div className={styles.titleBox}>
           <Link className={styles.title} to={`/p/${address}`}>
             {subplebbit?.address}
@@ -273,69 +343,7 @@ const Sidebar = ({ comment, isSubCreatedButNotYetPublished, settings, subplebbit
           <div className={styles.nub} />
         </div>
       )}
-      <div className={styles.footer}>
-        <a className={styles.footerLogo} href='https://github.com/plebbit/seedit/releases/latest' target='_blank' rel='noopener noreferrer'>
-          <img src='assets/logo/seedit.png' alt='' />
-        </a>
-        <div className={styles.footerLinks}>
-          <ul>
-            <li>
-              <a href='https://plebbit.com' target='_blank' rel='noopener noreferrer'>
-                plebbit
-              </a>
-              <span className={styles.footerSeparator}>|</span>
-            </li>
-            <li>
-              <a href='https://twitter.com/getplebbit' target='_blank' rel='noopener noreferrer'>
-                twitter
-              </a>
-              <span className={styles.footerSeparator}>|</span>
-            </li>
-            <li>
-              <a href='https://t.me/plebbit' target='_blank' rel='noopener noreferrer'>
-                telegram
-              </a>
-              <span className={styles.footerSeparator}>|</span>
-            </li>
-            <li>
-              <a href='https://discord.gg/E7ejphwzGW' target='_blank' rel='noopener noreferrer'>
-                discord
-              </a>
-            </li>
-          </ul>
-          <ul>
-            <li>
-              <a href='https://github.com/plebbit/seedit' target='_blank' rel='noopener noreferrer'>
-                github
-              </a>
-              <span className={styles.footerSeparator}>|</span>
-            </li>
-            {downloadAppLink && (
-              <li>
-                <a href={downloadAppLink} target='_blank' rel='noopener noreferrer'>
-                  {t('download_app')}
-                </a>
-                <span className={styles.footerSeparator}>|</span>
-              </li>
-            )}
-            <li>
-              <a href={`https://github.com/plebbit/seedit/releases/tag/v${version}`} target='_blank' rel='noopener noreferrer'>
-                v{version}
-              </a>
-              {commitRef && (
-                <>
-                  {' '}
-                  (
-                  <a href={`https://github.com/plebbit/seedit/commit/${commitRef}`} target='_blank' rel='noopener noreferrer'>
-                    {commitRef.slice(0, 7)}
-                  </a>
-                  )
-                </>
-              )}
-            </li>
-          </ul>
-        </div>
-      </div>
+      {(!(isMobile && isHomeAboutView) || isInSubplebbitAboutView) && <Footer />}
     </div>
   );
 };
