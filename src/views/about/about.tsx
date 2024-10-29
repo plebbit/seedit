@@ -1,20 +1,23 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
 import { HashLink } from 'react-router-hash-link';
 import useIsMobile from '../../hooks/use-is-mobile';
-import Sidebar from '../../components/sidebar';
+import Sidebar, { Footer } from '../../components/sidebar';
 import styles from './about.module.css';
-import { useAccount } from '@plebbit/plebbit-react-hooks';
+import { useAccount, useComment, useSubplebbit } from '@plebbit/plebbit-react-hooks';
 import { Capacitor } from '@capacitor/core';
+import { isHomeAboutView } from '../../lib/utils/view-utils';
+import { useEffect } from 'react';
 
 const isAndroid = Capacitor.getPlatform() === 'android';
 
-const About = () => {
+const FAQ = () => {
   const account = useAccount();
   const isMobile = useIsMobile();
+  const location = useLocation();
+  const isInHomeAboutView = isHomeAboutView(location.pathname);
 
   return (
-    <div className={styles.content}>
-      {!isMobile && <Sidebar />}
+    <>
       <div className={styles.about}>
         <ul className={isMobile ? styles.tocMobile : styles.toc}>
           <li>
@@ -35,6 +38,11 @@ const About = () => {
           <li>
             <HashLink to='/about#registerUsername'>Can I register a username?</HashLink>
           </li>
+          {isInHomeAboutView && isMobile && (
+            <li>
+              <HashLink to='/about#usefulLinks'>Useful links</HashLink>
+            </li>
+          )}
         </ul>
         <h3 id='newUsers' style={{ marginTop: '0' }}>
           New Users:
@@ -131,6 +139,52 @@ const About = () => {
           .
         </p>
       </div>
+      {isInHomeAboutView && isMobile && (
+        <>
+          <hr />
+          <div id='usefulLinks' className={styles.aboutFooter}>
+            <Footer />
+          </div>
+        </>
+      )}
+    </>
+  );
+};
+
+const About = () => {
+  const isMobile = useIsMobile();
+  const location = useLocation();
+  const navigate = useNavigate();
+  const isInHomeAboutView = isHomeAboutView(location.pathname);
+  const { commentCid, subplebbitAddress } = useParams();
+
+  const subplebbit = useSubplebbit({ subplebbitAddress });
+  const comment = useComment({ commentCid });
+
+  useEffect(() => {
+    if (!isMobile && location.pathname.endsWith('/about') && !isInHomeAboutView) {
+      const newPath = location.pathname.replace(/\/about$/, '');
+      navigate(newPath || '/');
+    }
+  }, [isMobile, location.pathname, navigate, isInHomeAboutView]);
+
+  return (
+    <div className={styles.content}>
+      {isMobile ? (
+        isInHomeAboutView ? (
+          <>
+            <Sidebar comment={comment} subplebbit={subplebbit} />
+            <FAQ />
+          </>
+        ) : (
+          <Sidebar comment={comment} subplebbit={subplebbit} />
+        )
+      ) : (
+        <>
+          <Sidebar />
+          <FAQ />
+        </>
+      )}
     </div>
   );
 };

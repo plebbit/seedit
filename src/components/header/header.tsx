@@ -5,15 +5,14 @@ import Plebbit from '@plebbit/plebbit-js/dist/browser/index.js';
 import { useAccount, useSubplebbit } from '@plebbit/plebbit-react-hooks';
 import { sortTypes } from '../../app';
 import {
-  getSidebarLink,
-  isSidebarView,
+  getAboutLink,
   isAllView,
-  isAllSidebarView,
+  isAllAboutView,
   isAuthorView,
   isAuthorCommentsView,
   isAuthorSubmittedView,
   isCreateSubplebbitView,
-  isHomeSidebarView,
+  isHomeAboutView,
   isHomeView,
   isInboxView,
   isPendingView,
@@ -36,7 +35,7 @@ import {
   isSubplebbitsOwnerView,
   isProfileUpvotedView,
   isSettingsPlebbitOptionsView,
-  isAboutView,
+  isSubplebbitAboutView,
 } from '../../lib/utils/view-utils';
 import useNotFoundStore from '../../stores/use-not-found-store';
 import useTheme from '../../hooks/use-theme';
@@ -45,26 +44,16 @@ import styles from './header.module.css';
 import SubscribeButton from '../subscribe-button';
 
 const AboutButton = () => {
-  const isInAboutView = isAboutView(useLocation().pathname);
-  return (
-    <li className={isInAboutView ? styles.selected : styles.choice}>
-      <Link to={'/about'}>About</Link>
-    </li>
-  );
-};
-
-const SidebarButton = () => {
+  const { t } = useTranslation();
   const params = useParams();
   const location = useLocation();
-  const aboutLink = getSidebarLink(location.pathname, params);
-  const isInSidebarView = isSidebarView(location.pathname);
-  const isInSubplebbitSubmitView = isSubplebbitSubmitView(location.pathname, params);
+  const aboutLink = getAboutLink(location.pathname, params);
+  const isInHomeAboutView = isHomeAboutView(location.pathname);
+  const isInSubplebbitAboutView = isSubplebbitAboutView(location.pathname, params);
 
   return (
-    <li className={`${styles.about} ${isInSidebarView ? styles.selected : styles.choice}`}>
-      <Link to={aboutLink} className={isInSubplebbitSubmitView ? styles.singleAboutButton : ''}>
-        ▶︎
-      </Link>
+    <li className={`${styles.about} ${isInHomeAboutView || isInSubplebbitAboutView ? styles.selected : styles.choice}`}>
+      <Link to={aboutLink}>{t('about')}</Link>
     </li>
   );
 };
@@ -73,11 +62,11 @@ const CommentsButton = () => {
   const { t } = useTranslation();
   const params = useParams();
   const location = useLocation();
-  const isPost = isPostView(location.pathname, params);
-  const isSidebar = isSidebarView(location.pathname);
+  const isInPostView = isPostView(location.pathname, params);
+  const isInHomeAboutView = isHomeAboutView(location.pathname);
 
   return (
-    <li className={isPost && !isSidebar ? styles.selected : styles.choice}>
+    <li className={isInPostView && !isInHomeAboutView ? styles.selected : styles.choice}>
       <Link to={`/p/${params.subplebbitAddress}/c/${params.commentCid}`}>{t('comments')}</Link>
     </li>
   );
@@ -87,8 +76,8 @@ const SortItems = () => {
   const { t } = useTranslation();
   const params = useParams();
   const location = useLocation();
-  const isInAboutView = isAboutView(location.pathname);
-  const isInSidebarView = isSidebarView(location.pathname);
+  const isInHomeAboutView = isHomeAboutView(location.pathname);
+  const isInSubplebbitAboutView = isSubplebbitAboutView(location.pathname, params);
   const isInAllView = isAllView(location.pathname);
   const isInSubplebbitView = isSubplebbitView(location.pathname, params);
   const sortLabels = [t('hot'), t('new'), t('active'), t('controversial'), t('top')];
@@ -96,14 +85,14 @@ const SortItems = () => {
   const timeFilterName = params.timeFilterName;
 
   useEffect(() => {
-    if (isInAboutView || isInSidebarView) {
+    if (isInHomeAboutView || isInSubplebbitAboutView) {
       setSelectedSortType('');
     } else if (params.sortType) {
       setSelectedSortType(params.sortType);
     } else {
       setSelectedSortType('hot');
     }
-  }, [params.sortType, isInAboutView, isInSidebarView]);
+  }, [params.sortType, isInHomeAboutView, isInSubplebbitAboutView]);
 
   return sortTypes.map((sortType, index) => {
     let sortLink = isInSubplebbitView ? `/p/${params.subplebbitAddress}/${sortType}` : isInAllView ? `p/all/${sortType}` : sortType;
@@ -124,7 +113,6 @@ const AuthorHeaderTabs = () => {
   const { t } = useTranslation();
   const location = useLocation();
   const params = useParams();
-  const isInSidebarView = isSidebarView(location.pathname);
   const isInAuthorView = isAuthorView(location.pathname);
   const isInAuthorCommentsView = isAuthorCommentsView(location.pathname, params);
   const isInAuthorSubmittedView = isAuthorSubmittedView(location.pathname, params);
@@ -138,7 +126,6 @@ const AuthorHeaderTabs = () => {
   const authorRoute = `/u/${params.authorAddress}/c/${params.commentCid}`;
   const overviewSelectedClass =
     (isInProfileView || isInAuthorView) &&
-    !isInSidebarView &&
     !isInProfileUpvotedView &&
     !isInProfileDownvotedView &&
     !isInProfileCommentsView &&
@@ -250,10 +237,9 @@ const HeaderTabs = () => {
   const { t } = useTranslation();
   const params = useParams();
   const location = useLocation();
-  const isInAboutView = isAboutView(location.pathname);
   const isInAllView = isAllView(location.pathname);
   const isInAuthorView = isAuthorView(location.pathname);
-  const isInHomeSidebarView = isHomeSidebarView(location.pathname);
+  const isInHomeAboutView = isHomeAboutView(location.pathname);
   const isInHomeView = isHomeView(location.pathname);
   const isInInboxView = isInboxView(location.pathname);
   const isInPendingView = isPendingView(location.pathname, params);
@@ -269,7 +255,7 @@ const HeaderTabs = () => {
 
   if (isInPostView) {
     return <CommentsButton />;
-  } else if (isInHomeView || isInHomeSidebarView || (isInSubplebbitView && !isInSubplebbitSubmitView && !isInSubplebbitSettingsView) || isInAllView || isInAboutView) {
+  } else if (isInHomeView || isInHomeAboutView || (isInSubplebbitView && !isInSubplebbitSubmitView && !isInSubplebbitSettingsView) || isInAllView) {
     return <SortItems />;
   } else if ((isInProfileView || isInAuthorView) && !isInPendingView) {
     return <AuthorHeaderTabs />;
@@ -354,18 +340,17 @@ const Header = () => {
   const { suggested, title, shortAddress } = subplebbit || {};
 
   const isMobile = useWindowWidth() < 640;
-  const isInAboutView = isAboutView(location.pathname);
-  const isInSidebarView = isSidebarView(location.pathname);
-  const isInAllSidebarView = isAllSidebarView(location.pathname);
+  const isInAllAboutView = isAllAboutView(location.pathname);
   const isInAllView = isAllView(location.pathname);
   const isInAuthorView = isAuthorView(location.pathname);
   const isInHomeView = isHomeView(location.pathname);
-  const isInHomeSidebarView = isHomeSidebarView(location.pathname);
+  const isInHomeAboutView = isHomeAboutView(location.pathname);
   const isInInboxView = isInboxView(location.pathname);
   const isInPostView = isPostView(location.pathname, params);
   const isInProfileView = isProfileView(location.pathname);
   const isInSettingsView = isSettingsView(location.pathname);
   const isInSubplebbitView = isSubplebbitView(location.pathname, params);
+  const isInSubplebbitAboutView = isSubplebbitAboutView(location.pathname, params);
   const isInSubmitView = isSubmitView(location.pathname);
   const isInSubplebbitSubmitView = isSubplebbitSubmitView(location.pathname, params);
   const isInSubplebbitSettingsView = isSubplebbitSettingsView(location.pathname, params);
@@ -375,10 +360,10 @@ const Header = () => {
   const hasStickyHeader =
     isInHomeView ||
     isInNotFoundView ||
-    (isInSubplebbitView && !isInSubplebbitSubmitView && !isInSubplebbitSettingsView && !isInPostView && !isInSidebarView) ||
-    (isInProfileView && !isInSidebarView) ||
-    (isInAllView && !isInAllSidebarView) ||
-    (isInAuthorView && !isInSidebarView);
+    (isInSubplebbitView && !isInSubplebbitSubmitView && !isInSubplebbitSettingsView && !isInPostView && !isInHomeAboutView && !isInSubplebbitAboutView) ||
+    (isInProfileView && !isInHomeAboutView) ||
+    (isInAllView && !isInAllAboutView) ||
+    (isInAuthorView && !isInHomeAboutView);
   const logoSrc = isInSubplebbitView ? suggested?.avatarUrl : 'assets/logo/seedit.png';
   const logoIsAvatar = isInSubplebbitView && suggested?.avatarUrl;
   const logoLink = isInSubplebbitView ? `/p/${params.subplebbitAddress}` : isInProfileView ? '/profile' : '/';
@@ -386,9 +371,9 @@ const Header = () => {
   return (
     <div className={styles.header}>
       <div
-        className={`${styles.container} ${hasFewTabs && styles.reducedHeight} ${isInSubmitView && !isInSubplebbitView && isMobile && styles.reduceSubmitPageHeight} ${
-          hasStickyHeader && styles.increasedHeight
-        }`}
+        className={`${styles.container} ${hasFewTabs && styles.reducedHeight} ${
+          isInSubmitView && isInSubplebbitSubmitView && !isInSubplebbitView && isMobile && styles.reduceSubmitPageHeight
+        } ${hasStickyHeader && styles.increasedHeight}`}
       >
         <div className={styles.logoContainer}>
           <Link to={logoLink} className={styles.logoLink}>
@@ -400,12 +385,12 @@ const Header = () => {
             )}
           </Link>
         </div>
-        {!isInHomeView && !isInAboutView && (
+        {!isInHomeView && !isInHomeAboutView && (
           <span className={`${styles.pageName} ${!logoIsAvatar && styles.soloPageName}`}>
             <HeaderTitle title={title} shortAddress={shortAddress} />
           </span>
         )}
-        {isInSubplebbitView && (
+        {isInSubplebbitView && !isInSubplebbitSubmitView && (
           <span className={styles.joinButton}>
             <SubscribeButton address={params.subplebbitAddress} />
           </span>
@@ -413,16 +398,14 @@ const Header = () => {
         {!isMobile && (
           <ul className={styles.tabMenu}>
             <HeaderTabs />
-            {(isInSubplebbitView || isInSubplebbitSubmitView || isInPostView || isInProfileView || isInAuthorView) && <SidebarButton />}
-            {(isInHomeView || isInAboutView) && <AboutButton />}
+            {(isInHomeView || isInHomeAboutView) && <AboutButton />}
           </ul>
         )}
       </div>
       {isMobile && !isInSubplebbitSubmitView && (
         <ul className={`${styles.tabMenu} ${isInProfileView ? styles.horizontalScroll : ''}`}>
           <HeaderTabs />
-          {(isInHomeView || isInAboutView || isInHomeSidebarView) && <AboutButton />}
-          {(isInHomeView || isInAllView || isInSidebarView || isInSubplebbitView || isInPostView || isInAboutView) && <SidebarButton />}
+          {(isInHomeView || isInHomeAboutView || isInSubplebbitView || isInHomeAboutView || isInAllView || isInPostView) && <AboutButton />}
         </ul>
       )}
     </div>

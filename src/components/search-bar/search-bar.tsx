@@ -1,7 +1,8 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import styles from './search-bar.module.css';
+import { isHomeAboutView, isSubplebbitAboutView } from '../../lib/utils/view-utils';
 
 interface SearchBarProps {
   isFocused?: boolean;
@@ -16,6 +17,10 @@ const SearchBar = ({ isFocused = false }: SearchBarProps) => {
   const [isInCommunitySearch, setIsInCommunitySearch] = useState(false);
   const placeholder = isInCommunitySearch ? t('search') : `"community.eth/.sol" ${t('or')} "12D3KooW..."`;
   const [showExpando, setShowExpando] = useState(false);
+  const location = useLocation();
+  const params = useParams();
+  const isInHomeAboutView = isHomeAboutView(location.pathname);
+  const isInSubplebbitAboutView = isSubplebbitAboutView(location.pathname, params);
 
   const handleInputFocus = () => {
     setShowExpando(true);
@@ -56,7 +61,7 @@ const SearchBar = ({ isFocused = false }: SearchBarProps) => {
   };
 
   return (
-    <div ref={wrapperRef}>
+    <div ref={wrapperRef} className={isInHomeAboutView || isInSubplebbitAboutView ? styles.mobileInfobar : ''}>
       <form className={styles.searchBar} ref={searchBarRef} onSubmit={handleSearchSubmit}>
         <input
           type='text'
