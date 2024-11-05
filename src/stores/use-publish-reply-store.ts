@@ -4,20 +4,12 @@ import { create } from 'zustand';
 import useChallengesStore from './use-challenges-store';
 import { alertChallengeVerificationFailed } from '../lib/utils/challenge-utils';
 
-type SetReplyStoreData = {
-  subplebbitAddress: string;
-  parentCid: string;
-  content: string | undefined;
-  link: string | undefined;
-  spoiler: boolean;
-};
-
 type ReplyState = {
   content: { [parentCid: string]: string | undefined };
   link: { [parentCid: string]: string | undefined };
   spoiler: { [parentCid: string]: boolean | undefined };
   publishCommentOptions: PublishCommentOptions;
-  setReplyStore: (data: SetReplyStoreData) => void;
+  setReplyStore: (comment: Comment) => void;
   resetReplyStore: (parentCid: string) => void;
 };
 
@@ -28,12 +20,13 @@ const usePublishReplyStore = create<ReplyState>((set) => ({
   link: {},
   spoiler: {},
   publishCommentOptions: {},
-  setReplyStore: (data: SetReplyStoreData) =>
+  setReplyStore: (comment: Comment) =>
     set((state) => {
-      const { subplebbitAddress, parentCid, content, link, spoiler } = data;
+      const { subplebbitAddress, parentCid, content, link, spoiler } = comment;
       const publishCommentOptions = {
         subplebbitAddress,
         parentCid,
+        postCid: comment?.postCid || parentCid,
         content,
         link,
         spoiler,
