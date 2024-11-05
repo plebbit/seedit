@@ -23,7 +23,7 @@ type ReplyState = {
 
 const { addChallenge } = useChallengesStore.getState();
 
-const useReplyStore = create<ReplyState>((set) => ({
+const usePublishReplyStore = create<ReplyState>((set) => ({
   content: {},
   link: {},
   spoiler: {},
@@ -63,4 +63,4 @@ const useReplyStore = create<ReplyState>((set) => ({
     })),
 }));
 
-export default useReplyStore;
+export default usePublishReplyStore;

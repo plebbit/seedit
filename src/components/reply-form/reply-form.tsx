@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { useSubplebbit } from '@plebbit/plebbit-react-hooks';
 import { isValidURL } from '../../lib/utils/url-utils';
 import useIsSubplebbitOffline from '../../hooks/use-is-subplebbit-offline';
-import useReply from '../../hooks/use-reply';
+import usePublishReply from '../../hooks/use-publish-reply';
 import Markdown from '../markdown';
 import styles from './reply-form.module.css';
 
@@ -86,7 +86,7 @@ const ReplyForm = ({ cid, isReplyingToReply, hideReplyForm, subplebbitAddress }:
   const { t } = useTranslation();
   const [showOptions, setShowOptions] = useState(false);
   const [showFormattingHelp, setShowFormattingHelp] = useState(false);
-  const { setContent, resetContent, replyIndex, publishReply } = useReply({ cid, subplebbitAddress });
+  const { setContent, resetContent, replyIndex, publishReply } = usePublishReply({ cid, subplebbitAddress });
 
   const mdContainerClass = isReplyingToReply ? `${styles.mdContainer} ${styles.mdContainerReplying}` : styles.mdContainer;
   const urlClass = showOptions ? styles.urlVisible : styles.urlHidden;

@@ -3,7 +3,7 @@ import { Link, useNavigate, useParams } from 'react-router-dom';
 import { Trans, useTranslation } from 'react-i18next';
 import Plebbit from '@plebbit/plebbit-js/dist/browser/index.js';
 import { useAccount, usePublishComment, useSubplebbit } from '@plebbit/plebbit-react-hooks';
-import useSubmitStore from '../../stores/use-submit-store';
+import usePublishPostStore from '../../stores/use-publish-post-store';
 import { useDefaultSubplebbitAddresses } from '../../hooks/use-default-subplebbits';
 import { getLinkMediaInfo } from '../../lib/utils/media-utils';
 import { isValidURL } from '../../lib/utils/url-utils';
@@ -14,7 +14,7 @@ import useIsSubplebbitOffline from '../../hooks/use-is-subplebbit-offline';
 
 const UrlField = () => {
   const { t } = useTranslation();
-  const { setSubmitStore } = useSubmitStore();
+  const { setPublishPostStore } = usePublishPostStore();
   const [mediaError, setMediaError] = useState(false);
   const [url, setUrl] = useState('');
 
@@ -56,7 +56,7 @@ const UrlField = () => {
           onChange={(e) => {
             setUrl(e.target.value);
             setMediaError(false);
-            setSubmitStore({ link: e.target.value });
+            setPublishPostStore({ link: e.target.value });
           }}
         />
         {url && isValidURL(url) ? (
@@ -73,24 +73,32 @@ const Submit = () => {
   const { t } = useTranslation();
   const params = useParams();
   const navigate = useNavigate();
-  const { setSubmitStore, resetSubmitStore } = useSubmitStore();
+  const { setPublishPostStore, resetPublishPostStore } = usePublishPostStore();
 
   const [inputAddress, setInputAddress] = useState(params.subplebbitAddress || '');
   const [selectedSubplebbit, setSelectedSubplebbit] = useState(params.subplebbitAddress || '');
 
   useEffect(() => {
     return () => {
-      resetSubmitStore();
+      resetPublishPostStore();
     };
-  }, [resetSubmitStore]);
+  }, [resetPublishPostStore]);
 
   useEffect(() => {
     setInputAddress(params.subplebbitAddress || '');
     setSelectedSubplebbit(params.subplebbitAddress || '');
-    setSubmitStore({ subplebbitAddress: params.subplebbitAddress || '' });
-  }, [params.subplebbitAddress, setSubmitStore]);
+    setPublishPostStore({ subplebbitAddress: params.subplebbitAddress || '' });
+  }, [params.subplebbitAddress, setPublishPostStore]);
 
-  const { title, content, link, subplebbitAddress, publishCommentOptions, setSubmitStore: setSubmitStoreHook, resetSubmitStore: resetSubmitStoreHook } = useSubmitStore();
+  const {
+    title,
+    content,
+    link,
+    subplebbitAddress,
+    publishCommentOptions,
+    setPublishPostStore: setSubmitStoreHook,
+    resetPublishPostStore: resetSubmitStoreHook,
+  } = usePublishPostStore();
   const { index, publishComment } = usePublishComment(publishCommentOptions);
   const { subscriptions } = useAccount() || {};
   const defaultSubplebbitAddresses = useDefaultSubplebbitAddresses();
@@ -154,14 +162,14 @@ const Submit = () => {
         if (activeDropdownIndex !== -1) {
           const selectedAddress = filteredSubplebbitAddresses[activeDropdownIndex];
           setSelectedSubplebbit(selectedAddress);
-          setSubmitStore({ subplebbitAddress: selectedAddress });
+          setPublishPostStore({ subplebbitAddress: selectedAddress });
           setInputAddress(selectedAddress);
         }
         setActiveDropdownIndex(-1);
         setIsInputAddressFocused(false);
       }
     },
-    [filteredSubplebbitAddresses, activeDropdownIndex, setSubmitStore],
+    [filteredSubplebbitAddresses, activeDropdownIndex, setPublishPostStore],
   );
 
   useEffect(() => {
@@ -209,7 +217,7 @@ const Submit = () => {
   const handleSubplebbitSelect = (subplebbitAddress: string) => {
     setSelectedSubplebbit(subplebbitAddress);
     setInputAddress(subplebbitAddress);
-    setSubmitStore({ subplebbitAddress: subplebbitAddress });
+    setPublishPostStore({ subplebbitAddress: subplebbitAddress });
     setIsInputAddressFocused(false);
     setActiveDropdownIndex(-1);
   };
