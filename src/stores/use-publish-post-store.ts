@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 import challengesStore from './use-challenges-store';
-import { PublishCommentOptions } from '@plebbit/plebbit-react-hooks';
+import { Comment, PublishCommentOptions } from '@plebbit/plebbit-react-hooks';
 import { alertChallengeVerificationFailed } from '../lib/utils/challenge-utils';
 
 type SubmitState = {
@@ -10,20 +10,20 @@ type SubmitState = {
   link: string | undefined;
   publishCommentOptions: PublishCommentOptions;
   spoiler: boolean | undefined;
-  setSubmitStore: (data: Partial<SubmitState>) => void;
-  resetSubmitStore: () => void;
+  setPublishPostStore: (comment: Comment) => void;
+  resetPublishPostStore: () => void;
 };
 
 const { addChallenge } = challengesStore.getState();
 
-const useSubmitStore = create<SubmitState>((set) => ({
+const usePublishPostStore = create<SubmitState>((set) => ({
   subplebbitAddress: undefined,
   title: undefined,
   content: undefined,
   link: undefined,
   spoiler: undefined,
   publishCommentOptions: {},
-  setSubmitStore: ({ subplebbitAddress, title, content, link, spoiler }) =>
+  setPublishPostStore: ({ subplebbitAddress, title, content, link, spoiler }) =>
     set((state) => {
       const nextState = { ...state };
       if (subplebbitAddress !== undefined) nextState.subplebbitAddress = subplebbitAddress;
@@ -44,7 +44,8 @@ const useSubmitStore = create<SubmitState>((set) => ({
       };
       return nextState;
     }),
-  resetSubmitStore: () => set({ subplebbitAddress: undefined, title: undefined, content: undefined, link: undefined, spoiler: undefined, publishCommentOptions: {} }),
+  resetPublishPostStore: () =>
+    set({ subplebbitAddress: undefined, title: undefined, content: undefined, link: undefined, spoiler: undefined, publishCommentOptions: {} }),
 }));
 
-export default useSubmitStore;
+export default usePublishPostStore;

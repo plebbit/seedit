@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { Outlet, Route, Routes, useLocation, useNavigate, useParams } from 'react-router-dom';
+import { useAccountComments } from '@plebbit/plebbit-react-hooks';
 import useTheme from './hooks/use-theme';
 import useTimeFilter from './hooks/use-time-filter';
 import styles from './app.module.css';
@@ -27,11 +28,18 @@ import { isHomeAboutView } from './lib/utils/view-utils';
 
 export const sortTypes = ['hot', 'new', 'active', 'controversialAll', 'topAll'];
 
-const CheckRouteParams = () => {
+const ValidateRouteParams = () => {
   const { accountCommentIndex, sortType, timeFilterName } = useParams();
   const { timeFilterNames, lastVisitTimeFilterName } = useTimeFilter();
-  const isValidAccountCommentIndex = !accountCommentIndex || (!isNaN(parseInt(accountCommentIndex)) && parseInt(accountCommentIndex) >= 0);
+  const { accountComments } = useAccountComments();
   const isSortTypeValid = !sortType || sortTypes.includes(sortType);
+
+  const isValidAccountCommentIndex =
+    !accountCommentIndex ||
+    (!isNaN(parseInt(accountCommentIndex)) &&
+      parseInt(accountCommentIndex) >= 0 &&
+      accountComments?.length > 0 &&
+      parseInt(accountCommentIndex) < accountComments.length);
 
   const isDynamicTimeFilter = (filter: string) => /^\d+[dwmy]$/.test(filter);
   const isTimeFilterNameValid =
@@ -136,7 +144,7 @@ const App = () => {
             <Route path='*' element={<NotFound />} />
           </Route>
           <Route element={feedLayout}>
-            <Route element={<CheckRouteParams />}>
+            <Route element={<ValidateRouteParams />}>
               <Route path='/:sortType?/:timeFilterName?' element={<Home />} />
 
               <Route path='/p/all/:sortType?/:timeFilterName?' element={<All />} />

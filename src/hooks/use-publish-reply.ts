@@ -1,18 +1,18 @@
 import { useMemo } from 'react';
 import { usePublishComment } from '@plebbit/plebbit-react-hooks';
-import useReplyStore from '../stores/use-reply-store';
+import usePublishReplyStore from '../stores/use-publish-reply-store';
 
-const useReply = ({ cid, subplebbitAddress }: { cid: string; subplebbitAddress: string }) => {
+const usePublishReply = ({ cid, subplebbitAddress }: { cid: string; subplebbitAddress: string }) => {
   const parentCid = cid;
-  const { content, link, spoiler, publishCommentOptions } = useReplyStore((state) => ({
+  const { content, link, spoiler, publishCommentOptions } = usePublishReplyStore((state) => ({
     content: state.content[parentCid],
     link: state.link[parentCid],
     spoiler: state.spoiler[parentCid],
     publishCommentOptions: state.publishCommentOptions[parentCid],
   }));
 
-  const setReplyStore = useReplyStore((state) => state.setReplyStore);
-  const resetReplyStore = useReplyStore((state) => state.resetReplyStore);
+  const setReplyStore = usePublishReplyStore((state) => state.setReplyStore);
+  const resetReplyStore = usePublishReplyStore((state) => state.resetReplyStore);
 
   const setContent = useMemo(
     () => ({
@@ -51,4 +51,4 @@ const useReply = ({ cid, subplebbitAddress }: { cid: string; subplebbitAddress: 
   return { setContent, resetContent, replyIndex: index, publishReply: publishComment };
 };
 
-export default useReply;
+export default usePublishReply;
