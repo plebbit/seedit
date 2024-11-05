@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useRef } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import { useBlock, useFeed, useSubplebbit } from '@plebbit/plebbit-react-hooks';
+import { useAccountComments, useBlock, useFeed, useSubplebbit } from '@plebbit/plebbit-react-hooks';
 import { Virtuoso, VirtuosoHandle, StateSnapshot } from 'react-virtuoso';
 import { Trans, useTranslation } from 'react-i18next';
 import styles from '../home/home.module.css';
@@ -22,6 +22,36 @@ const Subplebbit = () => {
   const timeFilterName = params.timeFilterName || 'all';
   const { timeFilterSeconds } = useTimeFilter();
   const { feed, hasMore, loadMore, reset, subplebbitAddressesWithNewerPosts } = useFeed({ subplebbitAddresses, sortType, newerThan: timeFilterSeconds });
+  const { accountComments } = useAccountComments();
+
+  // show account comments instantly in the feed once published (cid defined), instead of waiting for the feed to update
+  const filteredComments = useMemo(
+    () =>
+      accountComments.filter((comment) => {
+        const { cid, deleted, postCid, removed, state, timestamp } = comment || {};
+        return (
+          !deleted &&
+          !removed &&
+          timestamp > Date.now() / 1000 - 60 * 60 &&
+          state === 'succeeded' &&
+          cid &&
+          cid === postCid &&
+          comment?.subplebbitAddress === subplebbitAddress &&
+          !feed.some((post) => post.cid === cid)
+        );
+      }),
+    [accountComments, subplebbitAddress, feed],
+  );
+
+  // show newest account comment at the top of the feed but after pinned posts
+  const combinedFeed = useMemo(() => {
+    const newFeed = [...feed];
+    const lastPinnedIndex = newFeed.map((post) => post.pinned).lastIndexOf(true);
+    if (filteredComments.length > 0) {
+      newFeed.splice(lastPinnedIndex + 1, 0, ...filteredComments);
+    }
+    return newFeed;
+  }, [feed, filteredComments]);
 
   const { error } = useSubplebbit({ subplebbitAddress });
   const subplebbit = useSubplebbit({ subplebbitAddress });
@@ -131,8 +161,8 @@ const Subplebbit = () => {
       <div className={styles.feed}>
         <Virtuoso
           increaseViewportBy={{ bottom: 1200, top: 600 }}
-          totalCount={feed?.length || 0}
-          data={feed}
+          totalCount={combinedFeed?.length || 0}
+          data={combinedFeed}
           itemContent={(index, post) => <Post index={index} post={post} />}
           useWindowScroll={true}
           components={{ Footer }}
