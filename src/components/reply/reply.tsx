@@ -472,7 +472,7 @@ const Reply = ({ cidOfReplyWithContext, depth = 0, isSingleComment, isSingleRepl
                 showReplyForm={showReplyForm}
                 spoiler={spoiler}
               />
-              {isReplying && <ReplyForm cid={cid} isReplyingToReply={true} hideReplyForm={hideReplyForm} subplebbitAddress={subplebbitAddress} />}
+              {isReplying && <ReplyForm cid={cid} isReplyingToReply={true} hideReplyForm={hideReplyForm} subplebbitAddress={subplebbitAddress} postCid={postCid} />}
               {!isSingleReply &&
                 replies.map((reply, index) => {
                   return (

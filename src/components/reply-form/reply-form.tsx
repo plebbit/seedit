@@ -12,6 +12,7 @@ type ReplyFormProps = {
   isReplyingToReply?: boolean;
   hideReplyForm?: () => void;
   subplebbitAddress: string;
+  postCid: string | undefined;
 };
 
 export const FormattingHelpTable = () => {
@@ -82,11 +83,11 @@ export const FormattingHelpTable = () => {
   );
 };
 
-const ReplyForm = ({ cid, isReplyingToReply, hideReplyForm, subplebbitAddress }: ReplyFormProps) => {
+const ReplyForm = ({ cid, isReplyingToReply, hideReplyForm, subplebbitAddress, postCid }: ReplyFormProps) => {
   const { t } = useTranslation();
   const [showOptions, setShowOptions] = useState(false);
   const [showFormattingHelp, setShowFormattingHelp] = useState(false);
-  const { setContent, resetContent, replyIndex, publishReply } = usePublishReply({ cid, subplebbitAddress });
+  const { setContent, resetContent, replyIndex, publishReply } = usePublishReply({ cid, subplebbitAddress, postCid });
 
   const mdContainerClass = isReplyingToReply ? `${styles.mdContainer} ${styles.mdContainerReplying}` : styles.mdContainer;
   const urlClass = showOptions ? styles.urlVisible : styles.urlHidden;
