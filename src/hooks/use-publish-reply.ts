@@ -44,7 +44,7 @@ const usePublishReply = ({ cid, subplebbitAddress, postCid }: { cid: string; sub
           spoiler: newSpoiler,
         }),
     }),
-    [subplebbitAddress, parentCid, setReplyStore, content, link, spoiler],
+    [subplebbitAddress, parentCid, setReplyStore, content, link, spoiler, postCid],
   );
 
   const resetContent = useMemo(() => () => resetReplyStore(parentCid), [parentCid, resetReplyStore]);
