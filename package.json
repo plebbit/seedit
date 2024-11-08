@@ -9,7 +9,7 @@
   "dependencies": {
     "@capacitor/app": "6.0.1",
     "@floating-ui/react": "0.26.1",
-    "@plebbit/plebbit-react-hooks": "https://github.com/plebbit/plebbit-react-hooks.git#e5b30dcd62f1f355bc3ce52555e7f71ea4cae06b",
+    "@plebbit/plebbit-react-hooks": "https://github.com/plebbit/plebbit-react-hooks.git#de80441257496942063bf032d48e955b7f812937",
     "@testing-library/jest-dom": "5.14.1",
     "@testing-library/react": "13.0.0",
     "@testing-library/user-event": "13.2.1",
@@ -153,8 +153,5 @@
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
     }
-  },
-  "resolutions": {
-    "skia-canvas": "1.0.2"
   }
 }

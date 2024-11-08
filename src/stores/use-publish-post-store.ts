@@ -3,18 +3,18 @@ import challengesStore from './use-challenges-store';
 import { Comment, PublishCommentOptions } from '@plebbit/plebbit-react-hooks';
 import { alertChallengeVerificationFailed } from '../lib/utils/challenge-utils';
 
+const { addChallenge } = challengesStore.getState();
+
 type SubmitState = {
   subplebbitAddress: string | undefined;
   title: string | undefined;
   content: string | undefined;
   link: string | undefined;
-  publishCommentOptions: PublishCommentOptions;
   spoiler: boolean | undefined;
+  publishCommentOptions: PublishCommentOptions;
   setPublishPostStore: (comment: Comment) => void;
   resetPublishPostStore: () => void;
 };
-
-const { addChallenge } = challengesStore.getState();
 
 const usePublishPostStore = create<SubmitState>((set) => ({
   subplebbitAddress: undefined,
@@ -23,29 +23,42 @@ const usePublishPostStore = create<SubmitState>((set) => ({
   link: undefined,
   spoiler: undefined,
   publishCommentOptions: {},
-  setPublishPostStore: ({ subplebbitAddress, title, content, link, spoiler }) =>
+  setPublishPostStore: (comment) =>
     set((state) => {
       const nextState = { ...state };
+      const { subplebbitAddress, title, content, link, spoiler } = comment;
+
       if (subplebbitAddress !== undefined) nextState.subplebbitAddress = subplebbitAddress;
-      if (title !== undefined) nextState.title = title || undefined;
-      if (content !== undefined) nextState.content = content || undefined;
-      if (link !== undefined) nextState.link = link || undefined;
-      if (spoiler !== undefined) nextState.spoiler = spoiler || undefined;
+      if (title !== undefined) nextState.title = title;
+      if (content !== undefined) nextState.content = content;
+      if (link !== undefined) nextState.link = link;
+      if (spoiler !== undefined) nextState.spoiler = spoiler;
 
       nextState.publishCommentOptions = {
-        ...nextState,
+        subplebbitAddress: nextState.subplebbitAddress,
+        title: nextState.title,
+        content: nextState.content,
+        link: nextState.link,
+        spoiler: nextState.spoiler,
         onChallenge: (...args: any) => addChallenge(args),
         onChallengeVerification: alertChallengeVerificationFailed,
         onError: (error: Error) => {
           console.error(error);
-          let errorMessage = error.message;
-          alert(errorMessage);
+          alert(error.message);
         },
       };
+
       return nextState;
     }),
   resetPublishPostStore: () =>
-    set({ subplebbitAddress: undefined, title: undefined, content: undefined, link: undefined, spoiler: undefined, publishCommentOptions: {} }),
+    set({
+      subplebbitAddress: undefined,
+      title: undefined,
+      content: undefined,
+      link: undefined,
+      spoiler: undefined,
+      publishCommentOptions: {},
+    }),
 }));
 
 export default usePublishPostStore;

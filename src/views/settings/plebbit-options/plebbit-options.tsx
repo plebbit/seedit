@@ -34,6 +34,7 @@ const IPFSGatewaysSettings = ({ ipfsGatewayUrlsRef, mediaIpfsGatewayUrlRef }: Se
           autoCorrect='off'
           autoComplete='off'
           spellCheck='false'
+          rows={8}
         />
       </div>
       <span className={styles.settingTitle}>nft profile pics gateway</span>
@@ -54,7 +55,15 @@ const PubsubProvidersSettings = ({ pubsubProvidersRef }: SettingsProps) => {
 
   return (
     <div className={styles.pubsubProvidersSettings}>
-      <textarea defaultValue={pubsubProvidersDefaultValue} ref={pubsubProvidersRef} disabled={isConnectedToRpc} autoCorrect='off' autoComplete='off' spellCheck='false' />
+      <textarea
+        defaultValue={pubsubProvidersDefaultValue}
+        ref={pubsubProvidersRef}
+        disabled={isConnectedToRpc}
+        autoCorrect='off'
+        autoComplete='off'
+        spellCheck='false'
+        rows={3}
+      />
     </div>
   );
 };
@@ -72,19 +81,19 @@ const BlockchainProvidersSettings = ({ ethRpcRef, solRpcRef, maticRpcRef, avaxRp
     <div className={styles.blockchainProvidersSettings}>
       <span className={styles.settingTitle}>ethereum rpc, for .eth addresses</span>
       <div>
-        <textarea defaultValue={ethRpcDefaultValue} ref={ethRpcRef} autoCorrect='off' autoComplete='off' spellCheck='false' />
+        <textarea defaultValue={ethRpcDefaultValue} ref={ethRpcRef} autoCorrect='off' autoComplete='off' spellCheck='false' rows={3} />
       </div>
       <span className={styles.settingTitle}>solana rpc, for .sol addresses</span>
       <div>
-        <textarea defaultValue={solRpcDefaultValue} ref={solRpcRef} autoCorrect='off' autoComplete='off' spellCheck='false' />
+        <textarea defaultValue={solRpcDefaultValue} ref={solRpcRef} autoCorrect='off' autoComplete='off' spellCheck='false' rows={1} />
       </div>
       <span className={styles.settingTitle}>polygon rpc, for nft profile pics</span>
       <div>
-        <textarea defaultValue={maticRpcDefaultValue} ref={maticRpcRef} autoCorrect='off' autoComplete='off' spellCheck='false' />
+        <textarea defaultValue={maticRpcDefaultValue} ref={maticRpcRef} autoCorrect='off' autoComplete='off' spellCheck='false' rows={1} />
       </div>
       <span className={styles.settingTitle}>avalanche rpc</span>
       <div>
-        <textarea defaultValue={avaxRpcDefaultValue} ref={avaxRpcRef} autoCorrect='off' autoComplete='off' spellCheck='false' />
+        <textarea defaultValue={avaxRpcDefaultValue} ref={avaxRpcRef} autoCorrect='off' autoComplete='off' spellCheck='false' rows={1} />
       </div>
     </div>
   );

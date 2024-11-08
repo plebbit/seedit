@@ -2,7 +2,7 @@ import { useMemo } from 'react';
 import { usePublishComment } from '@plebbit/plebbit-react-hooks';
 import usePublishReplyStore from '../stores/use-publish-reply-store';
 
-const usePublishReply = ({ cid, subplebbitAddress }: { cid: string; subplebbitAddress: string }) => {
+const usePublishReply = ({ cid, subplebbitAddress, postCid }: { cid: string; subplebbitAddress: string; postCid: string | undefined }) => {
   const parentCid = cid;
   const { content, link, spoiler, publishCommentOptions } = usePublishReplyStore((state) => ({
     content: state.content[parentCid],
@@ -20,6 +20,7 @@ const usePublishReply = ({ cid, subplebbitAddress }: { cid: string; subplebbitAd
         setReplyStore({
           subplebbitAddress,
           parentCid,
+          postCid: postCid ?? parentCid,
           content: newContent === '' ? undefined : newContent,
           link: link || undefined,
           spoiler: spoiler || false,
@@ -28,6 +29,7 @@ const usePublishReply = ({ cid, subplebbitAddress }: { cid: string; subplebbitAd
         setReplyStore({
           subplebbitAddress,
           parentCid,
+          postCid: postCid ?? parentCid,
           content: content,
           link: newLink || undefined,
           spoiler: spoiler || false,
@@ -36,12 +38,13 @@ const usePublishReply = ({ cid, subplebbitAddress }: { cid: string; subplebbitAd
         setReplyStore({
           subplebbitAddress,
           parentCid,
+          postCid: postCid ?? parentCid,
           content: content,
           link: link || undefined,
           spoiler: newSpoiler,
         }),
     }),
-    [subplebbitAddress, parentCid, setReplyStore, content, link, spoiler],
+    [subplebbitAddress, parentCid, setReplyStore, content, link, spoiler, postCid],
   );
 
   const resetContent = useMemo(() => () => resetReplyStore(parentCid), [parentCid, resetReplyStore]);

@@ -142,7 +142,7 @@ const Post = ({ index, post = {} }: PostProps) => {
   const [upvoted, upvote] = useUpvote(post);
   const [downvoted, downvote] = useDownvote(post);
   const getPostScore = () => {
-    if ((upvoteCount === 0 && downvoteCount === 0) || state !== 'succeeded') {
+    if ((upvoteCount === 0 && downvoteCount === 0) || state === 'pending' || state === 'failed') {
       return '•';
     } else if (upvoteCount === undefined || downvoteCount === undefined) {
       return '?';

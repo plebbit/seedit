@@ -42,18 +42,6 @@
   font-family: Arial, Helvetica, sans-serif;
 }
 
-.ipfsGatewaysSettings textarea {
-  height: 80px;
-}
-
-.pubsubProvidersSettings textarea {
-  height: 50px;
-}
-
-.blockchainProvidersSettings textarea {
-  height: 50px;
-}
-
 .content button {
   vertical-align: top;
   margin-left: 5px;
