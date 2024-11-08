@@ -1,4 +1,18 @@
-## [0.1.17](https://github.com/plebbit/seedit/compare/v0.1.16...v0.1.17) (2024-10-27)
+# [0.2.0](https://github.com/plebbit/seedit/compare/v0.1.17...v0.2.0) (2024-11-08)
+
+
+### Bug Fixes
+
+* **profile:** return 'not found' for non-existent pending comments ([9eacdc5](https://github.com/plebbit/seedit/commit/9eacdc583acce0932c3178be85173164c163ea15))
+
+
+### Features
+
+* **subplebbit:** show published comments instantly in feed ([4b715c5](https://github.com/plebbit/seedit/commit/4b715c52ab403557966acfa0e0a28117d4df1013))
+
+
+
+## [0.1.17](https://github.com/plebbit/seedit/compare/v0.1.16...v0.1.17) (2024-10-29)
 
 
 ### Bug Fixes
