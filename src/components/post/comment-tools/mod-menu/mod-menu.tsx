@@ -28,10 +28,10 @@ const ModMenu = ({ cid, isCommentAuthorMod }: ModMenuProps) => {
   const [isModMenuOpen, setIsModMenuOpen] = useState(false);
 
   const defaultPublishOptions: PublishCommentEditOptions = {
-    removed: post?.removed,
-    locked: post?.locked,
-    spoiler: post?.spoiler,
-    pinned: post?.pinned,
+    removed: post?.removed ?? false,
+    locked: post?.locked ?? false,
+    spoiler: post?.spoiler ?? false,
+    pinned: post?.pinned ?? false,
     commentAuthor: { banExpiresAt: post?.banExpiresAt },
     commentCid: post?.cid,
     subplebbitAddress: post?.subplebbitAddress,
