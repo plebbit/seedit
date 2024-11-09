@@ -244,7 +244,7 @@ const Post = ({ index, post = {} }: PostProps) => {
                     </span>
                   )}
                 </p>
-                {!isInPostView && (
+                {!isInPostView && commentMediaInfo?.type !== 'webpage' && (
                   <ExpandButton
                     commentMediaInfo={commentMediaInfo}
                     content={content}
