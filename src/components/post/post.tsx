@@ -1,10 +1,10 @@
-import { useCallback, useEffect, useMemo, useState } from 'react';
+import { useEffect, useState } from 'react';
 import styles from './post.module.css';
 import { Link, useLocation, useParams } from 'react-router-dom';
 import { Comment, useAuthorAddress, useBlock, useComment, useEditedComment, useSubplebbit, useSubscribe } from '@plebbit/plebbit-react-hooks';
 import { useTranslation } from 'react-i18next';
 import { isAllView, isPostView, isProfileHiddenView, isSubplebbitView } from '../../lib/utils/view-utils';
-import { fetchWebpageThumbnailIfNeeded, getCommentMediaInfo, getHasThumbnail } from '../../lib/utils/media-utils';
+import { CommentMediaInfo, fetchWebpageThumbnailIfNeeded, getCommentMediaInfo, getHasThumbnail } from '../../lib/utils/media-utils';
 import { getHostname } from '../../lib/utils/url-utils';
 import { getFormattedTimeAgo, formatLocalizedUTCTimestamp } from '../../lib/utils/time-utils';
 import CommentEditForm from '../comment-edit-form';
@@ -120,17 +120,25 @@ const Post = ({ index, post = {} }: PostProps) => {
   const isInSubplebbitView = isSubplebbitView(location.pathname, params);
 
   // some sites have CORS access, so the thumbnail can be fetched client-side, which is helpful if subplebbit.settings.fetchThumbnailUrls is false
-  const initialCommentMediaInfo = useMemo(() => getCommentMediaInfo(post), [post]);
-  const [commentMediaInfo, setCommentMediaInfo] = useState(initialCommentMediaInfo);
-  const fetchThumbnail = useCallback(async () => {
-    if (initialCommentMediaInfo?.type === 'webpage' && !initialCommentMediaInfo.thumbnail) {
-      const newMediaInfo = await fetchWebpageThumbnailIfNeeded(initialCommentMediaInfo);
-      setCommentMediaInfo(newMediaInfo);
-    }
-  }, [initialCommentMediaInfo]);
+  const [commentMediaInfo, setCommentMediaInfo] = useState<CommentMediaInfo | undefined>();
+
   useEffect(() => {
-    fetchThumbnail();
-  }, [fetchThumbnail]);
+    const loadThumbnail = async () => {
+      const initialInfo = getCommentMediaInfo(post);
+
+      if (initialInfo?.type === 'webpage' && !initialInfo.thumbnail) {
+        const newMediaInfo = await fetchWebpageThumbnailIfNeeded(initialInfo);
+        setCommentMediaInfo(newMediaInfo);
+      } else {
+        setCommentMediaInfo(initialInfo);
+      }
+    };
+
+    loadThumbnail();
+    return () => {
+      setCommentMediaInfo(undefined);
+    };
+  }, [post]);
 
   const [isExpanded, setIsExpanded] = useState(isInPostView);
   const toggleExpanded = () => setIsExpanded(!isExpanded);
