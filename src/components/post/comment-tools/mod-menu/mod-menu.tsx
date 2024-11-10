@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { autoUpdate, flip, FloatingFocusManager, offset, shift, useClick, useDismiss, useFloating, useId, useInteractions, useRole } from '@floating-ui/react';
 import { Trans, useTranslation } from 'react-i18next';
-import { PublishCommentEditOptions, useComment, useEditedComment, usePublishCommentEdit } from '@plebbit/plebbit-react-hooks';
+import { PublishCommentModerationOptions, useComment, useEditedComment, usePublishCommentModeration } from '@plebbit/plebbit-react-hooks';
 import styles from './mod-menu.module.css';
 import { alertChallengeVerificationFailed } from '../../../../lib/utils/challenge-utils';
 import challengesStore from '../../../../stores/use-challenges-store';
@@ -15,7 +15,6 @@ type ModMenuProps = {
 
 const ModMenu = ({ cid, isCommentAuthorMod }: ModMenuProps) => {
   const { t } = useTranslation();
-
   let post: any;
   const comment = useComment({ commentCid: cid });
   const { editedComment } = useEditedComment({ comment });
@@ -27,14 +26,16 @@ const ModMenu = ({ cid, isCommentAuthorMod }: ModMenuProps) => {
   const isReply = post?.parentCid;
   const [isModMenuOpen, setIsModMenuOpen] = useState(false);
 
-  const defaultPublishOptions: PublishCommentEditOptions = {
-    removed: post?.removed ?? false,
-    locked: post?.locked ?? false,
-    spoiler: post?.spoiler ?? false,
-    pinned: post?.pinned ?? false,
-    commentAuthor: { banExpiresAt: post?.banExpiresAt },
+  const defaultPublishOptions: PublishCommentModerationOptions = {
     commentCid: post?.cid,
     subplebbitAddress: post?.subplebbitAddress,
+    commentModeration: {
+      removed: post?.removed ?? false,
+      locked: post?.locked ?? false,
+      spoiler: post?.spoiler ?? false,
+      pinned: post?.pinned ?? false,
+      banExpiresAt: post?.banExpiresAt,
+    },
     onChallenge: (...args: any) => addChallenge([...args, post]),
     onChallengeVerification: alertChallengeVerificationFailed,
     onError: (error: Error) => {
@@ -43,8 +44,8 @@ const ModMenu = ({ cid, isCommentAuthorMod }: ModMenuProps) => {
     },
   };
 
-  const [publishCommentEditOptions, setPublishCommentEditOptions] = useState(defaultPublishOptions);
-  const { publishCommentEdit } = usePublishCommentEdit(publishCommentEditOptions);
+  const [publishCommentModerationOptions, setPublishCommentModerationOptions] = useState(defaultPublishOptions);
+  const { publishCommentModeration } = usePublishCommentModeration(publishCommentModerationOptions);
 
   const [banDuration, setBanDuration] = useState(1);
 
@@ -57,26 +58,41 @@ const ModMenu = ({ cid, isCommentAuthorMod }: ModMenuProps) => {
   const onCheckbox = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { id, checked } = e.target;
     if (id === 'banUser') {
-      setPublishCommentEditOptions((state) => ({
+      setPublishCommentModerationOptions((state) => ({
         ...state,
-        commentAuthor: { ...state.commentAuthor, banExpiresAt: checked ? daysToTimestampInSeconds(banDuration) : undefined },
+        commentModeration: {
+          ...state.commentModeration,
+          banExpiresAt: checked ? daysToTimestampInSeconds(banDuration) : undefined,
+        },
       }));
     } else {
-      setPublishCommentEditOptions((state) => ({ ...state, [id]: checked }));
+      setPublishCommentModerationOptions((state) => ({
+        ...state,
+        commentModeration: { ...state.commentModeration, [id]: checked },
+      }));
     }
   };
 
   const onBanDurationChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const days = parseInt(e.target.value, 10) || 1;
     setBanDuration(days);
-    setPublishCommentEditOptions((state) => ({
+    setPublishCommentModerationOptions((state) => ({
       ...state,
-      commentAuthor: { ...state.commentAuthor, banExpiresAt: daysToTimestampInSeconds(days) },
+      commentModeration: {
+        ...state.commentModeration,
+        banExpiresAt: daysToTimestampInSeconds(days),
+      },
     }));
   };
 
   const onReason = (e: React.ChangeEvent<HTMLInputElement>) =>
-    setPublishCommentEditOptions((state) => ({ ...state, reason: e.target.value ? e.target.value : undefined }));
+    setPublishCommentModerationOptions((state) => ({
+      ...state,
+      commentModeration: {
+        ...state.commentModeration,
+        reason: e.target.value ? e.target.value : undefined,
+      },
+    }));
 
   const { refs, floatingStyles, context } = useFloating({
     placement: 'bottom-start',
@@ -95,7 +111,7 @@ const ModMenu = ({ cid, isCommentAuthorMod }: ModMenuProps) => {
   const headingId = useId();
 
   const handleSaveClick = async () => {
-    await publishCommentEdit();
+    await publishCommentModeration();
     setIsModMenuOpen(false);
   };
 
@@ -110,34 +126,34 @@ const ModMenu = ({ cid, isCommentAuthorMod }: ModMenuProps) => {
             <div className={styles.ModMenu}>
               <div className={styles.menuItem}>
                 <label>
-                  <input onChange={onCheckbox} checked={publishCommentEditOptions.removed} type='checkbox' id='removed' />
+                  <input onChange={onCheckbox} checked={publishCommentModerationOptions.commentModeration.removed} type='checkbox' id='removed' />
                   {t('removed')}
                 </label>
               </div>
               {!isReply && (
                 <div className={styles.menuItem}>
                   <label>
-                    <input onChange={onCheckbox} checked={publishCommentEditOptions.locked} type='checkbox' id='locked' />
+                    <input onChange={onCheckbox} checked={publishCommentModerationOptions.commentModeration.locked} type='checkbox' id='locked' />
                     {t('locked')}
                   </label>
                 </div>
               )}
               <div className={styles.menuItem}>
                 <label>
-                  <input onChange={onCheckbox} checked={publishCommentEditOptions.spoiler} type='checkbox' id='spoiler' />
+                  <input onChange={onCheckbox} checked={publishCommentModerationOptions.commentModeration.spoiler} type='checkbox' id='spoiler' />
                   {t('spoiler')}
                 </label>
               </div>
               <div className={styles.menuItem}>
                 <label>
-                  <input onChange={onCheckbox} checked={publishCommentEditOptions.pinned} type='checkbox' id='pinned' />
+                  <input onChange={onCheckbox} checked={publishCommentModerationOptions.commentModeration.pinned} type='checkbox' id='pinned' />
                   {isReply ? t('stickied_comment') : t('announcement')}
                 </label>
               </div>
               {!isCommentAuthorMod && (
                 <div className={styles.menuItem}>
                   <label>
-                    <input onChange={onCheckbox} checked={!!publishCommentEditOptions.commentAuthor?.banExpiresAt} type='checkbox' id='banUser' />
+                    <input onChange={onCheckbox} checked={!!publishCommentModerationOptions.commentModeration.banExpiresAt} type='checkbox' id='banUser' />
                     <Trans
                       i18nKey='ban_user_for'
                       shouldUnescape={true}
