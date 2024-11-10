@@ -1,3 +1,14 @@
+## [0.2.1](https://github.com/plebbit/seedit/compare/v0.2.0...v0.2.1) (2024-11-10)
+
+
+### Bug Fixes
+
+* **moderation:** update to use new API schema ([5e1902f](https://github.com/plebbit/seedit/commit/5e1902fab3d5bf5c5fa27413e231f756025b51c2))
+* **post:** expand button would appear for webpage thumbnails ([fddea3e](https://github.com/plebbit/seedit/commit/fddea3e5c13979ee9f18375702bfb611a650aa72))
+* **post:** thumbnails would get stuck when navigating ([b3b39f1](https://github.com/plebbit/seedit/commit/b3b39f19fbf4f402ce8a57a79cc4861c654e19b2))
+
+
+
 # [0.2.0](https://github.com/plebbit/seedit/compare/v0.1.17...v0.2.0) (2024-11-08)
 
 
