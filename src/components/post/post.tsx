@@ -5,6 +5,7 @@ import { Comment, useAuthorAddress, useBlock, useComment, useEditedComment, useS
 import { useTranslation } from 'react-i18next';
 import { isAllView, isPostView, isProfileHiddenView, isSubplebbitView } from '../../lib/utils/view-utils';
 import { CommentMediaInfo, fetchWebpageThumbnailIfNeeded, getCommentMediaInfo, getHasThumbnail } from '../../lib/utils/media-utils';
+import { getPostScore } from '../../lib/utils/post-utils';
 import { getHostname } from '../../lib/utils/url-utils';
 import { getFormattedTimeAgo, formatLocalizedUTCTimestamp } from '../../lib/utils/time-utils';
 import CommentEditForm from '../comment-edit-form';
@@ -149,15 +150,7 @@ const Post = ({ index, post = {} }: PostProps) => {
 
   const [upvoted, upvote] = useUpvote(post);
   const [downvoted, downvote] = useDownvote(post);
-  const getPostScore = () => {
-    if ((upvoteCount === 0 && downvoteCount === 0) || state === 'pending' || state === 'failed') {
-      return '•';
-    } else if (upvoteCount === undefined || downvoteCount === undefined) {
-      return '?';
-    }
-    return upvoteCount - downvoteCount;
-  };
-
+  const postScore = getPostScore(upvoteCount, downvoteCount, state);
   const postTitle = (title?.length > 300 ? title?.slice(0, 300) + '...' : title) || (content?.length > 300 ? content?.slice(0, 300) + '...' : content);
 
   const hasThumbnail = getHasThumbnail(commentMediaInfo, link);
@@ -197,7 +190,7 @@ const Post = ({ index, post = {} }: PostProps) => {
                 <div className={styles.arrowWrapper}>
                   <div className={`${styles.arrowCommon} ${upvoted ? styles.upvoted : styles.arrowUp}`} onClick={() => cid && upvote()} />
                 </div>
-                <div className={styles.score}>{getPostScore()}</div>
+                <div className={styles.score}>{postScore}</div>
                 <div className={styles.arrowWrapper}>
                   <div className={`${styles.arrowCommon} ${downvoted ? styles.downvoted : styles.arrowDown}`} onClick={() => cid && downvote()} />
                 </div>
