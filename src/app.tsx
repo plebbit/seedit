@@ -1,8 +1,7 @@
 import { useEffect } from 'react';
-import { Outlet, Route, Routes, useLocation, useNavigate, useParams } from 'react-router-dom';
-import { useAccountComments } from '@plebbit/plebbit-react-hooks';
+import { Outlet, Route, Routes, useLocation, useNavigate } from 'react-router-dom';
 import useTheme from './hooks/use-theme';
-import useTimeFilter from './hooks/use-time-filter';
+import useValidateRouteParams from './hooks/use-validate-route-params';
 import styles from './app.module.css';
 import About from './views/about';
 import All from './views/all';
@@ -24,32 +23,13 @@ import ChallengeModal from './components/challenge-modal';
 import Header from './components/header';
 import StickyHeader from './components/sticky-header';
 import TopBar from './components/topbar';
-import { isHomeAboutView } from './lib/utils/view-utils';
 
 export const sortTypes = ['hot', 'new', 'active', 'controversialAll', 'topAll'];
 
-const ValidateRouteParams = () => {
-  const { accountCommentIndex, sortType, timeFilterName } = useParams();
-  const { timeFilterNames, lastVisitTimeFilterName } = useTimeFilter();
-  const { accountComments } = useAccountComments();
-  const isSortTypeValid = !sortType || sortTypes.includes(sortType);
+const ValidatedRoute = () => {
+  const isValid = useValidateRouteParams();
 
-  const isValidAccountCommentIndex =
-    !accountCommentIndex ||
-    (!isNaN(parseInt(accountCommentIndex)) &&
-      parseInt(accountCommentIndex) >= 0 &&
-      accountComments?.length > 0 &&
-      parseInt(accountCommentIndex) < accountComments.length);
-
-  const isDynamicTimeFilter = (filter: string) => /^\d+[dwmy]$/.test(filter);
-  const isTimeFilterNameValid =
-    !timeFilterName || timeFilterNames.includes(timeFilterName as any) || timeFilterName === lastVisitTimeFilterName || isDynamicTimeFilter(timeFilterName);
-
-  const isAccountCommentIndexValid = !accountCommentIndex || !isNaN(parseInt(accountCommentIndex));
-  const location = useLocation();
-  const isInHomeAboutView = isHomeAboutView(location.pathname);
-
-  if (!isValidAccountCommentIndex || (!isSortTypeValid && !isInHomeAboutView) || !isTimeFilterNameValid || !isAccountCommentIndexValid) {
+  if (!isValid) {
     return <NotFound />;
   }
 
@@ -144,7 +124,7 @@ const App = () => {
             <Route path='*' element={<NotFound />} />
           </Route>
           <Route element={feedLayout}>
-            <Route element={<ValidateRouteParams />}>
+            <Route element={<ValidatedRoute />}>
               <Route path='/:sortType?/:timeFilterName?' element={<Home />} />
 
               <Route path='/p/all/:sortType?/:timeFilterName?' element={<All />} />

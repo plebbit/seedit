@@ -3,6 +3,10 @@
   margin-bottom: 40px;
 }
 
+.content button, .content label {
+  cursor: pointer;
+}
+
 .box {
   width: 514px;
   background-color: var(--background-primary);

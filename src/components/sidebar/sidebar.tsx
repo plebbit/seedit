@@ -3,6 +3,9 @@ import { useTranslation } from 'react-i18next';
 import Plebbit from '@plebbit/plebbit-js/dist/browser/index.js';
 import { Comment, useAccount, useBlock, Role, Subplebbit, useSubplebbitStats, useAccountComment } from '@plebbit/plebbit-react-hooks';
 import styles from './sidebar.module.css';
+import useIsSubplebbitOffline from '../../hooks/use-is-subplebbit-offline';
+import useIsMobile from '../../hooks/use-is-mobile';
+import { getPostScore } from '../../lib/utils/post-utils';
 import { getFormattedDate, getFormattedTimeDuration, getFormattedTimeAgo } from '../../lib/utils/time-utils';
 import { findSubplebbitCreator } from '../../lib/utils/user-utils';
 import {
@@ -20,8 +23,6 @@ import SearchBar from '../search-bar';
 import SubscribeButton from '../subscribe-button';
 import packageJson from '../../../package.json';
 import LoadingEllipsis from '../loading-ellipsis';
-import useIsSubplebbitOffline from '../../hooks/use-is-subplebbit-offline';
-import useIsMobile from '../../hooks/use-is-mobile';
 
 const { version } = packageJson;
 const commitRef = process.env.REACT_APP_COMMIT_REF;
@@ -59,23 +60,11 @@ const ModeratorsList = ({ roles }: { roles: Record<string, Role> }) => {
   );
 };
 
-const PostInfo = ({
-  address,
-  cid,
-  downvoteCount = 0,
-  timestamp = 0,
-  upvoteCount = 0,
-}: {
-  address?: string;
-  cid?: string;
-  downvoteCount?: number;
-  timestamp?: number;
-  updatedAt?: number;
-  upvoteCount?: number;
-}) => {
+const PostInfo = ({ comment }: { comment: Comment | undefined }) => {
   const { t, i18n } = useTranslation();
   const { language } = i18n;
-  const postScore = upvoteCount - downvoteCount;
+  const { upvoteCount, downvoteCount, timestamp, state, subplebbitAddress, cid } = comment || {};
+  const postScore = getPostScore(upvoteCount, downvoteCount, state);
   const totalVotes = upvoteCount + downvoteCount;
   const upvotePercentage = totalVotes > 0 ? Math.round((upvoteCount / totalVotes) * 100) : 0;
   const postDate = getFormattedDate(timestamp, language);
@@ -87,10 +76,11 @@ const PostInfo = ({
       </div>
       <div className={styles.postScore}>
         <span className={styles.postScoreNumber}>{postScore} </span>
-        <span className={styles.postScoreWord}>{postScore === 1 ? t('point') : t('points')}</span> ({upvotePercentage}% {t('upvoted')})
+        <span className={styles.postScoreWord}>{postScore === 1 ? t('point') : t('points')}</span>{' '}
+        {`(${postScore === '?' ? '?' : `${upvotePercentage}`}% ${t('upvoted')})`}
       </div>
       <div className={styles.shareLink}>
-        {t('share_link')}: <input type='text' value={`https://pleb.bz/p/${address}/c/${cid}`} readOnly={true} />
+        {t('share_link')}: <input type='text' value={`https://pleb.bz/p/${subplebbitAddress}/c/${cid}`} readOnly={true} />
       </div>
     </div>
   );
@@ -216,8 +206,6 @@ export const Footer = () => {
 const Sidebar = ({ comment, isSubCreatedButNotYetPublished, settings, subplebbit }: sidebarProps) => {
   const { t } = useTranslation();
   const { address, createdAt, description, roles, rules, title, updatedAt } = subplebbit || {};
-  const { cid, downvoteCount, timestamp, upvoteCount } = comment || {};
-
   const { allActiveUserCount, hourActiveUserCount } = useSubplebbitStats({ subplebbitAddress: address });
   const { isOffline, offlineTitle } = useIsSubplebbitOffline(subplebbit || {});
   const onlineNotice = t('users_online', { count: hourActiveUserCount });
@@ -283,7 +271,7 @@ const Sidebar = ({ comment, isSubCreatedButNotYetPublished, settings, subplebbit
   return (
     <div className={`${isMobile ? styles.mobileSidebar : styles.sidebar}`}>
       <SearchBar />
-      {isInPostView && <PostInfo address={address} cid={cid} downvoteCount={downvoteCount} timestamp={timestamp} upvoteCount={upvoteCount} />}
+      {isInPostView && <PostInfo comment={comment} />}
       <Link to={submitRoute}>
         {/* TODO: add .largeButtonDisabled and disabledButtonDescription classnames for subs that don't accept posts */}
         <div className={styles.largeButton}>
