@@ -11,7 +11,11 @@ interface ExpandButtonProps {
 }
 
 const ExpandButton = ({ commentMediaInfo, content, expanded, hasThumbnail, link, toggleExpanded }: ExpandButtonProps) => {
-  const initialButtonType = hasThumbnail || commentMediaInfo?.type === 'audio' || commentMediaInfo?.type === 'iframe' ? 'playButton' : 'textButton';
+  let initialButtonType = hasThumbnail || commentMediaInfo?.type === 'audio' || commentMediaInfo?.type === 'iframe' ? 'playButton' : 'textButton';
+
+  if (commentMediaInfo?.type === 'webpage' && content && content.trim().length > 0) {
+    initialButtonType = 'textButton';
+  }
 
   const buttonType = expanded ? 'closeButton' : initialButtonType;
 
