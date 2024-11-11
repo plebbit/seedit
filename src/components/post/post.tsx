@@ -306,7 +306,7 @@ const Post = ({ index, post = {} }: PostProps) => {
               authorEditReason={edit?.reason}
               commentMediaInfo={commentMediaInfo}
               content={removed ? `[${_.lowerCase(t('removed'))}]` : deleted ? `[${_.lowerCase(t('deleted'))}]` : content}
-              expanded={commentMediaInfo?.type === 'webpage' ? false : isExpanded}
+              expanded={isExpanded}
               link={link}
               modEditReason={reason}
               deleted={deleted}
