@@ -1,3 +1,18 @@
+## [0.2.2](https://github.com/plebbit/seedit/compare/v0.2.1...v0.2.2) (2024-11-11)
+
+
+### Bug Fixes
+
+* **post:** content would not appear if link is webpage ([a2516b5](https://github.com/plebbit/seedit/commit/a2516b59122c41cf333102aa97de2c882ac2ee9f))
+* **sidebar:** 0 score would show up as '•' ([5785e0b](https://github.com/plebbit/seedit/commit/5785e0bbe16006ef342bc936bbc353f49ee01018))
+
+
+### Features
+
+* **home:** improve design of "show more posts" button in feed footer ([e5fd224](https://github.com/plebbit/seedit/commit/e5fd22488f05e76d03aa5dbb04bd1b366680c8df))
+
+
+
 ## [0.2.1](https://github.com/plebbit/seedit/compare/v0.2.0...v0.2.1) (2024-11-10)
 
 

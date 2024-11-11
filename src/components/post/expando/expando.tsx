@@ -64,7 +64,7 @@ const Expando = ({
           <span className={styles.showSpoilerButton}>{t('view_spoiler')}</span>
         </>
       )}
-      {link && !removed && (
+      {link && !removed && commentMediaInfo?.type !== 'webpage' && (
         <div className={styles.mediaPreview}>
           <Link
             to={link}
