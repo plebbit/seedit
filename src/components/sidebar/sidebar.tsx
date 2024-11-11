@@ -75,7 +75,7 @@ const PostInfo = ({ comment }: { comment: Comment | undefined }) => {
         <span>{t('post_submitted_on', { postDate: postDate })}</span>
       </div>
       <div className={styles.postScore}>
-        <span className={styles.postScoreNumber}>{postScore} </span>
+        <span className={styles.postScoreNumber}>{postScore === '•' ? '0' : postScore}</span>{' '}
         <span className={styles.postScoreWord}>{postScore === 1 ? t('point') : t('points')}</span>{' '}
         {`(${postScore === '?' ? '?' : `${upvotePercentage}`}% ${t('upvoted')})`}
       </div>
