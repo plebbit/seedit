@@ -1,14 +1,31 @@
 .footer {
-  padding-left: 5px;
+  padding: 5px 0 20px 5px;
 }
 
-.stateString {
+.stateString, .morePostsSuggestion {
   text-transform: lowercase;
 }
 
-.stateString a, .link {
+.morePostsSuggestion {
+  font-size: 12px;
+  padding-bottom: 15px;
+}
+
+.morePostsSuggestion a, .link {
   color: var(--text-primary);
   text-decoration: none;
+  padding: 1px 4px;
+  background: var(--pagination-button-background);
+  border: var(--pagination-button-border);
+  border-radius: 3px;
+  font-weight: bold;
+  cursor: pointer;
+  text-transform: lowercase;
+  color: var(--link-primary);
+}
+
+.morePostsSuggestion a:hover {
+  border: var(--pagination-button-border-hover);
 }
 
 .feed {
