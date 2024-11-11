@@ -5,11 +5,13 @@
 .markdown ol {
   padding-left: 40px;
   white-space: normal;
+  padding-bottom: 5px;
 }
 
 .markdown ul {
   padding-left: 40px;
   white-space: normal;
+  padding-bottom: 5px;
 }
 
 .markdown blockquote {
