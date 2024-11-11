@@ -237,11 +237,11 @@ const Post = ({ index, post = {} }: PostProps) => {
                     </span>
                   )}
                 </p>
-                {!isInPostView && commentMediaInfo?.type !== 'webpage' && (
+                {!isInPostView && (!(commentMediaInfo?.type === 'webpage') || (commentMediaInfo?.type === 'webpage' && content?.trim().length > 0)) && (
                   <ExpandButton
                     commentMediaInfo={commentMediaInfo}
                     content={content}
-                    expanded={commentMediaInfo?.type === 'webpage' ? false : isExpanded}
+                    expanded={isExpanded}
                     hasThumbnail={hasThumbnail}
                     link={link}
                     toggleExpanded={toggleExpanded}
