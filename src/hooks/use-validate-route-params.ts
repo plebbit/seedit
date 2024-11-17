@@ -18,7 +18,7 @@ const useValidateRouteParams = () => {
       accountComments?.length > 0 &&
       parseInt(accountCommentIndex) < accountComments.length);
 
-  const isDynamicTimeFilter = (filter: string) => /^\d+[dwmy]$/.test(filter);
+  const isDynamicTimeFilter = (filter: string) => /^\d+[hdwmy]$/.test(filter);
   const isTimeFilterNameValid =
     !timeFilterName || timeFilterNames.includes(timeFilterName as any) || timeFilterName === lastVisitTimeFilterName || isDynamicTimeFilter(timeFilterName);
 

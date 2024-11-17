@@ -41,6 +41,31 @@ if (secondsSinceLastVisit > 30 * day) {
 
 export const timeFilterNames = ['1h', '24h', '1w', '1m', '1y', 'all', lastVisitTimeFilterName];
 
+function convertTimeStringToSeconds(timeString: string): number {
+  const match = timeString.match(/^(\d+)([hdwmy])$/);
+  if (!match) {
+    throw new Error(`Invalid time filter format: ${timeString}`);
+  }
+
+  const [, value, unit] = match;
+  const numValue = parseInt(value, 10);
+
+  switch (unit) {
+    case 'h':
+      return numValue * 60 * 60;
+    case 'd':
+      return numValue * 24 * 60 * 60;
+    case 'w':
+      return numValue * 7 * 24 * 60 * 60;
+    case 'm':
+      return numValue * 30 * 24 * 60 * 60;
+    case 'y':
+      return numValue * 365 * 24 * 60 * 60;
+    default:
+      throw new Error(`Invalid time unit: ${unit}`);
+  }
+}
+
 const useTimeFilter = () => {
   const params = useParams();
   const location = useLocation();
@@ -59,25 +84,11 @@ const useTimeFilter = () => {
   } else if (timeFilterName && timeFilterName in timeFilterNamesToSeconds) {
     timeFilterSeconds = timeFilterNamesToSeconds[timeFilterName as keyof typeof timeFilterNamesToSeconds];
   } else if (timeFilterName) {
-    // Handle dynamic time filters (e.g., "3d", "2w")
-    const match = timeFilterName.match(/^(\d+)([dwmy])$/);
-    if (match) {
-      const [, value, unit] = match;
-      const numValue = parseInt(value, 10);
-      switch (unit) {
-        case 'd':
-          timeFilterSeconds = numValue * 24 * 60 * 60;
-          break;
-        case 'w':
-          timeFilterSeconds = numValue * 7 * 24 * 60 * 60;
-          break;
-        case 'm':
-          timeFilterSeconds = numValue * 30 * 24 * 60 * 60;
-          break;
-        case 'y':
-          timeFilterSeconds = numValue * 365 * 24 * 60 * 60;
-          break;
-      }
+    try {
+      timeFilterSeconds = convertTimeStringToSeconds(timeFilterName);
+    } catch (e) {
+      console.error(`Invalid time filter format: ${timeFilterName}`);
+      timeFilterSeconds = undefined;
     }
   }
 
