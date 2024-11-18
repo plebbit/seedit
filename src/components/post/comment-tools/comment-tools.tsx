@@ -263,67 +263,69 @@ const CommentTools = ({
   const isInInboxView = isInboxView(useLocation().pathname);
 
   return (
-    <ul className={`${styles.buttons} ${isReply && !isInInboxView ? styles.buttonsReply : ''} ${hasLabel ? styles.buttonsLabel : ''}`}>
-      {isReply ? (
-        isSingleReply ? (
-          <SingleReplyTools
-            author={author}
-            cid={cid}
-            failed={failed}
-            hasLabel={hasLabel}
-            index={index}
-            isAuthor={isAuthor}
-            isAccountMod={isAccountMod}
-            isCommentAuthorMod={isCommentAuthorMod}
-            parentCid={parentCid}
-            postCid={postCid}
-            showCommentEditForm={showCommentEditForm}
-            showReplyForm={showReplyForm}
-            subplebbitAddress={subplebbitAddress}
-          />
+    (!(deleted || removed) || ((deleted || removed) && (isAuthor || isAccountMod))) && (
+      <ul className={`${styles.buttons} ${isReply && !isInInboxView ? styles.buttonsReply : ''} ${hasLabel ? styles.buttonsLabel : ''}`}>
+        {isReply ? (
+          isSingleReply ? (
+            <SingleReplyTools
+              author={author}
+              cid={cid}
+              failed={failed}
+              hasLabel={hasLabel}
+              index={index}
+              isAuthor={isAuthor}
+              isAccountMod={isAccountMod}
+              isCommentAuthorMod={isCommentAuthorMod}
+              parentCid={parentCid}
+              postCid={postCid}
+              showCommentEditForm={showCommentEditForm}
+              showReplyForm={showReplyForm}
+              subplebbitAddress={subplebbitAddress}
+            />
+          ) : (
+            <ReplyTools
+              author={author}
+              cid={cid}
+              failed={failed}
+              hasLabel={hasLabel}
+              index={index}
+              isAuthor={isAuthor}
+              isAccountMod={isAccountMod}
+              isCommentAuthorMod={isCommentAuthorMod}
+              showCommentEditForm={showCommentEditForm}
+              showReplyForm={showReplyForm}
+              subplebbitAddress={subplebbitAddress}
+            />
+          )
         ) : (
-          <ReplyTools
-            author={author}
-            cid={cid}
-            failed={failed}
-            hasLabel={hasLabel}
-            index={index}
-            isAuthor={isAuthor}
-            isAccountMod={isAccountMod}
-            isCommentAuthorMod={isCommentAuthorMod}
-            showCommentEditForm={showCommentEditForm}
-            showReplyForm={showReplyForm}
-            subplebbitAddress={subplebbitAddress}
-          />
-        )
-      ) : (
-        <>
-          <CommentToolsLabel
-            cid={cid}
-            deleted={deleted}
-            failed={failed}
-            editState={editState}
-            isReply={isReply}
-            removed={removed}
-            spoiler={spoiler}
-            subplebbitAddress={subplebbitAddress}
-          />
-          <PostTools
-            author={author}
-            cid={cid}
-            failed={failed}
-            hasLabel={hasLabel}
-            index={index}
-            isAuthor={isAuthor}
-            isAccountMod={isAccountMod}
-            isCommentAuthorMod={isCommentAuthorMod}
-            replyCount={replyCount}
-            showCommentEditForm={showCommentEditForm}
-            subplebbitAddress={subplebbitAddress}
-          />
-        </>
-      )}
-    </ul>
+          <>
+            <CommentToolsLabel
+              cid={cid}
+              deleted={deleted}
+              failed={failed}
+              editState={editState}
+              isReply={isReply}
+              removed={removed}
+              spoiler={spoiler}
+              subplebbitAddress={subplebbitAddress}
+            />
+            <PostTools
+              author={author}
+              cid={cid}
+              failed={failed}
+              hasLabel={hasLabel}
+              index={index}
+              isAuthor={isAuthor}
+              isAccountMod={isAccountMod}
+              isCommentAuthorMod={isCommentAuthorMod}
+              replyCount={replyCount}
+              showCommentEditForm={showCommentEditForm}
+              subplebbitAddress={subplebbitAddress}
+            />
+          </>
+        )}
+      </ul>
+    )
   );
 };
 

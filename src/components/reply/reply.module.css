@@ -130,6 +130,11 @@
   line-height: 20px;
 }
 
+.removedOrDeletedContent {
+  margin-bottom: 0 !important;
+  margin-top: 0 !important;
+}
+
 .md p {
   margin-bottom: 5px;
 }
@@ -165,6 +170,18 @@
 
 .removedContent, .deletedContent {
   text-transform: lowercase;
+  background-color: var(--removed-reply-backgrouhd-color);
+  display: inline-block;
+  padding: 5px;
+}
+
+.removedUsername {
+  color: var(--text-info);
+  text-transform: lowercase;
+}
+
+.hiddenMidcol {
+  visibility: hidden !important;
 }
 
 .usertext a {
@@ -189,11 +206,13 @@
 }
 
 .collapsedEntry .author,
+.collapsedEntry .removedUsername,
 .collapsedEntry .moderator,
 .collapsedEntry .admin,
 .collapsedEntry .owner,
 .collapsedEntry .moderatorBrackets,
 .collapsedEntry .time,
+.collapsedEntry .score,
 .collapsedEntry .children {
   color: var(--text-info) !important;
   font-style: italic !important;
