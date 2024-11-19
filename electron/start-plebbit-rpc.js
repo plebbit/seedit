@@ -15,8 +15,7 @@ const defaultPlebbitOptions = {
   // find the user's OS data path
   dataPath: !isDev ? envPaths.data : path.join(dirname, '..', '.plebbit'),
   ipfsHttpClientsOptions: ['http://localhost:5001/api/v0'],
-  // TODO: having to define pubsubHttpClientsOptions and ipfsHttpClientsOptions is a bug with plebbit-js
-  pubsubHttpClientsOptions: ['http://localhost:5001/api/v0'],
+  httpRoutersOptions: ['https://routing.lol', 'https://peers.pleb.bot'],
 };
 
 // generate plebbit rpc auth key if doesn't exist
@@ -42,6 +41,7 @@ const start = async () => {
       return;
     }
     const plebbitWebSocketServer = await PlebbitRpc.PlebbitWsServer({ port, plebbitOptions: defaultPlebbitOptions, authKey: plebbitRpcAuthKey });
+    plebbitWebSocketServer.on('error', (e) => console.log('plebbit rpc error', e));
 
     console.log(`plebbit rpc: listening on ws://localhost:${port} (local connections only)`);
     console.log(`plebbit rpc: listening on ws://localhost:${port}/${plebbitRpcAuthKey} (secret auth key for remote connections)`);

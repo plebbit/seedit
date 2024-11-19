@@ -116,7 +116,7 @@ const start = async () => {
   }
   pendingStart = true;
   try {
-    const started = await tcpPortUsed.check(5001, '127.0.0.1');
+    const started = await tcpPortUsed.check(isDev ? 5002 : 5001, '127.0.0.1');
     if (started) {
       return;
     }
