@@ -18,7 +18,6 @@ interface ThumbnailProps {
 const Thumbnail = ({ cid, commentMediaInfo, expanded = false, isReply = false, link, linkHeight, linkWidth, subplebbitAddress, toggleExpanded }: ThumbnailProps) => {
   const iframeThumbnail = commentMediaInfo?.patternThumbnailUrl || commentMediaInfo?.thumbnail;
   let displayWidth, displayHeight, hasLinkDimensions;
-  const routeOrLink = isReply || commentMediaInfo?.type === 'webpage' ? link : `/p/${subplebbitAddress}/c/${cid}`;
   const thumbnailClass = expanded ? styles.thumbnailHidden : styles.thumbnailVisible;
 
   if (linkWidth && linkHeight) {
@@ -52,17 +51,23 @@ const Thumbnail = ({ cid, commentMediaInfo, expanded = false, isReply = false, l
   return (
     <span className={`${styles.thumbnail} ${thumbnailClass}`} style={style}>
       <span className={hasLinkDimensions ? styles.transparentThumbnailWrapper : styles.thumbnailWrapper}>
-        <Link
-          to={routeOrLink}
-          onClick={(e) => {
-            if (e.button === 0 && isReply) {
-              e.preventDefault();
-              toggleExpanded && toggleExpanded();
-            }
-          }}
-        >
-          {mediaComponent}
-        </Link>
+        {isReply || commentMediaInfo?.type === 'webpage' ? (
+          <a
+            href={link}
+            target='_blank'
+            rel='noopener noreferrer'
+            onClick={(e) => {
+              if (e.button === 0 && isReply) {
+                e.preventDefault();
+                toggleExpanded && toggleExpanded();
+              }
+            }}
+          >
+            {mediaComponent}
+          </a>
+        ) : (
+          <Link to={`/p/${subplebbitAddress}/c/${cid}`}>{mediaComponent}</Link>
+        )}
       </span>
     </span>
   );
