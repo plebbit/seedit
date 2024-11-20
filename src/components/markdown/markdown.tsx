@@ -24,6 +24,11 @@ const Markdown = ({ content }: MarkdownProps) => {
         remarkPlugins={remarkPlugins}
         rehypePlugins={[[rehypeSanitize]]}
         components={{
+          a: ({ children, href }) => (
+            <a href={href} target='_blank' rel='noopener noreferrer'>
+              {children}
+            </a>
+          ),
           img: ({ src }) => <span>{src}</span>,
           video: ({ src }) => <span>{src}</span>,
           iframe: ({ src }) => <span>{src}</span>,
