@@ -34,7 +34,7 @@ const CommentEditForm = ({ commentCid, hideCommentEditForm }: CommentEditFormPro
   const defaultPublishOptions: PublishCommentEditOptions = {
     commentCid,
     content,
-    edit: { reason: edit?.reason },
+    reason: edit?.reason ?? '',
     spoiler,
     subplebbitAddress,
     onChallenge: (...args: any) => addChallenge([...args, post]),
@@ -82,8 +82,8 @@ const CommentEditForm = ({ commentCid, hideCommentEditForm }: CommentEditFormPro
           {t('edit_reason')}:{' '}
           <input
             className={styles.url}
-            value={publishCommentEditOptions.edit?.reason}
-            onChange={(e) => setPublishCommentEditOptions((state) => ({ ...state, edit: { reason: e.target.value } }))}
+            value={publishCommentEditOptions.reason}
+            onChange={(e) => setPublishCommentEditOptions((state) => ({ ...state, reason: e.target.value }))}
           />
         </span>
         <span className={styles.optionsButton} onClick={() => setShowFormattingHelp(!showFormattingHelp)}>

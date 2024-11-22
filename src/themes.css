@@ -54,6 +54,7 @@
   --play-button: url("/public/assets/buttons/play-button-dark.png");
   --play-button-hover: url("/public/assets/buttons/play-button-hover.png");
   --red: rgb(200, 0, 0);
+  --removed-reply-backgrouhd-color: rgb(27, 30, 32);
   --text: #bfbfbf;
   --text-button: url("/public/assets/buttons/text-button-dark.png");
   --text-button-hover: url("/public/assets/buttons/text-button-hover.png");
@@ -125,6 +126,7 @@
   --play-button: url("/public/assets/buttons/play-button.png");
   --play-button-hover: url("/public/assets/buttons/play-button-hover.png");
   --red: red;
+  --removed-reply-backgrouhd-color: #f0f0f0;
   --text: black;
   --text-button: url("/public/assets/buttons/text-button.png");
   --text-button-hover: url("/public/assets/buttons/text-button-hover.png");

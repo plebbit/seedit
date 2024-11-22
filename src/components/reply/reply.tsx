@@ -19,7 +19,7 @@ import ReplyForm from '../reply-form';
 import useDownvote from '../../hooks/use-downvote';
 import useStateString from '../../hooks/use-state-string';
 import useUpvote from '../../hooks/use-upvote';
-import { isInboxView, isPostContextView } from '../../lib/utils/view-utils';
+import { isInboxView, isPostContextView, isPostView } from '../../lib/utils/view-utils';
 import Plebbit from '@plebbit/plebbit-js/dist/browser/index.js';
 import Markdown from '../markdown';
 import { getHostname } from '../../lib/utils/url-utils';
@@ -28,13 +28,16 @@ interface ReplyAuthorProps {
   address: string;
   authorRole: string;
   cid: string;
+  deleted: boolean;
   displayName: string;
   imageUrl: string | undefined;
   isAvatarDefined: boolean;
+  removed: boolean;
   shortAuthorAddress: string | undefined;
 }
 
-const ReplyAuthor = ({ address, authorRole, cid, displayName, imageUrl, isAvatarDefined, shortAuthorAddress }: ReplyAuthorProps) => {
+const ReplyAuthor = ({ address, authorRole, cid, deleted, displayName, imageUrl, isAvatarDefined, removed, shortAuthorAddress }: ReplyAuthorProps) => {
+  const { t } = useTranslation();
   const isAuthorAdmin = authorRole === 'admin';
   const isAuthorOwner = authorRole === 'owner';
   const isAuthorModerator = authorRole === 'moderator';
@@ -44,28 +47,34 @@ const ReplyAuthor = ({ address, authorRole, cid, displayName, imageUrl, isAvatar
 
   return (
     <>
-      {isAvatarDefined && (
-        <span className={styles.authorAvatar}>
-          <img src={imageUrl} alt='' />
-        </span>
-      )}
-      {displayName && (
-        <Link to={`/u/${address}/c/${cid}`} className={`${styles.author} ${moderatorClass}`}>
-          {shortDisplayName}{' '}
-        </Link>
-      )}
-      <Link to={`/u/${address}/c/${cid}`} className={`${styles.author} ${moderatorClass}`}>
-        {displayName ? `u/${shortAuthorAddress}` : shortAuthorAddress}
-      </Link>
-      {authorRole && (
-        <span className={styles.moderatorBrackets}>
-          {' '}
-          [
-          <span className={moderatorClass} title={authorRole}>
-            {authorRoleInitial}
-          </span>
-          ]
-        </span>
+      {removed || deleted ? (
+        <span className={styles.removedUsername}>[{removed ? t('removed') : deleted ? t('deleted') : ''}]</span>
+      ) : (
+        <>
+          {isAvatarDefined && (
+            <span className={styles.authorAvatar}>
+              <img src={imageUrl} alt='' />
+            </span>
+          )}
+          {displayName && (
+            <Link to={`/u/${address}/c/${cid}`} className={`${styles.author} ${moderatorClass}`}>
+              {shortDisplayName}{' '}
+            </Link>
+          )}
+          <Link to={`/u/${address}/c/${cid}`} className={`${styles.author} ${moderatorClass}`}>
+            {displayName ? `u/${shortAuthorAddress}` : shortAuthorAddress}
+          </Link>
+          {authorRole && (
+            <span className={styles.moderatorBrackets}>
+              {' '}
+              [
+              <span className={moderatorClass} title={authorRole}>
+                {authorRoleInitial}
+              </span>
+              ]
+            </span>
+          )}
+        </>
       )}
     </>
   );
@@ -265,19 +274,14 @@ const Reply = ({ cidOfReplyWithContext, depth = 0, isSingleComment, isSingleRepl
 
   const [showSpoiler, setShowSpoiler] = useState(false);
 
-  const { blocked, unblock } = useBlock({ cid });
-  const [collapsed, setCollapsed] = useState(blocked);
-  useEffect(() => {
-    if (blocked) {
-      setCollapsed(true);
-    }
-  }, [blocked]);
-  const handleCollapseButton = () => {
-    if (blocked) {
-      unblock();
-    }
-    setCollapsed(!collapsed);
-  };
+  const pendingReply = useAccountComment({ commentIndex: reply?.index });
+  const parentOfPendingReply = useComment({ commentCid: pendingReply?.parentCid });
+
+  const location = useLocation();
+  const params = useParams();
+  const isInInboxView = isInboxView(location.pathname);
+  const isInPostContextView = isPostContextView(location.pathname, params, location.search);
+  const isInPostView = isPostView(location.pathname, params);
 
   const authorRole = subplebbit?.roles?.[author?.address]?.role;
   const { shortAuthorAddress } = useAuthorAddress({ comment: reply });
@@ -331,8 +335,6 @@ const Reply = ({ cidOfReplyWithContext, depth = 0, isSingleComment, isSingleRepl
       {cid === undefined && state !== 'failed' && <Label color='yellow' text={t('pending')} />}
       {editState === 'failed' && <Label color='red' text={t('failed_edit')} />}
       {editState === 'pending' && <Label color='yellow' text={t('pending_edit')} />}
-      {deleted && <Label color='red' text={t('deleted')} />}
-      {removed && <Label color='red' text={t('removed')} />}
       {spoiler && <Label color='black' text={t('spoiler')} />}
     </span>
   );
@@ -341,13 +343,19 @@ const Reply = ({ cidOfReplyWithContext, depth = 0, isSingleComment, isSingleRepl
   const childrenCount = unnestedReplies.length;
   const childrenString = childrenCount === 1 ? t('child', { childrenCount }) : t('children', { childrenCount });
 
-  const pendingReply = useAccountComment({ commentIndex: reply?.index });
-  const parentOfPendingReply = useComment({ commentCid: pendingReply?.parentCid });
-
-  const location = useLocation();
-  const params = useParams();
-  const isInInboxView = isInboxView(location.pathname);
-  const isInPostContextView = isPostContextView(location.pathname, params, location.search);
+  const { blocked, unblock } = useBlock({ cid });
+  const [collapsed, setCollapsed] = useState(blocked);
+  useEffect(() => {
+    if (blocked || (isInPostView && (deleted || removed) && childrenCount === 0)) {
+      setCollapsed(true);
+    }
+  }, [blocked, isInPostView, deleted, removed, childrenCount]);
+  const handleCollapseButton = () => {
+    if (blocked) {
+      unblock();
+    }
+    setCollapsed(!collapsed);
+  };
 
   return (
     <div className={styles.reply}>
@@ -355,7 +363,7 @@ const Reply = ({ cidOfReplyWithContext, depth = 0, isSingleComment, isSingleRepl
       {isInInboxView && <InboxParentLink commentCid={cid} />}
       <div className={`${!isSingleReply ? styles.replyWrapper : styles.singleReplyWrapper} ${depth > 0 && styles.nested}`}>
         {!collapsed && (
-          <div className={styles.midcol}>
+          <div className={`${styles.midcol} ${removed || deleted ? styles.hiddenMidcol : ''}`}>
             <div className={`${styles.arrow} ${upvoted ? styles.upvoted : styles.arrowUp}`} onClick={() => cid && upvote()} />
             <div className={`${styles.arrow} ${downvoted ? styles.downvoted : styles.arrowDown}`} onClick={() => cid && downvote()} />
           </div>
@@ -371,9 +379,11 @@ const Reply = ({ cidOfReplyWithContext, depth = 0, isSingleComment, isSingleRepl
                   address={author?.address}
                   authorRole={authorRole}
                   cid={cid}
+                  deleted={deleted}
                   displayName={author?.displayName}
                   imageUrl={imageUrl}
                   isAvatarDefined={!!author?.avatar}
+                  removed={removed}
                   shortAuthorAddress={shortAuthorAddress}
                 />
                 <span className={styles.score}>{scoreString}</span>{' '}
@@ -430,13 +440,17 @@ const Reply = ({ cidOfReplyWithContext, depth = 0, isSingleComment, isSingleRepl
                 {isEditing ? (
                   <CommentEditForm commentCid={cid} hideCommentEditForm={hideCommentEditForm} />
                 ) : (
-                  <div className={`${styles.md} ${cid && (isSingleComment || cidOfReplyWithContext === cid) ? styles.highlightContent : ''}`}>
+                  <div
+                    className={`${styles.md} ${cid && (isSingleComment || cidOfReplyWithContext === cid) ? styles.highlightContent : ''} ${
+                      removed || deleted ? styles.removedOrDeletedContent : ''
+                    }`}
+                  >
                     {spoiler && !showSpoiler && <div className={styles.showSpoilerButton}>{t('view_spoiler')}</div>}
                     {content &&
                       (removed ? (
-                        <p className={styles.removedContent}>[{t('removed')}]</p>
+                        <span className={styles.removedContent}>[{t('removed')}]</span>
                       ) : deleted ? (
-                        <p className={styles.deletedContent}>[{t('deleted')}]</p>
+                        <span className={styles.deletedContent}>[{t('deleted')}]</span>
                       ) : (
                         <Markdown content={content} />
                       ))}
@@ -460,12 +474,14 @@ const Reply = ({ cidOfReplyWithContext, depth = 0, isSingleComment, isSingleRepl
               <CommentTools
                 author={author}
                 cid={cid}
+                deleted={deleted}
                 failed={state === 'failed'}
                 isReply={true}
                 isSingleReply={isSingleReply}
                 index={reply?.index}
                 parentCid={parentCid}
                 postCid={postCid}
+                removed={removed}
                 replyCount={replies.length}
                 subplebbitAddress={subplebbitAddress}
                 showCommentEditForm={showCommentEditForm}
