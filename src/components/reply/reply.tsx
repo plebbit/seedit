@@ -392,7 +392,7 @@ const Reply = ({ cidOfReplyWithContext, depth = 0, isSingleComment, isSingleRepl
                   {edit && <span className={styles.timeEdited}> {t('edited_timestamp', { timestamp: getFormattedTimeAgo(edit.timestamp) })}</span>}
                 </span>{' '}
                 {pinned && <span className={styles.pinned}>- {t('stickied_comment')}</span>}
-                {collapsed && <span className={styles.children}> ({childrenString})</span>}
+                {collapsed && <span className={styles.children}> ({childrenString}) </span>}
                 {stateLabel}{' '}
                 {!collapsed && flair && (
                   <>
