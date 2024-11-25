@@ -67,6 +67,7 @@
 }
 
 .tagline {
+  display: inline-block;
   color: var(--text);
   font-size: x-small;
 }
@@ -354,4 +355,25 @@
   .md {
     padding-right: 5px;
   }
+}
+
+.portalLabel {
+  pointer-events: none;
+  font-size: x-small;
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-size: x-small;
+  display: inline-block;
+  margin-left: 4px;
+}
+
+.collapsedStateLabel {
+  display: inline-block;
+  margin-left: 4px;
+}
+
+.stamp {
+  font-family: inherit;
+  font-size: x-small;
+  line-height: normal;
+  vertical-align: middle;
 }

@@ -1,4 +1,4 @@
-import { Fragment, useCallback, useEffect, useMemo, useState } from 'react';
+import { Fragment, useCallback, useEffect, useMemo, useState, useRef } from 'react';
 import { Comment, useAccountComment, useAuthorAddress, useAuthorAvatar, useBlock, useComment, useEditedComment, useSubplebbit } from '@plebbit/plebbit-react-hooks';
 import { flattenCommentsPages } from '@plebbit/plebbit-react-hooks/dist/lib/utils';
 import { Link, useLocation, useParams } from 'react-router-dom';
@@ -23,6 +23,8 @@ import { isInboxView, isPostContextView, isPostView } from '../../lib/utils/view
 import Plebbit from '@plebbit/plebbit-js/dist/browser/index.js';
 import Markdown from '../markdown';
 import { getHostname } from '../../lib/utils/url-utils';
+import { createPortal } from 'react-dom';
+import { useElementPosition } from '../../hooks/use-element-position';
 
 interface ReplyAuthorProps {
   address: string;
@@ -329,16 +331,6 @@ const Reply = ({ cidOfReplyWithContext, depth = 0, isSingleComment, isSingleRepl
   const [upvoted, upvote] = useUpvote(reply);
   const [downvoted, downvote] = useDownvote(reply);
 
-  const stateLabel = (
-    <span className={styles.stateLabel}>
-      {state === 'failed' && <Label color='red' text={t('failed')} />}
-      {cid === undefined && state !== 'failed' && <Label color='yellow' text={t('pending')} />}
-      {editState === 'failed' && <Label color='red' text={t('failed_edit')} />}
-      {editState === 'pending' && <Label color='yellow' text={t('pending_edit')} />}
-      {spoiler && <Label color='black' text={t('spoiler')} />}
-    </span>
-  );
-
   const unnestedReplies = useMemo(() => flattenCommentsPages(reply.replies), [reply.replies]);
   const childrenCount = unnestedReplies.length;
   const childrenString = childrenCount === 1 ? t('child', { childrenCount }) : t('children', { childrenCount });
@@ -357,6 +349,18 @@ const Reply = ({ cidOfReplyWithContext, depth = 0, isSingleComment, isSingleRepl
     setCollapsed(!collapsed);
   };
 
+  const taglineRef = useRef<HTMLParagraphElement>(null);
+  const labelPosition = useElementPosition(taglineRef, collapsed);
+  const stateLabel = (
+    <span className={`${styles.stateLabel} ${collapsed ? styles.collapsedStateLabel : ''}`}>
+      {state === 'failed' && <Label color='red' text={t('failed')} />}
+      {cid === undefined && state !== 'failed' && <Label color='yellow' text={t('pending')} />}
+      {editState === 'failed' && <Label color='red' text={t('failed_edit')} />}
+      {editState === 'pending' && <Label color='yellow' text={t('pending_edit')} />}
+      {spoiler && <Label color='black' text={t('spoiler')} />}
+    </span>
+  );
+
   return (
     <div className={styles.reply}>
       {isSingleReply && !isInInboxView && <ParentLink postCid={cid ? postCid : parentOfPendingReply?.postCid} />}
@@ -371,7 +375,7 @@ const Reply = ({ cidOfReplyWithContext, depth = 0, isSingleComment, isSingleRepl
         <div className={`${isNotification && !markedAsRead ? styles.unreadNotification : ''}`}>
           <div className={`${styles.entry} ${collapsed && styles.collapsedEntry}`}>
             {!isInInboxView && (
-              <p className={styles.tagline}>
+              <p className={styles.tagline} ref={taglineRef}>
                 <span className={styles.expand} onClick={handleCollapseButton}>
                   [{collapsed ? '+' : '–'}]
                 </span>
@@ -393,7 +397,7 @@ const Reply = ({ cidOfReplyWithContext, depth = 0, isSingleComment, isSingleRepl
                 </span>{' '}
                 {pinned && <span className={styles.pinned}>- {t('stickied_comment')}</span>}
                 {collapsed && <span className={styles.children}> ({childrenString}) </span>}
-                {stateLabel}{' '}
+                {!collapsed && stateLabel}
                 {!collapsed && flair && (
                   <>
                     {' '}
@@ -512,6 +516,22 @@ const Reply = ({ cidOfReplyWithContext, depth = 0, isSingleComment, isSingleRepl
           )}
         </div>
       </div>
+      {collapsed &&
+        labelPosition &&
+        createPortal(
+          <div
+            className={styles.portalLabel}
+            style={{
+              position: 'absolute',
+              top: `${labelPosition.top - 1}px`,
+              left: `${labelPosition.left - 13}px`,
+              transform: 'translateY(-50%)',
+            }}
+          >
+            {stateLabel}
+          </div>,
+          document.body,
+        )}
     </div>
   );
 };
