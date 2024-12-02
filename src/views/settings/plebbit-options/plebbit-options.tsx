@@ -144,6 +144,8 @@ const PlebbitDataPathSettings = ({ plebbitDataPathRef }: SettingsProps) => {
   );
 };
 
+const isElectron = window.isElectron === true;
+
 const PlebbitOptions = () => {
   const { t } = useTranslation();
   const location = useLocation();
@@ -240,12 +242,14 @@ const PlebbitOptions = () => {
           <PlebbitRPCSettings plebbitRpcRef={plebbitRpcRef} />
         </span>
       </div>
-      <div className={styles.category}>
-        <span className={styles.categoryTitle}>plebbit data path</span>
-        <span className={styles.categorySettings}>
-          <PlebbitDataPathSettings plebbitDataPathRef={plebbitDataPathRef} />
-        </span>
-      </div>
+      {isElectron && (
+        <div className={styles.category}>
+          <span className={styles.categoryTitle}>plebbit data path</span>
+          <span className={styles.categorySettings}>
+            <PlebbitDataPathSettings plebbitDataPathRef={plebbitDataPathRef} />
+          </span>
+        </div>
+      )}
       <button className={styles.saveOptions} onClick={handleSave}>
         {t('save_options')}
       </button>
