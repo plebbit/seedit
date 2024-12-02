@@ -1,11 +1,10 @@
-import { Fragment, useEffect, useMemo, useState, useRef } from 'react';
+import { Fragment, useEffect, useMemo, useState } from 'react';
 import { Comment, useAccountComment, useAuthorAddress, useAuthorAvatar, useBlock, useComment, useEditedComment, useSubplebbit } from '@plebbit/plebbit-react-hooks';
 import { flattenCommentsPages } from '@plebbit/plebbit-react-hooks/dist/lib/utils';
 import { Link, useLocation, useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import styles from './reply.module.css';
 import { useCommentMediaInfo } from '../../hooks/use-comment-media-info';
-import { useElementPosition } from '../../hooks/use-element-position';
 import useReplies from '../../hooks/use-replies';
 import { CommentMediaInfo, getHasThumbnail } from '../../lib/utils/media-utils';
 import { formatLocalizedUTCTimestamp, getFormattedTimeAgo } from '../../lib/utils/time-utils';
@@ -25,7 +24,6 @@ import { isInboxView, isPostContextView, isPostView } from '../../lib/utils/view
 import Plebbit from '@plebbit/plebbit-js/dist/browser/index.js';
 import Markdown from '../markdown';
 import { getHostname } from '../../lib/utils/url-utils';
-import { createPortal } from 'react-dom';
 
 interface ReplyAuthorProps {
   address: string;
@@ -336,8 +334,6 @@ const Reply = ({ cidOfReplyWithContext, depth = 0, isSingleComment, isSingleRepl
     setCollapsed(!collapsed);
   };
 
-  const taglineRef = useRef<HTMLParagraphElement>(null);
-  const labelPosition = useElementPosition(taglineRef, collapsed);
   const stateLabel = (
     <span className={`${styles.stateLabel} ${collapsed ? styles.collapsedStateLabel : ''}`}>
       {state === 'failed' && <Label color='red' text={t('failed')} />}
@@ -384,10 +380,9 @@ const Reply = ({ cidOfReplyWithContext, depth = 0, isSingleComment, isSingleRepl
                 </span>{' '}
                 {pinned && <span className={styles.pinned}>- {t('stickied_comment')}</span>}
                 {collapsed && (
-                  <span className={styles.children} ref={taglineRef}>
-                    {' '}
-                    ({childrenString}){' '}
-                  </span>
+                  <>
+                    <span className={styles.children}>({childrenString})</span> {stateLabel} {state === 'pending' && loadingString}
+                  </>
                 )}
                 {!collapsed && stateLabel}
                 {!collapsed && flair && (
@@ -508,22 +503,6 @@ const Reply = ({ cidOfReplyWithContext, depth = 0, isSingleComment, isSingleRepl
           )}
         </div>
       </div>
-      {collapsed &&
-        labelPosition &&
-        createPortal(
-          <div
-            className={styles.portalLabel}
-            style={{
-              position: 'absolute',
-              top: `${labelPosition.top - 1}px`,
-              left: `${labelPosition.left - 13}px`,
-              transform: 'translateY(-50%)',
-            }}
-          >
-            {stateLabel} {state === 'pending' && loadingString}
-          </div>,
-          document.body,
-        )}
     </div>
   );
 };

@@ -227,6 +227,7 @@
 
 .collapsedEntry {
   padding-left: 25px;
+  min-height: 16px;
 }
 
 .parent {
@@ -361,20 +362,6 @@
   .md {
     padding-right: 5px;
   }
-}
-
-.portalLabel {
-  pointer-events: none;
-  font-size: x-small;
-  font-family: verdana, arial, helvetica, sans-serif;
-  font-size: x-small;
-  display: inline-block;
-  margin-left: 4px;
-}
-
-.collapsedStateLabel {
-  display: inline-block;
-  margin-left: 4px;
 }
 
 .stamp {
