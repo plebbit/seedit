@@ -13,7 +13,7 @@ interface SettingsProps {
   maticRpcRef?: RefObject<HTMLTextAreaElement>;
   avaxRpcRef?: RefObject<HTMLTextAreaElement>;
   plebbitRpcRef?: RefObject<HTMLInputElement>;
-  nodeDataPathRef?: RefObject<HTMLInputElement>;
+  plebbitDataPathRef?: RefObject<HTMLInputElement>;
 }
 
 const IPFSGatewaysSettings = ({ ipfsGatewayUrlsRef, mediaIpfsGatewayUrlRef }: SettingsProps) => {
@@ -129,16 +129,16 @@ const PlebbitRPCSettings = ({ plebbitRpcRef }: SettingsProps) => {
   );
 };
 
-const NodeDataPathSettings = ({ nodeDataPathRef }: SettingsProps) => {
+const PlebbitDataPathSettings = ({ plebbitDataPathRef }: SettingsProps) => {
   const plebbitRpc = usePlebbitRpcSettings();
   const { plebbitRpcSettings } = plebbitRpc || {};
   const isConnectedToRpc = plebbitRpc?.state === 'succeeded';
   const path = plebbitRpcSettings?.plebbitOptions?.dataPath || '';
 
   return (
-    <div className={styles.nodeDataPathSettings}>
+    <div className={styles.plebbitDataPathSettings}>
       <div>
-        <input type='text' defaultValue={path} disabled={!isConnectedToRpc} ref={nodeDataPathRef} />
+        <input type='text' defaultValue={path} disabled={!isConnectedToRpc} ref={plebbitDataPathRef} />
       </div>
     </div>
   );
@@ -158,7 +158,7 @@ const PlebbitOptions = () => {
   const maticRpcRef = useRef<HTMLTextAreaElement>(null);
   const avaxRpcRef = useRef<HTMLTextAreaElement>(null);
   const plebbitRpcRef = useRef<HTMLInputElement>(null);
-  const nodeDataPathRef = useRef<HTMLInputElement>(null);
+  const plebbitDataPathRef = useRef<HTMLInputElement>(null);
 
   const handleSave = async () => {
     const ipfsGatewayUrls = ipfsGatewayUrlsRef.current?.value.split('\n').map((url) => url.trim());
@@ -169,7 +169,7 @@ const PlebbitOptions = () => {
     const maticRpcUrls = maticRpcRef.current?.value.split('\n').map((url) => url.trim());
     const avaxRpcUrls = avaxRpcRef.current?.value.split('\n').map((url) => url.trim());
     const plebbitRpcClientsOptions = plebbitRpcRef.current?.value.trim();
-    const dataPath = nodeDataPathRef.current?.value.trim();
+    const dataPath = plebbitDataPathRef.current?.value.trim();
 
     const chainProviders = {
       eth: {
@@ -234,16 +234,16 @@ const PlebbitOptions = () => {
           <BlockchainProvidersSettings ethRpcRef={ethRpcRef} solRpcRef={solRpcRef} maticRpcRef={maticRpcRef} avaxRpcRef={avaxRpcRef} />
         </span>
       </div>
-      <div className={`${styles.category} ${location.hash === '#nodeRpc' ? styles.highlightedSetting : ''}`} id='nodeRpc'>
-        <span className={styles.categoryTitle}>node rpc</span>
+      <div className={`${styles.category} ${location.hash === '#plebbitRpc' ? styles.highlightedSetting : ''}`} id='plebbitRpc'>
+        <span className={styles.categoryTitle}>plebbit rpc</span>
         <span className={styles.categorySettings}>
           <PlebbitRPCSettings plebbitRpcRef={plebbitRpcRef} />
         </span>
       </div>
       <div className={styles.category}>
-        <span className={styles.categoryTitle}>node data path</span>
+        <span className={styles.categoryTitle}>plebbit data path</span>
         <span className={styles.categorySettings}>
-          <NodeDataPathSettings nodeDataPathRef={nodeDataPathRef} />
+          <PlebbitDataPathSettings plebbitDataPathRef={plebbitDataPathRef} />
         </span>
       </div>
       <button className={styles.saveOptions} onClick={handleSave}>
