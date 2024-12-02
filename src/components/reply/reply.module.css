@@ -72,6 +72,12 @@
   font-size: x-small;
 }
 
+@media (max-width: 640px) {
+  .tagline {
+    line-height: 1.5;
+  }
+}
+
 .expand {
   margin-right: 3px;
   padding: 1px;
