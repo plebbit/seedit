@@ -368,8 +368,6 @@ const Header = () => {
   const logoIsAvatar = isInSubplebbitView && suggested?.avatarUrl;
   const logoLink = isInSubplebbitView ? `/p/${params.subplebbitAddress}` : isInProfileView ? '/profile' : '/';
 
-  console.log(isInAuthorView);
-
   return (
     <div className={styles.header}>
       <div
