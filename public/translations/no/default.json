@@ -322,5 +322,6 @@
   "create_new_account": "<1>opprett</1> en ny konto",
   "wallet_number": "lommebok #{{index}}",
   "view_more": "vis mer",
-  "submit_community": "Send inn ditt fellesskap"
+  "submit_community": "Send inn ditt fellesskap",
+  "hide_avatars_from_replies": "Skjul avatarer fra svar"
 }

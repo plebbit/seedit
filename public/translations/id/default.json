@@ -322,5 +322,6 @@
   "create_new_account": "<1>buat</1> akun baru",
   "wallet_number": "dompet #{{index}}",
   "view_more": "lihat lebih banyak",
-  "submit_community": "Kirim komunitas Anda"
+  "submit_community": "Kirim komunitas Anda",
+  "hide_avatars_from_replies": "Sembunyikan avatar dari balasan"
 }

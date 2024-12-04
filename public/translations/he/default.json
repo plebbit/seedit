@@ -322,5 +322,6 @@
   "create_new_account": "<1>צור</1> חשבון חדש",
   "wallet_number": "ארנק #{{index}}",
   "view_more": "ראה עוד",
-  "submit_community": "שלח את הקהילה שלך"
+  "submit_community": "שלח את הקהילה שלך",
+  "hide_avatars_from_replies": "הסתרת תמונות פרופיל בתשובות"
 }

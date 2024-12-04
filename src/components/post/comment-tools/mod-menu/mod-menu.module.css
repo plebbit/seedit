@@ -63,3 +63,7 @@
     width: 3.5em;
   }
 }
+
+.modal .menuItem label {
+  cursor: pointer;
+}

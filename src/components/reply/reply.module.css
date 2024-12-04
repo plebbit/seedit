@@ -67,8 +67,15 @@
 }
 
 .tagline {
+  display: inline-block;
   color: var(--text);
   font-size: x-small;
+}
+
+@media (max-width: 640px) {
+  .tagline {
+    line-height: 1.5;
+  }
 }
 
 .expand {
@@ -220,6 +227,7 @@
 
 .collapsedEntry {
   padding-left: 25px;
+  min-height: 16px;
 }
 
 .parent {
@@ -354,4 +362,11 @@
   .md {
     padding-right: 5px;
   }
+}
+
+.stamp {
+  font-family: inherit;
+  font-size: x-small;
+  line-height: normal;
+  vertical-align: middle;
 }

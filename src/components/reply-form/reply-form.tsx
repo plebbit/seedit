@@ -87,6 +87,7 @@ const ReplyForm = ({ cid, isReplyingToReply, hideReplyForm, subplebbitAddress, p
   const { t } = useTranslation();
   const [showOptions, setShowOptions] = useState(false);
   const [showFormattingHelp, setShowFormattingHelp] = useState(false);
+  const [isTextareaFocused, setIsTextareaFocused] = useState(false);
   const { setContent, resetContent, replyIndex, publishReply } = usePublishReply({ cid, subplebbitAddress, postCid });
 
   const mdContainerClass = isReplyingToReply ? `${styles.mdContainer} ${styles.mdContainerReplying}` : styles.mdContainer;
@@ -149,7 +150,7 @@ const ReplyForm = ({ cid, isReplyingToReply, hideReplyForm, subplebbitAddress, p
   return (
     <div className={mdContainerClass}>
       <div className={styles.md}>
-        {isOffline && <div className={styles.infobar}>{offlineTitle}</div>}
+        {isOffline && isTextareaFocused && <div className={styles.infobar}>{offlineTitle}</div>}
         <div className={styles.options}>
           <span className={urlClass}>
             {t('media_url')}: <input className={`${styles.url} ${urlClass}`} ref={urlRef} onChange={(e) => setContent.link(e.target.value)} />
@@ -160,7 +161,13 @@ const ReplyForm = ({ cid, isReplyingToReply, hideReplyForm, subplebbitAddress, p
             </label>
           </span>
         </div>
-        <textarea className={styles.textarea} ref={textRef} onChange={(e) => setContent.content(e.target.value)} />
+        <textarea
+          className={styles.textarea}
+          ref={textRef}
+          onChange={(e) => setContent.content(e.target.value)}
+          onFocus={() => setIsTextareaFocused(true)}
+          onBlur={() => setIsTextareaFocused(false)}
+        />
       </div>
       <div className={styles.bottomArea}>
         <button className={styles.save} onClick={onPublish}>

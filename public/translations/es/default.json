@@ -322,5 +322,6 @@
   "create_new_account": "<1>crear</1> una nueva cuenta",
   "wallet_number": "billetera #{{index}}",
   "view_more": "ver más",
-  "submit_community": "Envía tu comunidad"
+  "submit_community": "Envía tu comunidad",
+  "hide_avatars_from_replies": "Ocultar avatares de las respuestas"
 }

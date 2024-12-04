@@ -322,5 +322,6 @@
   "create_new_account": "<1>luo</1> uusi tili",
   "wallet_number": "lompakko #{{index}}",
   "view_more": "näytä lisää",
-  "submit_community": "Lähetä yhteisösi"
+  "submit_community": "Lähetä yhteisösi",
+  "hide_avatars_from_replies": "Piilota avatarit vastauksista"
 }

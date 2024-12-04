@@ -322,5 +322,6 @@
   "create_new_account": "<1>ایجاد</1> یک حساب جدید",
   "wallet_number": "کیف پول #{{index}}",
   "view_more": "مشاهده بیشتر",
-  "submit_community": "جامعه خود را ارسال کنید"
+  "submit_community": "جامعه خود را ارسال کنید",
+  "hide_avatars_from_replies": "تصاویر پروفایل را از پاسخ‌ها پنهان کن"
 }

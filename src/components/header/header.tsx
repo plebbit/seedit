@@ -364,7 +364,7 @@ const Header = () => {
     (isInProfileView && !isInHomeAboutView) ||
     (isInAllView && !isInAllAboutView) ||
     (isInAuthorView && !isInHomeAboutView);
-  const logoSrc = isInSubplebbitView ? suggested?.avatarUrl : 'assets/logo/seedit.png';
+  const logoSrc = isInSubplebbitView && suggested?.avatarUrl ? suggested?.avatarUrl : 'assets/logo/seedit.png';
   const logoIsAvatar = isInSubplebbitView && suggested?.avatarUrl;
   const logoLink = isInSubplebbitView ? `/p/${params.subplebbitAddress}` : isInProfileView ? '/profile' : '/';
 
@@ -377,10 +377,10 @@ const Header = () => {
       >
         <div className={styles.logoContainer}>
           <Link to={logoLink} className={styles.logoLink}>
-            {(logoIsAvatar || (!isInSubplebbitView && !isInProfileView && !isInAuthorView)) && (
+            {(logoIsAvatar || (!isInSubplebbitView && !isInProfileView && !isInAuthorView) || (isInSubplebbitView && !suggested?.avatarUrl)) && (
               <img className={`${logoIsAvatar ? styles.avatar : styles.logo}`} src={logoSrc} alt='' />
             )}
-            {!isInSubplebbitView && !isInProfileView && !isInAuthorView && (
+            {((!isInSubplebbitView && !isInProfileView && !isInAuthorView) || (isInSubplebbitView && !suggested?.avatarUrl)) && (
               <img src={`assets/logo/seedit-text-${theme === 'dark' ? 'dark' : 'light'}.svg`} className={styles.logoText} alt='' />
             )}
           </Link>

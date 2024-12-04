@@ -322,5 +322,6 @@
   "create_new_account": "<1>krijo</1> një llogari të re",
   "wallet_number": "portofol #{{index}}",
   "view_more": "shiko më shumë",
-  "submit_community": "Dorëzo komunitetin tuaj"
+  "submit_community": "Dorëzo komunitetin tuaj",
+  "hide_avatars_from_replies": "Fshih avatarët nga përgjigjet"
 }

@@ -322,5 +322,6 @@
   "create_new_account": "<1>新しい</1>アカウントを作成",
   "wallet_number": "ウォレット #{{index}}",
   "view_more": "もっと見る",
-  "submit_community": "コミュニティを提出してください"
+  "submit_community": "コミュニティを提出してください",
+  "hide_avatars_from_replies": "返信からアバターを非表示にする"
 }

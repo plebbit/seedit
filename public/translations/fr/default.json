@@ -322,5 +322,6 @@
   "create_new_account": "<1>créer</1> un nouveau compte",
   "wallet_number": "portefeuille #{{index}}",
   "view_more": "voir plus",
-  "submit_community": "Soumettez votre communauté"
+  "submit_community": "Soumettez votre communauté",
+  "hide_avatars_from_replies": "Cacher les avatars des réponses"
 }

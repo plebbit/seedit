@@ -322,5 +322,6 @@
   "create_new_account": "<1>maak</1> een nieuw account aan",
   "wallet_number": "portemonnee #{{index}}",
   "view_more": "meer bekijken",
-  "submit_community": "Dien uw gemeenschap in"
+  "submit_community": "Dien uw gemeenschap in",
+  "hide_avatars_from_replies": "Verberg avatars van reacties"
 }

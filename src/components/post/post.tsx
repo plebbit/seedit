@@ -1,10 +1,10 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import styles from './post.module.css';
 import { Link, useLocation, useParams } from 'react-router-dom';
 import { Comment, useAuthorAddress, useBlock, useComment, useEditedComment, useSubplebbit, useSubscribe } from '@plebbit/plebbit-react-hooks';
 import { useTranslation } from 'react-i18next';
 import { isAllView, isPostView, isProfileHiddenView, isSubplebbitView } from '../../lib/utils/view-utils';
-import { CommentMediaInfo, fetchWebpageThumbnailIfNeeded, getCommentMediaInfo, getHasThumbnail } from '../../lib/utils/media-utils';
+import { getHasThumbnail } from '../../lib/utils/media-utils';
 import { getPostScore } from '../../lib/utils/post-utils';
 import { getHostname } from '../../lib/utils/url-utils';
 import { getFormattedTimeAgo, formatLocalizedUTCTimestamp } from '../../lib/utils/time-utils';
@@ -17,6 +17,7 @@ import Thumbnail from './thumbnail';
 import useDownvote from '../../hooks/use-downvote';
 import useUpvote from '../../hooks/use-upvote';
 import _ from 'lodash';
+import { useCommentMediaInfo } from '../../hooks/use-comment-media-info';
 
 interface PostAuthorProps {
   authorAddress: string;
@@ -70,33 +71,6 @@ interface PostProps {
   post: Comment | undefined;
 }
 
-const ThumbnailLoader = ({ post }: PostProps) => {
-  const { cid } = post || {};
-  // Reset state by remounting component when post changes
-  return useThumbnailContent(cid, post);
-};
-
-const useThumbnailContent = (key: string, post: any) => {
-  const [commentMediaInfo, setCommentMediaInfo] = useState<CommentMediaInfo | undefined>();
-
-  useEffect(() => {
-    const loadThumbnail = async () => {
-      const initialInfo = getCommentMediaInfo(post);
-      // some sites have CORS access, so the thumbnail can be fetched client-side, which is helpful if subplebbit.settings.fetchThumbnailUrls is false
-      if (initialInfo?.type === 'webpage' && !initialInfo.thumbnail) {
-        const newMediaInfo = await fetchWebpageThumbnailIfNeeded(initialInfo);
-        setCommentMediaInfo(newMediaInfo);
-      } else {
-        setCommentMediaInfo(initialInfo);
-      }
-    };
-
-    loadThumbnail();
-  }, [post]);
-
-  return commentMediaInfo;
-};
-
 const Post = ({ index, post = {} }: PostProps) => {
   // handle single comment thread
   const op = useComment({ commentCid: post?.parentCid ? post?.postCid : '' });
@@ -147,7 +121,7 @@ const Post = ({ index, post = {} }: PostProps) => {
   const isInProfileHiddenView = isProfileHiddenView(location.pathname);
   const isInSubplebbitView = isSubplebbitView(location.pathname, params);
 
-  const commentMediaInfo = ThumbnailLoader({ post });
+  const commentMediaInfo = useCommentMediaInfo(post);
 
   const [isExpanded, setIsExpanded] = useState(isInPostView);
   const toggleExpanded = () => setIsExpanded(!isExpanded);

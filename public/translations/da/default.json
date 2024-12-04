@@ -322,5 +322,6 @@
   "create_new_account": "<1>oprette</1> en ny konto",
   "wallet_number": "tegneboks #{{index}}",
   "view_more": "se mere",
-  "submit_community": "Indsend dit fællesskab"
+  "submit_community": "Indsend dit fællesskab",
+  "hide_avatars_from_replies": "Skjul avatarer fra svar"
 }

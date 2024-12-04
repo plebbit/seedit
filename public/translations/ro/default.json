@@ -322,5 +322,6 @@
   "create_new_account": "<1>creați</1> un cont nou",
   "wallet_number": "portofel #{{index}}",
   "view_more": "vezi mai mult",
-  "submit_community": "Trimite comunitatea ta"
+  "submit_community": "Trimite comunitatea ta",
+  "hide_avatars_from_replies": "Ascunde avatarele din răspunsuri"
 }

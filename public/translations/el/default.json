@@ -322,5 +322,6 @@
   "create_new_account": "<1>δημιουργία</1> νέου λογαριασμού",
   "wallet_number": "πορτοφόλι #{{index}}",
   "view_more": "δείτε περισσότερα",
-  "submit_community": "Υποβάλετε την κοινότητά σας"
+  "submit_community": "Υποβάλετε την κοινότητά σας",
+  "hide_avatars_from_replies": "Απόκρυψη avatar από τις απαντήσεις"
 }

@@ -322,5 +322,6 @@
   "create_new_account": "<1>สร้าง</1> บัญชีใหม่",
   "wallet_number": "กระเป๋าเงิน #{{index}}",
   "view_more": "ดูเพิ่มเติม",
-  "submit_community": "ส่งชุมชนของคุณ"
+  "submit_community": "ส่งชุมชนของคุณ",
+  "hide_avatars_from_replies": "ซ่อนอวาตาร์จากคำตอบ"
 }

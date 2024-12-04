@@ -62,7 +62,7 @@ const All = () => {
       footerContent = (
         <>
           {subplebbitAddressesWithNewerPosts.length > 0 ? (
-            <div className={styles.stateString}>
+            <div className={styles.morePostsSuggestion}>
               <Trans
                 i18nKey='newer_posts_available'
                 components={{
@@ -74,7 +74,7 @@ const All = () => {
             showMorePostsSuggestion &&
             monthlyFeed.length > feed.length &&
             (weeklyFeed.length > feed.length ? (
-              <div className={styles.stateString}>
+              <div className={styles.morePostsSuggestion}>
                 <Trans
                   i18nKey='more_posts_last_week'
                   values={{ currentTimeFilterName }}
@@ -84,7 +84,7 @@ const All = () => {
                 />
               </div>
             ) : (
-              <div className={styles.stateString}>
+              <div className={styles.morePostsSuggestion}>
                 <Trans
                   i18nKey='more_posts_last_month'
                   values={{ currentTimeFilterName }}

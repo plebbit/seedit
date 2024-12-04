@@ -1,11 +1,12 @@
-import { Fragment, useCallback, useEffect, useMemo, useState } from 'react';
+import { Fragment, useEffect, useMemo, useState } from 'react';
 import { Comment, useAccountComment, useAuthorAddress, useAuthorAvatar, useBlock, useComment, useEditedComment, useSubplebbit } from '@plebbit/plebbit-react-hooks';
 import { flattenCommentsPages } from '@plebbit/plebbit-react-hooks/dist/lib/utils';
 import { Link, useLocation, useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import styles from './reply.module.css';
+import { useCommentMediaInfo } from '../../hooks/use-comment-media-info';
 import useReplies from '../../hooks/use-replies';
-import { CommentMediaInfo, fetchWebpageThumbnailIfNeeded, getCommentMediaInfo, getHasThumbnail } from '../../lib/utils/media-utils';
+import { CommentMediaInfo, getHasThumbnail } from '../../lib/utils/media-utils';
 import { formatLocalizedUTCTimestamp, getFormattedTimeAgo } from '../../lib/utils/time-utils';
 import CommentEditForm from '../comment-edit-form';
 import LoadingEllipsis from '../loading-ellipsis/';
@@ -23,6 +24,7 @@ import { isInboxView, isPostContextView, isPostView } from '../../lib/utils/view
 import Plebbit from '@plebbit/plebbit-js/dist/browser/index.js';
 import Markdown from '../markdown';
 import { getHostname } from '../../lib/utils/url-utils';
+import useAvatarVisibilityStore from '../../stores/use-avatar-visibility-store';
 
 interface ReplyAuthorProps {
   address: string;
@@ -38,20 +40,20 @@ interface ReplyAuthorProps {
 
 const ReplyAuthor = ({ address, authorRole, cid, deleted, displayName, imageUrl, isAvatarDefined, removed, shortAuthorAddress }: ReplyAuthorProps) => {
   const { t } = useTranslation();
+  const { hideAvatars } = useAvatarVisibilityStore();
   const isAuthorAdmin = authorRole === 'admin';
   const isAuthorOwner = authorRole === 'owner';
   const isAuthorModerator = authorRole === 'moderator';
   const authorRoleInitial = (isAuthorOwner && 'O') || (isAuthorAdmin && 'A') || (isAuthorModerator && 'M') || '';
   const moderatorClass = `${isAuthorOwner ? styles.owner : isAuthorAdmin ? styles.admin : isAuthorModerator ? styles.moderator : ''}`;
   const shortDisplayName = displayName?.length > 20 ? displayName?.slice(0, 20) + '...' : displayName;
-
   return (
     <>
       {removed || deleted ? (
         <span className={styles.removedUsername}>[{removed ? t('removed') : deleted ? t('deleted') : ''}]</span>
       ) : (
         <>
-          {isAvatarDefined && (
+          {!hideAvatars && isAvatarDefined && (
             <span className={styles.authorAvatar}>
               <img src={imageUrl} alt='' />
             </span>
@@ -299,21 +301,7 @@ const Reply = ({ cidOfReplyWithContext, depth = 0, isSingleComment, isSingleRepl
   const showCommentEditForm = () => setIsEditing(true);
   const hideCommentEditForm = () => setIsEditing(false);
 
-  // some sites have CORS access, so the thumbnail can be fetched client-side, which is helpful if subplebbit.settings.fetchThumbnailUrls is false
-  const initialCommentMediaInfo = useMemo(() => getCommentMediaInfo(reply), [reply]);
-  const [commentMediaInfo, setCommentMediaInfo] = useState(initialCommentMediaInfo);
-
-  const fetchThumbnail = useCallback(async () => {
-    if (initialCommentMediaInfo?.type === 'webpage' && !initialCommentMediaInfo.thumbnail) {
-      const newMediaInfo = await fetchWebpageThumbnailIfNeeded(initialCommentMediaInfo);
-      setCommentMediaInfo(newMediaInfo);
-    }
-  }, [initialCommentMediaInfo]);
-
-  useEffect(() => {
-    fetchThumbnail();
-  }, [fetchThumbnail]);
-
+  const commentMediaInfo = useCommentMediaInfo(reply);
   const hasThumbnail = getHasThumbnail(commentMediaInfo, link);
 
   const { t, i18n } = useTranslation();
@@ -328,16 +316,6 @@ const Reply = ({ cidOfReplyWithContext, depth = 0, isSingleComment, isSingleRepl
 
   const [upvoted, upvote] = useUpvote(reply);
   const [downvoted, downvote] = useDownvote(reply);
-
-  const stateLabel = (
-    <span className={styles.stateLabel}>
-      {state === 'failed' && <Label color='red' text={t('failed')} />}
-      {cid === undefined && state !== 'failed' && <Label color='yellow' text={t('pending')} />}
-      {editState === 'failed' && <Label color='red' text={t('failed_edit')} />}
-      {editState === 'pending' && <Label color='yellow' text={t('pending_edit')} />}
-      {spoiler && <Label color='black' text={t('spoiler')} />}
-    </span>
-  );
 
   const unnestedReplies = useMemo(() => flattenCommentsPages(reply.replies), [reply.replies]);
   const childrenCount = unnestedReplies.length;
@@ -356,6 +334,16 @@ const Reply = ({ cidOfReplyWithContext, depth = 0, isSingleComment, isSingleRepl
     }
     setCollapsed(!collapsed);
   };
+
+  const stateLabel = (
+    <span className={`${styles.stateLabel} ${collapsed ? styles.collapsedStateLabel : ''}`}>
+      {state === 'failed' && <Label color='red' text={t('failed')} />}
+      {cid === undefined && state !== 'failed' && <Label color='yellow' text={t('pending')} />}
+      {editState === 'failed' && <Label color='red' text={t('failed_edit')} />}
+      {editState === 'pending' && <Label color='yellow' text={t('pending_edit')} />}
+      {spoiler && <Label color='black' text={t('spoiler')} />}
+    </span>
+  );
 
   return (
     <div className={styles.reply}>
@@ -392,15 +380,19 @@ const Reply = ({ cidOfReplyWithContext, depth = 0, isSingleComment, isSingleRepl
                   {edit && <span className={styles.timeEdited}> {t('edited_timestamp', { timestamp: getFormattedTimeAgo(edit.timestamp) })}</span>}
                 </span>{' '}
                 {pinned && <span className={styles.pinned}>- {t('stickied_comment')}</span>}
-                {collapsed && <span className={styles.children}> ({childrenString})</span>}
-                {stateLabel}{' '}
+                {collapsed && (
+                  <>
+                    <span className={styles.children}>({childrenString})</span> {stateLabel} {state === 'pending' && loadingString}
+                  </>
+                )}
+                {!collapsed && stateLabel}
                 {!collapsed && flair && (
                   <>
                     {' '}
                     <Flair flair={flair} />
                   </>
                 )}
-                {state === 'pending' && loadingString}
+                {state === 'pending' && !collapsed && <> {loadingString}</>}
               </p>
             )}
             {isInInboxView && (
