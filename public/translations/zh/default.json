@@ -322,5 +322,6 @@
   "create_new_account": "<1>创建</1>新账户",
   "wallet_number": "钱包 #{{index}}",
   "view_more": "查看更多",
-  "submit_community": "提交您的社区"
+  "submit_community": "提交您的社区",
+  "hide_avatars_from_replies": "隐藏回复中的头像"
 }

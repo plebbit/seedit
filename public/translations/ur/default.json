@@ -322,5 +322,6 @@
   "create_new_account": "<1>نیا بنائیں</1> اکاؤنٹ",
   "wallet_number": "والٹ #{{index}}",
   "view_more": "مزید دیکھیں",
-  "submit_community": "اپنی کمیونٹی جمع کروائیں"
+  "submit_community": "اپنی کمیونٹی جمع کروائیں",
+  "hide_avatars_from_replies": "جوابوں سے اوتار چھپائیں"
 }

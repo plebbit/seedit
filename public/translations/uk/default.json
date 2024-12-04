@@ -322,5 +322,6 @@
   "create_new_account": "<1>створити</1> новий обліковий запис",
   "wallet_number": "гаманець #{{index}}",
   "view_more": "переглянути більше",
-  "submit_community": "Надішліть своє співтовариство"
+  "submit_community": "Надішліть своє співтовариство",
+  "hide_avatars_from_replies": "Сховати аватари в відповідях"
 }

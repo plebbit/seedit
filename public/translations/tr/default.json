@@ -322,5 +322,6 @@
   "create_new_account": "<1>oluştur</1> yeni bir hesap",
   "wallet_number": "cüzdan #{{index}}",
   "view_more": "daha fazla görüntüle",
-  "submit_community": "Topluluğunuzu gönderin"
+  "submit_community": "Topluluğunuzu gönderin",
+  "hide_avatars_from_replies": "Yanıtlardan avatarları gizle"
 }

@@ -322,5 +322,6 @@
   "create_new_account": "<1>lumikha</1> ng bagong account",
   "wallet_number": "wallet #{{index}}",
   "view_more": "tingnan pa",
-  "submit_community": "I-submit ang iyong komunidad"
+  "submit_community": "I-submit ang iyong komunidad",
+  "hide_avatars_from_replies": "Itago ang mga avatar mula sa mga sagot"
 }

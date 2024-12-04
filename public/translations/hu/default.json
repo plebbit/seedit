@@ -322,5 +322,6 @@
   "create_new_account": "<1>hozzon létre</1> egy új fiókot",
   "wallet_number": "tárca #{{index}}",
   "view_more": "több megtekintése",
-  "submit_community": "Küldje el közösségét"
+  "submit_community": "Küldje el közösségét",
+  "hide_avatars_from_replies": "Rejtse el az avatarokat a válaszokból"
 }

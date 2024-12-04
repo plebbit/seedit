@@ -75,3 +75,17 @@
 .copyMessage a:hover {
   text-decoration: underline;
 }
+
+.hideAvatarsCheckbox {
+  padding-top: 10px;
+  display: inline-block;
+  text-transform: lowercase;
+}
+
+.hideAvatarsCheckbox label {
+  cursor: pointer;
+}
+
+.hideAvatarsCheckbox input {
+  margin-right: .5em;
+}

@@ -322,5 +322,6 @@
   "create_new_account": "<1>создать</1> новую учетную запись",
   "wallet_number": "кошелек #{{index}}",
   "view_more": "смотреть больше",
-  "submit_community": "Отправьте ваше сообщество"
+  "submit_community": "Отправьте ваше сообщество",
+  "hide_avatars_from_replies": "Скрыть аватары в ответах"
 }

@@ -322,5 +322,6 @@
   "create_new_account": "<1>skapa</1> ett nytt konto",
   "wallet_number": "plånbok #{{index}}",
   "view_more": "visa mer",
-  "submit_community": "Skicka in ditt samhälle"
+  "submit_community": "Skicka in ditt samhälle",
+  "hide_avatars_from_replies": "Dölj avatarer från svar"
 }

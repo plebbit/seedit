@@ -322,5 +322,6 @@
   "create_new_account": "<1>tạo</1> tài khoản mới",
   "wallet_number": "ví #{{index}}",
   "view_more": "xem thêm",
-  "submit_community": "Gửi cộng đồng của bạn"
+  "submit_community": "Gửi cộng đồng của bạn",
+  "hide_avatars_from_replies": "Ẩn avatar trong các câu trả lời"
 }

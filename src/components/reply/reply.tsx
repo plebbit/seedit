@@ -24,6 +24,7 @@ import { isInboxView, isPostContextView, isPostView } from '../../lib/utils/view
 import Plebbit from '@plebbit/plebbit-js/dist/browser/index.js';
 import Markdown from '../markdown';
 import { getHostname } from '../../lib/utils/url-utils';
+import useAvatarVisibilityStore from '../../stores/use-avatar-visibility-store';
 
 interface ReplyAuthorProps {
   address: string;
@@ -39,20 +40,20 @@ interface ReplyAuthorProps {
 
 const ReplyAuthor = ({ address, authorRole, cid, deleted, displayName, imageUrl, isAvatarDefined, removed, shortAuthorAddress }: ReplyAuthorProps) => {
   const { t } = useTranslation();
+  const { hideAvatars } = useAvatarVisibilityStore();
   const isAuthorAdmin = authorRole === 'admin';
   const isAuthorOwner = authorRole === 'owner';
   const isAuthorModerator = authorRole === 'moderator';
   const authorRoleInitial = (isAuthorOwner && 'O') || (isAuthorAdmin && 'A') || (isAuthorModerator && 'M') || '';
   const moderatorClass = `${isAuthorOwner ? styles.owner : isAuthorAdmin ? styles.admin : isAuthorModerator ? styles.moderator : ''}`;
   const shortDisplayName = displayName?.length > 20 ? displayName?.slice(0, 20) + '...' : displayName;
-
   return (
     <>
       {removed || deleted ? (
         <span className={styles.removedUsername}>[{removed ? t('removed') : deleted ? t('deleted') : ''}]</span>
       ) : (
         <>
-          {isAvatarDefined && (
+          {!hideAvatars && isAvatarDefined && (
             <span className={styles.authorAvatar}>
               <img src={imageUrl} alt='' />
             </span>

@@ -322,5 +322,6 @@
   "create_new_account": "<1>తరువాత</1> కొత్త ఖాతా",
   "wallet_number": "వాలెట్ #{{index}}",
   "view_more": "మరింత చూడండి",
-  "submit_community": "మీ కమ్యూనిటి పంపించండి"
+  "submit_community": "మీ కమ్యూనిటి పంపించండి",
+  "hide_avatars_from_replies": "ప్రతిస్పందనల నుండి అవతార్లను దాచు"
 }
