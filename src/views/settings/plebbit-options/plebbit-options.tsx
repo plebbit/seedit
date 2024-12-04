@@ -163,15 +163,40 @@ const PlebbitOptions = () => {
   const plebbitDataPathRef = useRef<HTMLInputElement>(null);
 
   const handleSave = async () => {
-    const ipfsGatewayUrls = ipfsGatewayUrlsRef.current?.value.split('\n').map((url) => url.trim());
+    const ipfsGatewayUrls = ipfsGatewayUrlsRef.current?.value
+      .split('\n')
+      .map((url) => url.trim())
+      .filter((url) => url !== '');
+
     const mediaIpfsGatewayUrl = mediaIpfsGatewayUrlRef.current?.value.trim();
-    const pubsubHttpClientsOptions = pubsubProvidersRef.current?.value.split('\n').map((url) => url.trim());
-    const ethRpcUrls = ethRpcRef.current?.value.split('\n').map((url) => url.trim());
-    const solRpcUrls = solRpcRef.current?.value.split('\n').map((url) => url.trim());
-    const maticRpcUrls = maticRpcRef.current?.value.split('\n').map((url) => url.trim());
-    const avaxRpcUrls = avaxRpcRef.current?.value.split('\n').map((url) => url.trim());
-    const plebbitRpcClientsOptions = plebbitRpcRef.current?.value.trim();
-    const dataPath = plebbitDataPathRef.current?.value.trim();
+
+    const pubsubHttpClientsOptions = pubsubProvidersRef.current?.value
+      .split('\n')
+      .map((url) => url.trim())
+      .filter((url) => url !== '');
+
+    const ethRpcUrls = ethRpcRef.current?.value
+      .split('\n')
+      .map((url) => url.trim())
+      .filter((url) => url !== '');
+
+    const solRpcUrls = solRpcRef.current?.value
+      .split('\n')
+      .map((url) => url.trim())
+      .filter((url) => url !== '');
+
+    const maticRpcUrls = maticRpcRef.current?.value
+      .split('\n')
+      .map((url) => url.trim())
+      .filter((url) => url !== '');
+
+    const avaxRpcUrls = avaxRpcRef.current?.value
+      .split('\n')
+      .map((url) => url.trim())
+      .filter((url) => url !== '');
+
+    const plebbitRpcClientsOptions = plebbitRpcRef.current?.value.trim() ? [plebbitRpcRef.current.value.trim()] : undefined;
+    const dataPath = plebbitDataPathRef.current?.value.trim() || undefined;
 
     const chainProviders = {
       eth: {
@@ -191,6 +216,21 @@ const PlebbitOptions = () => {
         chainId: 43114,
       },
     };
+    const accountToSave = {
+      ...account,
+      mediaIpfsGatewayUrl,
+      plebbitOptions: {
+        ...plebbitOptions,
+        ipfsGatewayUrls,
+        pubsubHttpClientsOptions,
+        chainProviders,
+        plebbitRpcClientsOptions,
+        dataPath,
+      },
+    };
+
+    console.log('existing account', account);
+    console.log('saving account', accountToSave);
 
     try {
       await setAccount({
@@ -205,7 +245,8 @@ const PlebbitOptions = () => {
           dataPath,
         },
       });
-      alert('Options saved.');
+      alert('Options saved, reloading...');
+      window.location.reload();
     } catch (e) {
       if (e instanceof Error) {
         alert('Error saving options: ' + e.message);

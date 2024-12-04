@@ -82,10 +82,6 @@
   text-transform: lowercase;
 }
 
-.hideAvatarsCheckbox label {
-  cursor: pointer;
-}
-
 .hideAvatarsCheckbox input {
   margin-right: .5em;
 }
