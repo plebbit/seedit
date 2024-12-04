@@ -8,7 +8,7 @@ const AddressSettings = () => {
   const account = useAccount();
 
   const [cryptoState, setCryptoState] = useState({
-    cryptoAddress: '',
+    cryptoAddress: account?.author?.shortAddress.includes('.') ? account.author.shortAddress : '',
     checkingCryptoAddress: false,
     showResolvingMessage: false,
     resolveString: t('crypto_address_verification'),
@@ -57,6 +57,12 @@ const AddressSettings = () => {
   const saveCryptoAddress = async () => {
     if (!cryptoState.cryptoAddress || !cryptoState.cryptoAddress.includes('.')) {
       alert(t('enter_crypto_address'));
+      return;
+    } else if (cryptoState.cryptoAddress === account?.author?.address) {
+      setSavedCryptoAddress(true);
+      setTimeout(() => {
+        setSavedCryptoAddress(false);
+      }, 2000);
       return;
     } else if (resolvedAddress && resolvedAddress !== account?.signer?.address) {
       alert(t('crypto_address_not_yours'));
@@ -107,7 +113,7 @@ const AddressSettings = () => {
           <input
             type='text'
             placeholder='address.eth/.sol'
-            defaultValue={cryptoState.cryptoAddress || (account?.author?.shortAddress.includes('.') ? account.author.shortAddress : '')}
+            value={cryptoState.cryptoAddress}
             onChange={(e) => setCryptoState((prevState) => ({ ...prevState, cryptoAddress: e.target.value }))}
           />
           <button className={styles.infoButton} onClick={() => setShowCryptoAddressInfo(!showCryptoAddressInfo)}>
