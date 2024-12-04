@@ -12,6 +12,7 @@ interface SettingsProps {
   solRpcRef?: RefObject<HTMLTextAreaElement>;
   maticRpcRef?: RefObject<HTMLTextAreaElement>;
   avaxRpcRef?: RefObject<HTMLTextAreaElement>;
+  httpRoutersRef?: RefObject<HTMLTextAreaElement>;
   plebbitRpcRef?: RefObject<HTMLInputElement>;
   plebbitDataPathRef?: RefObject<HTMLInputElement>;
 }
@@ -64,6 +65,19 @@ const PubsubProvidersSettings = ({ pubsubProvidersRef }: SettingsProps) => {
         spellCheck='false'
         rows={3}
       />
+    </div>
+  );
+};
+
+const HttpRoutersSettings = ({ httpRoutersRef }: SettingsProps) => {
+  const account = useAccount();
+  const { plebbitOptions } = account || {};
+  const { httpRoutersOptions } = plebbitOptions || {};
+  const httpRoutersDefaultValue = httpRoutersOptions?.join('\n');
+
+  return (
+    <div className={styles.httpRoutersSettings}>
+      <textarea defaultValue={httpRoutersDefaultValue} ref={httpRoutersRef} autoCorrect='off' autoComplete='off' spellCheck='false' rows={2} />
     </div>
   );
 };
@@ -159,6 +173,7 @@ const PlebbitOptions = () => {
   const solRpcRef = useRef<HTMLTextAreaElement>(null);
   const maticRpcRef = useRef<HTMLTextAreaElement>(null);
   const avaxRpcRef = useRef<HTMLTextAreaElement>(null);
+  const httpRoutersRef = useRef<HTMLTextAreaElement>(null);
   const plebbitRpcRef = useRef<HTMLInputElement>(null);
   const plebbitDataPathRef = useRef<HTMLInputElement>(null);
 
@@ -195,6 +210,11 @@ const PlebbitOptions = () => {
       .map((url) => url.trim())
       .filter((url) => url !== '');
 
+    const httpRoutersOptions = httpRoutersRef.current?.value
+      .split('\n')
+      .map((url) => url.trim())
+      .filter((url) => url !== '');
+
     const plebbitRpcClientsOptions = plebbitRpcRef.current?.value.trim() ? [plebbitRpcRef.current.value.trim()] : undefined;
     const dataPath = plebbitDataPathRef.current?.value.trim() || undefined;
 
@@ -216,21 +236,6 @@ const PlebbitOptions = () => {
         chainId: 43114,
       },
     };
-    const accountToSave = {
-      ...account,
-      mediaIpfsGatewayUrl,
-      plebbitOptions: {
-        ...plebbitOptions,
-        ipfsGatewayUrls,
-        pubsubHttpClientsOptions,
-        chainProviders,
-        plebbitRpcClientsOptions,
-        dataPath,
-      },
-    };
-
-    console.log('existing account', account);
-    console.log('saving account', accountToSave);
 
     try {
       await setAccount({
@@ -241,6 +246,7 @@ const PlebbitOptions = () => {
           ipfsGatewayUrls,
           pubsubHttpClientsOptions,
           chainProviders,
+          httpRoutersOptions,
           plebbitRpcClientsOptions,
           dataPath,
         },
@@ -269,6 +275,12 @@ const PlebbitOptions = () => {
         <span className={styles.categoryTitle}>pubsub providers</span>
         <span className={styles.categorySettings}>
           <PubsubProvidersSettings pubsubProvidersRef={pubsubProvidersRef} />
+        </span>
+      </div>
+      <div className={styles.category}>
+        <span className={styles.categoryTitle}>http routers</span>
+        <span className={styles.categorySettings}>
+          <HttpRoutersSettings httpRoutersRef={httpRoutersRef} />
         </span>
       </div>
       <div className={styles.category}>
