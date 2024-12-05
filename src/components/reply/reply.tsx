@@ -20,7 +20,7 @@ import ReplyForm from '../reply-form';
 import useDownvote from '../../hooks/use-downvote';
 import useStateString from '../../hooks/use-state-string';
 import useUpvote from '../../hooks/use-upvote';
-import { isInboxView, isPostContextView, isPostView } from '../../lib/utils/view-utils';
+import { isInboxView, isPostContextView, isPostPageView } from '../../lib/utils/view-utils';
 import Plebbit from '@plebbit/plebbit-js/dist/browser/index.js';
 import Markdown from '../markdown';
 import { getHostname } from '../../lib/utils/url-utils';
@@ -283,7 +283,7 @@ const Reply = ({ cidOfReplyWithContext, depth = 0, isSingleComment, isSingleRepl
   const params = useParams();
   const isInInboxView = isInboxView(location.pathname);
   const isInPostContextView = isPostContextView(location.pathname, params, location.search);
-  const isInPostView = isPostView(location.pathname, params);
+  const isInPostPageView = isPostPageView(location.pathname, params);
 
   const authorRole = subplebbit?.roles?.[author?.address]?.role;
   const { shortAuthorAddress } = useAuthorAddress({ comment: reply });
@@ -324,10 +324,10 @@ const Reply = ({ cidOfReplyWithContext, depth = 0, isSingleComment, isSingleRepl
   const { blocked, unblock } = useBlock({ cid });
   const [collapsed, setCollapsed] = useState(blocked);
   useEffect(() => {
-    if (blocked || (isInPostView && (deleted || removed) && childrenCount === 0)) {
+    if (blocked || (isInPostPageView && (deleted || removed) && childrenCount === 0)) {
       setCollapsed(true);
     }
-  }, [blocked, isInPostView, deleted, removed, childrenCount]);
+  }, [blocked, isInPostPageView, deleted, removed, childrenCount]);
   const handleCollapseButton = () => {
     if (blocked) {
       unblock();

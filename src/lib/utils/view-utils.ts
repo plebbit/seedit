@@ -85,11 +85,11 @@ export const isInboxUnreadView = (pathname: string): boolean => {
   return pathname === `/inbox/unread`;
 };
 
-export const isPendingView = (pathname: string, params: ParamsType): boolean => {
+export const isPendingPostView = (pathname: string, params: ParamsType): boolean => {
   return pathname === `/profile/${params.accountCommentIndex}`;
 };
 
-export const isPostView = (pathname: string, params: ParamsType): boolean => {
+export const isPostPageView = (pathname: string, params: ParamsType): boolean => {
   // some subs might use emojis in their address, so we need to decode the pathname
   const decodedPathname = decodeURIComponent(pathname);
   return params.subplebbitAddress && params.commentCid ? decodedPathname.startsWith(`/p/${params.subplebbitAddress}/c/${params.commentCid}`) : false;

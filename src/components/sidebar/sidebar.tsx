@@ -12,8 +12,8 @@ import {
   isAllView,
   isHomeAboutView,
   isHomeView,
-  isPendingView,
-  isPostView,
+  isPendingPostView,
+  isPostPageView,
   isSubplebbitAboutView,
   isSubplebbitSettingsView,
   isSubplebbitsView,
@@ -219,8 +219,8 @@ const Sidebar = ({ comment, isSubCreatedButNotYetPublished, settings, subplebbit
   const isInAllView = isAllView(location.pathname);
   const isInHomeAboutView = isHomeAboutView(location.pathname);
   const isInHomeView = isHomeView(location.pathname);
-  const isInPendingView = isPendingView(location.pathname, params);
-  const isInPostView = isPostView(location.pathname, params);
+  const isInPendingPostView = isPendingPostView(location.pathname, params);
+  const isInPostPageView = isPostPageView(location.pathname, params);
   const isInSubplebbitsView = isSubplebbitsView(location.pathname);
   const isInSubplebbitAboutView = isSubplebbitAboutView(location.pathname, params);
 
@@ -229,7 +229,7 @@ const Sidebar = ({ comment, isSubCreatedButNotYetPublished, settings, subplebbit
   const subplebbitCreator = findSubplebbitCreator(roles);
   const creatorAddress = subplebbitCreator === 'anonymous' ? 'anonymous' : `${Plebbit.getShortAddress(subplebbitCreator)}`;
   const submitRoute =
-    isInHomeView || isInHomeAboutView || isInAllView ? '/submit' : isInPendingView ? `/p/${pendingPost?.subplebbitAddress}/submit` : `/p/${address}/submit`;
+    isInHomeView || isInHomeAboutView || isInAllView ? '/submit' : isInPendingPostView ? `/p/${pendingPost?.subplebbitAddress}/submit` : `/p/${address}/submit`;
 
   const { blocked, unblock, block } = useBlock({ address });
 
@@ -271,7 +271,7 @@ const Sidebar = ({ comment, isSubCreatedButNotYetPublished, settings, subplebbit
   return (
     <div className={`${isMobile ? styles.mobileSidebar : styles.sidebar}`}>
       <SearchBar />
-      {isInPostView && <PostInfo comment={comment} />}
+      {isInPostPageView && <PostInfo comment={comment} />}
       <Link to={submitRoute}>
         {/* TODO: add .largeButtonDisabled and disabledButtonDescription classnames for subs that don't accept posts */}
         <div className={styles.largeButton}>
@@ -279,7 +279,7 @@ const Sidebar = ({ comment, isSubCreatedButNotYetPublished, settings, subplebbit
           <div className={styles.nub} />
         </div>
       </Link>
-      {!isInHomeView && !isInHomeAboutView && !isInAllView && !isInPendingView && !isInSubplebbitsView && !isInHomeAboutView && (
+      {!isInHomeView && !isInHomeAboutView && !isInAllView && !isInPendingPostView && !isInSubplebbitsView && !isInHomeAboutView && (
         <div className={styles.titleBox}>
           <Link className={styles.title} to={`/p/${address}`}>
             {subplebbit?.address}

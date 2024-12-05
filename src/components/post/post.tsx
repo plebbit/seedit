@@ -3,7 +3,7 @@ import styles from './post.module.css';
 import { Link, useLocation, useParams } from 'react-router-dom';
 import { Comment, useAuthorAddress, useBlock, useComment, useEditedComment, useSubplebbit, useSubscribe } from '@plebbit/plebbit-react-hooks';
 import { useTranslation } from 'react-i18next';
-import { isAllView, isPostView, isProfileHiddenView, isSubplebbitView } from '../../lib/utils/view-utils';
+import { isAllView, isPostPageView, isProfileHiddenView, isSubplebbitView } from '../../lib/utils/view-utils';
 import { getHasThumbnail } from '../../lib/utils/media-utils';
 import { getPostScore } from '../../lib/utils/post-utils';
 import { getHostname } from '../../lib/utils/url-utils';
@@ -117,13 +117,13 @@ const Post = ({ index, post = {} }: PostProps) => {
   const authorRole = subplebbit?.roles?.[post.author?.address]?.role;
 
   const isInAllView = isAllView(location.pathname);
-  const isInPostView = isPostView(location.pathname, params);
+  const isInPostPageView = isPostPageView(location.pathname, params);
   const isInProfileHiddenView = isProfileHiddenView(location.pathname);
   const isInSubplebbitView = isSubplebbitView(location.pathname, params);
 
   const commentMediaInfo = useCommentMediaInfo(post);
 
-  const [isExpanded, setIsExpanded] = useState(isInPostView);
+  const [isExpanded, setIsExpanded] = useState(isInPostPageView);
   const toggleExpanded = () => setIsExpanded(!isExpanded);
 
   const [isEditing, setIsEditing] = useState(false);
@@ -137,7 +137,7 @@ const Post = ({ index, post = {} }: PostProps) => {
 
   const hasThumbnail = getHasThumbnail(commentMediaInfo, link);
   const linkUrl = getHostname(link);
-  const linkClass = `${isInPostView ? (link ? styles.externalLink : styles.internalLink) : styles.link} ${pinned ? styles.pinnedLink : ''}`;
+  const linkClass = `${isInPostPageView ? (link ? styles.externalLink : styles.internalLink) : styles.link} ${pinned ? styles.pinnedLink : ''}`;
 
   const { blocked, unblock } = useBlock({ cid });
 
@@ -145,7 +145,7 @@ const Post = ({ index, post = {} }: PostProps) => {
   const { subscribe, subscribed } = useSubscribe({ subplebbitAddress });
 
   // show gray dotted border around last clicked post
-  const isLastClicked = sessionStorage.getItem('lastClickedPost') === cid && !isInPostView;
+  const isLastClicked = sessionStorage.getItem('lastClickedPost') === cid && !isInPostPageView;
   const handlePostClick = () => {
     if (cid) {
       if (sessionStorage.getItem('lastClickedPost') === cid) {
@@ -177,7 +177,7 @@ const Post = ({ index, post = {} }: PostProps) => {
                   <div className={`${styles.arrowCommon} ${downvoted ? styles.downvoted : styles.arrowDown}`} onClick={() => cid && downvote()} />
                 </div>
               </div>
-              {hasThumbnail && (!isInPostView || commentMediaInfo?.type === 'webpage') && !spoiler && (
+              {hasThumbnail && (!isInPostPageView || commentMediaInfo?.type === 'webpage') && !spoiler && (
                 <span className={removed ? styles.blur : ''}>
                   <Thumbnail
                     cid={cid}
@@ -193,8 +193,8 @@ const Post = ({ index, post = {} }: PostProps) => {
             </div>
             <div className={styles.entry}>
               <div className={styles.topMatter}>
-                <p className={`${styles.title} ${removed && !isInPostView ? styles.blur : ''}`}>
-                  {isInPostView && link ? (
+                <p className={`${styles.title} ${removed && !isInPostPageView ? styles.blur : ''}`}>
+                  {isInPostPageView && link ? (
                     <a href={link} className={linkClass} target='_blank' rel='noopener noreferrer' onClick={handlePostClick}>
                       {postTitle ?? '-'}
                     </a>
@@ -219,7 +219,7 @@ const Post = ({ index, post = {} }: PostProps) => {
                     </span>
                   )}
                 </p>
-                {!isInPostView && (!(commentMediaInfo?.type === 'webpage') || (commentMediaInfo?.type === 'webpage' && content?.trim().length > 0)) && (
+                {!isInPostPageView && (!(commentMediaInfo?.type === 'webpage') || (commentMediaInfo?.type === 'webpage' && content?.trim().length > 0)) && (
                   <ExpandButton
                     commentMediaInfo={commentMediaInfo}
                     content={content}
@@ -231,7 +231,8 @@ const Post = ({ index, post = {} }: PostProps) => {
                 )}
                 <div className={styles.tagline}>
                   {t('submitted')} <span title={postDate}>{getFormattedTimeAgo(timestamp)}</span>{' '}
-                  {edit && isInPostView && <span className={styles.timeEdit}>{t('last_edited', { timestamp: getFormattedTimeAgo(edit.timestamp) })}</span>} {t('post_by')}
+                  {edit && isInPostPageView && <span className={styles.timeEdit}>{t('last_edited', { timestamp: getFormattedTimeAgo(edit.timestamp) })}</span>}{' '}
+                  {t('post_by')}
                   <PostAuthor
                     authorAddress={author?.address}
                     authorRole={authorRole}
