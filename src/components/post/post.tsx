@@ -8,6 +8,7 @@ import { getHasThumbnail } from '../../lib/utils/media-utils';
 import { getPostScore } from '../../lib/utils/post-utils';
 import { getHostname } from '../../lib/utils/url-utils';
 import { getFormattedTimeAgo, formatLocalizedUTCTimestamp } from '../../lib/utils/time-utils';
+import { useCommentMediaInfo } from '../../hooks/use-comment-media-info';
 import CommentEditForm from '../comment-edit-form';
 import ExpandButton from './expand-button';
 import Expando from './expando';
@@ -17,7 +18,6 @@ import Thumbnail from './thumbnail';
 import useDownvote from '../../hooks/use-downvote';
 import useUpvote from '../../hooks/use-upvote';
 import _ from 'lodash';
-import { useCommentMediaInfo } from '../../hooks/use-comment-media-info';
 
 interface PostAuthorProps {
   authorAddress: string;
