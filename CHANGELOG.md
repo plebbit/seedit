@@ -1,9 +1,39 @@
+## [0.2.3](https://github.com/plebbit/seedit/compare/v0.2.2...v0.2.3) (2024-12-06)
+
+
+### Bug Fixes
+
+* **avatar settings:** add timestamp field to let users add existing signature ([4263b44](https://github.com/plebbit/seedit/commit/4263b44458d42bf7e3748d314d48923f67bdea2d))
+* **ellipsis animation:** dots could appear cut off and cause displacement changing width of string ([448673d](https://github.com/plebbit/seedit/commit/448673dd5b54f9ca1f08b4fab03a08a8cf698e0f))
+* **feed:** posts could change position causing displacement ([ecf6a7b](https://github.com/plebbit/seedit/commit/ecf6a7b39da12442270d8de2fb4a27093fbb599c))
+* **header:** seedit logo should show in subs without their own logo ([61c9f30](https://github.com/plebbit/seedit/commit/61c9f3061839d9112085001a4c7933d05a2b1961))
+* **markdown:** links in post content would not open new tab ([4d30ad1](https://github.com/plebbit/seedit/commit/4d30ad14fbe906b011c2a66ac31654a76f0d1651))
+* only show data path setting on electron ([8db2c15](https://github.com/plebbit/seedit/commit/8db2c15f4a33b1d603aea758c7c89e583361f33f))
+* **plebbit options:** schema error prevented to save ([dc3dddf](https://github.com/plebbit/seedit/commit/dc3dddf410376874470c5e897189f67d280d1b44))
+* **post page:** loading text could cause horizontal scroll on mobile ([580a598](https://github.com/plebbit/seedit/commit/580a5989df55c613e5a8f0c6cf2336ba230af298))
+* **post:** editing comment content didn't work ([540d4c7](https://github.com/plebbit/seedit/commit/540d4c7f9b619255fb5e2b5ad97cca980e733089))
+* **reply form:** only show offline info message if the user clicks on textarea ([221dab8](https://github.com/plebbit/seedit/commit/221dab8e83f75290e2073a0775350568649b9dd5))
+* **reply:** pending edit label appeared cut off ([a02ed8f](https://github.com/plebbit/seedit/commit/a02ed8f1163ca311a6137c3001a7d2402184d2cc))
+* **settings:** crypto address setting would show error for an already set address ([9f73a49](https://github.com/plebbit/seedit/commit/9f73a49822fe7c3808f241777913af45fba88f87))
+* **sidebar:** moderator tools wouldn't appear in post page for sub owner who is not mod ([faf1718](https://github.com/plebbit/seedit/commit/faf171848eff5530f8cb11f22aa76e77bced2d50))
+
+
+### Features
+
+* **electron:** add http routers to electron ([69726e1](https://github.com/plebbit/seedit/commit/69726e1b97ca90f34c2d06ff1709bdb207a2e93d))
+* **post:** updated design for deleted/removed replies to be more like old.reddit ([6beb8b3](https://github.com/plebbit/seedit/commit/6beb8b30a2616154a5d6f779c38efe473497780b))
+* **settings:** add http routers setting to plebbit options ([cfe004c](https://github.com/plebbit/seedit/commit/cfe004cf07614f523fe5788d508bc23dc7218ef3))
+* **settings:** add option to hide avatars from replies ([b8ebef0](https://github.com/plebbit/seedit/commit/b8ebef0c6e11055bafdf059c0bae20f80499fbf0))
+
+
+
 ## [0.2.2](https://github.com/plebbit/seedit/compare/v0.2.1...v0.2.2) (2024-11-11)
 
 
 ### Bug Fixes
 
 * **post:** content would not appear if link is webpage ([a2516b5](https://github.com/plebbit/seedit/commit/a2516b59122c41cf333102aa97de2c882ac2ee9f))
+* **post:** expand button didn't appear for text with webpage link ([80fcc58](https://github.com/plebbit/seedit/commit/80fcc5870dc14f61ada7054bd5b22ee8cebb8d73))
 * **sidebar:** 0 score would show up as '•' ([5785e0b](https://github.com/plebbit/seedit/commit/5785e0bbe16006ef342bc936bbc353f49ee01018))
 
 
