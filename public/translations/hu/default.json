@@ -323,5 +323,8 @@
   "wallet_number": "tárca #{{index}}",
   "view_more": "több megtekintése",
   "submit_community": "Küldje el közösségét",
-  "hide_avatars_from_replies": "Rejtse el az avatarokat a válaszokból"
+  "hide_avatars_from_replies": "Rejtse el az avatarokat a válaszokból",
+  "yes": "igen",
+  "no": "nem",
+  "are_you_sure": "Biztos vagy benne?"
 }

@@ -323,5 +323,8 @@
   "wallet_number": "plånbok #{{index}}",
   "view_more": "visa mer",
   "submit_community": "Skicka in ditt samhälle",
-  "hide_avatars_from_replies": "Dölj avatarer från svar"
+  "hide_avatars_from_replies": "Dölj avatarer från svar",
+  "yes": "ja",
+  "no": "nej",
+  "are_you_sure": "Är du säker?"
 }

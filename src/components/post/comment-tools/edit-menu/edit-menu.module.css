@@ -2,7 +2,7 @@
   color: var(--text-info);
   font-weight: bold;
   text-decoration: none;
-  padding: 0 4px 0 4px;
+  padding: 0 4px;
   cursor: pointer;
   text-transform: lowercase;
 }
@@ -42,4 +42,20 @@
   .reportButton {
     display: block;
   }
+}
+
+.deleteConfirm {
+  color: var(--red);
+  text-transform: lowercase;
+  padding: 0 4px;
+}
+
+.deleteConfirm:hover {
+  text-decoration: none !important;
+}
+
+.deleteConfirm span {
+  color: var(--text-info);
+  font-weight: 700;
+  cursor: pointer;
 }

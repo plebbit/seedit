@@ -1,5 +1,5 @@
 .content {
-  padding: 7px 5px 0px 5px;
+  padding: 7px 5px 32px 5px;
 }
 
 .replyArea {
@@ -36,11 +36,6 @@
 .spacer {
   display: inline;
   margin-right: 15px;
-}
-
-.loadingString {
-  padding: 5px;
-  position: absolute;
 }
 
 .dropdown {
@@ -87,12 +82,13 @@
   margin-left: 3px;
 }
 
+.loadingString {
+  padding: 5px;
+}
+
 .stateString {
-  white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  width: calc(100vw - 28px);
-  width: 100vw;
   color: var(--text-info);
   font-size: x-small;
 }

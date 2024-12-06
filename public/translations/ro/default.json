@@ -323,5 +323,8 @@
   "wallet_number": "portofel #{{index}}",
   "view_more": "vezi mai mult",
   "submit_community": "Trimite comunitatea ta",
-  "hide_avatars_from_replies": "Ascunde avatarele din răspunsuri"
+  "hide_avatars_from_replies": "Ascunde avatarele din răspunsuri",
+  "yes": "da",
+  "no": "nu",
+  "are_you_sure": "Ești sigur?"
 }

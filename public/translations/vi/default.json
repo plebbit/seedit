@@ -323,5 +323,8 @@
   "wallet_number": "ví #{{index}}",
   "view_more": "xem thêm",
   "submit_community": "Gửi cộng đồng của bạn",
-  "hide_avatars_from_replies": "Ẩn avatar trong các câu trả lời"
+  "hide_avatars_from_replies": "Ẩn avatar trong các câu trả lời",
+  "yes": "vâng",
+  "no": "không",
+  "are_you_sure": "Bạn chắc chắn chứ?"
 }

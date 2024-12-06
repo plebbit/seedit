@@ -323,5 +323,8 @@
   "wallet_number": "dompet #{{index}}",
   "view_more": "lihat lebih banyak",
   "submit_community": "Kirim komunitas Anda",
-  "hide_avatars_from_replies": "Sembunyikan avatar dari balasan"
+  "hide_avatars_from_replies": "Sembunyikan avatar dari balasan",
+  "yes": "iya",
+  "no": "tidak",
+  "are_you_sure": "Apakah Anda yakin?"
 }

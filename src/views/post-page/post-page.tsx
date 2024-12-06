@@ -10,7 +10,7 @@ import PostComponent from '../../components/post';
 import Sidebar from '../../components/sidebar';
 import useReplies from '../../hooks/use-replies';
 import useStateString from '../../hooks/use-state-string';
-import { isPendingView, isPostContextView } from '../../lib/utils/view-utils';
+import { isPendingPostView, isPostContextView } from '../../lib/utils/view-utils';
 import findTopParentCidOfReply from '../../lib/utils/cid-utils';
 import _ from 'lodash';
 
@@ -148,7 +148,7 @@ const PostWithContext = ({ post }: { post: Comment }) => {
 const PostPage = () => {
   const params = useParams();
   const location = useLocation();
-  const isInPendingView = isPendingView(location.pathname, params);
+  const isInPendingPostView = isPendingPostView(location.pathname, params);
   const isInPostContextView = isPostContextView(location.pathname, params, location.search);
 
   const post = useComment({ commentCid: params?.commentCid });
@@ -169,7 +169,7 @@ const PostPage = () => {
       <div className={styles.sidebar}>
         <Sidebar subplebbit={subplebbit} comment={post} />
       </div>
-      {isInPendingView && params?.accountCommentIndex ? (
+      {isInPendingPostView && params?.accountCommentIndex ? (
         <PendingPost commentIndex={+params?.accountCommentIndex || undefined} />
       ) : isInPostContextView ? (
         <PostWithContext post={post} />

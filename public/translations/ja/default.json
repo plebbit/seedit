@@ -323,5 +323,8 @@
   "wallet_number": "ウォレット #{{index}}",
   "view_more": "もっと見る",
   "submit_community": "コミュニティを提出してください",
-  "hide_avatars_from_replies": "返信からアバターを非表示にする"
+  "hide_avatars_from_replies": "返信からアバターを非表示にする",
+  "yes": "はい",
+  "no": "いいえ",
+  "are_you_sure": "本当にそうですか？"
 }

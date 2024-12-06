@@ -192,6 +192,18 @@ const AvatarSettings = () => {
               }}
             />
           </div>
+          <div className={styles.avatarSettingInput}>
+            <span className={styles.settingTitle}>{t('timestamp')}</span>
+            <input
+              type='text'
+              placeholder='Timestamp'
+              autoCorrect='off'
+              autoComplete='off'
+              spellCheck='false'
+              value={timestamp}
+              onChange={(e) => setTimestamp(Number(e.target.value))}
+            />
+          </div>
           <div className={styles.pasteSignature}>
             <span className={styles.settingTitle}>{t('paste_signature')}</span>
             <input

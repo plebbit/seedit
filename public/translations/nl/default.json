@@ -323,5 +323,8 @@
   "wallet_number": "portemonnee #{{index}}",
   "view_more": "meer bekijken",
   "submit_community": "Dien uw gemeenschap in",
-  "hide_avatars_from_replies": "Verberg avatars van reacties"
+  "hide_avatars_from_replies": "Verberg avatars van reacties",
+  "yes": "ja",
+  "no": "nee",
+  "are_you_sure": "Weet je het zeker?"
 }

@@ -323,5 +323,8 @@
   "wallet_number": "वॉलेट #{{index}}",
   "view_more": "और देखें",
   "submit_community": "अपनी समुदाय सबमिट करें",
-  "hide_avatars_from_replies": "उत्तर से अवतार छुपाएं"
+  "hide_avatars_from_replies": "उत्तर से अवतार छुपाएं",
+  "yes": "हां",
+  "no": "नहीं",
+  "are_you_sure": "क्या आप सुनिश्चित हैं?"
 }

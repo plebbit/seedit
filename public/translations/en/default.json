@@ -323,5 +323,8 @@
   "wallet_number": "wallet #{{index}}",
   "view_more": "view more",
   "submit_community": "Submit your community",
-  "hide_avatars_from_replies": "Hide avatars from replies"
+  "hide_avatars_from_replies": "Hide avatars from replies",
+  "yes": "yes",
+  "no": "no",
+  "are_you_sure": "Are you sure?"
 }

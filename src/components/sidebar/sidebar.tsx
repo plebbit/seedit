@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import Plebbit from '@plebbit/plebbit-js/dist/browser/index.js';
@@ -12,8 +13,8 @@ import {
   isAllView,
   isHomeAboutView,
   isHomeView,
-  isPendingView,
-  isPostView,
+  isPendingPostView,
+  isPostPageView,
   isSubplebbitAboutView,
   isSubplebbitSettingsView,
   isSubplebbitsView,
@@ -219,8 +220,8 @@ const Sidebar = ({ comment, isSubCreatedButNotYetPublished, settings, subplebbit
   const isInAllView = isAllView(location.pathname);
   const isInHomeAboutView = isHomeAboutView(location.pathname);
   const isInHomeView = isHomeView(location.pathname);
-  const isInPendingView = isPendingView(location.pathname, params);
-  const isInPostView = isPostView(location.pathname, params);
+  const isInPendingPostView = isPendingPostView(location.pathname, params);
+  const isInPostPageView = isPostPageView(location.pathname, params);
   const isInSubplebbitsView = isSubplebbitsView(location.pathname);
   const isInSubplebbitAboutView = isSubplebbitAboutView(location.pathname, params);
 
@@ -229,20 +230,27 @@ const Sidebar = ({ comment, isSubCreatedButNotYetPublished, settings, subplebbit
   const subplebbitCreator = findSubplebbitCreator(roles);
   const creatorAddress = subplebbitCreator === 'anonymous' ? 'anonymous' : `${Plebbit.getShortAddress(subplebbitCreator)}`;
   const submitRoute =
-    isInHomeView || isInHomeAboutView || isInAllView ? '/submit' : isInPendingView ? `/p/${pendingPost?.subplebbitAddress}/submit` : `/p/${address}/submit`;
+    isInHomeView || isInHomeAboutView || isInAllView ? '/submit' : isInPendingPostView ? `/p/${pendingPost?.subplebbitAddress}/submit` : `/p/${address}/submit`;
 
   const { blocked, unblock, block } = useBlock({ address });
 
+  const [showBlockConfirm, setShowBlockConfirm] = useState(false);
+
   const blockConfirm = () => {
+    setShowBlockConfirm(true);
+  };
+
+  const handleBlock = () => {
     if (blocked) {
-      if (window.confirm(t('unblock_community_alert'))) {
-        unblock();
-      }
-    } else if (!blocked) {
-      if (window.confirm(t('block_community_alert'))) {
-        block();
-      }
+      unblock();
+    } else {
+      block();
     }
+    setShowBlockConfirm(false);
+  };
+
+  const cancelBlock = () => {
+    setShowBlockConfirm(false);
   };
 
   const account = useAccount();
@@ -271,7 +279,7 @@ const Sidebar = ({ comment, isSubCreatedButNotYetPublished, settings, subplebbit
   return (
     <div className={`${isMobile ? styles.mobileSidebar : styles.sidebar}`}>
       <SearchBar />
-      {isInPostView && <PostInfo comment={comment} />}
+      {isInPostPageView && <PostInfo comment={comment} />}
       <Link to={submitRoute}>
         {/* TODO: add .largeButtonDisabled and disabledButtonDescription classnames for subs that don't accept posts */}
         <div className={styles.largeButton}>
@@ -279,7 +287,7 @@ const Sidebar = ({ comment, isSubCreatedButNotYetPublished, settings, subplebbit
           <div className={styles.nub} />
         </div>
       </Link>
-      {!isInHomeView && !isInHomeAboutView && !isInAllView && !isInPendingView && !isInSubplebbitsView && !isInHomeAboutView && (
+      {!isInHomeView && !isInHomeAboutView && !isInAllView && !isInPendingPostView && !isInSubplebbitsView && !isInHomeAboutView && (
         <div className={styles.titleBox}>
           <Link className={styles.title} to={`/p/${address}`}>
             {subplebbit?.address}
@@ -312,9 +320,22 @@ const Sidebar = ({ comment, isSubCreatedButNotYetPublished, settings, subplebbit
             <span>{`u/${creatorAddress}`}</span>
             {createdAt && <span className={styles.age}> {t('community_for', { date: getFormattedTimeDuration(createdAt) })}</span>}
             <div className={styles.bottomButtons}>
-              <span className={styles.blockSub} onClick={blockConfirm}>
-                {blocked ? t('unblock_community') : t('block_community')}
-              </span>
+              {showBlockConfirm ? (
+                <span className={styles.blockConfirm}>
+                  {t('are_you_sure')}{' '}
+                  <span className={styles.confirmButton} onClick={handleBlock}>
+                    {t('yes')}
+                  </span>
+                  {' / '}
+                  <span className={styles.cancelButton} onClick={cancelBlock}>
+                    {t('no')}
+                  </span>
+                </span>
+              ) : (
+                <span className={styles.blockSub} onClick={blockConfirm}>
+                  {blocked ? t('unblock_community') : t('block_community')}
+                </span>
+              )}
             </div>
           </div>
         </div>

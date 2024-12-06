@@ -69,7 +69,7 @@
 }
 
 .copyMessage a {
-  color: var(--text-primary);
+  color: var(--link-primary);
 }
 
 .copyMessage a:hover {
@@ -80,10 +80,6 @@
   padding-top: 10px;
   display: inline-block;
   text-transform: lowercase;
-}
-
-.hideAvatarsCheckbox label {
-  cursor: pointer;
 }
 
 .hideAvatarsCheckbox input {

@@ -323,5 +323,8 @@
   "wallet_number": "المحفظة #{{index}}",
   "view_more": "عرض المزيد",
   "submit_community": "قدم مجتمعك",
-  "hide_avatars_from_replies": "إخفاء الصور الرمزية من الردود"
+  "hide_avatars_from_replies": "إخفاء الصور الرمزية من الردود",
+  "yes": "نعم",
+  "no": "لا",
+  "are_you_sure": "هل أنت متأكد؟"
 }

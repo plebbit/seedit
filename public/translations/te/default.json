@@ -323,5 +323,8 @@
   "wallet_number": "వాలెట్ #{{index}}",
   "view_more": "మరింత చూడండి",
   "submit_community": "మీ కమ్యూనిటి పంపించండి",
-  "hide_avatars_from_replies": "ప్రతిస్పందనల నుండి అవతార్లను దాచు"
+  "hide_avatars_from_replies": "ప్రతిస్పందనల నుండి అవతార్లను దాచు",
+  "yes": "అవును",
+  "no": "కాదు",
+  "are_you_sure": "మీకు నమ్మకమా?"
 }

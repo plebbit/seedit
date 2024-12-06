@@ -323,5 +323,8 @@
   "wallet_number": "peněženka #{{index}}",
   "view_more": "zobrazit více",
   "submit_community": "Odešlete svou komunitu",
-  "hide_avatars_from_replies": "Skrýt avatary v odpovědích"
+  "hide_avatars_from_replies": "Skrýt avatary v odpovědích",
+  "yes": "ano",
+  "no": "ne",
+  "are_you_sure": "Jste si jistí?"
 }

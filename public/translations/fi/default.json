@@ -323,5 +323,8 @@
   "wallet_number": "lompakko #{{index}}",
   "view_more": "näytä lisää",
   "submit_community": "Lähetä yhteisösi",
-  "hide_avatars_from_replies": "Piilota avatarit vastauksista"
+  "hide_avatars_from_replies": "Piilota avatarit vastauksista",
+  "yes": "kyllä",
+  "no": "ei",
+  "are_you_sure": "Oletko varma?"
 }

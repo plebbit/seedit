@@ -323,5 +323,8 @@
   "wallet_number": "钱包 #{{index}}",
   "view_more": "查看更多",
   "submit_community": "提交您的社区",
-  "hide_avatars_from_replies": "隐藏回复中的头像"
+  "hide_avatars_from_replies": "隐藏回复中的头像",
+  "yes": "是的",
+  "no": "不是",
+  "are_you_sure": "你确定吗？"
 }
