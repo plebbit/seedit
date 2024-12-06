@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import Plebbit from '@plebbit/plebbit-js/dist/browser/index.js';
@@ -233,16 +234,23 @@ const Sidebar = ({ comment, isSubCreatedButNotYetPublished, settings, subplebbit
 
   const { blocked, unblock, block } = useBlock({ address });
 
+  const [showBlockConfirm, setShowBlockConfirm] = useState(false);
+
   const blockConfirm = () => {
+    setShowBlockConfirm(true);
+  };
+
+  const handleBlock = () => {
     if (blocked) {
-      if (window.confirm(t('unblock_community_alert'))) {
-        unblock();
-      }
-    } else if (!blocked) {
-      if (window.confirm(t('block_community_alert'))) {
-        block();
-      }
+      unblock();
+    } else {
+      block();
     }
+    setShowBlockConfirm(false);
+  };
+
+  const cancelBlock = () => {
+    setShowBlockConfirm(false);
   };
 
   const account = useAccount();
@@ -312,9 +320,22 @@ const Sidebar = ({ comment, isSubCreatedButNotYetPublished, settings, subplebbit
             <span>{`u/${creatorAddress}`}</span>
             {createdAt && <span className={styles.age}> {t('community_for', { date: getFormattedTimeDuration(createdAt) })}</span>}
             <div className={styles.bottomButtons}>
-              <span className={styles.blockSub} onClick={blockConfirm}>
-                {blocked ? t('unblock_community') : t('block_community')}
-              </span>
+              {showBlockConfirm ? (
+                <span className={styles.blockConfirm}>
+                  {t('are_you_sure')}{' '}
+                  <span className={styles.confirmButton} onClick={handleBlock}>
+                    {t('yes')}
+                  </span>
+                  {' / '}
+                  <span className={styles.cancelButton} onClick={cancelBlock}>
+                    {t('no')}
+                  </span>
+                </span>
+              ) : (
+                <span className={styles.blockSub} onClick={blockConfirm}>
+                  {blocked ? t('unblock_community') : t('block_community')}
+                </span>
+              )}
             </div>
           </div>
         </div>

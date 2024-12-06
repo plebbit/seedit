@@ -323,5 +323,8 @@
   "wallet_number": "tegneboks #{{index}}",
   "view_more": "se mere",
   "submit_community": "Indsend dit fællesskab",
-  "hide_avatars_from_replies": "Skjul avatarer fra svar"
+  "hide_avatars_from_replies": "Skjul avatarer fra svar",
+  "yes": "ja",
+  "no": "nej",
+  "are_you_sure": "Er du sikker?"
 }

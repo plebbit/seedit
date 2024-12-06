@@ -323,5 +323,8 @@
   "wallet_number": "lommebok #{{index}}",
   "view_more": "vis mer",
   "submit_community": "Send inn ditt fellesskap",
-  "hide_avatars_from_replies": "Skjul avatarer fra svar"
+  "hide_avatars_from_replies": "Skjul avatarer fra svar",
+  "yes": "ja",
+  "no": "nei",
+  "are_you_sure": "Er du sikker?"
 }

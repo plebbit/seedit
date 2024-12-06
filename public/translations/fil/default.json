@@ -323,5 +323,8 @@
   "wallet_number": "wallet #{{index}}",
   "view_more": "tingnan pa",
   "submit_community": "I-submit ang iyong komunidad",
-  "hide_avatars_from_replies": "Itago ang mga avatar mula sa mga sagot"
+  "hide_avatars_from_replies": "Itago ang mga avatar mula sa mga sagot",
+  "yes": "oo",
+  "no": "hindi",
+  "are_you_sure": "Sigurado ka ba?"
 }

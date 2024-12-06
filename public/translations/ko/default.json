@@ -323,5 +323,8 @@
   "wallet_number": "지갑 #{{index}}",
   "view_more": "더보기",
   "submit_community": "커뮤니티를 제출하세요",
-  "hide_avatars_from_replies": "답글에서 아바타 숨기기"
+  "hide_avatars_from_replies": "답글에서 아바타 숨기기",
+  "yes": "네",
+  "no": "아니요",
+  "are_you_sure": "정말 확실합니까?"
 }

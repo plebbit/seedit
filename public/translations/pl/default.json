@@ -323,5 +323,8 @@
   "wallet_number": "portfel #{{index}}",
   "view_more": "zobacz więcej",
   "submit_community": "Prześlij swoją społeczność",
-  "hide_avatars_from_replies": "Ukryj avatary w odpowiedziach"
+  "hide_avatars_from_replies": "Ukryj avatary w odpowiedziach",
+  "yes": "tak",
+  "no": "nie",
+  "are_you_sure": "Jesteś pewny?"
 }

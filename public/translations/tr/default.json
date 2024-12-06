@@ -323,5 +323,8 @@
   "wallet_number": "cüzdan #{{index}}",
   "view_more": "daha fazla görüntüle",
   "submit_community": "Topluluğunuzu gönderin",
-  "hide_avatars_from_replies": "Yanıtlardan avatarları gizle"
+  "hide_avatars_from_replies": "Yanıtlardan avatarları gizle",
+  "yes": "evet",
+  "no": "hayır",
+  "are_you_sure": "Emin misin?"
 }

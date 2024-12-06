@@ -323,5 +323,8 @@
   "wallet_number": "πορτοφόλι #{{index}}",
   "view_more": "δείτε περισσότερα",
   "submit_community": "Υποβάλετε την κοινότητά σας",
-  "hide_avatars_from_replies": "Απόκρυψη avatar από τις απαντήσεις"
+  "hide_avatars_from_replies": "Απόκρυψη avatar από τις απαντήσεις",
+  "yes": "ναι",
+  "no": "όχι",
+  "are_you_sure": "Είσαι σίγουρος;"
 }

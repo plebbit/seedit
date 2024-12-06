@@ -323,5 +323,8 @@
   "wallet_number": "portofol #{{index}}",
   "view_more": "shiko më shumë",
   "submit_community": "Dorëzo komunitetin tuaj",
-  "hide_avatars_from_replies": "Fshih avatarët nga përgjigjet"
+  "hide_avatars_from_replies": "Fshih avatarët nga përgjigjet",
+  "yes": "po",
+  "no": "jo",
+  "are_you_sure": "Jeni të sigurt?"
 }

@@ -323,5 +323,8 @@
   "wallet_number": "والٹ #{{index}}",
   "view_more": "مزید دیکھیں",
   "submit_community": "اپنی کمیونٹی جمع کروائیں",
-  "hide_avatars_from_replies": "جوابوں سے اوتار چھپائیں"
+  "hide_avatars_from_replies": "جوابوں سے اوتار چھپائیں",
+  "yes": "ہاں",
+  "no": "نہیں",
+  "are_you_sure": "کیا آپ کو یقین ہے؟"
 }

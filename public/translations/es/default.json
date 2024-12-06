@@ -323,5 +323,8 @@
   "wallet_number": "billetera #{{index}}",
   "view_more": "ver más",
   "submit_community": "Envía tu comunidad",
-  "hide_avatars_from_replies": "Ocultar avatares de las respuestas"
+  "hide_avatars_from_replies": "Ocultar avatares de las respuestas",
+  "yes": "sí",
+  "no": "no",
+  "are_you_sure": "¿Estás seguro?"
 }

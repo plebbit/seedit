@@ -323,5 +323,8 @@
   "wallet_number": "ארנק #{{index}}",
   "view_more": "ראה עוד",
   "submit_community": "שלח את הקהילה שלך",
-  "hide_avatars_from_replies": "הסתרת תמונות פרופיל בתשובות"
+  "hide_avatars_from_replies": "הסתרת תמונות פרופיל בתשובות",
+  "yes": "כן",
+  "no": "לא",
+  "are_you_sure": "האם אתה בטוח?"
 }

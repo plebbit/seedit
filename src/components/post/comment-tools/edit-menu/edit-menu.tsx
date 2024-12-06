@@ -41,17 +41,24 @@ const EditMenu = ({ commentCid, showCommentEditForm }: EditMenuProps) => {
   const [publishOptions, setPublishOptions] = useState(defaultPublishOptions);
   const { publishCommentEdit } = usePublishCommentEdit(publishOptions);
 
-  const deleteComment = useCallback(() => {
-    const newDeletedState = !deleted;
-    const confirmMessage = deleted ? t('sure_undelete') : t('sure_delete');
+  const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
 
-    if (window.confirm(confirmMessage)) {
-      setPublishOptions((prevOptions) => ({
-        ...prevOptions,
-        deleted: newDeletedState,
-      }));
-    }
-  }, [deleted, t]);
+  const deleteComment = useCallback(() => {
+    setShowDeleteConfirm(true);
+  }, []);
+
+  const confirmDelete = () => {
+    const newDeletedState = !deleted;
+    setPublishOptions((prevOptions) => ({
+      ...prevOptions,
+      deleted: newDeletedState,
+    }));
+    setShowDeleteConfirm(false);
+  };
+
+  const cancelDelete = () => {
+    setShowDeleteConfirm(false);
+  };
 
   useEffect(() => {
     if (publishOptions.deleted !== defaultPublishOptions.deleted) {
@@ -70,9 +77,22 @@ const EditMenu = ({ commentCid, showCommentEditForm }: EditMenuProps) => {
           {t('edit')}
         </span>
       </li>
-      <li className={styles.button}>
-        <span onClick={deleteComment}>{deleted ? t('undelete') : t('delete')}</span>
-      </li>
+      {showDeleteConfirm ? (
+        <span className={styles.deleteConfirm}>
+          {t('are_you_sure')}{' '}
+          <span className={styles.confirmButton} onClick={confirmDelete}>
+            {t('yes')}
+          </span>
+          {' / '}
+          <span className={styles.cancelButton} onClick={cancelDelete}>
+            {t('no')}
+          </span>
+        </span>
+      ) : (
+        <li className={styles.button}>
+          <span onClick={deleteComment}>{deleted ? t('undelete') : t('delete')}</span>
+        </li>
+      )}
     </>
   );
 };

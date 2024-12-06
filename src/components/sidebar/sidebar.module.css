@@ -318,3 +318,19 @@ a {
   margin-top: 20px;
   margin-bottom: 20px;
 }
+
+.blockConfirm {
+  color: var(--red);
+}
+
+.blockConfirm span {
+  color: var(--text-info);
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.blockSub {
+  font-weight: 700;
+  color: var(--text-info);
+  cursor: pointer;
+}

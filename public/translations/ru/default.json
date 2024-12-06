@@ -323,5 +323,8 @@
   "wallet_number": "кошелек #{{index}}",
   "view_more": "смотреть больше",
   "submit_community": "Отправьте ваше сообщество",
-  "hide_avatars_from_replies": "Скрыть аватары в ответах"
+  "hide_avatars_from_replies": "Скрыть аватары в ответах",
+  "yes": "да",
+  "no": "нет",
+  "are_you_sure": "Вы уверены?"
 }

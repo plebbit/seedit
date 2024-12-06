@@ -323,5 +323,8 @@
   "wallet_number": "ওয়ালেট #{{index}}",
   "view_more": "আরও দেখুন",
   "submit_community": "আপনার সম্প্রদায় জমা দিন",
-  "hide_avatars_from_replies": "প্রতিক্রিয়া থেকে অ্যাভাটারগুলি লুকান"
+  "hide_avatars_from_replies": "প্রতিক্রিয়া থেকে অ্যাভাটারগুলি লুকান",
+  "yes": "হ্যাঁ",
+  "no": "না",
+  "are_you_sure": "আপনি কি নিশ্চিত?"
 }
