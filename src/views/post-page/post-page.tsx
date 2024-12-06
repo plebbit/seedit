@@ -167,7 +167,7 @@ const PostPage = () => {
   return (
     <div className={styles.content}>
       <div className={styles.sidebar}>
-        <Sidebar subplebbit={subplebbit} comment={post} />
+        <Sidebar subplebbit={subplebbit} comment={post} settings={subplebbit?.settings} />
       </div>
       {isInPendingPostView && params?.accountCommentIndex ? (
         <PendingPost commentIndex={+params?.accountCommentIndex || undefined} />
