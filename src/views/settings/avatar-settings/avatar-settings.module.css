@@ -69,7 +69,7 @@
 }
 
 .copyMessage a {
-  color: var(--text-primary);
+  color: var(--link-primary);
 }
 
 .copyMessage a:hover {
