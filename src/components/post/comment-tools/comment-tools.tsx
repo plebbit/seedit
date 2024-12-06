@@ -263,7 +263,7 @@ const CommentTools = ({
   const isInInboxView = isInboxView(useLocation().pathname);
 
   return (
-    (!(deleted || removed) || ((deleted || removed) && isAccountMod)) && (
+    (!(deleted || removed) || (!deleted && isAccountMod)) && (
       <ul className={`${styles.buttons} ${isReply && !isInInboxView ? styles.buttonsReply : ''} ${hasLabel ? styles.buttonsLabel : ''}`}>
         {isReply ? (
           isSingleReply ? (
