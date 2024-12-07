@@ -14,7 +14,7 @@ const port = 9138;
 const defaultPlebbitOptions = {
   // find the user's OS data path
   dataPath: !isDev ? envPaths.data : path.join(dirname, '..', '.plebbit'),
-  ipfsHttpClientsOptions: ['http://localhost:5001/api/v0'],
+  ipfsHttpClientsOptions: ['http://localhost:50019/api/v0'],
   httpRoutersOptions: ['https://routing.lol', 'https://peers.pleb.bot'],
 };
 

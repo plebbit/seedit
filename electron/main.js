@@ -168,7 +168,7 @@ const createMainWindow = () => {
         let serializedUrl = '';
 
         // make an exception for ipfs stats
-        if (validatedUrl.toString() === 'http://localhost:5001/webui/') {
+        if (validatedUrl.toString() === 'http://localhost:50019/webui/') {
           serializedUrl = validatedUrl.toString();
         } else if (validatedUrl.protocol === 'https:') {
           // open serialized url to prevent remote execution
@@ -198,7 +198,7 @@ const createMainWindow = () => {
       let serializedUrl = '';
 
       // make an exception for ipfs stats
-      if (validatedUrl.toString() === 'http://localhost:5001/webui/') {
+      if (validatedUrl.toString() === 'http://localhost:50019/webui/') {
         serializedUrl = validatedUrl.toString();
       } else if (validatedUrl.protocol === 'https:') {
         // open serialized url to prevent remote execution
