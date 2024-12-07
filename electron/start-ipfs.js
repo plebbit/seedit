@@ -69,10 +69,10 @@ const startIpfs = async () => {
   });
 
   // use different port with proxy for debugging during env
-  let apiAddress = '/ip4/127.0.0.1/tcp/5001';
+  let apiAddress = '/ip4/127.0.0.1/tcp/50019';
   if (isDev) {
-    apiAddress = apiAddress.replace('5001', '5002');
-    proxyServer.start({ proxyPort: 5001, targetPort: 5002 });
+    apiAddress = apiAddress.replace('50019', '50029');
+    proxyServer.start({ proxyPort: 50019, targetPort: 50029 });
   }
   await spawnAsync(ipfsPath, ['config', 'Addresses.API', apiAddress], { env, hideWindows: true });
 
@@ -116,7 +116,7 @@ const start = async () => {
   }
   pendingStart = true;
   try {
-    const started = await tcpPortUsed.check(isDev ? 5002 : 5001, '127.0.0.1');
+    const started = await tcpPortUsed.check(isDev ? 50029 : 50019, '127.0.0.1');
     if (started) {
       return;
     }

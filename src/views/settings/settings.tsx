@@ -162,7 +162,7 @@ const GeneralSettings = () => {
               v{packageJson.version}
             </a>
             {isElectron && (
-              <a className={styles.fullNodeStats} href='http://localhost:5001/webui/' target='_blank' rel='noreferrer'>
+              <a className={styles.fullNodeStats} href='http://localhost:50019/webui/' target='_blank' rel='noreferrer'>
                 {t('node_stats')}
               </a>
             )}
