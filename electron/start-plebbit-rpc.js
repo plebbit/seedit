@@ -5,8 +5,7 @@ import fs from 'fs-extra';
 import PlebbitRpc from '@plebbit/plebbit-js/dist/node/rpc/src/index.js';
 import path from 'path';
 import { fileURLToPath } from 'url';
-// import isDev from 'electron-is-dev'
-const isDev = true;
+import isDev from 'electron-is-dev';
 const dirname = path.join(path.dirname(fileURLToPath(import.meta.url)));
 const envPaths = EnvPaths('plebbit', { suffix: false });
 
