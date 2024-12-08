@@ -29,38 +29,40 @@ try {
   fs.writeFileSync(plebbitRpcAuthKeyPath, plebbitRpcAuthKey);
 }
 
-let pendingStart = false;
-const start = async () => {
-  if (pendingStart) {
-    return;
-  }
-  pendingStart = true;
-  try {
-    const started = await tcpPortUsed.check(port, '127.0.0.1');
-    if (started) {
+const startPlebbitRpcAutoRestart = async () => {
+  let pendingStart = false;
+  const start = async () => {
+    if (pendingStart) {
       return;
     }
-    const plebbitWebSocketServer = await PlebbitRpc.PlebbitWsServer({ port, plebbitOptions: defaultPlebbitOptions, authKey: plebbitRpcAuthKey });
-    plebbitWebSocketServer.on('error', (e) => console.log('plebbit rpc error', e));
+    pendingStart = true;
+    try {
+      const started = await tcpPortUsed.check(port, '127.0.0.1');
+      if (!started) {
+        const plebbitWebSocketServer = await PlebbitRpc.PlebbitWsServer({ port, plebbitOptions: defaultPlebbitOptions, authKey: plebbitRpcAuthKey });
+        plebbitWebSocketServer.on('error', (e) => console.log('plebbit rpc error', e));
 
-    console.log(`plebbit rpc: listening on ws://localhost:${port} (local connections only)`);
-    console.log(`plebbit rpc: listening on ws://localhost:${port}/${plebbitRpcAuthKey} (secret auth key for remote connections)`);
-    plebbitWebSocketServer.ws.on('connection', (socket, request) => {
-      console.log('plebbit rpc: new connection');
-      // debug raw JSON RPC messages in console
-      if (isDev) {
-        socket.on('message', (message) => console.log(`plebbit rpc: ${message.toString()}`));
+        console.log(`plebbit rpc: listening on ws://localhost:${port} (local connections only)`);
+        console.log(`plebbit rpc: listening on ws://localhost:${port}/${plebbitRpcAuthKey} (secret auth key for remote connections)`);
+        plebbitWebSocketServer.ws.on('connection', (socket, request) => {
+          console.log('plebbit rpc: new connection');
+          // debug raw JSON RPC messages in console
+          if (isDev) {
+            socket.on('message', (message) => console.log(`plebbit rpc: ${message.toString()}`));
+          }
+        });
       }
-    });
-  } catch (e) {
-    console.log('failed starting plebbit rpc server', e);
-  }
-  pendingStart = false;
-};
+    } catch (e) {
+      console.log('failed starting plebbit rpc server', e);
+    }
+    pendingStart = false;
+  };
 
-// retry starting the plebbit rpc server every 1 second,
-// in case it was started by another client that shut down and shut down the server with it
-start();
-setInterval(() => {
+  // retry starting the plebbit rpc server every 1 second,
+  // in case it was started by another client that shut down and shut down the server with it
   start();
-}, 1000);
+  setInterval(() => {
+    start();
+  }, 1000);
+};
+startPlebbitRpcAutoRestart();
