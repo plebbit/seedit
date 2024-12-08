@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { Virtuoso, VirtuosoHandle, StateSnapshot } from 'react-virtuoso';
 import { useFeed } from '@plebbit/plebbit-react-hooks';
@@ -38,15 +38,6 @@ const All = () => {
 
   const currentTimeFilterName = params.timeFilterName || timeFilterName;
 
-  const [showMorePostsSuggestion, setShowMorePostsSuggestion] = useState(false);
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setShowMorePostsSuggestion(true);
-    }, 5000);
-
-    return () => clearTimeout(timer);
-  }, []);
-
   const documentTitle = _.capitalize(t('all')) + ' - Seedit';
   useEffect(() => {
     document.title = documentTitle;
@@ -71,7 +62,6 @@ const All = () => {
               />
             </div>
           ) : (
-            showMorePostsSuggestion &&
             monthlyFeed.length > feed.length &&
             (weeklyFeed.length > feed.length ? (
               <div className={styles.morePostsSuggestion}>
