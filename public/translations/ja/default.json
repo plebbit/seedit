@@ -326,5 +326,9 @@
   "hide_avatars_from_replies": "返信からアバターを非表示にする",
   "yes": "はい",
   "no": "いいえ",
-  "are_you_sure": "本当にそうですか？"
+  "are_you_sure": "本当にそうですか？",
+  "a_short_title": "あなたのコミュニティのための短いタイトル",
+  "anti_spam_challenges": "アンチスパムチャレンジ",
+  "anti_spam_challenges_subtitle": "スパムを防ぐために1つ以上のチャレンジを選択してください",
+  "add_a_challenge": "チャレンジを追加"
 }

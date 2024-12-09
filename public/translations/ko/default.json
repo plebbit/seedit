@@ -326,5 +326,9 @@
   "hide_avatars_from_replies": "답글에서 아바타 숨기기",
   "yes": "네",
   "no": "아니요",
-  "are_you_sure": "정말 확실합니까?"
+  "are_you_sure": "정말 확실합니까?",
+  "a_short_title": "귀하의 커뮤니티를 위한 짧은 제목",
+  "anti_spam_challenges": "스팸 방지 챌린지",
+  "anti_spam_challenges_subtitle": "스팸을 방지하기 위해 하나 이상의 챌린지를 선택하세요",
+  "add_a_challenge": "도전 추가"
 }

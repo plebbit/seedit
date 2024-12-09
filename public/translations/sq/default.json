@@ -217,7 +217,7 @@
   "preview": "paraprake",
   "shown_in_sidebar": "të shfaqet në anën e majtë të komunitetit tuaj",
   "community_logo_info": "vendosni një logon e komunitetit duke përdorur lidhjen e drejtpërdrejtë të imazhit të tij (përfundon në .jpg, .png)",
-  "moderators_setting_info": "lejojini të tjerët të moderohen dhe të postohen pa sfida",
+  "moderators_setting_info": "lejojini të tjerët të moderohen dhe të postohen pa challenge",
   "vote": "voto",
   "passing": "kalimi",
   "rejecting": "refuzim",
@@ -326,5 +326,9 @@
   "hide_avatars_from_replies": "Fshih avatarët nga përgjigjet",
   "yes": "po",
   "no": "jo",
-  "are_you_sure": "Jeni të sigurt?"
+  "are_you_sure": "Jeni të sigurt?",
+  "a_short_title": "Një titull i shkurtër për komunitetin tuaj",
+  "anti_spam_challenges": "challenget anti-spam",
+  "anti_spam_challenges_subtitle": "Zgjidhni një ose më shumë challenge për të parandaluar spam",
+  "add_a_challenge": "Shtoni një sfidë"
 }

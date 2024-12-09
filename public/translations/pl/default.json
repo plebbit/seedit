@@ -326,5 +326,9 @@
   "hide_avatars_from_replies": "Ukryj avatary w odpowiedziach",
   "yes": "tak",
   "no": "nie",
-  "are_you_sure": "Jesteś pewny?"
+  "are_you_sure": "Jesteś pewny?",
+  "a_short_title": "Krótki tytuł dla twojej społeczności",
+  "anti_spam_challenges": "Wyzwania przeciw spamowi",
+  "anti_spam_challenges_subtitle": "Wybierz jedno lub więcej wyzwań, aby zapobiec spamowi",
+  "add_a_challenge": "Dodaj wyzwanie"
 }

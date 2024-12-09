@@ -1,3 +1,7 @@
+.loading {
+  padding: 7px 5px;
+}
+
 .content {
   color: var(--text);
   margin-bottom: 40px;
@@ -30,6 +34,7 @@
   color: var(--text-info);
   padding-left: 10px;
   padding-top: 1px;
+  text-transform: lowercase;
 }
 
 .boxSubtitle span {

@@ -326,5 +326,9 @@
   "hide_avatars_from_replies": "Itago ang mga avatar mula sa mga sagot",
   "yes": "oo",
   "no": "hindi",
-  "are_you_sure": "Sigurado ka ba?"
+  "are_you_sure": "Sigurado ka ba?",
+  "a_short_title": "Isang maikling pamagat para sa iyong komunidad",
+  "anti_spam_challenges": "Mga anti-spam na hamon",
+  "anti_spam_challenges_subtitle": "Pumili ng isa o higit pang mga hamon upang maiwasan ang spam",
+  "add_a_challenge": "Magdagdag ng hamon"
 }

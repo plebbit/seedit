@@ -326,5 +326,9 @@
   "hide_avatars_from_replies": "Dölj avatarer från svar",
   "yes": "ja",
   "no": "nej",
-  "are_you_sure": "Är du säker?"
+  "are_you_sure": "Är du säker?",
+  "a_short_title": "En kort titel för ditt samhälle",
+  "anti_spam_challenges": "Anti-spam-utmaningar",
+  "anti_spam_challenges_subtitle": "Välj en eller flera utmaningar för att förhindra spam",
+  "add_a_challenge": "Lägg till en utmaning"
 }

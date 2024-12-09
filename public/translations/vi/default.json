@@ -326,5 +326,9 @@
   "hide_avatars_from_replies": "Ẩn avatar trong các câu trả lời",
   "yes": "vâng",
   "no": "không",
-  "are_you_sure": "Bạn chắc chắn chứ?"
+  "are_you_sure": "Bạn chắc chắn chứ?",
+  "a_short_title": "Một tiêu đề ngắn cho cộng đồng của bạn",
+  "anti_spam_challenges": "Thử thách chống spam",
+  "anti_spam_challenges_subtitle": "Chọn một hoặc nhiều thử thách để ngừng spam",
+  "add_a_challenge": "Thêm một thử thách"
 }
