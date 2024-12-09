@@ -326,5 +326,9 @@
   "hide_avatars_from_replies": "Ascunde avatarele din răspunsuri",
   "yes": "da",
   "no": "nu",
-  "are_you_sure": "Ești sigur?"
+  "are_you_sure": "Ești sigur?",
+  "a_short_title": "Un titlu scurt pentru comunitatea ta",
+  "anti_spam_challenges": "Provocări anti-spam",
+  "anti_spam_challenges_subtitle": "Alegeți unul sau mai multe provocări pentru a preveni spamul",
+  "add_a_challenge": "Adăugați o provocare"
 }

@@ -326,5 +326,9 @@
   "hide_avatars_from_replies": "Verberg avatars van reacties",
   "yes": "ja",
   "no": "nee",
-  "are_you_sure": "Weet je het zeker?"
+  "are_you_sure": "Weet je het zeker?",
+  "a_short_title": "Een korte titel voor je gemeenschap",
+  "anti_spam_challenges": "Anti-spam uitdagingen",
+  "anti_spam_challenges_subtitle": "Kies een of meer uitdagingen om spam te voorkomen",
+  "add_a_challenge": "Voeg een uitdaging toe"
 }

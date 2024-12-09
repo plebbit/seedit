@@ -1,6 +1,6 @@
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
-import { deleteSubplebbit, Role, useAccount, useCreateSubplebbit, useSubplebbit, usePublishSubplebbitEdit } from '@plebbit/plebbit-react-hooks';
+import { deleteSubplebbit, Role, useAccount, useCreateSubplebbit, usePlebbitRpcSettings, usePublishSubplebbitEdit, useSubplebbit } from '@plebbit/plebbit-react-hooks';
 import { Roles } from '../../lib/utils/user-utils';
 import { useTranslation } from 'react-i18next';
 import styles from './subplebbit-settings.module.css';
@@ -13,6 +13,7 @@ import LoadingEllipsis from '../../components/loading-ellipsis';
 import Markdown from '../../components/markdown';
 import Sidebar from '../../components/sidebar';
 import _ from 'lodash';
+
 const Title = ({ isReadOnly = false }: { isReadOnly?: boolean }) => {
   const { t } = useTranslation();
   const { title, setSubplebbitSettingsStore } = useSubplebbitSettingsStore();
@@ -20,7 +21,7 @@ const Title = ({ isReadOnly = false }: { isReadOnly?: boolean }) => {
   return (
     <div className={`${styles.box} ${isReadOnly && !title ? styles.hidden : styles.visible}`}>
       <div className={styles.boxTitle}>{t('title')}</div>
-      <div className={styles.boxSubtitle}>e.g., books: made from trees or pixels. recommendations, news, or thoughts</div>
+      <div className={styles.boxSubtitle}>{t('a_short_title')}</div>
       <div className={styles.boxInput}>
         {isReadOnly ? <span>{title}</span> : <input type='text' value={title ?? ''} onChange={(e) => setSubplebbitSettingsStore({ title: e.target.value })} />}
       </div>
@@ -283,8 +284,6 @@ const Moderators = ({ isReadOnly = false }: { isReadOnly?: boolean }) => {
   );
 };
 
-const challengesNames = ['text-math', 'captcha-canvas-v3', 'fail', 'blacklist', 'question', 'evm-contract-call'];
-
 interface ChallengeSettingsProps {
   challenge: any;
   index: number;
@@ -292,6 +291,7 @@ interface ChallengeSettingsProps {
   setSubplebbitSettingsStore: (data: Partial<SubplebbitSettingsState>) => void;
   settings: any;
   showSettings: boolean;
+  challengesSettings: any;
 }
 
 type OptionInput = {
@@ -321,9 +321,12 @@ const rolesToExclude = ['moderator', 'admin', 'owner'];
 const actionsToExclude: Array<'post' | 'reply' | 'vote'> = ['post', 'reply', 'vote'];
 const nonActionsToExclude: Array<'not post' | 'not reply' | 'not vote'> = ['not post', 'not reply', 'not vote'];
 
-const ChallengeSettings = ({ challenge, index, isReadOnly, setSubplebbitSettingsStore, settings, showSettings }: ChallengeSettingsProps) => {
+const ChallengeSettings = ({ challenge, challengesSettings, index, isReadOnly, setSubplebbitSettingsStore, settings, showSettings }: ChallengeSettingsProps) => {
   const { name, options } = challenge || {};
-  const challengeSettings: any = useChallengeSettings(name);
+  const challengeSettings = challengesSettings[name];
+  const readOnlyFallback = isReadOnly && Object.keys(challengeSettings || {}).length === 0 && challenge;
+
+  const excludeArray = Array.isArray(challenge?.exclude) ? challenge.exclude : [];
 
   const handleOptionChange = (optionName: string, newValue: string) => {
     const updatedOptions = { ...options, [optionName]: newValue };
@@ -420,8 +423,8 @@ const ChallengeSettings = ({ challenge, index, isReadOnly, setSubplebbitSettings
     <div className={showSettings || isReadOnly ? styles.visible : styles.hidden}>
       {isReadOnly ? (
         <>
-          <div className={styles.readOnlyChallengeType}>type: {challenge?.type}</div>
-          <div className={styles.readOnlyChallengeDescription}>{challengeSettings?.description}</div>
+          <div className={styles.readOnlyChallengeType}>type: {(challengeSettings?.type || readOnlyFallback?.type) ?? 'unknown'}</div>
+          <div className={styles.readOnlyChallengeDescription}>{challengeSettings?.description || readOnlyFallback?.description || ''}</div>
         </>
       ) : (
         <div className={styles.challengeDescription}>{challengeSettings?.description}</div>
@@ -451,7 +454,7 @@ const ChallengeSettings = ({ challenge, index, isReadOnly, setSubplebbitSettings
             Add Group
           </button>
         )}
-        {challenge?.exclude?.map((exclude: any, excludeIndex: number) => (
+        {excludeArray.map((exclude: any, excludeIndex: number) => (
           <div key={excludeIndex} className={styles.excludeGroup}>
             Exclude group #{excludeIndex + 1}
             {!isReadOnly && <span className={styles.deleteButton} onClick={() => deleteExcludeGroup(excludeIndex)} title='delete group' />}
@@ -641,7 +644,17 @@ const ChallengeSettings = ({ challenge, index, isReadOnly, setSubplebbitSettings
   );
 };
 
-const Challenges = ({ isReadOnly, readOnlyChallenges }: { isReadOnly: boolean; readOnlyChallenges: any }) => {
+const Challenges = ({
+  isReadOnly,
+  readOnlyChallenges,
+  challengeNames,
+  challengesSettings,
+}: {
+  isReadOnly: boolean;
+  readOnlyChallenges: any;
+  challengeNames: string[];
+  challengesSettings: any;
+}) => {
   const { t } = useTranslation();
   const { settings, setSubplebbitSettingsStore } = useSubplebbitSettingsStore();
   const challenges = settings?.challenges || readOnlyChallenges || [];
@@ -669,7 +682,7 @@ const Challenges = ({ isReadOnly, readOnlyChallenges }: { isReadOnly: boolean; r
   };
 
   const handleDeleteChallenge = (index: number) => {
-    const updatedChallenges = settings?.challenges.filter((_: any, idx: number) => idx !== index);
+    const updatedChallenges = settings?.challenges?.filter((_: any, idx: number) => idx !== index);
     setSubplebbitSettingsStore({ settings: { ...settings, challenges: updatedChallenges } });
     setShowSettings((oldShowSettings) => oldShowSettings.filter((_, idx) => idx !== index));
   };
@@ -683,12 +696,12 @@ const Challenges = ({ isReadOnly, readOnlyChallenges }: { isReadOnly: boolean; r
 
   return (
     <div className={`${styles.box} ${isReadOnly && !challenges ? styles.hidden : styles.visible}`}>
-      <div className={styles.boxTitle}>{t('challenges')}</div>
-      <div className={styles.boxSubtitle}>choose one or more challenges to prevent spam</div>
+      <div className={styles.boxTitle}>{t('anti_spam_challenges')}</div>
+      <div className={styles.boxSubtitle}>{t('anti_spam_challenges_subtitle')}</div>
       <div className={styles.boxInput}>
         {!isReadOnly && (
           <button className={styles.addButton} onClick={handleAddChallenge} disabled={isReadOnly}>
-            add a challenge
+            {t('add_a_challenge')}
           </button>
         )}
         {challenges.length === 0 && !isInCreateSubplebbitView && <span className={styles.noChallengeWarning}>{t('warning_spam')}</span>}
@@ -701,7 +714,7 @@ const Challenges = ({ isReadOnly, readOnlyChallenges }: { isReadOnly: boolean; r
               <span className={styles.readOnlyChallenge}>{challenge?.name}</span>
             ) : (
               <select value={challenge?.name} onChange={(e) => handleChallengeTypeChange(index, e.target.value)} disabled={isReadOnly}>
-                {challengesNames?.map((challenge) => (
+                {challengeNames?.map((challenge) => (
                   <option key={challenge} value={challenge}>
                     {challenge}
                   </option>
@@ -710,11 +723,12 @@ const Challenges = ({ isReadOnly, readOnlyChallenges }: { isReadOnly: boolean; r
             )}
             {!isReadOnly && (
               <button className={styles.challengeEditButton} onClick={() => toggleSettings(index)} disabled={isReadOnly}>
-                {showSettings[index] ? 'hide settings' : 'show settings'}
+                {showSettings[index] ? t('hide_settings') : t('show_settings')}
               </button>
             )}
             <ChallengeSettings
               challenge={challenge}
+              challengesSettings={challengesSettings || {}}
               index={index}
               isReadOnly={isReadOnly}
               setSubplebbitSettingsStore={setSubplebbitSettingsStore}
@@ -765,7 +779,8 @@ const SubplebbitSettings = () => {
   const { t } = useTranslation();
   const { subplebbitAddress } = useParams<{ subplebbitAddress: string }>();
   const subplebbit = useSubplebbit({ subplebbitAddress });
-  const { address, challenges, description, rules, shortAddress, settings, suggested, roles, title } = subplebbit || {};
+  const { address, challenges, createdAt, description, rules, shortAddress, settings, suggested, roles, title } = subplebbit || {};
+  const hasLoaded = !!createdAt;
 
   const account = useAccount();
   const location = useLocation();
@@ -832,7 +847,7 @@ const SubplebbitSettings = () => {
 
   useEffect(() => {
     resetSubplebbitSettingsStore();
-    if (subplebbitAddress) {
+    if (hasLoaded) {
       setSubplebbitSettingsStore({
         title: title ?? '',
         description: description ?? '',
@@ -846,30 +861,39 @@ const SubplebbitSettings = () => {
       });
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [subplebbitAddress, resetSubplebbitSettingsStore]);
+  }, [resetSubplebbitSettingsStore, hasLoaded]);
 
-  const defaultChallengeSettings = useChallengeSettings('captcha-canvas-v3');
+  const { challenges: rpcChallenges } = usePlebbitRpcSettings().plebbitRpcSettings || {};
+  const challengeNames = Object.keys(rpcChallenges || {});
+  const defaultChallengeName: string | undefined = challenges?.['captcha-canvas-v3'] ? 'captcha-canvas-v3' : challengeNames[0];
+  const defaultChallengeSettings = useChallengeSettings(defaultChallengeName);
+  const defaultChallengeOptions = useChallengesOptions()[defaultChallengeName];
+
+  const setDefaultChallenge = useCallback(() => {
+    if (defaultChallengeSettings && defaultChallengeName && !settings?.challenges?.length) {
+      const defaultChallenge = {
+        ...defaultChallengeSettings,
+        name: defaultChallengeName,
+        options: defaultChallengeOptions,
+      };
+
+      if (!settings?.challenges?.length) {
+        setSubplebbitSettingsStore({
+          settings: {
+            ...settings,
+            challenges: [defaultChallenge],
+          },
+        });
+      }
+    }
+  }, [defaultChallengeSettings, defaultChallengeName, defaultChallengeOptions, setSubplebbitSettingsStore, settings]);
 
   useEffect(() => {
-    if (isInCreateSubplebbitView && defaultChallengeSettings) {
-      const defaultChallenge = {
-        ...(defaultChallengeSettings && typeof defaultChallengeSettings === 'object' ? defaultChallengeSettings : {}),
-        name: 'captcha-canvas-v3',
-        options: {
-          characters: '6',
-          height: '100',
-          width: '300',
-          colors: '#32cf7e',
-        },
-      };
-      resetSubplebbitSettingsStore();
-      setSubplebbitSettingsStore({
-        settings: {
-          challenges: [defaultChallenge],
-        },
-      });
+    if (isInCreateSubplebbitView) {
+      setDefaultChallenge();
     }
-  }, [isInCreateSubplebbitView, defaultChallengeSettings, resetSubplebbitSettingsStore, setSubplebbitSettingsStore]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isInCreateSubplebbitView]);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -878,9 +902,9 @@ const SubplebbitSettings = () => {
   const documentTitle = useMemo(() => {
     let title;
     if (isInSubplebbitSettingsView) {
-      title = _.startCase(t('community_settings'));
+      title = _.startCase(t('community_settings', { interpolation: { escapeValue: false } }));
     } else if (isInCreateSubplebbitView) {
-      title = _.startCase(t('create_community'));
+      title = _.startCase(t('create_community', { interpolation: { escapeValue: false } }));
     }
     return `${title} - Seedit`;
   }, [isInCreateSubplebbitView, isInSubplebbitSettingsView, t]);
@@ -889,6 +913,14 @@ const SubplebbitSettings = () => {
     document.title = documentTitle;
   }, [documentTitle]);
 
+  if (!hasLoaded && !isInCreateSubplebbitView) {
+    return (
+      <div className={styles.loading}>
+        <LoadingEllipsis string={t('loading')} />
+      </div>
+    );
+  }
+
   return (
     <div className={styles.content}>
       {!isInCreateSubplebbitView && (
@@ -896,7 +928,6 @@ const SubplebbitSettings = () => {
           <Sidebar subplebbit={subplebbit} />
         </div>
       )}
-      {/* subplebbit.settings is private, only shows to the sub owner */}
       {isReadOnly && <div className={styles.infobar}>{t('owner_settings_notice')}</div>}
       <Title isReadOnly={isReadOnly} />
       <Description isReadOnly={isReadOnly} />
@@ -904,7 +935,9 @@ const SubplebbitSettings = () => {
       <Logo isReadOnly={isReadOnly} />
       <Rules isReadOnly={isReadOnly} />
       <Moderators isReadOnly={isReadOnly} />
-      <Challenges isReadOnly={isReadOnly} readOnlyChallenges={subplebbit?.challenges} />
+      {!isInCreateSubplebbitView && (
+        <Challenges isReadOnly={isReadOnly} readOnlyChallenges={subplebbit?.challenges} challengeNames={challengeNames} challengesSettings={rpcChallenges} />
+      )}
       {!isInCreateSubplebbitView && <JSONSettings isReadOnly={isReadOnly} />}
       <div className={styles.saveOptions}>
         {!isInCreateSubplebbitView && !isReadOnly && (

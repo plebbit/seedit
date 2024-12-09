@@ -326,5 +326,9 @@
   "hide_avatars_from_replies": "Skrýt avatary v odpovědích",
   "yes": "ano",
   "no": "ne",
-  "are_you_sure": "Jste si jistí?"
+  "are_you_sure": "Jste si jistí?",
+  "a_short_title": "Krátký název pro vaši komunitu",
+  "anti_spam_challenges": "Anti-spam výzvy",
+  "anti_spam_challenges_subtitle": "Vyberte jednu nebo více výzev k prevenci spamu",
+  "add_a_challenge": "Přidat výzvu"
 }

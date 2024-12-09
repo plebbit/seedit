@@ -176,7 +176,7 @@
   "moderator": "Moderatore",
   "description": "Descrizione",
   "rules": "Regole",
-  "challenge": "Test",
+  "challenge": "challenge anti-spam",
   "settings": "Impostazioni",
   "save_options": "Salva opzioni",
   "logo": "Logo",
@@ -217,7 +217,7 @@
   "preview": "anteprima",
   "shown_in_sidebar": "mostrato nella barra laterale della tua comunità",
   "community_logo_info": "imposta un logo di comunità utilizzando il suo link diretto all'immagine (che termina in .jpg, .png)",
-  "moderators_setting_info": "lascia che altri utenti moderino e pubblichino senza sfide",
+  "moderators_setting_info": "lascia che altri utenti moderino e pubblichino senza challenge",
   "vote": "vota",
   "passing": "in approvazione",
   "rejecting": "in rifiuto",
@@ -326,5 +326,9 @@
   "hide_avatars_from_replies": "Nascondi avatar da commenti",
   "yes": "sì",
   "no": "no",
-  "are_you_sure": "Sei sicuro?"
+  "are_you_sure": "Sei sicuro?",
+  "a_short_title": "Un titolo breve per la tua comunità",
+  "anti_spam_challenges": "challenge anti-spam",
+  "anti_spam_challenges_subtitle": "Scegli una o più challenge per prevenire lo spam",
+  "add_a_challenge": "Aggiungi un challenge"
 }

@@ -326,5 +326,9 @@
   "hide_avatars_from_replies": "Avatare in Antworten ausblenden",
   "yes": "ja",
   "no": "nein",
-  "are_you_sure": "Bist du sicher?"
+  "are_you_sure": "Bist du sicher?",
+  "a_short_title": "Ein kurzer Titel für deine Gemeinschaft",
+  "anti_spam_challenges": "Anti-Spam-Herausforderungen",
+  "anti_spam_challenges_subtitle": "Wählen Sie eine oder mehrere Herausforderungen zur Vermeidung von Spam",
+  "add_a_challenge": "Herausforderung hinzufügen"
 }
