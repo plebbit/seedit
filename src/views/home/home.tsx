@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { Virtuoso, VirtuosoHandle, StateSnapshot } from 'react-virtuoso';
 import { useFeed } from '@plebbit/plebbit-react-hooks';
@@ -43,15 +43,6 @@ const Home = () => {
 
   const currentTimeFilterName = params.timeFilterName || timeFilterName;
 
-  const [showMorePostsSuggestion, setShowMorePostsSuggestion] = useState(false);
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setShowMorePostsSuggestion(true);
-    }, 5000);
-
-    return () => clearTimeout(timer);
-  }, []);
-
   const Footer = () => {
     let footerContent;
     if (feed.length === 0) {
@@ -70,7 +61,6 @@ const Home = () => {
               />
             </div>
           ) : (
-            showMorePostsSuggestion &&
             monthlyFeed.length > feed.length &&
             (weeklyFeed.length > feed.length ? (
               <div className={styles.morePostsSuggestion}>

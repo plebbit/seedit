@@ -1,3 +1,14 @@
+## [0.2.4](https://github.com/plebbit/seedit/compare/v0.2.3...v0.2.4) (2024-12-09)
+
+
+### Bug Fixes
+
+* **electron:** auto restart script more reliable ([97221d6](https://github.com/plebbit/seedit/commit/97221d665d128b04eeb6a6847e1e94e29332f9f7))
+* **electron:** ipfs proxy should have error status code ([c66d454](https://github.com/plebbit/seedit/commit/c66d45437356befee8296af4b361c253c486ce26))
+* **subplebbit settings:** editing subplebbit challenge wouldn't work, fix loading state of settings, remove useless challenge setting when creating a sub, improve translations ([654b427](https://github.com/plebbit/seedit/commit/654b4277d8dfc91b8501eaffd3549c1580f72fa7))
+
+
+
 ## [0.2.3](https://github.com/plebbit/seedit/compare/v0.2.2...v0.2.3) (2024-12-06)
 
 
