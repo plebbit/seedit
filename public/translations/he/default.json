@@ -326,5 +326,9 @@
   "hide_avatars_from_replies": "הסתרת תמונות פרופיל בתשובות",
   "yes": "כן",
   "no": "לא",
-  "are_you_sure": "האם אתה בטוח?"
+  "are_you_sure": "האם אתה בטוח?",
+  "a_short_title": "כותרת קצרה עבור הקהילה שלך",
+  "anti_spam_challenges": "אתגרים נגד ספאם",
+  "anti_spam_challenges_subtitle": "בחר אתגר אחד או יותר כדי למנוע דואר זבל",
+  "add_a_challenge": "הוסף אתגר"
 }

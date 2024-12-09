@@ -326,5 +326,9 @@
   "hide_avatars_from_replies": "تصاویر پروفایل را از پاسخ‌ها پنهان کن",
   "yes": "بله",
   "no": "نه",
-  "are_you_sure": "آیا مطمئن هستید؟"
+  "are_you_sure": "آیا مطمئن هستید؟",
+  "a_short_title": "یک عنوان کوتاه برای جامعه شما",
+  "anti_spam_challenges": "چالش‌های ضد هرزنامه",
+  "anti_spam_challenges_subtitle": "یک یا چند چالش برای جلوگیری از هرزنامه انتخاب کنید",
+  "add_a_challenge": "یک چالش اضافه کنید"
 }

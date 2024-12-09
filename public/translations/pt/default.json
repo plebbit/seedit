@@ -326,5 +326,9 @@
   "hide_avatars_from_replies": "Esconder avatares das respostas",
   "yes": "sim",
   "no": "não",
-  "are_you_sure": "Tem certeza?"
+  "are_you_sure": "Tem certeza?",
+  "a_short_title": "Um título curto para sua comunidade",
+  "anti_spam_challenges": "Desafios anti-spam",
+  "anti_spam_challenges_subtitle": "Escolha um ou mais desafios para evitar spam",
+  "add_a_challenge": "Adicionar um desafio"
 }

@@ -326,5 +326,9 @@
   "hide_avatars_from_replies": "Сховати аватари в відповідях",
   "yes": "так",
   "no": "ні",
-  "are_you_sure": "Ви впевнені?"
+  "are_you_sure": "Ви впевнені?",
+  "a_short_title": "Короткий заголовок для вашої спільноти",
+  "anti_spam_challenges": "Антиспам виклики",
+  "anti_spam_challenges_subtitle": "Виберіть одне або кілька завдань для запобігання спаму",
+  "add_a_challenge": "Додати завдання"
 }

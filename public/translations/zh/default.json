@@ -326,5 +326,9 @@
   "hide_avatars_from_replies": "隐藏回复中的头像",
   "yes": "是的",
   "no": "不是",
-  "are_you_sure": "你确定吗？"
+  "are_you_sure": "你确定吗？",
+  "a_short_title": "为您的社区提供一个简短的标题",
+  "anti_spam_challenges": "反垃圾邮件挑战",
+  "anti_spam_challenges_subtitle": "选择一个或多个挑战来防止垃圾邮件",
+  "add_a_challenge": "添加一个挑战"
 }

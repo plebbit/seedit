@@ -326,5 +326,9 @@
   "hide_avatars_from_replies": "उत्तरांमधून अवतार लपवा",
   "yes": "होय",
   "no": "नाही",
-  "are_you_sure": "तुम्हाला खात्री आहे का?"
+  "are_you_sure": "तुम्हाला खात्री आहे का?",
+  "a_short_title": "तुमच्या समुदायासाठी एक छोटा शीर्षक",
+  "anti_spam_challenges": "ॲंटी-स्पॅम चॅलेंजेस",
+  "anti_spam_challenges_subtitle": "स्पॅम रोखण्यासाठी एक किंवा अधिक आव्हाने निवडा",
+  "add_a_challenge": "एक आव्हान जोडा"
 }

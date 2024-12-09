@@ -326,5 +326,9 @@
   "hide_avatars_from_replies": "Yanıtlardan avatarları gizle",
   "yes": "evet",
   "no": "hayır",
-  "are_you_sure": "Emin misin?"
+  "are_you_sure": "Emin misin?",
+  "a_short_title": "Topluluğunuz için kısa bir başlık",
+  "anti_spam_challenges": "Anti-spam zorlukları",
+  "anti_spam_challenges_subtitle": "Spam önlemek için bir veya daha fazla zorluk seçin",
+  "add_a_challenge": "Bir zorluk ekle"
 }

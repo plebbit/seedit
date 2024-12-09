@@ -326,5 +326,9 @@
   "hide_avatars_from_replies": "Sembunyikan avatar dari balasan",
   "yes": "iya",
   "no": "tidak",
-  "are_you_sure": "Apakah Anda yakin?"
+  "are_you_sure": "Apakah Anda yakin?",
+  "a_short_title": "Judul singkat untuk komunitas Anda",
+  "anti_spam_challenges": "Tantangan anti-spam",
+  "anti_spam_challenges_subtitle": "Pilih satu atau lebih tantangan untuk mencegah spam",
+  "add_a_challenge": "Tambahkan tantangan"
 }

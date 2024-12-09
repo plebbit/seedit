@@ -326,5 +326,9 @@
   "hide_avatars_from_replies": "Rejtse el az avatarokat a válaszokból",
   "yes": "igen",
   "no": "nem",
-  "are_you_sure": "Biztos vagy benne?"
+  "are_you_sure": "Biztos vagy benne?",
+  "a_short_title": "Egy rövid cím a közösségednek",
+  "anti_spam_challenges": "Anti-spam kihívások",
+  "anti_spam_challenges_subtitle": "Válasszon egy vagy több kihívást a spam megelőzésére",
+  "add_a_challenge": "Hozzáad egy kihívást"
 }

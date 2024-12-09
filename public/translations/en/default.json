@@ -239,7 +239,7 @@
   "create_community_not_available": "Not yet available on web. You can create a community using the desktop app, download it here: {{desktopLink}}. If you are comfortable with the command line, check out: {{cliLink}}",
   "no_media_found": "No media found",
   "no_image_found": "No image found",
-  "warning_spam": "Warning: no challenge selected, community is vulnerable to spam attacks.",
+  "warning_spam": "Warning: no challenge selected, the community is vulnerable to spam attacks.",
   "hide_help": "Hide help",
   "formatting_help": "Formatting help",
   "you_see": "you see",
@@ -326,5 +326,9 @@
   "hide_avatars_from_replies": "Hide avatars from replies",
   "yes": "yes",
   "no": "no",
-  "are_you_sure": "Are you sure?"
+  "are_you_sure": "Are you sure?",
+  "a_short_title": "A short title for your community",
+  "anti_spam_challenges": "Anti-spam challenges",
+  "anti_spam_challenges_subtitle": "Choose one or more challenges to prevent spam",
+  "add_a_challenge": "Add a challenge"
 }
