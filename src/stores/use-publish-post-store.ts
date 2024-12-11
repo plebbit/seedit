@@ -30,9 +30,9 @@ const usePublishPostStore = create<SubmitState>((set) => ({
 
       if (subplebbitAddress !== undefined) nextState.subplebbitAddress = subplebbitAddress;
       if (title !== undefined) nextState.title = title;
-      if (content !== undefined) nextState.content = content;
-      if (link !== undefined) nextState.link = link;
-      if (spoiler !== undefined) nextState.spoiler = spoiler;
+      if (content !== undefined) nextState.content = content || undefined;
+      if (link !== undefined) nextState.link = link || undefined;
+      if (spoiler !== undefined) nextState.spoiler = spoiler || undefined;
 
       nextState.publishCommentOptions = {
         subplebbitAddress: nextState.subplebbitAddress,
