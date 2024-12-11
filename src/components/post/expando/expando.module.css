@@ -32,9 +32,14 @@
   line-height: 20px;
 }
 
-.mediaPreview {
-  overflow: auto;
+.expandoContent {
   position: relative;
+  display: inline-block;
+  max-width: 100%;
+}
+
+.mediaPreview {
+  display: inline-block;
 }
 
 .mediaPreview img {
@@ -57,10 +62,11 @@
 }
 
 .hideSpoiler {
-  width: calc(100% - 7px);
-  height: calc(100% - 12px);
-  border-radius: 7px;
   position: absolute;
+  width: calc(100% - 2px);
+  height: 100%;
+  top: 0;
+  left: 0;
   border: 1px solid var(--text-primary);
   background-color: black;
   color: black;

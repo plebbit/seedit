@@ -52,50 +52,52 @@ const Expando = ({
   }
 
   return (
-    <div
-      className={expanded ? styles.expando : styles.expandoHidden}
-      onClick={() => {
-        spoiler && !showSpoiler && setShowSpoiler(true);
-      }}
-    >
-      {spoiler && !showSpoiler && (
-        <>
-          <div className={styles.hideSpoiler} />
-          <span className={styles.showSpoilerButton}>{t('view_spoiler')}</span>
-        </>
-      )}
-      {link && !removed && commentMediaInfo?.type !== 'webpage' && (
-        <div className={styles.mediaPreview}>
-          <Link
-            to={link}
-            onClick={(e) => {
-              if (e.button === 0) {
-                e.preventDefault();
-                toggleExpanded && toggleExpanded();
-              }
-            }}
-          >
-            {mediaComponent}
-          </Link>
-        </div>
-      )}
-      {content && showContent && (
-        <div className={styles.usertext}>
-          <div className={styles.markdown}>
-            <Markdown content={content} />
-            {modEditReason && (
-              <p>
-                {t('mod_reason')}: {modEditReason}
-              </p>
-            )}
-            {authorEditReason && !(removed || deleted) && (
-              <p>
-                {t('edit')}: {authorEditReason}
-              </p>
-            )}
+    <div className={expanded ? styles.expando : styles.expandoHidden}>
+      <div
+        className={styles.expandoContent}
+        onClick={() => {
+          spoiler && !showSpoiler && setShowSpoiler(true);
+        }}
+      >
+        {spoiler && !showSpoiler && (
+          <>
+            <div className={styles.hideSpoiler} />
+            <span className={styles.showSpoilerButton}>{t('view_spoiler')}</span>
+          </>
+        )}
+        {link && !removed && commentMediaInfo?.type !== 'webpage' && (
+          <div className={styles.mediaPreview}>
+            <Link
+              to={link}
+              onClick={(e) => {
+                if (e.button === 0) {
+                  e.preventDefault();
+                  toggleExpanded && toggleExpanded();
+                }
+              }}
+            >
+              {mediaComponent}
+            </Link>
           </div>
-        </div>
-      )}
+        )}
+        {content && showContent && (
+          <div className={styles.usertext}>
+            <div className={styles.markdown}>
+              <Markdown content={content} />
+              {modEditReason && (
+                <p>
+                  {t('mod_reason')}: {modEditReason}
+                </p>
+              )}
+              {authorEditReason && !(removed || deleted) && (
+                <p>
+                  {t('edit')}: {authorEditReason}
+                </p>
+              )}
+            </div>
+          </div>
+        )}
+      </div>
     </div>
   );
 };

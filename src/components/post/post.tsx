@@ -295,7 +295,7 @@ const Post = ({ index, post = {} }: PostProps) => {
               deleted={deleted}
               removed={removed}
               showContent={true}
-              spoiler={spoiler}
+              spoiler={spoiler && (content || link)}
             />
           )}
         </div>
