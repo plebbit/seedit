@@ -59,7 +59,7 @@ const Expando = ({
           spoiler && !showSpoiler && setShowSpoiler(true);
         }}
       >
-        {spoiler && !showSpoiler && (
+        {spoiler && !showSpoiler && !(deleted || removed) && (
           <>
             <div className={styles.hideSpoiler} />
             <span className={styles.showSpoilerButton}>{t('view_spoiler')}</span>
