@@ -44,8 +44,8 @@ const Thumbnail = ({ cid, commentMediaInfo, expanded = false, isReply = false, l
     mediaComponent = <img src={commentMediaInfo.thumbnail} alt='' />;
   } else if (commentMediaInfo?.type === 'iframe') {
     mediaComponent = iframeThumbnail ? <img src={iframeThumbnail} alt='' /> : null;
-  } else if (commentMediaInfo?.type === 'gif' && gifFrameUrl) {
-    mediaComponent = <img src={gifFrameUrl} alt='' />;
+  } else if (commentMediaInfo?.type === 'gif') {
+    mediaComponent = <img src={gifFrameUrl || commentMediaInfo.url} alt='' />;
   }
 
   return (
