@@ -17,6 +17,19 @@
 .usertext {
   unicode-bidi: isolate;
   font-size: small;
+  width: 862px;
+}
+
+@media (max-width: 1200px) {
+  .usertext {
+    width: calc(100vw - 335px);
+  }
+}
+
+@media (max-width: 640px) {
+  .usertext {
+    width: 100%;
+  }
 }
 
 .markdown {
@@ -40,6 +53,22 @@
 
 .mediaPreview {
   display: inline-block;
+}
+
+@media (max-width: 1200px) {
+  .mediaPreview img,
+  .mediaPreview video,
+  .mediaPreview iframe {
+    max-width: calc(100vw - 335px) !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .mediaPreview img,
+  .mediaPreview video,
+  .mediaPreview iframe {
+    max-width: 100% !important;
+  }
 }
 
 .mediaPreview img {
