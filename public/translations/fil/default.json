@@ -46,7 +46,7 @@
   "all_comments": "Lahat ng {{count}} mga komento",
   "no_comments": "Walang komento (pa)",
   "reply_score_singular": "1 punto",
-  "reply_score_plural": "{{count}} punto",
+  "reply_score_plural": "{{score}} puntos",
   "removed": "Tinanggal",
   "one_comment": "1 komento",
   "submit_url_description": "i-embed ang media sa pamamagitan ng pag-post ng direktang link nito (nagtatapos sa .jpg, .gif, .mp4, atbp.)",

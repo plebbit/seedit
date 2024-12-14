@@ -46,7 +46,7 @@
   "all_comments": "جميع {{count}} التعليقات",
   "no_comments": "لا تعليقات (بعد)",
   "reply_score_singular": "1 نقطة",
-  "reply_score_plural": "{{count}} نقاط",
+  "reply_score_plural": "{{score}} نقطة",
   "removed": "تمت الإزالة",
   "one_comment": "1 تعليق",
   "submit_url_description": "قم بتضمين الوسائط عن طريق نشر الرابط المباشر (الذي ينتهي بـ .jpg، .gif، .mp4، إلخ)",

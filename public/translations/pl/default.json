@@ -46,7 +46,7 @@
   "all_comments": "Wszystkie {{count}} komentarze",
   "no_comments": "Brak komentarzy (jeszcze)",
   "reply_score_singular": "1 punkt",
-  "reply_score_plural": "{{count}} punkty",
+  "reply_score_plural": "{{score}} punkty",
   "removed": "Usunięto",
   "one_comment": "1 komentarz",
   "submit_url_description": "osadź media, publikując jego bezpośredni link (kończący się na .jpg, .gif, .mp4 itp.)",

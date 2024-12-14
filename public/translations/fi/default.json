@@ -46,7 +46,7 @@
   "all_comments": "Kaikki {{count}} kommentit",
   "no_comments": "Ei kommentteja (vielä)",
   "reply_score_singular": "1 piste",
-  "reply_score_plural": "{{count}} pistettä",
+  "reply_score_plural": "{{score}} pistettä",
   "removed": "Poistettu",
   "one_comment": "1 kommentti",
   "submit_url_description": "upota mediaa lähettämällä sen suora linkki (päättyy .jpg, .gif, .mp4, jne.)",

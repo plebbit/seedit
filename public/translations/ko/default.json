@@ -46,7 +46,7 @@
   "all_comments": "모든 {{count}} 댓글",
   "no_comments": "댓글 없음 (아직)",
   "reply_score_singular": "1 점",
-  "reply_score_plural": "{{count}} 점",
+  "reply_score_plural": "{{score}} 포인트",
   "removed": "제거됨",
   "one_comment": "1 댓글",
   "submit_url_description": "직접 링크를 게시하여 미디어 포함 (.jpg, .gif, .mp4 등으로 끝남)",

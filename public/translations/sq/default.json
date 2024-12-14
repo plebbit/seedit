@@ -46,7 +46,7 @@
   "all_comments": "Të gjitha {{count}} komentet",
   "no_comments": "Asnjë koment (ende)",
   "reply_score_singular": "1 pikë",
-  "reply_score_plural": "{{count}} pikë",
+  "reply_score_plural": "{{score}} pikë",
   "removed": "U hoq",
   "one_comment": "1 koment",
   "submit_url_description": "ngulit media duke postuar lidhjen e saj të drejtpërdrejtë (që përfundon në .jpg, .gif, .mp4, etj.)",

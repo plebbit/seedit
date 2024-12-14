@@ -46,7 +46,7 @@
   "all_comments": "Všechny {{count}} komentáře",
   "no_comments": "Žádné komentáře (zatím)",
   "reply_score_singular": "1 bod",
-  "reply_score_plural": "{{count}} body",
+  "reply_score_plural": "{{score}} bodů",
   "removed": "Odstraněno",
   "one_comment": "1 komentář",
   "submit_url_description": "vložte média zveřejněním přímého odkazu (končícího na .jpg, .gif, .mp4 atd.)",

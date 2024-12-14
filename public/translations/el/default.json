@@ -46,7 +46,7 @@
   "all_comments": "Όλα τα {{count}} σχόλια",
   "no_comments": "Κανένα σχόλιο (ακόμη)",
   "reply_score_singular": "1 βαθμός",
-  "reply_score_plural": "{{count}} βαθμοί",
+  "reply_score_plural": "{{score}} σημεία",
   "removed": "Αφαιρέθηκε",
   "one_comment": "1 σχόλιο",
   "submit_url_description": "ενσωματώστε πολυμέσα αναρτώντας τον άμεσο σύνδεσμό τους (τελειώνει σε .jpg, .gif, .mp4 κ.λπ.)",

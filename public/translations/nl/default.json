@@ -46,7 +46,7 @@
   "all_comments": "Alle {{count}} reacties",
   "no_comments": "Geen reacties (nog)",
   "reply_score_singular": "1 punt",
-  "reply_score_plural": "{{count}} punten",
+  "reply_score_plural": "{{score}} punten",
   "removed": "Verwijderd",
   "one_comment": "1 opmerking",
   "submit_url_description": "media insluiten door de directe link te posten (eindigend op .jpg, .gif, .mp4, etc.)",

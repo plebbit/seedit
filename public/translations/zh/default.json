@@ -46,7 +46,7 @@
   "all_comments": "全部 {{count}} 个评论",
   "no_comments": "暂无评论（还）",
   "reply_score_singular": "1 分",
-  "reply_score_plural": "{{count}} 分",
+  "reply_score_plural": "{{score}} 分",
   "removed": "已删除",
   "one_comment": "1 条评论",
   "submit_url_description": "通过发布其直接链接（以.jpg、.gif、.mp4等结尾）嵌入媒体",

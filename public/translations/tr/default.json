@@ -46,7 +46,7 @@
   "all_comments": "Tüm {{count}} yorumlar",
   "no_comments": "Yorum yok (henüz)",
   "reply_score_singular": "1 puan",
-  "reply_score_plural": "{{count}} puan",
+  "reply_score_plural": "{{score}} puan",
   "removed": "Kaldırıldı",
   "one_comment": "1 yorum",
   "submit_url_description": "medya ekleyin doğrudan bağlantısını göndererek (.jpg, .gif, .mp4 vb. ile biten)",

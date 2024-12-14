@@ -46,7 +46,7 @@
   "all_comments": "Всі {{count}} коментарі",
   "no_comments": "Немає коментарів (ще)",
   "reply_score_singular": "1 бал",
-  "reply_score_plural": "{{count}} бали",
+  "reply_score_plural": "{{score}} балів",
   "removed": "Видалено",
   "one_comment": "1 коментар",
   "submit_url_description": "вставте медіа, розмістивши його пряме посилання (закінчується на .jpg, .gif, .mp4 тощо)",

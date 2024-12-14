@@ -46,7 +46,7 @@
   "all_comments": "Alle {{count}} kommentare",
   "no_comments": "Keine kommentare (noch)",
   "reply_score_singular": "1 Punkt",
-  "reply_score_plural": "{{count}} Punkte",
+  "reply_score_plural": "{{score}} Punkte",
   "removed": "Entfernt",
   "one_comment": "1 Kommentar",
   "submit_url_description": "medien einbetten, indem Sie den direkten Link posten (endet auf .jpg, .gif, .mp4 usw.)",

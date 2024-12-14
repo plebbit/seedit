@@ -5,7 +5,7 @@ import { Comment, useAuthorAddress, useBlock, useComment, useEditedComment, useS
 import { useTranslation } from 'react-i18next';
 import { isAllView, isPostPageView, isProfileHiddenView, isSubplebbitView } from '../../lib/utils/view-utils';
 import { getHasThumbnail } from '../../lib/utils/media-utils';
-import { getPostScore } from '../../lib/utils/post-utils';
+import { getPostScore, formatScore } from '../../lib/utils/post-utils';
 import { getHostname } from '../../lib/utils/url-utils';
 import { getFormattedTimeAgo, formatLocalizedUTCTimestamp } from '../../lib/utils/time-utils';
 import { useCommentMediaInfo } from '../../hooks/use-comment-media-info';
@@ -172,24 +172,24 @@ const Post = ({ index, post = {} }: PostProps) => {
                 <div className={styles.arrowWrapper}>
                   <div className={`${styles.arrowCommon} ${upvoted ? styles.upvoted : styles.arrowUp}`} onClick={() => cid && upvote()} />
                 </div>
-                <div className={styles.score}>{postScore}</div>
+                <div className={styles.score}>{formatScore(postScore)}</div>
                 <div className={styles.arrowWrapper}>
                   <div className={`${styles.arrowCommon} ${downvoted ? styles.downvoted : styles.arrowDown}`} onClick={() => cid && downvote()} />
                 </div>
               </div>
-              {hasThumbnail && (!isInPostPageView || commentMediaInfo?.type === 'webpage') && !spoiler && (
-                <span className={removed ? styles.blur : ''}>
-                  <Thumbnail
-                    cid={cid}
-                    commentMediaInfo={commentMediaInfo}
-                    isReply={false}
-                    link={link}
-                    linkHeight={linkHeight}
-                    linkWidth={linkWidth}
-                    subplebbitAddress={subplebbitAddress}
-                  />
-                </span>
-              )}
+              <span className={removed ? styles.blur : ''}>
+                <Thumbnail
+                  cid={cid}
+                  commentMediaInfo={commentMediaInfo}
+                  isReply={false}
+                  isLink={!hasThumbnail && link}
+                  isText={!hasThumbnail && content?.trim().length > 0}
+                  link={link}
+                  linkHeight={linkHeight}
+                  linkWidth={linkWidth}
+                  subplebbitAddress={subplebbitAddress}
+                />
+              </span>
             </div>
             <div className={styles.entry}>
               <div className={styles.topMatter}>
@@ -219,7 +219,7 @@ const Post = ({ index, post = {} }: PostProps) => {
                     </span>
                   )}
                 </p>
-                {!isInPostPageView && (!(commentMediaInfo?.type === 'webpage') || (commentMediaInfo?.type === 'webpage' && content?.trim().length > 0)) && (
+                {(!(commentMediaInfo?.type === 'webpage') || (commentMediaInfo?.type === 'webpage' && content?.trim().length > 0)) && (
                   <ExpandButton
                     commentMediaInfo={commentMediaInfo}
                     content={content}
