@@ -9,6 +9,7 @@ import Post from '../../components/post';
 import Sidebar from '../../components/sidebar';
 import useFeedStateString from '../../hooks/use-feed-state-string';
 import useTimeFilter from '../../hooks/use-time-filter';
+import { usePinnedPostsStore } from '../../stores/use-pinned-posts-store';
 
 const lastVirtuosoStates: { [key: string]: StateSnapshot } = {};
 
@@ -152,6 +153,14 @@ const Subplebbit = () => {
   }, [subplebbitAddress, sortType, timeFilterName]);
 
   const lastVirtuosoState = lastVirtuosoStates?.[subplebbitAddress + sortType + timeFilterName];
+
+  const { setPinnedPostsCount } = usePinnedPostsStore();
+  useEffect(() => {
+    if (feed) {
+      const pinnedCount = feed.filter((post) => post.pinned).length;
+      setPinnedPostsCount(pinnedCount);
+    }
+  }, [feed, setPinnedPostsCount]);
 
   return (
     <div className={styles.content}>

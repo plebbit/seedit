@@ -18,6 +18,8 @@ import Thumbnail from './thumbnail';
 import useDownvote from '../../hooks/use-downvote';
 import useUpvote from '../../hooks/use-upvote';
 import _ from 'lodash';
+import useIsMobile from '../../hooks/use-is-mobile';
+import { usePinnedPostsStore } from '../../stores/use-pinned-posts-store';
 
 interface PostAuthorProps {
   authorAddress: string;
@@ -156,6 +158,10 @@ const Post = ({ index, post = {} }: PostProps) => {
     }
   };
 
+  const isMobile = useIsMobile();
+  const pinnedPostsCount = usePinnedPostsStore((state) => state.pinnedPostsCount);
+  const rank = (index ?? 0) + 1 - pinnedPostsCount;
+
   return (
     <div className={styles.content} key={index}>
       <div className={isLastClicked ? styles.lastClicked : ''}>
@@ -167,6 +173,7 @@ const Post = ({ index, post = {} }: PostProps) => {
         </div>
         <div className={`${styles.container} ${blocked && !isInProfileHiddenView ? styles.hidden : styles.visible}`}>
           <div className={styles.row}>
+            {!isMobile && <div className={styles.rank}>{pinned ? undefined : rank}</div>}
             <div className={styles.leftcol}>
               <div className={styles.midcol}>
                 <div className={styles.arrowWrapper}>

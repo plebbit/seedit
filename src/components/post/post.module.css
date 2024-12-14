@@ -13,6 +13,17 @@
   flex-shrink: 0;
 }
 
+.rank {
+  padding-right: 3px;
+  padding-left: 3px;
+  min-width: 2.2ex;
+  margin-top: 15px;
+  color: #c6c6c6;
+  font-family: arial;
+  font-size: medium;
+  text-align: right;
+}
+
 .midcol {
   width: 37px;
   font-weight: bold;
