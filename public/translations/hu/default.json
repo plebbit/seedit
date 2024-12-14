@@ -46,7 +46,7 @@
   "all_comments": "Mind a {{count}} hozzászólások",
   "no_comments": "Nincsenek hozzászólások (még)",
   "reply_score_singular": "1 pont",
-  "reply_score_plural": "{{count}} pont",
+  "reply_score_plural": "{{score}} pont",
   "removed": "Eltávolítva",
   "one_comment": "1 megjegyzés",
   "submit_url_description": "ágyazza be a médiát a közvetlen linkjének közzétételével (vége .jpg, .gif, .mp4 stb.)",

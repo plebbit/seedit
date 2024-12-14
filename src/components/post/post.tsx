@@ -3,9 +3,9 @@ import styles from './post.module.css';
 import { Link, useLocation, useParams } from 'react-router-dom';
 import { Comment, useAuthorAddress, useBlock, useComment, useEditedComment, useSubplebbit, useSubscribe } from '@plebbit/plebbit-react-hooks';
 import { useTranslation } from 'react-i18next';
-import { isAllView, isPostPageView, isProfileHiddenView, isSubplebbitView } from '../../lib/utils/view-utils';
+import { isAllView, isHomeView, isPostPageView, isProfileHiddenView, isSubplebbitView } from '../../lib/utils/view-utils';
 import { getHasThumbnail } from '../../lib/utils/media-utils';
-import { getPostScore } from '../../lib/utils/post-utils';
+import { getPostScore, formatScore } from '../../lib/utils/post-utils';
 import { getHostname } from '../../lib/utils/url-utils';
 import { getFormattedTimeAgo, formatLocalizedUTCTimestamp } from '../../lib/utils/time-utils';
 import { useCommentMediaInfo } from '../../hooks/use-comment-media-info';
@@ -18,6 +18,8 @@ import Thumbnail from './thumbnail';
 import useDownvote from '../../hooks/use-downvote';
 import useUpvote from '../../hooks/use-upvote';
 import _ from 'lodash';
+import useIsMobile from '../../hooks/use-is-mobile';
+import { usePinnedPostsStore } from '../../stores/use-pinned-posts-store';
 
 interface PostAuthorProps {
   authorAddress: string;
@@ -119,6 +121,7 @@ const Post = ({ index, post = {} }: PostProps) => {
   const isInAllView = isAllView(location.pathname);
   const isInPostPageView = isPostPageView(location.pathname, params);
   const isInProfileHiddenView = isProfileHiddenView(location.pathname);
+  const isInHomeView = isHomeView(location.pathname);
   const isInSubplebbitView = isSubplebbitView(location.pathname, params);
 
   const commentMediaInfo = useCommentMediaInfo(post);
@@ -156,6 +159,13 @@ const Post = ({ index, post = {} }: PostProps) => {
     }
   };
 
+  const isMobile = useIsMobile();
+  const pinnedPostsCount = usePinnedPostsStore((state) => state.pinnedPostsCount);
+  let rank = (index ?? 0) + 1;
+  if (!isInHomeView) {
+    rank = rank - pinnedPostsCount;
+  }
+
   return (
     <div className={styles.content} key={index}>
       <div className={isLastClicked ? styles.lastClicked : ''}>
@@ -167,29 +177,31 @@ const Post = ({ index, post = {} }: PostProps) => {
         </div>
         <div className={`${styles.container} ${blocked && !isInProfileHiddenView ? styles.hidden : styles.visible}`}>
           <div className={styles.row}>
+            {!isMobile && <div className={styles.rank}>{pinned ? undefined : rank}</div>}
             <div className={styles.leftcol}>
               <div className={styles.midcol}>
                 <div className={styles.arrowWrapper}>
                   <div className={`${styles.arrowCommon} ${upvoted ? styles.upvoted : styles.arrowUp}`} onClick={() => cid && upvote()} />
                 </div>
-                <div className={styles.score}>{postScore}</div>
+                <div className={styles.score}>{formatScore(postScore)}</div>
                 <div className={styles.arrowWrapper}>
                   <div className={`${styles.arrowCommon} ${downvoted ? styles.downvoted : styles.arrowDown}`} onClick={() => cid && downvote()} />
                 </div>
               </div>
-              {hasThumbnail && (!isInPostPageView || commentMediaInfo?.type === 'webpage') && !spoiler && (
-                <span className={removed ? styles.blur : ''}>
-                  <Thumbnail
-                    cid={cid}
-                    commentMediaInfo={commentMediaInfo}
-                    isReply={false}
-                    link={link}
-                    linkHeight={linkHeight}
-                    linkWidth={linkWidth}
-                    subplebbitAddress={subplebbitAddress}
-                  />
-                </span>
-              )}
+              <span className={removed ? styles.blur : ''}>
+                <Thumbnail
+                  cid={cid}
+                  commentMediaInfo={commentMediaInfo}
+                  isReply={false}
+                  isLink={!hasThumbnail && link}
+                  isSpoiler={spoiler}
+                  isText={!hasThumbnail && content?.trim().length > 0}
+                  link={link}
+                  linkHeight={linkHeight}
+                  linkWidth={linkWidth}
+                  subplebbitAddress={subplebbitAddress}
+                />
+              </span>
             </div>
             <div className={styles.entry}>
               <div className={styles.topMatter}>
@@ -219,7 +231,7 @@ const Post = ({ index, post = {} }: PostProps) => {
                     </span>
                   )}
                 </p>
-                {!isInPostPageView && (!(commentMediaInfo?.type === 'webpage') || (commentMediaInfo?.type === 'webpage' && content?.trim().length > 0)) && (
+                {(!(commentMediaInfo?.type === 'webpage') || (commentMediaInfo?.type === 'webpage' && content?.trim().length > 0)) && (
                   <ExpandButton
                     commentMediaInfo={commentMediaInfo}
                     content={content}
@@ -245,7 +257,7 @@ const Post = ({ index, post = {} }: PostProps) => {
                   />
                   {!isInSubplebbitView && (
                     <>
-                       {t('post_to')}{' '}
+                       {t('post_to')}
                       <span className={styles.subscribeHoverGroup}>
                         {isInAllView && (!subscribed || (subscribed && hasClickedSubscribe)) && (
                           <span className={styles.subscribeButtonWrapper}>
@@ -295,7 +307,7 @@ const Post = ({ index, post = {} }: PostProps) => {
               deleted={deleted}
               removed={removed}
               showContent={true}
-              spoiler={spoiler}
+              spoiler={spoiler && (content || link)}
             />
           )}
         </div>

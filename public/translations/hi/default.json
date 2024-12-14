@@ -46,7 +46,7 @@
   "all_comments": "सभी {{count}} टिप्पणियां",
   "no_comments": "कोई टिप्पणी नहीं (अब तक)",
   "reply_score_singular": "1 अंक",
-  "reply_score_plural": "{{count}} अंक",
+  "reply_score_plural": "{{score}} अंक",
   "removed": "हटा दिया गया",
   "one_comment": "1 टिप्पणी",
   "submit_url_description": ".jpg, .gif, .mp4 आदि में समाप्त होने वाले सीधे लिंक को पोस्ट करके मीडिया एम्बेड करें",

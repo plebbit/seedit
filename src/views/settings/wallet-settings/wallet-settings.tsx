@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { Fragment, useState } from 'react';
 import { Account, setAccount, useAccount } from '@plebbit/plebbit-react-hooks';
 import styles from './wallet-settings.module.css';
 import { Trans, useTranslation } from 'react-i18next';
@@ -93,7 +93,7 @@ const CryptoWalletsForm = ({ account }: { account: Account | undefined }) => {
   };
 
   const walletsInputs = walletsArray.map((wallet, index) => (
-    <>
+    <Fragment key={index}>
       <div className={styles.walletTitle}>
         <Trans i18nKey='wallet_number' values={{ index: index + 1 }} />
       </div>
@@ -131,7 +131,7 @@ const CryptoWalletsForm = ({ account }: { account: Account | undefined }) => {
           </div>
         </div>
       </div>
-    </>
+    </Fragment>
   ));
 
   return (

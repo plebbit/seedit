@@ -25,6 +25,7 @@ import Plebbit from '@plebbit/plebbit-js/dist/browser/index.js';
 import Markdown from '../markdown';
 import { getHostname } from '../../lib/utils/url-utils';
 import useAvatarVisibilityStore from '../../stores/use-avatar-visibility-store';
+import { formatScore, getReplyScore } from '../../lib/utils/post-utils';
 
 interface ReplyAuthorProps {
   address: string;
@@ -90,10 +91,11 @@ interface ReplyMediaProps {
   link: string;
   linkHeight: number;
   linkWidth: number;
+  spoiler: boolean;
   toggleExpanded: () => void;
 }
 
-const ReplyMedia = ({ commentMediaInfo, content, expanded, hasThumbnail, link, linkHeight, linkWidth, toggleExpanded }: ReplyMediaProps) => {
+const ReplyMedia = ({ commentMediaInfo, content, expanded, hasThumbnail, link, linkHeight, linkWidth, spoiler, toggleExpanded }: ReplyMediaProps) => {
   const { type } = commentMediaInfo || {};
   return (
     <>
@@ -101,7 +103,10 @@ const ReplyMedia = ({ commentMediaInfo, content, expanded, hasThumbnail, link, l
         <Thumbnail
           commentMediaInfo={commentMediaInfo}
           expanded={expanded}
+          isLink={!hasThumbnail && link}
           isReply={true}
+          isSpoiler={spoiler}
+          isText={!hasThumbnail && content?.trim().length > 0}
           link={link}
           linkHeight={linkHeight}
           linkWidth={linkWidth}
@@ -306,11 +311,9 @@ const Reply = ({ cidOfReplyWithContext, depth = 0, isSingleComment, isSingleRepl
 
   const { t, i18n } = useTranslation();
   const { language } = i18n;
-  let score = upvoteCount - downvoteCount + 1 || 1;
-  if ((upvoteCount === 0 && downvoteCount === 0) || (upvoteCount === 1 && downvoteCount === 0)) {
-    score = 1;
-  }
-  const scoreString = score === 1 ? t('reply_score_singular') : t('reply_score_plural', { count: score });
+  const score = getReplyScore(upvoteCount, downvoteCount);
+  const formattedScore = formatScore(score);
+  const scoreString = score === 1 ? t('reply_score_singular') : t('reply_score_plural', { score: formattedScore });
   const stateString = useStateString(reply);
   const loadingString = stateString && <span className={styles.stateString}>{stateString !== 'Failed' ? <LoadingEllipsis string={stateString} /> : ''}</span>;
 
@@ -426,6 +429,7 @@ const Reply = ({ cidOfReplyWithContext, depth = 0, isSingleComment, isSingleRepl
                     link={link}
                     linkHeight={linkHeight}
                     linkWidth={linkWidth}
+                    spoiler={spoiler}
                     toggleExpanded={toggleExpanded}
                   />
                 )}

@@ -46,7 +46,7 @@
   "all_comments": "すべての{{count}}コメント",
   "no_comments": "コメントはありません（まだ）",
   "reply_score_singular": "1 ポイント",
-  "reply_score_plural": "{{count}} ポイント",
+  "reply_score_plural": "{{score}} ポイント",
   "removed": "削除されました",
   "one_comment": "1つのコメント",
   "submit_url_description": "直接のリンク（.jpg、.gif、.mp4などで終わる）を投稿してメディアを埋め込む",

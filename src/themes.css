@@ -62,6 +62,9 @@
   --text-info: #757575;
   --text-markdown: #f0f0f0;
   --text-primary: #c7c7c7;
+  --thumbnail-icon-text: url('/public/assets/thumbnail-icon-text-dark.png');
+  --thumbnail-icon-link: url('/public/assets/thumbnail-icon-link-dark.png');
+  --thumbnail-icon-spoiler: url('/public/assets/thumbnail-icon-spoiler-dark.png');
   --yellow: rgb(200, 171, 0);
   --yellow-box-background: rgb(56, 45, 0);
   --yellow-box-contrast: rgb(163, 130, 0);
@@ -134,6 +137,9 @@
   --text-info: #888;
   --text-markdown: #222222;
   --text-primary: #369;
+  --thumbnail-icon-text: url('/public/assets/thumbnail-icon-text.png');
+  --thumbnail-icon-link: url('/public/assets/thumbnail-icon-link.png');
+  --thumbnail-icon-spoiler: url('/public/assets/thumbnail-icon-spoiler.png');
   --yellow: goldenrod;
   --yellow-box-background: #fff7d7;
   --yellow-box-contrast: #ffd634;

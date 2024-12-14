@@ -46,7 +46,7 @@
   "all_comments": "সব {{count}} মন্তব্য",
   "no_comments": "কোনো মন্তব্য নেই (এখনো)",
   "reply_score_singular": "1 পয়েন্ট",
-  "reply_score_plural": "{{count}} পয়েন্ট",
+  "reply_score_plural": "{{score}} পয়েন্ট",
   "removed": "অপসারণ করা হয়েছে",
   "one_comment": "1 মন্তব্য",
   "submit_url_description": ".jpg, .gif, .mp4 ইত্যাদি দ্বারা সরাসরি লিঙ্ক পোস্ট করে মিডিয়া এম্বেড করুন",

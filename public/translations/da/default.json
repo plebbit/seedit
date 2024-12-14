@@ -46,7 +46,7 @@
   "all_comments": "Alle {{count}} kommentarer",
   "no_comments": "Ingen kommentarer (endnu)",
   "reply_score_singular": "1 point",
-  "reply_score_plural": "{{count}} point",
+  "reply_score_plural": "{{score}} point",
   "removed": "Fjernet",
   "one_comment": "1 kommentar",
   "submit_url_description": "integrer medier ved at poste dens direkte link (slutter med .jpg, .gif, .mp4 osv.)",

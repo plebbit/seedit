@@ -46,7 +46,7 @@
   "all_comments": "all {{count}} comments",
   "no_comments": "no comments (yet)",
   "reply_score_singular": "1 point",
-  "reply_score_plural": "{{count}} points",
+  "reply_score_plural": "{{score}} points",
   "removed": "Removed",
   "one_comment": "1 comment",
   "submit_url_description": "embed media by posting its direct link (ending in .jpg, .gif, .mp4, etc)",

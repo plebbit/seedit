@@ -17,6 +17,19 @@
 .usertext {
   unicode-bidi: isolate;
   font-size: small;
+  width: 862px;
+}
+
+@media (max-width: 1200px) {
+  .usertext {
+    width: calc(100vw - 335px);
+  }
+}
+
+@media (max-width: 640px) {
+  .usertext {
+    width: 100%;
+  }
 }
 
 .markdown {
@@ -32,9 +45,36 @@
   line-height: 20px;
 }
 
-.mediaPreview {
-  overflow: auto;
+.expandoContent {
   position: relative;
+  display: inline-block;
+  max-width: 100%;
+}
+
+@media (max-width: 640px) {
+  .expandoContent {
+    display: block;
+  }
+}
+
+.mediaPreview {
+  display: inline-block;
+}
+
+@media (max-width: 1200px) {
+  .mediaPreview img,
+  .mediaPreview video,
+  .mediaPreview iframe {
+    max-width: calc(100vw - 335px) !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .mediaPreview img,
+  .mediaPreview video,
+  .mediaPreview iframe {
+    max-width: 100% !important;
+  }
 }
 
 .mediaPreview img {
@@ -57,10 +97,11 @@
 }
 
 .hideSpoiler {
-  width: calc(100% - 7px);
-  height: calc(100% - 12px);
-  border-radius: 7px;
   position: absolute;
+  width: calc(100% - 2px);
+  height: 100%;
+  top: 0;
+  left: 0;
   border: 1px solid var(--text-primary);
   background-color: black;
   color: black;

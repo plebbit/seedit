@@ -46,7 +46,7 @@
   "all_comments": "تمام {{count}} تبصرے",
   "no_comments": "کوئی تبصرہ نہیں (ابھی)",
   "reply_score_singular": "1 پوائنٹ",
-  "reply_score_plural": "{{count}} پوائنٹس",
+  "reply_score_plural": "{{score}} پوائنٹس",
   "removed": "ہٹا دیا گیا",
   "one_comment": "1 تبصرہ",
   "submit_url_description": ".jpg، .gif، .mp4 وغیرہ میں ختم ہونے والے براہ راست لنک کو پوسٹ کرکے میڈیا انکارپوریٹ کریں",

@@ -75,8 +75,13 @@ const useFetchGifFirstFrame = (url: string | undefined) => {
       try {
         const cachedFrame = await getCachedGifFrame(url);
         if (cachedFrame) {
-          if (isActive) setFrameUrl(cachedFrame);
-          return;
+          try {
+            const response = await fetch(cachedFrame);
+            if (response.ok) {
+              if (isActive) setFrameUrl(cachedFrame);
+              return;
+            }
+          } catch {}
         }
 
         const blob = typeof url === 'string' ? await parseGif(await fetchImage(url)) : await parseGif(await readImage(url as File));

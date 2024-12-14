@@ -46,7 +46,7 @@
   "all_comments": "Alla {{count}} kommentarer",
   "no_comments": "Inga kommentarer (ännu)",
   "reply_score_singular": "1 poäng",
-  "reply_score_plural": "{{count}} poäng",
+  "reply_score_plural": "{{score}} poäng",
   "removed": "Borttagen",
   "one_comment": "1 kommentar",
   "submit_url_description": "bädda in media genom att posta dess direkta länk (slutar i .jpg, .gif, .mp4, etc)",
