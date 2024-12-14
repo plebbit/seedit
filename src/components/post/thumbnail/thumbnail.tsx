@@ -7,7 +7,9 @@ interface ThumbnailProps {
   cid?: string;
   commentMediaInfo?: CommentMediaInfo;
   expanded?: boolean;
+  isLink: boolean;
   isReply: boolean;
+  isText: boolean;
   link: string;
   linkHeight?: number;
   linkWidth?: number;
@@ -15,7 +17,19 @@ interface ThumbnailProps {
   toggleExpanded?: () => void;
 }
 
-const Thumbnail = ({ cid, commentMediaInfo, expanded = false, isReply = false, link, linkHeight, linkWidth, subplebbitAddress, toggleExpanded }: ThumbnailProps) => {
+const Thumbnail = ({
+  cid,
+  commentMediaInfo,
+  expanded = false,
+  isLink = false,
+  isReply = false,
+  isText = false,
+  link,
+  linkHeight,
+  linkWidth,
+  subplebbitAddress,
+  toggleExpanded,
+}: ThumbnailProps) => {
   const iframeThumbnail = commentMediaInfo?.patternThumbnailUrl || commentMediaInfo?.thumbnail;
   let displayWidth, displayHeight, hasLinkDimensions;
   const thumbnailClass = expanded ? styles.thumbnailHidden : styles.thumbnailVisible;
@@ -29,6 +43,12 @@ const Thumbnail = ({ cid, commentMediaInfo, expanded = false, isReply = false, l
     displayWidth = '70px';
     displayHeight = '70px';
     hasLinkDimensions = false;
+  }
+
+  if (isText || isLink) {
+    displayWidth = '50px';
+    displayHeight = '50px';
+    hasLinkDimensions = true;
   }
 
   const style = hasLinkDimensions ? ({ '--width': displayWidth, '--height': displayHeight } as React.CSSProperties) : {};
@@ -46,6 +66,14 @@ const Thumbnail = ({ cid, commentMediaInfo, expanded = false, isReply = false, l
     mediaComponent = iframeThumbnail ? <img src={iframeThumbnail} alt='' /> : null;
   } else if (commentMediaInfo?.type === 'gif') {
     mediaComponent = <img src={gifFrameUrl || commentMediaInfo.url} alt='' />;
+  }
+
+  if (isText) {
+    mediaComponent = <img src='assets/thumbnail-icon-text.png' alt='' />;
+  }
+
+  if (isLink) {
+    mediaComponent = <img src='assets/thumbnail-icon-link.png' alt='' />;
   }
 
   return (

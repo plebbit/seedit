@@ -3,7 +3,7 @@
   float: left;
   padding-right: 5px;
   padding-bottom: 2px;
-  width: var(--width, 70px);
+  width: 70px;
   height: var(--height, 70px);
   z-index: 1;
 }
