@@ -9,6 +9,7 @@ interface ThumbnailProps {
   expanded?: boolean;
   isLink: boolean;
   isReply: boolean;
+  isSpoiler?: boolean;
   isText: boolean;
   link: string;
   linkHeight?: number;
@@ -23,6 +24,7 @@ const Thumbnail = ({
   expanded = false,
   isLink = false,
   isReply = false,
+  isSpoiler = false,
   isText = false,
   link,
   linkHeight,
@@ -45,7 +47,7 @@ const Thumbnail = ({
     hasLinkDimensions = false;
   }
 
-  if (isText || isLink) {
+  if (isText || isLink || isSpoiler) {
     displayWidth = '50px';
     displayHeight = '50px';
     hasLinkDimensions = true;
@@ -74,6 +76,10 @@ const Thumbnail = ({
 
   if (isLink) {
     mediaComponent = <img src='assets/thumbnail-icon-link.png' alt='' />;
+  }
+
+  if (isSpoiler) {
+    mediaComponent = <img src='assets/thumbnail-icon-spoiler.png' alt='' />;
   }
 
   return (

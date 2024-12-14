@@ -190,6 +190,7 @@ const Post = ({ index, post = {} }: PostProps) => {
                   commentMediaInfo={commentMediaInfo}
                   isReply={false}
                   isLink={!hasThumbnail && link}
+                  isSpoiler={spoiler}
                   isText={!hasThumbnail && content?.trim().length > 0}
                   link={link}
                   linkHeight={linkHeight}

@@ -91,10 +91,11 @@ interface ReplyMediaProps {
   link: string;
   linkHeight: number;
   linkWidth: number;
+  spoiler: boolean;
   toggleExpanded: () => void;
 }
 
-const ReplyMedia = ({ commentMediaInfo, content, expanded, hasThumbnail, link, linkHeight, linkWidth, toggleExpanded }: ReplyMediaProps) => {
+const ReplyMedia = ({ commentMediaInfo, content, expanded, hasThumbnail, link, linkHeight, linkWidth, spoiler, toggleExpanded }: ReplyMediaProps) => {
   const { type } = commentMediaInfo || {};
   return (
     <>
@@ -104,6 +105,7 @@ const ReplyMedia = ({ commentMediaInfo, content, expanded, hasThumbnail, link, l
           expanded={expanded}
           isLink={!hasThumbnail && link}
           isReply={true}
+          isSpoiler={spoiler}
           isText={!hasThumbnail && content?.trim().length > 0}
           link={link}
           linkHeight={linkHeight}
@@ -427,6 +429,7 @@ const Reply = ({ cidOfReplyWithContext, depth = 0, isSingleComment, isSingleRepl
                     link={link}
                     linkHeight={linkHeight}
                     linkWidth={linkWidth}
+                    spoiler={spoiler}
                     toggleExpanded={toggleExpanded}
                   />
                 )}
