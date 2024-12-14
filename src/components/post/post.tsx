@@ -257,7 +257,7 @@ const Post = ({ index, post = {} }: PostProps) => {
                   />
                   {!isInSubplebbitView && (
                     <>
-                       {t('post_to')}{' '}
+                       {t('post_to')}
                       <span className={styles.subscribeHoverGroup}>
                         {isInAllView && (!subscribed || (subscribed && hasClickedSubscribe)) && (
                           <span className={styles.subscribeButtonWrapper}>

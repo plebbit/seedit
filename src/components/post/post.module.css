@@ -239,6 +239,11 @@
   background-size: 12px;
 }
 
+.subscribeHoverGroup {
+  padding: 0 3px;
+  white-space: nowrap;
+}
+
 .buttonSubscribe {
   background-image: url("/public/assets/buttons/all_feed_subscribe.png");
   cursor: pointer;
