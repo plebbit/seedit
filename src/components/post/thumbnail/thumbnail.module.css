@@ -33,3 +33,24 @@
   height: 100%;
   object-fit: contain;
 }
+
+.iconThumbnail {
+  width: 100%;
+  height: 100%;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: block;
+}
+
+.textIcon {
+  background-image: var(--thumbnail-icon-text);
+}
+
+.linkIcon {
+  background-image: var(--thumbnail-icon-link);
+}
+
+.spoilerIcon {
+  background-image: var(--thumbnail-icon-spoiler);
+}

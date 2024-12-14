@@ -71,15 +71,15 @@ const Thumbnail = ({
   }
 
   if (isText) {
-    mediaComponent = <img src='assets/thumbnail-icon-text.png' alt='' />;
+    mediaComponent = <span className={`${styles.iconThumbnail} ${styles.textIcon}`} />;
   }
 
   if (isLink) {
-    mediaComponent = <img src='assets/thumbnail-icon-link.png' alt='' />;
+    mediaComponent = <span className={`${styles.iconThumbnail} ${styles.linkIcon}`} />;
   }
 
   if (isSpoiler) {
-    mediaComponent = <img src='assets/thumbnail-icon-spoiler.png' alt='' />;
+    mediaComponent = <span className={`${styles.iconThumbnail} ${styles.spoilerIcon}`} />;
   }
 
   return (
