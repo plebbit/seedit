@@ -99,10 +99,6 @@
   .categoryTitle {
     flex: 0 0 65px;
   }
-
-  .categorySettings input {
-    width: 35vw;
-  }
 }
 
 .highlightedSetting {
