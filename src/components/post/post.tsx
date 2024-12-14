@@ -3,7 +3,7 @@ import styles from './post.module.css';
 import { Link, useLocation, useParams } from 'react-router-dom';
 import { Comment, useAuthorAddress, useBlock, useComment, useEditedComment, useSubplebbit, useSubscribe } from '@plebbit/plebbit-react-hooks';
 import { useTranslation } from 'react-i18next';
-import { isAllView, isPostPageView, isProfileHiddenView, isSubplebbitView } from '../../lib/utils/view-utils';
+import { isAllView, isHomeView, isPostPageView, isProfileHiddenView, isSubplebbitView } from '../../lib/utils/view-utils';
 import { getHasThumbnail } from '../../lib/utils/media-utils';
 import { getPostScore, formatScore } from '../../lib/utils/post-utils';
 import { getHostname } from '../../lib/utils/url-utils';
@@ -121,6 +121,7 @@ const Post = ({ index, post = {} }: PostProps) => {
   const isInAllView = isAllView(location.pathname);
   const isInPostPageView = isPostPageView(location.pathname, params);
   const isInProfileHiddenView = isProfileHiddenView(location.pathname);
+  const isInHomeView = isHomeView(location.pathname);
   const isInSubplebbitView = isSubplebbitView(location.pathname, params);
 
   const commentMediaInfo = useCommentMediaInfo(post);
@@ -160,7 +161,10 @@ const Post = ({ index, post = {} }: PostProps) => {
 
   const isMobile = useIsMobile();
   const pinnedPostsCount = usePinnedPostsStore((state) => state.pinnedPostsCount);
-  const rank = (index ?? 0) + 1 - pinnedPostsCount;
+  let rank = (index ?? 0) + 1;
+  if (!isInHomeView) {
+    rank = rank - pinnedPostsCount;
+  }
 
   return (
     <div className={styles.content} key={index}>
