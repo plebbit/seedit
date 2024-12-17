@@ -394,10 +394,15 @@ const Header = () => {
             )}
           </Link>
         </div>
-        {!isInHomeView && !isInHomeAboutView && (
+        {!isInHomeView && !isInHomeAboutView && !isInModView && !isInAllView && (
           <span className={`${styles.pageName} ${!logoIsAvatar && styles.soloPageName}`}>
             <HeaderTitle title={title} shortAddress={shortAddress} />
           </span>
+        )}
+        {(isInModView || isInAllView) && (
+          <div className={`${styles.pageName} ${styles.allOrModPageName}`}>
+            <HeaderTitle title={title} shortAddress={shortAddress} />
+          </div>
         )}
         {isInSubplebbitView && !isInSubplebbitSubmitView && (
           <span className={styles.joinButton}>

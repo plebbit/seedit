@@ -71,7 +71,6 @@
 
 .pageName {
   font-weight: bold;
-  padding-right: 1ex;
   font-variant: small-caps;
   font-size: 1.2em;
   color: var(--text);
@@ -92,6 +91,12 @@
   padding-left: 10px;
 }
 
+.allOrModPageName {
+  position: absolute;
+  top: 26px;
+  left: 140px;
+}
+
 .submitTitle {
   text-transform: uppercase;
   font-size: 11px
@@ -103,6 +108,18 @@
   display: flex;
   align-items: flex-end;
   text-transform: lowercase;
+  padding-left: 10px;
+}
+
+@media (max-width: 640px) {
+  .tabMenu {
+    padding-left: 0;
+  }
+
+  .allOrModPageName {
+    top: 46px;
+    left: 138px;
+  }
 }
 
 .tabMenu li {
