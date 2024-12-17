@@ -15,6 +15,7 @@ import {
   isHomeAboutView,
   isHomeView,
   isInboxView,
+  isModView,
   isPendingPostView,
   isPostPageView,
   isProfileView,
@@ -79,6 +80,7 @@ const SortItems = () => {
   const isInHomeAboutView = isHomeAboutView(location.pathname);
   const isInSubplebbitAboutView = isSubplebbitAboutView(location.pathname, params);
   const isInAllView = isAllView(location.pathname);
+  const isInModView = isModView(location.pathname);
   const isInSubplebbitView = isSubplebbitView(location.pathname, params);
   const sortLabels = [t('hot'), t('new'), t('active'), t('controversial'), t('top')];
   const [selectedSortType, setSelectedSortType] = useState(params.sortType || '/hot');
@@ -95,7 +97,7 @@ const SortItems = () => {
   }, [params.sortType, isInHomeAboutView, isInSubplebbitAboutView]);
 
   return sortTypes.map((sortType, index) => {
-    let sortLink = isInSubplebbitView ? `/p/${params.subplebbitAddress}/${sortType}` : isInAllView ? `p/all/${sortType}` : sortType;
+    let sortLink = isInSubplebbitView ? `/p/${params.subplebbitAddress}/${sortType}` : isInAllView ? `p/all/${sortType}` : isInModView ? `p/mod/${sortType}` : sortType;
     if (timeFilterName) {
       sortLink = sortLink + `/${timeFilterName}`;
     }
@@ -242,6 +244,7 @@ const HeaderTabs = () => {
   const isInHomeAboutView = isHomeAboutView(location.pathname);
   const isInHomeView = isHomeView(location.pathname);
   const isInInboxView = isInboxView(location.pathname);
+  const isInModView = isModView(location.pathname);
   const isInPendingPostView = isPendingPostView(location.pathname, params);
   const isInPostPageView = isPostPageView(location.pathname, params);
   const isInProfileView = isProfileView(location.pathname);
@@ -255,7 +258,7 @@ const HeaderTabs = () => {
 
   if (isInPostPageView) {
     return <CommentsButton />;
-  } else if (isInHomeView || isInHomeAboutView || (isInSubplebbitView && !isInSubplebbitSubmitView && !isInSubplebbitSettingsView) || isInAllView) {
+  } else if (isInHomeView || isInHomeAboutView || (isInSubplebbitView && !isInSubplebbitSubmitView && !isInSubplebbitSettingsView) || isInAllView || isInModView) {
     return <SortItems />;
   } else if ((isInProfileView || isInAuthorView) && !isInPendingPostView) {
     return <AuthorHeaderTabs />;
@@ -279,6 +282,7 @@ const HeaderTitle = ({ title, shortAddress }: { title: string; shortAddress: str
   const isInAllView = isAllView(location.pathname);
   const isInAuthorView = isAuthorView(location.pathname);
   const isInInboxView = isInboxView(location.pathname);
+  const isInModView = isModView(location.pathname);
   const isInPostPageView = isPostPageView(location.pathname, params);
   const isInProfileView = isProfileView(location.pathname);
   const isInSettingsView = isSettingsView(location.pathname);
@@ -328,6 +332,8 @@ const HeaderTitle = ({ title, shortAddress }: { title: string; shortAddress: str
     return <span className={styles.lowercase}>{t('page_not_found')}</span>;
   } else if (isInAllView) {
     return t('all');
+  } else if (isInModView) {
+    return <span className={styles.lowercase}>{t('communities_you_moderate')}</span>;
   }
   return null;
 };
@@ -346,6 +352,7 @@ const Header = () => {
   const isInHomeView = isHomeView(location.pathname);
   const isInHomeAboutView = isHomeAboutView(location.pathname);
   const isInInboxView = isInboxView(location.pathname);
+  const isInModView = isModView(location.pathname);
   const isInPostPageView = isPostPageView(location.pathname, params);
   const isInProfileView = isProfileView(location.pathname);
   const isInSettingsView = isSettingsView(location.pathname);
@@ -364,6 +371,7 @@ const Header = () => {
     (isInSubplebbitView && !isInSubplebbitSubmitView && !isInSubplebbitSettingsView && !isInPostPageView && !isInHomeAboutView && !isInSubplebbitAboutView) ||
     (isInProfileView && !isInHomeAboutView) ||
     (isInAllView && !isInAllAboutView) ||
+    (isInModView && !isInHomeAboutView) ||
     (isInAuthorView && !isInHomeAboutView);
   const logoSrc = isInSubplebbitView && suggested?.avatarUrl ? suggested?.avatarUrl : 'assets/logo/seedit.png';
   const logoIsAvatar = isInSubplebbitView && suggested?.avatarUrl;
@@ -406,7 +414,7 @@ const Header = () => {
       {isMobile && !isInSubplebbitSubmitView && (
         <ul className={`${styles.tabMenu} ${isInProfileView ? styles.horizontalScroll : ''}`}>
           <HeaderTabs />
-          {(isInHomeView || isInHomeAboutView || isInSubplebbitView || isInHomeAboutView || isInAllView || isInPostPageView) && <AboutButton />}
+          {(isInHomeView || isInHomeAboutView || isInSubplebbitView || isInHomeAboutView || isInPostPageView) && <AboutButton />}
         </ul>
       )}
     </div>

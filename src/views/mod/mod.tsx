@@ -1,21 +1,21 @@
 import { useEffect, useRef } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { Virtuoso, VirtuosoHandle, StateSnapshot } from 'react-virtuoso';
-import { useFeed } from '@plebbit/plebbit-react-hooks';
+import { useAccountSubplebbits, useFeed } from '@plebbit/plebbit-react-hooks';
 import { Trans, useTranslation } from 'react-i18next';
 import styles from '../home/home.module.css';
 import LoadingEllipsis from '../../components/loading-ellipsis';
 import Post from '../../components/post';
 import Sidebar from '../../components/sidebar';
-import { useDefaultSubplebbitAddresses } from '../../hooks/use-default-subplebbits';
 import useFeedStateString from '../../hooks/use-feed-state-string';
 import useTimeFilter from '../../hooks/use-time-filter';
 import _ from 'lodash';
 
 const lastVirtuosoStates: { [key: string]: StateSnapshot } = {};
 
-const All = () => {
-  const subplebbitAddresses = useDefaultSubplebbitAddresses();
+const Mod = () => {
+  const { accountSubplebbits } = useAccountSubplebbits();
+  const subplebbitAddresses = Object.keys(accountSubplebbits);
   const params = useParams<{ sortType?: string; timeFilterName?: string }>();
   const sortType = params?.sortType || 'hot';
   const { timeFilterName, timeFilterSeconds } = useTimeFilter();
@@ -37,7 +37,7 @@ const All = () => {
 
   const currentTimeFilterName = params.timeFilterName || timeFilterName;
 
-  const documentTitle = _.capitalize(t('all')) + ' - Seedit';
+  const documentTitle = _.capitalize(t('Mod')) + ' - Seedit';
   useEffect(() => {
     document.title = documentTitle;
   }, [documentTitle]);
@@ -68,7 +68,7 @@ const All = () => {
                   i18nKey='more_posts_last_week'
                   values={{ currentTimeFilterName }}
                   components={{
-                    1: <Link to={'/p/all/' + (params?.sortType || 'hot') + '/1w'} />,
+                    1: <Link to={'/p/mod/' + (params?.sortType || 'hot') + '/1w'} />,
                   }}
                 />
               </div>
@@ -78,7 +78,7 @@ const All = () => {
                   i18nKey='more_posts_last_month'
                   values={{ currentTimeFilterName }}
                   components={{
-                    1: <Link to={'/p/all/' + (params?.sortType || 'hot') + '/1m'} />,
+                    1: <Link to={'/p/mod/' + (params?.sortType || 'hot') + '/1m'} />,
                   }}
                 />
               </div>
@@ -110,7 +110,7 @@ const All = () => {
     const setLastVirtuosoState = () => {
       virtuosoRef.current?.getState((snapshot: StateSnapshot) => {
         if (snapshot?.ranges?.length) {
-          lastVirtuosoStates[sortType + timeFilterName + 'all'] = snapshot;
+          lastVirtuosoStates[sortType + timeFilterName + 'mod'] = snapshot;
         }
       });
     };
@@ -118,7 +118,7 @@ const All = () => {
     return () => window.removeEventListener('scroll', setLastVirtuosoState);
   }, [sortType, timeFilterName]);
 
-  const lastVirtuosoState = lastVirtuosoStates?.[sortType + timeFilterName + 'all'];
+  const lastVirtuosoState = lastVirtuosoStates?.[sortType + timeFilterName + 'mod'];
 
   return (
     <div>
@@ -143,4 +143,4 @@ const All = () => {
   );
 };
 
-export default All;
+export default Mod;

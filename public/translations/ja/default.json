@@ -330,5 +330,6 @@
   "a_short_title": "あなたのコミュニティのための短いタイトル",
   "anti_spam_challenges": "アンチスパムチャレンジ",
   "anti_spam_challenges_subtitle": "スパムを防ぐために1つ以上のチャレンジを選択してください",
-  "add_a_challenge": "チャレンジを追加"
+  "add_a_challenge": "チャレンジを追加",
+  "communities_you_moderate": "あなたが管理するコミュニティ"
 }

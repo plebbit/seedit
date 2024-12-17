@@ -3,12 +3,12 @@ import { Outlet, Route, Routes, useLocation, useNavigate } from 'react-router-do
 import useTheme from './hooks/use-theme';
 import useValidateRouteParams from './hooks/use-validate-route-params';
 import styles from './app.module.css';
-import About from './views/about';
+import AboutView from './views/about';
 import All from './views/all';
 import Author from './views/author';
 import Home from './views/home';
 import Inbox from './views/inbox';
-import AboutView from './views/about';
+import Mod from './views/mod';
 import NotFound from './views/not-found';
 import PendingPost from './views/pending-post';
 import PostPage from './views/post-page';
@@ -84,11 +84,8 @@ const App = () => {
       <Routes>
         <Route element={globalLayout}>
           <Route element={pagesLayout}>
-            <Route path='/about' element={<About />} />
-            <Route path='/submit' element={<SubmitPage />} />
             <Route path='/about' element={<AboutView />} />
-
-            <Route path='/p/all/about' element={<AboutView />} />
+            <Route path='/submit' element={<SubmitPage />} />
 
             <Route path='/p/:subplebbitAddress/c/:commentCid' element={<PostPage />} />
             <Route path='/p/:subplebbitAddress/c/:commentCid?context=3' element={<PostPage />} />
@@ -128,6 +125,8 @@ const App = () => {
               <Route path='/:sortType?/:timeFilterName?' element={<Home />} />
 
               <Route path='/p/all/:sortType?/:timeFilterName?' element={<All />} />
+
+              <Route path='/p/mod/:sortType?/:timeFilterName?' element={<Mod />} />
 
               <Route path='/p/:subplebbitAddress/:sortType?/:timeFilterName?' element={<Subplebbit />} />
 

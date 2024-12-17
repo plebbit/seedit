@@ -1,12 +1,12 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { useAccount } from '@plebbit/plebbit-react-hooks';
+import { useAccount, useAccountSubplebbits } from '@plebbit/plebbit-react-hooks';
 import Plebbit from '@plebbit/plebbit-js/dist/browser/index.js';
 import styles from './topbar.module.css';
 import { useDefaultSubplebbitAddresses } from '../../hooks/use-default-subplebbits';
 import useTimeFilter from '../../hooks/use-time-filter';
-import { isAllView, isHomeView, isSubplebbitView } from '../../lib/utils/view-utils';
+import { isAllView, isHomeView, isModView, isSubplebbitView } from '../../lib/utils/view-utils';
 
 const sortTypes = ['hot', 'new', 'active', 'controversialAll', 'topAll'];
 const isElectron = window.isElectron === true;
@@ -20,8 +20,12 @@ const TopBar = () => {
   const subscriptions = account?.subscriptions;
   const isinAllView = isAllView(location.pathname);
   const isInHomeView = isHomeView(location.pathname);
+  const isInModView = isModView(location.pathname);
   const isInSubplebbitView = isSubplebbitView(location.pathname, params);
   const homeButtonClass = isInHomeView ? styles.selected : styles.choice;
+
+  const { accountSubplebbits } = useAccountSubplebbits();
+  const accountSubplebbitAddresses = Object.keys(accountSubplebbits);
 
   const { timeFilterName, timeFilterNames } = useTimeFilter();
   const selectedTimeFilter = timeFilterName || (isInSubplebbitView ? 'all' : timeFilterName);
@@ -52,6 +56,8 @@ const TopBar = () => {
       ? `/p/${params.subplebbitAddress}/${selectedSortType}/${timeFilterName}`
       : isinAllView
       ? `p/all/${selectedSortType}/${timeFilterName}`
+      : isInModView
+      ? `/p/mod/${selectedSortType}/${timeFilterName}`
       : `/${selectedSortType}/${timeFilterName}`;
   };
 
@@ -174,6 +180,14 @@ const TopBar = () => {
                 {t('all')}
               </Link>
             </li>
+            {accountSubplebbitAddresses.length > 0 && (
+              <li>
+                <span className={styles.separator}>-</span>
+                <Link to='/p/mod' className={isInModView ? styles.selected : styles.choice}>
+                  {t('mod')}
+                </Link>
+              </li>
+            )}
             <span className={styles.separator}> | </span>
             {subplebbitAddresses?.map((address, index) => {
               const displayAddress = address.endsWith('.eth') ? address.slice(0, -4) : address.endsWith('.sol') ? address.slice(0, -4) : address;

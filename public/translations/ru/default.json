@@ -330,5 +330,6 @@
   "a_short_title": "Короткое название для вашего сообщества",
   "anti_spam_challenges": "Антиспам вызовы",
   "anti_spam_challenges_subtitle": "Выберите одну или несколько задач для предотвращения спама",
-  "add_a_challenge": "Добавить задачу"
+  "add_a_challenge": "Добавить задачу",
+  "communities_you_moderate": "Сообщества, которые вы модерируете"
 }

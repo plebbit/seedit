@@ -330,5 +330,6 @@
   "a_short_title": "Ένας σύντομος τίτλος για την κοινότητά σας",
   "anti_spam_challenges": "Προκλήσεις κατά του spam",
   "anti_spam_challenges_subtitle": "Επιλέξτε μία ή περισσότερες προκλήσεις για την αποτροπή των spam",
-  "add_a_challenge": "Προσθήκη πρόκλησης"
+  "add_a_challenge": "Προσθήκη πρόκλησης",
+  "communities_you_moderate": "Κοινότητες που moderates"
 }
