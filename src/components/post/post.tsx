@@ -106,6 +106,7 @@ const Post = ({ index, post = {} }: PostProps) => {
     title,
     upvoteCount,
   } = post || {};
+  const nsfw = true;
   const { displayName, shortAddress } = author || {};
   const { shortAuthorAddress, authorAddressChanged } = useAuthorAddress({ comment: post });
 
@@ -194,8 +195,9 @@ const Post = ({ index, post = {} }: PostProps) => {
                   commentMediaInfo={commentMediaInfo}
                   isReply={false}
                   isLink={!hasThumbnail && link}
+                  isNsfw={nsfw}
                   isSpoiler={spoiler}
-                  isText={!hasThumbnail && content?.trim().length > 0}
+                  isText={!hasThumbnail && !link}
                   link={link}
                   linkHeight={linkHeight}
                   linkWidth={linkWidth}
@@ -285,6 +287,7 @@ const Post = ({ index, post = {} }: PostProps) => {
                   failed={state === 'failed'}
                   editState={editState}
                   index={post?.index}
+                  nsfw={nsfw}
                   removed={removed}
                   replyCount={replyCount}
                   showCommentEditForm={showCommentEditForm}

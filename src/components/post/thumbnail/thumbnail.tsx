@@ -8,6 +8,7 @@ interface ThumbnailProps {
   commentMediaInfo?: CommentMediaInfo;
   expanded?: boolean;
   isLink: boolean;
+  isNsfw?: boolean;
   isReply: boolean;
   isSpoiler?: boolean;
   isText: boolean;
@@ -23,6 +24,7 @@ const Thumbnail = ({
   commentMediaInfo,
   expanded = false,
   isLink = false,
+  isNsfw = false,
   isReply = false,
   isSpoiler = false,
   isText = false,
@@ -47,7 +49,7 @@ const Thumbnail = ({
     hasLinkDimensions = false;
   }
 
-  if (isText || isLink || isSpoiler) {
+  if (isText || isLink || isSpoiler || isNsfw) {
     displayWidth = '50px';
     displayHeight = '50px';
     hasLinkDimensions = true;
@@ -80,6 +82,10 @@ const Thumbnail = ({
 
   if (isSpoiler) {
     mediaComponent = <span className={`${styles.iconThumbnail} ${styles.spoilerIcon}`} />;
+  }
+
+  if (isNsfw) {
+    mediaComponent = <span className={`${styles.iconThumbnail} ${styles.nsfwIcon}`} />;
   }
 
   return (

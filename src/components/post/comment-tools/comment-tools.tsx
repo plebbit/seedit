@@ -22,6 +22,7 @@ interface CommentToolsProps {
   isCommentAuthorMod?: boolean;
   isReply?: boolean;
   isSingleReply?: boolean;
+  nsfw?: boolean;
   parentCid?: string;
   postCid?: string;
   removed?: boolean;
@@ -215,7 +216,7 @@ const SingleReplyTools = ({
   );
 };
 
-const CommentToolsLabel = ({ cid, deleted, failed, editState, isReply, removed, spoiler }: CommentToolsProps) => {
+const CommentToolsLabel = ({ cid, deleted, failed, editState, isReply, nsfw, removed, spoiler }: CommentToolsProps) => {
   const { t } = useTranslation();
   const pending = cid === undefined && !isReply && !failed;
   const failedEdit = editState === 'failed';
@@ -223,6 +224,7 @@ const CommentToolsLabel = ({ cid, deleted, failed, editState, isReply, removed, 
 
   return (
     <>
+      {nsfw && <Label color='nsfw-red' text={t('nsfw')} />}
       {spoiler && <Label color='black' text={t('spoiler')} />}
       {pending && <Label color='yellow' text={t('pending')} />}
       {failed && <Label color='red' text={t('failed')} />}
@@ -244,6 +246,7 @@ const CommentTools = ({
   index,
   isReply,
   isSingleReply,
+  nsfw,
   parentCid,
   postCid,
   removed,
@@ -305,6 +308,7 @@ const CommentTools = ({
               failed={failed}
               editState={editState}
               isReply={isReply}
+              nsfw={nsfw}
               removed={removed}
               spoiler={spoiler}
               subplebbitAddress={subplebbitAddress}
