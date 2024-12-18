@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import styles from './expando.module.css';
 import Embed from '../embed';
@@ -14,6 +14,7 @@ interface ExpandoProps {
   expanded: boolean;
   link?: string;
   modEditReason?: string;
+  nsfw?: boolean;
   removed?: boolean;
   showContent: boolean;
   spoiler?: boolean;
@@ -28,6 +29,7 @@ const Expando = ({
   expanded,
   link,
   modEditReason,
+  nsfw,
   removed,
   showContent,
   spoiler = false,
@@ -35,7 +37,14 @@ const Expando = ({
 }: ExpandoProps) => {
   const { t } = useTranslation();
 
-  const [showSpoiler, setShowSpoiler] = useState(false);
+  const [hideContent, setHideContent] = useState(true);
+  const [alwaysShowNsfw, setAlwaysShowNsfw] = useState(false);
+
+  useEffect(() => {
+    if (!expanded) {
+      setHideContent(true);
+    }
+  }, [expanded]);
 
   let mediaComponent = null;
 
@@ -53,51 +62,55 @@ const Expando = ({
 
   return (
     <div className={expanded ? styles.expando : styles.expandoHidden}>
-      <div
-        className={styles.expandoContent}
-        onClick={() => {
-          spoiler && !showSpoiler && setShowSpoiler(true);
-        }}
-      >
-        {spoiler && !showSpoiler && !(deleted || removed) && (
-          <>
-            <div className={styles.hideSpoiler} />
-            <span className={styles.showSpoilerButton}>{t('view_spoiler')}</span>
-          </>
-        )}
-        {link && !removed && commentMediaInfo?.type !== 'webpage' && (
-          <div className={styles.mediaPreview}>
-            <Link
-              to={link}
-              onClick={(e) => {
-                if (e.button === 0) {
-                  e.preventDefault();
-                  toggleExpanded && toggleExpanded();
-                }
-              }}
-            >
-              {mediaComponent}
-            </Link>
-          </div>
-        )}
-        {content && showContent && (
-          <div className={styles.usertext}>
-            <div className={styles.markdown}>
-              <Markdown content={content} />
-              {modEditReason && (
-                <p>
-                  {t('mod_reason')}: {modEditReason}
-                </p>
+      {link && !removed && commentMediaInfo?.type !== 'webpage' && (
+        <div className={styles.mediaPreview} onClick={() => setHideContent(false)}>
+          {(nsfw || spoiler) && hideContent && link && commentMediaInfo?.type !== 'webpage' && !(deleted || removed) && (
+            <>
+              <div className={styles.blurContent} />
+              <span className={styles.unblurButton}>{nsfw && spoiler ? 'CLICK TO SEE NSFW SPOILER' : spoiler ? t('view_spoiler') : nsfw ? 'CLICK TO SEE NSFW' : ''}</span>
+              {nsfw && (
+                <span className={styles.alwaysShowNsfwButton} onClick={() => setAlwaysShowNsfw(!alwaysShowNsfw)}>
+                  Always show NSFW media?
+                </span>
               )}
-              {authorEditReason && !(removed || deleted) && (
-                <p>
-                  {t('edit')}: {authorEditReason}
-                </p>
-              )}
-            </div>
+            </>
+          )}
+          <Link
+            to={link}
+            onClick={(e) => {
+              if (e.button === 0) {
+                e.preventDefault();
+                toggleExpanded && toggleExpanded();
+              }
+            }}
+          >
+            {mediaComponent}
+          </Link>
+        </div>
+      )}
+      {alwaysShowNsfw && (
+        <div className={styles.alwaysShowNsfwNotice}>
+          <p>Ok, we changed your preferences to always show NSFW media.</p>
+          <button onClick={() => setAlwaysShowNsfw(false)}>Undo</button>
+        </div>
+      )}
+      {content && showContent && (
+        <div className={styles.usertext}>
+          <div className={styles.markdown}>
+            <Markdown content={content} />
+            {modEditReason && (
+              <p>
+                {t('mod_reason')}: {modEditReason}
+              </p>
+            )}
+            {authorEditReason && !(removed || deleted) && (
+              <p>
+                {t('edit')}: {authorEditReason}
+              </p>
+            )}
           </div>
-        )}
-      </div>
+        </div>
+      )}
     </div>
   );
 };

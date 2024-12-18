@@ -3,7 +3,7 @@ import styles from './post.module.css';
 import { Link, useLocation, useParams } from 'react-router-dom';
 import { Comment, useAuthorAddress, useBlock, useComment, useEditedComment, useSubplebbit, useSubscribe } from '@plebbit/plebbit-react-hooks';
 import { useTranslation } from 'react-i18next';
-import { isAllView, isHomeView, isPostPageView, isProfileHiddenView, isSubplebbitView } from '../../lib/utils/view-utils';
+import { isAllView, isPostPageView, isProfileHiddenView, isSubplebbitView } from '../../lib/utils/view-utils';
 import { getHasThumbnail } from '../../lib/utils/media-utils';
 import { getPostScore, formatScore } from '../../lib/utils/post-utils';
 import { getHostname } from '../../lib/utils/url-utils';
@@ -20,6 +20,7 @@ import useUpvote from '../../hooks/use-upvote';
 import _ from 'lodash';
 import useIsMobile from '../../hooks/use-is-mobile';
 import { usePinnedPostsStore } from '../../stores/use-pinned-posts-store';
+import useWindowWidth from '../../hooks/use-window-width';
 
 interface PostAuthorProps {
   authorAddress: string;
@@ -122,7 +123,6 @@ const Post = ({ index, post = {} }: PostProps) => {
   const isInAllView = isAllView(location.pathname);
   const isInPostPageView = isPostPageView(location.pathname, params);
   const isInProfileHiddenView = isProfileHiddenView(location.pathname);
-  const isInHomeView = isHomeView(location.pathname);
   const isInSubplebbitView = isSubplebbitView(location.pathname, params);
 
   const commentMediaInfo = useCommentMediaInfo(post);
@@ -161,9 +161,10 @@ const Post = ({ index, post = {} }: PostProps) => {
   };
 
   const isMobile = useIsMobile();
+  const windowWidth = useWindowWidth();
   const pinnedPostsCount = usePinnedPostsStore((state) => state.pinnedPostsCount);
   let rank = (index ?? 0) + 1;
-  if (!isInHomeView) {
+  if (isInSubplebbitView) {
     rank = rank - pinnedPostsCount;
   }
 
@@ -233,16 +234,17 @@ const Post = ({ index, post = {} }: PostProps) => {
                     </span>
                   )}
                 </p>
-                {(!(commentMediaInfo?.type === 'webpage') || (commentMediaInfo?.type === 'webpage' && content?.trim().length > 0)) && (
-                  <ExpandButton
-                    commentMediaInfo={commentMediaInfo}
-                    content={content}
-                    expanded={isExpanded}
-                    hasThumbnail={hasThumbnail}
-                    link={link}
-                    toggleExpanded={toggleExpanded}
-                  />
-                )}
+                {(!(commentMediaInfo?.type === 'webpage') || (commentMediaInfo?.type === 'webpage' && content?.trim().length > 0)) &&
+                  !(isInPostPageView && !link && content?.trim().length > 0) && (
+                    <ExpandButton
+                      commentMediaInfo={commentMediaInfo}
+                      content={content}
+                      expanded={isExpanded}
+                      hasThumbnail={hasThumbnail}
+                      link={link}
+                      toggleExpanded={toggleExpanded}
+                    />
+                  )}
                 <div className={styles.tagline}>
                   {t('submitted')} <span title={postDate}>{getFormattedTimeAgo(timestamp)}</span>{' '}
                   {edit && isInPostPageView && <span className={styles.timeEdit}>{t('last_edited', { timestamp: getFormattedTimeAgo(edit.timestamp) })}</span>}{' '}
@@ -295,23 +297,49 @@ const Post = ({ index, post = {} }: PostProps) => {
                   subplebbitAddress={subplebbitAddress}
                 />
               </div>
+              {!(windowWidth < 770) && (
+                <>
+                  {isEditing ? (
+                    <CommentEditForm commentCid={cid} hideCommentEditForm={hideCommentEditForm} />
+                  ) : (
+                    <Expando
+                      authorEditReason={edit?.reason}
+                      commentMediaInfo={commentMediaInfo}
+                      content={removed ? `[${_.lowerCase(t('removed'))}]` : deleted ? `[${_.lowerCase(t('deleted'))}]` : content}
+                      expanded={isExpanded}
+                      link={link}
+                      modEditReason={reason}
+                      nsfw={nsfw}
+                      deleted={deleted}
+                      removed={removed}
+                      showContent={true}
+                      spoiler={spoiler && (content || link)}
+                    />
+                  )}
+                </>
+              )}
             </div>
           </div>
-          {isEditing ? (
-            <CommentEditForm commentCid={cid} hideCommentEditForm={hideCommentEditForm} />
-          ) : (
-            <Expando
-              authorEditReason={edit?.reason}
-              commentMediaInfo={commentMediaInfo}
-              content={removed ? `[${_.lowerCase(t('removed'))}]` : deleted ? `[${_.lowerCase(t('deleted'))}]` : content}
-              expanded={isExpanded}
-              link={link}
-              modEditReason={reason}
-              deleted={deleted}
-              removed={removed}
-              showContent={true}
-              spoiler={spoiler && (content || link)}
-            />
+          {windowWidth < 770 && (
+            <>
+              {isEditing ? (
+                <CommentEditForm commentCid={cid} hideCommentEditForm={hideCommentEditForm} />
+              ) : (
+                <Expando
+                  authorEditReason={edit?.reason}
+                  commentMediaInfo={commentMediaInfo}
+                  content={removed ? `[${_.lowerCase(t('removed'))}]` : deleted ? `[${_.lowerCase(t('deleted'))}]` : content}
+                  expanded={isExpanded}
+                  link={link}
+                  modEditReason={reason}
+                  nsfw={nsfw}
+                  deleted={deleted}
+                  removed={removed}
+                  showContent={true}
+                  spoiler={spoiler && (content || link)}
+                />
+              )}
+            </>
           )}
         </div>
       </div>
