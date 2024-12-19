@@ -1,3 +1,38 @@
+## [0.2.5](https://github.com/plebbit/seedit/compare/v0.2.4...v0.2.5) (2024-12-19)
+
+
+### Bug Fixes
+
+* **feed post:** gif thumbnail could break persistently ([2e86b3f](https://github.com/plebbit/seedit/commit/2e86b3f2afe6d94a093f4e14320ae95f1bb50332))
+* **header:** special page title goes on top of header tabs, unlike a community's title ([61e7c1d](https://github.com/plebbit/seedit/commit/61e7c1d92c4d8925253513d34275bfc5d1188f57))
+* **post:** format score with abbreviation ([6ce7fa9](https://github.com/plebbit/seedit/commit/6ce7fa9c365189fd4c47c98a0af033052e68f4a7))
+* **post:** subscribe button wrapped incorrectly ([9d20cc8](https://github.com/plebbit/seedit/commit/9d20cc81d0f0a346ad2976f521fe008467c7e99e))
+* **profile:** keep showing the welcome info bar for the first few visits ([d313a68](https://github.com/plebbit/seedit/commit/d313a68003d78a03be5e1bd66dd370341e0b51ff))
+* **settings:** "check for update" button didn't include apk case, now it can download the latest apk ([8399174](https://github.com/plebbit/seedit/commit/8399174914ce5dcf8d5cb60868efbb21cac7d58b))
+* **spoiler:** spoiler could appear bugged for posts with no content nor link, black background was too large ([6ac1777](https://github.com/plebbit/seedit/commit/6ac1777475d17327f31b6b6900e5f05a74b45490))
+* **submit page:** could return error 'publishCommentOptions.content is an empty string' ([589f4bf](https://github.com/plebbit/seedit/commit/589f4bf073a2e088f6d15a0c336fdc8ca9e8d726))
+
+
+### Features
+
+* add blur for nsfw media or spoilers ([2829e50](https://github.com/plebbit/seedit/commit/2829e50d06155b37c2f762ec6030eb31dcca2bf2))
+* add p/mod feed for communities the user is moderating ([6ec4f57](https://github.com/plebbit/seedit/commit/6ec4f57894928e7ddabe3d27bad1a4279dd3b3dd))
+* **feed:** add numbered row to count posts ([84b1013](https://github.com/plebbit/seedit/commit/84b1013c894dff2a8d26bed8fb0f3b1d4d69df5b))
+* **post:** add nsfw label and thumbnail ([a1b64f4](https://github.com/plebbit/seedit/commit/a1b64f4296955c6bde4157e1cf5426eebd1c073d))
+* **post:** add spoiler thumbnail ([851e0e8](https://github.com/plebbit/seedit/commit/851e0e8039e82312377a00ebd35186b49d862b55))
+* **post:** align all posts by fixed thumbnail width and using thumbnail icons for links without media or text-only posts ([72d77fa](https://github.com/plebbit/seedit/commit/72d77fa365efd7fc9be0e74feb9c0f2144e7f37a))
+* **reply:** add colored "submitter" "[S]" next to user name if reply author is also the post author ([59f1f1b](https://github.com/plebbit/seedit/commit/59f1f1b572fb1f53d70458800c8497fd4bbc9f09))
+* **settings:** add nsfw filters and filtering community by nsfw tag ([5a078e7](https://github.com/plebbit/seedit/commit/5a078e772de0fcd7e91f2f220771cbf1ece16e9b))
+* **subplebbit:** show "are you over 18?" alert on communities tagged as nsfw ([76a6fc6](https://github.com/plebbit/seedit/commit/76a6fc69b5bc650222de7a68130c766de2eb8f37))
+
+
+### Performance Improvements
+
+* **index.html:** preload UI assets and CSS ([79423c3](https://github.com/plebbit/seedit/commit/79423c31d710c45f4cfcdfb0908fe1a16c1d4cbf))
+* **media:** fix thumbnails getting stuck due to incorrect memoization ([9ff01c3](https://github.com/plebbit/seedit/commit/9ff01c33c6fa04c5d9c70e7c37aa5b035a8cd8bb))
+
+
+
 ## [0.2.4](https://github.com/plebbit/seedit/compare/v0.2.3...v0.2.4) (2024-12-09)
 
 
