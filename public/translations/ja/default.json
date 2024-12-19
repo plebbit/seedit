@@ -331,5 +331,16 @@
   "anti_spam_challenges": "アンチスパムチャレンジ",
   "anti_spam_challenges_subtitle": "スパムを防ぐために1つ以上のチャレンジを選択してください",
   "add_a_challenge": "チャレンジを追加",
-  "communities_you_moderate": "あなたが管理するコミュニティ"
+  "communities_you_moderate": "あなたが管理するコミュニティ",
+  "blur_media": "NSFW/18+としてマークされたメディアをぼかす",
+  "nsfw_content": "NSFWコンテンツ",
+  "nsfw_communities": "NSFWコミュニティ",
+  "hide_adult": "\"成人\"としてタグ付けされたコミュニティを非表示にする",
+  "hide_gore": "\"ゴア\"としてタグ付けされたコミュニティを非表示にする",
+  "hide_anti": "\"アンチ\"としてタグ付けされたコミュニティを非表示にする",
+  "filters": "フィルター",
+  "see_nsfw": "NSFWを見るにはクリック",
+  "see_nsfw_spoiler": "NSFWのネタバレを見るにはクリック",
+  "always_show_nsfw": "常にNSFWメディアを表示しますか？",
+  "always_show_nsfw_notice": "はい、NSFWメディアを常に表示するように設定を変更しました。"
 }

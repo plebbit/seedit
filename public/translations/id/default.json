@@ -331,5 +331,16 @@
   "anti_spam_challenges": "Tantangan anti-spam",
   "anti_spam_challenges_subtitle": "Pilih satu atau lebih tantangan untuk mencegah spam",
   "add_a_challenge": "Tambahkan tantangan",
-  "communities_you_moderate": "Komunitas yang Anda moderasi"
+  "communities_you_moderate": "Komunitas yang Anda moderasi",
+  "blur_media": "Blur media yang ditandai sebagai NSFW/18+",
+  "nsfw_content": "Konten NSFW",
+  "nsfw_communities": "Komunitas NSFW",
+  "hide_adult": "Sembunyikan komunitas yang diberi label \"dewasa\"",
+  "hide_gore": "Sembunyikan komunitas yang diberi label \"gore\"",
+  "hide_anti": "Sembunyikan komunitas yang diberi label \"anti\"",
+  "filters": "Filter",
+  "see_nsfw": "Klik untuk melihat NSFW",
+  "see_nsfw_spoiler": "Klik untuk melihat NSFW spoiler",
+  "always_show_nsfw": "Apakah Anda ingin selalu menampilkan media NSFW?",
+  "always_show_nsfw_notice": "Oke, kami mengubah preferensi Anda untuk selalu menampilkan media NSFW."
 }

@@ -331,5 +331,16 @@
   "anti_spam_challenges": "Anti-spam kihívások",
   "anti_spam_challenges_subtitle": "Válasszon egy vagy több kihívást a spam megelőzésére",
   "add_a_challenge": "Hozzáad egy kihívást",
-  "communities_you_moderate": "Közösségek, amelyeket moderálsz"
+  "communities_you_moderate": "Közösségek, amelyeket moderálsz",
+  "blur_media": "Elhomályosítja az NSFW/18+ jelöléssel ellátott médiát",
+  "nsfw_content": "NSFW tartalom",
+  "nsfw_communities": "NSFW közösségek",
+  "hide_adult": "Rejtse el a \"felnőtt\" címkével ellátott közösségeket",
+  "hide_gore": "Rejtse el a \"gore\" címkével ellátott közösségeket",
+  "hide_anti": "Rejtse el a \"anti\" címkével ellátott közösségeket",
+  "filters": "Szűrők",
+  "see_nsfw": "Kattintson a NSFW megtekintéséhez",
+  "see_nsfw_spoiler": "Kattintson a NSFW spoiler megtekintéséhez",
+  "always_show_nsfw": "Mindig meg szeretné jeleníteni az NSFW médiát?",
+  "always_show_nsfw_notice": "Rendben, megváltoztattuk az preferenciáit, hogy mindig megjelenítse az NSFW médiát."
 }

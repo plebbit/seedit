@@ -331,5 +331,16 @@
   "anti_spam_challenges": "Mga anti-spam na hamon",
   "anti_spam_challenges_subtitle": "Pumili ng isa o higit pang mga hamon upang maiwasan ang spam",
   "add_a_challenge": "Magdagdag ng hamon",
-  "communities_you_moderate": "Mga komunidad na iyong mino-moderate"
+  "communities_you_moderate": "Mga komunidad na iyong mino-moderate",
+  "blur_media": "I-blur ang media na minarkahan bilang NSFW/18+",
+  "nsfw_content": "Nilalaman ng NSFW",
+  "nsfw_communities": "NSFW na komunidad",
+  "hide_adult": "Itago ang mga komunidad na minarkahan bilang \"adult\"",
+  "hide_gore": "Itago ang mga komunidad na minarkahan bilang \"gore\"",
+  "hide_anti": "Itago ang mga komunidad na minarkahan bilang \"anti\"",
+  "filters": "Mga filter",
+  "see_nsfw": "I-click upang makita ang NSFW",
+  "see_nsfw_spoiler": "I-click upang makita ang NSFW spoiler",
+  "always_show_nsfw": "Palaging ipakita ang mga media ng NSFW?",
+  "always_show_nsfw_notice": "Okay, binago namin ang iyong mga preference upang palaging ipakita ang NSFW media."
 }

@@ -331,5 +331,16 @@
   "anti_spam_challenges": "تحديات مكافحة البريد العشوائي",
   "anti_spam_challenges_subtitle": "اختر تحدي أو أكثر لمنع الرسائل غير المرغوب فيها",
   "add_a_challenge": "إضافة تحدي",
-  "communities_you_moderate": "المجتمعات التي تشرف عليها"
+  "communities_you_moderate": "المجتمعات التي تشرف عليها",
+  "blur_media": "تمويه الوسائط المعلمة كـ NSFW/18+",
+  "nsfw_content": "محتوى NSFW",
+  "nsfw_communities": "مجتمعات NSFW",
+  "hide_adult": "إخفاء المجتمعات المعلَمة كـ \"بالغ\"",
+  "hide_gore": "إخفاء المجتمعات المعلَمة كـ \"دموي\"",
+  "hide_anti": "إخفاء المجتمعات المعلَمة كـ \"مناهض\"",
+  "filters": "مرشحات",
+  "see_nsfw": "انقر لرؤية NSFW",
+  "see_nsfw_spoiler": "انقر لرؤية NSFW المفسد",
+  "always_show_nsfw": "هل تريد دائمًا عرض وسائل الإعلام NSFW؟",
+  "always_show_nsfw_notice": "حسنًا، لقد غيرنا تفضيلاتك لعرض وسائل الإعلام NSFW دائمًا."
 }

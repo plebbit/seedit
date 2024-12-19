@@ -331,5 +331,16 @@
   "anti_spam_challenges": "Προκλήσεις κατά του spam",
   "anti_spam_challenges_subtitle": "Επιλέξτε μία ή περισσότερες προκλήσεις για την αποτροπή των spam",
   "add_a_challenge": "Προσθήκη πρόκλησης",
-  "communities_you_moderate": "Κοινότητες που moderates"
+  "communities_you_moderate": "Κοινότητες που moderates",
+  "blur_media": "Θολώστε τα μέσα που είναι επισημασμένα ως NSFW/18+",
+  "nsfw_content": "Περιεχόμενο NSFW",
+  "nsfw_communities": "Κοινότητες NSFW",
+  "hide_adult": "Απόκρυψη κοινοτήτων που είναι επισημασμένες ως \"ενήλικες\"",
+  "hide_gore": "Απόκρυψη κοινοτήτων που είναι επισημασμένες ως \"gore\"",
+  "hide_anti": "Απόκρυψη κοινοτήτων που είναι επισημασμένες ως \"αντι\"",
+  "filters": "Φίλτρα",
+  "see_nsfw": "Κλικ για να δείτε το NSFW",
+  "see_nsfw_spoiler": "Κλικ για να δείτε το NSFW spoiler",
+  "always_show_nsfw": "Θέλετε να εμφανίζετε πάντα τα μέσα NSFW;",
+  "always_show_nsfw_notice": "Εντάξει, αλλάξαμε τις προτιμήσεις σας για να εμφανίζετε πάντα τα μέσα NSFW."
 }

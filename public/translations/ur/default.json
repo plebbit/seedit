@@ -331,5 +331,16 @@
   "anti_spam_challenges": "اینٹی اسپام چیلنجز",
   "anti_spam_challenges_subtitle": "اسپام کو روکنے کے لیے ایک یا زیادہ چیلنجز منتخب کریں",
   "add_a_challenge": "ایک چیلنج شامل کریں",
-  "communities_you_moderate": "کمیونٹیز جو آپ ماڈریٹ کرتے ہیں"
+  "communities_you_moderate": "کمیونٹیز جو آپ ماڈریٹ کرتے ہیں",
+  "blur_media": "NSFW/18+ کے طور پر نشان زد میڈیا کو دھندلا کریں",
+  "nsfw_content": "NSFW مواد",
+  "nsfw_communities": "NSFW کمیونٹیز",
+  "hide_adult": "\"بالغ\" کے طور پر ٹیگ کی گئی کمیونٹیز کو چھپائیں",
+  "hide_gore": "\"گور\" کے طور پر ٹیگ کی گئی کمیونٹیز کو چھپائیں",
+  "hide_anti": "\"اینٹی\" کے طور پر ٹیگ کی گئی کمیونٹیز کو چھپائیں",
+  "filters": "فلٹرز",
+  "see_nsfw": "NSFW دیکھنے کے لیے کلک کریں",
+  "see_nsfw_spoiler": "NSFW سپوائلر دیکھنے کے لیے کلک کریں",
+  "always_show_nsfw": "کیا آپ ہمیشہ NSFW میڈیا دکھانا چاہتے ہیں؟",
+  "always_show_nsfw_notice": "اوکے، ہم نے آپ کی ترجیحات ہمیشہ کے لئے NSFW میڈیا دکھانے کے لئے تبدیل کر دی ہیں۔"
 }

@@ -331,5 +331,16 @@
   "anti_spam_challenges": "Anti-spam zorlukları",
   "anti_spam_challenges_subtitle": "Spam önlemek için bir veya daha fazla zorluk seçin",
   "add_a_challenge": "Bir zorluk ekle",
-  "communities_you_moderate": "Moderatörlük yaptığınız topluluklar"
+  "communities_you_moderate": "Moderatörlük yaptığınız topluluklar",
+  "blur_media": "NSFW/18+ olarak işaretlenmiş medyayı bulanıklaştırın",
+  "nsfw_content": "NSFW içeriği",
+  "nsfw_communities": "NSFW toplulukları",
+  "hide_adult": "\"Yetişkin\" olarak etiketlenen toplulukları gizle",
+  "hide_gore": "\"Gore\" olarak etiketlenen toplulukları gizle",
+  "hide_anti": "\"Anti\" olarak etiketlenen toplulukları gizle",
+  "filters": "Filtreler",
+  "see_nsfw": "NSFW görmek için tıklayın",
+  "see_nsfw_spoiler": "NSFW spoiler görmek için tıklayın",
+  "always_show_nsfw": "Her zaman NSFW medyasını göstermek ister misiniz?",
+  "always_show_nsfw_notice": "Tamam, tercihlerinizi her zaman NSFW medyasını gösterecek şekilde değiştirdik."
 }

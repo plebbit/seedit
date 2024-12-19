@@ -331,5 +331,16 @@
   "anti_spam_challenges": "Anti-spam utfordringer",
   "anti_spam_challenges_subtitle": "Velg en eller flere utfordringer for å hindre spam",
   "add_a_challenge": "Legg til en utfordring",
-  "communities_you_moderate": "Samfunnene du modererer"
+  "communities_you_moderate": "Samfunnene du modererer",
+  "blur_media": "Uskarpe media merket som NSFW/18+",
+  "nsfw_content": "NSFW-innhold",
+  "nsfw_communities": "NSFW-fellesskap",
+  "hide_adult": "Skjul samfunn merket som \"voksen\"",
+  "hide_gore": "Skjul samfunn merket som \"gore\"",
+  "hide_anti": "Skjul samfunn merket som \"anti\"",
+  "filters": "Filtre",
+  "see_nsfw": "Klikk for å se NSFW",
+  "see_nsfw_spoiler": "Klikk for å se NSFW-spoiler",
+  "always_show_nsfw": "Vil du alltid vise NSFW-media?",
+  "always_show_nsfw_notice": "Ok, vi har endret preferansene dine for å alltid vise NSFW-media."
 }

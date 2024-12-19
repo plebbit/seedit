@@ -331,5 +331,16 @@
   "anti_spam_challenges": "Anti-spam-utmaningar",
   "anti_spam_challenges_subtitle": "Välj en eller flera utmaningar för att förhindra spam",
   "add_a_challenge": "Lägg till en utmaning",
-  "communities_you_moderate": "Gemenskaper du modererar"
+  "communities_you_moderate": "Gemenskaper du modererar",
+  "blur_media": "Sudda ut media markerade som NSFW/18+",
+  "nsfw_content": "NSFW-innehåll",
+  "nsfw_communities": "NSFW-gemenskaper",
+  "hide_adult": "Dölj samhällen märkta som \"vuxen\"",
+  "hide_gore": "Dölj samhällen märkta som \"gore\"",
+  "hide_anti": "Dölj samhällen märkta som \"anti\"",
+  "filters": "Filter",
+  "see_nsfw": "Klicka för att se NSFW",
+  "see_nsfw_spoiler": "Klicka för att se NSFW-spoiler",
+  "always_show_nsfw": "Vill du alltid visa NSFW-media?",
+  "always_show_nsfw_notice": "Okej, vi har ändrat dina inställningar för att alltid visa NSFW-media."
 }

@@ -331,5 +331,16 @@
   "anti_spam_challenges": "Anti-spam výzvy",
   "anti_spam_challenges_subtitle": "Vyberte jednu nebo více výzev k prevenci spamu",
   "add_a_challenge": "Přidat výzvu",
-  "communities_you_moderate": "Komunity, které moderujete"
+  "communities_you_moderate": "Komunity, které moderujete",
+  "blur_media": "Zamázat média označená jako NSFW/18+",
+  "nsfw_content": "NSFW obsah",
+  "nsfw_communities": "NSFW komunity",
+  "hide_adult": "Skrýt komunity označené jako \"dospělý\"",
+  "hide_gore": "Skrýt komunity označené jako \"gore\"",
+  "hide_anti": "Skrýt komunity označené jako \"anti\"",
+  "filters": "Filtry",
+  "see_nsfw": "Klikněte pro zobrazení NSFW",
+  "see_nsfw_spoiler": "Klikněte pro zobrazení NSFW spoileru",
+  "always_show_nsfw": "Chcete vždy zobrazit NSFW média?",
+  "always_show_nsfw_notice": "Dobře, změnili jsme vaše preference na vždy zobrazovat NSFW média."
 }

@@ -331,5 +331,16 @@
   "anti_spam_challenges": "ความท้าทายต่อต้านสแปม",
   "anti_spam_challenges_subtitle": "เลือกความท้าทายหนึ่งหรือหลายรายการเพื่อป้องกันสแปม",
   "add_a_challenge": "เพิ่มความท้าทาย",
-  "communities_you_moderate": "ชุมชนที่คุณเป็นผู้ดูแล"
+  "communities_you_moderate": "ชุมชนที่คุณเป็นผู้ดูแล",
+  "blur_media": "เบลอเนื้อหาที่ถูกทำเครื่องหมายว่า NSFW/18+",
+  "nsfw_content": "เนื้อหา NSFW",
+  "nsfw_communities": "ชุมชน NSFW",
+  "hide_adult": "ซ่อนชุมชนที่ถูกแท็กว่า \"ผู้ใหญ่\"",
+  "hide_gore": "ซ่อนชุมชนที่ถูกแท็กว่า \"กอร์\"",
+  "hide_anti": "ซ่อนชุมชนที่ถูกแท็กว่า \"ต่อต้าน\"",
+  "filters": "ตัวกรอง",
+  "see_nsfw": "คลิกเพื่อดู NSFW",
+  "see_nsfw_spoiler": "คลิกเพื่อดู NSFW สปอยเลอร์",
+  "always_show_nsfw": "คุณต้องการแสดงสื่อ NSFW ตลอดเวลาหรือไม่?",
+  "always_show_nsfw_notice": "ตกลง, เราเปลี่ยนการตั้งค่าของคุณเพื่อแสดงสื่อ NSFW ตลอดเวลา"
 }

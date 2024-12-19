@@ -331,5 +331,16 @@
   "anti_spam_challenges": "Provocări anti-spam",
   "anti_spam_challenges_subtitle": "Alegeți unul sau mai multe provocări pentru a preveni spamul",
   "add_a_challenge": "Adăugați o provocare",
-  "communities_you_moderate": "Comunități pe care le moderezi"
+  "communities_you_moderate": "Comunități pe care le moderezi",
+  "blur_media": "Estompați media marcate ca NSFW/18+",
+  "nsfw_content": "Conținut NSFW",
+  "nsfw_communities": "Comunități NSFW",
+  "hide_adult": "Ascunde comunitățile etichetate ca \"adult\"",
+  "hide_gore": "Ascunde comunitățile etichetate ca \"gore\"",
+  "hide_anti": "Ascunde comunitățile etichetate ca \"anti\"",
+  "filters": "Filtre",
+  "see_nsfw": "Faceți clic pentru a vedea NSFW",
+  "see_nsfw_spoiler": "Faceți clic pentru a vedea spoilerul NSFW",
+  "always_show_nsfw": "Doriți să arătați întotdeauna media NSFW?",
+  "always_show_nsfw_notice": "Ok, am schimbat preferințele tale pentru a arăta întotdeauna media NSFW."
 }

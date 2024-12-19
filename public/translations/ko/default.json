@@ -331,5 +331,16 @@
   "anti_spam_challenges": "스팸 방지 챌린지",
   "anti_spam_challenges_subtitle": "스팸을 방지하기 위해 하나 이상의 챌린지를 선택하세요",
   "add_a_challenge": "도전 추가",
-  "communities_you_moderate": "당신이 관리하는 커뮤니티"
+  "communities_you_moderate": "당신이 관리하는 커뮤니티",
+  "blur_media": "NSFW/18+로 표시된 미디어 흐리게 처리",
+  "nsfw_content": "NSFW 콘텐츠",
+  "nsfw_communities": "NSFW 커뮤니티",
+  "hide_adult": "\"성인\"으로 태그된 커뮤니티 숨기기",
+  "hide_gore": "\"고어\"로 태그된 커뮤니티 숨기기",
+  "hide_anti": "\"반대\"로 태그된 커뮤니티 숨기기",
+  "filters": "필터",
+  "see_nsfw": "NSFW를 보려면 클릭",
+  "see_nsfw_spoiler": "NSFW 스포일러를 보려면 클릭",
+  "always_show_nsfw": "항상 NSFW 미디어를 표시하시겠습니까?",
+  "always_show_nsfw_notice": "알겠습니다, 항상 NSFW 미디어를 표시하도록 기본 설정을 변경했습니다."
 }

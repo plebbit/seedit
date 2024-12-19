@@ -331,5 +331,16 @@
   "anti_spam_challenges": "Desafios anti-spam",
   "anti_spam_challenges_subtitle": "Escolha um ou mais desafios para evitar spam",
   "add_a_challenge": "Adicionar um desafio",
-  "communities_you_moderate": "Comunidades que você modera"
+  "communities_you_moderate": "Comunidades que você modera",
+  "blur_media": "Desfoque mídias marcadas como NSFW/18+",
+  "nsfw_content": "Conteúdo NSFW",
+  "nsfw_communities": "Comunidades NSFW",
+  "hide_adult": "Ocultar comunidades marcadas como \"adulto\"",
+  "hide_gore": "Ocultar comunidades marcadas como \"gore\"",
+  "hide_anti": "Ocultar comunidades marcadas como \"anti\"",
+  "filters": "Filtros",
+  "see_nsfw": "Clique para ver NSFW",
+  "see_nsfw_spoiler": "Clique para ver o spoiler NSFW",
+  "always_show_nsfw": "Sempre mostrar mídias NSFW?",
+  "always_show_nsfw_notice": "Ok, mudamos suas preferências para mostrar sempre mídias NSFW."
 }

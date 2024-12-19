@@ -331,5 +331,16 @@
   "anti_spam_challenges": "Anti-spam uitdagingen",
   "anti_spam_challenges_subtitle": "Kies een of meer uitdagingen om spam te voorkomen",
   "add_a_challenge": "Voeg een uitdaging toe",
-  "communities_you_moderate": "Gemeenschappen die je modereert"
+  "communities_you_moderate": "Gemeenschappen die je modereert",
+  "blur_media": "Vervagen media gemarkeerd als NSFW/18+",
+  "nsfw_content": "NSFW-inhoud",
+  "nsfw_communities": "NSFW-gemeenschappen",
+  "hide_adult": "Verberg gemeenschappen die zijn gemarkeerd als \"volwassen\"",
+  "hide_gore": "Verberg gemeenschappen die zijn gemarkeerd als \"gore\"",
+  "hide_anti": "Verberg gemeenschappen die zijn gemarkeerd als \"anti\"",
+  "filters": "Filters",
+  "see_nsfw": "Klik om NSFW te zien",
+  "see_nsfw_spoiler": "Klik om NSFW spoiler te zien",
+  "always_show_nsfw": "Altijd NSFW-media weergeven?",
+  "always_show_nsfw_notice": "Oké, we hebben je voorkeuren veranderd om altijd NSFW-media weer te geven."
 }
