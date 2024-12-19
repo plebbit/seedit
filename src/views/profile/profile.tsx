@@ -258,17 +258,27 @@ const Profile = () => {
     }
   }, [account?.author?.address]);
 
+  const handleCloseInfobar = useCallback(() => {
+    setShowInfobar(false);
+    localStorage.setItem('profileVisits', '4');
+  }, []);
+
   const infobar = showInfobar && (
     <div className={styles.infobar}>
-      <Trans
-        i18nKey='profile_info'
-        values={{ shortAddress: account?.author?.shortAddress }}
-        components={{
-          1: <HashLink to='/settings#displayName' />,
-          2: <HashLink to='/settings#exportAccount' />,
-          3: <HashLink to='/about#newUsers' />,
-        }}
-      />
+      <div className={styles.infobarContent}>
+        <Trans
+          i18nKey='profile_info'
+          values={{ shortAddress: account?.author?.shortAddress }}
+          components={{
+            1: <HashLink to='/settings#displayName' />,
+            2: <HashLink to='/settings#exportAccount' />,
+            3: <HashLink to='/about#newUsers' />,
+          }}
+        />
+        <button onClick={handleCloseInfobar} className={styles.closeButton}>
+          ✕
+        </button>
+      </div>
     </div>
   );
 
