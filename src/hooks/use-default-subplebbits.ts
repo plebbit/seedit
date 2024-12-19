@@ -31,7 +31,7 @@ export const categorizeSubplebbits = (subplebbits: Subplebbit[]) => {
 
 export const useDefaultSubplebbits = () => {
   const [subplebbits, setSubplebbits] = useState<Subplebbit[]>([]);
-  const { hideAdultCommunities, hideGoreCommunities, hideAntiCommunities } = useFilterSettingsStore();
+  const { hideAdultCommunities, hideGoreCommunities, hideAntiCommunities, hideVulgarCommunities } = useFilterSettingsStore();
 
   useEffect(() => {
     if (cache) {
@@ -47,7 +47,7 @@ export const useDefaultSubplebbits = () => {
           if (hideAdultCommunities && tags.includes('adult')) return false;
           if (hideGoreCommunities && tags.includes('gore')) return false;
           if (hideAntiCommunities && tags.includes('anti')) return false;
-
+          if (hideVulgarCommunities && tags.includes('vulgar')) return false;
           return true;
         });
 
@@ -57,7 +57,7 @@ export const useDefaultSubplebbits = () => {
         console.warn(e);
       }
     })();
-  }, [hideAdultCommunities, hideGoreCommunities, hideAntiCommunities]);
+  }, [hideAdultCommunities, hideGoreCommunities, hideAntiCommunities, hideVulgarCommunities]);
 
   return cache || subplebbits;
 };

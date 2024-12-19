@@ -342,5 +342,7 @@
   "see_nsfw": "NSFWを見るにはクリック",
   "see_nsfw_spoiler": "NSFWのネタバレを見るにはクリック",
   "always_show_nsfw": "常にNSFWメディアを表示しますか？",
-  "always_show_nsfw_notice": "はい、NSFWメディアを常に表示するように設定を変更しました。"
+  "always_show_nsfw_notice": "はい、NSFWメディアを常に表示するように設定を変更しました。",
+  "content_options": "コンテンツオプション",
+  "hide_vulgar": "\"ヴァルガー\"としてタグ付けされたコミュニティを非表示にする"
 }

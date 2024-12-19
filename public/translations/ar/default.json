@@ -342,5 +342,7 @@
   "see_nsfw": "انقر لرؤية NSFW",
   "see_nsfw_spoiler": "انقر لرؤية NSFW المفسد",
   "always_show_nsfw": "هل تريد دائمًا عرض وسائل الإعلام NSFW؟",
-  "always_show_nsfw_notice": "حسنًا، لقد غيرنا تفضيلاتك لعرض وسائل الإعلام NSFW دائمًا."
+  "always_show_nsfw_notice": "حسنًا، لقد غيرنا تفضيلاتك لعرض وسائل الإعلام NSFW دائمًا.",
+  "content_options": "خيارات المحتوى",
+  "hide_vulgar": "إخفاء المجتمعات المعلَمة كـ \"فاحش\""
 }

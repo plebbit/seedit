@@ -342,5 +342,7 @@
   "see_nsfw": "Clicca per vedere NSFW",
   "see_nsfw_spoiler": "Clicca per vedere il spoiler NSFW",
   "always_show_nsfw": "Mostrare sempre i media NSFW?",
-  "always_show_nsfw_notice": "Ok, abbiamo cambiato le tue preferenze per mostrare sempre i media NSFW."
+  "always_show_nsfw_notice": "Ok, abbiamo cambiato le tue preferenze per mostrare sempre i media NSFW.",
+  "content_options": "Opzioni dei contenuti",
+  "hide_vulgar": "Nascondi le comunità contrassegnate come \"vulgar\""
 }

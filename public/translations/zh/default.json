@@ -342,5 +342,7 @@
   "see_nsfw": "点击查看 NSFW",
   "see_nsfw_spoiler": "点击查看 NSFW 剧透",
   "always_show_nsfw": "始终显示NSFW媒体？",
-  "always_show_nsfw_notice": "好的，我们已将您的偏好更改为始终显示NSFW媒体。"
+  "always_show_nsfw_notice": "好的，我们已将您的偏好更改为始终显示NSFW媒体。",
+  "content_options": "内容选项",
+  "hide_vulgar": "隐藏标记为“vulgar”的社区"
 }

@@ -342,5 +342,7 @@
   "see_nsfw": "Click to see nsfw",
   "see_nsfw_spoiler": "Click to see nsfw spoiler",
   "always_show_nsfw": "Always show NSFW media?",
-  "always_show_nsfw_notice": "Ok, we changed your preferences to always show NSFW media."
+  "always_show_nsfw_notice": "Ok, we changed your preferences to always show NSFW media.",
+  "content_options": "Content options",
+  "hide_vulgar": "Hide communities tagged as \"vulgar\""
 }

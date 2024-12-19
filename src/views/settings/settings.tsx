@@ -112,17 +112,19 @@ const ThemeSettings = () => {
   );
 };
 
-const FiltersSettings = () => {
+const ContentOptions = () => {
   const { t } = useTranslation();
   const {
     blurNsfwThumbnails,
     hideAdultCommunities,
     hideGoreCommunities,
     hideAntiCommunities,
+    hideVulgarCommunities,
     setBlurNsfwThumbnails,
     setHideAdultCommunities,
     setHideGoreCommunities,
     setHideAntiCommunities,
+    setHideVulgarCommunities,
   } = useFilterSettingsStore();
 
   return (
@@ -132,15 +134,18 @@ const FiltersSettings = () => {
       <label htmlFor='blurNsfwThumbnails'>{t('blur_media')}</label>
       <br />
       <br />
-      <div className={styles.filterSettingTitle}>{t('nsfw_communities')}</div>
+      <div className={styles.filterSettingTitle}>{t('communities')}</div>
       <input type='checkbox' id='hideAdultCommunities' checked={hideAdultCommunities} onChange={(e) => setHideAdultCommunities(e.target.checked)} />
-      <label htmlFor='hideAdultCommunities'>{t('hide_adult')}</label>
-      <br />
-      <input type='checkbox' id='hideGoreCommunities' checked={hideGoreCommunities} onChange={(e) => setHideGoreCommunities(e.target.checked)} />
-      <label htmlFor='hideGoreCommunities'>{t('hide_gore')}</label>
+      <label htmlFor='hideAdultCommunities'>{t('hide_adult')} (NSFW/18+)</label>
       <br />
       <input type='checkbox' id='hideAntiCommunities' checked={hideAntiCommunities} onChange={(e) => setHideAntiCommunities(e.target.checked)} />
       <label htmlFor='hideAntiCommunities'>{t('hide_anti')}</label>
+      <br />
+      <input type='checkbox' id='hideGoreCommunities' checked={hideGoreCommunities} onChange={(e) => setHideGoreCommunities(e.target.checked)} />
+      <label htmlFor='hideGoreCommunities'>{t('hide_gore')} (NSFW/18+)</label>
+      <br />
+      <input type='checkbox' id='hideVulgarCommunities' checked={hideVulgarCommunities} onChange={(e) => setHideVulgarCommunities(e.target.checked)} />
+      <label htmlFor='hideVulgarCommunities'>{t('hide_vulgar')}</label>
     </div>
   );
 };
@@ -227,9 +232,9 @@ const GeneralSettings = () => {
         </span>
       </div>
       <div className={styles.category}>
-        <span className={styles.categoryTitle}>{t('filters')}</span>
+        <span className={styles.categoryTitle}>{t('content_options')}</span>
         <span className={styles.categorySettings}>
-          <FiltersSettings />
+          <ContentOptions />
         </span>
       </div>
       <div className={styles.category}>

@@ -342,5 +342,7 @@
   "see_nsfw": "Klikk for å se NSFW",
   "see_nsfw_spoiler": "Klikk for å se NSFW-spoiler",
   "always_show_nsfw": "Vil du alltid vise NSFW-media?",
-  "always_show_nsfw_notice": "Ok, vi har endret preferansene dine for å alltid vise NSFW-media."
+  "always_show_nsfw_notice": "Ok, vi har endret preferansene dine for å alltid vise NSFW-media.",
+  "content_options": "Innstillinger for innhold",
+  "hide_vulgar": "Skjul samfunn merket som \"vulgar\""
 }

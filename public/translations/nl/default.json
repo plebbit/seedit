@@ -342,5 +342,7 @@
   "see_nsfw": "Klik om NSFW te zien",
   "see_nsfw_spoiler": "Klik om NSFW spoiler te zien",
   "always_show_nsfw": "Altijd NSFW-media weergeven?",
-  "always_show_nsfw_notice": "Oké, we hebben je voorkeuren veranderd om altijd NSFW-media weer te geven."
+  "always_show_nsfw_notice": "Oké, we hebben je voorkeuren veranderd om altijd NSFW-media weer te geven.",
+  "content_options": "Inhoudsopties",
+  "hide_vulgar": "Verberg gemeenschappen die zijn gemarkeerd als \"vulgar\""
 }

@@ -342,5 +342,7 @@
   "see_nsfw": "לחץ כדי לראות NSFW",
   "see_nsfw_spoiler": "לחץ כדי לראות את ה-NSFW ספוילר",
   "always_show_nsfw": "האם תמיד להציג מדיה NSFW?",
-  "always_show_nsfw_notice": "אוקי, שינינו את ההעדפות שלך להציג תמיד מדיה NSFW."
+  "always_show_nsfw_notice": "אוקי, שינינו את ההעדפות שלך להציג תמיד מדיה NSFW.",
+  "content_options": "אפשרויות תוכן",
+  "hide_vulgar": "הסתר קהילות שסומנו כ\"גס\""
 }

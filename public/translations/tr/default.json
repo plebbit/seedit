@@ -342,5 +342,7 @@
   "see_nsfw": "NSFW görmek için tıklayın",
   "see_nsfw_spoiler": "NSFW spoiler görmek için tıklayın",
   "always_show_nsfw": "Her zaman NSFW medyasını göstermek ister misiniz?",
-  "always_show_nsfw_notice": "Tamam, tercihlerinizi her zaman NSFW medyasını gösterecek şekilde değiştirdik."
+  "always_show_nsfw_notice": "Tamam, tercihlerinizi her zaman NSFW medyasını gösterecek şekilde değiştirdik.",
+  "content_options": "İçerik seçenekleri",
+  "hide_vulgar": "\"Vulgar\" olarak etiketlenen toplulukları gizle"
 }

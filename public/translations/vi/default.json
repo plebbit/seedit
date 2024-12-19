@@ -342,5 +342,7 @@
   "see_nsfw": "Nhấp để xem NSFW",
   "see_nsfw_spoiler": "Nhấp để xem NSFW spoiler",
   "always_show_nsfw": "Luôn hiển thị media NSFW?",
-  "always_show_nsfw_notice": "Được rồi, chúng tôi đã thay đổi sở thích của bạn để luôn hiển thị media NSFW."
+  "always_show_nsfw_notice": "Được rồi, chúng tôi đã thay đổi sở thích của bạn để luôn hiển thị media NSFW.",
+  "content_options": "Tùy chọn nội dung",
+  "hide_vulgar": "Ẩn cộng đồng được gắn thẻ là \"vulgar\""
 }

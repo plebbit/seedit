@@ -342,5 +342,7 @@
   "see_nsfw": "NSFW를 보려면 클릭",
   "see_nsfw_spoiler": "NSFW 스포일러를 보려면 클릭",
   "always_show_nsfw": "항상 NSFW 미디어를 표시하시겠습니까?",
-  "always_show_nsfw_notice": "알겠습니다, 항상 NSFW 미디어를 표시하도록 기본 설정을 변경했습니다."
+  "always_show_nsfw_notice": "알겠습니다, 항상 NSFW 미디어를 표시하도록 기본 설정을 변경했습니다.",
+  "content_options": "콘텐츠 옵션",
+  "hide_vulgar": "\"벌거벗은\"으로 태그된 커뮤니티 숨기기"
 }

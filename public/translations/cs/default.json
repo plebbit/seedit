@@ -342,5 +342,7 @@
   "see_nsfw": "Klikněte pro zobrazení NSFW",
   "see_nsfw_spoiler": "Klikněte pro zobrazení NSFW spoileru",
   "always_show_nsfw": "Chcete vždy zobrazit NSFW média?",
-  "always_show_nsfw_notice": "Dobře, změnili jsme vaše preference na vždy zobrazovat NSFW média."
+  "always_show_nsfw_notice": "Dobře, změnili jsme vaše preference na vždy zobrazovat NSFW média.",
+  "content_options": "Možnosti obsahu",
+  "hide_vulgar": "Skrýt komunity označené jako \"vulgar\""
 }

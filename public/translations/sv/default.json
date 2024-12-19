@@ -342,5 +342,7 @@
   "see_nsfw": "Klicka för att se NSFW",
   "see_nsfw_spoiler": "Klicka för att se NSFW-spoiler",
   "always_show_nsfw": "Vill du alltid visa NSFW-media?",
-  "always_show_nsfw_notice": "Okej, vi har ändrat dina inställningar för att alltid visa NSFW-media."
+  "always_show_nsfw_notice": "Okej, vi har ändrat dina inställningar för att alltid visa NSFW-media.",
+  "content_options": "Innehållsoptioner",
+  "hide_vulgar": "Dölj samhällen märkta som \"vulgar\""
 }
