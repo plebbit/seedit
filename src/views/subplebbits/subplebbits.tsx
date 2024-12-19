@@ -146,13 +146,11 @@ const Subplebbit = ({ subplebbit }: SubplebbitProps) => {
           </div>
         </div>
       </div>
-      {suggested?.avatarUrl && (
-        <div className={styles.avatar}>
-          <Link to={`/p/${address}`}>
-            <img src={suggested?.avatarUrl} alt={address} />
-          </Link>
-        </div>
-      )}
+      <div className={`${styles.avatar} ${!suggested?.avatarUrl ? styles.defaultAvatar : ''}`}>
+        <Link to={`/p/${address}`}>
+          <img src={suggested?.avatarUrl || 'assets/logo/seedit.png'} alt={address} />
+        </Link>
+      </div>
       <div className={styles.entry}>
         <div className={styles.title}>
           <div className={styles.titleWrapper}>

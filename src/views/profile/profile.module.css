@@ -135,3 +135,10 @@ div[data-viewport-type="window"] {
   margin-top: -2px;
   text-transform: lowercase;
 }
+
+.closeButton {
+  cursor: pointer;
+  margin-left: 10px;
+  padding: 0 3px;
+  
+}

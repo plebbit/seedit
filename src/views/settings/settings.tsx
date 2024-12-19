@@ -1,20 +1,23 @@
 import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { Trans, useTranslation } from 'react-i18next';
+import { Capacitor } from '@capacitor/core';
 import { setAccount, useAccount } from '@plebbit/plebbit-react-hooks';
 import { isSettingsPlebbitOptionsView } from '../../lib/utils/view-utils';
-import styles from './settings.module.css';
+import useContentOptionsStore from '../../stores/use-content-options-store';
+import useTheme from '../../hooks/use-theme';
 import AccountSettings from './account-settings';
 import AddressSettings from './address-settings';
 import AvatarSettings from './avatar-settings';
 import PlebbitOptions from './plebbit-options';
 import WalletSettings from './wallet-settings';
-import useTheme from '../../hooks/use-theme';
+import styles from './settings.module.css';
 import packageJson from '../../../package.json';
 import _ from 'lodash';
 
 const commitRef = process.env.REACT_APP_COMMIT_REF;
 const isElectron = window.isElectron === true;
+const isAndroid = Capacitor.getPlatform() === 'android';
 
 const CheckForUpdates = () => {
   const { t } = useTranslation();
@@ -31,8 +34,16 @@ const CheckForUpdates = () => {
         const newVersionText = t('new_stable_version', { newVersion: packageData.version, oldVersion: packageJson.version });
         const updateActionText = isElectron
           ? t('download_latest_desktop', { link: 'https://github.com/plebbit/seedit/releases/latest', interpolation: { escapeValue: false } })
+          : isAndroid
+          ? t('download_latest_android')
           : t('refresh_to_update');
-        alert(newVersionText + ' ' + updateActionText);
+        if (isAndroid) {
+          if (window.confirm(newVersionText + ' ' + updateActionText)) {
+            window.open(`https://github.com/plebbit/seedit/releases/download/v${packageData.version}/seedit-${packageData.version}.apk`, '_blank', 'noreferrer');
+          }
+        } else {
+          alert(newVersionText + ' ' + updateActionText);
+        }
         updateAvailable = true;
       }
 
@@ -108,6 +119,44 @@ const ThemeSettings = () => {
       <option value='light'>{t('light')}</option>
       <option value='dark'>{t('dark')}</option>
     </select>
+  );
+};
+
+const ContentOptions = () => {
+  const { t } = useTranslation();
+  const {
+    blurNsfwThumbnails,
+    hideAdultCommunities,
+    hideGoreCommunities,
+    hideAntiCommunities,
+    hideVulgarCommunities,
+    setBlurNsfwThumbnails,
+    setHideAdultCommunities,
+    setHideGoreCommunities,
+    setHideAntiCommunities,
+    setHideVulgarCommunities,
+  } = useContentOptionsStore();
+
+  return (
+    <div className={styles.filters}>
+      <div className={styles.filterSettingTitle}>{t('nsfw_content')}</div>
+      <input type='checkbox' id='blurNsfwThumbnails' checked={blurNsfwThumbnails} onChange={(e) => setBlurNsfwThumbnails(e.target.checked)} />
+      <label htmlFor='blurNsfwThumbnails'>{t('blur_media')}</label>
+      <br />
+      <br />
+      <div className={styles.filterSettingTitle}>{t('communities')}</div>
+      <input type='checkbox' id='hideAdultCommunities' checked={hideAdultCommunities} onChange={(e) => setHideAdultCommunities(e.target.checked)} />
+      <label htmlFor='hideAdultCommunities'>{t('hide_adult')} (NSFW/18+)</label>
+      <br />
+      <input type='checkbox' id='hideAntiCommunities' checked={hideAntiCommunities} onChange={(e) => setHideAntiCommunities(e.target.checked)} />
+      <label htmlFor='hideAntiCommunities'>{t('hide_anti')}</label>
+      <br />
+      <input type='checkbox' id='hideGoreCommunities' checked={hideGoreCommunities} onChange={(e) => setHideGoreCommunities(e.target.checked)} />
+      <label htmlFor='hideGoreCommunities'>{t('hide_gore')} (NSFW/18+)</label>
+      <br />
+      <input type='checkbox' id='hideVulgarCommunities' checked={hideVulgarCommunities} onChange={(e) => setHideVulgarCommunities(e.target.checked)} />
+      <label htmlFor='hideVulgarCommunities'>{t('hide_vulgar')}</label>
+    </div>
   );
 };
 
@@ -190,6 +239,12 @@ const GeneralSettings = () => {
         <span className={styles.categoryTitle}>{t('theme')}</span>
         <span className={styles.categorySettings}>
           <ThemeSettings />
+        </span>
+      </div>
+      <div className={styles.category}>
+        <span className={styles.categoryTitle}>{t('content_options')}</span>
+        <span className={styles.categorySettings}>
+          <ContentOptions />
         </span>
       </div>
       <div className={styles.category}>

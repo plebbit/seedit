@@ -5,8 +5,11 @@
   font-size: 10px;
   line-height: 14px;
   padding: 0 4px;
-  margin: 0 2px 2px 0;
   text-transform: uppercase;
+}
+
+.label {
+  padding-right: 8px;
 }
 
 .black {
@@ -27,4 +30,9 @@
 .green {
   color: var(--green);
   border-color: var(--green);
+}
+
+.nsfw-red {
+  color: var(--red-nsfw);
+  border-color: var(--red-nsfw);
 }

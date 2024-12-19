@@ -54,3 +54,7 @@
 .spoilerIcon {
   background-image: var(--thumbnail-icon-spoiler);
 }
+
+.nsfwIcon {
+  background-image: var(--thumbnail-icon-nsfw);
+}

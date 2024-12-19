@@ -145,7 +145,7 @@
 }
 
 .homeButton {
-  padding-left: 5px;
+  margin-left: 5px;
 }
 
 .moreLink {
@@ -162,7 +162,7 @@
 
 @media (min-width: 640px) {
   .homeButton {
-    padding-left: 10px;
+    margin-left: 10px;
   }
 }
 

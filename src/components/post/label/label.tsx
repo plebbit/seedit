@@ -9,7 +9,11 @@ interface LabelProps {
 const Label = ({ color, text }: LabelProps) => {
   const { t } = useTranslation();
 
-  return <span className={`${styles.stamp} ${styles[color]}`}>{t(text)}</span>;
+  return (
+    <span className={styles.label}>
+      <span className={`${styles.stamp} ${styles[color]}`}>{t(text)}</span>
+    </span>
+  );
 };
 
 export default Label;

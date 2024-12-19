@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { useAccountComments, useBlock, useFeed, useSubplebbit } from '@plebbit/plebbit-react-hooks';
 import { Virtuoso, VirtuosoHandle, StateSnapshot } from 'react-virtuoso';
@@ -10,6 +10,8 @@ import Sidebar from '../../components/sidebar';
 import useFeedStateString from '../../hooks/use-feed-state-string';
 import useTimeFilter from '../../hooks/use-time-filter';
 import { usePinnedPostsStore } from '../../stores/use-pinned-posts-store';
+import { useIsBroadlyNsfwSubplebbit } from '../../hooks/use-is-broadly-nsfw-subplebbit';
+import useContentOptionsStore from '../../stores/use-content-options-store';
 
 const lastVirtuosoStates: { [key: string]: StateSnapshot } = {};
 
@@ -18,6 +20,23 @@ const Subplebbit = () => {
   const params = useParams();
   const subplebbitAddress = params.subplebbitAddress;
   const subplebbitAddresses = useMemo(() => [subplebbitAddress], [subplebbitAddress]) as string[];
+
+  const contentOptionsStore = useContentOptionsStore();
+  const hasUnhiddenAnyNsfwCommunity =
+    !contentOptionsStore.hideAdultCommunities ||
+    !contentOptionsStore.hideGoreCommunities ||
+    !contentOptionsStore.hideAntiCommunities ||
+    !contentOptionsStore.hideVulgarCommunities;
+  const [hasAcceptedWarning, setHasAcceptedWarning] = useState(hasUnhiddenAnyNsfwCommunity);
+  const isBroadlyNsfwSubplebbit = useIsBroadlyNsfwSubplebbit(subplebbitAddress || '');
+
+  const handleAcceptWarning = () => {
+    contentOptionsStore.setHideAdultCommunities(false);
+    contentOptionsStore.setHideGoreCommunities(false);
+    contentOptionsStore.setHideAntiCommunities(false);
+    contentOptionsStore.setHideVulgarCommunities(false);
+    setHasAcceptedWarning(true);
+  };
 
   const sortType = params?.sortType || 'hot';
   const timeFilterName = params.timeFilterName || 'all';
@@ -162,7 +181,21 @@ const Subplebbit = () => {
     }
   }, [feed, setPinnedPostsCount]);
 
-  return (
+  return isBroadlyNsfwSubplebbit && !hasAcceptedWarning ? (
+    <div className={styles.over18}>
+      <img src={`${process.env.PUBLIC_URL}/assets/over18.png`} alt='over 18' />
+      <div className={styles.warning}>
+        <h3>{t('must_be_over_18')}</h3>
+        <p>{t('must_be_over_18_explanation')}</p>
+      </div>
+      <div className={styles.warningButtons}>
+        <button>
+          <Link to='/'>{t('no_thank_you')}</Link>
+        </button>
+        <button onClick={handleAcceptWarning}>{t('continue')}</button>
+      </div>
+    </div>
+  ) : (
     <div className={styles.content}>
       <div className={styles.sidebar}>
         <Sidebar subplebbit={subplebbit} isSubCreatedButNotYetPublished={started && isSubCreatedButNotYetPublished} settings={settings} />

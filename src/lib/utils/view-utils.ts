@@ -30,7 +30,7 @@ export const getAboutLink = (pathname: string, params: ParamsType): string => {
 };
 
 export const isAllView = (pathname: string): boolean => {
-  return pathname.startsWith('/p/all');
+  return pathname === '/p/all' || pathname.startsWith('/p/all/');
 };
 
 export const isAllAboutView = (pathname: string): boolean => {
@@ -83,6 +83,10 @@ export const isInboxPostRepliesView = (pathname: string): boolean => {
 
 export const isInboxUnreadView = (pathname: string): boolean => {
   return pathname === `/inbox/unread`;
+};
+
+export const isModView = (pathname: string): boolean => {
+  return pathname === `/p/mod` || pathname.startsWith(`/p/mod/`);
 };
 
 export const isPendingPostView = (pathname: string, params: ParamsType): boolean => {

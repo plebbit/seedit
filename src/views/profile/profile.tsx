@@ -240,35 +240,45 @@ const Profile = () => {
   const { t } = useTranslation();
   const account = useAccount();
   const isMobile = useWindowWidth() < 640;
-  const [showInfobar, setShowInfobar] = useState(false);
+  // Show infobar for first 3 visits if account wasn't imported
+  const [showInfobar, setShowInfobar] = useState(() => {
+    const profileVisits = parseInt(localStorage.getItem('profileVisits') || '0');
+    const importedAccountAddress = localStorage.getItem('importedAccountAddress');
+    const shouldShow = profileVisits < 4 && importedAccountAddress !== account?.author?.address;
+
+    if (shouldShow) {
+      localStorage.setItem('profileVisits', (profileVisits + 1).toString());
+    }
+
+    return shouldShow;
+  });
 
   const profileTitle = account?.author?.displayName ? `${account?.author?.displayName} (u/${account?.author?.shortAddress})` : `u/${account?.author?.shortAddress}`;
   useEffect(() => {
     document.title = profileTitle + ' - Seedit';
   }, [t, profileTitle]);
 
-  // only show infobar on first profile access and if the current account wasn't imported
-  useEffect(() => {
-    const wasProfileAccessed = localStorage.getItem('wasProfileAccessed');
-    const importedAccountAddress = localStorage.getItem('importedAccountAddress');
-
-    if (!wasProfileAccessed && importedAccountAddress !== account?.author?.address) {
-      setShowInfobar(true);
-      localStorage.setItem('wasProfileAccessed', 'true');
-    }
-  }, [account?.author?.address]);
+  const handleCloseInfobar = useCallback(() => {
+    setShowInfobar(false);
+    localStorage.setItem('profileVisits', '4');
+  }, []);
 
   const infobar = showInfobar && (
     <div className={styles.infobar}>
-      <Trans
-        i18nKey='profile_info'
-        values={{ shortAddress: account?.author?.shortAddress }}
-        components={{
-          1: <HashLink to='/settings#displayName' />,
-          2: <HashLink to='/settings#exportAccount' />,
-          3: <HashLink to='/about#newUsers' />,
-        }}
-      />
+      <div className={styles.infobarContent}>
+        <Trans
+          i18nKey='profile_info'
+          values={{ shortAddress: account?.author?.shortAddress }}
+          components={{
+            1: <HashLink to='/settings#displayName' />,
+            2: <HashLink to='/settings#exportAccount' />,
+            3: <HashLink to='/about#newUsers' />,
+          }}
+        />
+        <button onClick={handleCloseInfobar} className={styles.closeButton}>
+          ✕
+        </button>
+      </div>
     </div>
   );
 

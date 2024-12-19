@@ -37,9 +37,25 @@ interface ReplyAuthorProps {
   isAvatarDefined: boolean;
   removed: boolean;
   shortAuthorAddress: string | undefined;
+  submitterAddress: string;
+  subplebbitAddress: string;
+  postCid: string;
 }
 
-const ReplyAuthor = ({ address, authorRole, cid, deleted, displayName, imageUrl, isAvatarDefined, removed, shortAuthorAddress }: ReplyAuthorProps) => {
+const ReplyAuthor = ({
+  address,
+  authorRole,
+  cid,
+  deleted,
+  displayName,
+  imageUrl,
+  isAvatarDefined,
+  removed,
+  shortAuthorAddress,
+  submitterAddress,
+  subplebbitAddress,
+  postCid,
+}: ReplyAuthorProps) => {
   const { t } = useTranslation();
   const { hideAvatars } = useAvatarVisibilityStore();
   const isAuthorAdmin = authorRole === 'admin';
@@ -48,6 +64,8 @@ const ReplyAuthor = ({ address, authorRole, cid, deleted, displayName, imageUrl,
   const authorRoleInitial = (isAuthorOwner && 'O') || (isAuthorAdmin && 'A') || (isAuthorModerator && 'M') || '';
   const moderatorClass = `${isAuthorOwner ? styles.owner : isAuthorAdmin ? styles.admin : isAuthorModerator ? styles.moderator : ''}`;
   const shortDisplayName = displayName?.length > 20 ? displayName?.slice(0, 20) + '...' : displayName;
+  const isAuthorSubmitter = address === submitterAddress;
+
   return (
     <>
       {removed || deleted ? (
@@ -60,20 +78,28 @@ const ReplyAuthor = ({ address, authorRole, cid, deleted, displayName, imageUrl,
             </span>
           )}
           {displayName && (
-            <Link to={`/u/${address}/c/${cid}`} className={`${styles.author} ${moderatorClass}`}>
+            <Link to={`/u/${address}/c/${cid}`} className={`${styles.author} ${moderatorClass} ${!moderatorClass && isAuthorSubmitter ? styles.submitter : ''}`}>
               {shortDisplayName}{' '}
             </Link>
           )}
-          <Link to={`/u/${address}/c/${cid}`} className={`${styles.author} ${moderatorClass}`}>
+          <Link to={`/u/${address}/c/${cid}`} className={`${styles.author} ${moderatorClass} ${!moderatorClass && isAuthorSubmitter ? styles.submitter : ''}`}>
             {displayName ? `u/${shortAuthorAddress}` : shortAuthorAddress}
           </Link>
-          {authorRole && (
+          {(authorRole || isAuthorSubmitter) && (
             <span className={styles.moderatorBrackets}>
               {' '}
               [
-              <span className={moderatorClass} title={authorRole}>
-                {authorRoleInitial}
-              </span>
+              {isAuthorSubmitter && (
+                <Link to={`/p/${subplebbitAddress}/c/${postCid}`} className={styles.submitter} title={t('submitter')}>
+                  S
+                </Link>
+              )}
+              {isAuthorSubmitter && authorRole && ','}
+              {authorRole && (
+                <span className={moderatorClass} title={authorRole}>
+                  {authorRoleInitial}
+                </span>
+              )}
               ]
             </span>
           )}
@@ -348,6 +374,8 @@ const Reply = ({ cidOfReplyWithContext, depth = 0, isSingleComment, isSingleRepl
     </span>
   );
 
+  const post = useComment({ commentCid: postCid });
+
   return (
     <div className={styles.reply}>
       {isSingleReply && !isInInboxView && <ParentLink postCid={cid ? postCid : parentOfPendingReply?.postCid} />}
@@ -376,6 +404,9 @@ const Reply = ({ cidOfReplyWithContext, depth = 0, isSingleComment, isSingleRepl
                   isAvatarDefined={!!author?.avatar}
                   removed={removed}
                   shortAuthorAddress={shortAuthorAddress}
+                  submitterAddress={post?.author?.address}
+                  subplebbitAddress={subplebbitAddress}
+                  postCid={postCid}
                 />
                 <span className={styles.score}>{scoreString}</span>{' '}
                 <span className={styles.time}>

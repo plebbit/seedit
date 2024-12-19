@@ -4,8 +4,7 @@
 
 .expando {
   display: block;
-  padding: 5px;
-  padding-right: 0;
+  padding-top: 5px;
   clear: left;
   position: relative;
 }
@@ -17,19 +16,6 @@
 .usertext {
   unicode-bidi: isolate;
   font-size: small;
-  width: 862px;
-}
-
-@media (max-width: 1200px) {
-  .usertext {
-    width: calc(100vw - 335px);
-  }
-}
-
-@media (max-width: 640px) {
-  .usertext {
-    width: 100%;
-  }
 }
 
 .markdown {
@@ -59,13 +45,16 @@
 
 .mediaPreview {
   display: inline-block;
+  position: relative;
+  max-width: 100%;
+  margin-bottom: 5px;
 }
 
 @media (max-width: 1200px) {
   .mediaPreview img,
   .mediaPreview video,
   .mediaPreview iframe {
-    max-width: calc(100vw - 335px) !important;
+    max-width: calc(100vw - 435px) !important;
   }
 }
 
@@ -134,5 +123,105 @@
 
   .expando {
     padding-right: 5px;
+  }
+}
+
+.blurContent {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(40px);
+}
+
+.unblurButton {
+  color: white;
+  position: absolute;
+  font-size: 13px;
+  z-index: 1;
+  top: 50%;
+  left: 50%;  
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+  border: 1px solid #ffffff;
+  padding: 10px;
+  text-transform: uppercase;
+}
+
+.alwaysShowNsfwButton {
+  color: white;
+  position: absolute;
+  font-size: 12px;
+  z-index: 1;
+  top: calc(50% + 45px);
+  left: 50%;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+}
+
+.alwaysShowNsfwButton:hover {
+  text-decoration: underline;
+}
+
+.alwaysShowNsfwNotice {
+  background: #fafaf8;
+  border: 1px solid #e5e3da;
+  clear: left;
+  margin-top: 5px;
+  padding: 5px 10px;
+  position: relative;
+  unicode-bidi: isolate;
+  font-size: small;
+  margin-bottom: 10px;
+  display: inline-block;
+}
+
+.alwaysShowNsfwNotice p {
+  color: #222222;
+  font-weight: 400;
+  word-wrap: break-word;
+  line-height: 15px;
+  margin: 5px 0;
+  font-size: 12px;
+}
+
+.alwaysShowNsfwNotice button {
+  background-color: #4f86b5;
+  color: #ffffff;
+  margin-bottom: 0;
+  display: inline-block;
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: bold;
+  cursor: pointer;
+  background-image: none;
+  border: 1px solid transparent;
+  white-space: nowrap;
+  padding: 4px 12px 3px;
+  font-size: 12px;
+  line-height: 20px;
+  border-radius: 3px;
+  margin-left: auto;
+  display: block;
+  border-bottom: 2px solid #4270a2;
+}
+
+.alwaysShowNsfwNotice button:hover {
+  background-color: #4980ae;
+}
+
+@media (max-width: 770px) {
+  .mediaPreview {
+    width: 100%;
+  }
+}
+
+@media (max-width: 640px) {
+  .expando {
+    padding-left: 5px;
   }
 }

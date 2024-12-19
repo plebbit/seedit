@@ -13,6 +13,7 @@ import {
   isAllView,
   isHomeAboutView,
   isHomeView,
+  isModView,
   isPendingPostView,
   isPostPageView,
   isSubplebbitAboutView,
@@ -220,6 +221,7 @@ const Sidebar = ({ comment, isSubCreatedButNotYetPublished, settings, subplebbit
   const isInAllView = isAllView(location.pathname);
   const isInHomeAboutView = isHomeAboutView(location.pathname);
   const isInHomeView = isHomeView(location.pathname);
+  const isInModView = isModView(location.pathname);
   const isInPendingPostView = isPendingPostView(location.pathname, params);
   const isInPostPageView = isPostPageView(location.pathname, params);
   const isInSubplebbitsView = isSubplebbitsView(location.pathname);
@@ -230,7 +232,11 @@ const Sidebar = ({ comment, isSubCreatedButNotYetPublished, settings, subplebbit
   const subplebbitCreator = findSubplebbitCreator(roles);
   const creatorAddress = subplebbitCreator === 'anonymous' ? 'anonymous' : `${Plebbit.getShortAddress(subplebbitCreator)}`;
   const submitRoute =
-    isInHomeView || isInHomeAboutView || isInAllView ? '/submit' : isInPendingPostView ? `/p/${pendingPost?.subplebbitAddress}/submit` : `/p/${address}/submit`;
+    isInHomeView || isInHomeAboutView || isInAllView || isInModView
+      ? '/submit'
+      : isInPendingPostView
+      ? `/p/${pendingPost?.subplebbitAddress}/submit`
+      : `/p/${address}/submit`;
 
   const { blocked, unblock, block } = useBlock({ address });
 
@@ -287,7 +293,7 @@ const Sidebar = ({ comment, isSubCreatedButNotYetPublished, settings, subplebbit
           <div className={styles.nub} />
         </div>
       </Link>
-      {!isInHomeView && !isInHomeAboutView && !isInAllView && !isInPendingPostView && !isInSubplebbitsView && !isInHomeAboutView && (
+      {!isInHomeView && !isInHomeAboutView && !isInAllView && !isInModView && !isInPendingPostView && !isInSubplebbitsView && !isInHomeAboutView && (
         <div className={styles.titleBox}>
           <Link className={styles.title} to={`/p/${address}`}>
             {subplebbit?.address}

@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useAccount } from '@plebbit/plebbit-react-hooks';
 import Plebbit from '@plebbit/plebbit-js/dist/browser/index.js';
+import useContentOptionsStore from '../stores/use-content-options-store';
 
 interface Subplebbit {
   title?: string;
@@ -28,8 +29,6 @@ export const categorizeSubplebbits = (subplebbits: Subplebbit[]) => {
   return { plebbitSubs, interestsSubs, randomSubs, internationalSubs, projectsSubs };
 };
 
-const nsfwTags = ['gore', 'adult', 'anti'];
-
 export const useDefaultSubplebbits = () => {
   const [subplebbits, setSubplebbits] = useState<Subplebbit[]>([]);
 
@@ -39,17 +38,9 @@ export const useDefaultSubplebbits = () => {
     }
     (async () => {
       try {
-        const multisub = await fetch(
-          'https://raw.githubusercontent.com/plebbit/temporary-default-subplebbits/master/multisub.json',
-          // { cache: 'no-cache' }
-        ).then((res) => res.json());
-
-        const filteredSubplebbits = multisub.subplebbits.filter((subplebbit: Subplebbit) => {
-          return !subplebbit.tags?.some((tag) => nsfwTags.includes(tag));
-        });
-
-        cache = filteredSubplebbits;
-        setSubplebbits(filteredSubplebbits);
+        const multisub = await fetch('https://raw.githubusercontent.com/plebbit/temporary-default-subplebbits/master/multisub.json').then((res) => res.json());
+        cache = multisub.subplebbits;
+        setSubplebbits(multisub.subplebbits);
       } catch (e) {
         console.warn(e);
       }
@@ -61,7 +52,21 @@ export const useDefaultSubplebbits = () => {
 
 export const useDefaultSubplebbitAddresses = () => {
   const defaultSubplebbits = useDefaultSubplebbits();
-  const categorizedSubplebbits = useMemo(() => categorizeSubplebbits(defaultSubplebbits), [defaultSubplebbits]);
+  const { hideAdultCommunities, hideGoreCommunities, hideAntiCommunities, hideVulgarCommunities } = useContentOptionsStore();
+
+  const filteredSubplebbits = useMemo(() => {
+    return defaultSubplebbits.filter((subplebbit: Subplebbit) => {
+      const tags = subplebbit.tags || [];
+      if (hideAdultCommunities && tags.includes('adult')) return false;
+      if (hideGoreCommunities && tags.includes('gore')) return false;
+      if (hideAntiCommunities && tags.includes('anti')) return false;
+      if (hideVulgarCommunities && tags.includes('vulgar')) return false;
+      return true;
+    });
+  }, [defaultSubplebbits, hideAdultCommunities, hideGoreCommunities, hideAntiCommunities, hideVulgarCommunities]);
+
+  const categorizedSubplebbits = useMemo(() => categorizeSubplebbits(filteredSubplebbits), [filteredSubplebbits]);
+
   return useMemo(
     () =>
       [

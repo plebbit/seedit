@@ -48,7 +48,7 @@ const Home = () => {
     if (feed.length === 0) {
       footerContent = t('no_posts');
     }
-    if (hasMore || (subplebbitAddresses && subplebbitAddresses.length === 0)) {
+    if (hasMore || subplebbitAddresses.length > 0 || (subplebbitAddresses && subplebbitAddresses.length === 0)) {
       footerContent = (
         <>
           {subplebbitAddressesWithNewerPosts.length > 0 ? (
@@ -99,7 +99,7 @@ const Home = () => {
     const setLastVirtuosoState = () => {
       virtuosoRef.current?.getState((snapshot: StateSnapshot) => {
         if (snapshot?.ranges?.length) {
-          lastVirtuosoStates[sortType + timeFilterName] = snapshot;
+          lastVirtuosoStates[sortType + timeFilterName + 'home'] = snapshot;
         }
       });
     };
@@ -107,7 +107,7 @@ const Home = () => {
     return () => window.removeEventListener('scroll', setLastVirtuosoState);
   }, [sortType, timeFilterName]);
 
-  const lastVirtuosoState = lastVirtuosoStates?.[sortType + timeFilterName];
+  const lastVirtuosoState = lastVirtuosoStates?.[sortType + timeFilterName + 'home'];
 
   useEffect(() => {
     document.title = `Seedit`;

@@ -1,10 +1,12 @@
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { Link, useParams } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
+import { CommentMediaInfo } from '../../../lib/utils/media-utils';
+import useContentOptionsStore from '../../../stores/use-content-options-store';
+import { useIsNsfwSubplebbit } from '../../../hooks/use-is-nsfw-subplebbit';
 import styles from './expando.module.css';
 import Embed from '../embed';
-import { CommentMediaInfo } from '../../../lib/utils/media-utils';
 import Markdown from '../../markdown';
-import { useTranslation } from 'react-i18next';
 
 interface ExpandoProps {
   authorEditReason?: string;
@@ -14,6 +16,7 @@ interface ExpandoProps {
   expanded: boolean;
   link?: string;
   modEditReason?: string;
+  nsfw?: boolean;
   removed?: boolean;
   showContent: boolean;
   spoiler?: boolean;
@@ -28,14 +31,28 @@ const Expando = ({
   expanded,
   link,
   modEditReason,
+  nsfw,
   removed,
   showContent,
   spoiler = false,
   toggleExpanded,
 }: ExpandoProps) => {
   const { t } = useTranslation();
+  const { blurNsfwThumbnails, setBlurNsfwThumbnails } = useContentOptionsStore();
+  const [hideContent, setHideContent] = useState(blurNsfwThumbnails);
+  const [alwaysShowNsfw, setAlwaysShowNsfw] = useState(false);
 
-  const [showSpoiler, setShowSpoiler] = useState(false);
+  useEffect(() => {
+    if (!expanded) {
+      setHideContent(true);
+    }
+  }, [expanded]);
+
+  const handleAlwaysShowNsfw = () => {
+    setBlurNsfwThumbnails(false);
+    setHideContent(false);
+    setAlwaysShowNsfw(true);
+  };
 
   let mediaComponent = null;
 
@@ -51,53 +68,62 @@ const Expando = ({
     mediaComponent = <Embed url={commentMediaInfo.url} />;
   }
 
+  const pageSubplebbitAddress = useParams().subplebbitAddress;
+  const isNsfwSubplebbit = useIsNsfwSubplebbit(pageSubplebbitAddress || '');
+
   return (
     <div className={expanded ? styles.expando : styles.expandoHidden}>
-      <div
-        className={styles.expandoContent}
-        onClick={() => {
-          spoiler && !showSpoiler && setShowSpoiler(true);
-        }}
-      >
-        {spoiler && !showSpoiler && !(deleted || removed) && (
-          <>
-            <div className={styles.hideSpoiler} />
-            <span className={styles.showSpoilerButton}>{t('view_spoiler')}</span>
-          </>
-        )}
-        {link && !removed && commentMediaInfo?.type !== 'webpage' && (
-          <div className={styles.mediaPreview}>
-            <Link
-              to={link}
-              onClick={(e) => {
-                if (e.button === 0) {
-                  e.preventDefault();
-                  toggleExpanded && toggleExpanded();
-                }
-              }}
-            >
-              {mediaComponent}
-            </Link>
-          </div>
-        )}
-        {content && showContent && (
-          <div className={styles.usertext}>
-            <div className={styles.markdown}>
-              <Markdown content={content} />
-              {modEditReason && (
-                <p>
-                  {t('mod_reason')}: {modEditReason}
-                </p>
+      {link && !removed && commentMediaInfo?.type !== 'webpage' && (
+        <div className={styles.mediaPreview} onClick={() => setHideContent(false)}>
+          {((nsfw && blurNsfwThumbnails && !isNsfwSubplebbit) || spoiler) && hideContent && link && commentMediaInfo?.type !== 'webpage' && !(deleted || removed) && (
+            <>
+              <div className={styles.blurContent} />
+              <span className={styles.unblurButton}>{nsfw && spoiler ? t('see_nsfw_spoiler') : spoiler ? t('view_spoiler') : nsfw ? t('see_nsfw') : ''}</span>
+              {nsfw && (
+                <span className={styles.alwaysShowNsfwButton} onClick={handleAlwaysShowNsfw}>
+                  {t('always_show_nsfw')}
+                </span>
               )}
-              {authorEditReason && !(removed || deleted) && (
-                <p>
-                  {t('edit')}: {authorEditReason}
-                </p>
-              )}
-            </div>
+            </>
+          )}
+          <Link
+            to={link}
+            onClick={(e) => {
+              if (e.button === 0) {
+                e.preventDefault();
+                toggleExpanded && toggleExpanded();
+              }
+            }}
+          >
+            {mediaComponent}
+          </Link>
+        </div>
+      )}
+      {alwaysShowNsfw && (
+        <div className={styles.alwaysShowNsfwContainer}>
+          <div className={styles.alwaysShowNsfwNotice}>
+            <p>{t('always_show_nsfw_notice')}</p>
+            <button onClick={() => setAlwaysShowNsfw(false)}>{t('undo')}</button>
           </div>
-        )}
-      </div>
+        </div>
+      )}
+      {content && showContent && (
+        <div className={styles.usertext}>
+          <div className={styles.markdown}>
+            <Markdown content={content} />
+            {modEditReason && (
+              <p>
+                {t('mod_reason')}: {modEditReason}
+              </p>
+            )}
+            {authorEditReason && !(removed || deleted) && (
+              <p>
+                {t('edit')}: {authorEditReason}
+              </p>
+            )}
+          </div>
+        </div>
+      )}
     </div>
   );
 };
