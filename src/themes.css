@@ -58,6 +58,7 @@
   --red: rgb(255, 21, 21);
   --red-nsfw: rgb(255, 55, 89);
   --removed-reply-backgrouhd-color: rgb(27, 30, 32);
+  --submitter-color: rgb(67, 166, 255);
   --text: #bfbfbf;
   --text-button: url("/public/assets/buttons/text-button-dark.png");
   --text-button-hover: url("/public/assets/buttons/text-button-hover.png");
@@ -137,6 +138,7 @@
   --red: red;
   --red-nsfw: #d10023;
   --removed-reply-backgrouhd-color: #f0f0f0;
+  --submitter-color: #0055df;
   --text: black;
   --text-button: url("/public/assets/buttons/text-button.png");
   --text-button-hover: url("/public/assets/buttons/text-button-hover.png");

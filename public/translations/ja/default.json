@@ -350,5 +350,6 @@
   "must_be_over_18_explanation": "このコンテンツを見るには少なくとも18歳でなければなりません。あなたは18歳以上で、成人向けコンテンツを見る準備ができていますか？",
   "no_thank_you": "いいえ、ありがとう",
   "continue": "続ける",
-  "download_latest_android": "最新のAndroidバージョンをダウンロードしますか？"
+  "download_latest_android": "最新のAndroidバージョンをダウンロードしますか？",
+  "submitter": "提出者"
 }

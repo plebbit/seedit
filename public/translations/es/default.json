@@ -350,5 +350,6 @@
   "must_be_over_18_explanation": "Debe tener al menos dieciocho años para ver este contenido. ¿Tienes más de dieciocho años y estás dispuesto a ver contenido para adultos?",
   "no_thank_you": "No gracias",
   "continue": "Continuar",
-  "download_latest_android": "¿Descargar la última versión de Android?"
+  "download_latest_android": "¿Descargar la última versión de Android?",
+  "submitter": "Remitente"
 }

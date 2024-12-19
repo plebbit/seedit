@@ -370,3 +370,11 @@
   line-height: normal;
   vertical-align: middle;
 }
+
+.submitter {
+  color: var(--submitter-color);
+}
+
+.submitter:hover {
+  text-decoration: underline;
+}

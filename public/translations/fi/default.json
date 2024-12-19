@@ -350,5 +350,6 @@
   "must_be_over_18_explanation": "Sinun täytyy olla vähintään kahdeksantoista vuotta vanha nähdäksesi tämän sisällön. Oletko yli 18-vuotias ja halukas katsomaan aikuisille tarkoitettua sisältöä?",
   "no_thank_you": "Ei kiitos",
   "continue": "Jatka",
-  "download_latest_android": "Lataa uusin Android-versio?"
+  "download_latest_android": "Lataa uusin Android-versio?",
+  "submitter": "Lähettäjä"
 }

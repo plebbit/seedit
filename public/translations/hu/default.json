@@ -350,5 +350,6 @@
   "must_be_over_18_explanation": "Legalább tizennyolc évesnek kell lenned ahhoz, hogy megtekinthesd ezt a tartalmat. Több mint tizennyolc éves vagy, és hajlandó vagy felnőtteknek szóló tartalmat nézni?",
   "no_thank_you": "Nem, köszönöm",
   "continue": "Folytatás",
-  "download_latest_android": "Töltse le a legújabb Android verziót?"
+  "download_latest_android": "Töltse le a legújabb Android verziót?",
+  "submitter": "Beküldő"
 }

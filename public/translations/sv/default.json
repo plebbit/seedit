@@ -350,5 +350,6 @@
   "must_be_over_18_explanation": "Du måste vara minst arton år gammal för att se detta innehåll. Är du över arton och villig att se vuxeninnehåll?",
   "no_thank_you": "Nej, tack",
   "continue": "Fortsätt",
-  "download_latest_android": "Ladda ner den senaste Android-versionen?"
+  "download_latest_android": "Ladda ner den senaste Android-versionen?",
+  "submitter": "Inlämnare"
 }

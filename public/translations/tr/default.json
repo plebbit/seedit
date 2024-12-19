@@ -350,5 +350,6 @@
   "must_be_over_18_explanation": "Bu içeriği görmek için en az on sekiz yaşında olmanız gerekir. On sekiz yaşından büyük müsünüz ve yetişkin içeriği görmeye istekli misiniz?",
   "no_thank_you": "Hayır, teşekkür ederim",
   "continue": "Devam et",
-  "download_latest_android": "Son Android sürümünü indir?"
+  "download_latest_android": "Son Android sürümünü indir?",
+  "submitter": "Gönderen"
 }
