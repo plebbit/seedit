@@ -247,14 +247,14 @@ const Profile = () => {
     document.title = profileTitle + ' - Seedit';
   }, [t, profileTitle]);
 
-  // only show infobar on first profile access and if the current account wasn't imported
+  // Show infobar for first 3 visits if account wasn't imported
   useEffect(() => {
-    const wasProfileAccessed = localStorage.getItem('wasProfileAccessed');
+    const profileVisits = parseInt(localStorage.getItem('profileVisits') || '0');
     const importedAccountAddress = localStorage.getItem('importedAccountAddress');
 
-    if (!wasProfileAccessed && importedAccountAddress !== account?.author?.address) {
+    if (profileVisits < 4 && importedAccountAddress !== account?.author?.address) {
       setShowInfobar(true);
-      localStorage.setItem('wasProfileAccessed', 'true');
+      localStorage.setItem('profileVisits', (profileVisits + 1).toString());
     }
   }, [account?.author?.address]);
 
