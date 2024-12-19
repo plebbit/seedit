@@ -344,5 +344,10 @@
   "always_show_nsfw": "Altijd NSFW-media weergeven?",
   "always_show_nsfw_notice": "Oké, we hebben je voorkeuren veranderd om altijd NSFW-media weer te geven.",
   "content_options": "Inhoudsopties",
-  "hide_vulgar": "Verberg gemeenschappen die zijn gemarkeerd als \"vulgar\""
+  "hide_vulgar": "Verberg gemeenschappen die zijn gemarkeerd als \"vulgar\"",
+  "over_18": "Boven de 18?",
+  "must_be_over_18": "Je moet 18+ zijn om deze gemeenschap te bekijken",
+  "must_be_over_18_explanation": "Je moet minstens achttien jaar oud zijn om deze inhoud te bekijken. Ben je ouder dan achttien en bereid om volwassen inhoud te bekijken?",
+  "no_thank_you": "Nee, bedankt",
+  "continue": "Doorgaan"
 }

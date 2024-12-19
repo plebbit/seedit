@@ -344,5 +344,10 @@
   "always_show_nsfw": "Vil du altid vise NSFW medier?",
   "always_show_nsfw_notice": "Okay, vi har ændret dine præferencer til altid at vise NSFW medier.",
   "content_options": "Indholdsindstillinger",
-  "hide_vulgar": "Skjul samfund markeret som \"vulgar\""
+  "hide_vulgar": "Skjul samfund markeret som \"vulgar\"",
+  "over_18": "Over 18?",
+  "must_be_over_18": "Du skal være over 18 år for at se dette fællesskab",
+  "must_be_over_18_explanation": "Du skal være mindst 18 år gammel for at se dette indhold. Er du over 18 og villig til at se voksenindhold?",
+  "no_thank_you": "Nej, tak tak",
+  "continue": "Fortsæt"
 }

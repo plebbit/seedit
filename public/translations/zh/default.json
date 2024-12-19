@@ -344,5 +344,10 @@
   "always_show_nsfw": "始终显示NSFW媒体？",
   "always_show_nsfw_notice": "好的，我们已将您的偏好更改为始终显示NSFW媒体。",
   "content_options": "内容选项",
-  "hide_vulgar": "隐藏标记为“vulgar”的社区"
+  "hide_vulgar": "隐藏标记为“vulgar”的社区",
+  "over_18": "超过18岁？",
+  "must_be_over_18": "您必须年满18岁才能查看此社区",
+  "must_be_over_18_explanation": "您必须至少年满18岁才能查看此内容。您是否已超过18岁并愿意查看成人内容？",
+  "no_thank_you": "不，谢谢",
+  "continue": "继续"
 }

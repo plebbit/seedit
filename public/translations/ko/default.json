@@ -344,5 +344,10 @@
   "always_show_nsfw": "항상 NSFW 미디어를 표시하시겠습니까?",
   "always_show_nsfw_notice": "알겠습니다, 항상 NSFW 미디어를 표시하도록 기본 설정을 변경했습니다.",
   "content_options": "콘텐츠 옵션",
-  "hide_vulgar": "\"벌거벗은\"으로 태그된 커뮤니티 숨기기"
+  "hide_vulgar": "\"벌거벗은\"으로 태그된 커뮤니티 숨기기",
+  "over_18": "18세 이상?",
+  "must_be_over_18": "이 커뮤니티를 보려면 18세 이상이어야 합니다",
+  "must_be_over_18_explanation": "이 콘텐츠를 보려면 최소한 18세 이상이어야 합니다. 당신은 18세 이상이며 성인 콘텐츠를 볼 준비가 되셨나요?",
+  "no_thank_you": "아니요, 감사합니다",
+  "continue": "계속"
 }

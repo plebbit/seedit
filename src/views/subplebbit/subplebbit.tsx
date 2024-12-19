@@ -185,14 +185,14 @@ const Subplebbit = () => {
     <div className={styles.over18}>
       <img src={`${process.env.PUBLIC_URL}/assets/over18.png`} alt='over 18' />
       <div className={styles.warning}>
-        <h3>You must be 18+ to view this community</h3>
-        <p>You must be at least eighteen years old to view this content. Are you over eighteen and willing to see adult content?</p>
+        <h3>{t('must_be_over_18')}</h3>
+        <p>{t('must_be_over_18_explanation')}</p>
       </div>
       <div className={styles.warningButtons}>
         <button>
-          <Link to='/'>no thank you</Link>
+          <Link to='/'>{t('no_thank_you')}</Link>
         </button>
-        <button onClick={handleAcceptWarning}>continue</button>
+        <button onClick={handleAcceptWarning}>{t('continue')}</button>
       </div>
     </div>
   ) : (

@@ -344,5 +344,10 @@
   "always_show_nsfw": "Doriți să arătați întotdeauna media NSFW?",
   "always_show_nsfw_notice": "Ok, am schimbat preferințele tale pentru a arăta întotdeauna media NSFW.",
   "content_options": "Opțiuni de conținut",
-  "hide_vulgar": "Ascunde comunitățile etichetate ca \"vulgar\""
+  "hide_vulgar": "Ascunde comunitățile etichetate ca \"vulgar\"",
+  "over_18": "Peste 18?",
+  "must_be_over_18": "Trebuie să ai 18+ ani pentru a vizualiza această comunitate",
+  "must_be_over_18_explanation": "Trebuie să ai cel puțin optsprezece ani pentru a vizualiza acest conținut. Ai peste optsprezece ani și ești dispus să vizionezi conținut pentru adulți?",
+  "no_thank_you": "Nu, mulțumesc",
+  "continue": "Continuă"
 }

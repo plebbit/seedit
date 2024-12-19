@@ -344,5 +344,10 @@
   "always_show_nsfw": "Luôn hiển thị media NSFW?",
   "always_show_nsfw_notice": "Được rồi, chúng tôi đã thay đổi sở thích của bạn để luôn hiển thị media NSFW.",
   "content_options": "Tùy chọn nội dung",
-  "hide_vulgar": "Ẩn cộng đồng được gắn thẻ là \"vulgar\""
+  "hide_vulgar": "Ẩn cộng đồng được gắn thẻ là \"vulgar\"",
+  "over_18": "Trên 18?",
+  "must_be_over_18": "Bạn phải trên 18 tuổi để xem cộng đồng này",
+  "must_be_over_18_explanation": "Bạn phải ít nhất mười tám tuổi để xem nội dung này. Bạn có trên mười tám tuổi và sẵn sàng xem nội dung người lớn không?",
+  "no_thank_you": "Không, cảm ơn",
+  "continue": "Tiếp tục"
 }

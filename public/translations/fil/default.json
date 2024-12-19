@@ -344,5 +344,10 @@
   "always_show_nsfw": "Palaging ipakita ang mga media ng NSFW?",
   "always_show_nsfw_notice": "Okay, binago namin ang iyong mga preference upang palaging ipakita ang NSFW media.",
   "content_options": "Mga opsyon sa nilalaman",
-  "hide_vulgar": "Itago ang mga komunidad na minarkahan bilang \"vulgar\""
+  "hide_vulgar": "Itago ang mga komunidad na minarkahan bilang \"vulgar\"",
+  "over_18": "Higit sa 18?",
+  "must_be_over_18": "Dapat kang 18+ upang makita ang komunidad na ito",
+  "must_be_over_18_explanation": "Dapat kang hindi bababa sa labing walong taon upang makita ang nilalamang ito. Ikaw ba ay higit sa labing walong taon at handang makita ang nilalamang pang-adulto?",
+  "no_thank_you": "Hindi, salamat",
+  "continue": "Magpatuloy"
 }

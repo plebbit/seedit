@@ -344,5 +344,10 @@
   "always_show_nsfw": "Möchten Sie immer NSFW-Medien anzeigen?",
   "always_show_nsfw_notice": "Okay, wir haben deine Präferenzen geändert, um immer NSFW-Medien anzuzeigen.",
   "content_options": "Inhaltsoptionen",
-  "hide_vulgar": "Verstecke Communities, die als \"Vulgar\" markiert sind"
+  "hide_vulgar": "Verstecke Communities, die als \"Vulgar\" markiert sind",
+  "over_18": "Über 18?",
+  "must_be_over_18": "Sie müssen über 18 Jahre alt sein, um diese Community zu sehen",
+  "must_be_over_18_explanation": "Sie müssen mindestens 18 Jahre alt sein, um diesen Inhalt zu sehen. Sind Sie über 18 Jahre alt und bereit, Erwachsenen-Inhalte zu sehen?",
+  "no_thank_you": "Nein, danke",
+  "continue": "Weiter"
 }

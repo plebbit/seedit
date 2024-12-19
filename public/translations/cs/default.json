@@ -344,5 +344,10 @@
   "always_show_nsfw": "Chcete vždy zobrazit NSFW média?",
   "always_show_nsfw_notice": "Dobře, změnili jsme vaše preference na vždy zobrazovat NSFW média.",
   "content_options": "Možnosti obsahu",
-  "hide_vulgar": "Skrýt komunity označené jako \"vulgar\""
+  "hide_vulgar": "Skrýt komunity označené jako \"vulgar\"",
+  "over_18": "Více než 18?",
+  "must_be_over_18": "Musíte být starší 18 let, abyste si mohli prohlédnout tuto komunitu",
+  "must_be_over_18_explanation": "Musíte být alespoň 18 let starý/á, abyste si mohli prohlédnout tento obsah. Jste starší 18 let a ochotni vidět obsah pro dospělé?",
+  "no_thank_you": "Ne, děkuji",
+  "continue": "Pokračovat"
 }

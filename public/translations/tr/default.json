@@ -344,5 +344,10 @@
   "always_show_nsfw": "Her zaman NSFW medyasını göstermek ister misiniz?",
   "always_show_nsfw_notice": "Tamam, tercihlerinizi her zaman NSFW medyasını gösterecek şekilde değiştirdik.",
   "content_options": "İçerik seçenekleri",
-  "hide_vulgar": "\"Vulgar\" olarak etiketlenen toplulukları gizle"
+  "hide_vulgar": "\"Vulgar\" olarak etiketlenen toplulukları gizle",
+  "over_18": "18 yaş üstü?",
+  "must_be_over_18": "Bu topluluğu görmek için 18 yaş ve üzeri olmalısınız",
+  "must_be_over_18_explanation": "Bu içeriği görmek için en az on sekiz yaşında olmanız gerekir. On sekiz yaşından büyük müsünüz ve yetişkin içeriği görmeye istekli misiniz?",
+  "no_thank_you": "Hayır, teşekkür ederim",
+  "continue": "Devam et"
 }

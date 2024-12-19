@@ -313,7 +313,7 @@ const HeaderTitle = ({ title, shortAddress }: { title: string; shortAddress: str
   const authorTitle = <Link to={`/u/${params.authorAddress}/c/${params.commentCid}`}>{params.authorAddress && Plebbit.getShortAddress(params.authorAddress)}</Link>;
 
   if (isBroadlyNsfwSubplebbit && !hasUnhiddenAnyNsfwCommunity) {
-    return <span>over 18?</span>;
+    return <span>{t('over_18')}</span>;
   } else if (isInSubplebbitSubmitView) {
     return (
       <>
