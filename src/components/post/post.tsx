@@ -21,6 +21,7 @@ import _ from 'lodash';
 import useIsMobile from '../../hooks/use-is-mobile';
 import { usePinnedPostsStore } from '../../stores/use-pinned-posts-store';
 import useWindowWidth from '../../hooks/use-window-width';
+import { useIsNsfwSubplebbit } from '../../hooks/use-is-nsfw-subplebbit';
 
 interface PostAuthorProps {
   authorAddress: string;
@@ -96,7 +97,6 @@ const Post = ({ index, post = {} }: PostProps) => {
     link,
     linkHeight,
     linkWidth,
-    nsfw,
     pinned,
     reason,
     removed,
@@ -108,6 +108,11 @@ const Post = ({ index, post = {} }: PostProps) => {
     title,
     upvoteCount,
   } = post || {};
+
+  // Check if the subplebbit is NSFW based on its tags
+  const isNsfwSubplebbit = useIsNsfwSubplebbit(subplebbitAddress);
+  const nsfw = post?.nsfw || isNsfwSubplebbit;
+
   const { displayName, shortAddress } = author || {};
   const { shortAuthorAddress, authorAddressChanged } = useAuthorAddress({ comment: post });
 
