@@ -104,3 +104,17 @@
 .highlightedSetting {
   background-color: var(--yellow-highlight);
 }
+
+.filterSettingTitle {
+  font-style: italic;
+  text-transform: capitalize;
+}
+
+.filters input[type='checkbox'] {
+  margin: 2px 0.5em 0 0;
+}
+
+.filters label {
+  margin-top: 5px;
+  margin-right: 5px;
+}

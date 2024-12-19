@@ -2,6 +2,7 @@ import styles from './thumbnail.module.css';
 import { Link } from 'react-router-dom';
 import { CommentMediaInfo } from '../../../lib/utils/media-utils';
 import useFetchGifFirstFrame from '../../../hooks/use-fetch-gif-first-frame';
+import useFilterSettingsStore from '../../../stores/use-filter-settings-store';
 
 interface ThumbnailProps {
   cid?: string;
@@ -84,7 +85,9 @@ const Thumbnail = ({
     mediaComponent = <span className={`${styles.iconThumbnail} ${styles.spoilerIcon}`} />;
   }
 
-  if (isNsfw) {
+  const { blurNsfwThumbnails } = useFilterSettingsStore();
+
+  if (isNsfw && blurNsfwThumbnails) {
     mediaComponent = <span className={`${styles.iconThumbnail} ${styles.nsfwIcon}`} />;
   }
 

@@ -5,6 +5,7 @@ import Embed from '../embed';
 import { CommentMediaInfo } from '../../../lib/utils/media-utils';
 import Markdown from '../../markdown';
 import { useTranslation } from 'react-i18next';
+import useFilterSettingsStore from '../../../stores/use-filter-settings-store';
 
 interface ExpandoProps {
   authorEditReason?: string;
@@ -36,8 +37,8 @@ const Expando = ({
   toggleExpanded,
 }: ExpandoProps) => {
   const { t } = useTranslation();
-
-  const [hideContent, setHideContent] = useState(true);
+  const { blurNsfwThumbnails, setBlurNsfwThumbnails } = useFilterSettingsStore();
+  const [hideContent, setHideContent] = useState(blurNsfwThumbnails);
   const [alwaysShowNsfw, setAlwaysShowNsfw] = useState(false);
 
   useEffect(() => {
@@ -45,6 +46,12 @@ const Expando = ({
       setHideContent(true);
     }
   }, [expanded]);
+
+  const handleAlwaysShowNsfw = () => {
+    setBlurNsfwThumbnails(false);
+    setHideContent(false);
+    setAlwaysShowNsfw(true);
+  };
 
   let mediaComponent = null;
 
@@ -64,13 +71,13 @@ const Expando = ({
     <div className={expanded ? styles.expando : styles.expandoHidden}>
       {link && !removed && commentMediaInfo?.type !== 'webpage' && (
         <div className={styles.mediaPreview} onClick={() => setHideContent(false)}>
-          {(nsfw || spoiler) && hideContent && link && commentMediaInfo?.type !== 'webpage' && !(deleted || removed) && (
+          {((nsfw && blurNsfwThumbnails) || spoiler) && hideContent && link && commentMediaInfo?.type !== 'webpage' && !(deleted || removed) && (
             <>
               <div className={styles.blurContent} />
-              <span className={styles.unblurButton}>{nsfw && spoiler ? 'CLICK TO SEE NSFW SPOILER' : spoiler ? t('view_spoiler') : nsfw ? 'CLICK TO SEE NSFW' : ''}</span>
+              <span className={styles.unblurButton}>{nsfw && spoiler ? t('see_nsfw_spoiler') : spoiler ? t('view_spoiler') : nsfw ? t('see_nsfw') : ''}</span>
               {nsfw && (
-                <span className={styles.alwaysShowNsfwButton} onClick={() => setAlwaysShowNsfw(!alwaysShowNsfw)}>
-                  Always show NSFW media?
+                <span className={styles.alwaysShowNsfwButton} onClick={handleAlwaysShowNsfw}>
+                  {t('always_show_nsfw')}
                 </span>
               )}
             </>
@@ -89,9 +96,11 @@ const Expando = ({
         </div>
       )}
       {alwaysShowNsfw && (
-        <div className={styles.alwaysShowNsfwNotice}>
-          <p>Ok, we changed your preferences to always show NSFW media.</p>
-          <button onClick={() => setAlwaysShowNsfw(false)}>Undo</button>
+        <div className={styles.alwaysShowNsfwContainer}>
+          <div className={styles.alwaysShowNsfwNotice}>
+            <p>{t('always_show_nsfw_notice')}</p>
+            <button onClick={() => setAlwaysShowNsfw(false)}>{t('undo')}</button>
+          </div>
         </div>
       )}
       {content && showContent && (

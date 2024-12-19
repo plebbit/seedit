@@ -177,6 +177,7 @@
   unicode-bidi: isolate;
   font-size: small;
   margin-bottom: 10px;
+  display: inline-block;
 }
 
 .alwaysShowNsfwNotice p {

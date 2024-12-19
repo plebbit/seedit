@@ -96,7 +96,6 @@ const Post = ({ index, post = {} }: PostProps) => {
     link,
     linkHeight,
     linkWidth,
-    nsfw,
     pinned,
     reason,
     removed,
@@ -108,6 +107,7 @@ const Post = ({ index, post = {} }: PostProps) => {
     title,
     upvoteCount,
   } = post || {};
+  const nsfw = true;
   const { displayName, shortAddress } = author || {};
   const { shortAuthorAddress, authorAddressChanged } = useAuthorAddress({ comment: post });
 

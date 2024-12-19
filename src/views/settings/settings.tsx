@@ -3,13 +3,14 @@ import { useLocation } from 'react-router-dom';
 import { Trans, useTranslation } from 'react-i18next';
 import { setAccount, useAccount } from '@plebbit/plebbit-react-hooks';
 import { isSettingsPlebbitOptionsView } from '../../lib/utils/view-utils';
-import styles from './settings.module.css';
+import useFilterSettingsStore from '../../stores/use-filter-settings-store';
+import useTheme from '../../hooks/use-theme';
 import AccountSettings from './account-settings';
 import AddressSettings from './address-settings';
 import AvatarSettings from './avatar-settings';
 import PlebbitOptions from './plebbit-options';
 import WalletSettings from './wallet-settings';
-import useTheme from '../../hooks/use-theme';
+import styles from './settings.module.css';
 import packageJson from '../../../package.json';
 import _ from 'lodash';
 
@@ -111,6 +112,39 @@ const ThemeSettings = () => {
   );
 };
 
+const FiltersSettings = () => {
+  const { t } = useTranslation();
+  const {
+    blurNsfwThumbnails,
+    hideAdultCommunities,
+    hideGoreCommunities,
+    hideAntiCommunities,
+    setBlurNsfwThumbnails,
+    setHideAdultCommunities,
+    setHideGoreCommunities,
+    setHideAntiCommunities,
+  } = useFilterSettingsStore();
+
+  return (
+    <div className={styles.filters}>
+      <div className={styles.filterSettingTitle}>{t('nsfw_content')}</div>
+      <input type='checkbox' id='blurNsfwThumbnails' checked={blurNsfwThumbnails} onChange={(e) => setBlurNsfwThumbnails(e.target.checked)} />
+      <label htmlFor='blurNsfwThumbnails'>{t('blur_media')}</label>
+      <br />
+      <br />
+      <div className={styles.filterSettingTitle}>{t('nsfw_communities')}</div>
+      <input type='checkbox' id='hideAdultCommunities' checked={hideAdultCommunities} onChange={(e) => setHideAdultCommunities(e.target.checked)} />
+      <label htmlFor='hideAdultCommunities'>{t('hide_adult')}</label>
+      <br />
+      <input type='checkbox' id='hideGoreCommunities' checked={hideGoreCommunities} onChange={(e) => setHideGoreCommunities(e.target.checked)} />
+      <label htmlFor='hideGoreCommunities'>{t('hide_gore')}</label>
+      <br />
+      <input type='checkbox' id='hideAntiCommunities' checked={hideAntiCommunities} onChange={(e) => setHideAntiCommunities(e.target.checked)} />
+      <label htmlFor='hideAntiCommunities'>{t('hide_anti')}</label>
+    </div>
+  );
+};
+
 const DisplayNameSetting = () => {
   const { t } = useTranslation();
   const account = useAccount();
@@ -190,6 +224,12 @@ const GeneralSettings = () => {
         <span className={styles.categoryTitle}>{t('theme')}</span>
         <span className={styles.categorySettings}>
           <ThemeSettings />
+        </span>
+      </div>
+      <div className={styles.category}>
+        <span className={styles.categoryTitle}>{t('filters')}</span>
+        <span className={styles.categorySettings}>
+          <FiltersSettings />
         </span>
       </div>
       <div className={styles.category}>
