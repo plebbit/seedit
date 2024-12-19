@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { Trans, useTranslation } from 'react-i18next';
+import { Capacitor } from '@capacitor/core';
 import { setAccount, useAccount } from '@plebbit/plebbit-react-hooks';
 import { isSettingsPlebbitOptionsView } from '../../lib/utils/view-utils';
 import useContentOptionsStore from '../../stores/use-content-options-store';
@@ -16,6 +17,7 @@ import _ from 'lodash';
 
 const commitRef = process.env.REACT_APP_COMMIT_REF;
 const isElectron = window.isElectron === true;
+const isAndroid = Capacitor.getPlatform() === 'android';
 
 const CheckForUpdates = () => {
   const { t } = useTranslation();
@@ -32,8 +34,16 @@ const CheckForUpdates = () => {
         const newVersionText = t('new_stable_version', { newVersion: packageData.version, oldVersion: packageJson.version });
         const updateActionText = isElectron
           ? t('download_latest_desktop', { link: 'https://github.com/plebbit/seedit/releases/latest', interpolation: { escapeValue: false } })
+          : isAndroid
+          ? t('download_latest_android')
           : t('refresh_to_update');
-        alert(newVersionText + ' ' + updateActionText);
+        if (isAndroid) {
+          if (window.confirm(newVersionText + ' ' + updateActionText)) {
+            window.open(`https://github.com/plebbit/seedit/releases/download/v${packageData.version}/seedit-${packageData.version}.apk`, '_blank', 'noreferrer');
+          }
+        } else {
+          alert(newVersionText + ' ' + updateActionText);
+        }
         updateAvailable = true;
       }
 

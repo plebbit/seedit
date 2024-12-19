@@ -349,5 +349,6 @@
   "must_be_over_18": "이 커뮤니티를 보려면 18세 이상이어야 합니다",
   "must_be_over_18_explanation": "이 콘텐츠를 보려면 최소한 18세 이상이어야 합니다. 당신은 18세 이상이며 성인 콘텐츠를 볼 준비가 되셨나요?",
   "no_thank_you": "아니요, 감사합니다",
-  "continue": "계속"
+  "continue": "계속",
+  "download_latest_android": "최신 Android 버전을 다운로드하시겠습니까?"
 }
