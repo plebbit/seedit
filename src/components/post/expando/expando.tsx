@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { CommentMediaInfo } from '../../../lib/utils/media-utils';
-import useFilterSettingsStore from '../../../stores/use-filter-settings-store';
+import useContentOptionsStore from '../../../stores/use-content-options-store';
 import { useIsNsfwSubplebbit } from '../../../hooks/use-is-nsfw-subplebbit';
 import styles from './expando.module.css';
 import Embed from '../embed';
@@ -38,7 +38,7 @@ const Expando = ({
   toggleExpanded,
 }: ExpandoProps) => {
   const { t } = useTranslation();
-  const { blurNsfwThumbnails, setBlurNsfwThumbnails } = useFilterSettingsStore();
+  const { blurNsfwThumbnails, setBlurNsfwThumbnails } = useContentOptionsStore();
   const [hideContent, setHideContent] = useState(blurNsfwThumbnails);
   const [alwaysShowNsfw, setAlwaysShowNsfw] = useState(false);
 

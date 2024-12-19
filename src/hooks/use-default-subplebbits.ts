@@ -2,7 +2,7 @@ import { useEffect, useMemo, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useAccount } from '@plebbit/plebbit-react-hooks';
 import Plebbit from '@plebbit/plebbit-js/dist/browser/index.js';
-import useFilterSettingsStore from '../stores/use-filter-settings-store';
+import useContentOptionsStore from '../stores/use-content-options-store';
 
 interface Subplebbit {
   title?: string;
@@ -31,7 +31,6 @@ export const categorizeSubplebbits = (subplebbits: Subplebbit[]) => {
 
 export const useDefaultSubplebbits = () => {
   const [subplebbits, setSubplebbits] = useState<Subplebbit[]>([]);
-  const { hideAdultCommunities, hideGoreCommunities, hideAntiCommunities, hideVulgarCommunities } = useFilterSettingsStore();
 
   useEffect(() => {
     if (cache) {
@@ -40,31 +39,34 @@ export const useDefaultSubplebbits = () => {
     (async () => {
       try {
         const multisub = await fetch('https://raw.githubusercontent.com/plebbit/temporary-default-subplebbits/master/multisub.json').then((res) => res.json());
-
-        const filteredSubplebbits = multisub.subplebbits.filter((subplebbit: Subplebbit) => {
-          const tags = subplebbit.tags || [];
-
-          if (hideAdultCommunities && tags.includes('adult')) return false;
-          if (hideGoreCommunities && tags.includes('gore')) return false;
-          if (hideAntiCommunities && tags.includes('anti')) return false;
-          if (hideVulgarCommunities && tags.includes('vulgar')) return false;
-          return true;
-        });
-
-        cache = filteredSubplebbits;
-        setSubplebbits(filteredSubplebbits);
+        cache = multisub.subplebbits;
+        setSubplebbits(multisub.subplebbits);
       } catch (e) {
         console.warn(e);
       }
     })();
-  }, [hideAdultCommunities, hideGoreCommunities, hideAntiCommunities, hideVulgarCommunities]);
+  }, []);
 
   return cache || subplebbits;
 };
 
 export const useDefaultSubplebbitAddresses = () => {
   const defaultSubplebbits = useDefaultSubplebbits();
-  const categorizedSubplebbits = useMemo(() => categorizeSubplebbits(defaultSubplebbits), [defaultSubplebbits]);
+  const { hideAdultCommunities, hideGoreCommunities, hideAntiCommunities, hideVulgarCommunities } = useContentOptionsStore();
+
+  const filteredSubplebbits = useMemo(() => {
+    return defaultSubplebbits.filter((subplebbit: Subplebbit) => {
+      const tags = subplebbit.tags || [];
+      if (hideAdultCommunities && tags.includes('adult')) return false;
+      if (hideGoreCommunities && tags.includes('gore')) return false;
+      if (hideAntiCommunities && tags.includes('anti')) return false;
+      if (hideVulgarCommunities && tags.includes('vulgar')) return false;
+      return true;
+    });
+  }, [defaultSubplebbits, hideAdultCommunities, hideGoreCommunities, hideAntiCommunities, hideVulgarCommunities]);
+
+  const categorizedSubplebbits = useMemo(() => categorizeSubplebbits(filteredSubplebbits), [filteredSubplebbits]);
+
   return useMemo(
     () =>
       [

@@ -3,7 +3,7 @@ import { useLocation } from 'react-router-dom';
 import { Trans, useTranslation } from 'react-i18next';
 import { setAccount, useAccount } from '@plebbit/plebbit-react-hooks';
 import { isSettingsPlebbitOptionsView } from '../../lib/utils/view-utils';
-import useFilterSettingsStore from '../../stores/use-filter-settings-store';
+import useContentOptionsStore from '../../stores/use-content-options-store';
 import useTheme from '../../hooks/use-theme';
 import AccountSettings from './account-settings';
 import AddressSettings from './address-settings';
@@ -125,7 +125,7 @@ const ContentOptions = () => {
     setHideGoreCommunities,
     setHideAntiCommunities,
     setHideVulgarCommunities,
-  } = useFilterSettingsStore();
+  } = useContentOptionsStore();
 
   return (
     <div className={styles.filters}>

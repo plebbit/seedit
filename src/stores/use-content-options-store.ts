@@ -1,7 +1,7 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 
-interface FilterSettingsState {
+interface ContentOptionsState {
   blurNsfwThumbnails: boolean;
   hideAdultCommunities: boolean;
   hideGoreCommunities: boolean;
@@ -14,7 +14,7 @@ interface FilterSettingsState {
   setHideVulgarCommunities: (hide: boolean) => void;
 }
 
-const useFilterSettingsStore = create<FilterSettingsState>()(
+const useContentOptionsStore = create<ContentOptionsState>()(
   persist(
     (set) => ({
       blurNsfwThumbnails: true,
@@ -29,9 +29,9 @@ const useFilterSettingsStore = create<FilterSettingsState>()(
       setHideVulgarCommunities: (hide) => set({ hideVulgarCommunities: hide }),
     }),
     {
-      name: 'filter-settings',
+      name: 'content-options',
     },
   ),
 );
 
-export default useFilterSettingsStore;
+export default useContentOptionsStore;

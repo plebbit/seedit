@@ -2,7 +2,7 @@ import styles from './thumbnail.module.css';
 import { Link, useParams } from 'react-router-dom';
 import { CommentMediaInfo } from '../../../lib/utils/media-utils';
 import useFetchGifFirstFrame from '../../../hooks/use-fetch-gif-first-frame';
-import useFilterSettingsStore from '../../../stores/use-filter-settings-store';
+import useContentOptionsStore from '../../../stores/use-content-options-store';
 import { useIsNsfwSubplebbit } from '../../../hooks/use-is-nsfw-subplebbit';
 
 interface ThumbnailProps {
@@ -40,7 +40,7 @@ const Thumbnail = ({
   let displayWidth, displayHeight, hasLinkDimensions;
   const thumbnailClass = expanded ? styles.thumbnailHidden : styles.thumbnailVisible;
 
-  const { blurNsfwThumbnails } = useFilterSettingsStore();
+  const { blurNsfwThumbnails } = useContentOptionsStore();
   const pageSubplebbitAddress = useParams().subplebbitAddress;
   const isNsfwSubplebbit = useIsNsfwSubplebbit(pageSubplebbitAddress || '');
 

@@ -43,6 +43,8 @@ import useTheme from '../../hooks/use-theme';
 import useWindowWidth from '../../hooks/use-window-width';
 import styles from './header.module.css';
 import SubscribeButton from '../subscribe-button';
+import useContentOptionsStore from '../../stores/use-content-options-store';
+import { useIsBroadlyNsfwSubplebbit } from '../../hooks/use-is-broadly-nsfw-subplebbit';
 
 const AboutButton = () => {
   const { t } = useTranslation();
@@ -295,12 +297,24 @@ const HeaderTitle = ({ title, shortAddress }: { title: string; shortAddress: str
   const isInCreateSubplebbitView = isCreateSubplebbitView(location.pathname);
   const isInNotFoundView = useNotFoundStore((state) => state.isNotFound);
 
-  const subplebbitTitle = <Link to={`/p/${params.subplebbitAddress}`}>{title || shortAddress}</Link>;
+  const subplebbitAddress = params.subplebbitAddress;
+
+  const contentOptionsStore = useContentOptionsStore();
+  const hasUnhiddenAnyNsfwCommunity =
+    !contentOptionsStore.hideAdultCommunities ||
+    !contentOptionsStore.hideGoreCommunities ||
+    !contentOptionsStore.hideAntiCommunities ||
+    !contentOptionsStore.hideVulgarCommunities;
+  const isBroadlyNsfwSubplebbit = useIsBroadlyNsfwSubplebbit(subplebbitAddress || '');
+
+  const subplebbitTitle = <Link to={`/p/${subplebbitAddress}`}>{title || shortAddress}</Link>;
   const submitTitle = <span className={styles.submitTitle}>{t('submit')}</span>;
   const profileTitle = <Link to='/profile'>{account?.author?.shortAddress}</Link>;
   const authorTitle = <Link to={`/u/${params.authorAddress}/c/${params.commentCid}`}>{params.authorAddress && Plebbit.getShortAddress(params.authorAddress)}</Link>;
 
-  if (isInSubplebbitSubmitView) {
+  if (isBroadlyNsfwSubplebbit && !hasUnhiddenAnyNsfwCommunity) {
+    return <span>over 18?</span>;
+  } else if (isInSubplebbitSubmitView) {
     return (
       <>
         {subplebbitTitle}: {submitTitle}
@@ -373,9 +387,20 @@ const Header = () => {
     (isInAllView && !isInAllAboutView) ||
     (isInModView && !isInHomeAboutView) ||
     (isInAuthorView && !isInHomeAboutView);
-  const logoSrc = isInSubplebbitView && suggested?.avatarUrl ? suggested?.avatarUrl : 'assets/logo/seedit.png';
-  const logoIsAvatar = isInSubplebbitView && suggested?.avatarUrl;
-  const logoLink = isInSubplebbitView ? `/p/${params.subplebbitAddress}` : isInProfileView ? '/profile' : '/';
+
+  const subplebbitAddress = params.subplebbitAddress;
+
+  const contentOptionsStore = useContentOptionsStore();
+  const hasUnhiddenAnyNsfwCommunity =
+    !contentOptionsStore.hideAdultCommunities ||
+    !contentOptionsStore.hideGoreCommunities ||
+    !contentOptionsStore.hideAntiCommunities ||
+    !contentOptionsStore.hideVulgarCommunities;
+  const isBroadlyNsfwSubplebbit = useIsBroadlyNsfwSubplebbit(subplebbitAddress || '');
+
+  const logoIsAvatar = isInSubplebbitView && suggested?.avatarUrl && !(isBroadlyNsfwSubplebbit && !hasUnhiddenAnyNsfwCommunity);
+  const logoSrc = logoIsAvatar ? suggested?.avatarUrl : 'assets/logo/seedit.png';
+  const logoLink = isInSubplebbitView ? `/p/${subplebbitAddress}` : isInProfileView ? '/profile' : '/';
 
   return (
     <div className={styles.header}>
@@ -386,10 +411,10 @@ const Header = () => {
       >
         <div className={styles.logoContainer}>
           <Link to={logoLink} className={styles.logoLink}>
-            {(logoIsAvatar || (!isInSubplebbitView && !isInProfileView && !isInAuthorView) || (isInSubplebbitView && !suggested?.avatarUrl)) && (
+            {(logoIsAvatar || (!isInSubplebbitView && !isInProfileView && !isInAuthorView) || !logoIsAvatar) && (
               <img className={`${logoIsAvatar ? styles.avatar : styles.logo}`} src={logoSrc} alt='' />
             )}
-            {((!isInSubplebbitView && !isInProfileView && !isInAuthorView) || (isInSubplebbitView && !suggested?.avatarUrl)) && (
+            {((!isInSubplebbitView && !isInProfileView && !isInAuthorView) || !logoIsAvatar) && (
               <img src={`assets/logo/seedit-text-${theme === 'dark' ? 'dark' : 'light'}.svg`} className={styles.logoText} alt='' />
             )}
           </Link>
@@ -404,19 +429,19 @@ const Header = () => {
             <HeaderTitle title={title} shortAddress={shortAddress} />
           </div>
         )}
-        {isInSubplebbitView && !isInSubplebbitSubmitView && (
+        {isInSubplebbitView && !isInSubplebbitSubmitView && !(isBroadlyNsfwSubplebbit && !hasUnhiddenAnyNsfwCommunity) && (
           <span className={styles.joinButton}>
             <SubscribeButton address={params.subplebbitAddress} />
           </span>
         )}
-        {!isMobile && (
+        {!isMobile && !(isBroadlyNsfwSubplebbit && !hasUnhiddenAnyNsfwCommunity) && (
           <ul className={styles.tabMenu}>
             <HeaderTabs />
             {(isInHomeView || isInHomeAboutView) && <AboutButton />}
           </ul>
         )}
       </div>
-      {isMobile && !isInSubplebbitSubmitView && (
+      {isMobile && !isInSubplebbitSubmitView && !(isBroadlyNsfwSubplebbit && !hasUnhiddenAnyNsfwCommunity) && (
         <ul className={`${styles.tabMenu} ${isInProfileView ? styles.horizontalScroll : ''}`}>
           <HeaderTabs />
           {(isInHomeView || isInHomeAboutView || isInSubplebbitView || isInHomeAboutView || isInPostPageView) && <AboutButton />}
