@@ -75,6 +75,7 @@ const Post = ({ post }: { post: Comment }) => {
             </div>
           )}
           <div className={styles.replies}>
+            {replies.length === 0 && <div className={styles.noReplies}>{t('nothing_found')}</div>}
             {isSingleComment ? (
               <Reply key={`singleComment-${cid}`} reply={post} depth={0} isSingleComment={true} />
             ) : (
@@ -138,7 +139,7 @@ const PostWithContext = ({ post }: { post: Comment }) => {
           </div>
         </div>
         <div className={styles.replies}>
-          <Reply key={`contextComment-${topParentComment.cid}-test`} reply={topParentComment} depth={0} />
+          <Reply key={`contextComment-${topParentComment.cid}`} reply={topParentComment} depth={0} />
         </div>
       </div>
     </>
