@@ -1,11 +1,12 @@
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
+import { CommentMediaInfo } from '../../../lib/utils/media-utils';
+import useFilterSettingsStore from '../../../stores/use-filter-settings-store';
+import { useIsNsfwSubplebbit } from '../../../hooks/use-is-nsfw-subplebbit';
 import styles from './expando.module.css';
 import Embed from '../embed';
-import { CommentMediaInfo } from '../../../lib/utils/media-utils';
 import Markdown from '../../markdown';
-import { useTranslation } from 'react-i18next';
-import useFilterSettingsStore from '../../../stores/use-filter-settings-store';
 
 interface ExpandoProps {
   authorEditReason?: string;
@@ -67,11 +68,14 @@ const Expando = ({
     mediaComponent = <Embed url={commentMediaInfo.url} />;
   }
 
+  const pageSubplebbitAddress = useParams().subplebbitAddress;
+  const isNsfwSubplebbit = useIsNsfwSubplebbit(pageSubplebbitAddress || '');
+
   return (
     <div className={expanded ? styles.expando : styles.expandoHidden}>
       {link && !removed && commentMediaInfo?.type !== 'webpage' && (
         <div className={styles.mediaPreview} onClick={() => setHideContent(false)}>
-          {((nsfw && blurNsfwThumbnails) || spoiler) && hideContent && link && commentMediaInfo?.type !== 'webpage' && !(deleted || removed) && (
+          {((nsfw && blurNsfwThumbnails && !isNsfwSubplebbit) || spoiler) && hideContent && link && commentMediaInfo?.type !== 'webpage' && !(deleted || removed) && (
             <>
               <div className={styles.blurContent} />
               <span className={styles.unblurButton}>{nsfw && spoiler ? t('see_nsfw_spoiler') : spoiler ? t('view_spoiler') : nsfw ? t('see_nsfw') : ''}</span>

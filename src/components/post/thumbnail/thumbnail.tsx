@@ -1,8 +1,9 @@
 import styles from './thumbnail.module.css';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { CommentMediaInfo } from '../../../lib/utils/media-utils';
 import useFetchGifFirstFrame from '../../../hooks/use-fetch-gif-first-frame';
 import useFilterSettingsStore from '../../../stores/use-filter-settings-store';
+import { useIsNsfwSubplebbit } from '../../../hooks/use-is-nsfw-subplebbit';
 
 interface ThumbnailProps {
   cid?: string;
@@ -39,6 +40,10 @@ const Thumbnail = ({
   let displayWidth, displayHeight, hasLinkDimensions;
   const thumbnailClass = expanded ? styles.thumbnailHidden : styles.thumbnailVisible;
 
+  const { blurNsfwThumbnails } = useFilterSettingsStore();
+  const pageSubplebbitAddress = useParams().subplebbitAddress;
+  const isNsfwSubplebbit = useIsNsfwSubplebbit(pageSubplebbitAddress || '');
+
   if (linkWidth && linkHeight) {
     let scale = Math.min(1, 70 / Math.max(linkWidth, linkHeight));
     displayWidth = `${linkWidth * scale}px`;
@@ -50,7 +55,7 @@ const Thumbnail = ({
     hasLinkDimensions = false;
   }
 
-  if (isText || isLink || isSpoiler || isNsfw) {
+  if (isText || isLink || isSpoiler || (isNsfw && !isNsfwSubplebbit)) {
     displayWidth = '50px';
     displayHeight = '50px';
     hasLinkDimensions = true;
@@ -85,9 +90,7 @@ const Thumbnail = ({
     mediaComponent = <span className={`${styles.iconThumbnail} ${styles.spoilerIcon}`} />;
   }
 
-  const { blurNsfwThumbnails } = useFilterSettingsStore();
-
-  if (isNsfw && blurNsfwThumbnails) {
+  if (isNsfw && blurNsfwThumbnails && !isNsfwSubplebbit) {
     mediaComponent = <span className={`${styles.iconThumbnail} ${styles.nsfwIcon}`} />;
   }
 
