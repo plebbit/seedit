@@ -4,27 +4,9 @@ import stringify from 'json-stringify-pretty-compact';
 import { Trans, useTranslation } from 'react-i18next';
 import styles from './account-settings.module.css';
 
-const AccountSettings = () => {
-  const { t } = useTranslation();
-  const account = useAccount();
+const CreateAccountButton = () => {
   const { accounts } = useAccounts();
-  const [text, setText] = useState('');
   const switchToNewAccountRef = useRef(false);
-
-  const accountJson = useMemo(
-    () => stringify({ account: { ...account, plebbit: undefined, karma: undefined, plebbitReactOptions: undefined, unreadNotificationCount: undefined } }),
-    [account],
-  );
-
-  const accountsOptions = accounts.map((account) => (
-    <option key={account?.id} value={account?.name}>
-      u/{account?.author?.shortAddress}
-    </option>
-  ));
-
-  useEffect(() => {
-    setText(accountJson);
-  }, [accountJson]);
 
   const switchToLastAccount = useCallback(async () => {
     if (switchToNewAccountRef.current && accounts.length > 0) {
@@ -34,14 +16,11 @@ const AccountSettings = () => {
     }
   }, [accounts]);
 
-  useEffect(() => {
-    switchToLastAccount();
-  }, [switchToLastAccount]);
-
-  const _createAccount = async () => {
+  const handleCreateAccount = async () => {
     try {
       await createAccount();
       switchToNewAccountRef.current = true;
+      switchToLastAccount();
     } catch (error) {
       if (error instanceof Error) {
         alert(error.message);
@@ -52,36 +31,20 @@ const AccountSettings = () => {
     }
   };
 
-  const _deleteAccount = (accountName: string) => {
-    if (!accountName) {
-      return;
-    } else if (window.confirm(t('delete_confirm', { value: accountName, interpolation: { escapeValue: false } }))) {
-      if (window.confirm(t('double_confirm'))) {
-        deleteAccount(accountName);
-      }
-    } else {
-      return;
-    }
-  };
+  return (
+    <Trans
+      i18nKey='create_new_account'
+      components={{
+        1: <button onClick={handleCreateAccount} />,
+      }}
+    />
+  );
+};
 
-  const saveAccount = async () => {
-    try {
-      const newAccount = JSON.parse(text).account;
-      // force keeping the same id, makes it easier to copy paste
-      await setAccount({ ...newAccount, id: account?.id });
-      alert(`Saved ${newAccount.name}`);
-    } catch (error) {
-      if (error instanceof Error) {
-        alert(error.message);
-        console.log(error);
-      } else {
-        console.error('An unknown error occurred:', error);
-      }
-    }
-  };
+const ImportAccountButton = () => {
+  const switchToNewAccountRef = useRef(false);
 
-  const _importAccount = async () => {
-    // Create a file input element
+  const handleImportAccount = async () => {
     const fileInput = document.createElement('input');
     fileInput.type = 'file';
     fileInput.accept = '.json';
@@ -106,12 +69,16 @@ const AccountSettings = () => {
             const newAccount = JSON.parse(fileContent);
             await importAccount(fileContent);
 
-            // Store the imported account's address to prevent showing the info bar in the profile page on first access
+            // Store the imported account's address
             if (newAccount.account?.author?.address) {
               localStorage.setItem('importedAccountAddress', newAccount.account.author.address);
             }
 
-            switchToNewAccountRef.current = true;
+            // Set the new account as active before reloading
+            if (newAccount.account?.name) {
+              await setActiveAccount(newAccount.account.name);
+            }
+
             alert(`Imported ${newAccount.account?.name}`);
             window.location.reload();
           } catch (error) {
@@ -138,7 +105,20 @@ const AccountSettings = () => {
     fileInput.click();
   };
 
-  const _exportAccount = async () => {
+  return (
+    <Trans
+      i18nKey='import_account_backup'
+      components={{
+        1: <button onClick={handleImportAccount} />,
+      }}
+    />
+  );
+};
+
+const ExportAccountButton = () => {
+  const account = useAccount();
+
+  const handleExportAccount = async () => {
     try {
       const accountString = await exportAccount();
       const accountObject = JSON.parse(accountString);
@@ -173,6 +153,63 @@ const AccountSettings = () => {
   };
 
   return (
+    <Trans
+      i18nKey='export_account_backup'
+      components={{
+        1: <button onClick={handleExportAccount} />,
+      }}
+    />
+  );
+};
+
+const AccountSettings = () => {
+  const { t } = useTranslation();
+  const account = useAccount();
+  const { accounts } = useAccounts();
+  const [text, setText] = useState('');
+
+  const accountJson = useMemo(
+    () => stringify({ account: { ...account, plebbit: undefined, karma: undefined, plebbitReactOptions: undefined, unreadNotificationCount: undefined } }),
+    [account],
+  );
+
+  const accountsOptions = accounts.map((account) => (
+    <option key={account?.id} value={account?.name}>
+      u/{account?.author?.shortAddress}
+    </option>
+  ));
+
+  useEffect(() => {
+    setText(accountJson);
+  }, [accountJson]);
+
+  const _deleteAccount = (accountName: string) => {
+    if (!accountName) {
+      return;
+    } else if (window.confirm(t('delete_confirm', { value: accountName, interpolation: { escapeValue: false } }))) {
+      if (window.confirm(t('double_confirm'))) {
+        deleteAccount(accountName);
+      }
+    }
+  };
+
+  const saveAccount = async () => {
+    try {
+      const newAccount = JSON.parse(text).account;
+      // force keeping the same id, makes it easier to copy paste
+      await setAccount({ ...newAccount, id: account?.id });
+      alert(`Saved ${newAccount.name}`);
+    } catch (error) {
+      if (error instanceof Error) {
+        alert(error.message);
+        console.log(error);
+      } else {
+        console.error('An unknown error occurred:', error);
+      }
+    }
+  };
+
+  return (
     <span className={styles.categorySettings}>
       <div className={styles.accountAddress}>
         <select value={account?.name} onChange={(e) => setActiveAccount(e.target.value)}>
@@ -181,12 +218,7 @@ const AccountSettings = () => {
         {t('is_current_account')}
       </div>
       <div className={styles.createAccount}>
-        <Trans
-          i18nKey='create_new_account'
-          components={{
-            1: <button onClick={_createAccount} />,
-          }}
-        />
+        <CreateAccountButton />
       </div>
       <span className={styles.settingTitle}>{t('account_data_preview')}</span>
       <div className={styles.accountData}>
@@ -202,20 +234,10 @@ const AccountSettings = () => {
             />
           </div>
           <div>
-            <Trans
-              i18nKey='import_account_backup'
-              components={{
-                1: <button onClick={_importAccount} />,
-              }}
-            />
+            <ImportAccountButton />
           </div>
           <div>
-            <Trans
-              i18nKey='export_account_backup'
-              components={{
-                1: <button onClick={_exportAccount} />,
-              }}
-            />
+            <ExportAccountButton />
           </div>
           <div className={styles.deleteAccountBox}>
             <Trans
