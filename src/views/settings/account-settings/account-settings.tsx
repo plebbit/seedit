@@ -42,8 +42,6 @@ const CreateAccountButton = () => {
 };
 
 const ImportAccountButton = () => {
-  const switchToNewAccountRef = useRef(false);
-
   const handleImportAccount = async () => {
     const fileInput = document.createElement('input');
     fileInput.type = 'file';
