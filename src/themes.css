@@ -22,6 +22,7 @@
   --button-large-hover-nub: url('/public/assets/buttons/button-large-nub-hover-dark.png');
   --button-large-nub: url('/public/assets/buttons/button-large-nub-dark.png');
   --button-large-nub-disabled: url('/public/assets/buttons/button-large-nub-disabled-dark.png');
+  --button-link-background-hover: rgb(38, 42, 43);
   --close-button: url("/public/assets/buttons/close-button-dark.png");
   --close-button-hover: url("/public/assets/buttons/close-button-hover.png");
   --continue-thread-arrow: url('/public/assets/buttons/continue-this-thread-arrow-dark.png');
@@ -104,6 +105,7 @@
   --button-large-hover-nub: url('/public/assets/buttons/button-large-nub-hover.png');
   --button-large-nub: url('/public/assets/buttons/button-large-nub.png');
   --button-large-nub-disabled: url('/public/assets/buttons/button-large-nub-disabled.png');
+  --button-link-background-hover: #c7def7;
   --close-button: url("/public/assets/buttons/close-button.png");
   --close-button-hover: url("/public/assets/buttons/close-button-hover.png");
   --continue-thread-arrow: url('/public/assets/buttons/continue-this-thread-arrow.png');

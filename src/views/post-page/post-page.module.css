@@ -41,6 +41,37 @@
 .dropdown {
   display: inline;
   position: relative;
+  cursor: pointer;  
+}
+
+.dropdownItems {
+  position: absolute;
+  top: 17px;
+  left: 0;
+  border-style: solid;
+  border-width: 1px;
+  border: 1px solid var(--border-text);
+  z-index: 100;
+  background-color: var(--background);
+  white-space: nowrap;
+  line-height: normal;
+}
+
+.dropdownItem {
+  cursor: pointer;
+  color: var(--link-primary);
+  padding: 2px 3px 1px 3px;
+}
+
+@media (max-width: 640px) {
+  .dropdownItem {
+    padding-bottom: 5px;
+    padding-top: 5px;
+  }
+}
+
+.dropdownItem:hover {
+  background-color: var(--button-link-background-hover);
 }
 
 .selected {

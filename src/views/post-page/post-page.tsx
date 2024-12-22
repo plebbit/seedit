@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState, useRef, useCallback, useMemo } from 'react';
 import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
 import { Comment, useAccountComment, useComment, useSubplebbit } from '@plebbit/plebbit-react-hooks';
 import { useTranslation } from 'react-i18next';
@@ -16,9 +16,9 @@ import _ from 'lodash';
 
 const PendingPost = ({ commentIndex }: { commentIndex?: number }) => {
   const post = useAccountComment({ commentIndex });
+  const navigate = useNavigate();
 
   // in pending page, redirect to post view when post.cid is received
-  const navigate = useNavigate();
   useEffect(() => {
     if (post?.cid && post?.subplebbitAddress) {
       navigate(`/p/${post?.subplebbitAddress}/c/${post?.cid}`, { replace: true });
@@ -32,7 +32,36 @@ const Post = ({ post }: { post: Comment }) => {
   const { t } = useTranslation();
   const { cid, deleted, depth, locked, removed, postCid, replyCount, state, subplebbitAddress, timestamp } = post || {};
 
-  const replies = useReplies(post);
+  const dropdownRef = useRef<HTMLDivElement>(null);
+  const [sortBy, setSortBy] = useState('top');
+  const [openDropdown, setOpenDropdown] = useState(false);
+  const dropdownItems = ['top', 'new', 'old'];
+
+  const handleGlobalClick = useCallback((e: MouseEvent) => {
+    if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
+      setOpenDropdown(false);
+    }
+  }, []);
+
+  useEffect(() => {
+    document.addEventListener('click', handleGlobalClick);
+    return () => document.removeEventListener('click', handleGlobalClick);
+  }, [handleGlobalClick]);
+
+  const topReplies = useReplies(post);
+  const replies = useMemo(() => {
+    if (sortBy === 'top') {
+      return topReplies;
+    }
+    return [...topReplies].sort((a, b) => {
+      if (sortBy === 'new') {
+        return (b.timestamp || 0) - (a.timestamp || 0);
+      } else {
+        // 'old'
+        return (a.timestamp || 0) - (b.timestamp || 0);
+      }
+    });
+  }, [topReplies, sortBy]);
 
   const isSingleComment = post?.parentCid ? true : false;
 
@@ -59,8 +88,31 @@ const Post = ({ post }: { post: Comment }) => {
           <div className={styles.menuArea}>
             <div className={styles.spacer}>
               <span className={styles.dropdownTitle}>{t('reply_sorted_by')}: </span>
-              <div className={styles.dropdown}>
-                <span className={styles.selected}>{t('reply_best')}</span>
+              <div
+                ref={dropdownRef}
+                className={styles.dropdown}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setOpenDropdown(!openDropdown);
+                }}
+              >
+                <span className={styles.selected}>{t(sortBy)}</span>
+                {openDropdown && (
+                  <div className={styles.dropdownItems}>
+                    {dropdownItems.map((item) => (
+                      <div
+                        className={styles.dropdownItem}
+                        key={item}
+                        onClick={() => {
+                          setOpenDropdown(false);
+                          setSortBy(item);
+                        }}
+                      >
+                        {t(item)}
+                      </div>
+                    ))}
+                  </div>
+                )}
               </div>
             </div>
             <div className={styles.spacer} />
@@ -161,9 +213,9 @@ const PostPage = () => {
     document.title = `${postTitle || ''}${postTitle && subplebbitTitle ? ' - ' : ''}${subplebbitTitle || ''}${postTitle || subplebbitTitle ? ' - Seedit' : 'Seedit'}`;
   }, [postTitle, subplebbitTitle]);
 
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
+  // useEffect(() => {
+  //   window.scrollTo(0, 0);
+  // }, []);
 
   return (
     <div className={styles.content}>
