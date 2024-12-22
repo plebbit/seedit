@@ -68,8 +68,8 @@ a {
   line-height: 15px;
 }
 
-.description p {
-  margin: 0 !important;
+.description {
+  margin-bottom: -5px;
 }
 
 .bottom {
