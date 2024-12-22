@@ -137,7 +137,7 @@ const Subplebbit = () => {
       );
     } else if (params.timeFilterName) {
       footerSecondLine = (
-        <div className={styles.stateString}>
+        <div className={styles.morePostsSuggestion}>
           <Trans
             i18nKey='show_all_instead'
             values={{ timeFilterName: params.timeFilterName }}
@@ -151,7 +151,13 @@ const Subplebbit = () => {
 
     return (
       <div className={styles.footer}>
-        {footerFirstLine}
+        {footerFirstLine && (
+          <>
+            {footerFirstLine}
+            <br />
+            <br />
+          </>
+        )}
         {footerSecondLine}
       </div>
     );
