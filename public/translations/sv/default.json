@@ -310,7 +310,7 @@
   "more_posts_last_month": "Visar inlägg sedan {{currentTimeFilterName}}: <1>visa fler inlägg från förra månaden</1>",
   "sure_delete": "Är du säker på att du vill ta bort detta inlägg?",
   "sure_undelete": "Är du säker på att du vill återställa detta inlägg?",
-  "profile_info": "Ditt konto u/{{shortAddress}} har skapats. <1>Ställ in visningsnamn</1>, <2>skapa säkerhetskopia av privatnyckeln</2>, <3>läs mer</3>.",
+  "profile_info": "Ditt konto u/{{shortAddress}} skapades. <1>Ställ in visningsnamn</1>, <2>exportera säkerhetskopia</2>, <3>läs mer</3>.",
   "show_all_instead": "Visar inlägg sedan {{timeFilterName}}, <1>visa allt istället</1>",
   "subplebbit_offline_info": "Subplebbit kan vara offline och publicering kan misslyckas.",
   "posts_last_synced_info": "Inlägg senast synkroniserade {{time}}, subplebbit kan vara offline och publicering kan misslyckas.",

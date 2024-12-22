@@ -310,7 +310,7 @@
   "more_posts_last_month": "Showing posts since {{currentTimeFilterName}}: <1>show more posts from last month</1>",
   "sure_delete": "Are you sure you want to delete this post?",
   "sure_undelete": "Are you sure you want to undelete this post?",
-  "profile_info": "Your account u/{{shortAddress}} was created. <1>Set display name</1>, <2>back up private key</2>, <3>learn more</3>.",
+  "profile_info": "Your account u/{{shortAddress}} was created. <1>Set display name</1>, <2>export backup</2>, <3>learn more</3>.",
   "show_all_instead": "Showing posts since {{timeFilterName}}, <1>show all instead</1>",
   "subplebbit_offline_info": "The subplebbit might be offline and publishing might fail.",
   "posts_last_synced_info": "Posts last synced {{time}}, the subplebbit might be offline and publishing might fail.",

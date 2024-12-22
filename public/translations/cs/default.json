@@ -310,7 +310,7 @@
   "more_posts_last_month": "Zobrazení příspěvků od {{currentTimeFilterName}}: <1>zobrazit více příspěvků z minulého měsíce</1>",
   "sure_delete": "Opravdu chcete smazat tento příspěvek?",
   "sure_undelete": "Opravdu chcete obnovit tento příspěvek?",
-  "profile_info": "Váš účet u/{{shortAddress}} byl vytvořen. <1>Nastavit zobrazené jméno</1>, <2>Zálohovat soukromý klíč</2>, <3>Zjistit více</3>.",
+  "profile_info": "Váš účet u/{{shortAddress}} byl vytvořen. <1>Nastavit zobrazované jméno</1>, <2>exportovat zálohu</2>, <3>další informace</3>.",
   "show_all_instead": "Zobrazujeme příspěvky od {{timeFilterName}}, <1>zobrazit vše místo toho</1>",
   "subplebbit_offline_info": "Subplebbit může být offline a zveřejnění může selhat.",
   "posts_last_synced_info": "Poslední synchronizace příspěvků {{time}}, subplebbit může být offline a zveřejňování může selhat.",

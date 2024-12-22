@@ -310,7 +310,7 @@
   "more_posts_last_month": "{{currentTimeFilterName}} tarihinden itibaren gönderiler gösteriliyor: <1>geçen aydan daha fazla gönderi göster</1>",
   "sure_delete": "Bu gönderiyi silmek istediğinize emin misiniz?",
   "sure_undelete": "Bu gönderiyi geri yüklemek istediğinize emin misiniz?",
-  "profile_info": "Hesabınız u/{{shortAddress}} oluşturuldu. <1>Görünen adınızı ayarlayın</1>, <2>özel anahtarı yedekleyin</2>, <3>daha fazla bilgi edinin</3>.",
+  "profile_info": "Hesabınız u/{{shortAddress}} oluşturuldu. <1>Görüntüleme adını ayarla</1>, <2>yedekleme verilerini dışa aktar</2>, <3>daha fazla bilgi</3>.",
   "show_all_instead": "{{timeFilterName}} tarihinden itibaren gönderiler gösteriliyor, <1>bunun yerine hepsini göster</1>",
   "subplebbit_offline_info": "Subplebbit çevrimdışı olabilir ve yayınlama başarısız olabilir.",
   "posts_last_synced_info": "Son senkronize edilen gönderiler {{time}}, subplebbit çevrimdışı olabilir ve yayınlama başarısız olabilir.",

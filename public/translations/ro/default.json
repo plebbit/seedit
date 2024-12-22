@@ -310,7 +310,7 @@
   "more_posts_last_month": "Afișând postări de la {{currentTimeFilterName}}: <1>afisează mai multe postări din luna trecută</1>",
   "sure_delete": "Ești sigur că vrei să ștergi această postare?",
   "sure_undelete": "Ești sigur că vrei să restaurezi această postare?",
-  "profile_info": "Contul tău u/{{shortAddress}} a fost creat. <1>Setează numele de afișare</1>, <2>salvează cheia privată</2>, <3>află mai multe</3>.",
+  "profile_info": "Contul tău u/{{shortAddress}} a fost creat. <1>Setează numele de afișare</1>, <2>exportă backup</2>, <3>află mai multe</3>.",
   "show_all_instead": "Afișând postări din {{timeFilterName}}, <1>afișați totul în schimb</1>",
   "subplebbit_offline_info": "Subplebbitul ar putea fi offline și publicarea ar putea eșua.",
   "posts_last_synced_info": "Ultimele postări sincronizate {{time}}, subplebbitul ar putea fi offline și publicarea ar putea eșua.",

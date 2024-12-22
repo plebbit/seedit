@@ -76,6 +76,8 @@
   --yellow-box-icon: rgb(130, 103, 0);
   --yellow-highlight: rgb(58, 50, 0);
   --yellow-table: rgb(130, 103, 0);
+  --x-button: url('/public/assets/buttons/close-x-button.png');
+  --x-button-hover: url('/public/assets/buttons/close-x-button.png');
 }
 
 :root .light {
@@ -156,4 +158,6 @@
   --yellow-box-icon: #ffd634;
   --yellow-highlight: #ffc;
   --yellow-table: #ffff99;
+  --x-button: url('/public/assets/buttons/close-x-button-large.png');
+  --x-button-hover: url('/public/assets/buttons/close-x-button-large-hover.png');
 }

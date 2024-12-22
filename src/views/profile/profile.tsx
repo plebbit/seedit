@@ -265,7 +265,7 @@ const Profile = () => {
 
   const infobar = showInfobar && (
     <div className={styles.infobar}>
-      <div className={styles.infobarContent}>
+      <div className={styles.infoContent}>
         <Trans
           i18nKey='profile_info'
           values={{ shortAddress: account?.author?.shortAddress }}
@@ -275,10 +275,8 @@ const Profile = () => {
             3: <HashLink to='/about#newUsers' />,
           }}
         />
-        <button onClick={handleCloseInfobar} className={styles.closeButton}>
-          ✕
-        </button>
       </div>
+      <div className={styles.closeButton} onClick={handleCloseInfobar} />
     </div>
   );
 

@@ -310,7 +310,7 @@
   "more_posts_last_month": "Berichten weergeven sinds {{currentTimeFilterName}}: <1>toon meer berichten van vorige maand</1>",
   "sure_delete": "Weet je zeker dat je deze post wilt verwijderen?",
   "sure_undelete": "Weet je zeker dat je deze post wilt herstellen?",
-  "profile_info": "Je account u/{{shortAddress}} is aangemaakt. <1>Stel een weergavenaam in</1>, <2>maak een back-up van de privésleutel</2>, <3>leer meer</3>.",
+  "profile_info": "Je account u/{{shortAddress}} is aangemaakt. <1>Stel weergavenaam in</1>, <2>exporteer backup</2>, <3>meer leren</3>.",
   "show_all_instead": "Berichten sinds {{timeFilterName}}, <1>toon in plaats daarvan alles</1>",
   "subplebbit_offline_info": "De subplebbit kan offline zijn en publiceren kan mislukken.",
   "posts_last_synced_info": "Laatste keer gesynchroniseerde berichten {{time}}, de subplebbit kan offline zijn en publiceren kan mislukken.",
