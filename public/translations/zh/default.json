@@ -132,7 +132,7 @@
   "hidden": "隐藏",
   "saved": "已保存",
   "overview": "概观",
-  "plebbitor_for": "plebbitor为",
+  "user_since": "至少从{{time}}开始的用户",
   "post_karma": "帖子声望",
   "comment_karma": "评论声望",
   "full_comments": "完整评论",

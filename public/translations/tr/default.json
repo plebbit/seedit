@@ -132,7 +132,7 @@
   "hidden": "gizli",
   "saved": "kaydedildi",
   "overview": "genel bakış",
-  "plebbitor_for": "plebbitor için",
+  "user_since": "En azından {{time}}'den beri kullanıcı",
   "post_karma": "gönderi karma",
   "comment_karma": "yorum karma",
   "full_comments": "tüm yorumlar",

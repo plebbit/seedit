@@ -132,7 +132,7 @@
   "hidden": "скрыто",
   "saved": "сохранено",
   "overview": "обзор",
-  "plebbitor_for": "плеббитор на",
+  "user_since": "Пользователь с {{time}} или более",
   "post_karma": "карма постов",
   "comment_karma": "карма комментариев",
   "full_comments": "все комментарии",

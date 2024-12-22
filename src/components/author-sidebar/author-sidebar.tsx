@@ -66,7 +66,9 @@ const AuthorSidebar = () => {
   const { imageUrl: profilePageAvatar } = useAuthorAvatar({ author: profileAccount?.author });
   const { accountComments } = useAccountComments();
   // const { accountSubplebbits } = useAccountSubplebbits();
-  const profileOldestAccountTimestamp = accountComments?.[0]?.timestamp || Date.now();
+  const profileOldestAccountTimestamp = accountComments?.length
+    ? Math.min(...accountComments.filter((comment): comment is NonNullable<typeof comment> => comment != null).map((comment) => comment.timestamp))
+    : Date.now();
 
   // const defaultSubplebbitAddresses = useDefaultSubplebbitAddresses();
   // const accountSubscriptions = profileAccount?.subscriptions || [];
@@ -75,7 +77,9 @@ const AuthorSidebar = () => {
 
   const authorAccount = useAuthor({ authorAddress, commentCid });
   const { authorComments } = useAuthorComments({ authorAddress, commentCid });
-  const authorOldestCommentTimestamp = authorComments?.[0]?.timestamp || Date.now();
+  const authorOldestCommentTimestamp = authorComments?.length
+    ? Math.min(...authorComments.filter((comment): comment is NonNullable<typeof comment> => comment != null).map((comment) => comment.timestamp))
+    : Date.now();
   // const authorSubplebbits = findAuthorSubplebbits(authorAddress, subplebbits.subplebbits);
 
   const estimatedAuthorKarma = estimateAuthorKarma(authorComments);
@@ -137,9 +141,7 @@ const AuthorSidebar = () => {
               {blocked ? 'Unblock user' : 'Block user'}
             </span>
           )}
-          <span className={styles.age}>
-            {t('plebbitor_for')} {getFormattedTimeDuration(oldestCommentTimestamp)}
-          </span>
+          <span className={styles.age}>{t('user_since', { time: getFormattedTimeDuration(oldestCommentTimestamp) })}</span>
         </div>
       </div>
       {/* {Object.keys(accountSubplebbits).length > 0 && (

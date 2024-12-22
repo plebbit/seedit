@@ -132,7 +132,7 @@
   "hidden": "非表示",
   "saved": "保存済み",
   "overview": "概要",
-  "plebbitor_for": "プレビットルで",
+  "user_since": "少なくとも{{time}}からのユーザー",
   "post_karma": "ポストカルマ",
   "comment_karma": "コメントカルマ",
   "full_comments": "すべてのコメント",

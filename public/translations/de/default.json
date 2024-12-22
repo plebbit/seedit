@@ -132,7 +132,7 @@
   "hidden": "versteckt",
   "saved": "gespeichert",
   "overview": "Übersicht",
-  "plebbitor_for": "Plebbitor für",
+  "user_since": "Benutzer seit mindestens {{time}}",
   "post_karma": "Beitragskarma",
   "comment_karma": "Kommentarkarma",
   "full_comments": "alle Kommentare",

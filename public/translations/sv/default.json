@@ -132,7 +132,7 @@
   "hidden": "dold",
   "saved": "sparad",
   "overview": "översikt",
-  "plebbitor_for": "plebbitor för",
+  "user_since": "Användare sedan minst {{time}}",
   "post_karma": "inläggs-karma",
   "comment_karma": "kommentars-karma",
   "full_comments": "alla kommentarer",

@@ -132,7 +132,7 @@
   "hidden": "مخفي",
   "saved": "تم الحفظ",
   "overview": "نظرة عامة",
-  "plebbitor_for": "بليبيتور لـ",
+  "user_since": "مستخدم منذ {{time}} على الأقل",
   "post_karma": "نقاط النشر",
   "comment_karma": "نقاط التعليقات",
   "full_comments": "جميع التعليقات",

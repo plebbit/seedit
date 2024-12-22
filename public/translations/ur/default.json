@@ -132,7 +132,7 @@
   "hidden": "چھپا ہوا",
   "saved": "محفوظ",
   "overview": "جامع جائزہ",
-  "plebbitor_for": "پلیبیٹر کے لئے",
+  "user_since": "کم از کم {{time}} سے صارف",
   "post_karma": "پوسٹ کرما",
   "comment_karma": "تبصرہ کرما",
   "full_comments": "تمام تبصرے",

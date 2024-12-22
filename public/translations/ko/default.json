@@ -132,7 +132,7 @@
   "hidden": "숨겨진",
   "saved": "저장됨",
   "overview": "개요",
-  "plebbitor_for": "plebbitor을 위한",
+  "user_since": "최소 {{time}}부터 사용자",
   "post_karma": "게시물 카르마",
   "comment_karma": "댓글 카르마",
   "full_comments": "모든 댓글",

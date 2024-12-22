@@ -132,7 +132,7 @@
   "hidden": "tersembunyi",
   "saved": "tersimpan",
   "overview": "ikhtisar",
-  "plebbitor_for": "plebbitor selama",
+  "user_since": "Pengguna sejak setidaknya {{time}}",
   "post_karma": "karma postingan",
   "comment_karma": "karma komentar",
   "full_comments": "semua komentar",

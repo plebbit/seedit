@@ -132,7 +132,7 @@
   "hidden": "fshehur",
   "saved": "i ruajtur",
   "overview": "përgledim",
-  "plebbitor_for": "plebbitor për",
+  "user_since": "Përdorues që nga të paktën {{time}}",
   "post_karma": "karma e postimeve",
   "comment_karma": "karma e komenteve",
   "full_comments": "të gjithë komentet",

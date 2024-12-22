@@ -132,7 +132,7 @@
   "hidden": "מוסתר",
   "saved": "נשמר",
   "overview": "סקירה",
-  "plebbitor_for": "פלביטור למשך",
+  "user_since": "משתמש מאז לפחות {{time}}",
   "post_karma": "כרמה של הפוסטים",
   "comment_karma": "כרמה של התגובות",
   "full_comments": "כל התגובות",

@@ -132,7 +132,7 @@
   "hidden": "rejtett",
   "saved": "elmentve",
   "overview": "áttekintés",
-  "plebbitor_for": "plebbitorért",
+  "user_since": "Felhasználó legalább {{time}} óta",
   "post_karma": "poszt karma",
   "comment_karma": "hozzászólás-karma",
   "full_comments": "összes hozzászólás",

@@ -132,7 +132,7 @@
   "hidden": "مخفی",
   "saved": "ذخیره شده",
   "overview": "بررسی کلی",
-  "plebbitor_for": "پلبیتور برای",
+  "user_since": "کاربر از حداقل {{time}}",
   "post_karma": "کارما پست",
   "comment_karma": "کارما نظرات",
   "full_comments": "تمام نظرات",

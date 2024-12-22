@@ -132,7 +132,7 @@
   "hidden": "piilotettu",
   "saved": "tallennettu",
   "overview": "yleiskatsaus",
-  "plebbitor_for": "Plebbitorille",
+  "user_since": "Käyttäjä vähintään {{time}}",
   "post_karma": "viestikarma",
   "comment_karma": "kommenttikarma",
   "full_comments": "kaikki kommentit",

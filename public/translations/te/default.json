@@ -132,7 +132,7 @@
   "hidden": "దాచబడిన",
   "saved": "భద్రపరచబడినది",
   "overview": "గణాంశం",
-  "plebbitor_for": "ప్లెబిటర్ కోసం",
+  "user_since": "కనీసం {{time}} నుండి వాడుకరి",
   "post_karma": "పోస్ట్ కర్మా",
   "comment_karma": "వ్యాఖ్య కర్మా",
   "full_comments": "పూర్తి వ్యాఖ్యలు",

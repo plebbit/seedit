@@ -132,7 +132,7 @@
   "hidden": "skjult",
   "saved": "lagret",
   "overview": "oversikt",
-  "plebbitor_for": "plebbitor i",
+  "user_since": "Bruker siden minst {{time}}",
   "post_karma": "innleggskarma",
   "comment_karma": "kommentarkarma",
   "full_comments": "alle kommentarer",

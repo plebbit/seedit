@@ -132,7 +132,7 @@
   "hidden": "লুকানো",
   "saved": "সংরক্ষিত",
   "overview": "সংক্ষেপ",
-  "plebbitor_for": "প্লেবিটর জন্য",
+  "user_since": "কমপক্ষে {{time}} থেকে ব্যবহারকারী",
   "post_karma": "পোস্ট কর্মা",
   "comment_karma": "মন্তব্য কর্মা",
   "full_comments": "সম্পূর্ণ মন্তব্য",

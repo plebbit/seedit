@@ -132,7 +132,7 @@
   "hidden": "लपवला",
   "saved": "साचला",
   "overview": "वर्गीकरण",
-  "plebbitor_for": "प्लेबिटरसाठी",
+  "user_since": "किमान {{time}} पासून वापरकर्ता",
   "post_karma": "पोस्ट कर्मा",
   "comment_karma": "कॉमेंट कर्मा",
   "full_comments": "संपूर्ण टिप्पण्या",

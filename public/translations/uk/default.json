@@ -132,7 +132,7 @@
   "hidden": "прихований",
   "saved": "збережено",
   "overview": "огляд",
-  "plebbitor_for": "плебітор на",
+  "user_since": "Користувач з принаймні {{time}}",
   "post_karma": "карма постів",
   "comment_karma": "карма коментарів",
   "full_comments": "всі коментарі",

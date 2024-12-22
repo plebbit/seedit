@@ -132,7 +132,7 @@
   "hidden": "skrytý",
   "saved": "uloženo",
   "overview": "přehled",
-  "plebbitor_for": "plebbitor na",
+  "user_since": "Uživatel alespoň {{time}}",
   "post_karma": "karma příspěvků",
   "comment_karma": "karma komentářů",
   "full_comments": "všechny komentáře",

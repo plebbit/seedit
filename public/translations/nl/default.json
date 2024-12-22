@@ -132,7 +132,7 @@
   "hidden": "verborgen",
   "saved": "opgeslagen",
   "overview": "overzicht",
-  "plebbitor_for": "plebbitor voor",
+  "user_since": "Gebruiker sinds ten minste {{time}}",
   "post_karma": "post karma",
   "comment_karma": "commentaar-karma",
   "full_comments": "alle reacties",

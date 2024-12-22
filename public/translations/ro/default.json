@@ -132,7 +132,7 @@
   "hidden": "ascuns",
   "saved": "salvat",
   "overview": "prezentare generală",
-  "plebbitor_for": "plebbitor pentru",
+  "user_since": "Utilizator din cel puțin {{time}}",
   "post_karma": "karma postărilor",
   "comment_karma": "karma comentariilor",
   "full_comments": "toate comentariile",

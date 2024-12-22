@@ -132,7 +132,7 @@
   "hidden": "ซ่อน",
   "saved": "บันทึกแล้ว",
   "overview": "ภาพรวม",
-  "plebbitor_for": "plebbitor สำหรับ",
+  "user_since": "ผู้ใช้ตั้งแต่ {{time}} อย่างน้อย",
   "post_karma": "คาร์ม่าโพสต์",
   "comment_karma": "คาร์ม่าความเห็น",
   "full_comments": "ความเห็นทั้งหมด",

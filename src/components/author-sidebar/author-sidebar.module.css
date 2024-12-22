@@ -60,6 +60,7 @@
   font-size: 80%;
   color: var(--text-info);
   margin-top: 5px;
+  text-transform: lowercase;
 }
 
 .age {

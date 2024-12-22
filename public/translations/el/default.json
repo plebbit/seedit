@@ -132,7 +132,7 @@
   "hidden": "κρυφός",
   "saved": "αποθηκευμένο",
   "overview": "επισκόπηση",
-  "plebbitor_for": "Plebbitor για",
+  "user_since": "Χρήστης από τουλάχιστον {{time}}",
   "post_karma": "καρμα δημοσιεύσεων",
   "comment_karma": "καρμα σχολίων",
   "full_comments": "όλα τα σχόλια",
