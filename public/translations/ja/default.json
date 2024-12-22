@@ -351,5 +351,7 @@
   "no_thank_you": "いいえ、ありがとう",
   "continue": "続ける",
   "download_latest_android": "最新のAndroidバージョンをダウンロードしますか？",
-  "submitter": "提出者"
+  "submitter": "提出者",
+  "block_user": "ユーザーをブロック",
+  "unblock_user": "ユーザーのブロック解除"
 }

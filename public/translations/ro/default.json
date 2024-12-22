@@ -351,5 +351,7 @@
   "no_thank_you": "Nu, mulțumesc",
   "continue": "Continuă",
   "download_latest_android": "Descărcați cea mai recentă versiune Android?",
-  "submitter": "Trimis"
+  "submitter": "Trimis",
+  "block_user": "Blochează utilizatorul",
+  "unblock_user": "Deblochează utilizatorul"
 }

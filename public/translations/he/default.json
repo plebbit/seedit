@@ -351,5 +351,7 @@
   "no_thank_you": "לא תודה",
   "continue": "המשך",
   "download_latest_android": "להוריד את הגרסה האחרונה של אנדרואיד?",
-  "submitter": "שולח"
+  "submitter": "שולח",
+  "block_user": "לחסום משתמש",
+  "unblock_user": "שחרר חסימה של משתמש"
 }

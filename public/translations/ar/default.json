@@ -351,5 +351,7 @@
   "no_thank_you": "لا، شكرًا",
   "continue": "استمر",
   "download_latest_android": "تحميل أحدث إصدار من أندرويد؟",
-  "submitter": "مقدّم"
+  "submitter": "مقدّم",
+  "block_user": "حظر المستخدم",
+  "unblock_user": "إلغاء حظر المستخدم"
 }

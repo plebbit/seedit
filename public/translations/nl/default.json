@@ -351,5 +351,7 @@
   "no_thank_you": "Nee, bedankt",
   "continue": "Doorgaan",
   "download_latest_android": "Download de nieuwste Android-versie?",
-  "submitter": "Indiener"
+  "submitter": "Indiener",
+  "block_user": "Blokkeer gebruiker",
+  "unblock_user": "Deblokkeer gebruiker"
 }

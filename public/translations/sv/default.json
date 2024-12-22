@@ -351,5 +351,7 @@
   "no_thank_you": "Nej, tack",
   "continue": "Fortsätt",
   "download_latest_android": "Ladda ner den senaste Android-versionen?",
-  "submitter": "Inlämnare"
+  "submitter": "Inlämnare",
+  "block_user": "Blockera användare",
+  "unblock_user": "Avblockera användare"
 }

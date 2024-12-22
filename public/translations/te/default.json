@@ -351,5 +351,7 @@
   "no_thank_you": "లేదు, ధన్యవాదాలు",
   "continue": "కొనసాగించండి",
   "download_latest_android": "తాజా Android వెర్షన్ డౌన్‌లోడ్ చేసుకోండి?",
-  "submitter": "సమర్పకుడు"
+  "submitter": "సమర్పకుడు",
+  "block_user": "వాడుకరిని బ్లాక్ చేయండి",
+  "unblock_user": "వాడుకరిని అన్‌బ్లాక్ చేయండి"
 }

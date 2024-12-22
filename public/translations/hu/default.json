@@ -351,5 +351,7 @@
   "no_thank_you": "Nem, köszönöm",
   "continue": "Folytatás",
   "download_latest_android": "Töltse le a legújabb Android verziót?",
-  "submitter": "Beküldő"
+  "submitter": "Beküldő",
+  "block_user": "Felhasználó blokkolása",
+  "unblock_user": "Felhasználó feloldása"
 }

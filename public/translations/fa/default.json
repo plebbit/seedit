@@ -351,5 +351,7 @@
   "no_thank_you": "نه، ممنون",
   "continue": "ادامه بده",
   "download_latest_android": "دانلود آخرین نسخه اندروید؟",
-  "submitter": "ارسال‌کننده"
+  "submitter": "ارسال‌کننده",
+  "block_user": "مسدود کردن کاربر",
+  "unblock_user": "باز کردن قفل کاربر"
 }

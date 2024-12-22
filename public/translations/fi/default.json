@@ -351,5 +351,7 @@
   "no_thank_you": "Ei kiitos",
   "continue": "Jatka",
   "download_latest_android": "Lataa uusin Android-versio?",
-  "submitter": "Lähettäjä"
+  "submitter": "Lähettäjä",
+  "block_user": "Estä käyttäjä",
+  "unblock_user": "Poista käyttäjän esto"
 }

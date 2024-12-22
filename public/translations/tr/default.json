@@ -351,5 +351,7 @@
   "no_thank_you": "Hayır, teşekkür ederim",
   "continue": "Devam et",
   "download_latest_android": "Son Android sürümünü indir?",
-  "submitter": "Gönderen"
+  "submitter": "Gönderen",
+  "block_user": "Kullanıcıyı engelle",
+  "unblock_user": "Kullanıcıyı engellemeyi kaldır"
 }

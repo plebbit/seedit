@@ -351,5 +351,7 @@
   "no_thank_you": "Tidak, terima kasih",
   "continue": "Lanjutkan",
   "download_latest_android": "Unduh versi Android terbaru?",
-  "submitter": "Pengirim"
+  "submitter": "Pengirim",
+  "block_user": "Blokir pengguna",
+  "unblock_user": "Buka blokir pengguna"
 }

@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { Link, useLocation, useParams } from 'react-router-dom';
 import {
   useAccount,
@@ -55,6 +56,7 @@ const AuthorSidebar = () => {
   const params = useParams();
   const { authorAddress, commentCid } = useParams() || {};
   const { blocked, unblock, block } = useBlock({ address: authorAddress });
+  const [showBlockConfirm, setShowBlockConfirm] = useState(false);
 
   const comment = useComment({ commentCid });
   const { imageUrl: authorPageAvatar } = useAuthorAvatar({ author: comment?.author });
@@ -91,14 +93,21 @@ const AuthorSidebar = () => {
   const oldestCommentTimestamp = isInAuthorView ? authorOldestCommentTimestamp : isInProfileView ? profileOldestAccountTimestamp : Date.now();
   const displayName = isInAuthorView ? authorAccount?.author?.displayName : isInProfileView ? profileAccount?.author?.displayName : '';
 
-  const confirmBlock = () => {
-    if (window.confirm(`Are you sure you want to ${blocked ? 'unblock' : 'block'} this user?`)) {
-      if (blocked) {
-        unblock();
-      } else {
-        block();
-      }
+  const blockConfirm = () => {
+    setShowBlockConfirm(true);
+  };
+
+  const handleBlock = () => {
+    if (blocked) {
+      unblock();
+    } else {
+      block();
     }
+    setShowBlockConfirm(false);
+  };
+
+  const cancelBlock = () => {
+    setShowBlockConfirm(false);
   };
 
   return (
@@ -136,11 +145,24 @@ const AuthorSidebar = () => {
           <span className={styles.karma}>{replyScore}</span> {t('comment_karma')}
         </div>
         <div className={styles.bottom}>
-          {isInAuthorView && authorAddress !== profileAccount?.author?.address && (
-            <span className={styles.blockUser} onClick={confirmBlock}>
-              {blocked ? 'Unblock user' : 'Block user'}
-            </span>
-          )}
+          {isInAuthorView &&
+            authorAddress !== profileAccount?.author?.address &&
+            (showBlockConfirm ? (
+              <span className={styles.blockConfirm}>
+                {t('are_you_sure')}{' '}
+                <span className={styles.confirmButton} onClick={handleBlock}>
+                  {t('yes')}
+                </span>
+                {' / '}
+                <span className={styles.cancelButton} onClick={cancelBlock}>
+                  {t('no')}
+                </span>
+              </span>
+            ) : (
+              <span className={styles.blockUser} onClick={blockConfirm}>
+                {blocked ? t('unblock_user') : t('block_user')}
+              </span>
+            ))}
           <span className={styles.age}>{t('user_since', { time: getFormattedTimeDuration(oldestCommentTimestamp) })}</span>
         </div>
       </div>

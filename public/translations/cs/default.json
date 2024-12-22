@@ -351,5 +351,7 @@
   "no_thank_you": "Ne, děkuji",
   "continue": "Pokračovat",
   "download_latest_android": "Stáhněte si nejnovější verzi Androidu?",
-  "submitter": "Odesílatel"
+  "submitter": "Odesílatel",
+  "block_user": "Zablokovat uživatele",
+  "unblock_user": "Odblokovat uživatele"
 }

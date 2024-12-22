@@ -351,5 +351,7 @@
   "no_thank_you": "No, grazie",
   "continue": "Continua",
   "download_latest_android": "Scarica l'ultima versione di Android?",
-  "submitter": "Inviatore"
+  "submitter": "Inviatore",
+  "block_user": "Blocca utente",
+  "unblock_user": "Sblocca utente"
 }

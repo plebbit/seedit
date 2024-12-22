@@ -112,3 +112,14 @@
 .editButton a:hover {
   text-decoration: underline;
 }
+
+.blockConfirm {
+  cursor: pointer;
+  color: var(--red);
+}
+
+.confirmButton,
+.cancelButton {
+  color: var(--text-primary);
+  cursor: pointer;
+}

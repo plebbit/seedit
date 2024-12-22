@@ -351,5 +351,7 @@
   "no_thank_you": "不，谢谢",
   "continue": "继续",
   "download_latest_android": "下载最新的安卓版本？",
-  "submitter": "提交者"
+  "submitter": "提交者",
+  "block_user": "屏蔽用户",
+  "unblock_user": "解除屏蔽用户"
 }

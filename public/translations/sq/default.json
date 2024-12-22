@@ -351,5 +351,7 @@
   "no_thank_you": "Jo, faleminderit",
   "continue": "Vazhdoni",
   "download_latest_android": "Shkarkoni versionin më të fundit të Android?",
-  "submitter": "Dërguesi"
+  "submitter": "Dërguesi",
+  "block_user": "Blloko përdoruesin",
+  "unblock_user": "Çblloko përdoruesin"
 }

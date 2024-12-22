@@ -351,5 +351,7 @@
   "no_thank_you": "نہیں، شکریہ",
   "continue": "جاری رکھیں",
   "download_latest_android": "آخری Android ورژن ڈاؤن لوڈ کریں؟",
-  "submitter": "جمع کرانے والا"
+  "submitter": "جمع کرانے والا",
+  "block_user": "صارف کو بلاک کریں",
+  "unblock_user": "صارف کو ان بلاک کریں"
 }

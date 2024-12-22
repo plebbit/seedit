@@ -351,5 +351,7 @@
   "no_thank_you": "Нет, спасибо",
   "continue": "Продолжить",
   "download_latest_android": "Скачать последнюю версию Android?",
-  "submitter": "Отправитель"
+  "submitter": "Отправитель",
+  "block_user": "Заблокировать пользователя",
+  "unblock_user": "Разблокировать пользователя"
 }

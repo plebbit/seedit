@@ -351,5 +351,7 @@
   "no_thank_you": "Όχι, ευχαριστώ",
   "continue": "Συνέχεια",
   "download_latest_android": "Κατεβάστε την τελευταία έκδοση Android;",
-  "submitter": "Υποβολέας"
+  "submitter": "Υποβολέας",
+  "block_user": "Αποκλεισμός χρήστη",
+  "unblock_user": "Ξεκλείδωμα χρήστη"
 }

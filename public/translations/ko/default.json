@@ -351,5 +351,7 @@
   "no_thank_you": "아니요, 감사합니다",
   "continue": "계속",
   "download_latest_android": "최신 Android 버전을 다운로드하시겠습니까?",
-  "submitter": "제출자"
+  "submitter": "제출자",
+  "block_user": "사용자 차단",
+  "unblock_user": "사용자 차단 해제"
 }
