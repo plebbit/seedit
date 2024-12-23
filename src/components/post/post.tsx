@@ -184,7 +184,7 @@ const Post = ({ index, post = {} }: PostProps) => {
         </div>
         <div className={`${styles.container} ${blocked && !isInProfileHiddenView ? styles.hidden : styles.visible}`}>
           <div className={styles.row}>
-            {!isMobile && !isInPostPageView && <div className={styles.rank}>{pinned ? undefined : rank}</div>}
+            {!isMobile && isInSubplebbitView && !isInPostPageView && <div className={styles.rank}>{pinned ? undefined : rank}</div>}
             <div className={styles.leftcol}>
               <div className={styles.midcol}>
                 <div className={styles.arrowWrapper}>
