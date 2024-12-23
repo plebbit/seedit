@@ -143,20 +143,8 @@ div[data-viewport-type="window"] {
 }
 
 .closeButton {
-  width: 12px;
-  height: 12px;
-  background-image: var(--x-button);
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
   cursor: pointer;
-  filter: var(--filter80);
-  padding: 0;
-  align-self: start;
-  justify-self: end;
+  font-size: 12px;
   margin-right: -3px;
-}
-
-.closeButton:hover {
-  background-image: var(--x-button-hover);
+  margin-top: -3px;
 }

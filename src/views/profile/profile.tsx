@@ -276,7 +276,9 @@ const Profile = () => {
           }}
         />
       </div>
-      <div className={styles.closeButton} onClick={handleCloseInfobar} />
+      <span className={styles.closeButton} onClick={handleCloseInfobar}>
+        ✕
+      </span>
     </div>
   );
 
