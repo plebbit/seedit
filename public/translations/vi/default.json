@@ -41,7 +41,7 @@
   "reply_permalink": "Liên kết cố định",
   "embed": "Embed",
   "reply_reply": "Trả lời",
-  "reply_best": "Tốt nhất",
+  "best": "Tốt nhất",
   "reply_sorted_by": "Sắp xếp theo",
   "all_comments": "Tất cả {{count}} bình luận",
   "no_comments": "Không có bình luận (chưa)",
@@ -132,7 +132,7 @@
   "hidden": "ẩn",
   "saved": "đã lưu",
   "overview": "tổng quan",
-  "plebbitor_for": "plebbitor trong",
+  "user_since": "Người dùng ít nhất từ {{time}}",
   "post_karma": "karma bài viết",
   "comment_karma": "karma bình luận",
   "full_comments": "tất cả bình luận",
@@ -310,7 +310,7 @@
   "more_posts_last_month": "Hiển thị bài viết từ {{currentTimeFilterName}}: <1>hiển thị thêm bài viết từ tháng trước</1>",
   "sure_delete": "Bạn có chắc chắn muốn xóa bài viết này không?",
   "sure_undelete": "Bạn có chắc chắn muốn khôi phục bài viết này không?",
-  "profile_info": "Tài khoản của bạn u/{{shortAddress}} đã được tạo. <1>Đặt tên hiển thị</1>, <2>sao lưu khóa riêng</2>, <3>tìm hiểu thêm</3>.",
+  "profile_info": "Tài khoản của bạn u/{{shortAddress}} đã được tạo. <1>Đặt tên hiển thị</1>, <2>xuất bản sao lưu</2>, <3>tìm hiểu thêm</3>.",
   "show_all_instead": "Đang hiển thị bài viết từ {{timeFilterName}}, <1>hiển thị tất cả thay vào đó</1>",
   "subplebbit_offline_info": "Subplebbit có thể ngoại tuyến và việc xuất bản có thể thất bại.",
   "posts_last_synced_info": "Bài viết được đồng bộ lần cuối {{time}}, subplebbit có thể ngoại tuyến và việc xuất bản có thể thất bại.",
@@ -351,5 +351,7 @@
   "no_thank_you": "Không, cảm ơn",
   "continue": "Tiếp tục",
   "download_latest_android": "Tải phiên bản Android mới nhất?",
-  "submitter": "Người gửi"
+  "submitter": "Người gửi",
+  "block_user": "Chặn người dùng",
+  "unblock_user": "Bỏ chặn người dùng"
 }

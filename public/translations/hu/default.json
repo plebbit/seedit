@@ -41,7 +41,7 @@
   "reply_permalink": "Állandó hivatkozás",
   "embed": "Embed",
   "reply_reply": "Válasz",
-  "reply_best": "Legjobb",
+  "best": "Legjobb",
   "reply_sorted_by": "Sorrend",
   "all_comments": "Mind a {{count}} hozzászólások",
   "no_comments": "Nincsenek hozzászólások (még)",
@@ -132,7 +132,7 @@
   "hidden": "rejtett",
   "saved": "elmentve",
   "overview": "áttekintés",
-  "plebbitor_for": "plebbitorért",
+  "user_since": "Felhasználó legalább {{time}} óta",
   "post_karma": "poszt karma",
   "comment_karma": "hozzászólás-karma",
   "full_comments": "összes hozzászólás",
@@ -310,7 +310,7 @@
   "more_posts_last_month": "Bejegyzések megjelenítése {{currentTimeFilterName}} óta: <1>további bejegyzések megjelenítése a múlt hónapból</1>",
   "sure_delete": "Biztos, hogy törölni szeretné ezt a bejegyzést?",
   "sure_undelete": "Biztos, hogy vissza szeretné állítani ezt a bejegyzést?",
-  "profile_info": "A fiókod u/{{shortAddress}} létrejött. <1>Állítsd be a megjelenítési nevet</1>, <2>biztonsági másolatot készíteni a privát kulcsról</2>, <3>tudj meg többet</3>.",
+  "profile_info": "A fiókod u/{{shortAddress}} létrejött. <1>Állítsd be a megjelenítő nevet</1>, <2>biztonsági mentés exportálása</2>, <3>tudj meg többet</3>.",
   "show_all_instead": "A {{timeFilterName}} óta látható bejegyzések, <1>helyette mindent mutass</1>",
   "subplebbit_offline_info": "A subplebbit offline lehet, és a közzététel sikertelen lehet.",
   "posts_last_synced_info": "Legutóbb szinkronizált bejegyzések {{time}}, a subplebbit offline lehet, és a közzététel sikertelen lehet.",
@@ -351,5 +351,7 @@
   "no_thank_you": "Nem, köszönöm",
   "continue": "Folytatás",
   "download_latest_android": "Töltse le a legújabb Android verziót?",
-  "submitter": "Beküldő"
+  "submitter": "Beküldő",
+  "block_user": "Felhasználó blokkolása",
+  "unblock_user": "Felhasználó feloldása"
 }

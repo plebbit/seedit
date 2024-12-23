@@ -41,7 +41,7 @@
   "reply_permalink": "Permalink",
   "embed": "Embed",
   "reply_reply": "Tumugon",
-  "reply_best": "Pinakamahusay",
+  "best": "Pinakamahusay",
   "reply_sorted_by": "Naayos ayon sa",
   "all_comments": "Lahat ng {{count}} mga komento",
   "no_comments": "Walang komento (pa)",
@@ -132,7 +132,7 @@
   "hidden": "nakatagong",
   "saved": "itinago",
   "overview": "buod",
-  "plebbitor_for": "plebbitor para sa",
+  "user_since": "Gumagamit mula noong hindi bababa sa {{time}}",
   "post_karma": "karma ng post",
   "comment_karma": "karma ng komento",
   "full_comments": "kumpletong mga komento",
@@ -310,7 +310,7 @@
   "more_posts_last_month": "Ipinapakita ang mga post mula {{currentTimeFilterName}}: <1>ipakita ang higit pang mga post mula noong nakaraang buwan</1>",
   "sure_delete": "Sigurado ka bang gusto mong tanggalin ang post na ito?",
   "sure_undelete": "Sigurado ka bang gusto mong ibalik ang post na ito?",
-  "profile_info": "Ang iyong account na u/{{shortAddress}} ay nalikha na. <1>Itakda ang display name</1>, <2>i-back up ang private key</2>, <3>matutunan pa</3>.",
+  "profile_info": "Ang iyong account u/{{shortAddress}} ay nalikha. <1>I-set ang display name</1>, <2>I-export ang backup</2>, <3>alamin pa</3>.",
   "show_all_instead": "Ipinapakita ang mga post mula {{timeFilterName}}, <1>ipakita ang lahat sa halip</1>",
   "subplebbit_offline_info": "Maaaring offline ang subplebbit at maaaring mabigo ang paglalathala.",
   "posts_last_synced_info": "Huling naka-sync na mga post {{time}}, maaaring offline ang subplebbit at maaaring mabigo ang paglalathala.",
@@ -351,5 +351,7 @@
   "no_thank_you": "Hindi, salamat",
   "continue": "Magpatuloy",
   "download_latest_android": "I-download ang pinakabagong bersyon ng Android?",
-  "submitter": "Nagpadala"
+  "submitter": "Nagpadala",
+  "block_user": "I-block ang gumagamit",
+  "unblock_user": "I-unblock ang gumagamit"
 }

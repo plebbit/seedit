@@ -41,7 +41,7 @@
   "reply_permalink": "Permalink",
   "embed": "Embed",
   "reply_reply": "Antwoord",
-  "reply_best": "Beste",
+  "best": "Beste",
   "reply_sorted_by": "Gesorteerd op",
   "all_comments": "Alle {{count}} reacties",
   "no_comments": "Geen reacties (nog)",
@@ -132,7 +132,7 @@
   "hidden": "verborgen",
   "saved": "opgeslagen",
   "overview": "overzicht",
-  "plebbitor_for": "plebbitor voor",
+  "user_since": "Gebruiker sinds ten minste {{time}}",
   "post_karma": "post karma",
   "comment_karma": "commentaar-karma",
   "full_comments": "alle reacties",
@@ -310,7 +310,7 @@
   "more_posts_last_month": "Berichten weergeven sinds {{currentTimeFilterName}}: <1>toon meer berichten van vorige maand</1>",
   "sure_delete": "Weet je zeker dat je deze post wilt verwijderen?",
   "sure_undelete": "Weet je zeker dat je deze post wilt herstellen?",
-  "profile_info": "Je account u/{{shortAddress}} is aangemaakt. <1>Stel een weergavenaam in</1>, <2>maak een back-up van de privésleutel</2>, <3>leer meer</3>.",
+  "profile_info": "Je account u/{{shortAddress}} is aangemaakt. <1>Stel weergavenaam in</1>, <2>exporteer backup</2>, <3>meer leren</3>.",
   "show_all_instead": "Berichten sinds {{timeFilterName}}, <1>toon in plaats daarvan alles</1>",
   "subplebbit_offline_info": "De subplebbit kan offline zijn en publiceren kan mislukken.",
   "posts_last_synced_info": "Laatste keer gesynchroniseerde berichten {{time}}, de subplebbit kan offline zijn en publiceren kan mislukken.",
@@ -351,5 +351,7 @@
   "no_thank_you": "Nee, bedankt",
   "continue": "Doorgaan",
   "download_latest_android": "Download de nieuwste Android-versie?",
-  "submitter": "Indiener"
+  "submitter": "Indiener",
+  "block_user": "Blokkeer gebruiker",
+  "unblock_user": "Deblokkeer gebruiker"
 }

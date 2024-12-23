@@ -41,7 +41,7 @@
   "reply_permalink": "Kalıcı bağlantı",
   "embed": "Embed",
   "reply_reply": "Cevap",
-  "reply_best": "En iyiler",
+  "best": "En iyiler",
   "reply_sorted_by": "Şuna göre sırala",
   "all_comments": "Tüm {{count}} yorumlar",
   "no_comments": "Yorum yok (henüz)",
@@ -132,7 +132,7 @@
   "hidden": "gizli",
   "saved": "kaydedildi",
   "overview": "genel bakış",
-  "plebbitor_for": "plebbitor için",
+  "user_since": "En azından {{time}}'den beri kullanıcı",
   "post_karma": "gönderi karma",
   "comment_karma": "yorum karma",
   "full_comments": "tüm yorumlar",
@@ -310,7 +310,7 @@
   "more_posts_last_month": "{{currentTimeFilterName}} tarihinden itibaren gönderiler gösteriliyor: <1>geçen aydan daha fazla gönderi göster</1>",
   "sure_delete": "Bu gönderiyi silmek istediğinize emin misiniz?",
   "sure_undelete": "Bu gönderiyi geri yüklemek istediğinize emin misiniz?",
-  "profile_info": "Hesabınız u/{{shortAddress}} oluşturuldu. <1>Görünen adınızı ayarlayın</1>, <2>özel anahtarı yedekleyin</2>, <3>daha fazla bilgi edinin</3>.",
+  "profile_info": "Hesabınız u/{{shortAddress}} oluşturuldu. <1>Görüntüleme adını ayarla</1>, <2>yedekleme verilerini dışa aktar</2>, <3>daha fazla bilgi</3>.",
   "show_all_instead": "{{timeFilterName}} tarihinden itibaren gönderiler gösteriliyor, <1>bunun yerine hepsini göster</1>",
   "subplebbit_offline_info": "Subplebbit çevrimdışı olabilir ve yayınlama başarısız olabilir.",
   "posts_last_synced_info": "Son senkronize edilen gönderiler {{time}}, subplebbit çevrimdışı olabilir ve yayınlama başarısız olabilir.",
@@ -351,5 +351,7 @@
   "no_thank_you": "Hayır, teşekkür ederim",
   "continue": "Devam et",
   "download_latest_android": "Son Android sürümünü indir?",
-  "submitter": "Gönderen"
+  "submitter": "Gönderen",
+  "block_user": "Kullanıcıyı engelle",
+  "unblock_user": "Kullanıcıyı engellemeyi kaldır"
 }

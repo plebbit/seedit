@@ -41,7 +41,7 @@
   "reply_permalink": "Pysyvä linkki",
   "embed": "Upottaa",
   "reply_reply": "Vastaus",
-  "reply_best": "Parhaat",
+  "best": "Parhaat",
   "reply_sorted_by": "Lajiteltu",
   "all_comments": "Kaikki {{count}} kommentit",
   "no_comments": "Ei kommentteja (vielä)",
@@ -132,7 +132,7 @@
   "hidden": "piilotettu",
   "saved": "tallennettu",
   "overview": "yleiskatsaus",
-  "plebbitor_for": "Plebbitorille",
+  "user_since": "Käyttäjä vähintään {{time}}",
   "post_karma": "viestikarma",
   "comment_karma": "kommenttikarma",
   "full_comments": "kaikki kommentit",
@@ -310,7 +310,7 @@
   "more_posts_last_month": "Näytetään viestejä {{currentTimeFilterName}} lähtien: <1>näytä lisää viestejä viime kuulta</1>",
   "sure_delete": "Oletko varma, että haluat poistaa tämän viestin?",
   "sure_undelete": "Oletko varma, että haluat palauttaa tämän viestin?",
-  "profile_info": "Tilisi u/{{shortAddress}} on luotu. <1>Aseta näyttönimi</1>, <2>varmuuskopioi yksityinen avain</2>, <3>lisätietoja</3>.",
+  "profile_info": "Tilitilisi u/{{shortAddress}} on luotu. <1>Aseta näyttönimi</1>, <2>vienti varmuuskopio</2>, <3>lue lisää</3>.",
   "show_all_instead": "Näytetään viestejä ajasta {{timeFilterName}}, <1>näytä kaikki sen sijaan</1>",
   "subplebbit_offline_info": "Subplebbit voi olla offline-tilassa, ja julkaisu voi epäonnistua.",
   "posts_last_synced_info": "Viimeksi synkronoidut viestit {{time}}, subplebbit voi olla offline-tilassa, ja julkaisu voi epäonnistua.",
@@ -351,5 +351,7 @@
   "no_thank_you": "Ei kiitos",
   "continue": "Jatka",
   "download_latest_android": "Lataa uusin Android-versio?",
-  "submitter": "Lähettäjä"
+  "submitter": "Lähettäjä",
+  "block_user": "Estä käyttäjä",
+  "unblock_user": "Poista käyttäjän esto"
 }

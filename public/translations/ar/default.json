@@ -41,7 +41,7 @@
   "reply_permalink": "رابط ثابت",
   "embed": "تضمين",
   "reply_reply": "الرد",
-  "reply_best": "أفضل",
+  "best": "أفضل",
   "reply_sorted_by": "مرتبة حسب",
   "all_comments": "جميع {{count}} التعليقات",
   "no_comments": "لا تعليقات (بعد)",
@@ -132,7 +132,7 @@
   "hidden": "مخفي",
   "saved": "تم الحفظ",
   "overview": "نظرة عامة",
-  "plebbitor_for": "بليبيتور لـ",
+  "user_since": "مستخدم منذ {{time}} على الأقل",
   "post_karma": "نقاط النشر",
   "comment_karma": "نقاط التعليقات",
   "full_comments": "جميع التعليقات",
@@ -310,7 +310,7 @@
   "more_posts_last_month": "عرض المشاركات منذ {{currentTimeFilterName}}: <1>عرض المزيد من المشاركات من الشهر الماضي</1>",
   "sure_delete": "هل أنت متأكد أنك تريد حذف هذا المنشور؟",
   "sure_undelete": "هل أنت متأكد أنك تريد استعادة هذا المنشور؟",
-  "profile_info": "تم إنشاء حسابك u/{{shortAddress}}. <1>تعيين اسم العرض</1>، <2>نسخ احتياطي للمفتاح الخاص</2>، <3>تعلم المزيد</3>.",
+  "profile_info": "تم إنشاء حسابك u/{{shortAddress}}. <1>تعيين اسم العرض</1>, <2>تصدير النسخة الاحتياطية</2>, <3>اعرف المزيد</3>.",
   "show_all_instead": "عرض المشاركات منذ {{timeFilterName}} ، <1>عرض الكل بدلاً من ذلك</1>",
   "subplebbit_offline_info": "قد يكون الرد على الرسائل غير متاح حالياً وقد تفشل النشر.",
   "posts_last_synced_info": "آخر تزامن الرسائل {{time}}، قد يكون الرد على الرسائل غير متاح حالياً وقد تفشل النشر.",
@@ -351,5 +351,7 @@
   "no_thank_you": "لا، شكرًا",
   "continue": "استمر",
   "download_latest_android": "تحميل أحدث إصدار من أندرويد؟",
-  "submitter": "مقدّم"
+  "submitter": "مقدّم",
+  "block_user": "حظر المستخدم",
+  "unblock_user": "إلغاء حظر المستخدم"
 }

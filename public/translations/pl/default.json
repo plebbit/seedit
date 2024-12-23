@@ -41,7 +41,7 @@
   "reply_permalink": "Stały link",
   "embed": "Embed",
   "reply_reply": "Odpowiedź",
-  "reply_best": "Najlepsze",
+  "best": "Najlepsze",
   "reply_sorted_by": "Sortowane według",
   "all_comments": "Wszystkie {{count}} komentarze",
   "no_comments": "Brak komentarzy (jeszcze)",
@@ -132,7 +132,7 @@
   "hidden": "ukryty",
   "saved": "zapisane",
   "overview": "przegląd",
-  "plebbitor_for": "plebbitor przez",
+  "user_since": "Użytkownik od co najmniej {{time}}",
   "post_karma": "karma postów",
   "comment_karma": "karma komentarzy",
   "full_comments": "wszystkie komentarze",
@@ -310,7 +310,7 @@
   "more_posts_last_month": "Pokazuje posty od {{currentTimeFilterName}}: <1>pokaż więcej postów z zeszłego miesiąca</1>",
   "sure_delete": "Czy na pewno chcesz usunąć ten post?",
   "sure_undelete": "Czy na pewno chcesz przywrócić ten post?",
-  "profile_info": "Twoje konto u/{{shortAddress}} zostało utworzone. <1>Ustaw nazwę wyświetlania</1>, <2>zrób kopię zapasową klucza prywatnego</2>, <3>dowiedz się więcej</3>.",
+  "profile_info": "Twoje konto u/{{shortAddress}} zostało utworzone. <1>Ustaw nazwę wyświetlania</1>, <2>eksportuj kopię zapasową</2>, <3>dowiedz się więcej</3>.",
   "show_all_instead": "Pokazuje posty od {{timeFilterName}}, <1>pokaż wszystko zamiast tego</1>",
   "subplebbit_offline_info": "Subplebbit może być offline, a publikacja może się nie powieść.",
   "posts_last_synced_info": "Ostatnio zsynchronizowane posty {{time}}, subplebbit może być offline, a publikacja może się nie powieść.",
@@ -351,5 +351,7 @@
   "no_thank_you": "Nie, dziękuję",
   "continue": "Kontynuować",
   "download_latest_android": "Pobierz najnowszą wersję Androida?",
-  "submitter": "Nadawca"
+  "submitter": "Nadawca",
+  "block_user": "Zablokuj użytkownika",
+  "unblock_user": "Odblokuj użytkownika"
 }

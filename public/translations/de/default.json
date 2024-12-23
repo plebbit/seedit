@@ -41,7 +41,7 @@
   "reply_permalink": "Dauerlink",
   "embed": "Embed",
   "reply_reply": "Antwort",
-  "reply_best": "Besten",
+  "best": "Besten",
   "reply_sorted_by": "Sortiert nach",
   "all_comments": "Alle {{count}} kommentare",
   "no_comments": "Keine kommentare (noch)",
@@ -132,7 +132,7 @@
   "hidden": "versteckt",
   "saved": "gespeichert",
   "overview": "Übersicht",
-  "plebbitor_for": "Plebbitor für",
+  "user_since": "Benutzer seit mindestens {{time}}",
   "post_karma": "Beitragskarma",
   "comment_karma": "Kommentarkarma",
   "full_comments": "alle Kommentare",
@@ -310,7 +310,7 @@
   "more_posts_last_month": "Zeigt Beiträge seit {{currentTimeFilterName}}: <1>Weitere Beiträge aus dem letzten Monat anzeigen</1>",
   "sure_delete": "Sind Sie sicher, dass Sie diesen Beitrag löschen möchten?",
   "sure_undelete": "Sind Sie sicher, dass Sie diesen Beitrag wiederherstellen möchten?",
-  "profile_info": "Ihr Konto u/{{shortAddress}} wurde erstellt. <1>Anzeige-Namen festlegen</1>, <2>Privaten Schlüssel sichern</2>, <3>Mehr erfahren</3>.",
+  "profile_info": "Ihr Konto u/{{shortAddress}} wurde erstellt. <1>Anzeige Name festlegen</1>, <2>Backup exportieren</2>, <3>Erfahren Sie mehr</3>.",
   "show_all_instead": "Zeigt Beiträge seit {{timeFilterName}}, <1>stattdessen alles anzeigen</1>",
   "subplebbit_offline_info": "Der Subplebbit könnte offline sein und das Veröffentlichen könnte fehlschlagen.",
   "posts_last_synced_info": "Beiträge zuletzt synchronisiert {{time}}, der Subplebbit könnte offline sein und das Veröffentlichen könnte fehlschlagen.",
@@ -351,5 +351,7 @@
   "no_thank_you": "Nein, danke",
   "continue": "Weiter",
   "download_latest_android": "Laden Sie die neueste Android-Version herunter?",
-  "submitter": "Einreicher"
+  "submitter": "Einreicher",
+  "block_user": "Benutzer blockieren",
+  "unblock_user": "Benutzer entsperren"
 }

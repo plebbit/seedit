@@ -41,7 +41,7 @@
   "reply_permalink": "고정 링크",
   "embed": "임베드",
   "reply_reply": "답장",
-  "reply_best": "최고의",
+  "best": "최고의",
   "reply_sorted_by": "정렬 기준",
   "all_comments": "모든 {{count}} 댓글",
   "no_comments": "댓글 없음 (아직)",
@@ -132,7 +132,7 @@
   "hidden": "숨겨진",
   "saved": "저장됨",
   "overview": "개요",
-  "plebbitor_for": "plebbitor을 위한",
+  "user_since": "최소 {{time}}부터 사용자",
   "post_karma": "게시물 카르마",
   "comment_karma": "댓글 카르마",
   "full_comments": "모든 댓글",
@@ -310,7 +310,7 @@
   "more_posts_last_month": "{{currentTimeFilterName}} 이후의 게시물 표시: <1>지난 달의 게시물 더 보기</1>",
   "sure_delete": "이 게시물을 삭제하시겠습니까?",
   "sure_undelete": "이 게시물을 복원하시겠습니까?",
-  "profile_info": "귀하의 계정 u/{{shortAddress}}가 생성되었습니다. <1>표시 이름 설정</1>, <2>개인 키 백업</2>, <3>자세히 알아보기</3>.",
+  "profile_info": "당신의 계정 u/{{shortAddress}}가 생성되었습니다. <1>표시 이름 설정</1>, <2>백업 내보내기</2>, <3>자세히 알아보기</3>.",
   "show_all_instead": "{{timeFilterName}} 이후의 게시물이 표시됩니다. <1>대신 모두 표시</1>",
   "subplebbit_offline_info": "서브플레빗이 오프라인 일 수 있으며 게시가 실패할 수 있습니다.",
   "posts_last_synced_info": "최근 동기화된 게시물 {{time}}, 서브플레빗이 오프라인 일 수 있으며 게시가 실패할 수 있습니다.",
@@ -351,5 +351,7 @@
   "no_thank_you": "아니요, 감사합니다",
   "continue": "계속",
   "download_latest_android": "최신 Android 버전을 다운로드하시겠습니까?",
-  "submitter": "제출자"
+  "submitter": "제출자",
+  "block_user": "사용자 차단",
+  "unblock_user": "사용자 차단 해제"
 }

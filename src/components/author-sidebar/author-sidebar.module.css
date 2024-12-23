@@ -60,6 +60,7 @@
   font-size: 80%;
   color: var(--text-info);
   margin-top: 5px;
+  text-transform: lowercase;
 }
 
 .age {
@@ -110,4 +111,15 @@
 
 .editButton a:hover {
   text-decoration: underline;
+}
+
+.blockConfirm {
+  cursor: pointer;
+  color: var(--red);
+}
+
+.confirmButton,
+.cancelButton {
+  color: var(--text-primary);
+  cursor: pointer;
 }

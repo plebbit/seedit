@@ -41,7 +41,7 @@
   "reply_permalink": "קישור קבוע",
   "embed": "הטמע",
   "reply_reply": "תגובה",
-  "reply_best": "הכי טובים",
+  "best": "הכי טובים",
   "reply_sorted_by": "ממוין לפי",
   "all_comments": "כל {{count}} התגובות",
   "no_comments": "אין תגובות (עדיין)",
@@ -132,7 +132,7 @@
   "hidden": "מוסתר",
   "saved": "נשמר",
   "overview": "סקירה",
-  "plebbitor_for": "פלביטור למשך",
+  "user_since": "משתמש מאז לפחות {{time}}",
   "post_karma": "כרמה של הפוסטים",
   "comment_karma": "כרמה של התגובות",
   "full_comments": "כל התגובות",
@@ -310,7 +310,7 @@
   "more_posts_last_month": "מציג פוסטים מ{{currentTimeFilterName}}: <1>הצג עוד פוסטים מהחודש שעבר</1>",
   "sure_delete": "האם אתה בטוח שברצונך למחוק את הפוסט הזה?",
   "sure_undelete": "האם אתה בטוח שברצונך לשחזר את הפוסט הזה?",
-  "profile_info": "החשבון שלך u/{{shortAddress}} נוצר. <1>הגדר שם תצוגה</1>, <2>גבה את המפתח הפרטי</2>, <3>למד עוד</3>.",
+  "profile_info": "החשבון שלך u/{{shortAddress}} נוצר. <1>קבע שם תצוגה</1>, <2>ייצא גיבוי</2>, <3>למד עוד</3>.",
   "show_all_instead": "מראה פוסטים מאז {{timeFilterName}}, <1>הצג הכל במקום זאת</1>",
   "subplebbit_offline_info": "הסאבפלביט עשוי להיות לא מקוון והפרסום עשוי להכשל.",
   "posts_last_synced_info": "הפוסטים סונכרנו לאחרונה {{time}}, הסאבפלביט עשוי להיות לא מקוון והפרסום עשוי להכשל.",
@@ -351,5 +351,7 @@
   "no_thank_you": "לא תודה",
   "continue": "המשך",
   "download_latest_android": "להוריד את הגרסה האחרונה של אנדרואיד?",
-  "submitter": "שולח"
+  "submitter": "שולח",
+  "block_user": "לחסום משתמש",
+  "unblock_user": "שחרר חסימה של משתמש"
 }

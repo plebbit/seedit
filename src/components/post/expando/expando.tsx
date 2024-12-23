@@ -54,6 +54,12 @@ const Expando = ({
     setAlwaysShowNsfw(true);
   };
 
+  const handleUndoAlwaysShowNsfw = () => {
+    setBlurNsfwThumbnails(true);
+    setHideContent(true);
+    setAlwaysShowNsfw(false);
+  };
+
   let mediaComponent = null;
 
   if (commentMediaInfo?.type === 'image' || commentMediaInfo?.type === 'gif') {
@@ -103,7 +109,7 @@ const Expando = ({
         <div className={styles.alwaysShowNsfwContainer}>
           <div className={styles.alwaysShowNsfwNotice}>
             <p>{t('always_show_nsfw_notice')}</p>
-            <button onClick={() => setAlwaysShowNsfw(false)}>{t('undo')}</button>
+            <button onClick={handleUndoAlwaysShowNsfw}>{t('undo')}</button>
           </div>
         </div>
       )}

@@ -41,7 +41,7 @@
   "reply_permalink": "Trvalý odkaz",
   "embed": "Embed",
   "reply_reply": "Odpověď",
-  "reply_best": "Nejlepší",
+  "best": "Nejlepší",
   "reply_sorted_by": "Řazeno podle",
   "all_comments": "Všechny {{count}} komentáře",
   "no_comments": "Žádné komentáře (zatím)",
@@ -132,7 +132,7 @@
   "hidden": "skrytý",
   "saved": "uloženo",
   "overview": "přehled",
-  "plebbitor_for": "plebbitor na",
+  "user_since": "Uživatel alespoň {{time}}",
   "post_karma": "karma příspěvků",
   "comment_karma": "karma komentářů",
   "full_comments": "všechny komentáře",
@@ -310,7 +310,7 @@
   "more_posts_last_month": "Zobrazení příspěvků od {{currentTimeFilterName}}: <1>zobrazit více příspěvků z minulého měsíce</1>",
   "sure_delete": "Opravdu chcete smazat tento příspěvek?",
   "sure_undelete": "Opravdu chcete obnovit tento příspěvek?",
-  "profile_info": "Váš účet u/{{shortAddress}} byl vytvořen. <1>Nastavit zobrazené jméno</1>, <2>Zálohovat soukromý klíč</2>, <3>Zjistit více</3>.",
+  "profile_info": "Váš účet u/{{shortAddress}} byl vytvořen. <1>Nastavit zobrazované jméno</1>, <2>exportovat zálohu</2>, <3>další informace</3>.",
   "show_all_instead": "Zobrazujeme příspěvky od {{timeFilterName}}, <1>zobrazit vše místo toho</1>",
   "subplebbit_offline_info": "Subplebbit může být offline a zveřejnění může selhat.",
   "posts_last_synced_info": "Poslední synchronizace příspěvků {{time}}, subplebbit může být offline a zveřejňování může selhat.",
@@ -351,5 +351,7 @@
   "no_thank_you": "Ne, děkuji",
   "continue": "Pokračovat",
   "download_latest_android": "Stáhněte si nejnovější verzi Androidu?",
-  "submitter": "Odesílatel"
+  "submitter": "Odesílatel",
+  "block_user": "Zablokovat uživatele",
+  "unblock_user": "Odblokovat uživatele"
 }

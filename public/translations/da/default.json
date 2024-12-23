@@ -41,7 +41,7 @@
   "reply_permalink": "Permalink",
   "embed": "Embed",
   "reply_reply": "Svar",
-  "reply_best": "Bedste",
+  "best": "Bedste",
   "reply_sorted_by": "Sorteret efter",
   "all_comments": "Alle {{count}} kommentarer",
   "no_comments": "Ingen kommentarer (endnu)",
@@ -132,7 +132,7 @@
   "hidden": "skjult",
   "saved": "gemt",
   "overview": "oversigt",
-  "plebbitor_for": "plebbitor i",
+  "user_since": "Bruger siden mindst {{time}}",
   "post_karma": "indlægskarma",
   "comment_karma": "kommentarkarma",
   "full_comments": "alle kommentarer",
@@ -310,7 +310,7 @@
   "more_posts_last_month": "Viser indlæg siden {{currentTimeFilterName}}: <1>vis flere indlæg fra sidste måned</1>",
   "sure_delete": "Er du sikker på, at du vil slette dette indlæg?",
   "sure_undelete": "Er du sikker på, at du vil gendanne dette indlæg?",
-  "profile_info": "Din konto u/{{shortAddress}} er oprettet. <1>Indstil visningsnavn</1>, <2>Sikkerhedskopiér privatnøgle</2>, <3>Lær mere</3>.",
+  "profile_info": "Din konto u/{{shortAddress}} blev oprettet. <1>Indstil visningsnavn</1>, <2>eksporter sikkerhedskopi</2>, <3>læs mere</3>.",
   "show_all_instead": "Viser indlæg siden {{timeFilterName}}, <1>vis alle i stedet</1>",
   "subplebbit_offline_info": "Subplebbiten kan være offline, og offentliggørelse kan mislykkes.",
   "posts_last_synced_info": "Seneste synkroniserede indlæg {{time}}, subplebbiten kan være offline, og offentliggørelse kan mislykkes.",
@@ -351,5 +351,7 @@
   "no_thank_you": "Nej, tak tak",
   "continue": "Fortsæt",
   "download_latest_android": "Download den nyeste Android-version?",
-  "submitter": "Indsender"
+  "submitter": "Indsender",
+  "block_user": "Bloker bruger",
+  "unblock_user": "Fjern blokering af bruger"
 }

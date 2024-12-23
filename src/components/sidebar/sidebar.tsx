@@ -308,9 +308,9 @@ const Sidebar = ({ comment, isSubCreatedButNotYetPublished, settings, subplebbit
             <span className={`${styles.onlineIndicator} ${!isOffline ? styles.online : styles.offline}`} title={!isOffline ? t('online') : t('offline')} />
             <span>{isSubCreatedButNotYetPublished ? subCreatedButNotYetPublishedStatus : onlineStatus}</span>
           </div>
-          {description && (
+          {description && description.length > 0 && (
             <div>
-              {title && (
+              {title && title.length > 0 && (
                 <div className={styles.descriptionTitle}>
                   <strong>{title}</strong>
                 </div>

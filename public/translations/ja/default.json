@@ -41,7 +41,7 @@
   "reply_permalink": "パーマリンク",
   "embed": "埋め込む",
   "reply_reply": "返信",
-  "reply_best": "最良",
+  "best": "最良",
   "reply_sorted_by": "ソート条件",
   "all_comments": "すべての{{count}}コメント",
   "no_comments": "コメントはありません（まだ）",
@@ -132,7 +132,7 @@
   "hidden": "非表示",
   "saved": "保存済み",
   "overview": "概要",
-  "plebbitor_for": "プレビットルで",
+  "user_since": "少なくとも{{time}}からのユーザー",
   "post_karma": "ポストカルマ",
   "comment_karma": "コメントカルマ",
   "full_comments": "すべてのコメント",
@@ -310,7 +310,7 @@
   "more_posts_last_month": "{{currentTimeFilterName}} 以降の投稿を表示: <1>先月の投稿をさらに表示</1>",
   "sure_delete": "この投稿を削除してもよろしいですか？",
   "sure_undelete": "この投稿を復元してもよろしいですか？",
-  "profile_info": "あなたのアカウント u/{{shortAddress}} が作成されました。 <1>表示名を設定</1>、<2>秘密鍵をバックアップ</2>、<3>詳しく学ぶ</3>。",
+  "profile_info": "あなたのアカウント u/{{shortAddress}} が作成されました。 <1>表示名を設定</1>, <2>バックアップをエクスポート</2>, <3>詳細はこちら</3>.",
   "show_all_instead": "{{timeFilterName}} からの投稿を表示しています。<1>その代わりにすべて表示</1>",
   "subplebbit_offline_info": "サブプレビットがオフラインになっている可能性があり、公開が失敗することがあります。",
   "posts_last_synced_info": "最後に同期された投稿 {{time}}, サブプレビットがオフラインになっている可能性があり、公開が失敗することがあります。",
@@ -351,5 +351,7 @@
   "no_thank_you": "いいえ、ありがとう",
   "continue": "続ける",
   "download_latest_android": "最新のAndroidバージョンをダウンロードしますか？",
-  "submitter": "提出者"
+  "submitter": "提出者",
+  "block_user": "ユーザーをブロック",
+  "unblock_user": "ユーザーのブロック解除"
 }

@@ -3,17 +3,23 @@
 }
 
 .infobar {
-  max-width: calc(100% - 305px);
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 10px;
   box-sizing: border-box;
   background-color: var(--background-orange);
   border-color: var(--border-orange);
   border-style: solid;
   border-width: 1px;
   margin: 0px 5px 5px 0px;
-  padding: 6px 10px 6px 10px;
+  padding: 6px 10px;
   color: var(--text);
-  word-wrap: break-word;
   font-size: 14px;
+}
+
+.infoContent {
+  word-wrap: break-word;
+  line-height: 1.4;
 }
 
 .infobar a {
@@ -138,7 +144,7 @@ div[data-viewport-type="window"] {
 
 .closeButton {
   cursor: pointer;
-  margin-left: 10px;
-  padding: 0 3px;
-  
+  font-size: 12px;
+  margin-right: -3px;
+  margin-top: -3px;
 }

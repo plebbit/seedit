@@ -41,7 +41,7 @@
   "reply_permalink": "lien permanent",
   "embed": "embed",
   "reply_reply": "répondre",
-  "reply_best": "meilleurs",
+  "best": "meilleurs",
   "reply_sorted_by": "trié par",
   "all_comments": "tous les {{count}} commentaires",
   "no_comments": "aucun commentaire (encore)",
@@ -132,7 +132,7 @@
   "hidden": "caché",
   "saved": "enregistré",
   "overview": "aperçu",
-  "plebbitor_for": "plebbitor pour",
+  "user_since": "Utilisateur depuis au moins {{time}}",
   "post_karma": "karma des publications",
   "comment_karma": "karma des commentaires",
   "full_comments": "tous les commentaires",
@@ -310,7 +310,7 @@
   "more_posts_last_month": "Affichage des publications depuis {{currentTimeFilterName}} : <1>afficher plus de publications du mois dernier</1>",
   "sure_delete": "Êtes-vous sûr de vouloir supprimer ce post ?",
   "sure_undelete": "Êtes-vous sûr de vouloir restaurer ce post ?",
-  "profile_info": "Votre compte u/{{shortAddress}} a été créé. <1>Définir le nom d'affichage</1>, <2>sauvegarder la clé privée</2>, <3>en savoir plus</3>.",
+  "profile_info": "Votre compte u/{{shortAddress}} a été créé. <1>Définir le nom d'affichage</1>, <2>exporter la sauvegarde</2>, <3>en savoir plus</3>.",
   "show_all_instead": "Affichage des publications depuis {{timeFilterName}}, <1>afficher tout à la place</1>",
   "subplebbit_offline_info": "Le subplebbit pourrait être hors ligne et la publication pourrait échouer.",
   "posts_last_synced_info": "Dernières publications synchronisées {{time}}, le subplebbit pourrait être hors ligne et la publication pourrait échouer.",
@@ -351,5 +351,7 @@
   "no_thank_you": "Non merci",
   "continue": "Continuer",
   "download_latest_android": "Télécharger la dernière version d'Android ?",
-  "submitter": "Soumetteur"
+  "submitter": "Soumetteur",
+  "block_user": "Bloquer l'utilisateur",
+  "unblock_user": "Débloquer l'utilisateur"
 }
