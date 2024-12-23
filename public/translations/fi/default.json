@@ -41,7 +41,7 @@
   "reply_permalink": "Pysyvä linkki",
   "embed": "Upottaa",
   "reply_reply": "Vastaus",
-  "reply_best": "Parhaat",
+  "best": "Parhaat",
   "reply_sorted_by": "Lajiteltu",
   "all_comments": "Kaikki {{count}} kommentit",
   "no_comments": "Ei kommentteja (vielä)",

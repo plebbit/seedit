@@ -41,7 +41,7 @@
   "reply_permalink": "Постійне посилання",
   "embed": "Embed",
   "reply_reply": "Відповідь",
-  "reply_best": "Найкращі",
+  "best": "Найкращі",
   "reply_sorted_by": "Сортувати за",
   "all_comments": "Всі {{count}} коментарі",
   "no_comments": "Немає коментарів (ще)",

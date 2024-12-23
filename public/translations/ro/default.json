@@ -41,7 +41,7 @@
   "reply_permalink": "Permalink",
   "embed": "Embed",
   "reply_reply": "Răspuns",
-  "reply_best": "Cele mai bune",
+  "best": "Cele mai bune",
   "reply_sorted_by": "Sortat după",
   "all_comments": "Toate {{count}} comentariile",
   "no_comments": "Fără comentarii (încă)",

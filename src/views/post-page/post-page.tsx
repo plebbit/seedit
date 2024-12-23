@@ -95,14 +95,11 @@ const Post = ({ post }: { post: Comment }) => {
   const unsortedReplies = useReplies(post);
 
   const replies = useMemo(() => {
-    // First separate pinned and unpinned replies
     const pinnedReplies = unsortedReplies.filter((reply) => reply.pinned);
     const unpinnedReplies = unsortedReplies.filter((reply) => !reply.pinned);
 
-    // Sort pinned replies by timestamp (newer first)
     const sortedPinnedReplies = [...pinnedReplies].sort((a, b) => (b.timestamp || 0) - (a.timestamp || 0));
 
-    // Sort unpinned replies according to selected sort method
     let sortedUnpinnedReplies;
     if (sortBy === 'best') {
       sortedUnpinnedReplies = sortByBest(unpinnedReplies);
@@ -117,7 +114,6 @@ const Post = ({ post }: { post: Comment }) => {
       });
     }
 
-    // Combine pinned and unpinned replies
     return [...sortedPinnedReplies, ...sortedUnpinnedReplies];
   }, [unsortedReplies, sortBy]);
 

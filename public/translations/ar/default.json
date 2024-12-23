@@ -41,7 +41,7 @@
   "reply_permalink": "رابط ثابت",
   "embed": "تضمين",
   "reply_reply": "الرد",
-  "reply_best": "أفضل",
+  "best": "أفضل",
   "reply_sorted_by": "مرتبة حسب",
   "all_comments": "جميع {{count}} التعليقات",
   "no_comments": "لا تعليقات (بعد)",

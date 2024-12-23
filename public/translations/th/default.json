@@ -41,7 +41,7 @@
   "reply_permalink": "ลิงก์ถาวร",
   "embed": "embed",
   "reply_reply": "ตอบ",
-  "reply_best": "ที่สุด",
+  "best": "ที่สุด",
   "reply_sorted_by": "เรียงลำดับตาม",
   "all_comments": "ความคิดเห็น {{count}} รายการทั้งหมด",
   "no_comments": "ไม่มีความคิดเห็น (ยัง)",

@@ -41,7 +41,7 @@
   "reply_permalink": "permalink",
   "embed": "embed",
   "reply_reply": "rispondi",
-  "reply_best": "migliori",
+  "best": "migliori",
   "reply_sorted_by": "ordinato per",
   "all_comments": "tutti i {{count}} commenti",
   "no_comments": "nessun commento (ancora)",

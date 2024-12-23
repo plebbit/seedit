@@ -41,7 +41,7 @@
   "reply_permalink": "Permalink",
   "embed": "Embed",
   "reply_reply": "Tumugon",
-  "reply_best": "Pinakamahusay",
+  "best": "Pinakamahusay",
   "reply_sorted_by": "Naayos ayon sa",
   "all_comments": "Lahat ng {{count}} mga komento",
   "no_comments": "Walang komento (pa)",

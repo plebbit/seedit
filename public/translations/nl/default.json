@@ -41,7 +41,7 @@
   "reply_permalink": "Permalink",
   "embed": "Embed",
   "reply_reply": "Antwoord",
-  "reply_best": "Beste",
+  "best": "Beste",
   "reply_sorted_by": "Gesorteerd op",
   "all_comments": "Alle {{count}} reacties",
   "no_comments": "Geen reacties (nog)",

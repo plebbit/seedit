@@ -41,7 +41,7 @@
   "reply_permalink": "永久链接",
   "embed": "嵌入",
   "reply_reply": "回复",
-  "reply_best": "最好的",
+  "best": "最好的",
   "reply_sorted_by": "排序方式",
   "all_comments": "全部 {{count}} 个评论",
   "no_comments": "暂无评论（还）",

@@ -41,7 +41,7 @@
   "reply_permalink": "고정 링크",
   "embed": "임베드",
   "reply_reply": "답장",
-  "reply_best": "최고의",
+  "best": "최고의",
   "reply_sorted_by": "정렬 기준",
   "all_comments": "모든 {{count}} 댓글",
   "no_comments": "댓글 없음 (아직)",

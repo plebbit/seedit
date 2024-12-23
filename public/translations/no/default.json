@@ -41,7 +41,7 @@
   "reply_permalink": "Permanent lenke",
   "embed": "Embed",
   "reply_reply": "Svar",
-  "reply_best": "Beste",
+  "best": "Beste",
   "reply_sorted_by": "Sortert etter",
   "all_comments": "Alle {{count}} kommentarer",
   "no_comments": "Ingen kommentarer (ennå)",

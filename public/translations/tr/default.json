@@ -41,7 +41,7 @@
   "reply_permalink": "Kalıcı bağlantı",
   "embed": "Embed",
   "reply_reply": "Cevap",
-  "reply_best": "En iyiler",
+  "best": "En iyiler",
   "reply_sorted_by": "Şuna göre sırala",
   "all_comments": "Tüm {{count}} yorumlar",
   "no_comments": "Yorum yok (henüz)",

@@ -41,7 +41,7 @@
   "reply_permalink": "Állandó hivatkozás",
   "embed": "Embed",
   "reply_reply": "Válasz",
-  "reply_best": "Legjobb",
+  "best": "Legjobb",
   "reply_sorted_by": "Sorrend",
   "all_comments": "Mind a {{count}} hozzászólások",
   "no_comments": "Nincsenek hozzászólások (még)",

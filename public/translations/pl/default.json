@@ -41,7 +41,7 @@
   "reply_permalink": "Stały link",
   "embed": "Embed",
   "reply_reply": "Odpowiedź",
-  "reply_best": "Najlepsze",
+  "best": "Najlepsze",
   "reply_sorted_by": "Sortowane według",
   "all_comments": "Wszystkie {{count}} komentarze",
   "no_comments": "Brak komentarzy (jeszcze)",

@@ -41,7 +41,7 @@
   "reply_permalink": "Постоянная ссылка",
   "embed": "Встроить",
   "reply_reply": "Ответ",
-  "reply_best": "Лучшие",
+  "best": "Лучшие",
   "reply_sorted_by": "Сортировать по",
   "all_comments": "Все {{count}} комментарии",
   "no_comments": "Нет комментариев (пока)",
