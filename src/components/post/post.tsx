@@ -6,7 +6,7 @@ import { getHasThumbnail } from '../../lib/utils/media-utils';
 import { getPostScore, formatScore } from '../../lib/utils/post-utils';
 import { getFormattedTimeAgo, formatLocalizedUTCTimestamp } from '../../lib/utils/time-utils';
 import { getHostname } from '../../lib/utils/url-utils';
-import { isAllView, isPostPageView, isProfileHiddenView, isSubplebbitView } from '../../lib/utils/view-utils';
+import { isAllView, isPostPageView, isProfileHiddenView, isProfileView, isSubplebbitView } from '../../lib/utils/view-utils';
 import { usePinnedPostsStore } from '../../stores/use-pinned-posts-store';
 import { useCommentMediaInfo } from '../../hooks/use-comment-media-info';
 import useDownvote from '../../hooks/use-downvote';
@@ -127,6 +127,7 @@ const Post = ({ index, post = {} }: PostProps) => {
 
   const isInAllView = isAllView(location.pathname);
   const isInPostPageView = isPostPageView(location.pathname, params);
+  const isInProfileView = isProfileView(location.pathname);
   const isInProfileHiddenView = isProfileHiddenView(location.pathname);
   const isInSubplebbitView = isSubplebbitView(location.pathname, params);
 
@@ -184,7 +185,7 @@ const Post = ({ index, post = {} }: PostProps) => {
         </div>
         <div className={`${styles.container} ${blocked && !isInProfileHiddenView ? styles.hidden : styles.visible}`}>
           <div className={styles.row}>
-            {!isMobile && isInSubplebbitView && !isInPostPageView && <div className={styles.rank}>{pinned ? undefined : rank}</div>}
+            {!isMobile && !isInProfileView && !isInPostPageView && <div className={styles.rank}>{pinned ? undefined : rank}</div>}
             <div className={styles.leftcol}>
               <div className={styles.midcol}>
                 <div className={styles.arrowWrapper}>
