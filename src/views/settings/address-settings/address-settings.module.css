@@ -3,15 +3,15 @@
 }
 
 .green {
-  color: var(--green);
+  color: var(--theme-green);
 }
 
 .red {
-  color: var(--red);
+  color: var(--theme-red);
 }
 
 .yellow {
-  color: var(--yellow);
+  color: var(--theme-yellow);
 }
 
 .settingTitle {
@@ -21,7 +21,7 @@
 .usernameInput input {
   width: 200px;
   padding: 2px;
-  box-shadow: var(--box-shadow-input);
+  box-shadow: var(--theme-box-shadow-input);
 }
 
 .saved {
@@ -52,7 +52,7 @@
 }
 
 .cryptoAddressInfo a {
-  color: var(--text-primary);
+  color: var(--theme-text-primary);
 }
 
 .cryptoAddressInfo a:hover {

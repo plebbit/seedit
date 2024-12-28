@@ -1,7 +1,7 @@
 .avatar {
   width: 70px;
   height: 70px;
-  border: 1px solid var(--border-text);
+  border: 1px solid var(--theme-border-text);
   cursor: pointer;
 }
 
@@ -30,7 +30,7 @@
 .avatarSettingsForm input {
   width: 200px;
   padding: 2px;
-  box-shadow: var(--box-shadow-input);
+  box-shadow: var(--theme-box-shadow-input);
 }
 
 .avatarSettingInput input {
@@ -39,7 +39,7 @@
 }
 
 .avatarSettingInput a {
-  color: var(--link-primary);
+  color: var(--theme-link-primary);
 }
 
 .avatarSettingInput a:hover {
@@ -69,7 +69,7 @@
 }
 
 .copyMessage a {
-  color: var(--link-primary);
+  color: var(--theme-link-primary);
 }
 
 .copyMessage a:hover {

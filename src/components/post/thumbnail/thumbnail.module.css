@@ -17,7 +17,7 @@
 }
 
 .thumbnailWrapper {
-  background-color: var(--background-thumbnail);
+  background-color: var(--theme-background-thumbnail);
   height: 70px;
   width: 70px;
   display: inline-block;
@@ -44,17 +44,17 @@
 }
 
 .textIcon {
-  background-image: var(--thumbnail-icon-text);
+  background-image: var(--theme-thumbnail-icon-text);
 }
 
 .linkIcon {
-  background-image: var(--thumbnail-icon-link);
+  background-image: var(--theme-thumbnail-icon-link);
 }
 
 .spoilerIcon {
-  background-image: var(--thumbnail-icon-spoiler);
+  background-image: var(--theme-thumbnail-icon-spoiler);
 }
 
 .nsfwIcon {
-  background-image: var(--thumbnail-icon-nsfw);
+  background-image: var(--theme-thumbnail-icon-nsfw);
 }

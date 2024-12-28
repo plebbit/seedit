@@ -1,6 +1,6 @@
 .content {
-  color: var(--text);
-  background-color: var(--background-text);
+  color: var(--theme-text);
+  background-color: var(--theme-background-text);
   position: fixed;
   width: 100%;
   z-index: 6;

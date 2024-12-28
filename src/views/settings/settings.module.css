@@ -1,7 +1,7 @@
 .content {
   margin: 7px 5px 40px 5px;
   font-size: 12px;
-  color: var(--text);
+  color: var(--theme-text);
   width: 100%;
 }
 
@@ -43,14 +43,14 @@
 }
 
 .version a {
-  color: var(--link-primary);
+  color: var(--theme-link-primary);
 }
 
 .fullNodeStats {
   text-transform: lowercase;
   cursor: pointer;
   font-size: 10px;
-  color: var(--link-primary);
+  color: var(--theme-link-primary);
   margin-left: 5px;
 }
 
@@ -71,7 +71,7 @@
   text-transform: lowercase;
   cursor: pointer;
   font-size: 10px;
-  color: var(--link-primary);
+  color: var(--theme-link-primary);
   margin-left: 5px;
 }
 
@@ -82,7 +82,7 @@
 .usernameInput input {
   width: 200px;
   padding: 2px;
-  box-shadow: var(--box-shadow-input);
+  box-shadow: var(--theme-box-shadow-input);
 }
 
 .usernameInput button {
@@ -102,7 +102,7 @@
 }
 
 .highlightedSetting {
-  background-color: var(--yellow-highlight);
+  background-color: var(--theme-yellow-highlight);
 }
 
 .filterSettingTitle {

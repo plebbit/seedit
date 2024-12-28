@@ -1,5 +1,5 @@
 .markdown a {
-  color: var(--markdown-link);
+  color: var(--theme-markdown-link);
 }
 
 .markdown ol {
@@ -17,8 +17,8 @@
 .markdown blockquote {
   padding: 0 8px;
   margin-left: 5px;
-  border-left: 2px solid var(--markdown-blockquote-border);
-  color: var(--markdown-blockquote);
+  border-left: 2px solid var(--theme-markdown-blockquote-border);
+  color: var(--theme-markdown-blockquote);
   white-space: normal;
 }
 

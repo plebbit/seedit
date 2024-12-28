@@ -1,20 +1,20 @@
 .app {
-  background-color: var(--background);
+  background-color: var(--theme-background);
   font: normal 10px verdana, arial, helvetica, sans-serif;
   z-index: 1;
   min-height: 100%;
-  color: var(--text-info);
+  color: var(--theme-text-info);
   overflow-y: hidden;
   overflow-x: hidden;
   min-height: 100vh;
 }
 
 textarea, input {
-  background-color: var(--background);
-  color: var(--text-input);
-  border: 1px solid var(--border-text);
+  background-color: var(--theme-background);
+  color: var(--theme-text-input);
+  border: 1px solid var(--theme-border-text);
 }
 
 select, button, input, textarea {
-  filter: var(--filter80);
+  filter: var(--theme-filter80);
 }

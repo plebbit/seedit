@@ -12,25 +12,25 @@
 }
 
 .textButton {
-  background-image: var(--text-button);
+  background-image: var(--theme-text-button);
 }
 
 .textButton:hover {
-  background-image: var(--text-button-hover);
+  background-image: var(--theme-text-button-hover);
 }
 
 .playButton {
-  background-image: var(--play-button);
+  background-image: var(--theme-play-button);
 }
 
 .playButton:hover {
-  background-image: var(--play-button-hover);
+  background-image: var(--theme-play-button-hover);
 }
 
 .closeButton {
-  background-image: var(--close-button);
+  background-image: var(--theme-close-button);
 }
 
 .closeButton:hover {
-  background-image: var(--close-button-hover);
+  background-image: var(--theme-close-button-hover);
 }

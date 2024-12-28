@@ -19,7 +19,7 @@
   font-size: 16px;
   font-weight: normal;
   margin: 10px 0;
-  color: var(--text);
+  color: var(--theme-text);
   text-transform: lowercase;
 }
 
@@ -50,16 +50,16 @@
   left: 0;
   border-style: solid;
   border-width: 1px;
-  border: 1px solid var(--border-text);
+  border: 1px solid var(--theme-border-text);
   z-index: 100;
-  background-color: var(--background);
+  background-color: var(--theme-background);
   white-space: nowrap;
   line-height: normal;
 }
 
 .dropdownItem {
   cursor: pointer;
-  color: var(--link-primary);
+  color: var(--theme-link-primary);
   padding: 2px 3px 1px 3px;
 }
 
@@ -71,7 +71,7 @@
 }
 
 .dropdownItem:hover {
-  background-color: var(--button-link-background-hover);
+  background-color: var(--theme-button-link-background-hover);
 }
 
 .selected {
@@ -89,14 +89,14 @@
 
 .singleCommentInfobar {
   max-width: 100%;
-  background-color: var(--background-orange);
-  border-color: var(--border-orange);
+  background-color: var(--theme-background-orange);
+  border-color: var(--theme-border-orange);
   border-style: solid;
   border-width: 1px;
   font-size: 13px;
   padding: 5px 10px;
   z-index: 999;
-  color: var(--text);
+  color: var(--theme-text);
   word-wrap: break-word;
   text-transform: lowercase;
   display: flex;
@@ -105,7 +105,7 @@
 }
 
 .singleCommentInfobar a {
-  color: var(--link-primary);
+  color: var(--theme-link-primary);
 }
 
 .replies {
@@ -120,7 +120,7 @@
 .stateString {
   overflow: hidden;
   text-overflow: ellipsis;
-  color: var(--text-info);
+  color: var(--theme-text-info);
   font-size: x-small;
 }
 
@@ -129,7 +129,7 @@
   display: block;
   width: 45px;
   height: 100%;
-  background-color: var(--yellow-box-icon);
+  background-color: var(--theme-yellow-box-icon);
   position: absolute;
   left: 0;
   top: 0;
@@ -145,8 +145,8 @@
   box-sizing: border-box;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
-  background-color: var(--yellow-box-background);
-  border-color: var(--yellow-box-contrast);
+  background-color: var(--theme-yellow-box-background);
+  border-color: var(--theme-yellow-box-contrast);
   border-style: solid;
   border-width: 1px;
   margin-bottom: 10px;
@@ -157,7 +157,7 @@
 
 .lockedInfobarText {
   font-size: 12px;
-  color: var(--text-markdown);
+  color: var(--theme-text-markdown);
   unicode-bidi: isolate;
   max-width: 60em;
   word-wrap: break-word;
@@ -181,7 +181,7 @@
 }
 
 .noReplies {
-  color: var(--red);
+  color: var(--theme-red);
   font-size: 13px;
   text-transform: lowercase;
 }

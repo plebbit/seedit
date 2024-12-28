@@ -17,14 +17,14 @@
 }
 
 .buttons li a {
-  color: var(--text-info);
+  color: var(--theme-text-info);
   font-weight: bold;
   text-decoration: none;
   padding: 0 1px;
 }
 
 .buttons .button {
-  color: var(--text-info);
+  color: var(--theme-text-info);
   font-weight: bold;
   text-decoration: none;
   padding: 0 4px 0 4px;

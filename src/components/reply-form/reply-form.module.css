@@ -9,12 +9,12 @@
 .infobar {
   width: 100%;
   box-sizing: border-box;
-  background-color: var(--background-orange);
-  border-color: var(--border-orange);
+  background-color: var(--theme-background-orange);
+  border-color: var(--theme-border-orange);
   border-style: solid;
   border-width: 1px;
   padding: 6px 10px;
-  color: var(--text);
+  color: var(--theme-text);
   word-wrap: break-word;
   font-size: 14px;
 }
@@ -27,8 +27,8 @@
 }
 
 .url {
-  background-color: var(--background);
-  color: var(--text);
+  background-color: var(--theme-background);
+  color: var(--theme-text);
 }
 
 .spoiler {
@@ -50,8 +50,8 @@
 .textarea {
   width: 100%;
   height: 100px;
-  background-color: var(--background);
-  color: var(--text);
+  background-color: var(--theme-background);
+  color: var(--theme-text);
   font: normal small verdana,arial,helvetica,sans-serif;
   line-height: 1.42em;
   font-size: 14px;
@@ -74,7 +74,7 @@
   margin-top: 5px;
   margin-left: 10px;
   margin-right: 5px;
-  color: var(--text-primary);
+  color: var(--theme-text-primary);
   cursor: pointer;
   text-transform: lowercase;
 }
@@ -96,7 +96,7 @@
   width: 100%;
   margin-top: 5px;
   font-weight: 400;
-  color: var(--text-markdown);
+  color: var(--theme-text-markdown);
   font-size: 14px;
   border-collapse: collapse;
   box-sizing: border-box;
@@ -106,7 +106,7 @@
 }
 
 .tableFirstRow {
-  background-color: var(--yellow-table);
+  background-color: var(--theme-yellow-table);
   text-align: center;
   text-transform: lowercase;
   font-style: italic;
@@ -119,7 +119,7 @@
 .markdownHelp td {
   padding: 5px;
   width: 50%;
-  border: 1px solid var(--gray);
+  border: 1px solid var(--theme-gray);
   text-align: left;
   padding: 4px 9px;
 }

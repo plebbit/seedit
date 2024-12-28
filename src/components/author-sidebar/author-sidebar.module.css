@@ -3,7 +3,7 @@
   width: 300px;
   position: relative;
   z-index: 5;
-  background-color: var(--background);
+  background-color: var(--theme-background);
   padding-left: 5px;
 }
 
@@ -11,7 +11,7 @@
   width: 70px;
   height: 70px;
   margin-bottom: 5px;
-  border: 1px solid var(--border-text);
+  border: 1px solid var(--theme-border-text);
 }
 
 .avatar img {
@@ -21,7 +21,7 @@
 
 .titleBox {
   font-size: larger;
-  color: var(--text);
+  color: var(--theme-text);
   margin-bottom: 17px;
 }
 
@@ -55,10 +55,10 @@
 }
 
 .bottom {
-  border-top: 1px solid var(--border-text);
+  border-top: 1px solid var(--theme-border-text);
   padding-top: 2px;
   font-size: 80%;
-  color: var(--text-info);
+  color: var(--theme-text-info);
   margin-top: 5px;
   text-transform: lowercase;
 }
@@ -85,7 +85,7 @@
 }
 
 .modList a {
-  color: var(--text-primary);
+  color: var(--theme-text-primary);
 }
 
 .modList {
@@ -93,19 +93,19 @@
 }
 
 .blockUser {
-  color: var(--text-primary);
+  color: var(--theme-text-primary);
   cursor: pointer;
 }
 
 .editButtonWrapper {
-  color: var(--text-info);
+  color: var(--theme-text-info);
   font-size: 11px;
   font-weight: normal;
   font-family: verdana, arial, helvetica, sans-serif;
 }
 
 .editButton a {
-  color: var(--text-primary);
+  color: var(--theme-text-primary);
   cursor: pointer;
 }
 
@@ -115,11 +115,11 @@
 
 .blockConfirm {
   cursor: pointer;
-  color: var(--red);
+  color: var(--theme-red);
 }
 
 .confirmButton,
 .cancelButton {
-  color: var(--text-primary);
+  color: var(--theme-text-primary);
   cursor: pointer;
 }

@@ -64,7 +64,7 @@
 
 .score {
   text-align: center;
-  color: var(--icon);
+  color: var(--theme-icon);
 }
 
 .entry {
@@ -85,42 +85,42 @@
 
 .link {
   text-decoration: none;
-  color: var(--link);
+  color: var(--theme-link);
 }
 
 .link:visited {
-  color: var(--link-visited);
+  color: var(--theme-link-visited);
 }
 
 .internalLink {
-  color: var(--link);
+  color: var(--theme-link);
   text-decoration: none;
 }
 
 .internalLink:visited {
-  color: var(--link);
+  color: var(--theme-link);
 }
 
 .externalLink {
-  color: var(--link);
+  color: var(--theme-link);
   text-decoration: none;
 }
 
 .externalLink:visited {
-  color: var(--link-visited);
+  color: var(--theme-link-visited);
 }
 
 .pinnedLink {
-  color: var(--green) !important;
+  color: var(--theme-green) !important;
   font-weight: bold !important;
 }
 
 .announcement {
-  color: var(--green) !important;
+  color: var(--theme-green) !important;
 }
 
 .domain {
-  color: var(--text-info);
+  color: var(--theme-text-info);
   font-size: 10px;
   white-space: nowrap;
   vertical-align: middle;
@@ -129,7 +129,7 @@
 }
 
 .domain a {
-  color: var(--text-info);
+  color: var(--theme-text-info);
   display: inline-block;
   overflow: hidden;
   white-space: nowrap;
@@ -142,7 +142,7 @@
 }
 
 .tagline a {
-  color: var(--text-primary);
+  color: var(--theme-text-primary);
   text-decoration: none;
 }
 
@@ -191,11 +191,11 @@
 }
 
 .moderator, .admin, .owner {
-  color: var(--green) !important;
+  color: var(--theme-green) !important;
 }
 
 .displayName {
-  color: var(--text-primary);
+  color: var(--theme-text-primary);
 }
 
 .hidden {
@@ -208,13 +208,13 @@
 
 .hiddenPost {
   overflow: hidden;
-  border: 1px dashed var(--gray-light);
+  border: 1px dashed var(--theme-gray-light);
   padding: 12px 16px;
 }
 
 .hiddenPostText {
   font-size: 14px;
-  color: var(--text)
+  color: var(--theme-text)
 }
 
 .undoHiddenPost {
@@ -259,11 +259,11 @@
 }
 
 .greenSubplebbitAddress {
-  color: var(--green-bright) !important;
+  color: var(--theme-green-bright) !important;
 }
 
 .subscribeButtonWrapper:hover + .subplebbit {
-  color: var(--green-bright) !important;
+  color: var(--theme-green-bright) !important;
 }
 
 .subscribeButtonWrapper {

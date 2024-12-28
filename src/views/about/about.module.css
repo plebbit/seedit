@@ -6,7 +6,7 @@
   unicode-bidi: isolate;
   font-size: 14px;
   margin: 15px;
-  color: var(--text);
+  color: var(--theme-text);
   font-weight: 400;
   word-wrap: break-word;
 }
@@ -21,7 +21,7 @@
   float: right;
   padding: 11px 22px;
   margin: 0 0 11px 22px;
-  border: 1px solid var(--box-border-color);
+  border: 1px solid var(--theme-box-border-color);
   list-style: none;
   max-width: 300px;
 }
@@ -29,7 +29,7 @@
 .tocMobile {
   padding: 11px 22px;
   margin-bottom: 20px;
-  border: 1px solid var(--box-border-color);
+  border: 1px solid var(--theme-box-border-color);
   list-style: none;
 }
 
@@ -39,7 +39,7 @@
 }
 
 .about a {
-  color: var(--markdown-link);
+  color: var(--theme-markdown-link);
   text-decoration: none;
 }
 
