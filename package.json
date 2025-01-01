@@ -9,7 +9,7 @@
   "dependencies": {
     "@capacitor/app": "6.0.1",
     "@floating-ui/react": "0.26.1",
-    "@plebbit/plebbit-react-hooks": "https://github.com/plebbit/plebbit-react-hooks.git#e6890d342c18045228720ce5a7bed1a349099667",
+    "@plebbit/plebbit-react-hooks": "https://github.com/plebbit/plebbit-react-hooks.git#9421a0a5952ff192f5cdfc68a85c6277f057a921",
     "@testing-library/jest-dom": "5.14.1",
     "@testing-library/react": "13.0.0",
     "@testing-library/user-event": "13.2.1",
