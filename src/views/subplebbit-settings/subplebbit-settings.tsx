@@ -794,7 +794,7 @@ const SubplebbitSettings = () => {
   const isReadOnly = (!settings && isInSubplebbitSettingsView) || (!isOnFullNode && isInCreateSubplebbitView);
 
   const { publishSubplebbitEditOptions, resetSubplebbitSettingsStore, setSubplebbitSettingsStore } = useSubplebbitSettingsStore();
-  const { publishSubplebbitEdit } = usePublishSubplebbitEdit(publishSubplebbitEditOptions);
+  const { error, publishSubplebbitEdit } = usePublishSubplebbitEdit(publishSubplebbitEditOptions);
   const { createdSubplebbit, createSubplebbit } = useCreateSubplebbit(publishSubplebbitEditOptions);
 
   const [showSaving, setShowSaving] = useState(false);
@@ -803,7 +803,11 @@ const SubplebbitSettings = () => {
       setShowSaving(true);
       await publishSubplebbitEdit();
       setShowSaving(false);
-      alert(t('settings_saved', { subplebbitAddress }));
+      if (error) {
+        alert(error.message || 'Error: ' + error);
+      } else {
+        alert(t('settings_saved', { subplebbitAddress }));
+      }
     } catch (e) {
       if (e instanceof Error) {
         console.warn(e);
@@ -960,6 +964,7 @@ const SubplebbitSettings = () => {
           </button>
         )}
         {showSaving && <LoadingEllipsis string={t('saving')} />}
+        {error && <div className={styles.error}>{error.message || 'Error: ' + error}</div>}
       </div>
     </div>
   );

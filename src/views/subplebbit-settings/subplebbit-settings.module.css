@@ -316,6 +316,10 @@
   padding-left: 10px;
 }
 
+.error {
+  color: var(--theme-red);
+}
+
 .logoPreview img {
   max-height: 40px;
   padding-left: 10px;
