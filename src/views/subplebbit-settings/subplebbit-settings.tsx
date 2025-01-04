@@ -65,7 +65,7 @@ const Address = ({ isReadOnly = false }: { isReadOnly?: boolean }) => {
   const { address, setSubplebbitSettingsStore } = useSubplebbitSettingsStore();
 
   const alertCryptoAddressInfo = () => {
-    alert(`steps to set a .eth user address:\n1. go to app.ens.domains and search the address\n2.  once you own the address, go to its page, click on "records", then "edit records"\n3. add a new text record with name "subplebbit-address" and value: ${address}\n\n steps to set a .sol user address:\n1. go to sns.id and search the address\n2. once you own the address, go to your profile, click the address menu "...", then "create subdomain"\n3. enter subdomain "subplebbit-address" and create\n4. go to subdomain, "content", change content to: ${address}
+    alert(`steps to set a .eth community address:\n1. go to app.ens.domains and search the address\n2.  once you own the address, go to its page, click on "records", then "edit records"\n3. add a new text record with name "subplebbit-address" and value: ${address}\n\n steps to set a .sol community address:\n1. go to sns.id and search the address\n2. once you own the address, go to your profile, click the address menu "...", then "create subdomain"\n3. enter subdomain "subplebbit-address" and create\n4. go to subdomain, "content", change content to: ${address}
     `);
   };
 
