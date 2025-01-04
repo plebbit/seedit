@@ -3,19 +3,19 @@
   width: 300px;
   position: relative;
   z-index: 5;
-  background-color: var(--theme-background);
+  background-color: var(--background);
   padding-left: 5px;
 }
 
 .titleBox {
   font-size: 12px;
-  color: var(--theme-text);
+  color: var(--text);
   margin-bottom: 12px;
 }
 
 a {
   text-decoration: none;
-  color: var(--theme-text);
+  color: var(--text);
 }
 
 .title {
@@ -58,13 +58,13 @@ a {
 
 .descriptionTitle {
   padding-top: 5px;
-  color: var(--theme-text);
+  color: var(--text);
 }
 
 .description {
   padding: 5px 0;
   word-wrap: break-word;
-  color: var(--theme-text);
+  color: var(--text);
   line-height: 15px;
 }
 
@@ -73,8 +73,8 @@ a {
 }
 
 .bottom {
-  border-top: 1px solid var(--theme-border-text);
-  color: var(--theme-text-info);
+  border-top: 1px solid var(--border-text);
+  color: var(--text-info);
   padding-top: 2px;
   font-size: 80%;
 }
@@ -86,9 +86,9 @@ a {
 .largeButton {
   text-align: center;
   position: relative;
-  border: 1px solid var(--theme-button-border-primary);
-  background: var(--theme-background) none repeat-x scroll center left;
-  background-image: var(--theme-button-large);
+  border: 1px solid var(--button-border-primary);
+  background: var(--background) none repeat-x scroll center left;
+  background-image: var(--button-large);
   background-repeat: repeat;
   font-size: 150%;
   font-weight: bold;
@@ -97,7 +97,7 @@ a {
   height: 29px;
   cursor: pointer;
   margin-bottom: 12px;
-  color: var(--theme-text-primary);
+  color: var(--text-primary);
 }
 
 .nub {
@@ -106,30 +106,30 @@ a {
   right: -1px;
   height: 31px;
   width: 24px;
-  background: var(--theme-background) none no-repeat scroll center left;
-  background-image: var(--theme-button-large-nub);
+  background: var(--background) none no-repeat scroll center left;
+  background-image: var(--button-large-nub);
   background-repeat: no-repeat;
 }
 
 .largeButton:hover {
-  background-image: var(--theme-button-large-hover);
-  border-color: var(--theme-button-border-primary-hover);
-  color: var(--theme-background);
+  background-image: var(--button-large-hover);
+  border-color: var(--button-border-primary-hover);
+  color: var(--background);
 }
 
 .largeButton:hover .nub {
-  background-image: var(--theme-button-large-hover-nub);
+  background-image: var(--button-large-hover-nub);
 }
 
 .largeButtonDisabled {
-  background-image: var(--theme-button-large-disabled) !important;
-  border-color: var(--theme-button-border-disabled) !important;
-  color: var(--theme-gray-button-text) !important;
+  background-image: var(--button-large-disabled) !important;
+  border-color: var(--button-border-disabled) !important;
+  color: var(--gray-button-text) !important;
   cursor: default;
 }
 
 .largeButtonDisabled .nub {
-  background-image: var(--theme-button-large-nub-disabled) !important;
+  background-image: var(--button-large-nub-disabled) !important;
 }
 
 .largeButtonDisabled:hover {
@@ -152,7 +152,7 @@ a {
 .listContent {
   margin: 0;
   padding: 5px;
-  border: 1px solid var(--theme-border-text);
+  border: 1px solid var(--border-text);
   list-style: none;
 }
 
@@ -163,7 +163,7 @@ a {
 
 .modsList li, .bottom a {
   text-decoration: none;
-  color: var(--theme-text-primary);
+  color: var(--text-primary);
   cursor: pointer;
 }
 
@@ -174,7 +174,7 @@ a {
 }
 
 .listMore {
-  color: var(--theme-text-info) !important;
+  color: var(--text-info) !important;
   text-align: right;
   font-size: 10px !important;
   cursor: pointer;
@@ -183,7 +183,7 @@ a {
 .rules {
   padding-bottom: 5px;
   padding-top: 7px;
-  color: var(--theme-text);
+  color: var(--text);
   line-height: 15px;
   word-wrap: break-word;
 }
@@ -204,7 +204,7 @@ a {
 
 .moderationTool a {
   text-decoration: none;
-  color: var(--theme-text-primary);
+  color: var(--text-primary);
   cursor: pointer;
 }
 
@@ -220,12 +220,12 @@ a {
 
 .postInfo {
   padding: 5px;
-  border: 1px solid var(--theme-border-primary);
-  background-color: var(--theme-background-secondary);
+  border: 1px solid var(--border-primary);
+  background-color: var(--background-secondary);
   font-family: arial,helvetica,sans-serif;
   font-size: larger;
   border-radius: 3px;
-  color: var(--theme-text);
+  color: var(--text);
   margin-bottom: 12px;
 }
 
@@ -245,18 +245,18 @@ a {
 }
 
 .shareLink input {
-  border: 1px solid var(--theme-border-text);
+  border: 1px solid var(--border-text);
   font-family: monospace;
   font-size: 140%;
   padding: 3px 2px;
   width: 175px;
-  background-color: var(--theme-background);
-  color: var(--theme-text);
+  background-color: var(--background);
+  color: var(--text);
 }
 
 .blockSub {
   padding-top: 10px;
-  color: var(--theme-text-primary);
+  color: var(--text-primary);
   cursor: pointer;
 }
 
@@ -289,7 +289,7 @@ a {
 
 .footerSeparator {
   margin: 0 2px;
-  color: var(--theme-gray-footer-separator);
+  color: var(--gray-footer-separator);
 }
 
 .footer li a {
@@ -297,7 +297,7 @@ a {
 }
 
 .footer a {
-  color: var(--theme-gray-footer);
+  color: var(--gray-footer);
 }
 
 .footer a:hover {
@@ -320,17 +320,17 @@ a {
 }
 
 .blockConfirm {
-  color: var(--theme-red);
+  color: var(--red);
 }
 
 .blockConfirm span {
-  color: var(--theme-text-info);
+  color: var(--text-info);
   font-weight: 700;
   cursor: pointer;
 }
 
 .blockSub {
   font-weight: 700;
-  color: var(--theme-text-info);
+  color: var(--text-info);
   cursor: pointer;
 }

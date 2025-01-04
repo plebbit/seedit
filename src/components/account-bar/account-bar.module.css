@@ -5,27 +5,27 @@
   bottom: unset;
   border-bottom-left-radius: 7px;
   border-top-left-radius: 0;
-  background-color: var(--theme-background-secondary);
+  background-color: var(--background-secondary);
   padding: 4px;
   line-height: 12px;
   z-index: 8;
 }
 
 .user a {
-  color: var(--theme-text-primary);
+  color: var(--text-primary);
   cursor: pointer;
 }
 
 .userDropdownButton {
   background: none no-repeat scroll center right;
-  background-image: var(--theme-account-dropdown-arrow);
+  background-image: var(--account-dropdown-arrow);
   padding-right: 21px;
   margin-right: -5px;
   cursor: pointer;
 }
 
 .separator {
- color: var(--theme-gray-contrast);
+ color: var(--gray-contrast);
  margin: 0px .7ex 0px .7ex;
  cursor: default; 
 }
@@ -33,7 +33,7 @@
 .textButton {
   text-decoration: none;
   font-weight: bold;
-  color: var(--theme-text-primary);
+  color: var(--text-primary);
 }
 
 .textButton:hover {
@@ -68,13 +68,13 @@
   position: absolute;
   top: 25px;
   left: 0;
-  background-color: var(--theme-background-secondary);
+  background-color: var(--background-secondary);
   line-height: 12px;
   z-index: 5;
 }
 
 .selectedTextButton {
-  color: var(--theme-green);
+  color: var(--green);
 }
 
 .dropdown {
@@ -87,9 +87,9 @@
   top: 16px;
   position: absolute;
   left: 0px;
-  border: 1px solid var(--theme-border-text);
-  background-color: var(--theme-background);
-  color: var(--theme-text-primary) ;
+  border: 1px solid var(--border-text);
+  background-color: var(--background);
+  color: var(--text-primary) ;
   white-space: nowrap;
   line-height: normal;
 }
@@ -108,7 +108,7 @@
 }
 
 .dropdownItem:hover {
-  background-color: var(--theme-background-primary);
+  background-color: var(--background-primary);
 }
 
 .mailIcon {
@@ -129,7 +129,7 @@
 }
 
 .mailUnreadCount {
-  background-color: var(--theme-orange);
+  background-color: var(--orange);
   color: #FFF;
   font-size: 8px;
   font-weight: bold;

@@ -1,7 +1,7 @@
 .content {
   margin: 7px 5px 40px 5px;
   font-size: 12px;
-  color: var(--theme-text);
+  color: var(--text);
   width: 100%;
 }
 
@@ -30,7 +30,7 @@
 
 .content input[type="text"], .content textarea {
   padding: 2px;
-  box-shadow: var(--theme-box-shadow-input);
+  box-shadow: var(--box-shadow-input);
 }
 
 .content input[type="text"], .content textarea {
@@ -82,5 +82,5 @@
 }
 
 .highlightedSetting {
-  background-color: var(--theme-yellow-highlight);
+  background-color: var(--yellow-highlight);
 }

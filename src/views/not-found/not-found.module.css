@@ -5,7 +5,7 @@
 .notFound {
   text-align: center;
   text-transform: lowercase;
-  color: var(--theme-text);
+  color: var(--text);
 }
 
 .notFound h1 {

@@ -1,7 +1,7 @@
 .header {
-  border-bottom: 1px solid var(--theme-border-primary);
+  border-bottom: 1px solid var(--border-primary);
   position: relative;
-  background-color: var(--theme-background-primary);
+  background-color: var(--background-primary);
   font-size: 12px;
   /* Add flex display */
   display: flex;
@@ -29,7 +29,7 @@
 .logo {
   max-height: 38px;
   margin: 0 -1px -3px 1px;
-  filter: var(--theme-filter90);
+  filter: var(--filter90);
 }
 
 .avatar {
@@ -42,7 +42,7 @@
   max-height: 26px;
   margin-top: 16px;
   padding-right: 5px;
-  filter: var(--theme-filter90);
+  filter: var(--filter90);
 }
 
 @media (max-width: 640px) {
@@ -73,11 +73,11 @@
   font-weight: bold;
   font-variant: small-caps;
   font-size: 1.2em;
-  color: var(--theme-text);
+  color: var(--text);
 }
 
 .pageName a {
-  color: var(--theme-text);
+  color: var(--text);
   text-decoration: none;
   cursor: pointer;
 }
@@ -132,17 +132,17 @@
 
 .tabMenu li a {
   padding: 2px 6px 0 6px;
-  background-color: var(--theme-background-secondary);
+  background-color: var(--background-secondary);
   text-decoration: none;
-  color: var(--theme-text-primary);
+  color: var(--text-primary);
   box-sizing: border-box;
 }
 
 .tabMenu .selected a {
-  color: var(--theme-green);
-  background-color: var(--theme-background);
-  border: 1px solid var(--theme-border-primary);
-  border-bottom: 1px solid var(--theme-background);
+  color: var(--green);
+  background-color: var(--background);
+  border: 1px solid var(--border-primary);
+  border-bottom: 1px solid var(--background);
   padding: 2px 6px 0 6px;
   display: inline-flex;
   align-items: flex-end;

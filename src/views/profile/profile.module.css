@@ -7,13 +7,13 @@
   grid-template-columns: 1fr auto;
   gap: 10px;
   box-sizing: border-box;
-  background-color: var(--theme-background-orange);
-  border-color: var(--theme-border-orange);
+  background-color: var(--background-orange);
+  border-color: var(--border-orange);
   border-style: solid;
   border-width: 1px;
   margin: 0px 5px 5px 0px;
   padding: 6px 10px;
-  color: var(--theme-text);
+  color: var(--text);
   font-size: 14px;
 }
 
@@ -23,7 +23,7 @@
 }
 
 .infobar a {
-  color: var(--theme-text-primary);
+  color: var(--text-primary);
   text-decoration: underline;
 }
 
@@ -57,7 +57,7 @@ div[data-viewport-type="window"] {
 }
 
 .dropdownTitle {
-  color: var(--theme-text) !important;
+  color: var(--text) !important;
 }
 
 .dropdown {
@@ -82,7 +82,7 @@ div[data-viewport-type="window"] {
   left: 90px;
   border: 1px solid gray;
   z-index: 100;
-  background-color: var(--theme-background);
+  background-color: var(--background);
   white-space: nowrap;
   line-height: normal;
   margin-top: 3px;
@@ -92,11 +92,11 @@ div[data-viewport-type="window"] {
   cursor: pointer;
   padding: 2px 3px 1px 3px;
   display: block;
-  color: var(--theme-text-primary);
+  color: var(--text-primary);
 }
 
 .filter:hover {
-  background-color: var(--theme-background-primary);
+  background-color: var(--background-primary);
 }
 
 .dropChoicesHidden {
@@ -114,28 +114,28 @@ div[data-viewport-type="window"] {
 
 .pagination .button {
   padding: 1px 4px;
-  background: var(--theme-pagination-button-background);
-  border: var(--theme-pagination-button-border);
+  background: var(--pagination-button-background);
+  border: var(--pagination-button-border);
   border-radius: 3px;
   font-weight: bold;
   cursor: pointer;
   text-transform: lowercase;
-  color: var(--theme-link-primary);
+  color: var(--link-primary);
 }
 
 .pagination .button:hover {
-  border: var(--theme-pagination-button-border-hover);
+  border: var(--pagination-button-border-hover);
 }
 
 .pagination .separator {
   margin: 0;
   margin-left: .5em;
   padding-left: .5em;
-  border-left: 1px solid var(--theme-text-info);
+  border-left: 1px solid var(--text-info);
 }
 
 .nothingFound {
-  color: var(--theme-red);
+  color: var(--red);
   font-size: 13px;
   font-family: verdana, Arial, Helvetica, sans-serif;
   margin-top: -2px;

@@ -3,7 +3,7 @@
 }
 
 .accountData textarea {
-  box-shadow: var(--theme-box-shadow-input);
+  box-shadow: var(--box-shadow-input);
 }
 
 .accountButtons {
@@ -27,7 +27,7 @@
 .warning {
   text-transform: lowercase;
   font-size: 0.8em;
-  color: var(--theme-red);
+  color: var(--red);
   padding-bottom: 10px;
   padding-right: 10px;
 }
@@ -60,7 +60,7 @@
 }
 
 .deleteAccountBox, .deleteAccountBox button {
-  color: var(--theme-red);
+  color: var(--red);
 }
 
 .deleteAccountBox {

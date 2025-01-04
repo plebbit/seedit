@@ -1,5 +1,5 @@
 .button {
-  color: var(--theme-text-info);
+  color: var(--text-info);
   font-weight: bold;
   text-decoration: none;
   padding: 0 4px 0 4px;
@@ -8,12 +8,12 @@
 
 .modal {
   z-index: 7;
-  background-color: var(--theme-background);
+  background-color: var(--background);
   padding: 1px 0;
   padding-top: 2px;
-  color: var(--theme-text);
+  color: var(--text);
   font-size: 12px;
-  border: 1px solid var(--theme-border-text);
+  border: 1px solid var(--border-text);
   min-width: 200px;
 }
 
@@ -35,7 +35,7 @@
 
 .menuItem input[type="text"] {
   padding: 2px;
-  box-shadow: var(--theme-box-shadow-input);
+  box-shadow: var(--box-shadow-input);
   margin-top: 2px;
   width: calc(100% - 6px);
   margin-bottom: 2px;
@@ -55,7 +55,7 @@
 }
 
 .optional {
-  color: var(--theme-text-info);
+  color: var(--text-info);
 }
 
 @supports (-moz-appearance: none) {

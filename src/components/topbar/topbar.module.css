@@ -1,12 +1,12 @@
 .headerArea {
-  background-color: var(--theme-background-text);
+  background-color: var(--background-text);
   white-space: nowrap;
   text-transform: uppercase;
-  border-bottom: 1px solid var(--theme-border-text);
+  border-bottom: 1px solid var(--border-text);
   font-size: 90%;
   height: 18px;
   line-height: 18px;
-  color: var(--theme-text);
+  color: var(--text);
 }
 
 .widthClip {
@@ -29,8 +29,8 @@
   margin-top: 0;
   position: absolute;
   left: 0px;
-  border: 1px solid var(--theme-border-text);
-  background-color: var(--theme-background);
+  border: 1px solid var(--border-text);
+  background-color: var(--background);
   white-space: nowrap;
   line-height: normal;
   z-index: 9;
@@ -54,13 +54,13 @@
 }
 
 .dropdownItem:hover {
-  background-color: var(--theme-background-primary);
+  background-color: var(--background-primary);
 }
 
 .myCommunitiesItemButtonDotted {
   font-style: italic;
   text-transform: uppercase;
-  border-top: 1px dotted var(--theme-text-primary);
+  border-top: 1px dotted var(--text-primary);
 }
 
 .myCommunitiesItemButton {
@@ -70,7 +70,7 @@
 
 .dropChoices a, .dropChoices span {
   text-decoration: none;
-  color: var(--theme-text-primary);
+  color: var(--text-primary);
 }
 
 .noSubs {
@@ -79,7 +79,7 @@
 }
 
 .noSubs:hover {
-  background-color: var(--theme-background);
+  background-color: var(--background);
 }
 
 .hidden {
@@ -91,18 +91,18 @@
 }
 
 .separator {
-  color: var(--theme-gray-contrast);
+  color: var(--gray-contrast);
   cursor: default;
 }
 
 .selectedTitle {
   background: none no-repeat scroll center right;
-  background-image: var(--theme-droparrow-topbar);
+  background-image: url("/public/assets/buttons/droparrowgray.gif");
   display: inline-block;
   vertical-align: bottom;
   padding-right: 21px;
   padding-left: 5px;
-  color: var(--theme-text);
+  color: var(--text);
   font-weight: normal;
   margin-left: -5px;
   cursor: pointer;
@@ -130,11 +130,11 @@
 
 .srList .srBar li a {
   text-decoration: none;
-  color: var(--theme-text);
+  color: var(--text);
 }
 
 .srList .srBar li .selected {
-  color: var(--theme-green) !important;
+  color: var(--green) !important;
   font-weight: bold;
 }
 
@@ -156,9 +156,9 @@
 }
 
 .moreLink {
-  color: var(--theme-text);
+  color: var(--text);
   text-decoration: none;
-  background-color: var(--theme-background-text);
+  background-color: var(--background-text);
   padding: 0 5px 0 15px;
   font-weight: bold;
 }

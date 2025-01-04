@@ -13,26 +13,26 @@
 }
 
 .black {
-  color: var(--theme-text);
+  color: var(--text);
   border-color: currentColor;
 }
 
 .yellow {
-  color: var(--theme-yellow);
-  border-color: var(--theme-yellow);
+  color: var(--yellow);
+  border-color: var(--yellow);
 }
 
 .red {
-  color: var(--theme-red);
-  border-color: var(--theme-red);
+  color: var(--red);
+  border-color: var(--red);
 }
 
 .green {
-  color: var(--theme-green);
-  border-color: var(--theme-green);
+  color: var(--green);
+  border-color: var(--green);
 }
 
 .nsfw-red {
-  color: var(--theme-red-nsfw);
-  border-color: var(--theme-red-nsfw);
+  color: var(--red-nsfw);
+  border-color: var(--red-nsfw);
 }

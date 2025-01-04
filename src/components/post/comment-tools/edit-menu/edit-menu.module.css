@@ -1,5 +1,5 @@
 .button {
-  color: var(--theme-text-info);
+  color: var(--text-info);
   font-weight: bold;
   text-decoration: none;
   padding: 0 4px;
@@ -9,14 +9,14 @@
 
 .modal {
   z-index: 7;
-  background-color: var(--theme-background);
-  border: 1px solid var(--theme-border-text);
+  background-color: var(--background);
+  border: 1px solid var(--border-text);
   outline: none;
   font-size: 12px;
 }
 
 .menuItem {
-  color: var(--theme-text-primary);
+  color: var(--text-primary);
   cursor: pointer;
   padding: 2px 3px 1px 3px;
   display: block;
@@ -24,12 +24,12 @@
 }
 
 .menuItem a {
-  color: var(--theme-text-primary);
+  color: var(--text-primary);
   text-decoration: none;
 }
 
 .menuItem:hover {
-  background-color: var(--theme-background-primary);
+  background-color: var(--background-primary);
 }
 
 @media (min-width: 640px) {
@@ -45,7 +45,7 @@
 }
 
 .deleteConfirm {
-  color: var(--theme-red);
+  color: var(--red);
   text-transform: lowercase;
   padding: 0 4px;
 }
@@ -55,7 +55,7 @@
 }
 
 .deleteConfirm span {
-  color: var(--theme-text-info);
+  color: var(--text-info);
   font-weight: 700;
   cursor: pointer;
 }

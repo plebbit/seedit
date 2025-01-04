@@ -13,7 +13,7 @@
 }
 
 .walletBox {
-  border: 1px solid var(--theme-border-contrast);
+  border: 1px solid var(--border-contrast);
   border-radius: 7px;
   margin-bottom: 0.5em;
   padding: 7px;
@@ -30,7 +30,7 @@
 .walletField input {
   width: 200px;
   padding: 2px;
-  box-shadow: var(--theme-box-shadow-input);
+  box-shadow: var(--box-shadow-input);
 }
 
 .copyMessage {
@@ -38,7 +38,7 @@
 }
 
 .copyMessage a {
-  color: var(--theme-text-primary);
+  color: var(--text-primary);
 }
 
 .copyMessage a:hover {

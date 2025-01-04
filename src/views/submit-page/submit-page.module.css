@@ -1,17 +1,17 @@
 .content {
   margin: 7px 5px 50px 5px;
-  color: var(--theme-text);
+  color: var(--text);
 }
 
 .infobar {
   box-sizing: border-box;
-  background-color: var(--theme-background-orange);
-  border-color: var(--theme-border-orange);
+  background-color: var(--background-orange);
+  border-color: var(--border-orange);
   border-style: solid;
   border-width: 1px;
   margin-bottom: 5px;
   padding: 6px 10px 6px 10px;
-  color: var(--theme-text);
+  color: var(--text);
   word-wrap: break-word;
   font-size: 14px;
 }
@@ -25,7 +25,7 @@ h1 {
 
 .location {
   text-decoration: none;
-  color: var(--theme-link-primary);
+  color: var(--link-primary);
 }
 
 .form {
@@ -40,7 +40,7 @@ h1 {
   display: block;
   position: relative;
   width: 500px;
-  background-color: var(--theme-background-primary);
+  background-color: var(--background-primary);
   border-radius: 4px;
   padding: 5px 10px 10px 10px;
   font-size: large;
@@ -49,13 +49,13 @@ h1 {
 
 .optional {
   content: " (optional)";
-  color: var(--theme-text-info);
+  color: var(--text-info);
   font-size: smaller;
 }
 
 .boxTitleRequired::before {
   content: "*";
-  color: var(--theme-red);
+  color: var(--red);
 }
 
 .boxContent {
@@ -73,7 +73,7 @@ h1 {
   width: 492px;
   padding: 3px;
   margin: 0;
-  color: var(--theme-text);
+  color: var(--text);
   font-family: verdana, arial, helvetica, sans-serif
 }
 
@@ -104,9 +104,9 @@ h1 {
 }
 
 .notice {
-  background-color: var(--theme-background-contrast);
+  background-color: var(--background-contrast);
   padding: 10px;
-  border: 1px solid var(--theme-border-primary);
+  border: 1px solid var(--border-primary);
   font-size: 12px;
 }
 
@@ -132,13 +132,13 @@ h1 {
   display: inline-block;
   padding-right: 5px;
   text-decoration: none;
-  color: var(--theme-link-primary);;
+  color: var(--link-primary);;
   font-size: 13px;
   cursor: pointer;
 }
 
 .rulesTitle {
-  color: var(--theme-text-primary);;
+  color: var(--text-primary);;
   font-size: 16px;
   font-weight: bold;
 }
@@ -155,8 +155,8 @@ h1 {
   position: absolute;
   width: calc(100% - 8px);
   margin: 0;
-  border: 1px solid var(--theme-border-text);
-  background: var(--theme-background);
+  border: 1px solid var(--border-text);
+  background: var(--background);
   left: 0;
   z-index: 4;
   list-style: none;
@@ -167,17 +167,17 @@ h1 {
   display: block;
   padding: 5px;
   cursor: pointer;
-  color: var(--theme-text);
+  color: var(--text);
   overflow: hidden;
 }
 
 .dropdownItem:hover, .activeDropdownItem {
-  background-color: var(--theme-text-primary);
-  color: var(--theme-background);
+  background-color: var(--text-primary);
+  color: var(--background);
 }
 
 .dropdownLink:hover {
-  color: var(--theme-background);
+  color: var(--background);
 }
 
 .mediaPreview {

@@ -19,12 +19,12 @@
 }
 
 .markdown {
-  background-color: var(--theme-background-markdown);
-  border: 1px solid var(--theme-text-primary);
+  background-color: var(--background-markdown);
+  border: 1px solid var(--text-primary);
   border-radius: 7px;
   padding: 5px 10px;
   font-weight: 400;
-  color: var(--theme-text-markdown);
+  color: var(--text-markdown);
   max-width: 60em;
   word-wrap: break-word;
   font-size: 14px;
@@ -69,20 +69,20 @@
 .mediaPreview img {
   max-width: 524px;
   height: auto;
-  background-color: var(--theme-background-thumbnail);
+  background-color: var(--background-thumbnail);
 }
 
 .mediaPreview video {
   max-width: 524px;
   max-height: 50vh;
-  background-color: var(--theme-background-thumbnail);
+  background-color: var(--background-thumbnail);
 }
 
 .mediaPreview iframe {
   width: 100%;
   height: 100%;
   border: none;
-  background-color: var(--theme-background-thumbnail);
+  background-color: var(--background-thumbnail);
 }
 
 .hideSpoiler {
@@ -91,7 +91,7 @@
   height: 100%;
   top: 0;
   left: 0;
-  border: 1px solid var(--theme-text-primary);
+  border: 1px solid var(--text-primary);
   background-color: black;
   color: black;
   z-index: 1;
@@ -113,12 +113,12 @@
 @media (max-width: 640px) {
   .mediaPreview img {
     max-width: 100%;
-    background-color: var(--theme-background-thumbnail);
+    background-color: var(--background-thumbnail);
   }
 
   .mediaPreview video {
     max-width: 100%;
-    background-color: var(--theme-background-thumbnail);
+    background-color: var(--background-thumbnail);
   }
 
   .expando {

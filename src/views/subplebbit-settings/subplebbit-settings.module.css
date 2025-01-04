@@ -3,7 +3,7 @@
 }
 
 .content {
-  color: var(--theme-text);
+  color: var(--text);
   margin-bottom: 40px;
 }
 
@@ -13,14 +13,14 @@
 
 .box {
   width: 514px;
-  background-color: var(--theme-background-primary);
+  background-color: var(--background-primary);
   padding: 10px 5px;
   font-size: large;
   margin-bottom: 10px;
 }
 
 .boxTitle {
-  color: var(--theme-blue);
+  color: var(--blue);
   font-size: 15px;
   font-weight: bold;
   padding: 0px 10px;
@@ -31,7 +31,7 @@
 
 .boxSubtitle {
   font-size: 10px;
-  color: var(--theme-text-info);
+  color: var(--text-info);
   padding-left: 10px;
   padding-top: 1px;
   text-transform: lowercase;
@@ -55,16 +55,16 @@
   width: 492px;
   box-sizing: border-box;
   padding: 3px;
-  border: 1px solid var(--theme-border-text);
-  box-shadow: var(--theme-box-shadow-input);
+  border: 1px solid var(--border-text);
+  box-shadow: var(--box-shadow-input);
 }
 
 .boxInput textarea {
-  box-shadow: var(--theme-box-shadow-input);
+  box-shadow: var(--box-shadow-input);
   width: 492px;
   box-sizing: border-box;
   padding: 3px;
-  border: 1px solid var(--theme-border-text);
+  border: 1px solid var(--border-text);
   height: 100px;
   font-family: verdana, arial, helvetica, sans-serif;
   line-height: 20px;
@@ -134,7 +134,7 @@
 }
 
 .deleteCommunity .boxTitle, .deleteCommunity button:enabled {
-  color: var(--theme-red) !important;
+  color: var(--red) !important;
 }
 
 .deleteCommunity button {
@@ -146,7 +146,7 @@
 }
 
 .noChallengeWarning {
-  color: var(--theme-red);
+  color: var(--red);
   font-size: 12px;
   margin-left: 10px;
 }
@@ -154,13 +154,13 @@
 .infobar {
   max-width: 100%;
   box-sizing: border-box;
-  background-color: var(--theme-background-orange);
-  border-color: var(--theme-border-orange);
+  background-color: var(--background-orange);
+  border-color: var(--border-orange);
   border-style: solid;
   border-width: 1px;
   margin: 0px 5px 5px 0px;
   padding: 6px 10px 6px 10px;
-  color: var(--theme-text);
+  color: var(--text);
   word-wrap: break-word;
   font-size: 14px;
   text-transform: lowercase;
@@ -259,7 +259,7 @@
 
 .moderator {
   font-size: 15px;
-  color: var(--theme-text);
+  color: var(--text);
   margin-top: 15px;
 }
 

@@ -19,20 +19,20 @@
 }
 
 .morePostsSuggestion a, .link {
-  color: var(--theme-text-primary);
+  color: var(--text-primary);
   text-decoration: none;
   padding: 1px 4px;
-  background: var(--theme-pagination-button-background);
-  border: var(--theme-pagination-button-border);
+  background: var(--pagination-button-background);
+  border: var(--pagination-button-border);
   border-radius: 3px;
   font-weight: bold;
   cursor: pointer;
   text-transform: lowercase;
-  color: var(--theme-link-primary);
+  color: var(--link-primary);
 }
 
 .morePostsSuggestion a:hover {
-  border: var(--theme-pagination-button-border-hover);
+  border: var(--pagination-button-border-hover);
 }
 
 .feed {
@@ -111,7 +111,7 @@
 .over18 .warning {
   unicode-bidi: isolate;
   font-size: 14px;
-  color: var(--theme-text-markdown);
+  color: var(--text-markdown);
   max-width: 60em;
   word-wrap: break-word;
 }
@@ -144,7 +144,7 @@
 }
 
 .over18 .warningButtons button {
-  color: var(--theme-over18-alert-color);
+  color: var(--over18-alert-color);
   display: inline-block;
   text-align: center;
   text-transform: uppercase;
@@ -180,6 +180,6 @@
 }
 
 .over18 .warningButtons button a {
-  color: var(--theme-over18-alert-color);
+  color: var(--over18-alert-color);
   text-decoration: none;
 }

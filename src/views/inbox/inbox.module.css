@@ -32,22 +32,22 @@
 
 .inboxTabs a {
   text-decoration: none;
-  color: var(--theme-text-primary);
+  color: var(--text-primary);
 }
 
 .separator {
-  color: var(--theme-gray);
+  color: var(--gray);
   margin: 0px .7ex 0px .7ex;
   cursor: default;
 }
 
 .selected {
-  color: var(--theme-green) !important;
+  color: var(--green) !important;
   font-weight: bold;
 }
 
 .noNotifications {
-  color: var(--theme-red);
+  color: var(--red);
   font-size: 13px;
   font-family: verdana, Arial, Helvetica, sans-serif;
   margin-top: -2px;

@@ -5,8 +5,8 @@
 
 .searchBar input[type="text"] {
   border: 1px solid gray;
-  background-color: var(--theme-background);
-  color: var(--theme-text);
+  background-color: var(--background);
+  color: var(--text);
   font-size: 13px;
   font-family: verdana;
   width: 300px;
@@ -57,8 +57,8 @@
   width: 278px;
   white-space: normal;
   border-radius: 3px;
-  background-color: var(--theme-background-orange);
-  border-color: var(--theme-border-orange);
+  background-color: var(--background-orange);
+  border-color: var(--border-orange);
   border-style: solid;
   border-width: 1px;
   font-size: small;
@@ -89,7 +89,7 @@
 
 .infobar label {
   display: block;
-  color: var(--theme-text);
+  color: var(--text);
   padding-bottom: 10px;
 }
 

@@ -1,6 +1,5 @@
 import { useEffect } from 'react';
 import { Outlet, Route, Routes, useLocation, useNavigate } from 'react-router-dom';
-import { setupPreloadedAssetsCssVariables } from './lib/setup-preloaded-assets-css-variables';
 import useTheme from './hooks/use-theme';
 import useValidateRouteParams from './hooks/use-validate-route-params';
 import styles from './app.module.css';
@@ -38,8 +37,6 @@ const ValidatedRoute = () => {
 };
 
 const App = () => {
-  setupPreloadedAssetsCssVariables();
-
   const globalLayout = (
     <>
       <ChallengeModal />

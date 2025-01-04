@@ -13,8 +13,8 @@
 }
 
 .unreadNotification {
-  background-color: var(--theme-gray-overlay);
-  border: 1px solid var(--theme-gray-overlay-border);
+  background-color: var(--gray-overlay);
+  border: 1px solid var(--gray-overlay-border);
   margin-left: 30px;
   margin-right: 15px;
   padding: 6px;
@@ -68,7 +68,7 @@
 
 .tagline {
   display: inline-block;
-  color: var(--theme-text);
+  color: var(--text);
   font-size: x-small;
 }
 
@@ -81,24 +81,24 @@
 .expand {
   margin-right: 3px;
   padding: 1px;
-  color: var(--theme-text-primary);
+  color: var(--text-primary);
   cursor: pointer;
 }
 
 .author {
   font-weight: bold;
-  color: var(--theme-text-primary);
+  color: var(--text-primary);
   text-decoration: none;
 }
 
 .score {
   margin-left: 0.5em;
-  color: var(--theme-text-info);
+  color: var(--text-info);
   font-size: x-small;  
 }
 
 .time {
-  color: var(--theme-text-info);
+  color: var(--text-info);
   font-size: x-small;
 }
 
@@ -109,7 +109,7 @@
 
 .stateString {
   font-size: x-small;
-  color: var(--theme-text-info);
+  color: var(--text-info);
 }
 
 .usertext {
@@ -120,7 +120,7 @@
 }
 
 .highlightMedia {
-  background-color: var(--theme-yellow-highlight);
+  background-color: var(--yellow-highlight);
   padding: 2px 5px;
   display: inline-block;
   width: 100%;
@@ -131,7 +131,7 @@
   margin-bottom: 5px;
   font-size: 14px;
   font-weight: 400;
-  color: var(--theme-text);
+  color: var(--text);
   max-width: 60em;
   word-wrap: break-word;
   line-height: 20px;
@@ -147,7 +147,7 @@
 }
 
 .md a {
-  color: var(--theme-markdown-link) !important;
+  color: var(--markdown-link) !important;
 }
 
 .hideSpoiler {
@@ -171,19 +171,19 @@
 }
 
 .highlightContent {
-  background-color: var(--theme-yellow-highlight);
+  background-color: var(--yellow-highlight);
   padding: 2px 5px;
 }
 
 .removedContent, .deletedContent {
   text-transform: lowercase;
-  background-color: var(--theme-removed-reply-backgrouhd-color);
+  background-color: var(--removed-reply-backgrouhd-color);
   display: inline-block;
   padding: 5px;
 }
 
 .removedUsername {
-  color: var(--theme-text-info);
+  color: var(--text-info);
   text-transform: lowercase;
 }
 
@@ -192,7 +192,7 @@
 }
 
 .usertext a {
-  color: var(--theme-text);
+  color: var(--text);
   text-decoration: none;
 }
 
@@ -205,11 +205,11 @@
 }
 
 .moderatorBrackets {
-  color: var(--theme-text-info);
+  color: var(--text-info);
 }
 
 .moderator, .admin, .owner {
-  color: var(--theme-green);
+  color: var(--green);
 }
 
 .collapsedEntry .author,
@@ -221,7 +221,7 @@
 .collapsedEntry .time,
 .collapsedEntry .score,
 .collapsedEntry .children {
-  color: var(--theme-text-info) !important;
+  color: var(--text-info) !important;
   font-style: italic !important;
 }
 
@@ -231,14 +231,14 @@
 }
 
 .parent {
-  color: var(--theme-text);
+  color: var(--text);
   margin-left: 7px;
 }
 
 .parentLink {
   font-size: small;
   margin-top: 10px;
-  color: var(--theme-link);
+  color: var(--link);
   outline: none;
   margin-right: .4em;
   padding: 0px;
@@ -247,20 +247,20 @@
 }
 
 .parentLink:visited {
-  color: var(--theme-link-visited);
+  color: var(--link-visited);
 }
 
 .parentAuthor {
-  color: var(--theme-text-primary);
+  color: var(--text-primary);
   font-weight: bold;
 }
 
 .parentSubplebbit {
-  color: var(--theme-text-primary)
+  color: var(--text-primary)
 }
 
 .inboxParentLinkSubject {
-  color: var(--theme-text);
+  color: var(--text);
   font-size: 12px;
   font-weight: bold;
 }
@@ -270,14 +270,14 @@
   font-style: italic;
   margin-left: 10px;
   font-size: 12px;
-  color: var(--theme-link);
+  color: var(--link);
   outline: none;
   overflow: hidden;
   unicode-bidi: isolate;
 }
 
 .inboxParentLink:visited {
-  color: var(--theme-link-visited);
+  color: var(--link-visited);
 }
 
 .inboxParentLinkWrapper {
@@ -294,14 +294,14 @@
 }
 
 .inboxParentInfo a {
-  color: var(--theme-text-primary);
+  color: var(--text-primary);
   font-weight: 700;
 }
 
 .inboxParentInfoButton {
   cursor: pointer;
   font-weight: 700;
-  color: var(--theme-text-primary);
+  color: var(--text-primary);
   display: inline-block
 }
 
@@ -310,7 +310,7 @@
 }
 
 .pinned {
-  color: var(--theme-green);
+  color: var(--green);
   text-transform: lowercase;
 }
 
@@ -322,13 +322,13 @@
 }
 
 .continueThisThread a {
-  color: var(--theme-text-primary);
+  color: var(--text-primary);
   text-decoration: none;
   margin-left: 3px;
 }
 
 .continueThisThread a::after {
-  background-image: var(--theme-continue-thread-arrow);
+  background-image: var(--continue-thread-arrow);
   background-repeat: no-repeat;
   content: " ";
   display: inline-block;
@@ -353,7 +353,7 @@
 
 .viewParentComment {
   font-size: 13px;
-  color: var(--theme-text-primary);
+  color: var(--text-primary);
   cursor: pointer;
   display: inline-block
 }
@@ -372,7 +372,7 @@
 }
 
 .submitter {
-  color: var(--theme-submitter-color);
+  color: var(--submitter-color);
 }
 
 .submitter:hover {
