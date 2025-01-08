@@ -15,7 +15,7 @@ const defaultPlebbitOptions = {
   // find the user's OS data path
   dataPath: !isDev ? envPaths.data : path.join(dirname, '..', '.plebbit'),
   ipfsHttpClientsOptions: ['http://localhost:50019/api/v0'],
-  httpRoutersOptions: ['https://routing.lol', 'https://peers.pleb.bot'],
+  httpRoutersOptions: ['https://routing.lol', 'https://peers.pleb.bot', 'https://peers.plebpubsub.xyz', 'https://peers.forumindex.com'],
 };
 
 // generate plebbit rpc auth key if doesn't exist
