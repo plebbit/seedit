@@ -365,7 +365,7 @@ const Reply = ({ cidOfReplyWithContext, depth = 0, isSingleComment, isSingleRepl
   };
 
   const stateLabel = (
-    <span className={`${styles.stateLabel} ${collapsed ? styles.collapsedStateLabel : ''}`}>
+    <span className={styles.stateLabel}>
       {state === 'failed' && <Label color='red' text={t('failed')} />}
       {cid === undefined && state !== 'failed' && <Label color='yellow' text={t('pending')} />}
       {editState === 'failed' && <Label color='red' text={t('failed_edit')} />}
@@ -412,11 +412,13 @@ const Reply = ({ cidOfReplyWithContext, depth = 0, isSingleComment, isSingleRepl
                 <span className={styles.time}>
                   <span title={formatLocalizedUTCTimestamp(timestamp, language)}>{getFormattedTimeAgo(timestamp)}</span>
                   {edit && <span className={styles.timeEdited}> {t('edited_timestamp', { timestamp: getFormattedTimeAgo(edit.timestamp) })}</span>}
-                </span>{' '}
+                </span>
                 {pinned && <span className={styles.pinned}>- {t('stickied_comment')}</span>}
                 {collapsed && (
                   <>
-                    <span className={styles.children}>({childrenString})</span> {stateLabel} {state === 'pending' && loadingString}
+                    <span className={styles.children}> ({childrenString})</span>
+                    {stateLabel}
+                    {state === 'pending' && loadingString}
                   </>
                 )}
                 {!collapsed && stateLabel}
@@ -426,7 +428,7 @@ const Reply = ({ cidOfReplyWithContext, depth = 0, isSingleComment, isSingleRepl
                     <Flair flair={flair} />
                   </>
                 )}
-                {state === 'pending' && !collapsed && <> {loadingString}</>}
+                {state === 'pending' && !collapsed && loadingString}
               </p>
             )}
             {isInInboxView && (
