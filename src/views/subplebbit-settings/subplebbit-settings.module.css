@@ -317,7 +317,8 @@
 }
 
 .error {
-  color: var(--theme-red);
+  color: var(--red);
+  margin: 5px;
 }
 
 .logoPreview img {

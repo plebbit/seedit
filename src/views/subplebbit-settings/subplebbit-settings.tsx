@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import { deleteSubplebbit, Role, useAccount, useCreateSubplebbit, usePlebbitRpcSettings, usePublishSubplebbitEdit, useSubplebbit } from '@plebbit/plebbit-react-hooks';
 import { Roles } from '../../lib/utils/user-utils';
@@ -8,7 +8,6 @@ import { isValidURL } from '../../lib/utils/url-utils';
 import { isCreateSubplebbitView, isSubplebbitSettingsView } from '../../lib/utils/view-utils';
 import useSubplebbitSettingsStore, { SubplebbitSettingsState } from '../../stores/use-subplebbit-settings-store';
 import useChallengesOptions from '../../hooks/use-challenges-options';
-import useChallengeSettings from '../../hooks/use-challenge-settings';
 import LoadingEllipsis from '../../components/loading-ellipsis';
 import Markdown from '../../components/markdown';
 import Sidebar from '../../components/sidebar';
@@ -657,12 +656,39 @@ const Challenges = ({
 }) => {
   const { t } = useTranslation();
   const { settings, setSubplebbitSettingsStore } = useSubplebbitSettingsStore();
+  const location = useLocation();
+  const isInCreateSubplebbitView = isCreateSubplebbitView(location.pathname);
   const challenges = settings?.challenges || readOnlyChallenges || [];
   const [showSettings, setShowSettings] = useState<boolean[]>(challenges?.map(() => false));
   const challengeOptions = useChallengesOptions();
 
-  const location = useLocation();
-  const isInCreateSubplebbitView = isCreateSubplebbitView(location.pathname);
+  const hasSetDefaultChallenge = useRef(false);
+  const valuesRef = useRef({ settings, setSubplebbitSettingsStore });
+
+  useEffect(() => {
+    valuesRef.current = { settings, setSubplebbitSettingsStore };
+  });
+
+  useEffect(() => {
+    if (isInCreateSubplebbitView && !hasSetDefaultChallenge.current && challengeOptions && challengesSettings && !valuesRef.current.settings?.challenges?.length) {
+      const defaultChallengeName = challengesSettings?.['captcha-canvas-v3'] ? 'captcha-canvas-v3' : challengeNames[0];
+
+      console.log('Setting default challenge:', defaultChallengeName);
+      const defaultChallenge = {
+        name: defaultChallengeName,
+        options: challengeOptions[defaultChallengeName] || {},
+      };
+
+      valuesRef.current.setSubplebbitSettingsStore({
+        settings: {
+          ...valuesRef.current.settings,
+          challenges: [defaultChallenge],
+        },
+      });
+
+      hasSetDefaultChallenge.current = true;
+    }
+  }, [isInCreateSubplebbitView, challengeOptions, challengesSettings, challengeNames]);
 
   const toggleSettings = (index: number) => {
     const newShowSettings = [...showSettings];
@@ -689,9 +715,16 @@ const Challenges = ({
 
   const handleChallengeTypeChange = (index: number, newType: string) => {
     const options = challengeOptions[newType] || {};
-    const updatedChallenges = [...challenges];
+    const currentChallenges = challenges || [];
+    const updatedChallenges = [...currentChallenges];
     updatedChallenges[index] = { ...updatedChallenges[index], name: newType, options };
-    setSubplebbitSettingsStore({ settings: { ...settings, challenges: updatedChallenges } });
+
+    setSubplebbitSettingsStore({
+      settings: {
+        ...settings,
+        challenges: updatedChallenges,
+      },
+    });
   };
 
   return (
@@ -801,6 +834,7 @@ const SubplebbitSettings = () => {
   const saveSubplebbit = async () => {
     try {
       setShowSaving(true);
+      console.log('Saving subplebbit with options:', publishSubplebbitEditOptions);
       await publishSubplebbitEdit();
       setShowSaving(false);
       if (error) {
@@ -869,35 +903,6 @@ const SubplebbitSettings = () => {
 
   const { challenges: rpcChallenges } = usePlebbitRpcSettings().plebbitRpcSettings || {};
   const challengeNames = Object.keys(rpcChallenges || {});
-  const defaultChallengeName: string | undefined = challenges?.['captcha-canvas-v3'] ? 'captcha-canvas-v3' : challengeNames[0];
-  const defaultChallengeSettings = useChallengeSettings(defaultChallengeName);
-  const defaultChallengeOptions = useChallengesOptions()[defaultChallengeName];
-
-  const setDefaultChallenge = useCallback(() => {
-    if (defaultChallengeSettings && defaultChallengeName && !settings?.challenges?.length) {
-      const defaultChallenge = {
-        ...defaultChallengeSettings,
-        name: defaultChallengeName,
-        options: defaultChallengeOptions,
-      };
-
-      if (!settings?.challenges?.length) {
-        setSubplebbitSettingsStore({
-          settings: {
-            ...settings,
-            challenges: [defaultChallenge],
-          },
-        });
-      }
-    }
-  }, [defaultChallengeSettings, defaultChallengeName, defaultChallengeOptions, setSubplebbitSettingsStore, settings]);
-
-  useEffect(() => {
-    if (isInCreateSubplebbitView) {
-      setDefaultChallenge();
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isInCreateSubplebbitView]);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -916,6 +921,11 @@ const SubplebbitSettings = () => {
   useEffect(() => {
     document.title = documentTitle;
   }, [documentTitle]);
+
+  const handleCreateSubplebbit = () => {
+    console.log('Creating subplebbit with settings:', publishSubplebbitEditOptions);
+    createSubplebbit();
+  };
 
   if (!hasLoaded && !isInCreateSubplebbitView) {
     return (
@@ -939,9 +949,7 @@ const SubplebbitSettings = () => {
       <Logo isReadOnly={isReadOnly} />
       <Rules isReadOnly={isReadOnly} />
       <Moderators isReadOnly={isReadOnly} />
-      {!isInCreateSubplebbitView && (
-        <Challenges isReadOnly={isReadOnly} readOnlyChallenges={subplebbit?.challenges} challengeNames={challengeNames} challengesSettings={rpcChallenges} />
-      )}
+      <Challenges isReadOnly={isReadOnly} readOnlyChallenges={subplebbit?.challenges} challengeNames={challengeNames} challengesSettings={rpcChallenges} />
       {!isInCreateSubplebbitView && <JSONSettings isReadOnly={isReadOnly} />}
       <div className={styles.saveOptions}>
         {!isInCreateSubplebbitView && !isReadOnly && (
@@ -959,12 +967,12 @@ const SubplebbitSettings = () => {
           </div>
         )}
         {!isReadOnly && (
-          <button onClick={() => (isInCreateSubplebbitView ? createSubplebbit() : saveSubplebbit())} disabled={showSaving || showDeleting}>
+          <button onClick={() => (isInCreateSubplebbitView ? handleCreateSubplebbit() : saveSubplebbit())} disabled={showSaving || showDeleting}>
             {isInCreateSubplebbitView ? t('create_community') : t('save_options')}
           </button>
         )}
         {showSaving && <LoadingEllipsis string={t('saving')} />}
-        {error && <div className={styles.error}>{error.message || 'Error: ' + error}</div>}
+        {error && <div className={styles.error}>error: {error.message || 'unknown error'}</div>}
       </div>
     </div>
   );
