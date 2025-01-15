@@ -110,9 +110,9 @@ const Logo = ({ isReadOnly = false }: { isReadOnly?: boolean }) => {
             type='text'
             value={logoUrl ?? ''}
             onChange={(e) => {
-              setLogoUrl(e.target.value);
+              setLogoUrl(e.target.value.trim());
               setImageError(false);
-              setSubplebbitSettingsStore({ suggested: { ...suggested, avatarUrl: e.target.value } });
+              setSubplebbitSettingsStore({ suggested: { ...suggested, avatarUrl: e.target.value.trim() || undefined } });
             }}
           />
         )}
