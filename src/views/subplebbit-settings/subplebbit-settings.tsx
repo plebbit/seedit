@@ -22,7 +22,11 @@ const Title = ({ isReadOnly = false }: { isReadOnly?: boolean }) => {
       <div className={styles.boxTitle}>{t('title')}</div>
       <div className={styles.boxSubtitle}>{t('a_short_title')}</div>
       <div className={styles.boxInput}>
-        {isReadOnly ? <span>{title}</span> : <input type='text' value={title ?? ''} onChange={(e) => setSubplebbitSettingsStore({ title: e.target.value })} />}
+        {isReadOnly ? (
+          <span>{title}</span>
+        ) : (
+          <input type='text' value={title ?? ''} onChange={(e) => setSubplebbitSettingsStore({ title: e.target.value.trim() || undefined })} />
+        )}
       </div>
     </div>
   );
@@ -41,7 +45,7 @@ const Description = ({ isReadOnly = false }: { isReadOnly?: boolean }) => {
           <pre className={styles.readOnlyDescription}>{description}</pre>
         ) : (
           <>
-            <textarea value={description ?? ''} onChange={(e) => setSubplebbitSettingsStore({ description: e.target.value })} />
+            <textarea value={description ?? ''} onChange={(e) => setSubplebbitSettingsStore({ description: e.target.value.trim() || undefined })} />
             <div className={styles.descriptionPreview}>
               {description && (
                 <>
@@ -79,7 +83,7 @@ const Address = ({ isReadOnly = false }: { isReadOnly?: boolean }) => {
         {isReadOnly ? (
           <span className={styles.readOnlyAddress}>{address}</span>
         ) : (
-          <input type='text' value={address ?? ''} onChange={(e) => setSubplebbitSettingsStore({ address: e.target.value })} />
+          <input type='text' value={address ?? ''} onChange={(e) => setSubplebbitSettingsStore({ address: e.target.value.trim() || undefined })} />
         )}
       </div>
     </div>
@@ -132,9 +136,9 @@ const Rules = ({ isReadOnly = false }: { isReadOnly?: boolean }) => {
   const { rules, setSubplebbitSettingsStore } = useSubplebbitSettingsStore();
   const lastRuleRef = useRef(null);
 
-  const handleRuleChange = (index: number, newRule: string) => {
+  const handleRuleChange = (index: number, newRule: string | undefined) => {
     const updatedRules = [...(rules ?? [])];
-    updatedRules[index] = newRule;
+    updatedRules[index] = newRule || '';
     setSubplebbitSettingsStore({ rules: updatedRules });
   };
 
@@ -177,7 +181,7 @@ const Rules = ({ isReadOnly = false }: { isReadOnly?: boolean }) => {
             {isReadOnly ? (
               <span className={styles.readOnlyRule}>{rule}</span>
             ) : (
-              <input ref={index === rules?.length - 1 ? lastRuleRef : null} value={rule} onChange={(e) => handleRuleChange(index, e.target.value)} />
+              <input ref={index === rules?.length - 1 ? lastRuleRef : null} value={rule} onChange={(e) => handleRuleChange(index, e.target.value.trim() || undefined)} />
             )}
           </div>
         ))}
@@ -225,9 +229,9 @@ const Moderators = ({ isReadOnly = false }: { isReadOnly?: boolean }) => {
     }
   };
 
-  const handleAddressChange = (index: number, newAddress: string) => {
+  const handleAddressChange = (index: number, newAddress: string | undefined) => {
     const rolesArray = Object.entries(roles || {});
-    rolesArray[index] = [newAddress, rolesArray[index][1]];
+    rolesArray[index] = [newAddress || '', rolesArray[index][1]];
     const updatedRoles = Object.fromEntries(rolesArray);
     setSubplebbitSettingsStore({ roles: updatedRoles });
   };
@@ -258,7 +262,7 @@ const Moderators = ({ isReadOnly = false }: { isReadOnly?: boolean }) => {
                     ref={index === Object.keys(roles).length - 1 ? lastModeratorRef : null}
                     type='text'
                     value={address}
-                    onChange={(e) => handleAddressChange(index, e.target.value)}
+                    onChange={(e) => handleAddressChange(index, e.target.value.trim() || undefined)}
                   />
                 )}
                 <br />
@@ -269,7 +273,7 @@ const Moderators = ({ isReadOnly = false }: { isReadOnly?: boolean }) => {
                 {isReadOnly ? (
                   <span>{role.role}</span>
                 ) : (
-                  <select value={role.role} onChange={(e) => handleRoleChange(address, e.target.value as any)}>
+                  <select value={role.role} onChange={(e) => handleRoleChange(address, e.target.value as 'moderator' | 'admin' | 'owner')}>
                     <option value='moderator'>moderator</option>
                     <option value='admin'>admin</option>
                     <option value='owner'>owner</option>
