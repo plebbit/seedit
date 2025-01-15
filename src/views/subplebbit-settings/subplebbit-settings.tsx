@@ -133,6 +133,7 @@ const Rules = ({ isReadOnly = false }: { isReadOnly?: boolean }) => {
   const lastRuleRef = useRef(null);
 
   const handleRuleChange = (index: number, newRule: string) => {
+    if (!rules) return;
     const updatedRules = [...(rules ?? [])];
     updatedRules[index] = newRule;
     setSubplebbitSettingsStore({ rules: updatedRules });
