@@ -340,13 +340,23 @@ const SubplebbitSettings = () => {
   const { createdSubplebbit, createSubplebbit } = useCreateSubplebbit(publishSubplebbitEditOptions);
 
   const [showSaving, setShowSaving] = useState(false);
+  const [currentError, setCurrentError] = useState<Error | null>(null);
+
+  useEffect(() => {
+    if (error) {
+      setCurrentError(error);
+    }
+  }, [error]);
+
   const saveSubplebbit = async () => {
     try {
       setShowSaving(true);
+      setCurrentError(null);
       console.log('Saving subplebbit with options:', publishSubplebbitEditOptions);
       await publishSubplebbitEdit();
       setShowSaving(false);
       if (error) {
+        setCurrentError(error);
         alert(error.message || 'Error: ' + error);
       } else {
         alert(t('settings_saved', { subplebbitAddress }));
@@ -354,6 +364,7 @@ const SubplebbitSettings = () => {
     } catch (e) {
       if (e instanceof Error) {
         console.warn(e);
+        setCurrentError(e);
         alert(`failed editing subplebbit: ${e.message}`);
       } else {
         console.error('An unknown error occurred:', e);
@@ -481,7 +492,7 @@ const SubplebbitSettings = () => {
           </button>
         )}
         {showSaving && <LoadingEllipsis string={t('saving')} />}
-        {error && <div className={styles.error}>error: {error.message || 'unknown error'}</div>}
+        {currentError && <div className={styles.error}>error: {currentError.message || 'unknown error'}</div>}
       </div>
     </div>
   );
