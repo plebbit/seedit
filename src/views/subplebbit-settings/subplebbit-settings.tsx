@@ -321,6 +321,35 @@ const rolesToExclude = ['moderator', 'admin', 'owner'];
 const actionsToExclude: Array<'post' | 'reply' | 'vote'> = ['post', 'reply', 'vote'];
 const nonActionsToExclude: Array<'not post' | 'not reply' | 'not vote'> = ['not post', 'not reply', 'not vote'];
 
+const ExcludeAddressesFromChallengeInput = ({
+  exclude,
+  excludeIndex,
+  handleExcludeAddress,
+  isReadOnly,
+}: {
+  exclude: any;
+  excludeIndex: number;
+  handleExcludeAddress: (index: number, value: string) => void;
+  isReadOnly: boolean;
+}) => {
+  const [addressInput, setAddressInput] = useState(exclude?.address?.join(', ') || '');
+
+  return isReadOnly ? (
+    <span>{exclude?.address?.join(', ')}</span>
+  ) : (
+    <input
+      type='text'
+      placeholder='address1.eth, address2.eth, address3.eth'
+      value={addressInput}
+      onChange={(e) => {
+        const newValue = e.target.value;
+        setAddressInput(newValue);
+        handleExcludeAddress(excludeIndex, newValue);
+      }}
+    />
+  );
+};
+
 const ChallengeSettings = ({ challenge, challengesSettings, index, isReadOnly, setSubplebbitSettingsStore, settings, showSettings }: ChallengeSettingsProps) => {
   const { name, options } = challenge || {};
   const challengeSettings = challengesSettings[name];
@@ -414,9 +443,10 @@ const ChallengeSettings = ({ challenge, challengesSettings, index, isReadOnly, s
   const handleExcludeAddress = (excludeIndex: number, value: string) => {
     const addresses = value
       .split(',')
-      ?.map((addr) => addr.trim())
+      .map((addr) => addr.trim())
       .filter((addr) => addr !== '');
-    handleExcludeChange(excludeIndex, 'address', addresses);
+
+    handleExcludeChange(excludeIndex, 'address', addresses.length > 0 ? addresses : undefined);
   };
 
   return (
@@ -469,16 +499,12 @@ const ChallengeSettings = ({ challenge, challengesSettings, index, isReadOnly, s
                   <div className={styles.challengeOption}>
                     User's address
                     <div className={styles.challengeOptionDescription}>Is one of the following:</div>
-                    {isReadOnly ? (
-                      <span>{exclude?.address?.join(', ')}</span>
-                    ) : (
-                      <input
-                        type='text'
-                        placeholder='address1.eth, address2.eth, address3.eth'
-                        value={exclude?.address?.join(', ')}
-                        onChange={(e) => handleExcludeAddress(excludeIndex, e.target.value)}
-                      />
-                    )}
+                    <ExcludeAddressesFromChallengeInput
+                      exclude={exclude}
+                      excludeIndex={excludeIndex}
+                      handleExcludeAddress={handleExcludeAddress}
+                      isReadOnly={isReadOnly}
+                    />
                   </div>
                 )}
                 {isReadOnly && !(exclude?.postScore || exclude?.replyScore) ? null : (
