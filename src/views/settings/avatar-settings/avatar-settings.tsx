@@ -100,7 +100,7 @@ const AvatarSettings = () => {
   // how to resolve and verify NFT signatures https://github.com/plebbit/plebbit-js/blob/master/docs/nft.md
   const avatar = {
     chainTicker: chainTicker?.toLowerCase() || account?.author?.avatar?.chainTicker,
-    timestamp,
+    timestamp: timestamp || account?.author?.avatar?.timestamp,
     address: tokenAddress || account?.author?.avatar?.address,
     id: tokenId || account?.author?.avatar?.id,
     signature: {
@@ -200,7 +200,7 @@ const AvatarSettings = () => {
               autoCorrect='off'
               autoComplete='off'
               spellCheck='false'
-              value={timestamp}
+              defaultValue={account?.author?.avatar?.timestamp}
               onChange={(e) => setTimestamp(Number(e.target.value))}
             />
           </div>

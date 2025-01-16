@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import { deleteSubplebbit, Role, useAccount, useCreateSubplebbit, usePlebbitRpcSettings, usePublishSubplebbitEdit, useSubplebbit } from '@plebbit/plebbit-react-hooks';
 import { Roles } from '../../lib/utils/user-utils';
@@ -8,7 +8,6 @@ import { isValidURL } from '../../lib/utils/url-utils';
 import { isCreateSubplebbitView, isSubplebbitSettingsView } from '../../lib/utils/view-utils';
 import useSubplebbitSettingsStore, { SubplebbitSettingsState } from '../../stores/use-subplebbit-settings-store';
 import useChallengesOptions from '../../hooks/use-challenges-options';
-import useChallengeSettings from '../../hooks/use-challenge-settings';
 import LoadingEllipsis from '../../components/loading-ellipsis';
 import Markdown from '../../components/markdown';
 import Sidebar from '../../components/sidebar';
@@ -65,7 +64,7 @@ const Address = ({ isReadOnly = false }: { isReadOnly?: boolean }) => {
   const { address, setSubplebbitSettingsStore } = useSubplebbitSettingsStore();
 
   const alertCryptoAddressInfo = () => {
-    alert(`steps to set a .eth user address:\n1. go to app.ens.domains and search the address\n2.  once you own the address, go to its page, click on "records", then "edit records"\n3. add a new text record with name "subplebbit-address" and value: ${address}\n\n steps to set a .sol user address:\n1. go to sns.id and search the address\n2. once you own the address, go to your profile, click the address menu "...", then "create subdomain"\n3. enter subdomain "subplebbit-address" and create\n4. go to subdomain, "content", change content to: ${address}
+    alert(`steps to set a .eth community address:\n1. go to app.ens.domains and search the address\n2.  once you own the address, go to its page, click on "records", then "edit records"\n3. add a new text record with name "subplebbit-address" and value: ${address}\n\n steps to set a .sol community address:\n1. go to sns.id and search the address\n2. once you own the address, go to your profile, click the address menu "...", then "create subdomain"\n3. enter subdomain "subplebbit-address" and create\n4. go to subdomain, "content", change content to: ${address}
     `);
   };
 
@@ -111,9 +110,9 @@ const Logo = ({ isReadOnly = false }: { isReadOnly?: boolean }) => {
             type='text'
             value={logoUrl ?? ''}
             onChange={(e) => {
-              setLogoUrl(e.target.value);
+              setLogoUrl(e.target.value.trim());
               setImageError(false);
-              setSubplebbitSettingsStore({ suggested: { ...suggested, avatarUrl: e.target.value } });
+              setSubplebbitSettingsStore({ suggested: { ...suggested, avatarUrl: e.target.value.trim() || undefined } });
             }}
           />
         )}
@@ -134,6 +133,7 @@ const Rules = ({ isReadOnly = false }: { isReadOnly?: boolean }) => {
   const lastRuleRef = useRef(null);
 
   const handleRuleChange = (index: number, newRule: string) => {
+    if (!rules) return;
     const updatedRules = [...(rules ?? [])];
     updatedRules[index] = newRule;
     setSubplebbitSettingsStore({ rules: updatedRules });
@@ -321,6 +321,35 @@ const rolesToExclude = ['moderator', 'admin', 'owner'];
 const actionsToExclude: Array<'post' | 'reply' | 'vote'> = ['post', 'reply', 'vote'];
 const nonActionsToExclude: Array<'not post' | 'not reply' | 'not vote'> = ['not post', 'not reply', 'not vote'];
 
+const ExcludeAddressesFromChallengeInput = ({
+  exclude,
+  excludeIndex,
+  handleExcludeAddress,
+  isReadOnly,
+}: {
+  exclude: any;
+  excludeIndex: number;
+  handleExcludeAddress: (index: number, value: string) => void;
+  isReadOnly: boolean;
+}) => {
+  const [addressInput, setAddressInput] = useState(exclude?.address?.join(', ') || '');
+
+  return isReadOnly ? (
+    <span>{exclude?.address?.join(', ')}</span>
+  ) : (
+    <input
+      type='text'
+      placeholder='address1.eth, address2.eth, address3.eth'
+      value={addressInput}
+      onChange={(e) => {
+        const newValue = e.target.value;
+        setAddressInput(newValue);
+        handleExcludeAddress(excludeIndex, newValue);
+      }}
+    />
+  );
+};
+
 const ChallengeSettings = ({ challenge, challengesSettings, index, isReadOnly, setSubplebbitSettingsStore, settings, showSettings }: ChallengeSettingsProps) => {
   const { name, options } = challenge || {};
   const challengeSettings = challengesSettings[name];
@@ -414,9 +443,10 @@ const ChallengeSettings = ({ challenge, challengesSettings, index, isReadOnly, s
   const handleExcludeAddress = (excludeIndex: number, value: string) => {
     const addresses = value
       .split(',')
-      ?.map((addr) => addr.trim())
+      .map((addr) => addr.trim())
       .filter((addr) => addr !== '');
-    handleExcludeChange(excludeIndex, 'address', addresses);
+
+    handleExcludeChange(excludeIndex, 'address', addresses.length > 0 ? addresses : undefined);
   };
 
   return (
@@ -469,16 +499,12 @@ const ChallengeSettings = ({ challenge, challengesSettings, index, isReadOnly, s
                   <div className={styles.challengeOption}>
                     User's address
                     <div className={styles.challengeOptionDescription}>Is one of the following:</div>
-                    {isReadOnly ? (
-                      <span>{exclude?.address?.join(', ')}</span>
-                    ) : (
-                      <input
-                        type='text'
-                        placeholder='address1.eth, address2.eth, address3.eth'
-                        value={exclude?.address?.join(', ')}
-                        onChange={(e) => handleExcludeAddress(excludeIndex, e.target.value)}
-                      />
-                    )}
+                    <ExcludeAddressesFromChallengeInput
+                      exclude={exclude}
+                      excludeIndex={excludeIndex}
+                      handleExcludeAddress={handleExcludeAddress}
+                      isReadOnly={isReadOnly}
+                    />
                   </div>
                 )}
                 {isReadOnly && !(exclude?.postScore || exclude?.replyScore) ? null : (
@@ -657,12 +683,38 @@ const Challenges = ({
 }) => {
   const { t } = useTranslation();
   const { settings, setSubplebbitSettingsStore } = useSubplebbitSettingsStore();
+  const location = useLocation();
+  const isInCreateSubplebbitView = isCreateSubplebbitView(location.pathname);
   const challenges = settings?.challenges || readOnlyChallenges || [];
   const [showSettings, setShowSettings] = useState<boolean[]>(challenges?.map(() => false));
   const challengeOptions = useChallengesOptions();
 
-  const location = useLocation();
-  const isInCreateSubplebbitView = isCreateSubplebbitView(location.pathname);
+  const hasSetDefaultChallenge = useRef(false);
+  const valuesRef = useRef({ settings, setSubplebbitSettingsStore });
+
+  useEffect(() => {
+    valuesRef.current = { settings, setSubplebbitSettingsStore };
+  });
+
+  useEffect(() => {
+    if (isInCreateSubplebbitView && !hasSetDefaultChallenge.current && challengeOptions && challengesSettings && !valuesRef.current.settings?.challenges?.length) {
+      const defaultChallengeName = challengesSettings?.['captcha-canvas-v3'] ? 'captcha-canvas-v3' : challengeNames?.[0] || Object.keys(challengeOptions)[0];
+      console.log('Setting default challenge:', defaultChallengeName);
+      const defaultChallenge = {
+        name: defaultChallengeName,
+        options: challengeOptions[defaultChallengeName] || {},
+      };
+
+      valuesRef.current.setSubplebbitSettingsStore({
+        settings: {
+          ...valuesRef.current.settings,
+          challenges: [defaultChallenge],
+        },
+      });
+
+      hasSetDefaultChallenge.current = true;
+    }
+  }, [isInCreateSubplebbitView, challengeOptions, challengesSettings, challengeNames]);
 
   const toggleSettings = (index: number) => {
     const newShowSettings = [...showSettings];
@@ -689,9 +741,16 @@ const Challenges = ({
 
   const handleChallengeTypeChange = (index: number, newType: string) => {
     const options = challengeOptions[newType] || {};
-    const updatedChallenges = [...challenges];
+    const currentChallenges = challenges || [];
+    const updatedChallenges = [...currentChallenges];
     updatedChallenges[index] = { ...updatedChallenges[index], name: newType, options };
-    setSubplebbitSettingsStore({ settings: { ...settings, challenges: updatedChallenges } });
+
+    setSubplebbitSettingsStore({
+      settings: {
+        ...settings,
+        challenges: updatedChallenges,
+      },
+    });
   };
 
   return (
@@ -794,16 +853,21 @@ const SubplebbitSettings = () => {
   const isReadOnly = (!settings && isInSubplebbitSettingsView) || (!isOnFullNode && isInCreateSubplebbitView);
 
   const { publishSubplebbitEditOptions, resetSubplebbitSettingsStore, setSubplebbitSettingsStore } = useSubplebbitSettingsStore();
-  const { publishSubplebbitEdit } = usePublishSubplebbitEdit(publishSubplebbitEditOptions);
+  const { error, publishSubplebbitEdit } = usePublishSubplebbitEdit(publishSubplebbitEditOptions);
   const { createdSubplebbit, createSubplebbit } = useCreateSubplebbit(publishSubplebbitEditOptions);
 
   const [showSaving, setShowSaving] = useState(false);
   const saveSubplebbit = async () => {
     try {
       setShowSaving(true);
+      console.log('Saving subplebbit with options:', publishSubplebbitEditOptions);
       await publishSubplebbitEdit();
       setShowSaving(false);
-      alert(t('settings_saved', { subplebbitAddress }));
+      if (error) {
+        alert(error.message || 'Error: ' + error);
+      } else {
+        alert(t('settings_saved', { subplebbitAddress }));
+      }
     } catch (e) {
       if (e instanceof Error) {
         console.warn(e);
@@ -865,35 +929,6 @@ const SubplebbitSettings = () => {
 
   const { challenges: rpcChallenges } = usePlebbitRpcSettings().plebbitRpcSettings || {};
   const challengeNames = Object.keys(rpcChallenges || {});
-  const defaultChallengeName: string | undefined = challenges?.['captcha-canvas-v3'] ? 'captcha-canvas-v3' : challengeNames[0];
-  const defaultChallengeSettings = useChallengeSettings(defaultChallengeName);
-  const defaultChallengeOptions = useChallengesOptions()[defaultChallengeName];
-
-  const setDefaultChallenge = useCallback(() => {
-    if (defaultChallengeSettings && defaultChallengeName && !settings?.challenges?.length) {
-      const defaultChallenge = {
-        ...defaultChallengeSettings,
-        name: defaultChallengeName,
-        options: defaultChallengeOptions,
-      };
-
-      if (!settings?.challenges?.length) {
-        setSubplebbitSettingsStore({
-          settings: {
-            ...settings,
-            challenges: [defaultChallenge],
-          },
-        });
-      }
-    }
-  }, [defaultChallengeSettings, defaultChallengeName, defaultChallengeOptions, setSubplebbitSettingsStore, settings]);
-
-  useEffect(() => {
-    if (isInCreateSubplebbitView) {
-      setDefaultChallenge();
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isInCreateSubplebbitView]);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -912,6 +947,11 @@ const SubplebbitSettings = () => {
   useEffect(() => {
     document.title = documentTitle;
   }, [documentTitle]);
+
+  const handleCreateSubplebbit = () => {
+    console.log('Creating subplebbit with settings:', publishSubplebbitEditOptions);
+    createSubplebbit();
+  };
 
   if (!hasLoaded && !isInCreateSubplebbitView) {
     return (
@@ -935,9 +975,7 @@ const SubplebbitSettings = () => {
       <Logo isReadOnly={isReadOnly} />
       <Rules isReadOnly={isReadOnly} />
       <Moderators isReadOnly={isReadOnly} />
-      {!isInCreateSubplebbitView && (
-        <Challenges isReadOnly={isReadOnly} readOnlyChallenges={subplebbit?.challenges} challengeNames={challengeNames} challengesSettings={rpcChallenges} />
-      )}
+      <Challenges isReadOnly={isReadOnly} readOnlyChallenges={subplebbit?.challenges} challengeNames={challengeNames} challengesSettings={rpcChallenges} />
       {!isInCreateSubplebbitView && <JSONSettings isReadOnly={isReadOnly} />}
       <div className={styles.saveOptions}>
         {!isInCreateSubplebbitView && !isReadOnly && (
@@ -955,11 +993,12 @@ const SubplebbitSettings = () => {
           </div>
         )}
         {!isReadOnly && (
-          <button onClick={() => (isInCreateSubplebbitView ? createSubplebbit() : saveSubplebbit())} disabled={showSaving || showDeleting}>
+          <button onClick={() => (isInCreateSubplebbitView ? handleCreateSubplebbit() : saveSubplebbit())} disabled={showSaving || showDeleting}>
             {isInCreateSubplebbitView ? t('create_community') : t('save_options')}
           </button>
         )}
         {showSaving && <LoadingEllipsis string={t('saving')} />}
+        {error && <div className={styles.error}>error: {error.message || 'unknown error'}</div>}
       </div>
     </div>
   );

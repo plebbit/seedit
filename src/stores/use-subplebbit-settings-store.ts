@@ -37,14 +37,14 @@ const useSubplebbitSettingsStore = create<SubplebbitSettingsState>((set) => ({
         }
       });
       const editOptions: Partial<SubplebbitSettingsState> = {};
-      if (nextState.title !== undefined) editOptions.title = nextState.title;
-      if (nextState.description !== undefined) editOptions.description = nextState.description;
-      if (nextState.address !== undefined) editOptions.address = nextState.address;
+      if (nextState.title !== undefined) editOptions.title = nextState.title?.trim() === '' ? undefined : nextState.title;
+      if (nextState.description !== undefined) editOptions.description = nextState.description?.trim() === '' ? undefined : nextState.description;
+      if (nextState.address !== undefined) editOptions.address = nextState.address?.trim() === '' ? undefined : nextState.address;
       if (nextState.suggested !== undefined) editOptions.suggested = nextState.suggested;
       if (nextState.rules !== undefined) editOptions.rules = nextState.rules;
       if (nextState.roles !== undefined) editOptions.roles = nextState.roles;
       if (nextState.settings !== undefined) editOptions.settings = nextState.settings;
-      if (nextState.subplebbitAddress !== undefined) editOptions.subplebbitAddress = nextState.subplebbitAddress;
+      if (nextState.subplebbitAddress !== undefined) editOptions.subplebbitAddress = nextState.subplebbitAddress?.trim() === '' ? undefined : nextState.subplebbitAddress;
       nextState.publishSubplebbitEditOptions = editOptions;
       return nextState;
     }),

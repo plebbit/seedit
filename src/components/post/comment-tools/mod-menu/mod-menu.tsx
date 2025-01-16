@@ -90,7 +90,7 @@ const ModMenu = ({ cid, isCommentAuthorMod }: ModMenuProps) => {
       ...state,
       commentModeration: {
         ...state.commentModeration,
-        reason: e.target.value ? e.target.value : undefined,
+        reason: e.target.value || '',
       },
     }));
 

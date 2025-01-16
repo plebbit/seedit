@@ -316,6 +316,11 @@
   padding-left: 10px;
 }
 
+.error {
+  color: var(--red);
+  margin: 5px;
+}
+
 .logoPreview img {
   max-height: 40px;
   padding-left: 10px;
