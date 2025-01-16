@@ -324,6 +324,9 @@ const SubplebbitSettings = () => {
   const { address, challenges, createdAt, description, rules, shortAddress, settings, suggested, roles, title } = subplebbit || {};
   const hasLoaded = !!createdAt;
 
+  const { challenges: rpcChallenges } = usePlebbitRpcSettings().plebbitRpcSettings || {};
+  const challengeNames = Object.keys(rpcChallenges || {});
+
   const account = useAccount();
   const location = useLocation();
   const navigate = useNavigate();
@@ -336,28 +339,28 @@ const SubplebbitSettings = () => {
   const isReadOnly = (!settings && isInSubplebbitSettingsView) || (!isOnFullNode && isInCreateSubplebbitView);
 
   const { publishSubplebbitEditOptions, resetSubplebbitSettingsStore, setSubplebbitSettingsStore } = useSubplebbitSettingsStore();
-  const { error, publishSubplebbitEdit } = usePublishSubplebbitEdit(publishSubplebbitEditOptions);
-  const { createdSubplebbit, createSubplebbit } = useCreateSubplebbit(publishSubplebbitEditOptions);
+  const { error: publishSubplebbitEditError, publishSubplebbitEdit } = usePublishSubplebbitEdit(publishSubplebbitEditOptions);
+  const { error: createSubplebbitError, createdSubplebbit, createSubplebbit } = useCreateSubplebbit(publishSubplebbitEditOptions);
 
   const [showSaving, setShowSaving] = useState(false);
-  const [currentError, setCurrentError] = useState<Error | null>(null);
+  const [currentError, setCurrentError] = useState<Error | undefined>(undefined);
 
   useEffect(() => {
-    if (error) {
-      setCurrentError(error);
+    if (publishSubplebbitEditError || createSubplebbitError) {
+      setCurrentError(publishSubplebbitEditError || createSubplebbitError);
     }
-  }, [error]);
+  }, [publishSubplebbitEditError, createSubplebbitError]);
 
   const saveSubplebbit = async () => {
     try {
       setShowSaving(true);
-      setCurrentError(null);
+      setCurrentError(undefined);
       console.log('Saving subplebbit with options:', publishSubplebbitEditOptions);
       await publishSubplebbitEdit();
       setShowSaving(false);
-      if (error) {
-        setCurrentError(error);
-        alert(error.message || 'Error: ' + error);
+      if (publishSubplebbitEditError) {
+        setCurrentError(publishSubplebbitEditError);
+        alert(publishSubplebbitEditError.message || 'Error: ' + publishSubplebbitEditError);
       } else {
         alert(t('settings_saved', { subplebbitAddress }));
       }
@@ -394,6 +397,28 @@ const SubplebbitSettings = () => {
     }
   };
 
+  const _createSubplebbit = async () => {
+    try {
+      setShowSaving(true);
+      setCurrentError(undefined);
+      console.log('Creating subplebbit with settings:', publishSubplebbitEditOptions);
+      await createSubplebbit();
+      setShowSaving(false);
+      if (createSubplebbitError) {
+        setCurrentError(createSubplebbitError);
+        alert(createSubplebbitError.message || 'Error: ' + createSubplebbitError);
+      }
+    } catch (e) {
+      if (e instanceof Error) {
+        console.warn(e);
+        setCurrentError(e);
+        alert(`failed creating subplebbit: ${e.message}`);
+      } else {
+        console.error('An unknown error occurred:', e);
+      }
+    }
+  };
+
   useEffect(() => {
     if (createdSubplebbit) {
       console.log('createdSubplebbit', createdSubplebbit);
@@ -421,13 +446,6 @@ const SubplebbitSettings = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [resetSubplebbitSettingsStore, hasLoaded]);
 
-  const { challenges: rpcChallenges } = usePlebbitRpcSettings().plebbitRpcSettings || {};
-  const challengeNames = Object.keys(rpcChallenges || {});
-
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
-
   const documentTitle = useMemo(() => {
     let title;
     if (isInSubplebbitSettingsView) {
@@ -442,10 +460,9 @@ const SubplebbitSettings = () => {
     document.title = documentTitle;
   }, [documentTitle]);
 
-  const handleCreateSubplebbit = () => {
-    console.log('Creating subplebbit with settings:', publishSubplebbitEditOptions);
-    createSubplebbit();
-  };
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   if (!hasLoaded && !isInCreateSubplebbitView) {
     return (
@@ -487,7 +504,7 @@ const SubplebbitSettings = () => {
           </div>
         )}
         {!isReadOnly && (
-          <button onClick={() => (isInCreateSubplebbitView ? handleCreateSubplebbit() : saveSubplebbit())} disabled={showSaving || showDeleting}>
+          <button onClick={() => (isInCreateSubplebbitView ? _createSubplebbit() : saveSubplebbit())} disabled={showSaving || showDeleting}>
             {isInCreateSubplebbitView ? t('create_community') : t('save_options')}
           </button>
         )}
