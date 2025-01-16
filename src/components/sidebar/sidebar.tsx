@@ -347,7 +347,7 @@ const Sidebar = ({ comment, isSubCreatedButNotYetPublished, settings, subplebbit
         </div>
       )}
       {(isModerator || isOwner) && <ModerationTools address={address} />}
-      {roles && <ModeratorsList roles={roles} />}
+      {roles && Object.keys(roles).length > 0 && <ModeratorsList roles={roles} />}
       <div className={styles.largeButton} onClick={handleCreateCommunity}>
         {t('create_your_community')}
         <div className={styles.nub} />
