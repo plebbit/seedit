@@ -105,7 +105,7 @@ const ChallengeSettings = ({ challenge, challengesSettings, index, isReadOnly, s
     setSubplebbitSettingsStore({ settings: { ...settings, challenges: updatedChallenges } });
   };
 
-  const [showExcludeSettings, setShowExcludeSettings] = useState<boolean[]>(challenge?.exclude?.map(() => (isReadOnly ? true : false)));
+  const [showExcludeSettings, setShowExcludeSettings] = useState<boolean[]>([]);
   const toggleExcludeSettings = (excludeIndex: number) => {
     const newShowExcludeSettings = [...showExcludeSettings];
     newShowExcludeSettings[excludeIndex] = !newShowExcludeSettings[excludeIndex];
@@ -212,7 +212,7 @@ const ChallengeSettings = ({ challenge, challengesSettings, index, isReadOnly, s
             {!isReadOnly && <span className={styles.deleteButton} onClick={() => deleteExcludeGroup(excludeIndex)} title='delete group' />}
             {!isReadOnly && (
               <button className={styles.hideCombo} onClick={() => toggleExcludeSettings(excludeIndex)} disabled={isReadOnly}>
-                {showExcludeSettings[excludeIndex] ? 'Hide' : 'Show'} Group Settings
+                {showExcludeSettings?.[excludeIndex] ?? false ? 'Hide' : 'Show'} Group Settings
               </button>
             )}
             {showExcludeSettings[excludeIndex] && (
