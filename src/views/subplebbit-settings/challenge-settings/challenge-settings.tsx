@@ -120,14 +120,6 @@ const ChallengeSettings = ({ challenge, challengesSettings, index, isReadOnly, s
             let newEx = { ...ex };
 
             switch (type) {
-              case 'rateLimit':
-              case 'postScore':
-              case 'replyScore':
-                const parsedValue = parseInt(value, 10);
-                if (!isNaN(parsedValue)) {
-                  newEx[type] = parsedValue;
-                }
-                break;
               case 'not post':
                 newEx.post = value ? undefined : false;
                 break;
@@ -139,11 +131,13 @@ const ChallengeSettings = ({ challenge, challengesSettings, index, isReadOnly, s
                 break;
               case 'role':
                 if (typeof value === 'string') {
-                  const roleIndex = newEx.role.indexOf(value);
-                  if (roleIndex > -1) {
-                    newEx.role.splice(roleIndex, 1);
+                  const roles = (newEx.role || []).filter((r: string) => r !== value);
+                  if (roles.length === 0 && newEx.role?.includes(value)) {
+                    delete newEx.role;
+                  } else if (!newEx.role?.includes(value)) {
+                    newEx.role = [...roles, value];
                   } else {
-                    newEx.role.push(value);
+                    newEx.role = roles;
                   }
                 }
                 break;
@@ -238,7 +232,15 @@ const ChallengeSettings = ({ challenge, challengesSettings, index, isReadOnly, s
                         {isReadOnly ? (
                           <span>{exclude?.postScore}</span>
                         ) : (
-                          <input type='text' value={exclude?.postScore || undefined} onChange={(e) => handleExcludeChange(excludeIndex, 'postScore', e.target.value)} />
+                          <input
+                            type='number'
+                            min={0}
+                            value={exclude?.postScore || undefined}
+                            onChange={(e) => {
+                              const value = e.target.value === '' ? undefined : Number(e.target.value);
+                              handleExcludeChange(excludeIndex, 'postScore', value);
+                            }}
+                          />
                         )}
                       </>
                     )}
@@ -248,7 +250,15 @@ const ChallengeSettings = ({ challenge, challengesSettings, index, isReadOnly, s
                         {isReadOnly ? (
                           <span>{exclude?.replyScore}</span>
                         ) : (
-                          <input type='text' value={exclude?.replyScore || undefined} onChange={(e) => handleExcludeChange(excludeIndex, 'replyScore', e.target.value)} />
+                          <input
+                            min={0}
+                            type='number'
+                            value={exclude?.replyScore || undefined}
+                            onChange={(e) => {
+                              const value = e.target.value === '' ? undefined : Number(e.target.value);
+                              handleExcludeChange(excludeIndex, 'replyScore', value);
+                            }}
+                          />
                         )}
                       </>
                     )}
@@ -262,9 +272,13 @@ const ChallengeSettings = ({ challenge, challengesSettings, index, isReadOnly, s
                       <span>{exclude?.firstCommentTimestamp}</span>
                     ) : (
                       <input
-                        type='text'
+                        type='number'
+                        min={0}
                         value={exclude?.firstCommentTimestamp || undefined}
-                        onChange={(e) => handleExcludeChange(excludeIndex, 'firstCommentTimestamp', e.target.value)}
+                        onChange={(e) => {
+                          const value = e.target.value === '' ? undefined : Number(e.target.value);
+                          handleExcludeChange(excludeIndex, 'firstCommentTimestamp', value);
+                        }}
                       />
                     )}
                   </div>
@@ -282,7 +296,7 @@ const ChallengeSettings = ({ challenge, challengesSettings, index, isReadOnly, s
                             <label>
                               <input
                                 type='checkbox'
-                                checked={exclude?.role?.includes(role)}
+                                checked={Boolean(exclude?.role?.includes(role))}
                                 onChange={() => handleExcludeChange(excludeIndex, 'role', role)}
                                 disabled={isReadOnly}
                               />
@@ -345,7 +359,15 @@ const ChallengeSettings = ({ challenge, challengesSettings, index, isReadOnly, s
                     {isReadOnly ? (
                       <div>{exclude?.rateLimit}</div>
                     ) : (
-                      <input type='text' value={exclude?.rateLimit || undefined} onChange={(e) => handleExcludeChange(excludeIndex, 'rateLimit', e.target.value)} />
+                      <input
+                        type='number'
+                        min={0}
+                        value={exclude?.rateLimit || undefined}
+                        onChange={(e) => {
+                          const value = e.target.value === '' ? undefined : Number(e.target.value);
+                          handleExcludeChange(excludeIndex, 'rateLimit', value);
+                        }}
+                      />
                     )}
                     {isReadOnly && !exclude?.rateLimitChallengeSuccess ? null : (
                       <div>
