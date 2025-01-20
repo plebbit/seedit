@@ -14,7 +14,7 @@ const usePublishReply = ({ cid, subplebbitAddress, postCid }: { cid: string; sub
   const setReplyStore = usePublishReplyStore((state) => state.setReplyStore);
   const resetReplyStore = usePublishReplyStore((state) => state.resetReplyStore);
 
-  const setContent = useMemo(
+  const setPublishReplyOptions = useMemo(
     () => ({
       content: (newContent: string) =>
         setReplyStore({
@@ -47,11 +47,11 @@ const usePublishReply = ({ cid, subplebbitAddress, postCid }: { cid: string; sub
     [subplebbitAddress, parentCid, setReplyStore, content, link, spoiler, postCid],
   );
 
-  const resetContent = useMemo(() => () => resetReplyStore(parentCid), [parentCid, resetReplyStore]);
+  const resetPublishReplyOptions = useMemo(() => () => resetReplyStore(parentCid), [parentCid, resetReplyStore]);
 
   const { index, publishComment } = usePublishComment(publishCommentOptions);
 
-  return { setContent, resetContent, replyIndex: index, publishReply: publishComment };
+  return { setPublishReplyOptions, resetPublishReplyOptions, replyIndex: index, publishReply: publishComment };
 };
 
 export default usePublishReply;

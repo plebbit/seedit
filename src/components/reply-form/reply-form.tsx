@@ -88,7 +88,7 @@ const ReplyForm = ({ cid, isReplyingToReply, hideReplyForm, subplebbitAddress, p
   const [showOptions, setShowOptions] = useState(false);
   const [showFormattingHelp, setShowFormattingHelp] = useState(false);
   const [isTextareaFocused, setIsTextareaFocused] = useState(false);
-  const { setContent, resetContent, replyIndex, publishReply } = usePublishReply({ cid, subplebbitAddress, postCid });
+  const { setPublishReplyOptions, resetPublishReplyOptions, replyIndex, publishReply } = usePublishReply({ cid, subplebbitAddress, postCid });
 
   const mdContainerClass = isReplyingToReply ? `${styles.mdContainer} ${styles.mdContainerReplying}` : styles.mdContainer;
   const urlClass = showOptions ? styles.urlVisible : styles.urlHidden;
@@ -137,7 +137,7 @@ const ReplyForm = ({ cid, isReplyingToReply, hideReplyForm, subplebbitAddress, p
 
   useEffect(() => {
     if (typeof replyIndex === 'number') {
-      resetContent();
+      resetPublishReplyOptions();
 
       if (hideReplyForm) {
         hideReplyForm();
@@ -145,7 +145,7 @@ const ReplyForm = ({ cid, isReplyingToReply, hideReplyForm, subplebbitAddress, p
 
       resetFields();
     }
-  }, [replyIndex, resetContent, hideReplyForm]);
+  }, [replyIndex, resetPublishReplyOptions, hideReplyForm]);
 
   return (
     <div className={mdContainerClass}>
@@ -153,18 +153,18 @@ const ReplyForm = ({ cid, isReplyingToReply, hideReplyForm, subplebbitAddress, p
         {isOffline && isTextareaFocused && <div className={styles.infobar}>{offlineTitle}</div>}
         <div className={styles.options}>
           <span className={urlClass}>
-            {t('media_url')}: <input className={`${styles.url} ${urlClass}`} ref={urlRef} onChange={(e) => setContent.link(e.target.value)} />
+            {t('media_url')}: <input className={`${styles.url} ${urlClass}`} ref={urlRef} onChange={(e) => setPublishReplyOptions.link(e.target.value)} />
           </span>
           <span className={`${styles.spoiler} ${spoilerClass}`}>
             <label>
-              {t('spoiler')}: <input type='checkbox' className={styles.checkbox} ref={spoilerRef} onChange={(e) => setContent.spoiler(e.target.checked)} />
+              {t('spoiler')}: <input type='checkbox' className={styles.checkbox} ref={spoilerRef} onChange={(e) => setPublishReplyOptions.spoiler(e.target.checked)} />
             </label>
           </span>
         </div>
         <textarea
           className={styles.textarea}
           ref={textRef}
-          onChange={(e) => setContent.content(e.target.value)}
+          onChange={(e) => setPublishReplyOptions.content(e.target.value)}
           onFocus={() => setIsTextareaFocused(true)}
           onBlur={() => setIsTextareaFocused(false)}
         />

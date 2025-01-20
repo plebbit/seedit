@@ -443,7 +443,6 @@ const Challenges = ({
   useEffect(() => {
     if (isInCreateSubplebbitView && !hasSetDefaultChallenge.current && challengeOptions && challengesSettings && !valuesRef.current.settings?.challenges?.length) {
       const defaultChallengeName = challengesSettings?.['captcha-canvas-v3'] ? 'captcha-canvas-v3' : challengeNames?.[0] || Object.keys(challengeOptions)[0];
-      console.log('Setting default challenge:', defaultChallengeName);
       const defaultChallenge = {
         name: defaultChallengeName,
         options: challengeOptions[defaultChallengeName] || {},
