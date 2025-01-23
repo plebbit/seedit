@@ -14,7 +14,7 @@ const CreateAccountButton = () => {
       setActiveAccount(lastAccount.name);
       switchToNewAccountRef.current = false;
     }
-  }, [accounts, setActiveAccount]);
+  }, [accounts]);
 
   const handleCreateAccount = async () => {
     try {
