@@ -12,6 +12,10 @@
   padding: 0 5px;
 }
 
+.firstInLine {
+  padding-left: 0 !important;
+}
+
 .black {
   color: var(--text);
   border-color: currentColor;

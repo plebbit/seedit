@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, memo } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { Virtuoso, VirtuosoHandle, StateSnapshot } from 'react-virtuoso';
 import { useFeed } from '@plebbit/plebbit-react-hooks';
@@ -14,36 +14,31 @@ import useRedirectToDefaultSort from '../../hooks/use-redirect-to-default-sort';
 
 const lastVirtuosoStates: { [key: string]: StateSnapshot } = {};
 
-const Home = () => {
+const LoadingStateFooter = () => {
   const { t } = useTranslation();
-  useRedirectToDefaultSort();
   const subplebbitAddresses = useDefaultAndSubscriptionsSubplebbitAddresses();
-  const params = useParams<{ sortType?: string; timeFilterName?: string }>();
-  const sortType = params?.sortType || 'hot';
-  const { timeFilterName, timeFilterSeconds } = useTimeFilter();
-  const { feed, hasMore, loadMore, reset, subplebbitAddressesWithNewerPosts } = useFeed({
-    newerThan: timeFilterSeconds,
-    postsPerPage: 10,
-    sortType,
-    subplebbitAddresses: subplebbitAddresses || [],
-  });
-
-  // suggest the user to change time filter if there aren't enough posts
-  const { feed: weeklyFeed } = useFeed({ subplebbitAddresses, sortType, newerThan: 60 * 60 * 24 * 7 });
-  const { feed: monthlyFeed } = useFeed({ subplebbitAddresses, sortType, newerThan: 60 * 60 * 24 * 30 });
-
   const loadingStateString = useFeedStateString(subplebbitAddresses) || t('loading');
 
-  const handleNewerPostsButtonClick = () => {
-    window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
-    setTimeout(() => {
-      reset();
-    }, 300);
-  };
+  return (
+    <div className={styles.stateString}>
+      <LoadingEllipsis string={loadingStateString} />
+    </div>
+  );
+};
 
-  const currentTimeFilterName = params.timeFilterName || timeFilterName;
-
-  const Footer = () => {
+const Footer = memo(
+  ({
+    feed,
+    hasMore,
+    subplebbitAddresses,
+    subplebbitAddressesWithNewerPosts,
+    handleNewerPostsButtonClick,
+    params,
+    weeklyFeed,
+    monthlyFeed,
+    currentTimeFilterName,
+  }: any) => {
+    const { t } = useTranslation();
     let footerContent;
     if (feed.length === 0) {
       footerContent = t('no_posts');
@@ -84,14 +79,38 @@ const Home = () => {
               </div>
             ))
           )}
-          <div className={styles.stateString}>
-            <LoadingEllipsis string={loadingStateString} />
-          </div>
         </>
       );
     }
     return <div className={styles.footer}>{footerContent}</div>;
+  },
+);
+
+const Home = () => {
+  const { t } = useTranslation();
+  useRedirectToDefaultSort();
+  const subplebbitAddresses = useDefaultAndSubscriptionsSubplebbitAddresses();
+  const params = useParams<{ sortType?: string; timeFilterName?: string }>();
+  const sortType = params?.sortType || 'hot';
+  const { timeFilterName, timeFilterSeconds } = useTimeFilter();
+  const { feed, hasMore, loadMore, reset, subplebbitAddressesWithNewerPosts } = useFeed({
+    newerThan: timeFilterSeconds,
+    postsPerPage: 10,
+    sortType,
+    subplebbitAddresses: subplebbitAddresses || [],
+  });
+
+  const { feed: weeklyFeed } = useFeed({ subplebbitAddresses, sortType, newerThan: 60 * 60 * 24 * 7 });
+  const { feed: monthlyFeed } = useFeed({ subplebbitAddresses, sortType, newerThan: 60 * 60 * 24 * 30 });
+
+  const handleNewerPostsButtonClick = () => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+    setTimeout(() => {
+      reset();
+    }, 300);
   };
+
+  const currentTimeFilterName = params.timeFilterName || timeFilterName;
 
   const virtuosoRef = useRef<VirtuosoHandle | null>(null);
 
@@ -113,6 +132,18 @@ const Home = () => {
     document.title = `Seedit`;
   }, [t]);
 
+  const footerProps = {
+    feed,
+    hasMore,
+    subplebbitAddresses,
+    subplebbitAddressesWithNewerPosts,
+    handleNewerPostsButtonClick,
+    params,
+    weeklyFeed,
+    monthlyFeed,
+    currentTimeFilterName,
+  };
+
   return (
     <div>
       <div className={styles.content}>
@@ -126,7 +157,14 @@ const Home = () => {
             data={feed}
             itemContent={(index, post) => <Post index={index} post={post} />}
             useWindowScroll={true}
-            components={{ Footer }}
+            components={{
+              Footer: () => (
+                <>
+                  <Footer {...footerProps} />
+                  <LoadingStateFooter />
+                </>
+              ),
+            }}
             endReached={loadMore}
             ref={virtuosoRef}
             restoreStateFrom={lastVirtuosoState}

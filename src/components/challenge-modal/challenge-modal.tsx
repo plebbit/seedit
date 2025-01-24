@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { FloatingFocusManager, useClick, useDismiss, useFloating, useId, useInteractions, useRole } from '@floating-ui/react';
 import { Challenge as ChallengeType, useComment } from '@plebbit/plebbit-react-hooks';
 import { useTranslation } from 'react-i18next';
@@ -46,12 +46,23 @@ const Challenge = ({ challenge, closeModal }: ChallengeProps) => {
 
   const onEnterKey = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key !== 'Enter') return;
+    if (!answers[currentChallengeIndex]) return;
     if (challenges[currentChallengeIndex + 1]) {
       setCurrentChallengeIndex((prev) => prev + 1);
     } else {
       onSubmit();
     }
   };
+
+  useEffect(() => {
+    const onEscapeKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        closeModal();
+      }
+    };
+    document.addEventListener('keydown', onEscapeKey);
+    return () => document.removeEventListener('keydown', onEscapeKey);
+  }, [closeModal]);
 
   return (
     <div className={styles.container}>
@@ -80,7 +91,11 @@ const Challenge = ({ challenge, closeModal }: ChallengeProps) => {
       <div className={styles.challengeFooter}>
         <div className={styles.counter}>{t('challenge_counter', { index: currentChallengeIndex + 1, total: challenges?.length })}</div>
         <span className={styles.buttons}>
-          {!challenges[currentChallengeIndex + 1] && <button onClick={onSubmit}>{t('submit')}</button>}
+          {!challenges[currentChallengeIndex + 1] && (
+            <button onClick={onSubmit} disabled={!answers[currentChallengeIndex]}>
+              {t('submit')}
+            </button>
+          )}
           <button onClick={closeModal}>{t('cancel')}</button>
           {challenges.length > 1 && (
             <button disabled={!challenges[currentChallengeIndex - 1]} onClick={() => setCurrentChallengeIndex((prev) => prev - 1)}>

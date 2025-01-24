@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { createAccount, deleteAccount, exportAccount, importAccount, setAccount, setActiveAccount, useAccount, useAccounts } from '@plebbit/plebbit-react-hooks';
 import stringify from 'json-stringify-pretty-compact';
 import { Trans, useTranslation } from 'react-i18next';
@@ -8,19 +8,18 @@ const CreateAccountButton = () => {
   const { accounts } = useAccounts();
   const switchToNewAccountRef = useRef(false);
 
-  const switchToLastAccount = useCallback(async () => {
+  useEffect(() => {
     if (switchToNewAccountRef.current && accounts.length > 0) {
       const lastAccount = accounts[accounts.length - 1];
-      await setActiveAccount(lastAccount.name);
+      setActiveAccount(lastAccount.name);
       switchToNewAccountRef.current = false;
     }
   }, [accounts]);
 
   const handleCreateAccount = async () => {
     try {
-      await createAccount();
       switchToNewAccountRef.current = true;
-      switchToLastAccount();
+      await createAccount();
     } catch (error) {
       if (error instanceof Error) {
         alert(error.message);

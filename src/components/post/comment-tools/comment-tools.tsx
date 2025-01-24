@@ -222,16 +222,24 @@ const CommentToolsLabel = ({ cid, deleted, failed, editState, isReply, nsfw, rem
   const failedEdit = editState === 'failed';
   const pendingEdit = editState === 'pending';
 
+  const labels = [
+    { show: nsfw, color: 'nsfw-red', text: t('nsfw') },
+    { show: spoiler, color: 'black', text: t('spoiler') },
+    { show: pending, color: 'yellow', text: t('pending') },
+    { show: failed, color: 'red', text: t('failed') },
+    { show: deleted, color: 'red', text: t('deleted') },
+    { show: removed, color: 'red', text: t('removed') },
+    { show: failedEdit, color: 'red', text: t('failed_edit') },
+    { show: pendingEdit, color: 'yellow', text: t('pending_edit') },
+  ];
+
+  const visibleLabels = labels.filter((label) => label.show);
+
   return (
     <>
-      {nsfw && <Label color='nsfw-red' text={t('nsfw')} />}
-      {spoiler && <Label color='black' text={t('spoiler')} />}
-      {pending && <Label color='yellow' text={t('pending')} />}
-      {failed && <Label color='red' text={t('failed')} />}
-      {deleted && <Label color='red' text={t('deleted')} />}
-      {removed && <Label color='red' text={t('removed')} />}
-      {failedEdit && <Label color='red' text={t('failed_edit')} />}
-      {pendingEdit && <Label color='yellow' text={t('pending_edit')} />}
+      {visibleLabels.map((label, index) => (
+        <Label key={label.text} color={label.color} text={label.text} isFirstInLine={index === 0} />
+      ))}
     </>
   );
 };
