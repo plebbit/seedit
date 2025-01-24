@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { FloatingFocusManager, useClick, useDismiss, useFloating, useId, useInteractions, useRole } from '@floating-ui/react';
 import { Challenge as ChallengeType, useComment } from '@plebbit/plebbit-react-hooks';
 import { useTranslation } from 'react-i18next';
@@ -53,6 +53,16 @@ const Challenge = ({ challenge, closeModal }: ChallengeProps) => {
       onSubmit();
     }
   };
+
+  useEffect(() => {
+    const onEscapeKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        closeModal();
+      }
+    };
+    document.addEventListener('keydown', onEscapeKey);
+    return () => document.removeEventListener('keydown', onEscapeKey);
+  }, [closeModal]);
 
   return (
     <div className={styles.container}>
