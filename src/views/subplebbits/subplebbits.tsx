@@ -131,7 +131,7 @@ const Subplebbit = ({ subplebbit }: SubplebbitProps) => {
 
   const postScore = upvoteCount === 0 && downvoteCount === 0 ? '•' : upvoteCount - downvoteCount || '•';
   const { allActiveUserCount } = useSubplebbitStats({ subplebbitAddress: address });
-  const { isOffline, isOnlineStatusLoading } = useIsSubplebbitOffline(subplebbit);
+  const { isOffline, isOnlineStatusLoading, offlineTitle } = useIsSubplebbitOffline(subplebbit);
 
   return (
     <div className={styles.subplebbit}>
@@ -158,25 +158,18 @@ const Subplebbit = ({ subplebbit }: SubplebbitProps) => {
               p/{address?.includes('.') ? address : shortAddress}
               {title && `: ${title}`}
             </Link>
-            <span className={styles.subscribeButton}>
-              <SubscribeButton address={address} />
-            </span>
           </div>
         </div>
         <div className={styles.tagline}>
           {description && <span className={`${styles.expandButton} ${styles[buttonType]}`} onClick={toggleExpanded} />}
-          <span>
-            {t('members_count', { count: allActiveUserCount })}, {t('community_for', { date: getFormattedTimeDuration(createdAt) })}
-            <div className={styles.subplebbitPreferences}>
-              {isOffline && !isOnlineStatusLoading && <Label color='red' text={t('offline')} />}
-              {(userRole || isUserOwner) && (
-                <span className={styles.label}>
-                  <Label color='green' text={userRole || 'owner'} />
-                </span>
-              )}
-              <Link to={`/p/${address}/settings`}>{t('settings')}</Link>
-            </div>
-          </span>
+          {t('members_count', { count: allActiveUserCount })}, {t('community_for', { date: getFormattedTimeDuration(createdAt) })}
+          <div className={styles.taglineSecondLine}>
+            <span className={styles.subscribeButton}>
+              <SubscribeButton address={address} />
+            </span>
+            {(userRole || isUserOwner) && <span className={styles.moderatorIcon} title={userRole || 'owner'} />}
+            {isOffline && !isOnlineStatusLoading && <Label color='red' title={offlineTitle} text={t('offline')} />}
+          </div>
         </div>
         {description && showDescription && (
           <div className={styles.description}>

@@ -130,13 +130,20 @@
   color: var(--link);
 }
 
-.subscribeButton {
-  margin-left: 5px;
-}
-
 .tagline {
   text-transform: lowercase;
   margin-top: 2px;
+}
+
+.moderatorIcon {
+  background-image: url('/public/assets/moderator.png');
+  background-size: 100%;
+  background-repeat: no-repeat;
+  height: 16px;
+  width: 16px;
+  display: inline-block;
+  margin-left: 5px;
+  vertical-align: bottom;
 }
 
 .expandButton {
@@ -145,7 +152,7 @@
   width: 23px;
   float: left;
   margin-right: 5px;
-  margin-top: 2px;
+  margin-top: 5px;
 }
 
 .textButton {
@@ -179,22 +186,11 @@
   font-size: 14px;
 }
 
-.subplebbitPreferences {
-  padding: 0 1px;
+.taglineSecondLine {
+  padding-left: 1px;
   line-height: 1.6em;
-  margin-top: 1px;
+  margin-top: 2px;
   margin-left: 28px;
-}
-
-.subplebbitPreferences a {
-  color: var(--gray-contrast);
-  font-weight: bold;
-  margin-left: 1px;
-} 
-
-.subplebbitPreferences a:hover {
-  text-decoration: underline;
-  cursor: pointer;
 }
 
 .subplebbitsTabs {
