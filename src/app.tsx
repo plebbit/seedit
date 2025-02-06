@@ -1,7 +1,6 @@
 import { useEffect } from 'react';
 import { Outlet, Route, Routes, useLocation, useNavigate } from 'react-router-dom';
 import useTheme from './hooks/use-theme';
-import useValidateRouteParams from './hooks/use-validate-route-params';
 import styles from './app.module.css';
 import AboutView from './views/about';
 import All from './views/all';
@@ -25,16 +24,6 @@ import StickyHeader from './components/sticky-header';
 import TopBar from './components/topbar';
 
 export const sortTypes = ['hot', 'new', 'active', 'controversialAll', 'topAll'];
-
-const ValidatedRoute = () => {
-  const isValid = useValidateRouteParams();
-
-  if (!isValid) {
-    return <NotFound />;
-  }
-
-  return <Outlet />;
-};
 
 const App = () => {
   const globalLayout = (
@@ -115,36 +104,34 @@ const App = () => {
             <Route path='/communities/vote' element={<Subplebbits />} />
             <Route path='/communities/vote/passing' element={<Subplebbits />} />
             <Route path='/communities/vote/rejecting' element={<Subplebbits />} />
-
+            <Route path='/communities/vote/tag/:tag' element={<Subplebbits />} />
             <Route path='/communities/create' element={<SubplebbitSettings />} />
-
-            <Route path='*' element={<NotFound />} />
           </Route>
           <Route element={feedLayout}>
-            <Route element={<ValidatedRoute />}>
-              <Route path='/:sortType?/:timeFilterName?' element={<Home />} />
+            <Route path='/:sortType?/:timeFilterName?' element={<Home />} />
 
-              <Route path='/p/all/:sortType?/:timeFilterName?' element={<All />} />
+            <Route path='/p/all/:sortType?/:timeFilterName?' element={<All />} />
 
-              <Route path='/p/mod/:sortType?/:timeFilterName?' element={<Mod />} />
+            <Route path='/p/mod/:sortType?/:timeFilterName?' element={<Mod />} />
 
-              <Route path='/p/:subplebbitAddress/:sortType?/:timeFilterName?' element={<Subplebbit />} />
+            <Route path='/p/:subplebbitAddress/:sortType?/:timeFilterName?' element={<Subplebbit />} />
 
-              <Route path='/profile/:accountCommentIndex' element={<PendingPost />} />
+            <Route path='/profile/:accountCommentIndex' element={<PendingPost />} />
 
-              <Route path='/profile' element={<Profile />}>
-                <Route index element={<Profile.Overview />} />
-                <Route path='upvoted' element={<Profile.VotedComments voteType={1} />} />
-                <Route path='downvoted' element={<Profile.VotedComments voteType={-1} />} />
-                <Route path='hidden' element={<Profile.HiddenComments />} />
-                <Route path='comments' element={<Profile.Comments />} />
-                <Route path='submitted' element={<Profile.Submitted />} />
-              </Route>
-
-              <Route path='/u/:authorAddress/c/:commentCid?/:sortType?/:timeFilterName?' element={<Author />} />
-              <Route path='/u/:authorAddress/c/:commentCid?/comments/:sortType?/:timeFilterName?' element={<Author />} />
-              <Route path='/u/:authorAddress/c/:commentCid?/submitted/:sortType?/:timeFilterName?' element={<Author />} />
+            <Route path='/profile' element={<Profile />}>
+              <Route index element={<Profile.Overview />} />
+              <Route path='upvoted' element={<Profile.VotedComments voteType={1} />} />
+              <Route path='downvoted' element={<Profile.VotedComments voteType={-1} />} />
+              <Route path='hidden' element={<Profile.HiddenComments />} />
+              <Route path='comments' element={<Profile.Comments />} />
+              <Route path='submitted' element={<Profile.Submitted />} />
             </Route>
+
+            <Route path='/u/:authorAddress/c/:commentCid?/:sortType?/:timeFilterName?' element={<Author />} />
+            <Route path='/u/:authorAddress/c/:commentCid?/comments/:sortType?/:timeFilterName?' element={<Author />} />
+            <Route path='/u/:authorAddress/c/:commentCid?/submitted/:sortType?/:timeFilterName?' element={<Author />} />
+
+            <Route path='*' element={<NotFound />} />
           </Route>
         </Route>
       </Routes>
