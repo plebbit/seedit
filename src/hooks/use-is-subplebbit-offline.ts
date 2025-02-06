@@ -26,11 +26,11 @@ const useIsSubplebbitOffline = (subplebbit: Subplebbit) => {
   const subplebbitOfflineStore = subplebbitOfflineState[address] || { initialLoad: true };
   const loadingStartTimestamp = subplebbitsLoadingStartTimestamps[0] || 0;
 
-  const isLoading = subplebbitOfflineStore.initialLoad && (!updatedAt || Date.now() / 1000 - updatedAt >= 60 * 60) && Date.now() / 1000 - loadingStartTimestamp < 30;
+  const isLoading = subplebbitOfflineStore.initialLoad && (!updatedAt || Date.now() / 1000 - updatedAt >= 120 * 60) && Date.now() / 1000 - loadingStartTimestamp < 30;
 
-  const isOffline = !isLoading && ((updatedAt && updatedAt < Date.now() / 1000 - 60 * 60) || (!updatedAt && Date.now() / 1000 - loadingStartTimestamp >= 30));
+  const isOffline = !isLoading && ((updatedAt && updatedAt < Date.now() / 1000 - 120 * 60) || (!updatedAt && Date.now() / 1000 - loadingStartTimestamp >= 30));
 
-  const isOnline = updatedAt && Date.now() / 1000 - updatedAt < 60 * 60;
+  const isOnline = updatedAt && Date.now() / 1000 - updatedAt < 120 * 60;
 
   const offlineTitle = isLoading
     ? t('loading')
