@@ -22,6 +22,7 @@ import SubscribeButton from '../../components/subscribe-button';
 import _ from 'lodash';
 import { useDefaultSubplebbitAddresses } from '../../hooks/use-default-subplebbits';
 import { useDefaultSubplebbits } from '../../hooks/use-default-subplebbits';
+import useIsMobile from '../../hooks/use-is-mobile';
 
 // https://github.com/plebbit/temporary-default-subplebbits/blob/master/README.md
 // seedit renders the "NSFW" post label only for the tags 'adult' and 'gore'
@@ -120,10 +121,6 @@ const Subplebbit = ({ subplebbit, tags }: SubplebbitProps) => {
   const { t } = useTranslation();
   const { address, createdAt, description, roles, shortAddress, settings, suggested, title } = subplebbit || {};
 
-  const [showDescription, setShowDescription] = useState(false);
-  const buttonType = showDescription ? 'closeButton' : 'textButton';
-  const toggleExpanded = () => setShowDescription(!showDescription);
-
   // subplebbit.settings is a private field that is only available to the owner of the subplebbit
   const isUserOwner = settings;
   const account = useAccount();
@@ -140,6 +137,17 @@ const Subplebbit = ({ subplebbit, tags }: SubplebbitProps) => {
   const { isOffline, isOnlineStatusLoading, offlineTitle } = useIsSubplebbitOffline(subplebbit);
 
   const isNsfw = tags?.some((tag) => nsfwTags.includes(tag));
+
+  const isMobile = useIsMobile();
+  const descriptionText =
+    description &&
+    (isMobile
+      ? description.length > 100
+        ? description.slice(0, 100) + '...'
+        : description
+      : description.length > 400
+      ? description.slice(0, 400) + '...'
+      : description);
 
   return (
     <div className={styles.subplebbit}>
@@ -169,7 +177,6 @@ const Subplebbit = ({ subplebbit, tags }: SubplebbitProps) => {
           </div>
         </div>
         <div className={styles.tagline}>
-          {description && <span className={`${styles.expandButton} ${styles[buttonType]}`} onClick={toggleExpanded} />}
           {t('members_count', { count: allActiveUserCount })}, {t('community_for', { date: getFormattedTimeDuration(createdAt) })}
           <div className={styles.taglineSecondLine}>
             <span className={styles.subscribeButton}>
@@ -180,9 +187,9 @@ const Subplebbit = ({ subplebbit, tags }: SubplebbitProps) => {
             {isNsfw && <Label color='red' title={t('nsfw')} text={t('nsfw')} />}
           </div>
         </div>
-        {description && showDescription && (
+        {description && (
           <div className={styles.description}>
-            <Markdown content={description} />
+            <Markdown content={descriptionText} />
           </div>
         )}
       </div>
