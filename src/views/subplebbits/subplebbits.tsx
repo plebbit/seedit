@@ -14,17 +14,23 @@ import {
   isSubplebbitsVotePassingView,
   isSubplebbitsVoteRejectingView,
 } from '../../lib/utils/view-utils';
-import { useDefaultSubplebbitAddresses } from '../../hooks/use-default-subplebbits';
 import useIsSubplebbitOffline from '../../hooks/use-is-subplebbit-offline';
 import Markdown from '../../components/markdown';
 import Label from '../../components/post/label';
 import Sidebar from '../../components/sidebar';
 import SubscribeButton from '../../components/subscribe-button';
 import _ from 'lodash';
+import { useDefaultSubplebbitAddresses } from '../../hooks/use-default-subplebbits';
+import { useDefaultSubplebbits } from '../../hooks/use-default-subplebbits';
+
+// https://github.com/plebbit/temporary-default-subplebbits/blob/master/README.md
+// seedit renders the "NSFW" post label only for the tags 'adult' and 'gore'
+export const nsfwTags = ['adult', 'gore'];
 
 interface SubplebbitProps {
   index?: number;
   subplebbit: SubplebbitType;
+  tags?: string[];
 }
 
 const MyCommunitiesTabs = () => {
@@ -110,7 +116,7 @@ const Infobar = () => {
   return <div className={styles.infobar}>{infobarText}</div>;
 };
 
-const Subplebbit = ({ subplebbit }: SubplebbitProps) => {
+const Subplebbit = ({ subplebbit, tags }: SubplebbitProps) => {
   const { t } = useTranslation();
   const { address, createdAt, description, roles, shortAddress, settings, suggested, title } = subplebbit || {};
 
@@ -132,6 +138,8 @@ const Subplebbit = ({ subplebbit }: SubplebbitProps) => {
   const postScore = upvoteCount === 0 && downvoteCount === 0 ? '•' : upvoteCount - downvoteCount || '•';
   const { allActiveUserCount } = useSubplebbitStats({ subplebbitAddress: address });
   const { isOffline, isOnlineStatusLoading, offlineTitle } = useIsSubplebbitOffline(subplebbit);
+
+  const isNsfw = tags?.some((tag) => nsfwTags.includes(tag));
 
   return (
     <div className={styles.subplebbit}>
@@ -169,6 +177,7 @@ const Subplebbit = ({ subplebbit }: SubplebbitProps) => {
             </span>
             {(userRole || isUserOwner) && <span className={styles.moderatorIcon} title={userRole || 'owner'} />}
             {isOffline && !isOnlineStatusLoading && <Label color='red' title={offlineTitle} text={t('offline')} />}
+            {isNsfw && <Label color='red' title={t('nsfw')} text={t('nsfw')} />}
           </div>
         </div>
         {description && showDescription && (
@@ -204,10 +213,18 @@ const SubscriberSubplebbits = () => {
 };
 
 const AllDefaultSubplebbits = () => {
+  const defaultSubplebbits = useDefaultSubplebbits();
   const subplebbitAddresses = useDefaultSubplebbitAddresses();
+
   const { subplebbits } = useSubplebbits({ subplebbitAddresses });
   const subplebbitsArray = useMemo(() => Object.values(subplebbits), [subplebbits]);
-  return subplebbitsArray?.map((subplebbit, index) => subplebbit && <Subplebbit key={index} subplebbit={subplebbit} />).filter(Boolean);
+
+  return subplebbitsArray
+    ?.map((subplebbit, index) => {
+      const tags = defaultSubplebbits.find((defaultSub) => defaultSub.address === subplebbit?.address)?.tags;
+      return subplebbit && <Subplebbit key={index} subplebbit={subplebbit} tags={tags} />;
+    })
+    .filter(Boolean);
 };
 
 const AllAccountSubplebbits = () => {
