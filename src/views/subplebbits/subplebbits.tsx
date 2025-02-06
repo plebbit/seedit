@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react';
+import { Fragment, useEffect, useMemo } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Trans, useTranslation } from 'react-i18next';
 import { Subplebbit as SubplebbitType, useAccount, useAccountSubplebbits, useSubplebbits, useSubplebbitStats } from '@plebbit/plebbit-react-hooks';
@@ -14,15 +14,15 @@ import {
   isSubplebbitsVotePassingView,
   isSubplebbitsVoteRejectingView,
 } from '../../lib/utils/view-utils';
+import { useDefaultSubplebbitAddresses } from '../../hooks/use-default-subplebbits';
+import { useDefaultSubplebbits } from '../../hooks/use-default-subplebbits';
+import useIsMobile from '../../hooks/use-is-mobile';
 import useIsSubplebbitOffline from '../../hooks/use-is-subplebbit-offline';
 import Markdown from '../../components/markdown';
 import Label from '../../components/post/label';
 import Sidebar from '../../components/sidebar';
 import SubscribeButton from '../../components/subscribe-button';
 import _ from 'lodash';
-import { useDefaultSubplebbitAddresses } from '../../hooks/use-default-subplebbits';
-import { useDefaultSubplebbits } from '../../hooks/use-default-subplebbits';
-import useIsMobile from '../../hooks/use-is-mobile';
 
 // https://github.com/plebbit/temporary-default-subplebbits/blob/master/README.md
 // seedit renders the "NSFW" post label only for the tags 'adult' and 'gore'
@@ -182,9 +182,24 @@ const Subplebbit = ({ subplebbit, tags }: SubplebbitProps) => {
             <span className={styles.subscribeButton}>
               <SubscribeButton address={address} />
             </span>
-            {(userRole || isUserOwner) && <span className={styles.moderatorIcon} title={userRole || 'owner'} />}
+            {(userRole || isUserOwner) && (
+              <Link to={`/p/${address}/settings`}>
+                <span className={styles.moderatorIcon} title={userRole || 'owner'} />
+              </Link>
+            )}
             {isOffline && !isOnlineStatusLoading && <Label color='red' title={offlineTitle} text={t('offline')} />}
             {isNsfw && <Label color='red' title={t('nsfw')} text={t('nsfw')} />}
+            {tags && tags.length > 0 && (
+              <span className={styles.tags}>
+                tags:{' '}
+                {tags.map((tag, index) => (
+                  <Fragment key={tag}>
+                    <Link to={`/communities/vote/tag/${tag}`}>{tag}</Link>
+                    {index < tags.length - 1 ? ', ' : ''}
+                  </Fragment>
+                ))}
+              </span>
+            )}
           </div>
         </div>
         {description && (
@@ -222,14 +237,18 @@ const SubscriberSubplebbits = () => {
 const AllDefaultSubplebbits = () => {
   const defaultSubplebbits = useDefaultSubplebbits();
   const subplebbitAddresses = useDefaultSubplebbitAddresses();
+  const pathname = useLocation().pathname;
+  const currentTag = pathname.includes('/tag/') ? pathname.split('/').pop() : undefined;
 
   const { subplebbits } = useSubplebbits({ subplebbitAddresses });
   const subplebbitsArray = useMemo(() => Object.values(subplebbits), [subplebbits]);
 
   return subplebbitsArray
     ?.map((subplebbit, index) => {
-      const tags = defaultSubplebbits.find((defaultSub) => defaultSub.address === subplebbit?.address)?.tags;
-      return subplebbit && <Subplebbit key={index} subplebbit={subplebbit} tags={tags} />;
+      if (!subplebbit) return null;
+      const tags = defaultSubplebbits.find((defaultSub) => defaultSub.address === subplebbit.address)?.tags;
+      if (currentTag && !tags?.includes(currentTag)) return null;
+      return <Subplebbit key={index} subplebbit={subplebbit} tags={tags} />;
     })
     .filter(Boolean);
 };

@@ -142,7 +142,6 @@
   height: 16px;
   width: 16px;
   display: inline-block;
-  margin-left: 5px;
   vertical-align: bottom;
 }
 
@@ -222,6 +221,23 @@
 .selected {
   color: var(--green) !important;
   font-weight: bold;
+}
+
+.subscribeButton {
+  margin-right: 4px;
+}
+
+.tags {
+  margin-left: 4px;
+}
+
+.tags a {
+  color: inherit;
+  cursor: pointer;
+}
+
+.tags a:hover {
+  text-decoration: underline;
 }
 
 @media (max-width: 640px) {
