@@ -354,5 +354,5 @@
   "submitter": "Dërguesi",
   "block_user": "Blloko përdoruesin",
   "unblock_user": "Çblloko përdoruesin",
-  "filtering_by_tag": "Filtrimi sipas tagut: {{tag}}"
+  "filtering_by_tag": "Filtrimi sipas tagut: \"{{tag}}\""
 }

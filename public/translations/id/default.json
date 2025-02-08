@@ -354,5 +354,5 @@
   "submitter": "Pengirim",
   "block_user": "Blokir pengguna",
   "unblock_user": "Buka blokir pengguna",
-  "filtering_by_tag": "Penyaringan berdasarkan tag: {{tag}}"
+  "filtering_by_tag": "Penyaringan berdasarkan tag: \"{{tag}}\""
 }

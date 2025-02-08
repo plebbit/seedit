@@ -354,5 +354,5 @@
   "submitter": "Gönderen",
   "block_user": "Kullanıcıyı engelle",
   "unblock_user": "Kullanıcıyı engellemeyi kaldır",
-  "filtering_by_tag": "Tag’a göre filtreleme: {{tag}}"
+  "filtering_by_tag": "Tag’a göre filtreleme: \"{{tag}}\""
 }

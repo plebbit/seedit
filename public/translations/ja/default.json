@@ -354,5 +354,5 @@
   "submitter": "提出者",
   "block_user": "ユーザーをブロック",
   "unblock_user": "ユーザーのブロック解除",
-  "filtering_by_tag": "タグでフィルタリング: {{tag}}"
+  "filtering_by_tag": "タグでフィルタリング: \"{{tag}}\""
 }

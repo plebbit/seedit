@@ -354,5 +354,5 @@
   "submitter": "Indiener",
   "block_user": "Blokkeer gebruiker",
   "unblock_user": "Deblokkeer gebruiker",
-  "filtering_by_tag": "Filteren op tag: {{tag}}"
+  "filtering_by_tag": "Filteren op tag: \"{{tag}}\""
 }

@@ -354,5 +354,5 @@
   "submitter": "Υποβολέας",
   "block_user": "Αποκλεισμός χρήστη",
   "unblock_user": "Ξεκλείδωμα χρήστη",
-  "filtering_by_tag": "Φιλτράρισμα με tag: {{tag}}"
+  "filtering_by_tag": "Φιλτράρισμα με tag: \"{{tag}}\""
 }

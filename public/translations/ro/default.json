@@ -354,5 +354,5 @@
   "submitter": "Trimis",
   "block_user": "Blochează utilizatorul",
   "unblock_user": "Deblochează utilizatorul",
-  "filtering_by_tag": "Filtrare după tag: {{tag}}"
+  "filtering_by_tag": "Filtrare după tag: \"{{tag}}\""
 }

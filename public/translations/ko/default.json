@@ -354,5 +354,5 @@
   "submitter": "제출자",
   "block_user": "사용자 차단",
   "unblock_user": "사용자 차단 해제",
-  "filtering_by_tag": "태그로 필터링: {{tag}}"
+  "filtering_by_tag": "태그로 필터링: \"{{tag}}\""
 }

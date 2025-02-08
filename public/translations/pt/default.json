@@ -354,5 +354,5 @@
   "submitter": "Submissor",
   "block_user": "Bloquear usuário",
   "unblock_user": "Desbloquear usuário",
-  "filtering_by_tag": "Filtrando por tag: {{tag}}"
+  "filtering_by_tag": "Filtrando por tag: \"{{tag}}\""
 }

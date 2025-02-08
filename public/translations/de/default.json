@@ -354,5 +354,5 @@
   "submitter": "Einreicher",
   "block_user": "Benutzer blockieren",
   "unblock_user": "Benutzer entsperren",
-  "filtering_by_tag": "Filtern nach Tag: {{tag}}"
+  "filtering_by_tag": "Filtern nach Tag: \"{{tag}}\""
 }
