@@ -353,5 +353,6 @@
   "download_latest_android": "Завантажити останню версію Android?",
   "submitter": "Відправник",
   "block_user": "Заблокувати користувача",
-  "unblock_user": "Розблокувати користувача"
+  "unblock_user": "Розблокувати користувача",
+  "filtering_by_tag": "Фільтрація за тегом: {{tag}}"
 }

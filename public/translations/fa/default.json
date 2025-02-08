@@ -353,5 +353,6 @@
   "download_latest_android": "دانلود آخرین نسخه اندروید؟",
   "submitter": "ارسال‌کننده",
   "block_user": "مسدود کردن کاربر",
-  "unblock_user": "باز کردن قفل کاربر"
+  "unblock_user": "باز کردن قفل کاربر",
+  "filtering_by_tag": "فیلتر کردن بر اساس برچسب: {{tag}}"
 }

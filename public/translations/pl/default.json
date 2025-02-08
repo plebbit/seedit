@@ -353,5 +353,6 @@
   "download_latest_android": "Pobierz najnowszą wersję Androida?",
   "submitter": "Nadawca",
   "block_user": "Zablokuj użytkownika",
-  "unblock_user": "Odblokuj użytkownika"
+  "unblock_user": "Odblokuj użytkownika",
+  "filtering_by_tag": "Filtrowanie po tagu: {{tag}}"
 }

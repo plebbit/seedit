@@ -353,5 +353,6 @@
   "download_latest_android": "Descărcați cea mai recentă versiune Android?",
   "submitter": "Trimis",
   "block_user": "Blochează utilizatorul",
-  "unblock_user": "Deblochează utilizatorul"
+  "unblock_user": "Deblochează utilizatorul",
+  "filtering_by_tag": "Filtrare după tag: {{tag}}"
 }

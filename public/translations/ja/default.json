@@ -353,5 +353,6 @@
   "download_latest_android": "最新のAndroidバージョンをダウンロードしますか？",
   "submitter": "提出者",
   "block_user": "ユーザーをブロック",
-  "unblock_user": "ユーザーのブロック解除"
+  "unblock_user": "ユーザーのブロック解除",
+  "filtering_by_tag": "タグでフィルタリング: {{tag}}"
 }

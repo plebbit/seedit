@@ -353,5 +353,6 @@
   "download_latest_android": "تحميل أحدث إصدار من أندرويد؟",
   "submitter": "مقدّم",
   "block_user": "حظر المستخدم",
-  "unblock_user": "إلغاء حظر المستخدم"
+  "unblock_user": "إلغاء حظر المستخدم",
+  "filtering_by_tag": "تصفية بواسطة التاغ: {{tag}}"
 }

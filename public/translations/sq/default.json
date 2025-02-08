@@ -353,5 +353,6 @@
   "download_latest_android": "Shkarkoni versionin më të fundit të Android?",
   "submitter": "Dërguesi",
   "block_user": "Blloko përdoruesin",
-  "unblock_user": "Çblloko përdoruesin"
+  "unblock_user": "Çblloko përdoruesin",
+  "filtering_by_tag": "Filtrimi sipas tagut: {{tag}}"
 }

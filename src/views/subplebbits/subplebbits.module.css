@@ -271,3 +271,8 @@
     max-width: calc(100% - 327px);
   }
 }
+
+.undoLink {
+  color: var(--text-primary);
+  text-decoration: underline;
+}

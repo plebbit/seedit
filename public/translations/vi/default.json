@@ -353,5 +353,6 @@
   "download_latest_android": "Tải phiên bản Android mới nhất?",
   "submitter": "Người gửi",
   "block_user": "Chặn người dùng",
-  "unblock_user": "Bỏ chặn người dùng"
+  "unblock_user": "Bỏ chặn người dùng",
+  "filtering_by_tag": "Lọc theo thẻ: {{tag}}"
 }

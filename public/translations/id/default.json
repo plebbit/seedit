@@ -353,5 +353,6 @@
   "download_latest_android": "Unduh versi Android terbaru?",
   "submitter": "Pengirim",
   "block_user": "Blokir pengguna",
-  "unblock_user": "Buka blokir pengguna"
+  "unblock_user": "Buka blokir pengguna",
+  "filtering_by_tag": "Penyaringan berdasarkan tag: {{tag}}"
 }

@@ -353,5 +353,6 @@
   "download_latest_android": "I-download ang pinakabagong bersyon ng Android?",
   "submitter": "Nagpadala",
   "block_user": "I-block ang gumagamit",
-  "unblock_user": "I-unblock ang gumagamit"
+  "unblock_user": "I-unblock ang gumagamit",
+  "filtering_by_tag": "Nag-filter ayon sa tag: {{tag}}"
 }

@@ -353,5 +353,6 @@
   "download_latest_android": "Lataa uusin Android-versio?",
   "submitter": "Lähettäjä",
   "block_user": "Estä käyttäjä",
-  "unblock_user": "Poista käyttäjän esto"
+  "unblock_user": "Poista käyttäjän esto",
+  "filtering_by_tag": "Suodattaminen tagilla: {{tag}}"
 }

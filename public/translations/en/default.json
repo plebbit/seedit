@@ -353,5 +353,6 @@
   "download_latest_android": "Download the latest android version?",
   "submitter": "Submitter",
   "block_user": "Block user",
-  "unblock_user": "Unblock user"
+  "unblock_user": "Unblock user",
+  "filtering_by_tag": "Filtering by tag: {{tag}}"
 }

@@ -353,5 +353,6 @@
   "download_latest_android": "ดาวน์โหลดเวอร์ชันล่าสุดของ Android?",
   "submitter": "ผู้ส่ง",
   "block_user": "บล็อกผู้ใช้",
-  "unblock_user": "ยกเลิกบล็อกผู้ใช้"
+  "unblock_user": "ยกเลิกบล็อกผู้ใช้",
+  "filtering_by_tag": "กรองตามแท็ก: {{tag}}"
 }

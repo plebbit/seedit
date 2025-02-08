@@ -353,5 +353,6 @@
   "download_latest_android": "Download den nyeste Android-version?",
   "submitter": "Indsender",
   "block_user": "Bloker bruger",
-  "unblock_user": "Fjern blokering af bruger"
+  "unblock_user": "Fjern blokering af bruger",
+  "filtering_by_tag": "Filtrering efter tag: {{tag}}"
 }

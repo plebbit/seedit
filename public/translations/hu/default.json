@@ -353,5 +353,6 @@
   "download_latest_android": "Töltse le a legújabb Android verziót?",
   "submitter": "Beküldő",
   "block_user": "Felhasználó blokkolása",
-  "unblock_user": "Felhasználó feloldása"
+  "unblock_user": "Felhasználó feloldása",
+  "filtering_by_tag": "Szűrés címke szerint: {{tag}}"
 }

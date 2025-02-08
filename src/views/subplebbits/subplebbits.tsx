@@ -14,7 +14,7 @@ import {
   isSubplebbitsVotePassingView,
   isSubplebbitsVoteRejectingView,
 } from '../../lib/utils/view-utils';
-import { useDefaultSubplebbitAddresses } from '../../hooks/use-default-subplebbits';
+import { useDefaultSubplebbitAddresses, useDefaultSubplebbitTags } from '../../hooks/use-default-subplebbits';
 import { useDefaultSubplebbits } from '../../hooks/use-default-subplebbits';
 import useIsMobile from '../../hooks/use-is-mobile';
 import useIsSubplebbitOffline from '../../hooks/use-is-subplebbit-offline';
@@ -99,22 +99,45 @@ const Infobar = () => {
   const subscriptions = account?.subscriptions || [];
   const { t } = useTranslation();
   const location = useLocation();
+  const defaultSubplebbits = useDefaultSubplebbits();
+  const validTags = useDefaultSubplebbitTags(defaultSubplebbits);
+
   const isInSubplebbitsSubscriberView = isSubplebbitsSubscriberView(location.pathname);
   const isInSubplebbitsModeratorView = isSubplebbitsModeratorView(location.pathname);
   const isInSubplebbitsAdminView = isSubplebbitsAdminView(location.pathname);
   const isInSubplebbitsOwnerView = isSubplebbitsOwnerView(location.pathname);
 
-  const infobarText = useMemo(() => {
-    if (isInSubplebbitsSubscriberView) {
-      return subscriptions.length === 0 ? t('not_subscribed') : t('below_subscribed');
-    } else if (isInSubplebbitsModeratorView || isInSubplebbitsAdminView || isInSubplebbitsOwnerView) {
-      return Object.keys(accountSubplebbits).length > 0 ? t('below_moderator_access') : t('not_moderator');
-    } else {
-      return <Trans i18nKey='join_communities_notice' values={{ join: t('join'), leave: t('leave') }} components={{ 1: <code />, 2: <code /> }} />;
-    }
-  }, [t, subscriptions.length, accountSubplebbits, isInSubplebbitsSubscriberView, isInSubplebbitsModeratorView, isInSubplebbitsAdminView, isInSubplebbitsOwnerView]);
+  // Add tag check
+  const urlTag = location.pathname.includes('/tag/') ? location.pathname.split('/').pop() : undefined;
+  const currentTag = urlTag && validTags.includes(urlTag) ? urlTag : undefined;
 
-  return <div className={styles.infobar}>{infobarText}</div>;
+  // Get base path without tag
+  const basePath = location.pathname.split('/tag/')[0];
+
+  let mainInfobarText;
+  if (isInSubplebbitsSubscriberView) {
+    mainInfobarText = subscriptions.length === 0 ? t('not_subscribed') : t('below_subscribed');
+  } else if (isInSubplebbitsModeratorView || isInSubplebbitsAdminView || isInSubplebbitsOwnerView) {
+    mainInfobarText = Object.keys(accountSubplebbits).length > 0 ? t('below_moderator_access') : t('not_moderator');
+  } else {
+    mainInfobarText = <Trans i18nKey='join_communities_notice' values={{ join: t('join'), leave: t('leave') }} components={{ 1: <code />, 2: <code /> }} />;
+  }
+
+  return (
+    <>
+      <div className={styles.infobar}>
+        <div>{mainInfobarText}</div>
+      </div>
+      {currentTag && (
+        <div className={styles.infobar}>
+          {t('filtering_by_tag', { tag: currentTag })} —{' '}
+          <Link className={styles.undoLink} to={basePath}>
+            {t('undo')}
+          </Link>
+        </div>
+      )}
+    </>
+  );
 };
 
 const Subplebbit = ({ subplebbit, tags }: SubplebbitProps) => {
@@ -238,7 +261,11 @@ const AllDefaultSubplebbits = () => {
   const defaultSubplebbits = useDefaultSubplebbits();
   const subplebbitAddresses = useDefaultSubplebbitAddresses();
   const pathname = useLocation().pathname;
-  const currentTag = pathname.includes('/tag/') ? pathname.split('/').pop() : undefined;
+  const validTags = useDefaultSubplebbitTags(defaultSubplebbits);
+
+  // Only use the tag if it's in our valid tags list
+  const urlTag = pathname.includes('/tag/') ? pathname.split('/').pop() : undefined;
+  const currentTag = urlTag && validTags.includes(urlTag) ? urlTag : undefined;
 
   const { subplebbits } = useSubplebbits({ subplebbitAddresses });
   const subplebbitsArray = useMemo(() => Object.values(subplebbits), [subplebbits]);

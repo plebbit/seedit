@@ -353,5 +353,6 @@
   "download_latest_android": "آخری Android ورژن ڈاؤن لوڈ کریں؟",
   "submitter": "جمع کرانے والا",
   "block_user": "صارف کو بلاک کریں",
-  "unblock_user": "صارف کو ان بلاک کریں"
+  "unblock_user": "صارف کو ان بلاک کریں",
+  "filtering_by_tag": "ٹیگ کے ذریعے فلٹرنگ: {{tag}}"
 }

@@ -353,5 +353,6 @@
   "download_latest_android": "ताज्या Android आवृत्तीचे डाउनलोड करा?",
   "submitter": "समीक्षक",
   "block_user": "वापरकर्त्याला ब्लॉक करा",
-  "unblock_user": "वापरकर्त्याचा ब्लॉक अनब्लॉक करा"
+  "unblock_user": "वापरकर्त्याचा ब्लॉक अनब्लॉक करा",
+  "filtering_by_tag": "टॅगद्वारे फिल्टर करणे: {{tag}}"
 }

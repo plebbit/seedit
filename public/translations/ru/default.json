@@ -353,5 +353,6 @@
   "download_latest_android": "Скачать последнюю версию Android?",
   "submitter": "Отправитель",
   "block_user": "Заблокировать пользователя",
-  "unblock_user": "Разблокировать пользователя"
+  "unblock_user": "Разблокировать пользователя",
+  "filtering_by_tag": "Фильтрация по тегу: {{tag}}"
 }
