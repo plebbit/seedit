@@ -140,7 +140,7 @@ const Infobar = () => {
   );
 };
 
-const Subplebbit = ({ subplebbit, tags }: SubplebbitProps) => {
+const Subplebbit = ({ subplebbit, tags, index }: SubplebbitProps) => {
   const { t } = useTranslation();
   const { address, createdAt, description, roles, shortAddress, settings, suggested, title } = subplebbit || {};
 
@@ -174,62 +174,65 @@ const Subplebbit = ({ subplebbit, tags }: SubplebbitProps) => {
 
   return (
     <div className={styles.subplebbit}>
-      <div className={styles.midcol}>
-        <div className={styles.midcol}>
-          <div className={styles.arrowWrapper}>
-            <div className={`${styles.arrowCommon} ${upvoted ? styles.upvoted : styles.arrowUp}`} />
+      <div className={styles.row}>
+        {!isMobile && <div className={styles.rank}>{(index ?? 0) + 1}</div>}
+        <div className={styles.leftcol}>
+          <div className={styles.midcol}>
+            <div className={styles.arrowWrapper}>
+              <div className={`${styles.arrowCommon} ${upvoted ? styles.upvoted : styles.arrowUp}`} />
+            </div>
+            <div className={styles.score}>{postScore}</div>
+            <div className={styles.arrowWrapper}>
+              <div className={`${styles.arrowCommon} ${downvoted ? styles.downvoted : styles.arrowDown}`} />
+            </div>
           </div>
-          <div className={styles.score}>{postScore}</div>
-          <div className={styles.arrowWrapper}>
-            <div className={`${styles.arrowCommon} ${downvoted ? styles.downvoted : styles.arrowDown}`} />
-          </div>
-        </div>
-      </div>
-      <div className={`${styles.avatar} ${!suggested?.avatarUrl ? styles.defaultAvatar : ''}`}>
-        <Link to={`/p/${address}`}>
-          <img src={suggested?.avatarUrl || 'assets/logo/seedit.png'} alt={address} />
-        </Link>
-      </div>
-      <div className={styles.entry}>
-        <div className={styles.title}>
-          <div className={styles.titleWrapper}>
+          <div className={`${styles.avatar} ${!suggested?.avatarUrl ? styles.defaultAvatar : ''}`}>
             <Link to={`/p/${address}`}>
-              p/{address?.includes('.') ? address : shortAddress}
-              {title && `: ${title}`}
+              <img src={suggested?.avatarUrl || 'assets/logo/seedit.png'} alt={address} />
             </Link>
           </div>
         </div>
-        <div className={styles.tagline}>
-          {t('members_count', { count: allActiveUserCount })}, {t('community_for', { date: getFormattedTimeDuration(createdAt) })}
-          <div className={styles.taglineSecondLine}>
-            <span className={styles.subscribeButton}>
-              <SubscribeButton address={address} />
-            </span>
-            {(userRole || isUserOwner) && (
-              <Link to={`/p/${address}/settings`}>
-                <span className={styles.moderatorIcon} title={userRole || 'owner'} />
+        <div className={styles.entry}>
+          <div className={styles.title}>
+            <div className={styles.titleWrapper}>
+              <Link to={`/p/${address}`}>
+                p/{address?.includes('.') ? address : shortAddress}
+                {title && `: ${title}`}
               </Link>
-            )}
-            {isOffline && !isOnlineStatusLoading && <Label color='red' title={offlineTitle} text={t('offline')} />}
-            {isNsfw && <Label color='red' title={t('nsfw')} text={t('nsfw')} />}
-            {tags && tags.length > 0 && (
-              <span className={styles.tags}>
-                tags:{' '}
-                {tags.map((tag, index) => (
-                  <Fragment key={tag}>
-                    <Link to={`/communities/vote/tag/${tag}`}>{tag}</Link>
-                    {index < tags.length - 1 ? ', ' : ''}
-                  </Fragment>
-                ))}
+            </div>
+          </div>
+          <div className={styles.tagline}>
+            {t('members_count', { count: allActiveUserCount })}, {t('community_for', { date: getFormattedTimeDuration(createdAt) })}
+            <div className={styles.taglineSecondLine}>
+              <span className={styles.subscribeButton}>
+                <SubscribeButton address={address} />
               </span>
-            )}
+              {(userRole || isUserOwner) && (
+                <Link to={`/p/${address}/settings`}>
+                  <span className={styles.moderatorIcon} title={userRole || 'owner'} />
+                </Link>
+              )}
+              {isOffline && !isOnlineStatusLoading && <Label color='red' title={offlineTitle} text={t('offline')} />}
+              {isNsfw && <Label color='red' title={t('nsfw')} text={t('nsfw')} />}
+              {tags && tags.length > 0 && (
+                <span className={styles.tags}>
+                  tags:{' '}
+                  {tags.map((tag, index) => (
+                    <Fragment key={tag}>
+                      <Link to={`/communities/vote/tag/${tag}`}>{tag}</Link>
+                      {index < tags.length - 1 ? ', ' : ''}
+                    </Fragment>
+                  ))}
+                </span>
+              )}
+            </div>
           </div>
+          {description && (
+            <div className={styles.description}>
+              <Markdown content={descriptionText} />
+            </div>
+          )}
         </div>
-        {description && (
-          <div className={styles.description}>
-            <Markdown content={descriptionText} />
-          </div>
-        )}
       </div>
     </div>
   );
@@ -263,7 +266,6 @@ const AllDefaultSubplebbits = () => {
   const pathname = useLocation().pathname;
   const validTags = useDefaultSubplebbitTags(defaultSubplebbits);
 
-  // Only use the tag if it's in our valid tags list
   const urlTag = pathname.includes('/tag/') ? pathname.split('/').pop() : undefined;
   const currentTag = urlTag && validTags.includes(urlTag) ? urlTag : undefined;
 
@@ -272,10 +274,10 @@ const AllDefaultSubplebbits = () => {
 
   return subplebbitsArray
     ?.map((subplebbit, index) => {
-      if (!subplebbit) return null;
+      if (subplebbit === undefined) return null;
       const tags = defaultSubplebbits.find((defaultSub) => defaultSub.address === subplebbit.address)?.tags;
       if (currentTag && !tags?.includes(currentTag)) return null;
-      return <Subplebbit key={index} subplebbit={subplebbit} tags={tags} />;
+      return <Subplebbit key={index} subplebbit={subplebbit} tags={tags} index={index} />;
     })
     .filter(Boolean);
 };

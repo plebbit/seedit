@@ -24,6 +24,27 @@
   overflow: hidden;
 }
 
+.row {
+  display: flex;
+  align-items: flex-start;
+}
+
+.leftcol {
+  flex-shrink: 0;
+}
+
+
+.rank {
+  padding-right: 3px;
+  padding-left: 3px;
+  min-width: 2.2ex;
+  margin-top: 15px;
+  color: #c6c6c6;
+  font-family: arial;
+  font-size: medium;
+  text-align: right;
+}
+
 .midcol {
   width: 37px;
   font-weight: bold;
@@ -35,9 +56,30 @@
   overflow: hidden;
 }
 
+.rank {
+  padding-right: 3px;
+  padding-left: 3px;
+  min-width: 2.2ex;
+  margin-top: 15px;
+  color: #c6c6c6;
+  font-family: arial;
+  font-size: medium;
+  text-align: right;
+}
+
+.midcol {
+  width: 37px;
+  font-weight: bold;
+  font-size: small;
+  float: left;
+  padding-right: 7px;
+  background: transparent;
+  overflow: hidden;
+}
+
 .arrowWrapper {
   padding-left: 11px;
-  padding-top: 3px;
+  padding-top: 2px;
 }
 
 .arrowCommon {
