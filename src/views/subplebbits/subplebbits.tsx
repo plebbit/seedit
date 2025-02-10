@@ -82,11 +82,27 @@ const VoteTabs = () => {
         {t('all')}
       </Link>
       <span className={styles.separator}>|</span>
-      <Link to='/communities/vote/passing' className={isInSubplebbitsVotePassingView ? styles.selected : styles.choice} onClick={(e) => e.preventDefault()}>
+      <Link
+        to='/communities/vote/passing'
+        className={isInSubplebbitsVotePassingView ? styles.selected : styles.choice}
+        onClick={(e) => {
+          e.preventDefault();
+          alert('This feature is not available yet.');
+        }}
+        style={{ cursor: 'not-allowed' }}
+      >
         {t('passing')}
       </Link>
       <span className={styles.separator}>|</span>
-      <Link to='/communities/vote/rejecting' className={isInSubplebbitsVoteRejectingView ? styles.selected : styles.choice} onClick={(e) => e.preventDefault()}>
+      <Link
+        to='/communities/vote/rejecting'
+        className={isInSubplebbitsVoteRejectingView ? styles.selected : styles.choice}
+        onClick={(e) => {
+          e.preventDefault();
+          alert('This feature is not available yet.');
+        }}
+        style={{ cursor: 'not-allowed' }}
+      >
         {t('rejecting')}
       </Link>
     </div>
@@ -179,11 +195,25 @@ const Subplebbit = ({ subplebbit, tags, index }: SubplebbitProps) => {
         <div className={styles.leftcol}>
           <div className={styles.midcol}>
             <div className={styles.arrowWrapper}>
-              <div className={`${styles.arrowCommon} ${upvoted ? styles.upvoted : styles.arrowUp}`} />
+              <div
+                className={`${styles.arrowCommon} ${upvoted ? styles.upvoted : styles.arrowUp}`}
+                style={{ cursor: 'not-allowed' }}
+                onClick={(e) => {
+                  e.preventDefault();
+                  alert('This feature is not available yet.');
+                }}
+              />
             </div>
             <div className={styles.score}>{postScore}</div>
             <div className={styles.arrowWrapper}>
-              <div className={`${styles.arrowCommon} ${downvoted ? styles.downvoted : styles.arrowDown}`} />
+              <div
+                className={`${styles.arrowCommon} ${downvoted ? styles.downvoted : styles.arrowDown}`}
+                style={{ cursor: 'not-allowed' }}
+                onClick={(e) => {
+                  e.preventDefault();
+                  alert('This feature is not available yet.');
+                }}
+              />
             </div>
           </div>
           <div className={`${styles.avatar} ${!suggested?.avatarUrl ? styles.defaultAvatar : ''}`}>

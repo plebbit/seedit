@@ -353,10 +353,12 @@ const Sidebar = ({ comment, isSubCreatedButNotYetPublished, settings, subplebbit
         <div className={styles.nub} />
       </div>
       {isInSubplebbitsView && (
-        <div className={styles.largeButton} onClick={() => alert('This feature is not available yet.')}>
-          {t('submit_community')}
-          <div className={styles.nub} />
-        </div>
+        <a href='https://github.com/plebbit/temporary-default-subplebbits' target='_blank' rel='noopener noreferrer'>
+          <div className={styles.largeButton}>
+            <div className={styles.nub} />
+            {t('submit_community')}
+          </div>
+        </a>
       )}
       {(!(isMobile && isHomeAboutView) || isInSubplebbitAboutView) && <Footer />}
     </div>
