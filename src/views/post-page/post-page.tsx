@@ -5,6 +5,7 @@ import { useTranslation } from 'react-i18next';
 import findTopParentCidOfReply from '../../lib/utils/cid-utils';
 import { sortByBest } from '../../lib/utils/post-utils';
 import { isPendingPostView, isPostContextView } from '../../lib/utils/view-utils';
+import { usePageVisitTimestamp } from '../../hooks/use-page-visit-timestamp';
 import useReplies from '../../hooks/use-replies';
 import useStateString from '../../hooks/use-state-string';
 import LoadingEllipsis from '../../components/loading-ellipsis';
@@ -92,8 +93,8 @@ const Post = ({ post }: { post: Comment }) => {
   const { cid, deleted, depth, locked, removed, postCid, replyCount, state, subplebbitAddress, timestamp } = post || {};
 
   const [sortBy, setSortBy] = useState('best');
+  const pageVisitTimestamp = usePageVisitTimestamp(cid);
   const unsortedReplies = useReplies(post);
-
   const account = useAccount();
 
   const replies = useMemo(() => {
@@ -104,13 +105,13 @@ const Post = ({ post }: { post: Comment }) => {
 
     let sortedUnpinnedReplies;
     if (sortBy === 'best') {
-      const accountReplies = unpinnedReplies.filter((reply) => reply.author?.address === account?.author?.address);
-      const otherReplies = unpinnedReplies.filter((reply) => reply.author?.address !== account?.author?.address);
+      const recentAccountReplies = unpinnedReplies.filter((reply) => reply.author?.address === account?.author?.address && (reply.timestamp || 0) >= pageVisitTimestamp);
+      const otherReplies = unpinnedReplies.filter((reply) => reply.author?.address !== account?.author?.address || (reply.timestamp || 0) < pageVisitTimestamp);
 
-      const sortedAccountReplies = [...accountReplies].sort((a, b) => (b.timestamp || 0) - (a.timestamp || 0));
+      const sortedRecentAccountReplies = [...recentAccountReplies].sort((a, b) => (b.timestamp || 0) - (a.timestamp || 0));
       const sortedOtherReplies = sortByBest(otherReplies);
 
-      sortedUnpinnedReplies = [...sortedAccountReplies, ...sortedOtherReplies];
+      sortedUnpinnedReplies = [...sortedRecentAccountReplies, ...sortedOtherReplies];
     } else {
       sortedUnpinnedReplies = [...unpinnedReplies].sort((a, b) => {
         if (sortBy === 'new') {
@@ -123,7 +124,7 @@ const Post = ({ post }: { post: Comment }) => {
     }
 
     return [...sortedPinnedReplies, ...sortedUnpinnedReplies];
-  }, [unsortedReplies, sortBy, account?.author?.address]);
+  }, [unsortedReplies, sortBy, account?.author?.address, pageVisitTimestamp]);
 
   const isSingleComment = post?.parentCid ? true : false;
 
