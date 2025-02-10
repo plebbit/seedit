@@ -354,5 +354,6 @@
   "submitter": "مقدّم",
   "block_user": "حظر المستخدم",
   "unblock_user": "إلغاء حظر المستخدم",
-  "filtering_by_tag": "تصفية حسب التاغ: \"{{tag}}\""
+  "filtering_by_tag": "تصفية حسب التاغ: \"{{tag}}\"",
+  "read_only_community_settings": "إعدادات المجتمع للقراءة فقط"
 }

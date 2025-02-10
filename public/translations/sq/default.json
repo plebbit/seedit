@@ -354,5 +354,6 @@
   "submitter": "Dërguesi",
   "block_user": "Blloko përdoruesin",
   "unblock_user": "Çblloko përdoruesin",
-  "filtering_by_tag": "Filtrimi sipas tagut: \"{{tag}}\""
+  "filtering_by_tag": "Filtrimi sipas tagut: \"{{tag}}\"",
+  "read_only_community_settings": "Cilësimet e komunitetit vetëm për lexim"
 }

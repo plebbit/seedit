@@ -354,5 +354,6 @@
   "submitter": "שולח",
   "block_user": "לחסום משתמש",
   "unblock_user": "שחרר חסימה של משתמש",
-  "filtering_by_tag": "מיון לפי תג: \"{{tag}}\""
+  "filtering_by_tag": "מיון לפי תג: \"{{tag}}\"",
+  "read_only_community_settings": "הגדרות קהילה לקריאה בלבד"
 }

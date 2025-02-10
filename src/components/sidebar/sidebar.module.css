@@ -334,3 +334,14 @@ a {
   color: var(--text-info);
   cursor: pointer;
 }
+
+.readOnlySettingsLink {
+  margin: 7px 0 12px 0;
+  text-align: center;
+  text-transform: lowercase;
+}
+
+.readOnlySettingsLink a {
+  color: var(--link-primary);
+  text-decoration: none;
+}

@@ -354,5 +354,6 @@
   "submitter": "提交者",
   "block_user": "屏蔽用户",
   "unblock_user": "解除屏蔽用户",
-  "filtering_by_tag": "按标签过滤：\"{{tag}}\""
+  "filtering_by_tag": "按标签过滤：\"{{tag}}\"",
+  "read_only_community_settings": "只读社区设置"
 }

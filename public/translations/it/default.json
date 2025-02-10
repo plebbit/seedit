@@ -354,5 +354,6 @@
   "submitter": "Inviatore",
   "block_user": "Blocca utente",
   "unblock_user": "Sblocca utente",
-  "filtering_by_tag": "Filtraggio per tag: \"{{tag}}\""
+  "filtering_by_tag": "Filtraggio per tag: \"{{tag}}\"",
+  "read_only_community_settings": "Impostazioni della comunità in sola lettura"
 }

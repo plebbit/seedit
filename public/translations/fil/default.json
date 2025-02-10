@@ -354,5 +354,6 @@
   "submitter": "Nagpadala",
   "block_user": "I-block ang gumagamit",
   "unblock_user": "I-unblock ang gumagamit",
-  "filtering_by_tag": "Nag-filter ayon sa tag: \"{{tag}}\""
+  "filtering_by_tag": "Nag-filter ayon sa tag: \"{{tag}}\"",
+  "read_only_community_settings": "Mga setting ng komunidad na read-only"
 }

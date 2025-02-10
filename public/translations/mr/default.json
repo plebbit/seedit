@@ -354,5 +354,6 @@
   "submitter": "समीक्षक",
   "block_user": "वापरकर्त्याला ब्लॉक करा",
   "unblock_user": "वापरकर्त्याचा ब्लॉक अनब्लॉक करा",
-  "filtering_by_tag": "टॅगद्वारे फिल्टर करणे: \"{{tag}}\""
+  "filtering_by_tag": "टॅगद्वारे फिल्टर करणे: \"{{tag}}\"",
+  "read_only_community_settings": "केवळ-पठन समुदाय सेटिंग्ज"
 }

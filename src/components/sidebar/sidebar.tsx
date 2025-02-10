@@ -347,11 +347,16 @@ const Sidebar = ({ comment, isSubCreatedButNotYetPublished, settings, subplebbit
         </div>
       )}
       {(isModerator || isOwner) && <ModerationTools address={address} />}
-      {roles && Object.keys(roles).length > 0 && <ModeratorsList roles={roles} />}
       <div className={styles.largeButton} onClick={handleCreateCommunity}>
         {t('create_your_community')}
         <div className={styles.nub} />
       </div>
+      {roles && Object.keys(roles).length > 0 && <ModeratorsList roles={roles} />}
+      {address && !(isModerator || isOwner) && (
+        <div className={styles.readOnlySettingsLink}>
+          <Link to={`/p/${address}/settings`}>{t('read_only_community_settings')}</Link>
+        </div>
+      )}
       {isInSubplebbitsView && (
         <a href='https://github.com/plebbit/temporary-default-subplebbits' target='_blank' rel='noopener noreferrer'>
           <div className={styles.largeButton}>

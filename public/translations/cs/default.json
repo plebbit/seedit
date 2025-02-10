@@ -354,5 +354,6 @@
   "submitter": "Odesílatel",
   "block_user": "Zablokovat uživatele",
   "unblock_user": "Odblokovat uživatele",
-  "filtering_by_tag": "Filtruje se podle tagu: \"{{tag}}\""
+  "filtering_by_tag": "Filtruje se podle tagu: \"{{tag}}\"",
+  "read_only_community_settings": "Nastavení komunity pouze pro čtení"
 }

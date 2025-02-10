@@ -354,5 +354,6 @@
   "submitter": "Innsender",
   "block_user": "Blokker bruker",
   "unblock_user": "Fjern blokkering av bruker",
-  "filtering_by_tag": "Filtrering etter tag: \"{{tag}}\""
+  "filtering_by_tag": "Filtrering etter tag: \"{{tag}}\"",
+  "read_only_community_settings": "Bare lesbare samfunnsinnstillinger"
 }

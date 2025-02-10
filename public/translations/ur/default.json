@@ -354,5 +354,6 @@
   "submitter": "جمع کرانے والا",
   "block_user": "صارف کو بلاک کریں",
   "unblock_user": "صارف کو ان بلاک کریں",
-  "filtering_by_tag": "ٹیگ کے ذریعے فلٹرنگ: \"{{tag}}\""
+  "filtering_by_tag": "ٹیگ کے ذریعے فلٹرنگ: \"{{tag}}\"",
+  "read_only_community_settings": "صرف پڑھنے کے لئے کمیونٹی کی ترتیبات"
 }

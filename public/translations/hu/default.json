@@ -354,5 +354,6 @@
   "submitter": "Beküldő",
   "block_user": "Felhasználó blokkolása",
   "unblock_user": "Felhasználó feloldása",
-  "filtering_by_tag": "Szűrés címke szerint: \"{{tag}}\""
+  "filtering_by_tag": "Szűrés címke szerint: \"{{tag}}\"",
+  "read_only_community_settings": "Csak olvasható közösségi beállítások"
 }

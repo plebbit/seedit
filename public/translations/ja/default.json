@@ -354,5 +354,6 @@
   "submitter": "提出者",
   "block_user": "ユーザーをブロック",
   "unblock_user": "ユーザーのブロック解除",
-  "filtering_by_tag": "タグでフィルタリング: \"{{tag}}\""
+  "filtering_by_tag": "タグでフィルタリング: \"{{tag}}\"",
+  "read_only_community_settings": "読み取り専用のコミュニティ設定"
 }

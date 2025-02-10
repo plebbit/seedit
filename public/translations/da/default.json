@@ -354,5 +354,6 @@
   "submitter": "Indsender",
   "block_user": "Bloker bruger",
   "unblock_user": "Fjern blokering af bruger",
-  "filtering_by_tag": "Filtrering efter tag: \"{{tag}}\""
+  "filtering_by_tag": "Filtrering efter tag: \"{{tag}}\"",
+  "read_only_community_settings": "Kun-læsning fællesskabsindstillinger"
 }

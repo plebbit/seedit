@@ -354,5 +354,6 @@
   "submitter": "Lähettäjä",
   "block_user": "Estä käyttäjä",
   "unblock_user": "Poista käyttäjän esto",
-  "filtering_by_tag": "Suodattaminen tagilla: \"{{tag}}\""
+  "filtering_by_tag": "Suodattaminen tagilla: \"{{tag}}\"",
+  "read_only_community_settings": "Vain-luku yhteisön asetukset"
 }

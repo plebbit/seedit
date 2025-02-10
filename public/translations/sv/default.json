@@ -354,5 +354,6 @@
   "submitter": "Inlämnare",
   "block_user": "Blockera användare",
   "unblock_user": "Avblockera användare",
-  "filtering_by_tag": "Filtrering efter tagg: \"{{tag}}\""
+  "filtering_by_tag": "Filtrering efter tagg: \"{{tag}}\"",
+  "read_only_community_settings": "Endast-läsning gemenskapsinställningar"
 }

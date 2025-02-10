@@ -354,5 +354,6 @@
   "submitter": "Nadawca",
   "block_user": "Zablokuj użytkownika",
   "unblock_user": "Odblokuj użytkownika",
-  "filtering_by_tag": "Filtrowanie po tagu: \"{{tag}}\""
+  "filtering_by_tag": "Filtrowanie po tagu: \"{{tag}}\"",
+  "read_only_community_settings": "Ustawienia społeczności tylko do odczytu"
 }
