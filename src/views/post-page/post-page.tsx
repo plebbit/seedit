@@ -1,6 +1,6 @@
 import { useEffect, useState, useRef, useCallback, useMemo } from 'react';
 import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
-import { Comment, useAccountComment, useComment, useSubplebbit } from '@plebbit/plebbit-react-hooks';
+import { Comment, useAccount, useAccountComment, useComment, useSubplebbit } from '@plebbit/plebbit-react-hooks';
 import { useTranslation } from 'react-i18next';
 import findTopParentCidOfReply from '../../lib/utils/cid-utils';
 import { sortByBest } from '../../lib/utils/post-utils';
@@ -94,6 +94,8 @@ const Post = ({ post }: { post: Comment }) => {
   const [sortBy, setSortBy] = useState('best');
   const unsortedReplies = useReplies(post);
 
+  const account = useAccount();
+
   const replies = useMemo(() => {
     const pinnedReplies = unsortedReplies.filter((reply) => reply.pinned);
     const unpinnedReplies = unsortedReplies.filter((reply) => !reply.pinned);
@@ -102,7 +104,13 @@ const Post = ({ post }: { post: Comment }) => {
 
     let sortedUnpinnedReplies;
     if (sortBy === 'best') {
-      sortedUnpinnedReplies = sortByBest(unpinnedReplies);
+      const accountReplies = unpinnedReplies.filter((reply) => reply.author?.address === account?.author?.address);
+      const otherReplies = unpinnedReplies.filter((reply) => reply.author?.address !== account?.author?.address);
+
+      const sortedAccountReplies = [...accountReplies].sort((a, b) => (b.timestamp || 0) - (a.timestamp || 0));
+      const sortedOtherReplies = sortByBest(otherReplies);
+
+      sortedUnpinnedReplies = [...sortedAccountReplies, ...sortedOtherReplies];
     } else {
       sortedUnpinnedReplies = [...unpinnedReplies].sort((a, b) => {
         if (sortBy === 'new') {
@@ -115,7 +123,7 @@ const Post = ({ post }: { post: Comment }) => {
     }
 
     return [...sortedPinnedReplies, ...sortedUnpinnedReplies];
-  }, [unsortedReplies, sortBy]);
+  }, [unsortedReplies, sortBy, account?.author?.address]);
 
   const isSingleComment = post?.parentCid ? true : false;
 
