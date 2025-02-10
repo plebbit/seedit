@@ -5,7 +5,6 @@ import { useTranslation } from 'react-i18next';
 import findTopParentCidOfReply from '../../lib/utils/cid-utils';
 import { sortByBest } from '../../lib/utils/post-utils';
 import { isPendingPostView, isPostContextView } from '../../lib/utils/view-utils';
-import { usePageVisitTimestamp } from '../../hooks/use-page-visit-timestamp';
 import useReplies from '../../hooks/use-replies';
 import useStateString from '../../hooks/use-state-string';
 import LoadingEllipsis from '../../components/loading-ellipsis';
@@ -93,7 +92,6 @@ const Post = ({ post }: { post: Comment }) => {
   const { cid, deleted, depth, locked, removed, postCid, replyCount, state, subplebbitAddress, timestamp } = post || {};
 
   const [sortBy, setSortBy] = useState('best');
-  const pageVisitTimestamp = usePageVisitTimestamp(cid);
   const unsortedReplies = useReplies(post);
   const account = useAccount();
 
@@ -105,8 +103,12 @@ const Post = ({ post }: { post: Comment }) => {
 
     let sortedUnpinnedReplies;
     if (sortBy === 'best') {
-      const recentAccountReplies = unpinnedReplies.filter((reply) => reply.author?.address === account?.author?.address && (reply.timestamp || 0) >= pageVisitTimestamp);
-      const otherReplies = unpinnedReplies.filter((reply) => reply.author?.address !== account?.author?.address || (reply.timestamp || 0) < pageVisitTimestamp);
+      const currentTime = Math.floor(Date.now() / 1000);
+
+      const recentAccountReplies = unpinnedReplies.filter(
+        (reply) => reply.author?.address === account?.author?.address && currentTime - (reply.timestamp || 0) <= 30 * 60,
+      );
+      const otherReplies = unpinnedReplies.filter((reply) => reply.author?.address !== account?.author?.address || currentTime - (reply.timestamp || 0) > 30 * 60);
 
       const sortedRecentAccountReplies = [...recentAccountReplies].sort((a, b) => (b.timestamp || 0) - (a.timestamp || 0));
       const sortedOtherReplies = sortByBest(otherReplies);
@@ -124,7 +126,7 @@ const Post = ({ post }: { post: Comment }) => {
     }
 
     return [...sortedPinnedReplies, ...sortedUnpinnedReplies];
-  }, [unsortedReplies, sortBy, account?.author?.address, pageVisitTimestamp]);
+  }, [unsortedReplies, sortBy, account?.author?.address]);
 
   const isSingleComment = post?.parentCid ? true : false;
 
