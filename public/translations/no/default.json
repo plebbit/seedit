@@ -213,7 +213,7 @@
   "create_community": "Opprett fellesskap",
   "single_comment_notice": "Du ser på en tråd med kun en kommentar",
   "single_comment_link": "Se resten av kommentarene",
-  "owner_settings_notice": "kan ikke koble til samfunnets P2P-node - kun eieren av et samfunn kan redigere innstillingene.",
+  "owner_settings_notice": "Kun eieren av fellesskapet kan redigere innstillingene.",
   "preview": "forhåndsvisning",
   "shown_in_sidebar": "vist i sidepanelet for din fellesskap",
   "community_logo_info": "sett et fellesskapslogo ved hjelp av den direkte bildelenken (som slutter i .jpg, .png)",

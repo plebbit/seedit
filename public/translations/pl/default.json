@@ -213,7 +213,7 @@
   "create_community": "Utwórz społeczność",
   "single_comment_notice": "Przeglądasz wątek jednego komentarza",
   "single_comment_link": "Zobacz resztę komentarzy",
-  "owner_settings_notice": "nie można połączyć się z węzłem P2P społeczności - tylko właściciel społeczności może edytować jej ustawienia.",
+  "owner_settings_notice": "Tylko właściciel społeczności może edytować jej ustawienia.",
   "preview": "podgląd",
   "shown_in_sidebar": "wyświetlane na pasku bocznym twojej społeczności",
   "community_logo_info": "ustaw logo społeczności za pomocą bezpośredniego linku do obrazu (zakończonego na .jpg, .png)",

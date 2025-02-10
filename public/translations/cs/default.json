@@ -213,7 +213,7 @@
   "create_community": "Vytvořit komunitu",
   "single_comment_notice": "Prohlížíte si vlákno jednoho komentáře",
   "single_comment_link": "Zobrazit zbytek komentářů",
-  "owner_settings_notice": "Nelze se připojit k uzlu komunity P2P - pouze vlastník komunity může upravit její nastavení.",
+  "owner_settings_notice": "Pouze vlastník komunity může upravit její nastavení.",
   "preview": "Náhled",
   "shown_in_sidebar": "zobrazeno na boční liště vaší komunity",
   "community_logo_info": "Nastavte logo komunity pomocí jeho přímého odkazu na obrázek (končícího na .jpg, .png)",

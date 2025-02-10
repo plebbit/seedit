@@ -213,7 +213,7 @@
   "create_community": "Crea comunità",
   "single_comment_notice": "Stai vedendo una discussione derivante da un commento",
   "single_comment_link": "Guarda il resto dei commenti",
-  "owner_settings_notice": "non è possibile connettersi al nodo P2P della comunità - solo il proprietario di una comunità può modificare le sue impostazioni.",
+  "owner_settings_notice": "Solo il proprietario della comunità può modificarne le impostazioni.",
   "preview": "anteprima",
   "shown_in_sidebar": "mostrato nella barra laterale della tua comunità",
   "community_logo_info": "imposta un logo di comunità utilizzando il suo link diretto all'immagine (che termina in .jpg, .png)",

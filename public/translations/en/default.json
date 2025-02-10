@@ -213,7 +213,7 @@
   "create_community": "Create community",
   "single_comment_notice": "You are viewing a single comment's thread",
   "single_comment_link": "View the rest of the comments",
-  "owner_settings_notice": "can't connect to community p2p node - only the owner of a community can edit its settings.",
+  "owner_settings_notice": "Only the owner of the community can edit its settings.",
   "preview": "preview",
   "shown_in_sidebar": "shown in the sidebar of your community",
   "community_logo_info": "set a community logo using its direct image link (ending in .jpg, .png)",

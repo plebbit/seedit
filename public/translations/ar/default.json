@@ -213,7 +213,7 @@
   "create_community": "إنشاء مجتمع",
   "single_comment_notice": "أنت تشاهد موضوع تعليق واحد فقط",
   "single_comment_link": "عرض بقية التعليقات",
-  "owner_settings_notice": "لا يمكن الاتصال بعقدة P2P للمجتمع - يمكن لمالك المجتمع فقط تحرير إعداداته.",
+  "owner_settings_notice": "فقط مالك المجتمع يمكنه تعديل إعداداته.",
   "preview": "معاينة",
   "shown_in_sidebar": "يُعرَض في الشريط الجانبي لمجتمعك",
   "community_logo_info": "قم بتعيين شعار المجتمع باستخدام رابط صورة مباشر (منتهي بـ .jpg أو .png)",
