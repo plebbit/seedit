@@ -125,11 +125,12 @@ const downloadAppLink = (() => {
   }
 })();
 
-interface sidebarProps {
+interface SidebarProps {
   comment?: Comment;
   isSubCreatedButNotYetPublished?: boolean;
   settings?: any;
   subplebbit?: Subplebbit;
+  reset?: () => void;
 }
 
 export const Footer = () => {
@@ -205,7 +206,7 @@ export const Footer = () => {
   );
 };
 
-const Sidebar = ({ comment, isSubCreatedButNotYetPublished, settings, subplebbit }: sidebarProps) => {
+const Sidebar = ({ comment, isSubCreatedButNotYetPublished, settings, subplebbit, reset }: SidebarProps) => {
   const { t } = useTranslation();
   const { address, createdAt, description, roles, rules, title, updatedAt } = subplebbit || {};
   const { allActiveUserCount, hourActiveUserCount } = useSubplebbitStats({ subplebbitAddress: address });
@@ -253,6 +254,7 @@ const Sidebar = ({ comment, isSubCreatedButNotYetPublished, settings, subplebbit
       block();
     }
     setShowBlockConfirm(false);
+    reset?.();
   };
 
   const cancelBlock = () => {
