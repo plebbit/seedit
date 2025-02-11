@@ -1,4 +1,4 @@
-import { useEffect, useRef, memo } from 'react';
+import { useEffect, useRef } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { Virtuoso, VirtuosoHandle, StateSnapshot } from 'react-virtuoso';
 import { useAccount, useFeed } from '@plebbit/plebbit-react-hooks';
@@ -24,69 +24,68 @@ const LoadingStateFooter = ({ subplebbitAddresses }: { subplebbitAddresses: stri
   );
 };
 
-const Footer = memo(
-  ({
-    feed,
-    hasMore,
-    subplebbitAddresses,
-    subplebbitAddressesWithNewerPosts,
-    handleNewerPostsButtonClick,
-    params,
-    weeklyFeed,
-    monthlyFeed,
-    currentTimeFilterName,
-  }: any) => {
-    const { t } = useTranslation();
-    let footerContent;
-    if (feed.length === 0) {
-      footerContent = t('no_posts');
-    }
-    if (hasMore || subplebbitAddresses.length > 0 || (subplebbitAddresses && subplebbitAddresses.length === 0)) {
-      footerContent = (
-        <>
-          {subplebbitAddressesWithNewerPosts.length > 0 ? (
+const Footer = ({
+  feed,
+  hasMore,
+  subplebbitAddresses,
+  subplebbitAddressesWithNewerPosts,
+  handleNewerPostsButtonClick,
+  params,
+  weeklyFeed,
+  monthlyFeed,
+  currentTimeFilterName,
+}: any) => {
+  const { t } = useTranslation();
+  let footerContent;
+  if (feed.length === 0) {
+    footerContent = t('no_posts');
+  }
+  if (hasMore || subplebbitAddresses.length > 0 || (subplebbitAddresses && subplebbitAddresses.length === 0)) {
+    footerContent = (
+      <>
+        {subplebbitAddressesWithNewerPosts.length > 0 ? (
+          <div className={styles.morePostsSuggestion}>
+            <Trans
+              i18nKey='newer_posts_available'
+              components={{
+                1: <span onClick={handleNewerPostsButtonClick} />,
+              }}
+            />
+          </div>
+        ) : (
+          monthlyFeed.length > feed.length &&
+          (weeklyFeed.length > feed.length ? (
             <div className={styles.morePostsSuggestion}>
               <Trans
-                i18nKey='newer_posts_available'
+                i18nKey='more_posts_last_week'
+                values={{ currentTimeFilterName }}
                 components={{
-                  1: <span onClick={handleNewerPostsButtonClick} />,
+                  1: <Link to={'/' + (params?.sortType || 'hot') + '/1w'} />,
                 }}
               />
             </div>
           ) : (
-            monthlyFeed.length > feed.length &&
-            (weeklyFeed.length > feed.length ? (
-              <div className={styles.morePostsSuggestion}>
-                <Trans
-                  i18nKey='more_posts_last_week'
-                  values={{ currentTimeFilterName }}
-                  components={{
-                    1: <Link to={'/' + (params?.sortType || 'hot') + '/1w'} />,
-                  }}
-                />
-              </div>
-            ) : (
-              <div className={styles.morePostsSuggestion}>
-                <Trans
-                  i18nKey='more_posts_last_month'
-                  values={{ currentTimeFilterName }}
-                  components={{
-                    1: <Link to={'/' + (params?.sortType || 'hot') + '/1m'} />,
-                  }}
-                />
-              </div>
-            ))
-          )}
-        </>
-      );
-    }
-    return <div className={styles.footer}>{footerContent}</div>;
-  },
-);
+            <div className={styles.morePostsSuggestion}>
+              <Trans
+                i18nKey='more_posts_last_month'
+                values={{ currentTimeFilterName }}
+                components={{
+                  1: <Link to={'/' + (params?.sortType || 'hot') + '/1m'} />,
+                }}
+              />
+            </div>
+          ))
+        )}
+      </>
+    );
+  }
+  return <div className={styles.footer}>{footerContent}</div>;
+};
 
 const Home = () => {
   useRedirectToDefaultSort();
   const { t } = useTranslation();
+  const account = useAccount();
   const subplebbitAddresses = useAccount()?.subscriptions || [];
   const params = useParams<{ sortType?: string; timeFilterName?: string }>();
   const sortType = params?.sortType || 'hot';
@@ -148,27 +147,42 @@ const Home = () => {
         <div className={`${styles.sidebar}`}>
           <Sidebar />
         </div>
-        <div className={styles.feed}>
-          <Virtuoso
-            increaseViewportBy={{ bottom: 1200, top: 600 }}
-            totalCount={feed?.length || 0}
-            data={feed}
-            itemContent={(index, post) => <Post index={index} post={post} />}
-            useWindowScroll={true}
-            components={{
-              Footer: () => (
-                <>
-                  <Footer {...footerProps} />
-                  <LoadingStateFooter subplebbitAddresses={subplebbitAddresses} />
-                </>
-              ),
-            }}
-            endReached={loadMore}
-            ref={virtuosoRef}
-            restoreStateFrom={lastVirtuosoState}
-            initialScrollTop={lastVirtuosoState?.scrollTop}
-          />
-        </div>
+        {subplebbitAddresses.length > 0 ? (
+          <div className={styles.feed}>
+            <Virtuoso
+              increaseViewportBy={{ bottom: 1200, top: 600 }}
+              totalCount={feed?.length || 0}
+              data={feed}
+              itemContent={(index, post) => <Post index={index} post={post} />}
+              useWindowScroll={true}
+              components={{
+                Footer: () => (
+                  <>
+                    <Footer {...footerProps} />
+                    <LoadingStateFooter subplebbitAddresses={subplebbitAddresses} />
+                  </>
+                ),
+              }}
+              endReached={loadMore}
+              ref={virtuosoRef}
+              restoreStateFrom={lastVirtuosoState}
+              initialScrollTop={lastVirtuosoState?.scrollTop}
+            />
+          </div>
+        ) : (
+          <div className={styles.noSubscriptions}>
+            <br />
+            <h1>{account?.author.displayName || account?.author.shortAddress}, this is your home on Seedit</h1>
+            <div className={styles.squash}>
+              When you find a community that you like, <strong>join with the</strong>
+              <img src={'/assets/buttons/all_feed_subscribe.png'} alt='' />
+            </div>
+            <div className={styles.fakePost} />
+            <div className={styles.findCommunities}>
+              <Link to='/p/all'>find communities on p/all</Link>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );

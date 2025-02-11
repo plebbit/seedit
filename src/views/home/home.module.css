@@ -79,3 +79,70 @@
   color: var(--text-info);
   cursor: pointer;
 }
+
+.noSubscriptions {
+  text-align: center;
+  font-size: 12px;
+  margin-right: 310px;
+  color: var(--text);
+}
+
+.noSubscriptions h1 {
+  font-weight: bold;
+  font-size: 25px;
+  margin: 10px 0;
+}
+
+.squash {
+  margin: 1em auto;
+  max-width: 580px;
+  padding: 0 75px 0 60px;
+  box-sizing: border-box;
+}
+
+.squash img {
+  display: inline;
+  margin: 0;
+  vertical-align: bottom;
+  border: 0;
+  width: 12px;
+  height: 12px;
+  margin-left: 7px;
+}
+
+.fakePost {
+  margin: 1em auto;
+  vertical-align: bottom;
+  background-image: var(--fakepost-subscribe);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 500px;
+  height: 200px;
+  -webkit-mask-image: linear-gradient(to bottom, black 20%, transparent 100%);
+  mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
+}
+
+.findCommunities a {
+  background-color: var(--button-background-color);
+  color: #ffffff;
+  display: inline-block;
+  text-transform: uppercase;
+  font-weight: bold;
+  cursor: pointer;
+  border: 1px solid transparent;
+  padding: 4px 12px 3px;
+  line-height: 20px;
+  border-radius: 3px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -o-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  border-bottom: 2px solid var(--button-border-bottom);
+}
+
+.findCommunities a:hover {
+  background-color: var(--button-background-color-hover);
+  text-decoration: underline;
+}
