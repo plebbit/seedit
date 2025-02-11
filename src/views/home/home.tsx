@@ -1,22 +1,20 @@
 import { useEffect, useRef, memo } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { Virtuoso, VirtuosoHandle, StateSnapshot } from 'react-virtuoso';
-import { useFeed } from '@plebbit/plebbit-react-hooks';
+import { useAccount, useFeed } from '@plebbit/plebbit-react-hooks';
 import { Trans, useTranslation } from 'react-i18next';
 import styles from './home.module.css';
 import LoadingEllipsis from '../../components/loading-ellipsis';
 import Post from '../../components/post';
 import Sidebar from '../../components/sidebar';
-import { useDefaultAndSubscriptionsSubplebbitAddresses } from '../../hooks/use-default-subplebbits';
 import useFeedStateString from '../../hooks/use-feed-state-string';
 import useTimeFilter from '../../hooks/use-time-filter';
 import useRedirectToDefaultSort from '../../hooks/use-redirect-to-default-sort';
 
 const lastVirtuosoStates: { [key: string]: StateSnapshot } = {};
 
-const LoadingStateFooter = () => {
+const LoadingStateFooter = ({ subplebbitAddresses }: { subplebbitAddresses: string[] }) => {
   const { t } = useTranslation();
-  const subplebbitAddresses = useDefaultAndSubscriptionsSubplebbitAddresses();
   const loadingStateString = useFeedStateString(subplebbitAddresses) || t('loading');
 
   return (
@@ -87,9 +85,9 @@ const Footer = memo(
 );
 
 const Home = () => {
-  const { t } = useTranslation();
   useRedirectToDefaultSort();
-  const subplebbitAddresses = useDefaultAndSubscriptionsSubplebbitAddresses();
+  const { t } = useTranslation();
+  const subplebbitAddresses = useAccount()?.subscriptions || [];
   const params = useParams<{ sortType?: string; timeFilterName?: string }>();
   const sortType = params?.sortType || 'hot';
   const { timeFilterName, timeFilterSeconds } = useTimeFilter();
@@ -161,7 +159,7 @@ const Home = () => {
               Footer: () => (
                 <>
                   <Footer {...footerProps} />
-                  <LoadingStateFooter />
+                  <LoadingStateFooter subplebbitAddresses={subplebbitAddresses} />
                 </>
               ),
             }}

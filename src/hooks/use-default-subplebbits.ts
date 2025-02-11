@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from 'react';
-import { Subplebbit, useAccount } from '@plebbit/plebbit-react-hooks';
+import { Subplebbit } from '@plebbit/plebbit-react-hooks';
 import useContentOptionsStore from '../stores/use-content-options-store';
 
 export interface MultisubMetadata {
@@ -67,22 +67,6 @@ export const useDefaultSubplebbitAddresses = () => {
   }, [defaultSubplebbits, hideAdultCommunities, hideGoreCommunities, hideAntiCommunities, hideVulgarCommunities]);
 
   return useMemo(() => filteredSubplebbits.map((subplebbit) => subplebbit.address), [filteredSubplebbits]);
-};
-
-export const useDefaultAndSubscriptionsSubplebbitAddresses = () => {
-  const account = useAccount();
-  const subscriptions = useMemo(() => account?.subscriptions ?? [], [account?.subscriptions]);
-  const defaultSubplebbitAddresses = useDefaultSubplebbitAddresses();
-
-  return useMemo(() => {
-    const subplebbitAddresses = new Set(defaultSubplebbitAddresses);
-
-    subscriptions.forEach((address: string) => {
-      subplebbitAddresses.add(address);
-    });
-
-    return Array.from(subplebbitAddresses);
-  }, [subscriptions, defaultSubplebbitAddresses]);
 };
 
 export const useMultisubMetadata = () => {
