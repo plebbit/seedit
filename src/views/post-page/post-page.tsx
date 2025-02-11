@@ -14,6 +14,9 @@ import PostComponent from '../../components/post';
 import Sidebar from '../../components/sidebar';
 import styles from './post-page.module.css';
 import _ from 'lodash';
+import Over18Warning from '../../components/over-18-warning';
+import { useIsBroadlyNsfwSubplebbit } from '../../hooks/use-is-broadly-nsfw-subplebbit';
+import useContentOptionsStore from '../../stores/use-content-options-store';
 
 const PendingPost = ({ commentIndex }: { commentIndex?: number }) => {
   const post = useAccountComment({ commentIndex });
@@ -234,8 +237,13 @@ const PostPage = () => {
   const isInPendingPostView = isPendingPostView(location.pathname, params);
   const isInPostContextView = isPostContextView(location.pathname, params, location.search);
 
-  const post = useComment({ commentCid: params?.commentCid });
-  const subplebbit = useSubplebbit({ subplebbitAddress: params?.subplebbitAddress });
+  const { commentCid, subplebbitAddress } = params;
+  const post = useComment({ commentCid });
+  const subplebbit = useSubplebbit({ subplebbitAddress });
+
+  // over 18 warning for subplebbit with nsfw tag in multisub default list
+  const { hasAcceptedWarning } = useContentOptionsStore();
+  const isBroadlyNsfwSubplebbit = useIsBroadlyNsfwSubplebbit(subplebbitAddress || '');
 
   const postTitle = post.title?.slice(0, 40) || post?.content?.slice(0, 40);
   const subplebbitTitle = subplebbit?.title || subplebbit?.shortAddress;
@@ -247,7 +255,9 @@ const PostPage = () => {
     window.scrollTo(0, 0);
   }, []);
 
-  return (
+  return isBroadlyNsfwSubplebbit && !hasAcceptedWarning ? (
+    <Over18Warning />
+  ) : (
     <div className={styles.content}>
       <div className={styles.sidebar}>
         <Sidebar subplebbit={subplebbit} comment={post} settings={subplebbit?.settings} />
