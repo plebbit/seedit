@@ -1,6 +1,6 @@
 import { useEffect, useState, useRef, useCallback, useMemo } from 'react';
 import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
-import { Comment, useAccountComment, useComment, useSubplebbit } from '@plebbit/plebbit-react-hooks';
+import { Comment, useAccount, useAccountComment, useComment, useSubplebbit } from '@plebbit/plebbit-react-hooks';
 import { useTranslation } from 'react-i18next';
 import findTopParentCidOfReply from '../../lib/utils/cid-utils';
 import { sortByBest } from '../../lib/utils/post-utils';
@@ -14,6 +14,9 @@ import PostComponent from '../../components/post';
 import Sidebar from '../../components/sidebar';
 import styles from './post-page.module.css';
 import _ from 'lodash';
+import Over18Warning from '../../components/over-18-warning';
+import { useIsBroadlyNsfwSubplebbit } from '../../hooks/use-is-broadly-nsfw-subplebbit';
+import useContentOptionsStore from '../../stores/use-content-options-store';
 
 const PendingPost = ({ commentIndex }: { commentIndex?: number }) => {
   const post = useAccountComment({ commentIndex });
@@ -93,6 +96,7 @@ const Post = ({ post }: { post: Comment }) => {
 
   const [sortBy, setSortBy] = useState('best');
   const unsortedReplies = useReplies(post);
+  const account = useAccount();
 
   const replies = useMemo(() => {
     const pinnedReplies = unsortedReplies.filter((reply) => reply.pinned);
@@ -102,7 +106,17 @@ const Post = ({ post }: { post: Comment }) => {
 
     let sortedUnpinnedReplies;
     if (sortBy === 'best') {
-      sortedUnpinnedReplies = sortByBest(unpinnedReplies);
+      const currentTime = Math.floor(Date.now() / 1000);
+
+      const recentAccountReplies = unpinnedReplies.filter(
+        (reply) => reply.author?.address === account?.author?.address && currentTime - (reply.timestamp || 0) <= 30 * 60,
+      );
+      const otherReplies = unpinnedReplies.filter((reply) => reply.author?.address !== account?.author?.address || currentTime - (reply.timestamp || 0) > 30 * 60);
+
+      const sortedRecentAccountReplies = [...recentAccountReplies].sort((a, b) => (b.timestamp || 0) - (a.timestamp || 0));
+      const sortedOtherReplies = sortByBest(otherReplies);
+
+      sortedUnpinnedReplies = [...sortedRecentAccountReplies, ...sortedOtherReplies];
     } else {
       sortedUnpinnedReplies = [...unpinnedReplies].sort((a, b) => {
         if (sortBy === 'new') {
@@ -115,7 +129,7 @@ const Post = ({ post }: { post: Comment }) => {
     }
 
     return [...sortedPinnedReplies, ...sortedUnpinnedReplies];
-  }, [unsortedReplies, sortBy]);
+  }, [unsortedReplies, sortBy, account?.author?.address]);
 
   const isSingleComment = post?.parentCid ? true : false;
 
@@ -223,8 +237,13 @@ const PostPage = () => {
   const isInPendingPostView = isPendingPostView(location.pathname, params);
   const isInPostContextView = isPostContextView(location.pathname, params, location.search);
 
-  const post = useComment({ commentCid: params?.commentCid });
-  const subplebbit = useSubplebbit({ subplebbitAddress: params?.subplebbitAddress });
+  const { commentCid, subplebbitAddress } = params;
+  const post = useComment({ commentCid });
+  const subplebbit = useSubplebbit({ subplebbitAddress });
+
+  // over 18 warning for subplebbit with nsfw tag in multisub default list
+  const { hasAcceptedWarning } = useContentOptionsStore();
+  const isBroadlyNsfwSubplebbit = useIsBroadlyNsfwSubplebbit(subplebbitAddress || '');
 
   const postTitle = post.title?.slice(0, 40) || post?.content?.slice(0, 40);
   const subplebbitTitle = subplebbit?.title || subplebbit?.shortAddress;
@@ -236,7 +255,9 @@ const PostPage = () => {
     window.scrollTo(0, 0);
   }, []);
 
-  return (
+  return isBroadlyNsfwSubplebbit && !hasAcceptedWarning ? (
+    <Over18Warning />
+  ) : (
     <div className={styles.content}>
       <div className={styles.sidebar}>
         <Sidebar subplebbit={subplebbit} comment={post} settings={subplebbit?.settings} />

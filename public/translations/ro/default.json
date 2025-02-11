@@ -213,7 +213,7 @@
   "create_community": "Creați comunitate",
   "single_comment_notice": "Vizualizați un fir de discuție cu un singur comentariu",
   "single_comment_link": "Vizualizați restul comentariilor",
-  "owner_settings_notice": "nu se poate conecta la nodul P2P al comunității - doar proprietarul unei comunități poate edita setările sale.",
+  "owner_settings_notice": "Doar proprietarul comunității poate edita setările acesteia.",
   "preview": "previzualizare",
   "shown_in_sidebar": "afișat în bara laterală a comunității tale",
   "community_logo_info": "setați un logo de comunitate folosind link-ul direct al imaginii (care se termină în .jpg, .png)",
@@ -353,5 +353,7 @@
   "download_latest_android": "Descărcați cea mai recentă versiune Android?",
   "submitter": "Trimis",
   "block_user": "Blochează utilizatorul",
-  "unblock_user": "Deblochează utilizatorul"
+  "unblock_user": "Deblochează utilizatorul",
+  "filtering_by_tag": "Filtrare după tag: \"{{tag}}\"",
+  "read_only_community_settings": "Setări comunitate doar citire"
 }

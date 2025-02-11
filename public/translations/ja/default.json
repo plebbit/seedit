@@ -213,7 +213,7 @@
   "create_community": "コミュニティを作成",
   "single_comment_notice": "1つのコメントのスレッドを表示しています",
   "single_comment_link": "他のコメントを表示",
-  "owner_settings_notice": "コミュニティのP2Pノードに接続できません - コミュニティの所有者のみが設定を編集できます。",
+  "owner_settings_notice": "コミュニティのオーナーのみが設定を編集できます。",
   "preview": "プレビュー",
   "shown_in_sidebar": "あなたのコミュニティのサイドバーに表示されます",
   "community_logo_info": "直接の画像リンクを使用してコミュニティのロゴを設定します（.jpg、.pngで終了）",
@@ -353,5 +353,7 @@
   "download_latest_android": "最新のAndroidバージョンをダウンロードしますか？",
   "submitter": "提出者",
   "block_user": "ユーザーをブロック",
-  "unblock_user": "ユーザーのブロック解除"
+  "unblock_user": "ユーザーのブロック解除",
+  "filtering_by_tag": "タグでフィルタリング: \"{{tag}}\"",
+  "read_only_community_settings": "読み取り専用のコミュニティ設定"
 }

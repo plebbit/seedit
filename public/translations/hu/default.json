@@ -213,7 +213,7 @@
   "create_community": "Közösség létrehozása",
   "single_comment_notice": "Egyetlen hozzászólás szála van megtekintés alatt",
   "single_comment_link": "Tekintse meg a többi megjegyzést",
-  "owner_settings_notice": "nem lehet kapcsolódni a közösség P2P csomópontjához - csak egy közösség tulajdonosa szerkesztheti a beállításait.",
+  "owner_settings_notice": "Csak a közösség tulajdonosa szerkesztheti annak beállításait.",
   "preview": "előnézet",
   "shown_in_sidebar": "megjelenik a közösséged oldalsávjában",
   "community_logo_info": "állítsa be a közösség logóját a közvetlen képlinkjének használatával (.jpg, .png befejezése)",
@@ -353,5 +353,7 @@
   "download_latest_android": "Töltse le a legújabb Android verziót?",
   "submitter": "Beküldő",
   "block_user": "Felhasználó blokkolása",
-  "unblock_user": "Felhasználó feloldása"
+  "unblock_user": "Felhasználó feloldása",
+  "filtering_by_tag": "Szűrés címke szerint: \"{{tag}}\"",
+  "read_only_community_settings": "Csak olvasható közösségi beállítások"
 }

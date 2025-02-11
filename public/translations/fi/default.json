@@ -213,7 +213,7 @@
   "create_community": "Luo yhteisö",
   "single_comment_notice": "Katsotte yhden kommentin keskustelua",
   "single_comment_link": "Näytä loput kommentit",
-  "owner_settings_notice": "ei voi muodostaa yhteyttä yhteisön P2P-solmuun - vain yhteisön omistaja voi muokata sen asetuksia.",
+  "owner_settings_notice": "Vain yhteisön omistaja voi muokata sen asetuksia.",
   "preview": "esikatselu",
   "shown_in_sidebar": "näytetään yhteisösi sivupalkissa",
   "community_logo_info": "aseta yhteisön logo sen suoran kuvan linkin avulla (päättyen .jpg, .png)",
@@ -353,5 +353,7 @@
   "download_latest_android": "Lataa uusin Android-versio?",
   "submitter": "Lähettäjä",
   "block_user": "Estä käyttäjä",
-  "unblock_user": "Poista käyttäjän esto"
+  "unblock_user": "Poista käyttäjän esto",
+  "filtering_by_tag": "Suodattaminen tagilla: \"{{tag}}\"",
+  "read_only_community_settings": "Vain-luku yhteisön asetukset"
 }

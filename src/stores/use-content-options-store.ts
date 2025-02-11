@@ -14,7 +14,12 @@ interface ContentOptionsState {
   setHideVulgarCommunities: (hide: boolean) => void;
 }
 
-const useContentOptionsStore = create<ContentOptionsState>()(
+interface ContentOptionsStore extends ContentOptionsState {
+  hasAcceptedWarning: boolean;
+  setHasAcceptedWarning: (value: boolean) => void;
+}
+
+const useContentOptionsStore = create<ContentOptionsStore>()(
   persist(
     (set) => ({
       blurNsfwThumbnails: true,
@@ -22,11 +27,13 @@ const useContentOptionsStore = create<ContentOptionsState>()(
       hideGoreCommunities: true,
       hideAntiCommunities: true,
       hideVulgarCommunities: true,
+      hasAcceptedWarning: false,
       setBlurNsfwThumbnails: (blur) => set({ blurNsfwThumbnails: blur }),
       setHideAdultCommunities: (hide) => set({ hideAdultCommunities: hide }),
       setHideGoreCommunities: (hide) => set({ hideGoreCommunities: hide }),
       setHideAntiCommunities: (hide) => set({ hideAntiCommunities: hide }),
       setHideVulgarCommunities: (hide) => set({ hideVulgarCommunities: hide }),
+      setHasAcceptedWarning: (value) => set({ hasAcceptedWarning: value }),
     }),
     {
       name: 'content-options',

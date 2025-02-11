@@ -213,7 +213,7 @@
   "create_community": "Tạo cộng đồng",
   "single_comment_notice": "Bạn đang xem một luồng bình luận duy nhất",
   "single_comment_link": "Xem phần còn lại của các bình luận",
-  "owner_settings_notice": "không thể kết nối với nút P2P của cộng đồng - chỉ chủ sở hữu của một cộng đồng mới có thể chỉnh sửa cài đặt của nó.",
+  "owner_settings_notice": "Chỉ chủ sở hữu cộng đồng mới có thể chỉnh sửa cài đặt của nó.",
   "preview": "xem trước",
   "shown_in_sidebar": "được hiển thị ở thanh bên của cộng đồng của bạn",
   "community_logo_info": "đặt một biểu trưng cộng đồng bằng cách sử dụng liên kết hình ảnh trực tiếp của nó (kết thúc bằng .jpg, .png)",
@@ -353,5 +353,7 @@
   "download_latest_android": "Tải phiên bản Android mới nhất?",
   "submitter": "Người gửi",
   "block_user": "Chặn người dùng",
-  "unblock_user": "Bỏ chặn người dùng"
+  "unblock_user": "Bỏ chặn người dùng",
+  "filtering_by_tag": "Lọc theo thẻ: \"{{tag}}\"",
+  "read_only_community_settings": "Cài đặt cộng đồng chỉ đọc"
 }

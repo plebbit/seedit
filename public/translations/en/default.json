@@ -213,7 +213,7 @@
   "create_community": "Create community",
   "single_comment_notice": "You are viewing a single comment's thread",
   "single_comment_link": "View the rest of the comments",
-  "owner_settings_notice": "can't connect to community p2p node - only the owner of a community can edit its settings.",
+  "owner_settings_notice": "Only the owner of the community can edit its settings.",
   "preview": "preview",
   "shown_in_sidebar": "shown in the sidebar of your community",
   "community_logo_info": "set a community logo using its direct image link (ending in .jpg, .png)",
@@ -236,7 +236,7 @@
   "new_stable_version": "New stable version available, seedit v{{newVersion}}. You are using seedit v{{oldVersion}}.",
   "download_latest_desktop": "Download the latest desktop version here: {{link}}",
   "contribute_on_github": "Contribute on GitHub",
-  "create_community_not_available": "Not yet available on web. You can create a community using the desktop app, download it here: {{desktopLink}}. If you are comfortable with the command line, check out: {{cliLink}}",
+  "create_community_not_available": "Not yet available on web. You can create a community using the desktop app, available on Windows, MacOS and Linux. Download it here: {{desktopLink}}. If you are comfortable with the command line, you can use plebbit-cli instead: {{cliLink}}",
   "no_media_found": "No media found",
   "no_image_found": "No image found",
   "warning_spam": "Warning: no challenge selected, the community is vulnerable to spam attacks.",
@@ -353,5 +353,7 @@
   "download_latest_android": "Download the latest android version?",
   "submitter": "Submitter",
   "block_user": "Block user",
-  "unblock_user": "Unblock user"
+  "unblock_user": "Unblock user",
+  "filtering_by_tag": "Filtering by tag: \"{{tag}}\"",
+  "read_only_community_settings": "Read-only community settings"
 }

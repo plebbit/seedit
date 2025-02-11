@@ -213,7 +213,7 @@
   "create_community": "Lumikha ng komunidad",
   "single_comment_notice": "Nakikita mo ang isang thread ng isang komento lamang",
   "single_comment_link": "Tingnan ang iba pang mga komento",
-  "owner_settings_notice": "hindi makakonekta sa komunidad ng p2p node - tanging ang may-ari ng isang komunidad ang makakapag-edit ng mga setting nito.",
+  "owner_settings_notice": "Tanging ang may-ari ng komunidad ang makakapag-edit ng mga setting nito.",
   "preview": "preview",
   "shown_in_sidebar": "ipinapakita sa sidebar ng iyong komunidad",
   "community_logo_info": "itakda ang logo ng komunidad gamit ang direktang link ng larawan nito (natatapos sa .jpg, .png)",
@@ -353,5 +353,7 @@
   "download_latest_android": "I-download ang pinakabagong bersyon ng Android?",
   "submitter": "Nagpadala",
   "block_user": "I-block ang gumagamit",
-  "unblock_user": "I-unblock ang gumagamit"
+  "unblock_user": "I-unblock ang gumagamit",
+  "filtering_by_tag": "Nag-filter ayon sa tag: \"{{tag}}\"",
+  "read_only_community_settings": "Mga setting ng komunidad na read-only"
 }

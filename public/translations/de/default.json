@@ -213,7 +213,7 @@
   "create_community": "Gemeinschaft erstellen",
   "single_comment_notice": "Sie sehen einen Thread mit nur einem Kommentar",
   "single_comment_link": "Den Rest der Kommentare anzeigen",
-  "owner_settings_notice": "Kann keine Verbindung zum P2P-Knoten der Community herstellen - nur der Eigentümer einer Community kann deren Einstellungen bearbeiten.",
+  "owner_settings_notice": "Nur der Besitzer der Community kann die Einstellungen bearbeiten.",
   "preview": "Vorschau",
   "shown_in_sidebar": "im Seitenbereich Ihrer Community angezeigt",
   "community_logo_info": "Legen Sie ein Gemeinschaftslogo mit seinem direkten Bildlink fest (endet in .jpg, .png)",
@@ -353,5 +353,7 @@
   "download_latest_android": "Laden Sie die neueste Android-Version herunter?",
   "submitter": "Einreicher",
   "block_user": "Benutzer blockieren",
-  "unblock_user": "Benutzer entsperren"
+  "unblock_user": "Benutzer entsperren",
+  "filtering_by_tag": "Filtern nach Tag: \"{{tag}}\"",
+  "read_only_community_settings": "Nur-Lese-Community-Einstellungen"
 }

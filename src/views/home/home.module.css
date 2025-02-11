@@ -1,5 +1,6 @@
 .footer, .stateString {
   padding-left: 5px;
+  text-transform: lowercase;
 }
 
 .footer {
@@ -63,127 +64,18 @@
   }
 }
 
-.over18 {
-  font-family: "Helvetica Neue", "Helvetica", "Arial", sans-serif;
-  margin: auto;
-  text-align: center;
-  width: 100%;
-  max-width: 650px;
-  padding: 0 15px;
-  box-sizing: border-box;
+.blockConfirm {
+  color: var(--red);
 }
 
-.over18 img {
-  margin-bottom: 20px;
-  margin-top: 60px;
-  height: 150px;
-  width: 150px;
-}
-
-@media (max-width: 640px) {
-  .over18 img {
-    height: 100px;
-    width: 100px;
-    margin-top: 30px;
-  }
-
-  .over18 h3 {
-    font-size: 18px;
-  }
-
-  .over18 p {
-    font-size: 16px;
-    line-height: 22px;
-  }
-
-  .over18 .warningButtons {
-    width: 100%;
-    flex-direction: column;
-  }
-
-  .over18 .warningButtons button {
-    width: 100%;
-    margin: 5px 0;
-  }
-}
-
-.over18 h3 {
-  font-size: 24px;
-  font-weight: bold;
-}
-
-.over18 .warning {
-  unicode-bidi: isolate;
-  font-size: 14px;
-  color: var(--text-markdown);
-  max-width: 60em;
-  word-wrap: break-word;
-}
-
-.over18 h3 {
-  font-size: 20px;
-  line-height: 1.25em;
-  margin-top: 1em;
-  margin-bottom: 1em;
-}
-
-.over18 p {
-  font-weight: 300;
-  font-size: 18px;
-  line-height: 25px;
-  margin-top: 1em;
-  margin-bottom: 1em;
-}
-
-.over18 .warningButtons {
-  display: flex;
-  justify-content: center;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 30px;
-  width: 100%;
-  max-width: 400px;
-  padding: 0 15px;
-  box-sizing: border-box;
-}
-
-.over18 .warningButtons button {
-  color: var(--over18-alert-color);
-  display: inline-block;
-  text-align: center;
-  text-transform: uppercase;
-  font-weight: 500;
+.blockConfirm span {
+  color: var(--text-info);
+  font-weight: 700;
   cursor: pointer;
-  background-image: none;
-  border: 1px solid transparent;
-  white-space: nowrap;
-  padding: 8px 12px;
-  font-size: 12px;
-  line-height: 20px;
-  border-radius: 3px;
-  flex: 1;
-  margin: 3px 5px;
-  background-color: #4f86b5;
-  border-bottom: 2px solid #4270a2;
-  user-select: none;
 }
 
-@media (max-width: 640px) {
-  .over18 .warningButtons {
-    padding: 0;
-  }
-
-  .over18 .warningButtons button {
-    margin: 5px 0;
-    width: 100%;
-  }
-}
-
-.over18 .warningButtons button:hover {
-  background-color: #4980ae;
-}
-
-.over18 .warningButtons button a {
-  color: var(--over18-alert-color);
-  text-decoration: none;
+.blockSub {
+  font-weight: 700;
+  color: var(--text-info);
+  cursor: pointer;
 }

@@ -213,7 +213,7 @@
   "create_community": "Buat komunitas",
   "single_comment_notice": "Anda sedang melihat benang komentar tunggal",
   "single_comment_link": "Lihat sisa komentar",
-  "owner_settings_notice": "tidak dapat terhubung ke node P2P komunitas - hanya pemilik komunitas yang dapat mengedit pengaturannya.",
+  "owner_settings_notice": "Hanya pemilik komunitas yang dapat mengedit pengaturannya.",
   "preview": "pratinjau",
   "shown_in_sidebar": "ditampilkan di bilah samping komunitas Anda",
   "community_logo_info": "setel logo komunitas menggunakan tautan gambar langsungnya (berakhir dengan .jpg, .png)",
@@ -353,5 +353,7 @@
   "download_latest_android": "Unduh versi Android terbaru?",
   "submitter": "Pengirim",
   "block_user": "Blokir pengguna",
-  "unblock_user": "Buka blokir pengguna"
+  "unblock_user": "Buka blokir pengguna",
+  "filtering_by_tag": "Penyaringan berdasarkan tag: \"{{tag}}\"",
+  "read_only_community_settings": "Pengaturan komunitas hanya-baca"
 }

@@ -24,6 +24,27 @@
   overflow: hidden;
 }
 
+.row {
+  display: flex;
+  align-items: flex-start;
+}
+
+.leftcol {
+  flex-shrink: 0;
+}
+
+
+.rank {
+  padding-right: 3px;
+  padding-left: 3px;
+  min-width: 2.2ex;
+  margin-top: 15px;
+  color: #c6c6c6;
+  font-family: arial;
+  font-size: medium;
+  text-align: right;
+}
+
 .midcol {
   width: 37px;
   font-weight: bold;
@@ -35,9 +56,30 @@
   overflow: hidden;
 }
 
+.rank {
+  padding-right: 3px;
+  padding-left: 3px;
+  min-width: 2.2ex;
+  margin-top: 15px;
+  color: #c6c6c6;
+  font-family: arial;
+  font-size: medium;
+  text-align: right;
+}
+
+.midcol {
+  width: 37px;
+  font-weight: bold;
+  font-size: small;
+  float: left;
+  padding-right: 7px;
+  background: transparent;
+  overflow: hidden;
+}
+
 .arrowWrapper {
   padding-left: 11px;
-  padding-top: 3px;
+  padding-top: 2px;
 }
 
 .arrowCommon {
@@ -130,13 +172,19 @@
   color: var(--link);
 }
 
-.subscribeButton {
-  margin-left: 5px;
-}
-
 .tagline {
   text-transform: lowercase;
   margin-top: 2px;
+}
+
+.moderatorIcon {
+  background-image: url('/public/assets/moderator.png');
+  background-size: 100%;
+  background-repeat: no-repeat;
+  height: 16px;
+  width: 16px;
+  display: inline-block;
+  vertical-align: bottom;
 }
 
 .expandButton {
@@ -145,7 +193,7 @@
   width: 23px;
   float: left;
   margin-right: 5px;
-  margin-top: 2px;
+  margin-top: 5px;
 }
 
 .textButton {
@@ -179,22 +227,10 @@
   font-size: 14px;
 }
 
-.subplebbitPreferences {
-  padding: 0 1px;
+.taglineSecondLine {
+  padding-left: 1px;
   line-height: 1.6em;
-  margin-top: 1px;
-  margin-left: 28px;
-}
-
-.subplebbitPreferences a {
-  color: var(--gray-contrast);
-  font-weight: bold;
-  margin-left: 1px;
-} 
-
-.subplebbitPreferences a:hover {
-  text-decoration: underline;
-  cursor: pointer;
+  margin-top: 2px;
 }
 
 .subplebbitsTabs {
@@ -229,6 +265,23 @@
   font-weight: bold;
 }
 
+.subscribeButton {
+  margin-right: 4px;
+}
+
+.tags {
+  margin-left: 4px;
+}
+
+.tags a {
+  color: inherit;
+  cursor: pointer;
+}
+
+.tags a:hover {
+  text-decoration: underline;
+}
+
 @media (max-width: 640px) {
   .content {
     padding: 7px 0px 20px 0px;
@@ -259,4 +312,9 @@
   .infobar {
     max-width: calc(100% - 327px);
   }
+}
+
+.undoLink {
+  color: var(--text-primary);
+  text-decoration: underline;
 }

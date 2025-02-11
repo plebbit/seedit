@@ -213,7 +213,7 @@
   "create_community": "Topluluk oluştur",
   "single_comment_notice": "Tek bir yorumun konusunu görüntülüyorsunuz",
   "single_comment_link": "Diğer yorumları görüntüle",
-  "owner_settings_notice": "topluluğun P2P düğümüne bağlanılamıyor - sadece bir topluluğun sahibi ayarlarını düzenleyebilir.",
+  "owner_settings_notice": "Topluluğun sahibi yalnızca ayarlarını düzenleyebilir.",
   "preview": "önizleme",
   "shown_in_sidebar": "topluluğunuzun yan çubuğunda gösterilir",
   "community_logo_info": "doğrudan görüntü bağlantısını kullanarak bir topluluk logosu ayarlayın (.jpg, .png ile bitiyor)",
@@ -353,5 +353,7 @@
   "download_latest_android": "Son Android sürümünü indir?",
   "submitter": "Gönderen",
   "block_user": "Kullanıcıyı engelle",
-  "unblock_user": "Kullanıcıyı engellemeyi kaldır"
+  "unblock_user": "Kullanıcıyı engellemeyi kaldır",
+  "filtering_by_tag": "Tag’a göre filtreleme: \"{{tag}}\"",
+  "read_only_community_settings": "Sadece-okunabilir topluluk ayarları"
 }

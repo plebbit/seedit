@@ -6,7 +6,7 @@ import { getHasThumbnail } from '../../lib/utils/media-utils';
 import { getPostScore, formatScore } from '../../lib/utils/post-utils';
 import { getFormattedTimeAgo, formatLocalizedUTCTimestamp } from '../../lib/utils/time-utils';
 import { getHostname } from '../../lib/utils/url-utils';
-import { isAllView, isPostPageView, isProfileHiddenView, isProfileView, isSubplebbitView } from '../../lib/utils/view-utils';
+import { isAllView, isPendingPostView, isPostPageView, isProfileHiddenView, isProfileView, isSubplebbitView } from '../../lib/utils/view-utils';
 import { usePinnedPostsStore } from '../../stores/use-pinned-posts-store';
 import { useCommentMediaInfo } from '../../hooks/use-comment-media-info';
 import useDownvote from '../../hooks/use-downvote';
@@ -126,6 +126,7 @@ const Post = ({ index, post = {} }: PostProps) => {
   const authorRole = subplebbit?.roles?.[post.author?.address]?.role;
 
   const isInAllView = isAllView(location.pathname);
+  const isInPendingPostView = isPendingPostView(location.pathname, params);
   const isInPostPageView = isPostPageView(location.pathname, params);
   const isInProfileView = isProfileView(location.pathname);
   const isInProfileHiddenView = isProfileHiddenView(location.pathname);
@@ -133,7 +134,7 @@ const Post = ({ index, post = {} }: PostProps) => {
 
   const commentMediaInfo = useCommentMediaInfo(post);
 
-  const [isExpanded, setIsExpanded] = useState(isInPostPageView);
+  const [isExpanded, setIsExpanded] = useState(isInPostPageView || isInPendingPostView);
   const toggleExpanded = () => setIsExpanded(!isExpanded);
 
   const [isEditing, setIsEditing] = useState(false);

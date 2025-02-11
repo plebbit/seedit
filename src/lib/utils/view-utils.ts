@@ -183,7 +183,7 @@ export const isSubplebbitsOwnerView = (pathname: string): boolean => {
 };
 
 export const isSubplebbitsVoteView = (pathname: string): boolean => {
-  return pathname === '/communities/vote';
+  return pathname.startsWith('/communities/vote');
 };
 
 export const isSubplebbitsVotePassingView = (pathname: string): boolean => {

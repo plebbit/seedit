@@ -125,11 +125,12 @@ const downloadAppLink = (() => {
   }
 })();
 
-interface sidebarProps {
+interface SidebarProps {
   comment?: Comment;
   isSubCreatedButNotYetPublished?: boolean;
   settings?: any;
   subplebbit?: Subplebbit;
+  reset?: () => void;
 }
 
 export const Footer = () => {
@@ -205,7 +206,7 @@ export const Footer = () => {
   );
 };
 
-const Sidebar = ({ comment, isSubCreatedButNotYetPublished, settings, subplebbit }: sidebarProps) => {
+const Sidebar = ({ comment, isSubCreatedButNotYetPublished, settings, subplebbit, reset }: SidebarProps) => {
   const { t } = useTranslation();
   const { address, createdAt, description, roles, rules, title, updatedAt } = subplebbit || {};
   const { allActiveUserCount, hourActiveUserCount } = useSubplebbitStats({ subplebbitAddress: address });
@@ -253,6 +254,7 @@ const Sidebar = ({ comment, isSubCreatedButNotYetPublished, settings, subplebbit
       block();
     }
     setShowBlockConfirm(false);
+    reset?.();
   };
 
   const cancelBlock = () => {
@@ -347,16 +349,23 @@ const Sidebar = ({ comment, isSubCreatedButNotYetPublished, settings, subplebbit
         </div>
       )}
       {(isModerator || isOwner) && <ModerationTools address={address} />}
-      {roles && Object.keys(roles).length > 0 && <ModeratorsList roles={roles} />}
       <div className={styles.largeButton} onClick={handleCreateCommunity}>
         {t('create_your_community')}
         <div className={styles.nub} />
       </div>
-      {isInSubplebbitsView && (
-        <div className={styles.largeButton} onClick={() => alert('This feature is not available yet.')}>
-          {t('submit_community')}
-          <div className={styles.nub} />
+      {roles && Object.keys(roles).length > 0 && <ModeratorsList roles={roles} />}
+      {address && !(isModerator || isOwner) && (
+        <div className={styles.readOnlySettingsLink}>
+          <Link to={`/p/${address}/settings`}>{t('read_only_community_settings')}</Link>
         </div>
+      )}
+      {isInSubplebbitsView && (
+        <a href='https://github.com/plebbit/temporary-default-subplebbits' target='_blank' rel='noopener noreferrer'>
+          <div className={styles.largeButton}>
+            <div className={styles.nub} />
+            {t('submit_community')}
+          </div>
+        </a>
       )}
       {(!(isMobile && isHomeAboutView) || isInSubplebbitAboutView) && <Footer />}
     </div>

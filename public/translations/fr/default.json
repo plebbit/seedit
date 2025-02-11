@@ -213,7 +213,7 @@
   "create_community": "Créer une communauté",
   "single_comment_notice": "Vous regardez le fil d'un seul commentaire",
   "single_comment_link": "Voir le reste des commentaires",
-  "owner_settings_notice": "impossible de se connecter au nœud P2P de la communauté - seul le propriétaire d'une communauté peut éditer ses paramètres.",
+  "owner_settings_notice": "Seul le propriétaire de la communauté peut modifier ses paramètres.",
   "preview": "aperçu",
   "shown_in_sidebar": "affiché dans la barre latérale de votre communauté",
   "community_logo_info": "définir un logo de communauté à l'aide de son lien direct vers une image (se terminant par .jpg, .png)",
@@ -353,5 +353,7 @@
   "download_latest_android": "Télécharger la dernière version d'Android ?",
   "submitter": "Soumetteur",
   "block_user": "Bloquer l'utilisateur",
-  "unblock_user": "Débloquer l'utilisateur"
+  "unblock_user": "Débloquer l'utilisateur",
+  "filtering_by_tag": "Filtrage par tag : \"{{tag}}\"",
+  "read_only_community_settings": "Paramètres de la communauté en lecture seule"
 }

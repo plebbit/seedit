@@ -213,7 +213,7 @@
   "create_community": "Opret fællesskab",
   "single_comment_notice": "Du ser en tråd med kun en kommentar",
   "single_comment_link": "Se resten af kommentarerne",
-  "owner_settings_notice": "Kan ikke forbinde til samfunds P2P-node - kun ejeren af et samfund kan redigere dets indstillinger.",
+  "owner_settings_notice": "Kun ejer af fællesskabet kan redigere dets indstillinger.",
   "preview": "Forhåndsvisning",
   "shown_in_sidebar": "vist i sidepanelet for din samfund",
   "community_logo_info": "Indstil et fællesskabslogo ved hjælp af dets direkte billedlink (slutter i .jpg, .png)",
@@ -353,5 +353,7 @@
   "download_latest_android": "Download den nyeste Android-version?",
   "submitter": "Indsender",
   "block_user": "Bloker bruger",
-  "unblock_user": "Fjern blokering af bruger"
+  "unblock_user": "Fjern blokering af bruger",
+  "filtering_by_tag": "Filtrering efter tag: \"{{tag}}\"",
+  "read_only_community_settings": "Kun-læsning fællesskabsindstillinger"
 }
