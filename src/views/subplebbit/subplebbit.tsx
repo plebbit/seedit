@@ -12,39 +12,163 @@ import useTimeFilter from '../../hooks/use-time-filter';
 import { usePinnedPostsStore } from '../../stores/use-pinned-posts-store';
 import { useIsBroadlyNsfwSubplebbit } from '../../hooks/use-is-broadly-nsfw-subplebbit';
 import useContentOptionsStore from '../../stores/use-content-options-store';
+import Over18Warning from '../../components/over-18-warning';
 
 const lastVirtuosoStates: { [key: string]: StateSnapshot } = {};
 
-const Subplebbit = () => {
+interface FooterProps {
+  subplebbitAddresses: string[];
+  subplebbitAddress: string;
+  feedLength: number;
+  isOnline: boolean;
+  started: boolean;
+  isSubCreatedButNotYetPublished: boolean;
+  error: Error | null;
+  hasMore: boolean;
+  subplebbitAddressesWithNewerPosts: string[];
+  timeFilterName: string;
+  reset: () => void;
+}
+
+const Footer = ({
+  subplebbitAddresses,
+  subplebbitAddress,
+  feedLength,
+  isOnline,
+  started,
+  isSubCreatedButNotYetPublished,
+  error,
+  hasMore,
+  subplebbitAddressesWithNewerPosts,
+  timeFilterName,
+  reset,
+}: FooterProps) => {
   const { t } = useTranslation();
-  const params = useParams();
-  const subplebbitAddress = params.subplebbitAddress;
-  const subplebbitAddresses = useMemo(() => [subplebbitAddress], [subplebbitAddress]) as string[];
+  let footerFirstLine;
+  let footerSecondLine;
+  const loadingStateString = useFeedStateString(subplebbitAddresses) || t('loading');
+  const loadingString = (
+    <>
+      <div className={styles.stateString}>{loadingStateString === 'Failed' ? 'failed' : <LoadingEllipsis string={loadingStateString} />}</div>
+      {error && (
+        <div style={{ color: 'red' }}>
+          <br />
+          {error.message}
+        </div>
+      )}
+    </>
+  );
 
-  const contentOptionsStore = useContentOptionsStore();
-  const hasUnhiddenAnyNsfwCommunity =
-    !contentOptionsStore.hideAdultCommunities ||
-    !contentOptionsStore.hideGoreCommunities ||
-    !contentOptionsStore.hideAntiCommunities ||
-    !contentOptionsStore.hideVulgarCommunities;
-  const [hasAcceptedWarning, setHasAcceptedWarning] = useState(hasUnhiddenAnyNsfwCommunity);
-  const isBroadlyNsfwSubplebbit = useIsBroadlyNsfwSubplebbit(subplebbitAddress || '');
-
-  const handleAcceptWarning = () => {
-    contentOptionsStore.setHideAdultCommunities(false);
-    contentOptionsStore.setHideGoreCommunities(false);
-    contentOptionsStore.setHideAntiCommunities(false);
-    contentOptionsStore.setHideVulgarCommunities(false);
-    setHasAcceptedWarning(true);
+  const { blocked, unblock, block } = useBlock({ address: subplebbitAddress });
+  const [showBlockConfirm, setShowBlockConfirm] = useState(false);
+  const handleBlock = () => {
+    if (blocked) {
+      unblock();
+    } else {
+      block();
+    }
+    setShowBlockConfirm(false);
+    reset();
   };
 
+  if (feedLength === 0 && isOnline && started && !isSubCreatedButNotYetPublished) {
+    if (blocked) {
+      footerFirstLine = t('you_blocked_community');
+      footerSecondLine = (
+        <>
+          {showBlockConfirm ? (
+            <span className={styles.blockConfirm}>
+              {t('are_you_sure')}{' '}
+              <span className={styles.confirmButton} onClick={handleBlock}>
+                {t('yes')}
+              </span>
+              {' / '}
+              <span className={styles.cancelButton} onClick={() => setShowBlockConfirm(false)}>
+                {t('no')}
+              </span>
+            </span>
+          ) : (
+            <span className={styles.blockSub} onClick={() => setShowBlockConfirm(true)}>
+              {blocked ? t('unblock_community') : t('block_community')}
+            </span>
+          )}
+        </>
+      );
+    } else {
+      footerFirstLine = t('no_posts');
+    }
+  } else if (feedLength === 0 || !isOnline) {
+    footerFirstLine = loadingString;
+  } else if (hasMore) {
+    footerFirstLine = loadingString;
+  }
+
+  if (subplebbitAddressesWithNewerPosts.length > 0 && !blocked) {
+    footerSecondLine = (
+      <div className={styles.stateString}>
+        <Trans
+          i18nKey='newer_posts_available'
+          values={{ timeFilterName }}
+          components={{
+            1: (
+              <span
+                className={styles.link}
+                onClick={() => {
+                  window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+                  setTimeout(() => {
+                    reset();
+                  }, 300);
+                }}
+              />
+            ),
+          }}
+        />
+      </div>
+    );
+  } else if (timeFilterName !== 'all' && !blocked) {
+    footerSecondLine = (
+      <div className={styles.morePostsSuggestion}>
+        <Trans
+          i18nKey='show_all_instead'
+          values={{ timeFilterName }}
+          components={{
+            1: <Link to={`/p/${subplebbitAddress}`} />,
+          }}
+        />
+      </div>
+    );
+  }
+
+  return (
+    <div className={styles.footer}>
+      {footerFirstLine && (
+        <>
+          {footerFirstLine}
+          <br />
+          <br />
+        </>
+      )}
+      {footerSecondLine}
+    </div>
+  );
+};
+
+const Subplebbit = () => {
+  const params = useParams();
+  const subplebbitAddress = params?.subplebbitAddress;
+  const subplebbit = useSubplebbit({ subplebbitAddress });
+  const { createdAt, error, shortAddress, started, title, updatedAt, settings } = subplebbit || {};
+  const isOnline = updatedAt && updatedAt > Date.now() / 1000 - 60 * 60;
+  const isSubCreatedButNotYetPublished = typeof createdAt === 'number' && !updatedAt;
+
+  const subplebbitAddresses = useMemo(() => [subplebbitAddress], [subplebbitAddress]) as string[];
   const sortType = params?.sortType || 'hot';
   const timeFilterName = params.timeFilterName || 'all';
   const { timeFilterSeconds } = useTimeFilter();
   const { feed, hasMore, loadMore, reset, subplebbitAddressesWithNewerPosts } = useFeed({ subplebbitAddresses, sortType, newerThan: timeFilterSeconds });
-  const { accountComments } = useAccountComments();
 
   // show account comments instantly in the feed once published (cid defined), instead of waiting for the feed to update
+  const { accountComments } = useAccountComments();
   const filteredComments = useMemo(
     () =>
       accountComments.filter((comment) => {
@@ -73,98 +197,23 @@ const Subplebbit = () => {
     return newFeed;
   }, [feed, filteredComments]);
 
-  const { error } = useSubplebbit({ subplebbitAddress });
-  const subplebbit = useSubplebbit({ subplebbitAddress });
-
-  const { createdAt, shortAddress, started, title, updatedAt, settings } = subplebbit || {};
-
-  const loadingStateString = useFeedStateString(subplebbitAddresses) || t('loading');
-  const loadingString = (
-    <>
-      <div className={styles.stateString}>{loadingStateString === 'Failed' ? 'failed' : <LoadingEllipsis string={loadingStateString} />}</div>
-      {error && (
-        <div style={{ color: 'red' }}>
-          <br />
-          {error.message}
-        </div>
-      )}
-    </>
-  );
-
-  let isOnline = updatedAt && updatedAt > Date.now() / 1000 - 60 * 60;
-  const isSubCreatedButNotYetPublished = typeof createdAt === 'number' && !updatedAt;
-
-  const { blocked } = useBlock({ address: subplebbitAddress });
-
-  useEffect(() => {
-    document.title = title ? title : shortAddress || subplebbitAddress;
-  }, [title, shortAddress, subplebbitAddress]);
-
-  const handleNewerPostsButtonClick = () => {
-    window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
-    setTimeout(() => {
-      reset();
-    }, 300);
+  // virtuoso footer to display feed loading state, error, unblock button and "newer posts available" button
+  const footerProps: FooterProps = {
+    subplebbitAddresses,
+    subplebbitAddress: subplebbitAddress || '',
+    feedLength: feed.length || 0,
+    isOnline,
+    started,
+    isSubCreatedButNotYetPublished,
+    error: error || null,
+    hasMore,
+    subplebbitAddressesWithNewerPosts,
+    timeFilterName: timeFilterName || '',
+    reset,
   };
 
-  const Footer = () => {
-    let footerFirstLine;
-    let footerSecondLine;
-
-    if (feed.length === 0 && isOnline && started && !isSubCreatedButNotYetPublished) {
-      if (blocked) {
-        footerFirstLine = t('you_blocked_community');
-      } else {
-        footerFirstLine = t('no_posts');
-      }
-    } else if (feed.length === 0 || !isOnline) {
-      footerFirstLine = loadingString;
-    } else if (hasMore) {
-      footerFirstLine = loadingString;
-    }
-
-    if (subplebbitAddressesWithNewerPosts.length > 0) {
-      footerSecondLine = (
-        <div className={styles.stateString}>
-          <Trans
-            i18nKey='newer_posts_available'
-            values={{ timeFilterName: params.timeFilterName }}
-            components={{
-              1: <span className={styles.link} onClick={handleNewerPostsButtonClick} />,
-            }}
-          />
-        </div>
-      );
-    } else if (params.timeFilterName) {
-      footerSecondLine = (
-        <div className={styles.morePostsSuggestion}>
-          <Trans
-            i18nKey='show_all_instead'
-            values={{ timeFilterName: params.timeFilterName }}
-            components={{
-              1: <Link to={`/p/${subplebbitAddress}`} />,
-            }}
-          />
-        </div>
-      );
-    }
-
-    return (
-      <div className={styles.footer}>
-        {footerFirstLine && (
-          <>
-            {footerFirstLine}
-            <br />
-            <br />
-          </>
-        )}
-        {footerSecondLine}
-      </div>
-    );
-  };
-
+  // scrolling position state for virtuoso feed
   const virtuosoRef = useRef<VirtuosoHandle | null>(null);
-
   useEffect(() => {
     const setLastVirtuosoState = () => {
       virtuosoRef.current?.getState((snapshot: StateSnapshot) => {
@@ -176,9 +225,9 @@ const Subplebbit = () => {
     window.addEventListener('scroll', setLastVirtuosoState);
     return () => window.removeEventListener('scroll', setLastVirtuosoState);
   }, [subplebbitAddress, sortType, timeFilterName]);
-
   const lastVirtuosoState = lastVirtuosoStates?.[subplebbitAddress + sortType + timeFilterName];
 
+  // track pinned posts count to start counting posts (numbered rank) after the pinned posts
   const { setPinnedPostsCount } = usePinnedPostsStore();
   useEffect(() => {
     if (feed) {
@@ -187,24 +236,21 @@ const Subplebbit = () => {
     }
   }, [feed, setPinnedPostsCount]);
 
-  return isBroadlyNsfwSubplebbit && !hasAcceptedWarning ? (
-    <div className={styles.over18}>
-      <img src={`${process.env.PUBLIC_URL}/assets/over18.png`} alt='over 18' />
-      <div className={styles.warning}>
-        <h3>{t('must_be_over_18')}</h3>
-        <p>{t('must_be_over_18_explanation')}</p>
-      </div>
-      <div className={styles.warningButtons}>
-        <button>
-          <Link to='/'>{t('no_thank_you')}</Link>
-        </button>
-        <button onClick={handleAcceptWarning}>{t('continue')}</button>
-      </div>
-    </div>
+  // over 18 warning for subplebbit with nsfw tag in multisub default list
+  const contentOptionsStore = useContentOptionsStore();
+  const isBroadlyNsfwSubplebbit = useIsBroadlyNsfwSubplebbit(subplebbitAddress || '');
+
+  // page title
+  useEffect(() => {
+    document.title = title ? title : shortAddress || subplebbitAddress;
+  }, [title, shortAddress, subplebbitAddress]);
+
+  return isBroadlyNsfwSubplebbit && !contentOptionsStore.hasAcceptedWarning ? (
+    <Over18Warning />
   ) : (
     <div className={styles.content}>
       <div className={styles.sidebar}>
-        <Sidebar subplebbit={subplebbit} isSubCreatedButNotYetPublished={started && isSubCreatedButNotYetPublished} settings={settings} />
+        <Sidebar subplebbit={subplebbit} isSubCreatedButNotYetPublished={started && isSubCreatedButNotYetPublished} settings={settings} reset={reset} />
       </div>
       <div className={styles.feed}>
         <Virtuoso
@@ -213,7 +259,7 @@ const Subplebbit = () => {
           data={combinedFeed}
           itemContent={(index, post) => <Post index={index} post={post} />}
           useWindowScroll={true}
-          components={{ Footer }}
+          components={{ Footer: (props) => <Footer {...props} {...footerProps} /> }}
           endReached={loadMore}
           ref={virtuosoRef}
           restoreStateFrom={lastVirtuosoState}

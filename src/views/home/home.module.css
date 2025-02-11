@@ -1,5 +1,6 @@
 .footer, .stateString {
   padding-left: 5px;
+  text-transform: lowercase;
 }
 
 .footer {
@@ -186,4 +187,20 @@
 .over18 .warningButtons button a {
   color: var(--over18-alert-color);
   text-decoration: none;
+}
+
+.blockConfirm {
+  color: var(--red);
+}
+
+.blockConfirm span {
+  color: var(--text-info);
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.blockSub {
+  font-weight: 700;
+  color: var(--text-info);
+  cursor: pointer;
 }
