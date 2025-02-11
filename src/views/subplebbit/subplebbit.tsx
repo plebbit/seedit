@@ -237,7 +237,7 @@ const Subplebbit = () => {
   }, [feed, setPinnedPostsCount]);
 
   // over 18 warning for subplebbit with nsfw tag in multisub default list
-  const contentOptionsStore = useContentOptionsStore();
+  const { hasAcceptedWarning } = useContentOptionsStore();
   const isBroadlyNsfwSubplebbit = useIsBroadlyNsfwSubplebbit(subplebbitAddress || '');
 
   // page title
@@ -245,7 +245,7 @@ const Subplebbit = () => {
     document.title = title ? title : shortAddress || subplebbitAddress;
   }, [title, shortAddress, subplebbitAddress]);
 
-  return isBroadlyNsfwSubplebbit && !contentOptionsStore.hasAcceptedWarning ? (
+  return isBroadlyNsfwSubplebbit && !hasAcceptedWarning ? (
     <Over18Warning />
   ) : (
     <div className={styles.content}>
