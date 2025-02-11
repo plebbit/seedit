@@ -442,7 +442,7 @@ const SubplebbitSettings = () => {
       resetSubplebbitSettingsStore();
       navigate(`/p/${createdSubplebbit?.address}/`);
     }
-  }, [createdSubplebbit, navigate, resetSubplebbitSettingsStore, account]);
+  }, [createdSubplebbit, navigate, resetSubplebbitSettingsStore, account, subscribe]);
 
   useEffect(() => {
     resetSubplebbitSettingsStore();
