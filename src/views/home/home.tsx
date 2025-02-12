@@ -10,6 +10,7 @@ import Sidebar from '../../components/sidebar';
 import useFeedStateString from '../../hooks/use-feed-state-string';
 import useTimeFilter from '../../hooks/use-time-filter';
 import useRedirectToDefaultSort from '../../hooks/use-redirect-to-default-sort';
+import { useAutoSubscribe } from '../../hooks/use-auto-subscribe';
 
 const lastVirtuosoStates: { [key: string]: StateSnapshot } = {};
 
@@ -111,6 +112,8 @@ const Home = () => {
 
   const virtuosoRef = useRef<VirtuosoHandle | null>(null);
 
+  const { isCheckingSubscriptions } = useAutoSubscribe();
+
   useEffect(() => {
     const setLastVirtuosoState = () => {
       virtuosoRef.current?.getState((snapshot: StateSnapshot) => {
@@ -147,7 +150,13 @@ const Home = () => {
         <div className={`${styles.sidebar}`}>
           <Sidebar />
         </div>
-        {subplebbitAddresses.length > 0 ? (
+        {isCheckingSubscriptions ? (
+          <div className={styles.feed}>
+            <div className={styles.footer}>
+              <LoadingEllipsis string={t('loading')} />
+            </div>
+          </div>
+        ) : subplebbitAddresses.length > 0 ? (
           <div className={styles.feed}>
             <Virtuoso
               increaseViewportBy={{ bottom: 1200, top: 600 }}
@@ -179,7 +188,7 @@ const Home = () => {
             </div>
             <div className={styles.fakePost} />
             <div className={styles.findCommunities}>
-              <Link to='/p/all'>find communities on p/all</Link>
+              <Link to='/p/all/hot/1m'>find communities on p/all</Link>
             </div>
           </div>
         )}
