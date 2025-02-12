@@ -355,5 +355,8 @@
   "block_user": "Chặn người dùng",
   "unblock_user": "Bỏ chặn người dùng",
   "filtering_by_tag": "Lọc theo thẻ: \"{{tag}}\"",
-  "read_only_community_settings": "Cài đặt cộng đồng chỉ đọc"
+  "read_only_community_settings": "Cài đặt cộng đồng chỉ đọc",
+  "you_are_moderator": "Bạn là một người quản trị của cộng đồng này",
+  "you_are_admin": "Bạn là quản trị viên của cộng đồng này",
+  "you_are_owner": "Bạn là chủ sở hữu của cộng đồng này"
 }

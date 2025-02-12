@@ -262,7 +262,7 @@ const Sidebar = ({ comment, isSubCreatedButNotYetPublished, settings, subplebbit
   };
 
   const account = useAccount();
-  const isModerator = roles?.[account.author?.address]?.role;
+  const moderatorRole = roles?.[account.author?.address]?.role;
   const isOwner = !!settings;
 
   const isConnectedToRpc = !!account?.plebbitOptions.plebbitRpcClientsOptions;
@@ -309,6 +309,11 @@ const Sidebar = ({ comment, isSubCreatedButNotYetPublished, settings, subplebbit
           <div className={styles.onlineLine}>
             <span className={`${styles.onlineIndicator} ${!isOffline ? styles.online : styles.offline}`} title={!isOffline ? t('online') : t('offline')} />
             <span>{isSubCreatedButNotYetPublished ? subCreatedButNotYetPublishedStatus : onlineStatus}</span>
+            {moderatorRole && (
+              <div className={styles.moderatorStatus}>
+                {moderatorRole === 'moderator' ? t('you_are_moderator') : moderatorRole === 'admin' ? t('you_are_admin') : t('you_are_owner')}
+              </div>
+            )}
           </div>
           {description && description.length > 0 && (
             <div>
@@ -348,13 +353,13 @@ const Sidebar = ({ comment, isSubCreatedButNotYetPublished, settings, subplebbit
           </div>
         </div>
       )}
-      {(isModerator || isOwner) && <ModerationTools address={address} />}
+      {(moderatorRole || isOwner) && <ModerationTools address={address} />}
       <div className={styles.largeButton} onClick={handleCreateCommunity}>
         {t('create_your_community')}
         <div className={styles.nub} />
       </div>
       {roles && Object.keys(roles).length > 0 && <ModeratorsList roles={roles} />}
-      {address && !(isModerator || isOwner) && (
+      {address && !(moderatorRole || isOwner) && (
         <div className={styles.readOnlySettingsLink}>
           <Link to={`/p/${address}/settings`}>{t('read_only_community_settings')}</Link>
         </div>

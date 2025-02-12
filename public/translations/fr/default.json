@@ -355,5 +355,8 @@
   "block_user": "Bloquer l'utilisateur",
   "unblock_user": "Débloquer l'utilisateur",
   "filtering_by_tag": "Filtrage par tag : \"{{tag}}\"",
-  "read_only_community_settings": "Paramètres de la communauté en lecture seule"
+  "read_only_community_settings": "Paramètres de la communauté en lecture seule",
+  "you_are_moderator": "Vous êtes modérateur de cette communauté",
+  "you_are_admin": "Vous êtes un administrateur de cette communauté",
+  "you_are_owner": "Vous êtes le propriétaire de cette communauté"
 }

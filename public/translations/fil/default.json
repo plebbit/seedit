@@ -355,5 +355,8 @@
   "block_user": "I-block ang gumagamit",
   "unblock_user": "I-unblock ang gumagamit",
   "filtering_by_tag": "Nag-filter ayon sa tag: \"{{tag}}\"",
-  "read_only_community_settings": "Mga setting ng komunidad na read-only"
+  "read_only_community_settings": "Mga setting ng komunidad na read-only",
+  "you_are_moderator": "Ikaw ay isang moderator ng komunidad na ito",
+  "you_are_admin": "Ikaw ay isang admin ng komunidad na ito",
+  "you_are_owner": "Ikaw ang may-ari ng komunidad na ito"
 }

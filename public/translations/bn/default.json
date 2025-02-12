@@ -355,5 +355,8 @@
   "block_user": "ব্যবহারকারী ব্লক করুন",
   "unblock_user": "ব্যবহারকারী আনব্লক করুন",
   "filtering_by_tag": "ট্যাগ দ্বারা ফিল্টার করা হচ্ছে: \"{{tag}}\"",
-  "read_only_community_settings": "শুধু-পাঠযোগ্য কমিউনিটি সেটিংস"
+  "read_only_community_settings": "শুধু-পাঠযোগ্য কমিউনিটি সেটিংস",
+  "you_are_moderator": "আপনি এই কমিউনিটির একজন মডারেটর",
+  "you_are_admin": "আপনি এই কমিউনিটির একজন প্রশাসক",
+  "you_are_owner": "আপনি এই কমিউনিটির মালিক"
 }

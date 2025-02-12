@@ -355,5 +355,8 @@
   "block_user": "לחסום משתמש",
   "unblock_user": "שחרר חסימה של משתמש",
   "filtering_by_tag": "מיון לפי תג: \"{{tag}}\"",
-  "read_only_community_settings": "הגדרות קהילה לקריאה בלבד"
+  "read_only_community_settings": "הגדרות קהילה לקריאה בלבד",
+  "you_are_moderator": "אתה מנהל קהילה זו",
+  "you_are_admin": "אתה מנהל מערכת של קהילה זו",
+  "you_are_owner": "אתה הבעלים של קהילה זו"
 }

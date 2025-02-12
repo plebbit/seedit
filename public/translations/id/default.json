@@ -355,5 +355,8 @@
   "block_user": "Blokir pengguna",
   "unblock_user": "Buka blokir pengguna",
   "filtering_by_tag": "Penyaringan berdasarkan tag: \"{{tag}}\"",
-  "read_only_community_settings": "Pengaturan komunitas hanya-baca"
+  "read_only_community_settings": "Pengaturan komunitas hanya-baca",
+  "you_are_moderator": "Anda adalah moderator komunitas ini",
+  "you_are_admin": "Anda adalah admin komunitas ini",
+  "you_are_owner": "Anda adalah pemilik komunitas ini"
 }

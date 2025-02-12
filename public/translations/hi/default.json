@@ -355,5 +355,8 @@
   "block_user": "उपयोगकर्ता को ब्लॉक करें",
   "unblock_user": "उपयोगकर्ता को अनब्लॉक करें",
   "filtering_by_tag": "टैग द्वारा फ़िल्टरिंग: \"{{tag}}\"",
-  "read_only_community_settings": "केवल-पढ़ने योग्य समुदाय सेटिंग्स"
+  "read_only_community_settings": "केवल-पढ़ने योग्य समुदाय सेटिंग्स",
+  "you_are_moderator": "आप इस समुदाय के मॉडरेटर हैं",
+  "you_are_admin": "आप इस समुदाय के व्यवस्थापक हैं",
+  "you_are_owner": "आप इस समुदाय के मालिक हैं"
 }

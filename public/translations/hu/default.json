@@ -355,5 +355,8 @@
   "block_user": "Felhasználó blokkolása",
   "unblock_user": "Felhasználó feloldása",
   "filtering_by_tag": "Szűrés címke szerint: \"{{tag}}\"",
-  "read_only_community_settings": "Csak olvasható közösségi beállítások"
+  "read_only_community_settings": "Csak olvasható közösségi beállítások",
+  "you_are_moderator": "Moderátor vagy ennek a közösségnek",
+  "you_are_admin": "Adminisztrátor vagy ennek a közösségnek",
+  "you_are_owner": "Te vagy a közösség tulajdonosa"
 }

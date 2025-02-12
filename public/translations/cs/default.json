@@ -355,5 +355,8 @@
   "block_user": "Zablokovat uživatele",
   "unblock_user": "Odblokovat uživatele",
   "filtering_by_tag": "Filtruje se podle tagu: \"{{tag}}\"",
-  "read_only_community_settings": "Nastavení komunity pouze pro čtení"
+  "read_only_community_settings": "Nastavení komunity pouze pro čtení",
+  "you_are_moderator": "Jste moderátorem této komunity",
+  "you_are_admin": "Jste administrátorem této komunity",
+  "you_are_owner": "Jste vlastníkem této komunity"
 }

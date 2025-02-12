@@ -355,5 +355,8 @@
   "block_user": "مسدود کردن کاربر",
   "unblock_user": "باز کردن قفل کاربر",
   "filtering_by_tag": "فیلتر کردن بر اساس برچسب: \"{{tag}}\"",
-  "read_only_community_settings": "تنظیمات جامعه فقط برای خواندن"
+  "read_only_community_settings": "تنظیمات جامعه فقط برای خواندن",
+  "you_are_moderator": "شما مدیر این جامعه هستید",
+  "you_are_admin": "شما مدیر این جامعه هستید",
+  "you_are_owner": "شما مالک این جامعه هستید"
 }

@@ -355,5 +355,8 @@
   "block_user": "Benutzer blockieren",
   "unblock_user": "Benutzer entsperren",
   "filtering_by_tag": "Filtern nach Tag: \"{{tag}}\"",
-  "read_only_community_settings": "Nur-Lese-Community-Einstellungen"
+  "read_only_community_settings": "Nur-Lese-Community-Einstellungen",
+  "you_are_moderator": "Du bist Moderator in dieser Community",
+  "you_are_admin": "Du bist ein Administrator dieser Community",
+  "you_are_owner": "Du bist der Eigentümer dieser Community"
 }

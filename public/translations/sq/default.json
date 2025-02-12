@@ -355,5 +355,8 @@
   "block_user": "Blloko përdoruesin",
   "unblock_user": "Çblloko përdoruesin",
   "filtering_by_tag": "Filtrimi sipas tagut: \"{{tag}}\"",
-  "read_only_community_settings": "Cilësimet e komunitetit vetëm për lexim"
+  "read_only_community_settings": "Cilësimet e komunitetit vetëm për lexim",
+  "you_are_moderator": "Jeni moderator i kësaj komune",
+  "you_are_admin": "Jeni administrator i kësaj komune",
+  "you_are_owner": "Jeni pronari i kësaj komune"
 }

@@ -355,5 +355,8 @@
   "block_user": "Estä käyttäjä",
   "unblock_user": "Poista käyttäjän esto",
   "filtering_by_tag": "Suodattaminen tagilla: \"{{tag}}\"",
-  "read_only_community_settings": "Vain-luku yhteisön asetukset"
+  "read_only_community_settings": "Vain-luku yhteisön asetukset",
+  "you_are_moderator": "Olet tämän yhteisön moderaattori",
+  "you_are_admin": "Olet tämän yhteisön ylläpitäjä",
+  "you_are_owner": "Olet tämän yhteisön omistaja"
 }

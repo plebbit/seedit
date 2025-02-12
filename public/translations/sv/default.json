@@ -355,5 +355,8 @@
   "block_user": "Blockera användare",
   "unblock_user": "Avblockera användare",
   "filtering_by_tag": "Filtrering efter tagg: \"{{tag}}\"",
-  "read_only_community_settings": "Endast-läsning gemenskapsinställningar"
+  "read_only_community_settings": "Endast-läsning gemenskapsinställningar",
+  "you_are_moderator": "Du är moderator för denna gemenskap",
+  "you_are_admin": "Du är administratör för denna gemenskap",
+  "you_are_owner": "Du är ägaren av denna gemenskap"
 }

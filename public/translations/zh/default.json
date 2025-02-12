@@ -355,5 +355,8 @@
   "block_user": "屏蔽用户",
   "unblock_user": "解除屏蔽用户",
   "filtering_by_tag": "按标签过滤：\"{{tag}}\"",
-  "read_only_community_settings": "只读社区设置"
+  "read_only_community_settings": "只读社区设置",
+  "you_are_moderator": "您是这个社区的管理员",
+  "you_are_admin": "您是这个社区的管理员",
+  "you_are_owner": "您是这个社区的拥有者"
 }

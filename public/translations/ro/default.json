@@ -355,5 +355,8 @@
   "block_user": "Blochează utilizatorul",
   "unblock_user": "Deblochează utilizatorul",
   "filtering_by_tag": "Filtrare după tag: \"{{tag}}\"",
-  "read_only_community_settings": "Setări comunitate doar citire"
+  "read_only_community_settings": "Setări comunitate doar citire",
+  "you_are_moderator": "Ești moderator al acestei comunități",
+  "you_are_admin": "Ești administrator al acestei comunități",
+  "you_are_owner": "Ești proprietarul acestei comunități"
 }

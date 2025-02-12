@@ -355,5 +355,8 @@
   "block_user": "Bloker bruger",
   "unblock_user": "Fjern blokering af bruger",
   "filtering_by_tag": "Filtrering efter tag: \"{{tag}}\"",
-  "read_only_community_settings": "Kun-læsning fællesskabsindstillinger"
+  "read_only_community_settings": "Kun-læsning fællesskabsindstillinger",
+  "you_are_moderator": "Du er moderator i dette fællesskab",
+  "you_are_admin": "Du er administrator af dette fællesskab",
+  "you_are_owner": "Du er ejer af dette fællesskab"
 }

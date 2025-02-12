@@ -355,5 +355,8 @@
   "block_user": "Blokkeer gebruiker",
   "unblock_user": "Deblokkeer gebruiker",
   "filtering_by_tag": "Filteren op tag: \"{{tag}}\"",
-  "read_only_community_settings": "Alleen-lezen community-instellingen"
+  "read_only_community_settings": "Alleen-lezen community-instellingen",
+  "you_are_moderator": "Je bent een moderator van deze gemeenschap",
+  "you_are_admin": "Je bent een beheerder van deze gemeenschap",
+  "you_are_owner": "Je bent de eigenaar van deze gemeenschap"
 }

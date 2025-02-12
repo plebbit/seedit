@@ -355,5 +355,8 @@
   "block_user": "บล็อกผู้ใช้",
   "unblock_user": "ยกเลิกบล็อกผู้ใช้",
   "filtering_by_tag": "กรองตามแท็ก: \"{{tag}}\"",
-  "read_only_community_settings": "การตั้งค่าชุมชนแบบอ่านอย่างเดียว"
+  "read_only_community_settings": "การตั้งค่าชุมชนแบบอ่านอย่างเดียว",
+  "you_are_moderator": "คุณเป็นผู้ดูแลของชุมชนนี้",
+  "you_are_admin": "คุณเป็นผู้ดูแลระบบของชุมชนนี้",
+  "you_are_owner": "คุณเป็นเจ้าของชุมชนนี้"
 }
