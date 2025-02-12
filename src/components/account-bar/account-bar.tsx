@@ -3,7 +3,6 @@ import { Link, useLocation, useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { createAccount, setActiveAccount, useAccount, useAccounts } from '@plebbit/plebbit-react-hooks';
 import { isSettingsView, isSubmitView, isSubplebbitView } from '../../lib/utils/view-utils';
-import { useAutoSubscribe } from '../../hooks/use-auto-subscribe';
 import styles from './account-bar.module.css';
 import SearchBar from '../search-bar';
 
@@ -17,8 +16,6 @@ const AccountBar = () => {
   const isInSubplebbitView = isSubplebbitView(location.pathname, params);
   const isInSubmitView = isSubmitView(location.pathname);
   const isInSettingsView = isSettingsView(location.pathname);
-
-  useAutoSubscribe();
 
   const [searchVisible, setSearchVisible] = useState(false);
   const toggleSearchVisible = () => setSearchVisible(!searchVisible);
@@ -78,11 +75,13 @@ const AccountBar = () => {
     };
   }, [handleClickOutside]);
 
-  const accountDropdownOptions = accounts.map((account, index) => (
-    <span key={index} className={styles.dropdownItem} onClick={() => setActiveAccount(account?.name)}>
-      {`u/${account?.author?.shortAddress}`}
-    </span>
-  ));
+  const accountDropdownOptions = accounts
+    .filter((account) => account?.author?.shortAddress)
+    .map((account, index) => (
+      <span key={index} className={styles.dropdownItem} onClick={() => setActiveAccount(account?.name)}>
+        u/{account.author.shortAddress}
+      </span>
+    ));
 
   accountDropdownOptions.push(
     <Link key='create' to='#' className={styles.dropdownItem} onClick={() => createAccount()}>
