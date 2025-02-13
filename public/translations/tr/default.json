@@ -306,8 +306,8 @@
   "own_communities": "kendi topluluklarım",
   "invalid_community_address": "Geçersiz topluluk adresi",
   "newer_posts_available": "Daha yeni gönderiler mevcut: <1>beslemi yeniden yükle</1>",
-  "more_posts_last_week": "{{currentTimeFilterName}} tarihinden itibaren gönderiler gösteriliyor: <1>geçen haftadan daha fazla gönderi göster</1>",
-  "more_posts_last_month": "{{currentTimeFilterName}} tarihinden itibaren gönderiler gösteriliyor: <1>geçen aydan daha fazla gönderi göster</1>",
+  "more_posts_last_week": "{{count}} gönderi {{currentTimeFilterName}} tarihinden itibaren: <1>geçen haftadan daha fazla gönderi göster</1>",
+  "more_posts_last_month": "{{count}} gönderi {{currentTimeFilterName}} tarihinden itibaren: <1>daha fazla gönderi göster geçen aydan</1>",
   "sure_delete": "Bu gönderiyi silmek istediğinize emin misiniz?",
   "sure_undelete": "Bu gönderiyi geri yüklemek istediğinize emin misiniz?",
   "profile_info": "Hesabınız u/{{shortAddress}} oluşturuldu. <1>Görüntüleme adını ayarla</1>, <2>yedekleme verilerini dışa aktar</2>, <3>daha fazla bilgi</3>.",
@@ -358,5 +358,6 @@
   "read_only_community_settings": "Sadece-okunabilir topluluk ayarları",
   "you_are_moderator": "Bu topluluğun moderatörüsünüz",
   "you_are_admin": "Bu topluluğun yöneticisisiniz",
-  "you_are_owner": "Bu topluluğun sahibi sizsiniz"
+  "you_are_owner": "Bu topluluğun sahibi sizsiniz",
+  "looking_for_more_posts": "Daha fazla gönderi arıyorum"
 }

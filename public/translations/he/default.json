@@ -306,8 +306,8 @@
   "own_communities": "הקהילות שלי",
   "invalid_community_address": "כתובת הקהילה אינה חוקית",
   "newer_posts_available": "פוסטים חדשים זמינים: <1>רענן את הזרם</1>",
-  "more_posts_last_week": "מציג פוסטים מ{{currentTimeFilterName}}: <1>הצג עוד פוסטים מהשבוע שעבר</1>",
-  "more_posts_last_month": "מציג פוסטים מ{{currentTimeFilterName}}: <1>הצג עוד פוסטים מהחודש שעבר</1>",
+  "more_posts_last_week": "{{count}} פוסטים מ{{currentTimeFilterName}}: <1>הצג פוסטים נוספים מהשבוע שעבר</1>",
+  "more_posts_last_month": "{{count}} פוסטים מאז {{currentTimeFilterName}}: <1>הצג פוסטים נוספים מהחודש שעבר</1>",
   "sure_delete": "האם אתה בטוח שברצונך למחוק את הפוסט הזה?",
   "sure_undelete": "האם אתה בטוח שברצונך לשחזר את הפוסט הזה?",
   "profile_info": "החשבון שלך u/{{shortAddress}} נוצר. <1>קבע שם תצוגה</1>, <2>ייצא גיבוי</2>, <3>למד עוד</3>.",
@@ -358,5 +358,6 @@
   "read_only_community_settings": "הגדרות קהילה לקריאה בלבד",
   "you_are_moderator": "אתה מנהל קהילה זו",
   "you_are_admin": "אתה מנהל מערכת של קהילה זו",
-  "you_are_owner": "אתה הבעלים של קהילה זו"
+  "you_are_owner": "אתה הבעלים של קהילה זו",
+  "looking_for_more_posts": "מחפש פוסטים נוספים"
 }

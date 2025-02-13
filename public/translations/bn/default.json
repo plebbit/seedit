@@ -306,8 +306,8 @@
   "own_communities": "নিজস্ব সম্প্রদায়",
   "invalid_community_address": "অবৈধ সম্প্রদায় ঠিকানা",
   "newer_posts_available": "নতুন পোস্ট উপলব্ধ: <1>ফিড পুনরায় লোড করুন</1>",
-  "more_posts_last_week": "প্রকাশের পর {{currentTimeFilterName}} থেকে পোস্টগুলি দেখাচ্ছে: <1>গত সপ্তাহ থেকে আরও পোস্ট দেখান</1>",
-  "more_posts_last_month": "প্রকাশের পর {{currentTimeFilterName}} থেকে পোস্টগুলি দেখাচ্ছে: <1>গত মাস থেকে আরও পোস্ট দেখান</1>",
+  "more_posts_last_week": "{{count}} পোস্ট {{currentTimeFilterName}} থেকে: <1>গত সপ্তাহ থেকে আরও পোস্ট দেখান</1>",
+  "more_posts_last_month": "{{count}} পোস্ট {{currentTimeFilterName}} থেকে: <1>গত মাসের আরও পোস্ট দেখান</1>",
   "sure_delete": "আপনি কি নিশ্চিত যে আপনি এই পোস্টটি মুছে ফেলতে চান?",
   "sure_undelete": "আপনি কি নিশ্চিত যে আপনি এই পোস্টটি পুনরুদ্ধার করতে চান?",
   "profile_info": "আপনার অ্যাকাউন্ট u/{{shortAddress}} তৈরি করা হয়েছে। <1>ডিসপ্লে নাম সেট করুন</1>, <2>ব্যাকআপ রপ্তানি করুন</2>, <3>আরো জানুন</3>.",
@@ -358,5 +358,6 @@
   "read_only_community_settings": "শুধু-পাঠযোগ্য কমিউনিটি সেটিংস",
   "you_are_moderator": "আপনি এই কমিউনিটির একজন মডারেটর",
   "you_are_admin": "আপনি এই কমিউনিটির একজন প্রশাসক",
-  "you_are_owner": "আপনি এই কমিউনিটির মালিক"
+  "you_are_owner": "আপনি এই কমিউনিটির মালিক",
+  "looking_for_more_posts": "আরও পোস্ট খুঁজছি"
 }

@@ -306,8 +306,8 @@
   "own_communities": "खुद की समुदायें",
   "invalid_community_address": "अमान्य समुदाय पता",
   "newer_posts_available": "नए पोस्ट उपलब्ध हैं: <1>फीड को फिर से लोड करें</1>",
-  "more_posts_last_week": "दिखा रहा है पोस्ट {{currentTimeFilterName}} से: <1>पिछले सप्ताह से और पोस्ट दिखाएं</1>",
-  "more_posts_last_month": "दिखा रहा है पोस्ट {{currentTimeFilterName}} से: <1>पिछले महीने से और पोस्ट दिखाएं</1>",
+  "more_posts_last_week": "{{count}} पोस्ट {{currentTimeFilterName}} से: <1>पिछले सप्ताह से और पोस्ट दिखाएं</1>",
+  "more_posts_last_month": "{{count}} पोस्ट {{currentTimeFilterName}} से: <1>और पोस्ट दिखाएं पिछले महीने से</1>",
   "sure_delete": "क्या आप निश्चित हैं कि आप इस पोस्ट को हटाना चाहते हैं?",
   "sure_undelete": "क्या आप निश्चित हैं कि आप इस पोस्ट को पुनर्स्थापित करना चाहते हैं?",
   "profile_info": "आपका खाता u/{{shortAddress}} बनाया गया था। <1>प्रदर्शन नाम सेट करें</1>, <2>बैकअप निर्यात करें</2>, <3>अधिक जानें</3>.",
@@ -358,5 +358,6 @@
   "read_only_community_settings": "केवल-पढ़ने योग्य समुदाय सेटिंग्स",
   "you_are_moderator": "आप इस समुदाय के मॉडरेटर हैं",
   "you_are_admin": "आप इस समुदाय के व्यवस्थापक हैं",
-  "you_are_owner": "आप इस समुदाय के मालिक हैं"
+  "you_are_owner": "आप इस समुदाय के मालिक हैं",
+  "looking_for_more_posts": "अधिक पोस्ट ढूंढ रहे हैं"
 }

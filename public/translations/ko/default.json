@@ -306,8 +306,8 @@
   "own_communities": "나의 커뮤니티",
   "invalid_community_address": "잘못된 커뮤니티 주소",
   "newer_posts_available": "새로운 게시물이 있습니다: <1>피드를 새로고침</1>",
-  "more_posts_last_week": "{{currentTimeFilterName}} 이후의 게시물 표시: <1>지난 주의 게시물 더 보기</1>",
-  "more_posts_last_month": "{{currentTimeFilterName}} 이후의 게시물 표시: <1>지난 달의 게시물 더 보기</1>",
+  "more_posts_last_week": "{{count}} 개의 게시물 {{currentTimeFilterName}} 이후: <1>지난주 게시물 더 보기</1>",
+  "more_posts_last_month": "{{count}} 게시물 {{currentTimeFilterName}} 이후: <1>지난 달의 게시물을 더 보기</1>",
   "sure_delete": "이 게시물을 삭제하시겠습니까?",
   "sure_undelete": "이 게시물을 복원하시겠습니까?",
   "profile_info": "당신의 계정 u/{{shortAddress}}가 생성되었습니다. <1>표시 이름 설정</1>, <2>백업 내보내기</2>, <3>자세히 알아보기</3>.",
@@ -358,5 +358,6 @@
   "read_only_community_settings": "읽기 전용 커뮤니티 설정",
   "you_are_moderator": "당신은 이 커뮤니티의 관리자입니다",
   "you_are_admin": "당신은 이 커뮤니티의 관리자입니다",
-  "you_are_owner": "당신은 이 커뮤니티의 소유자입니다"
+  "you_are_owner": "당신은 이 커뮤니티의 소유자입니다",
+  "looking_for_more_posts": "더 많은 게시물을 찾고 있습니다"
 }

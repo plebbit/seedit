@@ -306,8 +306,8 @@
   "own_communities": "communautés propres",
   "invalid_community_address": "Adresse de la communauté non valide",
   "newer_posts_available": "De nouveaux messages disponibles : <1>recharger le flux</1>",
-  "more_posts_last_week": "Affichage des publications depuis {{currentTimeFilterName}} : <1>afficher plus de publications de la semaine dernière</1>",
-  "more_posts_last_month": "Affichage des publications depuis {{currentTimeFilterName}} : <1>afficher plus de publications du mois dernier</1>",
+  "more_posts_last_week": "{{count}} publications depuis {{currentTimeFilterName}}: <1>afficher plus de publications de la semaine dernière</1>",
+  "more_posts_last_month": "{{count}} publications depuis {{currentTimeFilterName}}: <1>afficher plus de publications du mois dernier</1>",
   "sure_delete": "Êtes-vous sûr de vouloir supprimer ce post ?",
   "sure_undelete": "Êtes-vous sûr de vouloir restaurer ce post ?",
   "profile_info": "Votre compte u/{{shortAddress}} a été créé. <1>Définir le nom d'affichage</1>, <2>exporter la sauvegarde</2>, <3>en savoir plus</3>.",
@@ -358,5 +358,6 @@
   "read_only_community_settings": "Paramètres de la communauté en lecture seule",
   "you_are_moderator": "Vous êtes modérateur de cette communauté",
   "you_are_admin": "Vous êtes un administrateur de cette communauté",
-  "you_are_owner": "Vous êtes le propriétaire de cette communauté"
+  "you_are_owner": "Vous êtes le propriétaire de cette communauté",
+  "looking_for_more_posts": "Recherche de plus de publications"
 }

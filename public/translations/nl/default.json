@@ -306,8 +306,8 @@
   "own_communities": "eigen gemeenschappen",
   "invalid_community_address": "Ongeldig gemeenschapsadres",
   "newer_posts_available": "Nieuwere berichten beschikbaar: <1>voer feed opnieuw in</1>",
-  "more_posts_last_week": "Berichten weergeven sinds {{currentTimeFilterName}}: <1>toon meer berichten van vorige week</1>",
-  "more_posts_last_month": "Berichten weergeven sinds {{currentTimeFilterName}}: <1>toon meer berichten van vorige maand</1>",
+  "more_posts_last_week": "{{count}} berichten sinds {{currentTimeFilterName}}: <1>meer berichten van vorige week weergeven</1>",
+  "more_posts_last_month": "{{count}} berichten sinds {{currentTimeFilterName}}: <1>toon meer berichten van vorige maand</1>",
   "sure_delete": "Weet je zeker dat je deze post wilt verwijderen?",
   "sure_undelete": "Weet je zeker dat je deze post wilt herstellen?",
   "profile_info": "Je account u/{{shortAddress}} is aangemaakt. <1>Stel weergavenaam in</1>, <2>exporteer backup</2>, <3>meer leren</3>.",
@@ -358,5 +358,6 @@
   "read_only_community_settings": "Alleen-lezen community-instellingen",
   "you_are_moderator": "Je bent een moderator van deze gemeenschap",
   "you_are_admin": "Je bent een beheerder van deze gemeenschap",
-  "you_are_owner": "Je bent de eigenaar van deze gemeenschap"
+  "you_are_owner": "Je bent de eigenaar van deze gemeenschap",
+  "looking_for_more_posts": "Op zoek naar meer berichten"
 }

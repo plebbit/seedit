@@ -306,8 +306,8 @@
   "own_communities": "comunități proprii",
   "invalid_community_address": "Adresă comunitară nevalidă",
   "newer_posts_available": "Postări mai noi disponibile: <1>reîncărcați fluxul</1>",
-  "more_posts_last_week": "Afișând postări de la {{currentTimeFilterName}}: <1>afisează mai multe postări din săptămâna trecută</1>",
-  "more_posts_last_month": "Afișând postări de la {{currentTimeFilterName}}: <1>afisează mai multe postări din luna trecută</1>",
+  "more_posts_last_week": "{{count}} postări din {{currentTimeFilterName}}: <1>arată mai multe postări de săptămâna trecută</1>",
+  "more_posts_last_month": "{{count}} postări de la {{currentTimeFilterName}}: <1>afisează mai multe postări din luna trecută</1>",
   "sure_delete": "Ești sigur că vrei să ștergi această postare?",
   "sure_undelete": "Ești sigur că vrei să restaurezi această postare?",
   "profile_info": "Contul tău u/{{shortAddress}} a fost creat. <1>Setează numele de afișare</1>, <2>exportă backup</2>, <3>află mai multe</3>.",
@@ -358,5 +358,6 @@
   "read_only_community_settings": "Setări comunitate doar citire",
   "you_are_moderator": "Ești moderator al acestei comunități",
   "you_are_admin": "Ești administrator al acestei comunități",
-  "you_are_owner": "Ești proprietarul acestei comunități"
+  "you_are_owner": "Ești proprietarul acestei comunități",
+  "looking_for_more_posts": "Căutând mai multe postări"
 }

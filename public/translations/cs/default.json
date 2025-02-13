@@ -306,8 +306,8 @@
   "own_communities": "vlastní komunity",
   "invalid_community_address": "Neplatná adresa komunity",
   "newer_posts_available": "Novější příspěvky jsou k dispozici: <1>znovu načíst kanál</1>",
-  "more_posts_last_week": "Zobrazení příspěvků od {{currentTimeFilterName}}: <1>zobrazit více příspěvků z minulého týdne</1>",
-  "more_posts_last_month": "Zobrazení příspěvků od {{currentTimeFilterName}}: <1>zobrazit více příspěvků z minulého měsíce</1>",
+  "more_posts_last_week": "{{count}} příspěvků od {{currentTimeFilterName}}: <1>zobrazit více příspěvků z minulého týdne</1>",
+  "more_posts_last_month": "{{count}} příspěvků od {{currentTimeFilterName}}: <1>zobrazit více příspěvků z minulého měsíce</1>",
   "sure_delete": "Opravdu chcete smazat tento příspěvek?",
   "sure_undelete": "Opravdu chcete obnovit tento příspěvek?",
   "profile_info": "Váš účet u/{{shortAddress}} byl vytvořen. <1>Nastavit zobrazované jméno</1>, <2>exportovat zálohu</2>, <3>další informace</3>.",
@@ -358,5 +358,6 @@
   "read_only_community_settings": "Nastavení komunity pouze pro čtení",
   "you_are_moderator": "Jste moderátorem této komunity",
   "you_are_admin": "Jste administrátorem této komunity",
-  "you_are_owner": "Jste vlastníkem této komunity"
+  "you_are_owner": "Jste vlastníkem této komunity",
+  "looking_for_more_posts": "Hledání dalších příspěvků"
 }

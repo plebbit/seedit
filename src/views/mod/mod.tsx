@@ -26,7 +26,7 @@ const Mod = () => {
   const { feed: weeklyFeed } = useFeed({ subplebbitAddresses, sortType, newerThan: 60 * 60 * 24 * 7 });
   const { feed: monthlyFeed } = useFeed({ subplebbitAddresses, sortType, newerThan: 60 * 60 * 24 * 30 });
 
-  const loadingStateString = useFeedStateString(subplebbitAddresses) || t('loading');
+  const loadingStateString = useFeedStateString(subplebbitAddresses) || t('looking_for_more_posts');
 
   const handleNewerPostsButtonClick = () => {
     window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
@@ -66,7 +66,7 @@ const Mod = () => {
               <div className={styles.morePostsSuggestion}>
                 <Trans
                   i18nKey='more_posts_last_week'
-                  values={{ currentTimeFilterName }}
+                  values={{ currentTimeFilterName, count: feed.length }}
                   components={{
                     1: <Link to={'/p/mod/' + (params?.sortType || 'hot') + '/1w'} />,
                   }}
@@ -76,7 +76,7 @@ const Mod = () => {
               <div className={styles.morePostsSuggestion}>
                 <Trans
                   i18nKey='more_posts_last_month'
-                  values={{ currentTimeFilterName }}
+                  values={{ currentTimeFilterName, count: feed.length }}
                   components={{
                     1: <Link to={'/p/mod/' + (params?.sortType || 'hot') + '/1m'} />,
                   }}

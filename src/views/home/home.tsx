@@ -14,33 +14,26 @@ import { useAutoSubscribe } from '../../hooks/use-auto-subscribe';
 
 const lastVirtuosoStates: { [key: string]: StateSnapshot } = {};
 
-const LoadingStateFooter = ({ subplebbitAddresses }: { subplebbitAddresses: string[] }) => {
-  const { t } = useTranslation();
-  const loadingStateString = useFeedStateString(subplebbitAddresses) || t('loading');
-
-  return (
-    <div className={styles.stateString}>
-      <LoadingEllipsis string={loadingStateString} />
-    </div>
-  );
-};
-
 const Footer = ({
-  feed,
+  feedLength,
   hasMore,
   subplebbitAddresses,
   subplebbitAddressesWithNewerPosts,
   handleNewerPostsButtonClick,
   params,
-  weeklyFeed,
-  monthlyFeed,
+  weeklyFeedLength,
+  monthlyFeedLength,
   currentTimeFilterName,
 }: any) => {
   const { t } = useTranslation();
+  const loadingStateString = useFeedStateString(subplebbitAddresses) || t('looking_for_more_posts');
+
   let footerContent;
-  if (feed.length === 0) {
+
+  if (feedLength === 0) {
     footerContent = t('no_posts');
   }
+
   if (hasMore || subplebbitAddresses.length > 0 || (subplebbitAddresses && subplebbitAddresses.length === 0)) {
     footerContent = (
       <>
@@ -53,30 +46,32 @@ const Footer = ({
               }}
             />
           </div>
+        ) : weeklyFeedLength > feedLength ? (
+          <div className={styles.morePostsSuggestion}>
+            <Trans
+              i18nKey='more_posts_last_week'
+              values={{ currentTimeFilterName, count: feedLength }}
+              components={{
+                1: <Link to={'/' + (params?.sortType || 'hot') + '/1w'} />,
+              }}
+            />
+          </div>
         ) : (
-          monthlyFeed.length > feed.length &&
-          (weeklyFeed.length > feed.length ? (
-            <div className={styles.morePostsSuggestion}>
-              <Trans
-                i18nKey='more_posts_last_week'
-                values={{ currentTimeFilterName }}
-                components={{
-                  1: <Link to={'/' + (params?.sortType || 'hot') + '/1w'} />,
-                }}
-              />
-            </div>
-          ) : (
+          monthlyFeedLength > feedLength && (
             <div className={styles.morePostsSuggestion}>
               <Trans
                 i18nKey='more_posts_last_month'
-                values={{ currentTimeFilterName }}
+                values={{ currentTimeFilterName, count: feedLength }}
                 components={{
                   1: <Link to={'/' + (params?.sortType || 'hot') + '/1m'} />,
                 }}
               />
             </div>
-          ))
+          )
         )}
+        <div className={styles.stateString}>
+          <LoadingEllipsis string={loadingStateString} />
+        </div>
       </>
     );
   }
@@ -133,14 +128,14 @@ const Home = () => {
   }, [t]);
 
   const footerProps = {
-    feed,
+    feedLength: feed?.length,
     hasMore,
     subplebbitAddresses,
     subplebbitAddressesWithNewerPosts,
     handleNewerPostsButtonClick,
     params,
-    weeklyFeed,
-    monthlyFeed,
+    weeklyFeedLength: weeklyFeed.length,
+    monthlyFeedLength: monthlyFeed.length,
     currentTimeFilterName,
   };
 
@@ -164,14 +159,7 @@ const Home = () => {
               data={feed}
               itemContent={(index, post) => <Post index={index} post={post} />}
               useWindowScroll={true}
-              components={{
-                Footer: () => (
-                  <>
-                    <Footer {...footerProps} />
-                    <LoadingStateFooter subplebbitAddresses={subplebbitAddresses} />
-                  </>
-                ),
-              }}
+              components={{ Footer: (props) => <Footer {...props} {...footerProps} /> }}
               endReached={loadMore}
               ref={virtuosoRef}
               restoreStateFrom={lastVirtuosoState}

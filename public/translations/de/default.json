@@ -306,8 +306,8 @@
   "own_communities": "eigene Gemeinschaften",
   "invalid_community_address": "Ungültige Gemeindeadresse",
   "newer_posts_available": "Neuere Beiträge verfügbar: <1>Feed neu laden</1>",
-  "more_posts_last_week": "Zeigt Beiträge seit {{currentTimeFilterName}}: <1>Weitere Beiträge aus der letzten Woche anzeigen</1>",
-  "more_posts_last_month": "Zeigt Beiträge seit {{currentTimeFilterName}}: <1>Weitere Beiträge aus dem letzten Monat anzeigen</1>",
+  "more_posts_last_week": "{{count}} Beiträge seit {{currentTimeFilterName}}: <1>weitere Beiträge aus der letzten Woche anzeigen</1>",
+  "more_posts_last_month": "{{count}} Beiträge seit {{currentTimeFilterName}}: <1>weitere Beiträge vom letzten Monat anzeigen</1>",
   "sure_delete": "Sind Sie sicher, dass Sie diesen Beitrag löschen möchten?",
   "sure_undelete": "Sind Sie sicher, dass Sie diesen Beitrag wiederherstellen möchten?",
   "profile_info": "Ihr Konto u/{{shortAddress}} wurde erstellt. <1>Anzeige Name festlegen</1>, <2>Backup exportieren</2>, <3>Erfahren Sie mehr</3>.",
@@ -358,5 +358,6 @@
   "read_only_community_settings": "Nur-Lese-Community-Einstellungen",
   "you_are_moderator": "Du bist Moderator in dieser Community",
   "you_are_admin": "Du bist ein Administrator dieser Community",
-  "you_are_owner": "Du bist der Eigentümer dieser Community"
+  "you_are_owner": "Du bist der Eigentümer dieser Community",
+  "looking_for_more_posts": "Suche nach weiteren Beiträgen"
 }

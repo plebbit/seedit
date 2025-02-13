@@ -306,8 +306,8 @@
   "own_communities": "انجمن‌های خودم",
   "invalid_community_address": "آدرس انجمن نامعتبر است",
   "newer_posts_available": "پست‌های جدید موجود است: <1>بارگذاری مجدد فید</1>",
-  "more_posts_last_week": "نمایش پست‌ها از {{currentTimeFilterName}}: <1>مشاهده پست‌های بیشتر از هفته گذشته</1>",
-  "more_posts_last_month": "نمایش پست‌ها از {{currentTimeFilterName}}: <1>مشاهده پست‌های بیشتر از ماه گذشته</1>",
+  "more_posts_last_week": "{{count}} پست از {{currentTimeFilterName}}: <1>نمایش پست‌های بیشتر از هفته گذشته</1>",
+  "more_posts_last_month": "{{count}} پست از {{currentTimeFilterName}}: <1>نمایش پست‌های بیشتر از ماه گذشته</1>",
   "sure_delete": "آیا مطمئن هستید که می‌خواهید این پست را حذف کنید؟",
   "sure_undelete": "آیا مطمئن هستید که می‌خواهید این پست را بازیابی کنید؟",
   "profile_info": "حساب کاربری شما u/{{shortAddress}} ایجاد شد. <1>تنظیم نام نمایشی</1>, <2>پشتیبان گیری صادر کنید</2>, <3>بیشتر بدانید</3>.",
@@ -358,5 +358,6 @@
   "read_only_community_settings": "تنظیمات جامعه فقط برای خواندن",
   "you_are_moderator": "شما مدیر این جامعه هستید",
   "you_are_admin": "شما مدیر این جامعه هستید",
-  "you_are_owner": "شما مالک این جامعه هستید"
+  "you_are_owner": "شما مالک این جامعه هستید",
+  "looking_for_more_posts": "در جستجوی پست‌های بیشتر"
 }

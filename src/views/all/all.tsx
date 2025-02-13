@@ -26,7 +26,7 @@ const All = () => {
   const { feed: weeklyFeed } = useFeed({ subplebbitAddresses, sortType, newerThan: 60 * 60 * 24 * 7 });
   const { feed: monthlyFeed } = useFeed({ subplebbitAddresses, sortType, newerThan: 60 * 60 * 24 * 30 });
 
-  const loadingStateString = useFeedStateString(subplebbitAddresses) || t('loading');
+  const loadingStateString = useFeedStateString(subplebbitAddresses) || t('looking_for_more_posts');
 
   const handleNewerPostsButtonClick = () => {
     window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
@@ -48,6 +48,7 @@ const All = () => {
     if (feed.length === 0) {
       footerContent = t('no_posts');
     }
+
     if (hasMore || subplebbitAddresses.length > 0 || (subplebbitAddresses && subplebbitAddresses.length === 0)) {
       footerContent = (
         <>
@@ -60,29 +61,28 @@ const All = () => {
                 }}
               />
             </div>
+          ) : weeklyFeed.length > feed.length ? (
+            <div className={styles.morePostsSuggestion}>
+              <Trans
+                i18nKey='more_posts_last_week'
+                values={{ currentTimeFilterName, count: feed.length }}
+                components={{
+                  1: <Link to={'/p/all/' + (params?.sortType || 'hot') + '/1w'} />,
+                }}
+              />
+            </div>
           ) : (
-            monthlyFeed.length > feed.length &&
-            (weeklyFeed.length > feed.length ? (
-              <div className={styles.morePostsSuggestion}>
-                <Trans
-                  i18nKey='more_posts_last_week'
-                  values={{ currentTimeFilterName }}
-                  components={{
-                    1: <Link to={'/p/all/' + (params?.sortType || 'hot') + '/1w'} />,
-                  }}
-                />
-              </div>
-            ) : (
+            monthlyFeed.length > feed.length && (
               <div className={styles.morePostsSuggestion}>
                 <Trans
                   i18nKey='more_posts_last_month'
-                  values={{ currentTimeFilterName }}
+                  values={{ currentTimeFilterName, count: feed.length }}
                   components={{
                     1: <Link to={'/p/all/' + (params?.sortType || 'hot') + '/1m'} />,
                   }}
                 />
               </div>
-            ))
+            )
           )}
           <div className={styles.stateString}>
             {subplebbitAddresses.length === 0 ? (
