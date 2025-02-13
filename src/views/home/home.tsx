@@ -16,6 +16,7 @@ const lastVirtuosoStates: { [key: string]: StateSnapshot } = {};
 
 const Footer = ({
   feedLength,
+  hasFeedLoaded,
   hasMore,
   subplebbitAddresses,
   subplebbitAddressesWithNewerPosts,
@@ -26,8 +27,7 @@ const Footer = ({
   currentTimeFilterName,
 }: any) => {
   const { t } = useTranslation();
-  const loadingStateString = useFeedStateString(subplebbitAddresses) || t('looking_for_more_posts');
-
+  const loadingStateString = useFeedStateString(subplebbitAddresses) || (hasFeedLoaded ? t('looking_for_more_posts') : t('loading'));
   let footerContent;
 
   if (feedLength === 0) {
@@ -129,6 +129,7 @@ const Home = () => {
 
   const footerProps = {
     feedLength: feed?.length,
+    hasFeedLoaded: !!feed,
     hasMore,
     subplebbitAddresses,
     subplebbitAddressesWithNewerPosts,

@@ -26,7 +26,7 @@ const All = () => {
   const { feed: weeklyFeed } = useFeed({ subplebbitAddresses, sortType, newerThan: 60 * 60 * 24 * 7 });
   const { feed: monthlyFeed } = useFeed({ subplebbitAddresses, sortType, newerThan: 60 * 60 * 24 * 30 });
 
-  const loadingStateString = useFeedStateString(subplebbitAddresses) || t('looking_for_more_posts');
+  const loadingStateString = useFeedStateString(subplebbitAddresses) || (feed ? t('looking_for_more_posts') : t('loading'));
 
   const handleNewerPostsButtonClick = () => {
     window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
