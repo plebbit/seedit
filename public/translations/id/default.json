@@ -306,8 +306,8 @@
   "own_communities": "komunitas sendiri",
   "invalid_community_address": "Alamat komunitas tidak valid",
   "newer_posts_available": "Postingan baru tersedia: <1>muat ulang feed</1>",
-  "more_posts_last_week": "Menampilkan postingan sejak {{currentTimeFilterName}}: <1>tampilkan lebih banyak postingan dari minggu lalu</1>",
-  "more_posts_last_month": "Menampilkan postingan sejak {{currentTimeFilterName}}: <1>tampilkan lebih banyak postingan dari bulan lalu</1>",
+  "more_posts_last_week": "{{count}} pos dari {{currentTimeFilterName}}: <1>tampilkan lebih banyak pos dari minggu lalu</1>",
+  "more_posts_last_month": "{{count}} pos dari {{currentTimeFilterName}}: <1>tampilkan lebih banyak pos dari bulan lalu</1>",
   "sure_delete": "Apakah Anda yakin ingin menghapus pos ini?",
   "sure_undelete": "Apakah Anda yakin ingin mengembalikan pos ini?",
   "profile_info": "Akun Anda u/{{shortAddress}} dibuat. <1>Atur nama tampilan</1>, <2>ekspor cadangan</2>, <3>pelajari lebih lanjut</3>.",
@@ -355,5 +355,10 @@
   "block_user": "Blokir pengguna",
   "unblock_user": "Buka blokir pengguna",
   "filtering_by_tag": "Penyaringan berdasarkan tag: \"{{tag}}\"",
-  "read_only_community_settings": "Pengaturan komunitas hanya-baca"
+  "read_only_community_settings": "Pengaturan komunitas hanya-baca",
+  "you_are_moderator": "Anda adalah moderator komunitas ini",
+  "you_are_admin": "Anda adalah admin komunitas ini",
+  "you_are_owner": "Anda adalah pemilik komunitas ini",
+  "looking_for_more_posts": "Mencari lebih banyak pos",
+  "loading_feed": "Memuat feed"
 }

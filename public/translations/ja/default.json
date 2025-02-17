@@ -306,8 +306,8 @@
   "own_communities": "自分のコミュニティ",
   "invalid_community_address": "無効なコミュニティアドレス",
   "newer_posts_available": "新しい投稿が利用可能です: <1>フィードを再読み込み</1>",
-  "more_posts_last_week": "{{currentTimeFilterName}} 以降の投稿を表示: <1>先週の投稿をさらに表示</1>",
-  "more_posts_last_month": "{{currentTimeFilterName}} 以降の投稿を表示: <1>先月の投稿をさらに表示</1>",
+  "more_posts_last_week": "{{count}} 件の投稿 {{currentTimeFilterName}} から: <1>先週の投稿をもっと表示する</1>",
+  "more_posts_last_month": "{{count}} 投稿 {{currentTimeFilterName}} から: <1>先月の投稿をさらに表示</1>",
   "sure_delete": "この投稿を削除してもよろしいですか？",
   "sure_undelete": "この投稿を復元してもよろしいですか？",
   "profile_info": "あなたのアカウント u/{{shortAddress}} が作成されました。 <1>表示名を設定</1>, <2>バックアップをエクスポート</2>, <3>詳細はこちら</3>.",
@@ -355,5 +355,10 @@
   "block_user": "ユーザーをブロック",
   "unblock_user": "ユーザーのブロック解除",
   "filtering_by_tag": "タグでフィルタリング: \"{{tag}}\"",
-  "read_only_community_settings": "読み取り専用のコミュニティ設定"
+  "read_only_community_settings": "読み取り専用のコミュニティ設定",
+  "you_are_moderator": "あなたはこのコミュニティのモデレーターです",
+  "you_are_admin": "あなたはこのコミュニティの管理者です",
+  "you_are_owner": "あなたはこのコミュニティのオーナーです",
+  "looking_for_more_posts": "さらに投稿を探しています",
+  "loading_feed": "フィードを読み込んでいます"
 }

@@ -1,6 +1,15 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
-import { deleteSubplebbit, Role, useAccount, useCreateSubplebbit, usePlebbitRpcSettings, usePublishSubplebbitEdit, useSubplebbit } from '@plebbit/plebbit-react-hooks';
+import {
+  deleteSubplebbit,
+  Role,
+  useAccount,
+  useCreateSubplebbit,
+  usePlebbitRpcSettings,
+  usePublishSubplebbitEdit,
+  useSubplebbit,
+  useSubscribe,
+} from '@plebbit/plebbit-react-hooks';
 import { Roles } from '../../lib/utils/user-utils';
 import { useTranslation } from 'react-i18next';
 import styles from './subplebbit-settings.module.css';
@@ -419,14 +428,21 @@ const SubplebbitSettings = () => {
     }
   };
 
+  const { subscribe } = useSubscribe({ subplebbitAddress: createdSubplebbit?.address });
+
   useEffect(() => {
     if (createdSubplebbit) {
       console.log('createdSubplebbit', createdSubplebbit);
       alert(`community created, address: ${createdSubplebbit?.address}`);
+
+      if (account && createdSubplebbit.address) {
+        subscribe();
+      }
+
       resetSubplebbitSettingsStore();
       navigate(`/p/${createdSubplebbit?.address}/`);
     }
-  }, [createdSubplebbit, navigate, resetSubplebbitSettingsStore]);
+  }, [createdSubplebbit, navigate, resetSubplebbitSettingsStore, account, subscribe]);
 
   useEffect(() => {
     resetSubplebbitSettingsStore();

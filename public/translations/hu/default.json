@@ -306,8 +306,8 @@
   "own_communities": "saját közösségek",
   "invalid_community_address": "Érvénytelen közösségi cím",
   "newer_posts_available": "Új bejegyzések elérhetőek: <1>töltsd be újra a hírcsatornát</1>",
-  "more_posts_last_week": "Bejegyzések megjelenítése {{currentTimeFilterName}} óta: <1>további bejegyzések megjelenítése a múlt héten</1>",
-  "more_posts_last_month": "Bejegyzések megjelenítése {{currentTimeFilterName}} óta: <1>további bejegyzések megjelenítése a múlt hónapból</1>",
+  "more_posts_last_week": "{{count}} bejegyzés {{currentTimeFilterName}} óta: <1>további bejegyzések megjelenítése a múlt héten</1>",
+  "more_posts_last_month": "{{count}} bejegyzés {{currentTimeFilterName}} óta: <1>további bejegyzések megjelenítése a múlt hónapból</1>",
   "sure_delete": "Biztos, hogy törölni szeretné ezt a bejegyzést?",
   "sure_undelete": "Biztos, hogy vissza szeretné állítani ezt a bejegyzést?",
   "profile_info": "A fiókod u/{{shortAddress}} létrejött. <1>Állítsd be a megjelenítő nevet</1>, <2>biztonsági mentés exportálása</2>, <3>tudj meg többet</3>.",
@@ -355,5 +355,10 @@
   "block_user": "Felhasználó blokkolása",
   "unblock_user": "Felhasználó feloldása",
   "filtering_by_tag": "Szűrés címke szerint: \"{{tag}}\"",
-  "read_only_community_settings": "Csak olvasható közösségi beállítások"
+  "read_only_community_settings": "Csak olvasható közösségi beállítások",
+  "you_are_moderator": "Moderátor vagy ennek a közösségnek",
+  "you_are_admin": "Adminisztrátor vagy ennek a közösségnek",
+  "you_are_owner": "Te vagy a közösség tulajdonosa",
+  "looking_for_more_posts": "Több bejegyzés keresése",
+  "loading_feed": "Betöltés a hírcsatornára"
 }

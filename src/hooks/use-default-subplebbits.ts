@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from 'react';
-import { Subplebbit, useAccount } from '@plebbit/plebbit-react-hooks';
+import { Subplebbit } from '@plebbit/plebbit-react-hooks';
 import useContentOptionsStore from '../stores/use-content-options-store';
 
 export interface MultisubMetadata {
@@ -14,10 +14,12 @@ export interface MultisubSubplebbit {
   address: string;
   tags?: string[];
   features?: string[];
+  seeditAutoSubscribe?: boolean;
 }
 
 let cacheSubplebbits: MultisubSubplebbit[] | null = null;
 let cacheMetadata: MultisubMetadata | null = null;
+let cacheAutoSubscribeAddresses: string[] | null = null;
 
 export const useDefaultSubplebbits = () => {
   const [subplebbits, setSubplebbits] = useState<MultisubSubplebbit[]>([]);
@@ -33,6 +35,12 @@ export const useDefaultSubplebbits = () => {
           // { cache: 'no-cache' }
         ).then((res) => res.json());
         cacheSubplebbits = multisub.subplebbits;
+
+        // Cache auto-subscribe addresses when we fetch subplebbits
+        cacheAutoSubscribeAddresses = multisub.subplebbits
+          .filter((sub: MultisubSubplebbit) => sub.seeditAutoSubscribe && sub.address)
+          .map((sub: MultisubSubplebbit) => sub.address);
+
         setSubplebbits(multisub.subplebbits);
       } catch (e) {
         console.warn(e);
@@ -59,22 +67,6 @@ export const useDefaultSubplebbitAddresses = () => {
   }, [defaultSubplebbits, hideAdultCommunities, hideGoreCommunities, hideAntiCommunities, hideVulgarCommunities]);
 
   return useMemo(() => filteredSubplebbits.map((subplebbit) => subplebbit.address), [filteredSubplebbits]);
-};
-
-export const useDefaultAndSubscriptionsSubplebbitAddresses = () => {
-  const account = useAccount();
-  const subscriptions = useMemo(() => account?.subscriptions ?? [], [account?.subscriptions]);
-  const defaultSubplebbitAddresses = useDefaultSubplebbitAddresses();
-
-  return useMemo(() => {
-    const subplebbitAddresses = new Set(defaultSubplebbitAddresses);
-
-    subscriptions.forEach((address: string) => {
-      subplebbitAddresses.add(address);
-    });
-
-    return Array.from(subplebbitAddresses);
-  }, [subscriptions, defaultSubplebbitAddresses]);
 };
 
 export const useMultisubMetadata = () => {
@@ -116,3 +108,5 @@ const getUniqueTags = (multisub: any) => {
 export const useDefaultSubplebbitTags = (subplebbits: any) => {
   return useMemo(() => getUniqueTags(subplebbits), [subplebbits]);
 };
+
+export const getAutoSubscribeAddresses = () => cacheAutoSubscribeAddresses || [];

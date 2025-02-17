@@ -306,8 +306,8 @@
   "own_communities": "egne fællesskaber",
   "invalid_community_address": "Ugyldig fællesskabsadresse",
   "newer_posts_available": "Nyere indlæg tilgængelige: <1>genindlæs feed</1>",
-  "more_posts_last_week": "Viser indlæg siden {{currentTimeFilterName}}: <1>vis flere indlæg fra sidste uge</1>",
-  "more_posts_last_month": "Viser indlæg siden {{currentTimeFilterName}}: <1>vis flere indlæg fra sidste måned</1>",
+  "more_posts_last_week": "{{count}} indlæg siden {{currentTimeFilterName}}: <1>vis flere indlæg fra sidste uge</1>",
+  "more_posts_last_month": "{{count}} indlæg siden {{currentTimeFilterName}}: <1>vis flere indlæg fra sidste måned</1>",
   "sure_delete": "Er du sikker på, at du vil slette dette indlæg?",
   "sure_undelete": "Er du sikker på, at du vil gendanne dette indlæg?",
   "profile_info": "Din konto u/{{shortAddress}} blev oprettet. <1>Indstil visningsnavn</1>, <2>eksporter sikkerhedskopi</2>, <3>læs mere</3>.",
@@ -355,5 +355,10 @@
   "block_user": "Bloker bruger",
   "unblock_user": "Fjern blokering af bruger",
   "filtering_by_tag": "Filtrering efter tag: \"{{tag}}\"",
-  "read_only_community_settings": "Kun-læsning fællesskabsindstillinger"
+  "read_only_community_settings": "Kun-læsning fællesskabsindstillinger",
+  "you_are_moderator": "Du er moderator i dette fællesskab",
+  "you_are_admin": "Du er administrator af dette fællesskab",
+  "you_are_owner": "Du er ejer af dette fællesskab",
+  "looking_for_more_posts": "Leder efter flere indlæg",
+  "loading_feed": "Indlæser feed"
 }

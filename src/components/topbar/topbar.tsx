@@ -130,9 +130,6 @@ const TopBar = () => {
             <span onClick={handleCreateCommunity} className={`${styles.dropdownItem} ${styles.myCommunitiesItemButtonDotted}`}>
               {t('create_community')}
             </span>
-            <Link to='/communities' className={`${styles.dropdownItem} ${styles.myCommunitiesItemButton}`}>
-              {t('my_communities')}
-            </Link>
             <Link to='/communities/vote' className={`${styles.dropdownItem} ${styles.myCommunitiesItemButton}`}>
               {t('default_communities')}
             </Link>

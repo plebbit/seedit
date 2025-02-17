@@ -306,8 +306,8 @@
   "own_communities": "المجتمعات الخاصة بي",
   "invalid_community_address": "عنوان المجتمع غير صالح",
   "newer_posts_available": "مشاركات جديدة متوفرة: <1>إعادة تحميل الخلاصة</1>",
-  "more_posts_last_week": "عرض المشاركات منذ {{currentTimeFilterName}}: <1>عرض المزيد من المشاركات من الأسبوع الماضي</1>",
-  "more_posts_last_month": "عرض المشاركات منذ {{currentTimeFilterName}}: <1>عرض المزيد من المشاركات من الشهر الماضي</1>",
+  "more_posts_last_week": "{{count}} منشورات منذ {{currentTimeFilterName}}: <1>عرض المزيد من المنشورات من الأسبوع الماضي</1>",
+  "more_posts_last_month": "{{count}} منشورات منذ {{currentTimeFilterName}}: <1>عرض المزيد من المشاركات من الشهر الماضي</1>",
   "sure_delete": "هل أنت متأكد أنك تريد حذف هذا المنشور؟",
   "sure_undelete": "هل أنت متأكد أنك تريد استعادة هذا المنشور؟",
   "profile_info": "تم إنشاء حسابك u/{{shortAddress}}. <1>تعيين اسم العرض</1>, <2>تصدير النسخة الاحتياطية</2>, <3>اعرف المزيد</3>.",
@@ -355,5 +355,10 @@
   "block_user": "حظر المستخدم",
   "unblock_user": "إلغاء حظر المستخدم",
   "filtering_by_tag": "تصفية حسب التاغ: \"{{tag}}\"",
-  "read_only_community_settings": "إعدادات المجتمع للقراءة فقط"
+  "read_only_community_settings": "إعدادات المجتمع للقراءة فقط",
+  "you_are_moderator": "أنت مشرف في هذه المجتمع",
+  "you_are_admin": "أنت مشرف في هذه المجتمع",
+  "you_are_owner": "أنت مالك هذا المجتمع",
+  "looking_for_more_posts": "البحث عن المزيد من المشاركات",
+  "loading_feed": "تحميل الخلاصة"
 }

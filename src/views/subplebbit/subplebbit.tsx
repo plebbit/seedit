@@ -71,32 +71,30 @@ const Footer = ({
     reset();
   };
 
-  if (feedLength === 0 && isOnline && started && !isSubCreatedButNotYetPublished) {
-    if (blocked) {
-      footerFirstLine = t('you_blocked_community');
-      footerSecondLine = (
-        <>
-          {showBlockConfirm ? (
-            <span className={styles.blockConfirm}>
-              {t('are_you_sure')}{' '}
-              <span className={styles.confirmButton} onClick={handleBlock}>
-                {t('yes')}
-              </span>
-              {' / '}
-              <span className={styles.cancelButton} onClick={() => setShowBlockConfirm(false)}>
-                {t('no')}
-              </span>
+  if (blocked) {
+    footerFirstLine = t('you_blocked_community');
+    footerSecondLine = (
+      <>
+        {showBlockConfirm ? (
+          <span className={styles.blockConfirm}>
+            {t('are_you_sure')}{' '}
+            <span className={styles.confirmButton} onClick={handleBlock}>
+              {t('yes')}
             </span>
-          ) : (
-            <span className={styles.blockSub} onClick={() => setShowBlockConfirm(true)}>
-              {blocked ? t('unblock_community') : t('block_community')}
+            {' / '}
+            <span className={styles.cancelButton} onClick={() => setShowBlockConfirm(false)}>
+              {t('no')}
             </span>
-          )}
-        </>
-      );
-    } else {
-      footerFirstLine = t('no_posts');
-    }
+          </span>
+        ) : (
+          <span className={styles.blockSub} onClick={() => setShowBlockConfirm(true)}>
+            {blocked ? t('unblock_community') : t('block_community')}
+          </span>
+        )}
+      </>
+    );
+  } else if (feedLength === 0 && isOnline && started && !isSubCreatedButNotYetPublished) {
+    footerFirstLine = t('no_posts');
   } else if (feedLength === 0 || !isOnline) {
     footerFirstLine = loadingString;
   } else if (hasMore) {

@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import styles from './thumbnail.module.css';
 import { Link, useParams } from 'react-router-dom';
 import { CommentMediaInfo } from '../../../lib/utils/media-utils';
@@ -66,10 +67,29 @@ const Thumbnail = ({
   let mediaComponent = null;
   const gifFrameUrl = useFetchGifFirstFrame(commentMediaInfo?.type === 'gif' ? commentMediaInfo.url : undefined);
 
+  const [videoDuration, setVideoDuration] = useState<string>('');
+
   if (commentMediaInfo?.type === 'image') {
     mediaComponent = <img src={commentMediaInfo.url} alt='' />;
   } else if (commentMediaInfo?.type === 'video') {
-    mediaComponent = commentMediaInfo.thumbnail ? <img src={commentMediaInfo.thumbnail} alt='' /> : <video src={`${commentMediaInfo.url}#t=0.001`} />;
+    mediaComponent = (
+      <>
+        {commentMediaInfo.thumbnail ? (
+          <img src={commentMediaInfo.thumbnail} alt='' />
+        ) : (
+          <video
+            src={`${commentMediaInfo.url}#t=0.001`}
+            onLoadedMetadata={(e) => {
+              const video = e.target as HTMLVideoElement;
+              const minutes = Math.floor(video.duration / 60);
+              const seconds = Math.floor(video.duration % 60);
+              setVideoDuration(`${minutes}:${seconds.toString().padStart(2, '0')}`);
+            }}
+          />
+        )}
+        <span className={styles.durationOverlay}>{videoDuration}</span>
+      </>
+    );
   } else if (commentMediaInfo?.type === 'webpage') {
     mediaComponent = <img src={commentMediaInfo.thumbnail} alt='' />;
   } else if (commentMediaInfo?.type === 'iframe') {

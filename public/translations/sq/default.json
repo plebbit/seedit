@@ -306,8 +306,8 @@
   "own_communities": "komunitete të mia",
   "invalid_community_address": "Adresa e komunitetit e pavlefshme",
   "newer_posts_available": "Postime më të reja të disponueshme: <1>rifresko feedin</1>",
-  "more_posts_last_week": "Po shfaq postime që nga {{currentTimeFilterName}}: <1>shfaqni më shumë postime nga java e kaluar</1>",
-  "more_posts_last_month": "Po shfaq postime që nga {{currentTimeFilterName}}: <1>shfaqni më shumë postime nga muaji i kaluar</1>",
+  "more_posts_last_week": "{{count}} postime që nga {{currentTimeFilterName}}: <1>shfaq më shumë postime nga java e kaluar</1>",
+  "more_posts_last_month": "{{count}} postime nga {{currentTimeFilterName}}: <1>shfaq më shumë postime nga muaji i kaluar</1>",
   "sure_delete": "A jeni i sigurt se doni të fshini këtë postim?",
   "sure_undelete": "A jeni i sigurt se doni të riktheni këtë postim?",
   "profile_info": "Llogaria juaj u/{{shortAddress}} u krijua. <1>Vendos emrin për shfaqje</1>, <2>eksportoni kopjen rezervë</2>, <3>më shumë informacion</3>.",
@@ -355,5 +355,10 @@
   "block_user": "Blloko përdoruesin",
   "unblock_user": "Çblloko përdoruesin",
   "filtering_by_tag": "Filtrimi sipas tagut: \"{{tag}}\"",
-  "read_only_community_settings": "Cilësimet e komunitetit vetëm për lexim"
+  "read_only_community_settings": "Cilësimet e komunitetit vetëm për lexim",
+  "you_are_moderator": "Jeni moderator i kësaj komune",
+  "you_are_admin": "Jeni administrator i kësaj komune",
+  "you_are_owner": "Jeni pronari i kësaj komune",
+  "looking_for_more_posts": "Po kërkoni më shumë postime",
+  "loading_feed": "Po ngarkoni feed-in"
 }

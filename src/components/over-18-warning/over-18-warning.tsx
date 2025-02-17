@@ -7,12 +7,6 @@ const Over18Warning = () => {
   const { t } = useTranslation();
   const contentOptionsStore = useContentOptionsStore();
 
-  const hasUnhiddenAnyNsfwCommunity =
-    !contentOptionsStore.hideAdultCommunities ||
-    !contentOptionsStore.hideGoreCommunities ||
-    !contentOptionsStore.hideAntiCommunities ||
-    !contentOptionsStore.hideVulgarCommunities;
-
   const handleAcceptWarning = () => {
     contentOptionsStore.setHideAdultCommunities(false);
     contentOptionsStore.setHideGoreCommunities(false);

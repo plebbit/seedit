@@ -306,8 +306,8 @@
   "own_communities": "egna samhällen",
   "invalid_community_address": "Ogiltig samhällsadress",
   "newer_posts_available": "Nyare inlägg tillgängliga: <1>ladda om flödet</1>",
-  "more_posts_last_week": "Visar inlägg sedan {{currentTimeFilterName}}: <1>visa fler inlägg från förra veckan</1>",
-  "more_posts_last_month": "Visar inlägg sedan {{currentTimeFilterName}}: <1>visa fler inlägg från förra månaden</1>",
+  "more_posts_last_week": "{{count}} inlägg sedan {{currentTimeFilterName}}: <1>visa fler inlägg från förra veckan</1>",
+  "more_posts_last_month": "{{count}} inlägg sedan {{currentTimeFilterName}}: <1>visa fler inlägg från förra månaden</1>",
   "sure_delete": "Är du säker på att du vill ta bort detta inlägg?",
   "sure_undelete": "Är du säker på att du vill återställa detta inlägg?",
   "profile_info": "Ditt konto u/{{shortAddress}} skapades. <1>Ställ in visningsnamn</1>, <2>exportera säkerhetskopia</2>, <3>läs mer</3>.",
@@ -355,5 +355,10 @@
   "block_user": "Blockera användare",
   "unblock_user": "Avblockera användare",
   "filtering_by_tag": "Filtrering efter tagg: \"{{tag}}\"",
-  "read_only_community_settings": "Endast-läsning gemenskapsinställningar"
+  "read_only_community_settings": "Endast-läsning gemenskapsinställningar",
+  "you_are_moderator": "Du är moderator för denna gemenskap",
+  "you_are_admin": "Du är administratör för denna gemenskap",
+  "you_are_owner": "Du är ägaren av denna gemenskap",
+  "looking_for_more_posts": "Letar efter fler inlägg",
+  "loading_feed": "Laddar flöde"
 }
