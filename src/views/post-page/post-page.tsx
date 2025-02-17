@@ -138,6 +138,8 @@ const Post = ({ post }: { post: Comment }) => {
 
   const lockedState = deleted ? t('deleted') : locked ? t('locked') : removed ? t('removed') : '';
 
+  const [isHovering, setIsHovering] = useState(false);
+
   return (
     <>
       {(deleted || locked || removed) && (
@@ -167,7 +169,9 @@ const Post = ({ post }: { post: Comment }) => {
             </div>
           )}
           <div className={styles.replies}>
-            {replies.length === 0 && !(isInPostContextView || isSingleComment) && <div className={styles.noReplies}>{t('nothing_found')}</div>}
+            {replies.length === 0 && replyCount !== undefined && !(isInPostContextView || isSingleComment) && (
+              <div className={styles.noReplies}>{t('nothing_found')}</div>
+            )}
             {isSingleComment ? (
               <Reply key={`singleComment-${cid}`} reply={post} depth={0} isSingleComment={true} />
             ) : (
@@ -176,10 +180,10 @@ const Post = ({ post }: { post: Comment }) => {
           </div>
         </div>
       )}
-      <span className={styles.loadingString}>
+      <span className={styles.loadingString} onMouseEnter={() => setIsHovering(true)} onMouseLeave={() => setIsHovering(false)}>
         {stateString && stateString !== 'Failed' ? (
           <div className={styles.stateString}>
-            <LoadingEllipsis string={stateString} />
+            <LoadingEllipsis string={isHovering ? stateString : t('loading')} />
           </div>
         ) : (
           state === 'failed' && t('failed')

@@ -121,7 +121,10 @@
   overflow: hidden;
   text-overflow: ellipsis;
   color: var(--text-info);
-  font-size: x-small;
+  font-size: 12px;
+  padding-left: 5px;
+  padding-bottom: 40px;
+  display: inline-block;
 }
 
 .lockedInfobar::before {
