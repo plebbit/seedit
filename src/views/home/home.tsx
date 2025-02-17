@@ -1,95 +1,32 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { Virtuoso, VirtuosoHandle, StateSnapshot } from 'react-virtuoso';
 import { useAccount, useFeed } from '@plebbit/plebbit-react-hooks';
-import { Trans, useTranslation } from 'react-i18next';
+import { useTranslation } from 'react-i18next';
 import styles from './home.module.css';
+import FeedFooter from '../../components/feed-footer';
 import LoadingEllipsis from '../../components/loading-ellipsis';
 import Post from '../../components/post';
 import Sidebar from '../../components/sidebar';
-import useFeedStateString from '../../hooks/use-feed-state-string';
 import useTimeFilter from '../../hooks/use-time-filter';
 import useRedirectToDefaultSort from '../../hooks/use-redirect-to-default-sort';
 import { useAutoSubscribe } from '../../hooks/use-auto-subscribe';
 
 const lastVirtuosoStates: { [key: string]: StateSnapshot } = {};
 
-const Footer = ({
-  feedLength,
-  hasFeedLoaded,
-  hasMore,
-  subplebbitAddresses,
-  subplebbitAddressesWithNewerPosts,
-  handleNewerPostsButtonClick,
-  params,
-  weeklyFeedLength,
-  monthlyFeedLength,
-  currentTimeFilterName,
-}: any) => {
-  let footerContent;
-  const { t } = useTranslation();
-
-  const feedStateString = useFeedStateString(subplebbitAddresses);
-  const [isHovering, setIsHovering] = useState(false);
-  const loadingStateString =
-    !hasFeedLoaded || (feedLength === 0 && !(weeklyFeedLength > feedLength || monthlyFeedLength > feedLength)) ? t('loading_feed') : t('looking_for_more_posts');
-
-  if (feedLength === 0) {
-    footerContent = t('no_posts');
-  }
-
-  if (hasMore || subplebbitAddresses.length > 0 || (subplebbitAddresses && subplebbitAddresses.length === 0)) {
-    footerContent = (
-      <>
-        {subplebbitAddressesWithNewerPosts.length > 0 ? (
-          <div className={styles.morePostsSuggestion}>
-            <Trans
-              i18nKey='newer_posts_available'
-              components={{
-                1: <span onClick={handleNewerPostsButtonClick} />,
-              }}
-            />
-          </div>
-        ) : weeklyFeedLength > feedLength ? (
-          <div className={styles.morePostsSuggestion}>
-            <Trans
-              i18nKey='more_posts_last_week'
-              values={{ currentTimeFilterName, count: feedLength }}
-              components={{
-                1: <Link to={'/' + (params?.sortType || 'hot') + '/1w'} />,
-              }}
-            />
-          </div>
-        ) : (
-          monthlyFeedLength > feedLength && (
-            <div className={styles.morePostsSuggestion}>
-              <Trans
-                i18nKey='more_posts_last_month'
-                values={{ currentTimeFilterName, count: feedLength }}
-                components={{
-                  1: <Link to={'/' + (params?.sortType || 'hot') + '/1m'} />,
-                }}
-              />
-            </div>
-          )
-        )}
-        <div className={styles.stateString} onMouseEnter={() => setIsHovering(true)} onMouseLeave={() => setIsHovering(false)}>
-          <LoadingEllipsis string={isHovering ? feedStateString || loadingStateString : loadingStateString} />
-        </div>
-      </>
-    );
-  }
-  return <div className={styles.footer}>{footerContent}</div>;
-};
-
 const Home = () => {
-  useRedirectToDefaultSort();
   const { t } = useTranslation();
   const account = useAccount();
   const subplebbitAddresses = useAccount()?.subscriptions || [];
+
+  useRedirectToDefaultSort();
+  const { isCheckingSubscriptions } = useAutoSubscribe();
+
   const params = useParams<{ sortType?: string; timeFilterName?: string }>();
   const sortType = params?.sortType || 'hot';
   const { timeFilterName, timeFilterSeconds } = useTimeFilter();
+  const currentTimeFilterName = params.timeFilterName || timeFilterName || '1m';
+
   const { feed, hasMore, loadMore, reset, subplebbitAddressesWithNewerPosts } = useFeed({
     newerThan: timeFilterSeconds,
     postsPerPage: 10,
@@ -100,18 +37,7 @@ const Home = () => {
   const { feed: weeklyFeed } = useFeed({ subplebbitAddresses, sortType, newerThan: 60 * 60 * 24 * 7 });
   const { feed: monthlyFeed } = useFeed({ subplebbitAddresses, sortType, newerThan: 60 * 60 * 24 * 30 });
 
-  const handleNewerPostsButtonClick = () => {
-    window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
-    setTimeout(() => {
-      reset();
-    }, 300);
-  };
-
-  const currentTimeFilterName = params.timeFilterName || timeFilterName;
-
   const virtuosoRef = useRef<VirtuosoHandle | null>(null);
-
-  const { isCheckingSubscriptions } = useAutoSubscribe();
 
   useEffect(() => {
     const setLastVirtuosoState = () => {
@@ -137,11 +63,10 @@ const Home = () => {
     hasMore,
     subplebbitAddresses,
     subplebbitAddressesWithNewerPosts,
-    handleNewerPostsButtonClick,
-    params,
     weeklyFeedLength: weeklyFeed.length,
     monthlyFeedLength: monthlyFeed.length,
     currentTimeFilterName,
+    reset,
   };
 
   return (
@@ -164,7 +89,7 @@ const Home = () => {
               data={feed}
               itemContent={(index, post) => <Post index={index} post={post} />}
               useWindowScroll={true}
-              components={{ Footer: (props) => <Footer {...props} {...footerProps} /> }}
+              components={{ Footer: (props) => <FeedFooter {...props} {...footerProps} /> }}
               endReached={loadMore}
               ref={virtuosoRef}
               restoreStateFrom={lastVirtuosoState}

@@ -1,15 +1,14 @@
-import { useEffect, useRef, useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { useEffect, useRef } from 'react';
+import { useParams } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { Virtuoso, VirtuosoHandle, StateSnapshot } from 'react-virtuoso';
 import { useFeed } from '@plebbit/plebbit-react-hooks';
-import { Trans, useTranslation } from 'react-i18next';
-import styles from '../home/home.module.css';
-import LoadingEllipsis from '../../components/loading-ellipsis';
+import { useDefaultSubplebbitAddresses } from '../../hooks/use-default-subplebbits';
+import useTimeFilter from '../../hooks/use-time-filter';
+import FeedFooter from '../../components/feed-footer';
 import Post from '../../components/post';
 import Sidebar from '../../components/sidebar';
-import { useDefaultSubplebbitAddresses } from '../../hooks/use-default-subplebbits';
-import useFeedStateString from '../../hooks/use-feed-state-string';
-import useTimeFilter from '../../hooks/use-time-filter';
+import styles from '../home/home.module.css';
 import _ from 'lodash';
 
 const lastVirtuosoStates: { [key: string]: StateSnapshot } = {};
@@ -26,87 +25,12 @@ const All = () => {
   const { feed: weeklyFeed } = useFeed({ subplebbitAddresses, sortType, newerThan: 60 * 60 * 24 * 7 });
   const { feed: monthlyFeed } = useFeed({ subplebbitAddresses, sortType, newerThan: 60 * 60 * 24 * 30 });
 
-  const feedStateString = useFeedStateString(subplebbitAddresses);
-  const hasFeedLoaded = !!feed;
-  const [isHovering, setIsHovering] = useState(false);
-  const loadingStateString =
-    !hasFeedLoaded || (feed.length === 0 && !(weeklyFeed.length > feed.length || monthlyFeed.length > feed.length)) ? t('loading_feed') : t('looking_for_more_posts');
-
-  const handleNewerPostsButtonClick = () => {
-    window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
-    setTimeout(() => {
-      reset();
-    }, 300);
-  };
-
-  const currentTimeFilterName = params.timeFilterName || timeFilterName;
+  const currentTimeFilterName = params.timeFilterName || timeFilterName || 'all';
 
   const documentTitle = _.capitalize(t('all')) + ' - Seedit';
   useEffect(() => {
     document.title = documentTitle;
   }, [documentTitle]);
-
-  const Footer = () => {
-    let footerContent;
-
-    if (feed.length === 0) {
-      footerContent = t('no_posts');
-    }
-
-    if (hasMore || subplebbitAddresses.length > 0 || (subplebbitAddresses && subplebbitAddresses.length === 0)) {
-      footerContent = (
-        <>
-          {subplebbitAddressesWithNewerPosts.length > 0 ? (
-            <div className={styles.morePostsSuggestion}>
-              <Trans
-                i18nKey='newer_posts_available'
-                components={{
-                  1: <span onClick={handleNewerPostsButtonClick} />,
-                }}
-              />
-            </div>
-          ) : weeklyFeed.length > feed.length ? (
-            <div className={styles.morePostsSuggestion}>
-              <Trans
-                i18nKey='more_posts_last_week'
-                values={{ currentTimeFilterName, count: feed.length }}
-                components={{
-                  1: <Link to={'/p/all/' + (params?.sortType || 'hot') + '/1w'} />,
-                }}
-              />
-            </div>
-          ) : (
-            monthlyFeed.length > feed.length && (
-              <div className={styles.morePostsSuggestion}>
-                <Trans
-                  i18nKey='more_posts_last_month'
-                  values={{ currentTimeFilterName, count: feed.length }}
-                  components={{
-                    1: <Link to={'/p/all/' + (params?.sortType || 'hot') + '/1m'} />,
-                  }}
-                />
-              </div>
-            )
-          )}
-          <div className={styles.stateString} onMouseEnter={() => setIsHovering(true)} onMouseLeave={() => setIsHovering(false)}>
-            {subplebbitAddresses.length === 0 ? (
-              <div>
-                <Trans
-                  i18nKey='no_communities_found'
-                  components={[<a href='https://github.com/plebbit/temporary-default-subplebbits'>https://github.com/plebbit/temporary-default-subplebbits</a>]}
-                />
-                <br />
-                {t('connect_community_notice')}
-              </div>
-            ) : (
-              <LoadingEllipsis string={isHovering ? feedStateString || loadingStateString : loadingStateString} />
-            )}
-          </div>
-        </>
-      );
-    }
-    return <div className={styles.footer}>{footerContent}</div>;
-  };
 
   const virtuosoRef = useRef<VirtuosoHandle | null>(null);
 
@@ -124,6 +48,18 @@ const All = () => {
 
   const lastVirtuosoState = lastVirtuosoStates?.[sortType + timeFilterName + 'all'];
 
+  const footerProps = {
+    feedLength: feed?.length,
+    hasFeedLoaded: !!feed,
+    hasMore,
+    subplebbitAddresses,
+    subplebbitAddressesWithNewerPosts,
+    weeklyFeedLength: weeklyFeed.length,
+    monthlyFeedLength: monthlyFeed.length,
+    currentTimeFilterName,
+    reset,
+  };
+
   return (
     <div>
       <div className={styles.content}>
@@ -136,7 +72,7 @@ const All = () => {
           data={feed}
           itemContent={(index, post) => <Post index={index} post={post} />}
           useWindowScroll={true}
-          components={{ Footer }}
+          components={{ Footer: () => <FeedFooter {...footerProps} /> }}
           endReached={loadMore}
           ref={virtuosoRef}
           restoreStateFrom={lastVirtuosoState}

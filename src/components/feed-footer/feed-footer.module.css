@@ -1,0 +1,52 @@
+.footer {
+  padding-left: 5px;
+  text-transform: lowercase;
+  padding-bottom: 40px;
+}
+
+.footer {
+  padding-top: 5px;
+  font-size: 12px;
+}
+
+.stateString, .morePostsSuggestion {
+  text-transform: lowercase;
+}
+
+.stateString {
+  display: inline-block;
+}
+
+.morePostsSuggestion {
+  padding-bottom: 15px;
+}
+
+@media (max-width: 640px) {
+  .morePostsSuggestion {
+    font-size: 11px;
+    padding-bottom: 10px;
+  }
+}
+
+.morePostsSuggestion a, .link {
+  color: var(--text-primary);
+  text-decoration: none;
+  padding: 1px 4px;
+  background: var(--pagination-button-background);
+  border: var(--pagination-button-border);
+  border-radius: 3px;
+  font-weight: bold;
+  cursor: pointer;
+  text-transform: lowercase;
+  color: var(--link-primary);
+}
+
+.morePostsSuggestion a:hover {
+  border: var(--pagination-button-border-hover);
+}
+
+.notModerator {
+  color: var(--red);
+  font-size: 13px;
+  text-transform: lowercase;
+}
