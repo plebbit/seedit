@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { Virtuoso, VirtuosoHandle, StateSnapshot } from 'react-virtuoso';
 import { useFeed } from '@plebbit/plebbit-react-hooks';
@@ -26,7 +26,11 @@ const All = () => {
   const { feed: weeklyFeed } = useFeed({ subplebbitAddresses, sortType, newerThan: 60 * 60 * 24 * 7 });
   const { feed: monthlyFeed } = useFeed({ subplebbitAddresses, sortType, newerThan: 60 * 60 * 24 * 30 });
 
-  const loadingStateString = useFeedStateString(subplebbitAddresses) || (feed ? t('looking_for_more_posts') : t('loading'));
+  const feedStateString = useFeedStateString(subplebbitAddresses);
+  const hasFeedLoaded = !!feed;
+  const [isHovering, setIsHovering] = useState(false);
+  const loadingStateString =
+    !hasFeedLoaded || (feed.length === 0 && !(weeklyFeed.length > feed.length || monthlyFeed.length > feed.length)) ? t('loading_feed') : t('looking_for_more_posts');
 
   const handleNewerPostsButtonClick = () => {
     window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
@@ -84,7 +88,7 @@ const All = () => {
               </div>
             )
           )}
-          <div className={styles.stateString}>
+          <div className={styles.stateString} onMouseEnter={() => setIsHovering(true)} onMouseLeave={() => setIsHovering(false)}>
             {subplebbitAddresses.length === 0 ? (
               <div>
                 <Trans
@@ -95,7 +99,7 @@ const All = () => {
                 {t('connect_community_notice')}
               </div>
             ) : (
-              <LoadingEllipsis string={loadingStateString} />
+              <LoadingEllipsis string={isHovering ? feedStateString || loadingStateString : loadingStateString} />
             )}
           </div>
         </>

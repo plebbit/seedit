@@ -359,5 +359,6 @@
   "you_are_moderator": "شما مدیر این جامعه هستید",
   "you_are_admin": "شما مدیر این جامعه هستید",
   "you_are_owner": "شما مالک این جامعه هستید",
-  "looking_for_more_posts": "در جستجوی پست‌های بیشتر"
+  "looking_for_more_posts": "در جستجوی پست‌های بیشتر",
+  "loading_feed": "در حال بارگذاری فید"
 }

@@ -359,5 +359,6 @@
   "you_are_moderator": "Jeni moderator i kësaj komune",
   "you_are_admin": "Jeni administrator i kësaj komune",
   "you_are_owner": "Jeni pronari i kësaj komune",
-  "looking_for_more_posts": "Po kërkoni më shumë postime"
+  "looking_for_more_posts": "Po kërkoni më shumë postime",
+  "loading_feed": "Po ngarkoni feed-in"
 }

@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { Virtuoso, VirtuosoHandle, StateSnapshot } from 'react-virtuoso';
 import { useAccount, useFeed } from '@plebbit/plebbit-react-hooks';
@@ -26,9 +26,13 @@ const Footer = ({
   monthlyFeedLength,
   currentTimeFilterName,
 }: any) => {
-  const { t } = useTranslation();
-  const loadingStateString = useFeedStateString(subplebbitAddresses) || (hasFeedLoaded ? t('looking_for_more_posts') : t('loading'));
   let footerContent;
+  const { t } = useTranslation();
+
+  const feedStateString = useFeedStateString(subplebbitAddresses);
+  const [isHovering, setIsHovering] = useState(false);
+  const loadingStateString =
+    !hasFeedLoaded || (feedLength === 0 && !(weeklyFeedLength > feedLength || monthlyFeedLength > feedLength)) ? t('loading_feed') : t('looking_for_more_posts');
 
   if (feedLength === 0) {
     footerContent = t('no_posts');
@@ -69,8 +73,8 @@ const Footer = ({
             </div>
           )
         )}
-        <div className={styles.stateString}>
-          <LoadingEllipsis string={loadingStateString} />
+        <div className={styles.stateString} onMouseEnter={() => setIsHovering(true)} onMouseLeave={() => setIsHovering(false)}>
+          <LoadingEllipsis string={isHovering ? feedStateString || loadingStateString : loadingStateString} />
         </div>
       </>
     );
@@ -149,7 +153,7 @@ const Home = () => {
         {isCheckingSubscriptions ? (
           <div className={styles.feed}>
             <div className={styles.footer}>
-              <LoadingEllipsis string={t('loading')} />
+              <LoadingEllipsis string={t('loading_feed')} />
             </div>
           </div>
         ) : subplebbitAddresses.length > 0 ? (

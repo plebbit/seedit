@@ -359,5 +359,6 @@
   "you_are_moderator": "আপনি এই কমিউনিটির একজন মডারেটর",
   "you_are_admin": "আপনি এই কমিউনিটির একজন প্রশাসক",
   "you_are_owner": "আপনি এই কমিউনিটির মালিক",
-  "looking_for_more_posts": "আরও পোস্ট খুঁজছি"
+  "looking_for_more_posts": "আরও পোস্ট খুঁজছি",
+  "loading_feed": "লোডিং ফিড"
 }

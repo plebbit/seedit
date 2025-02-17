@@ -359,5 +359,6 @@
   "you_are_moderator": "Du er moderator for dette fellesskapet",
   "you_are_admin": "Du er administrator for dette fellesskapet",
   "you_are_owner": "Du er eier av dette fellesskapet",
-  "looking_for_more_posts": "Leter etter flere innlegg"
+  "looking_for_more_posts": "Leter etter flere innlegg",
+  "loading_feed": "Laster feed"
 }

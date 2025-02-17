@@ -359,5 +359,6 @@
   "you_are_moderator": "Você é moderador desta comunidade",
   "you_are_admin": "Você é um administrador desta comunidade",
   "you_are_owner": "Você é o proprietário desta comunidade",
-  "looking_for_more_posts": "Procurando mais postagens"
+  "looking_for_more_posts": "Procurando mais postagens",
+  "loading_feed": "Carregando feed"
 }

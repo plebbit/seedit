@@ -359,5 +359,6 @@
   "you_are_moderator": "Moderátor vagy ennek a közösségnek",
   "you_are_admin": "Adminisztrátor vagy ennek a közösségnek",
   "you_are_owner": "Te vagy a közösség tulajdonosa",
-  "looking_for_more_posts": "Több bejegyzés keresése"
+  "looking_for_more_posts": "Több bejegyzés keresése",
+  "loading_feed": "Betöltés a hírcsatornára"
 }

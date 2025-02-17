@@ -359,5 +359,6 @@
   "you_are_moderator": "Jste moderátorem této komunity",
   "you_are_admin": "Jste administrátorem této komunity",
   "you_are_owner": "Jste vlastníkem této komunity",
-  "looking_for_more_posts": "Hledání dalších příspěvků"
+  "looking_for_more_posts": "Hledání dalších příspěvků",
+  "loading_feed": "Načítání kanálu"
 }

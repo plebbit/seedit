@@ -359,5 +359,6 @@
   "you_are_moderator": "Bu topluluğun moderatörüsünüz",
   "you_are_admin": "Bu topluluğun yöneticisisiniz",
   "you_are_owner": "Bu topluluğun sahibi sizsiniz",
-  "looking_for_more_posts": "Daha fazla gönderi arıyorum"
+  "looking_for_more_posts": "Daha fazla gönderi arıyorum",
+  "loading_feed": "Yükleniyor besleme"
 }

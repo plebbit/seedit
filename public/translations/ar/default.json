@@ -359,5 +359,6 @@
   "you_are_moderator": "أنت مشرف في هذه المجتمع",
   "you_are_admin": "أنت مشرف في هذه المجتمع",
   "you_are_owner": "أنت مالك هذا المجتمع",
-  "looking_for_more_posts": "البحث عن المزيد من المشاركات"
+  "looking_for_more_posts": "البحث عن المزيد من المشاركات",
+  "loading_feed": "تحميل الخلاصة"
 }

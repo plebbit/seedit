@@ -359,5 +359,6 @@
   "you_are_moderator": "Вы модератор этой сообщества",
   "you_are_admin": "Вы администратор этой сообщества",
   "you_are_owner": "Вы являетесь владельцем этой сообщества",
-  "looking_for_more_posts": "Ищу больше постов"
+  "looking_for_more_posts": "Ищу больше постов",
+  "loading_feed": "Загрузка ленты"
 }

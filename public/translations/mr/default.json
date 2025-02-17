@@ -359,5 +359,6 @@
   "you_are_moderator": "तुम्ही या समुदायाचे मॉडरेटर आहात",
   "you_are_admin": "तुम्ही या समुदायाचे प्रशासक आहात",
   "you_are_owner": "तुम्ही या समुदायाचे मालक आहात",
-  "looking_for_more_posts": "अधिक पोस्ट शोधत आहे"
+  "looking_for_more_posts": "अधिक पोस्ट शोधत आहे",
+  "loading_feed": "फीड लोड करत आहे"
 }

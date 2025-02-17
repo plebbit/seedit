@@ -359,5 +359,6 @@
   "you_are_moderator": "あなたはこのコミュニティのモデレーターです",
   "you_are_admin": "あなたはこのコミュニティの管理者です",
   "you_are_owner": "あなたはこのコミュニティのオーナーです",
-  "looking_for_more_posts": "さらに投稿を探しています"
+  "looking_for_more_posts": "さらに投稿を探しています",
+  "loading_feed": "フィードを読み込んでいます"
 }

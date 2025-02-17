@@ -359,5 +359,6 @@
   "you_are_moderator": "Jesteś moderatorem tej społeczności",
   "you_are_admin": "Jesteś administratorem tej społeczności",
   "you_are_owner": "Jesteś właścicielem tej społeczności",
-  "looking_for_more_posts": "Szukam więcej postów"
+  "looking_for_more_posts": "Szukam więcej postów",
+  "loading_feed": "Ładowanie kanału"
 }

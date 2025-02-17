@@ -359,5 +359,6 @@
   "you_are_moderator": "Du är moderator för denna gemenskap",
   "you_are_admin": "Du är administratör för denna gemenskap",
   "you_are_owner": "Du är ägaren av denna gemenskap",
-  "looking_for_more_posts": "Letar efter fler inlägg"
+  "looking_for_more_posts": "Letar efter fler inlägg",
+  "loading_feed": "Laddar flöde"
 }

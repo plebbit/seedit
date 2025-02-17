@@ -359,5 +359,6 @@
   "you_are_moderator": "Du er moderator i dette fællesskab",
   "you_are_admin": "Du er administrator af dette fællesskab",
   "you_are_owner": "Du er ejer af dette fællesskab",
-  "looking_for_more_posts": "Leder efter flere indlæg"
+  "looking_for_more_posts": "Leder efter flere indlæg",
+  "loading_feed": "Indlæser feed"
 }
