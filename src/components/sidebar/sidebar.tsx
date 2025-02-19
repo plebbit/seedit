@@ -25,9 +25,9 @@ import SearchBar from '../search-bar';
 import SubscribeButton from '../subscribe-button';
 import packageJson from '../../../package.json';
 import LoadingEllipsis from '../loading-ellipsis';
+import Version from '../version';
 
 const { version } = packageJson;
-const commitRef = process.env.REACT_APP_COMMIT_REF;
 const isElectron = window.isElectron === true;
 
 const RulesList = ({ rules }: { rules: string[] }) => {
@@ -186,19 +186,7 @@ export const Footer = () => {
             </li>
           )}
           <li>
-            <a href={`https://github.com/plebbit/seedit/releases/tag/v${version}`} target='_blank' rel='noopener noreferrer'>
-              v{version}
-            </a>
-            {commitRef && (
-              <>
-                {' '}
-                (
-                <a href={`https://github.com/plebbit/seedit/commit/${commitRef}`} target='_blank' rel='noopener noreferrer'>
-                  {commitRef.slice(0, 7)}
-                </a>
-                )
-              </>
-            )}
+            <Version />
           </li>
         </ul>
       </div>
