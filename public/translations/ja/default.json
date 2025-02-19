@@ -298,7 +298,7 @@
   "hide_settings": "設定を非表示",
   "wallet": "ウォレット",
   "undelete": "削除を取り消す",
-  "loading_comments": "コメントを読み込み中",
+  "loading_comments": "コメントを読み込んでいます",
   "you_blocked_community": "このコミュニティをブロックしました",
   "show": "表示",
   "plebbit_options": "plebbitのオプション",
@@ -360,5 +360,6 @@
   "you_are_admin": "あなたはこのコミュニティの管理者です",
   "you_are_owner": "あなたはこのコミュニティのオーナーです",
   "looking_for_more_posts": "さらに投稿を探しています",
-  "loading_feed": "フィードを読み込んでいます"
+  "loading_feed": "フィードを読み込んでいます",
+  "loading_posts": "投稿を読み込んでいます"
 }

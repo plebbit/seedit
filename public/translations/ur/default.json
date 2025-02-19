@@ -298,7 +298,7 @@
   "hide_settings": "ترتیبات چھپائیں",
   "wallet": "والیٹ",
   "undelete": "حذف کو واپس لائیں",
-  "loading_comments": "تبصرے لوڈ ہو رہے ہیں",
+  "loading_comments": "کمنٹس لوڈ ہو رہے ہیں",
   "you_blocked_community": "آپ نے یہ سماج بلاک کر دی ہے",
   "show": "دکھائیں",
   "plebbit_options": "پلیبٹ اختیارات",
@@ -360,5 +360,6 @@
   "you_are_admin": "آپ اس کمیونٹی کے ایڈمن ہیں",
   "you_are_owner": "آپ اس کمیونٹی کے مالک ہیں",
   "looking_for_more_posts": "مزید پوسٹس تلاش کر رہے ہیں",
-  "loading_feed": "لوڈ ہو رہا ہے فیڈ"
+  "loading_feed": "لوڈ ہو رہا ہے فیڈ",
+  "loading_posts": "پوسٹس لوڈ ہو رہی ہیں"
 }

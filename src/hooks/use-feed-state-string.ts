@@ -35,7 +35,7 @@ const useFeedStateString = (subplebbitAddresses?: string[]): string | undefined 
     if (states['resolving-address']) {
       const { subplebbitAddresses, clientUrls } = states['resolving-address'];
       if (subplebbitAddresses.length && clientUrls.length) {
-        stateString += `resolving ${subplebbitAddresses.length} ${subplebbitAddresses.length === 1 ? 'address' : 'addresses'} from ${clientUrls
+        stateString += `loading ${subplebbitAddresses.length} ${subplebbitAddresses.length === 1 ? 'address' : 'addresses'} from ${clientUrls
           .map(getClientHost)
           .join(', ')}`;
       }
@@ -63,15 +63,15 @@ const useFeedStateString = (subplebbitAddresses?: string[]): string | undefined 
       states['fetching-ipfs']?.clientUrls.forEach((clientUrl) => clientHosts.add(getClientHost(clientUrl)));
 
       if (clientHosts.size) {
-        stateString += 'fetching ';
+        stateString += 'loading ';
         if (states['fetching-ipns']) {
-          stateString += `${states['fetching-ipns'].subplebbitAddresses.length} IPNS`;
+          stateString += `${states['fetching-ipns'].subplebbitAddresses.length} communities`;
         }
         if (states['fetching-ipfs']) {
           if (states['fetching-ipns']) {
             stateString += ', ';
           }
-          stateString += `${states['fetching-ipfs'].subplebbitAddresses.length} IPFS`;
+          stateString += `${states['fetching-ipfs'].subplebbitAddresses.length} posts`;
         }
         if (pagesStatesSubplebbitAddresses.size) {
           if (states['fetching-ipns'] || states['fetching-ipfs']) {

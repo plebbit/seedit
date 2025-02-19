@@ -360,5 +360,6 @@
   "you_are_admin": "Bạn là quản trị viên của cộng đồng này",
   "you_are_owner": "Bạn là chủ sở hữu của cộng đồng này",
   "looking_for_more_posts": "Tìm kiếm thêm bài viết",
-  "loading_feed": "Đang tải feed"
+  "loading_feed": "Đang tải feed",
+  "loading_posts": "Đang tải bài viết"
 }

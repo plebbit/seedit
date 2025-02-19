@@ -298,7 +298,7 @@
   "hide_settings": "సెట్టింగులను దాచు",
   "wallet": "వాలెట్",
   "undelete": "తొలగించడం రద్దు చేయండి",
-  "loading_comments": "వ్యాఖ్యలను లోడ్ అవుతోంది",
+  "loading_comments": "కామెంట్లు లోడవుతున్నాయి",
   "you_blocked_community": "ఈ సముదాయాన్ని మీరు నిరోధించారు",
   "show": "చూపించు",
   "plebbit_options": "plebbit ఎంపికలు",
@@ -360,5 +360,6 @@
   "you_are_admin": "మీరు ఈ కమ్యూనిటీలో అడ్మిన్ అయితే",
   "you_are_owner": "మీరు ఈ కమ్యూనిటీ యొక్క యజమాని",
   "looking_for_more_posts": "మరింత పోస్ట్‌ల కోసం చూస్తున్నాను",
-  "loading_feed": "లోడింగ్ ఫీడ్"
+  "loading_feed": "లోడింగ్ ఫీడ్",
+  "loading_posts": "పోస్ట్స్ లోడవుతున్నాయి"
 }

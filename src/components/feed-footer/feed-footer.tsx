@@ -43,7 +43,6 @@ const FeedFooter = ({
   };
 
   const feedStateString = useFeedStateString(subplebbitAddresses);
-  const [isHovering, setIsHovering] = useState(false);
   const loadingStateString =
     !hasFeedLoaded || (feedLength === 0 && !(weeklyFeedLength > feedLength || monthlyFeedLength > feedLength)) ? t('loading_feed') : t('looking_for_more_posts');
 
@@ -101,7 +100,7 @@ const FeedFooter = ({
             </div>
           )
         )}
-        <div className={styles.stateString} onMouseEnter={() => setIsHovering(true)} onMouseLeave={() => setIsHovering(false)}>
+        <div className={styles.stateString}>
           {subplebbitAddresses.length === 0 ? (
             isInModView ? (
               <div className={styles.notModerator}>{t('not_moderator')}</div>
@@ -116,7 +115,7 @@ const FeedFooter = ({
               </div>
             )
           ) : (
-            <LoadingEllipsis string={isHovering ? feedStateString || loadingStateString : loadingStateString} />
+            <LoadingEllipsis string={feedStateString || loadingStateString} />
           )}
         </div>
       </>

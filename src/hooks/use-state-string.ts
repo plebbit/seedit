@@ -59,7 +59,13 @@ const useStateString = (commentOrSubplebbit: CommentOrSubplebbit): string | unde
         stateString = commentOrSubplebbit.updatingState;
       }
       if (stateString) {
-        stateString = stateString.replaceAll('-', ' ').replace('ipfs', 'IPFS').replace('ipns', 'IPNS');
+        stateString = stateString
+          .replaceAll('-', ' ')
+          .replace('ipfs', 'post')
+          .replace('ipns', 'subplebbit')
+          .replace('fetching', 'loading')
+          .replace('resolving', 'loading')
+          .replace('subplebbit subplebbit', 'community');
       }
     }
 

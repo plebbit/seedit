@@ -298,7 +298,7 @@
   "hide_settings": "إخفاء الإعدادات",
   "wallet": "محفظة",
   "undelete": "إلغاء الحذف",
-  "loading_comments": "تحميل التعليقات",
+  "loading_comments": "جاري تحميل التعليقات",
   "you_blocked_community": "لقد حظرت هذه المجتمعة",
   "show": "اظهر",
   "plebbit_options": "خيارات plebbit",
@@ -360,5 +360,6 @@
   "you_are_admin": "أنت مشرف في هذه المجتمع",
   "you_are_owner": "أنت مالك هذا المجتمع",
   "looking_for_more_posts": "البحث عن المزيد من المشاركات",
-  "loading_feed": "تحميل الخلاصة"
+  "loading_feed": "تحميل الخلاصة",
+  "loading_posts": "جاري تحميل المشاركات"
 }

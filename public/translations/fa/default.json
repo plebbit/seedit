@@ -298,7 +298,7 @@
   "hide_settings": "مخفی کردن تنظیمات",
   "wallet": "کیف پول",
   "undelete": "بازیابی",
-  "loading_comments": "بارگذاری نظرات",
+  "loading_comments": "در حال بارگذاری نظرات",
   "you_blocked_community": "شما این انجمن را مسدود کرده‌اید",
   "show": "نمایش",
   "plebbit_options": "گزینه های plebbit",
@@ -360,5 +360,6 @@
   "you_are_admin": "شما مدیر این جامعه هستید",
   "you_are_owner": "شما مالک این جامعه هستید",
   "looking_for_more_posts": "در جستجوی پست‌های بیشتر",
-  "loading_feed": "در حال بارگذاری فید"
+  "loading_feed": "در حال بارگذاری فید",
+  "loading_posts": "در حال بارگذاری پست‌ها"
 }

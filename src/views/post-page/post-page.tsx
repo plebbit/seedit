@@ -138,8 +138,6 @@ const Post = ({ post }: { post: Comment }) => {
 
   const lockedState = deleted ? t('deleted') : locked ? t('locked') : removed ? t('removed') : '';
 
-  const [isHovering, setIsHovering] = useState(false);
-
   return (
     <>
       {(deleted || locked || removed) && (
@@ -180,10 +178,10 @@ const Post = ({ post }: { post: Comment }) => {
           </div>
         </div>
       )}
-      <span className={styles.loadingString} onMouseEnter={() => setIsHovering(true)} onMouseLeave={() => setIsHovering(false)}>
+      <span className={styles.loadingString}>
         {stateString && stateString !== 'Failed' ? (
           <div className={styles.stateString}>
-            <LoadingEllipsis string={isHovering ? stateString : t('loading')} />
+            <LoadingEllipsis string={stateString || t('loading')} />
           </div>
         ) : (
           state === 'failed' && t('failed')

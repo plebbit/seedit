@@ -360,5 +360,6 @@
   "you_are_admin": "Olet tämän yhteisön ylläpitäjä",
   "you_are_owner": "Olet tämän yhteisön omistaja",
   "looking_for_more_posts": "Etsii lisää viestejä",
-  "loading_feed": "Ladataan syöte"
+  "loading_feed": "Ladataan syöte",
+  "loading_posts": "Ladataan viestejä"
 }

@@ -298,7 +298,7 @@
   "hide_settings": "Απόκρυψη ρυθμίσεων",
   "wallet": "Πορτοφόλι",
   "undelete": "Ανάκτηση διαγραφής",
-  "loading_comments": "Φόρτωση σχολίων",
+  "loading_comments": "Φορτώνει σχόλια",
   "you_blocked_community": "Έχετε αποκλείσει αυτή την κοινότητα",
   "show": "εμφάνιση",
   "plebbit_options": "επιλογές plebbit",
@@ -360,5 +360,6 @@
   "you_are_admin": "Είσαι διαχειριστής αυτής της κοινότητας",
   "you_are_owner": "Είσαι ο ιδιοκτήτης αυτής της κοινότητας",
   "looking_for_more_posts": "Ψάχνει για περισσότερες αναρτήσεις",
-  "loading_feed": "Φόρτωση ροής"
+  "loading_feed": "Φόρτωση ροής",
+  "loading_posts": "Φόρτωση δημοσιεύσεων"
 }

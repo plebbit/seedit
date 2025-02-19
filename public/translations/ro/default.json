@@ -298,7 +298,7 @@
   "hide_settings": "Ascunde setările",
   "wallet": "Portofel",
   "undelete": "Recuperare",
-  "loading_comments": "Se încarcă comentariile",
+  "loading_comments": "Se încarcă comentarii",
   "you_blocked_community": "Ați blocat această comunitate",
   "show": "arată",
   "plebbit_options": "opțiuni plebbit",
@@ -360,5 +360,6 @@
   "you_are_admin": "Ești administrator al acestei comunități",
   "you_are_owner": "Ești proprietarul acestei comunități",
   "looking_for_more_posts": "Căutând mai multe postări",
-  "loading_feed": "Încărcare feed"
+  "loading_feed": "Încărcare feed",
+  "loading_posts": "Se încarcă postările"
 }

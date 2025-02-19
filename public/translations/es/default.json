@@ -360,5 +360,6 @@
   "you_are_admin": "Eres un administrador de esta comunidad",
   "you_are_owner": "Eres el dueño de esta comunidad",
   "looking_for_more_posts": "Buscando más publicaciones",
-  "loading_feed": "Cargando feed"
+  "loading_feed": "Cargando feed",
+  "loading_posts": "Cargando publicaciones"
 }

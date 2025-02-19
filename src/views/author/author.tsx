@@ -29,8 +29,14 @@ const Author = () => {
   const replyComments = useMemo(() => authorComments?.filter((comment) => comment && comment.parentCid) || [], [authorComments]);
   const postComments = useMemo(() => authorComments?.filter((comment) => comment && !comment.parentCid) || [], [authorComments]);
 
+  const loadingString = isInAuthorCommentsView ? t('loading_comments') : t('loading_posts');
+
   const Footer = () => {
-    return hasMore ? <LoadingEllipsis string={'loading'} /> : null;
+    return hasMore ? (
+      <span className={styles.loadingString}>
+        <LoadingEllipsis string={loadingString || t('loading')} />
+      </span>
+    ) : null;
   };
 
   const virtuosoRef = useRef<VirtuosoHandle | null>(null);
@@ -77,21 +83,25 @@ const Author = () => {
         <AuthorSidebar />
       </div>
       {authorComments?.length === 0 && !hasMore && <div className={styles.noPosts}>{t('no_posts_found')}</div>}
-      <Virtuoso
-        increaseViewportBy={{ bottom: 1200, top: 600 }}
-        totalCount={authorComments?.length || 0}
-        data={virtuosoData}
-        itemContent={(index, post) => {
-          const isReply = post?.parentCid;
-          return !isReply ? <Post index={index} post={post} /> : <Reply index={index} isSingleReply={true} reply={post} />;
-        }}
-        useWindowScroll={true}
-        components={{ Footer }}
-        endReached={loadMore}
-        ref={virtuosoRef}
-        restoreStateFrom={lastVirtuosoState}
-        initialScrollTop={lastVirtuosoState?.scrollTop}
-      />
+      {virtuosoData?.length > 0 ? (
+        <Virtuoso
+          increaseViewportBy={{ bottom: 1200, top: 600 }}
+          totalCount={authorComments?.length || 0}
+          data={virtuosoData}
+          itemContent={(index, post) => {
+            const isReply = post?.parentCid;
+            return !isReply ? <Post index={index} post={post} /> : <Reply index={index} isSingleReply={true} reply={post} />;
+          }}
+          useWindowScroll={true}
+          components={{ Footer }}
+          endReached={loadMore}
+          ref={virtuosoRef}
+          restoreStateFrom={lastVirtuosoState}
+          initialScrollTop={lastVirtuosoState?.scrollTop}
+        />
+      ) : (
+        <div className={styles.noPosts}>{t('nothing_found')}</div>
+      )}
     </div>
   );
 };

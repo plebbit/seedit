@@ -298,7 +298,7 @@
   "hide_settings": "הסתר הגדרות",
   "wallet": "ארנק",
   "undelete": "שחזור מחיקה",
-  "loading_comments": "טוען תגובות",
+  "loading_comments": "טעינת תגובות",
   "you_blocked_community": "חסמת את הקהילה הזו",
   "show": "תצוגה",
   "plebbit_options": "אפשרויות plebbit",
@@ -360,5 +360,6 @@
   "you_are_admin": "אתה מנהל מערכת של קהילה זו",
   "you_are_owner": "אתה הבעלים של קהילה זו",
   "looking_for_more_posts": "מחפש פוסטים נוספים",
-  "loading_feed": "טוען פיד"
+  "loading_feed": "טוען פיד",
+  "loading_posts": "טעינת פוסטים"
 }

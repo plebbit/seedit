@@ -298,7 +298,7 @@
   "hide_settings": "Einstellungen ausblenden",
   "wallet": "Wallet",
   "undelete": "Wiederherstellen",
-  "loading_comments": "Lade Kommentare",
+  "loading_comments": "Lädt Kommentare",
   "you_blocked_community": "Du hast diese Gemeinschaft blockiert",
   "show": "zeigen",
   "plebbit_options": "plebbit optionen",
@@ -360,5 +360,6 @@
   "you_are_admin": "Du bist ein Administrator dieser Community",
   "you_are_owner": "Du bist der Eigentümer dieser Community",
   "looking_for_more_posts": "Suche nach weiteren Beiträgen",
-  "loading_feed": "Lädt Feed"
+  "loading_feed": "Lädt Feed",
+  "loading_posts": "Lade Beiträge"
 }

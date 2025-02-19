@@ -6,6 +6,18 @@ div[data-viewport-type="window"] {
   position: relative !important;
 }
 
+.loadingString {
+  text-transform: lowercase;
+  font-size: 12px;
+  padding-left: 5px;
+}
+
+.noPosts {
+  color: var(--red);
+  font-size: 13px;
+  text-transform: lowercase;
+}
+
 @media (max-width: 640px) {
   .sidebarDesktop {
     display: none;
