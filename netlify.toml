@@ -1,5 +1,0 @@
-[[redirects]]
-  from = "http://insecure.seedit.app/*"
-  to = "http://insecure.seedit.app/:splat"
-  status = 200
-  force = true
