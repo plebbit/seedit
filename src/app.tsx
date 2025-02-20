@@ -121,6 +121,7 @@ const App = () => {
             <Route path='/u/:authorAddress/c/:commentCid?/submitted/:sortType?/:timeFilterName?' element={<Author />} />
 
             <Route path='*' element={<NotFound />} />
+            <Route path='/not-found' element={<NotFound />} />
           </Route>
         </Route>
       </Routes>
