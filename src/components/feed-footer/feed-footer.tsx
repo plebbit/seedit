@@ -44,7 +44,8 @@ const FeedFooter = ({
 
   const feedStateString = useFeedStateString(subplebbitAddresses);
   const loadingStateString =
-    !hasFeedLoaded || (feedLength === 0 && !(weeklyFeedLength > feedLength || monthlyFeedLength > feedLength)) ? t('loading_feed') : t('looking_for_more_posts');
+    useFeedStateString(subplebbitAddresses) ||
+    (!hasFeedLoaded || (feedLength === 0 && !(weeklyFeedLength > feedLength || monthlyFeedLength > feedLength)) ? t('loading_feed') : t('looking_for_more_posts'));
 
   // Add state to track initial loading
   const [hasFetchedSubplebbitAddresses, setHasFetchedSubplebbitAddresses] = useState(false);
