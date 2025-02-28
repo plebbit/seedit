@@ -7,7 +7,7 @@ import styles from '../home/home.module.css';
 import LoadingEllipsis from '../../components/loading-ellipsis';
 import Post from '../../components/post';
 import Sidebar from '../../components/sidebar';
-import useFeedStateString from '../../hooks/use-feed-state-string';
+import { useFeedStateString } from '../../hooks/use-state-string';
 import useTimeFilter from '../../hooks/use-time-filter';
 import { usePinnedPostsStore } from '../../stores/use-pinned-posts-store';
 import { useIsBroadlyNsfwSubplebbit } from '../../hooks/use-is-broadly-nsfw-subplebbit';

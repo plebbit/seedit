@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { Link, useLocation, useParams } from 'react-router-dom';
 import { Trans, useTranslation } from 'react-i18next';
 import { isModView } from '../../lib/utils/view-utils';
-import useFeedStateString from '../../hooks/use-feed-state-string';
+import { useFeedStateString } from '../../hooks/use-state-string';
 import LoadingEllipsis from '../loading-ellipsis';
 import styles from './feed-footer.module.css';
 
