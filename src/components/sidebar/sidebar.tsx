@@ -23,11 +23,9 @@ import {
 import Markdown from '../markdown';
 import SearchBar from '../search-bar';
 import SubscribeButton from '../subscribe-button';
-import packageJson from '../../../package.json';
 import LoadingEllipsis from '../loading-ellipsis';
 import Version from '../version';
 
-const { version } = packageJson;
 const isElectron = window.isElectron === true;
 
 const RulesList = ({ rules }: { rules: string[] }) => {
@@ -108,23 +106,6 @@ const ModerationTools = ({ address }: { address?: string }) => {
   );
 };
 
-const downloadAppLink = (() => {
-  const platform = navigator.platform;
-  if (platform === 'Linux' || platform === 'Linux x86_64' || platform === 'Linux i686' || platform === 'Linux aarch64') {
-    return `https://github.com/plebbit/seedit/releases/download/v${version}/seedit-${version}.AppImage`;
-  } else if (platform === 'Win32' || platform === 'Win64' || platform === 'Windows') {
-    return `https://github.com/plebbit/seedit/releases/download/v${version}/seedit.Portable.${version}.exe`;
-  } else if (platform === 'MacIntel' || platform === 'Macintosh') {
-    return `https://github.com/plebbit/seedit/releases/download/v${version}/seedit-${version}.dmg`;
-  } else if (platform === 'Android') {
-    return undefined;
-  } else if (platform === 'iPhone' || platform === 'iPad') {
-    return undefined;
-  } else {
-    return undefined;
-  }
-})();
-
 interface SidebarProps {
   comment?: Comment;
   isSubCreatedButNotYetPublished?: boolean;
@@ -134,7 +115,6 @@ interface SidebarProps {
 }
 
 export const Footer = () => {
-  const { t } = useTranslation();
   const location = useLocation();
   const isMobile = useIsMobile();
   const isInHomeAboutView = isHomeAboutView(location.pathname);
@@ -148,7 +128,7 @@ export const Footer = () => {
         <ul>
           <li>
             <a href='https://plebbit.com' target='_blank' rel='noopener noreferrer'>
-              plebbit
+              about
             </a>
             <span className={styles.footerSeparator}>|</span>
           </li>
@@ -177,14 +157,12 @@ export const Footer = () => {
             </a>
             <span className={styles.footerSeparator}>|</span>
           </li>
-          {downloadAppLink && (
-            <li>
-              <a href={downloadAppLink} target='_blank' rel='noopener noreferrer'>
-                {t('download_app')}
-              </a>
-              <span className={styles.footerSeparator}>|</span>
-            </li>
-          )}
+          <li>
+            <a href='https://plebbit.github.io/docs/learn/clients/seedit/what-is-seedit' target='_blank' rel='noopener noreferrer'>
+              docs
+            </a>
+            <span className={styles.footerSeparator}>|</span>
+          </li>
           <li>
             <Version />
           </li>
