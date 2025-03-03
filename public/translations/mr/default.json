@@ -298,7 +298,7 @@
   "hide_settings": "सेटिंग्ज लपवा",
   "wallet": "बटवा",
   "undelete": "डिलीट करा",
-  "loading_comments": "टिप्पणी लोड होत आहे",
+  "loading_comments": "टिप्पण्या लोड होत आहेत",
   "you_blocked_community": "तुम्ही ह्या समुदायाला ब्लॉक केलं आहे",
   "show": "दाखवा",
   "plebbit_options": "प्लेबिट पर्याय",
@@ -360,5 +360,6 @@
   "you_are_admin": "तुम्ही या समुदायाचे प्रशासक आहात",
   "you_are_owner": "तुम्ही या समुदायाचे मालक आहात",
   "looking_for_more_posts": "अधिक पोस्ट शोधत आहे",
-  "loading_feed": "फीड लोड करत आहे"
+  "loading_feed": "फीड लोड करत आहे",
+  "loading_posts": "पोस्ट लोड करत आहे"
 }

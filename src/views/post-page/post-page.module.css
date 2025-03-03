@@ -115,6 +115,7 @@
 
 .loadingString {
   padding: 5px;
+  text-transform: lowercase;
 }
 
 .stateString {

@@ -298,7 +298,7 @@
   "hide_settings": "隐藏设置",
   "wallet": "钱包",
   "undelete": "取消删除",
-  "loading_comments": "正在加载评论",
+  "loading_comments": "加载评论",
   "you_blocked_community": "您已封锁了此社区",
   "show": "显示",
   "plebbit_options": "plebbit选项",
@@ -360,5 +360,6 @@
   "you_are_admin": "您是这个社区的管理员",
   "you_are_owner": "您是这个社区的拥有者",
   "looking_for_more_posts": "寻找更多帖子",
-  "loading_feed": "加载中..."
+  "loading_feed": "加载中...",
+  "loading_posts": "加载帖子"
 }

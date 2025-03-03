@@ -4,7 +4,9 @@
   position: fixed;
   width: 100%;
   z-index: 6;
-  transition: top 0.2s ease-in-out;
+  will-change: transform;
+  transform: translateY(0);
+  transition: transform 0.2s ease-in-out;
   align-items: center;
   justify-content: space-around;
 }

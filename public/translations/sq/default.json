@@ -298,7 +298,7 @@
   "hide_settings": "Fshih rregullimet",
   "wallet": "Wallet",
   "undelete": "Rikuperimi",
-  "loading_comments": "Duke u ngarkuar komentet",
+  "loading_comments": "Po ngarkohen komentet",
   "you_blocked_community": "Ju keni bllokuar këtë komunitet",
   "show": "shfaq",
   "plebbit_options": "opsione plebbit",
@@ -360,5 +360,6 @@
   "you_are_admin": "Jeni administrator i kësaj komune",
   "you_are_owner": "Jeni pronari i kësaj komune",
   "looking_for_more_posts": "Po kërkoni më shumë postime",
-  "loading_feed": "Po ngarkoni feed-in"
+  "loading_feed": "Po ngarkoni feed-in",
+  "loading_posts": "Duke ngarkuar postimet"
 }

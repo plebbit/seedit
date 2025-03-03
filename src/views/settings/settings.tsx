@@ -6,6 +6,7 @@ import { setAccount, useAccount } from '@plebbit/plebbit-react-hooks';
 import { isSettingsPlebbitOptionsView } from '../../lib/utils/view-utils';
 import useContentOptionsStore from '../../stores/use-content-options-store';
 import useTheme from '../../hooks/use-theme';
+import Version from '../../components/version';
 import AccountSettings from './account-settings';
 import AddressSettings from './address-settings';
 import AvatarSettings from './avatar-settings';
@@ -206,24 +207,11 @@ const GeneralSettings = () => {
         <span className={styles.categoryTitle}>{t('version')}</span>
         <span className={styles.categorySettings}>
           <div className={styles.version}>
-            seedit{' '}
-            <a href={`https://github.com/plebbit/seedit/releases/tag/v${packageJson.version}`} target='_blank' rel='noopener noreferrer'>
-              v{packageJson.version}
-            </a>
+            seedit <Version />
             {isElectron && (
               <a className={styles.fullNodeStats} href='http://localhost:50019/webui/' target='_blank' rel='noreferrer'>
                 {t('node_stats')}
               </a>
-            )}
-            {commitRef && (
-              <>
-                {' '}
-                (
-                <a href={`https://github.com/plebbit/seedit/commit/${commitRef}`} target='_blank' rel='noopener noreferrer'>
-                  {commitRef.slice(0, 7)}
-                </a>
-                )
-              </>
             )}
           </div>
           <CheckForUpdates />

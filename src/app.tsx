@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { Outlet, Route, Routes, useLocation, useNavigate } from 'react-router-dom';
+import { Outlet, Route, Routes } from 'react-router-dom';
 import useTheme from './hooks/use-theme';
 import styles from './app.module.css';
 import AboutView from './views/about';
@@ -56,17 +56,6 @@ const App = () => {
     document.body.classList.forEach((className) => document.body.classList.remove(className));
     document.body.classList.add(theme);
   }, [theme]);
-
-  // react router doesn't handle the %23 hash correctly, so we need to replace it with #
-  const navigate = useNavigate();
-  const location = useLocation();
-  useEffect(() => {
-    const currentPath = location.pathname + location.hash;
-    if (currentPath.includes('%23')) {
-      const correctedPath = currentPath.replace('%23', '#');
-      navigate(correctedPath, { replace: true });
-    }
-  }, [location, navigate]);
 
   return (
     <div className={`${styles.app} ${theme}`}>
@@ -132,6 +121,7 @@ const App = () => {
             <Route path='/u/:authorAddress/c/:commentCid?/submitted/:sortType?/:timeFilterName?' element={<Author />} />
 
             <Route path='*' element={<NotFound />} />
+            <Route path='/not-found' element={<NotFound />} />
           </Route>
         </Route>
       </Routes>

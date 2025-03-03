@@ -360,5 +360,6 @@
   "you_are_admin": "आप इस समुदाय के व्यवस्थापक हैं",
   "you_are_owner": "आप इस समुदाय के मालिक हैं",
   "looking_for_more_posts": "अधिक पोस्ट ढूंढ रहे हैं",
-  "loading_feed": "लोडिंग फीड"
+  "loading_feed": "लोडिंग फीड",
+  "loading_posts": "पोस्ट लोड हो रही हैं"
 }

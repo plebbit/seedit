@@ -24,7 +24,7 @@ const StickyHeader = () => {
   }, []);
 
   return (
-    <div className={styles.content} style={{ top: visible ? 0 : '-40px' }}>
+    <div className={styles.content} style={{ transform: visible ? 'translateY(0)' : 'translateY(-40px)' }}>
       <TopBar />
       <AccountBar />
     </div>

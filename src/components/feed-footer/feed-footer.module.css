@@ -13,10 +13,6 @@
   text-transform: lowercase;
 }
 
-.stateString {
-  display: inline-block;
-}
-
 .morePostsSuggestion {
   padding-bottom: 15px;
 }

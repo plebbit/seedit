@@ -360,5 +360,6 @@
   "you_are_admin": "Ikaw ay isang admin ng komunidad na ito",
   "you_are_owner": "Ikaw ang may-ari ng komunidad na ito",
   "looking_for_more_posts": "Naghahanap ng higit pang mga post",
-  "loading_feed": "Naglo-load ng feed"
+  "loading_feed": "Naglo-load ng feed",
+  "loading_posts": "Naglo-load ng mga post"
 }

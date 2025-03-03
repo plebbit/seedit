@@ -298,7 +298,7 @@
   "hide_settings": "Skjul innstillinger",
   "wallet": "Lommebok",
   "undelete": "Gjenopprette",
-  "loading_comments": "Laster inn kommentarer",
+  "loading_comments": "Laster kommentarer",
   "you_blocked_community": "Du har blokkert dette fellesskapet",
   "show": "vise",
   "plebbit_options": "plebbit alternativer",
@@ -360,5 +360,6 @@
   "you_are_admin": "Du er administrator for dette fellesskapet",
   "you_are_owner": "Du er eier av dette fellesskapet",
   "looking_for_more_posts": "Leter etter flere innlegg",
-  "loading_feed": "Laster feed"
+  "loading_feed": "Laster feed",
+  "loading_posts": "Laster innlegg"
 }

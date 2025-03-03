@@ -360,5 +360,6 @@
   "you_are_admin": "Anda adalah admin komunitas ini",
   "you_are_owner": "Anda adalah pemilik komunitas ini",
   "looking_for_more_posts": "Mencari lebih banyak pos",
-  "loading_feed": "Memuat feed"
+  "loading_feed": "Memuat feed",
+  "loading_posts": "Memuat pos"
 }

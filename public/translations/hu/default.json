@@ -298,7 +298,7 @@
   "hide_settings": "Beállítások elrejtése",
   "wallet": "Pénztárca",
   "undelete": "Visszaállítás",
-  "loading_comments": "Megjegyzések betöltése",
+  "loading_comments": "Kommentárok betöltése",
   "you_blocked_community": "Blokkoltad ezt a közösséget",
   "show": "mutat",
   "plebbit_options": "plebbit lehetőségek",
@@ -360,5 +360,6 @@
   "you_are_admin": "Adminisztrátor vagy ennek a közösségnek",
   "you_are_owner": "Te vagy a közösség tulajdonosa",
   "looking_for_more_posts": "Több bejegyzés keresése",
-  "loading_feed": "Betöltés a hírcsatornára"
+  "loading_feed": "Betöltés a hírcsatornára",
+  "loading_posts": "Bejegyzések betöltése"
 }

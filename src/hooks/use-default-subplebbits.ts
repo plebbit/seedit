@@ -15,6 +15,7 @@ export interface MultisubSubplebbit {
   tags?: string[];
   features?: string[];
   seeditAutoSubscribe?: boolean;
+  lowUptime?: boolean;
 }
 
 let cacheSubplebbits: MultisubSubplebbit[] | null = null;
@@ -34,14 +35,17 @@ export const useDefaultSubplebbits = () => {
           'https://raw.githubusercontent.com/plebbit/temporary-default-subplebbits/master/multisub.json',
           // { cache: 'no-cache' }
         ).then((res) => res.json());
-        cacheSubplebbits = multisub.subplebbits;
+
+        const filteredSubplebbits = multisub.subplebbits.filter((sub: MultisubSubplebbit) => !sub.lowUptime);
+
+        cacheSubplebbits = filteredSubplebbits;
 
         // Cache auto-subscribe addresses when we fetch subplebbits
-        cacheAutoSubscribeAddresses = multisub.subplebbits
+        cacheAutoSubscribeAddresses = filteredSubplebbits
           .filter((sub: MultisubSubplebbit) => sub.seeditAutoSubscribe && sub.address)
           .map((sub: MultisubSubplebbit) => sub.address);
 
-        setSubplebbits(multisub.subplebbits);
+        setSubplebbits(filteredSubplebbits);
       } catch (e) {
         console.warn(e);
       }
@@ -50,6 +54,8 @@ export const useDefaultSubplebbits = () => {
 
   return cacheSubplebbits || subplebbits;
 };
+
+export const getAutoSubscribeAddresses = () => cacheAutoSubscribeAddresses || [];
 
 export const useDefaultSubplebbitAddresses = () => {
   const defaultSubplebbits = useDefaultSubplebbits();
@@ -108,5 +114,3 @@ const getUniqueTags = (multisub: any) => {
 export const useDefaultSubplebbitTags = (subplebbits: any) => {
   return useMemo(() => getUniqueTags(subplebbits), [subplebbits]);
 };
-
-export const getAutoSubscribeAddresses = () => cacheAutoSubscribeAddresses || [];
