@@ -6,10 +6,13 @@ const config: CapacitorConfig = {
   webDir: 'build',
   bundledWebRuntime: false,
   plugins: {
-    "CapacitorHttp": {
-      "enabled": true
-    },
+    CapacitorHttp: {
+      enabled: true,
+    }
   },
+  server: {
+    androidScheme: 'https'
+  }
 };
 
 export default config;
