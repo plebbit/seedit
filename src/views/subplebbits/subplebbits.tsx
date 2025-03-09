@@ -22,11 +22,8 @@ import Markdown from '../../components/markdown';
 import Label from '../../components/post/label';
 import Sidebar from '../../components/sidebar';
 import SubscribeButton from '../../components/subscribe-button';
+import { nsfwTags } from '../../components/constants/nsfwTags';
 import _ from 'lodash';
-
-// https://github.com/plebbit/temporary-default-subplebbits/blob/master/README.md
-// seedit renders the "NSFW" post label only for the tags 'adult' and 'gore'
-export const nsfwTags = ['adult', 'gore'];
 
 interface SubplebbitProps {
   index?: number;
