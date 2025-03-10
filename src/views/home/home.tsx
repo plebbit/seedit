@@ -18,6 +18,7 @@ const Home = () => {
   const { t } = useTranslation();
   const account = useAccount();
   const subplebbitAddresses = useAccount()?.subscriptions || [];
+  const initialLoadCompleteRef = useRef(false);
 
   useRedirectToDefaultSort();
   const { isCheckingSubscriptions } = useAutoSubscribe();
@@ -57,6 +58,14 @@ const Home = () => {
     document.title = `Seedit`;
   }, [t]);
 
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      initialLoadCompleteRef.current = true;
+    }, 500);
+
+    return () => clearTimeout(timer);
+  }, []);
+
   const footerProps = {
     feedLength: feed?.length,
     hasFeedLoaded: !!feed,
@@ -69,34 +78,22 @@ const Home = () => {
     reset,
   };
 
+  const showLoading = isCheckingSubscriptions || (!initialLoadCompleteRef.current && subplebbitAddresses.length === 0);
+  const showNoSubscriptions = initialLoadCompleteRef.current && !isCheckingSubscriptions && subplebbitAddresses.length === 0;
+
   return (
     <div>
       <div className={styles.content}>
         <div className={`${styles.sidebar}`}>
           <Sidebar />
         </div>
-        {isCheckingSubscriptions ? (
+        {showLoading ? (
           <div className={styles.feed}>
             <div className={styles.footer}>
               <LoadingEllipsis string={t('loading_feed')} />
             </div>
           </div>
-        ) : subplebbitAddresses.length > 0 ? (
-          <div className={styles.feed}>
-            <Virtuoso
-              increaseViewportBy={{ bottom: 1200, top: 600 }}
-              totalCount={feed?.length || 0}
-              data={feed}
-              itemContent={(index, post) => <Post index={index} post={post} />}
-              useWindowScroll={true}
-              components={{ Footer: (props) => <FeedFooter {...props} {...footerProps} /> }}
-              endReached={loadMore}
-              ref={virtuosoRef}
-              restoreStateFrom={lastVirtuosoState}
-              initialScrollTop={lastVirtuosoState?.scrollTop}
-            />
-          </div>
-        ) : (
+        ) : showNoSubscriptions ? (
           <div className={styles.noSubscriptions}>
             <br />
             <h1>{account?.author.displayName || account?.author.shortAddress}, this is your home on Seedit</h1>
@@ -108,6 +105,21 @@ const Home = () => {
             <div className={styles.findCommunities}>
               <Link to='/p/all/hot/1m'>find communities on p/all</Link>
             </div>
+          </div>
+        ) : (
+          <div className={styles.feed}>
+            <Virtuoso
+              increaseViewportBy={{ bottom: 1200, top: 1200 }}
+              totalCount={feed?.length || 0}
+              data={feed}
+              itemContent={(index, post) => <Post index={index} post={post} />}
+              useWindowScroll={true}
+              components={{ Footer: (props) => <FeedFooter {...props} {...footerProps} /> }}
+              endReached={loadMore}
+              ref={virtuosoRef}
+              restoreStateFrom={lastVirtuosoState}
+              initialScrollTop={lastVirtuosoState?.scrollTop}
+            />
           </div>
         )}
       </div>
