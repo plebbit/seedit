@@ -77,7 +77,7 @@
 .selected {
   background-color: rgba(0, 0, 0, 0);
   background: none no-repeat scroll center right;
-  background-image: url("/public/assets/buttons/droparrowgray.gif");
+  background-image: url("/assets/buttons/droparrowgray.gif");
   text-decoration-color: currentcolor;
   color: rgb(152, 143, 129);
   position: relative;
@@ -138,7 +138,7 @@
   left: 0;
   top: 0;
   background-position: center;
-  background-image: url('/public/assets/locked-icon.png');
+  background-image: url('/assets/locked-icon.png');
   background-size: 20px 25px;
   background-repeat: no-repeat;
 }

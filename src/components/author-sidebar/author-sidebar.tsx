@@ -3,52 +3,48 @@ import { Link, useLocation, useParams } from 'react-router-dom';
 import {
   useAccount,
   useAccountComments,
-  // useAccountSubplebbits,
-  // AccountSubplebbit,
+  useAccountSubplebbits,
+  AccountSubplebbit,
   useAuthor,
   useAuthorAvatar,
   useAuthorComments,
   useBlock,
-  useComment,
-  // useSubplebbits,
 } from '@plebbit/plebbit-react-hooks';
-// import Plebbit from '@plebbit/plebbit-js/dist/browser/index.js';
+import useSubplebbitsStore from '@plebbit/plebbit-react-hooks/dist/stores/subplebbits';
+import useSubplebbitsPagesStore from '@plebbit/plebbit-react-hooks/dist/stores/subplebbits-pages';
+import Plebbit from '@plebbit/plebbit-js/dist/browser/index.js';
 import styles from './author-sidebar.module.css';
 import { getFormattedTimeDuration } from '../../lib/utils/time-utils';
 import { isAuthorView, isProfileView } from '../../lib/utils/view-utils';
-import {
-  // findAuthorSubplebbits,
-  estimateAuthorKarma,
-} from '../../lib/utils/user-utils';
+import { findAuthorSubplebbits, estimateAuthorKarma } from '../../lib/utils/user-utils';
 import { useTranslation } from 'react-i18next';
-// import { useDefaultSubplebbitAddresses } from '../../lib/utils/addresses-utils';
+import { useDefaultSubplebbitAddresses } from '../../hooks/use-default-subplebbits';
 
-// TODO: uncomment when useSubplebbits({fetch: false}) is implemented, because fetching all subs for this is too expensive
+interface AuthorModeratingListProps {
+  accountSubplebbits: AccountSubplebbit[];
+  authorSubplebbits: string[];
+  isAuthor?: boolean;
+}
 
-// interface AuthorModeratingListProps {
-//   accountSubplebbits: AccountSubplebbit[];
-//   authorSubplebbits: string[];
-//   isAuthor?: boolean;
-// }
+const AuthorModeratingList = ({ accountSubplebbits, authorSubplebbits, isAuthor = false }: AuthorModeratingListProps) => {
+  const rawAddresses = isAuthor ? authorSubplebbits : Object.keys(accountSubplebbits);
+  const subplebbitAddresses = [...new Set(rawAddresses)];
 
-// const AuthorModeratingList = ({ accountSubplebbits, authorSubplebbits, isAuthor = false }: AuthorModeratingListProps) => {
-//   const subplebbitAddresses = isAuthor ? authorSubplebbits : Object.keys(accountSubplebbits);
-
-//   return (
-//     subplebbitAddresses.length > 0 && (
-//       <div className={styles.modList}>
-//         <div className={styles.modListTitle}>moderator of</div>
-//         <ul className={`${styles.modListContent} ${styles.modsList}`}>
-//           {subplebbitAddresses.map((address, index) => (
-//             <li key={index}>
-//               <Link to={`/p/${address}`}>p/{Plebbit.getShortAddress(address)}</Link>
-//             </li>
-//           ))}
-//         </ul>
-//       </div>
-//     )
-//   );
-// };
+  return (
+    subplebbitAddresses.length > 0 && (
+      <div className={styles.modList}>
+        <div className={styles.modListTitle}>moderator of</div>
+        <ul className={`${styles.modListContent} ${styles.modsList}`}>
+          {subplebbitAddresses.map((address, index) => (
+            <li key={index}>
+              <Link to={`/p/${address}`}>p/{Plebbit.getShortAddress(address)}</Link>
+            </li>
+          ))}
+        </ul>
+      </div>
+    )
+  );
+};
 
 const AuthorSidebar = () => {
   const { t } = useTranslation();
@@ -58,7 +54,7 @@ const AuthorSidebar = () => {
   const { blocked, unblock, block } = useBlock({ address: authorAddress });
   const [showBlockConfirm, setShowBlockConfirm] = useState(false);
 
-  const comment = useComment({ commentCid });
+  const comment = useSubplebbitsPagesStore((state) => state.comments[commentCid as string]);
   const { imageUrl: authorPageAvatar } = useAuthorAvatar({ author: comment?.author });
 
   const isInAuthorView = isAuthorView(location.pathname);
@@ -67,23 +63,26 @@ const AuthorSidebar = () => {
   const profileAccount = useAccount();
   const { imageUrl: profilePageAvatar } = useAuthorAvatar({ author: profileAccount?.author });
   const { accountComments } = useAccountComments();
-  // const { accountSubplebbits } = useAccountSubplebbits();
+  const { accountSubplebbits } = useAccountSubplebbits();
   const profileOldestAccountTimestamp = accountComments?.length
     ? Math.min(...accountComments.filter((comment): comment is NonNullable<typeof comment> => comment != null).map((comment) => comment.timestamp))
     : Date.now();
 
-  // const defaultSubplebbitAddresses = useDefaultSubplebbitAddresses();
-  // const accountSubscriptions = profileAccount?.subscriptions || [];
-  // const subscriptionsAndDefaults = [...accountSubscriptions, ...defaultSubplebbitAddresses];
-  // const subplebbits = useSubplebbits({ subplebbitAddresses: subscriptionsAndDefaults });
+  const defaultSubplebbitAddresses = useDefaultSubplebbitAddresses();
+  const accountSubscriptions = profileAccount?.subscriptions || [];
+  const subscriptionsAndDefaults = [...accountSubscriptions, ...defaultSubplebbitAddresses];
+
+  const subplebbits = useSubplebbitsStore((state) => {
+    if (!subscriptionsAndDefaults?.length) return [];
+    return subscriptionsAndDefaults.map((address) => state.subplebbits[address]).filter(Boolean);
+  });
 
   const authorAccount = useAuthor({ authorAddress, commentCid });
   const { authorComments } = useAuthorComments({ authorAddress, commentCid });
   const authorOldestCommentTimestamp = authorComments?.length
     ? Math.min(...authorComments.filter((comment): comment is NonNullable<typeof comment> => comment != null).map((comment) => comment.timestamp))
     : Date.now();
-  // const authorSubplebbits = findAuthorSubplebbits(authorAddress, subplebbits.subplebbits);
-
+  const authorSubplebbits = findAuthorSubplebbits(authorAddress, Object.values(subplebbits));
   const estimatedAuthorKarma = estimateAuthorKarma(authorComments);
 
   const address = isInAuthorView ? params?.authorAddress : isInProfileView ? profileAccount?.author?.shortAddress : '';
@@ -166,9 +165,9 @@ const AuthorSidebar = () => {
           <span className={styles.age}>{t('user_since', { time: getFormattedTimeDuration(oldestCommentTimestamp) })}</span>
         </div>
       </div>
-      {/* {Object.keys(accountSubplebbits).length > 0 && (
+      {(Object.keys(accountSubplebbits).length > 0 || authorSubplebbits.length > 0) && (
         <AuthorModeratingList accountSubplebbits={accountSubplebbits} isAuthor={isInAuthorView} authorSubplebbits={authorSubplebbits} />
-      )} */}
+      )}
     </div>
   );
 };

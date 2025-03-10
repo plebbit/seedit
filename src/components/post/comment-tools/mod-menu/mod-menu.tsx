@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import { autoUpdate, flip, FloatingFocusManager, offset, shift, useClick, useDismiss, useFloating, useId, useInteractions, useRole } from '@floating-ui/react';
 import { Trans, useTranslation } from 'react-i18next';
-import { PublishCommentModerationOptions, useComment, useEditedComment, usePublishCommentModeration } from '@plebbit/plebbit-react-hooks';
+import { PublishCommentModerationOptions, useEditedComment, usePublishCommentModeration } from '@plebbit/plebbit-react-hooks';
+import useSubplebbitsPagesStore from '@plebbit/plebbit-react-hooks/dist/stores/subplebbits-pages';
 import styles from './mod-menu.module.css';
 import { alertChallengeVerificationFailed } from '../../../../lib/utils/challenge-utils';
 import challengesStore from '../../../../stores/use-challenges-store';
@@ -16,7 +17,7 @@ type ModMenuProps = {
 const ModMenu = ({ cid, isCommentAuthorMod }: ModMenuProps) => {
   const { t } = useTranslation();
   let post: any;
-  const comment = useComment({ commentCid: cid });
+  const comment = useSubplebbitsPagesStore((state) => state.comments[cid]);
   const { editedComment } = useEditedComment({ comment });
   if (editedComment) {
     post = editedComment;

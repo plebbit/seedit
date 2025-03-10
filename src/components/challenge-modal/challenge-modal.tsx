@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { FloatingFocusManager, useClick, useDismiss, useFloating, useId, useInteractions, useRole } from '@floating-ui/react';
-import { Challenge as ChallengeType, useComment } from '@plebbit/plebbit-react-hooks';
+import { Challenge as ChallengeType } from '@plebbit/plebbit-react-hooks';
+import useSubplebbitsPagesStore from '@plebbit/plebbit-react-hooks/dist/stores/subplebbits-pages';
 import { useTranslation } from 'react-i18next';
 import useChallenges from '../../stores/use-challenges-store';
 import styles from './challenge-modal.module.css';
@@ -21,7 +22,8 @@ const Challenge = ({ challenge, closeModal }: ChallengeProps) => {
 
   const { parentCid, shortSubplebbitAddress, subplebbitAddress } = publication || {};
   const { t } = useTranslation();
-  const parentComment = useComment({ commentCid: parentCid });
+  const parentComment = useSubplebbitsPagesStore((state) => state.comments[parentCid]);
+
   const parentAddress = parentComment?.author?.shortAddress;
 
   const [currentChallengeIndex, setCurrentChallengeIndex] = useState(0);

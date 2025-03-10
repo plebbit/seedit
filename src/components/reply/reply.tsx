@@ -1,5 +1,7 @@
 import { Fragment, useEffect, useMemo, useState } from 'react';
-import { Comment, useAccountComment, useAuthorAddress, useAuthorAvatar, useBlock, useComment, useEditedComment, useSubplebbit } from '@plebbit/plebbit-react-hooks';
+import { Comment, useAccountComment, useAuthorAddress, useAuthorAvatar, useBlock, useEditedComment } from '@plebbit/plebbit-react-hooks';
+import useSubplebbitsStore from '@plebbit/plebbit-react-hooks/dist/stores/subplebbits';
+import useSubplebbitsPagesStore from '@plebbit/plebbit-react-hooks/dist/stores/subplebbits-pages';
 import { flattenCommentsPages } from '@plebbit/plebbit-react-hooks/dist/lib/utils';
 import { Link, useLocation, useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
@@ -179,7 +181,7 @@ type ParentLinkProps = {
 };
 
 const ParentLink = ({ postCid }: ParentLinkProps) => {
-  const parent = useComment({ commentCid: postCid });
+  const parent = useSubplebbitsPagesStore((state) => state.comments[postCid as string]);
   const { author, cid, content, title, subplebbitAddress } = parent || {};
   const { t } = useTranslation();
   const postTitle = (title?.length > 300 ? title?.slice(0, 300) + '...' : title) || (content?.length > 300 ? content?.slice(0, 300) + '...' : content);
@@ -203,9 +205,9 @@ const ParentLink = ({ postCid }: ParentLinkProps) => {
 
 const InboxParentLink = ({ commentCid }: ParentLinkProps) => {
   const { t } = useTranslation();
-  const inboxComment = useComment({ commentCid });
+  const inboxComment = useSubplebbitsPagesStore((state) => state.comments[commentCid as string]);
   const { postCid, parentCid } = inboxComment || {};
-  const parent = useComment({ commentCid: inboxComment?.postCid });
+  const parent = useSubplebbitsPagesStore((state) => state.comments[inboxComment?.postCid]);
   const { cid, content, title, subplebbitAddress } = parent || {};
   const postTitle = (title?.length > 300 ? title?.slice(0, 300) + '...' : title) || (content?.length > 300 ? content?.slice(0, 300) + '...' : content);
 
@@ -225,7 +227,7 @@ const InboxParentLink = ({ commentCid }: ParentLinkProps) => {
 const InboxShowParentButton = ({ parentCid }: { parentCid: string | undefined }) => {
   const { t } = useTranslation();
   const [showParent, setShowParent] = useState(false);
-  const parentComment = useComment({ commentCid: parentCid });
+  const parentComment = useSubplebbitsPagesStore((state) => state.comments[parentCid as string]);
   const { content, subplebbitAddress } = parentComment || {};
 
   return showParent ? (
@@ -303,12 +305,12 @@ const Reply = ({ cidOfReplyWithContext, depth = 0, isSingleComment, isSingleRepl
     timestamp,
     upvoteCount,
   } = reply || {};
-  const subplebbit = useSubplebbit({ subplebbitAddress });
+  const subplebbit = useSubplebbitsStore((state) => state.subplebbits[subplebbitAddress]);
 
   const [showSpoiler, setShowSpoiler] = useState(false);
 
   const pendingReply = useAccountComment({ commentIndex: reply?.index });
-  const parentOfPendingReply = useComment({ commentCid: pendingReply?.parentCid });
+  const parentOfPendingReply = useSubplebbitsPagesStore((state) => state.comments[pendingReply?.parentCid]);
 
   const location = useLocation();
   const params = useParams();
@@ -374,7 +376,7 @@ const Reply = ({ cidOfReplyWithContext, depth = 0, isSingleComment, isSingleRepl
     </span>
   );
 
-  const post = useComment({ commentCid: postCid });
+  const post = useSubplebbitsPagesStore((state) => state.comments[postCid as string]);
 
   return (
     <div className={styles.reply}>

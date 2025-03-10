@@ -2,7 +2,8 @@ import { useEffect, useState } from 'react';
 import { Link, useLocation, useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import Plebbit from '@plebbit/plebbit-js/dist/browser/index.js';
-import { useAccount, useSubplebbit } from '@plebbit/plebbit-react-hooks';
+import { useAccount } from '@plebbit/plebbit-react-hooks';
+import useSubplebbitsStore from '@plebbit/plebbit-react-hooks/dist/stores/subplebbits';
 import { sortTypes } from '../../app';
 import {
   getAboutLink,
@@ -356,7 +357,7 @@ const Header = () => {
   const [theme] = useTheme();
   const location = useLocation();
   const params = useParams();
-  const subplebbit = useSubplebbit({ subplebbitAddress: params.subplebbitAddress });
+  const subplebbit = useSubplebbitsStore((state) => state.subplebbits[params?.subplebbitAddress as string]);
   const { suggested, title, shortAddress } = subplebbit || {};
 
   const isMobile = useWindowWidth() < 640;

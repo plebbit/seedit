@@ -11,11 +11,11 @@
 }
 
 .joinButton {
-  background-image: url('/public/assets/buttons/button-background-green.png');
+  background-image: url('/assets/buttons/button-background-green.png');
 }
 
 .leaveButton {
-  background-image: url('/public/assets/buttons/button-background-red.png');
+  background-image: url('/assets/buttons/button-background-red.png');
 }
 
 .hidden {

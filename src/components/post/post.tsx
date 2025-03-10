@@ -1,7 +1,9 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link, useLocation, useParams } from 'react-router-dom';
-import { Comment, useAuthorAddress, useBlock, useComment, useEditedComment, useSubplebbit, useSubscribe } from '@plebbit/plebbit-react-hooks';
+import { Comment, useAuthorAddress, useBlock, useEditedComment, useSubscribe } from '@plebbit/plebbit-react-hooks';
+import useSubplebbitsStore from '@plebbit/plebbit-react-hooks/dist/stores/subplebbits';
+import useSubplebbitsPagesStore from '@plebbit/plebbit-react-hooks/dist/stores/subplebbits-pages';
 import { getHasThumbnail } from '../../lib/utils/media-utils';
 import { getPostScore, formatScore } from '../../lib/utils/post-utils';
 import { getFormattedTimeAgo, formatLocalizedUTCTimestamp } from '../../lib/utils/time-utils';
@@ -77,7 +79,8 @@ interface PostProps {
 
 const Post = ({ index, post = {} }: PostProps) => {
   // handle single comment thread
-  const op = useComment({ commentCid: post?.parentCid ? post?.postCid : '' });
+  const op = useSubplebbitsPagesStore((state) => state.comments[post?.parentCid ? post?.postCid : '']);
+
   if (post?.parentCid) {
     post = op;
   }
@@ -121,7 +124,7 @@ const Post = ({ index, post = {} }: PostProps) => {
   const postDate = formatLocalizedUTCTimestamp(timestamp, language);
   const params = useParams();
   const location = useLocation();
-  const subplebbit = useSubplebbit({ subplebbitAddress });
+  const subplebbit = useSubplebbitsStore((state) => state.subplebbits[subplebbitAddress]);
 
   const authorRole = subplebbit?.roles?.[post.author?.address]?.role;
 

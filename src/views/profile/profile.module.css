@@ -69,7 +69,7 @@ div[data-viewport-type="window"] {
 .selected {
   position: relative;
   background: none no-repeat scroll center right;
-  background-image: url("/public/assets/buttons/droparrowgray.gif");
+  background-image: url("/assets/buttons/droparrowgray.gif");
   padding-right: 21px;
   text-decoration: underline;
   color: gray;

@@ -45,11 +45,11 @@ a {
 }
 
 .online {
-  background-image: url('/public/assets/indicator-online.png');
+  background-image: url('/assets/indicator-online.png');
 }
 
 .offline {
-  background-image: url('/public/assets/indicator-offline.png');
+  background-image: url('/assets/indicator-offline.png');
 }
 
 .onlineLine {
@@ -209,7 +209,7 @@ a {
 }
 
 .communitySettingsTool::before {
-  background-image: url('/public/assets/community_settings.png');
+  background-image: url('/assets/community_settings.png');
   background-size: 16px 16px;
   height: 16px;
   width: 16px;
@@ -354,7 +354,7 @@ a {
 }
 
 .moderatorStatus:before {
-  background-image: url('/public/assets/mod.png');
+  background-image: url('/assets/mod.png');
   background-repeat: no-repeat;
   height: 15px;
   width: 14px;

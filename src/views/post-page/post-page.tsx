@@ -1,6 +1,7 @@
 import { useEffect, useState, useRef, useCallback, useMemo } from 'react';
 import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
 import { Comment, useAccount, useAccountComment, useComment, useSubplebbit } from '@plebbit/plebbit-react-hooks';
+import useSubplebbitsPagesStore from '@plebbit/plebbit-react-hooks/dist/stores/subplebbits-pages';
 import { useTranslation } from 'react-i18next';
 import findTopParentCidOfReply from '../../lib/utils/cid-utils';
 import { sortByBest } from '../../lib/utils/post-utils';
@@ -194,10 +195,9 @@ const Post = ({ post }: { post: Comment }) => {
 const PostWithContext = ({ post }: { post: Comment }) => {
   const { t } = useTranslation();
   const { deleted, locked, postCid, removed, state, subplebbitAddress } = post || {};
-
-  const postComment = useComment({ commentCid: post?.postCid });
+  const postComment = useSubplebbitsPagesStore((state) => state.comments[post?.postCid]);
   const topParentCid = findTopParentCidOfReply(post.cid, postComment);
-  const topParentComment = useComment({ commentCid: topParentCid || '' });
+  const topParentComment = useSubplebbitsPagesStore((state) => state.comments[topParentCid as string]);
 
   const stateString = useStateString(post);
 

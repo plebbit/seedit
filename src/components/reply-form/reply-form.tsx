@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useSubplebbit } from '@plebbit/plebbit-react-hooks';
+import useSubplebbitsStore from '@plebbit/plebbit-react-hooks/dist/stores/subplebbits';
 import { isValidURL } from '../../lib/utils/url-utils';
 import useIsSubplebbitOffline from '../../hooks/use-is-subplebbit-offline';
 import usePublishReply from '../../hooks/use-publish-reply';
@@ -98,7 +98,7 @@ const ReplyForm = ({ cid, isReplyingToReply, hideReplyForm, subplebbitAddress, p
   const urlRef = useRef<HTMLInputElement>(null);
   const spoilerRef = useRef<HTMLInputElement>(null);
 
-  const subplebbit = useSubplebbit({ subplebbitAddress });
+  const subplebbit = useSubplebbitsStore((state) => state.subplebbits[subplebbitAddress]);
   const { isOffline, offlineTitle } = useIsSubplebbitOffline(subplebbit);
 
   useEffect(() => {
