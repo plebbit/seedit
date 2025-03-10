@@ -46,10 +46,24 @@ interface EmbedComponentProps {
   parsedUrl: URL;
 }
 
-const youtubeHosts = new Set<string>(['youtube.com', 'www.youtube.com', 'youtu.be', 'www.youtu.be', 'm.youtube.com', 'music.youtube.com']);
+const youtubeHosts = new Set<string>([
+  'youtube.com',
+  'www.youtube.com',
+  'youtu.be',
+  'www.youtu.be',
+  'm.youtube.com',
+  'music.youtube.com',
+  // working Invidious instances - https://docs.invidious.io/instances/ - https://uptime.invidious.io/
+  'yewtu.be',
+  'inv.nadeko.net',
+  'yt.artemislena.eu',
+  'invidious.nerdvpn.de',
+]);
 
 const YoutubeEmbed = ({ parsedUrl }: EmbedComponentProps) => {
   let embedSrc = '';
+
+  const isInvidious = parsedUrl.host !== 'youtube.com' && parsedUrl.host !== 'www.youtube.com' && parsedUrl.host !== 'youtu.be' && parsedUrl.host !== 'www.youtu.be';
 
   if (parsedUrl.searchParams.has('list')) {
     const playlistId = parsedUrl.searchParams.get('list');
@@ -57,15 +71,24 @@ const YoutubeEmbed = ({ parsedUrl }: EmbedComponentProps) => {
   } else {
     let videoId = parsedUrl.searchParams.get('v');
 
-    if (!videoId && parsedUrl.host.includes('youtu.be')) {
-      videoId = parsedUrl.pathname.substring(1);
+    if (!videoId) {
+      if (parsedUrl.host.includes('youtu.be')) {
+        videoId = parsedUrl.pathname.substring(1);
+      } else if (parsedUrl.pathname.includes('/shorts/')) {
+        videoId = parsedUrl.pathname.split('/shorts/')[1];
+      } else if (isInvidious) {
+        if (parsedUrl.pathname.startsWith('/watch')) {
+          videoId = parsedUrl.searchParams.get('v');
+        } else {
+          videoId = parsedUrl.pathname.split('/').pop() || null;
+        }
+      }
     }
 
     if (videoId) {
       embedSrc = `https://www.youtube.com/embed/${videoId}`;
     }
   }
-
   if (embedSrc) {
     return (
       <iframe
