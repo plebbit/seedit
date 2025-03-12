@@ -8,7 +8,7 @@ import startIpfs from './start-ipfs.js';
 import './start-plebbit-rpc.js';
 import { URL, fileURLToPath } from 'node:url';
 import contextMenu from 'electron-context-menu';
-import packageJson from '../package.json' assert { type: 'json' };
+import packageJson from '../package.json' with { type: 'json' };
 const dirname = path.join(path.dirname(fileURLToPath(import.meta.url)));
 
 let startIpfsError;
