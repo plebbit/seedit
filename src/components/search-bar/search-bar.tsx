@@ -6,9 +6,10 @@ import { isHomeAboutView, isSubplebbitAboutView } from '../../lib/utils/view-uti
 
 interface SearchBarProps {
   isFocused?: boolean;
+  onExpandoChange?: (expanded: boolean) => void;
 }
 
-const SearchBar = ({ isFocused = false }: SearchBarProps) => {
+const SearchBar = ({ isFocused = false, onExpandoChange }: SearchBarProps) => {
   const searchBarRef = useRef<HTMLFormElement>(null);
   const searchInputRef = useRef<HTMLInputElement>(null);
   const wrapperRef = useRef<HTMLDivElement>(null);
@@ -60,8 +61,12 @@ const SearchBar = ({ isFocused = false }: SearchBarProps) => {
     }
   };
 
+  useEffect(() => {
+    onExpandoChange?.(showExpando);
+  }, [showExpando, onExpandoChange]);
+
   return (
-    <div ref={wrapperRef} className={isInHomeAboutView || isInSubplebbitAboutView ? styles.mobileInfobar : ''}>
+    <div ref={wrapperRef} className={`${styles.searchBarWrapper} ${isInHomeAboutView || isInSubplebbitAboutView ? styles.mobileInfobar : ''}`}>
       <form className={styles.searchBar} ref={searchBarRef} onSubmit={handleSearchSubmit}>
         <input
           type='text'
