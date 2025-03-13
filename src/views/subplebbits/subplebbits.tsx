@@ -22,7 +22,7 @@ import Markdown from '../../components/markdown';
 import Label from '../../components/post/label';
 import Sidebar from '../../components/sidebar';
 import SubscribeButton from '../../components/subscribe-button';
-import { nsfwTags } from '../../components/constants/nsfwTags';
+import { nsfwTags } from '../../constants/nsfwTags';
 import _ from 'lodash';
 
 interface SubplebbitProps {

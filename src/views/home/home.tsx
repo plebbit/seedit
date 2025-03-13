@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import { Virtuoso, VirtuosoHandle, StateSnapshot } from 'react-virtuoso';
 import { useAccount, useFeed } from '@plebbit/plebbit-react-hooks';
 import { useTranslation } from 'react-i18next';
@@ -11,6 +11,7 @@ import Sidebar from '../../components/sidebar';
 import useTimeFilter from '../../hooks/use-time-filter';
 import useRedirectToDefaultSort from '../../hooks/use-redirect-to-default-sort';
 import { useAutoSubscribe } from '../../hooks/use-auto-subscribe';
+import { sortTypes } from '../../constants/sortTypes';
 
 const lastVirtuosoStates: { [key: string]: StateSnapshot } = {};
 
@@ -24,7 +25,15 @@ const Home = () => {
   const { isCheckingSubscriptions } = useAutoSubscribe();
 
   const params = useParams<{ sortType?: string; timeFilterName?: string }>();
-  const sortType = params?.sortType || 'hot';
+  const sortType = sortTypes.includes(params?.sortType || '') ? params?.sortType : sortTypes[0];
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (params?.sortType && !sortTypes.includes(params.sortType)) {
+      navigate('/not-found');
+    }
+  }, [params?.sortType, navigate]);
+
   const { timeFilterName, timeFilterSeconds } = useTimeFilter();
   const currentTimeFilterName = params.timeFilterName || timeFilterName || '1m';
 
