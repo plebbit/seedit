@@ -340,7 +340,7 @@ const Sidebar = ({ comment, isSubCreatedButNotYetPublished, settings, subplebbit
         {roles && Object.keys(roles).length > 0 && <ModeratorsList roles={roles} />}
         {address && !(moderatorRole || isOwner) && (
           <div className={styles.readOnlySettingsLink}>
-            <Link to={`/p/${address}/settings`}>{t('read_only_community_settings')}</Link>
+            <Link to={`/p/${address}/settings`}>{t('community_settings')}</Link>
           </div>
         )}
         {isInSubplebbitsView && (
