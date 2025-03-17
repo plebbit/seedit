@@ -256,7 +256,7 @@
   "settings_saved": "प/{{subplebbitAddress}} के लिए सेटिंग्स सहेजी गईं",
   "mod_edit": "मॉड संपादन",
   "continue_thread": "इस धागे को जारी रखें",
-  "mod_reason": "मॉड कारण",
+  "mod_edit_reason": "मॉड संपादन कारण",
   "double_confirm": "क्या आप वास्तव में सुनिश्चित हैं? यह क्रिया अपरिवर्तनीय है।",
   "crypto_address_not_yours": "क्रिप्टो पता दूसरे खाते से संबंधित है।",
   "crypto_address_yours": "क्रिप्टो पता इस खाते से संबंधित है।",

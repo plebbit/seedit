@@ -256,7 +256,7 @@
   "settings_saved": "Asetukset tallennettu p/{{subplebbitAddress}} varten",
   "mod_edit": "moderoinnin muokkaus",
   "continue_thread": "jatka tätä säiettä",
-  "mod_reason": "mod-syy",
+  "mod_edit_reason": "Moderaattorin muokkausperuste",
   "double_confirm": "Oletko varma? Tämä toiminto on peruuttamaton.",
   "crypto_address_not_yours": "Krypto-osoite kuuluu toiseen tiliin.",
   "crypto_address_yours": "Krypto-osoite kuuluu tähän tiliin.",

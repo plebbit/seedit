@@ -256,7 +256,7 @@
   "settings_saved": "Impostazioni salvate per p/{{subplebbitAddress}}",
   "mod_edit": "modifica dei moderatori",
   "continue_thread": "continua questa discussione",
-  "mod_reason": "motivo della moderazione",
+  "mod_edit_reason": "Motivo modifica moderatore",
   "double_confirm": "Sei davvero sicuro? Questa azione è irreversibile.",
   "crypto_address_not_yours": "L'indirizzo cripto appartiene a un altro account.",
   "crypto_address_yours": "L'indirizzo cripto appartiene a questo account.",

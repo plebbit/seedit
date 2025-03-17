@@ -256,7 +256,7 @@
   "settings_saved": "Paramètres enregistrés pour p/{{subplebbitAddress}}",
   "mod_edit": "mod edit",
   "continue_thread": "continuer ce fil de discussion",
-  "mod_reason": "raison du modérateur",
+  "mod_edit_reason": "Raison de modification du modérateur",
   "double_confirm": "Êtes-vous vraiment sûr? Cette action est irréversible.",
   "crypto_address_not_yours": "L'adresse crypto appartient à un autre compte.",
   "crypto_address_yours": "L'adresse crypto appartient à ce compte.",

@@ -256,7 +256,7 @@
   "settings_saved": "Ustawienia zapisane dla p/{{subplebbitAddress}}",
   "mod_edit": "edycja mod",
   "continue_thread": "kontynuuj ten wątek",
-  "mod_reason": "powód mod",
+  "mod_edit_reason": "Powód edycji przez moderatora",
   "double_confirm": "Jesteś naprawdę pewien? Ta akcja jest nieodwracalna.",
   "crypto_address_not_yours": "Adres kryptowaluty należy do innego konta.",
   "crypto_address_yours": "Adres kryptowaluty należy do tego konta.",

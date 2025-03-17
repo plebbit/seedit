@@ -225,3 +225,7 @@
     padding-left: 5px;
   }
 }
+
+.modReason {
+  color: var(--text-info);
+}

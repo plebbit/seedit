@@ -256,7 +256,7 @@
   "settings_saved": "Pengaturan disimpan untuk p/{{subplebbitAddress}}",
   "mod_edit": "edit mod",
   "continue_thread": "lanjutkan utas ini",
-  "mod_reason": "alasan mod",
+  "mod_edit_reason": "Alasan edit mod",
   "double_confirm": "Apakah Anda benar-benar yakin? Tindakan ini tidak dapat diurungkan.",
   "crypto_address_not_yours": "Alamat kripto milik akun lain.",
   "crypto_address_yours": "Alamat kripto milik akun ini.",

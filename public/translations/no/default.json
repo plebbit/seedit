@@ -256,7 +256,7 @@
   "settings_saved": "Innstillinger lagret for p/{{subplebbitAddress}}",
   "mod_edit": "moderatorendring",
   "continue_thread": "fortsett denne tråden",
-  "mod_reason": "mod grunn",
+  "mod_edit_reason": "Mod redigeringsgrunn",
   "double_confirm": "Er du virkelig sikker? Denne handlingen er ugjenkallelig.",
   "crypto_address_not_yours": "Crypto-adressen tilhører en annen konto.",
   "crypto_address_yours": "Crypto-adressen tilhører denne kontoen.",

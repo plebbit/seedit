@@ -256,7 +256,7 @@
   "settings_saved": "Nastavení uloženo pro p/{{subplebbitAddress}}",
   "mod_edit": "úprava moderátora",
   "continue_thread": "pokračovat v tématu",
-  "mod_reason": "důvod mod",
+  "mod_edit_reason": "Důvod úpravy moderátorem",
   "double_confirm": "Opravdu jste si jisti? Tato akce je nevratná.",
   "crypto_address_not_yours": "Adresa kryptoměny patří k jinému účtu.",
   "crypto_address_yours": "Adresa kryptoměny patří k tomuto účtu.",

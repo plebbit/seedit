@@ -375,3 +375,7 @@
 .submitter:hover {
   text-decoration: underline;
 }
+
+.modReason {
+  color: var(--text-info);
+}

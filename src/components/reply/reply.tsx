@@ -28,6 +28,7 @@ import Markdown from '../markdown';
 import { getHostname } from '../../lib/utils/url-utils';
 import useAvatarVisibilityStore from '../../stores/use-avatar-visibility-store';
 import { formatScore, getReplyScore } from '../../lib/utils/post-utils';
+import _ from 'lodash';
 
 interface ReplyAuthorProps {
   address: string;
@@ -486,8 +487,8 @@ const Reply = ({ cidOfReplyWithContext, depth = 0, isSingleComment, isSingleRepl
                         <Markdown content={content} />
                       ))}
                     {reason && (
-                      <p>
-                        {t('mod_reason')}: {reason}
+                      <p className={styles.modReason}>
+                        {_.lowerCase(t('mod_edit_reason'))}: {reason}
                       </p>
                     )}
                     {edit?.reason && !(removed || deleted) && (

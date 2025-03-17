@@ -256,7 +256,7 @@
   "settings_saved": "הגדרות נשמרו עבור p/{{subplebbitAddress}}",
   "mod_edit": "עריכת מנהל",
   "continue_thread": "המשך את השרשור הזה",
-  "mod_reason": "סיבת המנהל",
+  "mod_edit_reason": "סיבת עריכת המנהל",
   "double_confirm": "האם אתה באמת בטוח? הפעולה הזו היא לא הפיכה.",
   "crypto_address_not_yours": "כתובת המטבע הקריפטוגרפי שייכת לחשבון אחר.",
   "crypto_address_yours": "כתובת המטבע הקריפטוגרפי שייכת לחשבון זה.",

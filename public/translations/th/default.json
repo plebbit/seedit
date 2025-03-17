@@ -256,7 +256,7 @@
   "settings_saved": "บันทึกการตั้งค่าสำหรับ p/{{subplebbitAddress}}",
   "mod_edit": "mod edit",
   "continue_thread": "ดำเนินการเรื่องนี้ต่อ",
-  "mod_reason": "เหตุผลของ mod",
+  "mod_edit_reason": "เหตุผลในการแก้ไขของม็อด",
   "double_confirm": "คุณแน่ใจหรือไม่? การดำเนินการนี้ไม่สามารถย้อนกลับได้",
   "crypto_address_not_yours": "ที่อยู่คริปโตเป็นของบัญชีอื่น",
   "crypto_address_yours": "ที่อยู่คริปโตเป็นของบัญชีนี้",

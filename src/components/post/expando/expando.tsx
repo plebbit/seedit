@@ -7,6 +7,7 @@ import { useIsNsfwSubplebbit } from '../../../hooks/use-is-nsfw-subplebbit';
 import styles from './expando.module.css';
 import Embed from '../embed';
 import Markdown from '../../markdown';
+import _ from 'lodash';
 
 interface ExpandoProps {
   authorEditReason?: string;
@@ -118,8 +119,8 @@ const Expando = ({
           <div className={styles.markdown}>
             <Markdown content={content} />
             {modEditReason && (
-              <p>
-                {t('mod_reason')}: {modEditReason}
+              <p className={styles.modReason}>
+                {_.lowerCase(t('mod_edit_reason'))}: {modEditReason}
               </p>
             )}
             {authorEditReason && !(removed || deleted) && (

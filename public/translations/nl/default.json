@@ -256,7 +256,7 @@
   "settings_saved": "Instellingen opgeslagen voor p/{{subplebbitAddress}}",
   "mod_edit": "mod-bewerking",
   "continue_thread": "ga verder in deze thread",
-  "mod_reason": "mod reden",
+  "mod_edit_reason": "Reden van mod-bewerking",
   "double_confirm": "Weet u het zeker? Deze actie is onomkeerbaar.",
   "crypto_address_not_yours": "Crypto-adres behoort tot een andere account.",
   "crypto_address_yours": "Crypto-adres behoort tot deze account.",

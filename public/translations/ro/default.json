@@ -256,7 +256,7 @@
   "settings_saved": "Setările au fost salvate pentru p/{{subplebbitAddress}}",
   "mod_edit": "editare mod",
   "continue_thread": "continuați acest fir de discuție",
-  "mod_reason": "motivul mod",
+  "mod_edit_reason": "Motivul editării de către moderator",
   "double_confirm": "Sunteți sigur? Această acțiune este ireversibilă.",
   "crypto_address_not_yours": "Adresa crypto aparține unui alt cont.",
   "crypto_address_yours": "Adresa crypto aparține acestui cont.",

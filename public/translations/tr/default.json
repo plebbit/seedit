@@ -256,7 +256,7 @@
   "settings_saved": "Ayarlar p/{{subplebbitAddress}} için kaydedildi",
   "mod_edit": "mod düzenle",
   "continue_thread": "bu konuyu devam ettir",
-  "mod_reason": "mod nedeni",
+  "mod_edit_reason": "Mod düzenleme nedeni",
   "double_confirm": "Gerçekten emin misiniz? Bu eylem geri alınamaz.",
   "crypto_address_not_yours": "Kripto adres başka bir hesaba aittir.",
   "crypto_address_yours": "Kripto adres bu hesaba aittir.",

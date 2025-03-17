@@ -256,7 +256,7 @@
   "settings_saved": "تنظیمات برای p/{{subplebbitAddress}} ذخیره شد",
   "mod_edit": "ویرایش مدیر",
   "continue_thread": "ادامه این موضوع",
-  "mod_reason": "دلیل مدیر",
+  "mod_edit_reason": "دلیل ویرایش مدیر",
   "double_confirm": "آیا مطمئن هستید؟ این عمل غیرقابل برگشت است.",
   "crypto_address_not_yours": "آدرس رمزارز به حساب دیگری تعلق دارد.",
   "crypto_address_yours": "آدرس رمزارز به این حساب تعلق دارد.",
