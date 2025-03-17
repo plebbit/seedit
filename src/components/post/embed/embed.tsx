@@ -300,9 +300,10 @@ const soundcloudHosts = new Set(['soundcloud.com', 'www.soundcloud.com', 'on.sou
 
 // not officially documented https://stackoverflow.com/questions/20870270/how-to-get-soundcloud-embed-code-by-soundcloud-com-url
 const SoundcloudEmbed = ({ parsedUrl }: EmbedComponentProps) => {
+  const isSet = parsedUrl.pathname.includes('/sets/');
   return (
     <iframe
-      className={styles.soundcloudEmbed}
+      className={isSet ? styles.soundcloudSetsEmbed : styles.soundcloudEmbed}
       height='100%'
       width='100%'
       referrerPolicy='no-referrer'
