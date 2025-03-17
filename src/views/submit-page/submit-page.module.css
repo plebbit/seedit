@@ -205,6 +205,10 @@
   font-size: 15px;
 }
 
+.options .option {
+  display: block;
+}
+
 .options input {
   margin: 2px .5em 0 0;
 }

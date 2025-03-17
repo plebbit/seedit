@@ -19,6 +19,7 @@ const CommentEditForm = ({ commentCid, hideCommentEditForm }: CommentEditFormPro
   const [showOptions, setShowOptions] = useState(false);
   const [showFormattingHelp, setShowFormattingHelp] = useState(false);
   const spoilerClass = showOptions ? styles.spoilerVisible : styles.spoilerHidden;
+  const nsfwClass = showOptions ? styles.spoilerVisible : styles.spoilerHidden;
   const textRef = useRef<HTMLTextAreaElement>(null);
 
   let post: any;
@@ -31,13 +32,14 @@ const CommentEditForm = ({ commentCid, hideCommentEditForm }: CommentEditFormPro
     post = comment;
   }
 
-  const { content, edit, spoiler, subplebbitAddress } = post || {};
+  const { content, edit, spoiler, nsfw, subplebbitAddress } = post || {};
 
   const defaultPublishOptions: PublishCommentEditOptions = {
     commentCid,
     content,
     reason: edit?.reason ?? '',
     spoiler,
+    nsfw,
     subplebbitAddress,
     onChallenge: (...args: any) => addChallenge([...args, post]),
     onChallengeVerification: alertChallengeVerificationFailed,
@@ -68,6 +70,17 @@ const CommentEditForm = ({ commentCid, hideCommentEditForm }: CommentEditFormPro
                 className={styles.checkbox}
                 checked={publishCommentEditOptions.spoiler}
                 onChange={(e) => setPublishCommentEditOptions((state) => ({ ...state, spoiler: e.target.checked }))}
+              />
+            </label>
+          </span>
+          <span className={`${styles.spoiler} ${nsfwClass}`}>
+            <label>
+              {t('nsfw')}:{' '}
+              <input
+                type='checkbox'
+                className={styles.checkbox}
+                checked={publishCommentEditOptions.nsfw}
+                onChange={(e) => setPublishCommentEditOptions((state) => ({ ...state, nsfw: e.target.checked }))}
               />
             </label>
           </span>

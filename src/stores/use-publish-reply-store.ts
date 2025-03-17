@@ -8,6 +8,7 @@ type ReplyState = {
   content: { [parentCid: string]: string | undefined };
   link: { [parentCid: string]: string | undefined };
   spoiler: { [parentCid: string]: boolean | undefined };
+  nsfw: { [parentCid: string]: boolean | undefined };
   publishCommentOptions: PublishCommentOptions;
   setReplyStore: (comment: Comment) => void;
   resetReplyStore: (parentCid: string) => void;
@@ -19,10 +20,11 @@ const usePublishReplyStore = create<ReplyState>((set) => ({
   content: {},
   link: {},
   spoiler: {},
+  nsfw: {},
   publishCommentOptions: {},
   setReplyStore: (comment: Comment) =>
     set((state) => {
-      const { subplebbitAddress, parentCid, content, link, spoiler } = comment;
+      const { subplebbitAddress, parentCid, content, link, spoiler, nsfw } = comment;
       const publishCommentOptions = {
         subplebbitAddress,
         parentCid,
@@ -30,6 +32,7 @@ const usePublishReplyStore = create<ReplyState>((set) => ({
         content,
         link,
         spoiler,
+        nsfw,
         onChallenge: (...args: any) => addChallenge(args),
         onChallengeVerification: (challengeVerification: ChallengeVerification, comment: Comment) => {
           alertChallengeVerificationFailed(challengeVerification, comment);
@@ -43,6 +46,7 @@ const usePublishReplyStore = create<ReplyState>((set) => ({
         content: { ...state.content, [parentCid]: content },
         link: { ...state.link, [parentCid]: link },
         spoiler: { ...state.spoiler, [parentCid]: spoiler },
+        nsfw: { ...state.nsfw, [parentCid]: nsfw },
         publishCommentOptions: { ...state.publishCommentOptions, [parentCid]: publishCommentOptions },
       };
     }),
@@ -52,6 +56,7 @@ const usePublishReplyStore = create<ReplyState>((set) => ({
       content: { ...state.content, [parentCid]: undefined },
       link: { ...state.link, [parentCid]: undefined },
       spoiler: { ...state.spoiler, [parentCid]: undefined },
+      nsfw: { ...state.nsfw, [parentCid]: undefined },
       publishCommentOptions: { ...state.publishCommentOptions, [parentCid]: undefined },
     })),
 }));

@@ -4,10 +4,11 @@ import usePublishReplyStore from '../stores/use-publish-reply-store';
 
 const usePublishReply = ({ cid, subplebbitAddress, postCid }: { cid: string; subplebbitAddress: string; postCid: string | undefined }) => {
   const parentCid = cid;
-  const { content, link, spoiler, publishCommentOptions } = usePublishReplyStore((state) => ({
+  const { content, link, spoiler, nsfw, publishCommentOptions } = usePublishReplyStore((state) => ({
     content: state.content[parentCid],
     link: state.link[parentCid],
     spoiler: state.spoiler[parentCid],
+    nsfw: state.nsfw[parentCid],
     publishCommentOptions: state.publishCommentOptions[parentCid],
   }));
 
@@ -24,6 +25,7 @@ const usePublishReply = ({ cid, subplebbitAddress, postCid }: { cid: string; sub
           content: newContent === '' ? undefined : newContent,
           link: link || undefined,
           spoiler: spoiler || false,
+          nsfw: nsfw || false,
         }),
       link: (newLink: string) =>
         setReplyStore({
@@ -33,6 +35,7 @@ const usePublishReply = ({ cid, subplebbitAddress, postCid }: { cid: string; sub
           content: content,
           link: newLink || undefined,
           spoiler: spoiler || false,
+          nsfw: nsfw || false,
         }),
       spoiler: (newSpoiler: boolean) =>
         setReplyStore({
@@ -42,9 +45,20 @@ const usePublishReply = ({ cid, subplebbitAddress, postCid }: { cid: string; sub
           content: content,
           link: link || undefined,
           spoiler: newSpoiler,
+          nsfw: nsfw || false,
+        }),
+      nsfw: (newNsfw: boolean) =>
+        setReplyStore({
+          subplebbitAddress,
+          parentCid,
+          postCid: postCid ?? parentCid,
+          content: content,
+          link: link || undefined,
+          spoiler: spoiler || false,
+          nsfw: newNsfw,
         }),
     }),
-    [subplebbitAddress, parentCid, setReplyStore, content, link, spoiler, postCid],
+    [subplebbitAddress, parentCid, setReplyStore, content, link, spoiler, nsfw, postCid],
   );
 
   const resetPublishReplyOptions = useMemo(() => () => resetReplyStore(parentCid), [parentCid, resetReplyStore]);

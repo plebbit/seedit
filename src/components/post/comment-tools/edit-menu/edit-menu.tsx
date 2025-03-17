@@ -91,7 +91,13 @@ const EditMenu = ({ commentCid, showCommentEditForm }: EditMenuProps) => {
         </span>
       ) : (
         <li className={styles.button}>
-          <span onClick={deleteComment}>{deleted ? t('undelete') : t('delete')}</span>
+          <span
+            onClick={() => {
+              commentCid && deleteComment();
+            }}
+          >
+            {deleted ? t('undelete') : t('delete')}
+          </span>
         </li>
       )}
     </>

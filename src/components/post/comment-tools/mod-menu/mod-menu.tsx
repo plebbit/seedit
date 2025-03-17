@@ -34,6 +34,7 @@ const ModMenu = ({ cid, isCommentAuthorMod }: ModMenuProps) => {
       removed: post?.removed ?? false,
       locked: post?.locked ?? false,
       spoiler: post?.spoiler ?? false,
+      nsfw: post?.nsfw ?? false,
       pinned: post?.pinned ?? false,
       banExpiresAt: post?.banExpiresAt,
     },
@@ -143,6 +144,12 @@ const ModMenu = ({ cid, isCommentAuthorMod }: ModMenuProps) => {
                 <label>
                   <input onChange={onCheckbox} checked={publishCommentModerationOptions.commentModeration.spoiler} type='checkbox' id='spoiler' />
                   {t('spoiler')}
+                </label>
+              </div>
+              <div className={styles.menuItem}>
+                <label>
+                  <input onChange={onCheckbox} checked={publishCommentModerationOptions.commentModeration.nsfw} type='checkbox' id='nsfw' />
+                  {t('nsfw')}
                 </label>
               </div>
               <div className={styles.menuItem}>

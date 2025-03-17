@@ -330,10 +330,18 @@ const Submit = () => {
             <div className={styles.boxTitle}>{t('options')}</div>
             <div className={styles.boxContent}>
               <div className={styles.options}>
-                <label>
-                  <input type='checkbox' onChange={(e) => setSubmitStoreHook({ spoiler: e.target.checked })} />
-                  {t('spoiler')}
-                </label>
+                <div className={styles.option}>
+                  <label>
+                    <input type='checkbox' onChange={(e) => setSubmitStoreHook({ spoiler: e.target.checked })} />
+                    {t('spoiler')}
+                  </label>
+                </div>
+                <div className={styles.option}>
+                  <label>
+                    <input type='checkbox' onChange={(e) => setSubmitStoreHook({ nsfw: e.target.checked })} />
+                    {t('nsfw')}
+                  </label>
+                </div>
               </div>
             </div>
           </div>
