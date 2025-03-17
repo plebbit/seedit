@@ -361,5 +361,6 @@
   "you_are_owner": "तुम्ही या समुदायाचे मालक आहात",
   "looking_for_more_posts": "अधिक पोस्ट शोधत आहे",
   "loading_feed": "फीड लोड करत आहे",
-  "loading_posts": "पोस्ट लोड करत आहे"
+  "loading_posts": "पोस्ट लोड करत आहे",
+  "post_is_pending": "पोस्ट प्रलंबित आहे"
 }

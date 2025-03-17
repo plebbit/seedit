@@ -361,5 +361,6 @@
   "you_are_owner": "Jesteś właścicielem tej społeczności",
   "looking_for_more_posts": "Szukam więcej postów",
   "loading_feed": "Ładowanie kanału",
-  "loading_posts": "Ładowanie postów"
+  "loading_posts": "Ładowanie postów",
+  "post_is_pending": "Post czeka na zatwierdzenie"
 }

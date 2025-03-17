@@ -361,5 +361,6 @@
   "you_are_owner": "Eres el dueño de esta comunidad",
   "looking_for_more_posts": "Buscando más publicaciones",
   "loading_feed": "Cargando feed",
-  "loading_posts": "Cargando publicaciones"
+  "loading_posts": "Cargando publicaciones",
+  "post_is_pending": "La publicación está pendiente"
 }

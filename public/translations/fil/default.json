@@ -361,5 +361,6 @@
   "you_are_owner": "Ikaw ang may-ari ng komunidad na ito",
   "looking_for_more_posts": "Naghahanap ng higit pang mga post",
   "loading_feed": "Naglo-load ng feed",
-  "loading_posts": "Naglo-load ng mga post"
+  "loading_posts": "Naglo-load ng mga post",
+  "post_is_pending": "Ang post ay pending"
 }

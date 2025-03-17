@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { Link, useLocation, useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import Plebbit from '@plebbit/plebbit-js/dist/browser/index.js';
-import { useAccount } from '@plebbit/plebbit-react-hooks';
+import { useAccount, useAccountComment } from '@plebbit/plebbit-react-hooks';
 import useSubplebbitsStore from '@plebbit/plebbit-react-hooks/dist/stores/subplebbits';
 import { sortTypes } from '../../app';
 import {
@@ -67,11 +67,14 @@ const CommentsButton = () => {
   const params = useParams();
   const location = useLocation();
   const isInPostPageView = isPostPageView(location.pathname, params);
+  const isInPendingPostView = isPendingPostView(location.pathname, params);
   const isInHomeAboutView = isHomeAboutView(location.pathname);
 
   return (
-    <li className={isInPostPageView && !isInHomeAboutView ? styles.selected : styles.choice}>
-      <Link to={`/p/${params.subplebbitAddress}/c/${params.commentCid}`}>{t('comments')}</Link>
+    <li className={(isInPostPageView || isInPendingPostView) && !isInHomeAboutView ? styles.selected : styles.choice}>
+      <Link to={`/p/${params.subplebbitAddress}/c/${params.commentCid}`} onClick={(e) => isInPendingPostView && e.preventDefault()}>
+        {t('comments')}
+      </Link>
     </li>
   );
 };
@@ -259,11 +262,11 @@ const HeaderTabs = () => {
   const isInSettingsView = isSettingsView(location.pathname);
   const isInSettingsPlebbitOptionsView = isSettingsPlebbitOptionsView(location.pathname);
 
-  if (isInPostPageView) {
+  if (isInPostPageView || isInPendingPostView) {
     return <CommentsButton />;
   } else if (isInHomeView || isInHomeAboutView || (isInSubplebbitView && !isInSubplebbitSubmitView && !isInSubplebbitSettingsView) || isInAllView || isInModView) {
     return <SortItems />;
-  } else if ((isInProfileView || isInAuthorView) && !isInPendingPostView) {
+  } else if (isInProfileView || isInAuthorView) {
     return <AuthorHeaderTabs />;
   } else if (isInPendingPostView) {
     return <span className={styles.pageName}>{t('pending')}</span>;
@@ -277,7 +280,7 @@ const HeaderTabs = () => {
   return null;
 };
 
-const HeaderTitle = ({ title, shortAddress }: { title: string; shortAddress: string }) => {
+const HeaderTitle = ({ title, shortAddress, pendingPostSubplebbitAddress }: { title: string; shortAddress: string; pendingPostSubplebbitAddress?: string }) => {
   const account = useAccount();
   const { t } = useTranslation();
   const params = useParams();
@@ -286,6 +289,7 @@ const HeaderTitle = ({ title, shortAddress }: { title: string; shortAddress: str
   const isInAuthorView = isAuthorView(location.pathname);
   const isInInboxView = isInboxView(location.pathname);
   const isInModView = isModView(location.pathname);
+  const isInPendingPostView = isPendingPostView(location.pathname, params);
   const isInPostPageView = isPostPageView(location.pathname, params);
   const isInProfileView = isProfileView(location.pathname);
   const isInSettingsView = isSettingsView(location.pathname);
@@ -308,7 +312,7 @@ const HeaderTitle = ({ title, shortAddress }: { title: string; shortAddress: str
     !contentOptionsStore.hideVulgarCommunities;
   const isBroadlyNsfwSubplebbit = useIsBroadlyNsfwSubplebbit(subplebbitAddress || '');
 
-  const subplebbitTitle = <Link to={`/p/${subplebbitAddress}`}>{title || shortAddress}</Link>;
+  const subplebbitTitle = <Link to={`/p/${isInPendingPostView ? pendingPostSubplebbitAddress : subplebbitAddress}`}>{title || shortAddress}</Link>;
   const submitTitle = <span className={styles.submitTitle}>{t('submit')}</span>;
   const profileTitle = <Link to='/profile'>{account?.author?.shortAddress}</Link>;
   const authorTitle = <Link to={`/u/${params.authorAddress}/c/${params.commentCid}`}>{params.authorAddress && Plebbit.getShortAddress(params.authorAddress)}</Link>;
@@ -321,8 +325,6 @@ const HeaderTitle = ({ title, shortAddress }: { title: string; shortAddress: str
         {subplebbitTitle}: {submitTitle}
       </>
     );
-  } else if (isInPostPageView || (isInSubplebbitView && !isInSubplebbitSettingsView)) {
-    return subplebbitTitle;
   } else if (isInSubplebbitSettingsView) {
     return (
       <>
@@ -333,8 +335,10 @@ const HeaderTitle = ({ title, shortAddress }: { title: string; shortAddress: str
     return submitTitle;
   } else if (isInSettingsView || isInSettingsPlebbitOptionsView) {
     return t('preferences');
-  } else if (isInProfileView) {
+  } else if (isInProfileView && !isInPendingPostView) {
     return profileTitle;
+  } else if (isInPostPageView || isInPendingPostView || (isInSubplebbitView && !isInSubplebbitSettingsView)) {
+    return subplebbitTitle;
   } else if (isInAuthorView) {
     return authorTitle;
   } else if (isInInboxView) {
@@ -360,6 +364,10 @@ const Header = () => {
   const subplebbit = useSubplebbitsStore((state) => state.subplebbits[params?.subplebbitAddress as string]);
   const { suggested, title, shortAddress } = subplebbit || {};
 
+  const commentIndex = params?.accountCommentIndex ? parseInt(params?.accountCommentIndex) : undefined;
+  const accountComment = useAccountComment({ commentIndex });
+  const pendingPostSubplebbitAddress = accountComment?.subplebbitAddress && Plebbit.getShortAddress(accountComment?.subplebbitAddress);
+
   const isMobile = useWindowWidth() < 640;
   const isInAllAboutView = isAllAboutView(location.pathname);
   const isInAllView = isAllView(location.pathname);
@@ -369,6 +377,7 @@ const Header = () => {
   const isInInboxView = isInboxView(location.pathname);
   const isInModView = isModView(location.pathname);
   const isInPostPageView = isPostPageView(location.pathname, params);
+  const isInPendingPostView = isPendingPostView(location.pathname, params);
   const isInProfileView = isProfileView(location.pathname);
   const isInSettingsView = isSettingsView(location.pathname);
   const isInSubplebbitView = isSubplebbitView(location.pathname, params);
@@ -422,7 +431,11 @@ const Header = () => {
         </div>
         {!isInHomeView && !isInHomeAboutView && !isInModView && !isInAllView && (
           <span className={`${styles.pageName} ${!logoIsAvatar && styles.soloPageName}`}>
-            <HeaderTitle title={title} shortAddress={shortAddress} />
+            <HeaderTitle
+              title={title}
+              shortAddress={shortAddress || (isInPendingPostView && pendingPostSubplebbitAddress)}
+              pendingPostSubplebbitAddress={accountComment?.subplebbitAddress}
+            />
           </span>
         )}
         {(isInModView || isInAllView) && (

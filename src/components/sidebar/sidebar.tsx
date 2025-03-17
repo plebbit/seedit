@@ -267,14 +267,14 @@ const Sidebar = ({ comment, isSubCreatedButNotYetPublished, settings, subplebbit
           marginTop: '-47px',
         }}
       >
-        {isInPostPageView && <PostInfo comment={comment} />}
+        {(isInPostPageView || isInPendingPostView) && <PostInfo comment={comment} />}
         <Link to={submitRoute}>
           <div className={styles.largeButton}>
             {t('submit_post')}
             <div className={styles.nub} />
           </div>
         </Link>
-        {!isInHomeView && !isInHomeAboutView && !isInAllView && !isInModView && !isInPendingPostView && !isInSubplebbitsView && !isInHomeAboutView && (
+        {!isInHomeView && !isInHomeAboutView && !isInAllView && !isInModView && !isInSubplebbitsView && !isInHomeAboutView && (
           <div className={styles.titleBox}>
             <Link className={styles.title} to={`/p/${address}`}>
               {subplebbit?.address}

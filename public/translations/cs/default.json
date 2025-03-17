@@ -361,5 +361,6 @@
   "you_are_owner": "Jste vlastníkem této komunity",
   "looking_for_more_posts": "Hledání dalších příspěvků",
   "loading_feed": "Načítání kanálu",
-  "loading_posts": "Načítání příspěvků"
+  "loading_posts": "Načítání příspěvků",
+  "post_is_pending": "Příspěvek čeká"
 }

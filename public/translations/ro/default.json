@@ -361,5 +361,6 @@
   "you_are_owner": "Ești proprietarul acestei comunități",
   "looking_for_more_posts": "Căutând mai multe postări",
   "loading_feed": "Încărcare feed",
-  "loading_posts": "Se încarcă postările"
+  "loading_posts": "Se încarcă postările",
+  "post_is_pending": "Postarea este în așteptare"
 }

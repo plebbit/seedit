@@ -1,6 +1,6 @@
 import { useEffect, useState, useRef, useCallback, useMemo } from 'react';
 import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
-import { Comment, useAccount, useAccountComment, useComment, useSubplebbit } from '@plebbit/plebbit-react-hooks';
+import { Comment, useAccount, useAccountComment, useAccountComments, useComment, useSubplebbit } from '@plebbit/plebbit-react-hooks';
 import useSubplebbitsPagesStore from '@plebbit/plebbit-react-hooks/dist/stores/subplebbits-pages';
 import { useTranslation } from 'react-i18next';
 import findTopParentCidOfReply from '../../lib/utils/cid-utils';
@@ -18,20 +18,6 @@ import _ from 'lodash';
 import Over18Warning from '../../components/over-18-warning';
 import { useIsBroadlyNsfwSubplebbit } from '../../hooks/use-is-broadly-nsfw-subplebbit';
 import useContentOptionsStore from '../../stores/use-content-options-store';
-
-const PendingPost = ({ commentIndex }: { commentIndex?: number }) => {
-  const post = useAccountComment({ commentIndex });
-  const navigate = useNavigate();
-
-  // in pending page, redirect to post view when post.cid is received
-  useEffect(() => {
-    if (post?.cid && post?.subplebbitAddress) {
-      navigate(`/p/${post?.subplebbitAddress}/c/${post?.cid}`, { replace: true });
-    }
-  }, [post?.cid, post?.subplebbitAddress, navigate]);
-
-  return <PostComponent post={post} />;
-};
 
 type SortDropdownProps = {
   sortBy: string;
@@ -151,7 +137,7 @@ const Post = ({ post }: { post: Comment }) => {
         <div className={styles.replyArea}>
           {!isSingleComment && (
             <div className={styles.repliesTitle}>
-              <span className={styles.title}>{replyCount !== undefined ? commentCount : `${t('loading_comments')}...`}</span>
+              <span className={styles.title}>{replyCount !== undefined ? commentCount : cid ? `${t('loading_comments')}...` : `${t('post_is_pending')}...`}</span>
             </div>
           )}
           <div className={styles.menuArea}>
@@ -236,12 +222,47 @@ const PostWithContext = ({ post }: { post: Comment }) => {
 const PostPage = () => {
   const params = useParams();
   const location = useLocation();
+  const navigate = useNavigate();
   const isInPendingPostView = isPendingPostView(location.pathname, params);
   const isInPostContextView = isPostContextView(location.pathname, params, location.search);
 
+  // pending post
+  const { accountComments } = useAccountComments();
+  const { accountCommentIndex } = useParams<{ accountCommentIndex?: string }>();
+  const commentIndex = accountCommentIndex ? parseInt(accountCommentIndex) : undefined;
+
+  const isValidAccountCommentIndex =
+    !accountCommentIndex ||
+    // Check if it's a valid positive integer
+    (!isNaN(parseInt(accountCommentIndex)) &&
+      parseInt(accountCommentIndex) >= 0 &&
+      Number.isInteger(parseFloat(accountCommentIndex)) &&
+      // Allow index to be at most 1 position beyond the current length
+      // This handles the case where a new post is being created
+      (accountComments?.length === 0 || parseInt(accountCommentIndex) <= accountComments.length));
+
+  useEffect(() => {
+    if (!isValidAccountCommentIndex) {
+      navigate('/not-found', { replace: true });
+    }
+  }, [isValidAccountCommentIndex, navigate]);
+
+  const accountComment = useAccountComment({ commentIndex });
+  const pendingPost = accountComment;
+
+  // in pending post route, redirect to post page route when post is published (cid is defined)
+  useEffect(() => {
+    if (pendingPost?.cid && pendingPost?.subplebbitAddress) {
+      navigate(`/p/${pendingPost?.subplebbitAddress}/c/${pendingPost?.cid}`, { replace: true });
+    }
+  }, [pendingPost?.cid, pendingPost?.subplebbitAddress, navigate]);
+
   const { commentCid, subplebbitAddress } = params;
-  const post = useComment({ commentCid });
-  const subplebbit = useSubplebbit({ subplebbitAddress });
+  let post = useComment({ commentCid });
+  if (isInPendingPostView) {
+    post = pendingPost;
+  }
+  const subplebbit = useSubplebbit({ subplebbitAddress: isInPendingPostView ? pendingPost?.subplebbitAddress : subplebbitAddress });
 
   // over 18 warning for subplebbit with nsfw tag in multisub default list
   const { hasAcceptedWarning } = useContentOptionsStore();
@@ -264,13 +285,7 @@ const PostPage = () => {
       <div className={styles.sidebar}>
         <Sidebar subplebbit={subplebbit} comment={post} settings={subplebbit?.settings} />
       </div>
-      {isInPendingPostView && params?.accountCommentIndex ? (
-        <PendingPost commentIndex={+params?.accountCommentIndex || undefined} />
-      ) : isInPostContextView ? (
-        <PostWithContext post={post} />
-      ) : (
-        <Post post={post} />
-      )}
+      {isInPendingPostView && params?.accountCommentIndex ? <Post post={pendingPost} /> : isInPostContextView ? <PostWithContext post={post} /> : <Post post={post} />}
     </div>
   );
 };

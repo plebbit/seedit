@@ -361,5 +361,6 @@
   "you_are_owner": "Jeni pronari i kësaj komune",
   "looking_for_more_posts": "Po kërkoni më shumë postime",
   "loading_feed": "Po ngarkoni feed-in",
-  "loading_posts": "Duke ngarkuar postimet"
+  "loading_posts": "Duke ngarkuar postimet",
+  "post_is_pending": "Postimi është në pritje"
 }

@@ -361,5 +361,6 @@
   "you_are_owner": "شما مالک این جامعه هستید",
   "looking_for_more_posts": "در جستجوی پست‌های بیشتر",
   "loading_feed": "در حال بارگذاری فید",
-  "loading_posts": "در حال بارگذاری پست‌ها"
+  "loading_posts": "در حال بارگذاری پست‌ها",
+  "post_is_pending": "پست در انتظار است"
 }

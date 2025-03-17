@@ -361,5 +361,6 @@
   "you_are_owner": "Olet tämän yhteisön omistaja",
   "looking_for_more_posts": "Etsii lisää viestejä",
   "loading_feed": "Ladataan syöte",
-  "loading_posts": "Ladataan viestejä"
+  "loading_posts": "Ladataan viestejä",
+  "post_is_pending": "Postaus on odottamassa"
 }

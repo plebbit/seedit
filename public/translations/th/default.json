@@ -361,5 +361,6 @@
   "you_are_owner": "คุณเป็นเจ้าของชุมชนนี้",
   "looking_for_more_posts": "กำลังมองหาบทความเพิ่มเติม",
   "loading_feed": "กำลังโหลดฟีด",
-  "loading_posts": "กำลังโหลดโพสต์"
+  "loading_posts": "กำลังโหลดโพสต์",
+  "post_is_pending": "โพสต์รอดำเนินการ"
 }

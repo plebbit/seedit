@@ -361,5 +361,6 @@
   "you_are_owner": "Du är ägaren av denna gemenskap",
   "looking_for_more_posts": "Letar efter fler inlägg",
   "loading_feed": "Laddar flöde",
-  "loading_posts": "Laddar inlägg"
+  "loading_posts": "Laddar inlägg",
+  "post_is_pending": "Inlägget är i väntan"
 }
