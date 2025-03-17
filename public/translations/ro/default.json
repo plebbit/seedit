@@ -256,7 +256,7 @@
   "settings_saved": "Setările au fost salvate pentru p/{{subplebbitAddress}}",
   "mod_edit": "editare mod",
   "continue_thread": "continuați acest fir de discuție",
-  "mod_reason": "motivul mod",
+  "mod_edit_reason": "Motivul editării de către moderator",
   "double_confirm": "Sunteți sigur? Această acțiune este ireversibilă.",
   "crypto_address_not_yours": "Adresa crypto aparține unui alt cont.",
   "crypto_address_yours": "Adresa crypto aparține acestui cont.",
@@ -306,8 +306,8 @@
   "own_communities": "comunități proprii",
   "invalid_community_address": "Adresă comunitară nevalidă",
   "newer_posts_available": "Postări mai noi disponibile: <1>reîncărcați fluxul</1>",
-  "more_posts_last_week": "{{count}} postări din {{currentTimeFilterName}}: <1>arată mai multe postări de săptămâna trecută</1>",
-  "more_posts_last_month": "{{count}} postări de la {{currentTimeFilterName}}: <1>afisează mai multe postări din luna trecută</1>",
+  "more_posts_last_week": "{{count}} postări săptămâna trecută {{currentTimeFilterName}}: <1>arata mai multe postări de săptămâna trecută</1>",
+  "more_posts_last_month": "{{count}} postări în {{currentTimeFilterName}}: <1>arată mai multe postări din luna trecută</1>",
   "sure_delete": "Ești sigur că vrei să ștergi această postare?",
   "sure_undelete": "Ești sigur că vrei să restaurezi această postare?",
   "profile_info": "Contul tău u/{{shortAddress}} a fost creat. <1>Setează numele de afișare</1>, <2>exportă backup</2>, <3>află mai multe</3>.",
@@ -361,5 +361,7 @@
   "you_are_owner": "Ești proprietarul acestei comunități",
   "looking_for_more_posts": "Căutând mai multe postări",
   "loading_feed": "Încărcare feed",
-  "loading_posts": "Se încarcă postările"
+  "loading_posts": "Se încarcă postările",
+  "post_is_pending": "Postarea este în așteptare",
+  "post_has_failed": "Postarea a eșuat"
 }

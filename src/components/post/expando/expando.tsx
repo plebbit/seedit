@@ -7,6 +7,7 @@ import { useIsNsfwSubplebbit } from '../../../hooks/use-is-nsfw-subplebbit';
 import styles from './expando.module.css';
 import Embed from '../embed';
 import Markdown from '../../markdown';
+import _ from 'lodash';
 
 interface ExpandoProps {
   authorEditReason?: string;
@@ -14,6 +15,7 @@ interface ExpandoProps {
   content?: string;
   deleted?: boolean;
   expanded: boolean;
+  isReply?: boolean;
   link?: string;
   modEditReason?: string;
   nsfw?: boolean;
@@ -29,6 +31,7 @@ const Expando = ({
   content,
   deleted,
   expanded,
+  isReply,
   link,
   modEditReason,
   nsfw,
@@ -80,7 +83,7 @@ const Expando = ({
   return (
     <div className={expanded ? styles.expando : styles.expandoHidden}>
       {link && !removed && commentMediaInfo?.type !== 'webpage' && (
-        <div className={styles.mediaPreview} onClick={() => setHideContent(false)}>
+        <div className={`${styles.mediaPreview} ${isReply ? styles.mediaPreviewReply : ''}`} onClick={() => setHideContent(false)}>
           {((nsfw && blurNsfwThumbnails && !isNsfwSubplebbit) || spoiler) && hideContent && link && commentMediaInfo?.type !== 'webpage' && !(deleted || removed) && (
             <>
               <div className={styles.blurContent} />
@@ -118,8 +121,8 @@ const Expando = ({
           <div className={styles.markdown}>
             <Markdown content={content} />
             {modEditReason && (
-              <p>
-                {t('mod_reason')}: {modEditReason}
+              <p className={styles.modReason}>
+                {_.lowerCase(t('mod_edit_reason'))}: {modEditReason}
               </p>
             )}
             {authorEditReason && !(removed || deleted) && (

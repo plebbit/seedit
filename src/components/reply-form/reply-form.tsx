@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useSubplebbit } from '@plebbit/plebbit-react-hooks';
+import useSubplebbitsStore from '@plebbit/plebbit-react-hooks/dist/stores/subplebbits';
 import { isValidURL } from '../../lib/utils/url-utils';
 import useIsSubplebbitOffline from '../../hooks/use-is-subplebbit-offline';
 import usePublishReply from '../../hooks/use-publish-reply';
@@ -93,12 +93,14 @@ const ReplyForm = ({ cid, isReplyingToReply, hideReplyForm, subplebbitAddress, p
   const mdContainerClass = isReplyingToReply ? `${styles.mdContainer} ${styles.mdContainerReplying}` : styles.mdContainer;
   const urlClass = showOptions ? styles.urlVisible : styles.urlHidden;
   const spoilerClass = showOptions ? styles.spoilerVisible : styles.spoilerHidden;
+  const nsfwClass = showOptions ? styles.spoilerVisible : styles.spoilerHidden;
 
   const textRef = useRef<HTMLTextAreaElement>(null);
   const urlRef = useRef<HTMLInputElement>(null);
   const spoilerRef = useRef<HTMLInputElement>(null);
+  const nsfwRef = useRef<HTMLInputElement>(null);
 
-  const subplebbit = useSubplebbit({ subplebbitAddress });
+  const subplebbit = useSubplebbitsStore((state) => state.subplebbits[subplebbitAddress]);
   const { isOffline, offlineTitle } = useIsSubplebbitOffline(subplebbit);
 
   useEffect(() => {
@@ -116,6 +118,9 @@ const ReplyForm = ({ cid, isReplyingToReply, hideReplyForm, subplebbitAddress, p
     }
     if (spoilerRef.current) {
       spoilerRef.current.checked = false;
+    }
+    if (nsfwRef.current) {
+      nsfwRef.current.checked = false;
     }
   };
 
@@ -158,6 +163,11 @@ const ReplyForm = ({ cid, isReplyingToReply, hideReplyForm, subplebbitAddress, p
           <span className={`${styles.spoiler} ${spoilerClass}`}>
             <label>
               {t('spoiler')}: <input type='checkbox' className={styles.checkbox} ref={spoilerRef} onChange={(e) => setPublishReplyOptions.spoiler(e.target.checked)} />
+            </label>
+          </span>
+          <span className={`${styles.spoiler} ${nsfwClass}`}>
+            <label>
+              {t('nsfw')}: <input type='checkbox' className={styles.checkbox} ref={nsfwRef} onChange={(e) => setPublishReplyOptions.nsfw(e.target.checked)} />
             </label>
           </span>
         </div>

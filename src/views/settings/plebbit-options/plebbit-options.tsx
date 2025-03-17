@@ -35,7 +35,7 @@ const IPFSGatewaysSettings = ({ ipfsGatewayUrlsRef, mediaIpfsGatewayUrlRef }: Se
           autoCorrect='off'
           autoComplete='off'
           spellCheck='false'
-          rows={8}
+          rows={ipfsGatewayUrls?.length || 3}
         />
       </div>
       <span className={styles.settingTitle}>nft profile pics gateway</span>
@@ -63,7 +63,7 @@ const PubsubProvidersSettings = ({ pubsubProvidersRef }: SettingsProps) => {
         autoCorrect='off'
         autoComplete='off'
         spellCheck='false'
-        rows={3}
+        rows={pubsubHttpClientsOptions?.length || 3}
       />
     </div>
   );
@@ -77,7 +77,14 @@ const HttpRoutersSettings = ({ httpRoutersRef }: SettingsProps) => {
 
   return (
     <div className={styles.httpRoutersSettings}>
-      <textarea defaultValue={httpRoutersDefaultValue} ref={httpRoutersRef} autoCorrect='off' autoComplete='off' spellCheck='false' rows={2} />
+      <textarea
+        defaultValue={httpRoutersDefaultValue}
+        ref={httpRoutersRef}
+        autoCorrect='off'
+        autoComplete='off'
+        spellCheck='false'
+        rows={httpRoutersOptions?.length || 4}
+      />
     </div>
   );
 };
@@ -95,19 +102,33 @@ const BlockchainProvidersSettings = ({ ethRpcRef, solRpcRef, maticRpcRef, avaxRp
     <div className={styles.blockchainProvidersSettings}>
       <span className={styles.settingTitle}>ethereum rpc, for .eth addresses</span>
       <div>
-        <textarea defaultValue={ethRpcDefaultValue} ref={ethRpcRef} autoCorrect='off' autoComplete='off' spellCheck='false' rows={3} />
+        <textarea defaultValue={ethRpcDefaultValue} ref={ethRpcRef} autoCorrect='off' autoComplete='off' spellCheck='false' rows={chainProviders?.['eth'].length || 3} />
       </div>
       <span className={styles.settingTitle}>solana rpc, for .sol addresses</span>
       <div>
-        <textarea defaultValue={solRpcDefaultValue} ref={solRpcRef} autoCorrect='off' autoComplete='off' spellCheck='false' rows={1} />
+        <textarea defaultValue={solRpcDefaultValue} ref={solRpcRef} autoCorrect='off' autoComplete='off' spellCheck='false' rows={chainProviders?.['sol'].length || 1} />
       </div>
       <span className={styles.settingTitle}>polygon rpc, for nft profile pics</span>
       <div>
-        <textarea defaultValue={maticRpcDefaultValue} ref={maticRpcRef} autoCorrect='off' autoComplete='off' spellCheck='false' rows={1} />
+        <textarea
+          defaultValue={maticRpcDefaultValue}
+          ref={maticRpcRef}
+          autoCorrect='off'
+          autoComplete='off'
+          spellCheck='false'
+          rows={chainProviders?.['matic'].length || 1}
+        />
       </div>
       <span className={styles.settingTitle}>avalanche rpc</span>
       <div>
-        <textarea defaultValue={avaxRpcDefaultValue} ref={avaxRpcRef} autoCorrect='off' autoComplete='off' spellCheck='false' rows={1} />
+        <textarea
+          defaultValue={avaxRpcDefaultValue}
+          ref={avaxRpcRef}
+          autoCorrect='off'
+          autoComplete='off'
+          spellCheck='false'
+          rows={chainProviders?.['avax'].length || 1}
+        />
       </div>
     </div>
   );
@@ -183,7 +204,7 @@ const PlebbitOptions = () => {
       .map((url) => url.trim())
       .filter((url) => url !== '');
 
-    const mediaIpfsGatewayUrl = mediaIpfsGatewayUrlRef.current?.value.trim();
+    const mediaIpfsGatewayUrl = mediaIpfsGatewayUrlRef.current?.value.trim() || undefined;
 
     const pubsubHttpClientsOptions = pubsubProvidersRef.current?.value
       .split('\n')
@@ -215,42 +236,37 @@ const PlebbitOptions = () => {
       .map((url) => url.trim())
       .filter((url) => url !== '');
 
-    const plebbitRpcClientsOptions = plebbitRpcRef.current?.value.trim() ? [plebbitRpcRef.current.value.trim()] : undefined;
+    const plebbitRpcValue = plebbitRpcRef.current?.value.trim();
+    const plebbitRpcClientsOptions = plebbitRpcValue ? [plebbitRpcValue] : undefined;
     const dataPath = plebbitDataPathRef.current?.value.trim() || undefined;
 
-    const chainProviders = {
-      eth: {
-        urls: ethRpcUrls,
-        chainId: 1,
-      },
-      sol: {
-        urls: solRpcUrls,
-        chainId: 1,
-      },
-      matic: {
-        urls: maticRpcUrls,
-        chainId: 137,
-      },
-      avax: {
-        urls: avaxRpcUrls,
-        chainId: 43114,
-      },
-    };
+    const chainProviders: any = {};
+    if (ethRpcUrls?.length) chainProviders.eth = { urls: ethRpcUrls, chainId: 1 };
+    if (solRpcUrls?.length) chainProviders.sol = { urls: solRpcUrls, chainId: 1 };
+    if (maticRpcUrls?.length) chainProviders.matic = { urls: maticRpcUrls, chainId: 137 };
+    if (avaxRpcUrls?.length) chainProviders.avax = { urls: avaxRpcUrls, chainId: 43114 };
+
+    const newPlebbitOptions: any = {};
+    if (ipfsGatewayUrls?.length) newPlebbitOptions.ipfsGatewayUrls = ipfsGatewayUrls;
+    if (pubsubHttpClientsOptions?.length) newPlebbitOptions.pubsubHttpClientsOptions = pubsubHttpClientsOptions;
+    if (httpRoutersOptions?.length) newPlebbitOptions.httpRoutersOptions = httpRoutersOptions;
+    if (plebbitRpcClientsOptions) newPlebbitOptions.plebbitRpcClientsOptions = plebbitRpcClientsOptions;
+    if (dataPath) newPlebbitOptions.dataPath = dataPath;
+    if (Object.keys(chainProviders).length) newPlebbitOptions.chainProviders = chainProviders;
+
+    const updatedPlebbitOptions = { ...plebbitOptions, ...newPlebbitOptions };
+
+    const updatedAccount: any = { ...account };
+    if (mediaIpfsGatewayUrl) {
+      updatedAccount.mediaIpfsGatewayUrl = mediaIpfsGatewayUrl;
+    } else {
+      delete updatedAccount.mediaIpfsGatewayUrl;
+    }
+
+    updatedAccount.plebbitOptions = updatedPlebbitOptions;
 
     try {
-      await setAccount({
-        ...account,
-        mediaIpfsGatewayUrl,
-        plebbitOptions: {
-          ...plebbitOptions,
-          ipfsGatewayUrls,
-          pubsubHttpClientsOptions,
-          chainProviders,
-          httpRoutersOptions,
-          plebbitRpcClientsOptions,
-          dataPath,
-        },
-      });
+      await setAccount(updatedAccount);
       alert('Options saved, reloading...');
       window.location.reload();
     } catch (e) {

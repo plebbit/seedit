@@ -256,7 +256,7 @@
   "settings_saved": "Asetukset tallennettu p/{{subplebbitAddress}} varten",
   "mod_edit": "moderoinnin muokkaus",
   "continue_thread": "jatka tätä säiettä",
-  "mod_reason": "mod-syy",
+  "mod_edit_reason": "Moderaattorin muokkausperuste",
   "double_confirm": "Oletko varma? Tämä toiminto on peruuttamaton.",
   "crypto_address_not_yours": "Krypto-osoite kuuluu toiseen tiliin.",
   "crypto_address_yours": "Krypto-osoite kuuluu tähän tiliin.",
@@ -306,8 +306,8 @@
   "own_communities": "omat yhteisöt",
   "invalid_community_address": "Virheellinen yhteisön osoite",
   "newer_posts_available": "Uudemmat postaukset saatavilla: <1>lataa syöte uudelleen</1>",
-  "more_posts_last_week": "{{count}} viestiä {{currentTimeFilterName}} jälkeen: <1>näytä lisää viestejä viime viikolta</1>",
-  "more_posts_last_month": "{{count}} viestiä {{currentTimeFilterName}} jälkeen: <1>näytä lisää viestejä viime kuulta</1>",
+  "more_posts_last_week": "{{count}} viestiä viime {{currentTimeFilterName}}: <1>näytä lisää viestejä viime viikolta</1>",
+  "more_posts_last_month": "{{count}} julkaisua viimeisimmässä {{currentTimeFilterName}}: <1>näytä lisää julkaisuja viime kuukaudelta</1>",
   "sure_delete": "Oletko varma, että haluat poistaa tämän viestin?",
   "sure_undelete": "Oletko varma, että haluat palauttaa tämän viestin?",
   "profile_info": "Tilitilisi u/{{shortAddress}} on luotu. <1>Aseta näyttönimi</1>, <2>vienti varmuuskopio</2>, <3>lue lisää</3>.",
@@ -361,5 +361,7 @@
   "you_are_owner": "Olet tämän yhteisön omistaja",
   "looking_for_more_posts": "Etsii lisää viestejä",
   "loading_feed": "Ladataan syöte",
-  "loading_posts": "Ladataan viestejä"
+  "loading_posts": "Ladataan viestejä",
+  "post_is_pending": "Postaus on odottamassa",
+  "post_has_failed": "Postaus epäonnistui"
 }

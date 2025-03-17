@@ -256,7 +256,7 @@
   "settings_saved": "Ayarlar p/{{subplebbitAddress}} için kaydedildi",
   "mod_edit": "mod düzenle",
   "continue_thread": "bu konuyu devam ettir",
-  "mod_reason": "mod nedeni",
+  "mod_edit_reason": "Mod düzenleme nedeni",
   "double_confirm": "Gerçekten emin misiniz? Bu eylem geri alınamaz.",
   "crypto_address_not_yours": "Kripto adres başka bir hesaba aittir.",
   "crypto_address_yours": "Kripto adres bu hesaba aittir.",
@@ -306,8 +306,8 @@
   "own_communities": "kendi topluluklarım",
   "invalid_community_address": "Geçersiz topluluk adresi",
   "newer_posts_available": "Daha yeni gönderiler mevcut: <1>beslemi yeniden yükle</1>",
-  "more_posts_last_week": "{{count}} gönderi {{currentTimeFilterName}} tarihinden itibaren: <1>geçen haftadan daha fazla gönderi göster</1>",
-  "more_posts_last_month": "{{count}} gönderi {{currentTimeFilterName}} tarihinden itibaren: <1>daha fazla gönderi göster geçen aydan</1>",
+  "more_posts_last_week": "{{count}} gönderiler geçen {{currentTimeFilterName}}: <1>daha fazla gönderi göster geçen haftadan</1>",
+  "more_posts_last_month": "{{count}} gönderi {{currentTimeFilterName}}de: <1>geçen aydan daha fazla gönderi göster</1>",
   "sure_delete": "Bu gönderiyi silmek istediğinize emin misiniz?",
   "sure_undelete": "Bu gönderiyi geri yüklemek istediğinize emin misiniz?",
   "profile_info": "Hesabınız u/{{shortAddress}} oluşturuldu. <1>Görüntüleme adını ayarla</1>, <2>yedekleme verilerini dışa aktar</2>, <3>daha fazla bilgi</3>.",
@@ -361,5 +361,7 @@
   "you_are_owner": "Bu topluluğun sahibi sizsiniz",
   "looking_for_more_posts": "Daha fazla gönderi arıyorum",
   "loading_feed": "Yükleniyor besleme",
-  "loading_posts": "Gönderiler yükleniyor"
+  "loading_posts": "Gönderiler yükleniyor",
+  "post_is_pending": "Gönderi beklemede",
+  "post_has_failed": "Gönderi başarısız oldu"
 }

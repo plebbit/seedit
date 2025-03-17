@@ -9,7 +9,6 @@ import Home from './views/home';
 import Inbox from './views/inbox';
 import Mod from './views/mod';
 import NotFound from './views/not-found';
-import PendingPost from './views/pending-post';
 import PostPage from './views/post-page';
 import Profile from './views/profile';
 import Settings from './views/settings';
@@ -105,7 +104,7 @@ const App = () => {
 
             <Route path='/p/:subplebbitAddress/:sortType?/:timeFilterName?' element={<Subplebbit />} />
 
-            <Route path='/profile/:accountCommentIndex' element={<PendingPost />} />
+            <Route path='/profile/:accountCommentIndex' element={<PostPage />} />
 
             <Route path='/profile' element={<Profile />}>
               <Route index element={<Profile.Overview />} />

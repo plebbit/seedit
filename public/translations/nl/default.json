@@ -256,7 +256,7 @@
   "settings_saved": "Instellingen opgeslagen voor p/{{subplebbitAddress}}",
   "mod_edit": "mod-bewerking",
   "continue_thread": "ga verder in deze thread",
-  "mod_reason": "mod reden",
+  "mod_edit_reason": "Reden van mod-bewerking",
   "double_confirm": "Weet u het zeker? Deze actie is onomkeerbaar.",
   "crypto_address_not_yours": "Crypto-adres behoort tot een andere account.",
   "crypto_address_yours": "Crypto-adres behoort tot deze account.",
@@ -306,8 +306,8 @@
   "own_communities": "eigen gemeenschappen",
   "invalid_community_address": "Ongeldig gemeenschapsadres",
   "newer_posts_available": "Nieuwere berichten beschikbaar: <1>voer feed opnieuw in</1>",
-  "more_posts_last_week": "{{count}} berichten sinds {{currentTimeFilterName}}: <1>meer berichten van vorige week weergeven</1>",
-  "more_posts_last_month": "{{count}} berichten sinds {{currentTimeFilterName}}: <1>toon meer berichten van vorige maand</1>",
+  "more_posts_last_week": "{{count}} berichten laatste {{currentTimeFilterName}}: <1>toon meer berichten van vorige week</1>",
+  "more_posts_last_month": "{{count}} berichten in {{currentTimeFilterName}}: <1>toon meer berichten van vorige maand</1>",
   "sure_delete": "Weet je zeker dat je deze post wilt verwijderen?",
   "sure_undelete": "Weet je zeker dat je deze post wilt herstellen?",
   "profile_info": "Je account u/{{shortAddress}} is aangemaakt. <1>Stel weergavenaam in</1>, <2>exporteer backup</2>, <3>meer leren</3>.",
@@ -361,5 +361,7 @@
   "you_are_owner": "Je bent de eigenaar van deze gemeenschap",
   "looking_for_more_posts": "Op zoek naar meer berichten",
   "loading_feed": "Laad feed",
-  "loading_posts": "Berichten laden"
+  "loading_posts": "Berichten laden",
+  "post_is_pending": "Bericht is in behandeling",
+  "post_has_failed": "Post is mislukt"
 }

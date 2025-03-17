@@ -256,7 +256,7 @@
   "settings_saved": "p/{{subplebbitAddress}} కోసం సెట్టింగులు సేవ్ చేయబడ్డాయి",
   "mod_edit": "మోడ్ సవరించినప్పుడు",
   "continue_thread": "ఈ థ్రెడ్‌ను కొనసాగండి",
-  "mod_reason": "మోడ్ కారణం",
+  "mod_edit_reason": "మాడ్ ఎడిట్ కారణం",
   "double_confirm": "మీరు నిజంగా ఖచ్చితముగా ఉన్నారా? ఈ చర్య రద్దు చేయలేదు.",
   "crypto_address_not_yours": "క్రిప్టో చిరునామా మరొక ఖాతాకు చేరుకుంది.",
   "crypto_address_yours": "క్రిప్టో చిరునామా ఈ ఖాతాకు చేరుకుంది.",
@@ -306,8 +306,8 @@
   "own_communities": "నా సముదాయాలు",
   "invalid_community_address": "అమాన్యమైన సముదాయ చిరునామా",
   "newer_posts_available": "కొత్త పోస్టులు అందుబాటులో ఉన్నాయి: <1>ఫీడ్‌ను రీలోడ్ చేయండి</1>",
-  "more_posts_last_week": "{{count}} పోస్ట్‌లు {{currentTimeFilterName}} నుండి: <1>గత వారం నుండి మరిన్ని పోస్ట్‌లు చూపించు</1>",
-  "more_posts_last_month": "{{count}} పోస్టులు {{currentTimeFilterName}} నుండి: <1>గత నెల నుండి మరిన్ని పోస్టులను చూపించు</1>",
+  "more_posts_last_week": "{{count}} పోస్టులు గత {{currentTimeFilterName}}: <1>గత వారంలో మరిన్ని పోస్టులు చూపించండి</1>",
+  "more_posts_last_month": "{{count}} పోస్టులు {{currentTimeFilterName}} లో: <1>గత నెల నుండి మరిన్ని పోస్టులు చూపించు</1>",
   "sure_delete": "మీరు ఈ పోస్టును తొలగించాలనుకుంటున్నారా?",
   "sure_undelete": "మీరు ఈ పోస్టును తిరిగి పొందాలనుకుంటున్నారా?",
   "profile_info": "మీ ఖాతా u/{{shortAddress}} రూపొందించబడింది. <1>డిస్ప్లే పేరు సెట్ చేయండి</1>, <2>బ్యాకప్ ఎగుమతి చేయండి</2>, <3>మరింత తెలుసుకోండి</3>.",
@@ -361,5 +361,7 @@
   "you_are_owner": "మీరు ఈ కమ్యూనిటీ యొక్క యజమాని",
   "looking_for_more_posts": "మరింత పోస్ట్‌ల కోసం చూస్తున్నాను",
   "loading_feed": "లోడింగ్ ఫీడ్",
-  "loading_posts": "పోస్ట్స్ లోడవుతున్నాయి"
+  "loading_posts": "పోస్ట్స్ లోడవుతున్నాయి",
+  "post_is_pending": "పోస్ట్ పెండింగ్‌లో ఉంది",
+  "post_has_failed": "పోస్ట్ విఫలమైంది"
 }

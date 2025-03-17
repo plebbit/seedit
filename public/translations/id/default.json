@@ -256,7 +256,7 @@
   "settings_saved": "Pengaturan disimpan untuk p/{{subplebbitAddress}}",
   "mod_edit": "edit mod",
   "continue_thread": "lanjutkan utas ini",
-  "mod_reason": "alasan mod",
+  "mod_edit_reason": "Alasan edit mod",
   "double_confirm": "Apakah Anda benar-benar yakin? Tindakan ini tidak dapat diurungkan.",
   "crypto_address_not_yours": "Alamat kripto milik akun lain.",
   "crypto_address_yours": "Alamat kripto milik akun ini.",
@@ -306,8 +306,8 @@
   "own_communities": "komunitas sendiri",
   "invalid_community_address": "Alamat komunitas tidak valid",
   "newer_posts_available": "Postingan baru tersedia: <1>muat ulang feed</1>",
-  "more_posts_last_week": "{{count}} pos dari {{currentTimeFilterName}}: <1>tampilkan lebih banyak pos dari minggu lalu</1>",
-  "more_posts_last_month": "{{count}} pos dari {{currentTimeFilterName}}: <1>tampilkan lebih banyak pos dari bulan lalu</1>",
+  "more_posts_last_week": "{{count}} pos terakhir {{currentTimeFilterName}}: <1>tampilkan lebih banyak pos dari minggu lalu</1>",
+  "more_posts_last_month": "{{count}} postingan di {{currentTimeFilterName}}: <1>tampilkan lebih banyak postingan dari bulan lalu</1>",
   "sure_delete": "Apakah Anda yakin ingin menghapus pos ini?",
   "sure_undelete": "Apakah Anda yakin ingin mengembalikan pos ini?",
   "profile_info": "Akun Anda u/{{shortAddress}} dibuat. <1>Atur nama tampilan</1>, <2>ekspor cadangan</2>, <3>pelajari lebih lanjut</3>.",
@@ -361,5 +361,7 @@
   "you_are_owner": "Anda adalah pemilik komunitas ini",
   "looking_for_more_posts": "Mencari lebih banyak pos",
   "loading_feed": "Memuat feed",
-  "loading_posts": "Memuat pos"
+  "loading_posts": "Memuat pos",
+  "post_is_pending": "Postingan sedang menunggu",
+  "post_has_failed": "Posting gagal"
 }

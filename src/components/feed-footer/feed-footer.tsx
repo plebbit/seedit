@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation, useParams } from 'react-router-dom';
 import { Trans, useTranslation } from 'react-i18next';
-import { isModView } from '../../lib/utils/view-utils';
+import { isAllView, isModView } from '../../lib/utils/view-utils';
 import { useFeedStateString } from '../../hooks/use-state-string';
 import LoadingEllipsis from '../loading-ellipsis';
 import styles from './feed-footer.module.css';
@@ -34,6 +34,7 @@ const FeedFooter = ({
   const params = useParams();
   const location = useLocation();
   const isInModView = isModView(location.pathname);
+  const isInAllView = isAllView(location.pathname);
 
   const handleNewerPostsButtonClick = () => {
     window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
@@ -84,7 +85,7 @@ const FeedFooter = ({
               i18nKey='more_posts_last_week'
               values={{ currentTimeFilterName, count: feedLength }}
               components={{
-                1: <Link to={'/' + (params?.sortType || 'hot') + '/1w'} />,
+                1: <Link to={(isInModView ? '/p/mod/' : isInAllView ? '/p/all/' : '/') + (params?.sortType || 'hot') + '/1w'} />,
               }}
             />
           </div>
@@ -95,7 +96,7 @@ const FeedFooter = ({
                 i18nKey='more_posts_last_month'
                 values={{ currentTimeFilterName, count: feedLength }}
                 components={{
-                  1: <Link to={'/' + (params?.sortType || 'hot') + '/1m'} />,
+                  1: <Link to={(isInModView ? '/p/mod/' : isInAllView ? '/p/all/' : '/') + (params?.sortType || 'hot') + '/1m'} />,
                 }}
               />
             </div>

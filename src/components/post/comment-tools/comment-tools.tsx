@@ -1,6 +1,8 @@
 import { Link, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { Author, useAccount, useComment, useSubplebbit } from '@plebbit/plebbit-react-hooks';
+import { Author, useAccount } from '@plebbit/plebbit-react-hooks';
+import useSubplebbitsStore from '@plebbit/plebbit-react-hooks/dist/stores/subplebbits';
+import useSubplebbitsPagesStore from '@plebbit/plebbit-react-hooks/dist/stores/subplebbits-pages';
 import styles from './comment-tools.module.css';
 import EditMenu from './edit-menu';
 import HideMenu from './hide-menu';
@@ -16,6 +18,7 @@ interface CommentToolsProps {
   failed?: boolean;
   editState?: string;
   hasLabel?: boolean;
+  hasThumbnail?: boolean;
   index?: number;
   isAuthor?: boolean;
   isAccountMod?: boolean;
@@ -168,7 +171,7 @@ const SingleReplyTools = ({
   showCommentEditForm,
 }: CommentToolsProps) => {
   const { t } = useTranslation();
-  const comment = useComment({ commentCid: postCid });
+  const comment = useSubplebbitsPagesStore((state) => state.comments[postCid as string]);
 
   const hasContext = parentCid !== postCid;
 
@@ -251,6 +254,7 @@ const CommentTools = ({
   failed,
   editState,
   hasLabel = false,
+  hasThumbnail = false,
   index,
   isReply,
   isSingleReply,
@@ -266,7 +270,7 @@ const CommentTools = ({
 }: CommentToolsProps) => {
   const account = useAccount();
   const isAuthor = account?.author?.address === author?.address;
-  const subplebbit = useSubplebbit({ subplebbitAddress });
+  const subplebbit = useSubplebbitsStore((state) => state.subplebbits[subplebbitAddress]);
   const accountAuthorRole = subplebbit?.roles?.[account?.author?.address]?.role;
   const commentAuthorRole = subplebbit?.roles?.[author?.address]?.role;
   const isAccountMod = accountAuthorRole === 'admin' || accountAuthorRole === 'owner' || accountAuthorRole === 'moderator';
@@ -283,6 +287,7 @@ const CommentTools = ({
               cid={cid}
               failed={failed}
               hasLabel={hasLabel}
+              hasThumbnail={hasThumbnail}
               index={index}
               isAuthor={isAuthor}
               isAccountMod={isAccountMod}
@@ -299,6 +304,7 @@ const CommentTools = ({
               cid={cid}
               failed={failed}
               hasLabel={hasLabel}
+              hasThumbnail={hasThumbnail}
               index={index}
               isAuthor={isAuthor}
               isAccountMod={isAccountMod}
@@ -326,6 +332,7 @@ const CommentTools = ({
               cid={cid}
               failed={failed}
               hasLabel={hasLabel}
+              hasThumbnail={hasThumbnail}
               index={index}
               isAuthor={isAuthor}
               isAccountMod={isAccountMod}

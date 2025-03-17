@@ -256,7 +256,7 @@
   "settings_saved": "प/{{subplebbitAddress}} के लिए सेटिंग्स सहेजी गईं",
   "mod_edit": "मॉड संपादन",
   "continue_thread": "इस धागे को जारी रखें",
-  "mod_reason": "मॉड कारण",
+  "mod_edit_reason": "मॉड संपादन कारण",
   "double_confirm": "क्या आप वास्तव में सुनिश्चित हैं? यह क्रिया अपरिवर्तनीय है।",
   "crypto_address_not_yours": "क्रिप्टो पता दूसरे खाते से संबंधित है।",
   "crypto_address_yours": "क्रिप्टो पता इस खाते से संबंधित है।",
@@ -306,8 +306,8 @@
   "own_communities": "खुद की समुदायें",
   "invalid_community_address": "अमान्य समुदाय पता",
   "newer_posts_available": "नए पोस्ट उपलब्ध हैं: <1>फीड को फिर से लोड करें</1>",
-  "more_posts_last_week": "{{count}} पोस्ट {{currentTimeFilterName}} से: <1>पिछले सप्ताह से और पोस्ट दिखाएं</1>",
-  "more_posts_last_month": "{{count}} पोस्ट {{currentTimeFilterName}} से: <1>और पोस्ट दिखाएं पिछले महीने से</1>",
+  "more_posts_last_week": "{{count}} पोस्ट पिछले {{currentTimeFilterName}}: <1>और अधिक पोस्ट पिछले सप्ताह से दिखाएं</1>",
+  "more_posts_last_month": "{{count}} पोस्ट {{currentTimeFilterName}} में: <1>दूसरे महीने के और पोस्ट दिखाएं</1>",
   "sure_delete": "क्या आप निश्चित हैं कि आप इस पोस्ट को हटाना चाहते हैं?",
   "sure_undelete": "क्या आप निश्चित हैं कि आप इस पोस्ट को पुनर्स्थापित करना चाहते हैं?",
   "profile_info": "आपका खाता u/{{shortAddress}} बनाया गया था। <1>प्रदर्शन नाम सेट करें</1>, <2>बैकअप निर्यात करें</2>, <3>अधिक जानें</3>.",
@@ -361,5 +361,7 @@
   "you_are_owner": "आप इस समुदाय के मालिक हैं",
   "looking_for_more_posts": "अधिक पोस्ट ढूंढ रहे हैं",
   "loading_feed": "लोडिंग फीड",
-  "loading_posts": "पोस्ट लोड हो रही हैं"
+  "loading_posts": "पोस्ट लोड हो रही हैं",
+  "post_is_pending": "पोस्ट लंबित है",
+  "post_has_failed": "पोस्ट विफल हो गया"
 }

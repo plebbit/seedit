@@ -1,5 +1,7 @@
 import { Fragment, useEffect, useMemo, useState } from 'react';
-import { Comment, useAccountComment, useAuthorAddress, useAuthorAvatar, useBlock, useComment, useEditedComment, useSubplebbit } from '@plebbit/plebbit-react-hooks';
+import { Comment, useAccountComment, useAuthorAddress, useAuthorAvatar, useBlock, useEditedComment } from '@plebbit/plebbit-react-hooks';
+import useSubplebbitsStore from '@plebbit/plebbit-react-hooks/dist/stores/subplebbits';
+import useSubplebbitsPagesStore from '@plebbit/plebbit-react-hooks/dist/stores/subplebbits-pages';
 import { flattenCommentsPages } from '@plebbit/plebbit-react-hooks/dist/lib/utils';
 import { Link, useLocation, useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
@@ -26,6 +28,7 @@ import Markdown from '../markdown';
 import { getHostname } from '../../lib/utils/url-utils';
 import useAvatarVisibilityStore from '../../stores/use-avatar-visibility-store';
 import { formatScore, getReplyScore } from '../../lib/utils/post-utils';
+import _ from 'lodash';
 
 interface ReplyAuthorProps {
   address: string;
@@ -40,6 +43,7 @@ interface ReplyAuthorProps {
   submitterAddress: string;
   subplebbitAddress: string;
   postCid: string;
+  pinned: boolean;
 }
 
 const ReplyAuthor = ({
@@ -50,6 +54,7 @@ const ReplyAuthor = ({
   displayName,
   imageUrl,
   isAvatarDefined,
+  pinned,
   removed,
   shortAuthorAddress,
   submitterAddress,
@@ -58,11 +63,14 @@ const ReplyAuthor = ({
 }: ReplyAuthorProps) => {
   const { t } = useTranslation();
   const { hideAvatars } = useAvatarVisibilityStore();
+
+  // TODO: implement comment.highlightRole once implemented in API
   const isAuthorAdmin = authorRole === 'admin';
   const isAuthorOwner = authorRole === 'owner';
   const isAuthorModerator = authorRole === 'moderator';
   const authorRoleInitial = (isAuthorOwner && 'O') || (isAuthorAdmin && 'A') || (isAuthorModerator && 'M') || '';
   const moderatorClass = `${isAuthorOwner ? styles.owner : isAuthorAdmin ? styles.admin : isAuthorModerator ? styles.moderator : ''}`;
+
   const shortDisplayName = displayName?.length > 20 ? displayName?.slice(0, 20) + '...' : displayName;
   const isAuthorSubmitter = address === submitterAddress;
 
@@ -78,14 +86,18 @@ const ReplyAuthor = ({
             </span>
           )}
           {displayName && (
-            <Link to={`/u/${address}/c/${cid}`} className={`${styles.author} ${moderatorClass} ${!moderatorClass && isAuthorSubmitter ? styles.submitter : ''}`}>
+            <Link
+              to={`/u/${address}/c/${cid}`}
+              className={`${styles.author} ${pinned && moderatorClass} ${!moderatorClass && isAuthorSubmitter ? styles.submitter : ''}`}
+            >
               {shortDisplayName}{' '}
             </Link>
           )}
-          <Link to={`/u/${address}/c/${cid}`} className={`${styles.author} ${moderatorClass} ${!moderatorClass && isAuthorSubmitter ? styles.submitter : ''}`}>
+          <Link to={`/u/${address}/c/${cid}`} className={`${styles.author} ${pinned && moderatorClass} ${!moderatorClass && isAuthorSubmitter ? styles.submitter : ''}`}>
             {displayName ? `u/${shortAuthorAddress}` : shortAuthorAddress}
           </Link>
-          {(authorRole || isAuthorSubmitter) && (
+          {/* TODO: implement comment.highlightRole once implemented in API */}
+          {(authorRole || isAuthorSubmitter) && pinned && (
             <span className={styles.moderatorBrackets}>
               {' '}
               [
@@ -103,6 +115,16 @@ const ReplyAuthor = ({
               ]
             </span>
           )}
+          {isAuthorSubmitter && !pinned && (
+            <span className={styles.moderatorBrackets}>
+              {' '}
+              [
+              <Link to={`/p/${subplebbitAddress}/c/${postCid}`} className={styles.submitter} title={t('submitter')}>
+                S
+              </Link>
+              ]
+            </span>
+          )}
         </>
       )}
     </>
@@ -117,11 +139,12 @@ interface ReplyMediaProps {
   link: string;
   linkHeight: number;
   linkWidth: number;
+  nsfw: boolean;
   spoiler: boolean;
   toggleExpanded: () => void;
 }
 
-const ReplyMedia = ({ commentMediaInfo, content, expanded, hasThumbnail, link, linkHeight, linkWidth, spoiler, toggleExpanded }: ReplyMediaProps) => {
+const ReplyMedia = ({ commentMediaInfo, content, expanded, hasThumbnail, link, linkHeight, linkWidth, nsfw, spoiler, toggleExpanded }: ReplyMediaProps) => {
   const { type } = commentMediaInfo || {};
   return (
     <>
@@ -132,6 +155,7 @@ const ReplyMedia = ({ commentMediaInfo, content, expanded, hasThumbnail, link, l
           isLink={!hasThumbnail && link}
           isReply={true}
           isSpoiler={spoiler}
+          isNsfw={nsfw}
           isText={!hasThumbnail && content?.trim().length > 0}
           link={link}
           linkHeight={linkHeight}
@@ -160,7 +184,15 @@ const ReplyMedia = ({ commentMediaInfo, content, expanded, hasThumbnail, link, l
         </>
       )}
       {expanded && link && (
-        <Expando commentMediaInfo={commentMediaInfo} content={content} expanded={expanded} link={link} showContent={false} toggleExpanded={toggleExpanded} />
+        <Expando
+          commentMediaInfo={commentMediaInfo}
+          content={content}
+          expanded={expanded}
+          link={link}
+          showContent={false}
+          toggleExpanded={toggleExpanded}
+          isReply={true}
+        />
       )}
     </>
   );
@@ -179,7 +211,7 @@ type ParentLinkProps = {
 };
 
 const ParentLink = ({ postCid }: ParentLinkProps) => {
-  const parent = useComment({ commentCid: postCid });
+  const parent = useSubplebbitsPagesStore((state) => state.comments[postCid as string]);
   const { author, cid, content, title, subplebbitAddress } = parent || {};
   const { t } = useTranslation();
   const postTitle = (title?.length > 300 ? title?.slice(0, 300) + '...' : title) || (content?.length > 300 ? content?.slice(0, 300) + '...' : content);
@@ -203,9 +235,9 @@ const ParentLink = ({ postCid }: ParentLinkProps) => {
 
 const InboxParentLink = ({ commentCid }: ParentLinkProps) => {
   const { t } = useTranslation();
-  const inboxComment = useComment({ commentCid });
+  const inboxComment = useSubplebbitsPagesStore((state) => state.comments[commentCid as string]);
   const { postCid, parentCid } = inboxComment || {};
-  const parent = useComment({ commentCid: inboxComment?.postCid });
+  const parent = useSubplebbitsPagesStore((state) => state.comments[inboxComment?.postCid]);
   const { cid, content, title, subplebbitAddress } = parent || {};
   const postTitle = (title?.length > 300 ? title?.slice(0, 300) + '...' : title) || (content?.length > 300 ? content?.slice(0, 300) + '...' : content);
 
@@ -225,7 +257,7 @@ const InboxParentLink = ({ commentCid }: ParentLinkProps) => {
 const InboxShowParentButton = ({ parentCid }: { parentCid: string | undefined }) => {
   const { t } = useTranslation();
   const [showParent, setShowParent] = useState(false);
-  const parentComment = useComment({ commentCid: parentCid });
+  const parentComment = useSubplebbitsPagesStore((state) => state.comments[parentCid as string]);
   const { content, subplebbitAddress } = parentComment || {};
 
   return showParent ? (
@@ -298,17 +330,16 @@ const Reply = ({ cidOfReplyWithContext, depth = 0, isSingleComment, isSingleRepl
     reason,
     removed,
     spoiler,
+    nsfw,
     state,
     subplebbitAddress,
     timestamp,
     upvoteCount,
   } = reply || {};
-  const subplebbit = useSubplebbit({ subplebbitAddress });
-
-  const [showSpoiler, setShowSpoiler] = useState(false);
+  const subplebbit = useSubplebbitsStore((state) => state.subplebbits[subplebbitAddress]);
 
   const pendingReply = useAccountComment({ commentIndex: reply?.index });
-  const parentOfPendingReply = useComment({ commentCid: pendingReply?.parentCid });
+  const parentOfPendingReply = useSubplebbitsPagesStore((state) => state.comments[pendingReply?.parentCid]);
 
   const location = useLocation();
   const params = useParams();
@@ -371,10 +402,11 @@ const Reply = ({ cidOfReplyWithContext, depth = 0, isSingleComment, isSingleRepl
       {editState === 'failed' && <Label color='red' text={t('failed_edit')} />}
       {editState === 'pending' && <Label color='yellow' text={t('pending_edit')} />}
       {spoiler && <Label color='black' text={t('spoiler')} />}
+      {nsfw && <Label color='red' text={t('nsfw')} />}
     </span>
   );
 
-  const post = useComment({ commentCid: postCid });
+  const post = useSubplebbitsPagesStore((state) => state.comments[postCid as string]);
 
   return (
     <div className={styles.reply}>
@@ -406,6 +438,7 @@ const Reply = ({ cidOfReplyWithContext, depth = 0, isSingleComment, isSingleRepl
                   shortAuthorAddress={shortAuthorAddress}
                   submitterAddress={post?.author?.address}
                   subplebbitAddress={subplebbitAddress}
+                  pinned={pinned}
                   postCid={postCid}
                 />
                 <span className={styles.score}>{scoreString}</span>{' '}
@@ -413,7 +446,7 @@ const Reply = ({ cidOfReplyWithContext, depth = 0, isSingleComment, isSingleRepl
                   <span title={formatLocalizedUTCTimestamp(timestamp, language)}>{getFormattedTimeAgo(timestamp)}</span>
                   {edit && <span className={styles.timeEdited}> {t('edited_timestamp', { timestamp: getFormattedTimeAgo(edit.timestamp) })}</span>}
                 </span>
-                {pinned && <span className={styles.pinned}>- {t('stickied_comment')}</span>}
+                {pinned && <span className={styles.pinned}> - {t('stickied_comment')}</span>}
                 {collapsed && (
                   <>
                     <span className={styles.children}> ({childrenString})</span>
@@ -444,16 +477,8 @@ const Reply = ({ cidOfReplyWithContext, depth = 0, isSingleComment, isSingleRepl
               />
             )}
             {!collapsed && (
-              <div
-                className={`${styles.usertext} ${cid && commentMediaInfo && (isSingleComment || cidOfReplyWithContext === cid) ? styles.highlightMedia : ''} ${
-                  spoiler && !showSpoiler ? styles.hideSpoiler : ''
-                }`}
-                onClick={() => {
-                  spoiler && !showSpoiler && setShowSpoiler(true);
-                }}
-              >
-                <div className={spoiler && !showSpoiler ? styles.hideSpoiler : ''} />
-                {commentMediaInfo && !(removed || deleted || (spoiler && !showSpoiler)) && (
+              <div className={`${styles.usertext} ${cid && commentMediaInfo && (isSingleComment || cidOfReplyWithContext === cid) ? styles.highlightMedia : ''}`}>
+                {commentMediaInfo && !(removed || deleted) && (
                   <ReplyMedia
                     commentMediaInfo={commentMediaInfo}
                     content={content}
@@ -462,6 +487,7 @@ const Reply = ({ cidOfReplyWithContext, depth = 0, isSingleComment, isSingleRepl
                     link={link}
                     linkHeight={linkHeight}
                     linkWidth={linkWidth}
+                    nsfw={nsfw}
                     spoiler={spoiler}
                     toggleExpanded={toggleExpanded}
                   />
@@ -474,7 +500,6 @@ const Reply = ({ cidOfReplyWithContext, depth = 0, isSingleComment, isSingleRepl
                       removed || deleted ? styles.removedOrDeletedContent : ''
                     }`}
                   >
-                    {spoiler && !showSpoiler && <div className={styles.showSpoilerButton}>{t('view_spoiler')}</div>}
                     {content &&
                       (removed ? (
                         <span className={styles.removedContent}>[{t('removed')}]</span>
@@ -484,8 +509,8 @@ const Reply = ({ cidOfReplyWithContext, depth = 0, isSingleComment, isSingleRepl
                         <Markdown content={content} />
                       ))}
                     {reason && (
-                      <p>
-                        {t('mod_reason')}: {reason}
+                      <p className={styles.modReason}>
+                        {_.lowerCase(t('mod_edit_reason'))}: {reason}
                       </p>
                     )}
                     {edit?.reason && !(removed || deleted) && (

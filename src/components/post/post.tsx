@@ -1,7 +1,10 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link, useLocation, useParams } from 'react-router-dom';
-import { Comment, useAuthorAddress, useBlock, useComment, useEditedComment, useSubplebbit, useSubscribe } from '@plebbit/plebbit-react-hooks';
+import { Comment, useAuthorAddress, useBlock, useEditedComment, useSubscribe } from '@plebbit/plebbit-react-hooks';
+import Plebbit from '@plebbit/plebbit-js/dist/browser/index.js';
+import useSubplebbitsStore from '@plebbit/plebbit-react-hooks/dist/stores/subplebbits';
+import useSubplebbitsPagesStore from '@plebbit/plebbit-react-hooks/dist/stores/subplebbits-pages';
 import { getHasThumbnail } from '../../lib/utils/media-utils';
 import { getPostScore, formatScore } from '../../lib/utils/post-utils';
 import { getFormattedTimeAgo, formatLocalizedUTCTimestamp } from '../../lib/utils/time-utils';
@@ -29,34 +32,38 @@ interface PostAuthorProps {
   cid: string;
   displayName: string;
   index?: number;
+  pinned?: boolean;
   shortAddress: string;
   shortAuthorAddress: string | undefined;
   authorAddressChanged: boolean;
 }
 
-const PostAuthor = ({ authorAddress, authorRole, cid, displayName, index, shortAddress, shortAuthorAddress, authorAddressChanged }: PostAuthorProps) => {
+const PostAuthor = ({ authorAddress, authorRole, cid, displayName, index, pinned, shortAddress, shortAuthorAddress, authorAddressChanged }: PostAuthorProps) => {
+  // TODO: implement comment.highlightRole once implemented in API
   const isAuthorOwner = authorRole === 'owner';
   const isAuthorAdmin = authorRole === 'admin';
   const isAuthorModerator = authorRole === 'moderator';
   const moderatorClass = `${isAuthorOwner ? styles.owner : isAuthorAdmin ? styles.admin : isAuthorModerator ? styles.moderator : ''}`;
   const authorRoleInitial = (isAuthorOwner && 'O') || (isAuthorAdmin && 'A') || (isAuthorModerator && 'M') || '';
+
   const shortDisplayName = displayName?.trim().length > 20 ? displayName?.trim().slice(0, 20).trim() + '...' : displayName?.trim();
 
   return (
     <>
-      <Link to={cid ? `/u/${authorAddress}/c/${cid}` : `/profile/${index}`} className={`${styles.author} ${moderatorClass}`}>
+      <Link to={cid ? `/u/${authorAddress}/c/${cid}` : `/profile/${index}`} className={`${styles.author} ${pinned && moderatorClass}`}>
         {displayName && (
           <>
             {' '}
-            <span className={`${styles.displayName} ${moderatorClass}`}>{shortDisplayName}</span>
+            <span className={`${styles.displayName} ${pinned && moderatorClass}`}>{shortDisplayName}</span>
           </>
         )}{' '}
-        <span className={`${styles.authorAddressWrapper} ${moderatorClass}`}>
+        <span className={`${styles.authorAddressWrapper} ${pinned && moderatorClass}`}>
           <span className={styles.authorAddressHidden}>u/{shortAddress || shortAuthorAddress}</span>
           <span className={`${styles.authorAddressVisible} ${authorAddressChanged && styles.authorAddressChanged}`}>u/{shortAuthorAddress}</span>
         </span>
       </Link>
-      {authorRole && (
+      {/* TODO: implement comment.highlightRole once implemented in API */}
+      {authorRole && pinned && (
         <span>
           {' '}
           [
@@ -77,7 +84,8 @@ interface PostProps {
 
 const Post = ({ index, post = {} }: PostProps) => {
   // handle single comment thread
-  const op = useComment({ commentCid: post?.parentCid ? post?.postCid : '' });
+  const op = useSubplebbitsPagesStore((state) => state.comments[post?.parentCid ? post?.postCid : '']);
+
   if (post?.parentCid) {
     post = op;
   }
@@ -121,7 +129,7 @@ const Post = ({ index, post = {} }: PostProps) => {
   const postDate = formatLocalizedUTCTimestamp(timestamp, language);
   const params = useParams();
   const location = useLocation();
-  const subplebbit = useSubplebbit({ subplebbitAddress });
+  const subplebbit = useSubplebbitsStore((state) => state.subplebbits[subplebbitAddress]);
 
   const authorRole = subplebbit?.roles?.[post.author?.address]?.role;
 
@@ -262,6 +270,7 @@ const Post = ({ index, post = {} }: PostProps) => {
                     cid={cid}
                     displayName={displayName}
                     index={post?.index}
+                    pinned={pinned}
                     shortAddress={shortAddress}
                     shortAuthorAddress={shortAuthorAddress}
                     authorAddressChanged={authorAddressChanged}
@@ -282,7 +291,7 @@ const Post = ({ index, post = {} }: PostProps) => {
                           </span>
                         )}
                         <Link className={`${styles.subplebbit} ${subscribed && hasClickedSubscribe ? styles.greenSubplebbitAddress : ''}`} to={`/p/${subplebbitAddress}`}>
-                          p/{subplebbit?.shortAddress || subplebbitAddress}
+                          p/{subplebbit?.shortAddress || (subplebbitAddress && Plebbit.getShortAddress(subplebbitAddress))}
                         </Link>
                       </span>
                     </>

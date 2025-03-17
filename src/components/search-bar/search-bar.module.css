@@ -44,14 +44,6 @@
   cursor: pointer;
 }
 
-.searchBarVisible {
-  visibility: visible;
-}
-
-.searchBarHidden {
-  visibility: hidden;
-}
-
 .infobar {
   position: relative;
   width: 278px;
@@ -62,28 +54,24 @@
   border-style: solid;
   border-width: 1px;
   font-size: small;
-  padding: 0 10px;
-  height: 0;
+  padding: 10px;
+  height: 22px;
   overflow: hidden;
-  transition: height 0.3s linear,
-              visibility 0.3s linear,
-              padding-top 0.3s linear, 
-              margin-top 0.3s linear, 
-              padding-bottom 0.3s linear, 
-              margin-bottom 0.3s linear;  
   z-index: 1;
-  margin-bottom: 10px;
+  margin-top: 5px;
+  margin-bottom: 12px;
+  will-change: transform;
+  transition: transform 0.3s linear, visibility 0.3s linear;
+  transform-origin: top;
 }
 
 .slideDown {
-  height: 22px;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  margin-top: 5px;
-  margin-bottom: 12px;
+  transform: scaleY(1);
+  visibility: visible;
 }
 
 .slideUp {
+  transform: scaleY(0);
   visibility: hidden;
 }
 
@@ -95,4 +83,16 @@
 
 .infobar input[type="checkbox"] {
   margin: 2px .5em 0 0;
+}
+
+.searchBarWrapper {
+  position: relative;
+  will-change: transform;
+  transition: transform 0.3s linear;
+}
+
+.contentWrapper {
+  position: relative;
+  will-change: transform;
+  transition: transform 0.3s linear;
 }

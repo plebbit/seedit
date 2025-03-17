@@ -121,11 +121,11 @@
 }
 
 .mailIconRead {
-  background-image: url('/public/assets/mail.png');
+  background-image: url('/assets/mail.png');
 }
 
 .mailIconUnread {
-  background-image: url('/public/assets/mail-unread.png');
+  background-image: url('/assets/mail-unread.png');
 }
 
 .mailUnreadCount {

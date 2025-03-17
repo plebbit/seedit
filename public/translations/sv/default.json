@@ -256,7 +256,7 @@
   "settings_saved": "Inställningar sparade för p/{{subplebbitAddress}}",
   "mod_edit": "moderatoredigering",
   "continue_thread": "fortsätt den här tråden",
-  "mod_reason": "mod anledning",
+  "mod_edit_reason": "Mod redigeringsorsak",
   "double_confirm": "Är du verkligen säker? Denna åtgärd är oåterkallelig.",
   "crypto_address_not_yours": "Crypto-adress tillhör ett annat konto.",
   "crypto_address_yours": "Crypto-adressen tillhör denna konto.",
@@ -306,8 +306,8 @@
   "own_communities": "egna samhällen",
   "invalid_community_address": "Ogiltig samhällsadress",
   "newer_posts_available": "Nyare inlägg tillgängliga: <1>ladda om flödet</1>",
-  "more_posts_last_week": "{{count}} inlägg sedan {{currentTimeFilterName}}: <1>visa fler inlägg från förra veckan</1>",
-  "more_posts_last_month": "{{count}} inlägg sedan {{currentTimeFilterName}}: <1>visa fler inlägg från förra månaden</1>",
+  "more_posts_last_week": "{{count}} inlägg senaste {{currentTimeFilterName}}: <1>visa fler inlägg från förra veckan</1>",
+  "more_posts_last_month": "{{count}} inlägg i {{currentTimeFilterName}}: <1>visa fler inlägg från förra månaden</1>",
   "sure_delete": "Är du säker på att du vill ta bort detta inlägg?",
   "sure_undelete": "Är du säker på att du vill återställa detta inlägg?",
   "profile_info": "Ditt konto u/{{shortAddress}} skapades. <1>Ställ in visningsnamn</1>, <2>exportera säkerhetskopia</2>, <3>läs mer</3>.",
@@ -361,5 +361,7 @@
   "you_are_owner": "Du är ägaren av denna gemenskap",
   "looking_for_more_posts": "Letar efter fler inlägg",
   "loading_feed": "Laddar flöde",
-  "loading_posts": "Laddar inlägg"
+  "loading_posts": "Laddar inlägg",
+  "post_is_pending": "Inlägget är i väntan",
+  "post_has_failed": "Inlägget misslyckades"
 }

@@ -70,7 +70,23 @@
 }
 
 .soundcloudEmbed {
-  height: 166px; /* default height of soundcloud embeds */
-  width: 100%;
-  max-width: 640px;
+  height: 166px !important;
+  width: 700px !important;
+}
+
+.soundcloudSetsEmbed {
+  height: 500px !important;
+  width: 700px !important;
+}
+
+@media (max-width: 640px) {
+  .soundcloudEmbed {
+    width: 100% !important;
+    height: 166px !important;
+  }
+
+  .soundcloudSetsEmbed {
+    width: 100% !important;
+    height: 500px !important;
+  }
 }

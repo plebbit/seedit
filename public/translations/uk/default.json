@@ -256,7 +256,7 @@
   "settings_saved": "Налаштування збережено для p/{{subplebbitAddress}}",
   "mod_edit": "редагування модератора",
   "continue_thread": "продовжити цю тему",
-  "mod_reason": "причина моду",
+  "mod_edit_reason": "Причина редагування модератором",
   "double_confirm": "Ви впевнені? Ця дія незворотня.",
   "crypto_address_not_yours": "Адреса криптовалюти належить до іншого облікового запису.",
   "crypto_address_yours": "Адреса криптовалюти належить цьому обліковому запису.",
@@ -306,8 +306,8 @@
   "own_communities": "власні спільноти",
   "invalid_community_address": "Недійсна адреса спільноти",
   "newer_posts_available": "Новіші пости доступні: <1>перезавантажити стрічку</1>",
-  "more_posts_last_week": "{{count}} дописів з {{currentTimeFilterName}}: <1>показати більше дописів з минулого тижня</1>",
-  "more_posts_last_month": "{{count}} дописів від {{currentTimeFilterName}}: <1>показати більше дописів з минулого місяця</1>",
+  "more_posts_last_week": "{{count}} пости минулого {{currentTimeFilterName}}: <1>показати більше постів з минулого тижня</1>",
+  "more_posts_last_month": "{{count}} постів у {{currentTimeFilterName}}: <1>показати більше постів з минулого місяця</1>",
   "sure_delete": "Ви впевнені, що хочете видалити цей пост?",
   "sure_undelete": "Ви впевнені, що хочете відновити цей пост?",
   "profile_info": "Ваш акаунт u/{{shortAddress}} був створений. <1>Встановіть ім'я відображення</1>, <2>експортувати резервну копію</2>, <3>дізнатись більше</3>.",
@@ -361,5 +361,7 @@
   "you_are_owner": "Ви є власником цієї спільноти",
   "looking_for_more_posts": "Шукаю більше дописів",
   "loading_feed": "Завантаження потоку",
-  "loading_posts": "Завантаження постів"
+  "loading_posts": "Завантаження постів",
+  "post_is_pending": "Пост очікує",
+  "post_has_failed": "Публікація не вдалася"
 }

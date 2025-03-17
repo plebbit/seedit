@@ -256,7 +256,7 @@
   "settings_saved": "p/{{subplebbitAddress}} کے لئے ترتیبات محفوظ ہوگئیں",
   "mod_edit": "موڈ سنواریں",
   "continue_thread": "اس ٹھریڈ کو جاری رکھیں",
-  "mod_reason": "موڈ کا سبب",
+  "mod_edit_reason": "موڈ ایڈیٹ وجہ",
   "double_confirm": "کیا آپ واقعی میں یقینی ہیں؟ یہ کارروائی بے واپس ہے۔",
   "crypto_address_not_yours": "کرپٹو پتا دوسرے اکاؤنٹ کا حصہ ہے۔",
   "crypto_address_yours": "کرپٹو پتا اس اکاؤنٹ کا حصہ ہے۔",
@@ -306,8 +306,8 @@
   "own_communities": "اپنی کمیونٹیاں",
   "invalid_community_address": "غیر درست مجتمع کا پتہ",
   "newer_posts_available": "نئے پوسٹس دستیاب ہیں: <1>فیڈ کو دوبارہ لوڈ کریں</1>",
-  "more_posts_last_week": "{{count}} پوسٹس {{currentTimeFilterName}} سے: <1>پچھلے ہفتے سے مزید پوسٹس دکھائیں</1>",
-  "more_posts_last_month": "{{count}} پوسٹس {{currentTimeFilterName}} سے: <1>پچھلے مہینے سے مزید پوسٹس دکھائیں</1>",
+  "more_posts_last_week": "{{count}} پوسٹس پچھلے {{currentTimeFilterName}}: <1>پچھلے ہفتے کے مزید پوسٹس دکھائیں</1>",
+  "more_posts_last_month": "{{count}} پوسٹیں {{currentTimeFilterName}} میں: <1>پچھلے مہینے کی مزید پوسٹس دکھائیں</1>",
   "sure_delete": "کیا آپ کو یقین ہے کہ آپ اس پوسٹ کو حذف کرنا چاہتے ہیں؟",
   "sure_undelete": "کیا آپ کو یقین ہے کہ آپ اس پوسٹ کو دوبارہ حاصل کرنا چاہتے ہیں؟",
   "profile_info": "آپ کا اکاؤنٹ u/{{shortAddress}} تخلیق کیا گیا ہے۔ <1>ڈسپلے نام سیٹ کریں</1>, <2>بیگ اپ برآمد کریں</2>, <3>مزید معلومات</3>.",
@@ -361,5 +361,7 @@
   "you_are_owner": "آپ اس کمیونٹی کے مالک ہیں",
   "looking_for_more_posts": "مزید پوسٹس تلاش کر رہے ہیں",
   "loading_feed": "لوڈ ہو رہا ہے فیڈ",
-  "loading_posts": "پوسٹس لوڈ ہو رہی ہیں"
+  "loading_posts": "پوسٹس لوڈ ہو رہی ہیں",
+  "post_is_pending": "پوسٹ زیر التواء ہے",
+  "post_has_failed": "پوسٹ ناکام ہوگئی"
 }

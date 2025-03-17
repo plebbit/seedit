@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useParams, useNavigate } from 'react-router-dom';
 import { useAccountComments, useBlock, useFeed, useSubplebbit } from '@plebbit/plebbit-react-hooks';
 import { Virtuoso, VirtuosoHandle, StateSnapshot } from 'react-virtuoso';
 import { Trans, useTranslation } from 'react-i18next';
@@ -13,6 +13,7 @@ import { usePinnedPostsStore } from '../../stores/use-pinned-posts-store';
 import { useIsBroadlyNsfwSubplebbit } from '../../hooks/use-is-broadly-nsfw-subplebbit';
 import useContentOptionsStore from '../../stores/use-content-options-store';
 import Over18Warning from '../../components/over-18-warning';
+import { sortTypes } from '../../constants/sortTypes';
 
 const lastVirtuosoStates: { [key: string]: StateSnapshot } = {};
 
@@ -153,6 +154,7 @@ const Footer = ({
 
 const Subplebbit = () => {
   const params = useParams();
+  const navigate = useNavigate();
   const subplebbitAddress = params?.subplebbitAddress;
   const subplebbit = useSubplebbit({ subplebbitAddress });
   const { createdAt, error, shortAddress, started, title, updatedAt, settings } = subplebbit || {};
@@ -160,7 +162,14 @@ const Subplebbit = () => {
   const isSubCreatedButNotYetPublished = typeof createdAt === 'number' && !updatedAt;
 
   const subplebbitAddresses = useMemo(() => [subplebbitAddress], [subplebbitAddress]) as string[];
-  const sortType = params?.sortType || 'hot';
+  const sortType = sortTypes.includes(params?.sortType || '') ? params?.sortType : sortTypes[0];
+
+  useEffect(() => {
+    if (params?.sortType && !sortTypes.includes(params.sortType)) {
+      navigate('/not-found');
+    }
+  }, [params?.sortType, navigate]);
+
   const timeFilterName = params.timeFilterName || 'all';
   const { timeFilterSeconds } = useTimeFilter();
   const { feed, hasMore, loadMore, reset, subplebbitAddressesWithNewerPosts } = useFeed({ subplebbitAddresses, sortType, newerThan: timeFilterSeconds });

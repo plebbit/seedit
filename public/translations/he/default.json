@@ -256,7 +256,7 @@
   "settings_saved": "הגדרות נשמרו עבור p/{{subplebbitAddress}}",
   "mod_edit": "עריכת מנהל",
   "continue_thread": "המשך את השרשור הזה",
-  "mod_reason": "סיבת המנהל",
+  "mod_edit_reason": "סיבת עריכת המנהל",
   "double_confirm": "האם אתה באמת בטוח? הפעולה הזו היא לא הפיכה.",
   "crypto_address_not_yours": "כתובת המטבע הקריפטוגרפי שייכת לחשבון אחר.",
   "crypto_address_yours": "כתובת המטבע הקריפטוגרפי שייכת לחשבון זה.",
@@ -306,8 +306,8 @@
   "own_communities": "הקהילות שלי",
   "invalid_community_address": "כתובת הקהילה אינה חוקית",
   "newer_posts_available": "פוסטים חדשים זמינים: <1>רענן את הזרם</1>",
-  "more_posts_last_week": "{{count}} פוסטים מ{{currentTimeFilterName}}: <1>הצג פוסטים נוספים מהשבוע שעבר</1>",
-  "more_posts_last_month": "{{count}} פוסטים מאז {{currentTimeFilterName}}: <1>הצג פוסטים נוספים מהחודש שעבר</1>",
+  "more_posts_last_week": "{{count}} פוסטים בשבוע האחרון {{currentTimeFilterName}}: <1>הצג פוסטים נוספים מהשבוע שעבר</1>",
+  "more_posts_last_month": "{{count}} פוסטים ב{{currentTimeFilterName}}: <1>הראה פוסטים נוספים מהחודש שעבר</1>",
   "sure_delete": "האם אתה בטוח שברצונך למחוק את הפוסט הזה?",
   "sure_undelete": "האם אתה בטוח שברצונך לשחזר את הפוסט הזה?",
   "profile_info": "החשבון שלך u/{{shortAddress}} נוצר. <1>קבע שם תצוגה</1>, <2>ייצא גיבוי</2>, <3>למד עוד</3>.",
@@ -361,5 +361,7 @@
   "you_are_owner": "אתה הבעלים של קהילה זו",
   "looking_for_more_posts": "מחפש פוסטים נוספים",
   "loading_feed": "טוען פיד",
-  "loading_posts": "טעינת פוסטים"
+  "loading_posts": "טעינת פוסטים",
+  "post_is_pending": "הפוסט ממתין",
+  "post_has_failed": "הפוסט נכשל"
 }

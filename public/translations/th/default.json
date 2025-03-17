@@ -256,7 +256,7 @@
   "settings_saved": "บันทึกการตั้งค่าสำหรับ p/{{subplebbitAddress}}",
   "mod_edit": "mod edit",
   "continue_thread": "ดำเนินการเรื่องนี้ต่อ",
-  "mod_reason": "เหตุผลของ mod",
+  "mod_edit_reason": "เหตุผลในการแก้ไขของม็อด",
   "double_confirm": "คุณแน่ใจหรือไม่? การดำเนินการนี้ไม่สามารถย้อนกลับได้",
   "crypto_address_not_yours": "ที่อยู่คริปโตเป็นของบัญชีอื่น",
   "crypto_address_yours": "ที่อยู่คริปโตเป็นของบัญชีนี้",
@@ -306,8 +306,8 @@
   "own_communities": "ชุมชนของฉัน",
   "invalid_community_address": "ที่อยู่ชุมชนไม่ถูกต้อง",
   "newer_posts_available": "โพสต์ใหม่พร้อมใช้งาน: <1>โหลดฟีดใหม่</1>",
-  "more_posts_last_week": "{{count}} โพสต์จาก {{currentTimeFilterName}}: <1>แสดงโพสต์เพิ่มเติมจากสัปดาห์ที่แล้ว</1>",
-  "more_posts_last_month": "{{count}} โพสต์ตั้งแต่ {{currentTimeFilterName}}: <1>แสดงโพสต์เพิ่มเติมจากเดือนที่แล้ว</1>",
+  "more_posts_last_week": "{{count}} โพสต์เมื่อสัปดาห์ที่แล้ว {{currentTimeFilterName}}: <1>แสดงโพสต์เพิ่มเติมจากสัปดาห์ที่แล้ว</1>",
+  "more_posts_last_month": "{{count}} โพสต์ใน {{currentTimeFilterName}}: <1>แสดงโพสต์เพิ่มเติมจากเดือนที่แล้ว</1>",
   "sure_delete": "คุณแน่ใจหรือไม่ว่าต้องการลบโพสต์นี้?",
   "sure_undelete": "คุณแน่ใจหรือไม่ว่าต้องการกู้คืนโพสต์นี้?",
   "profile_info": "บัญชีของคุณ u/{{shortAddress}} ถูกสร้างขึ้นแล้ว <1>ตั้งค่าชื่อแสดง</1>, <2>ส่งออกสำรองข้อมูล</2>, <3>เรียนรู้เพิ่มเติม</3>.",
@@ -361,5 +361,7 @@
   "you_are_owner": "คุณเป็นเจ้าของชุมชนนี้",
   "looking_for_more_posts": "กำลังมองหาบทความเพิ่มเติม",
   "loading_feed": "กำลังโหลดฟีด",
-  "loading_posts": "กำลังโหลดโพสต์"
+  "loading_posts": "กำลังโหลดโพสต์",
+  "post_is_pending": "โพสต์รอดำเนินการ",
+  "post_has_failed": "โพสต์ล้มเหลว"
 }

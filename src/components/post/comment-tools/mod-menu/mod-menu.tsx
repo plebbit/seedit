@@ -26,15 +26,18 @@ const ModMenu = ({ cid, isCommentAuthorMod }: ModMenuProps) => {
   const isReply = post?.parentCid;
   const [isModMenuOpen, setIsModMenuOpen] = useState(false);
 
+  const { removed, locked, spoiler, nsfw, pinned, banExpiresAt, subplebbitAddress } = post || {};
+
   const defaultPublishOptions: PublishCommentModerationOptions = {
-    commentCid: post?.cid,
-    subplebbitAddress: post?.subplebbitAddress,
+    commentCid: cid,
+    subplebbitAddress,
     commentModeration: {
-      removed: post?.removed ?? false,
-      locked: post?.locked ?? false,
-      spoiler: post?.spoiler ?? false,
-      pinned: post?.pinned ?? false,
-      banExpiresAt: post?.banExpiresAt,
+      removed: removed ?? false,
+      locked: locked ?? false,
+      spoiler: spoiler ?? false,
+      nsfw: nsfw ?? false,
+      pinned: pinned ?? false,
+      banExpiresAt,
     },
     onChallenge: (...args: any) => addChallenge([...args, post]),
     onChallengeVerification: alertChallengeVerificationFailed,
@@ -142,6 +145,12 @@ const ModMenu = ({ cid, isCommentAuthorMod }: ModMenuProps) => {
                 <label>
                   <input onChange={onCheckbox} checked={publishCommentModerationOptions.commentModeration.spoiler} type='checkbox' id='spoiler' />
                   {t('spoiler')}
+                </label>
+              </div>
+              <div className={styles.menuItem}>
+                <label>
+                  <input onChange={onCheckbox} checked={publishCommentModerationOptions.commentModeration.nsfw} type='checkbox' id='nsfw' />
+                  {t('nsfw')}
                 </label>
               </div>
               <div className={styles.menuItem}>

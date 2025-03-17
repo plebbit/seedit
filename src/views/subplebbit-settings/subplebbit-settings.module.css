@@ -296,7 +296,7 @@
 }
 
 .deleteButton {
-  background-image: url("/public/assets/buttons/delete-button.png");
+  background-image: url("/assets/buttons/delete-button.png");
   background-size: 16px;
   background-repeat: no-repeat;
   padding-right: 10px;
@@ -306,7 +306,7 @@
 }
 
 .deleteButton:hover {
-  background-image: url("/public/assets/buttons/delete-button-hover.png");
+  background-image: url("/assets/buttons/delete-button-hover.png");
 }
 
 .logoPreview {

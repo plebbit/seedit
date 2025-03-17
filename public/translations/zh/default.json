@@ -256,7 +256,7 @@
   "settings_saved": "已保存 p/{{subplebbitAddress}} 的设置",
   "mod_edit": "mod 编辑",
   "continue_thread": "继续这个主题",
-  "mod_reason": "mod 原因",
+  "mod_edit_reason": "版主编辑原因",
   "double_confirm": "您真的确定吗？此操作不可逆转。",
   "crypto_address_not_yours": "加密地址属于另一个帐户。",
   "crypto_address_yours": "加密地址属于此帐户。",
@@ -306,8 +306,8 @@
   "own_communities": "自己的社区",
   "invalid_community_address": "无效的社区地址",
   "newer_posts_available": "有新的帖子可用： <1>重新加载源</1>",
-  "more_posts_last_week": "{{count}} 帖子来自 {{currentTimeFilterName}}: <1>显示更多来自上周的帖子</1>",
-  "more_posts_last_month": "{{count}} 帖子自 {{currentTimeFilterName}} 起: <1>显示更多来自上个月的帖子</1>",
+  "more_posts_last_week": "{{count}} 帖子上个 {{currentTimeFilterName}}: <1>显示更多上周的帖子</1>",
+  "more_posts_last_month": "{{count}} 帖子在 {{currentTimeFilterName}}：<1>显示更多来自上个月的帖子</1>",
   "sure_delete": "您确定要删除此帖子吗？",
   "sure_undelete": "您确定要恢复此帖子吗？",
   "profile_info": "您的账户 u/{{shortAddress}} 已创建。 <1>设置显示名称</1>, <2>导出备份</2>, <3>了解更多</3>。",
@@ -361,5 +361,7 @@
   "you_are_owner": "您是这个社区的拥有者",
   "looking_for_more_posts": "寻找更多帖子",
   "loading_feed": "加载中...",
-  "loading_posts": "加载帖子"
+  "loading_posts": "加载帖子",
+  "post_is_pending": "帖子待处理中",
+  "post_has_failed": "发布失败"
 }

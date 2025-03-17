@@ -256,7 +256,7 @@
   "settings_saved": "Nastavení uloženo pro p/{{subplebbitAddress}}",
   "mod_edit": "úprava moderátora",
   "continue_thread": "pokračovat v tématu",
-  "mod_reason": "důvod mod",
+  "mod_edit_reason": "Důvod úpravy moderátorem",
   "double_confirm": "Opravdu jste si jisti? Tato akce je nevratná.",
   "crypto_address_not_yours": "Adresa kryptoměny patří k jinému účtu.",
   "crypto_address_yours": "Adresa kryptoměny patří k tomuto účtu.",
@@ -306,8 +306,8 @@
   "own_communities": "vlastní komunity",
   "invalid_community_address": "Neplatná adresa komunity",
   "newer_posts_available": "Novější příspěvky jsou k dispozici: <1>znovu načíst kanál</1>",
-  "more_posts_last_week": "{{count}} příspěvků od {{currentTimeFilterName}}: <1>zobrazit více příspěvků z minulého týdne</1>",
-  "more_posts_last_month": "{{count}} příspěvků od {{currentTimeFilterName}}: <1>zobrazit více příspěvků z minulého měsíce</1>",
+  "more_posts_last_week": "{{count}} příspěvků minulý {{currentTimeFilterName}}: <1>zobrazit více příspěvků z minulého týdne</1>",
+  "more_posts_last_month": "{{count}} příspěvků v {{currentTimeFilterName}}: <1>zobrazit více příspěvků z minulého měsíce</1>",
   "sure_delete": "Opravdu chcete smazat tento příspěvek?",
   "sure_undelete": "Opravdu chcete obnovit tento příspěvek?",
   "profile_info": "Váš účet u/{{shortAddress}} byl vytvořen. <1>Nastavit zobrazované jméno</1>, <2>exportovat zálohu</2>, <3>další informace</3>.",
@@ -361,5 +361,7 @@
   "you_are_owner": "Jste vlastníkem této komunity",
   "looking_for_more_posts": "Hledání dalších příspěvků",
   "loading_feed": "Načítání kanálu",
-  "loading_posts": "Načítání příspěvků"
+  "loading_posts": "Načítání příspěvků",
+  "post_is_pending": "Příspěvek čeká",
+  "post_has_failed": "Příspěvek selhal"
 }

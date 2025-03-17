@@ -29,6 +29,8 @@ export const getHasThumbnail = (commentMediaInfo: CommentMediaInfo | undefined, 
 const getYouTubeVideoId = (url: URL): string | null => {
   if (url.host.includes('youtu.be')) {
     return url.pathname.slice(1);
+  } else if (url.pathname.includes('/shorts/')) {
+    return url.pathname.split('/shorts/')[1].split('/')[0];
   } else if (url.searchParams.has('v')) {
     return url.searchParams.get('v');
   }

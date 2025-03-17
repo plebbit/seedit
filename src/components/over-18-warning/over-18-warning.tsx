@@ -17,7 +17,7 @@ const Over18Warning = () => {
 
   return (
     <div className={styles.over18}>
-      <img src={`${process.env.PUBLIC_URL}/assets/over18.png`} alt='over 18' />
+      <img src={`/assets/over18.png`} alt='over 18' />
       <div className={styles.warning}>
         <h3>{t('must_be_over_18')}</h3>
         <p>{t('must_be_over_18_explanation')}</p>

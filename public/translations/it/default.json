@@ -256,7 +256,7 @@
   "settings_saved": "Impostazioni salvate per p/{{subplebbitAddress}}",
   "mod_edit": "modifica dei moderatori",
   "continue_thread": "continua questa discussione",
-  "mod_reason": "motivo della moderazione",
+  "mod_edit_reason": "Motivo modifica moderatore",
   "double_confirm": "Sei davvero sicuro? Questa azione è irreversibile.",
   "crypto_address_not_yours": "L'indirizzo cripto appartiene a un altro account.",
   "crypto_address_yours": "L'indirizzo cripto appartiene a questo account.",
@@ -306,8 +306,8 @@
   "own_communities": "comunità che possiedo",
   "invalid_community_address": "Indirizzo comunità non valido",
   "newer_posts_available": "Nuovi post disponibili: <1>ricarica il feed</1>",
-  "more_posts_last_week": "{{count}} post da {{currentTimeFilterName}}: <1>mostra più post dalla scorsa settimana</1>",
-  "more_posts_last_month": "{{count}} post da {{currentTimeFilterName}}: <1>mostra più post del mese scorso</1>",
+  "more_posts_last_week": "{{count}} post la scorsa {{currentTimeFilterName}}: <1>mostra più post della settimana scorsa</1>",
+  "more_posts_last_month": "{{count}} post nell'{{currentTimeFilterName}}: <1>mostra più post dal mese scorso</1>",
   "sure_delete": "Sei sicuro di voler eliminare questo post?",
   "sure_undelete": "Sei sicuro di voler ripristinare questo post?",
   "profile_info": "Il tuo account u/{{shortAddress}} è stato creato. <1>Imposta nome visualizzato</1>, <2>esporta backup</2>, <3>scopri di più</3>.",
@@ -361,5 +361,7 @@
   "you_are_owner": "Sei il proprietario di questa comunità",
   "looking_for_more_posts": "Cercando più post",
   "loading_feed": "Caricamento feed",
-  "loading_posts": "Caricamento dei post"
+  "loading_posts": "Caricamento dei post",
+  "post_is_pending": "Il post è in sospeso",
+  "post_has_failed": "Il post è fallito"
 }

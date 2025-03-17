@@ -256,7 +256,7 @@
   "settings_saved": "تنظیمات برای p/{{subplebbitAddress}} ذخیره شد",
   "mod_edit": "ویرایش مدیر",
   "continue_thread": "ادامه این موضوع",
-  "mod_reason": "دلیل مدیر",
+  "mod_edit_reason": "دلیل ویرایش مدیر",
   "double_confirm": "آیا مطمئن هستید؟ این عمل غیرقابل برگشت است.",
   "crypto_address_not_yours": "آدرس رمزارز به حساب دیگری تعلق دارد.",
   "crypto_address_yours": "آدرس رمزارز به این حساب تعلق دارد.",
@@ -306,8 +306,8 @@
   "own_communities": "انجمن‌های خودم",
   "invalid_community_address": "آدرس انجمن نامعتبر است",
   "newer_posts_available": "پست‌های جدید موجود است: <1>بارگذاری مجدد فید</1>",
-  "more_posts_last_week": "{{count}} پست از {{currentTimeFilterName}}: <1>نمایش پست‌های بیشتر از هفته گذشته</1>",
-  "more_posts_last_month": "{{count}} پست از {{currentTimeFilterName}}: <1>نمایش پست‌های بیشتر از ماه گذشته</1>",
+  "more_posts_last_week": "{{count}} پست‌ها هفته گذشته {{currentTimeFilterName}}: <1>نمایش پست‌های بیشتر از هفته گذشته</1>",
+  "more_posts_last_month": "{{count}} پست در {{currentTimeFilterName}}: <1>نمایش پست‌های بیشتر از ماه گذشته</1>",
   "sure_delete": "آیا مطمئن هستید که می‌خواهید این پست را حذف کنید؟",
   "sure_undelete": "آیا مطمئن هستید که می‌خواهید این پست را بازیابی کنید؟",
   "profile_info": "حساب کاربری شما u/{{shortAddress}} ایجاد شد. <1>تنظیم نام نمایشی</1>, <2>پشتیبان گیری صادر کنید</2>, <3>بیشتر بدانید</3>.",
@@ -361,5 +361,7 @@
   "you_are_owner": "شما مالک این جامعه هستید",
   "looking_for_more_posts": "در جستجوی پست‌های بیشتر",
   "loading_feed": "در حال بارگذاری فید",
-  "loading_posts": "در حال بارگذاری پست‌ها"
+  "loading_posts": "در حال بارگذاری پست‌ها",
+  "post_is_pending": "پست در انتظار است",
+  "post_has_failed": "ارسال پست با شکست مواجه شد"
 }

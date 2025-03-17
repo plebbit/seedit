@@ -256,7 +256,7 @@
   "settings_saved": "Naisilbi ang mga setting para sa p/{{subplebbitAddress}}",
   "mod_edit": "pag-edit ng mod",
   "continue_thread": "ituloy ang thread na ito",
-  "mod_reason": "dahilan ng mod",
+  "mod_edit_reason": "Dahilan ng pag-edit ng mod",
   "double_confirm": "Sigurado ka ba talaga? Ang aksyon na ito ay hindi mababawi.",
   "crypto_address_not_yours": "Ang crypto address ay nauugnay sa ibang account.",
   "crypto_address_yours": "Ang crypto address ay nauugnay sa account na ito.",
@@ -306,8 +306,8 @@
   "own_communities": "sariling mga pamayanan",
   "invalid_community_address": "Hindi wastong address ng pamayanan",
   "newer_posts_available": "Mga bagong post na available: <1>i-reload ang feed</1>",
-  "more_posts_last_week": "{{count}} mga post mula {{currentTimeFilterName}}: <1>magpakita ng higit pang mga post mula sa nakaraang linggo</1>",
-  "more_posts_last_month": "{{count}} mga post mula sa {{currentTimeFilterName}}: <1>magpakita ng higit pang mga post mula sa nakaraang buwan</1>",
+  "more_posts_last_week": "{{count}} mga post huling {{currentTimeFilterName}}: <1>ipakita ang higit pang mga post mula sa nakaraang linggo</1>",
+  "more_posts_last_month": "{{count}} mga post sa {{currentTimeFilterName}}: <1>ipakita ang higit pang mga post mula sa nakaraang buwan</1>",
   "sure_delete": "Sigurado ka bang gusto mong tanggalin ang post na ito?",
   "sure_undelete": "Sigurado ka bang gusto mong ibalik ang post na ito?",
   "profile_info": "Ang iyong account u/{{shortAddress}} ay nalikha. <1>I-set ang display name</1>, <2>I-export ang backup</2>, <3>alamin pa</3>.",
@@ -361,5 +361,7 @@
   "you_are_owner": "Ikaw ang may-ari ng komunidad na ito",
   "looking_for_more_posts": "Naghahanap ng higit pang mga post",
   "loading_feed": "Naglo-load ng feed",
-  "loading_posts": "Naglo-load ng mga post"
+  "loading_posts": "Naglo-load ng mga post",
+  "post_is_pending": "Ang post ay pending",
+  "post_has_failed": "Nabigo ang post"
 }
