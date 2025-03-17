@@ -5,7 +5,6 @@ import { CommentMediaInfo } from '../../../lib/utils/media-utils';
 import useFetchGifFirstFrame from '../../../hooks/use-fetch-gif-first-frame';
 import useContentOptionsStore from '../../../stores/use-content-options-store';
 import { useIsNsfwSubplebbit } from '../../../hooks/use-is-nsfw-subplebbit';
-import { useTranslation } from 'react-i18next';
 
 interface ThumbnailProps {
   cid?: string;

@@ -43,6 +43,7 @@ interface ReplyAuthorProps {
   submitterAddress: string;
   subplebbitAddress: string;
   postCid: string;
+  pinned: boolean;
 }
 
 const ReplyAuthor = ({
@@ -53,6 +54,7 @@ const ReplyAuthor = ({
   displayName,
   imageUrl,
   isAvatarDefined,
+  pinned,
   removed,
   shortAuthorAddress,
   submitterAddress,
@@ -61,11 +63,14 @@ const ReplyAuthor = ({
 }: ReplyAuthorProps) => {
   const { t } = useTranslation();
   const { hideAvatars } = useAvatarVisibilityStore();
+
+  // TODO: implement comment.highlightRole once implemented in API
   const isAuthorAdmin = authorRole === 'admin';
   const isAuthorOwner = authorRole === 'owner';
   const isAuthorModerator = authorRole === 'moderator';
   const authorRoleInitial = (isAuthorOwner && 'O') || (isAuthorAdmin && 'A') || (isAuthorModerator && 'M') || '';
   const moderatorClass = `${isAuthorOwner ? styles.owner : isAuthorAdmin ? styles.admin : isAuthorModerator ? styles.moderator : ''}`;
+
   const shortDisplayName = displayName?.length > 20 ? displayName?.slice(0, 20) + '...' : displayName;
   const isAuthorSubmitter = address === submitterAddress;
 
@@ -81,14 +86,18 @@ const ReplyAuthor = ({
             </span>
           )}
           {displayName && (
-            <Link to={`/u/${address}/c/${cid}`} className={`${styles.author} ${moderatorClass} ${!moderatorClass && isAuthorSubmitter ? styles.submitter : ''}`}>
+            <Link
+              to={`/u/${address}/c/${cid}`}
+              className={`${styles.author} ${pinned && moderatorClass} ${!moderatorClass && isAuthorSubmitter ? styles.submitter : ''}`}
+            >
               {shortDisplayName}{' '}
             </Link>
           )}
-          <Link to={`/u/${address}/c/${cid}`} className={`${styles.author} ${moderatorClass} ${!moderatorClass && isAuthorSubmitter ? styles.submitter : ''}`}>
+          <Link to={`/u/${address}/c/${cid}`} className={`${styles.author} ${pinned && moderatorClass} ${!moderatorClass && isAuthorSubmitter ? styles.submitter : ''}`}>
             {displayName ? `u/${shortAuthorAddress}` : shortAuthorAddress}
           </Link>
-          {(authorRole || isAuthorSubmitter) && (
+          {/* TODO: implement comment.highlightRole once implemented in API */}
+          {(authorRole || isAuthorSubmitter) && pinned && (
             <span className={styles.moderatorBrackets}>
               {' '}
               [
@@ -103,6 +112,16 @@ const ReplyAuthor = ({
                   {authorRoleInitial}
                 </span>
               )}
+              ]
+            </span>
+          )}
+          {isAuthorSubmitter && !pinned && (
+            <span className={styles.moderatorBrackets}>
+              {' '}
+              [
+              <Link to={`/p/${subplebbitAddress}/c/${postCid}`} className={styles.submitter} title={t('submitter')}>
+                S
+              </Link>
               ]
             </span>
           )}
@@ -419,6 +438,7 @@ const Reply = ({ cidOfReplyWithContext, depth = 0, isSingleComment, isSingleRepl
                   shortAuthorAddress={shortAuthorAddress}
                   submitterAddress={post?.author?.address}
                   subplebbitAddress={subplebbitAddress}
+                  pinned={pinned}
                   postCid={postCid}
                 />
                 <span className={styles.score}>{scoreString}</span>{' '}
@@ -426,7 +446,7 @@ const Reply = ({ cidOfReplyWithContext, depth = 0, isSingleComment, isSingleRepl
                   <span title={formatLocalizedUTCTimestamp(timestamp, language)}>{getFormattedTimeAgo(timestamp)}</span>
                   {edit && <span className={styles.timeEdited}> {t('edited_timestamp', { timestamp: getFormattedTimeAgo(edit.timestamp) })}</span>}
                 </span>
-                {pinned && <span className={styles.pinned}>- {t('stickied_comment')}</span>}
+                {pinned && <span className={styles.pinned}> - {t('stickied_comment')}</span>}
                 {collapsed && (
                   <>
                     <span className={styles.children}> ({childrenString})</span>

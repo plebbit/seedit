@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { autoUpdate, flip, FloatingFocusManager, offset, shift, useClick, useDismiss, useFloating, useId, useInteractions, useRole } from '@floating-ui/react';
 import { Trans, useTranslation } from 'react-i18next';
 import { PublishCommentModerationOptions, useComment, useEditedComment, usePublishCommentModeration } from '@plebbit/plebbit-react-hooks';

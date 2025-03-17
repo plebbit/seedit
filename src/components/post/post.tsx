@@ -25,40 +25,45 @@ import CommentTools from './comment-tools';
 import Thumbnail from './thumbnail';
 import styles from './post.module.css';
 import _ from 'lodash';
+
 interface PostAuthorProps {
   authorAddress: string;
   authorRole: string;
   cid: string;
   displayName: string;
   index?: number;
+  pinned?: boolean;
   shortAddress: string;
   shortAuthorAddress: string | undefined;
   authorAddressChanged: boolean;
 }
 
-const PostAuthor = ({ authorAddress, authorRole, cid, displayName, index, shortAddress, shortAuthorAddress, authorAddressChanged }: PostAuthorProps) => {
+const PostAuthor = ({ authorAddress, authorRole, cid, displayName, index, pinned, shortAddress, shortAuthorAddress, authorAddressChanged }: PostAuthorProps) => {
+  // TODO: implement comment.highlightRole once implemented in API
   const isAuthorOwner = authorRole === 'owner';
   const isAuthorAdmin = authorRole === 'admin';
   const isAuthorModerator = authorRole === 'moderator';
   const moderatorClass = `${isAuthorOwner ? styles.owner : isAuthorAdmin ? styles.admin : isAuthorModerator ? styles.moderator : ''}`;
   const authorRoleInitial = (isAuthorOwner && 'O') || (isAuthorAdmin && 'A') || (isAuthorModerator && 'M') || '';
+
   const shortDisplayName = displayName?.trim().length > 20 ? displayName?.trim().slice(0, 20).trim() + '...' : displayName?.trim();
 
   return (
     <>
-      <Link to={cid ? `/u/${authorAddress}/c/${cid}` : `/profile/${index}`} className={`${styles.author} ${moderatorClass}`}>
+      <Link to={cid ? `/u/${authorAddress}/c/${cid}` : `/profile/${index}`} className={`${styles.author} ${pinned && moderatorClass}`}>
         {displayName && (
           <>
             {' '}
-            <span className={`${styles.displayName} ${moderatorClass}`}>{shortDisplayName}</span>
+            <span className={`${styles.displayName} ${pinned && moderatorClass}`}>{shortDisplayName}</span>
           </>
         )}{' '}
-        <span className={`${styles.authorAddressWrapper} ${moderatorClass}`}>
+        <span className={`${styles.authorAddressWrapper} ${pinned && moderatorClass}`}>
           <span className={styles.authorAddressHidden}>u/{shortAddress || shortAuthorAddress}</span>
           <span className={`${styles.authorAddressVisible} ${authorAddressChanged && styles.authorAddressChanged}`}>u/{shortAuthorAddress}</span>
         </span>
       </Link>
-      {authorRole && (
+      {/* TODO: implement comment.highlightRole once implemented in API */}
+      {authorRole && pinned && (
         <span>
           {' '}
           [
@@ -265,6 +270,7 @@ const Post = ({ index, post = {} }: PostProps) => {
                     cid={cid}
                     displayName={displayName}
                     index={post?.index}
+                    pinned={pinned}
                     shortAddress={shortAddress}
                     shortAuthorAddress={shortAuthorAddress}
                     authorAddressChanged={authorAddressChanged}
