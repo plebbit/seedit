@@ -362,5 +362,6 @@
   "looking_for_more_posts": "Leter etter flere innlegg",
   "loading_feed": "Laster feed",
   "loading_posts": "Laster innlegg",
-  "post_is_pending": "Innlegget er på vent"
+  "post_is_pending": "Innlegget er på vent",
+  "post_has_failed": "Innlegget mislyktes"
 }

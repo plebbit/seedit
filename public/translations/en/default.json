@@ -362,5 +362,6 @@
   "looking_for_more_posts": "Looking for more posts",
   "loading_feed": "Loading feed",
   "loading_posts": "Loading posts",
-  "post_is_pending": "Post is pending"
+  "post_is_pending": "Post is pending",
+  "post_has_failed": "Post has failed"
 }

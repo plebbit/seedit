@@ -362,5 +362,6 @@
   "looking_for_more_posts": "अधिक पोस्ट ढूंढ रहे हैं",
   "loading_feed": "लोडिंग फीड",
   "loading_posts": "पोस्ट लोड हो रही हैं",
-  "post_is_pending": "पोस्ट लंबित है"
+  "post_is_pending": "पोस्ट लंबित है",
+  "post_has_failed": "पोस्ट विफल हो गया"
 }

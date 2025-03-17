@@ -362,5 +362,6 @@
   "looking_for_more_posts": "البحث عن المزيد من المشاركات",
   "loading_feed": "تحميل الخلاصة",
   "loading_posts": "جاري تحميل المشاركات",
-  "post_is_pending": "المنشور قيد الانتظار"
+  "post_is_pending": "المنشور قيد الانتظار",
+  "post_has_failed": "فشل النشر"
 }

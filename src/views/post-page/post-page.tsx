@@ -137,7 +137,9 @@ const Post = ({ post }: { post: Comment }) => {
         <div className={styles.replyArea}>
           {!isSingleComment && (
             <div className={styles.repliesTitle}>
-              <span className={styles.title}>{replyCount !== undefined ? commentCount : cid ? `${t('loading_comments')}...` : `${t('post_is_pending')}...`}</span>
+              <span className={styles.title}>
+                {replyCount !== undefined ? commentCount : state === 'failed' ? t('post_has_failed') : cid ? `${t('loading_comments')}...` : `${t('post_is_pending')}...`}
+              </span>
             </div>
           )}
           <div className={styles.menuArea}>

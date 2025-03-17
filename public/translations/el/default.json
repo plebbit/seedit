@@ -362,5 +362,6 @@
   "looking_for_more_posts": "Ψάχνει για περισσότερες αναρτήσεις",
   "loading_feed": "Φόρτωση ροής",
   "loading_posts": "Φόρτωση δημοσιεύσεων",
-  "post_is_pending": "Η ανάρτηση εκκρεμεί"
+  "post_is_pending": "Η ανάρτηση εκκρεμεί",
+  "post_has_failed": "Η ανάρτηση απέτυχε"
 }

@@ -362,5 +362,6 @@
   "looking_for_more_posts": "Tìm kiếm thêm bài viết",
   "loading_feed": "Đang tải feed",
   "loading_posts": "Đang tải bài viết",
-  "post_is_pending": "Bài đăng đang chờ"
+  "post_is_pending": "Bài đăng đang chờ",
+  "post_has_failed": "Bài viết đã thất bại"
 }

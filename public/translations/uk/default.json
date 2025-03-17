@@ -362,5 +362,6 @@
   "looking_for_more_posts": "Шукаю більше дописів",
   "loading_feed": "Завантаження потоку",
   "loading_posts": "Завантаження постів",
-  "post_is_pending": "Пост очікує"
+  "post_is_pending": "Пост очікує",
+  "post_has_failed": "Публікація не вдалася"
 }

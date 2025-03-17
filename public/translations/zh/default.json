@@ -362,5 +362,6 @@
   "looking_for_more_posts": "寻找更多帖子",
   "loading_feed": "加载中...",
   "loading_posts": "加载帖子",
-  "post_is_pending": "帖子待处理中"
+  "post_is_pending": "帖子待处理中",
+  "post_has_failed": "发布失败"
 }

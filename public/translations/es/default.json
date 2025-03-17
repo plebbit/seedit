@@ -362,5 +362,6 @@
   "looking_for_more_posts": "Buscando más publicaciones",
   "loading_feed": "Cargando feed",
   "loading_posts": "Cargando publicaciones",
-  "post_is_pending": "La publicación está pendiente"
+  "post_is_pending": "La publicación está pendiente",
+  "post_has_failed": "La publicación ha fallado"
 }

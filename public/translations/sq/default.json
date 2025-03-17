@@ -362,5 +362,6 @@
   "looking_for_more_posts": "Po kërkoni më shumë postime",
   "loading_feed": "Po ngarkoni feed-in",
   "loading_posts": "Duke ngarkuar postimet",
-  "post_is_pending": "Postimi është në pritje"
+  "post_is_pending": "Postimi është në pritje",
+  "post_has_failed": "Postimi ka dështuar"
 }

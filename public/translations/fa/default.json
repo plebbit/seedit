@@ -362,5 +362,6 @@
   "looking_for_more_posts": "در جستجوی پست‌های بیشتر",
   "loading_feed": "در حال بارگذاری فید",
   "loading_posts": "در حال بارگذاری پست‌ها",
-  "post_is_pending": "پست در انتظار است"
+  "post_is_pending": "پست در انتظار است",
+  "post_has_failed": "ارسال پست با شکست مواجه شد"
 }

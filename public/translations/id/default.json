@@ -362,5 +362,6 @@
   "looking_for_more_posts": "Mencari lebih banyak pos",
   "loading_feed": "Memuat feed",
   "loading_posts": "Memuat pos",
-  "post_is_pending": "Postingan sedang menunggu"
+  "post_is_pending": "Postingan sedang menunggu",
+  "post_has_failed": "Posting gagal"
 }

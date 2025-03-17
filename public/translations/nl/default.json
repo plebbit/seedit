@@ -362,5 +362,6 @@
   "looking_for_more_posts": "Op zoek naar meer berichten",
   "loading_feed": "Laad feed",
   "loading_posts": "Berichten laden",
-  "post_is_pending": "Bericht is in behandeling"
+  "post_is_pending": "Bericht is in behandeling",
+  "post_has_failed": "Post is mislukt"
 }

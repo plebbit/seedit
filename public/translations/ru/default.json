@@ -362,5 +362,6 @@
   "looking_for_more_posts": "Ищу больше постов",
   "loading_feed": "Загрузка ленты",
   "loading_posts": "Загрузка постов",
-  "post_is_pending": "Пост в ожидании"
+  "post_is_pending": "Пост в ожидании",
+  "post_has_failed": "Публикация не удалась"
 }

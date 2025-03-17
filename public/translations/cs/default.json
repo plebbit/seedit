@@ -362,5 +362,6 @@
   "looking_for_more_posts": "Hledání dalších příspěvků",
   "loading_feed": "Načítání kanálu",
   "loading_posts": "Načítání příspěvků",
-  "post_is_pending": "Příspěvek čeká"
+  "post_is_pending": "Příspěvek čeká",
+  "post_has_failed": "Příspěvek selhal"
 }

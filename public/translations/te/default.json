@@ -362,5 +362,6 @@
   "looking_for_more_posts": "మరింత పోస్ట్‌ల కోసం చూస్తున్నాను",
   "loading_feed": "లోడింగ్ ఫీడ్",
   "loading_posts": "పోస్ట్స్ లోడవుతున్నాయి",
-  "post_is_pending": "పోస్ట్ పెండింగ్‌లో ఉంది"
+  "post_is_pending": "పోస్ట్ పెండింగ్‌లో ఉంది",
+  "post_has_failed": "పోస్ట్ విఫలమైంది"
 }

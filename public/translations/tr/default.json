@@ -362,5 +362,6 @@
   "looking_for_more_posts": "Daha fazla gönderi arıyorum",
   "loading_feed": "Yükleniyor besleme",
   "loading_posts": "Gönderiler yükleniyor",
-  "post_is_pending": "Gönderi beklemede"
+  "post_is_pending": "Gönderi beklemede",
+  "post_has_failed": "Gönderi başarısız oldu"
 }

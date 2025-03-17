@@ -362,5 +362,6 @@
   "looking_for_more_posts": "Procurando mais postagens",
   "loading_feed": "Carregando feed",
   "loading_posts": "Carregando postagens",
-  "post_is_pending": "Postagem pendente"
+  "post_is_pending": "Postagem pendente",
+  "post_has_failed": "A postagem falhou"
 }
