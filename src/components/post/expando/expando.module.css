@@ -214,6 +214,10 @@
   background-color: #4980ae;
 }
 
+.mediaPreviewReply {
+  width: 100%;
+}
+
 @media (max-width: 770px) {
   .mediaPreview {
     width: 100%;

@@ -15,6 +15,7 @@ interface ExpandoProps {
   content?: string;
   deleted?: boolean;
   expanded: boolean;
+  isReply?: boolean;
   link?: string;
   modEditReason?: string;
   nsfw?: boolean;
@@ -30,6 +31,7 @@ const Expando = ({
   content,
   deleted,
   expanded,
+  isReply,
   link,
   modEditReason,
   nsfw,
@@ -81,7 +83,7 @@ const Expando = ({
   return (
     <div className={expanded ? styles.expando : styles.expandoHidden}>
       {link && !removed && commentMediaInfo?.type !== 'webpage' && (
-        <div className={styles.mediaPreview} onClick={() => setHideContent(false)}>
+        <div className={`${styles.mediaPreview} ${isReply ? styles.mediaPreviewReply : ''}`} onClick={() => setHideContent(false)}>
           {((nsfw && blurNsfwThumbnails && !isNsfwSubplebbit) || spoiler) && hideContent && link && commentMediaInfo?.type !== 'webpage' && !(deleted || removed) && (
             <>
               <div className={styles.blurContent} />

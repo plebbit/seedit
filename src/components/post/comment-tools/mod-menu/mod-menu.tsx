@@ -1,8 +1,7 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { autoUpdate, flip, FloatingFocusManager, offset, shift, useClick, useDismiss, useFloating, useId, useInteractions, useRole } from '@floating-ui/react';
 import { Trans, useTranslation } from 'react-i18next';
-import { PublishCommentModerationOptions, useEditedComment, usePublishCommentModeration } from '@plebbit/plebbit-react-hooks';
-import useSubplebbitsPagesStore from '@plebbit/plebbit-react-hooks/dist/stores/subplebbits-pages';
+import { PublishCommentModerationOptions, useComment, useEditedComment, usePublishCommentModeration } from '@plebbit/plebbit-react-hooks';
 import styles from './mod-menu.module.css';
 import { alertChallengeVerificationFailed } from '../../../../lib/utils/challenge-utils';
 import challengesStore from '../../../../stores/use-challenges-store';
@@ -17,7 +16,7 @@ type ModMenuProps = {
 const ModMenu = ({ cid, isCommentAuthorMod }: ModMenuProps) => {
   const { t } = useTranslation();
   let post: any;
-  const comment = useSubplebbitsPagesStore((state) => state.comments[cid]);
+  const comment = useComment({ commentCid: cid });
   const { editedComment } = useEditedComment({ comment });
   if (editedComment) {
     post = editedComment;
@@ -27,16 +26,18 @@ const ModMenu = ({ cid, isCommentAuthorMod }: ModMenuProps) => {
   const isReply = post?.parentCid;
   const [isModMenuOpen, setIsModMenuOpen] = useState(false);
 
+  const { removed, locked, spoiler, nsfw, pinned, banExpiresAt, subplebbitAddress } = post || {};
+
   const defaultPublishOptions: PublishCommentModerationOptions = {
-    commentCid: post?.cid,
-    subplebbitAddress: post?.subplebbitAddress,
+    commentCid: cid,
+    subplebbitAddress,
     commentModeration: {
-      removed: post?.removed ?? false,
-      locked: post?.locked ?? false,
-      spoiler: post?.spoiler ?? false,
-      nsfw: post?.nsfw ?? false,
-      pinned: post?.pinned ?? false,
-      banExpiresAt: post?.banExpiresAt,
+      removed: removed ?? false,
+      locked: locked ?? false,
+      spoiler: spoiler ?? false,
+      nsfw: nsfw ?? false,
+      pinned: pinned ?? false,
+      banExpiresAt,
     },
     onChallenge: (...args: any) => addChallenge([...args, post]),
     onChallengeVerification: alertChallengeVerificationFailed,

@@ -120,11 +120,12 @@ interface ReplyMediaProps {
   link: string;
   linkHeight: number;
   linkWidth: number;
+  nsfw: boolean;
   spoiler: boolean;
   toggleExpanded: () => void;
 }
 
-const ReplyMedia = ({ commentMediaInfo, content, expanded, hasThumbnail, link, linkHeight, linkWidth, spoiler, toggleExpanded }: ReplyMediaProps) => {
+const ReplyMedia = ({ commentMediaInfo, content, expanded, hasThumbnail, link, linkHeight, linkWidth, nsfw, spoiler, toggleExpanded }: ReplyMediaProps) => {
   const { type } = commentMediaInfo || {};
   return (
     <>
@@ -135,6 +136,7 @@ const ReplyMedia = ({ commentMediaInfo, content, expanded, hasThumbnail, link, l
           isLink={!hasThumbnail && link}
           isReply={true}
           isSpoiler={spoiler}
+          isNsfw={nsfw}
           isText={!hasThumbnail && content?.trim().length > 0}
           link={link}
           linkHeight={linkHeight}
@@ -163,7 +165,15 @@ const ReplyMedia = ({ commentMediaInfo, content, expanded, hasThumbnail, link, l
         </>
       )}
       {expanded && link && (
-        <Expando commentMediaInfo={commentMediaInfo} content={content} expanded={expanded} link={link} showContent={false} toggleExpanded={toggleExpanded} />
+        <Expando
+          commentMediaInfo={commentMediaInfo}
+          content={content}
+          expanded={expanded}
+          link={link}
+          showContent={false}
+          toggleExpanded={toggleExpanded}
+          isReply={true}
+        />
       )}
     </>
   );
@@ -301,14 +311,13 @@ const Reply = ({ cidOfReplyWithContext, depth = 0, isSingleComment, isSingleRepl
     reason,
     removed,
     spoiler,
+    nsfw,
     state,
     subplebbitAddress,
     timestamp,
     upvoteCount,
   } = reply || {};
   const subplebbit = useSubplebbitsStore((state) => state.subplebbits[subplebbitAddress]);
-
-  const [showSpoiler, setShowSpoiler] = useState(false);
 
   const pendingReply = useAccountComment({ commentIndex: reply?.index });
   const parentOfPendingReply = useSubplebbitsPagesStore((state) => state.comments[pendingReply?.parentCid]);
@@ -374,6 +383,7 @@ const Reply = ({ cidOfReplyWithContext, depth = 0, isSingleComment, isSingleRepl
       {editState === 'failed' && <Label color='red' text={t('failed_edit')} />}
       {editState === 'pending' && <Label color='yellow' text={t('pending_edit')} />}
       {spoiler && <Label color='black' text={t('spoiler')} />}
+      {nsfw && <Label color='red' text={t('nsfw')} />}
     </span>
   );
 
@@ -447,16 +457,8 @@ const Reply = ({ cidOfReplyWithContext, depth = 0, isSingleComment, isSingleRepl
               />
             )}
             {!collapsed && (
-              <div
-                className={`${styles.usertext} ${cid && commentMediaInfo && (isSingleComment || cidOfReplyWithContext === cid) ? styles.highlightMedia : ''} ${
-                  spoiler && !showSpoiler ? styles.hideSpoiler : ''
-                }`}
-                onClick={() => {
-                  spoiler && !showSpoiler && setShowSpoiler(true);
-                }}
-              >
-                <div className={spoiler && !showSpoiler ? styles.hideSpoiler : ''} />
-                {commentMediaInfo && !(removed || deleted || (spoiler && !showSpoiler)) && (
+              <div className={`${styles.usertext} ${cid && commentMediaInfo && (isSingleComment || cidOfReplyWithContext === cid) ? styles.highlightMedia : ''}`}>
+                {commentMediaInfo && !(removed || deleted) && (
                   <ReplyMedia
                     commentMediaInfo={commentMediaInfo}
                     content={content}
@@ -465,6 +467,7 @@ const Reply = ({ cidOfReplyWithContext, depth = 0, isSingleComment, isSingleRepl
                     link={link}
                     linkHeight={linkHeight}
                     linkWidth={linkWidth}
+                    nsfw={nsfw}
                     spoiler={spoiler}
                     toggleExpanded={toggleExpanded}
                   />
@@ -477,7 +480,6 @@ const Reply = ({ cidOfReplyWithContext, depth = 0, isSingleComment, isSingleRepl
                       removed || deleted ? styles.removedOrDeletedContent : ''
                     }`}
                   >
-                    {spoiler && !showSpoiler && <div className={styles.showSpoilerButton}>{t('view_spoiler')}</div>}
                     {content &&
                       (removed ? (
                         <span className={styles.removedContent}>[{t('removed')}]</span>

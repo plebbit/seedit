@@ -18,6 +18,7 @@ interface CommentToolsProps {
   failed?: boolean;
   editState?: string;
   hasLabel?: boolean;
+  hasThumbnail?: boolean;
   index?: number;
   isAuthor?: boolean;
   isAccountMod?: boolean;
@@ -253,6 +254,7 @@ const CommentTools = ({
   failed,
   editState,
   hasLabel = false,
+  hasThumbnail = false,
   index,
   isReply,
   isSingleReply,
@@ -285,6 +287,7 @@ const CommentTools = ({
               cid={cid}
               failed={failed}
               hasLabel={hasLabel}
+              hasThumbnail={hasThumbnail}
               index={index}
               isAuthor={isAuthor}
               isAccountMod={isAccountMod}
@@ -301,6 +304,7 @@ const CommentTools = ({
               cid={cid}
               failed={failed}
               hasLabel={hasLabel}
+              hasThumbnail={hasThumbnail}
               index={index}
               isAuthor={isAuthor}
               isAccountMod={isAccountMod}
@@ -328,6 +332,7 @@ const CommentTools = ({
               cid={cid}
               failed={failed}
               hasLabel={hasLabel}
+              hasThumbnail={hasThumbnail}
               index={index}
               isAuthor={isAuthor}
               isAccountMod={isAccountMod}

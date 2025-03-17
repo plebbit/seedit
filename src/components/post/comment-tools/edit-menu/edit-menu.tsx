@@ -1,7 +1,6 @@
 import { useCallback, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { PublishCommentEditOptions, useEditedComment, usePublishCommentEdit } from '@plebbit/plebbit-react-hooks';
-import useSubplebbitsPagesStore from '@plebbit/plebbit-react-hooks/dist/stores/subplebbits-pages';
+import { PublishCommentEditOptions, useComment, useEditedComment, usePublishCommentEdit } from '@plebbit/plebbit-react-hooks';
 import styles from './edit-menu.module.css';
 import { alertChallengeVerificationFailed } from '../../../../lib/utils/challenge-utils';
 import challengesStore from '../../../../stores/use-challenges-store';
@@ -17,7 +16,7 @@ const EditMenu = ({ commentCid, showCommentEditForm }: EditMenuProps) => {
   const { t } = useTranslation();
 
   let post: any;
-  const comment = useSubplebbitsPagesStore((state) => state.comments[commentCid]);
+  const comment = useComment({ commentCid });
   const { editedComment } = useEditedComment({ comment });
   if (editedComment) {
     post = editedComment;
