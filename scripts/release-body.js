@@ -13,8 +13,8 @@ let releaseChangelog =
 releaseChangelog = releaseChangelog.trim().replace(/\n\n+/g, '\n\n')
 
 const releaseBody = `- Web app: https://seedit.app
-- Mobile app: available for Android (APK). Download link under "Assets" ⬇️
-- Desktop app (full P2P node, run your own community): available for Mac (.dmg), Windows (.exe), Linux (.AppImage). Download links under "Assets" ⬇️
+- Mobile app: available for Android. Download link under "Assets" ⬇️
+- Desktop app (full P2P node, run your own community): available for Mac/Windows/Linux. Download links under "Assets" ⬇️
 - Command Line Interface (full P2P node, run your own community): https://github.com/plebbit/plebbit-cli/releases/latest
 
 ${releaseChangelog}`
