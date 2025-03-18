@@ -1,3 +1,82 @@
+# [0.3.0](https://github.com/plebbit/seedit/compare/v0.2.5...v0.3.0) (2025-03-17)
+
+
+### Bug Fixes
+
+* **account bar:** new account could display u/undefined for a split second ([2904187](https://github.com/plebbit/seedit/commit/2904187c75e63b7b8a5c2a0bfe8d23ce3d664113))
+* **account settings:** creating new account didn't automatically switch to it ([e2c5e38](https://github.com/plebbit/seedit/commit/e2c5e389f4357645978dacaf0c7f975af043d67d))
+* **account settings:** importing an account file would not automatically select the imported account ([dd2d15c](https://github.com/plebbit/seedit/commit/dd2d15c440a478be3068780c9a10c182dcff6b0d))
+* **author page:** page could look empty without "no posts" notice ([12fabd0](https://github.com/plebbit/seedit/commit/12fabd08d71169882b23b2cce5df936e08e8f7cf))
+* **avatar settings:** timestamp default value was missing ([27f54a0](https://github.com/plebbit/seedit/commit/27f54a049bba670cfdbeeb434d9aab851d113c8a))
+* **challenge modal:** user could submit empty answer ([f952044](https://github.com/plebbit/seedit/commit/f9520447e094151ac9082c0f71b18c44f199fb8f))
+* **challenge settings:** changing exclude options would add invalid types causing saving error ([3f26a04](https://github.com/plebbit/seedit/commit/3f26a04ed44f9044f34c265d1a58055883fea12d))
+* **feed:** invalid sortType should navigate to "not found" page ([ef84811](https://github.com/plebbit/seedit/commit/ef84811e5963fab93a54082655f07d34dc9dcd9c))
+* **home:** feed could show no subscriptions alert for a split second ([9c2ec09](https://github.com/plebbit/seedit/commit/9c2ec095950d206245709cd3ccd556b3b74161d8))
+* **label:** remove left padding for first visible label in array ([336fc67](https://github.com/plebbit/seedit/commit/336fc6726da0fdf9efd64965a7b14d6dfbeffda3))
+* **label:** spacing was off ([763d744](https://github.com/plebbit/seedit/commit/763d7446656b0feeb1e40812d93ddfd20968c943))
+* **mobile:** dropdown items should have enough padding on mobile to make it easy for the user to tap on them ([6ebdeb7](https://github.com/plebbit/seedit/commit/6ebdeb78d59a75b49146214a5a99672b19ed61eb))
+* **moderation:** mod reason couldn't be removed ([c5fb295](https://github.com/plebbit/seedit/commit/c5fb2956592c8627da27139ec6a55a7db457888d))
+* **offline indicator:** sub could be marked as offline even if online, consider it offline if it doesn't update for 2 hours instead of 1 hour ([a8fb2e6](https://github.com/plebbit/seedit/commit/a8fb2e6bda6d1de24f9d34613d848b5b85be2659))
+* **pending post:** invalid pending post index would break the view, redirect to not found instead ([3a9d89b](https://github.com/plebbit/seedit/commit/3a9d89b2df704446a7ea4463faf8040a73ae467f))
+* **pending post:** page could redirect to "not found" if pending post failed ([12daa03](https://github.com/plebbit/seedit/commit/12daa0314603d9c7b83b413c1f54f7c67482714c))
+* **pending post:** pending post would appear in profile page instead of post page ([14e0fb8](https://github.com/plebbit/seedit/commit/14e0fb80251e5dc11f1ccc4fbcaa140c00de0dc0))
+* **post page:** "there doesn't seem to be anything here" could appear while replies were still loading ([809d651](https://github.com/plebbit/seedit/commit/809d6515a21ef2a96234de36b513f14a04cb200b))
+* **post:** post content wouldn't be expanded by default in pending post page ([f84a6ce](https://github.com/plebbit/seedit/commit/f84a6cea8dc1aba93e89270cf8e92f0720c2f9d7))
+* **post:** post rank number could appear in profile page ([d0a4316](https://github.com/plebbit/seedit/commit/d0a4316e0ca649ef9b29142f84283e5d7283f73e))
+* **post:** undistinguish mod post by default, unless stickied ([b858f17](https://github.com/plebbit/seedit/commit/b858f17aaadbc9eab799749343af906cebc11f4b))
+* **replies:** replies published by account could appear at the bottom of the reply section by default ([d0765c3](https://github.com/plebbit/seedit/commit/d0765c3b4e4e518aac10c7fb41de44ab29fa9d53))
+* **search bar:** use gpu acceleration for popup animation ([5b75d44](https://github.com/plebbit/seedit/commit/5b75d4478fed693eba67b5aed6e824c6a1f56efb))
+* **settings:** saving plebbit options could return api schema error ([e7ec01b](https://github.com/plebbit/seedit/commit/e7ec01baad304d355cc56b4cb656365f1d332cb7))
+* **sidebar:** blocking or unblocking sub wouldn't reset feed ([67d2ca8](https://github.com/plebbit/seedit/commit/67d2ca86a7bbfcd10aa7ed0921f4fb4cfbf41629))
+* **sidebar:** subplebbit title and description could render as empty strings ([eb560db](https://github.com/plebbit/seedit/commit/eb560db870249a7bd7107241113138b72f2d9428))
+* **subplebbit settings:** error wouldn't show after attempting to save changes incorrectly ([2e2d8ca](https://github.com/plebbit/seedit/commit/2e2d8ca351280389ab152cc709555baefa3420e7))
+* **subplebbit settings:** excluding more than one user address from challenges didn't work ([30da6c7](https://github.com/plebbit/seedit/commit/30da6c770d95773a66047b5769896afc426f1287))
+* **subplebbit settings:** removing exiting logo couldn't work because of API schema error ([4c1ad1d](https://github.com/plebbit/seedit/commit/4c1ad1d022d300e5a18bdb18978b3ed676d39381))
+* **subplebbit settings:** reset previous error when saving ([550ddb1](https://github.com/plebbit/seedit/commit/550ddb18854f87b79af10c2fe95442d4db3667b3))
+* **subplebbit settings:** reset previous error when saving ([f6241c5](https://github.com/plebbit/seedit/commit/f6241c5ddad556435cc77458c2587a563ccac5cd))
+* **subplebbit sidebar:** moderators list could be empty ([0b83991](https://github.com/plebbit/seedit/commit/0b8399153870b861e7bf0de5a775259e67166ea8))
+* **subplebbits list:** remove categories, subplebbits should be sorted by rank (via future pubsub voting) ([533b6ec](https://github.com/plebbit/seedit/commit/533b6ec30b1353a2bd8562ee2a68389af133a787))
+* **user page:** account age was imprecise ([92b19c4](https://github.com/plebbit/seedit/commit/92b19c472f4202a28c44cc050bd5e0943ac0bb03))
+
+
+### Features
+
+* auto subscribe new accounts to specific default subplebbits ([fa24e73](https://github.com/plebbit/seedit/commit/fa24e73c6cfd65ff8b1e1da6284d8ffd9935bc8b))
+* auto-subscribe to newly created communities ([c077685](https://github.com/plebbit/seedit/commit/c0776854f9bcdef01f24161905c7e95cf95b1017))
+* **challenge modal:** close with escape key ([66a766b](https://github.com/plebbit/seedit/commit/66a766bbbbf90e62e279829fe953ff69346c310d))
+* **embed:** add support for soundcloud albums ([fb18e3d](https://github.com/plebbit/seedit/commit/fb18e3d95446d5bd4fcca544bec78ed6281ad78d))
+* **embed:** add support to youtube shorts, invidious instances ([02d061d](https://github.com/plebbit/seedit/commit/02d061da17b25e292f851aaa0720a85561c68a55))
+* **footer:** display "loading feed" and then "looking for more posts" because it's more user-friendly, moving the mouse over displays the backend state ([c471317](https://github.com/plebbit/seedit/commit/c47131788d9dfdea48b18dd508c05de23a131e18))
+* **home:** only include posts from subplebbits the user is subscribed to ([824f05c](https://github.com/plebbit/seedit/commit/824f05c140975294f825b946bba7febcde4c597a))
+* **home:** show message linking to p/all when user has 0 subscriptions ([afa1e3f](https://github.com/plebbit/seedit/commit/afa1e3ffae1334902df07e3d6295d67bc23efc80))
+* **post edit:** mark comment as "nsfw" ([c3691e8](https://github.com/plebbit/seedit/commit/c3691e8c5f168af75469edf1888ca587d8d3a74d))
+* **post page:** show "are you over 18?" warning if post is from sub tagged as nsfw ([a2d3e22](https://github.com/plebbit/seedit/commit/a2d3e22372631b72a5f170917c671c7a2ba5a7d8))
+* **post:** add video duration in thumbnail ([ab9ca95](https://github.com/plebbit/seedit/commit/ab9ca95faaa923f51f7e5cc37f06713f72700293))
+* **replies:** add sorting by new, old or top ([97c990e](https://github.com/plebbit/seedit/commit/97c990ef1719f16b5b44f8f810dfef704dfab33b))
+* **replies:** implement "best" sorting algo from reddit, instead of simply "top" (by score), ensure stickied comments always appear at the top ([31058ca](https://github.com/plebbit/seedit/commit/31058cabb96cd32790910663612976e7dd7aabb3))
+* **replies:** sort account replies by new for 30 mins after page visit ([6117b82](https://github.com/plebbit/seedit/commit/6117b82432dab05c123810568dfcfe9f6205c3ea))
+* **sidebar:** display moderator/owner/admin status of account, if any ([2a9eb26](https://github.com/plebbit/seedit/commit/2a9eb260a31ce335ea30b7919246d0c6c618426f))
+* **subplebbit settings:** let user change default challenge when creating a sub ([76fe6a9](https://github.com/plebbit/seedit/commit/76fe6a9f0be881fdba397e40e32a6c82355726bd))
+* **subplebbit sidebar:** add link to read-only subplebbit settings ([2a34ec6](https://github.com/plebbit/seedit/commit/2a34ec62639eb0abbedcdcf0069eae055c6c3c0d))
+* **subplebbits list:** add infobar for filtering by tag, undo, prevent filtering by invalid tag ([9051bfa](https://github.com/plebbit/seedit/commit/9051bfa4373e485f10f701d2823908d723284801))
+* **subplebbits list:** add nsfw label to nsfw-tagged subs ([f18dad4](https://github.com/plebbit/seedit/commit/f18dad4736db53770c1a0fb696efcb89010a19ba))
+* **subplebbit:** show unblock button in feed for sub that was blocked by user ([3b7739f](https://github.com/plebbit/seedit/commit/3b7739f0ce2624e37ba438b27e118a53022a5b39))
+
+
+### Performance Improvements
+
+* **feed:** debounce state string to prevent unnecessary rerenders ([9b86e34](https://github.com/plebbit/seedit/commit/9b86e349fa6c6173329f266713f4ed69f450977d))
+* **home feed:** reduce footer rerenders ([c510345](https://github.com/plebbit/seedit/commit/c510345ca35bae15908373bed2677537409a52b0))
+* remove unnecessary API fetching ([cd09fe0](https://github.com/plebbit/seedit/commit/cd09fe0cc3aa70e471fa92650d6bc8c359b41038))
+* **topbar:** optimize scroll up/down animation with GPU acceleration ([fbd46cb](https://github.com/plebbit/seedit/commit/fbd46cb6abdecc59d31d7ed0e7b7782f65cd0679))
+
+
+### Reverts
+
+* Revert "add http domain to let users test an insecure plebbit rpc" ([afdc02a](https://github.com/plebbit/seedit/commit/afdc02ac96818832b481dfa62a95248c67ecc574))
+
+
+
 ## [0.2.5](https://github.com/plebbit/seedit/compare/v0.2.4...v0.2.5) (2024-12-19)
 
 
