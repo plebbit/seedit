@@ -102,11 +102,11 @@ const BlockchainProvidersSettings = ({ ethRpcRef, solRpcRef, maticRpcRef, avaxRp
     <div className={styles.blockchainProvidersSettings}>
       <span className={styles.settingTitle}>ethereum rpc, for .eth addresses</span>
       <div>
-        <textarea defaultValue={ethRpcDefaultValue} ref={ethRpcRef} autoCorrect='off' autoComplete='off' spellCheck='false' rows={chainProviders?.['eth'].length || 3} />
+        <textarea defaultValue={ethRpcDefaultValue} ref={ethRpcRef} autoCorrect='off' autoComplete='off' spellCheck='false' rows={chainProviders?.['eth']?.length || 3} />
       </div>
       <span className={styles.settingTitle}>solana rpc, for .sol addresses</span>
       <div>
-        <textarea defaultValue={solRpcDefaultValue} ref={solRpcRef} autoCorrect='off' autoComplete='off' spellCheck='false' rows={chainProviders?.['sol'].length || 1} />
+        <textarea defaultValue={solRpcDefaultValue} ref={solRpcRef} autoCorrect='off' autoComplete='off' spellCheck='false' rows={chainProviders?.['sol']?.length || 1} />
       </div>
       <span className={styles.settingTitle}>polygon rpc, for nft profile pics</span>
       <div>
@@ -116,7 +116,7 @@ const BlockchainProvidersSettings = ({ ethRpcRef, solRpcRef, maticRpcRef, avaxRp
           autoCorrect='off'
           autoComplete='off'
           spellCheck='false'
-          rows={chainProviders?.['matic'].length || 1}
+          rows={chainProviders?.['matic']?.length || 1}
         />
       </div>
       <span className={styles.settingTitle}>avalanche rpc</span>
@@ -127,7 +127,7 @@ const BlockchainProvidersSettings = ({ ethRpcRef, solRpcRef, maticRpcRef, avaxRp
           autoCorrect='off'
           autoComplete='off'
           spellCheck='false'
-          rows={chainProviders?.['avax'].length || 1}
+          rows={chainProviders?.['avax']?.length || 1}
         />
       </div>
     </div>
@@ -252,7 +252,7 @@ const PlebbitOptions = () => {
     if (httpRoutersOptions?.length) newPlebbitOptions.httpRoutersOptions = httpRoutersOptions;
     if (plebbitRpcClientsOptions) newPlebbitOptions.plebbitRpcClientsOptions = plebbitRpcClientsOptions;
     if (dataPath) newPlebbitOptions.dataPath = dataPath;
-    if (Object.keys(chainProviders).length) newPlebbitOptions.chainProviders = chainProviders;
+    if (Object.keys(chainProviders)?.length) newPlebbitOptions.chainProviders = chainProviders;
 
     const updatedPlebbitOptions = { ...plebbitOptions, ...newPlebbitOptions };
 
