@@ -8,7 +8,10 @@ const config: CapacitorConfig = {
   plugins: {
     CapacitorHttp: {
       enabled: true,
-    }
+    },
+    FileUploader: {
+      enabled: true,
+    },
   },
   server: {
     androidScheme: 'https'
