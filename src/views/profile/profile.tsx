@@ -270,9 +270,9 @@ const Profile = () => {
           i18nKey='profile_info'
           values={{ shortAddress: account?.author?.shortAddress }}
           components={{
-            1: <HashLink to='/settings#displayName' />,
-            2: <HashLink to='/settings#exportAccount' />,
-            3: <HashLink to='/about#newUsers' />,
+            1: <HashLink key='displayNameLink' to='/settings#displayName' />,
+            2: <HashLink key='exportAccountLink' to='/settings#exportAccount' />,
+            3: <HashLink key='newUsersLink' to='/about#newUsers' />,
           }}
         />
       </div>

@@ -151,6 +151,7 @@ const AvatarSettings = () => {
                 components={{
                   1: (
                     <Link
+                      key='tokenAddressWhitelistLink'
                       to='https://github.com/plebbit/plebbit-react-hooks/blob/557cc3f40b5933a00553ed9c0bc310d2cd7a3b52/src/hooks/authors/author-avatars.ts#L133'
                       target='_blank'
                       rel='noopener noreferrer'
@@ -186,9 +187,9 @@ const AvatarSettings = () => {
               i18nKey='copy_message_etherscan'
               values={{ copy: hasCopied ? t('copied') : t('copy') }}
               components={{
-                1: <button onClick={copyMessageToSign} />,
+                1: <button key='copyMessageEtherscanButton' onClick={copyMessageToSign} />,
                 // eslint-disable-next-line
-                2: <a href='https://etherscan.io/verifiedSignatures' target='_blank' rel='noopener noreferrer' />,
+                2: <a key='etherscanLink' href='https://etherscan.io/verifiedSignatures' target='_blank' rel='noopener noreferrer' />,
               }}
             />
           </div>
@@ -215,7 +216,9 @@ const AvatarSettings = () => {
               defaultValue={account?.author?.avatar?.signature?.signature}
               onChange={(e) => setSignature(e.target.value)}
             />
-            <button onClick={save}>{t('save')}</button>
+            <button key='saveButton' onClick={save}>
+              {t('save')}
+            </button>
           </div>
         </div>
       )}
