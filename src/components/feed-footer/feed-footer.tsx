@@ -75,7 +75,7 @@ const FeedFooter = ({
             <Trans
               i18nKey='newer_posts_available'
               components={{
-                1: <span onClick={handleNewerPostsButtonClick} />,
+                1: <span key='newer-posts-span' onClick={handleNewerPostsButtonClick} />,
               }}
             />
           </div>
@@ -85,7 +85,7 @@ const FeedFooter = ({
               i18nKey='more_posts_last_week'
               values={{ currentTimeFilterName, count: feedLength }}
               components={{
-                1: <Link to={(isInModView ? '/p/mod/' : isInAllView ? '/p/all/' : '/') + (params?.sortType || 'hot') + '/1w'} />,
+                1: <Link key='weekly-posts-link' to={(isInModView ? '/p/mod/' : isInAllView ? '/p/all/' : '/') + (params?.sortType || 'hot') + '/1w'} />,
               }}
             />
           </div>
@@ -96,7 +96,7 @@ const FeedFooter = ({
                 i18nKey='more_posts_last_month'
                 values={{ currentTimeFilterName, count: feedLength }}
                 components={{
-                  1: <Link to={(isInModView ? '/p/mod/' : isInAllView ? '/p/all/' : '/') + (params?.sortType || 'hot') + '/1m'} />,
+                  1: <Link key='monthly-posts-link' to={(isInModView ? '/p/mod/' : isInAllView ? '/p/all/' : '/') + (params?.sortType || 'hot') + '/1m'} />,
                 }}
               />
             </div>
