@@ -16,6 +16,9 @@ import Markdown from '../../components/markdown';
 import FileUploader from '../../plugins/file-uploader';
 import styles from './submit-page.module.css';
 
+const isAndroid = Capacitor.getPlatform() === 'android';
+const isElectron = window.isElectron === true;
+
 const UrlField = ({ url, setUrl, urlRef }: { url: string; setUrl: (url: string) => void; urlRef: React.RefObject<HTMLInputElement> }) => {
   const { t } = useTranslation();
   const { setPublishPostStore } = usePublishPostStore();
@@ -78,8 +81,152 @@ const UrlField = ({ url, setUrl, urlRef }: { url: string; setUrl: (url: string) 
   );
 };
 
-const isAndroid = Capacitor.getPlatform() === 'android';
-const isElectron = window.isElectron === true;
+const UploadMediaForm = ({ setUrl }: { setUrl: (url: string) => void }) => {
+  const { t } = useTranslation();
+  const { setPublishPostStore } = usePublishPostStore();
+
+  // on android or electron, auto upload file to image hosting sites with open api
+  const [isUploading, setIsUploading] = useState(false);
+  const [isChoosingFile, setIsChoosingFile] = useState(false);
+
+  const onDrop = useCallback(
+    async (acceptedFiles: File[]) => {
+      if (!(isAndroid || isElectron)) {
+        if (window.confirm('This feature is only available on Seedit Android app, or desktop app (win/mac/linux) versions.\n\nGo to download links page on GitHub?')) {
+          const link = document.createElement('a');
+          link.href = 'https://github.com/plebbit/seedit/releases/latest';
+          link.target = '_blank';
+          link.rel = 'noopener noreferrer';
+          link.click();
+        }
+        return;
+      }
+
+      if (acceptedFiles.length > 0) {
+        try {
+          setIsChoosingFile(false);
+          setIsUploading(true);
+
+          // for Electron, we need to convert the File to a format that can be sent via IPC
+          if (isElectron) {
+            const file = acceptedFiles[0];
+            const reader = new FileReader();
+
+            const fileData = await new Promise((resolve, reject) => {
+              reader.onload = () => {
+                const base64data = reader.result?.toString().split(',')[1];
+                resolve({
+                  fileData: base64data,
+                  fileName: file.name,
+                });
+              };
+              reader.onerror = reject;
+              reader.readAsDataURL(file);
+            });
+
+            const result = await FileUploader.uploadMedia(fileData as { fileData?: string; fileName: string });
+            if (result.url) {
+              setUrl(result.url);
+              setPublishPostStore({ link: result.url || undefined });
+            }
+          } else if (isAndroid) {
+            // android can handle File objects directly
+            const result = await FileUploader.uploadMedia(acceptedFiles[0]);
+            if (result.url) {
+              setUrl(result.url);
+              setPublishPostStore({ link: result.url || undefined });
+            }
+          }
+        } catch (error) {
+          console.error('Upload failed:', error);
+          if (error instanceof Error && !error.message.includes('File selection cancelled')) {
+            alert(`${t('upload_failed')}: ${error.message}`);
+          }
+        } finally {
+          setIsUploading(false);
+        }
+      }
+    },
+    [setUrl, setPublishPostStore, t],
+  );
+
+  const { getRootProps, getInputProps, isDragActive } = useDropzone({
+    onDrop,
+    noClick: true,
+    accept: {
+      'image/*': [],
+      'video/*': [],
+      'audio/*': [],
+    },
+  });
+
+  const handleUpload = async () => {
+    if (!(isAndroid || isElectron)) {
+      if (window.confirm('This feature is only available on Seedit Android app, or desktop app (win/mac/linux) versions.\n\nGo to download links page on GitHub?')) {
+        const link = document.createElement('a');
+        link.href = 'https://github.com/plebbit/seedit/releases/latest';
+        link.target = '_blank';
+        link.rel = 'noopener noreferrer';
+        link.click();
+      }
+      return;
+    }
+
+    try {
+      setIsChoosingFile(true);
+
+      const pickedFile = await FileUploader.pickMedia(); // base64 data
+      setIsChoosingFile(false);
+
+      setIsUploading(true);
+
+      const uploadResult = await FileUploader.uploadMedia({
+        fileData: pickedFile.data,
+        fileName: pickedFile.fileName,
+      });
+
+      if (uploadResult?.url) {
+        setUrl(uploadResult.url);
+        setPublishPostStore({ link: uploadResult.url });
+      } else {
+        throw new Error('No URL returned from upload');
+      }
+    } catch (error) {
+      console.error('Process failed:', error);
+      if (error instanceof Error && !error.message.includes('File selection cancelled')) {
+        alert(`${t('upload_failed')}: ${error.message}`);
+      } else if (typeof error === 'string' && !error.includes('File selection cancelled')) {
+        alert(`${t('upload_failed')}: ${error}`);
+      }
+    } finally {
+      setIsChoosingFile(false);
+      setIsUploading(false);
+    }
+  };
+
+  return (
+    <>
+      <span className={styles.boxTitleOptional}>image/video/audio</span>
+      <div className={styles.boxContent}>
+        {isUploading ? (
+          <div className={styles.uploading}>
+            <LoadingEllipsis string={t('uploading')} />
+          </div>
+        ) : (
+          <div {...getRootProps()} className={`${styles.uploadBox} ${isDragActive ? styles.dragging : ''}`}>
+            <input {...getInputProps()} />
+            <div className={styles.cameraIcon} />
+            <div className={styles.dropText}>Drop here or</div>
+            <label onClick={() => (isUploading || isChoosingFile ? null : handleUpload())}>
+              <div className={styles.fileUploadIcon} />
+              {t('choose_file')}
+            </label>
+          </div>
+        )}
+      </div>
+    </>
+  );
+};
 
 const Submit = () => {
   const { t } = useTranslation();
@@ -236,125 +383,6 @@ const Submit = () => {
     setActiveDropdownIndex(-1);
   };
 
-  // on android or electron, auto upload file to image hosting sites with open api
-  const [isUploading, setIsUploading] = useState(false);
-  const [isChoosingFile, setIsChoosingFile] = useState(false);
-
-  const onDrop = useCallback(
-    async (acceptedFiles: File[]) => {
-      if (!(isAndroid || isElectron)) {
-        if (window.confirm('This feature is only available on Seedit Android app, or desktop app (win/mac/linux) versions.\n\nGo to download links page on GitHub?')) {
-          const link = document.createElement('a');
-          link.href = 'https://github.com/plebbit/seedit/releases/latest';
-          link.target = '_blank';
-          link.rel = 'noopener noreferrer';
-          link.click();
-        }
-        return;
-      }
-
-      if (acceptedFiles.length > 0) {
-        try {
-          setIsChoosingFile(false);
-          setIsUploading(true);
-
-          // for Electron, we need to convert the File to a format that can be sent via IPC
-          if (isElectron) {
-            const file = acceptedFiles[0];
-            const reader = new FileReader();
-
-            const fileData = await new Promise((resolve, reject) => {
-              reader.onload = () => {
-                const base64data = reader.result?.toString().split(',')[1];
-                resolve({
-                  fileData: base64data,
-                  fileName: file.name,
-                });
-              };
-              reader.onerror = reject;
-              reader.readAsDataURL(file);
-            });
-
-            const result = await FileUploader.uploadMedia(fileData as { fileData?: string; fileName: string });
-            if (result.url) {
-              setUrl(result.url);
-              setPublishPostStore({ link: result.url || undefined });
-            }
-          } else if (isAndroid) {
-            // android can handle File objects directly
-            const result = await FileUploader.uploadMedia(acceptedFiles[0]);
-            if (result.url) {
-              setUrl(result.url);
-              setPublishPostStore({ link: result.url || undefined });
-            }
-          }
-        } catch (error) {
-          console.error('Upload failed:', error);
-          if (error instanceof Error && !error.message.includes('File selection cancelled')) {
-            alert(`${t('upload_failed')}: ${error.message}`);
-          }
-        } finally {
-          setIsUploading(false);
-        }
-      }
-    },
-    [setUrl, setPublishPostStore, t],
-  );
-
-  const { getRootProps, getInputProps, isDragActive } = useDropzone({
-    onDrop,
-    noClick: true,
-    accept: {
-      'image/*': [],
-      'video/*': [],
-      'audio/*': [],
-    },
-  });
-
-  const handleUpload = async () => {
-    if (!(isAndroid || isElectron)) {
-      if (window.confirm('This feature is only available on Seedit Android app, or desktop app (win/mac/linux) versions.\n\nGo to download links page on GitHub?')) {
-        const link = document.createElement('a');
-        link.href = 'https://github.com/plebbit/seedit/releases/latest';
-        link.target = '_blank';
-        link.rel = 'noopener noreferrer';
-        link.click();
-      }
-      return;
-    }
-
-    try {
-      setIsChoosingFile(true);
-
-      const pickedFile = await FileUploader.pickMedia(); // base64 data
-      setIsChoosingFile(false);
-
-      setIsUploading(true);
-
-      const uploadResult = await FileUploader.uploadMedia({
-        fileData: pickedFile.data,
-        fileName: pickedFile.fileName,
-      });
-
-      if (uploadResult?.url) {
-        setUrl(uploadResult.url);
-        setPublishPostStore({ link: uploadResult.url });
-      } else {
-        throw new Error('No URL returned from upload');
-      }
-    } catch (error) {
-      console.error('Process failed:', error);
-      if (error instanceof Error && !error.message.includes('File selection cancelled')) {
-        alert(`${t('upload_failed')}: ${error.message}`);
-      } else if (typeof error === 'string' && !error.includes('File selection cancelled')) {
-        alert(`${t('upload_failed')}: ${error}`);
-      }
-    } finally {
-      setIsChoosingFile(false);
-      setIsUploading(false);
-    }
-  };
-
   return (
     <div className={styles.content}>
       <h1>
@@ -375,24 +403,7 @@ const Submit = () => {
           </div>
           {url.length === 0 && (
             <div className={styles.box}>
-              <span className={styles.boxTitleOptional}>image/video/audio</span>
-              <div className={styles.boxContent}>
-                {isUploading ? (
-                  <div className={styles.uploading}>
-                    <LoadingEllipsis string={t('uploading')} />
-                  </div>
-                ) : (
-                  <div {...getRootProps()} className={`${styles.uploadBox} ${isDragActive ? styles.dragging : ''}`}>
-                    <input {...getInputProps()} />
-                    <div className={styles.cameraIcon} />
-                    <div className={styles.dropText}>Drop here or</div>
-                    <label onClick={() => (isUploading || isChoosingFile ? null : handleUpload())}>
-                      <div className={styles.fileUploadIcon} />
-                      {t('choose_file')}
-                    </label>
-                  </div>
-                )}
-              </div>
+              <UploadMediaForm setUrl={setUrl} />
             </div>
           )}
           <div className={styles.box}>
