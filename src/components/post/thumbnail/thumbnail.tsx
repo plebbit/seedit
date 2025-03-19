@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import styles from './thumbnail.module.css';
 import { Link, useParams } from 'react-router-dom';
 import { CommentMediaInfo } from '../../../lib/utils/media-utils';
@@ -37,6 +37,7 @@ const Thumbnail = ({
   subplebbitAddress,
   toggleExpanded,
 }: ThumbnailProps) => {
+  const [isNotFound, setIsNotFound] = useState(false);
   const iframeThumbnail = commentMediaInfo?.patternThumbnailUrl || commentMediaInfo?.thumbnail;
   let displayWidth, displayHeight, hasLinkDimensions;
   const thumbnailClass = expanded ? styles.thumbnailHidden : styles.thumbnailVisible;
@@ -56,7 +57,7 @@ const Thumbnail = ({
     hasLinkDimensions = false;
   }
 
-  if (isText || isLink || isSpoiler || (isNsfw && !isNsfwSubplebbit)) {
+  if (isText || isLink || isSpoiler || (isNsfw && !isNsfwSubplebbit) || isNotFound) {
     displayWidth = '50px';
     displayHeight = '50px';
     hasLinkDimensions = true;
@@ -64,18 +65,22 @@ const Thumbnail = ({
 
   const style = hasLinkDimensions ? ({ '--width': displayWidth, '--height': displayHeight } as React.CSSProperties) : {};
 
+  const handleNotFound = () => {
+    setIsNotFound(true);
+  };
+
   let mediaComponent = null;
   const gifFrameUrl = useFetchGifFirstFrame(commentMediaInfo?.type === 'gif' ? commentMediaInfo.url : undefined);
 
   const [videoDuration, setVideoDuration] = useState<string>('');
 
   if (commentMediaInfo?.type === 'image') {
-    mediaComponent = <img src={commentMediaInfo.url} alt='' />;
+    mediaComponent = <img src={commentMediaInfo.url} alt='' onError={handleNotFound} />;
   } else if (commentMediaInfo?.type === 'video') {
     mediaComponent = (
       <>
         {commentMediaInfo.thumbnail ? (
-          <img src={commentMediaInfo.thumbnail} alt='' />
+          <img src={commentMediaInfo.thumbnail} alt='' onError={handleNotFound} />
         ) : (
           <video
             src={`${commentMediaInfo.url}#t=0.001`}
@@ -85,17 +90,18 @@ const Thumbnail = ({
               const seconds = Math.floor(video.duration % 60);
               setVideoDuration(`${minutes}:${seconds.toString().padStart(2, '0')}`);
             }}
+            onError={handleNotFound}
           />
         )}
         <span className={styles.durationOverlay}>{videoDuration}</span>
       </>
     );
   } else if (commentMediaInfo?.type === 'webpage') {
-    mediaComponent = <img src={commentMediaInfo.thumbnail} alt='' />;
+    mediaComponent = <img src={commentMediaInfo.thumbnail} alt='' onError={handleNotFound} />;
   } else if (commentMediaInfo?.type === 'iframe') {
-    mediaComponent = iframeThumbnail ? <img src={iframeThumbnail} alt='' /> : null;
+    mediaComponent = iframeThumbnail ? <img src={iframeThumbnail} alt='' onError={handleNotFound} /> : <span className={`${styles.iconThumbnail} ${styles.linkIcon}`} />;
   } else if (commentMediaInfo?.type === 'gif') {
-    mediaComponent = <img src={gifFrameUrl || commentMediaInfo.url} alt='' />;
+    mediaComponent = <img src={gifFrameUrl || commentMediaInfo.url} alt='' onError={handleNotFound} />;
   }
 
   if (isText) {
@@ -112,6 +118,10 @@ const Thumbnail = ({
 
   if (isNsfw && blurNsfwThumbnails && !isNsfwSubplebbit) {
     mediaComponent = <span className={`${styles.iconThumbnail} ${styles.nsfwIcon}`} />;
+  }
+
+  if (isNotFound) {
+    mediaComponent = <span className={`${styles.iconThumbnail} ${styles.linkIcon}`} />;
   }
 
   return (
