@@ -363,5 +363,7 @@
   "loading_feed": "Indlæser feed",
   "loading_posts": "Indlæser indlæg",
   "post_is_pending": "Indlægget er på vent",
-  "post_has_failed": "Indlægget mislykkedes"
+  "post_has_failed": "Indlægget mislykkedes",
+  "choose_file": "Vælg fil",
+  "uploading": "Uploadering"
 }

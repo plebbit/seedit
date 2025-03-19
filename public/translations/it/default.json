@@ -306,8 +306,8 @@
   "own_communities": "comunità che possiedo",
   "invalid_community_address": "Indirizzo comunità non valido",
   "newer_posts_available": "Nuovi post disponibili: <1>ricarica il feed</1>",
-  "more_posts_last_week": "{{count}} post la scorsa {{currentTimeFilterName}}: <1>mostra più post della settimana scorsa</1>",
-  "more_posts_last_month": "{{count}} post nell'{{currentTimeFilterName}}: <1>mostra più post dal mese scorso</1>",
+  "more_posts_last_week": "{{count}} post da {{currentTimeFilterName}}: <1>mostra più post della settimana scorsa</1>",
+  "more_posts_last_month": "{{count}} post da {{currentTimeFilterName}}: <1>mostra più post dal mese scorso</1>",
   "sure_delete": "Sei sicuro di voler eliminare questo post?",
   "sure_undelete": "Sei sicuro di voler ripristinare questo post?",
   "profile_info": "Il tuo account u/{{shortAddress}} è stato creato. <1>Imposta nome visualizzato</1>, <2>esporta backup</2>, <3>scopri di più</3>.",
@@ -363,5 +363,7 @@
   "loading_feed": "Caricamento feed",
   "loading_posts": "Caricamento dei post",
   "post_is_pending": "Il post è in sospeso",
-  "post_has_failed": "Il post è fallito"
+  "post_has_failed": "Il post è fallito",
+  "choose_file": "Scegli file",
+  "uploading": "Caricamento"
 }

@@ -363,5 +363,7 @@
   "loading_feed": "Naglo-load ng feed",
   "loading_posts": "Naglo-load ng mga post",
   "post_is_pending": "Ang post ay pending",
-  "post_has_failed": "Nabigo ang post"
+  "post_has_failed": "Nabigo ang post",
+  "choose_file": "Pumili ng file",
+  "uploading": "Nag-upload"
 }

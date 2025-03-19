@@ -363,5 +363,7 @@
   "loading_feed": "لوڈ ہو رہا ہے فیڈ",
   "loading_posts": "پوسٹس لوڈ ہو رہی ہیں",
   "post_is_pending": "پوسٹ زیر التواء ہے",
-  "post_has_failed": "پوسٹ ناکام ہوگئی"
+  "post_has_failed": "پوسٹ ناکام ہوگئی",
+  "choose_file": "فائل منتخب کریں",
+  "uploading": "اپ لوڈ ہو رہا ہے"
 }

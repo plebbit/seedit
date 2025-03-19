@@ -363,5 +363,7 @@
   "loading_feed": "Laster feed",
   "loading_posts": "Laster innlegg",
   "post_is_pending": "Innlegget er på vent",
-  "post_has_failed": "Innlegget mislyktes"
+  "post_has_failed": "Innlegget mislyktes",
+  "choose_file": "Velg fil",
+  "uploading": "Laster opp"
 }

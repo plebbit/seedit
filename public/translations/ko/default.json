@@ -363,5 +363,7 @@
   "loading_feed": "피드를 로딩 중",
   "loading_posts": "게시물 로딩 중",
   "post_is_pending": "게시물이 보류 중입니다",
-  "post_has_failed": "게시물이 실패했습니다"
+  "post_has_failed": "게시물이 실패했습니다",
+  "choose_file": "파일 선택",
+  "uploading": "업로드 중"
 }

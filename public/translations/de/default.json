@@ -363,5 +363,7 @@
   "loading_feed": "Lädt Feed",
   "loading_posts": "Lade Beiträge",
   "post_is_pending": "Beitrag ist ausstehend",
-  "post_has_failed": "Der Beitrag ist fehlgeschlagen"
+  "post_has_failed": "Der Beitrag ist fehlgeschlagen",
+  "choose_file": "Wählen Sie eine Datei",
+  "uploading": "Hochladen"
 }

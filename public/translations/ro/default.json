@@ -363,5 +363,7 @@
   "loading_feed": "Încărcare feed",
   "loading_posts": "Se încarcă postările",
   "post_is_pending": "Postarea este în așteptare",
-  "post_has_failed": "Postarea a eșuat"
+  "post_has_failed": "Postarea a eșuat",
+  "choose_file": "Alege fișierul",
+  "uploading": "Încărcare"
 }

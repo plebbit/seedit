@@ -363,5 +363,7 @@
   "loading_feed": "Loading feed",
   "loading_posts": "Loading posts",
   "post_is_pending": "Post is pending",
-  "post_has_failed": "Post has failed"
+  "post_has_failed": "Post has failed",
+  "choose_file": "Choose file",
+  "uploading": "Uploading"
 }

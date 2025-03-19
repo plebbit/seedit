@@ -363,5 +363,7 @@
   "loading_feed": "Laad feed",
   "loading_posts": "Berichten laden",
   "post_is_pending": "Bericht is in behandeling",
-  "post_has_failed": "Post is mislukt"
+  "post_has_failed": "Post is mislukt",
+  "choose_file": "Kies bestand",
+  "uploading": "Uploaden"
 }

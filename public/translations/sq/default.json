@@ -363,5 +363,7 @@
   "loading_feed": "Po ngarkoni feed-in",
   "loading_posts": "Duke ngarkuar postimet",
   "post_is_pending": "Postimi është në pritje",
-  "post_has_failed": "Postimi ka dështuar"
+  "post_has_failed": "Postimi ka dështuar",
+  "choose_file": "Zgjidhni skedarin",
+  "uploading": "Ngarkimi"
 }

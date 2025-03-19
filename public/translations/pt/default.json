@@ -363,5 +363,7 @@
   "loading_feed": "Carregando feed",
   "loading_posts": "Carregando postagens",
   "post_is_pending": "Postagem pendente",
-  "post_has_failed": "A postagem falhou"
+  "post_has_failed": "A postagem falhou",
+  "choose_file": "Escolher arquivo",
+  "uploading": "Carregando"
 }

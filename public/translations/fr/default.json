@@ -363,5 +363,7 @@
   "loading_feed": "Chargement du flux",
   "loading_posts": "Chargement des publications",
   "post_is_pending": "Le post est en attente",
-  "post_has_failed": "Le post a échoué"
+  "post_has_failed": "Le post a échoué",
+  "choose_file": "Choisir un fichier",
+  "uploading": "Téléchargement"
 }

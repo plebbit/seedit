@@ -363,5 +363,7 @@
   "loading_feed": "Ładowanie kanału",
   "loading_posts": "Ładowanie postów",
   "post_is_pending": "Post czeka na zatwierdzenie",
-  "post_has_failed": "Post się nie powiódł"
+  "post_has_failed": "Post się nie powiódł",
+  "choose_file": "Wybierz plik",
+  "uploading": "Ładowanie"
 }

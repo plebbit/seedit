@@ -363,5 +363,7 @@
   "loading_feed": "フィードを読み込んでいます",
   "loading_posts": "投稿を読み込んでいます",
   "post_is_pending": "投稿は保留中です",
-  "post_has_failed": "投稿に失敗しました"
+  "post_has_failed": "投稿に失敗しました",
+  "choose_file": "ファイルを選択",
+  "uploading": "アップロード中"
 }

@@ -363,5 +363,7 @@
   "loading_feed": "Laddar flöde",
   "loading_posts": "Laddar inlägg",
   "post_is_pending": "Inlägget är i väntan",
-  "post_has_failed": "Inlägget misslyckades"
+  "post_has_failed": "Inlägget misslyckades",
+  "choose_file": "Välj fil",
+  "uploading": "Laddar upp"
 }

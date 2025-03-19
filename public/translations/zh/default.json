@@ -363,5 +363,7 @@
   "loading_feed": "加载中...",
   "loading_posts": "加载帖子",
   "post_is_pending": "帖子待处理中",
-  "post_has_failed": "发布失败"
+  "post_has_failed": "发布失败",
+  "choose_file": "选择文件",
+  "uploading": "上传中"
 }

@@ -363,5 +363,7 @@
   "loading_feed": "טוען פיד",
   "loading_posts": "טעינת פוסטים",
   "post_is_pending": "הפוסט ממתין",
-  "post_has_failed": "הפוסט נכשל"
+  "post_has_failed": "הפוסט נכשל",
+  "choose_file": "בחר קובץ",
+  "uploading": "מעלה"
 }

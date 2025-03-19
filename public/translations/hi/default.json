@@ -363,5 +363,7 @@
   "loading_feed": "लोडिंग फीड",
   "loading_posts": "पोस्ट लोड हो रही हैं",
   "post_is_pending": "पोस्ट लंबित है",
-  "post_has_failed": "पोस्ट विफल हो गया"
+  "post_has_failed": "पोस्ट विफल हो गया",
+  "choose_file": "फाइल चुनें",
+  "uploading": "अपलोड हो रहा है"
 }
