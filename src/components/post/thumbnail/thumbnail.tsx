@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import styles from './thumbnail.module.css';
 import { Link, useParams } from 'react-router-dom';
 import { CommentMediaInfo } from '../../../lib/utils/media-utils';
