@@ -410,7 +410,7 @@ const Header = () => {
 
   const logoIsAvatar = isInSubplebbitView && suggested?.avatarUrl && !(isBroadlyNsfwSubplebbit && !hasUnhiddenAnyNsfwCommunity);
   const logoSrc = logoIsAvatar ? suggested?.avatarUrl : 'assets/logo/seedit.png';
-  const logoLink = isInSubplebbitView ? `/p/${subplebbitAddress}` : '/';
+  const logoLink = '/';
 
   return (
     <div className={styles.header}>
