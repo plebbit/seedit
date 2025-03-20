@@ -365,5 +365,7 @@
   "post_is_pending": "La publicación está pendiente",
   "post_has_failed": "La publicación ha fallado",
   "choose_file": "Elegir archivo",
-  "uploading": "Subiendo"
+  "uploading": "Subiendo",
+  "invalid_url_alert": "El enlace proporcionado no es una URL válida.",
+  "empty_comment_alert": "No se puede publicar un comentario vacío."
 }

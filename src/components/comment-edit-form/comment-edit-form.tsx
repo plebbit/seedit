@@ -6,6 +6,7 @@ import { FormattingHelpTable } from '../reply-form';
 import styles from '../reply-form/reply-form.module.css';
 import { alertChallengeVerificationFailed } from '../../lib/utils/challenge-utils';
 import challengesStore from '../../stores/use-challenges-store';
+import Markdown from '../markdown';
 
 const { addChallenge } = challengesStore.getState();
 
@@ -18,6 +19,7 @@ const CommentEditForm = ({ commentCid, hideCommentEditForm }: CommentEditFormPro
   const { t } = useTranslation();
   const [showOptions, setShowOptions] = useState(false);
   const [showFormattingHelp, setShowFormattingHelp] = useState(false);
+  const [showPreview, setShowPreview] = useState(false);
   const spoilerClass = showOptions ? styles.spoilerVisible : styles.spoilerHidden;
   const nsfwClass = showOptions ? styles.spoilerVisible : styles.spoilerHidden;
   const textRef = useRef<HTMLTextAreaElement>(null);
@@ -85,12 +87,18 @@ const CommentEditForm = ({ commentCid, hideCommentEditForm }: CommentEditFormPro
             </label>
           </span>
         </div>
-        <textarea
-          className={styles.textarea}
-          value={publishCommentEditOptions.content}
-          ref={textRef}
-          onChange={(e) => setPublishCommentEditOptions((state) => ({ ...state, content: e.target.value }))}
-        />
+        {!showPreview ? (
+          <textarea
+            className={styles.textarea}
+            value={publishCommentEditOptions.content}
+            ref={textRef}
+            onChange={(e) => setPublishCommentEditOptions((state) => ({ ...state, content: e.target.value }))}
+          />
+        ) : (
+          <div className={styles.preview}>
+            <Markdown content={publishCommentEditOptions.content} />
+          </div>
+        )}
       </div>
       <div className={styles.bottomArea}>
         <span className={styles.editReason}>
@@ -116,6 +124,9 @@ const CommentEditForm = ({ commentCid, hideCommentEditForm }: CommentEditFormPro
             }}
           >
             {t('save')}
+          </button>
+          <button className={styles.previewButton} onClick={() => setShowPreview(!showPreview)} disabled={!publishCommentEditOptions?.content}>
+            {showPreview ? t('edit') : t('preview')}
           </button>
           <button
             className={styles.cancel}

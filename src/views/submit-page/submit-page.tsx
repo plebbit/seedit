@@ -383,6 +383,8 @@ const Submit = () => {
     setActiveDropdownIndex(-1);
   };
 
+  const [showPreview, setShowPreview] = useState(false);
+
   return (
     <div className={styles.content}>
       <h1>
@@ -421,20 +423,24 @@ const Submit = () => {
             <span className={styles.boxTitleOptional}>{t('text')}</span>
             <span className={styles.optional}> ({t('optional')})</span>
             <div className={styles.boxContent}>
-              <textarea
-                className={`${styles.input} ${styles.inputText}`}
-                onChange={(e) => {
-                  setSubmitStoreHook({ content: e.target.value });
-                }}
-              />
-              {content && (
+              {!showPreview ? (
+                <textarea
+                  className={`${styles.input} ${styles.inputText}`}
+                  value={content || ''}
+                  onChange={(e) => {
+                    setSubmitStoreHook({ content: e.target.value });
+                  }}
+                />
+              ) : (
                 <div className={styles.contentPreview}>
-                  <div className={styles.contentPreviewTitle}>{t('preview')}:</div>
                   <div className={styles.contentPreviewMarkdown}>
-                    <Markdown content={content} />
+                    <Markdown content={content || ''} />
                   </div>
                 </div>
               )}
+              <button className={styles.previewButton} disabled={!content} onClick={() => setShowPreview(!showPreview)}>
+                {showPreview ? t('edit') : t('preview')}
+              </button>
             </div>
           </div>
           <div className={styles.box}>

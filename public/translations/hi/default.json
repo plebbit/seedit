@@ -365,5 +365,7 @@
   "post_is_pending": "पोस्ट लंबित है",
   "post_has_failed": "पोस्ट विफल हो गया",
   "choose_file": "फाइल चुनें",
-  "uploading": "अपलोड हो रहा है"
+  "uploading": "अपलोड हो रहा है",
+  "invalid_url_alert": "प्रदत्त लिंक एक वैध URL नहीं है।",
+  "empty_comment_alert": "खाली टिप्पणी पोस्ट नहीं कर सकते।"
 }

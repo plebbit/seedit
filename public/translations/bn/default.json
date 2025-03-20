@@ -365,5 +365,7 @@
   "post_is_pending": "পোস্ট পেন্ডিং",
   "post_has_failed": "পোস্ট ব্যর্থ হয়েছে",
   "choose_file": "ফাইল নির্বাচন করুন",
-  "uploading": "আপলোড হচ্ছে"
+  "uploading": "আপলোড হচ্ছে",
+  "invalid_url_alert": "দেওয়া লিঙ্কটি একটি বৈধ URL নয়।",
+  "empty_comment_alert": "খালি মন্তব্য পোস্ট করা যাবে না।"
 }

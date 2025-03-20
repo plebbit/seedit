@@ -365,5 +365,7 @@
   "post_is_pending": "Пост очікує",
   "post_has_failed": "Публікація не вдалася",
   "choose_file": "Виберіть файл",
-  "uploading": "Завантаження"
+  "uploading": "Завантаження",
+  "invalid_url_alert": "Надане посилання не є дійсною URL-адресою.",
+  "empty_comment_alert": "Не можна опублікувати порожній коментар."
 }

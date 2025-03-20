@@ -365,5 +365,7 @@
   "post_is_pending": "پست در انتظار است",
   "post_has_failed": "ارسال پست با شکست مواجه شد",
   "choose_file": "فایل را انتخاب کنید",
-  "uploading": "در حال بارگذاری"
+  "uploading": "در حال بارگذاری",
+  "invalid_url_alert": "لینک ارائه شده یک URL معتبر نیست.",
+  "empty_comment_alert": "نمی‌توان نظر خالی ارسال کرد."
 }

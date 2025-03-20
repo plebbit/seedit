@@ -365,5 +365,7 @@
   "post_is_pending": "Beitrag ist ausstehend",
   "post_has_failed": "Der Beitrag ist fehlgeschlagen",
   "choose_file": "Wählen Sie eine Datei",
-  "uploading": "Hochladen"
+  "uploading": "Hochladen",
+  "invalid_url_alert": "Der bereitgestellte Link ist keine gültige URL.",
+  "empty_comment_alert": "Kann keinen leeren Kommentar posten."
 }

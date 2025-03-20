@@ -88,9 +88,15 @@
   font-size: 14px;
 }
 
+.contentPreview {
+  min-height: 112px;
+}
+
 .contentPreviewMarkdown {
   font-size: 14px;
   word-wrap: break-word;
+  padding-left: 4px;
+  padding-top: 4px;
 }
 
 .contentPreviewTitle {

@@ -28,7 +28,7 @@
 
 .url {
   background-color: var(--background);
-  color: var(--text);
+  color: var(--text-markdown);
 }
 
 .spoiler {
@@ -51,7 +51,7 @@
   width: 100%;
   height: 100px;
   background-color: var(--background);
-  color: var(--text);
+  color: var(--text-markdown);
   font: normal small verdana,arial,helvetica,sans-serif;
   line-height: 1.42em;
   font-size: 14px;
@@ -59,7 +59,7 @@
   box-sizing: border-box;
 }
 
-.save, .cancel {
+.save, .cancel, .previewButton {
   margin: 5px 5px 0 0;
   -webkit-appearance: button;
   appearance: button;
@@ -145,4 +145,13 @@
 .editSaveButtons {
   width: 100%;
   display: inline-block;
+}
+
+.preview {
+  min-height: 98.5px;
+  word-wrap: break-word;
+  padding-left: 3px;
+  padding-top: 4px;
+  font-size: 14px;
+  color: var(--text-markdown);
 }

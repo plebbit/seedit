@@ -365,5 +365,7 @@
   "post_is_pending": "Gönderi beklemede",
   "post_has_failed": "Gönderi başarısız oldu",
   "choose_file": "Dosya seç",
-  "uploading": "Yükleniyor"
+  "uploading": "Yükleniyor",
+  "invalid_url_alert": "Verilen bağlantı geçerli bir URL değildir.",
+  "empty_comment_alert": "Boş yorum gönderilemez."
 }

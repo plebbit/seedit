@@ -365,5 +365,7 @@
   "post_is_pending": "Post is pending",
   "post_has_failed": "Post has failed",
   "choose_file": "Choose file",
-  "uploading": "Uploading"
+  "uploading": "Uploading",
+  "invalid_url_alert": "The provided link is not a valid URL.",
+  "empty_comment_alert": "Cannot post empty comment."
 }

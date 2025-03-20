@@ -365,5 +365,7 @@
   "post_is_pending": "投稿は保留中です",
   "post_has_failed": "投稿に失敗しました",
   "choose_file": "ファイルを選択",
-  "uploading": "アップロード中"
+  "uploading": "アップロード中",
+  "invalid_url_alert": "提供されたリンクは有効なURLではありません。",
+  "empty_comment_alert": "空のコメントは投稿できません。"
 }

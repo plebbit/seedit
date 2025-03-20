@@ -365,5 +365,7 @@
   "post_is_pending": "Postingan sedang menunggu",
   "post_has_failed": "Posting gagal",
   "choose_file": "Pilih file",
-  "uploading": "Mengunggah"
+  "uploading": "Mengunggah",
+  "invalid_url_alert": "Tautan yang diberikan bukan URL yang valid.",
+  "empty_comment_alert": "Tidak dapat memposting komentar kosong."
 }

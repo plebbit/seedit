@@ -365,5 +365,7 @@
   "post_is_pending": "Postarea este în așteptare",
   "post_has_failed": "Postarea a eșuat",
   "choose_file": "Alege fișierul",
-  "uploading": "Încărcare"
+  "uploading": "Încărcare",
+  "invalid_url_alert": "Linkul furnizat nu este un URL valid.",
+  "empty_comment_alert": "Nu se poate publica un comentariu gol."
 }

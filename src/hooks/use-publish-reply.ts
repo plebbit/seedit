@@ -4,12 +4,13 @@ import usePublishReplyStore from '../stores/use-publish-reply-store';
 
 const usePublishReply = ({ cid, subplebbitAddress, postCid }: { cid: string; subplebbitAddress: string; postCid: string | undefined }) => {
   const parentCid = cid;
-  const { content, link, spoiler, nsfw, publishCommentOptions } = usePublishReplyStore((state) => ({
+  const { content, link, spoiler, nsfw, publishCommentOptions, publishReplyOptions } = usePublishReplyStore((state) => ({
     content: state.content[parentCid],
     link: state.link[parentCid],
     spoiler: state.spoiler[parentCid],
     nsfw: state.nsfw[parentCid],
     publishCommentOptions: state.publishCommentOptions[parentCid],
+    publishReplyOptions: state.publishReplyOptions[parentCid],
   }));
 
   const setReplyStore = usePublishReplyStore((state) => state.setReplyStore);
@@ -65,7 +66,7 @@ const usePublishReply = ({ cid, subplebbitAddress, postCid }: { cid: string; sub
 
   const { index, publishComment } = usePublishComment(publishCommentOptions);
 
-  return { setPublishReplyOptions, resetPublishReplyOptions, replyIndex: index, publishReply: publishComment };
+  return { setPublishReplyOptions, resetPublishReplyOptions, replyIndex: index, publishReply: publishComment, publishReplyOptions };
 };
 
 export default usePublishReply;

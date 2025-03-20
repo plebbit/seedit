@@ -365,5 +365,7 @@
   "post_is_pending": "게시물이 보류 중입니다",
   "post_has_failed": "게시물이 실패했습니다",
   "choose_file": "파일 선택",
-  "uploading": "업로드 중"
+  "uploading": "업로드 중",
+  "invalid_url_alert": "제공된 링크는 유효한 URL이 아닙니다.",
+  "empty_comment_alert": "빈 댓글을 게시할 수 없습니다."
 }

@@ -365,5 +365,7 @@
   "post_is_pending": "Postimi është në pritje",
   "post_has_failed": "Postimi ka dështuar",
   "choose_file": "Zgjidhni skedarin",
-  "uploading": "Ngarkimi"
+  "uploading": "Ngarkimi",
+  "invalid_url_alert": "Lidhja e ofruar nuk është një URL e vlefshme.",
+  "empty_comment_alert": "Nuk mund të postoni një koment bosh."
 }

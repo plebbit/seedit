@@ -88,53 +88,36 @@ const ReplyForm = ({ cid, isReplyingToReply, hideReplyForm, subplebbitAddress, p
   const [showOptions, setShowOptions] = useState(false);
   const [showFormattingHelp, setShowFormattingHelp] = useState(false);
   const [isTextareaFocused, setIsTextareaFocused] = useState(false);
-  const { setPublishReplyOptions, resetPublishReplyOptions, replyIndex, publishReply } = usePublishReply({ cid, subplebbitAddress, postCid });
+  const [showPreview, setShowPreview] = useState(false);
+  const { setPublishReplyOptions, resetPublishReplyOptions, replyIndex, publishReply, publishReplyOptions } = usePublishReply({ cid, subplebbitAddress, postCid });
 
   const mdContainerClass = isReplyingToReply ? `${styles.mdContainer} ${styles.mdContainerReplying}` : styles.mdContainer;
   const urlClass = showOptions ? styles.urlVisible : styles.urlHidden;
   const spoilerClass = showOptions ? styles.spoilerVisible : styles.spoilerHidden;
   const nsfwClass = showOptions ? styles.spoilerVisible : styles.spoilerHidden;
 
-  const textRef = useRef<HTMLTextAreaElement>(null);
-  const urlRef = useRef<HTMLInputElement>(null);
-  const spoilerRef = useRef<HTMLInputElement>(null);
-  const nsfwRef = useRef<HTMLInputElement>(null);
-
   const subplebbit = useSubplebbitsStore((state) => state.subplebbits[subplebbitAddress]);
   const { isOffline, offlineTitle } = useIsSubplebbitOffline(subplebbit);
 
+  // focus on the textarea when replying to a reply
+  const textRef = useRef<HTMLTextAreaElement>(null);
   useEffect(() => {
     if (isReplyingToReply && textRef.current) {
       textRef.current.focus();
     }
   }, [isReplyingToReply, textRef]);
 
-  const resetFields = () => {
-    if (textRef.current) {
-      textRef.current.value = '';
-    }
-    if (urlRef.current) {
-      urlRef.current.value = '';
-    }
-    if (spoilerRef.current) {
-      spoilerRef.current.checked = false;
-    }
-    if (nsfwRef.current) {
-      nsfwRef.current.checked = false;
-    }
-  };
-
   const onPublish = () => {
-    const currentContent = textRef.current?.value || '';
-    const currentUrl = urlRef.current?.value || '';
+    const currentContent = publishReplyOptions?.content || '';
+    const currentUrl = publishReplyOptions?.link || '';
 
     if (!currentContent.trim() && !currentUrl) {
-      alert(`missing content or url`);
+      alert(t('empty_comment_alert'));
       return;
     }
 
     if (currentUrl && !isValidURL(currentUrl)) {
-      alert('The provided link is not a valid URL.');
+      alert(t('invalid_url_alert'));
       return;
     }
     publishReply();
@@ -147,8 +130,6 @@ const ReplyForm = ({ cid, isReplyingToReply, hideReplyForm, subplebbitAddress, p
       if (hideReplyForm) {
         hideReplyForm();
       }
-
-      resetFields();
     }
   }, [replyIndex, resetPublishReplyOptions, hideReplyForm]);
 
@@ -158,30 +139,39 @@ const ReplyForm = ({ cid, isReplyingToReply, hideReplyForm, subplebbitAddress, p
         {isOffline && isTextareaFocused && <div className={styles.infobar}>{offlineTitle}</div>}
         <div className={styles.options}>
           <span className={urlClass}>
-            {t('media_url')}: <input className={`${styles.url} ${urlClass}`} ref={urlRef} onChange={(e) => setPublishReplyOptions.link(e.target.value)} />
+            {t('media_url')}: <input className={`${styles.url} ${urlClass}`} onChange={(e) => setPublishReplyOptions.link(e.target.value)} />
           </span>
           <span className={`${styles.spoiler} ${spoilerClass}`}>
             <label>
-              {t('spoiler')}: <input type='checkbox' className={styles.checkbox} ref={spoilerRef} onChange={(e) => setPublishReplyOptions.spoiler(e.target.checked)} />
+              {t('spoiler')}: <input type='checkbox' className={styles.checkbox} onChange={(e) => setPublishReplyOptions.spoiler(e.target.checked)} />
             </label>
           </span>
           <span className={`${styles.spoiler} ${nsfwClass}`}>
             <label>
-              {t('nsfw')}: <input type='checkbox' className={styles.checkbox} ref={nsfwRef} onChange={(e) => setPublishReplyOptions.nsfw(e.target.checked)} />
+              {t('nsfw')}: <input type='checkbox' className={styles.checkbox} onChange={(e) => setPublishReplyOptions.nsfw(e.target.checked)} />
             </label>
           </span>
         </div>
-        <textarea
-          className={styles.textarea}
-          ref={textRef}
-          onChange={(e) => setPublishReplyOptions.content(e.target.value)}
-          onFocus={() => setIsTextareaFocused(true)}
-          onBlur={() => setIsTextareaFocused(false)}
-        />
+        {!showPreview ? (
+          <textarea
+            className={styles.textarea}
+            value={publishReplyOptions?.content || ''}
+            onChange={(e) => setPublishReplyOptions.content(e.target.value)}
+            onFocus={() => setIsTextareaFocused(true)}
+            onBlur={() => setIsTextareaFocused(false)}
+          />
+        ) : (
+          <div className={styles.preview}>
+            <Markdown content={publishReplyOptions?.content || ''} />
+          </div>
+        )}
       </div>
       <div className={styles.bottomArea}>
         <button className={styles.save} onClick={onPublish}>
           {t('save')}
+        </button>
+        <button className={styles.previewButton} onClick={() => setShowPreview(!showPreview)} disabled={!publishReplyOptions?.content}>
+          {showPreview ? t('edit') : t('preview')}
         </button>
         {isReplyingToReply && (
           <button className={styles.cancel} onClick={hideReplyForm}>
