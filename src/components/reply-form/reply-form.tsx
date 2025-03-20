@@ -77,6 +77,12 @@ export const FormattingHelpTable = () => {
               <Markdown content='sub~script~' />
             </td>
           </tr>
+          <tr>
+            <td>{`<spoiler>${t('spoiler')}</spoiler>`}</td>
+            <td>
+              <Markdown content={`<spoiler>${t('spoiler')}</spoiler>`} />
+            </td>
+          </tr>
         </tbody>
       </table>
     </div>
