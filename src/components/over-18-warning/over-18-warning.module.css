@@ -13,6 +13,7 @@
   margin-top: 60px;
   height: 150px;
   width: 150px;
+  filter: var(--filter90);
 }
 
 @media (max-width: 640px) {
@@ -52,6 +53,7 @@
   font-size: 14px;
   color: var(--text-markdown);
   max-width: 60em;
+  filter: var(--filter90);
   word-wrap: break-word;
 }
 

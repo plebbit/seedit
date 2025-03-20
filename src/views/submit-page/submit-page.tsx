@@ -81,6 +81,9 @@ const UrlField = ({ url, setUrl, urlRef }: { url: string; setUrl: (url: string) 
   );
 };
 
+const warningMessage =
+  'This feature cannot work in browsers. It is only available on Seedit Android app, or desktop app (win/mac/linux) versions.\n\nGo to the download links page on GitHub?';
+
 const UploadMediaForm = ({ setUrl }: { setUrl: (url: string) => void }) => {
   const { t } = useTranslation();
   const { setPublishPostStore } = usePublishPostStore();
@@ -92,7 +95,7 @@ const UploadMediaForm = ({ setUrl }: { setUrl: (url: string) => void }) => {
   const onDrop = useCallback(
     async (acceptedFiles: File[]) => {
       if (!(isAndroid || isElectron)) {
-        if (window.confirm('This feature is only available on Seedit Android app, or desktop app (win/mac/linux) versions.\n\nGo to download links page on GitHub?')) {
+        if (window.confirm(warningMessage)) {
           const link = document.createElement('a');
           link.href = 'https://github.com/plebbit/seedit/releases/latest';
           link.target = '_blank';
@@ -162,7 +165,7 @@ const UploadMediaForm = ({ setUrl }: { setUrl: (url: string) => void }) => {
 
   const handleUpload = async () => {
     if (!(isAndroid || isElectron)) {
-      if (window.confirm('This feature is only available on Seedit Android app, or desktop app (win/mac/linux) versions.\n\nGo to download links page on GitHub?')) {
+      if (window.confirm(warningMessage)) {
         const link = document.createElement('a');
         link.href = 'https://github.com/plebbit/seedit/releases/latest';
         link.target = '_blank';

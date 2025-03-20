@@ -293,6 +293,7 @@
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
+  filter: var(--filter50);
 }
 
 @media (max-width: 640px) {
@@ -305,6 +306,8 @@
 .dropText {
   display: inline;
   padding: 0 5px;
+  color: var(--upload-box-text-color);
+  filter: var(--filter50);
 }
 
 @media (max-width: 640px) {
@@ -346,6 +349,7 @@
   text-transform: uppercase;
   font-weight: 700;
   font-size: 13px;
+  filter: var(--filter80);
 }
 
 .uploadBox label:hover {
