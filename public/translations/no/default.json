@@ -363,5 +363,9 @@
   "loading_feed": "Laster feed",
   "loading_posts": "Laster innlegg",
   "post_is_pending": "Innlegget er på vent",
-  "post_has_failed": "Innlegget mislyktes"
+  "post_has_failed": "Innlegget mislyktes",
+  "choose_file": "Velg fil",
+  "uploading": "Laster opp",
+  "invalid_url_alert": "Den angitte lenken er ikke en gyldig URL.",
+  "empty_comment_alert": "Kan ikke poste tom kommentar."
 }

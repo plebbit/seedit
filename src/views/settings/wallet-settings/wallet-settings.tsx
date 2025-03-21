@@ -116,9 +116,9 @@ const CryptoWalletsForm = ({ account }: { account: Account | undefined }) => {
               i18nKey='copy_message_etherscan'
               values={{ copy: hasCopied ? t('copied') : t('copy') }}
               components={{
-                1: <button onClick={() => copyMessageToSign(wallet, index)} />,
+                1: <button key={`copyMessageEtherscanButton-${index}`} onClick={() => copyMessageToSign(wallet, index)} />,
                 // eslint-disable-next-line
-                2: <a href='https://etherscan.io/verifiedSignatures' target='_blank' rel='noopener noreferrer' />,
+                2: <a key={`etherscanLink-${index}`} href='https://etherscan.io/verifiedSignatures' target='_blank' rel='noopener noreferrer' />,
               }}
             />
           </div>
@@ -137,7 +137,10 @@ const CryptoWalletsForm = ({ account }: { account: Account | undefined }) => {
   return (
     <>
       <div className={styles.addWallet}>
-        <Trans i18nKey='add_wallet' components={{ 1: <button onClick={() => setWalletsArray([...walletsArray, defaultWalletObject])} /> }} />
+        <Trans
+          i18nKey='add_wallet'
+          components={{ 1: <button key={`addWalletButton-${walletsArray.length}`} onClick={() => setWalletsArray([...walletsArray, defaultWalletObject])} /> }}
+        />
       </div>
       {walletsInputs}
     </>

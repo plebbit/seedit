@@ -363,5 +363,9 @@
   "loading_feed": "Ladataan syöte",
   "loading_posts": "Ladataan viestejä",
   "post_is_pending": "Postaus on odottamassa",
-  "post_has_failed": "Postaus epäonnistui"
+  "post_has_failed": "Postaus epäonnistui",
+  "choose_file": "Valitse tiedosto",
+  "uploading": "Ladataan",
+  "invalid_url_alert": "Annettu linkki ei ole voimassa oleva URL.",
+  "empty_comment_alert": "Ei voi julkaista tyhjää kommenttia."
 }

@@ -363,5 +363,9 @@
   "loading_feed": "لوڈ ہو رہا ہے فیڈ",
   "loading_posts": "پوسٹس لوڈ ہو رہی ہیں",
   "post_is_pending": "پوسٹ زیر التواء ہے",
-  "post_has_failed": "پوسٹ ناکام ہوگئی"
+  "post_has_failed": "پوسٹ ناکام ہوگئی",
+  "choose_file": "فائل منتخب کریں",
+  "uploading": "اپ لوڈ ہو رہا ہے",
+  "invalid_url_alert": "فراہم کردہ لنک درست URL نہیں ہے۔",
+  "empty_comment_alert": "خالی تبصرہ پوسٹ نہیں کیا جا سکتا۔"
 }

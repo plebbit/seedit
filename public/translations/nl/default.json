@@ -363,5 +363,9 @@
   "loading_feed": "Laad feed",
   "loading_posts": "Berichten laden",
   "post_is_pending": "Bericht is in behandeling",
-  "post_has_failed": "Post is mislukt"
+  "post_has_failed": "Post is mislukt",
+  "choose_file": "Kies bestand",
+  "uploading": "Uploaden",
+  "invalid_url_alert": "De opgegeven link is geen geldige URL.",
+  "empty_comment_alert": "Kan geen lege opmerking plaatsen."
 }

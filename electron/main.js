@@ -1,15 +1,21 @@
 import './log.js';
-import { app, BrowserWindow, Menu, MenuItem, Tray, screen as electronScreen, shell, dialog, nativeTheme, ipcMain } from 'electron';
+import { app, BrowserWindow, Menu, MenuItem, Tray, shell, dialog, nativeTheme, ipcMain } from 'electron';
 import isDev from 'electron-is-dev';
 import fs from 'fs';
 import path from 'path';
+import { fileURLToPath } from 'url';
 import EnvPaths from 'env-paths';
 import startIpfs from './start-ipfs.js';
 import './start-plebbit-rpc.js';
-import { URL, fileURLToPath } from 'node:url';
+import { URL } from 'node:url';
 import contextMenu from 'electron-context-menu';
 import packageJson from '../package.json' with { type: 'json' };
-const dirname = path.join(path.dirname(fileURLToPath(import.meta.url)));
+import FormData from 'form-data';
+import fetch from 'node-fetch';
+import { createReadStream } from 'fs';
+
+const __filename = fileURLToPath(import.meta.url);
+const dirname = path.dirname(__filename);
 
 let startIpfsError;
 startIpfs.onError = (error) => {
@@ -78,7 +84,8 @@ const createMainWindow = () => {
       nodeIntegration: false,
       contextIsolation: true,
       devTools: true, // TODO: change to isDev when no bugs left
-      preload: path.join(dirname, 'preload.js'),
+      preload: path.join(dirname, 'preload.mjs'),
+      sandbox: false, // Required for ESM preload scripts
     },
   });
 
@@ -314,5 +321,119 @@ app.whenReady().then(() => {
 app.on('window-all-closed', () => {
   if (process.platform !== 'darwin') {
     app.quit();
+  }
+});
+
+// Setup FileUploader plugin
+ipcMain.handle('plugin:file-uploader:pickAndUploadMedia', async (event) => {
+  try {
+    const mainWindow = BrowserWindow.fromWebContents(event.sender);
+    const result = await dialog.showOpenDialog(mainWindow, {
+      properties: ['openFile'],
+      filters: [{ name: 'Images & Videos', extensions: ['jpg', 'jpeg', 'png', 'gif', 'mp4', 'webm'] }],
+    });
+
+    if (result.canceled || result.filePaths.length === 0) {
+      throw new Error('File selection cancelled');
+    }
+
+    const filePath = result.filePaths[0];
+    const fileName = path.basename(filePath);
+
+    // Create form data for upload
+    const formData = new FormData();
+    formData.append('reqtype', 'fileupload');
+    formData.append('fileToUpload', createReadStream(filePath));
+
+    // Upload to catbox.moe
+    const response = await fetch('https://catbox.moe/user/api.php', {
+      method: 'POST',
+      body: formData,
+    });
+
+    if (!response.ok) {
+      throw new Error(`Upload failed with status ${response.status}`);
+    }
+
+    const url = await response.text();
+    return { url, fileName };
+  } catch (error) {
+    console.error('FileUploader error:', error);
+    throw error;
+  }
+});
+
+ipcMain.handle('plugin:file-uploader:uploadMedia', async (event, fileData) => {
+  try {
+    console.log('uploadMedia handler called with data:', typeof fileData);
+
+    // Create form data for upload
+    const formData = new FormData();
+    formData.append('reqtype', 'fileupload');
+
+    // Handle different types of inputs
+    if (fileData.fileData && fileData.fileName) {
+      // Convert base64 to buffer
+      const buffer = Buffer.from(fileData.fileData, 'base64');
+      formData.append('fileToUpload', buffer, fileData.fileName);
+    } else {
+      throw new Error('Invalid file data');
+    }
+
+    // Upload to catbox.moe
+    const response = await fetch('https://catbox.moe/user/api.php', {
+      method: 'POST',
+      body: formData,
+    });
+
+    if (!response.ok) {
+      throw new Error(`Upload failed with status ${response.status}`);
+    }
+
+    const url = await response.text();
+    return { url, fileName: fileData.fileName || 'uploaded-file' };
+  } catch (error) {
+    console.error('FileUploader uploadMedia error:', error);
+    throw error;
+  }
+});
+
+// Add the pickMedia handler
+ipcMain.handle('plugin:file-uploader:pickMedia', async (event) => {
+  try {
+    const mainWindow = BrowserWindow.fromWebContents(event.sender);
+    const result = await dialog.showOpenDialog(mainWindow, {
+      properties: ['openFile'],
+      filters: [{ name: 'Images & Videos', extensions: ['jpg', 'jpeg', 'png', 'gif', 'mp4', 'webm'] }],
+    });
+
+    if (result.canceled || result.filePaths.length === 0) {
+      throw new Error('File selection cancelled');
+    }
+
+    const filePath = result.filePaths[0];
+    const fileName = path.basename(filePath);
+
+    // Read the file as base64
+    const fileBuffer = fs.readFileSync(filePath);
+    const base64Data = fileBuffer.toString('base64');
+
+    // Determine mime type from extension
+    const ext = path.extname(fileName).toLowerCase();
+    let mimeType = 'application/octet-stream';
+    if (ext === '.jpg' || ext === '.jpeg') mimeType = 'image/jpeg';
+    else if (ext === '.png') mimeType = 'image/png';
+    else if (ext === '.gif') mimeType = 'image/gif';
+    else if (ext === '.mp4') mimeType = 'video/mp4';
+    else if (ext === '.webm') mimeType = 'video/webm';
+
+    return {
+      data: base64Data,
+      fileName,
+      mimeType,
+    };
+  } catch (error) {
+    console.error('FileUploader pickMedia error:', error);
+    throw error;
   }
 });

@@ -363,5 +363,9 @@
   "loading_feed": "تحميل الخلاصة",
   "loading_posts": "جاري تحميل المشاركات",
   "post_is_pending": "المنشور قيد الانتظار",
-  "post_has_failed": "فشل النشر"
+  "post_has_failed": "فشل النشر",
+  "choose_file": "اختر ملف",
+  "uploading": "تحميل",
+  "invalid_url_alert": "الرابط المقدم ليس عنوان URL صالحًا.",
+  "empty_comment_alert": "لا يمكن نشر تعليق فارغ."
 }

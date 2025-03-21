@@ -34,7 +34,7 @@ const CreateAccountButton = () => {
     <Trans
       i18nKey='create_new_account'
       components={{
-        1: <button onClick={handleCreateAccount} />,
+        1: <button key='createNewAccountButton' onClick={handleCreateAccount} />,
       }}
     />
   );
@@ -106,7 +106,7 @@ const ImportAccountButton = () => {
     <Trans
       i18nKey='import_account_backup'
       components={{
-        1: <button onClick={handleImportAccount} />,
+        1: <button key='importAccountButton' onClick={handleImportAccount} />,
       }}
     />
   );
@@ -153,7 +153,7 @@ const ExportAccountButton = () => {
     <Trans
       i18nKey='export_account_backup'
       components={{
-        1: <button onClick={handleExportAccount} />,
+        1: <button key='exportAccountButton' onClick={handleExportAccount} />,
       }}
     />
   );
@@ -225,8 +225,8 @@ const AccountSettings = () => {
             <Trans
               i18nKey='save_reset_changes'
               components={{
-                1: <button onClick={saveAccount} />,
-                2: <button onClick={() => setText(accountJson)} />,
+                1: <button key='saveAccountButton' onClick={saveAccount} />,
+                2: <button key='resetAccountButton' onClick={() => setText(accountJson)} />,
               }}
             />
           </div>
@@ -240,7 +240,7 @@ const AccountSettings = () => {
             <Trans
               i18nKey='delete_this_account'
               components={{
-                1: <button onClick={() => _deleteAccount(account?.name)} />,
+                1: <button key='deleteAccountButton' onClick={() => _deleteAccount(account?.name)} />,
               }}
             />
           </div>

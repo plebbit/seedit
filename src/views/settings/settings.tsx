@@ -78,7 +78,10 @@ const CheckForUpdates = () => {
 
   return (
     <div className={styles.checkForUpdates}>
-      <Trans i18nKey='check_for_updates' components={{ 1: <button className={styles.checkForUpdatesButton} onClick={checkForUpdates} disabled={loading} /> }} />
+      <Trans
+        i18nKey='check_for_updates'
+        components={{ 1: <button className={styles.checkForUpdatesButton} key='checkForUpdatesButton' onClick={checkForUpdates} disabled={loading} /> }}
+      />
     </div>
   );
 };

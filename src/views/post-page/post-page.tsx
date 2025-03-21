@@ -18,6 +18,7 @@ import _ from 'lodash';
 import Over18Warning from '../../components/over-18-warning';
 import { useIsBroadlyNsfwSubplebbit } from '../../hooks/use-is-broadly-nsfw-subplebbit';
 import useContentOptionsStore from '../../stores/use-content-options-store';
+import useFeedResetStore from '../../stores/use-feed-reset-store';
 
 type SortDropdownProps = {
   sortBy: string;
@@ -253,11 +254,13 @@ const PostPage = () => {
   const pendingPost = accountComment;
 
   // in pending post route, redirect to post page route when post is published (cid is defined)
+  const resetFeed = useFeedResetStore((state) => state.reset);
   useEffect(() => {
     if (pendingPost?.cid && pendingPost?.subplebbitAddress) {
+      resetFeed && resetFeed();
       navigate(`/p/${pendingPost?.subplebbitAddress}/c/${pendingPost?.cid}`, { replace: true });
     }
-  }, [pendingPost?.cid, pendingPost?.subplebbitAddress, navigate]);
+  }, [pendingPost?.cid, pendingPost?.subplebbitAddress, navigate, resetFeed]);
 
   const { commentCid, subplebbitAddress } = params;
   let post = useComment({ commentCid });

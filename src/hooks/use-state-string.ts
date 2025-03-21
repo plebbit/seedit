@@ -59,12 +59,7 @@ const useStateString = (commentOrSubplebbit: CommentOrSubplebbit): string | unde
         stateString = commentOrSubplebbit.updatingState;
       }
       if (stateString) {
-        stateString = stateString
-          .replaceAll('-', ' ')
-          .replace('ipfs', 'post')
-          .replace('ipns', 'subplebbit')
-          .replace('fetching', 'downloading')
-          .replace('subplebbit subplebbit', 'community');
+        stateString = stateString.replaceAll('-', ' ').replace('subplebbit ipns', 'community').replace('fetching', 'downloading');
       }
     }
 
@@ -126,13 +121,15 @@ export const useFeedStateString = (subplebbitAddresses?: string[]): string | und
       if (clientHosts.size) {
         stateString += 'downloading ';
         if (states['fetching-ipns']) {
-          stateString += `${states['fetching-ipns'].subplebbitAddresses.length} communities`;
+          stateString += `${states['fetching-ipns'].subplebbitAddresses.length} ${
+            states['fetching-ipns'].subplebbitAddresses.length === 1 ? 'community' : 'communities'
+          }`;
         }
         if (states['fetching-ipfs']) {
           if (states['fetching-ipns']) {
             stateString += ', ';
           }
-          stateString += `${states['fetching-ipfs'].subplebbitAddresses.length} posts`;
+          stateString += `${states['fetching-ipfs'].subplebbitAddresses.length} ${states['fetching-ipfs'].subplebbitAddresses.length === 1 ? 'post' : 'posts'}`;
         }
         if (pagesStatesSubplebbitAddresses.size) {
           if (states['fetching-ipns'] || states['fetching-ipfs']) {

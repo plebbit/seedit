@@ -363,5 +363,9 @@
   "loading_feed": "Đang tải feed",
   "loading_posts": "Đang tải bài viết",
   "post_is_pending": "Bài đăng đang chờ",
-  "post_has_failed": "Bài viết đã thất bại"
+  "post_has_failed": "Bài viết đã thất bại",
+  "choose_file": "Chọn tệp",
+  "uploading": "Đang tải lên",
+  "invalid_url_alert": "Liên kết được cung cấp không phải là một URL hợp lệ.",
+  "empty_comment_alert": "Không thể đăng bình luận trống."
 }

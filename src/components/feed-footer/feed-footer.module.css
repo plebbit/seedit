@@ -2,11 +2,15 @@
   padding-left: 5px;
   text-transform: lowercase;
   padding-bottom: 40px;
-}
-
-.footer {
   padding-top: 5px;
   font-size: 12px;
+  position: relative;
+}
+
+@media (min-width: 640px) {
+  .footer {
+    margin-right: 310px;
+  }
 }
 
 .stateString, .morePostsSuggestion {

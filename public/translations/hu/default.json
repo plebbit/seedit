@@ -363,5 +363,9 @@
   "loading_feed": "Betöltés a hírcsatornára",
   "loading_posts": "Bejegyzések betöltése",
   "post_is_pending": "A bejegyzés függőben van",
-  "post_has_failed": "A bejegyzés meghiúsult"
+  "post_has_failed": "A bejegyzés meghiúsult",
+  "choose_file": "Válassza ki a fájlt",
+  "uploading": "Feltöltés",
+  "invalid_url_alert": "A megadott hivatkozás nem érvényes URL.",
+  "empty_comment_alert": "Üres hozzászólást nem lehet közzétenni."
 }

@@ -363,5 +363,9 @@
   "loading_feed": "Carregando feed",
   "loading_posts": "Carregando postagens",
   "post_is_pending": "Postagem pendente",
-  "post_has_failed": "A postagem falhou"
+  "post_has_failed": "A postagem falhou",
+  "choose_file": "Escolher arquivo",
+  "uploading": "Carregando",
+  "invalid_url_alert": "O link fornecido não é uma URL válida.",
+  "empty_comment_alert": "Não é possível postar um comentário vazio."
 }

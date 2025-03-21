@@ -10,6 +10,7 @@ type ReplyState = {
   spoiler: { [parentCid: string]: boolean | undefined };
   nsfw: { [parentCid: string]: boolean | undefined };
   publishCommentOptions: PublishCommentOptions;
+  publishReplyOptions: PublishCommentOptions;
   setReplyStore: (comment: Comment) => void;
   resetReplyStore: (parentCid: string) => void;
 };
@@ -22,6 +23,7 @@ const usePublishReplyStore = create<ReplyState>((set) => ({
   spoiler: {},
   nsfw: {},
   publishCommentOptions: {},
+  publishReplyOptions: {},
   setReplyStore: (comment: Comment) =>
     set((state) => {
       const { subplebbitAddress, parentCid, content, link, spoiler, nsfw } = comment;
@@ -48,6 +50,7 @@ const usePublishReplyStore = create<ReplyState>((set) => ({
         spoiler: { ...state.spoiler, [parentCid]: spoiler },
         nsfw: { ...state.nsfw, [parentCid]: nsfw },
         publishCommentOptions: { ...state.publishCommentOptions, [parentCid]: publishCommentOptions },
+        publishReplyOptions: { ...state.publishReplyOptions, [parentCid]: publishCommentOptions },
       };
     }),
 
@@ -58,6 +61,7 @@ const usePublishReplyStore = create<ReplyState>((set) => ({
       spoiler: { ...state.spoiler, [parentCid]: undefined },
       nsfw: { ...state.nsfw, [parentCid]: undefined },
       publishCommentOptions: { ...state.publishCommentOptions, [parentCid]: undefined },
+      publishReplyOptions: { ...state.publishReplyOptions, [parentCid]: undefined },
     })),
 }));
 

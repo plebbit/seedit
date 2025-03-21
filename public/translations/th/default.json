@@ -363,5 +363,9 @@
   "loading_feed": "กำลังโหลดฟีด",
   "loading_posts": "กำลังโหลดโพสต์",
   "post_is_pending": "โพสต์รอดำเนินการ",
-  "post_has_failed": "โพสต์ล้มเหลว"
+  "post_has_failed": "โพสต์ล้มเหลว",
+  "choose_file": "เลือกไฟล์",
+  "uploading": "กำลังอัปโหลด",
+  "invalid_url_alert": "ลิงก์ที่ให้ไม่ใช่ URL ที่ถูกต้อง",
+  "empty_comment_alert": "ไม่สามารถโพสต์ความคิดเห็นว่างเปล่าได้"
 }
