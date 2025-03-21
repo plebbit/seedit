@@ -14,7 +14,7 @@ const Tooltip = ({ content, children, showTooltip = true }: TooltipProps) => {
   const { refs, floatingStyles, context } = useFloating({
     open: isOpen,
     onOpenChange: setIsOpen,
-    placement: 'top',
+    placement: 'top-start',
     whileElementsMounted: autoUpdate,
     middleware: [offset(7), shift()],
   });

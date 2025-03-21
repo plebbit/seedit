@@ -41,7 +41,7 @@ const SpoilerText = ({ children }: { children: React.ReactNode }) => {
   return (
     <Tooltip
       children={
-        <span className={revealed ? 'spoilerTextRevealed' : 'spoilerText'} onClick={() => setRevealed(!revealed)}>
+        <span className={revealed ? 'spoilerTextRevealed' : 'spoilerText'} onClick={() => setRevealed(true)}>
           {children}
         </span>
       }
