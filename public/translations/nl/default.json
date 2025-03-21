@@ -367,5 +367,7 @@
   "choose_file": "Kies bestand",
   "uploading": "Uploaden",
   "invalid_url_alert": "De opgegeven link is geen geldige URL.",
-  "empty_comment_alert": "Kan geen lege opmerking plaatsen."
+  "empty_comment_alert": "Kan geen lege opmerking plaatsen.",
+  "no_subscriptions_message": "<1>{{accountName}}, dit is je thuis op Seedit</1><2>Wanneer je een gemeenschap vindt die je leuk vindt, <3>meld je aan met de <4></4></3></2>",
+  "find_communities": "vind gemeenschappen op p/all"
 }

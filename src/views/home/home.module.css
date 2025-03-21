@@ -78,6 +78,7 @@
   white-space: nowrap;
   display: inline-flex;
   align-items: center;
+  font-weight: 700;
 }
 
 .squash {
@@ -93,7 +94,7 @@
   }
 }
 
-.squash img {
+.joinWithThe img {
   display: inline;
   margin: 0;
   vertical-align: bottom;

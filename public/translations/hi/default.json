@@ -367,5 +367,7 @@
   "choose_file": "फाइल चुनें",
   "uploading": "अपलोड हो रहा है",
   "invalid_url_alert": "प्रदत्त लिंक एक वैध URL नहीं है।",
-  "empty_comment_alert": "खाली टिप्पणी पोस्ट नहीं कर सकते।"
+  "empty_comment_alert": "खाली टिप्पणी पोस्ट नहीं कर सकते।",
+  "no_subscriptions_message": "<1>{{accountName}}, यह Seedit पर आपका घर है</1><2>जब आप कोई समुदाय पाते हैं जो आपको पसंद आए, <3>उससे जुड़ें <4></4></3></2>",
+  "find_communities": "p/all पर समुदाय खोजें"
 }

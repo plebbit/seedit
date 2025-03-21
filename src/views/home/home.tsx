@@ -2,7 +2,7 @@ import { useEffect, useRef, useState, useMemo } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { Virtuoso, VirtuosoHandle, StateSnapshot } from 'react-virtuoso';
 import { useAccount, useFeed } from '@plebbit/plebbit-react-hooks';
-import { useTranslation } from 'react-i18next';
+import { Trans, useTranslation } from 'react-i18next';
 import styles from './home.module.css';
 import FeedFooter from '../../components/feed-footer';
 import LoadingEllipsis from '../../components/loading-ellipsis';
@@ -132,17 +132,19 @@ const Home = () => {
         ) : subscriptionState === 'noSubscriptions' ? (
           <div className={styles.noSubscriptions}>
             <br />
-            <h1>{account?.author.displayName || account?.author.shortAddress}, this is your home on Seedit</h1>
-            <div className={styles.squash}>
-              When you find a community that you like,{' '}
-              <span className={styles.joinWithThe}>
-                <strong>join with the</strong>
-                <img src={'/assets/buttons/all_feed_subscribe.png'} alt='' />
-              </span>
-            </div>
+            <Trans
+              i18nKey='no_subscriptions_message'
+              values={{ accountName: account?.author.displayName || account?.author.shortAddress }}
+              components={{
+                1: <h1 />,
+                2: <div className={styles.squash} />,
+                3: <span className={styles.joinWithThe} />,
+                4: <img src={'/assets/buttons/all_feed_subscribe.png'} alt='' />,
+              }}
+            />
             <div className={styles.fakePost} />
             <div className={styles.findCommunities}>
-              <Link to='/p/all/hot/1m'>find communities on p/all</Link>
+              <Link to='/p/all/hot/1m'>{t('find_communities')}</Link>
             </div>
           </div>
         ) : (
