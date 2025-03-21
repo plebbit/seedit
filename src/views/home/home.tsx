@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, useMemo } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { Virtuoso, VirtuosoHandle, StateSnapshot } from 'react-virtuoso';
 import { useAccount, useFeed } from '@plebbit/plebbit-react-hooks';
@@ -20,7 +20,7 @@ type SubscriptionState = 'loading' | 'noSubscriptions' | 'hasSubscriptions';
 const Home = () => {
   const { t } = useTranslation();
   const account = useAccount();
-  const subplebbitAddresses = useAccount()?.subscriptions || [];
+  const subplebbitAddresses = useMemo(() => account?.subscriptions || [], [account?.subscriptions]);
   const initialLoadCompleteRef = useRef(false);
   const [subscriptionState, setSubscriptionState] = useState<SubscriptionState>('loading');
   const [hasCheckedSubscriptions, setHasCheckedSubscriptions] = useState(false);
@@ -82,7 +82,7 @@ const Home = () => {
     }, 100);
 
     return () => clearTimeout(timer);
-  }, []);
+  }, [isCheckingSubscriptions, subplebbitAddresses]);
 
   useEffect(() => {
     if (isCheckingSubscriptions) {
@@ -90,8 +90,11 @@ const Home = () => {
       return;
     }
 
-    if (hasCheckedSubscriptions || initialLoadCompleteRef.current) {
+    if (initialLoadCompleteRef.current) {
       setHasCheckedSubscriptions(true);
+    }
+
+    if (hasCheckedSubscriptions || initialLoadCompleteRef.current) {
       setSubscriptionState(subplebbitAddresses.length > 0 ? 'hasSubscriptions' : 'noSubscriptions');
     }
   }, [isCheckingSubscriptions, subplebbitAddresses, hasCheckedSubscriptions]);
