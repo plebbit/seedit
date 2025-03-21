@@ -78,9 +78,9 @@ export const FormattingHelpTable = () => {
             </td>
           </tr>
           <tr>
-            <td>{`<spoiler>${t('spoiler')}</spoiler>`}</td>
+            <td>{`<spoiler>plebbit<spoiler>`}</td>
             <td>
-              <Markdown content={`<spoiler>${t('spoiler')}</spoiler>`} />
+              <Markdown content={`<spoiler>plebbit<spoiler>`} />
             </td>
           </tr>
         </tbody>
