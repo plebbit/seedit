@@ -14,6 +14,7 @@ import { useIsBroadlyNsfwSubplebbit } from '../../hooks/use-is-broadly-nsfw-subp
 import useContentOptionsStore from '../../stores/use-content-options-store';
 import Over18Warning from '../../components/over-18-warning';
 import { sortTypes } from '../../constants/sortTypes';
+import useFeedResetStore from '../../stores/use-feed-reset-store';
 
 const lastVirtuosoStates: { [key: string]: StateSnapshot } = {};
 
@@ -193,6 +194,21 @@ const Subplebbit = () => {
       }),
     [accountComments, subplebbitAddress, feed],
   );
+
+  // reset the feed when a new account comment is published, so it shows instantly in the feed
+  const setResetFunction = useFeedResetStore((state) => state.setResetFunction);
+  useEffect(() => {
+    setResetFunction(reset);
+  }, [reset, setResetFunction, feed]);
+
+  const resetTriggeredRef = useRef(false);
+
+  useEffect(() => {
+    if (filteredComments.length > 0 && !resetTriggeredRef.current) {
+      reset();
+      resetTriggeredRef.current = true;
+    }
+  }, [filteredComments, reset]);
 
   // show newest account comment at the top of the feed but after pinned posts
   const combinedFeed = useMemo(() => {
