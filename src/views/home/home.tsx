@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { Virtuoso, VirtuosoHandle, StateSnapshot } from 'react-virtuoso';
 import { useAccount, useFeed } from '@plebbit/plebbit-react-hooks';
@@ -15,11 +15,15 @@ import { sortTypes } from '../../constants/sortTypes';
 
 const lastVirtuosoStates: { [key: string]: StateSnapshot } = {};
 
+type SubscriptionState = 'loading' | 'noSubscriptions' | 'hasSubscriptions';
+
 const Home = () => {
   const { t } = useTranslation();
   const account = useAccount();
   const subplebbitAddresses = useAccount()?.subscriptions || [];
   const initialLoadCompleteRef = useRef(false);
+  const [subscriptionState, setSubscriptionState] = useState<SubscriptionState>('loading');
+  const [hasCheckedSubscriptions, setHasCheckedSubscriptions] = useState(false);
 
   useRedirectToDefaultSort();
   const { isCheckingSubscriptions } = useAutoSubscribe();
@@ -70,10 +74,33 @@ const Home = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
       initialLoadCompleteRef.current = true;
-    }, 500);
+
+      if (!isCheckingSubscriptions) {
+        setHasCheckedSubscriptions(true);
+        setSubscriptionState(subplebbitAddresses.length > 0 ? 'hasSubscriptions' : 'noSubscriptions');
+      }
+    }, 100);
 
     return () => clearTimeout(timer);
   }, []);
+
+  useEffect(() => {
+    if (isCheckingSubscriptions) {
+      setSubscriptionState('loading');
+      return;
+    }
+
+    if (hasCheckedSubscriptions || initialLoadCompleteRef.current) {
+      setHasCheckedSubscriptions(true);
+      setSubscriptionState(subplebbitAddresses.length > 0 ? 'hasSubscriptions' : 'noSubscriptions');
+    }
+  }, [isCheckingSubscriptions, subplebbitAddresses, hasCheckedSubscriptions]);
+
+  useEffect(() => {
+    if (feed?.length > 0 && subscriptionState === 'loading') {
+      setSubscriptionState('hasSubscriptions');
+    }
+  }, [feed, subscriptionState]);
 
   const footerProps = {
     feedLength: feed?.length,
@@ -87,22 +114,19 @@ const Home = () => {
     reset,
   };
 
-  const showLoading = isCheckingSubscriptions || (!initialLoadCompleteRef.current && subplebbitAddresses.length === 0);
-  const showNoSubscriptions = initialLoadCompleteRef.current && !isCheckingSubscriptions && subplebbitAddresses.length === 0;
-
   return (
     <div>
       <div className={styles.content}>
         <div className={`${styles.sidebar}`}>
           <Sidebar />
         </div>
-        {showLoading ? (
+        {subscriptionState === 'loading' && (!feed || feed.length === 0) ? (
           <div className={styles.feed}>
             <div className={styles.footer}>
               <LoadingEllipsis string={t('loading_feed')} />
             </div>
           </div>
-        ) : showNoSubscriptions ? (
+        ) : subscriptionState === 'noSubscriptions' ? (
           <div className={styles.noSubscriptions}>
             <br />
             <h1>{account?.author.displayName || account?.author.shortAddress}, this is your home on Seedit</h1>
