@@ -52,8 +52,13 @@
 .noSubscriptions {
   text-align: center;
   font-size: 12px;
-  margin-right: 310px;
   color: var(--text);
+}
+
+@media (min-width: 640px) {
+  .noSubscriptions {
+    margin-right: 310px;
+  }
 }
 
 .noSubscriptions h1 {
@@ -62,11 +67,30 @@
   margin: 10px 0;
 }
 
+@media (max-width: 639px) {
+  .noSubscriptions h1 {
+    font-size: 20px;
+    padding: 0 15px;
+  }
+}
+
+.joinWithThe {
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+}
+
 .squash {
   margin: 1em auto;
   max-width: 580px;
   padding: 0 75px 0 60px;
   box-sizing: border-box;
+}
+
+@media (max-width: 639px) {
+  .squash {
+    padding: 0 20px;
+  }
 }
 
 .squash img {
@@ -90,6 +114,14 @@
   height: 200px;
   -webkit-mask-image: linear-gradient(to bottom, black 20%, transparent 100%);
   mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
+}
+
+@media (max-width: 639px) {
+  .fakePost {
+    width: 100%;
+    max-width: 500px;
+    height: 150px;
+  }
 }
 
 .findCommunities a {

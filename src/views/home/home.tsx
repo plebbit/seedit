@@ -134,8 +134,11 @@ const Home = () => {
             <br />
             <h1>{account?.author.displayName || account?.author.shortAddress}, this is your home on Seedit</h1>
             <div className={styles.squash}>
-              When you find a community that you like, <strong>join with the</strong>
-              <img src={'/assets/buttons/all_feed_subscribe.png'} alt='' />
+              When you find a community that you like,{' '}
+              <span className={styles.joinWithThe}>
+                <strong>join with the</strong>
+                <img src={'/assets/buttons/all_feed_subscribe.png'} alt='' />
+              </span>
             </div>
             <div className={styles.fakePost} />
             <div className={styles.findCommunities}>
