@@ -1,1 +1,1 @@
-export const sortTypes = ['hot', 'new', 'active', 'controversial', 'topAll'];
+export const sortTypes = ['hot', 'new', 'active', 'controversialAll', 'topAll'];

@@ -156,7 +156,7 @@ const Footer = ({
 const Subplebbit = () => {
   const params = useParams();
   const navigate = useNavigate();
-  const subplebbitAddress = params?.subplebbitAddress;
+  const subplebbitAddress = params?.subplebbitAddress || '';
   const subplebbit = useSubplebbit({ subplebbitAddress });
   const { createdAt, error, shortAddress, started, title, updatedAt, settings } = subplebbit || {};
   const isOnline = updatedAt && updatedAt > Date.now() / 1000 - 60 * 60;
@@ -223,7 +223,7 @@ const Subplebbit = () => {
   // virtuoso footer to display feed loading state, error, unblock button and "newer posts available" button
   const footerProps: FooterProps = {
     subplebbitAddresses,
-    subplebbitAddress: subplebbitAddress || '',
+    subplebbitAddress,
     feedLength: feed.length || 0,
     isOnline,
     started,
