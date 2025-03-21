@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { PublishCommentEditOptions, useEditedComment, usePublishCommentEdit } from '@plebbit/plebbit-react-hooks';
-import useSubplebbitsPagesStore from '@plebbit/plebbit-react-hooks/dist/stores/subplebbits-pages';
+import { PublishCommentEditOptions, useComment, useEditedComment, usePublishCommentEdit } from '@plebbit/plebbit-react-hooks';
 import { FormattingHelpTable } from '../reply-form';
 import styles from '../reply-form/reply-form.module.css';
 import { alertChallengeVerificationFailed } from '../../lib/utils/challenge-utils';
@@ -25,7 +24,7 @@ const CommentEditForm = ({ commentCid, hideCommentEditForm }: CommentEditFormPro
   const textRef = useRef<HTMLTextAreaElement>(null);
 
   let post: any;
-  const comment = useSubplebbitsPagesStore((state) => state.comments[commentCid]);
+  const comment = useComment({ commentCid });
 
   const { editedComment } = useEditedComment({ comment });
   if (editedComment) {
