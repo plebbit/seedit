@@ -123,7 +123,7 @@ const Home = () => {
         <div className={`${styles.sidebar}`}>
           <Sidebar />
         </div>
-        {subscriptionState === 'loading' && (!feed || feed.length === 0) ? (
+        {subscriptionState === 'loading' ? (
           <div className={styles.feed}>
             <div className={styles.footer}>
               <LoadingEllipsis string={t('loading_feed')} />
