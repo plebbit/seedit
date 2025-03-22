@@ -237,14 +237,14 @@ const Sidebar = ({ comment, isSubCreatedButNotYetPublished, settings, subplebbit
     // creating a community only works if the user is running a full node
     if (isElectron || isConnectedToRpc) {
       navigate('/communities/create');
-    } else {
-      alert(
-        t('create_community_not_available', {
-          desktopLink: 'https://github.com/plebbit/seedit/releases/latest',
-          cliLink: 'https://github.com/plebbit/plebbit-cli',
-          interpolation: { escapeValue: false },
-        }),
-      );
+    } else if (
+      window.confirm('You can create your own community with the Seedit desktop app, available for Windows, Mac and Linux.\n\nGo to download links page on GitHub?')
+    ) {
+      const link = document.createElement('a');
+      link.href = 'https://github.com/plebbit/seedit/releases/latest';
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
+      link.click();
     }
   };
 
