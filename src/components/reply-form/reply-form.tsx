@@ -60,6 +60,26 @@ export const FormattingHelpTable = () => {
             </td>
           </tr>
           <tr>
+            <td>
+              Lines starting with four spaces <br />
+              are treated like code:
+              <br />
+              <br />
+              <span className={styles.spaces}>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+              {'if 1 * 2 < 3:'}
+              <br />
+              <span className={styles.spaces}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+              print "hello, world!"
+            </td>
+            <td>
+              Lines starting with four spaces <br />
+              are treated like code:
+              <br />
+              <br />
+              <Markdown content={`    if 1 * 2 < 3:\n        print "hello, world!"`} />
+            </td>
+          </tr>
+          <tr>
             <td>~~strikethrough~~</td>
             <td>
               <Markdown content='~~strikethrough~~' />

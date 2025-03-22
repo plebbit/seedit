@@ -33,3 +33,20 @@
 .markdown p {
   margin-bottom: 5px;
 }
+
+.markdown pre, .markdown code:not(pre code) {
+  border: 1px solid var(--code-border);
+  background-color: var(--code-background);
+  border-radius: 2px;
+  margin-top: 5px;
+  padding: 0 9px;
+}
+
+.markdown code:not(pre code) {
+  display: inline-block;
+}
+
+.markdown pre {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
