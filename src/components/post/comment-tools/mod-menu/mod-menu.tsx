@@ -166,7 +166,19 @@ const ModMenu = ({ cid, isCommentAuthorMod }: ModMenuProps) => {
                     <Trans
                       i18nKey='ban_user_for'
                       shouldUnescape={true}
-                      components={{ 1: <input className={styles.banInput} onChange={onBanDurationChange} type='number' min={1} max={100} defaultValue={banDuration} /> }}
+                      components={{
+                        1: (
+                          <input
+                            key='ban_user_for_input'
+                            className={styles.banInput}
+                            onChange={onBanDurationChange}
+                            type='number'
+                            min={1}
+                            max={100}
+                            defaultValue={banDuration}
+                          />
+                        ),
+                      }}
                     />
                   </label>
                 </div>

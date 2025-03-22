@@ -112,6 +112,7 @@ const Footer = ({
           components={{
             1: (
               <span
+                key='newer_posts_available_link'
                 className={styles.link}
                 onClick={() => {
                   window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
@@ -132,7 +133,7 @@ const Footer = ({
           i18nKey='show_all_instead'
           values={{ timeFilterName }}
           components={{
-            1: <Link to={`/p/${subplebbitAddress}`} />,
+            1: <Link key='show_all_instead_link' to={`/p/${subplebbitAddress}`} />,
           }}
         />
       </div>

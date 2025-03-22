@@ -136,10 +136,10 @@ const Home = () => {
               i18nKey='no_subscriptions_message'
               values={{ accountName: account?.author.displayName || account?.author.shortAddress }}
               components={{
-                1: <h1 />,
-                2: <div className={styles.squash} />,
-                3: <span className={styles.joinWithThe} />,
-                4: <img src={'/assets/buttons/all_feed_subscribe.png'} alt='' />,
+                1: <h1 key='no_subscriptions_message_1' />,
+                2: <div className={styles.squash} key='no_subscriptions_message_2' />,
+                3: <span className={styles.joinWithThe} key='no_subscriptions_message_3' />,
+                4: <img src={'/assets/buttons/all_feed_subscribe.png'} alt='' key='no_subscriptions_message_4' />,
               }}
             />
             <div className={styles.fakePost} />
