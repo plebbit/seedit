@@ -45,12 +45,13 @@ export const useAutoSubscribe = () => {
             subscriptions: autoSubscribeAddresses,
           });
           localStorage.setItem(storageKey, 'true');
-          processedAccounts.add(accountAddress);
         } catch (error) {
           console.error('Auto-subscribe error:', error);
         }
-        removeCheckingAccount(accountAddress);
       }
+
+      processedAccounts.add(accountAddress);
+      removeCheckingAccount(accountAddress);
     };
 
     processAutoSubscribe();
@@ -60,5 +61,7 @@ export const useAutoSubscribe = () => {
     };
   }, [account, accountAddress, defaultSubplebbits, addCheckingAccount, removeCheckingAccount]);
 
-  return { isCheckingSubscriptions: accountAddress ? isCheckingAccount(accountAddress) : true };
+  return {
+    isCheckingSubscriptions: !accountAddress || isCheckingAccount(accountAddress),
+  };
 };

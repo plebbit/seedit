@@ -21,16 +21,13 @@ const Home = () => {
   const { t } = useTranslation();
   const account = useAccount();
   const subplebbitAddresses = useMemo(() => account?.subscriptions || [], [account?.subscriptions]);
-  const initialLoadCompleteRef = useRef(false);
-  const [subscriptionState, setSubscriptionState] = useState<SubscriptionState>('loading');
-  const [hasCheckedSubscriptions, setHasCheckedSubscriptions] = useState(false);
-
-  useRedirectToDefaultSort();
   const { isCheckingSubscriptions } = useAutoSubscribe();
 
   const params = useParams<{ sortType?: string; timeFilterName?: string }>();
   const sortType = sortTypes.includes(params?.sortType || '') ? params?.sortType : sortTypes[0];
   const navigate = useNavigate();
+
+  useRedirectToDefaultSort();
 
   useEffect(() => {
     if (params?.sortType && !sortTypes.includes(params.sortType)) {
@@ -71,40 +68,6 @@ const Home = () => {
     document.title = `Seedit`;
   }, [t]);
 
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      initialLoadCompleteRef.current = true;
-
-      if (!isCheckingSubscriptions) {
-        setHasCheckedSubscriptions(true);
-        setSubscriptionState(subplebbitAddresses.length > 0 ? 'hasSubscriptions' : 'noSubscriptions');
-      }
-    }, 100);
-
-    return () => clearTimeout(timer);
-  }, [isCheckingSubscriptions, subplebbitAddresses]);
-
-  useEffect(() => {
-    if (isCheckingSubscriptions) {
-      setSubscriptionState('loading');
-      return;
-    }
-
-    if (initialLoadCompleteRef.current) {
-      setHasCheckedSubscriptions(true);
-    }
-
-    if (hasCheckedSubscriptions || initialLoadCompleteRef.current) {
-      setSubscriptionState(subplebbitAddresses.length > 0 ? 'hasSubscriptions' : 'noSubscriptions');
-    }
-  }, [isCheckingSubscriptions, subplebbitAddresses, hasCheckedSubscriptions]);
-
-  useEffect(() => {
-    if (feed?.length > 0 && subscriptionState === 'loading') {
-      setSubscriptionState('hasSubscriptions');
-    }
-  }, [feed, subscriptionState]);
-
   const footerProps = {
     feedLength: feed?.length,
     hasFeedLoaded: !!feed,
@@ -117,13 +80,39 @@ const Home = () => {
     reset,
   };
 
+  const [isInitialized, setIsInitialized] = useState(false);
+  const [subscriptionState, setSubscriptionState] = useState<SubscriptionState>('loading');
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      if (!isCheckingSubscriptions) {
+        setIsInitialized(true);
+      }
+    }, 1000);
+
+    return () => clearTimeout(timer);
+  }, [isCheckingSubscriptions]);
+
+  useEffect(() => {
+    if (!isInitialized || isCheckingSubscriptions) {
+      setSubscriptionState('loading');
+      return;
+    }
+
+    if (feed?.length > 0) {
+      setSubscriptionState('hasSubscriptions');
+    } else {
+      setSubscriptionState(subplebbitAddresses.length > 0 ? 'hasSubscriptions' : 'noSubscriptions');
+    }
+  }, [isInitialized, isCheckingSubscriptions, subplebbitAddresses, feed]);
+
   return (
     <div>
       <div className={styles.content}>
         <div className={`${styles.sidebar}`}>
           <Sidebar />
         </div>
-        {subscriptionState === 'loading' ? (
+        {subscriptionState === 'loading' || !isInitialized ? (
           <div className={styles.feed}>
             <div className={styles.footer}>
               <LoadingEllipsis string={t('loading_feed')} />
@@ -136,6 +125,7 @@ const Home = () => {
               i18nKey='no_subscriptions_message'
               values={{ accountName: account?.author.displayName || account?.author.shortAddress }}
               components={{
+                // eslint-disable-next-line jsx-a11y/heading-has-content
                 1: <h1 key='no_subscriptions_message_1' />,
                 2: <div className={styles.squash} key='no_subscriptions_message_2' />,
                 3: <span className={styles.joinWithThe} key='no_subscriptions_message_3' />,
