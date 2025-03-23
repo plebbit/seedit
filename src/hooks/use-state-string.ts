@@ -67,6 +67,13 @@ const useStateString = (commentOrSubplebbit: CommentOrSubplebbit): string | unde
       stateString = stateString.charAt(0).toUpperCase() + stateString.slice(1);
     }
 
+    if (stateString) {
+      stateString = stateString.replace(/ipns/gi, 'community');
+      if (stateString.includes('downloading')) {
+        stateString = stateString.replace(/IPFS/g, 'post');
+      }
+    }
+
     return stateString === '' ? undefined : stateString;
   }, [debouncedStates, commentOrSubplebbit]);
 };
