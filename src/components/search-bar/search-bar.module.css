@@ -55,24 +55,26 @@
   border-width: 1px;
   font-size: small;
   padding: 10px;
-  height: 22px;
+  height: 50px;
   overflow: hidden;
   z-index: 1;
   margin-top: 5px;
   margin-bottom: 12px;
   will-change: transform;
-  transition: transform 0.3s linear, visibility 0.3s linear;
+  transition: transform 0.3s linear, visibility 0.3s linear, height 0.3s linear;
   transform-origin: top;
 }
 
 .slideDown {
   transform: scaleY(1);
   visibility: visible;
+  height: 50px;
 }
 
 .slideUp {
   transform: scaleY(0);
   visibility: hidden;
+  height: 20px;
 }
 
 .infobar label {
