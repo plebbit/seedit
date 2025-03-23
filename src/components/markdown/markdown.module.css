@@ -40,6 +40,7 @@
   border-radius: 2px;
   margin-top: 5px;
   padding: 0 9px;
+  overflow: hidden;
 }
 
 .markdown code:not(pre code) {

@@ -257,9 +257,7 @@ const Sidebar = ({ comment, isSubCreatedButNotYetPublished, settings, subplebbit
 
   return (
     <div className={`${isMobile ? styles.mobileSidebar : styles.sidebar}`}>
-      <div className={styles.searchBarContainer}>
-        <SearchBar onExpandoChange={handleSearchBarExpandoChange} />
-      </div>
+      <SearchBar onExpandoChange={handleSearchBarExpandoChange} />
       <div
         className={styles.contentWrapper}
         style={{

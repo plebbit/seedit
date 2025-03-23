@@ -285,6 +285,30 @@ a {
 
 .footer {
   font: normal x-small verdana, arial, helvetica, sans-serif;
+  width: 100%;
+  max-width: 300px;
+  box-sizing: border-box;
+  background-color: var(--background);
+  margin-top: 15px;
+  margin-bottom: 20px;
+  overflow: hidden;
+}
+
+.footerLogo {
+  display: inline-block;
+  float: left;
+  margin-right: 10px;
+}
+
+.footerLogo img {
+  height: 45px;
+  width: auto;
+  display: block;
+}
+
+.footerLinks {
+  padding-top: 5px;
+  overflow: hidden;
 }
 
 .footer ul {
@@ -292,6 +316,14 @@ a {
   display: flex;
   list-style: none;
   text-transform: lowercase;
+  padding-left: 0;
+  flex-wrap: wrap;
+  margin-bottom: 4px;
+}
+
+.footer li {
+  white-space: nowrap;
+  margin-right: 4px;
 }
 
 .footerSeparator {
@@ -309,16 +341,6 @@ a {
 
 .footer a:hover {
   text-decoration: underline;
-}
-
-.footerLogo img {
-  height: 45px;
-  margin: -2px 7px 0 -2px;
-  float: left;
-}
-
-.footerLinks {
-  padding-top: 5px;
 }
 
 .mobileFooter {
