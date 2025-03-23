@@ -304,12 +304,8 @@ const HeaderTitle = ({ title, shortAddress, pendingPostSubplebbitAddress }: { ti
 
   const subplebbitAddress = params.subplebbitAddress;
 
-  const contentOptionsStore = useContentOptionsStore();
-  const hasUnhiddenAnyNsfwCommunity =
-    !contentOptionsStore.hideAdultCommunities ||
-    !contentOptionsStore.hideGoreCommunities ||
-    !contentOptionsStore.hideAntiCommunities ||
-    !contentOptionsStore.hideVulgarCommunities;
+  const { hideAdultCommunities, hideGoreCommunities, hideAntiCommunities, hideVulgarCommunities } = useContentOptionsStore();
+  const hasUnhiddenAnyNsfwCommunity = !hideAdultCommunities || !hideGoreCommunities || !hideAntiCommunities || !hideVulgarCommunities;
   const isBroadlyNsfwSubplebbit = useIsBroadlyNsfwSubplebbit(subplebbitAddress || '');
 
   const subplebbitTitle = <Link to={`/p/${isInPendingPostView ? pendingPostSubplebbitAddress : subplebbitAddress}`}>{title || shortAddress}</Link>;

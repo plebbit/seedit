@@ -261,7 +261,8 @@ const Subplebbit = () => {
   }, [feed, setPinnedPostsCount]);
 
   // over 18 warning for subplebbit with nsfw tag in multisub default list
-  const { hasAcceptedWarning } = useContentOptionsStore();
+  const { hideAdultCommunities, hideGoreCommunities, hideAntiCommunities, hideVulgarCommunities } = useContentOptionsStore();
+  const hasUnhiddenAnyNsfwCommunity = !hideAdultCommunities || !hideGoreCommunities || !hideAntiCommunities || !hideVulgarCommunities;
   const isBroadlyNsfwSubplebbit = useIsBroadlyNsfwSubplebbit(subplebbitAddress || '');
 
   // page title
@@ -269,7 +270,7 @@ const Subplebbit = () => {
     document.title = title ? title : shortAddress || subplebbitAddress;
   }, [title, shortAddress, subplebbitAddress]);
 
-  return isBroadlyNsfwSubplebbit && !hasAcceptedWarning ? (
+  return isBroadlyNsfwSubplebbit && !hasUnhiddenAnyNsfwCommunity ? (
     <Over18Warning />
   ) : (
     <div className={styles.content}>

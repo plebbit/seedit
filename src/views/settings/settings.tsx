@@ -149,17 +149,18 @@ const ContentOptions = () => {
       <br />
       <br />
       <div className={styles.filterSettingTitle}>{t('communities')}</div>
-      <input type='checkbox' id='hideAdultCommunities' checked={hideAdultCommunities} onChange={(e) => setHideAdultCommunities(e.target.checked)} />
-      <label htmlFor='hideAdultCommunities'>{t('hide_adult')} (NSFW/18+)</label>
-      <br />
-      <input type='checkbox' id='hideAntiCommunities' checked={hideAntiCommunities} onChange={(e) => setHideAntiCommunities(e.target.checked)} />
-      <label htmlFor='hideAntiCommunities'>{t('hide_anti')}</label>
-      <br />
-      <input type='checkbox' id='hideGoreCommunities' checked={hideGoreCommunities} onChange={(e) => setHideGoreCommunities(e.target.checked)} />
-      <label htmlFor='hideGoreCommunities'>{t('hide_gore')} (NSFW/18+)</label>
-      <br />
-      <input type='checkbox' id='hideVulgarCommunities' checked={hideVulgarCommunities} onChange={(e) => setHideVulgarCommunities(e.target.checked)} />
-      <label htmlFor='hideVulgarCommunities'>{t('hide_vulgar')}</label>
+      <input
+        type='checkbox'
+        id='hideAdultCommunities'
+        checked={hideAdultCommunities || hideAntiCommunities || hideGoreCommunities || hideVulgarCommunities}
+        onChange={(e) => {
+          setHideAdultCommunities(e.target.checked);
+          setHideAntiCommunities(e.target.checked);
+          setHideGoreCommunities(e.target.checked);
+          setHideVulgarCommunities(e.target.checked);
+        }}
+      />
+      <label htmlFor='hideAdultCommunities'>Hide communities tagged as NSFW/18+</label>
     </div>
   );
 };
@@ -210,7 +211,7 @@ const GeneralSettings = () => {
         <span className={styles.categoryTitle}>{t('version')}</span>
         <span className={styles.categorySettings}>
           <div className={styles.version}>
-            seedit <Version />
+            <Version />
             {isElectron && (
               <a className={styles.fullNodeStats} href='http://localhost:50019/webui/' target='_blank' rel='noreferrer'>
                 {t('node_stats')}
