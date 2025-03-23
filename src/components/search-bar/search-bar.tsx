@@ -67,8 +67,15 @@ const SearchBar = ({ isFocused = false, onExpandoChange }: SearchBarProps) => {
   }, [showExpando, onExpandoChange]);
 
   const { setSearchFilter, clearSearchFilter, setIsSearching } = useFeedFiltersStore();
+  const searchFilter = useFeedFiltersStore((state) => state.searchFilter);
 
   const [inputValue, setInputValue] = useState('');
+
+  useEffect(() => {
+    if (isInCommunitySearch && searchFilter === '') {
+      setInputValue('');
+    }
+  }, [searchFilter, isInCommunitySearch]);
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const debouncedSetSearchFilter = useCallback(

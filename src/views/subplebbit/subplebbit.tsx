@@ -140,17 +140,20 @@ const Footer = ({
     } else if (showNoResults) {
       footerFirstLine = (
         <div className={styles.stateString}>
-          No matches found for "{searchFilter}"
+          <span className={styles.noMatchesFound}>No matches found for "{searchFilter}"</span>
           <br />
-          <span
-            className={styles.link}
-            onClick={() => {
-              useFeedFiltersStore.getState().clearSearchFilter();
-              reset();
-            }}
-          >
-            Clear search
-          </span>
+          <br />
+          <div className={styles.morePostsSuggestion}>
+            <span
+              className={styles.link}
+              onClick={() => {
+                useFeedFiltersStore.getState().clearSearchFilter();
+                reset();
+              }}
+            >
+              Clear search
+            </span>
+          </div>
         </div>
       );
     } else if (feedLength === 0) {
