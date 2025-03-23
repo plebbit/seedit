@@ -32,6 +32,10 @@ const Challenge = ({ challenge, closeModal }: ChallengeProps) => {
   const isTextChallenge = challenges[currentChallengeIndex].type === 'text/plain';
   const isImageChallenge = challenges[currentChallengeIndex].type === 'image/png';
 
+  const isValidAnswer = (index: number) => {
+    return !!answers[index] && answers[index].trim() !== '';
+  };
+
   const onAnswersChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setAnswers((prevAnswers) => {
       const updatedAnswers = [...prevAnswers];
@@ -48,7 +52,7 @@ const Challenge = ({ challenge, closeModal }: ChallengeProps) => {
 
   const onEnterKey = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key !== 'Enter') return;
-    if (!answers[currentChallengeIndex]) return;
+    if (!isValidAnswer(currentChallengeIndex)) return;
     if (challenges[currentChallengeIndex + 1]) {
       setCurrentChallengeIndex((prev) => prev + 1);
     } else {
@@ -94,7 +98,7 @@ const Challenge = ({ challenge, closeModal }: ChallengeProps) => {
         <div className={styles.counter}>{t('challenge_counter', { index: currentChallengeIndex + 1, total: challenges?.length })}</div>
         <span className={styles.buttons}>
           {!challenges[currentChallengeIndex + 1] && (
-            <button onClick={onSubmit} disabled={!answers[currentChallengeIndex]}>
+            <button onClick={onSubmit} disabled={!isValidAnswer(currentChallengeIndex)}>
               {t('submit')}
             </button>
           )}
