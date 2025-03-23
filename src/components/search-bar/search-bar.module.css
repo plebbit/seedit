@@ -37,6 +37,7 @@
   right: 9px;
   cursor: pointer;
   font-size: 0px;
+  margin-right: -5px;
 }
 
 .searchBar input[type="submit"]:hover {
