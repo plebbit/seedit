@@ -77,7 +77,7 @@ const useTimeFilter = () => {
     if (isInSubplebbitView) {
       timeFilterName = 'all';
     } else if (isInDomainView) {
-      timeFilterName = '1m';
+      timeFilterName = '1y';
     } else {
       timeFilterName = lastVisitTimeFilterName;
     }
