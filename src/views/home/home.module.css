@@ -37,10 +37,6 @@
   color: var(--red);
 }
 
-.noMatchesFound {
-  color: var(--yellow);
-}
-
 .morePostsSuggestion a, .link {
   color: var(--text-primary);
   text-decoration: none;

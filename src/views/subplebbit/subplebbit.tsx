@@ -156,6 +156,27 @@ const Footer = ({
           </div>
         </div>
       );
+    } else if (feedLength > 0) {
+      footerFirstLine = (
+        <div className={styles.stateString}>
+          <span className={styles.searchResults}>
+            Found {feedLength} {feedLength === 1 ? 'post' : 'posts'} for "{searchFilter}"
+          </span>
+          <br />
+          <br />
+          <div className={styles.morePostsSuggestion}>
+            <span
+              className={styles.link}
+              onClick={() => {
+                useFeedFiltersStore.getState().clearSearchFilter();
+                reset();
+              }}
+            >
+              Clear search
+            </span>
+          </div>
+        </div>
+      );
     } else if (feedLength === 0) {
       footerFirstLine = (
         <div className={styles.stateString}>
@@ -171,7 +192,7 @@ const Footer = ({
     footerFirstLine = loadingString;
   }
 
-  if (subplebbitAddressesWithNewerPosts.length > 0 && !blocked) {
+  if (subplebbitAddressesWithNewerPosts.length > 0 && !blocked && !searchFilter) {
     footerSecondLine = (
       <div className={styles.stateString}>
         <Trans
@@ -194,7 +215,7 @@ const Footer = ({
         />
       </div>
     );
-  } else if (timeFilterName !== 'all' && !blocked) {
+  } else if (timeFilterName !== 'all' && !blocked && !searchFilter) {
     footerSecondLine = (
       <div className={styles.morePostsSuggestion}>
         <Trans
@@ -248,7 +269,7 @@ const Subplebbit = () => {
     const options: any = {
       subplebbitAddresses,
       sortType,
-      newerThan: timeFilterSeconds,
+      newerThan: searchFilter ? 0 : timeFilterSeconds,
     };
 
     if (searchFilter) {
@@ -310,7 +331,7 @@ const Subplebbit = () => {
   }, [feed, filteredComments]);
 
   // virtuoso footer to display feed loading state, error, unblock button and "newer posts available" button
-  const footerProps: FooterProps = {
+  const footerProps = {
     subplebbitAddresses,
     subplebbitAddress,
     feedLength: feed.length || 0,
@@ -320,7 +341,7 @@ const Subplebbit = () => {
     error: error || null,
     hasMore,
     subplebbitAddressesWithNewerPosts,
-    timeFilterName: timeFilterName || '',
+    timeFilterName: searchFilter ? 'all' : timeFilterName || '',
     reset,
     searchFilter,
     isSearching,
