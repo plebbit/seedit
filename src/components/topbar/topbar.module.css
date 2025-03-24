@@ -193,6 +193,7 @@
   background-color: var(--background-text);
   padding: 0 5px 0 15px;
   font-weight: bold;
+  margin-left: auto;
 }
 
 .moreLink:hover {
