@@ -40,19 +40,6 @@ const FiltersDropdown = () => {
       : `/${selectedSortType}/${timeFilterName}`;
   };
 
-  const handleClickOutside = (event: MouseEvent) => {
-    if (filterDropdownRef.current && !filterDropdownRef.current.contains(event.target as Node)) {
-      setIsFilterDropdownOpen(false);
-    }
-  };
-
-  useEffect(() => {
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-    };
-  }, [handleClickOutside]);
-
   const {
     blurNsfwThumbnails,
     hideAdultCommunities,
@@ -67,6 +54,19 @@ const FiltersDropdown = () => {
   } = useContentOptionsStore();
 
   const [hideNsfwFilters, setHideNsfwFilters] = useState(true);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (filterDropdownRef.current && !filterDropdownRef.current.contains(event.target as Node)) {
+        setIsFilterDropdownOpen(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
 
   return (
     <div className={`${styles.dropdown} ${styles.filterDropdown}`} ref={filterDropdownRef}>
