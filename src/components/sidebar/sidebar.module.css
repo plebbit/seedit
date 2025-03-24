@@ -289,7 +289,7 @@ a {
   max-width: 300px;
   box-sizing: border-box;
   background-color: var(--background);
-  margin-top: 15px;
+  margin-top: 10px;
   margin-bottom: 20px;
   overflow: hidden;
 }
@@ -307,7 +307,7 @@ a {
 }
 
 .footerLinks {
-  padding-top: 5px;
+  padding-top: 7px;
   overflow: hidden;
 }
 
@@ -318,12 +318,10 @@ a {
   text-transform: lowercase;
   padding-left: 0;
   flex-wrap: wrap;
-  margin-bottom: 4px;
 }
 
 .footer li {
   white-space: nowrap;
-  margin-right: 4px;
 }
 
 .footerSeparator {
