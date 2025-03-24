@@ -196,9 +196,11 @@ const ReplyForm = ({ cid, isReplyingToReply, hideReplyForm, subplebbitAddress, p
         <button className={styles.save} onClick={onPublish}>
           {t('save')}
         </button>
-        <button className={styles.previewButton} onClick={() => setShowPreview(!showPreview)} disabled={!publishReplyOptions?.content}>
-          {showPreview ? t('edit') : t('preview')}
-        </button>
+        {showFormattingHelp && (
+          <button className={styles.previewButton} onClick={() => setShowPreview(!showPreview)} disabled={!publishReplyOptions?.content}>
+            {showPreview ? t('edit') : t('preview')}
+          </button>
+        )}
         {isReplyingToReply && (
           <button className={styles.cancel} onClick={hideReplyForm}>
             {t('cancel')}
