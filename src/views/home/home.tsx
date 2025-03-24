@@ -80,31 +80,54 @@ const Home = () => {
     reset,
   };
 
-  const [isInitialized, setIsInitialized] = useState(false);
   const [subscriptionState, setSubscriptionState] = useState<SubscriptionState>('loading');
+  const initialLoadTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const [safeToShowNoSubscriptions, setSafeToShowNoSubscriptions] = useState(false);
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      if (!isCheckingSubscriptions) {
-        setIsInitialized(true);
+    return () => {
+      if (initialLoadTimeoutRef.current) {
+        clearTimeout(initialLoadTimeoutRef.current);
       }
-    }, 1000);
-
-    return () => clearTimeout(timer);
-  }, [isCheckingSubscriptions]);
+    };
+  }, []);
 
   useEffect(() => {
-    if (!isInitialized || isCheckingSubscriptions) {
+    if (isCheckingSubscriptions) {
+      setSafeToShowNoSubscriptions(false);
+      return;
+    }
+
+    if (!isCheckingSubscriptions && !safeToShowNoSubscriptions) {
+      initialLoadTimeoutRef.current = setTimeout(() => {
+        setSafeToShowNoSubscriptions(true);
+      }, 800);
+    }
+
+    return () => {
+      if (initialLoadTimeoutRef.current) {
+        clearTimeout(initialLoadTimeoutRef.current);
+      }
+    };
+  }, [isCheckingSubscriptions, safeToShowNoSubscriptions]);
+
+  useEffect(() => {
+    if (subplebbitAddresses.length > 0 || feed?.length > 0) {
+      setSubscriptionState('hasSubscriptions');
+      return;
+    }
+
+    if (isCheckingSubscriptions || feed === undefined) {
       setSubscriptionState('loading');
       return;
     }
 
-    if (feed?.length > 0) {
-      setSubscriptionState('hasSubscriptions');
+    if (!isCheckingSubscriptions && feed?.length === 0 && subplebbitAddresses.length === 0 && safeToShowNoSubscriptions) {
+      setSubscriptionState('noSubscriptions');
     } else {
-      setSubscriptionState(subplebbitAddresses.length > 0 ? 'hasSubscriptions' : 'noSubscriptions');
+      setSubscriptionState('loading');
     }
-  }, [isInitialized, isCheckingSubscriptions, subplebbitAddresses, feed]);
+  }, [isCheckingSubscriptions, subplebbitAddresses, feed, safeToShowNoSubscriptions]);
 
   return (
     <div>
@@ -112,7 +135,7 @@ const Home = () => {
         <div className={`${styles.sidebar}`}>
           <Sidebar />
         </div>
-        {subscriptionState === 'loading' || !isInitialized ? (
+        {subscriptionState === 'loading' ? (
           <div className={styles.feed}>
             <div className={styles.footer}>
               <LoadingEllipsis string={t('loading_feed')} />
