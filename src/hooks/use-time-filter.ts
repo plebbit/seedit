@@ -70,11 +70,17 @@ const useTimeFilter = () => {
   const params = useParams();
   const location = useLocation();
   const isInSubplebbitView = isSubplebbitView(location.pathname, params);
+  const isInDomainView = Boolean(params.domain);
 
   let timeFilterName = params.timeFilterName;
-  // the default time filter is the last visit time filter
   if (!timeFilterName) {
-    timeFilterName = isInSubplebbitView ? 'all' : lastVisitTimeFilterName;
+    if (isInSubplebbitView) {
+      timeFilterName = 'all';
+    } else if (isInDomainView) {
+      timeFilterName = '1m';
+    } else {
+      timeFilterName = lastVisitTimeFilterName;
+    }
   }
 
   let timeFilterSeconds: number | undefined;

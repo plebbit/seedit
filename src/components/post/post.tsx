@@ -155,7 +155,7 @@ const Post = ({ index, post = {} }: PostProps) => {
   const postTitle = (title?.length > 300 ? title?.slice(0, 300) + '...' : title) || (content?.length > 300 ? content?.slice(0, 300) + '...' : content);
 
   const hasThumbnail = getHasThumbnail(commentMediaInfo, link);
-  const linkUrl = getHostname(link);
+  const hostname = getHostname(link);
   const linkClass = `${isInPostPageView ? (link ? styles.externalLink : styles.internalLink) : styles.link} ${pinned ? styles.pinnedLink : ''}`;
 
   const { blocked, unblock } = useBlock({ cid });
@@ -239,15 +239,15 @@ const Post = ({ index, post = {} }: PostProps) => {
                       <Flair flair={flair} />
                     </>
                   )}{' '}
-                  {linkUrl && (
-                    <span className={styles.domain}>
-                      (
-                      <a href={link} target='_blank' rel='noopener noreferrer'>
-                        {linkUrl.length > 25 ? linkUrl.slice(0, 25) + '...' : linkUrl}
-                      </a>
-                      )
-                    </span>
-                  )}
+                  <span className={styles.domain}>
+                    (
+                    {hostname ? (
+                      <Link to={`/domain/${hostname}`}>{hostname.length > 25 ? hostname.slice(0, 25) + '...' : hostname}</Link>
+                    ) : (
+                      <Link to={`/p/${subplebbitAddress}`}>self.{subplebbit?.shortAddress || (subplebbitAddress && Plebbit.getShortAddress(subplebbitAddress))}</Link>
+                    )}
+                    )
+                  </span>
                 </p>
                 {(!(commentMediaInfo?.type === 'webpage') || (commentMediaInfo?.type === 'webpage' && content?.trim().length > 0)) &&
                   !(isInPostPageView && !link && content?.trim().length > 0) && (

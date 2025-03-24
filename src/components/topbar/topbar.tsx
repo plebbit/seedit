@@ -6,7 +6,7 @@ import Plebbit from '@plebbit/plebbit-js/dist/browser/index.js';
 import styles from './topbar.module.css';
 import { useDefaultSubplebbitAddresses } from '../../hooks/use-default-subplebbits';
 import useTimeFilter from '../../hooks/use-time-filter';
-import { isAllView, isHomeView, isModView, isSubplebbitView } from '../../lib/utils/view-utils';
+import { isAllView, isHomeView, isModView, isSubplebbitView, isDomainView } from '../../lib/utils/view-utils';
 import useContentOptionsStore from '../../stores/use-content-options-store';
 
 const sortTypes = ['hot', 'new', 'active', 'controversialAll', 'topAll'];
@@ -17,6 +17,7 @@ const FiltersDropdown = () => {
   const params = useParams();
   const location = useLocation();
   const navigate = useNavigate();
+  const isInDomainView = isDomainView(location.pathname);
   const isInSubplebbitView = isSubplebbitView(location.pathname, params);
   const isinAllView = isAllView(location.pathname);
   const isInModView = isModView(location.pathname);
@@ -37,6 +38,8 @@ const FiltersDropdown = () => {
       ? `p/all/${selectedSortType}/${timeFilterName}`
       : isInModView
       ? `/p/mod/${selectedSortType}/${timeFilterName}`
+      : isInDomainView
+      ? `/domain/${params.domain}/${selectedSortType}/${timeFilterName}`
       : `/${selectedSortType}/${timeFilterName}`;
   };
 

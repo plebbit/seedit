@@ -89,15 +89,15 @@ const All = () => {
     const setLastVirtuosoState = () => {
       virtuosoRef.current?.getState((snapshot: StateSnapshot) => {
         if (snapshot?.ranges?.length) {
-          lastVirtuosoStates[sortType + timeFilterName + 'all'] = snapshot;
+          lastVirtuosoStates[sortType + currentTimeFilterName + 'all'] = snapshot;
         }
       });
     };
     window.addEventListener('scroll', setLastVirtuosoState);
     return () => window.removeEventListener('scroll', setLastVirtuosoState);
-  }, [sortType, timeFilterName]);
+  }, [sortType, currentTimeFilterName]);
 
-  const lastVirtuosoState = lastVirtuosoStates?.[sortType + timeFilterName + 'all'];
+  const lastVirtuosoState = lastVirtuosoStates?.[sortType + currentTimeFilterName + 'all'];
 
   const footerProps = {
     feedLength: feed?.length,

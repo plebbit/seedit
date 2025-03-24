@@ -11,6 +11,7 @@ import { getFormattedDate, getFormattedTimeDuration, getFormattedTimeAgo } from 
 import { findSubplebbitCreator } from '../../lib/utils/user-utils';
 import {
   isAllView,
+  isDomainView,
   isHomeAboutView,
   isHomeView,
   isModView,
@@ -121,9 +122,9 @@ export const Footer = () => {
 
   return (
     <div className={`${styles.footer} ${isMobile && isInHomeAboutView ? styles.mobileFooter : ''}`}>
-      <a className={styles.footerLogo} href='https://github.com/plebbit/seedit/releases/latest' target='_blank' rel='noopener noreferrer'>
+      <span className={styles.footerLogo}>
         <img src='assets/logo/seedit.png' alt='' />
-      </a>
+      </span>
       <div className={styles.footerLinks}>
         <ul>
           <li>
@@ -186,6 +187,7 @@ const Sidebar = ({ comment, isSubCreatedButNotYetPublished, settings, subplebbit
   const location = useLocation();
   const params = useParams();
   const isInAllView = isAllView(location.pathname);
+  const isInDomainView = isDomainView(location.pathname);
   const isInHomeAboutView = isHomeAboutView(location.pathname);
   const isInHomeView = isHomeView(location.pathname);
   const isInModView = isModView(location.pathname);
@@ -199,7 +201,7 @@ const Sidebar = ({ comment, isSubCreatedButNotYetPublished, settings, subplebbit
   const subplebbitCreator = findSubplebbitCreator(roles);
   const creatorAddress = subplebbitCreator === 'anonymous' ? 'anonymous' : `${Plebbit.getShortAddress(subplebbitCreator)}`;
   const submitRoute =
-    isInHomeView || isInHomeAboutView || isInAllView || isInModView
+    isInHomeView || isInHomeAboutView || isInAllView || isInModView || isInDomainView
       ? '/submit'
       : isInPendingPostView
       ? `/p/${pendingPost?.subplebbitAddress}/submit`
@@ -274,7 +276,7 @@ const Sidebar = ({ comment, isSubCreatedButNotYetPublished, settings, subplebbit
             <div className={styles.nub} />
           </div>
         </Link>
-        {!isInHomeView && !isInHomeAboutView && !isInAllView && !isInModView && !isInSubplebbitsView && !isInHomeAboutView && (
+        {!isInHomeView && !isInHomeAboutView && !isInAllView && !isInModView && !isInSubplebbitsView && !isInHomeAboutView && !isInDomainView && (
           <div className={styles.titleBox}>
             <Link className={styles.title} to={`/p/${address}`}>
               {subplebbit?.address}

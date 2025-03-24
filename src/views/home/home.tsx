@@ -99,15 +99,15 @@ const Home = () => {
     const setLastVirtuosoState = () => {
       virtuosoRef.current?.getState((snapshot: StateSnapshot) => {
         if (snapshot?.ranges?.length) {
-          lastVirtuosoStates[sortType + timeFilterName + 'home'] = snapshot;
+          lastVirtuosoStates[sortType + currentTimeFilterName + 'home'] = snapshot;
         }
       });
     };
     window.addEventListener('scroll', setLastVirtuosoState);
     return () => window.removeEventListener('scroll', setLastVirtuosoState);
-  }, [sortType, timeFilterName]);
+  }, [sortType, currentTimeFilterName]);
 
-  const lastVirtuosoState = lastVirtuosoStates?.[sortType + timeFilterName + 'home'];
+  const lastVirtuosoState = lastVirtuosoStates?.[sortType + currentTimeFilterName + 'home'];
 
   useEffect(() => {
     document.title = `Seedit`;
