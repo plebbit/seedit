@@ -256,6 +256,11 @@ const TopBar = () => {
   const { accountSubplebbits } = useAccountSubplebbits();
   const accountSubplebbitAddresses = Object.keys(accountSubplebbits);
 
+  const account = useAccount();
+  const subscriptions = account?.subscriptions;
+
+  const filteredSubplebbitAddresses = subplebbitAddresses?.filter((address) => !subscriptions?.includes(address));
+
   return (
     <div className={styles.headerArea}>
       <div className={styles.widthClip}>
@@ -283,8 +288,22 @@ const TopBar = () => {
               </li>
             )}
             <span className={styles.separator}> | </span>
-            {subplebbitAddresses?.map((address, index) => {
-              const displayAddress = address.endsWith('.eth') ? address.slice(0, -4) : address.endsWith('.sol') ? address.slice(0, -4) : address;
+            {subscriptions?.map((subscription: string, index: number) => {
+              const shortAddress = Plebbit.getShortAddress(subscription);
+              const displayAddress = shortAddress.includes('.eth') ? shortAddress.slice(0, -4) : shortAddress.includes('.sol') ? shortAddress.slice(0, -4) : shortAddress;
+              return (
+                <li key={index}>
+                  {index !== 0 && <span className={styles.separator}>-</span>}
+                  <Link to={`/p/${subscription}`} className={params.subplebbitAddress === subscription ? styles.selected : styles.choice}>
+                    {displayAddress}
+                  </Link>
+                </li>
+              );
+            })}
+            {filteredSubplebbitAddresses?.length > 0 && <span className={styles.separator}> | </span>}
+            {filteredSubplebbitAddresses?.map((address, index) => {
+              const shortAddress = Plebbit.getShortAddress(address);
+              const displayAddress = shortAddress.includes('.eth') ? shortAddress.slice(0, -4) : shortAddress.includes('.sol') ? shortAddress.slice(0, -4) : shortAddress;
               return (
                 <li key={index}>
                   {index !== 0 && <span className={styles.separator}>-</span>}
