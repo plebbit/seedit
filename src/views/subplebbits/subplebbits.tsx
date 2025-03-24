@@ -245,11 +245,9 @@ const Subplebbit = ({ subplebbit, tags, index }: SubplebbitProps) => {
               {isNsfw && <Label color='red' title={t('nsfw')} text={t('nsfw')} />}
               {tags && tags.length > 0 && (
                 <span className={styles.tags}>
-                  tags:{' '}
                   {tags.map((tag, index) => (
                     <Fragment key={tag}>
                       <Link to={`/communities/vote/tag/${tag}`}>{tag}</Link>
-                      {index < tags.length - 1 ? ', ' : ''}
                     </Fragment>
                   ))}
                 </span>
