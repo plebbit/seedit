@@ -392,8 +392,8 @@ const SubplebbitSettings = () => {
           setShowDeleting(true);
           await deleteSubplebbit(subplebbitAddress);
           setShowDeleting(false);
-          alert(`Deleted p/${shortAddress}`);
-          navigate('/communities', { replace: true });
+          alert(t('community_deleted'));
+          navigate('/', { replace: true });
         } catch (e) {
           if (e instanceof Error) {
             console.warn(e);

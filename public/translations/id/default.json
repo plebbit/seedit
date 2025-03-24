@@ -367,5 +367,8 @@
   "choose_file": "Pilih file",
   "uploading": "Mengunggah",
   "invalid_url_alert": "Tautan yang diberikan bukan URL yang valid.",
-  "empty_comment_alert": "Tidak dapat memposting komentar kosong."
+  "empty_comment_alert": "Tidak dapat memposting komentar kosong.",
+  "no_subscriptions_message": "<1>{{accountName}}, ini adalah rumah Anda di Seedit</1><2>Ketika Anda menemukan komunitas yang Anda suka, <3>bergabunglah dengan <4></4></3></2>",
+  "find_communities": "temukan komunitas di p/all",
+  "community_deleted": "Komunitas berhasil dihapus."
 }

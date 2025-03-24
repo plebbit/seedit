@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useAccount, useAccountSubplebbits } from '@plebbit/plebbit-react-hooks';
@@ -6,47 +6,27 @@ import Plebbit from '@plebbit/plebbit-js/dist/browser/index.js';
 import styles from './topbar.module.css';
 import { useDefaultSubplebbitAddresses } from '../../hooks/use-default-subplebbits';
 import useTimeFilter from '../../hooks/use-time-filter';
-import { isAllView, isHomeView, isModView, isSubplebbitView } from '../../lib/utils/view-utils';
+import { isAllView, isHomeView, isModView, isSubplebbitView, isDomainView } from '../../lib/utils/view-utils';
+import useContentOptionsStore from '../../stores/use-content-options-store';
 
 const sortTypes = ['hot', 'new', 'active', 'controversialAll', 'topAll'];
 const isElectron = window.isElectron === true;
 
-const TopBar = () => {
-  const account = useAccount();
-  const subplebbitAddresses = useDefaultSubplebbitAddresses();
+const FiltersDropdown = () => {
   const { t } = useTranslation();
-  const location = useLocation();
   const params = useParams();
-  const subscriptions = account?.subscriptions;
-  const isinAllView = isAllView(location.pathname);
-  const isInHomeView = isHomeView(location.pathname);
-  const isInModView = isModView(location.pathname);
+  const location = useLocation();
+  const navigate = useNavigate();
+  const isInDomainView = isDomainView(location.pathname);
   const isInSubplebbitView = isSubplebbitView(location.pathname, params);
-  const homeButtonClass = isInHomeView ? styles.selected : styles.choice;
-
-  const { accountSubplebbits } = useAccountSubplebbits();
-  const accountSubplebbitAddresses = Object.keys(accountSubplebbits);
-
+  const isinAllView = isAllView(location.pathname);
+  const isInModView = isModView(location.pathname);
   const { timeFilterName, timeFilterNames } = useTimeFilter();
+
   const selectedTimeFilter = timeFilterName || (isInSubplebbitView ? 'all' : timeFilterName);
 
-  const [isSubsDropdownOpen, setIsSubsDropdownOpen] = useState(false);
-  const toggleSubsDropdown = () => setIsSubsDropdownOpen(!isSubsDropdownOpen);
-  const subsDropdownRef = useRef<HTMLDivElement>(null);
-  const subsdropdownItemsRef = useRef<HTMLDivElement>(null);
-  const subsDropdownClass = isSubsDropdownOpen ? styles.visible : styles.hidden;
-
-  const [isSortsDropdownOpen, setIsSortsDropdownOpen] = useState(false);
-  const toggleSortsDropdown = () => setIsSortsDropdownOpen(!isSortsDropdownOpen);
-  const sortsDropdownRef = useRef<HTMLDivElement>(null);
-  const sortsdropdownItemsRef = useRef<HTMLDivElement>(null);
-  const sortsDropdownClass = isSortsDropdownOpen ? styles.visible : styles.hidden;
-
   const [isFilterDropdownOpen, setIsFilterDropdownOpen] = useState(false);
-  const toggleFilterDropdown = () => setIsFilterDropdownOpen(!isFilterDropdownOpen);
   const filterDropdownRef = useRef<HTMLDivElement>(null);
-  const filterdropdownItemsRef = useRef<HTMLDivElement>(null);
-  const filterDropdownClass = isFilterDropdownOpen ? styles.visible : styles.hidden;
 
   const sortLabels = [t('hot'), t('new'), t('active'), t('controversial'), t('top')];
   const selectedSortType = params.sortType || 'hot';
@@ -58,49 +38,173 @@ const TopBar = () => {
       ? `p/all/${selectedSortType}/${timeFilterName}`
       : isInModView
       ? `/p/mod/${selectedSortType}/${timeFilterName}`
+      : isInDomainView
+      ? `/domain/${params.domain}/${selectedSortType}/${timeFilterName}`
       : `/${selectedSortType}/${timeFilterName}`;
   };
 
-  const getSelectedSortLabel = () => {
-    const index = sortTypes.indexOf(selectedSortType);
-    return index >= 0 ? sortLabels[index] : sortLabels[0];
-  };
+  const {
+    blurNsfwThumbnails,
+    hideAdultCommunities,
+    hideGoreCommunities,
+    hideAntiCommunities,
+    hideVulgarCommunities,
+    setBlurNsfwThumbnails,
+    setHideAdultCommunities,
+    setHideGoreCommunities,
+    setHideAntiCommunities,
+    setHideVulgarCommunities,
+  } = useContentOptionsStore();
 
-  const handleClickOutside = useCallback(
-    (event: MouseEvent) => {
-      const target = event.target as Node;
-
-      const isOutsideSubs =
-        subsDropdownRef.current && !subsDropdownRef.current.contains(target) && subsdropdownItemsRef.current && !subsdropdownItemsRef.current.contains(target);
-      const isOutsideSorts =
-        sortsDropdownRef.current && !sortsDropdownRef.current.contains(target) && sortsdropdownItemsRef.current && !sortsdropdownItemsRef.current.contains(target);
-      const isOutsideFilter =
-        filterDropdownRef.current && !filterDropdownRef.current.contains(target) && filterdropdownItemsRef.current && !filterdropdownItemsRef.current.contains(target);
-
-      if (isOutsideSubs) {
-        setIsSubsDropdownOpen(false);
-      }
-
-      if (isOutsideSorts) {
-        setIsSortsDropdownOpen(false);
-      }
-
-      if (isOutsideFilter) {
-        setIsFilterDropdownOpen(false);
-      }
-    },
-    [subsDropdownRef, subsdropdownItemsRef, sortsDropdownRef, sortsdropdownItemsRef, filterDropdownRef, filterdropdownItemsRef],
-  );
+  const [hideNsfwFilters, setHideNsfwFilters] = useState(true);
 
   useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (filterDropdownRef.current && !filterDropdownRef.current.contains(event.target as Node)) {
+        setIsFilterDropdownOpen(false);
+      }
+    };
+
     document.addEventListener('mousedown', handleClickOutside);
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
-  }, [handleClickOutside]);
+  }, []);
 
-  const isConnectedToRpc = !!account?.plebbitOptions.plebbitRpcClientsOptions;
+  return (
+    <div className={`${styles.dropdown} ${styles.filterDropdown}`} ref={filterDropdownRef}>
+      <span className={styles.selectedTitle} onClick={() => setIsFilterDropdownOpen(!isFilterDropdownOpen)}>
+        {timeFilterName} / {selectedSortType}
+      </span>
+      {isFilterDropdownOpen && (
+        <div className={styles.dropChoices}>
+          <div className={styles.filterDropdownItem}>
+            posts from:{' '}
+            <select
+              onChange={(e) => {
+                navigate(getTimeFilterLink(e.target.value));
+              }}
+              value={selectedTimeFilter}
+            >
+              {timeFilterNames.map((timeFilterName, index) => (
+                <option value={timeFilterName} key={index}>
+                  {timeFilterNames[index]}
+                </option>
+              ))}
+            </select>
+          </div>
+          <div className={styles.filterDropdownItem}>
+            sort posts by:{' '}
+            <select
+              onChange={(e) => {
+                let dropdownLink = isInSubplebbitView ? `/p/${params.subplebbitAddress}/${e.target.value}` : isinAllView ? `/p/all/${e.target.value}` : e.target.value;
+                if (timeFilterName) {
+                  dropdownLink += `/${timeFilterName}`;
+                }
+                navigate(dropdownLink);
+              }}
+              value={selectedSortType}
+            >
+              {sortTypes.map((sortType, index) => (
+                <option value={sortType} key={index}>
+                  {sortLabels[index]}
+                </option>
+              ))}
+            </select>
+          </div>
+          <div className={`${styles.filterDropdownItem} ${styles.nsfwFilters}`} onClick={() => setHideNsfwFilters(!hideNsfwFilters)}>
+            NSFW filters
+          </div>
+          {!hideNsfwFilters && (
+            <>
+              <div className={styles.filterDropdownItem}>
+                <label htmlFor='blurNSFWCheckbox'>
+                  <input type='checkbox' id='blurNSFWCheckbox' checked={blurNsfwThumbnails} onChange={(e) => setBlurNsfwThumbnails(e.target.checked)} />
+                  blur NSFW/18+ media
+                </label>
+              </div>
+              <div className={styles.filterDropdownItem}>
+                <label htmlFor='nsfwCheckbox'>
+                  <input
+                    type='checkbox'
+                    id='nsfwCheckbox'
+                    ref={(el) => {
+                      if (el) {
+                        const allChecked = !hideAdultCommunities && !hideGoreCommunities && !hideAntiCommunities && !hideVulgarCommunities;
+                        const someChecked = !hideAdultCommunities || !hideGoreCommunities || !hideAntiCommunities || !hideVulgarCommunities;
+
+                        el.checked = allChecked;
+                        el.indeterminate = someChecked && !allChecked;
+                      }
+                    }}
+                    onChange={(e) => {
+                      const newValue = e.target.checked;
+                      setHideAdultCommunities(!newValue);
+                      setHideGoreCommunities(!newValue);
+                      setHideAntiCommunities(!newValue);
+                      setHideVulgarCommunities(!newValue);
+                    }}
+                  />
+                  include NSFW/18+ communities
+                </label>
+              </div>
+              <div className={styles.filterDropdownItem} style={{ paddingLeft: '20px' }}>
+                <label htmlFor='adultCommunitiesCheckbox'>
+                  <input type='checkbox' id='adultCommunitiesCheckbox' checked={!hideAdultCommunities} onChange={(e) => setHideAdultCommunities(!e.target.checked)} />
+                  adult communities
+                </label>
+              </div>
+              <div className={styles.filterDropdownItem} style={{ paddingLeft: '20px' }}>
+                <label htmlFor='goreCommunitiesCheckbox'>
+                  <input type='checkbox' id='goreCommunitiesCheckbox' checked={!hideGoreCommunities} onChange={(e) => setHideGoreCommunities(!e.target.checked)} />
+                  gore communities
+                </label>
+              </div>
+              <div className={styles.filterDropdownItem} style={{ paddingLeft: '20px' }}>
+                <label htmlFor='antiCommunitiesCheckbox'>
+                  <input type='checkbox' id='antiCommunitiesCheckbox' checked={!hideAntiCommunities} onChange={(e) => setHideAntiCommunities(!e.target.checked)} />
+                  anti communities
+                </label>
+              </div>
+              <div className={styles.filterDropdownItem} style={{ paddingLeft: '20px' }}>
+                <label htmlFor='vulgarCommunitiesCheckbox'>
+                  <input type='checkbox' id='vulgarCommunitiesCheckbox' checked={!hideVulgarCommunities} onChange={(e) => setHideVulgarCommunities(!e.target.checked)} />
+                  vulgar communities
+                </label>
+              </div>
+            </>
+          )}
+        </div>
+      )}
+    </div>
+  );
+};
+
+const CommunitiesDropdown = () => {
+  const { t } = useTranslation();
+  const account = useAccount();
   const navigate = useNavigate();
+  const subscriptions = account?.subscriptions;
+  const isConnectedToRpc = !!account?.plebbitOptions.plebbitRpcClientsOptions;
+
+  const [isSubsDropdownOpen, setIsSubsDropdownOpen] = useState(false);
+  const toggleSubsDropdown = () => setIsSubsDropdownOpen(!isSubsDropdownOpen);
+  const subsDropdownRef = useRef<HTMLDivElement>(null);
+  const subsdropdownItemsRef = useRef<HTMLDivElement>(null);
+  const subsDropdownClass = isSubsDropdownOpen ? styles.visible : styles.hidden;
+
+  const handleClickOutside = (event: MouseEvent) => {
+    if (subsDropdownRef.current && !subsDropdownRef.current.contains(event.target as Node)) {
+      setIsSubsDropdownOpen(false);
+    }
+  };
+
+  useEffect(() => {
+    if (isSubsDropdownOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+    }
+  }, [isSubsDropdownOpen]);
+
   const handleCreateCommunity = () => {
     // creating a community only works if the user is running a full node
     if (isElectron || isConnectedToRpc) {
@@ -117,53 +221,51 @@ const TopBar = () => {
   };
 
   return (
+    <div className={`${styles.dropdown} ${styles.subsDropdown}`} ref={subsDropdownRef} onClick={toggleSubsDropdown}>
+      <span className={styles.selectedTitle}>{t('my_communities')}</span>
+      <div className={`${styles.dropChoices} ${styles.subsDropChoices} ${subsDropdownClass}`} ref={subsdropdownItemsRef}>
+        {subscriptions?.map((subscription: string, index: number) => (
+          <Link key={index} to={`/p/${subscription}`} className={styles.dropdownItem}>
+            {Plebbit.getShortAddress(subscription)}
+          </Link>
+        ))}
+        <span onClick={handleCreateCommunity} className={`${styles.dropdownItem} ${styles.myCommunitiesItemButtonDotted}`}>
+          {t('create_community')}
+        </span>
+        <Link to='/communities/vote' className={`${styles.dropdownItem} ${styles.myCommunitiesItemButton}`}>
+          {t('default_communities')}
+        </Link>
+        <Link to='/communities/subscriber' className={`${styles.dropdownItem} ${styles.myCommunitiesItemButton}`}>
+          {t('edit_subscriptions')}
+        </Link>
+      </div>
+    </div>
+  );
+};
+
+const TopBar = () => {
+  const subplebbitAddresses = useDefaultSubplebbitAddresses();
+  const { t } = useTranslation();
+  const location = useLocation();
+  const params = useParams();
+  const isinAllView = isAllView(location.pathname);
+  const isInHomeView = isHomeView(location.pathname);
+  const isInModView = isModView(location.pathname);
+  const homeButtonClass = isInHomeView ? styles.selected : styles.choice;
+
+  const { accountSubplebbits } = useAccountSubplebbits();
+  const accountSubplebbitAddresses = Object.keys(accountSubplebbits);
+
+  const account = useAccount();
+  const subscriptions = account?.subscriptions;
+
+  const filteredSubplebbitAddresses = subplebbitAddresses?.filter((address) => !subscriptions?.includes(address));
+
+  return (
     <div className={styles.headerArea}>
       <div className={styles.widthClip}>
-        <div className={`${styles.dropdown} ${styles.subsDropdown}`} ref={subsDropdownRef} onClick={toggleSubsDropdown}>
-          <span className={styles.selectedTitle}>{t('my_communities')}</span>
-          <div className={`${styles.dropChoices} ${styles.subsDropChoices} ${subsDropdownClass}`} ref={subsdropdownItemsRef}>
-            {subscriptions?.map((subscription: string, index: number) => (
-              <Link key={index} to={`/p/${subscription}`} className={styles.dropdownItem}>
-                {Plebbit.getShortAddress(subscription)}
-              </Link>
-            ))}
-            <span onClick={handleCreateCommunity} className={`${styles.dropdownItem} ${styles.myCommunitiesItemButtonDotted}`}>
-              {t('create_community')}
-            </span>
-            <Link to='/communities/vote' className={`${styles.dropdownItem} ${styles.myCommunitiesItemButton}`}>
-              {t('default_communities')}
-            </Link>
-            <Link to='/communities/subscriber' className={`${styles.dropdownItem} ${styles.myCommunitiesItemButton}`}>
-              {t('edit_subscriptions')}
-            </Link>
-          </div>
-        </div>
-        <div className={styles.dropdown} ref={sortsDropdownRef} onClick={toggleSortsDropdown}>
-          <span className={styles.selectedTitle}>{getSelectedSortLabel()}</span>
-          <div className={`${styles.dropChoices} ${styles.sortsDropChoices} ${sortsDropdownClass}`} ref={sortsdropdownItemsRef}>
-            {sortTypes.map((sortType, index) => {
-              let dropdownLink = isInSubplebbitView ? `/p/${params.subplebbitAddress}/${sortType}` : isinAllView ? `/p/all/${sortType}` : sortType;
-              if (timeFilterName) {
-                dropdownLink += `/${timeFilterName}`;
-              }
-              return (
-                <Link to={dropdownLink} key={index} className={styles.dropdownItem}>
-                  {sortLabels[index]}
-                </Link>
-              );
-            })}
-          </div>
-        </div>
-        <div className={styles.dropdown} ref={filterDropdownRef} onClick={toggleFilterDropdown}>
-          <span className={styles.selectedTitle}>{selectedTimeFilter}</span>
-          <div className={`${styles.dropChoices} ${styles.filterDropChoices} ${filterDropdownClass}`} ref={filterdropdownItemsRef}>
-            {timeFilterNames.slice(0, -1).map((timeFilterName, index) => (
-              <Link to={getTimeFilterLink(timeFilterName)} key={index} className={styles.dropdownItem}>
-                {timeFilterNames[index]}
-              </Link>
-            ))}
-          </div>
-        </div>
+        <CommunitiesDropdown />
+        <FiltersDropdown />
         <div className={styles.srList}>
           <ul className={styles.srBar}>
             <li>
@@ -185,9 +287,23 @@ const TopBar = () => {
                 </Link>
               </li>
             )}
-            <span className={styles.separator}> | </span>
-            {subplebbitAddresses?.map((address, index) => {
-              const displayAddress = address.endsWith('.eth') ? address.slice(0, -4) : address.endsWith('.sol') ? address.slice(0, -4) : address;
+            {subscriptions?.length > 0 && <span className={styles.separator}> | </span>}
+            {subscriptions?.map((subscription: string, index: number) => {
+              const shortAddress = Plebbit.getShortAddress(subscription);
+              const displayAddress = shortAddress.includes('.eth') ? shortAddress.slice(0, -4) : shortAddress.includes('.sol') ? shortAddress.slice(0, -4) : shortAddress;
+              return (
+                <li key={index}>
+                  {index !== 0 && <span className={styles.separator}>-</span>}
+                  <Link to={`/p/${subscription}`} className={params.subplebbitAddress === subscription ? styles.selected : styles.choice}>
+                    {displayAddress}
+                  </Link>
+                </li>
+              );
+            })}
+            {filteredSubplebbitAddresses?.length > 0 && <span className={styles.separator}> | </span>}
+            {filteredSubplebbitAddresses?.map((address, index) => {
+              const shortAddress = Plebbit.getShortAddress(address);
+              const displayAddress = shortAddress.includes('.eth') ? shortAddress.slice(0, -4) : shortAddress.includes('.sol') ? shortAddress.slice(0, -4) : shortAddress;
               return (
                 <li key={index}>
                   {index !== 0 && <span className={styles.separator}>-</span>}

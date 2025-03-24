@@ -5,6 +5,7 @@ import styles from './app.module.css';
 import AboutView from './views/about';
 import All from './views/all';
 import Author from './views/author';
+import Domain from './views/domain';
 import Home from './views/home';
 import Inbox from './views/inbox';
 import Mod from './views/mod';
@@ -103,6 +104,8 @@ const App = () => {
             <Route path='/p/mod/:sortType?/:timeFilterName?' element={<Mod />} />
 
             <Route path='/p/:subplebbitAddress/:sortType?/:timeFilterName?' element={<Subplebbit />} />
+
+            <Route path='/domain/:domain/:sortType?/:timeFilterName?' element={<Domain />} />
 
             <Route path='/profile/:accountCommentIndex' element={<PostPage />} />
 

@@ -4,17 +4,19 @@ import { useAccountComments, useBlock, useFeed, useSubplebbit } from '@plebbit/p
 import { Virtuoso, VirtuosoHandle, StateSnapshot } from 'react-virtuoso';
 import { Trans, useTranslation } from 'react-i18next';
 import styles from '../home/home.module.css';
-import LoadingEllipsis from '../../components/loading-ellipsis';
-import Post from '../../components/post';
-import Sidebar from '../../components/sidebar';
 import { useFeedStateString } from '../../hooks/use-state-string';
-import useTimeFilter from '../../hooks/use-time-filter';
+import { commentMatchesPattern } from '../../lib/utils/pattern-utils';
+import useContentOptionsStore from '../../stores/use-content-options-store';
+import useFeedFiltersStore from '../../stores/use-feed-filters-store';
+import useFeedResetStore from '../../stores/use-feed-reset-store';
 import { usePinnedPostsStore } from '../../stores/use-pinned-posts-store';
 import { useIsBroadlyNsfwSubplebbit } from '../../hooks/use-is-broadly-nsfw-subplebbit';
-import useContentOptionsStore from '../../stores/use-content-options-store';
+import useTimeFilter from '../../hooks/use-time-filter';
+import LoadingEllipsis from '../../components/loading-ellipsis';
 import Over18Warning from '../../components/over-18-warning';
+import Post from '../../components/post';
+import Sidebar from '../../components/sidebar';
 import { sortTypes } from '../../constants/sortTypes';
-import useFeedResetStore from '../../stores/use-feed-reset-store';
 
 const lastVirtuosoStates: { [key: string]: StateSnapshot } = {};
 
@@ -30,6 +32,8 @@ interface FooterProps {
   subplebbitAddressesWithNewerPosts: string[];
   timeFilterName: string;
   reset: () => void;
+  searchFilter: string;
+  isSearching: boolean;
 }
 
 const Footer = ({
@@ -44,11 +48,42 @@ const Footer = ({
   subplebbitAddressesWithNewerPosts,
   timeFilterName,
   reset,
+  searchFilter,
+  isSearching,
 }: FooterProps) => {
   const { t } = useTranslation();
   let footerFirstLine;
   let footerSecondLine;
   const loadingStateString = useFeedStateString(subplebbitAddresses) || t('loading');
+
+  const [showNoResults, setShowNoResults] = useState(false);
+  const [searchAttemptCompleted, setSearchAttemptCompleted] = useState(false);
+
+  useEffect(() => {
+    if (isSearching) {
+      setSearchAttemptCompleted(false);
+      setShowNoResults(false);
+    } else if (searchFilter) {
+      setSearchAttemptCompleted(true);
+    }
+  }, [isSearching, searchFilter]);
+
+  useEffect(() => {
+    let timer: NodeJS.Timeout | null = null;
+
+    if (searchFilter && feedLength === 0 && searchAttemptCompleted && !showNoResults) {
+      timer = setTimeout(() => {
+        setShowNoResults(true);
+      }, 2000);
+    } else if (!searchFilter || feedLength > 0) {
+      setShowNoResults(false);
+    }
+
+    return () => {
+      if (timer) clearTimeout(timer);
+    };
+  }, [searchFilter, feedLength, searchAttemptCompleted, showNoResults]);
+
   const loadingString = (
     <>
       <div className={styles.stateString}>{loadingStateString === 'Failed' ? 'failed' : <LoadingEllipsis string={loadingStateString} />}</div>
@@ -95,6 +130,60 @@ const Footer = ({
         )}
       </>
     );
+  } else if (searchFilter) {
+    if (isSearching) {
+      footerFirstLine = (
+        <div className={styles.stateString}>
+          <LoadingEllipsis string='searching' />
+        </div>
+      );
+    } else if (showNoResults) {
+      footerFirstLine = (
+        <div className={styles.stateString}>
+          <span className={styles.noMatchesFound}>No matches found for "{searchFilter}"</span>
+          <br />
+          <br />
+          <div className={styles.morePostsSuggestion}>
+            <span
+              className={styles.link}
+              onClick={() => {
+                useFeedFiltersStore.getState().clearSearchFilter();
+                reset();
+              }}
+            >
+              Clear search
+            </span>
+          </div>
+        </div>
+      );
+    } else if (feedLength > 0) {
+      footerFirstLine = (
+        <div className={styles.stateString}>
+          <span className={styles.searchResults}>
+            Found {feedLength} {feedLength === 1 ? 'post' : 'posts'} for "{searchFilter}"
+          </span>
+          <br />
+          <br />
+          <div className={styles.morePostsSuggestion}>
+            <span
+              className={styles.link}
+              onClick={() => {
+                useFeedFiltersStore.getState().clearSearchFilter();
+                reset();
+              }}
+            >
+              Clear search
+            </span>
+          </div>
+        </div>
+      );
+    } else if (feedLength === 0) {
+      footerFirstLine = (
+        <div className={styles.stateString}>
+          <LoadingEllipsis string='searching' />
+        </div>
+      );
+    }
   } else if (feedLength === 0 && isOnline && started && !isSubCreatedButNotYetPublished) {
     footerFirstLine = t('no_posts');
   } else if (feedLength === 0 || !isOnline) {
@@ -103,7 +192,7 @@ const Footer = ({
     footerFirstLine = loadingString;
   }
 
-  if (subplebbitAddressesWithNewerPosts.length > 0 && !blocked) {
+  if (subplebbitAddressesWithNewerPosts.length > 0 && !blocked && !searchFilter) {
     footerSecondLine = (
       <div className={styles.stateString}>
         <Trans
@@ -112,6 +201,7 @@ const Footer = ({
           components={{
             1: (
               <span
+                key='newer_posts_available_link'
                 className={styles.link}
                 onClick={() => {
                   window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
@@ -125,14 +215,14 @@ const Footer = ({
         />
       </div>
     );
-  } else if (timeFilterName !== 'all' && !blocked) {
+  } else if (timeFilterName !== 'all' && !blocked && !searchFilter) {
     footerSecondLine = (
       <div className={styles.morePostsSuggestion}>
         <Trans
           i18nKey='show_all_instead'
           values={{ timeFilterName }}
           components={{
-            1: <Link to={`/p/${subplebbitAddress}`} />,
+            1: <Link key='show_all_instead_link' to={`/p/${subplebbitAddress}`} />,
           }}
         />
       </div>
@@ -156,7 +246,7 @@ const Footer = ({
 const Subplebbit = () => {
   const params = useParams();
   const navigate = useNavigate();
-  const subplebbitAddress = params?.subplebbitAddress;
+  const subplebbitAddress = params?.subplebbitAddress || '';
   const subplebbit = useSubplebbit({ subplebbitAddress });
   const { createdAt, error, shortAddress, started, title, updatedAt, settings } = subplebbit || {};
   const isOnline = updatedAt && updatedAt > Date.now() / 1000 - 60 * 60;
@@ -173,7 +263,27 @@ const Subplebbit = () => {
 
   const timeFilterName = params.timeFilterName || 'all';
   const { timeFilterSeconds } = useTimeFilter();
-  const { feed, hasMore, loadMore, reset, subplebbitAddressesWithNewerPosts } = useFeed({ subplebbitAddresses, sortType, newerThan: timeFilterSeconds });
+  const { searchFilter, isSearching } = useFeedFiltersStore();
+
+  const feedOptions = useMemo(() => {
+    const options: any = {
+      subplebbitAddresses,
+      sortType,
+      newerThan: searchFilter ? 0 : timeFilterSeconds,
+    };
+
+    if (searchFilter) {
+      options.filter = (comment: Comment) => {
+        if (!searchFilter.trim()) return true;
+        return commentMatchesPattern(comment, searchFilter);
+      };
+      options.filterKey = `search-filter-${searchFilter}`;
+    }
+
+    return options;
+  }, [subplebbitAddresses, sortType, timeFilterSeconds, searchFilter]);
+
+  const { feed, hasMore, loadMore, reset, subplebbitAddressesWithNewerPosts } = useFeed(feedOptions);
 
   // show account comments instantly in the feed once published (cid defined), instead of waiting for the feed to update
   const { accountComments } = useAccountComments();
@@ -221,9 +331,9 @@ const Subplebbit = () => {
   }, [feed, filteredComments]);
 
   // virtuoso footer to display feed loading state, error, unblock button and "newer posts available" button
-  const footerProps: FooterProps = {
+  const footerProps = {
     subplebbitAddresses,
-    subplebbitAddress: subplebbitAddress || '',
+    subplebbitAddress,
     feedLength: feed.length || 0,
     isOnline,
     started,
@@ -231,8 +341,10 @@ const Subplebbit = () => {
     error: error || null,
     hasMore,
     subplebbitAddressesWithNewerPosts,
-    timeFilterName: timeFilterName || '',
+    timeFilterName: searchFilter ? 'all' : timeFilterName || '',
     reset,
+    searchFilter,
+    isSearching,
   };
 
   // scrolling position state for virtuoso feed
@@ -260,7 +372,8 @@ const Subplebbit = () => {
   }, [feed, setPinnedPostsCount]);
 
   // over 18 warning for subplebbit with nsfw tag in multisub default list
-  const { hasAcceptedWarning } = useContentOptionsStore();
+  const { hideAdultCommunities, hideGoreCommunities, hideAntiCommunities, hideVulgarCommunities } = useContentOptionsStore();
+  const hasUnhiddenAnyNsfwCommunity = !hideAdultCommunities || !hideGoreCommunities || !hideAntiCommunities || !hideVulgarCommunities;
   const isBroadlyNsfwSubplebbit = useIsBroadlyNsfwSubplebbit(subplebbitAddress || '');
 
   // page title
@@ -268,7 +381,7 @@ const Subplebbit = () => {
     document.title = title ? title : shortAddress || subplebbitAddress;
   }, [title, shortAddress, subplebbitAddress]);
 
-  return isBroadlyNsfwSubplebbit && !hasAcceptedWarning ? (
+  return isBroadlyNsfwSubplebbit && !hasUnhiddenAnyNsfwCommunity ? (
     <Over18Warning />
   ) : (
     <div className={styles.content}>

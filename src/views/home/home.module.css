@@ -37,6 +37,23 @@
   color: var(--red);
 }
 
+.morePostsSuggestion a, .link {
+  color: var(--text-primary);
+  text-decoration: none;
+  padding: 1px 4px;
+  background: var(--pagination-button-background);
+  border: var(--pagination-button-border);
+  border-radius: 3px;
+  font-weight: bold;
+  cursor: pointer;
+  text-transform: lowercase;
+  color: var(--link-primary);
+}
+
+.morePostsSuggestion a:hover, .link:hover {
+  border: var(--pagination-button-border-hover);
+}
+
 .blockConfirm span {
   color: var(--text-info);
   font-weight: 700;
@@ -52,14 +69,33 @@
 .noSubscriptions {
   text-align: center;
   font-size: 12px;
-  margin-right: 310px;
   color: var(--text);
+}
+
+@media (min-width: 640px) {
+  .noSubscriptions {
+    margin-right: 310px;
+  }
 }
 
 .noSubscriptions h1 {
   font-weight: bold;
   font-size: 25px;
   margin: 10px 0;
+}
+
+@media (max-width: 639px) {
+  .noSubscriptions h1 {
+    font-size: 20px;
+    padding: 0 15px;
+  }
+}
+
+.joinWithThe {
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  font-weight: 700;
 }
 
 .squash {
@@ -69,7 +105,13 @@
   box-sizing: border-box;
 }
 
-.squash img {
+@media (max-width: 639px) {
+  .squash {
+    padding: 0 20px;
+  }
+}
+
+.joinWithThe img {
   display: inline;
   margin: 0;
   vertical-align: bottom;
@@ -90,6 +132,14 @@
   height: 200px;
   -webkit-mask-image: linear-gradient(to bottom, black 20%, transparent 100%);
   mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
+}
+
+@media (max-width: 639px) {
+  .fakePost {
+    width: 100%;
+    max-width: 500px;
+    height: 150px;
+  }
 }
 
 .findCommunities a {

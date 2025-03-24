@@ -5,6 +5,7 @@ import { isAllView, isModView } from '../../lib/utils/view-utils';
 import { useFeedStateString } from '../../hooks/use-state-string';
 import LoadingEllipsis from '../loading-ellipsis';
 import styles from './feed-footer.module.css';
+import useFeedFiltersStore from '../../stores/use-feed-filters-store';
 
 interface FeedFooterProps {
   feedLength: number;
@@ -16,6 +17,9 @@ interface FeedFooterProps {
   monthlyFeedLength: number;
   currentTimeFilterName: string;
   reset: () => void;
+  searchFilter?: string;
+  isSearching?: boolean;
+  showNoResults?: boolean;
 }
 
 const FeedFooter = ({
@@ -28,6 +32,9 @@ const FeedFooter = ({
   monthlyFeedLength,
   currentTimeFilterName,
   reset,
+  searchFilter,
+  isSearching,
+  showNoResults,
 }: FeedFooterProps) => {
   let footerContent;
   const { t } = useTranslation();
@@ -63,14 +70,61 @@ const FeedFooter = ({
     footerContent = <LoadingEllipsis string={t('loading_feed')} />;
   }
 
-  if (feedLength === 0) {
+  // Handle search state
+  if (isSearching) {
+    footerContent = (
+      <div className={styles.stateString}>
+        <LoadingEllipsis string='searching' />
+      </div>
+    );
+  } else if (showNoResults && searchFilter) {
+    footerContent = (
+      <div className={styles.stateString}>
+        <span className={styles.noMatchesFound}>No matches found for "{searchFilter}"</span>
+        <br />
+        <br />
+        <div className={styles.morePostsSuggestion}>
+          <span
+            className={styles.link}
+            onClick={() => {
+              useFeedFiltersStore.getState().clearSearchFilter();
+              reset();
+            }}
+          >
+            Clear search
+          </span>
+        </div>
+      </div>
+    );
+  } else if (searchFilter && feedLength > 0) {
+    // When search results are found
+    footerContent = (
+      <div className={styles.stateString}>
+        <span className={styles.searchResults}>
+          Found {feedLength} {feedLength === 1 ? 'post' : 'posts'} for "{searchFilter}"
+        </span>
+        <br />
+        <br />
+        <div className={styles.morePostsSuggestion}>
+          <span
+            className={styles.link}
+            onClick={() => {
+              useFeedFiltersStore.getState().clearSearchFilter();
+              reset();
+            }}
+          >
+            Clear search
+          </span>
+        </div>
+      </div>
+    );
+  } else if (feedLength === 0 && !isSearching && !searchFilter) {
     footerContent = t('no_posts');
-  }
-
-  if (hasMore || subplebbitAddresses.length > 0 || (subplebbitAddresses && subplebbitAddresses.length === 0)) {
+  } else if (hasMore || subplebbitAddresses.length > 0 || (subplebbitAddresses && subplebbitAddresses.length === 0)) {
+    // Only show newer posts/weekly/monthly suggestions when not searching
     footerContent = (
       <>
-        {subplebbitAddressesWithNewerPosts.length > 0 ? (
+        {subplebbitAddressesWithNewerPosts.length > 0 && !searchFilter ? (
           <div className={styles.morePostsSuggestion}>
             <Trans
               i18nKey='newer_posts_available'
@@ -79,7 +133,7 @@ const FeedFooter = ({
               }}
             />
           </div>
-        ) : weeklyFeedLength > feedLength ? (
+        ) : weeklyFeedLength > feedLength && !searchFilter ? (
           <div className={styles.morePostsSuggestion}>
             <Trans
               i18nKey='more_posts_last_week'
@@ -90,7 +144,8 @@ const FeedFooter = ({
             />
           </div>
         ) : (
-          monthlyFeedLength > feedLength && (
+          monthlyFeedLength > feedLength &&
+          !searchFilter && (
             <div className={styles.morePostsSuggestion}>
               <Trans
                 i18nKey='more_posts_last_month'
@@ -116,9 +171,9 @@ const FeedFooter = ({
                 {t('connect_community_notice')}
               </div>
             )
-          ) : (
+          ) : !searchFilter ? (
             <LoadingEllipsis string={feedStateString || loadingStateString} />
-          )}
+          ) : null}
         </div>
       </>
     );

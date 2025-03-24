@@ -41,7 +41,7 @@
   color: var(--link-primary);
 }
 
-.morePostsSuggestion a:hover {
+.morePostsSuggestion a:hover, .link:hover {
   border: var(--pagination-button-border-hover);
 }
 

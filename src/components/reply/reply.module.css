@@ -131,10 +131,11 @@
   margin-bottom: 5px;
   font-size: 14px;
   font-weight: 400;
-  color: var(--text);
+  color: var(--text-markdown);
   max-width: 60em;
   word-wrap: break-word;
   line-height: 20px;
+  filter: var(--filter80);
 }
 
 .removedOrDeletedContent {

@@ -53,6 +53,10 @@ export const isCreateSubplebbitView = (pathname: string): boolean => {
   return pathname === '/communities/create';
 };
 
+export const isDomainView = (pathname: string): boolean => {
+  return pathname.startsWith('/domain/');
+};
+
 export const isHomeView = (pathname: string): boolean => {
   if (pathname === '/') return true;
 

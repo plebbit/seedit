@@ -38,6 +38,7 @@ import {
   isProfileUpvotedView,
   isSettingsPlebbitOptionsView,
   isSubplebbitAboutView,
+  isDomainView,
 } from '../../lib/utils/view-utils';
 import useNotFoundStore from '../../stores/use-not-found-store';
 import useTheme from '../../hooks/use-theme';
@@ -247,6 +248,7 @@ const HeaderTabs = () => {
   const location = useLocation();
   const isInAllView = isAllView(location.pathname);
   const isInAuthorView = isAuthorView(location.pathname);
+  const isInDomainView = isDomainView(location.pathname);
   const isInHomeAboutView = isHomeAboutView(location.pathname);
   const isInHomeView = isHomeView(location.pathname);
   const isInInboxView = isInboxView(location.pathname);
@@ -264,7 +266,14 @@ const HeaderTabs = () => {
 
   if (isInPostPageView || isInPendingPostView) {
     return <CommentsButton />;
-  } else if (isInHomeView || isInHomeAboutView || (isInSubplebbitView && !isInSubplebbitSubmitView && !isInSubplebbitSettingsView) || isInAllView || isInModView) {
+  } else if (
+    isInHomeView ||
+    isInHomeAboutView ||
+    (isInSubplebbitView && !isInSubplebbitSubmitView && !isInSubplebbitSettingsView) ||
+    isInAllView ||
+    isInModView ||
+    isInDomainView
+  ) {
     return <SortItems />;
   } else if (isInProfileView || isInAuthorView) {
     return <AuthorHeaderTabs />;
@@ -287,6 +296,7 @@ const HeaderTitle = ({ title, shortAddress, pendingPostSubplebbitAddress }: { ti
   const location = useLocation();
   const isInAllView = isAllView(location.pathname);
   const isInAuthorView = isAuthorView(location.pathname);
+  const isInDomainView = isDomainView(location.pathname);
   const isInInboxView = isInboxView(location.pathname);
   const isInModView = isModView(location.pathname);
   const isInPendingPostView = isPendingPostView(location.pathname, params);
@@ -304,12 +314,8 @@ const HeaderTitle = ({ title, shortAddress, pendingPostSubplebbitAddress }: { ti
 
   const subplebbitAddress = params.subplebbitAddress;
 
-  const contentOptionsStore = useContentOptionsStore();
-  const hasUnhiddenAnyNsfwCommunity =
-    !contentOptionsStore.hideAdultCommunities ||
-    !contentOptionsStore.hideGoreCommunities ||
-    !contentOptionsStore.hideAntiCommunities ||
-    !contentOptionsStore.hideVulgarCommunities;
+  const { hideAdultCommunities, hideGoreCommunities, hideAntiCommunities, hideVulgarCommunities } = useContentOptionsStore();
+  const hasUnhiddenAnyNsfwCommunity = !hideAdultCommunities || !hideGoreCommunities || !hideAntiCommunities || !hideVulgarCommunities;
   const isBroadlyNsfwSubplebbit = useIsBroadlyNsfwSubplebbit(subplebbitAddress || '');
 
   const subplebbitTitle = <Link to={`/p/${isInPendingPostView ? pendingPostSubplebbitAddress : subplebbitAddress}`}>{title || shortAddress}</Link>;
@@ -353,6 +359,8 @@ const HeaderTitle = ({ title, shortAddress, pendingPostSubplebbitAddress }: { ti
     return t('all');
   } else if (isInModView) {
     return <span className={styles.lowercase}>{t('communities_you_moderate')}</span>;
+  } else if (isInDomainView) {
+    return <span className={styles.lowercase}>{params.domain}</span>;
   }
   return null;
 };
@@ -372,6 +380,7 @@ const Header = () => {
   const isInAllAboutView = isAllAboutView(location.pathname);
   const isInAllView = isAllView(location.pathname);
   const isInAuthorView = isAuthorView(location.pathname);
+  const isInDomainView = isDomainView(location.pathname);
   const isInHomeView = isHomeView(location.pathname);
   const isInHomeAboutView = isHomeAboutView(location.pathname);
   const isInInboxView = isInboxView(location.pathname);
@@ -396,6 +405,7 @@ const Header = () => {
     (isInProfileView && !isInHomeAboutView) ||
     (isInAllView && !isInAllAboutView) ||
     (isInModView && !isInHomeAboutView) ||
+    (isInDomainView && !isInHomeAboutView) ||
     (isInAuthorView && !isInHomeAboutView);
 
   const subplebbitAddress = params.subplebbitAddress;

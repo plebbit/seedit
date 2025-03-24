@@ -60,6 +60,26 @@ export const FormattingHelpTable = () => {
             </td>
           </tr>
           <tr>
+            <td>
+              Lines starting with four spaces <br />
+              are treated like code:
+              <br />
+              <br />
+              <span className={styles.spaces}>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+              {'if 1 * 2 < 3:'}
+              <br />
+              <span className={styles.spaces}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+              print "hello, world!"
+            </td>
+            <td>
+              Lines starting with four spaces <br />
+              are treated like code:
+              <br />
+              <br />
+              <Markdown content={`    if 1 * 2 < 3:\n        print "hello, world!"`} />
+            </td>
+          </tr>
+          <tr>
             <td>~~strikethrough~~</td>
             <td>
               <Markdown content='~~strikethrough~~' />
@@ -176,9 +196,11 @@ const ReplyForm = ({ cid, isReplyingToReply, hideReplyForm, subplebbitAddress, p
         <button className={styles.save} onClick={onPublish}>
           {t('save')}
         </button>
-        <button className={styles.previewButton} onClick={() => setShowPreview(!showPreview)} disabled={!publishReplyOptions?.content}>
-          {showPreview ? t('edit') : t('preview')}
-        </button>
+        {showFormattingHelp && (
+          <button className={styles.previewButton} onClick={() => setShowPreview(!showPreview)} disabled={!publishReplyOptions?.content}>
+            {showPreview ? t('edit') : t('preview')}
+          </button>
+        )}
         {isReplyingToReply && (
           <button className={styles.cancel} onClick={hideReplyForm}>
             {t('cancel')}

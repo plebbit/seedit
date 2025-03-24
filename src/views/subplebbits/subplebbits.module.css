@@ -276,10 +276,10 @@
 .tags a {
   color: inherit;
   cursor: pointer;
-}
-
-.tags a:hover {
-  text-decoration: underline;
+  border: 1px solid var(--gray-light);
+  padding: 1px 2px;
+  margin-right: 4px;
+  cursor: pointer;
 }
 
 @media (max-width: 640px) {

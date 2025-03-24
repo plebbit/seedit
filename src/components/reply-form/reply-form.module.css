@@ -125,11 +125,26 @@
   border: 1px solid var(--gray);
   text-align: left;
   padding: 4px 9px;
+  line-height: 20px;
+}
+
+.markdownHelp p {
+  margin: 0;
 }
 
 @media (max-width: 640px) {
   .mdContainer {
     max-width: calc(100vw - 31px);
+  }
+  
+  .markdownHelp table {
+    font-size: 13px;
+  }
+  
+  .markdownHelp td {
+    padding: 3px 5px;
+    word-break: break-word;
+    hyphens: auto;
   }
 }
 
@@ -154,4 +169,8 @@
   padding-top: 4px;
   font-size: 14px;
   color: var(--text);
+}
+
+.spaces {
+  background-color: var(--gray);
 }

@@ -367,5 +367,8 @@
   "choose_file": "Vælg fil",
   "uploading": "Uploadering",
   "invalid_url_alert": "Det angivne link er ikke en gyldig URL.",
-  "empty_comment_alert": "Kan ikke poste en tom kommentar."
+  "empty_comment_alert": "Kan ikke poste en tom kommentar.",
+  "no_subscriptions_message": "<1>{{accountName}}, dette er dit hjem på Seedit</1><2>Når du finder et fællesskab, du kan lide, <3>tilmeld dig med <4></4></3></2>",
+  "find_communities": "find fællesskaber på p/all",
+  "community_deleted": "Fællesskabet blev slettet med succes."
 }
