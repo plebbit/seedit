@@ -287,7 +287,7 @@ const TopBar = () => {
                 </Link>
               </li>
             )}
-            <span className={styles.separator}> | </span>
+            {subscriptions?.length > 0 && <span className={styles.separator}> | </span>}
             {subscriptions?.map((subscription: string, index: number) => {
               const shortAddress = Plebbit.getShortAddress(subscription);
               const displayAddress = shortAddress.includes('.eth') ? shortAddress.slice(0, -4) : shortAddress.includes('.sol') ? shortAddress.slice(0, -4) : shortAddress;
