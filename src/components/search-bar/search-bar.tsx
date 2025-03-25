@@ -2,7 +2,7 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import styles from './search-bar.module.css';
-import { isHomeAboutView, isSubplebbitAboutView } from '../../lib/utils/view-utils';
+import { isHomeAboutView, isPostPageAboutView, isSubplebbitAboutView } from '../../lib/utils/view-utils';
 import useFeedFiltersStore from '../../stores/use-feed-filters-store';
 import _ from 'lodash';
 interface SearchBarProps {
@@ -23,7 +23,7 @@ const SearchBar = ({ isFocused = false, onExpandoChange }: SearchBarProps) => {
   const params = useParams();
   const isInHomeAboutView = isHomeAboutView(location.pathname);
   const isInSubplebbitAboutView = isSubplebbitAboutView(location.pathname, params);
-
+  const isInPostPageAboutView = isPostPageAboutView(location.pathname, params);
   const handleInputFocus = () => {
     setShowExpando(true);
   };
@@ -122,7 +122,7 @@ const SearchBar = ({ isFocused = false, onExpandoChange }: SearchBarProps) => {
   };
 
   return (
-    <div ref={wrapperRef} className={`${styles.searchBarWrapper} ${isInHomeAboutView || isInSubplebbitAboutView ? styles.mobileInfobar : ''}`}>
+    <div ref={wrapperRef} className={`${styles.searchBarWrapper} ${isInHomeAboutView || isInPostPageAboutView ? styles.mobileInfobar : ''}`}>
       <form className={styles.searchBar} ref={searchBarRef} onSubmit={handleSearchSubmit}>
         <input
           type='text'

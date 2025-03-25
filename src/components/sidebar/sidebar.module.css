@@ -103,7 +103,12 @@ a {
   cursor: pointer;
   margin-bottom: 12px;
   color: var(--text-primary);
-  margin-right: -5px;
+}
+
+@media (min-width: 639px) {
+  .largeButton {
+    margin-right: -5px;
+  }
 }
 
 .nub {

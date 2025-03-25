@@ -103,6 +103,10 @@ export const isPostPageView = (pathname: string, params: ParamsType): boolean =>
   return params.subplebbitAddress && params.commentCid ? decodedPathname.startsWith(`/p/${params.subplebbitAddress}/c/${params.commentCid}`) : false;
 };
 
+export const isPostPageAboutView = (pathname: string, params: ParamsType): boolean => {
+  return params.subplebbitAddress && params.commentCid ? pathname.startsWith(`/p/${params.subplebbitAddress}/c/${params.commentCid}/about`) : false;
+};
+
 export const isPostContextView = (pathname: string, params: ParamsType, search: string): boolean => {
   if (!params.subplebbitAddress || !params.commentCid) return false;
   const expectedPathname = `/p/${params.subplebbitAddress}/c/${params.commentCid}`;

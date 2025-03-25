@@ -39,6 +39,7 @@ import {
   isSettingsPlebbitOptionsView,
   isSubplebbitAboutView,
   isDomainView,
+  isPostPageAboutView,
 } from '../../lib/utils/view-utils';
 import useNotFoundStore from '../../stores/use-not-found-store';
 import useTheme from '../../hooks/use-theme';
@@ -54,10 +55,11 @@ const AboutButton = () => {
   const location = useLocation();
   const aboutLink = getAboutLink(location.pathname, params);
   const isInHomeAboutView = isHomeAboutView(location.pathname);
+  const isInPostPageAboutView = isPostPageAboutView(location.pathname, params);
   const isInSubplebbitAboutView = isSubplebbitAboutView(location.pathname, params);
 
   return (
-    <li className={`${styles.about} ${isInHomeAboutView || isInSubplebbitAboutView ? styles.selected : styles.choice}`}>
+    <li className={`${styles.about} ${isInHomeAboutView || isInSubplebbitAboutView || isInPostPageAboutView ? styles.selected : styles.choice}`}>
       <Link to={aboutLink}>{t('about')}</Link>
     </li>
   );
@@ -70,9 +72,10 @@ const CommentsButton = () => {
   const isInPostPageView = isPostPageView(location.pathname, params);
   const isInPendingPostView = isPendingPostView(location.pathname, params);
   const isInHomeAboutView = isHomeAboutView(location.pathname);
+  const isInPostPageAboutView = isPostPageAboutView(location.pathname, params);
 
   return (
-    <li className={(isInPostPageView || isInPendingPostView) && !isInHomeAboutView ? styles.selected : styles.choice}>
+    <li className={(isInPostPageView || isInPendingPostView) && !isInHomeAboutView && !isInPostPageAboutView ? styles.selected : styles.choice}>
       <Link to={`/p/${params.subplebbitAddress}/c/${params.commentCid}`} onClick={(e) => isInPendingPostView && e.preventDefault()}>
         {t('comments')}
       </Link>
@@ -85,6 +88,7 @@ const SortItems = () => {
   const params = useParams();
   const location = useLocation();
   const isInHomeAboutView = isHomeAboutView(location.pathname);
+  const isInPostPageAboutView = isPostPageAboutView(location.pathname, params);
   const isInSubplebbitAboutView = isSubplebbitAboutView(location.pathname, params);
   const isInAllView = isAllView(location.pathname);
   const isInModView = isModView(location.pathname);
@@ -94,14 +98,14 @@ const SortItems = () => {
   const timeFilterName = params.timeFilterName;
 
   useEffect(() => {
-    if (isInHomeAboutView || isInSubplebbitAboutView) {
+    if (isInHomeAboutView || isInSubplebbitAboutView || isInPostPageAboutView) {
       setSelectedSortType('');
     } else if (params.sortType) {
       setSelectedSortType(params.sortType);
     } else {
       setSelectedSortType('hot');
     }
-  }, [params.sortType, isInHomeAboutView, isInSubplebbitAboutView]);
+  }, [params.sortType, isInHomeAboutView, isInSubplebbitAboutView, isInPostPageAboutView]);
 
   return sortTypes.map((sortType, index) => {
     let sortLink = isInSubplebbitView ? `/p/${params.subplebbitAddress}/${sortType}` : isInAllView ? `p/all/${sortType}` : isInModView ? `p/mod/${sortType}` : sortType;
@@ -250,6 +254,7 @@ const HeaderTabs = () => {
   const isInAuthorView = isAuthorView(location.pathname);
   const isInDomainView = isDomainView(location.pathname);
   const isInHomeAboutView = isHomeAboutView(location.pathname);
+  const isInPostPageAboutView = isPostPageAboutView(location.pathname, params);
   const isInHomeView = isHomeView(location.pathname);
   const isInInboxView = isInboxView(location.pathname);
   const isInModView = isModView(location.pathname);
@@ -269,6 +274,7 @@ const HeaderTabs = () => {
   } else if (
     isInHomeView ||
     isInHomeAboutView ||
+    isInPostPageAboutView ||
     (isInSubplebbitView && !isInSubplebbitSubmitView && !isInSubplebbitSettingsView) ||
     isInAllView ||
     isInModView ||
@@ -386,6 +392,7 @@ const Header = () => {
   const isInInboxView = isInboxView(location.pathname);
   const isInModView = isModView(location.pathname);
   const isInPostPageView = isPostPageView(location.pathname, params);
+  const isInPostPageAboutView = isPostPageAboutView(location.pathname, params);
   const isInPendingPostView = isPendingPostView(location.pathname, params);
   const isInProfileView = isProfileView(location.pathname);
   const isInSettingsView = isSettingsView(location.pathname);
@@ -401,7 +408,13 @@ const Header = () => {
   const hasStickyHeader =
     isInHomeView ||
     isInNotFoundView ||
-    (isInSubplebbitView && !isInSubplebbitSubmitView && !isInSubplebbitSettingsView && !isInPostPageView && !isInHomeAboutView && !isInSubplebbitAboutView) ||
+    (isInSubplebbitView &&
+      !isInSubplebbitSubmitView &&
+      !isInSubplebbitSettingsView &&
+      !isInPostPageView &&
+      !isInHomeAboutView &&
+      !isInSubplebbitAboutView &&
+      !isInPostPageAboutView) ||
     (isInProfileView && !isInHomeAboutView) ||
     (isInAllView && !isInAllAboutView) ||
     (isInModView && !isInHomeAboutView) ||
