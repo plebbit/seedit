@@ -50,22 +50,6 @@
   margin-bottom: 5px;
 }
 
-@media (max-width: 1200px) {
-  .mediaPreview img,
-  .mediaPreview video,
-  .mediaPreview iframe {
-    max-width: calc(100vw - 435px) !important;
-  }
-}
-
-@media (max-width: 640px) {
-  .mediaPreview img,
-  .mediaPreview video,
-  .mediaPreview iframe {
-    max-width: 100% !important;
-  }
-}
-
 .mediaPreview img {
   max-width: 524px;
   height: auto;
