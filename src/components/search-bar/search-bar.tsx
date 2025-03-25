@@ -2,7 +2,7 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import styles from './search-bar.module.css';
-import { isHomeAboutView, isPostPageAboutView, isSubplebbitAboutView } from '../../lib/utils/view-utils';
+import { isHomeAboutView, isPostPageAboutView } from '../../lib/utils/view-utils';
 import useFeedFiltersStore from '../../stores/use-feed-filters-store';
 import _ from 'lodash';
 interface SearchBarProps {
@@ -22,7 +22,6 @@ const SearchBar = ({ isFocused = false, onExpandoChange }: SearchBarProps) => {
   const location = useLocation();
   const params = useParams();
   const isInHomeAboutView = isHomeAboutView(location.pathname);
-  const isInSubplebbitAboutView = isSubplebbitAboutView(location.pathname, params);
   const isInPostPageAboutView = isPostPageAboutView(location.pathname, params);
   const handleInputFocus = () => {
     setShowExpando(true);
