@@ -7,11 +7,13 @@ import styles from './account-bar.module.css';
 import SearchBar from '../search-bar';
 
 const AccountBar = () => {
-  const account = useAccount();
-  const { accounts } = useAccounts();
   const { t } = useTranslation();
   const location = useLocation();
   const params = useParams();
+  const account = useAccount();
+  const { accounts } = useAccounts();
+  const { karma } = account || {};
+
   const subplebbitAddress = params.subplebbitAddress;
   const isInSubplebbitView = isSubplebbitView(location.pathname, params);
   const isInSubmitView = isSubmitView(location.pathname);
@@ -93,6 +95,12 @@ const AccountBar = () => {
     <div className={styles.content}>
       <span className={styles.user}>
         <Link to='/profile'>{account?.author?.shortAddress}</Link>
+        {karma && (
+          <span className={styles.karma}>
+            {' '}
+            (<span className={styles.karmaScore}>{karma?.postScore + 1}</span>)
+          </span>
+        )}
         <span className={styles.userDropdownButton} ref={accountSelectButtonRef} onClick={toggleAccountDropdown} />
         {isAccountDropdownOpen && (
           <div className={`${styles.dropdown} ${accountDropdownClass}`} ref={accountDropdownRef}>
