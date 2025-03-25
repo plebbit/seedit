@@ -74,7 +74,7 @@ const FiltersDropdown = () => {
   return (
     <div className={`${styles.dropdown} ${styles.filterDropdown}`} ref={filterDropdownRef}>
       <span className={styles.selectedTitle} onClick={() => setIsFilterDropdownOpen(!isFilterDropdownOpen)}>
-        {timeFilterName} / {selectedSortType}
+        {selectedSortType} ({timeFilterName})
       </span>
       {isFilterDropdownOpen && (
         <div className={styles.dropChoices}>
