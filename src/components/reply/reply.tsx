@@ -1,5 +1,5 @@
 import { Fragment, useEffect, useMemo, useState } from 'react';
-import { Comment, useAccountComment, useAuthorAddress, useAuthorAvatar, useBlock, useEditedComment } from '@plebbit/plebbit-react-hooks';
+import { Comment, useAccountComment, useAuthorAddress, useAuthorAvatar, useBlock, useComment, useEditedComment } from '@plebbit/plebbit-react-hooks';
 import useSubplebbitsStore from '@plebbit/plebbit-react-hooks/dist/stores/subplebbits';
 import useSubplebbitsPagesStore from '@plebbit/plebbit-react-hooks/dist/stores/subplebbits-pages';
 import { flattenCommentsPages } from '@plebbit/plebbit-react-hooks/dist/lib/utils';
@@ -254,19 +254,26 @@ const InboxParentLink = ({ commentCid }: ParentLinkProps) => {
   );
 };
 
-const InboxShowParentButton = ({ parentCid }: { parentCid: string | undefined }) => {
+const InboxParentComment = ({ parentCid }: { parentCid: string | undefined }) => {
   const { t } = useTranslation();
-  const [showParent, setShowParent] = useState(false);
-  const parentComment = useSubplebbitsPagesStore((state) => state.comments[parentCid as string]);
+  const parentComment = useComment({ commentCid: parentCid });
   const { content, subplebbitAddress } = parentComment || {};
-
-  return showParent ? (
+  return (
     <>
       <Expando content={content} expanded={true} showContent={true} />
       <Link className={styles.viewParentComment} to={`/p/${subplebbitAddress}/c/${parentCid}`}>
         {t('view_parent_comment')}
       </Link>
     </>
+  );
+};
+
+const InboxShowParentButton = ({ parentCid }: { parentCid: string | undefined }) => {
+  const { t } = useTranslation();
+  const [showParent, setShowParent] = useState(false);
+
+  return showParent ? (
+    <InboxParentComment parentCid={parentCid} />
   ) : (
     <div className={styles.inboxParentInfoButton} onClick={() => setShowParent(true)}>
       {t('show_parent')}
