@@ -1,9 +1,11 @@
 .mdContainer {
-  margin: 5px 0 10px 0px;
   font-size: small;
   padding: 0 1px;
   max-width: 500px;
   unicode-bidi: isolate;
+  margin-top: 5px;
+  margin-bottom: -9px;
+  padding-bottom: 10px;
 }
 
 .infobar {
@@ -36,6 +38,7 @@
 }
 
 .mdContainerReplying {
+  border-left: var(--reply-child-border-left);
   margin-left: 25px;
 }
 
@@ -83,9 +86,10 @@
   font-size: 12px;
   padding-bottom: 2px;
   padding-top: 2px;
-  clear: both;
   display: flex;
   gap: 10px;
+  margin-bottom: 0;
+  overflow: hidden;
 }
 
 .markdownHelp {

@@ -163,21 +163,23 @@ const ReplyForm = ({ cid, isReplyingToReply, hideReplyForm, subplebbitAddress, p
     <div className={mdContainerClass}>
       <div className={styles.md}>
         {isOffline && isTextareaFocused && <div className={styles.infobar}>{offlineTitle}</div>}
-        <div className={styles.options}>
-          <span className={urlClass}>
-            {t('media_url')}: <input className={`${styles.url} ${urlClass}`} onChange={(e) => setPublishReplyOptions.link(e.target.value)} />
-          </span>
-          <span className={`${styles.spoiler} ${spoilerClass}`}>
-            <label>
-              {t('spoiler')}: <input type='checkbox' className={styles.checkbox} onChange={(e) => setPublishReplyOptions.spoiler(e.target.checked)} />
-            </label>
-          </span>
-          <span className={`${styles.spoiler} ${nsfwClass}`}>
-            <label>
-              {t('nsfw')}: <input type='checkbox' className={styles.checkbox} onChange={(e) => setPublishReplyOptions.nsfw(e.target.checked)} />
-            </label>
-          </span>
-        </div>
+        {showOptions && (
+          <div className={styles.options}>
+            <span className={urlClass}>
+              {t('media_url')}: <input className={`${styles.url} ${urlClass}`} onChange={(e) => setPublishReplyOptions.link(e.target.value)} />
+            </span>
+            <span className={`${styles.spoiler} ${spoilerClass}`}>
+              <label>
+                {t('spoiler')}: <input type='checkbox' className={styles.checkbox} onChange={(e) => setPublishReplyOptions.spoiler(e.target.checked)} />
+              </label>
+            </span>
+            <span className={`${styles.spoiler} ${nsfwClass}`}>
+              <label>
+                {t('nsfw')}: <input type='checkbox' className={styles.checkbox} onChange={(e) => setPublishReplyOptions.nsfw(e.target.checked)} />
+              </label>
+            </span>
+          </div>
+        )}
         {!showPreview ? (
           <textarea
             className={styles.textarea}
