@@ -7,9 +7,6 @@
   padding-top: 5px;
   clear: left;
   position: relative;
-  max-width: 100%;
-  box-sizing: border-box;
-  overflow: hidden;
 }
 
 .expando p {
@@ -49,7 +46,7 @@
 .mediaPreview {
   display: inline-block;
   position: relative;
-  max-width: 100%;
+  max-width: 524px;
   margin-bottom: 5px;
   box-sizing: border-box;
 }
