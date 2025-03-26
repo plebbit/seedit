@@ -7,6 +7,9 @@
   padding-top: 5px;
   clear: left;
   position: relative;
+  max-width: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
 }
 
 .expando p {
@@ -48,18 +51,21 @@
   position: relative;
   max-width: 100%;
   margin-bottom: 5px;
+  box-sizing: border-box;
 }
 
 .mediaPreview img {
-  max-width: 524px;
+  max-width: 100%;
   height: auto;
   background-color: var(--background-thumbnail);
+  object-fit: contain;
 }
 
 .mediaPreview video {
-  max-width: 524px;
+  max-width: 100%;
   max-height: 50vh;
   background-color: var(--background-thumbnail);
+  object-fit: contain;
 }
 
 .mediaPreview iframe {
