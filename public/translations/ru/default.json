@@ -370,5 +370,7 @@
   "empty_comment_alert": "Невозможно опубликовать пустой комментарий.",
   "no_subscriptions_message": "<1>{{accountName}}, это ваш дом на Seedit</1><2>Когда вы найдете сообщество, которое вам нравится, <3>присоединитесь с <4></4></3></2>",
   "find_communities": "найти сообщества на p/all",
-  "community_deleted": "Сообщество успешно удалено."
+  "community_deleted": "Сообщество успешно удалено.",
+  "go_to_a_community": "Перейти в сообщество",
+  "enter_community_address": "Введите адрес сообщества"
 }

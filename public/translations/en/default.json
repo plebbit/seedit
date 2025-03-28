@@ -370,5 +370,7 @@
   "empty_comment_alert": "Cannot post empty comment.",
   "no_subscriptions_message": "<1>{{accountName}}, this is your home on Seedit</1><2>When you find a community that you like, <3>join with the <4></4></3></2>",
   "find_communities": "find communities on p/all",
-  "community_deleted": "Community deleted successfully."
+  "community_deleted": "Community deleted successfully.",
+  "go_to_a_community": "Go to a community",
+  "enter_community_address": "Enter a community address"
 }
