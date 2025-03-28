@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react';
 import { Link, useLocation, useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import Plebbit from '@plebbit/plebbit-js/dist/browser/index.js';
 import { useAccount, useAccountComment } from '@plebbit/plebbit-react-hooks';
+import Plebbit from '@plebbit/plebbit-js/dist/browser/index.js';
 import useSubplebbitsStore from '@plebbit/plebbit-react-hooks/dist/stores/subplebbits';
-import { sortTypes } from '../../app';
+import { sortTypes } from '../../constants/sort-types';
+import { sortLabels } from '../../constants/sort-labels';
 import {
   getAboutLink,
   isAllView,
@@ -41,13 +42,13 @@ import {
   isDomainView,
   isPostPageAboutView,
 } from '../../lib/utils/view-utils';
+import useContentOptionsStore from '../../stores/use-content-options-store';
 import useNotFoundStore from '../../stores/use-not-found-store';
+import { useIsBroadlyNsfwSubplebbit } from '../../hooks/use-is-broadly-nsfw-subplebbit';
 import useTheme from '../../hooks/use-theme';
 import useWindowWidth from '../../hooks/use-window-width';
-import styles from './header.module.css';
 import SubscribeButton from '../subscribe-button';
-import useContentOptionsStore from '../../stores/use-content-options-store';
-import { useIsBroadlyNsfwSubplebbit } from '../../hooks/use-is-broadly-nsfw-subplebbit';
+import styles from './header.module.css';
 
 const AboutButton = () => {
   const { t } = useTranslation();
@@ -93,7 +94,6 @@ const SortItems = () => {
   const isInAllView = isAllView(location.pathname);
   const isInModView = isModView(location.pathname);
   const isInSubplebbitView = isSubplebbitView(location.pathname, params);
-  const sortLabels = [t('hot'), t('new'), t('active'), t('controversial'), t('top')];
   const [selectedSortType, setSelectedSortType] = useState(params.sortType || '/hot');
   const timeFilterName = params.timeFilterName;
 
@@ -115,7 +115,7 @@ const SortItems = () => {
     return (
       <li key={sortType} className={selectedSortType === sortType ? styles.selected : styles.choice}>
         <Link to={sortLink} onClick={() => setSelectedSortType(sortType)}>
-          {sortLabels[index]}
+          {t(sortLabels[index])}
         </Link>
       </li>
     );
@@ -372,6 +372,7 @@ const HeaderTitle = ({ title, shortAddress, pendingPostSubplebbitAddress }: { ti
 };
 
 const Header = () => {
+  const { t } = useTranslation();
   const [theme] = useTheme();
   const location = useLocation();
   const params = useParams();
@@ -482,6 +483,13 @@ const Header = () => {
         <ul className={`${styles.tabMenu} ${isInProfileView ? styles.horizontalScroll : ''}`}>
           <HeaderTabs />
           {(isInHomeView || isInHomeAboutView || isInSubplebbitView || isInHomeAboutView || isInPostPageView) && <AboutButton />}
+          {!isInSubmitView && (
+            <li>
+              <Link to={'/submit'} className={styles.submitButton}>
+                {t('submit')}
+              </Link>
+            </li>
+          )}
         </ul>
       )}
     </div>

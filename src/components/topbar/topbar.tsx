@@ -3,13 +3,13 @@ import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useAccount, useAccountSubplebbits } from '@plebbit/plebbit-react-hooks';
 import Plebbit from '@plebbit/plebbit-js/dist/browser/index.js';
-import styles from './topbar.module.css';
-import { useDefaultSubplebbitAddresses } from '../../hooks/use-default-subplebbits';
-import useTimeFilter from '../../hooks/use-time-filter';
+import { sortTypes } from '../../constants/sort-types';
 import { isAllView, isHomeView, isModView, isSubplebbitView, isDomainView } from '../../lib/utils/view-utils';
 import useContentOptionsStore from '../../stores/use-content-options-store';
+import { useDefaultSubplebbitAddresses } from '../../hooks/use-default-subplebbits';
+import useTimeFilter from '../../hooks/use-time-filter';
+import styles from './topbar.module.css';
 
-const sortTypes = ['hot', 'new', 'active', 'controversialAll', 'topAll'];
 const isElectron = window.isElectron === true;
 
 const FiltersDropdown = () => {
@@ -28,7 +28,7 @@ const FiltersDropdown = () => {
   const [isFilterDropdownOpen, setIsFilterDropdownOpen] = useState(false);
   const filterDropdownRef = useRef<HTMLDivElement>(null);
 
-  const sortLabels = [t('hot'), t('new'), t('active'), t('controversial'), t('top')];
+  const sortLabels = [t('hot'), t('new'), t('active'), t('top')];
   const selectedSortType = params.sortType || 'hot';
 
   const getTimeFilterLink = (timeFilterName: string) => {

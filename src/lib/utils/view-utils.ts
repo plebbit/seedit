@@ -8,7 +8,7 @@ export type ParamsType = {
 
 export type ViewType = 'home' | 'pending' | 'post' | 'submit' | 'subplebbit' | 'subplebbit/submit';
 
-const sortTypes = ['/hot', '/new', '/active', '/controversialAll', '/topAll'];
+const sortTypes = ['/hot', '/new', '/active', '/topAll'];
 
 export const getAboutLink = (pathname: string, params: ParamsType): string => {
   // some subs might use emojis in their address, so we need to decode the pathname
