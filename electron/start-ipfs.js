@@ -20,7 +20,8 @@ const ps = {
   },
 };
 
-const __filename = fileURLToPath(import.meta.url);
+// Safe path resolution for both ESM and bundled CJS
+const __filename = import.meta.url ? fileURLToPath(import.meta.url) : __filename;
 const dirname = path.dirname(__filename);
 const envPaths = envPathsImport('seedit');
 

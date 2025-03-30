@@ -8,14 +8,25 @@ import './start-plebbit-rpc.js';
 import { URL } from 'node:url';
 import contextMenu from 'electron-context-menu';
 import { readFileSync } from 'fs';
-const packageJson = JSON.parse(readFileSync(new URL('../package.json', import.meta.url), 'utf8'));
 import FormData from 'form-data';
 import fetch from 'node-fetch';
 import { createReadStream } from 'fs';
 import fs from 'fs';
 
-const __filename = fileURLToPath(import.meta.url);
+// Create a safe fileURLToPath polyfill for bundled context
+const __filename = import.meta.url ? fileURLToPath(import.meta.url) : __filename;
 const dirname = path.dirname(__filename);
+
+// Load package.json in a way that works in both ESM and bundled CJS
+let packageJson;
+try {
+  // First try ESM import with URL
+  packageJson = JSON.parse(readFileSync(new URL('../package.json', import.meta.url), 'utf8'));
+} catch (e) {
+  // Fallback to path join for bundled CJS
+  packageJson = JSON.parse(readFileSync(path.join(dirname, '..', 'package.json'), 'utf8'));
+}
+
 const envPaths = EnvPaths('seedit');
 
 // Use app.isPackaged to determine if running in development

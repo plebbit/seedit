@@ -10,7 +10,15 @@ async function runBuild() {
       platform: 'node',
       target: 'node16',
       outfile: 'electron/main.bundle.js',
-      format: 'esm',
+      format: 'cjs',
+      sourcemap: true,
+      banner: {
+        js: `
+          // This is a polyfill for __dirname and __filename in ESM bundled to CJS
+          const __filename = require('path').resolve(__dirname, 'main.bundle.js');
+          const __dirname = require('path').dirname(__filename);
+        `,
+      },
       external: [
         // Core module that should be excluded
         'electron',
