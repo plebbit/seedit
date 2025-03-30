@@ -1,7 +1,7 @@
 .nested {
   margin-top: 10px;
   margin-left: 25px;
-  border-left: 1px dotted #DDF;
+  border-left: var(--reply-child-border-left);
 }
 
 .replyWrapper {
@@ -315,7 +315,7 @@
 .continueThisThread {
   display: block;
   margin: 10px 0 0 25px;
-  border-left: 1px dotted #DDF;
+  border-left: var(--reply-child-border-left);
   font-size: 12px;
 }
 

@@ -14,6 +14,7 @@
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   padding: 6px 25px 6px 9px;
+  text-transform: lowercase;
 }
 
 .mobileInfobar input[type="text"] {
@@ -34,10 +35,9 @@
   border: none;
   position: absolute;
   top: 9px;
-  right: 9px;
+  right: 4px;
   cursor: pointer;
   font-size: 0px;
-  margin-right: -5px;
 }
 
 .searchBar input[type="submit"]:hover {
@@ -56,7 +56,6 @@
   border-width: 1px;
   font-size: small;
   padding: 10px;
-  height: 50px;
   overflow: hidden;
   z-index: 1;
   margin-top: 5px;
@@ -70,6 +69,10 @@
   transform: scaleY(1);
   visibility: visible;
   height: 50px;
+}
+
+.lessHeight {
+  height: 22px;
 }
 
 .slideUp {

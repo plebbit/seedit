@@ -16,7 +16,7 @@ import LoadingEllipsis from '../../components/loading-ellipsis';
 import Over18Warning from '../../components/over-18-warning';
 import Post from '../../components/post';
 import Sidebar from '../../components/sidebar';
-import { sortTypes } from '../../constants/sortTypes';
+import { sortTypes } from '../../constants/sort-types';
 
 const lastVirtuosoStates: { [key: string]: StateSnapshot } = {};
 

@@ -16,6 +16,7 @@ import {
   isHomeView,
   isModView,
   isPendingPostView,
+  isPostPageAboutView,
   isPostPageView,
   isSubplebbitAboutView,
   isSubplebbitSettingsView,
@@ -26,6 +27,7 @@ import SearchBar from '../search-bar';
 import SubscribeButton from '../subscribe-button';
 import LoadingEllipsis from '../loading-ellipsis';
 import Version from '../version';
+import { FAQ } from '../../views/about/about';
 
 const isElectron = window.isElectron === true;
 
@@ -117,11 +119,13 @@ interface SidebarProps {
 
 export const Footer = () => {
   const location = useLocation();
+  const params = useParams();
   const isMobile = useIsMobile();
   const isInHomeAboutView = isHomeAboutView(location.pathname);
+  const isInPostPageAboutView = isPostPageAboutView(location.pathname, params);
 
   return (
-    <div className={`${styles.footer} ${isMobile && isInHomeAboutView ? styles.mobileFooter : ''}`}>
+    <div className={`${styles.footer} ${isMobile && (isInHomeAboutView || isInPostPageAboutView) ? styles.mobileFooter : ''}`}>
       <span className={styles.footerLogo}>
         <img src='assets/logo/seedit.png' alt='' />
       </span>
@@ -189,6 +193,7 @@ const Sidebar = ({ comment, isSubCreatedButNotYetPublished, settings, subplebbit
   const isInAllView = isAllView(location.pathname);
   const isInDomainView = isDomainView(location.pathname);
   const isInHomeAboutView = isHomeAboutView(location.pathname);
+  const isInPostPageAboutView = isPostPageAboutView(location.pathname, params);
   const isInHomeView = isHomeView(location.pathname);
   const isInModView = isModView(location.pathname);
   const isInPendingPostView = isPendingPostView(location.pathname, params);
@@ -201,7 +206,7 @@ const Sidebar = ({ comment, isSubCreatedButNotYetPublished, settings, subplebbit
   const subplebbitCreator = findSubplebbitCreator(roles);
   const creatorAddress = subplebbitCreator === 'anonymous' ? 'anonymous' : `${Plebbit.getShortAddress(subplebbitCreator)}`;
   const submitRoute =
-    isInHomeView || isInHomeAboutView || isInAllView || isInModView || isInDomainView
+    isInHomeView || isInHomeAboutView || isInAllView || isInModView || isInDomainView || isInPostPageAboutView
       ? '/submit'
       : isInPendingPostView
       ? `/p/${pendingPost?.subplebbitAddress}/submit`
@@ -276,64 +281,71 @@ const Sidebar = ({ comment, isSubCreatedButNotYetPublished, settings, subplebbit
             <div className={styles.nub} />
           </div>
         </Link>
-        {!isInHomeView && !isInHomeAboutView && !isInAllView && !isInModView && !isInSubplebbitsView && !isInHomeAboutView && !isInDomainView && (
-          <div className={styles.titleBox}>
-            <Link className={styles.title} to={`/p/${address}`}>
-              {subplebbit?.address}
-            </Link>
-            <div className={styles.subscribeContainer}>
-              <span className={styles.subscribeButton}>
-                <SubscribeButton address={address} />
-              </span>
-              <span className={styles.subscribers}>{t('members_count', { count: allActiveUserCount })}</span>
-            </div>
-            <div className={styles.onlineLine}>
-              <span className={`${styles.onlineIndicator} ${!isOffline ? styles.online : styles.offline}`} title={!isOffline ? t('online') : t('offline')} />
-              <span>{isSubCreatedButNotYetPublished ? subCreatedButNotYetPublishedStatus : onlineStatus}</span>
-              {moderatorRole && (
-                <div className={styles.moderatorStatus}>
-                  {moderatorRole === 'moderator' ? t('you_are_moderator') : moderatorRole === 'admin' ? t('you_are_admin') : t('you_are_owner')}
-                </div>
-              )}
-            </div>
-            {description && description.length > 0 && (
-              <div>
-                {title && title.length > 0 && (
-                  <div className={styles.descriptionTitle}>
-                    <strong>{title}</strong>
+        {!isInHomeView &&
+          !isInHomeAboutView &&
+          !isInAllView &&
+          !isInModView &&
+          !isInSubplebbitsView &&
+          !isInHomeAboutView &&
+          !isInDomainView &&
+          !isInPostPageAboutView && (
+            <div className={styles.titleBox}>
+              <Link className={styles.title} to={`/p/${address}`}>
+                {subplebbit?.address}
+              </Link>
+              <div className={styles.subscribeContainer}>
+                <span className={styles.subscribeButton}>
+                  <SubscribeButton address={address} />
+                </span>
+                <span className={styles.subscribers}>{t('members_count', { count: allActiveUserCount })}</span>
+              </div>
+              <div className={styles.onlineLine}>
+                <span className={`${styles.onlineIndicator} ${!isOffline ? styles.online : styles.offline}`} title={!isOffline ? t('online') : t('offline')} />
+                <span>{isSubCreatedButNotYetPublished ? subCreatedButNotYetPublishedStatus : onlineStatus}</span>
+                {moderatorRole && (
+                  <div className={styles.moderatorStatus}>
+                    {moderatorRole === 'moderator' ? t('you_are_moderator') : moderatorRole === 'admin' ? t('you_are_admin') : t('you_are_owner')}
                   </div>
                 )}
-                <div className={styles.description}>
-                  <Markdown content={description} />
+              </div>
+              {description && description.length > 0 && (
+                <div>
+                  {title && title.length > 0 && (
+                    <div className={styles.descriptionTitle}>
+                      <strong>{title}</strong>
+                    </div>
+                  )}
+                  <div className={styles.description}>
+                    <Markdown content={description} />
+                  </div>
+                </div>
+              )}
+              {rules && rules.length > 0 && <RulesList rules={rules} />}
+              <div className={styles.bottom}>
+                {t('created_by', { creatorAddress: '' })}
+                <span>{`u/${creatorAddress}`}</span>
+                {createdAt && <span className={styles.age}> {t('community_for', { date: getFormattedTimeDuration(createdAt) })}</span>}
+                <div className={styles.bottomButtons}>
+                  {showBlockConfirm ? (
+                    <span className={styles.blockConfirm}>
+                      {t('are_you_sure')}{' '}
+                      <span className={styles.confirmButton} onClick={handleBlock}>
+                        {t('yes')}
+                      </span>
+                      {' / '}
+                      <span className={styles.cancelButton} onClick={cancelBlock}>
+                        {t('no')}
+                      </span>
+                    </span>
+                  ) : (
+                    <span className={styles.blockSub} onClick={blockConfirm}>
+                      {blocked ? t('unblock_community') : t('block_community')}
+                    </span>
+                  )}
                 </div>
               </div>
-            )}
-            {rules && rules.length > 0 && <RulesList rules={rules} />}
-            <div className={styles.bottom}>
-              {t('created_by', { creatorAddress: '' })}
-              <span>{`u/${creatorAddress}`}</span>
-              {createdAt && <span className={styles.age}> {t('community_for', { date: getFormattedTimeDuration(createdAt) })}</span>}
-              <div className={styles.bottomButtons}>
-                {showBlockConfirm ? (
-                  <span className={styles.blockConfirm}>
-                    {t('are_you_sure')}{' '}
-                    <span className={styles.confirmButton} onClick={handleBlock}>
-                      {t('yes')}
-                    </span>
-                    {' / '}
-                    <span className={styles.cancelButton} onClick={cancelBlock}>
-                      {t('no')}
-                    </span>
-                  </span>
-                ) : (
-                  <span className={styles.blockSub} onClick={blockConfirm}>
-                    {blocked ? t('unblock_community') : t('block_community')}
-                  </span>
-                )}
-              </div>
             </div>
-          </div>
-        )}
+          )}
         {(moderatorRole || isOwner) && <ModerationTools address={address} />}
         <div className={styles.largeButton} onClick={handleCreateCommunity}>
           {t('create_your_community')}
@@ -353,7 +365,8 @@ const Sidebar = ({ comment, isSubCreatedButNotYetPublished, settings, subplebbit
             </div>
           </a>
         )}
-        {(!(isMobile && isHomeAboutView) || isInSubplebbitAboutView) && <Footer />}
+        {(!(isMobile && isInHomeAboutView) || isInSubplebbitAboutView || isInPostPageAboutView) && <Footer />}
+        {isMobile && isInHomeAboutView && <FAQ />}
       </div>
     </div>
   );

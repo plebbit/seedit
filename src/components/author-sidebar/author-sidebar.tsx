@@ -60,8 +60,8 @@ const AuthorSidebar = () => {
   const isInAuthorView = isAuthorView(location.pathname);
   const isInProfileView = isProfileView(location.pathname);
 
-  const profileAccount = useAccount();
-  const { imageUrl: profilePageAvatar } = useAuthorAvatar({ author: profileAccount?.author });
+  const userAccount = useAccount();
+  const { imageUrl: profilePageAvatar } = useAuthorAvatar({ author: userAccount?.author });
   const { accountComments } = useAccountComments();
   const { accountSubplebbits } = useAccountSubplebbits();
   const profileOldestAccountTimestamp = accountComments?.length
@@ -69,7 +69,7 @@ const AuthorSidebar = () => {
     : Date.now();
 
   const defaultSubplebbitAddresses = useDefaultSubplebbitAddresses();
-  const accountSubscriptions = profileAccount?.subscriptions || [];
+  const accountSubscriptions = userAccount?.subscriptions || [];
   const subscriptionsAndDefaults = [...accountSubscriptions, ...defaultSubplebbitAddresses];
 
   const subplebbits = useSubplebbitsStore((state) => {
@@ -85,12 +85,12 @@ const AuthorSidebar = () => {
   const authorSubplebbits = findAuthorSubplebbits(authorAddress, Object.values(subplebbits));
   const estimatedAuthorKarma = estimateAuthorKarma(authorComments);
 
-  const address = isInAuthorView ? params?.authorAddress : isInProfileView ? profileAccount?.author?.shortAddress : '';
-  const karma = isInAuthorView ? estimatedAuthorKarma : isInProfileView ? profileAccount?.karma : '';
+  const address = isInAuthorView ? params?.authorAddress : isInProfileView ? userAccount?.author?.shortAddress : '';
+  const karma = isInAuthorView ? estimatedAuthorKarma : isInProfileView ? userAccount?.karma : '';
   const { postScore, replyScore } = karma || { postScore: 0, replyScore: 0 };
 
   const oldestCommentTimestamp = isInAuthorView ? authorOldestCommentTimestamp : isInProfileView ? profileOldestAccountTimestamp : Date.now();
-  const displayName = isInAuthorView ? authorAccount?.author?.displayName : isInProfileView ? profileAccount?.author?.displayName : '';
+  const displayName = isInAuthorView ? authorAccount?.author?.displayName : isInProfileView ? userAccount?.author?.displayName : '';
 
   const blockConfirm = () => {
     setShowBlockConfirm(true);
@@ -132,20 +132,20 @@ const AuthorSidebar = () => {
         </div>
         {displayName && <div className={styles.displayName}>{displayName}</div>}
         {/*  TODO: implement functionality for subscribing to users
-        {isInAuthorView && authorAddress !== profileAccount?.author?.address && (
+        {isInAuthorView && authorAddress !== userAccount?.author?.address && (
           <div className={styles.friends}>
             <SubscribeButton address={address} />
           </div>
         )} */}
         <div>
-          <span className={styles.karma}>{postScore}</span> {t('post_karma')}
+          <span className={styles.karma}>{postScore + 1}</span> {t('post_karma')}
         </div>
         <div>
           <span className={styles.karma}>{replyScore}</span> {t('comment_karma')}
         </div>
         <div className={styles.bottom}>
           {isInAuthorView &&
-            authorAddress !== profileAccount?.author?.address &&
+            authorAddress !== userAccount?.author?.address &&
             (showBlockConfirm ? (
               <span className={styles.blockConfirm}>
                 {t('are_you_sure')}{' '}

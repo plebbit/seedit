@@ -11,7 +11,7 @@ import { useEffect } from 'react';
 
 const isAndroid = Capacitor.getPlatform() === 'android';
 
-const FAQ = () => {
+export const FAQ = () => {
   const account = useAccount();
   const isMobile = useIsMobile();
   const location = useLocation();
@@ -175,7 +175,6 @@ const About = () => {
         isInHomeAboutView ? (
           <>
             <Sidebar comment={comment} subplebbit={subplebbit} />
-            <FAQ />
           </>
         ) : (
           <Sidebar comment={comment} subplebbit={subplebbit} />

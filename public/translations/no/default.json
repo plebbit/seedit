@@ -370,5 +370,7 @@
   "empty_comment_alert": "Kan ikke poste tom kommentar.",
   "no_subscriptions_message": "<1>{{accountName}}, dette er ditt hjem på Seedit</1><2>Når du finner et fellesskap du liker, <3>bli med i <4></4></3></2>",
   "find_communities": "finn samfunn på p/all",
-  "community_deleted": "Fellesskapet ble slettet med suksess."
+  "community_deleted": "Fellesskapet ble slettet med suksess.",
+  "go_to_a_community": "Gå til et fellesskap",
+  "enter_community_address": "Skriv inn en fellesskapsadresse"
 }

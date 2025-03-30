@@ -1,7 +1,6 @@
 import { useEffect, useState, useRef, useCallback, useMemo } from 'react';
 import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
 import { Comment, useAccount, useAccountComment, useAccountComments, useComment, useSubplebbit } from '@plebbit/plebbit-react-hooks';
-import useSubplebbitsPagesStore from '@plebbit/plebbit-react-hooks/dist/stores/subplebbits-pages';
 import { useTranslation } from 'react-i18next';
 import findTopParentCidOfReply from '../../lib/utils/cid-utils';
 import { sortByBest } from '../../lib/utils/post-utils';
@@ -80,6 +79,7 @@ const Post = ({ post }: { post: Comment }) => {
   const location = useLocation();
   const params = useParams();
   const isInPostContextView = isPostContextView(location.pathname, params, location.search);
+
   const { cid, deleted, depth, locked, removed, postCid, replyCount, state, subplebbitAddress, timestamp } = post || {};
 
   const [sortBy, setSortBy] = useState('best');
@@ -126,6 +126,8 @@ const Post = ({ post }: { post: Comment }) => {
 
   const lockedState = deleted ? t('deleted') : locked ? t('locked') : removed ? t('removed') : '';
 
+  const postComment = useComment({ commentCid: postCid });
+
   return (
     <>
       {(deleted || locked || removed) && (
@@ -133,7 +135,7 @@ const Post = ({ post }: { post: Comment }) => {
           <div className={styles.lockedInfobarText}>{t('post_locked_info', { state: _.lowerCase(lockedState) })}</div>
         </div>
       )}
-      <PostComponent post={post} />
+      {isSingleComment ? <PostComponent post={postComment} /> : <PostComponent post={post} />}
       {timestamp && (
         <div className={styles.replyArea}>
           {!isSingleComment && (
@@ -143,11 +145,13 @@ const Post = ({ post }: { post: Comment }) => {
               </span>
             </div>
           )}
-          <div className={styles.menuArea}>
-            <SortDropdown sortBy={sortBy} onSortChange={setSortBy} />
-            <div className={styles.spacer} />
-            {!isSingleComment && subplebbitAddress && cid && <ReplyForm cid={cid} subplebbitAddress={subplebbitAddress} postCid={postCid} />}
-          </div>
+          {!isSingleComment && (
+            <div className={styles.menuArea}>
+              <SortDropdown sortBy={sortBy} onSortChange={setSortBy} />
+              <div className={styles.spacer} />
+              {subplebbitAddress && cid && <ReplyForm cid={cid} subplebbitAddress={subplebbitAddress} postCid={postCid} />}
+            </div>
+          )}
           {isSingleComment && (
             <div className={styles.singleCommentInfobar}>
               <div className={styles.singleCommentInfobarText}>{t('single_comment_notice')}</div>
@@ -184,9 +188,9 @@ const Post = ({ post }: { post: Comment }) => {
 const PostWithContext = ({ post }: { post: Comment }) => {
   const { t } = useTranslation();
   const { deleted, locked, postCid, removed, state, subplebbitAddress } = post || {};
-  const postComment = useSubplebbitsPagesStore((state) => state.comments[post?.postCid]);
+  const postComment = useComment({ commentCid: postCid });
   const topParentCid = findTopParentCidOfReply(post.cid, postComment);
-  const topParentComment = useSubplebbitsPagesStore((state) => state.comments[topParentCid as string]);
+  const topParentComment = useComment({ commentCid: topParentCid || undefined });
 
   const stateString = useStateString(post);
 
@@ -197,7 +201,7 @@ const PostWithContext = ({ post }: { post: Comment }) => {
           <div className={styles.lockedInfobarText}>{t('post_locked_info', { state: deleted ? t('deleted') : locked ? t('locked') : removed ? t('removed') : '' })}</div>
         </div>
       )}
-      <PostComponent post={post} />
+      <PostComponent post={postComment} />
       <div className={styles.replyArea}>
         <div className={styles.menuArea}>
           {stateString && stateString !== 'Failed' ? (
@@ -215,7 +219,7 @@ const PostWithContext = ({ post }: { post: Comment }) => {
           </div>
         </div>
         <div className={styles.replies}>
-          <Reply key={`contextComment-${topParentComment.cid}`} reply={topParentComment} depth={0} />
+          <Reply key={`contextComment-${topParentComment?.cid}`} reply={topParentComment} depth={0} />
         </div>
       </div>
     </>

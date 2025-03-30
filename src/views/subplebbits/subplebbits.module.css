@@ -278,6 +278,7 @@
   cursor: pointer;
   border: 1px solid var(--gray-light);
   padding: 1px 2px;
+  border-radius: 3px;
   margin-right: 4px;
   cursor: pointer;
 }

@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react';
 import { Link, useLocation, useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import Plebbit from '@plebbit/plebbit-js/dist/browser/index.js';
 import { useAccount, useAccountComment } from '@plebbit/plebbit-react-hooks';
+import Plebbit from '@plebbit/plebbit-js/dist/browser/index.js';
 import useSubplebbitsStore from '@plebbit/plebbit-react-hooks/dist/stores/subplebbits';
-import { sortTypes } from '../../app';
+import { sortTypes } from '../../constants/sort-types';
+import { sortLabels } from '../../constants/sort-labels';
 import {
   getAboutLink,
   isAllView,
@@ -39,14 +40,15 @@ import {
   isSettingsPlebbitOptionsView,
   isSubplebbitAboutView,
   isDomainView,
+  isPostPageAboutView,
 } from '../../lib/utils/view-utils';
+import useContentOptionsStore from '../../stores/use-content-options-store';
 import useNotFoundStore from '../../stores/use-not-found-store';
+import { useIsBroadlyNsfwSubplebbit } from '../../hooks/use-is-broadly-nsfw-subplebbit';
 import useTheme from '../../hooks/use-theme';
 import useWindowWidth from '../../hooks/use-window-width';
-import styles from './header.module.css';
 import SubscribeButton from '../subscribe-button';
-import useContentOptionsStore from '../../stores/use-content-options-store';
-import { useIsBroadlyNsfwSubplebbit } from '../../hooks/use-is-broadly-nsfw-subplebbit';
+import styles from './header.module.css';
 
 const AboutButton = () => {
   const { t } = useTranslation();
@@ -54,10 +56,11 @@ const AboutButton = () => {
   const location = useLocation();
   const aboutLink = getAboutLink(location.pathname, params);
   const isInHomeAboutView = isHomeAboutView(location.pathname);
+  const isInPostPageAboutView = isPostPageAboutView(location.pathname, params);
   const isInSubplebbitAboutView = isSubplebbitAboutView(location.pathname, params);
 
   return (
-    <li className={`${styles.about} ${isInHomeAboutView || isInSubplebbitAboutView ? styles.selected : styles.choice}`}>
+    <li className={`${styles.about} ${isInHomeAboutView || isInSubplebbitAboutView || isInPostPageAboutView ? styles.selected : styles.choice}`}>
       <Link to={aboutLink}>{t('about')}</Link>
     </li>
   );
@@ -70,9 +73,10 @@ const CommentsButton = () => {
   const isInPostPageView = isPostPageView(location.pathname, params);
   const isInPendingPostView = isPendingPostView(location.pathname, params);
   const isInHomeAboutView = isHomeAboutView(location.pathname);
+  const isInPostPageAboutView = isPostPageAboutView(location.pathname, params);
 
   return (
-    <li className={(isInPostPageView || isInPendingPostView) && !isInHomeAboutView ? styles.selected : styles.choice}>
+    <li className={(isInPostPageView || isInPendingPostView) && !isInHomeAboutView && !isInPostPageAboutView ? styles.selected : styles.choice}>
       <Link to={`/p/${params.subplebbitAddress}/c/${params.commentCid}`} onClick={(e) => isInPendingPostView && e.preventDefault()}>
         {t('comments')}
       </Link>
@@ -85,23 +89,23 @@ const SortItems = () => {
   const params = useParams();
   const location = useLocation();
   const isInHomeAboutView = isHomeAboutView(location.pathname);
+  const isInPostPageAboutView = isPostPageAboutView(location.pathname, params);
   const isInSubplebbitAboutView = isSubplebbitAboutView(location.pathname, params);
   const isInAllView = isAllView(location.pathname);
   const isInModView = isModView(location.pathname);
   const isInSubplebbitView = isSubplebbitView(location.pathname, params);
-  const sortLabels = [t('hot'), t('new'), t('active'), t('controversial'), t('top')];
   const [selectedSortType, setSelectedSortType] = useState(params.sortType || '/hot');
   const timeFilterName = params.timeFilterName;
 
   useEffect(() => {
-    if (isInHomeAboutView || isInSubplebbitAboutView) {
+    if (isInHomeAboutView || isInSubplebbitAboutView || isInPostPageAboutView) {
       setSelectedSortType('');
     } else if (params.sortType) {
       setSelectedSortType(params.sortType);
     } else {
       setSelectedSortType('hot');
     }
-  }, [params.sortType, isInHomeAboutView, isInSubplebbitAboutView]);
+  }, [params.sortType, isInHomeAboutView, isInSubplebbitAboutView, isInPostPageAboutView]);
 
   return sortTypes.map((sortType, index) => {
     let sortLink = isInSubplebbitView ? `/p/${params.subplebbitAddress}/${sortType}` : isInAllView ? `p/all/${sortType}` : isInModView ? `p/mod/${sortType}` : sortType;
@@ -111,7 +115,7 @@ const SortItems = () => {
     return (
       <li key={sortType} className={selectedSortType === sortType ? styles.selected : styles.choice}>
         <Link to={sortLink} onClick={() => setSelectedSortType(sortType)}>
-          {sortLabels[index]}
+          {t(sortLabels[index])}
         </Link>
       </li>
     );
@@ -250,6 +254,7 @@ const HeaderTabs = () => {
   const isInAuthorView = isAuthorView(location.pathname);
   const isInDomainView = isDomainView(location.pathname);
   const isInHomeAboutView = isHomeAboutView(location.pathname);
+  const isInPostPageAboutView = isPostPageAboutView(location.pathname, params);
   const isInHomeView = isHomeView(location.pathname);
   const isInInboxView = isInboxView(location.pathname);
   const isInModView = isModView(location.pathname);
@@ -269,6 +274,7 @@ const HeaderTabs = () => {
   } else if (
     isInHomeView ||
     isInHomeAboutView ||
+    isInPostPageAboutView ||
     (isInSubplebbitView && !isInSubplebbitSubmitView && !isInSubplebbitSettingsView) ||
     isInAllView ||
     isInModView ||
@@ -366,6 +372,7 @@ const HeaderTitle = ({ title, shortAddress, pendingPostSubplebbitAddress }: { ti
 };
 
 const Header = () => {
+  const { t } = useTranslation();
   const [theme] = useTheme();
   const location = useLocation();
   const params = useParams();
@@ -386,6 +393,7 @@ const Header = () => {
   const isInInboxView = isInboxView(location.pathname);
   const isInModView = isModView(location.pathname);
   const isInPostPageView = isPostPageView(location.pathname, params);
+  const isInPostPageAboutView = isPostPageAboutView(location.pathname, params);
   const isInPendingPostView = isPendingPostView(location.pathname, params);
   const isInProfileView = isProfileView(location.pathname);
   const isInSettingsView = isSettingsView(location.pathname);
@@ -401,7 +409,13 @@ const Header = () => {
   const hasStickyHeader =
     isInHomeView ||
     isInNotFoundView ||
-    (isInSubplebbitView && !isInSubplebbitSubmitView && !isInSubplebbitSettingsView && !isInPostPageView && !isInHomeAboutView && !isInSubplebbitAboutView) ||
+    (isInSubplebbitView &&
+      !isInSubplebbitSubmitView &&
+      !isInSubplebbitSettingsView &&
+      !isInPostPageView &&
+      !isInHomeAboutView &&
+      !isInSubplebbitAboutView &&
+      !isInPostPageAboutView) ||
     (isInProfileView && !isInHomeAboutView) ||
     (isInAllView && !isInAllAboutView) ||
     (isInModView && !isInHomeAboutView) ||
@@ -469,6 +483,13 @@ const Header = () => {
         <ul className={`${styles.tabMenu} ${isInProfileView ? styles.horizontalScroll : ''}`}>
           <HeaderTabs />
           {(isInHomeView || isInHomeAboutView || isInSubplebbitView || isInHomeAboutView || isInPostPageView) && <AboutButton />}
+          {!isInSubmitView && (
+            <li>
+              <Link to={'/submit'} className={styles.submitButton}>
+                {t('submit')}
+              </Link>
+            </li>
+          )}
         </ul>
       )}
     </div>

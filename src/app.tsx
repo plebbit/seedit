@@ -1,7 +1,6 @@
 import { useEffect } from 'react';
 import { Outlet, Route, Routes } from 'react-router-dom';
 import useTheme from './hooks/use-theme';
-import styles from './app.module.css';
 import AboutView from './views/about';
 import All from './views/all';
 import Author from './views/author';
@@ -22,8 +21,7 @@ import ChallengeModal from './components/challenge-modal';
 import Header from './components/header';
 import StickyHeader from './components/sticky-header';
 import TopBar from './components/topbar';
-
-export const sortTypes = ['hot', 'new', 'active', 'controversialAll', 'topAll'];
+import styles from './app.module.css';
 
 const App = () => {
   const globalLayout = (

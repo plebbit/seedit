@@ -8,7 +8,7 @@ export type ParamsType = {
 
 export type ViewType = 'home' | 'pending' | 'post' | 'submit' | 'subplebbit' | 'subplebbit/submit';
 
-const sortTypes = ['/hot', '/new', '/active', '/controversialAll', '/topAll'];
+const sortTypes = ['/hot', '/new', '/active', '/topAll'];
 
 export const getAboutLink = (pathname: string, params: ParamsType): string => {
   // some subs might use emojis in their address, so we need to decode the pathname
@@ -101,6 +101,10 @@ export const isPostPageView = (pathname: string, params: ParamsType): boolean =>
   // some subs might use emojis in their address, so we need to decode the pathname
   const decodedPathname = decodeURIComponent(pathname);
   return params.subplebbitAddress && params.commentCid ? decodedPathname.startsWith(`/p/${params.subplebbitAddress}/c/${params.commentCid}`) : false;
+};
+
+export const isPostPageAboutView = (pathname: string, params: ParamsType): boolean => {
+  return params.subplebbitAddress && params.commentCid ? pathname.startsWith(`/p/${params.subplebbitAddress}/c/${params.commentCid}/about`) : false;
 };
 
 export const isPostContextView = (pathname: string, params: ParamsType, search: string): boolean => {

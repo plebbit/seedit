@@ -12,7 +12,7 @@ import FeedFooter from '../../components/feed-footer';
 import LoadingEllipsis from '../../components/loading-ellipsis';
 import Post from '../../components/post';
 import Sidebar from '../../components/sidebar';
-import { sortTypes } from '../../constants/sortTypes';
+import { sortTypes } from '../../constants/sort-types';
 import styles from './home.module.css';
 
 const lastVirtuosoStates: { [key: string]: StateSnapshot } = {};

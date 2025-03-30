@@ -370,5 +370,7 @@
   "empty_comment_alert": "空のコメントは投稿できません。",
   "no_subscriptions_message": "<1>{{accountName}}, これはSeeditのあなたのホームです</1><2>好きなコミュニティを見つけたら、<3>そのコミュニティに参加してください <4></4></3></2>",
   "find_communities": "p/allでコミュニティを探す",
-  "community_deleted": "コミュニティは正常に削除されました。"
+  "community_deleted": "コミュニティは正常に削除されました。",
+  "go_to_a_community": "コミュニティに行く",
+  "enter_community_address": "コミュニティのアドレスを入力してください"
 }

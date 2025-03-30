@@ -138,3 +138,11 @@
   border-radius: 2px;
   display: inline-block;
 }
+
+.karma {
+  color: var(--gray-contrast);
+}
+
+.karmaScore {
+  font-weight: 700;
+}

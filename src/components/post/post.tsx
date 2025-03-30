@@ -313,7 +313,7 @@ const Post = ({ index, post = {} }: PostProps) => {
                   subplebbitAddress={subplebbitAddress}
                 />
               </div>
-              {!(windowWidth < 770) && (
+              {!(windowWidth < 770) && !(!content && !link) && (
                 <>
                   {isEditing ? (
                     <CommentEditForm commentCid={cid} hideCommentEditForm={hideCommentEditForm} />
@@ -336,7 +336,7 @@ const Post = ({ index, post = {} }: PostProps) => {
               )}
             </div>
           </div>
-          {windowWidth < 770 && (
+          {windowWidth < 770 && !(!content && !link) && (
             <>
               {isEditing ? (
                 <CommentEditForm commentCid={cid} hideCommentEditForm={hideCommentEditForm} />

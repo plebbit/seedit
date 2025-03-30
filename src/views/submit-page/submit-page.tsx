@@ -397,7 +397,13 @@ const Submit = () => {
           values={{
             link: selectedSubplebbitData?.title || selectedSubplebbitData?.shortAddress || 'seedit',
           }}
-          components={[selectedSubplebbitData?.shortAddress ? <Link key='link' to={`/p/${selectedSubplebbit}`} className={styles.location} /> : <span key='link' />]}
+          components={{
+            1: selectedSubplebbitData?.shortAddress ? (
+              <Link key={selectedSubplebbit} to={`/p/${selectedSubplebbit}`} className={styles.location} />
+            ) : (
+              <span key={selectedSubplebbit} />
+            ),
+          }}
         />
       </h1>
       <div className={styles.form}>

@@ -1,20 +1,18 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { Link, useLocation, useParams } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { createAccount, setActiveAccount, useAccount, useAccounts } from '@plebbit/plebbit-react-hooks';
-import { isSettingsView, isSubmitView, isSubplebbitView } from '../../lib/utils/view-utils';
+import { isSettingsView } from '../../lib/utils/view-utils';
 import styles from './account-bar.module.css';
 import SearchBar from '../search-bar';
 
 const AccountBar = () => {
-  const account = useAccount();
-  const { accounts } = useAccounts();
   const { t } = useTranslation();
   const location = useLocation();
-  const params = useParams();
-  const subplebbitAddress = params.subplebbitAddress;
-  const isInSubplebbitView = isSubplebbitView(location.pathname, params);
-  const isInSubmitView = isSubmitView(location.pathname);
+  const account = useAccount();
+  const { accounts } = useAccounts();
+  const { karma } = account || {};
+
   const isInSettingsView = isSettingsView(location.pathname);
 
   const [searchVisible, setSearchVisible] = useState(false);
@@ -31,11 +29,6 @@ const AccountBar = () => {
 
   const unreadNotificationCount = account?.unreadNotificationCount ? ` ${account.unreadNotificationCount}` : '';
   const mailClass = unreadNotificationCount ? styles.mailIconUnread : styles.mailIconRead;
-
-  let submitLink = '/submit';
-  if (isInSubplebbitView) {
-    submitLink = `/p/${subplebbitAddress}/submit`;
-  }
 
   const handleClickOutside = useCallback(
     (event: MouseEvent) => {
@@ -93,6 +86,12 @@ const AccountBar = () => {
     <div className={styles.content}>
       <span className={styles.user}>
         <Link to='/profile'>{account?.author?.shortAddress}</Link>
+        {karma && (
+          <span className={styles.karma}>
+            {' '}
+            (<span className={styles.karmaScore}>{karma?.postScore + 1}</span>)
+          </span>
+        )}
         <span className={styles.userDropdownButton} ref={accountSelectButtonRef} onClick={toggleAccountDropdown} />
         {isAccountDropdownOpen && (
           <div className={`${styles.dropdown} ${accountDropdownClass}`} ref={accountDropdownRef}>
@@ -101,12 +100,6 @@ const AccountBar = () => {
             </div>
           </div>
         )}
-      </span>
-      <span className={styles.submitButton}>
-        <span className={styles.separator}>|</span>
-        <Link to={submitLink} className={`${styles.textButton} ${isInSubmitView && styles.selectedTextButton}`}>
-          {t('submit')}
-        </Link>
       </span>
       <span className={styles.separator}>|</span>
       <Link to='/inbox' className={styles.iconButton}>

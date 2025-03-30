@@ -2,7 +2,7 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import styles from './search-bar.module.css';
-import { isHomeAboutView, isSubplebbitAboutView } from '../../lib/utils/view-utils';
+import { isHomeView, isHomeAboutView, isPostPageView, isPostPageAboutView, isSubplebbitView } from '../../lib/utils/view-utils';
 import useFeedFiltersStore from '../../stores/use-feed-filters-store';
 import _ from 'lodash';
 interface SearchBarProps {
@@ -11,22 +11,26 @@ interface SearchBarProps {
 }
 
 const SearchBar = ({ isFocused = false, onExpandoChange }: SearchBarProps) => {
+  const { t } = useTranslation();
+  const location = useLocation();
+  const navigate = useNavigate();
+  const params = useParams();
+
+  const isInHomeAboutView = isHomeAboutView(location.pathname);
+  const isInPostPageAboutView = isPostPageAboutView(location.pathname, params);
+  const isInSubplebbitView = isSubplebbitView(location.pathname, params);
+  const isInHomeView = isHomeView(location.pathname);
+  const isInPostPageView = isPostPageView(location.pathname, params);
+
+  const isInFeedView = (isInSubplebbitView || isInHomeView) && !isInPostPageView;
+
+  const [isInCommunitySearch, setIsInCommunitySearch] = useState(false);
+  const placeholder = isInCommunitySearch ? 'enter a keyword or pattern' : t('enter_community_address');
+  const [showExpando, setShowExpando] = useState(false);
+
   const searchBarRef = useRef<HTMLFormElement>(null);
   const searchInputRef = useRef<HTMLInputElement>(null);
   const wrapperRef = useRef<HTMLDivElement>(null);
-  const navigate = useNavigate();
-  const { t } = useTranslation();
-  const [isInCommunitySearch, setIsInCommunitySearch] = useState(false);
-  const placeholder = isInCommunitySearch ? 'enter a keyword or pattern' : 'enter any community address';
-  const [showExpando, setShowExpando] = useState(false);
-  const location = useLocation();
-  const params = useParams();
-  const isInHomeAboutView = isHomeAboutView(location.pathname);
-  const isInSubplebbitAboutView = isSubplebbitAboutView(location.pathname, params);
-
-  const handleInputFocus = () => {
-    setShowExpando(true);
-  };
 
   useEffect(() => {
     if (isFocused) {
@@ -122,7 +126,7 @@ const SearchBar = ({ isFocused = false, onExpandoChange }: SearchBarProps) => {
   };
 
   return (
-    <div ref={wrapperRef} className={`${styles.searchBarWrapper} ${isInHomeAboutView || isInSubplebbitAboutView ? styles.mobileInfobar : ''}`}>
+    <div ref={wrapperRef} className={`${styles.searchBarWrapper} ${isInHomeAboutView || isInPostPageAboutView ? styles.mobileInfobar : ''}`}>
       <form className={styles.searchBar} ref={searchBarRef} onSubmit={handleSearchSubmit}>
         <input
           type='text'
@@ -132,29 +136,32 @@ const SearchBar = ({ isFocused = false, onExpandoChange }: SearchBarProps) => {
           autoCapitalize='off'
           placeholder={placeholder}
           ref={searchInputRef}
-          onFocus={handleInputFocus}
+          onFocus={() => setShowExpando(true)}
           onChange={handleSearchChange}
           value={inputValue}
         />
         <input type='submit' value='' />
       </form>
-      <div className={`${styles.infobar} ${showExpando ? styles.slideDown : styles.slideUp}`}>
+      <div className={`${styles.infobar} ${showExpando ? styles.slideDown : styles.slideUp} ${!isInFeedView ? styles.lessHeight : ''}`}>
         <label>
           <input
             type='checkbox'
             checked={!isInCommunitySearch}
+            disabled={!isInFeedView}
             onChange={() => {
               setIsInCommunitySearch(false);
               setIsSearching(false);
               clearSearchFilter();
             }}
           />
-          Go to a community
+          {t('go_to_a_community')}
         </label>
-        <label>
-          <input type='checkbox' checked={isInCommunitySearch} onChange={() => setIsInCommunitySearch(true)} />
-          {t('search_feed_post')}
-        </label>
+        {isInFeedView && (
+          <label>
+            <input type='checkbox' checked={isInCommunitySearch} onChange={() => setIsInCommunitySearch(true)} />
+            {t('search_feed_post')}
+          </label>
+        )}
       </div>
     </div>
   );

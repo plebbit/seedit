@@ -46,36 +46,23 @@
 .mediaPreview {
   display: inline-block;
   position: relative;
-  max-width: 100%;
+  max-width: 524px;
   margin-bottom: 5px;
-}
-
-@media (max-width: 1200px) {
-  .mediaPreview img,
-  .mediaPreview video,
-  .mediaPreview iframe {
-    max-width: calc(100vw - 435px) !important;
-  }
-}
-
-@media (max-width: 640px) {
-  .mediaPreview img,
-  .mediaPreview video,
-  .mediaPreview iframe {
-    max-width: 100% !important;
-  }
+  box-sizing: border-box;
 }
 
 .mediaPreview img {
-  max-width: 524px;
+  max-width: 100%;
   height: auto;
   background-color: var(--background-thumbnail);
+  object-fit: contain;
 }
 
 .mediaPreview video {
-  max-width: 524px;
+  max-width: 100%;
   max-height: 50vh;
   background-color: var(--background-thumbnail);
+  object-fit: contain;
 }
 
 .mediaPreview iframe {
