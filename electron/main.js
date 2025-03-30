@@ -11,6 +11,7 @@ import packageJson from '../package.json' with { type: 'json' };
 import FormData from 'form-data';
 import fetch from 'node-fetch';
 import { createReadStream } from 'fs';
+import fs from 'fs';
 
 const __filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(__filename);

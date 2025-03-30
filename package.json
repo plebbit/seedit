@@ -57,9 +57,10 @@
     "electron:no-delete-data": "yarn electron:before:download-ipfs && electron .",
     "electron:start": "concurrently \"cross-env BROWSER=none yarn start\" \"wait-on http://localhost:3000 && yarn electron\"",
     "electron:start:no-delete-data": "concurrently \"cross-env BROWSER=none yarn start\" \"wait-on http://localhost:3000 && yarn electron:no-delete-data\"",
-    "electron:build:linux": "electron-builder build --publish never -l",
-    "electron:build:windows": "electron-builder build --publish never -w",
-    "electron:build:mac": "electron-builder build --publish never -m",
+    "electron:build:main": "esbuild electron/main.js --bundle --platform=node --target=node16 --outfile=electron/main.bundle.js --external:electron --format=esm --packages=external",
+    "electron:build:linux": "yarn electron:build:main && electron-builder build --publish never -l",
+    "electron:build:windows": "yarn electron:build:main && electron-builder build --publish never -w",
+    "electron:build:mac": "yarn electron:build:main && electron-builder build --publish never -m",
     "electron:before": "yarn electron:before:download-ipfs && yarn electron:before:delete-data",
     "electron:before:download-ipfs": "node electron/download-ipfs",
     "electron:before:delete-data": "rimraf .plebbit",
@@ -105,6 +106,7 @@
     "electron": "35.0.1",
     "electron-builder": "24.13.2",
     "electron-rebuild": "3.2.9",
+    "esbuild": "0.25.1",
     "eslint": "8.56.0",
     "eslint-config-react-app": "7.0.1",
     "eslint-plugin-react": "7.37.4",
@@ -121,7 +123,7 @@
     "vite-plugin-pwa": "0.21.1",
     "wait-on": "7.0.1"
   },
-  "main": "electron/main.js",
+  "main": "electron/main.bundle.js",
   "build": {
     "appId": "seedit.desktop",
     "productName": "seedit",
@@ -139,7 +141,8 @@
     "files": [
       "build/**/*",
       "electron/**/*",
-      "package.json"
+      "package.json",
+      "electron/main.bundle.js"
     ],
     "extends": null,
     "mac": {
