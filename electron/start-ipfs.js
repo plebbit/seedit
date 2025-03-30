@@ -3,10 +3,22 @@ import { fileURLToPath } from 'url';
 import fs from 'fs-extra';
 import envPathsImport from 'env-paths';
 import { spawnAsync } from './spawn-async.js';
-import { proxyServer } from './proxy-server.js';
+import proxyServer from './proxy-server.js';
 import { app } from 'electron';
 import tcpPortUsed from 'tcp-port-used';
 import { spawn } from 'child_process';
+
+// Define a simple process kill function since ps was being used but not imported
+const ps = {
+  kill: (pid) => {
+    if (!pid) return;
+    try {
+      process.kill(pid);
+    } catch (error) {
+      console.error(`Failed to kill process ${pid}:`, error);
+    }
+  },
+};
 
 const __filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(__filename);
