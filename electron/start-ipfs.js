@@ -1,11 +1,12 @@
-import path, { dirname } from 'path';
+import path from 'path';
 import { fileURLToPath } from 'url';
 import fs from 'fs-extra';
 import envPathsImport from 'env-paths';
-import { spawnAsync } from './spawn-async.mjs';
-import { proxyServer } from './proxy-server.mjs';
+import { spawnAsync } from './spawn-async.js';
+import { proxyServer } from './proxy-server.js';
 import { app } from 'electron';
 import tcpPortUsed from 'tcp-port-used';
+import { spawn } from 'child_process';
 
 const __filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(__filename);
