@@ -1,28 +1,44 @@
-import './log.js';
-import { app, BrowserWindow, Menu, MenuItem, Tray, shell, dialog, nativeTheme, ipcMain } from 'electron';
-import fs from 'fs';
-import path from 'path';
-import { fileURLToPath } from 'url';
-import EnvPaths from 'env-paths';
-import startIpfs from './start-ipfs.js';
-import './start-plebbit-rpc.js';
-import { URL } from 'node:url';
-import contextMenu from 'electron-context-menu';
-import packageJson from '../package.json' with { type: 'json' };
-import FormData from 'form-data';
-import fetch from 'node-fetch';
-import { createReadStream } from 'fs';
+// Import log.cjs
+require('./log.cjs');
 
-const __filename = fileURLToPath(import.meta.url);
-const dirname = path.dirname(__filename);
+// Import Electron components using CommonJS require
+const { app, BrowserWindow, Menu, MenuItem, Tray, shell, dialog, nativeTheme, ipcMain } = require('electron');
+
+// Import Node.js built-ins using CommonJS
+const path = require('path');
+const fs = require('fs');
+const { URL, fileURLToPath } = require('url');
+const util = require('util');
+const EnvPaths = require('env-paths');
+const FormData = require('form-data');
+const fetch = require('node-fetch');
+const contextMenu = require('electron-context-menu');
+
+// Import local modules using CommonJS
+require('./start-ipfs.cjs');
+require('./start-plebbit-rpc.cjs');
+
+// Load package.json using CommonJS
+const packageJson = require('../package.json');
+
+// Set ELECTRON_IS_DEV for other modules to use
+process.env.ELECTRON_IS_DEV = app.isPackaged ? '0' : '1';
+
+// Since we're in CommonJS, we can't use import.meta.url
+// We'll use __dirname instead which is available in CommonJS
+const dirname = __dirname;
 
 let startIpfsError;
+const startIpfs = require('./start-ipfs.cjs');
 startIpfs.onError = (error) => {
   // only show error once or it spams the user
   const alreadyShownIpfsError = !!startIpfsError;
   startIpfsError = error;
-  if (!alreadyShownIpfsError && error.message) {
-    dialog.showErrorBox('IPFS warning', error.message);
+  if (!alreadyShownIpfsError && mainWindow && !mainWindow.isDestroyed()) {
+    mainWindow.webContents.send('notification', {
+      title: 'Error Starting IPFS',
+      body: error?.message || error?.toString?.() || error
+    });
   }
 };
 
@@ -342,10 +358,10 @@ ipcMain.handle('plugin:file-uploader:pickAndUploadMedia', async (event) => {
     // Create form data for upload
     const formData = new FormData();
     formData.append('reqtype', 'fileupload');
-    formData.append('fileToUpload', createReadStream(filePath));
+    formData.append('fileToUpload', require('fs').createReadStream(filePath));
 
     // Upload to catbox.moe
-    const response = await fetch('https://catbox.moe/user/api.php', {
+    const response = await require('node-fetch')('https://catbox.moe/user/api.php', {
       method: 'POST',
       body: formData,
     });
@@ -380,7 +396,7 @@ ipcMain.handle('plugin:file-uploader:uploadMedia', async (event, fileData) => {
     }
 
     // Upload to catbox.moe
-    const response = await fetch('https://catbox.moe/user/api.php', {
+    const response = await require('node-fetch')('https://catbox.moe/user/api.php', {
       method: 'POST',
       body: formData,
     });
@@ -414,7 +430,7 @@ ipcMain.handle('plugin:file-uploader:pickMedia', async (event) => {
     const fileName = path.basename(filePath);
 
     // Read the file as base64
-    const fileBuffer = fs.readFileSync(filePath);
+    const fileBuffer = require('fs').readFileSync(filePath);
     const base64Data = fileBuffer.toString('base64');
 
     // Determine mime type from extension

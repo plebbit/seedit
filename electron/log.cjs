@@ -1,9 +1,10 @@
 // require this file to log to file in case there's a crash
 
-import util from 'util';
-import fs from 'fs-extra';
-import path from 'path';
-import EnvPaths from 'env-paths';
+// Convert all external module imports to CommonJS require
+const util = require('util');
+const fs = require('fs-extra');
+const path = require('path');
+const EnvPaths = require('env-paths');
 const envPaths = EnvPaths('plebbit', { suffix: false });
 
 // previous version created a file instead of folder

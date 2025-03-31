@@ -120,7 +120,7 @@
     "vite-plugin-pwa": "0.21.1",
     "wait-on": "7.0.1"
   },
-  "main": "electron/main.js",
+  "main": "electron/main.cjs",
   "build": {
     "appId": "seedit.desktop",
     "productName": "seedit",

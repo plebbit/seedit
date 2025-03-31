@@ -1,13 +1,19 @@
-import isDev from 'electron-is-dev';
-import path from 'path';
-import { spawn } from 'child_process';
-import fs from 'fs-extra';
-import ps from 'node:process';
-import proxyServer from './proxy-server.js';
-import tcpPortUsed from 'tcp-port-used';
-import EnvPaths from 'env-paths';
-import { fileURLToPath } from 'url';
-const dirname = path.join(path.dirname(fileURLToPath(import.meta.url)));
+const path = require('path');
+const { spawn } = require('child_process');
+const fs = require('fs-extra');
+const ps = require('node:process');
+const tcpPortUsed = require('tcp-port-used');
+const EnvPaths = require('env-paths');
+
+// Import local modules using CommonJS
+const proxyServer = require('./proxy-server.cjs');
+
+// Instead of using electron-is-dev, use app.isPackaged 
+// (we already made this change in main.js)
+const isDev = process.env.ELECTRON_IS_DEV === '1';
+
+// Use __dirname directly instead of fileURLToPath(import.meta.url)
+const dirname = __dirname;
 const envPaths = EnvPaths('plebbit', { suffix: false });
 
 // use this custom function instead of spawnSync for better logging
@@ -116,7 +122,7 @@ const startIpfs = async () => {
 };
 
 const DefaultExport = {};
-export default DefaultExport;
+module.exports = DefaultExport;
 
 const startIpfsAutoRestart = async () => {
   let pendingStart = false;

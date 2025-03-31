@@ -1,12 +1,13 @@
-import tcpPortUsed from 'tcp-port-used';
-import EnvPaths from 'env-paths';
-import { randomBytes } from 'crypto';
-import fs from 'fs-extra';
-import PlebbitRpc from '@plebbit/plebbit-js/dist/node/rpc/src/index.js';
-import path from 'path';
-import { fileURLToPath } from 'url';
-import isDev from 'electron-is-dev';
-const dirname = path.join(path.dirname(fileURLToPath(import.meta.url)));
+const tcpPortUsed = require('tcp-port-used');
+const EnvPaths = require('env-paths');
+const { randomBytes } = require('crypto');
+const fs = require('fs-extra');
+const path = require('path');
+
+// Instead of using electron-is-dev, use process.env.ELECTRON_IS_DEV
+const isDev = process.env.ELECTRON_IS_DEV === '1';
+
+const dirname = __dirname;
 const envPaths = EnvPaths('plebbit', { suffix: false });
 
 //           PLEB, always run plebbit rpc on this port so all clients can use it
@@ -39,7 +40,26 @@ const startPlebbitRpcAutoRestart = async () => {
     try {
       const started = await tcpPortUsed.check(port, '127.0.0.1');
       if (!started) {
-        const plebbitWebSocketServer = await PlebbitRpc.PlebbitWsServer({ port, plebbitOptions: defaultPlebbitOptions, authKey: plebbitRpcAuthKey });
+        // Dynamically import PlebbitRpc
+        const PlebbitRpcModule = await import('@plebbit/plebbit-js/dist/node/rpc/src/index.js');
+        
+        // Try both ways of accessing the function - either directly or through default export
+        const PlebbitWsServer = PlebbitRpcModule.PlebbitWsServer || 
+                              (PlebbitRpcModule.default && PlebbitRpcModule.default.PlebbitWsServer);
+        
+        if (!PlebbitWsServer) {
+          console.error('Cannot find PlebbitWsServer in the imported module:', Object.keys(PlebbitRpcModule));
+          if (PlebbitRpcModule.default) {
+            console.error('Default export keys:', Object.keys(PlebbitRpcModule.default));
+          }
+          throw new Error('PlebbitWsServer function not found in the imported module');
+        }
+        
+        const plebbitWebSocketServer = await PlebbitWsServer({ 
+          port, 
+          plebbitOptions: defaultPlebbitOptions, 
+          authKey: plebbitRpcAuthKey 
+        });
         plebbitWebSocketServer.on('error', (e) => console.log('plebbit rpc error', e));
 
         console.log(`plebbit rpc: listening on ws://localhost:${port} (local connections only)`);
