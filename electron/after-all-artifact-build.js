@@ -3,15 +3,9 @@
 import fs from 'fs-extra';
 import path from 'path';
 import { execSync } from 'child_process';
+import packageJson from '../package.json' assert { type: 'json' };
 import { fileURLToPath } from 'url';
-
-// Load package.json in a way that works in both ESM and bundled CJS
-const __filename = import.meta.url ? fileURLToPath(import.meta.url) : __filename;
-const dirname = path.dirname(__filename);
-const rootPath = path.resolve(dirname, '..');
-const packageJsonPath = path.join(rootPath, 'package.json');
-const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, 'utf8'));
-
+const rootPath = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const distFolderPath = path.resolve(rootPath, 'dist');
 
 const addPortableToPortableExecutableFileName = () => {

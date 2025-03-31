@@ -19,9 +19,10 @@
     "@types/react-dom": "18.2.10",
     "cross-env": "7.0.3",
     "electron-context-menu": "3.3.0",
-    "env-paths": "3.0.0",
+    "electron-is-dev": "2.0.0",
     "ext-name": "5.0.0",
     "form-data": "4.0.2",
+    "http-proxy": "1.18.1",
     "i18next": "23.5.1",
     "i18next-browser-languagedetector": "7.1.0",
     "i18next-http-backend": "2.2.2",
@@ -57,10 +58,9 @@
     "electron:no-delete-data": "yarn electron:before:download-ipfs && electron .",
     "electron:start": "concurrently \"cross-env BROWSER=none yarn start\" \"wait-on http://localhost:3000 && yarn electron\"",
     "electron:start:no-delete-data": "concurrently \"cross-env BROWSER=none yarn start\" \"wait-on http://localhost:3000 && yarn electron:no-delete-data\"",
-    "electron:build:main": "node electron/esbuild.js",
-    "electron:build:linux": "yarn build && yarn electron:build:main && electron-builder build --publish never -l",
-    "electron:build:windows": "yarn build && yarn electron:build:main && electron-builder build --publish never -w",
-    "electron:build:mac": "yarn build && yarn electron:build:main && electron-builder build --publish never -m",
+    "electron:build:linux": "electron-builder build --publish never -l",
+    "electron:build:windows": "electron-builder build --publish never -w",
+    "electron:build:mac": "electron-builder build --publish never -m",
     "electron:before": "yarn electron:before:download-ipfs && yarn electron:before:delete-data",
     "electron:before:download-ipfs": "node electron/download-ipfs",
     "electron:before:delete-data": "rimraf .plebbit",
@@ -106,7 +106,6 @@
     "electron": "35.0.1",
     "electron-builder": "24.13.2",
     "electron-rebuild": "3.2.9",
-    "esbuild": "0.25.1",
     "eslint": "8.56.0",
     "eslint-config-react-app": "7.0.1",
     "eslint-plugin-react": "7.37.4",
@@ -123,7 +122,7 @@
     "vite-plugin-pwa": "0.21.1",
     "wait-on": "7.0.1"
   },
-  "main": "electron/main.cjs",
+  "main": "electron/main.js",
   "build": {
     "appId": "seedit.desktop",
     "productName": "seedit",
@@ -141,8 +140,7 @@
     "files": [
       "build/**/*",
       "electron/**/*",
-      "package.json",
-      "electron/main.bundle.js"
+      "package.json"
     ],
     "extends": null,
     "mac": {

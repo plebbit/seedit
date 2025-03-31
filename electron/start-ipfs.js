@@ -1,32 +1,29 @@
+import isDev from 'electron-is-dev';
 import path from 'path';
-import { fileURLToPath } from 'url';
-import fs from 'fs-extra';
-import envPathsImport from 'env-paths';
-import { spawnAsync } from './spawn-async.js';
-import proxyServer from './proxy-server.js';
-import { app } from 'electron';
-import tcpPortUsed from 'tcp-port-used';
 import { spawn } from 'child_process';
+import fs from 'fs-extra';
+import ps from 'node:process';
+import proxyServer from './proxy-server.js';
+import tcpPortUsed from 'tcp-port-used';
+import EnvPaths from 'env-paths';
+import { fileURLToPath } from 'url';
+const dirname = path.join(path.dirname(fileURLToPath(import.meta.url)));
+const envPaths = EnvPaths('plebbit', { suffix: false });
 
-// Define a simple process kill function since ps was being used but not imported
-const ps = {
-  kill: (pid) => {
-    if (!pid) return;
-    try {
-      process.kill(pid);
-    } catch (error) {
-      console.error(`Failed to kill process ${pid}:`, error);
-    }
-  },
-};
-
-// Safe path resolution for both ESM and bundled CJS
-const __filename = import.meta.url ? fileURLToPath(import.meta.url) : __filename;
-const dirname = path.dirname(__filename);
-const envPaths = envPathsImport('seedit');
-
-// Use app.isPackaged to determine if running in development
-const isDevelopment = !app.isPackaged;
+// use this custom function instead of spawnSync for better logging
+// also spawnSync might have been causing crash on start on windows
+const spawnAsync = (...args) =>
+  new Promise((resolve, reject) => {
+    const spawedProcess = spawn(...args);
+    spawedProcess.on('exit', (exitCode, signal) => {
+      if (exitCode === 0) resolve();
+      else reject(Error(`spawnAsync process '${spawedProcess.pid}' exited with code '${exitCode}' signal '${signal}'`));
+    });
+    spawedProcess.stderr.on('data', (data) => console.error(data.toString()));
+    spawedProcess.stdin.on('data', (data) => console.log(data.toString()));
+    spawedProcess.stdout.on('data', (data) => console.log(data.toString()));
+    spawedProcess.on('error', (data) => console.error(data.toString()));
+  });
 
 const startIpfs = async () => {
   const ipfsFileName = process.platform == 'win32' ? 'ipfs.exe' : 'ipfs';
@@ -35,7 +32,7 @@ const startIpfs = async () => {
 
   // test launching the ipfs binary in dev mode
   // they must be downloaded first using `yarn electron:build`
-  if (isDevelopment) {
+  if (isDev) {
     let binFolderName = 'win';
     if (process.platform === 'linux') {
       binFolderName = 'linux';
@@ -73,7 +70,7 @@ const startIpfs = async () => {
 
   // use different port with proxy for debugging during env
   let apiAddress = '/ip4/127.0.0.1/tcp/50019';
-  if (isDevelopment) {
+  if (isDev) {
     apiAddress = apiAddress.replace('50019', '50029');
     proxyServer.start({ proxyPort: 50019, targetPort: 50029 });
   }
@@ -129,7 +126,7 @@ const startIpfsAutoRestart = async () => {
     }
     pendingStart = true;
     try {
-      const started = await tcpPortUsed.check(isDevelopment ? 50029 : 50019, '127.0.0.1');
+      const started = await tcpPortUsed.check(isDev ? 50029 : 50019, '127.0.0.1');
       if (!started) {
         await startIpfs();
       }

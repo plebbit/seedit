@@ -5,21 +5,15 @@ import fs from 'fs-extra';
 import PlebbitRpc from '@plebbit/plebbit-js/dist/node/rpc/src/index.js';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import { app } from 'electron';
-
-// Safe path resolution for both ESM and bundled CJS
-const __filename = import.meta.url ? fileURLToPath(import.meta.url) : __filename;
-const dirname = path.dirname(__filename);
+import isDev from 'electron-is-dev';
+const dirname = path.join(path.dirname(fileURLToPath(import.meta.url)));
 const envPaths = EnvPaths('plebbit', { suffix: false });
-
-// Use app.isPackaged instead of electron-is-dev
-const isDevelopment = !app.isPackaged;
 
 //           PLEB, always run plebbit rpc on this port so all clients can use it
 const port = 9138;
 const defaultPlebbitOptions = {
   // find the user's OS data path
-  dataPath: !isDevelopment ? envPaths.data : path.join(dirname, '..', '.plebbit'),
+  dataPath: !isDev ? envPaths.data : path.join(dirname, '..', '.plebbit'),
   ipfsHttpClientsOptions: ['http://localhost:50019/api/v0'],
   httpRoutersOptions: ['https://routing.lol', 'https://peers.pleb.bot', 'https://peers.plebpubsub.xyz', 'https://peers.forumindex.com'],
 };
@@ -53,7 +47,7 @@ const startPlebbitRpcAutoRestart = async () => {
         plebbitWebSocketServer.ws.on('connection', (socket, request) => {
           console.log('plebbit rpc: new connection');
           // debug raw JSON RPC messages in console
-          if (isDevelopment) {
+          if (isDev) {
             socket.on('message', (message) => console.log(`plebbit rpc: ${message.toString()}`));
           }
         });
