@@ -6,10 +6,6 @@
   "author": "plebeius.eth",
   "license": "GPL-2.0-only",
   "private": true,
-  "optionalDependencies": {
-    "better-sqlite3": "9.3.0",
-    "sqlite3": "5.1.7"
-  },
   "dependencies": {
     "@capacitor/app": "6.0.1",
     "@floating-ui/react": "0.26.1",
