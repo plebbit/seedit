@@ -1,6 +1,5 @@
 import './log.js';
 import { app, BrowserWindow, Menu, MenuItem, Tray, shell, dialog, nativeTheme, ipcMain } from 'electron';
-import isDev from 'electron-is-dev';
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
@@ -28,7 +27,7 @@ startIpfs.onError = (error) => {
 };
 
 // send plebbit rpc auth key to renderer
-const plebbitDataPath = !isDev ? EnvPaths('plebbit', { suffix: false }).data : path.join(dirname, '..', '.plebbit');
+const plebbitDataPath = app.isPackaged ? EnvPaths('plebbit', { suffix: false }).data : path.join(dirname, '..', '.plebbit');
 const plebbitRpcAuthKey = fs.readFileSync(path.join(plebbitDataPath, 'auth-key'), 'utf8');
 ipcMain.on('get-plebbit-rpc-auth-key', (event) => event.reply('plebbit-rpc-auth-key', plebbitRpcAuthKey));
 
@@ -131,7 +130,7 @@ const createMainWindow = () => {
     callback({ responseHeaders: details.responseHeaders });
   });
 
-  const startURL = isDev ? 'http://localhost:3000' : `file://${path.join(dirname, '../build/index.html')}`;
+  const startURL = !app.isPackaged ? 'http://localhost:3000' : `file://${path.join(dirname, '../build/index.html')}`;
 
   mainWindow.loadURL(startURL);
 
@@ -141,7 +140,7 @@ const createMainWindow = () => {
 
     mainWindow.show();
 
-    if (isDev) {
+    if (!app.isPackaged) {
       mainWindow.openDevTools();
     }
 
@@ -235,7 +234,7 @@ const createMainWindow = () => {
 
   if (process.platform !== 'darwin') {
     // tray
-    const trayIconPath = path.join(dirname, '..', isDev ? 'public' : 'build', 'electron-tray-icon.png');
+    const trayIconPath = path.join(dirname, '..', !app.isPackaged ? 'public' : 'build', 'electron-tray-icon.png');
     const tray = new Tray(trayIconPath);
     tray.setToolTip('seedit');
     const trayMenu = Menu.buildFromTemplate([
@@ -261,7 +260,7 @@ const createMainWindow = () => {
     });
 
     // close to tray
-    if (!isDev) {
+    if (app.isPackaged) {
       let isQuiting = false;
       app.on('before-quit', () => {
         isQuiting = true;
