@@ -48,6 +48,7 @@
     "zustand": "4.4.3"
   },
   "scripts": {
+    "postinstall": "electron-builder install-app-deps",
     "start": "vite",
     "build": "cross-env PUBLIC_URL=./ GENERATE_SOURCEMAP=false vite build",
     "build-netlify": "cross-env NODE_OPTIONS=\"--max_old_space_size=4096\" PUBLIC_URL=./ GENERATE_SOURCEMAP=true VITE_COMMIT_REF=$COMMIT_REF CI='' vite build",
@@ -87,7 +88,6 @@
     "@capacitor/android": "5.0.0",
     "@capacitor/cli": "5.0.0",
     "@capacitor/core": "5.0.0",
-    "@electron/rebuild": "3.6.0",
     "@types/memoizee": "0.4.9",
     "@types/node-fetch": "2",
     "@typescript-eslint/eslint-plugin": "8.26.0",
@@ -105,7 +105,6 @@
     "decompress": "4.2.1",
     "electron": "35.0.1",
     "electron-builder": "24.13.2",
-    "electron-rebuild": "3.2.9",
     "eslint": "8.56.0",
     "eslint-config-react-app": "7.0.1",
     "eslint-plugin-react": "7.37.4",
