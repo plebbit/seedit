@@ -372,5 +372,9 @@
   "find_communities": "hitta gemenskaper på p/all",
   "community_deleted": "Community raderades framgångsrikt.",
   "go_to_a_community": "Gå till ett samhälle",
-  "enter_community_address": "Ange en gemenskapsadress"
+  "enter_community_address": "Ange en gemenskapsadress",
+  "all_communities": "alla samhällen",
+  "search_posts": "sök inlägg",
+  "found_n_results_for": "hittade {{count}} inlägg för \"{{query}}\"",
+  "clear_search": "rensa sökning"
 }

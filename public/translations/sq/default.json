@@ -372,5 +372,9 @@
   "find_communities": "gjeni komunitete në p/all",
   "community_deleted": "Komuniteti u fshi me sukses.",
   "go_to_a_community": "Shkoni në një komunitet",
-  "enter_community_address": "Shkruani një adresë komuniteti"
+  "enter_community_address": "Shkruani një adresë komuniteti",
+  "all_communities": "të gjitha komunitetet",
+  "search_posts": "kërkoni postime",
+  "found_n_results_for": "gjetën {{count}} postime për \"{{query}}\"",
+  "clear_search": "pastroni kërkimin"
 }

@@ -372,5 +372,9 @@
   "find_communities": "ค้นหาชุมชนบน p/all",
   "community_deleted": "ลบบ้านชุมชนเรียบร้อยแล้ว.",
   "go_to_a_community": "ไปที่ชุมชน",
-  "enter_community_address": "ป้อนที่อยู่ของชุมชน"
+  "enter_community_address": "ป้อนที่อยู่ของชุมชน",
+  "all_communities": "ชุมชนทั้งหมด",
+  "search_posts": "ค้นหาการโพสต์",
+  "found_n_results_for": "พบ {{count}} โพสต์สำหรับ \"{{query}}\"",
+  "clear_search": "ล้างการค้นหา"
 }

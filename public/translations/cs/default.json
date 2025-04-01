@@ -372,5 +372,9 @@
   "find_communities": "hledat komunity na p/all",
   "community_deleted": "Komunita byla úspěšně smazána.",
   "go_to_a_community": "Přejít do komunity",
-  "enter_community_address": "Zadejte adresu komunity"
+  "enter_community_address": "Zadejte adresu komunity",
+  "all_communities": "všechny komunity",
+  "search_posts": "hledat příspěvky",
+  "found_n_results_for": "nalezeno {{count}} příspěvků pro \"{{query}}\"",
+  "clear_search": "vymazat hledání"
 }

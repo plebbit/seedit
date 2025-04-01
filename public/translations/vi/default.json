@@ -372,5 +372,9 @@
   "find_communities": "tìm cộng đồng trên p/all",
   "community_deleted": "Cộng đồng đã được xóa thành công.",
   "go_to_a_community": "Đi đến một cộng đồng",
-  "enter_community_address": "Nhập địa chỉ cộng đồng"
+  "enter_community_address": "Nhập địa chỉ cộng đồng",
+  "all_communities": "tất cả cộng đồng",
+  "search_posts": "tìm kiếm bài viết",
+  "found_n_results_for": "tìm thấy {{count}} bài đăng cho \"{{query}}\"",
+  "clear_search": "xóa tìm kiếm"
 }

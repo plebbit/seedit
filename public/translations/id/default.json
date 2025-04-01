@@ -372,5 +372,9 @@
   "find_communities": "temukan komunitas di p/all",
   "community_deleted": "Komunitas berhasil dihapus.",
   "go_to_a_community": "Pergi ke komunitas",
-  "enter_community_address": "Masukkan alamat komunitas"
+  "enter_community_address": "Masukkan alamat komunitas",
+  "all_communities": "semua komunitas",
+  "search_posts": "cari pos",
+  "found_n_results_for": "ditemukan {{count}} pos untuk \"{{query}}\"",
+  "clear_search": "hapus pencarian"
 }

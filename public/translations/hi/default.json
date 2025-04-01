@@ -372,5 +372,9 @@
   "find_communities": "p/all पर समुदाय खोजें",
   "community_deleted": "समुदाय सफलतापूर्वक हटा दिया गया।",
   "go_to_a_community": "एक समुदाय पर जाएं",
-  "enter_community_address": "एक समुदाय का पता दर्ज करें"
+  "enter_community_address": "एक समुदाय का पता दर्ज करें",
+  "all_communities": "सभी समुदाय",
+  "search_posts": "पोस्ट खोजें",
+  "found_n_results_for": " \"{{query}}\" के लिए {{count}} पोस्ट मिलीं",
+  "clear_search": "खोज साफ करें"
 }

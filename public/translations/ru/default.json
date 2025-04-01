@@ -372,5 +372,9 @@
   "find_communities": "найти сообщества на p/all",
   "community_deleted": "Сообщество успешно удалено.",
   "go_to_a_community": "Перейти в сообщество",
-  "enter_community_address": "Введите адрес сообщества"
+  "enter_community_address": "Введите адрес сообщества",
+  "all_communities": "все сообщества",
+  "search_posts": "поиск сообщений",
+  "found_n_results_for": "найдено {{count}} постов для \"{{query}}\"",
+  "clear_search": "очистить поиск"
 }

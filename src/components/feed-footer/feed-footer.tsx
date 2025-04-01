@@ -5,7 +5,6 @@ import { isAllView, isModView } from '../../lib/utils/view-utils';
 import { useFeedStateString } from '../../hooks/use-state-string';
 import LoadingEllipsis from '../loading-ellipsis';
 import styles from './feed-footer.module.css';
-import useFeedFiltersStore from '../../stores/use-feed-filters-store';
 
 interface FeedFooterProps {
   feedLength: number;
@@ -17,9 +16,10 @@ interface FeedFooterProps {
   monthlyFeedLength: number;
   currentTimeFilterName: string;
   reset: () => void;
-  searchFilter?: string;
+  searchQuery?: string;
   isSearching?: boolean;
   showNoResults?: boolean;
+  onClearSearch?: () => void;
 }
 
 const FeedFooter = ({
@@ -32,9 +32,10 @@ const FeedFooter = ({
   monthlyFeedLength,
   currentTimeFilterName,
   reset,
-  searchFilter,
+  searchQuery,
   isSearching,
   showNoResults,
+  onClearSearch,
 }: FeedFooterProps) => {
   let footerContent;
   const { t } = useTranslation();
@@ -74,57 +75,43 @@ const FeedFooter = ({
   if (isSearching) {
     footerContent = (
       <div className={styles.stateString}>
-        <LoadingEllipsis string='searching' />
+        <LoadingEllipsis string={t('searching_ellipsis')} />
       </div>
     );
-  } else if (showNoResults && searchFilter) {
+  } else if (showNoResults && searchQuery) {
     footerContent = (
       <div className={styles.stateString}>
-        <span className={styles.noMatchesFound}>No matches found for "{searchFilter}"</span>
+        <span className={styles.noMatchesFound}>{t('no_matches_found_for', { query: searchQuery })}</span>
         <br />
         <br />
         <div className={styles.morePostsSuggestion}>
-          <span
-            className={styles.link}
-            onClick={() => {
-              useFeedFiltersStore.getState().clearSearchFilter();
-              reset();
-            }}
-          >
-            Clear search
+          <span className={styles.link} onClick={onClearSearch}>
+            {t('clear_search')}
           </span>
         </div>
       </div>
     );
-  } else if (searchFilter && feedLength > 0) {
+  } else if (searchQuery && feedLength > 0) {
     // When search results are found
     footerContent = (
       <div className={styles.stateString}>
-        <span className={styles.searchResults}>
-          Found {feedLength} {feedLength === 1 ? 'post' : 'posts'} for "{searchFilter}"
-        </span>
+        <span className={styles.searchResults}>{t('found_n_results_for', { count: feedLength, query: searchQuery })}</span>
         <br />
         <br />
         <div className={styles.morePostsSuggestion}>
-          <span
-            className={styles.link}
-            onClick={() => {
-              useFeedFiltersStore.getState().clearSearchFilter();
-              reset();
-            }}
-          >
-            Clear search
+          <span className={styles.link} onClick={onClearSearch}>
+            {t('clear_search')}
           </span>
         </div>
       </div>
     );
-  } else if (feedLength === 0 && !isSearching && !searchFilter && !(weeklyFeedLength > feedLength || monthlyFeedLength > feedLength)) {
+  } else if (feedLength === 0 && !isSearching && !searchQuery && !(weeklyFeedLength > feedLength || monthlyFeedLength > feedLength)) {
     footerContent = t('no_posts');
   } else if (hasMore || subplebbitAddresses.length > 0 || (subplebbitAddresses && subplebbitAddresses.length === 0)) {
     // Only show newer posts/weekly/monthly suggestions when not searching
     footerContent = (
       <>
-        {subplebbitAddressesWithNewerPosts.length > 0 && !searchFilter ? (
+        {subplebbitAddressesWithNewerPosts.length > 0 && !searchQuery ? (
           <div className={styles.morePostsSuggestion}>
             <Trans
               i18nKey='newer_posts_available'
@@ -133,7 +120,7 @@ const FeedFooter = ({
               }}
             />
           </div>
-        ) : weeklyFeedLength > feedLength && !searchFilter ? (
+        ) : weeklyFeedLength > feedLength && !searchQuery ? (
           <div className={styles.morePostsSuggestion}>
             <Trans
               i18nKey='more_posts_last_week'
@@ -145,7 +132,7 @@ const FeedFooter = ({
           </div>
         ) : (
           monthlyFeedLength > feedLength &&
-          !searchFilter && (
+          !searchQuery && (
             <div className={styles.morePostsSuggestion}>
               <Trans
                 i18nKey='more_posts_last_month'
@@ -171,7 +158,7 @@ const FeedFooter = ({
                 {t('connect_community_notice')}
               </div>
             )
-          ) : !searchFilter ? (
+          ) : !searchQuery ? (
             <LoadingEllipsis string={feedStateString || loadingStateString} />
           ) : null}
         </div>

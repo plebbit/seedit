@@ -372,5 +372,9 @@
   "find_communities": "znajdź społeczności na p/all",
   "community_deleted": "Społeczność została pomyślnie usunięta.",
   "go_to_a_community": "Przejdź do społeczności",
-  "enter_community_address": "Wprowadź adres społeczności"
+  "enter_community_address": "Wprowadź adres społeczności",
+  "all_communities": "wszystkie społeczności",
+  "search_posts": "szukaj postów",
+  "found_n_results_for": "znaleziono {{count}} postów dla \"{{query}}\"",
+  "clear_search": "wyczyść wyszukiwanie"
 }

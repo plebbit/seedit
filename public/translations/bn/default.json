@@ -372,5 +372,9 @@
   "find_communities": "p/all এ কমিউনিটি খুঁজুন",
   "community_deleted": "কমিউনিটি সফলভাবে মুছে ফেলা হয়েছে।",
   "go_to_a_community": "একটি সম্প্রদায়ে যান",
-  "enter_community_address": "একটি কমিউনিটি ঠিকানা লিখুন"
+  "enter_community_address": "একটি কমিউনিটি ঠিকানা লিখুন",
+  "all_communities": "সব সম্প্রদায়",
+  "search_posts": "পোস্টগুলি অনুসন্ধান করুন",
+  "found_n_results_for": "{{query}} এর জন্য {{count}} পোস্ট পাওয়া গেছে",
+  "clear_search": "খোঁজ মুছে ফেলুন"
 }

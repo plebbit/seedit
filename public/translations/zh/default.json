@@ -372,5 +372,9 @@
   "find_communities": "在p/all上查找社区",
   "community_deleted": "社区已成功删除。",
   "go_to_a_community": "去一个社区",
-  "enter_community_address": "输入社区地址"
+  "enter_community_address": "输入社区地址",
+  "all_communities": "所有社区",
+  "search_posts": "搜索帖子",
+  "found_n_results_for": "找到 \"{{query}}\" 的 {{count}} 条帖子",
+  "clear_search": "清除搜索"
 }

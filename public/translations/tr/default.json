@@ -372,5 +372,9 @@
   "find_communities": "p/all üzerinde toplulukları bulun",
   "community_deleted": "Topluluk başarıyla silindi.",
   "go_to_a_community": "Bir topluluğa git",
-  "enter_community_address": "Bir topluluk adresi girin"
+  "enter_community_address": "Bir topluluk adresi girin",
+  "all_communities": "tüm topluluklar",
+  "search_posts": "gönderileri ara",
+  "found_n_results_for": "\"{{query}}\" için {{count}} gönderi bulundu",
+  "clear_search": "arama temizle"
 }

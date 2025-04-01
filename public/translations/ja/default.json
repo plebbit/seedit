@@ -372,5 +372,9 @@
   "find_communities": "p/allでコミュニティを探す",
   "community_deleted": "コミュニティは正常に削除されました。",
   "go_to_a_community": "コミュニティに行く",
-  "enter_community_address": "コミュニティのアドレスを入力してください"
+  "enter_community_address": "コミュニティのアドレスを入力してください",
+  "all_communities": "すべてのコミュニティ",
+  "search_posts": "投稿を検索",
+  "found_n_results_for": "「{{query}}」に対して{{count}}件の投稿が見つかりました",
+  "clear_search": "検索をクリア"
 }

@@ -372,5 +372,9 @@
   "find_communities": "Finde Communities auf p/all",
   "community_deleted": "Community wurde erfolgreich gelöscht.",
   "go_to_a_community": "Gehe zu einer Community",
-  "enter_community_address": "Geben Sie eine Community-Adresse ein"
+  "enter_community_address": "Geben Sie eine Community-Adresse ein",
+  "all_communities": "alle Gemeinschaften",
+  "search_posts": "Beiträge suchen",
+  "found_n_results_for": "Es wurden {{count}} Beiträge für \"{{query}}\" gefunden",
+  "clear_search": "Suche löschen"
 }

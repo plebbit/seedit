@@ -372,5 +372,9 @@
   "find_communities": "βρείτε κοινότητες στο p/all",
   "community_deleted": "Η κοινότητα διαγράφηκε επιτυχώς.",
   "go_to_a_community": "Μεταβείτε σε μια κοινότητα",
-  "enter_community_address": "Εισαγάγετε μια διεύθυνση κοινότητας"
+  "enter_community_address": "Εισαγάγετε μια διεύθυνση κοινότητας",
+  "all_communities": "όλες οι κοινότητες",
+  "search_posts": "αναζήτηση αναρτήσεων",
+  "found_n_results_for": "βρέθηκαν {{count}} δημοσιεύσεις για \"{{query}}\"",
+  "clear_search": "καθαρισμός αναζήτησης"
 }

@@ -372,5 +372,9 @@
   "find_communities": "keressen közösségeket a p/all-on",
   "community_deleted": "A közösség sikeresen törölve lett.",
   "go_to_a_community": "Menj egy közösségbe",
-  "enter_community_address": "Adjon meg egy közösségi címet"
+  "enter_community_address": "Adjon meg egy közösségi címet",
+  "all_communities": "minden közösség",
+  "search_posts": "hozzászólások keresése",
+  "found_n_results_for": "talált {{count}} bejegyzést \"{{query}}\" számára",
+  "clear_search": "törölni keresést"
 }

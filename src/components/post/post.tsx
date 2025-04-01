@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Link, useLocation, useParams } from 'react-router-dom';
+import { Link, useLocation, useParams, useSearchParams } from 'react-router-dom';
 import { Comment, useAuthorAddress, useBlock, useEditedComment, useSubscribe } from '@plebbit/plebbit-react-hooks';
 import Plebbit from '@plebbit/plebbit-js/dist/browser/index.js';
 import useSubplebbitsStore from '@plebbit/plebbit-react-hooks/dist/stores/subplebbits';
@@ -10,6 +10,7 @@ import { getPostScore, formatScore } from '../../lib/utils/post-utils';
 import { getFormattedTimeAgo, formatLocalizedUTCTimestamp } from '../../lib/utils/time-utils';
 import { getHostname } from '../../lib/utils/url-utils';
 import { isAllView, isPendingPostView, isPostPageView, isProfileHiddenView, isProfileView, isSubplebbitView } from '../../lib/utils/view-utils';
+import { highlightMatchedText } from '../../lib/utils/pattern-utils';
 import { usePinnedPostsStore } from '../../stores/use-pinned-posts-store';
 import { useCommentMediaInfo } from '../../hooks/use-comment-media-info';
 import useDownvote from '../../hooks/use-downvote';
@@ -117,6 +118,9 @@ const Post = ({ index, post = {} }: PostProps) => {
     upvoteCount,
   } = post || {};
 
+  const [searchParams] = useSearchParams();
+  const searchQuery = searchParams.get('q') || '';
+
   // Check if the subplebbit is NSFW based on its tags
   const isNsfwSubplebbit = useIsNsfwSubplebbit(subplebbitAddress);
   const nsfw = post?.nsfw || isNsfwSubplebbit;
@@ -153,6 +157,7 @@ const Post = ({ index, post = {} }: PostProps) => {
   const [downvoted, downvote] = useDownvote(post);
   const postScore = getPostScore(upvoteCount, downvoteCount, state);
   const postTitle = (title?.length > 300 ? title?.slice(0, 300) + '...' : title) || (content?.length > 300 ? content?.slice(0, 300) + '...' : content);
+  const highlightedTitle = searchQuery ? highlightMatchedText(postTitle || '', searchQuery) : postTitle;
 
   const hasThumbnail = getHasThumbnail(commentMediaInfo, link);
   const hostname = getHostname(link);
@@ -226,11 +231,11 @@ const Post = ({ index, post = {} }: PostProps) => {
                 <p className={`${styles.title} ${removed && !isInPostPageView ? styles.blur : ''}`}>
                   {isInPostPageView && link ? (
                     <a href={link} className={linkClass} target='_blank' rel='noopener noreferrer' onClick={handlePostClick}>
-                      {postTitle ?? '-'}
+                      {highlightedTitle ?? '-'}
                     </a>
                   ) : (
                     <Link className={linkClass} to={cid ? `/p/${subplebbitAddress}/c/${cid}` : `/profile/${post?.index}`} onClick={handlePostClick}>
-                      {postTitle ?? '-'}
+                      {highlightedTitle ?? '-'}
                     </Link>
                   )}
                   {flair && (

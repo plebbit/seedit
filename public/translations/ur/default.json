@@ -372,5 +372,9 @@
   "find_communities": "p/all پر کمیونٹیز تلاش کریں",
   "community_deleted": "کمیونٹی کامیابی کے ساتھ حذف ہوگئی۔",
   "go_to_a_community": "کمیونٹی میں جائیں",
-  "enter_community_address": "کمیونٹی کا پتہ درج کریں"
+  "enter_community_address": "کمیونٹی کا پتہ درج کریں",
+  "all_communities": "تمام کمیونٹیز",
+  "search_posts": "پوسٹس تلاش کریں",
+  "found_n_results_for": "\"{{query}}\" کے لیے {{count}} پوسٹس ملیں",
+  "clear_search": "تلاش کو صاف کریں"
 }

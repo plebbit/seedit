@@ -372,5 +372,9 @@
   "find_communities": "maghanap ng mga komunidad sa p/all",
   "community_deleted": "Matagumpay na natanggal ang komunidad.",
   "go_to_a_community": "Pumunta sa isang komunidad",
-  "enter_community_address": "Ilagay ang isang address ng komunidad"
+  "enter_community_address": "Ilagay ang isang address ng komunidad",
+  "all_communities": "lahat ng komunidad",
+  "search_posts": "maghanap ng mga post",
+  "found_n_results_for": "nakita ang {{count}} mga post para sa \"{{query}}\"",
+  "clear_search": "i-clear ang paghahanap"
 }

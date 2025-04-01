@@ -372,5 +372,9 @@
   "find_communities": "find communities on p/all",
   "community_deleted": "Community deleted successfully.",
   "go_to_a_community": "Go to a community",
-  "enter_community_address": "Enter a community address"
+  "enter_community_address": "Enter a community address",
+  "all_communities": "all communities",
+  "search_posts": "search posts",
+  "found_n_results_for": "found {{count}} posts for \"{{query}}\"",
+  "clear_search": "clear search"
 }

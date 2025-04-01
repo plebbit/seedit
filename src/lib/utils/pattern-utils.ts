@@ -1,4 +1,5 @@
 import { Comment } from '@plebbit/plebbit-react-hooks';
+import React, { ReactNode, Fragment } from 'react';
 import useSubplebbitsStore from '@plebbit/plebbit-react-hooks/dist/stores/subplebbits';
 
 /**
@@ -254,8 +255,131 @@ export const commentMatchesPattern = (comment: Comment, pattern: string): boolea
 
   // Regular content matching
   const titleLower = comment?.title?.toLowerCase() || '';
-  const contentLower = comment?.content?.toLowerCase() || '';
-  const textToMatch = titleLower + ' ' + contentLower;
+  // const contentLower = comment?.content?.toLowerCase() || '';
+  const textToMatch = titleLower;
+  // + ' ' + contentLower;
 
   return matchesPattern(textToMatch, pattern);
+};
+
+/**
+ * Highlights text that matches a search pattern by wrapping matches with <b> tags
+ *
+ * @param text The text to check against the pattern
+ * @param pattern The pattern to match
+ * @returns The text with matches wrapped in <b> tags
+ */
+export const highlightMatchedText = (text: string, pattern: string): ReactNode => {
+  if (!pattern || !text) return text;
+
+  try {
+    // For regex patterns
+    if (pattern.startsWith('/') && pattern.length > 2 && /\/[gimsuy]*$/.test(pattern)) {
+      const lastSlashIndex = pattern.lastIndexOf('/');
+      const regexPattern = pattern.substring(1, lastSlashIndex);
+      const flags = pattern.substring(lastSlashIndex + 1);
+
+      // Split text by regex matches and wrap them
+      const parts: ReactNode[] = [];
+      let lastIndex = 0;
+      let match;
+      const re = new RegExp(regexPattern, flags);
+
+      while ((match = re.exec(text)) !== null) {
+        parts.push(text.substring(lastIndex, match.index));
+        parts.push(React.createElement('b', { key: `match-${match.index}` }, match[0]));
+        lastIndex = match.index + match[0].length;
+
+        // Prevent infinite loops with zero-width matches
+        if (match.index === re.lastIndex) re.lastIndex++;
+      }
+
+      parts.push(text.substring(lastIndex));
+      return React.createElement(Fragment, null, ...parts);
+    }
+
+    // For exact match patterns
+    else if (pattern.startsWith('"') && pattern.endsWith('"') && pattern.length > 2) {
+      const exactPattern = pattern.substring(1, pattern.length - 1);
+      const parts: ReactNode[] = [];
+      const regex = new RegExp(exactPattern, 'gi');
+
+      let lastIndex = 0;
+      let match;
+
+      while ((match = regex.exec(text)) !== null) {
+        parts.push(text.substring(lastIndex, match.index));
+        parts.push(React.createElement('b', { key: `match-${match.index}` }, match[0]));
+        lastIndex = match.index + match[0].length;
+      }
+
+      parts.push(text.substring(lastIndex));
+      return React.createElement(Fragment, null, ...parts);
+    }
+
+    // For OR patterns
+    else if (pattern.includes('|')) {
+      const orTerms = pattern
+        .split('|')
+        .filter(Boolean)
+        .map((term) => term.trim());
+
+      // Create a combined regex for all OR terms
+      const combinedPattern = orTerms
+        .map((term) => {
+          if (term.includes('*')) {
+            return term.replace(/\*/g, '\\w*');
+          }
+          return `\\b${term}\\b`;
+        })
+        .join('|');
+
+      const regex = new RegExp(combinedPattern, 'gi');
+
+      // Replace all matches with highlighted versions
+      return highlightWithRegex(text, regex);
+    }
+
+    // For AND patterns and simple word matching
+    else {
+      const terms = pattern.split(' ').filter(Boolean);
+
+      if (terms.length > 0) {
+        // Create a combined regex for all terms
+        const combinedPattern = terms
+          .map((term) => {
+            if (term.includes('*')) {
+              return term.replace(/\*/g, '\\w*');
+            }
+            return `\\b${term}\\b`;
+          })
+          .join('|');
+
+        const regex = new RegExp(combinedPattern, 'gi');
+
+        return highlightWithRegex(text, regex);
+      }
+    }
+
+    return text;
+  } catch (error) {
+    console.error('Pattern highlighting error:', error);
+    return text;
+  }
+};
+
+// Helper function to highlight text with a regex
+const highlightWithRegex = (text: string, regex: RegExp): ReactNode => {
+  const parts: ReactNode[] = [];
+  let lastIndex = 0;
+  let match;
+
+  while ((match = regex.exec(text)) !== null) {
+    parts.push(text.substring(lastIndex, match.index));
+    parts.push(React.createElement('b', { key: `match-${match.index}` }, match[0]));
+    lastIndex = match.index + match[0].length;
+  }
+
+  parts.push(text.substring(lastIndex));
+  return React.createElement(Fragment, null, ...parts);
 };

@@ -372,5 +372,9 @@
   "find_communities": "etsi yhteisöjä p/all:lla",
   "community_deleted": "Yhteisö poistettiin onnistuneesti.",
   "go_to_a_community": "Mene yhteisöön",
-  "enter_community_address": "Syötä yhteisön osoite"
+  "enter_community_address": "Syötä yhteisön osoite",
+  "all_communities": "kaikki yhteisöt",
+  "search_posts": "etsi viestejä",
+  "found_n_results_for": "löytyi {{count}} viestiä hakusanalla \"{{query}}\"",
+  "clear_search": "tyhjennä haku"
 }

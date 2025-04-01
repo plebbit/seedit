@@ -372,5 +372,9 @@
   "find_communities": "finn samfunn på p/all",
   "community_deleted": "Fellesskapet ble slettet med suksess.",
   "go_to_a_community": "Gå til et fellesskap",
-  "enter_community_address": "Skriv inn en fellesskapsadresse"
+  "enter_community_address": "Skriv inn en fellesskapsadresse",
+  "all_communities": "alle fellesskapene",
+  "search_posts": "søk etter innlegg",
+  "found_n_results_for": "funnet {{count}} innlegg for \"{{query}}\"",
+  "clear_search": "rydd søk"
 }
