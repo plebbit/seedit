@@ -19,6 +19,7 @@
     "@types/react-dom": "18.2.10",
     "cross-env": "7.0.3",
     "electron-context-menu": "3.3.0",
+    "env-paths": "3.0.0",
     "ext-name": "5.0.0",
     "form-data": "4.0.2",
     "fs-extra": "11.2.0",

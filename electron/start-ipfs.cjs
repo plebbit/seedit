@@ -3,7 +3,6 @@ const { spawn } = require('child_process');
 const fs = require('fs-extra');
 const ps = require('node:process');
 const tcpPortUsed = require('tcp-port-used');
-const EnvPaths = require('env-paths');
 
 // Import local modules using CommonJS
 const proxyServer = require('./proxy-server.cjs');
@@ -14,24 +13,13 @@ const isDev = process.env.ELECTRON_IS_DEV === '1';
 
 // Use __dirname directly instead of fileURLToPath(import.meta.url)
 const dirname = __dirname;
-const envPaths = EnvPaths('plebbit', { suffix: false });
 
-// use this custom function instead of spawnSync for better logging
-// also spawnSync might have been causing crash on start on windows
-const spawnAsync = (...args) =>
-  new Promise((resolve, reject) => {
-    const spawedProcess = spawn(...args);
-    spawedProcess.on('exit', (exitCode, signal) => {
-      if (exitCode === 0) resolve();
-      else reject(Error(`spawnAsync process '${spawedProcess.pid}' exited with code '${exitCode}' signal '${signal}'`));
-    });
-    spawedProcess.stderr.on('data', (data) => console.error(data.toString()));
-    spawedProcess.stdin.on('data', (data) => console.log(data.toString()));
-    spawedProcess.stdout.on('data', (data) => console.log(data.toString()));
-    spawedProcess.on('error', (data) => console.error(data.toString()));
-  });
+// Make the main logic async to handle dynamic import
+async function initializeIpfs() {
+  // Dynamically import env-paths
+  const EnvPaths = (await import('env-paths')).default;
+  const envPaths = EnvPaths('plebbit', { suffix: false });
 
-const startIpfs = async () => {
   const ipfsFileName = process.platform == 'win32' ? 'ipfs.exe' : 'ipfs';
   let ipfsPath = path.join(process.resourcesPath, 'bin', ipfsFileName);
   let ipfsDataPath = path.join(envPaths.data, 'ipfs');
@@ -82,48 +70,65 @@ const startIpfs = async () => {
   }
   await spawnAsync(ipfsPath, ['config', 'Addresses.API', apiAddress], { env, hideWindows: true });
 
-  const startIpfsDaemon = () =>
-    new Promise((resolve, reject) => {
-      const ipfsProcess = spawn(ipfsPath, ['daemon', '--migrate', '--enable-pubsub-experiment', '--enable-namesys-pubsub'], { env, hideWindows: true });
-      console.log(`ipfs daemon process started with pid ${ipfsProcess.pid}`);
-      let lastError;
-      ipfsProcess.stderr.on('data', (data) => {
-        lastError = data.toString();
-        console.error(data.toString());
-      });
-      ipfsProcess.stdin.on('data', (data) => console.log(data.toString()));
-      ipfsProcess.stdout.on('data', (data) => {
-        data = data.toString();
-        console.log(data);
-        if (data.includes('Daemon is ready')) {
-          resolve();
-        }
-      });
-      ipfsProcess.on('error', (data) => console.error(data.toString()));
-      ipfsProcess.on('exit', () => {
-        console.error(`ipfs process with pid ${ipfsProcess.pid} exited`);
-        reject(Error(lastError));
-      });
-      process.on('exit', () => {
-        try {
-          ps.kill(ipfsProcess.pid);
-        } catch (e) {
-          console.log(e);
-        }
-        try {
-          // sometimes ipfs doesnt exit unless we kill pid +1
-          ps.kill(ipfsProcess.pid + 1);
-        } catch (e) {
-          console.log(e);
-        }
-      });
+  await startIpfsDaemon(ipfsPath, env);
+}
+
+// use this custom function instead of spawnSync for better logging
+// also spawnSync might have been causing crash on start on windows
+const spawnAsync = (...args) =>
+  new Promise((resolve, reject) => {
+    const spawedProcess = spawn(...args);
+    spawedProcess.on('exit', (exitCode, signal) => {
+      if (exitCode === 0) resolve();
+      else reject(Error(`spawnAsync process '${spawedProcess.pid}' exited with code '${exitCode}' signal '${signal}'`));
     });
-  await startIpfsDaemon();
-};
+    spawedProcess.stderr.on('data', (data) => console.error(data.toString()));
+    spawedProcess.stdin.on('data', (data) => console.log(data.toString()));
+    spawedProcess.stdout.on('data', (data) => console.log(data.toString()));
+    spawedProcess.on('error', (data) => console.error(data.toString()));
+  });
 
+const startIpfsDaemon = (ipfsPath, env) =>
+  new Promise((resolve, reject) => {
+    const ipfsProcess = spawn(ipfsPath, ['daemon', '--migrate', '--enable-pubsub-experiment', '--enable-namesys-pubsub'], { env, hideWindows: true });
+    console.log(`ipfs daemon process started with pid ${ipfsProcess.pid}`);
+    let lastError;
+    ipfsProcess.stderr.on('data', (data) => {
+      lastError = data.toString();
+      console.error(data.toString());
+    });
+    ipfsProcess.stdin.on('data', (data) => console.log(data.toString()));
+    ipfsProcess.stdout.on('data', (data) => {
+      data = data.toString();
+      console.log(data);
+      if (data.includes('Daemon is ready')) {
+        resolve();
+      }
+    });
+    ipfsProcess.on('error', (data) => console.error(data.toString()));
+    ipfsProcess.on('exit', () => {
+      console.error(`ipfs process with pid ${ipfsProcess.pid} exited`);
+      reject(Error(lastError));
+    });
+    process.on('exit', () => {
+      try {
+        ps.kill(ipfsProcess.pid);
+      } catch (e) {
+        console.log(e);
+      }
+      try {
+        // sometimes ipfs doesnt exit unless we kill pid +1
+        ps.kill(ipfsProcess.pid + 1);
+      } catch (e) {
+        console.log(e);
+      }
+    });
+  });
+
+// Export object for error handling
 const DefaultExport = {};
-module.exports = DefaultExport;
 
+// Auto-restart logic now calls the async initializeIpfs
 const startIpfsAutoRestart = async () => {
   let pendingStart = false;
   const start = async () => {
@@ -132,15 +137,16 @@ const startIpfsAutoRestart = async () => {
     }
     pendingStart = true;
     try {
-      const started = await tcpPortUsed.check(isDev ? 50029 : 50019, '127.0.0.1');
+      const apiPort = isDev ? 50029 : 50019;
+      const started = await tcpPortUsed.check(apiPort, '127.0.0.1');
       if (!started) {
-        await startIpfs();
+        await initializeIpfs(); // Call the async initialization function
       }
     } catch (e) {
       console.log('failed starting ipfs', e);
       try {
         // try to run exported onError callback, can be undefined
-        DefaultExport.onError(e)?.catch?.(console.log);
+        DefaultExport.onError(e)?.catch?.((console.log));
       } catch (e) {}
     }
     pendingStart = false;
@@ -154,3 +160,5 @@ const startIpfsAutoRestart = async () => {
   }, 1000);
 };
 startIpfsAutoRestart();
+
+module.exports = DefaultExport;
