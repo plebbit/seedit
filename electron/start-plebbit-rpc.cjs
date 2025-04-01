@@ -57,9 +57,9 @@ const startPlebbitRpcAutoRestart = async (port, defaultPlebbitOptions, plebbitRp
                               (PlebbitRpcModule.default && PlebbitRpcModule.default.PlebbitWsServer);
         
         if (!PlebbitWsServer) {
-          (originalConsoleError || console.error)('Cannot find PlebbitWsServer in the imported module:', Object.keys(PlebbitRpcModule));
+          console.error('Cannot find PlebbitWsServer in the imported module:', Object.keys(PlebbitRpcModule));
           if (PlebbitRpcModule.default) {
-            (originalConsoleError || console.error)('Default export keys:', Object.keys(PlebbitRpcModule.default));
+            console.error('Default export keys:', Object.keys(PlebbitRpcModule.default));
           }
           throw new Error('PlebbitWsServer function not found in the imported module');
         }
@@ -70,20 +70,20 @@ const startPlebbitRpcAutoRestart = async (port, defaultPlebbitOptions, plebbitRp
           authKey: plebbitRpcAuthKey 
         });
         
-        plebbitWebSocketServer.on('error', (e) => (originalConsoleLog || console.log)('plebbit rpc error', e));
+        plebbitWebSocketServer.on('error', (e) => console.log('plebbit rpc error', e));
 
-        (originalConsoleLog || console.log)(`plebbit rpc: listening on ws://localhost:${port} (local connections only)`);
-        (originalConsoleLog || console.log)(`plebbit rpc: listening on ws://localhost:${port}/${plebbitRpcAuthKey} (secret auth key for remote connections)`);
+        console.log(`plebbit rpc: listening on ws://localhost:${port} (local connections only)`);
+        console.log(`plebbit rpc: listening on ws://localhost:${port}/${plebbitRpcAuthKey} (secret auth key for remote connections)`);
         plebbitWebSocketServer.ws.on('connection', (socket, request) => {
-          (originalConsoleLog || console.log)('plebbit rpc: new connection');
+          console.log('plebbit rpc: new connection');
           // debug raw JSON RPC messages in console
           if (isDev) {
-            socket.on('message', (message) => (originalConsoleLog || console.log)(`plebbit rpc: ${message.toString()}`));
+            socket.on('message', (message) => console.log(`plebbit rpc: ${message.toString()}`));
           }
         });
       }
     } catch (e) {
-      (originalConsoleLog || console.log)('failed starting plebbit rpc server', e);
+      console.log('failed starting plebbit rpc server', e);
     }
     pendingStart = false;
   };
