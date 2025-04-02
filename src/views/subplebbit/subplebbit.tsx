@@ -142,7 +142,7 @@ const Footer = ({
     if (isSearching) {
       footerFirstLine = (
         <div className={styles.stateString}>
-          <LoadingEllipsis string={t('searching_ellipsis')} />
+          <LoadingEllipsis string={t('searching')} />
         </div>
       );
     } else if (showNoResults) {
@@ -174,13 +174,13 @@ const Footer = ({
     } else if (feedLength === 0 && searchAttemptCompleted) {
       footerFirstLine = (
         <div className={styles.stateString}>
-          <LoadingEllipsis string={t('searching_ellipsis')} />
+          <LoadingEllipsis string={t('searching')} />
         </div>
       );
     } else if (feedLength === 0 && !searchAttemptCompleted) {
       footerFirstLine = (
         <div className={styles.stateString}>
-          <LoadingEllipsis string={t('searching_ellipsis')} />
+          <LoadingEllipsis string={t('searching')} />
         </div>
       );
     }

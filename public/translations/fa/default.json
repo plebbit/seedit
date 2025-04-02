@@ -378,5 +378,6 @@
   "found_n_results_for": "پست‌های {{count}} برای \"{{query}}\" پیدا شد",
   "clear_search": "پاک کردن جستجو",
   "loading_iframe": "در حال بارگذاری iframe",
-  "no_matches_found_for": "هیچ تطبیقی برای \"{{query}}\" پیدا نشد"
+  "no_matches_found_for": "هیچ تطبیقی برای \"{{query}}\" پیدا نشد",
+  "searching": "در حال جستجو"
 }

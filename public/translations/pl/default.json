@@ -378,5 +378,6 @@
   "found_n_results_for": "znaleziono {{count}} postów dla \"{{query}}\"",
   "clear_search": "wyczyść wyszukiwanie",
   "loading_iframe": "ładowanie iframe",
-  "no_matches_found_for": "brak pasujących wyników dla \"{{query}}\""
+  "no_matches_found_for": "brak pasujących wyników dla \"{{query}}\"",
+  "searching": "wyszukiwanie"
 }

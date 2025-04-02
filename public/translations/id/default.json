@@ -378,5 +378,6 @@
   "found_n_results_for": "ditemukan {{count}} pos untuk \"{{query}}\"",
   "clear_search": "hapus pencarian",
   "loading_iframe": "memuat iframe",
-  "no_matches_found_for": "tidak ditemukan kecocokan untuk \"{{query}}\""
+  "no_matches_found_for": "tidak ditemukan kecocokan untuk \"{{query}}\"",
+  "searching": "mencari"
 }

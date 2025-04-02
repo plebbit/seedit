@@ -378,5 +378,6 @@
   "found_n_results_for": "знайдено {{count}} публікацій для \"{{query}}\"",
   "clear_search": "очистити пошук",
   "loading_iframe": "завантаження iframe",
-  "no_matches_found_for": "не знайдено співпадінь для \"{{query}}\""
+  "no_matches_found_for": "не знайдено співпадінь для \"{{query}}\"",
+  "searching": "пошук"
 }

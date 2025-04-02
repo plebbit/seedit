@@ -378,5 +378,6 @@
   "found_n_results_for": "nakita ang {{count}} mga post para sa \"{{query}}\"",
   "clear_search": "i-clear ang paghahanap",
   "loading_iframe": "naglo-load na iframe",
-  "no_matches_found_for": "walang nahanap na tugma para sa \"{{query}}\""
+  "no_matches_found_for": "walang nahanap na tugma para sa \"{{query}}\"",
+  "searching": "naghahanap"
 }

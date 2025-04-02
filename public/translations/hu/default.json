@@ -378,5 +378,6 @@
   "found_n_results_for": "talált {{count}} bejegyzést \"{{query}}\" számára",
   "clear_search": "törölni keresést",
   "loading_iframe": "iframe betöltése",
-  "no_matches_found_for": "nem található egyezés \"{{query}}\" számára"
+  "no_matches_found_for": "nem található egyezés \"{{query}}\" számára",
+  "searching": "keresés"
 }

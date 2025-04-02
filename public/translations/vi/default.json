@@ -378,5 +378,6 @@
   "found_n_results_for": "tìm thấy {{count}} bài đăng cho \"{{query}}\"",
   "clear_search": "xóa tìm kiếm",
   "loading_iframe": "đang tải iframe",
-  "no_matches_found_for": "không tìm thấy kết quả cho \"{{query}}\""
+  "no_matches_found_for": "không tìm thấy kết quả cho \"{{query}}\"",
+  "searching": "đang tìm kiếm"
 }

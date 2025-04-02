@@ -378,5 +378,6 @@
   "found_n_results_for": "נמצאו {{count}} פוסטים עבור \"{{query}}\"",
   "clear_search": "נקה חיפוש",
   "loading_iframe": "טוען iframe",
-  "no_matches_found_for": "לא נמצאו תוצאות עבור \"{{query}}\""
+  "no_matches_found_for": "לא נמצאו תוצאות עבור \"{{query}}\"",
+  "searching": "מחפש"
 }

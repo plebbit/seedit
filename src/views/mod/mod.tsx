@@ -133,7 +133,7 @@ const Mod = () => {
           <div className={styles.feed}>
             <div className={styles.footer}>
               <div className={styles.stateString}>
-                <LoadingEllipsis string={t('searching_ellipsis')} />
+                <LoadingEllipsis string={t('searching')} />
               </div>
             </div>
           </div>

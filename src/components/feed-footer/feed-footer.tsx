@@ -75,7 +75,7 @@ const FeedFooter = ({
   if (isSearching) {
     footerContent = (
       <div className={styles.stateString}>
-        <LoadingEllipsis string={t('searching_ellipsis')} />
+        <LoadingEllipsis string={t('searching')} />
       </div>
     );
   } else if (showNoResults && searchQuery) {

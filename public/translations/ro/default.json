@@ -378,5 +378,6 @@
   "found_n_results_for": "au fost găsite {{count}} postări pentru \"{{query}}\"",
   "clear_search": "șterge căutarea",
   "loading_iframe": "încărcare iframe",
-  "no_matches_found_for": "nu s-au găsit rezultate pentru \"{{query}}\""
+  "no_matches_found_for": "nu s-au găsit rezultate pentru \"{{query}}\"",
+  "searching": "căutare"
 }

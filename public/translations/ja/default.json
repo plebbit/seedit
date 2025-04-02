@@ -378,5 +378,6 @@
   "found_n_results_for": "「{{query}}」に対して{{count}}件の投稿が見つかりました",
   "clear_search": "検索をクリア",
   "loading_iframe": "iframeを読み込んでいます",
-  "no_matches_found_for": "\"{{query}}\" に対する一致は見つかりませんでした"
+  "no_matches_found_for": "\"{{query}}\" に対する一致は見つかりませんでした",
+  "searching": "検索中"
 }

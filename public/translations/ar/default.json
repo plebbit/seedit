@@ -378,5 +378,6 @@
   "found_n_results_for": "تم العثور على {{count}} منشورات لـ \"{{query}}\"",
   "clear_search": "مسح البحث",
   "loading_iframe": "تحميل الإطار",
-  "no_matches_found_for": "لم يتم العثور على تطابقات لـ \"{{query}}\""
+  "no_matches_found_for": "لم يتم العثور على تطابقات لـ \"{{query}}\"",
+  "searching": "البحث"
 }
