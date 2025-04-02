@@ -1,13 +1,14 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, lazy, Suspense } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { CommentMediaInfo } from '../../../lib/utils/media-utils';
 import useContentOptionsStore from '../../../stores/use-content-options-store';
 import { useIsNsfwSubplebbit } from '../../../hooks/use-is-nsfw-subplebbit';
 import styles from './expando.module.css';
-import Embed from '../embed';
 import Markdown from '../../markdown';
 import _ from 'lodash';
+
+const Embed = lazy(() => import('../embed'));
 
 interface ExpandoProps {
   authorEditReason?: string;
@@ -74,7 +75,11 @@ const Expando = ({
   } else if (commentMediaInfo?.type === 'audio' && expanded) {
     mediaComponent = <audio src={commentMediaInfo.url} controls />;
   } else if (commentMediaInfo?.type === 'iframe' && expanded) {
-    mediaComponent = <Embed url={commentMediaInfo.url} />;
+    mediaComponent = (
+      <Suspense fallback={<div>Loading embed...</div>}>
+        <Embed url={commentMediaInfo.url} />
+      </Suspense>
+    );
   }
 
   const pageSubplebbitAddress = useParams().subplebbitAddress;
