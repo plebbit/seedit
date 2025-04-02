@@ -6,6 +6,7 @@ import useContentOptionsStore from '../../../stores/use-content-options-store';
 import { useIsNsfwSubplebbit } from '../../../hooks/use-is-nsfw-subplebbit';
 import styles from './expando.module.css';
 import Markdown from '../../markdown';
+import LoadingEllipsis from '../../loading-ellipsis';
 import _ from 'lodash';
 
 const Embed = lazy(() => import('../embed'));
@@ -76,7 +77,13 @@ const Expando = ({
     mediaComponent = <audio src={commentMediaInfo.url} controls />;
   } else if (commentMediaInfo?.type === 'iframe' && expanded) {
     mediaComponent = (
-      <Suspense fallback={<div>Loading embed...</div>}>
+      <Suspense
+        fallback={
+          <span className={styles.suspenseFallback}>
+            <LoadingEllipsis string={t('loading')} />
+          </span>
+        }
+      >
         <Embed url={commentMediaInfo.url} />
       </Suspense>
     );
