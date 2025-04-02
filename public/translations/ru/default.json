@@ -377,5 +377,6 @@
   "search_posts": "поиск сообщений",
   "found_n_results_for": "найдено {{count}} постов для \"{{query}}\"",
   "clear_search": "очистить поиск",
-  "loading_iframe": "загрузка iframe"
+  "loading_iframe": "загрузка iframe",
+  "no_matches_found_for": "не найдено совпадений для \"{{query}}\""
 }

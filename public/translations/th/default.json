@@ -377,5 +377,6 @@
   "search_posts": "ค้นหาการโพสต์",
   "found_n_results_for": "พบ {{count}} โพสต์สำหรับ \"{{query}}\"",
   "clear_search": "ล้างการค้นหา",
-  "loading_iframe": "กำลังโหลด iframe"
+  "loading_iframe": "กำลังโหลด iframe",
+  "no_matches_found_for": "ไม่พบการจับคู่สำหรับ \"{{query}}\""
 }

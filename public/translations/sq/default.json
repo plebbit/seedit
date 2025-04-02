@@ -377,5 +377,6 @@
   "search_posts": "kërkoni postime",
   "found_n_results_for": "gjetën {{count}} postime për \"{{query}}\"",
   "clear_search": "pastroni kërkimin",
-  "loading_iframe": "ngarkimi iframe"
+  "loading_iframe": "ngarkimi iframe",
+  "no_matches_found_for": "nuk u gjetën rezultate për \"{{query}}\""
 }

@@ -377,5 +377,6 @@
   "search_posts": "pesquisar postagens",
   "found_n_results_for": "encontrados {{count}} posts para \"{{query}}\"",
   "clear_search": "limpar pesquisa",
-  "loading_iframe": "carregando iframe"
+  "loading_iframe": "carregando iframe",
+  "no_matches_found_for": "nenhuma correspondência encontrada para \"{{query}}\""
 }

@@ -377,5 +377,6 @@
   "search_posts": "søg efter indlæg",
   "found_n_results_for": "fundet {{count}} indlæg for \"{{query}}\"",
   "clear_search": "ryd søgning",
-  "loading_iframe": "loading iframe"
+  "loading_iframe": "loading iframe",
+  "no_matches_found_for": "der blev ikke fundet nogen matches for \"{{query}}\""
 }

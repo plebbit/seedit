@@ -377,5 +377,6 @@
   "search_posts": "chercher des publications",
   "found_n_results_for": "trouvé {{count}} publications pour \"{{query}}\"",
   "clear_search": "effacer la recherche",
-  "loading_iframe": "chargement iframe"
+  "loading_iframe": "chargement iframe",
+  "no_matches_found_for": "aucune correspondance trouvée pour \"{{query}}\""
 }

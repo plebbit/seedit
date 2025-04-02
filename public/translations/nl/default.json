@@ -377,5 +377,6 @@
   "search_posts": "zoek berichten",
   "found_n_results_for": "gevonden {{count}} berichten voor \"{{query}}\"",
   "clear_search": "wis zoekopdracht",
-  "loading_iframe": "laden iframe"
+  "loading_iframe": "laden iframe",
+  "no_matches_found_for": "geen overeenkomsten gevonden voor \"{{query}}\""
 }

@@ -377,5 +377,6 @@
   "search_posts": "게시물 검색",
   "found_n_results_for": "\"{{query}}\"에 대해 {{count}}개의 게시물이 검색되었습니다",
   "clear_search": "검색 지우기",
-  "loading_iframe": "iframe 로딩 중"
+  "loading_iframe": "iframe 로딩 중",
+  "no_matches_found_for": "\"{{query}}\"에 대한 일치 항목을 찾을 수 없습니다"
 }

@@ -377,5 +377,6 @@
   "search_posts": "పోస్టులను శోధించు",
   "found_n_results_for": "\"{{query}}\" కోసం {{count}} పోస్ట్‌లు కనుగొన్నాయి",
   "clear_search": "శోధనను క్లియర్ చేయండి",
-  "loading_iframe": "లోడింగ్ ఐఫ్రేమ్"
+  "loading_iframe": "లోడింగ్ ఐఫ్రేమ్",
+  "no_matches_found_for": "\"{{query}}\" కోసం ఎలాంటి ఫలితాలు లభించలేదు"
 }

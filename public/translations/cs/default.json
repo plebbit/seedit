@@ -377,5 +377,6 @@
   "search_posts": "hledat příspěvky",
   "found_n_results_for": "nalezeno {{count}} příspěvků pro \"{{query}}\"",
   "clear_search": "vymazat hledání",
-  "loading_iframe": "načítání iframe"
+  "loading_iframe": "načítání iframe",
+  "no_matches_found_for": "nenalezeny žádné shody pro \"{{query}}\""
 }

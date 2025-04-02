@@ -377,5 +377,6 @@
   "search_posts": "etsi viestejä",
   "found_n_results_for": "löytyi {{count}} viestiä hakusanalla \"{{query}}\"",
   "clear_search": "tyhjennä haku",
-  "loading_iframe": "ladataan iframe"
+  "loading_iframe": "ladataan iframe",
+  "no_matches_found_for": "ei löytynyt osumia hakusanalla \"{{query}}\""
 }

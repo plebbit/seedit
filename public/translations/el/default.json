@@ -377,5 +377,6 @@
   "search_posts": "αναζήτηση αναρτήσεων",
   "found_n_results_for": "βρέθηκαν {{count}} δημοσιεύσεις για \"{{query}}\"",
   "clear_search": "καθαρισμός αναζήτησης",
-  "loading_iframe": "φόρτωση iframe"
+  "loading_iframe": "φόρτωση iframe",
+  "no_matches_found_for": "δεν βρέθηκαν αποτελέσματα για \"{{query}}\""
 }

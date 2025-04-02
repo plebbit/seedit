@@ -377,5 +377,6 @@
   "search_posts": "søk etter innlegg",
   "found_n_results_for": "funnet {{count}} innlegg for \"{{query}}\"",
   "clear_search": "rydd søk",
-  "loading_iframe": "laster iframe"
+  "loading_iframe": "laster iframe",
+  "no_matches_found_for": "ingen treff funnet for \"{{query}}\""
 }

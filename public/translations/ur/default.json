@@ -377,5 +377,6 @@
   "search_posts": "پوسٹس تلاش کریں",
   "found_n_results_for": "\"{{query}}\" کے لیے {{count}} پوسٹس ملیں",
   "clear_search": "تلاش کو صاف کریں",
-  "loading_iframe": "لوڈ ہو رہا ہے iframe"
+  "loading_iframe": "لوڈ ہو رہا ہے iframe",
+  "no_matches_found_for": "\"{{query}}\" کے لئے کوئی میچ نہیں ملا"
 }
