@@ -376,5 +376,6 @@
   "all_communities": "alle gemeenschappen",
   "search_posts": "zoek berichten",
   "found_n_results_for": "gevonden {{count}} berichten voor \"{{query}}\"",
-  "clear_search": "wis zoekopdracht"
+  "clear_search": "wis zoekopdracht",
+  "loading_iframe": "laden iframe"
 }

@@ -376,5 +376,6 @@
   "all_communities": "всі спільноти",
   "search_posts": "пошук постів",
   "found_n_results_for": "знайдено {{count}} публікацій для \"{{query}}\"",
-  "clear_search": "очистити пошук"
+  "clear_search": "очистити пошук",
+  "loading_iframe": "завантаження iframe"
 }

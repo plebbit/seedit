@@ -376,5 +376,6 @@
   "all_communities": "tất cả cộng đồng",
   "search_posts": "tìm kiếm bài viết",
   "found_n_results_for": "tìm thấy {{count}} bài đăng cho \"{{query}}\"",
-  "clear_search": "xóa tìm kiếm"
+  "clear_search": "xóa tìm kiếm",
+  "loading_iframe": "đang tải iframe"
 }

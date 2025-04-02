@@ -376,5 +376,6 @@
   "all_communities": "toate comunitățile",
   "search_posts": "căutați postări",
   "found_n_results_for": "au fost găsite {{count}} postări pentru \"{{query}}\"",
-  "clear_search": "șterge căutarea"
+  "clear_search": "șterge căutarea",
+  "loading_iframe": "încărcare iframe"
 }

@@ -376,5 +376,6 @@
   "all_communities": "все сообщества",
   "search_posts": "поиск сообщений",
   "found_n_results_for": "найдено {{count}} постов для \"{{query}}\"",
-  "clear_search": "очистить поиск"
+  "clear_search": "очистить поиск",
+  "loading_iframe": "загрузка iframe"
 }

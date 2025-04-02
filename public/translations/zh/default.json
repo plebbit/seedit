@@ -376,5 +376,6 @@
   "all_communities": "所有社区",
   "search_posts": "搜索帖子",
   "found_n_results_for": "找到 \"{{query}}\" 的 {{count}} 条帖子",
-  "clear_search": "清除搜索"
+  "clear_search": "清除搜索",
+  "loading_iframe": "正在加载 iframe"
 }

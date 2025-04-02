@@ -376,5 +376,6 @@
   "all_communities": "모든 커뮤니티",
   "search_posts": "게시물 검색",
   "found_n_results_for": "\"{{query}}\"에 대해 {{count}}개의 게시물이 검색되었습니다",
-  "clear_search": "검색 지우기"
+  "clear_search": "검색 지우기",
+  "loading_iframe": "iframe 로딩 중"
 }

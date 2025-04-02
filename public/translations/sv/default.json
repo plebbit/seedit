@@ -376,5 +376,6 @@
   "all_communities": "alla samhällen",
   "search_posts": "sök inlägg",
   "found_n_results_for": "hittade {{count}} inlägg för \"{{query}}\"",
-  "clear_search": "rensa sökning"
+  "clear_search": "rensa sökning",
+  "loading_iframe": "laddar iframe"
 }

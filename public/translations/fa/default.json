@@ -376,5 +376,6 @@
   "all_communities": "تمام جوامع",
   "search_posts": "جستجو در پست‌ها",
   "found_n_results_for": "پست‌های {{count}} برای \"{{query}}\" پیدا شد",
-  "clear_search": "پاک کردن جستجو"
+  "clear_search": "پاک کردن جستجو",
+  "loading_iframe": "در حال بارگذاری iframe"
 }

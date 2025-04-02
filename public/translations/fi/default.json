@@ -376,5 +376,6 @@
   "all_communities": "kaikki yhteisöt",
   "search_posts": "etsi viestejä",
   "found_n_results_for": "löytyi {{count}} viestiä hakusanalla \"{{query}}\"",
-  "clear_search": "tyhjennä haku"
+  "clear_search": "tyhjennä haku",
+  "loading_iframe": "ladataan iframe"
 }

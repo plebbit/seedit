@@ -376,5 +376,6 @@
   "all_communities": "všechny komunity",
   "search_posts": "hledat příspěvky",
   "found_n_results_for": "nalezeno {{count}} příspěvků pro \"{{query}}\"",
-  "clear_search": "vymazat hledání"
+  "clear_search": "vymazat hledání",
+  "loading_iframe": "načítání iframe"
 }

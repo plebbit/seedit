@@ -80,7 +80,7 @@ const Expando = ({
       <Suspense
         fallback={
           <span className={styles.suspenseFallback}>
-            <LoadingEllipsis string={t('loading')} />
+            <LoadingEllipsis string={t('loading_iframe')} />
           </span>
         }
       >

@@ -376,5 +376,6 @@
   "all_communities": "lahat ng komunidad",
   "search_posts": "maghanap ng mga post",
   "found_n_results_for": "nakita ang {{count}} mga post para sa \"{{query}}\"",
-  "clear_search": "i-clear ang paghahanap"
+  "clear_search": "i-clear ang paghahanap",
+  "loading_iframe": "naglo-load na iframe"
 }

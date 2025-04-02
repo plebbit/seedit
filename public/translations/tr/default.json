@@ -376,5 +376,6 @@
   "all_communities": "tüm topluluklar",
   "search_posts": "gönderileri ara",
   "found_n_results_for": "\"{{query}}\" için {{count}} gönderi bulundu",
-  "clear_search": "arama temizle"
+  "clear_search": "arama temizle",
+  "loading_iframe": "iframe yükleniyor"
 }

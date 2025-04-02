@@ -376,5 +376,6 @@
   "all_communities": "alle samfund",
   "search_posts": "søg efter indlæg",
   "found_n_results_for": "fundet {{count}} indlæg for \"{{query}}\"",
-  "clear_search": "ryd søgning"
+  "clear_search": "ryd søgning",
+  "loading_iframe": "loading iframe"
 }

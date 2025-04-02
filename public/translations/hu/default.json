@@ -376,5 +376,6 @@
   "all_communities": "minden közösség",
   "search_posts": "hozzászólások keresése",
   "found_n_results_for": "talált {{count}} bejegyzést \"{{query}}\" számára",
-  "clear_search": "törölni keresést"
+  "clear_search": "törölni keresést",
+  "loading_iframe": "iframe betöltése"
 }

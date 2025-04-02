@@ -376,5 +376,6 @@
   "all_communities": "جميع المجتمعات",
   "search_posts": "البحث عن المشاركات",
   "found_n_results_for": "تم العثور على {{count}} منشورات لـ \"{{query}}\"",
-  "clear_search": "مسح البحث"
+  "clear_search": "مسح البحث",
+  "loading_iframe": "تحميل الإطار"
 }

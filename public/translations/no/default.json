@@ -376,5 +376,6 @@
   "all_communities": "alle fellesskapene",
   "search_posts": "søk etter innlegg",
   "found_n_results_for": "funnet {{count}} innlegg for \"{{query}}\"",
-  "clear_search": "rydd søk"
+  "clear_search": "rydd søk",
+  "loading_iframe": "laster iframe"
 }

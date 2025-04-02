@@ -376,5 +376,6 @@
   "all_communities": "সব সম্প্রদায়",
   "search_posts": "পোস্টগুলি অনুসন্ধান করুন",
   "found_n_results_for": "{{query}} এর জন্য {{count}} পোস্ট পাওয়া গেছে",
-  "clear_search": "খোঁজ মুছে ফেলুন"
+  "clear_search": "খোঁজ মুছে ফেলুন",
+  "loading_iframe": "লোড হচ্ছে আইফ্রেম"
 }

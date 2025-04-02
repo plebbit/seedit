@@ -376,5 +376,6 @@
   "all_communities": "all communities",
   "search_posts": "search posts",
   "found_n_results_for": "found {{count}} posts for \"{{query}}\"",
-  "clear_search": "clear search"
+  "clear_search": "clear search",
+  "loading_iframe": "loading iframe"
 }

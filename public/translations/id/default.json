@@ -376,5 +376,6 @@
   "all_communities": "semua komunitas",
   "search_posts": "cari pos",
   "found_n_results_for": "ditemukan {{count}} pos untuk \"{{query}}\"",
-  "clear_search": "hapus pencarian"
+  "clear_search": "hapus pencarian",
+  "loading_iframe": "memuat iframe"
 }

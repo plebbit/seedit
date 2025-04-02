@@ -376,5 +376,6 @@
   "all_communities": "सभी समुदाय",
   "search_posts": "पोस्ट खोजें",
   "found_n_results_for": " \"{{query}}\" के लिए {{count}} पोस्ट मिलीं",
-  "clear_search": "खोज साफ करें"
+  "clear_search": "खोज साफ करें",
+  "loading_iframe": "लोड हो रहा है iframe"
 }

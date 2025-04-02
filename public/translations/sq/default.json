@@ -376,5 +376,6 @@
   "all_communities": "të gjitha komunitetet",
   "search_posts": "kërkoni postime",
   "found_n_results_for": "gjetën {{count}} postime për \"{{query}}\"",
-  "clear_search": "pastroni kërkimin"
+  "clear_search": "pastroni kërkimin",
+  "loading_iframe": "ngarkimi iframe"
 }
