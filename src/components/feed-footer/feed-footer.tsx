@@ -105,7 +105,7 @@ const FeedFooter = ({
         </div>
       </div>
     );
-  } else if (feedLength === 0 && !isSearching && !searchQuery && !(weeklyFeedLength > feedLength || monthlyFeedLength > feedLength)) {
+  } else if (hasFeedLoaded && feedLength === 0 && !hasMore && !isSearching && !searchQuery && !(weeklyFeedLength > feedLength || monthlyFeedLength > feedLength)) {
     footerContent = t('no_posts');
   } else if (hasMore || subplebbitAddresses.length > 0 || (subplebbitAddresses && subplebbitAddresses.length === 0)) {
     // Only show newer posts/weekly/monthly suggestions when not searching
