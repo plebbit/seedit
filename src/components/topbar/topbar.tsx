@@ -11,40 +11,92 @@ import { sortTypes } from '../../constants/sort-types';
 import { sortLabels } from '../../constants/sort-labels';
 import styles from './topbar.module.css';
 
-const TimeFilterDropdown = () => {
-  const params = useParams();
-  const location = useLocation();
-  const isInSubplebbitView = isSubplebbitView(location.pathname, params);
-  const isInDomainView = isDomainView(location.pathname);
-  const isinAllView = isAllView(location.pathname);
-  const isInModView = isModView(location.pathname);
-  const { timeFilterName, timeFilterNames } = useTimeFilter();
-  const selectedTimeFilter = timeFilterName || (isInSubplebbitView ? 'all' : timeFilterName);
+const CommunitiesDropdown = () => {
+  const { t } = useTranslation();
+  const account = useAccount();
+  const subscriptions = account?.subscriptions;
 
-  const [isTimeFilterDropdownOpen, setIsTimeFilterDropdownOpen] = useState(false);
-  const toggleTimeFilterDropdown = () => setIsTimeFilterDropdownOpen(!isTimeFilterDropdownOpen);
-  const timeFilterDropdownRef = useRef<HTMLDivElement>(null);
-  const timeFilterdropdownItemsRef = useRef<HTMLDivElement>(null);
-  const timeFilterDropdownClass = isTimeFilterDropdownOpen ? styles.visible : styles.hidden;
+  const [isSubsDropdownOpen, setIsSubsDropdownOpen] = useState(false);
+  const toggleSubsDropdown = () => setIsSubsDropdownOpen(!isSubsDropdownOpen);
+  const subsDropdownRef = useRef<HTMLDivElement>(null);
+  const subsdropdownItemsRef = useRef<HTMLDivElement>(null);
+  const subsDropdownClass = isSubsDropdownOpen ? styles.visible : styles.hidden;
 
-  const selectedSortType = params.sortType || 'hot';
+  const handleClickOutside = (event: MouseEvent) => {
+    if (subsDropdownRef.current && !subsDropdownRef.current.contains(event.target as Node)) {
+      setIsSubsDropdownOpen(false);
+    }
+  };
 
-  const getTimeFilterLink = (timeFilterName: string) => {
-    return isInSubplebbitView
-      ? `/p/${params.subplebbitAddress}/${selectedSortType}/${timeFilterName}`
-      : isinAllView
-      ? `p/all/${selectedSortType}/${timeFilterName}`
-      : isInModView
-      ? `/p/mod/${selectedSortType}/${timeFilterName}`
-      : isInDomainView
-      ? `/domain/${params.domain}/${selectedSortType}/${timeFilterName}`
-      : `/${selectedSortType}/${timeFilterName}`;
+  useEffect(() => {
+    if (isSubsDropdownOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+    }
+  }, [isSubsDropdownOpen]);
+
+  return (
+    <div className={`${styles.dropdown} ${styles.subsDropdown}`} ref={subsDropdownRef} onClick={toggleSubsDropdown}>
+      <span className={styles.selectedTitle}>{t('my_communities')}</span>
+      <div className={`${styles.dropChoices} ${styles.subsDropChoices} ${subsDropdownClass}`} ref={subsdropdownItemsRef}>
+        {subscriptions?.map((subscription: string, index: number) => (
+          <Link key={index} to={`/p/${subscription}`} className={styles.dropdownItem}>
+            {Plebbit.getShortAddress(subscription)}
+          </Link>
+        ))}
+        <Link to='/communities/subscriber' className={`${styles.dropdownItem} ${styles.myCommunitiesItemButtonDotted}`}>
+          {t('edit_subscriptions')}
+        </Link>
+      </div>
+    </div>
+  );
+};
+
+const TagFilterDropdown = () => {
+  const { t } = useTranslation();
+  const {
+    hideAdultCommunities,
+    hideGoreCommunities,
+    hideAntiCommunities,
+    hideVulgarCommunities,
+    setHideAdultCommunities,
+    setHideGoreCommunities,
+    setHideAntiCommunities,
+    setHideVulgarCommunities,
+  } = useContentOptionsStore();
+
+  const tags = [
+    { name: 'adult', isHidden: hideAdultCommunities, setter: setHideAdultCommunities },
+    { name: 'gore', isHidden: hideGoreCommunities, setter: setHideGoreCommunities },
+    { name: 'vulgar', isHidden: hideVulgarCommunities, setter: setHideVulgarCommunities },
+    { name: 'anti', isHidden: hideAntiCommunities, setter: setHideAntiCommunities },
+  ];
+
+  const [isTagFilterDropdownOpen, setIsTagFilterDropdownOpen] = useState(false);
+  const toggleTagFilterDropdown = () => setIsTagFilterDropdownOpen(!isTagFilterDropdownOpen);
+  const tagFilterDropdownRef = useRef<HTMLDivElement>(null);
+  const tagFilterdropdownItemsRef = useRef<HTMLDivElement>(null);
+  const tagFilterDropdownClass = isTagFilterDropdownOpen ? styles.visible : styles.hidden;
+
+  const allHidden = hideAdultCommunities && hideGoreCommunities && hideAntiCommunities && hideVulgarCommunities;
+
+  const handleToggleAll = (event: React.MouseEvent) => {
+    event.stopPropagation();
+    const newState = !allHidden;
+    setHideAdultCommunities(newState);
+    setHideGoreCommunities(newState);
+    setHideAntiCommunities(newState);
+    setHideVulgarCommunities(newState);
+  };
+
+  const handleToggleTag = (event: React.MouseEvent, setter: (hide: boolean) => void, currentState: boolean) => {
+    event.stopPropagation();
+    setter(!currentState);
   };
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (timeFilterDropdownRef.current && !timeFilterDropdownRef.current.contains(event.target as Node)) {
-        setIsTimeFilterDropdownOpen(false);
+      if (tagFilterDropdownRef.current && !tagFilterDropdownRef.current.contains(event.target as Node)) {
+        setIsTagFilterDropdownOpen(false);
       }
     };
 
@@ -55,14 +107,22 @@ const TimeFilterDropdown = () => {
   }, []);
 
   return (
-    <div className={styles.dropdown} ref={timeFilterDropdownRef} onClick={toggleTimeFilterDropdown}>
-      <span className={styles.selectedTitle}>{selectedTimeFilter}</span>
-      <div className={`${styles.dropChoices} ${styles.filterDropChoices} ${timeFilterDropdownClass}`} ref={timeFilterdropdownItemsRef}>
-        {timeFilterNames.slice(0, -1).map((timeFilterName, index) => (
-          <Link to={getTimeFilterLink(timeFilterName)} key={index} className={styles.dropdownItem}>
-            {timeFilterNames[index]}
-          </Link>
+    <div className={styles.dropdown} ref={tagFilterDropdownRef} onClick={toggleTagFilterDropdown}>
+      <span className={styles.selectedTitle}>{t('tags')}</span>
+      <div className={`${styles.dropChoices} ${styles.filterDropChoices} ${tagFilterDropdownClass}`} ref={tagFilterdropdownItemsRef}>
+        <div className={styles.dropdownItem} onClick={handleToggleAll} style={{ cursor: 'pointer' }}>
+          <span className={styles.dropdownItemText}>{allHidden ? 'show all nsfw' : 'hide all nsfw'}</span>
+        </div>
+        {tags.map((tag, index) => (
+          <div key={index} className={styles.dropdownItem} onClick={(e) => handleToggleTag(e, tag.setter, tag.isHidden)} style={{ cursor: 'pointer' }}>
+            <span className={styles.dropdownItemText}>
+              {tag.isHidden ? 'show' : 'hide'} "{tag.name}"
+            </span>
+          </div>
         ))}
+        <Link to='/settings/content-options' className={`${styles.dropdownItem} ${styles.myCommunitiesItemButtonDotted}`}>
+          {t('content_options')}
+        </Link>
       </div>
     </div>
   );
@@ -122,41 +182,58 @@ const SortTypesDropdown = () => {
   );
 };
 
-const CommunitiesDropdown = () => {
-  const { t } = useTranslation();
-  const account = useAccount();
-  const subscriptions = account?.subscriptions;
+const TimeFilterDropdown = () => {
+  const params = useParams();
+  const location = useLocation();
+  const isInSubplebbitView = isSubplebbitView(location.pathname, params);
+  const isInDomainView = isDomainView(location.pathname);
+  const isinAllView = isAllView(location.pathname);
+  const isInModView = isModView(location.pathname);
+  const { timeFilterName, timeFilterNames } = useTimeFilter();
+  const selectedTimeFilter = timeFilterName || (isInSubplebbitView ? 'all' : timeFilterName);
 
-  const [isSubsDropdownOpen, setIsSubsDropdownOpen] = useState(false);
-  const toggleSubsDropdown = () => setIsSubsDropdownOpen(!isSubsDropdownOpen);
-  const subsDropdownRef = useRef<HTMLDivElement>(null);
-  const subsdropdownItemsRef = useRef<HTMLDivElement>(null);
-  const subsDropdownClass = isSubsDropdownOpen ? styles.visible : styles.hidden;
+  const [isTimeFilterDropdownOpen, setIsTimeFilterDropdownOpen] = useState(false);
+  const toggleTimeFilterDropdown = () => setIsTimeFilterDropdownOpen(!isTimeFilterDropdownOpen);
+  const timeFilterDropdownRef = useRef<HTMLDivElement>(null);
+  const timeFilterdropdownItemsRef = useRef<HTMLDivElement>(null);
+  const timeFilterDropdownClass = isTimeFilterDropdownOpen ? styles.visible : styles.hidden;
 
-  const handleClickOutside = (event: MouseEvent) => {
-    if (subsDropdownRef.current && !subsDropdownRef.current.contains(event.target as Node)) {
-      setIsSubsDropdownOpen(false);
-    }
+  const selectedSortType = params.sortType || 'hot';
+
+  const getTimeFilterLink = (timeFilterName: string) => {
+    return isInSubplebbitView
+      ? `/p/${params.subplebbitAddress}/${selectedSortType}/${timeFilterName}`
+      : isinAllView
+      ? `p/all/${selectedSortType}/${timeFilterName}`
+      : isInModView
+      ? `/p/mod/${selectedSortType}/${timeFilterName}`
+      : isInDomainView
+      ? `/domain/${params.domain}/${selectedSortType}/${timeFilterName}`
+      : `/${selectedSortType}/${timeFilterName}`;
   };
 
   useEffect(() => {
-    if (isSubsDropdownOpen) {
-      document.addEventListener('mousedown', handleClickOutside);
-    }
-  }, [isSubsDropdownOpen]);
+    const handleClickOutside = (event: MouseEvent) => {
+      if (timeFilterDropdownRef.current && !timeFilterDropdownRef.current.contains(event.target as Node)) {
+        setIsTimeFilterDropdownOpen(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
 
   return (
-    <div className={`${styles.dropdown} ${styles.subsDropdown}`} ref={subsDropdownRef} onClick={toggleSubsDropdown}>
-      <span className={styles.selectedTitle}>{t('my_communities')}</span>
-      <div className={`${styles.dropChoices} ${styles.subsDropChoices} ${subsDropdownClass}`} ref={subsdropdownItemsRef}>
-        {subscriptions?.map((subscription: string, index: number) => (
-          <Link key={index} to={`/p/${subscription}`} className={styles.dropdownItem}>
-            {Plebbit.getShortAddress(subscription)}
+    <div className={styles.dropdown} ref={timeFilterDropdownRef} onClick={toggleTimeFilterDropdown}>
+      <span className={styles.selectedTitle}>{selectedTimeFilter}</span>
+      <div className={`${styles.dropChoices} ${styles.filterDropChoices} ${timeFilterDropdownClass}`} ref={timeFilterdropdownItemsRef}>
+        {timeFilterNames.slice(0, -1).map((timeFilterName, index) => (
+          <Link to={getTimeFilterLink(timeFilterName)} key={index} className={styles.dropdownItem}>
+            {timeFilterNames[index]}
           </Link>
         ))}
-        <Link to='/communities/subscriber' className={`${styles.dropdownItem} ${styles.myCommunitiesItemButtonDotted}`}>
-          {t('edit_subscriptions')}
-        </Link>
       </div>
     </div>
   );
@@ -184,6 +261,7 @@ const TopBar = () => {
     <div className={styles.headerArea}>
       <div className={styles.widthClip}>
         <CommunitiesDropdown />
+        <TagFilterDropdown />
         <SortTypesDropdown />
         <TimeFilterDropdown />
         <div className={styles.srList}>

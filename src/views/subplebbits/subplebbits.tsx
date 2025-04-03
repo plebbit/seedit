@@ -246,7 +246,7 @@ const Subplebbit = ({ subplebbit, tags, index }: SubplebbitProps) => {
               {tags && tags.length > 0 && (
                 <span className={styles.tags}>
                   {tags.map((tag, index) => (
-                    <Fragment key={tag}>
+                    <Fragment key={index}>
                       <Link to={`/communities/vote/tag/${tag}`}>{tag}</Link>
                     </Fragment>
                   ))}
