@@ -187,7 +187,7 @@
   margin-left: 5px;
 }
 
-.moreLink {
+.editLink {
   color: var(--text);
   text-decoration: none;
   background-color: var(--background-text);
@@ -196,7 +196,7 @@
   margin-left: auto;
 }
 
-.moreLink:hover {
+.editLink:hover {
   text-decoration: underline;
 }
 

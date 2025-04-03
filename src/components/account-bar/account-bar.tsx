@@ -71,7 +71,14 @@ const AccountBar = () => {
   const accountDropdownOptions = accounts
     .filter((account) => account?.author?.shortAddress)
     .map((account, index) => (
-      <span key={index} className={styles.dropdownItem} onClick={() => setActiveAccount(account?.name)}>
+      <span
+        key={index}
+        className={styles.dropdownItem}
+        onClick={() => {
+          setActiveAccount(account?.name);
+          setIsAccountDropdownOpen(false);
+        }}
+      >
         u/{account.author.shortAddress}
       </span>
     ));

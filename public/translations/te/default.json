@@ -372,5 +372,19 @@
   "find_communities": "p/all పై కమ్యూనిటీస్ కనుగొనండి",
   "community_deleted": "కమ్యూనిటీ విజయవంతంగా డిలీట్ అయింది.",
   "go_to_a_community": "ఒక కమ్యూనిటీలోకి వెళ్లి",
-  "enter_community_address": "ఒక కమ్యూనిటీ చిరునామా నమోదు చేయండి"
+  "enter_community_address": "ఒక కమ్యూనిటీ చిరునామా నమోదు చేయండి",
+  "all_communities": "అన్ని కమ్యూనిటీలను",
+  "search_posts": "పోస్టులను శోధించు",
+  "found_n_results_for": "\"{{query}}\" కోసం {{count}} పోస్ట్‌లు కనుగొన్నాయి",
+  "clear_search": "శోధనను క్లియర్ చేయండి",
+  "loading_iframe": "లోడింగ్ ఐఫ్రేమ్",
+  "no_matches_found_for": "\"{{query}}\" కోసం ఎలాంటి ఫలితాలు లభించలేదు",
+  "searching": "శోధిస్తున్నాడు",
+  "hide_default_communities_from_topbar": "టాప్‌బార్ నుండి డిఫాల్ట్ కమ్యూనిటీలను దాచండి",
+  "media": "మీడియా",
+  "hide_communities_tagged_as_nsfw": "NSFW/18+ గా ట్యాగ్ చేయబడిన కమ్యూనిటీలను దాచండి",
+  "tagged_as_adult": "\"ఎడల్ట్\" గా ట్యాగ్ చేయబడింది",
+  "tagged_as_gore": "\"గోర్\" గా ట్యాగ్ చేయబడింది",
+  "tagged_as_anti": "\"ఆంటీ\"గా ట్యాగ్ చేయబడింది",
+  "tagged_as_vulgar": "\"vulgar\" గా ట్యాగ్ చేయబడింది"
 }

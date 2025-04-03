@@ -206,7 +206,7 @@ const Sidebar = ({ comment, isSubCreatedButNotYetPublished, settings, subplebbit
   const subplebbitCreator = findSubplebbitCreator(roles);
   const creatorAddress = subplebbitCreator === 'anonymous' ? 'anonymous' : `${Plebbit.getShortAddress(subplebbitCreator)}`;
   const submitRoute =
-    isInHomeView || isInHomeAboutView || isInAllView || isInModView || isInDomainView || isInPostPageAboutView
+    isInHomeView || isInHomeAboutView || isInAllView || isInModView || isInDomainView
       ? '/submit'
       : isInPendingPostView
       ? `/p/${pendingPost?.subplebbitAddress}/submit`
@@ -264,7 +264,9 @@ const Sidebar = ({ comment, isSubCreatedButNotYetPublished, settings, subplebbit
 
   return (
     <div className={`${isMobile ? styles.mobileSidebar : styles.sidebar}`}>
-      <SearchBar onExpandoChange={handleSearchBarExpandoChange} />
+      <div className={styles.searchBarWrapper}>
+        <SearchBar onExpandoChange={handleSearchBarExpandoChange} />
+      </div>
       <div
         className={styles.contentWrapper}
         style={{

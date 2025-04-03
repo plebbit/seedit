@@ -372,5 +372,19 @@
   "find_communities": "یافتن جوامع در p/all",
   "community_deleted": "جامعه با موفقیت حذف شد.",
   "go_to_a_community": "برو به یک جامعه",
-  "enter_community_address": "آدرس جامعه را وارد کنید"
+  "enter_community_address": "آدرس جامعه را وارد کنید",
+  "all_communities": "تمام جوامع",
+  "search_posts": "جستجو در پست‌ها",
+  "found_n_results_for": "پست‌های {{count}} برای \"{{query}}\" پیدا شد",
+  "clear_search": "پاک کردن جستجو",
+  "loading_iframe": "در حال بارگذاری iframe",
+  "no_matches_found_for": "هیچ تطبیقی برای \"{{query}}\" پیدا نشد",
+  "searching": "در حال جستجو",
+  "hide_default_communities_from_topbar": "پنهان کردن جوامع پیش‌فرض از نوار بالای صفحه",
+  "media": "رسانه‌ها",
+  "hide_communities_tagged_as_nsfw": "پنهان کردن جوامع برچسب خورده به عنوان NSFW/18+",
+  "tagged_as_adult": "برچسب زده شده به عنوان \"بالغ\"",
+  "tagged_as_gore": "برچسب‌گذاری شده به عنوان \"گور\"",
+  "tagged_as_anti": "برچسب خورده به عنوان \"مخالف\"",
+  "tagged_as_vulgar": "برچسب‌گذاری شده به عنوان \"زشت\""
 }

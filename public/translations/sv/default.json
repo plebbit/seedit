@@ -372,5 +372,19 @@
   "find_communities": "hitta gemenskaper på p/all",
   "community_deleted": "Community raderades framgångsrikt.",
   "go_to_a_community": "Gå till ett samhälle",
-  "enter_community_address": "Ange en gemenskapsadress"
+  "enter_community_address": "Ange en gemenskapsadress",
+  "all_communities": "alla samhällen",
+  "search_posts": "sök inlägg",
+  "found_n_results_for": "hittade {{count}} inlägg för \"{{query}}\"",
+  "clear_search": "rensa sökning",
+  "loading_iframe": "laddar iframe",
+  "no_matches_found_for": "inga träffar hittades för \"{{query}}\"",
+  "searching": "söker",
+  "hide_default_communities_from_topbar": "Dölj standardgemenskaper från topplistan",
+  "media": "media",
+  "hide_communities_tagged_as_nsfw": "Dölj gemenskaper märkta som NSFW/18+",
+  "tagged_as_adult": "märkt som \"vuxen\"",
+  "tagged_as_gore": "märkt som \"gore\"",
+  "tagged_as_anti": "märkt som \"anti\"",
+  "tagged_as_vulgar": "märkt som \"vulgar\""
 }

@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
-import { Link, useParams, useNavigate } from 'react-router-dom';
+import { Link, useParams, useNavigate, useSearchParams } from 'react-router-dom';
 import { useAccountComments, useBlock, useFeed, useSubplebbit } from '@plebbit/plebbit-react-hooks';
 import { Virtuoso, VirtuosoHandle, StateSnapshot } from 'react-virtuoso';
 import { Trans, useTranslation } from 'react-i18next';
@@ -32,8 +32,9 @@ interface FooterProps {
   subplebbitAddressesWithNewerPosts: string[];
   timeFilterName: string;
   reset: () => void;
-  searchFilter: string;
+  searchQuery: string;
   isSearching: boolean;
+  setSearchParams: ReturnType<typeof useSearchParams>[1];
 }
 
 const Footer = ({
@@ -48,8 +49,9 @@ const Footer = ({
   subplebbitAddressesWithNewerPosts,
   timeFilterName,
   reset,
-  searchFilter,
+  searchQuery,
   isSearching,
+  setSearchParams,
 }: FooterProps) => {
   const { t } = useTranslation();
   let footerFirstLine;
@@ -60,29 +62,27 @@ const Footer = ({
   const [searchAttemptCompleted, setSearchAttemptCompleted] = useState(false);
 
   useEffect(() => {
-    if (isSearching) {
-      setSearchAttemptCompleted(false);
-      setShowNoResults(false);
-    } else if (searchFilter) {
+    setShowNoResults(false);
+    setSearchAttemptCompleted(false);
+  }, [searchQuery]);
+
+  useEffect(() => {
+    if (searchQuery && !isSearching && !searchAttemptCompleted) {
       setSearchAttemptCompleted(true);
     }
-  }, [isSearching, searchFilter]);
+  }, [searchQuery, isSearching, searchAttemptCompleted]);
 
   useEffect(() => {
     let timer: NodeJS.Timeout | null = null;
-
-    if (searchFilter && feedLength === 0 && searchAttemptCompleted && !showNoResults) {
+    if (searchQuery && feedLength === 0 && searchAttemptCompleted) {
       timer = setTimeout(() => {
         setShowNoResults(true);
-      }, 2000);
-    } else if (!searchFilter || feedLength > 0) {
-      setShowNoResults(false);
+      }, 1500);
     }
-
     return () => {
       if (timer) clearTimeout(timer);
     };
-  }, [searchFilter, feedLength, searchAttemptCompleted, showNoResults]);
+  }, [searchQuery, feedLength, searchAttemptCompleted]);
 
   const loadingString = (
     <>
@@ -108,6 +108,14 @@ const Footer = ({
     reset();
   };
 
+  const handleClearSearch = () => {
+    setSearchParams((prev) => {
+      prev.delete('q');
+      return prev;
+    });
+    reset();
+  };
+
   if (blocked) {
     footerFirstLine = t('you_blocked_community');
     footerSecondLine = (
@@ -130,28 +138,22 @@ const Footer = ({
         )}
       </>
     );
-  } else if (searchFilter) {
+  } else if (searchQuery) {
     if (isSearching) {
       footerFirstLine = (
         <div className={styles.stateString}>
-          <LoadingEllipsis string='searching' />
+          <LoadingEllipsis string={t('searching')} />
         </div>
       );
     } else if (showNoResults) {
       footerFirstLine = (
         <div className={styles.stateString}>
-          <span className={styles.noMatchesFound}>No matches found for "{searchFilter}"</span>
+          <span className={styles.noMatchesFound}>{t('no_matches_found_for', { query: searchQuery })}</span>
           <br />
           <br />
           <div className={styles.morePostsSuggestion}>
-            <span
-              className={styles.link}
-              onClick={() => {
-                useFeedFiltersStore.getState().clearSearchFilter();
-                reset();
-              }}
-            >
-              Clear search
+            <span className={styles.link} onClick={handleClearSearch}>
+              {t('clear_search')}
             </span>
           </div>
         </div>
@@ -159,28 +161,26 @@ const Footer = ({
     } else if (feedLength > 0) {
       footerFirstLine = (
         <div className={styles.stateString}>
-          <span className={styles.searchResults}>
-            Found {feedLength} {feedLength === 1 ? 'post' : 'posts'} for "{searchFilter}"
-          </span>
+          <span className={styles.searchResults}>{t('found_n_results_for', { count: feedLength, query: searchQuery })}</span>
           <br />
           <br />
           <div className={styles.morePostsSuggestion}>
-            <span
-              className={styles.link}
-              onClick={() => {
-                useFeedFiltersStore.getState().clearSearchFilter();
-                reset();
-              }}
-            >
-              Clear search
+            <span className={styles.link} onClick={handleClearSearch}>
+              {t('clear_search')}
             </span>
           </div>
         </div>
       );
-    } else if (feedLength === 0) {
+    } else if (feedLength === 0 && searchAttemptCompleted) {
       footerFirstLine = (
         <div className={styles.stateString}>
-          <LoadingEllipsis string='searching' />
+          <LoadingEllipsis string={t('searching')} />
+        </div>
+      );
+    } else if (feedLength === 0 && !searchAttemptCompleted) {
+      footerFirstLine = (
+        <div className={styles.stateString}>
+          <LoadingEllipsis string={t('searching')} />
         </div>
       );
     }
@@ -192,7 +192,7 @@ const Footer = ({
     footerFirstLine = loadingString;
   }
 
-  if (subplebbitAddressesWithNewerPosts.length > 0 && !blocked && !searchFilter) {
+  if (subplebbitAddressesWithNewerPosts.length > 0 && !blocked && !searchQuery) {
     footerSecondLine = (
       <div className={styles.stateString}>
         <Trans
@@ -215,7 +215,7 @@ const Footer = ({
         />
       </div>
     );
-  } else if (timeFilterName !== 'all' && !blocked && !searchFilter) {
+  } else if (timeFilterName !== 'all' && !blocked && !searchQuery) {
     footerSecondLine = (
       <div className={styles.morePostsSuggestion}>
         <Trans
@@ -246,6 +246,9 @@ const Footer = ({
 const Subplebbit = () => {
   const params = useParams();
   const navigate = useNavigate();
+  const [searchParams, setSearchParams] = useSearchParams();
+  const searchQuery = searchParams.get('q') || '';
+
   const subplebbitAddress = params?.subplebbitAddress || '';
   const subplebbit = useSubplebbit({ subplebbitAddress });
   const { createdAt, error, shortAddress, started, title, updatedAt, settings } = subplebbit || {};
@@ -263,25 +266,25 @@ const Subplebbit = () => {
 
   const timeFilterName = params.timeFilterName || 'all';
   const { timeFilterSeconds } = useTimeFilter();
-  const { searchFilter, isSearching } = useFeedFiltersStore();
+  const { isSearching } = useFeedFiltersStore();
 
   const feedOptions = useMemo(() => {
     const options: any = {
       subplebbitAddresses,
       sortType,
-      newerThan: searchFilter ? 0 : timeFilterSeconds,
+      newerThan: searchQuery ? 0 : timeFilterSeconds,
     };
 
-    if (searchFilter) {
+    if (searchQuery) {
       options.filter = (comment: Comment) => {
-        if (!searchFilter.trim()) return true;
-        return commentMatchesPattern(comment, searchFilter);
+        if (!searchQuery.trim()) return true;
+        return commentMatchesPattern(comment, searchQuery);
       };
-      options.filterKey = `search-filter-${searchFilter}`;
+      options.filterKey = `search-filter-${searchQuery}`;
     }
 
     return options;
-  }, [subplebbitAddresses, sortType, timeFilterSeconds, searchFilter]);
+  }, [subplebbitAddresses, sortType, timeFilterSeconds, searchQuery]);
 
   const { feed, hasMore, loadMore, reset, subplebbitAddressesWithNewerPosts } = useFeed(feedOptions);
 
@@ -330,8 +333,15 @@ const Subplebbit = () => {
     return newFeed;
   }, [feed, filteredComments]);
 
-  // virtuoso footer to display feed loading state, error, unblock button and "newer posts available" button
-  const footerProps = {
+  const { setPinnedPostsCount } = usePinnedPostsStore();
+  useEffect(() => {
+    if (feed) {
+      const pinnedCount = feed.filter((post) => post.pinned).length;
+      setPinnedPostsCount(pinnedCount);
+    }
+  }, [feed, setPinnedPostsCount]);
+
+  const footerProps: FooterProps = {
     subplebbitAddresses,
     subplebbitAddress,
     feedLength: feed.length || 0,
@@ -341,10 +351,11 @@ const Subplebbit = () => {
     error: error || null,
     hasMore,
     subplebbitAddressesWithNewerPosts,
-    timeFilterName: searchFilter ? 'all' : timeFilterName || '',
+    timeFilterName: searchQuery ? 'all' : timeFilterName || '',
     reset,
-    searchFilter,
+    searchQuery,
     isSearching,
+    setSearchParams,
   };
 
   // scrolling position state for virtuoso feed
@@ -353,23 +364,14 @@ const Subplebbit = () => {
     const setLastVirtuosoState = () => {
       virtuosoRef.current?.getState((snapshot: StateSnapshot) => {
         if (snapshot?.ranges?.length) {
-          lastVirtuosoStates[subplebbitAddress + sortType + timeFilterName] = snapshot;
+          lastVirtuosoStates[subplebbitAddress + sortType + timeFilterName + searchQuery] = snapshot;
         }
       });
     };
     window.addEventListener('scroll', setLastVirtuosoState);
     return () => window.removeEventListener('scroll', setLastVirtuosoState);
-  }, [subplebbitAddress, sortType, timeFilterName]);
-  const lastVirtuosoState = lastVirtuosoStates?.[subplebbitAddress + sortType + timeFilterName];
-
-  // track pinned posts count to start counting posts (numbered rank) after the pinned posts
-  const { setPinnedPostsCount } = usePinnedPostsStore();
-  useEffect(() => {
-    if (feed) {
-      const pinnedCount = feed.filter((post) => post.pinned).length;
-      setPinnedPostsCount(pinnedCount);
-    }
-  }, [feed, setPinnedPostsCount]);
+  }, [subplebbitAddress, sortType, timeFilterName, searchQuery]);
+  const lastVirtuosoState = lastVirtuosoStates?.[subplebbitAddress + sortType + timeFilterName + searchQuery];
 
   // over 18 warning for subplebbit with nsfw tag in multisub default list
   const { hideAdultCommunities, hideGoreCommunities, hideAntiCommunities, hideVulgarCommunities } = useContentOptionsStore();
@@ -395,7 +397,7 @@ const Subplebbit = () => {
           data={combinedFeed}
           itemContent={(index, post) => <Post index={index} post={post} />}
           useWindowScroll={true}
-          components={{ Footer: (props) => <Footer {...props} {...footerProps} /> }}
+          components={{ Footer: () => <Footer {...footerProps} /> }}
           endReached={loadMore}
           ref={virtuosoRef}
           restoreStateFrom={lastVirtuosoState}

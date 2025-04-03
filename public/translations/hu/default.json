@@ -372,5 +372,19 @@
   "find_communities": "keressen közösségeket a p/all-on",
   "community_deleted": "A közösség sikeresen törölve lett.",
   "go_to_a_community": "Menj egy közösségbe",
-  "enter_community_address": "Adjon meg egy közösségi címet"
+  "enter_community_address": "Adjon meg egy közösségi címet",
+  "all_communities": "minden közösség",
+  "search_posts": "hozzászólások keresése",
+  "found_n_results_for": "talált {{count}} bejegyzést \"{{query}}\" számára",
+  "clear_search": "törölni keresést",
+  "loading_iframe": "iframe betöltése",
+  "no_matches_found_for": "nem található egyezés \"{{query}}\" számára",
+  "searching": "keresés",
+  "hide_default_communities_from_topbar": "Alapértelmezett közösségek elrejtése a felső sávból",
+  "media": "médiák",
+  "hide_communities_tagged_as_nsfw": "Rejtse el a NSFW/18+ címkézett közösségeket",
+  "tagged_as_adult": "\"felnőtt\"-ként megjelölve",
+  "tagged_as_gore": "címkézve mint \"gore\"",
+  "tagged_as_anti": "címkézve \"anti\" néven",
+  "tagged_as_vulgar": "megjegyezve mint \"vulgáris\""
 }

@@ -372,5 +372,19 @@
   "find_communities": "găsiți comunități pe p/all",
   "community_deleted": "Comunitatea a fost ștearsă cu succes.",
   "go_to_a_community": "Mergi într-o comunitate",
-  "enter_community_address": "Introduceți o adresă de comunitate"
+  "enter_community_address": "Introduceți o adresă de comunitate",
+  "all_communities": "toate comunitățile",
+  "search_posts": "căutați postări",
+  "found_n_results_for": "au fost găsite {{count}} postări pentru \"{{query}}\"",
+  "clear_search": "șterge căutarea",
+  "loading_iframe": "încărcare iframe",
+  "no_matches_found_for": "nu s-au găsit rezultate pentru \"{{query}}\"",
+  "searching": "căutare",
+  "hide_default_communities_from_topbar": "Ascunde comunitățile implicite din bara de sus",
+  "media": "media",
+  "hide_communities_tagged_as_nsfw": "Ascunde comunitățile etichetate ca NSFW/18+",
+  "tagged_as_adult": "etichetat ca \"adult\"",
+  "tagged_as_gore": "etichetat ca \"gore\"",
+  "tagged_as_anti": "etichetați ca \"anti\"",
+  "tagged_as_vulgar": "marcat ca \"vulgar\""
 }

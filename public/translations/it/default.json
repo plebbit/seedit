@@ -372,5 +372,19 @@
   "find_communities": "trova comunità su p/all",
   "community_deleted": "Comunità eliminata con successo.",
   "go_to_a_community": "Vai a una comunità",
-  "enter_community_address": "Inserisci un indirizzo della comunità"
+  "enter_community_address": "Inserisci un indirizzo della comunità",
+  "all_communities": "tutte le comunità",
+  "search_posts": "cerca post",
+  "found_n_results_for": "trovati {{count}} post per \"{{query}}\"",
+  "clear_search": "cancella ricerca",
+  "loading_iframe": "caricamento iframe",
+  "no_matches_found_for": "nessuna corrispondenza trovata per \"{{query}}\"",
+  "searching": "cerca",
+  "hide_default_communities_from_topbar": "Nascondi comunità di default dalla topbar",
+  "media": "media",
+  "hide_communities_tagged_as_nsfw": "Nascondi comunità taggate come NSFW/18+",
+  "tagged_as_adult": "taggate come \"adult\"",
+  "tagged_as_gore": "taggate come \"gore\"",
+  "tagged_as_anti": "taggate come \"anti\"",
+  "tagged_as_vulgar": "taggate come \"vulgar\""
 }

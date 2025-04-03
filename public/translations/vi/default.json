@@ -372,5 +372,19 @@
   "find_communities": "tìm cộng đồng trên p/all",
   "community_deleted": "Cộng đồng đã được xóa thành công.",
   "go_to_a_community": "Đi đến một cộng đồng",
-  "enter_community_address": "Nhập địa chỉ cộng đồng"
+  "enter_community_address": "Nhập địa chỉ cộng đồng",
+  "all_communities": "tất cả cộng đồng",
+  "search_posts": "tìm kiếm bài viết",
+  "found_n_results_for": "tìm thấy {{count}} bài đăng cho \"{{query}}\"",
+  "clear_search": "xóa tìm kiếm",
+  "loading_iframe": "đang tải iframe",
+  "no_matches_found_for": "không tìm thấy kết quả cho \"{{query}}\"",
+  "searching": "đang tìm kiếm",
+  "hide_default_communities_from_topbar": "Ẩn cộng đồng mặc định từ thanh trên",
+  "media": "phương tiện truyền thông",
+  "hide_communities_tagged_as_nsfw": "Ẩn cộng đồng được gắn thẻ là NSFW/18+",
+  "tagged_as_adult": "gắn thẻ là \"người lớn\"",
+  "tagged_as_gore": "được gắn thẻ là \"gore\"",
+  "tagged_as_anti": "được gắn thẻ là \"anti\"",
+  "tagged_as_vulgar": "được gắn thẻ là \"vulgar\""
 }

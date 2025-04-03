@@ -372,5 +372,19 @@
   "find_communities": "hledat komunity na p/all",
   "community_deleted": "Komunita byla úspěšně smazána.",
   "go_to_a_community": "Přejít do komunity",
-  "enter_community_address": "Zadejte adresu komunity"
+  "enter_community_address": "Zadejte adresu komunity",
+  "all_communities": "všechny komunity",
+  "search_posts": "hledat příspěvky",
+  "found_n_results_for": "nalezeno {{count}} příspěvků pro \"{{query}}\"",
+  "clear_search": "vymazat hledání",
+  "loading_iframe": "načítání iframe",
+  "no_matches_found_for": "nenalezeny žádné shody pro \"{{query}}\"",
+  "searching": "hledání",
+  "hide_default_communities_from_topbar": "Skrýt výchozí komunity z horního panelu",
+  "media": "mediální",
+  "hide_communities_tagged_as_nsfw": "Skrýt komunity označené jako NSFW/18+",
+  "tagged_as_adult": "označeno jako \"dospělý\"",
+  "tagged_as_gore": "označeno jako \"gore\"",
+  "tagged_as_anti": "označeno jako \"anti\"",
+  "tagged_as_vulgar": "označeno jako \"vulgární\""
 }

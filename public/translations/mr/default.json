@@ -372,5 +372,19 @@
   "find_communities": "p/all वर समुदाय शोधा",
   "community_deleted": "समुदाय यशस्वीपणे हटवले गेले.",
   "go_to_a_community": "एका समुदायावर जा",
-  "enter_community_address": "एक समुदायाचा पत्ता प्रविष्ट करा"
+  "enter_community_address": "एक समुदायाचा पत्ता प्रविष्ट करा",
+  "all_communities": "सर्व समुदाय",
+  "search_posts": "पोस्ट शोधा",
+  "found_n_results_for": "\"{{query}}\" साठी {{count}} पोस्ट्स सापडल्या",
+  "clear_search": "शोध साफ करा",
+  "loading_iframe": "लोड होत आहे iframe",
+  "no_matches_found_for": "\"{{query}}\" साठी कोणताही जुळवून मिळाला नाही",
+  "searching": "शोध करत आहे",
+  "hide_default_communities_from_topbar": "टॉपबारमधून डिफॉल्ट समुदाय लपवा",
+  "media": "मीडिया",
+  "hide_communities_tagged_as_nsfw": "NSFW/18+ म्हणून टॅग केलेल्या समुदायांना लपवा",
+  "tagged_as_adult": "\"एडल्ट\" म्हणून टॅग केले",
+  "tagged_as_gore": "\"गोर\" म्हणून टॅग केले",
+  "tagged_as_anti": "\"एंटी\" म्हणून टॅग केलेले",
+  "tagged_as_vulgar": "\"vulgar\" म्हणून टॅग केले"
 }

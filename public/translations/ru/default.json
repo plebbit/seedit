@@ -372,5 +372,19 @@
   "find_communities": "найти сообщества на p/all",
   "community_deleted": "Сообщество успешно удалено.",
   "go_to_a_community": "Перейти в сообщество",
-  "enter_community_address": "Введите адрес сообщества"
+  "enter_community_address": "Введите адрес сообщества",
+  "all_communities": "все сообщества",
+  "search_posts": "поиск сообщений",
+  "found_n_results_for": "найдено {{count}} постов для \"{{query}}\"",
+  "clear_search": "очистить поиск",
+  "loading_iframe": "загрузка iframe",
+  "no_matches_found_for": "не найдено совпадений для \"{{query}}\"",
+  "searching": "поиск",
+  "hide_default_communities_from_topbar": "Скрыть стандартные сообщества с верхней панели",
+  "media": "медиа",
+  "hide_communities_tagged_as_nsfw": "Скрыть сообщества, помеченные как NSFW/18+",
+  "tagged_as_adult": "отмечено как \"взрослый\"",
+  "tagged_as_gore": "помечено как \"gore\"",
+  "tagged_as_anti": "помечено как \"анти\"",
+  "tagged_as_vulgar": "отмечено как \"вульгарное\""
 }

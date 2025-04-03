@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState, useMemo } from 'react';
-import { Link, useNavigate, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams, useSearchParams } from 'react-router-dom';
 import { Virtuoso, VirtuosoHandle, StateSnapshot } from 'react-virtuoso';
 import { useAccount, useFeed } from '@plebbit/plebbit-react-hooks';
 import { Trans, useTranslation } from 'react-i18next';
@@ -26,6 +26,8 @@ const Home = () => {
   const { isCheckingSubscriptions } = useAutoSubscribe();
 
   const params = useParams<{ sortType?: string; timeFilterName?: string }>();
+  const [searchParams, setSearchParams] = useSearchParams();
+  const searchQuery = searchParams.get('q') || '';
   const sortType = sortTypes.includes(params?.sortType || '') ? params?.sortType : sortTypes[0];
   const navigate = useNavigate();
 
@@ -40,55 +42,53 @@ const Home = () => {
   const { timeFilterName, timeFilterSeconds } = useTimeFilter();
   const currentTimeFilterName = params.timeFilterName || timeFilterName || '1m';
 
-  const { searchFilter, isSearching } = useFeedFiltersStore();
+  const { isSearching } = useFeedFiltersStore();
   const [showNoResults, setShowNoResults] = useState(false);
   const [searchAttemptCompleted, setSearchAttemptCompleted] = useState(false);
 
   const feedOptions = useMemo(() => {
     const options: any = {
-      newerThan: searchFilter ? 0 : timeFilterSeconds,
+      newerThan: searchQuery ? 0 : timeFilterSeconds,
       postsPerPage: 10,
       sortType,
       subplebbitAddresses: subplebbitAddresses || [],
     };
 
-    if (searchFilter) {
+    if (searchQuery) {
       options.filter = (comment: Comment) => {
-        if (!searchFilter.trim()) return true;
-        return commentMatchesPattern(comment, searchFilter);
+        if (!searchQuery.trim()) return true;
+        return commentMatchesPattern(comment, searchQuery);
       };
-      options.filterKey = `search-filter-${searchFilter}`;
+      options.filterKey = `search-filter-${searchQuery}`;
     }
 
     return options;
-  }, [subplebbitAddresses, sortType, timeFilterSeconds, searchFilter]);
+  }, [subplebbitAddresses, sortType, timeFilterSeconds, searchQuery]);
 
   const { feed, hasMore, loadMore, reset, subplebbitAddressesWithNewerPosts } = useFeed(feedOptions);
 
   useEffect(() => {
-    if (isSearching) {
-      setSearchAttemptCompleted(false);
-      setShowNoResults(false);
-    } else if (searchFilter) {
+    setShowNoResults(false);
+    setSearchAttemptCompleted(false);
+  }, [searchQuery]);
+
+  useEffect(() => {
+    if (searchQuery && !isSearching && !searchAttemptCompleted) {
       setSearchAttemptCompleted(true);
     }
-  }, [isSearching, searchFilter]);
+  }, [searchQuery, isSearching, searchAttemptCompleted]);
 
   useEffect(() => {
     let timer: NodeJS.Timeout | null = null;
-
-    if (searchFilter && feed?.length === 0 && searchAttemptCompleted && !showNoResults) {
+    if (searchQuery && feed?.length === 0 && searchAttemptCompleted) {
       timer = setTimeout(() => {
         setShowNoResults(true);
-      }, 2000);
-    } else if (!searchFilter || feed?.length > 0) {
-      setShowNoResults(false);
+      }, 1500);
     }
-
     return () => {
       if (timer) clearTimeout(timer);
     };
-  }, [searchFilter, feed?.length, searchAttemptCompleted, showNoResults]);
+  }, [searchQuery, feed?.length, searchAttemptCompleted]);
 
   const { feed: weeklyFeed } = useFeed({ subplebbitAddresses, sortType, newerThan: 60 * 60 * 24 * 7 });
   const { feed: monthlyFeed } = useFeed({ subplebbitAddresses, sortType, newerThan: 60 * 60 * 24 * 30 });
@@ -99,18 +99,18 @@ const Home = () => {
     const setLastVirtuosoState = () => {
       virtuosoRef.current?.getState((snapshot: StateSnapshot) => {
         if (snapshot?.ranges?.length) {
-          lastVirtuosoStates[sortType + currentTimeFilterName + 'home'] = snapshot;
+          lastVirtuosoStates[sortType + currentTimeFilterName + 'home' + searchQuery] = snapshot;
         }
       });
     };
     window.addEventListener('scroll', setLastVirtuosoState);
     return () => window.removeEventListener('scroll', setLastVirtuosoState);
-  }, [sortType, currentTimeFilterName]);
+  }, [sortType, currentTimeFilterName, searchQuery]);
 
-  const lastVirtuosoState = lastVirtuosoStates?.[sortType + currentTimeFilterName + 'home'];
+  const lastVirtuosoState = lastVirtuosoStates?.[sortType + currentTimeFilterName + 'home' + searchQuery];
 
   useEffect(() => {
-    document.title = `Seedit`;
+    document.title = `seedit`;
   }, [t]);
 
   const footerProps = {
@@ -121,11 +121,18 @@ const Home = () => {
     subplebbitAddressesWithNewerPosts,
     weeklyFeedLength: weeklyFeed.length,
     monthlyFeedLength: monthlyFeed.length,
-    currentTimeFilterName: searchFilter ? 'all' : currentTimeFilterName,
+    currentTimeFilterName: searchQuery ? 'all' : currentTimeFilterName,
     reset,
-    searchFilter,
+    searchQuery: searchQuery,
     isSearching,
     showNoResults,
+    onClearSearch: () => {
+      setSearchParams((prev) => {
+        prev.delete('q');
+        return prev;
+      });
+      reset();
+    },
   };
 
   const [subscriptionState, setSubscriptionState] = useState<SubscriptionState>('loading');
@@ -160,8 +167,7 @@ const Home = () => {
   }, [isCheckingSubscriptions, safeToShowNoSubscriptions]);
 
   useEffect(() => {
-    // If we're searching, don't show the "no subscriptions" state
-    if (searchFilter) {
+    if (searchQuery) {
       setSubscriptionState('hasSubscriptions');
       return;
     }
@@ -181,7 +187,7 @@ const Home = () => {
     } else {
       setSubscriptionState('loading');
     }
-  }, [isCheckingSubscriptions, subplebbitAddresses, feed, safeToShowNoSubscriptions, searchFilter]);
+  }, [isCheckingSubscriptions, subplebbitAddresses, feed, safeToShowNoSubscriptions, searchQuery]);
 
   return (
     <div>
@@ -189,13 +195,13 @@ const Home = () => {
         <div className={`${styles.sidebar}`}>
           <Sidebar />
         </div>
-        {subscriptionState === 'loading' ? (
+        {subscriptionState === 'loading' && !searchQuery ? (
           <div className={styles.feed}>
             <div className={styles.footer}>
               <LoadingEllipsis string={t('loading_feed')} />
             </div>
           </div>
-        ) : subscriptionState === 'noSubscriptions' ? (
+        ) : subscriptionState === 'noSubscriptions' && !searchQuery ? (
           <div className={styles.noSubscriptions}>
             <br />
             <Trans
@@ -216,45 +222,20 @@ const Home = () => {
           </div>
         ) : (
           <div className={styles.feed}>
-            {isSearching ? (
-              <div className={styles.footer}>
-                <div className={styles.stateString}>
-                  <LoadingEllipsis string='searching' />
-                </div>
-              </div>
-            ) : showNoResults && searchFilter ? (
-              <div className={styles.footer}>
-                <div className={styles.stateString}>
-                  <span className={styles.noMatchesFound}>No matches found for "{searchFilter}"</span>
-                  <br />
-                  <br />
-                  <div className={styles.morePostsSuggestion}>
-                    <span
-                      className={styles.link}
-                      onClick={() => {
-                        useFeedFiltersStore.getState().clearSearchFilter();
-                        reset();
-                      }}
-                    >
-                      Clear search
-                    </span>
-                  </div>
-                </div>
-              </div>
-            ) : (
-              <Virtuoso
-                increaseViewportBy={{ bottom: 1200, top: 1200 }}
-                totalCount={feed?.length || 0}
-                data={feed}
-                itemContent={(index, post) => <Post index={index} post={post} />}
-                useWindowScroll={true}
-                components={{ Footer: (props) => <FeedFooter {...props} {...footerProps} /> }}
-                endReached={loadMore}
-                ref={virtuosoRef}
-                restoreStateFrom={lastVirtuosoState}
-                initialScrollTop={lastVirtuosoState?.scrollTop}
-              />
-            )}
+            <Virtuoso
+              increaseViewportBy={{ bottom: 1200, top: 1200 }}
+              totalCount={feed?.length || 0}
+              data={feed}
+              itemContent={(index, post) => <Post index={index} post={post} />}
+              useWindowScroll={true}
+              components={{
+                Footer: () => <FeedFooter {...footerProps} />,
+              }}
+              endReached={loadMore}
+              ref={virtuosoRef}
+              restoreStateFrom={lastVirtuosoState}
+              initialScrollTop={lastVirtuosoState?.scrollTop}
+            />
           </div>
         )}
       </div>

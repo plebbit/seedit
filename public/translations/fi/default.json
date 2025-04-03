@@ -372,5 +372,19 @@
   "find_communities": "etsi yhteisöjä p/all:lla",
   "community_deleted": "Yhteisö poistettiin onnistuneesti.",
   "go_to_a_community": "Mene yhteisöön",
-  "enter_community_address": "Syötä yhteisön osoite"
+  "enter_community_address": "Syötä yhteisön osoite",
+  "all_communities": "kaikki yhteisöt",
+  "search_posts": "etsi viestejä",
+  "found_n_results_for": "löytyi {{count}} viestiä hakusanalla \"{{query}}\"",
+  "clear_search": "tyhjennä haku",
+  "loading_iframe": "ladataan iframe",
+  "no_matches_found_for": "ei löytynyt osumia hakusanalla \"{{query}}\"",
+  "searching": "etsitään",
+  "hide_default_communities_from_topbar": "Piilota oletusyhteisöt yläpalkista",
+  "media": "media",
+  "hide_communities_tagged_as_nsfw": "Piilota yhteisöt, jotka on merkitty NSFW/18+",
+  "tagged_as_adult": "merkitty \"aikuiseksi\"",
+  "tagged_as_gore": "merkitty \"gore\" -tunnisteella",
+  "tagged_as_anti": "merkitty \"anti\"-tunnisteeksi",
+  "tagged_as_vulgar": "merkitty \"vulgaariseksi\""
 }

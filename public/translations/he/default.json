@@ -372,5 +372,19 @@
   "find_communities": "מצא קהילות ב-p/all",
   "community_deleted": "הקהילה נמחקה בהצלחה.",
   "go_to_a_community": "עבור לקהילה",
-  "enter_community_address": "הזן כתובת קהילה"
+  "enter_community_address": "הזן כתובת קהילה",
+  "all_communities": "כל הקהילות",
+  "search_posts": "חפש פוסטים",
+  "found_n_results_for": "נמצאו {{count}} פוסטים עבור \"{{query}}\"",
+  "clear_search": "נקה חיפוש",
+  "loading_iframe": "טוען iframe",
+  "no_matches_found_for": "לא נמצאו תוצאות עבור \"{{query}}\"",
+  "searching": "מחפש",
+  "hide_default_communities_from_topbar": "הסתר קהילות ברירת מחדל מהסרגל העליון",
+  "media": "מדיה",
+  "hide_communities_tagged_as_nsfw": "הסתר קהילות שסומנו כ-NSFW/18+",
+  "tagged_as_adult": "סווג כ\"מותאם לבוגרים\"",
+  "tagged_as_gore": "מסומן כ-\"גורה\"",
+  "tagged_as_anti": "מתויג כ\"נגד\"",
+  "tagged_as_vulgar": "סומן כ-\"גס\""
 }

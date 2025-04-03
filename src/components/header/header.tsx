@@ -37,6 +37,7 @@ import {
   isSubplebbitsVoteView,
   isSubplebbitsOwnerView,
   isProfileUpvotedView,
+  isSettingsContentOptionsView,
   isSettingsPlebbitOptionsView,
   isSubplebbitAboutView,
   isDomainView,
@@ -232,12 +233,17 @@ const SubplebbitsHeaderTabs = () => {
 
 const SettingsHeaderTabs = () => {
   const { t } = useTranslation();
-  const isInSettingsPlebbitOptionsView = isSettingsPlebbitOptionsView(useLocation().pathname);
+  const location = useLocation();
+  const isInSettingsPlebbitOptionsView = isSettingsPlebbitOptionsView(location.pathname);
+  const isInSettingsContentOptionsView = isSettingsContentOptionsView(location.pathname);
 
   return (
     <>
-      <li className={isInSettingsPlebbitOptionsView ? styles.choice : styles.selected}>
+      <li className={isInSettingsPlebbitOptionsView || isInSettingsContentOptionsView ? styles.choice : styles.selected}>
         <Link to={'/settings'}>{t('general')}</Link>
+      </li>
+      <li className={isInSettingsContentOptionsView ? styles.selected : styles.choice}>
+        <Link to={'/settings/content-options'}>{t('content_options')}</Link>
       </li>
       <li className={isInSettingsPlebbitOptionsView ? styles.selected : styles.choice}>
         <Link to={'/settings/plebbit-options'}>{t('plebbit_options')}</Link>
@@ -267,6 +273,7 @@ const HeaderTabs = () => {
   const isInSubplebbitsView = isSubplebbitsView(location.pathname);
   const isInCreateSubplebbitView = isCreateSubplebbitView(location.pathname);
   const isInSettingsView = isSettingsView(location.pathname);
+  const isInSettingsContentOptionsView = isSettingsContentOptionsView(location.pathname);
   const isInSettingsPlebbitOptionsView = isSettingsPlebbitOptionsView(location.pathname);
 
   if (isInPostPageView || isInPendingPostView) {
@@ -289,7 +296,7 @@ const HeaderTabs = () => {
     return <InboxHeaderTabs />;
   } else if (isInSubplebbitsView && !isInCreateSubplebbitView) {
     return <SubplebbitsHeaderTabs />;
-  } else if (isInSettingsView || isInSettingsPlebbitOptionsView) {
+  } else if (isInSettingsView || isInSettingsPlebbitOptionsView || isInSettingsContentOptionsView) {
     return <SettingsHeaderTabs />;
   }
   return null;
@@ -309,6 +316,7 @@ const HeaderTitle = ({ title, shortAddress, pendingPostSubplebbitAddress }: { ti
   const isInPostPageView = isPostPageView(location.pathname, params);
   const isInProfileView = isProfileView(location.pathname);
   const isInSettingsView = isSettingsView(location.pathname);
+  const isInSettingsContentOptionsView = isSettingsContentOptionsView(location.pathname);
   const isInSettingsPlebbitOptionsView = isSettingsPlebbitOptionsView(location.pathname);
   const isInSubmitView = isSubmitView(location.pathname);
   const isInSubplebbitView = isSubplebbitView(location.pathname, params);
@@ -325,6 +333,7 @@ const HeaderTitle = ({ title, shortAddress, pendingPostSubplebbitAddress }: { ti
   const isBroadlyNsfwSubplebbit = useIsBroadlyNsfwSubplebbit(subplebbitAddress || '');
 
   const subplebbitTitle = <Link to={`/p/${isInPendingPostView ? pendingPostSubplebbitAddress : subplebbitAddress}`}>{title || shortAddress}</Link>;
+  const domainTitle = <Link to={`/domain/${params.domain}`}>{params.domain}</Link>;
   const submitTitle = <span className={styles.submitTitle}>{t('submit')}</span>;
   const profileTitle = <Link to='/profile'>{account?.author?.shortAddress}</Link>;
   const authorTitle = <Link to={`/u/${params.authorAddress}/c/${params.commentCid}`}>{params.authorAddress && Plebbit.getShortAddress(params.authorAddress)}</Link>;
@@ -345,7 +354,7 @@ const HeaderTitle = ({ title, shortAddress, pendingPostSubplebbitAddress }: { ti
     );
   } else if (isInSubmitView) {
     return submitTitle;
-  } else if (isInSettingsView || isInSettingsPlebbitOptionsView) {
+  } else if (isInSettingsView || isInSettingsPlebbitOptionsView || isInSettingsContentOptionsView) {
     return t('preferences');
   } else if (isInProfileView && !isInPendingPostView) {
     return profileTitle;
@@ -366,7 +375,7 @@ const HeaderTitle = ({ title, shortAddress, pendingPostSubplebbitAddress }: { ti
   } else if (isInModView) {
     return <span className={styles.lowercase}>{t('communities_you_moderate')}</span>;
   } else if (isInDomainView) {
-    return <span className={styles.lowercase}>{params.domain}</span>;
+    return domainTitle;
   }
   return null;
 };
@@ -483,7 +492,7 @@ const Header = () => {
         <ul className={`${styles.tabMenu} ${isInProfileView ? styles.horizontalScroll : ''}`}>
           <HeaderTabs />
           {(isInHomeView || isInHomeAboutView || isInSubplebbitView || isInHomeAboutView || isInPostPageView) && <AboutButton />}
-          {!isInSubmitView && (
+          {!isInSubmitView && !isInSettingsView && (
             <li>
               <Link to={'/submit'} className={styles.submitButton}>
                 {t('submit')}

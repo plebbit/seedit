@@ -372,5 +372,19 @@
   "find_communities": "ค้นหาชุมชนบน p/all",
   "community_deleted": "ลบบ้านชุมชนเรียบร้อยแล้ว.",
   "go_to_a_community": "ไปที่ชุมชน",
-  "enter_community_address": "ป้อนที่อยู่ของชุมชน"
+  "enter_community_address": "ป้อนที่อยู่ของชุมชน",
+  "all_communities": "ชุมชนทั้งหมด",
+  "search_posts": "ค้นหาการโพสต์",
+  "found_n_results_for": "พบ {{count}} โพสต์สำหรับ \"{{query}}\"",
+  "clear_search": "ล้างการค้นหา",
+  "loading_iframe": "กำลังโหลด iframe",
+  "no_matches_found_for": "ไม่พบการจับคู่สำหรับ \"{{query}}\"",
+  "searching": "กำลังค้นหา",
+  "hide_default_communities_from_topbar": "ซ่อนชุมชนเริ่มต้นจากแถบด้านบน",
+  "media": "สื่อ",
+  "hide_communities_tagged_as_nsfw": "ซ่อนชุมชนที่ถูกแท็กเป็น NSFW/18+",
+  "tagged_as_adult": "ถูกแท็กเป็น \"ผู้ใหญ่\"",
+  "tagged_as_gore": "แท็กged เป็น \"gore\"",
+  "tagged_as_anti": "แท็กเป็น \"anti\"",
+  "tagged_as_vulgar": "แท็กเป็น \"vulgar\""
 }

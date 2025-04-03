@@ -372,5 +372,19 @@
   "find_communities": "знайти спільноти на p/all",
   "community_deleted": "Спільнота успішно видалена.",
   "go_to_a_community": "Перейти до спільноти",
-  "enter_community_address": "Введіть адресу спільноти"
+  "enter_community_address": "Введіть адресу спільноти",
+  "all_communities": "всі спільноти",
+  "search_posts": "пошук постів",
+  "found_n_results_for": "знайдено {{count}} публікацій для \"{{query}}\"",
+  "clear_search": "очистити пошук",
+  "loading_iframe": "завантаження iframe",
+  "no_matches_found_for": "не знайдено співпадінь для \"{{query}}\"",
+  "searching": "пошук",
+  "hide_default_communities_from_topbar": "Сховати стандартні спільноти з верхньої панелі",
+  "media": "медіа",
+  "hide_communities_tagged_as_nsfw": "Сховати спільноти, позначені як NSFW/18+",
+  "tagged_as_adult": "мітка \"дорослий\"",
+  "tagged_as_gore": "позначено як \"gore\"",
+  "tagged_as_anti": "позначено як \"анти\"",
+  "tagged_as_vulgar": "позначено як \"вульгарне\""
 }

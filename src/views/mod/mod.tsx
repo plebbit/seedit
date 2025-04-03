@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState, useMemo } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useSearchParams } from 'react-router-dom';
 import { Virtuoso, VirtuosoHandle, StateSnapshot } from 'react-virtuoso';
 import { useAccountSubplebbits, useFeed } from '@plebbit/plebbit-react-hooks';
 import { useTranslation } from 'react-i18next';
@@ -11,7 +11,6 @@ import LoadingEllipsis from '../../components/loading-ellipsis';
 import Post from '../../components/post';
 import Sidebar from '../../components/sidebar';
 import styles from '../home/home.module.css';
-import _ from 'lodash';
 
 const lastVirtuosoStates: { [key: string]: StateSnapshot } = {};
 
@@ -19,32 +18,34 @@ const Mod = () => {
   const { accountSubplebbits } = useAccountSubplebbits();
   const subplebbitAddresses = Object.keys(accountSubplebbits);
   const params = useParams<{ sortType?: string; timeFilterName?: string }>();
+  const [searchParams, setSearchParams] = useSearchParams();
+  const searchQuery = searchParams.get('q') || '';
   const sortType = params?.sortType || 'hot';
   const { timeFilterName, timeFilterSeconds } = useTimeFilter();
   const currentTimeFilterName = params.timeFilterName || timeFilterName || '1m';
 
-  const { searchFilter, isSearching } = useFeedFiltersStore();
+  const { isSearching } = useFeedFiltersStore();
   const [showNoResults, setShowNoResults] = useState(false);
   const [searchAttemptCompleted, setSearchAttemptCompleted] = useState(false);
   const { t } = useTranslation();
 
   const feedOptions = useMemo(() => {
     const options: any = {
-      newerThan: searchFilter ? 0 : timeFilterSeconds,
+      newerThan: searchQuery ? 0 : timeFilterSeconds,
       sortType,
       subplebbitAddresses,
     };
 
-    if (searchFilter) {
+    if (searchQuery) {
       options.filter = (comment: Comment) => {
-        if (!searchFilter.trim()) return true;
-        return commentMatchesPattern(comment, searchFilter);
+        if (!searchQuery.trim()) return true;
+        return commentMatchesPattern(comment, searchQuery);
       };
-      options.filterKey = `search-filter-${searchFilter}`;
+      options.filterKey = `search-filter-${searchQuery}`;
     }
 
     return options;
-  }, [subplebbitAddresses, sortType, timeFilterSeconds, searchFilter]);
+  }, [subplebbitAddresses, sortType, timeFilterSeconds, searchQuery]);
 
   const { feed, hasMore, loadMore, reset, subplebbitAddressesWithNewerPosts } = useFeed(feedOptions);
 
@@ -52,34 +53,35 @@ const Mod = () => {
   const { feed: weeklyFeed } = useFeed({ subplebbitAddresses, sortType, newerThan: 60 * 60 * 24 * 7 });
   const { feed: monthlyFeed } = useFeed({ subplebbitAddresses, sortType, newerThan: 60 * 60 * 24 * 30 });
 
+  // Reset no results state when search query changes
   useEffect(() => {
-    if (isSearching) {
-      setSearchAttemptCompleted(false);
-      setShowNoResults(false);
-    } else if (searchFilter) {
+    setShowNoResults(false);
+    setSearchAttemptCompleted(false);
+  }, [searchQuery]);
+
+  // Determine if search attempt is complete
+  useEffect(() => {
+    if (searchQuery && !isSearching && !searchAttemptCompleted) {
       setSearchAttemptCompleted(true);
     }
-  }, [isSearching, searchFilter]);
+  }, [searchQuery, isSearching, searchAttemptCompleted]);
 
+  // Logic to show "No results" message after a delay
   useEffect(() => {
     let timer: NodeJS.Timeout | null = null;
-
-    if (searchFilter && feed?.length === 0 && searchAttemptCompleted && !showNoResults) {
+    if (searchQuery && feed?.length === 0 && searchAttemptCompleted) {
       timer = setTimeout(() => {
         setShowNoResults(true);
-      }, 2000);
-    } else if (!searchFilter || feed?.length > 0) {
-      setShowNoResults(false);
+      }, 1500);
     }
-
     return () => {
       if (timer) clearTimeout(timer);
     };
-  }, [searchFilter, feed?.length, searchAttemptCompleted, showNoResults]);
+  }, [searchQuery, feed?.length, searchAttemptCompleted]);
 
-  const documentTitle = _.capitalize(t('Mod')) + ' - Seedit';
+  const documentTitle = 'seedit: ' + t('communities_you_moderate');
   useEffect(() => {
-    document.title = documentTitle;
+    document.title = documentTitle.toLowerCase();
   }, [documentTitle]);
 
   const virtuosoRef = useRef<VirtuosoHandle | null>(null);
@@ -88,15 +90,15 @@ const Mod = () => {
     const setLastVirtuosoState = () => {
       virtuosoRef.current?.getState((snapshot: StateSnapshot) => {
         if (snapshot?.ranges?.length) {
-          lastVirtuosoStates[sortType + currentTimeFilterName + 'mod'] = snapshot;
+          lastVirtuosoStates[sortType + currentTimeFilterName + 'mod' + searchQuery] = snapshot;
         }
       });
     };
     window.addEventListener('scroll', setLastVirtuosoState);
     return () => window.removeEventListener('scroll', setLastVirtuosoState);
-  }, [sortType, currentTimeFilterName]);
+  }, [sortType, currentTimeFilterName, searchQuery]);
 
-  const lastVirtuosoState = lastVirtuosoStates?.[sortType + currentTimeFilterName + 'mod'];
+  const lastVirtuosoState = lastVirtuosoStates?.[sortType + currentTimeFilterName + 'mod' + searchQuery];
 
   const footerProps = {
     feedLength: feed?.length,
@@ -106,11 +108,19 @@ const Mod = () => {
     subplebbitAddressesWithNewerPosts,
     weeklyFeedLength: weeklyFeed.length,
     monthlyFeedLength: monthlyFeed.length,
-    currentTimeFilterName: searchFilter ? 'all' : currentTimeFilterName,
+    currentTimeFilterName: searchQuery ? 'all' : currentTimeFilterName,
     reset,
-    searchFilter,
+    searchQuery: searchQuery,
     isSearching,
     showNoResults,
+  };
+
+  const handleClearSearch = () => {
+    setSearchParams((prev) => {
+      prev.delete('q');
+      return prev;
+    });
+    reset();
   };
 
   return (
@@ -123,44 +133,40 @@ const Mod = () => {
           <div className={styles.feed}>
             <div className={styles.footer}>
               <div className={styles.stateString}>
-                <LoadingEllipsis string='searching' />
+                <LoadingEllipsis string={t('searching')} />
               </div>
             </div>
           </div>
-        ) : showNoResults && searchFilter ? (
+        ) : showNoResults && searchQuery ? (
           <div className={styles.feed}>
             <div className={styles.footer}>
               <div className={styles.stateString}>
-                <span className={styles.noMatchesFound}>No matches found for "{searchFilter}"</span>
+                <span className={styles.noMatchesFound}>{t('no_matches_found_for', { query: searchQuery })}</span>
                 <br />
                 <br />
                 <div className={styles.morePostsSuggestion}>
-                  <span
-                    className={styles.link}
-                    onClick={() => {
-                      useFeedFiltersStore.getState().clearSearchFilter();
-                      reset();
-                    }}
-                  >
-                    Clear search
+                  <span className={styles.link} onClick={handleClearSearch}>
+                    {t('clear_search')}
                   </span>
                 </div>
               </div>
             </div>
           </div>
         ) : (
-          <Virtuoso
-            increaseViewportBy={{ bottom: 1200, top: 600 }}
-            totalCount={feed?.length || 0}
-            data={feed}
-            itemContent={(index, post) => <Post index={index} post={post} />}
-            useWindowScroll={true}
-            components={{ Footer: () => <FeedFooter {...footerProps} /> }}
-            endReached={loadMore}
-            ref={virtuosoRef}
-            restoreStateFrom={lastVirtuosoState}
-            initialScrollTop={lastVirtuosoState?.scrollTop}
-          />
+          <div className={styles.feed}>
+            <Virtuoso
+              increaseViewportBy={{ bottom: 1200, top: 600 }}
+              totalCount={feed?.length || 0}
+              data={feed}
+              itemContent={(index, post) => <Post index={index} post={post} />}
+              useWindowScroll={true}
+              components={{ Footer: () => <FeedFooter {...footerProps} /> }}
+              endReached={loadMore}
+              ref={virtuosoRef}
+              restoreStateFrom={lastVirtuosoState}
+              initialScrollTop={lastVirtuosoState?.scrollTop}
+            />
+          </div>
         )}
       </div>
     </div>

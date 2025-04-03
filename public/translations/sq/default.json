@@ -372,5 +372,19 @@
   "find_communities": "gjeni komunitete në p/all",
   "community_deleted": "Komuniteti u fshi me sukses.",
   "go_to_a_community": "Shkoni në një komunitet",
-  "enter_community_address": "Shkruani një adresë komuniteti"
+  "enter_community_address": "Shkruani një adresë komuniteti",
+  "all_communities": "të gjitha komunitetet",
+  "search_posts": "kërkoni postime",
+  "found_n_results_for": "gjetën {{count}} postime për \"{{query}}\"",
+  "clear_search": "pastroni kërkimin",
+  "loading_iframe": "ngarkimi iframe",
+  "no_matches_found_for": "nuk u gjetën rezultate për \"{{query}}\"",
+  "searching": "kërkim",
+  "hide_default_communities_from_topbar": "Fshih komunitetet e paracaktuara nga barra e sipërme",
+  "media": "media",
+  "hide_communities_tagged_as_nsfw": "Fsheh komunitetet e etiketuar si NSFW/18+",
+  "tagged_as_adult": "etiketuar si \"i rritur\"",
+  "tagged_as_gore": "etiketuar si \"gore\"",
+  "tagged_as_anti": "etiketuar si \"anti\"",
+  "tagged_as_vulgar": "etiketuar si \"vulgar\""
 }

@@ -372,5 +372,19 @@
   "find_communities": "p/all에서 커뮤니티 찾기",
   "community_deleted": "커뮤니티가 성공적으로 삭제되었습니다.",
   "go_to_a_community": "커뮤니티로 이동",
-  "enter_community_address": "커뮤니티 주소를 입력하세요"
+  "enter_community_address": "커뮤니티 주소를 입력하세요",
+  "all_communities": "모든 커뮤니티",
+  "search_posts": "게시물 검색",
+  "found_n_results_for": "\"{{query}}\"에 대해 {{count}}개의 게시물이 검색되었습니다",
+  "clear_search": "검색 지우기",
+  "loading_iframe": "iframe 로딩 중",
+  "no_matches_found_for": "\"{{query}}\"에 대한 일치 항목을 찾을 수 없습니다",
+  "searching": "검색 중",
+  "hide_default_communities_from_topbar": "상단바에서 기본 커뮤니티 숨기기",
+  "media": "미디어",
+  "hide_communities_tagged_as_nsfw": "NSFW/18+로 태그된 커뮤니티 숨기기",
+  "tagged_as_adult": "\"성인\"으로 태그됨",
+  "tagged_as_gore": "\"gore\"로 태그됨",
+  "tagged_as_anti": "\"anti\"로 태그됨",
+  "tagged_as_vulgar": "\"vulgar\"로 태그됨"
 }

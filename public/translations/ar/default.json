@@ -372,5 +372,19 @@
   "find_communities": "ابحث عن المجتمعات على p/all",
   "community_deleted": "تم حذف المجتمع بنجاح.",
   "go_to_a_community": "اذهب إلى مجتمع",
-  "enter_community_address": "أدخل عنوان المجتمع"
+  "enter_community_address": "أدخل عنوان المجتمع",
+  "all_communities": "جميع المجتمعات",
+  "search_posts": "البحث عن المشاركات",
+  "found_n_results_for": "تم العثور على {{count}} منشورات لـ \"{{query}}\"",
+  "clear_search": "مسح البحث",
+  "loading_iframe": "تحميل الإطار",
+  "no_matches_found_for": "لم يتم العثور على تطابقات لـ \"{{query}}\"",
+  "searching": "البحث",
+  "hide_default_communities_from_topbar": "إخفاء المجتمعات الافتراضية من شريط الأدوات العلوي",
+  "media": "وسائط",
+  "hide_communities_tagged_as_nsfw": "إخفاء المجتمعات المعلمة كـ NSFW/18+",
+  "tagged_as_adult": "تم وسمها كـ \"بالغ\"",
+  "tagged_as_gore": "موسوم كـ \"جور\"",
+  "tagged_as_anti": "تم وضع علامة كـ \"مناهض\"",
+  "tagged_as_vulgar": "تم وسمه كـ \"بذيء\""
 }
