@@ -10,8 +10,6 @@ import { useDefaultSubplebbitAddresses } from '../../hooks/use-default-subplebbi
 import useTimeFilter from '../../hooks/use-time-filter';
 import styles from './topbar.module.css';
 
-const isElectron = window.isElectron === true;
-
 const FiltersDropdown = () => {
   const { t } = useTranslation();
   const params = useParams();
@@ -183,9 +181,7 @@ const FiltersDropdown = () => {
 const CommunitiesDropdown = () => {
   const { t } = useTranslation();
   const account = useAccount();
-  const navigate = useNavigate();
   const subscriptions = account?.subscriptions;
-  const isConnectedToRpc = !!account?.plebbitOptions.plebbitRpcClientsOptions;
 
   const [isSubsDropdownOpen, setIsSubsDropdownOpen] = useState(false);
   const toggleSubsDropdown = () => setIsSubsDropdownOpen(!isSubsDropdownOpen);
@@ -205,21 +201,6 @@ const CommunitiesDropdown = () => {
     }
   }, [isSubsDropdownOpen]);
 
-  const handleCreateCommunity = () => {
-    // creating a community only works if the user is running a full node
-    if (isElectron || isConnectedToRpc) {
-      navigate('/communities/create');
-    } else {
-      alert(
-        t('create_community_not_available', {
-          desktopLink: 'https://github.com/plebbit/seedit/releases/latest',
-          cliLink: 'https://github.com/plebbit/plebbit-cli',
-          interpolation: { escapeValue: false },
-        }),
-      );
-    }
-  };
-
   return (
     <div className={`${styles.dropdown} ${styles.subsDropdown}`} ref={subsDropdownRef} onClick={toggleSubsDropdown}>
       <span className={styles.selectedTitle}>{t('my_communities')}</span>
@@ -229,13 +210,7 @@ const CommunitiesDropdown = () => {
             {Plebbit.getShortAddress(subscription)}
           </Link>
         ))}
-        <span onClick={handleCreateCommunity} className={`${styles.dropdownItem} ${styles.myCommunitiesItemButtonDotted}`}>
-          {t('create_community')}
-        </span>
-        <Link to='/communities/vote' className={`${styles.dropdownItem} ${styles.myCommunitiesItemButton}`}>
-          {t('default_communities')}
-        </Link>
-        <Link to='/communities/subscriber' className={`${styles.dropdownItem} ${styles.myCommunitiesItemButton}`}>
+        <Link to='/communities/subscriber' className={`${styles.dropdownItem} ${styles.myCommunitiesItemButtonDotted}`}>
           {t('edit_subscriptions')}
         </Link>
       </div>
