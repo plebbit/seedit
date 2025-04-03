@@ -333,6 +333,7 @@ const HeaderTitle = ({ title, shortAddress, pendingPostSubplebbitAddress }: { ti
   const isBroadlyNsfwSubplebbit = useIsBroadlyNsfwSubplebbit(subplebbitAddress || '');
 
   const subplebbitTitle = <Link to={`/p/${isInPendingPostView ? pendingPostSubplebbitAddress : subplebbitAddress}`}>{title || shortAddress}</Link>;
+  const domainTitle = <Link to={`/domain/${params.domain}`}>{params.domain}</Link>;
   const submitTitle = <span className={styles.submitTitle}>{t('submit')}</span>;
   const profileTitle = <Link to='/profile'>{account?.author?.shortAddress}</Link>;
   const authorTitle = <Link to={`/u/${params.authorAddress}/c/${params.commentCid}`}>{params.authorAddress && Plebbit.getShortAddress(params.authorAddress)}</Link>;
@@ -374,7 +375,7 @@ const HeaderTitle = ({ title, shortAddress, pendingPostSubplebbitAddress }: { ti
   } else if (isInModView) {
     return <span className={styles.lowercase}>{t('communities_you_moderate')}</span>;
   } else if (isInDomainView) {
-    return <span className={styles.lowercase}>{params.domain}</span>;
+    return domainTitle;
   }
   return null;
 };
