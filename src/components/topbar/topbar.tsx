@@ -1,32 +1,32 @@
 import { useEffect, useRef, useState } from 'react';
-import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
+import { Link, useLocation, useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useAccount, useAccountSubplebbits } from '@plebbit/plebbit-react-hooks';
 import Plebbit from '@plebbit/plebbit-js/dist/browser/index.js';
-import { sortTypes } from '../../constants/sort-types';
-import { isAllView, isHomeView, isModView, isSubplebbitView, isDomainView } from '../../lib/utils/view-utils';
+import { isAllView, isDomainView, isHomeView, isModView, isSubplebbitView } from '../../lib/utils/view-utils';
 import useContentOptionsStore from '../../stores/use-content-options-store';
 import { useDefaultSubplebbitAddresses } from '../../hooks/use-default-subplebbits';
 import useTimeFilter from '../../hooks/use-time-filter';
+import { sortTypes } from '../../constants/sort-types';
+import { sortLabels } from '../../constants/sort-labels';
 import styles from './topbar.module.css';
 
-const FiltersDropdown = () => {
-  const { t } = useTranslation();
+const TimeFilterDropdown = () => {
   const params = useParams();
   const location = useLocation();
-  const navigate = useNavigate();
-  const isInDomainView = isDomainView(location.pathname);
   const isInSubplebbitView = isSubplebbitView(location.pathname, params);
+  const isInDomainView = isDomainView(location.pathname);
   const isinAllView = isAllView(location.pathname);
   const isInModView = isModView(location.pathname);
   const { timeFilterName, timeFilterNames } = useTimeFilter();
-
   const selectedTimeFilter = timeFilterName || (isInSubplebbitView ? 'all' : timeFilterName);
 
-  const [isFilterDropdownOpen, setIsFilterDropdownOpen] = useState(false);
-  const filterDropdownRef = useRef<HTMLDivElement>(null);
+  const [isTimeFilterDropdownOpen, setIsTimeFilterDropdownOpen] = useState(false);
+  const toggleTimeFilterDropdown = () => setIsTimeFilterDropdownOpen(!isTimeFilterDropdownOpen);
+  const timeFilterDropdownRef = useRef<HTMLDivElement>(null);
+  const timeFilterdropdownItemsRef = useRef<HTMLDivElement>(null);
+  const timeFilterDropdownClass = isTimeFilterDropdownOpen ? styles.visible : styles.hidden;
 
-  const sortLabels = [t('hot'), t('new'), t('active'), t('top')];
   const selectedSortType = params.sortType || 'hot';
 
   const getTimeFilterLink = (timeFilterName: string) => {
@@ -41,25 +41,10 @@ const FiltersDropdown = () => {
       : `/${selectedSortType}/${timeFilterName}`;
   };
 
-  const {
-    blurNsfwThumbnails,
-    hideAdultCommunities,
-    hideGoreCommunities,
-    hideAntiCommunities,
-    hideVulgarCommunities,
-    setBlurNsfwThumbnails,
-    setHideAdultCommunities,
-    setHideGoreCommunities,
-    setHideAntiCommunities,
-    setHideVulgarCommunities,
-  } = useContentOptionsStore();
-
-  const [hideNsfwFilters, setHideNsfwFilters] = useState(true);
-
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (filterDropdownRef.current && !filterDropdownRef.current.contains(event.target as Node)) {
-        setIsFilterDropdownOpen(false);
+      if (timeFilterDropdownRef.current && !timeFilterDropdownRef.current.contains(event.target as Node)) {
+        setIsTimeFilterDropdownOpen(false);
       }
     };
 
@@ -70,110 +55,69 @@ const FiltersDropdown = () => {
   }, []);
 
   return (
-    <div className={`${styles.dropdown} ${styles.filterDropdown}`} ref={filterDropdownRef}>
-      <span className={styles.selectedTitle} onClick={() => setIsFilterDropdownOpen(!isFilterDropdownOpen)}>
-        {selectedSortType} ({timeFilterName})
-      </span>
-      {isFilterDropdownOpen && (
-        <div className={styles.dropChoices}>
-          <div className={styles.filterDropdownItem}>
-            posts from:{' '}
-            <select
-              onChange={(e) => {
-                navigate(getTimeFilterLink(e.target.value));
-              }}
-              value={selectedTimeFilter}
-            >
-              {timeFilterNames.map((timeFilterName, index) => (
-                <option value={timeFilterName} key={index}>
-                  {timeFilterNames[index]}
-                </option>
-              ))}
-            </select>
-          </div>
-          <div className={styles.filterDropdownItem}>
-            sort posts by:{' '}
-            <select
-              onChange={(e) => {
-                let dropdownLink = isInSubplebbitView ? `/p/${params.subplebbitAddress}/${e.target.value}` : isinAllView ? `/p/all/${e.target.value}` : e.target.value;
-                if (timeFilterName) {
-                  dropdownLink += `/${timeFilterName}`;
-                }
-                navigate(dropdownLink);
-              }}
-              value={selectedSortType}
-            >
-              {sortTypes.map((sortType, index) => (
-                <option value={sortType} key={index}>
-                  {sortLabels[index]}
-                </option>
-              ))}
-            </select>
-          </div>
-          <div className={`${styles.filterDropdownItem} ${styles.nsfwFilters}`} onClick={() => setHideNsfwFilters(!hideNsfwFilters)}>
-            NSFW filters
-          </div>
-          {!hideNsfwFilters && (
-            <>
-              <div className={styles.filterDropdownItem}>
-                <label htmlFor='blurNSFWCheckbox'>
-                  <input type='checkbox' id='blurNSFWCheckbox' checked={blurNsfwThumbnails} onChange={(e) => setBlurNsfwThumbnails(e.target.checked)} />
-                  blur NSFW/18+ media
-                </label>
-              </div>
-              <div className={styles.filterDropdownItem}>
-                <label htmlFor='nsfwCheckbox'>
-                  <input
-                    type='checkbox'
-                    id='nsfwCheckbox'
-                    ref={(el) => {
-                      if (el) {
-                        const allChecked = !hideAdultCommunities && !hideGoreCommunities && !hideAntiCommunities && !hideVulgarCommunities;
-                        const someChecked = !hideAdultCommunities || !hideGoreCommunities || !hideAntiCommunities || !hideVulgarCommunities;
+    <div className={styles.dropdown} ref={timeFilterDropdownRef} onClick={toggleTimeFilterDropdown}>
+      <span className={styles.selectedTitle}>{selectedTimeFilter}</span>
+      <div className={`${styles.dropChoices} ${styles.filterDropChoices} ${timeFilterDropdownClass}`} ref={timeFilterdropdownItemsRef}>
+        {timeFilterNames.slice(0, -1).map((timeFilterName, index) => (
+          <Link to={getTimeFilterLink(timeFilterName)} key={index} className={styles.dropdownItem}>
+            {timeFilterNames[index]}
+          </Link>
+        ))}
+      </div>
+    </div>
+  );
+};
 
-                        el.checked = allChecked;
-                        el.indeterminate = someChecked && !allChecked;
-                      }
-                    }}
-                    onChange={(e) => {
-                      const newValue = e.target.checked;
-                      setHideAdultCommunities(!newValue);
-                      setHideGoreCommunities(!newValue);
-                      setHideAntiCommunities(!newValue);
-                      setHideVulgarCommunities(!newValue);
-                    }}
-                  />
-                  include NSFW/18+ communities
-                </label>
-              </div>
-              <div className={styles.filterDropdownItem} style={{ paddingLeft: '20px' }}>
-                <label htmlFor='adultCommunitiesCheckbox'>
-                  <input type='checkbox' id='adultCommunitiesCheckbox' checked={!hideAdultCommunities} onChange={(e) => setHideAdultCommunities(!e.target.checked)} />
-                  adult communities
-                </label>
-              </div>
-              <div className={styles.filterDropdownItem} style={{ paddingLeft: '20px' }}>
-                <label htmlFor='goreCommunitiesCheckbox'>
-                  <input type='checkbox' id='goreCommunitiesCheckbox' checked={!hideGoreCommunities} onChange={(e) => setHideGoreCommunities(!e.target.checked)} />
-                  gore communities
-                </label>
-              </div>
-              <div className={styles.filterDropdownItem} style={{ paddingLeft: '20px' }}>
-                <label htmlFor='antiCommunitiesCheckbox'>
-                  <input type='checkbox' id='antiCommunitiesCheckbox' checked={!hideAntiCommunities} onChange={(e) => setHideAntiCommunities(!e.target.checked)} />
-                  anti communities
-                </label>
-              </div>
-              <div className={styles.filterDropdownItem} style={{ paddingLeft: '20px' }}>
-                <label htmlFor='vulgarCommunitiesCheckbox'>
-                  <input type='checkbox' id='vulgarCommunitiesCheckbox' checked={!hideVulgarCommunities} onChange={(e) => setHideVulgarCommunities(!e.target.checked)} />
-                  vulgar communities
-                </label>
-              </div>
-            </>
-          )}
-        </div>
-      )}
+const SortTypesDropdown = () => {
+  const { t } = useTranslation();
+  const params = useParams();
+  const location = useLocation();
+  const isInSubplebbitView = isSubplebbitView(location.pathname, params);
+  const isinAllView = isAllView(location.pathname);
+  const { timeFilterName } = useTimeFilter();
+
+  const selectedSortType = params.sortType || 'hot';
+
+  const getSelectedSortLabel = () => {
+    const index = sortTypes.indexOf(selectedSortType);
+    return index >= 0 ? sortLabels[index] : sortLabels[0];
+  };
+
+  const [isSortsDropdownOpen, setIsSortsDropdownOpen] = useState(false);
+  const toggleSortsDropdown = () => setIsSortsDropdownOpen(!isSortsDropdownOpen);
+  const sortsDropdownRef = useRef<HTMLDivElement>(null);
+  const sortsdropdownItemsRef = useRef<HTMLDivElement>(null);
+  const sortsDropdownClass = isSortsDropdownOpen ? styles.visible : styles.hidden;
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (sortsDropdownRef.current && !sortsDropdownRef.current.contains(event.target as Node)) {
+        setIsSortsDropdownOpen(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
+
+  return (
+    <div className={styles.dropdown} ref={sortsDropdownRef} onClick={toggleSortsDropdown}>
+      <span className={styles.selectedTitle}>{getSelectedSortLabel()}</span>
+      <div className={`${styles.dropChoices} ${styles.sortsDropChoices} ${sortsDropdownClass}`} ref={sortsdropdownItemsRef}>
+        {sortTypes.map((sortType, index) => {
+          let dropdownLink = isInSubplebbitView ? `/p/${params.subplebbitAddress}/${sortType}` : isinAllView ? `/p/all/${sortType}` : sortType;
+          if (timeFilterName) {
+            dropdownLink += `/${timeFilterName}`;
+          }
+          return (
+            <Link to={dropdownLink} key={index} className={styles.dropdownItem}>
+              {t(sortLabels[index])}
+            </Link>
+          );
+        })}
+      </div>
     </div>
   );
 };
@@ -228,7 +172,6 @@ const TopBar = () => {
   const isInModView = isModView(location.pathname);
   const homeButtonClass = isInHomeView ? styles.selected : styles.choice;
   const { hideDefaultCommunities } = useContentOptionsStore();
-
   const { accountSubplebbits } = useAccountSubplebbits();
   const accountSubplebbitAddresses = Object.keys(accountSubplebbits);
 
@@ -241,7 +184,8 @@ const TopBar = () => {
     <div className={styles.headerArea}>
       <div className={styles.widthClip}>
         <CommunitiesDropdown />
-        <FiltersDropdown />
+        <SortTypesDropdown />
+        <TimeFilterDropdown />
         <div className={styles.srList}>
           <ul className={styles.srBar}>
             <li>
