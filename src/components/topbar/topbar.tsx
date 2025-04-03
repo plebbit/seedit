@@ -321,8 +321,8 @@ const TopBar = () => {
               })}
           </ul>
         </div>
-        <Link to='/communities/vote' className={styles.moreLink}>
-          {t('more')} »
+        <Link to='/communities/vote' className={styles.editLink}>
+          {t('edit')} »
         </Link>
       </div>
     </div>
