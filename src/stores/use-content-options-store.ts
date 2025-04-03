@@ -17,6 +17,8 @@ interface ContentOptionsState {
 interface ContentOptionsStore extends ContentOptionsState {
   hasAcceptedWarning: boolean;
   setHasAcceptedWarning: (value: boolean) => void;
+  hideDefaultCommunities: boolean;
+  setHideDefaultCommunities: (hide: boolean) => void;
 }
 
 const useContentOptionsStore = create<ContentOptionsStore>()(
@@ -28,12 +30,14 @@ const useContentOptionsStore = create<ContentOptionsStore>()(
       hideAntiCommunities: true,
       hideVulgarCommunities: true,
       hasAcceptedWarning: false,
+      hideDefaultCommunities: false,
       setBlurNsfwThumbnails: (blur) => set({ blurNsfwThumbnails: blur }),
       setHideAdultCommunities: (hide) => set({ hideAdultCommunities: hide }),
       setHideGoreCommunities: (hide) => set({ hideGoreCommunities: hide }),
       setHideAntiCommunities: (hide) => set({ hideAntiCommunities: hide }),
       setHideVulgarCommunities: (hide) => set({ hideVulgarCommunities: hide }),
       setHasAcceptedWarning: (value) => set({ hasAcceptedWarning: value }),
+      setHideDefaultCommunities: (hide) => set({ hideDefaultCommunities: hide }),
     }),
     {
       name: 'content-options',

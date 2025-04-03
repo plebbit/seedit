@@ -379,5 +379,12 @@
   "clear_search": "検索をクリア",
   "loading_iframe": "iframeを読み込んでいます",
   "no_matches_found_for": "\"{{query}}\" に対する一致は見つかりませんでした",
-  "searching": "検索中"
+  "searching": "検索中",
+  "hide_default_communities_from_topbar": "トップバーからデフォルトのコミュニティを隠す",
+  "media": "メディア",
+  "hide_communities_tagged_as_nsfw": "NSFW/18+としてタグ付けされたコミュニティを非表示にする",
+  "tagged_as_adult": "\"成人\"としてタグ付けされました",
+  "tagged_as_gore": "\"gore\"としてタグ付けされました",
+  "tagged_as_anti": "\"anti\" としてタグ付けされた",
+  "tagged_as_vulgar": "\"vulgar\"としてタグ付けされました"
 }

@@ -379,5 +379,12 @@
   "clear_search": "נקה חיפוש",
   "loading_iframe": "טוען iframe",
   "no_matches_found_for": "לא נמצאו תוצאות עבור \"{{query}}\"",
-  "searching": "מחפש"
+  "searching": "מחפש",
+  "hide_default_communities_from_topbar": "הסתר קהילות ברירת מחדל מהסרגל העליון",
+  "media": "מדיה",
+  "hide_communities_tagged_as_nsfw": "הסתר קהילות שסומנו כ-NSFW/18+",
+  "tagged_as_adult": "סווג כ\"מותאם לבוגרים\"",
+  "tagged_as_gore": "מסומן כ-\"גורה\"",
+  "tagged_as_anti": "מתויג כ\"נגד\"",
+  "tagged_as_vulgar": "סומן כ-\"גס\""
 }

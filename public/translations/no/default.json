@@ -379,5 +379,12 @@
   "clear_search": "rydd søk",
   "loading_iframe": "laster iframe",
   "no_matches_found_for": "ingen treff funnet for \"{{query}}\"",
-  "searching": "søker"
+  "searching": "søker",
+  "hide_default_communities_from_topbar": "Skjul standardfellesskap fra toppfeltet",
+  "media": "media",
+  "hide_communities_tagged_as_nsfw": "Skjul samfunn merket som NSFW/18+",
+  "tagged_as_adult": "merket som \"voksen\"",
+  "tagged_as_gore": "merket som \"gore\"",
+  "tagged_as_anti": "merket som \"anti\"",
+  "tagged_as_vulgar": "merket som \"vulgar\""
 }

@@ -379,5 +379,12 @@
   "clear_search": "wis zoekopdracht",
   "loading_iframe": "laden iframe",
   "no_matches_found_for": "geen overeenkomsten gevonden voor \"{{query}}\"",
-  "searching": "zoeken"
+  "searching": "zoeken",
+  "hide_default_communities_from_topbar": "Verberg standaardgemeenschappen van de bovenbalk",
+  "media": "media",
+  "hide_communities_tagged_as_nsfw": "Verberg gemeenschappen gemarkeerd als NSFW/18+",
+  "tagged_as_adult": "geëtiketteerd als \"volwassen\"",
+  "tagged_as_gore": "getagd als \"gore\"",
+  "tagged_as_anti": "getagd als \"anti\"",
+  "tagged_as_vulgar": "getagd als \"vulgar\""
 }

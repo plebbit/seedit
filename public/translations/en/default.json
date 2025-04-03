@@ -379,5 +379,12 @@
   "clear_search": "clear search",
   "loading_iframe": "loading iframe",
   "no_matches_found_for": "no matches found for \"{{query}}\"",
-  "searching": "searching"
+  "searching": "searching",
+  "hide_default_communities_from_topbar": "Hide default communities from topbar",
+  "media": "media",
+  "hide_communities_tagged_as_nsfw": "Hide communities tagged as NSFW/18+",
+  "tagged_as_adult": "tagged as \"adult\"",
+  "tagged_as_gore": "tagged as \"gore\"",
+  "tagged_as_anti": "tagged as \"anti\"",
+  "tagged_as_vulgar": "tagged as \"vulgar\""
 }

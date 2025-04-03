@@ -379,5 +379,12 @@
   "clear_search": "wyczyść wyszukiwanie",
   "loading_iframe": "ładowanie iframe",
   "no_matches_found_for": "brak pasujących wyników dla \"{{query}}\"",
-  "searching": "wyszukiwanie"
+  "searching": "wyszukiwanie",
+  "hide_default_communities_from_topbar": "Ukryj domyślne społeczności z paska na górze",
+  "media": "media",
+  "hide_communities_tagged_as_nsfw": "Ukryj społeczności oznaczone jako NSFW/18+",
+  "tagged_as_adult": "otagowane jako \"dorosły\"",
+  "tagged_as_gore": "otagowane jako \"gore\"",
+  "tagged_as_anti": "otagowane jako \"anti\"",
+  "tagged_as_vulgar": "oznaczone jako \"wulgarne\""
 }

@@ -379,5 +379,12 @@
   "clear_search": "törölni keresést",
   "loading_iframe": "iframe betöltése",
   "no_matches_found_for": "nem található egyezés \"{{query}}\" számára",
-  "searching": "keresés"
+  "searching": "keresés",
+  "hide_default_communities_from_topbar": "Alapértelmezett közösségek elrejtése a felső sávból",
+  "media": "médiák",
+  "hide_communities_tagged_as_nsfw": "Rejtse el a NSFW/18+ címkézett közösségeket",
+  "tagged_as_adult": "\"felnőtt\"-ként megjelölve",
+  "tagged_as_gore": "címkézve mint \"gore\"",
+  "tagged_as_anti": "címkézve \"anti\" néven",
+  "tagged_as_vulgar": "megjegyezve mint \"vulgáris\""
 }

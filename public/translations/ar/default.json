@@ -379,5 +379,12 @@
   "clear_search": "مسح البحث",
   "loading_iframe": "تحميل الإطار",
   "no_matches_found_for": "لم يتم العثور على تطابقات لـ \"{{query}}\"",
-  "searching": "البحث"
+  "searching": "البحث",
+  "hide_default_communities_from_topbar": "إخفاء المجتمعات الافتراضية من شريط الأدوات العلوي",
+  "media": "وسائط",
+  "hide_communities_tagged_as_nsfw": "إخفاء المجتمعات المعلمة كـ NSFW/18+",
+  "tagged_as_adult": "تم وسمها كـ \"بالغ\"",
+  "tagged_as_gore": "موسوم كـ \"جور\"",
+  "tagged_as_anti": "تم وضع علامة كـ \"مناهض\"",
+  "tagged_as_vulgar": "تم وسمه كـ \"بذيء\""
 }

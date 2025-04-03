@@ -379,5 +379,12 @@
   "clear_search": "Suche löschen",
   "loading_iframe": "lade iframe",
   "no_matches_found_for": "Keine Übereinstimmungen für \"{{query}}\" gefunden",
-  "searching": "Suche"
+  "searching": "Suche",
+  "hide_default_communities_from_topbar": "Standardgemeinschaften aus der oberen Leiste ausblenden",
+  "media": "Medien",
+  "hide_communities_tagged_as_nsfw": "Verstecke Communities, die als NSFW/18+ gekennzeichnet sind",
+  "tagged_as_adult": "als \"Erwachsen\" markiert",
+  "tagged_as_gore": "gekennzeichnet als \"gore\"",
+  "tagged_as_anti": "als \"anti\" markiert",
+  "tagged_as_vulgar": "als \"vulgär\" markiert"
 }

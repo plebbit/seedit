@@ -379,5 +379,12 @@
   "clear_search": "очистить поиск",
   "loading_iframe": "загрузка iframe",
   "no_matches_found_for": "не найдено совпадений для \"{{query}}\"",
-  "searching": "поиск"
+  "searching": "поиск",
+  "hide_default_communities_from_topbar": "Скрыть стандартные сообщества с верхней панели",
+  "media": "медиа",
+  "hide_communities_tagged_as_nsfw": "Скрыть сообщества, помеченные как NSFW/18+",
+  "tagged_as_adult": "отмечено как \"взрослый\"",
+  "tagged_as_gore": "помечено как \"gore\"",
+  "tagged_as_anti": "помечено как \"анти\"",
+  "tagged_as_vulgar": "отмечено как \"вульгарное\""
 }

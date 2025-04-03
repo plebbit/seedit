@@ -379,5 +379,12 @@
   "clear_search": "καθαρισμός αναζήτησης",
   "loading_iframe": "φόρτωση iframe",
   "no_matches_found_for": "δεν βρέθηκαν αποτελέσματα για \"{{query}}\"",
-  "searching": "αναζήτηση"
+  "searching": "αναζήτηση",
+  "hide_default_communities_from_topbar": "Απόκρυψη προεπιλεγμένων κοινοτήτων από την πάνω μπάρα",
+  "media": "μέσα",
+  "hide_communities_tagged_as_nsfw": "Απόκρυψη κοινοτήτων με ετικέτα NSFW/18+",
+  "tagged_as_adult": "σημειώθηκε ως \"ενήλικας\"",
+  "tagged_as_gore": "επισημασμένο ως \"gore\"",
+  "tagged_as_anti": "επισημασμένο ως \"αντι\"",
+  "tagged_as_vulgar": "επισημάνθηκε ως \"χονδροειδές\""
 }

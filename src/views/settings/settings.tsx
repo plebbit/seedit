@@ -3,14 +3,14 @@ import { useLocation } from 'react-router-dom';
 import { Trans, useTranslation } from 'react-i18next';
 import { Capacitor } from '@capacitor/core';
 import { setAccount, useAccount } from '@plebbit/plebbit-react-hooks';
-import { isSettingsPlebbitOptionsView } from '../../lib/utils/view-utils';
-import useContentOptionsStore from '../../stores/use-content-options-store';
+import { isSettingsPlebbitOptionsView, isSettingsContentOptionsView } from '../../lib/utils/view-utils';
 import useTheme from '../../hooks/use-theme';
 import Version from '../../components/version';
 import AccountSettings from './account-settings';
 import AddressSettings from './address-settings';
 import AvatarSettings from './avatar-settings';
 import PlebbitOptions from './plebbit-options';
+import ContentOptions from './content-options';
 import WalletSettings from './wallet-settings';
 import styles from './settings.module.css';
 import packageJson from '../../../package.json';
@@ -126,45 +126,6 @@ const ThemeSettings = () => {
   );
 };
 
-const ContentOptions = () => {
-  const { t } = useTranslation();
-  const {
-    blurNsfwThumbnails,
-    hideAdultCommunities,
-    hideGoreCommunities,
-    hideAntiCommunities,
-    hideVulgarCommunities,
-    setBlurNsfwThumbnails,
-    setHideAdultCommunities,
-    setHideGoreCommunities,
-    setHideAntiCommunities,
-    setHideVulgarCommunities,
-  } = useContentOptionsStore();
-
-  return (
-    <div className={styles.filters}>
-      <div className={styles.filterSettingTitle}>{t('nsfw_content')}</div>
-      <input type='checkbox' id='blurNsfwThumbnails' checked={blurNsfwThumbnails} onChange={(e) => setBlurNsfwThumbnails(e.target.checked)} />
-      <label htmlFor='blurNsfwThumbnails'>{t('blur_media')}</label>
-      <br />
-      <br />
-      <div className={styles.filterSettingTitle}>{t('communities')}</div>
-      <input
-        type='checkbox'
-        id='hideAdultCommunities'
-        checked={hideAdultCommunities || hideAntiCommunities || hideGoreCommunities || hideVulgarCommunities}
-        onChange={(e) => {
-          setHideAdultCommunities(e.target.checked);
-          setHideAntiCommunities(e.target.checked);
-          setHideGoreCommunities(e.target.checked);
-          setHideVulgarCommunities(e.target.checked);
-        }}
-      />
-      <label htmlFor='hideAdultCommunities'>Hide communities tagged as NSFW/18+</label>
-    </div>
-  );
-};
-
 const DisplayNameSetting = () => {
   const { t } = useTranslation();
   const account = useAccount();
@@ -234,12 +195,6 @@ const GeneralSettings = () => {
         </span>
       </div>
       <div className={styles.category}>
-        <span className={styles.categoryTitle}>{t('content_options')}</span>
-        <span className={styles.categorySettings}>
-          <ContentOptions />
-        </span>
-      </div>
-      <div className={styles.category}>
         <span className={styles.categoryTitle}>{t('avatar')}</span>
         <span className={styles.categorySettings}>
           <AvatarSettings />
@@ -275,7 +230,9 @@ const GeneralSettings = () => {
 
 const Settings = () => {
   const { t } = useTranslation();
-  const isInSettingsPlebbitOptionsView = isSettingsPlebbitOptionsView(useLocation().pathname);
+  const location = useLocation();
+  const isInSettingsPlebbitOptionsView = isSettingsPlebbitOptionsView(location.pathname);
+  const isInSettingsContentOptionsView = isSettingsContentOptionsView(location.pathname);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -286,7 +243,11 @@ const Settings = () => {
     document.title = documentTitle;
   }, [documentTitle]);
 
-  return <div className={styles.content}>{isInSettingsPlebbitOptionsView ? <PlebbitOptions /> : <GeneralSettings />}</div>;
+  return (
+    <div className={styles.content}>
+      {isInSettingsPlebbitOptionsView ? <PlebbitOptions /> : isInSettingsContentOptionsView ? <ContentOptions /> : <GeneralSettings />}
+    </div>
+  );
 };
 
 export default Settings;

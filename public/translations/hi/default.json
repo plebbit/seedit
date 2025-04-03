@@ -379,5 +379,12 @@
   "clear_search": "खोज साफ करें",
   "loading_iframe": "लोड हो रहा है iframe",
   "no_matches_found_for": "\"{{query}}\" के लिए कोई मेल नहीं मिला",
-  "searching": "खोज रहा है"
+  "searching": "खोज रहा है",
+  "hide_default_communities_from_topbar": "टॉपबार से डिफ़ॉल्ट समुदायों को छिपाएं",
+  "media": "मीडिया",
+  "hide_communities_tagged_as_nsfw": "NSFW/18+ के रूप में टैग की गई समुदायों को छिपाएं",
+  "tagged_as_adult": "\"एडल्ट\" के रूप में टैग किया गया",
+  "tagged_as_gore": "\"गोर\" के रूप में चिह्नित",
+  "tagged_as_anti": "\"एंटी\" के रूप में टैग किया गया",
+  "tagged_as_vulgar": "को \"वुल्गर\" के रूप में टैग किया गया"
 }

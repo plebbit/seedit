@@ -379,5 +379,12 @@
   "clear_search": "pastroni kërkimin",
   "loading_iframe": "ngarkimi iframe",
   "no_matches_found_for": "nuk u gjetën rezultate për \"{{query}}\"",
-  "searching": "kërkim"
+  "searching": "kërkim",
+  "hide_default_communities_from_topbar": "Fshih komunitetet e paracaktuara nga barra e sipërme",
+  "media": "media",
+  "hide_communities_tagged_as_nsfw": "Fsheh komunitetet e etiketuar si NSFW/18+",
+  "tagged_as_adult": "etiketuar si \"i rritur\"",
+  "tagged_as_gore": "etiketuar si \"gore\"",
+  "tagged_as_anti": "etiketuar si \"anti\"",
+  "tagged_as_vulgar": "etiketuar si \"vulgar\""
 }

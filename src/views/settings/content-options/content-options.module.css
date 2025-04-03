@@ -1,0 +1,57 @@
+.content {
+  margin: 7px 5px 40px 0;
+  font-size: 12px;
+  color: var(--text);
+  width: 100%;
+}
+
+.category {
+  display: flex;
+  align-items: flex-start;
+}
+
+.categoryTitle {
+  flex: 0 0 169px;
+  height: 100%;
+  padding: 10px;
+  font-weight: bold;
+  text-align: right;
+  text-transform: lowercase;
+}
+
+.categorySettings {
+  flex-grow: 1;
+  padding: 10px 0;
+}
+
+.settingTitle {
+  font-style: italic;
+}
+
+.contentOptionTitle {
+  font-style: italic;
+  text-transform: capitalize;
+}
+
+.contentOptions input[type='checkbox'] {
+  margin: 2px 0.5em 0 0;
+}
+
+.contentOptions label {
+  margin-top: 5px;
+  margin-right: 5px;
+}
+
+.contentOptions .nsfwTag {
+  padding-left: 20px;
+}
+
+@media (max-width: 640px) {
+  .categoryTitle {
+    flex: 0 0 65px;
+  }
+
+  .categorySettings {
+    width: 35vw;
+  }
+}

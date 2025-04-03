@@ -379,5 +379,12 @@
   "clear_search": "i-clear ang paghahanap",
   "loading_iframe": "naglo-load na iframe",
   "no_matches_found_for": "walang nahanap na tugma para sa \"{{query}}\"",
-  "searching": "naghahanap"
+  "searching": "naghahanap",
+  "hide_default_communities_from_topbar": "Itago ang mga default na komunidad mula sa topbar",
+  "media": "midya",
+  "hide_communities_tagged_as_nsfw": "Itago ang mga komunidad na may label na NSFW/18+",
+  "tagged_as_adult": "tinag na bilang \"adulto\"",
+  "tagged_as_gore": "tinag na \"gore\"",
+  "tagged_as_anti": "minarkahan bilang \"anti\"",
+  "tagged_as_vulgar": "tinag na \"vulgar\""
 }

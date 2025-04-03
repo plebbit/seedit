@@ -379,5 +379,12 @@
   "clear_search": "খোঁজ মুছে ফেলুন",
   "loading_iframe": "লোড হচ্ছে আইফ্রেম",
   "no_matches_found_for": "\"{{query}}\" এর জন্য কোনো মিল পাওয়া যায়নি",
-  "searching": "খুঁজছে"
+  "searching": "খুঁজছে",
+  "hide_default_communities_from_topbar": "টপবার থেকে ডিফল্ট কমিউনিটিগুলি লুকান",
+  "media": "মিডিয়া",
+  "hide_communities_tagged_as_nsfw": "NSFW/18+ হিসেবে ট্যাগকৃত কমিউনিটিগুলি লুকান",
+  "tagged_as_adult": "\"এডাল্ট\" হিসেবে ট্যাগ করা হয়েছে",
+  "tagged_as_gore": "\"গোর\" হিসেবে চিহ্নিত",
+  "tagged_as_anti": "\"এন্টি\" হিসেবে চিহ্নিত",
+  "tagged_as_vulgar": "\"বদতুমিজ\" হিসেবে ট্যাগ করা হয়েছে"
 }

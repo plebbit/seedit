@@ -379,5 +379,12 @@
   "clear_search": "tyhjennä haku",
   "loading_iframe": "ladataan iframe",
   "no_matches_found_for": "ei löytynyt osumia hakusanalla \"{{query}}\"",
-  "searching": "etsitään"
+  "searching": "etsitään",
+  "hide_default_communities_from_topbar": "Piilota oletusyhteisöt yläpalkista",
+  "media": "media",
+  "hide_communities_tagged_as_nsfw": "Piilota yhteisöt, jotka on merkitty NSFW/18+",
+  "tagged_as_adult": "merkitty \"aikuiseksi\"",
+  "tagged_as_gore": "merkitty \"gore\" -tunnisteella",
+  "tagged_as_anti": "merkitty \"anti\"-tunnisteeksi",
+  "tagged_as_vulgar": "merkitty \"vulgaariseksi\""
 }

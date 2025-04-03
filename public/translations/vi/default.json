@@ -379,5 +379,12 @@
   "clear_search": "xóa tìm kiếm",
   "loading_iframe": "đang tải iframe",
   "no_matches_found_for": "không tìm thấy kết quả cho \"{{query}}\"",
-  "searching": "đang tìm kiếm"
+  "searching": "đang tìm kiếm",
+  "hide_default_communities_from_topbar": "Ẩn cộng đồng mặc định từ thanh trên",
+  "media": "phương tiện truyền thông",
+  "hide_communities_tagged_as_nsfw": "Ẩn cộng đồng được gắn thẻ là NSFW/18+",
+  "tagged_as_adult": "gắn thẻ là \"người lớn\"",
+  "tagged_as_gore": "được gắn thẻ là \"gore\"",
+  "tagged_as_anti": "được gắn thẻ là \"anti\"",
+  "tagged_as_vulgar": "được gắn thẻ là \"vulgar\""
 }

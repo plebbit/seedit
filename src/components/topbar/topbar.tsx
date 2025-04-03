@@ -252,6 +252,7 @@ const TopBar = () => {
   const isInHomeView = isHomeView(location.pathname);
   const isInModView = isModView(location.pathname);
   const homeButtonClass = isInHomeView ? styles.selected : styles.choice;
+  const { hideDefaultCommunities } = useContentOptionsStore();
 
   const { accountSubplebbits } = useAccountSubplebbits();
   const accountSubplebbitAddresses = Object.keys(accountSubplebbits);
@@ -300,19 +301,24 @@ const TopBar = () => {
                 </li>
               );
             })}
-            {filteredSubplebbitAddresses?.length > 0 && <span className={styles.separator}> | </span>}
-            {filteredSubplebbitAddresses?.map((address, index) => {
-              const shortAddress = Plebbit.getShortAddress(address);
-              const displayAddress = shortAddress.includes('.eth') ? shortAddress.slice(0, -4) : shortAddress.includes('.sol') ? shortAddress.slice(0, -4) : shortAddress;
-              return (
-                <li key={index}>
-                  {index !== 0 && <span className={styles.separator}>-</span>}
-                  <Link to={`/p/${address}`} className={params.subplebbitAddress === address ? styles.selected : styles.choice}>
-                    {displayAddress}
-                  </Link>
-                </li>
-              );
-            })}
+            {!hideDefaultCommunities && filteredSubplebbitAddresses?.length > 0 && <span className={styles.separator}> | </span>}
+            {!hideDefaultCommunities &&
+              filteredSubplebbitAddresses?.map((address, index) => {
+                const shortAddress = Plebbit.getShortAddress(address);
+                const displayAddress = shortAddress.includes('.eth')
+                  ? shortAddress.slice(0, -4)
+                  : shortAddress.includes('.sol')
+                  ? shortAddress.slice(0, -4)
+                  : shortAddress;
+                return (
+                  <li key={index}>
+                    {index !== 0 && <span className={styles.separator}>-</span>}
+                    <Link to={`/p/${address}`} className={params.subplebbitAddress === address ? styles.selected : styles.choice}>
+                      {displayAddress}
+                    </Link>
+                  </li>
+                );
+              })}
           </ul>
         </div>
         <Link to='/communities/vote' className={styles.moreLink}>

@@ -379,5 +379,12 @@
   "clear_search": "hapus pencarian",
   "loading_iframe": "memuat iframe",
   "no_matches_found_for": "tidak ditemukan kecocokan untuk \"{{query}}\"",
-  "searching": "mencari"
+  "searching": "mencari",
+  "hide_default_communities_from_topbar": "Sembunyikan komunitas default dari topbar",
+  "media": "media",
+  "hide_communities_tagged_as_nsfw": "Sembunyikan komunitas yang ditandai sebagai NSFW/18+",
+  "tagged_as_adult": "ditandai sebagai \"dewasa\"",
+  "tagged_as_gore": "ditandai sebagai \"gore\"",
+  "tagged_as_anti": "ditandai sebagai \"anti\"",
+  "tagged_as_vulgar": "ditandai sebagai \"vulgar\""
 }
