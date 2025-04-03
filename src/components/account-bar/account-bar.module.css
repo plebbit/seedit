@@ -46,20 +46,10 @@
   cursor: pointer;
 }
 
-/* @media (min-width: 640px) {
-  .submitButton {
-    display: none;
-  }
-
-  .searchButton {
-    display: none;
-  }
-} */
-
 .searchBar {
   position: absolute;
   border-radius: 7px;
-  right: 2px;
+  right: 5px;
   top: 25px;
   z-index: 3;
 }

@@ -2,7 +2,16 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import { useLocation, useNavigate, useParams, useSearchParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import styles from './search-bar.module.css';
-import { isHomeView, isHomeAboutView, isPostPageView, isPostPageAboutView, isSubplebbitView, isAllView, isModView } from '../../lib/utils/view-utils';
+import {
+  isHomeView,
+  isHomeAboutView,
+  isPostPageView,
+  isPostPageAboutView,
+  isSubplebbitView,
+  isAllView,
+  isModView,
+  isSubplebbitAboutView,
+} from '../../lib/utils/view-utils';
 import useFeedFiltersStore from '../../stores/use-feed-filters-store';
 import _ from 'lodash';
 
@@ -21,6 +30,7 @@ const SearchBar = ({ isFocused = false, onExpandoChange }: SearchBarProps) => {
   const isInHomeAboutView = isHomeAboutView(location.pathname);
   const isInPostPageAboutView = isPostPageAboutView(location.pathname, params);
   const isInSubplebbitView = isSubplebbitView(location.pathname, params);
+  const isInSubplebbitAboutView = isSubplebbitAboutView(location.pathname, params);
   const isInHomeView = isHomeView(location.pathname);
   const isInPostPageView = isPostPageView(location.pathname, params);
   const isInAllView = isAllView(location.pathname);
@@ -132,7 +142,7 @@ const SearchBar = ({ isFocused = false, onExpandoChange }: SearchBarProps) => {
   };
 
   return (
-    <div ref={wrapperRef} className={`${styles.searchBarWrapper} ${isInHomeAboutView || isInPostPageAboutView ? styles.mobileInfobar : ''}`}>
+    <div ref={wrapperRef} className={`${styles.searchBarWrapper} ${isInHomeAboutView || isInSubplebbitAboutView || isInPostPageAboutView ? styles.mobileInfobar : ''}`}>
       <form className={styles.searchBar} ref={searchBarRef} onSubmit={handleSearchSubmit}>
         <input
           type='text'

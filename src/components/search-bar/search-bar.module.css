@@ -1,15 +1,17 @@
 .searchBar {
   position: relative;
   z-index: 2;
+  min-width: 300px;
 }
 
 .searchBar input[type="text"] {
+  position: relative;
   border: 1px solid gray;
   background-color: var(--background);
   color: var(--text);
   font-size: 13px;
   font-family: verdana;
-  width: 300px;
+  width: 100%;
   box-sizing: border-box;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -17,12 +19,14 @@
   text-transform: lowercase;
 }
 
-.mobileInfobar input[type="text"] {
-  width: 100%;
-}
+@media (max-width: 639px) {
+  .mobileInfobar input[type="text"] {
+    width: 100%;
+  }
 
-.mobileInfobar .infobar {
-  width: calc(100% - 22px);  
+  .mobileInfobar .infobar {
+    width: calc(100% - 22px);  
+  }
 }
 
 .searchBar input[type="submit"] {
@@ -35,7 +39,7 @@
   border: none;
   position: absolute;
   top: 9px;
-  right: 4px;
+  right: 9px;
   cursor: pointer;
   font-size: 0px;
 }
