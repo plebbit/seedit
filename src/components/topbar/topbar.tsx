@@ -116,7 +116,7 @@ const TagFilterDropdown = () => {
         {tags.map((tag, index) => (
           <div key={index} className={styles.dropdownItem} onClick={(e) => handleToggleTag(e, tag.setter, tag.isHidden)} style={{ cursor: 'pointer' }}>
             <span className={styles.dropdownItemText}>
-              {tag.isHidden ? 'show' : 'hide'} "{tag.name}"
+              {tag.isHidden ? 'show' : 'hide'} <i>{tag.name}</i>
             </span>
           </div>
         ))}
