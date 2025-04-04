@@ -483,11 +483,6 @@ const Header = () => {
             <HeaderTitle title={title} shortAddress={shortAddress} />
           </div>
         )}
-        {isInSubplebbitView && !isInSubplebbitSubmitView && !(isBroadlyNsfwSubplebbit && !hasUnhiddenAnyNsfwCommunity) && (
-          <span className={styles.joinButton}>
-            <SubscribeButton address={params.subplebbitAddress} />
-          </span>
-        )}
         {!isMobile && !(isBroadlyNsfwSubplebbit && !hasUnhiddenAnyNsfwCommunity) && (
           <ul className={styles.tabMenu}>
             <HeaderTabs />
