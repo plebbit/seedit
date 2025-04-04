@@ -388,5 +388,6 @@
   "tagged_as_anti": "taggate come \"anti\"",
   "tagged_as_vulgar": "taggate come \"vulgar\"",
   "drop_here_or": "Trascina qui o",
-  "upload_button_warning": "Questa funzione è disponibile solo sull'app Seedit per Android o sull'app desktop (Windows, Mac o Linux). Non può essere utilizzata nei browser.\n\nVai alla pagina dei link di download su GitHub?"
+  "upload_button_warning": "Questa funzione è disponibile solo sull'app Seedit per Android o sull'app desktop (Windows, Mac o Linux). Non può essere utilizzata nei browser.\n\nVai alla pagina dei link di download su GitHub?",
+  "create_community_warning": "Questa funzionalità è disponibile solo nell'app desktop Seedit (versione Windows, Mac o Linux).\n\nVai alla pagina dei link di download su GitHub?"
 }

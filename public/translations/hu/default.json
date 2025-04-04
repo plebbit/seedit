@@ -388,5 +388,6 @@
   "tagged_as_anti": "címkézve \"anti\" néven",
   "tagged_as_vulgar": "megjegyezve mint \"vulgáris\"",
   "drop_here_or": "Húzza ide, vagy",
-  "upload_button_warning": "Ez a funkció csak a Seedit Android alkalmazásban vagy az asztali alkalmazásban (Windows, Mac vagy Linux) érhető el. Nem használható böngészőkben.\n\nSzeretnél elmenni a GitHub letöltési linkek oldalára?"
+  "upload_button_warning": "Ez a funkció csak a Seedit Android alkalmazásban vagy az asztali alkalmazásban (Windows, Mac vagy Linux) érhető el. Nem használható böngészőkben.\n\nSzeretnél elmenni a GitHub letöltési linkek oldalára?",
+  "create_community_warning": "Ez a funkció csak a Seedit asztali alkalmazás (Windows, Mac vagy Linux) verziójában érhető el.\n\nMenj a letöltési linkek oldalára a GitHub-on?"
 }

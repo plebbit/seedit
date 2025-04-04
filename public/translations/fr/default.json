@@ -388,5 +388,6 @@
   "tagged_as_anti": "étiqueté comme \"anti\"",
   "tagged_as_vulgar": "étiqueté comme \"vulgaire\"",
   "drop_here_or": "Déposez ici ou",
-  "upload_button_warning": "Cette fonctionnalité est uniquement disponible sur l'application Seedit Android ou l'application de bureau (Windows, Mac ou Linux). Elle ne peut pas être utilisée dans les navigateurs.\n\nVoulez-vous aller à la page des liens de téléchargement sur GitHub?"
+  "upload_button_warning": "Cette fonctionnalité est uniquement disponible sur l'application Seedit Android ou l'application de bureau (Windows, Mac ou Linux). Elle ne peut pas être utilisée dans les navigateurs.\n\nVoulez-vous aller à la page des liens de téléchargement sur GitHub?",
+  "create_community_warning": "Cette fonctionnalité est uniquement disponible sur l'application de bureau Seedit (version Windows, Mac ou Linux).\n\nAllez à la page des liens de téléchargement sur GitHub ?"
 }

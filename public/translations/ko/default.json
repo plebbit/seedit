@@ -388,5 +388,6 @@
   "tagged_as_anti": "\"anti\"로 태그됨",
   "tagged_as_vulgar": "\"vulgar\"로 태그됨",
   "drop_here_or": "여기에 드롭 또는",
-  "upload_button_warning": "이 기능은 Seedit Android 앱 또는 데스크탑 앱(Windows, Mac, Linux)에서만 사용할 수 있습니다. 브라우저에서는 사용할 수 없습니다.\n\nGitHub에서 다운로드 링크 페이지로 이동하시겠습니까?"
+  "upload_button_warning": "이 기능은 Seedit Android 앱 또는 데스크탑 앱(Windows, Mac, Linux)에서만 사용할 수 있습니다. 브라우저에서는 사용할 수 없습니다.\n\nGitHub에서 다운로드 링크 페이지로 이동하시겠습니까?",
+  "create_community_warning": "이 기능은 Seedit 데스크탑 앱(Windows, Mac 또는 Linux) 버전에서만 사용할 수 있습니다.\n\nGitHub의 다운로드 링크 페이지로 이동하시겠습니까?"
 }

@@ -388,5 +388,6 @@
   "tagged_as_anti": "ditandai sebagai \"anti\"",
   "tagged_as_vulgar": "ditandai sebagai \"vulgar\"",
   "drop_here_or": "Seretkan di sini atau",
-  "upload_button_warning": "Fitur ini hanya tersedia di aplikasi Seedit Android atau aplikasi desktop (Windows, Mac, atau Linux). Tidak dapat digunakan di browser.\n\nApakah Anda ingin pergi ke halaman tautan unduhan di GitHub?"
+  "upload_button_warning": "Fitur ini hanya tersedia di aplikasi Seedit Android atau aplikasi desktop (Windows, Mac, atau Linux). Tidak dapat digunakan di browser.\n\nApakah Anda ingin pergi ke halaman tautan unduhan di GitHub?",
+  "create_community_warning": "Fitur ini hanya tersedia di aplikasi desktop Seedit (Windows, Mac, atau Linux) versi.\n\nPergi ke halaman tautan unduhan di GitHub?"
 }

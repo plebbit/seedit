@@ -388,5 +388,6 @@
   "tagged_as_anti": "marcado como \"anti\"",
   "tagged_as_vulgar": "marcado como \"vulgar\"",
   "drop_here_or": "Solte aqui ou",
-  "upload_button_warning": "Este recurso está disponível apenas no aplicativo Seedit para Android ou no aplicativo de desktop (Windows, Mac ou Linux). Não pode ser usado em navegadores.\n\nIr para a página de links de download no GitHub?"
+  "upload_button_warning": "Este recurso está disponível apenas no aplicativo Seedit para Android ou no aplicativo de desktop (Windows, Mac ou Linux). Não pode ser usado em navegadores.\n\nIr para a página de links de download no GitHub?",
+  "create_community_warning": "Este recurso está disponível apenas no aplicativo de desktop Seedit (versão Windows, Mac ou Linux).\n\nVá para a página de links de download no GitHub?"
 }

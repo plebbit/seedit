@@ -388,5 +388,6 @@
   "tagged_as_anti": "تم وضع علامة كـ \"مناهض\"",
   "tagged_as_vulgar": "تم وسمه كـ \"بذيء\"",
   "drop_here_or": "إسقاط هنا أو",
-  "upload_button_warning": "تتوفر هذه الميزة فقط على تطبيق Seedit لنظام Android أو تطبيق سطح المكتب (Windows أو Mac أو Linux). لا يمكن استخدامها في المتصفحات.\n\nهل ترغب في الذهاب إلى صفحة روابط التنزيل على GitHub؟"
+  "upload_button_warning": "تتوفر هذه الميزة فقط على تطبيق Seedit لنظام Android أو تطبيق سطح المكتب (Windows أو Mac أو Linux). لا يمكن استخدامها في المتصفحات.\n\nهل ترغب في الذهاب إلى صفحة روابط التنزيل على GitHub؟",
+  "create_community_warning": "هذه الميزة متوفرة فقط على تطبيق Seedit لسطح المكتب (إصدار Windows أو Mac أو Linux).\n\nانتقل إلى صفحة روابط التنزيل على GitHub؟"
 }
