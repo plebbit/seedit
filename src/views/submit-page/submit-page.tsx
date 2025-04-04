@@ -14,6 +14,7 @@ import useIsSubplebbitOffline from '../../hooks/use-is-subplebbit-offline';
 import LoadingEllipsis from '../../components/loading-ellipsis';
 import Markdown from '../../components/markdown';
 import Embed from '../../components/post/embed';
+import { FormattingHelpTable } from '../../components/reply-form/reply-form';
 import styles from './submit-page.module.css';
 
 const isAndroid = Capacitor.getPlatform() === 'android';
@@ -248,6 +249,7 @@ const TitleField = () => {
 const ContentField = () => {
   const { t } = useTranslation();
   const [showPreview, setShowPreview] = useState(false);
+  const [showFormattingHelp, setShowFormattingHelp] = useState(false);
 
   const { content, setPublishPostStore } = usePublishPostStore();
 
@@ -271,9 +273,25 @@ const ContentField = () => {
             </div>
           </div>
         )}
-        <button className={styles.previewButton} disabled={!content} onClick={() => setShowPreview(!showPreview)}>
-          {showPreview ? t('edit') : t('preview')}
-        </button>
+        <div className={styles.contentActions}>
+          {showFormattingHelp && (
+            <button className={styles.previewButton} disabled={!content} onClick={() => setShowPreview(!showPreview)}>
+              {showPreview ? t('edit') : t('preview')}
+            </button>
+          )}
+          <span
+            className={styles.formattingHelpButton}
+            onClick={() => {
+              if (showFormattingHelp && showPreview) {
+                setShowPreview(false);
+              }
+              setShowFormattingHelp(!showFormattingHelp);
+            }}
+          >
+            {showFormattingHelp ? t('hide_help') : t('formatting_help')}
+          </span>
+        </div>
+        {showFormattingHelp && <FormattingHelpTable />}
       </div>
     </div>
   );
