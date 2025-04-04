@@ -449,7 +449,7 @@ const Header = () => {
     isInHomeView || isInHomeAboutView || isInAllView || isInModView || isInDomainView
       ? '/submit'
       : isInPendingPostView
-      ? `/p/${pendingPostSubplebbitAddress}/submit`
+      ? `/p/${accountComment?.subplebbitAddress}/submit`
       : `/p/${subplebbitAddress}/submit`;
 
   return (
