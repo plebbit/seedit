@@ -450,7 +450,9 @@ const Header = () => {
       ? '/submit'
       : isInPendingPostView
       ? `/p/${accountComment?.subplebbitAddress}/submit`
-      : `/p/${subplebbitAddress}/submit`;
+      : subplebbitAddress
+      ? `/p/${subplebbitAddress}/submit`
+      : '/submit';
 
   return (
     <div className={styles.header}>
