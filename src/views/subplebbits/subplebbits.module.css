@@ -281,6 +281,7 @@
   border-radius: 3px;
   margin-right: 4px;
   cursor: pointer;
+  font-size: 10px;
 }
 
 @media (max-width: 640px) {
@@ -318,4 +319,15 @@
 .undoLink {
   color: var(--text-primary);
   text-decoration: underline;
+}
+
+.over18icon {
+  background-image: url('/assets/over18-small.png');
+  background-size: 100%;
+  background-repeat: no-repeat;
+  height: 16px;
+  width: 16px;
+  display: inline-block;
+  vertical-align: top;
+  margin: 0 2px;
 }
