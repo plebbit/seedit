@@ -114,7 +114,8 @@
 }
 
 .loadingString {
-  padding: 5px;
+  display: flex;
+  padding: 10px;
   text-transform: lowercase;
 }
 
