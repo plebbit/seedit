@@ -261,14 +261,14 @@ a {
 }
 
 .shareLink {
-  font-size: 80%;
+  font-size: 10px;
   margin-top: 3px;
 }
 
 .shareLink input {
   border: 1px solid var(--border-text);
   font-family: monospace;
-  font-size: 140%;
+  font-size: 11px;
   padding: 3px 2px;
   width: 175px;
   background-color: var(--background);
