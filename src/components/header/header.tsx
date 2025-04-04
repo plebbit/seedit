@@ -445,6 +445,13 @@ const Header = () => {
   const logoSrc = logoIsAvatar ? suggested?.avatarUrl : 'assets/logo/seedit.png';
   const logoLink = '/';
 
+  const mobileSubmitButtonRoute =
+    isInHomeView || isInHomeAboutView || isInAllView || isInModView || isInDomainView
+      ? '/submit'
+      : isInPendingPostView
+      ? `/p/${pendingPostSubplebbitAddress}/submit`
+      : `/p/${subplebbitAddress}/submit`;
+
   return (
     <div className={styles.header}>
       <div
@@ -494,7 +501,7 @@ const Header = () => {
           {(isInHomeView || isInHomeAboutView || isInSubplebbitView || isInHomeAboutView || isInPostPageView) && <AboutButton />}
           {!isInSubmitView && !isInSettingsView && (
             <li>
-              <Link to={'/submit'} className={styles.submitButton}>
+              <Link to={mobileSubmitButtonRoute} className={styles.submitButton}>
                 {t('submit')}
               </Link>
             </li>
