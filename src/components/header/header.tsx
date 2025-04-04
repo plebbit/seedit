@@ -48,7 +48,6 @@ import useNotFoundStore from '../../stores/use-not-found-store';
 import { useIsBroadlyNsfwSubplebbit } from '../../hooks/use-is-broadly-nsfw-subplebbit';
 import useTheme from '../../hooks/use-theme';
 import useWindowWidth from '../../hooks/use-window-width';
-import SubscribeButton from '../subscribe-button';
 import styles from './header.module.css';
 
 const AboutButton = () => {

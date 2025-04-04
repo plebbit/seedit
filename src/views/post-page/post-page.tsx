@@ -240,13 +240,10 @@ const PostPage = () => {
 
   const isValidAccountCommentIndex =
     !accountCommentIndex ||
-    // Check if it's a valid positive integer
     (!isNaN(parseInt(accountCommentIndex)) &&
       parseInt(accountCommentIndex) >= 0 &&
       Number.isInteger(parseFloat(accountCommentIndex)) &&
-      // Allow index to be at most 1 position beyond the current length
-      // This handles the case where a new post is being created
-      (accountComments?.length === 0 || parseInt(accountCommentIndex) <= accountComments.length));
+      (accountComments?.length === 0 || parseInt(accountCommentIndex) < accountComments.length));
 
   useEffect(() => {
     if (!isValidAccountCommentIndex) {
