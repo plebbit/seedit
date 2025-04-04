@@ -210,25 +210,23 @@ const Post = ({ index, post = {} }: PostProps) => {
                   <div className={`${styles.arrowCommon} ${downvoted ? styles.downvoted : styles.arrowDown}`} onClick={() => cid && downvote()} />
                 </div>
               </div>
-              <span className={removed ? styles.blur : ''}>
-                <Thumbnail
-                  cid={cid}
-                  commentMediaInfo={commentMediaInfo}
-                  isReply={false}
-                  isLink={!hasThumbnail && link}
-                  isNsfw={nsfw}
-                  isSpoiler={spoiler}
-                  isText={!hasThumbnail && !link}
-                  link={link}
-                  linkHeight={linkHeight}
-                  linkWidth={linkWidth}
-                  subplebbitAddress={subplebbitAddress}
-                />
-              </span>
+              <Thumbnail
+                cid={cid}
+                commentMediaInfo={commentMediaInfo}
+                isReply={false}
+                isLink={!hasThumbnail && link}
+                isNsfw={nsfw}
+                isSpoiler={spoiler}
+                isText={!hasThumbnail && !link}
+                link={link}
+                linkHeight={linkHeight}
+                linkWidth={linkWidth}
+                subplebbitAddress={subplebbitAddress}
+              />
             </div>
             <div className={styles.entry}>
               <div className={styles.topMatter}>
-                <p className={`${styles.title} ${removed && !isInPostPageView ? styles.blur : ''}`}>
+                <p className={styles.title}>
                   {isInPostPageView && link ? (
                     <a href={link} className={linkClass} target='_blank' rel='noopener noreferrer' onClick={handlePostClick}>
                       {highlightedTitle ?? '-'}

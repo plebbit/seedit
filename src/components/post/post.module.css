@@ -79,10 +79,6 @@
   font-weight: normal;
 }
 
-.blur {
-  filter: blur(4px);
-}
-
 .link {
   text-decoration: none;
   color: var(--link);
