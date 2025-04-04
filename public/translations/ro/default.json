@@ -386,5 +386,7 @@
   "tagged_as_adult": "etichetat ca \"adult\"",
   "tagged_as_gore": "etichetat ca \"gore\"",
   "tagged_as_anti": "etichetați ca \"anti\"",
-  "tagged_as_vulgar": "marcat ca \"vulgar\""
+  "tagged_as_vulgar": "marcat ca \"vulgar\"",
+  "drop_here_or": "Aruncați aici sau",
+  "upload_button_warning": "Această funcție este disponibilă doar pe aplicația Seedit pentru Android sau pe aplicația desktop (Windows, Mac sau Linux). Nu poate fi utilizată în browsere.\n\nDoriți să accesați pagina cu linkurile de descărcare pe GitHub?"
 }

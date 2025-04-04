@@ -19,8 +19,6 @@ import styles from './submit-page.module.css';
 
 const isAndroid = Capacitor.getPlatform() === 'android';
 const isElectron = window.isElectron === true;
-const warningMessage =
-  'This feature cannot work in browsers. It is only available on Seedit Android app, or desktop app (win/mac/linux) versions.\n\nGo to the download links page on GitHub?';
 
 const UrlField = () => {
   const { t } = useTranslation();
@@ -93,7 +91,7 @@ const UploadMediaForm = () => {
   const onDrop = useCallback(
     async (acceptedFiles: File[]) => {
       if (!(isAndroid || isElectron)) {
-        if (window.confirm(warningMessage)) {
+        if (window.confirm(t('upload_button_warning'))) {
           const link = document.createElement('a');
           link.href = 'https://github.com/plebbit/seedit/releases/latest';
           link.target = '_blank';
@@ -161,7 +159,7 @@ const UploadMediaForm = () => {
 
   const handleUpload = async () => {
     if (!(isAndroid || isElectron)) {
-      if (window.confirm(warningMessage)) {
+      if (window.confirm(t('upload_button_warning'))) {
         const link = document.createElement('a');
         link.href = 'https://github.com/plebbit/seedit/releases/latest';
         link.target = '_blank';
@@ -214,7 +212,7 @@ const UploadMediaForm = () => {
           <div {...getRootProps()} className={`${styles.uploadBox} ${isDragActive ? styles.dragging : ''}`}>
             <input {...getInputProps()} />
             <div className={styles.cameraIcon} />
-            <div className={styles.dropText}>Drop here or</div>
+            <div className={styles.dropText}>{t('drop_here_or')}</div>
             <label onClick={() => (isUploading || isChoosingFile ? null : handleUpload())}>
               <div className={styles.fileUploadIcon} />
               {t('choose_file')}
@@ -374,8 +372,7 @@ const SubplebbitAddressField = () => {
         <input
           className={`${styles.input} ${styles.inputCommunity}`}
           type='text'
-          placeholder={`"community.eth/.sol" ${t('or')} "12D3KooW..."`}
-          value={inputAddress}
+          value={inputAddress ?? ''}
           onChange={(e) => {
             setPublishPostStore({ subplebbitAddress: e.target.value });
           }}
@@ -473,7 +470,7 @@ const SubmitPage = () => {
   }, [params.subplebbitAddress, setPublishPostStore]);
 
   const selectedSubplebbitData = useSubplebbit({ subplebbitAddress });
-  const { shortAddress, rules } = selectedSubplebbitData;
+  const { rules, shortAddress, title: subplebbitTitle } = selectedSubplebbitData;
   const { isOffline, offlineTitle } = useIsSubplebbitOffline(selectedSubplebbitData);
 
   const { index, publishComment } = usePublishComment(publishCommentOptions);
@@ -508,7 +505,7 @@ const SubmitPage = () => {
   }, []);
 
   const documentTitle = t('submit_to_string', {
-    string: selectedSubplebbitData?.title || shortAddress || 'Seedit',
+    string: subplebbitTitle || shortAddress || 'Seedit',
     interpolation: { escapeValue: false },
   });
 
@@ -523,10 +520,10 @@ const SubmitPage = () => {
           i18nKey='submit_to'
           shouldUnescape={true}
           values={{
-            link: selectedSubplebbitData?.title || shortAddress || 'seedit',
+            link: subplebbitTitle || shortAddress || 'seedit',
           }}
           components={{
-            1: shortAddress ? <Link key={subplebbitAddress} to={`/p/${subplebbitAddress}`} className={styles.location} /> : <span key={subplebbitAddress} />,
+            1: shortAddress ? <Link key='submit_to_link' to={`/p/${subplebbitAddress}`} className={styles.location} /> : <span key='submit_to_span' />,
           }}
         />
       </h1>
@@ -534,7 +531,7 @@ const SubmitPage = () => {
         <div className={styles.formContent}>
           {isOffline && subplebbitAddress && <div className={styles.infobar}>{offlineTitle}</div>}
           <UrlField />
-          {link?.length === 0 && <UploadMediaForm />}
+          {!link && <UploadMediaForm />}
           <TitleField />
           <ContentField />
           <SubplebbitAddressField />

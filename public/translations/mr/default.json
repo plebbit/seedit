@@ -386,5 +386,7 @@
   "tagged_as_adult": "\"एडल्ट\" म्हणून टॅग केले",
   "tagged_as_gore": "\"गोर\" म्हणून टॅग केले",
   "tagged_as_anti": "\"एंटी\" म्हणून टॅग केलेले",
-  "tagged_as_vulgar": "\"vulgar\" म्हणून टॅग केले"
+  "tagged_as_vulgar": "\"vulgar\" म्हणून टॅग केले",
+  "drop_here_or": "इथे ड्रॉप करा किंवा",
+  "upload_button_warning": "ही वैशिष्ट्य फक्त Seedit Android अॅप किंवा डेस्कटॉप अॅप (Windows, Mac किंवा Linux) आवृत्त्यांवर उपलब्ध आहे. ते ब्राउझरमध्ये वापरता येत नाही.\n\nGitHub वर डाउनलोड लिंक पृष्ठावर जा का?"
 }

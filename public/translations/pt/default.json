@@ -386,5 +386,7 @@
   "tagged_as_adult": "marcado como \"adulto\"",
   "tagged_as_gore": "marcado como \"gore\"",
   "tagged_as_anti": "marcado como \"anti\"",
-  "tagged_as_vulgar": "marcado como \"vulgar\""
+  "tagged_as_vulgar": "marcado como \"vulgar\"",
+  "drop_here_or": "Solte aqui ou",
+  "upload_button_warning": "Este recurso está disponível apenas no aplicativo Seedit para Android ou no aplicativo de desktop (Windows, Mac ou Linux). Não pode ser usado em navegadores.\n\nIr para a página de links de download no GitHub?"
 }

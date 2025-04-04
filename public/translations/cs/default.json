@@ -386,5 +386,7 @@
   "tagged_as_adult": "označeno jako \"dospělý\"",
   "tagged_as_gore": "označeno jako \"gore\"",
   "tagged_as_anti": "označeno jako \"anti\"",
-  "tagged_as_vulgar": "označeno jako \"vulgární\""
+  "tagged_as_vulgar": "označeno jako \"vulgární\"",
+  "drop_here_or": "Přetáhněte sem nebo",
+  "upload_button_warning": "Tato funkce je k dispozici pouze v aplikaci Seedit pro Android nebo v desktopové aplikaci (Windows, Mac nebo Linux). Nelze ji používat v prohlížečích.\n\nChcete přejít na stránku s odkazy ke stažení na GitHubu?"
 }

@@ -102,8 +102,8 @@
   "share_link": "link di condivisione",
   "upvoted": "ha dato un upvote",
   "announcement": "annuncio",
-  "child": "{{childrenCount}} figli",
-  "children": "{{childrenCount}} figlio",
+  "child": "{{childrenCount}} figlio",
+  "children": "{{childrenCount}} figli",
   "moderation": "moderazione",
   "interface_language": "lingua interfaccia",
   "theme": "tema",
@@ -386,5 +386,7 @@
   "tagged_as_adult": "taggate come \"adult\"",
   "tagged_as_gore": "taggate come \"gore\"",
   "tagged_as_anti": "taggate come \"anti\"",
-  "tagged_as_vulgar": "taggate come \"vulgar\""
+  "tagged_as_vulgar": "taggate come \"vulgar\"",
+  "drop_here_or": "Trascina qui o",
+  "upload_button_warning": "Questa funzione è disponibile solo sull'app Seedit per Android o sull'app desktop (Windows, Mac o Linux). Non può essere utilizzata nei browser.\n\nVai alla pagina dei link di download su GitHub?"
 }

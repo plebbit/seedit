@@ -386,5 +386,7 @@
   "tagged_as_adult": "etiketuar si \"i rritur\"",
   "tagged_as_gore": "etiketuar si \"gore\"",
   "tagged_as_anti": "etiketuar si \"anti\"",
-  "tagged_as_vulgar": "etiketuar si \"vulgar\""
+  "tagged_as_vulgar": "etiketuar si \"vulgar\"",
+  "drop_here_or": "Hidh këtu ose",
+  "upload_button_warning": "Ky funksion është i disponueshëm vetëm në aplikacionin Seedit për Android ose në aplikacionin desktop (Windows, Mac ose Linux). Nuk mund të përdoret në shfletues.\n\nA dëshironi të shkoni në faqen e lidhjeve të shkarkimit në GitHub?"
 }

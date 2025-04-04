@@ -386,5 +386,7 @@
   "tagged_as_adult": "geëtiketteerd als \"volwassen\"",
   "tagged_as_gore": "getagd als \"gore\"",
   "tagged_as_anti": "getagd als \"anti\"",
-  "tagged_as_vulgar": "getagd als \"vulgar\""
+  "tagged_as_vulgar": "getagd als \"vulgar\"",
+  "drop_here_or": "Sleep hierheen of",
+  "upload_button_warning": "Deze functie is alleen beschikbaar op de Seedit Android-app of desktop-app (Windows, Mac of Linux) versies. Het kan niet in browsers worden gebruikt.\n\nGa naar de downloadlinkpagina op GitHub?"
 }

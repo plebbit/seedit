@@ -386,5 +386,7 @@
   "tagged_as_adult": "\"成人\"としてタグ付けされました",
   "tagged_as_gore": "\"gore\"としてタグ付けされました",
   "tagged_as_anti": "\"anti\" としてタグ付けされた",
-  "tagged_as_vulgar": "\"vulgar\"としてタグ付けされました"
+  "tagged_as_vulgar": "\"vulgar\"としてタグ付けされました",
+  "drop_here_or": "ここにドロップまたは",
+  "upload_button_warning": "この機能はSeeditのAndroidアプリまたはデスクトップアプリ（Windows、Mac、Linux）バージョンでのみ利用可能です。ブラウザでは使用できません。\n\nGitHubのダウンロードリンクページに移動しますか？"
 }

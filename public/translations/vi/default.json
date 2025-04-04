@@ -386,5 +386,7 @@
   "tagged_as_adult": "gắn thẻ là \"người lớn\"",
   "tagged_as_gore": "được gắn thẻ là \"gore\"",
   "tagged_as_anti": "được gắn thẻ là \"anti\"",
-  "tagged_as_vulgar": "được gắn thẻ là \"vulgar\""
+  "tagged_as_vulgar": "được gắn thẻ là \"vulgar\"",
+  "drop_here_or": "Thả ở đây hoặc",
+  "upload_button_warning": "Tính năng này chỉ có sẵn trên ứng dụng Seedit Android hoặc ứng dụng desktop (Windows, Mac hoặc Linux). Không thể sử dụng trên trình duyệt.\n\nBạn có muốn đi đến trang liên kết tải xuống trên GitHub?"
 }

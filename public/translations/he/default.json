@@ -386,5 +386,7 @@
   "tagged_as_adult": "סווג כ\"מותאם לבוגרים\"",
   "tagged_as_gore": "מסומן כ-\"גורה\"",
   "tagged_as_anti": "מתויג כ\"נגד\"",
-  "tagged_as_vulgar": "סומן כ-\"גס\""
+  "tagged_as_vulgar": "סומן כ-\"גס\"",
+  "drop_here_or": "הנח כאן או",
+  "upload_button_warning": "תכונה זו זמינה רק באפליקציית Seedit עבור Android או באפליקציית שולחן העבודה (Windows, Mac או Linux). היא לא יכולה לשמש בדפדפנים.\n\nהאם תרצה לעבור לדף קישורי ההורדה ב-GitHub?"
 }
