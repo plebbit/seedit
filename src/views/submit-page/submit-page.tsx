@@ -297,21 +297,6 @@ const SubplebbitAddressField = () => {
   }, [defaultSubplebbitAddresses]);
   const listSource = subscriptions?.length > 5 ? subscriptions : randomSubplebbitSuggestions;
 
-  const defaultSubplebbitsDropdown = inputAddress && (
-    <ul className={styles.dropdown}>
-      {filteredSubplebbitAddresses.map((subplebbitAddress, index) => (
-        <li
-          key={subplebbitAddress}
-          className={`${styles.dropdownItem} ${index === activeDropdownIndex ? styles.activeDropdownItem : ''}`}
-          onClick={() => handleSubplebbitSelect(subplebbitAddress)}
-          onMouseEnter={() => setActiveDropdownIndex(index)}
-        >
-          {subplebbitAddress}
-        </li>
-      ))}
-    </ul>
-  );
-
   const handleKeyDown = useCallback(
     (e: KeyboardEvent) => {
       if (e.key === 'ArrowDown') {
@@ -348,6 +333,21 @@ const SubplebbitAddressField = () => {
     return shuffled.slice(0, count);
   };
 
+  const defaultSubplebbitsDropdown = (
+    <ul className={styles.dropdown}>
+      {filteredSubplebbitAddresses.map((subplebbitAddress, index) => (
+        <li
+          key={subplebbitAddress}
+          className={`${styles.dropdownItem} ${index === activeDropdownIndex ? styles.activeDropdownItem : ''}`}
+          onClick={() => handleSubplebbitSelect(subplebbitAddress)}
+          onMouseEnter={() => setActiveDropdownIndex(index)}
+        >
+          {subplebbitAddress}
+        </li>
+      ))}
+    </ul>
+  );
+
   return (
     <div className={styles.box}>
       <span className={styles.boxTitleRequired}>{t('submit_choose')}</span>
@@ -373,7 +373,7 @@ const SubplebbitAddressField = () => {
             }
           }}
         />
-        {inputAddress && isInputAddressFocused && defaultSubplebbitsDropdown}
+        {inputAddress && isInputAddressFocused && filteredSubplebbitAddresses.length > 0 && defaultSubplebbitsDropdown}
         <div className={styles.subsDescription}>{subscriptions?.length > 5 ? t('submit_subscriptions') : t('submit_subscriptions_notice')}</div>
         <div className={styles.subs}>
           {listSource.map((subscription: string) => (
