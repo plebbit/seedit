@@ -238,7 +238,7 @@ const Subplebbit = ({ subplebbit, tags, index }: SubplebbitProps) => {
               </span>
               {(userRole || isUserOwner) && (
                 <Link to={`/p/${address}/settings`}>
-                  <span className={styles.moderatorIcon} title={userRole || 'owner'} />
+                  <span className={`${styles.moderatorIcon} ${isNsfw ? styles.addMarginRight : ''}`} title={userRole || 'owner'} />
                 </Link>
               )}
               {isNsfw && <span className={styles.over18icon} />}

@@ -298,7 +298,7 @@
   "hide_settings": "設定を非表示",
   "wallet": "ウォレット",
   "undelete": "削除を取り消す",
-  "loading_comments": "コメントを読み込んでいます",
+  "downloading_comments": "コメントをダウンロード中",
   "you_blocked_community": "このコミュニティをブロックしました",
   "show": "表示",
   "plebbit_options": "plebbitのオプション",

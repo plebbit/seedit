@@ -298,7 +298,7 @@
   "hide_settings": "ซ่อนการตั้งค่า",
   "wallet": "กระเป๋าเงิน",
   "undelete": "ยกเลิกการลบ",
-  "loading_comments": "กำลังโหลดความคิดเห็น",
+  "downloading_comments": "กำลังดาวน์โหลดความคิดเห็น",
   "you_blocked_community": "คุณบล็อกชุมชนนี้แล้ว",
   "show": "แสดง",
   "plebbit_options": "ตัวเลือก plebbit",
