@@ -161,11 +161,6 @@
   width: 60%;
 }
 
-.editSaveButtons {
-  width: 100%;
-  display: inline-block;
-}
-
 .preview {
   min-height: 98.5px;
   word-wrap: break-word;
