@@ -61,7 +61,7 @@
 
 .boxInput textarea {
   box-shadow: var(--box-shadow-input);
-  width: 492px;
+  width: 100%;
   box-sizing: border-box;
   padding: 3px;
   border: 1px solid var(--border-text);
@@ -347,7 +347,7 @@
     width: calc(100% - 315px);
   }
 
-  .boxInput input, .boxInput textarea {
+  .boxInput input {
     width: calc(100% + 293px);
   }
 
@@ -369,11 +369,53 @@
     width: calc(100vw - 20px);
   }
 
-  .boxInput input, .boxInput textarea {
-    width: calc(100% - 20px)
+  .boxInput input {
+    width: calc(100% - 20px);
   }
 
   .infobar {
     max-width: 100%;
   }
+}
+
+.bottomArea {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.formattingHelpButton {
+  margin: 4px 0 -1px auto;
+  font-size: 11px;
+  color: var(--text-primary);
+  cursor: pointer;
+  text-transform: lowercase;
+}
+
+.previewButton {
+  position: absolute;
+  top: 5px;
+  margin: 0 5px 0 0;
+  -webkit-appearance: button;
+  appearance: button;
+  cursor: pointer;
+  padding: 2px 6px 3px;
+  text-transform: lowercase;
+}
+
+.formattingHelpTable {
+  padding-top: 13px;
+}
+
+.preview {
+  min-height: 100px;
+  word-wrap: break-word;
+  padding-left: 4px;
+  padding-top: 4px;
+  margin-bottom: 4px;
+  font-size: 14px;
+  color: var(--text);
+  box-sizing: border-box;
+  line-height: 20px;
+  font-family: verdana, arial, helvetica, sans-serif;
 }

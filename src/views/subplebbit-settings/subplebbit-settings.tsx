@@ -21,6 +21,7 @@ import Markdown from '../../components/markdown';
 import Sidebar from '../../components/sidebar';
 import Challenges from './challenge-settings';
 import _ from 'lodash';
+import { FormattingHelpTable } from '../../components/reply-form';
 
 const Title = ({ isReadOnly = false }: { isReadOnly?: boolean }) => {
   const { t } = useTranslation();
@@ -40,6 +41,8 @@ const Title = ({ isReadOnly = false }: { isReadOnly?: boolean }) => {
 const Description = ({ isReadOnly = false }: { isReadOnly?: boolean }) => {
   const { t } = useTranslation();
   const { description, setSubplebbitSettingsStore } = useSubplebbitSettingsStore();
+  const [showFormattingHelp, setShowFormattingHelp] = useState(false);
+  const [showPreview, setShowPreview] = useState(false);
 
   return (
     <div className={`${styles.box} ${isReadOnly && !description ? styles.hidden : styles.visible}`}>
@@ -50,17 +53,37 @@ const Description = ({ isReadOnly = false }: { isReadOnly?: boolean }) => {
           <pre className={styles.readOnlyDescription}>{description}</pre>
         ) : (
           <>
-            <textarea value={description ?? ''} onChange={(e) => setSubplebbitSettingsStore({ description: e.target.value })} />
-            <div className={styles.descriptionPreview}>
-              {description && (
-                <>
-                  <div className={styles.descriptionMarkdownPreviewTitle}>{t('preview')}:</div>
-                  <div className={styles.descriptionPreviewMarkdown}>
-                    <Markdown content={description} />
-                  </div>
-                </>
+            {!showPreview ? (
+              <textarea value={description ?? ''} onChange={(e) => setSubplebbitSettingsStore({ description: e.target.value })} />
+            ) : (
+              <div className={styles.preview}>
+                <Markdown content={description ?? ''} />
+              </div>
+            )}
+            <div className={styles.bottomArea}>
+              {showFormattingHelp && (
+                <button className={styles.previewButton} onClick={() => setShowPreview(!showPreview)} disabled={!description}>
+                  {showPreview ? t('edit') : t('preview')}
+                </button>
               )}
+              <span
+                className={styles.formattingHelpButton}
+                onClick={() => {
+                  const nextShowHelp = !showFormattingHelp;
+                  setShowFormattingHelp(nextShowHelp);
+                  if (!nextShowHelp) {
+                    setShowPreview(false);
+                  }
+                }}
+              >
+                {showFormattingHelp ? t('hide_help') : t('formatting_help')}
+              </span>
             </div>
+            {showFormattingHelp && (
+              <div className={styles.formattingHelpTable}>
+                <FormattingHelpTable />
+              </div>
+            )}
           </>
         )}
       </div>

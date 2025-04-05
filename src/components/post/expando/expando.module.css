@@ -51,6 +51,7 @@
 .mediaPreview img {
   /* TODO: max width should be dynamically calculated based on file dimensions from API */
   max-width: 600px;
+  width: 100%;
   background-color: var(--background-thumbnail);
   object-fit: contain;
 }
@@ -58,6 +59,7 @@
 .mediaPreview video {
   /* TODO: max width should be dynamically calculated based on file dimensions from API */
   max-width: 700px;
+  width: 100%;
   max-height: 50vh;
   background-color: var(--background-thumbnail);
   object-fit: contain;
