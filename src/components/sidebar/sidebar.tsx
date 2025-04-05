@@ -210,7 +210,9 @@ const Sidebar = ({ comment, isSubCreatedButNotYetPublished, settings, subplebbit
       ? '/submit'
       : isInPendingPostView
       ? `/p/${pendingPost?.subplebbitAddress}/submit`
-      : `/p/${address}/submit`;
+      : address
+      ? `/p/${address}/submit`
+      : '/submit';
 
   const { blocked, unblock, block } = useBlock({ address });
 
@@ -244,9 +246,7 @@ const Sidebar = ({ comment, isSubCreatedButNotYetPublished, settings, subplebbit
     // creating a community only works if the user is running a full node
     if (isElectron || isConnectedToRpc) {
       navigate('/communities/create');
-    } else if (
-      window.confirm('You can create your own community with the Seedit desktop app, available for Windows, Mac and Linux.\n\nGo to download links page on GitHub?')
-    ) {
+    } else if (window.confirm(t('create_community_warning'))) {
       const link = document.createElement('a');
       link.href = 'https://github.com/plebbit/seedit/releases/latest';
       link.target = '_blank';

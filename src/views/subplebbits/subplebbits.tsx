@@ -241,8 +241,8 @@ const Subplebbit = ({ subplebbit, tags, index }: SubplebbitProps) => {
                   <span className={styles.moderatorIcon} title={userRole || 'owner'} />
                 </Link>
               )}
+              {isNsfw && <span className={styles.over18icon} />}
               {isOffline && !isOnlineStatusLoading && <Label color='red' title={offlineTitle} text={t('offline')} />}
-              {isNsfw && <Label color='red' title={t('nsfw')} text={t('nsfw')} />}
               {tags && tags.length > 0 && (
                 <span className={styles.tags}>
                   {tags.map((tag, index) => (

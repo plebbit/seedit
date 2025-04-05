@@ -116,7 +116,7 @@ const TagFilterDropdown = () => {
         {tags.map((tag, index) => (
           <div key={index} className={styles.dropdownItem} onClick={(e) => handleToggleTag(e, tag.setter, tag.isHidden)} style={{ cursor: 'pointer' }}>
             <span className={styles.dropdownItemText}>
-              {tag.isHidden ? 'show' : 'hide'} "{tag.name}"
+              {tag.isHidden ? 'show' : 'hide'} <i>{tag.name}</i>
             </span>
           </div>
         ))}
@@ -240,15 +240,17 @@ const TimeFilterDropdown = () => {
 };
 
 const TopBar = () => {
-  const subplebbitAddresses = useDefaultSubplebbitAddresses();
   const { t } = useTranslation();
   const location = useLocation();
   const params = useParams();
+
   const isinAllView = isAllView(location.pathname);
   const isInHomeView = isHomeView(location.pathname);
   const isInModView = isModView(location.pathname);
   const homeButtonClass = isInHomeView ? styles.selected : styles.choice;
+
   const { hideDefaultCommunities } = useContentOptionsStore();
+  const subplebbitAddresses = useDefaultSubplebbitAddresses();
   const { accountSubplebbits } = useAccountSubplebbits();
   const accountSubplebbitAddresses = Object.keys(accountSubplebbits);
 

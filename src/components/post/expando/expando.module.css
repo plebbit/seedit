@@ -26,7 +26,6 @@
   font-weight: 400;
   color: var(--text-markdown);
   max-width: 60em;
-  word-wrap: break-word;
   font-size: 14px;
   line-height: 20px;
 }
@@ -44,22 +43,21 @@
 }
 
 .mediaPreview {
-  display: inline-block;
   position: relative;
-  max-width: 524px;
   margin-bottom: 5px;
   box-sizing: border-box;
 }
 
 .mediaPreview img {
-  max-width: 100%;
-  height: auto;
+  /* TODO: max width should be dynamically calculated based on file dimensions from API */
+  max-width: 600px;
   background-color: var(--background-thumbnail);
   object-fit: contain;
 }
 
 .mediaPreview video {
-  max-width: 100%;
+  /* TODO: max width should be dynamically calculated based on file dimensions from API */
+  max-width: 700px;
   max-height: 50vh;
   background-color: var(--background-thumbnail);
   object-fit: contain;

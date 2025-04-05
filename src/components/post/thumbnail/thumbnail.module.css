@@ -66,6 +66,10 @@
   background-image: var(--thumbnail-icon-link);
 }
 
+.imageIcon {
+  background-image: var(--thumbnail-icon-image);
+}
+
 .spoilerIcon {
   background-image: var(--thumbnail-icon-spoiler);
 }

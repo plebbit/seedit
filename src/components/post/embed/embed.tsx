@@ -7,6 +7,9 @@ interface EmbedProps {
 const Embed = ({ url }: EmbedProps) => {
   const parsedUrl = new URL(url);
 
+  if (parsedUrl.pathname.toLowerCase().endsWith('.pdf')) {
+    return <PdfEmbed parsedUrl={parsedUrl} />;
+  }
   if (youtubeHosts.has(parsedUrl.host) || (parsedUrl.host.startsWith('yt.') && parsedUrl.searchParams.has('v'))) {
     return <YoutubeEmbed parsedUrl={parsedUrl} />;
   }
@@ -330,12 +333,20 @@ const canEmbedHosts = new Set<string>([
 ]);
 
 export const canEmbed = (parsedUrl: URL): boolean => {
+  if (parsedUrl.pathname.toLowerCase().endsWith('.pdf')) {
+    return true;
+  }
+
   if (redditHosts.has(parsedUrl.host)) {
     // Reddit posts are not embeddable if the URL does not include '/comments/'
     return parsedUrl.pathname.includes('/comments/');
   }
 
   return canEmbedHosts.has(parsedUrl.host) || (parsedUrl.host.startsWith('yt.') && parsedUrl.searchParams.has('v'));
+};
+
+const PdfEmbed = ({ parsedUrl }: EmbedComponentProps) => {
+  return <iframe className={styles.pdfEmbed} height='100%' width='100%' referrerPolicy='origin' allowFullScreen title={parsedUrl.href} src={parsedUrl.href} />;
 };
 
 export default Embed;

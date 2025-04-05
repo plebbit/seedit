@@ -386,5 +386,8 @@
   "tagged_as_adult": "\"ایڈلٹ\" کے طور پر ٹیگ کیا گیا",
   "tagged_as_gore": "\"گور\" کے طور پر ٹیگ کیا گیا",
   "tagged_as_anti": "\"اینٹی\" کے طور پر ٹیگ کیا گیا",
-  "tagged_as_vulgar": "\"vulgar\" کے طور پر ٹیگ کیا گیا"
+  "tagged_as_vulgar": "\"vulgar\" کے طور پر ٹیگ کیا گیا",
+  "drop_here_or": "یہاں چھوڑیں یا",
+  "upload_button_warning": "یہ فیچر صرف Seedit Android ایپ یا ڈیسک ٹاپ ایپ (Windows، Mac یا Linux) ورژنز پر دستیاب ہے۔ یہ براؤزرز میں استعمال نہیں کیا جا سکتا۔\n\nکیا آپ GitHub پر ڈاؤن لوڈ لنکس کے صفحے پر جانا چاہتے ہیں؟",
+  "create_community_warning": "یہ خصوصیت صرف Seedit ڈیسک ٹاپ ایپ (Windows، Mac، یا Linux) ورژن پر دستیاب ہے۔\n\nGitHub پر ڈاؤن لوڈ لنکس صفحہ پر جائیں؟"
 }

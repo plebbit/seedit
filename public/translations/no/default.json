@@ -386,5 +386,8 @@
   "tagged_as_adult": "merket som \"voksen\"",
   "tagged_as_gore": "merket som \"gore\"",
   "tagged_as_anti": "merket som \"anti\"",
-  "tagged_as_vulgar": "merket som \"vulgar\""
+  "tagged_as_vulgar": "merket som \"vulgar\"",
+  "drop_here_or": "Slipp her eller",
+  "upload_button_warning": "Denne funksjonen er kun tilgjengelig på Seedit Android-appen eller desktop-appen (Windows, Mac eller Linux). Den kan ikke brukes i nettlesere.\n\nVil du gå til nedlastingslenkesiden på GitHub?",
+  "create_community_warning": "Denne funksjonen er kun tilgjengelig på Seedit desktop-appen (Windows, Mac eller Linux) versjonen.\n\nGå til nedlastingslenkesiden på GitHub?"
 }

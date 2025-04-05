@@ -13,7 +13,7 @@ export function setupFileUploaderPlugin(mainWindow: Electron.BrowserWindow) {
       // Open file dialog
       const result = await dialog.showOpenDialog(mainWindow, {
         properties: ['openFile'],
-        filters: [{ name: 'Images & Videos', extensions: ['jpg', 'jpeg', 'png', 'gif', 'mp4', 'webm'] }],
+        filters: [{ name: 'Images, Videos & PDFs', extensions: ['jpg', 'jpeg', 'png', 'gif', 'mp4', 'webm', 'pdf'] }],
       });
 
       if (result.canceled || result.filePaths.length === 0) {
@@ -92,7 +92,7 @@ export function setupFileUploaderPlugin(mainWindow: Electron.BrowserWindow) {
       // Open file dialog
       const result = await dialog.showOpenDialog(mainWindow, {
         properties: ['openFile'],
-        filters: [{ name: 'Images & Videos', extensions: ['jpg', 'jpeg', 'png', 'gif', 'mp4', 'webm'] }],
+        filters: [{ name: 'Images, Videos & PDFs', extensions: ['jpg', 'jpeg', 'png', 'gif', 'mp4', 'webm', 'pdf'] }],
       });
 
       if (result.canceled || result.filePaths.length === 0) {
@@ -114,6 +114,7 @@ export function setupFileUploaderPlugin(mainWindow: Electron.BrowserWindow) {
       else if (ext === '.gif') mimeType = 'image/gif';
       else if (ext === '.mp4') mimeType = 'video/mp4';
       else if (ext === '.webm') mimeType = 'video/webm';
+      else if (ext === '.pdf') mimeType = 'application/pdf';
 
       return {
         data: base64Data,

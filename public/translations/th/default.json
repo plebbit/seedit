@@ -386,5 +386,8 @@
   "tagged_as_adult": "ถูกแท็กเป็น \"ผู้ใหญ่\"",
   "tagged_as_gore": "แท็กged เป็น \"gore\"",
   "tagged_as_anti": "แท็กเป็น \"anti\"",
-  "tagged_as_vulgar": "แท็กเป็น \"vulgar\""
+  "tagged_as_vulgar": "แท็กเป็น \"vulgar\"",
+  "drop_here_or": "วางที่นี่หรือ",
+  "upload_button_warning": "ฟีเจอร์นี้สามารถใช้ได้เฉพาะในแอป Seedit Android หรือแอปเดสก์ท็อป (Windows, Mac หรือ Linux) เท่านั้น ไม่สามารถใช้ในเบราว์เซอร์ได้\n\nไปที่หน้าลิงก์ดาวน์โหลดบน GitHub?",
+  "create_community_warning": "คุณสมบัตินี้สามารถใช้ได้เฉพาะในแอปเดสก์ท็อป Seedit (Windows, Mac หรือ Linux) เท่านั้น\n\nไปที่หน้าลิงก์ดาวน์โหลดบน GitHub?"
 }

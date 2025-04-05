@@ -92,6 +92,12 @@
   min-height: 112px;
 }
 
+@media (max-width: 640px) {
+  .contentPreview {
+    min-height: 104px;
+  }
+}
+
 .contentPreviewMarkdown {
   font-size: 14px;
   word-wrap: break-word;
@@ -354,4 +360,24 @@
 
 .uploadBox label:hover {
   background-color: var(--button-background-color-hover);
+}
+
+.contentActions {
+  min-height: 18px;
+}
+
+.previewButton {
+  cursor: pointer;
+  padding: 2px 6px 3px;
+}
+
+.formattingHelpButton {
+  font-size: 11px;
+  color: var(--link-primary);
+  cursor: pointer;
+  margin-left: 10px;
+  text-transform: lowercase;
+  float: right;
+  line-height: 18px;
+  padding-top: 2px;
 }

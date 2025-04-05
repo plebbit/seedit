@@ -386,5 +386,8 @@
   "tagged_as_adult": "\"yetişkin\" olarak etiketlendi",
   "tagged_as_gore": "\"gore\" olarak etiketlendi",
   "tagged_as_anti": "\"anti\" olarak etiketlendi",
-  "tagged_as_vulgar": "\"vulgar\" olarak etiketlendi"
+  "tagged_as_vulgar": "\"vulgar\" olarak etiketlendi",
+  "drop_here_or": "Burası veya bırak",
+  "upload_button_warning": "Bu özellik yalnızca Seedit Android uygulamasında veya masaüstü uygulamasında (Windows, Mac veya Linux) kullanılabilir. Tarayıcılarda kullanılamaz.\n\nGitHub'daki indirme bağlantıları sayfasına gitmek ister misiniz?",
+  "create_community_warning": "Bu özellik yalnızca Seedit masaüstü uygulamasında (Windows, Mac veya Linux) mevcuttur.\n\nGitHub'daki indirme bağlantıları sayfasına gidin?"
 }

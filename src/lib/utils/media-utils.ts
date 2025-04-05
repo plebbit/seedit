@@ -21,7 +21,8 @@ export const getHasThumbnail = (commentMediaInfo: CommentMediaInfo | undefined, 
       commentMediaInfo.type === 'video' ||
       commentMediaInfo.type === 'gif' ||
       (commentMediaInfo.type === 'webpage' && commentMediaInfo.thumbnail) ||
-      (commentMediaInfo.type === 'iframe' && iframeThumbnail))
+      (commentMediaInfo.type === 'iframe' && iframeThumbnail) ||
+      commentMediaInfo.type === 'pdf')
     ? true
     : false;
 };
@@ -63,24 +64,29 @@ export const getLinkMediaInfo = memoize(
     }
 
     try {
-      mime = extName(url.pathname.toLowerCase().replace('/', ''))[0]?.mime;
-      if (mime) {
-        if (mime.startsWith('image')) {
-          type = mime === 'image/gif' ? 'gif' : 'image';
-        } else if (mime.startsWith('video')) {
-          type = 'video';
-        } else if (mime.startsWith('audio')) {
-          type = 'audio';
+      if (url.pathname.toLowerCase().endsWith('.pdf')) {
+        type = 'pdf';
+      } else {
+        mime = extName(url.pathname.toLowerCase().replace('/', ''))[0]?.mime;
+        if (mime) {
+          if (mime.startsWith('image')) {
+            type = mime === 'image/gif' ? 'gif' : 'image';
+          } else if (mime.startsWith('video')) {
+            type = 'video';
+          } else if (mime.startsWith('audio')) {
+            type = 'audio';
+          }
         }
-      }
 
-      if (!url.pathname.includes('.')) {
-        type = 'webpage';
-      }
-
-      if (canEmbed(url) || url.host.startsWith('yt.')) {
-        type = 'iframe';
-        patternThumbnailUrl = getPatternThumbnailUrl(url);
+        if (type === 'webpage' && !url.pathname.includes('.')) {
+          if (canEmbed(url) || url.host.startsWith('yt.')) {
+            type = 'iframe';
+            patternThumbnailUrl = getPatternThumbnailUrl(url);
+          }
+        } else if (type !== 'pdf' && (canEmbed(url) || url.host.startsWith('yt.'))) {
+          type = 'iframe';
+          patternThumbnailUrl = getPatternThumbnailUrl(url);
+        }
       }
     } catch (e) {
       console.error(e);

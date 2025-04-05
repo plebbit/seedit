@@ -65,6 +65,8 @@
   --red-nsfw: rgb(255, 55, 89);
   --removed-reply-backgrouhd-color: rgb(27, 30, 32);
   --reply-child-border-left: 1px dotted rgb(57, 57, 66);
+  --spoiler-tooltip-text: #bfbfbf;
+  --spoiler-tooltip-border-color: #3e3e3e;
   --submitter-color: rgb(67, 166, 255);
   --text: #bfbfbf;
   --text-button: url("/assets/buttons/text-button-dark.png");
@@ -77,8 +79,7 @@
   --thumbnail-icon-nsfw: url('/assets/thumbnail-icon-nsfw-dark.png');
   --thumbnail-icon-spoiler: url('/assets/thumbnail-icon-spoiler-dark.png');
   --thumbnail-icon-text: url('/assets/thumbnail-icon-text-dark.png');
-  --tooltip-text: #bfbfbf;
-  --tooltip-border-color: #3e3e3e;
+  --thumbnail-icon-image: url('/assets/thumbnail-icon-image-dark.png');
   --upload-box-background: rgb(15, 15, 15);
   --upload-box-border: 2px dashed #404649;
   --upload-box-text-color: #d7d3cd;
@@ -159,6 +160,8 @@
   --red-nsfw: #d10023;
   --removed-reply-backgrouhd-color: #f0f0f0;
   --reply-child-border-left: 1px dotted #DDF;
+  --spoiler-tooltip-text: #333;
+  --spoiler-tooltip-border-color: gray;
   --submitter-color: #0055df;
   --text: black;
   --text-button: url("/assets/buttons/text-button.png");
@@ -171,8 +174,7 @@
   --thumbnail-icon-nsfw: url('/assets/thumbnail-icon-nsfw.png');
   --thumbnail-icon-spoiler: url('/assets/thumbnail-icon-spoiler.png');
   --thumbnail-icon-text: url('/assets/thumbnail-icon-text.png');
-  --tooltip-text: #333;
-  --tooltip-border-color: gray;
+  --thumbnail-icon-image: url('/assets/thumbnail-icon-image.png');
   --upload-box-background: #fafafa;
   --upload-box-border: 2px dashed #bbb;
   --upload-box-text-color: #ddd;

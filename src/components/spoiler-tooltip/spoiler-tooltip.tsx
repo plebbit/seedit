@@ -1,14 +1,14 @@
 import { useState, ReactNode } from 'react';
 import { useFloating, autoUpdate, offset, shift, useHover, useFocus, useDismiss, useRole, useInteractions, FloatingPortal } from '@floating-ui/react';
-import styles from './tooltip.module.css';
+import styles from './spoiler-tooltip.module.css';
 
-interface TooltipProps {
+interface SpoilerTooltipProps {
   content: string;
   children: ReactNode;
   showTooltip?: boolean;
 }
 
-const Tooltip = ({ content, children, showTooltip = true }: TooltipProps) => {
+const SpoilerTooltip = ({ content, children, showTooltip = true }: SpoilerTooltipProps) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const { refs, floatingStyles, context } = useFloating({
@@ -44,4 +44,4 @@ const Tooltip = ({ content, children, showTooltip = true }: TooltipProps) => {
   );
 };
 
-export default Tooltip;
+export default SpoilerTooltip;

@@ -386,5 +386,8 @@
   "tagged_as_adult": "märkt som \"vuxen\"",
   "tagged_as_gore": "märkt som \"gore\"",
   "tagged_as_anti": "märkt som \"anti\"",
-  "tagged_as_vulgar": "märkt som \"vulgar\""
+  "tagged_as_vulgar": "märkt som \"vulgar\"",
+  "drop_here_or": "Dra hit eller",
+  "upload_button_warning": "Denna funktion är endast tillgänglig i Seedit Android-app eller desktop-app (Windows, Mac eller Linux). Den kan inte användas i webbläsare.\n\nVill du gå till nedladdningslänkarna på GitHub?",
+  "create_community_warning": "Denna funktion är endast tillgänglig i Seedit desktop-appen (Windows, Mac eller Linux) version.\n\nGå till nedladdningslänkar på GitHub-sidan?"
 }

@@ -87,6 +87,18 @@ const Expando = ({
         <Embed url={commentMediaInfo.url} />
       </Suspense>
     );
+  } else if (commentMediaInfo?.type === 'pdf' && expanded) {
+    mediaComponent = (
+      <Suspense
+        fallback={
+          <span className={styles.suspenseFallback}>
+            <LoadingEllipsis string={t('loading_iframe')} />
+          </span>
+        }
+      >
+        <Embed url={commentMediaInfo.url} />
+      </Suspense>
+    );
   }
 
   const pageSubplebbitAddress = useParams().subplebbitAddress;

@@ -48,7 +48,6 @@ import useNotFoundStore from '../../stores/use-not-found-store';
 import { useIsBroadlyNsfwSubplebbit } from '../../hooks/use-is-broadly-nsfw-subplebbit';
 import useTheme from '../../hooks/use-theme';
 import useWindowWidth from '../../hooks/use-window-width';
-import SubscribeButton from '../subscribe-button';
 import styles from './header.module.css';
 
 const AboutButton = () => {
@@ -445,6 +444,15 @@ const Header = () => {
   const logoSrc = logoIsAvatar ? suggested?.avatarUrl : 'assets/logo/seedit.png';
   const logoLink = '/';
 
+  const mobileSubmitButtonRoute =
+    isInHomeView || isInHomeAboutView || isInAllView || isInModView || isInDomainView
+      ? '/submit'
+      : isInPendingPostView
+      ? `/p/${accountComment?.subplebbitAddress}/submit`
+      : subplebbitAddress
+      ? `/p/${subplebbitAddress}/submit`
+      : '/submit';
+
   return (
     <div className={styles.header}>
       <div
@@ -476,11 +484,6 @@ const Header = () => {
             <HeaderTitle title={title} shortAddress={shortAddress} />
           </div>
         )}
-        {isInSubplebbitView && !isInSubplebbitSubmitView && !(isBroadlyNsfwSubplebbit && !hasUnhiddenAnyNsfwCommunity) && (
-          <span className={styles.joinButton}>
-            <SubscribeButton address={params.subplebbitAddress} />
-          </span>
-        )}
         {!isMobile && !(isBroadlyNsfwSubplebbit && !hasUnhiddenAnyNsfwCommunity) && (
           <ul className={styles.tabMenu}>
             <HeaderTabs />
@@ -494,7 +497,7 @@ const Header = () => {
           {(isInHomeView || isInHomeAboutView || isInSubplebbitView || isInHomeAboutView || isInPostPageView) && <AboutButton />}
           {!isInSubmitView && !isInSettingsView && (
             <li>
-              <Link to={'/submit'} className={styles.submitButton}>
+              <Link to={mobileSubmitButtonRoute} className={styles.submitButton}>
                 {t('submit')}
               </Link>
             </li>

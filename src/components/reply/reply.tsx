@@ -161,6 +161,7 @@ const ReplyMedia = ({ commentMediaInfo, content, expanded, hasThumbnail, link, l
           linkHeight={linkHeight}
           linkWidth={linkWidth}
           toggleExpanded={toggleExpanded}
+          isPdf={commentMediaInfo?.type === 'pdf'}
         />
       )}
       {type === 'iframe' ||

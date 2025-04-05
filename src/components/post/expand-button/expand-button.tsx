@@ -17,6 +17,10 @@ const ExpandButton = ({ commentMediaInfo, content, expanded, hasThumbnail, link,
     initialButtonType = 'textButton';
   }
 
+  if (commentMediaInfo?.type === 'pdf') {
+    initialButtonType = 'playButton';
+  }
+
   const buttonType = expanded ? 'closeButton' : initialButtonType;
 
   return (

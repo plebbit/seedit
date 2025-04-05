@@ -114,7 +114,8 @@
 }
 
 .loadingString {
-  padding: 5px;
+  display: block;
+  padding: 10px;
   text-transform: lowercase;
 }
 
@@ -123,7 +124,6 @@
   text-overflow: ellipsis;
   color: var(--text-info);
   font-size: 12px;
-  padding-left: 5px;
   padding-bottom: 40px;
   display: inline-block;
 }
