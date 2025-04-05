@@ -51,6 +51,33 @@ const CommentEditForm = ({ commentCid, hideCommentEditForm }: CommentEditFormPro
   const [publishCommentEditOptions, setPublishCommentEditOptions] = useState(defaultPublishOptions);
   const { publishCommentEdit } = usePublishCommentEdit(publishCommentEditOptions);
 
+  // the user might manually type "edit: <reason>" in the content field
+  // we want to extract the reason and remove it from the content
+  const parseEditContent = (content: string) => {
+    const lines = content.trim().split('\n');
+    const lastLine = lines[lines.length - 1];
+
+    if (lastLine?.toLowerCase().startsWith('edit:')) {
+      const newContent = lines.slice(0, -1).join('\n').trim();
+      return {
+        content: newContent,
+        reason: lastLine.substring(5).trim(), // remove "edit:" prefix
+      };
+    }
+
+    return { content, reason: publishCommentEditOptions.reason };
+  };
+
+  const [shouldPublish, setShouldPublish] = useState(false);
+
+  useEffect(() => {
+    if (shouldPublish) {
+      publishCommentEdit();
+      hideCommentEditForm && hideCommentEditForm();
+      setShouldPublish(false);
+    }
+  }, [shouldPublish, publishCommentEdit, hideCommentEditForm]);
+
   useEffect(() => {
     if (textRef.current) {
       textRef.current.focus();
@@ -125,8 +152,13 @@ const CommentEditForm = ({ commentCid, hideCommentEditForm }: CommentEditFormPro
         <button
           className={styles.save}
           onClick={() => {
-            publishCommentEdit();
-            hideCommentEditForm && hideCommentEditForm();
+            const { content, reason } = parseEditContent(publishCommentEditOptions.content);
+            setPublishCommentEditOptions((state) => ({
+              ...state,
+              content,
+              reason,
+            }));
+            setShouldPublish(true);
           }}
         >
           {t('save')}
