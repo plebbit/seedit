@@ -138,7 +138,6 @@ div[data-viewport-type="window"] {
   color: var(--red);
   font-size: 13px;
   font-family: verdana, Arial, Helvetica, sans-serif;
-  margin-top: -2px;
   text-transform: lowercase;
 }
 
