@@ -5,7 +5,7 @@ import ReactMarkdown, { Components } from 'react-markdown';
 import rehypeSanitize, { defaultSchema } from 'rehype-sanitize';
 import styles from './markdown.module.css';
 import rehypeRaw from 'rehype-raw';
-import Tooltip from '../tooltip';
+import SpoilerTooltip from '../spoiler-tooltip';
 
 interface MarkdownProps {
   content: string;
@@ -39,7 +39,7 @@ const SpoilerText = ({ children }: { children: React.ReactNode }) => {
   const [revealed, setRevealed] = useState(false);
 
   return (
-    <Tooltip
+    <SpoilerTooltip
       children={
         <span className={revealed ? 'spoilerTextRevealed' : 'spoilerText'} onClick={() => setRevealed(true)}>
           {children}
