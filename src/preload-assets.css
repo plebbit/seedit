@@ -48,3 +48,11 @@
 .asset-preloader-all-feed-subscribe-hover {
   background-image: url('/assets/buttons/all_feed_subscribe_hover.png');
 }
+
+.asset-preloader-arrow-upvoted {
+  background-image: url('/assets/buttons/arrow-upvoted.png');
+}
+
+.asset-preloader-arrow-downvoted {
+  background-image: url('/assets/buttons/arrow-downvoted.png');
+}

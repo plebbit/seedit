@@ -68,6 +68,8 @@ const App = () => {
         <div className='asset-preloader-button-large-nub-hover'></div>
         <div className='asset-preloader-close-button-hover'></div>
         <div className='asset-preloader-all-feed-subscribe-hover'></div>
+        <div className='asset-preloader-arrow-upvoted'></div>
+        <div className='asset-preloader-arrow-downvoted'></div>
       </div>
 
       <Routes>
