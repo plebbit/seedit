@@ -1,6 +1,7 @@
 .audioEmbed {
   height: 240px !important;
-  width: 700px !important;
+  width: 100% !important;
+  max-width: 700px !important;
 }
 
 @media (max-width: 640px) {
@@ -12,7 +13,8 @@
 
 .instagramEmbed {
   height: 420px !important;
-  width: 360px !important;
+  width: 100% !important;
+  max-width: 360px !important;
 }
 
 @media (max-width: 640px) {
@@ -23,8 +25,9 @@
 }
 
 .redditEmbed {
-  width: 500px !important;
+  width: 100% !important;
   height: 520px !important;
+  max-width: 500px !important;
 }
 
 @media (max-width: 640px) {
@@ -35,8 +38,9 @@
 }
 
 .tiktokEmbed {
-  width: 400px !important;
+  width: 100% !important;
   height: 780px !important;
+  max-width: 400px !important;
 }
 
 @media (max-width: 640px) {
@@ -48,7 +52,8 @@
 
 .videoEmbed {
   height: 450px !important;
-  width: 800px !important;
+  width: 100% !important;
+  max-width: 800px !important;
 }
 
 @media (max-width: 640px) {
@@ -59,24 +64,28 @@
 }
 
 .xEmbed {
-  height: 580px !important;
+  height: 300px !important;
+  width: 100% !important;
+  max-width: 568px !important;
 }
 
-@media (max-width: 640px) {
+/* @media (max-width: 640px) {
   .xEmbed {
     width: 100% !important;
     height: 50vh !important;
   }
-}
+} */
 
 .soundcloudEmbed {
   height: 166px !important;
-  width: 700px !important;
+  width: 100% !important;
+  max-width: 700px !important;
 }
 
 .soundcloudSetsEmbed {
   height: 500px !important;
-  width: 700px !important;
+  width: 100% !important;
+  max-width: 700px !important;
 }
 
 @media (max-width: 640px) {
