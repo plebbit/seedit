@@ -57,6 +57,19 @@ const App = () => {
 
   return (
     <div className={`${styles.app} ${theme}`}>
+      <div className='asset-preloader'>
+        <div className='asset-preloader-delete-button-hover'></div>
+        <div className='asset-preloader-close-x-button-large-hover'></div>
+        <div className='asset-preloader-play-button-hover'></div>
+        <div className='asset-preloader-text-button-hover'></div>
+        <div className='asset-preloader-button-large-hover-dark'></div>
+        <div className='asset-preloader-button-large-hover'></div>
+        <div className='asset-preloader-button-large-nub-hover-dark'></div>
+        <div className='asset-preloader-button-large-nub-hover'></div>
+        <div className='asset-preloader-close-button-hover'></div>
+        <div className='asset-preloader-all-feed-subscribe-hover'></div>
+      </div>
+
       <Routes>
         <Route element={globalLayout}>
           <Route element={pagesLayout}>

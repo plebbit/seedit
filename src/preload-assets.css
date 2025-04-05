@@ -1,0 +1,50 @@
+/* Preload all hover state images */
+.asset-preloader {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+  z-index: -9999;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.asset-preloader-delete-button-hover {
+  background-image: url('/assets/buttons/delete-button-hover.png');
+}
+
+.asset-preloader-close-x-button-large-hover {
+  background-image: url('/assets/buttons/close-x-button-large-hover.png');
+}
+
+.asset-preloader-play-button-hover {
+  background-image: url('/assets/buttons/play-button-hover.png');
+}
+
+.asset-preloader-text-button-hover {
+  background-image: url('/assets/buttons/text-button-hover.png');
+}
+
+.asset-preloader-button-large-hover-dark {
+  background-image: url('/assets/buttons/button-large-hover-dark.png');
+}
+
+.asset-preloader-button-large-hover {
+  background-image: url('/assets/buttons/button-large-hover.png');
+}
+
+.asset-preloader-button-large-nub-hover-dark {
+  background-image: url('/assets/buttons/button-large-nub-hover-dark.png');
+}
+
+.asset-preloader-button-large-nub-hover {
+  background-image: url('/assets/buttons/button-large-nub-hover.png');
+}
+
+.asset-preloader-close-button-hover {
+  background-image: url('/assets/buttons/close-button-hover.png');
+}
+
+.asset-preloader-all-feed-subscribe-hover {
+  background-image: url('/assets/buttons/all_feed_subscribe_hover.png');
+}
