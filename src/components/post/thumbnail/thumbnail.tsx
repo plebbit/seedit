@@ -20,6 +20,7 @@ interface ThumbnailProps {
   linkWidth?: number;
   subplebbitAddress?: string;
   toggleExpanded?: () => void;
+  isPdf?: boolean;
 }
 
 const Thumbnail = ({
@@ -36,6 +37,7 @@ const Thumbnail = ({
   linkWidth,
   subplebbitAddress,
   toggleExpanded,
+  isPdf = false,
 }: ThumbnailProps) => {
   const [isNotFound, setIsNotFound] = useState(false);
   const iframeThumbnail = commentMediaInfo?.patternThumbnailUrl || commentMediaInfo?.thumbnail;
@@ -57,7 +59,7 @@ const Thumbnail = ({
     hasLinkDimensions = false;
   }
 
-  if (isText || isLink || isSpoiler || (isNsfw && !isNsfwSubplebbit) || isNotFound) {
+  if (isText || isLink || isPdf || isSpoiler || (isNsfw && !isNsfwSubplebbit) || isNotFound) {
     displayWidth = '50px';
     displayHeight = '50px';
     hasLinkDimensions = true;
@@ -110,6 +112,10 @@ const Thumbnail = ({
 
   if (isLink) {
     mediaComponent = <span className={`${styles.iconThumbnail} ${styles.linkIcon}`} />;
+  }
+
+  if (isPdf) {
+    mediaComponent = <span className={`${styles.iconThumbnail} ${styles.imageIcon}`} />;
   }
 
   if (isSpoiler) {

@@ -90,3 +90,15 @@
     height: 500px !important;
   }
 }
+
+.pdfEmbed {
+  height: 600px !important;
+  width: 100% !important;
+  max-width: 800px !important;
+}
+
+@media (max-width: 640px) {
+  .pdfEmbed {
+    max-height: 450px !important;
+  }
+}

@@ -79,6 +79,7 @@
   --thumbnail-icon-nsfw: url('/assets/thumbnail-icon-nsfw-dark.png');
   --thumbnail-icon-spoiler: url('/assets/thumbnail-icon-spoiler-dark.png');
   --thumbnail-icon-text: url('/assets/thumbnail-icon-text-dark.png');
+  --thumbnail-icon-image: url('/assets/thumbnail-icon-image-dark.png');
   --upload-box-background: rgb(15, 15, 15);
   --upload-box-border: 2px dashed #404649;
   --upload-box-text-color: #d7d3cd;
@@ -173,6 +174,7 @@
   --thumbnail-icon-nsfw: url('/assets/thumbnail-icon-nsfw.png');
   --thumbnail-icon-spoiler: url('/assets/thumbnail-icon-spoiler.png');
   --thumbnail-icon-text: url('/assets/thumbnail-icon-text.png');
+  --thumbnail-icon-image: url('/assets/thumbnail-icon-image.png');
   --upload-box-background: #fafafa;
   --upload-box-border: 2px dashed #bbb;
   --upload-box-text-color: #ddd;

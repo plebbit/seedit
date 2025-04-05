@@ -222,6 +222,7 @@ const Post = ({ index, post = {} }: PostProps) => {
                 linkHeight={linkHeight}
                 linkWidth={linkWidth}
                 subplebbitAddress={subplebbitAddress}
+                isPdf={commentMediaInfo?.type === 'pdf'}
               />
             </div>
             <div className={styles.entry}>

@@ -40,6 +40,8 @@ const UrlField = () => {
     mediaComponent = <audio src={url} controls />;
   } else if (mediaType === 'iframe') {
     mediaComponent = <Embed url={url || ''} />;
+  } else if (mediaType === 'pdf') {
+    mediaComponent = <Embed url={url || ''} />;
   }
 
   return (
@@ -154,6 +156,7 @@ const UploadMediaForm = () => {
       'image/*': [],
       'video/*': [],
       'audio/*': [],
+      'application/pdf': [],
     },
   });
 
@@ -202,7 +205,7 @@ const UploadMediaForm = () => {
 
   return (
     <div className={styles.box}>
-      <span className={styles.boxTitleOptional}>image/video/audio</span>
+      <span className={styles.boxTitleOptional}>image/video/audio/pdf</span>
       <div className={styles.boxContent}>
         {isUploading ? (
           <div className={styles.uploading}>

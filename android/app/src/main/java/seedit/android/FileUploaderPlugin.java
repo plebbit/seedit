@@ -40,7 +40,7 @@ public class FileUploaderPlugin extends Plugin {
         Log.d(TAG, "pickAndUploadMedia called");
         Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
         intent.setType("*/*");
-        String[] mimeTypes = {"image/jpeg", "image/png", "video/mp4", "video/webm"};
+        String[] mimeTypes = {"image/jpeg", "image/png", "video/mp4", "video/webm", "application/pdf"};
         intent.putExtra(Intent.EXTRA_MIME_TYPES, mimeTypes);
         startActivityForResult(call, intent, "pickFileResult");
     }
@@ -181,7 +181,7 @@ public class FileUploaderPlugin extends Plugin {
         Log.d(TAG, "pickMedia called");
         Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
         intent.setType("*/*");
-        String[] mimeTypes = {"image/jpeg", "image/png", "video/mp4", "video/webm"};
+        String[] mimeTypes = {"image/jpeg", "image/png", "video/mp4", "video/webm", "application/pdf"};
         intent.putExtra(Intent.EXTRA_MIME_TYPES, mimeTypes);
         startActivityForResult(call, intent, "pickMediaResult");
     }
