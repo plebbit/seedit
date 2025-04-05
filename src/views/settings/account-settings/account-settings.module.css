@@ -4,6 +4,7 @@
 
 .accountData textarea {
   box-shadow: var(--box-shadow-input);
+  font-family: monospace;
 }
 
 .accountButtons {
