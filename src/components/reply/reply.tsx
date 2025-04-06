@@ -212,8 +212,8 @@ type ParentLinkProps = {
 };
 
 const ParentLink = ({ postCid }: ParentLinkProps) => {
-  const parent = useSubplebbitsPagesStore((state) => state.comments[postCid as string]);
-  const { author, cid, content, title, subplebbitAddress } = parent || {};
+  const parentComment = useComment({ commentCid: postCid });
+  const { author, cid, content, title, subplebbitAddress } = parentComment || {};
   const { t } = useTranslation();
   const postTitle = (title?.length > 300 ? title?.slice(0, 300) + '...' : title) || (content?.length > 300 ? content?.slice(0, 300) + '...' : content);
 
@@ -223,7 +223,7 @@ const ParentLink = ({ postCid }: ParentLinkProps) => {
         {postTitle}{' '}
       </Link>
       {t('post_by')}{' '}
-      <Link to={`/u/${author?.shortAddress}/c/${cid}`} className={styles.parentAuthor}>
+      <Link to={`/u/${author?.address}/c/${cid}`} className={styles.parentAuthor}>
         u/{author?.shortAddress}{' '}
       </Link>
       {t('via')}{' '}
