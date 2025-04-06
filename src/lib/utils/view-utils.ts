@@ -109,10 +109,15 @@ export const isPostPageAboutView = (pathname: string, params: ParamsType): boole
 
 export const isPostContextView = (pathname: string, params: ParamsType, search: string): boolean => {
   if (!params.subplebbitAddress || !params.commentCid) return false;
-  const expectedPathname = `/p/${params.subplebbitAddress}/c/${params.commentCid}`;
-  if (pathname !== expectedPathname) return false;
+
+  const decodedPathname = decodeURIComponent(pathname);
+  const expectedPathBase = `/p/${params.subplebbitAddress}/c/${params.commentCid}`;
+
+  if (!decodedPathname.startsWith(expectedPathBase)) return false;
+
   const searchParams = new URLSearchParams(search);
   const context = searchParams.get('context');
+
   return context !== null && !isNaN(Number(context));
 };
 
