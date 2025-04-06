@@ -45,7 +45,7 @@
     "remark-gfm": "3.0.1",
     "remark-supersub": "1.0.0",
     "tcp-port-used": "1.0.2",
-    "typescript": "5.2.2",
+    "typescript": "5.1.6",
     "zustand": "4.4.3"
   },
   "scripts": {
@@ -90,8 +90,8 @@
     "@capacitor/core": "5.0.0",
     "@types/memoizee": "0.4.9",
     "@types/node-fetch": "2",
-    "@typescript-eslint/eslint-plugin": "8.26.0",
-    "@typescript-eslint/parser": "8.26.0",
+    "@typescript-eslint/eslint-plugin": "8.29.0",
+    "@typescript-eslint/parser": "8.29.0",
     "@vitejs/plugin-react": "4.3.4",
     "assert": "2.1.0",
     "babel-plugin-react-compiler": "19.0.0-beta-40c6c23-20250301",
