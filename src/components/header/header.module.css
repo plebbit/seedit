@@ -27,8 +27,8 @@
 }
 
 .logo {
-  max-height: 38px;
-  margin: 0 -1px -3px 1px;
+  max-height: 43px;
+  margin: 0 -5px -3px -5px;
   filter: var(--filter90);
 }
 

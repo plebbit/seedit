@@ -23,6 +23,7 @@
   display: block;
   margin: auto;
   border: 0;
+  max-width: 60vw;
 }
 
 @media (max-width: 640px) {
@@ -34,6 +35,6 @@
   }
 
   .content img {
-    width: 100%;
+    max-width: 100%;
   }
 }

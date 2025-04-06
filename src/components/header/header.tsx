@@ -441,7 +441,7 @@ const Header = () => {
   const isBroadlyNsfwSubplebbit = useIsBroadlyNsfwSubplebbit(subplebbitAddress || '');
 
   const logoIsAvatar = isInSubplebbitView && suggested?.avatarUrl && !(isBroadlyNsfwSubplebbit && !hasUnhiddenAnyNsfwCommunity);
-  const logoSrc = logoIsAvatar ? suggested?.avatarUrl : 'assets/logo/seedit.png';
+  const logoSrc = logoIsAvatar ? suggested?.avatarUrl : 'assets/sprout/sprout.png';
   const logoLink = '/';
 
   const mobileSubmitButtonRoute =
@@ -466,7 +466,7 @@ const Header = () => {
               <img className={`${logoIsAvatar ? styles.avatar : styles.logo}`} src={logoSrc} alt='' />
             )}
             {((!isInSubplebbitView && !isInProfileView && !isInAuthorView) || !logoIsAvatar) && (
-              <img src={`assets/logo/seedit-text-${theme === 'dark' ? 'dark' : 'light'}.svg`} className={styles.logoText} alt='' />
+              <img src={`assets/sprout/seedit-text-${theme === 'dark' ? 'dark' : 'light'}.svg`} className={styles.logoText} alt='' />
             )}
           </Link>
         </div>
