@@ -463,12 +463,6 @@ const SubmitPage = () => {
   const { link, title, subplebbitAddress, publishCommentOptions, setPublishPostStore, resetPublishPostStore } = usePublishPostStore();
 
   useEffect(() => {
-    return () => {
-      resetPublishPostStore();
-    };
-  }, [resetPublishPostStore]);
-
-  useEffect(() => {
     setPublishPostStore({ subplebbitAddress: params.subplebbitAddress || '' });
   }, [params.subplebbitAddress, setPublishPostStore]);
 
