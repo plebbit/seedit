@@ -361,7 +361,7 @@
   "you_are_owner": "أنت مالك هذا المجتمع",
   "looking_for_more_posts": "البحث عن المزيد من المشاركات",
   "loading_feed": "تحميل الخلاصة",
-  "loading_posts": "جاري تحميل المشاركات",
+  "downloading_posts": "تحميل المنشورات",
   "post_is_pending": "المنشور قيد الانتظار",
   "post_has_failed": "فشل النشر",
   "choose_file": "اختر ملف",

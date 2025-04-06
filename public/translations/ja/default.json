@@ -361,7 +361,7 @@
   "you_are_owner": "あなたはこのコミュニティのオーナーです",
   "looking_for_more_posts": "さらに投稿を探しています",
   "loading_feed": "フィードを読み込んでいます",
-  "loading_posts": "投稿を読み込んでいます",
+  "downloading_posts": "投稿をダウンロード中",
   "post_is_pending": "投稿は保留中です",
   "post_has_failed": "投稿に失敗しました",
   "choose_file": "ファイルを選択",

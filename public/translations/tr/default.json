@@ -361,7 +361,7 @@
   "you_are_owner": "Bu topluluğun sahibi sizsiniz",
   "looking_for_more_posts": "Daha fazla gönderi arıyorum",
   "loading_feed": "Yükleniyor besleme",
-  "loading_posts": "Gönderiler yükleniyor",
+  "downloading_posts": "Gönderiler indiriliyor",
   "post_is_pending": "Gönderi beklemede",
   "post_has_failed": "Gönderi başarısız oldu",
   "choose_file": "Dosya seç",

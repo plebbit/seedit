@@ -361,7 +361,7 @@
   "you_are_owner": "Vous êtes le propriétaire de cette communauté",
   "looking_for_more_posts": "Recherche de plus de publications",
   "loading_feed": "Chargement du flux",
-  "loading_posts": "Chargement des publications",
+  "downloading_posts": "Téléchargement des publications",
   "post_is_pending": "Le post est en attente",
   "post_has_failed": "Le post a échoué",
   "choose_file": "Choisir un fichier",

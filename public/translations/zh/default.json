@@ -361,7 +361,7 @@
   "you_are_owner": "您是这个社区的拥有者",
   "looking_for_more_posts": "寻找更多帖子",
   "loading_feed": "加载中...",
-  "loading_posts": "加载帖子",
+  "downloading_posts": "正在下载帖子",
   "post_is_pending": "帖子待处理中",
   "post_has_failed": "发布失败",
   "choose_file": "选择文件",
