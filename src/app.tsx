@@ -58,6 +58,8 @@ const App = () => {
   return (
     <div className={`${styles.app} ${theme}`}>
       <div className='asset-preloader'>
+        <div className='asset-preloader-seedit-text-light'></div>
+        <div className='asset-preloader-seedit-text-dark'></div>
         <div className='asset-preloader-delete-button-hover'></div>
         <div className='asset-preloader-close-x-button-large-hover'></div>
         <div className='asset-preloader-play-button-hover'></div>

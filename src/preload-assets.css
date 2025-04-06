@@ -9,6 +9,14 @@
   pointer-events: none;
 }
 
+.asset-preloader-seedit-text-light {
+  background-image: url('/assets/logo/seedit-text-light.svg');
+}
+
+.asset-preloader-seedit-text-dark {
+  background-image: url('/assets/logo/seedit-text-dark.svg');
+}
+
 .asset-preloader-delete-button-hover {
   background-image: url('/assets/buttons/delete-button-hover.png');
 }
