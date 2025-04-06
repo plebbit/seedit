@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState, useMemo } from 'react';
-import { useParams, useSearchParams } from 'react-router-dom';
+import { useParams, useSearchParams, useNavigate, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { Virtuoso, VirtuosoHandle, StateSnapshot } from 'react-virtuoso';
 import { useFeed } from '@plebbit/plebbit-react-hooks';
@@ -11,6 +11,7 @@ import FeedFooter from '../../components/feed-footer';
 import LoadingEllipsis from '../../components/loading-ellipsis';
 import Post from '../../components/post';
 import Sidebar from '../../components/sidebar';
+import { sortTypes } from '../../constants/sort-types';
 import styles from '../home/home.module.css';
 
 const lastVirtuosoStates: { [key: string]: StateSnapshot } = {};
@@ -20,9 +21,24 @@ const All = () => {
   const params = useParams<{ sortType?: string; timeFilterName?: string }>();
   const [searchParams, setSearchParams] = useSearchParams();
   const searchQuery = searchParams.get('q') || '';
-  const sortType = params?.sortType || 'hot';
-  const { timeFilterName, timeFilterSeconds } = useTimeFilter();
-  const currentTimeFilterName = params.timeFilterName || timeFilterName || '1m';
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const sortType = params?.sortType && sortTypes.includes(params.sortType) ? params.sortType : sortTypes[0];
+
+  const { timeFilterName, timeFilterSeconds, sessionKey, timeFilterNames } = useTimeFilter();
+
+  useEffect(() => {
+    if (!params.timeFilterName && !searchQuery && sessionKey) {
+      const sessionPreference = sessionStorage.getItem(sessionKey);
+      if (sessionPreference && timeFilterNames.includes(sessionPreference)) {
+        const targetPath = `/p/all/${sortType}/${sessionPreference}${location.search}`;
+        navigate(targetPath, { replace: true });
+      }
+    }
+  }, [params.timeFilterName, searchQuery, sessionKey, sortType, navigate, location.search, location.pathname, timeFilterNames]);
+
+  const currentTimeFilterName = params.timeFilterName || timeFilterName || 'hot';
 
   const { isSearching } = useFeedFiltersStore();
   const [showNoResults, setShowNoResults] = useState(false);

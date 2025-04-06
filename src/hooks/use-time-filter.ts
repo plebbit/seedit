@@ -1,6 +1,6 @@
 import assert from 'assert';
-import { useLocation, useParams } from 'react-router-dom';
-import { isSubplebbitView } from '../lib/utils/view-utils';
+import { useLocation, useParams, Params } from 'react-router-dom';
+import { isSubplebbitView, isAllView, isModView, isHomeView, isDomainView } from '../lib/utils/view-utils';
 
 // the timestamp the last time the user visited
 const lastVisitTimestamp = localStorage.getItem('seeditLastVisitTimestamp');
@@ -66,46 +66,83 @@ function convertTimeStringToSeconds(timeString: string): number {
   }
 }
 
+const getSessionKeyForView = (pathname: string, params: Readonly<Params<string>>): string | null => {
+  if (isHomeView(pathname)) return 'sessionTimeFilter-home';
+  if (isAllView(pathname)) return 'sessionTimeFilter-all';
+  if (isModView(pathname)) return 'sessionTimeFilter-mod';
+  if (isDomainView(pathname)) return `sessionTimeFilter-domain-${params.domain}`;
+  if (isSubplebbitView(pathname, params)) return `sessionTimeFilter-subplebbit-${params.subplebbitAddress}`;
+  return null;
+};
+
+const getSessionTimeFilterPreference = (sessionKey: string | null): string | null => {
+  if (!sessionKey) return null;
+  try {
+    return sessionStorage.getItem(sessionKey);
+  } catch (e) {
+    console.error('Could not read from sessionStorage:', e);
+    return null;
+  }
+};
+
+export const setSessionTimeFilterPreference = (sessionKey: string | null, timeFilterName: string): void => {
+  if (!sessionKey) return;
+  try {
+    sessionStorage.setItem(sessionKey, timeFilterName);
+  } catch (e) {
+    console.error('Could not write to sessionStorage:', e);
+  }
+};
+
 const useTimeFilter = () => {
   const params = useParams();
   const location = useLocation();
   const isInSubplebbitView = isSubplebbitView(location.pathname, params);
   const isInDomainView = Boolean(params.domain);
+  const sessionKey = getSessionKeyForView(location.pathname, params);
 
   let timeFilterName = params.timeFilterName;
   if (!timeFilterName) {
-    if (isInSubplebbitView) {
-      timeFilterName = 'all';
-    } else if (isInDomainView) {
-      timeFilterName = '1y';
+    const sessionPreference = getSessionTimeFilterPreference(sessionKey);
+    if (sessionPreference && timeFilterNames.includes(sessionPreference)) {
+      // We don't set timeFilterName here directly,
+      // let the redirect logic in the component handle it.
+      // Just use it for calculating initial timeFilterSeconds if needed below.
     } else {
-      timeFilterName = lastVisitTimeFilterName;
+      if (isInSubplebbitView) {
+        timeFilterName = 'all';
+      } else if (isInDomainView) {
+        timeFilterName = '1y';
+      } else {
+        timeFilterName = lastVisitTimeFilterName;
+      }
     }
   }
 
+  const effectiveTimeFilterName = params.timeFilterName || getSessionTimeFilterPreference(sessionKey) || timeFilterName;
+
   let timeFilterSeconds: number | undefined;
 
-  if (timeFilterName === 'all') {
+  if (effectiveTimeFilterName === 'all') {
     timeFilterSeconds = undefined;
-  } else if (timeFilterName && timeFilterName in timeFilterNamesToSeconds) {
-    timeFilterSeconds = timeFilterNamesToSeconds[timeFilterName as keyof typeof timeFilterNamesToSeconds];
-  } else if (timeFilterName) {
+  } else if (effectiveTimeFilterName && effectiveTimeFilterName in timeFilterNamesToSeconds) {
+    timeFilterSeconds = timeFilterNamesToSeconds[effectiveTimeFilterName as keyof typeof timeFilterNamesToSeconds];
+  } else if (effectiveTimeFilterName) {
     try {
-      timeFilterSeconds = convertTimeStringToSeconds(timeFilterName);
+      timeFilterSeconds = convertTimeStringToSeconds(effectiveTimeFilterName);
     } catch (e) {
-      console.error(`Invalid time filter format: ${timeFilterName}`);
+      console.error(`Invalid time filter format: ${effectiveTimeFilterName}`);
       timeFilterSeconds = undefined;
     }
   }
 
-  // If we still don't have a valid timeFilterSeconds, use the default (24h)
-  if (timeFilterSeconds === undefined && timeFilterName !== 'all') {
+  if (timeFilterSeconds === undefined && effectiveTimeFilterName !== 'all') {
     timeFilterSeconds = timeFilterNamesToSeconds['24h'];
   }
 
-  assert(timeFilterName === 'all' || timeFilterSeconds !== undefined, `useTimeFilter no filter for timeFilterName '${timeFilterName}'`);
+  assert(effectiveTimeFilterName === 'all' || timeFilterSeconds !== undefined, `useTimeFilter no filter for timeFilterName '${effectiveTimeFilterName}'`);
 
-  return { timeFilterSeconds, timeFilterNames, timeFilterName, lastVisitTimeFilterName };
+  return { timeFilterSeconds, timeFilterNames, timeFilterName: effectiveTimeFilterName, lastVisitTimeFilterName, sessionKey };
 };
 
 export default useTimeFilter;

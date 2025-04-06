@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState, useMemo } from 'react';
-import { Link, useNavigate, useParams, useSearchParams } from 'react-router-dom';
+import { Link, useNavigate, useParams, useSearchParams, useLocation } from 'react-router-dom';
 import { Virtuoso, VirtuosoHandle, StateSnapshot } from 'react-virtuoso';
 import { useAccount, useFeed } from '@plebbit/plebbit-react-hooks';
 import { Trans, useTranslation } from 'react-i18next';
@@ -28,8 +28,10 @@ const Home = () => {
   const params = useParams<{ sortType?: string; timeFilterName?: string }>();
   const [searchParams, setSearchParams] = useSearchParams();
   const searchQuery = searchParams.get('q') || '';
-  const sortType = sortTypes.includes(params?.sortType || '') ? params?.sortType : sortTypes[0];
   const navigate = useNavigate();
+  const location = useLocation();
+
+  const sortType = params?.sortType && sortTypes.includes(params.sortType) ? params.sortType : sortTypes[0];
 
   useRedirectToDefaultSort();
 
@@ -39,8 +41,20 @@ const Home = () => {
     }
   }, [params?.sortType, navigate]);
 
-  const { timeFilterName, timeFilterSeconds } = useTimeFilter();
-  const currentTimeFilterName = params.timeFilterName || timeFilterName || '1m';
+  const { timeFilterName, timeFilterSeconds, sessionKey, timeFilterNames } = useTimeFilter();
+
+  useEffect(() => {
+    if (!params.timeFilterName && !searchQuery && sessionKey) {
+      const sessionPreference = sessionStorage.getItem(sessionKey);
+      if (sessionPreference && timeFilterNames.includes(sessionPreference)) {
+        const targetPath = `/${sortType}/${sessionPreference}${location.search}`;
+        console.log(`Redirecting Home from ${location.pathname} to ${targetPath} based on session preference: ${sessionPreference}`);
+        navigate(targetPath, { replace: true });
+      }
+    }
+  }, [params.timeFilterName, searchQuery, sessionKey, sortType, navigate, location.search, location.pathname, timeFilterNames]);
+
+  const currentTimeFilterName = params.timeFilterName || timeFilterName || 'hot';
 
   const { isSearching } = useFeedFiltersStore();
   const [showNoResults, setShowNoResults] = useState(false);
