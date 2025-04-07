@@ -331,7 +331,11 @@ const HeaderTitle = ({ title, shortAddress, pendingPostSubplebbitAddress }: { ti
   const hasUnhiddenAnyNsfwCommunity = !hideAdultCommunities || !hideGoreCommunities || !hideAntiCommunities || !hideVulgarCommunities;
   const isBroadlyNsfwSubplebbit = useIsBroadlyNsfwSubplebbit(subplebbitAddress || '');
 
-  const subplebbitTitle = <Link to={`/p/${isInPendingPostView ? pendingPostSubplebbitAddress : subplebbitAddress}`}>{title || shortAddress}</Link>;
+  const subplebbitTitle = (
+    <Link to={`/p/${isInPendingPostView ? pendingPostSubplebbitAddress : subplebbitAddress}`}>
+      {title || (subplebbitAddress && Plebbit.getShortAddress(subplebbitAddress))}
+    </Link>
+  );
   const domainTitle = <Link to={`/domain/${params.domain}`}>{params.domain}</Link>;
   const submitTitle = <span className={styles.submitTitle}>{t('submit')}</span>;
   const profileTitle = <Link to='/profile'>{account?.author?.shortAddress}</Link>;
