@@ -5,7 +5,7 @@ import { useAccountSubplebbits, useFeed } from '@plebbit/plebbit-react-hooks';
 import { useTranslation } from 'react-i18next';
 import { commentMatchesPattern } from '../../lib/utils/pattern-utils';
 import useFeedFiltersStore from '../../stores/use-feed-filters-store';
-import useTimeFilter from '../../hooks/use-time-filter';
+import useTimeFilter, { isValidTimeFilterName } from '../../hooks/use-time-filter';
 import FeedFooter from '../../components/feed-footer';
 import LoadingEllipsis from '../../components/loading-ellipsis';
 import Post from '../../components/post';
@@ -29,6 +29,12 @@ const Mod = () => {
   const sortType = params?.sortType && sortTypes.includes(params.sortType) ? params.sortType : sortTypes[0];
 
   const currentTimeFilterName = params.timeFilterName || timeFilterName || 'hot';
+
+  useEffect(() => {
+    if ((params?.sortType && !sortTypes.includes(params.sortType)) || (params.timeFilterName && !isValidTimeFilterName(params.timeFilterName))) {
+      navigate('/not-found', { replace: true });
+    }
+  }, [params?.sortType, params.timeFilterName, navigate, sortTypes]);
 
   const { isSearching } = useFeedFiltersStore();
   const [showNoResults, setShowNoResults] = useState(false);

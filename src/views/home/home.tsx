@@ -6,7 +6,7 @@ import { Trans, useTranslation } from 'react-i18next';
 import { commentMatchesPattern } from '../../lib/utils/pattern-utils';
 import useFeedFiltersStore from '../../stores/use-feed-filters-store';
 import { useAutoSubscribe } from '../../hooks/use-auto-subscribe';
-import useTimeFilter from '../../hooks/use-time-filter';
+import useTimeFilter, { isValidTimeFilterName } from '../../hooks/use-time-filter';
 import useRedirectToDefaultSort from '../../hooks/use-redirect-to-default-sort';
 import FeedFooter from '../../components/feed-footer';
 import LoadingEllipsis from '../../components/loading-ellipsis';
@@ -36,10 +36,10 @@ const Home = () => {
   useRedirectToDefaultSort();
 
   useEffect(() => {
-    if (params?.sortType && !sortTypes.includes(params.sortType)) {
-      navigate('/not-found');
+    if ((params?.sortType && !sortTypes.includes(params.sortType)) || (params.timeFilterName && !isValidTimeFilterName(params.timeFilterName))) {
+      navigate('/not-found', { replace: true });
     }
-  }, [params?.sortType, navigate]);
+  }, [params?.sortType, params.timeFilterName, navigate, sortTypes]);
 
   const { timeFilterName, timeFilterSeconds, sessionKey, timeFilterNames } = useTimeFilter();
 

@@ -94,6 +94,25 @@ export const setSessionTimeFilterPreference = (sessionKey: string | null, timeFi
   }
 };
 
+export const isValidTimeFilterName = (name: string | undefined | null): boolean => {
+  if (!name) {
+    return true;
+  }
+  if (name === 'all') {
+    return true;
+  }
+  const predefinedStaticKeys = ['1h', '24h', '1w', '1m', '1y'];
+  if (predefinedStaticKeys.includes(name)) {
+    return true;
+  }
+  const match = name.match(/^(\d+)([hdwmy])$/);
+  if (match) {
+    const numValue = parseInt(match[1], 10);
+    return numValue > 0;
+  }
+  return false;
+};
+
 const useTimeFilter = () => {
   const params = useParams();
   const location = useLocation();

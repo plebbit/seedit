@@ -1,30 +1,40 @@
 import { useEffect, useRef, useState, useMemo, useCallback } from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams, useSearchParams } from 'react-router-dom';
 import { Virtuoso, VirtuosoHandle, StateSnapshot } from 'react-virtuoso';
 import { useFeed, Comment } from '@plebbit/plebbit-react-hooks';
 import { commentMatchesPattern } from '../../lib/utils/pattern-utils';
 import useFeedFiltersStore from '../../stores/use-feed-filters-store';
 import { useDefaultSubplebbitAddresses } from '../../hooks/use-default-subplebbits';
-import useTimeFilter from '../../hooks/use-time-filter';
+import useTimeFilter, { isValidTimeFilterName } from '../../hooks/use-time-filter';
 import FeedFooter from '../../components/feed-footer';
 import LoadingEllipsis from '../../components/loading-ellipsis';
 import Post from '../../components/post';
 import Sidebar from '../../components/sidebar';
 import styles from '../home/home.module.css';
+import { sortTypes } from '../../constants/sort-types';
 
 const lastVirtuosoStates: { [key: string]: StateSnapshot } = {};
 
 const Domain = () => {
   const subplebbitAddresses = useDefaultSubplebbitAddresses();
   const params = useParams<{ domain?: string; sortType?: string; timeFilterName?: string }>();
+  const [searchParams, setSearchParams] = useSearchParams();
+  const navigate = useNavigate();
+  const searchQuery = searchParams.get('q') || '';
   const domain = params?.domain;
-  const sortType = params?.sortType || 'hot';
+  const sortType = params?.sortType && sortTypes.includes(params.sortType) ? params.sortType : sortTypes[0];
   const { timeFilterName, timeFilterSeconds } = useTimeFilter();
   const currentTimeFilterName = params.timeFilterName || timeFilterName || 'all';
 
-  const { searchFilter, isSearching } = useFeedFiltersStore();
+  const { isSearching } = useFeedFiltersStore();
   const [showNoResults, setShowNoResults] = useState(false);
   const [searchAttemptCompleted, setSearchAttemptCompleted] = useState(false);
+
+  useEffect(() => {
+    if ((params?.sortType && !sortTypes.includes(params.sortType)) || (params.timeFilterName && !isValidTimeFilterName(params.timeFilterName))) {
+      navigate('/not-found', { replace: true });
+    }
+  }, [params?.sortType, params.timeFilterName, navigate, sortTypes]);
 
   const matchesDomain = useCallback(
     (comment: Comment) => {
@@ -45,7 +55,7 @@ const Domain = () => {
 
   const feedOptions = useMemo(() => {
     const options: any = {
-      newerThan: searchFilter ? 0 : timeFilterSeconds,
+      newerThan: searchQuery ? 0 : timeFilterSeconds,
       sortType,
       subplebbitAddresses,
     };
@@ -53,15 +63,17 @@ const Domain = () => {
     options.filter = (comment: Comment) => {
       const domainMatches = matchesDomain(comment);
 
-      if (searchFilter) {
-        return domainMatches && commentMatchesPattern(comment, searchFilter);
+      if (searchQuery) {
+        return domainMatches && commentMatchesPattern(comment, searchQuery);
       }
 
       return domainMatches;
     };
 
+    options.filterKey = searchQuery ? `search-filter-${searchQuery}` : undefined;
+
     return options;
-  }, [subplebbitAddresses, sortType, timeFilterSeconds, searchFilter, matchesDomain]);
+  }, [subplebbitAddresses, sortType, timeFilterSeconds, searchQuery, matchesDomain]);
 
   const { feed, hasMore, loadMore, reset, subplebbitAddressesWithNewerPosts } = useFeed(feedOptions);
 
@@ -69,26 +81,26 @@ const Domain = () => {
     if (isSearching) {
       setSearchAttemptCompleted(false);
       setShowNoResults(false);
-    } else if (searchFilter || domain) {
+    } else if (searchQuery || domain) {
       setSearchAttemptCompleted(true);
     }
-  }, [isSearching, searchFilter, domain]);
+  }, [isSearching, searchQuery, domain]);
 
   useEffect(() => {
     let timer: NodeJS.Timeout | null = null;
 
-    if ((searchFilter || domain) && feed?.length === 0 && searchAttemptCompleted && !showNoResults) {
+    if ((searchQuery || domain) && feed?.length === 0 && searchAttemptCompleted && !showNoResults) {
       timer = setTimeout(() => {
         setShowNoResults(true);
       }, 2000);
-    } else if ((!searchFilter && !domain) || feed?.length > 0) {
+    } else if ((!searchQuery && !domain) || feed?.length > 0) {
       setShowNoResults(false);
     }
 
     return () => {
       if (timer) clearTimeout(timer);
     };
-  }, [searchFilter, domain, feed?.length, searchAttemptCompleted, showNoResults]);
+  }, [searchQuery, domain, feed?.length, searchAttemptCompleted, showNoResults]);
 
   // suggest the user to change time filter if there aren't enough posts
   const { feed: weeklyFeed } = useFeed({
@@ -134,12 +146,20 @@ const Domain = () => {
     subplebbitAddressesWithNewerPosts,
     weeklyFeedLength: weeklyFeed.length,
     monthlyFeedLength: monthlyFeed.length,
-    currentTimeFilterName: searchFilter ? 'all' : currentTimeFilterName,
+    currentTimeFilterName: searchQuery ? 'all' : currentTimeFilterName,
     reset,
-    searchFilter,
+    searchQuery: searchQuery,
     isSearching,
     showNoResults,
     domain,
+  };
+
+  const handleClearSearch = () => {
+    setSearchParams((prev) => {
+      prev.delete('q');
+      return prev;
+    });
+    reset();
   };
 
   return (
@@ -160,9 +180,9 @@ const Domain = () => {
           <div className={styles.feed}>
             <div className={styles.footer}>
               <div className={styles.stateString}>
-                {searchFilter ? (
+                {searchQuery ? (
                   <span className={styles.noMatchesFound}>
-                    No matches found for "{searchFilter}" on {domain}
+                    No matches found for "{searchQuery}" on {domain}
                   </span>
                 ) : (
                   <span className={styles.noMatchesFound}>No posts found from {domain}</span>
@@ -170,14 +190,8 @@ const Domain = () => {
                 <br />
                 <br />
                 <div className={styles.morePostsSuggestion}>
-                  {searchFilter && (
-                    <span
-                      className={styles.link}
-                      onClick={() => {
-                        useFeedFiltersStore.getState().clearSearchFilter();
-                        reset();
-                      }}
-                    >
+                  {searchQuery && (
+                    <span className={styles.link} onClick={handleClearSearch}>
                       Clear search
                     </span>
                   )}

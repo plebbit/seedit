@@ -6,7 +6,7 @@ import { useFeed } from '@plebbit/plebbit-react-hooks';
 import { commentMatchesPattern } from '../../lib/utils/pattern-utils';
 import useFeedFiltersStore from '../../stores/use-feed-filters-store';
 import { useDefaultSubplebbitAddresses } from '../../hooks/use-default-subplebbits';
-import useTimeFilter from '../../hooks/use-time-filter';
+import useTimeFilter, { isValidTimeFilterName } from '../../hooks/use-time-filter';
 import FeedFooter from '../../components/feed-footer';
 import LoadingEllipsis from '../../components/loading-ellipsis';
 import Post from '../../components/post';
@@ -37,6 +37,12 @@ const All = () => {
       }
     }
   }, [params.timeFilterName, searchQuery, sessionKey, sortType, navigate, location.search, location.pathname, timeFilterNames]);
+
+  useEffect(() => {
+    if ((params?.sortType && !sortTypes.includes(params.sortType)) || (params.timeFilterName && !isValidTimeFilterName(params.timeFilterName))) {
+      navigate('/not-found', { replace: true });
+    }
+  }, [params?.sortType, params.timeFilterName, navigate, sortTypes]);
 
   const currentTimeFilterName = params.timeFilterName || timeFilterName || 'hot';
 
