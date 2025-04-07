@@ -23,7 +23,8 @@
   display: block;
   margin: auto;
   border: 0;
-  max-width: 60vw;
+  width: 100%;
+  max-width: 750px;
 }
 
 @media (max-width: 640px) {
