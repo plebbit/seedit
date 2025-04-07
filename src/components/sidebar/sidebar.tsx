@@ -210,8 +210,8 @@ const Sidebar = ({ comment, isSubCreatedButNotYetPublished, settings, subplebbit
       ? '/submit'
       : isInPendingPostView
       ? `/p/${pendingPost?.subplebbitAddress}/submit`
-      : address
-      ? `/p/${address}/submit`
+      : address || params?.subplebbitAddress
+      ? `/p/${address || params?.subplebbitAddress}/submit`
       : '/submit';
 
   const { blocked, unblock, block } = useBlock({ address });
