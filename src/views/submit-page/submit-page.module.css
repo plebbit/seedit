@@ -373,10 +373,10 @@
 
 .formattingHelpButton {
   font-size: 11px;
-  color: var(--link-primary);
   cursor: pointer;
   margin-left: 10px;
   text-transform: lowercase;
+  color: var(--text-primary);
   float: right;
   line-height: 18px;
   padding-top: 2px;

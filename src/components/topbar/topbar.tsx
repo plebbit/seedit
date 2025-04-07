@@ -6,7 +6,7 @@ import Plebbit from '@plebbit/plebbit-js/dist/browser/index.js';
 import { isAllView, isDomainView, isHomeView, isModView, isSubplebbitView } from '../../lib/utils/view-utils';
 import useContentOptionsStore from '../../stores/use-content-options-store';
 import { useDefaultSubplebbitAddresses } from '../../hooks/use-default-subplebbits';
-import useTimeFilter from '../../hooks/use-time-filter';
+import useTimeFilter, { setSessionTimeFilterPreference } from '../../hooks/use-time-filter';
 import { sortTypes } from '../../constants/sort-types';
 import { sortLabels } from '../../constants/sort-labels';
 import styles from './topbar.module.css';
@@ -189,7 +189,7 @@ const TimeFilterDropdown = () => {
   const isInDomainView = isDomainView(location.pathname);
   const isinAllView = isAllView(location.pathname);
   const isInModView = isModView(location.pathname);
-  const { timeFilterName, timeFilterNames } = useTimeFilter();
+  const { timeFilterName, timeFilterNames, sessionKey } = useTimeFilter();
   const selectedTimeFilter = timeFilterName || (isInSubplebbitView ? 'all' : timeFilterName);
 
   const [isTimeFilterDropdownOpen, setIsTimeFilterDropdownOpen] = useState(false);
@@ -230,7 +230,12 @@ const TimeFilterDropdown = () => {
       <span className={styles.selectedTitle}>{selectedTimeFilter}</span>
       <div className={`${styles.dropChoices} ${styles.filterDropChoices} ${timeFilterDropdownClass}`} ref={timeFilterdropdownItemsRef}>
         {timeFilterNames.slice(0, -1).map((timeFilterName, index) => (
-          <Link to={getTimeFilterLink(timeFilterName)} key={index} className={styles.dropdownItem}>
+          <Link
+            to={getTimeFilterLink(timeFilterName)}
+            key={index}
+            className={styles.dropdownItem}
+            onClick={() => setSessionTimeFilterPreference(sessionKey, timeFilterName)}
+          >
             {timeFilterNames[index]}
           </Link>
         ))}

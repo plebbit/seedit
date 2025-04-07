@@ -57,6 +57,23 @@ const App = () => {
 
   return (
     <div className={`${styles.app} ${theme}`}>
+      <div className='asset-preloader'>
+        <div className='asset-preloader-seedit-text-light'></div>
+        <div className='asset-preloader-seedit-text-dark'></div>
+        <div className='asset-preloader-delete-button-hover'></div>
+        <div className='asset-preloader-close-x-button-large-hover'></div>
+        <div className='asset-preloader-play-button-hover'></div>
+        <div className='asset-preloader-text-button-hover'></div>
+        <div className='asset-preloader-button-large-hover-dark'></div>
+        <div className='asset-preloader-button-large-hover'></div>
+        <div className='asset-preloader-button-large-nub-hover-dark'></div>
+        <div className='asset-preloader-button-large-nub-hover'></div>
+        <div className='asset-preloader-close-button-hover'></div>
+        <div className='asset-preloader-all-feed-subscribe-hover'></div>
+        <div className='asset-preloader-arrow-upvoted'></div>
+        <div className='asset-preloader-arrow-downvoted'></div>
+      </div>
+
       <Routes>
         <Route element={globalLayout}>
           <Route element={pagesLayout}>
@@ -64,7 +81,6 @@ const App = () => {
             <Route path='/submit' element={<SubmitPage />} />
 
             <Route path='/p/:subplebbitAddress/c/:commentCid' element={<PostPage />} />
-            <Route path='/p/:subplebbitAddress/c/:commentCid?context=3' element={<PostPage />} />
             <Route path='/p/:subplebbitAddress/c/:commentCid/about' element={<AboutView />} />
 
             <Route path='/p/:subplebbitAddress/submit' element={<SubmitPage />} />

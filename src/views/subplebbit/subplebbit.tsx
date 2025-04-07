@@ -11,7 +11,7 @@ import useFeedFiltersStore from '../../stores/use-feed-filters-store';
 import useFeedResetStore from '../../stores/use-feed-reset-store';
 import { usePinnedPostsStore } from '../../stores/use-pinned-posts-store';
 import { useIsBroadlyNsfwSubplebbit } from '../../hooks/use-is-broadly-nsfw-subplebbit';
-import useTimeFilter from '../../hooks/use-time-filter';
+import useTimeFilter, { isValidTimeFilterName } from '../../hooks/use-time-filter';
 import LoadingEllipsis from '../../components/loading-ellipsis';
 import Over18Warning from '../../components/over-18-warning';
 import Post from '../../components/post';
@@ -263,6 +263,13 @@ const Subplebbit = () => {
       navigate('/not-found');
     }
   }, [params?.sortType, navigate]);
+
+  useEffect(() => {
+    if (params.timeFilterName && !isValidTimeFilterName(params.timeFilterName)) {
+      console.log(`Invalid timeFilterName '${params.timeFilterName}' in Subplebbit, redirecting to /not-found`);
+      navigate('/not-found', { replace: true });
+    }
+  }, [params.timeFilterName, navigate]);
 
   const timeFilterName = params.timeFilterName || 'all';
   const { timeFilterSeconds } = useTimeFilter();

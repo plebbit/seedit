@@ -5,6 +5,7 @@
   z-index: 5;
   background-color: var(--background);
   padding-left: 5px;
+  padding-bottom: 5px;
 }
 
 .avatar {

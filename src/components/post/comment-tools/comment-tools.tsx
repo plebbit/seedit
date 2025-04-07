@@ -184,7 +184,7 @@ const SingleReplyTools = ({
   );
 
   const contextButton = cid ? (
-    <Link to={cid ? (hasContext ? `/p/${subplebbitAddress}/c/${cid}?context=3` : `/p/${subplebbitAddress}/c/${cid}`) : `/profile/${index}`}>{t('context')}</Link>
+    <Link to={cid ? (hasContext ? `/p/${subplebbitAddress}/c/${cid}/?context=3` : `/p/${subplebbitAddress}/c/${cid}`) : `/profile/${index}`}>{t('context')}</Link>
   ) : (
     <span>{t('context')}</span>
   );

@@ -95,7 +95,7 @@ const PaginationControls = ({ currentPage, hasMore, onPageChange }: { currentPag
 const CommentItem = ({ cid }: { cid: string }) => {
   const comment = useComment({ commentCid: cid });
 
-  if (!comment) return null;
+  if (!comment || !comment.subplebbitAddress) return null;
 
   return comment.parentCid ? <Reply key={comment.cid} reply={comment} isSingleReply={true} /> : <Post key={comment.cid} post={comment} />;
 };

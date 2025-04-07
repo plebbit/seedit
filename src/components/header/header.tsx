@@ -93,6 +93,7 @@ const SortItems = () => {
   const isInSubplebbitAboutView = isSubplebbitAboutView(location.pathname, params);
   const isInAllView = isAllView(location.pathname);
   const isInModView = isModView(location.pathname);
+  const isInDomainView = isDomainView(location.pathname);
   const isInSubplebbitView = isSubplebbitView(location.pathname, params);
   const [selectedSortType, setSelectedSortType] = useState(params.sortType || '/hot');
   const timeFilterName = params.timeFilterName;
@@ -108,7 +109,15 @@ const SortItems = () => {
   }, [params.sortType, isInHomeAboutView, isInSubplebbitAboutView, isInPostPageAboutView]);
 
   return sortTypes.map((sortType, index) => {
-    let sortLink = isInSubplebbitView ? `/p/${params.subplebbitAddress}/${sortType}` : isInAllView ? `p/all/${sortType}` : isInModView ? `p/mod/${sortType}` : sortType;
+    let sortLink = isInSubplebbitView
+      ? `/p/${params.subplebbitAddress}/${sortType}`
+      : isInAllView
+      ? `p/all/${sortType}`
+      : isInModView
+      ? `p/mod/${sortType}`
+      : isInDomainView
+      ? `domain/${params.domain}/${sortType}`
+      : sortType;
     if (timeFilterName) {
       sortLink = sortLink + `/${timeFilterName}`;
     }
@@ -301,7 +310,7 @@ const HeaderTabs = () => {
   return null;
 };
 
-const HeaderTitle = ({ title, shortAddress, pendingPostSubplebbitAddress }: { title: string; shortAddress: string; pendingPostSubplebbitAddress?: string }) => {
+const HeaderTitle = ({ title, pendingPostSubplebbitAddress }: { title: string; pendingPostSubplebbitAddress?: string }) => {
   const account = useAccount();
   const { t } = useTranslation();
   const params = useParams();
@@ -331,7 +340,13 @@ const HeaderTitle = ({ title, shortAddress, pendingPostSubplebbitAddress }: { ti
   const hasUnhiddenAnyNsfwCommunity = !hideAdultCommunities || !hideGoreCommunities || !hideAntiCommunities || !hideVulgarCommunities;
   const isBroadlyNsfwSubplebbit = useIsBroadlyNsfwSubplebbit(subplebbitAddress || '');
 
-  const subplebbitTitle = <Link to={`/p/${isInPendingPostView ? pendingPostSubplebbitAddress : subplebbitAddress}`}>{title || shortAddress}</Link>;
+  const subplebbitTitle = (
+    <Link to={`/p/${isInPendingPostView ? pendingPostSubplebbitAddress : subplebbitAddress}`}>
+      {title ||
+        (subplebbitAddress && Plebbit.getShortAddress(subplebbitAddress)) ||
+        (pendingPostSubplebbitAddress && Plebbit.getShortAddress(pendingPostSubplebbitAddress))}
+    </Link>
+  );
   const domainTitle = <Link to={`/domain/${params.domain}`}>{params.domain}</Link>;
   const submitTitle = <span className={styles.submitTitle}>{t('submit')}</span>;
   const profileTitle = <Link to='/profile'>{account?.author?.shortAddress}</Link>;
@@ -385,11 +400,10 @@ const Header = () => {
   const location = useLocation();
   const params = useParams();
   const subplebbit = useSubplebbitsStore((state) => state.subplebbits[params?.subplebbitAddress as string]);
-  const { suggested, title, shortAddress } = subplebbit || {};
+  const { suggested, title } = subplebbit || {};
 
   const commentIndex = params?.accountCommentIndex ? parseInt(params?.accountCommentIndex) : undefined;
   const accountComment = useAccountComment({ commentIndex });
-  const pendingPostSubplebbitAddress = accountComment?.subplebbitAddress && Plebbit.getShortAddress(accountComment?.subplebbitAddress);
 
   const isMobile = useWindowWidth() < 640;
   const isInAllAboutView = isAllAboutView(location.pathname);
@@ -441,7 +455,7 @@ const Header = () => {
   const isBroadlyNsfwSubplebbit = useIsBroadlyNsfwSubplebbit(subplebbitAddress || '');
 
   const logoIsAvatar = isInSubplebbitView && suggested?.avatarUrl && !(isBroadlyNsfwSubplebbit && !hasUnhiddenAnyNsfwCommunity);
-  const logoSrc = logoIsAvatar ? suggested?.avatarUrl : 'assets/logo/seedit.png';
+  const logoSrc = logoIsAvatar ? suggested?.avatarUrl : 'assets/sprout/sprout.png';
   const logoLink = '/';
 
   const mobileSubmitButtonRoute =
@@ -466,22 +480,18 @@ const Header = () => {
               <img className={`${logoIsAvatar ? styles.avatar : styles.logo}`} src={logoSrc} alt='' />
             )}
             {((!isInSubplebbitView && !isInProfileView && !isInAuthorView) || !logoIsAvatar) && (
-              <img src={`assets/logo/seedit-text-${theme === 'dark' ? 'dark' : 'light'}.svg`} className={styles.logoText} alt='' />
+              <img src={`assets/sprout/seedit-text-${theme === 'dark' ? 'dark' : 'light'}.svg`} className={styles.logoText} alt='' />
             )}
           </Link>
         </div>
         {!isInHomeView && !isInHomeAboutView && !isInModView && !isInAllView && (
           <span className={`${styles.pageName} ${!logoIsAvatar && styles.soloPageName}`}>
-            <HeaderTitle
-              title={title}
-              shortAddress={shortAddress || (isInPendingPostView && pendingPostSubplebbitAddress)}
-              pendingPostSubplebbitAddress={accountComment?.subplebbitAddress}
-            />
+            <HeaderTitle title={title} pendingPostSubplebbitAddress={accountComment?.subplebbitAddress} />
           </span>
         )}
         {(isInModView || isInAllView) && (
           <div className={`${styles.pageName} ${styles.allOrModPageName}`}>
-            <HeaderTitle title={title} shortAddress={shortAddress} />
+            <HeaderTitle title={title} pendingPostSubplebbitAddress={accountComment?.subplebbitAddress} />
           </div>
         )}
         {!isMobile && !(isBroadlyNsfwSubplebbit && !hasUnhiddenAnyNsfwCommunity) && (

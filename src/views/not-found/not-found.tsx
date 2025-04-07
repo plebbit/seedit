@@ -3,12 +3,12 @@ import { useTranslation } from 'react-i18next';
 import useNotFoundStore from '../../stores/use-not-found-store';
 import styles from './not-found.module.css';
 
-const totalNotFoundImages = 2;
+const totalNotFoundImages = 4;
 
 const NotFoundImage = () => {
   const [imagePath] = useState(() => {
     const randomBannerIndex = Math.floor(Math.random() * totalNotFoundImages) + 1;
-    return `assets/not-found/not-found-${randomBannerIndex}.jpg`;
+    return `assets/not-found/not-found-${randomBannerIndex}.png`;
   });
 
   return <img src={imagePath} alt='' />;

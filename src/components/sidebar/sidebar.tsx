@@ -127,7 +127,7 @@ export const Footer = () => {
   return (
     <div className={`${styles.footer} ${isMobile && (isInHomeAboutView || isInPostPageAboutView) ? styles.mobileFooter : ''}`}>
       <span className={styles.footerLogo}>
-        <img src='assets/logo/seedit.png' alt='' />
+        <img src='assets/sprout/sprout-2.png' alt='' />
       </span>
       <div className={styles.footerLinks}>
         <ul>
@@ -210,8 +210,8 @@ const Sidebar = ({ comment, isSubCreatedButNotYetPublished, settings, subplebbit
       ? '/submit'
       : isInPendingPostView
       ? `/p/${pendingPost?.subplebbitAddress}/submit`
-      : address
-      ? `/p/${address}/submit`
+      : address || params?.subplebbitAddress
+      ? `/p/${address || params?.subplebbitAddress}/submit`
       : '/submit';
 
   const { blocked, unblock, block } = useBlock({ address });

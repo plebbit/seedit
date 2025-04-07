@@ -1,12 +1,12 @@
 import { useEffect, useRef, useState, useMemo } from 'react';
-import { Link, useNavigate, useParams, useSearchParams } from 'react-router-dom';
+import { Link, useNavigate, useParams, useSearchParams, useLocation } from 'react-router-dom';
 import { Virtuoso, VirtuosoHandle, StateSnapshot } from 'react-virtuoso';
 import { useAccount, useFeed } from '@plebbit/plebbit-react-hooks';
 import { Trans, useTranslation } from 'react-i18next';
 import { commentMatchesPattern } from '../../lib/utils/pattern-utils';
 import useFeedFiltersStore from '../../stores/use-feed-filters-store';
 import { useAutoSubscribe } from '../../hooks/use-auto-subscribe';
-import useTimeFilter from '../../hooks/use-time-filter';
+import useTimeFilter, { isValidTimeFilterName } from '../../hooks/use-time-filter';
 import useRedirectToDefaultSort from '../../hooks/use-redirect-to-default-sort';
 import FeedFooter from '../../components/feed-footer';
 import LoadingEllipsis from '../../components/loading-ellipsis';
@@ -28,19 +28,33 @@ const Home = () => {
   const params = useParams<{ sortType?: string; timeFilterName?: string }>();
   const [searchParams, setSearchParams] = useSearchParams();
   const searchQuery = searchParams.get('q') || '';
-  const sortType = sortTypes.includes(params?.sortType || '') ? params?.sortType : sortTypes[0];
   const navigate = useNavigate();
+  const location = useLocation();
+
+  const sortType = params?.sortType && sortTypes.includes(params.sortType) ? params.sortType : sortTypes[0];
 
   useRedirectToDefaultSort();
 
   useEffect(() => {
-    if (params?.sortType && !sortTypes.includes(params.sortType)) {
-      navigate('/not-found');
+    if ((params?.sortType && !sortTypes.includes(params.sortType)) || (params.timeFilterName && !isValidTimeFilterName(params.timeFilterName))) {
+      navigate('/not-found', { replace: true });
     }
-  }, [params?.sortType, navigate]);
+  }, [params?.sortType, params.timeFilterName, navigate, sortTypes]);
 
-  const { timeFilterName, timeFilterSeconds } = useTimeFilter();
-  const currentTimeFilterName = params.timeFilterName || timeFilterName || '1m';
+  const { timeFilterName, timeFilterSeconds, sessionKey, timeFilterNames } = useTimeFilter();
+
+  useEffect(() => {
+    if (!params.timeFilterName && !searchQuery && sessionKey) {
+      const sessionPreference = sessionStorage.getItem(sessionKey);
+      if (sessionPreference && timeFilterNames.includes(sessionPreference)) {
+        const targetPath = `/${sortType}/${sessionPreference}${location.search}`;
+        console.log(`Redirecting Home from ${location.pathname} to ${targetPath} based on session preference: ${sessionPreference}`);
+        navigate(targetPath, { replace: true });
+      }
+    }
+  }, [params.timeFilterName, searchQuery, sessionKey, sortType, navigate, location.search, location.pathname, timeFilterNames]);
+
+  const currentTimeFilterName = params.timeFilterName || timeFilterName || 'hot';
 
   const { isSearching } = useFeedFiltersStore();
   const [showNoResults, setShowNoResults] = useState(false);

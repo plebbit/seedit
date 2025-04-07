@@ -187,6 +187,10 @@
   vertical-align: bottom;
 }
 
+.addMarginRight {
+  margin-right: 2px;
+}
+
 .expandButton {
   background-size: cover;
   height: 23px;

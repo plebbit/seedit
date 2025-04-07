@@ -29,7 +29,7 @@ const Author = () => {
   const replyComments = useMemo(() => authorComments?.filter((comment) => comment && comment.parentCid) || [], [authorComments]);
   const postComments = useMemo(() => authorComments?.filter((comment) => comment && !comment.parentCid) || [], [authorComments]);
 
-  const loadingString = isInAuthorCommentsView ? t('loading_comments') : t('loading_posts');
+  const loadingString = isInAuthorCommentsView ? t('downloading_comments') : t('downloading_posts');
 
   const Footer = () => {
     return hasMore ? (

@@ -463,17 +463,12 @@ const SubmitPage = () => {
   const { link, title, subplebbitAddress, publishCommentOptions, setPublishPostStore, resetPublishPostStore } = usePublishPostStore();
 
   useEffect(() => {
-    return () => {
-      resetPublishPostStore();
-    };
-  }, [resetPublishPostStore]);
-
-  useEffect(() => {
     setPublishPostStore({ subplebbitAddress: params.subplebbitAddress || '' });
   }, [params.subplebbitAddress, setPublishPostStore]);
 
   const selectedSubplebbitData = useSubplebbit({ subplebbitAddress });
-  const { rules, shortAddress, title: subplebbitTitle } = selectedSubplebbitData;
+  const { rules, title: subplebbitTitle } = selectedSubplebbitData;
+  const shortAddress = subplebbitAddress && Plebbit.getShortAddress(subplebbitAddress);
   const { isOffline, offlineTitle } = useIsSubplebbitOffline(selectedSubplebbitData);
 
   const { index, publishComment } = usePublishComment(publishCommentOptions);
@@ -538,7 +533,7 @@ const SubmitPage = () => {
           <TitleField />
           <ContentField />
           <SubplebbitAddressField />
-          {rules?.length > 0 && <RulesInfo shortAddress={shortAddress} rules={rules} />}
+          {rules?.length > 0 && <RulesInfo shortAddress={shortAddress || ''} rules={rules} />}
           <SubmitOptions />
           <div className={`${styles.box} ${styles.notice}`}>{t('submit_notice')}</div>
           <div>*{t('required')}</div>

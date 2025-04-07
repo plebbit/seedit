@@ -217,7 +217,15 @@ const Subplebbit = ({ subplebbit, tags, index }: SubplebbitProps) => {
           </div>
           <div className={`${styles.avatar} ${!suggested?.avatarUrl ? styles.defaultAvatar : ''}`}>
             <Link to={`/p/${address}`}>
-              <img src={suggested?.avatarUrl || 'assets/logo/seedit.png'} alt={address} />
+              <img
+                src={suggested?.avatarUrl || 'assets/sprout/sprout.png'}
+                alt=''
+                onError={(e) => {
+                  const target = e.target as HTMLImageElement;
+                  target.onerror = null;
+                  target.src = 'assets/sprout/sprout.png';
+                }}
+              />
             </Link>
           </div>
         </div>
@@ -238,7 +246,7 @@ const Subplebbit = ({ subplebbit, tags, index }: SubplebbitProps) => {
               </span>
               {(userRole || isUserOwner) && (
                 <Link to={`/p/${address}/settings`}>
-                  <span className={styles.moderatorIcon} title={userRole || 'owner'} />
+                  <span className={`${styles.moderatorIcon} ${isNsfw ? styles.addMarginRight : ''}`} title={userRole || 'owner'} />
                 </Link>
               )}
               {isNsfw && <span className={styles.over18icon} />}
