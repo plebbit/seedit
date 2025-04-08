@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import Plebbit from '@plebbit/plebbit-js/dist/browser/index.js';
@@ -21,6 +21,7 @@ import {
   isSubplebbitAboutView,
   isSubplebbitSettingsView,
   isSubplebbitsView,
+  isSubplebbitView,
 } from '../../lib/utils/view-utils';
 import Markdown from '../markdown';
 import SearchBar from '../search-bar';
@@ -28,6 +29,7 @@ import SubscribeButton from '../subscribe-button';
 import LoadingEllipsis from '../loading-ellipsis';
 import Version from '../version';
 import { FAQ } from '../../views/about/about';
+import { createCommunitySubtitles } from '../../constants/create-community-subtitles';
 
 const isElectron = window.isElectron === true;
 
@@ -126,36 +128,18 @@ export const Footer = () => {
 
   return (
     <div className={`${styles.footer} ${isMobile && (isInHomeAboutView || isInPostPageAboutView) ? styles.mobileFooter : ''}`}>
-      <span className={styles.footerLogo}>
-        <img src='assets/sprout/sprout-2.png' alt='' />
-      </span>
       <div className={styles.footerLinks}>
         <ul>
+          <li>
+            <Version />
+          </li>
+          <span className={styles.footerSeparator}>|</span>
           <li>
             <a href='https://plebbit.com' target='_blank' rel='noopener noreferrer'>
               about
             </a>
             <span className={styles.footerSeparator}>|</span>
           </li>
-          <li>
-            <a href='https://twitter.com/getplebbit' target='_blank' rel='noopener noreferrer'>
-              twitter
-            </a>
-            <span className={styles.footerSeparator}>|</span>
-          </li>
-          <li>
-            <a href='https://t.me/plebbit' target='_blank' rel='noopener noreferrer'>
-              telegram
-            </a>
-            <span className={styles.footerSeparator}>|</span>
-          </li>
-          <li>
-            <a href='https://discord.gg/E7ejphwzGW' target='_blank' rel='noopener noreferrer'>
-              discord
-            </a>
-          </li>
-        </ul>
-        <ul>
           <li>
             <a href='https://github.com/plebbit/seedit' target='_blank' rel='noopener noreferrer'>
               github
@@ -166,10 +150,6 @@ export const Footer = () => {
             <a href='https://plebbit.github.io/docs/learn/clients/seedit/what-is-seedit' target='_blank' rel='noopener noreferrer'>
               docs
             </a>
-            <span className={styles.footerSeparator}>|</span>
-          </li>
-          <li>
-            <Version />
           </li>
         </ul>
       </div>
@@ -200,6 +180,7 @@ const Sidebar = ({ comment, isSubCreatedButNotYetPublished, settings, subplebbit
   const isInPostPageView = isPostPageView(location.pathname, params);
   const isInSubplebbitsView = isSubplebbitsView(location.pathname);
   const isInSubplebbitAboutView = isSubplebbitAboutView(location.pathname, params);
+  const isInSubplebbitView = isSubplebbitView(location.pathname, params);
 
   const pendingPost = useAccountComment({ commentIndex: params?.accountCommentIndex as any });
 
@@ -240,6 +221,26 @@ const Sidebar = ({ comment, isSubCreatedButNotYetPublished, settings, subplebbit
   const moderatorRole = roles?.[account.author?.address]?.role;
   const isOwner = !!settings;
 
+  const [subtitle1, setSubtitle1] = useState('');
+  const [subtitle2, setSubtitle2] = useState('');
+
+  useEffect(() => {
+    if (createCommunitySubtitles.length >= 2) {
+      const indices = new Set<number>();
+      while (indices.size < 2) {
+        const randomIndex = Math.floor(Math.random() * createCommunitySubtitles.length);
+        indices.add(randomIndex);
+      }
+      const [index1, index2] = Array.from(indices);
+      setSubtitle1(createCommunitySubtitles[index1]);
+      setSubtitle2(createCommunitySubtitles[index2]);
+    } else if (createCommunitySubtitles.length === 1) {
+      // Handle case with only one subtitle
+      setSubtitle1(createCommunitySubtitles[0]);
+      setSubtitle2(''); // Or handle as needed
+    }
+  }, []); // Empty dependency array ensures this runs only once on mount
+
   const isConnectedToRpc = !!account?.plebbitOptions.plebbitRpcClientsOptions;
   const navigate = useNavigate();
   const handleCreateCommunity = () => {
@@ -277,12 +278,14 @@ const Sidebar = ({ comment, isSubCreatedButNotYetPublished, settings, subplebbit
         }}
       >
         {(isInPostPageView || isInPendingPostView) && <PostInfo comment={comment} />}
-        <Link to={submitRoute}>
-          <div className={styles.largeButton}>
-            {t('submit_post')}
-            <div className={styles.nub} />
-          </div>
-        </Link>
+        {(isInSubplebbitView || isInHomeView || isInAllView || isInModView || isInDomainView) && (
+          <Link to={submitRoute}>
+            <div className={styles.largeButton}>
+              {t('submit_post')}
+              <div className={styles.nub} />
+            </div>
+          </Link>
+        )}
         {!isInHomeView &&
           !isInHomeAboutView &&
           !isInAllView &&
@@ -349,16 +352,6 @@ const Sidebar = ({ comment, isSubCreatedButNotYetPublished, settings, subplebbit
             </div>
           )}
         {(moderatorRole || isOwner) && <ModerationTools address={address} />}
-        <div className={styles.largeButton} onClick={handleCreateCommunity}>
-          {t('create_your_community')}
-          <div className={styles.nub} />
-        </div>
-        {roles && Object.keys(roles).length > 0 && <ModeratorsList roles={roles} />}
-        {address && !(moderatorRole || isOwner) && (
-          <div className={styles.readOnlySettingsLink}>
-            <Link to={`/p/${address}/settings`}>{t('community_settings')}</Link>
-          </div>
-        )}
         {isInSubplebbitsView && (
           <a href='https://github.com/plebbit/temporary-default-subplebbits' target='_blank' rel='noopener noreferrer'>
             <div className={styles.largeButton}>
@@ -367,7 +360,24 @@ const Sidebar = ({ comment, isSubCreatedButNotYetPublished, settings, subplebbit
             </div>
           </a>
         )}
-        {(!(isMobile && isInHomeAboutView) || isInSubplebbitAboutView || isInPostPageAboutView) && <Footer />}
+        <div className={styles.largeButton} onClick={handleCreateCommunity}>
+          {t('create_your_community')}
+          <div className={styles.nub} />
+        </div>
+        <div className={styles.createCommunitySubtitles}>
+          <span className={styles.createCommunityImage}>
+            <img src='assets/sprout/sprout-2.png' alt='' />
+          </span>
+          {subtitle1 && <div className={styles.createCommunitySubtitle}>{subtitle1}</div>}
+          {subtitle2 && <div className={styles.createCommunitySubtitle}>{subtitle2}</div>}
+        </div>
+        {roles && Object.keys(roles).length > 0 && <ModeratorsList roles={roles} />}
+        {address && !(moderatorRole || isOwner) && (
+          <div className={styles.readOnlySettingsLink}>
+            <Link to={`/p/${address}/settings`}>{t('community_settings')}</Link>
+          </div>
+        )}
+        {(!(isMobile && isInHomeAboutView) || isInSubplebbitAboutView || isInPostPageAboutView) && !isInSubplebbitView && <Footer />}
         {isMobile && isInHomeAboutView && <FAQ />}
       </div>
     </div>

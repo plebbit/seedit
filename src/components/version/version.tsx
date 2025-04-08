@@ -10,7 +10,7 @@ const Version = () => {
       target='_blank'
       rel='noopener noreferrer'
     >
-      seedit v{commitRef ? `${version}-dev (#${commitRef.slice(0, 7)})` : version}
+      v{commitRef ? `${version}-dev (#${commitRef.slice(0, 7)})` : version}
     </a>
   );
 };

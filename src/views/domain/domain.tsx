@@ -34,7 +34,7 @@ const Domain = () => {
     if ((params?.sortType && !sortTypes.includes(params.sortType)) || (params.timeFilterName && !isValidTimeFilterName(params.timeFilterName))) {
       navigate('/not-found', { replace: true });
     }
-  }, [params?.sortType, params.timeFilterName, navigate, sortTypes]);
+  }, [params?.sortType, params.timeFilterName, navigate]);
 
   const matchesDomain = useCallback(
     (comment: Comment) => {
