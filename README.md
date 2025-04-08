@@ -12,6 +12,10 @@ Seedit is a serverless, adminless, decentralized reddit alternative. Seedit is a
 - desktop version (full p2p plebbit node, seeds automatically): available for Mac/Windows/Linux, [download link in the release page](https://github.com/seedit/seedit/releases/latest)
 - mobile version: available for Android, [download link in the release page](https://github.com/plebbit/seedit/releases/latest)
 
+<br />
+
+<img src="https://github.com/plebeius-eth/assets/blob/main/seedit-screenshot.jpg" width="849" height="442">
+
 ## How to create a community
 In the plebbit protocol, a seedit community is called a _subplebbit_. To run a subplebbit, you can choose between two options:
 
