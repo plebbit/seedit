@@ -19,4 +19,7 @@ export const createCommunitySubtitles = [
   '...take ownership literally.',
   '...your ideas, decentralized.',
   '...for digital sovereignty.',
+  '...for your movement.',
+  '...because you love freedom.',
+  '...because you hate freedom.',
 ];
