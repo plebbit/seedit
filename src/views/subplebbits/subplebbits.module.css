@@ -280,12 +280,17 @@
 .tags a {
   color: inherit;
   cursor: pointer;
-  border: 1px solid var(--gray-light);
-  padding: 1px 2px;
-  border-radius: 3px;
   margin-right: 4px;
   cursor: pointer;
   font-size: 10px;
+  background: var(--flair-blank-background);
+  color: var(--flair-blank-color);
+  border: 1px solid var(--flair-blank-border);
+  padding: 0 2px;
+  border-radius: 2px;
+  unicode-bidi: isolate;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 @media (max-width: 640px) {
