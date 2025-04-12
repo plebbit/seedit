@@ -133,7 +133,7 @@
 }
 
 .defaultAvatar img {
-  width: 50px;
+  object-fit: contain;
   height: 50px;
 }
 
