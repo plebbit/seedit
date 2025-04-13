@@ -193,11 +193,11 @@ const Post = ({ post }: { post: Comment }) => {
 
 const PostWithContext = ({ post }: { post: Comment }) => {
   const { t } = useTranslation();
+  const params = useParams();
   const { deleted, locked, postCid, removed, state, subplebbitAddress } = post || {};
   const postComment = useComment({ commentCid: postCid });
   const topParentCid = findTopParentCidOfReply(post.cid, postComment);
   const topParentComment = useComment({ commentCid: topParentCid || undefined });
-
   const stateString = useStateString(post);
 
   return (
@@ -225,7 +225,7 @@ const PostWithContext = ({ post }: { post: Comment }) => {
           </div>
         </div>
         <div className={styles.replies}>
-          <Reply key={`contextComment-${topParentComment?.cid}`} reply={topParentComment} depth={0} />
+          <Reply key={`contextComment-${topParentComment?.cid}`} reply={topParentComment} depth={0} cidOfReplyWithContext={params.commentCid} />
         </div>
       </div>
     </>

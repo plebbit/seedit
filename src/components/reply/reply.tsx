@@ -1,4 +1,4 @@
-import { Fragment, useEffect, useMemo, useState } from 'react';
+import { Fragment, useEffect, useMemo, useState, useRef } from 'react';
 import { Comment, useAccountComment, useAuthorAddress, useAuthorAvatar, useBlock, useComment, useEditedComment } from '@plebbit/plebbit-react-hooks';
 import useSubplebbitsStore from '@plebbit/plebbit-react-hooks/dist/stores/subplebbits';
 import useSubplebbitsPagesStore from '@plebbit/plebbit-react-hooks/dist/stores/subplebbits-pages';
@@ -416,8 +416,26 @@ const Reply = ({ cidOfReplyWithContext, depth = 0, isSingleComment, isSingleRepl
 
   const post = useSubplebbitsPagesStore((state) => state.comments[postCid as string]);
 
+  // auto scroll to context reply
+  const replyContextContentRef = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    if (cidOfReplyWithContext === cid) {
+      const scrollTimeout = setTimeout(() => {
+        const replyElement = replyContextContentRef.current;
+        if (replyElement) {
+          replyElement.scrollIntoView({
+            behavior: 'smooth',
+            block: 'center',
+          });
+        }
+      }, 500);
+
+      return () => clearTimeout(scrollTimeout);
+    }
+  }, [cidOfReplyWithContext, cid]);
+
   return (
-    <div className={styles.reply}>
+    <div className={styles.reply} id={cidOfReplyWithContext === cid ? `reply-${cid}` : undefined}>
       {isSingleReply && !isInInboxView && <ParentLink postCid={cid ? postCid : parentOfPendingReply?.postCid} />}
       {isInInboxView && <InboxParentLink commentCid={cid} />}
       <div className={`${!isSingleReply ? styles.replyWrapper : styles.singleReplyWrapper} ${depth > 0 && styles.nested}`}>
@@ -485,7 +503,10 @@ const Reply = ({ cidOfReplyWithContext, depth = 0, isSingleComment, isSingleRepl
               />
             )}
             {!collapsed && (
-              <div className={`${styles.usertext} ${cid && commentMediaInfo && (isSingleComment || cidOfReplyWithContext === cid) ? styles.highlightMedia : ''}`}>
+              <div
+                ref={replyContextContentRef}
+                className={`${styles.usertext} ${cid && commentMediaInfo && (isSingleComment || cidOfReplyWithContext === cid) ? styles.highlightMedia : ''}`}
+              >
                 {commentMediaInfo && !(removed || deleted) && (
                   <ReplyMedia
                     commentMediaInfo={commentMediaInfo}
