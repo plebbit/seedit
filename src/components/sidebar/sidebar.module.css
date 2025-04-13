@@ -300,13 +300,15 @@ a {
 .footer {
   font: normal x-small verdana, arial, helvetica, sans-serif;
   width: 100%;
-  max-width: 300px;
   box-sizing: border-box;
   background-color: var(--background);
-  margin-top: 10px;
-  margin-bottom: 20px;
   overflow: hidden;
 }
+
+.subplebbitFooterMargin {
+  margin-top: 15px;
+  margin-bottom: 15px;
+} 
 
 .footerLinks {
   overflow: hidden;
@@ -336,11 +338,7 @@ a {
 }
 
 .footer a {
-  color: var(--gray-footer);
-}
-
-.footer a:hover {
-  text-decoration: underline;
+  color: var(--link-primary);
 }
 
 .mobileFooter {

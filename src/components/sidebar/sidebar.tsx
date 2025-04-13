@@ -125,9 +125,14 @@ export const Footer = () => {
   const isMobile = useIsMobile();
   const isInHomeAboutView = isHomeAboutView(location.pathname);
   const isInPostPageAboutView = isPostPageAboutView(location.pathname, params);
+  const isInSubplebbitView = isSubplebbitView(location.pathname, params);
 
   return (
-    <div className={`${styles.footer} ${isMobile && (isInHomeAboutView || isInPostPageAboutView) ? styles.mobileFooter : ''}`}>
+    <div
+      className={`${styles.footer} ${isMobile && (isInHomeAboutView || isInPostPageAboutView) ? styles.mobileFooter : ''} ${
+        isInSubplebbitView ? styles.subplebbitFooterMargin : ''
+      }`}
+    >
       <div className={styles.footerLinks}>
         <ul>
           <li>
@@ -135,20 +140,26 @@ export const Footer = () => {
           </li>
           <span className={styles.footerSeparator}>|</span>
           <li>
-            <a href='https://plebbit.com' target='_blank' rel='noopener noreferrer'>
-              about
-            </a>
-            <span className={styles.footerSeparator}>|</span>
-          </li>
-          <li>
-            <a href='https://github.com/plebbit/seedit' target='_blank' rel='noopener noreferrer'>
-              github
-            </a>
-            <span className={styles.footerSeparator}>|</span>
-          </li>
-          <li>
             <a href='https://plebbit.github.io/docs/learn/clients/seedit/what-is-seedit' target='_blank' rel='noopener noreferrer'>
               docs
+            </a>
+            <span className={styles.footerSeparator}>|</span>
+          </li>
+          <li>
+            <a href='https://x.com/getplebbit' target='_blank' rel='noopener noreferrer'>
+              x
+            </a>
+            <span className={styles.footerSeparator}>|</span>
+          </li>
+          <li>
+            <a href='https://t.me/plebbit' target='_blank' rel='noopener noreferrer'>
+              telegram
+            </a>
+            <span className={styles.footerSeparator}>|</span>
+          </li>
+          <li>
+            <a href='https://discord.gg/E7ejphwzGW' target='_blank' rel='noopener noreferrer'>
+              discord
             </a>
           </li>
         </ul>
@@ -372,12 +383,12 @@ const Sidebar = ({ comment, isSubCreatedButNotYetPublished, settings, subplebbit
           {subtitle2 && <div className={styles.createCommunitySubtitle}>{subtitle2}</div>}
         </div>
         {roles && Object.keys(roles).length > 0 && <ModeratorsList roles={roles} />}
+        {(!(isMobile && isInHomeAboutView) || isInSubplebbitAboutView || isInPostPageAboutView) && <Footer />}
         {address && !(moderatorRole || isOwner) && (
           <div className={styles.readOnlySettingsLink}>
             <Link to={`/p/${address}/settings`}>{t('community_settings')}</Link>
           </div>
         )}
-        {(!(isMobile && isInHomeAboutView) || isInSubplebbitAboutView || isInPostPageAboutView) && !isInSubplebbitView && <Footer />}
         {isMobile && isInHomeAboutView && <FAQ />}
       </div>
     </div>
