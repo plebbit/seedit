@@ -428,7 +428,7 @@ const Reply = ({ cidOfReplyWithContext, depth = 0, isSingleComment, isSingleRepl
             block: 'center',
           });
         }
-      }, 500);
+      }, 100);
 
       return () => clearTimeout(scrollTimeout);
     }
