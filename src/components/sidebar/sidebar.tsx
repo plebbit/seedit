@@ -140,14 +140,8 @@ export const Footer = () => {
           </li>
           <span className={styles.footerSeparator}>|</span>
           <li>
-            <a href='https://plebbit.github.io/docs/learn/clients/seedit/what-is-seedit' target='_blank' rel='noopener noreferrer'>
-              docs
-            </a>
-            <span className={styles.footerSeparator}>|</span>
-          </li>
-          <li>
-            <a href='https://x.com/getplebbit' target='_blank' rel='noopener noreferrer'>
-              x
+            <a href='https://github.com/plebbit/seedit' target='_blank' rel='noopener noreferrer'>
+              github
             </a>
             <span className={styles.footerSeparator}>|</span>
           </li>
@@ -158,8 +152,14 @@ export const Footer = () => {
             <span className={styles.footerSeparator}>|</span>
           </li>
           <li>
-            <a href='https://discord.gg/E7ejphwzGW' target='_blank' rel='noopener noreferrer'>
-              discord
+            <a href='https://x.com/getplebbit' target='_blank' rel='noopener noreferrer'>
+              x
+            </a>
+            <span className={styles.footerSeparator}>|</span>
+          </li>
+          <li>
+            <a href='https://plebbit.github.io/docs/learn/clients/seedit/what-is-seedit' target='_blank' rel='noopener noreferrer'>
+              docs
             </a>
           </li>
         </ul>
