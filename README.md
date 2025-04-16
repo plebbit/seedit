@@ -4,13 +4,13 @@ _Telegram group for this repo https://t.me/seeditreact_
 
 # Seedit
 
-Seedit is a serverless, adminless, decentralized reddit alternative. Seedit is a client (interface) for the Plebbit protocol, which is a decentralized social network where anyone can create and fully own unstoppable communities. To learn more about Plebbit and its clients, please visit plebbit.com.
+Seedit is a serverless, adminless, decentralized reddit alternative. Seedit is a client (interface) for the Plebbit protocol, which is a decentralized social network where anyone can create and fully own unstoppable communities. Learn more: https://plebbit.com
 
-- web version: https://seedit.app, also available using Brave/IPFS Companion on https://seedit.eth
+- Seedit web version: https://seedit.app — or, using Brave/IPFS Companion: https://seedit.eth
 
 ### Downloads
-- desktop version (full p2p plebbit node, seeds automatically): available for Mac/Windows/Linux, [download link in the release page](https://github.com/seedit/seedit/releases/latest)
-- mobile version: available for Android, [download link in the release page](https://github.com/plebbit/seedit/releases/latest)
+- Seedit desktop version (full p2p plebbit node, seeds automatically): available for Mac/Windows/Linux, [download link in the release page](https://github.com/seedit/seedit/releases/latest)
+- Seedit mobile version: available for Android, [download link in the release page](https://github.com/plebbit/seedit/releases/latest)
 
 <br />
 
