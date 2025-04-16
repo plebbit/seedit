@@ -1,3 +1,67 @@
+# [0.4.0](https://github.com/plebbit/seedit/compare/v0.3.0...v0.4.0) (2025-04-16)
+
+
+### Bug Fixes
+
+* **account bar:** selecting account would not close dropdown ([87e5a03](https://github.com/plebbit/seedit/commit/87e5a030c417c50bfa67728b5e02ab8b7e7b1a4b))
+* button image didn't appear instantly when moving the mouse over button ([137f470](https://github.com/plebbit/seedit/commit/137f470b5b23a5b46695c2762c5e64223e0e7877))
+* **challenge modal:** user could submit empty answer ([5d0f4f9](https://github.com/plebbit/seedit/commit/5d0f4f958ce217fc8a9cb36782714a33024f1187))
+* **electron:** bundle main process to resolve ESM issues in Linux AppImage ([ec989f5](https://github.com/plebbit/seedit/commit/ec989f5e9c040aa8144fced78342138ec56f1c94))
+* **electron:** bundle main process to resolve ESM issues in Linux AppImage ([7e7a039](https://github.com/plebbit/seedit/commit/7e7a039f1ea008dcdcd4561fc17c72246b3f3e09))
+* **electron:** migrate Electron files to CommonJS for cross-platform compatibility ([6444fb5](https://github.com/plebbit/seedit/commit/6444fb5b063db02cfb9308949ae2cf2b18ccd2df))
+* **electron:** replace electron-is-dev with app.isPackaged ([8f7d8e3](https://github.com/plebbit/seedit/commit/8f7d8e32c6905a72a8d772359a5b4b6d50e37b1a))
+* **embed:** on tablets, media could appear too small in width ([b1c3b62](https://github.com/plebbit/seedit/commit/b1c3b6232a6ddd095708d6ad668ba84469db8cf9))
+* **feed:** newly published post wouldn't appear instantly in feed ([5303825](https://github.com/plebbit/seedit/commit/53038254f5b203f8d31ec0720b9512960ecff5d7))
+* **feed:** selecting "controversial" sort would 404 ([456e8b4](https://github.com/plebbit/seedit/commit/456e8b466e9d0b588da92e843f4496975701fb88))
+* fix electron ([82022fa](https://github.com/plebbit/seedit/commit/82022fa13c6831b7a2e9f0ddc02ce3ace3aa6fbd))
+* **header:** clicking header avatar should always redirect to homepage ([593fd89](https://github.com/plebbit/seedit/commit/593fd8981801adfae8caebe0e046aca7b55c4302))
+* **header:** fix mobile submit link ([7b02354](https://github.com/plebbit/seedit/commit/7b023540151b7f62fcd75700888d1d6796cdf23e))
+* **header:** preload seedit logo text, so it switches to dark version immediately when changing theme ([5a87391](https://github.com/plebbit/seedit/commit/5a873915b37857f70f1f55d457adc9385fd6a2e6))
+* **header:** some titles and links were bugged ([22e676e](https://github.com/plebbit/seedit/commit/22e676e539178f73510c0a2dfa35e8ba8127a47e))
+* **header:** subplebbit address could fail to appear as title while subplebbits loads ([88da3f5](https://github.com/plebbit/seedit/commit/88da3f594bd1786d4d49cd4ec7fb05694894e081))
+* **home:** no subscriptions message wasn't showing, after removing all subscriptions ([4e8db71](https://github.com/plebbit/seedit/commit/4e8db715418bced0cebabc0b5fad3242d6868f73))
+* **inbox:** "show parent" button didn't work ([fa438fd](https://github.com/plebbit/seedit/commit/fa438fd9487b31414d1c236aa16a807878d48738))
+* **media:** expanded media could appear behind sidebar, on tablet screen size ([afcacc7](https://github.com/plebbit/seedit/commit/afcacc7ef49faf2c3493f58f18730c82271490e0))
+* **package.json:** downgrade typescript to fix linter warning ([d812d9c](https://github.com/plebbit/seedit/commit/d812d9c9de1c9953f93e8a63cf99906bb3926b6e))
+* **pending post:** join button wasn't rendering in sidebar ([909186f](https://github.com/plebbit/seedit/commit/909186f10fe33d4f9559825863c32ecb4467acd5))
+* **post:** context and permalink views wouldn't load comments properly ([f5172b0](https://github.com/plebbit/seedit/commit/f5172b04dda5d8899c4bf0fd245972e1582d2893))
+* **post:** post context view should automatically scroll to post ([39c6f50](https://github.com/plebbit/seedit/commit/39c6f50bdcc407907e82e6f5112d0e754a4d6708))
+* **post:** post without content nor link could have redundant padding from empty expando ([797f6ff](https://github.com/plebbit/seedit/commit/797f6ff70892531246f73e011c6ed204adedcaae))
+* **profile page:** comments could appear after failing to load ([70ea094](https://github.com/plebbit/seedit/commit/70ea09411ccf63e95d51244b505f099ac495f2e2))
+* **profile page:** links to user profiles from comments view were broken ([645638b](https://github.com/plebbit/seedit/commit/645638b10fad19adabcfe19c4851d77dce9ba401))
+* **routing:** applying invalid sort types or time filter names should redirect to not found page ([f642aa6](https://github.com/plebbit/seedit/commit/f642aa659b819879d61b1b09398504a5b9c6b815))
+* **submit page:** don't render subplebbit address dropdown if no matches are found ([b2f71a6](https://github.com/plebbit/seedit/commit/b2f71a69f036dc113d81f70a7949b7c1496d82d8))
+* **submit page:** fields would unnecessarily reset when navigating away from page ([03383d7](https://github.com/plebbit/seedit/commit/03383d7231d471e6e035fb4d2a6629736c38a0c4))
+* **thumbnail:** show link icon if media 404'd ([972b819](https://github.com/plebbit/seedit/commit/972b819f56b194013b23909b3253afaeade11773))
+* **topbar:** position "more" link at rightmost end of the topbar ([f164ae1](https://github.com/plebbit/seedit/commit/f164ae1a692eb365937d699c2db2ebde943b421e))
+
+
+### Features
+
+* add domain view ([83a02f3](https://github.com/plebbit/seedit/commit/83a02f3471c0a7bdedd4001a1a0086b2f7fbe5a6))
+* add filters dropdown from topbar, for easy access on mobile ([787bb6b](https://github.com/plebbit/seedit/commit/787bb6b982459f025e01336a1286e18f4e79e4da))
+* **comment edit:** if the user manually types "edit: " at the end of an edit, parse it as comment.edit.reason ([10b4ea8](https://github.com/plebbit/seedit/commit/10b4ea84eb09ca1e5896db2ba082269ecc2c5d72))
+* **embeds:** add PDF support for direct links and pdf file upload ([ee37b49](https://github.com/plebbit/seedit/commit/ee37b49d886c7d5bb08e5539268b7acf03bf8c34))
+* **markdown:** add code blocks ([7921ca5](https://github.com/plebbit/seedit/commit/7921ca523ede481e708413c460cd1cee1af4db2a))
+* **markdown:** add spoiler text ([ef1dd0f](https://github.com/plebbit/seedit/commit/ef1dd0f9910bb1001a32d89ff647aa4b6b166955))
+* **profile:** add post karma count to account bar, start post count with 1 like on reddit ([8f48a92](https://github.com/plebbit/seedit/commit/8f48a925cd123999f9e5b36a0bb53a0303d6d29e))
+* **search bar:** add function to search for posts in the feed ([d0bf172](https://github.com/plebbit/seedit/commit/d0bf1721f8eb7d84d0539f2459c11765bda3e395))
+* **search bar:** search posts in current feed by query, highlight post titles matching result ([d4fc8bb](https://github.com/plebbit/seedit/commit/d4fc8bb822c7e889c70f032fab1a22f78d97c8fb))
+* **settings:** add "content options" page, add option to hide all default subs from topbar ([32a643e](https://github.com/plebbit/seedit/commit/32a643e21ce63f1d294c82b832c11b7d5bae1a29))
+* **submit forms:** add "preview" button to let the user quickly check how the markdown will render ([bf118e7](https://github.com/plebbit/seedit/commit/bf118e7ac8cffcda89d2ae72ac15f40b274a8d72))
+* **submit page:** add formatting help ([c5b952f](https://github.com/plebbit/seedit/commit/c5b952ff37a6b3a1790fc7639eef440af760a907))
+* **submit page:** add media file upload ([dc43aeb](https://github.com/plebbit/seedit/commit/dc43aeb9932dd98cd21ee8499db38ae8526fd975))
+* **subplebbit settings:** add formatting help ([a4333aa](https://github.com/plebbit/seedit/commit/a4333aa1c39d8a4123fab5c5134d91d4396691ef))
+* **time filter:** remember time filter selection during session ([1b4b5cf](https://github.com/plebbit/seedit/commit/1b4b5cf213df73e0217ec7c7f28dc9b226a1c21e))
+* **topbar:** show subscriptions before other addresses ([f59c58a](https://github.com/plebbit/seedit/commit/f59c58af337a3e2f7ccc6631b023790d53bce947))
+
+
+### Performance Improvements
+
+* **expando:** lazy load Embed component for iframe embeds ([8c854f4](https://github.com/plebbit/seedit/commit/8c854f4a02a89564932ecc248ba50d8a46efa571))
+
+
+
 # [0.3.0](https://github.com/plebbit/seedit/compare/v0.2.5...v0.3.0) (2025-03-17)
 
 
