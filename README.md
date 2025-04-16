@@ -14,7 +14,7 @@ Seedit is a serverless, adminless, decentralized reddit alternative. Seedit is a
 
 <br />
 
-<img src="https://github.com/plebeius-eth/assets/blob/main/seedit-screenshot.jpg" width="849" height="442">
+<img src="https://github.com/plebeius-eth/assets/blob/main/seedit-screenshot.jpg" width="849">
 
 ## How to create a community
 In the plebbit protocol, a seedit community is called a _subplebbit_. To run a subplebbit, you can choose between two options:

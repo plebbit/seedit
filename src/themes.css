@@ -35,6 +35,9 @@
   --filter50: brightness(50%);
   --filter80: brightness(80%);
   --filter90: brightness(90%);
+  --flair-blank-background: #1e2021;
+  --flair-blank-border: #3a3e41;
+  --flair-blank-color: #b2aca2;
   --gray: #3e3e3e;
   --gray-border: #3e3e3e;
   --gray-button-text: #aaa;
@@ -130,6 +133,9 @@
   --filter50: brightness(100%);
   --filter80: brightness(100%);
   --filter90: brightness(100%);
+  --flair-blank-background: #f5f5f5;
+  --flair-blank-border: #ddd;
+  --flair-blank-color: #555;
   --gray: #c0c0c0;
   --gray-border: #ddd;
   --gray-button-text: #aaa;
