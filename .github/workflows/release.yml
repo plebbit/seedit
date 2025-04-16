@@ -71,7 +71,7 @@ jobs:
         with:
           artifacts: 'dist/seedit-mac*.dmg'
           token: ${{ secrets.GITHUB_TOKEN }}
-          replacesArtifacts: true
+          replacesArtifacts: false
           bodyFile: "release-body.txt"
           allowUpdates: true
 
@@ -99,7 +99,7 @@ jobs:
         with:
           artifacts: 'dist/seedit-windows*.exe'
           token: ${{ secrets.GITHUB_TOKEN }}
-          replacesArtifacts: true
+          replacesArtifacts: false
           bodyFile: "release-body.txt"
           allowUpdates: true
 
@@ -151,6 +151,6 @@ jobs:
         with:
           artifacts: 'dist/seedit-android*.apk'
           token: ${{ secrets.GITHUB_TOKEN }}
-          replacesArtifacts: true
+          replacesArtifacts: false
           bodyFile: "release-body.txt"
           allowUpdates: true
