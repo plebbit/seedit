@@ -34,7 +34,7 @@ jobs:
       - run: node scripts/release-body > release-body.txt
       - uses: ncipollo/release-action@v1
         with:
-          artifacts: 'dist/seedit-linux*.AppImage,dist/seedit-html*.zip'
+          artifacts: 'dist/seedit*.AppImage,dist/seedit-html*.zip'
           token: ${{ secrets.GITHUB_TOKEN }}
           replacesArtifacts: true
           bodyFile: "release-body.txt"
@@ -69,7 +69,7 @@ jobs:
       - run: node scripts/release-body > release-body.txt
       - uses: ncipollo/release-action@v1
         with:
-          artifacts: 'dist/seedit-mac*.dmg'
+          artifacts: 'dist/seedit*.dmg'
           token: ${{ secrets.GITHUB_TOKEN }}
           replacesArtifacts: true
           bodyFile: "release-body.txt"
@@ -97,14 +97,14 @@ jobs:
       - run: node scripts/release-body > release-body.txt
       - uses: ncipollo/release-action@v1
         with:
-          artifacts: 'dist/seedit-windows*.exe'
+          artifacts: 'dist/seedit*.exe'
           token: ${{ secrets.GITHUB_TOKEN }}
           replacesArtifacts: true
           bodyFile: "release-body.txt"
           allowUpdates: true
 
   android:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
     permissions:
       contents: write
     steps:
@@ -118,7 +118,7 @@ jobs:
           java-version: '17'
       - uses: gradle/gradle-build-action@v2
         with:
-          gradle-version: 7.6
+          gradle-version: 8.9
       - uses: actions/setup-node@v2
         with:
           node-version: 18
@@ -142,14 +142,14 @@ jobs:
       # to create keystore: keytool -genkey -v -keystore plebbit.keystore -keyalg RSA -keysize 2048 -validity 10000 -alias release
       - run: cd android/app/build/outputs/apk/release && apksigner sign --ks ../../../../../plebbit.keystore --ks-pass pass:${{ secrets.PLEBBIT_REACT_KEYSTORE_PASSWORD }} --ks-key-alias release --out app-release-signed.apk app-release-unsigned-zip.apk
       # move apk to dist folder
-      - run: mkdir -p dist && mv android/app/build/outputs/apk/release/app-release-signed.apk dist/seedit-android-$(node -e "console.log(require('./package.json').version)").apk
+      - run: mkdir -p dist && mv android/app/build/outputs/apk/release/app-release-signed.apk dist/seedit-$(node -e "console.log(require('./package.json').version)").apk
       - run: ls dist
 
       # publish version release
       - run: node scripts/release-body > release-body.txt
       - uses: ncipollo/release-action@v1
         with:
-          artifacts: 'dist/seedit-android*.apk'
+          artifacts: 'dist/seedit*.apk'
           token: ${{ secrets.GITHUB_TOKEN }}
           replacesArtifacts: true
           bodyFile: "release-body.txt"
