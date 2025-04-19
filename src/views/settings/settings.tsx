@@ -212,7 +212,7 @@ const GeneralSettings = () => {
           <AddressSettings />
         </span>
       </div>
-      <div className={styles.category}>
+      <div className={`${styles.category} ${location.hash === '#cryptoWallets' ? styles.highlightedSetting : ''}`} id='cryptoWallets'>
         <span className={styles.categoryTitle}>{t('crypto_wallets')}</span>
         <span className={styles.categorySettings}>
           <WalletSettings />
