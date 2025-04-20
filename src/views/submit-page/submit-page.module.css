@@ -220,7 +220,7 @@
 }
 
 .mediaPreview img, .mediaPreview iframe, .mediaPreview video {
-  width: 100%;
+  max-width: 100%;
   max-height: 300px;
   border: none;
 }
