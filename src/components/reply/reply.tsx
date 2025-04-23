@@ -419,7 +419,7 @@ const Reply = ({ cidOfReplyWithContext, depth = 0, isSingleComment, isSingleRepl
   // auto scroll to context reply
   const replyContextContentRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
-    if (cidOfReplyWithContext === cid) {
+    if (cidOfReplyWithContext === cid && isInPostContextView) {
       const scrollTimeout = setTimeout(() => {
         const replyElement = replyContextContentRef.current;
         if (replyElement) {
@@ -432,7 +432,7 @@ const Reply = ({ cidOfReplyWithContext, depth = 0, isSingleComment, isSingleRepl
 
       return () => clearTimeout(scrollTimeout);
     }
-  }, [cidOfReplyWithContext, cid]);
+  }, [cidOfReplyWithContext, cid, isInPostContextView]);
 
   return (
     <div className={styles.reply} id={cidOfReplyWithContext === cid ? `reply-${cid}` : undefined}>
