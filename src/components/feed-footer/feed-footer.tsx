@@ -27,11 +27,9 @@ const FeedFooter = ({
   hasFeedLoaded,
   hasMore,
   subplebbitAddresses,
-  subplebbitAddressesWithNewerPosts,
   weeklyFeedLength,
   monthlyFeedLength,
   currentTimeFilterName,
-  reset,
   searchQuery,
   isSearching,
   showNoResults,
@@ -43,13 +41,6 @@ const FeedFooter = ({
   const location = useLocation();
   const isInModView = isModView(location.pathname);
   const isInAllView = isAllView(location.pathname);
-
-  const handleNewerPostsButtonClick = () => {
-    window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
-    setTimeout(() => {
-      reset();
-    }, 300);
-  };
 
   const feedStateString = useFeedStateString(subplebbitAddresses);
   const loadingStateString =
@@ -111,16 +102,7 @@ const FeedFooter = ({
     // Only show newer posts/weekly/monthly suggestions when not searching
     footerContent = (
       <>
-        {subplebbitAddressesWithNewerPosts.length > 0 && !searchQuery ? (
-          <div className={styles.morePostsSuggestion}>
-            <Trans
-              i18nKey='newer_posts_available'
-              components={{
-                1: <span key='newer-posts-span' onClick={handleNewerPostsButtonClick} />,
-              }}
-            />
-          </div>
-        ) : weeklyFeedLength > feedLength && !searchQuery ? (
+        {weeklyFeedLength > feedLength && !searchQuery ? (
           <div className={styles.morePostsSuggestion}>
             <Trans
               i18nKey='more_posts_last_week'
