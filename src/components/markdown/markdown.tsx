@@ -87,12 +87,6 @@ const Markdown = ({ content }: MarkdownProps) => {
               </a>
             ),
             p: ({ children }) => <p>{children}</p>,
-            h1: ({ children }) => <p>{children}</p>,
-            h2: ({ children }) => <p>{children}</p>,
-            h3: ({ children }) => <p>{children}</p>,
-            h4: ({ children }) => <p>{children}</p>,
-            h5: ({ children }) => <p>{children}</p>,
-            h6: ({ children }) => <p>{children}</p>,
             img: ({ src, alt }) => {
               const displayText = src || alt || 'image';
               return <span>{displayText}</span>;

@@ -26,8 +26,34 @@
   white-space: normal;
 }
 
+.markdown h1 {
+  font-size: 18px;
+  margin-bottom: 15px;
+}
+
 .markdown h2 {
-  font-size: larger;
+  font-size: 18px;
+  font-weight: normal;
+  margin-bottom: 15px;
+}
+
+.markdown h3, .markdown h4 {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.markdown h4 {
+  font-weight: normal;
+}
+
+.markdown h5, .markdown h6 {
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.markdown h6 {
+  font-weight: normal;
+  text-decoration: underline;
 }
 
 .markdown p {
