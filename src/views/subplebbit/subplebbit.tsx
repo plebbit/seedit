@@ -351,7 +351,7 @@ const Subplebbit = () => {
   const footerProps: FooterProps = {
     subplebbitAddresses,
     subplebbitAddress,
-    feedLength: feed.length || 0,
+    feedLength: combinedFeed.length || 0,
     isOnline,
     started,
     isSubCreatedButNotYetPublished,
