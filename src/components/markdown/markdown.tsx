@@ -86,7 +86,13 @@ const Markdown = ({ content }: MarkdownProps) => {
                 {children}
               </a>
             ),
-            p: ({ children }) => <p>{children}</p>,
+            p: ({ children }) => {
+              const isEmpty =
+                !children ||
+                (Array.isArray(children) && children.every((child) => child === null || child === undefined || (typeof child === 'string' && child.trim() === '')));
+
+              return !isEmpty && <p>{children}</p>;
+            },
             img: ({ src, alt }) => {
               const displayText = src || alt || 'image';
               return <span>{displayText}</span>;
