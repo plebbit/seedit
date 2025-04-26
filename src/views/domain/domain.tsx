@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState, useMemo, useCallback } from 'react';
 import { useNavigate, useParams, useSearchParams } from 'react-router-dom';
 import { Virtuoso, VirtuosoHandle, StateSnapshot } from 'react-virtuoso';
-import { useFeed, Comment } from '@plebbit/plebbit-react-hooks';
+import { useFeed, Comment, CommentsFilter } from '@plebbit/plebbit-react-hooks';
 import { commentMatchesPattern } from '../../lib/utils/pattern-utils';
 import useFeedFiltersStore from '../../stores/use-feed-filters-store';
 import { useDefaultSubplebbitAddresses } from '../../hooks/use-default-subplebbits';
@@ -54,26 +54,30 @@ const Domain = () => {
   );
 
   const feedOptions = useMemo(() => {
-    const options: any = {
-      newerThan: searchQuery ? 0 : timeFilterSeconds,
-      sortType,
-      subplebbitAddresses,
-    };
-
-    options.filter = (comment: Comment) => {
+    const filterFunc = (comment: Comment) => {
       const domainMatches = matchesDomain(comment);
-
       if (searchQuery) {
         return domainMatches && commentMatchesPattern(comment, searchQuery);
       }
-
       return domainMatches;
     };
 
-    options.filterKey = searchQuery ? `search-filter-${searchQuery}` : undefined;
+    const filterKey = searchQuery ? `search-filter-${domain}-${searchQuery}` : `domain-filter-${domain}`;
+
+    const options: {
+      newerThan: number;
+      sortType: string;
+      subplebbitAddresses: string[];
+      filter: CommentsFilter;
+    } = {
+      newerThan: searchQuery ? 0 : timeFilterSeconds ?? 0,
+      sortType,
+      subplebbitAddresses,
+      filter: { filter: filterFunc, key: filterKey },
+    };
 
     return options;
-  }, [subplebbitAddresses, sortType, timeFilterSeconds, searchQuery, matchesDomain]);
+  }, [subplebbitAddresses, sortType, timeFilterSeconds, searchQuery, matchesDomain, domain]);
 
   const { feed, hasMore, loadMore, reset, subplebbitAddressesWithNewerPosts } = useFeed(feedOptions);
 
@@ -107,14 +111,14 @@ const Domain = () => {
     subplebbitAddresses,
     sortType,
     newerThan: 60 * 60 * 24 * 7,
-    filter: matchesDomain,
+    filter: { filter: matchesDomain, key: `domain-filter-weekly-${domain}` },
   });
 
   const { feed: monthlyFeed } = useFeed({
     subplebbitAddresses,
     sortType,
     newerThan: 60 * 60 * 24 * 30,
-    filter: matchesDomain,
+    filter: { filter: matchesDomain, key: `domain-filter-monthly-${domain}` },
   });
 
   const documentTitle = domain + ' - Seedit';
