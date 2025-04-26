@@ -388,6 +388,6 @@
   "tagged_as_anti": "标记为\"反\"",
   "tagged_as_vulgar": "标记为“vulgar”",
   "drop_here_or": "拖放到此处或",
-  "upload_button_warning": "此功能仅在Seedit Android应用程序或桌面应用程序（Windows、Mac或Linux）版本中可用。不能在浏览器中使用。\n\n是否要转到GitHub上的下载链接页面？",
-  "create_community_warning": "此功能仅适用于 Seedit 桌面应用（Windows、Mac 或 Linux）版本。\n\n前往 GitHub 的下载链接页面？"
+  "upload_button_warning": "自动上传被浏览器的CORS政策阻止，但可以在Seedit Android应用程序和桌面应用程序（Win/Mac/Linux）上使用。\n\n前往GitHub上的下载链接页面？",
+  "create_community_warning": "创建社区需要运行一个完整的节点。Seedit桌面应用程序（Win/Mac/Linux）会自动运行一个完整的节点。\n\n前往GitHub上的下载链接页面？"
 }

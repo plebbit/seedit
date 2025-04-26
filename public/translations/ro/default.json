@@ -388,6 +388,6 @@
   "tagged_as_anti": "etichetați ca \"anti\"",
   "tagged_as_vulgar": "marcat ca \"vulgar\"",
   "drop_here_or": "Aruncați aici sau",
-  "upload_button_warning": "Această funcție este disponibilă doar pe aplicația Seedit pentru Android sau pe aplicația desktop (Windows, Mac sau Linux). Nu poate fi utilizată în browsere.\n\nDoriți să accesați pagina cu linkurile de descărcare pe GitHub?",
-  "create_community_warning": "Această funcționalitate este disponibilă doar în aplicația desktop Seedit (versiunea Windows, Mac sau Linux).\n\nMergi la pagina de linkuri de descărcare de pe GitHub?"
+  "upload_button_warning": "Încărcarea automată este blocată de politica CORS a browser-ului tău, dar este disponibilă în aplicația Seedit pentru Android și aplicațiile desktop (Win/Mac/Linux).\n\nMergi la pagina cu linkuri de descărcare pe GitHub?",
+  "create_community_warning": "Crearea unei comunități necesită rularea unui nod complet. Aplicația Seedit pentru desktop (Win/Mac/Linux) rulează automat un nod complet.\n\nMergi la pagina cu linkuri de descărcare pe GitHub?"
 }

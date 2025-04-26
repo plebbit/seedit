@@ -388,6 +388,6 @@
   "tagged_as_anti": "als \"anti\" markiert",
   "tagged_as_vulgar": "als \"vulgär\" markiert",
   "drop_here_or": "Hier ablegen oder",
-  "upload_button_warning": "Dieses Feature ist nur in der Seedit Android-App oder der Desktop-App (Windows, Mac oder Linux) verfügbar. Es kann nicht in Browsern verwendet werden.\n\nMöchten Sie zur Download-Link-Seite auf GitHub gehen?",
-  "create_community_warning": "Diese Funktion ist nur in der Seedit-Desktop-App (Windows, Mac oder Linux) verfügbar.\n\nGehe zur Download-Links-Seite auf GitHub?"
+  "upload_button_warning": "Auto-Upload wird durch die CORS-Richtlinie Ihres Browsers blockiert, ist jedoch in der Seedit Android-App und Desktop-App (Win/Mac/Linux) verfügbar.\n\nGehen Sie zur Download-Link-Seite auf GitHub?",
+  "create_community_warning": "Das Erstellen einer Community erfordert das Ausführen eines vollständigen Knotens. Die Seedit-Desktop-App (Win/Mac/Linux) führt automatisch einen vollständigen Knoten aus.\n\nGehen Sie zur Download-Link-Seite auf GitHub?"
 }

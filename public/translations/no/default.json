@@ -388,6 +388,6 @@
   "tagged_as_anti": "merket som \"anti\"",
   "tagged_as_vulgar": "merket som \"vulgar\"",
   "drop_here_or": "Slipp her eller",
-  "upload_button_warning": "Denne funksjonen er kun tilgjengelig på Seedit Android-appen eller desktop-appen (Windows, Mac eller Linux). Den kan ikke brukes i nettlesere.\n\nVil du gå til nedlastingslenkesiden på GitHub?",
-  "create_community_warning": "Denne funksjonen er kun tilgjengelig på Seedit desktop-appen (Windows, Mac eller Linux) versjonen.\n\nGå til nedlastingslenkesiden på GitHub?"
+  "upload_button_warning": "Auto-opplasting er blokkert av CORS-policyen til nettleseren din, men det er tilgjengelig på Seedit Android-app og desktopapp (Win/Mac/Linux).\n\nGå til nedlastingslenkesiden på GitHub?",
+  "create_community_warning": "Opprettelse av et fellesskap krever at du kjører en full node. Seedit desktop-appen (Win/Mac/Linux) kjører automatisk en full node.\n\nGå til nedlastingslenkesiden på GitHub?"
 }

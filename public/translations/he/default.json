@@ -388,6 +388,6 @@
   "tagged_as_anti": "מתויג כ\"נגד\"",
   "tagged_as_vulgar": "סומן כ-\"גס\"",
   "drop_here_or": "הנח כאן או",
-  "upload_button_warning": "תכונה זו זמינה רק באפליקציית Seedit עבור Android או באפליקציית שולחן העבודה (Windows, Mac או Linux). היא לא יכולה לשמש בדפדפנים.\n\nהאם תרצה לעבור לדף קישורי ההורדה ב-GitHub?",
-  "create_community_warning": "תכונה זו זמינה רק בגרסת האפליקציה של Seedit למחשב שולחני (Windows, Mac או Linux).\n\nעבור לדף קישורי ההורדה ב-GitHub?"
+  "upload_button_warning": "העלאה אוטומטית חסומה על ידי מדיניות ה-CORS של הדפדפן שלך, אך היא זמינה באפליקציית Seedit לאנדרואיד ובאפליקציית הדסקטופ (Win/Mac/Linux).\n\nעבור לדף קישורי ההורדה ב-GitHub?",
+  "create_community_warning": "יצירת קהילה דורשת הפעלת צומת מלא. אפליקציית שולחן העבודה של Seedit (Win/Mac/Linux) מפעילה צומת מלא באופן אוטומטי.\n\nעבור לדף קישורי ההורדה ב-GitHub?"
 }

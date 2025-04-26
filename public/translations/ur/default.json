@@ -388,6 +388,6 @@
   "tagged_as_anti": "\"اینٹی\" کے طور پر ٹیگ کیا گیا",
   "tagged_as_vulgar": "\"vulgar\" کے طور پر ٹیگ کیا گیا",
   "drop_here_or": "یہاں چھوڑیں یا",
-  "upload_button_warning": "یہ فیچر صرف Seedit Android ایپ یا ڈیسک ٹاپ ایپ (Windows، Mac یا Linux) ورژنز پر دستیاب ہے۔ یہ براؤزرز میں استعمال نہیں کیا جا سکتا۔\n\nکیا آپ GitHub پر ڈاؤن لوڈ لنکس کے صفحے پر جانا چاہتے ہیں؟",
-  "create_community_warning": "یہ خصوصیت صرف Seedit ڈیسک ٹاپ ایپ (Windows، Mac، یا Linux) ورژن پر دستیاب ہے۔\n\nGitHub پر ڈاؤن لوڈ لنکس صفحہ پر جائیں؟"
+  "upload_button_warning": "آٹو اپلوڈ آپ کے براؤزر کی CORS پالیسی کے ذریعہ بلاک کر دیا گیا ہے، لیکن یہ Seedit اینڈروئیڈ ایپ اور ڈیسک ٹاپ ایپ (Win/Mac/Linux) پر دستیاب ہے۔\n\nGitHub پر ڈاؤن لوڈ لنکس پیج پر جائیں؟",
+  "create_community_warning": "کمیونٹی بنانے کے لیے مکمل نوڈ چلانا ضروری ہے۔ Seedit ڈیسک ٹاپ ایپ (Win/Mac/Linux) خودکار طور پر مکمل نوڈ چلاتا ہے۔\n\nGitHub پر ڈاؤن لوڈ لنکس پیج پر جائیں؟"
 }

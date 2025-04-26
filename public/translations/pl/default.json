@@ -388,6 +388,6 @@
   "tagged_as_anti": "otagowane jako \"anti\"",
   "tagged_as_vulgar": "oznaczone jako \"wulgarne\"",
   "drop_here_or": "Upuść tutaj lub",
-  "upload_button_warning": "Ta funkcja jest dostępna tylko w aplikacji Seedit na Androida lub w aplikacji desktopowej (Windows, Mac lub Linux). Nie można jej używać w przeglądarkach.\n\nChcesz przejść do strony z linkami do pobrania na GitHubie?",
-  "create_community_warning": "Ta funkcja jest dostępna tylko w aplikacji Seedit na komputer (Windows, Mac lub Linux).\n\nPrzejdź do strony z linkami do pobrania na GitHubie?"
+  "upload_button_warning": "Automatyczne przesyłanie jest blokowane przez politykę CORS w twojej przeglądarce, ale jest dostępne w aplikacji Seedit na Androida oraz w aplikacji desktopowej (Win/Mac/Linux).\n\nPrzejdź do strony linków do pobrania na GitHubie?",
+  "create_community_warning": "Tworzenie społeczności wymaga uruchomienia pełnego węzła. Aplikacja Seedit desktop (Win/Mac/Linux) automatycznie uruchamia pełny węzeł.\n\nPrzejdź do strony linków do pobrania na GitHubie?"
 }

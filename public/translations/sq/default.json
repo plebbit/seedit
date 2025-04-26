@@ -388,6 +388,6 @@
   "tagged_as_anti": "etiketuar si \"anti\"",
   "tagged_as_vulgar": "etiketuar si \"vulgar\"",
   "drop_here_or": "Hidh këtu ose",
-  "upload_button_warning": "Ky funksion është i disponueshëm vetëm në aplikacionin Seedit për Android ose në aplikacionin desktop (Windows, Mac ose Linux). Nuk mund të përdoret në shfletues.\n\nA dëshironi të shkoni në faqen e lidhjeve të shkarkimit në GitHub?",
-  "create_community_warning": "Kjo veçori është në dispozicion vetëm në aplikacionin Seedit për desktop (Windows, Mac ose Linux) version.\n\nShkoni te faqja e lidhjeve të shkarkimit në GitHub?"
+  "upload_button_warning": "Ngarkohet automatikisht është bllokuar nga politika CORS e shfletuesit tuaj, por është në dispozicion në aplikacionin Seedit për Android dhe aplikacionin desktop (Win/Mac/Linux).\n\nShkoni te faqja e lidhjeve për shkarkimin në GitHub?",
+  "create_community_warning": "Krijimi i një komuniteti kërkon ekzekutimin e një nyjeje të plotë. Aplikacioni Seedit për desktop (Win/Mac/Linux) ekzekuton automatikisht një nyje të plotë.\n\nShkoni te faqja e lidhjeve për shkarkimin në GitHub?"
 }

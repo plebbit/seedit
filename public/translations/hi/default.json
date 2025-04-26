@@ -388,6 +388,6 @@
   "tagged_as_anti": "\"एंटी\" के रूप में टैग किया गया",
   "tagged_as_vulgar": "को \"वुल्गर\" के रूप में टैग किया गया",
   "drop_here_or": "यहां छोड़ें या",
-  "upload_button_warning": "यह सुविधा केवल Seedit Android ऐप या डेस्कटॉप ऐप (Windows, Mac, या Linux) संस्करणों पर उपलब्ध है। इसे ब्राउज़रों में उपयोग नहीं किया जा सकता है।\n\nक्या आप GitHub पर डाउनलोड लिंक पृष्ठ पर जाना चाहते हैं?",
-  "create_community_warning": "यह सुविधा केवल Seedit डेस्कटॉप ऐप (Windows, Mac, या Linux) संस्करण पर उपलब्ध है।\n\nGitHub पर डाउनलोड लिंक पृष्ठ पर जाएं?"
+  "upload_button_warning": "ऑटो-अपलोड आपके ब्राउज़र की CORS नीति द्वारा अवरुद्ध है, लेकिन यह Seedit Android ऐप और डेस्कटॉप ऐप (Win/Mac/Linux) पर उपलब्ध है।\n\nGitHub पर डाउनलोड लिंक पृष्ठ पर जाएं?",
+  "create_community_warning": "एक समुदाय बनाने के लिए एक पूर्ण नोड चलाना आवश्यक है। Seedit डेस्कटॉप ऐप (Win/Mac/Linux) स्वचालित रूप से एक पूर्ण नोड चलाता है।\n\nGitHub पर डाउनलोड लिंक पृष्ठ पर जाएं?"
 }

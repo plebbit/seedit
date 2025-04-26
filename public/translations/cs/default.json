@@ -388,6 +388,6 @@
   "tagged_as_anti": "označeno jako \"anti\"",
   "tagged_as_vulgar": "označeno jako \"vulgární\"",
   "drop_here_or": "Přetáhněte sem nebo",
-  "upload_button_warning": "Tato funkce je k dispozici pouze v aplikaci Seedit pro Android nebo v desktopové aplikaci (Windows, Mac nebo Linux). Nelze ji používat v prohlížečích.\n\nChcete přejít na stránku s odkazy ke stažení na GitHubu?",
-  "create_community_warning": "Tato funkce je k dispozici pouze na desktopové aplikaci Seedit (Windows, Mac nebo Linux).\n\nPřejděte na stránku s odkazy ke stažení na GitHubu?"
+  "upload_button_warning": "Automatické nahrávání je blokováno politikou CORS vašeho prohlížeče, ale je k dispozici v aplikaci Seedit pro Android a desktopovou aplikaci (Win/Mac/Linux).\n\nPřejděte na stránku odkazů ke stažení na GitHubu?",
+  "create_community_warning": "Vytvoření komunity vyžaduje spuštění plného uzlu. Aplikace Seedit pro desktop (Win/Mac/Linux) automaticky spouští plný uzel.\n\nPřejděte na stránku odkazů ke stažení na GitHubu?"
 }

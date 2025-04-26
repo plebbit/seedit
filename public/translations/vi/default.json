@@ -388,6 +388,6 @@
   "tagged_as_anti": "được gắn thẻ là \"anti\"",
   "tagged_as_vulgar": "được gắn thẻ là \"vulgar\"",
   "drop_here_or": "Thả ở đây hoặc",
-  "upload_button_warning": "Tính năng này chỉ có sẵn trên ứng dụng Seedit Android hoặc ứng dụng desktop (Windows, Mac hoặc Linux). Không thể sử dụng trên trình duyệt.\n\nBạn có muốn đi đến trang liên kết tải xuống trên GitHub?",
-  "create_community_warning": "Tính năng này chỉ có sẵn trên ứng dụng desktop Seedit (Windows, Mac hoặc Linux).\n\nĐi đến trang liên kết tải xuống trên GitHub?"
+  "upload_button_warning": "Tải lên tự động bị chặn bởi chính sách CORS của trình duyệt của bạn, nhưng có sẵn trên ứng dụng Seedit Android và ứng dụng desktop (Win/Mac/Linux).\n\nĐi đến trang liên kết tải xuống trên GitHub?",
+  "create_community_warning": "Tạo cộng đồng yêu cầu chạy một node đầy đủ. Ứng dụng Seedit desktop (Win/Mac/Linux) tự động chạy một node đầy đủ.\n\nĐi đến trang liên kết tải xuống trên GitHub?"
 }
