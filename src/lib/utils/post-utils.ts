@@ -38,11 +38,10 @@ export const getReplyScore = (upvoteCount: number | undefined, downvoteCount: nu
 // https://medium.com/hacking-and-gonzo/how-reddit-ranking-algorithms-work-ef111e33d0d9
 // http://www.evanmiller.org/how-not-to-sort-by-average-rating.html
 // https://github.com/reddit-archive/reddit/blob/753b17407e9a9dca09558526805922de24133d53/r2/r2/lib/db/_sorts.pyx#L70
-export const sortByBest = (feed: any[]) => {
+export const sortRepliesByBest = (feed: any[]) => {
   const postScores: { [key: string]: number } = {};
   for (const post of feed) {
     let upvoteCount = post.upvoteCount || 0;
-    upvoteCount++; // reddit initial upvotes is 1, plebbit is 0
     const downvoteCount = post.downvoteCount || 0;
 
     // n is the total number of ratings
