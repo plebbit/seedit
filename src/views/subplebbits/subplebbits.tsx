@@ -1,4 +1,4 @@
-import { Fragment, useEffect, useMemo } from 'react';
+import { Fragment, useEffect, useMemo, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Trans, useTranslation } from 'react-i18next';
 import { Subplebbit as SubplebbitType, useAccount, useAccountSubplebbits, useSubplebbits, useSubplebbitStats } from '@plebbit/plebbit-react-hooks';
@@ -158,6 +158,12 @@ const Infobar = () => {
 const Subplebbit = ({ subplebbit, tags, index }: SubplebbitProps) => {
   const { t } = useTranslation();
   const { address, createdAt, description, roles, shortAddress, settings, suggested, title } = subplebbit || {};
+  const [avatarLoadFailed, setAvatarLoadFailed] = useState(false);
+  const showSprout = !suggested?.avatarUrl || avatarLoadFailed;
+
+  useEffect(() => {
+    setAvatarLoadFailed(false);
+  }, [subplebbit?.address, suggested?.avatarUrl]);
 
   // subplebbit.settings is a private field that is only available to the owner of the subplebbit
   const isUserOwner = settings;
@@ -215,17 +221,21 @@ const Subplebbit = ({ subplebbit, tags, index }: SubplebbitProps) => {
               />
             </div>
           </div>
-          <div className={`${styles.avatar} ${!suggested?.avatarUrl ? styles.defaultAvatar : ''}`}>
+          <div className={`${styles.avatar} ${showSprout ? styles.defaultAvatar : ''}`}>
             <Link to={`/p/${address}`}>
-              <img
-                src={suggested?.avatarUrl || 'assets/sprout/sprout.png'}
-                alt=''
-                onError={(e) => {
-                  const target = e.target as HTMLImageElement;
-                  target.onerror = null;
-                  target.src = 'assets/sprout/sprout.png';
-                }}
-              />
+              {suggested?.avatarUrl ? (
+                <img
+                  key={suggested.avatarUrl}
+                  src={suggested.avatarUrl}
+                  alt={`${title || shortAddress} avatar`}
+                  className={styles.customAvatarImg}
+                  onError={() => {
+                    setAvatarLoadFailed(true);
+                  }}
+                />
+              ) : (
+                <img key='sprout' src={'assets/sprout/sprout.png'} alt={'Default sprout avatar'} className={styles.sproutImg} />
+              )}
             </Link>
           </div>
         </div>
