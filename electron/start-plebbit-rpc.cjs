@@ -19,7 +19,7 @@ async function initializeRpc() {
   const defaultPlebbitOptions = {
     // find the user\'s OS data path
     dataPath: !isDev ? envPaths.data : path.join(dirname, '..', '.plebbit'),
-    ipfsHttpClientsOptions: ['http://localhost:50019/api/v0'],
+    kuboRpcClientsOptions: [isDev ? 'http://localhost:50029/api/v0' : 'http://localhost:50019/api/v0'],
     httpRoutersOptions: ['https://routing.lol', 'https://peers.pleb.bot', 'https://peers.plebpubsub.xyz', 'https://peers.forumindex.com'],
   };
 

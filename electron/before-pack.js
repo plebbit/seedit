@@ -6,6 +6,7 @@ import https from 'https';
 import decompress from 'decompress';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import os from 'os';
 const ipfsClientsPath = path.join(path.dirname(fileURLToPath(import.meta.url)), '..', 'bin');
 const ipfsClientWindowsPath = path.join(ipfsClientsPath, 'win');
 const ipfsClientMacPath = path.join(ipfsClientsPath, 'mac');
@@ -100,9 +101,20 @@ const downloadAndExtract = async (url, destinationPath) => {
 };
 
 export const downloadIpfsClients = async () => {
-  await downloadAndExtract(ipfsClientWindowsUrl, ipfsClientWindowsPath);
-  await downloadAndExtract(ipfsClientMacUrl, ipfsClientMacPath);
-  await downloadAndExtract(ipfsClientLinuxUrl, ipfsClientLinuxPath);
+  const platform = os.platform();
+
+  if (platform === 'win32') {
+    console.log('Downloading Kubo for Windows...');
+    await downloadAndExtract(ipfsClientWindowsUrl, ipfsClientWindowsPath);
+  } else if (platform === 'darwin') {
+    console.log('Downloading Kubo for macOS...');
+    await downloadAndExtract(ipfsClientMacUrl, ipfsClientMacPath);
+  } else if (platform === 'linux') {
+    console.log('Downloading Kubo for Linux...');
+    await downloadAndExtract(ipfsClientLinuxUrl, ipfsClientLinuxPath);
+  } else {
+    console.warn(`Unsupported platform: ${platform}. No Kubo binary downloaded.`);
+  }
 };
 
 export default async (context) => {
