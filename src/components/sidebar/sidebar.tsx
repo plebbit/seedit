@@ -289,7 +289,7 @@ const Sidebar = ({ comment, isSubCreatedButNotYetPublished, settings, subplebbit
         }}
       >
         {(isInPostPageView || isInPendingPostView) && <PostInfo comment={comment} />}
-        {(isInSubplebbitView || isInHomeView || isInAllView || isInModView || isInDomainView) && (
+        {(isInSubplebbitView || isInHomeView || isInAllView || isInModView || isInDomainView || isInPendingPostView) && (
           <Link to={submitRoute}>
             <div className={styles.largeButton}>
               {t('submit_post')}
