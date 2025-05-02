@@ -35,6 +35,31 @@ contextBridge.exposeInMainWorld('electron', {
     if (validChannels.includes(channel)) {
       return ipcRenderer.invoke(channel, ...args);
     }
-    throw new Error(`Unauthorized IPC channel: ${channel}`);
+    throw new Error(`Unauthorized IPC invoke channel: ${channel}`);
+  },
+  send: (channel, ...args) => {
+    const validChannels = [
+      'show-notification'
+    ];
+    if (validChannels.includes(channel)) {
+      ipcRenderer.send(channel, ...args);
+    } else {
+      throw new Error(`Unauthorized IPC send channel: ${channel}`);
+    }
   }
+});
+
+contextBridge.exposeInMainWorld('seeditIpc', {
+  send: (channel, ...args) => {
+    const validChannels = [
+      'show-notification'
+      // Add other seedit-specific send channels here if needed
+    ];
+    if (validChannels.includes(channel)) {
+      ipcRenderer.send(channel, ...args);
+    } else {
+      throw new Error(`Unauthorized Seedit IPC send channel: ${channel}`);
+    }
+  }
+  // Add invoke/on methods here if needed for seedit-specific IPC
 });

@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { Outlet, Route, Routes } from 'react-router-dom';
+import { initializeNotificationSystem } from './lib/push';
 import useTheme from './hooks/use-theme';
 import AboutView from './views/about';
 import All from './views/all';
@@ -22,11 +23,15 @@ import Header from './components/header';
 import StickyHeader from './components/sticky-header';
 import TopBar from './components/topbar';
 import styles from './app.module.css';
+import { NotificationHandler } from './components/notification-handler/NotificationHandler';
+
+initializeNotificationSystem();
 
 const App = () => {
   const globalLayout = (
     <>
       <ChallengeModal />
+      <NotificationHandler />
       <Outlet />
     </>
   );

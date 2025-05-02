@@ -19,6 +19,8 @@ interface ContentOptionsStore extends ContentOptionsState {
   setHasAcceptedWarning: (value: boolean) => void;
   hideDefaultCommunities: boolean;
   setHideDefaultCommunities: (hide: boolean) => void;
+  enableLocalNotifications: boolean;
+  setEnableLocalNotifications: (enable: boolean) => void;
 }
 
 const useContentOptionsStore = create<ContentOptionsStore>()(
@@ -31,6 +33,7 @@ const useContentOptionsStore = create<ContentOptionsStore>()(
       hideVulgarCommunities: true,
       hasAcceptedWarning: false,
       hideDefaultCommunities: false,
+      enableLocalNotifications: false,
       setBlurNsfwThumbnails: (blur) => set({ blurNsfwThumbnails: blur }),
       setHideAdultCommunities: (hide) => set({ hideAdultCommunities: hide }),
       setHideGoreCommunities: (hide) => set({ hideGoreCommunities: hide }),
@@ -38,6 +41,7 @@ const useContentOptionsStore = create<ContentOptionsStore>()(
       setHideVulgarCommunities: (hide) => set({ hideVulgarCommunities: hide }),
       setHasAcceptedWarning: (value) => set({ hasAcceptedWarning: value }),
       setHideDefaultCommunities: (hide) => set({ hideDefaultCommunities: hide }),
+      setEnableLocalNotifications: (enable) => set({ enableLocalNotifications: enable }),
     }),
     {
       name: 'content-options',

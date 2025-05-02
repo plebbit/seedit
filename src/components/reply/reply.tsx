@@ -23,7 +23,7 @@ import useDownvote from '../../hooks/use-downvote';
 import useStateString from '../../hooks/use-state-string';
 import useUpvote from '../../hooks/use-upvote';
 import { isInboxView, isPostContextView, isPostPageView } from '../../lib/utils/view-utils';
-import Plebbit from '@plebbit/plebbit-js/dist/browser/index.js';
+import Plebbit from '@plebbit/plebbit-js';
 import Markdown from '../markdown';
 import { getHostname } from '../../lib/utils/url-utils';
 import useAvatarVisibilityStore from '../../stores/use-avatar-visibility-store';

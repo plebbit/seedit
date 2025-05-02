@@ -5,4 +5,15 @@ declare global {
   }
 }
 
+declare global {
+  interface Window {
+    electronApi?: {
+      isElectron: boolean;
+      getNotificationStatus: () => Promise<'granted' | 'denied' | 'not-determined'>;
+      getPlatform: () => Promise<NodeJS.Platform>;
+      testNotification: () => Promise<{ success: boolean; reason?: string }>;
+    };
+  }
+}
+
 export {};

@@ -12,12 +12,12 @@ import AvatarSettings from './avatar-settings';
 import PlebbitOptions from './plebbit-options';
 import ContentOptions from './content-options';
 import WalletSettings from './wallet-settings';
+import NotificationsSettings from './notifications-settings';
 import styles from './settings.module.css';
 import packageJson from '../../../package.json';
 import _ from 'lodash';
 
 const commitRef = process.env.REACT_APP_COMMIT_REF;
-const isElectron = window.isElectron === true;
 const isAndroid = Capacitor.getPlatform() === 'android';
 
 const CheckForUpdates = () => {
@@ -33,7 +33,7 @@ const CheckForUpdates = () => {
 
       if (packageJson.version !== packageData.version) {
         const newVersionText = t('new_stable_version', { newVersion: packageData.version, oldVersion: packageJson.version });
-        const updateActionText = isElectron
+        const updateActionText = window.electronApi?.isElectron
           ? t('download_latest_desktop', { link: 'https://github.com/plebbit/seedit/releases/latest', interpolation: { escapeValue: false } })
           : isAndroid
           ? t('download_latest_android')
@@ -136,9 +136,6 @@ const DisplayNameSetting = () => {
     try {
       await setAccount({ ...account, author: { ...account?.author, displayName } });
       setSavedDisplayName(true);
-      setTimeout(() => {
-        setSavedDisplayName(false);
-      }, 2000);
     } catch (error) {
       if (error instanceof Error) {
         alert(error.message);
@@ -173,7 +170,7 @@ const GeneralSettings = () => {
         <span className={styles.categorySettings}>
           <div className={styles.version}>
             <Version />
-            {isElectron && (
+            {window.electronApi?.isElectron && (
               <a className={styles.fullNodeStats} href='http://localhost:50019/webui/' target='_blank' rel='noreferrer'>
                 {t('node_stats')}
               </a>
@@ -216,6 +213,12 @@ const GeneralSettings = () => {
         <span className={styles.categoryTitle}>{t('crypto_wallets')}</span>
         <span className={styles.categorySettings}>
           <WalletSettings />
+        </span>
+      </div>
+      <div className={styles.category}>
+        <span className={styles.categoryTitle}>{t('notifications')}</span>
+        <span className={styles.categorySettings}>
+          <NotificationsSettings />
         </span>
       </div>
       <div className={`${styles.category} ${location.hash === '#exportAccount' ? styles.highlightedSetting : ''}`} id='exportBackup'>

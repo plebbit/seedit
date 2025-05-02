@@ -1,28 +1,18 @@
-// Import log.cjs
 require('./log.cjs');
 
-// Import Electron components using CommonJS require
-const { app, BrowserWindow, Menu, MenuItem, Tray, shell, dialog, nativeTheme, ipcMain } = require('electron');
+const { app, BrowserWindow, Menu, MenuItem, Tray, shell, dialog, nativeTheme, ipcMain, Notification } = require('electron');
 
-// Import Node.js built-ins using CommonJS
 const path = require('path');
 const fs = require('fs');
-const { URL, fileURLToPath } = require('url');
-const util = require('util');
-// Don't require EnvPaths directly, it will be dynamically imported later
-// const EnvPaths = require('env-paths');
+const { URL } = require('url');
 const FormData = require('form-data');
-const fetch = require('node-fetch');
 const contextMenu = require('electron-context-menu');
 
-// Import local modules using CommonJS
 require('./start-ipfs.cjs');
 require('./start-plebbit-rpc.cjs');
 
-// Load package.json using CommonJS
 const packageJson = require('../package.json');
 
-// Set ELECTRON_IS_DEV for other modules to use
 process.env.ELECTRON_IS_DEV = app.isPackaged ? '0' : '1';
 
 // Since we're in CommonJS, we can't use import.meta.url
@@ -61,6 +51,30 @@ startIpfs.onError = (error) => {
   if (process.platform === 'darwin') fakeUserAgent = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 13_5_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36';
   if (process.platform === 'linux') fakeUserAgent = 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36';
   const realUserAgent = `seedit/${packageJson.version}`;
+
+  // Handle IPC call to show notification
+  ipcMain.on('show-notification', (event, notificationData) => {
+    if (Notification.isSupported()) {
+      const notification = new Notification({
+        title: notificationData.title,
+        body: notificationData.body,
+      });
+
+      // Optional: Handle click event for notification
+      if (notificationData.url) {
+        notification.on('click', () => {
+          // Make sure the mainWindow is available and not destroyed
+          if (mainWindow && !mainWindow.isDestroyed()) {
+            shell.openExternal(notificationData.url).catch(err => console.error('Failed to open URL:', err));
+          }
+        });
+      }
+
+      notification.show();
+    } else {
+      console.warn('Electron Notifications not supported on this system.');
+    }
+  });
 
   // add right click menu
   contextMenu({
@@ -104,9 +118,9 @@ startIpfs.onError = (error) => {
         webSecurity: true, // must be true or iframe embeds like youtube can do remote code execution
         nodeIntegration: false,
         contextIsolation: true,
-        devTools: true, // TODO: change to isDev when no bugs left
-        preload: path.join(dirname, 'preload.mjs'),
-        sandbox: false, // Required for ESM preload scripts
+        devTools: !app.isPackaged, // Use app.isPackaged to determine if devTools should be enabled
+        preload: path.join(dirname, 'preload.cjs'),
+        // sandbox: false, // sandbox:false is generally discouraged for security unless strictly necessary. Re-evaluate if needed.
       },
     });
 
@@ -455,4 +469,8 @@ ipcMain.handle('plugin:file-uploader:pickMedia', async (event) => {
     console.error('FileUploader pickMedia error:', error);
     throw error;
   }
+});
+
+ipcMain.handle('get-platform', () => {
+  return process.platform; // 'darwin', 'win32', 'linux', etc.
 });
