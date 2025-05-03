@@ -49,8 +49,8 @@ const startPlebbitRpcAutoRestart = async (port, defaultPlebbitOptions, plebbitRp
     try {
       const started = await tcpPortUsed.check(port, '127.0.0.1');
       if (!started) {
-        // Dynamically import PlebbitRpc
-        const PlebbitRpcModule = await import('@plebbit/plebbit-js/dist/node/rpc/src/index.js');
+        // Dynamically import PlebbitRpc using the exported subpath
+        const PlebbitRpcModule = await import('@plebbit/plebbit-js/rpc');
         
         // Try both ways of accessing the function - either directly or through default export
         const PlebbitWsServer = PlebbitRpcModule.PlebbitWsServer || 
