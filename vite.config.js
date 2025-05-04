@@ -37,6 +37,9 @@ export default defineConfig({
     VitePWA({
       registerType: 'autoUpdate',
       strategies: 'injectManifest',
+      injectManifest: {
+        maximumFileSizeToCacheInBytes: 6000000,
+      },
       srcDir: 'src',
       filename: 'sw.ts',
       devOptions: {
@@ -74,7 +77,6 @@ export default defineConfig({
         clientsClaim: true,
         skipWaiting: true,
         cleanupOutdatedCaches: true,
-        maximumFileSizeToCacheInBytes: 6000000,
         navigateFallback: 'index.html',
         navigateFallbackDenylist: [/^\/api/, /^\/_(.*)/],
         

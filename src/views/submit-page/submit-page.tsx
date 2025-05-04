@@ -18,7 +18,7 @@ import { FormattingHelpTable } from '../../components/reply-form/reply-form';
 import styles from './submit-page.module.css';
 
 const isAndroid = Capacitor.getPlatform() === 'android';
-const isElectron = window.isElectron === true;
+const isElectron = window.electronApi?.isElectron === true;
 
 const UrlField = () => {
   const { t } = useTranslation();

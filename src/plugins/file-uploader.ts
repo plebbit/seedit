@@ -41,12 +41,3 @@ const FileUploader = Capacitor.isNativePlatform()
     };
 
 export default FileUploader;
-
-// Add TypeScript type declaration for Electron
-declare global {
-  interface Window {
-    electron?: {
-      invoke(channel: string, ...args: any[]): Promise<any>;
-    };
-  }
-}

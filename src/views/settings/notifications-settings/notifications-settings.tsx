@@ -1,8 +1,7 @@
-import { useCallback, useEffect } from 'react';
-import { useState } from 'react';
-import useContentOptionsStore from '../../../stores/use-content-options-store';
+import { useCallback, useEffect, useState } from 'react';
 import { requestNotificationPermission } from '../../../lib/push';
 import styles from './notifications-settings.module.css';
+import useContentOptionsStore from '../../../stores/use-content-options-store';
 
 const NotificationsSettings = () => {
   const { enableLocalNotifications, setEnableLocalNotifications } = useContentOptionsStore();
@@ -10,88 +9,75 @@ const NotificationsSettings = () => {
   const [platform, setPlatform] = useState<NodeJS.Platform | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [showDeniedMessage, setShowDeniedMessage] = useState(false);
+  const [showSuccessMessage, setShowSuccessMessage] = useState(false);
 
   // Function to check permission via API, memoized with useCallback
   const checkPermissionStatus = useCallback(async () => {
-    // if (!window.electronApi?.getNotificationStatus) return; // Commented out
-    console.warn('[NotificationsSettings] checkPermissionStatus called, but electronApi.getNotificationStatus is disabled.');
+    if (!window.electronApi?.getNotificationStatus) return;
 
     console.log('[Electron Native] Checking OS notification permission status...');
     try {
-      // This call now correctly handles 'not-supported' internally in main.cjs
-      // const nativeStatus = await window.electronApi.getNotificationStatus(); // Commented out
-      const nativeStatus = 'unknown' as any; // Mock status, cast to any to bypass linter
+      const nativeStatus = await window.electronApi.getNotificationStatus();
       console.log('[Electron Native] OS permission status from native API:', nativeStatus);
 
       setPermissionStatus(nativeStatus); // Directly set the status received
 
-      if (nativeStatus === 'granted') {
-        // On macOS, even if the API returns 'granted', we should do a real test
-        // to confirm notifications are actually working, unless it's already tested ok
-        // if (platform === 'darwin' && !testResult?.success) { // Logic using testNotificationPermission commented out
-        //   testNotificationPermission(); // Test to ensure it *really* works
-        // } else
-        if (!enableLocalNotifications) {
-          // Update store only if needed
-          setEnableLocalNotifications(true);
-        }
-      } else if (nativeStatus === 'denied') {
+      if (nativeStatus === 'denied') {
         if (enableLocalNotifications) {
           setEnableLocalNotifications(false);
         }
         setShowDeniedMessage(true);
         setTimeout(() => setShowDeniedMessage(false), 5000);
       } else if (nativeStatus === 'not-determined') {
-        // If undetermined, try a direct test which might trigger the prompt
-        // testNotificationPermission(); // Logic using testNotificationPermission commented out
         console.warn('[NotificationsSettings] Permission status is not-determined, cannot test.');
       } else if (nativeStatus === 'not-supported') {
-        // If not supported, ensure checkbox is off
         if (enableLocalNotifications) {
           setEnableLocalNotifications(false);
-        }
-      } else if (nativeStatus === 'unknown') {
-        // Handle the mocked 'unknown' state
-        console.warn('[NotificationsSettings] Permission status is unknown (Electron API disabled).');
-        // Optionally disable the checkbox or show a specific message
-        if (enableLocalNotifications) {
-          // Maybe keep it enabled but show a warning?
-          // Or disable it:
-          // setEnableLocalNotifications(false);
         }
       }
     } catch (err) {
       console.error('[Electron Native] Error checking notification permissions:', err);
-      // On error, fall back to the test notification approach as a last resort
-      // testNotificationPermission(); // Logic using testNotificationPermission commented out
-      setPermissionStatus('unknown'); // Set status to unknown on error too
+      setPermissionStatus('unknown');
     }
-  }, [enableLocalNotifications, setEnableLocalNotifications /*, testNotificationPermission */]); // Dependencies for checkPermissionStatus, commented out testNotificationPermission
+  }, [setEnableLocalNotifications]);
 
-  // Run the direct test on mount
+  // Run the check on mount
   useEffect(() => {
     if (window.electronApi) {
-      // Get platform first
       if (window.electronApi.getPlatform) {
         window.electronApi.getPlatform().then(setPlatform).catch(console.error);
       }
-
-      // Then check notification permission status
       checkPermissionStatus();
     }
-  }, [checkPermissionStatus]); // Now depends on the memoized function
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []); // Keep dependencies empty - runs only once
 
   const handleCheckboxChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
     const isEnabled = event.target.checked;
     setIsLoading(true);
+    setShowSuccessMessage(false);
 
     try {
       if (isEnabled) {
-        // If in Electron, do a direct test
-        if (window.electronApi) {
-          // await testNotificationPermission(); // Commented out
-          console.warn('[NotificationsSettings] testNotificationPermission call skipped in handleCheckboxChange.');
-          setPermissionStatus('unknown'); // Set to unknown as we can't test
+        // If in Electron, check status first
+        if (window.electronApi?.getNotificationStatus) {
+          const currentStatus = await window.electronApi.getNotificationStatus();
+          setPermissionStatus(currentStatus);
+          if (currentStatus === 'granted') {
+            setEnableLocalNotifications(true);
+            setShowSuccessMessage(true);
+            setTimeout(() => setShowSuccessMessage(false), 5000);
+          } else if (currentStatus === 'denied') {
+            setEnableLocalNotifications(false); // Ensure it's off if denied
+            setShowDeniedMessage(true);
+            setTimeout(() => setShowDeniedMessage(false), 5000);
+          } else if (currentStatus === 'not-determined') {
+            setEnableLocalNotifications(false); // Keep it off until granted
+            console.warn('[NotificationsSettings] Permission not determined. User must grant via OS prompt.');
+            alert('Notification permission needed. The app will ask when it first tries to notify you, or check System Settings.');
+          } else if (currentStatus === 'not-supported') {
+            setEnableLocalNotifications(false); // Keep it off
+          }
         } else {
           // Use the web browser API for non-Electron
           setPermissionStatus('requesting...');
@@ -99,6 +85,8 @@ const NotificationsSettings = () => {
           if (granted) {
             setEnableLocalNotifications(true);
             setPermissionStatus('granted');
+            setShowSuccessMessage(true);
+            setTimeout(() => setShowSuccessMessage(false), 5000);
           } else {
             setEnableLocalNotifications(false);
             setPermissionStatus('denied');
@@ -108,7 +96,6 @@ const NotificationsSettings = () => {
         }
       } else {
         setEnableLocalNotifications(false);
-        // Don't change permissionStatus when disabling
       }
     } finally {
       setIsLoading(false);
@@ -117,11 +104,33 @@ const NotificationsSettings = () => {
 
   // Function to manually test a notification
   const showTestNotification = () => {
-    // If we're on Electron, we should verify permission status first
-    if (window.electronApi) {
-      // testNotificationPermission(); // Commented out
-      console.warn('[NotificationsSettings] testNotificationPermission call skipped in showTestNotification.');
-      alert('Cannot test Electron notifications currently.');
+    // If we're on Electron, check status before attempting to show
+    if (window.electronApi?.getNotificationStatus) {
+      window.electronApi
+        .getNotificationStatus()
+        .then((status) => {
+          if (status === 'granted') {
+            // Use the showElectronLocalNotification via the main push index
+            import('../../../lib/push').then(({ showLocalNotification }) => {
+              showLocalNotification({
+                title: 'Electron Test Notification!',
+                body: 'If you see this, permissions are working!',
+              });
+            });
+          } else if (status === 'denied') {
+            alert('Notifications are denied in System Settings.');
+            setShowDeniedMessage(true);
+            setTimeout(() => setShowDeniedMessage(false), 5000);
+          } else if (status === 'not-determined') {
+            alert('Permission not yet granted. The app will ask when it first tries to notify you (or test again).');
+          } else {
+            alert('Notifications may not be supported on this system.');
+          }
+        })
+        .catch((err) => {
+          console.error('Error checking status before test:', err);
+          alert('Could not check notification status before testing.');
+        });
     } else {
       import('../../../lib/push').then(({ showLocalNotification }) => {
         showLocalNotification({
@@ -168,7 +177,7 @@ const NotificationsSettings = () => {
             <span className={styles.permissionStatusRequesting}>Click "Allow" to enable notifications</span>
           </span>
         )}
-        {permissionStatus === 'granted' && (
+        {showSuccessMessage && permissionStatus === 'granted' && enableLocalNotifications && (
           <span className={styles.permissionStatus} data-status={permissionStatus}>
             <span className={styles.permissionStatusSuccess}>
               Success! You're done.

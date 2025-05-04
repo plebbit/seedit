@@ -31,7 +31,7 @@ import Version from '../version';
 import { FAQ } from '../../views/about/about';
 import { createCommunitySubtitles } from '../../constants/create-community-subtitles';
 
-const isElectron = window.isElectron === true;
+const isElectron = window.electronApi?.isElectron === true;
 
 const RulesList = ({ rules }: { rules: string[] }) => {
   const { t } = useTranslation();

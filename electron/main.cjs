@@ -1,18 +1,28 @@
+// Import log.cjs
 require('./log.cjs');
 
-const { app, BrowserWindow, Menu, MenuItem, Tray, shell, dialog, nativeTheme, ipcMain, Notification } = require('electron');
+// Import Electron components using CommonJS require
+const { app, BrowserWindow, Menu, MenuItem, Tray, shell, dialog, nativeTheme, ipcMain, Notification, systemPreferences } = require('electron');
 
+// Import Node.js built-ins using CommonJS
 const path = require('path');
 const fs = require('fs');
-const { URL } = require('url');
+const { URL, fileURLToPath } = require('url');
+const util = require('util');
+// Don't require EnvPaths directly, it will be dynamically imported later
+// const EnvPaths = require('env-paths');
 const FormData = require('form-data');
+const fetch = require('node-fetch');
 const contextMenu = require('electron-context-menu');
 
+// Import local modules using CommonJS
 require('./start-ipfs.cjs');
 require('./start-plebbit-rpc.cjs');
 
+// Load package.json using CommonJS
 const packageJson = require('../package.json');
 
+// Set ELECTRON_IS_DEV for other modules to use
 process.env.ELECTRON_IS_DEV = app.isPackaged ? '0' : '1';
 
 // Since we're in CommonJS, we can't use import.meta.url
@@ -76,6 +86,96 @@ startIpfs.onError = (error) => {
     }
   });
 
+  // Handle request for notification permission status
+  ipcMain.handle('get-notification-permission-status', async () => {
+    try {
+      // Check Notification API support
+      if (!Notification.isSupported()) {
+        console.log('[Electron Main] Notification API not supported.');
+        return 'not-supported';
+      }
+      // On macOS, prefer getNotificationSettings()
+      if (process.platform === 'darwin') {
+        if (typeof systemPreferences.getNotificationSettings === 'function') {
+          const settings = systemPreferences.getNotificationSettings();
+          const auth = settings.authorizationStatus; // 'authorized'|'denied'|'not-determined'
+          console.log('[Electron Main] macOS systemPreferences.getNotificationSettings() returned:', auth);
+          if (auth === 'denied') return 'denied';
+          if (auth === 'authorized') return 'granted';
+          return 'not-determined';
+        }
+        // Fallback to old API if present
+        if (typeof systemPreferences.getNotificationPermissionStatus === 'function') {
+          const status = systemPreferences.getNotificationPermissionStatus();
+          console.log('[Electron Main] macOS systemPreferences.getNotificationPermissionStatus() returned:', status);
+          return status;
+        }
+        console.warn('[Electron Main] No macOS notification permission API available; assuming granted.');
+        return 'granted';
+      }
+      // For Windows/Linux, assume granted if API supported
+      console.log('[Electron Main] Assuming notification permission granted on non-macOS platform.');
+      return 'granted';
+    } catch (error) {
+      console.error('[Electron Main] Error getting notification permission status:', error);
+      return 'unknown';
+    }
+  });
+
+  // Handle request for the current platform
+  ipcMain.handle('get-platform', async () => {
+    return process.platform; // Returns 'darwin', 'win32', 'linux', etc.
+  });
+
+  // Handle request to test notification permission (by sending one)
+  ipcMain.handle('test-notification-permission', async () => {
+    if (!Notification.isSupported()) {
+      console.warn('[Electron Main] Test notification requested, but not supported.');
+      return { success: false, reason: 'not-supported' };
+    }
+    try {
+      // Check status *before* trying to send, using the platform-aware logic
+      let status = 'unknown';
+      if (process.platform === 'darwin') {
+         // Explicitly check if the function exists before calling it
+         if (typeof systemPreferences.getNotificationPermissionStatus === 'function') {
+            status = systemPreferences.getNotificationPermissionStatus();
+         } else {
+            console.warn('[Electron Main Test] systemPreferences.getNotificationPermissionStatus is NOT a function. Falling back.');
+            status = Notification.isSupported() ? 'granted' : 'not-supported'; // Fallback for macOS
+         }
+      } else {
+         // Assume granted on other platforms if supported
+         status = Notification.isSupported() ? 'granted' : 'not-supported';
+      }
+      
+      console.log('[Electron Main Test] Determined status before sending:', status);
+
+      if (status === 'denied') {
+         console.warn('[Electron Main Test] notification requested, but status is denied.');
+         return { success: false, reason: 'denied' };
+      }
+      if (status === 'not-supported') {
+        console.warn('[Electron Main Test] notification requested, but not supported.');
+        return { success: false, reason: 'not-supported' };
+      }
+
+      // Sending a notification is the standard way to trigger the 'not-determined' prompt on macOS
+      const testNotification = new Notification({
+        title: 'Seedit Test',
+        body: 'Testing if notifications are allowed.',
+      });
+      testNotification.show();
+      // We can't easily *confirm* it showed, but if no error and not denied/not-supported, assume success for now.
+      // The user will see (or not see) the notification.
+      console.log('[Electron Main Test] notification shown (or attempted). Status was:', status);
+      return { success: true };
+    } catch (error) {
+       console.error('[Electron Main Test] Error sending test notification:', error);
+       return { success: false, reason: 'error' };
+    }
+  });
+
   // add right click menu
   contextMenu({
     // prepend custom buttons to top
@@ -119,7 +219,7 @@ startIpfs.onError = (error) => {
         nodeIntegration: false,
         contextIsolation: true,
         devTools: !app.isPackaged, // Use app.isPackaged to determine if devTools should be enabled
-        preload: path.join(dirname, 'preload.cjs'),
+        preload: path.join(dirname, 'preload.cjs'), // Updated to use preload.cjs
         // sandbox: false, // sandbox:false is generally discouraged for security unless strictly necessary. Re-evaluate if needed.
       },
     });
@@ -209,8 +309,8 @@ startIpfs.onError = (error) => {
           const validatedUrl = new URL(originalUrl);
           let serializedUrl = '';
 
-          // make an exception for ipfs stats
-          if (validatedUrl.toString() === 'http://localhost:50019/webui/') {
+          // make an exception for ipfs stats (allow proxy port 50019 in dev)
+          if (validatedUrl.toString() === 'http://localhost:50019/webui/') { 
             serializedUrl = validatedUrl.toString();
           } else if (validatedUrl.protocol === 'https:') {
             // open serialized url to prevent remote execution
@@ -239,8 +339,8 @@ startIpfs.onError = (error) => {
         const validatedUrl = new URL(originalUrl);
         let serializedUrl = '';
 
-        // make an exception for ipfs stats
-        if (validatedUrl.toString() === 'http://localhost:50019/webui/') {
+        // make an exception for ipfs stats (allow proxy port 50019 in dev)
+        if (validatedUrl.toString() === 'http://localhost:50019/webui/') { 
           serializedUrl = validatedUrl.toString();
         } else if (validatedUrl.protocol === 'https:') {
           // open serialized url to prevent remote execution
@@ -469,8 +569,4 @@ ipcMain.handle('plugin:file-uploader:pickMedia', async (event) => {
     console.error('FileUploader pickMedia error:', error);
     throw error;
   }
-});
-
-ipcMain.handle('get-platform', () => {
-  return process.platform; // 'darwin', 'win32', 'linux', etc.
 });

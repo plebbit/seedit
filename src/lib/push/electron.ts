@@ -1,44 +1,68 @@
 import type { LocalNotification } from './common';
 
 // Define the dedicated Seedit IPC API exposed via preload
+// Keep the existing electron definition if other parts of the app use it
 declare global {
   interface Window {
-    seeditIpc?: {
-      send: (channel: string, ...args: any[]) => void;
-      // Add invoke/on if needed for seedit-specific IPC
-    };
-    // Keep existing electron definition if other parts of the app use it
     electron?: {
       invoke: (channel: string, ...args: any[]) => Promise<any>;
+      sendNotification?: (notification: Omit<LocalNotification, 'id'>) => void;
     };
+    // The new electronApi for cleaner separation
+    electronApi?: {
+      // Allow direct invoke as exposed in preload
+      invoke: (channel: string, ...args: any[]) => Promise<any>;
+      isElectron: boolean;
+      getNotificationStatus: () => Promise<'granted' | 'denied' | 'not-determined' | 'not-supported'>;
+      getPlatform: () => Promise<NodeJS.Platform>;
+      testNotification: () => Promise<{ success: boolean; reason?: string }>;
+      showNotification: (notification: Omit<LocalNotification, 'id'>) => void;
+    };
+    // Remove seeditIpc if no longer needed elsewhere
+    // seeditIpc?: {
+    //   send: (channel: string, ...args: any[]) => void;
+    // };
   }
 }
 
 /**
  * Requests permission to display notifications in Electron.
- * On Electron, permission is implicitly granted, but we check if the API exists.
+ * Uses the new electronApi for clarity.
  */
 export async function requestElectronNotificationPermission(): Promise<boolean> {
-  // Check if the preload script successfully exposed the Seedit IPC API
-  const supported = typeof window.seeditIpc?.send === 'function';
+  // Just check if the API exists via preload.
+  const supported = typeof window.electronApi?.getNotificationStatus === 'function';
   if (!supported) {
-    console.warn('Seedit Electron IPC for notifications not available.');
+    console.warn('Electron API for notifications not available via preload.');
   }
-  // We don't need to ask the user for permission like in the browser
+  // No explicit permission needed from user in Electron, just API availability.
   return supported;
 }
 
 /**
- * Shows a local notification via Electron IPC using the dedicated Seedit API.
+ * Shows a local notification via Electron IPC using the exposed 'electron.invoke'.
  */
 export async function showElectronLocalNotification(notification: Omit<LocalNotification, 'id'>): Promise<void> {
-  if (window.seeditIpc?.send) {
-    try {
-      window.seeditIpc.send('show-notification', notification);
-    } catch (error) {
-      console.error('Error sending notification via Seedit IPC:', error);
-    }
-  } else {
-    console.warn('Seedit Electron IPC send function not available.');
+  // Try the high-level API
+  if (typeof window.electronApi?.showNotification === 'function') {
+    // @ts-ignore
+    window.electronApi.showNotification(notification);
+    return;
   }
+  // Next, try the low-level send
+  if (typeof window.electron?.sendNotification === 'function') {
+    // @ts-ignore
+    window.electron.sendNotification(notification);
+    return;
+  }
+  // Finally, fallback to invoke
+  if (typeof window.electron?.invoke === 'function') {
+    try {
+      await window.electron.invoke('show-notification', notification);
+    } catch (err) {
+      console.error('Error sending notification via Electron invoke:', err);
+    }
+    return;
+  }
+  console.error('No available IPC method to send Electron notification.');
 }

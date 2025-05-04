@@ -4,11 +4,15 @@ import { requestWebNotificationPermission, showWebLocalNotification } from './we
 import { requestNativeNotificationPermission, showNativeLocalNotification, initializeNativeNotificationListeners } from './native';
 import { requestElectronNotificationPermission, showElectronLocalNotification } from './electron';
 
-// --- Platform Detection ---
+// --- Platform Detection Functions ---
+function checkIsElectron(): boolean {
+  // Check window property dynamically
+  return window.electronApi?.isElectron === true;
+}
 
-const isElectron = typeof window.seeditIpc?.send === 'function';
-const isNativePlatform = Capacitor.isNativePlatform();
-const isWebPlatform = !isNativePlatform && !isElectron;
+function checkIsNativePlatform(): boolean {
+  return Capacitor.isNativePlatform();
+}
 
 let notificationIdCounter = Date.now(); // Simple counter for unique IDs
 
@@ -19,10 +23,12 @@ let notificationIdCounter = Date.now(); // Simple counter for unique IDs
  * Should be called once when the app starts.
  */
 export function initializeNotificationSystem(): void {
-  if (isNativePlatform) {
+  const isNative = checkIsNativePlatform();
+  const isElectron = checkIsElectron();
+  if (isNative) {
     initializeNativeNotificationListeners();
   }
-  console.log('Notification system initialized for platform:', isNativePlatform ? 'Native' : isElectron ? 'Electron' : 'Web');
+  console.log('Notification system initialized for platform:', isNative ? 'Native' : isElectron ? 'Electron' : 'Web');
 }
 
 // --- Permissions ---
@@ -32,14 +38,17 @@ export function initializeNotificationSystem(): void {
  * Must be called from a user interaction context (e.g., button click).
  */
 export async function requestNotificationPermission(): Promise<boolean> {
-  if (isNativePlatform) {
+  const isNative = checkIsNativePlatform();
+  const isElectron = checkIsElectron();
+
+  if (isNative) {
     return requestNativeNotificationPermission();
   }
   if (isElectron) {
-    // Permission is implicit, just check if IPC is working
     return requestElectronNotificationPermission();
   }
-  if (isWebPlatform) {
+  // Fallback to Web Platform
+  if (!isNative && !isElectron) {
     return requestWebNotificationPermission();
   }
   console.warn('Notification permission request: Unknown platform.');
@@ -52,21 +61,22 @@ export async function requestNotificationPermission(): Promise<boolean> {
  * Shows a local notification using the appropriate platform API.
  */
 export async function showLocalNotification(notificationData: Omit<LocalNotification, 'id'>): Promise<void> {
-  // Generate a unique ID required by Capacitor
   const id = notificationIdCounter++;
   const platformNotification = { ...notificationData, id };
 
   console.log('Attempting to show notification:', platformNotification);
 
-  if (isNativePlatform) {
+  const isNative = checkIsNativePlatform();
+  const isElectron = checkIsElectron();
+
+  if (isNative) {
     return showNativeLocalNotification(platformNotification);
   }
   if (isElectron) {
-    // Electron doesn't need the ID, but doesn't hurt to pass it
     return showElectronLocalNotification(platformNotification);
   }
-  if (isWebPlatform) {
-    // Service Worker doesn't need the ID, but doesn't hurt to pass it
+  // Fallback to Web Platform
+  if (!isNative && !isElectron) {
     return showWebLocalNotification(platformNotification);
   }
 

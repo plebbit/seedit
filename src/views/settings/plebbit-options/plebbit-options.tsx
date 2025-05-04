@@ -179,7 +179,7 @@ const PlebbitDataPathSettings = ({ plebbitDataPathRef }: SettingsProps) => {
   );
 };
 
-const isElectron = window.isElectron === true;
+const isElectron = window.electronApi?.isElectron === true;
 
 const PlebbitOptions = () => {
   const { t } = useTranslation();

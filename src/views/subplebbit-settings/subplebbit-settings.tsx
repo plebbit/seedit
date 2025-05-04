@@ -347,7 +347,7 @@ const JSONSettings = ({ isReadOnly = false }: { isReadOnly?: boolean }) => {
   );
 };
 
-const isElectron = window.isElectron === true;
+const isElectron = window.electronApi?.isElectron === true;
 
 const SubplebbitSettings = () => {
   const { t } = useTranslation();

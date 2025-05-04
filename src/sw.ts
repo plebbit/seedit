@@ -14,29 +14,32 @@ precacheAndRoute(self.__WB_MANIFEST);
 self.skipWaiting();
 clientsClaim();
 
+// Interface for the notification data expected from the main app
 interface NotificationData {
   title: string;
   body: string;
   icon?: string;
-  url?: string;
+  url?: string; // URL to open on click
 }
 
+// Listen for messages from the client (main app)
 self.addEventListener('message', (event) => {
   if (event.data && event.data.type === 'SHOW_NOTIFICATION') {
     const data: NotificationData = event.data.payload;
     event.waitUntil(
       self.registration.showNotification(data.title, {
         body: data.body,
-        icon: data.icon || '/android-chrome-192x192.png',
-        data: { url: data.url },
-        tag: data.body + '_' + Date.now(),
+        icon: data.icon || '/android-chrome-192x192.png', // Default icon
+        data: { url: data.url }, // Pass URL to click handler
+        tag: data.body + '_' + Date.now(), // Make the tag unique by adding a timestamp
       }),
     );
   }
 });
 
+// Handle notification clicks
 self.addEventListener('notificationclick', (event) => {
-  event.notification.close();
+  event.notification.close(); // Close the notification
 
   event.waitUntil(
     self.clients.matchAll({ type: 'window', includeUncontrolled: true }).then((clientList) => {
