@@ -376,7 +376,8 @@ const Subplebbit = () => {
           increaseViewportBy={{ bottom: 1200, top: 600 }}
           totalCount={combinedFeed?.length || 0}
           data={combinedFeed}
-          itemContent={(index, post) => <Post index={index} post={post} />}
+          computeItemKey={(index, post) => post?.cid || index}
+          itemContent={(index, post) => <Post key={post?.cid} index={index} post={post} />}
           useWindowScroll={true}
           components={{ Footer: () => <Footer {...footerProps} /> }}
           endReached={loadMore}

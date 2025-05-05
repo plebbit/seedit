@@ -180,7 +180,8 @@ const Mod = () => {
               increaseViewportBy={{ bottom: 1200, top: 600 }}
               totalCount={feed?.length || 0}
               data={feed}
-              itemContent={(index, post) => <Post index={index} post={post} />}
+              computeItemKey={(index, post) => post?.cid || index}
+              itemContent={(index, post) => <Post key={post?.cid} index={index} post={post} />}
               useWindowScroll={true}
               components={{ Footer: () => <FeedFooter {...footerProps} /> }}
               endReached={loadMore}
