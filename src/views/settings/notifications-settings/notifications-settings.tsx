@@ -39,7 +39,7 @@ const NotificationsSettings = () => {
       console.error('[Electron Native] Error checking notification permissions:', err);
       setPermissionStatus('unknown');
     }
-  }, [setEnableLocalNotifications]);
+  }, [setEnableLocalNotifications, enableLocalNotifications]);
 
   // Run the check on mount
   useEffect(() => {
