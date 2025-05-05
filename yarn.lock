@@ -3718,6 +3718,22 @@
     uuid "8.3.2"
     zustand "4.0.0"
 
+"@plebbit/plebbit-react-hooks@https://github.com/plebbit/plebbit-react-hooks.git#41f0cdf14617f5e843311986d66f14f2f8fcbce0":
+  version "0.0.1"
+  resolved "https://github.com/plebbit/plebbit-react-hooks.git#41f0cdf14617f5e843311986d66f14f2f8fcbce0"
+  dependencies:
+    "@plebbit/plebbit-js" "https://github.com/plebbit/plebbit-js.git#26c097afa62a87c9650dcdfad52babbc77744cbc"
+    "@plebbit/plebbit-logger" "https://github.com/plebbit/plebbit-logger.git"
+    assert "2.0.0"
+    ethers "5.6.9"
+    localforage "1.10.0"
+    lodash.isequal "4.5.0"
+    memoizee "0.4.15"
+    quick-lru "5.1.1"
+    uint8arrays "3.1.1"
+    uuid "8.3.2"
+    zustand "4.0.0"
+
 "@plebbit/proper-lockfile@github:plebbit/node-proper-lockfile#7fd6332117340c1d3d98dd0afee2d31cc06f72b8":
   version "4.1.2"
   resolved "https://codeload.github.com/plebbit/node-proper-lockfile/tar.gz/7fd6332117340c1d3d98dd0afee2d31cc06f72b8"

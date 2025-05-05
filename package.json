@@ -10,7 +10,7 @@
     "@capacitor/app": "6.0.1",
     "@capacitor/local-notifications": "7.0.1",
     "@floating-ui/react": "0.26.1",
-    "@plebbit/plebbit-react-hooks": "https://github.com/plebbit/plebbit-react-hooks.git#047a4e01377fba0b5cf1531814446715d7130aa4",
+    "@plebbit/plebbit-react-hooks": "https://github.com/plebbit/plebbit-react-hooks.git#41f0cdf14617f5e843311986d66f14f2f8fcbce0",
     "@testing-library/jest-dom": "5.14.1",
     "@testing-library/react": "13.0.0",
     "@testing-library/user-event": "13.2.1",
