@@ -20,6 +20,7 @@ export async function requestNativeNotificationPermission(): Promise<boolean> {
  */
 export async function showNativeLocalNotification(notification: LocalNotification): Promise<void> {
   try {
+    console.log('[Native Push] showNativeLocalNotification called with', notification);
     // Check permission first (optional, but good practice)
     const permissionStatus: { display: PermissionState } = await LocalNotifications.checkPermissions();
     if (permissionStatus.display !== 'granted') {
@@ -30,7 +31,7 @@ export async function showNativeLocalNotification(notification: LocalNotificatio
       return;
     }
 
-    await LocalNotifications.schedule({
+    const result = await LocalNotifications.schedule({
       notifications: [
         {
           id: notification.id,
@@ -42,6 +43,7 @@ export async function showNativeLocalNotification(notification: LocalNotificatio
         },
       ],
     });
+    console.log('[Native Push] LocalNotifications.schedule resolved with', result);
 
     // Add listener for when a notification action is performed (e.g., tapped)
     // Do this only once, perhaps in an initialization function

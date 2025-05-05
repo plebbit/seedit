@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from 'react';
-import { requestNotificationPermission } from '../../../lib/push';
+import { requestNotificationPermission, showLocalNotification } from '../../../lib/push';
 import styles from './notifications-settings.module.css';
 import useContentOptionsStore from '../../../stores/use-content-options-store';
 
@@ -132,11 +132,10 @@ const NotificationsSettings = () => {
           alert('Could not check notification status before testing.');
         });
     } else {
-      import('../../../lib/push').then(({ showLocalNotification }) => {
-        showLocalNotification({
-          title: 'Look at this fancy notification!',
-          body: 'We did it Seedit!',
-        });
+      // Directly call the local notification API for web/native environments
+      showLocalNotification({
+        title: 'Look at this fancy notification!',
+        body: 'We did it Seedit!',
       });
     }
   };

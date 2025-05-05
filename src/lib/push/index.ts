@@ -14,7 +14,8 @@ function checkIsNativePlatform(): boolean {
   return Capacitor.isNativePlatform();
 }
 
-let notificationIdCounter = Date.now(); // Simple counter for unique IDs
+// Use a small counter for notification IDs to ensure Java int compatibility
+let notificationIdCounter = 1; // Start at 1
 
 // --- Initialization ---
 
