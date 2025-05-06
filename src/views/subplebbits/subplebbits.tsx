@@ -295,14 +295,14 @@ const AccountSubplebbits = ({ viewRole }: { viewRole: string }) => {
     });
   }, [accountSubplebbits, account, viewRole]);
 
-  return filteredSubplebbitsArray.map((subplebbit, index) => <Subplebbit key={index} subplebbit={subplebbit} />);
+  return filteredSubplebbitsArray.map((subplebbit, index) => <Subplebbit key={index} subplebbit={subplebbit} index={index} />);
 };
 
 const SubscriberSubplebbits = () => {
   const account = useAccount();
   const { subplebbits } = useSubplebbits({ subplebbitAddresses: account?.subscriptions });
   const subplebbitsArray = useMemo(() => Object.values(subplebbits), [subplebbits]);
-  return subplebbitsArray?.map((subplebbit, index) => subplebbit && <Subplebbit key={index} subplebbit={subplebbit} />).filter(Boolean);
+  return subplebbitsArray?.map((subplebbit, index) => subplebbit && <Subplebbit key={index} subplebbit={subplebbit} index={index} />).filter(Boolean);
 };
 
 const AllDefaultSubplebbits = () => {
@@ -335,7 +335,7 @@ const AllAccountSubplebbits = () => {
   const uniqueAddresses = Array.from(new Set([...accountSubplebbitAddresses, ...subscriptionsArray]));
   const { subplebbits } = useSubplebbits({ subplebbitAddresses: uniqueAddresses });
   const subplebbitsArray = useMemo(() => Object.values(subplebbits ?? {}), [subplebbits]);
-  return subplebbitsArray?.map((subplebbit, index) => subplebbit && <Subplebbit key={index} subplebbit={subplebbit} />).filter(Boolean);
+  return subplebbitsArray?.map((subplebbit, index) => subplebbit && <Subplebbit key={index} subplebbit={subplebbit} index={index} />).filter(Boolean);
 };
 
 const Subplebbits = () => {
