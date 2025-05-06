@@ -4,43 +4,110 @@ import useContentOptionsStore from '../../../stores/use-content-options-store';
 
 const MediaOptions = () => {
   const { t } = useTranslation();
-  const { blurNsfwThumbnails, setBlurNsfwThumbnails } = useContentOptionsStore();
+  const {
+    blurNsfwThumbnails,
+    setBlurNsfwThumbnails,
+    thumbnailDisplayOption,
+    setThumbnailDisplayOption,
+    mediaPreviewOption,
+    setMediaPreviewOption,
+    autoplayVideosOnComments,
+    setAutoplayVideosOnComments,
+    muteVideosOnComments,
+    setMuteVideosOnComments,
+  } = useContentOptionsStore();
 
   return (
     <div className={styles.contentOptions}>
       <div className={styles.contentOptionTitle}>thumbnails</div>
       <div>
         <label>
-          <input type='radio' />
+          <input type='radio' name='thumbnailOption' value='show' checked={thumbnailDisplayOption === 'show'} onChange={() => setThumbnailDisplayOption('show')} />
           Show thumbnails next to links
         </label>
       </div>
       <div>
         <label>
-          <input type='radio' />
+          <input type='radio' name='thumbnailOption' value='hide' checked={thumbnailDisplayOption === 'hide'} onChange={() => setThumbnailDisplayOption('hide')} />
           Don't show thumbnails next to links
+        </label>
+      </div>
+      <div>
+        <label
+          style={{ cursor: 'not-allowed' }}
+          onClick={(e) => {
+            e.preventDefault();
+            window.alert('This feature is not available yet');
+          }}
+        >
+          <input
+            type='radio'
+            name='thumbnailOption'
+            value='community'
+            checked={thumbnailDisplayOption === 'community'}
+            onChange={() => setThumbnailDisplayOption('community')}
+            disabled
+          />
+          Show thumbnails based on that community's media preferences
         </label>
       </div>
       <br />
       <div className={styles.contentOptionTitle}>media previews</div>
       <div>
         <label>
-          <input type='radio' />
+          <input
+            type='radio'
+            name='mediaPreviewOption'
+            value='autoExpandAll'
+            checked={mediaPreviewOption === 'autoExpandAll'}
+            onChange={() => setMediaPreviewOption('autoExpandAll')}
+          />
           Auto-expand media previews
         </label>
       </div>
       <div>
         <label>
-          <input type='radio' />
+          <input
+            type='radio'
+            name='mediaPreviewOption'
+            value='autoExpandExceptComments'
+            checked={mediaPreviewOption === 'autoExpandExceptComments'}
+            onChange={() => setMediaPreviewOption('autoExpandExceptComments')}
+          />
           Don't auto-expand media previews on comments pages
         </label>
       </div>
+      <div>
+        <label
+          style={{ cursor: 'not-allowed' }}
+          onClick={(e) => {
+            e.preventDefault();
+            window.alert('This feature is not available yet');
+          }}
+        >
+          <input
+            type='radio'
+            name='mediaPreviewOption'
+            value='community'
+            checked={mediaPreviewOption === 'community'}
+            onChange={() => setMediaPreviewOption('community')}
+            disabled
+          />
+          Expand media previews based on that community's media preferences
+        </label>
+      </div>
       <br />
-      <div className={styles.contentOptionTitle}>Video File Player</div>
+      <div className={styles.contentOptionTitle}>Video Player</div>
       <div>
         <label>
-          <input type='checkbox' />
-          Autoplay video files on the comments page
+          <input type='checkbox' checked={autoplayVideosOnComments} onChange={(e) => setAutoplayVideosOnComments(e.target.checked)} />
+          Autoplay videos on the comments page
+        </label>
+      </div>
+      <div>
+        <label>
+          <input type='checkbox' checked={muteVideosOnComments} onChange={(e) => setMuteVideosOnComments(e.target.checked)} />
+          Mute videos by default
         </label>
       </div>
       <br />

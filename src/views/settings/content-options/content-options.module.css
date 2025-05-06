@@ -33,7 +33,7 @@
   text-transform: capitalize;
 }
 
-.contentOptions input[type='checkbox'] {
+.contentOptions input[type='checkbox'], .contentOptions input[type='radio'] {
   margin: 2px 0.5em 0 0;
 }
 

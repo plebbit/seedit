@@ -12,6 +12,14 @@ interface ContentOptionsState {
   setHideGoreCommunities: (hide: boolean) => void;
   setHideAntiCommunities: (hide: boolean) => void;
   setHideVulgarCommunities: (hide: boolean) => void;
+  thumbnailDisplayOption: 'show' | 'hide' | 'community';
+  setThumbnailDisplayOption: (option: 'show' | 'hide' | 'community') => void;
+  mediaPreviewOption: 'autoExpandAll' | 'autoExpandExceptComments' | 'community';
+  setMediaPreviewOption: (option: 'autoExpandAll' | 'autoExpandExceptComments' | 'community') => void;
+  autoplayVideosOnComments: boolean;
+  setAutoplayVideosOnComments: (autoplay: boolean) => void;
+  muteVideosOnComments: boolean;
+  setMuteVideosOnComments: (mute: boolean) => void;
 }
 
 interface ContentOptionsStore extends ContentOptionsState {
@@ -34,6 +42,10 @@ const useContentOptionsStore = create<ContentOptionsStore>()(
       hasAcceptedWarning: false,
       hideDefaultCommunities: false,
       enableLocalNotifications: false,
+      thumbnailDisplayOption: 'show',
+      mediaPreviewOption: 'autoExpandAll',
+      autoplayVideosOnComments: true,
+      muteVideosOnComments: true,
       setBlurNsfwThumbnails: (blur) => set({ blurNsfwThumbnails: blur }),
       setHideAdultCommunities: (hide) => set({ hideAdultCommunities: hide }),
       setHideGoreCommunities: (hide) => set({ hideGoreCommunities: hide }),
@@ -42,6 +54,10 @@ const useContentOptionsStore = create<ContentOptionsStore>()(
       setHasAcceptedWarning: (value) => set({ hasAcceptedWarning: value }),
       setHideDefaultCommunities: (hide) => set({ hideDefaultCommunities: hide }),
       setEnableLocalNotifications: (enable) => set({ enableLocalNotifications: enable }),
+      setThumbnailDisplayOption: (option) => set({ thumbnailDisplayOption: option }),
+      setMediaPreviewOption: (option) => set({ mediaPreviewOption: option }),
+      setAutoplayVideosOnComments: (autoplay) => set({ autoplayVideosOnComments: autoplay }),
+      setMuteVideosOnComments: (mute) => set({ muteVideosOnComments: mute }),
     }),
     {
       name: 'content-options',
