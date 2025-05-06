@@ -88,7 +88,7 @@ const Footer = ({
       {error && (
         <div style={{ color: 'red' }}>
           <br />
-          {error.message}
+          {t('error')}: {error.message}
         </div>
       )}
     </>

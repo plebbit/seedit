@@ -80,7 +80,7 @@ const Post = ({ post }: { post: Comment }) => {
   const params = useParams();
   const isInPostContextView = isPostContextView(location.pathname, params, location.search);
 
-  const { cid, deleted, depth, locked, removed, postCid, replyCount, state, subplebbitAddress, timestamp } = post || {};
+  const { cid, deleted, depth, error, locked, removed, postCid, replyCount, state, subplebbitAddress, timestamp } = post || {};
 
   const [sortBy, setSortBy] = useState('best');
   const unsortedReplies = useReplies(post);
@@ -169,6 +169,11 @@ const Post = ({ post }: { post: Comment }) => {
           <div className={styles.replies}>
             {replies.length === 0 && replyCount !== undefined && !(isInPostContextView || isSingleComment) && (
               <div className={styles.noReplies}>{t('nothing_found')}</div>
+            )}
+            {error && (
+              <div className={styles.error}>
+                {t('error')}: {error.message}
+              </div>
             )}
             {isSingleComment ? (
               <Reply key={`singleComment-${cid}`} reply={post} depth={0} isSingleComment={true} />
