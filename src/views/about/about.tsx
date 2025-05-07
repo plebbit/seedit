@@ -130,7 +130,7 @@ export const FAQ = () => {
           is generated randomly from a cryptographic hash of your public key, similarly to how a bitcoin address is generated. You can{' '}
           <HashLink to='/settings#cryptoAddress'>change your account address</HashLink> to a unique readable name you own, by resolving it with a decentralized domain
           name service such as{' '}
-          <a href='https://sns.id' target='_blank' rel='noopener noreferrer'>
+          <a href='https://ens.domains/' target='_blank' rel='noopener noreferrer'>
             ENS
           </a>{' '}
           or{' '}
