@@ -69,11 +69,13 @@ const Home = () => {
     };
 
     if (searchQuery) {
-      options.filter = (comment: Comment) => {
-        if (!searchQuery.trim()) return true;
-        return commentMatchesPattern(comment, searchQuery);
+      options.filter = {
+        filter: (comment: Comment) => {
+          if (!searchQuery.trim()) return true;
+          return commentMatchesPattern(comment, searchQuery);
+        },
+        key: `search-filter-${searchQuery}`,
       };
-      options.filterKey = `search-filter-${searchQuery}`;
     }
 
     return options;
