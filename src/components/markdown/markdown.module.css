@@ -20,6 +20,7 @@
   border-left: 2px solid var(--markdown-blockquote-border);
   color: var(--markdown-blockquote);
   white-space: normal;
+  display: flow-root;
 }
 
 .markdown li {
