@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import Plebbit from '@plebbit/plebbit-js/dist/browser/index.js';
+import Plebbit from '@plebbit/plebbit-js';
 import { Comment, useAccount, useBlock, Role, Subplebbit, useSubplebbitStats, useAccountComment } from '@plebbit/plebbit-react-hooks';
 import styles from './sidebar.module.css';
 import useIsSubplebbitOffline from '../../hooks/use-is-subplebbit-offline';
@@ -31,7 +31,7 @@ import Version from '../version';
 import { FAQ } from '../../views/about/about';
 import { createCommunitySubtitles } from '../../constants/create-community-subtitles';
 
-const isElectron = window.isElectron === true;
+const isElectron = window.electronApi?.isElectron === true;
 
 const RulesList = ({ rules }: { rules: string[] }) => {
   const { t } = useTranslation();
@@ -289,7 +289,7 @@ const Sidebar = ({ comment, isSubCreatedButNotYetPublished, settings, subplebbit
         }}
       >
         {(isInPostPageView || isInPendingPostView) && <PostInfo comment={comment} />}
-        {(isInSubplebbitView || isInHomeView || isInAllView || isInModView || isInDomainView) && (
+        {(isInSubplebbitView || isInHomeView || isInAllView || isInModView || isInDomainView || isInPendingPostView) && (
           <Link to={submitRoute}>
             <div className={styles.largeButton}>
               {t('submit_post')}

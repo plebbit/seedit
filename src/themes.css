@@ -28,6 +28,7 @@
   --button-link-background-hover: rgb(38, 42, 43);
   --close-button: url("/assets/buttons/close-button-dark.png");
   --close-button-hover: url("/assets/buttons/close-button-hover.png");
+  --color-scheme: dark;
   --continue-thread-arrow: url('/assets/buttons/continue-this-thread-arrow-dark.png');
   --code-background: rgb(19, 19, 13);
   --code-border: rgb(52, 58, 60);
@@ -129,6 +130,7 @@
   --continue-thread-arrow: url('/assets/buttons/continue-this-thread-arrow.png');
   --code-background: #fcfcfb;
   --code-border: #e6e6de;
+  --color-scheme: light;
   --fakepost-subscribe: url('/assets/fakepost-subscribe.png');
   --filter50: brightness(100%);
   --filter80: brightness(100%);

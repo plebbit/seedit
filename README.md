@@ -29,7 +29,7 @@ The default list of communities, used on p/all on Seedit, is plebbit's [temporar
 
 ## To run locally
 
-1. Install Node v18 (Download from https://nodejs.org)
+1. Install Node v22 (Download from https://nodejs.org)
 2. Install Yarn: `npm install -g yarn`
 3. `yarn install --frozen-lockfile` to install Seedit dependencies
 4. `yarn start` to run the web client

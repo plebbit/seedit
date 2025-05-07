@@ -1,0 +1,50 @@
+.notificationsSettings input[type="checkbox"] {
+  margin-right: .5em;
+}
+
+.permissionStatus {
+  font-size: 10px;
+  color: var(--text-info);
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.permissionStatusSuccess::before {
+  background-image: url('/assets/info-success.png');
+  background-size: 16px 16px;
+  height: 16px;
+  width: 16px;
+  content: '';
+  margin-right: 5px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.permissionStatusRequesting::before {
+  background-image: url('/assets/info.png');
+  background-size: 16px 16px;
+  height: 16px;
+  width: 16px;
+  content: '';
+  margin-right: 5px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.permissionStatusDenied::before {
+  background-image: url('/assets/info-alert.png');
+  background-size: 16px 16px;
+  height: 16px;
+  width: 16px;
+  content: '';
+  margin-right: 5px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.permissionStatusTestButton {
+  font-size: 10px;
+  color: var(--link-primary);
+  cursor: pointer;
+  margin-left: 5px;
+}

@@ -3,7 +3,7 @@ import { useDropzone } from 'react-dropzone';
 import { Trans, useTranslation } from 'react-i18next';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { useAccount, usePublishComment, useSubplebbit } from '@plebbit/plebbit-react-hooks';
-import Plebbit from '@plebbit/plebbit-js/dist/browser/index.js';
+import Plebbit from '@plebbit/plebbit-js';
 import { Capacitor } from '@capacitor/core';
 import FileUploader from '../../plugins/file-uploader';
 import { getLinkMediaInfo } from '../../lib/utils/media-utils';
@@ -18,7 +18,7 @@ import { FormattingHelpTable } from '../../components/reply-form/reply-form';
 import styles from './submit-page.module.css';
 
 const isAndroid = Capacitor.getPlatform() === 'android';
-const isElectron = window.isElectron === true;
+const isElectron = window.electronApi?.isElectron === true;
 
 const UrlField = () => {
   const { t } = useTranslation();

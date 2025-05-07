@@ -10,7 +10,7 @@ export const createCommunitySubtitles = [
   '...your community, your rules.',
   '...no gods, no global admins.',
   '...centralization is boring.',
-  '...torrents, but for thoughts.',
+  '...like torrents, for thoughts.',
   '...can’t stop the signal.',
   '...fully yours, forever.',
   '...powered by caffeine.',
@@ -21,5 +21,6 @@ export const createCommunitySubtitles = [
   '...for digital sovereignty.',
   '...for your movement.',
   '...because you love freedom.',
-  '...because you hate freedom.',
+  '...decentralized, but for real.',
+  '...for your peace of mind.',
 ];

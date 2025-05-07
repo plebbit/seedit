@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link, useLocation, useParams, useSearchParams } from 'react-router-dom';
 import { Comment, useAuthorAddress, useBlock, useEditedComment, useSubscribe } from '@plebbit/plebbit-react-hooks';
-import Plebbit from '@plebbit/plebbit-js/dist/browser/index.js';
+import Plebbit from '@plebbit/plebbit-js';
 import useSubplebbitsStore from '@plebbit/plebbit-react-hooks/dist/stores/subplebbits';
 import useSubplebbitsPagesStore from '@plebbit/plebbit-react-hooks/dist/stores/subplebbits-pages';
 import { getHasThumbnail } from '../../lib/utils/media-utils';
@@ -26,6 +26,7 @@ import CommentTools from './comment-tools';
 import Thumbnail from './thumbnail';
 import styles from './post.module.css';
 import _ from 'lodash';
+import useContentOptionsStore from '../../stores/use-content-options-store';
 
 interface PostAuthorProps {
   authorAddress: string;
@@ -146,7 +147,9 @@ const Post = ({ index, post = {} }: PostProps) => {
 
   const commentMediaInfo = useCommentMediaInfo(post);
 
-  const [isExpanded, setIsExpanded] = useState(isInPostPageView || isInPendingPostView);
+  const { mediaPreviewOption, thumbnailDisplayOption } = useContentOptionsStore();
+
+  const [isExpanded, setIsExpanded] = useState((isInPostPageView || isInPendingPostView) && mediaPreviewOption === 'autoExpandAll');
   const toggleExpanded = () => setIsExpanded(!isExpanded);
 
   const [isEditing, setIsEditing] = useState(false);
@@ -210,20 +213,22 @@ const Post = ({ index, post = {} }: PostProps) => {
                   <div className={`${styles.arrowCommon} ${downvoted ? styles.downvoted : styles.arrowDown}`} onClick={() => cid && downvote()} />
                 </div>
               </div>
-              <Thumbnail
-                cid={cid}
-                commentMediaInfo={commentMediaInfo}
-                isReply={false}
-                isLink={!hasThumbnail && link}
-                isNsfw={nsfw}
-                isSpoiler={spoiler}
-                isText={!hasThumbnail && !link}
-                link={link}
-                linkHeight={linkHeight}
-                linkWidth={linkWidth}
-                subplebbitAddress={subplebbitAddress}
-                isPdf={commentMediaInfo?.type === 'pdf'}
-              />
+              {thumbnailDisplayOption === 'show' && (
+                <Thumbnail
+                  cid={cid}
+                  commentMediaInfo={commentMediaInfo}
+                  isReply={false}
+                  isLink={!hasThumbnail && link}
+                  isNsfw={nsfw}
+                  isSpoiler={spoiler}
+                  isText={!hasThumbnail && !link}
+                  link={link}
+                  linkHeight={linkHeight}
+                  linkWidth={linkWidth}
+                  subplebbitAddress={subplebbitAddress}
+                  isPdf={commentMediaInfo?.type === 'pdf'}
+                />
+              )}
             </div>
             <div className={styles.entry}>
               <div className={styles.topMatter}>

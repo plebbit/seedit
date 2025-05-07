@@ -50,10 +50,10 @@ export const FAQ = () => {
         </h3>
         <p>
           Welcome! Your account <Link to='/profile'>u/{account?.author?.shortAddress}</Link> was created automatically and it's stored locally (
-          {window.isElectron ? 'on this desktop app' : isAndroid ? 'on this mobile app' : `on ${window.location.hostname}`}, not on a server). You can back up your
-          account in the <Link to='/settings#exportAccount'>preferences</Link>. There are no global rules or admins on Seedit, each community has its own rules and
-          moderators, so please be sure to read the rules of the community you are joining. You can connect peer-to-peer to any community by using the search bar, or you
-          can check out the <Link to='/communities/vote'>default community list</Link>.
+          {window.electronApi?.isElectron ? 'on this desktop app' : isAndroid ? 'on this mobile app' : `on ${window.location.hostname}`}, not on a server). You can back
+          up your account in the <Link to='/settings#exportAccount'>preferences</Link>. There are no global rules or admins on Seedit, each community has its own rules
+          and moderators, so please be sure to read the rules of the community you are joining. You can connect peer-to-peer to any community by using the search bar, or
+          you can check out the <Link to='/communities/vote'>default community list</Link>.
         </p>
         <hr />
         <h3 id='whatIsSeedit'>What is Seedit and how does it work?</h3>

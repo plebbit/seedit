@@ -137,6 +137,10 @@
   text-decoration: underline;
 }
 
+.tagline {
+  font-size: 11px;
+}
+
 .tagline a {
   color: var(--text-primary);
   text-decoration: none;

@@ -3,8 +3,6 @@ const { spawn } = require('child_process');
 const fs = require('fs-extra');
 const ps = require('node:process');
 const tcpPortUsed = require('tcp-port-used');
-
-// Import local modules using CommonJS
 const proxyServer = require('./proxy-server.cjs');
 
 // Instead of using electron-is-dev, use app.isPackaged 
@@ -13,6 +11,29 @@ const isDev = process.env.ELECTRON_IS_DEV === '1';
 
 // Use __dirname directly instead of fileURLToPath(import.meta.url)
 const dirname = __dirname;
+
+// Flag to ensure proxy is started only once
+let proxyStarted = false;
+
+// Function to start the proxy if in dev mode and not already started
+function startDevProxyOnce() {
+  if (isDev && !proxyStarted) {
+    const proxyPort = 50019;
+    const targetPort = 50029; // Actual IPFS API port in dev
+    try {
+      console.log(`Attempting to start development proxy server on port ${proxyPort}...`);
+      proxyServer.start({ proxyPort, targetPort });
+      proxyStarted = true; // Set flag only after successful start
+      console.log(`Development proxy server started successfully on port ${proxyPort}, forwarding to ${targetPort}.`);
+    } catch (e) {
+      // Log the error but don't necessarily stop everything, 
+      // as the proxy is mainly for debugging.
+      console.error(`Failed to start development proxy server on port ${proxyPort}:`, e);
+      // Consider if proxyStarted should be set to true even on failure to prevent retries
+      // proxyStarted = true; 
+    }
+  }
+}
 
 // Make the main logic async to handle dynamic import
 async function initializeIpfs() {
@@ -66,11 +87,16 @@ async function initializeIpfs() {
   let apiAddress = '/ip4/127.0.0.1/tcp/50019';
   if (isDev) {
     apiAddress = apiAddress.replace('50019', '50029');
-    proxyServer.start({ proxyPort: 50019, targetPort: 50029 });
+    // Do NOT start proxy server here
+    // proxyServer.start({ proxyPort: 50039, targetPort: 50029 }); 
   }
   await spawnAsync(ipfsPath, ['config', 'Addresses.API', apiAddress], { env, hideWindows: true });
 
   await startIpfsDaemon(ipfsPath, env);
+
+  // Attempt to start proxy AFTER daemon reports ready (or at least after start attempt)
+  // This increases chances the target port 50029 is actually listening.
+  startDevProxyOnce(); 
 }
 
 // use this custom function instead of spawnSync for better logging
@@ -110,17 +136,17 @@ const startIpfsDaemon = (ipfsPath, env) =>
       console.error(`ipfs process with pid ${ipfsProcess.pid} exited`);
       reject(Error(lastError));
     });
+    // Restore the exit handler to cleanly kill the daemon on Electron exit
     process.on('exit', () => {
       try {
+        console.log(`Attempting to kill IPFS daemon (pid: ${ipfsProcess.pid}) on Electron exit...`);
         ps.kill(ipfsProcess.pid);
+        console.log(`Successfully sent kill signal to IPFS daemon (pid: ${ipfsProcess.pid}).`);
       } catch (e) {
-        console.log(e);
-      }
-      try {
-        // sometimes ipfs doesnt exit unless we kill pid +1
-        ps.kill(ipfsProcess.pid + 1);
-      } catch (e) {
-        console.log(e);
+        // Ignore ESRCH errors (process already gone)
+        if (e.code !== 'ESRCH') {
+            console.warn(`Warn: Failed to kill IPFS daemon (pid: ${ipfsProcess.pid}) on exit:`, e.message);
+        }
       }
     });
   });
@@ -140,7 +166,12 @@ const startIpfsAutoRestart = async () => {
       const apiPort = isDev ? 50029 : 50019;
       const started = await tcpPortUsed.check(apiPort, '127.0.0.1');
       if (!started) {
-        await initializeIpfs(); // Call the async initialization function
+        console.log(`IPFS API port ${apiPort} not detected. Initializing IPFS...`);
+        await initializeIpfs(); // Initialize IPFS daemon (will also try to start proxy via startDevProxyOnce)
+      } else {
+         console.log(`IPFS API port ${apiPort} already in use. Assuming IPFS is running.`);
+         // Ensure proxy is started even if IPFS was already running from a previous session
+         startDevProxyOnce();
       }
     } catch (e) {
       console.log('failed starting ipfs', e);
@@ -152,12 +183,13 @@ const startIpfsAutoRestart = async () => {
     pendingStart = false;
   };
 
-  // retry starting ipfs every 1 second,
-  // in case it was started by another client that shut down and shut down ipfs with it
+  // Try starting the proxy once immediately at the beginning,
+  // in case IPFS is already running and the check above runs later.
+  startDevProxyOnce();
+
+  // Start check/initialization loop
   start();
-  setInterval(() => {
-    start();
-  }, 1000);
+  setInterval(start, 5000); // Check every 5 seconds
 };
 startIpfsAutoRestart();
 

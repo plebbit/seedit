@@ -23,7 +23,7 @@ import useDownvote from '../../hooks/use-downvote';
 import useStateString from '../../hooks/use-state-string';
 import useUpvote from '../../hooks/use-upvote';
 import { isInboxView, isPostContextView, isPostPageView } from '../../lib/utils/view-utils';
-import Plebbit from '@plebbit/plebbit-js/dist/browser/index.js';
+import Plebbit from '@plebbit/plebbit-js';
 import Markdown from '../markdown';
 import { getHostname } from '../../lib/utils/url-utils';
 import useAvatarVisibilityStore from '../../stores/use-avatar-visibility-store';
@@ -419,7 +419,7 @@ const Reply = ({ cidOfReplyWithContext, depth = 0, isSingleComment, isSingleRepl
   // auto scroll to context reply
   const replyContextContentRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
-    if (cidOfReplyWithContext === cid) {
+    if (cidOfReplyWithContext === cid && isInPostContextView) {
       const scrollTimeout = setTimeout(() => {
         const replyElement = replyContextContentRef.current;
         if (replyElement) {
@@ -432,7 +432,7 @@ const Reply = ({ cidOfReplyWithContext, depth = 0, isSingleComment, isSingleRepl
 
       return () => clearTimeout(scrollTimeout);
     }
-  }, [cidOfReplyWithContext, cid]);
+  }, [cidOfReplyWithContext, cid, isInPostContextView]);
 
   return (
     <div className={styles.reply} id={cidOfReplyWithContext === cid ? `reply-${cid}` : undefined}>

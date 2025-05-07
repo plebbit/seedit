@@ -29,7 +29,6 @@ interface FooterProps {
   isSubCreatedButNotYetPublished: boolean;
   error: Error | null;
   hasMore: boolean;
-  subplebbitAddressesWithNewerPosts: string[];
   timeFilterName: string;
   reset: () => void;
   searchQuery: string;
@@ -46,7 +45,6 @@ const Footer = ({
   isSubCreatedButNotYetPublished,
   error,
   hasMore,
-  subplebbitAddressesWithNewerPosts,
   timeFilterName,
   reset,
   searchQuery,
@@ -90,7 +88,7 @@ const Footer = ({
       {error && (
         <div style={{ color: 'red' }}>
           <br />
-          {error.message}
+          {t('error')}: {error.message}
         </div>
       )}
     </>
@@ -192,30 +190,7 @@ const Footer = ({
     footerFirstLine = loadingString;
   }
 
-  if (subplebbitAddressesWithNewerPosts.length > 0 && !blocked && !searchQuery) {
-    footerSecondLine = (
-      <div className={styles.stateString}>
-        <Trans
-          i18nKey='newer_posts_available'
-          values={{ timeFilterName }}
-          components={{
-            1: (
-              <span
-                key='newer_posts_available_link'
-                className={styles.link}
-                onClick={() => {
-                  window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
-                  setTimeout(() => {
-                    reset();
-                  }, 300);
-                }}
-              />
-            ),
-          }}
-        />
-      </div>
-    );
-  } else if (timeFilterName !== 'all' && !blocked && !searchQuery) {
+  if (timeFilterName !== 'all' && !blocked && !searchQuery) {
     footerSecondLine = (
       <div className={styles.morePostsSuggestion}>
         <Trans
@@ -293,7 +268,7 @@ const Subplebbit = () => {
     return options;
   }, [subplebbitAddresses, sortType, timeFilterSeconds, searchQuery]);
 
-  const { feed, hasMore, loadMore, reset, subplebbitAddressesWithNewerPosts } = useFeed(feedOptions);
+  const { feed, hasMore, loadMore, reset } = useFeed(feedOptions);
 
   // show account comments instantly in the feed once published (cid defined), instead of waiting for the feed to update
   const { accountComments } = useAccountComments();
@@ -351,13 +326,12 @@ const Subplebbit = () => {
   const footerProps: FooterProps = {
     subplebbitAddresses,
     subplebbitAddress,
-    feedLength: feed.length || 0,
+    feedLength: combinedFeed.length || 0,
     isOnline,
     started,
     isSubCreatedButNotYetPublished,
     error: error || null,
     hasMore,
-    subplebbitAddressesWithNewerPosts,
     timeFilterName: searchQuery ? 'all' : timeFilterName || '',
     reset,
     searchQuery,
@@ -402,7 +376,8 @@ const Subplebbit = () => {
           increaseViewportBy={{ bottom: 1200, top: 600 }}
           totalCount={combinedFeed?.length || 0}
           data={combinedFeed}
-          itemContent={(index, post) => <Post index={index} post={post} />}
+          computeItemKey={(index, post) => post?.cid || index}
+          itemContent={(index, post) => <Post key={post?.cid} index={index} post={post} />}
           useWindowScroll={true}
           components={{ Footer: () => <Footer {...footerProps} /> }}
           endReached={loadMore}

@@ -3,7 +3,7 @@ import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
 import { Comment, useAccount, useAccountComment, useAccountComments, useComment, useSubplebbit } from '@plebbit/plebbit-react-hooks';
 import { useTranslation } from 'react-i18next';
 import findTopParentCidOfReply from '../../lib/utils/cid-utils';
-import { sortByBest } from '../../lib/utils/post-utils';
+import { sortRepliesByBest } from '../../lib/utils/post-utils';
 import { isPendingPostView, isPostContextView } from '../../lib/utils/view-utils';
 import useReplies from '../../hooks/use-replies';
 import useStateString from '../../hooks/use-state-string';
@@ -80,7 +80,7 @@ const Post = ({ post }: { post: Comment }) => {
   const params = useParams();
   const isInPostContextView = isPostContextView(location.pathname, params, location.search);
 
-  const { cid, deleted, depth, locked, removed, postCid, replyCount, state, subplebbitAddress, timestamp } = post || {};
+  const { cid, deleted, depth, error, locked, removed, postCid, replyCount, state, subplebbitAddress, timestamp } = post || {};
 
   const [sortBy, setSortBy] = useState('best');
   const unsortedReplies = useReplies(post);
@@ -102,7 +102,7 @@ const Post = ({ post }: { post: Comment }) => {
       const otherReplies = unpinnedReplies.filter((reply) => reply.author?.address !== account?.author?.address || currentTime - (reply.timestamp || 0) > 30 * 60);
 
       const sortedRecentAccountReplies = [...recentAccountReplies].sort((a, b) => (b.timestamp || 0) - (a.timestamp || 0));
-      const sortedOtherReplies = sortByBest(otherReplies);
+      const sortedOtherReplies = sortRepliesByBest(otherReplies);
 
       sortedUnpinnedReplies = [...sortedRecentAccountReplies, ...sortedOtherReplies];
     } else {
@@ -169,6 +169,11 @@ const Post = ({ post }: { post: Comment }) => {
           <div className={styles.replies}>
             {replies.length === 0 && replyCount !== undefined && !(isInPostContextView || isSingleComment) && (
               <div className={styles.noReplies}>{t('nothing_found')}</div>
+            )}
+            {error && (
+              <div className={styles.error}>
+                {t('error')}: {error.message}
+              </div>
             )}
             {isSingleComment ? (
               <Reply key={`singleComment-${cid}`} reply={post} depth={0} isSingleComment={true} />

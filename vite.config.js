@@ -36,6 +36,16 @@ export default defineConfig({
     }),
     VitePWA({
       registerType: 'autoUpdate',
+      strategies: 'injectManifest',
+      injectManifest: {
+        maximumFileSizeToCacheInBytes: 6000000,
+      },
+      srcDir: 'src',
+      filename: 'sw.ts',
+      devOptions: {
+        enabled: true,
+        type: 'module',
+      },
       includeAssets: ['favicon.ico', 'robots.txt', 'apple-touch-icon.png'],
       manifest: {
         name: 'Seedit',
@@ -67,7 +77,6 @@ export default defineConfig({
         clientsClaim: true,
         skipWaiting: true,
         cleanupOutdatedCaches: true,
-        maximumFileSizeToCacheInBytes: 6000000,
         navigateFallback: 'index.html',
         navigateFallbackDenylist: [/^\/api/, /^\/_(.*)/],
         

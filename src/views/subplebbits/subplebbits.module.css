@@ -126,13 +126,13 @@
   align-items: center;
 }
 
-.avatar img {
+.customAvatarImg {
   object-fit: cover;
   width: 70px;
   max-height: 70px;
 }
 
-.defaultAvatar img {
+.sproutImg {
   object-fit: contain;
   height: 50px;
 }

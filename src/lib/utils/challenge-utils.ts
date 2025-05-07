@@ -2,8 +2,30 @@ import { ChallengeVerification } from '@plebbit/plebbit-react-hooks';
 
 export const alertChallengeVerificationFailed = (challengeVerification: ChallengeVerification, publication: any) => {
   if (challengeVerification?.challengeSuccess === false) {
-    console.warn(challengeVerification, publication);
-    alert(`p/${publication?.subplebbitAddress} challenge error: ${[...(challengeVerification?.challengeErrors || []), challengeVerification?.reason].join(' ')}`);
+    console.warn('Challenge Verification Failed:', challengeVerification, 'Publication:', publication);
+
+    let errorMessages: string[] = [];
+    if (challengeVerification?.challengeErrors) {
+      if (
+        typeof challengeVerification.challengeErrors === 'object' &&
+        challengeVerification.challengeErrors !== null &&
+        !Array.isArray(challengeVerification.challengeErrors)
+      ) {
+        errorMessages = Object.values(challengeVerification.challengeErrors).filter((val): val is string => typeof val === 'string');
+      } else if (Array.isArray(challengeVerification.challengeErrors)) {
+        errorMessages = [...challengeVerification.challengeErrors];
+      } else {
+        console.warn('challengeVerification.challengeErrors is not an object or array:', challengeVerification.challengeErrors);
+      }
+    }
+
+    if (challengeVerification?.reason) {
+      errorMessages.push(challengeVerification.reason);
+    }
+
+    const finalMessage = errorMessages.filter(Boolean).join(' ');
+
+    alert(`p/${publication?.subplebbitAddress} error: ${finalMessage || 'unknown error'}`);
   } else {
     console.log(challengeVerification, publication);
   }

@@ -43,7 +43,7 @@ const Expando = ({
   toggleExpanded,
 }: ExpandoProps) => {
   const { t } = useTranslation();
-  const { blurNsfwThumbnails, setBlurNsfwThumbnails } = useContentOptionsStore();
+  const { blurNsfwThumbnails, setBlurNsfwThumbnails, autoplayVideosOnComments, muteVideosOnComments } = useContentOptionsStore();
   const [hideContent, setHideContent] = useState(blurNsfwThumbnails);
   const [alwaysShowNsfw, setAlwaysShowNsfw] = useState(false);
 
@@ -70,7 +70,7 @@ const Expando = ({
   if (commentMediaInfo?.type === 'image' || commentMediaInfo?.type === 'gif') {
     mediaComponent = <img src={commentMediaInfo.url} alt='' />;
   } else if (commentMediaInfo?.type === 'video' && expanded) {
-    mediaComponent = <video src={`${commentMediaInfo.url}#t=0.001`} controls />;
+    mediaComponent = <video src={`${commentMediaInfo.url}#t=0.001`} controls autoPlay={autoplayVideosOnComments} muted={muteVideosOnComments} />;
   } else if (commentMediaInfo?.type === 'webpage' && commentMediaInfo?.thumbnail) {
     mediaComponent = <img src={commentMediaInfo.thumbnail} alt='' />;
   } else if (commentMediaInfo?.type === 'audio' && expanded) {
