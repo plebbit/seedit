@@ -29,7 +29,7 @@ import SubscribeButton from '../subscribe-button';
 import LoadingEllipsis from '../loading-ellipsis';
 import Version from '../version';
 import { FAQ } from '../../views/about/about';
-import { createCommunitySubtitles } from '../../constants/create-community-subtitles';
+import { communitySubtitles } from '../../constants/community-subtitles';
 
 const isElectron = window.electronApi?.isElectron === true;
 
@@ -236,18 +236,18 @@ const Sidebar = ({ comment, isSubCreatedButNotYetPublished, settings, subplebbit
   const [subtitle2, setSubtitle2] = useState('');
 
   useEffect(() => {
-    if (createCommunitySubtitles.length >= 2) {
+    if (communitySubtitles.length >= 2) {
       const indices = new Set<number>();
       while (indices.size < 2) {
-        const randomIndex = Math.floor(Math.random() * createCommunitySubtitles.length);
+        const randomIndex = Math.floor(Math.random() * communitySubtitles.length);
         indices.add(randomIndex);
       }
       const [index1, index2] = Array.from(indices);
-      setSubtitle1(createCommunitySubtitles[index1]);
-      setSubtitle2(createCommunitySubtitles[index2]);
-    } else if (createCommunitySubtitles.length === 1) {
+      setSubtitle1(communitySubtitles[index1]);
+      setSubtitle2(communitySubtitles[index2]);
+    } else if (communitySubtitles.length === 1) {
       // Handle case with only one subtitle
-      setSubtitle1(createCommunitySubtitles[0]);
+      setSubtitle1(communitySubtitles[0]);
       setSubtitle2(''); // Or handle as needed
     }
   }, []); // Empty dependency array ensures this runs only once on mount
@@ -375,7 +375,7 @@ const Sidebar = ({ comment, isSubCreatedButNotYetPublished, settings, subplebbit
           {t('create_your_community')}
           <div className={styles.nub} />
         </div>
-        <div className={styles.createCommunitySubtitles}>
+        <div className={styles.communitySubtitles}>
           <span className={styles.createCommunityImage}>
             <img src='assets/sprout/sprout-2.png' alt='' />
           </span>
