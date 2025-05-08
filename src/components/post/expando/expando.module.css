@@ -46,6 +46,7 @@
   position: relative;
   margin-bottom: 5px;
   box-sizing: border-box;
+  display: inline-block;
 }
 
 .mediaPreview img {
