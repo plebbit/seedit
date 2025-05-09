@@ -22,7 +22,7 @@ jobs:
           fetch-depth: 0
       - uses: actions/setup-node@v2
         with:
-          node-version: 18
+          node-version: 22
       - run: yarn install --frozen-lockfile
       # make sure the ipfs executable is executable
       - run: node electron/download-ipfs && sudo chmod +x bin/linux/ipfs
@@ -52,7 +52,7 @@ jobs:
           fetch-depth: 0
       - uses: actions/setup-node@v2
         with:
-          node-version: 18
+          node-version: 22
 
       # install missing dep for sqlite
       - run: python3 -m ensurepip
@@ -87,7 +87,7 @@ jobs:
           fetch-depth: 0
       - uses: actions/setup-node@v2
         with:
-          node-version: 18
+          node-version: 22
       - run: yarn install --frozen-lockfile --network-timeout 100000 --network-concurrency 1
       - run: yarn build
       - run: yarn electron:build:windows
@@ -121,7 +121,7 @@ jobs:
           gradle-version: 8.9
       - uses: actions/setup-node@v2
         with:
-          node-version: 18
+          node-version: 22
       - run: sudo apt install -y apksigner zipalign
 
       # build react app
