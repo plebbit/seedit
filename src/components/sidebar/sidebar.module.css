@@ -19,6 +19,8 @@
 }
 
 .searchBarWrapper {
+  position: relative;
+  z-index: 2;
   margin-right: -5px;
 }
 

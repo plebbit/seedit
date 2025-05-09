@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState, useMemo } from 'react';
 import { useLocation, useNavigate, useParams, useSearchParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import styles from './search-bar.module.css';
@@ -13,6 +13,7 @@ import {
   isSubplebbitAboutView,
 } from '../../lib/utils/view-utils';
 import useFeedFiltersStore from '../../stores/use-feed-filters-store';
+import { useDefaultSubplebbitAddresses } from '../../hooks/use-default-subplebbits';
 import _ from 'lodash';
 
 interface SearchBarProps {
@@ -49,6 +50,15 @@ const SearchBar = ({ isFocused = false, onExpandoChange }: SearchBarProps) => {
 
   const [inputValue, setInputValue] = useState(currentQuery);
   const { setIsSearching } = useFeedFiltersStore();
+
+  const defaultSubplebbitAddresses = useDefaultSubplebbitAddresses();
+  const [isInputFocused, setIsInputFocused] = useState(false);
+  const [activeDropdownIndex, setActiveDropdownIndex] = useState<number>(-1);
+
+  const filteredCommunitySuggestions = useMemo(() => {
+    if (!inputValue || isInCommunitySearch) return [];
+    return defaultSubplebbitAddresses.filter((address) => address?.toLowerCase()?.includes(inputValue.toLowerCase())).slice(0, 10);
+  }, [inputValue, defaultSubplebbitAddresses, isInCommunitySearch]);
 
   useEffect(() => {
     setInputValue(searchParams.get('q') || '');
@@ -118,6 +128,7 @@ const SearchBar = ({ isFocused = false, onExpandoChange }: SearchBarProps) => {
   const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
     setInputValue(value);
+    setActiveDropdownIndex(-1);
     if (isInCommunitySearch) {
       if (value.trim()) {
         setIsSearching(true);
@@ -141,6 +152,43 @@ const SearchBar = ({ isFocused = false, onExpandoChange }: SearchBarProps) => {
     }
   };
 
+  const handleCommunitySelect = (address: string) => {
+    setInputValue('');
+    setIsInputFocused(false);
+    setActiveDropdownIndex(-1);
+    navigate(`/p/${address}`);
+  };
+
+  const handleKeyDown = useCallback(
+    (e: React.KeyboardEvent<HTMLInputElement>) => {
+      if (!isInputFocused || isInCommunitySearch || filteredCommunitySuggestions.length === 0) {
+        if (e.key === 'Enter' && !isInCommunitySearch) {
+        } else {
+          return;
+        }
+      }
+
+      if (e.key === 'ArrowDown') {
+        e.preventDefault();
+        setActiveDropdownIndex((prevIndex) => (prevIndex < filteredCommunitySuggestions.length - 1 ? prevIndex + 1 : prevIndex));
+      } else if (e.key === 'ArrowUp') {
+        e.preventDefault();
+        setActiveDropdownIndex((prevIndex) => (prevIndex > 0 ? prevIndex - 1 : 0));
+      } else if (e.key === 'Enter') {
+        e.preventDefault();
+        if (activeDropdownIndex !== -1 && filteredCommunitySuggestions[activeDropdownIndex]) {
+          handleCommunitySelect(filteredCommunitySuggestions[activeDropdownIndex]);
+        } else if (inputValue.trim() && !isInCommunitySearch) {
+          searchBarRef.current?.requestSubmit();
+        }
+      } else if (e.key === 'Escape') {
+        setIsInputFocused(false);
+        setActiveDropdownIndex(-1);
+      }
+    },
+    [isInputFocused, isInCommunitySearch, filteredCommunitySuggestions, activeDropdownIndex, handleCommunitySelect, inputValue, navigate],
+  );
+
   return (
     <div ref={wrapperRef} className={`${styles.searchBarWrapper} ${isInHomeAboutView || isInSubplebbitAboutView || isInPostPageAboutView ? styles.mobileInfobar : ''}`}>
       <form className={styles.searchBar} ref={searchBarRef} onSubmit={handleSearchSubmit}>
@@ -152,13 +200,38 @@ const SearchBar = ({ isFocused = false, onExpandoChange }: SearchBarProps) => {
           autoCapitalize='off'
           placeholder={placeholder}
           ref={searchInputRef}
-          onFocus={() => setShowExpando(true)}
+          onFocus={() => {
+            setShowExpando(true);
+            setIsInputFocused(true);
+          }}
           onChange={handleSearchChange}
           value={inputValue}
+          onKeyDown={handleKeyDown}
+          onBlur={() => setTimeout(() => setIsInputFocused(false), 150)}
         />
         <input type='submit' value='' />
       </form>
+      {!isInCommunitySearch && isInputFocused && filteredCommunitySuggestions.length > 0 && (
+        <ul className={styles.dropdown}>
+          {filteredCommunitySuggestions.map((address, index) => (
+            <li
+              key={address}
+              className={`${styles.dropdownItem} ${index === activeDropdownIndex ? styles.activeDropdownItem : ''}`}
+              onClick={() => handleCommunitySelect(address)}
+              onMouseEnter={() => setActiveDropdownIndex(index)}
+            >
+              {address}
+            </li>
+          ))}
+        </ul>
+      )}
       <div className={`${styles.infobar} ${showExpando ? styles.slideDown : styles.slideUp} ${!isInFeedView ? styles.lessHeight : ''}`}>
+        {isInFeedView && (
+          <label>
+            <input type='checkbox' checked={isInCommunitySearch} onChange={() => handleCommunitySearchToggle(true)} />
+            {t('search_feed_post')}
+          </label>
+        )}
         <label>
           <input
             type='checkbox'
@@ -168,12 +241,6 @@ const SearchBar = ({ isFocused = false, onExpandoChange }: SearchBarProps) => {
           />
           {t('go_to_a_community')}
         </label>
-        {isInFeedView && (
-          <label>
-            <input type='checkbox' checked={isInCommunitySearch} onChange={() => handleCommunitySearchToggle(true)} />
-            {t('search_feed_post')}
-          </label>
-        )}
       </div>
     </div>
   );
