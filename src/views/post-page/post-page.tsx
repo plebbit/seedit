@@ -81,7 +81,7 @@ const Post = ({ post }: { post: Comment }) => {
   const params = useParams();
   const isInPostContextView = isPostContextView(location.pathname, params, location.search);
 
-  const { cid, deleted, depth, error, locked, removed, postCid, replyCount, state, subplebbitAddress, timestamp } = post || {};
+  const { cid, deleted, depth, locked, removed, postCid, replyCount, state, subplebbitAddress, timestamp } = post || {};
 
   const [sortBy, setSortBy] = useState('best');
   const unsortedReplies = useReplies(post);
@@ -129,12 +129,6 @@ const Post = ({ post }: { post: Comment }) => {
 
   const postComment = useComment({ commentCid: postCid });
 
-  useEffect(() => {
-    if (error) {
-      console.log(error);
-    }
-  }, [error]);
-
   return (
     <>
       {(deleted || locked || removed) && (
@@ -176,11 +170,6 @@ const Post = ({ post }: { post: Comment }) => {
           <div className={styles.replies}>
             {replies.length === 0 && replyCount !== undefined && !(isInPostContextView || isSingleComment) && (
               <div className={styles.noReplies}>{t('nothing_found')}</div>
-            )}
-            {error && (
-              <div className={styles.error}>
-                <ErrorDisplay error={error} />
-              </div>
             )}
             {isSingleComment ? (
               <Reply key={`singleComment-${cid}`} reply={post} depth={0} isSingleComment={true} />
@@ -317,7 +306,7 @@ const PostPage = () => {
       </div>
       {isInPendingPostView && params?.accountCommentIndex ? <Post post={pendingPost} /> : isInPostContextView ? <PostWithContext post={post} /> : <Post post={post} />}
       {post?.error && (
-        <div className={styles.fullError}>
+        <div className={styles.error}>
           <ErrorDisplay error={post.error} />
         </div>
       )}
