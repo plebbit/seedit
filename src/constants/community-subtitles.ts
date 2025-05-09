@@ -1,4 +1,4 @@
-export const createCommunitySubtitles = [
+export const communitySubtitles = [
   '...unstoppable by design.',
   '...servers are overrated.',
   '...cryptographic playground.',
@@ -23,4 +23,9 @@ export const createCommunitySubtitles = [
   '...because you love freedom.',
   '...decentralized, but for real.',
   '...for your peace of mind.',
+  '...no corporation to answer to.',
+  '...for your peace of mind.',
+  '...your tokenized sovereignty.',
+  '...for text-only wonders.',
+  '...because open source rulez.',
 ];

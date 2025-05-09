@@ -14,10 +14,12 @@ import {
   isSubplebbitsVotePassingView,
   isSubplebbitsVoteRejectingView,
 } from '../../lib/utils/view-utils';
+import useErrorStore from '../../stores/use-error-store';
 import { useDefaultSubplebbitAddresses, useDefaultSubplebbitTags } from '../../hooks/use-default-subplebbits';
 import { useDefaultSubplebbits } from '../../hooks/use-default-subplebbits';
 import useIsMobile from '../../hooks/use-is-mobile';
 import useIsSubplebbitOffline from '../../hooks/use-is-subplebbit-offline';
+import ErrorDisplay from '../../components/error-display';
 import Markdown from '../../components/markdown';
 import Label from '../../components/post/label';
 import Sidebar from '../../components/sidebar';
@@ -108,7 +110,13 @@ const VoteTabs = () => {
 
 const Infobar = () => {
   const account = useAccount();
-  const { accountSubplebbits } = useAccountSubplebbits();
+  const { accountSubplebbits, error: accountSubplebbitsError } = useAccountSubplebbits();
+  const { setError } = useErrorStore();
+
+  useEffect(() => {
+    setError('Infobar_useAccountSubplebbits', accountSubplebbitsError);
+  }, [accountSubplebbitsError, setError]);
+
   const subscriptions = account?.subscriptions || [];
   const { t } = useTranslation();
   const location = useLocation();
@@ -285,7 +293,12 @@ const Subplebbit = ({ subplebbit, tags, index }: SubplebbitProps) => {
 
 const AccountSubplebbits = ({ viewRole }: { viewRole: string }) => {
   const account = useAccount();
-  const { accountSubplebbits } = useAccountSubplebbits();
+  const { accountSubplebbits, error: accountSubplebbitsError } = useAccountSubplebbits();
+  const { setError } = useErrorStore();
+
+  useEffect(() => {
+    setError('AccountSubplebbits_useAccountSubplebbits', accountSubplebbitsError);
+  }, [accountSubplebbitsError, setError, viewRole]);
 
   const filteredSubplebbitsArray = useMemo(() => {
     return Object.values(accountSubplebbits).filter((subplebbit: any) => {
@@ -300,7 +313,13 @@ const AccountSubplebbits = ({ viewRole }: { viewRole: string }) => {
 
 const SubscriberSubplebbits = () => {
   const account = useAccount();
-  const { subplebbits } = useSubplebbits({ subplebbitAddresses: account?.subscriptions });
+  const { subplebbits, error: subplebbitsError } = useSubplebbits({ subplebbitAddresses: account?.subscriptions });
+  const { setError } = useErrorStore();
+
+  useEffect(() => {
+    setError('SubscriberSubplebbits_useSubplebbits', subplebbitsError);
+  }, [subplebbitsError, setError]);
+
   const subplebbitsArray = useMemo(() => Object.values(subplebbits), [subplebbits]);
   return subplebbitsArray?.map((subplebbit, index) => subplebbit && <Subplebbit key={index} subplebbit={subplebbit} index={index} />).filter(Boolean);
 };
@@ -314,7 +333,13 @@ const AllDefaultSubplebbits = () => {
   const urlTag = pathname.includes('/tag/') ? pathname.split('/').pop() : undefined;
   const currentTag = urlTag && validTags.includes(urlTag) ? urlTag : undefined;
 
-  const { subplebbits } = useSubplebbits({ subplebbitAddresses });
+  const { subplebbits, error: subplebbitsError } = useSubplebbits({ subplebbitAddresses });
+  const { setError } = useErrorStore();
+
+  useEffect(() => {
+    setError('AllDefaultSubplebbits_useSubplebbits', subplebbitsError);
+  }, [subplebbitsError, setError]);
+
   const subplebbitsArray = useMemo(() => Object.values(subplebbits), [subplebbits]);
 
   return subplebbitsArray
@@ -329,11 +354,21 @@ const AllDefaultSubplebbits = () => {
 
 const AllAccountSubplebbits = () => {
   const account = useAccount();
-  const { accountSubplebbits } = useAccountSubplebbits();
+  const { accountSubplebbits, error: accountSubplebbitsError } = useAccountSubplebbits();
+  const { setError } = useErrorStore();
+
+  useEffect(() => {
+    setError('AllAccountSubplebbits_useAccountSubplebbits', accountSubplebbitsError);
+  }, [accountSubplebbitsError, setError]);
+
   const accountSubplebbitAddresses = Object.keys(accountSubplebbits);
   const subscriptionsArray = account?.subscriptions ?? [];
   const uniqueAddresses = Array.from(new Set([...accountSubplebbitAddresses, ...subscriptionsArray]));
-  const { subplebbits } = useSubplebbits({ subplebbitAddresses: uniqueAddresses });
+  const { subplebbits, error: subplebbitsError } = useSubplebbits({ subplebbitAddresses: uniqueAddresses });
+
+  useEffect(() => {
+    setError('AllAccountSubplebbits_useSubplebbits', subplebbitsError);
+  }, [subplebbitsError, setError]);
   const subplebbitsArray = useMemo(() => Object.values(subplebbits ?? {}), [subplebbits]);
   return subplebbitsArray?.map((subplebbit, index) => subplebbit && <Subplebbit key={index} subplebbit={subplebbit} index={index} />).filter(Boolean);
 };
@@ -341,6 +376,24 @@ const AllAccountSubplebbits = () => {
 const Subplebbits = () => {
   const { t } = useTranslation();
   const location = useLocation();
+  const { errors, clearAllErrors } = useErrorStore();
+
+  // Clear errors on component unmount or location change
+  useEffect(() => {
+    return () => {
+      clearAllErrors();
+    };
+  }, [location, clearAllErrors]);
+
+  // Console log errors
+  useEffect(() => {
+    Object.entries(errors).forEach(([source, errorObj]) => {
+      if (errorObj) {
+        console.error(`Error from ${source}:`, errorObj.message, errorObj.stack);
+      }
+    });
+  }, [errors]);
+
   const isInSubplebbitsSubscriberView = isSubplebbitsSubscriberView(location.pathname);
   const isInSubplebbitsModeratorView = isSubplebbitsModeratorView(location.pathname);
   const isInSubplebbitsAdminView = isSubplebbitsAdminView(location.pathname);
@@ -385,6 +438,32 @@ const Subplebbits = () => {
     document.title = documentTitle;
   }, [documentTitle]);
 
+  const renderErrors = () => {
+    const errorsToDisplay: JSX.Element[] = [];
+    Object.entries(errors).forEach(([source, errorObj]) => {
+      if (!errorObj) return;
+
+      if (
+        source === 'Infobar_useAccountSubplebbits' &&
+        (isInSubplebbitsView || isInSubplebbitsSubscriberView || isInSubplebbitsModeratorView || isInSubplebbitsAdminView || isInSubplebbitsOwnerView)
+      ) {
+        errorsToDisplay.push(<ErrorDisplay key={source} error={errorObj} />);
+      } else if (source === 'AccountSubplebbits_useAccountSubplebbits' && (isInSubplebbitsModeratorView || isInSubplebbitsAdminView || isInSubplebbitsOwnerView)) {
+        errorsToDisplay.push(<ErrorDisplay key={source} error={errorObj} />);
+      } else if (source === 'SubscriberSubplebbits_useSubplebbits' && isInSubplebbitsSubscriberView) {
+        errorsToDisplay.push(<ErrorDisplay key={source} error={errorObj} />);
+      } else if (source === 'AllDefaultSubplebbits_useSubplebbits' && isInSubplebbitsVoteView) {
+        errorsToDisplay.push(<ErrorDisplay key={source} error={errorObj} />);
+      } else if (source === 'AllAccountSubplebbits_useAccountSubplebbits' && isInSubplebbitsView) {
+        errorsToDisplay.push(<ErrorDisplay key={source} error={errorObj} />);
+      } else if (source === 'AllAccountSubplebbits_useSubplebbits' && isInSubplebbitsView) {
+        // Avoid duplicate key if both errors from AllAccountSubplebbits are present
+        errorsToDisplay.push(<ErrorDisplay key={`${source}_subplebbits`} error={errorObj} />);
+      }
+    });
+    return errorsToDisplay;
+  };
+
   return (
     <div className={styles.content}>
       <div className={styles.sidebar}>
@@ -396,6 +475,7 @@ const Subplebbits = () => {
         <VoteTabs />
       )}
       <Infobar />
+      <div className={styles.error}>{renderErrors()}</div>
       {isInSubplebbitsVoteView && <AllDefaultSubplebbits />}
       {(isInSubplebbitsModeratorView || isInSubplebbitsAdminView || isInSubplebbitsOwnerView) && <AccountSubplebbits viewRole={viewRole} />}
       {isInSubplebbitsSubscriberView && <SubscriberSubplebbits />}

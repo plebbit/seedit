@@ -20,6 +20,20 @@
   border-left: 2px solid var(--markdown-blockquote-border);
   color: var(--markdown-blockquote);
   white-space: normal;
+  display: flow-root;
+  margin-bottom: 5px;
+}
+
+.markdown blockquote > p:last-child {
+  margin-bottom: 0;
+}
+
+.markdown blockquote blockquote > p:last-child {
+  margin-bottom: 5px;
+}
+
+.markdown blockquote > blockquote:last-child {
+  margin-bottom: 0;
 }
 
 .markdown li {

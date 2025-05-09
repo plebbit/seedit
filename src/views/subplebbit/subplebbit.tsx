@@ -12,6 +12,7 @@ import useFeedResetStore from '../../stores/use-feed-reset-store';
 import { usePinnedPostsStore } from '../../stores/use-pinned-posts-store';
 import { useIsBroadlyNsfwSubplebbit } from '../../hooks/use-is-broadly-nsfw-subplebbit';
 import useTimeFilter, { isValidTimeFilterName } from '../../hooks/use-time-filter';
+import ErrorDisplay from '../../components/error-display';
 import LoadingEllipsis from '../../components/loading-ellipsis';
 import Over18Warning from '../../components/over-18-warning';
 import Post from '../../components/post';
@@ -27,7 +28,6 @@ interface FooterProps {
   isOnline: boolean;
   started: boolean;
   isSubCreatedButNotYetPublished: boolean;
-  error: Error | null;
   hasMore: boolean;
   timeFilterName: string;
   reset: () => void;
@@ -43,7 +43,6 @@ const Footer = ({
   isOnline,
   started,
   isSubCreatedButNotYetPublished,
-  error,
   hasMore,
   timeFilterName,
   reset,
@@ -85,12 +84,6 @@ const Footer = ({
   const loadingString = (
     <>
       <div className={styles.stateString}>{loadingStateString === 'Failed' ? 'failed' : <LoadingEllipsis string={loadingStateString} />}</div>
-      {error && (
-        <div style={{ color: 'red' }}>
-          <br />
-          {t('error')}: {error.message}
-        </div>
-      )}
     </>
   );
 
@@ -258,11 +251,13 @@ const Subplebbit = () => {
     };
 
     if (searchQuery) {
-      options.filter = (comment: Comment) => {
-        if (!searchQuery.trim()) return true;
-        return commentMatchesPattern(comment, searchQuery);
+      options.filter = {
+        filter: (comment: Comment) => {
+          if (!searchQuery.trim()) return true;
+          return commentMatchesPattern(comment, searchQuery);
+        },
+        key: `search-filter-${searchQuery}`,
       };
-      options.filterKey = `search-filter-${searchQuery}`;
     }
 
     return options;
@@ -330,7 +325,6 @@ const Subplebbit = () => {
     isOnline,
     started,
     isSubCreatedButNotYetPublished,
-    error: error || null,
     hasMore,
     timeFilterName: searchQuery ? 'all' : timeFilterName || '',
     reset,
@@ -359,6 +353,12 @@ const Subplebbit = () => {
   const hasUnhiddenAnyNsfwCommunity = !hideAdultCommunities || !hideGoreCommunities || !hideAntiCommunities || !hideVulgarCommunities;
   const isBroadlyNsfwSubplebbit = useIsBroadlyNsfwSubplebbit(subplebbitAddress || '');
 
+  useEffect(() => {
+    if (error) {
+      console.log(error);
+    }
+  }, [error]);
+
   // page title
   useEffect(() => {
     document.title = title ? title : shortAddress || subplebbitAddress;
@@ -371,6 +371,11 @@ const Subplebbit = () => {
       <div className={styles.sidebar}>
         <Sidebar subplebbit={subplebbit} isSubCreatedButNotYetPublished={started && isSubCreatedButNotYetPublished} settings={settings} reset={reset} />
       </div>
+      {error && (
+        <div className={styles.error}>
+          <ErrorDisplay error={error} />
+        </div>
+      )}
       <div className={styles.feed}>
         <Virtuoso
           increaseViewportBy={{ bottom: 1200, top: 600 }}

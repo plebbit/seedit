@@ -106,3 +106,33 @@
   will-change: transform;
   transition: transform 0.3s linear;
 }
+
+.dropdown {
+  font-size: 14px;
+  position: absolute;
+  width: calc(100% - 8px);
+  margin: 0;
+  border: 1px solid var(--border-text);
+  background: var(--background);
+  left: 0;
+  list-style: none;
+  z-index: 999999999 !important;
+}
+
+.dropdownItem {
+  text-decoration: none;
+  display: block;
+  padding: 5px;
+  cursor: pointer;
+  color: var(--text);
+  overflow: hidden;
+}
+
+.dropdownItem:hover, .activeDropdownItem {
+  background-color: var(--text-primary);
+  color: var(--background);
+}
+
+.dropdownItem:hover {
+  color: var(--background);
+}

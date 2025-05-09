@@ -19,6 +19,8 @@
 }
 
 .searchBarWrapper {
+  position: relative;
+  z-index: 2;
   margin-right: -5px;
 }
 
@@ -390,7 +392,7 @@ a {
   padding-right: 6px;
 }
 
-.createCommunitySubtitles {
+.communitySubtitles {
   position: relative;
   margin-top: 10px;
   padding: 5px 0 0 44px;

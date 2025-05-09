@@ -49,11 +49,11 @@ export const FAQ = () => {
           New Users:
         </h3>
         <p>
-          Welcome! Your account <Link to='/profile'>u/{account?.author?.shortAddress}</Link> was created automatically and it's stored locally (
-          {window.electronApi?.isElectron ? 'on this desktop app' : isAndroid ? 'on this mobile app' : `on ${window.location.hostname}`}, not on a server). You can back
-          up your account in the <Link to='/settings#exportAccount'>preferences</Link>. There are no global rules or admins on Seedit, each community has its own rules
-          and moderators, so please be sure to read the rules of the community you are joining. You can connect peer-to-peer to any community by using the search bar, or
-          you can check out the <Link to='/communities/vote'>default community list</Link>.
+          Welcome! Your account was created automatically and it's stored locally on your device (
+          {window.electronApi?.isElectron ? 'on this desktop app' : isAndroid ? 'on this mobile app' : `on this web app, ${window.location.hostname}`}, not on a server).
+          You can back up your account in the <Link to='/settings#exportAccount'>preferences</Link>. There are no global rules or admins on Seedit, each community has its
+          own rules and moderators, so please be sure to read the rules of the community you are joining. You can connect peer-to-peer to any community by using the
+          search bar, or you can check out the <Link to='/communities/vote'>default community list</Link>.
         </p>
         <hr />
         <h3 id='whatIsSeedit'>What is Seedit and how does it work?</h3>
@@ -130,7 +130,7 @@ export const FAQ = () => {
           is generated randomly from a cryptographic hash of your public key, similarly to how a bitcoin address is generated. You can{' '}
           <HashLink to='/settings#cryptoAddress'>change your account address</HashLink> to a unique readable name you own, by resolving it with a decentralized domain
           name service such as{' '}
-          <a href='https://sns.id' target='_blank' rel='noopener noreferrer'>
+          <a href='https://ens.domains/' target='_blank' rel='noopener noreferrer'>
             ENS
           </a>{' '}
           or{' '}

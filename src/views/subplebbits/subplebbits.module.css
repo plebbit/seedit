@@ -340,3 +340,10 @@
   vertical-align: top;
   margin: 0 2px;
 }
+
+.error {
+  font-size: 12px;
+  margin-top: -10px;
+  margin-bottom: 10px;
+  margin-left: 10px;
+}

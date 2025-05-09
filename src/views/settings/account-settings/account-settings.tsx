@@ -166,7 +166,10 @@ const AccountSettings = () => {
   const [text, setText] = useState('');
 
   const accountJson = useMemo(
-    () => stringify({ account: { ...account, plebbit: undefined, karma: undefined, plebbitReactOptions: undefined, unreadNotificationCount: undefined } }),
+    () =>
+      stringify({
+        account: { ...account, plebbit: undefined, karma: undefined, plebbitReactOptions: undefined, unreadNotificationCount: undefined, signer: undefined },
+      }),
     [account],
   );
 
@@ -192,10 +195,19 @@ const AccountSettings = () => {
 
   const saveAccount = async () => {
     try {
-      const newAccount = JSON.parse(text).account;
-      // force keeping the same id, makes it easier to copy paste
-      await setAccount({ ...newAccount, id: account?.id });
-      alert(`Saved ${newAccount.name}`);
+      const newAccountFromTextarea = JSON.parse(text).account;
+      // re-attach all original fields that were not meant to be editable in the textarea
+      const finalAccount = {
+        ...newAccountFromTextarea,
+        id: account?.id, // force keeping the same id, makes it easier to copy paste
+        signer: account?.signer,
+        plebbit: account?.plebbit,
+        karma: account?.karma,
+        plebbitReactOptions: account?.plebbitReactOptions,
+        unreadNotificationCount: account?.unreadNotificationCount,
+      };
+      await setAccount(finalAccount);
+      alert(`Saved ${finalAccount.name}`);
     } catch (error) {
       if (error instanceof Error) {
         alert(error.message);

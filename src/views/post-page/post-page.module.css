@@ -184,10 +184,16 @@
   }
 }
 
-.noReplies, .error {
+.noReplies {
   color: var(--red);
   font-size: 13px;
   text-transform: lowercase;
   padding-top: 19px;
   padding-bottom: 10px;
+}
+
+.error {
+  padding-left: 3px;
+  font-size: 13px;
+  margin-top: -20px;
 }
