@@ -196,10 +196,10 @@ const AccountSettings = () => {
   const saveAccount = async () => {
     try {
       const newAccountFromTextarea = JSON.parse(text).account;
-      // Re-attach all original fields that were not meant to be editable in the textarea
+      // re-attach all original fields that were not meant to be editable in the textarea
       const finalAccount = {
         ...newAccountFromTextarea,
-        id: account?.id, // force keeping the same id
+        id: account?.id, // force keeping the same id, makes it easier to copy paste
         signer: account?.signer,
         plebbit: account?.plebbit,
         karma: account?.karma,
