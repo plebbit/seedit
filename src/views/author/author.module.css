@@ -31,3 +31,10 @@ div[data-viewport-type="window"] {
     padding: 10px 0 0px 5px;
   }
 }
+
+.error {
+  padding-left: 10px;
+  font-size: 12px;
+  margin-top: -10px;
+  padding-bottom: 10px;
+}

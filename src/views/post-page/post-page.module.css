@@ -191,3 +191,10 @@
   padding-top: 19px;
   padding-bottom: 10px;
 }
+
+.fullError {
+  padding-left: 10px;
+  font-size: 12px;
+  margin-top: -20px;
+  padding-bottom: 10px;
+}

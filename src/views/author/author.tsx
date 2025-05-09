@@ -10,6 +10,7 @@ import Post from '../../components/post';
 import Reply from '../../components/reply/';
 import AuthorSidebar from '../../components/author-sidebar';
 import styles from './author.module.css';
+import ErrorDisplay from '../../components/error-display';
 
 const lastVirtuosoStates: { [key: string]: StateSnapshot } = {};
 
@@ -24,7 +25,13 @@ const Author = () => {
   const isInAuthorSubmittedView = isAuthorSubmittedView(location.pathname, params);
   const isMobile = useWindowWidth() < 640;
 
-  const { authorComments, lastCommentCid, hasMore, loadMore } = useAuthorComments({ commentCid, authorAddress });
+  const { authorComments, error, lastCommentCid, hasMore, loadMore } = useAuthorComments({ commentCid, authorAddress });
+
+  useEffect(() => {
+    if (error) {
+      console.log(error);
+    }
+  }, [error]);
 
   const replyComments = useMemo(() => authorComments?.filter((comment) => comment && comment.parentCid) || [], [authorComments]);
   const postComments = useMemo(() => authorComments?.filter((comment) => comment && !comment.parentCid) || [], [authorComments]);
@@ -82,6 +89,11 @@ const Author = () => {
       <div className={isMobile ? styles.sidebarMobile : styles.sidebarDesktop}>
         <AuthorSidebar />
       </div>
+      {error && (
+        <div className={styles.error}>
+          <ErrorDisplay error={error} />
+        </div>
+      )}
       <Virtuoso
         increaseViewportBy={{ bottom: 1200, top: 600 }}
         totalCount={authorComments?.length || 0}

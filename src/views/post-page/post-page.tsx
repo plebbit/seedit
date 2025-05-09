@@ -1,23 +1,24 @@
 import { useEffect, useState, useRef, useCallback, useMemo } from 'react';
 import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
-import { Comment, useAccount, useAccountComment, useAccountComments, useComment, useSubplebbit } from '@plebbit/plebbit-react-hooks';
 import { useTranslation } from 'react-i18next';
+import { Comment, useAccount, useAccountComment, useAccountComments, useComment, useSubplebbit } from '@plebbit/plebbit-react-hooks';
 import findTopParentCidOfReply from '../../lib/utils/cid-utils';
 import { sortRepliesByBest } from '../../lib/utils/post-utils';
 import { isPendingPostView, isPostContextView } from '../../lib/utils/view-utils';
+import useContentOptionsStore from '../../stores/use-content-options-store';
+import useFeedResetStore from '../../stores/use-feed-reset-store';
+import { useIsBroadlyNsfwSubplebbit } from '../../hooks/use-is-broadly-nsfw-subplebbit';
 import useReplies from '../../hooks/use-replies';
 import useStateString from '../../hooks/use-state-string';
+import ErrorDisplay from '../../components/error-display';
 import LoadingEllipsis from '../../components/loading-ellipsis';
+import Over18Warning from '../../components/over-18-warning';
+import PostComponent from '../../components/post';
 import Reply from '../../components/reply';
 import ReplyForm from '../../components/reply-form';
-import PostComponent from '../../components/post';
 import Sidebar from '../../components/sidebar';
 import styles from './post-page.module.css';
 import _ from 'lodash';
-import Over18Warning from '../../components/over-18-warning';
-import { useIsBroadlyNsfwSubplebbit } from '../../hooks/use-is-broadly-nsfw-subplebbit';
-import useContentOptionsStore from '../../stores/use-content-options-store';
-import useFeedResetStore from '../../stores/use-feed-reset-store';
 
 type SortDropdownProps = {
   sortBy: string;
@@ -128,6 +129,12 @@ const Post = ({ post }: { post: Comment }) => {
 
   const postComment = useComment({ commentCid: postCid });
 
+  useEffect(() => {
+    if (error) {
+      console.log(error);
+    }
+  }, [error]);
+
   return (
     <>
       {(deleted || locked || removed) && (
@@ -172,7 +179,7 @@ const Post = ({ post }: { post: Comment }) => {
             )}
             {error && (
               <div className={styles.error}>
-                {t('error')}: {error.message}
+                <ErrorDisplay error={error} />
               </div>
             )}
             {isSingleComment ? (
@@ -285,6 +292,12 @@ const PostPage = () => {
   const { hasAcceptedWarning } = useContentOptionsStore();
   const isBroadlyNsfwSubplebbit = useIsBroadlyNsfwSubplebbit(subplebbitAddress || '');
 
+  useEffect(() => {
+    if (post?.error) {
+      console.log(post.error);
+    }
+  }, [post?.error]);
+
   const postTitle = post.title?.slice(0, 40) || post?.content?.slice(0, 40);
   const subplebbitTitle = subplebbit?.title || subplebbit?.shortAddress;
   useEffect(() => {
@@ -303,6 +316,11 @@ const PostPage = () => {
         <Sidebar subplebbit={subplebbit} comment={post} settings={subplebbit?.settings} />
       </div>
       {isInPendingPostView && params?.accountCommentIndex ? <Post post={pendingPost} /> : isInPostContextView ? <PostWithContext post={post} /> : <Post post={post} />}
+      {post?.error && (
+        <div className={styles.fullError}>
+          <ErrorDisplay error={post.error} />
+        </div>
+      )}
     </div>
   );
 };

@@ -1,0 +1,9 @@
+.errorMessage {
+  color: var(--red);
+}
+
+.showFullErrorButton {
+  font-weight: 700;
+  cursor: pointer;
+  padding: 5px 0;
+}

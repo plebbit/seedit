@@ -7,6 +7,7 @@ import Reply from '../../components/reply/reply';
 import { isInboxCommentRepliesView, isInboxPostRepliesView, isInboxUnreadView } from '../../lib/utils/view-utils';
 import { useTranslation } from 'react-i18next';
 import _ from 'lodash';
+import ErrorDisplay from '../../components/error-display';
 
 const lastVirtuosoStates: { [key: string]: StateSnapshot } = {};
 
@@ -43,7 +44,7 @@ const Inbox = () => {
   const { t } = useTranslation();
   const account = useAccount();
   const { unreadNotificationCount } = account || {};
-  const { notifications, markAsRead } = useNotifications();
+  const { error, notifications, markAsRead } = useNotifications();
 
   const location = useLocation();
   const isInInboxCommentRepliesView = isInboxCommentRepliesView(location.pathname);
@@ -97,6 +98,12 @@ const Inbox = () => {
     document.title = documentTitle;
   }, [documentTitle]);
 
+  useEffect(() => {
+    if (error) {
+      console.log(error);
+    }
+  }, [error]);
+
   return (
     <div className={styles.content}>
       <InboxTabs />
@@ -109,6 +116,11 @@ const Inbox = () => {
           <div className={styles.noNotifications}>{t('nothing_found')}</div>
         )}
       </div>
+      {error && (
+        <div className={styles.error}>
+          <ErrorDisplay error={error} />
+        </div>
+      )}
       <Virtuoso
         increaseViewportBy={{ bottom: 1200, top: 600 }}
         totalCount={notifications?.length || 0}

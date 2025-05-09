@@ -9,6 +9,7 @@ import AuthorSidebar from '../../components/author-sidebar';
 import Post from '../../components/post';
 import Reply from '../../components/reply';
 import styles from './profile.module.css';
+import ErrorDisplay from '../../components/error-display';
 
 const pageSize = 10;
 const sortTypes: string[] = ['new', 'old'];
@@ -135,15 +136,26 @@ const VirtualizedCommentList = ({ comments }: { comments: any[] }) => {
 
 const Overview = () => {
   const { t } = useTranslation();
-  const { accountComments } = useAccountComments();
+  const { error, accountComments } = useAccountComments();
   const [sortType, setSortType] = useState('new');
 
   const sortedComments = useMemo(() => {
     return [...accountComments].sort((a, b) => (sortType === 'new' ? b.timestamp - a.timestamp : a.timestamp - b.timestamp));
   }, [accountComments, sortType]);
 
+  useEffect(() => {
+    if (error) {
+      console.log(error);
+    }
+  }, [error]);
+
   return (
     <div>
+      {error && (
+        <div className={styles.error}>
+          <ErrorDisplay error={error} />
+        </div>
+      )}
       <SortDropdown onSortChange={setSortType} />
       {sortedComments.length === 0 ? <div className={styles.nothingFound}>{t('nothing_found')}</div> : <VirtualizedCommentList comments={sortedComments} />}
     </div>
@@ -152,7 +164,7 @@ const Overview = () => {
 
 const Comments = () => {
   const { t } = useTranslation();
-  const { accountComments } = useAccountComments();
+  const { error, accountComments } = useAccountComments();
   const [sortType, setSortType] = useState('new');
 
   const replyComments = useMemo(() => accountComments?.filter((comment) => comment.parentCid) || [], [accountComments]);
@@ -161,8 +173,19 @@ const Comments = () => {
     return [...replyComments].sort((a, b) => (sortType === 'new' ? b.timestamp - a.timestamp : a.timestamp - b.timestamp));
   }, [replyComments, sortType]);
 
+  useEffect(() => {
+    if (error) {
+      console.log(error);
+    }
+  }, [error]);
+
   return (
     <div>
+      {error && (
+        <div className={styles.error}>
+          <ErrorDisplay error={error} />
+        </div>
+      )}
       <SortDropdown onSortChange={setSortType} />
       {sortedComments.length === 0 ? <div className={styles.nothingFound}>{t('nothing_found')}</div> : <VirtualizedCommentList comments={sortedComments} />}
     </div>
@@ -171,7 +194,7 @@ const Comments = () => {
 
 const Submitted = () => {
   const { t } = useTranslation();
-  const { accountComments } = useAccountComments();
+  const { error, accountComments } = useAccountComments();
   const [sortType, setSortType] = useState('new');
 
   const postComments = useMemo(() => accountComments?.filter((comment) => !comment.parentCid) || [], [accountComments]);
@@ -180,8 +203,19 @@ const Submitted = () => {
     return [...postComments].sort((a, b) => (sortType === 'new' ? b.timestamp - a.timestamp : a.timestamp - b.timestamp));
   }, [postComments, sortType]);
 
+  useEffect(() => {
+    if (error) {
+      console.log(error);
+    }
+  }, [error]);
+
   return (
     <div>
+      {error && (
+        <div className={styles.error}>
+          <ErrorDisplay error={error} />
+        </div>
+      )}
       <SortDropdown onSortChange={setSortType} />
       {sortedComments.length === 0 ? <div className={styles.nothingFound}>{t('nothing_found')}</div> : <VirtualizedCommentList comments={sortedComments} />}
     </div>
@@ -190,7 +224,7 @@ const Submitted = () => {
 
 const VotedComments = ({ voteType }: { voteType: 1 | -1 }) => {
   const { t } = useTranslation();
-  const { accountVotes } = useAccountVotes();
+  const { error, accountVotes } = useAccountVotes();
   const [currentPage, setCurrentPage] = useState(1);
   const [sortType, setSortType] = useState('new');
 
@@ -203,8 +237,19 @@ const VotedComments = ({ voteType }: { voteType: 1 | -1 }) => {
   const paginatedCids = votedCommentCids.slice((currentPage - 1) * pageSize, currentPage * pageSize);
   const hasMore = currentPage * pageSize < votedCommentCids.length;
 
+  useEffect(() => {
+    if (error) {
+      console.log(error);
+    }
+  }, [error]);
+
   return (
     <div>
+      {error && (
+        <div className={styles.error}>
+          <ErrorDisplay error={error} />
+        </div>
+      )}
       <SortDropdown onSortChange={setSortType} />
       {paginatedCids.length === 0 ? <div className={styles.nothingFound}>{t('nothing_found')}</div> : paginatedCids.map((cid) => <CommentItem key={cid} cid={cid} />)}
       <PaginationControls currentPage={currentPage} hasMore={hasMore} onPageChange={setCurrentPage} />

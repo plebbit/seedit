@@ -147,3 +147,10 @@ div[data-viewport-type="window"] {
   margin-right: -3px;
   margin-top: -3px;
 }
+
+.error {
+  padding-left: 10px;
+  font-size: 12px;
+  margin-top: -10px;
+  padding-bottom: 10px;
+}
