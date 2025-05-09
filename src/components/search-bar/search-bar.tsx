@@ -152,12 +152,15 @@ const SearchBar = ({ isFocused = false, onExpandoChange }: SearchBarProps) => {
     }
   };
 
-  const handleCommunitySelect = (address: string) => {
-    setInputValue('');
-    setIsInputFocused(false);
-    setActiveDropdownIndex(-1);
-    navigate(`/p/${address}`);
-  };
+  const handleCommunitySelect = useCallback(
+    (address: string) => {
+      setInputValue('');
+      setIsInputFocused(false);
+      setActiveDropdownIndex(-1);
+      navigate(`/p/${address}`);
+    },
+    [navigate, setInputValue, setIsInputFocused, setActiveDropdownIndex],
+  );
 
   const handleKeyDown = useCallback(
     (e: React.KeyboardEvent<HTMLInputElement>) => {
