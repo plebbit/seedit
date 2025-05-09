@@ -189,7 +189,7 @@ const SearchBar = ({ isFocused = false, onExpandoChange }: SearchBarProps) => {
         setActiveDropdownIndex(-1);
       }
     },
-    [isInputFocused, isInCommunitySearch, filteredCommunitySuggestions, activeDropdownIndex, handleCommunitySelect, inputValue, navigate],
+    [isInputFocused, isInCommunitySearch, filteredCommunitySuggestions, activeDropdownIndex, handleCommunitySelect, inputValue],
   );
 
   return (
