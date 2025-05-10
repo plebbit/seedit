@@ -154,9 +154,9 @@ jobs:
           node-version: 20
       - run: sudo apt install -y apksigner zipalign
 
-      # install only production dependencies (skipping devDependencies that require Node 22)
-      - name: Install production dependencies (with Node v20)
-        run: yarn install --frozen-lockfile --production --ignore-engines
+      # install all dependencies (including devDependencies needed for React build)
+      - name: Install dependencies (with Node v20)
+        run: yarn install --frozen-lockfile --ignore-engines
       # build react app
       - run: CI='' yarn build
       # set android versionCode and versionName
