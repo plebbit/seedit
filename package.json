@@ -128,7 +128,7 @@
     "appId": "seedit.desktop",
     "productName": "seedit",
     "beforePack": "electron/before-pack.js",
-    "afterAllArtifactBuild": "electron/after-all-artifact-build.js",
+    "afterAllArtifactBuild": "electron/after-all-artifact-build.cjs",
     "extraResources": [
       {
         "from": "bin/${os}",
