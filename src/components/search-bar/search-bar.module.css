@@ -108,6 +108,7 @@
 }
 
 .dropdown {
+  font-family: verdana, arial, helvetica, sans-serif;
   font-size: 14px;
   position: absolute;
   width: calc(100% - 8px);
