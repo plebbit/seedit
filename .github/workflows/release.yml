@@ -25,7 +25,7 @@ jobs:
         with:
           node-version: 20
       - name: Install dependencies (with Node v20)
-        run: yarn install --frozen-lockfile
+        run: yarn install --frozen-lockfile --ignore-engines
       # make sure the ipfs executable is executable
       - name: Download IPFS and set permissions (with Node v20)
         run: node electron/download-ipfs && sudo chmod +x bin/linux/ipfs
@@ -72,7 +72,7 @@ jobs:
       - run: pip install setuptools
 
       - name: Install dependencies (with Node v20)
-        run: yarn install --frozen-lockfile
+        run: yarn install --frozen-lockfile --ignore-engines
       # make sure the ipfs executable is executable
       - name: Download IPFS and set permissions (with Node v20)
         run: node electron/download-ipfs && sudo chmod +x bin/mac/ipfs
