@@ -2,8 +2,10 @@
   color: var(--red);
 }
 
-.showFullErrorButton {
-  font-weight: 700;
+.clickableErrorMessage {
   cursor: pointer;
-  padding: 5px 0;
+}
+
+.feedbackSuccessMessage {
+  color: inherit;
 }
