@@ -1,7 +1,9 @@
 import { useCallback, useEffect, useRef, useState, useMemo } from 'react';
 import { useLocation, useNavigate, useParams, useSearchParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import styles from './search-bar.module.css';
+import { useFloating, autoUpdate, offset, shift, FloatingPortal } from '@floating-ui/react';
+import { useAccount } from '@plebbit/plebbit-react-hooks';
+import Plebbit from '@plebbit/plebbit-js';
 import {
   isHomeView,
   isHomeAboutView,
@@ -13,7 +15,7 @@ import {
   isSubplebbitAboutView,
 } from '../../lib/utils/view-utils';
 import useFeedFiltersStore from '../../stores/use-feed-filters-store';
-import { useDefaultSubplebbitAddresses } from '../../hooks/use-default-subplebbits';
+import styles from './search-bar.module.css';
 import _ from 'lodash';
 
 interface SearchBarProps {
@@ -51,14 +53,26 @@ const SearchBar = ({ isFocused = false, onExpandoChange }: SearchBarProps) => {
   const [inputValue, setInputValue] = useState(currentQuery);
   const { setIsSearching } = useFeedFiltersStore();
 
-  const defaultSubplebbitAddresses = useDefaultSubplebbitAddresses();
+  const account = useAccount();
+  const subplebbitAddresses = useMemo(() => account?.subscriptions || [], [account?.subscriptions]);
   const [isInputFocused, setIsInputFocused] = useState(false);
   const [activeDropdownIndex, setActiveDropdownIndex] = useState<number>(-1);
 
   const filteredCommunitySuggestions = useMemo(() => {
     if (!inputValue || isInCommunitySearch) return [];
-    return defaultSubplebbitAddresses.filter((address) => address?.toLowerCase()?.includes(inputValue.toLowerCase())).slice(0, 10);
-  }, [inputValue, defaultSubplebbitAddresses, isInCommunitySearch]);
+    return subplebbitAddresses.filter((address: string) => address?.toLowerCase()?.includes(inputValue.toLowerCase())).slice(0, 10);
+  }, [inputValue, subplebbitAddresses, isInCommunitySearch]);
+
+  const { x, y, strategy, refs, context } = useFloating({
+    open: isInputFocused && filteredCommunitySuggestions.length > 0,
+    onOpenChange: (open) => {
+      if (!open) {
+        setIsInputFocused(false);
+      }
+    },
+    middleware: [offset(5), shift()],
+    whileElementsMounted: autoUpdate,
+  });
 
   useEffect(() => {
     setInputValue(searchParams.get('q') || '');
@@ -202,7 +216,11 @@ const SearchBar = ({ isFocused = false, onExpandoChange }: SearchBarProps) => {
           spellCheck='false'
           autoCapitalize='off'
           placeholder={placeholder}
-          ref={searchInputRef}
+          ref={(instance) => {
+            // @ts-expect-error Property 'current' is read-only.
+            searchInputRef.current = instance;
+            refs.setReference(instance);
+          }}
           onFocus={() => {
             setShowExpando(true);
             setIsInputFocused(true);
@@ -214,19 +232,30 @@ const SearchBar = ({ isFocused = false, onExpandoChange }: SearchBarProps) => {
         />
         <input type='submit' value='' />
       </form>
-      {!isInCommunitySearch && isInputFocused && filteredCommunitySuggestions.length > 0 && (
-        <ul className={styles.dropdown}>
-          {filteredCommunitySuggestions.map((address, index) => (
-            <li
-              key={address}
-              className={`${styles.dropdownItem} ${index === activeDropdownIndex ? styles.activeDropdownItem : ''}`}
-              onClick={() => handleCommunitySelect(address)}
-              onMouseEnter={() => setActiveDropdownIndex(index)}
-            >
-              {address}
-            </li>
-          ))}
-        </ul>
+      {context.open && (
+        <FloatingPortal>
+          <ul
+            ref={refs.setFloating}
+            style={{
+              position: strategy,
+              top: y ?? 0,
+              left: x ?? 0,
+              width: searchInputRef.current?.offsetWidth ? searchInputRef.current.offsetWidth - 2 : 'auto', // -2 for border
+            }}
+            className={styles.dropdown}
+          >
+            {filteredCommunitySuggestions.map((address: string, index: number) => (
+              <li
+                key={address}
+                className={`${styles.dropdownItem} ${index === activeDropdownIndex ? styles.activeDropdownItem : ''}`}
+                onClick={() => handleCommunitySelect(address)}
+                onMouseEnter={() => setActiveDropdownIndex(index)}
+              >
+                {Plebbit.getShortAddress(address)}
+              </li>
+            ))}
+          </ul>
+        </FloatingPortal>
       )}
       <div className={`${styles.infobar} ${showExpando ? styles.slideDown : styles.slideUp} ${!isInFeedView ? styles.lessHeight : ''}`}>
         {isInFeedView && (
@@ -236,12 +265,7 @@ const SearchBar = ({ isFocused = false, onExpandoChange }: SearchBarProps) => {
           </label>
         )}
         <label>
-          <input
-            type='checkbox'
-            checked={!isInCommunitySearch}
-            disabled={!isInFeedView} // Disable if not in a view where feed search makes sense
-            onChange={() => handleCommunitySearchToggle(false)}
-          />
+          <input type='checkbox' checked={!isInCommunitySearch} disabled={!isInFeedView} onChange={() => handleCommunitySearchToggle(false)} />
           {t('go_to_a_community')}
         </label>
       </div>
