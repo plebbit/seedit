@@ -20,18 +20,30 @@ jobs:
         with:
           # needed for git commit history changelog
           fetch-depth: 0
-      - uses: actions/setup-node@v2
+      - name: Setup Node.js v20
+        uses: actions/setup-node@v2
         with:
           node-version: 20
-      - run: yarn install --frozen-lockfile
+      - name: Install dependencies (with Node v20)
+        run: yarn install --frozen-lockfile
       # make sure the ipfs executable is executable
-      - run: node electron/download-ipfs && sudo chmod +x bin/linux/ipfs
-      - run: CI='' yarn build
-      - run: yarn electron:build:linux
-      - run: ls dist
+      - name: Download IPFS and set permissions (with Node v20)
+        run: node electron/download-ipfs && sudo chmod +x bin/linux/ipfs
+
+      - name: Setup Node.js v22 for Electron build
+        uses: actions/setup-node@v2
+        with:
+          node-version: 22
+      - name: Build React app (with Node v22)
+        run: CI='' yarn build
+      - name: Build Electron app for Linux (with Node v22)
+        run: yarn electron:build:linux
+      - name: List dist directory
+        run: ls dist
 
       # publish version release
-      - run: node scripts/release-body > release-body.txt
+      - name: Generate release body
+        run: node scripts/release-body > release-body.txt
       - uses: ncipollo/release-action@v1
         with:
           artifacts: 'dist/seedit*.AppImage,dist/seedit-html*.zip'
@@ -50,7 +62,8 @@ jobs:
         with:
           # needed for git commit history changelog
           fetch-depth: 0
-      - uses: actions/setup-node@v2
+      - name: Setup Node.js v20
+        uses: actions/setup-node@v2
         with:
           node-version: 20
 
@@ -58,15 +71,26 @@ jobs:
       - run: python3 -m ensurepip
       - run: pip install setuptools
 
-      - run: yarn install --frozen-lockfile
+      - name: Install dependencies (with Node v20)
+        run: yarn install --frozen-lockfile
       # make sure the ipfs executable is executable
-      - run: node electron/download-ipfs && sudo chmod +x bin/mac/ipfs
-      - run: CI='' yarn build
-      - run: yarn electron:build:mac
-      - run: ls dist
+      - name: Download IPFS and set permissions (with Node v20)
+        run: node electron/download-ipfs && sudo chmod +x bin/mac/ipfs
+
+      - name: Setup Node.js v22 for Electron build
+        uses: actions/setup-node@v2
+        with:
+          node-version: 22
+      - name: Build React app (with Node v22)
+        run: CI='' yarn build
+      - name: Build Electron app for Mac (with Node v22)
+        run: yarn electron:build:mac
+      - name: List dist directory
+        run: ls dist
 
       # publish version release
-      - run: node scripts/release-body > release-body.txt
+      - name: Generate release body
+        run: node scripts/release-body > release-body.txt
       - uses: ncipollo/release-action@v1
         with:
           artifacts: 'dist/seedit*.dmg'
@@ -85,16 +109,22 @@ jobs:
         with:
           # needed for git commit history changelog
           fetch-depth: 0
-      - uses: actions/setup-node@v2
+      - name: Setup Node.js v22 # electron-rebuild needs Node 22+
+        uses: actions/setup-node@v2
         with:
-          node-version: 20
-      - run: yarn install --frozen-lockfile --network-timeout 100000 --network-concurrency 1
-      - run: yarn build
-      - run: yarn electron:build:windows
-      - run: dir dist
+          node-version: 22
+      - name: Install dependencies (with Node v22) # --network-timeout and --network-concurrency are yarn v1 flags.
+        run: yarn install --frozen-lockfile --network-timeout 100000 --network-concurrency 1
+      - name: Build React app (with Node v22)
+        run: yarn build
+      - name: Build Electron app for Windows (with Node v22)
+        run: yarn electron:build:windows
+      - name: List dist directory
+        run: dir dist
 
       # publish version release
-      - run: node scripts/release-body > release-body.txt
+      - name: Generate release body
+        run: node scripts/release-body > release-body.txt
       - uses: ncipollo/release-action@v1
         with:
           artifacts: 'dist/seedit*.exe'
