@@ -154,8 +154,10 @@ jobs:
           node-version: 20
       - run: sudo apt install -y apksigner zipalign
 
+      # install only production dependencies (skipping devDependencies that require Node 22)
+      - name: Install production dependencies (with Node v20)
+        run: yarn install --frozen-lockfile --production --ignore-engines
       # build react app
-      - run: yarn install --frozen-lockfile
       - run: CI='' yarn build
       # set android versionCode and versionName
       - run: sed -i "s/versionCode 1/versionCode $(git tag | wc -l)/" ./android/app/build.gradle
