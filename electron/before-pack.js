@@ -7,6 +7,13 @@ import decompress from 'decompress';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import os from 'os';
+import dns from 'dns';
+
+// Force IPv4 resolution to avoid IPv6 timeouts on GitHub macOS runners
+if (dns.setDefaultResultOrder) {
+  dns.setDefaultResultOrder('ipv4first');
+}
+
 const ipfsClientsPath = path.join(path.dirname(fileURLToPath(import.meta.url)), '..', 'bin');
 const ipfsClientWindowsPath = path.join(ipfsClientsPath, 'win');
 const ipfsClientMacPath = path.join(ipfsClientsPath, 'mac');
