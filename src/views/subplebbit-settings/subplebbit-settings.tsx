@@ -290,6 +290,9 @@ const Moderators = ({ isReadOnly = false }: { isReadOnly?: boolean }) => {
                   <input
                     ref={index === Object.keys(roles).length - 1 ? lastModeratorRef : null}
                     type='text'
+                    autoCorrect='off'
+                    autoComplete='off'
+                    spellCheck='false'
                     value={address}
                     onChange={(e) => handleAddressChange(index, e.target.value)}
                   />
@@ -469,7 +472,20 @@ const SubplebbitSettings = () => {
 
   useEffect(() => {
     resetSubplebbitSettingsStore();
-    if (hasLoaded) {
+    if (isInCreateSubplebbitView) {
+      const initialRoles: Roles = account?.author?.address ? { [account.author.address]: { role: 'owner' as const } } : {};
+      setSubplebbitSettingsStore({
+        title: '',
+        description: '',
+        address: undefined,
+        suggested: {},
+        rules: [],
+        roles: initialRoles,
+        settings: {},
+        challenges: [],
+        subplebbitAddress: undefined,
+      });
+    } else if (hasLoaded) {
       setSubplebbitSettingsStore({
         title: title ?? '',
         description: description ?? '',
@@ -483,7 +499,21 @@ const SubplebbitSettings = () => {
       });
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [resetSubplebbitSettingsStore, hasLoaded]);
+  }, [
+    resetSubplebbitSettingsStore,
+    hasLoaded,
+    isInCreateSubplebbitView,
+    account,
+    title,
+    description,
+    address,
+    suggested,
+    rules,
+    roles,
+    settings,
+    challenges,
+    subplebbitAddress,
+  ]);
 
   const documentTitle = useMemo(() => {
     let title;
