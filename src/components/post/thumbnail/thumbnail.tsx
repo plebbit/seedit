@@ -72,6 +72,7 @@ const Thumbnail = ({
   };
 
   let mediaComponent = null;
+  let noMediaLinkIcon = '';
   const gifFrameUrl = useFetchGifFirstFrame(commentMediaInfo?.type === 'gif' ? commentMediaInfo.url : undefined);
 
   const [videoDuration, setVideoDuration] = useState<string>('');
@@ -108,26 +109,32 @@ const Thumbnail = ({
 
   if (isText) {
     mediaComponent = <span className={`${styles.iconThumbnail} ${styles.textIcon}`} />;
+    noMediaLinkIcon = 'text';
   }
 
   if (isLink) {
     mediaComponent = <span className={`${styles.iconThumbnail} ${styles.linkIcon}`} />;
+    noMediaLinkIcon = 'link';
   }
 
   if (isPdf) {
     mediaComponent = <span className={`${styles.iconThumbnail} ${styles.imageIcon}`} />;
+    noMediaLinkIcon = 'pdf';
   }
 
   if (isSpoiler) {
     mediaComponent = <span className={`${styles.iconThumbnail} ${styles.spoilerIcon}`} />;
+    noMediaLinkIcon = 'spoiler';
   }
 
   if (isNsfw && blurNsfwThumbnails && !isNsfwSubplebbit) {
     mediaComponent = <span className={`${styles.iconThumbnail} ${styles.nsfwIcon}`} />;
+    noMediaLinkIcon = 'nsfw';
   }
 
   if (isNotFound) {
     mediaComponent = <span className={`${styles.iconThumbnail} ${styles.linkIcon}`} />;
+    noMediaLinkIcon = 'notfound';
   }
 
   return (
@@ -141,7 +148,7 @@ const Thumbnail = ({
             onClick={(e) => {
               if (e.button === 0 && isReply) {
                 e.preventDefault();
-                toggleExpanded && toggleExpanded();
+                toggleExpanded && !(isReply && (noMediaLinkIcon === 'link' || noMediaLinkIcon === 'notfound')) && toggleExpanded();
               }
             }}
           >
