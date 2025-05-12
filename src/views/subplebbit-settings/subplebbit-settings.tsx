@@ -373,7 +373,7 @@ const SubplebbitSettings = () => {
 
   const isReadOnly = (!settings && isInSubplebbitSettingsView) || (!isOnFullNode && isInCreateSubplebbitView);
 
-  const { publishSubplebbitEditOptions, resetSubplebbitSettingsStore, setSubplebbitSettingsStore } = useSubplebbitSettingsStore();
+  const { publishSubplebbitEditOptions, resetSubplebbitSettingsStore, setSubplebbitSettingsStore, title: storeTitle } = useSubplebbitSettingsStore();
   const { error: publishSubplebbitEditError, publishSubplebbitEdit } = usePublishSubplebbitEdit(publishSubplebbitEditOptions);
   const { error: createSubplebbitError, createdSubplebbit, createSubplebbit } = useCreateSubplebbit(publishSubplebbitEditOptions);
 
@@ -470,9 +470,12 @@ const SubplebbitSettings = () => {
     }
   }, [createdSubplebbit, navigate, resetSubplebbitSettingsStore, account, subscribe]);
 
+  const lastViewType = useRef<'create' | 'settings' | 'other' | undefined>(undefined);
+
+  // Initialize store for create view only on first entry or when switching from settings view
   useEffect(() => {
-    resetSubplebbitSettingsStore();
-    if (isInCreateSubplebbitView) {
+    if (isInCreateSubplebbitView && lastViewType.current === 'settings') {
+      resetSubplebbitSettingsStore();
       const initialRoles: Roles = account?.author?.address ? { [account.author.address]: { role: 'owner' as const } } : {};
       setSubplebbitSettingsStore({
         title: '',
@@ -485,7 +488,20 @@ const SubplebbitSettings = () => {
         challenges: [],
         subplebbitAddress: undefined,
       });
-    } else if (hasLoaded) {
+    }
+    if (isInCreateSubplebbitView) {
+      lastViewType.current = 'create';
+    } else if (isInSubplebbitSettingsView) {
+      lastViewType.current = 'settings';
+    } else {
+      lastViewType.current = 'other';
+    }
+  }, [isInCreateSubplebbitView, storeTitle, resetSubplebbitSettingsStore, setSubplebbitSettingsStore, account, isInSubplebbitSettingsView]);
+
+  // Set store for loaded subplebbit settings when editing
+  useEffect(() => {
+    if (!isInCreateSubplebbitView && hasLoaded) {
+      resetSubplebbitSettingsStore();
       setSubplebbitSettingsStore({
         title: title ?? '',
         description: description ?? '',
@@ -498,12 +514,11 @@ const SubplebbitSettings = () => {
         subplebbitAddress,
       });
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [
-    resetSubplebbitSettingsStore,
-    hasLoaded,
     isInCreateSubplebbitView,
-    account,
+    hasLoaded,
+    resetSubplebbitSettingsStore,
+    setSubplebbitSettingsStore,
     title,
     description,
     address,
