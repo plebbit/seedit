@@ -352,8 +352,6 @@ const JSONSettings = ({ isReadOnly = false }: { isReadOnly?: boolean }) => {
   );
 };
 
-const isElectron = window.electronApi?.isElectron === true;
-
 const SubplebbitSettings = () => {
   const { t } = useTranslation();
   const { subplebbitAddress } = useParams<{ subplebbitAddress: string }>();
@@ -371,9 +369,8 @@ const SubplebbitSettings = () => {
   const isInCreateSubplebbitView = isCreateSubplebbitView(location.pathname);
   const isInSubplebbitSettingsView = isSubplebbitSettingsView(location.pathname, params);
   const isConnectedToRpc = !!account?.plebbitOptions.plebbitRpcClientsOptions;
-  const isOnFullNode = isElectron || isConnectedToRpc;
 
-  const isReadOnly = (!settings && isInSubplebbitSettingsView) || (!isOnFullNode && isInCreateSubplebbitView);
+  const isReadOnly = (!settings && isInSubplebbitSettingsView) || (!isConnectedToRpc && isInCreateSubplebbitView);
 
   const { publishSubplebbitEditOptions, resetSubplebbitSettingsStore, setSubplebbitSettingsStore, title: storeTitle } = useSubplebbitSettingsStore();
   const { error: publishSubplebbitEditError, publishSubplebbitEdit } = usePublishSubplebbitEdit(publishSubplebbitEditOptions);
