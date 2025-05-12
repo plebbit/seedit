@@ -75,6 +75,7 @@
   --text: #bfbfbf;
   --text-button: url("/assets/buttons/text-button-dark.png");
   --text-button-hover: url("/assets/buttons/text-button-hover.png");
+  --text-default: #000;
   --text-input: white;
   --text-info: #757575;
   --text-markdown: #f0f0f0;
@@ -174,6 +175,7 @@
   --text: black;
   --text-button: url("/assets/buttons/text-button.png");
   --text-button-hover: url("/assets/buttons/text-button-hover.png");
+  --text-default: #000;
   --text-input: black;
   --text-info: #888;
   --text-markdown: #222222;
