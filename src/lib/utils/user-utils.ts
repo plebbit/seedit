@@ -2,6 +2,11 @@ import { Role, Subplebbit, Comment } from '@plebbit/plebbit-react-hooks';
 
 export type Roles = { [address: string]: Role };
 
+export const isUserOwner = (roles: Roles | undefined, userAddress: string | undefined): boolean => {
+  if (!roles || !userAddress) return false;
+  return roles[userAddress]?.role === 'owner';
+};
+
 export const findSubplebbitCreator = (roles: Roles | undefined): string => {
   if (!roles) {
     return 'anonymous';
