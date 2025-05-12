@@ -389,5 +389,6 @@
   "tagged_as_vulgar": "ditandai sebagai \"vulgar\"",
   "drop_here_or": "Seretkan di sini atau",
   "upload_button_warning": "Pengunggahan otomatis diblokir oleh kebijakan CORS browser Anda, tetapi tersedia di aplikasi Seedit Android dan aplikasi desktop (Win/Mac/Linux).\n\nPergi ke halaman tautan unduhan di GitHub?",
-  "create_community_warning": "Membuat komunitas memerlukan menjalankan node penuh. Aplikasi desktop Seedit (Win/Mac/Linux) secara otomatis menjalankan node penuh.\n\nPergi ke halaman tautan unduhan di GitHub?"
+  "create_community_warning": "Membuat komunitas memerlukan menjalankan node penuh. Aplikasi desktop Seedit (Win/Mac/Linux) secara otomatis menjalankan node penuh.\n\nPergi ke halaman tautan unduhan di GitHub?",
+  "avatars": "Avatar"
 }

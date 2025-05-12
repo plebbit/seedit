@@ -389,5 +389,6 @@
   "tagged_as_vulgar": "taggate come \"vulgar\"",
   "drop_here_or": "Trascina qui o",
   "upload_button_warning": "Il caricamento automatico è bloccato dalla politica CORS del tuo browser, ma è disponibile nell'app Seedit per Android e nell'app desktop (Win/Mac/Linux).\n\nVai alla pagina dei link per il download su GitHub?",
-  "create_community_warning": "Creare una comunità richiede l'esecuzione di un nodo completo. L'app Seedit per desktop (Win/Mac/Linux) esegue automaticamente un nodo completo.\n\nVai alla pagina dei link per il download su GitHub?"
+  "create_community_warning": "Creare una comunità richiede l'esecuzione di un nodo completo. L'app Seedit per desktop (Win/Mac/Linux) esegue automaticamente un nodo completo.\n\nVai alla pagina dei link per il download su GitHub?",
+  "avatars": "Avatar"
 }

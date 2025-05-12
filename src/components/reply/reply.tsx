@@ -1,33 +1,33 @@
 import { Fragment, useEffect, useMemo, useState, useRef } from 'react';
+import { Link, useLocation, useParams } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
+import Plebbit from '@plebbit/plebbit-js';
 import { Comment, useAccountComment, useAuthorAddress, useAuthorAvatar, useBlock, useComment, useEditedComment } from '@plebbit/plebbit-react-hooks';
 import useSubplebbitsStore from '@plebbit/plebbit-react-hooks/dist/stores/subplebbits';
 import useSubplebbitsPagesStore from '@plebbit/plebbit-react-hooks/dist/stores/subplebbits-pages';
+import { isInboxView, isPostContextView, isPostPageView } from '../../lib/utils/view-utils';
+import { getHostname } from '../../lib/utils/url-utils';
+import { formatScore, getReplyScore } from '../../lib/utils/post-utils';
 import { flattenCommentsPages } from '@plebbit/plebbit-react-hooks/dist/lib/utils';
-import { Link, useLocation, useParams } from 'react-router-dom';
-import { useTranslation } from 'react-i18next';
-import styles from './reply.module.css';
-import { useCommentMediaInfo } from '../../hooks/use-comment-media-info';
-import useReplies from '../../hooks/use-replies';
 import { CommentMediaInfo, getHasThumbnail } from '../../lib/utils/media-utils';
 import { formatLocalizedUTCTimestamp, getFormattedTimeAgo } from '../../lib/utils/time-utils';
-import CommentEditForm from '../comment-edit-form';
-import LoadingEllipsis from '../loading-ellipsis/';
-import Expando from '../post/expando/';
-import ExpandButton from '../post/expand-button/';
-import Thumbnail from '../post/thumbnail/';
-import Flair from '../post/flair/';
-import Label from '../post/label/';
-import CommentTools from '../post/comment-tools';
-import ReplyForm from '../reply-form';
+import { useCommentMediaInfo } from '../../hooks/use-comment-media-info';
+import useContentOptionsStore from '../../stores/use-content-options-store';
 import useDownvote from '../../hooks/use-downvote';
+import useReplies from '../../hooks/use-replies';
 import useStateString from '../../hooks/use-state-string';
 import useUpvote from '../../hooks/use-upvote';
-import { isInboxView, isPostContextView, isPostPageView } from '../../lib/utils/view-utils';
-import Plebbit from '@plebbit/plebbit-js';
+import CommentEditForm from '../comment-edit-form';
+import LoadingEllipsis from '../loading-ellipsis/';
 import Markdown from '../markdown';
-import { getHostname } from '../../lib/utils/url-utils';
-import useAvatarVisibilityStore from '../../stores/use-avatar-visibility-store';
-import { formatScore, getReplyScore } from '../../lib/utils/post-utils';
+import CommentTools from '../post/comment-tools';
+import ExpandButton from '../post/expand-button/';
+import Expando from '../post/expando/';
+import Flair from '../post/flair/';
+import Label from '../post/label/';
+import Thumbnail from '../post/thumbnail/';
+import ReplyForm from '../reply-form';
+import styles from './reply.module.css';
 import _ from 'lodash';
 
 interface ReplyAuthorProps {
@@ -62,7 +62,7 @@ const ReplyAuthor = ({
   postCid,
 }: ReplyAuthorProps) => {
   const { t } = useTranslation();
-  const { hideAvatars } = useAvatarVisibilityStore();
+  const hideAvatars = useContentOptionsStore((state) => state.hideAvatars);
 
   // TODO: implement comment.highlightRole once implemented in API
   const isAuthorAdmin = authorRole === 'admin';

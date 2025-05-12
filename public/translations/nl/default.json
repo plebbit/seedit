@@ -389,5 +389,6 @@
   "tagged_as_vulgar": "getagd als \"vulgar\"",
   "drop_here_or": "Sleep hierheen of",
   "upload_button_warning": "Auto-upload wordt geblokkeerd door het CORS-beleid van uw browser, maar het is beschikbaar op de Seedit Android-app en desktopapp (Win/Mac/Linux).\n\nGa naar de downloadlinks-pagina op GitHub?",
-  "create_community_warning": "Een gemeenschap creëren vereist het uitvoeren van een volledige node. De Seedit desktop-app (Win/Mac/Linux) voert automatisch een volledige node uit.\n\nGa naar de downloadlinks-pagina op GitHub?"
+  "create_community_warning": "Een gemeenschap creëren vereist het uitvoeren van een volledige node. De Seedit desktop-app (Win/Mac/Linux) voert automatisch een volledige node uit.\n\nGa naar de downloadlinks-pagina op GitHub?",
+  "avatars": "Avatars"
 }
