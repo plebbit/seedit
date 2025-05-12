@@ -353,9 +353,11 @@ const Subplebbit = () => {
   const hasUnhiddenAnyNsfwCommunity = !hideAdultCommunities || !hideGoreCommunities || !hideAntiCommunities || !hideVulgarCommunities;
   const isBroadlyNsfwSubplebbit = useIsBroadlyNsfwSubplebbit(subplebbitAddress || '');
 
+  const prevErrorMessageRef = useRef<string | undefined>();
   useEffect(() => {
-    if (error) {
+    if (error && error.message !== prevErrorMessageRef.current) {
       console.log(error);
+      prevErrorMessageRef.current = error.message;
     }
   }, [error]);
 
