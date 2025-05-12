@@ -31,6 +31,8 @@ interface SubplebbitProps {
   index?: number;
   subplebbit: SubplebbitType;
   tags?: string[];
+  isUnsubscribed?: boolean;
+  onUnsubscribe?: (address: string) => void;
 }
 
 const MyCommunitiesTabs = () => {
@@ -163,7 +165,7 @@ const Infobar = () => {
   );
 };
 
-const Subplebbit = ({ subplebbit, tags, index }: SubplebbitProps) => {
+const Subplebbit = ({ subplebbit, tags, index, isUnsubscribed, onUnsubscribe }: SubplebbitProps) => {
   const { t } = useTranslation();
   const { address, createdAt, description, roles, shortAddress, settings, suggested, title } = subplebbit || {};
   const [avatarLoadFailed, setAvatarLoadFailed] = useState(false);
@@ -202,7 +204,7 @@ const Subplebbit = ({ subplebbit, tags, index }: SubplebbitProps) => {
       : description);
 
   return (
-    <div className={styles.subplebbit}>
+    <div className={`${styles.subplebbit} ${isUnsubscribed ? styles.unsubscribed : ''}`}>
       <div className={styles.row}>
         {!isMobile && <div className={styles.rank}>{(index ?? 0) + 1}</div>}
         <div className={styles.leftcol}>
@@ -260,7 +262,7 @@ const Subplebbit = ({ subplebbit, tags, index }: SubplebbitProps) => {
             {t('members_count', { count: allActiveUserCount })}, {t('community_for', { date: getFormattedTimeDuration(createdAt) })}
             <div className={styles.taglineSecondLine}>
               <span className={styles.subscribeButton}>
-                <SubscribeButton address={address} />
+                <SubscribeButton address={address} onUnsubscribe={onUnsubscribe} />
               </span>
               {(userRole || isUserOwner) && (
                 <Link to={`/p/${address}/settings`}>
@@ -313,15 +315,41 @@ const AccountSubplebbits = ({ viewRole }: { viewRole: string }) => {
 
 const SubscriberSubplebbits = () => {
   const account = useAccount();
-  const { subplebbits, error: subplebbitsError } = useSubplebbits({ subplebbitAddresses: account?.subscriptions });
+  const [displayedSubscriptions, setDisplayedSubscriptions] = useState<string[]>(() => (account?.subscriptions ? [...account.subscriptions].reverse() : []));
+  const [unsubscribedAddresses, setUnsubscribedAddresses] = useState<Set<string>>(new Set());
+  const { subplebbits, error: subplebbitsError } = useSubplebbits({ subplebbitAddresses: displayedSubscriptions });
   const { setError } = useErrorStore();
+
+  // Only initialize displayedSubscriptions on mount or account change
+  useEffect(() => {
+    setDisplayedSubscriptions(account?.subscriptions ? [...account.subscriptions].reverse() : []);
+    setUnsubscribedAddresses(new Set());
+  }, [account?.author?.address, account?.subscriptions]);
 
   useEffect(() => {
     setError('SubscriberSubplebbits_useSubplebbits', subplebbitsError);
   }, [subplebbitsError, setError]);
 
+  // Handler to mark a subplebbit as unsubscribed (but keep it in the list)
+  const handleUnsubscribe = (address: string) => {
+    setUnsubscribedAddresses((prev) => new Set(prev).add(address));
+  };
+
   const subplebbitsArray = useMemo(() => Object.values(subplebbits), [subplebbits]);
-  return subplebbitsArray?.map((subplebbit, index) => subplebbit && <Subplebbit key={index} subplebbit={subplebbit} index={index} />).filter(Boolean);
+  return subplebbitsArray
+    ?.map(
+      (subplebbit, index) =>
+        subplebbit && (
+          <Subplebbit
+            key={index}
+            subplebbit={subplebbit}
+            index={index}
+            isUnsubscribed={unsubscribedAddresses.has(subplebbit.address)}
+            onUnsubscribe={handleUnsubscribe}
+          />
+        ),
+    )
+    .filter(Boolean);
 };
 
 const AllDefaultSubplebbits = () => {

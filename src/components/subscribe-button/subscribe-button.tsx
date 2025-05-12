@@ -6,9 +6,10 @@ import { isAuthorView, isProfileView, isPendingPostView } from '../../lib/utils/
 
 interface subscribeButtonProps {
   address: string | undefined;
+  onUnsubscribe?: (address: string) => void;
 }
 
-const SubscribeButton = ({ address }: subscribeButtonProps) => {
+const SubscribeButton = ({ address, onUnsubscribe }: subscribeButtonProps) => {
   const { subscribe, subscribed, unsubscribe } = useSubscribe({ subplebbitAddress: address });
   const { t } = useTranslation();
   const location = useLocation();
@@ -26,6 +27,9 @@ const SubscribeButton = ({ address }: subscribeButtonProps) => {
       subscribe();
     } else if (subscribed === true) {
       unsubscribe();
+      if (onUnsubscribe && address) {
+        onUnsubscribe(address);
+      }
     }
   };
 
