@@ -1,6 +1,5 @@
-import { useEffect, useMemo, useRef, useState } from 'react';
-import { createAccount, deleteAccount, exportAccount, importAccount, setAccount, setActiveAccount, useAccount, useAccounts } from '@plebbit/plebbit-react-hooks';
-import stringify from 'json-stringify-pretty-compact';
+import { useEffect, useRef } from 'react';
+import { createAccount, deleteAccount, exportAccount, importAccount, setActiveAccount, useAccount, useAccounts } from '@plebbit/plebbit-react-hooks';
 import { Trans, useTranslation } from 'react-i18next';
 import styles from './account-settings.module.css';
 
@@ -163,15 +162,6 @@ const AccountSettings = () => {
   const { t } = useTranslation();
   const account = useAccount();
   const { accounts } = useAccounts();
-  const [text, setText] = useState('');
-
-  const accountJson = useMemo(
-    () =>
-      stringify({
-        account: { ...account, plebbit: undefined, karma: undefined, plebbitReactOptions: undefined, unreadNotificationCount: undefined, signer: undefined },
-      }),
-    [account],
-  );
 
   const accountsOptions = accounts.map((account) => (
     <option key={account?.id} value={account?.name}>
@@ -179,41 +169,12 @@ const AccountSettings = () => {
     </option>
   ));
 
-  useEffect(() => {
-    setText(accountJson);
-  }, [accountJson]);
-
   const _deleteAccount = (accountName: string) => {
     if (!accountName) {
       return;
     } else if (window.confirm(t('delete_confirm', { value: accountName, interpolation: { escapeValue: false } }))) {
       if (window.confirm(t('double_confirm'))) {
         deleteAccount(accountName);
-      }
-    }
-  };
-
-  const saveAccount = async () => {
-    try {
-      const newAccountFromTextarea = JSON.parse(text).account;
-      // re-attach all original fields that were not meant to be editable in the textarea
-      const finalAccount = {
-        ...newAccountFromTextarea,
-        id: account?.id, // force keeping the same id, makes it easier to copy paste
-        signer: account?.signer,
-        plebbit: account?.plebbit,
-        karma: account?.karma,
-        plebbitReactOptions: account?.plebbitReactOptions,
-        unreadNotificationCount: account?.unreadNotificationCount,
-      };
-      await setAccount(finalAccount);
-      alert(`Saved ${finalAccount.name}`);
-    } catch (error) {
-      if (error instanceof Error) {
-        alert(error.message);
-        console.log(error);
-      } else {
-        console.error('An unknown error occurred:', error);
       }
     }
   };
@@ -229,19 +190,8 @@ const AccountSettings = () => {
       <div className={styles.createAccount}>
         <CreateAccountButton />
       </div>
-      <span className={styles.settingTitle}>{t('account_data_preview')}</span>
       <div className={styles.accountData}>
-        <textarea className={styles.textarea} value={text} onChange={(e) => setText(e.target.value)} autoCorrect='off' autoComplete='off' spellCheck='false' />
         <div className={styles.accountButtons}>
-          <div>
-            <Trans
-              i18nKey='save_reset_changes'
-              components={{
-                1: <button key='saveAccountButton' onClick={saveAccount} />,
-                2: <button key='resetAccountButton' onClick={() => setText(accountJson)} />,
-              }}
-            />
-          </div>
           <div>
             <ImportAccountButton />
           </div>
