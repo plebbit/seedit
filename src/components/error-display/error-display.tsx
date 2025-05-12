@@ -48,7 +48,6 @@ const ErrorDisplay = ({ error }: { error: any }) => {
   return (
     (error?.message || error?.stack || error?.details || error) && (
       <div className={styles.error}>
-        <br />
         {currentDisplayMessage && (
           <span
             className={classNames.join(' ')}

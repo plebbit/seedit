@@ -373,7 +373,7 @@ const Subplebbit = () => {
       <div className={styles.sidebar}>
         <Sidebar subplebbit={subplebbit} isSubCreatedButNotYetPublished={started && isSubCreatedButNotYetPublished} settings={settings} reset={reset} />
       </div>
-      {error && (
+      {error?.message && (
         <div className={styles.error}>
           <ErrorDisplay error={error} />
         </div>

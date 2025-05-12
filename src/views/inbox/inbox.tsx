@@ -118,7 +118,7 @@ const Inbox = () => {
           <div className={styles.noNotifications}>{t('nothing_found')}</div>
         )}
       </div>
-      {error && (
+      {error?.message && (
         <div className={styles.error}>
           <ErrorDisplay error={error} />
         </div>

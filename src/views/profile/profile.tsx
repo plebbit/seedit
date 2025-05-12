@@ -153,7 +153,7 @@ const Overview = () => {
 
   return (
     <div>
-      {error && (
+      {error?.message && (
         <div className={styles.error}>
           <ErrorDisplay error={error} />
         </div>
@@ -185,7 +185,7 @@ const Comments = () => {
 
   return (
     <div>
-      {error && (
+      {error?.message && (
         <div className={styles.error}>
           <ErrorDisplay error={error} />
         </div>
@@ -217,7 +217,7 @@ const Submitted = () => {
 
   return (
     <div>
-      {error && (
+      {error?.message && (
         <div className={styles.error}>
           <ErrorDisplay error={error} />
         </div>
@@ -253,7 +253,7 @@ const VotedComments = ({ voteType }: { voteType: 1 | -1 }) => {
 
   return (
     <div>
-      {error && (
+      {error?.message && (
         <div className={styles.error}>
           <ErrorDisplay error={error} />
         </div>

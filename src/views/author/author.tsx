@@ -91,7 +91,7 @@ const Author = () => {
       <div className={isMobile ? styles.sidebarMobile : styles.sidebarDesktop}>
         <AuthorSidebar />
       </div>
-      {error && (
+      {error?.message && (
         <div className={styles.error}>
           <ErrorDisplay error={error} />
         </div>

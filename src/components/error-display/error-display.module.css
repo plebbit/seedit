@@ -7,5 +7,5 @@
 }
 
 .feedbackSuccessMessage {
-  color: inherit;
+  color: var(--text-info);
 }
