@@ -6,14 +6,6 @@ import https from 'https';
 import decompress from 'decompress';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import os from 'os';
-import dns from 'dns';
-
-// Force IPv4 resolution to avoid IPv6 timeouts on GitHub macOS runners
-if (dns.setDefaultResultOrder) {
-  dns.setDefaultResultOrder('ipv4first');
-}
-
 const ipfsClientsPath = path.join(path.dirname(fileURLToPath(import.meta.url)), '..', 'bin');
 const ipfsClientWindowsPath = path.join(ipfsClientsPath, 'win');
 const ipfsClientMacPath = path.join(ipfsClientsPath, 'mac');
@@ -37,9 +29,15 @@ const downloadWithProgress = (url) =>
     const fileName = split[split.length - 1];
     const chunks = [];
     const req = https.request(url);
-    req.on('error', reject);
+    req.on('error', (err) => {
+      console.error(`Error making request for ${url}:`, err);
+      reject(err);
+    });
     req.on('response', (res) => {
-      res.on('error', reject);
+      res.on('error', (err) => {
+        console.error(`Error in response for ${url}:`, err);
+        reject(err);
+      });
       // handle redirects
       if (res.statusCode == 301 || res.statusCode === 302) {
         resolve(downloadWithProgress(res.headers.location));
@@ -53,6 +51,7 @@ const downloadWithProgress = (url) =>
         incomplete: ' ',
         width: 20,
         total: len,
+        stream: process.stdout,
       });
       res.on('data', (chunk) => {
         chunks.push(chunk);
@@ -66,16 +65,16 @@ const downloadWithProgress = (url) =>
     req.end();
   });
 
-// Retry wrapper for downloads to handle transient network errors
+// add retry wrapper around downloadWithProgress to handle transient network errors
 const downloadWithRetry = async (url, retries = 3) => {
   for (let attempt = 1; attempt <= retries; attempt++) {
     try {
       return await downloadWithProgress(url);
     } catch (err) {
-      console.warn(`Download failed (attempt ${attempt}/${retries}): ${err.message}`);
-      if (attempt === retries) {
-        throw err;
-      }
+      console.warn(`Download attempt ${attempt} for ${url} failed:`, err);
+      if (attempt === retries) throw err;
+      // wait before retrying
+      await new Promise((res) => setTimeout(res, attempt * 1000));
     }
   }
 };
@@ -109,34 +108,51 @@ const downloadAndExtract = async (url, destinationPath) => {
   if (fs.pathExistsSync(binPath)) {
     return;
   }
+  console.log(`Downloading IPFS client from ${url} to ${destinationPath}`);
   const split = url.split('/');
   const fileName = split[split.length - 1];
   const dowloadPath = path.join(destinationPath, fileName);
   const file = await downloadWithRetry(url);
   fs.ensureDirSync(destinationPath);
   await fs.writeFile(dowloadPath, file);
-  await decompress(dowloadPath, destinationPath);
+  console.log(`Downloaded archive to ${dowloadPath}`);
+  console.log(`Extracting ${dowloadPath} to ${destinationPath}`);
+  try {
+    await decompress(dowloadPath, destinationPath);
+    console.log('Decompression complete');
+  } catch (err) {
+    console.error('Error during decompression:', err);
+    throw err;
+  }
   const extractedPath = path.join(destinationPath, 'kubo');
   const extractedBinPath = path.join(extractedPath, binName);
+  console.log(`Moving binary from ${extractedBinPath} to ${binPath}`);
   fs.moveSync(extractedBinPath, binPath);
+  console.log('Binary moved');
+  console.log('Cleaning up temporary files');
   fs.removeSync(extractedPath);
   fs.removeSync(dowloadPath);
+  console.log('Cleanup complete');
 };
 
 export const downloadIpfsClients = async () => {
-  const platform = os.platform();
-
-  if (platform === 'win32') {
-    console.log('Downloading Kubo for Windows...');
-    await downloadAndExtract(ipfsClientWindowsUrl, ipfsClientWindowsPath);
-  } else if (platform === 'darwin') {
-    console.log('Downloading Kubo for macOS...');
-    await downloadAndExtract(ipfsClientMacUrl, ipfsClientMacPath);
-  } else if (platform === 'linux') {
-    console.log('Downloading Kubo for Linux...');
-    await downloadAndExtract(ipfsClientLinuxUrl, ipfsClientLinuxPath);
-  } else {
-    console.warn(`Unsupported platform: ${platform}. No Kubo binary downloaded.`);
+  const platform = process.platform;
+  console.log(`Starting IPFS client download for platform: ${platform}`);
+  switch (platform) {
+    case 'win32':
+      await downloadAndExtract(ipfsClientWindowsUrl, ipfsClientWindowsPath);
+      break;
+    case 'darwin':
+      await downloadAndExtract(ipfsClientMacUrl, ipfsClientMacPath);
+      break;
+    case 'linux':
+      await downloadAndExtract(ipfsClientLinuxUrl, ipfsClientLinuxPath);
+      break;
+    default:
+      console.warn(`Unknown platform: ${platform}, downloading all IPFS clients`);
+      await downloadAndExtract(ipfsClientWindowsUrl, ipfsClientWindowsPath);
+      await downloadAndExtract(ipfsClientMacUrl, ipfsClientMacPath);
+      await downloadAndExtract(ipfsClientLinuxUrl, ipfsClientLinuxPath);
   }
 };
 

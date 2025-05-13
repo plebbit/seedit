@@ -1,8 +1,7 @@
 // use this proxy server to debug ipfs api requests made by electron
 
-// Convert external module imports to CommonJS require()
-const http = require('http');
-const httpProxy = require('http-proxy');
+import http from 'http';
+import httpProxy from 'http-proxy';
 
 // start proxy
 const proxy = httpProxy.createProxyServer({});
@@ -50,4 +49,4 @@ const start = ({ proxyPort, targetPort } = {}) => {
   console.log(`proxy server listening on port ${proxyPort}`);
 };
 
-module.exports = { start };
+export default { start };
