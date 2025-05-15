@@ -42,8 +42,12 @@ const SearchBar = ({ isFocused = false, onExpandoChange }: SearchBarProps) => {
   const isInFeedView = (isInSubplebbitView || isInHomeView || isInAllView || isInModView) && !isInPostPageView;
 
   const currentQuery = searchParams.get('q') || '';
-  const [isInCommunitySearch, setIsInCommunitySearch] = useState(!!currentQuery || isInFeedView);
-  const placeholder = isInCommunitySearch ? t('search_posts') : t('enter_community_address');
+  const [isInCommunitySearch, setIsInCommunitySearch] = useState(() => {
+    if (!!currentQuery) return true;
+    if (isInFeedView) return false;
+    return false; // always default to 'go to a community' in non-feed views
+  });
+  const placeholder = isInCommunitySearch && isInFeedView ? t('search_posts') : t('enter_community_address');
   const [showExpando, setShowExpando] = useState(false);
 
   const searchBarRef = useRef<HTMLFormElement>(null);
@@ -97,8 +101,12 @@ const SearchBar = ({ isFocused = false, onExpandoChange }: SearchBarProps) => {
   );
 
   useEffect(() => {
-    setIsInCommunitySearch(!!searchParams.get('q') || isInFeedView);
-  }, [location.search, isInFeedView, searchParams]);
+    if (!!searchParams.get('q')) {
+      setIsInCommunitySearch(true);
+    } else if (!isInFeedView) {
+      setIsInCommunitySearch(false);
+    }
+  }, [searchParams, isInFeedView]);
 
   useEffect(() => {
     if (isFocused) {
@@ -171,6 +179,8 @@ const SearchBar = ({ isFocused = false, onExpandoChange }: SearchBarProps) => {
       setInputValue('');
       setIsInputFocused(false);
       setActiveDropdownIndex(-1);
+      setShowExpando(false);
+      searchInputRef.current?.blur();
       navigate(`/p/${address}`);
     },
     [navigate, setInputValue, setIsInputFocused, setActiveDropdownIndex],
@@ -249,6 +259,7 @@ const SearchBar = ({ isFocused = false, onExpandoChange }: SearchBarProps) => {
                 key={address}
                 className={`${styles.dropdownItem} ${index === activeDropdownIndex ? styles.activeDropdownItem : ''}`}
                 onClick={() => handleCommunitySelect(address)}
+                onTouchEnd={() => handleCommunitySelect(address)}
                 onMouseEnter={() => setActiveDropdownIndex(index)}
               >
                 {Plebbit.getShortAddress(address)}
@@ -258,16 +269,16 @@ const SearchBar = ({ isFocused = false, onExpandoChange }: SearchBarProps) => {
         </FloatingPortal>
       )}
       <div className={`${styles.infobar} ${showExpando ? styles.slideDown : styles.slideUp} ${!isInFeedView ? styles.lessHeight : ''}`}>
+        <label>
+          <input type='checkbox' checked={!isInCommunitySearch || !isInFeedView} disabled={!isInFeedView} onChange={() => handleCommunitySearchToggle(false)} />
+          {t('go_to_a_community')}
+        </label>
         {isInFeedView && (
           <label>
             <input type='checkbox' checked={isInCommunitySearch} onChange={() => handleCommunitySearchToggle(true)} />
             {t('search_feed_post')}
           </label>
         )}
-        <label>
-          <input type='checkbox' checked={!isInCommunitySearch} disabled={!isInFeedView} onChange={() => handleCommunitySearchToggle(false)} />
-          {t('go_to_a_community')}
-        </label>
       </div>
     </div>
   );
