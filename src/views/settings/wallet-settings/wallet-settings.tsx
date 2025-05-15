@@ -105,11 +105,25 @@ const CryptoWalletsForm = ({ account }: { account: Account | undefined }) => {
         <div className={`${showWallet[index] ? styles.show : styles.hide}`}>
           <div className={styles.walletField}>
             <div className={styles.walletFieldTitle}>{t('chain_ticker')}</div>
-            <input onChange={(e) => setWalletsArrayProperty(index, 'chainTicker', e.target.value)} value={wallet.chainTicker} placeholder='eth/sol/avax' />
+            <input
+              autoCorrect='off'
+              autoCapitalize='off'
+              spellCheck='false'
+              onChange={(e) => setWalletsArrayProperty(index, 'chainTicker', e.target.value)}
+              value={wallet.chainTicker}
+              placeholder='eth/sol/avax'
+            />
           </div>
           <div className={styles.walletField}>
             <div className={styles.walletFieldTitle}>{t('wallet_address')}</div>
-            <input onChange={(e) => setWalletsArrayProperty(index, 'address', e.target.value)} value={wallet.address} placeholder='0x...' />
+            <input
+              autoCorrect='off'
+              autoCapitalize='off'
+              spellCheck='false'
+              onChange={(e) => setWalletsArrayProperty(index, 'address', e.target.value)}
+              value={wallet.address}
+              placeholder='0x...'
+            />
           </div>
           <div className={`${styles.walletField} ${styles.copyMessage}`}>
             <Trans
@@ -124,7 +138,14 @@ const CryptoWalletsForm = ({ account }: { account: Account | undefined }) => {
           </div>
           <div className={styles.walletField}>
             <div className={styles.walletFieldTitle}>{t('paste_signature')}</div>
-            <input onChange={(e) => setWalletsArrayProperty(index, 'signature', e.target.value)} value={wallet.signature} placeholder='0x...' />
+            <input
+              autoCorrect='off'
+              autoCapitalize='off'
+              spellCheck='false'
+              onChange={(e) => setWalletsArrayProperty(index, 'signature', e.target.value)}
+              value={wallet.signature}
+              placeholder='0x...'
+            />
             <button className={styles.save} onClick={save}>
               {t('save')}
             </button>

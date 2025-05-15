@@ -143,7 +143,7 @@ const PlebbitRPCSettings = ({ plebbitRpcRef }: SettingsProps) => {
   return (
     <div className={styles.plebbitRPCSettings}>
       <div>
-        <input type='text' defaultValue={plebbitRpcClientsOptions} ref={plebbitRpcRef} />
+        <input autoCorrect='off' autoCapitalize='off' spellCheck='false' type='text' defaultValue={plebbitRpcClientsOptions} ref={plebbitRpcRef} />
         <button onClick={() => setShowInfo(!showInfo)}>{showInfo ? 'X' : '?'}</button>
       </div>
       {showInfo && (
@@ -173,7 +173,7 @@ const PlebbitDataPathSettings = ({ plebbitDataPathRef }: SettingsProps) => {
   return (
     <div className={styles.plebbitDataPathSettings}>
       <div>
-        <input type='text' defaultValue={path} disabled={!isConnectedToRpc} ref={plebbitDataPathRef} />
+        <input autoCorrect='off' autoCapitalize='off' spellCheck='false' type='text' defaultValue={path} disabled={!isConnectedToRpc} ref={plebbitDataPathRef} />
       </div>
     </div>
   );
