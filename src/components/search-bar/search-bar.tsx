@@ -15,6 +15,7 @@ import {
   isSubplebbitAboutView,
 } from '../../lib/utils/view-utils';
 import useFeedFiltersStore from '../../stores/use-feed-filters-store';
+import { useDefaultSubplebbitAddresses } from '../../hooks/use-default-subplebbits';
 import styles from './search-bar.module.css';
 import _ from 'lodash';
 
@@ -59,13 +60,15 @@ const SearchBar = ({ isFocused = false, onExpandoChange }: SearchBarProps) => {
 
   const account = useAccount();
   const subplebbitAddresses = useMemo(() => account?.subscriptions || [], [account?.subscriptions]);
+  const defaultSubplebbitAddresses = useDefaultSubplebbitAddresses();
   const [isInputFocused, setIsInputFocused] = useState(false);
   const [activeDropdownIndex, setActiveDropdownIndex] = useState<number>(-1);
 
   const filteredCommunitySuggestions = useMemo(() => {
     if (!inputValue || isInCommunitySearch) return [];
-    return subplebbitAddresses.filter((address: string) => address?.toLowerCase()?.includes(inputValue.toLowerCase())).slice(0, 10);
-  }, [inputValue, subplebbitAddresses, isInCommunitySearch]);
+    const combinedAddresses = Array.from(new Set([...subplebbitAddresses, ...defaultSubplebbitAddresses]));
+    return combinedAddresses.filter((address: string) => address?.toLowerCase()?.includes(inputValue.toLowerCase())).slice(0, 10);
+  }, [inputValue, subplebbitAddresses, defaultSubplebbitAddresses, isInCommunitySearch]);
 
   const { x, y, strategy, refs, context } = useFloating({
     open: isInputFocused && filteredCommunitySuggestions.length > 0,
