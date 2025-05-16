@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { Outlet, Route, Routes } from 'react-router-dom';
 import { initializeNotificationSystem } from './lib/push';
 import useTheme from './hooks/use-theme';
+import { useAutoSubscribe } from './hooks/use-auto-subscribe';
 import AboutView from './views/about';
 import All from './views/all';
 import Author from './views/author';
@@ -28,6 +29,8 @@ import { NotificationHandler } from './components/notification-handler/Notificat
 initializeNotificationSystem();
 
 const App = () => {
+  useAutoSubscribe();
+
   const globalLayout = (
     <>
       <ChallengeModal />
