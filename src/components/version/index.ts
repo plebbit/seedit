@@ -1,1 +1,1 @@
-export { default } from './version';
+export { Version, VersionWithCommit } from './version';

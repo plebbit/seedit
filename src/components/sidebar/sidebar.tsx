@@ -27,7 +27,7 @@ import Markdown from '../markdown';
 import SearchBar from '../search-bar';
 import SubscribeButton from '../subscribe-button';
 import LoadingEllipsis from '../loading-ellipsis';
-import Version from '../version';
+import { Version } from '../version';
 import { FAQ } from '../../views/about/about';
 import { communitySubtitles } from '../../constants/community-subtitles';
 

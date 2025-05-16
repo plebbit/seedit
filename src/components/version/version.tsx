@@ -1,9 +1,9 @@
 import packageJson from '../../../package.json';
 
 const { version } = packageJson;
-const commitRef = process.env.REACT_APP_COMMIT_REF;
+const commitRef = import.meta.env.VITE_COMMIT_REF;
 
-const Version = () => {
+const VersionWithCommit = () => {
   return (
     <a
       href={commitRef ? `https://github.com/plebbit/seedit/commit/${commitRef}` : `https://github.com/plebbit/seedit/releases/tag/v${version}`}
@@ -15,4 +15,12 @@ const Version = () => {
   );
 };
 
-export default Version;
+const Version = () => {
+  return (
+    <a href={`https://github.com/plebbit/seedit/releases/tag/v${version}`} target='_blank' rel='noopener noreferrer'>
+      v{version}
+    </a>
+  );
+};
+
+export { Version, VersionWithCommit };
