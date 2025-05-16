@@ -28,6 +28,7 @@
   max-width: 60em;
   font-size: 14px;
   line-height: 20px;
+  overflow-wrap: break-word;
 }
 
 .expandoContent {
