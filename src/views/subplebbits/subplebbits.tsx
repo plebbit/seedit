@@ -15,8 +15,8 @@ import {
   isSubplebbitsVoteRejectingView,
 } from '../../lib/utils/view-utils';
 import useErrorStore from '../../stores/use-error-store';
-import { useDefaultSubplebbitAddresses, useDefaultSubplebbitTags } from '../../hooks/use-default-subplebbits';
-import { useDefaultSubplebbits } from '../../hooks/use-default-subplebbits';
+import { useDefaultSubplebbitAddresses, useDefaultSubplebbitTags, useDefaultSubplebbits } from '../../hooks/use-default-subplebbits';
+import useDisplayedSubscriptions from '../../hooks/use-displayed-subscriptions';
 import useIsMobile from '../../hooks/use-is-mobile';
 import useIsSubplebbitOffline from '../../hooks/use-is-subplebbit-offline';
 import ErrorDisplay from '../../components/error-display';
@@ -315,38 +315,25 @@ const AccountSubplebbits = ({ viewRole }: { viewRole: string }) => {
 
 const SubscriberSubplebbits = () => {
   const account = useAccount();
-  const [displayedSubscriptions, setDisplayedSubscriptions] = useState<string[]>(() => (account?.subscriptions ? [...account.subscriptions].reverse() : []));
-  const [unsubscribedAddresses, setUnsubscribedAddresses] = useState<Set<string>>(new Set());
-  const { subplebbits, error: subplebbitsError } = useSubplebbits({ subplebbitAddresses: displayedSubscriptions });
   const { setError } = useErrorStore();
 
-  // Only initialize displayedSubscriptions on mount or account change
-  useEffect(() => {
-    setDisplayedSubscriptions(account?.subscriptions ? [...account.subscriptions].reverse() : []);
-    setUnsubscribedAddresses(new Set());
-  }, [account?.author?.address, account?.subscriptions]);
+  const {
+    list: displayedSubscriptions,
+    isUnsubscribed,
+    handleUnsubscribe,
+  } = useDisplayedSubscriptions(() => (account?.subscriptions ? [...account.subscriptions].reverse() : []), [account?.author?.address]);
+
+  const { subplebbits, error: subplebbitsError } = useSubplebbits({ subplebbitAddresses: displayedSubscriptions });
 
   useEffect(() => {
     setError('SubscriberSubplebbits_useSubplebbits', subplebbitsError);
   }, [subplebbitsError, setError]);
 
-  // Handler to mark a subplebbit as unsubscribed (but keep it in the list)
-  const handleUnsubscribe = (address: string) => {
-    setUnsubscribedAddresses((prev) => new Set(prev).add(address));
-  };
-
-  const subplebbitsArray = useMemo(() => Object.values(subplebbits), [subplebbits]);
-  return subplebbitsArray
-    ?.map(
+  return Object.values(subplebbits ?? {})
+    .map(
       (subplebbit, index) =>
         subplebbit && (
-          <Subplebbit
-            key={index}
-            subplebbit={subplebbit}
-            index={index}
-            isUnsubscribed={unsubscribedAddresses.has(subplebbit.address)}
-            onUnsubscribe={handleUnsubscribe}
-          />
+          <Subplebbit key={index} subplebbit={subplebbit} index={index} isUnsubscribed={isUnsubscribed(subplebbit.address)} onUnsubscribe={handleUnsubscribe} />
         ),
     )
     .filter(Boolean);
@@ -385,20 +372,33 @@ const AllAccountSubplebbits = () => {
   const { accountSubplebbits, error: accountSubplebbitsError } = useAccountSubplebbits();
   const { setError } = useErrorStore();
 
+  const {
+    list: displayedAddresses,
+    isUnsubscribed,
+    handleUnsubscribe,
+  } = useDisplayedSubscriptions(() => {
+    const accountAddrs = Object.keys(accountSubplebbits);
+    const subs = account?.subscriptions ? [...account.subscriptions].reverse() : [];
+    return Array.from(new Set([...accountAddrs, ...subs]));
+  }, [account?.author?.address]);
+
   useEffect(() => {
     setError('AllAccountSubplebbits_useAccountSubplebbits', accountSubplebbitsError);
   }, [accountSubplebbitsError, setError]);
 
-  const accountSubplebbitAddresses = Object.keys(accountSubplebbits);
-  const subscriptionsArray = account?.subscriptions ?? [];
-  const uniqueAddresses = Array.from(new Set([...accountSubplebbitAddresses, ...subscriptionsArray]));
-  const { subplebbits, error: subplebbitsError } = useSubplebbits({ subplebbitAddresses: uniqueAddresses });
+  const { subplebbits, error: subplebbitsError } = useSubplebbits({ subplebbitAddresses: displayedAddresses });
 
   useEffect(() => {
     setError('AllAccountSubplebbits_useSubplebbits', subplebbitsError);
   }, [subplebbitsError, setError]);
-  const subplebbitsArray = useMemo(() => Object.values(subplebbits ?? {}), [subplebbits]);
-  return subplebbitsArray?.map((subplebbit, index) => subplebbit && <Subplebbit key={index} subplebbit={subplebbit} index={index} />).filter(Boolean);
+
+  return Object.values(subplebbits ?? {})
+    .map((subplebbit, index) =>
+      subplebbit ? (
+        <Subplebbit key={index} subplebbit={subplebbit} index={index} isUnsubscribed={isUnsubscribed(subplebbit.address)} onUnsubscribe={handleUnsubscribe} />
+      ) : null,
+    )
+    .filter(Boolean);
 };
 
 const Subplebbits = () => {
