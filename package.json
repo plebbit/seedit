@@ -58,7 +58,7 @@
     "build-netlify": "cross-env NODE_OPTIONS=\"--max_old_space_size=4096\" PUBLIC_URL=./ GENERATE_SOURCEMAP=true VITE_COMMIT_REF=$COMMIT_REF CI='' vite build",
     "test": "vitest",
     "preview": "vite preview",
-    "analyze-bundle": "cross-env PUBLIC_URL=./ GENERATE_SOURCEMAP=true vite build && source-map-explorer 'build/assets/*.js'",
+    "analyze-bundle": "cross-env PUBLIC_URL=./ GENERATE_SOURCEMAP=true vite build && npx source-map-explorer 'build/assets/*.js'",
     "electron": "cross-env ELECTRON_IS_DEV=1 yarn electron:before && cross-env ELECTRON_IS_DEV=1 electron .",
     "electron:no-delete-data": "yarn electron:before:download-ipfs && electron .",
     "electron:start": "concurrently \"cross-env BROWSER=none yarn start\" \"wait-on http://localhost:3000 && yarn electron\"",
