@@ -1,113 +1,100 @@
 .audioEmbed {
   height: 240px !important;
-  width: 100% !important;
   max-width: 700px !important;
 }
 
 @media (max-width: 640px) {
   .audioEmbed {
-    max-height: 250px !important;
     width: 100% !important;
+    max-height: 250px !important;
   }
 }
 
 .instagramEmbed {
-  height: 420px !important;
-  width: 100% !important;
-  max-width: 360px !important;
+  width: 360px !important;
+  height: 635px !important;
 }
 
 @media (max-width: 640px) {
   .instagramEmbed {
-    max-height: 420px !important;
     width: 100% !important;
   }
 }
 
 .redditEmbed {
-  width: 100% !important;
-  height: 520px !important;
-  max-width: 500px !important;
+  width: 500px !important;
+  height: 630px !important;
 }
 
 @media (max-width: 640px) {
   .redditEmbed {
     width: 100% !important;
-    height: 520px !important;
   }
 }
 
 .tiktokEmbed {
-  width: 100% !important;
-  height: 780px !important;
-  max-width: 400px !important;
+  width: 400px !important;
+  height: 795px !important;
 }
 
 @media (max-width: 640px) {
   .tiktokEmbed {
     width: 100% !important;
-    height: 70vh !important;
   }
 }
 
 .videoEmbed {
   height: 450px !important;
-  width: 100% !important;
   max-width: 800px !important;
+  aspect-ratio: 16/9;
 }
 
 @media (max-width: 640px) {
   .videoEmbed {
-    max-height: 250px !important;
     width: 100% !important;
+    max-height: 250px !important;
   }
 }
 
 .xEmbed {
-  height: 300px !important;
-  width: 100% !important;
-  max-width: 568px !important;
+  height: 320px !important;
+  width: 568px !important;
 }
 
-/* @media (max-width: 640px) {
+@media (max-width: 640px) {
   .xEmbed {
     width: 100% !important;
-    height: 50vh !important;
   }
-} */
+}
 
 .soundcloudEmbed {
   height: 166px !important;
-  width: 100% !important;
-  max-width: 700px !important;
+  width: 600px !important;
 }
 
 .soundcloudSetsEmbed {
   height: 500px !important;
-  width: 100% !important;
-  max-width: 700px !important;
+  width: 700px !important;
 }
 
 @media (max-width: 640px) {
   .soundcloudEmbed {
     width: 100% !important;
-    height: 166px !important;
   }
 
   .soundcloudSetsEmbed {
     width: 100% !important;
-    height: 500px !important;
   }
 }
 
 .pdfEmbed {
   height: 600px !important;
-  width: 100% !important;
-  max-width: 800px !important;
+  width: 700px !important;
 }
 
 @media (max-width: 640px) {
   .pdfEmbed {
+    width: 100% !important;
     max-height: 450px !important;
   }
 }
