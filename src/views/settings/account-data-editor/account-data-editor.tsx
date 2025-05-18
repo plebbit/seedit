@@ -5,7 +5,7 @@ import useTheme from '../../../stores/use-theme-store';
 import stringify from 'json-stringify-pretty-compact';
 import styles from './account-data-editor.module.css';
 import useIsMobile from '../../../hooks/use-is-mobile';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const LazyAceEditor = lazy(async () => {
   const ReactAceModule = await import('react-ace');
@@ -50,6 +50,7 @@ const AccountDataEditor = () => {
 
   const isMobile = useIsMobile();
   const { t } = useTranslation();
+  const navigate = useNavigate();
 
   if (!showEditor) {
     return (
@@ -60,9 +61,7 @@ const AccountDataEditor = () => {
           <p>You're about to view your account data, which includes your private key. You should never share your private key with anyone.</p>
         </div>
         <div className={styles.warningButtons}>
-          <button>
-            <Link to='/settings'>go back</Link>
-          </button>
+          <button onClick={() => navigate('/settings')}>go back</button>
           <button onClick={() => setShowEditor(true)}>{t('continue')}</button>
         </div>
       </div>
@@ -81,7 +80,7 @@ const AccountDataEditor = () => {
           editorProps={{ $blockScrolling: true }}
           className={styles.editor}
           width='100%'
-          height={isMobile ? 'calc(90vh - 95px)' : 'calc(90vh - 77px)'}
+          height={isMobile ? 'calc(80vh - 95px)' : 'calc(90vh - 77px)'}
           setOptions={{
             useWorker: false,
             enableBasicAutocompletion: false,
