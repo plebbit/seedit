@@ -21,10 +21,10 @@ import Subplebbits from './views/subplebbits';
 import AccountBar from './components/account-bar/';
 import ChallengeModal from './components/challenge-modal';
 import Header from './components/header';
+import NotificationHandler from './components/notification-handler';
 import StickyHeader from './components/sticky-header';
 import TopBar from './components/topbar';
 import styles from './app.module.css';
-import { NotificationHandler } from './components/notification-handler/NotificationHandler';
 
 initializeNotificationSystem();
 

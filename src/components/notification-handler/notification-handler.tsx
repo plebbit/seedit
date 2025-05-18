@@ -9,7 +9,7 @@ import { showLocalNotification } from '../../lib/push';
  * and triggering the platform-specific local notification display.
  * It doesn't render anything itself, but runs its logic via useEffect.
  */
-export const NotificationHandler = () => {
+const NotificationHandler = () => {
   const { enableLocalNotifications } = useContentOptionsStore();
   const { notifications } = useNotifications(); // Use real hook
   const location = useLocation();
@@ -54,5 +54,4 @@ export const NotificationHandler = () => {
   return null; // This component doesn't render anything
 };
 
-// Optional: Default export if preferred
-// export default NotificationHandler;
+export default NotificationHandler;
