@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from 'react';
-import { Trans } from 'react-i18next';
+import { Trans, useTranslation } from 'react-i18next';
 import { setAccount, useAccount } from '@plebbit/plebbit-react-hooks';
 import useTheme from '../../../stores/use-theme-store';
 import stringify from 'json-stringify-pretty-compact';
@@ -9,11 +9,13 @@ import 'ace-builds/src-noconflict/theme-github';
 import 'ace-builds/src-noconflict/theme-tomorrow_night';
 import styles from './account-data-editor.module.css';
 import useIsMobile from '../../../hooks/use-is-mobile';
+import { Link } from 'react-router-dom';
 
 const AccountDataEditor = () => {
   const account = useAccount();
   const theme = useTheme((state) => state.theme);
   const [text, setText] = useState('');
+  const [showEditor, setShowEditor] = useState(false);
 
   const accountJson = useMemo(
     () =>
@@ -43,6 +45,25 @@ const AccountDataEditor = () => {
   };
 
   const isMobile = useIsMobile();
+  const { t } = useTranslation();
+
+  if (!showEditor) {
+    return (
+      <div className={styles.securityWarning}>
+        <img src={`/assets/privacy_icon.png`} alt='security warning' />
+        <div className={styles.warning}>
+          <h3>Your private key will be displayed</h3>
+          <p>You're about to view your account data, which includes your private key. You should never share your private key with anyone.</p>
+        </div>
+        <div className={styles.warningButtons}>
+          <button>
+            <Link to='/settings'>go back</Link>
+          </button>
+          <button onClick={() => setShowEditor(true)}>{t('continue')}</button>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className={styles.content}>

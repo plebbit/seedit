@@ -59,7 +59,7 @@
   --markdown-link: rgb(74, 183, 255);
   --orange: #FF7500;
   --over18image: url("/assets/over18.png");
-  --over18-alert-color: #ffffff;
+  --alert-color: #ffffff;
   --pagination-button-background: rgb(29, 31, 34);
   --pagination-button-border: 1px solid rgb(55, 59, 62);
   --pagination-button-border-hover: 1px solid #5a728a;
@@ -159,7 +159,7 @@
   --markdown-link: #0079d3;
   --orange: #FF7500;
   --over18image: url("/assets/over18.png");
-  --over18-alert-color: #ffffff;
+  --alert-color: #ffffff;
   --pagination-button-background: #eee;
   --pagination-button-border: 1px solid #ddd;
   --pagination-button-border-hover: 1px solid #82A6C9;

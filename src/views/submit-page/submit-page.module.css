@@ -332,7 +332,7 @@
 }
 
 .uploadBox label {
-  color: var(--over18-alert-color);
+  color: var(--alert-color);
   display: inline-block;
   text-align: center;
   text-transform: uppercase;

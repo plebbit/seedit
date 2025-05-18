@@ -85,7 +85,7 @@
 }
 
 .over18 .warningButtons button {
-  color: var(--over18-alert-color);
+  color: var(--alert-color);
   display: inline-block;
   text-align: center;
   text-transform: uppercase;
@@ -121,6 +121,6 @@
 }
 
 .over18 .warningButtons button a {
-  color: var(--over18-alert-color);
+  color: var(--alert-color);
   text-decoration: none;
 }
