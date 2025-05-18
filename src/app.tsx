@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { Outlet, Route, Routes } from 'react-router-dom';
 import { initializeNotificationSystem } from './lib/push';
 import useTheme from './hooks/use-theme';
+import { useAutoSubscribe } from './hooks/use-auto-subscribe';
 import AboutView from './views/about';
 import All from './views/all';
 import Author from './views/author';
@@ -13,6 +14,7 @@ import NotFound from './views/not-found';
 import PostPage from './views/post-page';
 import Profile from './views/profile';
 import Settings from './views/settings';
+import AccountDataEditor from './views/settings/account-data-editor';
 import SubmitPage from './views/submit-page';
 import Subplebbit from './views/subplebbit';
 import SubplebbitSettings from './views/subplebbit-settings';
@@ -20,14 +22,16 @@ import Subplebbits from './views/subplebbits';
 import AccountBar from './components/account-bar/';
 import ChallengeModal from './components/challenge-modal';
 import Header from './components/header';
+import NotificationHandler from './components/notification-handler';
 import StickyHeader from './components/sticky-header';
 import TopBar from './components/topbar';
 import styles from './app.module.css';
-import { NotificationHandler } from './components/notification-handler/NotificationHandler';
 
 initializeNotificationSystem();
 
 const App = () => {
+  useAutoSubscribe();
+
   const globalLayout = (
     <>
       <ChallengeModal />
@@ -95,6 +99,7 @@ const App = () => {
             <Route path='/p/:subplebbitAddress/settings' element={<SubplebbitSettings />} />
             <Route path='/settings/plebbit-options' element={<Settings />} />
             <Route path='/settings/content-options' element={<Settings />} />
+            <Route path='/settings/account-data' element={<AccountDataEditor />} />
 
             <Route path='/profile/about' element={<AboutView />} />
 

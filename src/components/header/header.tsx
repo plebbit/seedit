@@ -42,6 +42,7 @@ import {
   isSubplebbitAboutView,
   isDomainView,
   isPostPageAboutView,
+  isSettingsAccountDataView,
 } from '../../lib/utils/view-utils';
 import useContentOptionsStore from '../../stores/use-content-options-store';
 import useNotFoundStore from '../../stores/use-not-found-store';
@@ -244,10 +245,11 @@ const SettingsHeaderTabs = () => {
   const location = useLocation();
   const isInSettingsPlebbitOptionsView = isSettingsPlebbitOptionsView(location.pathname);
   const isInSettingsContentOptionsView = isSettingsContentOptionsView(location.pathname);
+  const isInSettingsAccountDataView = isSettingsAccountDataView(location.pathname);
 
   return (
     <>
-      <li className={isInSettingsPlebbitOptionsView || isInSettingsContentOptionsView ? styles.choice : styles.selected}>
+      <li className={isInSettingsPlebbitOptionsView || isInSettingsContentOptionsView || isInSettingsAccountDataView ? styles.choice : styles.selected}>
         <Link to={'/settings'}>{t('general')}</Link>
       </li>
       <li className={isInSettingsContentOptionsView ? styles.selected : styles.choice}>

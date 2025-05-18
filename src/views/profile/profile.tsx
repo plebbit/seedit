@@ -143,15 +143,17 @@ const Overview = () => {
     return [...accountComments].sort((a, b) => (sortType === 'new' ? b.timestamp - a.timestamp : a.timestamp - b.timestamp));
   }, [accountComments, sortType]);
 
+  const prevErrorMessageRef = useRef<string | undefined>();
   useEffect(() => {
-    if (error) {
+    if (error && error.message !== prevErrorMessageRef.current) {
       console.log(error);
+      prevErrorMessageRef.current = error.message;
     }
   }, [error]);
 
   return (
     <div>
-      {error && (
+      {error?.message && (
         <div className={styles.error}>
           <ErrorDisplay error={error} />
         </div>
@@ -173,15 +175,17 @@ const Comments = () => {
     return [...replyComments].sort((a, b) => (sortType === 'new' ? b.timestamp - a.timestamp : a.timestamp - b.timestamp));
   }, [replyComments, sortType]);
 
+  const prevErrorMessageRef = useRef<string | undefined>();
   useEffect(() => {
-    if (error) {
+    if (error && error.message !== prevErrorMessageRef.current) {
       console.log(error);
+      prevErrorMessageRef.current = error.message;
     }
   }, [error]);
 
   return (
     <div>
-      {error && (
+      {error?.message && (
         <div className={styles.error}>
           <ErrorDisplay error={error} />
         </div>
@@ -203,15 +207,17 @@ const Submitted = () => {
     return [...postComments].sort((a, b) => (sortType === 'new' ? b.timestamp - a.timestamp : a.timestamp - b.timestamp));
   }, [postComments, sortType]);
 
+  const prevErrorMessageRef = useRef<string | undefined>();
   useEffect(() => {
-    if (error) {
+    if (error && error.message !== prevErrorMessageRef.current) {
       console.log(error);
+      prevErrorMessageRef.current = error.message;
     }
   }, [error]);
 
   return (
     <div>
-      {error && (
+      {error?.message && (
         <div className={styles.error}>
           <ErrorDisplay error={error} />
         </div>
@@ -237,15 +243,17 @@ const VotedComments = ({ voteType }: { voteType: 1 | -1 }) => {
   const paginatedCids = votedCommentCids.slice((currentPage - 1) * pageSize, currentPage * pageSize);
   const hasMore = currentPage * pageSize < votedCommentCids.length;
 
+  const prevErrorMessageRef = useRef<string | undefined>();
   useEffect(() => {
-    if (error) {
+    if (error && error.message !== prevErrorMessageRef.current) {
       console.log(error);
+      prevErrorMessageRef.current = error.message;
     }
   }, [error]);
 
   return (
     <div>
-      {error && (
+      {error?.message && (
         <div className={styles.error}>
           <ErrorDisplay error={error} />
         </div>

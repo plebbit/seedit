@@ -7,7 +7,7 @@
   "license": "GPL-2.0-only",
   "private": true,
   "dependencies": {
-    "@capacitor/app": "6.0.1",
+    "@capacitor/app": "7.0.1",
     "@capacitor/local-notifications": "7.0.1",
     "@floating-ui/react": "0.26.1",
     "@plebbit/plebbit-react-hooks": "https://github.com/plebbit/plebbit-react-hooks.git#f760ce2f5961307c93517fed0257b425bbf38c30",
@@ -18,8 +18,10 @@
     "@types/node": "20.8.2",
     "@types/react": "18.2.25",
     "@types/react-dom": "18.2.10",
+    "ace-builds": "1.41.0",
     "cross-env": "7.0.3",
     "electron-context-menu": "3.3.0",
+    "electron-is-dev": "2.0.0",
     "env-paths": "3.0.0",
     "ext-name": "5.0.0",
     "form-data": "4.0.2",
@@ -34,6 +36,7 @@
     "node-fetch": "2",
     "prettier": "3.0.3",
     "react": "19.1.0",
+    "react-ace": "14.0.1",
     "react-dom": "19.1.0",
     "react-dropzone": "14.3.8",
     "react-i18next": "13.2.2",
@@ -86,9 +89,9 @@
     ]
   },
   "devDependencies": {
-    "@capacitor/android": "5.0.0",
-    "@capacitor/cli": "5.0.0",
-    "@capacitor/core": "5.0.0",
+    "@capacitor/android": "7.2.0",
+    "@capacitor/cli": "7.2.0",
+    "@capacitor/core": "7.2.0",
     "@electron/rebuild": "4.0.0",
     "@types/memoizee": "0.4.9",
     "@types/node-fetch": "2",
@@ -123,7 +126,7 @@
     "vite-plugin-pwa": "0.21.1",
     "wait-on": "7.0.1"
   },
-  "main": "electron/main.cjs",
+  "main": "electron/main.js",
   "build": {
     "appId": "seedit.desktop",
     "productName": "seedit",

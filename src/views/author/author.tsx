@@ -27,9 +27,11 @@ const Author = () => {
 
   const { authorComments, error, lastCommentCid, hasMore, loadMore } = useAuthorComments({ commentCid, authorAddress });
 
+  const prevErrorMessageRef = useRef<string | undefined>();
   useEffect(() => {
-    if (error) {
+    if (error && error.message !== prevErrorMessageRef.current) {
       console.log(error);
+      prevErrorMessageRef.current = error.message;
     }
   }, [error]);
 
@@ -89,7 +91,7 @@ const Author = () => {
       <div className={isMobile ? styles.sidebarMobile : styles.sidebarDesktop}>
         <AuthorSidebar />
       </div>
-      {error && (
+      {error?.message && (
         <div className={styles.error}>
           <ErrorDisplay error={error} />
         </div>

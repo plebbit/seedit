@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import { setAccount, useAccount, useAuthorAvatar } from '@plebbit/plebbit-react-hooks';
 import styles from './avatar-settings.module.css';
 import { Trans, useTranslation } from 'react-i18next';
-import useAvatarVisibilityStore from '../../../stores/use-avatar-visibility-store';
 
 interface AvatarSettingsProps {
   areSettingsShown?: boolean;
@@ -58,7 +57,6 @@ const AvatarSettings = () => {
   const [tokenId, setTokenId] = useState(account?.author?.avatar?.id);
   const [timestamp, setTimestamp] = useState(account?.author?.avatar?.timestamp);
   const [signature, setSignature] = useState(account?.author?.avatar?.signature?.signature);
-  const { hideAvatars, setHideAvatars } = useAvatarVisibilityStore();
 
   const getNftMessageToSign = (authorAddress: string, timestamp: number, tokenAddress: string, tokenId: string) => {
     let messageToSign: any = {};
@@ -135,7 +133,7 @@ const AvatarSettings = () => {
             <span className={styles.settingTitle}>{t('chain_ticker')}</span>
             <input
               type='text'
-              placeholder='eth/sol/avax'
+              placeholder='matic'
               autoCorrect='off'
               autoComplete='off'
               spellCheck='false'
@@ -222,12 +220,6 @@ const AvatarSettings = () => {
           </div>
         </div>
       )}
-      <div className={styles.hideAvatarsCheckbox}>
-        <label>
-          <input type='checkbox' checked={hideAvatars} onChange={(e) => setHideAvatars(e.target.checked)} />
-          {t('hide_avatars_from_replies')}
-        </label>
-      </div>
     </div>
   );
 };

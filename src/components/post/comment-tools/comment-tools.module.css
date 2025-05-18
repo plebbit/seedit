@@ -30,6 +30,16 @@
   padding: 0 4px 0 4px;
 }
 
+.button {
+  cursor: pointer;
+}
+
+.text {
+  cursor: default !important;
+  color: var(--text-default) !important;
+  text-decoration: none !important;
+}
+
 .buttons li:hover {
   text-decoration: underline;
 }

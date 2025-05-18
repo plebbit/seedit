@@ -27,11 +27,9 @@ import Markdown from '../markdown';
 import SearchBar from '../search-bar';
 import SubscribeButton from '../subscribe-button';
 import LoadingEllipsis from '../loading-ellipsis';
-import Version from '../version';
+import { Version } from '../version';
 import { FAQ } from '../../views/about/about';
 import { communitySubtitles } from '../../constants/community-subtitles';
-
-const isElectron = window.electronApi?.isElectron === true;
 
 const RulesList = ({ rules }: { rules: string[] }) => {
   const { t } = useTranslation();
@@ -256,7 +254,7 @@ const Sidebar = ({ comment, isSubCreatedButNotYetPublished, settings, subplebbit
   const navigate = useNavigate();
   const handleCreateCommunity = () => {
     // creating a community only works if the user is running a full node
-    if (isElectron || isConnectedToRpc) {
+    if (isConnectedToRpc) {
       navigate('/communities/create');
     } else if (window.confirm(t('create_community_warning'))) {
       const link = document.createElement('a');

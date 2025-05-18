@@ -389,5 +389,6 @@
   "tagged_as_vulgar": "megjegyezve mint \"vulgáris\"",
   "drop_here_or": "Húzza ide, vagy",
   "upload_button_warning": "Az automatikus feltöltés a böngészője CORS irányelvei által blokkolva van, de elérhető a Seedit Android alkalmazásban és asztali alkalmazásban (Win/Mac/Linux).\n\nMenjen a letöltési linkek oldalára a GitHub-on?",
-  "create_community_warning": "Közösség létrehozása teljes csomópont futtatását igényli. A Seedit asztali alkalmazás (Win/Mac/Linux) automatikusan futtat egy teljes csomópontot.\n\nMenjen a letöltési linkek oldalára a GitHub-on?"
+  "create_community_warning": "Közösség létrehozása teljes csomópont futtatását igényli. A Seedit asztali alkalmazás (Win/Mac/Linux) automatikusan futtat egy teljes csomópontot.\n\nMenjen a letöltési linkek oldalára a GitHub-on?",
+  "avatars": "Avatarok"
 }

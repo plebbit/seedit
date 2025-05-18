@@ -389,5 +389,6 @@
   "tagged_as_vulgar": "tinag na \"vulgar\"",
   "drop_here_or": "I-drag dito o",
   "upload_button_warning": "Ang awtomatikong pag-upload ay naharang ng CORS policy ng iyong browser, ngunit ito ay magagamit sa Seedit Android app at desktop app (Win/Mac/Linux).\n\nPumunta sa page ng download links sa GitHub?",
-  "create_community_warning": "Ang paggawa ng komunidad ay nangangailangan ng pagpapatakbo ng isang buong node. Ang Seedit desktop app (Win/Mac/Linux) ay awtomatikong nagpapatakbo ng isang buong node.\n\nPumunta sa page ng download links sa GitHub?"
+  "create_community_warning": "Ang paggawa ng komunidad ay nangangailangan ng pagpapatakbo ng isang buong node. Ang Seedit desktop app (Win/Mac/Linux) ay awtomatikong nagpapatakbo ng isang buong node.\n\nPumunta sa page ng download links sa GitHub?",
+  "avatars": "Mga Avatar"
 }

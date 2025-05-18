@@ -98,9 +98,11 @@ const Inbox = () => {
     document.title = documentTitle;
   }, [documentTitle]);
 
+  const prevErrorMessageRef = useRef<string | undefined>();
   useEffect(() => {
-    if (error) {
+    if (error && error.message !== prevErrorMessageRef.current) {
       console.log(error);
+      prevErrorMessageRef.current = error.message;
     }
   }, [error]);
 
@@ -116,7 +118,7 @@ const Inbox = () => {
           <div className={styles.noNotifications}>{t('nothing_found')}</div>
         )}
       </div>
-      {error && (
+      {error?.message && (
         <div className={styles.error}>
           <ErrorDisplay error={error} />
         </div>

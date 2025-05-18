@@ -5,7 +5,7 @@ import { Capacitor } from '@capacitor/core';
 import { setAccount, useAccount } from '@plebbit/plebbit-react-hooks';
 import { isSettingsPlebbitOptionsView, isSettingsContentOptionsView } from '../../lib/utils/view-utils';
 import useTheme from '../../hooks/use-theme';
-import Version from '../../components/version';
+import { VersionWithCommit } from '../../components/version';
 import AccountSettings from './account-settings';
 import AddressSettings from './address-settings';
 import AvatarSettings from './avatar-settings';
@@ -17,7 +17,7 @@ import styles from './settings.module.css';
 import packageJson from '../../../package.json';
 import _ from 'lodash';
 
-const commitRef = process.env.REACT_APP_COMMIT_REF;
+const commitRef = import.meta.env.VITE_COMMIT_REF;
 const isAndroid = Capacitor.getPlatform() === 'android';
 
 const CheckForUpdates = () => {
@@ -169,7 +169,7 @@ const GeneralSettings = () => {
         <span className={styles.categoryTitle}>{t('version')}</span>
         <span className={styles.categorySettings}>
           <div className={styles.version}>
-            <Version />
+            <VersionWithCommit />
             {window.electronApi?.isElectron && (
               <a className={styles.fullNodeStats} href='http://localhost:50019/webui/' target='_blank' rel='noreferrer'>
                 {t('node_stats')}

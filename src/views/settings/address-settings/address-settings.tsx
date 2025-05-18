@@ -113,6 +113,9 @@ const AddressSettings = () => {
           <input
             type='text'
             placeholder='address.eth/.sol'
+            autoCorrect='off'
+            autoCapitalize='off'
+            spellCheck='false'
             value={cryptoState.cryptoAddress}
             onChange={(e) => setCryptoState((prevState) => ({ ...prevState, cryptoAddress: e.target.value }))}
           />

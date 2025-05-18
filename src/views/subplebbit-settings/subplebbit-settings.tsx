@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import {
   deleteSubplebbit,
   Role,
@@ -10,18 +11,19 @@ import {
   useSubplebbit,
   useSubscribe,
 } from '@plebbit/plebbit-react-hooks';
-import { Roles } from '../../lib/utils/user-utils';
-import { useTranslation } from 'react-i18next';
-import styles from './subplebbit-settings.module.css';
+import { isUserOwner, Roles } from '../../lib/utils/user-utils';
 import { isValidURL } from '../../lib/utils/url-utils';
 import { isCreateSubplebbitView, isSubplebbitSettingsView } from '../../lib/utils/view-utils';
 import useSubplebbitSettingsStore from '../../stores/use-subplebbit-settings-store';
+import useStateString from '../../hooks/use-state-string';
+import ErrorDisplay from '../../components/error-display';
 import LoadingEllipsis from '../../components/loading-ellipsis';
 import Markdown from '../../components/markdown';
 import Sidebar from '../../components/sidebar';
 import Challenges from './challenge-settings';
-import _ from 'lodash';
 import { FormattingHelpTable } from '../../components/reply-form';
+import styles from './subplebbit-settings.module.css';
+import _ from 'lodash';
 
 const Title = ({ isReadOnly = false }: { isReadOnly?: boolean }) => {
   const { t } = useTranslation();
@@ -290,6 +292,9 @@ const Moderators = ({ isReadOnly = false }: { isReadOnly?: boolean }) => {
                   <input
                     ref={index === Object.keys(roles).length - 1 ? lastModeratorRef : null}
                     type='text'
+                    autoCorrect='off'
+                    autoComplete='off'
+                    spellCheck='false'
                     value={address}
                     onChange={(e) => handleAddressChange(index, e.target.value)}
                   />
@@ -347,13 +352,11 @@ const JSONSettings = ({ isReadOnly = false }: { isReadOnly?: boolean }) => {
   );
 };
 
-const isElectron = window.electronApi?.isElectron === true;
-
 const SubplebbitSettings = () => {
   const { t } = useTranslation();
   const { subplebbitAddress } = useParams<{ subplebbitAddress: string }>();
   const subplebbit = useSubplebbit({ subplebbitAddress });
-  const { address, challenges, createdAt, description, rules, shortAddress, settings, suggested, roles, title } = subplebbit || {};
+  const { address, challenges, createdAt, description, error, rules, shortAddress, settings, suggested, roles, title } = subplebbit || {};
   const hasLoaded = !!createdAt;
 
   const { challenges: rpcChallenges } = usePlebbitRpcSettings().plebbitRpcSettings || {};
@@ -366,11 +369,10 @@ const SubplebbitSettings = () => {
   const isInCreateSubplebbitView = isCreateSubplebbitView(location.pathname);
   const isInSubplebbitSettingsView = isSubplebbitSettingsView(location.pathname, params);
   const isConnectedToRpc = !!account?.plebbitOptions.plebbitRpcClientsOptions;
-  const isOnFullNode = isElectron || isConnectedToRpc;
 
-  const isReadOnly = (!settings && isInSubplebbitSettingsView) || (!isOnFullNode && isInCreateSubplebbitView);
+  const isReadOnly = (!settings && isInSubplebbitSettingsView) || (!isConnectedToRpc && isInCreateSubplebbitView);
 
-  const { publishSubplebbitEditOptions, resetSubplebbitSettingsStore, setSubplebbitSettingsStore } = useSubplebbitSettingsStore();
+  const { publishSubplebbitEditOptions, resetSubplebbitSettingsStore, setSubplebbitSettingsStore, title: storeTitle } = useSubplebbitSettingsStore();
   const { error: publishSubplebbitEditError, publishSubplebbitEdit } = usePublishSubplebbitEdit(publishSubplebbitEditOptions);
   const { error: createSubplebbitError, createdSubplebbit, createSubplebbit } = useCreateSubplebbit(publishSubplebbitEditOptions);
 
@@ -467,9 +469,38 @@ const SubplebbitSettings = () => {
     }
   }, [createdSubplebbit, navigate, resetSubplebbitSettingsStore, account, subscribe]);
 
+  const lastViewType = useRef<'create' | 'settings' | 'other' | undefined>(undefined);
+
+  // Initialize store for create view only on first entry or when switching from settings view
   useEffect(() => {
-    resetSubplebbitSettingsStore();
-    if (hasLoaded) {
+    if (isInCreateSubplebbitView && lastViewType.current === 'settings') {
+      resetSubplebbitSettingsStore();
+      const initialRoles: Roles = account?.author?.address ? { [account.author.address]: { role: 'owner' as const } } : {};
+      setSubplebbitSettingsStore({
+        title: '',
+        description: '',
+        address: undefined,
+        suggested: {},
+        rules: [],
+        roles: initialRoles,
+        settings: {},
+        challenges: [],
+        subplebbitAddress: undefined,
+      });
+    }
+    if (isInCreateSubplebbitView) {
+      lastViewType.current = 'create';
+    } else if (isInSubplebbitSettingsView) {
+      lastViewType.current = 'settings';
+    } else {
+      lastViewType.current = 'other';
+    }
+  }, [isInCreateSubplebbitView, storeTitle, resetSubplebbitSettingsStore, setSubplebbitSettingsStore, account, isInSubplebbitSettingsView]);
+
+  // Set store for loaded subplebbit settings when editing
+  useEffect(() => {
+    if (!isInCreateSubplebbitView && hasLoaded) {
+      resetSubplebbitSettingsStore();
       setSubplebbitSettingsStore({
         title: title ?? '',
         description: description ?? '',
@@ -482,8 +513,21 @@ const SubplebbitSettings = () => {
         subplebbitAddress,
       });
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [resetSubplebbitSettingsStore, hasLoaded]);
+  }, [
+    isInCreateSubplebbitView,
+    hasLoaded,
+    resetSubplebbitSettingsStore,
+    setSubplebbitSettingsStore,
+    title,
+    description,
+    address,
+    suggested,
+    rules,
+    roles,
+    settings,
+    challenges,
+    subplebbitAddress,
+  ]);
 
   const documentTitle = useMemo(() => {
     let title;
@@ -503,11 +547,22 @@ const SubplebbitSettings = () => {
     window.scrollTo(0, 0);
   }, []);
 
+  const userAddress = account?.author?.address;
+  const userIsOwner = isUserOwner(roles, userAddress);
+  const loadingStateString = useStateString(subplebbit);
+
   if (!hasLoaded && !isInCreateSubplebbitView) {
     return (
-      <div className={styles.loading}>
-        <LoadingEllipsis string={t('loading')} />
-      </div>
+      <>
+        {error?.message && (
+          <div className={styles.error}>
+            <ErrorDisplay error={error} />
+          </div>
+        )}
+        <div className={styles.loading}>
+          <LoadingEllipsis string={loadingStateString || t('loading')} />
+        </div>
+      </>
     );
   }
 
@@ -518,7 +573,7 @@ const SubplebbitSettings = () => {
           <Sidebar subplebbit={subplebbit} />
         </div>
       )}
-      {isReadOnly && <div className={styles.infobar}>{t('owner_settings_notice')}</div>}
+      {isReadOnly && !userIsOwner && <div className={styles.infobar}>{t('owner_settings_notice')}</div>}
       <Title isReadOnly={isReadOnly} />
       <Description isReadOnly={isReadOnly} />
       {!isInCreateSubplebbitView && <Address isReadOnly={isReadOnly} />}

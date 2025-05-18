@@ -389,5 +389,6 @@
   "tagged_as_vulgar": "merkitty \"vulgaariseksi\"",
   "drop_here_or": "Pudota tänne tai",
   "upload_button_warning": "Automaattinen lataus on estetty selaimesi CORS-politiikalla, mutta se on saatavilla Seedit Android -sovelluksessa ja työpöytäsovelluksessa (Win/Mac/Linux).\n\nMene GitHubin latauslinkkisivulle?",
-  "create_community_warning": "Yhteisön luominen vaatii täyden solmun ajamisen. Seeditin työpöytäsovellus (Win/Mac/Linux) ajaa automaattisesti täyden solmun.\n\nMene GitHubin latauslinkkisivulle?"
+  "create_community_warning": "Yhteisön luominen vaatii täyden solmun ajamisen. Seeditin työpöytäsovellus (Win/Mac/Linux) ajaa automaattisesti täyden solmun.\n\nMene GitHubin latauslinkkisivulle?",
+  "avatars": "Avatarit"
 }

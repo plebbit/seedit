@@ -15,6 +15,7 @@ const CommunitiesDropdown = () => {
   const { t } = useTranslation();
   const account = useAccount();
   const subscriptions = account?.subscriptions;
+  const reversedSubscriptions = subscriptions ? [...subscriptions].reverse() : [];
 
   const [isSubsDropdownOpen, setIsSubsDropdownOpen] = useState(false);
   const toggleSubsDropdown = () => setIsSubsDropdownOpen(!isSubsDropdownOpen);
@@ -38,7 +39,7 @@ const CommunitiesDropdown = () => {
     <div className={`${styles.dropdown} ${styles.subsDropdown}`} ref={subsDropdownRef} onClick={toggleSubsDropdown}>
       <span className={styles.selectedTitle}>{t('my_communities')}</span>
       <div className={`${styles.dropChoices} ${styles.subsDropChoices} ${subsDropdownClass}`} ref={subsdropdownItemsRef}>
-        {subscriptions?.map((subscription: string, index: number) => (
+        {reversedSubscriptions?.map((subscription: string, index: number) => (
           <Link key={index} to={`/p/${subscription}`} className={styles.dropdownItem}>
             {Plebbit.getShortAddress(subscription)}
           </Link>
@@ -261,6 +262,7 @@ const TopBar = () => {
 
   const account = useAccount();
   const subscriptions = account?.subscriptions;
+  const reversedSubscriptions = subscriptions ? [...subscriptions].reverse() : [];
 
   const filteredSubplebbitAddresses = subplebbitAddresses?.filter((address) => !subscriptions?.includes(address));
 
@@ -293,7 +295,7 @@ const TopBar = () => {
               </li>
             )}
             {subscriptions?.length > 0 && <span className={styles.separator}> | </span>}
-            {subscriptions?.map((subscription: string, index: number) => {
+            {reversedSubscriptions?.map((subscription: string, index: number) => {
               const shortAddress = Plebbit.getShortAddress(subscription);
               const displayAddress = shortAddress.includes('.eth') ? shortAddress.slice(0, -4) : shortAddress.includes('.sol') ? shortAddress.slice(0, -4) : shortAddress;
               return (

@@ -389,5 +389,6 @@
   "tagged_as_vulgar": "märkt som \"vulgar\"",
   "drop_here_or": "Dra hit eller",
   "upload_button_warning": "Auto-uppladdning blockeras av din webbläsares CORS-policy, men det är tillgängligt i Seedit Android-app och skrivbordsapp (Win/Mac/Linux).\n\nGå till sidan för nedladdningslänkar på GitHub?",
-  "create_community_warning": "Att skapa ett community kräver att du kör en full node. Seedit desktop-appen (Win/Mac/Linux) kör automatiskt en full node.\n\nGå till sidan för nedladdningslänkar på GitHub?"
+  "create_community_warning": "Att skapa ett community kräver att du kör en full node. Seedit desktop-appen (Win/Mac/Linux) kör automatiskt en full node.\n\nGå till sidan för nedladdningslänkar på GitHub?",
+  "avatars": "Avatarer"
 }

@@ -5,7 +5,7 @@ import { useAccount, useFeed } from '@plebbit/plebbit-react-hooks';
 import { Trans, useTranslation } from 'react-i18next';
 import { commentMatchesPattern } from '../../lib/utils/pattern-utils';
 import useFeedFiltersStore from '../../stores/use-feed-filters-store';
-import { useAutoSubscribe } from '../../hooks/use-auto-subscribe';
+import { useAutoSubscribeStore } from '../../stores/use-auto-subscribe-store';
 import useTimeFilter, { isValidTimeFilterName } from '../../hooks/use-time-filter';
 import useRedirectToDefaultSort from '../../hooks/use-redirect-to-default-sort';
 import FeedFooter from '../../components/feed-footer';
@@ -23,7 +23,9 @@ const Home = () => {
   const { t } = useTranslation();
   const account = useAccount();
   const subplebbitAddresses = useMemo(() => account?.subscriptions || [], [account?.subscriptions]);
-  const { isCheckingSubscriptions } = useAutoSubscribe();
+  const { isCheckingAccount } = useAutoSubscribeStore();
+  const accountAddress = account?.author?.address;
+  const isCheckingSubscriptions = !accountAddress || isCheckingAccount(accountAddress);
 
   const params = useParams<{ sortType?: string; timeFilterName?: string }>();
   const [searchParams, setSearchParams] = useSearchParams();
@@ -180,7 +182,7 @@ const Home = () => {
         clearTimeout(initialLoadTimeoutRef.current);
       }
     };
-  }, [isCheckingSubscriptions, safeToShowNoSubscriptions]);
+  }, [isCheckingSubscriptions, safeToShowNoSubscriptions, accountAddress]);
 
   useEffect(() => {
     if (searchQuery) {
@@ -203,7 +205,7 @@ const Home = () => {
     } else {
       setSubscriptionState('loading');
     }
-  }, [isCheckingSubscriptions, subplebbitAddresses, feed, safeToShowNoSubscriptions, searchQuery]);
+  }, [isCheckingSubscriptions, subplebbitAddresses, feed, safeToShowNoSubscriptions, searchQuery, accountAddress]);
 
   return (
     <div>

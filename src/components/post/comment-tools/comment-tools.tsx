@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { Author, useAccount } from '@plebbit/plebbit-react-hooks';
@@ -8,8 +9,8 @@ import EditMenu from './edit-menu';
 import HideMenu from './hide-menu';
 import Label from '../label';
 import ModMenu from './mod-menu';
-import ShareMenu from './share-menu';
 import { isInboxView } from '../../../lib/utils/view-utils';
+import { copyShareLinkToClipboard } from '../../../lib/utils/url-utils';
 
 interface CommentToolsProps {
   author?: Author;
@@ -57,6 +58,29 @@ const ModOrReportButton = ({ cid, isAuthor, isAccountMod, isCommentAuthorMod }: 
   );
 };
 
+const ShareButton = ({ cid, subplebbitAddress }: { cid: string; subplebbitAddress: string }) => {
+  const { t } = useTranslation();
+  const [hasCopied, setHasCopied] = useState(false);
+
+  useEffect(() => {
+    if (hasCopied) {
+      setTimeout(() => setHasCopied(false), 2000);
+    }
+  }, [hasCopied]);
+
+  return (
+    <li
+      className={`${!hasCopied ? styles.button : styles.text}`}
+      onClick={() => {
+        setHasCopied(true);
+        copyShareLinkToClipboard(subplebbitAddress, cid);
+      }}
+    >
+      {hasCopied ? t('link_copied') : t('share')}
+    </li>
+  );
+};
+
 const PostTools = ({
   author,
   cid,
@@ -96,7 +120,7 @@ const PostTools = ({
   return (
     <>
       <li className={`${styles.button} ${!hasLabel ? styles.firstButton : ''}`}>{commentCountButton}</li>
-      <ShareMenu cid={cid} subplebbitAddress={subplebbitAddress} />
+      <ShareButton cid={cid} subplebbitAddress={subplebbitAddress} />
       {/* TODO: Implement save functionality
         <li className={styles.button}>
           <span>{t('save')}</span>
@@ -140,7 +164,7 @@ const ReplyTools = ({
   return (
     <>
       <li className={`${styles.button} ${!hasLabel ? styles.firstButton : ''}`}>{permalink}</li>
-      <ShareMenu cid={cid} subplebbitAddress={subplebbitAddress} />
+      <ShareButton cid={cid} subplebbitAddress={subplebbitAddress} />
       {/* TODO: Implement save functionality
         <li className={styles.button}>
           <span>{t('save')}</span>

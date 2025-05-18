@@ -1,7 +1,7 @@
-import { useEffect, useMemo, useRef, useState } from 'react';
-import { createAccount, deleteAccount, exportAccount, importAccount, setAccount, setActiveAccount, useAccount, useAccounts } from '@plebbit/plebbit-react-hooks';
-import stringify from 'json-stringify-pretty-compact';
+import { useEffect, useRef } from 'react';
+import { Link } from 'react-router-dom';
 import { Trans, useTranslation } from 'react-i18next';
+import { createAccount, deleteAccount, exportAccount, importAccount, setActiveAccount, useAccount, useAccounts } from '@plebbit/plebbit-react-hooks';
 import styles from './account-settings.module.css';
 
 const CreateAccountButton = () => {
@@ -161,27 +161,15 @@ const ExportAccountButton = () => {
 
 const AccountSettings = () => {
   const { t } = useTranslation();
+
   const account = useAccount();
   const { accounts } = useAccounts();
-  const [text, setText] = useState('');
-
-  const accountJson = useMemo(
-    () =>
-      stringify({
-        account: { ...account, plebbit: undefined, karma: undefined, plebbitReactOptions: undefined, unreadNotificationCount: undefined, signer: undefined },
-      }),
-    [account],
-  );
 
   const accountsOptions = accounts.map((account) => (
     <option key={account?.id} value={account?.name}>
       u/{account?.author?.shortAddress}
     </option>
   ));
-
-  useEffect(() => {
-    setText(accountJson);
-  }, [accountJson]);
 
   const _deleteAccount = (accountName: string) => {
     if (!accountName) {
@@ -193,55 +181,19 @@ const AccountSettings = () => {
     }
   };
 
-  const saveAccount = async () => {
-    try {
-      const newAccountFromTextarea = JSON.parse(text).account;
-      // re-attach all original fields that were not meant to be editable in the textarea
-      const finalAccount = {
-        ...newAccountFromTextarea,
-        id: account?.id, // force keeping the same id, makes it easier to copy paste
-        signer: account?.signer,
-        plebbit: account?.plebbit,
-        karma: account?.karma,
-        plebbitReactOptions: account?.plebbitReactOptions,
-        unreadNotificationCount: account?.unreadNotificationCount,
-      };
-      await setAccount(finalAccount);
-      alert(`Saved ${finalAccount.name}`);
-    } catch (error) {
-      if (error instanceof Error) {
-        alert(error.message);
-        console.log(error);
-      } else {
-        console.error('An unknown error occurred:', error);
-      }
-    }
-  };
-
   return (
     <span className={styles.categorySettings}>
       <div className={styles.accountAddress}>
         <select value={account?.name} onChange={(e) => setActiveAccount(e.target.value)}>
           {accountsOptions}
-        </select>{' '}
-        {t('is_current_account')}
+        </select>
+        <Link to='/settings/account-data'>{t('edit')}</Link>
       </div>
       <div className={styles.createAccount}>
         <CreateAccountButton />
       </div>
-      <span className={styles.settingTitle}>{t('account_data_preview')}</span>
       <div className={styles.accountData}>
-        <textarea className={styles.textarea} value={text} onChange={(e) => setText(e.target.value)} autoCorrect='off' autoComplete='off' spellCheck='false' />
         <div className={styles.accountButtons}>
-          <div>
-            <Trans
-              i18nKey='save_reset_changes'
-              components={{
-                1: <button key='saveAccountButton' onClick={saveAccount} />,
-                2: <button key='resetAccountButton' onClick={() => setText(accountJson)} />,
-              }}
-            />
-          </div>
           <div>
             <ImportAccountButton />
           </div>
