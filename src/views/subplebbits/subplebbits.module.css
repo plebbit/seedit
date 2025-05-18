@@ -346,3 +346,10 @@
   margin-bottom: 10px;
   margin-left: 10px;
 }
+
+.noSubsMessage {
+  color: var(--red);
+  font-size: 13px;
+  text-transform: lowercase;
+  padding-bottom: 10px;
+}

@@ -35,6 +35,11 @@ interface SubplebbitProps {
   onUnsubscribe?: (address: string) => void;
 }
 
+const NoCommunitiesMessage = () => {
+  const { t } = useTranslation();
+  return <div className={styles.noSubsMessage}>{t('nothing_found')}</div>;
+};
+
 const MyCommunitiesTabs = () => {
   const { t } = useTranslation();
   const location = useLocation();
@@ -142,6 +147,8 @@ const Infobar = () => {
     mainInfobarText = subscriptions.length === 0 ? t('not_subscribed') : t('below_subscribed');
   } else if (isInSubplebbitsModeratorView || isInSubplebbitsAdminView || isInSubplebbitsOwnerView) {
     mainInfobarText = Object.keys(accountSubplebbits).length > 0 ? t('below_moderator_access') : t('not_moderator');
+  } else if (subscriptions.length === 0 && Object.keys(accountSubplebbits).length === 0) {
+    mainInfobarText = 'you are not a subscriber nor a moderator of any community.';
   } else {
     mainInfobarText = (
       <Trans i18nKey='join_communities_notice' values={{ join: t('join'), leave: t('leave') }} components={{ 1: <code key='join' />, 2: <code key='leave' /> }} />
@@ -302,15 +309,18 @@ const AccountSubplebbits = ({ viewRole }: { viewRole: string }) => {
     setError('AccountSubplebbits_useAccountSubplebbits', accountSubplebbitsError);
   }, [accountSubplebbitsError, setError, viewRole]);
 
-  const filteredSubplebbitsArray = useMemo(() => {
-    return Object.values(accountSubplebbits).filter((subplebbit: any) => {
+  const subplebbitElements = Object.values(accountSubplebbits)
+    .filter((subplebbit: any) => {
       const isUserOwner = subplebbit.settings !== undefined;
       const userRole = (subplebbit as any).roles?.[account?.author?.address]?.role;
       return isUserOwner || userRole === viewRole;
-    });
-  }, [accountSubplebbits, account, viewRole]);
+    })
+    .map((subplebbitData, index) => <Subplebbit key={index} subplebbit={subplebbitData} index={index} />);
 
-  return filteredSubplebbitsArray.map((subplebbit, index) => <Subplebbit key={index} subplebbit={subplebbit} index={index} />);
+  if (subplebbitElements.length === 0) {
+    return <NoCommunitiesMessage />;
+  }
+  return <>{subplebbitElements}</>;
 };
 
 const SubscriberSubplebbits = () => {
@@ -336,20 +346,31 @@ const SubscriberSubplebbits = () => {
     setError('SubscriberSubplebbits_useSubplebbits', subplebbitsError);
   }, [subplebbitsError, setError]);
 
-  return Object.values(subplebbits ?? {})
-    .map((subplebbit, index) =>
-      subplebbit ? (
-        <Subplebbit key={index} subplebbit={subplebbit} index={index} isUnsubscribed={isUnsubscribed(subplebbit.address)} onUnsubscribe={handleUnsubscribe} />
+  const subplebbitElements = Object.values(subplebbits ?? {})
+    .map((subplebbitData, index) =>
+      subplebbitData ? (
+        <Subplebbit
+          key={subplebbitData.address || index}
+          subplebbit={subplebbitData}
+          index={index}
+          isUnsubscribed={isUnsubscribed(subplebbitData.address)}
+          onUnsubscribe={handleUnsubscribe}
+        />
       ) : null,
     )
     .filter(Boolean);
+
+  if (subplebbitElements.length === 0) {
+    return <NoCommunitiesMessage />;
+  }
+  return <>{subplebbitElements}</>;
 };
 
 const AllDefaultSubplebbits = () => {
-  const defaultSubplebbits = useDefaultSubplebbits();
+  const defaultSubplebbitsList = useDefaultSubplebbits(); // Renamed to avoid conflict
   const subplebbitAddresses = useDefaultSubplebbitAddresses();
   const pathname = useLocation().pathname;
-  const validTags = useDefaultSubplebbitTags(defaultSubplebbits);
+  const validTags = useDefaultSubplebbitTags(defaultSubplebbitsList);
 
   const urlTag = pathname.includes('/tag/') ? pathname.split('/').pop() : undefined;
   const currentTag = urlTag && validTags.includes(urlTag) ? urlTag : undefined;
@@ -361,16 +382,22 @@ const AllDefaultSubplebbits = () => {
     setError('AllDefaultSubplebbits_useSubplebbits', subplebbitsError);
   }, [subplebbitsError, setError]);
 
-  const subplebbitsArray = useMemo(() => Object.values(subplebbits), [subplebbits]);
-
-  return subplebbitsArray
-    ?.map((subplebbit, index) => {
-      if (subplebbit === undefined) return null;
-      const tags = defaultSubplebbits.find((defaultSub) => defaultSub.address === subplebbit.address)?.tags;
-      if (currentTag && !tags?.includes(currentTag)) return null;
-      return <Subplebbit key={index} subplebbit={subplebbit} tags={tags} index={index} />;
+  const subplebbitElements = Object.values(subplebbits ?? {})
+    .filter((subplebbit): subplebbit is SubplebbitType => Boolean(subplebbit)) // Type guard
+    .filter((subplebbitData) => {
+      const tags = defaultSubplebbitsList.find((defaultSub) => defaultSub.address === subplebbitData.address)?.tags;
+      if (currentTag && !tags?.includes(currentTag)) return false;
+      return true;
     })
-    .filter(Boolean);
+    .map((subplebbitData, index) => {
+      const tags = defaultSubplebbitsList.find((defaultSub) => defaultSub.address === subplebbitData.address)?.tags;
+      return <Subplebbit key={subplebbitData.address || index} subplebbit={subplebbitData} tags={tags} index={index} />;
+    });
+
+  if (subplebbitElements.length === 0) {
+    return <NoCommunitiesMessage />;
+  }
+  return <>{subplebbitElements}</>;
 };
 
 const AllAccountSubplebbits = () => {
@@ -403,13 +430,24 @@ const AllAccountSubplebbits = () => {
     setError('AllAccountSubplebbits_useSubplebbits', subplebbitsError);
   }, [subplebbitsError, setError]);
 
-  return Object.values(subplebbits ?? {})
-    .map((subplebbit, index) =>
-      subplebbit ? (
-        <Subplebbit key={index} subplebbit={subplebbit} index={index} isUnsubscribed={isUnsubscribed(subplebbit.address)} onUnsubscribe={handleUnsubscribe} />
+  const subplebbitElements = Object.values(subplebbits ?? {})
+    .map((subplebbitData, index) =>
+      subplebbitData ? (
+        <Subplebbit
+          key={subplebbitData.address || index}
+          subplebbit={subplebbitData}
+          index={index}
+          isUnsubscribed={isUnsubscribed(subplebbitData.address)}
+          onUnsubscribe={handleUnsubscribe}
+        />
       ) : null,
     )
     .filter(Boolean);
+
+  if (subplebbitElements.length === 0) {
+    return <NoCommunitiesMessage />;
+  }
+  return <>{subplebbitElements}</>;
 };
 
 const Subplebbits = () => {
