@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react';
-import { createAccount, deleteAccount, exportAccount, importAccount, setActiveAccount, useAccount, useAccounts } from '@plebbit/plebbit-react-hooks';
+import { Link } from 'react-router-dom';
 import { Trans, useTranslation } from 'react-i18next';
+import { createAccount, deleteAccount, exportAccount, importAccount, setActiveAccount, useAccount, useAccounts } from '@plebbit/plebbit-react-hooks';
 import styles from './account-settings.module.css';
 
 const CreateAccountButton = () => {
@@ -160,6 +161,7 @@ const ExportAccountButton = () => {
 
 const AccountSettings = () => {
   const { t } = useTranslation();
+
   const account = useAccount();
   const { accounts } = useAccounts();
 
@@ -184,8 +186,8 @@ const AccountSettings = () => {
       <div className={styles.accountAddress}>
         <select value={account?.name} onChange={(e) => setActiveAccount(e.target.value)}>
           {accountsOptions}
-        </select>{' '}
-        {t('is_current_account')}
+        </select>
+        <Link to='/settings/account-data'>{t('edit')}</Link>
       </div>
       <div className={styles.createAccount}>
         <CreateAccountButton />

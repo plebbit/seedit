@@ -1,0 +1,29 @@
+.content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding-bottom: 60px;
+  padding: 5px;
+}
+
+.editor {
+  width: 100%;
+  border: 1px solid var(--gray-light);
+  border-radius: 5px;
+  font-family: monospace;
+  font-size: 14px;
+  box-shadow: var(--box-shadow-input);
+  overflow: auto;
+}
+
+.buttons {
+  margin-top: 20px;
+  font-size: 14px;
+  padding-left: 10px;
+  color: var(--text);
+}
+
+.buttons button {
+  font-size: 14px;
+  cursor: pointer;
+}

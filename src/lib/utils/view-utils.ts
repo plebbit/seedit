@@ -146,7 +146,7 @@ export const isProfileHiddenView = (pathname: string): boolean => {
 };
 
 export const isSettingsView = (pathname: string): boolean => {
-  return pathname === '/settings' || pathname === '/settings/plebbit-options' || pathname === '/settings/content-options';
+  return pathname === '/settings' || pathname === '/settings/plebbit-options' || pathname === '/settings/content-options' || pathname === '/settings/account-data';
 };
 
 export const isSettingsPlebbitOptionsView = (pathname: string): boolean => {
@@ -155,6 +155,10 @@ export const isSettingsPlebbitOptionsView = (pathname: string): boolean => {
 
 export const isSettingsContentOptionsView = (pathname: string): boolean => {
   return pathname === '/settings/content-options';
+};
+
+export const isSettingsAccountDataView = (pathname: string): boolean => {
+  return pathname === '/settings/account-data';
 };
 
 export const isSubmitView = (pathname: string): boolean => {

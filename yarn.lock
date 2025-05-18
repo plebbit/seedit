@@ -4972,6 +4972,11 @@ abort-error@^1.0.0, abort-error@^1.0.1:
   resolved "https://registry.yarnpkg.com/abort-error/-/abort-error-1.0.1.tgz#526c17caf2ac9eb1fab1ffdff18c5076157a324e"
   integrity sha512-fxqCblJiIPdSXIUrxI0PL+eJG49QdP9SQ70qtB65MVAoMr2rASlOyAbJFOylfB467F/f+5BCLJJq58RYi7mGfg==
 
+ace-builds@^1.36.3, ace-builds@^1.41.0:
+  version "1.41.0"
+  resolved "https://registry.yarnpkg.com/ace-builds/-/ace-builds-1.41.0.tgz#682db7c31624bd42d69be4e975075fb60751ca75"
+  integrity sha512-tiEUfw7V/FpHuI4tG7KS+muOTMIuPh6zReBAD2Uqhe9t00tLeyVGxjXu0tSqz5OIPWy7/wvuJBVXAsNWx0rYvQ==
+
 acme-client@^5.4.0:
   version "5.4.0"
   resolved "https://registry.yarnpkg.com/acme-client/-/acme-client-5.4.0.tgz#989e0625c3ff916d16fb7d7377035e80565aa635"
@@ -7127,6 +7132,11 @@ devlop@^1.0.0:
   integrity sha512-RWmIqhcFf1lRYBvNmr7qTNuyCt/7/ns2jbpp1+PalgE/rDQcBT0fioSMUpJ93irlUhC5hrg4cYqe6U+0ImW0rA==
   dependencies:
     dequal "^2.0.0"
+
+diff-match-patch@^1.0.5:
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/diff-match-patch/-/diff-match-patch-1.0.5.tgz#abb584d5f10cd1196dfc55aa03701592ae3f7b37"
+  integrity sha512-IayShXAgj/QMXgB0IWmKx+rOPuGMhqm5w6jvFxmVenXKIzRqTAAsbBPT3kWQeGANj3jGgvcvv4yK6SxqYmikgw==
 
 diff-sequences@^29.6.3:
   version "29.6.3"
@@ -10868,7 +10878,12 @@ lodash.debounce@^4.0.8:
   resolved "https://registry.yarnpkg.com/lodash.debounce/-/lodash.debounce-4.0.8.tgz#82d79bff30a67c4005ffd5e2515300ad9ca4d7af"
   integrity sha512-FT1yDzDYEoYWhnSGnpE/4Kj1fLZkDFyqRb7fNt6FdYOSxlUWAtp42Eh6Wb0rGIv/m9Bgo7x4GhQbm5Ys4SG5ow==
 
-lodash.isequal@4.5.0:
+lodash.get@^4.4.2:
+  version "4.4.2"
+  resolved "https://registry.yarnpkg.com/lodash.get/-/lodash.get-4.4.2.tgz#2d177f652fa31e939b4438d5341499dfa3825e99"
+  integrity sha512-z+Uw/vLuy6gQe8cfaFWD7p0wVv8fJl3mbzXh33RS+0oW2wvUqiRXiQ69gLWSLpgB5/6sU+r6BlQR0MBILadqTQ==
+
+lodash.isequal@4.5.0, lodash.isequal@^4.5.0:
   version "4.5.0"
   resolved "https://registry.yarnpkg.com/lodash.isequal/-/lodash.isequal-4.5.0.tgz#415c4478f2bcc30120c22ce10ed3226f7d3e18e0"
   integrity sha512-pDo3lu8Jhfjqls6GkMgpahsF9kCyayhgykjyLMNFTKWrpVdAQtYyB4muAMWozBB4ig/dtWAmsMxLEI8wuz+DYQ==
@@ -13045,6 +13060,17 @@ rc@^1.2.7:
     ini "~1.3.0"
     minimist "^1.2.0"
     strip-json-comments "~2.0.1"
+
+react-ace@^14.0.1:
+  version "14.0.1"
+  resolved "https://registry.yarnpkg.com/react-ace/-/react-ace-14.0.1.tgz#dba5761cee92a1e522be7e7dab7584df7e1aa1c7"
+  integrity sha512-z6YAZ20PNf/FqmYEic//G/UK6uw0rn21g58ASgHJHl9rfE4nITQLqthr9rHMVQK4ezwohJbp2dGrZpkq979PYQ==
+  dependencies:
+    ace-builds "^1.36.3"
+    diff-match-patch "^1.0.5"
+    lodash.get "^4.4.2"
+    lodash.isequal "^4.5.0"
+    prop-types "^15.8.1"
 
 react-dom@19.1.0:
   version "19.1.0"

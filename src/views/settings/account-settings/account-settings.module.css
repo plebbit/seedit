@@ -16,6 +16,18 @@
   padding-bottom: 10px;
 }
 
+.accountAddress a {
+  text-transform: lowercase;
+  cursor: pointer;
+  font-size: 10px;
+  color: var(--link-primary);
+  margin-left: 5px;
+}
+
+.accountAddress a:hover {
+  text-decoration: underline;
+}
+
 .categorySettings select {
   cursor: pointer;
 }
@@ -65,5 +77,9 @@
 }
 
 .deleteAccountBox {
+  padding-top: 10px;
+}
+
+.editAccountButton {
   padding-top: 10px;
 }
