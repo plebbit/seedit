@@ -1,18 +1,29 @@
-# [0.5.0](https://github.com/plebbit/seedit/compare/v0.4.0...v0.5.0) (2025-05-09)
+## [0.5.1](https://github.com/plebbit/seedit/compare/v0.5.0...v0.5.1) (2025-05-19)
 
 
 ### Bug Fixes
 
 * **account settings:** private key was visible in UI ([73fd0a5](https://github.com/plebbit/seedit/commit/73fd0a5329402178119c8af8259759b4f3ea710e))
+* auto-subscribe logic could fail to run on certain views ([72136bb](https://github.com/plebbit/seedit/commit/72136bbf131a72e770dcdbfcdd32454b5e0d1ae6))
 * **dark mode:** inputs and buttons didn't use the browser dark mode theme ([8acb9db](https://github.com/plebbit/seedit/commit/8acb9dbc27016c58cf3adfc07e19ac7015178c20))
+* **electron:** add CJS wrapper for after-all-artifact-build hook ([4ac3c02](https://github.com/plebbit/seedit/commit/4ac3c02dff00a52274f9aeef2630d269919f9279))
+* **electron:** client would assume the user is connected to full node ([2bc92cc](https://github.com/plebbit/seedit/commit/2bc92cc6f03bfeec08c0eb4b7e0c391c5c9dd312))
 * **feed:** thumbnails could get stuck when navigating ([35f0456](https://github.com/plebbit/seedit/commit/35f04569f26bdc97e8450ab01003c8103a847128))
 * **markdown:** blockquotes could appear behind thumbnail ([699e675](https://github.com/plebbit/seedit/commit/699e6751c9d30f0d914667043ac3d12902291dfe))
 * **markdown:** empty lines (using special md syntax) didn't render with same spacing as normal breaks ([51e225e](https://github.com/plebbit/seedit/commit/51e225e967e4d36420309e613d45e7b5a0ee5019))
+* **post:** some content could overflow ([195391b](https://github.com/plebbit/seedit/commit/195391b26a8f0d66b578e60fa6a5c97236de95d3))
 * **replies:** floated image thumbnails weren't clickable when wrapped by markdown content ([ffdceb2](https://github.com/plebbit/seedit/commit/ffdceb24f969b30114a02ef59d414900f211f142))
+* **replies:** thumbnail icons would disappear when clicked ([9cdf5bf](https://github.com/plebbit/seedit/commit/9cdf5bfbd4a46d96999cb22c1567a8b176d75b51))
+* **search bar:** dropdown item wasn't clickable on mobile, search bar wouldn't unfocus after searching ([0dd5a55](https://github.com/plebbit/seedit/commit/0dd5a559225db0a4d85485cbfc4deb8ea3d069bb))
 * **settings:** crypto wallets hashlink was missing ([d7845bd](https://github.com/plebbit/seedit/commit/d7845bd001d4b4b16f665046b28dff10c681badc))
+* **settings:** spellcheck was enabled on certain fields, fix wrong placeholder ([fda2449](https://github.com/plebbit/seedit/commit/fda24499cbd38da97a4905dfbca831d021b1db32))
 * **submit page:** preview of embeds had wrong width ([8082e6a](https://github.com/plebbit/seedit/commit/8082e6a4669980f3f6799ec7c36f6a5fb5fb32db))
+* **subplebbit settings:** navigating away from view could reset fields ([4948bcb](https://github.com/plebbit/seedit/commit/4948bcbbfdb3d7bf7b6a1449470c8902ed5a3dd8))
+* **subplebbit settings:** not owner alert could display for owners, missing state string, missing subplebbit error display ([a9e7d3b](https://github.com/plebbit/seedit/commit/a9e7d3bd35f37b5118b9d4452c6ef613424529b7))
 * **subplebbit:** could temporarily show "no posts" in subplebbit with 1 post just published by user ([d3b68bb](https://github.com/plebbit/seedit/commit/d3b68bbd26a5252901f43574c98ce66bb3bb866e))
 * **subplebbits list:** "my communities" list was numbered incorrectly ([961204a](https://github.com/plebbit/seedit/commit/961204a5133bc9f059f1242470e4e31e51d5501e))
+* **subscriptions list:** message was missing when no subs are found ([9219029](https://github.com/plebbit/seedit/commit/9219029ac2460a2ac33925f38d99d395de609ce7))
+* **subscriptions:** don't immediately remove sub from subscriptions page to let the user re-subscribe ([16b800e](https://github.com/plebbit/seedit/commit/16b800e9018a8bd9d9f7e31516ff330a04119a62))
 * **useFeed:** update filter option structure per API change ([020af7a](https://github.com/plebbit/seedit/commit/020af7abe7fd021622135f7033bdac09243126a8))
 
 
@@ -20,9 +31,13 @@
 
 * add better errors with button to display full error stack ([1856d99](https://github.com/plebbit/seedit/commit/1856d99a2136dcd2181874cbbcbffe8dcd2b34c1))
 * add push notifications to web browser, android app, desktop app ([f08a10a](https://github.com/plebbit/seedit/commit/f08a10a2b347d30076f310edd42ff3bf70fdbd75))
+* clicking error copies full error object to the clipboard ([63a5911](https://github.com/plebbit/seedit/commit/63a59115d061c476ee4a2b4c942ba7fcb01ee435))
+* **create subplebbit:** automatically set user's own address as owner ([7beb47e](https://github.com/plebbit/seedit/commit/7beb47e09486d2f27feb6c5081a03da28b2e32ea))
 * **markdown:** add headers ([8a86655](https://github.com/plebbit/seedit/commit/8a86655324872ae2479c504b2a1f0380811140e8))
 * **post page:** add error message from post in reply section ([bc8fb76](https://github.com/plebbit/seedit/commit/bc8fb76f7412e597b61e9c461d54f17db9f6d85f))
 * **search bar:** add autocomplete dropdown ([b62f699](https://github.com/plebbit/seedit/commit/b62f699d198d8a7df7937ab1fc62b28dabb3394f))
+* **search bar:** add default communities to autocomplete dropdown ([e8251ff](https://github.com/plebbit/seedit/commit/e8251ffd04928130a8b9d63c8c8bfef04c639363))
+* **settings:** add account data code editor page ([29c1470](https://github.com/plebbit/seedit/commit/29c147040781edcf875be61a0c27f7dd17f28ac0))
 * **settings:** add custom options for thumbnails, media previews, video player ([9742578](https://github.com/plebbit/seedit/commit/974257841b44f6fe4489c08f28dcb03c4cb7e16f))
 
 
