@@ -1,11 +1,11 @@
 import { useEffect, useMemo, useState, lazy, Suspense } from 'react';
 import { Trans, useTranslation } from 'react-i18next';
+import { useNavigate } from 'react-router-dom';
 import { setAccount, useAccount } from '@plebbit/plebbit-react-hooks';
 import useTheme from '../../../stores/use-theme-store';
 import stringify from 'json-stringify-pretty-compact';
 import styles from './account-data-editor.module.css';
 import useIsMobile from '../../../hooks/use-is-mobile';
-import { Link, useNavigate } from 'react-router-dom';
 
 const LazyAceEditor = lazy(async () => {
   const ReactAceModule = await import('react-ace');
