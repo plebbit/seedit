@@ -1,15 +1,11 @@
 import { contextBridge, ipcRenderer } from 'electron';
-import { fileURLToPath } from 'url';
-import path from 'path';
-
-const __filename = fileURLToPath(import.meta.url);
-const dirname = path.dirname(__filename);
 
 // dev uses http://localhost, prod uses file://...index.html
 const isDev = window.location.protocol === 'http:';
 
 const defaultPlebbitOptions = {
   plebbitRpcClientsOptions: ['ws://localhost:9138'],
+  httpRoutersOptions: ['https://peers.pleb.bot', 'https://routing.lol', 'https://peers.forumindex.com', 'https://peers.plebpubsub.xyz'],
 };
 
 contextBridge.exposeInMainWorld('isElectron', true);
@@ -40,4 +36,4 @@ contextBridge.exposeInMainWorld('electronApi', {
   getPlatform: () => ipcRenderer.invoke('get-platform'),
   testNotification: () => ipcRenderer.invoke('test-notification-permission'),
   showNotification: (notification) => ipcRenderer.send('show-notification', notification),
-});
+}); 

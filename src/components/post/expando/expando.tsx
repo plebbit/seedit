@@ -1,15 +1,13 @@
-import { useEffect, useState, lazy, Suspense } from 'react';
+import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { CommentMediaInfo } from '../../../lib/utils/media-utils';
 import useContentOptionsStore from '../../../stores/use-content-options-store';
 import { useIsNsfwSubplebbit } from '../../../hooks/use-is-nsfw-subplebbit';
-import styles from './expando.module.css';
 import Markdown from '../../markdown';
-import LoadingEllipsis from '../../loading-ellipsis';
+import Embed from '../embed';
+import styles from './expando.module.css';
 import _ from 'lodash';
-
-const Embed = lazy(() => import('../embed'));
 
 interface ExpandoProps {
   authorEditReason?: string;
@@ -76,29 +74,9 @@ const Expando = ({
   } else if (commentMediaInfo?.type === 'audio' && expanded) {
     mediaComponent = <audio src={commentMediaInfo.url} controls />;
   } else if (commentMediaInfo?.type === 'iframe' && expanded) {
-    mediaComponent = (
-      <Suspense
-        fallback={
-          <span className={styles.suspenseFallback}>
-            <LoadingEllipsis string={t('loading_iframe')} />
-          </span>
-        }
-      >
-        <Embed url={commentMediaInfo.url} />
-      </Suspense>
-    );
+    mediaComponent = <Embed url={commentMediaInfo.url} />;
   } else if (commentMediaInfo?.type === 'pdf' && expanded) {
-    mediaComponent = (
-      <Suspense
-        fallback={
-          <span className={styles.suspenseFallback}>
-            <LoadingEllipsis string={t('loading_iframe')} />
-          </span>
-        }
-      >
-        <Embed url={commentMediaInfo.url} />
-      </Suspense>
-    );
+    mediaComponent = <Embed url={commentMediaInfo.url} />;
   }
 
   const pageSubplebbitAddress = useParams().subplebbitAddress;
