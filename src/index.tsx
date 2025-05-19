@@ -10,7 +10,13 @@ import './preload-assets.css';
 import { App as CapacitorApp } from '@capacitor/app';
 import { registerSW } from 'virtual:pwa-register';
 
-registerSW({ immediate: true });
+const reloadSW = registerSW({
+  immediate: true,
+  onNeedRefresh() {
+    // Reload the page to load the new version
+    reloadSW(true);
+  },
+});
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 root.render(

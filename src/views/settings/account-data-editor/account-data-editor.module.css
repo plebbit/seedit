@@ -154,3 +154,10 @@
   color: var(--alert-color);
   text-decoration: none;
 }
+
+.loading {
+  font-size: 14px;
+  color: var(--text);
+  text-align: left;
+  margin: 10px 0 0 5px;
+}
