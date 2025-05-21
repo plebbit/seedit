@@ -127,6 +127,9 @@
     "vite-plugin-pwa": "0.21.1",
     "wait-on": "7.0.1"
   },
+  "resolutions": {
+    "@bonfida/spl-name-service": "3.0.0"
+  },
   "main": "electron/main.js",
   "build": {
     "appId": "seedit.desktop",
