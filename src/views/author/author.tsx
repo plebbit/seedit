@@ -89,10 +89,12 @@ const Author = () => {
   // only show backend errors if the user gets no data
   const [shouldShowErrorToUser, setShouldShowErrorToUser] = useState(false);
   useEffect(() => {
-    if (error?.message && virtuosoData?.length === 0 && hasMore) {
+    if (error?.message && virtuosoData?.length === 0) {
       setShouldShowErrorToUser(true);
+    } else if (virtuosoData?.length > 0) {
+      setShouldShowErrorToUser(false);
     }
-  }, [error, virtuosoData, hasMore]);
+  }, [error, virtuosoData]);
 
   return (
     <div className={styles.content}>

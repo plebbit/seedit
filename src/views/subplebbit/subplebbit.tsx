@@ -369,10 +369,12 @@ const Subplebbit = () => {
   // probably not necessary to show the error to the user if the feed loaded successfully
   const [shouldShowErrorToUser, setShouldShowErrorToUser] = useState(false);
   useEffect(() => {
-    if (error?.message && feed.length === 0 && hasMore) {
+    if (error?.message && feed.length === 0) {
       setShouldShowErrorToUser(true);
+    } else if (feed.length > 0) {
+      setShouldShowErrorToUser(false);
     }
-  }, [error, feed, hasMore]);
+  }, [error, feed]);
 
   return isBroadlyNsfwSubplebbit && !hasUnhiddenAnyNsfwCommunity ? (
     <Over18Warning />
