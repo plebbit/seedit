@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { StateSnapshot, Virtuoso, VirtuosoHandle } from 'react-virtuoso';
 import { useAccount, useNotifications } from '@plebbit/plebbit-react-hooks';
@@ -45,6 +45,7 @@ const Inbox = () => {
   const account = useAccount();
   const { unreadNotificationCount } = account || {};
   const { error, notifications, markAsRead } = useNotifications();
+  const [shouldShowErrorToUser, setShouldShowErrorToUser] = useState(false);
 
   const location = useLocation();
   const isInInboxCommentRepliesView = isInboxCommentRepliesView(location.pathname);
@@ -98,13 +99,11 @@ const Inbox = () => {
     document.title = documentTitle;
   }, [documentTitle]);
 
-  const prevErrorMessageRef = useRef<string | undefined>();
   useEffect(() => {
-    if (error && error.message !== prevErrorMessageRef.current) {
-      console.log(error);
-      prevErrorMessageRef.current = error.message;
+    if (error?.message && comments.length === 0) {
+      setShouldShowErrorToUser(true);
     }
-  }, [error]);
+  }, [error, comments]);
 
   return (
     <div className={styles.content}>
@@ -118,7 +117,7 @@ const Inbox = () => {
           <div className={styles.noNotifications}>{t('nothing_found')}</div>
         )}
       </div>
-      {error?.message && (
+      {shouldShowErrorToUser && (
         <div className={styles.error}>
           <ErrorDisplay error={error} />
         </div>

@@ -92,7 +92,7 @@ const download = async (url, destinationPath) => {
   }
   const split = url.split('/');
   const fileName = split[split.length - 1];
-  const dowloadPath = path.join(destinationPath, fileName);
+  const downloadPath = path.join(destinationPath, fileName);
   const file = await downloadWithRetry(url);
   fs.ensureDirSync(destinationPath);
   await fs.writeFile(binPath, file);
@@ -111,14 +111,14 @@ const downloadAndExtract = async (url, destinationPath) => {
   console.log(`Downloading IPFS client from ${url} to ${destinationPath}`);
   const split = url.split('/');
   const fileName = split[split.length - 1];
-  const dowloadPath = path.join(destinationPath, fileName);
+  const downloadPath = path.join(destinationPath, fileName);
   const file = await downloadWithRetry(url);
   fs.ensureDirSync(destinationPath);
-  await fs.writeFile(dowloadPath, file);
-  console.log(`Downloaded archive to ${dowloadPath}`);
-  console.log(`Extracting ${dowloadPath} to ${destinationPath}`);
+  await fs.writeFile(downloadPath, file);
+  console.log(`Downloaded archive to ${downloadPath}`);
+  console.log(`Extracting ${downloadPath} to ${destinationPath}`);
   try {
-    await decompress(dowloadPath, destinationPath);
+    await decompress(downloadPath, destinationPath);
     console.log('Decompression complete');
   } catch (err) {
     console.error('Error during decompression:', err);
@@ -130,8 +130,7 @@ const downloadAndExtract = async (url, destinationPath) => {
   fs.moveSync(extractedBinPath, binPath);
   console.log('Binary moved');
   console.log('Cleaning up temporary files');
-  fs.removeSync(extractedPath);
-  fs.removeSync(dowloadPath);
+  fs.removeSync(downloadPath);
   console.log('Cleanup complete');
 };
 

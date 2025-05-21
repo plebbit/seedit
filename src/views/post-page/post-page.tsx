@@ -297,6 +297,14 @@ const PostPage = () => {
     window.scrollTo(0, 0);
   }, []);
 
+  // probably not necessary to show the error to the user if the post loaded successfully
+  const [shouldShowErrorToUser, setShouldShowErrorToUser] = useState(false);
+  useEffect(() => {
+    if (post?.error && ((post?.replyCount > 0 && post?.replies?.length === 0) || (post?.state === 'failed' && post?.error))) {
+      setShouldShowErrorToUser(true);
+    }
+  }, [post]);
+
   return isBroadlyNsfwSubplebbit && !hasAcceptedWarning ? (
     <Over18Warning />
   ) : (
@@ -305,7 +313,7 @@ const PostPage = () => {
         <Sidebar subplebbit={subplebbit} comment={post} settings={subplebbit?.settings} />
       </div>
       {isInPendingPostView && params?.accountCommentIndex ? <Post post={pendingPost} /> : isInPostContextView ? <PostWithContext post={post} /> : <Post post={post} />}
-      {post?.error && (
+      {shouldShowErrorToUser && (
         <div className={styles.error}>
           <ErrorDisplay error={post.error} />
         </div>

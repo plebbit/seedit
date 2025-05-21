@@ -55,7 +55,7 @@ const AccountDataEditor = () => {
   if (!showEditor) {
     return (
       <div className={styles.securityWarning}>
-        <img src={`/assets/privacy_icon.png`} alt='security warning' />
+        <img src='assets/privacy_icon.png' alt='security warning' />
         <div className={styles.warning}>
           <h3>Your private key will be displayed</h3>
           <p>You're about to view your account data, which includes your private key. You should never share your private key with anyone.</p>
