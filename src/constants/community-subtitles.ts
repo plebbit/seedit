@@ -24,8 +24,12 @@ export const communitySubtitles = [
   '...decentralized, but for real.',
   '...for your peace of mind.',
   '...no corporation to answer to.',
-  '...for your peace of mind.',
   '...your tokenized sovereignty.',
   '...for text-only wonders.',
   '...because open source rulez.',
+  '...truly peer to peer.',
+  '...no hidden fees.',
+  '...no global rules.',
+  '...for Reddit’s downfall.',
+  '...Evil Corp™ can’t stop us.',
 ];
