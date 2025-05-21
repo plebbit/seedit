@@ -366,6 +366,14 @@ const Subplebbit = () => {
     document.title = title ? title : shortAddress || subplebbitAddress;
   }, [title, shortAddress, subplebbitAddress]);
 
+  // probably not necessary to show the error to the user if the feed loaded successfully
+  const [shouldShowErrorToUser, setShouldShowErrorToUser] = useState(false);
+  useEffect(() => {
+    if (error?.message && feed.length === 0 && hasMore) {
+      setShouldShowErrorToUser(true);
+    }
+  }, [error, feed, hasMore]);
+
   return isBroadlyNsfwSubplebbit && !hasUnhiddenAnyNsfwCommunity ? (
     <Over18Warning />
   ) : (
@@ -373,7 +381,7 @@ const Subplebbit = () => {
       <div className={styles.sidebar}>
         <Sidebar subplebbit={subplebbit} isSubCreatedButNotYetPublished={started && isSubCreatedButNotYetPublished} settings={settings} reset={reset} />
       </div>
-      {error?.message && (
+      {shouldShowErrorToUser && (
         <div className={styles.error}>
           <ErrorDisplay error={error} />
         </div>

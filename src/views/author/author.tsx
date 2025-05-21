@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import { useAuthorComments, useAuthor } from '@plebbit/plebbit-react-hooks';
@@ -86,12 +86,20 @@ const Author = () => {
     document.title = profileTitle + ' - Seedit';
   }, [t, profileTitle]);
 
+  // only show backend errors if the user gets no data
+  const [shouldShowErrorToUser, setShouldShowErrorToUser] = useState(false);
+  useEffect(() => {
+    if (error?.message && virtuosoData?.length === 0 && hasMore) {
+      setShouldShowErrorToUser(true);
+    }
+  }, [error, virtuosoData, hasMore]);
+
   return (
     <div className={styles.content}>
       <div className={isMobile ? styles.sidebarMobile : styles.sidebarDesktop}>
         <AuthorSidebar />
       </div>
-      {error?.message && (
+      {shouldShowErrorToUser && (
         <div className={styles.error}>
           <ErrorDisplay error={error} />
         </div>

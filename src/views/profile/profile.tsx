@@ -138,10 +138,17 @@ const Overview = () => {
   const { t } = useTranslation();
   const { error, accountComments } = useAccountComments();
   const [sortType, setSortType] = useState('new');
+  const [shouldShowErrorToUserOverview, setShouldShowErrorToUserOverview] = useState(false);
 
   const sortedComments = useMemo(() => {
     return [...accountComments].sort((a, b) => (sortType === 'new' ? b.timestamp - a.timestamp : a.timestamp - b.timestamp));
   }, [accountComments, sortType]);
+
+  useEffect(() => {
+    if (error?.message && sortedComments.length === 0) {
+      setShouldShowErrorToUserOverview(true);
+    }
+  }, [error, sortedComments]);
 
   const prevErrorMessageRef = useRef<string | undefined>();
   useEffect(() => {
@@ -153,7 +160,7 @@ const Overview = () => {
 
   return (
     <div>
-      {error?.message && (
+      {shouldShowErrorToUserOverview && (
         <div className={styles.error}>
           <ErrorDisplay error={error} />
         </div>
@@ -168,12 +175,19 @@ const Comments = () => {
   const { t } = useTranslation();
   const { error, accountComments } = useAccountComments();
   const [sortType, setSortType] = useState('new');
+  const [shouldShowErrorToUserComments, setShouldShowErrorToUserComments] = useState(false);
 
   const replyComments = useMemo(() => accountComments?.filter((comment) => comment.parentCid) || [], [accountComments]);
 
   const sortedComments = useMemo(() => {
     return [...replyComments].sort((a, b) => (sortType === 'new' ? b.timestamp - a.timestamp : a.timestamp - b.timestamp));
   }, [replyComments, sortType]);
+
+  useEffect(() => {
+    if (error?.message && sortedComments.length === 0) {
+      setShouldShowErrorToUserComments(true);
+    }
+  }, [error, sortedComments]);
 
   const prevErrorMessageRef = useRef<string | undefined>();
   useEffect(() => {
@@ -185,7 +199,7 @@ const Comments = () => {
 
   return (
     <div>
-      {error?.message && (
+      {shouldShowErrorToUserComments && (
         <div className={styles.error}>
           <ErrorDisplay error={error} />
         </div>
@@ -200,12 +214,19 @@ const Submitted = () => {
   const { t } = useTranslation();
   const { error, accountComments } = useAccountComments();
   const [sortType, setSortType] = useState('new');
+  const [shouldShowErrorToUserSubmitted, setShouldShowErrorToUserSubmitted] = useState(false);
 
   const postComments = useMemo(() => accountComments?.filter((comment) => !comment.parentCid) || [], [accountComments]);
 
   const sortedComments = useMemo(() => {
     return [...postComments].sort((a, b) => (sortType === 'new' ? b.timestamp - a.timestamp : a.timestamp - b.timestamp));
   }, [postComments, sortType]);
+
+  useEffect(() => {
+    if (error?.message && sortedComments.length === 0) {
+      setShouldShowErrorToUserSubmitted(true);
+    }
+  }, [error, sortedComments]);
 
   const prevErrorMessageRef = useRef<string | undefined>();
   useEffect(() => {
@@ -217,7 +238,7 @@ const Submitted = () => {
 
   return (
     <div>
-      {error?.message && (
+      {shouldShowErrorToUserSubmitted && (
         <div className={styles.error}>
           <ErrorDisplay error={error} />
         </div>
@@ -233,6 +254,7 @@ const VotedComments = ({ voteType }: { voteType: 1 | -1 }) => {
   const { error, accountVotes } = useAccountVotes();
   const [currentPage, setCurrentPage] = useState(1);
   const [sortType, setSortType] = useState('new');
+  const [shouldShowErrorToUserVoted, setShouldShowErrorToUserVoted] = useState(false);
 
   const votedCommentCids = useMemo(() => {
     const filteredVotes = accountVotes?.filter((vote) => vote.vote === voteType) || [];
@@ -242,6 +264,12 @@ const VotedComments = ({ voteType }: { voteType: 1 | -1 }) => {
 
   const paginatedCids = votedCommentCids.slice((currentPage - 1) * pageSize, currentPage * pageSize);
   const hasMore = currentPage * pageSize < votedCommentCids.length;
+
+  useEffect(() => {
+    if (error?.message && paginatedCids.length === 0 && hasMore) {
+      setShouldShowErrorToUserVoted(true);
+    }
+  }, [error, paginatedCids, hasMore]);
 
   const prevErrorMessageRef = useRef<string | undefined>();
   useEffect(() => {
@@ -253,7 +281,7 @@ const VotedComments = ({ voteType }: { voteType: 1 | -1 }) => {
 
   return (
     <div>
-      {error?.message && (
+      {shouldShowErrorToUserVoted && (
         <div className={styles.error}>
           <ErrorDisplay error={error} />
         </div>
