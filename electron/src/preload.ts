@@ -25,7 +25,7 @@ contextBridge.exposeInMainWorld('electron', {
   },
 });
 
-// Expose a dedicated "electronApi" for your UI code
+// Expose a dedicated "electronApi" for UI code
 contextBridge.exposeInMainWorld('electronApi', {
   isElectron: true,
   invoke: (channel: string, ...args: any[]) => ipcRenderer.invoke(channel, ...args),
