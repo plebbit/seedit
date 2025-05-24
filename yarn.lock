@@ -1303,9 +1303,9 @@
   optionalDependencies:
     global-agent "^3.0.0"
 
-"@electron/node-gyp@git+https://github.com/electron/node-gyp.git#06b29aafb7708acef8b3669835c8a7857ebc92d2":
+"@electron/node-gyp@https://github.com/electron/node-gyp#06b29aafb7708acef8b3669835c8a7857ebc92d2":
   version "10.2.0-electron.1"
-  resolved "git+https://github.com/electron/node-gyp.git#06b29aafb7708acef8b3669835c8a7857ebc92d2"
+  resolved "https://github.com/electron/node-gyp#06b29aafb7708acef8b3669835c8a7857ebc92d2"
   dependencies:
     env-paths "^2.2.0"
     exponential-backoff "^3.1.1"
@@ -8692,6 +8692,13 @@ getopts@2.3.0:
   resolved "https://registry.yarnpkg.com/getopts/-/getopts-2.3.0.tgz#71e5593284807e03e2427449d4f6712a268666f4"
   integrity sha512-5eDf9fuSXwxBL6q5HX+dhDj+dslFGWzU5thZ9kNKUkcPtaPdatmUFKwHFrLb/uf/WpA4BHET+AX3Scl56cAjpA==
 
+gifuct-js@^2.1.2:
+  version "2.1.2"
+  resolved "https://registry.yarnpkg.com/gifuct-js/-/gifuct-js-2.1.2.tgz#06152437ba30ec914db8398bd838bd0fbc8a6ecd"
+  integrity sha512-rI2asw77u0mGgwhV3qA+OEgYqaDn5UNqgs+Bx0FGwSpuqfYn+Ir6RQY5ENNQ8SbIiG/m5gVa7CD5RriO4f4Lsg==
+  dependencies:
+    js-binary-schema-parser "^2.0.3"
+
 git-raw-commits@^4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/git-raw-commits/-/git-raw-commits-4.0.0.tgz#b212fd2bff9726d27c1283a1157e829490593285"
@@ -10466,6 +10473,11 @@ js-base64@^3.6.0:
   version "3.7.7"
   resolved "https://registry.yarnpkg.com/js-base64/-/js-base64-3.7.7.tgz#e51b84bf78fbf5702b9541e2cb7bfcb893b43e79"
   integrity sha512-7rCnleh0z2CkXhH67J8K1Ytz0b2Y+yxTPL+/KOJoa20hfnVQ/3/T6W/KflYI4bRHRagNeXeU2bkNGI3v1oS/lw==
+
+js-binary-schema-parser@^2.0.3:
+  version "2.0.3"
+  resolved "https://registry.yarnpkg.com/js-binary-schema-parser/-/js-binary-schema-parser-2.0.3.tgz#3d7848748e8586e63b34e8911b643f59cfb6396e"
+  integrity sha512-xezGJmOb4lk/M1ZZLTR/jaBHQ4gG/lqQnJqdIv4721DMggsa1bDVlHXNeHYogaIEHD9vCRv0fcL4hMA+Coarkg==
 
 js-sha256@0.11.0:
   version "0.11.0"

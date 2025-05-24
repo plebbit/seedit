@@ -26,6 +26,7 @@
     "ext-name": "5.0.0",
     "form-data": "4.0.2",
     "fs-extra": "11.2.0",
+    "gifuct-js": "2.1.2",
     "http-proxy": "1.18.1",
     "i18next": "23.5.1",
     "i18next-browser-languagedetector": "7.1.0",
