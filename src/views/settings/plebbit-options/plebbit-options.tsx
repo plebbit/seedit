@@ -50,7 +50,7 @@ const PubsubProvidersSettings = ({ pubsubProvidersRef }: SettingsProps) => {
   const { plebbitOptions } = account || {};
   const { pubsubHttpClientsOptions } = plebbitOptions || {};
   const plebbitRpc = usePlebbitRpcSettings();
-  const isConnectedToRpc = plebbitRpc?.state === 'succeeded';
+  const isConnectedToRpc = plebbitRpc?.state === 'connected';
   const pubsubProvidersDefaultValue = pubsubHttpClientsOptions?.join('\n');
 
   return (
@@ -166,7 +166,7 @@ const PlebbitRPCSettings = ({ plebbitRpcRef }: SettingsProps) => {
 const PlebbitDataPathSettings = ({ plebbitDataPathRef }: SettingsProps) => {
   const plebbitRpc = usePlebbitRpcSettings();
   const { plebbitRpcSettings } = plebbitRpc || {};
-  const isConnectedToRpc = plebbitRpc?.state === 'succeeded';
+  const isConnectedToRpc = plebbitRpc?.state === 'connected';
   const path = plebbitRpcSettings?.plebbitOptions?.dataPath || '';
 
   return (

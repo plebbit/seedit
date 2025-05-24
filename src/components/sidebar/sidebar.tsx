@@ -250,7 +250,7 @@ const Sidebar = ({ comment, isSubCreatedButNotYetPublished, settings, subplebbit
     }
   }, []); // Empty dependency array ensures this runs only once on mount
 
-  const isConnectedToRpc = usePlebbitRpcSettings()?.state === 'succeeded';
+  const isConnectedToRpc = usePlebbitRpcSettings()?.state === 'connected';
   const navigate = useNavigate();
   const handleCreateCommunity = () => {
     // creating a community only works if the user is running a full node
