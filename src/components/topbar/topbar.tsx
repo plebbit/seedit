@@ -5,10 +5,11 @@ import { useAccount, useAccountSubplebbits } from '@plebbit/plebbit-react-hooks'
 import Plebbit from '@plebbit/plebbit-js';
 import { isAllView, isDomainView, isHomeView, isModView, isSubplebbitView } from '../../lib/utils/view-utils';
 import useContentOptionsStore from '../../stores/use-content-options-store';
-import { useDefaultSubplebbitAddresses } from '../../hooks/use-default-subplebbits';
+import { useDefaultSubplebbitAddresses, useDefaultSubplebbits } from '../../hooks/use-default-subplebbits';
 import useTimeFilter, { setSessionTimeFilterPreference } from '../../hooks/use-time-filter';
 import { sortTypes } from '../../constants/sort-types';
 import { sortLabels } from '../../constants/sort-labels';
+import { handleNSFWSubscriptionPrompt } from '../../lib/utils/nsfw-subscription-utils';
 import styles from './topbar.module.css';
 
 const CommunitiesDropdown = () => {
@@ -54,6 +55,8 @@ const CommunitiesDropdown = () => {
 
 const TagFilterDropdown = () => {
   const { t } = useTranslation();
+  const account = useAccount();
+  const defaultSubplebbits = useDefaultSubplebbits();
   const {
     hideAdultCommunities,
     hideGoreCommunities,
@@ -80,18 +83,38 @@ const TagFilterDropdown = () => {
 
   const allHidden = hideAdultCommunities && hideGoreCommunities && hideAntiCommunities && hideVulgarCommunities;
 
-  const handleToggleAll = (event: React.MouseEvent) => {
+  const handleToggleAll = async (event: React.MouseEvent) => {
     event.stopPropagation();
     const newState = !allHidden;
+
+    if (!newState) {
+      await handleNSFWSubscriptionPrompt({
+        account,
+        defaultSubplebbits,
+        tagsToShow: ['adult', 'gore', 'anti', 'vulgar'],
+        isShowingAll: true,
+      });
+    }
+
     setHideAdultCommunities(newState);
     setHideGoreCommunities(newState);
     setHideAntiCommunities(newState);
     setHideVulgarCommunities(newState);
   };
 
-  const handleToggleTag = (event: React.MouseEvent, setter: (hide: boolean) => void, currentState: boolean) => {
+  const handleToggleTag = async (event: React.MouseEvent, setter: (hide: boolean) => void, currentState: boolean, tagName: string) => {
     event.stopPropagation();
-    setter(!currentState);
+    const newState = !currentState;
+
+    if (!newState) {
+      await handleNSFWSubscriptionPrompt({
+        account,
+        defaultSubplebbits,
+        tagsToShow: [tagName],
+      });
+    }
+
+    setter(newState);
   };
 
   useEffect(() => {
@@ -115,7 +138,7 @@ const TagFilterDropdown = () => {
           <span className={styles.dropdownItemText}>{allHidden ? 'show all nsfw' : 'hide all nsfw'}</span>
         </div>
         {tags.map((tag, index) => (
-          <div key={index} className={styles.dropdownItem} onClick={(e) => handleToggleTag(e, tag.setter, tag.isHidden)} style={{ cursor: 'pointer' }}>
+          <div key={index} className={styles.dropdownItem} onClick={(e) => handleToggleTag(e, tag.setter, tag.isHidden, tag.name)} style={{ cursor: 'pointer' }}>
             <span className={styles.dropdownItemText}>
               {tag.isHidden ? 'show' : 'hide'} <i>{tag.name}</i>
             </span>

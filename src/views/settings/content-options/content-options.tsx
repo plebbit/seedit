@@ -1,6 +1,9 @@
 import { useTranslation } from 'react-i18next';
+import { useAccount } from '@plebbit/plebbit-react-hooks';
 import styles from './content-options.module.css';
 import useContentOptionsStore from '../../../stores/use-content-options-store';
+import { useDefaultSubplebbits } from '../../../hooks/use-default-subplebbits';
+import { handleNSFWSubscriptionPrompt } from '../../../lib/utils/nsfw-subscription-utils';
 
 const MediaOptions = () => {
   const { t } = useTranslation();
@@ -134,6 +137,8 @@ const MediaOptions = () => {
 
 const CommunitiesOptions = () => {
   const { t } = useTranslation();
+  const account = useAccount();
+  const defaultSubplebbits = useDefaultSubplebbits();
   const {
     hideAdultCommunities,
     hideGoreCommunities,
@@ -163,8 +168,19 @@ const CommunitiesOptions = () => {
               el.indeterminate = someHidden && !allHidden;
             }
           }}
-          onChange={(e) => {
+          onChange={async (e) => {
             const newValue = e.target.checked;
+
+            // If showing (newValue = false), handle subscription prompt
+            if (!newValue) {
+              await handleNSFWSubscriptionPrompt({
+                account,
+                defaultSubplebbits,
+                tagsToShow: ['adult', 'gore', 'anti', 'vulgar'],
+                isShowingAll: true,
+              });
+            }
+
             setHideAdultCommunities(newValue);
             setHideGoreCommunities(newValue);
             setHideAntiCommunities(newValue);
@@ -178,8 +194,19 @@ const CommunitiesOptions = () => {
           <input
             type='checkbox'
             checked={hideAdultCommunities}
-            onChange={(e) => {
-              setHideAdultCommunities(e.target.checked);
+            onChange={async (e) => {
+              const newValue = e.target.checked;
+
+              // If showing (newValue = false), handle subscription prompt
+              if (!newValue) {
+                await handleNSFWSubscriptionPrompt({
+                  account,
+                  defaultSubplebbits,
+                  tagsToShow: ['adult'],
+                });
+              }
+
+              setHideAdultCommunities(newValue);
             }}
           />
           {t('tagged_as_adult')}
@@ -190,8 +217,19 @@ const CommunitiesOptions = () => {
           <input
             type='checkbox'
             checked={hideGoreCommunities}
-            onChange={(e) => {
-              setHideGoreCommunities(e.target.checked);
+            onChange={async (e) => {
+              const newValue = e.target.checked;
+
+              // If showing (newValue = false), handle subscription prompt
+              if (!newValue) {
+                await handleNSFWSubscriptionPrompt({
+                  account,
+                  defaultSubplebbits,
+                  tagsToShow: ['gore'],
+                });
+              }
+
+              setHideGoreCommunities(newValue);
             }}
           />
           {t('tagged_as_gore')}
@@ -202,8 +240,19 @@ const CommunitiesOptions = () => {
           <input
             type='checkbox'
             checked={hideAntiCommunities}
-            onChange={(e) => {
-              setHideAntiCommunities(e.target.checked);
+            onChange={async (e) => {
+              const newValue = e.target.checked;
+
+              // If showing (newValue = false), handle subscription prompt
+              if (!newValue) {
+                await handleNSFWSubscriptionPrompt({
+                  account,
+                  defaultSubplebbits,
+                  tagsToShow: ['anti'],
+                });
+              }
+
+              setHideAntiCommunities(newValue);
             }}
           />
           {t('tagged_as_anti')}
@@ -214,8 +263,19 @@ const CommunitiesOptions = () => {
           <input
             type='checkbox'
             checked={hideVulgarCommunities}
-            onChange={(e) => {
-              setHideVulgarCommunities(e.target.checked);
+            onChange={async (e) => {
+              const newValue = e.target.checked;
+
+              // If showing (newValue = false), handle subscription prompt
+              if (!newValue) {
+                await handleNSFWSubscriptionPrompt({
+                  account,
+                  defaultSubplebbits,
+                  tagsToShow: ['vulgar'],
+                });
+              }
+
+              setHideVulgarCommunities(newValue);
             }}
           />
           {t('tagged_as_vulgar')}
