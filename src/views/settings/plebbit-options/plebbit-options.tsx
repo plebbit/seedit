@@ -21,7 +21,7 @@ const IPFSGatewaysSettings = ({ ipfsGatewayUrlsRef, mediaIpfsGatewayUrlRef }: Se
   const account = useAccount();
   const { plebbitOptions, mediaIpfsGatewayUrl } = account || {};
   const { ipfsGatewayUrls } = plebbitOptions || {};
-  const isConnectedToRpc = usePlebbitRpcSettings()?.state === 'succeeded';
+  const isConnectedToRpc = usePlebbitRpcSettings()?.state === 'connected';
   const ipfsGatewayUrlsDefaultValue = ipfsGatewayUrls?.join('\n');
 
   return (
