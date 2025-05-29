@@ -118,7 +118,6 @@ const App = () => {
             <Route path='/communities/vote' element={<Subplebbits />} />
             <Route path='/communities/vote/passing' element={<Subplebbits />} />
             <Route path='/communities/vote/rejecting' element={<Subplebbits />} />
-            <Route path='/communities/vote/tag/:tag' element={<Subplebbits />} />
             <Route path='/communities/create' element={<SubplebbitSettings />} />
           </Route>
           <Route element={feedLayout}>

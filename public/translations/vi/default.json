@@ -390,5 +390,6 @@
   "drop_here_or": "Thả ở đây hoặc",
   "upload_button_warning": "Tải lên tự động bị chặn bởi chính sách CORS của trình duyệt của bạn, nhưng có sẵn trên ứng dụng Seedit Android và ứng dụng desktop (Win/Mac/Linux).\n\nĐi đến trang liên kết tải xuống trên GitHub?",
   "create_community_warning": "Tạo cộng đồng yêu cầu chạy một node đầy đủ. Ứng dụng Seedit desktop (Win/Mac/Linux) tự động chạy một node đầy đủ.\n\nĐi đến trang liên kết tải xuống trên GitHub?",
-  "avatars": "Ảnh đại diện"
+  "avatars": "Ảnh đại diện",
+  "filtering_by_nsfw": "Lọc theo cộng đồng NSFW"
 }

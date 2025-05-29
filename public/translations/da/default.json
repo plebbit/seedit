@@ -390,5 +390,6 @@
   "drop_here_or": "Drop her eller",
   "upload_button_warning": "Auto-uploading er blokeret af din browsers CORS-politik, men det er tilgængeligt på Seedit Android-appen og desktopappen (Win/Mac/Linux).\n\nGå til downloadlinks-siden på GitHub?",
   "create_community_warning": "Oprettelse af et fællesskab kræver, at du kører en fuld node. Seedit desktop-appen (Win/Mac/Linux) kører automatisk en fuld node.\n\nGå til downloadlinks-siden på GitHub?",
-  "avatars": "Avatarer"
+  "avatars": "Avatarer",
+  "filtering_by_nsfw": "Filtrering efter NSFW-fællesskaber"
 }

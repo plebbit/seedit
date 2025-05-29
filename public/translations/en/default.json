@@ -390,5 +390,6 @@
   "drop_here_or": "Drop here or",
   "upload_button_warning": "Auto-uploading is blocked by your browser's CORS policy, but it is available on the Seedit Android app and desktop app (Win/Mac/Linux).\n\nGo to the download links page on GitHub?",
   "create_community_warning": "Creating a community requires running a full node. The Seedit desktop app (Win/Mac/Linux) runs a full node automatically.\n\nGo to the download links page on GitHub?",
-  "avatars": "Avatars"
+  "avatars": "Avatars",
+  "filtering_by_nsfw": "Filtering by NSFW communities"
 }

@@ -390,5 +390,6 @@
   "drop_here_or": "Upuść tutaj lub",
   "upload_button_warning": "Automatyczne przesyłanie jest blokowane przez politykę CORS w twojej przeglądarce, ale jest dostępne w aplikacji Seedit na Androida oraz w aplikacji desktopowej (Win/Mac/Linux).\n\nPrzejdź do strony linków do pobrania na GitHubie?",
   "create_community_warning": "Tworzenie społeczności wymaga uruchomienia pełnego węzła. Aplikacja Seedit desktop (Win/Mac/Linux) automatycznie uruchamia pełny węzeł.\n\nPrzejdź do strony linków do pobrania na GitHubie?",
-  "avatars": "Awatary"
+  "avatars": "Awatary",
+  "filtering_by_nsfw": "Filtrowanie według społeczności NSFW"
 }

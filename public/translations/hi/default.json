@@ -390,5 +390,6 @@
   "drop_here_or": "यहां छोड़ें या",
   "upload_button_warning": "ऑटो-अपलोड आपके ब्राउज़र की CORS नीति द्वारा अवरुद्ध है, लेकिन यह Seedit Android ऐप और डेस्कटॉप ऐप (Win/Mac/Linux) पर उपलब्ध है।\n\nGitHub पर डाउनलोड लिंक पृष्ठ पर जाएं?",
   "create_community_warning": "एक समुदाय बनाने के लिए एक पूर्ण नोड चलाना आवश्यक है। Seedit डेस्कटॉप ऐप (Win/Mac/Linux) स्वचालित रूप से एक पूर्ण नोड चलाता है।\n\nGitHub पर डाउनलोड लिंक पृष्ठ पर जाएं?",
-  "avatars": "अवतार"
+  "avatars": "अवतार",
+  "filtering_by_nsfw": "NSFW समुदायों द्वारा फ़िल्टरिंग"
 }

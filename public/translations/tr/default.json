@@ -390,5 +390,6 @@
   "drop_here_or": "Burası veya bırak",
   "upload_button_warning": "Otomatik yükleme, tarayıcınızın CORS politikası nedeniyle engelleniyor, ancak Seedit Android uygulaması ve masaüstü uygulamasında (Win/Mac/Linux) mevcuttur.\n\nGitHub'daki indirme bağlantıları sayfasına gidin?",
   "create_community_warning": "Bir topluluk oluşturmak, tam bir düğüm çalıştırmayı gerektirir. Seedit masaüstü uygulaması (Win/Mac/Linux) otomatik olarak tam bir düğüm çalıştırır.\n\nGitHub'daki indirme bağlantıları sayfasına gidin?",
-  "avatars": "Avatarlar"
+  "avatars": "Avatarlar",
+  "filtering_by_nsfw": "NSFW topluluklarına göre filtreleme"
 }

@@ -390,5 +390,6 @@
   "drop_here_or": "Suelta aquí o",
   "upload_button_warning": "La carga automática está bloqueada por la política CORS de su navegador, pero está disponible en la aplicación Seedit para Android y en la aplicación de escritorio (Win/Mac/Linux).\n\n¿Vaya a la página de enlaces de descarga en GitHub?",
   "create_community_warning": "Crear una comunidad requiere ejecutar un nodo completo. La aplicación de escritorio Seedit (Win/Mac/Linux) ejecuta automáticamente un nodo completo.\n\n¿Vaya a la página de enlaces de descarga en GitHub?",
-  "avatars": "Avatares"
+  "avatars": "Avatares",
+  "filtering_by_nsfw": "Filtrando por comunidades NSFW"
 }

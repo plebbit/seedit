@@ -390,5 +390,6 @@
   "drop_here_or": "Hidh këtu ose",
   "upload_button_warning": "Ngarkohet automatikisht është bllokuar nga politika CORS e shfletuesit tuaj, por është në dispozicion në aplikacionin Seedit për Android dhe aplikacionin desktop (Win/Mac/Linux).\n\nShkoni te faqja e lidhjeve për shkarkimin në GitHub?",
   "create_community_warning": "Krijimi i një komuniteti kërkon ekzekutimin e një nyjeje të plotë. Aplikacioni Seedit për desktop (Win/Mac/Linux) ekzekuton automatikisht një nyje të plotë.\n\nShkoni te faqja e lidhjeve për shkarkimin në GitHub?",
-  "avatars": "Avataret"
+  "avatars": "Avataret",
+  "filtering_by_nsfw": "Filtrimi sipas grupeve NSFW"
 }

@@ -15,6 +15,7 @@ export interface MultisubSubplebbit {
   tags?: string[];
   features?: string[];
   seeditAutoSubscribe?: boolean;
+  plebchanAutoSubscribe?: boolean;
   lowUptime?: boolean;
 }
 

@@ -390,5 +390,6 @@
   "drop_here_or": "Déposez ici ou",
   "upload_button_warning": "Le téléchargement automatique est bloqué par la politique CORS de votre navigateur, mais il est disponible sur l'application Seedit Android et l'application de bureau (Win/Mac/Linux).\n\nAllez à la page des liens de téléchargement sur GitHub?",
   "create_community_warning": "Créer une communauté nécessite l'exécution d'un nœud complet. L'application Seedit pour bureau (Win/Mac/Linux) exécute automatiquement un nœud complet.\n\nAllez à la page des liens de téléchargement sur GitHub?",
-  "avatars": "Avatars"
+  "avatars": "Avatars",
+  "filtering_by_nsfw": "Filtrage par communautés NSFW"
 }

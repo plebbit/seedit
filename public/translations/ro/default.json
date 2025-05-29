@@ -390,5 +390,6 @@
   "drop_here_or": "Aruncați aici sau",
   "upload_button_warning": "Încărcarea automată este blocată de politica CORS a browser-ului tău, dar este disponibilă în aplicația Seedit pentru Android și aplicațiile desktop (Win/Mac/Linux).\n\nMergi la pagina cu linkuri de descărcare pe GitHub?",
   "create_community_warning": "Crearea unei comunități necesită rularea unui nod complet. Aplicația Seedit pentru desktop (Win/Mac/Linux) rulează automat un nod complet.\n\nMergi la pagina cu linkuri de descărcare pe GitHub?",
-  "avatars": "Avatare"
+  "avatars": "Avatare",
+  "filtering_by_nsfw": "Filtrare după comunități NSFW"
 }

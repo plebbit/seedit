@@ -390,5 +390,6 @@
   "drop_here_or": "Přetáhněte sem nebo",
   "upload_button_warning": "Automatické nahrávání je blokováno politikou CORS vašeho prohlížeče, ale je k dispozici v aplikaci Seedit pro Android a desktopovou aplikaci (Win/Mac/Linux).\n\nPřejděte na stránku odkazů ke stažení na GitHubu?",
   "create_community_warning": "Vytvoření komunity vyžaduje spuštění plného uzlu. Aplikace Seedit pro desktop (Win/Mac/Linux) automaticky spouští plný uzel.\n\nPřejděte na stránku odkazů ke stažení na GitHubu?",
-  "avatars": "Avatar"
+  "avatars": "Avatar",
+  "filtering_by_nsfw": "Filtrování podle komunit NSFW"
 }

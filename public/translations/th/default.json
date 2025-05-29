@@ -390,5 +390,6 @@
   "drop_here_or": "วางที่นี่หรือ",
   "upload_button_warning": "การอัปโหลดอัตโนมัติถูกบล็อกโดยนโยบาย CORS ของเบราว์เซอร์ของคุณ แต่สามารถใช้ได้ในแอป Seedit สำหรับ Android และแอปเดสก์ท็อป (Win/Mac/Linux)\n\nไปที่หน้าลิงก์ดาวน์โหลดบน GitHub?",
   "create_community_warning": "การสร้างชุมชนต้องการการรันโหนดเต็ม Seedit desktop app (Win/Mac/Linux) รันโหนดเต็มโดยอัตโนมัติ\n\nไปที่หน้าลิงก์ดาวน์โหลดบน GitHub?",
-  "avatars": "อวาตาร์"
+  "avatars": "อวาตาร์",
+  "filtering_by_nsfw": "การกรองโดยชุมชน NSFW"
 }

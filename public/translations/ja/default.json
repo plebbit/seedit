@@ -390,5 +390,6 @@
   "drop_here_or": "ここにドロップまたは",
   "upload_button_warning": "自動アップロードはブラウザのCORSポリシーでブロックされていますが、SeeditのAndroidアプリおよびデスクトップアプリ（Win/Mac/Linux）では利用可能です。\n\nGitHubのダウンロードリンクページに移動しますか？",
   "create_community_warning": "コミュニティを作成するには、フルノードを実行する必要があります。Seeditのデスクトップアプリ（Win/Mac/Linux）は自動的にフルノードを実行します。\n\nGitHubのダウンロードリンクページに移動しますか？",
-  "avatars": "アバター"
+  "avatars": "アバター",
+  "filtering_by_nsfw": "NSFW コミュニティによるフィルタリング"
 }
