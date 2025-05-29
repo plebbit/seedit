@@ -1,9 +1,11 @@
 import { useCallback, useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { requestNotificationPermission, showLocalNotification } from '../../../lib/push';
-import styles from './notifications-settings.module.css';
 import useContentOptionsStore from '../../../stores/use-content-options-store';
+import styles from './notifications-settings.module.css';
 
 const NotificationsSettings = () => {
+  const { t } = useTranslation();
   const { enableLocalNotifications, setEnableLocalNotifications } = useContentOptionsStore();
   const [permissionStatus, setPermissionStatus] = useState<string | null>(null);
   const [platform, setPlatform] = useState<NodeJS.Platform | null>(null);
@@ -150,7 +152,7 @@ const NotificationsSettings = () => {
           onChange={handleCheckboxChange}
           disabled={isLoading || permissionStatus === 'requesting...' || permissionStatus === 'not-supported'}
         />
-        <label htmlFor='enableLocalNotifications'>new replies received</label>
+        <label htmlFor='enableLocalNotifications'>{t('new_replies_received')}</label>
 
         {/* Not supported message */}
         {permissionStatus === 'not-supported' && (

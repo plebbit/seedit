@@ -28,13 +28,13 @@ const MediaOptions = () => {
       <div>
         <label>
           <input type='radio' name='thumbnailOption' value='show' checked={thumbnailDisplayOption === 'show'} onChange={() => setThumbnailDisplayOption('show')} />
-          Show thumbnails next to links
+          {t('show_thumbnails_next_to_links')}
         </label>
       </div>
       <div>
         <label>
           <input type='radio' name='thumbnailOption' value='hide' checked={thumbnailDisplayOption === 'hide'} onChange={() => setThumbnailDisplayOption('hide')} />
-          Don't show thumbnails next to links
+          {t('dont_show_thumbnails_next_to_links')}
         </label>
       </div>
       <div>
@@ -53,11 +53,11 @@ const MediaOptions = () => {
             onChange={() => setThumbnailDisplayOption('community')}
             disabled
           />
-          Show thumbnails based on that community's media preferences
+          {t('show_thumbnails_based_on_community_media_preferences')}
         </label>
       </div>
       <br />
-      <div className={styles.contentOptionTitle}>media previews</div>
+      <div className={styles.contentOptionTitle}>{t('media_previews')}</div>
       <div>
         <label>
           <input
@@ -67,7 +67,7 @@ const MediaOptions = () => {
             checked={mediaPreviewOption === 'autoExpandAll'}
             onChange={() => setMediaPreviewOption('autoExpandAll')}
           />
-          Auto-expand media previews
+          {t('auto_expand_media_previews')}
         </label>
       </div>
       <div>
@@ -79,7 +79,7 @@ const MediaOptions = () => {
             checked={mediaPreviewOption === 'autoExpandExceptComments'}
             onChange={() => setMediaPreviewOption('autoExpandExceptComments')}
           />
-          Don't auto-expand media previews on comments pages
+          {t('dont_auto_expand_media_previews_on_comments_pages')}
         </label>
       </div>
       <div>
@@ -98,21 +98,21 @@ const MediaOptions = () => {
             onChange={() => setMediaPreviewOption('community')}
             disabled
           />
-          Expand media previews based on that community's media preferences
+          {t('expand_media_previews_based_on_community_media_preferences')}
         </label>
       </div>
       <br />
-      <div className={styles.contentOptionTitle}>Video Player</div>
+      <div className={styles.contentOptionTitle}>{t('video_player')}</div>
       <div>
         <label>
           <input type='checkbox' checked={autoplayVideosOnComments} onChange={(e) => setAutoplayVideosOnComments(e.target.checked)} />
-          Autoplay videos on the comments page
+          {t('autoplay_videos_on_comments_page')}
         </label>
       </div>
       <div>
         <label>
           <input type='checkbox' checked={muteVideosOnComments} onChange={(e) => setMuteVideosOnComments(e.target.checked)} />
-          Mute videos by default
+          {t('mute_videos_by_default')}
         </label>
       </div>
       <br />

@@ -135,12 +135,12 @@ const TagFilterDropdown = () => {
       <span className={styles.selectedTitle}>{t('tags')}</span>
       <div className={`${styles.dropChoices} ${styles.filterDropChoices} ${tagFilterDropdownClass}`} ref={tagFilterdropdownItemsRef}>
         <div className={styles.dropdownItem} onClick={handleToggleAll} style={{ cursor: 'pointer' }}>
-          <span className={styles.dropdownItemText}>{allHidden ? 'show all nsfw' : 'hide all nsfw'}</span>
+          <span className={styles.dropdownItemText}>{allHidden ? t('show_all_nsfw') : t('hide_all_nsfw')}</span>
         </div>
         {tags.map((tag, index) => (
           <div key={index} className={styles.dropdownItem} onClick={(e) => handleToggleTag(e, tag.setter, tag.isHidden, tag.name)} style={{ cursor: 'pointer' }}>
             <span className={styles.dropdownItemText}>
-              {tag.isHidden ? 'show' : 'hide'} <i>{tag.name}</i>
+              {tag.isHidden ? t('show') : t('hide')} <i>{tag.name}</i>
             </span>
           </div>
         ))}

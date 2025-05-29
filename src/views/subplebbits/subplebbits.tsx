@@ -15,7 +15,7 @@ import {
   isSubplebbitsVoteRejectingView,
 } from '../../lib/utils/view-utils';
 import useErrorStore from '../../stores/use-error-store';
-import { useDefaultSubplebbitAddresses, useDefaultSubplebbitTags, useDefaultSubplebbits } from '../../hooks/use-default-subplebbits';
+import { useDefaultSubplebbitAddresses, useDefaultSubplebbits } from '../../hooks/use-default-subplebbits';
 import useDisplayedSubscriptions from '../../hooks/use-displayed-subscriptions';
 import useIsMobile from '../../hooks/use-is-mobile';
 import useIsSubplebbitOffline from '../../hooks/use-is-subplebbit-offline';
