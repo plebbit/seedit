@@ -68,14 +68,18 @@ const ShareButton = ({ cid, subplebbitAddress }: { cid: string; subplebbitAddres
     }
   }, [hasCopied]);
 
+  const handleCopy = async () => {
+    try {
+      setHasCopied(true);
+      await copyShareLinkToClipboard(subplebbitAddress, cid);
+    } catch (error) {
+      console.error('Failed to copy share link:', error);
+      setHasCopied(false);
+    }
+  };
+
   return (
-    <li
-      className={`${!hasCopied ? styles.button : styles.text}`}
-      onClick={() => {
-        setHasCopied(true);
-        copyShareLinkToClipboard(subplebbitAddress, cid);
-      }}
-    >
+    <li className={`${!hasCopied ? styles.button : styles.text}`} onClick={handleCopy}>
       {hasCopied ? t('link_copied') : t('share')}
     </li>
   );

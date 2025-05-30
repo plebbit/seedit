@@ -1,3 +1,5 @@
+import { copyToClipboard } from './clipboard-utils';
+
 export const getHostname = (url: string) => {
   try {
     return new URL(url).hostname.replace(/^www\./, '');
@@ -15,12 +17,7 @@ export const isValidURL = (url: string) => {
   }
 };
 
-export const copyShareLinkToClipboard = (subplebbitAddress: string, cid: string) => {
+export const copyShareLinkToClipboard = async (subplebbitAddress: string, cid: string) => {
   const shareLink = `https://pleb.bz/p/${subplebbitAddress}/c/${cid}`;
-
-  if (navigator.clipboard) {
-    navigator.clipboard.writeText(shareLink);
-  } else {
-    alert('Your browser does not support clipboard API');
-  }
+  await copyToClipboard(shareLink);
 };
