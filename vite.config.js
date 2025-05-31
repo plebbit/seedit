@@ -173,42 +173,10 @@ export default defineConfig({
     chunkSizeWarningLimit: 1000,
     rollupOptions: {
       output: {
-        manualChunks: function(id) {
-          // React ecosystem - keep ALL React-related packages together
-          if (id.includes('react') || id.includes('react-dom') || id.includes('react-router') ||
-              id.includes('scheduler') || id.includes('use-sync-external-store') || 
-              id.includes('react-is') || id.includes('prop-types')) {
-            return 'react-vendor';
-          }
-          
-          // Plebbit related (main heavy dependency) - check this before crypto to avoid conflicts
-          if (id.includes('@plebbit/') || id.includes('plebbit-')) {
-            return 'plebbit-vendor';
-          }
-          
-          // Crypto and blockchain related
-          if (id.includes('ethers') || id.includes('crypto') || id.includes('buffer') || 
-              id.includes('secp256k1') || id.includes('elliptic') || id.includes('bn.js') ||
-              id.includes('hash.js') || id.includes('browserify-sign')) {
-            return 'crypto-vendor';
-          }
-          
-          // UI libraries (non-React)
-          if (id.includes('@floating-ui') || id.includes('react-virtuoso') || 
-              id.includes('react-ace') || id.includes('ace-builds') ||
-              id.includes('react-markdown') || id.includes('rehype') || id.includes('remark')) {
-            return 'ui-vendor';
-          }
-          
-          // Internationalization
-          if (id.includes('i18next')) {
-            return 'i18n-vendor';
-          }
-          
-          // Other node_modules
-          if (id.includes('node_modules')) {
-            return 'vendor';
-          }
+        manualChunks: {
+          'plebbit-vendor': ['@plebbit/plebbit-react-hooks'],
+          'crypto-vendor': ['ethers'],
+          'i18n-vendor': ['i18next', 'i18next-browser-languagedetector', 'i18next-http-backend', 'react-i18next']
         }
       }
     }
