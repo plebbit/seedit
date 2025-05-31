@@ -38,7 +38,7 @@ export default defineConfig({
       registerType: 'autoUpdate',
       strategies: 'injectManifest',
       injectManifest: {
-        maximumFileSizeToCacheInBytes: 6000000,
+        maximumFileSizeToCacheInBytes: 8000000,
       },
       srcDir: 'src',
       filename: 'sw.ts',
@@ -170,10 +170,11 @@ export default defineConfig({
     emptyOutDir: true,
     sourcemap: process.env.GENERATE_SOURCEMAP === 'true',
     target: process.env.ELECTRON ? 'electron-renderer' : 'modules',
+    chunkSizeWarningLimit: 1000,
     rollupOptions: {
       output: {
         manualChunks: {
-          vendor: ['react', 'react-dom', 'react-router-dom']
+          vendor: ['react', 'react-dom', 'react-router-dom', 'react-i18next', 'i18next', 'i18next-browser-languagedetector', 'i18next-http-backend']
         }
       }
     }

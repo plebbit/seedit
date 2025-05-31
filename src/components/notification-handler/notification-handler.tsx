@@ -1,8 +1,21 @@
 import { useEffect, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
 import { useNotifications } from '@plebbit/plebbit-react-hooks';
+import localForageLru from '@plebbit/plebbit-react-hooks/dist/lib/localforage-lru/index.js';
 import useContentOptionsStore from '../../stores/use-content-options-store';
 import { showLocalNotification } from '../../lib/push';
+
+// Create LRU storage instance for tracking sent notifications
+const sentNotificationsDb = localForageLru.createInstance({ name: 'seeditSentNotifications', size: 1000 });
+
+const getSentNotificationStatus = async (timestamp: number): Promise<boolean> => {
+  const sent = await sentNotificationsDb.getItem(timestamp.toString());
+  return sent === true;
+};
+
+const setSentNotificationStatus = async (timestamp: number): Promise<void> => {
+  await sentNotificationsDb.setItem(timestamp.toString(), true);
+};
 
 /**
  * This component handles listening for new notifications from the useNotifications hook
@@ -11,9 +24,10 @@ import { showLocalNotification } from '../../lib/push';
  */
 const NotificationHandler = () => {
   const { enableLocalNotifications } = useContentOptionsStore();
-  const { notifications } = useNotifications(); // Use real hook
+  const { notifications } = useNotifications();
+
   const location = useLocation();
-  const previousNotificationsRef = useRef(notifications); // Use ref based on real hook
+  const previousNotificationsRef = useRef(notifications);
 
   useEffect(() => {
     // Only proceed if notifications are enabled in settings
@@ -25,24 +39,35 @@ const NotificationHandler = () => {
     const previousCids = new Set(previousNotificationsRef.current?.map((n) => n.cid) || []);
     const newNotifications = notifications?.filter((n) => !previousCids.has(n.cid)) || [];
 
-    newNotifications.forEach((notification) => {
-      // Basic check: don't notify if the user is already on the inbox page
+    newNotifications.forEach(async (notification) => {
       if (location.pathname.startsWith('/inbox')) {
-        console.log('[NotificationHandler] Skipping notification, user is in inbox.', notification.cid);
         return;
       }
 
-      // Construct the notification payload
-      // TODO: Enhance title/body/URL based on notification type (reply, mention, etc.)
+      const alreadySent = await getSentNotificationStatus(notification.timestamp);
+      if (alreadySent) {
+        return;
+      }
+
+      // useNotifications only supports replies at the moment
       const payload = {
-        title: 'New Notification', // Generic title for now
-        body: notification.text || 'You have a new notification.', // Use comment text or generic body
-        url: `/p/${notification.subplebbitAddress}/c/${notification.cid}`, // Link directly to the comment
+        id: notification.timestamp,
+        icon: '/icon.png',
+        title: `You received a reply`,
+        body: `u/${notification.author.shortAddress} replied to your post in p/${notification.shortSubplebbitAddress}${
+          notification.content
+            ? `: ${notification.content.length > 100 ? notification.content.slice(0, 100).trim() + '...' : notification.content.trim()}`
+            : notification.link
+            ? `: ${notification.link.length > 100 ? notification.link.slice(0, 100).trim() + '...' : notification.link.trim()}`
+            : ''
+        }`,
+        url: `/#/p/${notification.subplebbitAddress}/c/${notification.cid}`,
       };
 
-      console.log('[NotificationHandler] Triggering notification:', payload);
-      // Show the notification
       showLocalNotification(payload);
+
+      // Mark this notification as sent in persistent storage
+      await setSentNotificationStatus(notification.timestamp);
     });
 
     // Update the reference for the next comparison
