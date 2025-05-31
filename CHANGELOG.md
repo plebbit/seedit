@@ -1,4 +1,30 @@
-## [0.5.1](https://github.com/plebbit/seedit/compare/v0.5.0...v0.5.1) (2025-05-19)
+## [0.5.2](https://github.com/plebbit/seedit/compare/v0.5.1...v0.5.2) (2025-05-31)
+
+
+### Bug Fixes
+
+* **author page:** posts were incorrectly ranked ([ca48aef](https://github.com/plebbit/seedit/commit/ca48aef8e041a5169ed3e66ae4b23d7dbbfd5f0e))
+* **electron:** "share" button couldn't copy link to clipboard ([5dddd9e](https://github.com/plebbit/seedit/commit/5dddd9ee460686cf5d554759193383a0d31a9171))
+* **post:** share links could be broken for posts that failed to publish ([b35edac](https://github.com/plebbit/seedit/commit/b35edac0d433eb5bd4c79565e0803cb8d4b1c740))
+* push notifications didn't work properly ([5ee8fdb](https://github.com/plebbit/seedit/commit/5ee8fdbccc8ce53760b8e4bb06dee24644ba606c))
+* **thumbnail:** gifs were stuck on playing endlessly on chromium-based browsers ([d0bc190](https://github.com/plebbit/seedit/commit/d0bc190bfdbc20b86d16de8561bba43d06c46f50))
+
+
+### Features
+
+* **communities page:** filter by nsfw communities by clicking the "18+" label, filter in each ([5e3bf59](https://github.com/plebbit/seedit/commit/5e3bf59387024a3f902735ca563d0abd4a012e75))
+* **nsfw filter:** ask user whether to auto-subscribe to nsfw subs when disabling filter ([1808275](https://github.com/plebbit/seedit/commit/1808275d8acc467bf1939f51930df04e1f04448e))
+* **post:** replace seedit links typed in post content with internal links so the user doesn't have to leave the app ([c37dc52](https://github.com/plebbit/seedit/commit/c37dc52cecf051231278e94db8d2d14e17b1b62d))
+* update app icon, favicon ([c8dd7ec](https://github.com/plebbit/seedit/commit/c8dd7ec7005b3e974c88f2d1329113972b3b9e14))
+
+
+### Performance Improvements
+
+* **build:** optimize bundle chunking and PWA caching ([1094545](https://github.com/plebbit/seedit/commit/1094545e0d66f5e1d535374764b89cf9591a9fef))
+
+
+
+## [0.5.1](https://github.com/plebbit/seedit/compare/v0.5.0...v0.5.1) (2025-05-21)
 
 
 ### Bug Fixes
@@ -8,9 +34,12 @@
 * **dark mode:** inputs and buttons didn't use the browser dark mode theme ([8acb9db](https://github.com/plebbit/seedit/commit/8acb9dbc27016c58cf3adfc07e19ac7015178c20))
 * **electron:** add CJS wrapper for after-all-artifact-build hook ([4ac3c02](https://github.com/plebbit/seedit/commit/4ac3c02dff00a52274f9aeef2630d269919f9279))
 * **electron:** client would assume the user is connected to full node ([2bc92cc](https://github.com/plebbit/seedit/commit/2bc92cc6f03bfeec08c0eb4b7e0c391c5c9dd312))
+* **electron:** resolve preload script module errors and ensure proper bundling ([9a3481c](https://github.com/plebbit/seedit/commit/9a3481cbdb23ae42f1c64a706510373e00616fb0))
 * **feed:** thumbnails could get stuck when navigating ([35f0456](https://github.com/plebbit/seedit/commit/35f04569f26bdc97e8450ab01003c8103a847128))
 * **markdown:** blockquotes could appear behind thumbnail ([699e675](https://github.com/plebbit/seedit/commit/699e6751c9d30f0d914667043ac3d12902291dfe))
+* **markdown:** code blocks had wrong spacing ([15e68b1](https://github.com/plebbit/seedit/commit/15e68b133515ce6c3d050ee768eb5113fd9a3892))
 * **markdown:** empty lines (using special md syntax) didn't render with same spacing as normal breaks ([51e225e](https://github.com/plebbit/seedit/commit/51e225e967e4d36420309e613d45e7b5a0ee5019))
+* **package.json:** downgrade bonfida/spl-name-service, it prevented the electron apps from opening ([7df0760](https://github.com/plebbit/seedit/commit/7df0760bd57576f0dacb349991e9fd03322539e8))
 * **post:** some content could overflow ([195391b](https://github.com/plebbit/seedit/commit/195391b26a8f0d66b578e60fa6a5c97236de95d3))
 * **replies:** floated image thumbnails weren't clickable when wrapped by markdown content ([ffdceb2](https://github.com/plebbit/seedit/commit/ffdceb24f969b30114a02ef59d414900f211f142))
 * **replies:** thumbnail icons would disappear when clicked ([9cdf5bf](https://github.com/plebbit/seedit/commit/9cdf5bfbd4a46d96999cb22c1567a8b176d75b51))
