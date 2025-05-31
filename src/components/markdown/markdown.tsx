@@ -1,4 +1,5 @@
 import React, { useMemo, useState } from 'react';
+import { Link } from 'react-router-dom';
 import remarkGfm from 'remark-gfm';
 import supersub from 'remark-supersub';
 import ReactMarkdown, { Components } from 'react-markdown';
@@ -6,6 +7,7 @@ import rehypeSanitize, { defaultSchema } from 'rehype-sanitize';
 import styles from './markdown.module.css';
 import rehypeRaw from 'rehype-raw';
 import SpoilerTooltip from '../spoiler-tooltip';
+import { isSeeditLink, transformSeeditLinkToInternal, preprocessSeeditPatterns } from '../../lib/utils/url-utils';
 
 interface MarkdownProps {
   content: string;
@@ -51,10 +53,52 @@ const SpoilerText = ({ children }: { children: React.ReactNode }) => {
   );
 };
 
+const renderAnchorLink = (children: React.ReactNode, href: string) => {
+  if (!href) {
+    return <span>{children}</span>;
+  }
+
+  // Check if this is a valid seedit link that should be handled internally
+  if (isSeeditLink(href)) {
+    const internalPath = transformSeeditLinkToInternal(href);
+    if (internalPath) {
+      // Check if the link text should be replaced with the internal path
+      let shouldReplaceText = false;
+
+      if (typeof children === 'string') {
+        shouldReplaceText = children === href || children.trim() === href.trim();
+      } else if (Array.isArray(children) && children.length === 1 && typeof children[0] === 'string') {
+        shouldReplaceText = children[0] === href || children[0].trim() === href.trim();
+      }
+
+      const displayText = shouldReplaceText ? internalPath : children;
+      return <Link to={internalPath}>{displayText}</Link>;
+    } else {
+      console.warn('Failed to transform seedit link to internal path:', href);
+      return <Link to={href}>{children}</Link>;
+    }
+  }
+
+  // Handle hash routes and internal patterns
+  if (href.startsWith('#/') || href.startsWith('/p/') || href.match(/^\/p\/[^\/]+(\/c\/[^\/]+)?$/)) {
+    return <Link to={href}>{children}</Link>;
+  }
+
+  // External links
+  return (
+    <a href={href} target='_blank' rel='noopener noreferrer'>
+      {children}
+    </a>
+  );
+};
+
 const Markdown = ({ content }: MarkdownProps) => {
+  // Preprocess content to convert plain text seedit patterns to markdown links
+  const preprocessedContent = useMemo(() => preprocessSeeditPatterns(content), [content]);
+
   const remarkPlugins: any[] = [[supersub]];
 
-  if (content && content.length <= MAX_LENGTH_FOR_GFM) {
+  if (preprocessedContent && preprocessedContent.length <= MAX_LENGTH_FOR_GFM) {
     remarkPlugins.push([remarkGfm, { singleTilde: false }]);
   }
 
@@ -76,16 +120,12 @@ const Markdown = ({ content }: MarkdownProps) => {
   return (
     <span className={styles.markdown}>
       <ReactMarkdown
-        children={content}
+        children={preprocessedContent}
         remarkPlugins={remarkPlugins}
         rehypePlugins={[[rehypeRaw as any], [rehypeSanitize, customSchema]]}
         components={
           {
-            a: ({ children, href }) => (
-              <a href={href} target='_blank' rel='noopener noreferrer'>
-                {children}
-              </a>
-            ),
+            a: ({ children, href }) => renderAnchorLink(children, href || ''),
             p: ({ children }) => {
               const isEmpty =
                 !children ||

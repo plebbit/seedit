@@ -79,7 +79,7 @@ const ShareButton = ({ cid, subplebbitAddress }: { cid: string; subplebbitAddres
   };
 
   return (
-    <li className={`${!hasCopied ? styles.button : styles.text}`} onClick={handleCopy}>
+    <li className={`${!hasCopied ? styles.button : styles.text}`} onClick={() => cid && handleCopy()}>
       {hasCopied ? t('link_copied') : t('share')}
     </li>
   );
