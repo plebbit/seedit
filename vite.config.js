@@ -174,9 +174,16 @@ export default defineConfig({
     rollupOptions: {
       output: {
         manualChunks: function(id) {
-          // React core
-          if (id.includes('react') || id.includes('react-dom') || id.includes('react-router')) {
+          // React ecosystem - keep ALL React-related packages together
+          if (id.includes('react') || id.includes('react-dom') || id.includes('react-router') ||
+              id.includes('scheduler') || id.includes('use-sync-external-store') || 
+              id.includes('react-is') || id.includes('prop-types')) {
             return 'react-vendor';
+          }
+          
+          // Plebbit related (main heavy dependency) - check this before crypto to avoid conflicts
+          if (id.includes('@plebbit/') || id.includes('plebbit-')) {
+            return 'plebbit-vendor';
           }
           
           // Crypto and blockchain related
@@ -186,12 +193,7 @@ export default defineConfig({
             return 'crypto-vendor';
           }
           
-          // Plebbit related (main heavy dependency)
-          if (id.includes('@plebbit/') || id.includes('plebbit-')) {
-            return 'plebbit-vendor';
-          }
-          
-          // UI libraries
+          // UI libraries (non-React)
           if (id.includes('@floating-ui') || id.includes('react-virtuoso') || 
               id.includes('react-ace') || id.includes('ace-builds') ||
               id.includes('react-markdown') || id.includes('rehype') || id.includes('remark')) {
