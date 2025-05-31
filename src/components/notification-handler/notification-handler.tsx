@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
-import { useNotifications } from '@plebbit/plebbit-react-hooks';
+import { useAccount, useNotifications } from '@plebbit/plebbit-react-hooks';
 import useContentOptionsStore from '../../stores/use-content-options-store';
 import { showLocalNotification } from '../../lib/push';
 
@@ -11,9 +11,14 @@ import { showLocalNotification } from '../../lib/push';
  */
 const NotificationHandler = () => {
   const { enableLocalNotifications } = useContentOptionsStore();
-  const { notifications } = useNotifications(); // Use real hook
+  const { notifications } = useNotifications();
+
+  const account = useAccount();
+  const { unreadNotificationCount } = account || {};
+  console.log(account, unreadNotificationCount);
+
   const location = useLocation();
-  const previousNotificationsRef = useRef(notifications); // Use ref based on real hook
+  const previousNotificationsRef = useRef(notifications);
 
   useEffect(() => {
     // Only proceed if notifications are enabled in settings
@@ -26,22 +31,21 @@ const NotificationHandler = () => {
     const newNotifications = notifications?.filter((n) => !previousCids.has(n.cid)) || [];
 
     newNotifications.forEach((notification) => {
-      // Basic check: don't notify if the user is already on the inbox page
       if (location.pathname.startsWith('/inbox')) {
-        console.log('[NotificationHandler] Skipping notification, user is in inbox.', notification.cid);
         return;
       }
 
-      // Construct the notification payload
-      // TODO: Enhance title/body/URL based on notification type (reply, mention, etc.)
+      // useNotifications only supports replies at the moment
       const payload = {
-        title: 'New Notification', // Generic title for now
-        body: notification.text || 'You have a new notification.', // Use comment text or generic body
-        url: `/p/${notification.subplebbitAddress}/c/${notification.cid}`, // Link directly to the comment
+        id: notification.timestamp,
+        icon: '/icon.png',
+        title: `You received a reply`,
+        body: `u/${notification.author.shortAddress} replied to your post in p/${notification.shortSubplebbitAddress}${
+          notification.content ? `: ${notification.content.slice(0, 100).trim()}` : notification.link ? `: ${notification.link.slice(0, 100).trim()}` : ''
+        }...`,
+        url: `/#/p/${notification.subplebbitAddress}/c/${notification.cid}`,
       };
 
-      console.log('[NotificationHandler] Triggering notification:', payload);
-      // Show the notification
       showLocalNotification(payload);
     });
 
