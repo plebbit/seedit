@@ -38,7 +38,7 @@ export default defineConfig({
       registerType: 'autoUpdate',
       strategies: 'injectManifest',
       injectManifest: {
-        maximumFileSizeToCacheInBytes: 6000000,
+        maximumFileSizeToCacheInBytes: 8000000,
       },
       srcDir: 'src',
       filename: 'sw.ts',
@@ -170,10 +170,43 @@ export default defineConfig({
     emptyOutDir: true,
     sourcemap: process.env.GENERATE_SOURCEMAP === 'true',
     target: process.env.ELECTRON ? 'electron-renderer' : 'modules',
+    chunkSizeWarningLimit: 1000,
     rollupOptions: {
       output: {
-        manualChunks: {
-          vendor: ['react', 'react-dom', 'react-router-dom']
+        manualChunks: function(id) {
+          // React core
+          if (id.includes('react') || id.includes('react-dom') || id.includes('react-router')) {
+            return 'react-vendor';
+          }
+          
+          // Crypto and blockchain related
+          if (id.includes('ethers') || id.includes('crypto') || id.includes('buffer') || 
+              id.includes('secp256k1') || id.includes('elliptic') || id.includes('bn.js') ||
+              id.includes('hash.js') || id.includes('browserify-sign')) {
+            return 'crypto-vendor';
+          }
+          
+          // Plebbit related (main heavy dependency)
+          if (id.includes('@plebbit/') || id.includes('plebbit-')) {
+            return 'plebbit-vendor';
+          }
+          
+          // UI libraries
+          if (id.includes('@floating-ui') || id.includes('react-virtuoso') || 
+              id.includes('react-ace') || id.includes('ace-builds') ||
+              id.includes('react-markdown') || id.includes('rehype') || id.includes('remark')) {
+            return 'ui-vendor';
+          }
+          
+          // Internationalization
+          if (id.includes('i18next')) {
+            return 'i18n-vendor';
+          }
+          
+          // Other node_modules
+          if (id.includes('node_modules')) {
+            return 'vendor';
+          }
         }
       }
     }
