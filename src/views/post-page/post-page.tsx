@@ -302,6 +302,8 @@ const PostPage = () => {
   useEffect(() => {
     if (post?.error && ((post?.replyCount > 0 && post?.replies?.length === 0) || (post?.state === 'failed' && post?.error))) {
       setShouldShowErrorToUser(true);
+    } else if (post?.replyCount > 0 && post?.replies?.length > 0) {
+      setShouldShowErrorToUser(false);
     }
   }, [post]);
 

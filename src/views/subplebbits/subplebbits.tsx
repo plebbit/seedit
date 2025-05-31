@@ -15,7 +15,7 @@ import {
   isSubplebbitsVoteRejectingView,
 } from '../../lib/utils/view-utils';
 import useErrorStore from '../../stores/use-error-store';
-import { useDefaultSubplebbitAddresses, useDefaultSubplebbitTags, useDefaultSubplebbits } from '../../hooks/use-default-subplebbits';
+import { useDefaultSubplebbitAddresses, useDefaultSubplebbits } from '../../hooks/use-default-subplebbits';
 import useDisplayedSubscriptions from '../../hooks/use-displayed-subscriptions';
 import useIsMobile from '../../hooks/use-is-mobile';
 import useIsSubplebbitOffline from '../../hooks/use-is-subplebbit-offline';
@@ -127,20 +127,18 @@ const Infobar = () => {
   const subscriptions = account?.subscriptions || [];
   const { t } = useTranslation();
   const location = useLocation();
-  const defaultSubplebbits = useDefaultSubplebbits();
-  const validTags = useDefaultSubplebbitTags(defaultSubplebbits);
 
   const isInSubplebbitsSubscriberView = isSubplebbitsSubscriberView(location.pathname);
   const isInSubplebbitsModeratorView = isSubplebbitsModeratorView(location.pathname);
   const isInSubplebbitsAdminView = isSubplebbitsAdminView(location.pathname);
   const isInSubplebbitsOwnerView = isSubplebbitsOwnerView(location.pathname);
 
-  // Add tag check
-  const urlTag = location.pathname.includes('/tag/') ? location.pathname.split('/').pop() : undefined;
-  const currentTag = urlTag && validTags.includes(urlTag) ? urlTag : undefined;
+  // Check if we're filtering by any tag
+  const urlParams = new URLSearchParams(location.search);
+  const currentTag = urlParams.get('tag');
 
-  // Get base path without tag
-  const basePath = location.pathname.split('/tag/')[0];
+  // Get base path without search params
+  const basePath = location.pathname;
 
   let mainInfobarText;
   if (isInSubplebbitsSubscriberView) {
@@ -162,7 +160,7 @@ const Infobar = () => {
       </div>
       {currentTag && (
         <div className={styles.infobar}>
-          {t('filtering_by_tag', { tag: currentTag })} —{' '}
+          {currentTag === 'nsfw' ? t('filtering_by_nsfw') + ' ("adult", "gore", "vulgar", "anti") —' : t('filtering_by_tag', { tag: currentTag }) + ' —'}{' '}
           <Link className={styles.undoLink} to={basePath}>
             {t('undo')}
           </Link>
@@ -177,6 +175,7 @@ const Subplebbit = ({ subplebbit, tags, index, isUnsubscribed, onUnsubscribe }: 
   const { address, createdAt, description, roles, shortAddress, settings, suggested, title } = subplebbit || {};
   const [avatarLoadFailed, setAvatarLoadFailed] = useState(false);
   const showSprout = !suggested?.avatarUrl || avatarLoadFailed;
+  const location = useLocation();
 
   useEffect(() => {
     setAvatarLoadFailed(false);
@@ -186,6 +185,11 @@ const Subplebbit = ({ subplebbit, tags, index, isUnsubscribed, onUnsubscribe }: 
   const isUserOwner = settings;
   const account = useAccount();
   const userRole = roles?.[account?.author?.address]?.role;
+
+  const getTagFilterRoute = (tag: string) => {
+    const pathname = location.pathname;
+    return `${pathname}?tag=${encodeURIComponent(tag)}`;
+  };
 
   // TODO: make arrows functional when token voting is implemented in the API
   const upvoted = false;
@@ -276,13 +280,17 @@ const Subplebbit = ({ subplebbit, tags, index, isUnsubscribed, onUnsubscribe }: 
                   <span className={`${styles.moderatorIcon} ${isNsfw ? styles.addMarginRight : ''}`} title={userRole || 'owner'} />
                 </Link>
               )}
-              {isNsfw && <span className={styles.over18icon} />}
+              {isNsfw && (
+                <Link to={getTagFilterRoute('nsfw')}>
+                  <span className={styles.over18icon} title='Filter NSFW communities' />
+                </Link>
+              )}
               {isOffline && !isOnlineStatusLoading && <Label color='red' title={offlineTitle} text={t('offline')} />}
               {tags && tags.length > 0 && (
                 <span className={styles.tags}>
                   {tags.map((tag, index) => (
                     <Fragment key={index}>
-                      <Link to={`/communities/vote/tag/${tag}`}>{tag}</Link>
+                      <Link to={getTagFilterRoute(tag)}>{tag}</Link>
                     </Fragment>
                   ))}
                 </span>
@@ -304,10 +312,15 @@ const AccountSubplebbits = ({ viewRole }: { viewRole: string }) => {
   const account = useAccount();
   const { accountSubplebbits, error: accountSubplebbitsError } = useAccountSubplebbits();
   const { setError } = useErrorStore();
+  const location = useLocation();
+  const defaultSubplebbits = useDefaultSubplebbits();
 
   useEffect(() => {
     setError('AccountSubplebbits_useAccountSubplebbits', accountSubplebbitsError);
   }, [accountSubplebbitsError, setError, viewRole]);
+
+  const urlParams = new URLSearchParams(location.search);
+  const currentTag = urlParams.get('tag');
 
   const subplebbitElements = Object.values(accountSubplebbits)
     .filter((subplebbit: any) => {
@@ -315,7 +328,22 @@ const AccountSubplebbits = ({ viewRole }: { viewRole: string }) => {
       const userRole = (subplebbit as any).roles?.[account?.author?.address]?.role;
       return isUserOwner || userRole === viewRole;
     })
-    .map((subplebbitData, index) => <Subplebbit key={index} subplebbit={subplebbitData} index={index} />);
+    .filter((subplebbitData: any) => {
+      if (currentTag) {
+        const tags = defaultSubplebbits.find((defaultSub) => defaultSub.address === (subplebbitData as any).address)?.tags;
+
+        if (currentTag === 'nsfw') {
+          return tags?.some((tag) => nsfwTags.includes(tag));
+        } else {
+          return tags?.includes(currentTag);
+        }
+      }
+      return true;
+    })
+    .map((subplebbitData, index) => {
+      const tags = defaultSubplebbits.find((defaultSub) => defaultSub.address === (subplebbitData as any).address)?.tags;
+      return <Subplebbit key={index} subplebbit={subplebbitData} tags={tags} index={index} />;
+    });
 
   if (subplebbitElements.length === 0) {
     return <NoCommunitiesMessage />;
@@ -326,6 +354,11 @@ const AccountSubplebbits = ({ viewRole }: { viewRole: string }) => {
 const SubscriberSubplebbits = () => {
   const account = useAccount();
   const { setError } = useErrorStore();
+  const location = useLocation();
+  const defaultSubplebbits = useDefaultSubplebbits();
+
+  const urlParams = new URLSearchParams(location.search);
+  const currentTag = urlParams.get('tag');
 
   const getAccountSubscriptions = useCallback(() => {
     return account?.subscriptions ? [...account.subscriptions].reverse() : [];
@@ -347,17 +380,32 @@ const SubscriberSubplebbits = () => {
   }, [subplebbitsError, setError]);
 
   const subplebbitElements = Object.values(subplebbits ?? {})
-    .map((subplebbitData, index) =>
-      subplebbitData ? (
+    .filter((subplebbit): subplebbit is SubplebbitType => Boolean(subplebbit))
+    .filter((subplebbitData) => {
+      if (currentTag) {
+        const tags = defaultSubplebbits.find((defaultSub) => defaultSub.address === (subplebbitData as any).address)?.tags;
+
+        if (currentTag === 'nsfw') {
+          return tags?.some((tag) => nsfwTags.includes(tag));
+        } else {
+          return tags?.includes(currentTag);
+        }
+      }
+      return true;
+    })
+    .map((subplebbitData, index) => {
+      const tags = defaultSubplebbits.find((defaultSub) => defaultSub.address === (subplebbitData as any).address)?.tags;
+      return subplebbitData ? (
         <Subplebbit
           key={subplebbitData.address || index}
           subplebbit={subplebbitData}
+          tags={tags}
           index={index}
           isUnsubscribed={isUnsubscribed(subplebbitData.address)}
           onUnsubscribe={handleUnsubscribe}
         />
-      ) : null,
-    )
+      ) : null;
+    })
     .filter(Boolean);
 
   if (subplebbitElements.length === 0) {
@@ -369,11 +417,10 @@ const SubscriberSubplebbits = () => {
 const AllDefaultSubplebbits = () => {
   const defaultSubplebbitsList = useDefaultSubplebbits(); // Renamed to avoid conflict
   const subplebbitAddresses = useDefaultSubplebbitAddresses();
-  const pathname = useLocation().pathname;
-  const validTags = useDefaultSubplebbitTags(defaultSubplebbitsList);
+  const location = useLocation();
 
-  const urlTag = pathname.includes('/tag/') ? pathname.split('/').pop() : undefined;
-  const currentTag = urlTag && validTags.includes(urlTag) ? urlTag : undefined;
+  const urlParams = new URLSearchParams(location.search);
+  const currentTag = urlParams.get('tag');
 
   const { subplebbits, error: subplebbitsError } = useSubplebbits({ subplebbitAddresses });
   const { setError } = useErrorStore();
@@ -385,12 +432,19 @@ const AllDefaultSubplebbits = () => {
   const subplebbitElements = Object.values(subplebbits ?? {})
     .filter((subplebbit): subplebbit is SubplebbitType => Boolean(subplebbit)) // Type guard
     .filter((subplebbitData) => {
-      const tags = defaultSubplebbitsList.find((defaultSub) => defaultSub.address === subplebbitData.address)?.tags;
-      if (currentTag && !tags?.includes(currentTag)) return false;
+      if (currentTag) {
+        const tags = defaultSubplebbitsList.find((defaultSub) => defaultSub.address === (subplebbitData as any).address)?.tags;
+
+        if (currentTag === 'nsfw') {
+          return tags?.some((tag) => nsfwTags.includes(tag));
+        } else {
+          return tags?.includes(currentTag);
+        }
+      }
       return true;
     })
     .map((subplebbitData, index) => {
-      const tags = defaultSubplebbitsList.find((defaultSub) => defaultSub.address === subplebbitData.address)?.tags;
+      const tags = defaultSubplebbitsList.find((defaultSub) => defaultSub.address === (subplebbitData as any).address)?.tags;
       return <Subplebbit key={subplebbitData.address || index} subplebbit={subplebbitData} tags={tags} index={index} />;
     });
 
@@ -404,10 +458,15 @@ const AllAccountSubplebbits = () => {
   const account = useAccount();
   const { accountSubplebbits, error: accountSubplebbitsError } = useAccountSubplebbits();
   const { setError } = useErrorStore();
+  const location = useLocation();
+  const defaultSubplebbits = useDefaultSubplebbits();
 
   useEffect(() => {
     setError('AllAccountSubplebbits_useAccountSubplebbits', accountSubplebbitsError);
   }, [accountSubplebbitsError, setError]);
+
+  const urlParams = new URLSearchParams(location.search);
+  const currentTag = urlParams.get('tag');
 
   const getAllAccountRelatedAddresses = useCallback(() => {
     const accountAddrs = Object.keys(accountSubplebbits);
@@ -415,14 +474,7 @@ const AllAccountSubplebbits = () => {
     return Array.from(new Set([...accountAddrs, ...subs]));
   }, [accountSubplebbits, account?.subscriptions]);
 
-  const {
-    list: displayedAddresses,
-    isUnsubscribed,
-    handleUnsubscribe,
-  } = useDisplayedSubscriptions(
-    getAllAccountRelatedAddresses,
-    [account?.author?.address], // Reset dependencies
-  );
+  const { list: displayedAddresses, isUnsubscribed, handleUnsubscribe } = useDisplayedSubscriptions(getAllAccountRelatedAddresses, [account?.author?.address]);
 
   const { subplebbits, error: subplebbitsError } = useSubplebbits({ subplebbitAddresses: displayedAddresses });
 
@@ -431,17 +483,32 @@ const AllAccountSubplebbits = () => {
   }, [subplebbitsError, setError]);
 
   const subplebbitElements = Object.values(subplebbits ?? {})
-    .map((subplebbitData, index) =>
-      subplebbitData ? (
+    .filter((subplebbit): subplebbit is SubplebbitType => Boolean(subplebbit))
+    .filter((subplebbitData) => {
+      if (currentTag) {
+        const tags = defaultSubplebbits.find((defaultSub) => defaultSub.address === (subplebbitData as any).address)?.tags;
+
+        if (currentTag === 'nsfw') {
+          return tags?.some((tag) => nsfwTags.includes(tag));
+        } else {
+          return tags?.includes(currentTag);
+        }
+      }
+      return true;
+    })
+    .map((subplebbitData, index) => {
+      const tags = defaultSubplebbits.find((defaultSub) => defaultSub.address === (subplebbitData as any).address)?.tags;
+      return subplebbitData ? (
         <Subplebbit
           key={subplebbitData.address || index}
           subplebbit={subplebbitData}
+          tags={tags}
           index={index}
           isUnsubscribed={isUnsubscribed(subplebbitData.address)}
           onUnsubscribe={handleUnsubscribe}
         />
-      ) : null,
-    )
+      ) : null;
+    })
     .filter(Boolean);
 
   if (subplebbitElements.length === 0) {
@@ -455,14 +522,12 @@ const Subplebbits = () => {
   const location = useLocation();
   const { errors, clearAllErrors } = useErrorStore();
 
-  // Clear errors on component unmount or location change
   useEffect(() => {
     return () => {
       clearAllErrors();
     };
   }, [location, clearAllErrors]);
 
-  // Console log errors
   useEffect(() => {
     Object.entries(errors).forEach(([source, errorObj]) => {
       if (errorObj) {

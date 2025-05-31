@@ -147,6 +147,8 @@ const Overview = () => {
   useEffect(() => {
     if (error?.message && sortedComments.length === 0) {
       setShouldShowErrorToUserOverview(true);
+    } else if (sortedComments.length > 0) {
+      setShouldShowErrorToUserOverview(false);
     }
   }, [error, sortedComments]);
 
@@ -186,6 +188,8 @@ const Comments = () => {
   useEffect(() => {
     if (error?.message && sortedComments.length === 0) {
       setShouldShowErrorToUserComments(true);
+    } else if (sortedComments.length > 0) {
+      setShouldShowErrorToUserComments(false);
     }
   }, [error, sortedComments]);
 
@@ -225,6 +229,8 @@ const Submitted = () => {
   useEffect(() => {
     if (error?.message && sortedComments.length === 0) {
       setShouldShowErrorToUserSubmitted(true);
+    } else if (sortedComments.length > 0) {
+      setShouldShowErrorToUserSubmitted(false);
     }
   }, [error, sortedComments]);
 
@@ -268,6 +274,8 @@ const VotedComments = ({ voteType }: { voteType: 1 | -1 }) => {
   useEffect(() => {
     if (error?.message && paginatedCids.length === 0 && hasMore) {
       setShouldShowErrorToUserVoted(true);
+    } else if (paginatedCids.length > 0) {
+      setShouldShowErrorToUserVoted(false);
     }
   }, [error, paginatedCids, hasMore]);
 

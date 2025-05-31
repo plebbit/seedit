@@ -6,6 +6,7 @@ import useTheme from '../../../stores/use-theme-store';
 import stringify from 'json-stringify-pretty-compact';
 import styles from './account-data-editor.module.css';
 import useIsMobile from '../../../hooks/use-is-mobile';
+import LoadingEllipsis from '../../../components/loading-ellipsis';
 
 const LazyAceEditor = lazy(async () => {
   const ReactAceModule = await import('react-ace');
@@ -57,11 +58,11 @@ const AccountDataEditor = () => {
       <div className={styles.securityWarning}>
         <img src='assets/privacy_icon.png' alt='security warning' />
         <div className={styles.warning}>
-          <h3>Your private key will be displayed</h3>
-          <p>You're about to view your account data, which includes your private key. You should never share your private key with anyone.</p>
+          <h3>{t('private_key_warning_title')}</h3>
+          <p>{t('private_key_warning_description')}</p>
         </div>
         <div className={styles.warningButtons}>
-          <button onClick={() => navigate('/settings')}>go back</button>
+          <button onClick={() => navigate('/settings')}>{t('go_back')}</button>
           <button onClick={() => setShowEditor(true)}>{t('continue')}</button>
         </div>
       </div>
@@ -70,7 +71,13 @@ const AccountDataEditor = () => {
 
   return (
     <div className={styles.content}>
-      <Suspense fallback={<div className={styles.loading}>Loading editor...</div>}>
+      <Suspense
+        fallback={
+          <div className={styles.loading}>
+            <LoadingEllipsis string={t('loading_editor')} />
+          </div>
+        }
+      >
         <LazyAceEditor
           mode='json'
           theme={theme === 'dark' ? 'tomorrow_night' : 'github'}

@@ -1,5 +1,19 @@
 import './log.js';
-import { app, BrowserWindow, Menu, MenuItem, Tray, screen as electronScreen, shell, dialog, nativeTheme, ipcMain, Notification, systemPreferences } from 'electron';
+import {
+  app,
+  BrowserWindow,
+  Menu,
+  MenuItem,
+  Tray,
+  screen as electronScreen,
+  shell,
+  dialog,
+  nativeTheme,
+  ipcMain,
+  Notification,
+  systemPreferences,
+  clipboard,
+} from 'electron';
 import isDev from 'electron-is-dev';
 import fs from 'fs';
 import path from 'path';
@@ -468,4 +482,24 @@ ipcMain.handle('plugin:file-uploader:pickMedia', async (event) => {
     console.error('FileUploader pickMedia error:', error);
     throw error;
   }
+});
+
+// Handle request to copy text to clipboard
+ipcMain.handle('copy-to-clipboard', async (event, text) => {
+  try {
+    clipboard.writeText(text);
+    return { success: true };
+  } catch (error) {
+    console.error('[Electron Main] Error copying to clipboard:', error);
+    return { success: false, error: error.message };
+  }
+});
+
+// Handle request for platform info
+ipcMain.handle('get-platform', async () => {
+  return {
+    platform: process.platform,
+    arch: process.arch,
+    version: process.version,
+  };
 });

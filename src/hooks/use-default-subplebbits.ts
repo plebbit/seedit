@@ -15,44 +15,91 @@ export interface MultisubSubplebbit {
   tags?: string[];
   features?: string[];
   seeditAutoSubscribe?: boolean;
+  plebchanAutoSubscribe?: boolean;
   lowUptime?: boolean;
 }
 
 let cacheSubplebbits: MultisubSubplebbit[] | null = null;
 let cacheMetadata: MultisubMetadata | null = null;
 let cacheAutoSubscribeAddresses: string[] | null = null;
+let pending = false;
+
+// Subscriber pattern for notifying all hook instances
+const subscribers = new Set<() => void>();
+
+const notifySubscribers = () => {
+  subscribers.forEach((callback) => callback());
+};
+
+// Shared fetch function to avoid duplication
+const fetchMultisubData = async () => {
+  if (pending) {
+    return;
+  }
+  pending = true;
+
+  try {
+    const multisub = await fetch(
+      'https://raw.githubusercontent.com/plebbit/temporary-default-subplebbits/master/multisub.json',
+      // { cache: 'no-cache' }
+    ).then((res) => res.json());
+
+    const filteredSubplebbits = multisub.subplebbits.filter((sub: MultisubSubplebbit) => !sub.lowUptime);
+
+    cacheSubplebbits = filteredSubplebbits;
+
+    // Cache auto-subscribe addresses when we fetch subplebbits
+    cacheAutoSubscribeAddresses = filteredSubplebbits
+      .filter((sub: MultisubSubplebbit) => sub.seeditAutoSubscribe && sub.address)
+      .map((sub: MultisubSubplebbit) => sub.address);
+
+    // Also cache metadata since we have the full response
+    const { title, description, createdAt, updatedAt } = multisub;
+    cacheMetadata = { title, description, createdAt, updatedAt };
+
+    // Notify all subscribers that cache has been updated
+    notifySubscribers();
+
+    return { subplebbits: filteredSubplebbits, metadata: cacheMetadata };
+  } catch (e) {
+    console.warn(e);
+    return null;
+  } finally {
+    pending = false;
+  }
+};
 
 export const useDefaultSubplebbits = () => {
-  const [subplebbits, setSubplebbits] = useState<MultisubSubplebbit[]>([]);
+  const [subplebbits, setSubplebbits] = useState<MultisubSubplebbit[]>(cacheSubplebbits || []);
 
   useEffect(() => {
+    // If we already have cached data, use it immediately
     if (cacheSubplebbits) {
+      setSubplebbits(cacheSubplebbits);
       return;
     }
-    (async () => {
-      try {
-        const multisub = await fetch(
-          'https://raw.githubusercontent.com/plebbit/temporary-default-subplebbits/master/multisub.json',
-          // { cache: 'no-cache' }
-        ).then((res) => res.json());
 
-        const filteredSubplebbits = multisub.subplebbits.filter((sub: MultisubSubplebbit) => !sub.lowUptime);
-
-        cacheSubplebbits = filteredSubplebbits;
-
-        // Cache auto-subscribe addresses when we fetch subplebbits
-        cacheAutoSubscribeAddresses = filteredSubplebbits
-          .filter((sub: MultisubSubplebbit) => sub.seeditAutoSubscribe && sub.address)
-          .map((sub: MultisubSubplebbit) => sub.address);
-
-        setSubplebbits(filteredSubplebbits);
-      } catch (e) {
-        console.warn(e);
+    // Subscribe to cache updates
+    const handleCacheUpdate = () => {
+      if (cacheSubplebbits) {
+        setSubplebbits(cacheSubplebbits);
       }
-    })();
+    };
+
+    subscribers.add(handleCacheUpdate);
+
+    // Trigger fetch if no cache and not pending
+    if (!pending) {
+      fetchMultisubData();
+    }
+
+    // Cleanup subscription
+    return () => {
+      subscribers.delete(handleCacheUpdate);
+    };
   }, []);
 
-  return cacheSubplebbits || subplebbits;
+  return subplebbits;
 };
 
 export const getAutoSubscribeAddresses = () => cacheAutoSubscribeAddresses || [];
@@ -76,29 +123,36 @@ export const useDefaultSubplebbitAddresses = () => {
 };
 
 export const useMultisubMetadata = () => {
-  const [metadata, setMetadata] = useState<MultisubMetadata | null>(null);
+  const [metadata, setMetadata] = useState<MultisubMetadata | null>(cacheMetadata || null);
 
   useEffect(() => {
+    // If we already have cached data, use it immediately
     if (cacheMetadata) {
+      setMetadata(cacheMetadata);
       return;
     }
-    (async () => {
-      try {
-        const multisub = await fetch(
-          'https://raw.githubusercontent.com/plebbit/temporary-default-subplebbits/master/multisub.json',
-          // { cache: 'no-cache' }
-        ).then((res) => res.json());
-        const { title, description, createdAt, updatedAt } = multisub;
-        const metadata: MultisubMetadata = { title, description, createdAt, updatedAt };
-        cacheMetadata = metadata;
-        setMetadata(metadata);
-      } catch (e) {
-        console.warn(e);
+
+    // Subscribe to cache updates
+    const handleCacheUpdate = () => {
+      if (cacheMetadata) {
+        setMetadata(cacheMetadata);
       }
-    })();
+    };
+
+    subscribers.add(handleCacheUpdate);
+
+    // Trigger fetch if no cache and not pending
+    if (!pending) {
+      fetchMultisubData();
+    }
+
+    // Cleanup subscription
+    return () => {
+      subscribers.delete(handleCacheUpdate);
+    };
   }, []);
 
-  return cacheMetadata || metadata;
+  return metadata;
 };
 
 const getUniqueTags = (multisub: any) => {

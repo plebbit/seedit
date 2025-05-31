@@ -368,7 +368,11 @@ const SubplebbitSettings = () => {
   const params = useParams();
   const isInCreateSubplebbitView = isCreateSubplebbitView(location.pathname);
   const isInSubplebbitSettingsView = isSubplebbitSettingsView(location.pathname, params);
-  const isConnectedToRpc = !!account?.plebbitOptions.plebbitRpcClientsOptions;
+  const isConnectedToRpc = usePlebbitRpcSettings()?.state === 'connected';
+
+  if (isInCreateSubplebbitView && !isConnectedToRpc) {
+    navigate('/', { replace: true });
+  }
 
   const isReadOnly = (!settings && isInSubplebbitSettingsView) || (!isConnectedToRpc && isInCreateSubplebbitView);
 

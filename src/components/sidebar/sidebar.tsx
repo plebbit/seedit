@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import Plebbit from '@plebbit/plebbit-js';
-import { Comment, useAccount, useBlock, Role, Subplebbit, useSubplebbitStats, useAccountComment } from '@plebbit/plebbit-react-hooks';
+import { Comment, useAccount, useBlock, Role, Subplebbit, useSubplebbitStats, useAccountComment, usePlebbitRpcSettings } from '@plebbit/plebbit-react-hooks';
 import styles from './sidebar.module.css';
 import useIsSubplebbitOffline from '../../hooks/use-is-subplebbit-offline';
 import useIsMobile from '../../hooks/use-is-mobile';
@@ -250,7 +250,7 @@ const Sidebar = ({ comment, isSubCreatedButNotYetPublished, settings, subplebbit
     }
   }, []); // Empty dependency array ensures this runs only once on mount
 
-  const isConnectedToRpc = !!account?.plebbitOptions.plebbitRpcClientsOptions;
+  const isConnectedToRpc = usePlebbitRpcSettings()?.state === 'connected';
   const navigate = useNavigate();
   const handleCreateCommunity = () => {
     // creating a community only works if the user is running a full node

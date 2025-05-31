@@ -102,6 +102,8 @@ const Inbox = () => {
   useEffect(() => {
     if (error?.message && comments.length === 0) {
       setShouldShowErrorToUser(true);
+    } else if (comments.length > 0) {
+      setShouldShowErrorToUser(false);
     }
   }, [error, comments]);
 
