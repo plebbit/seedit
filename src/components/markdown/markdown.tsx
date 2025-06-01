@@ -71,7 +71,14 @@ const renderAnchorLink = (children: React.ReactNode, href: string) => {
         shouldReplaceText = children[0] === href || children[0].trim() === href.trim();
       }
 
-      const displayText = shouldReplaceText ? internalPath : children;
+      // For display purposes, remove leading slash from paths like "/p/something"
+      let displayText: React.ReactNode = children;
+      if (shouldReplaceText && internalPath.startsWith('/p/')) {
+        displayText = internalPath.substring(1); // Remove leading slash
+      } else if (shouldReplaceText) {
+        displayText = internalPath;
+      }
+
       return <Link to={internalPath}>{displayText}</Link>;
     } else {
       console.warn('Failed to transform seedit link to internal path:', href);
@@ -79,8 +86,8 @@ const renderAnchorLink = (children: React.ReactNode, href: string) => {
     }
   }
 
-  // Handle hash routes and internal patterns
-  if (href.startsWith('#/') || href.startsWith('/p/') || href.match(/^\/p\/[^\/]+(\/c\/[^\/]+)?$/)) {
+  // Handle hash routes and internal patterns (including routes that start with /#/)
+  if (href.startsWith('#/') || href.startsWith('/#/') || href.startsWith('/p/') || href.match(/^\/p\/[^/]+(\/c\/[^/]+)?$/)) {
     return <Link to={href}>{children}</Link>;
   }
 

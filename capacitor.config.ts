@@ -4,13 +4,20 @@ const config: CapacitorConfig = {
   appId: 'seedit.android',
   appName: 'seedit',
   webDir: 'build',
-  bundledWebRuntime: false,
   plugins: {
     CapacitorHttp: {
       enabled: true,
     },
     FileUploader: {
       enabled: true,
+    },
+    StatusBar: {
+      style: 'Dark',
+      backgroundColor: '#000000',
+      overlay: false,
+    },
+    EdgeToEdge: {
+      backgroundColor: '#000000',
     },
   },
   server: {

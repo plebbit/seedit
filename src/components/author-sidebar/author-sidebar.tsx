@@ -27,13 +27,14 @@ interface AuthorModeratingListProps {
 }
 
 const AuthorModeratingList = ({ accountSubplebbits, authorSubplebbits, isAuthor = false }: AuthorModeratingListProps) => {
+  const { t } = useTranslation();
   const rawAddresses = isAuthor ? authorSubplebbits : Object.keys(accountSubplebbits);
   const subplebbitAddresses = [...new Set(rawAddresses)];
 
   return (
     subplebbitAddresses.length > 0 && (
       <div className={styles.modList}>
-        <div className={styles.modListTitle}>moderator of</div>
+        <div className={styles.modListTitle}>{t('moderator_of')}</div>
         <ul className={`${styles.modListContent} ${styles.modsList}`}>
           {subplebbitAddresses.map((address, index) => (
             <li key={index}>

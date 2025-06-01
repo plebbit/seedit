@@ -42,16 +42,20 @@ export const isSeeditLink = (url: string): boolean => {
       routePath = parsedUrl.hash.substring(1); // Remove the # to get the path
     }
 
-    // For pleb.bz, only support the exact sharelink format
+    // For pleb.bz, only support the exact sharelink format without redirect parameter
     if (hostname === 'pleb.bz') {
+      // Don't treat as internal if there's a redirect parameter
+      if (parsedUrl.searchParams.has('redirect')) {
+        return false;
+      }
       // Must match exactly: /p/{subplebbitAddress}/c/{cid}
-      return /^\/p\/[^\/]+\/c\/[^\/]+$/.test(routePath);
+      return /^\/p\/[^/]+\/c\/[^/]+$/.test(routePath);
     }
 
     // For other seedit hostnames, support:
     // - /p/{subplebbitAddress}
     // - /p/{subplebbitAddress}/c/{commentCid}
-    return /^\/p\/[^\/]+(\/c\/[^\/]+)?$/.test(routePath);
+    return /^\/p\/[^/]+(\/c\/[^/]+)?$/.test(routePath);
   } catch {
     return false;
   }
@@ -100,10 +104,11 @@ export const isValidSubplebbitPattern = (pattern: string): boolean => {
   const pathPart = pattern.substring(2); // Remove "p/"
 
   // Check if it's a post pattern: subplebbitAddress/c/cid
-  const postMatch = pathPart.match(/^([^\/]+)\/c\/([^\/]+)$/);
+  const postMatch = pathPart.match(/^([^/]+)\/c\/([^/]+)$/);
   if (postMatch) {
-    const [, subplebbitAddress] = postMatch;
-    return isValidDomain(subplebbitAddress) || isValidIPNSKey(subplebbitAddress);
+    const [, subplebbitAddress, cid] = postMatch;
+    // CID should be at least 10 characters (minimum reasonable CID length)
+    return (isValidDomain(subplebbitAddress) || isValidIPNSKey(subplebbitAddress)) && cid.length >= 10;
   }
 
   // Check if it's just a subplebbit pattern: subplebbitAddress
@@ -115,14 +120,14 @@ export const preprocessSeeditPatterns = (content: string): string => {
   // Pattern to match "p/something" or "p/something/c/something"
   // Use negative lookbehind to avoid matching patterns that are already part of URLs
   // This prevents matching "p/" that comes after "://" or other URL indicators
-  const pattern = /(?<!https?:\/\/[^\s]*)\bp\/([a-zA-Z0-9\-\.]+(?:\/c\/[a-zA-Z0-9]+)?)/g;
+  const pattern = /(?<!https?:\/\/[^\s]*)\bp\/([a-zA-Z0-9\-.]+(?:\/c\/[a-zA-Z0-9]{10,100})?)/g;
 
   return content.replace(pattern, (match, capturedPath) => {
     const fullPattern = `p/${capturedPath}`;
 
     if (isValidSubplebbitPattern(fullPattern)) {
-      // Convert to markdown link format with hash-based route for HashRouter
-      return `[${fullPattern}](/#/${fullPattern})`;
+      // Convert to markdown link format for HashRouter (React Router will handle the hash automatically)
+      return `[${fullPattern}](/${fullPattern})`;
     }
 
     // If not valid, return unchanged

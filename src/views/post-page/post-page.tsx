@@ -295,7 +295,7 @@ const PostPage = () => {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, []);
+  }, [commentCid, subplebbitAddress, accountCommentIndex]);
 
   // probably not necessary to show the error to the user if the post loaded successfully
   const [shouldShowErrorToUser, setShouldShowErrorToUser] = useState(false);

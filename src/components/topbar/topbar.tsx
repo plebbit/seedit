@@ -188,7 +188,7 @@ const SortTypesDropdown = () => {
 
   return (
     <div className={styles.dropdown} ref={sortsDropdownRef} onClick={toggleSortsDropdown}>
-      <span className={styles.selectedTitle}>{getSelectedSortLabel()}</span>
+      <span className={styles.selectedTitle}>{t(getSelectedSortLabel())}</span>
       <div className={`${styles.dropChoices} ${styles.sortsDropChoices} ${sortsDropdownClass}`} ref={sortsdropdownItemsRef}>
         {sortTypes.map((sortType, index) => {
           let dropdownLink = isInSubplebbitView ? `/p/${params.subplebbitAddress}/${sortType}` : isinAllView ? `/p/all/${sortType}` : sortType;
