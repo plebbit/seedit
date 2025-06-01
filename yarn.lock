@@ -1144,12 +1144,12 @@
   resolved "https://registry.yarnpkg.com/@capacitor/local-notifications/-/local-notifications-7.0.1.tgz#663c0c364518395c995381efebd11f5dcdd1d8da"
   integrity sha512-GJewoiqiTLXNNRxqeJDi6vxj1Y37jLFI3KSdAM2Omvxew4ewyBSCjwOtXMQaEg+lvzGHtK6FPrSc2v/2EcL0wA==
 
-"@capacitor/status-bar@^7.0.1":
+"@capacitor/status-bar@7.0.1":
   version "7.0.1"
   resolved "https://registry.yarnpkg.com/@capacitor/status-bar/-/status-bar-7.0.1.tgz#6bd3769ef35158c961ff2a6b571c03e9bce55809"
   integrity sha512-iDv3mXYo9CdxYRVwt3/pRyuk25p7Sn4GfaS/zMZyVIqTzsvKLCIIH3GdKK+ta+nsNcAVpCw/t5jFEBt1D18ctA==
 
-"@capawesome/capacitor-android-edge-to-edge-support@^7.2.2":
+"@capawesome/capacitor-android-edge-to-edge-support@7.2.2":
   version "7.2.2"
   resolved "https://registry.yarnpkg.com/@capawesome/capacitor-android-edge-to-edge-support/-/capacitor-android-edge-to-edge-support-7.2.2.tgz#830720988b9db29a5bf18db907c4b8b1f8545f97"
   integrity sha512-AAqCFswAVlA6WX0iaVbMCEnt/2mNBZGmU3JbbFlqWAg61NCMxm8+JlmiNoG+6wf/6S/BWVRL8Ac3L9csaZH/8w==
