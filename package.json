@@ -9,6 +9,8 @@
   "dependencies": {
     "@capacitor/app": "7.0.1",
     "@capacitor/local-notifications": "7.0.1",
+    "@capacitor/status-bar": "7.0.1",
+    "@capawesome/capacitor-android-edge-to-edge-support": "7.2.2",
     "@floating-ui/react": "0.26.1",
     "@plebbit/plebbit-react-hooks": "https://github.com/plebbit/plebbit-react-hooks.git#090e70bed5f799fc140a31a6f2123f9125954fde",
     "@testing-library/jest-dom": "5.14.1",
