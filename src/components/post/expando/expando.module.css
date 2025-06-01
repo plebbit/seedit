@@ -53,6 +53,7 @@
 
 .mediaPreview img {
   /* TODO: max width should be dynamically calculated based on file dimensions from API */
+  width: 100%;
   max-width: 600px;
   background-color: var(--background-thumbnail);
   object-fit: contain;
@@ -60,6 +61,7 @@
 
 .mediaPreview video {
   /* TODO: max width should be dynamically calculated based on file dimensions from API */
+  width: 100%;
   max-width: 700px;
   max-height: 50vh;
   background-color: var(--background-thumbnail);
@@ -67,9 +69,22 @@
 }
 
 .mediaPreview iframe {
+  width: 100%;
   display: block;
   border: none;
   background-color: var(--background-thumbnail);
+}
+
+@media (min-width: 640px) {
+  .mediaPreview iframe {
+    max-width: calc(100vw - 430px);
+  }
+}
+
+@media (max-width: 940px) {
+  .mediaPreview iframe {
+    max-width: 100%;
+  }
 }
 
 .hideSpoiler {
