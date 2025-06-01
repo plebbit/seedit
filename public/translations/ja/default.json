@@ -442,5 +442,8 @@
   "no_global_rules": "...グローバルルールはありません。",
   "for_reddits_downfall": "...Redditの没落のために。",
   "evil_corp_cant_stop_us": "...Evil Corp™ は私たちを止められない。",
-  "no_gods_no_global_admins": "...神はいない、グローバル管理者もいない。"
+  "no_gods_no_global_admins": "...神はいない、グローバル管理者もいない。",
+  "tags": "タグ",
+  "moderator_of": "のモデレーター",
+  "not_subscriber_nor_moderator": "あなたはどのコミュニティの購読者でもモデレーターでもありません。"
 }

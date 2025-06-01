@@ -442,5 +442,8 @@
   "no_global_rules": "...nuk ka rregulla globale.",
   "for_reddits_downfall": "...për rënien e Reddit.",
   "evil_corp_cant_stop_us": "...Evil Corp™ nuk mund të na ndalojë.",
-  "no_gods_no_global_admins": "...pa perëndi, pa administratorë globalë."
+  "no_gods_no_global_admins": "...pa perëndi, pa administratorë globalë.",
+  "tags": "Etiketat",
+  "moderator_of": "moderator i",
+  "not_subscriber_nor_moderator": "Nuk jeni as abonues as moderator i ndonjë komuniteti."
 }

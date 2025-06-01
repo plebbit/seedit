@@ -442,5 +442,8 @@
   "no_global_rules": "...אין כללים גלובליים.",
   "for_reddits_downfall": "...לנפילתו של Reddit.",
   "evil_corp_cant_stop_us": "...Evil Corp™ לא יכול לעצור אותנו.",
-  "no_gods_no_global_admins": "...אין אלים, אין מנהלי מערכת גלובליים."
+  "no_gods_no_global_admins": "...אין אלים, אין מנהלי מערכת גלובליים.",
+  "tags": "תגיות",
+  "moderator_of": "מנהל של",
+  "not_subscriber_nor_moderator": "אתה לא מנוי ולא מפקח על שום קהילה."
 }

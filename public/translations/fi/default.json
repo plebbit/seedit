@@ -442,5 +442,8 @@
   "no_global_rules": "...ei globaalien sääntöjä.",
   "for_reddits_downfall": "...Redditin tuhon vuoksi.",
   "evil_corp_cant_stop_us": "...Evil Corp™ ei voi pysäyttää meitä.",
-  "no_gods_no_global_admins": "...ei jumalia, ei globaaleja ylläpitäjiä."
+  "no_gods_no_global_admins": "...ei jumalia, ei globaaleja ylläpitäjiä.",
+  "tags": "Tagit",
+  "moderator_of": "moderaattori",
+  "not_subscriber_nor_moderator": "Et ole tilaaja etkä moderaattori missään yhteisössä."
 }

@@ -442,5 +442,8 @@
   "no_global_rules": "...küresel kurallar yok.",
   "for_reddits_downfall": "...Reddit'in çöküşü için.",
   "evil_corp_cant_stop_us": "...Evil Corp™ bizi durduramaz.",
-  "no_gods_no_global_admins": "...tanrılar yok, global yöneticiler yok."
+  "no_gods_no_global_admins": "...tanrılar yok, global yöneticiler yok.",
+  "tags": "Etiketler",
+  "moderator_of": "moderatorü",
+  "not_subscriber_nor_moderator": "Hiçbir topluluğun abonesi veya moderatörü değilsiniz."
 }

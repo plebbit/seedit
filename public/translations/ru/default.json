@@ -442,5 +442,8 @@
   "no_global_rules": "...нет глобальных правил.",
   "for_reddits_downfall": "...для падения Reddit.",
   "evil_corp_cant_stop_us": "...Evil Corp™ не может нас остановить.",
-  "no_gods_no_global_admins": "...ни богов, ни глобальных администраторов."
+  "no_gods_no_global_admins": "...ни богов, ни глобальных администраторов.",
+  "tags": "Теги",
+  "moderator_of": "модератор",
+  "not_subscriber_nor_moderator": "Вы не являетесь подписчиком или модератором ни одного сообщества."
 }

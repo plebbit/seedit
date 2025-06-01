@@ -442,5 +442,8 @@
   "no_global_rules": "...walang global na mga patakaran.",
   "for_reddits_downfall": "...para sa pagbagsak ng Reddit.",
   "evil_corp_cant_stop_us": "...Hindi kami mapipigilan ng Evil Corp™.",
-  "no_gods_no_global_admins": "...walang diyos, walang global admins."
+  "no_gods_no_global_admins": "...walang diyos, walang global admins.",
+  "tags": "Mga tag",
+  "moderator_of": "moderator ng",
+  "not_subscriber_nor_moderator": "Hindi ka subscriber ni moderator ng anumang komunidad."
 }

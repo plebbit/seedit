@@ -442,5 +442,8 @@
   "no_global_rules": "...nincsenek globális szabályok.",
   "for_reddits_downfall": "...a Reddit bukásáért.",
   "evil_corp_cant_stop_us": "...Evil Corp™ nem állíthat meg minket.",
-  "no_gods_no_global_admins": "...nincsenek istenek, nincsenek globális adminok."
+  "no_gods_no_global_admins": "...nincsenek istenek, nincsenek globális adminok.",
+  "tags": "Címkék",
+  "moderator_of": "moderátora",
+  "not_subscriber_nor_moderator": "Nem vagy előfizető vagy moderátor egyetlen közösségben sem."
 }

@@ -442,5 +442,8 @@
   "no_global_rules": "...geen globale regels.",
   "for_reddits_downfall": "...voor de ondergang van Reddit.",
   "evil_corp_cant_stop_us": "...Evil Corp™ kan ons niet stoppen.",
-  "no_gods_no_global_admins": "...geen goden, geen globale beheerders."
+  "no_gods_no_global_admins": "...geen goden, geen globale beheerders.",
+  "tags": "Tags",
+  "moderator_of": "moderator van",
+  "not_subscriber_nor_moderator": "Je bent geen abonnee of moderator van een gemeenschap."
 }

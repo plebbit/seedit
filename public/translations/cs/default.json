@@ -442,5 +442,8 @@
   "no_global_rules": "...žádná globální pravidla.",
   "for_reddits_downfall": "...pro pád Redditu.",
   "evil_corp_cant_stop_us": "...Evil Corp™ nás nezastaví.",
-  "no_gods_no_global_admins": "...žádní bohové, žádní globální správci."
+  "no_gods_no_global_admins": "...žádní bohové, žádní globální správci.",
+  "tags": "Štítky",
+  "moderator_of": "moderátor",
+  "not_subscriber_nor_moderator": "Nejste odběratelem ani moderátorem žádné komunity."
 }

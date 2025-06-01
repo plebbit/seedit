@@ -442,5 +442,8 @@
   "no_global_rules": "...ingen globale regler.",
   "for_reddits_downfall": "...for Reddits fald.",
   "evil_corp_cant_stop_us": "...Evil Corp™ kan ikke stoppe os.",
-  "no_gods_no_global_admins": "...ingen guder, ingen globale administratorer."
+  "no_gods_no_global_admins": "...ingen guder, ingen globale administratorer.",
+  "tags": "Tags",
+  "moderator_of": "moderator af",
+  "not_subscriber_nor_moderator": "Du er hverken abonnent eller moderator i nogen fællesskab."
 }

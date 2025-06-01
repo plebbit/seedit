@@ -442,5 +442,8 @@
   "no_global_rules": "...没有全局规则。",
   "for_reddits_downfall": "...为了Reddit的衰落。",
   "evil_corp_cant_stop_us": "...Evil Corp™ 无法阻止我们。",
-  "no_gods_no_global_admins": "...没有神，没有全局管理员。"
+  "no_gods_no_global_admins": "...没有神，没有全局管理员。",
+  "tags": "标签",
+  "moderator_of": "版主",
+  "not_subscriber_nor_moderator": "您既不是任何社区的订阅者，也不是管理员。"
 }

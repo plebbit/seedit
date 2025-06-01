@@ -442,5 +442,8 @@
   "no_global_rules": "...ไม่มีข้อกำหนดทั่วโลก",
   "for_reddits_downfall": "...เพื่อความล่มสลายของ Reddit.",
   "evil_corp_cant_stop_us": "...Evil Corp™ ไม่สามารถหยุดเราได้",
-  "no_gods_no_global_admins": "...ไม่มีพระเจ้า ไม่มีผู้ดูแลระบบระดับโลก"
+  "no_gods_no_global_admins": "...ไม่มีพระเจ้า ไม่มีผู้ดูแลระบบระดับโลก",
+  "tags": "แท็ก",
+  "moderator_of": "ผู้ดูแล",
+  "not_subscriber_nor_moderator": "คุณไม่ใช่ผู้สมัครสมาชิกและไม่ใช่ผู้ดูแลชุมชนใดๆ"
 }

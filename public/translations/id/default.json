@@ -442,5 +442,8 @@
   "no_global_rules": "...tidak ada aturan global.",
   "for_reddits_downfall": "...untuk kejatuhan Reddit.",
   "evil_corp_cant_stop_us": "...Evil Corp™ tidak bisa menghentikan kami.",
-  "no_gods_no_global_admins": "...tidak ada dewa, tidak ada admin global."
+  "no_gods_no_global_admins": "...tidak ada dewa, tidak ada admin global.",
+  "tags": "Tag",
+  "moderator_of": "moderator dari",
+  "not_subscriber_nor_moderator": "Anda bukan pelanggan maupun moderator komunitas manapun."
 }

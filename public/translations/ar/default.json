@@ -442,5 +442,8 @@
   "no_global_rules": "...لا توجد قواعد عامة.",
   "for_reddits_downfall": "...لسقوط Reddit.",
   "evil_corp_cant_stop_us": "...Evil Corp™ لا يمكنها إيقافنا.",
-  "no_gods_no_global_admins": "...لا آلهة، لا مسؤولون عامون."
+  "no_gods_no_global_admins": "...لا آلهة، لا مسؤولون عامون.",
+  "tags": "الوسوم",
+  "moderator_of": "مشرف على",
+  "not_subscriber_nor_moderator": "أنت لست مشتركًا ولا مشرفًا في أي مجتمع."
 }

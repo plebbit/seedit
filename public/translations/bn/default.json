@@ -442,5 +442,8 @@
   "no_global_rules": "...কোনও গ্লোবাল রুল নেই।",
   "for_reddits_downfall": "...রেডডিটের পতনের জন্য।",
   "evil_corp_cant_stop_us": "...Evil Corp™ আমাদের থামাতে পারে না।",
-  "no_gods_no_global_admins": "...কোনো দেবতা নেই, কোনো গ্লোবাল অ্যাডমিন নেই।"
+  "no_gods_no_global_admins": "...কোনো দেবতা নেই, কোনো গ্লোবাল অ্যাডমিন নেই।",
+  "tags": "ট্যাগসমূহ",
+  "moderator_of": "মডারেটর",
+  "not_subscriber_nor_moderator": "আপনি কোনও কমিউনিটির সদস্য বা মডারেটর নন।"
 }

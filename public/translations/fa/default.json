@@ -442,5 +442,8 @@
   "no_global_rules": "...هیچ قانون کلی وجود ندارد.",
   "for_reddits_downfall": "...برای سقوط ردیت.",
   "evil_corp_cant_stop_us": "...Evil Corp™ نمی‌تواند ما را متوقف کند.",
-  "no_gods_no_global_admins": "...نه خدایان، نه مدیران جهانی."
+  "no_gods_no_global_admins": "...نه خدایان، نه مدیران جهانی.",
+  "tags": "برچسب‌ها",
+  "moderator_of": "مدیر",
+  "not_subscriber_nor_moderator": "شما نه عضو مشترک هستید و نه مدیر هیچ جامعه‌ای."
 }

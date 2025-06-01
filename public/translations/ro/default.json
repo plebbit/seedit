@@ -442,5 +442,8 @@
   "no_global_rules": "...fără reguli globale.",
   "for_reddits_downfall": "...pentru declinul Reddit.",
   "evil_corp_cant_stop_us": "...Evil Corp™ nu ne poate opri.",
-  "no_gods_no_global_admins": "...fără zei, fără administratori globali."
+  "no_gods_no_global_admins": "...fără zei, fără administratori globali.",
+  "tags": "Etichete",
+  "moderator_of": "moderator al",
+  "not_subscriber_nor_moderator": "Nu ești abonat și nici moderator al vreunei comunități."
 }

@@ -442,5 +442,8 @@
   "no_global_rules": "...कोणतेही ग्लोबल नियम नाहीत.",
   "for_reddits_downfall": "...Reddit च्या पतनासाठी.",
   "evil_corp_cant_stop_us": "...Evil Corp™ आम्हाला थांबवू शकत नाही.",
-  "no_gods_no_global_admins": "...कोणतेही देव नाहीत, कोणतेही जागतिक प्रशासक नाहीत."
+  "no_gods_no_global_admins": "...कोणतेही देव नाहीत, कोणतेही जागतिक प्रशासक नाहीत.",
+  "tags": "टॅग",
+  "moderator_of": "मॉडरेटर",
+  "not_subscriber_nor_moderator": "तुम कोणत्याही समुदायाचे सदस्य किंवा मॉडरेटर नाही."
 }
