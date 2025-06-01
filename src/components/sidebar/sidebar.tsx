@@ -1,11 +1,8 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import Plebbit from '@plebbit/plebbit-js';
 import { Comment, useAccount, useBlock, Role, Subplebbit, useSubplebbitStats, useAccountComment, usePlebbitRpcSettings } from '@plebbit/plebbit-react-hooks';
-import styles from './sidebar.module.css';
-import useIsSubplebbitOffline from '../../hooks/use-is-subplebbit-offline';
-import useIsMobile from '../../hooks/use-is-mobile';
+import Plebbit from '@plebbit/plebbit-js';
 import { getPostScore } from '../../lib/utils/post-utils';
 import { getFormattedDate, getFormattedTimeDuration, getFormattedTimeAgo } from '../../lib/utils/time-utils';
 import { findSubplebbitCreator } from '../../lib/utils/user-utils';
@@ -23,13 +20,16 @@ import {
   isSubplebbitsView,
   isSubplebbitView,
 } from '../../lib/utils/view-utils';
+import useCommunitySubtitles from '../../hooks/use-community-subtitles';
+import useIsMobile from '../../hooks/use-is-mobile';
+import useIsSubplebbitOffline from '../../hooks/use-is-subplebbit-offline';
+import { FAQ } from '../../views/about/about';
+import LoadingEllipsis from '../loading-ellipsis';
 import Markdown from '../markdown';
 import SearchBar from '../search-bar';
 import SubscribeButton from '../subscribe-button';
-import LoadingEllipsis from '../loading-ellipsis';
 import { Version } from '../version';
-import { FAQ } from '../../views/about/about';
-import { communitySubtitles } from '../../constants/community-subtitles';
+import styles from './sidebar.module.css';
 
 const RulesList = ({ rules }: { rules: string[] }) => {
   const { t } = useTranslation();
@@ -233,6 +233,8 @@ const Sidebar = ({ comment, isSubCreatedButNotYetPublished, settings, subplebbit
   const [subtitle1, setSubtitle1] = useState('');
   const [subtitle2, setSubtitle2] = useState('');
 
+  const communitySubtitles = useCommunitySubtitles();
+
   useEffect(() => {
     if (communitySubtitles.length >= 2) {
       const indices = new Set<number>();
@@ -244,11 +246,10 @@ const Sidebar = ({ comment, isSubCreatedButNotYetPublished, settings, subplebbit
       setSubtitle1(communitySubtitles[index1]);
       setSubtitle2(communitySubtitles[index2]);
     } else if (communitySubtitles.length === 1) {
-      // Handle case with only one subtitle
       setSubtitle1(communitySubtitles[0]);
-      setSubtitle2(''); // Or handle as needed
+      setSubtitle2('');
     }
-  }, []); // Empty dependency array ensures this runs only once on mount
+  }, [communitySubtitles]);
 
   const isConnectedToRpc = usePlebbitRpcSettings()?.state === 'connected';
   const navigate = useNavigate();
