@@ -17,7 +17,9 @@ let releaseChangelog =
 // format
 releaseChangelog = releaseChangelog.trim().replace(/\n\n+/g, '\n\n')
 
-const releaseBody = `- Web app: https://seedit.app
+const releaseBody = `This version fixes a bug where the android app would launch in fullscreen mode.
+
+- Web app: https://seedit.app
 - Decentralized web app: https://seedit.eth (only works on [Brave Browser](https://brave.com/) or via [IPFS Companion](https://docs.ipfs.tech/install/ipfs-companion/#prerequisites))
 
 ## Downloads

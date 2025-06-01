@@ -1,3 +1,19 @@
+## [0.5.3](https://github.com/plebbit/seedit/compare/v0.5.2...v0.5.3) (2025-06-01)
+
+
+### Bug Fixes
+
+* **android:** resolve fullscreen overlay preventing user interaction ([4e69723](https://github.com/plebbit/seedit/commit/4e69723129dcf1a505b5b0cf65624e9c6629186b))
+* **post page:** component would retain scrolling position incorrectly when navigating within itself ([415a56c](https://github.com/plebbit/seedit/commit/415a56c32dd32624ccbb50a710c32c50c5aa90e2))
+* **post:** title could display some markdown syntax ([3eaf3c5](https://github.com/plebbit/seedit/commit/3eaf3c5eaf49ae46bb68a97015ccb5edcfba8189))
+
+
+### Features
+
+* **android:** add new seedit icon ([2a3c3a3](https://github.com/plebbit/seedit/commit/2a3c3a355b7b9a5c72e98fb7d5eda13f96ecf126))
+
+
+
 ## [0.5.2](https://github.com/plebbit/seedit/compare/v0.5.1...v0.5.2) (2025-05-31)
 
 
