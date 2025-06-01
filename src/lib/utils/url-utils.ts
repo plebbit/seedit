@@ -45,13 +45,13 @@ export const isSeeditLink = (url: string): boolean => {
     // For pleb.bz, only support the exact sharelink format
     if (hostname === 'pleb.bz') {
       // Must match exactly: /p/{subplebbitAddress}/c/{cid}
-      return /^\/p\/[^\/]+\/c\/[^\/]+$/.test(routePath);
+      return /^\/p\/[^/]+\/c\/[^/]+$/.test(routePath);
     }
 
     // For other seedit hostnames, support:
     // - /p/{subplebbitAddress}
     // - /p/{subplebbitAddress}/c/{commentCid}
-    return /^\/p\/[^\/]+(\/c\/[^\/]+)?$/.test(routePath);
+    return /^\/p\/[^/]+(\/c\/[^/]+)?$/.test(routePath);
   } catch {
     return false;
   }
@@ -100,7 +100,7 @@ export const isValidSubplebbitPattern = (pattern: string): boolean => {
   const pathPart = pattern.substring(2); // Remove "p/"
 
   // Check if it's a post pattern: subplebbitAddress/c/cid
-  const postMatch = pathPart.match(/^([^\/]+)\/c\/([^\/]+)$/);
+  const postMatch = pathPart.match(/^([^/]+)\/c\/([^/]+)$/);
   if (postMatch) {
     const [, subplebbitAddress] = postMatch;
     return isValidDomain(subplebbitAddress) || isValidIPNSKey(subplebbitAddress);
@@ -115,7 +115,7 @@ export const preprocessSeeditPatterns = (content: string): string => {
   // Pattern to match "p/something" or "p/something/c/something"
   // Use negative lookbehind to avoid matching patterns that are already part of URLs
   // This prevents matching "p/" that comes after "://" or other URL indicators
-  const pattern = /(?<!https?:\/\/[^\s]*)\bp\/([a-zA-Z0-9\-\.]+(?:\/c\/[a-zA-Z0-9]+)?)/g;
+  const pattern = /(?<!https?:\/\/[^\s]*)\bp\/([a-zA-Z0-9\-.]+(?:\/c\/[a-zA-Z0-9]+)?)/g;
 
   return content.replace(pattern, (match, capturedPath) => {
     const fullPattern = `p/${capturedPath}`;

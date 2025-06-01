@@ -80,7 +80,7 @@ const renderAnchorLink = (children: React.ReactNode, href: string) => {
   }
 
   // Handle hash routes and internal patterns
-  if (href.startsWith('#/') || href.startsWith('/p/') || href.match(/^\/p\/[^\/]+(\/c\/[^\/]+)?$/)) {
+  if (href.startsWith('#/') || href.startsWith('/p/') || href.match(/^\/p\/[^/]+(\/c\/[^/]+)?$/)) {
     return <Link to={href}>{children}</Link>;
   }
 
