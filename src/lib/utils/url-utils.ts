@@ -120,14 +120,18 @@ export const preprocessSeeditPatterns = (content: string): string => {
   // Pattern to match "p/something" or "p/something/c/something"
   // Use negative lookbehind to avoid matching patterns that are already part of URLs
   // This prevents matching "p/" that comes after "://" or other URL indicators
-  const pattern = /(?<!https?:\/\/[^\s]*)\bp\/([a-zA-Z0-9\-.]+(?:\/c\/[a-zA-Z0-9]{10,100})?)/g;
+  const pattern = /(?<!https?:\/\/[^\s]*)\bp\/([a-zA-Z0-9\-.]+(?:\/c\/[a-zA-Z0-9]{10,100})?)[.,:;!?]*/g;
 
   return content.replace(pattern, (match, capturedPath) => {
-    const fullPattern = `p/${capturedPath}`;
+    // Remove any trailing punctuation from the captured path
+    const cleanPath = capturedPath.replace(/[.,:;!?]+$/, '');
+    const fullPattern = `p/${cleanPath}`;
 
     if (isValidSubplebbitPattern(fullPattern)) {
-      // Convert to markdown link format for HashRouter (React Router will handle the hash automatically)
-      return `[${fullPattern}](/${fullPattern})`;
+      // Get the trailing punctuation that was matched but shouldn't be part of the link
+      const trailingPunctuation = match.slice(fullPattern.length);
+      // Convert to markdown link format and preserve trailing punctuation
+      return `[${fullPattern}](/${fullPattern})${trailingPunctuation}`;
     }
 
     // If not valid, return unchanged
