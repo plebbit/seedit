@@ -88,8 +88,11 @@ const Post = ({ post }: { post: Comment }) => {
   const account = useAccount();
 
   const replies = useMemo(() => {
-    const pinnedReplies = unsortedReplies.filter((reply) => reply.pinned);
-    const unpinnedReplies = unsortedReplies.filter((reply) => !reply.pinned);
+    // Filter out deleted replies with no children first
+    const filteredReplies = unsortedReplies.filter((reply) => !(reply.deleted && reply.replyCount === 0));
+
+    const pinnedReplies = filteredReplies.filter((reply) => reply.pinned);
+    const unpinnedReplies = filteredReplies.filter((reply) => !reply.pinned);
 
     const sortedPinnedReplies = [...pinnedReplies].sort((a, b) => (b.timestamp || 0) - (a.timestamp || 0));
 
