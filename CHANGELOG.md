@@ -1,3 +1,22 @@
+## [0.5.4](https://github.com/plebbit/seedit/compare/v0.5.3...v0.5.4) (2025-06-09)
+
+
+### Bug Fixes
+
+* **account data editor:** immutable fields were included in the editor ([075f5cc](https://github.com/plebbit/seedit/commit/075f5cc80a1dc4f6aa85d8a6e3cadaed244d72ce))
+* **account settings:** changing account didn't change fields in UI ([af48dcc](https://github.com/plebbit/seedit/commit/af48dccc02a825b6e6a5257baaba6b0ac4fcaf76))
+* **post content:** trailing punctuation could prevent internal plebbit links from getting parsed ([fdf7bf6](https://github.com/plebbit/seedit/commit/fdf7bf60a70092e8493d777bf79f100e61bb3323))
+* **post page:** deleted replies with no children would be rendered needlessly ([333cb38](https://github.com/plebbit/seedit/commit/333cb38b3efe5e3a76180fe0076f9c498a1d006c))
+* **wallet settings:** removing a wallet didn't work ([7554d9d](https://github.com/plebbit/seedit/commit/7554d9dbdecf65251e1e888e5145626f41cf2cbe))
+
+
+### Features
+
+* **feed:** yearly feed suggestions and optimized loading for suggestions past 25 loaded posts ([a8155f1](https://github.com/plebbit/seedit/commit/a8155f1d931f1174dc405283c9f13ca6c4704178))
+* **wallet settings:** add timestamp field ([f4cf9d3](https://github.com/plebbit/seedit/commit/f4cf9d38979d97610b1021471b1d6bcb368ede2c))
+
+
+
 ## [0.5.3](https://github.com/plebbit/seedit/compare/v0.5.2...v0.5.3) (2025-06-01)
 
 
