@@ -445,5 +445,6 @@
   "no_gods_no_global_admins": "...신도 없고, 글로벌 관리자도 없습니다.",
   "tags": "태그",
   "moderator_of": "의 관리자",
-  "not_subscriber_nor_moderator": "당신은 어떤 커뮤니티의 구독자도 아니고 중재자도 아닙니다."
+  "not_subscriber_nor_moderator": "당신은 어떤 커뮤니티의 구독자도 아니고 중재자도 아닙니다.",
+  "more_posts_last_year": "{{count}} 개 게시물 지난 {{currentTimeFilterName}}: <1>작년 게시물 더 보기</1>"
 }

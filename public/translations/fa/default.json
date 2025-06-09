@@ -445,5 +445,6 @@
   "no_gods_no_global_admins": "...نه خدایان، نه مدیران جهانی.",
   "tags": "برچسب‌ها",
   "moderator_of": "مدیر",
-  "not_subscriber_nor_moderator": "شما نه عضو مشترک هستید و نه مدیر هیچ جامعه‌ای."
+  "not_subscriber_nor_moderator": "شما نه عضو مشترک هستید و نه مدیر هیچ جامعه‌ای.",
+  "more_posts_last_year": "{{count}} پست در {{currentTimeFilterName}}: <1>نمایش پست‌های بیشتر از سال گذشته</1>"
 }

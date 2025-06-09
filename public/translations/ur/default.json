@@ -445,5 +445,6 @@
   "no_gods_no_global_admins": "...کوئی خدا نہیں، کوئی عالمی ایڈمن نہیں۔",
   "tags": "ٹیگز",
   "moderator_of": "منتظم",
-  "not_subscriber_nor_moderator": "آپ کسی کمیونٹی کے سبسکرائبر یا ماڈریٹر نہیں ہیں۔"
+  "not_subscriber_nor_moderator": "آپ کسی کمیونٹی کے سبسکرائبر یا ماڈریٹر نہیں ہیں۔",
+  "more_posts_last_year": "{{count}} پوسٹس پچھلے {{currentTimeFilterName}} میں: <1>پچھلے سال کی مزید پوسٹس دکھائیں</1>"
 }

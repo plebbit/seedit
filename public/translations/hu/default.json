@@ -445,5 +445,6 @@
   "no_gods_no_global_admins": "...nincsenek istenek, nincsenek globális adminok.",
   "tags": "Címkék",
   "moderator_of": "moderátora",
-  "not_subscriber_nor_moderator": "Nem vagy előfizető vagy moderátor egyetlen közösségben sem."
+  "not_subscriber_nor_moderator": "Nem vagy előfizető vagy moderátor egyetlen közösségben sem.",
+  "more_posts_last_year": "{{count}} bejegyzés a múlt {{currentTimeFilterName}}: <1>több bejegyzés mutatása a múlt évből</1>"
 }

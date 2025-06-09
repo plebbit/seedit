@@ -445,5 +445,6 @@
   "no_gods_no_global_admins": "...ingen guder, ingen globale administratorer.",
   "tags": "Tags",
   "moderator_of": "moderator af",
-  "not_subscriber_nor_moderator": "Du er hverken abonnent eller moderator i nogen fællesskab."
+  "not_subscriber_nor_moderator": "Du er hverken abonnent eller moderator i nogen fællesskab.",
+  "more_posts_last_year": "{{count}} indlæg sidste {{currentTimeFilterName}}: <1>vis flere indlæg fra sidste år</1>"
 }

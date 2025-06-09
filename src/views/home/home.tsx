@@ -108,8 +108,42 @@ const Home = () => {
     };
   }, [searchQuery, feed?.length, searchAttemptCompleted]);
 
-  const { feed: weeklyFeed } = useFeed({ subplebbitAddresses, sortType, newerThan: 60 * 60 * 24 * 7 });
-  const { feed: monthlyFeed } = useFeed({ subplebbitAddresses, sortType, newerThan: 60 * 60 * 24 * 30 });
+  const {
+    feed: weeklyFeed,
+    hasMore: hasMoreWeekly,
+    loadMore: loadMoreWeekly,
+  } = useFeed({
+    subplebbitAddresses,
+    sortType,
+    newerThan: 60 * 60 * 24 * 7,
+  });
+  const {
+    feed: monthlyFeed,
+    hasMore: hasMoreMonthly,
+    loadMore: loadMoreMonthly,
+  } = useFeed({
+    subplebbitAddresses,
+    sortType,
+    newerThan: 60 * 60 * 24 * 30,
+  });
+  const {
+    feed: yearlyFeed,
+    hasMore: hasMoreYearly,
+    loadMore: loadMoreYearly,
+  } = useFeed({
+    subplebbitAddresses,
+    sortType,
+    newerThan: 60 * 60 * 24 * 365,
+  });
+
+  const combinedLoadMore = () => {
+    loadMore();
+    if (sortType !== 'top') {
+      if (hasMoreWeekly) loadMoreWeekly();
+      if (hasMoreMonthly) loadMoreMonthly();
+      if (hasMoreYearly) loadMoreYearly();
+    }
+  };
 
   const virtuosoRef = useRef<VirtuosoHandle | null>(null);
 
@@ -139,6 +173,7 @@ const Home = () => {
     subplebbitAddressesWithNewerPosts,
     weeklyFeedLength: weeklyFeed.length,
     monthlyFeedLength: monthlyFeed.length,
+    yearlyFeedLength: yearlyFeed.length,
     currentTimeFilterName: searchQuery ? 'all' : currentTimeFilterName,
     reset,
     searchQuery: searchQuery,
@@ -250,7 +285,7 @@ const Home = () => {
               components={{
                 Footer: () => <FeedFooter {...footerProps} />,
               }}
-              endReached={loadMore}
+              endReached={combinedLoadMore}
               ref={virtuosoRef}
               restoreStateFrom={lastVirtuosoState}
               initialScrollTop={lastVirtuosoState?.scrollTop}

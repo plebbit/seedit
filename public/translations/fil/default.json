@@ -445,5 +445,6 @@
   "no_gods_no_global_admins": "...walang diyos, walang global admins.",
   "tags": "Mga tag",
   "moderator_of": "moderator ng",
-  "not_subscriber_nor_moderator": "Hindi ka subscriber ni moderator ng anumang komunidad."
+  "not_subscriber_nor_moderator": "Hindi ka subscriber ni moderator ng anumang komunidad.",
+  "more_posts_last_year": "{{count}} post sa huling {{currentTimeFilterName}}: <1>ipakita ang mas maraming post mula sa nakaraang taon</1>"
 }

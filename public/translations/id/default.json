@@ -445,5 +445,6 @@
   "no_gods_no_global_admins": "...tidak ada dewa, tidak ada admin global.",
   "tags": "Tag",
   "moderator_of": "moderator dari",
-  "not_subscriber_nor_moderator": "Anda bukan pelanggan maupun moderator komunitas manapun."
+  "not_subscriber_nor_moderator": "Anda bukan pelanggan maupun moderator komunitas manapun.",
+  "more_posts_last_year": "{{count}} postingan pada {{currentTimeFilterName}} terakhir: <1>tampilkan lebih banyak postingan dari tahun lalu</1>"
 }

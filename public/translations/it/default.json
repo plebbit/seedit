@@ -445,5 +445,6 @@
   "no_gods_no_global_admins": "...niente dèi, niente amministratori globali.",
   "tags": "Tag",
   "moderator_of": "moderatore di",
-  "not_subscriber_nor_moderator": "Non sei né iscritto né moderatore di nessuna community."
+  "not_subscriber_nor_moderator": "Non sei né iscritto né moderatore di nessuna community.",
+  "more_posts_last_year": "{{count}} post nell'ultimo {{currentTimeFilterName}}: <1>mostra più post dell'anno scorso</1>"
 }

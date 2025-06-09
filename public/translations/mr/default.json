@@ -445,5 +445,6 @@
   "no_gods_no_global_admins": "...कोणतेही देव नाहीत, कोणतेही जागतिक प्रशासक नाहीत.",
   "tags": "टॅग",
   "moderator_of": "मॉडरेटर",
-  "not_subscriber_nor_moderator": "तुम कोणत्याही समुदायाचे सदस्य किंवा मॉडरेटर नाही."
+  "not_subscriber_nor_moderator": "तुम कोणत्याही समुदायाचे सदस्य किंवा मॉडरेटर नाही.",
+  "more_posts_last_year": "{{count}} पोस्ट मागील {{currentTimeFilterName}}: <1>मागील वर्षीचे अधिक पोस्ट दाखवा</1>"
 }

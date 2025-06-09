@@ -445,5 +445,6 @@
   "no_gods_no_global_admins": "...keine Götter, keine globalen Administratoren.",
   "tags": "Tags",
   "moderator_of": "Moderator von",
-  "not_subscriber_nor_moderator": "Sie sind weder Abonnent noch Moderator einer Community."
+  "not_subscriber_nor_moderator": "Sie sind weder Abonnent noch Moderator einer Community.",
+  "more_posts_last_year": "{{count}} Beiträge im letzten {{currentTimeFilterName}}: <1>zeige mehr Beiträge vom letzten Jahr</1>"
 }
