@@ -147,6 +147,18 @@ const CryptoWalletsForm = ({ account }: { account: Account | undefined }) => {
             />
           </div>
           <div className={styles.walletField}>
+            <div className={styles.walletFieldTitle}>{t('timestamp')}</div>
+            <input
+              type='text'
+              placeholder='Timestamp'
+              autoCorrect='off'
+              autoComplete='off'
+              spellCheck='false'
+              value={wallet.timestamp || ''}
+              onChange={(e) => setWalletsArrayProperty(index, 'timestamp', Number(e.target.value))}
+            />
+          </div>
+          <div className={styles.walletField}>
             <div className={styles.walletFieldTitle}>{t('paste_signature')}</div>
             <input
               autoCorrect='off'
