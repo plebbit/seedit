@@ -9,7 +9,7 @@ Seedit is a serverless, adminless, decentralized reddit alternative. Seedit is a
 - Seedit web version: https://seedit.app — or, using Brave/IPFS Companion: https://seedit.eth
 
 ### Downloads
-- Seedit desktop version (full p2p plebbit node, seeds automatically): available for Mac/Windows/Linux, [download link in the release page](https://github.com/seedit/releases/latest)
+- Seedit desktop version (full p2p plebbit node, seeds automatically): available for Mac/Windows/Linux, [download link in the release page](https://github.com/plebbit/seedit/releases/latest)
 - Seedit mobile version: available for Android, [download link in the release page](https://github.com/plebbit/seedit/releases/latest)
 
 <br />
