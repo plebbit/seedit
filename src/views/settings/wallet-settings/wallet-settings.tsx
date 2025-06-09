@@ -74,9 +74,9 @@ const CryptoWalletsForm = ({ account }: { account: Account | undefined }) => {
     setShowWallet(newShowWallet);
   };
 
-  const save = () => {
+  const updateWallets = (walletsToUpdate: Wallet[]) => {
     const wallets: { [key: string]: { address: string; timestamp: number; signature: { signature: string; type: string } } } = {};
-    walletsArray.forEach((wallet) => {
+    walletsToUpdate.forEach((wallet) => {
       if (wallet.chainTicker && wallet.address && wallet.signature && wallet.timestamp) {
         wallets[wallet.chainTicker] = {
           address: wallet.address,
@@ -89,6 +89,16 @@ const CryptoWalletsForm = ({ account }: { account: Account | undefined }) => {
       }
     });
     setAccount({ ...account, author: { ...account.author, wallets } });
+  };
+
+  const handleRemove = (index: number) => {
+    const newWalletsArray = walletsArray.filter((_, i) => i !== index);
+    setWalletsArray(newWalletsArray);
+    updateWallets(newWalletsArray);
+  };
+
+  const handleSave = () => {
+    updateWallets(walletsArray);
     alert(t('saved'));
   };
 
@@ -101,7 +111,7 @@ const CryptoWalletsForm = ({ account }: { account: Account | undefined }) => {
         <button className={styles.toggleWallet} onClick={() => toggleShowWallet(index)}>
           {showWallet[index] ? t('hide') : t('show')}
         </button>
-        <button onClick={() => setWalletsArray([...walletsArray.slice(0, index), ...walletsArray.slice(index + 1)])}>{t('remove')}</button>
+        <button onClick={() => handleRemove(index)}>{t('remove')}</button>
         <div className={`${showWallet[index] ? styles.show : styles.hide}`}>
           <div className={styles.walletField}>
             <div className={styles.walletFieldTitle}>{t('chain_ticker')}</div>
@@ -137,6 +147,18 @@ const CryptoWalletsForm = ({ account }: { account: Account | undefined }) => {
             />
           </div>
           <div className={styles.walletField}>
+            <div className={styles.walletFieldTitle}>{t('timestamp')}</div>
+            <input
+              type='text'
+              placeholder='Timestamp'
+              autoCorrect='off'
+              autoComplete='off'
+              spellCheck='false'
+              value={wallet.timestamp || ''}
+              onChange={(e) => setWalletsArrayProperty(index, 'timestamp', Number(e.target.value))}
+            />
+          </div>
+          <div className={styles.walletField}>
             <div className={styles.walletFieldTitle}>{t('paste_signature')}</div>
             <input
               autoCorrect='off'
@@ -146,7 +168,7 @@ const CryptoWalletsForm = ({ account }: { account: Account | undefined }) => {
               value={wallet.signature}
               placeholder='0x...'
             />
-            <button className={styles.save} onClick={save}>
+            <button className={styles.save} onClick={handleSave}>
               {t('save')}
             </button>
           </div>

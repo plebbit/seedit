@@ -445,5 +445,6 @@
   "no_gods_no_global_admins": "...没有神，没有全局管理员。",
   "tags": "标签",
   "moderator_of": "版主",
-  "not_subscriber_nor_moderator": "您既不是任何社区的订阅者，也不是管理员。"
+  "not_subscriber_nor_moderator": "您既不是任何社区的订阅者，也不是管理员。",
+  "more_posts_last_year": "{{count}} 篇帖子在过去的 {{currentTimeFilterName}}：<1>显示去年的更多帖子</1>"
 }

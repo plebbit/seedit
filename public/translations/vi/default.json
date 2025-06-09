@@ -445,5 +445,6 @@
   "no_gods_no_global_admins": "...không có thần, không có quản trị viên toàn cầu.",
   "tags": "Thẻ",
   "moderator_of": "quản trị viên của",
-  "not_subscriber_nor_moderator": "Bạn không phải là người đăng ký cũng không phải là người điều hành của bất kỳ cộng đồng nào."
+  "not_subscriber_nor_moderator": "Bạn không phải là người đăng ký cũng không phải là người điều hành của bất kỳ cộng đồng nào.",
+  "more_posts_last_year": "{{count}} bài viết trong {{currentTimeFilterName}} vừa qua: <1>hiển thị thêm bài viết từ năm ngoái</1>"
 }

@@ -445,5 +445,6 @@
   "no_gods_no_global_admins": "...tanrılar yok, global yöneticiler yok.",
   "tags": "Etiketler",
   "moderator_of": "moderatorü",
-  "not_subscriber_nor_moderator": "Hiçbir topluluğun abonesi veya moderatörü değilsiniz."
+  "not_subscriber_nor_moderator": "Hiçbir topluluğun abonesi veya moderatörü değilsiniz.",
+  "more_posts_last_year": "{{count}} gönderi son {{currentTimeFilterName}}: <1>geçen yıldan daha fazla gönderi göster</1>"
 }

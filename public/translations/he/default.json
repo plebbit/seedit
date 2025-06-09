@@ -445,5 +445,6 @@
   "no_gods_no_global_admins": "...אין אלים, אין מנהלי מערכת גלובליים.",
   "tags": "תגיות",
   "moderator_of": "מנהל של",
-  "not_subscriber_nor_moderator": "אתה לא מנוי ולא מפקח על שום קהילה."
+  "not_subscriber_nor_moderator": "אתה לא מנוי ולא מפקח על שום קהילה.",
+  "more_posts_last_year": "{{count}} פוסטים ב{{currentTimeFilterName}} האחרון: <1>הצג עוד פוסטים מהשנה שעברה</1>"
 }

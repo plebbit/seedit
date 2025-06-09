@@ -445,5 +445,6 @@
   "no_gods_no_global_admins": "...神はいない、グローバル管理者もいない。",
   "tags": "タグ",
   "moderator_of": "のモデレーター",
-  "not_subscriber_nor_moderator": "あなたはどのコミュニティの購読者でもモデレーターでもありません。"
+  "not_subscriber_nor_moderator": "あなたはどのコミュニティの購読者でもモデレーターでもありません。",
+  "more_posts_last_year": "{{count}} 件の投稿（直近の{{currentTimeFilterName}}）: <1>昨年の投稿をもっと見る</1>"
 }

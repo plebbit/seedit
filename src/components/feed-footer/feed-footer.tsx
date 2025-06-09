@@ -14,6 +14,7 @@ interface FeedFooterProps {
   subplebbitAddressesWithNewerPosts: string[];
   weeklyFeedLength: number;
   monthlyFeedLength: number;
+  yearlyFeedLength: number;
   currentTimeFilterName: string;
   reset: () => void;
   searchQuery?: string;
@@ -29,6 +30,7 @@ const FeedFooter = ({
   subplebbitAddresses,
   weeklyFeedLength,
   monthlyFeedLength,
+  yearlyFeedLength,
   currentTimeFilterName,
   searchQuery,
   isSearching,
@@ -45,7 +47,9 @@ const FeedFooter = ({
   const feedStateString = useFeedStateString(subplebbitAddresses);
   const loadingStateString =
     useFeedStateString(subplebbitAddresses) ||
-    (!hasFeedLoaded || (feedLength === 0 && !(weeklyFeedLength > feedLength || monthlyFeedLength > feedLength)) ? t('loading_feed') : t('looking_for_more_posts'));
+    (!hasFeedLoaded || (feedLength === 0 && !(weeklyFeedLength > feedLength || monthlyFeedLength > feedLength || yearlyFeedLength > feedLength))
+      ? t('loading_feed')
+      : t('looking_for_more_posts'));
 
   // Add state to track initial loading
   const [hasFetchedSubplebbitAddresses, setHasFetchedSubplebbitAddresses] = useState(false);
@@ -96,7 +100,14 @@ const FeedFooter = ({
         </div>
       </div>
     );
-  } else if (hasFeedLoaded && feedLength === 0 && !hasMore && !isSearching && !searchQuery && !(weeklyFeedLength > feedLength || monthlyFeedLength > feedLength)) {
+  } else if (
+    hasFeedLoaded &&
+    feedLength === 0 &&
+    !hasMore &&
+    !isSearching &&
+    !searchQuery &&
+    !(weeklyFeedLength > feedLength || monthlyFeedLength > feedLength || yearlyFeedLength > feedLength)
+  ) {
     footerContent = t('no_posts');
   } else if (hasMore || subplebbitAddresses.length > 0 || (subplebbitAddresses && subplebbitAddresses.length === 0)) {
     // Only show newer posts/weekly/monthly suggestions when not searching
@@ -112,20 +123,27 @@ const FeedFooter = ({
               }}
             />
           </div>
-        ) : (
-          monthlyFeedLength > feedLength &&
-          !searchQuery && (
-            <div className={styles.morePostsSuggestion}>
-              <Trans
-                i18nKey='more_posts_last_month'
-                values={{ currentTimeFilterName, count: feedLength }}
-                components={{
-                  1: <Link key='monthly-posts-link' to={(isInModView ? '/p/mod/' : isInAllView ? '/p/all/' : '/') + (params?.sortType || 'hot') + '/1m'} />,
-                }}
-              />
-            </div>
-          )
-        )}
+        ) : monthlyFeedLength > feedLength && !searchQuery ? (
+          <div className={styles.morePostsSuggestion}>
+            <Trans
+              i18nKey='more_posts_last_month'
+              values={{ currentTimeFilterName, count: feedLength }}
+              components={{
+                1: <Link key='monthly-posts-link' to={(isInModView ? '/p/mod/' : isInAllView ? '/p/all/' : '/') + (params?.sortType || 'hot') + '/1m'} />,
+              }}
+            />
+          </div>
+        ) : yearlyFeedLength > feedLength && !searchQuery ? (
+          <div className={styles.morePostsSuggestion}>
+            <Trans
+              i18nKey='more_posts_last_year'
+              values={{ currentTimeFilterName, count: feedLength }}
+              components={{
+                1: <Link key='yearly-posts-link' to={(isInModView ? '/p/mod/' : isInAllView ? '/p/all/' : '/') + (params?.sortType || 'hot') + '/1y'} />,
+              }}
+            />
+          </div>
+        ) : null}
         <div className={styles.stateString}>
           {subplebbitAddresses.length === 0 ? (
             isInModView ? (

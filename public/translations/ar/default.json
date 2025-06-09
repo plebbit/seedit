@@ -445,5 +445,6 @@
   "no_gods_no_global_admins": "...لا آلهة، لا مسؤولون عامون.",
   "tags": "الوسوم",
   "moderator_of": "مشرف على",
-  "not_subscriber_nor_moderator": "أنت لست مشتركًا ولا مشرفًا في أي مجتمع."
+  "not_subscriber_nor_moderator": "أنت لست مشتركًا ولا مشرفًا في أي مجتمع.",
+  "more_posts_last_year": "{{count}} منشورات في {{currentTimeFilterName}}: <1>عرض المزيد من المنشورات من العام الماضي</1>"
 }

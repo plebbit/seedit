@@ -445,5 +445,6 @@
   "no_gods_no_global_admins": "...нема богів, нема глобальних адміністраторів.",
   "tags": "Теги",
   "moderator_of": "модератор",
-  "not_subscriber_nor_moderator": "Ви не є підписником або модератором жодної спільноти."
+  "not_subscriber_nor_moderator": "Ви не є підписником або модератором жодної спільноти.",
+  "more_posts_last_year": "{{count}} постів за останній {{currentTimeFilterName}}: <1>показати більше постів з минулого року</1>"
 }

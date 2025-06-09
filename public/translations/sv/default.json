@@ -445,5 +445,6 @@
   "no_gods_no_global_admins": "...inga gudar, inga globala administratörer.",
   "tags": "Taggar",
   "moderator_of": "moderator för",
-  "not_subscriber_nor_moderator": "Du är varken prenumerant eller moderator i någon community."
+  "not_subscriber_nor_moderator": "Du är varken prenumerant eller moderator i någon community.",
+  "more_posts_last_year": "{{count}} inlägg senaste {{currentTimeFilterName}}: <1>visa fler inlägg från förra året</1>"
 }

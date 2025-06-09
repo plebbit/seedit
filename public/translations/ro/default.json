@@ -445,5 +445,6 @@
   "no_gods_no_global_admins": "...fără zei, fără administratori globali.",
   "tags": "Etichete",
   "moderator_of": "moderator al",
-  "not_subscriber_nor_moderator": "Nu ești abonat și nici moderator al vreunei comunități."
+  "not_subscriber_nor_moderator": "Nu ești abonat și nici moderator al vreunei comunități.",
+  "more_posts_last_year": "{{count}} postări în ultimul {{currentTimeFilterName}}: <1>arată mai multe postări din anul trecut</1>"
 }

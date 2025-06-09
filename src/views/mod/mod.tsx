@@ -64,8 +64,43 @@ const Mod = () => {
   const { feed, hasMore, loadMore, reset, subplebbitAddressesWithNewerPosts } = useFeed(feedOptions);
 
   // suggest the user to change time filter if there aren't enough posts
-  const { feed: weeklyFeed } = useFeed({ subplebbitAddresses, sortType, newerThan: 60 * 60 * 24 * 7 });
-  const { feed: monthlyFeed } = useFeed({ subplebbitAddresses, sortType, newerThan: 60 * 60 * 24 * 30 });
+  const {
+    feed: weeklyFeed,
+    hasMore: hasMoreWeekly,
+    loadMore: loadMoreWeekly,
+  } = useFeed({
+    subplebbitAddresses,
+    sortType,
+    newerThan: 60 * 60 * 24 * 7,
+  });
+  const {
+    feed: monthlyFeed,
+    hasMore: hasMoreMonthly,
+    loadMore: loadMoreMonthly,
+  } = useFeed({
+    subplebbitAddresses,
+    sortType,
+    newerThan: 60 * 60 * 24 * 30,
+  });
+  const {
+    feed: yearlyFeed,
+    hasMore: hasMoreYearly,
+    loadMore: loadMoreYearly,
+  } = useFeed({
+    subplebbitAddresses,
+    sortType,
+    newerThan: 60 * 60 * 24 * 365,
+  });
+
+  // Combined loadMore function for better performance when sort type isn't 'top'
+  const combinedLoadMore = () => {
+    loadMore();
+    if (sortType !== 'top') {
+      if (hasMoreWeekly) loadMoreWeekly();
+      if (hasMoreMonthly) loadMoreMonthly();
+      if (hasMoreYearly) loadMoreYearly();
+    }
+  };
 
   // Reset no results state when search query changes
   useEffect(() => {
@@ -122,6 +157,7 @@ const Mod = () => {
     subplebbitAddressesWithNewerPosts,
     weeklyFeedLength: weeklyFeed.length,
     monthlyFeedLength: monthlyFeed.length,
+    yearlyFeedLength: yearlyFeed.length,
     currentTimeFilterName: searchQuery ? 'all' : currentTimeFilterName,
     reset,
     searchQuery: searchQuery,
@@ -186,7 +222,7 @@ const Mod = () => {
               itemContent={(index, post) => <Post key={post?.cid} index={index} post={post} />}
               useWindowScroll={true}
               components={{ Footer: () => <FeedFooter {...footerProps} /> }}
-              endReached={loadMore}
+              endReached={combinedLoadMore}
               ref={virtuosoRef}
               restoreStateFrom={lastVirtuosoState}
               initialScrollTop={lastVirtuosoState?.scrollTop}

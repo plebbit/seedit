@@ -12,7 +12,7 @@
     "@capacitor/status-bar": "7.0.1",
     "@capawesome/capacitor-android-edge-to-edge-support": "7.2.2",
     "@floating-ui/react": "0.26.1",
-    "@plebbit/plebbit-react-hooks": "https://github.com/plebbit/plebbit-react-hooks.git#090e70bed5f799fc140a31a6f2123f9125954fde",
+    "@plebbit/plebbit-react-hooks": "https://github.com/plebbit/plebbit-react-hooks.git#23b98820be1307d70a961a15e30993f74c54e29f",
     "@testing-library/jest-dom": "5.14.1",
     "@testing-library/react": "13.0.0",
     "@testing-library/user-event": "13.2.1",

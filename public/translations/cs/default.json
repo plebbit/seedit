@@ -445,5 +445,6 @@
   "no_gods_no_global_admins": "...žádní bohové, žádní globální správci.",
   "tags": "Štítky",
   "moderator_of": "moderátor",
-  "not_subscriber_nor_moderator": "Nejste odběratelem ani moderátorem žádné komunity."
+  "not_subscriber_nor_moderator": "Nejste odběratelem ani moderátorem žádné komunity.",
+  "more_posts_last_year": "{{count}} příspěvků v {{currentTimeFilterName}}: <1>zobrazit více příspěvků z minulého roku</1>"
 }

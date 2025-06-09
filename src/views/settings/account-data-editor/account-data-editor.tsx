@@ -22,13 +22,7 @@ const AccountDataEditor = () => {
   const [text, setText] = useState('');
   const [showEditor, setShowEditor] = useState(false);
 
-  const accountJson = useMemo(
-    () =>
-      stringify({
-        account: { ...account },
-      }),
-    [account],
-  );
+  const accountJson = useMemo(() => stringify({ account: { ...account, plebbit: undefined, karma: undefined, unreadNotificationCount: undefined } }), [account]);
 
   useEffect(() => {
     setText(accountJson);

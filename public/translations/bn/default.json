@@ -445,5 +445,6 @@
   "no_gods_no_global_admins": "...কোনো দেবতা নেই, কোনো গ্লোবাল অ্যাডমিন নেই।",
   "tags": "ট্যাগসমূহ",
   "moderator_of": "মডারেটর",
-  "not_subscriber_nor_moderator": "আপনি কোনও কমিউনিটির সদস্য বা মডারেটর নন।"
+  "not_subscriber_nor_moderator": "আপনি কোনও কমিউনিটির সদস্য বা মডারেটর নন।",
+  "more_posts_last_year": "{{count}} পোস্ট {{currentTimeFilterName}} এ: <1>গত বছরের আরও পোস্ট দেখান</1>"
 }

@@ -445,5 +445,6 @@
   "no_gods_no_global_admins": "...no hay dioses, no hay administradores globales.",
   "tags": "Etiquetas",
   "moderator_of": "moderador de",
-  "not_subscriber_nor_moderator": "No eres suscriptor ni moderador de ninguna comunidad."
+  "not_subscriber_nor_moderator": "No eres suscriptor ni moderador de ninguna comunidad.",
+  "more_posts_last_year": "{{count}} publicaciones en {{currentTimeFilterName}}: <1>mostrar más publicaciones del año pasado</1>"
 }

@@ -445,5 +445,6 @@
   "no_gods_no_global_admins": "...దేవుళ్ళు లేరు, గ్లోబల్ అడ్మిన్లు లేరు.",
   "tags": "ట్యాగ్లు",
   "moderator_of": "మోడరేటర్",
-  "not_subscriber_nor_moderator": "మీరు ఏ కమ్యూనిటీలో సభ్యుడూ, మోడరేటర్ కూడా కాదు."
+  "not_subscriber_nor_moderator": "మీరు ఏ కమ్యూనిటీలో సభ్యుడూ, మోడరేటర్ కూడా కాదు.",
+  "more_posts_last_year": "{{count}} పోస్ట్లు గత {{currentTimeFilterName}}: <1>గత సంవత్సరం నుండి మరిన్ని పోస్ట్లు చూపించు</1>"
 }
