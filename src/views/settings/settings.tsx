@@ -236,6 +236,7 @@ const Settings = () => {
   const location = useLocation();
   const isInSettingsPlebbitOptionsView = isSettingsPlebbitOptionsView(location.pathname);
   const isInSettingsContentOptionsView = isSettingsContentOptionsView(location.pathname);
+  const account = useAccount();
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -248,7 +249,7 @@ const Settings = () => {
 
   return (
     <div className={styles.content}>
-      {isInSettingsPlebbitOptionsView ? <PlebbitOptions /> : isInSettingsContentOptionsView ? <ContentOptions /> : <GeneralSettings />}
+      {isInSettingsPlebbitOptionsView ? <PlebbitOptions /> : isInSettingsContentOptionsView ? <ContentOptions /> : <GeneralSettings key={account?.id} />}
     </div>
   );
 };
