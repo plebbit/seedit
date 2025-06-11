@@ -446,5 +446,6 @@
   "tags": "Etiketler",
   "moderator_of": "moderatorü",
   "not_subscriber_nor_moderator": "Hiçbir topluluğun abonesi veya moderatörü değilsiniz.",
-  "more_posts_last_year": "{{count}} gönderi son {{currentTimeFilterName}}: <1>geçen yıldan daha fazla gönderi göster</1>"
+  "more_posts_last_year": "{{count}} gönderi son {{currentTimeFilterName}}: <1>geçen yıldan daha fazla gönderi göster</1>",
+  "editor_fallback_warning": "gelişmiş editör yüklenemedi, yedek olarak temel metin editörü kullanılıyor."
 }

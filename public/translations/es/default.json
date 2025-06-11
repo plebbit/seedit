@@ -446,5 +446,6 @@
   "tags": "Etiquetas",
   "moderator_of": "moderador de",
   "not_subscriber_nor_moderator": "No eres suscriptor ni moderador de ninguna comunidad.",
-  "more_posts_last_year": "{{count}} publicaciones en {{currentTimeFilterName}}: <1>mostrar más publicaciones del año pasado</1>"
+  "more_posts_last_year": "{{count}} publicaciones en {{currentTimeFilterName}}: <1>mostrar más publicaciones del año pasado</1>",
+  "editor_fallback_warning": "No se pudo cargar el editor avanzado, se está usando el editor de texto básico como alternativa."
 }

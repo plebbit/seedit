@@ -446,5 +446,6 @@
   "tags": "Tagit",
   "moderator_of": "moderaattori",
   "not_subscriber_nor_moderator": "Et ole tilaaja etkä moderaattori missään yhteisössä.",
-  "more_posts_last_year": "{{count}} julkaisua viime {{currentTimeFilterName}}: <1>näytä lisää julkaisuja viime vuodelta</1>"
+  "more_posts_last_year": "{{count}} julkaisua viime {{currentTimeFilterName}}: <1>näytä lisää julkaisuja viime vuodelta</1>",
+  "editor_fallback_warning": "edistynyt editori epäonnistui latautumaan, perus tekstieditori käytössä varatoimintona."
 }

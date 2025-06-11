@@ -398,6 +398,7 @@
   "private_key_warning_description": "You're about to view your account data, which includes your private key. You should never share your private key with anyone.",
   "go_back": "Go back",
   "loading_editor": "Loading editor",
+  "editor_fallback_warning": "advanced editor failed to load, using basic text editor as fallback.",
   "show_thumbnails_next_to_links": "Show thumbnails next to links",
   "dont_show_thumbnails_next_to_links": "Don't show thumbnails next to links",
   "show_thumbnails_based_on_community_media_preferences": "Show thumbnails based on that community's media preferences",

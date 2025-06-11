@@ -446,5 +446,6 @@
   "tags": "Etichete",
   "moderator_of": "moderator al",
   "not_subscriber_nor_moderator": "Nu ești abonat și nici moderator al vreunei comunități.",
-  "more_posts_last_year": "{{count}} postări în ultimul {{currentTimeFilterName}}: <1>arată mai multe postări din anul trecut</1>"
+  "more_posts_last_year": "{{count}} postări în ultimul {{currentTimeFilterName}}: <1>arată mai multe postări din anul trecut</1>",
+  "editor_fallback_warning": "editorul avansat nu a reușit să se încarce, se folosește editorul de text simplu ca soluție de rezervă."
 }

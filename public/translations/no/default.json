@@ -446,5 +446,6 @@
   "tags": "Tagger",
   "moderator_of": "moderator av",
   "not_subscriber_nor_moderator": "Du er verken abonnent eller moderator i noe fellesskap.",
-  "more_posts_last_year": "{{count}} innlegg siste {{currentTimeFilterName}}: <1>vis flere innlegg fra i fjor</1>"
+  "more_posts_last_year": "{{count}} innlegg siste {{currentTimeFilterName}}: <1>vis flere innlegg fra i fjor</1>",
+  "editor_fallback_warning": "Avansert editor lastet ikke inn, bruker grunnleggende teksteditor som reserve."
 }

@@ -446,5 +446,6 @@
   "tags": "Tag",
   "moderator_of": "moderatore di",
   "not_subscriber_nor_moderator": "Non sei né iscritto né moderatore di nessuna community.",
-  "more_posts_last_year": "{{count}} post nell'ultimo {{currentTimeFilterName}}: <1>mostra più post dell'anno scorso</1>"
+  "more_posts_last_year": "{{count}} post nell'ultimo {{currentTimeFilterName}}: <1>mostra più post dell'anno scorso</1>",
+  "editor_fallback_warning": "il editor avanzato non è riuscito a caricare, utilizzo dell'editor di testo di base come fallback."
 }

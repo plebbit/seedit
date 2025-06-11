@@ -446,5 +446,6 @@
   "tags": "标签",
   "moderator_of": "版主",
   "not_subscriber_nor_moderator": "您既不是任何社区的订阅者，也不是管理员。",
-  "more_posts_last_year": "{{count}} 篇帖子在过去的 {{currentTimeFilterName}}：<1>显示去年的更多帖子</1>"
+  "more_posts_last_year": "{{count}} 篇帖子在过去的 {{currentTimeFilterName}}：<1>显示去年的更多帖子</1>",
+  "editor_fallback_warning": "高级编辑器加载失败，使用基础文本编辑器作为备用。"
 }

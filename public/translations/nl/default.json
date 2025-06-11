@@ -446,5 +446,6 @@
   "tags": "Tags",
   "moderator_of": "moderator van",
   "not_subscriber_nor_moderator": "Je bent geen abonnee of moderator van een gemeenschap.",
-  "more_posts_last_year": "{{count}} berichten afgelopen {{currentTimeFilterName}}: <1>toon meer berichten van vorig jaar</1>"
+  "more_posts_last_year": "{{count}} berichten afgelopen {{currentTimeFilterName}}: <1>toon meer berichten van vorig jaar</1>",
+  "editor_fallback_warning": "Geavanceerde editor kon niet worden geladen, basisteksteditor wordt als fallback gebruikt."
 }

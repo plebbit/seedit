@@ -446,5 +446,6 @@
   "tags": "タグ",
   "moderator_of": "のモデレーター",
   "not_subscriber_nor_moderator": "あなたはどのコミュニティの購読者でもモデレーターでもありません。",
-  "more_posts_last_year": "{{count}} 件の投稿（直近の{{currentTimeFilterName}}）: <1>昨年の投稿をもっと見る</1>"
+  "more_posts_last_year": "{{count}} 件の投稿（直近の{{currentTimeFilterName}}）: <1>昨年の投稿をもっと見る</1>",
+  "editor_fallback_warning": "高度なエディタの読み込みに失敗したため、基本的なテキストエディタを代替として使用しています。"
 }

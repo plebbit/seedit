@@ -446,5 +446,6 @@
   "tags": "Štítky",
   "moderator_of": "moderátor",
   "not_subscriber_nor_moderator": "Nejste odběratelem ani moderátorem žádné komunity.",
-  "more_posts_last_year": "{{count}} příspěvků v {{currentTimeFilterName}}: <1>zobrazit více příspěvků z minulého roku</1>"
+  "more_posts_last_year": "{{count}} příspěvků v {{currentTimeFilterName}}: <1>zobrazit více příspěvků z minulého roku</1>",
+  "editor_fallback_warning": "Pokročilý editor se nepodařilo načíst, jako záložní je použit základní textový editor."
 }

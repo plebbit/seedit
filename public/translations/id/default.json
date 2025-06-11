@@ -446,5 +446,6 @@
   "tags": "Tag",
   "moderator_of": "moderator dari",
   "not_subscriber_nor_moderator": "Anda bukan pelanggan maupun moderator komunitas manapun.",
-  "more_posts_last_year": "{{count}} postingan pada {{currentTimeFilterName}} terakhir: <1>tampilkan lebih banyak postingan dari tahun lalu</1>"
+  "more_posts_last_year": "{{count}} postingan pada {{currentTimeFilterName}} terakhir: <1>tampilkan lebih banyak postingan dari tahun lalu</1>",
+  "editor_fallback_warning": "editor lanjutan gagal dimuat, menggunakan editor teks dasar sebagai fallback."
 }

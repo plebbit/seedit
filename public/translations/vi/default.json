@@ -446,5 +446,6 @@
   "tags": "Thẻ",
   "moderator_of": "quản trị viên của",
   "not_subscriber_nor_moderator": "Bạn không phải là người đăng ký cũng không phải là người điều hành của bất kỳ cộng đồng nào.",
-  "more_posts_last_year": "{{count}} bài viết trong {{currentTimeFilterName}} vừa qua: <1>hiển thị thêm bài viết từ năm ngoái</1>"
+  "more_posts_last_year": "{{count}} bài viết trong {{currentTimeFilterName}} vừa qua: <1>hiển thị thêm bài viết từ năm ngoái</1>",
+  "editor_fallback_warning": "trình soạn thảo nâng cao không tải được, đang sử dụng trình soạn thảo văn bản cơ bản làm phương án dự phòng."
 }

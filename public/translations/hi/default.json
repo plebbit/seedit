@@ -446,5 +446,6 @@
   "tags": "टैग",
   "moderator_of": "मॉडरेटर",
   "not_subscriber_nor_moderator": "आप किसी भी समुदाय के सदस्य या मॉडरेटर नहीं हैं।",
-  "more_posts_last_year": "{{count}} पोस्ट पिछले {{currentTimeFilterName}} में: <1>पिछले साल के और पोस्ट दिखाएं</1>"
+  "more_posts_last_year": "{{count}} पोस्ट पिछले {{currentTimeFilterName}} में: <1>पिछले साल के और पोस्ट दिखाएं</1>",
+  "editor_fallback_warning": "उन्नत संपादक लोड करने में विफल, बैकअप के रूप में मूल पाठ संपादक का उपयोग कर रहे हैं।"
 }

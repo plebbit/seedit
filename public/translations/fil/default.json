@@ -446,5 +446,6 @@
   "tags": "Mga tag",
   "moderator_of": "moderator ng",
   "not_subscriber_nor_moderator": "Hindi ka subscriber ni moderator ng anumang komunidad.",
-  "more_posts_last_year": "{{count}} post sa huling {{currentTimeFilterName}}: <1>ipakita ang mas maraming post mula sa nakaraang taon</1>"
+  "more_posts_last_year": "{{count}} post sa huling {{currentTimeFilterName}}: <1>ipakita ang mas maraming post mula sa nakaraang taon</1>",
+  "editor_fallback_warning": "Nabigong mag-load ang advanced editor, gamit ang basic text editor bilang fallback."
 }
