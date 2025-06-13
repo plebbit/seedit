@@ -1,9 +1,8 @@
 {
-  "name": "seedit",
+  "name": "Seedit",
   "version": "0.5.4",
   "description": "A GUI for plebbit similar to old.reddit",
   "type": "module",
-  "author": "plebeius.eth",
   "license": "GPL-2.0-only",
   "private": true,
   "dependencies": {
