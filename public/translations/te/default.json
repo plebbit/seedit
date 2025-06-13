@@ -446,5 +446,6 @@
   "tags": "ట్యాగ్లు",
   "moderator_of": "మోడరేటర్",
   "not_subscriber_nor_moderator": "మీరు ఏ కమ్యూనిటీలో సభ్యుడూ, మోడరేటర్ కూడా కాదు.",
-  "more_posts_last_year": "{{count}} పోస్ట్లు గత {{currentTimeFilterName}}: <1>గత సంవత్సరం నుండి మరిన్ని పోస్ట్లు చూపించు</1>"
+  "more_posts_last_year": "{{count}} పోస్ట్లు గత {{currentTimeFilterName}}: <1>గత సంవత్సరం నుండి మరిన్ని పోస్ట్లు చూపించు</1>",
+  "editor_fallback_warning": "అడ్వాన్స్ ఎడిటర్ లోడ్ అవ్వడం విఫలమైంది, బేసిక్ టెక్స్ట్ ఎడిటర్ fallback గా ఉపయోగిస్తున్నారు."
 }

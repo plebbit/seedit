@@ -446,5 +446,6 @@
   "tags": "תגיות",
   "moderator_of": "מנהל של",
   "not_subscriber_nor_moderator": "אתה לא מנוי ולא מפקח על שום קהילה.",
-  "more_posts_last_year": "{{count}} פוסטים ב{{currentTimeFilterName}} האחרון: <1>הצג עוד פוסטים מהשנה שעברה</1>"
+  "more_posts_last_year": "{{count}} פוסטים ב{{currentTimeFilterName}} האחרון: <1>הצג עוד פוסטים מהשנה שעברה</1>",
+  "editor_fallback_warning": "העורך המתקדם נכשל בטעינה, משתמשים בעורך טקסט בסיסי כפתרון חלופי."
 }

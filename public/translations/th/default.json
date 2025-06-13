@@ -446,5 +446,6 @@
   "tags": "แท็ก",
   "moderator_of": "ผู้ดูแล",
   "not_subscriber_nor_moderator": "คุณไม่ใช่ผู้สมัครสมาชิกและไม่ใช่ผู้ดูแลชุมชนใดๆ",
-  "more_posts_last_year": "{{count}} โพสต์ใน{{currentTimeFilterName}} ล่าสุด: <1>แสดงโพสต์เพิ่มเติมจากปีที่แล้ว</1>"
+  "more_posts_last_year": "{{count}} โพสต์ใน{{currentTimeFilterName}} ล่าสุด: <1>แสดงโพสต์เพิ่มเติมจากปีที่แล้ว</1>",
+  "editor_fallback_warning": "ตัวแก้ไขขั้นสูงโหลดไม่สำเร็จ ใช้ตัวแก้ไขข้อความพื้นฐานเป็นทางเลือกสำรอง"
 }

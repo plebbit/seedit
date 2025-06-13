@@ -248,14 +248,14 @@ const Subplebbit = ({ subplebbit, tags, index, isUnsubscribed, onUnsubscribe }: 
                 <img
                   key={suggested.avatarUrl}
                   src={suggested.avatarUrl}
-                  alt={`${title || shortAddress} avatar`}
+                  alt=''
                   className={styles.customAvatarImg}
                   onError={() => {
                     setAvatarLoadFailed(true);
                   }}
                 />
               ) : (
-                <img key='sprout' src={'assets/sprout/sprout.png'} alt={'Default sprout avatar'} className={styles.sproutImg} />
+                <img key='sprout' src={'assets/sprout/sprout.png'} alt='' className={styles.sproutImg} />
               )}
             </Link>
           </div>

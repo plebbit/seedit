@@ -446,5 +446,6 @@
   "tags": "Taggar",
   "moderator_of": "moderator för",
   "not_subscriber_nor_moderator": "Du är varken prenumerant eller moderator i någon community.",
-  "more_posts_last_year": "{{count}} inlägg senaste {{currentTimeFilterName}}: <1>visa fler inlägg från förra året</1>"
+  "more_posts_last_year": "{{count}} inlägg senaste {{currentTimeFilterName}}: <1>visa fler inlägg från förra året</1>",
+  "editor_fallback_warning": "Avancerad redigerare kunde inte laddas, använder enkel textredigerare som fallback."
 }

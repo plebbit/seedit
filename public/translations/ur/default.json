@@ -446,5 +446,6 @@
   "tags": "ٹیگز",
   "moderator_of": "منتظم",
   "not_subscriber_nor_moderator": "آپ کسی کمیونٹی کے سبسکرائبر یا ماڈریٹر نہیں ہیں۔",
-  "more_posts_last_year": "{{count}} پوسٹس پچھلے {{currentTimeFilterName}} میں: <1>پچھلے سال کی مزید پوسٹس دکھائیں</1>"
+  "more_posts_last_year": "{{count}} پوسٹس پچھلے {{currentTimeFilterName}} میں: <1>پچھلے سال کی مزید پوسٹس دکھائیں</1>",
+  "editor_fallback_warning": "ایڈوانس ایڈیٹر لوڈ کرنے میں ناکام، بیک اپ کے طور پر بنیادی ٹیکسٹ ایڈیٹر استعمال کر رہے ہیں۔"
 }

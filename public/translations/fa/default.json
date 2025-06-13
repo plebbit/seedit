@@ -446,5 +446,6 @@
   "tags": "برچسب‌ها",
   "moderator_of": "مدیر",
   "not_subscriber_nor_moderator": "شما نه عضو مشترک هستید و نه مدیر هیچ جامعه‌ای.",
-  "more_posts_last_year": "{{count}} پست در {{currentTimeFilterName}}: <1>نمایش پست‌های بیشتر از سال گذشته</1>"
+  "more_posts_last_year": "{{count}} پست در {{currentTimeFilterName}}: <1>نمایش پست‌های بیشتر از سال گذشته</1>",
+  "editor_fallback_warning": "ویرایشگر پیشرفته بارگیری نشد، از ویرایشگر متن ساده به عنوان جایگزین استفاده می‌شود."
 }

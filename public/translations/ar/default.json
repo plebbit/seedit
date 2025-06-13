@@ -446,5 +446,6 @@
   "tags": "الوسوم",
   "moderator_of": "مشرف على",
   "not_subscriber_nor_moderator": "أنت لست مشتركًا ولا مشرفًا في أي مجتمع.",
-  "more_posts_last_year": "{{count}} منشورات في {{currentTimeFilterName}}: <1>عرض المزيد من المنشورات من العام الماضي</1>"
+  "more_posts_last_year": "{{count}} منشورات في {{currentTimeFilterName}}: <1>عرض المزيد من المنشورات من العام الماضي</1>",
+  "editor_fallback_warning": "فشل تحميل المحرر المتقدم، يتم استخدام محرر نصوص أساسي كبديل."
 }

@@ -446,5 +446,6 @@
   "tags": "टॅग",
   "moderator_of": "मॉडरेटर",
   "not_subscriber_nor_moderator": "तुम कोणत्याही समुदायाचे सदस्य किंवा मॉडरेटर नाही.",
-  "more_posts_last_year": "{{count}} पोस्ट मागील {{currentTimeFilterName}}: <1>मागील वर्षीचे अधिक पोस्ट दाखवा</1>"
+  "more_posts_last_year": "{{count}} पोस्ट मागील {{currentTimeFilterName}}: <1>मागील वर्षीचे अधिक पोस्ट दाखवा</1>",
+  "editor_fallback_warning": "प्रगत संपादक लोड करण्यात अयशस्वी, फallback म्हणून मूलभूत टेक्स्ट संपादक वापरत आहे."
 }

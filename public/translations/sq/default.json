@@ -446,5 +446,6 @@
   "tags": "Etiketat",
   "moderator_of": "moderator i",
   "not_subscriber_nor_moderator": "Nuk jeni as abonues as moderator i ndonjë komuniteti.",
-  "more_posts_last_year": "{{count}} postime në {{currentTimeFilterName}} e fundit: <1>shfaq më shumë postime nga viti i kaluar</1>"
+  "more_posts_last_year": "{{count}} postime në {{currentTimeFilterName}} e fundit: <1>shfaq më shumë postime nga viti i kaluar</1>",
+  "editor_fallback_warning": "Redaktori i avancuar dështoi të ngarkohet, përdoret redaktori bazë i tekstit si zëvendësim."
 }
