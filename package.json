@@ -1,6 +1,6 @@
 {
   "name": "Seedit",
-  "version": "0.5.4",
+  "version": "0.5.5",
   "description": "A GUI for plebbit similar to old.reddit",
   "type": "module",
   "license": "GPL-2.0-only",
