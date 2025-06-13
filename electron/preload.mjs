@@ -19,7 +19,15 @@ ipcRenderer.send('get-plebbit-rpc-auth-key');
 // notifications IPC
 contextBridge.exposeInMainWorld('electron', {
   invoke: (channel, ...args) => {
-    const validChannels = ['get-notification-permission-status', 'get-platform', 'test-notification-permission', 'copy-to-clipboard'];
+    const validChannels = [
+      'plugin:file-uploader:pickAndUploadMedia',
+      'plugin:file-uploader:uploadMedia',
+      'plugin:file-uploader:pickMedia',
+      'get-notification-permission-status', 
+      'get-platform', 
+      'test-notification-permission', 
+      'copy-to-clipboard'
+    ];
     if (validChannels.includes(channel)) {
       return ipcRenderer.invoke(channel, ...args);
     }
