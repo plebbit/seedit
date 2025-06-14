@@ -1,3 +1,18 @@
+## [0.5.5](https://github.com/plebbit/seedit/compare/v0.5.4...v0.5.5) (2025-06-13)
+
+
+### Bug Fixes
+
+* **electron:** add missing file uploader IPC channels ([63bb2ad](https://github.com/plebbit/seedit/commit/63bb2adc82959555c4dfd016dec6d155c1049155))
+* **settings:** account data editor could fail to load for some users ([c413989](https://github.com/plebbit/seedit/commit/c41398935bf73f2057fd2b84b7f544b7cb317ba6))
+
+
+### Features
+
+* upgrade electron, add CSP to fix security warning ([77f6041](https://github.com/plebbit/seedit/commit/77f6041f04a75115aed4df3807e3a5cba6efb6ea))
+
+
+
 ## [0.5.4](https://github.com/plebbit/seedit/compare/v0.5.3...v0.5.4) (2025-06-09)
 
 
