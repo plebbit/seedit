@@ -159,3 +159,6 @@ yarn-debug.log*
 yarn-error.log*
 
 .vscode
+
+# YoYo AI version control directory
+.yoyo/
