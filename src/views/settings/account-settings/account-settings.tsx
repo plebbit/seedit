@@ -41,6 +41,90 @@ const CreateAccountButton = () => {
 };
 
 const ImportAccountButton = () => {
+  // Hardcoded default configurations
+  const getDefaultWebConfig = () => ({
+    ipfsGatewayUrls: ['https://ipfsgateway.xyz', 'https://gateway.plebpubsub.xyz', 'https://gateway.forumindex.com'],
+    pubsubKuboRpcClientsOptions: ['https://pubsubprovider.xyz/api/v0', 'https://plebpubsub.xyz/api/v0', 'https://rannithepleb.com/api/v0'],
+    httpRoutersOptions: ['https://routing.lol', 'https://peers.pleb.bot', 'https://peers.plebpubsub.xyz', 'https://peers.forumindex.com'],
+    chainProviders: {
+      eth: {
+        urls: ['ethers.js', 'https://ethrpc.xyz', 'viem'],
+        chainId: 1,
+      },
+      avax: {
+        urls: ['https://api.avax.network/ext/bc/C/rpc'],
+        chainId: 43114,
+      },
+      matic: {
+        urls: ['https://polygon-rpc.com'],
+        chainId: 137,
+      },
+      sol: {
+        urls: ['https://solrpc.xyz'],
+        chainId: 1,
+      },
+    },
+    resolveAuthorAddresses: false,
+    validatePages: false,
+  });
+
+  const getDefaultElectronConfig = () => ({
+    plebbitRpcClientsOptions: ['ws://localhost:9138'],
+    httpRoutersOptions: ['https://peers.pleb.bot', 'https://routing.lol', 'https://peers.forumindex.com', 'https://peers.plebpubsub.xyz'],
+    chainProviders: {
+      eth: {
+        urls: ['ethers.js', 'https://ethrpc.xyz', 'viem'],
+        chainId: 1,
+      },
+      avax: {
+        urls: ['https://api.avax.network/ext/bc/C/rpc'],
+        chainId: 43114,
+      },
+      matic: {
+        urls: ['https://polygon-rpc.com'],
+        chainId: 137,
+      },
+      sol: {
+        urls: ['https://solrpc.xyz'],
+        chainId: 1,
+      },
+    },
+    resolveAuthorAddresses: false,
+    validatePages: false,
+  });
+
+  const isElectron = window.electronApi?.isElectron === true;
+
+  const transformPlebbitOptions = (importedAccount: any) => {
+    const currentOptions = importedAccount.account?.plebbitOptions || {};
+    const hasRpcOptions = currentOptions.plebbitRpcClientsOptions?.length > 0;
+    const hasNonLocalhostRpc = hasRpcOptions && !currentOptions.plebbitRpcClientsOptions.some((url: string) => url.includes('localhost') || url.includes('127.0.0.1'));
+
+    // Don't overwrite non-localhost RPC configurations
+    if (hasNonLocalhostRpc) {
+      return currentOptions;
+    }
+
+    if (isElectron) {
+      // On electron: if account has pubsub providers, replace with localhost RPC
+      if (currentOptions.pubsubKuboRpcClientsOptions?.length > 0 || currentOptions.ipfsGatewayUrls?.length > 0) {
+        return getDefaultElectronConfig();
+      }
+      // If already has localhost RPC or no providers, keep as is or use electron defaults
+      return hasRpcOptions ? currentOptions : getDefaultElectronConfig();
+    } else {
+      // On web: if account has localhost RPC, replace with pubsub providers
+      if (hasRpcOptions) {
+        const hasLocalhostRpc = currentOptions.plebbitRpcClientsOptions.some((url: string) => url.includes('localhost') || url.includes('127.0.0.1'));
+        if (hasLocalhostRpc) {
+          return getDefaultWebConfig();
+        }
+      }
+      // If no RPC or has pubsub providers, use web defaults
+      return currentOptions.pubsubKuboRpcClientsOptions?.length > 0 ? currentOptions : getDefaultWebConfig();
+    }
+  };
+
   const handleImportAccount = async () => {
     const fileInput = document.createElement('input');
     fileInput.type = 'file';
@@ -64,7 +148,18 @@ const ImportAccountButton = () => {
               throw new Error('File content is not a string.');
             }
             const newAccount = JSON.parse(fileContent);
-            await importAccount(fileContent);
+
+            // Transform plebbitOptions based on platform and existing config
+            if (newAccount.account?.plebbitOptions) {
+              newAccount.account.plebbitOptions = transformPlebbitOptions(newAccount);
+            } else {
+              // If no plebbitOptions exist, set defaults based on platform
+              newAccount.account.plebbitOptions = isElectron ? getDefaultElectronConfig() : getDefaultWebConfig();
+            }
+
+            // Convert back to string for importAccount
+            const transformedAccountString = JSON.stringify(newAccount);
+            await importAccount(transformedAccountString);
 
             // Store the imported account's address
             if (newAccount.account?.author?.address) {
