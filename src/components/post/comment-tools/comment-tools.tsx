@@ -219,11 +219,11 @@ const SingleReplyTools = ({
 
   const fullCommentsButton = cid ? (
     <Link to={cid ? `/p/${subplebbitAddress}/c/${postCid}` : `/profile/${index}`}>
-      {t('full_comments')} ({comment?.replyCount || 0})
+      {t('full_comments')} {comment?.replyCount ? `(${comment?.replyCount})` : ''}
     </Link>
   ) : (
     <span>
-      {t('full_comments')} ({comment?.replyCount || 0})
+      {t('full_comments')} {comment?.replyCount ? `(${comment?.replyCount})` : ''}
     </span>
   );
 
