@@ -106,7 +106,7 @@
 }
 
 .editButton a {
-  color: var(--text-primary);
+  color: var(--link-primary);
   cursor: pointer;
 }
 
