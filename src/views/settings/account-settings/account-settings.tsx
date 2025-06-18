@@ -1,7 +1,8 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Trans, useTranslation } from 'react-i18next';
 import { createAccount, deleteAccount, exportAccount, importAccount, setActiveAccount, useAccount, useAccounts } from '@plebbit/plebbit-react-hooks';
+import { processImportedAccount } from '../../../lib/utils/account-import-utils';
 import styles from './account-settings.module.css';
 
 const CreateAccountButton = () => {
@@ -41,6 +42,8 @@ const CreateAccountButton = () => {
 };
 
 const ImportAccountButton = () => {
+  const isElectron = window.electronApi?.isElectron === true;
+
   const handleImportAccount = async () => {
     const fileInput = document.createElement('input');
     fileInput.type = 'file';
@@ -63,8 +66,10 @@ const ImportAccountButton = () => {
             if (typeof fileContent !== 'string') {
               throw new Error('File content is not a string.');
             }
-            const newAccount = JSON.parse(fileContent);
-            await importAccount(fileContent);
+            // Process the imported account with platform-appropriate plebbit options
+            const transformedAccountString = processImportedAccount(fileContent, isElectron);
+            const newAccount = JSON.parse(transformedAccountString);
+            await importAccount(transformedAccountString);
 
             // Store the imported account's address
             if (newAccount.account?.author?.address) {
@@ -114,12 +119,41 @@ const ImportAccountButton = () => {
 
 const ExportAccountButton = () => {
   const account = useAccount();
+  const [showExportAccountOptions, setShowExportAccountOptions] = useState(false);
+  const [includePlebbitOptions, setIncludePlebbitOptions] = useState(true);
+  const [includePostHistory, setIncludePostHistory] = useState(true);
+  const [includeVoteHistory, setIncludeVoteHistory] = useState(true);
 
   const handleExportAccount = async () => {
     try {
+      if (!account) {
+        throw new Error('No account available to export');
+      }
+
       const accountString = await exportAccount();
-      const accountObject = JSON.parse(accountString);
-      const formattedAccountJson = JSON.stringify(accountObject, null, 2);
+      const exportedAccount = JSON.parse(accountString);
+
+      // exportAccount might not include plebbitOptions, so we need to include it from useAccount()
+      let accountDataToInclude;
+      if (includePlebbitOptions) {
+        const { plebbit, ...completeAccountData } = account;
+        accountDataToInclude = completeAccountData;
+      } else {
+        const { plebbit, plebbitOptions, ...completeAccountData } = account;
+        accountDataToInclude = completeAccountData;
+      }
+      exportedAccount.account = accountDataToInclude;
+
+      if (!includePostHistory) {
+        delete exportedAccount.accountComments;
+        delete exportedAccount.accountEdits;
+      }
+
+      if (!includeVoteHistory) {
+        delete exportedAccount.accountVotes;
+      }
+
+      const formattedAccountJson = JSON.stringify(exportedAccount, null, 2);
 
       // Create a Blob from the JSON string
       const blob = new Blob([formattedAccountJson], { type: 'application/json' });
@@ -150,12 +184,53 @@ const ExportAccountButton = () => {
   };
 
   return (
-    <Trans
-      i18nKey='export_account_backup'
-      components={{
-        1: <button key='exportAccountButton' onClick={handleExportAccount} />,
-      }}
-    />
+    <>
+      <Trans
+        i18nKey='export_account_backup'
+        components={{
+          1: <button key='exportAccountButton' onClick={handleExportAccount} />,
+        }}
+      />
+      <span className={styles.exportAccountOptions}>
+        <span className={styles.exportAccountOptionsButton} onClick={() => setShowExportAccountOptions(!showExportAccountOptions)}>
+          {showExportAccountOptions ? 'hide options' : 'options'}
+        </span>
+      </span>
+      {showExportAccountOptions && (
+        <div className={styles.exportAccountOptions}>
+          <div className={styles.exportAccountOption}>
+            <input
+              type='checkbox'
+              id='includePlebbitOptions'
+              name='includePlebbitOptions'
+              checked={includePlebbitOptions}
+              onChange={(e) => setIncludePlebbitOptions(e.target.checked)}
+            />
+            <label htmlFor='includePlebbitOptions'>Include plebbit options</label>
+          </div>
+          <div className={styles.exportAccountOption}>
+            <input
+              type='checkbox'
+              id='includePostHistory'
+              name='includePostHistory'
+              checked={includePostHistory}
+              onChange={(e) => setIncludePostHistory(e.target.checked)}
+            />
+            <label htmlFor='includePostHistory'>Include post history</label>
+          </div>
+          <div className={styles.exportAccountOption}>
+            <input
+              type='checkbox'
+              id='includeVoteHistory'
+              name='includeVoteHistory'
+              checked={includeVoteHistory}
+              onChange={(e) => setIncludeVoteHistory(e.target.checked)}
+            />
+            <label htmlFor='includeVoteHistory'>Include vote history</label>
+          </div>
+        </div>
+      )}
+    </>
   );
 };
 

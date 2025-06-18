@@ -389,6 +389,11 @@ const Subplebbit = () => {
         </div>
       )}
       <div className={styles.feed}>
+        {process.env.NODE_ENV !== 'production' && (
+          <button className={styles.debugButton} onClick={reset}>
+            Reset Feed
+          </button>
+        )}
         <Virtuoso
           increaseViewportBy={{ bottom: 1200, top: 600 }}
           totalCount={combinedFeed?.length || 0}

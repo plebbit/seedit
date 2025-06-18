@@ -4,6 +4,7 @@ import { resolve } from 'path';
 import { nodePolyfills } from 'vite-plugin-node-polyfills';
 import eslint from 'vite-plugin-eslint';
 import { VitePWA } from 'vite-plugin-pwa';
+import reactScan from '@react-scan/vite-plugin-react-scan';
 
 const isProduction = process.env.NODE_ENV === 'production';
 
@@ -17,6 +18,10 @@ export default defineConfig({
           }]
         ]
       }
+    }),
+    !isProduction && reactScan({
+      showToolbar: true,
+      playSound: true,
     }),
     !isProduction && eslint({
       lintOnStart: true,

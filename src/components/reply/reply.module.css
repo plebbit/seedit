@@ -231,6 +231,7 @@
 .parent {
   color: var(--text);
   margin-left: 7px;
+  word-break: break-all;
 }
 
 .parentLink {
