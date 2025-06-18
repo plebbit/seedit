@@ -135,10 +135,21 @@ export const transformPlebbitOptionsForImport = (importedAccount: ImportedAccoun
  * Returns the modified account as a JSON string ready for import
  */
 export const processImportedAccount = (accountJson: string, isElectron: boolean): string => {
-  const importedAccount = JSON.parse(accountJson);
+  let importedAccount;
+
+  try {
+    importedAccount = JSON.parse(accountJson);
+  } catch (error) {
+    throw new Error(`Failed to parse account data: ${error instanceof Error ? error.message : 'Unknown parsing error'}`);
+  }
+
+  // Ensure account object exists
+  if (!importedAccount.account) {
+    importedAccount.account = {};
+  }
 
   // Transform plebbitOptions based on platform and existing config
-  if (importedAccount.account?.plebbitOptions) {
+  if (importedAccount.account.plebbitOptions) {
     importedAccount.account.plebbitOptions = transformPlebbitOptionsForImport(importedAccount, isElectron);
   } else {
     // If no plebbitOptions exist, set defaults based on platform
