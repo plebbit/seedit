@@ -1,3 +1,19 @@
+## [0.5.6](https://github.com/plebbit/seedit/compare/v0.5.5...v0.5.6) (2025-06-18)
+
+
+### Bug Fixes
+
+* add missing text encoding dependencies for Electron build ([7f13a10](https://github.com/plebbit/seedit/commit/7f13a10f11acfd0453b5425d5c2a5332e4284e60))
+* **inbox:** "full comments" button would count 0 posts incorrectly ([27233d0](https://github.com/plebbit/seedit/commit/27233d0e9a45b60ebb03c59ae287f52828ee8b5a))
+
+
+### Features
+
+* **account settings:** add granular export options for account backup ([633f0e6](https://github.com/plebbit/seedit/commit/633f0e66bb8c199224e26032e966b9050ae34c04))
+* **account settings:** auto-adjust plebbit options on account import ([489a296](https://github.com/plebbit/seedit/commit/489a296179fe603b5903d99c28b093918b164e87))
+
+
+
 ## [0.5.5](https://github.com/plebbit/seedit/compare/v0.5.4...v0.5.5) (2025-06-13)
 
 
@@ -5,6 +21,7 @@
 
 * **electron:** add missing file uploader IPC channels ([63bb2ad](https://github.com/plebbit/seedit/commit/63bb2adc82959555c4dfd016dec6d155c1049155))
 * **settings:** account data editor could fail to load for some users ([c413989](https://github.com/plebbit/seedit/commit/c41398935bf73f2057fd2b84b7f544b7cb317ba6))
+* **vite.config.js:** increase PWA cache limit ([29b4d8c](https://github.com/plebbit/seedit/commit/29b4d8cd4c34d5c73df514b904f9382bb9bfcd6e))
 
 
 ### Features
