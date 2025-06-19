@@ -5,6 +5,7 @@ import { isAllView, isModView } from '../../lib/utils/view-utils';
 import { useFeedStateString } from '../../hooks/use-state-string';
 import LoadingEllipsis from '../loading-ellipsis';
 import styles from './feed-footer.module.css';
+import React from 'react';
 
 interface FeedFooterProps {
   feedLength: number;
@@ -168,4 +169,4 @@ const FeedFooter = ({
   return <div className={styles.footer}>{footerContent}</div>;
 };
 
-export default FeedFooter;
+export default React.memo(FeedFooter);

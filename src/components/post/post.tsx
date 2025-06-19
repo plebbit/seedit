@@ -27,6 +27,7 @@ import Thumbnail from './thumbnail';
 import styles from './post.module.css';
 import _ from 'lodash';
 import useContentOptionsStore from '../../stores/use-content-options-store';
+import React from 'react';
 
 interface PostAuthorProps {
   authorAddress: string;
@@ -375,4 +376,4 @@ const Post = ({ index, post = {} }: PostProps) => {
   );
 };
 
-export default Post;
+export default React.memo(Post);
