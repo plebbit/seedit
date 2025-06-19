@@ -2,9 +2,7 @@ import { Fragment, useEffect, useMemo, useState, useRef } from 'react';
 import { Link, useLocation, useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import Plebbit from '@plebbit/plebbit-js';
-import { Comment, useAccountComment, useAuthorAddress, useAuthorAvatar, useBlock, useComment, useEditedComment } from '@plebbit/plebbit-react-hooks';
-import useSubplebbitsStore from '@plebbit/plebbit-react-hooks/dist/stores/subplebbits';
-import useSubplebbitsPagesStore from '@plebbit/plebbit-react-hooks/dist/stores/subplebbits-pages';
+import { Comment, useAccountComment, useAuthorAddress, useAuthorAvatar, useBlock, useComment, useEditedComment, useSubplebbit } from '@plebbit/plebbit-react-hooks';
 import { isInboxView, isPostContextView, isPostPageView } from '../../lib/utils/view-utils';
 import { getHostname } from '../../lib/utils/url-utils';
 import { formatScore, getReplyScore } from '../../lib/utils/post-utils';
@@ -236,9 +234,9 @@ const ParentLink = ({ postCid }: ParentLinkProps) => {
 
 const InboxParentLink = ({ commentCid }: ParentLinkProps) => {
   const { t } = useTranslation();
-  const inboxComment = useSubplebbitsPagesStore((state) => state.comments[commentCid as string]);
+  const inboxComment = useComment({ commentCid, onlyIfCached: true });
   const { postCid, parentCid } = inboxComment || {};
-  const parent = useSubplebbitsPagesStore((state) => state.comments[inboxComment?.postCid]);
+  const parent = useComment({ commentCid: inboxComment?.postCid, onlyIfCached: true });
   const { cid, content, title, subplebbitAddress } = parent || {};
   const postTitle = (title?.length > 300 ? title?.slice(0, 300) + '...' : title) || (content?.length > 300 ? content?.slice(0, 300) + '...' : content);
 
@@ -344,10 +342,10 @@ const Reply = ({ cidOfReplyWithContext, depth = 0, isSingleComment, isSingleRepl
     timestamp,
     upvoteCount,
   } = reply || {};
-  const subplebbit = useSubplebbitsStore((state) => state.subplebbits[subplebbitAddress]);
+  const subplebbit = useSubplebbit({ subplebbitAddress, onlyIfCached: true });
 
   const pendingReply = useAccountComment({ commentIndex: reply?.index });
-  const parentOfPendingReply = useSubplebbitsPagesStore((state) => state.comments[pendingReply?.parentCid]);
+  const parentOfPendingReply = useComment({ commentCid: pendingReply?.parentCid, onlyIfCached: true });
 
   const location = useLocation();
   const params = useParams();
@@ -414,7 +412,7 @@ const Reply = ({ cidOfReplyWithContext, depth = 0, isSingleComment, isSingleRepl
     </span>
   );
 
-  const post = useSubplebbitsPagesStore((state) => state.comments[postCid as string]);
+  const post = useComment({ commentCid: postCid, onlyIfCached: true });
 
   // auto scroll to context reply
   const replyContextContentRef = useRef<HTMLDivElement>(null);

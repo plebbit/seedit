@@ -1,6 +1,5 @@
-import { Comment } from '@plebbit/plebbit-react-hooks';
+import { Comment, useSubplebbit } from '@plebbit/plebbit-react-hooks';
 import React, { ReactNode, Fragment } from 'react';
-import useSubplebbitsStore from '@plebbit/plebbit-react-hooks/dist/stores/subplebbits';
 
 /**
  * Checks if a text matches a pattern according to various pattern matching rules:
@@ -143,8 +142,7 @@ export const userHasRole = (comment: Comment, role: string): boolean => {
     return false;
   }
 
-  const subplebbits = useSubplebbitsStore.getState().subplebbits;
-  const subplebbit = subplebbits[comment.subplebbitAddress];
+  const subplebbit = useSubplebbit({ subplebbitAddress: comment.subplebbitAddress, onlyIfCached: true });
 
   if (!subplebbit?.roles) {
     return false;
