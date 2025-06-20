@@ -209,7 +209,7 @@ const Home = () => {
       onClearSearch,
     }),
     [
-      feed?.length,
+      feed,
       hasMore,
       subplebbitAddresses,
       subplebbitAddressesWithNewerPosts,
