@@ -49,6 +49,7 @@
   box-sizing: border-box;
   display: inline-block;
   max-width: 700px;
+  overflow: hidden;
 }
 
 .mediaPreview img {
@@ -79,14 +80,12 @@
 @supports (-webkit-appearance: none) {
   .mediaPreview iframe {
     width: auto !important;
-    min-width: unset;
-    max-width: unset;
   }
 }
 
 @media (min-width: 640px) {
   .mediaPreview iframe {
-    max-width: calc(100vw - 430px);
+    max-width: calc(100vw - 430px) !important;
   }
 }
 
@@ -94,31 +93,6 @@
   .mediaPreview iframe {
     max-width: 100%;
   }
-}
-
-.hideSpoiler {
-  position: absolute;
-  width: calc(100% - 2px);
-  height: 100%;
-  top: 0;
-  left: 0;
-  border: 1px solid var(--text-primary);
-  background-color: black;
-  color: black;
-  z-index: 1;
-  cursor: pointer;
-}
-
-.showSpoilerButton {
-  color: white;
-  text-transform: lowercase;
-  position: absolute;
-  font-size: 12px;
-  z-index: 1;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  cursor: pointer;
 }
 
 @media (max-width: 640px) {
