@@ -75,6 +75,15 @@
   background-color: var(--background-thumbnail);
 }
 
+/* Safari-specific fix for iframe width constraint in inline-block containers */
+@supports (-webkit-appearance: none) {
+  .mediaPreview iframe {
+    width: auto !important;
+    min-width: unset;
+    max-width: unset;
+  }
+}
+
 @media (min-width: 640px) {
   .mediaPreview iframe {
     max-width: calc(100vw - 430px);
