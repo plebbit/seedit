@@ -1,18 +1,8 @@
-import { useState, useEffect } from 'react';
+import useWindowDimensionsStore from '../stores/use-window-dimensions-store';
 
 const useWindowWidth = () => {
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-
-  useEffect(() => {
-    function handleResize() {
-      setWindowWidth(window.innerWidth);
-    }
-
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
-
-  return windowWidth;
+  const width = useWindowDimensionsStore((state) => state.width);
+  return width;
 };
 
 export default useWindowWidth;
