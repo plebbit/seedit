@@ -67,3 +67,7 @@
 .modal .menuItem label {
   cursor: pointer;
 }
+
+.modal .menuItem .purged {
+  color: var(--red);
+}
