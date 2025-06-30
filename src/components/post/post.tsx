@@ -1,10 +1,8 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link, useLocation, useParams, useSearchParams } from 'react-router-dom';
-import { Comment, useAuthorAddress, useBlock, useEditedComment, useSubscribe } from '@plebbit/plebbit-react-hooks';
+import { Comment, useAuthorAddress, useBlock, useComment, useEditedComment, useSubplebbit, useSubscribe } from '@plebbit/plebbit-react-hooks';
 import Plebbit from '@plebbit/plebbit-js';
-import useSubplebbitsStore from '@plebbit/plebbit-react-hooks/dist/stores/subplebbits';
-import useSubplebbitsPagesStore from '@plebbit/plebbit-react-hooks/dist/stores/subplebbits-pages';
 import { getHasThumbnail } from '../../lib/utils/media-utils';
 import { getPostScore, formatScore } from '../../lib/utils/post-utils';
 import { getFormattedTimeAgo, formatLocalizedUTCTimestamp } from '../../lib/utils/time-utils';
@@ -27,6 +25,7 @@ import Thumbnail from './thumbnail';
 import styles from './post.module.css';
 import _ from 'lodash';
 import useContentOptionsStore from '../../stores/use-content-options-store';
+import React from 'react';
 
 interface PostAuthorProps {
   authorAddress: string;
@@ -86,7 +85,7 @@ interface PostProps {
 
 const Post = ({ index, post = {} }: PostProps) => {
   // handle single comment thread
-  const op = useSubplebbitsPagesStore((state) => state.comments[post?.parentCid ? post?.postCid : '']);
+  const op = useComment({ commentCid: post?.parentCid ? post?.postCid : '', onlyIfCached: true });
 
   if (post?.parentCid) {
     post = op;
@@ -134,7 +133,7 @@ const Post = ({ index, post = {} }: PostProps) => {
   const postDate = formatLocalizedUTCTimestamp(timestamp, language);
   const params = useParams();
   const location = useLocation();
-  const subplebbit = useSubplebbitsStore((state) => state.subplebbits[subplebbitAddress]);
+  const subplebbit = useSubplebbit({ subplebbitAddress, onlyIfCached: true });
 
   const authorRole = subplebbit?.roles?.[post.author?.address]?.role;
 
@@ -375,4 +374,4 @@ const Post = ({ index, post = {} }: PostProps) => {
   );
 };
 
-export default Post;
+export default React.memo(Post);

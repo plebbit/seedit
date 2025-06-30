@@ -26,13 +26,14 @@ const ModMenu = ({ cid, isCommentAuthorMod }: ModMenuProps) => {
   const isReply = post?.parentCid;
   const [isModMenuOpen, setIsModMenuOpen] = useState(false);
 
-  const { removed, locked, spoiler, nsfw, pinned, banExpiresAt, subplebbitAddress } = post || {};
+  const { removed, locked, spoiler, nsfw, pinned, banExpiresAt, subplebbitAddress, purged } = post || {};
 
   const defaultPublishOptions: PublishCommentModerationOptions = {
     commentCid: cid,
     subplebbitAddress,
     commentModeration: {
       removed: removed ?? false,
+      purged: purged ?? false,
       locked: locked ?? false,
       spoiler: spoiler ?? false,
       nsfw: nsfw ?? false,
@@ -114,6 +115,16 @@ const ModMenu = ({ cid, isCommentAuthorMod }: ModMenuProps) => {
   const headingId = useId();
 
   const handleSaveClick = async () => {
+    if (publishCommentModerationOptions.commentModeration.purged) {
+      const confirmed = window.confirm(
+        'You are purging this comment. Are you sure you want to continue?\n\n' +
+          "The comment will be completely removed from this subplebbit's database. This action is irreversible.",
+      );
+      if (!confirmed) {
+        return;
+      }
+    }
+
     await publishCommentModeration();
     setIsModMenuOpen(false);
   };
@@ -131,6 +142,12 @@ const ModMenu = ({ cid, isCommentAuthorMod }: ModMenuProps) => {
                 <label>
                   <input onChange={onCheckbox} checked={publishCommentModerationOptions.commentModeration.removed} type='checkbox' id='removed' />
                   {t('removed')}
+                </label>
+              </div>
+              <div className={styles.menuItem}>
+                <label>
+                  <input onChange={onCheckbox} checked={publishCommentModerationOptions.commentModeration.purged} type='checkbox' id='purged' />
+                  <span className={styles.purged}>{t('purged')}</span> <span className={styles.optional}>({t('irreversible')})</span>
                 </label>
               </div>
               {!isReply && (

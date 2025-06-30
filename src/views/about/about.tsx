@@ -3,8 +3,7 @@ import { HashLink } from 'react-router-hash-link';
 import useIsMobile from '../../hooks/use-is-mobile';
 import Sidebar, { Footer } from '../../components/sidebar';
 import styles from './about.module.css';
-import { useAccount, useSubplebbit } from '@plebbit/plebbit-react-hooks';
-import useSubplebbitsPagesStore from '@plebbit/plebbit-react-hooks/dist/stores/subplebbits-pages';
+import { useAccount, useComment, useSubplebbit } from '@plebbit/plebbit-react-hooks';
 import { Capacitor } from '@capacitor/core';
 import { isHomeAboutView } from '../../lib/utils/view-utils';
 import { useEffect } from 'react';
@@ -160,7 +159,7 @@ const About = () => {
   const { commentCid, subplebbitAddress } = useParams();
 
   const subplebbit = useSubplebbit({ subplebbitAddress });
-  const comment = useSubplebbitsPagesStore((state) => state.comments[commentCid as string]);
+  const comment = useComment({ commentCid: commentCid as string, onlyIfCached: true });
 
   useEffect(() => {
     if (!isMobile && location.pathname.endsWith('/about') && !isInHomeAboutView) {

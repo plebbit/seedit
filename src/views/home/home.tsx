@@ -1,7 +1,7 @@
-import { useEffect, useRef, useState, useMemo } from 'react';
+import { useEffect, useRef, useState, useMemo, useCallback, startTransition } from 'react';
 import { Link, useNavigate, useParams, useSearchParams, useLocation } from 'react-router-dom';
 import { Virtuoso, VirtuosoHandle, StateSnapshot } from 'react-virtuoso';
-import { useAccount, useFeed } from '@plebbit/plebbit-react-hooks';
+import { useAccount, useFeed, Comment } from '@plebbit/plebbit-react-hooks';
 import { Trans, useTranslation } from 'react-i18next';
 import { commentMatchesPattern } from '../../lib/utils/pattern-utils';
 import useFeedFiltersStore from '../../stores/use-feed-filters-store';
@@ -62,37 +62,46 @@ const Home = () => {
   const [showNoResults, setShowNoResults] = useState(false);
   const [searchAttemptCompleted, setSearchAttemptCompleted] = useState(false);
 
+  const commentFilter = useCallback(
+    (comment: Comment) => {
+      if (!searchQuery.trim()) return true;
+      return commentMatchesPattern(comment, searchQuery);
+    },
+    [searchQuery],
+  );
+
   const feedOptions = useMemo(() => {
     const options: any = {
       newerThan: searchQuery ? 0 : timeFilterSeconds,
       postsPerPage: 10,
       sortType,
-      subplebbitAddresses: subplebbitAddresses || [],
+      subplebbitAddresses,
     };
 
     if (searchQuery) {
       options.filter = {
-        filter: (comment: Comment) => {
-          if (!searchQuery.trim()) return true;
-          return commentMatchesPattern(comment, searchQuery);
-        },
+        filter: commentFilter,
         key: `search-filter-${searchQuery}`,
       };
     }
 
     return options;
-  }, [subplebbitAddresses, sortType, timeFilterSeconds, searchQuery]);
+  }, [subplebbitAddresses, sortType, timeFilterSeconds, searchQuery, commentFilter]);
 
   const { feed, hasMore, loadMore, reset, subplebbitAddressesWithNewerPosts } = useFeed(feedOptions);
 
   useEffect(() => {
-    setShowNoResults(false);
-    setSearchAttemptCompleted(false);
+    startTransition(() => {
+      setShowNoResults(false);
+      setSearchAttemptCompleted(false);
+    });
   }, [searchQuery]);
 
   useEffect(() => {
     if (searchQuery && !isSearching && !searchAttemptCompleted) {
-      setSearchAttemptCompleted(true);
+      startTransition(() => {
+        setSearchAttemptCompleted(true);
+      });
     }
   }, [searchQuery, isSearching, searchAttemptCompleted]);
 
@@ -100,7 +109,9 @@ const Home = () => {
     let timer: NodeJS.Timeout | null = null;
     if (searchQuery && feed?.length === 0 && searchAttemptCompleted) {
       timer = setTimeout(() => {
-        setShowNoResults(true);
+        startTransition(() => {
+          setShowNoResults(true);
+        });
       }, 1500);
     }
     return () => {
@@ -108,12 +119,14 @@ const Home = () => {
     };
   }, [searchQuery, feed?.length, searchAttemptCompleted]);
 
+  const shouldLoadAdditionalFeeds = sortType !== 'top' && !searchQuery;
+
   const {
     feed: weeklyFeed,
     hasMore: hasMoreWeekly,
     loadMore: loadMoreWeekly,
   } = useFeed({
-    subplebbitAddresses,
+    subplebbitAddresses: shouldLoadAdditionalFeeds ? subplebbitAddresses : [],
     sortType,
     newerThan: 60 * 60 * 24 * 7,
   });
@@ -122,7 +135,7 @@ const Home = () => {
     hasMore: hasMoreMonthly,
     loadMore: loadMoreMonthly,
   } = useFeed({
-    subplebbitAddresses,
+    subplebbitAddresses: shouldLoadAdditionalFeeds ? subplebbitAddresses : [],
     sortType,
     newerThan: 60 * 60 * 24 * 30,
   });
@@ -131,19 +144,19 @@ const Home = () => {
     hasMore: hasMoreYearly,
     loadMore: loadMoreYearly,
   } = useFeed({
-    subplebbitAddresses,
+    subplebbitAddresses: shouldLoadAdditionalFeeds ? subplebbitAddresses : [],
     sortType,
     newerThan: 60 * 60 * 24 * 365,
   });
 
-  const combinedLoadMore = () => {
+  const combinedLoadMore = useCallback(() => {
     loadMore();
-    if (sortType !== 'top') {
+    if (shouldLoadAdditionalFeeds) {
       if (hasMoreWeekly) loadMoreWeekly();
       if (hasMoreMonthly) loadMoreMonthly();
       if (hasMoreYearly) loadMoreYearly();
     }
-  };
+  }, [loadMore, shouldLoadAdditionalFeeds, hasMoreWeekly, loadMoreWeekly, hasMoreMonthly, loadMoreMonthly, hasMoreYearly, loadMoreYearly]);
 
   const virtuosoRef = useRef<VirtuosoHandle | null>(null);
 
@@ -161,32 +174,56 @@ const Home = () => {
 
   const lastVirtuosoState = lastVirtuosoStates?.[sortType + currentTimeFilterName + 'home' + searchQuery];
 
+  // Memoize the item content renderer to prevent unnecessary rerenders
+  const renderPost = useCallback((index: number, post: Comment) => {
+    return <Post key={post?.cid} index={index} post={post} />;
+  }, []);
+
   useEffect(() => {
     document.title = `seedit`;
   }, [t]);
 
-  const footerProps = {
-    feedLength: feed?.length,
-    hasFeedLoaded: !!feed,
-    hasMore,
-    subplebbitAddresses,
-    subplebbitAddressesWithNewerPosts,
-    weeklyFeedLength: weeklyFeed.length,
-    monthlyFeedLength: monthlyFeed.length,
-    yearlyFeedLength: yearlyFeed.length,
-    currentTimeFilterName: searchQuery ? 'all' : currentTimeFilterName,
-    reset,
-    searchQuery: searchQuery,
-    isSearching,
-    showNoResults,
-    onClearSearch: () => {
-      setSearchParams((prev) => {
-        prev.delete('q');
-        return prev;
-      });
-      reset();
-    },
-  };
+  const onClearSearch = useCallback(() => {
+    setSearchParams((prev) => {
+      prev.delete('q');
+      return prev;
+    });
+    reset();
+  }, [setSearchParams, reset]);
+
+  const footerProps = useMemo(
+    () => ({
+      feedLength: feed?.length,
+      hasFeedLoaded: !!feed,
+      hasMore,
+      subplebbitAddresses,
+      subplebbitAddressesWithNewerPosts,
+      weeklyFeedLength: weeklyFeed.length,
+      monthlyFeedLength: monthlyFeed.length,
+      yearlyFeedLength: yearlyFeed.length,
+      currentTimeFilterName: searchQuery ? 'all' : currentTimeFilterName,
+      reset,
+      searchQuery: searchQuery,
+      isSearching,
+      showNoResults,
+      onClearSearch,
+    }),
+    [
+      feed,
+      hasMore,
+      subplebbitAddresses,
+      subplebbitAddressesWithNewerPosts,
+      weeklyFeed.length,
+      monthlyFeed.length,
+      yearlyFeed.length,
+      searchQuery,
+      currentTimeFilterName,
+      reset,
+      isSearching,
+      showNoResults,
+      onClearSearch,
+    ],
+  );
 
   const [subscriptionState, setSubscriptionState] = useState<SubscriptionState>('loading');
   const initialLoadTimeoutRef = useRef<NodeJS.Timeout | null>(null);
@@ -285,7 +322,7 @@ const Home = () => {
               totalCount={feed?.length || 0}
               data={feed}
               computeItemKey={(index, post) => post?.cid || index}
-              itemContent={(index, post) => <Post key={post?.cid} index={index} post={post} />}
+              itemContent={renderPost}
               useWindowScroll={true}
               components={{
                 Footer: () => <FeedFooter {...footerProps} />,

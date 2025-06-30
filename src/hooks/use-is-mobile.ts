@@ -1,8 +1,8 @@
-import useWindowWidth from './use-window-width';
+import useWindowDimensionsStore from '../stores/use-window-dimensions-store';
 
 const useIsMobile = () => {
-  const windowWidth = useWindowWidth();
-  return windowWidth < 640;
+  const isMobile = useWindowDimensionsStore((state) => state.isMobile);
+  return isMobile;
 };
 
 export default useIsMobile;

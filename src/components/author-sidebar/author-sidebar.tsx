@@ -9,9 +9,9 @@ import {
   useAuthorAvatar,
   useAuthorComments,
   useBlock,
+  useComment,
+  useSubplebbits,
 } from '@plebbit/plebbit-react-hooks';
-import useSubplebbitsStore from '@plebbit/plebbit-react-hooks/dist/stores/subplebbits';
-import useSubplebbitsPagesStore from '@plebbit/plebbit-react-hooks/dist/stores/subplebbits-pages';
 import Plebbit from '@plebbit/plebbit-js';
 import styles from './author-sidebar.module.css';
 import { getFormattedTimeDuration } from '../../lib/utils/time-utils';
@@ -55,7 +55,7 @@ const AuthorSidebar = () => {
   const { blocked, unblock, block } = useBlock({ address: authorAddress });
   const [showBlockConfirm, setShowBlockConfirm] = useState(false);
 
-  const comment = useSubplebbitsPagesStore((state) => state.comments[commentCid as string]);
+  const comment = useComment({ commentCid, onlyIfCached: true });
   const { imageUrl: authorPageAvatar } = useAuthorAvatar({ author: comment?.author });
 
   const isInAuthorView = isAuthorView(location.pathname);
@@ -73,10 +73,11 @@ const AuthorSidebar = () => {
   const accountSubscriptions = userAccount?.subscriptions || [];
   const subscriptionsAndDefaults = [...accountSubscriptions, ...defaultSubplebbitAddresses];
 
-  const subplebbits = useSubplebbitsStore((state) => {
-    if (!subscriptionsAndDefaults?.length) return [];
-    return subscriptionsAndDefaults.map((address) => state.subplebbits[address]).filter(Boolean);
-  });
+  const subplebbits =
+    useSubplebbits({
+      subplebbitAddresses: subscriptionsAndDefaults || [],
+      onlyIfCached: true,
+    }).subplebbits?.filter(Boolean) || [];
 
   const authorAccount = useAuthor({ authorAddress, commentCid });
   const { authorComments } = useAuthorComments({ authorAddress, commentCid });

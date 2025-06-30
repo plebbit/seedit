@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, useMemo, memo } from 'react';
 import { Link, useLocation, useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useAccount, useAccountSubplebbits } from '@plebbit/plebbit-react-hooks';
@@ -15,8 +15,8 @@ import styles from './topbar.module.css';
 const CommunitiesDropdown = () => {
   const { t } = useTranslation();
   const account = useAccount();
-  const subscriptions = account?.subscriptions;
-  const reversedSubscriptions = subscriptions ? [...subscriptions].reverse() : [];
+  const subscriptions = useMemo(() => account?.subscriptions, [account?.subscriptions]);
+  const reversedSubscriptions = useMemo(() => (subscriptions ? [...subscriptions].reverse() : []), [subscriptions]);
 
   const [isSubsDropdownOpen, setIsSubsDropdownOpen] = useState(false);
   const toggleSubsDropdown = () => setIsSubsDropdownOpen(!isSubsDropdownOpen);
@@ -68,12 +68,24 @@ const TagFilterDropdown = () => {
     setHideVulgarCommunities,
   } = useContentOptionsStore();
 
-  const tags = [
-    { name: 'adult', isHidden: hideAdultCommunities, setter: setHideAdultCommunities },
-    { name: 'gore', isHidden: hideGoreCommunities, setter: setHideGoreCommunities },
-    { name: 'vulgar', isHidden: hideVulgarCommunities, setter: setHideVulgarCommunities },
-    { name: 'anti', isHidden: hideAntiCommunities, setter: setHideAntiCommunities },
-  ];
+  const tags = useMemo(
+    () => [
+      { name: 'adult', isHidden: hideAdultCommunities, setter: setHideAdultCommunities },
+      { name: 'gore', isHidden: hideGoreCommunities, setter: setHideGoreCommunities },
+      { name: 'vulgar', isHidden: hideVulgarCommunities, setter: setHideVulgarCommunities },
+      { name: 'anti', isHidden: hideAntiCommunities, setter: setHideAntiCommunities },
+    ],
+    [
+      hideAdultCommunities,
+      hideGoreCommunities,
+      hideAntiCommunities,
+      hideVulgarCommunities,
+      setHideAdultCommunities,
+      setHideGoreCommunities,
+      setHideAntiCommunities,
+      setHideVulgarCommunities,
+    ],
+  );
 
   const [isTagFilterDropdownOpen, setIsTagFilterDropdownOpen] = useState(false);
   const toggleTagFilterDropdown = () => setIsTagFilterDropdownOpen(!isTagFilterDropdownOpen);
@@ -268,7 +280,7 @@ const TimeFilterDropdown = () => {
   );
 };
 
-const TopBar = () => {
+const TopBar = memo(() => {
   const { t } = useTranslation();
   const location = useLocation();
   const params = useParams();
@@ -281,13 +293,13 @@ const TopBar = () => {
   const { hideDefaultCommunities } = useContentOptionsStore();
   const subplebbitAddresses = useDefaultSubplebbitAddresses();
   const { accountSubplebbits } = useAccountSubplebbits();
-  const accountSubplebbitAddresses = Object.keys(accountSubplebbits);
+  const accountSubplebbitAddresses = useMemo(() => Object.keys(accountSubplebbits), [accountSubplebbits]);
 
   const account = useAccount();
-  const subscriptions = account?.subscriptions;
-  const reversedSubscriptions = subscriptions ? [...subscriptions].reverse() : [];
+  const subscriptions = useMemo(() => account?.subscriptions, [account?.subscriptions]);
+  const reversedSubscriptions = useMemo(() => (subscriptions ? [...subscriptions].reverse() : []), [subscriptions]);
 
-  const filteredSubplebbitAddresses = subplebbitAddresses?.filter((address) => !subscriptions?.includes(address));
+  const filteredSubplebbitAddresses = useMemo(() => subplebbitAddresses?.filter((address) => !subscriptions?.includes(address)), [subplebbitAddresses, subscriptions]);
 
   return (
     <div className={styles.headerArea}>
@@ -356,6 +368,6 @@ const TopBar = () => {
       </div>
     </div>
   );
-};
+});
 
 export default TopBar;

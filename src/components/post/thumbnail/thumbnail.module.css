@@ -33,6 +33,22 @@
   position: relative;
 }
 
+/* Ensure link elements with media content don't interfere with duration overlay positioning */
+/* Only target links that contain img or video elements, not icon spans */
+.thumbnailWrapper a img,
+.thumbnailWrapper a video,
+.transparentThumbnailWrapper a img,
+.transparentThumbnailWrapper a video {
+  position: relative;
+}
+
+/* Ensure the link containers have proper positioning for media elements */
+.thumbnailWrapper a:not(:has(.iconThumbnail)),
+.transparentThumbnailWrapper a:not(:has(.iconThumbnail)) {
+  position: relative;
+  display: block;
+}
+
 .thumbnail img, .thumbnail video {
   width: 100%;
   max-height: 70px;
@@ -49,6 +65,25 @@
   width: 100%;
   text-align: center;
   left: 0;
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* Firefox and Safari specific fixes for duration overlay positioning */
+@-moz-document url-prefix() {
+  .durationOverlay {
+    bottom: 0 !important;
+    left: 0 !important;
+    position: absolute !important;
+  }
+}
+
+@supports (-webkit-appearance: none) {
+  .durationOverlay {
+    bottom: 0 !important;
+    left: 0 !important;
+    position: absolute !important;
+  }
 }
 
 .iconThumbnail {

@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import useSubplebbitsStore from '@plebbit/plebbit-react-hooks/dist/stores/subplebbits';
+import { useSubplebbit } from '@plebbit/plebbit-react-hooks';
 import { isValidURL } from '../../lib/utils/url-utils';
 import useIsSubplebbitOffline from '../../hooks/use-is-subplebbit-offline';
 import usePublishReply from '../../hooks/use-publish-reply';
@@ -122,7 +122,7 @@ const ReplyForm = ({ cid, isReplyingToReply, hideReplyForm, subplebbitAddress, p
   const spoilerClass = showOptions ? styles.spoilerVisible : styles.spoilerHidden;
   const nsfwClass = showOptions ? styles.spoilerVisible : styles.spoilerHidden;
 
-  const subplebbit = useSubplebbitsStore((state) => state.subplebbits[subplebbitAddress]);
+  const subplebbit = useSubplebbit({ subplebbitAddress, onlyIfCached: true });
   const { isOffline, offlineTitle } = useIsSubplebbitOffline(subplebbit);
 
   // focus on the textarea when replying to a reply

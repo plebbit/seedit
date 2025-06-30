@@ -1,9 +1,8 @@
 import { useEffect, useState } from 'react';
 import { Link, useLocation, useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { useAccount, useAccountComment } from '@plebbit/plebbit-react-hooks';
+import { useAccount, useAccountComment, useSubplebbit } from '@plebbit/plebbit-react-hooks';
 import Plebbit from '@plebbit/plebbit-js';
-import useSubplebbitsStore from '@plebbit/plebbit-react-hooks/dist/stores/subplebbits';
 import { sortTypes } from '../../constants/sort-types';
 import { sortLabels } from '../../constants/sort-labels';
 import {
@@ -401,7 +400,7 @@ const Header = () => {
   const [theme] = useTheme();
   const location = useLocation();
   const params = useParams();
-  const subplebbit = useSubplebbitsStore((state) => state.subplebbits[params?.subplebbitAddress as string]);
+  const subplebbit = useSubplebbit({ subplebbitAddress: params?.subplebbitAddress, onlyIfCached: true });
   const { suggested, title } = subplebbit || {};
 
   const commentIndex = params?.accountCommentIndex ? parseInt(params?.accountCommentIndex) : undefined;

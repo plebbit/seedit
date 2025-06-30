@@ -50,6 +50,9 @@ const FallbackEditor = ({ value, onChange, height }: { value: string; onChange: 
 };
 
 const AccountDataEditor = () => {
+  const { t } = useTranslation();
+  const isMobile = useIsMobile();
+  const navigate = useNavigate();
   const account = useAccount();
   const theme = useTheme((state) => state.theme);
   const [text, setText] = useState('');
@@ -66,6 +69,8 @@ const AccountDataEditor = () => {
       const editorAccount = JSON.parse(text).account;
       await setAccount(editorAccount);
       alert(`Saved ${editorAccount.name}`);
+      navigate('/settings');
+      window.location.reload();
     } catch (error) {
       if (error instanceof Error) {
         alert(error.message);
@@ -75,10 +80,6 @@ const AccountDataEditor = () => {
       }
     }
   };
-
-  const isMobile = useIsMobile();
-  const { t } = useTranslation();
-  const navigate = useNavigate();
 
   if (!showEditor) {
     return (

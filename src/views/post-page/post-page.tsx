@@ -253,7 +253,8 @@ const PostPage = () => {
     (!isNaN(parseInt(accountCommentIndex)) &&
       parseInt(accountCommentIndex) >= 0 &&
       Number.isInteger(parseFloat(accountCommentIndex)) &&
-      (accountComments?.length === 0 || parseInt(accountCommentIndex) < accountComments.length));
+      accountComments?.length > 0 &&
+      parseInt(accountCommentIndex) < accountComments.length);
 
   useEffect(() => {
     if (!isValidAccountCommentIndex) {

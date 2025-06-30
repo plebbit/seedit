@@ -1,6 +1,5 @@
-import { Comment } from '@plebbit/plebbit-react-hooks';
+import { Comment, useSubplebbit } from '@plebbit/plebbit-react-hooks';
 import React, { ReactNode, Fragment } from 'react';
-import useSubplebbitsStore from '@plebbit/plebbit-react-hooks/dist/stores/subplebbits';
 
 /**
  * Checks if a text matches a pattern according to various pattern matching rules:
@@ -136,21 +135,15 @@ export const displayNameMatchesPattern = (comment: Comment, pattern: string): bo
  *
  * @param comment The comment to check
  * @param role The role to check for (without the #!# prefix)
+ * @param subplebbitRoles The roles object from the subplebbit
  * @returns True if the user has the specified role, false otherwise
  */
-export const userHasRole = (comment: Comment, role: string): boolean => {
-  if (!role || !comment?.author?.address || !comment?.subplebbitAddress) {
+export const userHasRole = (comment: Comment, role: string, subplebbitRoles?: { [key: string]: { role: string } }): boolean => {
+  if (!role || !comment?.author?.address || !subplebbitRoles) {
     return false;
   }
 
-  const subplebbits = useSubplebbitsStore.getState().subplebbits;
-  const subplebbit = subplebbits[comment.subplebbitAddress];
-
-  if (!subplebbit?.roles) {
-    return false;
-  }
-
-  const userRole = subplebbit.roles[comment.author.address]?.role;
+  const userRole = subplebbitRoles[comment.author.address]?.role;
 
   // Handle different role names (moderator/mod)
   if ((role.toLowerCase() === 'moderator' || role.toLowerCase() === 'mod') && userRole === 'moderator') {
@@ -202,9 +195,10 @@ export const parsePattern = (
  *
  * @param comment The comment to check
  * @param pattern The pattern to match
+ * @param subplebbitRoles Optional roles object from the subplebbit (required for role filters)
  * @returns True if the comment matches the pattern, false otherwise
  */
-export const commentMatchesPattern = (comment: Comment, pattern: string): boolean => {
+export const commentMatchesPattern = (comment: Comment, pattern: string, subplebbitRoles?: { [key: string]: { role: string } }): boolean => {
   if (!pattern || !comment) return false;
 
   // Check if the pattern contains spaces, which might indicate combined filters
@@ -220,7 +214,7 @@ export const commentMatchesPattern = (comment: Comment, pattern: string): boolea
         } else if (filter.type === 'displayName') {
           return displayNameMatchesPattern(comment, filter.value);
         } else if (filter.type === 'role') {
-          return userHasRole(comment, filter.value);
+          return userHasRole(comment, filter.value, subplebbitRoles);
         }
         return false;
       });
@@ -250,7 +244,7 @@ export const commentMatchesPattern = (comment: Comment, pattern: string): boolea
   // Check for role filter (starts with #!#)
   if (pattern.startsWith('#!#')) {
     const rolePattern = pattern.substring(3);
-    return userHasRole(comment, rolePattern);
+    return userHasRole(comment, rolePattern, subplebbitRoles);
   }
 
   // Regular content matching
@@ -260,6 +254,23 @@ export const commentMatchesPattern = (comment: Comment, pattern: string): boolea
   // + ' ' + contentLower;
 
   return matchesPattern(textToMatch, pattern);
+};
+
+/**
+ * Custom hook version of commentMatchesPattern that can handle role filters
+ * by fetching subplebbit data when needed
+ *
+ * @param comment The comment to check
+ * @param pattern The pattern to match
+ * @returns True if the comment matches the pattern, false otherwise
+ */
+export const useCommentMatchesPattern = (comment: Comment, pattern: string): boolean => {
+  const subplebbit = useSubplebbit({
+    subplebbitAddress: comment?.subplebbitAddress,
+    onlyIfCached: true,
+  });
+
+  return commentMatchesPattern(comment, pattern, subplebbit?.roles);
 };
 
 /**
