@@ -10,6 +10,12 @@ import './preload-assets.css';
 import { App as CapacitorApp } from '@capacitor/app';
 import { registerSW } from 'virtual:pwa-register';
 
+if (window.location.hostname.startsWith('p2p.')) {
+  (window as any).defaultPlebbitOptions = {
+    libp2pJsClientsOptions: [{ key: 'libp2pjs' }],
+  };
+}
+
 const reloadSW = registerSW({
   immediate: true,
   onNeedRefresh() {
