@@ -2858,6 +2858,19 @@
     uint8arraylist "^2.4.8"
     uint8arrays "^5.1.0"
 
+"@libp2p/fetch@3.0.21":
+  version "3.0.21"
+  resolved "https://registry.yarnpkg.com/@libp2p/fetch/-/fetch-3.0.21.tgz#8313d02e9108af06d2e4fdd4c6f35f27140841ae"
+  integrity sha512-Tb7oitURrlof9k6MzjxlUIXQaOXHbC+MZAf+xlrhqLrhG4F3Gux2QrFtnEWtW83D6xnRHtTvsjBkxeAm6qNKNQ==
+  dependencies:
+    "@libp2p/interface" "^2.10.5"
+    "@libp2p/interface-internal" "^2.3.18"
+    it-protobuf-stream "^2.0.2"
+    main-event "^1.0.1"
+    protons-runtime "^5.5.0"
+    uint8arraylist "^2.4.8"
+    uint8arrays "^5.1.0"
+
 "@libp2p/http-fetch@^2.1.0":
   version "2.2.2"
   resolved "https://registry.yarnpkg.com/@libp2p/http-fetch/-/http-fetch-2.2.2.tgz#258d32bd383a6a7e2fe1fc4b88019c29887a190c"
@@ -2891,6 +2904,27 @@
     "@libp2p/utils" "^6.6.6"
     "@multiformats/multiaddr" "^12.4.0"
     "@multiformats/multiaddr-matcher" "^1.7.2"
+    it-drain "^3.0.9"
+    it-parallel "^3.0.11"
+    it-protobuf-stream "^2.0.2"
+    main-event "^1.0.1"
+    protons-runtime "^5.5.0"
+    uint8arraylist "^2.4.8"
+    uint8arrays "^5.1.0"
+
+"@libp2p/identify@3.0.38":
+  version "3.0.38"
+  resolved "https://registry.yarnpkg.com/@libp2p/identify/-/identify-3.0.38.tgz#c58266472bd38fe9cbdadc3d22210a5c373b31fd"
+  integrity sha512-2eCZU5CSTvyt78jtMLQ88m6Rlrcrt7BVccGHsdjx8hguvFYWqBjq19RQ5Zm47bbHlNzjLwrAUi6vfKx2r7fKIg==
+  dependencies:
+    "@libp2p/crypto" "^5.1.7"
+    "@libp2p/interface" "^2.10.5"
+    "@libp2p/interface-internal" "^2.3.18"
+    "@libp2p/peer-id" "^5.1.8"
+    "@libp2p/peer-record" "^8.0.34"
+    "@libp2p/utils" "^6.7.1"
+    "@multiformats/multiaddr" "^12.4.4"
+    "@multiformats/multiaddr-matcher" "^2.0.0"
     it-drain "^3.0.9"
     it-parallel "^3.0.11"
     it-protobuf-stream "^2.0.2"
@@ -3100,16 +3134,7 @@
     multiformats "^13.3.6"
     uint8arrays "^5.1.0"
 
-"@libp2p/peer-id@^4.2.4":
-  version "4.2.4"
-  resolved "https://registry.yarnpkg.com/@libp2p/peer-id/-/peer-id-4.2.4.tgz#300343991904fc091f5146e396858fca28f363f9"
-  integrity sha512-mvvsVxt4HkF14BrTNKbqr14VObW+KBJBWu1Oe6BFCoDttGMQLaI+PdduE1r6Tquntv5IONBqoITgD7ow5dQ+vQ==
-  dependencies:
-    "@libp2p/interface" "^1.7.0"
-    multiformats "^13.1.0"
-    uint8arrays "^5.1.0"
-
-"@libp2p/peer-id@^5.0.0", "@libp2p/peer-id@^5.0.1", "@libp2p/peer-id@^5.0.7", "@libp2p/peer-id@^5.0.8", "@libp2p/peer-id@^5.1.0", "@libp2p/peer-id@^5.1.6", "@libp2p/peer-id@^5.1.8":
+"@libp2p/peer-id@5.1.8", "@libp2p/peer-id@^5.0.0", "@libp2p/peer-id@^5.0.1", "@libp2p/peer-id@^5.0.7", "@libp2p/peer-id@^5.0.8", "@libp2p/peer-id@^5.1.0", "@libp2p/peer-id@^5.1.6", "@libp2p/peer-id@^5.1.8":
   version "5.1.8"
   resolved "https://registry.yarnpkg.com/@libp2p/peer-id/-/peer-id-5.1.8.tgz#646fdda7d3346ce072adee6727c792ddcf1631ea"
   integrity sha512-pGaM4BwjnXdGtAtd84L4/wuABpsnFYE+AQ+h3GxNFme0IsTaTVKWd1jBBE5YFeKHBHGUOhF3TlHsdjFfjQA7TA==
@@ -3117,6 +3142,15 @@
     "@libp2p/crypto" "^5.1.7"
     "@libp2p/interface" "^2.10.5"
     multiformats "^13.3.6"
+    uint8arrays "^5.1.0"
+
+"@libp2p/peer-id@^4.2.4":
+  version "4.2.4"
+  resolved "https://registry.yarnpkg.com/@libp2p/peer-id/-/peer-id-4.2.4.tgz#300343991904fc091f5146e396858fca28f363f9"
+  integrity sha512-mvvsVxt4HkF14BrTNKbqr14VObW+KBJBWu1Oe6BFCoDttGMQLaI+PdduE1r6Tquntv5IONBqoITgD7ow5dQ+vQ==
+  dependencies:
+    "@libp2p/interface" "^1.7.0"
+    multiformats "^13.1.0"
     uint8arrays "^5.1.0"
 
 "@libp2p/peer-record@^8.0.31", "@libp2p/peer-record@^8.0.34":
@@ -3402,6 +3436,13 @@
     "@chainsafe/is-ip" "^2.0.1"
     "@multiformats/multiaddr" "^12.0.0"
     multiformats "^13.0.0"
+
+"@multiformats/multiaddr-matcher@^2.0.0":
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/@multiformats/multiaddr-matcher/-/multiaddr-matcher-2.0.1.tgz#3ac139319cd441b561b505904d67ae904e10a3fc"
+  integrity sha512-rhEYax74GlL0YPAZo61tK/hu0hwU7Hf9maXpoKNlpekmOPv+eckD+UlSeoTDCpGP8hQqMwLkX8e64MuDpy2Vlg==
+  dependencies:
+    "@multiformats/multiaddr" "^12.0.0"
 
 "@multiformats/multiaddr-to-uri@^11.0.0":
   version "11.0.2"
@@ -3703,6 +3744,69 @@
   resolved "https://registry.yarnpkg.com/@pkgjs/parseargs/-/parseargs-0.11.0.tgz#a77ea742fab25775145434eb1d2328cf5013ac33"
   integrity sha512-+1VkjdD0QBLPodGrJUeqarH8VAIvQODIbwh9XpP5Syisf7YoQgsJKPNFoqqLQlu+VQ/tVSshMR6loPMn8U+dPg==
 
+"@plebbit/plebbit-js@https://github.com/plebbit/plebbit-js.git#5e5f5c733149ba911e606204277a0e9f1a293f72":
+  version "0.0.7"
+  resolved "https://github.com/plebbit/plebbit-js.git#5e5f5c733149ba911e606204277a0e9f1a293f72"
+  dependencies:
+    "@bonfida/spl-name-service" "3.0.10"
+    "@chainsafe/libp2p-gossipsub" "14.1.1"
+    "@enhances/with-resolvers" "0.0.5"
+    "@helia/block-brokers" "4.2.2"
+    "@helia/delegated-routing-v1-http-api-client" "4.2.5"
+    "@helia/ipns" "8.2.3"
+    "@helia/unixfs" "5.0.3"
+    "@libp2p/fetch" "3.0.21"
+    "@libp2p/identify" "3.0.38"
+    "@libp2p/interfaces" "3.3.2"
+    "@libp2p/peer-id" "5.1.8"
+    "@libp2p/peer-id-factory" "4.2.4"
+    "@plebbit/plebbit-logger" "github:plebbit/plebbit-logger#355a96d7659ed820047980049dfa627d30d83a69"
+    "@plebbit/proper-lockfile" "github:plebbit/node-proper-lockfile#7fd6332117340c1d3d98dd0afee2d31cc06f72b8"
+    "@types/proper-lockfile" "4.1.2"
+    assert "2.1.0"
+    better-sqlite3 "11.10.0"
+    blockstore-core "5.0.4"
+    blockstore-fs "2.0.4"
+    blockstore-idb "2.0.3"
+    buffer "6.0.3"
+    captcha-canvas "3.2.1"
+    cbor "9.0.1"
+    debounce "1.2.1"
+    err-code "3.0.1"
+    ethers "6.14.0"
+    ext-name "5.0.0"
+    helia "5.4.2"
+    hpagent "1.2.0"
+    it-all "3.0.6"
+    jose "4.11.0"
+    js-sha256 "0.11.0"
+    js-sha512 "0.9.0"
+    kubo-rpc-client "5.2.0"
+    libp2p-crypto "0.21.2"
+    limiter-es6-compat "2.1.2"
+    localforage "1.10.0"
+    lodash.merge "4.6.2"
+    lru-cache "10.1.0"
+    open-graph-scraper "6.9.0"
+    p-limit "4.0.0"
+    p-timeout "6.1.2"
+    peer-id "0.16.0"
+    probe-image-size "7.2.3"
+    remeda "1.57.0"
+    retry "0.13.1"
+    rpc-websockets "10.0.0"
+    safe-stable-stringify "2.4.3"
+    sha1-uint8array "0.10.7"
+    skia-canvas "2.0.2"
+    tcp-port-used "1.0.2"
+    tiny-typed-emitter "2.1.0"
+    tinycache "1.1.2"
+    ts-custom-error "3.3.1"
+    typestub-ipfs-only-hash "4.0.0"
+    uuid "11.1.0"
+    viem "2.29.0"
+    zod "3.25.64"
+
 "@plebbit/plebbit-js@https://github.com/plebbit/plebbit-js.git#6612569127ae5c62906b2e66a96c8735a207af0a":
   version "0.0.7"
   resolved "https://github.com/plebbit/plebbit-js.git#6612569127ae5c62906b2e66a96c8735a207af0a"
@@ -3779,11 +3883,11 @@
   dependencies:
     debug "4.3.4"
 
-"@plebbit/plebbit-react-hooks@https://github.com/plebbit/plebbit-react-hooks.git#0bdb95a801e2ccfa94d0aebc8d3347e8afd7ef3e":
+"@plebbit/plebbit-react-hooks@https://github.com/plebbit/plebbit-react-hooks.git#506a620bbfb529246f17b8005d759b374746356c":
   version "0.0.1"
-  resolved "https://github.com/plebbit/plebbit-react-hooks.git#0bdb95a801e2ccfa94d0aebc8d3347e8afd7ef3e"
+  resolved "https://github.com/plebbit/plebbit-react-hooks.git#506a620bbfb529246f17b8005d759b374746356c"
   dependencies:
-    "@plebbit/plebbit-js" "https://github.com/plebbit/plebbit-js.git#6612569127ae5c62906b2e66a96c8735a207af0a"
+    "@plebbit/plebbit-js" "https://github.com/plebbit/plebbit-js.git#5e5f5c733149ba911e606204277a0e9f1a293f72"
     "@plebbit/plebbit-logger" "https://github.com/plebbit/plebbit-logger.git"
     assert "2.0.0"
     ethers "5.6.9"
@@ -10874,6 +10978,45 @@ kubo-rpc-client@5.1.0:
   version "5.1.0"
   resolved "https://registry.yarnpkg.com/kubo-rpc-client/-/kubo-rpc-client-5.1.0.tgz#06f9216b2b8a62487a150261b16fd941a75adb34"
   integrity sha512-yTBoyEN1Ymwi0Tzi8+Mfxylg3BRAatzykih8jzwaJjfYCqKUEqCX+43m4X78CdTPRXyIHUbdI9N0DcKRwNwk+A==
+  dependencies:
+    "@ipld/dag-cbor" "^9.0.0"
+    "@ipld/dag-json" "^10.0.0"
+    "@ipld/dag-pb" "^4.0.0"
+    "@libp2p/crypto" "^5.0.0"
+    "@libp2p/interface" "^2.0.0"
+    "@libp2p/logger" "^5.0.0"
+    "@libp2p/peer-id" "^5.0.0"
+    "@multiformats/multiaddr" "^12.2.1"
+    "@multiformats/multiaddr-to-uri" "^11.0.0"
+    any-signal "^4.1.1"
+    blob-to-it "^2.0.5"
+    browser-readablestream-to-it "^2.0.5"
+    dag-jose "^5.0.0"
+    electron-fetch "^1.9.1"
+    err-code "^3.0.1"
+    ipfs-unixfs "^11.1.4"
+    iso-url "^1.2.1"
+    it-all "^3.0.4"
+    it-first "^3.0.4"
+    it-glob "^3.0.1"
+    it-last "^3.0.4"
+    it-map "^3.0.5"
+    it-peekable "^3.0.3"
+    it-to-stream "^1.0.0"
+    merge-options "^3.0.4"
+    multiformats "^13.1.0"
+    nanoid "^5.0.7"
+    native-fetch "^4.0.2"
+    parse-duration "^2.1.2"
+    react-native-fetch-api "^3.0.0"
+    stream-to-it "^1.0.1"
+    uint8arrays "^5.0.3"
+    wherearewe "^2.0.1"
+
+kubo-rpc-client@5.2.0:
+  version "5.2.0"
+  resolved "https://registry.yarnpkg.com/kubo-rpc-client/-/kubo-rpc-client-5.2.0.tgz#b8dfe823305ee7bc957f98a01532479b2c7005b7"
+  integrity sha512-J3ppL1xf7f27NDI9jUPGkr1QiExXLyxUTUwHUMMB1a4AZR4s6113SVXPHRYwe1pFIO3hRb5G+0SuHaxYSfhzBA==
   dependencies:
     "@ipld/dag-cbor" "^9.0.0"
     "@ipld/dag-json" "^10.0.0"
