@@ -86,12 +86,13 @@ export default defineConfig({
         navigateFallbackDenylist: [/^\/api/, /^\/_(.*)/],
         
         runtimeCaching: [
-          // Fix index.html not refreshing on new versions
+          // Always get fresh HTML from network first
           {
             urlPattern: ({ url }) => url.pathname === '/' || url.pathname === '/index.html',
-            handler: 'StaleWhileRevalidate',
+            handler: 'NetworkFirst',
             options: {
-              cacheName: 'html-cache'
+              cacheName: 'html-cache',
+              networkTimeoutSeconds: 3
             }
           },
           // PNG caching
