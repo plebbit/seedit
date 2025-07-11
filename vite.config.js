@@ -7,6 +7,7 @@ import { VitePWA } from 'vite-plugin-pwa';
 import reactScan from '@react-scan/vite-plugin-react-scan';
 
 const isProduction = process.env.NODE_ENV === 'production';
+const isDevelopment = process.env.NODE_ENV === 'development';
 
 export default defineConfig({
   plugins: [
@@ -19,7 +20,8 @@ export default defineConfig({
         ]
       }
     }),
-    !isProduction && reactScan({
+    // Only include React Scan in development mode - never in production builds
+    (isDevelopment || (!isProduction && process.env.NODE_ENV !== 'production')) && reactScan({
       showToolbar: true,
       playSound: true,
     }),

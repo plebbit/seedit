@@ -35,7 +35,7 @@ jobs:
         with:
           node-version: 22
       - name: Build React app (with Node v22)
-        run: CI='' yarn build
+        run: CI='' NODE_ENV=production yarn build
       - name: Build Electron app for Linux (with Node v22)
         run: yarn electron:build:linux
       - name: List dist directory
@@ -82,7 +82,7 @@ jobs:
         with:
           node-version: 22
       - name: Build React app (with Node v22)
-        run: CI='' yarn build
+        run: CI='' NODE_ENV=production yarn build
       - name: Build Electron app for Mac (with Node v22)
         run: yarn electron:build:mac
       - name: List dist directory
@@ -116,7 +116,7 @@ jobs:
       - name: Install dependencies (with Node v22) # --network-timeout and --network-concurrency are yarn v1 flags.
         run: yarn install --frozen-lockfile --network-timeout 100000 --network-concurrency 1
       - name: Build React app (with Node v22)
-        run: yarn build
+        run: NODE_ENV=production yarn build
       - name: Build Electron app for Windows (with Node v22)
         run: yarn electron:build:windows
       - name: List dist directory
@@ -158,7 +158,7 @@ jobs:
       - name: Install dependencies (with Node v20)
         run: yarn install --frozen-lockfile --ignore-engines
       # build react app
-      - run: CI='' yarn build
+      - run: CI='' NODE_ENV=production yarn build
       # set android versionCode and versionName
       - run: sed -i "s/versionCode 1/versionCode $(git tag | wc -l)/" ./android/app/build.gradle
       - run: sed -i "s/versionName \"1.0\"/versionName \"$(node -e "console.log(require('./package.json').version)")\"/" ./android/app/build.gradle
