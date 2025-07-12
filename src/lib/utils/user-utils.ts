@@ -7,6 +7,12 @@ export const isUserOwner = (roles: Roles | undefined, userAddress: string | unde
   return roles[userAddress]?.role === 'owner';
 };
 
+export const isUserOwnerOrAdmin = (roles: Roles | undefined, userAddress: string | undefined): boolean => {
+  if (!roles || !userAddress) return false;
+  const userRole = roles[userAddress]?.role;
+  return userRole === 'owner' || userRole === 'admin';
+};
+
 export const findSubplebbitCreator = (roles: Roles | undefined): string => {
   if (!roles) {
     return 'anonymous';
