@@ -116,7 +116,7 @@ jobs:
       - name: Install dependencies (with Node v22) # --network-timeout and --network-concurrency are yarn v1 flags.
         run: yarn install --frozen-lockfile --network-timeout 100000 --network-concurrency 1
       - name: Build React app (with Node v22)
-        run: NODE_ENV=production yarn build
+        run: npx cross-env NODE_ENV=production yarn build
       - name: Build Electron app for Windows (with Node v22)
         run: yarn electron:build:windows
       - name: List dist directory
