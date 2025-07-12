@@ -16,7 +16,7 @@ if (window.location.hostname.startsWith('p2p.')) {
   };
 }
 
-const reloadSW = registerSW({
+registerSW({
   immediate: true,
   onNeedRefresh() {
     // Reload the page to load the new version
