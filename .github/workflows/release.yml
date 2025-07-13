@@ -20,20 +20,17 @@ jobs:
         with:
           # needed for git commit history changelog
           fetch-depth: 0
-      - name: Setup Node.js v20
-        uses: actions/setup-node@v2
-        with:
-          node-version: 20
-      - name: Install dependencies (with Node v20)
-        run: yarn install --frozen-lockfile --ignore-engines
-      # make sure the ipfs executable is executable
-      - name: Download IPFS and set permissions (with Node v20)
-        run: node electron/download-ipfs && sudo chmod +x bin/linux/ipfs
-
-      - name: Setup Node.js v22 for Electron build
+      - name: Setup Node.js v22
         uses: actions/setup-node@v2
         with:
           node-version: 22
+      - name: Verify Node.js version consistency
+        run: yarn verify-node
+      - name: Install dependencies (with Node v22)
+        run: yarn install --frozen-lockfile --ignore-engines
+      # make sure the ipfs executable is executable
+      - name: Download IPFS and set permissions (with Node v22)
+        run: node electron/download-ipfs && sudo chmod +x bin/linux/ipfs
       - name: Build React app (with Node v22)
         run: CI='' NODE_ENV=production yarn build
       - name: Build Electron app for Linux (with Node v22)
@@ -62,25 +59,22 @@ jobs:
         with:
           # needed for git commit history changelog
           fetch-depth: 0
-      - name: Setup Node.js v20
+      - name: Setup Node.js v22
         uses: actions/setup-node@v2
         with:
-          node-version: 20
+          node-version: 22
 
       # install missing dep for sqlite
       - run: python3 -m ensurepip
       - run: pip install setuptools
 
-      - name: Install dependencies (with Node v20)
+      - name: Verify Node.js version consistency
+        run: yarn verify-node
+      - name: Install dependencies (with Node v22)
         run: yarn install --frozen-lockfile --ignore-engines
       # make sure the ipfs executable is executable
-      - name: Download IPFS and set permissions (with Node v20)
+      - name: Download IPFS and set permissions (with Node v22)
         run: node electron/download-ipfs && sudo chmod +x bin/mac/ipfs
-
-      - name: Setup Node.js v22 for Electron build
-        uses: actions/setup-node@v2
-        with:
-          node-version: 22
       - name: Build React app (with Node v22)
         run: CI='' NODE_ENV=production yarn build
       - name: Build Electron app for Mac (with Node v22)
@@ -113,6 +107,8 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: 22
+      - name: Verify Node.js version consistency
+        run: yarn verify-node
       - name: Install dependencies (with Node v22) # --network-timeout and --network-concurrency are yarn v1 flags.
         run: yarn install --frozen-lockfile --network-timeout 100000 --network-concurrency 1
       - name: Build React app (with Node v22)
@@ -151,11 +147,13 @@ jobs:
           gradle-version: 8.9
       - uses: actions/setup-node@v2
         with:
-          node-version: 20
+          node-version: 22
+      - name: Verify Node.js version consistency
+        run: yarn verify-node
       - run: sudo apt install -y apksigner zipalign
 
       # install all dependencies (including devDependencies needed for React build)
-      - name: Install dependencies (with Node v20)
+      - name: Install dependencies (with Node v22)
         run: yarn install --frozen-lockfile --ignore-engines
       # build react app
       - run: CI='' NODE_ENV=production yarn build
