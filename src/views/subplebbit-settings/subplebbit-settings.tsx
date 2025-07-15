@@ -11,7 +11,7 @@ import {
   useSubplebbit,
   useSubscribe,
 } from '@plebbit/plebbit-react-hooks';
-import { isUserOwner, isUserOwnerOrAdmin, Roles } from '../../lib/utils/user-utils';
+import { isUserOwnerOrAdmin, Roles } from '../../lib/utils/user-utils';
 import { isValidURL } from '../../lib/utils/url-utils';
 import { isCreateSubplebbitView, isSubplebbitSettingsView } from '../../lib/utils/view-utils';
 import useSubplebbitSettingsStore from '../../stores/use-subplebbit-settings-store';
@@ -558,7 +558,6 @@ const SubplebbitSettings = () => {
     window.scrollTo(0, 0);
   }, []);
 
-  const userIsOwner = isUserOwner(roles, userAddress);
   const loadingStateString = useStateString(subplebbit);
 
   if (!hasLoaded && !isInCreateSubplebbitView) {
