@@ -1,4 +1,4 @@
-import { useState, useLayoutEffect } from 'react';
+import { useState, useLayoutEffect, useRef } from 'react';
 import { useFloating, autoUpdate, offset, shift, size, useHover, useFocus, useDismiss, useRole, useInteractions, FloatingPortal, safePolygon } from '@floating-ui/react';
 import styles from './info-tooltip.module.css';
 
@@ -9,10 +9,38 @@ interface InfoTooltipProps {
 
 const InfoTooltip = ({ content, showTooltip = true }: InfoTooltipProps) => {
   const [isOpen, setIsOpen] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
+  const [isExiting, setIsExiting] = useState(false);
+  const exitTimeoutRef = useRef<NodeJS.Timeout>();
+
+  // Handle opening and closing with animations
+  const handleOpenChange = (open: boolean) => {
+    if (open) {
+      // Opening: show immediately and set open state
+      setIsVisible(true);
+      setIsOpen(true);
+      setIsExiting(false);
+      // Clear any pending exit timeout
+      if (exitTimeoutRef.current) {
+        clearTimeout(exitTimeoutRef.current);
+        exitTimeoutRef.current = undefined;
+      }
+    } else {
+      // Closing: start exit animation, then hide after animation completes
+      setIsOpen(false);
+      setIsExiting(true);
+
+      // Remove from DOM after exit animation completes (200ms)
+      exitTimeoutRef.current = setTimeout(() => {
+        setIsVisible(false);
+        setIsExiting(false);
+      }, 200);
+    }
+  };
 
   const { refs, floatingStyles, context } = useFloating({
     open: isOpen,
-    onOpenChange: setIsOpen,
+    onOpenChange: handleOpenChange,
     placement: 'bottom-start',
     whileElementsMounted: autoUpdate,
     middleware: [
@@ -48,7 +76,7 @@ const InfoTooltip = ({ content, showTooltip = true }: InfoTooltipProps) => {
 
   const hover = useHover(context, {
     move: false,
-    delay: { open: 200, close: 0 },
+    delay: { open: 200, close: 1000 },
     handleClose: safePolygon(),
   });
   const focus = useFocus(context);
@@ -57,6 +85,15 @@ const InfoTooltip = ({ content, showTooltip = true }: InfoTooltipProps) => {
 
   const { getReferenceProps, getFloatingProps } = useInteractions([hover, focus, dismiss, role]);
 
+  // Clean up timeout on unmount
+  useLayoutEffect(() => {
+    return () => {
+      if (exitTimeoutRef.current) {
+        clearTimeout(exitTimeoutRef.current);
+      }
+    };
+  }, []);
+
   return (
     <>
       <sup className={styles.tooltipIcon} ref={refs.setReference} {...getReferenceProps()}>
@@ -64,9 +101,11 @@ const InfoTooltip = ({ content, showTooltip = true }: InfoTooltipProps) => {
       </sup>
       {showTooltip && (
         <FloatingPortal>
-          {isOpen && (
-            <div className={styles.tooltip} ref={refs.setFloating} style={floatingStyles} {...getFloatingProps()}>
-              <p className={styles.tooltipContent}>{content}</p>
+          {isVisible && (
+            <div className={`${styles.tooltip} ${isExiting ? styles.exiting : ''}`} ref={refs.setFloating} style={floatingStyles} {...getFloatingProps()}>
+              <div className={styles.tooltipInner}>
+                <p className={styles.tooltipContent}>{content}</p>
+              </div>
             </div>
           )}
         </FloatingPortal>

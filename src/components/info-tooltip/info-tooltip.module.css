@@ -1,28 +1,63 @@
 .tooltipIcon {
   cursor: help;
+  margin-left: 0.5em;
 }
 
 .tooltip {
-  background: var(--background);
-  color: var(--info-tooltip-text);
-  border: 1px solid var(--info-tooltip-border-color);
-  padding: 3px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.25);
+  /* Just handles positioning from floating-ui */
   z-index: 100;
-  transition: opacity 0.15s ease-in-out;
   /* Default triangle position as fallback */
   --triangle-left-border: 8px;
   --triangle-left-fill: 9px;
 }
 
+.tooltipInner {
+  /* Enhanced animation with both opacity and transform */
+  animation: tooltipFadeIn 0.1s ease-out forwards;
+  /* Move all visual styles here so they animate together */
+  background: var(--background);
+  color: var(--info-tooltip-text);
+  border: 1px solid var(--info-tooltip-border-color);
+  padding: 3px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.25);
+}
+
+.tooltip.exiting .tooltipInner {
+  animation: tooltipFadeOut 0.1s ease-in forwards;
+}
+
+/* Fade in animation: slides down from above while fading in */
+@keyframes tooltipFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Fade out animation: slides up while fading out */
+@keyframes tooltipFadeOut {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+}
+
 .tooltipContent {
   white-space: pre-wrap;
   font: 10px verdana, arial, helvetica, sans-serif;
-  color: var(--spoiler-tooltip-text);
+  color: var(--info-tooltip-text);
   margin: .5em;
 }
 
-.tooltip::before {
+.tooltipInner::before {
   content: '';
   position: absolute;
   top: -20px;
@@ -32,7 +67,7 @@
   z-index: 1;
 }
 
-.tooltip::after {
+.tooltipInner::after {
   content: '';
   position: absolute;
   top: -18px;
