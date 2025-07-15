@@ -51,6 +51,8 @@
   --green: #228822;
   --green-bright: rgb(76, 207, 92);
   --icon: #c6c6c6;
+  --info-tooltip-text: #bfbfbf;
+  --info-tooltip-border-color: #3e3e3e;
   --link: #bfbfbf;
   --link-primary: rgb(125, 175, 216);
   --link-visited: #757575;
@@ -151,6 +153,8 @@
   --green: #228822;
   --green-bright: #3bc54c;
   --icon: #c6c6c6;
+  --info-tooltip-text: #333;
+  --info-tooltip-border-color: gray;
   --link: #0000ff;
   --link-primary: #369;
   --link-visited: #551a8b;
