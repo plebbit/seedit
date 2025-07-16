@@ -54,7 +54,9 @@ const ModeratorsList = ({ roles }: { roles: Record<string, Role> }) => {
       <div className={styles.listTitle}>{t('moderators')}</div>
       <ul className={`${styles.listContent} ${styles.modsList}`}>
         {rolesList.map(({ address }, index) => (
-          <li key={index}>u/{Plebbit.getShortAddress(address)}</li>
+          <li key={index} onClick={() => window.alert('Direct profile links are not supported yet.')}>
+            u/{Plebbit.getShortAddress(address)}
+          </li>
         ))}
         {/* TODO: https://github.com/plebbit/seedit/issues/274
          <li className={styles.listMore}>{t('about_moderation')} »</li> */}
