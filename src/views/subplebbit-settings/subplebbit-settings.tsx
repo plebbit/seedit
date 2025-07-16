@@ -11,7 +11,7 @@ import {
   useSubplebbit,
   useSubscribe,
 } from '@plebbit/plebbit-react-hooks';
-import { isUserOwner, Roles } from '../../lib/utils/user-utils';
+import { isUserOwnerOrAdmin, Roles } from '../../lib/utils/user-utils';
 import { isValidURL } from '../../lib/utils/url-utils';
 import { isCreateSubplebbitView, isSubplebbitSettingsView } from '../../lib/utils/view-utils';
 import useSubplebbitSettingsStore from '../../stores/use-subplebbit-settings-store';
@@ -374,7 +374,14 @@ const SubplebbitSettings = () => {
     navigate('/', { replace: true });
   }
 
-  const isReadOnly = (!settings && isInSubplebbitSettingsView) || (!isConnectedToRpc && isInCreateSubplebbitView);
+  const userAddress = account?.author?.address;
+  const userIsOwnerOrAdmin = isUserOwnerOrAdmin(roles, userAddress);
+
+  // General fields can be edited by owners/admins even without RPC connection
+  const isReadOnly = (!settings && isInSubplebbitSettingsView && !userIsOwnerOrAdmin) || (!isConnectedToRpc && isInCreateSubplebbitView && !userIsOwnerOrAdmin);
+
+  // Challenges are always read-only when not connected to RPC
+  const isChallengesReadOnly = !isConnectedToRpc;
 
   const { publishSubplebbitEditOptions, resetSubplebbitSettingsStore, setSubplebbitSettingsStore, title: storeTitle } = useSubplebbitSettingsStore();
   const { error: publishSubplebbitEditError, publishSubplebbitEdit } = usePublishSubplebbitEdit(publishSubplebbitEditOptions);
@@ -551,8 +558,6 @@ const SubplebbitSettings = () => {
     window.scrollTo(0, 0);
   }, []);
 
-  const userAddress = account?.author?.address;
-  const userIsOwner = isUserOwner(roles, userAddress);
   const loadingStateString = useStateString(subplebbit);
 
   if (!hasLoaded && !isInCreateSubplebbitView) {
@@ -577,14 +582,17 @@ const SubplebbitSettings = () => {
           <Sidebar subplebbit={subplebbit} />
         </div>
       )}
-      {isReadOnly && !userIsOwner && <div className={styles.infobar}>{t('owner_settings_notice')}</div>}
+      {isReadOnly && !userIsOwnerOrAdmin && <div className={styles.infobar}>{t('owner_settings_notice')}</div>}
+      {!isReadOnly && userIsOwnerOrAdmin && !isConnectedToRpc && (
+        <div className={styles.infobar}>editing anti-spam challenges requires running a full node (or connecting via RPC)</div>
+      )}
       <Title isReadOnly={isReadOnly} />
       <Description isReadOnly={isReadOnly} />
       {!isInCreateSubplebbitView && <Address isReadOnly={isReadOnly} />}
       <Logo isReadOnly={isReadOnly} />
       <Rules isReadOnly={isReadOnly} />
       <Moderators isReadOnly={isReadOnly} />
-      <Challenges isReadOnly={isReadOnly} readOnlyChallenges={subplebbit?.challenges} challengeNames={challengeNames} challengesSettings={rpcChallenges} />
+      <Challenges isReadOnly={isChallengesReadOnly} readOnlyChallenges={subplebbit?.challenges} challengeNames={challengeNames} challengesSettings={rpcChallenges} />
       {!isInCreateSubplebbitView && <JSONSettings isReadOnly={isReadOnly} />}
       <div className={styles.saveOptions}>
         {!isInCreateSubplebbitView && !isReadOnly && (

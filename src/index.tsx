@@ -16,11 +16,19 @@ if (window.location.hostname.startsWith('p2p.')) {
   };
 }
 
-const reloadSW = registerSW({
+registerSW({
   immediate: true,
   onNeedRefresh() {
     // Reload the page to load the new version
-    reloadSW(true);
+    // Use window.location.reload() as it's more reliable than reloadSW(true)
+    if (!sessionStorage.getItem('sw-update-reload')) {
+      sessionStorage.setItem('sw-update-reload', 'true');
+      window.location.reload();
+    }
+  },
+  onOfflineReady() {
+    // Clear the reload flag when offline-ready (prevents loops)
+    sessionStorage.removeItem('sw-update-reload');
   },
 });
 

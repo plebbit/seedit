@@ -7,6 +7,7 @@ import { VitePWA } from 'vite-plugin-pwa';
 import reactScan from '@react-scan/vite-plugin-react-scan';
 
 const isProduction = process.env.NODE_ENV === 'production';
+const isDevelopment = process.env.NODE_ENV === 'development';
 
 export default defineConfig({
   plugins: [
@@ -19,7 +20,8 @@ export default defineConfig({
         ]
       }
     }),
-    !isProduction && reactScan({
+    // Only include React Scan in development mode - never in production builds
+    (isDevelopment || (!isProduction && process.env.NODE_ENV !== 'production')) && reactScan({
       showToolbar: true,
       playSound: true,
     }),
@@ -86,12 +88,13 @@ export default defineConfig({
         navigateFallbackDenylist: [/^\/api/, /^\/_(.*)/],
         
         runtimeCaching: [
-          // Fix index.html not refreshing on new versions
+          // Always get fresh HTML from network first
           {
             urlPattern: ({ url }) => url.pathname === '/' || url.pathname === '/index.html',
-            handler: 'StaleWhileRevalidate',
+            handler: 'NetworkFirst',
             options: {
-              cacheName: 'html-cache'
+              cacheName: 'html-cache',
+              networkTimeoutSeconds: 3
             }
           },
           // PNG caching

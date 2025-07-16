@@ -2,6 +2,7 @@ import { Fragment, useState } from 'react';
 import { Account, setAccount, useAccount } from '@plebbit/plebbit-react-hooks';
 import styles from './wallet-settings.module.css';
 import { Trans, useTranslation } from 'react-i18next';
+import InfoTooltip from '../../../components/info-tooltip';
 
 interface Wallet {
   chainTicker: string;
@@ -183,6 +184,9 @@ const CryptoWalletsForm = ({ account }: { account: Account | undefined }) => {
         <Trans
           i18nKey='add_wallet'
           components={{ 1: <button key={`addWalletButton-${walletsArray.length}`} onClick={() => setWalletsArray([...walletsArray, defaultWalletObject])} /> }}
+        />
+        <InfoTooltip
+          content={`Link crypto wallets to your account by proving ownership through signed messages. Communities can verify your token/NFT holdings to grant posting privileges or special access.`}
         />
       </div>
       {walletsInputs}

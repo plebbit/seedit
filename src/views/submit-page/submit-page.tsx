@@ -16,6 +16,7 @@ import Markdown from '../../components/markdown';
 import Embed from '../../components/post/embed';
 import { FormattingHelpTable } from '../../components/reply-form/reply-form';
 import styles from './submit-page.module.css';
+import InfoTooltip from '../../components/info-tooltip';
 
 const isAndroid = Capacitor.getPlatform() === 'android';
 const isElectron = window.electronApi?.isElectron === true;
@@ -75,7 +76,12 @@ const UrlField = () => {
         {url && isValidURL(url) ? (
           <div className={styles.mediaPreview}>{mediaError ? <span className={styles.mediaError}>{t('no_media_found')}</span> : mediaComponent}</div>
         ) : (
-          <div className={styles.description}>{t('submit_url_description')}</div>
+          <div className={styles.description}>
+            {t('submit_url_description')}
+            <InfoTooltip
+              content={`Seedit also supports links from the following sites: YouTube, Twitter/X, Reddit, Twitch, TikTok, Instagram, Odysee, Bitchute, Streamable, Spotify, and SoundCloud.`}
+            />
+          </div>
         )}
       </div>
     </div>
