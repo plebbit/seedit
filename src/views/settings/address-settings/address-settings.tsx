@@ -145,8 +145,8 @@ const AddressSettings = () => {
               <ol>
                 <li>
                   go to{' '}
-                  <a href='https://www.sns.id/' target='_blank' rel='noopener noreferrer'>
-                    sns.id
+                  <a href='https://www.v1.sns.id/' target='_blank' rel='noopener noreferrer'>
+                    v1.sns.id
                   </a>{' '}
                   and search the address
                 </li>
