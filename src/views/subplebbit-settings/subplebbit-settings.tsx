@@ -323,30 +323,15 @@ const Moderators = ({ isReadOnly = false }: { isReadOnly?: boolean }) => {
 
 const JSONSettings = ({ isReadOnly = false }: { isReadOnly?: boolean }) => {
   const { t } = useTranslation();
-  const { challenges, title, description, address, suggested, rules, roles, settings, subplebbitAddress, setSubplebbitSettingsStore } = useSubplebbitSettingsStore();
-  const [text, setText] = useState('');
-
-  useEffect(() => {
-    const JSONSettings = JSON.stringify({ title, description, address, suggested, rules, roles, settings, challenges, subplebbitAddress }, null, 2);
-    setText(JSONSettings);
-  }, [challenges, title, description, address, suggested, rules, roles, settings, subplebbitAddress]);
-
-  const handleChange = (newText: string) => {
-    setText(newText);
-    try {
-      const newSettings = JSON.parse(newText);
-      setSubplebbitSettingsStore(newSettings);
-    } catch (e) {
-      console.error('Invalid JSON format');
-    }
-  };
+  const navigate = useNavigate();
+  const { subplebbitAddress } = useParams<{ subplebbitAddress: string }>();
 
   return (
     <div className={`${styles.box}`}>
       <div className={`${styles.boxTitle} ${styles.JSONSettingsTitle}`}>{t('json_settings')}</div>
       <div className={styles.boxSubtitle}>{t('json_settings_info')}</div>
       <div className={`${styles.boxInput} ${styles.JSONSettings}`}>
-        <textarea onChange={(e) => handleChange(e.target.value)} autoCorrect='off' autoComplete='off' spellCheck='false' value={text} disabled={isReadOnly} />
+        <button onClick={() => navigate(`/p/${subplebbitAddress}/settings/editor`)}>{t('edit')}</button>
       </div>
     </div>
   );

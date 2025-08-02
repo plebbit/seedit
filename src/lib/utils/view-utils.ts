@@ -176,7 +176,7 @@ export const isSubplebbitAboutView = (pathname: string, params: ParamsType): boo
 };
 
 export const isSubplebbitSettingsView = (pathname: string, params: ParamsType): boolean => {
-  return params.subplebbitAddress ? pathname === `/p/${params.subplebbitAddress}/settings` : false;
+  return params.subplebbitAddress ? pathname === `/p/${params.subplebbitAddress}/settings` || pathname === `/p/${params.subplebbitAddress}/settings/editor` : false;
 };
 
 export const isSubplebbitSubmitView = (pathname: string, params: ParamsType): boolean => {
