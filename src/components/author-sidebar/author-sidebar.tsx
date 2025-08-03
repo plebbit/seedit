@@ -87,7 +87,7 @@ const AuthorSidebar = () => {
   const authorSubplebbits = findAuthorSubplebbits(authorAddress, Object.values(subplebbits));
   const estimatedAuthorKarma = estimateAuthorKarma(authorComments);
 
-  const address = isInAuthorView ? params?.authorAddress : isInProfileView ? userAccount?.author?.shortAddress : '';
+  const address = isInAuthorView ? params?.authorAddress : isInProfileView ? userAccount?.author?.address : '';
   const karma = isInAuthorView ? estimatedAuthorKarma : isInProfileView ? userAccount?.karma : '';
   const { postScore, replyScore } = karma || { postScore: 0, replyScore: 0 };
 
