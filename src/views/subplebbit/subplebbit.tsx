@@ -11,6 +11,7 @@ import useFeedFiltersStore from '../../stores/use-feed-filters-store';
 import useFeedResetStore from '../../stores/use-feed-reset-store';
 import { usePinnedPostsStore } from '../../stores/use-pinned-posts-store';
 import { useIsBroadlyNsfwSubplebbit } from '../../hooks/use-is-broadly-nsfw-subplebbit';
+import useIsSubplebbitOffline from '../../hooks/use-is-subplebbit-offline';
 import useTimeFilter, { isValidTimeFilterName } from '../../hooks/use-time-filter';
 import ErrorDisplay from '../../components/error-display';
 import LoadingEllipsis from '../../components/loading-ellipsis';
@@ -220,7 +221,8 @@ const Subplebbit = () => {
   const subplebbitAddress = params?.subplebbitAddress || '';
   const subplebbit = useSubplebbit({ subplebbitAddress });
   const { createdAt, error, shortAddress, started, title, updatedAt, settings } = subplebbit || {};
-  const isOnline = updatedAt && updatedAt > Date.now() / 1000 - 60 * 60;
+  const { isOffline } = useIsSubplebbitOffline(subplebbit || {});
+  const isOnline = !isOffline;
   const isSubCreatedButNotYetPublished = typeof createdAt === 'number' && !updatedAt;
 
   const subplebbitAddresses = useMemo(() => [subplebbitAddress], [subplebbitAddress]) as string[];
