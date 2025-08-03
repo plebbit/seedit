@@ -83,8 +83,35 @@ const SubplebbitDataEditor = () => {
       setShowSaving(true);
       setCurrentError(undefined);
       console.log('Saving subplebbit with options:', publishSubplebbitEditOptions);
+
+      // Parse the edited JSON from the text state
+      let parsedSettings;
+      try {
+        parsedSettings = JSON.parse(text);
+      } catch (parseError) {
+        setShowSaving(false);
+        const errorMessage = parseError instanceof Error ? parseError.message : 'Invalid JSON format';
+        setCurrentError(new Error(`JSON parsing error: ${errorMessage}`));
+        alert(`Invalid JSON format: ${errorMessage}`);
+        return;
+      }
+
+      // Update the store with parsed settings before saving
+      setSubplebbitSettingsStore({
+        title: parsedSettings.title ?? '',
+        description: parsedSettings.description ?? '',
+        address: parsedSettings.address,
+        suggested: parsedSettings.suggested ?? {},
+        rules: parsedSettings.rules ?? [],
+        roles: parsedSettings.roles ?? {},
+        settings: parsedSettings.settings ?? {},
+        challenges: parsedSettings.challenges ?? [],
+        subplebbitAddress: parsedSettings.subplebbitAddress,
+      });
+
       await publishSubplebbitEdit();
       setShowSaving(false);
+
       if (publishSubplebbitEditError) {
         setCurrentError(publishSubplebbitEditError);
         alert(publishSubplebbitEditError.message || 'Error: ' + publishSubplebbitEditError);
@@ -92,6 +119,7 @@ const SubplebbitDataEditor = () => {
         alert(t('settings_saved', { subplebbitAddress }));
       }
     } catch (e) {
+      setShowSaving(false);
       if (e instanceof Error) {
         console.warn(e);
         setCurrentError(e);

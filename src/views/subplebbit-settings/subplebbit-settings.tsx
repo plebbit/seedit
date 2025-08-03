@@ -388,6 +388,7 @@ const SubplebbitSettings = () => {
       console.log('Saving subplebbit with options:', publishSubplebbitEditOptions);
       await publishSubplebbitEdit();
       setShowSaving(false);
+
       if (publishSubplebbitEditError) {
         setCurrentError(publishSubplebbitEditError);
         alert(publishSubplebbitEditError.message || 'Error: ' + publishSubplebbitEditError);
@@ -395,6 +396,7 @@ const SubplebbitSettings = () => {
         alert(t('settings_saved', { subplebbitAddress }));
       }
     } catch (e) {
+      setShowSaving(false);
       if (e instanceof Error) {
         console.warn(e);
         setCurrentError(e);
@@ -434,11 +436,13 @@ const SubplebbitSettings = () => {
       console.log('Creating subplebbit with settings:', publishSubplebbitEditOptions);
       await createSubplebbit();
       setShowSaving(false);
+
       if (createSubplebbitError) {
         setCurrentError(createSubplebbitError);
         alert(createSubplebbitError.message || 'Error: ' + createSubplebbitError);
       }
     } catch (e) {
+      setShowSaving(false);
       if (e instanceof Error) {
         console.warn(e);
         setCurrentError(e);
