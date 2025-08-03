@@ -133,7 +133,7 @@ export const FAQ = () => {
             ENS
           </a>{' '}
           or{' '}
-          <a href='https://www.v1.sns.id/' target='_blank' rel='noopener noreferrer'>
+          <a href='https://v1.sns.id/' target='_blank' rel='noopener noreferrer'>
             SNS
           </a>
           .
