@@ -365,7 +365,7 @@ const Sidebar = ({ comment, isSubCreatedButNotYetPublished, settings, subplebbit
           )}
         {(moderatorRole || isOwner) && <ModerationTools address={address} />}
         {isInSubplebbitsView && (
-          <a href='https://github.com/plebbit/temporary-default-subplebbits' target='_blank' rel='noopener noreferrer'>
+          <a href='https://github.com/plebbit/lists' target='_blank' rel='noopener noreferrer'>
             <div className={styles.largeButton}>
               <div className={styles.nub} />
               {t('submit_community')}

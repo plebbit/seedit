@@ -25,7 +25,7 @@ In the plebbit protocol, a seedit community is called a _subplebbit_. To run a s
 Peers can connect to your subplebbit using any plebbit client, such as Plebchan or Seedit. They only need the subplebbit's address, which is not stored in any central database, as plebbit is a pure peer-to-peer protocol.
 
 ### How to add a community to the default list (p/all)
-The default list of communities, used on p/all on Seedit, is plebbit's [temporary-default-subplebbits](https://github.com/plebbit/temporary-default-subplebbits) list. You can open a pull request in that repo to add your subplebbit to the list, or contact devs via telegram [@plebbit](https://t.me/plebbit). In the future, this process will be automated by submitting proposals to a plebbit DAO, using the [plebbit token](https://etherscan.io/token/0xea81dab2e0ecbc6b5c4172de4c22b6ef6e55bd8f).
+The default list of communities, used on p/all on Seedit, is plebbit's [temporary default subplebbits](https://github.com/plebbit/lists) list. You can open a pull request in that repo to add your subplebbit to the list, or contact devs via telegram [@plebbit](https://t.me/plebbit). In the future, this process will be automated by submitting proposals to a plebbit DAO, using the [plebbit token](https://etherscan.io/token/0xea81dab2e0ecbc6b5c4172de4c22b6ef6e55bd8f).
 
 ## To run locally
 
