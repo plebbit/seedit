@@ -59,7 +59,7 @@ const SubplebbitDataEditor = () => {
 
   const { subplebbitAddress } = useParams<{ subplebbitAddress: string }>();
   const subplebbit = useSubplebbit({ subplebbitAddress });
-  const { address, challenges, createdAt, description, error, rules, settings, suggested, roles, title } = subplebbit || {};
+  const { address, createdAt, description, error, rules, settings, suggested, roles, title } = subplebbit || {};
   const hasLoaded = !!createdAt;
 
   const { publishSubplebbitEditOptions, setSubplebbitSettingsStore, resetSubplebbitSettingsStore } = useSubplebbitSettingsStore();
@@ -67,8 +67,8 @@ const SubplebbitDataEditor = () => {
   const { error: publishSubplebbitEditError, publishSubplebbitEdit } = usePublishSubplebbitEdit(publishSubplebbitEditOptions);
 
   const subplebbitSettings = useMemo(
-    () => JSON.stringify({ title, description, address, suggested, rules, roles, settings, challenges, subplebbitAddress }, null, 2),
-    [title, description, address, suggested, rules, roles, settings, challenges, subplebbitAddress],
+    () => JSON.stringify({ title, description, address, suggested, rules, roles, settings, subplebbitAddress }, null, 2),
+    [title, description, address, suggested, rules, roles, settings, subplebbitAddress],
   );
 
   useEffect(() => {
@@ -105,7 +105,6 @@ const SubplebbitDataEditor = () => {
         rules: parsedSettings.rules ?? [],
         roles: parsedSettings.roles ?? {},
         settings: parsedSettings.settings ?? {},
-        challenges: parsedSettings.challenges ?? [],
         subplebbitAddress: parsedSettings.subplebbitAddress,
       });
 
@@ -142,24 +141,10 @@ const SubplebbitDataEditor = () => {
         rules: rules ?? [],
         roles: roles ?? {},
         settings: settings ?? {},
-        challenges: challenges ?? [],
         subplebbitAddress,
       });
     }
-  }, [
-    hasLoaded,
-    resetSubplebbitSettingsStore,
-    setSubplebbitSettingsStore,
-    title,
-    description,
-    address,
-    suggested,
-    rules,
-    roles,
-    settings,
-    challenges,
-    subplebbitAddress,
-  ]);
+  }, [hasLoaded, resetSubplebbitSettingsStore, setSubplebbitSettingsStore, title, description, address, suggested, rules, roles, settings, subplebbitAddress]);
 
   const loadingStateString = useStateString(subplebbit);
 
