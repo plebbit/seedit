@@ -151,10 +151,7 @@ const FeedFooter = ({
               <div className={styles.notModerator}>{t('not_moderator')}</div>
             ) : (
               <div>
-                <Trans
-                  i18nKey='no_communities_found'
-                  components={[<a href='https://github.com/plebbit/temporary-default-subplebbits'>https://github.com/plebbit/temporary-default-subplebbits</a>]}
-                />
+                <Trans i18nKey='no_communities_found' components={[<a href='https://github.com/plebbit/lists'>https://github.com/plebbit/lists</a>]} />
                 <br />
                 {t('connect_community_notice')}
               </div>

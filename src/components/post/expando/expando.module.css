@@ -77,7 +77,7 @@
 }
 
 /* Safari-specific fix for iframe width constraint in inline-block containers */
-@supports (-webkit-appearance: none) {
+@supports (hanging-punctuation: first) and (font: -apple-system-body) and (-webkit-appearance: none) {
   .mediaPreview iframe {
     width: auto !important;
   }
@@ -85,7 +85,7 @@
 
 @media (min-width: 640px) {
   .mediaPreview iframe {
-    max-width: calc(100vw - 430px) !important;
+    max-width: calc(100vw - 480px) !important;
   }
 }
 

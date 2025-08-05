@@ -15,6 +15,7 @@ import { isUserOwnerOrAdmin, Roles } from '../../lib/utils/user-utils';
 import { isValidURL } from '../../lib/utils/url-utils';
 import { isCreateSubplebbitView, isSubplebbitSettingsView } from '../../lib/utils/view-utils';
 import useSubplebbitSettingsStore from '../../stores/use-subplebbit-settings-store';
+import useIsSubplebbitOffline from '../../hooks/use-is-subplebbit-offline';
 import useStateString from '../../hooks/use-state-string';
 import ErrorDisplay from '../../components/error-display';
 import LoadingEllipsis from '../../components/loading-ellipsis';
@@ -98,7 +99,7 @@ const Address = ({ isReadOnly = false }: { isReadOnly?: boolean }) => {
   const { address, setSubplebbitSettingsStore } = useSubplebbitSettingsStore();
 
   const alertCryptoAddressInfo = () => {
-    alert(`steps to set a .eth community address:\n1. go to app.ens.domains and search the address\n2.  once you own the address, go to its page, click on "records", then "edit records"\n3. add a new text record with name "subplebbit-address" and value: ${address}\n\n steps to set a .sol community address:\n1. go to sns.id and search the address\n2. once you own the address, go to your profile, click the address menu "...", then "create subdomain"\n3. enter subdomain "subplebbit-address" and create\n4. go to subdomain, "content", change content to: ${address}
+    alert(`steps to set a .eth community address:\n1. go to app.ens.domains and search the address\n2.  once you own the address, go to its page, click on "records", then "edit records"\n3. add a new text record with name "subplebbit-address" and value: ${address}\n\n steps to set a .sol community address:\n1. go to v1.sns.id and search the address\n2. once you own the address, go to your profile, click the address menu "...", then "create subdomain"\n3. enter subdomain "subplebbit-address" and create\n4. go to subdomain, "content", change content to: ${address}
     `);
   };
 
@@ -323,30 +324,15 @@ const Moderators = ({ isReadOnly = false }: { isReadOnly?: boolean }) => {
 
 const JSONSettings = ({ isReadOnly = false }: { isReadOnly?: boolean }) => {
   const { t } = useTranslation();
-  const { challenges, title, description, address, suggested, rules, roles, settings, subplebbitAddress, setSubplebbitSettingsStore } = useSubplebbitSettingsStore();
-  const [text, setText] = useState('');
-
-  useEffect(() => {
-    const JSONSettings = JSON.stringify({ title, description, address, suggested, rules, roles, settings, challenges, subplebbitAddress }, null, 2);
-    setText(JSONSettings);
-  }, [challenges, title, description, address, suggested, rules, roles, settings, subplebbitAddress]);
-
-  const handleChange = (newText: string) => {
-    setText(newText);
-    try {
-      const newSettings = JSON.parse(newText);
-      setSubplebbitSettingsStore(newSettings);
-    } catch (e) {
-      console.error('Invalid JSON format');
-    }
-  };
+  const navigate = useNavigate();
+  const { subplebbitAddress } = useParams<{ subplebbitAddress: string }>();
 
   return (
     <div className={`${styles.box}`}>
       <div className={`${styles.boxTitle} ${styles.JSONSettingsTitle}`}>{t('json_settings')}</div>
       <div className={styles.boxSubtitle}>{t('json_settings_info')}</div>
       <div className={`${styles.boxInput} ${styles.JSONSettings}`}>
-        <textarea onChange={(e) => handleChange(e.target.value)} autoCorrect='off' autoComplete='off' spellCheck='false' value={text} disabled={isReadOnly} />
+        <button onClick={() => navigate(`/p/${subplebbitAddress}/settings/editor`)}>{t('edit')}</button>
       </div>
     </div>
   );
@@ -377,11 +363,13 @@ const SubplebbitSettings = () => {
   const userAddress = account?.author?.address;
   const userIsOwnerOrAdmin = isUserOwnerOrAdmin(roles, userAddress);
 
+  const { isOffline, offlineTitle } = useIsSubplebbitOffline(subplebbit || {});
+
   // General fields can be edited by owners/admins even without RPC connection
   const isReadOnly = (!settings && isInSubplebbitSettingsView && !userIsOwnerOrAdmin) || (!isConnectedToRpc && isInCreateSubplebbitView && !userIsOwnerOrAdmin);
 
   // Challenges are always read-only when not connected to RPC
-  const isChallengesReadOnly = !isConnectedToRpc;
+  const isChallengesReadOnly = !isConnectedToRpc || !settings;
 
   const { publishSubplebbitEditOptions, resetSubplebbitSettingsStore, setSubplebbitSettingsStore, title: storeTitle } = useSubplebbitSettingsStore();
   const { error: publishSubplebbitEditError, publishSubplebbitEdit } = usePublishSubplebbitEdit(publishSubplebbitEditOptions);
@@ -403,6 +391,7 @@ const SubplebbitSettings = () => {
       console.log('Saving subplebbit with options:', publishSubplebbitEditOptions);
       await publishSubplebbitEdit();
       setShowSaving(false);
+
       if (publishSubplebbitEditError) {
         setCurrentError(publishSubplebbitEditError);
         alert(publishSubplebbitEditError.message || 'Error: ' + publishSubplebbitEditError);
@@ -410,6 +399,7 @@ const SubplebbitSettings = () => {
         alert(t('settings_saved', { subplebbitAddress }));
       }
     } catch (e) {
+      setShowSaving(false);
       if (e instanceof Error) {
         console.warn(e);
         setCurrentError(e);
@@ -449,11 +439,13 @@ const SubplebbitSettings = () => {
       console.log('Creating subplebbit with settings:', publishSubplebbitEditOptions);
       await createSubplebbit();
       setShowSaving(false);
+
       if (createSubplebbitError) {
         setCurrentError(createSubplebbitError);
         alert(createSubplebbitError.message || 'Error: ' + createSubplebbitError);
       }
     } catch (e) {
+      setShowSaving(false);
       if (e instanceof Error) {
         console.warn(e);
         setCurrentError(e);
@@ -583,9 +575,8 @@ const SubplebbitSettings = () => {
         </div>
       )}
       {isReadOnly && !userIsOwnerOrAdmin && <div className={styles.infobar}>{t('owner_settings_notice')}</div>}
-      {!isReadOnly && userIsOwnerOrAdmin && !isConnectedToRpc && (
-        <div className={styles.infobar}>editing anti-spam challenges requires running a full node (or connecting via RPC)</div>
-      )}
+      {isOffline && <div className={styles.infobar}>{offlineTitle}</div>}
+      {isChallengesReadOnly && <div className={styles.infobar}>cannot read or write anti-spam challenges, community node isn't reachable.</div>}
       <Title isReadOnly={isReadOnly} />
       <Description isReadOnly={isReadOnly} />
       {!isInCreateSubplebbitView && <Address isReadOnly={isReadOnly} />}

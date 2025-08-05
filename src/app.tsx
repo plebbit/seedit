@@ -15,6 +15,7 @@ import PostPage from './views/post-page';
 import Profile from './views/profile';
 import Settings from './views/settings';
 import AccountDataEditor from './views/settings/account-data-editor';
+import SubplebbitDataEditor from './views/subplebbit-settings/subplebbit-data-editor';
 import SubmitPage from './views/submit-page';
 import Subplebbit from './views/subplebbit';
 import SubplebbitSettings from './views/subplebbit-settings';
@@ -97,6 +98,7 @@ const App = () => {
 
             <Route path='/settings' element={<Settings />} />
             <Route path='/p/:subplebbitAddress/settings' element={<SubplebbitSettings />} />
+            <Route path='/p/:subplebbitAddress/settings/editor' element={<SubplebbitDataEditor />} />
             <Route path='/settings/plebbit-options' element={<Settings />} />
             <Route path='/settings/content-options' element={<Settings />} />
             <Route path='/settings/account-data' element={<AccountDataEditor />} />
