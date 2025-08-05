@@ -15,6 +15,7 @@ import { isUserOwnerOrAdmin, Roles } from '../../lib/utils/user-utils';
 import { isValidURL } from '../../lib/utils/url-utils';
 import { isCreateSubplebbitView, isSubplebbitSettingsView } from '../../lib/utils/view-utils';
 import useSubplebbitSettingsStore from '../../stores/use-subplebbit-settings-store';
+import useIsSubplebbitOffline from '../../hooks/use-is-subplebbit-offline';
 import useStateString from '../../hooks/use-state-string';
 import ErrorDisplay from '../../components/error-display';
 import LoadingEllipsis from '../../components/loading-ellipsis';
@@ -362,11 +363,13 @@ const SubplebbitSettings = () => {
   const userAddress = account?.author?.address;
   const userIsOwnerOrAdmin = isUserOwnerOrAdmin(roles, userAddress);
 
+  const { isOffline, offlineTitle } = useIsSubplebbitOffline(subplebbit || {});
+
   // General fields can be edited by owners/admins even without RPC connection
   const isReadOnly = (!settings && isInSubplebbitSettingsView && !userIsOwnerOrAdmin) || (!isConnectedToRpc && isInCreateSubplebbitView && !userIsOwnerOrAdmin);
 
   // Challenges are always read-only when not connected to RPC
-  const isChallengesReadOnly = !isConnectedToRpc;
+  const isChallengesReadOnly = !isConnectedToRpc || !settings;
 
   const { publishSubplebbitEditOptions, resetSubplebbitSettingsStore, setSubplebbitSettingsStore, title: storeTitle } = useSubplebbitSettingsStore();
   const { error: publishSubplebbitEditError, publishSubplebbitEdit } = usePublishSubplebbitEdit(publishSubplebbitEditOptions);
@@ -572,9 +575,8 @@ const SubplebbitSettings = () => {
         </div>
       )}
       {isReadOnly && !userIsOwnerOrAdmin && <div className={styles.infobar}>{t('owner_settings_notice')}</div>}
-      {!isReadOnly && userIsOwnerOrAdmin && !isConnectedToRpc && (
-        <div className={styles.infobar}>editing anti-spam challenges requires running a full node (or connecting via RPC)</div>
-      )}
+      {isOffline && <div className={styles.infobar}>{offlineTitle}</div>}
+      {isChallengesReadOnly && <div className={styles.infobar}>cannot read or write anti-spam challenges, community node isn't reachable.</div>}
       <Title isReadOnly={isReadOnly} />
       <Description isReadOnly={isReadOnly} />
       {!isInCreateSubplebbitView && <Address isReadOnly={isReadOnly} />}
