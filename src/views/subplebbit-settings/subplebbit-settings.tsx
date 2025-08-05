@@ -369,7 +369,7 @@ const SubplebbitSettings = () => {
   const isReadOnly = (!settings && isInSubplebbitSettingsView && !userIsOwnerOrAdmin) || (!isConnectedToRpc && isInCreateSubplebbitView && !userIsOwnerOrAdmin);
 
   // Challenges are always read-only when not connected to RPC
-  const isChallengesReadOnly = !isConnectedToRpc || !settings;
+  const isChallengesReadOnly = (!isConnectedToRpc || !settings) && !isInCreateSubplebbitView;
 
   const { publishSubplebbitEditOptions, resetSubplebbitSettingsStore, setSubplebbitSettingsStore, title: storeTitle } = useSubplebbitSettingsStore();
   const { error: publishSubplebbitEditError, publishSubplebbitEdit } = usePublishSubplebbitEdit(publishSubplebbitEditOptions);
