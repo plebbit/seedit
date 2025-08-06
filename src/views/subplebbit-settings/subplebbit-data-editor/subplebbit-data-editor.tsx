@@ -77,12 +77,47 @@ const SubplebbitDataEditor = () => {
 
   const [showSaving, setShowSaving] = useState(false);
   const [currentError, setCurrentError] = useState<Error | undefined>(undefined);
+  const [triggerSave, setTriggerSave] = useState(false);
 
-  const saveSubplebbitSettings = async () => {
+  // Effect to perform save after store is updated
+  useEffect(() => {
+    if (triggerSave) {
+      const performSave = async () => {
+        try {
+          console.log('Performing save with options:', publishSubplebbitEditOptions);
+          await publishSubplebbitEdit();
+          setShowSaving(false);
+          setTriggerSave(false);
+
+          if (publishSubplebbitEditError) {
+            setCurrentError(publishSubplebbitEditError);
+            alert(publishSubplebbitEditError.message || 'Error: ' + publishSubplebbitEditError);
+          } else {
+            alert(t('settings_saved', { subplebbitAddress }));
+          }
+        } catch (e) {
+          setShowSaving(false);
+          setTriggerSave(false);
+          if (e instanceof Error) {
+            console.warn(e);
+            setCurrentError(e);
+            alert(`failed editing subplebbit: ${e.message}`);
+          } else {
+            console.error('An unknown error occurred:', e);
+          }
+        }
+      };
+      performSave();
+    }
+    // Intentionally only depend on triggerSave to prevent multiple executions when publishSubplebbitEditOptions changes during save
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [triggerSave]);
+
+  const saveSubplebbitSettings = () => {
     try {
       setShowSaving(true);
       setCurrentError(undefined);
-      console.log('Saving subplebbit with options:', publishSubplebbitEditOptions);
+      setTriggerSave(false);
 
       // Parse the edited JSON from the text state
       let parsedSettings;
@@ -96,7 +131,7 @@ const SubplebbitDataEditor = () => {
         return;
       }
 
-      // Update the store with parsed settings before saving
+      // Update the store with parsed settings
       setSubplebbitSettingsStore({
         title: parsedSettings.title ?? '',
         description: parsedSettings.description ?? '',
@@ -108,15 +143,8 @@ const SubplebbitDataEditor = () => {
         subplebbitAddress: parsedSettings.subplebbitAddress,
       });
 
-      await publishSubplebbitEdit();
-      setShowSaving(false);
-
-      if (publishSubplebbitEditError) {
-        setCurrentError(publishSubplebbitEditError);
-        alert(publishSubplebbitEditError.message || 'Error: ' + publishSubplebbitEditError);
-      } else {
-        alert(t('settings_saved', { subplebbitAddress }));
-      }
+      // Trigger save after store update
+      setTriggerSave(true);
     } catch (e) {
       setShowSaving(false);
       if (e instanceof Error) {
