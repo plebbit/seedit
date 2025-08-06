@@ -17,7 +17,7 @@ let releaseChangelog =
 // format
 releaseChangelog = releaseChangelog.trim().replace(/\n\n+/g, '\n\n')
 
-const releaseBody = `This version fixes two major issues with the desktop apps: one that prevented the "create your own community" feature from working after manually importing certain account files, and another that prevented certain desktop apps from opening.
+const releaseBody = `This version fixes two major issues with the desktop apps: one that prevented the "create your own community" feature from working properly, and another that prevented certain desktop apps from opening.
 
 - Web app: https://seedit.app
 - Decentralized web app: https://seedit.eth (only works on [Brave Browser](https://brave.com/) or via [IPFS Companion](https://docs.ipfs.tech/install/ipfs-companion/#prerequisites))

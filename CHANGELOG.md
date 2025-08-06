@@ -1,3 +1,44 @@
+## [0.5.7](https://github.com/plebbit/seedit/compare/v0.5.6...v0.5.7) (2025-08-06)
+
+
+### Bug Fixes
+
+* **account editor:** page reload was missing when saving account edit, as well as auto navigate back to settings ([b6ee58f](https://github.com/plebbit/seedit/commit/b6ee58fe0a4872c2421f32500265a636d529b346))
+* correct SNS v1 URLs ([f863aab](https://github.com/plebbit/seedit/commit/f863aab91209b009f9d25db5d2d29fe65c1fe1f5))
+* **embeds:** make iframe width fix truly Safari-specific ([1badab4](https://github.com/plebbit/seedit/commit/1badab4a68e00eb916a5672ee63e89d5a16232a4))
+* **embeds:** Safari iframe sizing in media previews ([c983de5](https://github.com/plebbit/seedit/commit/c983de555032e0a9760c0344a98054c5800a32cb))
+* implement bidirectional sync between subplebbit form and JSON editor ([3d29e1f](https://github.com/plebbit/seedit/commit/3d29e1fa7fecfec5af1ae583021e9bc25d2089fb))
+* improve PWA update detection and HTML caching strategy ([f3dd292](https://github.com/plebbit/seedit/commit/f3dd2926b78906ba20d72b3a4599c6d5180c0bf7))
+* **inbox page:** prevent crash when iterating over undefined replies in context view ([5a459b5](https://github.com/plebbit/seedit/commit/5a459b5e4abda91402c786a05cdc965f99693752))
+* **profile:** redirect to not-found when accessing profile routes with no comments ([2555711](https://github.com/plebbit/seedit/commit/255571173996d40cdfd86e13c239b111503c3fbe))
+* react-scan was included in production builds ([a60142f](https://github.com/plebbit/seedit/commit/a60142f49330f08b313cbedfe4e9d9b71ee211c8))
+* resolve Electron performance issues by ensuring Node.js version consistency in CI ([614fb42](https://github.com/plebbit/seedit/commit/614fb427bf21392245943e76b962711edf68a56b))
+* **subplebbit data editor:** remove challenges field, it's read-only ([fdbced7](https://github.com/plebbit/seedit/commit/fdbced7311edb103a39f5dead0e40c4f56af840a))
+* **subplebbit feed:** feed footer would show "loading..." incorrectly ([12df367](https://github.com/plebbit/seedit/commit/12df367ab93cc5dd99ef62c5c447b2c6a8f85bf6))
+* **subplebbit settings:** clicking error wouldn't copy full error ([a526c0c](https://github.com/plebbit/seedit/commit/a526c0cc2f296290ab549fc0047e0b71f42b7d78))
+* **subplebbit settings:** Improve offline handling ([ea9b12c](https://github.com/plebbit/seedit/commit/ea9b12cecac095673253bb6763acea3157635e90))
+* **subplebbit:** sub with no posts could appear offline ([9be49c0](https://github.com/plebbit/seedit/commit/9be49c0a92edf206a34b4f009a921cba16201c99))
+* **thumbnails:** some video duration overlays didn't render properly on safari and firefox ([b40eb9e](https://github.com/plebbit/seedit/commit/b40eb9e76552cbdab209c1e7c0ea3766b216b416))
+
+
+### Features
+
+* add domain-based libp2p client configuration ([6e6faa2](https://github.com/plebbit/seedit/commit/6e6faa23fdc082491290fd00709aaaf8305994fd))
+* add info tooltips ([d21b5dd](https://github.com/plebbit/seedit/commit/d21b5ddb5b68bce9612b01f49c059e8f8c6b0a23))
+* **moderation:** implement comment purging ([8f97434](https://github.com/plebbit/seedit/commit/8f974349e6e4ae61866c1bdb86200714f88f52bb))
+* **subplebbit settings:** add json editor ([0f4058e](https://github.com/plebbit/seedit/commit/0f4058ea13b45aa8a5414627c8dd80cf63bc422d))
+* **subplebbit settings:** enable editing via pubsub ([8e1ec8a](https://github.com/plebbit/seedit/commit/8e1ec8ac3d9bcb260ed1405cfbfc6b8e5f773d4d))
+
+
+### Performance Improvements
+
+* **feed:** replace individual window resize listeners with shared store ([843d796](https://github.com/plebbit/seedit/commit/843d7967cd97225128402d8449b466a3e2729472))
+* optimize home feed rendering performance ([9842779](https://github.com/plebbit/seedit/commit/9842779de65d27d300445107c26bdb478c0a7663))
+* replace direct store access with cached hooks ([6515e8c](https://github.com/plebbit/seedit/commit/6515e8c9bb28ed5086df67e89f0343f7ff75c9fb))
+* **topbar:** memoize to prevent unnecessary rerenders ([afb1231](https://github.com/plebbit/seedit/commit/afb12315d1ee2c15d0a9df6b6cca48bca5a7ce2f))
+
+
+
 ## [0.5.6](https://github.com/plebbit/seedit/compare/v0.5.5...v0.5.6) (2025-06-18)
 
 
