@@ -503,18 +503,24 @@ const SubplebbitSettings = () => {
   // Set store for loaded subplebbit settings when editing
   useEffect(() => {
     if (!isInCreateSubplebbitView && hasLoaded) {
-      resetSubplebbitSettingsStore();
-      setSubplebbitSettingsStore({
-        title: title ?? '',
-        description: description ?? '',
-        address,
-        suggested: suggested ?? {},
-        rules: rules ?? [],
-        roles: roles ?? {},
-        settings: settings ?? {},
-        challenges: challenges ?? [],
-        subplebbitAddress,
-      });
+      // Only reset if we're switching to a different subplebbit or if store is uninitialized
+      const { subplebbitAddress: storeSubplebbitAddress } = useSubplebbitSettingsStore.getState();
+      const shouldReset = !storeSubplebbitAddress || storeSubplebbitAddress !== subplebbitAddress;
+
+      if (shouldReset) {
+        resetSubplebbitSettingsStore();
+        setSubplebbitSettingsStore({
+          title: title ?? '',
+          description: description ?? '',
+          address,
+          suggested: suggested ?? {},
+          rules: rules ?? [],
+          roles: roles ?? {},
+          settings: settings ?? {},
+          challenges: challenges ?? [],
+          subplebbitAddress,
+        });
+      }
     }
   }, [
     isInCreateSubplebbitView,

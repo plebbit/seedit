@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState, lazy, Suspense, Component } from 'react';
+import React, { useEffect, useMemo, useState, useRef, lazy, Suspense, Component } from 'react';
 import { Trans, useTranslation } from 'react-i18next';
 import { usePublishSubplebbitEdit, useSubplebbit } from '@plebbit/plebbit-react-hooks';
 import useTheme from '../../../stores/use-theme-store';
@@ -62,18 +62,100 @@ const SubplebbitDataEditor = () => {
   const { address, createdAt, description, error, rules, settings, suggested, roles, title } = subplebbit || {};
   const hasLoaded = !!createdAt;
 
-  const { publishSubplebbitEditOptions, setSubplebbitSettingsStore, resetSubplebbitSettingsStore } = useSubplebbitSettingsStore();
+  const {
+    publishSubplebbitEditOptions,
+    setSubplebbitSettingsStore,
+    resetSubplebbitSettingsStore,
+    title: storeTitle,
+    description: storeDescription,
+    address: storeAddress,
+    suggested: storeSuggested,
+    rules: storeRules,
+    roles: storeRoles,
+    settings: storeSettings,
+    subplebbitAddress: storeSubplebbitAddress,
+  } = useSubplebbitSettingsStore();
 
   const { error: publishSubplebbitEditError, publishSubplebbitEdit } = usePublishSubplebbitEdit(publishSubplebbitEditOptions);
 
-  const subplebbitSettings = useMemo(
-    () => JSON.stringify({ title, description, address, suggested, rules, roles, settings, subplebbitAddress }, null, 2),
-    [title, description, address, suggested, rules, roles, settings, subplebbitAddress],
-  );
+  // Use store state if available, otherwise fall back to original subplebbit data
+  const currentSettings = useMemo(() => {
+    const { subplebbitAddress: storeAddr } = useSubplebbitSettingsStore.getState();
+    const hasStoreData = storeAddr === subplebbitAddress;
 
+    return {
+      title: hasStoreData ? storeTitle : title,
+      description: hasStoreData ? storeDescription : description,
+      address: hasStoreData ? storeAddress : address,
+      suggested: hasStoreData ? storeSuggested : suggested,
+      rules: hasStoreData ? storeRules : rules,
+      roles: hasStoreData ? storeRoles : roles,
+      settings: hasStoreData ? storeSettings : settings,
+      subplebbitAddress: hasStoreData ? storeSubplebbitAddress : subplebbitAddress,
+    };
+  }, [
+    storeTitle,
+    storeDescription,
+    storeAddress,
+    storeSuggested,
+    storeRules,
+    storeRoles,
+    storeSettings,
+    storeSubplebbitAddress,
+    title,
+    description,
+    address,
+    suggested,
+    rules,
+    roles,
+    settings,
+    subplebbitAddress,
+  ]);
+
+  const subplebbitSettings = useMemo(() => JSON.stringify(currentSettings, null, 2), [currentSettings]);
+
+  // Update text when settings change, but not when user is actively typing
+  const timeoutRef = useRef<NodeJS.Timeout>();
   useEffect(() => {
-    setText(subplebbitSettings);
+    // Clear any pending timeout
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current);
+    }
+
+    // Debounce setting text to avoid interrupting user typing
+    timeoutRef.current = setTimeout(() => {
+      setText(subplebbitSettings);
+    }, 100);
+
+    return () => {
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+      }
+    };
   }, [subplebbitSettings]);
+
+  // Sync editor changes to store immediately when JSON is valid
+  const handleTextChange = (newText: string) => {
+    setText(newText);
+
+    // Try to sync immediately if JSON is valid
+    try {
+      const parsedSettings = JSON.parse(newText);
+      setSubplebbitSettingsStore({
+        title: parsedSettings.title ?? '',
+        description: parsedSettings.description ?? '',
+        address: parsedSettings.address,
+        suggested: parsedSettings.suggested ?? {},
+        rules: parsedSettings.rules ?? [],
+        roles: parsedSettings.roles ?? {},
+        settings: parsedSettings.settings ?? {},
+        subplebbitAddress: parsedSettings.subplebbitAddress,
+      });
+    } catch (error) {
+      // Invalid JSON - don't spam console during active typing
+      // Just silently skip sync until JSON becomes valid
+    }
+  };
 
   const [showSaving, setShowSaving] = useState(false);
   const [currentError, setCurrentError] = useState<Error | undefined>(undefined);
@@ -119,10 +201,9 @@ const SubplebbitDataEditor = () => {
       setCurrentError(undefined);
       setTriggerSave(false);
 
-      // Parse the edited JSON from the text state
-      let parsedSettings;
+      // Validate JSON before saving
       try {
-        parsedSettings = JSON.parse(text);
+        JSON.parse(text);
       } catch (parseError) {
         setShowSaving(false);
         const errorMessage = parseError instanceof Error ? parseError.message : 'Invalid JSON format';
@@ -131,19 +212,7 @@ const SubplebbitDataEditor = () => {
         return;
       }
 
-      // Update the store with parsed settings
-      setSubplebbitSettingsStore({
-        title: parsedSettings.title ?? '',
-        description: parsedSettings.description ?? '',
-        address: parsedSettings.address,
-        suggested: parsedSettings.suggested ?? {},
-        rules: parsedSettings.rules ?? [],
-        roles: parsedSettings.roles ?? {},
-        settings: parsedSettings.settings ?? {},
-        subplebbitAddress: parsedSettings.subplebbitAddress,
-      });
-
-      // Trigger save after store update
+      // Store should already be updated via debounced effect, just trigger save
       setTriggerSave(true);
     } catch (e) {
       setShowSaving(false);
@@ -160,17 +229,23 @@ const SubplebbitDataEditor = () => {
   // Set store for loaded subplebbit settings when editing
   useEffect(() => {
     if (hasLoaded) {
-      resetSubplebbitSettingsStore();
-      setSubplebbitSettingsStore({
-        title: title ?? '',
-        description: description ?? '',
-        address,
-        suggested: suggested ?? {},
-        rules: rules ?? [],
-        roles: roles ?? {},
-        settings: settings ?? {},
-        subplebbitAddress,
-      });
+      // Only reset if we're switching to a different subplebbit or if store is uninitialized
+      const { subplebbitAddress: storeSubplebbitAddress } = useSubplebbitSettingsStore.getState();
+      const shouldReset = !storeSubplebbitAddress || storeSubplebbitAddress !== subplebbitAddress;
+
+      if (shouldReset) {
+        resetSubplebbitSettingsStore();
+        setSubplebbitSettingsStore({
+          title: title ?? '',
+          description: description ?? '',
+          address,
+          suggested: suggested ?? {},
+          rules: rules ?? [],
+          roles: roles ?? {},
+          settings: settings ?? {},
+          subplebbitAddress,
+        });
+      }
     }
   }, [hasLoaded, resetSubplebbitSettingsStore, setSubplebbitSettingsStore, title, description, address, suggested, rules, roles, settings, subplebbitAddress]);
 
@@ -194,7 +269,7 @@ const SubplebbitDataEditor = () => {
   return (
     <div className={styles.content}>
       <EditorErrorBoundary
-        fallback={<FallbackEditor value={text} onChange={setText} height={isMobile ? 'calc(80vh - 95px)' : 'calc(90vh - 77px)'} disabled={showSaving} />}
+        fallback={<FallbackEditor value={text} onChange={handleTextChange} height={isMobile ? 'calc(80vh - 95px)' : 'calc(90vh - 77px)'} disabled={showSaving} />}
       >
         <Suspense
           fallback={
@@ -207,7 +282,7 @@ const SubplebbitDataEditor = () => {
             mode='json'
             theme={theme === 'dark' ? 'tomorrow_night' : 'github'}
             value={text}
-            onChange={setText}
+            onChange={handleTextChange}
             name='ACCOUNT_DATA_EDITOR'
             editorProps={{ $blockScrolling: true }}
             className={styles.editor}
