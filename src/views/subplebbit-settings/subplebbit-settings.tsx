@@ -612,7 +612,11 @@ const SubplebbitSettings = () => {
           </button>
         )}
         {showSaving && <LoadingEllipsis string={t('saving')} />}
-        {currentError && <div className={styles.error}>error: {currentError.message || 'unknown error'}</div>}
+        {currentError && (
+          <div className={styles.error}>
+            <ErrorDisplay error={currentError} />
+          </div>
+        )}
       </div>
     </div>
   );
