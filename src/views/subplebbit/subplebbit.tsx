@@ -176,7 +176,7 @@ const Footer = ({
         </div>
       );
     }
-  } else if (feedLength === 0 && isOnline && started && !isSubCreatedButNotYetPublished) {
+  } else if (feedLength === 0 && isOnline && !hasMore) {
     footerFirstLine = t('no_posts');
   } else if (feedLength === 0 || !isOnline) {
     footerFirstLine = loadingString;
