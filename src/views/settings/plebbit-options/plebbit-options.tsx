@@ -21,7 +21,6 @@ const IPFSGatewaysSettings = ({ ipfsGatewayUrlsRef, mediaIpfsGatewayUrlRef }: Se
   const account = useAccount();
   const { plebbitOptions, mediaIpfsGatewayUrl } = account || {};
   const { ipfsGatewayUrls } = plebbitOptions || {};
-  const isConnectedToRpc = usePlebbitRpcSettings()?.state === 'connected';
   const ipfsGatewayUrlsDefaultValue = ipfsGatewayUrls?.join('\n');
 
   return (
@@ -30,7 +29,6 @@ const IPFSGatewaysSettings = ({ ipfsGatewayUrlsRef, mediaIpfsGatewayUrlRef }: Se
         <textarea
           defaultValue={ipfsGatewayUrlsDefaultValue}
           ref={ipfsGatewayUrlsRef}
-          disabled={isConnectedToRpc}
           autoCorrect='off'
           autoComplete='off'
           spellCheck='false'
@@ -39,7 +37,7 @@ const IPFSGatewaysSettings = ({ ipfsGatewayUrlsRef, mediaIpfsGatewayUrlRef }: Se
       </div>
       <span className={styles.settingTitle}>nft profile pics gateway</span>
       <div>
-        <input type='text' defaultValue={mediaIpfsGatewayUrl} ref={mediaIpfsGatewayUrlRef} disabled={isConnectedToRpc} />
+        <input type='text' defaultValue={mediaIpfsGatewayUrl} ref={mediaIpfsGatewayUrlRef} />
       </div>
     </div>
   );
@@ -49,8 +47,6 @@ const PubsubProvidersSettings = ({ pubsubProvidersRef }: SettingsProps) => {
   const account = useAccount();
   const { plebbitOptions } = account || {};
   const { pubsubHttpClientsOptions } = plebbitOptions || {};
-  const plebbitRpc = usePlebbitRpcSettings();
-  const isConnectedToRpc = plebbitRpc?.state === 'connected';
   const pubsubProvidersDefaultValue = pubsubHttpClientsOptions?.join('\n');
 
   return (
@@ -58,7 +54,6 @@ const PubsubProvidersSettings = ({ pubsubProvidersRef }: SettingsProps) => {
       <textarea
         defaultValue={pubsubProvidersDefaultValue}
         ref={pubsubProvidersRef}
-        disabled={isConnectedToRpc}
         autoCorrect='off'
         autoComplete='off'
         spellCheck='false'
