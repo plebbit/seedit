@@ -6,7 +6,7 @@ import styles from '../../settings/account-data-editor/account-data-editor.modul
 import useIsMobile from '../../../hooks/use-is-mobile';
 import LoadingEllipsis from '../../../components/loading-ellipsis';
 import useSubplebbitSettingsStore from '../../../stores/use-subplebbit-settings-store';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import ErrorDisplay from '../../../components/error-display';
 import useStateString from '../../../hooks/use-state-string';
 
@@ -54,6 +54,7 @@ const FallbackEditor = ({ value, onChange, height, disabled }: { value: string; 
 const SubplebbitDataEditor = () => {
   const { t } = useTranslation();
   const isMobile = useIsMobile();
+  const navigate = useNavigate();
   const theme = useTheme((state) => state.theme);
   const [text, setText] = useState('');
 
@@ -318,6 +319,10 @@ const SubplebbitDataEditor = () => {
               2: <button key='resetSubplebbitSettingsButton' onClick={() => setText(subplebbitSettings)} />,
             }}
           />
+          <div>
+            <br />
+            <button onClick={() => navigate(`/p/${subplebbitAddress}/settings`)}>return to settings</button>
+          </div>
         </div>
       )}
     </div>

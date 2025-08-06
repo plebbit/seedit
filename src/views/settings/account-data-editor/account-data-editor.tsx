@@ -140,6 +140,10 @@ const AccountDataEditor = () => {
             2: <button key='resetAccountButton' onClick={() => setText(accountJson)} />,
           }}
         />
+        <div>
+          <br />
+          <button onClick={() => navigate('/settings')}>return to settings</button>
+        </div>
       </div>
     </div>
   );
