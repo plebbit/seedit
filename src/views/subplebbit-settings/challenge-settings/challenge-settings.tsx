@@ -469,7 +469,7 @@ const Challenges = ({
     const defaultOptions = challengeOptions['captcha-canvas-v3'] || {};
     const newChallenge = {
       name: 'captcha-canvas-v3',
-      defaultOptions,
+      options: defaultOptions,
     };
     const updatedChallenges = [...(settings?.challenges || []), newChallenge];
     setSubplebbitSettingsStore({ settings: { ...settings, challenges: updatedChallenges } });
