@@ -31,12 +31,12 @@ const CommentEditForm = ({ commentCid, hideCommentEditForm }: CommentEditFormPro
     post = comment;
   }
 
-  const { content, edit, spoiler, nsfw, subplebbitAddress } = post || {};
+  const { content, reason, spoiler, nsfw, subplebbitAddress } = post || {};
 
   const defaultPublishOptions: PublishCommentEditOptions = {
     commentCid,
     content,
-    reason: edit?.reason ?? '',
+    reason,
     spoiler,
     nsfw,
     subplebbitAddress,
