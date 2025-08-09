@@ -56,14 +56,24 @@ dependencies {
 
 apply from: 'capacitor.build.gradle'
 
+// Google Services plugin - only apply if file exists and has content
+// This is wrapped in multiple safety checks to prevent CI failures
 try {
     def servicesJSON = file('google-services.json')
-    if (servicesJSON.exists() && servicesJSON.text) {
-        apply plugin: 'com.google.gms.google-services'
-        logger.info("google-services.json found, applying Google Services plugin")
+    if (servicesJSON != null && servicesJSON.exists() && servicesJSON.length() > 0) {
+        try {
+            // Additional safety check - ensure the plugin is available in classpath
+            apply plugin: 'com.google.gms.google-services'
+            println("✓ Google Services plugin applied successfully")
+        } catch (Exception pluginError) {
+            println("⚠ Google Services plugin not available or failed to apply: ${pluginError.message}")
+            println("  This is not a critical error - the app will build without push notifications")
+        }
     } else {
-        logger.info("google-services.json not found or empty, Google Services plugin not applied. Push Notifications won't work")
+        println("ℹ google-services.json not found - building without Google Services")
+        println("  Push notifications will not be available, but this is not an error")
     }
 } catch(Exception e) {
-    logger.info("Error checking google-services.json: ${e.message}. Google Services plugin not applied")
+    println("ℹ Google Services check failed: ${e.message}")
+    println("  Continuing build without Google Services - this is not a critical error")
 }
