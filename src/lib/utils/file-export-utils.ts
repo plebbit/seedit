@@ -31,48 +31,43 @@ export const exportFile = async ({ content, fileName, mimeType = 'application/js
  */
 const exportFileOnMobile = async ({ content, fileName, mimeType }: ExportFileOptions): Promise<void> => {
   try {
-    // First, try to write to a temporary location that doesn't require permissions
     let result;
-    try {
-      // Try External directory first (usually doesn't require permissions)
-      result = await Filesystem.writeFile({
-        path: fileName,
-        data: content,
-        directory: Directory.External,
-        encoding: Encoding.UTF8,
-      });
+    let writeError;
 
-      console.log('File written to External directory:', result.uri);
+    // Try multiple directories until one works
+    const directoriesToTry = [Directory.External, Directory.Cache];
 
-      // Use the Share API to let the user save the file where they want
-      // This gives them full control over the save location
-      await Share.share({
-        title: 'Save Account Backup',
-        text: `Save your account backup file: ${fileName}`,
-        url: result.uri,
-        dialogTitle: 'Choose where to save your account backup',
-      });
-    } catch (externalError) {
-      console.log('External directory failed, trying app-specific directory:', externalError);
+    for (const directory of directoriesToTry) {
+      try {
+        result = await Filesystem.writeFile({
+          path: fileName,
+          data: content,
+          directory: directory,
+          encoding: Encoding.UTF8,
+        });
 
-      // Fallback: Write to app's private data directory and share from there
-      result = await Filesystem.writeFile({
-        path: fileName,
-        data: content,
-        directory: Directory.Data,
-        encoding: Encoding.UTF8,
-      });
-
-      console.log('File written to Data directory:', result.uri);
-
-      // Share from the private directory
-      await Share.share({
-        title: 'Save Account Backup',
-        text: `Save your account backup file: ${fileName}`,
-        url: result.uri,
-        dialogTitle: 'Choose where to save your account backup',
-      });
+        console.log(`File written successfully to ${directory}:`, result.uri);
+        writeError = null;
+        break;
+      } catch (error) {
+        console.log(`Failed to write to ${directory}:`, error);
+        writeError = error;
+        continue;
+      }
     }
+
+    // If all directories failed, throw the last error
+    if (writeError || !result) {
+      throw writeError || new Error('All directories failed');
+    }
+
+    // Now share the file - only call this ONCE!
+    await Share.share({
+      title: 'Save Account Backup',
+      text: `Save your account backup: ${fileName}`,
+      url: result.uri,
+      dialogTitle: 'Save your account backup file',
+    });
   } catch (error) {
     console.error('Mobile file export failed:', error);
     throw new Error(`Failed to export file on mobile: ${error instanceof Error ? error.message : 'Unknown error'}`);
