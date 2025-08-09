@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { Trans, useTranslation } from 'react-i18next';
 import { createAccount, deleteAccount, exportAccount, importAccount, setActiveAccount, useAccount, useAccounts } from '@plebbit/plebbit-react-hooks';
 import { processImportedAccount } from '../../../lib/utils/account-import-utils';
+import { exportFile } from '../../../lib/utils/file-export-utils';
 import styles from './account-settings.module.css';
 
 const CreateAccountButton = () => {
@@ -155,24 +156,12 @@ const ExportAccountButton = () => {
 
       const formattedAccountJson = JSON.stringify(exportedAccount, null, 2);
 
-      // Create a Blob from the JSON string
-      const blob = new Blob([formattedAccountJson], { type: 'application/json' });
-
-      // Create a URL for the Blob
-      const fileUrl = URL.createObjectURL(blob);
-
-      // Create a temporary download link
-      const link = document.createElement('a');
-      link.href = fileUrl;
-      link.download = `${account.name}.json`;
-
-      // Append the link, trigger the download, then remove the link
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-
-      // Release the Blob URL
-      URL.revokeObjectURL(fileUrl);
+      // Use cross-platform export utility
+      await exportFile({
+        content: formattedAccountJson,
+        fileName: `${account.name}.json`,
+        mimeType: 'application/json',
+      });
     } catch (error) {
       if (error instanceof Error) {
         alert(error.message);

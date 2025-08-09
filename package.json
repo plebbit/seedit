@@ -8,7 +8,9 @@
   "private": true,
   "dependencies": {
     "@capacitor/app": "7.0.1",
+    "@capacitor/filesystem": "^7.1.4",
     "@capacitor/local-notifications": "7.0.1",
+    "@capacitor/share": "^7.0.2",
     "@capacitor/status-bar": "7.0.1",
     "@capawesome/capacitor-android-edge-to-edge-support": "7.2.2",
     "@floating-ui/react": "0.26.1",

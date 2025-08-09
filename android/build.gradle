@@ -29,13 +29,29 @@ task clean(type: Delete) {
     delete rootProject.buildDir
 }
 
-// Force Java 17 for all Android modules
-subprojects { project ->
+// Force Java 17 for all Android modules and override Gradle toolchains
+allprojects {
     project.afterEvaluate {
+        // Force Java 17 toolchain for all projects
+        if (project.hasProperty('java')) {
+            project.java {
+                toolchain {
+                    languageVersion = JavaLanguageVersion.of(17)
+                }
+            }
+        }
+        
         if (project.hasProperty('android')) {
             android.compileOptions {
                 sourceCompatibility JavaVersion.VERSION_17
                 targetCompatibility JavaVersion.VERSION_17
+            }
+        }
+        
+        // Override Kotlin JVM target for all modules
+        project.tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).all {
+            kotlinOptions {
+                jvmTarget = '17'
             }
         }
     }
