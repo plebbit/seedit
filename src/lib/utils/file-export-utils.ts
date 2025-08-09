@@ -70,6 +70,12 @@ const exportFileOnMobile = async ({ content, fileName, mimeType }: ExportFileOpt
     });
   } catch (error) {
     console.error('Mobile file export failed:', error);
+
+    // If the user canceled the share dialog, don't show an error
+    if (error instanceof Error && error.message.includes('canceled')) {
+      return;
+    }
+
     throw new Error(`Failed to export file on mobile: ${error instanceof Error ? error.message : 'Unknown error'}`);
   }
 };
