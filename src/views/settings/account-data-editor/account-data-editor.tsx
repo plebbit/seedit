@@ -7,6 +7,7 @@ import stringify from 'json-stringify-pretty-compact';
 import styles from './account-data-editor.module.css';
 import useIsMobile from '../../../hooks/use-is-mobile';
 import LoadingEllipsis from '../../../components/loading-ellipsis';
+import ErrorDisplay from '../../../components/error-display';
 
 class EditorErrorBoundary extends Component<{ children: React.ReactNode; fallback: React.ReactNode }> {
   constructor(props: { children: React.ReactNode; fallback: React.ReactNode }) {
@@ -57,6 +58,7 @@ const AccountDataEditor = () => {
   const theme = useTheme((state) => state.theme);
   const [text, setText] = useState('');
   const [showEditor, setShowEditor] = useState(false);
+  const [currentError, setCurrentError] = useState<Error | undefined>(undefined);
 
   const accountJson = useMemo(() => stringify({ account: { ...account, plebbit: undefined, karma: undefined, unreadNotificationCount: undefined } }), [account]);
 
@@ -66,6 +68,7 @@ const AccountDataEditor = () => {
 
   const saveAccount = async () => {
     try {
+      setCurrentError(undefined);
       const editorAccount = JSON.parse(text).account;
       await setAccount(editorAccount);
       alert(`Saved ${editorAccount.name}`);
@@ -73,9 +76,12 @@ const AccountDataEditor = () => {
       window.location.reload();
     } catch (error) {
       if (error instanceof Error) {
+        setCurrentError(error);
         alert(error.message);
         console.log(error);
       } else {
+        const unknownError = new Error('An unknown error occurred');
+        setCurrentError(unknownError);
         console.error('An unknown error occurred:', error);
       }
     }
@@ -99,7 +105,20 @@ const AccountDataEditor = () => {
 
   return (
     <div className={styles.content}>
-      <EditorErrorBoundary fallback={<FallbackEditor value={text} onChange={setText} height={isMobile ? 'calc(80vh - 95px)' : 'calc(90vh - 77px)'} />}>
+      <EditorErrorBoundary
+        fallback={
+          <FallbackEditor
+            value={text}
+            onChange={(value) => {
+              setText(value);
+              if (currentError) {
+                setCurrentError(undefined);
+              }
+            }}
+            height={isMobile ? 'calc(80vh - 95px)' : 'calc(90vh - 77px)'}
+          />
+        }
+      >
         <Suspense
           fallback={
             <div className={styles.loading}>
@@ -111,7 +130,12 @@ const AccountDataEditor = () => {
             mode='json'
             theme={theme === 'dark' ? 'tomorrow_night' : 'github'}
             value={text}
-            onChange={setText}
+            onChange={(value) => {
+              setText(value);
+              if (currentError) {
+                setCurrentError(undefined);
+              }
+            }}
             name='ACCOUNT_DATA_EDITOR'
             editorProps={{ $blockScrolling: true }}
             className={styles.editor}
@@ -132,6 +156,11 @@ const AccountDataEditor = () => {
           />
         </Suspense>
       </EditorErrorBoundary>
+      {currentError && (
+        <div className={styles.error}>
+          <ErrorDisplay error={currentError} />
+        </div>
+      )}
       <div className={styles.buttons}>
         <Trans
           i18nKey='save_reset_changes'

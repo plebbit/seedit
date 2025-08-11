@@ -305,7 +305,11 @@ const SubplebbitDataEditor = () => {
           />
         </Suspense>
       </EditorErrorBoundary>
-      {currentError && <div className={styles.error}>error: {currentError.message || 'unknown error'}</div>}
+      {currentError && (
+        <div className={styles.error}>
+          <ErrorDisplay error={currentError} />
+        </div>
+      )}
       {showSaving ? (
         <div className={styles.loading}>
           <LoadingEllipsis string={t('saving')} />

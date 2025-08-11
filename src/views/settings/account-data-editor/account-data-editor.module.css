@@ -189,3 +189,9 @@
   white-space: pre;
   overflow-wrap: normal;
 }
+
+.error {
+  color: var(--red);
+  font-size: 12px;
+  margin: 20px 10px 0 10px;
+}
