@@ -235,7 +235,7 @@ const ChallengeSettings = ({ challenge, challengesSettings, index, isReadOnly, s
                           <input
                             type='number'
                             min={0}
-                            value={exclude?.postScore || undefined}
+                            value={exclude?.postScore ?? ''}
                             onChange={(e) => {
                               const value = e.target.value === '' ? undefined : Number(e.target.value);
                               handleExcludeChange(excludeIndex, 'postScore', value);
@@ -253,7 +253,7 @@ const ChallengeSettings = ({ challenge, challengesSettings, index, isReadOnly, s
                           <input
                             min={0}
                             type='number'
-                            value={exclude?.replyScore || undefined}
+                            value={exclude?.replyScore ?? ''}
                             onChange={(e) => {
                               const value = e.target.value === '' ? undefined : Number(e.target.value);
                               handleExcludeChange(excludeIndex, 'replyScore', value);
@@ -274,7 +274,7 @@ const ChallengeSettings = ({ challenge, challengesSettings, index, isReadOnly, s
                       <input
                         type='number'
                         min={0}
-                        value={exclude?.firstCommentTimestamp || undefined}
+                        value={exclude?.firstCommentTimestamp ?? ''}
                         onChange={(e) => {
                           const value = e.target.value === '' ? undefined : Number(e.target.value);
                           handleExcludeChange(excludeIndex, 'firstCommentTimestamp', value);
@@ -362,7 +362,7 @@ const ChallengeSettings = ({ challenge, challengesSettings, index, isReadOnly, s
                       <input
                         type='number'
                         min={0}
-                        value={exclude?.rateLimit || undefined}
+                        value={exclude?.rateLimit ?? ''}
                         onChange={(e) => {
                           const value = e.target.value === '' ? undefined : Number(e.target.value);
                           handleExcludeChange(excludeIndex, 'rateLimit', value);
