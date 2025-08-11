@@ -156,7 +156,7 @@ jobs:
       - run: npx cap update
       - run: npx cap copy
       - run: cd android && gradle bundle
-      - run: cd android && ./gradlew assembleRelease
+      - run: cd android && ./gradlew assembleRelease --stacktrace
       # optimize apk
       - run: cd android/app/build/outputs/apk/release && zipalign 4 app-release-unsigned.apk app-release-unsigned-zip.apk
       # sign apk

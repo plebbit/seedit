@@ -1,3 +1,14 @@
+## [0.5.8](https://github.com/plebbit/seedit/compare/v0.5.7...v0.5.8) (2025-08-09)
+
+
+### Bug Fixes
+
+* **android:** implement cross-platform account export ([b0b06db](https://github.com/plebbit/seedit/commit/b0b06db8c55b3e6bb6c1148acbc61d7ddf6c2d2c))
+* edit comment state would get stuck at pending ([4251325](https://github.com/plebbit/seedit/commit/4251325b2a131bd64e5b8e8c8f1df20d7c20f581))
+* resolve Android export dialog and permission issues ([01d7e1c](https://github.com/plebbit/seedit/commit/01d7e1c209d9899ea13502d70f6cf75786b5ec2c))
+
+
+
 ## [0.5.7](https://github.com/plebbit/seedit/compare/v0.5.6...v0.5.7) (2025-08-06)
 
 
