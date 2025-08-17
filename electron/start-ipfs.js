@@ -14,15 +14,21 @@ const envPaths = EnvPaths('plebbit', { suffix: false });
 // also spawnSync might have been causing crash on start on windows
 const spawnAsync = (...args) =>
   new Promise((resolve, reject) => {
-    const spawedProcess = spawn(...args);
-    spawedProcess.on('exit', (exitCode, signal) => {
+    const spawnedProcess = spawn(...args);
+    spawnedProcess.on('exit', (exitCode, signal) => {
       if (exitCode === 0) resolve();
-      else reject(Error(`spawnAsync process '${spawedProcess.pid}' exited with code '${exitCode}' signal '${signal}'`));
+      else reject(Error(`spawnAsync process '${spawnedProcess.pid}' exited with code '${exitCode}' signal '${signal}'`));
     });
-    spawedProcess.stderr.on('data', (data) => console.error(data.toString()));
-    spawedProcess.stdin.on('data', (data) => console.log(data.toString()));
-    spawedProcess.stdout.on('data', (data) => console.log(data.toString()));
-    spawedProcess.on('error', (data) => console.error(data.toString()));
+    // Always surface errors from short-lived commands
+    spawnedProcess.stderr.on('data', (data) => console.error(data.toString()));
+    // Short-lived command stdout can be useful in dev, but is noisy in prod
+    if (isDev) {
+      spawnedProcess.stdout.on('data', (data) => console.log(data.toString()));
+    } else {
+      // Drain to avoid backpressure without logging
+      spawnedProcess.stdout.on('data', () => {});
+    }
+    spawnedProcess.on('error', (data) => console.error(data.toString?.() || String(data)));
   });
 
 const startIpfs = async () => {
@@ -51,7 +57,8 @@ const startIpfs = async () => {
   console.log({ ipfsPath, ipfsDataPath });
 
   fs.ensureDirSync(ipfsDataPath);
-  const env = { IPFS_PATH: ipfsDataPath };
+  // Reduce IPFS daemon log verbosity in production to avoid UI lag from excessive logging
+  const env = { ...process.env, IPFS_PATH: ipfsDataPath, ...(isDev ? {} : { GOLOG_LOG_LEVEL: 'error' }) };
   // init ipfs client on first launch
   try {
     await spawnAsync(ipfsPath, ['init'], { env, hideWindows: true });
@@ -83,17 +90,16 @@ const startIpfs = async () => {
       let lastError;
       ipfsProcess.stderr.on('data', (data) => {
         lastError = data.toString();
-        console.error(data.toString());
+        if (isDev) console.error(lastError);
       });
-      ipfsProcess.stdin.on('data', (data) => console.log(data.toString()));
-      ipfsProcess.stdout.on('data', (data) => {
-        data = data.toString();
-        console.log(data);
-        if (data.includes('Daemon is ready')) {
+      ipfsProcess.stdout.on('data', (chunk) => {
+        const text = chunk.toString();
+        if (isDev) console.log(text);
+        if (text.includes('Daemon is ready')) {
           resolve();
         }
       });
-      ipfsProcess.on('error', (data) => console.error(data.toString()));
+      ipfsProcess.on('error', (err) => console.error(err?.toString?.() || String(err)));
       ipfsProcess.on('exit', () => {
         console.error(`ipfs process with pid ${ipfsProcess.pid} exited`);
         reject(Error(lastError));

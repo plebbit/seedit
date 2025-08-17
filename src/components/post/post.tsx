@@ -162,7 +162,12 @@ const Post = ({ index, post = {} }: PostProps) => {
   const postTitle =
     (title?.length > 300 ? title?.slice(0, 300) + '...' : title) ||
     (content?.length > 300 ? content?.slice(0, 300) + '...' : content)?.replace('&nbsp;', ' ')?.replace('>', '')?.replace('<', '')?.trim();
-  const displayedTitle = searchQuery ? highlightMatchedText(postTitle || '', searchQuery) : postTitle;
+
+  // Ensure we have a meaningful title - if it's only whitespace/newlines, treat as empty
+  const cleanedTitle = postTitle?.trim();
+  const finalTitle = cleanedTitle || '-';
+
+  const displayedTitle = searchQuery ? highlightMatchedText(finalTitle, searchQuery) : finalTitle;
 
   const hasThumbnail = getHasThumbnail(commentMediaInfo, link);
   const hostname = getHostname(link);
@@ -237,11 +242,11 @@ const Post = ({ index, post = {} }: PostProps) => {
                 <p className={styles.title}>
                   {isInPostPageView && link ? (
                     <a href={link} className={linkClass} target='_blank' rel='noopener noreferrer' onClick={handlePostClick}>
-                      {displayedTitle ?? '-'}
+                      {displayedTitle}
                     </a>
                   ) : (
                     <Link className={linkClass} to={cid ? `/p/${subplebbitAddress}/c/${cid}` : `/profile/${post?.index}`} onClick={handlePostClick}>
-                      {displayedTitle ?? '-'}
+                      {displayedTitle}
                     </Link>
                   )}
                   {flair && (

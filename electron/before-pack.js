@@ -20,7 +20,9 @@ const ipfsClientLinuxPath = path.join(ipfsClientsPath, 'linux');
 // official kubo download links https://docs.ipfs.tech/install/command-line/#install-official-binary-distributions
 const ipfsClientVersion = '0.32.1';
 const ipfsClientWindowsUrl = `https://dist.ipfs.io/kubo/v${ipfsClientVersion}/kubo_v${ipfsClientVersion}_windows-amd64.zip`;
-const ipfsClientMacUrl = `https://dist.ipfs.io/kubo/v${ipfsClientVersion}/kubo_v${ipfsClientVersion}_darwin-amd64.tar.gz`;
+// Choose proper mac binary by builder architecture to avoid Rosetta on Apple Silicon
+const macArch = process.arch === 'arm64' ? 'arm64' : 'amd64';
+const ipfsClientMacUrl = `https://dist.ipfs.io/kubo/v${ipfsClientVersion}/kubo_v${ipfsClientVersion}_darwin-${macArch}.tar.gz`;
 const ipfsClientLinuxUrl = `https://dist.ipfs.io/kubo/v${ipfsClientVersion}/kubo_v${ipfsClientVersion}_linux-amd64.tar.gz`;
 
 const downloadWithProgress = (url) =>

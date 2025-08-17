@@ -17,7 +17,7 @@ let releaseChangelog =
 // format
 releaseChangelog = releaseChangelog.trim().replace(/\n\n+/g, '\n\n')
 
-const releaseBody = `This version fixes a bug that marked all the user's comment edits as "pending" and "failed". It also fixes an issue that prevented exporting accounts from the settings in the android app.
+const releaseBody = `This version fixes a bug that caused extreme slowness in some desktop versions of the app.
 
 - Web app: https://seedit.app
 - Decentralized web app: https://seedit.eth (only works on [Brave Browser](https://brave.com/) or via [IPFS Companion](https://docs.ipfs.tech/install/ipfs-companion/#prerequisites))
