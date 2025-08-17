@@ -175,7 +175,7 @@ const createMainWindow = () => {
       webSecurity: true, // must be true or iframe embeds like youtube can do remote code execution
       nodeIntegration: false,
       contextIsolation: true,
-      devTools: true, // TODO: change to isDev when no bugs left
+      devTools: isDev,
       preload: path.join(dirname, '../build/electron/preload.cjs'),
     },
   });

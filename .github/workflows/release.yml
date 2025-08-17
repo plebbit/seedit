@@ -48,7 +48,15 @@ jobs:
           allowUpdates: true
 
   mac:
-    runs-on: macOS-13
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - runner: macOS-13 # Intel x64
+            arch: x64
+          - runner: macOS-14 # Apple Silicon arm64
+            arch: arm64
+    runs-on: ${{ matrix.runner }}
     permissions:
       contents: write
     steps:

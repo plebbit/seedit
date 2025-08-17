@@ -4,6 +4,7 @@ import util from 'util';
 import fs from 'fs-extra';
 import path from 'path';
 import EnvPaths from 'env-paths';
+import isDev from 'electron-is-dev';
 const envPaths = EnvPaths('plebbit', { suffix: false });
 
 // previous version created a file instead of folder
@@ -26,32 +27,52 @@ const writeLog = (...args) => {
 };
 
 const consoleLog = console.log;
-console.log = (...args) => {
-  writeLog(...args);
-  consoleLog(...args);
-};
 const consoleError = console.error;
-console.error = (...args) => {
-  writeLog(...args);
-  consoleError(...args);
-};
 const consoleWarn = console.warn;
-console.warn = (...args) => {
-  writeLog(...args);
-  consoleWarn(...args);
-};
 const consoleDebug = console.debug;
-console.debug = (...args) => {
-  // don't add date for debug because it's usually already included
-  for (const arg of args) {
-    logFile.write(util.format(arg) + ' ');
-  }
-  logFile.write('\r\n');
-  consoleDebug(...args);
-};
+
+// In production, avoid writing verbose logs (log/debug) to disk to prevent I/O thrash.
+if (!isDev) {
+  console.log = (...args) => {
+    // keep stdout behavior but don't write to file
+    consoleLog(...args);
+  };
+  console.debug = (...args) => {
+    consoleDebug(...args);
+  };
+  console.warn = (...args) => {
+    writeLog(...args);
+    consoleWarn(...args);
+  };
+  console.error = (...args) => {
+    writeLog(...args);
+    consoleError(...args);
+  };
+} else {
+  // In dev, mirror everything to file for easier debugging
+  console.log = (...args) => {
+    writeLog(...args);
+    consoleLog(...args);
+  };
+  console.warn = (...args) => {
+    writeLog(...args);
+    consoleWarn(...args);
+  };
+  console.error = (...args) => {
+    writeLog(...args);
+    consoleError(...args);
+  };
+  console.debug = (...args) => {
+    for (const arg of args) {
+      logFile.write(util.format(arg) + ' ');
+    }
+    logFile.write('\r\n');
+    consoleDebug(...args);
+  };
+}
 
 // errors aren't console logged
 process.on('uncaughtException', console.error);
 process.on('unhandledRejection', console.error);
 
-console.log(envPaths);
+if (isDev) console.log(envPaths);
