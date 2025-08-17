@@ -1,3 +1,19 @@
+## [0.5.9](https://github.com/plebbit/seedit/compare/v0.5.8...v0.5.9) (2025-08-17)
+
+
+### Bug Fixes
+
+* **challenge settings:** prevent uncontrolled input error in number fields ([818408c](https://github.com/plebbit/seedit/commit/818408c7d92afd14e05f2921c04c05b4a0c0a4b9))
+* missing error displays in json editors ([06b9598](https://github.com/plebbit/seedit/commit/06b959855476d056d820cc5d9b519a80b9b84e7e))
+* **posts:** handle whitespace-only post titles properly ([1f69dc9](https://github.com/plebbit/seedit/commit/1f69dc940591baa83d0f9a5d40110fa48ed63782))
+
+
+### Performance Improvements
+
+* **electron:** reduce prod logging + IPFS noise across OS; disable devtools in release; arch-aware mac builds ([c9f3ba8](https://github.com/plebbit/seedit/commit/c9f3ba88225461f788989c09915b8f2da6321c02))
+
+
+
 ## [0.5.8](https://github.com/plebbit/seedit/compare/v0.5.7...v0.5.8) (2025-08-09)
 
 
@@ -5,7 +21,9 @@
 
 * **android:** implement cross-platform account export ([b0b06db](https://github.com/plebbit/seedit/commit/b0b06db8c55b3e6bb6c1148acbc61d7ddf6c2d2c))
 * edit comment state would get stuck at pending ([4251325](https://github.com/plebbit/seedit/commit/4251325b2a131bd64e5b8e8c8f1df20d7c20f581))
+* resolve Android CI build failure with Google Services plugin ([a5373aa](https://github.com/plebbit/seedit/commit/a5373aa9baa44233cde6e9ec02e1b8c95917bcb1))
 * resolve Android export dialog and permission issues ([01d7e1c](https://github.com/plebbit/seedit/commit/01d7e1c209d9899ea13502d70f6cf75786b5ec2c))
+* revert Google Services to working config and remove hardcoded Java path ([f7df22a](https://github.com/plebbit/seedit/commit/f7df22a504e241d8d47af849a6b59937f5a3ca4e))
 
 
 
