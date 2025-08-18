@@ -11,6 +11,10 @@ on:
 
 jobs:
   linux:
+    strategy:
+      fail-fast: false
+      matrix:
+        arch: [x64, arm64]
     runs-on: ubuntu-22.04
     permissions:
       contents: write
@@ -32,7 +36,12 @@ jobs:
       - name: Build React app (with Node v22)
         run: CI='' NODE_ENV=production yarn build
       - name: Build Electron app for Linux (with Node v22)
-        run: yarn electron:build:linux
+        run: |
+          if [ "${{ matrix.arch }}" = "arm64" ]; then
+            yarn electron:build:linux:arm64
+          else
+            yarn electron:build:linux:x64
+          fi
       - name: List dist directory
         run: ls dist
 
@@ -41,7 +50,7 @@ jobs:
         run: node scripts/release-body > release-body.txt
       - uses: ncipollo/release-action@v1
         with:
-          artifacts: 'dist/seedit*.AppImage,dist/seedit-html*.zip'
+          artifacts: 'dist/seedit*.AppImage,dist/seedit*-arm64.AppImage,dist/seedit-html*.zip'
           token: ${{ secrets.GITHUB_TOKEN }}
           replacesArtifacts: true
           bodyFile: "release-body.txt"
@@ -69,10 +78,11 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: 22
+      - name: Setup Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
 
-      # install missing dep for sqlite
-      - run: python3 -m ensurepip
-      - run: pip install setuptools
       - name: Install dependencies (with Node v22)
         run: yarn install --frozen-lockfile --ignore-engines
       # make sure the ipfs executable is executable
@@ -90,13 +100,17 @@ jobs:
         run: node scripts/release-body > release-body.txt
       - uses: ncipollo/release-action@v1
         with:
-          artifacts: 'dist/seedit*.dmg'
+          artifacts: 'dist/seedit*.dmg,dist/seedit*-arm64.dmg'
           token: ${{ secrets.GITHUB_TOKEN }}
           replacesArtifacts: true
           bodyFile: "release-body.txt"
           allowUpdates: true
 
   windows:
+    strategy:
+      fail-fast: false
+      matrix:
+        arch: [x64, arm64]
     runs-on: windows-2022
     permissions:
       contents: write
@@ -115,7 +129,12 @@ jobs:
       - name: Build React app (with Node v22)
         run: npx cross-env NODE_ENV=production yarn build
       - name: Build Electron app for Windows (with Node v22)
-        run: yarn electron:build:windows
+        run: |
+          if [ "${{ matrix.arch }}" = "arm64" ]; then
+            yarn electron:build:windows:arm64
+          else
+            yarn electron:build:windows:x64
+          fi
       - name: List dist directory
         run: dir dist
 
@@ -124,7 +143,7 @@ jobs:
         run: node scripts/release-body > release-body.txt
       - uses: ncipollo/release-action@v1
         with:
-          artifacts: 'dist/seedit*.exe'
+          artifacts: 'dist/seedit*.exe,dist/seedit*-arm64.exe'
           token: ${{ secrets.GITHUB_TOKEN }}
           replacesArtifacts: true
           bodyFile: "release-body.txt"
