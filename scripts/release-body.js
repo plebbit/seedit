@@ -75,7 +75,7 @@ const htmlSection = section('Static HTML build', [
 const downloads = [macSection, winSection, linuxSection, androidSection, htmlSection]
   .filter(Boolean).join('\n\n');
 
-const releaseBody = `This version fixes a bug that caused extreme slowness in some desktop versions of the app.
+const releaseBody = `This version improves desktop performance and adds native builds.
 
 - Web app: https://seedit.app
 - Decentralized web app: https://seedit.eth (only works on [Brave Browser](https://brave.com/) or via [IPFS Companion](https://docs.ipfs.tech/install/ipfs-companion/#prerequisites))
