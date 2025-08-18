@@ -52,7 +52,7 @@ jobs:
           artifacts: 'dist/seedit*.AppImage,dist/seedit*-arm64.AppImage,dist/seedit-html*.zip'
           token: ${{ secrets.GITHUB_TOKEN }}
           replacesArtifacts: true
-          bodyFile: "release-body.txt"
+          omitBody: true
           allowUpdates: true
 
   mac:
@@ -102,7 +102,7 @@ jobs:
           artifacts: 'dist/seedit*.dmg,dist/seedit*-arm64.dmg'
           token: ${{ secrets.GITHUB_TOKEN }}
           replacesArtifacts: true
-          bodyFile: "release-body.txt"
+          omitBody: true
           allowUpdates: true
 
   windows:
@@ -144,7 +144,7 @@ jobs:
           artifacts: 'dist/seedit*.exe,dist/seedit*-arm64.exe'
           token: ${{ secrets.GITHUB_TOKEN }}
           replacesArtifacts: true
-          bodyFile: "release-body.txt"
+          omitBody: true
           allowUpdates: true
 
   android:
@@ -198,5 +198,25 @@ jobs:
           artifacts: 'dist/seedit*.apk'
           token: ${{ secrets.GITHUB_TOKEN }}
           replacesArtifacts: true
-          bodyFile: "release-body.txt"
+          omitBody: true
           allowUpdates: true
+
+  finalize-release:
+    runs-on: ubuntu-22.04
+    needs: [linux, mac, windows, android]
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: Generate final release body from GitHub assets
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+          GITHUB_REF_NAME: ${{ github.ref_name }}
+        run: node scripts/release-body > release-body.txt
+      - name: Update release body only
+        uses: ncipollo/release-action@v1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          allowUpdates: true
+          bodyFile: "release-body.txt"
