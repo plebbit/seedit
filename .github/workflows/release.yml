@@ -35,13 +35,12 @@ jobs:
         run: node electron/download-ipfs && sudo chmod +x bin/linux/ipfs
       - name: Build React app (with Node v22)
         run: CI='' NODE_ENV=production yarn build
-      - name: Build Electron app for Linux (with Node v22)
-        run: |
-          if [ "${{ matrix.arch }}" = "arm64" ]; then
-            yarn electron:build:linux:arm64
-          else
-            yarn electron:build:linux:x64
-          fi
+      - name: Build Electron app for Linux (arm64)
+        if: ${{ matrix.arch == 'arm64' }}
+        run: yarn electron:build:linux:arm64
+      - name: Build Electron app for Linux (x64)
+        if: ${{ matrix.arch == 'x64' }}
+        run: yarn electron:build:linux:x64
       - name: List dist directory
         run: ls dist
 
@@ -128,13 +127,12 @@ jobs:
         run: yarn install --frozen-lockfile --network-timeout 100000 --network-concurrency 1
       - name: Build React app (with Node v22)
         run: npx cross-env NODE_ENV=production yarn build
-      - name: Build Electron app for Windows (with Node v22)
-        run: |
-          if [ "${{ matrix.arch }}" = "arm64" ]; then
-            yarn electron:build:windows:arm64
-          else
-            yarn electron:build:windows:x64
-          fi
+      - name: Build Electron app for Windows (arm64)
+        if: ${{ matrix.arch == 'arm64' }}
+        run: yarn electron:build:windows:arm64
+      - name: Build Electron app for Windows (x64)
+        if: ${{ matrix.arch == 'x64' }}
+        run: yarn electron:build:windows:x64
       - name: List dist directory
         run: dir dist
 
