@@ -50,6 +50,7 @@ const section = (title, lines) => {
 const macSection = section('macOS', [
   macArm && `- Apple Silicon (arm64): [Download DMG](${linkTo(macArm)})`,
   macX64 && `- Intel (x64): [Download DMG](${linkTo(macX64)})`,
+  (mac.length > 0) && `- If macOS shows "seedit.app is damaged and can't be opened. You should move it to the Trash.", run this in Terminal to fix it: \`xattr -dr com.apple.quarantine "/Applications/seedit.app"\` then open the app again.`,
 ]);
 
 const winSection = section('Windows', [
