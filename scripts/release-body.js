@@ -2,6 +2,7 @@ import { execSync } from 'child_process';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { readFileSync, readdirSync } from 'fs';
+import fetch from 'node-fetch';
 
 const dirname = path.join(path.dirname(fileURLToPath(import.meta.url)));
 const conventionalChangelog = path.join(dirname, '..', 'node_modules', '.bin', 'conventional-changelog');
@@ -17,6 +18,34 @@ releaseChangelog = releaseChangelog.trim().replace(/\n\n+/g, '\n\n');
 const distDir = path.join(dirname, '..', 'dist');
 let files = [];
 try { files = readdirSync(distDir); } catch {}
+
+// In CI finalization, dist is empty. Prefer GitHub release assets when available.
+const getReleaseAssetNames = async () => {
+  try {
+    const token = process.env.GITHUB_TOKEN;
+    const repo = process.env.GITHUB_REPOSITORY; // owner/repo
+    const tag = process.env.GITHUB_REF_NAME || `v${version}`;
+    if (!token || !repo || !tag) return [];
+    const res = await fetch(`https://api.github.com/repos/${repo}/releases/tags/${tag}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        'User-Agent': 'seedit-release-notes',
+        'X-GitHub-Api-Version': '2022-11-28',
+        Accept: 'application/vnd.github+json',
+      },
+    });
+    if (!res.ok) return [];
+    const data = await res.json();
+    return (data.assets || []).map((a) => a.name).filter(Boolean);
+  } catch (e) {
+    return [];
+  }
+};
+
+const remoteFiles = await getReleaseAssetNames();
+if (remoteFiles.length) {
+  files = remoteFiles;
+}
 
 const linkTo = (file) => `https://github.com/plebbit/seedit/releases/download/v${version}/${file}`;
 const has = (s, sub) => s.toLowerCase().includes(sub);
@@ -77,7 +106,8 @@ const downloads = [macSection, winSection, linuxSection, androidSection, htmlSec
 const releaseBody = `This version improves desktop performance and adds native builds.
 
 - Web app: https://seedit.app
-- Decentralized web app: https://seedit.eth (only works on [Brave Browser](https://brave.com/) or via [IPFS Companion](https://docs.ipfs.tech/install/ipfs-companion/#prerequisites))
+- Decentralized web app via IPFS/IPNS gateways (works on any browser): [seedit.eth.limo](https://seedit.eth.limo), [seedit.eth.link](https://seedit.eth.link), [dweb.link/ipfs.io](https://dweb.link/ipns/seedit.eth)
+- Decentralized web app via IPFS node you run: https://seedit.eth (works on [Brave Browser](https://brave.com/) or use [IPFS Companion](https://docs.ipfs.tech/install/ipfs-companion/#prerequisites))
 
 ## Downloads
 
