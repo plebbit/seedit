@@ -1,6 +1,6 @@
 {
   "name": "Seedit",
-  "version": "0.5.8",
+  "version": "0.5.9",
   "description": "A GUI for plebbit similar to old.reddit",
   "author": "Plebbit Labs",
   "type": "module",
@@ -74,6 +74,12 @@
     "electron:build:linux": "yarn build && yarn build:preload && electron-rebuild && electron-builder build --publish never -l",
     "electron:build:windows": "yarn build && yarn build:preload && yarn electron-rebuild && electron-builder build --publish never -w",
     "electron:build:mac": "yarn build && yarn build:preload && yarn electron-rebuild && electron-builder build --publish never -m",
+    "electron:build:mac:arm64": "cross-env SEEDIT_BUILD_ARCH=arm64 yarn build && yarn build:preload && yarn electron-rebuild && electron-builder build --publish never -m --arm64",
+    "electron:build:mac:x64": "cross-env SEEDIT_BUILD_ARCH=x64 yarn build && yarn build:preload && yarn electron-rebuild && electron-builder build --publish never -m --x64",
+    "electron:build:windows:arm64": "cross-env SEEDIT_BUILD_ARCH=arm64 yarn build && yarn build:preload && yarn electron-rebuild && electron-builder build --publish never -w --arm64",
+    "electron:build:windows:x64": "cross-env SEEDIT_BUILD_ARCH=x64 yarn build && yarn build:preload && yarn electron-rebuild && electron-builder build --publish never -w --x64",
+    "electron:build:linux:arm64": "cross-env SEEDIT_BUILD_ARCH=arm64 yarn build && yarn build:preload && electron-rebuild && electron-builder build --publish never -l --arm64",
+    "electron:build:linux:x64": "cross-env SEEDIT_BUILD_ARCH=x64 yarn build && yarn build:preload && electron-rebuild && electron-builder build --publish never -l --x64",
     "electron:before": "yarn electron-rebuild && yarn electron:before:download-ipfs && yarn electron:before:delete-data",
     "electron:before:download-ipfs": "node electron/download-ipfs",
     "electron:before:delete-data": "rimraf .plebbit",
@@ -163,7 +169,8 @@
     "mac": {
       "target": "dmg",
       "category": "public.app-category.social-networking",
-      "type": "distribution"
+      "type": "distribution",
+      "identity": null
     },
     "win": {
       "target": [

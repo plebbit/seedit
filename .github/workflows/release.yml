@@ -11,6 +11,10 @@ on:
 
 jobs:
   linux:
+    strategy:
+      fail-fast: false
+      matrix:
+        arch: [x64, arm64]
     runs-on: ubuntu-22.04
     permissions:
       contents: write
@@ -31,8 +35,12 @@ jobs:
         run: node electron/download-ipfs && sudo chmod +x bin/linux/ipfs
       - name: Build React app (with Node v22)
         run: CI='' NODE_ENV=production yarn build
-      - name: Build Electron app for Linux (with Node v22)
-        run: yarn electron:build:linux
+      - name: Build Electron app for Linux (arm64)
+        if: ${{ matrix.arch == 'arm64' }}
+        run: yarn electron:build:linux:arm64
+      - name: Build Electron app for Linux (x64)
+        if: ${{ matrix.arch == 'x64' }}
+        run: yarn electron:build:linux:x64
       - name: List dist directory
         run: ls dist
 
@@ -41,10 +49,10 @@ jobs:
         run: node scripts/release-body > release-body.txt
       - uses: ncipollo/release-action@v1
         with:
-          artifacts: 'dist/seedit*.AppImage,dist/seedit-html*.zip'
+          artifacts: 'dist/seedit*.AppImage,dist/seedit*-arm64.AppImage,dist/seedit-html*.zip'
           token: ${{ secrets.GITHUB_TOKEN }}
           replacesArtifacts: true
-          bodyFile: "release-body.txt"
+          omitBody: true
           allowUpdates: true
 
   mac:
@@ -69,10 +77,11 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: 22
+      - name: Setup Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
 
-      # install missing dep for sqlite
-      - run: python3 -m ensurepip
-      - run: pip install setuptools
       - name: Install dependencies (with Node v22)
         run: yarn install --frozen-lockfile --ignore-engines
       # make sure the ipfs executable is executable
@@ -81,7 +90,14 @@ jobs:
       - name: Build React app (with Node v22)
         run: CI='' NODE_ENV=production yarn build
       - name: Build Electron app for Mac (with Node v22)
-        run: yarn electron:build:mac
+        env:
+          CSC_IDENTITY_AUTO_DISCOVERY: 'false'
+        run: |
+          if [ "${{ matrix.arch }}" = "arm64" ]; then
+            yarn electron:build:mac:arm64
+          else
+            yarn electron:build:mac:x64
+          fi
       - name: List dist directory
         run: ls dist
 
@@ -90,10 +106,10 @@ jobs:
         run: node scripts/release-body > release-body.txt
       - uses: ncipollo/release-action@v1
         with:
-          artifacts: 'dist/seedit*.dmg'
+          artifacts: 'dist/seedit*.dmg,dist/seedit*-arm64.dmg'
           token: ${{ secrets.GITHUB_TOKEN }}
           replacesArtifacts: true
-          bodyFile: "release-body.txt"
+          omitBody: true
           allowUpdates: true
 
   windows:
@@ -114,7 +130,7 @@ jobs:
         run: yarn install --frozen-lockfile --network-timeout 100000 --network-concurrency 1
       - name: Build React app (with Node v22)
         run: npx cross-env NODE_ENV=production yarn build
-      - name: Build Electron app for Windows (with Node v22)
+      - name: Build Electron app for Windows (x64)
         run: yarn electron:build:windows
       - name: List dist directory
         run: dir dist
@@ -127,7 +143,7 @@ jobs:
           artifacts: 'dist/seedit*.exe'
           token: ${{ secrets.GITHUB_TOKEN }}
           replacesArtifacts: true
-          bodyFile: "release-body.txt"
+          omitBody: true
           allowUpdates: true
 
   android:
@@ -181,5 +197,31 @@ jobs:
           artifacts: 'dist/seedit*.apk'
           token: ${{ secrets.GITHUB_TOKEN }}
           replacesArtifacts: true
-          bodyFile: "release-body.txt"
+          omitBody: true
           allowUpdates: true
+
+  finalize-release:
+    runs-on: ubuntu-22.04
+    needs: [linux, mac, windows, android]
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: Setup Node.js v22
+        uses: actions/setup-node@v2
+        with:
+          node-version: 22
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile --ignore-engines
+      - name: Generate final release body from GitHub assets
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+          GITHUB_REF_NAME: ${{ github.ref_name }}
+        run: node scripts/release-body > release-body.txt
+      - name: Update release body only
+        uses: ncipollo/release-action@v1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          allowUpdates: true
+          bodyFile: "release-body.txt"

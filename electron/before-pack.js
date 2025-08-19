@@ -19,11 +19,26 @@ const ipfsClientLinuxPath = path.join(ipfsClientsPath, 'linux');
 
 // official kubo download links https://docs.ipfs.tech/install/command-line/#install-official-binary-distributions
 const ipfsClientVersion = '0.32.1';
-const ipfsClientWindowsUrl = `https://dist.ipfs.io/kubo/v${ipfsClientVersion}/kubo_v${ipfsClientVersion}_windows-amd64.zip`;
-// Choose proper mac binary by builder architecture to avoid Rosetta on Apple Silicon
-const macArch = process.arch === 'arm64' ? 'arm64' : 'amd64';
-const ipfsClientMacUrl = `https://dist.ipfs.io/kubo/v${ipfsClientVersion}/kubo_v${ipfsClientVersion}_darwin-${macArch}.tar.gz`;
-const ipfsClientLinuxUrl = `https://dist.ipfs.io/kubo/v${ipfsClientVersion}/kubo_v${ipfsClientVersion}_linux-amd64.tar.gz`;
+
+// Resolve desired build arch: allow overriding via env (so cross-arch builds pick correct binary)
+const resolveBuildArch = () => {
+  const envArch = process.env.SEEDIT_BUILD_ARCH;
+  if (envArch === 'arm64' || envArch === 'x64') return envArch;
+  // fallback to host arch
+  if (process.arch === 'arm64') return 'arm64';
+  return 'x64';
+};
+
+const toKuboArch = (arch) => (arch === 'arm64' ? 'arm64' : 'amd64');
+
+const getKuboUrl = (platform) => {
+  const arch = toKuboArch(resolveBuildArch());
+  if (platform === 'win32') return `https://dist.ipfs.io/kubo/v${ipfsClientVersion}/kubo_v${ipfsClientVersion}_windows-${arch}.zip`;
+  if (platform === 'darwin') return `https://dist.ipfs.io/kubo/v${ipfsClientVersion}/kubo_v${ipfsClientVersion}_darwin-${arch}.tar.gz`;
+  if (platform === 'linux') return `https://dist.ipfs.io/kubo/v${ipfsClientVersion}/kubo_v${ipfsClientVersion}_linux-${arch}.tar.gz`;
+  // default to linux
+  return `https://dist.ipfs.io/kubo/v${ipfsClientVersion}/kubo_v${ipfsClientVersion}_linux-${arch}.tar.gz`;
+};
 
 const downloadWithProgress = (url) =>
   new Promise((resolve, reject) => {
@@ -138,22 +153,17 @@ const downloadAndExtract = async (url, destinationPath) => {
 
 export const downloadIpfsClients = async () => {
   const platform = process.platform;
-  console.log(`Starting IPFS client download for platform: ${platform}`);
-  switch (platform) {
-    case 'win32':
-      await downloadAndExtract(ipfsClientWindowsUrl, ipfsClientWindowsPath);
-      break;
-    case 'darwin':
-      await downloadAndExtract(ipfsClientMacUrl, ipfsClientMacPath);
-      break;
-    case 'linux':
-      await downloadAndExtract(ipfsClientLinuxUrl, ipfsClientLinuxPath);
-      break;
-    default:
-      console.warn(`Unknown platform: ${platform}, downloading all IPFS clients`);
-      await downloadAndExtract(ipfsClientWindowsUrl, ipfsClientWindowsPath);
-      await downloadAndExtract(ipfsClientMacUrl, ipfsClientMacPath);
-      await downloadAndExtract(ipfsClientLinuxUrl, ipfsClientLinuxPath);
+  console.log(`Starting IPFS client download for platform: ${platform}, targetArch: ${resolveBuildArch()}`);
+  const url = getKuboUrl(platform);
+  if (platform === 'win32') {
+    await downloadAndExtract(url, ipfsClientWindowsPath);
+  } else if (platform === 'darwin') {
+    await downloadAndExtract(url, ipfsClientMacPath);
+  } else if (platform === 'linux') {
+    await downloadAndExtract(url, ipfsClientLinuxPath);
+  } else {
+    console.warn(`Unknown platform: ${platform}, defaulting to linux path`);
+    await downloadAndExtract(url, ipfsClientLinuxPath);
   }
 };
 
