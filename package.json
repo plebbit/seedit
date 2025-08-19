@@ -169,7 +169,8 @@
     "mac": {
       "target": "dmg",
       "category": "public.app-category.social-networking",
-      "type": "distribution"
+      "type": "distribution",
+      "identity": null
     },
     "win": {
       "target": [

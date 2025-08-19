@@ -90,7 +90,14 @@ jobs:
       - name: Build React app (with Node v22)
         run: CI='' NODE_ENV=production yarn build
       - name: Build Electron app for Mac (with Node v22)
-        run: yarn electron:build:mac
+        env:
+          CSC_IDENTITY_AUTO_DISCOVERY: 'false'
+        run: |
+          if [ "${{ matrix.arch }}" = "arm64" ]; then
+            yarn electron:build:mac:arm64
+          else
+            yarn electron:build:mac:x64
+          fi
       - name: List dist directory
         run: ls dist
 
@@ -106,10 +113,6 @@ jobs:
           allowUpdates: true
 
   windows:
-    strategy:
-      fail-fast: false
-      matrix:
-        arch: [x64, arm64]
     runs-on: windows-2022
     permissions:
       contents: write
@@ -127,12 +130,8 @@ jobs:
         run: yarn install --frozen-lockfile --network-timeout 100000 --network-concurrency 1
       - name: Build React app (with Node v22)
         run: npx cross-env NODE_ENV=production yarn build
-      - name: Build Electron app for Windows (arm64)
-        if: ${{ matrix.arch == 'arm64' }}
-        run: yarn electron:build:windows:arm64
       - name: Build Electron app for Windows (x64)
-        if: ${{ matrix.arch == 'x64' }}
-        run: yarn electron:build:windows:x64
+        run: yarn electron:build:windows
       - name: List dist directory
         run: dir dist
 
@@ -141,7 +140,7 @@ jobs:
         run: node scripts/release-body > release-body.txt
       - uses: ncipollo/release-action@v1
         with:
-          artifacts: 'dist/seedit*.exe,dist/seedit*-arm64.exe'
+          artifacts: 'dist/seedit*.exe'
           token: ${{ secrets.GITHUB_TOKEN }}
           replacesArtifacts: true
           omitBody: true

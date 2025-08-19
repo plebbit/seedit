@@ -53,9 +53,7 @@ const macSection = section('macOS', [
 ]);
 
 const winSection = section('Windows', [
-  winSetupArm && `- Installer (arm64): [Download EXE](${linkTo(winSetupArm)})`,
   winSetupX64 && `- Installer (x64): [Download EXE](${linkTo(winSetupX64)})`,
-  winPortableArm && `- Portable (arm64): [Download EXE](${linkTo(winPortableArm)})`,
   winPortableX64 && `- Portable (x64): [Download EXE](${linkTo(winPortableX64)})`,
 ]);
 
