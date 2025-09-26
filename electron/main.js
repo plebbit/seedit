@@ -38,6 +38,9 @@ if (isLinux && !process.env.SEEDIT_NO_ENV_SANITIZE) {
   delete process.env.LD_PRELOAD;
 }
 
+// Keep a global Tray reference to prevent GC removing the tray icon
+let tray;
+
 // Determine __filename and dirname for ESM
 const __filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(__filename);
@@ -346,7 +349,12 @@ const createMainWindow = () => {
     if (!trayDisabled) {
       // tray
       const trayIconPath = path.join(dirname, '..', isDev ? 'public' : 'build', 'electron-tray-icon.png');
-      const tray = new Tray(trayIconPath);
+      if (tray) {
+        try {
+          tray.destroy();
+        } catch (e) {}
+      }
+      tray = new Tray(trayIconPath);
       tray.setToolTip('seedit');
       const trayMenu = Menu.buildFromTemplate([
         {
