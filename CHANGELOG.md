@@ -1,4 +1,18 @@
-## [0.5.9](https://github.com/plebbit/seedit/compare/v0.5.8...v0.5.9) (2025-08-17)
+## [0.5.10](https://github.com/plebbit/seedit/compare/v0.5.9...v0.5.10) (2025-09-26)
+
+
+### Bug Fixes
+
+* **electron:** keep module-scoped Tray ref and destroy before reassign ([a33d708](https://github.com/plebbit/seedit/commit/a33d708e069c59bc52f6fc76c2e0291e27280c66))
+
+
+### Performance Improvements
+
+* **linux:** avoid GTK mixups by sanitizing env and skipping tray on Wayland ([e5e6aa4](https://github.com/plebbit/seedit/commit/e5e6aa4bf73c973b305e954f83ba168b195f4683))
+
+
+
+## [0.5.9](https://github.com/plebbit/seedit/compare/v0.5.8...v0.5.9) (2025-08-19)
 
 
 ### Bug Fixes
