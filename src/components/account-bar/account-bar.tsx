@@ -54,12 +54,8 @@ const AccountBar = () => {
     [searchBarRef, accountSelectButtonRef, accountDropdownRef, accountdropdownItemsRef],
   );
 
-  const [isFocused, setIsFocused] = useState(false);
-  useEffect(() => {
-    if (searchVisible) {
-      setIsFocused(true);
-    }
-  }, [searchVisible]);
+  // Derive focus intent from visibility to avoid effect; SearchBar will handle actual focusing
+  const shouldFocusSearch = searchVisible;
 
   useEffect(() => {
     document.addEventListener('mousedown', handleClickOutside);
@@ -120,7 +116,7 @@ const AccountBar = () => {
         </span>
         {searchVisible && (
           <div className={styles.searchBar} ref={searchBarRef}>
-            <SearchBar isFocused={isFocused} />
+            <SearchBar isFocused={shouldFocusSearch} />
           </div>
         )}
       </span>

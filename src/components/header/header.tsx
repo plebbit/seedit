@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react';
 import { Link, useLocation, useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useAccount, useAccountComment, useSubplebbit } from '@plebbit/plebbit-react-hooks';
@@ -95,18 +94,9 @@ const SortItems = () => {
   const isInModView = isModView(location.pathname);
   const isInDomainView = isDomainView(location.pathname);
   const isInSubplebbitView = isSubplebbitView(location.pathname, params);
-  const [selectedSortType, setSelectedSortType] = useState(params.sortType || '/hot');
+  // Derive selection directly from route instead of syncing via an effect
+  const selectedSortType = isInHomeAboutView || isInSubplebbitAboutView || isInPostPageAboutView ? '' : params.sortType || 'hot';
   const timeFilterName = params.timeFilterName;
-
-  useEffect(() => {
-    if (isInHomeAboutView || isInSubplebbitAboutView || isInPostPageAboutView) {
-      setSelectedSortType('');
-    } else if (params.sortType) {
-      setSelectedSortType(params.sortType);
-    } else {
-      setSelectedSortType('hot');
-    }
-  }, [params.sortType, isInHomeAboutView, isInSubplebbitAboutView, isInPostPageAboutView]);
 
   return sortTypes.map((sortType, index) => {
     let sortLink = isInSubplebbitView
@@ -123,9 +113,7 @@ const SortItems = () => {
     }
     return (
       <li key={sortType} className={selectedSortType === sortType ? styles.selected : styles.choice}>
-        <Link to={sortLink} onClick={() => setSelectedSortType(sortType)}>
-          {t(sortLabels[index])}
-        </Link>
+        <Link to={sortLink}>{t(sortLabels[index])}</Link>
       </li>
     );
   });
