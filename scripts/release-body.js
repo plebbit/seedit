@@ -85,6 +85,7 @@ const macSection = section('macOS', [
 const winSection = section('Windows', [
   winSetupX64 && `- Installer (x64): [Download EXE](${linkTo(winSetupX64)})`,
   winPortableX64 && `- Portable (x64): [Download EXE](${linkTo(winPortableX64)})`,
+  (win.length > 0) && `- If Windows shows "Windows protected your PC" (SmartScreen), click "More info" then "Run anyway". To permanently allow, right-click the .exe → Properties → check "Unblock", or run in PowerShell: \`Unblock-File -Path .\\path\\to\\file.exe\`.`,
 ]);
 
 const linuxSection = section('Linux', [
