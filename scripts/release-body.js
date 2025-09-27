@@ -65,9 +65,7 @@ const linuxX64 = linux.find(isX64);
 const macArm = mac.find(isArm);
 const macX64 = mac.find(isX64);
 
-const winSetupArm = win.find(f => has(f, 'setup') && isArm(f));
 const winSetupX64 = win.find(f => has(f, 'setup') && isX64(f));
-const winPortableArm = win.find(f => has(f, 'portable') && isArm(f));
 const winPortableX64 = win.find(f => has(f, 'portable') && isX64(f));
 
 // small section builder without push()
