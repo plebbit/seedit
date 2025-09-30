@@ -75,35 +75,33 @@ const IframeChallenge = ({ url, publication, closeModal }: IframeChallengeProps)
     }
   };
 
-  // Communicate theme to iframe when it loads or theme changes
+  // Send theme information to iframe via postMessage
+  const sendThemeToIframe = () => {
+    try {
+      iframeRef.current?.contentWindow?.postMessage(
+        {
+          type: 'plebbit-theme',
+          theme: theme,
+          source: 'plebbit-seedit',
+        },
+        '*',
+      );
+    } catch (error) {
+      console.warn('Could not send theme to iframe:', error);
+    }
+  };
+
+  // Handle iframe load event
+  const handleIframeLoad = () => {
+    sendThemeToIframe();
+  };
+
+  // Re-send theme to iframe when theme changes (synchronize with external iframe system)
   useEffect(() => {
     if (iframeRef.current && iframeUrl && !showConfirmation) {
-      const sendThemeToIframe = () => {
-        try {
-          // Try to send theme information to the iframe
-          iframeRef.current?.contentWindow?.postMessage(
-            {
-              type: 'plebbit-theme',
-              theme: theme,
-              source: 'plebbit-seedit',
-            },
-            '*',
-          );
-        } catch (error) {
-          // Silently fail if postMessage isn't supported or iframe isn't ready
-          console.warn('Could not send theme to iframe:', error);
-        }
-      };
-
-      // Send theme immediately if iframe is already loaded
-      if (iframeRef.current.contentDocument || iframeRef.current.contentWindow) {
-        sendThemeToIframe();
-      } else {
-        // Wait for iframe to load and then send theme
-        iframeRef.current.onload = sendThemeToIframe;
-      }
+      sendThemeToIframe();
     }
-  }, [theme, iframeUrl, showConfirmation]);
+  }, [theme]);
 
   return (
     <div className={styles.container}>
@@ -138,6 +136,7 @@ const IframeChallenge = ({ url, publication, closeModal }: IframeChallengeProps)
               ref={iframeRef}
               src={iframeUrl}
               sandbox='allow-scripts allow-forms allow-same-origin allow-popups allow-top-navigation-by-user-activation'
+              onLoad={handleIframeLoad}
               style={{
                 width: '100%',
                 height: '100%',
