@@ -19,6 +19,7 @@ const IframeChallenge = ({ url, publication, closeModal }: IframeChallengeProps)
   const [theme] = useTheme();
   const [showConfirmation, setShowConfirmation] = useState(true);
   const [iframeUrl, setIframeUrl] = useState<string>('');
+  const [iframeOrigin, setIframeOrigin] = useState<string>('');
   const iframeRef = useRef<HTMLIFrameElement>(null);
 
   const publicationType = getPublicationType(publication);
@@ -65,8 +66,9 @@ const IframeChallenge = ({ url, publication, closeModal }: IframeChallengeProps)
 
     // Validate that the final URL is well-formed
     try {
-      new URL(processedUrl);
-      setIframeUrl(processedUrl);
+      const validatedUrl = new URL(processedUrl);
+      setIframeUrl(validatedUrl.toString());
+      setIframeOrigin(validatedUrl.origin);
       setShowConfirmation(false);
     } catch (error) {
       console.error('Invalid URL constructed for iframe:', processedUrl, error);
@@ -77,14 +79,18 @@ const IframeChallenge = ({ url, publication, closeModal }: IframeChallengeProps)
 
   // Send theme information to iframe via postMessage
   const sendThemeToIframe = () => {
+    if (!iframeRef.current) {
+      return;
+    }
+
     try {
-      iframeRef.current?.contentWindow?.postMessage(
+      iframeRef.current.contentWindow?.postMessage(
         {
           type: 'plebbit-theme',
           theme: theme,
           source: 'plebbit-seedit',
         },
-        '*',
+        iframeOrigin,
       );
     } catch (error) {
       console.warn('Could not send theme to iframe:', error);
@@ -98,10 +104,10 @@ const IframeChallenge = ({ url, publication, closeModal }: IframeChallengeProps)
 
   // Re-send theme to iframe when theme changes (synchronize with external iframe system)
   useEffect(() => {
-    if (iframeRef.current && iframeUrl && !showConfirmation) {
+    if (iframeRef.current && iframeUrl && iframeOrigin && !showConfirmation) {
       sendThemeToIframe();
     }
-  }, [theme]);
+  }, [theme, iframeOrigin]);
 
   return (
     <div className={styles.container}>
