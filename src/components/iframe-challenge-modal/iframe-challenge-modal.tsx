@@ -1,8 +1,9 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { FloatingFocusManager, useClick, useDismiss, useFloating, useId, useInteractions, useRole } from '@floating-ui/react';
 import { useAccount } from '@plebbit/plebbit-react-hooks';
 import { useTranslation } from 'react-i18next';
 import useChallengesStore from '../../stores/use-challenges-store';
+import useTheme from '../../hooks/use-theme';
 import styles from '../challenge-modal/challenge-modal.module.css';
 import { getPublicationPreview, getPublicationType, getVotePreview } from '../../lib/utils/challenge-utils';
 
@@ -15,8 +16,10 @@ interface IframeChallengeProps {
 const IframeChallenge = ({ url, publication, closeModal }: IframeChallengeProps) => {
   const { t } = useTranslation();
   const account = useAccount();
+  const [theme] = useTheme();
   const [showConfirmation, setShowConfirmation] = useState(true);
   const [iframeUrl, setIframeUrl] = useState<string>('');
+  const iframeRef = useRef<HTMLIFrameElement>(null);
 
   const publicationType = getPublicationType(publication);
   const publicationContent = getPublicationPreview(publication);
@@ -34,12 +37,73 @@ const IframeChallenge = ({ url, publication, closeModal }: IframeChallengeProps)
   }, [closeModal]);
 
   const handleLoadIframe = () => {
-    // Replace {userAddress} placeholder with actual user address
+    // Validate and encode user address before URL substitution
     const userAddress = account?.author?.address || '';
-    const processedUrl = url.replace(/\{userAddress\}/g, userAddress);
-    setIframeUrl(processedUrl);
-    setShowConfirmation(false);
+
+    // Encode the user address for safe URL usage
+    const encodedAddress = encodeURIComponent(userAddress);
+
+    let processedUrl = url;
+
+    // Only replace {userAddress} placeholder if it exists in the URL
+    if (url.includes('{userAddress}')) {
+      if (!userAddress) {
+        // If no address is available, remove the placeholder (empty string)
+        processedUrl = url.replace(/\{userAddress\}/g, '');
+      } else {
+        processedUrl = url.replace(/\{userAddress\}/g, encodedAddress);
+      }
+    }
+
+    // Add theme parameter if the URL doesn't already have query parameters
+    if (!processedUrl.includes('?')) {
+      processedUrl += `?theme=${theme}`;
+    } else {
+      // If URL already has query parameters, append theme parameter
+      processedUrl += `&theme=${theme}`;
+    }
+
+    // Validate that the final URL is well-formed
+    try {
+      new URL(processedUrl);
+      setIframeUrl(processedUrl);
+      setShowConfirmation(false);
+    } catch (error) {
+      console.error('Invalid URL constructed for iframe:', processedUrl, error);
+      alert('Error: Invalid URL for authentication challenge');
+      closeModal();
+    }
   };
+
+  // Communicate theme to iframe when it loads or theme changes
+  useEffect(() => {
+    if (iframeRef.current && iframeUrl && !showConfirmation) {
+      const sendThemeToIframe = () => {
+        try {
+          // Try to send theme information to the iframe
+          iframeRef.current?.contentWindow?.postMessage(
+            {
+              type: 'plebbit-theme',
+              theme: theme,
+              source: 'plebbit-seedit',
+            },
+            '*',
+          );
+        } catch (error) {
+          // Silently fail if postMessage isn't supported or iframe isn't ready
+          console.warn('Could not send theme to iframe:', error);
+        }
+      };
+
+      // Send theme immediately if iframe is already loaded
+      if (iframeRef.current.contentDocument || iframeRef.current.contentWindow) {
+        sendThemeToIframe();
+      } else {
+        // Wait for iframe to load and then send theme
+        iframeRef.current.onload = sendThemeToIframe;
+      }
+    }
+  }, [theme, iframeUrl, showConfirmation]);
 
   return (
     <div className={styles.container}>
@@ -69,9 +133,11 @@ const IframeChallenge = ({ url, publication, closeModal }: IframeChallengeProps)
         </>
       ) : (
         <>
-          <div className={styles.challengeMediaWrapper} style={{ height: '400px', marginTop: '20px' }}>
+          <div className={styles.challengeMediaWrapper} style={{ height: '70vh', marginTop: '20px', maxHeight: '600px' }}>
             <iframe
+              ref={iframeRef}
               src={iframeUrl}
+              sandbox='allow-scripts allow-forms allow-same-origin allow-popups allow-top-navigation-by-user-activation'
               style={{
                 width: '100%',
                 height: '100%',
@@ -81,13 +147,13 @@ const IframeChallenge = ({ url, publication, closeModal }: IframeChallengeProps)
               title={t('challenge_iframe', { defaultValue: 'Challenge authentication' })}
             />
           </div>
-          <div className={styles.challengeFooter}>
-            <div style={{ fontSize: '12px', color: 'var(--text-secondary)', flex: 1 }}>
+          <div className={styles.challengeFooter} style={{ flexDirection: 'column', alignItems: 'flex-start', gap: '10px' }}>
+            <div style={{ fontSize: '12px', color: 'var(--text-secondary)', marginBottom: '10px' }}>
               {t('iframe_challenge_keep_open', { defaultValue: 'Complete authentication in the iframe above. Keep this window open until done.' })}
             </div>
-            <span className={styles.buttons}>
+            <div style={{ alignSelf: 'flex-end' }}>
               <button onClick={closeModal}>{t('close', { defaultValue: 'close' })}</button>
-            </span>
+            </div>
           </div>
         </>
       )}
