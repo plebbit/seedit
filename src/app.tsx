@@ -22,7 +22,6 @@ import SubplebbitSettings from './views/subplebbit-settings';
 import Subplebbits from './views/subplebbits';
 import AccountBar from './components/account-bar/';
 import ChallengeModal from './components/challenge-modal';
-import IframeChallengeModal from './components/iframe-challenge-modal';
 import Header from './components/header';
 import NotificationHandler from './components/notification-handler';
 import StickyHeader from './components/sticky-header';
@@ -37,7 +36,6 @@ const App = () => {
   const globalLayout = (
     <>
       <ChallengeModal />
-      <IframeChallengeModal />
       <NotificationHandler />
       <Outlet />
     </>
