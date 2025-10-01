@@ -218,7 +218,7 @@ const ChallengeContent = ({ challenge, iframeUrl, publication, closeModal }: Cha
         {showConfirmation ? (
           <>
             <div className={styles.challengeMediaWrapper}>
-              <div className={styles.challengeMedia} style={{ fontSize: '14px', textAlign: 'center', padding: '20px 0' }}>
+              <div className={`${styles.challengeMedia} ${styles.iframeChallengeWarning}`}>
                 {t('iframe_challenge_warning', {
                   defaultValue: 'This challenge requires loading an external website. Loading it will reveal your IP address to that website. Do you want to continue?',
                 })}
@@ -233,26 +233,21 @@ const ChallengeContent = ({ challenge, iframeUrl, publication, closeModal }: Cha
           </>
         ) : (
           <>
-            <div className={styles.challengeMediaWrapper} style={{ height: '70vh', marginTop: '20px', maxHeight: '600px' }}>
+            <div className={`${styles.challengeMediaWrapper} ${styles.iframeWrapper}`}>
               <iframe
                 ref={iframeRef}
                 src={iframeUrlState}
                 sandbox='allow-scripts allow-forms allow-same-origin allow-popups allow-top-navigation-by-user-activation'
                 onLoad={handleIframeLoad}
-                style={{
-                  width: '100%',
-                  height: '100%',
-                  border: '1px solid var(--border-text)',
-                  backgroundColor: 'white',
-                }}
+                className={styles.iframe}
                 title={t('challenge_iframe', { defaultValue: 'Challenge authentication' })}
               />
             </div>
-            <div className={styles.challengeFooter} style={{ flexDirection: 'column', alignItems: 'flex-start', gap: '10px' }}>
-              <div style={{ fontSize: '12px', color: 'var(--text-secondary)', marginBottom: '10px' }}>
+            <div className={`${styles.challengeFooter} ${styles.iframeFooter}`}>
+              <div className={styles.iframeInstruction}>
                 {t('iframe_challenge_keep_open', { defaultValue: 'Complete authentication in the iframe above. Keep this window open until done.' })}
               </div>
-              <div style={{ alignSelf: 'flex-end' }}>
+              <div className={styles.iframeCloseButton}>
                 <button onClick={closeModal}>{t('close', { defaultValue: 'close' })}</button>
               </div>
             </div>
