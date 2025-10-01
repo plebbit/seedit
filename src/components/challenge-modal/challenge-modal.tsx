@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { FloatingFocusManager, useClick, useDismiss, useFloating, useId, useInteractions, useRole } from '@floating-ui/react';
 import { Challenge as ChallengeType, useComment, useAccount } from '@plebbit/plebbit-react-hooks';
 import { useTranslation } from 'react-i18next';
@@ -122,6 +122,8 @@ const ChallengeContent = ({ challenge, iframeUrl, publication, closeModal }: Cha
     const publicationContent = getPublicationPreview(publication);
     const votePreview = getVotePreview(publication);
     const { shortSubplebbitAddress, subplebbitAddress, parentCid } = publication || {};
+    const parentComment = useComment({ commentCid: parentCid, onlyIfCached: true });
+    const parentAddress = parentComment?.author?.shortAddress || '';
 
     useEffect(() => {
       const onEscapeKey = (e: KeyboardEvent) => {
@@ -173,8 +175,7 @@ const ChallengeContent = ({ challenge, iframeUrl, publication, closeModal }: Cha
       }
     };
 
-    // Send theme information to iframe via postMessage
-    const sendThemeToIframe = () => {
+    const sendThemeToIframe = useCallback(() => {
       if (!iframeRef.current) {
         return;
       }
@@ -191,7 +192,7 @@ const ChallengeContent = ({ challenge, iframeUrl, publication, closeModal }: Cha
       } catch (error) {
         console.warn('Could not send theme to iframe:', error);
       }
-    };
+    }, [iframeOrigin, theme]);
 
     // Handle iframe load event
     const handleIframeLoad = () => {
@@ -203,7 +204,7 @@ const ChallengeContent = ({ challenge, iframeUrl, publication, closeModal }: Cha
       if (iframeRef.current && iframeUrlState && iframeOrigin && !showConfirmation) {
         sendThemeToIframe();
       }
-    }, [theme, iframeOrigin]);
+    }, [iframeOrigin, iframeRef, iframeUrlState, sendThemeToIframe, showConfirmation]);
 
     return (
       <>
@@ -211,7 +212,7 @@ const ChallengeContent = ({ challenge, iframeUrl, publication, closeModal }: Cha
         <div className={styles.subTitle}>
           {publicationType === 'vote' && votePreview + ' '}
           {parentCid
-            ? t('challenge_for_reply', { parentAddress: '', publicationContent, interpolation: { escapeValue: false } })
+            ? t('challenge_for_reply', { parentAddress, publicationContent, interpolation: { escapeValue: false } })
             : t('challenge_for_post', { publicationContent, interpolation: { escapeValue: false } })}
         </div>
 
