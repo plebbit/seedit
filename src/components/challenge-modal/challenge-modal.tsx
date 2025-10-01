@@ -266,7 +266,7 @@ const ChallengeModal = () => {
 
   // Determine which modal should be open
   const isRegularChallengeOpen = !!challenges.length;
-  const isIframeChallengeOpen = iframeModalOpen && iframeModalUrl;
+  const isIframeChallengeOpen = iframeModalOpen && !!iframeModalUrl;
 
   const isOpen = isRegularChallengeOpen || isIframeChallengeOpen;
   const closeModal = () => {
