@@ -8,7 +8,7 @@
 }
 
 .container {
-  width: min(90vw, 800px);
+  width: 400px;
   max-height: 90vh;
   color: var(--text);
   font-size: large;
@@ -62,7 +62,7 @@
 
 .buttons {
   position: absolute;
-  left: 20px;
+  left: 0;
 }
 
 .challengeFooter button {
