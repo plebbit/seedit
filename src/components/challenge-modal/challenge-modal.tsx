@@ -100,7 +100,7 @@ const RegularChallengeContent = ({ challenge, closeModal }: RegularChallengeCont
   return (
     <>
       <ChallengeHeader
-        publicationType={publicationType}
+        publicationType={publicationType ?? null}
         votePreview={votePreview}
         parentCid={parentCid}
         parentAddress={parentAddress}
@@ -233,7 +233,7 @@ const IframeChallengeContent = ({ iframeUrl, publication, closeModal }: IframeCh
   return (
     <>
       <ChallengeHeader
-        publicationType={publicationType}
+        publicationType={publicationType ?? null}
         votePreview={votePreview}
         parentCid={parentCid}
         parentAddress={parentAddress}
