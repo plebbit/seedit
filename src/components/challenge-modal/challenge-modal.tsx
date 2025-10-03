@@ -284,7 +284,7 @@ const IframeChallengeContent = ({ iframeUrl, publication, closeModal }: IframeCh
           </div>
           <div className={`${styles.challengeFooter} ${styles.iframeFooter}`}>
             <div className={styles.iframeInstruction}>
-              {t('iframe_challenge_keep_open', { defaultValue: 'Complete authentication in the iframe above. Keep this window open until done.' })}
+              {t('iframe_challenge_keep_open', { defaultValue: 'Complete the challenge in the box above. Keep this window open until done.' })}
             </div>
             <div className={styles.iframeCloseButton}>
               <button onClick={closeModal}>{t('close', { defaultValue: 'close' })}</button>
