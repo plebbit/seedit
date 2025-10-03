@@ -176,24 +176,37 @@ const IframeChallengeContent = ({ iframeUrl, publication, closeModal }: IframeCh
   }, [closeModal]);
 
   const handleLoadIframe = () => {
-    const userAddress = account?.author?.address || '';
-    const encodedAddress = encodeURIComponent(userAddress);
+    const rawUserAddress = account?.author?.address?.trim();
+    const requiresUserAddress = iframeUrl.includes('{userAddress}');
 
-    let processedUrl = iframeUrl;
-
-    if (iframeUrl.includes('{userAddress}')) {
-      processedUrl = userAddress ? iframeUrl.replace(/\{userAddress\}/g, encodedAddress) : iframeUrl.replace(/\{userAddress\}/g, '');
+    if (requiresUserAddress && !rawUserAddress) {
+      alert(
+        t('iframe_challenge_missing_user_address', {
+          defaultValue: 'Error: Unable to load challenge without your address. Please sign in and try again.',
+        }),
+      );
+      return;
     }
 
-    processedUrl += processedUrl.includes('?') ? `&theme=${theme}` : `?theme=${theme}`;
+    const encodedAddress = rawUserAddress ? encodeURIComponent(rawUserAddress) : undefined;
+    const replacedUrl = requiresUserAddress && encodedAddress ? iframeUrl.replace(/\{userAddress\}/g, encodedAddress) : iframeUrl;
 
     try {
-      const validatedUrl = new URL(processedUrl);
-      setIframeUrl(validatedUrl.toString());
+      const validatedUrl = new URL(replacedUrl);
+
+      if (validatedUrl.protocol !== 'https:') {
+        throw new Error('Only HTTPS iframe challenges are supported');
+      }
+
+      validatedUrl.pathname = validatedUrl.pathname.replace(/\/{2,}/g, '/');
+      validatedUrl.searchParams.set('theme', theme);
+
+      const finalUrl = validatedUrl.toString();
+      setIframeUrl(finalUrl);
       setIframeOrigin(validatedUrl.origin);
       setShowConfirmation(false);
     } catch (error) {
-      console.error('Invalid URL constructed for iframe:', processedUrl, error);
+      console.error('Invalid URL constructed for iframe:', replacedUrl, error);
       alert('Error: Invalid URL for authentication challenge');
       closeModal();
     }
@@ -263,7 +276,7 @@ const IframeChallengeContent = ({ iframeUrl, publication, closeModal }: IframeCh
             <iframe
               ref={iframeRef}
               src={iframeUrlState}
-              sandbox='allow-scripts allow-forms allow-same-origin allow-popups allow-top-navigation-by-user-activation'
+              sandbox='allow-scripts allow-forms allow-popups allow-top-navigation-by-user-activation'
               onLoad={handleIframeLoad}
               className={styles.iframe}
               title={t('challenge_iframe', { defaultValue: 'Challenge authentication' })}
