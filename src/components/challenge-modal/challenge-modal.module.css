@@ -58,6 +58,7 @@
   align-items: center;
   margin-top: 20px;
   position: relative;
+  padding-bottom: 12px;
 }
 
 .buttons {
@@ -127,6 +128,7 @@
 .iframeFooter {
   flex-direction: column;
   align-items: flex-start;
+  padding-bottom: 0;
   gap: 10px;
 }
 

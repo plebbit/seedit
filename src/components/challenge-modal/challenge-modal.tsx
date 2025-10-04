@@ -206,7 +206,7 @@ const IframeChallengeContent = ({ iframeUrl, publication, closeModal }: IframeCh
       setIframeOrigin(validatedUrl.origin);
       setShowConfirmation(false);
     } catch (error) {
-      console.error('Invalid URL constructed for iframe:', replacedUrl, error);
+      console.error('Invalid iframe challenge URL', { error });
       alert('Error: Invalid URL for authentication challenge');
       closeModal();
     }
