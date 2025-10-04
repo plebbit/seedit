@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import { useDropzone } from 'react-dropzone';
 import { Trans, useTranslation } from 'react-i18next';
 import { Link, useNavigate, useParams } from 'react-router-dom';
@@ -314,12 +314,8 @@ const SubplebbitAddressField = () => {
   const [isInputAddressFocused, setIsInputAddressFocused] = useState(false);
   const [activeDropdownIndex, setActiveDropdownIndex] = useState<number>(-1);
 
-  // show list of random subplebbits only once when the component mounts
-  const [randomSubplebbitSuggestions, setRandomSubplebbitSuggestions] = useState<string[]>([]);
-  useEffect(() => {
-    const generatedSubplebbits = getRandomSubplebbits(defaultSubplebbitAddresses, 10);
-    setRandomSubplebbitSuggestions(generatedSubplebbits);
-  }, [defaultSubplebbitAddresses]);
+  // Generate random suggestions derived from defaults without an effect
+  const randomSubplebbitSuggestions = useMemo(() => getRandomSubplebbits(defaultSubplebbitAddresses, 10), [defaultSubplebbitAddresses]);
   const listSource = subscriptions?.length > 5 ? subscriptions : randomSubplebbitSuggestions;
 
   const handleKeyDown = useCallback(
@@ -353,10 +349,11 @@ const SubplebbitAddressField = () => {
     setActiveDropdownIndex(-1);
   };
 
-  const getRandomSubplebbits = (addresses: string[], count: number) => {
-    let shuffled = addresses.sort(() => 0.5 - Math.random());
+  function getRandomSubplebbits(addresses: string[], count: number) {
+    // Non-mutating shuffle (copy first), avoids side effects
+    const shuffled = [...addresses].sort(() => 0.5 - Math.random());
     return shuffled.slice(0, count);
-  };
+  }
 
   const defaultSubplebbitsDropdown = (
     <ul className={styles.dropdown}>

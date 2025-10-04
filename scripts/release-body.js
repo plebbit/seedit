@@ -65,9 +65,7 @@ const linuxX64 = linux.find(isX64);
 const macArm = mac.find(isArm);
 const macX64 = mac.find(isX64);
 
-const winSetupArm = win.find(f => has(f, 'setup') && isArm(f));
 const winSetupX64 = win.find(f => has(f, 'setup') && isX64(f));
-const winPortableArm = win.find(f => has(f, 'portable') && isArm(f));
 const winPortableX64 = win.find(f => has(f, 'portable') && isX64(f));
 
 // small section builder without push()
@@ -85,6 +83,7 @@ const macSection = section('macOS', [
 const winSection = section('Windows', [
   winSetupX64 && `- Installer (x64): [Download EXE](${linkTo(winSetupX64)})`,
   winPortableX64 && `- Portable (x64): [Download EXE](${linkTo(winPortableX64)})`,
+  (win.length > 0) && `- If Windows shows "Windows protected your PC" (SmartScreen), click "More info" then "Run anyway". To permanently allow, right-click the .exe → Properties → check "Unblock", or run in PowerShell: \`Unblock-File -Path .\\path\\to\\file.exe\`.`,
 ]);
 
 const linuxSection = section('Linux', [
