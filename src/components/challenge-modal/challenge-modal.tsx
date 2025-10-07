@@ -79,17 +79,17 @@ const RegularChallengeContent = ({ challenge, closeModal }: RegularChallengeCont
     });
   };
 
-  const onSubmit = () => {
+  const onSubmit = useCallback(() => {
     challenge[1].publishChallengeAnswers(answers);
     setAnswers([]);
     closeModal();
-  };
+  }, [challenge, answers, closeModal]);
 
-  const onIframeClose = () => {
+  const onIframeClose = useCallback(() => {
     // Submit empty string as answer for iframe challenges
     challenge[1].publishChallengeAnswers(['']);
     closeModal();
-  };
+  }, [challenge, closeModal]);
 
   const onEnterKey = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key !== 'Enter') return;
@@ -182,7 +182,7 @@ const RegularChallengeContent = ({ challenge, closeModal }: RegularChallengeCont
     };
     document.addEventListener('keydown', onEscapeKey);
     return () => document.removeEventListener('keydown', onEscapeKey);
-  }, [isIframeChallenge]);
+  }, [isIframeChallenge, onIframeClose, closeModal]);
 
   const subplebbit = shortSubplebbitAddress || subplebbitAddress;
 
