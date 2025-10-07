@@ -232,7 +232,7 @@ const RegularChallengeContent = ({ challenge, closeModal }: RegularChallengeCont
                 {t('iframe_challenge_keep_open', { defaultValue: 'Complete the challenge in the box above. Keep this window open until done.' })}
               </div>
               <div className={styles.iframeCloseButton}>
-                <button onClick={onIframeClose}>{t('close', { defaultValue: 'close' })}</button>
+                <button onClick={onIframeClose}>{t('done', { defaultValue: 'done' })}</button>
               </div>
             </div>
           </>
