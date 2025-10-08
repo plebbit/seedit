@@ -120,13 +120,14 @@ export const getCommentMediaInfo = (comment: Comment): CommentMediaInfo | undefi
   }
   const linkInfo = comment.link ? getLinkMediaInfo(comment.link) : undefined;
   if (linkInfo) {
+    const linkInfoClone: CommentMediaInfo = { ...linkInfo };
     if (isThumbnailDomainBlacklisted(comment.link)) {
-      linkInfo.thumbnail = undefined;
-      linkInfo.patternThumbnailUrl = undefined;
+      linkInfoClone.thumbnail = undefined;
+      linkInfoClone.patternThumbnailUrl = undefined;
     } else if (comment.thumbnailUrl) {
-      linkInfo.thumbnail = comment.thumbnailUrl;
+      linkInfoClone.thumbnail = comment.thumbnailUrl;
     }
-    return linkInfo;
+    return linkInfoClone;
   }
   return;
 };
