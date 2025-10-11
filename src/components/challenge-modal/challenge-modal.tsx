@@ -65,7 +65,7 @@ const RegularChallengeContent = ({ challenge, closeModal }: RegularChallengeCont
   const currentChallenge = challenges?.[currentChallengeIndex];
   const isTextChallenge = currentChallenge?.type === 'text/plain';
   const isImageChallenge = currentChallenge?.type === 'image/png';
-  const isIframeChallenge = currentChallenge?.type === 'text/url-iframe';
+  const isIframeChallenge = currentChallenge?.type === 'url/iframe';
 
   const isValidAnswer = (index: number) => {
     return !!answers[index] && answers[index].trim() !== '';
@@ -221,7 +221,7 @@ const RegularChallengeContent = ({ challenge, closeModal }: RegularChallengeCont
               <iframe
                 ref={iframeRef}
                 src={iframeUrlState}
-                sandbox='allow-scripts allow-forms allow-popups allow-top-navigation-by-user-activation'
+                sandbox='allow-scripts allow-forms allow-popups allow-same-origin allow-top-navigation-by-user-activation'
                 onLoad={handleIframeLoad}
                 className={styles.iframe}
                 title={t('challenge_iframe', { defaultValue: 'Challenge authentication' })}
