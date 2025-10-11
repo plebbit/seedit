@@ -65,7 +65,7 @@ const RegularChallengeContent = ({ challenge, closeModal }: RegularChallengeCont
   const currentChallenge = challenges?.[currentChallengeIndex];
   const isTextChallenge = currentChallenge?.type === 'text/plain';
   const isImageChallenge = currentChallenge?.type === 'image/png';
-  const isIframeChallenge = currentChallenge?.type === 'text/url-iframe';
+  const isIframeChallenge = currentChallenge?.type === 'url/iframe';
 
   const isValidAnswer = (index: number) => {
     return !!answers[index] && answers[index].trim() !== '';
