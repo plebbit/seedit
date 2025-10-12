@@ -582,7 +582,7 @@ const SubplebbitSettings = () => {
       )}
       {isReadOnly && !userIsOwnerOrAdmin && <div className={styles.infobar}>{t('owner_settings_notice')}</div>}
       {isOffline && <div className={styles.infobar}>{offlineTitle}</div>}
-      {isChallengesReadOnly && <div className={styles.infobar}>cannot read or write anti-spam challenges, community node isn't reachable.</div>}
+      {isChallengesReadOnly && <div className={styles.infobar}>cannot read or write challenges, community node isn't reachable.</div>}
       <Title isReadOnly={isReadOnly} />
       <Description isReadOnly={isReadOnly} />
       {!isInCreateSubplebbitView && <Address isReadOnly={isReadOnly} />}

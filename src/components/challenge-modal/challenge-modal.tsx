@@ -26,7 +26,6 @@ const ChallengeHeader = ({ publicationType, votePreview, parentCid, parentAddres
 
   return (
     <>
-      {/* TODO: update translation to "Anti-spam challenge from p/{{subplebbit}}" */}
       <div className={styles.title}>{t('challenge_from', { subplebbit })}</div>
       <div className={styles.subTitle}>
         {publicationType === 'vote' && votePreview + ' '}
@@ -226,7 +225,7 @@ const RegularChallengeContent = ({ challenge, closeModal }: RegularChallengeCont
                 {t('iframe_challenge_open_confirmation', {
                   subplebbit,
                   url: decodeURIComponent(getChallengeUrl()),
-                  defaultValue: `p/${subplebbit} anti-spam challenge wants to open ${decodeURIComponent(getChallengeUrl())}`,
+                  defaultValue: `p/${subplebbit} challenge wants to open ${decodeURIComponent(getChallengeUrl())}`,
                 })}
               </div>
             </div>
