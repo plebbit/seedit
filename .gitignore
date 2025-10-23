@@ -159,11 +159,8 @@ yarn-debug.log*
 yarn-error.log*
 
 .vscode
+.cursor
+.playwright-mcp
 
 # YoYo AI version control directory
 .yoyo/
-
-# cursor 
-.cursor
-
-.playwright-mcp
