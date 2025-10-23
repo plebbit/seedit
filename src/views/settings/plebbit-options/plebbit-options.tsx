@@ -200,7 +200,7 @@ const PlebbitOptions = () => {
 
     const mediaIpfsGatewayUrl = mediaIpfsGatewayUrlRef.current?.value.trim() || undefined;
 
-    const pubsubHttpClientsOptions = pubsubProvidersRef.current?.value
+    const pubsubKuboRpcClientsOptions = pubsubProvidersRef.current?.value
       .split('\n')
       .map((url) => url.trim())
       .filter((url) => url !== '');
@@ -242,7 +242,7 @@ const PlebbitOptions = () => {
 
     const newPlebbitOptions: any = {};
     if (ipfsGatewayUrls?.length) newPlebbitOptions.ipfsGatewayUrls = ipfsGatewayUrls;
-    if (pubsubHttpClientsOptions?.length) newPlebbitOptions.pubsubHttpClientsOptions = pubsubHttpClientsOptions;
+    if (pubsubKuboRpcClientsOptions?.length) newPlebbitOptions.pubsubKuboRpcClientsOptions = pubsubKuboRpcClientsOptions;
     if (httpRoutersOptions?.length) newPlebbitOptions.httpRoutersOptions = httpRoutersOptions;
     if (plebbitRpcClientsOptions) newPlebbitOptions.plebbitRpcClientsOptions = plebbitRpcClientsOptions;
     if (dataPath) newPlebbitOptions.dataPath = dataPath;
