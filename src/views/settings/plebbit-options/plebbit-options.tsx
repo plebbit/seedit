@@ -46,8 +46,8 @@ const IPFSGatewaysSettings = ({ ipfsGatewayUrlsRef, mediaIpfsGatewayUrlRef }: Se
 const PubsubProvidersSettings = ({ pubsubProvidersRef }: SettingsProps) => {
   const account = useAccount();
   const { plebbitOptions } = account || {};
-  const { pubsubHttpClientsOptions } = plebbitOptions || {};
-  const pubsubProvidersDefaultValue = pubsubHttpClientsOptions?.join('\n');
+  const { pubsubKuboRpcClientsOptions } = plebbitOptions || {};
+  const pubsubProvidersDefaultValue = pubsubKuboRpcClientsOptions?.join('\n');
 
   return (
     <div className={styles.pubsubProvidersSettings}>
@@ -57,7 +57,7 @@ const PubsubProvidersSettings = ({ pubsubProvidersRef }: SettingsProps) => {
         autoCorrect='off'
         autoComplete='off'
         spellCheck='false'
-        rows={pubsubHttpClientsOptions?.length || 3}
+        rows={pubsubKuboRpcClientsOptions?.length || 3}
       />
     </div>
   );
