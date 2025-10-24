@@ -101,6 +101,25 @@ const RegularChallengeContent = ({ challenge, closeModal }: RegularChallengeCont
     }
   };
 
+  // Get URL for iframe challenge confirmation (hostname only for whitelisted sites, full URL otherwise)
+  const getChallengeUrl = () => {
+    try {
+      const iframeUrl = currentChallenge?.challenge;
+      if (!iframeUrl) return '';
+      const url = new URL(iframeUrl);
+
+      // Whitelist mintpass.org - only show hostname for trusted sites
+      if (url.hostname === 'mintpass.org') {
+        return url.hostname;
+      }
+
+      // For other sites, show full URL for transparency
+      return url.href;
+    } catch {
+      return '';
+    }
+  };
+
   const handleLoadIframe = () => {
     const iframeUrl = currentChallenge?.challenge;
     if (!iframeUrl) return;
@@ -203,14 +222,16 @@ const RegularChallengeContent = ({ challenge, closeModal }: RegularChallengeCont
           <>
             <div className={styles.challengeMediaWrapper}>
               <div className={`${styles.challengeMedia} ${styles.iframeChallengeWarning}`}>
-                {t('iframe_challenge_warning', {
-                  defaultValue: 'This challenge requires loading an external website. Loading it will reveal your IP address to that website. Do you want to continue?',
+                {t('iframe_challenge_open_confirmation', {
+                  subplebbit,
+                  url: decodeURIComponent(getChallengeUrl()),
+                  defaultValue: `p/${subplebbit} challenge wants to open ${decodeURIComponent(getChallengeUrl())}`,
                 })}
               </div>
             </div>
             <div className={styles.challengeFooter}>
               <span className={styles.buttons}>
-                <button onClick={handleLoadIframe}>{t('load_external_resource', { defaultValue: 'load' })}</button>
+                <button onClick={handleLoadIframe}>{t('open', { defaultValue: 'open' })}</button>
                 <button onClick={closeModal}>{t('cancel')}</button>
               </span>
             </div>

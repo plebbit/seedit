@@ -110,6 +110,8 @@
   font-size: 14px;
   text-align: center;
   padding: 20px 0;
+  word-break: break-word;
+  overflow-wrap: break-word;
 }
 
 .iframeWrapper {
