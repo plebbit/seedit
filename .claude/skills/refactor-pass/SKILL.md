@@ -3,6 +3,8 @@ name: refactor-pass
 description: Perform a refactor pass focused on simplicity after recent changes. Use when the user asks for a refactor/cleanup pass, simplification, dead-code removal, or says "refactor pass".
 ---
 
+<!-- Generated from .agents/skills/refactor-pass/SKILL.md; run yarn ai-workflow:sync. -->
+
 # Refactor Pass
 
 ## Workflow
@@ -21,7 +23,7 @@ description: Perform a refactor pass focused on simplicity after recent changes.
 
 3. **Verify** — run all three checks:
    ```bash
-   yarn build && yarn lint && yarn type-check
+   yarn agent:verify
    ```
 
 4. **Optional suggestions** — identify abstractions or reusable patterns only if they clearly improve clarity. Keep suggestions brief; don't refactor speculatively.
@@ -33,7 +35,7 @@ When refactoring, watch for these anti-patterns from AGENTS.md:
 | Anti-pattern | Refactor to |
 |---|---|
 | `useState` for shared state | Zustand store in `src/stores/` |
-| `useEffect` for data fetching | bitsocial-react-hooks (`useComment`, `useFeed`, etc.) |
+| `useEffect` for data fetching | @bitsocial/bitsocial-react-hooks (`useComment`, `useFeed`, etc.) |
 | `useEffect` to sync derived state | Calculate during render |
 | Copy-pasted logic across components | Custom hook in `src/hooks/` |
 | Boolean flag soup (`isLoading`, `isError`, `isSuccess`) | State machine in Zustand |
@@ -44,5 +46,5 @@ When refactoring, watch for these anti-patterns from AGENTS.md:
 - Before removing or simplifying code whose purpose is unclear, check `git log`/`git blame` for why it exists; if you still can't explain it, leave it alone and flag it instead (Chesterton's Fence)
 - Don't change behavior — refactors must be semantically equivalent
 - Don't introduce new dependencies
-- Format edited files with `npx oxfmt <file>` after changes
+- Format edited files with `corepack yarn exec oxfmt <file>` after changes
 - If the build/lint/type-check fails after refactoring, fix it before finishing

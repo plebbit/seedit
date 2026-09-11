@@ -3,6 +3,8 @@ name: inspect-elements
 description: Resolve on-screen seedit DOM elements to React source files, line numbers, component names, and ownership stacks using the app's dev-only element-source helpers and playwright-cli. Use when an agent needs to inspect a page element, map a snapshot ref to source code, confirm which component rendered a node, or follow up after $profile-browsing finds a rerender hotspot and needs file-level attribution.
 ---
 
+<!-- Generated from .agents/skills/inspect-elements/SKILL.md; run yarn ai-workflow:sync. -->
+
 # Inspect Elements
 
 Use this skill to jump from a concrete DOM node in the running seedit app to the React file and component stack that produced it.
@@ -34,7 +36,7 @@ The result includes:
 
 ```bash
 ./scripts/pw-session.sh open inspect https://seedit.localhost
-playwright-cli -s=inspect goto https://seedit.localhost/all
+playwright-cli -s=inspect goto https://seedit.localhost/#/s/all
 playwright-cli -s=inspect eval "window.__ELEMENT_SOURCE__?.ready ?? false"
 playwright-cli -s=inspect snapshot
 ```
@@ -75,6 +77,12 @@ playwright-cli -s=inspect eval "async el => { const info = await window.__ELEMEN
 
 Use `formattedStack` when you need a short, readable trace for the final report.
 
+Close the session immediately after collecting the needed source evidence, including when resolution fails:
+
+```bash
+./scripts/pw-session.sh close inspect
+```
+
 ## Profiling follow-up
 
 When `$profile-browsing` reports a hot route or rerender-heavy area:
@@ -93,4 +101,4 @@ This is a complement to `react-scan`, not a replacement. `react-scan` tells you 
 - If `source` is null but `stack` exists, use the first useful stack frame rather than guessing.
 - If both `source` and `stack` are empty, report that the node could not be resolved and pick a nearby parent element instead.
 - If the browser slot is held, retry after the owning workflow finishes or block on `./scripts/pw-session.sh open --wait ...`; do not bypass the lock or use `close-all`/`kill-all`.
-- Close the exact named session in a finally-style cleanup with `./scripts/pw-session.sh close inspect`.
+- Close the exact named session in a finally-style cleanup.

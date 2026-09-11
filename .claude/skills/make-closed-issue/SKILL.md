@@ -1,7 +1,10 @@
 ---
 name: make-closed-issue
 description: Create a GitHub issue from recent changes, commit only relevant diffs on a short-lived task branch, push that branch, and open a PR into master that will close the issue on merge. Use when the user says "make closed issue", "close issue", or wants to create a tracked, already-resolved GitHub issue for completed work.
+disable-model-invocation: true
 ---
+
+<!-- Generated from .agents/skills/make-closed-issue/SKILL.md; run yarn ai-workflow:sync. -->
 
 # Make Closed Issue
 
@@ -72,7 +75,7 @@ git diff --cached
 
 Identify which files relate to the work done in this conversation. Only relevant changes get committed. Unrelated files must be excluded from staging.
 
-**Important**: `git add -p` and `git add -i` are not available (interactive mode unsupported). If a file has mixed relevant/irrelevant changes, include the entire file and note the caveat to the user.
+For mixed relevant/unrelated edits, stage only the intended hunks using an index patch (`git apply --cached`) or supported interactive staging. Inspect `git diff --cached` before committing. Never include unrelated changes merely because the file is shared.
 
 ### 5. Generate issue title and description
 

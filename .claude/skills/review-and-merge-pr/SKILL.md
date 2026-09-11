@@ -3,11 +3,14 @@ name: review-and-merge-pr
 description: Review an open GitHub pull request, inspect feedback from Cursor Bugbot, CodeRabbit, CI, and human reviewers, decide which findings are valid, implement fixes on the PR branch, and merge the PR into master when it is ready. Use when the user says "check the PR", "address bugbot comments", "handle CodeRabbit feedback", "review PR feedback", or "merge this PR".
 ---
 
+<!-- Generated from .agents/skills/review-and-merge-pr/SKILL.md; run yarn ai-workflow:sync. -->
+
 # Review And Merge Pr
 
 ## Overview
 
 Use this skill after a feature branch already has an open PR into `master`.
+A request to inspect a PR authorizes review only. Apply fixes, push, comment, or merge only when those actions are included in the user’s request; reuse existing authorization without another approval pause.
 Stay on the PR branch, treat review bots as input rather than authority, and only merge once the branch is verified and the remaining comments are either fixed, explicitly deferred, or explicitly declined with a reason.
 Do not let repeated nitpicks, speculative future-work comments, or low-value bot suggestions keep the PR open once they have been triaged as non-blocking.
 Finish the workflow by cleaning up local git state yourself; do not assume GitHub, `gh pr merge --delete-branch`, or GitHub Desktop removed the local feature branch or any local `pr/<number>` alias.
@@ -88,9 +91,9 @@ git push
 
 After code changes, follow repo verification rules from `AGENTS.md`:
 
-- run `yarn build`, `yarn lint`, and `yarn type-check`
-- run `yarn test` after adding or changing tests
-- run the repo-standard verification commands after React UI logic changes, plus browser checks for visible UI changes
+- run `corepack yarn agent:verify` once for the final code state
+- run affected tests with `corepack yarn exec vitest run --maxWorkers=2 <paths>` after adding or changing tests
+- run `yarn doctor` after React UI logic changes
 - use `./scripts/pw-session.sh` for UI/visual changes across `chrome`, `firefox`, and `webkit` sequentially, plus a mobile viewport flow in each engine when relevant
 
 ### 5. Report back on the PR before merging
@@ -123,7 +126,7 @@ gh pr merge <pr-number> --repo bitsocialnet/seedit --squash --delete-branch
 
 ### 7. Clean up local state after merge
 
-After the PR is merged:
+After the PR is merged, verify its merged head matches the local branch tip and that no later commits, uncommitted edits, or active worktree users would be removed. Skip cleanup and report retained work when those checks fail. Remove a task worktree only after leaving it, without force. Then clean up the exact verified branch:
 
 ```bash
 git switch master

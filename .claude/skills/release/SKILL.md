@@ -1,86 +1,49 @@
 ---
 name: release
-description: Automate a full seedit release by analyzing commits, updating the release body, bumping the version, regenerating the changelog, and finalizing the git tag. Use when the user says "release", "new version", "cut a release", "prepare release", or provides a version number to ship.
+description: Prepare or ship a seedit release by updating its description, version, and changelog. Use when the user asks for release work; preview stays read-only and publication follows the requested scope.
+disable-model-invocation: true
 ---
+
+<!-- Generated from .agents/skills/release/SKILL.md; run yarn ai-workflow:sync. -->
 
 # Release
 
-End-to-end release automation for seedit.
+Determine whether the user wants a preview, local preparation, or a release to ship. Honor explicit limits such as no commit or no push. Reuse authorization already given; do not insert an extra approval pause before an authorized action. If the version or bump is unspecified, infer it only when the requested changes make it unambiguous; otherwise ask for that choice.
 
-## Usage
+## Inspect and preview
 
-The user provides a version bump (`patch`, `minor`, `major`, or explicit `x.y.z`).
-If omitted, ask which bump level they want.
+1. Inspect `git status`, the branch, `package.json`, `scripts/release-body.js`, and `.github/workflows/release.yml`. Preserve unrelated edits and staged changes.
+2. Identify the latest applicable version tag with `git describe --tags --match 'v*' --abbrev=0` and inspect `git log --oneline <tag>..HEAD`. If no applicable tag exists, inspect release history before choosing a comparison range. Report when there are no unreleased commits.
+3. Propose the version and one-sentence user-facing description. Use `patch`, `minor`, `major`, or the explicit requested `x.y.z`; do not silently pick a different release version.
 
-## Workflow
+A preview or dry run ends here with proposed content and the files that would change. It does not edit files, run `yarn changelog`, install dependencies, commit, tag, or push.
 
-Copy this checklist and track progress:
+## Prepare locally
 
-```text
-Release Progress:
-- [ ] Step 1: Analyze commits
-- [ ] Step 2: Write release body one-liner
-- [ ] Step 3: Bump version in package.json
-- [ ] Step 4: Generate changelog
-- [ ] Step 5: Commit, tag, push
-```
+1. Edit only `oneLinerDescription` in `scripts/release-body.js`: start with "This version..." or "This release...", lead with the most useful visible changes, keep one sentence, and end with a period.
+2. Update the version in `package.json`, then run `corepack yarn install` to synchronize `yarn.lock`.
+3. Run `corepack yarn changelog` to regenerate `CHANGELOG.md` from Conventional Commits. Inspect the resulting diff and follow the repository's required checks for the final change once. Reuse verification evidence for unchanged code.
+4. Review exactly the intended release files and any required generated context changes. Preserve build output and unrelated modifications outside the release commit.
 
-### Step 1 — Analyze commits
+Seedit's GitHub release workflow runs on `v*` tags, builds platform artifacts, signs the release manifest in CI, and finalizes the release body from uploaded assets. Never print or copy release signing secrets.
 
-```bash
-git tag --sort=-creatordate | head -1
-```
+## Finalize within the requested scope
 
-Then list commits since that tag:
+Only commit or tag when that action is authorized. Stage the reviewed release hunks, including any changed lockfile or required generated docs, and inspect `git diff --cached`. Never use `git add -A` or include unrelated staged work. For mixed files, use a selective index patch. Preserve and restore unrelated staging when excluding it from the release commit.
 
 ```bash
-git log --oneline <tag>..HEAD
-```
-
-If there are no new commits, stop.
-
-### Step 2 — Write the release body one-liner
-
-Edit `oneLinerDescription` in `scripts/release-body.js`.
-
-Rules:
-- Start with "This version..." or "This release..."
-- One sentence, no bullets
-- Lead with the biggest features or fixes
-- Keep it user-facing
-- End with a period
-
-### Step 3 — Bump version
-
-Read `package.json`, compute the new version from the bump level, and update the `"version"` field.
-
-| Bump | Effect |
-|------|--------|
-| `patch` | `0.6.7` → `0.6.8` |
-| `minor` | `0.6.7` → `0.7.0` |
-| `major` | `0.6.7` → `1.0.0` |
-| `x.y.z` | Set exactly |
-
-### Step 4 — Generate changelog
-
-```bash
-yarn changelog
-```
-
-This regenerates `CHANGELOG.md` from conventional commits.
-
-### Step 5 — Commit, tag, push
-
-```bash
-git add -A
+git add package.json scripts/release-body.js CHANGELOG.md
+# Include other reviewed release files only when changed.
+git diff --cached
 git commit -m "chore(release): v<version>"
-git push
 git tag v<version>
-git push --tags
 ```
 
-If CI is configured to publish release artifacts on tags, pushing the tag will trigger it.
+Confirm the tag does not already exist and points to the intended release commit. When shipping/pushing is authorized, push only the intended branch and tag refs:
 
-## Dry-run mode
+```bash
+git push origin HEAD
+git push origin refs/tags/v<version>
+```
 
-If the user says "dry run" or "preview", execute Steps 1–4 but skip the git operations in Step 5. Print a summary of what would be committed so the user can review it first.
+A pushed release tag triggers publication; a local preparation request does not authorize it. With a no-push instruction, stop after the authorized local work and report the local commit/tag state.

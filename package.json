@@ -98,7 +98,10 @@
     "knip:full": "knip --no-progress --no-exit-code",
     "doctor": "react-doctor . -y",
     "doctor:score": "react-doctor . --score -y",
-    "doctor:verbose": "react-doctor . --verbose -y"
+    "doctor:verbose": "react-doctor . --verbose -y",
+    "ai-workflow:sync": "node scripts/sync-ai-workflow.mjs",
+    "ai-workflow:test": "node --test --test-concurrency=1 scripts/__tests__/*.node-test.mjs",
+    "agent:verify": "node scripts/agent-verify.mjs"
   },
   "browserslist": {
     "production": [
@@ -134,6 +137,7 @@
     "conventional-changelog-cli": "4.1.0",
     "cordova-res": "0.15.4",
     "cross-env": "7.0.3",
+    "cross-spawn": "7.0.6",
     "crypto-browserify": "3.12.1",
     "cz-conventional-changelog": "3.3.0",
     "electron": "39.8.10",
@@ -142,6 +146,7 @@
     "glob": "10.5.0",
     "husky": "4.3.8",
     "isomorphic-fetch": "3.0.0",
+    "js-yaml": "4.3.1",
     "jsdom": "28.1.0",
     "knip": "6.17.0",
     "lint-staged": "12.3.8",
@@ -151,6 +156,7 @@
     "react-doctor": "0.8.1",
     "react-grab": "0.1.48",
     "react-scan": "0.5.3",
+    "smol-toml": "1.6.1",
     "stream-browserify": "3.0.0",
     "tar": "7.5.20",
     "vite": "8.0.16",

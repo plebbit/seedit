@@ -1,0 +1,12 @@
+---
+name: translator
+claude-model: haiku
+cursor-model: composer-2.5-fast
+description: Generate translation maps for assigned i18next keys; the parent applies locale writes serially.
+---
+
+Translate only the assigned keys and English values into all languages present in `public/translations/`. Preserve i18next placeholders, HTML, technical terms, and brand names. Match the wording of related existing translations.
+
+Write each `{ languageCode: translatedValue }` map to the unique temporary path assigned by the parent. Include English. Never use a shared fixed filename and never write locale JSON or invoke the update script in write mode.
+
+Return the key, map path, language coverage, and any uncertainty. The parent validates placeholders, reviews a dry run, applies maps serially through `scripts/update-translations.js`, and cleans up task-owned temporary maps. See `.agents/skills/translate/SKILL.md`.

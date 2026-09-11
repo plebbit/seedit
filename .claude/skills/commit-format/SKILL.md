@@ -1,55 +1,18 @@
 ---
 name: commit-format
-description: Formats GitHub commit messages following Conventional Commits style with title and optional description. Use when proposing or implementing code changes, writing commit messages, or when the user asks for commit message suggestions.
+description: Format a Conventional Commit title and optional body when the user asks for commit wording or a commit is being created.
 ---
+
+<!-- Generated from .agents/skills/commit-format/SKILL.md; run yarn ai-workflow:sync. -->
 
 # Commit Format
 
-## Template (copy this structure exactly)
+Use `type(scope): short description`, with a concise human-readable scope. Types: `fix`, `feat`, `perf`, `refactor`, `docs`, `chore`; use `perf` for performance changes. Add a short body only when it explains something the title cannot.
 
-Title only — raw markdown:
-```
-> **Commit title:** `type: short description here`
-```
+For a chat suggestion:
 
-Title with description — raw markdown:
-```
-> **Commit title:** `type: short description here`
+> **Commit title:** `type(scope): short description`
 >
-> Description sentence one. Description sentence two with `codeRef()` references.
-```
+> Optional explanation with `code` references.
 
-## Rules
-
-1. Use markdown blockquote (`>` prefix) — no exceptions
-2. Title goes after `**Commit title:**` wrapped in exactly ONE backtick pair
-3. NEVER put backticks inside the title — the whole title is one code span, no nesting
-4. Description uses backticks for code references — title does NOT
-5. Conventional Commits types: `fix:`, `feat:`, `perf:`, `refactor:`, `docs:`, `chore:`
-6. Use `perf:` for performance optimizations (not `fix:`)
-7. Description: 2-3 sentences about the solution, no bullet points, only if title isn't enough
-
-## Wrong vs Right
-
-❌ WRONG — missing backticks around title:
-```
-> **Commit title:** refactor: rename from /queue to /modqueue
-```
-
-❌ WRONG — backticks around individual words instead of whole title:
-```
-> **Commit title:** refactor: rename from `/queue` to `/modqueue`
-```
-
-✅ CORRECT — entire title in one backtick pair, no backticks inside:
-```
-> **Commit title:** `refactor: rename from /queue to /modqueue`
-```
-
-## Self-check
-
-Before outputting, verify:
-- [ ] Lines start with `>`
-- [ ] Title is wrapped in exactly one backtick pair: `` `like this` ``
-- [ ] No backticks inside the title text
-- [ ] Code references in description (not title) use backticks
+Wrap the entire title in one code span, without nested backticks. Do not append a commit suggestion to unrelated answers unless requested. These formatting instructions do not authorize a commit or push.

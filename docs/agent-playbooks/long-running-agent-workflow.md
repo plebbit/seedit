@@ -1,6 +1,6 @@
 # Long-Running Agent Workflow
 
-Use this playbook when a task is likely to span multiple sessions, handoffs, or spawned agents.
+Use this playbook when work needs durable state across sessions or handoffs. A short task or a single delegated slice does not require these artifacts.
 
 ## Goals
 
@@ -32,10 +32,10 @@ Prefer JSON for the feature list so agents can update a small number of fields w
 2. Read `progress.md`.
 3. Read `feature-list.json`.
 4. Run `git log --oneline -20`.
-5. Run `./scripts/agent-init.sh --smoke`.
+5. For application behavior work only, use an existing task-worktree server or run `./scripts/agent-init.sh`. Skip server startup for docs/tooling tasks.
 6. Choose exactly one highest-priority item that is still `pending`, `in_progress`, or `blocked`.
 
-If the smoke step fails, fix the broken baseline before implementing a new feature slice.
+If a relevant readiness check fails, establish whether the failure affects the task. Report unrelated baseline failures; do not expand scope automatically. Record and clean up any server started for the task.
 
 ## Session Rules
 
@@ -61,7 +61,7 @@ Use a short structure like:
 
 - Item: F003
 - Summary: Updated the browser-check flow to use the shared init/bootstrap path.
-- Files: `.cursor/agents/browser-check.md`, `.codex/agents/browser-check.toml`
-- Verification: `yarn build`, `yarn lint`, `yarn type-check`
+- Files: `.agents/roles/browser-check.md` and generated harness agent files
+- Verification: `yarn agent:verify`
 - Next: Run the smoke flow and update the task-board status.
 ```

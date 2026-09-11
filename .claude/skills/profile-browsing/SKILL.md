@@ -1,162 +1,39 @@
 ---
 name: profile-browsing
-description: Profile app performance while browsing, collecting Web Vitals and React rerender data via react-scan. Orchestrates sequential profiler subagents via playwright-cli to capture navigation timing, long tasks, layout shifts, LCP, React commit counts, render bursts, and per-component render data. Use when profiling browsing performance, finding bottlenecks, diagnosing excessive rerenders, or auditing page performance.
+description: Profile seedit navigation, feed rendering, and interaction using sequential playwright-cli sessions, browser timings, traces, and available React evidence.
 ---
+
+<!-- Generated from .agents/skills/profile-browsing/SKILL.md; run yarn ai-workflow:sync. -->
 
 # Profile Browsing Performance
 
-Two-layer profiling: browser-level symptoms (Web Vitals, long tasks, scroll jank) and React-level diagnosis (commit counts, render bursts, per-component render data from react-scan). Each profiler subagent runs in its own browser session and context window.
+Define the requested routes, interactions, and performance concern. Verify the current routes in `src/app.tsx` and hash routing in `src/index.tsx`; use the supplied app URL or `https://seedit.localhost`.
 
-## Prerequisites
+## Coordinate the run
 
-- Dev server running at https://seedit.localhost (`yarn start` via Portless)
-- `playwright-cli` installed (`npm install -g @playwright/cli@latest`)
+- Reuse a compatible dev server in this worktree. If a server is needed, the parent starts one in an owned terminal, records its process, waits for readiness, and stops it after the run. Never stop unrelated Vite processes. A profiling child does not manage servers.
+- Use one browser session machine-wide through `scripts/pw-session.sh`. Profile Chrome first; apply `scripts/pw-throttle.sh <session> mid` or `low` for a low-spec pass when relevant. Keep browser engines and heavy verification sequential.
+- A small flow can be profiled directly. For larger work, assign sequential batches of two to four routes to the `profiler` role in `.agents/roles/profiler.md`, with a unique session name and explicit acceptance criteria. Wait for each child to close its session before another browser task starts.
 
-**IMPORTANT:** The orchestrator (you) is responsible for ensuring exactly ONE dev server is running. Profiler subagents must NEVER start a dev server themselves.
+Choose actual populated routes and content from the current app; do not invent community addresses. Example batches:
 
-### react-scan (already configured)
+| Routes | Focus |
+|---|---|
+| `/#/`, `/#/s/all` | Subscribed and all-community feeds |
+| `/#/s/<community-address>`, `/#/s/<community-address>/new` | Community sorting and switching |
+| `/#/s/<community-address>/comments/<comment-cid>` | Post, comments, and media expansion |
+| `/#/settings`, `/#/communities` | Local controls and community navigation |
 
-The app has `react-scan` set up in `src/lib/react-scan.ts`, imported in the entry file `src/index.tsx`. In dev mode it:
-- Highlights rerendering components visually (toolbar + overlay)
-- Tracks per-component render counts and times internally
-- Exposes `window.__getReactScanReport()` for programmatic collection
+## Evidence available in this checkout
 
-The profiler's `addInitScript` sets `window.__PROFILING__ = true` before the app loads, which tells react-scan to disable its toolbar and sounds during automated runs.
+`src/lib/react-scan.ts` dynamically loads react-scan and exposes its raw `getReport` as `window.__getReactScanReport`. It does not expose an app-owned plain-object `onRender` collector or `__resetReactScanReport`. The installed react-scan report may be empty; `JSON.stringify(new Map())` also returns `{}` regardless of entries. Check the report type and data before drawing a conclusion. An empty report means unavailable evidence, not zero rerenders or good performance.
 
-No additional setup needed — react-scan is already a devDependency and imported in the entry file.
+The profiler sets `window.__PROFILING__ = true` before page scripts to hide react-scan's toolbar. Use browser timing and tracing when component attribution is unavailable. Do not add an app collector solely to satisfy an assumed workflow. `$inspect-elements` can resolve a visible DOM element to source when specific attribution is needed.
 
-## Step 0: Ensure Dev Server is Running
+## Compare and report
 
-Before spawning any profiler subagents, verify exactly one dev server is available:
+Keep initial document loading separate from same-document hash navigation. Hash changes can retain the document and its counters; compare phase deltas or explicitly reload for an independent cold-load measurement. Measure readiness of the actual feed/control rather than only the browser load event. Record missing peer content or network failures that limit the comparison.
 
-```bash
-# Check if the dev server is reachable
-curl -sf https://seedit.localhost -o /dev/null && echo "OK" || echo "NOT RUNNING"
-```
+Report the device/throttle settings, URL and flow, observed timings, long tasks or layout shifts, trace/screenshot paths, and concrete symptoms. Separate observations from inferred causes. Rerender count alone does not justify memoization or a refactor; establish measurable cost first. Run the same narrow flow after a fix to compare results.
 
-- If **OK**: proceed to Step 1.
-- If **NOT RUNNING**: start one instance with `yarn start` (backgrounded), then poll until it responds. Do NOT start more than one.
-- If a dev server is already running on a different port (check `ps aux | grep vite`), reuse it — do not start another.
-
-## Step 1: Define Route Batches
-
-Split routes into batches of 2–4 for sequential profiling. Give every batch a short task-specific session name so unrelated profiling runs cannot collide.
-
-**Default batches** (adjust boards as needed):
-
-| Batch | Session | Routes | Focus |
-|-------|---------|--------|-------|
-| 1 | `prof-1` | `/all`, `/all/catalog` | Multi-board feed + catalog |
-| 2 | `prof-2` | `/biz`, `/biz/catalog` | Single board feed + catalog |
-| 3 | `prof-3` | `/pol`, `/pol/catalog`, `/g`, `/g/catalog` | Board switching (feed reloads) |
-
-Keep batches balanced. Add thread views (`/:boardIdentifier/thread/:cid`) as needed.
-
-## Step 2: Spawn Profiler Subagents
-
-Read the profiler subagent definition at `.claude/agents/profiler.md`. Then spawn one `profiler` Task per batch **in parallel** (single message, multiple Task calls):
-
-```
-For each batch, create a Task:
-  subagent_type: "profiler"
-  prompt: |
-    Session name: "prof-N"
-    Routes to profile: /route1, /route2, ...
-    Any non-default app URL or extra profiling constraints
-```
-
-Spawn up to 4 subagents simultaneously. Each opens its own browser session, navigates routes, scrolls, collects both Web Vitals and react-scan data per route, and returns a structured issues list.
-
-Wait for each profiler to close its browser and return results before spawning the next batch. Never run profiler or browser-check subagents concurrently: competing browser sessions both saturate the machine and invalidate timing measurements.
-
-## Step 3: Merge Results
-
-Collect structured output from each subagent and merge:
-
-1. Concatenate all Critical / Warning / React Rerenders / Scroll Jank / Info items
-2. Combine per-view summary tables into one
-3. Merge react-scan component data across routes (same component appearing in multiple routes = sum counts)
-4. Deduplicate shared issues (e.g., same slow resource across routes)
-5. Sort by severity (Critical first)
-
-## Step 4: Final Report
-
-```markdown
-## Performance Profile Results
-
-### Critical
-- [metric]: [value] at [route] — [what likely needs fixing]
-
-### Warning
-- [metric]: [value] at [route] — [what likely needs fixing]
-
-### React Rerenders
-- [route]: [N] commits during load, [M] during scroll — [likely cause]
-- Render bursts detected at [routes] — suggests cascading state updates
-- Top rerendering components (react-scan):
-  - [ComponentName]: [total count] renders across [routes], [time]ms total
-  - [ComponentName]: [total count] renders across [routes], [time]ms total
-
-### Scroll Jank
-- [route]: [N] long tasks during scroll (max [X]ms), [M] React commits — [likely cause]
-
-### Info
-- [observations]
-
-### Per-View Summary
-| View | Nav (ms) | Long Tasks | CLS | LCP (ms) | Commits | Scroll Commits | Bursts | Top Component |
-|------|----------|-----------|-----|-----------|---------|----------------|--------|---------------|
-| /all | ... | ... | ... | ... | ... | ... | ... | ... |
-```
-
-## Interpreting React Metrics
-
-| Signal | Likely cause | Fix direction |
-|--------|-------------|---------------|
-| High commits, no long tasks | Frequent cheap rerenders | `React.memo`, stabilize props |
-| High commits + long tasks | Expensive rerenders | Profile render cost, split components |
-| High scroll commits | Scroll/intersection observer triggering renders | Throttle handlers, memoize list items |
-| Render bursts (>5 in 100ms) | Cascading state updates | Batch updates, review Zustand selectors |
-| react-scan: component with >30 renders | Missing memoization or unstable references | `useMemo`/`useCallback`, check parent renders |
-| react-scan: component with >50ms time | Expensive render function | Split component, move work out of render |
-
-## Element-source follow-up
-
-When `react-scan` identifies a rerender hotspot but you still need the exact file behind a concrete DOM node, hand off to `$inspect-elements`.
-
-```bash
-playwright-cli -s=prof-followup eval "async el => JSON.stringify(await window.__ELEMENT_SOURCE__.resolve(el))" e7
-```
-
-Use `source.filePath` as the direct edit target and `stack` to understand which parent components own the node.
-
-## Step 5: Cleanup
-
-After profiling is complete and the report is delivered, verify no orphaned processes were left behind:
-
-```bash
-# Check for any Vite dev servers started during profiling
-ps aux | grep 'vite.*--port' | grep -v grep
-```
-
-- If the dev server was already running before Step 0, leave it alone.
-- If the orchestrator started the dev server in Step 0, kill it now.
-- If there are multiple Vite processes (should never happen), kill the extras and warn the user.
-
-Also close any leftover playwright-cli sessions:
-
-```bash
-./scripts/pw-session.sh status
-```
-
-If a failed profiler still owns the slot, close that exact recorded session with `./scripts/pw-session.sh close <session>`. A slot whose browser already died is reclaimed by the next `open`, so it needs no manual cleanup. Never use `close-all` or `kill-all` during concurrent agent work.
-
-## Notes
-
-- **Session isolation**: Each subagent uses a named playwright-cli session (`-s=prof-N`).
-- **Context isolation**: Each subagent runs in its own context window.
-- **Per-route collection**: Data resets on each `goto` — the profiler collects before navigating away.
-- **addInitScript persistence**: Instrumentation re-injects automatically in each new document.
-- **Tracing**: Each subagent produces a `trace.zip` viewable in [Trace Viewer](https://trace.playwright.dev).
-- **Routes**: communities are addressed directly as `/s/<community-address>`; `/s/all` aggregates the default communities.
-- **Without react-scan**: If `__getReactScanReport` returns null, the profiler falls back to commit counts + render bursts (still useful, just no component names).
+Close each exact session in cleanup even after failures. Stop only the dev server this task started. Return any remaining limitations without converting unavailable metrics into passing checks.

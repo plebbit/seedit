@@ -1,4 +1,0 @@
-interface:
-  display_name: "Review and Merge PR"
-  short_description: "Check PR feedback, fix valid findings, and merge when ready"
-  default_prompt: "Review the current PR, address valid bot or human feedback, and merge it when ready."

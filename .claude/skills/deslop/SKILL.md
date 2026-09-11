@@ -1,87 +1,18 @@
 ---
 name: deslop
-description: Scan recent changes for AI-generated code slop and remove it. Use when the user says "deslop", "remove slop", "clean up AI code", or asks to remove AI-generated artifacts from the codebase.
+description: Review recent task changes for unnecessary comments, casts, abstractions, and defensive code, then simplify only where behavior is preserved. Use when the user asks to deslop or clean up AI-generated code.
 disable-model-invocation: true
 ---
 
-# Remove AI Code Slop
+<!-- Generated from .agents/skills/deslop/SKILL.md; run yarn ai-workflow:sync. -->
 
-Scan the diff against master and remove AI-generated slop introduced in this branch.
+# Remove Unnecessary AI-Generated Code
 
-## Workflow
+1. Identify the authorized diff against its base, including relevant staged, unstaged, and untracked files. Preserve unrelated work.
+2. Read surrounding source and tests before deciding anything is redundant. Check history when the reason for a guard or workaround is unclear.
+3. Remove comments that restate obvious code, avoidable `any` casts, unused helpers, and speculative abstractions only when there is evidence they add no value. Preserve comments explaining constraints, tradeoffs, or non-obvious behavior.
+4. Simplify defensive code only after verifying its input/error contract. Do not assume a library always catches errors or uses a particular loading sentinel. Never remove boundary validation, accessibility, data-loss protection, or useful error handling to make a diff shorter.
+5. Match nearby style without reformatting adjacent code. An abstraction with one caller can still clarify a complex boundary; a repeated expression does not automatically need a shared helper.
+6. Run the repository's applicable checks once for the final state (`yarn agent:verify` for code), and report what changed and why. Reuse existing final-state verification when unchanged; do not rebuild for a review-only or documentation-only result.
 
-1. **Get the diff**
-
-   ```bash
-   git diff master...HEAD
-   ```
-
-   If there are also uncommitted changes, include them:
-   ```bash
-   git diff master
-   ```
-
-2. **Scan each changed file** for the slop categories below
-3. **Fix** each instance — remove or rewrite to match the surrounding code style
-4. **Verify** the build still passes:
-   ```bash
-   yarn build && yarn lint && yarn type-check
-   ```
-5. **Report** a 1-3 sentence summary of what you changed
-
-## Slop Categories
-
-### Unnecessary comments
-
-AI loves adding comments that restate the code. Remove comments that a human wouldn't write. Keep comments that explain *why* — domain reasoning, constraints, trade-offs, or non-obvious intent.
-
-```typescript
-// ❌ Slop — restates the code
-const [count, setCount] = useState(0); // Initialize count state to 0
-
-// ❌ Slop — obvious from context
-// Fetch the user data
-const user = useComment({ commentCid });
-
-// ✅ Keep — explains non-obvious intent
-// bitsocial-react-hooks returns undefined while loading, null if not found
-const isLoading = comment === undefined;
-```
-
-### Excessive defensive checks
-
-AI adds try/catch blocks and null guards everywhere, even on trusted codepaths. Remove guards that the surrounding code doesn't need.
-
-```typescript
-// ❌ Slop — bitsocial-react-hooks already handles errors internally
-try {
-  const { feed } = useFeed({ communities });
-} catch (error) {
-  console.error('Failed to fetch feed:', error);
-}
-
-// ✅ Clean — just use the hook directly
-const { feed } = useFeed({ communities });
-```
-
-### `as any` casts
-
-AI casts to `any` to bypass type errors instead of fixing the actual types. Remove the cast and fix the underlying type issue.
-
-### Inconsistent style
-
-Any pattern that doesn't match the rest of the file: different naming conventions, different import ordering, unnecessary abstractions, or overly verbose code where the file is concise.
-
-### Over-engineering
-
-AI tends to add unnecessary abstractions, utility functions, or wrapper components that obscure simple logic. If a one-liner was wrapped in a helper, unwrap it.
-
-## Judgment Call: When to Keep Comments
-
-Comments are necessary when code expresses:
-- Non-obvious intent or domain-specific reasoning
-- Constraints that aren't apparent from the implementation
-- Trade-offs or "why not X" decisions
-- Workarounds with context on when they can be removed
-
-When in doubt, check if similar code nearby has comments. Match the file's existing comment density.
+When evidence is insufficient, keep the code and report the uncertainty. Do not invent cleanup work to fill a quota.

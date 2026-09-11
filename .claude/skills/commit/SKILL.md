@@ -4,6 +4,8 @@ description: Commit current work by reviewing diffs, splitting into logical comm
 disable-model-invocation: true
 ---
 
+<!-- Generated from .agents/skills/commit/SKILL.md; run yarn ai-workflow:sync. -->
+
 # Commit Current Work
 
 ## Workflow
@@ -16,11 +18,11 @@ disable-model-invocation: true
    git diff --cached
    ```
 
-   Read every changed file's diff to understand the full scope of changes.
+   Read the diffs to identify the changes authorized for this commit. Preserve unrelated work, including preexisting staged changes. A request to commit this task does not authorize committing every modification in the checkout.
 
 2. **Group changes into logical commits**
 
-   If diffs are unrelated, split into multiple commits. Each commit should cover one logical unit of work.
+   Within the authorized scope, split distinct changes into logical commits. Leave unrelated work out of the commit.
 
    Example — two unrelated changes in the working tree:
    - Modified `src/components/reply-modal.tsx` (UI fix)
@@ -30,11 +32,11 @@ disable-model-invocation: true
 
 3. **Run the final advisory review**
 
-   Before committing, run the repo-managed `code-quality-review` skill on the final intended diff, including staged, unstaged, and untracked files. Consider only high-confidence findings. Apply them only when the active task authorizes edits; otherwise report them and continue with the requested commit. This review is advisory and must not become a hard gate.
+   Before committing, use the repo-managed `code-quality-review` skill once on the final intended diff, including relevant staged, unstaged, and untracked files. Reuse a completed review for the same final state. Consider only high-confidence findings. Apply them only when the active task authorizes edits; otherwise report them and continue with the requested commit. This review is advisory and must not become a hard gate.
 
 4. **Stage and commit each group**
 
-   For each logical group:
+   For each logical group, stage only its changes. If unrelated work is already staged, save its index patch, exclude it from this commit, and restore that staging afterward; never commit it incidentally. Use a selective index patch for mixed files, then inspect `git diff --cached` before committing:
    ```bash
    git add <relevant files>
    git commit -m "title here"

@@ -1,0 +1,86 @@
+{
+  "task": "simplify-ai-workflows",
+  "last_updated": "2026-09-11",
+  "items": [
+    {
+      "id": "F001",
+      "status": "passed",
+      "description": "Consolidate skills and modernize custom roles with Seedit-specific guidance",
+      "verification": [
+        "ai-workflow:sync/check: 23 canonical skills, 5 roles, 111 generated outputs, no errors",
+        "9 generator/validator fixture tests passed",
+        "Codex skills/list discovers all 23; prompt-input loads the 17 automatic skills and excludes the 6 manual-only skills"
+      ],
+      "files": [
+        ".agents/skills/",
+        ".agents/roles/",
+        ".codex/config.toml",
+        "scripts/ai-workflow-files.mjs",
+        "scripts/sync-ai-workflow.mjs",
+        "scripts/validate-ai-workflow.mjs"
+      ],
+      "notes": "Project-local Codex settings parse correctly but remain disabled until the contributor trusts Seedit. Live Claude/Cursor activation was not exercised."
+    },
+    {
+      "id": "F002",
+      "status": "passed",
+      "description": "Replace lifecycle mutations with formatting and explicit verification",
+      "verification": [
+        "12 formatter/readiness fixture tests passed",
+        "8 verifier ownership, failure, concurrency and termination tests passed",
+        "corepack yarn agent:verify: build, lint and type-check passed"
+      ],
+      "files": [
+        "scripts/agent-hooks/format.mjs",
+        "scripts/agent-verify.mjs",
+        "scripts/agent-init.sh",
+        ".claude/settings.json",
+        ".codex/hooks.json",
+        ".cursor/hooks.json",
+        "docs/agent-playbooks/hooks-setup.md"
+      ],
+      "notes": "Seedit and 5chan deliberately retain the same machine-wide verifier lock. Native Windows behavior was not exercised."
+    },
+    {
+      "id": "F003",
+      "status": "passed",
+      "description": "Protect translation writes and correct task workflows",
+      "verification": [
+        "6 translation writer fixture tests passed",
+        "No application source or locale data changed",
+        "Advisory review found no remaining high-confidence issues"
+      ],
+      "files": [
+        "scripts/update-translations.js",
+        "scripts/__tests__/update-translations.node-test.mjs",
+        ".agents/skills/translate/SKILL.md",
+        ".agents/skills/release/SKILL.md",
+        "docs/agent-playbooks/translations.md"
+      ],
+      "notes": "Seedit retains its hash routes, old.reddit design requirements, release description/changelog and unflavored seedit.android package. Existing raw react-scan and template Android-test limitations are documented."
+    },
+    {
+      "id": "F004",
+      "status": "passed",
+      "description": "Validate the final changes and refresh generated indexes for local integration",
+      "verification": [
+        "35 workflow tests passed",
+        "Build, lint and type-check passed",
+        "Advisory Knip completed without findings",
+        "llms:generate refreshed both public indexes",
+        "git diff --check passed"
+      ],
+      "files": [
+        "package.json",
+        "yarn.lock",
+        ".github/workflows/test.yml",
+        "AGENTS.md",
+        "src/AGENTS.md",
+        "docs/agent-playbooks/verification.md",
+        "public/llms.txt",
+        "public/llms-full.txt"
+      ],
+      "notes": "User authorized local commit and merge into master without a PR or push. Check Git history for the subsequent integration state."
+    }
+  ]
+}

@@ -1,7 +1,9 @@
 ---
 name: code-quality-review
-description: Advisory code quality review for current diffs before finishing, committing, pushing, or opening a PR. Use when asked to review code quality, run a final quality pass, inspect AI-generated changes, or check for over-engineering. Reports actionable suggestions only; does not block or edit unless explicitly asked.
+description: Advisory code quality review for current diffs before finishing, committing, pushing, or opening a PR. Use when asked to review code quality, run a final quality pass, inspect AI-generated changes, or check for over-engineering. Reports actionable suggestions; applies findings only within the active task’s authorization.
 ---
+
+<!-- Generated from .agents/skills/code-quality-review/SKILL.md; run yarn ai-workflow:sync. -->
 
 # Code Quality Review
 
@@ -10,7 +12,7 @@ Run an advisory review of the current diff. This is a suggestion pass for the au
 ## Scope
 
 - If the user supplies a base, review against that base.
-- Otherwise review branch changes against `master` plus any staged, unstaged, or untracked files.
+- Otherwise review task-owned branch changes against `master` plus relevant staged, unstaged, or untracked files; exclude unrelated work.
 - Read `AGENTS.md` and any nested `AGENTS.md` files that cover changed paths. For UI work, also read the repo design guidance named there.
 - Skim nearby source before judging a hunk. Do not review from the patch alone when surrounding patterns matter.
 - Do not re-run or duplicate deterministic tools such as build, lint, typecheck, React Doctor, or Knip. Mention them only when the diff suggests they are especially relevant.
@@ -58,15 +60,14 @@ Use this as a focused delete-or-replace pass, not line golf. A small diff in the
 
 ## Output
 
-- If there are no high-confidence findings, say: `No high-confidence advisory findings. Ship.`
+- If there are no high-confidence findings, say so briefly. A review finding is not a release or publishing authorization.
 - Otherwise report at most 8 findings, ordered by expected payoff.
 - Use this format: `[correctness|standard|simplicity|structure|testability|security|performance|dependency|scope] path:line - Finding. Suggestion. Confidence: high|medium.`
 - Keep findings specific and actionable. Skip nits, style preferences, and anything the repo tooling already handles.
-- End with `Advisory only; not a blocker.`
 
 ## Boundaries
 
 - Do not suggest deleting tests, accessibility, security checks, trust-boundary validation, data-loss protection, or error handling unless you provide an equally safe simpler replacement.
 - Do not ask to remove code you do not understand. First explain what evidence would prove it is dead or redundant.
 - Respect documented product constraints and historical decisions. If a suggestion appears to contradict an ADR, known surprise, or explicit repo policy, call that out instead of presenting it as a straightforward cleanup.
-- Do not edit files unless the user explicitly asks you to apply the review findings.
+- Apply high-confidence findings only when they fall within the active task’s authorized implementation scope. A review-only request returns findings without edits. Do not ask again for authorization already given.

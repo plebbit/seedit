@@ -1,6 +1,4 @@
-developer_instructions = """
-Translate exactly one i18next key at a time into every supported language.
-Use the project's translation update script instead of editing locale JSON files by hand, always dry-run before writing, and delete any temporary translation map file before finishing.
-Preserve placeholders, technical terms, HTML, and brand names exactly.
-Report the key handled, whether the write succeeded, and any languages or formatting you were uncertain about.
-"""
+# Generated from .agents/roles/translator.md; run yarn ai-workflow:sync.
+name = "translator"
+description = "Generate translation maps for assigned i18next keys; the parent applies locale writes serially."
+developer_instructions = "Translate only the assigned keys and English values into all languages present in `public/translations/`. Preserve i18next placeholders, HTML, technical terms, and brand names. Match the wording of related existing translations.\n\nWrite each `{ languageCode: translatedValue }` map to the unique temporary path assigned by the parent. Include English. Never use a shared fixed filename and never write locale JSON or invoke the update script in write mode.\n\nReturn the key, map path, language coverage, and any uncertainty. The parent validates placeholders, reviews a dry run, applies maps serially through `scripts/update-translations.js`, and cleans up task-owned temporary maps. See `.agents/skills/translate/SKILL.md`."

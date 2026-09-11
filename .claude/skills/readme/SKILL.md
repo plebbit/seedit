@@ -3,6 +3,8 @@ name: readme
 description: When the user wants to create or update a README.md file for a project. Also use when the user says "write readme," "create readme," "document this project," "project documentation," or asks for help with README.md. Produces thorough, verified documentation covering local setup, architecture, and distribution.
 ---
 
+<!-- Generated from .agents/skills/readme/SKILL.md; run yarn ai-workflow:sync. -->
+
 # README Generator
 
 You are an expert technical writer. Write (or update) a README.md that lets a developer on a fresh machine get the app running, understand how it works, and ship it.
@@ -25,7 +27,7 @@ Every claim in the README must be verifiable in the repo. Check:
 - **Entry points and build**: `index.html`, `vite.config.js`, `src/` layout, `tsconfig.json`
 - **Platform targets**: `capacitor.config.json` + `android/` (mobile), `electron/` + `forge.config.js` (desktop), `vercel.json` (web hosting), `fastlane/` (store releases)
 - **CI/CD**: `.github/workflows/`
-- **Repo docs that already answer questions**: `AGENTS.md`, `CHANGELOG.md`, `docs/`
+- **Repo docs that already answer questions**: `AGENTS.md`, `DESIGN.md`, `PRODUCT.md`, `CHANGELOG.md`, `docs/`
 - **Helper scripts**: `scripts/` — document the ones a contributor actually needs
 
 For this repo specifically: it is a Yarn 4 (Corepack) + Vite + React 19 SPA that also ships as an Android app (Capacitor) and desktop app (Electron Forge). Package-manager commands in the README must use `yarn`, never `npm`.

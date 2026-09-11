@@ -172,6 +172,13 @@ yarn-error.log*
 .firecrawl/
 
 # Repo-managed AI tooling
+.agents/*
+!.agents/roles/
+!.agents/roles/**
+!.agents/skills/
+!.agents/skills/**
+.agents/**/.DS_Store
+
 .cursor/*
 .cursor/.DS_Store
 !.cursor/agents/
@@ -179,8 +186,6 @@ yarn-error.log*
 !.cursor/hooks/
 !.cursor/hooks/**
 !.cursor/hooks.json
-!.cursor/skills/
-!.cursor/skills/**
 .cursor/**/.DS_Store
 
 .claude/*
@@ -202,8 +207,6 @@ yarn-error.log*
 !.codex/hooks/
 !.codex/hooks/**
 !.codex/hooks.json
-!.codex/skills/
-!.codex/skills/**
 .codex/**/.DS_Store
 
 # Upload selector smoke probe (report-only, local/CI triage)
@@ -213,3 +216,7 @@ scripts/upload-selectors-smoke-snapshots/
 # Android build artifacts
 android/app/build/
 .vercel
+
+# Translation writer ownership and interrupted atomic writes
+/public/translations/.update-translations.lock
+/public/translations/*/.update-translations-*/

@@ -1,39 +1,43 @@
 # Agent Hooks Setup
 
-This repo ships lifecycle hooks shared across Claude Code, Cursor, and Codex. The implementations live in `scripts/agent-hooks/`; each harness has thin wrappers in `.claude/hooks/`, `.cursor/hooks/`, `.codex/hooks/` plus its own entry-point config. Run `yarn ai-workflow:check` after changing any of this.
+The only automatic lifecycle action is formatting edited JavaScript and TypeScript files. Each harness has a thin `format.sh` wrapper that calls `scripts/agent-hooks/format.mjs`. Finishing a response does not install packages, run verification, inject review reminders, or mutate Git state.
 
-## Hooks
+## Entry points
 
-| Edit-time / stop | Script | Purpose |
+| Harness | Entry point | Event |
 |---|---|---|
-| edit-time | `scripts/agent-hooks/format.sh` | Auto-format JS/TS files after AI edits (`npx oxfmt`) |
-| edit-time | `scripts/agent-hooks/yarn-install.sh` | Run `corepack yarn install` when the root `package.json` changes |
-| edit-time + stop | `scripts/agent-hooks/react-pattern-review.sh` | When React UI source changes, remind the agent to run the React best-practice review skills; also flag new `useEffect`/memo primitives |
-| stop | `scripts/agent-hooks/sync-git-branches.sh` | Prune stale refs and delete integrated temporary task branches |
-| stop | `scripts/agent-hooks/code-quality-review-reminder.sh` | Remind the agent to run the advisory `code-quality-review` skill when the diff is non-trivial |
-| stop | `scripts/agent-hooks/verify.sh` | Gate build, lint, and type-check; keep `yarn npm audit` informational |
-| session start (Claude only) | `.claude/hooks/session-start.sh` | `corepack yarn install` when `node_modules` is missing (fresh worktrees) |
+| Claude Code | `hooks` in `.claude/settings.json` | `PostToolUse`, matcher `Edit\|Write\|MultiEdit` |
+| Cursor | `.cursor/hooks.json`, version 1 | `afterFileEdit` |
+| Codex | `.codex/hooks.json` | `PostToolUse`, matcher `apply_patch` |
 
-## Entry points (harness-specific formats)
+Keep these application-specific schemas separate. Codex hooks also need to be trusted in the contributor's Codex settings before they run; a committed configuration does not establish that trust.
 
-The three harnesses wire the same scripts but use different config files and schemas. Do not copy one harness's schema to another.
+## Formatting behavior
 
-| Harness | Entry point | Schema | Edit event | Stop event |
-|---|---|---|---|---|
-| Claude Code | `hooks` key in `.claude/settings.json` | Claude hooks schema; a standalone `.claude/hooks.json` is **not** read | `PostToolUse` matcher `Edit\|Write\|MultiEdit\|NotebookEdit` | `Stop` |
-| Cursor | `.cursor/hooks.json` | `{"version": 1, "hooks": {...}}` with Cursor event names | `afterFileEdit` | `stop` |
-| Codex | `.codex/hooks.json` | Codex hooks schema (intentionally Claude-compatible: `matcher`, `type: "command"`) | `PostToolUse` matcher includes `apply_patch` | `Stop` |
+- Claude sends `tool_input.file_path`; Cursor sends `file_path`.
+- Codex sends `apply_patch` text in `tool_input.command`. The formatter collects added and updated files, uses the destination of a move, and ignores deleted files.
+- Relative paths use the payload's working directory when supplied, falling back to the repository root.
+- Known read-only tool calls, non-edit events, reported tool failures, malformed input, missing paths, and unsupported extensions are skipped.
+- Both lexical paths and resolved real paths must remain inside this checkout. This includes the final file and any symlinked parent directories.
+- Formatting runs once per payload through `corepack yarn exec oxfmt --write`, only when the repository's formatter is installed. Corepack network access is disabled. Missing dependencies are not installed by the hook.
+- Node command launches use the declared `cross-spawn` dependency to handle Windows command shims and argument escaping. Shell hook entry points still require the harness's Bash support on Windows.
+- Formatter failures are reported on stderr and remain advisory. Hooks do not inject additional instructions into the model.
 
-## How the scripts handle harness differences
+Run `corepack yarn install` explicitly when setting up a worktree or changing dependencies. The worktree creation helper already performs installation.
 
-- **Stdin shape**: Cursor sends `{"file_path": ...}`; Claude/Codex send `{"tool_input": {"file_path": ...}, "hook_event_name": ...}` with absolute paths. The shared scripts parse both and normalize absolute paths to repo-relative.
-- **Surfacing output to the model**: in Claude/Codex, plain stdout from `PostToolUse`/`Stop` hooks with exit 0 is transcript-only and never reaches the model. `react-pattern-review.sh` therefore emits `hookSpecificOutput.additionalContext` JSON on `PostToolUse`. The stop-time reminders (`react-pattern-review.sh`, `code-quality-review-reminder.sh`) stay advisory: their output is visible to the contributor, not injected into the model.
-- **Blocking**: `verify.sh` in strict mode exits **2** with a short reason on stderr — the only exit code that blocks the stop and feeds the failure back to the agent in Claude/Codex. It checks `stop_hook_active` to avoid infinite stop loops, and skips entirely when the working tree is clean (read-only sessions). Set `AGENT_VERIFY_MODE=advisory` only when you intentionally need signal from a broken tree without blocking the session.
+## Explicit verification
 
-Lifecycle hooks do not replace manual browser verification. For UI or visual changes, still run `playwright-cli` checks across `chrome`, `firefox`, and `webkit`, plus a mobile viewport flow in each engine when responsiveness or touch behavior changed.
+Run `corepack yarn agent:verify` once after code changes. `scripts/agent-verify.mjs` runs `build`, `lint`, and `type-check` sequentially, prints the commands and working directory, and reports every failed check. It completes the remaining checks after a command fails and exits with the first failure's status. A missing executable returns 127; a terminated command reports its signal and returns the conventional signal exit status.
 
-## Editing rules
+The command does not remove, restore, or stage generated artifacts. The build itself can update output and generated files; inspect the resulting diff and clean up only output created by your own run. Tests, React Doctor, and browser verification remain explicit checks selected for the change.
 
-- Change behavior in `scripts/agent-hooks/*.sh`; keep the per-harness wrappers as thin `exec` delegates (they pass harness-appropriate `--skill-dir`/`--scope-prefix` args).
-- When adding a hook, wire it in **all three** entry points (or add a documented exemption in `scripts/validate-ai-workflow.mjs`, like Claude's `session-start.sh`). The validator checks that every entry point references the same set of `hooks/<name>.sh` scripts.
-- Do not paste "example" hook implementations into docs — link the real scripts so they cannot drift.
+Bitsocial checkouts, including Seedit and 5chan, share an atomic lock directory named `5chan-agent-verify.lock` in the operating system's temporary directory. Keep that existing shared name so verification across the two repositories cannot overlap. A busy slot exits immediately with status 75 and owner details. Wait for the owning run to finish before retrying. Normal completion and handled SIGINT/SIGTERM release the lock; on Unix, interruption is forwarded to the active command's process group, and on Windows it terminates the command tree through `taskkill /T /F`. A force-killed process can leave a lock behind. Inspect `owner.json` and verify that the recorded run and its child workloads have stopped before manually removing that stale lock. Unreadable metadata is never treated as permission to steal the slot.
+
+The lock coordinates invocations of this command. Other heavyweight work, such as installs, tests, browsers, and builds launched directly, still needs the repository's workload coordination rules.
+
+## Maintaining the workflow
+
+- Change shared formatter behavior in `scripts/agent-hooks/format.mjs`; keep harness wrappers thin.
+- Wire only the formatter in each hook configuration. Dependency installation, Git housekeeping, reviews, and full verification belong to explicit workflows.
+- Run `corepack yarn ai-workflow:check` after changing hook scripts or configuration.
+- Run `yarn ai-workflow:test` for payload, path-containment, and verification behavior. These tests use fake commands and never run real builds.

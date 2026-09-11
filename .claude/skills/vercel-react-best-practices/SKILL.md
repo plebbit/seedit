@@ -7,6 +7,8 @@ metadata:
   version: "1.0.0"
 ---
 
+<!-- Generated from .agents/skills/vercel-react-best-practices/SKILL.md; run yarn ai-workflow:sync. -->
+
 # Vercel React Best Practices
 
 Comprehensive performance optimization guide for React and Next.js applications, maintained by Vercel. Contains 57 rules across 8 categories, prioritized by impact to guide automated refactoring and code generation.

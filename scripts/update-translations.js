@@ -87,12 +87,10 @@ function parseArgs(argv) {
   return out
 }
 
-function usage(exitCode = 1, msg) {
-  if (msg) console.error(msg)
-  console.error(
-    'Usage: node scripts/update-translations.js --key <name> [--delete] [--from <lang>] [--value <string> | --map <file>] [--only <langs>] [--exclude <langs>] [--include-en] [--dry|--write]'
+function usage(msg) {
+  throw new Error(
+    `${msg}\nUsage: node scripts/update-translations.js --key <name> [--delete] [--from <lang>] [--value <string> | --map <file>] [--only <langs>] [--exclude <langs>] [--include-en] [--dry|--write]`
   )
-  process.exit(exitCode)
 }
 
 async function fileExists(p) {
@@ -125,7 +123,42 @@ async function loadJson(filePath) {
 
 async function writeJson(filePath, data) {
   const json = JSON.stringify(data, null, 2) + '\n'
-  await fs.writeFile(filePath, json, 'utf8')
+  const tempDir = await fs.mkdtemp(path.join(path.dirname(filePath), '.update-translations-'))
+  try {
+    const tempPath = path.join(tempDir, 'default.json')
+    await fs.writeFile(tempPath, json, 'utf8')
+    await fs.rename(tempPath, filePath)
+  } finally {
+    await fs.rm(tempDir, { recursive: true, force: true })
+  }
+}
+
+async function acquireWriteLock(translationsRoot) {
+  const lockPath = path.join(translationsRoot, '.update-translations.lock')
+  let lock
+  try {
+    lock = await fs.open(lockPath, 'wx')
+  } catch (err) {
+    if (err.code === 'EEXIST') {
+      throw new Error(
+        `Translation writer lock exists: ${lockPath}. No files were written. Retry after the active writer finishes. If it was interrupted, verify no writer is active before removing this lock.`
+      )
+    }
+    throw err
+  }
+
+  return async () => {
+    try {
+      const owned = await lock.stat()
+      const current = await fs.lstat(lockPath).catch((err) => {
+        if (err.code === 'ENOENT') return undefined
+        throw err
+      })
+      if (current?.dev === owned.dev && current?.ino === owned.ino) await fs.unlink(lockPath)
+    } finally {
+      await lock.close()
+    }
+  }
 }
 
 async function handleDelete(key, translationsRoot, only, exclude, dryRun, write) {
@@ -312,8 +345,7 @@ async function handleAudit(translationsRoot, srcDir, dryRun, write, force) {
   // Load the English translation file as the reference
   const enPath = path.join(translationsRoot, 'en', 'default.json')
   if (!(await fileExists(enPath))) {
-    console.error(`English translation file not found: ${enPath}`)
-    process.exit(1)
+    throw new Error(`English translation file not found: ${enPath}`)
   }
   const enJson = await loadJson(enPath)
   const definedKeys = Object.keys(enJson)
@@ -355,7 +387,7 @@ async function handleAudit(translationsRoot, srcDir, dryRun, write, force) {
     console.log('  3. Re-run with --write --force to proceed with deletion')
     console.log('')
     console.log('Alternatively, refactor dynamic keys to use static strings where possible.')
-    process.exit(1)
+    throw new Error('Audit aborted because dynamic translation keys require --force.')
   }
 
   if (hasDynamicUsages && force) {
@@ -396,10 +428,10 @@ async function handleUpdate(key, translationsRoot, fromLang, includeEn, only, ex
   if (!literalValue && !map) {
     // default to --from
     const srcPath = path.join(translationsRoot, fromLang, 'default.json')
-    if (!(await fileExists(srcPath))) usage(1, `Source file not found for --from ${fromLang}: ${srcPath}`)
+    if (!(await fileExists(srcPath))) usage(`Source file not found for --from ${fromLang}: ${srcPath}`)
     const srcJson = await loadJson(srcPath)
     sourceValue = srcJson[key]
-    if (typeof sourceValue === 'undefined') usage(1, `Key "${key}" not found in source language ${fromLang}`)
+    if (typeof sourceValue === 'undefined') usage(`Key "${key}" not found in source language ${fromLang}`)
   }
 
   const dirents = await fs.readdir(translationsRoot, { withFileTypes: true })
@@ -468,7 +500,7 @@ async function main() {
 
   const translationsRoot = path.join(process.cwd(), 'public', 'translations')
   if (!(await fileExists(translationsRoot))) {
-    usage(1, `Translations directory not found: ${translationsRoot}`)
+    usage(`Translations directory not found: ${translationsRoot}`)
   }
 
   const isAudit = args.flags.has('--audit')
@@ -477,42 +509,48 @@ async function main() {
   const write = args.flags.has('--write')
   const force = args.flags.has('--force')
 
-  if (isAudit) {
-    // Audit mode: scan codebase and remove unused keys
-    const srcDir = path.join(process.cwd(), 'src')
-    await handleAudit(translationsRoot, srcDir, dryRun, write, force)
-    return
-  }
-
-  const key = args['--key']
-  if (!key) usage(1, 'Missing required --key')
-
-  const fromLang = args['--from'] || 'en'
-  const includeEn = args.flags.has('--include-en')
-  const only = parseCsv(args['--only'])
-  const exclude = parseCsv(args['--exclude'])
-
-  if (isDelete) {
-    // Delete mode
-    await handleDelete(key, translationsRoot, only, exclude, dryRun, write)
-  } else {
-    // Update mode
-    let literalValue = args['--value']
-    let mapFile = args['--map']
-    let map = undefined
-
-    if (mapFile) {
-      const absMap = path.isAbsolute(mapFile) ? mapFile : path.join(process.cwd(), mapFile)
-      if (!(await fileExists(absMap))) usage(1, `--map not found: ${absMap}`)
-      map = await loadJson(absMap)
-      if (typeof map !== 'object' || map === null) usage(1, '--map must be a JSON object of { lang: value }')
+  // Hold the lock from the first read through the final write to avoid lost updates.
+  const releaseLock = dryRun ? undefined : await acquireWriteLock(translationsRoot)
+  try {
+    if (isAudit) {
+      // Audit mode: scan codebase and remove unused keys
+      const srcDir = path.join(process.cwd(), 'src')
+      await handleAudit(translationsRoot, srcDir, dryRun, write, force)
+      return
     }
 
-    await handleUpdate(key, translationsRoot, fromLang, includeEn, only, exclude, literalValue, mapFile, map, dryRun, write)
+    const key = args['--key']
+    if (!key) usage('Missing required --key')
+
+    const fromLang = args['--from'] || 'en'
+    const includeEn = args.flags.has('--include-en')
+    const only = parseCsv(args['--only'])
+    const exclude = parseCsv(args['--exclude'])
+
+    if (isDelete) {
+      // Delete mode
+      await handleDelete(key, translationsRoot, only, exclude, dryRun, write)
+    } else {
+      // Update mode
+      let literalValue = args['--value']
+      let mapFile = args['--map']
+      let map = undefined
+
+      if (mapFile) {
+        const absMap = path.isAbsolute(mapFile) ? mapFile : path.join(process.cwd(), mapFile)
+        if (!(await fileExists(absMap))) usage(`--map not found: ${absMap}`)
+        map = await loadJson(absMap)
+        if (typeof map !== 'object' || map === null) usage('--map must be a JSON object of { lang: value }')
+      }
+
+      await handleUpdate(key, translationsRoot, fromLang, includeEn, only, exclude, literalValue, mapFile, map, dryRun, write)
+    }
+  } finally {
+    await releaseLock?.()
   }
 }
 
 main().catch((err) => {
-  console.error(err)
-  process.exit(1)
+  console.error(err.message)
+  process.exitCode = 1
 })

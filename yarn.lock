@@ -9870,6 +9870,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"cross-spawn@npm:7.0.6, cross-spawn@npm:^7.0.1, cross-spawn@npm:^7.0.3, cross-spawn@npm:^7.0.6":
+  version: 7.0.6
+  resolution: "cross-spawn@npm:7.0.6"
+  dependencies:
+    path-key: "npm:^3.1.0"
+    shebang-command: "npm:^2.0.0"
+    which: "npm:^2.0.1"
+  checksum: 10c0/053ea8b2135caff68a9e81470e845613e374e7309a47731e81639de3eaeb90c3d01af0e0b44d2ab9d50b43467223b88567dfeb3262db942dc063b9976718ffc1
+  languageName: node
+  linkType: hard
+
 "cross-spawn@npm:^6.0.0":
   version: 6.0.6
   resolution: "cross-spawn@npm:6.0.6"
@@ -9880,17 +9891,6 @@ __metadata:
     shebang-command: "npm:^1.2.0"
     which: "npm:^1.2.9"
   checksum: 10c0/bf61fb890e8635102ea9bce050515cf915ff6a50ccaa0b37a17dc82fded0fb3ed7af5478b9367b86baee19127ad86af4be51d209f64fd6638c0862dca185fe1d
-  languageName: node
-  linkType: hard
-
-"cross-spawn@npm:^7.0.1, cross-spawn@npm:^7.0.3, cross-spawn@npm:^7.0.6":
-  version: 7.0.6
-  resolution: "cross-spawn@npm:7.0.6"
-  dependencies:
-    path-key: "npm:^3.1.0"
-    shebang-command: "npm:^2.0.0"
-    which: "npm:^2.0.1"
-  checksum: 10c0/053ea8b2135caff68a9e81470e845613e374e7309a47731e81639de3eaeb90c3d01af0e0b44d2ab9d50b43467223b88567dfeb3262db942dc063b9976718ffc1
   languageName: node
   linkType: hard
 
@@ -19828,6 +19828,7 @@ __metadata:
     conventional-changelog-cli: "npm:4.1.0"
     cordova-res: "npm:0.15.4"
     cross-env: "npm:7.0.3"
+    cross-spawn: "npm:7.0.6"
     crypto-browserify: "npm:3.12.1"
     cz-conventional-changelog: "npm:3.3.0"
     electron: "npm:39.8.10"
@@ -19847,6 +19848,7 @@ __metadata:
     i18next-browser-languagedetector: "npm:7.1.0"
     i18next-http-backend: "npm:3.0.5"
     isomorphic-fetch: "npm:3.0.0"
+    js-yaml: "npm:4.3.1"
     jsdom: "npm:28.1.0"
     json-stringify-pretty-compact: "npm:4.0.0"
     knip: "npm:6.17.0"
@@ -19875,6 +19877,7 @@ __metadata:
     rehype-sanitize: "npm:5.0.1"
     remark-gfm: "npm:4.0.1"
     remark-supersub: "npm:1.0.0"
+    smol-toml: "npm:1.6.1"
     stream-browserify: "npm:3.0.0"
     tar: "npm:7.5.20"
     tcp-port-used: "npm:1.0.2"
@@ -20338,7 +20341,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"smol-toml@npm:^1.6.1":
+"smol-toml@npm:1.6.1, smol-toml@npm:^1.6.1":
   version: 1.6.1
   resolution: "smol-toml@npm:1.6.1"
   checksum: 10c0/511a78722f99c7616fdb46af708de3d7e81434b5a3d58061166da73f28bfc6cae4f0cd04683f60515b9c490cd10152fce72287c960b337419c0299cc1f0f2a22

@@ -3,6 +3,8 @@ name: release-description
 description: Update the one-liner release description in scripts/release-body.js by analyzing commit titles since the last git tag. Use when the user asks to update the release description, release notes one-liner, or prepare release body for a new version.
 ---
 
+<!-- Generated from .agents/skills/release-description/SKILL.md; run yarn ai-workflow:sync. -->
+
 # Release Description
 
 Update `oneLinerDescription` in `scripts/release-body.js` before each release.

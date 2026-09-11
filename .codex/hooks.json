@@ -2,48 +2,12 @@
   "hooks": {
     "PostToolUse": [
       {
-        "matcher": "Edit|Write|apply_patch",
+        "matcher": "apply_patch",
         "hooks": [
           {
             "type": "command",
             "command": "bash \"$(git rev-parse --show-toplevel)/.codex/hooks/format.sh\"",
             "timeout": 10
-          },
-          {
-            "type": "command",
-            "command": "bash \"$(git rev-parse --show-toplevel)/.codex/hooks/yarn-install.sh\"",
-            "timeout": 120
-          },
-          {
-            "type": "command",
-            "command": "bash \"$(git rev-parse --show-toplevel)/.codex/hooks/react-pattern-review.sh\"",
-            "timeout": 10
-          }
-        ]
-      }
-    ],
-    "Stop": [
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "bash \"$(git rev-parse --show-toplevel)/.codex/hooks/sync-git-branches.sh\"",
-            "timeout": 60
-          },
-          {
-            "type": "command",
-            "command": "bash \"$(git rev-parse --show-toplevel)/.codex/hooks/react-pattern-review.sh\"",
-            "timeout": 10
-          },
-          {
-            "type": "command",
-            "command": "bash \"$(git rev-parse --show-toplevel)/.codex/hooks/code-quality-review-reminder.sh\"",
-            "timeout": 10
-          },
-          {
-            "type": "command",
-            "command": "bash \"$(git rev-parse --show-toplevel)/.codex/hooks/verify.sh\"",
-            "timeout": 60
           }
         ]
       }

@@ -1,0 +1,5 @@
+# Shared AI sources and generated compatibility files must agree across platforms.
+/.agents/** text=auto eol=lf
+/.claude/** text=auto eol=lf
+/.codex/** text=auto eol=lf
+/.cursor/** text=auto eol=lf

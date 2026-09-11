@@ -2,15 +2,9 @@
   "version": 1,
   "hooks": {
     "afterFileEdit": [
-      { "command": "./.cursor/hooks/format.sh" },
-      { "command": "./.cursor/hooks/yarn-install.sh" },
-      { "command": "./.cursor/hooks/react-pattern-review.sh" }
-    ],
-    "stop": [
-      { "command": "./.cursor/hooks/sync-git-branches.sh" },
-      { "command": "./.cursor/hooks/react-pattern-review.sh" },
-      { "command": "./.cursor/hooks/code-quality-review-reminder.sh" },
-      { "command": "./.cursor/hooks/verify.sh" }
+      {
+        "command": "./.cursor/hooks/format.sh"
+      }
     ]
   }
 }

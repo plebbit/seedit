@@ -29,7 +29,9 @@
     "docs/agent-playbooks/long-running-agent-workflow.md",
     "docs/agent-playbooks/bug-investigation.md",
     "docs/agent-playbooks/translations.md",
-    "docs/agent-playbooks/skills-and-tools.md"
+    "docs/agent-playbooks/skills-and-tools.md",
+    "docs/agent-playbooks/verification.md",
+    "docs/agent-playbooks/hooks-setup.md"
   ],
   "optionalDocs": ["CHANGELOG.md"]
 }

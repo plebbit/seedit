@@ -1,87 +1,57 @@
 # Skills and Tools
 
-Use this playbook when setting up/adjusting skills and external tooling, or to discover what is already committed.
+Shared skills live in `.agents/skills/`. Edit these sources, then run `yarn ai-workflow:sync` to generate `.claude/skills/` for Claude Code. Codex and Cursor discover `.agents/skills/` directly; do not restore the duplicate `.codex/skills/` or `.cursor/skills/` roots.
 
-## Committed Skills Index
+Shared role prompts live in `.agents/roles/*.md`. The same generator produces standalone Codex TOMLs and Claude/Cursor Markdown agents. Generated files identify their source. After removing a source, remove its obsolete generated outputs explicitly; the validator reports them rather than silently deleting files.
 
-These live in `.claude/skills/`, `.cursor/skills/`, and `.codex/skills/` (mirrored; run `yarn ai-workflow:check` after edits). No install needed — prefer them over re-implementing the flow by hand.
+The AI directories use LF line endings through `.gitattributes` so generated text stays identical across platforms. Supporting skill assets are copied as bytes.
 
-| Skill | Use when |
+## Skills
+
+| Skill | Purpose |
 |---|---|
-| `commit` | Committing current work (splits into logical scoped commits) |
-| `commit-format` / `issue-format` | Formatting commit/issue *suggestions* in chat output |
-| `make-closed-issue` | Creating an issue + branch + PR into `master` for already-done work |
-| `review-and-merge-pr` | Triaging bot/human PR feedback, fixing, merging, finalizing issues |
-| `fix-merge-conflicts` | Resolving merge conflicts non-interactively and validating the build |
-| `release` / `release-description` | Cutting a release / updating the release one-liner |
-| `code-quality-review` | Advisory final-diff quality pass before finishing, committing, pushing, or opening a PR |
-| `refactor-pass` | Simplicity-focused refactor of recent changes |
-| `deslop` | Removing AI-generated slop from the branch diff |
-| `debug-agent` | Evidence-based debugging with runtime NDJSON logs |
-| `you-might-not-need-an-effect` | Auditing/refactoring `useEffect` anti-patterns |
-| `vercel-react-best-practices` | React performance review rules (vendored from Vercel) |
-| `translate` | i18next key changes across all 35 languages (spawns `translator` subagents) |
-| `playwright-cli` | Browser automation and cross-engine UI verification |
-| `inspect-elements` | Mapping a live DOM node to its React source file/component stack |
-| `profile-browsing` | Web Vitals + react-scan rerender profiling (spawns `profiler` subagents) |
-| `test-apk` | Android emulator APK testing (spawns the `test-apk` subagent) |
-| `implement-plan` | Executing a multi-task plan via parallel `plan-implementer` subagents |
-| `readme` | Creating/updating README.md |
-| `context7` | Fetching up-to-date library docs |
-| `find-skills` | Discovering/installing ecosystem skills |
+| `commit` | Create authorized, scoped local commits |
+| `commit-format`, `issue-format` | Format suggestions when requested |
+| `make-closed-issue` | Create an authorized issue, scoped commit and PR |
+| `review-and-merge-pr` | Triage PR feedback; fix/publish/merge only within the requested scope |
+| `fix-merge-conflicts` | Resolve conflicts and verify the merged result |
+| `release`, `release-description` | Prepare changelog/release wording and perform authorized release steps |
+| `code-quality-review` | One advisory review of the final diff |
+| `refactor-pass`, `deslop` | Requested cleanup of existing changes |
+| `debug-agent` | Evidence-based debugging, with instrumentation when needed |
+| `you-might-not-need-an-effect` | Focused effect/memo review |
+| `vercel-react-best-practices` | Applicable React performance guidance; skip Next.js/server-only rules for this Vite client |
+| `translate` | Generate translations, then apply maps through a single writer |
+| `playwright-cli`, `inspect-elements` | Browser verification and DOM-to-source mapping |
+| `profile-browsing` | Scoped browser and React profiling |
+| `test-apk` | Local Android emulator procedures |
+| `implement-plan` | Execute a plan with optional bounded delegation |
+| `readme` | Maintain verified project documentation |
+| `context7` | Retrieve version-appropriate library documentation |
+| `find-skills` | Find additional skills when explicitly requested |
 
-## Committed Subagents
+## Roles and models
 
-Defined in `.claude/agents/*.md`, `.cursor/agents/*.md`, `.codex/agents/*.toml` (+ `.codex/config.toml` entries): `browser-check`, `code-quality`, `plan-implementer`, `profiler`, `react-doctor-fixer`, `react-patterns-enforcer`, `test-apk`, `translator`. Most are driven by the skills above; read the agent file before spawning one directly.
+Keep custom roles for `browser-check`, `profiler`, `test-apk`, `translator`, and `reviewer`. Use the harness's built-in worker/general-purpose or explorer role for ordinary implementation and code discovery. The parent assigns acceptance criteria and ownership; one owner runs heavyweight checks.
 
-## Recommended Skills
+Codex agent files include `name`, `description`, and `developer_instructions`. Leave model and reasoning unset to inherit the session. `.codex/config.toml` caps concurrent children at four using `max_concurrent_threads_per_session`. Source role metadata may specify `claude-model` and `cursor-model` for intentional, harness-supported cost choices; these are not copied into Codex configs. `sandbox-mode: read-only` maps to Codex's sandbox and Cursor's `readonly`; Claude's tool list and the role instructions restrict its review workflow, but Bash access is not an OS-level sandbox.
 
-### Playwright CLI
+Shared skill frontmatter uses `disable-model-invocation: true` for user-invoked workflows where applicable. Codex's corresponding setting lives in `agents/openai.yaml` as `policy.allow_implicit_invocation: false`; the validator requires both. Invocation metadata supplements explicit authorization rules; a review request never authorizes publication merely because a skill includes publishing steps.
 
-Use `playwright-cli` for browser automation (navigation, interaction, screenshots, tests, extraction).
+## Checks and discovery
 
-Default to a fresh isolated browser session for normal verification. If the task depends on the contributor's existing browser state, ask whether they want:
+- `yarn ai-workflow:sync` regenerates compatibility outputs using installed `js-yaml` and `smol-toml`.
+- `yarn ai-workflow:check` parses source/frontmatter/configs, checks generated outputs, invocation metadata, role models, and the formatter-only hook wiring.
+- `yarn ai-workflow:test` runs isolated Node fixtures for hook payloads, verification ownership, translation writers, and workflow generation/validation.
+- After upgrading an agent application, verify skill/role discovery in that application. Syntax/parity checks do not replace a loader check. Reload the application if an existing session retains an old catalog.
+- Hooks require the harness's project trust and hook review; do not bypass trust to make a check pass. See [hooks-setup.md](hooks-setup.md).
 
-- a fresh isolated `playwright-cli` session
-- their current browser session reused
+Current format references (reviewed 2026-09-11): [Codex skills](https://learn.chatgpt.com/docs/build-skills), [Codex subagents](https://learn.chatgpt.com/docs/agent-configuration/subagents), [Cursor skills](https://cursor.com/docs/skills), [Claude skills](https://code.claude.com/docs/en/skills).
 
-Do not attach to a live personal browser session without explicit confirmation.
+## Tools and browser ownership
 
-When using `playwright-cli` for repo UI verification, run the relevant flow in all three main browser engines:
+Prefer the existing skill/tool catalog and installed project CLIs. Use `gh` for GitHub, `playwright-cli` for browser verification, and official/version-specific documentation when library behavior matters. Avoid installing duplicate skills or fetching an unpinned package merely to run an existing formatter.
 
-- `chrome` for Blink
-- `firefox` for Gecko
-- `webkit` for Safari/WebKit coverage
+MCP overhead depends on the harness: deferred tool loading can avoid loading every schema upfront. Keep integrations relevant rather than treating MCP itself as obsolete. Existing CLI choices remain useful for reproducibility and resource control.
 
-Use separate named sessions per engine so results stay isolated, but run those sessions sequentially. Only one Playwright browser session may be active at a time, machine-wide, because the contended resource is machine RAM and CPU rather than the repository. Open and close sessions through `./scripts/pw-session.sh`; it holds that shared lock so concurrent agents defer and retry browser work instead of saturating the machine. If an engine is intentionally skipped, record why.
-
-During iteration, use Chrome/Blink only. Run the full Chrome, Firefox, and WebKit sequence once the change is ready for final verification. Reuse each engine session for desktop and mobile by resizing it, close it in a finally-style cleanup, and only then open the next engine. Do not run profiler batches in parallel, and do not use `close-all` or `kill-all` while other agents may be active.
-
-```bash
-./scripts/pw-session.sh open verify-chrome https://seedit.localhost --browser=chrome
-playwright-cli -s=verify-chrome snapshot
-playwright-cli -s=verify-chrome resize 375 812
-playwright-cli -s=verify-chrome snapshot
-./scripts/pw-session.sh close verify-chrome
-```
-
-When the slot is busy, `open` exits 75; block on `./scripts/pw-session.sh open --wait[=SECONDS] ...` (default 300s) instead of retrying by hand. A lock left behind by an interrupted workflow is reclaimed automatically, because `open` drops any slot whose recorded browser is no longer running. Inspect the holder with `./scripts/pw-session.sh status`; `release <session>` is a last resort for the rare case where `status` cannot verify the browser state.
-
-```bash
-npm install -g @playwright/cli@latest
-playwright-cli install --skills
-```
-
-Skill install locations:
-
-- `.codex/skills/playwright-cli/`
-- `.cursor/skills/playwright-cli/`
-- `.claude/skills/playwright-cli/`
-
-## MCP Policy Rationale
-
-Avoid GitHub MCP and browser MCP servers for this project because they add significant tool-schema/context overhead.
-
-- GitHub operations: use `gh` CLI.
-- Browser operations: use `playwright-cli`.
-- If current browser reuse is needed, keep using Playwright-based attach paths rather than browser MCP servers.
+All browser sessions use `./scripts/pw-session.sh`, which enforces one active browser machine-wide. Default to a fresh isolated session. Current personal-browser access needs explicit authorization; reuse that authorization in subsequent steps. Run desktop/mobile in each engine sequentially, close the exact named session in cleanup, and never use `close-all`/`kill-all`. See the `playwright-cli` skill and [verification.md](verification.md).

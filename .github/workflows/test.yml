@@ -37,6 +37,11 @@ jobs:
             [ "$i" = "3" ] && exit 1
           done
 
+      - name: Check AI workflows
+        run: |
+          yarn ai-workflow:check
+          yarn ai-workflow:test
+
       - name: Build React App
         run: yarn build
         env:

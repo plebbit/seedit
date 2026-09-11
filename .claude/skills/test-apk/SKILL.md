@@ -1,155 +1,58 @@
 ---
 name: test-apk
-description: Test and debug Android APK features using a local Android emulator. Manages emulator lifecycle, builds/installs the APK, captures logcat diagnostics, and debugs the Capacitor file upload plugin (catbox.moe). Use when the user asks to test APK, debug Android, test uploads, run emulator tests, or says "test-apk".
+description: Test a seedit Android APK workflow with an emulator, focused logcat, and screenshots. Use when the user asks to test APK behavior, Android uploads, or an emulator flow.
 ---
 
-# Test APK on Android Emulator
+<!-- Generated from .agents/skills/test-apk/SKILL.md; run yarn ai-workflow:sync. -->
 
-## Overview
+# Test the Android APK
 
-Delegates APK testing to the dedicated `test-apk` subagent to keep the main context clean.
-That subagent manages the emulator, builds and installs only when needed, executes the requested workflow, and returns structured diagnostics.
+Establish the requested behavior and acceptance criteria. Run a small check directly, or delegate a substantial independent flow to the `test-apk` role with the exact scope, device serial, task paths, and evidence to return. One owner coordinates Android builds with other heavyweight verification.
 
-## Workflow
+## Repository facts to verify before a build
 
-### Step 1: Collect Test Requirements
+- `capacitor.config.json` sets `appId` to `seedit.android` and `webDir` to `build`.
+- `android/app/build.gradle` has an unflavored app; debug output is `android/app/build/outputs/apk/debug/app-debug.apk`.
+- `android/app/src/main/java/seedit/android/MainActivity.java` registers the upload plugin.
+- `FileUploaderPlugin.java` and `FileUtils.java` in that directory handle media upload and URI resolution.
+- There is no functional upload instrumentation suite. The committed `ExampleInstrumentedTest.java` is a template and still asserts `com.getcapacitor.app`, which differs from this app's ID. Do not report that template as coverage for an upload flow.
 
-Ask the user (or infer from context) what to test. Common scenarios:
+Recheck these facts against source when running the workflow. Do not copy commands for another project's Android flavors, automation-only plugin, or Gradle test filters.
 
-| Scenario | What to run |
-|----------|-------------|
-| Upload debugging (catbox.moe plugin) | Manual upload flow + logcat |
-| Manual APK interaction | Build, install, launch, capture logcat |
-| Regression check after a UI change | Build, install, drive the affected flow, screenshot |
+## Device ownership
 
-This repo has no committed Android instrumentation test suite — testing is manual flows driven over `adb` plus logcat evidence.
+1. Inspect `adb devices -l`, `ANDROID_HOME`, available AVDs, and installed SDK images before creating or starting anything. Use a compatible installed system image and device profile; do not assume a particular API level or ABI is installed.
+2. Select one device and use `adb -s SERIAL` for every command. Preserve preexisting emulators, data, and device settings. Do not drive a physical device unless that device is within the user's request.
+3. If starting an emulator is necessary, use a task-specific AVD name, record its name/serial/process, and wait for boot with a bounded timeout. Do not overwrite an existing AVD with `--force`.
+4. Clean up an emulator you started after verification unless the user wants it kept for iteration. Leave preexisting emulators running. Restore any task-changed settings when reusing a device.
 
-### Step 2: Delegate to the `test-apk` Subagent
+## Build and install only when needed
 
-Spawn the `test-apk` subagent with the prompt template below, filling in `{TEST_DESCRIPTION}` with the user's requirements and any exact commands or flows you want run.
+Reuse an installed APK only when it represents the code under test. Rebuild after relevant changes or when required by the request. These commands are sequential heavyweight work:
 
-```
-Use the Task tool:
-  subagent_type: "test-apk"
-  prompt: <see Prompt Template below>
-```
-
-### Prompt Template
-
-Copy and adapt this prompt when spawning the subagent. Replace `{TEST_DESCRIPTION}` and `{TEST_COMMANDS}`.
-
----
-
-```text
-You are testing the seedit Android APK on a local emulator.
-
-## Environment
-- ANDROID_HOME: use the contributor's local Android SDK path from the environment
-- Project root: the current repository root from `git rev-parse --show-toplevel`
-- Capacitor app (appId: seedit.android, webDir: build)
-- System image installed: system-images;android-35;google_apis;arm64-v8a
-- AVD name to use: seedit-test-api35
-- Device profile: pixel_6
-
-## What to Test
-{TEST_DESCRIPTION}
-
-## Emulator Management
-
-### Check if emulator is already running
-adb devices | grep emulator
-
-### If no emulator running, create AVD (if missing) and start it
-avdmanager list avd | grep seedit-test-api35 || \
-  echo "no" | avdmanager create avd \
-    --name seedit-test-api35 \
-    --package "system-images;android-35;google_apis;arm64-v8a" \
-    --device pixel_6 --force
-
-# Start emulator (background it, wait for boot)
-emulator -avd seedit-test-api35 -no-boot-anim -no-snapshot-save -netdelay none -netspeed full &
-adb wait-for-device
-# Poll for boot complete (up to 180s)
-for i in $(seq 1 90); do
-  boot=$(adb shell getprop sys.boot_completed 2>/dev/null | tr -d '\r')
-  [ "$boot" = "1" ] && break
-  sleep 2
-done
-
-# Disable animations for test reliability
-adb shell settings put global window_animation_scale 0
-adb shell settings put global transition_animation_scale 0
-adb shell settings put global animator_duration_scale 0
-
-### IMPORTANT: Do NOT kill the emulator when done. Leave it running for iterative debugging.
-
-## Build & Install APK
-
-### Only rebuild if user asked to, or if this is the first run:
-cd "$(git rev-parse --show-toplevel)"
-yarn build && npx cap sync android
-cd android && ./gradlew assembleDebug
-adb install -r app/build/outputs/apk/debug/app-debug.apk
-
-## Run Tests
-{TEST_COMMANDS}
-
-## Diagnostics to Capture
-
-### Always capture logcat filtered to the upload plugin:
-adb logcat -d -s FileUploaderPlugin:* Capacitor:* | tail -200
-
-### If the flow fails, also capture:
-- Full logcat last 500 lines: adb logcat -d -t 500
-- Screenshot: adb exec-out screencap -p > /tmp/emulator-screenshot.png
-- WebView console logs: adb logcat -d -s chromium:* | tail -100
-
-## Return Format
-
-Return a structured summary:
-1. **Emulator status**: running / newly started / failed to boot
-2. **APK build**: success / skipped / failed (with error)
-3. **APK install**: success / skipped / failed
-4. **Test results**: pass / fail with details
-5. **Logcat highlights**: relevant FileUploaderPlugin log lines
-6. **Diagnosis**: what went wrong and suggested fix (if the flow failed)
-7. **Screenshots**: path to any captured screenshots
+```bash
+corepack yarn build
+corepack yarn exec cap sync android
+# From android/:
+./gradlew assembleDebug
+# From the repository root, after confirming the output path:
+adb -s SERIAL install -r android/app/build/outputs/apk/debug/app-debug.apk
+adb -s SERIAL shell am start -n seedit.android/.MainActivity
 ```
 
----
+Capture the build result and installed version; a successful build is not evidence that the requested UI flow works. Keep generated build output out of commits and preserve preexisting files during cleanup.
 
-## Common Test Commands
+## Exercise the assigned flow
 
-### Launch App and Capture Logs
+For uploads, navigate to a submit form, choose a task-owned media fixture, and observe progress, completion, and the returned URL/error. If submitting would publish content, do so only when publication was explicitly authorized; test selection/upload and stop before the submit action otherwise.
 
-```text
-{TEST_COMMANDS} =
-adb shell am start -n seedit.android/.MainActivity
-sleep 5
-adb logcat -d -t 300 | tail -300
+Record the failure steps and focused logcat around the run. Prefer timestamp/process filters to clearing shared device logs. Quote wildcard filters so the shell does not expand them:
+
+```bash
+adb -s SERIAL logcat -d -t 300 'FileUploaderPlugin:*' 'Capacitor:*' 'chromium:*' '*:S'
+adb -s SERIAL exec-out screencap -p > /tmp/TASK-screenshot.png
 ```
 
-### Upload Flow Debug (catbox.moe plugin)
+Use a unique task screenshot path. Diagnose from current logs and source: failed uploads can involve network responses or picked-URI access, so do not assume the cause from a generic failure message.
 
-```text
-{TEST_COMMANDS} =
-# Launch the app, navigate to a submit form, pick a media file, and watch the plugin logs
-adb shell am start -n seedit.android/.MainActivity
-adb logcat -c
-# ...drive the upload flow in the app UI (or describe the steps for the contributor)...
-adb logcat -d -s FileUploaderPlugin:* | tail -200
-adb logcat -d -s chromium:* | tail -100
-```
-
-## Key Files for Debugging
-
-| File | Purpose |
-|------|---------|
-| `android/app/src/main/java/seedit/android/FileUploaderPlugin.java` | Capacitor plugin: uploads picked media directly to the catbox.moe API with progress updates |
-| `android/app/src/main/java/seedit/android/FileUtils.java` | File path/URI helpers used by the plugin |
-| `android/app/src/main/java/seedit/android/MainActivity.java` | Capacitor entry activity (registers the plugin) |
-| `capacitor.config.json` | Capacitor appId/plugin configuration |
-
-## Interpreting Upload Logs
-
-The plugin posts to `https://catbox.moe/user/api.php` and reports status updates (e.g. "Uploading to catbox.moe...") back to the WebView. Failures are usually network errors, catbox rate limits, or file-permission problems reading the picked URI — the logcat lines from `FileUploaderPlugin` include the failure cause.
+Return the device/ownership state, build and install status, exact tested flow, results, relevant diagnostics, screenshot paths, and remaining uncertainty. Do not modify application code unless that responsibility was assigned.
