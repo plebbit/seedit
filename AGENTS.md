@@ -16,7 +16,7 @@ For an unexpected repo-specific issue, tell the contributor and continue indepen
 
 ## Working principles
 
-- Define success criteria for non-trivial changes; verify the affected behavior before finishing.
+- Define completion for non-trivial work. Continue through implementation, relevant verification, and fixes until the requested outcome is complete; stop at the user’s requested boundary.
 - Understand the flow before editing. Prefer skipping unnecessary work, reusing repository code, standard-library/native features, then installed dependencies, before writing new code.
 - Keep diffs scoped. Preserve unrelated edits; do not reformat, rename, or refactor adjacent code without a task-related reason.
 - Simplicity must preserve correctness, clarity, accessibility, validation, security, and useful tests.
@@ -28,11 +28,11 @@ For an unexpected repo-specific issue, tell the contributor and continue indepen
 
 | Task | Required guidance/check |
 |---|---|
-| UI, components, CSS, or themes | Read [DESIGN.md](DESIGN.md) before editing; review against its Do/Don't list |
+| Visual design, layout, CSS, or themes | Read the relevant guidance in [DESIGN.md](DESIGN.md); review against its Do/Don't list |
 | Files under `src/` or `scripts/` | Read the directory's `AGENTS.md` |
-| Code changed | Run `corepack yarn agent:verify` once for the final code state; see [verification.md](docs/agent-playbooks/verification.md) |
-| React UI logic changed | Review applicable React rules once, then `yarn doctor` |
-| UI behavior/layout changed | Verify Chrome, Firefox, WebKit sequentially; include mobile when affected |
+| Code or automation changed | Select affected checks using [verification.md](docs/agent-playbooks/verification.md); use `agent:verify` for integration/build changes or an explicitly requested full pass |
+| React state, effects, data flow, or rendering performance changed | Review relevant React guidance; use `yarn doctor` when architecture/performance diagnostics would resolve a concern |
+| UI behavior/layout changed | Verify the affected flow; select browsers/viewports using [verification.md](docs/agent-playbooks/verification.md) |
 | Loading/navigation/performance work | Add a throttled Chromium pass; see [low-spec-verification.md](docs/agent-playbooks/low-spec-verification.md) |
 | Translation keys/values | Use the `translate` skill; one process applies locale changes at a time |
 | `package.json` changed | Run `corepack yarn install` to synchronize `yarn.lock` |
@@ -72,8 +72,8 @@ For an unexpected repo-specific issue, tell the contributor and continue indepen
 
 ## Verification and resource ownership
 
-- Never report completion without appropriate verification. Use the narrowest reliable behavior check first; add regression tests for non-trivial, testable bugs.
-- Run required checks for the final change once. Repeat or broaden them only after new edits, failures, or unresolved concerns. Documentation-only changes need document/workflow checks, not an application build.
+- Verify the affected behavior with the narrowest reliable checks. Add regression tests for non-trivial, testable bugs; do not add tests that merely restate a reversible wording or formatting edit.
+- Run applicable checks for the final change once. Repeat or broaden them only after relevant edits, failures, or unresolved concerns. Preserve explicit user, CI, and release requirements. Documentation-only changes need document/workflow checks.
 - Before heavy work, inspect existing processes. Stop only stale processes owned by this task; never stop a process of unclear ownership.
 - Serialize installs, builds, full tests/coverage, React Doctor, Android/Electron work, and browser profiling across the task. One agent owns heavy verification.
 - Use `corepack yarn exec vitest run --passWithNoTests --maxWorkers=2 [paths]` for agent-run tests. Do not use watch mode for verification.
@@ -82,7 +82,7 @@ For an unexpected repo-specific issue, tell the contributor and continue indepen
 - Use `./scripts/pw-session.sh open <session> ...` and `close <session>` for every browser session. One browser may be active machine-wide. Exit 75 means busy; defer or use the wrapper's bounded wait.
 - Run browser engines sequentially. Reuse each session for desktop/mobile and close the exact session in cleanup even after failure. Never use `close-all` or `kill-all`.
 - Reuse a compatible dev server in the same worktree when safe. Otherwise record and clean up the server/process you start. Never start a server for a documentation-only task.
-- Before finishing or committing meaningful changes, use `code-quality-review` once on the final diff. Address high-confidence findings within scope; review is advisory.
+- Review the final task-owned diff. Use `code-quality-review` for non-trivial changes or an explicit review request; apply high-confidence findings within existing authorization.
 
 ## Skills and delegation
 
@@ -93,7 +93,7 @@ For an unexpected repo-specific issue, tell the contributor and continue indepen
 - Give each child its scope, acceptance criteria, context, file ownership, and evidence to return. For an independent review, omit the parent's verdict.
 - Parallelize read-heavy work and non-overlapping edits; use at most four active workers by default. Children do not each run full builds. Browser work always remains serialized.
 - Use built-in worker/explorer roles where available; custom roles cover browser checks, profiling, Android, translation, and review. Avoid a compulsory chain of specialist agents.
-- Review React changes with `vercel-react-best-practices` or an equivalent available React skill once, applying only rules relevant to this Vite client. Reconsider new effects/memoization; load `you-might-not-need-an-effect` when the reason is unclear.
+- Use relevant React skill guidance for state/effect/data-flow or performance work. Load only rules that fit this Vite client; use `you-might-not-need-an-effect` for a focused effect review when the reason is unclear.
 - Prefer existing tools and local CLIs. Use external documentation when versions matter. Do not search for or install additional skills merely because a normal coding task mentions their domain.
 - Keep tool catalogs relevant. Deferred MCP loading can reduce context overhead, but unnecessary integrations still add choices; disable unused tools when their overhead is observable. Playwright CLI remains the project browser verification path.
 

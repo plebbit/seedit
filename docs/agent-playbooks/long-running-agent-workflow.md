@@ -62,6 +62,6 @@ Use a short structure like:
 - Item: F003
 - Summary: Updated the browser-check flow to use the shared init/bootstrap path.
 - Files: `.agents/roles/browser-check.md` and generated harness agent files
-- Verification: `yarn agent:verify`
+- Verification: affected checks and their outcomes (use `yarn agent:verify` when a full pass is required)
 - Next: Run the smoke flow and update the task-board status.
 ```

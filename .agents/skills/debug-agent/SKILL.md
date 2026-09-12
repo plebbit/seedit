@@ -1,6 +1,6 @@
 ---
 name: debug-agent
-description: Investigate a reported bug using the narrowest reliable evidence; add runtime instrumentation when existing logs, source, or targeted tests cannot establish the cause.
+description: Investigate a reported bug using source, tests, or runtime evidence to establish its cause.
 ---
 
 # Debug a Bug

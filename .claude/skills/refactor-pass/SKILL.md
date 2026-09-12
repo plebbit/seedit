@@ -1,50 +1,16 @@
 ---
 name: refactor-pass
-description: Perform a refactor pass focused on simplicity after recent changes. Use when the user asks for a refactor/cleanup pass, simplification, dead-code removal, or says "refactor pass".
+description: Simplify code while preserving behavior when the user requests a refactor or cleanup pass.
 ---
 
 <!-- Generated from .agents/skills/refactor-pass/SKILL.md; run yarn ai-workflow:sync. -->
 
 # Refactor Pass
 
-## Workflow
+Identify the requested scope from the conversation and diff; include relevant staged, unstaged, and untracked work. If no scope is supplied, inspect recent task changes without expanding into unrelated code.
 
-1. **Review recent changes** — identify simplification opportunities:
-   - `git diff` for unstaged changes
-   - `git diff --cached` for staged changes
-   - `git log --oneline -5` for recent commits if no uncommitted changes
+Prefer removing dead code, clarifying control flow, or reusing existing helpers over adding abstractions. Read surrounding source and tests before changing a boundary. Check history when the purpose of a guard, workaround, or optimization is unclear; keep it when its necessity cannot be established.
 
-2. **Apply refactors** (in priority order):
-   - Remove dead code and unreachable paths
-   - Straighten convoluted logic flows
-   - Remove excessive parameters or intermediary variables
-   - Remove premature optimization (unnecessary `useMemo`, `useCallback`, etc.)
-   - Extract duplicated logic into custom hooks (`src/hooks/`) or shared components (`src/components/`)
+Preserve observable behavior, error contracts, accessibility, and project architecture. Remove memoization only when its purpose and impact are understood. Shared/global state belongs in Zustand; local state and straightforward prop passing remain valid. Use Bitsocial hooks for React UI protocol data and derive values during render when appropriate. Preserve intentional non-React integrations such as Electron RPC bootstrap.
 
-3. **Verify** — run all three checks:
-   ```bash
-   yarn agent:verify
-   ```
-
-4. **Optional suggestions** — identify abstractions or reusable patterns only if they clearly improve clarity. Keep suggestions brief; don't refactor speculatively.
-
-## Project-Specific Patterns to Enforce
-
-When refactoring, watch for these anti-patterns from AGENTS.md:
-
-| Anti-pattern | Refactor to |
-|---|---|
-| `useState` for shared state | Zustand store in `src/stores/` |
-| `useEffect` for data fetching | @bitsocial/bitsocial-react-hooks (`useComment`, `useFeed`, etc.) |
-| `useEffect` to sync derived state | Calculate during render |
-| Copy-pasted logic across components | Custom hook in `src/hooks/` |
-| Boolean flag soup (`isLoading`, `isError`, `isSuccess`) | State machine in Zustand |
-| Prop drilling through many layers | Zustand store |
-
-## Rules
-
-- Before removing or simplifying code whose purpose is unclear, check `git log`/`git blame` for why it exists; if you still can't explain it, leave it alone and flag it instead (Chesterton's Fence)
-- Don't change behavior — refactors must be semantically equivalent
-- Don't introduce new dependencies
-- Format edited files with `corepack yarn exec oxfmt <file>` after changes
-- If the build/lint/type-check fails after refactoring, fix it before finishing
+Keep the diff focused and avoid new dependencies for routine cleanup. Verify the affected behavior using `docs/agent-playbooks/verification.md`; report what became simpler and any remaining uncertainty.

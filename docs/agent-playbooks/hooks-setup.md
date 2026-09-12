@@ -27,7 +27,7 @@ Run `corepack yarn install` explicitly when setting up a worktree or changing de
 
 ## Explicit verification
 
-Run `corepack yarn agent:verify` once after code changes. `scripts/agent-verify.mjs` runs `build`, `lint`, and `type-check` sequentially, prints the commands and working directory, and reports every failed check. It completes the remaining checks after a command fails and exits with the first failure's status. A missing executable returns 127; a terminated command reports its signal and returns the conventional signal exit status.
+Use `corepack yarn agent:verify` when the change needs the full pass described in [verification.md](verification.md). `scripts/agent-verify.mjs` runs `build`, `lint`, and `type-check` sequentially, prints the commands and working directory, and reports every failed check. It completes the remaining checks after a command fails and exits with the first failure's status. A missing executable returns 127; a terminated command reports its signal and returns the conventional signal exit status.
 
 The command does not remove, restore, or stage generated artifacts. The build itself can update output and generated files; inspect the resulting diff and clean up only output created by your own run. Tests, React Doctor, and browser verification remain explicit checks selected for the change.
 

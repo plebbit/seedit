@@ -1,49 +1,26 @@
-# Browser Session Management
+# Session ownership and coverage
 
-Seedit uses one browser session machine-wide. Open and close every session through `scripts/pw-session.sh`; use `playwright-cli -s=<name>` for all actions in that session. A named session isolates cookies, storage, cache, history, and tabs, but does not grant another concurrent browser slot.
+Use the task's URL and a unique session name. A reachable canonical `https://seedit.localhost` server may belong to another checkout; confirm compatibility before using it. A delegated browser checker does not manage dev servers. The task owner records and later stops only the server it started.
 
-```bash
-./scripts/pw-session.sh open verify-chrome https://seedit.localhost --browser=chrome
-playwright-cli -s=verify-chrome snapshot
-./scripts/pw-session.sh close verify-chrome
-```
+The wrapper shares a single browser slot across repositories and worktrees. Check `./scripts/pw-session.sh status` when busy. `open --wait=60` waits up to 60 seconds; unreadable liveness information does not authorize lock removal. The next open reclaims a stale slot only after its browser has stopped. Do not manually release a live or unknown owner's slot.
 
-Always close the exact session in cleanup, even after a failure. When open exits 75, another workflow owns the slot: defer work or use a bounded wait. Never remove a live or unknown lock.
+An owned-shell cleanup pattern:
 
 ```bash
-./scripts/pw-session.sh status
-./scripts/pw-session.sh open --wait=60 verify https://seedit.localhost
-playwright-cli -s=verify snapshot
-./scripts/pw-session.sh close verify
+set -e
+browser_session=check-task
+./scripts/pw-session.sh open --wait=60 "$browser_session" "https://seedit.localhost/#/" --browser=chrome
+trap './scripts/pw-session.sh close "$browser_session"' EXIT
+playwright-cli -s="$browser_session" snapshot
+# Complete the affected desktop flow before changing viewport.
+playwright-cli -s="$browser_session" resize 375 812
+playwright-cli -s="$browser_session" snapshot
 ```
 
-## Sequential comparisons
+Replace the URL/name and select coverage using `SKILL.md`. Finish desktop/mobile in the current engine, then close it before the next engine opens. Use a fresh shell for this trap or preserve an existing caller's cleanup handler.
 
-For cross-browser or A/B checks, finish one session before opening the next. Reuse it for desktop/mobile by resizing it. Record screenshots before closing.
+`resize` checks viewport layout. If touch/device behavior matters, use the installed CLI's `open --mobile` or `--device` option through the wrapper and record the emulation. Desktop resizing alone is not a touch test.
 
-```bash
-./scripts/pw-session.sh open variant-a 'https://example.com?variant=a'
-playwright-cli -s=variant-a screenshot --filename=variant-a.png
-./scripts/pw-session.sh close variant-a
-./scripts/pw-session.sh open variant-b 'https://example.com?variant=b'
-playwright-cli -s=variant-b screenshot --filename=variant-b.png
-./scripts/pw-session.sh close variant-b
-```
+`--persistent` keeps an isolated profile on disk; `--profile` selects one. Neither grants access to a contributor's active personal browser. Reuse such state only when authorized and supported by the installed harness/wrapper. Preserve profiles or data that predate this task.
 
-## Opening options
-
-The wrapper forwards browser options to playwright-cli. Choose only options needed by the test:
-
-```bash
-./scripts/pw-session.sh open verify https://seedit.localhost --browser=firefox --headed
-playwright-cli -s=verify snapshot
-./scripts/pw-session.sh close verify
-```
-
-Default to a fresh isolated session. For authorized persistent state, use a task-owned profile via `--persistent` or `--profile=<path>` if supported by the installed CLI. A profile can contain credentials; never commit it or delete another task's profile. Reuse the contributor's existing browser only with explicit authorization already given for that session mode.
-
-Omitting `-s` targets the CLI's default session, which may be different from the session opened by the wrapper. Use the explicit name consistently, including commands in other reference files. Replace generic `example` names with short task-specific names.
-
-## Cleanup and diagnostics
-
-Use `playwright-cli list --all` and the wrapper's `status` to inspect sessions. Close only the session this task owns. Do not run global `close-all` or `kill-all`, including after an error. If an owned browser has already died, the next wrapper open can reclaim its stale slot; do not broaden cleanup to other daemons.
+Do not launch parallel A/B sessions. Compare variants sequentially with equivalent starting state. Never close default/unknown sessions, use global cleanup commands, or terminate extra Vite processes based on their count.

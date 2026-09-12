@@ -1,4 +1,4 @@
 interface:
   display_name: "Review and Merge PR"
-  short_description: "Check PR feedback, fix valid findings, and merge when ready"
-  default_prompt: "Review the current PR, address valid bot or human feedback, and merge it when ready."
+  short_description: "Review PR feedback and act within the requested scope"
+  default_prompt: "Use $review-and-merge-pr to assess the current PR and perform only the fixes or merge requested in this task."

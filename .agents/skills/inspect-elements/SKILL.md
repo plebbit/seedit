@@ -1,102 +1,31 @@
 ---
 name: inspect-elements
-description: Resolve on-screen seedit DOM elements to React source files, line numbers, component names, and ownership stacks using the app's dev-only element-source helpers and playwright-cli. Use when an agent needs to inspect a page element, map a snapshot ref to source code, confirm which component rendered a node, or follow up after $profile-browsing finds a rerender hotspot and needs file-level attribution.
+description: Map a visible seedit DOM node to its React source when file or component attribution is needed.
 ---
 
 # Inspect Elements
 
-Use this skill to jump from a concrete DOM node in the running seedit app to the React file and component stack that produced it.
+Map the requested live DOM node to source using the dev-only `window.__ELEMENT_SOURCE__` helper. Use an existing compatible dev server in this worktree or record ownership of one started for the task; production does not expose the helper.
 
-## Prerequisites
-
-- Dev server running at `https://seedit.localhost`
-- `playwright-cli` installed
-- Use the local dev app, not production. The element-source helpers are only exposed in dev mode.
-
-## Quick workflow
-
-1. Open the target route with `./scripts/pw-session.sh` so the shared browser slot is respected.
-2. Run `playwright-cli snapshot` and choose the relevant element ref.
-3. Resolve that ref through the app helper:
+Reuse a compatible session supplied by the calling task when it already owns the browser slot; use its exact name and leave its lifecycle with that caller. Otherwise open an owned session through `./scripts/pw-session.sh`. Use `-s=<session>` on every command. The examples use `inspect`; substitute the actual name and URL, and skip `open` when reusing a session:
 
 ```bash
-playwright-cli -s=inspect eval "async el => JSON.stringify(await window.__ELEMENT_SOURCE__.resolve(el))" e7
-```
-
-The result includes:
-
-- `source`: the most useful file/line match for the element
-- `componentName`: the nearest meaningful React component
-- `stack`: ownership stack from the concrete node upward
-- `tagName`: the underlying DOM tag
-
-## Session setup
-
-```bash
-./scripts/pw-session.sh open inspect https://seedit.localhost
-playwright-cli -s=inspect goto https://seedit.localhost/#/s/all
+./scripts/pw-session.sh open inspect https://seedit.localhost/#/s/all
 playwright-cli -s=inspect eval "window.__ELEMENT_SOURCE__?.ready ?? false"
 playwright-cli -s=inspect snapshot
-```
-
-If `ready` is `false`, wait a moment and evaluate again. If `window.__ELEMENT_SOURCE__?.error` is set, report that error instead of continuing.
-
-## Resolve strategies
-
-Prefer snapshot refs because they target the exact live DOM node you just inspected.
-
-### Snapshot ref
-
-```bash
 playwright-cli -s=inspect eval "async el => JSON.stringify(await window.__ELEMENT_SOURCE__.resolve(el))" e7
 ```
 
-### Selector
+Choose `e7` from the current snapshot; do not reuse a stale ref. If the helper is not ready, check `window.__ELEMENT_SOURCE__?.error` and allow its dev import to complete. Report persistent errors or missing helpers instead of guessing an attribution.
 
-Use this only when the element is easy to target and a snapshot ref is not practical.
+The result's `source`, `componentName`, and `stack` identify the node's file/line and React ownership. Inspect the source before editing; an attributed file is a starting point, not proof that it causes the reported behavior. For a compact trace, use `window.__ELEMENT_SOURCE__.formatStack(info.stack, 5)` on a resolved result.
 
-```bash
-playwright-cli -s=inspect eval "JSON.stringify(await window.__ELEMENT_SOURCE__.resolveBySelector('[data-testid=\"composer\"]'))"
-```
+When a snapshot ref is impractical, use `resolveBySelector(selector)` for a precise selector or `resolveAtPoint(x, y)` for viewport coordinates. If `source` is null, inspect useful stack frames or a nearby parent. Report an unresolved node when both are empty.
 
-### Screen coordinates
-
-Useful when you have a screenshot or a visually obvious hotspot.
-
-```bash
-playwright-cli -s=inspect eval "JSON.stringify(await window.__ELEMENT_SOURCE__.resolveAtPoint(320, 420))"
-```
-
-## Format the ownership stack
-
-```bash
-playwright-cli -s=inspect eval "async el => { const info = await window.__ELEMENT_SOURCE__.resolve(el); return JSON.stringify({ ...info, formattedStack: window.__ELEMENT_SOURCE__.formatStack(info.stack, 5) }); }" e7
-```
-
-Use `formattedStack` when you need a short, readable trace for the final report.
-
-Close the session immediately after collecting the needed source evidence, including when resolution fails:
+Close the exact session in cleanup only when this inspection opened it, including on resolution failure. Leave a caller-owned session open for the caller to continue and close:
 
 ```bash
 ./scripts/pw-session.sh close inspect
 ```
 
-## Profiling follow-up
-
-When `$profile-browsing` reports a hot route or rerender-heavy area:
-
-1. Reopen the route in a fresh Playwright session through `./scripts/pw-session.sh`.
-2. Snapshot the concrete list item, card, modal, or toolbar node that looks relevant.
-3. Resolve it with `window.__ELEMENT_SOURCE__.resolve(...)`.
-4. Use `source.filePath` as the direct edit target and `stack` to understand parent ownership.
-
-This is a complement to `react-scan`, not a replacement. `react-scan` tells you which components rerender too often. `inspect-elements` tells you which exact source file produced the node you are looking at.
-
-## Rules
-
-- Prefer snapshot refs over brittle selectors.
-- Inspect the actual node the user cares about, not a distant wrapper, unless wrappers are the suspected problem.
-- If `source` is null but `stack` exists, use the first useful stack frame rather than guessing.
-- If both `source` and `stack` are empty, report that the node could not be resolved and pick a nearby parent element instead.
-- If the browser slot is held, retry after the owning workflow finishes or block on `./scripts/pw-session.sh open --wait ...`; do not bypass the lock or use `close-all`/`kill-all`.
-- Close the exact named session in a finally-style cleanup.
+For a new session, a slot owned by another task is a reason to wait or use the wrapper's bounded wait, never to bypass the lock. Do not wait on the calling task's own session; reuse it as described above. Stop only a server this task started. Use the `playwright-cli` skill for session operations and `profile-browsing` only when performance measurement is part of the request.

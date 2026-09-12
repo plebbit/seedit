@@ -122,7 +122,7 @@ For an unexpected repo-specific issue, tell the contributor and continue indepen
 
 ## Working principles
 
-- Define success criteria for non-trivial changes; verify the affected behavior before finishing.
+- Define completion for non-trivial work. Continue through implementation, relevant verification, and fixes until the requested outcome is complete; stop at the user’s requested boundary.
 - Understand the flow before editing. Prefer skipping unnecessary work, reusing repository code, standard-library/native features, then installed dependencies, before writing new code.
 - Keep diffs scoped. Preserve unrelated edits; do not reformat, rename, or refactor adjacent code without a task-related reason.
 - Simplicity must preserve correctness, clarity, accessibility, validation, security, and useful tests.
@@ -134,11 +134,11 @@ For an unexpected repo-specific issue, tell the contributor and continue indepen
 
 | Task | Required guidance/check |
 |---|---|
-| UI, components, CSS, or themes | Read [DESIGN.md](DESIGN.md) before editing; review against its Do/Don't list |
+| Visual design, layout, CSS, or themes | Read the relevant guidance in [DESIGN.md](DESIGN.md); review against its Do/Don't list |
 | Files under `src/` or `scripts/` | Read the directory's `AGENTS.md` |
-| Code changed | Run `corepack yarn agent:verify` once for the final code state; see [verification.md](docs/agent-playbooks/verification.md) |
-| React UI logic changed | Review applicable React rules once, then `yarn doctor` |
-| UI behavior/layout changed | Verify Chrome, Firefox, WebKit sequentially; include mobile when affected |
+| Code or automation changed | Select affected checks using [verification.md](docs/agent-playbooks/verification.md); use `agent:verify` for integration/build changes or an explicitly requested full pass |
+| React state, effects, data flow, or rendering performance changed | Review relevant React guidance; use `yarn doctor` when architecture/performance diagnostics would resolve a concern |
+| UI behavior/layout changed | Verify the affected flow; select browsers/viewports using [verification.md](docs/agent-playbooks/verification.md) |
 | Loading/navigation/performance work | Add a throttled Chromium pass; see [low-spec-verification.md](docs/agent-playbooks/low-spec-verification.md) |
 | Translation keys/values | Use the `translate` skill; one process applies locale changes at a time |
 | `package.json` changed | Run `corepack yarn install` to synchronize `yarn.lock` |
@@ -178,8 +178,8 @@ For an unexpected repo-specific issue, tell the contributor and continue indepen
 
 ## Verification and resource ownership
 
-- Never report completion without appropriate verification. Use the narrowest reliable behavior check first; add regression tests for non-trivial, testable bugs.
-- Run required checks for the final change once. Repeat or broaden them only after new edits, failures, or unresolved concerns. Documentation-only changes need document/workflow checks, not an application build.
+- Verify the affected behavior with the narrowest reliable checks. Add regression tests for non-trivial, testable bugs; do not add tests that merely restate a reversible wording or formatting edit.
+- Run applicable checks for the final change once. Repeat or broaden them only after relevant edits, failures, or unresolved concerns. Preserve explicit user, CI, and release requirements. Documentation-only changes need document/workflow checks.
 - Before heavy work, inspect existing processes. Stop only stale processes owned by this task; never stop a process of unclear ownership.
 - Serialize installs, builds, full tests/coverage, React Doctor, Android/Electron work, and browser profiling across the task. One agent owns heavy verification.
 - Use `corepack yarn exec vitest run --passWithNoTests --maxWorkers=2 [paths]` for agent-run tests. Do not use watch mode for verification.
@@ -188,7 +188,7 @@ For an unexpected repo-specific issue, tell the contributor and continue indepen
 - Use `./scripts/pw-session.sh open <session> ...` and `close <session>` for every browser session. One browser may be active machine-wide. Exit 75 means busy; defer or use the wrapper's bounded wait.
 - Run browser engines sequentially. Reuse each session for desktop/mobile and close the exact session in cleanup even after failure. Never use `close-all` or `kill-all`.
 - Reuse a compatible dev server in the same worktree when safe. Otherwise record and clean up the server/process you start. Never start a server for a documentation-only task.
-- Before finishing or committing meaningful changes, use `code-quality-review` once on the final diff. Address high-confidence findings within scope; review is advisory.
+- Review the final task-owned diff. Use `code-quality-review` for non-trivial changes or an explicit review request; apply high-confidence findings within existing authorization.
 
 ## Skills and delegation
 
@@ -199,7 +199,7 @@ For an unexpected repo-specific issue, tell the contributor and continue indepen
 - Give each child its scope, acceptance criteria, context, file ownership, and evidence to return. For an independent review, omit the parent's verdict.
 - Parallelize read-heavy work and non-overlapping edits; use at most four active workers by default. Children do not each run full builds. Browser work always remains serialized.
 - Use built-in worker/explorer roles where available; custom roles cover browser checks, profiling, Android, translation, and review. Avoid a compulsory chain of specialist agents.
-- Review React changes with `vercel-react-best-practices` or an equivalent available React skill once, applying only rules relevant to this Vite client. Reconsider new effects/memoization; load `you-might-not-need-an-effect` when the reason is unclear.
+- Use relevant React skill guidance for state/effect/data-flow or performance work. Load only rules that fit this Vite client; use `you-might-not-need-an-effect` for a focused effect review when the reason is unclear.
 - Prefer existing tools and local CLIs. Use external documentation when versions matter. Do not search for or install additional skills merely because a normal coding task mentions their domain.
 - Keep tool catalogs relevant. Deferred MCP loading can reduce context overhead, but unnecessary integrations still add choices; disable unused tools when their overhead is observable. Playwright CLI remains the project browser verification path.
 
@@ -424,8 +424,8 @@ These rules apply to `src/**`. Follow the repo-root `AGENTS.md` first, then use 
 - Keep route composition in `src/views/`, reusable UI in `src/components/`, shared logic in `src/hooks/`, and shared app state in `src/stores/`.
 - Before adding new state, decide whether it belongs in render, a reusable hook, or a Zustand store. Do not duplicate the same state logic across views.
 - Use `@bitsocial/bitsocial-react-hooks` for data access. Do not add data-fetching `useEffect` calls or effects that only synchronize derived state.
-- Read `DESIGN.md` before visual, layout, component, or theme work. Preserve Seedit's compact old.reddit-inspired hierarchy and verify both light and dark themes.
-- When changing React UI logic, review applicable React rules once with `vercel-react-best-practices` or an equivalent available skill before final verification. Run `yarn agent:verify` and `yarn doctor`. When changing layout or interaction, verify desktop and mobile behavior with `playwright-cli`.
+- Read `DESIGN.md` before visual, layout, or theme work. Preserve Seedit's compact old.reddit-inspired hierarchy and verify both light and dark themes.
+- For state/effect/data-flow or rendering-performance changes, review relevant React guidance. Choose checks and browser/viewports using `docs/agent-playbooks/verification.md`; a copy edit alone does not require React Doctor or a full build.
 - Prefer extending nearby tests under `src/**/__tests__/` when touching already-covered behavior.
 ```
 
@@ -640,7 +640,7 @@ Use a short structure like:
 - Item: F003
 - Summary: Updated the browser-check flow to use the shared init/bootstrap path.
 - Files: `.agents/roles/browser-check.md` and generated harness agent files
-- Verification: `yarn agent:verify`
+- Verification: affected checks and their outcomes (use `yarn agent:verify` when a full pass is required)
 - Next: Run the smoke flow and update the task-board status.
 ```
 ```
@@ -683,7 +683,7 @@ git show <commit-hash> -- path/to/file.tsx
 
 ## Troubleshooting Rule
 
-When blocked, search the web for recent fixes/workarounds.
+Search current documentation or upstream issues when the blocker concerns a dependency or platform behavior. If access to private source or a user-only reproduction step is missing, report that specific gap instead of doing an unrelated web search.
 ```
 
 ---
@@ -744,7 +744,21 @@ Source: https://github.com/bitsocialnet/seedit/blob/master/docs/agent-playbooks/
 
 Shared skills live in `.agents/skills/`. Edit these sources, then run `yarn ai-workflow:sync` to generate `.claude/skills/` for Claude Code. Codex and Cursor discover `.agents/skills/` directly; do not restore the duplicate `.codex/skills/` or `.cursor/skills/` roots.
 
-Shared role prompts live in `.agents/roles/*.md`. The same generator produces standalone Codex TOMLs and Claude/Cursor Markdown agents. Generated files identify their source. After removing a source, remove its obsolete generated outputs explicitly; the validator reports them rather than silently deleting files.
+Shared role prompts live in `.agents/roles/*.md`. This is a repository-specific source format, not a native agent discovery path. `scripts/ai-workflow-files.mjs` converts these sources into the app-specific files below; `yarn ai-workflow:sync` writes them. Commit the generated files alongside their sources so a fresh checkout has the native configuration without running a generator first. After removing a source, remove its obsolete generated outputs explicitly; the validator reports them rather than silently deleting files.
+
+## Native discovery paths
+
+Verified against official documentation on 2026-09-12:
+
+| App | Project instructions | Skills used by this repository | Custom agents used by this repository |
+|---|---|---|---|
+| Codex | `AGENTS.md` | `.agents/skills/<name>/SKILL.md` | Generated `.codex/agents/<name>.toml` |
+| Cursor | `AGENTS.md`; `.cursor/rules/*.mdc` remains available for Cursor-specific conditional rules | `.agents/skills/<name>/SKILL.md` | Generated `.cursor/agents/<name>.md` |
+| Claude Code | `CLAUDE.md` imports `@AGENTS.md` | Generated `.claude/skills/<name>/SKILL.md` | Generated `.claude/agents/<name>.md` |
+
+Sources: [Codex skills](https://learn.chatgpt.com/docs/build-skills), [Codex subagents](https://learn.chatgpt.com/docs/agent-configuration/subagents), [Cursor rules](https://cursor.com/docs/rules), [Cursor skills](https://cursor.com/docs/skills), [Cursor subagents](https://cursor.com/docs/subagents), [Claude memory](https://code.claude.com/docs/en/memory), [Claude skills](https://code.claude.com/docs/en/skills), [Claude subagents](https://code.claude.com/docs/en/sub-agents).
+
+Do not replace the native agent directories with `.agents/roles` or assume Claude discovers `.agents/skills`. Claude can still read a referenced file there as ordinary project context. Cursor also discovers `.claude/skills` for compatibility; copies remain synchronized, but its published skills guide does not specify deduplication across these roots. Check the installed app's skill catalog rather than promising that duplicate entries cannot appear.
 
 The AI directories use LF line endings through `.gitattributes` so generated text stays identical across platforms. Supporting skill assets are copied as bytes.
 
@@ -758,7 +772,7 @@ The AI directories use LF line endings through `.gitattributes` so generated tex
 | `review-and-merge-pr` | Triage PR feedback; fix/publish/merge only within the requested scope |
 | `fix-merge-conflicts` | Resolve conflicts and verify the merged result |
 | `release`, `release-description` | Prepare changelog/release wording and perform authorized release steps |
-| `code-quality-review` | One advisory review of the final diff |
+| `code-quality-review` | Review non-trivial diffs or an explicitly requested quality concern |
 | `refactor-pass`, `deslop` | Requested cleanup of existing changes |
 | `debug-agent` | Evidence-based debugging, with instrumentation when needed |
 | `you-might-not-need-an-effect` | Focused effect/memo review |
@@ -776,19 +790,25 @@ The AI directories use LF line endings through `.gitattributes` so generated tex
 
 Keep custom roles for `browser-check`, `profiler`, `test-apk`, `translator`, and `reviewer`. Use the harness's built-in worker/general-purpose or explorer role for ordinary implementation and code discovery. The parent assigns acceptance criteria and ownership; one owner runs heavyweight checks.
 
-Codex agent files include `name`, `description`, and `developer_instructions`. Leave model and reasoning unset to inherit the session. `.codex/config.toml` caps concurrent children at four using `max_concurrent_threads_per_session`. Source role metadata may specify `claude-model` and `cursor-model` for intentional, harness-supported cost choices; these are not copied into Codex configs. `sandbox-mode: read-only` maps to Codex's sandbox and Cursor's `readonly`; Claude's tool list and the role instructions restrict its review workflow, but Bash access is not an OS-level sandbox.
+Codex agent files include `name`, `description`, and `developer_instructions`. Leave model and reasoning unset to inherit the session. `.codex/config.toml` caps concurrent children at four using `max_concurrent_threads_per_session`. `claude-model` and `cursor-model` are fields understood only by our generator. For example, the translator source's `claude-model: haiku` becomes `model: haiku` in `.claude/agents/translator.md`; `cursor-model: composer-2.5[fast=true]` becomes `model: composer-2.5[fast=true]` in `.cursor/agents/translator.md`. Neither source field is copied into Codex configs. Claude documents the `haiku` alias; Cursor documents bracket parameters for subagent models and the Composer 2.5 `fast` parameter in its [SDK model reference](https://cursor.com/docs/sdk/typescript#model-parameters). This replaces the unverified `composer-2.5-fast` spelling. Model availability and app-level overrides still depend on the active account and settings. `sandbox-mode: read-only` maps to Codex's sandbox and Cursor's `readonly`; Claude's tool list and the role instructions restrict its review workflow, but Bash access is not an OS-level sandbox.
 
 Shared skill frontmatter uses `disable-model-invocation: true` for user-invoked workflows where applicable. Codex's corresponding setting lives in `agents/openai.yaml` as `policy.allow_implicit_invocation: false`; the validator requires both. Invocation metadata supplements explicit authorization rules; a review request never authorizes publication merely because a skill includes publishing steps.
 
 ## Checks and discovery
 
 - `yarn ai-workflow:sync` regenerates compatibility outputs using installed `js-yaml` and `smol-toml`.
-- `yarn ai-workflow:check` parses source/frontmatter/configs, checks generated outputs, invocation metadata, role models, and the formatter-only hook wiring.
+- `yarn ai-workflow:check` parses source/frontmatter/configs, checks generated outputs, invocation metadata, model-field placement, and the formatter-only hook wiring. It does not resolve model identifiers against a provider catalog.
 - `yarn ai-workflow:test` runs isolated Node fixtures for hook payloads, verification ownership, translation writers, and workflow generation/validation.
 - After upgrading an agent application, verify skill/role discovery in that application. Syntax/parity checks do not replace a loader check. Reload the application if an existing session retains an old catalog.
 - Hooks require the harness's project trust and hook review; do not bypass trust to make a check pass. See [hooks-setup.md](hooks-setup.md).
 
-Current format references (reviewed 2026-09-11): [Codex skills](https://learn.chatgpt.com/docs/build-skills), [Codex subagents](https://learn.chatgpt.com/docs/agent-configuration/subagents), [Cursor skills](https://cursor.com/docs/skills), [Claude skills](https://code.claude.com/docs/en/skills).
+## Maintaining useful instructions
+
+Follow [OpenAI’s skills and prompts guidance](https://developers.openai.com/blog/rethinking-skills-and-prompts-for-gpt-6-astra) (reviewed 2026-09-12): keep descriptions precise, load details only when relevant, and preserve the user’s requested scope. Shared skills serve different models; retain project-specific invariants while allowing routine implementation choices.
+
+Keep a skill’s purpose, decision boundaries, and essential constraints in `SKILL.md`. Link substantial mode-specific commands or examples as optional references. Put trigger conditions early in short descriptions; a matching keyword alone should not expand the task. Preserve existing invocation metadata unless its behavior is intentionally being changed.
+
+After a substantial instruction change, exercise a few representative small and large requests. Check which skills/references were selected, whether actions stayed within scope, whether verification matched the change, and whether authorized work completed. Schema and fixture tests establish tooling correctness, not agent decision quality.
 
 ## Tools and browser ownership
 
@@ -796,7 +816,7 @@ Prefer the existing skill/tool catalog and installed project CLIs. Use `gh` for 
 
 MCP overhead depends on the harness: deferred tool loading can avoid loading every schema upfront. Keep integrations relevant rather than treating MCP itself as obsolete. Existing CLI choices remain useful for reproducibility and resource control.
 
-All browser sessions use `./scripts/pw-session.sh`, which enforces one active browser machine-wide. Default to a fresh isolated session. Current personal-browser access needs explicit authorization; reuse that authorization in subsequent steps. Run desktop/mobile in each engine sequentially, close the exact named session in cleanup, and never use `close-all`/`kill-all`. See the `playwright-cli` skill and [verification.md](verification.md).
+All browser sessions use `./scripts/pw-session.sh`, which enforces one active browser machine-wide. Default to a fresh isolated session. Current personal-browser access needs explicit authorization; reuse that authorization in subsequent steps. Choose browsers/viewports for the affected behavior, run selected engines sequentially, close the exact named session in cleanup, and never use `close-all`/`kill-all`. See the `playwright-cli` skill and [verification.md](verification.md).
 ```
 
 ---
@@ -808,35 +828,47 @@ Source: https://github.com/bitsocialnet/seedit/blob/master/docs/agent-playbooks/
 ```markdown
 # Agent Verification
 
-Use checks that establish the requested behavior. Record commands and outcomes so the next agent does not repeat a successful check without a reason.
+Choose checks that establish the requested behavior. Finish the authorized implementation and fix failures caused by it; report unrelated failures with evidence. Reuse successful checks for unchanged code instead of starting the same pass again.
 
-## Code changes
+## Select checks by impact
 
-1. Inspect existing workloads. Coordinate with other agents before heavy work; never stop an unfamiliar process.
-2. Run focused behavior tests when applicable. For Vitest use `corepack yarn exec vitest run --passWithNoTests --maxWorkers=2 [paths]`.
-3. One owner runs `corepack yarn agent:verify`: build, lint, then type-check, sequentially. It uses a machine-wide lock and reports contention rather than starting another build. Direct manual commands still require coordination.
-4. Add `yarn doctor` for React UI logic and advisory `yarn knip` for dependency/import changes. Investigate newly introduced findings rather than preexisting scores.
-5. Perform one advisory `code-quality-review` on the final diff. Apply only high-confidence findings within scope.
+| Change | Default verification |
+|---|---|
+| Prose, comments, or formatting | Inspect the diff and relevant links/output; run required generators. No application build for documentation alone |
+| Isolated logic or automation | Affected behavior tests or a focused invocation; lint/type-check when the edited language or interface warrants it |
+| Shared runtime behavior, dependencies, build/package configuration, or substantial integration | Focused behavior tests plus `corepack yarn agent:verify` for build, lint, and type-check |
+| CSS, themes, or layout only | Affected browser/viewport/theme checks below; add a build for CSS processing, assets/import wiring, or integration uncertainty. Styling alone does not require React Doctor |
+| React state/effects/data flow or rendering performance | Inspect the relevant architecture; run `yarn doctor` when diagnostics would resolve a concern or a check explicitly requires it |
+| Dependencies or import graph | Advisory `yarn knip`; resolve relevant new findings |
+| Release, CI, or explicitly requested full verification | Run that workflow's required checks even when a smaller local edit would normally need less |
 
-Repeat a check only if relevant files changed after it passed, it failed, or new evidence raises a concern. No lifecycle hook runs builds, installs, audits, or Git cleanup. Security audits and coverage remain explicit, task-driven checks.
+For a small edit, name the behavior being checked and why the chosen evidence is enough. Broaden checks when the impact crosses a shared boundary, a failure appears, or uncertainty remains. Do not add tests that only mirror wording or formatting. An existing reliable test is preferable to new instrumentation.
 
-Builds can refresh generated assets and write `build/`. Inspect status before and after verification, preserve preexisting changes/artifacts, and clean up only output created by this task. The verifier never restores or deletes output directories for you.
+For focused Vitest runs use `corepack yarn exec vitest run --passWithNoTests --maxWorkers=2 [paths]`. Add or extend nearby regression tests for non-trivial, testable bugs. The AI workflow Node tests use disposable fixtures and fake commands without production access; run and repair them within the requested task without another approval pause.
+
+## Browser coverage
+
+Verify the affected flow in Chrome/Blink for a small browser change. Also cover Firefox/Gecko and WebKit/Safari for shared CSS/layout/responsiveness changes, browser-sensitive behavior or APIs, broad interaction changes, releases, or an explicit cross-browser requirement. Include desktop/mobile when layout, responsiveness, or touch behavior is affected. Check changed theme behavior in relevant themes.
+
+Use the `playwright-cli` skill and `./scripts/pw-session.sh` for every session. Run selected engines sequentially and close the exact session in cleanup even if a check fails. Reuse a compatible server in the same worktree or record and stop only the one this task starts. Use a fresh profile unless current-session access is already authorized and required.
+
+For loading, navigation, or interaction performance, add a Chromium low-spec pass with `./scripts/pw-throttle.sh <session> mid`; see [low-spec verification](low-spec-verification.md). Firefox and WebKit remain unthrottled.
+
+## Full verification and ownership
+
+Before heavy work, inspect existing workloads; never stop an unfamiliar process. One owner runs `corepack yarn agent:verify` when a full pass is needed. It serializes build, lint, and type-check behind a machine-wide lock and reports contention. Installs, tests, browser work, and directly launched builds still require coordination.
+
+Builds may refresh generated assets and create `build/`. Inspect status before and after, preserve preexisting artifacts and changes, and remove only output created by this task. The verifier never restores or deletes output for you. No lifecycle hook runs builds, installs, audits, or Git cleanup.
+
+Review the final task-owned diff. For non-trivial changes or an explicit quality review, use `code-quality-review` once and apply high-confidence findings within existing authorization. Passing a check or review does not authorize publication.
 
 ## Workflow and document changes
 
-For shared instructions, skills, roles, or hooks run `yarn ai-workflow:sync`, `yarn ai-workflow:check`, and `yarn ai-workflow:test`. The test command uses Node's test runner on isolated fixtures, without launching an app or browser. Run `yarn llms:generate` after changing public English docs or AI context. Application builds are unnecessary for documentation-only changes.
+For shared skills, roles, or hooks run `yarn ai-workflow:sync`, `yarn ai-workflow:check`, and `yarn ai-workflow:test`. Run `yarn llms:generate` after public English docs or AI context changes. These checks do not require an app server or browser. When only prose changed, skip the application build; changing executable workflow code may need the focused or full checks above.
 
-## Browser verification
+After substantial prompt changes, try representative requests for skill selection, scope, completion, and check choice. Use isolated fixtures for actions where possible; a read-only scenario review is useful evidence but does not prove live execution behavior.
 
-Read the `playwright-cli` skill. Use Chrome for iteration, then verify the final affected flow in Chrome/Blink, Firefox/Gecko, and WebKit/Safari sequentially. Include desktop and mobile when layout, responsiveness, or touch behavior changed.
-
-All sessions use `./scripts/pw-session.sh`; close the exact session in a finally-style cleanup before opening the next engine. Use `./scripts/pw-throttle.sh <session> mid` for a Chromium low-spec pass when loading, navigation, or interaction speed matters. The [low-spec playbook](low-spec-verification.md) describes the procedure.
-
-Use a fresh isolated profile unless current-session access is already authorized and required. Do not attach to a personal browser or silently switch an explicitly requested session mode. Reuse a compatible server in the task worktree, or record and stop a task-owned server when finished.
-
-## Durable evidence
-
-For a real handoff, record acceptance criteria, changed files, check results, limitations, and next steps using the [long-running workflow](long-running-agent-workflow.md). A single delegated task does not itself require a persistent task board or smoke server.
+Record commands, outcomes, and limits in the task report. Use the [long-running workflow](long-running-agent-workflow.md) only when a durable handoff is needed.
 ```
 
 ---
@@ -875,7 +907,7 @@ Run `corepack yarn install` explicitly when setting up a worktree or changing de
 
 ## Explicit verification
 
-Run `corepack yarn agent:verify` once after code changes. `scripts/agent-verify.mjs` runs `build`, `lint`, and `type-check` sequentially, prints the commands and working directory, and reports every failed check. It completes the remaining checks after a command fails and exits with the first failure's status. A missing executable returns 127; a terminated command reports its signal and returns the conventional signal exit status.
+Use `corepack yarn agent:verify` when the change needs the full pass described in [verification.md](verification.md). `scripts/agent-verify.mjs` runs `build`, `lint`, and `type-check` sequentially, prints the commands and working directory, and reports every failed check. It completes the remaining checks after a command fails and exits with the first failure's status. A missing executable returns 127; a terminated command reports its signal and returns the conventional signal exit status.
 
 The command does not remove, restore, or stage generated artifacts. The build itself can update output and generated files; inspect the resulting diff and clean up only output created by your own run. Tests, React Doctor, and browser verification remain explicit checks selected for the change.
 

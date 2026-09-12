@@ -1,149 +1,23 @@
 ---
 name: you-might-not-need-an-effect
-description: Analyze code for useEffect anti-patterns and refactor to simpler alternatives. Use when the user says "you might not need an effect", "check effects", "useEffect audit", or asks to review useEffect usage.
+description: Review React effects and memoization when the user requests an effect audit or a change has unclear synchronization needs.
 disable-model-invocation: true
 ---
 
 <!-- Generated from .agents/skills/you-might-not-need-an-effect/SKILL.md; run yarn ai-workflow:sync. -->
 
-# You Might Not Need an Effect
+# Review Effects
 
-Analyze code for `useEffect` anti-patterns and refactor to simpler, more correct alternatives.
+Inspect the requested files or task-owned diff. An audit returns findings; apply fixes when the user requests implementation or cleanup. Preserve existing authorization without inventing an additional approval step. Use surrounding source and relevant tests to establish each effect's actual purpose.
 
-Based on https://react.dev/learn/you-might-not-need-an-effect
+Decide whether the behavior is derived computation, an event response, or synchronization with an external system:
 
-## Arguments
+- Derive values from props/state during render rather than mirroring them with effects. Use memoization only when it has a demonstrated benefit.
+- Keep user-triggered work in the appropriate handler. Route lifecycle work must still handle direct entry, history navigation, and other ways the route changes; moving it into one click handler can lose behavior.
+- Use Bitsocial hooks for protocol data and Zustand selectors for shared state. Do not replace these with manual fetching or mirrored subscriptions.
+- A key can reset a component's state, but verify that resetting its full subtree is intended.
+- Keep effects that synchronize browser APIs or imperative systems, with correct dependencies and cleanup. Do not move initialization into module scope unless import-time execution is safe and preserves its lifecycle.
 
-- **scope**: what to analyze (default: uncommitted changes). Examples: `diff to master`, `src/components/`, `whole codebase`
-- **fix**: whether to apply fixes (default: `true`). Set to `false` to only propose changes.
+Do not remove an effect or memo solely because it exists. Check behavior, loading/error states and cleanup after any refactor using `docs/agent-playbooks/verification.md`. Report concrete findings or changes without expanding into an unrelated React overhaul.
 
-## Workflow
-
-1. **Determine scope** — get the relevant code:
-   - Default: `git diff` for uncommitted changes
-   - If a directory/file is specified, read those files
-   - If "whole codebase": search all `.tsx`/`.ts` files for `useEffect`
-
-2. **Scan for anti-patterns** — check each `useEffect` against the patterns below
-
-3. **Fix or propose** — depending on the `fix` argument:
-   - `fix=true`: apply the refactors, then verify with `yarn agent:verify`
-   - `fix=false`: list each anti-pattern found with a before/after code suggestion
-
-4. **Report** — summarize what was found and changed
-
-## Anti-Patterns to Catch
-
-### 1. Deriving state during render (no effect needed)
-
-If you're computing something from existing props or state, calculate it during render.
-
-```typescript
-// ❌ Anti-pattern
-const [fullName, setFullName] = useState('');
-useEffect(() => {
-  setFullName(firstName + ' ' + lastName);
-}, [firstName, lastName]);
-
-// ✅ Fix — derive during render
-const fullName = firstName + ' ' + lastName;
-```
-
-### 2. Caching expensive calculations (useMemo, not useEffect)
-
-```typescript
-// ❌ Anti-pattern
-const [filtered, setFiltered] = useState([]);
-useEffect(() => {
-  setFiltered(items.filter(item => item.active));
-}, [items]);
-
-// ✅ Fix — calculate during render (useMemo only if profiling shows it's needed)
-const filtered = items.filter(item => item.active);
-```
-
-### 3. Resetting state when props change (use key, not useEffect)
-
-```typescript
-// ❌ Anti-pattern
-useEffect(() => {
-  setComment('');
-}, [postCid]);
-
-// ✅ Fix — use key on the component to reset state
-<CommentForm key={postCid} />
-```
-
-### 4. Fetching data (use @bitsocial/bitsocial-react-hooks, not useEffect)
-
-This project uses `@bitsocial/bitsocial-react-hooks` for all data fetching. Never use `useEffect` + `fetch`.
-
-```typescript
-// ❌ Anti-pattern
-const [comment, setComment] = useState(null);
-useEffect(() => {
-  fetchComment(cid).then(setComment);
-}, [cid]);
-
-// ✅ Fix — use the hook
-const { state, ...comment } = useComment({ commentCid: cid });
-```
-
-### 5. Syncing with external stores (use Zustand, not useEffect)
-
-```typescript
-// ❌ Anti-pattern
-const [theme, setTheme] = useState('light');
-useEffect(() => {
-  const unsub = settingsStore.subscribe((s) => setTheme(s.theme));
-  return unsub;
-}, []);
-
-// ✅ Fix — use the Zustand store directly
-const theme = useSettingsStore((s) => s.theme);
-```
-
-### 6. Sending analytics / logging (move to event handlers)
-
-```typescript
-// ❌ Anti-pattern — fires on every render, not on user action
-useEffect(() => {
-  logPageView(pageName);
-}, [pageName]);
-
-// ✅ Fix — call in the event handler or route change callback
-const navigate = () => {
-  logPageView(pageName);
-  router.push(path);
-};
-```
-
-### 7. Initializing global singletons (use module scope or lazy init)
-
-```typescript
-// ❌ Anti-pattern
-useEffect(() => {
-  initializeAnalytics();
-}, []);
-
-// ✅ Fix — module-level init (runs once on import)
-if (typeof window !== 'undefined') {
-  initializeAnalytics();
-}
-```
-
-## Project-Specific Replacements
-
-| useEffect pattern | Replace with |
-|-------------------|-------------|
-| Fetch data | `useComment`, `useFeed`, `useCommunity`, etc. from @bitsocial/bitsocial-react-hooks |
-| Sync shared state | Zustand store in `src/stores/` |
-| Derive values from state | Calculate during render |
-| Boolean loading/error flags | `state` field from @bitsocial/bitsocial-react-hooks, or state machine in Zustand |
-
-## When useEffect IS Appropriate
-
-Not every effect is wrong. Keep `useEffect` for:
-- Subscribing to browser APIs (resize, intersection observer, etc.) with proper cleanup
-- Synchronizing with non-React systems (third-party widgets, imperative DOM)
-- Running code on mount that genuinely has no hook equivalent
+For a pattern that remains unclear, consult React's [You Might Not Need an Effect](https://react.dev/learn/you-might-not-need-an-effect) guidance for that pattern.

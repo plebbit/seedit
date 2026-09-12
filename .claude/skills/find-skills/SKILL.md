@@ -1,6 +1,6 @@
 ---
 name: find-skills
-description: Discover reusable agent skills when the user explicitly asks to find or install a skill or extend the agent's capabilities.
+description: Find reusable agent skills when the user requests a new skill or capability.
 ---
 
 <!-- Generated from .agents/skills/find-skills/SKILL.md; run yarn ai-workflow:sync. -->

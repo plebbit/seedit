@@ -1,63 +1,21 @@
 ---
 name: commit
-description: Commit current work by reviewing diffs, splitting into logical commits, and writing standardized messages. Use when the user says "commit", "commit this", "commit current work", or asks to create a git commit.
+description: Create scoped local commits when the user asks to commit changes.
 disable-model-invocation: true
 ---
 
 <!-- Generated from .agents/skills/commit/SKILL.md; run yarn ai-workflow:sync. -->
 
-# Commit Current Work
+# Commit
 
-## Workflow
+Review the requested diff, including staged and untracked files, and preserve unrelated work. Group independently useful changes into separate commits; do not split one coherent change merely by file type.
 
-1. **Review all uncommitted changes**
+Use the existing final-state verification and review evidence when still applicable. Follow `docs/agent-playbooks/verification.md` for any missing checks. A completed review does not need to be repeated just to commit the same diff.
 
-   ```bash
-   git status
-   git diff
-   git diff --cached
-   ```
+Stage only task-owned hunks and inspect `git diff --cached` before committing. For mixed files, use an index patch. Exclude unrelated staged changes from the commit and restore their staging afterward.
 
-   Read the diffs to identify the changes authorized for this commit. Preserve unrelated work, including preexisting staged changes. A request to commit this task does not authorize committing every modification in the checkout.
+Use a Conventional Commit with a required human-readable scope: `type(scope): concise description`. Use `perf` for performance work. A body is optional when the title is insufficient; see `commit-format` for wording requests.
 
-2. **Group changes into logical commits**
+Use `corepack yarn exec git commit -m 'type(scope): description'` so the repository's Git hooks inherit Corepack Yarn rather than a global Yarn version. Report the resulting hash and title.
 
-   Within the authorized scope, split distinct changes into logical commits. Leave unrelated work out of the commit.
-
-   Example — two unrelated changes in the working tree:
-   - Modified `src/components/reply-modal.tsx` (UI fix)
-   - Modified `src/stores/use-settings-store.ts` (new setting)
-
-   These should be two separate commits, not one.
-
-3. **Run the final advisory review**
-
-   Before committing, use the repo-managed `code-quality-review` skill once on the final intended diff, including relevant staged, unstaged, and untracked files. Reuse a completed review for the same final state. Consider only high-confidence findings. Apply them only when the active task authorizes edits; otherwise report them and continue with the requested commit. This review is advisory and must not become a hard gate.
-
-4. **Stage and commit each group**
-
-   For each logical group, stage only its changes. If unrelated work is already staged, save its index patch, exclude it from this commit, and restore that staging afterward; never commit it incidentally. Use a selective index patch for mixed files, then inspect `git diff --cached` before committing:
-   ```bash
-   git add <relevant files>
-   git commit -m "title here"
-   ```
-
-5. **Display the commit title to the user** wrapped in backticks (inline code).
-
-## Commit Message Rules
-
-- **Title format:** Conventional Commits with a **required scope**. The scope should be a short, human-readable name for the area of the codebase affected.
-
-  | Pattern | Example |
-  |---------|---------|
-  | `type(scope): description` | `feat(reply modal): add textarea` |
-
-- **Never omit the scope.** `feat: add textarea` is wrong. `feat(reply modal): add textarea` is correct.
-- **Keep titles short.** If more context is needed, add a commit body — but don't repeat the title.
-- **Use `perf:` for performance optimizations**, not `fix:`.
-
-## Constraints
-
-- Only commit when instructed. Do not commit subsequent changes unless explicitly told to.
-- Never push — only commit locally.
-- Never amend commits that have been pushed to a remote.
+Only commit within the user's authorization. Do not push, tag, or amend published history as part of this skill. Explicitly requested later actions retain their own scope.

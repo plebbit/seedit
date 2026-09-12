@@ -1,7 +1,7 @@
 ---
 name: test-apk
 claude-model: sonnet
-cursor-model: composer-2.5-fast
+cursor-model: composer-2.5[fast=true]
 description: Verify an assigned seedit Android workflow on a local emulator and return build, interaction, and logcat evidence.
 ---
 
