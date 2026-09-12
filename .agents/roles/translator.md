@@ -1,7 +1,5 @@
 ---
 name: translator
-claude-model: haiku
-cursor-model: composer-2.5[fast=true]
 description: Generate translation maps for assigned i18next keys; the parent applies locale writes serially.
 ---
 

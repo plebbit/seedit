@@ -44,7 +44,9 @@ test('shared sources generate valid, deterministic harness outputs', (t) => {
   const codexTranslator = before.get('.codex/agents/translator.toml');
   assert.match(codexTranslator, /name = ['"]translator['"]/);
   assert.doesNotMatch(codexTranslator, /(?:^|\n)model\s*=/);
-  assert.equal(readFrontmatter(before.get('.claude/agents/translator.md')).metadata.model, 'haiku');
+  for (const harness of ['claude', 'cursor']) {
+    assert.equal(readFrontmatter(before.get(`.${harness}/agents/translator.md`)).metadata.model, undefined);
+  }
 });
 
 test('validation detects a missing agent and obsolete compatibility files', (t) => {
@@ -116,15 +118,13 @@ test('edit hooks and wrappers reject appended lifecycle commands', (t) => {
   }
 });
 
-test('role models and sandbox metadata reject invalid types and empty values', (t) => {
+test('role sources reject model settings and invalid sandbox values', (t) => {
   const root = fixture(t);
   const file = path.join(root, '.agents/roles/translator.md');
   const original = fs.readFileSync(file, 'utf8');
-  for (const key of ['claude-model', 'cursor-model']) {
-    for (const value of ['[haiku]', 'false', 'null', '""']) {
-      fs.writeFileSync(file, original.replace(new RegExp(`^${key}:.*$`, 'm'), `${key}: ${value}`));
-      assert.throws(() => generatedFiles(root), /must be a nonempty string/);
-    }
+  for (const key of ['model', 'model_reasoning_effort', 'claude-model', 'cursor-model']) {
+    fs.writeFileSync(file, original.replace('name: translator', `name: translator\n${key}: inherit`));
+    assert.throws(() => generatedFiles(root), /Unsupported role field/);
   }
   fs.writeFileSync(file, original.replace('name: translator', 'name: translator\nsandbox-mode: false'));
   assert.throws(() => generatedFiles(root), /Unsupported role sandbox/);

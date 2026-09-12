@@ -1,7 +1,6 @@
 ---
 name: test-apk
 description: Verify an assigned seedit Android workflow on a local emulator and return build, interaction, and logcat evidence.
-model: sonnet
 ---
 
 <!-- Generated from .agents/roles/test-apk.md; run yarn ai-workflow:sync. -->

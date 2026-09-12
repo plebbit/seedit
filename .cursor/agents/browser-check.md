@@ -1,7 +1,6 @@
 ---
 name: browser-check
 description: Verify an assigned seedit browser flow against explicit acceptance criteria.
-model: composer-2.5[fast=true]
 ---
 
 <!-- Generated from .agents/roles/browser-check.md; run yarn ai-workflow:sync. -->

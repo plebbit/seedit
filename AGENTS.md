@@ -87,8 +87,8 @@ For an unexpected repo-specific issue, tell the contributor and continue indepen
 ## Skills and delegation
 
 - Shared skills live in `.agents/skills/`; shared roles in `.agents/roles/`. `.claude/skills/` and harness agent files are generated compatibility outputs. See [skills-and-tools.md](docs/agent-playbooks/skills-and-tools.md).
-- Keep harness-specific hooks, permissions, metadata, and models explicit; byte-identical files do not establish equivalent runtime behavior.
-- Codex custom agents inherit model/reasoning by default. Do not pin these fields in committed Codex agent files or use undocumented aliases. Preserve intentional supported model choices for other harnesses.
+- Keep harness-specific hooks, permissions, and metadata explicit; byte-identical files do not establish equivalent runtime behavior.
+- Keep model and reasoning choices out of committed skills and custom agents. Use the app’s runtime defaults, parent inheritance, and supported invocation-time choices; do not invent a `latest` alias or require model research for ordinary tasks.
 - Delegate substantial independent work when it improves speed, context isolation, or independent review. Small or tightly coupled tasks can stay with the parent.
 - Give each child its scope, acceptance criteria, context, file ownership, and evidence to return. For an independent review, omit the parent's verdict.
 - Parallelize read-heavy work and non-overlapping edits; use at most four active workers by default. Children do not each run full builds. Browser work always remains serialized.

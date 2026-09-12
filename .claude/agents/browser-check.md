@@ -1,7 +1,6 @@
 ---
 name: browser-check
 description: Verify an assigned seedit browser flow against explicit acceptance criteria.
-model: haiku
 ---
 
 <!-- Generated from .agents/roles/browser-check.md; run yarn ai-workflow:sync. -->

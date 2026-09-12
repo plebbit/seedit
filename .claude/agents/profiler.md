@@ -1,7 +1,6 @@
 ---
 name: profiler
 description: Measure an assigned seedit performance scenario and report observed costs and limitations.
-model: haiku
 ---
 
 <!-- Generated from .agents/roles/profiler.md; run yarn ai-workflow:sync. -->

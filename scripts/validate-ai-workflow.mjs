@@ -38,6 +38,7 @@ export function validateWorkflow(root) {
     check(metadata.name === path.basename(path.dirname(file)), `Skill name does not match directory: ${file}`);
     check(typeof metadata.description === 'string' && metadata.description.trim().length > 0, `Missing skill description: ${file}`);
     check(body.length > 0, `Empty skill: ${file}`);
+    check(!('model' in metadata) && !('effort' in metadata), `Skills must use runtime model settings: ${file}`);
     if (metadata['disable-model-invocation'] === true) {
       const policyFile = path.join(path.dirname(file), 'agents/openai.yaml');
       check(
@@ -68,9 +69,9 @@ export function validateWorkflow(root) {
         `Invalid standalone Codex agent: ${relative}`,
       );
       check(!('model' in agent) && !('model_reasoning_effort' in agent), `Codex agents must inherit model settings: ${relative}`);
-    } else if (relative.startsWith('.claude/agents/')) {
+    } else if (relative.startsWith('.claude/agents/') || relative.startsWith('.cursor/agents/')) {
       const { metadata } = readFrontmatter(content, relative);
-      check(!String(metadata.model || '').startsWith('composer'), `Cursor model in Claude agent: ${relative}`);
+      check(!('model' in metadata) && !('effort' in metadata), `Agents must use runtime model settings: ${relative}`);
     }
   }
 

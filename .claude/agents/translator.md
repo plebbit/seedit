@@ -1,7 +1,6 @@
 ---
 name: translator
 description: Generate translation maps for assigned i18next keys; the parent applies locale writes serially.
-model: haiku
 ---
 
 <!-- Generated from .agents/roles/translator.md; run yarn ai-workflow:sync. -->
