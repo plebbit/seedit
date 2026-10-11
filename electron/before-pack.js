@@ -44,9 +44,11 @@ const downloadWithProgress = (url) =>
     const split = url.split('/');
     const fileName = split[split.length - 1];
     const chunks = [];
-    const req = https.request(url);
-    // a stalled socket never errors on its own; redirects create a new request, so each hop gets this
-    req.setTimeout(downloadIdleTimeoutMs, () => {
+    // a stalled socket never errors on its own. The timeout option arms when the socket is created, so it
+    // also bounds DNS lookup and connecting (req.setTimeout waits for the connect); redirects create a new
+    // request, so each hop gets it
+    const req = https.request(url, { timeout: downloadIdleTimeoutMs });
+    req.on('timeout', () => {
       req.destroy(new Error(`Download request for ${url} stalled for ${downloadIdleTimeoutMs / 1000}s`));
     });
     req.on('error', (err) => {
