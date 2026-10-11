@@ -11,9 +11,9 @@ const ipfsClientsPath = path.join(path.dirname(fileURLToPath(import.meta.url)), 
 const ipfsClientWindowsPath = path.join(ipfsClientsPath, 'win');
 const ipfsClientMacPath = path.join(ipfsClientsPath, 'mac');
 const ipfsClientLinuxPath = path.join(ipfsClientsPath, 'linux');
+// Kubo's GitHub releases, not dist.ipfs.tech, which times out from CI runners
+const kuboReleaseBaseUrl = 'https://github.com/ipfs/kubo/releases/download';
 
-// official kubo download links https://docs.ipfs.tech/install/command-line/#install-official-binary-distributions
-// NOTE: Keep this version in sync with the kubo version in package.json to avoid repo version mismatches
 const ipfsClientVersion = '0.39.0';
 
 // Resolve desired build arch: allow overriding via env (so cross-arch builds pick correct binary)
@@ -29,11 +29,11 @@ const toKuboArch = (arch) => (arch === 'arm64' ? 'arm64' : 'amd64');
 
 const getKuboUrl = (platform) => {
   const arch = toKuboArch(resolveBuildArch());
-  if (platform === 'win32') return `https://dist.ipfs.io/kubo/v${ipfsClientVersion}/kubo_v${ipfsClientVersion}_windows-${arch}.zip`;
-  if (platform === 'darwin') return `https://dist.ipfs.io/kubo/v${ipfsClientVersion}/kubo_v${ipfsClientVersion}_darwin-${arch}.tar.gz`;
-  if (platform === 'linux') return `https://dist.ipfs.io/kubo/v${ipfsClientVersion}/kubo_v${ipfsClientVersion}_linux-${arch}.tar.gz`;
+  if (platform === 'win32') return `${kuboReleaseBaseUrl}/v${ipfsClientVersion}/kubo_v${ipfsClientVersion}_windows-${arch}.zip`;
+  if (platform === 'darwin') return `${kuboReleaseBaseUrl}/v${ipfsClientVersion}/kubo_v${ipfsClientVersion}_darwin-${arch}.tar.gz`;
+  if (platform === 'linux') return `${kuboReleaseBaseUrl}/v${ipfsClientVersion}/kubo_v${ipfsClientVersion}_linux-${arch}.tar.gz`;
   // default to linux
-  return `https://dist.ipfs.io/kubo/v${ipfsClientVersion}/kubo_v${ipfsClientVersion}_linux-${arch}.tar.gz`;
+  return `${kuboReleaseBaseUrl}/v${ipfsClientVersion}/kubo_v${ipfsClientVersion}_linux-${arch}.tar.gz`;
 };
 
 const downloadWithProgress = (url) =>
@@ -53,7 +53,14 @@ const downloadWithProgress = (url) =>
       });
       // handle redirects
       if (res.statusCode == 301 || res.statusCode === 302) {
+        // drain the redirect body so its socket is released
+        res.resume();
         resolve(downloadWithProgress(res.headers.location));
+        return;
+      }
+
+      if (!res.statusCode || res.statusCode >= 400) {
+        reject(new Error(`Download request for ${url} failed with status ${res.statusCode ?? 'unknown'}`));
         return;
       }
 
