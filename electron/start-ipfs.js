@@ -20,21 +20,42 @@ const getPlatformDir = () => {
   return 'linux';
 };
 
+const getBundledKuboPath = (rootPath) => path.join(rootPath, 'bin', getPlatformDir(), getIpfsBinaryName());
+
+const downloadBundledIpfsClients = async () => {
+  // before-pack.js is excluded from packaged builds, so only load it in dev.
+  const { downloadIpfsClients } = await import('./before-pack.js');
+  await downloadIpfsClients();
+};
+
 // Resolve kubo binary path
 const getKuboPath = async () => {
   if (isDev) {
-    // In dev, use kubo from node_modules
-    const { path: getKuboBinaryPath } = await import('kubo');
-    return getKuboBinaryPath();
+    if (process.env.KUBO_BINARY) {
+      return process.env.KUBO_BINARY;
+    }
+
+    const bundledKuboPath = getBundledKuboPath(projectRoot);
+    if (fs.existsSync(bundledKuboPath)) {
+      return bundledKuboPath;
+    }
+
+    console.log(`Kubo binary missing at ${bundledKuboPath}, downloading repo-managed binary...`);
+    await downloadBundledIpfsClients();
+
+    if (fs.existsSync(bundledKuboPath)) {
+      return bundledKuboPath;
+    }
+
+    throw new Error(`Kubo binary download completed but '${bundledKuboPath}' was not found`);
   } else {
     // In production, the binary is downloaded to bin/<platform>/ipfs by generateAssets hook
     // With asar: false, files are at resources/app/ instead of resources/app.asar.unpacked
     const appPath = process.resourcesPath;
     const binaryName = getIpfsBinaryName();
-    const platformDir = getPlatformDir();
 
     // Try the bin/ directory first (where generateAssets downloads binaries)
-    const binDirPath = path.join(appPath, 'app', 'bin', platformDir, binaryName);
+    const binDirPath = getBundledKuboPath(path.join(appPath, 'app'));
     if (fs.existsSync(binDirPath)) {
       return binDirPath;
     }

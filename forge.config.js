@@ -39,9 +39,6 @@ const config = {
       /yarn\.lock$/,
       // Exclude build-time scripts from the package
       /electron\/before-pack\.js/,
-      // kubo npm package creates symlinks that break build - exclude its bin dir
-      // (we download our own kubo binary in generateAssets hook)
-      /node_modules\/kubo\/bin/,
       // Exclude .bin directories anywhere in node_modules (contain escaping symlinks)
       /node_modules\/.*\/\.bin/,
       /node_modules\/\.bin/,
