@@ -1,7 +1,7 @@
 import { HashLink } from 'react-router-hash-link';
 import useIsMobile from '../../hooks/use-is-mobile';
 import Sidebar from '../../components/sidebar';
-import packageJson from '../../../package.json';
+import { version as currentVersion } from '../../../package.json';
 import changelogMarkdown from '../../../CHANGELOG.md?raw';
 import { getReleaseAnchorId, parseChangelog } from '../../lib/utils/changelog-utils';
 // the changelog uses the shared static-page chrome with a dense release log inside it
@@ -10,7 +10,6 @@ import styles from './changelog.module.css';
 
 // the changelog ships with the build, so parsing it once per chunk load is enough
 const releases = parseChangelog(changelogMarkdown);
-const { version: currentVersion } = packageJson;
 
 export const ChangelogLog = () => (
   <div className={pageStyles.about}>

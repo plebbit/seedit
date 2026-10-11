@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom';
-import packageJson from '../../../package.json';
+import { version } from '../../../package.json';
 
-const { version } = packageJson;
 const commitRef = import.meta.env.VITE_COMMIT_REF;
 
 const VersionWithCommit = () => {
