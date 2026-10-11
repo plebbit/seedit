@@ -16,7 +16,7 @@ import ContentOptions from './content-options';
 import WalletSettings from './wallet-settings';
 import NotificationsSettings from './notifications-settings';
 import styles from './settings.module.css';
-import packageJson from '../../../package.json';
+import { version as packageVersion } from '../../../package.json';
 import startCase from 'lodash/startCase';
 
 const commitRef = import.meta.env.VITE_COMMIT_REF;
@@ -34,8 +34,8 @@ const CheckForUpdates = () => {
       const packageData = await packageRes.json();
       let updateAvailable = false;
 
-      if (packageJson.version !== packageData.version) {
-        const newVersionText = t('new_stable_version', { newVersion: packageData.version, oldVersion: packageJson.version });
+      if (packageVersion !== packageData.version) {
+        const newVersionText = t('new_stable_version', { newVersion: packageData.version, oldVersion: packageVersion });
         const updateActionText = window.electronApi?.isElectron
           ? t('download_latest_desktop', { link: 'https://github.com/bitsocialnet/seedit/releases/latest', interpolation: { escapeValue: false } })
           : isAndroid
@@ -69,7 +69,7 @@ const CheckForUpdates = () => {
         alert(
           commitRef
             ? `${t('latest_development_version', { commit: commitRef.slice(0, 7), link: 'https://seedit.eth.limo/#/', interpolation: { escapeValue: false } })}`
-            : `${t('latest_stable_version', { version: packageJson.version })}`,
+            : `${t('latest_stable_version', { version: packageVersion })}`,
         );
       }
     } catch (error) {
