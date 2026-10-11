@@ -85,6 +85,16 @@ a {
   padding-bottom: 5px;
 }
 
+.reachabilityAlert {
+  margin-bottom: 5px;
+  padding: 5px;
+  border: 1px solid var(--border-orange);
+  background-color: var(--background-orange);
+  color: var(--text);
+  line-height: 1.35;
+  word-wrap: break-word;
+}
+
 .descriptionTitle {
   padding-top: 5px;
   color: var(--text);

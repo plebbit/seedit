@@ -34,6 +34,7 @@ import { getCommunityPath, getCommunityPostUrl, getDirectoryCandidatesPath } fro
 import { isDirectoryCode, type SeeditDirectoryCode } from '../../lib/utils/directory-codes';
 import { getDirectoryCommunityProposalUrl, getNewDirectoryProposalUrl } from '../../lib/utils/directory-proposal-utils';
 import { getCommentCommunityAddress } from '../../lib/utils/comment-utils';
+import CommunityReachabilityAlert from '../community-reachability-alert';
 import FAQ from '../faq';
 import LoadingEllipsis from '../loading-ellipsis';
 import Markdown from '../markdown';
@@ -351,6 +352,7 @@ const Sidebar = ({ comment, communityAddress, directoryCode, directoryRevision, 
                 </div>
               )}
             </div>
+            <CommunityReachabilityAlert className={styles.reachabilityAlert} isHostedHere={isOwner} />
             {description && description.length > 0 && (
               <div>
                 {title && title.length > 0 && (

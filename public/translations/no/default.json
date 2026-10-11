@@ -444,5 +444,6 @@
   "fivechan_quote": "siterer {{reference}}",
   "quoting_user": "siterer u/{{author}}",
   "fivechan_quote_tooltip": "{{reference}} er en sitatstil som Seedit ikke bruker, og den siterte kommentaren ble ikke funnet.",
-  "relevance": "relevance"
+  "relevance": "relevance",
+  "community_unreachable_from_browsers": "Nettlesere kan ikke laste inn dette fellesskapet fordi denne datamaskinen ikke kan nås fra internett. Løs det ved å videresende port 4001 (TCP og UDP) på ruteren din til denne datamaskinen, eller ved å slå på UPnP på ruteren din. Hvis internettleverandøren din ikke tillater det, kan du heller hoste fellesskapet på en server."
 }

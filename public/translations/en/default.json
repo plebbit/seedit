@@ -454,5 +454,6 @@
   "fivechan_quote": "quoting {{reference}}",
   "quoting_user": "quoting u/{{author}}",
   "fivechan_quote_tooltip": "{{reference}} is a quote style Seedit does not use, and the quoted comment could not be found.",
-  "relevance": "relevance"
+  "relevance": "relevance",
+  "community_unreachable_from_browsers": "Browsers can't load this community because this computer isn't reachable from the internet. To fix it, forward port 4001 (TCP and UDP) on your router to this computer, or enable UPnP on your router. If your internet provider doesn't allow that, host the community on a server instead."
 }

@@ -444,5 +444,6 @@
   "fivechan_quote": "idézése {{reference}}",
   "quoting_user": "u/{{author}} idézése",
   "fivechan_quote_tooltip": "A(z) {{reference}} olyan idézési stílus, amelyet a Seedit nem használ, és az idézett hozzászólás nem található.",
-  "relevance": "relevance"
+  "relevance": "relevance",
+  "community_unreachable_from_browsers": "A böngészők nem tudják betölteni ezt a közösséget, mert ez a számítógép nem érhető el az internetről. A javításhoz irányítsd át a routereden a 4001-es portot (TCP és UDP) erre a számítógépre, vagy kapcsold be az UPnP-t a routereden. Ha az internetszolgáltatód ezt nem engedi, inkább egy szerveren üzemeltesd a közösséget."
 }

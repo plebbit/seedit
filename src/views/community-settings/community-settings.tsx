@@ -19,6 +19,7 @@ import { getCommunityIdentifier } from '../../hooks/use-community-identifier';
 import useResolvedCommunityRoute from '../../hooks/use-resolved-community-route';
 import useIsCommunityOffline from '../../hooks/use-is-community-offline';
 import useStateString from '../../hooks/use-state-string';
+import CommunityReachabilityAlert from '../../components/community-reachability-alert';
 import ErrorDisplay from '../../components/error-display';
 import LoadingEllipsis from '../../components/loading-ellipsis';
 import Markdown from '../../components/markdown';
@@ -560,6 +561,7 @@ const CommunitySettings = () => {
       )}
       {isReadOnly && !userIsOwnerOrAdmin && <div className={styles.infobar}>{t('owner_settings_notice')}</div>}
       {isOffline && <div className={styles.infobar}>{offlineTitle}</div>}
+      <CommunityReachabilityAlert className={`${styles.infobar} ${styles.infobarKeepCase}`} isHostedHere={Boolean(settings)} />
       {isChallengesReadOnly && <div className={styles.infobar}>cannot read or write challenges, community node isn't reachable.</div>}
       <Title isReadOnly={isReadOnly} />
       <Description isReadOnly={isReadOnly} />

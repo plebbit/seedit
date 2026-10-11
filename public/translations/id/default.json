@@ -444,5 +444,6 @@
   "fivechan_quote": "mengutip {{reference}}",
   "quoting_user": "mengutip u/{{author}}",
   "fivechan_quote_tooltip": "{{reference}} adalah gaya kutipan yang tidak digunakan Seedit, dan komentar yang dikutip tidak ditemukan.",
-  "relevance": "relevance"
+  "relevance": "relevance",
+  "community_unreachable_from_browsers": "Browser tidak dapat memuat komunitas ini karena komputer ini tidak dapat dijangkau dari internet. Untuk memperbaikinya, teruskan port 4001 (TCP dan UDP) di router Anda ke komputer ini, atau aktifkan UPnP di router Anda. Jika penyedia internet Anda tidak mengizinkannya, jalankan komunitas ini di sebuah server sebagai gantinya."
 }

@@ -444,5 +444,6 @@
   "fivechan_quote": "zitiert {{reference}}",
   "quoting_user": "zitiert u/{{author}}",
   "fivechan_quote_tooltip": "{{reference}} ist ein Zitatstil, den Seedit nicht verwendet, und der zitierte Kommentar wurde nicht gefunden.",
-  "relevance": "relevance"
+  "relevance": "relevance",
+  "community_unreachable_from_browsers": "Browser können diese Community nicht laden, weil dieser Computer aus dem Internet nicht erreichbar ist. Um das zu beheben, leite Port 4001 (TCP und UDP) in deinem Router an diesen Computer weiter oder aktiviere UPnP in deinem Router. Wenn dein Internetanbieter das nicht zulässt, hoste die Community stattdessen auf einem Server."
 }

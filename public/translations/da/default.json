@@ -444,5 +444,6 @@
   "fivechan_quote": "citerer {{reference}}",
   "quoting_user": "citerer u/{{author}}",
   "fivechan_quote_tooltip": "{{reference}} er en citatstil, som Seedit ikke bruger, og den citerede kommentar kunne ikke findes.",
-  "relevance": "relevance"
+  "relevance": "relevance",
+  "community_unreachable_from_browsers": "Browsere kan ikke indlæse dette fællesskab, fordi denne computer ikke kan nås fra internettet. Løs det ved at videresende port 4001 (TCP og UDP) på din router til denne computer eller ved at slå UPnP til på din router. Hvis din internetudbyder ikke tillader det, kan du i stedet hoste fællesskabet på en server."
 }

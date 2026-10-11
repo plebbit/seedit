@@ -444,5 +444,6 @@
   "fivechan_quote": "trích dẫn {{reference}}",
   "quoting_user": "trích dẫn u/{{author}}",
   "fivechan_quote_tooltip": "{{reference}} là kiểu trích dẫn mà Seedit không sử dụng, và không tìm thấy bình luận được trích dẫn.",
-  "relevance": "relevance"
+  "relevance": "relevance",
+  "community_unreachable_from_browsers": "Trình duyệt không thể tải cộng đồng này vì không thể truy cập máy tính này từ internet. Để khắc phục, hãy chuyển tiếp cổng 4001 (TCP và UDP) trên router của bạn đến máy tính này, hoặc bật UPnP trên router của bạn. Nếu nhà mạng của bạn không cho phép, thay vào đó hãy lưu trữ cộng đồng trên một máy chủ."
 }

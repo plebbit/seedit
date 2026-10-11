@@ -444,5 +444,6 @@
   "fivechan_quote": "cytuje {{reference}}",
   "quoting_user": "cytuje u/{{author}}",
   "fivechan_quote_tooltip": "{{reference}} to styl cytowania, którego Seedit nie używa, a cytowanego komentarza nie znaleziono.",
-  "relevance": "relevance"
+  "relevance": "relevance",
+  "community_unreachable_from_browsers": "Przeglądarki nie mogą załadować tej społeczności, ponieważ ten komputer nie jest dostępny z internetu. Aby to naprawić, przekieruj na swoim routerze port 4001 (TCP i UDP) na ten komputer albo włącz UPnP na routerze. Jeśli dostawca internetu na to nie pozwala, zamiast tego hostuj społeczność na serwerze."
 }

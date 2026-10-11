@@ -444,5 +444,6 @@
   "fivechan_quote": "citerar {{reference}}",
   "quoting_user": "citerar u/{{author}}",
   "fivechan_quote_tooltip": "{{reference}} är en citatstil som Seedit inte använder, och den citerade kommentaren kunde inte hittas.",
-  "relevance": "relevance"
+  "relevance": "relevance",
+  "community_unreachable_from_browsers": "Webbläsare kan inte läsa in den här gemenskapen eftersom den här datorn inte går att nå från internet. Åtgärda det genom att vidarebefordra port 4001 (TCP och UDP) i din router till den här datorn, eller genom att slå på UPnP i din router. Om din internetleverantör inte tillåter det kan du i stället hosta gemenskapen på en server."
 }

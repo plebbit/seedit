@@ -444,5 +444,6 @@
   "fivechan_quote": "citând {{reference}}",
   "quoting_user": "citând u/{{author}}",
   "fivechan_quote_tooltip": "{{reference}} este un stil de citare pe care Seedit nu îl folosește, iar comentariul citat nu a fost găsit.",
-  "relevance": "relevance"
+  "relevance": "relevance",
+  "community_unreachable_from_browsers": "Browserele nu pot încărca această comunitate, deoarece acest calculator nu poate fi accesat de pe internet. Ca să rezolvi asta, redirecționează portul 4001 (TCP și UDP) din routerul tău către acest calculator sau activează UPnP pe router. Dacă furnizorul tău de internet nu permite asta, găzduiește în schimb comunitatea pe un server."
 }

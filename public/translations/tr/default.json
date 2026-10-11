@@ -444,5 +444,6 @@
   "fivechan_quote": "{{reference}} alıntısı",
   "quoting_user": "u/{{author}} kullanıcısından alıntı",
   "fivechan_quote_tooltip": "{{reference}}, Seedit'in kullanmadığı bir alıntı biçimidir ve alıntılanan yorum bulunamadı.",
-  "relevance": "relevance"
+  "relevance": "relevance",
+  "community_unreachable_from_browsers": "Bu bilgisayara internetten erişilemediği için tarayıcılar bu topluluğu yükleyemiyor. Sorunu çözmek için modeminizde 4001 numaralı portu (TCP ve UDP) bu bilgisayara yönlendirin veya modeminizde UPnP'yi etkinleştirin. İnternet sağlayıcınız buna izin vermiyorsa topluluğu bunun yerine bir sunucuda barındırın."
 }

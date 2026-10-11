@@ -444,5 +444,6 @@
   "fivechan_quote": "citeert {{reference}}",
   "quoting_user": "citeert u/{{author}}",
   "fivechan_quote_tooltip": "{{reference}} is een citaatstijl die Seedit niet gebruikt en de geciteerde reactie is niet gevonden.",
-  "relevance": "relevance"
+  "relevance": "relevance",
+  "community_unreachable_from_browsers": "Browsers kunnen deze community niet laden, omdat deze computer niet bereikbaar is vanaf internet. Los dit op door poort 4001 (TCP en UDP) op je router door te sturen naar deze computer, of door UPnP aan te zetten op je router. Als je internetprovider dat niet toestaat, host de community dan op een server."
 }

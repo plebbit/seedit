@@ -444,5 +444,6 @@
   "fivechan_quote": "cituje {{reference}}",
   "quoting_user": "cituje u/{{author}}",
   "fivechan_quote_tooltip": "{{reference}} je styl citace, který Seedit nepoužívá, a citovaný komentář se nepodařilo najít.",
-  "relevance": "relevance"
+  "relevance": "relevance",
+  "community_unreachable_from_browsers": "Prohlížeče nemohou tuto komunitu načíst, protože tento počítač není dostupný z internetu. Chcete-li to opravit, přesměrujte na routeru port 4001 (TCP i UDP) na tento počítač, nebo na routeru zapněte UPnP. Pokud to váš poskytovatel internetu neumožňuje, provozujte komunitu místo toho na serveru."
 }

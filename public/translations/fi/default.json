@@ -443,5 +443,6 @@
   "fivechan_quote": "lainaa {{reference}}",
   "quoting_user": "lainaa käyttäjää u/{{author}}",
   "fivechan_quote_tooltip": "{{reference}} on lainaustyyli, jota Seedit ei käytä, eikä lainattua kommenttia löytynyt.",
-  "relevance": "relevance"
+  "relevance": "relevance",
+  "community_unreachable_from_browsers": "Selaimet eivät pysty lataamaan tätä yhteisöä, koska tähän tietokoneeseen ei saada yhteyttä internetistä. Korjaa tämä ohjaamalla portti 4001 (TCP ja UDP) reitittimessäsi tähän tietokoneeseen tai ottamalla UPnP käyttöön reitittimessäsi. Jos operaattorisi ei salli sitä, ylläpidä yhteisöä sen sijaan palvelimella."
 }

@@ -444,5 +444,6 @@
   "fivechan_quote": "引用 {{reference}}",
   "quoting_user": "引用 u/{{author}}",
   "fivechan_quote_tooltip": "{{reference}} 是 Seedit 不使用的引用格式，未能找到被引用的评论。",
-  "relevance": "relevance"
+  "relevance": "relevance",
+  "community_unreachable_from_browsers": "由于无法从互联网访问这台电脑，浏览器无法加载此社区。要解决此问题，请在您的路由器上将端口 4001（TCP 和 UDP）转发到这台电脑，或在路由器上启用 UPnP。如果您的宽带运营商不允许这样做，请改为将社区托管在服务器上。"
 }
