@@ -52,9 +52,9 @@ const config = {
 
   hooks: {
     // Download IPFS/Kubo binaries before packaging
-    generateAssets: async () => {
+    generateAssets: async (forgeConfig, platform, arch) => {
       console.log('Downloading IPFS clients...');
-      await downloadIpfsClients();
+      await downloadIpfsClients({ platform, arch });
       console.log('IPFS clients downloaded.');
     },
   },
