@@ -25,7 +25,8 @@ const getBundledKuboPath = (rootPath) => path.join(rootPath, 'bin', getPlatformD
 const downloadBundledIpfsClients = async () => {
   // before-pack.js is excluded from packaged builds, so only load it in dev.
   const { downloadIpfsClients } = await import('./before-pack.js');
-  await downloadIpfsClients();
+  // a cross-arch package build can leave another arch's binary in bin/, so always ask for the host's
+  await downloadIpfsClients({ platform: process.platform, arch: process.arch });
 };
 
 // Resolve kubo binary path
@@ -36,11 +37,7 @@ const getKuboPath = async () => {
     }
 
     const bundledKuboPath = getBundledKuboPath(projectRoot);
-    if (fs.existsSync(bundledKuboPath)) {
-      return bundledKuboPath;
-    }
-
-    console.log(`Kubo binary missing at ${bundledKuboPath}, downloading repo-managed binary...`);
+    // no-op when bin/ already holds the host's binary for the pinned version
     await downloadBundledIpfsClients();
 
     if (fs.existsSync(bundledKuboPath)) {

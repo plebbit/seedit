@@ -16,8 +16,9 @@ const kuboReleaseBaseUrl = 'https://github.com/ipfs/kubo/releases/download';
 
 const ipfsClientVersion = '0.39.0';
 
-// Resolve desired build arch: allow overriding via env (so cross-arch builds pick correct binary)
-const resolveBuildArch = () => {
+// Resolve the target arch: an explicit arch (forge's target, or the host in dev) wins, then the env override, then the host
+const resolveBuildArch = (arch) => {
+  if (arch === 'arm64' || arch === 'x64') return arch;
   const envArch = process.env.SEEDIT_BUILD_ARCH;
   if (envArch === 'arm64' || envArch === 'x64') return envArch;
   // fallback to host arch
@@ -27,8 +28,8 @@ const resolveBuildArch = () => {
 
 const toKuboArch = (arch) => (arch === 'arm64' ? 'arm64' : 'amd64');
 
-const getKuboUrl = (platform) => {
-  const arch = toKuboArch(resolveBuildArch());
+const getKuboUrl = (platform, buildArch) => {
+  const arch = toKuboArch(buildArch);
   if (platform === 'win32') return `${kuboReleaseBaseUrl}/v${ipfsClientVersion}/kubo_v${ipfsClientVersion}_windows-${arch}.zip`;
   if (platform === 'darwin') return `${kuboReleaseBaseUrl}/v${ipfsClientVersion}/kubo_v${ipfsClientVersion}_darwin-${arch}.tar.gz`;
   if (platform === 'linux') return `${kuboReleaseBaseUrl}/v${ipfsClientVersion}/kubo_v${ipfsClientVersion}_linux-${arch}.tar.gz`;
@@ -120,18 +121,23 @@ const downloadAndExtract = async (url, destinationPath) => {
     binName += '.exe';
   }
   const binPath = path.join(destinationPath, binName);
-  if (fs.pathExistsSync(binPath)) {
+  // bin/<platform>/ipfs is shared by dev and every packaging target, so only reuse it when it came from this exact url
+  const sourceMarkerPath = path.join(destinationPath, '.kubo-source');
+  const cachedSource = fs.pathExistsSync(sourceMarkerPath) ? fs.readFileSync(sourceMarkerPath, 'utf8').trim() : undefined;
+  if (fs.pathExistsSync(binPath) && cachedSource === url) {
     return;
   }
   console.log(`Downloading IPFS client from ${url} to ${destinationPath}`);
   const split = url.split('/');
   const fileName = split[split.length - 1];
   const archivePath = path.join(destinationPath, fileName);
+  const extractedPath = path.join(destinationPath, 'kubo');
   const file = await downloadWithRetry(url);
   fs.ensureDirSync(destinationPath);
   await fs.writeFile(archivePath, file);
   console.log(`Downloaded archive to ${archivePath}`);
   console.log(`Extracting ${archivePath} to ${destinationPath}`);
+  fs.removeSync(extractedPath);
   try {
     await extractArchive(archivePath, destinationPath);
     console.log('Decompression complete');
@@ -139,20 +145,22 @@ const downloadAndExtract = async (url, destinationPath) => {
     console.error('Error during decompression:', err);
     throw err;
   }
-  const extractedPath = path.join(destinationPath, 'kubo');
   const extractedBinPath = path.join(extractedPath, binName);
   console.log(`Moving binary from ${extractedBinPath} to ${binPath}`);
-  fs.moveSync(extractedBinPath, binPath);
+  fs.moveSync(extractedBinPath, binPath, { overwrite: true });
+  fs.writeFileSync(sourceMarkerPath, `${url}\n`);
   console.log('Binary moved');
   console.log('Cleaning up temporary files');
   fs.removeSync(archivePath);
+  fs.removeSync(extractedPath);
   console.log('Cleanup complete');
 };
 
-export const downloadIpfsClients = async () => {
-  const platform = process.platform;
-  console.log(`Starting IPFS client download for platform: ${platform}, targetArch: ${resolveBuildArch()}`);
-  const url = getKuboUrl(platform);
+// forge's generateAssets hook passes its target platform/arch; dev passes the host
+export const downloadIpfsClients = async ({ platform = process.platform, arch } = {}) => {
+  const buildArch = resolveBuildArch(arch);
+  console.log(`Starting IPFS client download for platform: ${platform}, targetArch: ${buildArch}`);
+  const url = getKuboUrl(platform, buildArch);
   if (platform === 'win32') {
     await downloadAndExtract(url, ipfsClientWindowsPath);
   } else if (platform === 'darwin') {
