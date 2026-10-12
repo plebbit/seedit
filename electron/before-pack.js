@@ -11,13 +11,16 @@ const ipfsClientsPath = path.join(path.dirname(fileURLToPath(import.meta.url)), 
 const ipfsClientWindowsPath = path.join(ipfsClientsPath, 'win');
 const ipfsClientMacPath = path.join(ipfsClientsPath, 'mac');
 const ipfsClientLinuxPath = path.join(ipfsClientsPath, 'linux');
+// Kubo's GitHub releases, not dist.ipfs.tech, which times out from CI runners
+const kuboReleaseBaseUrl = 'https://github.com/ipfs/kubo/releases/download';
 
-// official kubo download links https://docs.ipfs.tech/install/command-line/#install-official-binary-distributions
-// NOTE: Keep this version in sync with the kubo version in package.json to avoid repo version mismatches
 const ipfsClientVersion = '0.39.0';
+// abort a connection that stops sending data so downloadWithRetry can try again
+const downloadIdleTimeoutMs = 60 * 1000;
 
-// Resolve desired build arch: allow overriding via env (so cross-arch builds pick correct binary)
-const resolveBuildArch = () => {
+// Resolve the target arch: an explicit arch (forge's target, or the host in dev) wins, then the env override, then the host
+const resolveBuildArch = (arch) => {
+  if (arch === 'arm64' || arch === 'x64') return arch;
   const envArch = process.env.SEEDIT_BUILD_ARCH;
   if (envArch === 'arm64' || envArch === 'x64') return envArch;
   // fallback to host arch
@@ -27,13 +30,13 @@ const resolveBuildArch = () => {
 
 const toKuboArch = (arch) => (arch === 'arm64' ? 'arm64' : 'amd64');
 
-const getKuboUrl = (platform) => {
-  const arch = toKuboArch(resolveBuildArch());
-  if (platform === 'win32') return `https://dist.ipfs.io/kubo/v${ipfsClientVersion}/kubo_v${ipfsClientVersion}_windows-${arch}.zip`;
-  if (platform === 'darwin') return `https://dist.ipfs.io/kubo/v${ipfsClientVersion}/kubo_v${ipfsClientVersion}_darwin-${arch}.tar.gz`;
-  if (platform === 'linux') return `https://dist.ipfs.io/kubo/v${ipfsClientVersion}/kubo_v${ipfsClientVersion}_linux-${arch}.tar.gz`;
+const getKuboUrl = (platform, buildArch) => {
+  const arch = toKuboArch(buildArch);
+  if (platform === 'win32') return `${kuboReleaseBaseUrl}/v${ipfsClientVersion}/kubo_v${ipfsClientVersion}_windows-${arch}.zip`;
+  if (platform === 'darwin') return `${kuboReleaseBaseUrl}/v${ipfsClientVersion}/kubo_v${ipfsClientVersion}_darwin-${arch}.tar.gz`;
+  if (platform === 'linux') return `${kuboReleaseBaseUrl}/v${ipfsClientVersion}/kubo_v${ipfsClientVersion}_linux-${arch}.tar.gz`;
   // default to linux
-  return `https://dist.ipfs.io/kubo/v${ipfsClientVersion}/kubo_v${ipfsClientVersion}_linux-${arch}.tar.gz`;
+  return `${kuboReleaseBaseUrl}/v${ipfsClientVersion}/kubo_v${ipfsClientVersion}_linux-${arch}.tar.gz`;
 };
 
 const downloadWithProgress = (url) =>
@@ -41,7 +44,13 @@ const downloadWithProgress = (url) =>
     const split = url.split('/');
     const fileName = split[split.length - 1];
     const chunks = [];
-    const req = https.request(url);
+    // a stalled socket never errors on its own. The timeout option arms when the socket is created, so it
+    // also bounds DNS lookup and connecting (req.setTimeout waits for the connect); redirects create a new
+    // request, so each hop gets it
+    const req = https.request(url, { timeout: downloadIdleTimeoutMs });
+    req.on('timeout', () => {
+      req.destroy(new Error(`Download request for ${url} stalled for ${downloadIdleTimeoutMs / 1000}s`));
+    });
     req.on('error', (err) => {
       console.error(`Error making request for ${url}:`, err);
       reject(err);
@@ -53,7 +62,14 @@ const downloadWithProgress = (url) =>
       });
       // handle redirects
       if (res.statusCode == 301 || res.statusCode === 302) {
+        // drain the redirect body so its socket is released
+        res.resume();
         resolve(downloadWithProgress(res.headers.location));
+        return;
+      }
+
+      if (!res.statusCode || res.statusCode >= 400) {
+        reject(new Error(`Download request for ${url} failed with status ${res.statusCode ?? 'unknown'}`));
         return;
       }
 
@@ -113,18 +129,23 @@ const downloadAndExtract = async (url, destinationPath) => {
     binName += '.exe';
   }
   const binPath = path.join(destinationPath, binName);
-  if (fs.pathExistsSync(binPath)) {
+  // bin/<platform>/ipfs is shared by dev and every packaging target, so only reuse it when it came from this exact url
+  const sourceMarkerPath = path.join(destinationPath, '.kubo-source');
+  const cachedSource = fs.pathExistsSync(sourceMarkerPath) ? fs.readFileSync(sourceMarkerPath, 'utf8').trim() : undefined;
+  if (fs.pathExistsSync(binPath) && cachedSource === url) {
     return;
   }
   console.log(`Downloading IPFS client from ${url} to ${destinationPath}`);
   const split = url.split('/');
   const fileName = split[split.length - 1];
   const archivePath = path.join(destinationPath, fileName);
+  const extractedPath = path.join(destinationPath, 'kubo');
   const file = await downloadWithRetry(url);
   fs.ensureDirSync(destinationPath);
   await fs.writeFile(archivePath, file);
   console.log(`Downloaded archive to ${archivePath}`);
   console.log(`Extracting ${archivePath} to ${destinationPath}`);
+  fs.removeSync(extractedPath);
   try {
     await extractArchive(archivePath, destinationPath);
     console.log('Decompression complete');
@@ -132,20 +153,22 @@ const downloadAndExtract = async (url, destinationPath) => {
     console.error('Error during decompression:', err);
     throw err;
   }
-  const extractedPath = path.join(destinationPath, 'kubo');
   const extractedBinPath = path.join(extractedPath, binName);
   console.log(`Moving binary from ${extractedBinPath} to ${binPath}`);
-  fs.moveSync(extractedBinPath, binPath);
+  fs.moveSync(extractedBinPath, binPath, { overwrite: true });
+  fs.writeFileSync(sourceMarkerPath, `${url}\n`);
   console.log('Binary moved');
   console.log('Cleaning up temporary files');
   fs.removeSync(archivePath);
+  fs.removeSync(extractedPath);
   console.log('Cleanup complete');
 };
 
-export const downloadIpfsClients = async () => {
-  const platform = process.platform;
-  console.log(`Starting IPFS client download for platform: ${platform}, targetArch: ${resolveBuildArch()}`);
-  const url = getKuboUrl(platform);
+// forge's generateAssets hook passes its target platform/arch; dev passes the host
+export const downloadIpfsClients = async ({ platform = process.platform, arch } = {}) => {
+  const buildArch = resolveBuildArch(arch);
+  console.log(`Starting IPFS client download for platform: ${platform}, targetArch: ${buildArch}`);
+  const url = getKuboUrl(platform, buildArch);
   if (platform === 'win32') {
     await downloadAndExtract(url, ipfsClientWindowsPath);
   } else if (platform === 'darwin') {
