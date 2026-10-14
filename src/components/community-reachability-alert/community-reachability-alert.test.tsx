@@ -100,7 +100,19 @@ describe('CommunityReachabilityAlert', () => {
     testState.rpcUrls = ['ws://203.0.113.5:9138/secret'];
     await render(true);
     expect(container.textContent).toBe('');
+
+    // another full node on this computer, not the one the desktop app runs
+    testState.rpcUrls = ['ws://127.0.0.1:9238/secret'];
+    await render(true);
+    expect(container.textContent).toBe('');
     expect(getNodeReachability).not.toHaveBeenCalled();
+  });
+
+  it('checks the desktop app node on any loopback address', async () => {
+    testState.rpcUrls = ['ws://127.0.0.1:9138', 'ws://[::1]:9138'];
+    await render(true);
+
+    expect(container.textContent).toBe('community_unreachable_from_browsers');
   });
 
   it('does nothing outside the desktop app', async () => {
