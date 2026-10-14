@@ -80,7 +80,8 @@ const config = {
       platforms: ['win32'],
       config: {
         name: 'seedit',
-        setupIcon: './public/favicon.ico',
+        // must be a real multi-size ICO: favicon.ico is PNG data, which makes Squirrel fail with "Unable to set icon"
+        setupIcon: './public/icon.ico',
       },
     },
     // Linux
