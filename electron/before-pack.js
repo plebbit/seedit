@@ -14,7 +14,7 @@ const ipfsClientLinuxPath = path.join(ipfsClientsPath, 'linux');
 // Kubo's GitHub releases, not dist.ipfs.tech, which times out from CI runners
 const kuboReleaseBaseUrl = 'https://github.com/ipfs/kubo/releases/download';
 
-const ipfsClientVersion = '0.39.0';
+const ipfsClientVersion = '0.43.0';
 // abort a connection that stops sending data so downloadWithRetry can try again
 const downloadIdleTimeoutMs = 60 * 1000;
 
