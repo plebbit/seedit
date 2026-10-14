@@ -1,6 +1,11 @@
 # docs https://github.com/marketplace/actions/create-release
 # docs https://github.com/ncipollo/release-action
 # docs https://docs.github.com/en/actions/using-jobs/choosing-the-runner-for-a-job#choosing-github-hosted-runners
+#
+# Build jobs stage their Electron Forge (out/make) and APK outputs into dist/ under the
+# asset names bitsocial.net's download links match, and upload them as workflow artifacts.
+# finalize-release publishes every asset at once, so a failed build job leaves no partial
+# "Latest" release without native downloads.
 
 name: release
 
@@ -8,6 +13,8 @@ on:
   push:
     tags:
       - 'v*'
+  # Dry run: builds and uploads workflow artifacts; finalize-release only runs for a pushed v* tag.
+  workflow_dispatch:
 
 jobs:
   linux:
@@ -17,7 +24,10 @@ jobs:
         arch: [x64, arm64]
     runs-on: ubuntu-22.04
     permissions:
-      contents: write
+      contents: read
+    env:
+      # the runner is x64; makes the electron/download-ipfs step fetch the target arch's kubo
+      SEEDIT_BUILD_ARCH: ${{ matrix.arch }}
     steps:
       # electron build
       - uses: actions/checkout@v2
@@ -42,6 +52,15 @@ jobs:
       - name: Build Electron app for Linux (x64)
         if: ${{ matrix.arch == 'x64' }}
         run: yarn electron:build:linux:x64
+      - name: Stage release artifacts
+        run: |
+          VERSION=$(node -e "console.log(require('./package.json').version)")
+          SUFFIX=""
+          if [ "${{ matrix.arch }}" = "arm64" ]; then SUFFIX="-arm64"; fi
+          APPIMAGE_PATH=$(find out/make -name '*.AppImage' | head -n 1)
+          [ -n "$APPIMAGE_PATH" ] || { echo "::error::No AppImage in out/make"; exit 1; }
+          mkdir -p dist
+          cp "$APPIMAGE_PATH" "dist/seedit-${VERSION}${SUFFIX}.AppImage"
       - name: Create signed release manifest
         if: ${{ matrix.arch == 'x64' }}
         env:
@@ -59,27 +78,12 @@ jobs:
           zip -r "dist/${HTML_ARCHIVE_DIR}.zip" "$HTML_ARCHIVE_DIR"
           rm -rf "$HTML_ARCHIVE_DIR"
       - name: List dist directory
-        run: ls dist
-
-      # publish version release
-      - name: Generate release body
-        run: node scripts/release-body > release-body.txt
-      - uses: ncipollo/release-action@v1
-        if: ${{ matrix.arch == 'x64' }}
+        run: ls -la dist
+      - uses: actions/upload-artifact@v4
         with:
-          artifacts: 'dist/seedit*.AppImage,dist/seedit-html*.zip,dist/seedit-release-manifest.json,dist/seedit-release-manifest.sig.json'
-          token: ${{ secrets.GITHUB_TOKEN }}
-          replacesArtifacts: true
-          omitBody: true
-          allowUpdates: true
-      - uses: ncipollo/release-action@v1
-        if: ${{ matrix.arch == 'arm64' }}
-        with:
-          artifacts: 'dist/seedit*-arm64.AppImage'
-          token: ${{ secrets.GITHUB_TOKEN }}
-          replacesArtifacts: true
-          omitBody: true
-          allowUpdates: true
+          name: release-linux-${{ matrix.arch }}
+          path: dist/
+          if-no-files-found: error
 
   mac:
     strategy:
@@ -92,7 +96,7 @@ jobs:
             arch: arm64
     runs-on: ${{ matrix.runner }}
     permissions:
-      contents: write
+      contents: read
     steps:
       # electron build
       - uses: actions/checkout@v2
@@ -131,24 +135,27 @@ jobs:
           else
             yarn electron:build:mac:x64
           fi
+      - name: Stage release artifacts
+        run: |
+          VERSION=$(node -e "console.log(require('./package.json').version)")
+          SUFFIX=""
+          if [ "${{ matrix.arch }}" = "arm64" ]; then SUFFIX="-arm64"; fi
+          DMG_PATH=$(find out/make -name '*.dmg' | head -n 1)
+          [ -n "$DMG_PATH" ] || { echo "::error::No DMG in out/make"; exit 1; }
+          mkdir -p dist
+          cp "$DMG_PATH" "dist/seedit-${VERSION}${SUFFIX}.dmg"
       - name: List dist directory
-        run: ls dist
-
-      # publish version release
-      - name: Generate release body
-        run: node scripts/release-body > release-body.txt
-      - uses: ncipollo/release-action@v1
+        run: ls -la dist
+      - uses: actions/upload-artifact@v4
         with:
-          artifacts: 'dist/seedit*.dmg,dist/seedit*-arm64.dmg'
-          token: ${{ secrets.GITHUB_TOKEN }}
-          replacesArtifacts: true
-          omitBody: true
-          allowUpdates: true
+          name: release-mac-${{ matrix.arch }}
+          path: dist/
+          if-no-files-found: error
 
   windows:
     runs-on: windows-2022
     permissions:
-      contents: write
+      contents: read
     steps:
       # electron build
       - uses: actions/checkout@v2
@@ -166,24 +173,27 @@ jobs:
         run: npx cross-env NODE_ENV=production yarn build
       - name: Build Electron app for Windows (x64)
         run: yarn electron:build:windows
+      - name: Stage release artifacts
+        shell: bash
+        run: |
+          VERSION=$(node -e "console.log(require('./package.json').version)")
+          SETUP_EXE_PATH=$(find out/make -iname '*setup*.exe' | head -n 1)
+          [ -n "$SETUP_EXE_PATH" ] || { echo "::error::No Squirrel Setup.exe in out/make"; exit 1; }
+          mkdir -p dist
+          cp "$SETUP_EXE_PATH" "dist/seedit.Setup.${VERSION}.exe"
       - name: List dist directory
-        run: dir dist
-
-      # publish version release
-      - name: Generate release body
-        run: node scripts/release-body > release-body.txt
-      - uses: ncipollo/release-action@v1
+        shell: bash
+        run: ls -la dist
+      - uses: actions/upload-artifact@v4
         with:
-          artifacts: 'dist/seedit*.exe'
-          token: ${{ secrets.GITHUB_TOKEN }}
-          replacesArtifacts: true
-          omitBody: true
-          allowUpdates: true
+          name: release-windows
+          path: dist/
+          if-no-files-found: error
 
   android:
     runs-on: ubuntu-22.04
     permissions:
-      contents: write
+      contents: read
     steps:
       - uses: actions/checkout@v2
         with:
@@ -219,24 +229,36 @@ jobs:
       - run: cd android/app/build/outputs/apk/release && zipalign 4 app-release-unsigned.apk app-release-unsigned-zip.apk
       # sign apk
       # to create keystore: keytool -genkey -v -keystore bitsocial.keystore -keyalg RSA -keysize 2048 -validity 10000 -alias release
-      - run: cd android/app/build/outputs/apk/release && apksigner sign --ks ../../../../../bitsocial.keystore --ks-pass pass:${{ secrets.BITSOCIAL_KEYSTORE_PASSWORD }} --ks-key-alias release --out app-release-signed.apk app-release-unsigned-zip.apk
+      - name: Check Android signing secret
+        env:
+          KEYSTORE_PASSWORD: ${{ secrets.BITSOCIAL_KEYSTORE_PASSWORD }}
+        run: |
+          if [ -z "${KEYSTORE_PASSWORD:-}" ]; then
+            echo "::error::BITSOCIAL_KEYSTORE_PASSWORD is required to sign the Android release APK with android/bitsocial.keystore."
+            exit 1
+          fi
+      # env: keeps the password out of the process argument list
+      - name: Sign APK
+        env:
+          KEYSTORE_PASSWORD: ${{ secrets.BITSOCIAL_KEYSTORE_PASSWORD }}
+        run: cd android/app/build/outputs/apk/release && apksigner sign --ks ../../../../../bitsocial.keystore --ks-pass env:KEYSTORE_PASSWORD --ks-key-alias release --out app-release-signed.apk app-release-unsigned-zip.apk
+      - name: Verify APK signature
+        run: cd android/app/build/outputs/apk/release && apksigner verify --verbose --print-certs app-release-signed.apk
       # move apk to dist folder
       - run: mkdir -p dist && mv android/app/build/outputs/apk/release/app-release-signed.apk dist/seedit-$(node -e "console.log(require('./package.json').version)").apk
-      - run: ls dist
-
-      # publish version release
-      - run: node scripts/release-body > release-body.txt
-      - uses: ncipollo/release-action@v1
+      - run: ls -la dist
+      - uses: actions/upload-artifact@v4
         with:
-          artifacts: 'dist/seedit*.apk'
-          token: ${{ secrets.GITHUB_TOKEN }}
-          replacesArtifacts: true
-          omitBody: true
-          allowUpdates: true
+          name: release-android
+          path: dist/
+          if-no-files-found: error
 
   finalize-release:
+    if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags/v')
     runs-on: ubuntu-22.04
     needs: [linux, mac, windows, android]
+    permissions:
+      contents: write
     steps:
       - uses: actions/checkout@v2
         with:
@@ -248,15 +270,30 @@ jobs:
       - run: corepack enable
       - name: Install dependencies
         run: yarn install --immutable
-      - name: Generate final release body from GitHub assets
+      - name: Download all release artifacts
+        uses: actions/download-artifact@v4
+        with:
+          pattern: release-*
+          path: dist
+          merge-multiple: true
+      - name: List all release assets
+        run: ls -la dist
+      # release-body lists dist/ when the tag has no GitHub release yet
+      - name: Generate release body
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_REPOSITORY: ${{ github.repository }}
           GITHUB_REF_NAME: ${{ github.ref_name }}
         run: node scripts/release-body > release-body.txt
-      - name: Update release body only
+      # immutableCreate creates a new release as a draft and publishes it only after the uploads;
+      # artifactErrorsFailBuild makes a failed upload fail the job, leaving the draft unpublished
+      - name: Create GitHub release
         uses: ncipollo/release-action@v1
         with:
+          artifacts: 'dist/*'
           token: ${{ secrets.GITHUB_TOKEN }}
           allowUpdates: true
+          replacesArtifacts: true
+          artifactErrorsFailBuild: true
+          immutableCreate: true
           bodyFile: "release-body.txt"

@@ -38,7 +38,7 @@ try {
   files = readdirSync(distDir);
 } catch {}
 
-// In CI finalization, dist is empty. Prefer GitHub release assets when available.
+// The release workflow's finalize job stages every asset in dist; fall back to the tag's GitHub release assets when dist is empty.
 const getReleaseAssetNames = async () => {
   try {
     const token = process.env.GITHUB_TOKEN;
@@ -61,9 +61,8 @@ const getReleaseAssetNames = async () => {
   }
 };
 
-const remoteFiles = await getReleaseAssetNames();
-if (remoteFiles.length) {
-  files = remoteFiles;
+if (!files.length) {
+  files = await getReleaseAssetNames();
 }
 
 const linkTo = (file) => `https://github.com/bitsocialnet/seedit/releases/download/v${version}/${file}`;
