@@ -285,6 +285,8 @@ jobs:
           GITHUB_REPOSITORY: ${{ github.repository }}
           GITHUB_REF_NAME: ${{ github.ref_name }}
         run: node scripts/release-body > release-body.txt
+      # immutableCreate creates a new release as a draft and publishes it only after the uploads;
+      # artifactErrorsFailBuild makes a failed upload fail the job, leaving the draft unpublished
       - name: Create GitHub release
         uses: ncipollo/release-action@v1
         with:
@@ -292,4 +294,6 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           allowUpdates: true
           replacesArtifacts: true
+          artifactErrorsFailBuild: true
+          immutableCreate: true
           bodyFile: "release-body.txt"
