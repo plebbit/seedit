@@ -6,6 +6,7 @@ import path from 'path';
 import startIpfs from './start-ipfs.js';
 import './start-pkc-rpc.js';
 import { getPkcDataPath } from './pkc-paths.js';
+import { getNodeReachability } from './node-reachability.js';
 import { URL, fileURLToPath } from 'node:url';
 import contextMenu from 'electron-context-menu';
 import FormData from 'form-data';
@@ -521,6 +522,9 @@ ipcMain.handle('copy-to-clipboard', async (event, text) => {
     return { success: false, error: error.message };
   }
 });
+
+// Whether peers on the internet can dial this app's node, so the UI can warn that browsers cannot load communities it hosts
+ipcMain.handle('get-node-reachability', () => getNodeReachability());
 
 // Handle request for platform info
 ipcMain.handle('get-platform', async () => {

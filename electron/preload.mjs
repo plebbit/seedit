@@ -41,6 +41,7 @@ contextBridge.exposeInMainWorld('electronApi', {
   isElectron: true,
   getNotificationStatus: () => ipcRenderer.invoke('get-notification-permission-status'),
   getPlatform: () => ipcRenderer.invoke('get-platform'),
+  getNodeReachability: () => ipcRenderer.invoke('get-node-reachability'),
   testNotification: () => ipcRenderer.invoke('test-notification-permission'),
   showNotification: (notification) => ipcRenderer.send('show-notification', notification),
   copyToClipboard: (text) => ipcRenderer.invoke('copy-to-clipboard', text),

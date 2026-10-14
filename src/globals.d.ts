@@ -15,6 +15,7 @@ declare global {
       invoke: (channel: string, ...args: any[]) => Promise<any>;
       getNotificationStatus: () => Promise<'granted' | 'denied' | 'not-determined' | 'not-supported'>;
       getPlatform: () => Promise<NodeJS.Platform>;
+      getNodeReachability?: () => Promise<'public' | 'private' | 'unknown'>;
       testNotification: () => Promise<{ success: boolean; reason?: string }>;
     };
   }

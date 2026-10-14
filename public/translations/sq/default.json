@@ -444,5 +444,6 @@
   "fivechan_quote": "duke cituar {{reference}}",
   "quoting_user": "duke cituar u/{{author}}",
   "fivechan_quote_tooltip": "{{reference}} është një stil citimi që Seedit nuk e përdor, dhe komenti i cituar nuk u gjet.",
-  "relevance": "relevance"
+  "relevance": "relevance",
+  "community_unreachable_from_browsers": "Shfletuesit nuk mund ta ngarkojnë këtë komunitet, sepse ky kompjuter nuk është i arritshëm nga interneti. Për ta rregulluar, ridrejtoni portën 4001 (TCP dhe UDP) në routerin tuaj te ky kompjuter, ose aktivizoni UPnP në routerin tuaj. Nëse ofruesi juaj i internetit nuk e lejon këtë, strehoni komunitetin në një server në vend të kësaj."
 }

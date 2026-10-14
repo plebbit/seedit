@@ -176,6 +176,11 @@
   text-transform: lowercase;
 }
 
+/* Router instructions name TCP, UDP, and UPnP as they appear in router settings, so keep their case. */
+.infobarKeepCase {
+  text-transform: none;
+}
+
 .captchaSelect {
   padding-top: 0;
   margin-top: 3px;

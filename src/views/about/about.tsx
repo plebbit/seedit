@@ -54,10 +54,10 @@ const About = () => {
       {isMobile ? (
         isInHomeAboutView ? (
           <>
-            <Sidebar comment={comment} community={community} />
+            <Sidebar comment={comment} community={community} settings={community?.settings} />
           </>
         ) : (
-          <Sidebar comment={comment} community={community} />
+          <Sidebar comment={comment} community={community} settings={community?.settings} />
         )
       ) : (
         <>

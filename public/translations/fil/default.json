@@ -444,5 +444,6 @@
   "fivechan_quote": "sinisipi {{reference}}",
   "quoting_user": "sinisipi si u/{{author}}",
   "fivechan_quote_tooltip": "Ang {{reference}} ay isang istilo ng pagsipi na hindi ginagamit ng Seedit, at hindi nahanap ang sinipi na komento.",
-  "relevance": "relevance"
+  "relevance": "relevance",
+  "community_unreachable_from_browsers": "Hindi ma-load ng mga browser ang komunidad na ito dahil hindi maabot ang computer na ito mula sa internet. Para maayos ito, i-forward ang port 4001 (TCP at UDP) sa iyong router papunta sa computer na ito, o i-enable ang UPnP sa iyong router. Kung hindi ito pinapayagan ng iyong internet provider, i-host na lang ang komunidad sa isang server."
 }
