@@ -1,0 +1,41 @@
+# Claude PR review, authenticated with a Claude subscription token (`claude setup-token`) stored as
+# the CLAUDE_CODE_OAUTH_TOKEN repository secret. Claude posts an inline comment per issue, or one
+# summary comment when it finds none, and skips drafts and pull requests it already reviewed.
+# See https://code.claude.com/docs/en/github-actions#run-a-skill.
+name: Claude Code Review
+
+on:
+  pull_request:
+    types: [opened, synchronize, ready_for_review, reopened]
+
+concurrency:
+  group: claude-code-review-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  review:
+    # Fork pull requests get no secrets, and the action rejects bot actors such as Dependabot.
+    if: github.event.pull_request.head.repo.full_name == github.repository && !endsWith(github.actor, '[bot]')
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    permissions:
+      contents: read
+      pull-requests: read
+      issues: read
+      id-token: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+      - uses: anthropics/claude-code-action@v1
+        env:
+          # The action ends the session at Claude's first result. The code-review command starts its
+          # first agent in the background and ends that turn to wait, so the review never ran and the
+          # job still passed (anthropics/claude-code-action#1646). Keep every agent in the foreground.
+          CLAUDE_CODE_DISABLE_BACKGROUND_TASKS: '1'
+        with:
+          claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          plugin_marketplaces: 'https://github.com/anthropics/claude-code.git'
+          plugins: 'code-review@claude-code-plugins'
+          prompt: '/code-review:code-review --comment ${{ github.repository }}/pull/${{ github.event.pull_request.number }}'
+          claude_args: '--allowedTools "mcp__github_inline_comment__create_inline_comment"'
