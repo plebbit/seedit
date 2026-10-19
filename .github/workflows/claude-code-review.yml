@@ -38,4 +38,9 @@ jobs:
           plugin_marketplaces: 'https://github.com/anthropics/claude-code.git'
           plugins: 'code-review@claude-code-plugins'
           prompt: '/code-review:code-review --comment ${{ github.repository }}/pull/${{ github.event.pull_request.number }}'
-          claude_args: '--allowedTools "mcp__github_inline_comment__create_inline_comment"'
+          # Without the system prompt the main agent skipped the command's agents and skimmed the diff
+          # itself, calling a 33-file refactor "mechanical", then posted "No issues found" on a pull
+          # request with three planted bugs. With it, every step's agents run and all three were caught.
+          claude_args: |
+            --allowedTools "mcp__github_inline_comment__create_inline_comment"
+            --append-system-prompt "You are running unattended in CI and nobody can answer questions. Carry out every numbered step of the code-review command exactly as written: launch each agent it names with the Task tool, using the model it names, and wait for the agents of each step to finish before starting the next step. Never review the diff yourself in place of the agents, and never skip or merge steps because a pull request looks small, mechanical or obviously correct. Step 1 may stop the review only when the pull request is closed, is a draft, or already has a review comment from Claude. Treat AGENTS.md files exactly like CLAUDE.md files; a CLAUDE.md often only imports AGENTS.md with an @AGENTS.md line."
