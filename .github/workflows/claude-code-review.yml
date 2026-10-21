@@ -1,6 +1,7 @@
 # Claude PR review, authenticated with a Claude subscription token (`claude setup-token`) stored as
-# the CLAUDE_CODE_OAUTH_TOKEN repository secret. Claude posts an inline comment per issue, or one
-# summary comment when it finds none, and skips drafts and pull requests it already reviewed.
+# the CLAUDE_CODE_OAUTH_TOKEN repository secret. Claude reviews every push to a non-draft pull
+# request and posts an inline comment per issue it has not already reported there, or one summary
+# comment when its first review finds none.
 # See https://code.claude.com/docs/en/github-actions#run-a-skill.
 name: Claude Code Review
 
@@ -41,6 +42,10 @@ jobs:
           # Without the system prompt the main agent skipped the command's agents and skimmed the diff
           # itself, calling a 33-file refactor "mechanical", then posted "No issues found" on a pull
           # request with three planted bugs. With it, every step's agents run and all three were caught.
+          # It also changes the command in three ways: later pushes are reviewed again instead of
+          # skipped, bugs that need particular input or state count when normal use reaches it (the
+          # command dropped those, which Codex flags as P2), and issues Claude already reported on the
+          # pull request are not posted again. Listing those needs the read-only gh api rule.
           claude_args: |
-            --allowedTools "mcp__github_inline_comment__create_inline_comment"
-            --append-system-prompt "You are running unattended in CI and nobody can answer questions. Carry out every numbered step of the code-review command exactly as written: launch each agent it names with the Task tool, using the model it names, and wait for the agents of each step to finish before starting the next step. Never review the diff yourself in place of the agents, and never skip or merge steps because a pull request looks small, mechanical or obviously correct. Step 1 may stop the review only when the pull request is closed, is a draft, or already has a review comment from Claude. Treat AGENTS.md files exactly like CLAUDE.md files; a CLAUDE.md often only imports AGENTS.md with an @AGENTS.md line."
+            --allowedTools "mcp__github_inline_comment__create_inline_comment,Bash(gh api repos/${{ github.repository }}/pulls/${{ github.event.pull_request.number }}/comments:*)"
+            --append-system-prompt "You are running unattended in CI and nobody can answer questions. Carry out every numbered step of the code-review command, with the changes listed here: launch each agent it names with the Task tool, using the model it names, and wait for the agents of each step to finish before starting the next step. Never review the diff yourself in place of the agents, and never skip or merge steps because a pull request looks small, mechanical or obviously correct. Change 1: step 1 may stop the review only when the pull request is closed or is a draft. Earlier reviews by Claude are not a reason to stop; every push gets a full review of the whole pull request. Change 2: a bug that depends on particular input or state is high signal when normal use reaches that input or state, for example a field edited to an empty string or false, an optional value that is missing, a request that fails, or a list with more than one entry. Flag it when you can name the concrete scenario and the wrong result. This replaces the command's rule against flagging issues that depend on specific inputs or state; still skip speculative, stylistic and nitpick issues. Pass this rule word for word to every step 4 and step 5 agent. Change 3: before step 8, run gh api repos/${{ github.repository }}/pulls/${{ github.event.pull_request.number }}/comments --paginate and gh pr view ${{ github.event.pull_request.number }} --repo ${{ github.repository }} --comments, each as a standalone command without pipes or redirects, to see what Claude (claude or claude[bot]) already posted on this pull request. Drop every issue Claude already reported, matching by file and underlying problem even when line numbers moved, and post only the rest. If nothing remains, post the No issues found summary only when Claude has never commented on this pull request; otherwise post nothing. Change 4: treat AGENTS.md files exactly like CLAUDE.md files; a CLAUDE.md often only imports AGENTS.md with an @AGENTS.md line."
