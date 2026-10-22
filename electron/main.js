@@ -136,6 +136,10 @@ ipcMain.handle('test-notification-permission', async () => {
   }
 });
 
+// Electron 44 removed the clipboard.write({ bookmark, text }) form that electron-context-menu 3.x uses for
+// "Copy Link" and "Copy Image Address", so those two items are rebuilt below with the async clipboard API
+const copyUrlToClipboard = (url) => clipboard.writeText(url).catch((error) => console.error('Failed to copy URL:', error));
+
 // add right click menu
 contextMenu({
   // prepend custom buttons to top
@@ -158,14 +162,27 @@ contextMenu({
       click: () => browserWindow?.webContents?.reload(),
     },
   ],
-  showLookUpSelection: false,
-  showCopyImage: true,
-  showCopyImageAddress: true,
-  showSaveImageAs: true,
-  showSaveLinkAs: true,
-  showInspectElement: true,
-  showServices: false,
-  showSearchWithGoogle: false,
+  // the library's default items and order for the options seedit used before, except the two clipboard items
+  menu: (defaultActions, parameters, browserWindow, dictionarySuggestions) => [
+    dictionarySuggestions.length > 0 && defaultActions.separator(),
+    ...dictionarySuggestions,
+    defaultActions.separator(),
+    defaultActions.learnSpelling(),
+    defaultActions.separator(),
+    defaultActions.cut(),
+    defaultActions.copy(),
+    defaultActions.paste(),
+    defaultActions.separator(),
+    defaultActions.saveImageAs(),
+    defaultActions.copyImage(),
+    { ...defaultActions.copyImageAddress(), click: () => copyUrlToClipboard(parameters.srcURL) },
+    defaultActions.separator(),
+    { ...defaultActions.copyLink(), click: () => copyUrlToClipboard(parameters.linkURL) },
+    defaultActions.saveLinkAs(),
+    defaultActions.separator(),
+    defaultActions.inspect(),
+    defaultActions.separator(),
+  ],
 });
 
 const createMainWindow = () => {
@@ -515,7 +532,8 @@ ipcMain.handle('plugin:file-uploader:pickMedia', async (event) => {
 // Handle request to copy text to clipboard
 ipcMain.handle('copy-to-clipboard', async (event, text) => {
   try {
-    clipboard.writeText(text);
+    // clipboard.writeText returns a Promise since Electron 44
+    await clipboard.writeText(text);
     return { success: true };
   } catch (error) {
     console.error('[Electron Main] Error copying to clipboard:', error);
