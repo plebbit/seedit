@@ -7,8 +7,8 @@ on:
     branches: [ development, master ]
 
 jobs:
-  test-linux:
-    name: Test Linux (Ubuntu)
+  test-linux-build:
+    name: Linux Build + Static Checks
     runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v4
@@ -20,6 +20,18 @@ jobs:
         with:
           node-version: 22
       - run: corepack enable
+
+      - name: Resolve Yarn cache path
+        id: yarn-cache
+        shell: bash
+        run: echo "dir=$(corepack yarn config get cacheFolder)" >> "$GITHUB_OUTPUT"
+
+      - name: Cache Yarn package tarballs
+        uses: actions/cache@v4
+        with:
+          path: ${{ steps.yarn-cache.outputs.dir }}
+          key: ${{ runner.os }}-${{ runner.arch }}-yarn-v2-${{ hashFiles('yarn.lock', 'package.json', '.yarnrc.yml') }}
+          restore-keys: ${{ runner.os }}-${{ runner.arch }}-yarn-v2-
 
       - name: Cache electron binaries
         uses: actions/cache@v4
@@ -65,20 +77,6 @@ jobs:
             exit 1
           fi
 
-      - name: Install performance browser
-        run: yarn perf:install --with-deps
-      - name: Check React collector and runtime scenarios
-        run: yarn perf:check --output .react-perf/ci
-      - name: Check cold-load layout stability and static shell handoff
-        run: yarn perf:load --check --profile cpu4 --samples 2 --output .react-perf/ci-load
-      - name: Upload React performance evidence
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: react-performance
-          path: .react-perf/
-          if-no-files-found: warn
-
       - name: Build Preload Script
         run: yarn build:preload
 
@@ -114,6 +112,130 @@ jobs:
           # Verify the file exists and is executable
           test -f "$EXE" && test -x "$EXE" && echo "✓ Executable is valid"
 
+  perf-runtime:
+    name: React Runtime
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js v22
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: corepack enable
+
+      - name: Resolve Yarn cache path
+        id: yarn-cache
+        shell: bash
+        run: echo "dir=$(corepack yarn config get cacheFolder)" >> "$GITHUB_OUTPUT"
+
+      - name: Cache Yarn package tarballs
+        uses: actions/cache@v4
+        with:
+          path: ${{ steps.yarn-cache.outputs.dir }}
+          key: ${{ runner.os }}-${{ runner.arch }}-yarn-v2-${{ hashFiles('yarn.lock', 'package.json', '.yarnrc.yml') }}
+          restore-keys: ${{ runner.os }}-${{ runner.arch }}-yarn-v2-
+
+      - name: Install dependencies
+        run: |
+          for i in 1 2 3; do
+            echo "yarn install attempt $i"
+            yarn install --immutable && break
+            sleep 5
+            [ "$i" = "3" ] && exit 1
+          done
+
+      - name: Install performance browser
+        run: yarn perf:install --with-deps
+
+      - name: Check React collector and runtime scenarios
+        run: yarn perf:check --output .react-perf/ci
+
+      - name: Upload React runtime evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: react-performance-runtime
+          path: .react-perf/ci
+          include-hidden-files: true
+          if-no-files-found: warn
+
+  perf-load:
+    name: Cold Load
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js v22
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: corepack enable
+
+      - name: Resolve Yarn cache path
+        id: yarn-cache
+        shell: bash
+        run: echo "dir=$(corepack yarn config get cacheFolder)" >> "$GITHUB_OUTPUT"
+
+      - name: Cache Yarn package tarballs
+        uses: actions/cache@v4
+        with:
+          path: ${{ steps.yarn-cache.outputs.dir }}
+          key: ${{ runner.os }}-${{ runner.arch }}-yarn-v2-${{ hashFiles('yarn.lock', 'package.json', '.yarnrc.yml') }}
+          restore-keys: ${{ runner.os }}-${{ runner.arch }}-yarn-v2-
+
+      - name: Install dependencies
+        run: |
+          for i in 1 2 3; do
+            echo "yarn install attempt $i"
+            yarn install --immutable && break
+            sleep 5
+            [ "$i" = "3" ] && exit 1
+          done
+
+      # Build locally so cold-load checks can start without waiting for packaging.
+      - name: Build React App
+        run: yarn build
+        env:
+          CI: ''
+
+      - name: Install performance browser
+        run: yarn perf:install --with-deps
+
+      - name: Check cold-load layout stability and static shell handoff
+        run: yarn perf:load --check --profile cpu4 --samples 2 --output .react-perf/ci-load
+
+      - name: Upload cold-load evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: react-performance-load
+          path: .react-perf/ci-load
+          include-hidden-files: true
+          if-no-files-found: warn
+
+  # Preserve the existing required check while the Linux work runs in parallel.
+  test-linux:
+    name: Test Linux (Ubuntu)
+    runs-on: ubuntu-22.04
+    needs: [test-linux-build, perf-runtime, perf-load]
+    if: always()
+    steps:
+      - name: Require every Linux check to pass
+        env:
+          BUILD_RESULT: ${{ needs.test-linux-build.result }}
+          RUNTIME_RESULT: ${{ needs.perf-runtime.result }}
+          LOAD_RESULT: ${{ needs.perf-load.result }}
+        run: |
+          if [[ "$BUILD_RESULT" != "success" || "$RUNTIME_RESULT" != "success" || "$LOAD_RESULT" != "success" ]]; then
+            echo "::error::Linux checks did not all pass (build=$BUILD_RESULT, runtime=$RUNTIME_RESULT, load=$LOAD_RESULT)"
+            exit 1
+          fi
+
   test-mac-intel:
     name: Test Mac (Intel)
     runs-on: macos-15-intel
@@ -127,6 +249,18 @@ jobs:
         with:
           node-version: 22
       - run: corepack enable
+
+      - name: Resolve Yarn cache path
+        id: yarn-cache
+        shell: bash
+        run: echo "dir=$(corepack yarn config get cacheFolder)" >> "$GITHUB_OUTPUT"
+
+      - name: Cache Yarn package tarballs
+        uses: actions/cache@v4
+        with:
+          path: ${{ steps.yarn-cache.outputs.dir }}
+          key: ${{ runner.os }}-${{ runner.arch }}-yarn-v2-${{ hashFiles('yarn.lock', 'package.json', '.yarnrc.yml') }}
+          restore-keys: ${{ runner.os }}-${{ runner.arch }}-yarn-v2-
 
       - name: Install setuptools for native modules
         run: pip3 install --break-system-packages setuptools || pip3 install --user setuptools || true
@@ -189,6 +323,18 @@ jobs:
           node-version: 22
       - run: corepack enable
 
+      - name: Resolve Yarn cache path
+        id: yarn-cache
+        shell: bash
+        run: echo "dir=$(corepack yarn config get cacheFolder)" >> "$GITHUB_OUTPUT"
+
+      - name: Cache Yarn package tarballs
+        uses: actions/cache@v4
+        with:
+          path: ${{ steps.yarn-cache.outputs.dir }}
+          key: ${{ runner.os }}-${{ runner.arch }}-yarn-v2-${{ hashFiles('yarn.lock', 'package.json', '.yarnrc.yml') }}
+          restore-keys: ${{ runner.os }}-${{ runner.arch }}-yarn-v2-
+
       - name: Install setuptools for native modules
         run: pip3 install --break-system-packages setuptools || pip3 install --user setuptools || true
 
@@ -249,6 +395,18 @@ jobs:
         with:
           node-version: 22
       - run: corepack enable
+
+      - name: Resolve Yarn cache path
+        id: yarn-cache
+        shell: bash
+        run: echo "dir=$(corepack yarn config get cacheFolder)" >> "$GITHUB_OUTPUT"
+
+      - name: Cache Yarn package tarballs
+        uses: actions/cache@v4
+        with:
+          path: ${{ steps.yarn-cache.outputs.dir }}
+          key: ${{ runner.os }}-${{ runner.arch }}-yarn-v2-${{ hashFiles('yarn.lock', 'package.json', '.yarnrc.yml') }}
+          restore-keys: ${{ runner.os }}-${{ runner.arch }}-yarn-v2-
 
       - name: Cache electron binaries
         uses: actions/cache@v4
