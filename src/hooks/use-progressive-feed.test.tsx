@@ -38,6 +38,7 @@ vi.mock('./use-feed-with-compatible-sort', () => ({
       expandTimeWindow: testState.expandTimeWindow,
       reset: vi.fn(async () => {}),
       communityKeysWithNewerPosts: [],
+      communityKeysWithMore: [],
       state: 'succeeded',
       error: undefined,
       errors: [],

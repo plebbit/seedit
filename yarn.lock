@@ -1385,28 +1385,27 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@bitsocial/bitsocial-react-hooks@npm:0.1.45":
-  version: 0.1.45
-  resolution: "@bitsocial/bitsocial-react-hooks@npm:0.1.45"
+"@bitsocial/bitsocial-react-hooks@npm:0.1.57":
+  version: 0.1.57
+  resolution: "@bitsocial/bitsocial-react-hooks@npm:0.1.57"
   dependencies:
     "@bitsocial/bso-resolver": "npm:0.0.10"
-    "@pkcprotocol/pkc-js": "npm:0.0.101"
+    "@pkcprotocol/pkc-js": "npm:0.0.119"
     "@pkcprotocol/pkc-logger": "npm:0.1.0"
-    assert: "npm:2.1.0"
     ethers: "npm:5.8.0"
     localforage: "npm:1.10.0"
-    lodash.isequal: "npm:4.5.0"
-    memoizee: "npm:0.4.17"
     multiformats: "npm:13.4.2"
     peer-id: "npm:0.16.0"
     quick-lru: "npm:5.1.1"
+    safe-stable-stringify: "npm:2.4.3"
+    typestub-ipfs-only-hash: "npm:4.0.0"
     uint8arrays: "npm:3.1.1"
     uuid: "npm:14.0.1"
     viem: "npm:2.55.8"
     zustand: "npm:4.5.7"
   peerDependencies:
     react: ">=16.8"
-  checksum: 10c0/6f30aafce37f5a96088687f9fcfcbb2009734ab18ca0b1cd1b3d5dcc8641a5f40899f87e0ccadf3e7b79d3bad74d4e0ee41cb2c88dbd2ffa767a2a4b23ad3e68
+  checksum: 10c0/aaa79db09e886bf37ce3b3ee1c1dc69bca7832322b1bb152c89c6de43d61ec06519bb2418d86d15eabdd2052b28d5c1bfd0a598275d985e0ef9ad8213ea67fb7
   languageName: node
   linkType: hard
 
@@ -1873,16 +1872,6 @@ __metadata:
     fs-extra: "npm:^10.0.0"
     got: "npm:^11.8.5"
   checksum: 10c0/6bde6f88acb745cf9bb2d2fa40e039af1d950da1ba61c1d4d470aa715ad51e007aa3f1fcdf0edd7c14a10e425a04fb009643bd4013197ee8d5e3e8c407ce2e2f
-  languageName: node
-  linkType: hard
-
-"@electron-forge/plugin-auto-unpack-natives@npm:7.8.0":
-  version: 7.8.0
-  resolution: "@electron-forge/plugin-auto-unpack-natives@npm:7.8.0"
-  dependencies:
-    "@electron-forge/plugin-base": "npm:7.8.0"
-    "@electron-forge/shared-types": "npm:7.8.0"
-  checksum: 10c0/d684741844c8809e20130d737024d060be7e7f4395006065aa6c62461ce6a5c24d86c856370075c426f89304f4ef380dbe2aee51fffe10d3e734c24f28fda811
   languageName: node
   linkType: hard
 
@@ -6623,9 +6612,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@pkcprotocol/pkc-js@npm:0.0.101":
-  version: 0.0.101
-  resolution: "@pkcprotocol/pkc-js@npm:0.0.101"
+"@pkcprotocol/pkc-js@npm:0.0.124":
+  version: 0.0.124
+  resolution: "@pkcprotocol/pkc-js@npm:0.0.124"
   dependencies:
     "@enhances/with-resolvers": "npm:0.0.5"
     "@helia/bitswap": "npm:4.0.14"
@@ -6643,6 +6632,7 @@ __metadata:
     "@noble/curves": "npm:2.2.0"
     "@pkcprotocol/pkc-logger": "npm:0.1.0"
     "@pkcprotocol/proper-lock-file": "npm:4.2.1"
+    "@types/better-sqlite3": "npm:7.6.13"
     assert: "npm:2.1.0"
     better-sqlite3: "npm:12.9.0"
     blockstore-core: "npm:7.0.1"
@@ -6688,7 +6678,7 @@ __metadata:
     uuid: "npm:13.0.0"
     ws: "npm:8.20.0"
     zod: "npm:4.3.6"
-  checksum: 10c0/c069c2eefe7799906b4cb64d52ce3b4793e0688522b6861414a212aaf9c8173d3a96fe5defd66af2c3bb50bade3d52946d8fcf9fc262815d05aa657cc2853096
+  checksum: 10c0/ab1d2772703b6d33ceac0d90d77bfbf90db7dc713418dd25af555bbb05ce7236909e35988bf3fc20837b1feb71e7479b293bc050e18131d5acda015ae2e8ac37
   languageName: node
   linkType: hard
 
@@ -7239,6 +7229,15 @@ __metadata:
   dependencies:
     "@types/node": "npm:*"
   checksum: 10c0/9aa1b38a27b9310fcb6fc3fdac2aab4d3d05a0165a485c4a3a09d75712e4ea6a2e5f1e75a1a657c2e071bba92344dc0610fdb89320308601dd1e596f1aa57da0
+  languageName: node
+  linkType: hard
+
+"@types/better-sqlite3@npm:7.6.13":
+  version: 7.6.13
+  resolution: "@types/better-sqlite3@npm:7.6.13"
+  dependencies:
+    "@types/node": "npm:*"
+  checksum: 10c0/c4336e7b92343eb0e988ded007c53fa9887b98a38d61175226e86124a1a2c28b1a4e3892873c5041e350b7bfa2901f85c82db1542c4f0eed1d3a899682c92106
   languageName: node
   linkType: hard
 
@@ -15123,7 +15122,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"lodash.isequal@npm:4.5.0, lodash.isequal@npm:^4.5.0":
+"lodash.isequal@npm:^4.5.0":
   version: 4.5.0
   resolution: "lodash.isequal@npm:4.5.0"
   checksum: 10c0/dfdb2356db19631a4b445d5f37868a095e2402292d59539a987f134a8778c62a2810c2452d11ae9e6dcac71fc9de40a6fedcb20e2952a15b431ad8b29e50e28f
@@ -19691,7 +19690,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "seedit@workspace:."
   dependencies:
-    "@bitsocial/bitsocial-react-hooks": "npm:0.1.45"
+    "@bitsocial/bitsocial-react-hooks": "npm:0.1.57"
     "@bitsocial/bso-resolver": "npm:0.0.10"
     "@capacitor/android": "npm:7.6.9"
     "@capacitor/app": "npm:7.0.1"
@@ -19706,10 +19705,9 @@ __metadata:
     "@electron-forge/maker-dmg": "npm:7.8.0"
     "@electron-forge/maker-squirrel": "npm:7.8.0"
     "@electron-forge/maker-zip": "npm:7.8.0"
-    "@electron-forge/plugin-auto-unpack-natives": "npm:7.8.0"
     "@electron/rebuild": "npm:3.7.2"
     "@floating-ui/react": "npm:0.26.1"
-    "@pkcprotocol/pkc-js": "npm:0.0.101"
+    "@pkcprotocol/pkc-js": "npm:0.0.124"
     "@playwright/cli": "npm:0.1.19"
     "@reforged/maker-appimage": "npm:5.1.1"
     "@types/lodash": "npm:4.17.24"
@@ -19742,7 +19740,6 @@ __metadata:
     form-data: "npm:4.0.6"
     fs-extra: "npm:11.3.0"
     gifuct-js: "npm:2.1.2"
-    glob: "npm:10.5.0"
     http-proxy: "npm:1.18.1"
     husky: "npm:4.3.8"
     i18next: "npm:25.10.9"
