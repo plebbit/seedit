@@ -22,6 +22,8 @@ const config = {
       /^\/\.git/,
       // exclude the local data dir
       /^\/\.pkc$/,
+      // exclude the local codegraph index; its daemon socket cannot be copied
+      /^\/\.codegraph$/,
       /^\/out$/,
       /^\/dist$/,
       /^\/squashfs-root$/,
