@@ -1,7 +1,12 @@
 import assert from 'node:assert/strict';
+import { execFileSync } from 'node:child_process';
+import path from 'node:path';
 import test from 'node:test';
+import { fileURLToPath } from 'node:url';
 import { JSDOM } from 'jsdom';
-import { STATIC_SHELL_ATTRIBUTE, injectStaticShell, inlineStartupStylesheets } from '../vite-static-shell.mjs';
+import { STATIC_SHELL_ATTRIBUTE, STATIC_SHELL_VARIANTS, injectStaticShell, inlineStartupStylesheets } from '../vite-static-shell.mjs';
+
+const packageRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..');
 
 const ATTRIBUTE = 'data-seedit-app-preload';
 
@@ -62,4 +67,15 @@ test('skips the shell when the first frame would differ', () => {
   assert.equal(loadWithShell({ storage: { i18nextLng: 'de' } }), 'no shell');
   assert.equal(loadWithShell({ storage: { theme: 'sepia' } }), 'no shell');
   assert.equal(loadWithShell({ storage: { 'content-options': '{"state":{"hideDefaultCommunities":true},"version":0}' } }), 'no shell');
+});
+
+test('renders the shell in a build:profile environment', () => {
+  const variant = { 'desktop-light': STATIC_SHELL_VARIANTS['desktop-light'] };
+  const output = execFileSync(process.execPath, [path.join(packageRoot, 'scripts/static-shell/render.mjs'), JSON.stringify(variant)], {
+    cwd: packageRoot,
+    encoding: 'utf8',
+    env: { ...process.env, REACT_PERF_PROFILE: '1' },
+    maxBuffer: 16 * 1024 * 1024,
+  });
+  assert.match(JSON.parse(output).variants['desktop-light'], /^<div class="[^"]*\blight\b/);
 });

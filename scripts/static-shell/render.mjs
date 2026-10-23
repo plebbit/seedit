@@ -36,7 +36,9 @@ const server = await createServer({
   root: packageRoot,
   mode: 'production',
   plugins: [(await import('@vitejs/plugin-react')).default()],
-  resolve: { alias: config.resolve.alias.filter((entry) => !nodeBuiltinAliases.has(entry.find)) },
+  // build:profile also aliases react-dom/client to react-dom/profiling for the browser bundle; the SSR module
+  // runner would inline that CommonJS entry and fail on `module`, and the shell does not need profiling.
+  resolve: { alias: config.resolve.alias.filter((entry) => !nodeBuiltinAliases.has(entry.find) && entry.replacement !== 'react-dom/profiling') },
   define: config.define,
   css: config.css,
   server: { middlewareMode: true, hmr: false, watch: null, ws: false },
