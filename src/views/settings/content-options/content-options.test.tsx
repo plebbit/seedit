@@ -30,7 +30,8 @@ const mocks = vi.hoisted(() => ({
   requestNotificationPermission: vi.fn(),
 }));
 
-vi.mock('react-i18next', () => ({ useTranslation: () => ({ t: mocks.translate }) }));
+// A fresh `t` on every render stops the React Compiler from caching translations, so `t` calls keep tracking renders.
+vi.mock('react-i18next', () => ({ useTranslation: () => ({ t: (...args: Parameters<typeof mocks.translate>) => mocks.translate(...args) }) }));
 vi.mock('@bitsocial/bitsocial-react-hooks', () => ({ useAccount: () => undefined, setAccount: vi.fn() }));
 vi.mock('../../../hooks/use-default-subscriptions', () => ({ useDefaultSubscriptions: () => [] }));
 vi.mock('../../../hooks/use-is-mobile', () => ({ default: () => false }));

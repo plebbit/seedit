@@ -1,6 +1,7 @@
 import { defineConfig } from 'vite';
 import { configDefaults } from 'vitest/config';
-import react from '@vitejs/plugin-react';
+import react, { reactCompilerPreset } from '@vitejs/plugin-react';
+import babel from '@rolldown/plugin-babel';
 import { resolve } from 'path';
 import { nodePolyfills } from 'vite-plugin-node-polyfills';
 import { VitePWA } from 'vite-plugin-pwa';
@@ -17,18 +18,9 @@ export default defineConfig({
     exclude: [...configDefaults.exclude, 'scripts/jev/tests/**'],
   },
   plugins: [
-    react({
-      babel: {
-        plugins: [
-          [
-            'babel-plugin-react-compiler',
-            {
-              verbose: true,
-            },
-          ],
-        ],
-      },
-    }),
+    react(),
+    // @vitejs/plugin-react 6 dropped its `babel` option; the React Compiler runs through @rolldown/plugin-babel.
+    babel({ presets: [reactCompilerPreset()] }),
     nodePolyfills({
       globals: {
         Buffer: true,

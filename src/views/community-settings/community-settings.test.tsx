@@ -51,7 +51,8 @@ vi.mock('@bitsocial/bitsocial-react-hooks', () => ({
   useSubscribe: () => ({ subscribe: testState.subscribe }),
 }));
 
-vi.mock('react-i18next', () => ({ useTranslation: () => ({ t: testState.t }) }));
+// A fresh `t` on every render stops the React Compiler from caching translations, so `t` calls keep tracking renders.
+vi.mock('react-i18next', () => ({ useTranslation: () => ({ t: (...args: Parameters<typeof testState.t>) => testState.t(...args) }) }));
 vi.mock('react-router-dom', () => ({
   useLocation: () => ({ pathname: testState.pathname }),
   useNavigate: () => testState.navigate,

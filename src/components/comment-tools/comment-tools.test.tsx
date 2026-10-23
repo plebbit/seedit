@@ -80,7 +80,10 @@ describe('CommentTools', () => {
     await act(async () => container.querySelector<HTMLButtonElement>('button')?.click());
     expect(testState.saveComment).toHaveBeenCalledOnce();
 
+    // The real hook re-renders SaveButton from its store; this mock only changes on remount.
     testState.saved = true;
+    await act(async () => root.unmount());
+    root = createRoot(container);
     await renderTools();
     const unsaveButton = Array.from(container.querySelectorAll('button')).find((button) => button.textContent === 'unsave');
     await act(async () => unsaveButton?.click());

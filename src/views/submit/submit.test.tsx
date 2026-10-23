@@ -55,9 +55,10 @@ vi.mock('react-dropzone', () => ({
   },
 }));
 
+// A fresh `t` on every render stops the React Compiler from caching translations, so `t` calls keep tracking renders.
 vi.mock('react-i18next', () => ({
   Trans: ({ values }: { values?: { link?: string } }) => createElement('span', null, values?.link),
-  useTranslation: () => ({ i18n: { language: 'en' }, t: testState.translate }),
+  useTranslation: () => ({ i18n: { language: 'en' }, t: (...args: Parameters<typeof testState.translate>) => testState.translate(...args) }),
 }));
 
 vi.mock('react-router-dom', () => ({

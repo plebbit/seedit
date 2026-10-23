@@ -6922,6 +6922,28 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@rolldown/plugin-babel@npm:0.2.4":
+  version: 0.2.4
+  resolution: "@rolldown/plugin-babel@npm:0.2.4"
+  dependencies:
+    picomatch: "npm:^4.0.7"
+  peerDependencies:
+    "@babel/core": ^7.29.0 || ^8.0.0-rc.1
+    "@babel/plugin-transform-runtime": ^7.29.0 || ^8.0.0-rc.1
+    "@babel/runtime": ^7.27.0 || ^8.0.0-rc.1
+    rolldown: ^1.0.0-rc.5
+    vite: ^8.0.0
+  peerDependenciesMeta:
+    "@babel/plugin-transform-runtime":
+      optional: true
+    "@babel/runtime":
+      optional: true
+    vite:
+      optional: true
+  checksum: 10c0/1283804c979f32c24adf3e80177ff3ebb7f8db749660235ed0a511cd4e1a3c129bea4209dee5f9ee67b1709a6efc65986349ca10ff2f5557c86623d1eebd7b42
+  languageName: node
+  linkType: hard
+
 "@rolldown/pluginutils@npm:^1.0.0, @rolldown/pluginutils@npm:^1.0.1":
   version: 1.0.1
   resolution: "@rolldown/pluginutils@npm:1.0.1"
@@ -19844,7 +19866,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"rolldown@npm:~1.2.14":
+"rolldown@npm:1.2.15, rolldown@npm:~1.2.14":
   version: 1.2.15
   resolution: "rolldown@npm:1.2.15"
   dependencies:
@@ -20182,6 +20204,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "seedit@workspace:."
   dependencies:
+    "@babel/core": "npm:7.29.7"
     "@bitsocial/bitsocial-react-hooks": "npm:0.1.57"
     "@bitsocial/bso-resolver": "npm:0.0.10"
     "@capacitor/android": "npm:7.6.9"
@@ -20202,6 +20225,7 @@ __metadata:
     "@pkcprotocol/pkc-js": "npm:0.0.124"
     "@playwright/cli": "npm:0.1.19"
     "@reforged/maker-appimage": "npm:5.1.1"
+    "@rolldown/plugin-babel": "npm:0.2.4"
     "@types/lodash": "npm:4.17.24"
     "@types/memoizee": "npm:0.4.9"
     "@types/node": "npm:20.19.37"
@@ -20265,6 +20289,7 @@ __metadata:
     rehype-sanitize: "npm:5.0.1"
     remark-gfm: "npm:4.0.1"
     remark-supersub: "npm:1.0.0"
+    rolldown: "npm:1.2.15"
     smol-toml: "npm:1.9.1"
     stream-browserify: "npm:3.0.0"
     tar: "npm:7.5.22"

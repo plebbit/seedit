@@ -147,15 +147,14 @@ describe('Communities rendering', () => {
       for (const listener of testState.accountCommunityListeners) listener();
     });
     expect(container.textContent).toContain('error: Account lookup failed');
-    expect(testState.rowRender).toHaveBeenCalledTimes(2);
-    testState.rowRender.mockClear();
+    expect(testState.rowRender).not.toHaveBeenCalled();
 
     await act(async () => {
       testState.accountCommunitySnapshot = { ...testState.accountCommunitySnapshot, error: undefined };
       for (const listener of testState.accountCommunityListeners) listener();
     });
     expect(container.textContent).not.toContain('Account lookup failed');
-    expect(testState.rowRender).toHaveBeenCalledTimes(2);
+    expect(testState.rowRender).not.toHaveBeenCalled();
   });
 
   it('keeps account-community row state attached to its address when reordered and filtered', async () => {
