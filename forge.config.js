@@ -24,6 +24,24 @@ const config = {
       /^\/\.pkc$/,
       // exclude the local codegraph index; its daemon socket cannot be copied
       /^\/\.codegraph$/,
+      // exclude agent, tooling, deploy and docs files that only matter during development
+      /^\/\.agents$/,
+      /^\/\.claude$/,
+      /^\/\.codex$/,
+      /^\/\.cursor$/,
+      /^\/\.firecrawl$/,
+      /^\/\.playwright-cli$/,
+      /^\/\.react-perf$/,
+      /^\/\.vercel$/,
+      /^\/\.yarn$/,
+      /^\/\.nvmrc$/,
+      /^\/\.yarnrc\.yml$/,
+      /^\/build-profile$/,
+      /^\/dev-dist$/,
+      /^\/docs$/,
+      /^\/knip\.jsonc$/,
+      /^\/react-doctor\.config\.json$/,
+      /^\/vercel\.json$/,
       /^\/out$/,
       /^\/dist$/,
       /^\/squashfs-root$/,
@@ -37,6 +55,8 @@ const config = {
       /forge\.config/,
       /capacitor\.config/,
       /\.env$/,
+      // env files written by tools such as `vercel env pull` can hold tokens
+      /\/\.env\.[^/]+$/,
       /\.DS_Store$/,
       /yarn\.lock$/,
       // Exclude build-time scripts from the package
